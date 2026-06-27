@@ -4,434 +4,296 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindsEvo | Evolution of Human Thinking</title>
-
   <style>
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
+      font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
       color: #0f172a;
-      background: #f6f8fb;
-      line-height: 1.7;
+      background: #f7fbff;
+      line-height: 1.65;
     }
-
-    a { text-decoration: none; }
+    a { color: inherit; text-decoration: none; }
 
     .hero {
-      min-height: 92vh;
-      background:
-        radial-gradient(circle at 75% 35%, rgba(59,130,246,0.38), transparent 34%),
-        linear-gradient(135deg, #061226 0%, #102b5c 55%, #1e40af 100%);
-      color: white;
-      padding: 28px 6vw 60px;
+      min-height: 760px;
+      color: #fff;
       position: relative;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 68% 43%, rgba(41,126,255,0.70), transparent 29%),
+        radial-gradient(circle at 91% 53%, rgba(255,214,140,0.35), transparent 22%),
+        linear-gradient(105deg, rgba(4,14,32,0.98) 0%, rgba(8,28,62,0.94) 42%, rgba(20,68,165,0.88) 100%);
     }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,0.88) 0%, rgba(2,8,23,0.50) 40%, rgba(2,8,23,0.05) 75%),
+        radial-gradient(circle at 72% 50%, rgba(255,255,255,0.13), transparent 26%);
+      z-index: 1;
+    }
+    .mountains {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 260px;
+      background:
+        linear-gradient(to top, rgba(4,12,32,0.95), transparent 80%),
+        radial-gradient(ellipse at 55% 90%, rgba(255,255,255,0.20), transparent 35%);
+      z-index: 1;
+      opacity: 0.75;
+    }
+    .mountains::before,
+    .mountains::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 70%; height: 210px;
+      background: linear-gradient(135deg, transparent 45%, rgba(18,44,86,0.80) 46%, rgba(7,19,45,0.92) 100%);
+      clip-path: polygon(0 100%, 24% 56%, 41% 78%, 60% 40%, 82% 88%, 100% 62%, 100% 100%);
+      filter: blur(1px);
+    }
+    .mountains::before { left: -8%; }
+    .mountains::after { right: -10%; transform: scaleX(-1); opacity: 0.72; }
 
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative;
+      z-index: 5;
       max-width: 1180px;
       margin: 0 auto;
-    }
-
-    .brand {
+      padding: 24px 28px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 26px;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 900; }
+    .brand img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background: #fff; }
+    .links { display: flex; align-items: center; gap: 34px; font-size: 16px; font-weight: 700; }
+    .links a { opacity: .92; }
+    .links a:first-child { border-bottom: 2px solid #66a3ff; padding-bottom: 12px; }
+    .top-btn {
+      padding: 13px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4569ff, #1fd084);
       font-weight: 800;
+      box-shadow: 0 15px 35px rgba(29,78,216,.32);
     }
 
-    .brand img {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 34px;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.86);
-    }
-
-    .nav-cta {
-      color: white;
-      background: linear-gradient(135deg, #2563eb, #22c55e);
-      padding: 12px 22px;
-      border-radius: 16px;
-      font-weight: 700;
-    }
-
-    .hero-inner {
-      max-width: 1180px;
-      margin: 95px auto 0;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: #35e59b;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 6vw, 78px);
-      line-height: 1.12;
-      margin: 0 0 24px;
-      letter-spacing: -2px;
-    }
-
-    .highlight {
-      color: #35e59b;
-    }
-
-    .hero-subtitle {
-      font-size: 23px;
-      max-width: 760px;
-      margin-bottom: 30px;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .quote-box {
-      max-width: 560px;
-      margin: 30px 0;
-      padding: 26px 30px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.18);
-      font-size: 24px;
-      font-weight: 700;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-    }
-
-    .quote-mark {
-      color: #35e59b;
-      font-size: 38px;
-      line-height: 0;
-      margin-right: 8px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 18px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      padding: 15px 28px;
-      border-radius: 18px;
-      font-weight: 800;
-      font-size: 17px;
-    }
-
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #2563eb, #22c55e);
-    }
-
-    .btn-secondary {
-      color: white;
-      border: 1px solid rgba(255,255,255,0.55);
-    }
-
-    .hero-visual {
-      min-height: 520px;
+    .hero-wrap {
       position: relative;
-      display: flex;
+      z-index: 3;
+      max-width: 1180px;
+      margin: 62px auto 0;
+      padding: 0 28px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.08fr;
+      gap: 40px;
       align-items: center;
-      justify-content: center;
     }
+    .eyebrow { color: #28e58c; font-size: 22px; font-weight: 900; letter-spacing: 2px; margin-bottom: 18px; }
+    h1 { font-size: clamp(54px, 6vw, 78px); line-height: 1.14; margin: 0 0 24px; letter-spacing: -2px; font-weight: 950; }
+    .green { color: #35e88b; }
+    .subtitle { max-width: 690px; font-size: 22px; font-weight: 600; color: rgba(255,255,255,.94); margin: 0 0 28px; }
+    .quote-box {
+      width: min(430px, 100%);
+      margin: 32px 0 32px;
+      padding: 24px 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 20px 65px rgba(0,0,0,.25);
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .quote-box span { color: #31e18d; font-size: 36px; margin-right: 10px; }
+    .actions { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .primary, .secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 30px; border-radius: 999px; font-size: 18px; font-weight: 900; }
+    .primary { background: linear-gradient(135deg, #4268ff, #25d37e); box-shadow: 0 16px 40px rgba(37,99,235,.35); }
+    .secondary { border: 1.5px solid rgba(255,255,255,.72); background: rgba(255,255,255,.06); }
 
-    .brain-card {
-      width: min(440px, 90%);
-      aspect-ratio: 1 / 1;
+    .kid-visual {
+      min-height: 560px;
+      position: relative;
+    }
+    .kid {
+      position: absolute;
+      right: 28px;
+      bottom: -6px;
+      width: 370px;
+      height: 560px;
+      border-radius: 210px 210px 35px 35px;
+      background:
+        radial-gradient(circle at 58% 24%, rgba(52,147,255,.95), transparent 13%),
+        radial-gradient(circle at 50% 34%, rgba(52,147,255,.72), transparent 20%),
+        linear-gradient(90deg, transparent 0 24%, rgba(8,18,38,.98) 25% 72%, transparent 73%);
+      filter: drop-shadow(0 35px 80px rgba(0,0,0,.35));
+      opacity: .96;
+    }
+    .kid::before {
+      content: "";
+      position: absolute;
+      right: 52px; top: 66px;
+      width: 245px; height: 245px;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 50% 40%, rgba(96,165,250,0.92), rgba(37,99,235,0.24) 48%, rgba(255,255,255,0.06) 70%);
-      border: 1px solid rgba(255,255,255,0.24);
-      box-shadow: 0 30px 120px rgba(37,99,235,0.45);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px;
+        radial-gradient(circle at 30% 35%, #54b7ff 0 4px, transparent 5px),
+        radial-gradient(circle at 48% 24%, #54b7ff 0 4px, transparent 5px),
+        radial-gradient(circle at 66% 38%, #54b7ff 0 4px, transparent 5px),
+        radial-gradient(circle at 42% 55%, #54b7ff 0 4px, transparent 5px),
+        radial-gradient(circle at 68% 62%, #54b7ff 0 4px, transparent 5px),
+        linear-gradient(115deg, transparent 15%, rgba(91,188,255,.34), transparent 75%);
+      border: 1px solid rgba(94,193,255,.18);
+      box-shadow: inset 0 0 55px rgba(49,151,255,.38), 0 0 40px rgba(49,151,255,.35);
     }
-
-    .brain-card strong {
-      font-size: 34px;
-      display: block;
-      margin-bottom: 12px;
+    .kid::after {
+      content: "";
+      position: absolute;
+      right: 0; top: 110px;
+      width: 210px; height: 290px;
+      background: #061326;
+      clip-path: polygon(35% 0, 78% 9%, 100% 29%, 83% 42%, 96% 55%, 70% 58%, 74% 84%, 48% 100%, 33% 76%, 18% 53%, 8% 24%);
+      border-radius: 45% 45% 40% 48%;
     }
-
-    .brain-card span {
-      font-size: 18px;
-      color: rgba(255,255,255,0.88);
-    }
-
     .bubble {
       position: absolute;
-      padding: 18px 24px;
-      min-width: 128px;
-      text-align: center;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.24);
-      font-weight: 800;
-      font-size: 22px;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.15);
-    }
-
-    .bubble small {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      opacity: 0.86;
-    }
-
-    .b1 { top: 35px; left: 15px; }
-    .b2 { top: 35px; right: 0; }
-    .b3 { left: 0; top: 245px; }
-    .b4 { right: 15px; bottom: 90px; }
-    .b5 { top: 245px; right: -15px; }
-    .b6 { bottom: 35px; left: 150px; }
-
-    .section {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 64px 6vw;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: clamp(34px, 4vw, 48px);
-      line-height: 1.2;
-      margin: 0 0 16px;
-      letter-spacing: -1px;
-    }
-
-    .section-title span {
-      background: linear-gradient(135deg, #2563eb, #22c55e);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 21px;
-      color: #475569;
-      max-width: 760px;
-      margin: 0 auto 42px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 22px;
-      padding: 32px 26px;
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(15,23,42,0.08);
-      border: 1px solid rgba(15,23,42,0.06);
-    }
-
-    .icon {
-      width: 68px;
-      height: 68px;
+      z-index: 4;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
-      margin: 0 auto 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      background: #eef2ff;
-    }
-
-    .card h3 {
-      font-size: 23px;
-      margin: 0 0 12px;
-    }
-
-    .card p {
-      font-size: 17px;
-      color: #475569;
-      margin: 0;
-    }
-
-    .bottom-quote {
       text-align: center;
-      font-size: 27px;
-      font-weight: 700;
-      margin: 50px auto 0;
-      color: #0f172a;
+      background: rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.30);
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 0 22px rgba(255,255,255,.18), 0 20px 50px rgba(0,0,0,.14);
+      font-weight: 950;
+      font-size: 24px;
     }
+    .bubble small { display: block; margin-top: 4px; font-size: 13px; font-weight: 700; opacity: .9; }
+    .u { left: 80px; top: 18px; }
+    .j { right: 70px; top: 18px; }
+    .r { left: 34px; top: 205px; }
+    .ref { right: 28px; top: 205px; }
+    .c { left: 105px; bottom: 88px; }
+    .l { right: 28px; bottom: 88px; }
 
-    footer {
-      text-align: center;
-      padding: 36px 20px;
-      color: #64748b;
-      border-top: 1px solid #e2e8f0;
-      background: white;
-    }
+    .down { position: absolute; z-index: 5; left: 50%; bottom: 26px; transform: translateX(-50%); color: rgba(255,255,255,.85); text-align: center; font-weight: 700; }
+    .down .circle { width: 42px; height: 42px; border-radius: 50%; margin: 0 auto 8px; display: grid; place-items: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); }
 
-    @media (max-width: 900px) {
-      .nav-links, .nav-cta { display: none; }
+    .section { max-width: 1120px; margin: 0 auto; padding: 70px 28px; }
+    .section h2 { text-align: center; font-size: clamp(34px, 4vw, 46px); margin: 0 0 14px; letter-spacing: -1px; }
+    .section h2 span { background: linear-gradient(135deg,#2563eb,#17b884); -webkit-background-clip: text; color: transparent; }
+    .section-sub { text-align: center; max-width: 780px; margin: 0 auto 44px; font-size: 21px; color: #475569; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    .card { min-height: 230px; background: #fff; border-radius: 18px; box-shadow: 0 18px 45px rgba(15,23,42,.08); padding: 34px 24px; text-align: center; border: 1px solid rgba(15,23,42,.06); }
+    .icon { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 22px; display: grid; place-items: center; font-size: 34px; background: #e9f8ef; }
+    .card:nth-child(2) .icon { background: #e8f0ff; }
+    .card:nth-child(3) .icon { background: #efeafe; }
+    .card:nth-child(4) .icon { background: #fff0df; }
+    .card h3 { font-size: 23px; margin: 0 0 10px; }
+    .card p { margin: 0; font-size: 17px; color: #475569; }
+    .big-quote { margin: 44px auto 0; text-align: center; font-size: 25px; color: #334155; font-weight: 700; }
+    .big-quote span { color: #25c27c; font-size: 34px; padding: 0 8px; }
 
-      .hero {
-        min-height: auto;
-        padding-bottom: 50px;
-      }
+    .prepared { border-top: 1px solid #dbe4ef; margin-top: 52px; padding-top: 42px; }
+    .prepared h2 { font-size: 32px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 30px; }
+    .stat { text-align: center; padding: 18px 10px; border-right: 1px solid #dbe4ef; }
+    .stat:last-child { border-right: none; }
+    .stat strong { display: block; font-size: 34px; color: #19b86b; margin-bottom: 6px; }
+    .stat p { margin: 0; color: #475569; font-weight: 700; }
+    .closing { margin: 46px auto 0; max-width: 640px; text-align: center; font-size: 24px; color: #233047; font-weight: 700; }
+    footer { background: #fff; color: #64748b; text-align: center; padding: 34px 20px; border-top: 1px solid #e5edf5; }
 
-      .hero-inner {
-        margin-top: 52px;
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        min-height: 380px;
-      }
-
-      .bubble {
-        font-size: 18px;
-        min-width: 110px;
-        padding: 14px 18px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .quote-box {
-        font-size: 21px;
-      }
+    @media (max-width: 980px) {
+      .links, .top-btn { display: none; }
+      .hero { min-height: auto; }
+      .hero-wrap { grid-template-columns: 1fr; margin-top: 36px; }
+      .kid-visual { min-height: 520px; }
+      .kid { right: 50%; transform: translateX(50%); opacity: .62; }
+      .cards, .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid #dbe4ef; }
+      .stat:last-child { border-bottom: none; }
+      .bubble { width: 112px; height: 112px; font-size: 20px; }
+      .u { left: 12px; } .j { right: 12px; } .r { left: 5px; } .ref { right: 5px; } .c { left: 25px; } .l { right: 25px; }
     }
   </style>
 </head>
-
 <body>
-
   <main class="hero" id="home">
     <nav class="nav">
-      <div class="brand">
+      <a class="brand" href="#home">
         <img src="logo.png" alt="MindsEvo Logo" />
         <span>MindsEvo</span>
-      </div>
-
-      <div class="nav-links">
+      </a>
+      <div class="links">
         <a href="#home">Home</a>
         <a href="#mission">Mission</a>
         <a href="#approach">Approach</a>
         <a href="#applications">Applications</a>
         <a href="#about">About</a>
+        <a href="#blog">Blog</a>
       </div>
-
-      <a class="nav-cta" href="#mission">Explore More →</a>
+      <a class="top-btn" href="#mission">Explore More →</a>
     </nav>
 
-    <section class="hero-inner">
-      <div>
+    <section class="hero-wrap">
+      <div class="hero-copy">
         <div class="eyebrow">AI 时代的真正挑战</div>
-
-        <h1>
-          知识唾手可得，<br />
-          <span class="highlight">思维</span>才是未来。
-        </h1>
-
-        <p class="hero-subtitle">
-          MindsEvo 致力于帮助青少年发展高阶思维能力：
-          理解、判断、推理、创造、反思与持续学习。
-        </p>
-
-        <div class="quote-box">
-          <span class="quote-mark">“</span>
-          教育的目标，不只是学会知识，<br />
-          而是学会如何思考。
-        </div>
-
-        <div class="hero-buttons">
-          <a class="btn-primary" href="#mission">了解 MindsEvo →</a>
-          <a class="btn-secondary" href="#applications">查看应用</a>
+        <h1>知识唾手可得，<br><span class="green">思维</span>才是未来。</h1>
+        <p class="subtitle">MindsEvo 致力于帮助青少年发展高阶思维能力：<br>理解 · 判断 · 推理 · 创造 · 反思 · 持续学习</p>
+        <div class="quote-box"><span>“</span>教育的目标，不只是学会知识，<br>而是学会如何思考。</div>
+        <div class="actions">
+          <a class="primary" href="#mission">了解 MindsEvo →</a>
+          <a class="secondary" href="#applications">观看视频</a>
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="brain-card">
-          <div>
-            <strong>Human Thinking</strong>
-			<span>Understanding · Judgment · Reasoning · Reflection · Creativity · Lifelong Learning</span>
-          </div>
-        </div>
-
-		<div class="bubble b1">理解<small>Understanding</small></div>
-		<div class="bubble b2">判断<small>Judgment</small></div>
-		<div class="bubble b3">推理<small>Reasoning</small></div>
-		<div class="bubble b4">创造<small>Creativity</small></div>
-		<div class="bubble b5">反思<small>Reflection</small></div>
-        <div class="bubble b6">持续学习<small>Lifelong Learning</small></div>
+      <div class="kid-visual" aria-label="Human thinking abilities">
+        <div class="kid"></div>
+        <div class="bubble u">理解<small>Understanding</small></div>
+        <div class="bubble j">判断<small>Judgment</small></div>
+        <div class="bubble r">推理<small>Reasoning</small></div>
+        <div class="bubble ref">反思<small>Reflection</small></div>
+        <div class="bubble c">创造<small>Creativity</small></div>
+        <div class="bubble l">持续学习<small>Lifelong<br>Learning</small></div>
       </div>
     </section>
+
+    <div class="mountains"></div>
+    <a class="down" href="#mission"><div class="circle">⌄</div><div>探索更多</div></a>
   </main>
 
   <section class="section" id="mission">
-    <h2 class="section-title">为什么需要 <span>MindsEvo</span>？</h2>
-    <p class="section-subtitle">
-      AI 正在改变获取知识的方式，但无法替代人类的思维与智慧。
-      MindsEvo 关注的不是孩子知道了多少，而是孩子是否真正学会思考。
-    </p>
+    <h2>为什么需要 <span>MindsEvo</span>？</h2>
+    <p class="section-sub">AI 正在改变获取知识的方式，但无法替代人类的思维与智慧。</p>
 
     <div class="cards">
-      <div class="card">
-        <div class="icon">📘</div>
-        <h3>知识不再稀缺</h3>
-        <p>信息可以快速获取，但如何理解和运用更重要。</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🧠</div>
-        <h3>思维决定未来</h3>
-        <p>理解、判断、创造力和学习力才是核心竞争力。</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🌱</div>
-        <h3>青少年是关键</h3>
-        <p>思维能力的培养，越早开始越有长期价值。</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🎯</div>
-        <h3>方法比努力更重要</h3>
-        <p>好的方法加合适的练习，让成长更加高效。</p>
-      </div>
+      <div class="card"><div class="icon">📖</div><h3>知识不再稀缺</h3><p>信息可以被快速获取，但如何运用更重要。</p></div>
+      <div class="card"><div class="icon">🧠</div><h3>思维决定未来</h3><p>逻辑、判断、创造力、学习力才是核心竞争力。</p></div>
+      <div class="card"><div class="icon">👨‍👩‍👧</div><h3>青少年是关键</h3><p>思维能力的培养，越早开始越有优势。</p></div>
+      <div class="card"><div class="icon">🎯</div><h3>方法比努力更重要</h3><p>科学的方法加合适的练习，让成长更加高效。</p></div>
     </div>
 
-    <div class="bottom-quote">
-      “未来属于善于思考的人，而不仅仅是知道答案的人。”
+    <div class="big-quote"><span>“</span>未来属于善于思考的人，而不仅仅是知道答案的人。<span>”</span></div>
+
+    <div class="prepared">
+      <h2>我们已做好充分准备</h2>
+      <div class="stats">
+        <div class="stat"><strong>1000+</strong><p>精选思维单元<br>覆盖核心思维模式</p></div>
+        <div class="stat"><strong>3</strong><p>大棋类平台<br>国际象棋 · 中国象棋 · 围棋</p></div>
+        <div class="stat"><strong>AI</strong><p>智能辅助<br>个性化推荐 · 量化反馈</p></div>
+        <div class="stat"><strong>Family</strong><p>为家庭而设计<br>自学友好 · 易上手</p></div>
+      </div>
+      <div class="closing">MindsEvo 不只是一个学习工具，<br>更是陪伴孩子思维成长的智慧伙伴。</div>
     </div>
   </section>
 
-  <footer>
-    © 2026 MindsEvo · Evolution of Human Thinking
-  </footer>
-
+  <footer>© 2026 MindsEvo · Evolution of Human Thinking</footer>
 </body>
 </html>
