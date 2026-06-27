@@ -1,23 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>MindsEvo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindsEvo | Evolution of Human Thinking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            background: #f7f9fc;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 56px;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        header h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+
+        header p {
+            max-width: 800px;
+            margin: 25px auto 0;
+            font-size: 20px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        section h2 {
+            font-size: 34px;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .lead {
+            font-size: 22px;
+            color: #374151;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .quote {
+            background: #eef2ff;
+            border-left: 5px solid #1e3a8a;
+            padding: 25px;
+            font-size: 22px;
+            margin-top: 30px;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Mindsevo</h1>
 
+<header id="home">
+    <h1>MindsEvo</h1>
     <h2>Evolution of Human Thinking</h2>
-
     <p>
-        CogniChess · CogniXiangqi · CogniGo
+        AI 正在改变知识获取的方式。下一项真正重要的挑战，是如何发展人类的思维、判断、创造与持续学习能力。
+    </p>
+</header>
+
+<nav>
+    <a href="#mission">Mission</a>
+    <a href="#approach">Approach</a>
+    <a href="#games">Why Games</a>
+    <a href="#applications">Applications</a>
+    <a href="#journey">Journey</a>
+</nav>
+
+<section id="mission">
+    <h2>Our Mission</h2>
+    <p class="lead">
+        MindsEvo 致力于探索 AI 时代人类智慧的发展方式。
+    </p>
+    <p>
+        知识仍然重要，但知识本身已经不再是人类最稀缺的能力。
+        在 AI 可以快速提供信息、答案和工具的时代，真正值得长期培养的是人的思维能力：
+        理解、判断、推理、创造、反思和自我迭代。
+    </p>
+    <div class="quote">
+        AI 时代，教育的核心问题正在从“学到了什么知识”，转向“发展了什么思维”。
+    </div>
+</section>
+
+<section id="approach">
+    <h2>Our Approach</h2>
+    <p class="lead">
+        RootGene Framework：从大量成熟案例中提炼核心元思维，并通过练习、反馈和迭代不断强化。
     </p>
 
+    <div class="cards">
+        <div class="card">
+            <h3>Discover</h3>
+            <p>从传统资源和真实问题中发现高价值的思维模式。</p>
+        </div>
+        <div class="card">
+            <h3>Organize</h3>
+            <p>把零散经验归纳为可理解、可练习、可追踪的元思维单元。</p>
+        </div>
+        <div class="card">
+            <h3>Practice</h3>
+            <p>通过动态互动、AI 辅助和启发式练习帮助学习者主动探索。</p>
+        </div>
+        <div class="card">
+            <h3>Evolve</h3>
+            <p>通过反馈、推荐和持续迭代，支持个体化的思维成长路径。</p>
+        </div>
+    </div>
+</section>
+
+<section id="games">
+    <h2>Why Games?</h2>
+    <p class="lead">
+        棋类不是 MindsEvo 的终点，而是我们选择的第一批思维实验室。
+    </p>
     <p>
-        RootGene Framework
+        国际象棋、中国象棋和围棋是人类智慧长期积累的结晶。
+        它们规则清晰、知识门槛相对较低，却具有极高的逻辑密度、决策密度和反馈效率。
+        学习者可以在试错、观察、修正和自我迭代中发展思维能力。
+    </p>
+    <div class="quote">
+        棋不是目的。棋是 AI 时代启发人类思维的高价值实践环境。
+    </div>
+</section>
+
+<section id="applications">
+    <h2>Applications</h2>
+    <p class="lead">
+        MindsEvo 首先从三大棋类实践开始。
     </p>
 
-    <p>
-        Coming Soon...
+    <div class="cards">
+        <div class="card">
+            <h3>CogniChess</h3>
+            <p>以国际象棋为载体，训练逻辑推理、战术识别、计划判断和多步预测。</p>
+        </div>
+        <div class="card">
+            <h3>CogniXiangqi</h3>
+            <p>以中国象棋为载体，训练攻防转换、局部突破、整体协调和动态决策。</p>
+        </div>
+        <div class="card">
+            <h3>CogniGo</h3>
+            <p>以围棋为载体，探索空间理解、整体布局、长期战略和复杂系统思维。</p>
+        </div>
+    </div>
+</section>
+
+<section id="journey">
+    <h2>Join the Journey</h2>
+    <p class="lead">
+        MindsEvo 正在建设中。
     </p>
+    <p>
+        我们将持续完善平台、白皮书、博客、自媒体和学习社区。
+        这是一个关于 AI 时代人类思维发展的长期探索。
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 MindsEvo. Evolution of Human Thinking.</p>
+</footer>
+
 </body>
 </html>
