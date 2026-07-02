@@ -366,3 +366,56 @@ body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* ══════════════════════════════════════════════════════════
+   COLOR GAME COMPONENTS (used by color-pattern-hunter etc.)
+   ══════════════════════════════════════════════════════════ */
+
+/* Single color dot */
+.s1-cdot {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2.5px solid rgba(0,0,0,0.15);
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+  flex-shrink: 0;
+}
+
+/* Color pair capsule (for L4 color-pair questions) */
+.s1-ccapsule {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 32px;
+  padding: 6px 12px;
+  border: 2px solid #e2e8f0;
+  vertical-align: middle;
+  transition: background 0.2s, border-color 0.2s;
+}
+.s1-opt:hover:not(:disabled) .s1-ccapsule { background: #e0f2fe; border-color: var(--s1-primary); }
+.s1-opt.s1-correct .s1-ccapsule { background: var(--s1-green); border-color: var(--s1-green); }
+.s1-opt.s1-wrong   .s1-ccapsule { background: var(--s1-red);   border-color: var(--s1-red); }
+
+/* Color grid (for L2 color-cycle questions) */
+.s1-cgrid {
+  display: grid;
+  gap: 10px 16px;
+  justify-items: center;
+  align-items: center;
+}
+.s1-cgrid-sep {
+  grid-column: 1 / -1;
+  height: 1.5px;
+  background: rgba(0,0,0,0.10);
+  border-radius: 1px;
+  width: 90%;
+  margin: 4px 0;
+}
+
+/* Responsive: shrink dots on small screens */
+@media (max-width: 520px) {
+  .s1-cdot { border-width: 2px; }
+  .s1-ccapsule { padding: 5px 9px; gap: 4px; }
+  .s1-cgrid { gap: 8px 12px; }
+}

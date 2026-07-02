@@ -569,6 +569,9 @@
     function _answer(selected, btn, q) {
       var correct = cfg.checkAnswer(selected, q);
 
+      // Optional callback: game can track error types here
+      if (cfg.onAnswer) cfg.onAnswer(selected, q, correct);
+
       document.querySelectorAll('.s1-opt').forEach(function (b) {
         b.disabled = true;
         if (b === btn) b.classList.add(correct ? 's1-correct' : 's1-wrong');
@@ -874,8 +877,11 @@
     }
 
     function _unitSave(id) {
+      // parallelUnits: all units unlocked from start (for games where units test
+      // different cognitive abilities, not progressive difficulty)
+      var defaultUnlocked = cfg.parallelUnits ? true : (String(id) === '1');
       return shell.storage.get(GAME_ID + ':unit:' + id,
-        { unlocked: (String(id) === '1'), bestScore: null, playCount: 0 });
+        { unlocked: defaultUnlocked, bestScore: null, playCount: 0 });
     }
     function _saveUnit(id, data) {
       shell.storage.set(GAME_ID + ':unit:' + id, data);
