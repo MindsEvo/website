@@ -1,0 +1,1356 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>思进启智 MindsEvo | 人类思维在AI时代 | Human Thinking in the Age of AI</title>
+  <style>
+    :root {
+      --dark:       #071225;
+      --dark-2:     #0c1f3f;
+      --blue:       #2563eb;
+      --blue-light: #3b82f6;
+      --green:      #22c55e;
+      --green-dk:   #16a34a;
+      --accent:     #35e59b;
+      --cyan:       #16b7e8;
+      --text:       #0f172a;
+      --muted:      #64748b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; }
+    body  {
+      font-family: "SF Pro Display", "Helvetica Neue", Arial,
+                   "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px clamp(20px, 4vw, 56px);
+      background: rgba(7,18,37,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .brand {
+      display: flex; align-items: center; gap: 11px;
+      color: #fff; font-size: 22px; font-weight: 900; letter-spacing: -.4px;
+    }
+    .brand img {
+      width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+      border: 1.5px solid rgba(255,255,255,0.28);
+    }
+    .nav-links {
+      display: flex; gap: 26px; align-items: center;
+      font-size: 14.5px; font-weight: 600;
+    }
+    .nav-links a { color: rgba(255,255,255,0.78); transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      padding: 9px 20px; border-radius: 12px; font-weight: 800; font-size: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff !important;
+    }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 23px; height: 2px;
+      background: #fff; border-radius: 2px; transition: all .3s;
+    }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 199;
+      background: rgba(7,18,37,0.97); backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding: 8px clamp(20px, 4vw, 56px) 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.82); font-size: 16px; font-weight: 600;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu a:last-child { border-bottom: 0; }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 64px;
+      position: relative; overflow: hidden;
+      background-color: #071225;
+      background-size: auto 80%;
+      background-position: right center;
+      background-repeat: no-repeat;
+      color: #fff;
+      display: flex; align-items: center;
+    }
+    body[data-lang="zh"] .hero { background-image: url("hero-thinking-cn.png"); }
+    body[data-lang="en"] .hero { background-image: url("hero-thinking-en.png"); }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 65% 30%,
+        rgba(37,99,235,.18), transparent 42%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: min(1180px, 100% - 40px);
+      margin: 0 auto;
+      padding: 88px 0 110px;
+      max-width: 680px;
+      margin-left: max(20px, calc((100vw - 1180px) / 2));
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(53,229,155,.35);
+      padding: 5px 15px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .hero-question {
+      font-size: clamp(17px, 2vw, 24px); font-weight: 500;
+      color: rgba(255,255,255,.72); margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-size: clamp(50px, 6.5vw, 86px);
+      font-weight: 950; line-height: 1.07; letter-spacing: -2.5px;
+      margin-bottom: 34px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: clamp(16px, 1.7vw, 20px); font-weight: 500;
+      color: rgba(255,255,255,.78); line-height: 1.8;
+      max-width: 540px; margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      padding: 15px 30px; border-radius: 15px; font-weight: 800; font-size: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff;
+      box-shadow: 0 14px 38px rgba(37,99,235,.28);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(37,99,235,.36); }
+    .btn-outline {
+      padding: 14px 28px; border-radius: 15px; font-weight: 700; font-size: 16px;
+      border: 1.5px solid rgba(255,255,255,.55);
+      background: rgba(255,255,255,.06); color: #fff;
+      transition: background .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.12); }
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,.55); font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    }
+    .scroll-dot {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.22);
+      display: flex; align-items: center; justify-content: center; font-size: 15px;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+    .section { padding: 96px clamp(20px, 4vw, 56px); }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 11.5px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 950;
+      line-height: 1.13; letter-spacing: -1.4px; margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: clamp(16px, 1.6vw, 20px); color: var(--muted);
+      font-weight: 500; max-width: 780px; line-height: 1.78; margin-bottom: 58px;
+    }
+
+    .challenge-section { background: #f8faff; }
+    .challenge-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .c-side { padding: 40px; border-radius: 22px; }
+    .c-side.ai {
+      background: linear-gradient(140deg, #0c1f3f, #1a3a6e); color: #fff;
+    }
+    .c-side.human {
+      background: linear-gradient(140deg, #f0fdf4, #dcfce7); color: var(--text);
+      border: 1.5px solid #bbf7d0;
+    }
+    .c-side-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 14px; opacity: .65;
+    }
+    .c-side h3 { font-size: 26px; font-weight: 850; margin-bottom: 22px; line-height: 1.2; }
+    .c-side.ai h3 { color: var(--accent); }
+    .c-side.human h3 { color: var(--green-dk); }
+    .c-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .c-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.55; }
+    .c-list li .dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+    .c-side.ai .dot { background: var(--accent); }
+    .c-side.human .dot { background: var(--green); }
+    .c-side.ai .c-list li { color: rgba(255,255,255,.82); }
+    .challenge-quote {
+      margin-top: 52px; padding: 36px 44px; border-radius: 22px;
+      background: linear-gradient(135deg, #071225, #1a3a6e); color: #fff; text-align: center;
+    }
+    .challenge-quote p {
+      font-size: clamp(20px, 2.2vw, 29px); font-weight: 800;
+      line-height: 1.5; letter-spacing: -.3px;
+    }
+    .challenge-quote p em { font-style: normal; color: var(--accent); }
+
+    /* ── MISSION (light) ─────────────────────── */
+    .mission-section { background: #f8faff; color: var(--text); }
+    .mission-section .section-label { color: var(--blue); }
+    .mission-hero {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: start; margin-bottom: 60px;
+    }
+    .mission-h2 {
+      font-size: clamp(28px, 3.2vw, 44px); font-weight: 950;
+      line-height: 1.22; letter-spacing: -1.2px;
+      margin-bottom: 22px; color: var(--text);
+    }
+    .mission-h2 .hi { color: var(--blue); }
+    .mission-lead {
+      font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 26px;
+    }
+    .mission-divider { display: none; }
+    .mission-quote-block {
+      padding: 36px 40px; border-radius: 20px;
+      background: #fff; border: 1.5px solid #dde8f8;
+    }
+    .mq-mark { display: none; }
+    .mq-lines p {
+      font-size: 19px; font-weight: 600; color: var(--text);
+      line-height: 1.7; margin-bottom: 3px;
+    }
+    .mq-highlight {
+      margin-top: 16px !important; font-size: 24px !important;
+      font-weight: 880 !important; color: var(--text) !important;
+    }
+    .mq-highlight span { color: var(--blue); }
+    .mission-cards {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 22px; margin-bottom: 52px;
+    }
+    .m-card {
+      text-align: center; padding: 30px 18px; border-radius: 18px;
+      background: #fff; border: 1.5px solid #e4eef8;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .m-card:hover { border-color: var(--blue-light); box-shadow: 0 12px 36px rgba(37,99,235,.09); }
+    .m-icon {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 2px solid var(--blue-light); background: #eef4ff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin: 0 auto 16px;
+    }
+    .m-card h4 { font-size: 17px; font-weight: 850; margin-bottom: 10px; color: var(--text); }
+    .m-en  { display: none; }
+    .m-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .mission-banner {
+      padding: 42px 52px; border-radius: 20px;
+      background: linear-gradient(135deg, #071225, #1a3a6e);
+      border-left: 4px solid var(--accent);
+    }
+    .mission-banner h3 {
+      font-size: clamp(20px, 2.4vw, 30px); font-weight: 900;
+      line-height: 1.45; letter-spacing: -.5px;
+      margin-bottom: 14px; color: #fff;
+    }
+    .mission-banner h3 span { color: var(--accent); }
+    .mission-banner p { font-size: 15px; color: rgba(255,255,255,.50); font-style: italic; line-height: 1.7; }
+
+    /* -- APPROACH (dark) ----------------------- */
+    .approach-section { background: var(--dark); color: #fff; }
+    .approach-section .section-label { color: var(--accent); }
+    .ap-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: start; margin-bottom: 56px;
+    }
+    .ap-title {
+      font-size: clamp(34px, 4.2vw, 56px); font-weight: 950;
+      line-height: 1.1; letter-spacing: -1.8px;
+      margin-bottom: 18px; color: #fff;
+    }
+    .ap-divider {
+      width: 40px; height: 3px; border-radius: 2px; margin-bottom: 0;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+    .ap-subtitle {
+      font-size: 20px; font-weight: 700; color: rgba(255,255,255,.90);
+      line-height: 1.6; margin-bottom: 20px;
+    }
+    .ap-desc { font-size: 16px; color: rgba(255,255,255,.60); line-height: 1.85; }
+    .ap-steps {
+      background: rgba(255,255,255,.06); border-radius: 24px; padding: 44px 48px;
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex; align-items: flex-start; gap: 0; margin-bottom: 52px;
+    }
+    .ap-step { flex: 1; text-align: center; padding: 0 18px; }
+    .ap-step-icon {
+      width: 62px; height: 62px; border-radius: 50%;
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin: 0 auto 16px;
+    }
+    .ap-step h4 { font-size: 20px; font-weight: 850; margin-bottom: 10px; color: #fff; }
+    .ap-step p { font-size: 14px; color: rgba(255,255,255,.58); line-height: 1.7; }
+    .ap-arrow { color: var(--accent); font-size: 22px; flex-shrink: 0; align-self: center; padding: 0 4px; opacity: .65; }
+    .ap-banner {
+      padding: 44px 56px; border-radius: 22px;
+      background: linear-gradient(135deg, #071225, #1a3a6e);
+      color: #fff; border-left: 4px solid var(--accent);
+    }
+    .ap-banner h3 {
+      font-size: clamp(20px, 2.3vw, 28px); font-weight: 900;
+      line-height: 1.5; letter-spacing: -.4px; color: #fff; margin-bottom: 0;
+    }
+    .ap-banner h3 span { color: var(--accent); }
+
+    /* -- FOCUS section ----------------------- */
+    .focus-section { background: #f8faff; }
+    .focus-section .section-label { color: var(--blue); }
+    .focus-intro {
+      max-width: 780px; font-size: 17px; color: var(--muted);
+      line-height: 1.8; margin-bottom: 52px;
+    }
+    .focus-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 52px;
+    }
+    .focus-card {
+      background: #fff; border-radius: 20px; padding: 30px 26px;
+      border: 1.5px solid #e4eef8;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .focus-card:hover { border-color: var(--blue-light); box-shadow: 0 10px 32px rgba(37,99,235,.09); }
+    .focus-icon {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .focus-card h4 { font-size: 18px; font-weight: 850; margin-bottom: 8px; color: var(--text); }
+    .focus-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .focus-quote {
+      padding: 36px 48px; border-radius: 20px;
+      background: #eef8f4; border-left: 4px solid var(--accent);
+    }
+    .focus-quote p {
+      font-size: clamp(17px, 1.8vw, 22px); font-weight: 700;
+      color: var(--text); line-height: 1.6;
+    }
+    .focus-quote p span { color: var(--green-dk); }
+    @media (max-width: 1020px) { .focus-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px)  { .focus-grid { grid-template-columns: 1fr; } .focus-quote { padding: 28px 24px; } }
+
+    .why-section { background: #f8faff; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+    .why-reasons { display: flex; flex-direction: column; gap: 22px; }
+    .why-reason { display: flex; gap: 16px; align-items: flex-start; }
+    .why-reason .ic {
+      width: 46px; height: 46px; border-radius: 13px;
+      background: #e8f0fe; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .why-reason h4 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+    .why-reason p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .why-labs { display: flex; flex-direction: column; gap: 18px; }
+    .why-labs-head {
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .lab-card {
+      padding: 26px 28px; border-radius: 18px;
+      background: #fff; border: 1.5px solid #e0eaf8;
+      box-shadow: 0 6px 26px rgba(15,23,42,.06);
+    }
+    .lab-card .lab-name { font-size: 19px; font-weight: 850; margin-bottom: 4px; }
+    .lab-card .lab-sub  {
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      letter-spacing: .8px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .lab-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .why-conclusion {
+      margin-top: 52px; text-align: center; padding: 34px 40px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #1a3a6e, #071225);
+      color: #fff; font-size: clamp(17px, 1.9vw, 23px);
+      font-weight: 800; line-height: 1.55;
+    }
+    .why-conclusion em { font-style: normal; color: var(--accent); }
+    .why-conclusion small { display:block; margin-top:10px; font-size:.75em; font-weight:500; color:rgba(255,255,255,.50); }
+
+    /* -- PLATFORM (dark) -------------------- */
+    .platform-section { background: var(--dark); color: #fff; }
+    .platform-section .section-label { color: var(--accent); }
+    .platform-section .section-title { color: #fff; }
+    .platform-section .section-sub { color: rgba(255,255,255,.60); }
+    .plat-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; margin-bottom: 52px;
+    }
+    .plat-card {
+      padding: 30px 24px; border-radius: 18px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10);
+      transition: border-color .2s;
+    }
+    .plat-card:hover { border-color: rgba(255,255,255,.28); }
+    .plat-card h4 { font-size: 17px; font-weight: 850; color: #fff; margin-bottom: 10px; }
+    .plat-card p  { font-size: 14px; color: rgba(255,255,255,.58); line-height: 1.7; }
+    .plat-bottom {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .plat-eco {
+      padding: 36px 38px; border-radius: 18px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10);
+    }
+    .plat-eco h4 {
+      font-size: 20px; font-weight: 850; color: var(--accent); margin-bottom: 14px;
+    }
+    .plat-eco p { font-size: 15px; color: rgba(255,255,255,.60); line-height: 1.75; }
+    .plat-slogan {
+      padding: 36px 38px; border-radius: 18px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .plat-slogan p {
+      font-size: clamp(17px,1.9vw,22px); font-weight: 800;
+      color: #fff; line-height: 1.55; margin-bottom: 14px;
+    }
+    .plat-slogan .plat-cta {
+      font-size: 17px; font-weight: 800; color: var(--accent);
+    }
+    @media (max-width: 1020px) { .plat-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px)  { .plat-grid { grid-template-columns: 1fr; } .plat-bottom { grid-template-columns: 1fr; } }
+    .platform-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 26px;
+    }
+    .p-card {
+      border-radius: 22px; overflow: hidden;
+      border: 1.5px solid #e2eaf8;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .p-card:hover { transform: translateY(-4px); box-shadow: 0 22px 56px rgba(37,99,235,.11); }
+    .p-card.active { border-color: var(--blue); box-shadow: 0 14px 44px rgba(37,99,235,.14); }
+    .p-head {
+      padding: 30px 28px 24px; position: relative;
+      background: linear-gradient(135deg, #071225, #1a3a6e); color: #fff;
+    }
+    .p-card.coming .p-head { background: linear-gradient(135deg, #1e293b, #334155); }
+    .p-badge {
+      position: absolute; top: 18px; right: 18px;
+      padding: 4px 11px; border-radius: 100px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+    }
+    .badge-live { background: var(--accent); color: #071225; }
+    .badge-soon { background: rgba(255,255,255,.14); color: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.18); }
+    .p-emoji { font-size: 42px; margin-bottom: 14px; display: block; }
+    .p-head h3 { font-size: 24px; font-weight: 900; margin-bottom: 5px; }
+    .p-head .p-lab { font-size: 12.5px; color: rgba(255,255,255,.55); font-style: italic; }
+    .p-body { padding: 26px 28px 30px; background: #fff; }
+    .p-card.coming .p-body { background: #f8fafc; }
+    .p-body p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .p-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+    .p-feat { display: flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 600; }
+    .p-feat .ck { color: var(--green); font-size: 15px; }
+    .p-feat.dim { color: var(--muted); }
+    .p-feat.dim .ck { color: #cbd5e1; }
+    .p-btn { display: block; width: 100%; padding: 13px; border-radius: 13px; text-align: center; font-size: 14.5px; font-weight: 800; }
+    .p-btn.live { background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff; }
+    .p-btn.soon { background: #f1f5f9; color: var(--muted); cursor: default; }
+
+    /* -- APPLICATIONS (light) -------------------- */
+    .apps-section { background: #f4f6fb; }
+    .apps-section .section-label { color: var(--blue); }
+    .apps-lead {
+      font-size: clamp(15px, 1.6vw, 18px); color: var(--muted);
+      line-height: 1.8; margin-bottom: 48px;
+    }
+    .apps-divider-main {
+      width: 48px; height: 4px; border-radius: 2px; margin-bottom: 24px;
+      background: linear-gradient(90deg, var(--blue), var(--accent));
+    }
+    .apps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+      margin-bottom: 48px;
+    }
+    .app-card {
+      background: #fff; border-radius: 20px; padding: 36px 32px;
+      border: 1.5px solid #e4eef8;
+      box-shadow: 0 4px 20px rgba(15,23,42,.06);
+    }
+    .app-series-name {
+      font-size: 21px; font-weight: 900; margin-bottom: 5px; letter-spacing: -.2px;
+    }
+    .app-divider {
+      width: 36px; height: 3px; border-radius: 2px; margin-bottom: 20px;
+    }
+    .app-card p {
+      font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 24px;
+    }
+    .app-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .app-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14.5px; font-weight: 600; color: var(--text);
+    }
+    .app-list li .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .app-muted { color: var(--muted); font-weight: 500; }
+    .app-live-badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      letter-spacing: .8px; text-transform: uppercase;
+      background: var(--accent); color: #071225;
+      padding: 2px 8px; border-radius: 20px; margin-left: 8px;
+      vertical-align: middle;
+    }
+    .app-launch-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin-top: 20px; padding: 11px 22px; border-radius: 12px;
+      font-size: 14.5px; font-weight: 800;
+      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      color: #fff; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 6px 20px rgba(124,58,237,.28);
+    }
+    .app-launch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(124,58,237,.38);
+    }
+    .apps-quote {
+      padding: 40px 52px; border-radius: 20px; background: #e4ecf8; text-align: center;
+    }
+    .apps-quote p {
+      font-size: clamp(17px, 1.9vw, 23px); font-weight: 800;
+      color: var(--text); line-height: 1.65;
+    }
+    .apps-quote p em { font-style: normal; color: var(--blue); }
+    @media (max-width: 1020px) { .apps-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px)  { .apps-grid { grid-template-columns: 1fr; } .apps-quote { padding: 28px 22px; } }
+
+    /* -- JOURNEY (dark) -------------------- */
+    .journey-section {
+      background: linear-gradient(140deg, #071225 0%, #0c1f3f 50%, #071225 100%);
+      color: #fff; text-align: center;
+    }
+    .journey-section .section-label { color: var(--accent); }
+    .journey-title {
+      font-size: clamp(38px, 5vw, 64px); font-weight: 950;
+      line-height: 1.15; letter-spacing: -2px; margin-bottom: 32px; color: #fff;
+    }
+    .journey-divider {
+      width: 56px; height: 4px; border-radius: 2px; margin: 0 auto 42px;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+    .journey-content {
+      max-width: 820px; margin: 0 auto 52px;
+      font-size: clamp(17px, 1.9vw, 21px); font-weight: 600;
+      color: rgba(255,255,255,.82); line-height: 1.9;
+    }
+    .journey-content p { margin-bottom: 8px; }
+    .journey-highlight {
+      color: var(--accent) !important; font-weight: 700 !important;
+    }
+    .journey-separator {
+      width: 80px; height: 1px; background: rgba(255,255,255,.2);
+      margin: 48px auto;
+    }
+    .journey-vision {
+      max-width: 780px; margin: 0 auto 52px;
+      font-size: clamp(20px, 2.4vw, 28px); font-weight: 800;
+      color: rgba(255,255,255,.88); line-height: 1.65;
+    }
+    .journey-vision em { font-style: normal; color: var(--accent); }
+    .journey-cta {
+      display: inline-block; padding: 17px 38px; border-radius: 15px;
+      font-size: 17px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      color: #071225; box-shadow: 0 16px 42px rgba(53,229,155,.24);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .journey-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 52px rgba(53,229,155,.32);
+    }
+    .journey-tagline {
+      margin-top: 20px; font-size: 15px; color: rgba(255,255,255,.5);
+      font-weight: 500; letter-spacing: .3px;
+    }
+
+    /* -- THANK YOU (light) -------------------- */
+    .thankyou-section {
+      background: #f8fbff; color: var(--text); text-align: center;
+    }
+    .thankyou-section .section-label { color: var(--accent); }
+    .thankyou-title {
+      font-size: clamp(42px, 5.5vw, 72px); font-weight: 950;
+      line-height: 1.1; letter-spacing: -2.2px; margin-bottom: 28px;
+    }
+    .thankyou-divider {
+      width: 52px; height: 4px; border-radius: 2px; margin: 0 auto 38px;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+    .thankyou-content {
+      max-width: 720px; margin: 0 auto 16px;
+      font-size: clamp(17px, 1.8vw, 20px); font-weight: 600;
+      color: var(--text); line-height: 1.85;
+    }
+    .thankyou-content p { margin-bottom: 4px; }
+    .thankyou-mission {
+      max-width: 780px; margin: 0 auto 52px;
+      font-size: clamp(18px, 2vw, 23px); font-weight: 700;
+      color: var(--text); line-height: 1.75;
+    }
+    .thankyou-mission em { font-style: normal; color: var(--accent); }
+    .thankyou-subtitle {
+      font-size: 16px; font-weight: 700; color: var(--muted);
+      margin-bottom: 24px; letter-spacing: .5px;
+    }
+    .thankyou-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 34px; border-radius: 14px;
+      font-size: 16px; font-weight: 800;
+      background: #fff; color: var(--text);
+      border: 2px solid var(--accent);
+      box-shadow: 0 8px 28px rgba(53,229,155,.15);
+      transition: all .2s;
+    }
+    .thankyou-cta:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      color: #071225;
+      box-shadow: 0 12px 36px rgba(53,229,155,.25);
+    }
+    .thankyou-note {
+      margin-top: 18px; font-size: 14px; color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* -- FOOTER -------------------- */
+    .footer-main {
+      background: #0a1628; color: rgba(255,255,255,.65);
+      padding: 68px clamp(20px, 4vw, 56px) 32px;
+    }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 52px;
+    }
+    .footer-brand h3 {
+      font-size: 19px; font-weight: 900; color: #fff; margin-bottom: 14px;
+    }
+    .footer-brand p {
+      font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.58);
+      margin-bottom: 22px;
+    }
+    .footer-brand a {
+      display: inline-block; font-size: 14px; font-weight: 700;
+      color: var(--accent); transition: color .2s;
+    }
+    .footer-brand a:hover { color: var(--cyan); }
+    .footer-col h4 {
+      font-size: 13px; font-weight: 800; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col li a {
+      font-size: 14px; color: rgba(255,255,255,.65);
+      transition: color .2s;
+    }
+    .footer-col li a:hover { color: #fff; }
+    .footer-social { display: flex; gap: 10px; margin-top: 8px; }
+    .footer-social a {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 14px; color: rgba(255,255,255,.65);
+      transition: color .2s;
+    }
+    .footer-social a:hover { color: var(--accent); }
+    .footer-contact { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: rgba(255,255,255,.65);
+      transition: color .2s;
+    }
+    .footer-contact a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1180px; margin: 42px auto 0; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center; font-size: 13px; color: rgba(255,255,255,.4);
+    }
+    @media (max-width: 1020px) { .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+    @media (max-width: 1020px) {
+      .ap-header { grid-template-columns: 1fr; gap: 36px; }
+      .ap-steps { flex-wrap: wrap; padding: 32px 28px; }
+      .ap-step { min-width: calc(50% - 40px); padding: 16px 10px; }
+      .ap-arrow { display: none; }
+      .platform-grid   { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+      .mission-hero { grid-template-columns: 1fr; gap: 36px; }
+      .mission-cards { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 780px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      body[data-lang="zh"] .hero {
+        background:
+          linear-gradient(180deg, rgba(7,18,37,.95) 0%, rgba(7,18,37,.78) 50%, rgba(7,18,37,.38) 100%),
+          url("hero-thinking-cn.png") center top / cover no-repeat;
+      }
+      body[data-lang="en"] .hero {
+        background:
+          linear-gradient(180deg, rgba(7,18,37,.95) 0%, rgba(7,18,37,.78) 50%, rgba(7,18,37,.38) 100%),
+          url("hero-thinking-en.png") center top / cover no-repeat;
+      }
+      .hero-inner { max-width: 100%; margin: 0 20px; padding: 56px 0 120px; }
+      .section { padding: 72px 20px; }
+      .challenge-grid { grid-template-columns: 1fr; }
+      .ap-step { min-width: 100%; }
+      .why-grid       { grid-template-columns: 1fr; }
+      .rootgene-box   { padding: 36px 26px; }
+      .flow           { gap: 4px; }
+      .flow-step .f-zh { font-size: 18px; }
+    }
+    @media (max-width: 480px) {
+      .mission-cards { grid-template-columns: 1fr; }
+      .mission-banner  { padding: 30px 24px; }
+      .c-side          { padding: 28px 22px; }
+      .ap-banner       { padding: 30px 24px; }
+    }
+
+    /* ── BILINGUAL TOGGLE ─────────────────────── */
+    body[data-lang="zh"] .en { display: none; }
+    body[data-lang="en"] .zh { display: none; }
+    .lang-sw {
+      display: flex; align-items: center;
+      border: 1px solid rgba(255,255,255,.22); border-radius: 9px; overflow: hidden;
+      margin-left: 16px; flex-shrink: 0;
+    }
+    .lang-sw button {
+      background: none; border: none; cursor: pointer;
+      padding: 6px 12px; color: rgba(255,255,255,.55);
+      font-size: 13px; font-weight: 700; letter-spacing: .5px;
+      font-family: inherit; transition: all .2s;
+    }
+    .lang-sw button.active { background: rgba(255,255,255,.16); color: #fff; }
+    .lang-sw .sep { color: rgba(255,255,255,.20); font-size: 11px; pointer-events: none; }
+    @media (max-width: 780px) { .lang-sw { margin-left: 0; } }
+  </style>
+</head>
+<body data-lang="zh">
+
+<nav class="nav" id="main-nav">
+  <a class="brand" href="#home">
+    <img src="logo.png" alt="MindsEvo" />
+    <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#mission"><span class="zh">使命</span><span class="en">Mission</span></a>
+    <a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a>
+    <a href="#focus"><span class="zh">关注</span><span class="en">Focus</span></a>
+    <a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a>
+    <a href="#applications"><span class="zh">应用</span><span class="en">Applications</span></a>
+    <a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a>
+    <a class="nav-cta" href="#thankyou"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
+  </div>
+  <div class="lang-sw" id="lang-sw">
+    <button id="btn-zh" onclick="setLang('zh')" class="active">中文</button>
+    <span class="sep">|</span>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#mission" onclick="closeMenu()"><span class="zh">使命</span><span class="en">Mission</span></a>
+  <a href="#approach" onclick="closeMenu()"><span class="zh">方法</span><span class="en">Approach</span></a>
+  <a href="#focus"    onclick="closeMenu()"><span class="zh">关注</span><span class="en">Focus</span></a>
+  <a href="#platform" onclick="closeMenu()"><span class="zh">平台</span><span class="en">Platform</span></a>
+  <a href="#applications" onclick="closeMenu()"><span class="zh">应用</span><span class="en">Applications</span></a>
+  <a href="#journey"      onclick="closeMenu()"><span class="zh">旅程</span><span class="en">Journey</span></a>
+  <a href="#thankyou"     onclick="closeMenu()"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
+</div>
+
+<header class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="zh">AI 时代</span>
+      <span class="en">The Age of AI</span>
+    </div>
+    <div class="hero-question">
+      <span class="zh">AI 让知识唾手可得。</span>
+      <span class="en">In the Age of AI,</span>
+    </div>
+    <h1>
+      <span class="zh">那么，什么才是<br>真正的<em>思考</em>？</span>
+      <span class="en">What Does It<br>Mean to <em>Think</em>?</span>
+    </h1>
+    <p class="hero-desc">
+      <span class="zh">
+        知识正在变得唾手可得。<br>
+        真正值得培养的是理解、判断、创造、反思，<br>
+        以及持续学习和自我进化的能力。
+      </span>
+      <span class="en">
+        AI makes knowledge instantly accessible.<br>
+        What truly matters is the ability to understand, judge,<br>
+        create, reflect, and continuously evolve.
+      </span>
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#mission">
+        <span class="zh">探索我们的使命 →</span>
+        <span class="en">Explore Our Mission →</span>
+      </a>
+      <a class="btn-outline" href="#platform">
+        <span class="zh">了解平台</span>
+        <span class="en">Learn More</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="section mission-section" id="mission">
+  <div class="section-inner">
+    <div class="section-label"><span class="zh">我们的使命</span><span class="en">Our Mission</span></div>
+
+    <div class="mission-hero">
+      <div class="mission-left">
+        <h2 class="mission-h2">
+          <span class="zh">面对 AI 时代，<br>我们持续探索<br>更有效的<span class="hi">思维启发</span><br>与成长方式。</span>
+          <span class="en">In the Age of AI,<br>we explore more effective ways<br>of <span class="hi">inspiring thinking</span><br>and fostering growth.</span>
+        </h2>
+        <p class="mission-lead">
+          <span class="zh">AI 正在重新定义知识获取。<br><br>我们关注的，<br>是人类如何持续思考、<br>持续成长、<br>持续创造价值。</span>
+          <span class="en">AI is redefining how knowledge is accessed.<br><br>We focus on how humans can<br>keep thinking,<br>keep growing,<br>keep creating value.</span>
+        </p>
+        <div class="mission-divider"></div>
+      </div>
+      <div class="mission-right">
+        <div class="mission-quote-block">
+          <span class="mq-mark">&ldquo;</span>
+          <div class="mq-lines">
+            <p><span class="zh">内容会不断改变。</span><span class="en">Content will keep changing.</span></p>
+            <p><span class="zh">工具会不断进步。</span><span class="en">Tools will keep advancing.</span></p>
+            <p><span class="zh">技术会不断迭代。</span><span class="en">Technology will keep evolving.</span></p>
+            <p class="mq-highlight">
+              <span class="zh">唯有人的<span>思维能力</span>，<br>始终决定未来。</span>
+              <span class="en">Only human <span>thinking ability</span><br>will always shape the future.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-cards">
+      <div class="m-card">
+        <div class="m-icon">&#128269;</div>
+        <h4><span class="zh">探索</span><span class="en">Explore</span></h4>
+        <p><span class="zh">不断提出值得思考的问题。</span><span class="en">Keep asking questions worth thinking about.</span></p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">&#129504;</div>
+        <h4><span class="zh">思考</span><span class="en">Think</span></h4>
+        <p><span class="zh">理解、判断、创造、反思。</span><span class="en">Understand, judge, create, reflect.</span></p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">&#9881;&#65039;</div>
+        <h4><span class="zh">实践</span><span class="en">Practice</span></h4>
+        <p><span class="zh">在真实反馈中持续成长。</span><span class="en">Grow continuously through real feedback.</span></p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">&#127807;</div>
+        <h4><span class="zh">进化</span><span class="en">Evolve</span></h4>
+        <p><span class="zh">让思维伴随一生不断发展。</span><span class="en">Let thinking develop throughout a lifetime.</span></p>
+      </div>
+    </div>
+
+    <div class="mission-banner">
+      <h3>
+        <span class="zh">真正改变未来的，<br>不是拥有更多知识，而是拥有<span>更好的思维</span>。</span>
+        <span class="en">What truly changes the future<br>is not more knowledge, but <span>better thinking</span>.</span>
+      </h3>
+      <p>
+        <span class="zh">真正改变未来的，不是拥有更多知识，而是拥有更好的思维。</span>
+        <span class="en">The future belongs not to those who know more, but to those who think better.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section approach-section" id="approach">
+  <div class="section-inner">
+    <div class="section-label"><span class="zh">我们的方法</span><span class="en">Our Approach</span></div>
+
+    <div class="ap-header">
+      <div>
+        <h2 class="ap-title">
+          <span class="zh">我们如何探索？</span>
+          <span class="en">How Do We Explore?</span>
+        </h2>
+        <div class="ap-divider"></div>
+      </div>
+      <div>
+        <p class="ap-subtitle">
+          <span class="zh">从优秀实践中提炼思维模式，<br>通过科学的方法，让思维不断成长。</span>
+          <span class="en">Distilling thinking patterns from great practices,<br>enabling minds to grow through a scientific approach.</span>
+        </p>
+        <p class="ap-desc">
+          <span class="zh">人类在漫长的历史中积累了大量解决问题的智慧与实践。我们相信，这些实践中蕴含着可提炼、可训练、可迁移的思维模式。思进启智（MindsEvo）通过持续的探索与验证，帮助更多人掌握面向未来的思维能力。</span>
+          <span class="en">Humanity has accumulated vast wisdom and practices throughout history. We believe these practices contain thinking patterns that can be distilled, trained, and transferred. MindsEvo helps more people master the thinking abilities needed for the future through continuous exploration and validation.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="ap-steps">
+      <div class="ap-step">
+        <div class="ap-step-icon">&#128269;</div>
+        <h4><span class="zh">发现</span><span class="en">Discover</span></h4>
+        <p><span class="zh">从多领域、多文化的优秀实践中，发现具有启发意义的思维方式与问题解决模式。</span><span class="en">From diverse fields and cultures, uncover thinking patterns and problem-solving models worth learning.</span></p>
+      </div>
+      <div class="ap-arrow">&rarr;</div>
+      <div class="ap-step">
+        <div class="ap-step-icon">&#128203;</div>
+        <h4><span class="zh">提炼</span><span class="en">Distill</span></h4>
+        <p><span class="zh">将实践中的思维精华进行抽象、归纳，提炼出可理解、可迁移的核心思维模式。</span><span class="en">Abstract and organize the thinking essence from practice into transferable core thinking patterns.</span></p>
+      </div>
+      <div class="ap-arrow">&rarr;</div>
+      <div class="ap-step">
+        <div class="ap-step-icon">&#9881;&#65039;</div>
+        <h4><span class="zh">训练</span><span class="en">Train</span></h4>
+        <p><span class="zh">通过互动体验与刻意练习，在真实情境中应用并强化思维模式。</span><span class="en">Through interactive experience and deliberate practice, apply and reinforce thinking patterns in real contexts.</span></p>
+      </div>
+      <div class="ap-arrow">&rarr;</div>
+      <div class="ap-step">
+        <div class="ap-step-icon">&#127807;</div>
+        <h4><span class="zh">进化</span><span class="en">Evolve</span></h4>
+        <p><span class="zh">基于反馈与数据，持续优化与迭代，让思维能力伴随终身成长。</span><span class="en">Based on feedback and data, continuously optimize and iterate — letting thinking grow throughout a lifetime.</span></p>
+      </div>
+    </div>
+
+    <div class="ap-banner">
+      <h3>
+        <span class="zh">我们不追求标准答案，<br>我们追求<span>更好的思考方式</span>，以及更<span>持续的成长</span>。</span>
+        <span class="en">We don't pursue standard answers.<br>We pursue <span>better ways of thinking</span>, and more <span>sustained growth</span>.</span>
+      </h3>
+    </div>
+  </div>
+</section>
+
+<section class="section focus-section" id="focus">
+  <div class="section-inner">
+    <div class="section-label"><span class="zh">我们的关注</span><span class="en">Our Focus</span></div>
+    <h2 class="section-title">
+      <span class="zh">面向未来的重要思维能力</span>
+      <span class="en">Core Thinking Abilities for the Future</span>
+    </h2>
+    <p class="focus-intro">
+      <span class="zh">我们关注的，是能够帮助人在复杂多变的世界中，持续成长、持续创造价値的关键思维能力。这些能力，彼此关联，共同构成面向未来的思维基础。</span>
+      <span class="en">We focus on the key thinking abilities that help people thrive and create value in a complex, changing world. These abilities are interconnected and together form the thinking foundation for the future.</span>
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#e8f0fe;">&#129504;</div>
+        <div>
+          <h4><span class="zh">理解</span><span class="en">Understanding</span></h4>
+          <p><span class="zh">把握事物的本质与关系，建立清晰、准确的认知。</span><span class="en">Grasp the essence and relationships of things; build clear, accurate cognition.</span></p>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#fef9c3;">&#9878;&#65039;</div>
+        <div>
+          <h4><span class="zh">判断</span><span class="en">Judgment</span></h4>
+          <p><span class="zh">在信息与情境中做出合理评估，选择更优的方向与行动。</span><span class="en">Make rational assessments from information and context; choose better directions and actions.</span></p>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#f0fdf4;">&#128279;</div>
+        <div>
+          <h4><span class="zh">推理</span><span class="en">Reasoning</span></h4>
+          <p><span class="zh">从已知出发，发现规律，推导结论，解决问题。</span><span class="en">Start from what’s known, discover patterns, draw conclusions, solve problems.</span></p>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#fdf4ff;">&#128161;</div>
+        <div>
+          <h4><span class="zh">创造</span><span class="en">Creativity</span></h4>
+          <p><span class="zh">突破已有框架，产生新的想法，构建新的可能性。</span><span class="en">Break through existing frameworks, generate new ideas, build new possibilities.</span></p>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#fff7ed;">&#129710;</div>
+        <div>
+          <h4><span class="zh">反思</span><span class="en">Reflection</span></h4>
+          <p><span class="zh">审视自己的思维过程与行为，发现改进空间，实现自我提升。</span><span class="en">Examine your thinking process and behaviors; find room for improvement and self-growth.</span></p>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon" style="background:#f0fdfa;">&#9854;&#65039;</div>
+        <div>
+          <h4><span class="zh">持续学习</span><span class="en">Lifelong Learning</span></h4>
+          <p><span class="zh">保持好奇心与开放心态，在变化中不断更新与成长。</span><span class="en">Stay curious and open-minded; continuously update and grow amid change.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="focus-quote">
+      <p>
+        <span class="zh">思维能力，不是一蹴而就的结果，<br>而是在真实情境中，通过长期的<span>启发、训练与实践</span>，逐步内化而成的品质。</span>
+        <span class="en">Thinking ability is not achieved overnight.<br>It is gradually internalized through long-term <span>inspiration, training, and practice</span> in real contexts.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section platform-section" id="platform">
+  <div class="section-inner">
+    <div class="section-label"><span class="zh">我们的平台</span><span class="en">Our Platform</span></div>
+    <h2 class="section-title">
+      <span class="zh">一个开放的思维发展平台</span>
+      <span class="en">An Open Platform for Thinking Development</span>
+    </h2>
+    <p class="section-sub">
+      <span class="zh">思进启智（MindsEvo）平台将方法、内容与工具融为一体，<br>为个人学习、家庭教育与学校教学提供完整支持。<br>我们致力于打造一个开放、智能、可持续进化的思维发展生态。</span>
+      <span class="en">MindsEvo integrates methods, content, and tools into one—<br>providing complete support for individual learning, family education, and schools.<br>We are building an open, intelligent, and continuously evolving thinking ecosystem.</span>
+    </p>
+
+    <div class="plat-grid">
+      <div class="plat-card">
+        <h4><span class="zh">个性化学习体系</span><span class="en">Personalized Learning</span></h4>
+        <p><span class="zh">根据学习者的特点与进度，提供个性化的学习路径与内容推荐，让每个人都能在适合自己的节奏中成长。</span><span class="en">Tailored learning paths and content recommendations based on each learner's strengths and pace.</span></p>
+      </div>
+      <div class="plat-card">
+        <h4><span class="zh">结构化内容与课程</span><span class="en">Structured Content</span></h4>
+        <p><span class="zh">基于思维发展目标，提供系统化、分层级的课程与练习，帮助学习者稳步提升思维能力。</span><span class="en">Systematic, leveled curricula and exercises designed around thinking development goals.</span></p>
+      </div>
+      <div class="plat-card">
+        <h4><span class="zh">智能工具与反馈</span><span class="en">AI Tools &amp; Feedback</span></h4>
+        <p><span class="zh">借助 AI 与数据分析，提供即时反馈、学习洞察与成长报告，让学习更高效、更可见。</span><span class="en">AI-powered instant feedback, learning insights, and growth reports to make progress visible.</span></p>
+      </div>
+      <div class="plat-card">
+        <h4><span class="zh">多场景支持</span><span class="en">Multi-scenario Support</span></h4>
+        <p><span class="zh">支持个人学习、家庭陪伴与学校教学，满足不同场景下的思维发展需求。</span><span class="en">Supports individual learners, family co-learning, and classroom teaching across diverse contexts.</span></p>
+      </div>
+    </div>
+
+    <div class="plat-bottom">
+      <div class="plat-eco">
+        <h4><span class="zh">持续进化的生态</span><span class="en">A Continuously Evolving Ecosystem</span></h4>
+        <p><span class="zh">思进启智（MindsEvo）平台将持续迭代与扩展，连接教育者、学习者与研究者，共同推动思维发展的实践与创新。</span><span class="en">MindsEvo will keep iterating and expanding—connecting educators, learners, and researchers to advance the practice and innovation of thinking development.</span></p>
+      </div>
+      <div class="plat-slogan">
+        <p>
+          <span class="zh">更好的工具，更好的内容，<br>更重要的是，更好的思维成长体验。</span>
+          <span class="en">Better tools. Better content.<br>Most importantly, a better experience for thinking growth.</span>
+        </p>
+        <div class="plat-cta">
+          <span class="zh">这，就是我们正在构建的平台。</span>
+          <span class="en">This is the platform we are building.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section apps-section" id="applications">
+  <div class="section-inner">
+    <div class="section-label">
+      <span class="zh">应用领域</span>
+      <span class="en">Our Applications</span>
+    </div>
+    <h2 class="section-title">
+      <span class="zh">不同领域，同一个目标</span>
+      <span class="en">Different Fields, One Goal</span>
+    </h2>
+    <div class="apps-divider-main"></div>
+    <p class="apps-lead">
+      <span class="zh">思进启智（MindsEvo）将思维发展的理念，应用于多种领域与场景。<br>不同的内容，不同的工具，指向同一个目标：启发思维，促进成长。</span>
+      <span class="en">MindsEvo applies the philosophy of thinking development across diverse fields and contexts.<br>Different content, different tools — all pointing to one goal: inspire thinking, promote growth.</span>
+    </p>
+
+    <div class="apps-grid">
+
+      <!-- Chess Series -->
+      <div class="app-card">
+        <div class="app-series-name" style="color:#16b7e8;">
+          <span class="zh">棋类系列</span><span class="en">Chess Series</span>
+        </div>
+        <div class="app-divider" style="background:#16b7e8;"></div>
+        <p>
+          <span class="zh">从国际象棋、中国象棋到围棋，<br>融汇数千年智慧的经典实践，<br>帮助学习者在对弈与思考中成长。</span>
+          <span class="en">From Chess to Xiangqi to Go — classic practices distilling millennia of wisdom, helping learners grow through play and thought.</span>
+        </p>
+        <ul class="app-list">
+          <li><span class="dot" style="background:#16b7e8;"></span><span class="zh">国际象棋</span><span class="en">Chess</span></li>
+          <li><span class="dot" style="background:#16b7e8;"></span><span class="zh">中国象棋</span><span class="en">Xiangqi</span></li>
+          <li><span class="dot" style="background:#16b7e8;"></span><span class="zh">围棋</span><span class="en">Go</span></li>
+          <li><span class="dot" style="background:rgba(22,183,232,.35);"></span><span class="app-muted"><span class="zh">更多棋类探索中</span><span class="en">More coming...</span></span></li>
+        </ul>
+      </div>
+
+      <!-- Learning Series -->
+      <div class="app-card">
+        <div class="app-series-name" style="color:#2563eb;">
+          <span class="zh">学习系列</span><span class="en">Learning Series</span>
+        </div>
+        <div class="app-divider" style="background:#2563eb;"></div>
+        <p>
+          <span class="zh">从数学、逻辑到科学与人文，<br>将知识学习与思维训练相结合，<br>让学习过程更有深度与意义。</span>
+          <span class="en">From math and logic to science and humanities — integrating knowledge with thinking training, bringing depth and meaning to learning.</span>
+        </p>
+        <ul class="app-list">
+          <li><span class="dot" style="background:#2563eb;"></span><span class="zh">数学启智</span><span class="en">Math Thinking</span></li>
+          <li><span class="dot" style="background:#2563eb;"></span><span class="zh">逻辑思维</span><span class="en">Logical Reasoning</span></li>
+          <li><span class="dot" style="background:#2563eb;"></span><span class="zh">科学探索</span><span class="en">Science Exploration</span></li>
+          <li><span class="dot" style="background:rgba(37,99,235,.3);"></span><span class="app-muted"><span class="zh">更多学科拓展中</span><span class="en">More coming...</span></span></li>
+        </ul>
+      </div>
+
+      <!-- Little Genius Series -->
+      <div class="app-card">
+        <div class="app-series-name" style="color:#7c3aed;">
+          <span class="zh">小精灵系列</span><span class="en">Little Genius Series</span>
+        </div>
+        <div class="app-divider" style="background:#7c3aed;"></div>
+        <p>
+          <span class="zh">从受欢迎的经典游戏中提炼思维价值，<br>通过互动体验，激发兴趣，<br>培养解决问题的能力与创造力。</span>
+          <span class="en">Distilling thinking value from beloved classic games — sparking curiosity through interactive experience and cultivating creativity.</span>
+        </p>
+        <ul class="app-list">
+          <li><span class="dot" style="background:#7c3aed;"></span><span class="zh">益智游戏</span><span class="en">Brain Games</span></li>
+          <li><span class="dot" style="background:#7c3aed;"></span><span class="zh">策略挑战</span><span class="en">Strategy Challenges</span></li>
+          <li>
+            <span class="dot" style="background:#7c3aed;"></span>
+            <span class="zh">思维训练小精灵<span class="app-live-badge">LIVE</span></span>
+            <span class="en">Thinking Sprites<span class="app-live-badge">LIVE</span></span>
+          </li>
+          <li><span class="dot" style="background:rgba(124,58,237,.3);"></span><span class="app-muted"><span class="zh">更多趣味探索中</span><span class="en">More coming...</span></span></li>
+        </ul>
+        <a class="app-launch-btn" href="games/pattern-hunter/index.html">
+          <span>🎯</span>
+          <span class="zh">进入 Pattern Hunter →</span>
+          <span class="en">Play Pattern Hunter →</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="apps-quote">
+      <p>
+        <span class="zh">工具可以不同，内容可以不同，实践可以不同，<br>唯一不变的是——对人类思维发展的<em>持续探索</em>。</span>
+        <span class="en">Tools may differ, content may differ, practice may differ —<br>what never changes is our <em>relentless exploration</em> of human thinking development.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section journey-section" id="journey">
+  <div class="section-inner">
+    <div class="section-label">
+      <span class="zh">旅程继续</span>
+      <span class="en">The Journey Continues</span>
+    </div>
+    <h2 class="journey-title">
+      <span class="zh">探索不会结束</span>
+      <span class="en">The Exploration Never Ends</span>
+    </h2>
+    <div class="journey-divider"></div>
+    
+    <div class="journey-content">
+      <p><span class="zh">我们不会停止寻找更好的思维训练方式。</span><span class="en">We will never stop seeking better ways to train thinking.</span></p>
+      <p><span class="zh">不会停止探索新的学习实践。</span><span class="en">We will never stop exploring new learning practices.</span></p>
+      <p><span class="zh">不会停止思考：</span><span class="en">We will never stop asking:</span></p>
+      <p class="journey-highlight">
+        <span class="zh">如何帮助更多人在 AI 时代成长。</span>
+        <span class="en">How can we help more people grow in the Age of AI.</span>
+      </p>
+    </div>
+
+    <div class="journey-separator"></div>
+
+    <div class="journey-vision">
+      <p>
+        <span class="zh">未来不是已经写好的，</span>
+        <span class="en">The future is not predetermined.</span><br>
+        <span class="zh">它由每一个<em>持续思考</em>的人共同创造。</span>
+        <span class="en">It is co-created by every person who <em>keeps thinking</em>.</span>
+      </p>
+    </div>
+
+    <a class="journey-cta" href="#thankyou">
+      <span class="zh">加入旅程</span>
+      <span class="en">Join the Journey</span>
+    </a>
+    <div class="journey-tagline">
+      <span class="zh">一起探索，共同成长</span>
+      <span class="en">Explore Together, Grow Together</span>
+    </div>
+  </div>
+</section>
+
+<section class="section thankyou-section" id="thankyou">
+  <div class="section-inner">
+    <div class="section-label">
+      <span class="zh">感谢</span>
+      <span class="en">Thank You</span>
+    </div>
+    <h2 class="thankyou-title">
+      <span class="zh">感谢您的关注</span>
+      <span class="en">Thank You for Your Attention</span>
+    </h2>
+    <div class="thankyou-divider"></div>
+    
+    <div class="thankyou-content">
+      <p><span class="zh">思考，让我们成为人类；</span><span class="en">Thinking makes us human.</span></p>
+      <p><span class="zh">探索，让我们不断进步。</span><span class="en">Exploration drives us forward.</span></p>
+    </div>
+
+    <div class="thankyou-mission">
+      <p>
+        <span class="zh">思进启智（MindsEvo）愿与您一起，在 AI 时代<br><em>探索思维的无限可能</em>，创造更美好的未来。</span>
+        <span class="en">MindsEvo is with you, in the Age of AI,<br>to <em>explore the infinite possibilities of thinking</em> and create a better future.</span>
+      </p>
+    </div>
+
+    <div class="thankyou-subtitle">
+      <span class="zh">保持连接，持续探索</span>
+      <span class="en">Stay Connected, Keep Exploring</span>
+    </div>
+
+    <a class="thankyou-cta" href="mailto:info@mindsevo.com?subject=Subscribe">
+      <span>📧</span>
+      <span class="zh">订阅我们的更新 →</span>
+      <span class="en">Subscribe to Our Updates →</span>
+    </a>
+    <div class="thankyou-note">
+      <span class="zh">获取最新动态、研究成果和产品更新</span>
+      <span class="en">Get the latest news, research insights, and product updates</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3><span class="zh">思进启智 MindsEvo</span><span class="en">MindsEvo</span></h3>
+      <p>
+        <span class="zh">思进启智（MindsEvo）致力于先进的方法、<br>智能工具和优质内容，帮助更多人<br>在 AI 时代提升思维能力，实现成长。</span>
+        <span class="en">MindsEvo is committed to advanced methods,<br>intelligent tools, and quality content to help more people<br>enhance thinking ability and achieve growth in the Age of AI.</span>
+      </p>
+      <a href="#mission">
+        <span class="zh">了解更多 →</span>
+        <span class="en">Learn More →</span>
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4>
+        <span class="zh">快速链接</span>
+        <span class="en">Quick Links</span>
+      </h4>
+      <ul>
+        <li><a href="#mission"><span class="zh">使命</span><span class="en">Mission</span></a></li>
+        <li><a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a></li>
+        <li><a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a></li>
+        <li><a href="#applications"><span class="zh">应用</span><span class="en">Applications</span></a></li>
+        <li><a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>
+        <span class="zh">关注我们</span>
+        <span class="en">Follow Us</span>
+      </h4>
+      <div class="footer-social">
+        <a href="#youtube"><span>▶</span> YouTube</a>
+      </div>
+      <div class="footer-social">
+        <a href="#bilibili"><span>📺</span> <span class="zh">B站</span><span class="en">Bilibili</span></a>
+      </div>
+      <div class="footer-social">
+        <a href="#linkedin"><span>in</span> LinkedIn</a>
+      </div>
+      <div class="footer-social">
+        <a href="#email"><span>✉</span> Email</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>
+        <span class="zh">联系我们</span>
+        <span class="en">Contact Us</span>
+      </h4>
+      <div class="footer-contact">
+        <a href="mailto:hello@mindsevo.com">
+          <span>📧</span> hello@mindsevo.com
+        </a>
+        <a href="https://www.mindsevo.com">
+          <span>🌐</span> www.mindsevo.com
+        </a>
+        <a href="#location">
+          <span>📍</span> Canada
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2026 <span class="zh">思进启智</span><span class="en">MindsEvo</span> · <span class="zh">人类思维的进化</span><span class="en">Evolution of Human Thinking</span> · <span class="zh">版权所有</span><span class="en">All Rights Reserved</span>.
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    var m = document.getElementById('mobile-menu');
+    var h = document.getElementById('hamburger');
+    if (m.classList.contains('open') && !m.contains(e.target) && !h.contains(e.target)) {
+      m.classList.remove('open');
+    }
+  });
+  function setLang(lang) {
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  var ids = ['home','mission','approach','focus','platform','applications','journey','thankyou'];
+  var links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var cur = 'home';
+    ids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 110) cur = id;
+    });
+    links.forEach(function(a) {
+      var active = a.getAttribute('href') === '#' + cur;
+      a.style.color = active ? '#fff' : '';
+      a.style.borderBottom = active ? '2px solid rgba(255,255,255,.65)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
