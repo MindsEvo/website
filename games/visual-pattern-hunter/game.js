@@ -153,6 +153,12 @@
       }
       list.appendChild(card);
     });
+
+    // Re-render if summary sections already open (e.g. after lang switch)
+    var sbS = document.getElementById('summaryBodySession');
+    var sbH = document.getElementById('summaryBodyHistory');
+    if (sbS && sbS.classList.contains('open')) renderSessionSummary();
+    if (sbH && sbH.classList.contains('open')) renderHistorySummary();
   }
 
   // ────────────────────────────────────────────────────────────
@@ -183,9 +189,17 @@
     document.getElementById('unitTitle').textContent = shell.t(unit.nameKey);
     updateLangBtnGame();
 
+    // Update bilingual progress indicators
     document.getElementById('currentQ').textContent = state.qIndex + 1;
     document.getElementById('totalQ').textContent   = total;
     document.getElementById('liveScore').textContent = state.score;
+    
+    var currentQEn = document.getElementById('currentQEn');
+    var totalQEn = document.getElementById('totalQEn');
+    var liveScoreEn = document.getElementById('liveScoreEn');
+    if (currentQEn) currentQEn.textContent = state.qIndex + 1;
+    if (totalQEn) totalQEn.textContent = total;
+    if (liveScoreEn) liveScoreEn.textContent = state.score;
 
     // Progress dots
     renderProgressDots();
@@ -284,6 +298,8 @@
       if (!state.wrongOnFirst && !state.hintShown) {
         state.score++;
         document.getElementById('liveScore').textContent = state.score;
+        var liveScoreEn = document.getElementById('liveScoreEn');
+        if (liveScoreEn) liveScoreEn.textContent = state.score;
       }
 
       // Next button
@@ -458,13 +474,163 @@
     startUnit(state.unitIndex + 1);
   };
 
-  window.vphToggleVoice = function () {
-    shell.toggleVoice();
-    updateVoiceBtn();
+  window.vphBack = function () {
+    show($homeScreen);
+    hide($gameScreen);
+    hide($resultScreen);
+    renderHome();
   };
 
-  window.vphToggleLang = function () {
-    shell.toggleLang();
+  window.vphReplayQuestion = function () {
+    var promptText = shell.t('vph.voice.q', [state.qIndex + 1]);
+    shell.speak(promptText);
+  };
+
+  // ────────────────────────────────────────────────────────────
+  // PRACTICE SUMMARY
+  // ────────────────────────────────────────────────────────────
+
+  // 本次练习：内存数据，显示每个关卡本次结果
+  function renderSessionSummary() {
+    var body = document.getElementById('summaryBodySession');
+    if (!body) return;
+    var isZh = shell.lang === 'zh';
+    var hasAny = Object.keys(sessionStats).length > 0;
+
+    if (!hasAny) {
+      body.innerHTML = '<div class="summary-empty">' +
+        (isZh ? '本次尚未完成任何练习，完成一局就能看到统计' : 'No practice completed this session') +
+        '</div>';
+      return;
+    }
+
+    var th = isZh
+      ? ['<th>关卡</th>','<th>答对</th>','<th>答错</th>','<th>提示</th>','<th>用时</th>']
+      : ['<th>Unit</th>','<th>Correct</th>','<th>Wrong</th>','<th>Hints</th>','<th>Time</th>'];
+    var html = '<table class="summary-table"><thead><tr>' + th.join('') + '</tr></thead><tbody>';
+
+    VPH_DATA.units.forEach(function (unit) {
+      var d = sessionStats[unit.id];
+      if (d) {
+        html += '<tr>' +
+          '<td class="s-name">' + unit.icon + ' ' + shell.t(unit.nameKey) + '</td>' +
+          '<td class="s-correct">' + d.score + '</td>' +
+          '<td class="s-wrong">'   + d.wrong + '</td>' +
+          '<td>'                  + d.hints + '</td>' +
+          '<td>'                  + fmtTime(d.timeMs) + '</td>' +
+          '</tr>';
+      } else {
+        html += '<tr class="s-idle">' +
+          '<td class="s-name">' + unit.icon + ' ' + shell.t(unit.nameKey) + '</td>' +
+          '<td colspan="4" class="s-dash">—</td>' +
+          '</tr>';
+      }
+    });
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  }
+
+  // 历史总览：localStorage 全部记录
+  function renderHistorySummary() {
+    var body = document.getElementById('summaryBodyHistory');
+    if (!body) return;
+    var isZh = shell.lang === 'zh';
+    var data = calcHistory();
+
+    if (data.sessions === 0) {
+      body.innerHTML = '<div class="summary-empty">' +
+        (isZh ? '还没有历史记录，完成练习后自动保存' : 'No history yet. Records save automatically after each session.') +
+        '</div>';
+      return;
+    }
+
+    var html = '<div class="summary-stats">' +
+      statBox(data.sessions,          isZh ? '完成局数' : 'Sessions') +
+      statBox(data.correct,           isZh ? '总答对'   : 'Correct') +
+      statBox(data.wrong,             isZh ? '总答错'   : 'Wrong') +
+      statBox(data.hints,             isZh ? '用提示'   : 'Hints') +
+      statBox(fmtTime(data.totalMs),  isZh ? '总用时'   : 'Total Time') +
+    '</div>';
+
+    html += '<div class="summary-clear">' +
+      '<button class="btn-clear" onclick="vphClearHistory()">' +
+      (isZh ? '🗑 清除历史记录' : '🗑 Clear History') +
+      '</button></div>';
+
+    body.innerHTML = html;
+  }
+
+  function calcHistory() {
+    var prefix = 'me:' + GAME_ID + ':history:';
+    var sessions = 0, correct = 0, wrong = 0, hints = 0, totalMs = 0;
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key && key.indexOf(prefix) === 0) {
+        try {
+          var r = JSON.parse(localStorage.getItem(key));
+          if (r && r.total) {
+            sessions++;
+            correct  += (r.score     || 0);
+            wrong    += (r.total - (r.score || 0));
+            hints    += (r.hintsUsed || 0);
+            totalMs  += (r.timeMs    || 0);
+          }
+        } catch (e) {}
+      }
+    }
+    return { sessions: sessions, correct: correct, wrong: wrong, hints: hints, totalMs: totalMs };
+  }
+
+  function fmtTime(ms) {
+    var s = Math.floor(ms / 1000);
+    var m = Math.floor(s / 60);
+    var h = Math.floor(m / 60);
+    var zh = shell.lang === 'zh';
+    if (h > 0) return h + (zh ? '小时' : 'h ') + (m % 60) + (zh ? '分' : 'm');
+    if (m > 0) return m + (zh ? '分' : 'm ') + (s % 60) + (zh ? '秒' : 's');
+    return s + (zh ? '秒' : 's');
+  }
+
+  function statBox(val, label) {
+    return '<div class="summary-stat">' +
+      '<div class="summary-stat-value">' + val + '</div>' +
+      '<div class="summary-stat-label">' + label + '</div>' +
+    '</div>';
+  }
+
+  window.vphToggleSummary = function (which) {
+    var bodyId  = which === 'session' ? 'summaryBodySession' : 'summaryBodyHistory';
+    var arrowId = which === 'session' ? 'summaryArrowSession' : 'summaryArrowHistory';
+    var body  = document.getElementById(bodyId);
+    var arrow = document.getElementById(arrowId);
+    if (!body) return;
+    var open = body.classList.toggle('open');
+    if (arrow) arrow.textContent = open ? '▲' : '▼';
+    if (open) {
+      if (which === 'session') renderSessionSummary();
+      else                     renderHistorySummary();
+    }
+  };
+
+  window.vphClearHistory = function () {
+    var isZh = shell.lang === 'zh';
+    var msg = isZh ? '确认清除所有历史记录？此操作不可恢复。' : 'Clear all history? This cannot be undone.';
+    if (!confirm(msg)) return;
+    var prefix = 'me:' + GAME_ID + ':history:';
+    var toRemove = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key && key.indexOf(prefix) === 0) toRemove.push(key);
+    }
+    toRemove.forEach(function (k) { localStorage.removeItem(k); });
+    // Reset unit saves
+    VPH_DATA.units.forEach(function (unit) {
+      shell.storage.remove(GAME_ID + ':unit:' + unit.id);
+    });
+    renderHome();
+    // Re-open history panel to show empty state
+    var sbH = document.getElementById('summaryBodyHistory');
+    if (sbH && sbH.classList.contains('open')) renderHistorySummary();
   };
 
   // ────────────────────────────────────────────────────────────
@@ -490,10 +656,15 @@
     shell.storage.set(key, data);
   }
 
+  // ────────────────────────────────────────────────────────────
+  // VOICE / LANG BUTTONS
+  // ────────────────────────────────────────────────────────────
   function updateVoiceBtn() {
-    var btns = document.querySelectorAll('.voiceToggle');
-    var icon = shell.voiceEnabled ? '🔊' : '🔇';
-    btns.forEach(function (b) { b.textContent = icon; });
+    var enabled = shell.storage.get('user:settings:voice', true);
+    document.querySelectorAll('.voiceToggle').forEach(function (b) {
+      b.textContent = enabled ? '🔊' : '🔇';
+      b.classList.toggle('active', enabled);
+    });
   }
 
   function updateLangBtn() {
@@ -505,5 +676,21 @@
     var btn = document.getElementById('langToggleGame');
     if (btn) btn.textContent = shell.lang === 'zh' ? 'EN' : '中';
   }
+
+  // ────────────────────────────────────────────────────────────
+  // GLOBAL BUTTON HANDLERS (called from HTML onclick)
+  // ────────────────────────────────────────────────────────────
+  window.vphToggleVoice = function () {
+    var cur = shell.storage.get('user:settings:voice', true);
+    shell.storage.set('user:settings:voice', !cur);
+    if (cur) speechSynthesis.cancel();
+    updateVoiceBtn();
+  };
+
+  window.vphToggleLang = function () {
+    shell.setLang(shell.lang === 'zh' ? 'en' : 'zh');
+    updateLangBtn();
+    updateLangBtnGame();
+  };
 
 })();
