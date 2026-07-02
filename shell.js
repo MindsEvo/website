@@ -93,6 +93,17 @@
       .trim();
   }
 
+  // Pre-load voices (required on Android Chrome)
+  function _loadVoices() {
+    if (!window.speechSynthesis) return;
+    if (!speechSynthesis.getVoices().length) {
+      speechSynthesis.addEventListener('voiceschanged', function () {
+        speechSynthesis.getVoices();
+      });
+    }
+  }
+  _loadVoices();
+
   function speak(text, lang) {
     // Always show full text (with emoji) in transcript
     showVoiceTranscript(text);
@@ -101,11 +112,27 @@
     if (!storage.get('user:settings:voice', true)) return;
 
     speechSynthesis.cancel();
+
+    var targetLang = ((lang || shell.lang) === 'zh') ? 'zh-CN' : 'en-US';
     var u = new SpeechSynthesisUtterance(stripEmoji(text));
-    u.lang  = ((lang || shell.lang) === 'zh') ? 'zh-CN' : 'en-US';
+    u.lang  = targetLang;
     u.rate  = 0.88;
     u.pitch = 1.05;
-    speechSynthesis.speak(u);
+
+    // Android: pick a matching voice if available
+    var voices = speechSynthesis.getVoices();
+    if (voices.length) {
+      var langPrefix = targetLang.split('-')[0];
+      var match = voices.find(function (v) {
+        return v.lang === targetLang || v.lang.indexOf(langPrefix) === 0;
+      });
+      if (match) u.voice = match;
+    }
+
+    // Small delay fixes Android Chrome first-utterance block
+    setTimeout(function () {
+      try { speechSynthesis.speak(u); } catch (e) {}
+    }, 50);
   }
 
   function showVoiceTranscript(text) {
