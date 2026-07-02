@@ -104,6 +104,20 @@
   }
   _loadVoices();
 
+  // Unlock speech synthesis on first user gesture (Android phone Chrome requirement)
+  // Tablets/iPad are lenient; Android phone Chrome blocks speech without a prior gesture.
+  var _speechUnlocked = false;
+  function _unlockSpeech() {
+    if (_speechUnlocked || !window.speechSynthesis) return;
+    _speechUnlocked = true;
+    var dummy = new SpeechSynthesisUtterance('');
+    dummy.volume = 0;
+    speechSynthesis.speak(dummy);
+    speechSynthesis.cancel();
+  }
+  document.addEventListener('touchstart', _unlockSpeech, { once: true, passive: true });
+  document.addEventListener('click',      _unlockSpeech, { once: true });
+
   function speak(text, lang) {
     // Always show full text (with emoji) in transcript
     showVoiceTranscript(text);
