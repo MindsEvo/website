@@ -517,3 +517,72 @@ body {
   .s1-pos-badge { width: 42px; height: 42px; font-size: 18px; }
   .s1-track-steps { font-size: 12px; }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   TRACK ANIMATION (position-jump sequential reveal)
+   ────────────────────────────────────────────────────────────── */
+
+/* Cell wrapper: positions badge+arrow below each visited cell */
+.s1-track-cell-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Bounce-in reveal keyframe */
+@keyframes trackReveal {
+  0%   { transform: scale(0.55) translateY(-6px); opacity: 0; }
+  65%  { transform: scale(1.18) translateY(0);    opacity: 1; }
+  100% { transform: scale(1)    translateY(0);    opacity: 1; }
+}
+
+/* Fade-in keyframe for badge and arrow */
+@keyframes trackFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply reveal to visited/current cells */
+.s1-track-reveal {
+  opacity: 0;
+  animation: trackReveal 0.42s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+/* Step number badge below visited cell (①②③…) */
+.s1-track-badge {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--s1-primary);
+  opacity: 0;
+  animation: trackFadeIn 0.3s ease forwards;
+  line-height: 1;
+}
+
+/* Arrow connecting adjacent visited cells + final ? */
+.s1-track-arrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--s1-muted);
+  opacity: 0;
+  animation: trackFadeIn 0.3s ease forwards;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* The ? token inline in the last arrow */
+.s1-track-q {
+  font-size: 14px !important;
+  padding: 2px 8px !important;
+  border-radius: 6px !important;
+  vertical-align: middle;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .s1-track-badge { font-size: 11px; }
+  .s1-track-arrow { font-size: 11px; }
+  .s1-track-q     { font-size: 12px !important; padding: 1px 6px !important; }
+}

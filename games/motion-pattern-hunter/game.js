@@ -42,25 +42,35 @@ function renderTrack(q, container) {
   var trackSize = q.trackSize || 10;
   var positions = q.positions;
   var lastPos   = positions[positions.length - 1];
+  var stepNums  = ['①','②','③','④','⑤','⑥'];
 
-  // Grid
+  // ── Top row: grid cells ──────────────────────────────────────
+  // Visited cells animate in one by one (CSS animation-delay)
+  // Current (last) cell also animates, slightly after
   var html = '<div class="s1-track">';
   for (var i = 1; i <= trackSize; i++) {
-    var isLast    = (i === lastPos);
-    var isVisited = !isLast && positions.indexOf(i) !== -1;
-    var cls = 's1-track-cell' + (isLast ? ' s1-track-cur' : isVisited ? ' s1-track-vis' : '');
-    html += '<div class="' + cls + '">' + i + '</div>';
-  }
-  html += '</div>';
+    var posIdx  = positions.indexOf(i);
+    var isLast  = (i === lastPos);
+    var isStep  = posIdx !== -1;            // visited OR current
+    var delay   = isStep ? (posIdx * 0.38) + 's' : null;
 
-  // Step summary (both languages, CSS handles visibility)
-  html += '<div class="s1-track-steps">';
-  positions.forEach(function (p, i) {
-    if (i > 0) html += ' → ';
-    html += '<span class="zh">第' + (i + 1) + '步:' + p + '</span>' +
-            '<span class="en">Step ' + (i + 1) + ':' + p + '</span>';
-  });
-  html += ' → <span class="mystery" style="font-size:18px;padding:3px 10px">?</span>';
+    var cls = 's1-track-cell';
+    if (isLast)  cls += ' s1-track-cur s1-track-reveal';
+    else if (isStep) cls += ' s1-track-vis s1-track-reveal';
+
+    var style = delay ? ' style="animation-delay:' + delay + '"' : '';
+    html += '<div class="s1-track-cell-wrap">';
+    html += '<div class="' + cls + '"' + style + '>' + i + '</div>';
+    // Step number badge + connecting arrow below each visited cell
+    if (isStep) {
+      var badge = '<div class="s1-track-badge"' + style + '>' + (stepNums[posIdx] || (posIdx+1)) + '</div>';
+      var arrow = (posIdx < positions.length - 1)
+        ? '<div class="s1-track-arrow" style="animation-delay:' + (posIdx * 0.38 + 0.2) + 's">→</div>'
+        : '<div class="s1-track-arrow" style="animation-delay:' + (posIdx * 0.38 + 0.2) + 's">→<span class="mystery s1-track-q">?</span></div>';
+      html += badge + arrow;
+    }
+    html += '</div>';
+  }
   html += '</div>';
 
   container.innerHTML = html;
