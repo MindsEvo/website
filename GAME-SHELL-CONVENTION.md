@@ -10,6 +10,21 @@
 
 ---
 
+## 0.1 治理与门禁文档（必读）
+
+为保证“公共能力零重复、模块互不干扰”，请在设计和开发前同步阅读：
+
+- `SHELL-FEATURE-GATE.md`：Shell 公共能力升级准入规范（判断何时从游戏层上升到 Shell）
+- `PATTERN-QUALITY-GATE.md`：Pattern 模块出题与质量门禁规范（边界、干扰项、归因与验收）
+
+使用顺序建议：
+
+1. 先按本公约完成游戏层实现。
+2. 涉及公共能力抽象时，按 `SHELL-FEATURE-GATE.md` 走 Gate 流程。
+3. 涉及题型扩展时，按 `PATTERN-QUALITY-GATE.md` 完成题型规格单与上线检查。
+
+---
+
 ## 1. 创建新游戏（全流程）
 
 ### 文件结构
@@ -279,6 +294,12 @@ shell.report({
 ---
 
 ## 版本历史
+
+### v2.1.0 (2026-07-03)
+- 新增治理门禁入口章节（0.1）
+- 新增配套文档：
+  - `SHELL-FEATURE-GATE.md`
+  - `PATTERN-QUALITY-GATE.md`
 
 ### v2.0.0 (2026-07-02)
 - **架构重构**：引入 `shell.createGame()` 框架
