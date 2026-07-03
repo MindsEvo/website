@@ -419,3 +419,101 @@ body {
   .s1-ccapsule { padding: 5px 9px; gap: 4px; }
   .s1-cgrid { gap: 8px 12px; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   MOTION GAME COMPONENTS (used by motion-pattern-hunter etc.)
+   ══════════════════════════════════════════════════════════ */
+
+/* Direction / action card (displayed in sequence row) */
+.s1-motion-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px; min-height: 54px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid var(--s1-border);
+  padding: 6px 10px;
+  font-size: 28px;
+  line-height: 1.2;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.s1-motion-card small {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--s1-muted);
+  margin-top: 2px;
+  line-height: 1;
+}
+
+/* Track style (overrides yellow gradient for position-jump) */
+.s1-seq.s1-seq--track {
+  background: #f8faff;
+  border: 1.5px solid var(--s1-border);
+  letter-spacing: 0;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: auto;
+  padding: 16px 20px 12px;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Position track grid */
+.s1-track {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+.s1-track-cell {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid var(--s1-border);
+  background: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--s1-muted);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.s1-track-cell.s1-track-vis {
+  background: #dbeafe;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+.s1-track-cell.s1-track-cur {
+  background: var(--s1-primary);
+  border-color: var(--s1-primary);
+  color: white;
+  transform: scale(1.18);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Step summary text below track */
+.s1-track-steps {
+  text-align: center;
+  font-size: 14px; font-weight: 600;
+  color: var(--s1-muted);
+  padding: 0 4px;
+}
+
+/* Number badge for position options */
+.s1-pos-badge {
+  display: inline-flex;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--s1-bg);
+  border: 2.5px solid var(--s1-border);
+  align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900;
+  color: var(--s1-text);
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .s1-track-cell { width: 28px; height: 28px; font-size: 11px; border-radius: 6px; }
+  .s1-motion-card { min-width: 44px; min-height: 44px; font-size: 22px; padding: 4px 8px; }
+  .s1-pos-badge { width: 42px; height: 42px; font-size: 18px; }
+  .s1-track-steps { font-size: 12px; }
+}
