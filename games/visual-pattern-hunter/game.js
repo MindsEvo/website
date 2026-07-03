@@ -39,24 +39,9 @@ function generateShape(type, size, color, rotation) {
   return svg + '</svg>';
 }
 
-function generateDots(count, size) {
-  size = size || 50;
-  var cols = Math.ceil(Math.sqrt(count));
-  var dotR = 5, gap = (size - dotR*2*cols) / (cols + 1);
-  var svg = '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '" style="display:inline-block;vertical-align:middle">';
-  for (var i = 0; i < count; i++) {
-    var row = Math.floor(i / cols), col = i % cols;
-    var x = gap + col * (dotR*2 + gap) + dotR;
-    var y = gap + row * (dotR*2 + gap) + dotR;
-    svg += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#06b6d4"/>';
-  }
-  return svg + '</svg>';
-}
-
 function shapeFor(item, unit) {
   var color = '#06b6d4';
   if (unit.patternType === 'shape')  return generateShape(item, 50, color, 0);
-  if (unit.patternType === 'count')  return generateDots(item, 50);
   if (unit.patternType === 'rotate') return generateShape(unit.rotateShape || 'arrow', 50, color, item);
   return String(item);
 }

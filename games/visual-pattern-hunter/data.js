@@ -1,7 +1,7 @@
 ﻿/**
  * Visual Pattern Hunter — Game Data  v2.0.0  (Shell-1 format)
  * ─────────────────────────────────────────────────────────
- * patternType: 'shape' | 'count' | 'rotate'
+ * patternType: 'shape' | 'rotate'
  * sequence:    array of items, '?' marks the blank
  * answer:      correct value (must match one of options[])
  */
@@ -22,20 +22,7 @@ var VPH_DATA = {
       ]
     },
     {
-      id: '2', icon: '🔢',
-      nameZh: '数量递增', nameEn: 'Quantity Growth',
-      descZh: '数量按规律增长', descEn: 'Count grows by a pattern',
-      patternType: 'count',
-      questions: [
-        { sequence:[1,2,3,4,5,'?'], answer:6,  options:[6,5,7,4],    hintZh:'每次加 1', hintEn:'Add 1 each time', level:1 },
-        { sequence:[2,3,4,5,6,'?'], answer:7,  options:[7,6,8,5],    hintZh:'每次加 1', hintEn:'Add 1 each time', level:1 },
-        { sequence:[1,3,5,7,9,'?'], answer:11, options:[11,10,12,9], hintZh:'每次加 2', hintEn:'Add 2 each time', level:2 },
-        { sequence:[2,4,6,8,10,'?'],answer:12, options:[12,11,10,14],hintZh:'每次加 2', hintEn:'Add 2 each time', level:2 },
-        { sequence:[1,2,3,1,2,'?'], answer:3,  options:[3,1,2,4],    hintZh:'1,2,3 循环', hintEn:'Cycle: 1,2,3', level:3 }
-      ]
-    },
-    {
-      id: '3', icon: '🔄',
+      id: '2', icon: '🔄',
       nameZh: '方向旋转', nameEn: 'Rotation Pattern',
       descZh: '观察方向的变化规律', descEn: 'Observe direction changes',
       patternType: 'rotate',
