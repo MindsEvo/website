@@ -572,15 +572,16 @@
       // Optional callback: game can track error types here
       if (cfg.onAnswer) cfg.onAnswer(selected, q, correct);
 
-      document.querySelectorAll('.s1-opt').forEach(function (b) {
-        b.disabled = true;
-        if (b === btn) b.classList.add(correct ? 's1-correct' : 's1-wrong');
-      });
-
       var fb   = document.getElementById('s1-fb');
       var acts = document.getElementById('s1-acts');
 
       if (correct) {
+        // Lock ALL options and highlight the correct choice
+        document.querySelectorAll('.s1-opt').forEach(function (b) {
+          b.disabled = true;
+          if (b === btn) b.classList.add('s1-correct');
+        });
+
         fb.className = 's1-fb s1-fb-ok';
         fb.innerHTML = '<span class="zh">🎉 答对了！</span><span class="en">🎉 Correct!</span>';
         shell.speak(shell.lang === 'zh' ? '答对了！' : 'Correct!');
@@ -608,30 +609,33 @@
         acts.appendChild(nxtBtn);
 
       } else {
+        // Only disable the clicked wrong option — other options stay enabled for retry
+        btn.classList.add('s1-wrong');
+        btn.disabled = true;
+
         fb.className = 's1-fb s1-fb-err';
         fb.innerHTML = '<span class="zh">❌ 再想想！</span><span class="en">❌ Try again!</span>';
         shell.speak(shell.lang === 'zh' ? '再想想！' : 'Try again!');
         if (!state.firstWrong) state.firstWrong = true;
 
-        var hintBtn = document.createElement('button');
-        hintBtn.className = 's1-abtn s1-secondary';
-        hintBtn.innerHTML = '<span class="zh">看提示 💡</span><span class="en">Show Hint 💡</span>';
-        hintBtn.addEventListener('click', function () {
-          var hintEl = document.getElementById('s1-hint');
-          hintEl.innerHTML = '<span class="zh">💡 ' + (q.hintZh || '') + '</span>' +
-                             '<span class="en">💡 ' + (q.hintEn || '') + '</span>';
-          hintEl.classList.remove('s1-hidden');
-          state.hintShown = true;
-          state.hints++;
-          shell.speak(shell.lang === 'zh' ? (q.hintZh || '') : (q.hintEn || ''));
-          // Re-enable options for retry
-          document.querySelectorAll('.s1-opt').forEach(function (b) {
-            b.disabled = false; b.classList.remove('s1-wrong');
+        // Show hint button only once (if hint not already shown)
+        if (!state.hintShown) {
+          var hintBtn = document.createElement('button');
+          hintBtn.className = 's1-abtn s1-secondary';
+          hintBtn.innerHTML = '<span class="zh">看提示 💡</span><span class="en">Show Hint 💡</span>';
+          hintBtn.addEventListener('click', function () {
+            var hintEl = document.getElementById('s1-hint');
+            hintEl.innerHTML = '<span class="zh">💡 ' + (q.hintZh || '') + '</span>' +
+                               '<span class="en">💡 ' + (q.hintEn || '') + '</span>';
+            hintEl.classList.remove('s1-hidden');
+            state.hintShown = true;
+            state.hints++;
+            shell.speak(shell.lang === 'zh' ? (q.hintZh || '') : (q.hintEn || ''));
+            acts.innerHTML = '';  // remove hint button after showing
           });
           acts.innerHTML = '';
-        });
-        acts.innerHTML = '';
-        acts.appendChild(hintBtn);
+          acts.appendChild(hintBtn);
+        }
       }
     }
 
