@@ -22,7 +22,8 @@
       miss: 0
     },
     events: [],
-    activeDrag: null
+    activeDrag: null,
+    maxConcurrentFallers: 1
   };
 
   var els = {
@@ -90,6 +91,13 @@
       return;
     }
 
+    var activeCount = state.fallers.filter(function (f) {
+      return !f.removed;
+    }).length;
+    if (activeCount >= state.maxConcurrentFallers) {
+      return;
+    }
+
     var rect = getPlayfieldRect();
     var id = "obj-" + state.nextId++;
     var colorKey = randomColorKey();
@@ -116,6 +124,7 @@
       dragPointerId: null,
       dragOffsetX: 0,
       dragOffsetY: 0,
+      touched: false,
       removed: false,
       el: el
     };
@@ -168,9 +177,33 @@
     return null;
   }
 
+  function basketByLane(clientX) {
+    var i;
+    var nearest = null;
+    var nearestDist = Number.POSITIVE_INFINITY;
+
+    for (i = 0; i < els.baskets.length; i++) {
+      var basket = els.baskets[i];
+      var r = basket.getBoundingClientRect();
+      if (clientX >= r.left && clientX <= r.right) {
+        return basket;
+      }
+
+      var cx = r.left + r.width / 2;
+      var dist = Math.abs(clientX - cx);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearest = basket;
+      }
+    }
+
+    return nearest;
+  }
+
   function clearBasketHighlight() {
     els.baskets.forEach(function (b) {
       b.classList.remove("active");
+      b.classList.remove("locked");
     });
   }
 
@@ -276,9 +309,12 @@
     faller.el.style.top = faller.y + "px";
 
     clearBasketHighlight();
-    var target = basketAtClientPoint(ev.clientX, ev.clientY);
+    var target = basketByLane(ev.clientX);
+
+    state.activeDrag.hoverBasket = target || null;
     if (target) {
       target.classList.add("active");
+      target.classList.add("locked");
     }
   }
 
@@ -291,7 +327,8 @@
     }
 
     var faller = state.activeDrag.faller;
-    var droppedBasket = basketAtClientPoint(ev.clientX, ev.clientY);
+    var droppedBasket = state.activeDrag.hoverBasket || basketByLane(ev.clientX);
+
     cleanupActiveDrag();
 
     if (!faller.removed) {
@@ -313,11 +350,13 @@
       ev.preventDefault();
       cleanupActiveDrag();
       faller.dragging = true;
+      faller.touched = true;
       faller.dragPointerId = ev.pointerId;
       el.classList.add("dragging");
       state.activeDrag = {
         faller: faller,
-        pointerId: ev.pointerId
+        pointerId: ev.pointerId,
+        hoverBasket: null
       };
 
       var rect = el.getBoundingClientRect();
@@ -349,6 +388,13 @@
       }
 
       if (faller.y + faller.h >= fieldRect.height) {
+        if (faller.touched) {
+          var rr = faller.el.getBoundingClientRect();
+          var autoBasket = basketByLane(rr.left + rr.width / 2);
+          onDrop(faller, autoBasket);
+          return false;
+        }
+
         state.counts.miss += 1;
         setFeedback("Miss: " + faller.color, "feedback-miss");
         pushEvent({
