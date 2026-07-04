@@ -1,0 +1,265 @@
+:root {
+  --bg: #f4f7fb;
+  --ink: #152238;
+  --line: #d4dfef;
+  --panel: #ffffff;
+  --accent: #0ea5e9;
+  --ok: #0f9d58;
+  --bad: #d93025;
+  --miss: #ef6c00;
+  --basket: #c97a2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #dbeafe 0%, var(--bg) 52%);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.subtitle {
+  margin: 6px 0 12px;
+  color: #334155;
+}
+
+.hud {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 600;
+}
+
+.playfield-wrap {
+  position: relative;
+  margin-top: 14px;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f8fbff, #f1f5f9);
+  overflow: hidden;
+  padding-left: 56px;
+}
+
+.speed-panel {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 12px;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-right: 1px dashed var(--line);
+}
+
+.speed-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.3px;
+}
+
+.speed-bar {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  width: 24px;
+  height: 180px;
+  cursor: pointer;
+}
+
+.speed-value {
+  font-size: 11px;
+  color: #334155;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.playfield {
+  position: relative;
+  height: 430px;
+  border-bottom: 2px dashed var(--line);
+}
+
+.faller {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  touch-action: none;
+  cursor: grab;
+}
+
+.faller.dragging {
+  cursor: grabbing;
+  transform: scale(1.06);
+}
+
+.baskets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.basket {
+  border: 3px solid var(--basket);
+  border-top-width: 8px;
+  border-radius: 0 0 12px 12px;
+  height: 150px;
+  background: #fff7ee;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.basket[data-color="purple"] {
+  border-color: #7c3aed;
+  background: linear-gradient(180deg, #f3e8ff, #ede9fe);
+}
+
+.basket[data-color="orange"] {
+  border-color: #ea580c;
+  background: linear-gradient(180deg, #ffedd5, #fed7aa);
+}
+
+.basket[data-color="green"] {
+  border-color: #16a34a;
+  background: linear-gradient(180deg, #dcfce7, #bbf7d0);
+}
+
+.basket.active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(201, 122, 47, 0.24);
+}
+
+.basket-grid {
+  position: absolute;
+  inset: 8px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.65) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.basket[data-color="purple"] .basket-label {
+  color: #6d28d9;
+}
+
+.basket[data-color="orange"] .basket-label {
+  color: #c2410c;
+}
+
+.basket[data-color="green"] .basket-label {
+  color: #15803d;
+}
+
+.basket-label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+}
+
+.controls {
+  margin-top: 44px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn.ghost {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.log {
+  margin-top: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.log-title {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.feedback-ok {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.feedback-bad {
+  color: var(--bad);
+  font-weight: 700;
+}
+
+.feedback-miss {
+  color: var(--miss);
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .playfield-wrap {
+    padding-left: 44px;
+  }
+
+  .speed-panel {
+    width: 34px;
+    left: 6px;
+  }
+
+  .speed-bar {
+    height: 150px;
+  }
+
+  .playfield {
+    height: 380px;
+  }
+
+  .faller {
+    width: 42px;
+    height: 42px;
+  }
+
+  .basket {
+    height: 126px;
+  }
+}

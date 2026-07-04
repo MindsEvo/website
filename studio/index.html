@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>创意工作坊 | MindsEvo</title>
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #d9e3f1;
+      --accent: #0ea5e9;
+      --accent-2: #22c55e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #dbeafe 0%, var(--bg) 58%);
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 42px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .back {
+      color: #0369a1;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.8px;
+    }
+    .lead {
+      color: var(--muted);
+      margin: 10px 0 28px;
+      line-height: 1.7;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      color: #0369a1;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .name {
+      font-size: 26px;
+      font-weight: 900;
+      margin: 0 0 8px;
+    }
+    .desc {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+    .go {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border-radius: 10px;
+      padding: 9px 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html">← 返回主页</a>
+    </div>
+
+    <h1>创意工作坊 Creating Studio</h1>
+    <p class="lead">鼓励孩子从想法到作品，把创意变成可玩的思维练习。先从用户创意案例开始。</p>
+
+    <section class="grid">
+      <article class="card">
+        <div class="tag">User Design</div>
+        <h2 class="name">Clio Design</h2>
+        <p class="desc">这是 Clio 的用户名字页面入口。点击进入后可查看该用户设计的游戏列表。</p>
+        <a class="go" href="./Clio/index.html">进入 Clio 页面</a>
+      </article>
+
+      <article class="card">
+        <div class="tag">Coming Next</div>
+        <h2 class="name">More Creator Cases</h2>
+        <p class="desc">后续可扩展更多孩子或老师的创意案例，形成创意共创库。</p>
+        <a class="go" href="./Clio/index.html">查看样例结构</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

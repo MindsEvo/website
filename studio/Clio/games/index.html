@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Design Games | MindsEvo</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #dbe4f2;
+      --ok: #0ea5e9;
+      --ok2: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #e0f2fe, var(--bg));
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 20px 46px;
+    }
+    .back {
+      text-decoration: none;
+      color: #0369a1;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.8px;
+    }
+    .lead {
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .game-card {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+    .title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .meta {
+      margin: 8px 0 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .play {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--ok), var(--ok2));
+      color: #fff;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .pill {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #166534;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="../index.html">← 返回 Clio Design</a>
+    <h1>Clio 游戏列表</h1>
+    <p class="lead">点击任意游戏卡片中的“开始游戏”即可进入可玩页面。</p>
+
+    <section class="grid">
+      <article class="game-card">
+        <h2 class="title">Sorting Workshop <span class="pill">PLAYABLE</span></h2>
+        <p class="meta">分拣工坊 MVP：颜色球自由下落，点击拖动到对应颜色盒子，实时统计 correct / wrong / miss。</p>
+        <a class="play" href="./sorting-workshop/index.html">开始游戏</a>
+      </article>
+
+      <article class="game-card">
+        <h2 class="title">More Games</h2>
+        <p class="meta">后续将增加更多创意玩法，保持统一的创意工作坊分类结构。</p>
+        <a class="play" href="./sorting-workshop/index.html">查看示例</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

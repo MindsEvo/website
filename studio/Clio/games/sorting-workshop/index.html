@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Sorting Workshop MVP</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Sorting Workshop</h1>
+      <p class="subtitle">Clio MVP · classify falling colors into baskets</p>
+      <div class="hud">
+        <div class="chip">Correct: <span id="correctCount">0</span></div>
+        <div class="chip">Wrong: <span id="wrongCount">0</span></div>
+        <div class="chip">Miss: <span id="missCount">0</span></div>
+      </div>
+    </header>
+
+    <section class="playfield-wrap">
+      <aside class="speed-panel" aria-label="Speed control">
+        <div class="speed-title">Speed</div>
+        <input id="speedBar" class="speed-bar" type="range" min="60" max="220" step="10" value="92" />
+        <div class="speed-value"><span id="speedValue">92</span> px/s</div>
+      </aside>
+
+      <div id="playfield" class="playfield" aria-label="Falling items area"></div>
+
+      <div id="baskets" class="baskets" aria-label="Color baskets">
+        <div class="basket" data-color="purple">
+          <div class="basket-grid"></div>
+          <div class="basket-label">Purple</div>
+        </div>
+        <div class="basket" data-color="orange">
+          <div class="basket-grid"></div>
+          <div class="basket-label">Orange</div>
+        </div>
+        <div class="basket" data-color="green">
+          <div class="basket-grid"></div>
+          <div class="basket-label">Green</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="startBtn" class="btn">Start</button>
+      <button id="pauseBtn" class="btn ghost">Pause</button>
+      <button id="resetBtn" class="btn ghost">Reset</button>
+      <button id="dumpBtn" class="btn ghost">Dump Session JSON</button>
+    </section>
+
+    <section class="log">
+      <div class="log-title">Latest Feedback</div>
+      <div id="feedbackText">Press Start</div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

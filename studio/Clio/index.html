@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Design | MindsEvo</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #d9e3f1;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #ede9fe 0%, var(--bg) 56%);
+      color: var(--ink);
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    .back {
+      display: inline-block;
+      text-decoration: none;
+      color: #0369a1;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      color: #6d28d9;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -0.8px;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 10px 0 18px;
+      line-height: 1.7;
+    }
+    .name-chip {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f5f3ff;
+      color: #6d28d9;
+      font-weight: 800;
+      border: 1px solid #ddd6fe;
+    }
+    .actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .hint {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 返回创意工作坊</a>
+
+    <section class="hero">
+      <div class="tag">User Name Page</div>
+      <h1>Clio Design</h1>
+      <p class="sub">这里是用户名字页面。下一步进入游戏列表，选择具体游戏开始体验。</p>
+      <div class="name-chip">Creator: Clio</div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="./games/index.html">进入游戏列表</a>
+        <a class="btn btn-secondary" href="../index.html">返回 Studio 首页</a>
+      </div>
+
+      <p class="hint">当前已接入 1 个可玩游戏：Sorting Workshop（分拣工坊）。</p>
+    </section>
+  </main>
+</body>
+</html>
