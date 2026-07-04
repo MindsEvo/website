@@ -231,7 +231,7 @@
     if (actual === expected) {
       snapToBasketCenter(faller, basket);
       state.counts.correct += 1;
-      setFeedback("Correct: " + expected, "feedback-ok");
+      setFeedback((state.lang === "zh" ? "正确：" : "Correct: ") + (state.lang === "zh" ? t("basketNames")[expected] : expected), "feedback-ok");
       pushEvent({
         object_id: faller.id,
         object_color: expected,
@@ -250,7 +250,12 @@
     } else {
       snapToBasketCenter(faller, basket);
       state.counts.wrong += 1;
-      setFeedback("Wrong: expected " + expected + ", got " + actual, "feedback-bad");
+      setFeedback(
+        state.lang === "zh"
+          ? ("错误：应为" + t("basketNames")[expected] + "，实际是" + t("basketNames")[actual])
+          : ("Wrong: expected " + expected + ", got " + actual),
+        "feedback-bad"
+      );
       pushEvent({
         object_id: faller.id,
         object_color: expected,
@@ -396,7 +401,12 @@
         }
 
         state.counts.miss += 1;
-        setFeedback("Miss: " + faller.color, "feedback-miss");
+        setFeedback(
+          state.lang === "zh"
+            ? ("错过：" + t("basketNames")[faller.color])
+            : ("Miss: " + faller.color),
+          "feedback-miss"
+        );
         pushEvent({
           object_id: faller.id,
           object_color: faller.color,

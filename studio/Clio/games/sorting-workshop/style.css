@@ -33,6 +33,38 @@ body {
   font-size: 32px;
 }
 
+.topbar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.topbar-tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mini-btn {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.mini-btn.active {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #075985;
+}
+
 .subtitle {
   margin: 6px 0 12px;
   color: #334155;
@@ -65,15 +97,16 @@ body {
 .speed-panel {
   position: absolute;
   left: 8px;
-  top: 12px;
-  bottom: 12px;
+  top: 8px;
+  bottom: 8px;
   width: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
   border-right: 1px dashed var(--line);
+  padding: 10px 0;
 }
 
 .speed-title {
@@ -86,9 +119,37 @@ body {
 .speed-bar {
   writing-mode: bt-lr;
   -webkit-appearance: slider-vertical;
-  width: 24px;
-  height: 180px;
+  width: 26px;
+  height: calc(100% - 48px);
+  min-height: 300px;
   cursor: pointer;
+}
+
+.speed-track {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.speed-marks {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  padding: 2px 0;
+}
+
+.speed-marks span {
+  width: 10px;
+  height: 1px;
+  background: #94a3b8;
+  opacity: 0.9;
 }
 
 .speed-value {
@@ -102,6 +163,22 @@ body {
   position: relative;
   height: 430px;
   border-bottom: 2px dashed var(--line);
+  background:
+    linear-gradient(180deg, rgba(191, 219, 254, 0.75) 0%, rgba(240, 249, 255, 0.95) 18%, rgba(248, 251, 255, 1) 42%);
+  overflow: hidden;
+}
+
+.playfield::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.95) 0 14px, rgba(255, 255, 255, 0) 16px),
+    radial-gradient(circle at 26% 10%, rgba(255, 255, 255, 0.9) 0 20px, rgba(255, 255, 255, 0) 22px),
+    radial-gradient(circle at 74% 12%, rgba(255, 255, 255, 0.92) 0 18px, rgba(255, 255, 255, 0) 20px),
+    radial-gradient(circle at 82% 8%, rgba(255, 255, 255, 0.88) 0 14px, rgba(255, 255, 255, 0) 16px);
+  opacity: 0.55;
 }
 
 .faller {
@@ -193,10 +270,13 @@ body {
 
 .basket-label {
   position: absolute;
-  bottom: -30px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   font-weight: 700;
+  z-index: 2;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .controls {
@@ -251,6 +331,14 @@ body {
 }
 
 @media (max-width: 760px) {
+  .topbar-head {
+    flex-direction: column;
+  }
+
+  .topbar-tools {
+    justify-content: flex-start;
+  }
+
   .playfield-wrap {
     padding-left: 44px;
   }
@@ -261,7 +349,7 @@ body {
   }
 
   .speed-bar {
-    height: 150px;
+    min-height: 240px;
   }
 
   .playfield {

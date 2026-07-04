@@ -23,7 +23,13 @@
     },
     events: [],
     activeDrag: null,
-    maxConcurrentFallers: 1
+    maxConcurrentFallers: 1,
+    lang: "en",
+    musicEnabled: true,
+    sfxEnabled: true,
+    audioCtx: null,
+    musicTimer: null,
+    musicNodes: []
   };
 
   var els = {
@@ -39,8 +45,196 @@
     resetBtn: document.getElementById("resetBtn"),
     dumpBtn: document.getElementById("dumpBtn"),
     speedBar: document.getElementById("speedBar"),
-    speedValue: document.getElementById("speedValue")
+    speedValue: document.getElementById("speedValue"),
+    speedUnit: document.getElementById("speedUnit"),
+    speedTitle: document.getElementById("speedTitle"),
+    titleText: document.getElementById("titleText"),
+    subtitleText: document.getElementById("subtitleText"),
+    logTitle: document.getElementById("logTitle"),
+    correctLabel: document.getElementById("correctLabel"),
+    wrongLabel: document.getElementById("wrongLabel"),
+    missLabel: document.getElementById("missLabel"),
+    langBtn: document.getElementById("langBtn"),
+    musicBtn: document.getElementById("musicBtn"),
+    sfxBtn: document.getElementById("sfxBtn")
   };
+
+  var TEXT = {
+    en: {
+      title: "Sorting Workshop",
+      subtitle: "Clio MVP · classify falling colors into baskets",
+      logTitle: "Latest Feedback",
+      correct: "Correct",
+      wrong: "Wrong",
+      miss: "Miss",
+      speed: "Speed",
+      unit: "px/s",
+      start: "Start",
+      pause: "Pause",
+      reset: "Reset",
+      dump: "Dump Session JSON",
+      pressStart: "Press Start",
+      running: "Running",
+      paused: "Paused",
+      resumed: "Resumed",
+      dragging: "Dragging {0}...",
+      speedMsg: "Speed: {0} px/s",
+      dropLane: "Drop into a basket lane",
+      sessionDumped: "Session dumped to DevTools console",
+      noSession: "No session in localStorage",
+      parseFailed: "Session parse failed",
+      on: "On",
+      off: "Off",
+      music: "Music",
+      sfx: "SFX",
+      turnZh: "中文",
+      turnEn: "EN",
+      basketNames: { purple: "Purple", orange: "Orange", green: "Green" }
+    },
+    zh: {
+      title: "分拣工坊",
+      subtitle: "Clio MVP · 将下落颜色拖入对应篮子",
+      logTitle: "最新反馈",
+      correct: "正确",
+      wrong: "错误",
+      miss: "错过",
+      speed: "速度",
+      unit: "像素/秒",
+      start: "开始",
+      pause: "暂停",
+      reset: "重置",
+      dump: "导出会话 JSON",
+      pressStart: "点击开始",
+      running: "运行中",
+      paused: "已暂停",
+      resumed: "继续运行",
+      dragging: "正在拖动 {0}...",
+      speedMsg: "速度：{0} 像素/秒",
+      dropLane: "拖到篮子区域即可",
+      sessionDumped: "会话已输出到 DevTools 控制台",
+      noSession: "localStorage 中没有会话",
+      parseFailed: "会话解析失败",
+      on: "开",
+      off: "关",
+      music: "音乐",
+      sfx: "音效",
+      turnZh: "中文",
+      turnEn: "EN",
+      basketNames: { purple: "紫色", orange: "橙色", green: "绿色" }
+    }
+  };
+
+  function t(key) {
+    return TEXT[state.lang][key] || key;
+  }
+
+  function tf(key, value) {
+    return t(key).replace("{0}", value);
+  }
+
+  function ensureAudio() {
+    if (!state.audioCtx) {
+      var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextCtor) {
+        return null;
+      }
+      state.audioCtx = new AudioContextCtor();
+    }
+    if (state.audioCtx.state === "suspended") {
+      state.audioCtx.resume();
+    }
+    return state.audioCtx;
+  }
+
+  function stopMusic() {
+    if (state.musicTimer) {
+      window.clearInterval(state.musicTimer);
+      state.musicTimer = null;
+    }
+    while (state.musicNodes.length) {
+      var node = state.musicNodes.pop();
+      try { node.stop(); } catch (e) {}
+      try { node.disconnect(); } catch (e2) {}
+    }
+  }
+
+  function playTone(freq, duration, gainValue, type) {
+    var ctx = ensureAudio();
+    if (!ctx || !state.sfxEnabled) {
+      return;
+    }
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = type || "sine";
+    osc.frequency.value = freq;
+    gain.gain.value = gainValue;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  }
+
+  function playMusic() {
+    var ctx = ensureAudio();
+    if (!ctx || !state.musicEnabled) {
+      return;
+    }
+    stopMusic();
+
+    var sequence = [261.63, 329.63, 392.0, 329.63];
+    var index = 0;
+    state.musicTimer = window.setInterval(function () {
+      if (!state.musicEnabled || state.paused || !state.running) {
+        return;
+      }
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = sequence[index % sequence.length];
+      gain.gain.value = 0.025;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.22);
+      state.musicNodes.push(osc);
+      index += 1;
+    }, 320);
+  }
+
+  function stopIfIdle() {
+    if (!state.running) {
+      stopMusic();
+    }
+  }
+
+  function refreshLocale() {
+    els.titleText.textContent = t("title");
+    els.subtitleText.textContent = t("subtitle");
+    els.logTitle.textContent = t("logTitle");
+    els.correctLabel.textContent = t("correct");
+    els.wrongLabel.textContent = t("wrong");
+    els.missLabel.textContent = t("miss");
+    els.speedTitle.textContent = t("speed");
+    els.speedUnit.textContent = t("unit");
+    els.startBtn.textContent = t("start");
+    els.pauseBtn.textContent = t("pause");
+    els.resetBtn.textContent = t("reset");
+    els.dumpBtn.textContent = t("dump");
+    if (!state.running && state.counts.correct === 0 && state.counts.wrong === 0 && state.counts.miss === 0) {
+      setFeedback(t("pressStart"), "");
+    }
+    els.baskets.forEach(function (basket) {
+      var color = basket.getAttribute("data-color");
+      var label = basket.querySelector(".basket-label");
+      if (label) {
+        label.textContent = t("basketNames")[color];
+      }
+    });
+    els.langBtn.textContent = state.lang === "zh" ? "中文" : "EN";
+    els.langBtn.classList.toggle("active", state.lang === "zh");
+    els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
+    els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
+  }
 
   function nowMs() {
     return Date.now();
@@ -231,7 +425,7 @@
     if (actual === expected) {
       snapToBasketCenter(faller, basket);
       state.counts.correct += 1;
-      setFeedback("Correct: " + expected, "feedback-ok");
+      setFeedback((state.lang === "zh" ? "正确：" : "Correct: ") + (state.lang === "zh" ? t("basketNames")[expected] : expected), "feedback-ok");
       pushEvent({
         object_id: faller.id,
         object_color: expected,
@@ -246,11 +440,17 @@
           distractor_type: "boundary_color"
         }
       });
+        playTone(760, 0.12, 0.03, "triangle");
       removeFaller(faller);
     } else {
       snapToBasketCenter(faller, basket);
       state.counts.wrong += 1;
-      setFeedback("Wrong: expected " + expected + ", got " + actual, "feedback-bad");
+      setFeedback(
+        state.lang === "zh"
+          ? ("错误：应为" + t("basketNames")[expected] + "，实际是" + t("basketNames")[actual])
+          : ("Wrong: expected " + expected + ", got " + actual),
+        "feedback-bad"
+      );
       pushEvent({
         object_id: faller.id,
         object_color: expected,
@@ -265,6 +465,7 @@
           distractor_type: "boundary_color"
         }
       });
+      playTone(180, 0.16, 0.04, "sawtooth");
       removeFaller(faller);
     }
 
@@ -334,7 +535,7 @@
     if (!faller.removed) {
       onDrop(faller, droppedBasket);
       if (!droppedBasket) {
-        setFeedback("Drop into a basket lane", "feedback-miss");
+        setFeedback(t("dropLane"), "feedback-miss");
       }
     }
   }
@@ -362,7 +563,7 @@
       var rect = el.getBoundingClientRect();
       faller.dragOffsetX = ev.clientX - rect.left;
       faller.dragOffsetY = ev.clientY - rect.top;
-      setFeedback("Dragging " + faller.color + "...", "");
+      setFeedback(tf("dragging", state.lang === "zh" ? t("basketNames")[faller.color] : faller.color), "");
     });
   }
 
@@ -396,7 +597,12 @@
         }
 
         state.counts.miss += 1;
-        setFeedback("Miss: " + faller.color, "feedback-miss");
+        setFeedback(
+          state.lang === "zh"
+            ? ("错过：" + t("basketNames")[faller.color])
+            : ("Miss: " + faller.color),
+          "feedback-miss"
+        );
         pushEvent({
           object_id: faller.id,
           object_color: faller.color,
@@ -411,6 +617,7 @@
             distractor_type: "boundary_color"
           }
         });
+        playTone(120, 0.18, 0.03, "square");
         removeFaller(faller);
         updateCounters();
         return false;
@@ -427,19 +634,21 @@
   function startGame() {
     if (state.running) {
       state.paused = false;
-      setFeedback("Resumed", "");
+      setFeedback(t("resumed"), "");
+      playMusic();
       return;
     }
 
     state.running = true;
     state.paused = false;
-    setFeedback("Running", "");
+    setFeedback(t("running"), "");
 
     spawnFaller();
     state.spawnTimer = window.setInterval(spawnFaller, state.spawnEveryMs);
     state.rafId = window.requestAnimationFrame(function (ts) {
       updateLoop(ts);
     });
+    playMusic();
   }
 
   function pauseGame() {
@@ -447,7 +656,12 @@
       return;
     }
     state.paused = !state.paused;
-    setFeedback(state.paused ? "Paused" : "Resumed", "");
+    setFeedback(state.paused ? t("paused") : t("resumed"), "");
+    if (state.paused) {
+      stopMusic();
+    } else {
+      playMusic();
+    }
   }
 
   function resetGame() {
@@ -474,23 +688,24 @@
     state.counts.miss = 0;
     state.events = [];
     updateCounters();
-    setFeedback("Reset complete", "");
+    setFeedback(t("pressStart"), "");
+    stopMusic();
     persistSession();
   }
 
   function dumpSession() {
     var raw = localStorage.getItem("me:clio:sorting:mvp:latest");
     if (!raw) {
-      setFeedback("No session in localStorage", "");
+      setFeedback(t("noSession"), "");
       return;
     }
 
     try {
       var data = JSON.parse(raw);
       console.log("[Clio MVP session]", data);
-      setFeedback("Session dumped to DevTools console", "");
+      setFeedback(t("sessionDumped"), "");
     } catch (e) {
-      setFeedback("Session parse failed", "feedback-bad");
+      setFeedback(t("parseFailed"), "feedback-bad");
     }
   }
 
@@ -507,7 +722,30 @@
       }
       state.speedPxPerSec = v;
       els.speedValue.textContent = String(v);
-      setFeedback("Speed: " + v + " px/s", "");
+      setFeedback(tf("speedMsg", v), "");
+    });
+
+    els.langBtn.addEventListener("click", function () {
+      state.lang = state.lang === "zh" ? "en" : "zh";
+      refreshLocale();
+    });
+
+    els.musicBtn.addEventListener("click", function () {
+      state.musicEnabled = !state.musicEnabled;
+      refreshLocale();
+      if (state.musicEnabled && state.running && !state.paused) {
+        playMusic();
+      } else {
+        stopMusic();
+      }
+    });
+
+    els.sfxBtn.addEventListener("click", function () {
+      state.sfxEnabled = !state.sfxEnabled;
+      refreshLocale();
+      if (state.sfxEnabled) {
+        ensureAudio();
+      }
     });
 
     document.addEventListener("pointermove", handleGlobalPointerMove);
@@ -517,5 +755,6 @@
 
   bindUI();
   updateCounters();
+  refreshLocale();
   persistSession();
 })();

@@ -9,20 +9,34 @@
 <body>
   <main class="app">
     <header class="topbar">
-      <h1>Sorting Workshop</h1>
-      <p class="subtitle">Clio MVP · classify falling colors into baskets</p>
+      <div class="topbar-head">
+        <div>
+          <h1 id="titleText">Sorting Workshop</h1>
+          <p class="subtitle" id="subtitleText">Clio MVP · classify falling colors into baskets</p>
+        </div>
+        <div class="topbar-tools" aria-label="Game controls">
+          <button id="langBtn" class="mini-btn" type="button">中文 / EN</button>
+          <button id="musicBtn" class="mini-btn" type="button">Music: On</button>
+          <button id="sfxBtn" class="mini-btn" type="button">SFX: On</button>
+        </div>
+      </div>
       <div class="hud">
-        <div class="chip">Correct: <span id="correctCount">0</span></div>
-        <div class="chip">Wrong: <span id="wrongCount">0</span></div>
-        <div class="chip">Miss: <span id="missCount">0</span></div>
+        <div class="chip"><span id="correctLabel">Correct</span>: <span id="correctCount">0</span></div>
+        <div class="chip"><span id="wrongLabel">Wrong</span>: <span id="wrongCount">0</span></div>
+        <div class="chip"><span id="missLabel">Miss</span>: <span id="missCount">0</span></div>
       </div>
     </header>
 
     <section class="playfield-wrap">
       <aside class="speed-panel" aria-label="Speed control">
-        <div class="speed-title">Speed</div>
-        <input id="speedBar" class="speed-bar" type="range" min="60" max="220" step="10" value="92" />
-        <div class="speed-value"><span id="speedValue">92</span> px/s</div>
+        <div class="speed-title" id="speedTitle">Speed</div>
+        <div class="speed-track">
+          <div class="speed-marks" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <input id="speedBar" class="speed-bar" type="range" min="60" max="220" step="10" value="92" />
+        </div>
+        <div class="speed-value"><span id="speedValue">92</span> <span id="speedUnit">px/s</span></div>
       </aside>
 
       <div id="playfield" class="playfield" aria-label="Falling items area"></div>
@@ -51,7 +65,7 @@
     </section>
 
     <section class="log">
-      <div class="log-title">Latest Feedback</div>
+      <div class="log-title" id="logTitle">Latest Feedback</div>
       <div id="feedbackText">Press Start</div>
     </section>
   </main>
