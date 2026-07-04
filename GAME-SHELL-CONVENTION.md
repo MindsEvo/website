@@ -1,12 +1,16 @@
 ﻿# MindsEvo 游戏开发公约
 
-## Game Shell-1 Convention v2.0
+## Game Shell Convention v2.2
 
 > **核心原则：游戏只写游戏，公共功能零重复**
 >
-> Shell-1 自动提供：UI渲染、双语切换、静音控制、进度追踪、
-> 数据存储、历史报告、动画、响应式布局。
-> 游戏只实现3个函数：`renderSequence` / `renderOption` / `checkAnswer`
+> 当前已发布两套 Shell 入口，共享同一个 `shell.js` 公共层：
+>
+> - `shell.createGame()`：Shell-1，序列预测型（视觉/颜色/大小/空间/数量等）
+> - `shell.createReasoningGame()`：Shell-2，陈述推理型（前提 → 结论）
+>
+> Shell-1 游戏只实现 3 个函数：`renderSequence` / `renderOption` / `checkAnswer`
+> Shell-2 游戏只实现 2 个函数：`renderOption` / `checkAnswer`（前提与问题由 Shell 自动渲染）
 
 ---
 
@@ -242,24 +246,109 @@ Shell-1 所有公共样式使用 `s1-` 前缀：
 
 ## 7. 多 Shell 扩展规划
 
-当前 Shell-1 适用于：**单元解锁式教育问答游戏**
+所有 Shell 共享同一个 `shell.js` 公共层，不同 Shell 只替换"题目显示区"并提供对应渲染接口。
 
 ```
-游戏类型           对应 Shell
-────────────────────────────────
-序列题问答          Shell-1 ✅（当前）
-图形规律问答        Shell-1 ✅（当前）
-数学计算练习        Shell-1 ✅（当前）
-开放探索/沙盒       Shell-2（待设计）
-多人对战/实时       Shell-3（待设计）
-故事叙事/分支剧情   Shell-4（待设计）
+游戏类型                  对应 Shell            入口函数
+──────────────────────────────────────────────────────────
+序列预测型（视觉/规律）    Shell-1  ✅ 已发布    shell.createGame()
+陈述推理型（前提→结论）    Shell-2  ✅ 已发布    shell.createReasoningGame()
+状态判断型（守恒/比较）    Shell-3  ⏸ 待设计    shell.createJudgmentGame()（预留）
+开放探索/沙盒             Shell-4  ⏸ 待设计    —
+多人对战/实时             Shell-5  ⏸ 待设计    —
 ```
 
-**跨 Shell 统一的部分：**
+**Shell 扩展原则：**
+
+1. 每个新 Shell 是 `shell.js` 内一个新的 `createXxxGame()` 入口函数，不新建文件。
+2. 共用同一套 Home / Result 屏、进度点、选项按钮、反馈动画、存储、语音、双语。
+3. 只有"题目显示区"（Shell-1 的 `.s1-seq`，Shell-2 的 `.s2-qzone`）和渲染接口不同。
+4. CSS 新增组件使用新 Shell 对应前缀（`s2-`、`s3-`…），不污染已有前缀。
+5. 旧 Shell 游戏接入新 Shell 后零改动可继续运行。
+
+**跨 Shell 统一的公共能力：**
 - `shell.storage` API（localStorage 命名空间）
-- `shell.report()` 数据上报格式
+- `shell.report()` 数据上报（含 `shell` 字段标注所属 Shell）
 - `shell.speak()` TTS API
 - `shell.setLang()` 语言切换
+
+---
+
+## 7.1 Shell-2 API 参考（createReasoningGame）
+
+```javascript
+shell.createReasoningGame({
+  // ── 必填（与 Shell-1 相同）─────────────────────────────
+  id:       'my-reasoning-game',
+  title:    { zh: '游戏名', en: 'Game Name' },
+  subtitle: { zh: '副标题', en: 'Subtitle' },
+  units:    MY_DATA.units,
+  passScore: 4,
+
+  // ── 必须实现：2个函数（不需要 renderSequence）──────────
+  renderOption(opt, q, unit) → string,  // 选项按钮的 innerHTML
+  checkAnswer(selected, q)  → bool,     // 返回是否正确
+
+  // ── 可选（与 Shell-1 相同）─────────────────────────────
+  theme: { primary, primary2, bg },
+  onAnswer(selected, q, isCorrect),
+  getVoiceText(q, index) → string
+});
+```
+
+**Shell-2 题目数据格式：**
+
+```javascript
+{
+  // Shell-1 沿用字段
+  answer:   'opt_a',
+  options:  ['opt_a', 'opt_b', 'opt_c', 'opt_d'],
+  hintZh:   '因为 A > B > C…',
+  hintEn:   'Because A > B > C…',
+
+  // Shell-2 新增字段（替代 seq/sequence）
+  premises: [
+    { zh: '条件一文本', en: 'Premise one text' },
+    { zh: '条件二文本', en: 'Premise two text' }
+  ],
+  questionZh: '问题文本？',
+  questionEn: 'Question text?',
+
+  // 选项定义（renderOption 从此读取标签）
+  optionDefs: {
+    opt_a: { zh: '选项A', en: 'Option A' },
+    opt_b: { zh: '选项B', en: 'Option B' }
+  },
+
+  // 干扰项类型（错误归因）
+  optionTypes: {
+    opt_a: 'correct',
+    opt_b: 'middle_item',
+    opt_c: 'wrong_end',
+    opt_d: 'irrelevant'
+  }
+}
+```
+
+**Shell-2 error_type 枚举：**
+
+| 类型 | 含义 |
+|------|------|
+| `correct` | 正确答案 |
+| `wrong_end` | 链条端点方向错误 |
+| `middle_item` | 选了链条中间项 |
+| `irrelevant` | 题目未提及的无关选项 |
+| `over_cautious` | 前提充分时仍选"无法确定" |
+
+**与 Shell-1 的差异对照：**
+
+| 维度 | Shell-1 | Shell-2 |
+|------|---------|---------|
+| 题目显示区 | 黄色序列框 `.s1-seq` | 前提卡片区 `.s2-qzone` |
+| 游戏实现函数 | 3 个（含 renderSequence）| 2 个（无 renderSequence）|
+| 前提渲染 | 游戏自定义 | Shell 自动从 `q.premises` 渲染 |
+| 问题渲染 | 游戏自定义 | Shell 自动从 `q.questionZh/En` 渲染 |
+| 所有其他功能 | 由 Shell 提供 | 由 Shell 提供（完全相同）|
 
 ---
 
@@ -276,6 +365,7 @@ shell.report({
   total:      10,
   timeMs:     45000,
   hintsUsed:  2,
+  shell:      'shell-1',   // 必须标注所属 Shell（shell-1 | shell-2 | …）
   // 未来扩展：
   // abilityTags: ['seq-arithmetic', 'rule-induction']
 });
@@ -294,6 +384,13 @@ shell.report({
 ---
 
 ## 版本历史
+
+### v2.2.0 (2026-07-03)
+- 发布 Shell-2：`shell.createReasoningGame()`（陈述推理型）
+- 新增 §7.1 Shell-2 API 参考、数据格式、error_type 枚举、差异对照表
+- 更新 §7 Shell 扩展规划表，标注 Shell-1/2 已发布
+- 新增 Shell 扩展原则 5 条
+- `shell.report()` 新增必填字段 `shell`，用于跨 Shell 数据归因
 
 ### v2.1.0 (2026-07-03)
 - 新增治理门禁入口章节（0.1）
