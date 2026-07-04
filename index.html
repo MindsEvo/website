@@ -512,18 +512,6 @@
       padding: 2px 8px; border-radius: 20px; margin-left: 8px;
       vertical-align: middle;
     }
-    .app-launch-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      margin-top: 20px; padding: 11px 22px; border-radius: 12px;
-      font-size: 14.5px; font-weight: 800;
-      background: linear-gradient(135deg, #7c3aed, #6d28d9);
-      color: #fff; transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 6px 20px rgba(124,58,237,.28);
-    }
-    .app-launch-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(124,58,237,.38);
-    }
     .apps-quote {
       padding: 40px 52px; border-radius: 20px; background: #e4ecf8; text-align: center;
     }
@@ -755,7 +743,7 @@
     <a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a>
     <a href="#focus"><span class="zh">关注</span><span class="en">Focus</span></a>
     <a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a>
-    <a href="#applications"><span class="zh">应用</span><span class="en">Applications</span></a>
+    <a href="#applications"><span class="zh">探索</span><span class="en">Explore</span></a>
     <a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a>
     <a class="nav-cta" href="#thankyou"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
   </div>
@@ -774,7 +762,7 @@
   <a href="#approach" onclick="closeMenu()"><span class="zh">方法</span><span class="en">Approach</span></a>
   <a href="#focus"    onclick="closeMenu()"><span class="zh">关注</span><span class="en">Focus</span></a>
   <a href="#platform" onclick="closeMenu()"><span class="zh">平台</span><span class="en">Platform</span></a>
-  <a href="#applications" onclick="closeMenu()"><span class="zh">应用</span><span class="en">Applications</span></a>
+  <a href="#applications" onclick="closeMenu()"><span class="zh">探索</span><span class="en">Explore</span></a>
   <a href="#journey"      onclick="closeMenu()"><span class="zh">旅程</span><span class="en">Journey</span></a>
   <a href="#thankyou"     onclick="closeMenu()"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
 </div>
@@ -1065,8 +1053,8 @@
 <section class="section apps-section" id="applications">
   <div class="section-inner">
     <div class="section-label">
-      <span class="zh">应用领域</span>
-      <span class="en">Our Applications</span>
+      <span class="zh">探索领域</span>
+      <span class="en">Explore</span>
     </div>
     <h2 class="section-title">
       <span class="zh">不同领域，同一个目标</span>
@@ -1082,9 +1070,9 @@
 
       <!-- Chess Series -->
       <div class="app-card">
-        <div class="app-series-name" style="color:#16b7e8;">
+        <a class="app-series-name" style="color:#16b7e8;" href="chess/index.html">
           <span class="zh">棋类系列</span><span class="en">Chess Series</span>
-        </div>
+        </a>
         <div class="app-divider" style="background:#16b7e8;"></div>
         <p>
           <span class="zh">从国际象棋、中国象棋到围棋，<br>融汇数千年智慧的经典实践，<br>帮助学习者在对弈与思考中成长。</span>
@@ -1100,9 +1088,9 @@
 
       <!-- Learning Series -->
       <div class="app-card">
-        <div class="app-series-name" style="color:#2563eb;">
+        <a class="app-series-name" style="color:#2563eb;" href="learning/index.html">
           <span class="zh">学习系列</span><span class="en">Learning Series</span>
-        </div>
+        </a>
         <div class="app-divider" style="background:#2563eb;"></div>
         <p>
           <span class="zh">从数学、逻辑到科学与人文，<br>将知识学习与思维训练相结合，<br>让学习过程更有深度与意义。</span>
@@ -1118,9 +1106,9 @@
 
       <!-- Little Genius Series -->
       <div class="app-card">
-        <div class="app-series-name" style="color:#7c3aed;">
+        <a class="app-series-name" style="color:#7c3aed;" href="sprites/index.html">
           <span class="zh">小精灵系列</span><span class="en">Little Genius Series</span>
-        </div>
+        </a>
         <div class="app-divider" style="background:#7c3aed;"></div>
         <p>
           <span class="zh">从受欢迎的经典游戏中提炼思维价值，<br>通过互动体验，激发兴趣，<br>培养解决问题的能力与创造力。</span>
@@ -1136,56 +1124,6 @@
           </li>
           <li><span class="dot" style="background:rgba(124,58,237,.3);"></span><span class="app-muted"><span class="zh">更多趣味探索中</span><span class="en">More coming...</span></span></li>
         </ul>
-        <a class="app-launch-btn" href="games/number-pattern-hunter/index.html">
-          <span>🎯</span>
-          <span class="zh">数字规律 →</span>
-          <span class="en">Number Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/visual-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🎨</span>
-          <span class="zh">视觉规律 →</span>
-          <span class="en">Visual Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/color-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🌈</span>
-          <span class="zh">颜色规律 →</span>
-          <span class="en">Color Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/motion-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🏃</span>
-          <span class="zh">动作规律 →</span>
-          <span class="en">Motion Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/temporal-pattern-hunter/index.html" style="margin-top:10px">
-          <span>⏰</span>
-          <span class="zh">时间规律 →</span>
-          <span class="en">Temporal Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/size-pattern-hunter/index.html" style="margin-top:10px">
-          <span>📏</span>
-          <span class="zh">大小规律 →</span>
-          <span class="en">Size Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/spatial-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🧭</span>
-          <span class="zh">空间关系 →</span>
-          <span class="en">Spatial Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/quantity-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🧮</span>
-          <span class="zh">数量规律 →</span>
-          <span class="en">Quantity Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/logic-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🧠</span>
-          <span class="zh">逻辑推理 →</span>
-          <span class="en">Logic Pattern →</span>
-        </a>
-        <a class="app-launch-btn" href="games/mixed-pattern-hunter/index.html" style="margin-top:10px">
-          <span>🎯</span>
-          <span class="zh">综合规律 →</span>
-          <span class="en">Mixed Pattern →</span>
-        </a>
       </div>
 
     </div>
@@ -1309,7 +1247,7 @@
         <li><a href="#mission"><span class="zh">使命</span><span class="en">Mission</span></a></li>
         <li><a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a></li>
         <li><a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a></li>
-        <li><a href="#applications"><span class="zh">应用</span><span class="en">Applications</span></a></li>
+        <li><a href="#applications"><span class="zh">探索</span><span class="en">Explore</span></a></li>
         <li><a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
       </ul>
     </div>
