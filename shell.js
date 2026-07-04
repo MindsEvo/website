@@ -713,6 +713,7 @@
           }
         });
         acts.innerHTML = '';
+        if (cfg.onCorrect) cfg.onCorrect(q, acts, cfg.units[state.unitIdx]);
         acts.appendChild(nxtBtn);
 
       } else {
@@ -815,6 +816,8 @@
       document.getElementById('s1-rmsg').innerHTML = passed
         ? _bispan('恭喜通关！', 'Level complete!')
         : _bispan('再练一次，会更好！', 'Practice once more!');
+
+      if (cfg.onResult) cfg.onResult({ score: state.score, total: total, passed: passed, elapsed: elapsed }, document.getElementById('s1-rmsg'));
 
       var acts = document.getElementById('s1-racts');
       acts.innerHTML = '';
@@ -1186,6 +1189,7 @@
           else _renderQ();
         });
         acts.innerHTML = '';
+        if (cfg.onCorrect) cfg.onCorrect(q, acts, cfg.units[state.unitIdx]);
         acts.appendChild(nxtBtn);
 
       } else {
@@ -1266,6 +1270,8 @@
       document.getElementById('s1-rmsg').innerHTML = passed
         ? _rBi('恭喜通关！', 'Level complete!')
         : _rBi('再练一次，会更好！', 'Practice once more!');
+
+      if (cfg.onResult) cfg.onResult({ score: state.score, total: total, passed: passed, elapsed: elapsed }, document.getElementById('s1-rmsg'));
 
       var acts = document.getElementById('s1-racts');
       acts.innerHTML = '';
