@@ -22,12 +22,24 @@ window.WORD_MATCH_DATA = {
     },
     L3: {
       id: "L3",
-      label: "More Distractors",
-      pair_count: 6,
-      duplicate_left_count: 2,
-      duplicate_right_count: 2
+      label: "Semantic Match - Synonym/Antonym",
+      mode: "semantic",
+      pair_count: 5,
+      duplicate_left_count: 0,
+      duplicate_right_count: 0
     }
   },
+  semantic_pairs: [
+    { left: "big", right: "large", relation: "synonym" },
+    { left: "small", right: "little", relation: "synonym" },
+    { left: "hot", right: "cold", relation: "antonym" },
+    { left: "up", right: "down", relation: "antonym" },
+    { left: "in", right: "out", relation: "antonym" },
+    { left: "open", right: "close", relation: "antonym" },
+    { left: "day", right: "night", relation: "antonym" },
+    { left: "more", right: "less", relation: "antonym" },
+    { left: "yes", right: "no", relation: "antonym" }
+  ],
   word_pool: [
     "yes",
     "no",
@@ -70,6 +82,8 @@ window.WORD_MATCH_DATA = {
     small: { lemma: "small", display: { en: "small", zh: "small" } },
     day: { lemma: "day", display: { en: "day", zh: "day" } },
     night: { lemma: "night", display: { en: "night", zh: "night" } },
-    want: { lemma: "want", display: { en: "want", zh: "want" } }
+    want: { lemma: "want", display: { en: "want", zh: "want" } },
+    large: { lemma: "large", display: { en: "large", zh: "large" } },
+    little: { lemma: "little", display: { en: "little", zh: "little" } }
   }
 };

@@ -7,6 +7,7 @@
     zh: {
       title: "连线组词 Word Match",
       subtitle: "连接左右完全相同的词，并排除只看位置的干扰策略。",
+      subtitleSemantic: "连接意义明确的同义词或反义词配对。",
       level: "难度",
       undo: "撤销一步",
       reset: "重置",
@@ -18,14 +19,20 @@
       left: "一侧词",
       right: "另一侧词",
       legendMatch: "相同词正确连线",
+      legendMatchSemantic: "同义词/反义词正确连线",
       legendDistractor: "同一侧的重复词用于位置干扰",
-      lineHint: "提示：先点任意一侧的词，再点另一侧完全相同的词；点击已画连线可撤销",
+      legendNoDistractor: "语义关卡：无重复词干扰",
+      lineHint: "提示：先点任意一个词，再点另一个完全相同的词；点击已画连线可撤销",
+      lineHintSemantic: "提示：先点一个词，再点另一侧意义明确的同义词或反义词；点击已画连线可撤销",
       pickFirst: "请先选择任意一侧的词",
-      pickOther: "已选择 {0}，请点另一侧完全相同的词",
+      pickOther: "已选择 {0}，请点另一个完全相同的词",
+      pickOtherSemantic: "已选择 {0}，请点另一侧对应的同义词或反义词",
       wrongSide: "第二次需要点击另一侧的词",
       sameGroup: "同侧词不能互连",
       wrongMsg: "这两个词不完全相同，请再试一次",
+      wrongSemanticMsg: "这两个词不是设定的同义词/反义词配对，请再试一次",
       correctMsg: "配对成功：{0} ↔ {1}",
+      correctSemanticMsg: "语义配对成功：{0} ↔ {1}",
       removedMsg: "已撤销上一条配对",
       noUndo: "没有可撤销的配对",
       resetMsg: "已重新随机本轮词组",
@@ -36,6 +43,7 @@
     en: {
       title: "Word Match",
       subtitle: "Match identical words across the two sides and resist position-only shortcuts.",
+      subtitleSemantic: "Connect clear synonym or antonym pairs across the two sides.",
       level: "Level",
       undo: "Undo",
       reset: "Reset",
@@ -47,14 +55,20 @@
       left: "One Side",
       right: "Other Side",
       legendMatch: "Correct identical-word line",
+      legendMatchSemantic: "Correct synonym/antonym line",
       legendDistractor: "Repeated words on the same side act as position distractors",
-      lineHint: "Tip: pick a word on either side, then pick the exact same word on the other side; click a line to undo",
+      legendNoDistractor: "Semantic level: no repeated-word distractors",
+      lineHint: "Tip: pick any word first, then pick another identical word; click a line to undo",
+      lineHintSemantic: "Tip: pick a word, then pick its clear synonym or antonym on the other side; click a line to undo",
       pickFirst: "Pick a word on either side first",
-      pickOther: "Selected {0}, now pick the exact same word on the other side",
+      pickOther: "Selected {0}, now pick another identical word",
+      pickOtherSemantic: "Selected {0}, now pick its synonym or antonym on the other side",
       wrongSide: "Your second pick must be on the other side",
       sameGroup: "Do not connect words on the same side",
       wrongMsg: "Those two words are not exactly the same. Try again",
+      wrongSemanticMsg: "Those two words are not a configured synonym/antonym pair. Try again",
       correctMsg: "Matched: {0} <-> {1}",
+      correctSemanticMsg: "Semantic match: {0} <-> {1}",
       removedMsg: "Last match removed",
       noUndo: "Nothing to undo",
       resetMsg: "Round reshuffled",
@@ -219,6 +233,11 @@
     return DATA.levels[state.level];
   }
 
+  function isSemanticLevel() {
+    var level = getLevel();
+    return !!(level && level.mode === "semantic");
+  }
+
   function labelOf(wordId) {
     var lex = DATA.lexicon[wordId];
     return lex ? lex.display[state.lang] : wordId;
@@ -226,6 +245,41 @@
 
   function createRound() {
     var level = getLevel();
+    if (level.mode === "semantic") {
+      var semanticPairs = sample(DATA.semantic_pairs || [], level.pair_count);
+      var leftSemanticItems = semanticPairs.map(function (pair, index) {
+        return {
+          instanceId: "left-sem-" + index + "-" + pair.left,
+          side: "left",
+          wordId: pair.left,
+          matchKey: "sem-" + index,
+          relation: pair.relation,
+          matched: false,
+          isDuplicate: false
+        };
+      });
+      var rightSemanticItems = semanticPairs.map(function (pair, index) {
+        return {
+          instanceId: "right-sem-" + index + "-" + pair.right,
+          side: "right",
+          wordId: pair.right,
+          matchKey: "sem-" + index,
+          relation: pair.relation,
+          consumed: false,
+          isDuplicate: false
+        };
+      });
+
+      return {
+        words: semanticPairs.map(function (pair) { return pair.left + ":" + pair.right; }),
+        leftItems: shuffle(leftSemanticItems),
+        rightItems: shuffle(rightSemanticItems),
+        duplicateCounts: Object.create(null),
+        distractorWords: [],
+        layoutShape: DATA.layout_shape || "columns"
+      };
+    }
+
     var words = sample(DATA.word_pool, level.pair_count);
     var pairedSet = Object.create(null);
     words.forEach(function (wordId) {
@@ -245,6 +299,7 @@
         instanceId: "left-" + index + "-" + wordId,
         side: "left",
         wordId: wordId,
+        matchKey: wordId,
         matched: false,
         isDuplicate: false
       };
@@ -254,6 +309,7 @@
         instanceId: "right-" + index + "-" + wordId,
         side: "right",
         wordId: wordId,
+        matchKey: wordId,
         consumed: false,
         isDuplicate: false
       };
@@ -263,6 +319,7 @@
         instanceId: "left-dup-" + index + "-a-" + wordId,
         side: "left",
         wordId: wordId,
+        matchKey: wordId,
         matched: false,
         isDuplicate: true
       });
@@ -270,6 +327,7 @@
         instanceId: "left-dup-" + index + "-b-" + wordId,
         side: "left",
         wordId: wordId,
+        matchKey: wordId,
         matched: false,
         isDuplicate: true
       });
@@ -280,6 +338,7 @@
         instanceId: "right-dup-" + index + "-a-" + wordId,
         side: "right",
         wordId: wordId,
+        matchKey: wordId,
         consumed: false,
         isDuplicate: true
       });
@@ -287,6 +346,7 @@
         instanceId: "right-dup-" + index + "-b-" + wordId,
         side: "right",
         wordId: wordId,
+        matchKey: wordId,
         consumed: false,
         isDuplicate: true
       });
@@ -314,7 +374,7 @@
     document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
     document.title = state.lang === "en" ? "Word Match | Clio" : "连线组词 Word Match | Clio";
     els.titleText.textContent = t("title");
-    els.subtitleText.textContent = t("subtitle");
+    els.subtitleText.textContent = isSemanticLevel() ? t("subtitleSemantic") : t("subtitle");
     els.levelLabel.textContent = t("level");
     els.undoBtn.textContent = t("undo");
     els.resetBtn.textContent = t("reset");
@@ -325,9 +385,9 @@
     els.foundLabel.textContent = t("found");
     els.leftTitle.textContent = t("left");
     els.rightTitle.textContent = t("right");
-    els.legendAntonym.textContent = t("legendMatch");
-    els.legendCo.textContent = t("legendDistractor");
-    els.lineHint.textContent = t("lineHint");
+    els.legendAntonym.textContent = isSemanticLevel() ? t("legendMatchSemantic") : t("legendMatch");
+    els.legendCo.textContent = isSemanticLevel() ? t("legendNoDistractor") : t("legendDistractor");
+    els.lineHint.textContent = isSemanticLevel() ? t("lineHintSemantic") : t("lineHint");
     els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
     els.musicBtn.textContent = (state.lang === "zh" ? "音乐" : "Music") + ": " + (state.musicEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
     els.sfxBtn.textContent = (state.lang === "zh" ? "音效" : "SFX") + ": " + (state.sfxEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
@@ -364,6 +424,12 @@
   function getWordItems(side, wordId) {
     return state.currentRound[side === "left" ? "leftItems" : "rightItems"].filter(function (item) {
       return item.wordId === wordId;
+    });
+  }
+
+  function getMatchItems(side, matchKey) {
+    return state.currentRound[side === "left" ? "leftItems" : "rightItems"].filter(function (item) {
+      return item.matchKey === matchKey;
     });
   }
 
@@ -557,7 +623,7 @@
       state.startPickAt = performance.now();
       clearSelectedVisual();
       btn.classList.add("active");
-      setFeedback(tf("pickOther", labelOf(item.wordId)), "");
+      setFeedback(tf(isSemanticLevel() ? "pickOtherSemantic" : "pickOther", labelOf(item.wordId)), "");
       return;
     }
 
@@ -577,12 +643,12 @@
       state.selected = item.instanceId;
       state.startPickAt = performance.now();
       btn.classList.add("active");
-      setFeedback(tf("pickOther", labelOf(item.wordId)), "");
+      setFeedback(tf(isSemanticLevel() ? "pickOtherSemantic" : "pickOther", labelOf(item.wordId)), "");
       return;
     }
 
     var reaction = Math.max(1, Math.round(performance.now() - state.startPickAt));
-    var isCorrect = firstItem.wordId === item.wordId;
+    var isCorrect = firstItem.matchKey === item.matchKey;
     var duplicateCount = state.currentRound.duplicateCounts[item.wordId] || 1;
     var distractorInvolved = firstItem.isDuplicate || item.isDuplicate || duplicateCount > 2;
     var attempt = {
@@ -604,22 +670,23 @@
         state.stats.distractor += 1;
       }
       sfxWrong();
-      setFeedback(t("wrongMsg"), "bad");
+      setFeedback(t(isSemanticLevel() ? "wrongSemanticMsg" : "wrongMsg"), "bad");
       recordEvent(attempt);
       refreshHud();
       return;
     }
 
-    getWordItems("left", item.wordId).forEach(function (leftItem) {
+    getMatchItems("left", item.matchKey).forEach(function (leftItem) {
       leftItem.matched = true;
     });
-    getWordItems("right", item.wordId).forEach(function (rightItem) {
+    getMatchItems("right", item.matchKey).forEach(function (rightItem) {
       rightItem.consumed = true;
     });
 
     state.activeMatches.push({
       leftInstanceId: firstItem.side === "left" ? firstItem.instanceId : item.instanceId,
       rightInstanceId: firstItem.side === "right" ? firstItem.instanceId : item.instanceId,
+      matchKey: item.matchKey,
       wordId: item.wordId,
       distractorInvolved: distractorInvolved
     });
@@ -628,7 +695,7 @@
       state.stats.distractor += 1;
       setFeedback(tf("distractorHit", labelOf(firstItem.wordId), labelOf(item.wordId)), "dup");
     } else {
-      setFeedback(tf("correctMsg", labelOf(firstItem.wordId), labelOf(item.wordId)), "good");
+      setFeedback(tf(isSemanticLevel() ? "correctSemanticMsg" : "correctMsg", labelOf(firstItem.wordId), labelOf(item.wordId)), "good");
     }
     recordEvent(attempt);
     renderBoard();
@@ -649,10 +716,10 @@
       return;
     }
     var match = state.activeMatches[index];
-    getWordItems("left", match.wordId).forEach(function (leftItem) {
+    getMatchItems("left", match.matchKey).forEach(function (leftItem) {
       leftItem.matched = false;
     });
-    getWordItems("right", match.wordId).forEach(function (rightItem) {
+    getMatchItems("right", match.matchKey).forEach(function (rightItem) {
       rightItem.consumed = false;
     });
     state.activeMatches.splice(index, 1);
