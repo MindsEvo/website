@@ -10,6 +10,7 @@
   var state = {
     running: false,
     paused: false,
+    sessionToken: 0,
     nextId: 1,
     fallers: [],
     spawnTimer: null,
@@ -31,6 +32,10 @@
     musicTimer: null,
     musicNodes: []
   };
+
+  var runtimeCtrl = window.ClioRuntimeBridge
+    ? window.ClioRuntimeBridge.createController("clio-sorting-workshop")
+    : null;
 
   var els = {
     playfield: document.getElementById("playfield"),
@@ -278,6 +283,47 @@
 
   function getPlayfieldRect() {
     return els.playfield.getBoundingClientRect();
+  }
+
+  function clearSpawnTimer() {
+    if (runtimeCtrl) {
+      runtimeCtrl.clearTimer("spawn");
+      state.spawnTimer = null;
+      return;
+    }
+    if (state.spawnTimer) {
+      window.clearTimeout(state.spawnTimer);
+      state.spawnTimer = null;
+    }
+  }
+
+  function scheduleSpawnLoop(expectedSessionToken) {
+    if (!state.running || state.paused) {
+      return;
+    }
+    if (expectedSessionToken !== state.sessionToken) {
+      return;
+    }
+
+    if (runtimeCtrl) {
+      runtimeCtrl.setTimer("spawn", state.spawnEveryMs, function () {
+        if (!state.running || state.paused || expectedSessionToken !== state.sessionToken) {
+          return;
+        }
+        spawnFaller();
+        scheduleSpawnLoop(expectedSessionToken);
+      });
+      state.spawnTimer = 1;
+      return;
+    }
+
+    state.spawnTimer = window.setTimeout(function () {
+      if (!state.running || state.paused || expectedSessionToken !== state.sessionToken) {
+        return;
+      }
+      spawnFaller();
+      scheduleSpawnLoop(expectedSessionToken);
+    }, state.spawnEveryMs);
   }
 
   function spawnFaller() {
@@ -567,8 +613,8 @@
     });
   }
 
-  function updateLoop(lastTs) {
-    if (!state.running) {
+  function updateLoop(lastTs, expectedSessionToken) {
+    if (!state.running || expectedSessionToken !== state.sessionToken) {
       return;
     }
 
@@ -627,7 +673,7 @@
     });
 
     state.rafId = window.requestAnimationFrame(function () {
-      updateLoop(now);
+      updateLoop(now, expectedSessionToken);
     });
   }
 
@@ -635,18 +681,20 @@
     if (state.running) {
       state.paused = false;
       setFeedback(t("resumed"), "");
+      scheduleSpawnLoop(state.sessionToken);
       playMusic();
       return;
     }
 
+    state.sessionToken = runtimeCtrl ? runtimeCtrl.resetSession() : (state.sessionToken + 1);
     state.running = true;
     state.paused = false;
     setFeedback(t("running"), "");
 
     spawnFaller();
-    state.spawnTimer = window.setInterval(spawnFaller, state.spawnEveryMs);
+    scheduleSpawnLoop(state.sessionToken);
     state.rafId = window.requestAnimationFrame(function (ts) {
-      updateLoop(ts);
+      updateLoop(ts, state.sessionToken);
     });
     playMusic();
   }
@@ -658,21 +706,21 @@
     state.paused = !state.paused;
     setFeedback(state.paused ? t("paused") : t("resumed"), "");
     if (state.paused) {
+      clearSpawnTimer();
       stopMusic();
     } else {
+      scheduleSpawnLoop(state.sessionToken);
       playMusic();
     }
   }
 
   function resetGame() {
+    state.sessionToken = runtimeCtrl ? runtimeCtrl.resetSession() : (state.sessionToken + 1);
     state.running = false;
     state.paused = false;
     cleanupActiveDrag();
 
-    if (state.spawnTimer) {
-      window.clearInterval(state.spawnTimer);
-      state.spawnTimer = null;
-    }
+    clearSpawnTimer();
     if (state.rafId) {
       window.cancelAnimationFrame(state.rafId);
       state.rafId = null;
@@ -710,10 +758,17 @@
   }
 
   function bindUI() {
-    els.startBtn.addEventListener("click", startGame);
-    els.pauseBtn.addEventListener("click", pauseGame);
-    els.resetBtn.addEventListener("click", resetGame);
-    els.dumpBtn.addEventListener("click", dumpSession);
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.startBtn, startGame);
+      runtimeCtrl.bindTap(els.pauseBtn, pauseGame);
+      runtimeCtrl.bindTap(els.resetBtn, resetGame);
+      runtimeCtrl.bindTap(els.dumpBtn, dumpSession);
+    } else {
+      els.startBtn.addEventListener("click", startGame);
+      els.pauseBtn.addEventListener("click", pauseGame);
+      els.resetBtn.addEventListener("click", resetGame);
+      els.dumpBtn.addEventListener("click", dumpSession);
+    }
 
     els.speedBar.addEventListener("input", function (ev) {
       var v = Number(ev.target.value);
@@ -725,12 +780,19 @@
       setFeedback(tf("speedMsg", v), "");
     });
 
-    els.langBtn.addEventListener("click", function () {
-      state.lang = state.lang === "zh" ? "en" : "zh";
-      refreshLocale();
-    });
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.langBtn, function () {
+        state.lang = state.lang === "zh" ? "en" : "zh";
+        refreshLocale();
+      });
+    } else {
+      els.langBtn.addEventListener("click", function () {
+        state.lang = state.lang === "zh" ? "en" : "zh";
+        refreshLocale();
+      });
+    }
 
-    els.musicBtn.addEventListener("click", function () {
+    var onMusicTap = function () {
       state.musicEnabled = !state.musicEnabled;
       refreshLocale();
       if (state.musicEnabled && state.running && !state.paused) {
@@ -738,15 +800,33 @@
       } else {
         stopMusic();
       }
-    });
+    };
 
-    els.sfxBtn.addEventListener("click", function () {
+    var onSfxTap = function () {
       state.sfxEnabled = !state.sfxEnabled;
       refreshLocale();
       if (state.sfxEnabled) {
         ensureAudio();
       }
-    });
+    };
+
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
+      runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
+      runtimeCtrl.onLifecyclePause(function () {
+        if (state.running && !state.paused) {
+          pauseGame();
+        }
+      });
+    } else {
+      els.musicBtn.addEventListener("click", onMusicTap);
+      els.sfxBtn.addEventListener("click", onSfxTap);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden && state.running && !state.paused) {
+          pauseGame();
+        }
+      });
+    }
 
     document.addEventListener("pointermove", handleGlobalPointerMove);
     document.addEventListener("pointerup", handleGlobalPointerUp);

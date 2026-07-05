@@ -80,6 +80,10 @@
     events: []
   };
 
+  var runtimeCtrl = window.ClioRuntimeBridge
+    ? window.ClioRuntimeBridge.createController("clio-word-connections-workshop")
+    : null;
+
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
@@ -211,9 +215,15 @@
     btn.dataset.wordId = wordId;
     btn.dataset.side = side;
     btn.textContent = labelOf(wordId);
-    btn.addEventListener("click", function () {
-      onWordClick(wordId, side, btn);
-    });
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(btn, function () {
+        onWordClick(wordId, side, btn);
+      });
+    } else {
+      btn.addEventListener("click", function () {
+        onWordClick(wordId, side, btn);
+      });
+    }
     return btn;
   }
 
@@ -403,6 +413,10 @@
   }
 
   function resetRound() {
+    if (runtimeCtrl) {
+      runtimeCtrl.resetSession();
+      runtimeCtrl.clearTimers();
+    }
     state.selected = null;
     state.startPickAt = 0;
     state.activeEdges = [];
@@ -439,6 +453,10 @@
   function bootstrap() {
     validateData();
 
+    if (runtimeCtrl) {
+      runtimeCtrl.resetSession();
+    }
+
     var savedLang = localStorage.getItem("clio-games-lang");
     if (savedLang === "en" || savedLang === "zh") {
       state.lang = savedLang;
@@ -449,21 +467,37 @@
     refreshHud();
     setFeedback(t("pickFirst"), "");
 
-    els.langBtn.addEventListener("click", function () {
+    var onLangTap = function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
       localStorage.setItem("clio-games-lang", state.lang);
       applyLocale();
       setFeedback(t("pickFirst"), "");
-    });
+    };
+
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.langBtn, onLangTap);
+    } else {
+      els.langBtn.addEventListener("click", onLangTap);
+    }
 
     els.levelSelect.addEventListener("change", function () {
       state.level = els.levelSelect.value;
       resetRound();
     });
 
-    els.undoBtn.addEventListener("click", undoLast);
-    els.resetBtn.addEventListener("click", resetRound);
-    els.dumpBtn.addEventListener("click", exportSession);
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.undoBtn, undoLast);
+      runtimeCtrl.bindTap(els.resetBtn, resetRound);
+      runtimeCtrl.bindTap(els.dumpBtn, exportSession);
+      runtimeCtrl.onLifecyclePause(function () {
+        clearSelectedVisual();
+        state.selected = null;
+      });
+    } else {
+      els.undoBtn.addEventListener("click", undoLast);
+      els.resetBtn.addEventListener("click", resetRound);
+      els.dumpBtn.addEventListener("click", exportSession);
+    }
     window.addEventListener("resize", renderLines);
   }
 

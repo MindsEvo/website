@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Template Runtime Game</title>
+  <link rel="stylesheet" href="../_shared/clio-shell-bridge.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="clio-shell-wrap">
+    <header class="clio-shell-topbar">
+      <div>
+        <h1 class="clio-shell-title" id="titleText">Template Runtime Game</h1>
+        <p class="clio-shell-subtitle" id="subtitleText">Session-safe timer and unified tap demo.</p>
+      </div>
+      <div class="clio-shell-tools">
+        <button id="langBtn" class="clio-shell-btn" type="button">中文 / EN</button>
+        <button id="startBtn" class="clio-shell-btn" type="button">Start</button>
+        <button id="resetBtn" class="clio-shell-btn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <section class="clio-shell-card template-stage">
+      <div class="meta-row">
+        <span id="statusText">Ready</span>
+        <span><strong id="scoreLabel">Score</strong>: <span id="scoreValue">0</span></span>
+      </div>
+      <button id="targetBtn" class="target-btn" type="button">Tap</button>
+    </section>
+  </main>
+
+  <script src="../../../shell.js"></script>
+  <script src="../_shared/clio-runtime-bridge.js"></script>
+  <script src="./data.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

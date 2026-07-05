@@ -1,0 +1,70 @@
+:root {
+  --clio-bg: #f4f7fb;
+  --clio-ink: #0f172a;
+  --clio-muted: #64748b;
+  --clio-line: #dbe4f2;
+  --clio-primary: #0ea5e9;
+  --clio-primary2: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--clio-ink);
+  background: radial-gradient(circle at top, #dbeafe 0%, var(--clio-bg) 56%);
+}
+
+.clio-shell-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.clio-shell-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.clio-shell-title {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 42px);
+}
+
+.clio-shell-subtitle {
+  margin: 8px 0 0;
+  color: var(--clio-muted);
+  line-height: 1.65;
+}
+
+.clio-shell-tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.clio-shell-btn {
+  border: 1px solid var(--clio-line);
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+
+.clio-shell-card {
+  border: 1.5px solid var(--clio-line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}

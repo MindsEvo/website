@@ -161,6 +161,10 @@
     practiceEvents: []
   };
 
+  var runtimeCtrl = window.ClioRuntimeBridge
+    ? window.ClioRuntimeBridge.createController("clio-prediction-workshop")
+    : null;
+
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
@@ -353,6 +357,11 @@
   }
 
   function clearLaneTimer(lane) {
+    if (runtimeCtrl) {
+      runtimeCtrl.clearTimer(lane.kind + "-timer");
+      lane.timerId = null;
+      return;
+    }
     if (lane.timerId) {
       window.clearTimeout(lane.timerId);
       lane.timerId = null;
@@ -366,6 +375,22 @@
     lane.timerStartedAt = performance.now();
     lane.timerToken += 1;
     var localTimerToken = lane.timerToken;
+    if (runtimeCtrl) {
+      runtimeCtrl.setTimer(lane.kind + "-timer", ms, function () {
+        if (lane.sessionToken !== expectedSessionToken || state.sessionToken !== expectedSessionToken) {
+          return;
+        }
+        if (lane.timerToken !== localTimerToken) {
+          return;
+        }
+        lane.timerId = null;
+        lane.timerRemainingMs = 0;
+        callback();
+      });
+      lane.timerId = 1;
+      return;
+    }
+
     lane.timerId = window.setTimeout(function () {
       if (lane.sessionToken !== expectedSessionToken || state.sessionToken !== expectedSessionToken) {
         return;
@@ -674,7 +699,7 @@
       return;
     }
 
-    state.sessionToken += 1;
+    state.sessionToken = runtimeCtrl ? runtimeCtrl.resetSession() : (state.sessionToken + 1);
     state.running = true;
     state.paused = false;
     state.demoLane.sessionToken = state.sessionToken;
@@ -710,7 +735,7 @@
   function resetGame() {
     clearLaneTimer(state.demoLane);
     clearLaneTimer(state.practiceLane);
-    state.sessionToken += 1;
+    state.sessionToken = runtimeCtrl ? runtimeCtrl.resetSession() : (state.sessionToken + 1);
     state.running = false;
     state.paused = false;
     state.counts.correct = 0;
@@ -751,8 +776,6 @@
   }
 
   function bindUI() {
-    var lastTouchChoiceAt = 0;
-
     function handleChoiceInput(btn) {
       if (btn.disabled || !state.running || state.paused) {
         return;
@@ -767,20 +790,15 @@
     }
 
     els.choiceBalls.forEach(function (btn) {
-      btn.addEventListener("touchend", function (ev) {
-        lastTouchChoiceAt = performance.now();
-        if (ev.cancelable) {
-          ev.preventDefault();
-        }
-        handleChoiceInput(btn);
-      }, { passive: false });
-
-      btn.addEventListener("click", function () {
-        if (performance.now() - lastTouchChoiceAt < 500) {
-          return;
-        }
-        handleChoiceInput(btn);
-      });
+      if (runtimeCtrl) {
+        runtimeCtrl.bindTap(btn, function () {
+          handleChoiceInput(btn);
+        });
+      } else {
+        btn.addEventListener("click", function () {
+          handleChoiceInput(btn);
+        });
+      }
     });
 
     els.speedBar.addEventListener("input", function (ev) {
@@ -793,17 +811,31 @@
       setFeedback(tf("speedMsg", v), "");
     });
 
-    els.startBtn.addEventListener("click", startGame);
-    els.pauseBtn.addEventListener("click", pauseGame);
-    els.resetBtn.addEventListener("click", resetGame);
-    els.dumpBtn.addEventListener("click", dumpSession);
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.startBtn, startGame);
+      runtimeCtrl.bindTap(els.pauseBtn, pauseGame);
+      runtimeCtrl.bindTap(els.resetBtn, resetGame);
+      runtimeCtrl.bindTap(els.dumpBtn, dumpSession);
+    } else {
+      els.startBtn.addEventListener("click", startGame);
+      els.pauseBtn.addEventListener("click", pauseGame);
+      els.resetBtn.addEventListener("click", resetGame);
+      els.dumpBtn.addEventListener("click", dumpSession);
+    }
 
-    els.langBtn.addEventListener("click", function () {
-      state.lang = state.lang === "en" ? "zh" : "en";
-      renderLocale();
-    });
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.langBtn, function () {
+        state.lang = state.lang === "en" ? "zh" : "en";
+        renderLocale();
+      });
+    } else {
+      els.langBtn.addEventListener("click", function () {
+        state.lang = state.lang === "en" ? "zh" : "en";
+        renderLocale();
+      });
+    }
 
-    els.musicBtn.addEventListener("click", function () {
+    var onMusicTap = function () {
       state.musicEnabled = !state.musicEnabled;
       renderLocale();
       ensureAudio();
@@ -812,21 +844,33 @@
       } else {
         stopMusic();
       }
-    });
+    };
 
-    els.sfxBtn.addEventListener("click", function () {
+    var onSfxTap = function () {
       state.sfxEnabled = !state.sfxEnabled;
       renderLocale();
       if (state.sfxEnabled) {
         ensureAudio();
       }
-    });
+    };
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden && state.running && !state.paused) {
-        pauseGame();
-      }
-    });
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
+      runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
+      runtimeCtrl.onLifecyclePause(function () {
+        if (state.running && !state.paused) {
+          pauseGame();
+        }
+      });
+    } else {
+      els.musicBtn.addEventListener("click", onMusicTap);
+      els.sfxBtn.addEventListener("click", onSfxTap);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden && state.running && !state.paused) {
+          pauseGame();
+        }
+      });
+    }
   }
 
   bindUI();

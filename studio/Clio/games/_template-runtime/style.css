@@ -1,0 +1,31 @@
+.template-stage {
+  min-height: 320px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.target-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #7dd3fc;
+  background: linear-gradient(135deg, #06b6d4, #10b981);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.25);
+}
+
+.target-btn.pop {
+  transform: scale(1.08);
+  transition: transform 120ms ease;
+}
