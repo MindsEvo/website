@@ -723,10 +723,9 @@
   }
 
   function bindUI() {
-    function handleChoiceInput(btn, ev) {
-      if (ev && ev.cancelable) {
-        ev.preventDefault();
-      }
+    var lastTouchChoiceAt = 0;
+
+    function handleChoiceInput(btn) {
       if (btn.disabled || !state.running || state.paused) {
         return;
       }
@@ -740,18 +739,20 @@
     }
 
     els.choiceBalls.forEach(function (btn) {
-      if (window.PointerEvent) {
-        btn.addEventListener("pointerdown", function (ev) {
-          handleChoiceInput(btn, ev);
-        });
-      } else {
-        btn.addEventListener("touchstart", function (ev) {
-          handleChoiceInput(btn, ev);
-        }, { passive: false });
-        btn.addEventListener("mousedown", function (ev) {
-          handleChoiceInput(btn, ev);
-        });
-      }
+      btn.addEventListener("touchend", function (ev) {
+        lastTouchChoiceAt = performance.now();
+        if (ev.cancelable) {
+          ev.preventDefault();
+        }
+        handleChoiceInput(btn);
+      }, { passive: false });
+
+      btn.addEventListener("click", function () {
+        if (performance.now() - lastTouchChoiceAt < 500) {
+          return;
+        }
+        handleChoiceInput(btn);
+      });
     });
 
     els.speedBar.addEventListener("input", function (ev) {
