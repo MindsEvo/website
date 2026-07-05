@@ -723,19 +723,35 @@
   }
 
   function bindUI() {
-    els.choiceBalls.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        if (btn.disabled || !state.running || state.paused) {
-          return;
-        }
-        els.choiceBalls.forEach(function (b) {
-          b.classList.remove("active");
-        });
-        btn.classList.add("active");
-        state.practiceLane.selectedColor = btn.getAttribute("data-color");
-        state.practiceLane.selectedAt = performance.now();
-        playTone(520, 0.06, 0.02, "triangle");
+    function handleChoiceInput(btn, ev) {
+      if (ev && ev.cancelable) {
+        ev.preventDefault();
+      }
+      if (btn.disabled || !state.running || state.paused) {
+        return;
+      }
+      els.choiceBalls.forEach(function (b) {
+        b.classList.remove("active");
       });
+      btn.classList.add("active");
+      state.practiceLane.selectedColor = btn.getAttribute("data-color");
+      state.practiceLane.selectedAt = performance.now();
+      playTone(520, 0.06, 0.02, "triangle");
+    }
+
+    els.choiceBalls.forEach(function (btn) {
+      if (window.PointerEvent) {
+        btn.addEventListener("pointerdown", function (ev) {
+          handleChoiceInput(btn, ev);
+        });
+      } else {
+        btn.addEventListener("touchstart", function (ev) {
+          handleChoiceInput(btn, ev);
+        }, { passive: false });
+        btn.addEventListener("mousedown", function (ev) {
+          handleChoiceInput(btn, ev);
+        });
+      }
     });
 
     els.speedBar.addEventListener("input", function (ev) {

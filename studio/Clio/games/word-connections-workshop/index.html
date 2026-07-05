@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Connections | Clio</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <h1 id="titleText">连词工坊 Word Connections</h1>
+        <p class="subtitle" id="subtitleText">观察词和词之间的多重关系，一个词可以连接多条线。</p>
+      </div>
+      <div class="controls">
+        <button id="langBtn" class="mini" type="button">中文 / EN</button>
+        <label for="levelSelect" id="levelLabel">难度</label>
+        <select id="levelSelect">
+          <option value="L1">L1</option>
+          <option value="L2" selected>L2</option>
+        </select>
+        <button id="undoBtn" class="btn" type="button">撤销一步</button>
+        <button id="resetBtn" class="btn" type="button">重置</button>
+        <button id="dumpBtn" class="btn primary" type="button">导出会话 JSON</button>
+      </div>
+    </header>
+
+    <section class="board-wrap">
+      <div class="hud">
+        <div class="chip"><span id="correctLabel">正确</span>: <span id="correctCount">0</span></div>
+        <div class="chip"><span id="wrongLabel">错误</span>: <span id="wrongCount">0</span></div>
+        <div class="chip"><span id="dupLabel">重复</span>: <span id="dupCount">0</span></div>
+        <div class="chip"><span id="foundLabel">已发现关系</span>: <span id="foundCount">0</span>/<span id="targetCount">0</span></div>
+      </div>
+      <div id="feedback"></div>
+
+      <div class="board" id="board">
+        <div class="col">
+          <h2 class="col-title" id="leftTitle">左列词</h2>
+          <div class="word-list" id="leftList"></div>
+        </div>
+
+        <svg class="link-canvas" id="linkCanvas"></svg>
+
+        <div class="col">
+          <h2 class="col-title" id="rightTitle">右列词</h2>
+          <div class="word-list" id="rightList"></div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><i class="dot antonym"></i><span id="legendAntonym">反义关系</span></span>
+        <span><i class="dot co"></i><span id="legendCo">关联关系</span></span>
+        <span id="lineHint">提示：点击一条已画的线可删除它</span>
+      </div>
+
+      <div class="log" id="eventLog"></div>
+    </section>
+  </main>
+
+  <script src="./data.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
