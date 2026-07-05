@@ -33,10 +33,26 @@
       gap: 12px;
       margin-bottom: 18px;
     }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
     .back {
       color: #0369a1;
       font-weight: 700;
       text-decoration: none;
+    }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      color: #0f172a;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
     }
     h1 {
       margin: 0;
@@ -92,30 +108,59 @@
     }
   </style>
 </head>
-<body>
+<body data-lang="zh">
   <main class="wrap">
     <div class="top">
-      <a class="back" href="../index.html">← 返回主页</a>
+      <a class="back" href="../index.html" data-i18n="back" data-zh="← 返回主页" data-en="← Back Home">← 返回主页</a>
+      <div class="top-actions">
+        <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+      </div>
     </div>
 
-    <h1>创意工作坊 Creating Studio</h1>
-    <p class="lead">鼓励孩子从想法到作品，把创意变成可玩的思维练习。先从用户创意案例开始。</p>
+    <h1 data-i18n="title" data-zh="创意工作坊 Creating Studio" data-en="Creating Studio">创意工作坊 Creating Studio</h1>
+    <p class="lead" data-i18n="lead" data-zh="鼓励孩子从想法到作品，把创意变成可玩的思维练习。先从用户创意案例开始。" data-en="Encourage children to turn ideas into playable thinking exercises, starting from real creator cases.">鼓励孩子从想法到作品，把创意变成可玩的思维练习。先从用户创意案例开始。</p>
 
     <section class="grid">
       <article class="card">
-        <div class="tag">User Design</div>
+        <div class="tag" data-i18n="tag-user" data-zh="用户设计" data-en="User Design">用户设计</div>
         <h2 class="name">Clio Design</h2>
-        <p class="desc">这是 Clio 的用户名字页面入口。点击进入后可查看该用户设计的游戏列表。</p>
-        <a class="go" href="./Clio/index.html">进入 Clio 页面</a>
+        <p class="desc" data-i18n="clio-desc" data-zh="这是 Clio 的用户名字页面入口。点击进入后可查看该用户设计的游戏列表。" data-en="This is the entry page for Clio's creator profile. Enter to view the game list designed by this user.">这是 Clio 的用户名字页面入口。点击进入后可查看该用户设计的游戏列表。</p>
+        <a class="go" href="./Clio/index.html" data-i18n="go-clio" data-zh="进入 Clio 页面" data-en="Enter Clio Page">进入 Clio 页面</a>
       </article>
 
       <article class="card">
-        <div class="tag">Coming Next</div>
-        <h2 class="name">More Creator Cases</h2>
-        <p class="desc">后续可扩展更多孩子或老师的创意案例，形成创意共创库。</p>
-        <a class="go" href="./Clio/index.html">查看样例结构</a>
+        <div class="tag" data-i18n="tag-next" data-zh="即将上线" data-en="Coming Next">即将上线</div>
+        <h2 class="name" data-i18n="more-name" data-zh="更多创意案例" data-en="More Creator Cases">更多创意案例</h2>
+        <p class="desc" data-i18n="more-desc" data-zh="后续可扩展更多孩子或老师的创意案例，形成创意共创库。" data-en="More creator cases from children or teachers can be added later to build a co-creation library.">后续可扩展更多孩子或老师的创意案例，形成创意共创库。</p>
+        <a class="go" href="./Clio/index.html" data-i18n="view-sample" data-zh="查看样例结构" data-en="View Sample Structure">查看样例结构</a>
       </article>
     </section>
   </main>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const langBtn = document.getElementById('langBtn');
+      const nodes = document.querySelectorAll('[data-i18n]');
+
+      function applyLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        document.title = lang === 'en' ? 'Creating Studio | MindsEvo' : '创意工作坊 | MindsEvo';
+        nodes.forEach((node) => {
+          const text = node.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
+          if (text != null) node.textContent = text;
+        });
+        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+        localStorage.setItem('mindsevo-lang', lang);
+      }
+
+      const saved = localStorage.getItem('mindsevo-lang');
+      applyLang(saved === 'en' ? 'en' : 'zh');
+      langBtn.addEventListener('click', () => {
+        applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+      });
+    })();
+  </script>
 </body>
 </html>

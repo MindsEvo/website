@@ -25,12 +25,29 @@
       margin: 0 auto;
       padding: 28px 20px 48px;
     }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
     .back {
       display: inline-block;
       text-decoration: none;
       color: #0369a1;
       font-weight: 700;
-      margin-bottom: 16px;
+    }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      color: #0f172a;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
     }
     .hero {
       background: #fff;
@@ -146,37 +163,62 @@
     }
   </style>
 </head>
-<body>
+<body data-lang="zh">
   <main class="page">
-    <a class="back" href="../index.html">← 返回创意工作坊</a>
+    <div class="top">
+      <a class="back" href="../index.html" data-i18n="back" data-zh="← 返回创意工作坊" data-en="← Back to Creating Studio">← 返回创意工作坊</a>
+      <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+    </div>
 
     <section class="hero">
       <div class="tag">User Name Page</div>
       <h1>Clio Design</h1>
-      <p class="sub">这里是用户名字页面。下一步进入游戏列表，选择具体游戏开始体验。</p>
-      <div class="name-chip">Creator: Clio</div>
+      <p class="sub" data-i18n="sub" data-zh="这里是用户名字页面。下一步进入游戏列表，选择具体游戏开始体验。" data-en="This is the creator name page. Enter the game list and choose a playable game to start.">这里是用户名字页面。下一步进入游戏列表，选择具体游戏开始体验。</p>
+      <div class="name-chip" data-i18n="creator" data-zh="创作者：嘻嘻" data-en="Creator: Clio">创作者：嘻嘻</div>
 
       <div class="actions">
-        <a class="btn btn-primary" href="./games/index.html">进入游戏列表</a>
-        <a class="btn btn-secondary" href="../index.html">返回 Studio 首页</a>
+        <a class="btn btn-primary" href="./games/index.html" data-i18n="go-games" data-zh="进入游戏列表" data-en="Enter Game List">进入游戏列表</a>
+        <a class="btn btn-secondary" href="../index.html" data-i18n="go-home" data-zh="返回 Studio 首页" data-en="Back to Studio Home">返回 Studio 首页</a>
       </div>
 
-      <p class="hint">当前已接入 3 个可玩游戏：Sorting Workshop（分拣工坊）、Prediction Workshop（预测工坊）、Word Connections Workshop（连词工坊）。</p>
+      <p class="hint" data-i18n="hint" data-zh="当前已接入 3 个可玩游戏：Sorting Workshop（分拣工坊）、Prediction Workshop（预测工坊）、Word Connections Workshop（连词工坊）。" data-en="There are 3 playable games connected: Sorting Workshop, Prediction Workshop, and Word Connections Workshop.">当前已接入 3 个可玩游戏：Sorting Workshop（分拣工坊）、Prediction Workshop（预测工坊）、Word Connections Workshop（连词工坊）。</p>
 
       <section class="insight" aria-label="Design Insight">
         <h2 class="insight-title">Design Insight</h2>
-        <p class="insight-meta">这个创意来源于 Clio 对颜色变化的观察。她把绘画中的颜色混合与游戏中的动态效果结合起来，设计出“观察—预测—验证”的玩法。</p>
+        <p class="insight-meta" data-i18n="insight-meta" data-zh="这个创意来源于 Clio 对颜色变化的观察。她把绘画中的颜色混合与游戏中的动态效果结合起来，设计出“观察—预测—验证”的玩法。" data-en="This idea comes from Clio's observation of color changes. She combined color mixing in drawing with dynamic game effects to design an observe-predict-verify loop.">这个创意来源于 Clio 对颜色变化的观察。她把绘画中的颜色混合与游戏中的动态效果结合起来，设计出“观察—预测—验证”的玩法。</p>
         <img class="insight-image" src="./games/assets/clio-sketch-1.jpg" alt="Clio 设计草图" />
         <div class="insight-actions">
-          <a class="insight-link" href="./games/assets/clio-sketch-1.jpg" target="_blank" rel="noreferrer">查看大图</a>
+          <a class="insight-link" href="./games/assets/clio-sketch-1.jpg" target="_blank" rel="noreferrer" data-i18n="view-image" data-zh="查看大图" data-en="View Larger">查看大图</a>
         </div>
-        <p class="insight-note">我们保留了她的核心想法，并将它实现为一个可以真正体验的小游戏。设计重点是把“观察”与“预测”拆开，让孩子先看到规律，再进行判断练习，避免把两种认知能力混成同一类统计。</p>
+        <p class="insight-note" data-i18n="insight-note" data-zh="我们保留了她的核心想法，并将它实现为一个可以真正体验的小游戏。设计重点是把“观察”与“预测”拆开，让孩子先看到规律，再进行判断练习，避免把两种认知能力混成同一类统计。" data-en="We preserved her core idea and turned it into a truly playable mini game. The design focus is separating observation from prediction, so children first see the pattern and then practice decisions, instead of mixing two abilities into one statistic.">我们保留了她的核心想法，并将它实现为一个可以真正体验的小游戏。设计重点是把“观察”与“预测”拆开，让孩子先看到规律，再进行判断练习，避免把两种认知能力混成同一类统计。</p>
       </section>
     </section>
   </main>
 
   <script>
-    // Keep this page bilingual-ready for future creator cases.
+    (function () {
+      const body = document.body;
+      const langBtn = document.getElementById('langBtn');
+      const nodes = document.querySelectorAll('[data-i18n]');
+
+      function applyLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        document.title = lang === 'en' ? 'Clio Design | MindsEvo' : 'Clio Design | MindsEvo';
+        nodes.forEach((node) => {
+          const text = node.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
+          if (text != null) node.textContent = text;
+        });
+        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+        localStorage.setItem('mindsevo-lang', lang);
+      }
+
+      const saved = localStorage.getItem('mindsevo-lang');
+      applyLang(saved === 'en' ? 'en' : 'zh');
+      langBtn.addEventListener('click', () => {
+        applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+      });
+    })();
   </script>
 </body>
 </html>

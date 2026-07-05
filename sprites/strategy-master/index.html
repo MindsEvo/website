@@ -34,6 +34,21 @@
       font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.82);
       border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 12px;
     }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-btn {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      padding: 7px 11px;
+      cursor: pointer;
+    }
     .page { max-width: 980px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 80px; }
     .panel { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: clamp(22px, 4vw, 36px); }
     .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
@@ -50,7 +65,10 @@
       <img src="../../logo.png" alt="MindsEvo" />
       <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
     </a>
-    <a class="back-link" href="../index.html"><span class="zh">返回小精灵系列</span><span class="en">Back to Sprite Series</span></a>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+      <a class="back-link" href="../index.html"><span class="zh">返回小精灵系列</span><span class="en">Back to Sprite Series</span></a>
+    </div>
   </nav>
 
   <main class="page">
@@ -61,5 +79,26 @@
       <div class="status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
     </section>
   </main>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const langBtn = document.getElementById('langBtn');
+
+      function applyLang(lang) {
+        body.setAttribute('data-lang', lang === 'en' ? 'en' : 'zh');
+        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+        localStorage.setItem('mindsevo-lang', lang);
+      }
+
+      const saved = localStorage.getItem('mindsevo-lang');
+      applyLang(saved === 'en' ? 'en' : 'zh');
+
+      langBtn.addEventListener('click', function () {
+        applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+      });
+    })();
+  </script>
 </body>
 </html>
