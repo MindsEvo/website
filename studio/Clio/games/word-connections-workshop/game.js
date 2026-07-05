@@ -18,7 +18,7 @@
       left: "一侧词",
       right: "另一侧词",
       legendMatch: "相同词正确连线",
-      legendDistractor: "重复词用于位置干扰",
+      legendDistractor: "同一侧的重复词用于位置干扰",
       lineHint: "提示：先点任意一侧的词，再点另一侧完全相同的词；点击已画连线可撤销",
       pickFirst: "请先选择任意一侧的词",
       pickOther: "已选择 {0}，请点另一侧完全相同的词",
@@ -47,7 +47,7 @@
       left: "One Side",
       right: "Other Side",
       legendMatch: "Correct identical-word line",
-      legendDistractor: "Repeated words act as position distractors",
+      legendDistractor: "Repeated words on the same side act as position distractors",
       lineHint: "Tip: pick a word on either side, then pick the exact same word on the other side; click a line to undo",
       pickFirst: "Pick a word on either side first",
       pickOther: "Selected {0}, now pick the exact same word on the other side",
@@ -66,7 +66,7 @@
 
   var state = {
     lang: "zh",
-    level: "L2",
+    level: "L1",
     selected: null,
     startPickAt: 0,
     eventSeq: 1,
@@ -571,7 +571,9 @@
     }
 
     if (firstItem.side === item.side) {
-      addHintLink(firstItem, item);
+      if (firstItem.wordId === item.wordId) {
+        addHintLink(firstItem, item);
+      }
       state.selected = item.instanceId;
       state.startPickAt = performance.now();
       btn.classList.add("active");

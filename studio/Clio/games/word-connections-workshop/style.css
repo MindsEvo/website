@@ -18,7 +18,10 @@ body {
   margin: 0;
   font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at 15% 0%, #dbeafe 0%, var(--bg) 50%);
+  background:
+    radial-gradient(circle at 12% -8%, #dbeafe 0%, rgba(219, 234, 254, 0.12) 45%, transparent 65%),
+    radial-gradient(circle at 90% 0%, #e0f2fe 0%, rgba(224, 242, 254, 0.08) 42%, transparent 60%),
+    linear-gradient(180deg, #eef5ff 0%, var(--bg) 36%, #edf7ff 100%);
 }
 
 .app {
@@ -28,12 +31,12 @@ body {
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: 14px;
+  row-gap: 8px;
   margin-bottom: 12px;
-  flex-wrap: wrap;
 }
 
 h1 {
@@ -49,20 +52,22 @@ h1 {
 
 .controls {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-self: end;
 }
 
 .mini,
 .btn,
 select {
   border: 1px solid var(--line);
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
   color: #0f172a;
   border-radius: 10px;
-  padding: 8px 12px;
+  padding: 7px 10px;
   font-weight: 700;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
 }
 
 .btn.primary {
@@ -75,8 +80,10 @@ select {
   margin-top: 12px;
   border: 1.5px solid var(--line);
   border-radius: 16px;
-  background: var(--panel);
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.1);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow:
+    0 16px 34px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
   padding: 14px;
 }
 
@@ -90,7 +97,7 @@ select {
 .chip {
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #f8fbff;
+  background: linear-gradient(180deg, #fbfdff 0%, #f2f8ff 100%);
   padding: 7px 12px;
   font-weight: 700;
   font-size: 13px;
@@ -113,7 +120,9 @@ select {
   grid-template-columns: 1fr 1fr;
   gap: 22px;
   min-height: 520px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #fdf4ff 50%, #f0fdf4 100%);
+  background:
+    linear-gradient(135deg, rgba(224, 242, 254, 0.6) 0%, rgba(250, 245, 255, 0.6) 45%, rgba(236, 253, 245, 0.62) 100%),
+    linear-gradient(180deg, #f8fbff 0%, #f4f9ff 100%);
   border-radius: 14px;
   padding: 8px;
 }
@@ -122,7 +131,7 @@ select {
   border: 1.5px solid var(--line);
   border-radius: 24px;
   padding: 14px 16px 18px;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
   min-height: 500px;
   display: flex;
   flex-direction: column;
@@ -149,8 +158,8 @@ select {
   left: 0;
   top: 0;
   transform: translate(-50%, -50%);
-  border: 1.5px solid #c7d9f8;
-  background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
+  border: 1.5px solid #bfd5f8;
+  background: linear-gradient(145deg, #ffffff 0%, #ecf5ff 100%);
   border-radius: 10px;
   width: 72px;
   min-width: 72px;
@@ -169,9 +178,9 @@ select {
 }
 
 .word-node:hover:not(:disabled) {
-  background: linear-gradient(145deg, #eff6ff 0%, #e0f2fe 100%);
+  background: linear-gradient(145deg, #eef8ff 0%, #ddf4ff 100%);
   border-color: #93c5fd;
-  box-shadow: 0 2px 8px rgba(99,102,241,0.15);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.16);
 }
 
 .word-node.matched,
@@ -182,8 +191,8 @@ select {
 }
 
 .word-node.distractor {
-  border-style: dashed;
-  background: linear-gradient(145deg, #fff7ed 0%, #fef3c7 100%);
+  border-style: solid;
+  background: linear-gradient(145deg, #ffffff 0%, #ecf5ff 100%);
 }
 
 .word-node.active {
@@ -229,6 +238,13 @@ select {
 }
 
 @media (max-width: 860px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+  .controls {
+    justify-self: start;
+    flex-wrap: wrap;
+  }
   .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .board { grid-template-columns: 1fr; min-height: auto; }
   .col {

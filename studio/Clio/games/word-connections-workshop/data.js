@@ -8,14 +8,14 @@ window.WORD_MATCH_DATA = {
   levels: {
     L1: {
       id: "L1",
-      label: "Same Word Match",
+      label: "Same Word Match - Basic",
       pair_count: 4,
       duplicate_left_count: 1,
-      duplicate_right_count: 1
+      duplicate_right_count: 0
     },
     L2: {
       id: "L2",
-      label: "Duplicate Distractors",
+      label: "Same Word Match - Advanced Distractors",
       pair_count: 5,
       duplicate_left_count: 1,
       duplicate_right_count: 1
