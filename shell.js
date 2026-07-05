@@ -1,5 +1,5 @@
 /**
- * MindsEvo Shell  v1.0.0
+ * MindsEvo Shell  v1.1.0
  * ─────────────────────────────────────────────────────────
  * Shared foundation for ALL games and learning modules.
  *
@@ -253,6 +253,191 @@
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
     // Notify all listeners (games can react to re-render)
     document.dispatchEvent(new CustomEvent('shell:langchange', { detail: { lang: lang } }));
+  }
+
+  // ── Runtime Compatibility Layer (Shell-1 / Shell-2 shared) ──
+  function createRuntimeLayer() {
+    var sessionSeq = 0;
+    var activeSession = null;
+    var lifecycleListeners = [];
+    var timerRegistry = Object.create(null);
+    var logs = [];
+    var diagnosticsEnabled = false;
+
+    function now() {
+      return Date.now();
+    }
+
+    function log(kind, payload) {
+      if (!diagnosticsEnabled) return;
+      logs.push({ ts: now(), kind: kind, payload: payload || null });
+      if (logs.length > 800) logs.shift();
+    }
+
+    function beginSession(label) {
+      sessionSeq += 1;
+      activeSession = {
+        token: sessionSeq,
+        label: label || 'default',
+        startedAt: now()
+      };
+      log('session:begin', activeSession);
+      return activeSession.token;
+    }
+
+    function getActiveSessionToken() {
+      return activeSession ? activeSession.token : null;
+    }
+
+    function isActiveSession(token) {
+      return !!activeSession && activeSession.token === token;
+    }
+
+    function emitLifecycle(eventName, payload) {
+      log('lifecycle:' + eventName, payload);
+      lifecycleListeners.forEach(function (fn) {
+        try {
+          fn(eventName, payload || {});
+        } catch (e) {
+          console.warn('[shell.runtime] lifecycle listener error', e);
+        }
+      });
+    }
+
+    function onLifecycle(listener) {
+      if (typeof listener !== 'function') return function () {};
+      lifecycleListeners.push(listener);
+      return function off() {
+        lifecycleListeners = lifecycleListeners.filter(function (fn) { return fn !== listener; });
+      };
+    }
+
+    function timerKey(owner, key) {
+      return String(owner || 'global') + '::' + String(key || 'default');
+    }
+
+    function clearTimer(owner, key) {
+      var k = timerKey(owner, key);
+      var item = timerRegistry[k];
+      if (!item) return;
+      clearTimeout(item.id);
+      delete timerRegistry[k];
+      log('timer:clear', { owner: owner, key: key });
+    }
+
+    function clearOwnerTimers(owner) {
+      var prefix = String(owner || 'global') + '::';
+      Object.keys(timerRegistry).forEach(function (k) {
+        if (k.indexOf(prefix) === 0) {
+          clearTimeout(timerRegistry[k].id);
+          delete timerRegistry[k];
+        }
+      });
+      log('timer:clearOwner', { owner: owner });
+    }
+
+    function setGuardedTimer(owner, key, ms, callback, sessionToken) {
+      clearTimer(owner, key);
+      var k = timerKey(owner, key);
+      var issuedAt = now();
+      var id = setTimeout(function () {
+        var item = timerRegistry[k];
+        if (!item) return;
+        delete timerRegistry[k];
+        if (sessionToken != null && !isActiveSession(sessionToken)) {
+          log('timer:stale', { owner: owner, key: key, token: sessionToken });
+          return;
+        }
+        log('timer:fire', { owner: owner, key: key, delay: ms, age: now() - issuedAt });
+        callback();
+      }, ms);
+      timerRegistry[k] = {
+        id: id,
+        owner: owner || 'global',
+        key: key || 'default',
+        sessionToken: sessionToken == null ? null : sessionToken,
+        issuedAt: issuedAt,
+        delayMs: ms
+      };
+      log('timer:set', { owner: owner, key: key, delay: ms, token: sessionToken });
+      return id;
+    }
+
+    function bindUnifiedTap(element, handler) {
+      if (!element || typeof handler !== 'function') return function () {};
+
+      var lastTouchTs = 0;
+      function invoke(ev) {
+        if (ev && ev.cancelable) ev.preventDefault();
+        handler(ev);
+      }
+
+      function onTouchEnd(ev) {
+        lastTouchTs = (window.performance && performance.now) ? performance.now() : now();
+        invoke(ev);
+      }
+
+      function onClick(ev) {
+        var t = (window.performance && performance.now) ? performance.now() : now();
+        if (t - lastTouchTs < 500) return;
+        invoke(ev);
+      }
+
+      element.addEventListener('touchend', onTouchEnd, { passive: false });
+      element.addEventListener('click', onClick);
+
+      return function unbind() {
+        element.removeEventListener('touchend', onTouchEnd);
+        element.removeEventListener('click', onClick);
+      };
+    }
+
+    function commitAnimationStart(elements) {
+      var list = Array.isArray(elements) ? elements : [elements];
+      list.forEach(function (el) {
+        if (!el) return;
+        void el.offsetHeight;
+      });
+      log('anim:commitStart', { count: list.length });
+    }
+
+    function nextFrame(callback, frames) {
+      var count = Math.max(1, Number(frames || 1));
+      function step() {
+        if (count <= 1) {
+          callback();
+          return;
+        }
+        count -= 1;
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) emitLifecycle('background', {});
+      else emitLifecycle('foreground', {});
+    });
+
+    return {
+      beginSession: beginSession,
+      getActiveSessionToken: getActiveSessionToken,
+      isActiveSession: isActiveSession,
+      setGuardedTimer: setGuardedTimer,
+      clearTimer: clearTimer,
+      clearOwnerTimers: clearOwnerTimers,
+      onLifecycle: onLifecycle,
+      emitLifecycle: emitLifecycle,
+      bindUnifiedTap: bindUnifiedTap,
+      commitAnimationStart: commitAnimationStart,
+      nextFrame: nextFrame,
+      diagnostics: {
+        enable: function () { diagnosticsEnabled = true; },
+        disable: function () { diagnosticsEnabled = false; },
+        getLogs: function () { return logs.slice(); },
+        clear: function () { logs = []; }
+      }
+    };
   }
   // ── Shell-1 Game Framework ───────────────────────────────────
   /**
@@ -1399,7 +1584,7 @@
 
   // ── Public shell object ──────────────────────────────────────
   var shell = {
-    version:         '1.0.0',
+    version:         '1.1.0',
     lang:            storage.get('user:settings:lang', 'zh') || 'zh',
     t:               t,
     speak:           speak,
@@ -1408,6 +1593,7 @@
     createGame:          createGame,
     createReasoningGame: createReasoningGame,
     storage:             storage,
+    runtime:             createRuntimeLayer(),
     nav:             nav,
     user:            user,
     report:          report

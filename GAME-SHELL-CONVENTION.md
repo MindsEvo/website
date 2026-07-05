@@ -14,6 +14,40 @@
 
 ---
 
+## 0.2 跨平台时序兼容基线（Shell-1 / Shell-2 共用）
+
+从 v1.1.0 起，所有 Shell 游戏应优先复用 `shell.runtime`，避免各游戏重复处理 Android / iPad / PC 时序差异。
+
+六个架构点：
+
+1. 会话隔离：`beginSession()` + token 校验，防止旧回调污染新局。
+2. 计时治理：`setGuardedTimer()` / `clearTimer()` / `clearOwnerTimers()`。
+3. 生命周期：`onLifecycle()` / `emitLifecycle()`，统一 start/pause/reset/background/foreground。
+4. 输入归一：`bindUnifiedTap()` 统一 touch 与 click，避免双触发或延迟触发。
+5. 动画提交：`commitAnimationStart()` + `nextFrame()`，减少移动端丢帧问题。
+6. 诊断观测：`diagnostics.enable()` + `getLogs()`，用于跨端问题定位。
+
+最小接入建议：
+
+- 任何带定时器的玩法，必须用 `setGuardedTimer()`，并绑定 session token。
+- 任何触控主交互按钮，优先用 `bindUnifiedTap()`。
+- 页面进入后台时，建议基于 `background` 生命周期自动 pause。
+
+示例：
+
+```javascript
+var token = shell.runtime.beginSession('prediction-workshop');
+shell.runtime.setGuardedTimer('practice-lane', 'fall', 1200, function () {
+  // only runs when session is still active
+}, token);
+
+var unbind = shell.runtime.bindUnifiedTap(buttonEl, function () {
+  // unified tap handler
+});
+```
+
+---
+
 ## 0.1 治理与门禁文档（必读）
 
 为保证“公共能力零重复、模块互不干扰”，请在设计和开发前同步阅读：
