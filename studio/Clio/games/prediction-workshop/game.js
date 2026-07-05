@@ -319,10 +319,18 @@
     ball.style.top = Math.round(top) + "px";
   }
 
+  function commitBallStartFrame(ballA, ballB) {
+    // Force a layout pass so touch browsers keep the start frame before animating.
+    void ballA.offsetHeight;
+    void ballB.offsetHeight;
+  }
+
   function computeLanePositions(host) {
     var rect = host.getBoundingClientRect();
-    var w = rect.width;
-    var h = rect.height;
+    var w = host.clientWidth || rect.width;
+    var h = host.clientHeight || rect.height;
+    w = Math.max(200, w);
+    h = Math.max(320, h);
     var xA = w * 0.36;
     var xB = w * 0.54;
     return {
@@ -508,6 +516,7 @@
     setBallTransition(ui.a, ui.b, 0);
     setBallPos(ui.a, lane.positions.startA.left, lane.positions.startA.top);
     setBallPos(ui.b, lane.positions.startB.left, lane.positions.startB.top);
+    commitBallStartFrame(ui.a, ui.b);
 
     if (lane.kind === "practice") {
       enablePracticeChoices(true);
@@ -518,8 +527,10 @@
     var durationMs = computeFallDurationMs(lane.positions);
     setBallTransition(ui.a, ui.b, durationMs);
     window.requestAnimationFrame(function () {
-      setBallPos(ui.a, lane.positions.endA.left, lane.positions.endA.top);
-      setBallPos(ui.b, lane.positions.endB.left, lane.positions.endB.top);
+      window.requestAnimationFrame(function () {
+        setBallPos(ui.a, lane.positions.endA.left, lane.positions.endA.top);
+        setBallPos(ui.b, lane.positions.endB.left, lane.positions.endB.top);
+      });
     });
 
     scheduleLaneTimer(lane, "fall", durationMs, function () {
