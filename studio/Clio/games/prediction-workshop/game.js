@@ -597,15 +597,15 @@
       if (!predicted) {
         state.counts.miss += 1;
         setFeedback(t("missed"), "feedback-miss");
-        playTone(120, 0.18, 0.03, "square");
+        playTone(180, 0.22, 0.15, "square");
       } else if (predicted === lane.combo.actualColor) {
         state.counts.correct += 1;
         setFeedback(t("good"), "feedback-ok");
-        playTone(760, 0.12, 0.03, "triangle");
+        playTone(880, 0.15, 0.16, "sine");
       } else {
         state.counts.wrong += 1;
         setFeedback(t("bad"), "feedback-bad");
-        playTone(180, 0.16, 0.04, "sawtooth");
+        playTone(200, 0.20, 0.15, "sawtooth");
       }
       updateCounters();
       enablePracticeChoices(false);
@@ -786,7 +786,7 @@
       btn.classList.add("active");
       state.practiceLane.selectedColor = btn.getAttribute("data-color");
       state.practiceLane.selectedAt = performance.now();
-      playTone(520, 0.06, 0.02, "triangle");
+      playTone(520, 0.06, 0.14, "triangle");
     }
 
     els.choiceBalls.forEach(function (btn) {

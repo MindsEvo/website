@@ -1,68 +1,66 @@
 (function () {
   "use strict";
 
-  var DATA = window.WORD_CONNECTIONS_DATA;
-  var ALLOWED_RELATIONS = {
-    "antonym": true,
-    "co-occurrence": true
-  };
+  var DATA = window.WORD_MATCH_DATA;
 
   var TEXT = {
     zh: {
-      title: "连词工坊 Word Connections",
-      subtitle: "观察词和词之间的多重关系，一个词可以连接多条线。",
+      title: "连线组词 Word Match",
+      subtitle: "连接左右完全相同的词，并排除只看位置的干扰策略。",
       level: "难度",
       undo: "撤销一步",
       reset: "重置",
       dump: "导出会话 JSON",
       correct: "正确",
       wrong: "错误",
-      duplicate: "重复",
-      found: "已发现关系",
-      left: "左列词",
-      right: "右列词",
-      antonym: "反义关系",
-      co: "关联关系",
-      lineHint: "提示：点击一条已画的线可删除它",
-      pickFirst: "请先选择第一个词",
-      pickSecond: "已选择 {0}，请再点另一个词",
-      sameWord: "不能和自己连线",
-      duplicateMsg: "这条关系已存在（不重复计分）",
-      correctMsg: "连接成功：{0}（{1}）",
-      wrongMsg: "这条线不在关系图中，可以重试",
-      removedMsg: "已删除一条连线",
-      noUndo: "没有可撤销的连线",
-      resetMsg: "已重置本轮",
+      distractor: "干扰命中",
+      found: "已完成配对",
+      left: "一侧词",
+      right: "另一侧词",
+      legendMatch: "相同词正确连线",
+      legendDistractor: "重复词用于位置干扰",
+      lineHint: "提示：先点任意一侧的词，再点另一侧完全相同的词；点击已画连线可撤销",
+      pickFirst: "请先选择任意一侧的词",
+      pickOther: "已选择 {0}，请点另一侧完全相同的词",
+      wrongSide: "第二次需要点击另一侧的词",
+      sameGroup: "同侧词不能互连",
+      wrongMsg: "这两个词不完全相同，请再试一次",
+      correctMsg: "配对成功：{0} ↔ {1}",
+      removedMsg: "已撤销上一条配对",
+      noUndo: "没有可撤销的配对",
+      resetMsg: "已重新随机本轮词组",
       dumped: "会话已输出到 DevTools 控制台",
-      doneMsg: "太棒了！本关关系已全部发现"
+      doneMsg: "太棒了！本轮配对已全部完成",
+      distractorHit: "已识别重复词干扰：{0} ↔ {1}"
     },
     en: {
-      title: "Word Connections",
-      subtitle: "Build multiple links between words. One word can connect to many words.",
+      title: "Word Match",
+      subtitle: "Match identical words across the two sides and resist position-only shortcuts.",
       level: "Level",
       undo: "Undo",
       reset: "Reset",
       dump: "Dump Session JSON",
       correct: "Correct",
       wrong: "Wrong",
-      duplicate: "Duplicate",
-      found: "Found",
-      left: "Left Words",
-      right: "Right Words",
-      antonym: "Antonym",
-      co: "Co-occurrence",
-      lineHint: "Tip: click an existing line to remove it",
-      pickFirst: "Pick the first word",
-      pickSecond: "Selected {0}, pick another word",
-      sameWord: "Cannot connect a word to itself",
-      duplicateMsg: "This edge already exists (not scored again)",
-      correctMsg: "Good link: {0} ({1})",
-      wrongMsg: "This edge is not in the graph. Try another one",
-      removedMsg: "One link removed",
+      distractor: "Distractor Hits",
+      found: "Matched",
+      left: "One Side",
+      right: "Other Side",
+      legendMatch: "Correct identical-word line",
+      legendDistractor: "Repeated words act as position distractors",
+      lineHint: "Tip: pick a word on either side, then pick the exact same word on the other side; click a line to undo",
+      pickFirst: "Pick a word on either side first",
+      pickOther: "Selected {0}, now pick the exact same word on the other side",
+      wrongSide: "Your second pick must be on the other side",
+      sameGroup: "Do not connect words on the same side",
+      wrongMsg: "Those two words are not exactly the same. Try again",
+      correctMsg: "Matched: {0} <-> {1}",
+      removedMsg: "Last match removed",
       noUndo: "Nothing to undo",
-      resetMsg: "Round reset",
+      resetMsg: "Round reshuffled",
       dumped: "Session dumped to DevTools console",
-      doneMsg: "Great! You found all edges in this level"
+      doneMsg: "Great! All matches are complete",
+      distractorHit: "Repeated-word distractor handled: {0} <-> {1}"
     }
   };
 
@@ -70,18 +68,22 @@
     lang: "zh",
     level: "L2",
     selected: null,
-    attempts: 0,
     startPickAt: 0,
     eventSeq: 1,
-    activeEdges: [],
-    activeEdgeSet: new Set(),
-    adjacencyCount: {},
-    stats: { correct: 0, wrong: 0, duplicate: 0 },
-    events: []
+    currentRound: null,
+    activeMatches: [],
+    stats: { correct: 0, wrong: 0, distractor: 0 },
+    events: [],
+    hintLinks: [],
+    sfxEnabled: true,
+    audioCtx: null,
+    musicEnabled: true,
+    musicTimer: null,
+    musicNodes: []
   };
 
   var runtimeCtrl = window.ClioRuntimeBridge
-    ? window.ClioRuntimeBridge.createController("clio-word-connections-workshop")
+    ? window.ClioRuntimeBridge.createController("clio-word-match-workshop")
     : null;
 
   var els = {
@@ -92,6 +94,8 @@
     levelSelect: document.getElementById("levelSelect"),
     undoBtn: document.getElementById("undoBtn"),
     resetBtn: document.getElementById("resetBtn"),
+    musicBtn: document.getElementById("musicBtn"),
+    sfxBtn: document.getElementById("sfxBtn"),
     dumpBtn: document.getElementById("dumpBtn"),
     correctLabel: document.getElementById("correctLabel"),
     wrongLabel: document.getElementById("wrongLabel"),
@@ -115,6 +119,72 @@
     eventLog: document.getElementById("eventLog")
   };
 
+  function ensureAudio() {
+    if (!state.audioCtx) {
+      var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextCtor) { return null; }
+      state.audioCtx = new AudioContextCtor();
+    }
+    if (state.audioCtx.state === "suspended") { state.audioCtx.resume(); }
+    return state.audioCtx;
+  }
+
+  function stopMusic() {
+    if (state.musicTimer) {
+      window.clearInterval(state.musicTimer);
+      state.musicTimer = null;
+    }
+    while (state.musicNodes.length) {
+      var node = state.musicNodes.pop();
+      try { node.stop(); } catch (e) {}
+      try { node.disconnect(); } catch (e2) {}
+    }
+  }
+
+  function playMusic() {
+    var ctx = ensureAudio();
+    if (!ctx || !state.musicEnabled) { return; }
+    stopMusic();
+    var sequence = [261.63, 329.63, 392.0, 329.63, 440, 392.0];
+    var idx = 0;
+    state.musicTimer = window.setInterval(function () {
+      if (!state.musicEnabled) { return; }
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = sequence[idx % sequence.length];
+      gain.gain.value = 0.022;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.22);
+      state.musicNodes.push(osc);
+      idx += 1;
+    }, 360);
+  }
+
+  function playTone(freqs, durations, type) {
+    var ctx = ensureAudio();
+    if (!ctx || !state.sfxEnabled) { return; }
+    var startT = ctx.currentTime;
+    freqs.forEach(function (freq, i) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = type || "sine";
+      osc.frequency.setValueAtTime(freq, startT);
+      gain.gain.setValueAtTime(0.18, startT);
+      gain.gain.exponentialRampToValueAtTime(0.001, startT + durations[i]);
+      osc.start(startT);
+      osc.stop(startT + durations[i]);
+      startT += durations[i] * 0.7;
+    });
+  }
+  function sfxCorrect() { playTone([523, 659, 784], [0.12, 0.12, 0.18], "sine"); }
+  function sfxWrong()   { playTone([220, 180], [0.12, 0.18], "sawtooth"); }
+  function sfxDone()    { playTone([523, 659, 784, 1047], [0.12, 0.12, 0.12, 0.28], "sine"); }
+
   function t(key) {
     return TEXT[state.lang][key] || key;
   }
@@ -123,47 +193,30 @@
     return t(key).replace("{0}", valueA || "").replace("{1}", valueB || "");
   }
 
-  function canonicalKey(a, b) {
-    return a < b ? (a + "|" + b) : (b + "|" + a);
+  function shuffle(list) {
+    var arr = list.slice();
+    var i;
+    for (i = arr.length - 1; i > 0; i -= 1) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    return arr;
   }
 
-  function relationColor(type) {
-    return type === "antonym" ? "#ef4444" : "#3b82f6";
+  function sample(list, count) {
+    return shuffle(list).slice(0, Math.min(count, list.length));
+  }
+
+  function validateData() {
+    if (!Array.isArray(DATA.word_pool) || !DATA.word_pool.length) {
+      throw new Error("word_pool is required for Word Match");
+    }
   }
 
   function getLevel() {
     return DATA.levels[state.level];
-  }
-
-  function validateData() {
-    Object.keys(DATA.levels).forEach(function (levelId) {
-      var level = DATA.levels[levelId];
-      level.edges.forEach(function (edge) {
-        if (!ALLOWED_RELATIONS[edge.relation_type]) {
-          throw new Error("Invalid relation_type in " + levelId + ": " + edge.relation_type);
-        }
-      });
-    });
-  }
-
-  function buildEdgeMap(level) {
-    var map = Object.create(null);
-    level.edges.forEach(function (edge) {
-      var key = canonicalKey(edge.from, edge.to);
-      map[key] = edge.relation_type;
-    });
-    return map;
-  }
-
-  function levelWordsSplit(level) {
-    var list = level.nodes.slice();
-    var mid = Math.ceil(list.length / 2);
-    return {
-      left: list.slice(0, mid),
-      right: list.slice(mid).sort(function () {
-        return Math.random() - 0.5;
-      })
-    };
   }
 
   function labelOf(wordId) {
@@ -171,9 +224,95 @@
     return lex ? lex.display[state.lang] : wordId;
   }
 
+  function createRound() {
+    var level = getLevel();
+    var words = sample(DATA.word_pool, level.pair_count);
+    var pairedSet = Object.create(null);
+    words.forEach(function (wordId) {
+      pairedSet[wordId] = true;
+    });
+
+    var distractorPool = DATA.word_pool.filter(function (wordId) {
+      return !pairedSet[wordId];
+    });
+    var totalDistractorGroups = (level.duplicate_left_count || 0) + (level.duplicate_right_count || 0);
+    var chosenDistractorWords = sample(distractorPool, totalDistractorGroups);
+    var leftDistractorWords = chosenDistractorWords.slice(0, level.duplicate_left_count || 0);
+    var rightDistractorWords = chosenDistractorWords.slice(level.duplicate_left_count || 0);
+
+    var leftItems = words.map(function (wordId, index) {
+      return {
+        instanceId: "left-" + index + "-" + wordId,
+        side: "left",
+        wordId: wordId,
+        matched: false,
+        isDuplicate: false
+      };
+    });
+    var rightItems = words.map(function (wordId, index) {
+      return {
+        instanceId: "right-" + index + "-" + wordId,
+        side: "right",
+        wordId: wordId,
+        consumed: false,
+        isDuplicate: false
+      };
+    });
+    leftDistractorWords.forEach(function (wordId, index) {
+      leftItems.push({
+        instanceId: "left-dup-" + index + "-a-" + wordId,
+        side: "left",
+        wordId: wordId,
+        matched: false,
+        isDuplicate: true
+      });
+      leftItems.push({
+        instanceId: "left-dup-" + index + "-b-" + wordId,
+        side: "left",
+        wordId: wordId,
+        matched: false,
+        isDuplicate: true
+      });
+    });
+
+    rightDistractorWords.forEach(function (wordId, index) {
+      rightItems.push({
+        instanceId: "right-dup-" + index + "-a-" + wordId,
+        side: "right",
+        wordId: wordId,
+        consumed: false,
+        isDuplicate: true
+      });
+      rightItems.push({
+        instanceId: "right-dup-" + index + "-b-" + wordId,
+        side: "right",
+        wordId: wordId,
+        consumed: false,
+        isDuplicate: true
+      });
+    });
+
+    leftItems = shuffle(leftItems);
+    rightItems = shuffle(rightItems);
+
+    var duplicateCounts = Object.create(null);
+    leftItems.concat(rightItems).forEach(function (item) {
+      duplicateCounts[item.wordId] = (duplicateCounts[item.wordId] || 0) + 1;
+    });
+
+    return {
+      words: words,
+      leftItems: leftItems,
+      rightItems: rightItems,
+      duplicateCounts: duplicateCounts,
+      distractorWords: chosenDistractorWords,
+      layoutShape: DATA.layout_shape || "columns"
+    };
+  }
+
   function applyLocale() {
     document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
-    document.title = state.lang === "en" ? "Word Connections | Clio" : "连词工坊 Word Connections | Clio";
+    document.title = state.lang === "en" ? "Word Match | Clio" : "连线组词 Word Match | Clio";
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
     els.levelLabel.textContent = t("level");
@@ -182,15 +321,17 @@
     els.dumpBtn.textContent = t("dump");
     els.correctLabel.textContent = t("correct");
     els.wrongLabel.textContent = t("wrong");
-    els.dupLabel.textContent = t("duplicate");
+    els.dupLabel.textContent = t("distractor");
     els.foundLabel.textContent = t("found");
     els.leftTitle.textContent = t("left");
     els.rightTitle.textContent = t("right");
-    els.legendAntonym.textContent = t("antonym");
-    els.legendCo.textContent = t("co");
+    els.legendAntonym.textContent = t("legendMatch");
+    els.legendCo.textContent = t("legendDistractor");
     els.lineHint.textContent = t("lineHint");
     els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
-    renderWordColumns();
+    els.musicBtn.textContent = (state.lang === "zh" ? "音乐" : "Music") + ": " + (state.musicEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
+    els.sfxBtn.textContent = (state.lang === "zh" ? "音效" : "SFX") + ": " + (state.sfxEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
+    renderBoard();
     renderLines();
   }
 
@@ -203,41 +344,9 @@
     var level = getLevel();
     els.correctCount.textContent = String(state.stats.correct);
     els.wrongCount.textContent = String(state.stats.wrong);
-    els.dupCount.textContent = String(state.stats.duplicate);
-    els.foundCount.textContent = String(state.activeEdges.length);
-    els.targetCount.textContent = String(level.target_edges || level.edges.length);
-  }
-
-  function createNodeButton(wordId, side) {
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "word-node";
-    btn.dataset.wordId = wordId;
-    btn.dataset.side = side;
-    btn.textContent = labelOf(wordId);
-    if (runtimeCtrl) {
-      runtimeCtrl.bindTap(btn, function () {
-        onWordClick(wordId, side, btn);
-      });
-    } else {
-      btn.addEventListener("click", function () {
-        onWordClick(wordId, side, btn);
-      });
-    }
-    return btn;
-  }
-
-  function renderWordColumns() {
-    var level = getLevel();
-    var split = levelWordsSplit(level);
-    els.leftList.innerHTML = "";
-    els.rightList.innerHTML = "";
-    split.left.forEach(function (id) {
-      els.leftList.appendChild(createNodeButton(id, "left"));
-    });
-    split.right.forEach(function (id) {
-      els.rightList.appendChild(createNodeButton(id, "right"));
-    });
+    els.dupCount.textContent = String(state.stats.distractor);
+    els.foundCount.textContent = String(state.activeMatches.length);
+    els.targetCount.textContent = String(level.pair_count);
   }
 
   function clearSelectedVisual() {
@@ -246,12 +355,24 @@
     });
   }
 
-  function getNodeElement(wordId, side) {
-    return document.querySelector('.word-node[data-word-id="' + wordId + '"][data-side="' + side + '"]');
+  function findItem(instanceId) {
+    return state.currentRound.leftItems.concat(state.currentRound.rightItems).find(function (item) {
+      return item.instanceId === instanceId;
+    }) || null;
   }
 
-  function lineEndpoint(wordId, side) {
-    var node = getNodeElement(wordId, side);
+  function getWordItems(side, wordId) {
+    return state.currentRound[side === "left" ? "leftItems" : "rightItems"].filter(function (item) {
+      return item.wordId === wordId;
+    });
+  }
+
+  function getNodeElement(instanceId, side) {
+    return document.querySelector('.word-node[data-item-id="' + instanceId + '"][data-side="' + side + '"]');
+  }
+
+  function lineEndpoint(instanceId, side) {
+    var node = getNodeElement(instanceId, side);
     if (!node) {
       return null;
     }
@@ -261,35 +382,6 @@
       x: side === "left" ? rect.right - boardRect.left : rect.left - boardRect.left,
       y: rect.top - boardRect.top + rect.height / 2
     };
-  }
-
-  function renderLines() {
-    var boardRect = els.board.getBoundingClientRect();
-    els.linkCanvas.setAttribute("viewBox", "0 0 " + Math.round(boardRect.width) + " " + Math.round(boardRect.height));
-    els.linkCanvas.innerHTML = "";
-
-    state.activeEdges.forEach(function (edge, index) {
-      var p1 = lineEndpoint(edge.word_a, edge.side_a);
-      var p2 = lineEndpoint(edge.word_b, edge.side_b);
-      if (!p1 || !p2) {
-        return;
-      }
-      var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      line.setAttribute("x1", String(p1.x));
-      line.setAttribute("y1", String(p1.y));
-      line.setAttribute("x2", String(p2.x));
-      line.setAttribute("y2", String(p2.y));
-      line.setAttribute("stroke", relationColor(edge.relation_type || "co-occurrence"));
-      line.setAttribute("stroke-width", "4");
-      line.setAttribute("stroke-linecap", "round");
-      line.setAttribute("class", "link-line");
-      line.dataset.edgeIndex = String(index);
-      line.addEventListener("click", function (ev) {
-        ev.stopPropagation();
-        removeEdgeByIndex(index);
-      });
-      els.linkCanvas.appendChild(line);
-    });
   }
 
   function appendLog(text) {
@@ -303,113 +395,282 @@
     appendLog(JSON.stringify(payload));
   }
 
-  function edgeRelation(wordA, wordB) {
-    var map = buildEdgeMap(getLevel());
-    return map[canonicalKey(wordA, wordB)] || null;
+  // Color palette for match lines – one color per pair
+  var LINE_COLORS = [
+    "#10b981", "#f59e0b", "#6366f1", "#ef4444",
+    "#0ea5e9", "#ec4899", "#14b8a6", "#f97316"
+  ];
+
+  function lineColor(index) {
+    return LINE_COLORS[index % LINE_COLORS.length];
   }
 
-  function onWordClick(wordId, side, btn) {
+  function createWordButton(item) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "word-node" +
+      ((item.matched || item.consumed) ? " matched" : "") +
+      (item.isDuplicate ? " distractor" : "");
+    btn.dataset.itemId = item.instanceId;
+    btn.dataset.side = item.side;
+    btn.textContent = labelOf(item.wordId);
+    btn.disabled = !!(item.matched || item.consumed);
+
+    function onTap() {
+      handleWordTap(item, btn);
+    }
+
+    if (runtimeCtrl) {
+      runtimeCtrl.bindTap(btn, onTap);
+    } else {
+      btn.addEventListener("click", onTap);
+    }
+    return btn;
+  }
+
+  function renderBoard() {
+    if (!state.currentRound) {
+      return;
+    }
+    els.leftList.innerHTML = "";
+    els.rightList.innerHTML = "";
+    state.currentRound.leftItems.forEach(function (item) {
+      els.leftList.appendChild(createWordButton(item));
+    });
+    state.currentRound.rightItems.forEach(function (item) {
+      els.rightList.appendChild(createWordButton(item));
+    });
+    layoutWordNodes();
+  }
+
+  function layoutWordNodes() {
+    [els.leftList, els.rightList].forEach(function (listEl) {
+      var nodes = Array.prototype.slice.call(listEl.querySelectorAll(".word-node"));
+      if (!nodes.length) {
+        return;
+      }
+
+      var listRect = listEl.getBoundingClientRect();
+      var tileSize = 72;
+      var centerX = listRect.width / 2;
+      var centerY = listRect.height / 2;
+      var radiusX = Math.max(24, centerX - tileSize / 2 - 14);
+      var radiusY = Math.max(24, centerY - tileSize / 2 - 14);
+      // Translate the whole arc toward the inner (center) edge without distorting shape
+      var innerBias = listRect.width * 0.14;
+      var isLeftSide = listEl === els.leftList;
+      var n = nodes.length;
+
+      // Uniform arc-length spacing: angles from -π/2 (top) to +π/2 (bottom)
+      // Left side: bulge goes left  (x = cx - rx·cos θ)
+      // Right side: bulge goes right (x = cx + rx·cos θ)
+      // → perfectly mirrored semicircles, opening toward center
+      nodes.forEach(function (node, index) {
+        var angle = n === 1 ? 0 : (-Math.PI / 2) + (Math.PI / (n - 1)) * index;
+        var x = centerX + (isLeftSide ? -1 : 1) * radiusX * Math.cos(angle) + (isLeftSide ? innerBias : -innerBias);
+        var y = centerY + radiusY * Math.sin(angle);
+        node.style.left = x + "px";
+        node.style.top = y + "px";
+        node.style.transform = "translate(-50%, -50%)";
+      });
+    });
+  }
+
+  function renderLines() {
+    if (!state.currentRound) {
+      return;
+    }
+    var boardRect = els.board.getBoundingClientRect();
+    els.linkCanvas.setAttribute("viewBox", "0 0 " + Math.round(boardRect.width) + " " + Math.round(boardRect.height));
+    els.linkCanvas.innerHTML = "";
+
+    state.activeMatches.forEach(function (match, index) {
+      var p1 = lineEndpoint(match.leftInstanceId, "left");
+      var p2 = lineEndpoint(match.rightInstanceId, "right");
+      if (!p1 || !p2) {
+        return;
+      }
+      var color = lineColor(index);
+      var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", String(p1.x));
+      line.setAttribute("y1", String(p1.y));
+      line.setAttribute("x2", String(p2.x));
+      line.setAttribute("y2", String(p2.y));
+      line.setAttribute("stroke", color);
+      line.setAttribute("stroke-width", "4");
+      line.setAttribute("stroke-linecap", "round");
+      line.setAttribute("class", "link-line");
+      line.dataset.matchIndex = String(index);
+      // Also tint the matched nodes with this line's color
+      var leftNode = getNodeElement(match.leftInstanceId, "left");
+      var rightNode = getNodeElement(match.rightInstanceId, "right");
+      if (leftNode)  { leftNode.style.borderColor  = color; leftNode.style.boxShadow  = "0 0 0 2px " + color + "44"; }
+      if (rightNode) { rightNode.style.borderColor = color; rightNode.style.boxShadow = "0 0 0 2px " + color + "44"; }
+      line.addEventListener("click", function (ev) {
+        ev.stopPropagation();
+        removeMatchByIndex(index);
+      });
+      els.linkCanvas.appendChild(line);
+    });
+
+    state.hintLinks.forEach(function (hint) {
+      var from = lineEndpoint(hint.fromInstanceId, hint.fromSide);
+      var to = lineEndpoint(hint.toInstanceId, hint.toSide);
+      if (!from || !to) {
+        return;
+      }
+      var hintLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      hintLine.setAttribute("x1", String(from.x));
+      hintLine.setAttribute("y1", String(from.y));
+      hintLine.setAttribute("x2", String(to.x));
+      hintLine.setAttribute("y2", String(to.y));
+      hintLine.setAttribute("stroke", "#3b82f6");
+      hintLine.setAttribute("stroke-width", "3");
+      hintLine.setAttribute("stroke-linecap", "round");
+      hintLine.setAttribute("stroke-dasharray", "8 5");
+      hintLine.setAttribute("class", "link-line hint-line");
+      els.linkCanvas.appendChild(hintLine);
+    });
+  }
+
+  function addHintLink(firstItem, secondItem) {
+    state.hintLinks.push({
+      fromInstanceId: firstItem.instanceId,
+      fromSide: firstItem.side,
+      toInstanceId: secondItem.instanceId,
+      toSide: secondItem.side
+    });
+    layoutWordNodes();
+    renderLines();
+  }
+
+  function handleWordTap(item, btn) {
+    if (item.side === "left" && item.matched) {
+      return;
+    }
+    if (item.side === "right" && item.consumed) {
+      return;
+    }
+
     if (!state.selected) {
-      state.selected = { wordId: wordId, side: side };
+      state.selected = item.instanceId;
       state.startPickAt = performance.now();
       clearSelectedVisual();
       btn.classList.add("active");
-      setFeedback(tf("pickSecond", labelOf(wordId)), "");
+      setFeedback(tf("pickOther", labelOf(item.wordId)), "");
       return;
     }
 
-    var first = state.selected;
+    var firstItem = findItem(state.selected);
     clearSelectedVisual();
     state.selected = null;
 
-    if (first.wordId === wordId) {
-      setFeedback(t("sameWord"), "bad");
+    if (!firstItem) {
+      setFeedback(t("pickFirst"), "bad");
       return;
     }
 
-    var wordA = first.wordId;
-    var wordB = wordId;
-    var edgeKey = canonicalKey(wordA, wordB);
-    var reaction = Math.max(1, Math.round(performance.now() - state.startPickAt));
-    var relation = edgeRelation(wordA, wordB);
-    var isDuplicate = state.activeEdgeSet.has(edgeKey);
-    var isCorrect = relation !== null;
+    if (firstItem.side === item.side) {
+      addHintLink(firstItem, item);
+      state.selected = item.instanceId;
+      state.startPickAt = performance.now();
+      btn.classList.add("active");
+      setFeedback(tf("pickOther", labelOf(item.wordId)), "");
+      return;
+    }
 
+    var reaction = Math.max(1, Math.round(performance.now() - state.startPickAt));
+    var isCorrect = firstItem.wordId === item.wordId;
+    var duplicateCount = state.currentRound.duplicateCounts[item.wordId] || 1;
+    var distractorInvolved = firstItem.isDuplicate || item.isDuplicate || duplicateCount > 2;
     var attempt = {
       attempt_id: "attempt_" + state.eventSeq,
-      edge_key: edgeKey,
-      word_a: wordA,
-      word_b: wordB,
-      relation_type: relation,
-      is_correct: isCorrect,
-      is_duplicate: isDuplicate,
-      is_first_edge_for_word_a: !state.adjacencyCount[wordA],
-      is_first_edge_for_word_b: !state.adjacencyCount[wordB],
+      word_a: firstItem.wordId,
+      word_b: item.wordId,
+      is_correct_pair: isCorrect,
+      is_distractor_involved: distractorInvolved,
       reaction_time_ms: reaction,
       difficulty_level: state.level,
+      layout_shape: state.currentRound.layoutShape,
       timestamp: new Date().toISOString()
     };
     state.eventSeq += 1;
 
-    if (isDuplicate) {
-      state.stats.duplicate += 1;
-      setFeedback(t("duplicateMsg"), "dup");
-      recordEvent(attempt);
-      refreshHud();
-      return;
-    }
-
     if (!isCorrect) {
       state.stats.wrong += 1;
+      if (distractorInvolved) {
+        state.stats.distractor += 1;
+      }
+      sfxWrong();
       setFeedback(t("wrongMsg"), "bad");
       recordEvent(attempt);
       refreshHud();
       return;
     }
 
-    state.stats.correct += 1;
-    state.activeEdgeSet.add(edgeKey);
-    state.activeEdges.push({
-      edge_key: edgeKey,
-      word_a: wordA,
-      word_b: wordB,
-      side_a: first.side,
-      side_b: side,
-      relation_type: relation
+    getWordItems("left", item.wordId).forEach(function (leftItem) {
+      leftItem.matched = true;
     });
-    state.adjacencyCount[wordA] = (state.adjacencyCount[wordA] || 0) + 1;
-    state.adjacencyCount[wordB] = (state.adjacencyCount[wordB] || 0) + 1;
-    setFeedback(tf("correctMsg", wordA + " - " + wordB, relation), "good");
-    recordEvent(attempt);
-    refreshHud();
-    renderLines();
+    getWordItems("right", item.wordId).forEach(function (rightItem) {
+      rightItem.consumed = true;
+    });
 
-    var level = getLevel();
-    if (state.activeEdges.length >= (level.target_edges || level.edges.length)) {
+    state.activeMatches.push({
+      leftInstanceId: firstItem.side === "left" ? firstItem.instanceId : item.instanceId,
+      rightInstanceId: firstItem.side === "right" ? firstItem.instanceId : item.instanceId,
+      wordId: item.wordId,
+      distractorInvolved: distractorInvolved
+    });
+    state.stats.correct += 1;
+    if (distractorInvolved) {
+      state.stats.distractor += 1;
+      setFeedback(tf("distractorHit", labelOf(firstItem.wordId), labelOf(item.wordId)), "dup");
+    } else {
+      setFeedback(tf("correctMsg", labelOf(firstItem.wordId), labelOf(item.wordId)), "good");
+    }
+    recordEvent(attempt);
+    renderBoard();
+    layoutWordNodes();
+    renderLines();
+    refreshHud();
+
+    if (state.activeMatches.length >= getLevel().pair_count) {
+      sfxDone();
       setFeedback(t("doneMsg"), "good");
+    } else {
+      sfxCorrect();
     }
   }
 
-  function removeEdgeByIndex(index) {
-    if (index < 0 || index >= state.activeEdges.length) {
+  function removeMatchByIndex(index) {
+    if (index < 0 || index >= state.activeMatches.length) {
       return;
     }
-    var edge = state.activeEdges[index];
-    state.activeEdges.splice(index, 1);
-    state.activeEdgeSet.delete(edge.edge_key);
-    state.adjacencyCount[edge.word_a] = Math.max(0, (state.adjacencyCount[edge.word_a] || 1) - 1);
-    state.adjacencyCount[edge.word_b] = Math.max(0, (state.adjacencyCount[edge.word_b] || 1) - 1);
+    var match = state.activeMatches[index];
+    getWordItems("left", match.wordId).forEach(function (leftItem) {
+      leftItem.matched = false;
+    });
+    getWordItems("right", match.wordId).forEach(function (rightItem) {
+      rightItem.consumed = false;
+    });
+    state.activeMatches.splice(index, 1);
+    state.stats.correct = Math.max(0, state.stats.correct - 1);
+    if (match.distractorInvolved) {
+      state.stats.distractor = Math.max(0, state.stats.distractor - 1);
+    }
     setFeedback(t("removedMsg"), "");
+    renderBoard();
+    layoutWordNodes();
     renderLines();
     refreshHud();
   }
 
   function undoLast() {
-    if (!state.activeEdges.length) {
+    if (!state.activeMatches.length) {
       setFeedback(t("noUndo"), "");
       return;
     }
-    removeEdgeByIndex(state.activeEdges.length - 1);
+    removeMatchByIndex(state.activeMatches.length - 1);
   }
 
   function resetRound() {
@@ -419,13 +680,14 @@
     }
     state.selected = null;
     state.startPickAt = 0;
-    state.activeEdges = [];
-    state.activeEdgeSet = new Set();
-    state.adjacencyCount = {};
-    state.stats = { correct: 0, wrong: 0, duplicate: 0 };
+    state.activeMatches = [];
+    state.stats = { correct: 0, wrong: 0, distractor: 0 };
     state.events = [];
+    state.hintLinks = [];
+    state.currentRound = createRound();
     clearSelectedVisual();
-    renderWordColumns();
+    renderBoard();
+    layoutWordNodes();
     renderLines();
     refreshHud();
     els.eventLog.innerHTML = "";
@@ -434,19 +696,20 @@
 
   function exportSession() {
     var payload = {
-      game_id: "word-connections-workshop",
+      game_id: "clio-word-match-workshop",
       content_version: DATA.content_version,
       main_rootgene: DATA.main_rootgene,
       secondary_rootgene: DATA.secondary_rootgene,
       reviewer: DATA.reviewer,
       reviewed_at: DATA.reviewed_at,
       difficulty_level: state.level,
+      layout_shape: state.currentRound ? state.currentRound.layoutShape : DATA.layout_shape,
       stats: state.stats,
-      found_edges: state.activeEdges,
+      active_matches: state.activeMatches,
       events: state.events
     };
-    localStorage.setItem("me:clio:word-connections:latest", JSON.stringify(payload));
-    console.log("Word Connections Session:", payload);
+    localStorage.setItem("me:clio:word-match:latest", JSON.stringify(payload));
+    console.log("Word Match Session:", payload);
     setFeedback(t("dumped"), "");
   }
 
@@ -462,10 +725,27 @@
       state.lang = savedLang;
     }
 
+    var savedSfx = localStorage.getItem("clio-word-match-sfx");
+    if (savedSfx === "off") {
+      state.sfxEnabled = false;
+    } else {
+      state.sfxEnabled = true;  // default On
+    }
+
+    var savedMusic = localStorage.getItem("clio-word-match-music");
+    if (savedMusic === "off") {
+      state.musicEnabled = false;
+    } else {
+      state.musicEnabled = true;  // default On
+    }
+
     els.levelSelect.value = state.level;
+    resetRound();
     applyLocale();
     refreshHud();
     setFeedback(t("pickFirst"), "");
+    ensureAudio();
+    playMusic();
 
     var onLangTap = function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
@@ -474,18 +754,24 @@
       setFeedback(t("pickFirst"), "");
     };
 
+    var onMusicTap = function () {
+      state.musicEnabled = !state.musicEnabled;
+      localStorage.setItem("clio-word-match-music", state.musicEnabled ? "on" : "off");
+      applyLocale();
+      if (state.musicEnabled) { playMusic(); } else { stopMusic(); }
+    };
+
+    var onSfxTap = function () {
+      state.sfxEnabled = !state.sfxEnabled;
+      localStorage.setItem("clio-word-match-sfx", state.sfxEnabled ? "on" : "off");
+      applyLocale();
+      if (state.sfxEnabled) { ensureAudio(); }
+    };
+
     if (runtimeCtrl) {
+      runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
+      runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
       runtimeCtrl.bindTap(els.langBtn, onLangTap);
-    } else {
-      els.langBtn.addEventListener("click", onLangTap);
-    }
-
-    els.levelSelect.addEventListener("change", function () {
-      state.level = els.levelSelect.value;
-      resetRound();
-    });
-
-    if (runtimeCtrl) {
       runtimeCtrl.bindTap(els.undoBtn, undoLast);
       runtimeCtrl.bindTap(els.resetBtn, resetRound);
       runtimeCtrl.bindTap(els.dumpBtn, exportSession);
@@ -494,11 +780,22 @@
         state.selected = null;
       });
     } else {
+      els.musicBtn.addEventListener("click", onMusicTap);
+      els.sfxBtn.addEventListener("click", onSfxTap);
+      els.langBtn.addEventListener("click", onLangTap);
       els.undoBtn.addEventListener("click", undoLast);
       els.resetBtn.addEventListener("click", resetRound);
       els.dumpBtn.addEventListener("click", exportSession);
     }
+
+    els.levelSelect.addEventListener("change", function () {
+      state.level = els.levelSelect.value;
+      resetRound();
+      applyLocale();
+    });
+
     window.addEventListener("resize", renderLines);
+    window.addEventListener("resize", layoutWordNodes);
   }
 
   bootstrap();

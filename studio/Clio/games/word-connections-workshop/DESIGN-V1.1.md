@@ -1,41 +1,28 @@
-# Word Connections V1.1 Implementation Notes
+# Word Match V1.1 Implementation Notes
 
 ## 1) Scope
-- Included in MVP: L1 unique pairing + L2 closed many-to-many graph
-- Not included in MVP: open AI scoring (L3)
+- Included in MVP: one-to-one pair matching with random word sampling
+- Included in L2/L3: repeated-word position distractors on the right side
+- Not included in MVP: semantic network / one-to-many relation gameplay
 
-## 2) Graph Rules
-- Edges are treated as undirected
-- Canonical edge key: sort two node ids and join with `|`
-- Duplicate edge attempts are logged but not scored again
+## 2) Matching Rules
+- The correct action is to connect the exact same word across the two sides
+- Words are randomly sampled from a predefined word pool each round
+- Both sides are shuffled independently every round
+- Repeated words may appear on the left or the right as position distractors
 
 ## 3) Data Schema
 ```json
 {
-  "content_version": "wc_v1_2026_07",
+  "content_version": "wm_v1_2026_07",
   "reviewer": "pending-content-review",
   "reviewed_at": null,
+  "layout_shape": "columns",
   "levels": {
-    "L1": {
-      "nodes": ["yes", "no"],
-      "edges": [
-        { "from": "yes", "to": "no", "relation_type": "antonym" }
-      ]
-    },
-    "L2": {
-      "nodes": ["more", "less", "need", "want"],
-      "edges": [
-        { "from": "more", "to": "less", "relation_type": "antonym" },
-        { "from": "more", "to": "want", "relation_type": "co-occurrence" }
-      ]
-    }
+    "L1": { "pair_count": 4, "duplicate_right_count": 0 },
+    "L2": { "pair_count": 5, "duplicate_right_count": 1 }
   },
-  "lexicon": {
-    "more": {
-      "lemma": "more",
-      "display": { "en": "more", "zh": "more" }
-    }
-  }
+  "word_pool": ["yes", "no", "keep", "more"]
 }
 ```
 
@@ -43,28 +30,25 @@
 ```json
 {
   "attempt_id": "attempt_12",
-  "edge_key": "more|want",
-  "word_a": "more",
-  "word_b": "want",
-  "relation_type": "co-occurrence",
-  "is_correct": true,
-  "is_duplicate": false,
-  "is_first_edge_for_word_a": false,
-  "is_first_edge_for_word_b": true,
+  "word_a": "share",
+  "word_b": "keep",
+  "is_correct_pair": true,
+  "is_distractor_involved": true,
   "reaction_time_ms": 954,
   "difficulty_level": "L2",
-  "timestamp": "2026-07-04T03:15:00.000Z"
+  "layout_shape": "columns",
+  "timestamp": "2026-07-05T03:15:00.000Z"
 }
 ```
 
 ## 5) QA Gate
-- relation_type enum is limited to antonym and co-occurrence
-- L2 graph must be reviewed by content team before production release
-- RootGene tags are carried in payload metadata, not hardcoded as scoring logic
-- Session data is isolated from Sorting Workshop and Prediction Workshop
-- UI supports one word connected to multiple edges (no remove-on-match behavior)
+- Pair pool must be reviewed by content team before production release
+- Repeated-word distractors must be randomly positioned each round
+- Matching logic must stay independent from future layout shapes
+- Session data remains isolated from Sorting Workshop and Prediction Workshop
 
 ## 6) Interaction Constraints
-- Tap/tap connection is supported (not drag-only)
-- Existing line can be removed by clicking it
-- Undo last edge is available
+- Pick left first, then pick a right word
+- Correct match locks that pair and its repeated-word copies
+- Existing line can be clicked to undo the last confirmed match
+- Undo last match remains available in MVP/testing builds

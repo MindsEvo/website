@@ -17,11 +17,11 @@ Execution reference:
 - [ ] pause/resume preserves lane timers and visual positions
 - [ ] old callbacks cannot update a new session
 
-## C. Word Connections Workshop (reference: graph template)
+## C. Word Match Workshop (reference: matching template)
 
-- [ ] One word can connect to multiple edges
-- [ ] Duplicate edge attempts are logged but not double-scored
-- [ ] relation_type is validated (antonym/co-occurrence)
+- [ ] Exact same-word matching works from either side
+- [ ] Repeated words on left or right break position-based shortcuts
+- [ ] Random sampling and reshuffle happen every reset/round
 - [ ] line removal and undo remain deterministic
 
 ## D. Global Consistency

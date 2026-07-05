@@ -7,7 +7,7 @@ Turn current Clio examples into stable reference templates for future design-to-
 Current examples:
 - Sorting Workshop
 - Prediction Workshop
-- Word Connections Workshop
+- Word Match Workshop
 
 ## 1) Template Families
 
@@ -21,9 +21,9 @@ Define three template families from current examples:
 - Core loop: observe -> predict -> verify
 - Typical data: phase split, reaction time, correctness, lane/phase events
 
-3. Connections Template
-- Core loop: build relation edges -> validate against closed graph
-- Typical data: edge key, relation type, duplicate attempt, first-edge behavior
+3. Matching Template
+- Core loop: compare identical words across two sides -> confirm same-word match -> reject position shortcuts
+- Typical data: word pool, duplicate count per side, layout shape, reaction time
 
 ## 2) Required Folder Shape (for every new Clio game)
 

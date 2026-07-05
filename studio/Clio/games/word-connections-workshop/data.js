@@ -1,60 +1,75 @@
-window.WORD_CONNECTIONS_DATA = {
-  content_version: "wc_v1_2026_07",
+window.WORD_MATCH_DATA = {
+  content_version: "wm_v1_2026_07",
   reviewer: "pending-content-review",
   reviewed_at: null,
-  main_rootgene: "Multi-dimensional Thinking",
-  secondary_rootgene: "Classification",
+  main_rootgene: "Comparison",
+  secondary_rootgene: "Elimination",
+  layout_shape: "columns",
   levels: {
     L1: {
       id: "L1",
-      label: "Unique Pairing",
-      target_edges: 4,
-      nodes: [
-        "yes", "no", "more", "less", "share", "keep", "need", "want"
-      ],
-      edges: [
-        { from: "yes", to: "no", relation_type: "antonym" },
-        { from: "more", to: "less", relation_type: "antonym" },
-        { from: "share", to: "keep", relation_type: "antonym" },
-        { from: "need", to: "want", relation_type: "co-occurrence" }
-      ]
+      label: "Same Word Match",
+      pair_count: 4,
+      duplicate_left_count: 1,
+      duplicate_right_count: 1
     },
     L2: {
       id: "L2",
-      label: "Network Connections",
-      target_edges: 10,
-      nodes: [
-        "and", "so", "like", "need", "more", "less", "want", "have",
-        "yes", "no", "maybe", "dont", "share", "keep"
-      ],
-      edges: [
-        { from: "yes", to: "no", relation_type: "antonym" },
-        { from: "more", to: "less", relation_type: "antonym" },
-        { from: "share", to: "keep", relation_type: "antonym" },
-        { from: "need", to: "want", relation_type: "co-occurrence" },
-        { from: "need", to: "have", relation_type: "co-occurrence" },
-        { from: "more", to: "need", relation_type: "co-occurrence" },
-        { from: "more", to: "want", relation_type: "co-occurrence" },
-        { from: "dont", to: "want", relation_type: "co-occurrence" },
-        { from: "like", to: "want", relation_type: "co-occurrence" },
-        { from: "and", to: "so", relation_type: "co-occurrence" }
-      ]
+      label: "Duplicate Distractors",
+      pair_count: 5,
+      duplicate_left_count: 1,
+      duplicate_right_count: 1
+    },
+    L3: {
+      id: "L3",
+      label: "More Distractors",
+      pair_count: 6,
+      duplicate_left_count: 2,
+      duplicate_right_count: 2
     }
   },
+  word_pool: [
+    "yes",
+    "no",
+    "more",
+    "less",
+    "share",
+    "keep",
+    "like",
+    "open",
+    "close",
+    "in",
+    "out",
+    "hot",
+    "cold",
+    "up",
+    "down",
+    "big",
+    "small",
+    "day",
+    "night",
+    "want"
+  ],
   lexicon: {
-    and: { lemma: "and", display: { en: "and", zh: "and" } },
-    so: { lemma: "so", display: { en: "so", zh: "so" } },
-    like: { lemma: "like", display: { en: "like", zh: "like" } },
-    need: { lemma: "need", display: { en: "need", zh: "need" } },
-    more: { lemma: "more", display: { en: "more", zh: "more" } },
-    less: { lemma: "less", display: { en: "less", zh: "less" } },
-    want: { lemma: "want", display: { en: "want", zh: "want" } },
-    have: { lemma: "have", display: { en: "have", zh: "have" } },
     yes: { lemma: "yes", display: { en: "yes", zh: "yes" } },
     no: { lemma: "no", display: { en: "no", zh: "no" } },
-    maybe: { lemma: "maybe", display: { en: "maybe", zh: "maybe" } },
-    dont: { lemma: "dont", display: { en: "dont", zh: "dont" } },
+    more: { lemma: "more", display: { en: "more", zh: "more" } },
+    less: { lemma: "less", display: { en: "less", zh: "less" } },
     share: { lemma: "share", display: { en: "share", zh: "share" } },
-    keep: { lemma: "keep", display: { en: "keep", zh: "keep" } }
+    keep: { lemma: "keep", display: { en: "keep", zh: "keep" } },
+    like: { lemma: "like", display: { en: "like", zh: "like" } },
+    open: { lemma: "open", display: { en: "open", zh: "open" } },
+    close: { lemma: "close", display: { en: "close", zh: "close" } },
+    in: { lemma: "in", display: { en: "in", zh: "in" } },
+    out: { lemma: "out", display: { en: "out", zh: "out" } },
+    hot: { lemma: "hot", display: { en: "hot", zh: "hot" } },
+    cold: { lemma: "cold", display: { en: "cold", zh: "cold" } },
+    up: { lemma: "up", display: { en: "up", zh: "up" } },
+    down: { lemma: "down", display: { en: "down", zh: "down" } },
+    big: { lemma: "big", display: { en: "big", zh: "big" } },
+    small: { lemma: "small", display: { en: "small", zh: "small" } },
+    day: { lemma: "day", display: { en: "day", zh: "day" } },
+    night: { lemma: "night", display: { en: "night", zh: "night" } },
+    want: { lemma: "want", display: { en: "want", zh: "want" } }
   }
 };

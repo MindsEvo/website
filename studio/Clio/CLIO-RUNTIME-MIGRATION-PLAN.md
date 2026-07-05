@@ -18,7 +18,7 @@ Out of scope in this phase:
 
 1. Prediction Workshop (highest risk observed on Android timing/touch)
 2. Sorting Workshop
-3. Word Connections Workshop
+3. Word Match Workshop
 
 ## Shared Phase A Requirements (all 3 games)
 
@@ -65,11 +65,11 @@ Acceptance:
 - No stale object updates after immediate start-reset-start sequence
 - Counters and event stream remain deterministic
 
-## C) Word Connections Workshop
+## C) Word Match Workshop
 
 Current status:
 - Phase A bridge integration completed (session reset + unified tap + lifecycle pause alignment)
-- Keep graph validation and scoring policy unchanged
+- Gameplay direction simplified to one-to-one matching with repeated-word distractors
 
 Tasks:
 - Use bridge session reset for level switch and reset
@@ -104,4 +104,4 @@ Scenarios:
 Current progress note:
 - Prediction Workshop: completed
 - Sorting Workshop: completed
-- Word Connections Workshop: completed
+- Word Match Workshop: completed

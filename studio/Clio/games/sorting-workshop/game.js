@@ -486,7 +486,7 @@
           distractor_type: "boundary_color"
         }
       });
-        playTone(760, 0.12, 0.03, "triangle");
+        playTone(880, 0.15, 0.16, "sine");
       removeFaller(faller);
     } else {
       snapToBasketCenter(faller, basket);
@@ -511,7 +511,7 @@
           distractor_type: "boundary_color"
         }
       });
-      playTone(180, 0.16, 0.04, "sawtooth");
+      playTone(200, 0.20, 0.15, "sawtooth");
       removeFaller(faller);
     }
 
@@ -663,7 +663,7 @@
             distractor_type: "boundary_color"
           }
         });
-        playTone(120, 0.18, 0.03, "square");
+        playTone(180, 0.22, 0.14, "square");
         removeFaller(faller);
         updateCounters();
         return false;
