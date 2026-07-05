@@ -106,30 +106,6 @@
       background: #dcfce7;
       color: #166534;
     }
-    .image-card {
-      padding: 14px;
-      overflow: hidden;
-    }
-    .sketch-image {
-      display: block;
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #f8fafc;
-      margin: 12px 0 14px;
-    }
-    .comment-box {
-      margin-top: 10px;
-      padding: 14px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #eff6ff, #ffffff);
-      border: 1px solid var(--line);
-      line-height: 1.75;
-      color: var(--muted);
-      font-size: 14px;
-    }
     @media (max-width: 760px) {
       .topbar { align-items: flex-start; }
       .grid { grid-template-columns: 1fr; }
@@ -162,21 +138,6 @@
         <h2 class="title"><span data-i18n="connections-title" data-zh="连词工坊" data-en="Word Connections">连词工坊</span> <span class="pill" data-i18n="pill-new" data-zh="新" data-en="NEW">新</span></h2>
         <p class="meta" data-i18n="connections-meta" data-zh="连词工坊 MVP：支持一词多连，按关系图实时校验 antonym / co-occurrence，记录 first-edge 与反应时，用于 Multi-dimensional Thinking 观测。" data-en="Word Connections MVP: supports many links per word, validates antonym and co-occurrence with a closed graph, and records first-edge behavior plus reaction time for Multi-dimensional Thinking observation.">连词工坊 MVP：支持一词多连，按关系图实时校验 antonym / co-occurrence，记录 first-edge 与反应时，用于 Multi-dimensional Thinking 观测。</p>
         <a class="play" href="./word-connections-workshop/index.html" data-i18n="start-game" data-zh="开始游戏" data-en="Start Game">开始游戏</a>
-      </article>
-
-      <article class="game-card image-card">
-        <h2 class="title"><span data-i18n="sketch-title" data-zh="设计草图" data-en="Design Sketch">设计草图</span> <span class="pill" data-i18n="pill-source" data-zh="来源" data-en="SOURCE">来源</span></h2>
-        <p class="meta" data-i18n="sketch-meta" data-zh="Clio 的设计草稿，用来说明“颜色下落 + 预测 / 练习”的玩法来源。" data-en="Clio's design sketch shows the origin of the gameplay idea: color falling combined with prediction and practice.">Clio 的设计草稿，用来说明“颜色下落 + 预测 / 练习”的玩法来源。</p>
-        <img class="sketch-image" src="./assets/clio-sketch-1.jpg" alt="Clio 设计草稿" />
-        <a class="play" href="./assets/clio-sketch-1.jpg" target="_blank" rel="noreferrer" data-i18n="view-image" data-zh="查看大图" data-en="View Larger">查看大图</a>
-      </article>
-
-      <article class="game-card">
-        <h2 class="title"><span data-i18n="comment-title" data-zh="评语" data-en="Commentary">评语</span> <span class="pill" data-i18n="pill-note" data-zh="说明" data-en="NOTE">说明</span></h2>
-        <p class="meta" data-i18n="comment-meta" data-zh="这个创意来源于 Clio 对颜色变化的观察。她把绘画中的颜色混合与游戏中的动态效果结合起来，设计出“观察—预测—验证”的玩法。我们保留了她的核心想法，并将它实现为一个可以真正体验的小游戏。" data-en="This idea comes from Clio's observation of color changes. She combined color mixing from drawing with dynamic game effects to create an observe-predict-verify loop. We kept her core idea and turned it into a game you can actually play.">这个创意来源于 Clio 对颜色变化的观察。她把绘画中的颜色混合与游戏中的动态效果结合起来，设计出“观察—预测—验证”的玩法。我们保留了她的核心想法，并将它实现为一个可以真正体验的小游戏。</p>
-        <div class="comment-box">
-          <span data-i18n="comment-box" data-zh="设计重点是把“观察”与“预测”拆开，让孩子先看到规律，再在右侧练习做判断，避免把两种认知能力混成一类统计。" data-en="The key design choice is to separate observation from prediction, so children first see the pattern and then practice making judgments, instead of mixing the two skills into one statistic.">设计重点是把“观察”与“预测”拆开，让孩子先看到规律，再在右侧练习做判断，避免把两种认知能力混成一类统计。</span>
-        </div>
       </article>
     </section>
   </main>
