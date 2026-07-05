@@ -120,8 +120,10 @@
   function createLaneState(kind) {
     return {
       kind: kind,
+      sessionToken: 0,
       phase: "idle",
       timerId: null,
+      timerToken: 0,
       timerStartedAt: 0,
       timerRemainingMs: 0,
       combo: null,
@@ -139,6 +141,7 @@
 
   var state = {
     lang: "en",
+    sessionToken: 0,
     running: false,
     paused: false,
     speedPxPerSec: 92,
@@ -356,12 +359,20 @@
     }
   }
 
-  function scheduleLaneTimer(lane, phase, ms, callback) {
+  function scheduleLaneTimer(lane, phase, ms, callback, expectedSessionToken) {
     clearLaneTimer(lane);
     lane.phase = phase;
     lane.timerRemainingMs = ms;
     lane.timerStartedAt = performance.now();
+    lane.timerToken += 1;
+    var localTimerToken = lane.timerToken;
     lane.timerId = window.setTimeout(function () {
+      if (lane.sessionToken !== expectedSessionToken || state.sessionToken !== expectedSessionToken) {
+        return;
+      }
+      if (lane.timerToken !== localTimerToken) {
+        return;
+      }
       lane.timerId = null;
       lane.timerRemainingMs = 0;
       callback();
@@ -490,7 +501,7 @@
   }
 
   function runLaneRound(lane) {
-    if (!state.running || state.paused) {
+    if (!state.running || state.paused || lane.sessionToken !== state.sessionToken) {
       return;
     }
 
@@ -535,11 +546,11 @@
 
     scheduleLaneTimer(lane, "fall", durationMs, function () {
       finishLaneRound(lane);
-    });
+    }, lane.sessionToken);
   }
 
   function finishLaneRound(lane) {
-    if (!lane.combo) {
+    if (!state.running || lane.sessionToken !== state.sessionToken || !lane.combo) {
       return;
     }
     var ui = laneBalls(lane);
@@ -578,7 +589,7 @@
     persistSessions();
     scheduleLaneTimer(lane, "between", BETWEEN_MS, function () {
       runLaneRound(lane);
-    });
+    }, lane.sessionToken);
   }
 
   function pauseLane(lane) {
@@ -609,14 +620,14 @@
       });
       scheduleLaneTimer(lane, "fall", remaining, function () {
         finishLaneRound(lane);
-      });
+      }, lane.sessionToken);
       return;
     }
 
     if (lane.phase === "between") {
       scheduleLaneTimer(lane, "between", remaining, function () {
         runLaneRound(lane);
-      });
+      }, lane.sessionToken);
       return;
     }
 
@@ -663,8 +674,11 @@
       return;
     }
 
+    state.sessionToken += 1;
     state.running = true;
     state.paused = false;
+    state.demoLane.sessionToken = state.sessionToken;
+    state.practiceLane.sessionToken = state.sessionToken;
     ensureAudio();
     playMusic();
     setFeedback(t("running"), "");
@@ -694,6 +708,9 @@
   }
 
   function resetGame() {
+    clearLaneTimer(state.demoLane);
+    clearLaneTimer(state.practiceLane);
+    state.sessionToken += 1;
     state.running = false;
     state.paused = false;
     state.counts.correct = 0;
@@ -802,6 +819,12 @@
       renderLocale();
       if (state.sfxEnabled) {
         ensureAudio();
+      }
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden && state.running && !state.paused) {
+        pauseGame();
       }
     });
   }
