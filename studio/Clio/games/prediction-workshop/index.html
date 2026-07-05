@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Prediction Workshop MVP</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="topbar-head">
+        <div>
+          <h1 id="titleText">Prediction Workshop</h1>
+          <p id="subtitleText" class="subtitle">Clio MVP · left demo + right practice, both random</p>
+        </div>
+        <div class="topbar-tools" aria-label="Game controls">
+          <button id="langBtn" class="mini-btn" type="button">中文 / EN</button>
+          <button id="musicBtn" class="mini-btn" type="button">Music: On</button>
+          <button id="sfxBtn" class="mini-btn" type="button">SFX: On</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hud" aria-label="Game status">
+      <div class="chip"><span id="modeLabel">Mode</span>: <span id="modeValue">Demo + Practice</span></div>
+      <div class="chip"><span id="correctLabel">Correct</span>: <span id="correctCount">0</span></div>
+      <div class="chip"><span id="wrongLabel">Wrong</span>: <span id="wrongCount">0</span></div>
+      <div class="chip"><span id="missLabel">Miss</span>: <span id="missCount">0</span></div>
+    </section>
+
+    <section class="playfield-wrap">
+      <aside class="speed-panel" aria-label="Speed control">
+        <div class="speed-title" id="speedTitle">Speed</div>
+        <div class="speed-track">
+          <div class="speed-marks" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <input id="speedBar" class="speed-bar" type="range" min="60" max="220" step="10" value="92" />
+        </div>
+        <div class="speed-value"><span id="speedValue">92</span> <span id="speedUnit">px/s</span></div>
+      </aside>
+
+      <div class="lanes" id="lanes">
+        <section class="lane" id="demoLane" aria-label="Demo lane">
+          <div class="lane-title" id="demoTitle">Demo</div>
+          <div id="demoBallA" class="ball hidden"></div>
+          <div id="demoBallB" class="ball hidden"></div>
+          <div class="basket result-basket">
+            <div class="basket-grid"></div>
+            <div class="basket-label" id="demoBasketLabel">Auto Result</div>
+            <div id="demoResultFill" class="result-fill hidden"></div>
+          </div>
+        </section>
+
+        <section class="lane" id="practiceLane" aria-label="Practice lane">
+          <div class="lane-title" id="practiceTitle">Practice</div>
+          <div id="practiceBallA" class="ball hidden"></div>
+          <div id="practiceBallB" class="ball hidden"></div>
+          <div class="basket practice-basket">
+            <div class="basket-grid"></div>
+            <div class="basket-label" id="practiceBasketLabel">Choose Result</div>
+            <div class="choice-row" id="choiceRow">
+              <button class="choice-ball" data-color="green" type="button" aria-label="Green"></button>
+              <button class="choice-ball" data-color="purple" type="button" aria-label="Purple"></button>
+              <button class="choice-ball" data-color="orange" type="button" aria-label="Orange"></button>
+            </div>
+            <div id="practiceResultFill" class="result-fill hidden"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="startBtn" class="btn" type="button">Start</button>
+      <button id="pauseBtn" class="btn ghost" type="button">Pause</button>
+      <button id="resetBtn" class="btn ghost" type="button">Reset</button>
+      <button id="dumpBtn" class="btn ghost" type="button">Dump Session JSON</button>
+      <div class="inline-log" aria-live="polite">
+        <span id="logTitle" class="log-title">Latest Feedback</span>
+        <span id="feedbackText">Press Start</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
