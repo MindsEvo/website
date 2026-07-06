@@ -6,17 +6,19 @@
   var TEXT = {
     zh: {
       title: "寻找游戏 Find It",
-      subtitle: "点击画面中的目标物品，全部找齐即可完成。",
+      subtitle: "目标可重复出现，不给具体数量；持续点击正确目标直到全部找完。",
       speak: "朗读目标",
       music: "音乐",
       sfx: "音效",
       on: "开",
       off: "关",
-      found: "已找到",
+      found: "目标状态",
+      progressSearching: "寻找中",
+      progressDone: "已完成",
       mistake: "误点",
       doneCount: "完成次数",
       targetTitle: "目标清单",
-      firstHint: "点击任意目标开始寻找。",
+      firstHint: "任意点击目标物品开始寻找，找对为止。",
       hit: "找到了：{0}",
       miss: "这个不是当前目标，继续找。",
       done: "全部找到啦！",
@@ -27,17 +29,19 @@
     },
     en: {
       title: "Find It",
-      subtitle: "Tap the target items on the board and find them all.",
+      subtitle: "Targets may repeat and no exact count is shown; keep finding correct targets until all are cleared.",
       speak: "Read Targets",
       music: "Music",
       sfx: "SFX",
       on: "On",
       off: "Off",
-      found: "Found",
+      found: "Status",
+      progressSearching: "Searching",
+      progressDone: "Completed",
       mistake: "Miss Clicks",
       doneCount: "Completed",
       targetTitle: "Target List",
-      firstHint: "Tap any target item to start.",
+      firstHint: "Tap any target item to begin. Keep finding correct targets.",
       hit: "Found: {0}",
       miss: "Not a current target. Keep searching.",
       done: "All found!",
@@ -52,8 +56,6 @@
     lang: "zh",
     items: [],
     targets: [],
-    foundIds: Object.create(null),
-    foundCount: 0,
     missCount: 0,
     completedCount: 0,
     sfxEnabled: true,
@@ -75,10 +77,9 @@
     musicBtn: document.getElementById("musicBtn"),
     sfxBtn: document.getElementById("sfxBtn"),
     foundLabel: document.getElementById("foundLabel"),
+    progressText: document.getElementById("progressText"),
     mistakeLabel: document.getElementById("mistakeLabel"),
     doneLabel: document.getElementById("doneLabel"),
-    foundCount: document.getElementById("foundCount"),
-    targetCount: document.getElementById("targetCount"),
     mistakeCount: document.getElementById("mistakeCount"),
     doneCount: document.getElementById("doneCount"),
     targetTitle: document.getElementById("targetTitle"),
@@ -119,6 +120,10 @@
 
   function sample(list, count) {
     return shuffle(list).slice(0, Math.min(count, list.length));
+  }
+
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   function ensureAudio() {
@@ -236,24 +241,32 @@
   }
 
   function refreshHud() {
-    els.foundCount.textContent = String(state.foundCount);
-    els.targetCount.textContent = String(state.targets.length);
+    els.progressText.textContent = checkDone() ? t("progressDone") : t("progressSearching");
     els.mistakeCount.textContent = String(state.missCount);
     els.doneCount.textContent = String(state.completedCount);
   }
 
   function buildRound() {
     var pool = DATA.object_pool;
-    var targets = sample(pool, DATA.target_count);
+    var targets = sample(pool, DATA.target_type_count);
     var targetMap = Object.create(null);
     targets.forEach(function (item) { targetMap[item.id] = true; });
 
+    var targetInstances = [];
+    targets.forEach(function (item) {
+      var repeatCount = randInt(DATA.target_repeat_min, DATA.target_repeat_max);
+      var i;
+      for (i = 0; i < repeatCount; i += 1) {
+        targetInstances.push(item);
+      }
+    });
+
     var nonTargets = sample(pool.filter(function (item) {
       return !targetMap[item.id];
-    }), DATA.total_count - targets.length);
+    }), Math.max(0, DATA.total_count - targetInstances.length));
 
     state.targets = targets;
-    state.items = shuffle(targets.concat(nonTargets)).map(function (item, index) {
+    state.items = shuffle(targetInstances.concat(nonTargets)).map(function (item, index) {
       return {
         uid: "it-" + index + "-" + item.id,
         id: item.id,
@@ -266,8 +279,6 @@
         y: 0
       };
     });
-    state.foundIds = Object.create(null);
-    state.foundCount = 0;
     state.missCount = 0;
   }
 
@@ -277,24 +288,28 @@
     var w = rect.width;
     var h = rect.height;
     var size = 84;
-    var pad = 14 + size / 2;
+    var pad = 14;
+    var maxX = Math.max(pad, w - size - pad);
+    var maxY = Math.max(pad, h - size - pad);
 
     state.items.forEach(function (item) {
       var tries;
       var minDist = DATA.min_distance;
       var done = false;
       for (tries = 0; tries < 140; tries += 1) {
-        var x = pad + Math.random() * Math.max(10, w - pad * 2);
-        var y = pad + Math.random() * Math.max(10, h - pad * 2);
+        var x = pad + Math.random() * Math.max(1, maxX - pad);
+        var y = pad + Math.random() * Math.max(1, maxY - pad);
+        var cx = x + size / 2;
+        var cy = y + size / 2;
         var ok = placed.every(function (p) {
-          var dx = x - p.x;
-          var dy = y - p.y;
+          var dx = cx - p.cx;
+          var dy = cy - p.cy;
           return Math.sqrt(dx * dx + dy * dy) >= minDist;
         });
         if (ok) {
           item.x = x;
           item.y = y;
-          placed.push({ x: x, y: y });
+          placed.push({ cx: cx, cy: cy });
           done = true;
           break;
         }
@@ -303,9 +318,9 @@
         }
       }
       if (!done) {
-        item.x = pad + Math.random() * Math.max(10, w - pad * 2);
-        item.y = pad + Math.random() * Math.max(10, h - pad * 2);
-        placed.push({ x: item.x, y: item.y });
+        item.x = pad + Math.random() * Math.max(1, maxX - pad);
+        item.y = pad + Math.random() * Math.max(1, maxY - pad);
+        placed.push({ cx: item.x + size / 2, cy: item.y + size / 2 });
       }
     });
   }
@@ -313,9 +328,12 @@
   function renderTargets() {
     els.targets.innerHTML = "";
     state.targets.forEach(function (item) {
+      var typeDone = state.items.every(function (it) {
+        return it.id !== item.id || !it.target || it.found;
+      });
       var chip = document.createElement("div");
-      chip.className = "target-item" + (state.foundIds[item.id] ? " done" : "");
-      chip.textContent = (state.foundIds[item.id] ? "✓ " : "☐ ") + item.emoji + " " + labelOf(item);
+      chip.className = "target-item" + (typeDone ? " done" : "");
+      chip.textContent = (typeDone ? "✓ " : "☐ ") + item.emoji + " " + labelOf(item);
       els.targets.appendChild(chip);
     });
   }
@@ -360,7 +378,9 @@
   }
 
   function checkDone() {
-    return state.foundCount >= state.targets.length;
+    return !state.items.some(function (item) {
+      return item.target && !item.found;
+    });
   }
 
   function showDone() {
@@ -380,10 +400,8 @@
       return;
     }
 
-    if (item.target && !state.foundIds[item.id]) {
+    if (item.target) {
       item.found = true;
-      state.foundIds[item.id] = true;
-      state.foundCount += 1;
       node.classList.add("target-hit");
       playTone(880, 0.13, 0.16, "triangle");
       setFeedback(tf("hit", labelOf(item)), "ok");
@@ -428,8 +446,8 @@
       content_version: DATA.content_version,
       completed: checkDone(),
       completed_count: state.completedCount,
-      found_count: state.foundCount,
-      target_count: state.targets.length,
+      remaining_target_instances: state.items.filter(function (item) { return item.target && !item.found; }).length,
+      target_type_count: state.targets.length,
       miss_count: state.missCount,
       targets: state.targets.map(function (it) { return it.id; }),
       timestamp: new Date().toISOString()

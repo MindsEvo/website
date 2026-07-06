@@ -1,7 +1,9 @@
 window.CLIO_FIND_IT_DATA = {
   content_version: "findit_v1_2026_07",
-  target_count: 3,
-  total_count: 10,
+  target_type_count: 3,
+  target_repeat_min: 2,
+  target_repeat_max: 3,
+  total_count: 12,
   min_distance: 76,
   object_pool: [
     { id: "car", emoji: "🚗", en: "Car", zh: "汽车" },
