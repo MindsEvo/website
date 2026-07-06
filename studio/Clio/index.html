@@ -172,6 +172,91 @@
       font-weight: 900;
       color: #1e293b;
     }
+    .celebration {
+      position: relative;
+      margin-top: 16px;
+      border: 1.5px solid #ddd6fe;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #faf5ff 0%, #f0f9ff 55%, #f0fdf4 100%);
+      box-shadow: 0 10px 28px rgba(124, 58, 237, 0.12);
+      padding: 14px;
+      overflow: hidden;
+    }
+    .celebration::before {
+      content: "";
+      position: absolute;
+      right: -46px;
+      top: -52px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, rgba(124, 58, 237, 0) 72%);
+      pointer-events: none;
+    }
+    .celebration-badge {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid #c4b5fd;
+      background: rgba(255, 255, 255, 0.75);
+      color: #6d28d9;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .celebration-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      color: #5b21b6;
+    }
+    .cele-logo-corner {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 258px;
+      height: 258px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #dbeafe;
+      box-shadow: 0 10px 24px rgba(14, 165, 233, 0.22);
+      padding: 8px;
+      z-index: 1;
+    }
+    .celebration-body {
+      margin: 10px 0 0;
+      color: #334155;
+      line-height: 1.8;
+      font-size: 14px;
+      white-space: pre-line;
+      padding-right: 278px;
+    }
+    .celebration-foot {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .cele-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.14);
+      padding: 4px;
+    }
+    .cele-sign {
+      margin: 0;
+      font-size: 13px;
+      color: #475569;
+      font-weight: 800;
+    }
   </style>
 </head>
 <body data-lang="zh">
@@ -220,6 +305,58 @@
           <a class="insight-link" href="./games/assets/clio-sketch-3.png" target="_blank" rel="noreferrer" data-i18n="view-image-3" data-zh="查看第3稿大图" data-en="View Draft 3 Large">查看第3稿大图</a>
         </div>
         <p class="insight-note" data-i18n="insight3-note" data-zh="评语：Clio 这次提出的改进建议非常棒。她把“目标可重复出现、不给具体数量、持续找对为止”明确成规则，让玩法更像真实探索任务。这个改动既保留了自由感，又显著提升了专注训练价值，非常适合 Creative Studio 的轻量可玩版本。" data-en="Comment: Clio's improvement suggestion here is excellent. She clearly defined the rule as repeated targets, no explicit count, and keep finding correct items until all are cleared, making the game feel closer to a real exploration task. This change preserves freedom while significantly improving focus-training value, and it fits perfectly as a lightweight Creative Studio playable version.">评语：Clio 这次提出的改进建议非常棒。她把“目标可重复出现、不给具体数量、持续找对为止”明确成规则，让玩法更像真实探索任务。这个改动既保留了自由感，又显著提升了专注训练价值，非常适合 Creative Studio 的轻量可玩版本。</p>
+
+        <section class="celebration" aria-label="Team Celebration">
+          <div class="celebration-badge" data-i18n="cele-badge" data-zh="MindsEvo 庆祝贺卡" data-en="MindsEvo Celebration Card">MindsEvo Celebration Card</div>
+          <img class="cele-logo-corner" src="../../logo.png" alt="MindsEvo logo" />
+          <h3 class="celebration-title" data-i18n="cele-title" data-zh="团队庆祝（2026年7月4日至5日）" data-en="Team Celebration (July 4–5, 2026)">Team Celebration (July 4–5, 2026)</h3>
+          <p class="celebration-body" data-i18n="cele-body" data-zh="亲爱的 Clio，
+我们一起完成了一件很了不起的事！
+
+短短两天里，我们团队：
+- 创作了 3 个新的游戏创意。
+- 做出了 4 个可以运行的游戏。
+- 完成了第一个 Creative Studio 项目。
+- 更新了 MindsEvo 网站。
+
+这是一项非常精彩的成果！
+你清楚地表达了自己的想法，并帮助我们把每个游戏都做得更好。你不只是玩家，更是一位游戏设计师。
+这是 MindsEvo 的一个重要里程碑，也是你个人创意旅程的开始。
+我们为你感到非常骄傲。
+让我们继续一起想象、创造、搭建！
+❤️ MindsEvo 团队" data-en="Dear Clio,
+We did an amazing job together!
+
+In just two days, our team:
+- Created 3 new game ideas.
+- Built 4 working games.
+- Finished the first Creative Studio project.
+- Updated the MindsEvo website.
+
+That is a wonderful achievement!
+You shared your ideas clearly and helped us make every game better. You were not only a player-you were a game designer.
+This is an important milestone for MindsEvo. It is also the beginning of your own creative journey.
+We are very proud of you.
+Let's keep imagining, creating, and building together!
+❤️ The MindsEvo Team">Dear Clio,
+We did an amazing job together!
+
+In just two days, our team:
+- Created 3 new game ideas.
+- Built 4 working games.
+- Finished the first Creative Studio project.
+- Updated the MindsEvo website.
+
+That is a wonderful achievement!
+You shared your ideas clearly and helped us make every game better. You were not only a player-you were a game designer.
+This is an important milestone for MindsEvo. It is also the beginning of your own creative journey.
+We are very proud of you.
+Let's keep imagining, creating, and building together!
+❤️ The MindsEvo Team</p>
+          <div class="celebration-foot">
+            <p class="cele-sign" data-i18n="cele-sign" data-zh="MindsEvo 团队" data-en="The MindsEvo Team">The MindsEvo Team</p>
+          </div>
+        </section>
       </section>
     </section>
   </main>
