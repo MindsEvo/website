@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clio Journal | MindsEvo</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #d9e3f1;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #ede9fe 0%, var(--bg) 56%);
+      color: var(--ink);
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .back {
+      display: inline-block;
+      text-decoration: none;
+      color: #0369a1;
+      font-weight: 700;
+    }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      color: #0f172a;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+    .hero {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      color: #6d28d9;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -0.8px;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 10px 0 18px;
+      line-height: 1.7;
+    }
+    .story-card {
+      margin-top: 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f8faff, #ffffff);
+      padding: 14px;
+    }
+    .story-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 900;
+      color: #1e293b;
+    }
+    .story-meta {
+      margin: 6px 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .story-body {
+      margin: 0;
+      color: #334155;
+      line-height: 1.8;
+      font-size: 14px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body data-lang="zh">
+  <main class="page">
+    <div class="top">
+      <a class="back" href="../index.html" data-i18n="back" data-zh="← 返回 Clio Design" data-en="← Back to Clio Design">← 返回 Clio Design</a>
+      <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+    </div>
+
+    <section class="hero">
+      <div class="tag">Creator Journal</div>
+      <h1 data-i18n="title" data-zh="Clio Journal 故事集" data-en="Clio Journal Stories">Clio Journal 故事集</h1>
+      <p class="sub" data-i18n="sub" data-zh="这里记录 Clio 和团队一起创造游戏的过程。这个页面先作为系列故事集，后续由你持续更新。" data-en="This page records Clio's co-creation journey with the team. It starts as a story series and can be continuously updated by you.">这里记录 Clio 和团队一起创造游戏的过程。这个页面先作为系列故事集，后续由你持续更新。</p>
+
+      <article class="story-card">
+        <h2 class="story-title" data-i18n="s1-title" data-zh="Story 1 · 两天完成第一批作品" data-en="Story 1 · First Batch in Two Days">Story 1 · 两天完成第一批作品</h2>
+        <p class="story-meta" data-i18n="s1-meta" data-zh="时间：2026-07-04 ~ 2026-07-05" data-en="Time: 2026-07-04 ~ 2026-07-05">时间：2026-07-04 ~ 2026-07-05</p>
+        <p class="story-body" data-i18n="s1-body" data-zh="我们在两天内从手稿走到可玩版本。
+- 形成了 3 个新游戏创意
+- 做出了 4 个可运行游戏
+- 完成了 Creative Studio 的第一轮落地
+- 完成了网站展示更新
+
+这是 Clio 作为“创意提出者 + 共创设计者”的重要起点。" data-en="In two days, we moved from sketches to playable versions.
+- 3 new game ideas were formed
+- 4 working games were built
+- The first Creative Studio milestone was completed
+- Website presentation was updated
+
+This marks an important starting point for Clio as both an idea creator and co-design partner.">我们在两天内从手稿走到可玩版本。
+- 形成了 3 个新游戏创意
+- 做出了 4 个可运行游戏
+- 完成了 Creative Studio 的第一轮落地
+- 完成了网站展示更新
+
+这是 Clio 作为“创意提出者 + 共创设计者”的重要起点。</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const langBtn = document.getElementById('langBtn');
+      const nodes = document.querySelectorAll('[data-i18n]');
+
+      function applyLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        document.title = lang === 'en' ? 'Clio Journal | MindsEvo' : 'Clio Journal | MindsEvo';
+        nodes.forEach((node) => {
+          const text = node.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
+          if (text != null) node.textContent = text;
+        });
+        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+        localStorage.setItem('mindsevo-lang', lang);
+      }
+
+      const saved = localStorage.getItem('mindsevo-lang');
+      applyLang(saved === 'en' ? 'en' : 'zh');
+      langBtn.addEventListener('click', () => {
+        applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+      });
+    })();
+  </script>
+</body>
+</html>
