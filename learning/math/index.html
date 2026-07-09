@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数学启智 Math Thinking | MindsEvo</title>
+  <style>
+    :root {
+      --dark: #071225;
+      --blue: #2563eb;
+      --green: #22c55e;
+      --text: #0f172a;
+      --muted: #64748b;
+      --bg: #f6f9ff;
+      --line: #e2e8f0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "SF Pro Display", "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px clamp(16px, 4vw, 56px);
+      background: rgba(7, 18, 37, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 20px; font-weight: 900; }
+    .brand img { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.28); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .back-link {
+      font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 12px;
+    }
+    .lang-sw { display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.22); border-radius: 9px; overflow: hidden; }
+    .lang-sw button { background: none; border: none; cursor: pointer; padding: 6px 12px; color: rgba(255,255,255,0.58); font-size: 13px; font-weight: 700; font-family: inherit; }
+    .lang-sw button.active { background: rgba(255,255,255,0.16); color: #fff; }
+    .lang-sw .sep { color: rgba(255,255,255,0.24); font-size: 11px; }
+    .page { max-width: 1180px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 80px; }
+    .hero { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: clamp(22px, 4vw, 36px); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero p { max-width: 820px; color: var(--muted); font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; }
+    .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; background: #f8fafc; border-radius: 8px; padding: 10px 14px; border-left: 3px solid var(--blue); }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .pill { font-size: 13px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--blue), var(--green)); border-radius: 999px; padding: 7px 12px; }
+    .muted-label { color: var(--muted); font-size: 14px; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .card {
+      background: #fff; border: 1.5px solid var(--line); border-radius: 16px;
+      padding: 18px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .card-link { cursor: pointer; transition: transform .18s, border-color .18s, box-shadow .18s; }
+    .card-link:hover { transform: translateY(-2px); border-color: #bfd2f7; box-shadow: 0 10px 24px rgba(37,99,235,0.08); }
+    .card-disabled { background: #f8fafc; }
+    .card h3 { font-size: 18px; font-weight: 850; line-height: 1.25; color: var(--text); }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.65; flex: 1; }
+    .card-tag { font-size: 11px; font-weight: 700; color: #1d4ed8; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 3px 7px; width: fit-content; }
+    .card-status {
+      display: inline-block; width: fit-content; border-radius: 10px;
+      font-size: 13px; font-weight: 800; padding: 9px 12px;
+      background: #e2e8f0; color: #64748b;
+    }
+    .card-status.open { background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff; }
+    .note { background: #fff; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 16px 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .back-link { display: none; } }
+    body[data-lang="zh"] .en { display: none; }
+    body[data-lang="en"] .zh { display: none; }
+  </style>
+</head>
+<body data-lang="zh">
+  <nav class="nav">
+    <a class="brand" href="../../index.html">
+      <img src="../../logo.png" alt="MindsEvo" />
+      <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
+    </a>
+    <div class="nav-right">
+      <a class="back-link" href="../index.html">
+        <span class="zh">← 学习系列</span>
+        <span class="en">← Learning Series</span>
+      </a>
+      <div class="lang-sw">
+        <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+        <span class="sep">|</span>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Learning Foundation · Math Thinking</div>
+      <h1>
+        <span class="zh">数学启智</span>
+        <span class="en">Math Thinking</span>
+      </h1>
+      <p>
+        <span class="zh">我们不覆盖数学教材，我们从数学情境中抽取元思维操作。无论什么知识点，只要孩子在真正执行「比较、建模、推断、发现规律」，训练就在发生。</span>
+        <span class="en">We don't cover the math curriculum — we extract meta-thinking operations from math contexts. As long as children are genuinely executing comparison, modeling, inference, or pattern recognition, the training is happening.</span>
+      </p>
+      <div class="hero-note">
+        <span class="zh">难度分级参考年级知识背景，仅供设计定位，不是孩子的课程表。</span>
+        <span class="en">Difficulty levels reference grade knowledge backgrounds for design purposes only — not a curriculum sequence for children.</span>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <span class="pill">6 <span class="zh">个能力模块</span><span class="en">Modules</span></span>
+      <span class="muted-label"><span class="zh">首批开放「比较」，其余持续推进。</span><span class="en">Comparison is live now. Others are in progress.</span></span>
+    </div>
+
+    <section class="grid">
+
+      <a class="card card-link" href="./comparison/index.html">
+        <div class="card-tag">RootGene: Comparison</div>
+        <h3><span class="zh">比较</span><span class="en">Comparison</span></h3>
+        <p><span class="zh">判断大小、多少、长短。每次操作都是一次明确的比较元思维练习，从 10 以内到 100 以内递进。</span><span class="en">Judge bigger, smaller, more, fewer. Each round is an explicit comparison meta-thinking exercise, progressing from within-10 to within-100.</span></p>
+        <div class="card-status open"><span class="zh">进入训练</span><span class="en">Start Training</span></div>
+      </a>
+
+      <article class="card card-disabled">
+        <div class="card-tag">RootGene: Comparison, Multi-dim</div>
+        <h3><span class="zh">数感</span><span class="en">Number Sense</span></h3>
+        <p><span class="zh">比大小、拆分、配对、数轴定位。从多个角度理解同一个数，是多维度思维的早期训练。</span><span class="en">Compare, split, pair, number line. Understand a number from multiple angles — early multi-dimensional thinking.</span></p>
+        <div class="card-status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      </article>
+
+      <article class="card card-disabled">
+        <div class="card-tag">RootGene: Prediction, Generalization</div>
+        <h3><span class="zh">规律</span><span class="en">Pattern</span></h3>
+        <p><span class="zh">数字与数列的规律发现与预测。与 Sprite 系列共用引擎，难度曲线按数学概念复杂度独立递增。</span><span class="en">Discover and predict numeric patterns. Shares engine with Sprite — independent difficulty curve by math concept complexity.</span></p>
+        <div class="card-status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      </article>
+
+      <article class="card card-disabled">
+        <div class="card-tag">RootGene: Multi-dim, Hypothesis</div>
+        <h3><span class="zh">建模</span><span class="en">Modeling</span></h3>
+        <p><span class="zh">用天平、图示理解等量关系。具象等量关系是未来代数思维的种子。</span><span class="en">Use scales and diagrams to represent equal relationships — concrete foundations for algebra.</span></p>
+        <div class="card-status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      </article>
+
+      <article class="card card-disabled">
+        <div class="card-tag">RootGene: Hypothesis, Elimination</div>
+        <h3><span class="zh">逻辑</span><span class="en">Logic</span></h3>
+        <p><span class="zh">简单条件推理、真假判断、排除法。「谁先到」「谁说谎」这类推理谜题。</span><span class="en">Simple conditional reasoning, true/false, elimination. Puzzles like "who arrived first" or "who is lying."</span></p>
+        <div class="card-status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      </article>
+
+      <article class="card card-disabled">
+        <div class="card-tag">RootGene: Prediction, Multi-dim</div>
+        <h3><span class="zh">策略</span><span class="en">Strategy</span></h3>
+        <p><span class="zh">低年级：多步骤路径规划；高年级：博弈类策略。与 Chess 系列互补，这里是通用策略思维入门。</span><span class="en">Lower grades: multi-step planning; upper grades: game strategy. Complements Chess series — lightweight strategic thinking entry.</span></p>
+        <div class="card-status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      </article>
+
+    </section>
+
+    <div class="note">
+      <span class="zh">每个模块对应现有 RootGene 八大能力标签，不新增标签体系。训练统计与 Sprite 系列数据独立记录，诊断目的不同，不合并计算。</span>
+      <span class="en">Each module maps to the existing 8 RootGene ability tags — no new tag system. Training stats are recorded independently from Sprite Series; different diagnostic purposes, not merged.</span>
+    </div>
+  </main>
+
+  <script>
+    function setLang(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('mindsevo-lang', lang);
+    }
+    const saved = localStorage.getItem('mindsevo-lang');
+    if (saved) setLang(saved);
+  </script>
+</body>
+</html>

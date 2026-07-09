@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>比较 · 数学启智 | MindsEvo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-lang="zh">
+
+  <nav class="nav">
+    <a class="brand" href="../../../index.html">
+      <img src="../../../logo.png" alt="MindsEvo" />
+      <span>MindsEvo</span>
+    </a>
+    <div class="nav-right">
+      <a class="back-btn" href="../index.html">
+        <span class="zh">← 数学启智</span>
+        <span class="en">← Math Thinking</span>
+      </a>
+      <div class="lang-sw">
+        <button id="btn-lang-zh" class="active" onclick="setLang('zh')">中文</button>
+        <span style="color:rgba(255,255,255,0.24);font-size:11px;padding:0 2px">|</span>
+        <button id="btn-lang-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Level Select ── -->
+    <div id="screen-select">
+      <div class="select-hero">
+        <div class="select-eyebrow">Math Thinking · Comparison</div>
+        <h1 class="select-title">
+          <span class="zh">比较</span>
+          <span class="en">Comparison</span>
+        </h1>
+        <p class="select-sub">
+          <span class="zh">看两个数，判断哪个更大或更小。每一次判断都是一次元思维操作练习。</span>
+          <span class="en">See two numbers. Decide which is bigger or smaller. Each answer is one meta-thinking operation.</span>
+        </p>
+        <span class="rootgene-tag">RootGene: Comparison</span>
+      </div>
+
+      <div class="level-grid">
+        <button class="level-btn" type="button" data-level="L1">
+          <div>
+            <div class="level-name">
+              <span class="zh">L1 · 10以内的数</span>
+              <span class="en">L1 · Numbers within 10</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：一年级上学期</span>
+              <span class="en">Ref: Grade 1 Sem 1</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+
+        <button class="level-btn" type="button" data-level="L2">
+          <div>
+            <div class="level-name">
+              <span class="zh">L2 · 20以内的数</span>
+              <span class="en">L2 · Numbers within 20</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：一年级下学期</span>
+              <span class="en">Ref: Grade 1 Sem 2</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+
+        <button class="level-btn" type="button" data-level="L3">
+          <div>
+            <div class="level-name">
+              <span class="zh">L3 · 100以内的数</span>
+              <span class="en">L3 · Numbers within 100</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：二年级</span>
+              <span class="en">Ref: Grade 2</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Game ── -->
+    <div id="screen-game" class="hidden">
+      <div class="hud">
+        <span id="hud-level"></span>
+        <span id="hud-progress"></span>
+        <span class="hud-score" id="hud-score"></span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-label">
+          <span class="zh">元思维操作：比较判断</span>
+          <span class="en">Meta-thinking: Comparison</span>
+        </div>
+        <div class="prompt-text" id="prompt-text"></div>
+      </div>
+      <div class="choices">
+        <button class="choice-btn" id="choice-left"  type="button"></button>
+        <button class="choice-btn" id="choice-right" type="button"></button>
+      </div>
+    </div>
+
+    <!-- ── Done ── -->
+    <div id="screen-done" class="hidden">
+      <div class="done-card">
+        <div class="done-icon" id="done-icon"></div>
+        <div class="done-title">
+          <span class="zh">关卡完成！</span>
+          <span class="en">Level Complete!</span>
+        </div>
+        <div class="done-score" id="done-score"></div>
+        <div class="done-score-label">
+          <span class="zh">正确答案数</span>
+          <span class="en">correct answers</span>
+        </div>
+        <div class="done-actions">
+          <button class="btn-secondary" id="btn-retry" type="button">
+            <span class="zh">再来一次</span>
+            <span class="en">Retry Level</span>
+          </button>
+          <button class="btn-primary hidden" id="btn-next-level" type="button">
+            <span class="zh">下一关 →</span>
+            <span class="en">Next Level →</span>
+          </button>
+          <button class="btn-secondary" id="btn-select" type="button">
+            <span class="zh">选择关卡</span>
+            <span class="en">Choose Level</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
