@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数感 · 数学启智 | MindsEvo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-lang="zh">
+
+  <nav class="nav">
+    <a class="brand" href="../../../index.html">
+      <img src="../../../logo.png" alt="MindsEvo" />
+      <span>MindsEvo</span>
+    </a>
+    <div class="nav-right">
+      <a class="back-btn" href="../index.html">
+        <span class="zh">← 数学启智</span>
+        <span class="en">← Math Thinking</span>
+      </a>
+      <div class="lang-sw">
+        <button id="btn-lang-zh" class="active" onclick="setLang('zh')">中文</button>
+        <span style="color:rgba(255,255,255,0.24);font-size:11px;padding:0 2px">|</span>
+        <button id="btn-lang-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Level Select ── -->
+    <div id="screen-select">
+      <div class="select-hero">
+        <div class="select-eyebrow">Math Thinking · Number Sense</div>
+        <h1 class="select-title">
+          <span class="zh">数感</span>
+          <span class="en">Number Sense</span>
+        </h1>
+        <p class="select-sub">
+          <span class="zh">同一个数，可以拆成不同组合——这就是多维度思维的起点。三种题型轮流出现，每次都是不同角度看数字。</span>
+          <span class="en">One number, many compositions — the starting point of multi-dimensional thinking. Three question types take turns, each viewing numbers from a different angle.</span>
+        </p>
+        <div class="select-types">
+          <span class="type-pill split"><span class="zh">拆分 · 多维分解</span><span class="en">Split · Decompose</span></span>
+          <span class="type-pill proximity"><span class="zh">接近 · 数轴直觉</span><span class="en">Proximity · Estimation</span></span>
+          <span class="type-pill complete"><span class="zh">凑数 · 逆向求解</span><span class="en">Complete · Missing Part</span></span>
+        </div>
+        <span class="rootgene-tag">RootGene: Comparison · Multi-dim</span>
+      </div>
+
+      <div class="level-grid">
+        <button class="level-btn" type="button" data-level="L1">
+          <div>
+            <div class="level-name">
+              <span class="zh">L1 · 10以内数感</span>
+              <span class="en">L1 · Number Sense within 10</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：一年级上学期</span>
+              <span class="en">Ref: Grade 1 Sem 1</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+
+        <button class="level-btn" type="button" data-level="L2">
+          <div>
+            <div class="level-name">
+              <span class="zh">L2 · 20以内数感</span>
+              <span class="en">L2 · Number Sense within 20</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：一年级下学期</span>
+              <span class="en">Ref: Grade 1 Sem 2</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+
+        <button class="level-btn" type="button" data-level="L3">
+          <div>
+            <div class="level-name">
+              <span class="zh">L3 · 100以内数感</span>
+              <span class="en">L3 · Number Sense within 100</span>
+            </div>
+            <div class="level-ref">
+              <span class="zh">参考背景：二年级</span>
+              <span class="en">Ref: Grade 2</span>
+            </div>
+          </div>
+          <span class="level-arrow">›</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Game ── -->
+    <div id="screen-game" class="hidden">
+      <div class="hud">
+        <span id="hud-level"></span>
+        <span id="hud-progress"></span>
+        <span class="hud-score" id="hud-score"></span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-label" id="prompt-label"></div>
+        <div class="prompt-main"  id="prompt-main"></div>
+      </div>
+      <!-- choices built dynamically: choices-2 or choices-4 -->
+      <div id="choices"></div>
+    </div>
+
+    <!-- ── Done ── -->
+    <div id="screen-done" class="hidden">
+      <div class="done-card">
+        <div class="done-icon" id="done-icon"></div>
+        <div class="done-title">
+          <span class="zh">关卡完成！</span>
+          <span class="en">Level Complete!</span>
+        </div>
+        <div class="done-score" id="done-score"></div>
+        <div class="done-score-label">
+          <span class="zh">正确答案数</span>
+          <span class="en">correct answers</span>
+        </div>
+        <div class="done-actions">
+          <button class="btn-secondary" id="btn-retry" type="button">
+            <span class="zh">再来一次</span>
+            <span class="en">Retry Level</span>
+          </button>
+          <button class="btn-primary hidden" id="btn-next-level" type="button">
+            <span class="zh">下一关 →</span>
+            <span class="en">Next Level →</span>
+          </button>
+          <button class="btn-secondary" id="btn-select" type="button">
+            <span class="zh">选择关卡</span>
+            <span class="en">Choose Level</span>
+          </button>
+        </div>
+        <!-- per-trial report + history injected by game.js -->
+        <div id="trial-section" style="margin-top:20px;"></div>
+        <div id="history-section" style="margin-top:8px;"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
