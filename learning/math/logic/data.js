@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Math Logic — Game Data  (Shell-1 format)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Logic 逻辑
@@ -30,10 +30,10 @@ var ML_DATA = {
       nameZh: '顺序推断', nameEn: 'Ordering Reasoning',
       descZh: '从两个比较线索推断出最大或最小', descEn: 'Use two clues to find the biggest or smallest',
       questions: [
-        { premiseZh:'小红比小明高，小明比小白高。',      premiseEn:'Xiaohong is taller than Xiaoming; Xiaoming is taller than Xiaobai.',
+        { premiseZh:'Amy比Tom高，Tom比Bob高。',      premiseEn:'Amy is taller than Tom; Tom is taller than Bob.',
           questionZh:'谁最矮？',                       questionEn:'Who is the shortest?',
-          options:['小红','小明','小白','无法判断'],    optionsEn:['Xiaohong','Xiaoming','Xiaobai','Cannot tell'],
-          answer:'小白', hintZh:'从矮到高：小白→小明→小红', hintEn:'Shortest to tallest: Xiaobai→Xiaoming→Xiaohong' },
+          options:['Amy','Tom','Bob','无法判断'],    optionsEn:['Amy','Tom','Bob','Cannot tell'],
+          answer:'Bob', hintZh:'从矮到高：Bob→Tom→Amy', hintEn:'Shortest to tallest: Bob→Tom→Amy' },
 
         { premiseZh:'猫比狗重，狗比兔子重。',            premiseEn:'Cat is heavier than dog; dog is heavier than rabbit.',
           questionZh:'谁最轻？',                       questionEn:'Who is lightest?',
@@ -45,20 +45,20 @@ var ML_DATA = {
           options:['苹果','梨','香蕉','一样贵'],        optionsEn:['Apple','Pear','Banana','Same price'],
           answer:'香蕉', hintZh:'从便宜到贵：香蕉→梨→苹果', hintEn:'Cheapest to most expensive: Banana→Pear→Apple' },
 
-        { premiseZh:'小A跑得比小B快，小B跑得比小C快。',  premiseEn:'A runs faster than B; B runs faster than C.',
+        { premiseZh:'A跑得比B快，B跑得比C快。',  premiseEn:'A runs faster than B; B runs faster than C.',
           questionZh:'谁跑得最慢？',                   questionEn:'Who runs slowest?',
-          options:['小A','小B','小C','一样快'],         optionsEn:['A','B','C','Same speed'],
-          answer:'小C', hintZh:'从慢到快：小C→小B→小A', hintEn:'Slowest to fastest: C→B→A' },
+          options:['A','B','C','一样快'],         optionsEn:['A','B','C','Same speed'],
+          answer:'C', hintZh:'从慢到快：C→B→A', hintEn:'Slowest to fastest: C→B→A' },
 
         { premiseZh:'红绳比蓝绳长，蓝绳比黄绳长。',      premiseEn:'Red rope is longer than blue; blue is longer than yellow.',
           questionZh:'哪根最短？',                     questionEn:'Which rope is shortest?',
           options:['红绳','蓝绳','黄绳','一样长'],      optionsEn:['Red','Blue','Yellow','Same length'],
           answer:'黄绳', hintZh:'从短到长：黄绳→蓝绳→红绳', hintEn:'Shortest to longest: Yellow→Blue→Red' },
 
-        { premiseZh:'小明比小李大，小李比小华大。',        premiseEn:'Xiaoming is older than Xiaoli; Xiaoli is older than Xiaohua.',
+        { premiseZh:'Tom比Jack大，Jack比Lily大。',        premiseEn:'Tom is older than Jack; Jack is older than Lily.',
           questionZh:'谁最小？',                       questionEn:'Who is youngest?',
-          options:['小明','小李','小华','无法判断'],     optionsEn:['Xiaoming','Xiaoli','Xiaohua','Cannot tell'],
-          answer:'小华', hintZh:'从小到大：小华→小李→小明', hintEn:'Youngest to oldest: Xiaohua→Xiaoli→Xiaoming' },
+          options:['Tom','Jack','Lily','无法判断'],     optionsEn:['Tom','Jack','Lily','Cannot tell'],
+          answer:'Lily', hintZh:'从小到大：Lily→Jack→Tom', hintEn:'Youngest to oldest: Lily→Jack→Tom' },
 
         { premiseZh:'书架上红书比蓝书多，蓝书比绿书多。', premiseEn:'More red books than blue; more blue than green.',
           questionZh:'哪种书最少？',                   questionEn:'Which color has fewest books?',
@@ -94,11 +94,11 @@ var ML_DATA = {
           options:['是','不一定','不是','无法判断'],     optionsEn:['Yes','Not necessarily','No','Cannot tell'],
           answer:'不一定', hintZh:'有4条边的还可能是长方形、菱形', hintEn:'A 4-sided shape could also be a rectangle or rhombus' },
 
-        { premiseZh:'所有的狗都是动物。贝贝是一条狗。',
-          premiseEn:'All dogs are animals. Beibei is a dog.',
-          questionZh:'贝贝是动物吗？',                 questionEn:'Is Beibei an animal?',
+        { premiseZh:'所有的狗都是动物。Max是一条狗。',
+          premiseEn:'All dogs are animals. Max is a dog.',
+          questionZh:'Max是动物吗？',                 questionEn:'Is Max an animal?',
           options:['是','不是','不一定','无法判断'],     optionsEn:['Yes','No','Not necessarily','Cannot tell'],
-          answer:'是', hintZh:'贝贝是狗，狗都是动物，所以贝贝是动物', hintEn:'Beibei is a dog; all dogs are animals → Beibei is an animal' },
+          answer:'是', hintZh:'Max是狗，狗都是动物，所以Max是动物', hintEn:'Max is a dog; all dogs are animals → Max is an animal' },
 
         { premiseZh:'所有的苹果都是水果。我手里有一个水果。',
           premiseEn:'All apples are fruit. I have a fruit in my hand.',
@@ -106,11 +106,11 @@ var ML_DATA = {
           options:['一定是','不一定是','一定不是','需更多信息'], optionsEn:['Definitely','Not necessarily','Definitely not','Need more info'],
           answer:'不一定是', hintZh:'水果可以是橙子、梨等，不一定是苹果', hintEn:'The fruit could be an orange, pear, etc.' },
 
-        { premiseZh:'班里所有的同学今天都来上学了。小明是班里的同学。',
-          premiseEn:'All classmates came to school today. Xiaoming is a classmate.',
-          questionZh:'小明今天来上学了吗？',            questionEn:'Did Xiaoming come to school today?',
+        { premiseZh:'班里所有的同学今天都来上学了。Tom是班里的同学。',
+          premiseEn:'All classmates came to school today. Tom is a classmate.',
+          questionZh:'Tom今天来上学了吗？',            questionEn:'Did Tom come to school today?',
           options:['来了','没来','不确定','可能没来'],   optionsEn:['Yes','No','Not sure','Maybe not'],
-          answer:'来了', hintZh:'所有人都来了，小明是其中一人，所以来了', hintEn:'All students came; Xiaoming is one of them → he came' },
+          answer:'来了', hintZh:'所有人都来了，Tom是其中一人，所以来了', hintEn:'All students came; Tom is one of them → he came' },
 
         { premiseZh:'所有偶数都能被2整除。12是偶数。',
           premiseEn:'All even numbers are divisible by 2. 12 is even.',
@@ -124,9 +124,9 @@ var ML_DATA = {
           options:['是','不是','不一定','只有时候是'],   optionsEn:['Yes','No','Not always','Sometimes'],
           answer:'是', hintZh:'正方形是特殊的长方形，所以是', hintEn:'A square is a special rectangle → yes' },
 
-        { premiseZh:'班里所有喜欢踢球的同学都喜欢运动。小红喜欢运动。',
-          premiseEn:'All soccer fans in class like sports. Xiaohong likes sports.',
-          questionZh:'小红一定喜欢踢球吗？',            questionEn:'Does Xiaohong definitely like soccer?',
+        { premiseZh:'班里所有喜欢踢球的同学都喜欢运动。Amy喜欢运动。',
+          premiseEn:'All soccer fans in class like sports. Amy likes sports.',
+          questionZh:'Amy一定喜欢踢球吗？',            questionEn:'Does Amy definitely like soccer?',
           options:['一定喜欢','不一定','一定不喜欢','无法判断'], optionsEn:['Definitely yes','Not necessarily','Definitely not','Cannot tell'],
           answer:'不一定', hintZh:'喜欢运动不代表一定喜欢踢球', hintEn:'Liking sports does not mean liking soccer specifically' },
 
@@ -136,9 +136,9 @@ var ML_DATA = {
           options:['有','没有','不确定','只有部分有'],   optionsEn:['Yes','No','Unsure','Only some'],
           answer:'有', hintZh:'企鹅是鸟，所有鸟都有翅膀', hintEn:'Penguins are birds; all birds have wings' },
 
-        { premiseZh:'所有喝牛奶的小朋友都长得高。小明长得很高。',
-          premiseEn:'All kids who drink milk are tall. Xiaoming is tall.',
-          questionZh:'小明一定喝牛奶吗？',              questionEn:'Does Xiaoming definitely drink milk?',
+        { premiseZh:'所有喝牛奶的小朋友都长得高。Tom长得很高。',
+          premiseEn:'All kids who drink milk are tall. Tom is tall.',
+          questionZh:'Tom一定喝牛奶吗？',              questionEn:'Does Tom definitely drink milk?',
           options:['一定喝','不一定','一定不喝','无法判断'], optionsEn:['Definitely','Not necessarily','Definitely not','Cannot tell'],
           answer:'不一定', hintZh:'还可能因为其他原因长得高', hintEn:'He could be tall for other reasons' },
 
@@ -156,9 +156,9 @@ var ML_DATA = {
       nameZh: '排除推理', nameEn: 'Process of Elimination',
       descZh: '用已知条件逐一排除，找出唯一可能的答案', descEn: 'Use clues to rule out options one by one',
       questions: [
-        { premiseZh:'有衣服颜色：红、蓝、绿各一件。小明不穿红色，也不穿蓝色。',
-          premiseEn:'Three shirts: red, blue, green. Xiaoming does not wear red or blue.',
-          questionZh:'小明穿哪种颜色？',               questionEn:"What color does Xiaoming wear?",
+        { premiseZh:'有衣服颜色：红、蓝、绿各一件。Tom不穿红色，也不穿蓝色。',
+          premiseEn:'Three shirts: red, blue, green. Tom does not wear red or blue.',
+          questionZh:'Tom穿哪种颜色？',               questionEn:"What color does Tom wear?",
           options:['红色','蓝色','绿色','无法判断'],    optionsEn:['Red','Blue','Green','Cannot tell'],
           answer:'绿色', hintZh:'排除红和蓝，只剩绿色', hintEn:'Eliminate red and blue → only green remains' },
 
@@ -168,9 +168,9 @@ var ML_DATA = {
           options:['1','2','3','无法判断'],            optionsEn:['1','2','3','Cannot tell'],
           answer:'3', hintZh:'排除1和2，只剩3', hintEn:'Eliminate 1 and 2 → only 3 remains' },
 
-        { premiseZh:'小朋友们排队，小明不在第一也不在最后，共3人。',
-          premiseEn:'3 kids in a line. Xiaoming is not first and not last.',
-          questionZh:'小明排第几？',                   questionEn:'What position is Xiaoming?',
+        { premiseZh:'小朋友们排队，Tom不在第一也不在最后，共3人。',
+          premiseEn:'3 kids in a line. Tom is not first and not last.',
+          questionZh:'Tom排第几？',                   questionEn:'What position is Tom?',
           options:['第一','第二','第三','无法判断'],    optionsEn:['1st','2nd','3rd','Cannot tell'],
           answer:'第二', hintZh:'排除第一和第三，只剩第二', hintEn:'Eliminate 1st and 3rd → 2nd remains' },
 
@@ -224,21 +224,21 @@ var ML_DATA = {
       nameZh: '条件推理', nameEn: 'Conditional Reasoning',
       descZh: '"如果…就…" ——条件成立时，结论一定成立吗？', descEn: '"If A then B" — when A happens, does B always follow?',
       questions: [
-        { premiseZh:'如果下雨，小明就带伞。今天下雨了。',
-          premiseEn:'If it rains, Xiaoming brings an umbrella. It rained today.',
-          questionZh:'小明带伞了吗？',                 questionEn:'Did Xiaoming bring an umbrella?',
+        { premiseZh:'如果下雨，Tom就带伞。今天下雨了。',
+          premiseEn:'If it rains, Tom brings an umbrella. It rained today.',
+          questionZh:'Tom带伞了吗？',                 questionEn:'Did Tom bring an umbrella?',
           options:['带了','没带','不确定','可能没带'],   optionsEn:['Yes','No','Not sure','Maybe not'],
           answer:'带了', hintZh:'下雨→带伞，今天下雨，所以带了', hintEn:'Rain → umbrella. It rained → he brought one' },
 
-        { premiseZh:'如果今天是晴天，小花就出去玩。今天是阴天。',
-          premiseEn:'If it is sunny, Xiaohua goes out to play. Today is cloudy.',
-          questionZh:'小花出去玩了吗？',               questionEn:'Did Xiaohua go out to play?',
+        { premiseZh:'如果今天是晴天，Eva就出去玩。今天是阴天。',
+          premiseEn:'If it is sunny, Eva goes out to play. Today is cloudy.',
+          questionZh:'Eva出去玩了吗？',               questionEn:'Did Lily go out to play?',
           options:['出去了','没出去','不确定','一定出去了'], optionsEn:['Yes','No','Not sure','Definitely yes'],
           answer:'不确定', hintZh:'条件是晴天才出去，阴天没说', hintEn:'The condition was sunny; cloudy day is not covered' },
 
-        { premiseZh:'如果做完作业，就可以看电视。小明没做完作业。',
-          premiseEn:'If homework is done, TV is allowed. Xiaoming did not finish his homework.',
-          questionZh:'小明可以看电视吗？',              questionEn:'Can Xiaoming watch TV?',
+        { premiseZh:'如果做完作业，就可以看电视。Tom没做完作业。',
+          premiseEn:'If homework is done, TV is allowed. Tom did not finish his homework.',
+          questionZh:'Tom可以看电视吗？',              questionEn:'Can Tom watch TV?',
           options:['可以','不可以','不确定','要看情况'], optionsEn:['Yes','No','Not sure','Depends'],
           answer:'不可以', hintZh:'没做完作业就不能看电视', hintEn:'Homework not done → no TV' },
 
@@ -254,15 +254,15 @@ var ML_DATA = {
           options:['亮了','没有','不确定','可能亮了'],   optionsEn:['Yes','No','Not sure','Maybe'],
           answer:'没有', hintZh:'3不大于5，条件不满足，红灯没亮', hintEn:'3 is not greater than 5 → condition not met' },
 
-        { premiseZh:'只有会游泳的选手才能参加游泳比赛。小明不会游泳。',
-          premiseEn:'Only swimmers can enter the swimming competition. Xiaoming cannot swim.',
-          questionZh:'小明能参加游泳比赛吗？',          questionEn:'Can Xiaoming enter the swimming race?',
+        { premiseZh:'只有会游泳的选手才能参加游泳比赛。Tom不会游泳。',
+          premiseEn:'Only swimmers can enter the swimming competition. Tom cannot swim.',
+          questionZh:'Tom能参加游泳比赛吗？',          questionEn:'Can Tom enter the swimming race?',
           options:['能','不能','不确定','要看规定'],     optionsEn:['Yes','No','Not sure','Depends'],
           answer:'不能', hintZh:'不会游泳就不能参加', hintEn:'Cannot swim → cannot enter' },
 
-        { premiseZh:'如果分数高于90分，就能得到奖状。小红考了95分。',
-          premiseEn:'If score is above 90, the student gets a certificate. Xiaohong scored 95.',
-          questionZh:'小红能得到奖状吗？',              questionEn:'Does Xiaohong get a certificate?',
+        { premiseZh:'如果分数高于90分，就能得到奖状。Amy考了95分。',
+          premiseEn:'If score is above 90, the student gets a certificate. Amy scored 95.',
+          questionZh:'Amy能得到奖状吗？',              questionEn:'Does Amy get a certificate?',
           options:['能','不能','不确定','要看老师'],     optionsEn:['Yes','No','Not sure','Up to teacher'],
           answer:'能', hintZh:'95>90，满足条件，能得奖状', hintEn:'95 > 90 → condition met → certificate' },
 
@@ -272,11 +272,11 @@ var ML_DATA = {
           options:['一定会','不一定','一定不会','要看天气'], optionsEn:['Definitely','Not necessarily','Definitely not','Check forecast'],
           answer:'不一定', hintZh:'有云只是"可能"下雨，不是一定', hintEn:'Clouds mean it might rain, not that it will' },
 
-        { premiseZh:'如果你第一个到达终点，就是冠军。小明是冠军。',
-          premiseEn:'If you reach the finish line first, you are the champion. Xiaoming is the champion.',
-          questionZh:'小明第一个到达终点了吗？',        questionEn:'Did Xiaoming reach the finish line first?',
+        { premiseZh:'如果你第一个到达终点，就是冠军。Tom是冠军。',
+          premiseEn:'If you reach the finish line first, you are the champion. Tom is the champion.',
+          questionZh:'Tom第一个到达终点了吗？',        questionEn:'Did Tom reach the finish line first?',
           options:['是','不是','不一定','无法判断'],     optionsEn:['Yes','No','Not necessarily','Cannot tell'],
-          answer:'是', hintZh:'冠军就是第一个到达终点的人', hintEn:'Champion = first to finish → Xiaoming was first' },
+          answer:'是', hintZh:'冠军就是第一个到达终点的人', hintEn:'Champion = first to finish → Tom was first' },
 
         { premiseZh:'如果机器开着，指示灯就亮。指示灯灭了。',
           premiseEn:'If the machine is on, the indicator light is lit. The indicator light is off.',
@@ -292,65 +292,65 @@ var ML_DATA = {
       nameZh: '谁说对了', nameEn: 'Who Is Correct?',
       descZh: '多人给出不同答案，根据事实判断谁说对了', descEn: 'Multiple answers given — use facts to decide who is right',
       questions: [
-        { premiseZh:'篮子里有6个苹果。小明说有5个，小红说有6个，小华说有7个。',
+        { premiseZh:'篮子里有6个苹果。Tom说有5个，Amy说有6个，Lily说有7个。',
           premiseEn:'There are 6 apples. Ming says 5, Hong says 6, Hua says 7.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','小华','都没说对'],    optionsEn:['Ming','Hong','Hua','None'],
-          answer:'小红', hintZh:'篮子里有6个，小红说6个，所以小红对', hintEn:'There are 6 apples; Hong said 6 → Hong is correct' },
+          options:['Tom','Amy','Lily','都没说对'],    optionsEn:['Ming','Hong','Hua','None'],
+          answer:'Amy', hintZh:'篮子里有6个，Amy说6个，所以Amy对', hintEn:'There are 6 apples; Hong said 6 → Hong is correct' },
 
-        { premiseZh:'正方形有4条边。小明说正方形有3条边，小花说有4条边。',
-          premiseEn:'A square has 4 sides. Ming says 3 sides, Xiaohua says 4 sides.',
+        { premiseZh:'正方形有4条边。Tom说正方形有3条边，Eva说有4条边。',
+          premiseEn:'A square has 4 sides. Ming says 3 sides, Lily says 4 sides.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小花','两人都对','两人都错'], optionsEn:['Ming','Hua','Both','Neither'],
-          answer:'小花', hintZh:'正方形4条边，小花答对了', hintEn:'Square has 4 sides → Hua is correct' },
+          options:['Tom','Eva','两人都对','两人都错'], optionsEn:['Ming','Hua','Both','Neither'],
+          answer:'Eva', hintZh:'正方形4条边，Eva答对了', hintEn:'Square has 4 sides → Hua is correct' },
 
-        { premiseZh:'今天是周三。小明说明天是周四，小红说明天是周五。',
+        { premiseZh:'今天是周三。Tom说明天是周四，Amy说明天是周五。',
           premiseEn:'Today is Wednesday. Ming says tomorrow is Thursday; Hong says Friday.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','两人都对','两人都错'], optionsEn:['Ming','Hong','Both','Neither'],
-          answer:'小明', hintZh:'周三的明天是周四，小明对', hintEn:'Wednesday + 1 = Thursday → Ming is correct' },
+          options:['Tom','Amy','两人都对','两人都错'], optionsEn:['Ming','Hong','Both','Neither'],
+          answer:'Tom', hintZh:'周三的明天是周四，Tom对', hintEn:'Wednesday + 1 = Thursday → Ming is correct' },
 
-        { premiseZh:'2 + 3 的结果。小A说是4，小B说是5，小C说是6。',
+        { premiseZh:'2 + 3 的结果。A说是4，B说是5，C说是6。',
           premiseEn:'2 + 3 = ? A says 4, B says 5, C says 6.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小A','小B','小C','都没对'],         optionsEn:['A','B','C','None'],
-          answer:'小B', hintZh:'2+3=5，小B对', hintEn:'2+3=5 → B is correct' },
+          options:['A','B','C','都没对'],         optionsEn:['A','B','C','None'],
+          answer:'B', hintZh:'2+3=5，B对', hintEn:'2+3=5 → B is correct' },
 
-        { premiseZh:'三角形内角和是180度。小明说90度，小红说180度，小华说360度。',
+        { premiseZh:'三角形内角和是180度。Tom说90度，Amy说180度，Lily说360度。',
           premiseEn:'Triangle angles sum to 180°. Ming: 90°, Hong: 180°, Hua: 360°.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','小华','没人对'],       optionsEn:['Ming','Hong','Hua','None'],
-          answer:'小红', hintZh:'三角形内角和=180度，小红对', hintEn:'Triangle angles sum to 180° → Hong is correct' },
+          options:['Tom','Amy','Lily','没人对'],       optionsEn:['Ming','Hong','Hua','None'],
+          answer:'Amy', hintZh:'三角形内角和=180度，Amy对', hintEn:'Triangle angles sum to 180° → Hong is correct' },
 
-        { premiseZh:'5 × 4 的结果。小明说15，小红说20，小华说25。',
+        { premiseZh:'5 × 4 的结果。Tom说15，Amy说20，Lily说25。',
           premiseEn:'5 × 4 = ? Ming: 15, Hong: 20, Hua: 25.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','小华','都错了'],       optionsEn:['Ming','Hong','Hua','None'],
-          answer:'小红', hintZh:'5×4=20，小红对', hintEn:'5×4=20 → Hong is correct' },
+          options:['Tom','Amy','Lily','都错了'],       optionsEn:['Ming','Hong','Hua','None'],
+          answer:'Amy', hintZh:'5×4=20，Amy对', hintEn:'5×4=20 → Hong is correct' },
 
-        { premiseZh:'一年有365天（平年）。小A说100天，小B说365天，小C说400天。',
+        { premiseZh:'一年有365天（平年）。A说100天，B说365天，C说400天。',
           premiseEn:'A regular year has 365 days. A: 100, B: 365, C: 400.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小A','小B','小C','都错了'],         optionsEn:['A','B','C','None'],
-          answer:'小B', hintZh:'一年365天，小B对', hintEn:'365 days in a year → B is correct' },
+          options:['A','B','C','都错了'],         optionsEn:['A','B','C','None'],
+          answer:'B', hintZh:'一年365天，B对', hintEn:'365 days in a year → B is correct' },
 
-        { premiseZh:'1 + 1 是加法。小明说乘法，小红说加法，小华说减法。',
+        { premiseZh:'1 + 1 是加法。Tom说乘法，Amy说加法，Lily说减法。',
           premiseEn:'1 + 1 is addition. Ming: multiplication, Hong: addition, Hua: subtraction.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','小华','都没对'],       optionsEn:['Ming','Hong','Hua','None'],
-          answer:'小红', hintZh:'1+1用的是加法符号，小红对', hintEn:'1 + 1 is addition → Hong is correct' },
+          options:['Tom','Amy','Lily','都没对'],       optionsEn:['Ming','Hong','Hua','None'],
+          answer:'Amy', hintZh:'1+1用的是加法符号，Amy对', hintEn:'1 + 1 is addition → Hong is correct' },
 
-        { premiseZh:'水在100℃沸腾。小明说90℃，小红说100℃，小华说110℃。',
+        { premiseZh:'水在100℃沸腾。Tom说90℃，Amy说100℃，Lily说110℃。',
           premiseEn:'Water boils at 100°C. Ming: 90°C, Hong: 100°C, Hua: 110°C.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','小华','都不对'],       optionsEn:['Ming','Hong','Hua','None'],
-          answer:'小红', hintZh:'水沸点100℃，小红正确', hintEn:'Water boils at 100°C → Hong is correct' },
+          options:['Tom','Amy','Lily','都不对'],       optionsEn:['Ming','Hong','Hua','None'],
+          answer:'Amy', hintZh:'水沸点100℃，Amy正确', hintEn:'Water boils at 100°C → Hong is correct' },
 
-        { premiseZh:'正方形的四条边一样长。小明说对，小红说边不一样长。',
+        { premiseZh:'正方形的四条边一样长。Tom说对，Amy说边不一样长。',
           premiseEn:'A square has 4 equal sides. Ming says true; Hong says sides are unequal.',
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小明','小红','两人都对','两人都错'], optionsEn:['Ming','Hong','Both','Neither'],
-          answer:'小明', hintZh:'正方形四边等长，小明说的对', hintEn:'Squares have equal sides → Ming is correct' }
+          options:['Tom','Amy','两人都对','两人都错'], optionsEn:['Ming','Hong','Both','Neither'],
+          answer:'Tom', hintZh:'正方形四边等长，Tom说的对', hintEn:'Squares have equal sides → Ming is correct' }
       ]
     },
 
@@ -360,15 +360,15 @@ var ML_DATA = {
       nameZh: '综合推理', nameEn: 'Multi-step Reasoning',
       descZh: '把两步或更多推理连起来——逻辑链越长，元思维能力越强', descEn: 'Chain two or more reasoning steps — build your logical thinking',
       questions: [
-        { premiseZh:'甲比乙重5斤，乙比丙重3斤，丙重10斤。',
+        { premiseZh:'A比B重5斤，B比C重3斤，C重10斤。',
           premiseEn:'A is 5 kg heavier than B; B is 3 kg heavier than C; C weighs 10 kg.',
-          questionZh:'甲重多少斤？',                   questionEn:'How heavy is A?',
+          questionZh:'A重多少斤？',                   questionEn:'How heavy is A?',
           options:['13斤','15斤','18斤','20斤'],        optionsEn:['13 kg','15 kg','18 kg','20 kg'],
-          answer:'18斤', hintZh:'丙=10，乙=10+3=13，甲=13+5=18', hintEn:'C=10, B=10+3=13, A=13+5=18' },
+          answer:'18斤', hintZh:'C=10，B=10+3=13，A=13+5=18', hintEn:'C=10, B=10+3=13, A=13+5=18' },
 
-        { premiseZh:'有3件玩具：球、车、娃娃。小明不要球，也不要车。',
-          premiseEn:'3 toys: ball, car, doll. Xiaoming does not want the ball or the car.',
-          questionZh:'小明选了什么？',                 questionEn:'What did Xiaoming choose?',
+        { premiseZh:'有3件玩具：球、车、娃娃。Tom不要球，也不要车。',
+          premiseEn:'3 toys: ball, car, doll. Tom does not want the ball or the car.',
+          questionZh:'Tom选了什么？',                 questionEn:'What did Tom choose?',
           options:['球','车','娃娃','什么都没选'],      optionsEn:['Ball','Car','Doll','Nothing'],
           answer:'娃娃', hintZh:'排除球和车，只剩娃娃', hintEn:'Eliminate ball and car → doll remains' },
 
@@ -378,9 +378,9 @@ var ML_DATA = {
           options:['能','不能','有时能','不确定'],       optionsEn:['Yes','No','Sometimes','Not sure'],
           answer:'不能', hintZh:'15是奇数，奇数都不能被2整除', hintEn:'15 is odd → not divisible by 2' },
 
-        { premiseZh:'小A排在小B前面，小B排在小C前面，小C是最后一名，共3人。',
+        { premiseZh:'A排在B前面，B排在C前面，C是最后一名，共3人。',
           premiseEn:'A is ahead of B; B is ahead of C; C is last. 3 people total.',
-          questionZh:'小A是第几名？',                  questionEn:'What place is A?',
+          questionZh:'A是第几名？',                  questionEn:'What place is A?',
           options:['第一名','第二名','第三名','无法判断'], optionsEn:['1st','2nd','3rd','Cannot tell'],
           answer:'第一名', hintZh:'C末，B第二，A第一', hintEn:'C is last → B is 2nd → A is 1st' },
 
@@ -390,11 +390,11 @@ var ML_DATA = {
           options:['开着','关着','不确定','半开半关'],   optionsEn:['Open','Closed','Not sure','Half open'],
           answer:'关着', hintZh:'下雨→开空调→关窗', hintEn:'Rain → AC on → windows closed' },
 
-        { premiseZh:'小明零花钱5元，小红是小明的2倍。小华说小红有8元，小李说有10元。',
-          premiseEn:"Xiaoming has ¥5. Xiaohong has twice as much. Xiaohua says ¥8; Xiaoli says ¥10.",
+        { premiseZh:'Tom零花钱5元，Amy是Tom的2倍。Lily说Amy有8元，Jack说有10元。',
+          premiseEn:"Tom has ¥5. Amy has twice as much. Lily says ¥8; Jack says ¥10.",
           questionZh:'谁说对了？',                     questionEn:'Who is correct?',
-          options:['小华','小李','两人都对','两人都错'], optionsEn:['Hua','Li','Both','Neither'],
-          answer:'小李', hintZh:'小明5元×2=10元，小李对', hintEn:'5×2=10 → Li is correct' },
+          options:['Lily','Jack','两人都对','两人都错'], optionsEn:['Hua','Li','Both','Neither'],
+          answer:'Jack', hintZh:'Tom5元×2=10元，Jack对', hintEn:'5×2=10 → Li is correct' },
 
         { premiseZh:'一个数是偶数，大于2，小于6。',
           premiseEn:'A number is even, greater than 2, and less than 6.',
@@ -408,9 +408,9 @@ var ML_DATA = {
           options:['7厘米','8厘米','10厘米','12厘米'],  optionsEn:['7 cm','8 cm','10 cm','12 cm'],
           answer:'10厘米', hintZh:'绿=5，蓝=5+3=8，红=8+2=10', hintEn:'Green=5, Blue=5+3=8, Red=8+2=10' },
 
-        { premiseZh:'不会游泳的小朋友必须戴救生圈。小明不戴救生圈。',
-          premiseEn:'Kids who cannot swim must wear a life ring. Xiaoming is not wearing one.',
-          questionZh:'小明会游泳吗？',                 questionEn:'Can Xiaoming swim?',
+        { premiseZh:'不会游泳的小朋友必须戴救生圈。Tom不戴救生圈。',
+          premiseEn:'Kids who cannot swim must wear a life ring. Tom is not wearing one.',
+          questionZh:'Tom会游泳吗？',                 questionEn:'Can Tom swim?',
           options:['会','不会','不确定','可能不会'],     optionsEn:['Yes','No','Not sure','Maybe not'],
           answer:'会', hintZh:'不会游泳→戴圈；不戴圈→会游泳', hintEn:'Cannot swim → wears ring; no ring → can swim' },
 
