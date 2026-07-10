@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clio Journal | MindsEvo</title>
+  <title>Clio Journal · Story 1 | MindsEvo</title>
   <style>
     :root {
       --bg: #f4f7fb;
@@ -11,159 +11,283 @@
       --muted: #64748b;
       --line: #d9e3f1;
       --accent: #7c3aed;
-      --accent2: #06b6d4;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: radial-gradient(circle at top, #ede9fe 0%, var(--bg) 56%);
-      color: var(--ink);
+      font-family: "SF Pro Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background: radial-gradient(circle at top, #ede9fe 0%, var(--bg) 60%);
+      color: var(--ink); line-height: 1.7;
     }
-    .page {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 28px 20px 48px;
-    }
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .back {
-      display: inline-block;
-      text-decoration: none;
-      color: #0369a1;
-      font-weight: 700;
-    }
-    .lang-btn {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.92);
-      color: #0f172a;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-    }
-    .hero {
-      background: #fff;
-      border: 1.5px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
-    }
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      color: #6d28d9;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      margin-bottom: 8px;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: -0.8px;
-    }
-    .sub {
-      color: var(--muted);
-      margin: 10px 0 18px;
-      line-height: 1.7;
-    }
-    .story-card {
-      margin-top: 14px;
-      border: 1.5px solid var(--line);
-      border-radius: 14px;
-      background: linear-gradient(180deg, #f8faff, #ffffff);
-      padding: 14px;
-    }
-    .story-title {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 900;
-      color: #1e293b;
-    }
-    .story-meta {
-      margin: 6px 0 10px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .story-body {
-      margin: 0;
-      color: #334155;
-      line-height: 1.8;
-      font-size: 14px;
-      white-space: pre-line;
-    }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 860px; margin: 0 auto; padding: 28px 20px 64px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:20px; }
+    .back { color:#0369a1; font-weight:700; font-size:14px; }
+    .lang-btn { border:1px solid var(--line); background:rgba(255,255,255,.92); color:var(--ink); border-radius:999px; padding:7px 14px; font-size:12px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(15,23,42,.08); }
+    .card { background:#fff; border:1.5px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 8px 28px rgba(15,23,42,.06); margin-bottom:20px; }
+    .section-label { display:inline-block; font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+    .section-title { font-size:clamp(20px,3vw,28px); font-weight:900; letter-spacing:-.3px; margin:0 0 12px; }
+    .hero-badge { font-size:11px; font-weight:800; color:#6d28d9; letter-spacing:.3px; margin-bottom:6px; }
+    .hero-title { font-size:clamp(28px,5vw,42px); font-weight:900; letter-spacing:-1px; margin:0 0 16px; }
+    .profile-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:16px; }
+    .profile-item { background:#f8faff; border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+    .profile-label { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; margin-bottom:4px; }
+    .profile-value { font-size:15px; font-weight:800; color:var(--ink); }
+    .overview-text { color:#334155; font-size:15px; margin:0; }
+    .design-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    .design-card { background:linear-gradient(160deg,#f5f3ff,#fff); border:1.5px solid #e9d5ff; border-radius:16px; padding:18px; }
+    .design-num { font-size:11px; font-weight:800; color:#7c3aed; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px; }
+    .design-name { font-size:18px; font-weight:900; margin:0 0 10px; }
+    .design-body { font-size:13px; color:#475569; line-height:1.65; }
+    .design-body p { margin:0 0 6px; } .design-body p:last-child { margin:0; }
+    .highlight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+    .hl-card { border:1.5px solid var(--line); border-radius:16px; padding:16px 18px; border-left:4px solid var(--accent); }
+    .hl-card.c1{border-left-color:#7c3aed}.hl-card.c2{border-left-color:#0891b2}.hl-card.c3{border-left-color:#16a34a}
+    .hl-card.c4{border-left-color:#d97706}.hl-card.c5{border-left-color:#dc2626}.hl-card.c6{border-left-color:#db2777}
+    .hl-icon { font-size:22px; margin-bottom:6px; }
+    .hl-title { font-size:16px; font-weight:900; margin:0 0 8px; }
+    .hl-list { margin:0; padding:0; list-style:none; }
+    .hl-list li { font-size:13px; color:#475569; padding:3px 0 3px 14px; position:relative; }
+    .hl-list li::before { content:'–'; position:absolute; left:0; color:var(--muted); }
+    .moment-card { border:1.5px solid var(--line); border-radius:16px; padding:20px; margin-bottom:14px; background:linear-gradient(160deg,#fefce8,#fff); }
+    .moment-title { font-size:16px; font-weight:900; margin:0 0 10px; }
+    .moment-text { font-size:14px; color:#475569; margin:0 0 10px; }
+    .moment-quote { background:#f8faff; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:10px 14px; font-size:15px; font-weight:700; color:var(--ink); font-style:italic; margin:10px 0 0; }
+    .result-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:16px; }
+    .stat-box { text-align:center; background:#f8faff; border:1px solid var(--line); border-radius:12px; padding:14px 10px; }
+    .stat-num { font-size:26px; font-weight:900; color:var(--accent); line-height:1; }
+    .stat-lbl { font-size:12px; color:var(--muted); font-weight:600; margin-top:4px; }
+    .result-list { margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+    .result-list li { background:#ede9fe; color:#5b21b6; border:1px solid #c4b5fd; border-radius:999px; padding:5px 12px; font-size:13px; font-weight:700; }
+    .strength-grid { display:flex; flex-wrap:wrap; gap:10px; }
+    .strength-tag { background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; border-radius:999px; padding:6px 14px; font-size:13px; font-weight:700; }
+    .strengths-note { font-size:14px; color:#475569; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
+    .ahead-text { font-size:15px; color:#334155; }
+    .mentor-card { background:linear-gradient(160deg,#ede9fe,#fff 60%); border:1.5px solid #c4b5fd; }
+    .mentor-text { font-size:15px; color:#334155; }
+    .datestamp { font-size:12px; color:var(--muted); font-weight:600; margin-bottom:20px; text-align:center; }
+    body[data-lang="zh"] .en { display:none; }
+    body[data-lang="en"] .zh { display:none; }
+    @media(max-width:640px){.design-grid,.highlight-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body data-lang="zh">
-  <main class="page">
-    <div class="top">
-      <a class="back" href="../index.html" data-i18n="back" data-zh="← 返回 Clio Design" data-en="← Back to Clio Design">← 返回 Clio Design</a>
-      <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+<main class="page">
+
+  <div class="topbar">
+    <a class="back" href="../index.html"><span class="zh">← 返回 Clio Design</span><span class="en">← Back to Clio Design</span></a>
+    <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+  </div>
+
+  <div class="card">
+    <div class="hero-badge">Creator Journal · Story 1</div>
+    <h1 class="hero-title">
+      <span class="zh">Clio 的第一段创作旅程</span>
+      <span class="en">Clio's First Creative Journey</span>
+    </h1>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <div class="profile-label"><span class="zh">创作者</span><span class="en">Creator</span></div>
+        <div class="profile-value">Clio</div>
+      </div>
+      <div class="profile-item">
+        <div class="profile-label"><span class="zh">年龄</span><span class="en">Age</span></div>
+        <div class="profile-value">6</div>
+      </div>
+      <div class="profile-item">
+        <div class="profile-label"><span class="zh">身份</span><span class="en">Role</span></div>
+        <div class="profile-value"><span class="zh">MindsEvo 创意工作坊<br>首位年轻创作者</span><span class="en">First Young Creator of<br>MindsEvo Creative Workshop</span></div>
+      </div>
+      <div class="profile-item">
+        <div class="profile-label"><span class="zh">时间</span><span class="en">Time</span></div>
+        <div class="profile-value">2026-07-04 ~ 2026-07-05</div>
+      </div>
     </div>
+    <p class="overview-text">
+      <span class="zh">一个普通的周末，Clio 加入 MindsEvo 创意工作坊，成为第一位年轻创作者。两天内，我们共同完成了三个原创创意设计和四个交互式网页游戏。整个过程中，Clio 积极参与了头脑风暴、设计、实施讨论、测试、验证和改进迭代。这两天成为了创意工作坊概念的第一个完整案例。</span>
+      <span class="en">During an ordinary weekend, Clio joined MindsEvo Creative Workshop as its first young creator. Together, we completed three original creative designs and four interactive web games. Throughout the process, Clio actively participated in brainstorming, design, implementation discussions, testing, verification, and improvement. These two days became the first complete example of the Creative Workshop concept.</span>
+    </p>
+  </div>
 
-    <section class="hero">
-      <div class="tag">Creator Journal</div>
-      <h1 data-i18n="title" data-zh="Clio Journal 故事集" data-en="Clio Journal Stories">Clio Journal 故事集</h1>
-      <p class="sub" data-i18n="sub" data-zh="这里记录 Clio 和团队一起创造游戏的过程。这个页面先作为系列故事集，后续由你持续更新。" data-en="This page records Clio's co-creation journey with the team. It starts as a story series and can be continuously updated by you.">这里记录 Clio 和团队一起创造游戏的过程。这个页面先作为系列故事集，后续由你持续更新。</p>
+  <div class="card">
+    <div class="section-label"><span class="zh">创意设计</span><span class="en">Creative Designs</span></div>
+    <h2 class="section-title"><span class="zh">三个原创设计</span><span class="en">Three Original Designs</span></h2>
+    <div class="design-grid">
+      <div class="design-card">
+        <div class="design-num">Design 1</div>
+        <h3 class="design-name"><span class="zh">颜色配对</span><span class="en">Color Matching</span></h3>
+        <div class="design-body">
+          <p><span class="zh">独立完成的原创草图，成功实现为第一个可玩游戏。</span><span class="en">Original sketch completed independently. Successfully implemented as the first playable game.</span></p>
+          <p><span class="zh">实现过程中，Clio 说明最初的想法其实是颜色混合而非简单配对，自然引出了第二个项目。</span><span class="en">During implementation, Clio clarified that her original idea was actually color mixing rather than simple matching, leading naturally to the second project.</span></p>
+        </div>
+      </div>
+      <div class="design-card">
+        <div class="design-num">Design 2</div>
+        <h3 class="design-name"><span class="zh">颜色混合</span><span class="en">Color Mixing</span></h3>
+        <div class="design-body">
+          <p><span class="zh">灵感来源于水彩画。设计了一个动态游戏：物品放入不同箱子后颜色会发生变化。</span><span class="en">Inspired by watercolor painting. Designed a dynamic game where colors change after objects are placed into different boxes.</span></p>
+          <p><span class="zh">成功实现。</span><span class="en">Successfully implemented.</span></p>
+        </div>
+      </div>
+      <div class="design-card">
+        <div class="design-num">Design 3</div>
+        <h3 class="design-name"><span class="zh">文字连线</span><span class="en">Word Connections</span></h3>
+        <div class="design-body">
+          <p><span class="zh">最初设想为简单的一对一配对，加入小干扰项。实现过程中出现理解偏差，产生了第二种解读（同义词/反义词）。</span><span class="en">Originally intended as simple one-to-one matching with small distractions. During implementation, a misunderstanding led to a second interpretation (synonyms/antonyms).</span></p>
+          <p><span class="zh">没有舍弃任何一个版本——两种想法都被实现，形成了两个不同游戏。</span><span class="en">Instead of discarding either version, both ideas were implemented, resulting in two different games.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <article class="story-card">
-        <h2 class="story-title" data-i18n="s1-title" data-zh="Story 1 · 两天完成第一批作品" data-en="Story 1 · First Batch in Two Days">Story 1 · 两天完成第一批作品</h2>
-        <p class="story-meta" data-i18n="s1-meta" data-zh="时间：2026-07-04 ~ 2026-07-05" data-en="Time: 2026-07-04 ~ 2026-07-05">时间：2026-07-04 ~ 2026-07-05</p>
-        <p class="story-body" data-i18n="s1-body" data-zh="我们在两天内从手稿走到可玩版本。
-- 形成了 3 个新游戏创意
-- 做出了 4 个可运行游戏
-- 完成了 Creative Studio 的第一轮落地
-- 完成了网站展示更新
+  <div class="card">
+    <div class="section-label"><span class="zh">亮点记录</span><span class="en">Highlights</span></div>
+    <h2 class="section-title"><span class="zh">六个维度的亮点</span><span class="en">Six Dimensions of Excellence</span></h2>
+    <div class="highlight-grid">
+      <div class="hl-card c1">
+        <div class="hl-icon">✨</div>
+        <div class="hl-title"><span class="zh">创造力</span><span class="en">Creativity</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">快速提出了三个完整草图</span><span class="en">Quickly produced three complete sketches</span></li>
+          <li><span class="zh">不需要催促，主动加上文字说明</span><span class="en">Added written explanations without being asked twice</span></li>
+          <li><span class="zh">等待时自发继续创作</span><span class="en">Continued creating independently while waiting</span></li>
+        </ul>
+      </div>
+      <div class="hl-card c2">
+        <div class="hl-icon">💬</div>
+        <div class="hl-title"><span class="zh">沟通表达</span><span class="en">Communication</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">清楚表达了原始设计意图</span><span class="en">Clearly explained the original design intention</span></li>
+          <li><span class="zh">帮助纠正了实现过程中的理解偏差</span><span class="en">Helped correct implementation misunderstandings</span></li>
+          <li><span class="zh">接受不同想法，共同讨论改进方向</span><span class="en">Accepted different ideas and discussed improvements together</span></li>
+        </ul>
+      </div>
+      <div class="hl-card c3">
+        <div class="hl-icon">🤝</div>
+        <div class="hl-title"><span class="zh">协作精神</span><span class="en">Collaboration</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">整个周末都作为积极的团队成员参与</span><span class="en">Worked as an active team member throughout the weekend</span></li>
+          <li><span class="zh">参与了设计、讨论、测试和改进的完整流程</span><span class="en">Participated in design, discussion, testing and improvement</span></li>
+          <li><span class="zh">从跟随指引逐渐转变为主动贡献想法</span><span class="en">Gradually changed from following instructions to contributing ideas</span></li>
+        </ul>
+      </div>
+      <div class="hl-card c4">
+        <div class="hl-icon">🎮</div>
+        <div class="hl-title"><span class="zh">用户体验</span><span class="en">User Experience</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">主动建议将最终游戏改为多目标模式</span><span class="en">Suggested allowing multiple target objects instead of only one</span></li>
+          <li><span class="zh">这项修改显著提升了游戏体验，被立即采纳</span><span class="en">The modification significantly improved gameplay and was immediately adopted</span></li>
+        </ul>
+      </div>
+      <div class="hl-card c5">
+        <div class="hl-icon">🔧</div>
+        <div class="hl-title"><span class="zh">工程思维</span><span class="en">Engineering Thinking</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">参与了多平台测试</span><span class="en">Participated in multi-platform testing</span></li>
+          <li><span class="zh">协助排查安卓平板的显示问题</span><span class="en">Helped investigate Android tablet display issues</span></li>
+          <li><span class="zh">建议直接对比两台平板进行排查——工程思维的典型体现</span><span class="en">Suggested comparing two tablets directly as part of troubleshooting — excellent engineering thinking</span></li>
+        </ul>
+      </div>
+      <div class="hl-card c6">
+        <div class="hl-icon">🤖</div>
+        <div class="hl-title"><span class="zh">AI 协作</span><span class="en">AI Collaboration</span></div>
+        <ul class="hl-list">
+          <li><span class="zh">一起讨论了"兔子帽"创意</span><span class="en">Discussed the Rabbit Hat idea together</span></li>
+          <li><span class="zh">共同对比了 Gemini 和 ChatGPT</span><span class="en">Compared Gemini and ChatGPT together</span></li>
+          <li><span class="zh">了解到 AI 可以支持讨论而不只是给出答案</span><span class="en">Learned that AI can support discussion rather than simply provide answers</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-这是 Clio 作为“创意提出者 + 共创设计者”的重要起点。" data-en="In two days, we moved from sketches to playable versions.
-- 3 new game ideas were formed
-- 4 working games were built
-- The first Creative Studio milestone was completed
-- Website presentation was updated
+  <div class="card">
+    <div class="section-label"><span class="zh">难忘时刻</span><span class="en">Memorable Moments</span></div>
+    <h2 class="section-title"><span class="zh">三个让人记住的瞬间</span><span class="en">Three Moments Worth Remembering</span></h2>
+    <div class="moment-card">
+      <div class="moment-title"><span class="zh">"这是第几次'快好了'？"</span><span class="en">"Which 'soon' is this?"</span></div>
+      <p class="moment-text"><span class="zh">等外公做饭时，Clio 一直追问什么时候可以开始开发，还开玩笑地数了外公说了几次"快了"。</span><span class="en">While waiting for Grandpa to finish cooking, Clio kept asking when development would begin and jokingly counted how many times Grandpa had said "soon."</span></p>
+    </div>
+    <div class="moment-card">
+      <div class="moment-title"><span class="zh">是时候回去工作了</span><span class="en">Time to Go Back to Work</span></div>
+      <p class="moment-text"><span class="zh">在操场玩耍休息一段时间后，Clio 主动提议：</span><span class="en">After taking a break at the playground, Clio suggested:</span></p>
+      <div class="moment-quote"><span class="zh">"我们去工作吧。"</span><span class="en">"We should go back to work."</span></div>
+      <p class="moment-text" style="margin-top:10px;margin-bottom:0"><span class="zh">这不是被要求的，而是出于真正的热情。</span><span class="en">This reflected genuine enthusiasm rather than being asked to continue.</span></p>
+    </div>
+    <div class="moment-card" style="margin-bottom:0">
+      <div class="moment-title"><span class="zh">理解 MindsEvo</span><span class="en">Understanding MindsEvo</span></div>
+      <p class="moment-text" style="margin:0"><span class="zh">聊完 logo 和公司名字的含义后，Clio 开始用平台理念来评价新创意。其中一个例子是：她意识到"兔子帽"最初的形式主要是娱乐性的，而不是思维训练。</span><span class="en">After discussing the logo and the meaning of the company name, Clio began applying the platform philosophy when evaluating new ideas. One example was recognizing that the Rabbit Hat idea, in its original form, was mainly for entertainment rather than thinking training.</span></p>
+    </div>
+  </div>
 
-This marks an important starting point for Clio as both an idea creator and co-design partner.">我们在两天内从手稿走到可玩版本。
-- 形成了 3 个新游戏创意
-- 做出了 4 个可运行游戏
-- 完成了 Creative Studio 的第一轮落地
-- 完成了网站展示更新
+  <div class="card">
+    <div class="section-label"><span class="zh">阶段成果</span><span class="en">Results</span></div>
+    <h2 class="section-title"><span class="zh">两天内完成的一切</span><span class="en">Everything Achieved in Two Days</span></h2>
+    <div class="result-stats">
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl"><span class="zh">原创创意</span><span class="en">Original concepts</span></div></div>
+      <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl"><span class="zh">可运行游戏</span><span class="en">Working games</span></div></div>
+      <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl"><span class="zh">测试平台</span><span class="en">Platforms tested</span></div></div>
+      <div class="stat-box"><div class="stat-num">1</div><div class="stat-lbl"><span class="zh">Journal 建立</span><span class="en">Journal created</span></div></div>
+    </div>
+    <ul class="result-list">
+      <li><span class="zh">创意草图 × 3</span><span class="en">Creative sketches × 3</span></li>
+      <li><span class="zh">网页游戏 × 4</span><span class="en">Web games × 4</span></li>
+      <li><span class="zh">多轮测试</span><span class="en">Multiple rounds of testing</span></li>
+      <li><span class="zh">跨平台验证</span><span class="en">Cross-platform verification</span></li>
+      <li><span class="zh">问题报告与改进</span><span class="en">Bug reports & improvements</span></li>
+      <li><span class="zh">网站展示更新</span><span class="en">Website updates</span></li>
+      <li><span class="zh">创作者页面完成</span><span class="en">Creator page completed</span></li>
+      <li><span class="zh">Clio Journal 建立</span><span class="en">Clio Journal established</span></li>
+    </ul>
+  </div>
 
-这是 Clio 作为“创意提出者 + 共创设计者”的重要起点。</p>
-      </article>
-    </section>
-  </main>
+  <div class="card">
+    <div class="section-label"><span class="zh">能力观察</span><span class="en">Strengths Observed</span></div>
+    <h2 class="section-title"><span class="zh">Clio 展现出的能力</span><span class="en">What Clio Demonstrated</span></h2>
+    <div class="strength-grid">
+      <span class="strength-tag"><span class="zh">强烈的好奇心</span><span class="en">Strong curiosity</span></span>
+      <span class="strength-tag"><span class="zh">独立思考</span><span class="en">Independent thinking</span></span>
+      <span class="strength-tag"><span class="zh">创造力</span><span class="en">Creativity</span></span>
+      <span class="strength-tag"><span class="zh">清晰的表达</span><span class="en">Clear communication</span></span>
+      <span class="strength-tag"><span class="zh">愿意改进</span><span class="en">Willingness to improve</span></span>
+      <span class="strength-tag"><span class="zh">接受讨论</span><span class="en">Open to discussion</span></span>
+      <span class="strength-tag"><span class="zh">工程化思维</span><span class="en">Engineering reasoning</span></span>
+      <span class="strength-tag"><span class="zh">自然的团队合作</span><span class="en">Natural teamwork</span></span>
+    </div>
+    <p class="strengths-note"><span class="zh">最重要的是，她开始理解创意工作坊的意义——不只是制作游戏，而是设计思维活动。</span><span class="en">Most importantly, she showed that she was beginning to understand the purpose of Creative Workshop — not simply making games, but designing thinking activities.</span></p>
+  </div>
 
-  <script>
-    (function () {
-      const body = document.body;
-      const langBtn = document.getElementById('langBtn');
-      const nodes = document.querySelectorAll('[data-i18n]');
+  <div class="card">
+    <div class="section-label"><span class="zh">展望未来</span><span class="en">Looking Ahead</span></div>
+    <h2 class="section-title"><span class="zh">下一步</span><span class="en">What Comes Next</span></h2>
+    <p class="ahead-text"><span class="zh">有几个有趣的创意正在等待未来开发。"兔子帽"概念有很大潜力，经过进一步讨论和设计，可能成为下一个创意工作坊项目。我们也期待继续一起开启新的创意冒险。</span><span class="en">Several interesting ideas are waiting for future development. The Rabbit Hat concept has great potential and may become one of the next Creative Workshop projects after further discussion and design. We also look forward to continuing new creative adventures together.</span></p>
+  </div>
 
-      function applyLang(lang) {
-        body.setAttribute('data-lang', lang);
-        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
-        document.title = lang === 'en' ? 'Clio Journal | MindsEvo' : 'Clio Journal | MindsEvo';
-        nodes.forEach((node) => {
-          const text = node.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
-          if (text != null) node.textContent = text;
-        });
-        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
-        localStorage.setItem('mindsevo-lang', lang);
-      }
+  <div class="card mentor-card">
+    <div class="section-label"><span class="zh">导师手记</span><span class="en">Mentor's Notes</span></div>
+    <p class="mentor-text"><span class="zh">每个创作者都有自己独特的思维方式。我们的目标不是评判一个想法的好坏，而是帮助每位创作者发现、发展，并逐步将自己的想法变为现实。</span><span class="en">Every creator has a unique way of thinking. Our goal is not to judge whether an idea is good or bad, but to help each creator discover, develop, and gradually turn their own ideas into reality.</span></p>
+    <p class="mentor-text" style="margin-top:14px"><span class="zh">这两天里，Clio 不仅创作了几个有趣的游戏，也开始理解创意工作坊的精神——共同思考、讨论、改进和创造。</span><span class="en">During these two days, Clio not only created several interesting games but also began to understand the spirit of Creative Workshop — thinking, discussing, improving, and creating together.</span></p>
+    <p class="mentor-text" style="margin-top:14px;font-weight:700;color:#7c3aed"><span class="zh">这才是她创作旅程真正的开始。</span><span class="en">This is the true beginning of her creative journey.</span></p>
+  </div>
 
-      const saved = localStorage.getItem('mindsevo-lang');
-      applyLang(saved === 'en' ? 'en' : 'zh');
-      langBtn.addEventListener('click', () => {
-        applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
-      });
-    })();
-  </script>
+  <div class="datestamp"><span class="zh">记录时间：2026-07-09 · MindsEvo 团队</span><span class="en">Recorded: 2026-07-09 · The MindsEvo Team</span></div>
+
+</main>
+<script>
+  (function () {
+    const body = document.body;
+    const langBtn = document.getElementById('langBtn');
+    function applyLang(lang) {
+      body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+      langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+      localStorage.setItem('mindsevo-lang', lang);
+    }
+    const saved = localStorage.getItem('mindsevo-lang');
+    applyLang(saved === 'en' ? 'en' : 'zh');
+    langBtn.addEventListener('click', () => {
+      applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+    });
+  })();
+</script>
 </body>
 </html>
