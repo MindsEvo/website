@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bunny Direction Maze | Clio</title>
+  <link rel="stylesheet" href="../_shared/clio-shell-bridge.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="clio-shell-wrap">
+    <header class="clio-shell-topbar">
+      <div>
+        <h1 class="clio-shell-title" id="titleText">Bunny Direction Maze</h1>
+        <p class="clio-shell-subtitle" id="subtitleText">Tap rabbit pawns as directional controls in a fixed-width maze.</p>
+      </div>
+      <div class="clio-shell-tools">
+        <button id="langBtn" class="clio-shell-btn" type="button">中文 / EN</button>
+        <button id="startBtn" class="clio-shell-btn" type="button">Start</button>
+        <button id="resetBtn" class="clio-shell-btn" type="button">Reset</button>
+        <button id="dumpBtn" class="clio-shell-btn" type="button">Dump JSON</button>
+      </div>
+    </header>
+
+    <section class="clio-shell-card maze-stage">
+      <section class="hud" aria-label="Status">
+        <div class="chip"><span id="levelLabel">Level</span>: <span id="levelValue">1</span>/<span id="levelTotal">1</span></div>
+        <div class="chip"><span id="stepsLabel">Steps</span>: <span id="stepsValue">0</span></div>
+        <div class="chip"><span id="bumpLabel">Bumps</span>: <span id="bumpValue">0</span></div>
+        <div class="chip"><span id="timeLabel">Time</span>: <span id="timeValue">0.0s</span></div>
+      </section>
+
+      <p class="tip" id="tipText">Press Start to begin.</p>
+
+      <section class="play-wrap" aria-label="Maze board and controls">
+        <div class="board-wrap">
+          <div id="board" class="board" role="grid" aria-label="Maze grid"></div>
+        </div>
+
+        <div class="pad" aria-label="Directional controls">
+          <button id="upBtn" class="dir up" data-dir="up" type="button" aria-label="Move Up">🐰⬆</button>
+          <button id="leftBtn" class="dir left" data-dir="left" type="button" aria-label="Move Left">🐰⬅</button>
+          <button id="rightBtn" class="dir right" data-dir="right" type="button" aria-label="Move Right">🐰➡</button>
+          <button id="downBtn" class="dir down" data-dir="down" type="button" aria-label="Move Down">🐰⬇</button>
+          <div class="pad-center" id="padCenter">Direction Controls</div>
+        </div>
+      </section>
+
+      <p id="feedbackText" class="feedback" aria-live="polite">Ready.</p>
+    </section>
+  </main>
+
+  <script src="../../../shell.js"></script>
+  <script src="../_shared/clio-runtime-bridge.js"></script>
+  <script src="./data.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
