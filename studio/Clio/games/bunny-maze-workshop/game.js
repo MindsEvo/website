@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  if (!window.CLIO_BUNNY_MAZE_DATA || !window.ClioRuntimeBridge) {
+    var _fb = document.getElementById("feedbackText");
+    if (_fb) _fb.textContent = "Error: scripts not loaded. Please refresh.";
+    return;
+  }
+
   var DATA = window.CLIO_BUNNY_MAZE_DATA;
   var bridge = window.ClioRuntimeBridge.createController(DATA.id);
 
@@ -118,12 +124,7 @@
     return TEXT[state.lang][key] || key;
   }
 
-  function bindPress(el, handler) {
-    if (!el) return;
-    el.addEventListener("click", function () {
-      handler();
-    }, false);
-  }
+
 
   function nowMs() {
     return Date.now();
@@ -436,7 +437,7 @@
   }
 
   function bindControl(id, dir) {
-    bindPress(els[id], function () {
+    bridge.bindTap(els[id], function () {
       attemptMove(dir);
     });
   }
@@ -458,10 +459,10 @@
     bindControl("rightBtn", "right");
     bindKeyboard();
 
-    bindPress(els.startBtn, start);
-    bindPress(els.resetBtn, reset);
-    bindPress(els.dumpBtn, dumpSession);
-    bindPress(els.musicBtn, function () {
+    bridge.bindTap(els.startBtn, start);
+    bridge.bindTap(els.resetBtn, reset);
+    bridge.bindTap(els.dumpBtn, dumpSession);
+    bridge.bindTap(els.musicBtn, function () {
       state.musicEnabled = !state.musicEnabled;
       if (state.musicEnabled && state.running) {
         playMusic();
@@ -470,14 +471,14 @@
       }
       updateAudioButtons();
     });
-    bindPress(els.sfxBtn, function () {
+    bridge.bindTap(els.sfxBtn, function () {
       state.sfxEnabled = !state.sfxEnabled;
       if (state.sfxEnabled) {
         playTone(660, 0.06, 0.05, "square");
       }
       updateAudioButtons();
     });
-    bindPress(els.langBtn, function () {
+    bridge.bindTap(els.langBtn, function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
       if (window.shell) {
         window.shell.setLang(state.lang);
