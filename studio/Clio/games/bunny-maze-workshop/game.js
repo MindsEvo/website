@@ -120,24 +120,29 @@
 
   function bindPress(el, handler) {
     if (!el) return;
-    var touchFired = false;
+    var lastTs = 0;
 
-    el.addEventListener("touchend", function (ev) {
-      touchFired = true;
-      ev.preventDefault();
-      handler(ev);
-      window.setTimeout(function () {
-        touchFired = false;
-      }, 260);
-    }, { passive: false });
-
-    el.addEventListener("click", function (ev) {
-      if (touchFired) {
-        ev.preventDefault();
+    function run(ev, stamp) {
+      if (stamp - lastTs < 220) {
         return;
       }
+      lastTs = stamp;
       handler(ev);
-    });
+    }
+
+    if (window.PointerEvent) {
+      el.addEventListener("pointerup", function (ev) {
+        run(ev, Date.now());
+      }, false);
+    }
+
+    el.addEventListener("touchend", function (ev) {
+      run(ev, Date.now());
+    }, false);
+
+    el.addEventListener("click", function (ev) {
+      run(ev, Date.now());
+    }, false);
   }
 
   function nowMs() {
