@@ -23,7 +23,6 @@
   display: grid;
   gap: 14px;
   background: linear-gradient(145deg, #fff7ed 0%, #eef2ff 42%, #ecfeff 100%);
-  min-height: 760px;
 }
 
 .hud {
@@ -118,8 +117,9 @@
 
 .pad {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: min(300px, 100%);
+  height: 300px;
+  aspect-ratio: 1;
   margin: 0 auto;
   border: 1.5px solid #c4b5fd;
   border-radius: 18px;
@@ -129,12 +129,12 @@
 
 .dir {
   position: absolute;
-  width: 122px;
-  height: 72px;
+  width: 44%;
+  height: 25%;
   border: 1.5px solid #cbd5e1;
   border-radius: 14px;
   color: #0f172a;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   box-shadow: 0 10px 18px rgba(15, 23, 42, 0.14);
   touch-action: manipulation;
@@ -142,45 +142,33 @@
 }
 
 .dir.up {
-  top: 10px;
+  top: 3%;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.dir.down {
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dir.left {
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.dir.right {
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.dir.up {
   background: linear-gradient(145deg, #bae6fd, #7dd3fc);
   border-color: #38bdf8;
 }
 
 .dir.down {
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(145deg, #fecaca, #fda4af);
   border-color: #fb7185;
 }
 
 .dir.left {
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
   background: linear-gradient(145deg, #bbf7d0, #86efac);
   border-color: #4ade80;
 }
 
 .dir.right {
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
   background: linear-gradient(145deg, #fde68a, #fcd34d);
   border-color: #f59e0b;
 }
@@ -208,10 +196,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 148px;
+  width: 40%;
   text-align: center;
   color: #6d28d9;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 900;
   line-height: 1.3;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
@@ -237,53 +225,8 @@
   color: #be123c;
 }
 
-@media (max-width: 1180px) {
-  .clio-shell-wrap {
-    padding: 16px;
-  }
-
-  .maze-stage {
-    min-height: 0;
-  }
-
+@media (min-width: 820px) {
   .play-wrap {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .board {
-    --cell-size: 48px;
-  }
-
-  .pad {
-    width: 300px;
-    height: 300px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .play-wrap {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
-  }
-}
-
-@media (max-width: 860px) {
-  .play-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .board {
-    --cell-size: 42px;
-  }
-
-  .pad {
-    width: 280px;
-    height: 280px;
-  }
-
-  .dir {
-    width: 108px;
-    height: 64px;
-    font-size: 22px;
+    grid-template-columns: minmax(0, 1fr) 300px;
   }
 }
