@@ -494,10 +494,6 @@
       setFeedback("paused", "warn");
     });
 
-    window.setTimeout(function () {
-      window.scrollTo(0, 0);
-    }, 0);
-
     loadLevel(0);
     setFeedback("ready");
   }
