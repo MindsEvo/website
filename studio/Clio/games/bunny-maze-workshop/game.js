@@ -437,9 +437,8 @@
   }
 
   function bindControl(id, dir) {
-    bridge.bindTap(els[id], function () {
-      attemptMove(dir);
-    });
+    var el = els[id];
+    if (el) el.addEventListener("click", function () { attemptMove(dir); }, false);
   }
 
   function bindKeyboard() {
@@ -459,10 +458,10 @@
     bindControl("rightBtn", "right");
     bindKeyboard();
 
-    bridge.bindTap(els.startBtn, start);
-    bridge.bindTap(els.resetBtn, reset);
-    bridge.bindTap(els.dumpBtn, dumpSession);
-    bridge.bindTap(els.musicBtn, function () {
+    els.startBtn.addEventListener("click", start, false);
+    els.resetBtn.addEventListener("click", reset, false);
+    els.dumpBtn.addEventListener("click", dumpSession, false);
+    els.musicBtn.addEventListener("click", function () {
       state.musicEnabled = !state.musicEnabled;
       if (state.musicEnabled && state.running) {
         playMusic();
@@ -470,21 +469,21 @@
         stopMusic();
       }
       updateAudioButtons();
-    });
-    bridge.bindTap(els.sfxBtn, function () {
+    }, false);
+    els.sfxBtn.addEventListener("click", function () {
       state.sfxEnabled = !state.sfxEnabled;
       if (state.sfxEnabled) {
         playTone(660, 0.06, 0.05, "square");
       }
       updateAudioButtons();
-    });
-    bridge.bindTap(els.langBtn, function () {
+    }, false);
+    els.langBtn.addEventListener("click", function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
       if (window.shell) {
         window.shell.setLang(state.lang);
       }
       renderLocale();
-    });
+    }, false);
 
     bridge.onLifecyclePause(function () {
       if (!state.running) return;
