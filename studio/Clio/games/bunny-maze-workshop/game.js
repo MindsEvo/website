@@ -15,6 +15,10 @@
     zh: {
       title: "兔兔方向迷宫",
       subtitle: "点击四只兔子方向键，控制迷宫移动。",
+      music: "音乐",
+      sfx: "音效",
+      on: "开",
+      off: "关",
       start: "开始",
       reset: "重置",
       dump: "导出 JSON",
@@ -37,6 +41,10 @@
     en: {
       title: "Bunny Direction Maze",
       subtitle: "Tap four rabbit controls to move in the maze.",
+      music: "Music",
+      sfx: "SFX",
+      on: "On",
+      off: "Off",
       start: "Start",
       reset: "Reset",
       dump: "Dump JSON",
@@ -61,6 +69,7 @@
   var state = {
     lang: (window.shell && window.shell.lang) || "zh",
     running: false,
+    paused: false,
     currentIndex: 0,
     levelStartAt: 0,
     steps: 0,
@@ -69,13 +78,20 @@
     levelTarget: { r: 0, c: 0 },
     levelGrid: [],
     sessionStartedAt: null,
-    events: []
+    events: [],
+    musicEnabled: true,
+    sfxEnabled: true,
+    audioCtx: null,
+    musicTimer: null,
+    musicNodes: []
   };
 
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
     langBtn: document.getElementById("langBtn"),
+    musicBtn: document.getElementById("musicBtn"),
+    sfxBtn: document.getElementById("sfxBtn"),
     startBtn: document.getElementById("startBtn"),
     resetBtn: document.getElementById("resetBtn"),
     dumpBtn: document.getElementById("dumpBtn"),
@@ -104,6 +120,80 @@
 
   function nowMs() {
     return Date.now();
+  }
+
+  function ensureAudio() {
+    if (!state.audioCtx) {
+      var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextCtor) {
+        return null;
+      }
+      state.audioCtx = new AudioContextCtor();
+    }
+    if (state.audioCtx.state === "suspended") {
+      state.audioCtx.resume();
+    }
+    return state.audioCtx;
+  }
+
+  function playTone(freq, duration, gainValue, type) {
+    var ctx = ensureAudio();
+    if (!ctx || !state.sfxEnabled) {
+      return;
+    }
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = type || "sine";
+    osc.frequency.value = freq;
+    gain.gain.value = gainValue;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  }
+
+  function stopMusic() {
+    if (state.musicTimer) {
+      window.clearInterval(state.musicTimer);
+      state.musicTimer = null;
+    }
+    while (state.musicNodes.length) {
+      var node = state.musicNodes.pop();
+      try { node.stop(); } catch (e) {}
+      try { node.disconnect(); } catch (e2) {}
+    }
+  }
+
+  function playMusic() {
+    var ctx = ensureAudio();
+    if (!ctx || !state.musicEnabled) {
+      return;
+    }
+    stopMusic();
+
+    var sequence = [392, 523.25, 659.25, 523.25, 493.88, 587.33];
+    var index = 0;
+    state.musicTimer = window.setInterval(function () {
+      if (!state.musicEnabled || state.paused || !state.running) {
+        return;
+      }
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = sequence[index % sequence.length];
+      gain.gain.value = 0.025;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+      state.musicNodes.push(osc);
+      index += 1;
+    }, 280);
+  }
+
+  function updateAudioButtons() {
+    els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
+    els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
   }
 
   function timeText(ms) {
@@ -139,6 +229,7 @@
     els.timeLabel.textContent = t("time");
     els.padCenter.textContent = t("controls");
     els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
+    updateAudioButtons();
 
     var level = DATA.levels[state.currentIndex];
     if (level) {
@@ -180,10 +271,10 @@
     setFeedback("running");
   }
 
-  function makeCellClass(token, isTarget) {
+  function makeCellClass(token, isTarget, r, c) {
     if (token === "#") return "cell wall";
     if (isTarget) return "cell target";
-    return "cell path";
+    return (r + c) % 2 === 0 ? "cell path" : "cell path-alt";
   }
 
   function renderBoard() {
@@ -197,7 +288,7 @@
         var token = state.levelGrid[r][c];
         var isPlayer = r === state.levelPlayer.r && c === state.levelPlayer.c;
         var isTarget = r === state.levelTarget.r && c === state.levelTarget.c;
-        var cls = makeCellClass(token, isTarget);
+        var cls = makeCellClass(token, isTarget, r, c);
         var content = "";
         if (isTarget) content = "<span class=\"target-icon\">🥕</span>";
         if (isPlayer) content = "<span class=\"player\">🐰</span>";
@@ -233,6 +324,7 @@
     if (!state.running) return;
 
     animatePress(dir);
+    playTone(720, 0.05, 0.05, "square");
     var delta = DIRS[dir];
     var nextR = state.levelPlayer.r + delta.dr;
     var nextC = state.levelPlayer.c + delta.dc;
@@ -240,6 +332,7 @@
 
     if (cell === "#" || typeof cell === "undefined") {
       state.bumps += 1;
+      playTone(180, 0.12, 0.08, "sawtooth");
       updateHud();
       setFeedback("bumped", "warn");
       pushEvent("bump", { dir: dir, at: { r: state.levelPlayer.r, c: state.levelPlayer.c } });
@@ -253,6 +346,8 @@
     pushEvent("move", { dir: dir, to: { r: nextR, c: nextC } });
 
     if (nextR === state.levelTarget.r && nextC === state.levelTarget.c) {
+      playTone(880, 0.07, 0.06, "triangle");
+      playTone(1174.66, 0.1, 0.05, "triangle");
       onLevelClear();
       return;
     }
@@ -270,6 +365,7 @@
     });
 
     state.running = false;
+    stopMusic();
     bridge.clearTimer("next_level");
     bridge.setTimer("next_level", 850, function () {
       if (state.currentIndex >= DATA.levels.length - 1) {
@@ -283,6 +379,7 @@
       state.currentIndex += 1;
       state.running = true;
       loadLevel(state.currentIndex);
+      playMusic();
     });
   }
 
@@ -293,12 +390,16 @@
     state.events = [];
     state.sessionStartedAt = new Date().toISOString();
     state.running = true;
+    state.paused = false;
     loadLevel(0);
+    playMusic();
     pushEvent("session_start", { version: DATA.version });
   }
 
   function reset() {
     state.running = false;
+    state.paused = false;
+    stopMusic();
     bridge.resetSession();
     bridge.clearTimers();
     state.currentIndex = 0;
@@ -353,6 +454,22 @@
     bridge.bindTap(els.startBtn, start);
     bridge.bindTap(els.resetBtn, reset);
     bridge.bindTap(els.dumpBtn, dumpSession);
+    bridge.bindTap(els.musicBtn, function () {
+      state.musicEnabled = !state.musicEnabled;
+      if (state.musicEnabled && state.running) {
+        playMusic();
+      } else {
+        stopMusic();
+      }
+      updateAudioButtons();
+    });
+    bridge.bindTap(els.sfxBtn, function () {
+      state.sfxEnabled = !state.sfxEnabled;
+      if (state.sfxEnabled) {
+        playTone(660, 0.06, 0.05, "square");
+      }
+      updateAudioButtons();
+    });
     bridge.bindTap(els.langBtn, function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
       if (window.shell) {
@@ -364,7 +481,9 @@
     bridge.onLifecyclePause(function () {
       if (!state.running) return;
       state.running = false;
+      state.paused = true;
       bridge.clearTimers();
+      stopMusic();
       setFeedback("paused", "warn");
     });
 

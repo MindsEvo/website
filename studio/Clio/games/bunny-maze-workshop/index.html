@@ -15,9 +15,11 @@
         <p class="clio-shell-subtitle" id="subtitleText">Tap rabbit pawns as directional controls in a fixed-width maze.</p>
       </div>
       <div class="clio-shell-tools">
-        <button id="langBtn" class="clio-shell-btn" type="button">中文 / EN</button>
         <button id="startBtn" class="clio-shell-btn" type="button">Start</button>
         <button id="resetBtn" class="clio-shell-btn" type="button">Reset</button>
+        <button id="langBtn" class="clio-shell-btn" type="button">中文 / EN</button>
+        <button id="musicBtn" class="clio-shell-btn" type="button">Music: On</button>
+        <button id="sfxBtn" class="clio-shell-btn" type="button">SFX: On</button>
         <button id="dumpBtn" class="clio-shell-btn" type="button">Dump JSON</button>
       </div>
     </header>
@@ -29,8 +31,6 @@
         <div class="chip"><span id="bumpLabel">Bumps</span>: <span id="bumpValue">0</span></div>
         <div class="chip"><span id="timeLabel">Time</span>: <span id="timeValue">0.0s</span></div>
       </section>
-
-      <p class="tip" id="tipText">Press Start to begin.</p>
 
       <section class="play-wrap" aria-label="Maze board and controls">
         <div class="board-wrap">
@@ -47,6 +47,7 @@
       </section>
 
       <p id="feedbackText" class="feedback" aria-live="polite">Ready.</p>
+      <p class="tip" id="tipText">Press Start to begin.</p>
     </section>
   </main>
 
