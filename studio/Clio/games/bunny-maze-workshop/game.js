@@ -118,6 +118,28 @@
     return TEXT[state.lang][key] || key;
   }
 
+  function bindPress(el, handler) {
+    if (!el) return;
+    var touchFired = false;
+
+    el.addEventListener("touchend", function (ev) {
+      touchFired = true;
+      ev.preventDefault();
+      handler(ev);
+      window.setTimeout(function () {
+        touchFired = false;
+      }, 260);
+    }, { passive: false });
+
+    el.addEventListener("click", function (ev) {
+      if (touchFired) {
+        ev.preventDefault();
+        return;
+      }
+      handler(ev);
+    });
+  }
+
   function nowMs() {
     return Date.now();
   }
@@ -429,7 +451,7 @@
   }
 
   function bindControl(id, dir) {
-    bridge.bindTap(els[id], function () {
+    bindPress(els[id], function () {
       attemptMove(dir);
     });
   }
@@ -451,10 +473,10 @@
     bindControl("rightBtn", "right");
     bindKeyboard();
 
-    bridge.bindTap(els.startBtn, start);
-    bridge.bindTap(els.resetBtn, reset);
-    bridge.bindTap(els.dumpBtn, dumpSession);
-    bridge.bindTap(els.musicBtn, function () {
+    bindPress(els.startBtn, start);
+    bindPress(els.resetBtn, reset);
+    bindPress(els.dumpBtn, dumpSession);
+    bindPress(els.musicBtn, function () {
       state.musicEnabled = !state.musicEnabled;
       if (state.musicEnabled && state.running) {
         playMusic();
@@ -463,14 +485,14 @@
       }
       updateAudioButtons();
     });
-    bridge.bindTap(els.sfxBtn, function () {
+    bindPress(els.sfxBtn, function () {
       state.sfxEnabled = !state.sfxEnabled;
       if (state.sfxEnabled) {
         playTone(660, 0.06, 0.05, "square");
       }
       updateAudioButtons();
     });
-    bridge.bindTap(els.langBtn, function () {
+    bindPress(els.langBtn, function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
       if (window.shell) {
         window.shell.setLang(state.lang);
@@ -486,6 +508,10 @@
       stopMusic();
       setFeedback("paused", "warn");
     });
+
+    window.setTimeout(function () {
+      window.scrollTo(0, 0);
+    }, 0);
 
     loadLevel(0);
     setFeedback("ready");

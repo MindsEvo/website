@@ -19,6 +19,8 @@ body {
 .clio-shell-btn {
   min-height: 40px;
   padding: 8px 13px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .maze-stage {
@@ -141,6 +143,8 @@ body {
   font-size: 24px;
   cursor: pointer;
   box-shadow: 0 10px 18px rgba(15, 23, 42, 0.14);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .dir.up {
