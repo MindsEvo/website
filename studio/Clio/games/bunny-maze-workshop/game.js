@@ -120,28 +120,8 @@
 
   function bindPress(el, handler) {
     if (!el) return;
-    var lastTs = 0;
-
-    function run(ev, stamp) {
-      if (stamp - lastTs < 220) {
-        return;
-      }
-      lastTs = stamp;
-      handler(ev);
-    }
-
-    if (window.PointerEvent) {
-      el.addEventListener("pointerup", function (ev) {
-        run(ev, Date.now());
-      }, false);
-    }
-
-    el.addEventListener("touchend", function (ev) {
-      run(ev, Date.now());
-    }, false);
-
-    el.addEventListener("click", function (ev) {
-      run(ev, Date.now());
+    el.addEventListener("click", function () {
+      handler();
     }, false);
   }
 
