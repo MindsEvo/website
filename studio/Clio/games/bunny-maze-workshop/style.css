@@ -3,6 +3,11 @@
   padding: 24px;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .clio-shell-topbar {
   align-items: center;
 }
@@ -50,7 +55,7 @@
 
 .play-wrap {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  grid-template-columns: 1fr;
   gap: 20px;
   align-items: center;
 }
@@ -255,6 +260,12 @@
   .pad {
     width: 300px;
     height: 300px;
+  }
+}
+
+@media (min-width: 1400px) and (hover: hover) and (pointer: fine) {
+  .play-wrap {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
   }
 }
 
