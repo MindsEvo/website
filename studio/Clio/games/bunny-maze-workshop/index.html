@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>兔兔方向迷宫 | Clio</title>
+  <link rel="stylesheet" href="../_shared/clio-shell-bridge.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="clio-shell-wrap">
+
+    <header class="clio-shell-topbar">
+      <div>
+        <h1 class="clio-shell-title" id="titleText">兔兔方向迷宫</h1>
+        <p class="clio-shell-subtitle" id="subtitleText">点击方向控制，带小兔找到胡萝卜！</p>
+      </div>
+      <div class="clio-shell-tools">
+        <button id="langBtn"  class="clio-shell-btn" type="button">中文 / EN</button>
+        <button id="startBtn"  class="clio-shell-btn maze-start-toolbar-btn" type="button">▶ 开始</button>
+        <button id="musicBtn"  class="clio-shell-btn" type="button">音乐: 开</button>
+        <button id="sfxBtn"    class="clio-shell-btn" type="button">音效: 开</button>
+      </div>
+    </header>
+
+    <!-- HUD: steps + level -->
+    <div class="maze-hud">
+      <div class="maze-chip"><span id="levelLabel">关卡</span>: <span id="levelText">1/6</span></div>
+      <div class="maze-chip"><span id="moveLabel">步数</span>: <span id="moveCount">0</span></div>
+      <div class="maze-chip"><span id="wallLabel">撞墙</span>: <span id="wallCount">0</span></div>
+      <div class="maze-chip"><span id="timeLabel">用时</span>: <span id="timeText">0.0s</span></div>
+    </div>
+
+    <!-- Play area: maze (left) + D-pad (right) -->
+    <div class="maze-play-area">
+
+      <!-- Maze card with start overlay -->
+      <div class="maze-canvas-card">
+        <canvas id="mazeCanvas" aria-label="迷宫区域"></canvas>
+        <div id="startOverlay" class="maze-start-overlay">
+          <button id="startBigBtn" class="maze-start-big-btn" type="button">▶ 开始</button>
+        </div>
+      </div>
+
+      <!-- D-pad control panel -->
+      <div class="maze-dpad-panel">
+        <div class="maze-dpad-title" id="dpadTitle">方向控制</div>
+        <div class="maze-dpad">
+          <div></div>
+          <button id="btnUp"    class="dir-btn dir-up"    type="button" aria-label="向上">
+            <span class="dir-btn-emoji">🐰</span>
+            <span class="dir-btn-arrow">⬆</span>
+          </button>
+          <div></div>
+
+          <button id="btnLeft"  class="dir-btn dir-left"  type="button" aria-label="向左">
+            <span class="dir-btn-arrow">⬅</span>
+            <span class="dir-btn-emoji">🐰</span>
+          </button>
+          <div class="dir-center" id="dirCenter">方向<br>控制</div>
+          <button id="btnRight" class="dir-btn dir-right" type="button" aria-label="向右">
+            <span class="dir-btn-emoji">🐰</span>
+            <span class="dir-btn-arrow">➡</span>
+          </button>
+
+          <div></div>
+          <button id="btnDown"  class="dir-btn dir-down"  type="button" aria-label="向下">
+            <span class="dir-btn-arrow">⬇</span>
+            <span class="dir-btn-emoji">🐰</span>
+          </button>
+          <div></div>
+        </div>
+      </div>
+
+    </div><!-- /maze-play-area -->
+
+    <!-- Feedback + hint -->
+    <div class="maze-feedback-area">
+      <p class="maze-feedback" id="feedbackText">▶ 点击"开始"或方向按钮开始游戏！</p>
+      <p class="maze-hint"    id="hintText"></p>
+    </div>
+
+    <!-- Win overlay -->
+    <div id="winLayer" class="maze-win-layer" hidden>
+      <div class="maze-win-card">
+        <div class="maze-win-emoji">🥕🌟🥕</div>
+        <h2 class="maze-win-title" id="winTitle">太棒了！</h2>
+        <p class="maze-win-sub"  id="winSub">你找到胡萝卜啦！</p>
+        <div class="maze-win-btns">
+          <button id="nextBtn"   class="maze-btn maze-btn-primary" type="button">下一关 →</button>
+          <button id="replayBtn" class="maze-btn maze-btn-ghost"   type="button">再玩一次</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../../../../shell.js"></script>
+  <script src="../_shared/clio-runtime-bridge.js"></script>
+  <script src="./data.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
