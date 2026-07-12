@@ -7,11 +7,15 @@
     ? window.ClioRuntimeBridge.createController("clio-bunny-maze-workshop")
     : null;
 
-  if (!DATA || !bridge) {
+  if (!DATA) {
     var _fb = document.getElementById("feedbackText");
-    if (_fb) _fb.textContent = "Error: data or bridge not loaded.";
+    if (_fb) _fb.textContent = "Error: data.js not loaded.";
+    var _dbg = document.getElementById("dbg");
+    if (_dbg) { _dbg.textContent = "FAIL: data.js missing"; _dbg.style.background = "#dc2626"; }
     return;
   }
+
+  // bridge may be null — game uses direct click + setTimeout fallbacks when null
 
   var DIRS = {
     up: { dr: -1, dc: 0 },
