@@ -20,7 +20,7 @@
     };
   }
 
-  var DIRS = {
+  var CELL_PX = 46;
     up: { dr: -1, dc: 0 },
     down: { dr: 1, dc: 0 },
     left: { dr: 0, dc: -1 },
@@ -298,7 +298,8 @@
   function renderBoard() {
     var rows = state.levelGrid.length;
     var cols = rows ? state.levelGrid[0].length : 0;
-    els.board.style.gridTemplateColumns = "repeat(" + cols + ", var(--cell-size))";
+    els.board.style.gridTemplateColumns = "repeat(" + cols + ", " + CELL_PX + "px)";
+    els.board.style.gridAutoRows = CELL_PX + "px";
     var html = "";
 
     for (var r = 0; r < rows; r += 1) {
