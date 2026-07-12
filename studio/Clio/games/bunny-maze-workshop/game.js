@@ -66,7 +66,7 @@
     replayBtn:    document.getElementById("replayBtn")
   };
 
-  var ctx  = els.mazeCanvas.getContext("2d");
+  var ctx  = null;  // obtained lazily in drawMaze() for Safari compatibility
   var CELL = 36;
 
   // ── i18n ───────────────────────────────────────────────────────────────────
@@ -294,6 +294,9 @@
   }
 
   function drawMaze() {
+    // Lazy context acquisition – Safari sometimes returns null if called too early
+    if (!ctx) ctx = els.mazeCanvas.getContext("2d");
+    if (!ctx) return;
     var grid = state.grid;
     ctx.clearRect(0, 0, els.mazeCanvas.width, els.mazeCanvas.height);
 
@@ -431,10 +434,11 @@
     updateHUD();
 
     // Draw immediately with viewport-based fallback size,
-    // then re-draw once the grid layout has settled (80 ms is enough).
+    // then re-draw once the grid layout has settled.
+    // Use 200 ms for Safari/iPadOS which lays out grids more slowly.
     recalcCellSize();
     drawMaze();
-    setTimeout(function () { recalcCellSize(); drawMaze(); }, 80);
+    setTimeout(function () { recalcCellSize(); drawMaze(); }, 200);
   }
 
   // ── movement ───────────────────────────────────────────────────────────────

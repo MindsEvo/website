@@ -29,8 +29,10 @@
 
 /* ── two-column play area ─────────────────────────────────────────────────── */
 .maze-play-area {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: minmax(0, 1fr) 200px;
   gap: 14px;
   align-items: start;
   margin-bottom: 12px;
@@ -47,25 +49,37 @@
   border-radius: 18px;
   box-shadow: 0 12px 36px rgba(15,23,42,0.10);
   padding: 14px;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   min-height: 180px;
+  overflow: hidden;
 }
 #mazeCanvas {
   border-radius: 10px;
   display: block;
-  max-width: 100%;
   touch-action: none;
 }
 
 /* ── start overlay on canvas ─────────────────────────────────────────────── */
 .maze-start-overlay {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(255,255,255,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   border-radius: 18px;
 }
@@ -189,10 +203,16 @@
 /* ── win overlay ──────────────────────────────────────────────────────────── */
 .maze-win-layer {
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0,0,0,0.52);
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   z-index: 200;
 }
