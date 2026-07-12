@@ -3,19 +3,22 @@
 
   var DATA = window.CLIO_BUNNY_MAZE_DATA;
 
-  var bridge = window.ClioRuntimeBridge
-    ? window.ClioRuntimeBridge.createController("clio-bunny-maze-workshop")
-    : null;
-
-  if (!DATA) {
-    var _fb = document.getElementById("feedbackText");
-    if (_fb) _fb.textContent = "Error: data.js not loaded.";
-    var _dbg = document.getElementById("dbg");
-    if (_dbg) { _dbg.textContent = "FAIL: data.js missing"; _dbg.style.background = "#dc2626"; }
-    return;
+  var bridge;
+  if (window.ClioRuntimeBridge) {
+    bridge = window.ClioRuntimeBridge.createController("clio-bunny-maze-workshop");
+  } else {
+    /* Inline fallback: same interface, uses plain setTimeout */
+    var _ft = {};
+    bridge = {
+      resetSession: function () { Object.keys(_ft).forEach(function (k) { clearTimeout(_ft[k]); delete _ft[k]; }); },
+      clearTimers:  function () { Object.keys(_ft).forEach(function (k) { clearTimeout(_ft[k]); delete _ft[k]; }); },
+      clearTimer:   function (k) { if (_ft[k]) { clearTimeout(_ft[k]); delete _ft[k]; } },
+      setTimer:     function (k, ms, fn) { _ft[k] = setTimeout(fn, ms); },
+      onLifecyclePause: function () {},
+      commitAnimationStart: function () {},
+      nextFrame: function (fn) { requestAnimationFrame(fn); }
+    };
   }
-
-  // bridge may be null — game uses direct click + setTimeout fallbacks when null
 
   var DIRS = {
     up: { dr: -1, dc: 0 },
