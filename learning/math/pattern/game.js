@@ -11,6 +11,24 @@
 shell.createGame({
   id:       'learning-math-pattern',
   theme:    { primary: '#d97706', primary2: '#92400e' },   // amber — distinct from Sprite purple
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先识别重复节奏，再判断数字是递增、递减还是交替。',
+      contentEn: 'Find the repeating rhythm first, then decide whether the numbers increase, decrease, or alternate.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'learning-math-pattern-intro-001'
+    }
+  },
   title:    { zh: '🔢 数学规律',              en: '🔢 Math Patterns' },
   subtitle: { zh: '在数字中发现规律，训练预测与归纳能力', en: 'Discover patterns in numbers — build prediction & generalization' },
   passScore: 7,
@@ -49,5 +67,15 @@ shell.createGame({
     return shell.lang === 'zh'
       ? items.join('，') + '。问号是几？'
       : items.join(', ') + '. What is the missing number?';
+  },
+
+  // Stage-3 RootGene pilot: attach core and unit-level RootGene IDs.
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.SEQUENCE.BASIC',
+      'RG.LEARNING.MATH.PATTERN.' + unitId
+    ];
   }
 });

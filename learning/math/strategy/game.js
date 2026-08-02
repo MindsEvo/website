@@ -53,6 +53,15 @@
 shell.createGame({
   id:       'learning-math-strategy',
   theme:    { primary: '#ea580c', primary2: '#9a3412' },  // orange-red — strategy identity
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '🧭 策略思维',             en: '🧭 Strategic Thinking' },
   subtitle: { zh: '先规划，后行动——好的策略让结果更好', en: 'Plan before you act — a good strategy leads to a better outcome' },
   passScore: 7,
@@ -87,5 +96,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? q.premiseZh + '。' + q.questionZh
       : q.premiseEn + '. ' + q.questionEn;
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.STRATEGY.DECISION.PLANNING',
+      'RG.LEARNING.MATH.STRATEGY.' + unitId
+    ];
   }
 });

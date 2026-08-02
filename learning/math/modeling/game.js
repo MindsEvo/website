@@ -16,6 +16,15 @@
 shell.createGame({
   id:       'learning-math-modeling',
   theme:    { primary: '#0d9488', primary2: '#065f46' },  // teal — distinct color identity
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '⚖️ 建立模型',             en: '⚖️ Modeling' },
   subtitle: { zh: '发现等量关系，建立代数思维的种子', en: 'Find equal relationships — plant the seeds of algebraic thinking' },
   passScore: 7,
@@ -53,5 +62,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? text + '，方块是几？'
       : text + '. What is blank?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.MODELING.EQUATION.RELATION',
+      'RG.LEARNING.MATH.MODELING.' + unitId
+    ];
   }
 });

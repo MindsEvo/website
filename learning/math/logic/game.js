@@ -52,6 +52,15 @@
 shell.createGame({
   id:       'learning-math-logic',
   theme:    { primary: '#7c3aed', primary2: '#4c1d95' },  // deep purple — logic identity
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '🧠 逻辑推理',             en: '🧠 Logic Reasoning' },
   subtitle: { zh: '从线索出发，用推理找到唯一正确的答案', en: 'Follow the clues — use reasoning to find the one correct answer' },
   passScore: 7,
@@ -89,5 +98,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? q.premiseZh + '。' + q.questionZh
       : q.premiseEn + '. ' + q.questionEn;
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.LOGIC.REASONING.BASIC',
+      'RG.LEARNING.MATH.LOGIC.' + unitId
+    ];
   }
 });

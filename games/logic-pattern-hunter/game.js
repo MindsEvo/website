@@ -13,6 +13,15 @@ var _lpErrorLog = {};
 shell.createReasoningGame({
   id:        'logic-pattern-hunter',
   theme:     { primary: '#7c3aed', primary2: '#6d28d9', bg: '#f5f3ff' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '🧠 逻辑推理', en: '🧠 Logic Pattern' },
   subtitle: { zh: '读懂条件，推导结论', en: 'Read the clues and find the answer' },
   passScore: 4,
@@ -41,5 +50,14 @@ shell.createReasoningGame({
     });
     var question = shell.lang === 'zh' ? (q.questionZh || '') : (q.questionEn || '');
     return parts.join(shell.lang === 'zh' ? '，' : '. ') + (shell.lang === 'zh' ? '。' : '. ') + question;
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.LOGIC.REASONING.BASIC',
+      'RG.MINDSEEDS.LOGIC_PATTERN.' + unitId
+    ];
   }
 });

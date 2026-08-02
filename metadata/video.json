@@ -1,0 +1,132 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-08-02",
+  "videos": [
+    {
+      "id": "mindseeds-number-pattern-intro-001",
+      "titleZh": "数字规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Number Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-number-pattern-intro-001",
+      "tags": ["mindseeds", "number-pattern", "intro"],
+      "gameIds": ["number-pattern-hunter"],
+      "lessonIds": ["mindseeds-number-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-color-pattern-intro-001",
+      "titleZh": "颜色规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Color Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-color-pattern-intro-001",
+      "tags": ["mindseeds", "color-pattern", "intro"],
+      "gameIds": ["color-pattern-hunter"],
+      "lessonIds": ["mindseeds-color-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-visual-pattern-intro-001",
+      "titleZh": "视觉规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Visual Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-visual-pattern-intro-001",
+      "tags": ["mindseeds", "visual-pattern", "intro"],
+      "gameIds": ["visual-pattern-hunter"],
+      "lessonIds": ["mindseeds-visual-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-motion-pattern-intro-001",
+      "titleZh": "动作规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Motion Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-motion-pattern-intro-001",
+      "tags": ["mindseeds", "motion-pattern", "intro"],
+      "gameIds": ["motion-pattern-hunter"],
+      "lessonIds": ["mindseeds-motion-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-temporal-pattern-intro-001",
+      "titleZh": "时间规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Temporal Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-temporal-pattern-intro-001",
+      "tags": ["mindseeds", "temporal-pattern", "intro"],
+      "gameIds": ["temporal-pattern-hunter"],
+      "lessonIds": ["mindseeds-temporal-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-size-pattern-intro-001",
+      "titleZh": "大小规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Size Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-size-pattern-intro-001",
+      "tags": ["mindseeds", "size-pattern", "intro"],
+      "gameIds": ["size-pattern-hunter"],
+      "lessonIds": ["mindseeds-size-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-spatial-pattern-intro-001",
+      "titleZh": "空间规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Spatial Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-spatial-pattern-intro-001",
+      "tags": ["mindseeds", "spatial-pattern", "intro"],
+      "gameIds": ["spatial-pattern-hunter"],
+      "lessonIds": ["mindseeds-spatial-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-quantity-pattern-intro-001",
+      "titleZh": "数量规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Quantity Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-quantity-pattern-intro-001",
+      "tags": ["mindseeds", "quantity-pattern", "intro"],
+      "gameIds": ["quantity-pattern-hunter"],
+      "lessonIds": ["mindseeds-quantity-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-logic-pattern-intro-001",
+      "titleZh": "逻辑规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Logic Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-logic-pattern-intro-001",
+      "tags": ["mindseeds", "logic-pattern", "intro"],
+      "gameIds": ["logic-pattern-hunter"],
+      "lessonIds": ["mindseeds-logic-pattern-l1"]
+    },
+    {
+      "id": "mindseeds-mixed-pattern-intro-001",
+      "titleZh": "综合规律小精灵玩法介绍",
+      "titleEn": "Mind Seeds Mixed Pattern Intro",
+      "url": "https://example.com/videos/mindseeds-mixed-pattern-intro-001",
+      "tags": ["mindseeds", "mixed-pattern", "intro"],
+      "gameIds": ["mixed-pattern-hunter"],
+      "lessonIds": ["mindseeds-mixed-pattern-l1"]
+    },
+    {
+      "id": "learning-math-pattern-intro-001",
+      "titleZh": "数学规律训练介绍",
+      "titleEn": "Math Pattern Training Intro",
+      "url": "https://example.com/videos/learning-math-pattern-intro-001",
+      "tags": ["learning", "pattern", "intro"],
+      "gameIds": ["learning-math-pattern"],
+      "lessonIds": ["learning-math-pattern-l1"]
+    },
+    {
+      "id": "learning-math-logic-intro-001",
+      "titleZh": "数学逻辑训练介绍",
+      "titleEn": "Math Logic Training Intro",
+      "url": "https://example.com/videos/learning-math-logic-intro-001",
+      "tags": ["learning", "logic", "intro"],
+      "gameIds": ["learning-math-logic"],
+      "lessonIds": ["learning-math-logic-l1"]
+    },
+    {
+      "id": "learning-math-modeling-intro-001",
+      "titleZh": "数学建模训练介绍",
+      "titleEn": "Math Modeling Training Intro",
+      "url": "https://example.com/videos/learning-math-modeling-intro-001",
+      "tags": ["learning", "modeling", "intro"],
+      "gameIds": ["learning-math-modeling"],
+      "lessonIds": ["learning-math-modeling-l1"]
+    },
+    {
+      "id": "learning-math-strategy-intro-001",
+      "titleZh": "数学策略训练介绍",
+      "titleEn": "Math Strategy Training Intro",
+      "url": "https://example.com/videos/learning-math-strategy-intro-001",
+      "tags": ["learning", "strategy", "intro"],
+      "gameIds": ["learning-math-strategy"],
+      "lessonIds": ["learning-math-strategy-l1"]
+    }
+  ]
+}

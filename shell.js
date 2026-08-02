@@ -33,6 +33,8 @@
 
   // ── Private string registry ──────────────────────────────────
   const _strings = {};
+  const _videoCatalog = Object.create(null);
+  var _videoCatalogLoaded = false;
 
   // ── i18n ────────────────────────────────────────────────────
   /**
@@ -253,6 +255,241 @@
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
     // Notify all listeners (games can react to re-render)
     document.dispatchEvent(new CustomEvent('shell:langchange', { detail: { lang: lang } }));
+    document.dispatchEvent(new CustomEvent('shell:gui:languageChanged', { detail: { lang: lang } }));
+  }
+
+  function getSoundEnabled() {
+    var sound = storage.get('user:settings:sound', null);
+    if (sound === null) {
+      // Backward compatibility with old voice key.
+      sound = storage.get('user:settings:voice', true);
+      storage.set('user:settings:sound', !!sound);
+    }
+    return !!sound;
+  }
+
+  function setSoundEnabled(on) {
+    var val = !!on;
+    storage.set('user:settings:sound', val);
+    // Keep legacy key in sync for existing checks.
+    storage.set('user:settings:voice', val);
+    if (!val && window.speechSynthesis) speechSynthesis.cancel();
+    document.dispatchEvent(new CustomEvent('shell:gui:audioChanged', {
+      detail: { musicOn: getMusicEnabled(), soundOn: val }
+    }));
+  }
+
+  function getMusicEnabled() {
+    return !!storage.get('user:settings:music', false);
+  }
+
+  function setMusicEnabled(on) {
+    var val = !!on;
+    storage.set('user:settings:music', val);
+    document.dispatchEvent(new CustomEvent('shell:gui:audioChanged', {
+      detail: { musicOn: val, soundOn: getSoundEnabled() }
+    }));
+  }
+
+  function registerVideoCatalog(catalog) {
+    var items = [];
+    if (Array.isArray(catalog)) {
+      items = catalog;
+    } else if (catalog && Array.isArray(catalog.videos)) {
+      items = catalog.videos;
+    }
+
+    items.forEach(function (item) {
+      if (!item || !item.id) return;
+      _videoCatalog[item.id] = Object.assign({}, item);
+    });
+    if (items.length) _videoCatalogLoaded = true;
+  }
+
+  function loadVideoCatalog(url) {
+    if (!url || typeof fetch !== 'function') {
+      return Promise.resolve({ loaded: 0 });
+    }
+    return fetch(url)
+      .then(function (res) {
+        if (!res.ok) {
+          throw new Error('Failed to load video catalog: ' + res.status);
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        registerVideoCatalog(data);
+        var count = data && Array.isArray(data.videos)
+          ? data.videos.length
+          : (Array.isArray(data) ? data.length : 0);
+        _videoCatalogLoaded = count > 0;
+        return { loaded: count };
+      });
+  }
+
+  function autoLoadVideoCatalog() {
+    if (_videoCatalogLoaded) return;
+    if (!global.location || !global.location.protocol) return;
+    var p = global.location.protocol;
+    if (p !== 'http:' && p !== 'https:') return;
+
+    loadVideoCatalog('/metadata/video.json').catch(function () {
+      // Keep silent to avoid polluting game consoles in local dev.
+    });
+  }
+
+  function resolveVideo(videoId, lang) {
+    if (!videoId) return null;
+    var entry = _videoCatalog[videoId];
+    if (!entry) return null;
+
+    var targetLang = (lang === 'en') ? 'en' : 'zh';
+    var url = '';
+
+    if (entry.urls && typeof entry.urls === 'object') {
+      url = entry.urls[targetLang] || entry.urls.default || '';
+    }
+    if (!url) {
+      url = targetLang === 'zh' ? (entry.urlZh || '') : (entry.urlEn || '');
+    }
+    if (!url) {
+      url = entry.url || '';
+    }
+
+    return {
+      id: entry.id,
+      titleZh: entry.titleZh || '',
+      titleEn: entry.titleEn || '',
+      url: url
+    };
+  }
+
+  function buildGuiConfig(cfg) {
+    var gui = cfg && cfg.gui ? cfg.gui : {};
+    var header = gui.header || {};
+    var language = gui.language || {};
+    var audio = gui.audio || {};
+    var music = audio.music || {};
+    var sound = audio.sound || {};
+    var history = gui.history || {};
+    var help = gui.help || {};
+    var video = gui.video || {};
+    return {
+      header: {
+        show: header.show !== false,
+        showBack: header.showBack !== false
+      },
+      language: {
+        enabled: language.enabled !== false,
+        default: language.default === 'en' ? 'en' : 'zh'
+      },
+      audio: {
+        music: {
+          enabled: music.enabled === true,
+          defaultOn: music.defaultOn === true
+        },
+        sound: {
+          enabled: sound.enabled !== false,
+          defaultOn: sound.defaultOn !== false
+        }
+      },
+      history: {
+        enabled: history.enabled !== false
+      },
+      help: {
+        enabled: help.enabled === true,
+        contentZh: help.contentZh || '',
+        contentEn: help.contentEn || ''
+      },
+      video: {
+        enabled: video.enabled === true,
+        videoId: video.videoId || '',
+        url: video.url || ''
+      }
+    };
+  }
+
+  function initGuiState(guiCfg) {
+    if (!storage.get('user:settings:lang', null)) {
+      setLang(guiCfg.language.default);
+    }
+    if (storage.get('user:settings:sound', null) === null && storage.get('user:settings:voice', null) === null) {
+      setSoundEnabled(guiCfg.audio.sound.defaultOn);
+    } else {
+      // Ensure legacy and new key are aligned.
+      setSoundEnabled(getSoundEnabled());
+    }
+    if (storage.get('user:settings:music', null) === null) {
+      setMusicEnabled(guiCfg.audio.music.defaultOn);
+    }
+  }
+
+  function buildGuiRuntimeApi() {
+    return {
+      getState: function () {
+        return {
+          lang: shell.lang,
+          musicOn: getMusicEnabled(),
+          soundOn: getSoundEnabled()
+        };
+      },
+      setLanguage: function (lang) {
+        if (lang !== 'zh' && lang !== 'en') return;
+        setLang(lang);
+      },
+      setMusic: function (on) {
+        setMusicEnabled(on);
+      },
+      setSound: function (on) {
+        setSoundEnabled(on);
+      },
+      openHelp: function () {
+        document.dispatchEvent(new CustomEvent('shell:gui:helpOpened'));
+      },
+      openHistory: function () {
+        document.dispatchEvent(new CustomEvent('shell:gui:historyOpened'));
+      },
+      openVideo: function (videoId) {
+        var resolved = resolveVideo(videoId || '', shell.lang);
+        if (resolved && resolved.url) {
+          window.open(resolved.url, '_blank');
+        }
+        document.dispatchEvent(new CustomEvent('shell:gui:videoOpened', {
+          detail: {
+            videoId: videoId || '',
+            url: resolved && resolved.url ? resolved.url : ''
+          }
+        }));
+        return resolved;
+      }
+    };
+  }
+
+  function resolveRootGenes(cfg, context) {
+    var genes = [];
+
+    if (cfg && typeof cfg.registerRootGenes === 'function') {
+      try {
+        genes = cfg.registerRootGenes(context) || [];
+      } catch (err) {
+        console.warn('[shell] registerRootGenes failed:', err);
+      }
+    } else if (cfg && Array.isArray(cfg.rootGeneIds)) {
+      genes = cfg.rootGeneIds;
+    }
+
+    if (!Array.isArray(genes)) return [];
+
+    var out = [];
+    var seen = Object.create(null);
+    genes.forEach(function (id) {
+      if (typeof id !== 'string') return;
+      var key = id.trim();
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      out.push(key);
+    });
+    return out;
   }
 
   // ── Runtime Compatibility Layer (Shell-1 / Shell-2 shared) ──
@@ -476,6 +713,9 @@
    * }
    */
   function createGame(config) {
+    var guiCfg = buildGuiConfig(config);
+    initGuiState(guiCfg);
+
     // Inject theme CSS variables
     if (config.theme) {
       var t = config.theme;
@@ -501,11 +741,14 @@
     shell._s1TranscriptEl = document.getElementById('s1-transcript-text');
 
     // Run the game state machine
-    _runGame(config);
+    _runGame(config, guiCfg);
   }
 
   // ── Shell-2: Reasoning Game ──────────────────────────────────
   function createReasoningGame(config) {
+    var guiCfg = buildGuiConfig(config);
+    initGuiState(guiCfg);
+
     if (config.theme) {
       var t = config.theme;
       var css = ':root{';
@@ -522,7 +765,7 @@
     }
     document.body.insertAdjacentHTML('beforeend', _buildReasoningHTML());
     shell._s1TranscriptEl = document.getElementById('s1-transcript-text');
-    _runReasoningGame(config);
+    _runReasoningGame(config, guiCfg);
   }
 
   function _buildReasoningHTML() {
@@ -534,6 +777,7 @@
         '<div class="s1-hdr">',
           '<div class="s1-title" id="s1-title"></div>',
           '<div class="s1-controls">',
+            '<button class="s1-btn s1-music" id="s1-music">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-mute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-lang">EN</button>',
           '</div>',
@@ -564,6 +808,7 @@
           '<button class="s1-back" id="s1-back">⬅️</button>',
           '<div class="s1-utitle" id="s1-utitle"></div>',
           '<div class="s1-controls">',
+            '<button class="s1-btn s1-music" id="s1-gmusic">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-gmute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-glang">EN</button>',
           '</div>',
@@ -607,6 +852,16 @@
 
       '<div id="s1-transcript" class="s1-transcript s1-hidden">',
         '<div id="s1-transcript-text"></div>',
+      '</div>',
+
+      '<div id="s1-overlay" class="s1-overlay s1-hidden">',
+        '<div class="s1-overlay-card">',
+          '<div class="s1-overlay-hdr">',
+            '<div class="s1-overlay-title" id="s1-overlay-title"></div>',
+            '<button class="s1-overlay-close" id="s1-overlay-close">✕</button>',
+          '</div>',
+          '<div class="s1-overlay-body" id="s1-overlay-body"></div>',
+        '</div>',
       '</div>'
     ].join('');
   }
@@ -620,6 +875,9 @@
         '<div class="s1-hdr">',
           '<div class="s1-title" id="s1-title"></div>',
           '<div class="s1-controls">',
+            '<button class="s1-btn s1-help" id="s1-help">❓</button>',
+            '<button class="s1-btn s1-video" id="s1-video">🎬</button>',
+            '<button class="s1-btn s1-music" id="s1-music">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-mute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-lang">EN</button>',
           '</div>',
@@ -650,6 +908,9 @@
           '<button class="s1-back" id="s1-back">⬅️</button>',
           '<div class="s1-utitle" id="s1-utitle"></div>',
           '<div class="s1-controls">',
+            '<button class="s1-btn s1-help" id="s1-ghelp">❓</button>',
+            '<button class="s1-btn s1-video" id="s1-gvideo">🎬</button>',
+            '<button class="s1-btn s1-music" id="s1-gmusic">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-gmute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-glang">EN</button>',
           '</div>',
@@ -692,11 +953,21 @@
       // ── VOICE TRANSCRIPT BAR ──
       '<div id="s1-transcript" class="s1-transcript s1-hidden">',
         '<div id="s1-transcript-text"></div>',
+      '</div>',
+
+      '<div id="s1-overlay" class="s1-overlay s1-hidden">',
+        '<div class="s1-overlay-card">',
+          '<div class="s1-overlay-hdr">',
+            '<div class="s1-overlay-title" id="s1-overlay-title"></div>',
+            '<button class="s1-overlay-close" id="s1-overlay-close">✕</button>',
+          '</div>',
+          '<div class="s1-overlay-body" id="s1-overlay-body"></div>',
+        '</div>',
       '</div>'
     ].join('');
   }
 
-  function _runGame(cfg) {
+  function _runGame(cfg, guiCfg) {
     var GAME_ID    = cfg.id;
     var PASS_SCORE = cfg.passScore || 8;
     var DEBUG      = cfg.debug !== false;
@@ -719,15 +990,24 @@
       });
     }
 
+    _applyGuiLayout();
+
     // Bind common event handlers
-    document.getElementById('s1-mute') .addEventListener('click', _toggleMute);
-    document.getElementById('s1-lang') .addEventListener('click', _toggleLang);
-    document.getElementById('s1-gmute').addEventListener('click', _toggleMute);
-    document.getElementById('s1-glang').addEventListener('click', _toggleLang);
-    document.getElementById('s1-back') .addEventListener('click', _goHome);
-    document.getElementById('s1-replay').addEventListener('click', _replay);
-    document.getElementById('s1-sum-sess-hdr').addEventListener('click', function () { _toggleSum('sess'); });
-    document.getElementById('s1-sum-hist-hdr').addEventListener('click', function () { _toggleSum('hist'); });
+    _bindClick('s1-mute', _toggleMute);
+    _bindClick('s1-lang', _toggleLang);
+    _bindClick('s1-gmute', _toggleMute);
+    _bindClick('s1-glang', _toggleLang);
+    _bindClick('s1-music', _toggleMusic);
+    _bindClick('s1-gmusic', _toggleMusic);
+    _bindClick('s1-help', _openHelp);
+    _bindClick('s1-ghelp', _openHelp);
+    _bindClick('s1-video', _openVideo);
+    _bindClick('s1-gvideo', _openVideo);
+    _bindClick('s1-overlay-close', _closeOverlay);
+    _bindClick('s1-back', _goHome);
+    _bindClick('s1-replay', _replay);
+    _bindClick('s1-sum-sess-hdr', function () { _toggleSum('sess'); });
+    _bindClick('s1-sum-hist-hdr', function () { _toggleSum('hist'); });
 
     // Language change → re-render current screen
     document.addEventListener('shell:langchange', function () {
@@ -739,7 +1019,91 @@
 
     _renderHome();
     _updMute();
+    _updMusic();
     _updLang();
+
+    function _bindClick(id, handler) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', handler);
+    }
+
+    function _applyGuiLayout() {
+      var homeHdr = document.querySelector('#s1-home .s1-hdr');
+      var gameHdr = document.querySelector('#s1-game .s1-ghdr');
+      var backBtn = document.getElementById('s1-back');
+      var summary = document.querySelector('#s1-home .s1-summary');
+
+      if (homeHdr) homeHdr.style.display = guiCfg.header.show ? '' : 'none';
+      if (gameHdr) gameHdr.style.display = guiCfg.header.show ? '' : 'none';
+      if (backBtn) backBtn.style.display = guiCfg.header.showBack ? '' : 'none';
+      if (summary) summary.style.display = guiCfg.history.enabled ? '' : 'none';
+
+      document.querySelectorAll('.s1-lang').forEach(function (el) {
+        el.style.display = guiCfg.language.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-mute').forEach(function (el) {
+        el.style.display = guiCfg.audio.sound.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-music').forEach(function (el) {
+        el.style.display = guiCfg.audio.music.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-help').forEach(function (el) {
+        el.style.display = guiCfg.help.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-video').forEach(function (el) {
+        el.style.display = guiCfg.video.enabled ? '' : 'none';
+      });
+    }
+
+    function _openHelp() {
+      var titleZh = '使用帮助';
+      var titleEn = 'Help';
+      var bodyZh = guiCfg.help.contentZh || '请观察题目规律，选择最合适的答案。';
+      var bodyEn = guiCfg.help.contentEn || 'Observe the pattern and choose the best answer.';
+      _showOverlay(titleZh, titleEn, bodyZh, bodyEn);
+      document.dispatchEvent(new CustomEvent('shell:gui:helpOpened'));
+    }
+
+    function _openVideo() {
+      var resolved = null;
+      if (guiCfg.video.videoId) {
+        resolved = resolveVideo(guiCfg.video.videoId, shell.lang);
+      }
+
+      var targetUrl = guiCfg.video.url || (resolved && resolved.url ? resolved.url : '');
+      if (targetUrl) {
+        window.open(targetUrl, '_blank');
+      } else {
+        var tipZh = guiCfg.video.videoId
+          ? ('视频 ID：' + guiCfg.video.videoId + '（未命中 video.json）')
+          : '暂未配置视频链接';
+        var tipEn = guiCfg.video.videoId
+          ? ('Video ID: ' + guiCfg.video.videoId + ' (not found in video.json)')
+          : 'No video URL configured yet';
+        _showOverlay('视频入口', 'Video', tipZh, tipEn);
+      }
+      document.dispatchEvent(new CustomEvent('shell:gui:videoOpened', {
+        detail: {
+          videoId: guiCfg.video.videoId || '',
+          url: targetUrl
+        }
+      }));
+    }
+
+    function _showOverlay(titleZh, titleEn, bodyZh, bodyEn) {
+      var overlay = document.getElementById('s1-overlay');
+      var titleEl = document.getElementById('s1-overlay-title');
+      var bodyEl = document.getElementById('s1-overlay-body');
+      if (!overlay || !titleEl || !bodyEl) return;
+      titleEl.innerHTML = _bispan(titleZh, titleEn);
+      bodyEl.innerHTML = '<p>' + _bispan(bodyZh, bodyEn) + '</p>';
+      overlay.classList.remove('s1-hidden');
+    }
+
+    function _closeOverlay() {
+      var overlay = document.getElementById('s1-overlay');
+      if (overlay) overlay.classList.add('s1-hidden');
+    }
 
     // ── HOME ────────────────────────────────────────────────────
     function _renderHome() {
@@ -961,13 +1325,28 @@
       }
 
       // Report to shell analytics
+      var geneIds = resolveRootGenes(cfg, {
+        shell: 'shell-1',
+        gameId: GAME_ID,
+        unit: unit,
+        state: {
+          score: state.score,
+          total: total,
+          hints: state.hints,
+          passed: passed,
+          elapsedMs: elapsed
+        }
+      });
+
       shell.report({
         gameId:    GAME_ID,
         unitId:    unit.id,
         score:     state.score,
         total:     total,
         timeMs:    elapsed,
-        hintsUsed: state.hints
+        hintsUsed: state.hints,
+        geneIds:   geneIds,
+        shell:     'shell-1'
       });
 
       // Stash for lang-switch re-render
@@ -1149,18 +1528,30 @@
     }
 
     function _toggleMute() {
-      var cur = shell.storage.get('user:settings:voice', true);
-      shell.storage.set('user:settings:voice', !cur);
-      if (cur && window.speechSynthesis) speechSynthesis.cancel();
+      var cur = getSoundEnabled();
+      setSoundEnabled(!cur);
       _updMute();
     }
     function _toggleLang() {
+      if (!guiCfg.language.enabled) return;
       shell.setLang(shell.lang === 'zh' ? 'en' : 'zh');
     }
+    function _toggleMusic() {
+      var cur = getMusicEnabled();
+      setMusicEnabled(!cur);
+      _updMusic();
+    }
     function _updMute() {
-      var on = shell.storage.get('user:settings:voice', true);
+      var on = getSoundEnabled();
       document.querySelectorAll('.s1-mute').forEach(function (b) {
         b.textContent = on ? '🔊' : '🔇';
+        b.classList.toggle('s1-active', on);
+      });
+    }
+    function _updMusic() {
+      var on = getMusicEnabled();
+      document.querySelectorAll('.s1-music').forEach(function (b) {
+        b.textContent = on ? '🎵' : '🎶';
         b.classList.toggle('s1-active', on);
       });
     }
@@ -1205,7 +1596,7 @@
   }
 
   // ── Shell-2 runner ───────────────────────────────────────────
-  function _runReasoningGame(cfg) {
+  function _runReasoningGame(cfg, guiCfg) {
     var GAME_ID    = cfg.id;
     var PASS_SCORE = cfg.passScore || 8;
     var DEBUG      = cfg.debug !== false;
@@ -1224,14 +1615,22 @@
       });
     }
 
-    document.getElementById('s1-mute') .addEventListener('click', _rToggleMute);
-    document.getElementById('s1-lang') .addEventListener('click', _rToggleLang);
-    document.getElementById('s1-gmute').addEventListener('click', _rToggleMute);
-    document.getElementById('s1-glang').addEventListener('click', _rToggleLang);
-    document.getElementById('s1-back') .addEventListener('click', _rGoHome);
-    document.getElementById('s1-replay').addEventListener('click', _rReplay);
-    document.getElementById('s1-sum-sess-hdr').addEventListener('click', function () { _rToggleSum('sess'); });
-    document.getElementById('s1-sum-hist-hdr').addEventListener('click', function () { _rToggleSum('hist'); });
+    _rApplyGuiLayout();
+    _rBindClick('s1-mute', _rToggleMute);
+    _rBindClick('s1-lang', _rToggleLang);
+    _rBindClick('s1-gmute', _rToggleMute);
+    _rBindClick('s1-glang', _rToggleLang);
+    _rBindClick('s1-music', _rToggleMusic);
+    _rBindClick('s1-gmusic', _rToggleMusic);
+    _rBindClick('s1-help', _rOpenHelp);
+    _rBindClick('s1-ghelp', _rOpenHelp);
+    _rBindClick('s1-video', _rOpenVideo);
+    _rBindClick('s1-gvideo', _rOpenVideo);
+    _rBindClick('s1-overlay-close', _rCloseOverlay);
+    _rBindClick('s1-back', _rGoHome);
+    _rBindClick('s1-replay', _rReplay);
+    _rBindClick('s1-sum-sess-hdr', function () { _rToggleSum('sess'); });
+    _rBindClick('s1-sum-hist-hdr', function () { _rToggleSum('hist'); });
 
     document.addEventListener('shell:langchange', function () {
       _rUpdLang();
@@ -1242,7 +1641,91 @@
 
     _renderHome();
     _rUpdMute();
+    _rUpdMusic();
     _rUpdLang();
+
+    function _rBindClick(id, handler) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', handler);
+    }
+
+    function _rApplyGuiLayout() {
+      var homeHdr = document.querySelector('#s1-home .s1-hdr');
+      var gameHdr = document.querySelector('#s1-game .s1-ghdr');
+      var backBtn = document.getElementById('s1-back');
+      var summary = document.querySelector('#s1-home .s1-summary');
+
+      if (homeHdr) homeHdr.style.display = guiCfg.header.show ? '' : 'none';
+      if (gameHdr) gameHdr.style.display = guiCfg.header.show ? '' : 'none';
+      if (backBtn) backBtn.style.display = guiCfg.header.showBack ? '' : 'none';
+      if (summary) summary.style.display = guiCfg.history.enabled ? '' : 'none';
+
+      document.querySelectorAll('.s1-lang').forEach(function (el) {
+        el.style.display = guiCfg.language.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-mute').forEach(function (el) {
+        el.style.display = guiCfg.audio.sound.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-music').forEach(function (el) {
+        el.style.display = guiCfg.audio.music.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-help').forEach(function (el) {
+        el.style.display = guiCfg.help.enabled ? '' : 'none';
+      });
+      document.querySelectorAll('.s1-video').forEach(function (el) {
+        el.style.display = guiCfg.video.enabled ? '' : 'none';
+      });
+    }
+
+    function _rOpenHelp() {
+      var titleZh = '使用帮助';
+      var titleEn = 'Help';
+      var bodyZh = guiCfg.help.contentZh || '请先阅读前提，再选择最符合结论的答案。';
+      var bodyEn = guiCfg.help.contentEn || 'Read all premises, then choose the best conclusion.';
+      _rShowOverlay(titleZh, titleEn, bodyZh, bodyEn);
+      document.dispatchEvent(new CustomEvent('shell:gui:helpOpened'));
+    }
+
+    function _rOpenVideo() {
+      var resolved = null;
+      if (guiCfg.video.videoId) {
+        resolved = resolveVideo(guiCfg.video.videoId, shell.lang);
+      }
+
+      var targetUrl = guiCfg.video.url || (resolved && resolved.url ? resolved.url : '');
+      if (targetUrl) {
+        window.open(targetUrl, '_blank');
+      } else {
+        var tipZh = guiCfg.video.videoId
+          ? ('视频 ID：' + guiCfg.video.videoId + '（未命中 video.json）')
+          : '暂未配置视频链接';
+        var tipEn = guiCfg.video.videoId
+          ? ('Video ID: ' + guiCfg.video.videoId + ' (not found in video.json)')
+          : 'No video URL configured yet';
+        _rShowOverlay('视频入口', 'Video', tipZh, tipEn);
+      }
+      document.dispatchEvent(new CustomEvent('shell:gui:videoOpened', {
+        detail: {
+          videoId: guiCfg.video.videoId || '',
+          url: targetUrl
+        }
+      }));
+    }
+
+    function _rShowOverlay(titleZh, titleEn, bodyZh, bodyEn) {
+      var overlay = document.getElementById('s1-overlay');
+      var titleEl = document.getElementById('s1-overlay-title');
+      var bodyEl = document.getElementById('s1-overlay-body');
+      if (!overlay || !titleEl || !bodyEl) return;
+      titleEl.innerHTML = _rBi(titleZh, titleEn);
+      bodyEl.innerHTML = '<p>' + _rBi(bodyZh, bodyEn) + '</p>';
+      overlay.classList.remove('s1-hidden');
+    }
+
+    function _rCloseOverlay() {
+      var overlay = document.getElementById('s1-overlay');
+      if (overlay) overlay.classList.add('s1-hidden');
+    }
 
     function _renderHome() {
       var titleEl = document.getElementById('s1-title');
@@ -1424,8 +1907,21 @@
         _rSaveUnit(next.id, ns);
       }
 
+      var geneIds = resolveRootGenes(cfg, {
+        shell: 'shell-2',
+        gameId: GAME_ID,
+        unit: unit,
+        state: {
+          score: state.score,
+          total: total,
+          hints: state.hints,
+          passed: passed,
+          elapsedMs: elapsed
+        }
+      });
+
       shell.report({ gameId:GAME_ID, unitId:unit.id, score:state.score, total:total,
-                     timeMs:elapsed, hintsUsed:state.hints, shell:'shell-2' });
+                     timeMs:elapsed, hintsUsed:state.hints, geneIds:geneIds, shell:'shell-2' });
 
       $result.dataset.passed  = passed;
       $result.dataset.isLast  = isLast;
@@ -1568,9 +2064,11 @@
 
     function _rGoHome()     { _rShow($home); _rHide($game); _rHide($result); _renderHome(); }
     function _rReplay()     { if (cfg.getVoiceText) shell.speak(cfg.getVoiceText(cfg.units[state.unitIdx].questions[state.qIdx], state.qIdx)); }
-    function _rToggleMute() { var cur = shell.storage.get('user:settings:voice',true); shell.storage.set('user:settings:voice',!cur); if(cur&&window.speechSynthesis) speechSynthesis.cancel(); _rUpdMute(); }
-    function _rToggleLang() { shell.setLang(shell.lang === 'zh' ? 'en' : 'zh'); }
-    function _rUpdMute()    { var on = shell.storage.get('user:settings:voice',true); document.querySelectorAll('.s1-mute').forEach(function(b){ b.textContent=on?'🔊':'🔇'; b.classList.toggle('s1-active',on); }); }
+    function _rToggleMute() { var cur = getSoundEnabled(); setSoundEnabled(!cur); _rUpdMute(); }
+    function _rToggleLang() { if (!guiCfg.language.enabled) return; shell.setLang(shell.lang === 'zh' ? 'en' : 'zh'); }
+    function _rToggleMusic() { var cur = getMusicEnabled(); setMusicEnabled(!cur); _rUpdMusic(); }
+    function _rUpdMute()    { var on = getSoundEnabled(); document.querySelectorAll('.s1-mute').forEach(function(b){ b.textContent=on?'🔊':'🔇'; b.classList.toggle('s1-active',on); }); }
+    function _rUpdMusic()   { var on = getMusicEnabled(); document.querySelectorAll('.s1-music').forEach(function(b){ b.textContent=on?'🎵':'🎶'; b.classList.toggle('s1-active',on); }); }
     function _rUpdLang()    { var lbl = shell.lang==='zh'?'EN':'中'; document.querySelectorAll('.s1-lang').forEach(function(b){ b.textContent=lbl; }); }
     function _rUpdScore()   { ['s1-sc','s1-sc-e'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent=state.score; }); }
     function _rUnitSave(id) { var def=cfg.parallelUnits?true:(String(id)==='1'); return shell.storage.get(GAME_ID+':unit:'+id,{unlocked:def,bestScore:null,playCount:0}); }
@@ -1584,14 +2082,18 @@
 
   // ── Public shell object ──────────────────────────────────────
   var shell = {
-    version:         '1.1.0',
+    version:         '1.3.0',
     lang:            storage.get('user:settings:lang', 'zh') || 'zh',
     t:               t,
     speak:           speak,
     setLang:         setLang,
     registerStrings: registerStrings,
+    registerVideoCatalog: registerVideoCatalog,
+    loadVideoCatalog: loadVideoCatalog,
+    resolveVideo:    resolveVideo,
     createGame:          createGame,
     createReasoningGame: createReasoningGame,
+    gui:                 buildGuiRuntimeApi(),
     storage:             storage,
     runtime:             createRuntimeLayer(),
     nav:             nav,
@@ -1600,6 +2102,8 @@
   };
 
   global.shell = shell;
+
+  autoLoadVideoCatalog();
 
   // Apply persisted language to <html> on load
   document.documentElement.setAttribute('lang', shell.lang === 'zh' ? 'zh-CN' : 'en');

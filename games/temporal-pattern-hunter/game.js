@@ -106,6 +106,15 @@ shell.createGame({
   id:            'temporal-pattern-hunter',
   parallelUnits: true,   // 3 units test different abilities — all unlocked
   theme:         { primary: '#8b5cf6', primary2: '#ec4899', bg: '#fdf4ff' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:         { zh: '⏰ 时间规律',              en: '⏰ Temporal Pattern'     },
   subtitle:      { zh: '看懂时间的顺序，预测下一刻', en: 'Read time patterns, predict what comes next' },
   passScore:     5,
@@ -153,5 +162,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一个是什么？'
       : 'Question ' + (idx + 1) + ', what comes next?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.TEMPORAL.SEQUENCE',
+      'RG.MINDSEEDS.TEMPORAL_PATTERN.' + unitId
+    ];
   }
 });

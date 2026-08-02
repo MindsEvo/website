@@ -84,6 +84,15 @@ shell.createGame({
   id:            'motion-pattern-hunter',
   parallelUnits: true,
   theme:         { primary: '#0ea5e9', primary2: '#7c3aed', bg: '#f0f9ff' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:         { zh: '🏃 动作规律',              en: '🏃 Motion Pattern' },
   subtitle:      { zh: '看懂动作的节奏，预测下一步', en: 'Read the rhythm, predict the next move' },
   passScore:     5,
@@ -138,5 +147,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一个是什么？'
       : 'Question ' + (idx + 1) + ', what comes next?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.MOTION.SEQUENCE',
+      'RG.MINDSEEDS.MOTION_PATTERN.' + unitId
+    ];
   }
 });

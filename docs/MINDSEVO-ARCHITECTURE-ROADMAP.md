@@ -1,5 +1,12 @@
 # MindsEvo 总体架构路线图（v1）
 
+## 0. 当前进展快照（2026-08-02）
+
+1. 阶段 1（统一 GUI Framework）：已在已迁移游戏中落地。
+2. 阶段 3（RootGene Framework）：`registerRootGenes()` 已覆盖当前迁移范围。
+3. 阶段 4（History Framework）：服务端接口已落地 `save/load/statistics/recommend`，并新增按游戏总览与日趋势聚合。
+4. 阶段 5（AI Metadata）：`game/lesson/video` 三表扩展到 14 条完整覆盖并通过校验工具。
+
 ## 1. 平台定位
 
 MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。

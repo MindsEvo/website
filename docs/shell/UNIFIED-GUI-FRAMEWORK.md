@@ -157,7 +157,7 @@ shell.on('gui:audioChanged', function (payload) {
 shell.on('gui:helpOpened', function () {});
 shell.on('gui:historyOpened', function () {});
 shell.on('gui:videoOpened', function (payload) {
-  // payload: { videoId: 'pattern-intro-001' }
+  // payload: { videoId: 'pattern-intro-001', url: 'https://...' }
 });
 ```
 
@@ -168,6 +168,7 @@ shell.on('gui:videoOpened', function (payload) {
 3. 老游戏不配置 gui 仍可运行（向后兼容）。
 4. 移动端（<=520px）头部按钮布局无错位。
 5. 中英文切换与音频开关状态可持久化。
+6. Help / Video 入口在配置启用时可见且可点击。
 
 ## 8. 迁移建议
 
@@ -178,5 +179,5 @@ shell.on('gui:videoOpened', function (payload) {
 ## 9. 未决问题
 
 1. Creative Workshop 是否允许自定义 Header 全布局。
-2. videoId 与多语言视频映射放在 video.json 还是 lesson.json。
+2. videoId 统一放在 video.json，并在 lesson/game 中做引用。
 3. History 的 panel/page 最终统一为单形态还是双形态。

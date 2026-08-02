@@ -52,6 +52,15 @@ ensureSizeStyles();
 shell.createGame({
   id: 'size-pattern-hunter',
   theme: { primary: '#f59e0b', primary2: '#ea580c', bg: '#fff7ed' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title: { zh: '📏 大小规律', en: '📏 Size Pattern' },
   subtitle: { zh: '看懂大小变化，预测下一步', en: 'Read size changes and predict the next step' },
   passScore: 4,
@@ -91,5 +100,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一个大小是什么？'
       : 'Question ' + (idx + 1) + ', what size comes next?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.VISUAL.SIZE',
+      'RG.MINDSEEDS.SIZE_PATTERN.' + unitId
+    ];
   }
 });

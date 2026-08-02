@@ -9,7 +9,9 @@
 3. `shell/GAME-SHELL-CONVENTION.md`（游戏如何接入统一 Shell）
 4. `shell/SHELL-FEATURE-GATE.md`（哪些能力可以上升为公共层）
 5. `patterns/PATTERN-QUALITY-GATE.md`（Pattern 模块质量门禁）
-6. 对应模块规范（如 Spatial / Quantity）
+6. `metadata/AI-METADATA-STANDARD.md`（阶段 5：标准元数据）
+7. `rootgene/ROOTGENE-FRAMEWORK.md`（阶段 3：RootGene 标准）
+8. 对应模块规范（如 Spatial / Quantity）
 
 ## 架构主文档
 
@@ -20,12 +22,21 @@
 1. `shell/UNIFIED-GUI-FRAMEWORK.md`
 2. `shell/GAME-SHELL-CONVENTION.md`
 3. `shell/SHELL-FEATURE-GATE.md`
+4. `shell/GUI-MIGRATION-CHECKLIST.md`
 
 ## Pattern 规范
 
 1. `patterns/PATTERN-QUALITY-GATE.md`
 2. `patterns/SPATIAL-PATTERN-MODULE.md`
 3. `patterns/QUANTITY-PATTERN-MODULE.md`
+
+## Metadata 规范
+
+1. `metadata/AI-METADATA-STANDARD.md`
+
+## RootGene 规范
+
+1. `rootgene/ROOTGENE-FRAMEWORK.md`
 
 ## 文档治理规则
 

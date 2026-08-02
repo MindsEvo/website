@@ -142,6 +142,17 @@ shell.createGame({
   units:    MY_DATA.units,         // Shell-1 格式的单元数组
   passScore: 8,                    // 通关所需最低分（default: 8）
 
+  // ── 推荐：阶段1统一 GUI 配置（可选） ───────────────
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
+
   // ── 必须实现：3个游戏逻辑函数 ─────────────────────
   renderSequence(q, containerEl, unit) {
     // 把 q 的序列内容渲染到 containerEl
@@ -174,6 +185,7 @@ shell.createGame({
 |------|------|
 | 双语 UI | 所有文字自动支持中/英切换，无需任何代码 |
 | 语言切换按钮 | 自动绑定，切换后整页刷新 |
+| 音乐按钮（阶段1） | 自动绑定，状态持久化 |
 | 静音按钮 | 自动绑定，状态持久化 |
 | 三屏状态机 | Home → Game → Result 自动管理 |
 | 进度点 | 自动渲染，答对变绿 |

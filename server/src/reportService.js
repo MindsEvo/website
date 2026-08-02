@@ -9,6 +9,27 @@ function normalizeAttempt(raw, idx) {
   };
 }
 
+function normalizeGeneIds(rawGeneIds) {
+  if (!Array.isArray(rawGeneIds)) {
+    return [];
+  }
+
+  const seen = new Set();
+  const out = [];
+  for (const geneId of rawGeneIds) {
+    if (typeof geneId !== "string") {
+      continue;
+    }
+    const trimmed = geneId.trim();
+    if (!trimmed || seen.has(trimmed)) {
+      continue;
+    }
+    seen.add(trimmed);
+    out.push(trimmed);
+  }
+  return out;
+}
+
 function computeReport(attempts) {
   const totalQuestions = attempts.length;
   const correctCount = attempts.filter((a) => a.isCorrect).length;
@@ -59,11 +80,24 @@ function validatePayload(payload) {
     return "attempts cannot be empty.";
   }
 
+  if (payload.geneIds !== undefined && !Array.isArray(payload.geneIds)) {
+    return "geneIds must be an array when provided.";
+  }
+
+  if (Array.isArray(payload.geneIds)) {
+    for (const geneId of payload.geneIds) {
+      if (typeof geneId !== "string") {
+        return "geneIds must be an array of strings.";
+      }
+    }
+  }
+
   return null;
 }
 
 module.exports = {
   normalizeAttempt,
+  normalizeGeneIds,
   computeReport,
   validatePayload,
 };

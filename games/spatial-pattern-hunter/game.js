@@ -134,6 +134,15 @@ ensureSpatialStyles();
 shell.createGame({
   id: 'spatial-pattern-hunter',
   theme: { primary: '#0ea5e9', primary2: '#0284c7', bg: '#f0f9ff' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title: { zh: '🧭 空间关系', en: '🧭 Spatial Pattern' },
   subtitle: { zh: '看懂位置的关系，预测下一步', en: 'Read position relationships and predict the next step' },
   passScore: 4,
@@ -183,5 +192,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一步的空间关系是什么？'
       : 'Question ' + (idx + 1) + ', what is the next spatial relationship?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.SPATIAL.RELATION',
+      'RG.MINDSEEDS.SPATIAL_PATTERN.' + unitId
+    ];
   }
 });

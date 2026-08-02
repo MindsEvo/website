@@ -58,6 +58,15 @@ ensureQuantityStyles();
 shell.createGame({
   id: 'quantity-pattern-hunter',
   theme: { primary: '#16a34a', primary2: '#15803d', bg: '#f0fdf4' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title: { zh: '🧮 数量规律', en: '🧮 Quantity Pattern' },
   subtitle: { zh: '看懂数量的变化，预测下一步', en: 'Read quantity relationships and predict the next step' },
   passScore: 4,
@@ -103,5 +112,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '看图形，问号处应该是什么？'
       : 'Look at the objects and choose what comes next.';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.QUANTITY.RELATION',
+      'RG.MINDSEEDS.QUANTITY_PATTERN.' + unitId
+    ];
   }
 });

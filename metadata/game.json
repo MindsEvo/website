@@ -1,0 +1,160 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-08-02",
+  "games": [
+    {
+      "id": "number-pattern-hunter",
+      "series": "mindseeds",
+      "module": "number-pattern",
+      "shell": "shell-1",
+      "titleZh": "找规律",
+      "titleEn": "Pattern Hunter",
+      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC"],
+      "lessonIds": ["mindseeds-number-pattern-l1"],
+      "videoIds": ["mindseeds-number-pattern-intro-001"]
+    },
+    {
+      "id": "color-pattern-hunter",
+      "series": "mindseeds",
+      "module": "color-pattern",
+      "shell": "shell-1",
+      "titleZh": "颜色规律",
+      "titleEn": "Color Pattern",
+      "rootGeneIds": ["RG.PATTERN.VISUAL.COLOR"],
+      "lessonIds": ["mindseeds-color-pattern-l1"],
+      "videoIds": ["mindseeds-color-pattern-intro-001"]
+    },
+    {
+      "id": "visual-pattern-hunter",
+      "series": "mindseeds",
+      "module": "visual-pattern",
+      "shell": "shell-1",
+      "titleZh": "视觉规律",
+      "titleEn": "Visual Pattern",
+      "rootGeneIds": ["RG.PATTERN.VISUAL.SEQUENCE"],
+      "lessonIds": ["mindseeds-visual-pattern-l1"],
+      "videoIds": ["mindseeds-visual-pattern-intro-001"]
+    },
+    {
+      "id": "motion-pattern-hunter",
+      "series": "mindseeds",
+      "module": "motion-pattern",
+      "shell": "shell-1",
+      "titleZh": "动作规律",
+      "titleEn": "Motion Pattern",
+      "rootGeneIds": ["RG.PATTERN.MOTION.SEQUENCE"],
+      "lessonIds": ["mindseeds-motion-pattern-l1"],
+      "videoIds": ["mindseeds-motion-pattern-intro-001"]
+    },
+    {
+      "id": "temporal-pattern-hunter",
+      "series": "mindseeds",
+      "module": "temporal-pattern",
+      "shell": "shell-1",
+      "titleZh": "时间规律",
+      "titleEn": "Temporal Pattern",
+      "rootGeneIds": ["RG.PATTERN.TEMPORAL.SEQUENCE"],
+      "lessonIds": ["mindseeds-temporal-pattern-l1"],
+      "videoIds": ["mindseeds-temporal-pattern-intro-001"]
+    },
+    {
+      "id": "size-pattern-hunter",
+      "series": "mindseeds",
+      "module": "size-pattern",
+      "shell": "shell-1",
+      "titleZh": "大小规律",
+      "titleEn": "Size Pattern",
+      "rootGeneIds": ["RG.PATTERN.VISUAL.SIZE"],
+      "lessonIds": ["mindseeds-size-pattern-l1"],
+      "videoIds": ["mindseeds-size-pattern-intro-001"]
+    },
+    {
+      "id": "spatial-pattern-hunter",
+      "series": "mindseeds",
+      "module": "spatial-pattern",
+      "shell": "shell-1",
+      "titleZh": "空间关系",
+      "titleEn": "Spatial Pattern",
+      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION"],
+      "lessonIds": ["mindseeds-spatial-pattern-l1"],
+      "videoIds": ["mindseeds-spatial-pattern-intro-001"]
+    },
+    {
+      "id": "quantity-pattern-hunter",
+      "series": "mindseeds",
+      "module": "quantity-pattern",
+      "shell": "shell-1",
+      "titleZh": "数量规律",
+      "titleEn": "Quantity Pattern",
+      "rootGeneIds": ["RG.PATTERN.QUANTITY.RELATION"],
+      "lessonIds": ["mindseeds-quantity-pattern-l1"],
+      "videoIds": ["mindseeds-quantity-pattern-intro-001"]
+    },
+    {
+      "id": "logic-pattern-hunter",
+      "series": "mindseeds",
+      "module": "logic-pattern",
+      "shell": "shell-2",
+      "titleZh": "逻辑推理",
+      "titleEn": "Logic Pattern",
+      "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],
+      "lessonIds": ["mindseeds-logic-pattern-l1"],
+      "videoIds": ["mindseeds-logic-pattern-intro-001"]
+    },
+    {
+      "id": "mixed-pattern-hunter",
+      "series": "mindseeds",
+      "module": "mixed-pattern",
+      "shell": "shell-1",
+      "titleZh": "综合规律",
+      "titleEn": "Mixed Pattern",
+      "rootGeneIds": ["RG.PATTERN.INTEGRATION.MULTI_DIMENSION"],
+      "lessonIds": ["mindseeds-mixed-pattern-l1"],
+      "videoIds": ["mindseeds-mixed-pattern-intro-001"]
+    },
+    {
+      "id": "learning-math-pattern",
+      "series": "learning",
+      "module": "pattern",
+      "shell": "shell-1",
+      "titleZh": "数学规律",
+      "titleEn": "Math Patterns",
+      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC"],
+      "lessonIds": ["learning-math-pattern-l1"],
+      "videoIds": ["learning-math-pattern-intro-001"]
+    },
+    {
+      "id": "learning-math-logic",
+      "series": "learning",
+      "module": "logic",
+      "shell": "shell-1",
+      "titleZh": "逻辑推理",
+      "titleEn": "Logic Reasoning",
+      "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],
+      "lessonIds": ["learning-math-logic-l1"],
+      "videoIds": ["learning-math-logic-intro-001"]
+    },
+    {
+      "id": "learning-math-modeling",
+      "series": "learning",
+      "module": "modeling",
+      "shell": "shell-1",
+      "titleZh": "建立模型",
+      "titleEn": "Modeling",
+      "rootGeneIds": ["RG.MODELING.EQUATION.RELATION"],
+      "lessonIds": ["learning-math-modeling-l1"],
+      "videoIds": ["learning-math-modeling-intro-001"]
+    },
+    {
+      "id": "learning-math-strategy",
+      "series": "learning",
+      "module": "strategy",
+      "shell": "shell-1",
+      "titleZh": "策略思维",
+      "titleEn": "Strategic Thinking",
+      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": ["learning-math-strategy-l1"],
+      "videoIds": ["learning-math-strategy-intro-001"]
+    }
+  ]
+}

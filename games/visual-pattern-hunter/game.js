@@ -50,6 +50,15 @@ function shapeFor(item, unit) {
 shell.createGame({
   id:       'visual-pattern-hunter',
   theme:    { primary: '#06b6d4', primary2: '#0891b2', bg: '#f0f9ff' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '🎨 视觉规律',       en: '🎨 Visual Pattern Hunter' },
   subtitle: { zh: '观察图形，发现规律', en: 'Observe shapes and find patterns' },
   passScore: 4,
@@ -73,5 +82,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一个是什么？'
       : 'Question ' + (idx + 1) + ', what comes next?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.VISUAL.SEQUENCE',
+      'RG.MINDSEEDS.VISUAL_PATTERN.' + unitId
+    ];
   }
 });

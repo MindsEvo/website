@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindsEvo History Lab</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="topbar">
+    <a class="brand" href="../index.html">MindsEvo History Lab</a>
+    <div class="toolbar">
+      <label>
+        <span>Server</span>
+        <input id="server-input" type="text" value="http://localhost:8787" />
+      </label>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel hero-panel reveal">
+      <p class="eyebrow">History Framework</p>
+      <h1>统计与推荐驾驶舱</h1>
+      <p class="sub">基于会话历史，实时查看按游戏聚合表现、日趋势，以及 RootGene 自适应推荐目标。</p>
+      <div class="filters">
+        <label>
+          <span>Game Key</span>
+          <input id="game-filter" type="text" list="game-options" placeholder="number-pattern-hunter" />
+        </label>
+        <label>
+          <span>Gene ID</span>
+          <input id="gene-filter" type="text" list="gene-options" placeholder="RG.PATTERN.SEQUENCE.BASIC" />
+        </label>
+      </div>
+      <datalist id="game-options"></datalist>
+      <datalist id="gene-options"></datalist>
+      <div id="kpi-grid" class="kpi-grid"></div>
+    </section>
+
+    <section class="panel reveal" style="--delay: 120ms;">
+      <div class="panel-head">
+        <h2>By Game Overview</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Sessions</th>
+              <th>Avg Accuracy</th>
+              <th>Avg Score</th>
+              <th>Avg Response</th>
+              <th>Top Genes</th>
+            </tr>
+          </thead>
+          <tbody id="overview-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel reveal" style="--delay: 220ms;">
+      <div class="panel-head">
+        <h2>Daily Trend</h2>
+      </div>
+      <div id="trend-chart" class="trend-chart"></div>
+      <div id="trend-strip" class="trend-strip"></div>
+    </section>
+
+    <section class="panel reveal" style="--delay: 320ms;">
+      <div class="panel-head">
+        <h2>RootGene Recommendations</h2>
+      </div>
+      <div id="recommend-grid" class="recommend-grid"></div>
+    </section>
+
+    <section class="panel reveal" style="--delay: 420ms;">
+      <div class="panel-head">
+        <h2>Request Log</h2>
+      </div>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script src="./history.js"></script>
+</body>
+</html>

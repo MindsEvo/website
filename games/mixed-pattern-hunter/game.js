@@ -176,6 +176,15 @@ shell.createGame({
   id:            'mixed-pattern-hunter',
   parallelUnits: true,
   theme:         { primary: '#ec4899', primary2: '#be185d', bg: '#fdf2f8' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:    { zh: '🎯 综合规律',          en: '🎯 Mixed Pattern' },
   subtitle: { zh: '同时看懂两种规律',      en: 'Two Patterns, One Mind' },
   passScore: 3,
@@ -250,6 +259,15 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，同时找出两个维度的规律。'
       : 'Question ' + (idx + 1) + '. Find the pattern in both dimensions.';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.INTEGRATION.MULTI_DIMENSION',
+      'RG.MINDSEEDS.MIXED_PATTERN.' + unitId
+    ];
   }
 });
 

@@ -317,6 +317,65 @@ body {
 .s1-transcript.s1-hidden { transform: translateY(100%); }
 
 /* ══════════════════════════════════════════════════════════
+   HELP / VIDEO OVERLAY
+   ══════════════════════════════════════════════════════════ */
+
+.s1-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 20px;
+}
+
+.s1-overlay-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.26);
+  overflow: hidden;
+}
+
+.s1-overlay-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--s1-bg);
+  border-bottom: 1px solid var(--s1-border);
+}
+
+.s1-overlay-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--s1-text);
+}
+
+.s1-overlay-close {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--s1-muted);
+}
+
+.s1-overlay-body {
+  padding: 16px;
+  color: var(--s1-text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.s1-overlay-body p {
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════ */
 
@@ -338,6 +397,8 @@ body {
   .s1-card   { padding: 14px 16px; gap: 12px; }
   .s1-hstats { grid-template-columns: repeat(3, 1fr); }
   .s1-rscore { font-size: 40px; }
+  .s1-overlay { padding: 12px; }
+  .s1-overlay-title { font-size: 16px; }
 }
 
 /* Very small phones (e.g. iPhone SE) */

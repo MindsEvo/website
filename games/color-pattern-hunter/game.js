@@ -40,6 +40,15 @@ shell.createGame({
   id:            'color-pattern-hunter',
   parallelUnits: true,   // all 3 units unlocked from start (different abilities)
   theme:         { primary: '#f97316', primary2: '#dc2626', bg: '#fff7ed' },
+  gui: {
+    header: { show: true, showBack: true },
+    language: { enabled: true, default: 'zh' },
+    audio: {
+      music: { enabled: true, defaultOn: false },
+      sound: { enabled: true, defaultOn: true }
+    },
+    history: { enabled: true }
+  },
   title:         { zh: '🎨 颜色规律',          en: '🎨 Color Pattern' },
   subtitle:      { zh: '发现颜色变化的规律',    en: 'Discover the color pattern' },
   passScore:     5,
@@ -112,5 +121,14 @@ shell.createGame({
     return shell.lang === 'zh'
       ? '第' + (idx + 1) + '题，下一个是什么颜色？'
       : 'Question ' + (idx + 1) + ', what color comes next?';
+  },
+
+  registerRootGenes: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var unitId = String(unit.id || 'u0');
+    return [
+      'RG.PATTERN.VISUAL.COLOR',
+      'RG.MINDSEEDS.COLOR_PATTERN.' + unitId
+    ];
   }
 });

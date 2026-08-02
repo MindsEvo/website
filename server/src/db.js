@@ -64,6 +64,12 @@ function initSchema(conn) {
     CREATE INDEX IF NOT EXISTS idx_attempts_session ON attempts(session_id);
     CREATE INDEX IF NOT EXISTS idx_sessions_game ON sessions(game_key);
   `);
+
+  const sessionCols = conn.prepare("PRAGMA table_info(sessions)").all();
+  const hasGeneIds = sessionCols.some((c) => c && c.name === "gene_ids");
+  if (!hasGeneIds) {
+    conn.exec("ALTER TABLE sessions ADD COLUMN gene_ids TEXT;");
+  }
 }
 
 module.exports = {

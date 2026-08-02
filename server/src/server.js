@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const { getDb, DB_PATH } = require("./db");
-const { normalizeAttempt, computeReport, validatePayload } = require("./reportService");
+const { normalizeAttempt, normalizeGeneIds, computeReport, validatePayload } = require("./reportService");
+const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
 
 const app = express();
 const db = getDb();
@@ -14,7 +15,88 @@ app.get("/health", (req, res) => {
   res.json({ ok: true, service: "mindsevo-report-server", dbPath: DB_PATH });
 });
 
-app.post("/api/v1/reports/submit", (req, res) => {
+function parseGeneIds(sessionRow) {
+  if (!sessionRow || !sessionRow.gene_ids) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(sessionRow.gene_ids);
+    return Array.isArray(parsed) ? parsed.filter((g) => typeof g === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function avg(values) {
+  if (!values.length) {
+    return null;
+  }
+  return values.reduce((sum, n) => sum + n, 0) / values.length;
+}
+
+function getHistoryRowsByGame(gameKey, limit) {
+  return gameKey
+    ? db
+        .prepare(
+          `SELECT s.session_id, s.game_key, s.locale, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
+           FROM sessions s
+           JOIN reports r ON r.session_id = s.session_id
+           WHERE s.game_key = ?
+           ORDER BY s.created_at DESC
+           LIMIT ?`
+        )
+        .all(gameKey, limit)
+    : db
+        .prepare(
+          `SELECT s.session_id, s.game_key, s.locale, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
+           FROM sessions s
+           JOIN reports r ON r.session_id = s.session_id
+           ORDER BY s.created_at DESC
+           LIMIT ?`
+        )
+        .all(limit);
+}
+
+function toDayKey(isoText) {
+  if (typeof isoText !== "string" || isoText.length < 10) {
+    return "unknown";
+  }
+  return isoText.slice(0, 10);
+}
+
+function getRecommendationBand(avgAccuracy) {
+  if (!Number.isFinite(avgAccuracy)) {
+    return {
+      band: "insufficient_data",
+      targetDifficulty: "L1",
+      message: "Not enough accuracy data, start from foundation level.",
+    };
+  }
+
+  if (avgAccuracy < 0.55) {
+    return {
+      band: "foundation_rebuild",
+      targetDifficulty: "L1",
+      message: "Rebuild core understanding with guided repetition.",
+    };
+  }
+
+  if (avgAccuracy < 0.8) {
+    return {
+      band: "stabilize_and_transition",
+      targetDifficulty: "L2",
+      message: "Stabilize current skill, then transition to next difficulty.",
+    };
+  }
+
+  return {
+    band: "advance_and_challenge",
+    targetDifficulty: "L3",
+    message: "Current performance is strong, advance with higher challenge.",
+  };
+}
+
+function saveHistory(req, res) {
   const error = validatePayload(req.body);
   if (error) {
     return res.status(400).json({ ok: false, error });
@@ -22,17 +104,19 @@ app.post("/api/v1/reports/submit", (req, res) => {
 
   const payload = req.body;
   const attempts = payload.attempts.map((a, i) => normalizeAttempt(a, i));
+  const geneIds = normalizeGeneIds(payload.geneIds);
   const report = computeReport(attempts);
   const nowIso = new Date().toISOString();
 
   const insertSession = db.prepare(`
-    INSERT INTO sessions(session_id, game_key, locale, started_at, finished_at, created_at)
-    VALUES(?, ?, ?, ?, ?, ?)
+    INSERT INTO sessions(session_id, game_key, locale, started_at, finished_at, created_at, gene_ids)
+    VALUES(?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT(session_id) DO UPDATE SET
       game_key=excluded.game_key,
       locale=excluded.locale,
       started_at=excluded.started_at,
-      finished_at=excluded.finished_at
+      finished_at=excluded.finished_at,
+      gene_ids=excluded.gene_ids
   `);
 
   const deleteAttempts = db.prepare("DELETE FROM attempts WHERE session_id = ?");
@@ -64,7 +148,8 @@ app.post("/api/v1/reports/submit", (req, res) => {
       payload.locale || null,
       payload.startedAt || null,
       payload.finishedAt || null,
-      nowIso
+      nowIso,
+      JSON.stringify(geneIds)
     );
 
     deleteAttempts.run(payload.sessionId);
@@ -108,10 +193,14 @@ app.post("/api/v1/reports/submit", (req, res) => {
     ok: true,
     verified: true,
     report,
+    geneIds,
   });
-});
+}
 
-app.get("/api/v1/reports/:sessionId", (req, res) => {
+app.post("/api/v1/reports/submit", saveHistory);
+app.post("/api/v1/history/save", saveHistory);
+
+app.get("/api/v1/history/load/:sessionId", (req, res) => {
   const sessionId = req.params.sessionId;
 
   const session = db.prepare("SELECT * FROM sessions WHERE session_id = ?").get(sessionId);
@@ -126,7 +215,15 @@ app.get("/api/v1/reports/:sessionId", (req, res) => {
 
   return res.json({
     ok: true,
-    session,
+    session: {
+      sessionId: session.session_id,
+      gameKey: session.game_key,
+      locale: session.locale,
+      startedAt: session.started_at,
+      finishedAt: session.finished_at,
+      geneIds: parseGeneIds(session),
+      createdAt: session.created_at,
+    },
     report: reportRow
       ? {
           totalQuestions: reportRow.total_questions,
@@ -145,6 +242,338 @@ app.get("/api/v1/reports/:sessionId", (req, res) => {
       usedHint: Boolean(a.used_hint),
       responseMs: a.response_ms,
     })),
+  });
+});
+
+app.get("/api/v1/reports/:sessionId", (req, res) => {
+  const sessionId = req.params.sessionId;
+
+  const session = db.prepare("SELECT * FROM sessions WHERE session_id = ?").get(sessionId);
+  if (!session) {
+    return res.status(404).json({ ok: false, error: "Session not found." });
+  }
+
+  const reportRow = db.prepare("SELECT * FROM reports WHERE session_id = ?").get(sessionId);
+  const attempts = db
+    .prepare("SELECT question_index, question_id, selected_option, is_correct, used_hint, response_ms FROM attempts WHERE session_id = ? ORDER BY question_index ASC")
+    .all(sessionId);
+
+  return res.json({
+    ok: true,
+    session: {
+      ...session,
+      geneIds: parseGeneIds(session),
+    },
+    report: reportRow
+      ? {
+          totalQuestions: reportRow.total_questions,
+          correctCount: reportRow.correct_count,
+          accuracy: reportRow.accuracy,
+          hintsUsed: reportRow.hints_used,
+          avgResponseMs: reportRow.avg_response_ms,
+          score: reportRow.score,
+        }
+      : null,
+    attempts: attempts.map((a) => ({
+      questionIndex: a.question_index,
+      questionId: a.question_id,
+      selectedOption: a.selected_option,
+      isCorrect: Boolean(a.is_correct),
+      usedHint: Boolean(a.used_hint),
+      responseMs: a.response_ms,
+    })),
+  });
+});
+
+app.get("/api/v1/history/statistics", (req, res) => {
+  const gameKey = typeof req.query.gameKey === "string" ? req.query.gameKey.trim() : "";
+  const geneIdFilter = typeof req.query.geneId === "string" ? req.query.geneId.trim() : "";
+  const limitRaw = Number(req.query.limit);
+  const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(Math.trunc(limitRaw), 1), 5000) : 500;
+
+  const rows = getHistoryRowsByGame(gameKey, limit);
+
+  const sessions = rows
+    .map((row) => ({
+      ...row,
+      geneIds: parseGeneIds(row),
+    }))
+    .filter((row) => (geneIdFilter ? row.geneIds.includes(geneIdFilter) : true));
+
+  const totalSessions = sessions.length;
+  const accuracyValues = sessions.map((s) => s.accuracy).filter((v) => Number.isFinite(v));
+  const scoreValues = sessions.map((s) => s.score).filter((v) => Number.isFinite(v));
+  const responseValues = sessions.map((s) => s.avg_response_ms).filter((v) => Number.isFinite(v));
+  const totalQuestions = sessions
+    .map((s) => s.total_questions)
+    .filter((v) => Number.isFinite(v))
+    .reduce((sum, n) => sum + n, 0);
+
+  const geneMap = new Map();
+  for (const s of sessions) {
+    for (const geneId of s.geneIds) {
+      if (!geneMap.has(geneId)) {
+        geneMap.set(geneId, { geneId, sessions: 0, accuracyList: [] });
+      }
+      const slot = geneMap.get(geneId);
+      slot.sessions += 1;
+      if (Number.isFinite(s.accuracy)) {
+        slot.accuracyList.push(s.accuracy);
+      }
+    }
+  }
+
+  const geneStats = Array.from(geneMap.values())
+    .map((g) => ({
+      geneId: g.geneId,
+      sessions: g.sessions,
+      avgAccuracy: avg(g.accuracyList),
+    }))
+    .sort((a, b) => b.sessions - a.sessions || String(a.geneId).localeCompare(String(b.geneId)));
+
+  return res.json({
+    ok: true,
+    scope: {
+      gameKey: gameKey || null,
+      geneId: geneIdFilter || null,
+      sampledSessions: totalSessions,
+      sampleLimit: limit,
+    },
+    statistics: {
+      totalSessions,
+      totalQuestions,
+      avgAccuracy: avg(accuracyValues),
+      avgScore: avg(scoreValues),
+      avgResponseMs: avg(responseValues),
+      geneStats,
+    },
+  });
+});
+
+app.get("/api/v1/history/catalog/options", (req, res) => {
+  const metadata = buildMetadataIndex();
+  const games = metadata.games
+    .map((game) => ({
+      id: game.id,
+      titleZh: game.titleZh || null,
+      titleEn: game.titleEn || null,
+      module: game.module || null,
+    }))
+    .sort((a, b) => String(a.id).localeCompare(String(b.id)));
+
+  const genes = Array.from(metadata.geneMap.keys())
+    .sort((a, b) => String(a).localeCompare(String(b)))
+    .map((geneId) => {
+      const targets = metadata.geneMap.get(geneId);
+      return {
+        id: geneId,
+        gameCount: targets ? targets.games.size : 0,
+        lessonCount: targets ? targets.lessons.size : 0,
+      };
+    });
+
+  return res.json({
+    ok: true,
+    games,
+    genes,
+  });
+});
+
+app.get("/api/v1/history/statistics/overview", (req, res) => {
+  const gameKeyFilter = typeof req.query.gameKey === "string" ? req.query.gameKey.trim() : "";
+  const geneIdFilter = typeof req.query.geneId === "string" ? req.query.geneId.trim() : "";
+  const limitRaw = Number(req.query.limit);
+  const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(Math.trunc(limitRaw), 1), 5000) : 1000;
+
+  const metadata = buildMetadataIndex();
+  const rows = getHistoryRowsByGame(gameKeyFilter, limit)
+    .map((row) => ({
+      ...row,
+      geneIds: parseGeneIds(row),
+    }))
+    .filter((row) => (geneIdFilter ? row.geneIds.includes(geneIdFilter) : true));
+
+  const dayTrendMap = new Map();
+  for (const row of rows) {
+    const dayKey = toDayKey(row.created_at);
+    if (!dayTrendMap.has(dayKey)) {
+      dayTrendMap.set(dayKey, { day: dayKey, sessions: 0, accuracyValues: [], scoreValues: [] });
+    }
+    const slot = dayTrendMap.get(dayKey);
+    slot.sessions += 1;
+    if (Number.isFinite(row.accuracy)) {
+      slot.accuracyValues.push(row.accuracy);
+    }
+    if (Number.isFinite(row.score)) {
+      slot.scoreValues.push(row.score);
+    }
+  }
+
+  const byGame = new Map();
+  for (const row of rows) {
+    if (!byGame.has(row.game_key)) {
+      byGame.set(row.game_key, {
+        gameKey: row.game_key,
+        sessions: 0,
+        totalQuestions: 0,
+        accuracyValues: [],
+        scoreValues: [],
+        responseValues: [],
+        geneUse: new Map(),
+      });
+    }
+
+    const slot = byGame.get(row.game_key);
+    slot.sessions += 1;
+    if (Number.isFinite(row.total_questions)) {
+      slot.totalQuestions += row.total_questions;
+    }
+    if (Number.isFinite(row.accuracy)) {
+      slot.accuracyValues.push(row.accuracy);
+    }
+    if (Number.isFinite(row.score)) {
+      slot.scoreValues.push(row.score);
+    }
+    if (Number.isFinite(row.avg_response_ms)) {
+      slot.responseValues.push(row.avg_response_ms);
+    }
+
+    for (const geneId of row.geneIds) {
+      slot.geneUse.set(geneId, (slot.geneUse.get(geneId) || 0) + 1);
+    }
+  }
+
+  const overview = Array.from(byGame.values())
+    .map((g) => {
+      const meta = metadata.gameMap.get(g.gameKey);
+      const topGenes = Array.from(g.geneUse.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([geneId, sessions]) => ({ geneId, sessions }));
+
+      return {
+        gameKey: g.gameKey,
+        titleZh: meta ? meta.titleZh : null,
+        titleEn: meta ? meta.titleEn : null,
+        module: meta ? meta.module : null,
+        shell: meta ? meta.shell : null,
+        sessions: g.sessions,
+        totalQuestions: g.totalQuestions,
+        avgAccuracy: avg(g.accuracyValues),
+        avgScore: avg(g.scoreValues),
+        avgResponseMs: avg(g.responseValues),
+        topGenes,
+      };
+    })
+    .sort((a, b) => b.sessions - a.sessions || String(a.gameKey).localeCompare(String(b.gameKey)));
+
+  const dailyTrend = Array.from(dayTrendMap.values())
+    .map((d) => ({
+      day: d.day,
+      sessions: d.sessions,
+      avgAccuracy: avg(d.accuracyValues),
+      avgScore: avg(d.scoreValues),
+    }))
+    .sort((a, b) => String(a.day).localeCompare(String(b.day)));
+
+  return res.json({
+    ok: true,
+    sampledSessions: rows.length,
+    sampleLimit: limit,
+    scope: {
+      gameKey: gameKeyFilter || null,
+      geneId: geneIdFilter || null,
+    },
+    byGame: overview,
+    dailyTrend,
+  });
+});
+
+app.get("/api/v1/history/recommend", (req, res) => {
+  const gameKeyFilter = typeof req.query.gameKey === "string" ? req.query.gameKey.trim() : "";
+  const topNRaw = Number(req.query.topN);
+  const topN = Number.isFinite(topNRaw) ? Math.min(Math.max(Math.trunc(topNRaw), 1), 10) : 3;
+
+  const metadata = buildMetadataIndex();
+  const rows = getHistoryRowsByGame(gameKeyFilter, 500);
+
+  const sessions = rows.map((row) => ({ ...row, geneIds: parseGeneIds(row) }));
+
+  if (!sessions.length) {
+    return res.json({
+      ok: true,
+      recommendations: [],
+      message: "Not enough history yet. Submit game reports first.",
+    });
+  }
+
+  const geneAgg = new Map();
+  for (const s of sessions) {
+    for (const geneId of s.geneIds) {
+      if (!geneAgg.has(geneId)) {
+        geneAgg.set(geneId, { geneId, count: 0, accuracyValues: [], gameUse: new Map() });
+      }
+      const item = geneAgg.get(geneId);
+      item.count += 1;
+      if (Number.isFinite(s.accuracy)) {
+        item.accuracyValues.push(s.accuracy);
+      }
+      item.gameUse.set(s.game_key, (item.gameUse.get(s.game_key) || 0) + 1);
+    }
+  }
+
+  const weakness = Array.from(geneAgg.values())
+    .map((g) => {
+      const avgAccuracy = avg(g.accuracyValues);
+      const band = getRecommendationBand(avgAccuracy);
+
+      const observedGameKeys = Array.from(g.gameUse.entries())
+        .sort((a, b) => b[1] - a[1])
+        .map(([k]) => k);
+
+      const adaptiveTargets = getAdaptiveTargets(metadata, g.geneId, band.targetDifficulty);
+      const targetGames = adaptiveTargets.games.length
+        ? adaptiveTargets.games
+        : observedGameKeys.slice(0, 2).map((id) => ({ id }));
+
+      const resolvedTargets = {
+        games: targetGames,
+        lessons: adaptiveTargets.lessons,
+        videos: adaptiveTargets.videos,
+      };
+
+      return {
+        geneId: g.geneId,
+        observedSessions: g.count,
+        avgAccuracy,
+        policy: {
+          band: band.band,
+          targetDifficulty: band.targetDifficulty,
+          resolvedDifficulty: adaptiveTargets.resolvedDifficulty,
+          message: band.message,
+        },
+        targets: resolvedTargets,
+      };
+    })
+    .sort((a, b) => {
+      const aa = Number.isFinite(a.avgAccuracy) ? a.avgAccuracy : 1;
+      const bb = Number.isFinite(b.avgAccuracy) ? b.avgAccuracy : 1;
+      return aa - bb || b.observedSessions - a.observedSessions;
+    })
+    .slice(0, topN)
+    .map((w) => ({
+      ...w,
+      reason:
+        Number.isFinite(w.avgAccuracy) && w.avgAccuracy < 0.75
+          ? "Low recent accuracy for this RootGene; recommend focused practice."
+          : "Maintain proficiency with spaced review for this RootGene.",
+    }));
+
+  return res.json({
+    ok: true,
+    recommendations: weakness,
+    sampledSessions: sessions.length,
+    strategy: "rank_by_low_accuracy_then_frequency",
   });
 });
 
