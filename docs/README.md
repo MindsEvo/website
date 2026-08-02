@@ -1,28 +1,35 @@
-# Web Docs Index
+# MindsEvo 文档总入口
 
-This folder is the documentation entry point for the current `web` workspace.
+本目录是 `web` 侧唯一权威规范入口。
 
-## Quick Start (For AI and Developers)
+## 先读顺序（建议）
 
-1. Read `shell/GAME-SHELL-CONVENTION.md` first.
-2. Read `shell/SHELL-FEATURE-GATE.md` before changing shared shell behavior.
-3. Read `patterns/PATTERN-QUALITY-GATE.md` before adding or editing pattern modules.
-4. Read module-specific docs in `patterns/` when touching a corresponding module.
+1. `MINDSEVO-ARCHITECTURE-ROADMAP.md`（总体架构与五阶段实施）
+2. `shell/UNIFIED-GUI-FRAMEWORK.md`（阶段 1：统一 GUI 接口草案）
+3. `shell/GAME-SHELL-CONVENTION.md`（游戏如何接入统一 Shell）
+4. `shell/SHELL-FEATURE-GATE.md`（哪些能力可以上升为公共层）
+5. `patterns/PATTERN-QUALITY-GATE.md`（Pattern 模块质量门禁）
+6. 对应模块规范（如 Spatial / Quantity）
 
-## Shell Docs
+## 架构主文档
 
-- shell/GAME-SHELL-CONVENTION.md
-- shell/SHELL-FEATURE-GATE.md
+1. `MINDSEVO-ARCHITECTURE-ROADMAP.md`
 
-## Pattern Docs
+## Shell 规范
 
-- patterns/PATTERN-QUALITY-GATE.md
-- patterns/SPATIAL-PATTERN-MODULE.md
-- patterns/QUANTITY-PATTERN-MODULE.md
+1. `shell/UNIFIED-GUI-FRAMEWORK.md`
+2. `shell/GAME-SHELL-CONVENTION.md`
+3. `shell/SHELL-FEATURE-GATE.md`
 
-## Documentation Rules
+## Pattern 规范
 
-- Put platform/runtime behavior docs in `docs/shell`.
-- Put pattern quality or module specs in `docs/patterns`.
-- New module docs should follow `PATTERN-NAME-MODULE.md` naming style.
-- If a change affects both shell and pattern rules, update both folders.
+1. `patterns/PATTERN-QUALITY-GATE.md`
+2. `patterns/SPATIAL-PATTERN-MODULE.md`
+3. `patterns/QUANTITY-PATTERN-MODULE.md`
+
+## 文档治理规则
+
+1. `docs/` 为规范正文唯一位置。
+2. 根目录不再保留重复规范文档。
+3. 新规则必须标注版本、适用范围、回归要求。
+4. 影响跨模块的改动，必须同时更新相关规范并记录变更点。

@@ -79,6 +79,23 @@
 6. 旧游戏零改动运行通过。
 7. 移动端（<=520px）关键布局无错位。
 
+## 6.1 跨平台时序兼容检查（新增必检）
+
+适用于任何包含动画、计时器、触控输入的 Shell 能力升级：
+
+1. 会话隔离：旧 session 的异步回调不得影响新 session。
+2. 计时器治理：可按 owner 清理，reset 后无遗留 timer。
+3. 生命周期一致：background/foreground 后状态可恢复且不串线。
+4. 输入一致：touch 与 click 行为一致，不重复触发。
+5. 动画稳定：移动端连续多轮动画无“只首轮生效”现象。
+6. 可观测性：可通过诊断日志复盘关键时序事件。
+
+推荐执行设备矩阵：
+
+- Desktop Chrome（Windows/macOS）
+- iPad Safari
+- Android Pad Chrome / WebView
+
 ## 7. 发布与回滚
 
 ### 发布要求
