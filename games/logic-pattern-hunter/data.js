@@ -1,7 +1,7 @@
 /**
- * Logic Pattern Hunter — Game Data  v1.0.0  (Shell-2 format)
+ * Logic Pattern Hunter — Game Data  v1.1.0  (Unified Shell format)
  * ─────────────────────────────────────────────────────────
- * Shell-2: reasoning game (premises → conclusion).
+ * Reasoning game data (premises → conclusion), rendered by createGame.
  * pattern_type: comparison_chain
  *
  * Question fields:

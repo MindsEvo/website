@@ -25,7 +25,7 @@
     events: [],
     activeDrag: null,
     maxConcurrentFallers: 1,
-    lang: "en",
+    lang: "zh",
     musicEnabled: true,
     sfxEnabled: true,
     audioCtx: null,
@@ -59,6 +59,7 @@
     correctLabel: document.getElementById("correctLabel"),
     wrongLabel: document.getElementById("wrongLabel"),
     missLabel: document.getElementById("missLabel"),
+    backLink: document.getElementById("backLink"),
     langBtn: document.getElementById("langBtn"),
     musicBtn: document.getElementById("musicBtn"),
     sfxBtn: document.getElementById("sfxBtn")
@@ -68,6 +69,7 @@
     en: {
       title: "Sorting Workshop",
       subtitle: "Clio MVP · classify falling colors into baskets",
+      back: "\u2190 Back to Clio Games",
       logTitle: "Latest Feedback",
       correct: "Correct",
       wrong: "Wrong",
@@ -99,6 +101,7 @@
     zh: {
       title: "分拣工坊",
       subtitle: "Clio MVP · 将下落颜色拖入对应篮子",
+      back: "\u2190 返回 Clio 游戏列表",
       logTitle: "最新反馈",
       correct: "正确",
       wrong: "错误",
@@ -215,6 +218,9 @@
   function refreshLocale() {
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
+    if (els.backLink) {
+      els.backLink.textContent = t("back");
+    }
     els.logTitle.textContent = t("logTitle");
     els.correctLabel.textContent = t("correct");
     els.wrongLabel.textContent = t("wrong");
@@ -783,11 +789,19 @@
     if (runtimeCtrl) {
       runtimeCtrl.bindTap(els.langBtn, function () {
         state.lang = state.lang === "zh" ? "en" : "zh";
+        localStorage.setItem("mindsevo-lang", state.lang);
+        if (window.shell && typeof window.shell.setLang === "function") {
+          window.shell.setLang(state.lang);
+        }
         refreshLocale();
       });
     } else {
       els.langBtn.addEventListener("click", function () {
         state.lang = state.lang === "zh" ? "en" : "zh";
+        localStorage.setItem("mindsevo-lang", state.lang);
+        if (window.shell && typeof window.shell.setLang === "function") {
+          window.shell.setLang(state.lang);
+        }
         refreshLocale();
       });
     }
@@ -834,6 +848,7 @@
   }
 
   bindUI();
+  state.lang = (localStorage.getItem("mindsevo-lang") || (window.shell && window.shell.lang) || "zh") === "en" ? "en" : "zh";
   updateCounters();
   refreshLocale();
   persistSession();

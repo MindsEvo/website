@@ -7,6 +7,7 @@
     zh: {
       title: "寻找游戏 Find It",
       subtitle: "目标可重复出现，不给具体数量；持续点击正确目标直到全部找完。",
+      back: "\u2190 返回 Clio 游戏列表",
       speak: "朗读目标",
       music: "音乐",
       sfx: "音效",
@@ -30,6 +31,7 @@
     en: {
       title: "Find It",
       subtitle: "Targets may repeat and no exact count is shown; keep finding correct targets until all are cleared.",
+      back: "\u2190 Back to Clio Games",
       speak: "Read Targets",
       music: "Music",
       sfx: "SFX",
@@ -72,6 +74,7 @@
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
+    backLink: document.getElementById("backLink"),
     langBtn: document.getElementById("langBtn"),
     speakBtn: document.getElementById("speakBtn"),
     musicBtn: document.getElementById("musicBtn"),
@@ -462,6 +465,9 @@
     document.title = state.lang === "en" ? "Find It | Clio" : "寻找游戏 Find It | Clio";
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
+    if (els.backLink) {
+      els.backLink.textContent = t("back");
+    }
     els.speakBtn.textContent = t("speak");
     els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
     els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
@@ -473,7 +479,7 @@
     els.againBtn.textContent = t("again");
     els.resetBtn.textContent = t("reset");
     els.dumpBtn.textContent = t("dump");
-    els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
+    els.langBtn.textContent = state.lang === "zh" ? "CN / EN" : "EN / CN";
     renderTargets();
     renderBoard();
   }
@@ -483,7 +489,7 @@
       runtimeCtrl.resetSession();
     }
 
-    var savedLang = localStorage.getItem("clio-games-lang");
+    var savedLang = localStorage.getItem("mindsevo-lang");
     if (savedLang === "en" || savedLang === "zh") {
       state.lang = savedLang;
     }
@@ -501,7 +507,10 @@
 
     var onLangTap = function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
-      localStorage.setItem("clio-games-lang", state.lang);
+      localStorage.setItem("mindsevo-lang", state.lang);
+      if (window.shell && typeof window.shell.setLang === "function") {
+        window.shell.setLang(state.lang);
+      }
       applyLocale();
       setFeedback(t("firstHint"), "");
     };

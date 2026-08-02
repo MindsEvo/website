@@ -59,6 +59,12 @@ body {
   cursor: pointer;
 }
 
+.top-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .mini-btn.active {
   background: #e0f2fe;
   border-color: #7dd3fc;

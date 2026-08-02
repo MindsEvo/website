@@ -121,21 +121,21 @@
 
 ## 9. 已完成 Gate 案例记录
 
-### Shell-2：createReasoningGame（2026-07-03）
+### 统一入口治理记录（2026-08-02）
 
 | Gate | 结论 |
 |------|------|
-| Gate 0 提案登记 | Logic Pattern 陈述推理型，需要"前提区 + 问题区"替代序列区 |
-| Gate 1 游戏内试点 | logic-pattern-hunter 首个验证，比较传递链 12 题全链路跑通 |
-| Gate 2 复用确认 | Number Pattern 等未来推理类模块已确认复用此接口 |
-| Gate 3 抽象设计 | 独立 HTML 骨架 `_buildReasoningHTML()`；接口缩减为 2 函数 |
-| Gate 4 实现与回归 | Shell-1 所有游戏零改动通过；新 CSS 使用 `s2-` 前缀隔离 |
-| Gate 5 发布 | v2.2.0 随主公约一同发布；`shell.report()` 增加 `shell` 字段 |
+| Gate 0 提案登记 | 清理并行 Shell 入口，降低维护成本与概念复杂度 |
+| Gate 1 游戏内试点 | logic-pattern-hunter 已完成迁移到 `shell.createGame()` |
+| Gate 2 复用确认 | learning / studio 页面已统一使用同一 shell runtime 与语言同步 |
+| Gate 3 抽象设计 | 保留 `createGame` 单入口，玩法差异回归渲染层扩展 |
+| Gate 4 实现与回归 | 完成旧入口代码清理并完成文档/metadata 对齐 |
+| Gate 5 发布 | 进入统一入口维护阶段，后续能力走 Gate 流程升级 |
 
 **关键设计决策记录：**
-1. Shell-2 作为 `shell.js` 内新入口函数，不新建文件，共享公共层。
-2. 前提与问题由 Shell 直接从 `q.premises` / `q.questionZh/En` 自动渲染，游戏无需实现 `renderSequence`。
-3. `shell` 字段加入 `report()` 强制标注，保证跨 Shell 数据可归因。
+1. 不再维护并行 `createXxxGame()` 入口，避免功能分叉。
+2. 推理型与序列型统一走 `renderSequence` / `renderOption` 扩展路径。
+3. 历史统计继续使用 `shell` 字段归类，当前统一为 `shell-1`。
 
 ## 附录 A：Shell 能力升级提案单（模板）
 

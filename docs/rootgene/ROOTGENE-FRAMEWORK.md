@@ -19,7 +19,7 @@ registerRootGenes(ctx) => string[]
 
 其中 `ctx` 结构：
 
-1. shell: `shell-1` 或 `shell-2`
+1. shell: `shell-1`（统一入口）
 2. gameId: 当前游戏 ID
 3. unit: 当前单元对象
 4. state:

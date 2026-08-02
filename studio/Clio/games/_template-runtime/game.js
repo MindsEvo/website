@@ -53,7 +53,7 @@
     els.startBtn.textContent = t("start");
     els.resetBtn.textContent = t("reset");
     els.scoreLabel.textContent = t("score");
-    els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
+    els.langBtn.textContent = state.lang === "zh" ? "CN / EN" : "EN / CN";
   }
 
   function updateStatus(text) {

@@ -28,6 +28,7 @@
     en: {
       title: "Prediction Workshop",
       subtitle: "Clio MVP · left demo + right practice, both random",
+      back: "\u2190 Back to Clio Games",
       mode: "Mode",
       modeValue: "Demo + Practice",
       correct: "Correct",
@@ -73,6 +74,7 @@
     zh: {
       title: "预测工坊",
       subtitle: "Clio MVP · 左侧演示 + 右侧练习，两边随机独立",
+      back: "\u2190 返回 Clio 游戏列表",
       mode: "模式",
       modeValue: "演示 + 练习",
       correct: "正确",
@@ -140,7 +142,7 @@
   }
 
   var state = {
-    lang: "en",
+    lang: "zh",
     sessionToken: 0,
     running: false,
     paused: false,
@@ -168,6 +170,7 @@
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
+    backLink: document.getElementById("backLink"),
     modeLabel: document.getElementById("modeLabel"),
     modeValue: document.getElementById("modeValue"),
     correctLabel: document.getElementById("correctLabel"),
@@ -662,6 +665,9 @@
   function renderLocale() {
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
+    if (els.backLink) {
+      els.backLink.textContent = t("back");
+    }
     els.modeLabel.textContent = t("mode");
     els.modeValue.textContent = t("modeValue");
     els.correctLabel.textContent = t("correct");
@@ -678,7 +684,7 @@
     els.practiceBasketLabel.textContent = t("chooseResult");
     els.speedTitle.textContent = t("speed");
     els.speedUnit.textContent = t("unit");
-    els.langBtn.textContent = state.lang === "en" ? "中文 / EN" : "EN / 中文";
+    els.langBtn.textContent = state.lang === "en" ? "CN / EN" : "EN / CN";
     els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
     els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
 
@@ -826,11 +832,19 @@
     if (runtimeCtrl) {
       runtimeCtrl.bindTap(els.langBtn, function () {
         state.lang = state.lang === "en" ? "zh" : "en";
+        localStorage.setItem("mindsevo-lang", state.lang);
+        if (window.shell && typeof window.shell.setLang === "function") {
+          window.shell.setLang(state.lang);
+        }
         renderLocale();
       });
     } else {
       els.langBtn.addEventListener("click", function () {
         state.lang = state.lang === "en" ? "zh" : "en";
+        localStorage.setItem("mindsevo-lang", state.lang);
+        if (window.shell && typeof window.shell.setLang === "function") {
+          window.shell.setLang(state.lang);
+        }
         renderLocale();
       });
     }
@@ -874,6 +888,7 @@
   }
 
   bindUI();
+  state.lang = (localStorage.getItem("mindsevo-lang") || (window.shell && window.shell.lang) || "zh") === "en" ? "en" : "zh";
   updateCounters();
   enablePracticeChoices(false);
   els.speedValue.textContent = String(state.speedPxPerSec);

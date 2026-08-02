@@ -58,5 +58,5 @@ All items must pass before full migration:
 
 ## Non-Goals
 
-- No forced conversion of studio games into Shell-1/Shell-2 visual templates.
+- No forced conversion of studio games into legacy multi-shell visual templates.
 - No immediate backend reporting changes in this step.

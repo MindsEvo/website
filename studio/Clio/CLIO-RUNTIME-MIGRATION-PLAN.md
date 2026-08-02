@@ -7,7 +7,7 @@ Standardize the three existing Clio games on shared runtime safety while preserv
 Scope in this phase:
 - Integrate shared runtime bridge usage patterns
 - Keep existing game mechanics unchanged
-- Avoid Shell-1/Shell-2 visual migration
+- Avoid unnecessary visual migration
 
 Out of scope in this phase:
 - New gameplay features

@@ -69,6 +69,12 @@ h1 {
   cursor: pointer;
 }
 
+.top-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .hud {
   margin-top: 10px;
   display: grid;

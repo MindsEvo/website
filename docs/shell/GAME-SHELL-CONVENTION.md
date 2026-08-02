@@ -1,20 +1,18 @@
 ﻿# MindsEvo 游戏开发公约
 
-## Game Shell Convention v2.2
+## Game Shell Convention v2.3
 
 > **核心原则：游戏只写游戏，公共功能零重复**
 >
-> 当前已发布两套 Shell 入口，共享同一个 `shell.js` 公共层：
+> 当前统一 Shell 入口：
 >
-> - `shell.createGame()`：Shell-1，序列预测型（视觉/颜色/大小/空间/数量等）
-> - `shell.createReasoningGame()`：Shell-2，陈述推理型（前提 → 结论）
+> - `shell.createGame()`：统一游戏入口（含序列型、推理型等玩法）
 >
-> Shell-1 游戏只实现 3 个函数：`renderSequence` / `renderOption` / `checkAnswer`
-> Shell-2 游戏只实现 2 个函数：`renderOption` / `checkAnswer`（前提与问题由 Shell 自动渲染）
+> 游戏实现 3 个函数：`renderSequence` / `renderOption` / `checkAnswer`
 
 ---
 
-## 0.2 跨平台时序兼容基线（Shell-1 / Shell-2 共用）
+## 0.2 跨平台时序兼容基线（统一 Shell 共用）
 
 从 v1.1.0 起，所有 Shell 游戏应优先复用 `shell.runtime`，避免各游戏重复处理 Android / iPad / PC 时序差异。
 
@@ -290,111 +288,23 @@ Shell-1 所有公共样式使用 `s1-` 前缀：
 
 ---
 
-## 7. 多 Shell 扩展规划
+## 7. 统一入口扩展策略
 
-所有 Shell 共享同一个 `shell.js` 公共层，不同 Shell 只替换"题目显示区"并提供对应渲染接口。
+统一入口保持为 `shell.createGame()`，新玩法通过数据结构与渲染函数扩展，而不是新增并行 Shell API。
 
-```
-游戏类型                  对应 Shell            入口函数
-──────────────────────────────────────────────────────────
-序列预测型（视觉/规律）    Shell-1  ✅ 已发布    shell.createGame()
-陈述推理型（前提→结论）    Shell-2  ✅ 已发布    shell.createReasoningGame()
-状态判断型（守恒/比较）    Shell-3  ⏸ 待设计    shell.createJudgmentGame()（预留）
-开放探索/沙盒             Shell-4  ⏸ 待设计    —
-多人对战/实时             Shell-5  ⏸ 待设计    —
-```
+**扩展原则：**
 
-**Shell 扩展原则：**
+1. 公共能力优先沉淀到 `shell.js` 统一层，不新增 `createXxxGame()` 并行入口。
+2. 共用同一套 Home / Game / Result、进度点、选项按钮、反馈动画、存储、语音、双语。
+3. 题目表现差异统一通过 `renderSequence` / `renderOption` 实现。
+4. 新增样式必须使用游戏私有前缀，避免污染 `s1-` 公共类。
+5. 老游戏升级到统一入口后，保持题库和行为可验证。
 
-1. 每个新 Shell 是 `shell.js` 内一个新的 `createXxxGame()` 入口函数，不新建文件。
-2. 共用同一套 Home / Result 屏、进度点、选项按钮、反馈动画、存储、语音、双语。
-3. 只有"题目显示区"（Shell-1 的 `.s1-seq`，Shell-2 的 `.s2-qzone`）和渲染接口不同。
-4. CSS 新增组件使用新 Shell 对应前缀（`s2-`、`s3-`…），不污染已有前缀。
-5. 旧 Shell 游戏接入新 Shell 后零改动可继续运行。
-
-**跨 Shell 统一的公共能力：**
+**统一公共能力：**
 - `shell.storage` API（localStorage 命名空间）
-- `shell.report()` 数据上报（含 `shell` 字段标注所属 Shell）
+- `shell.report()` 数据上报
 - `shell.speak()` TTS API
 - `shell.setLang()` 语言切换
-
----
-
-## 7.1 Shell-2 API 参考（createReasoningGame）
-
-```javascript
-shell.createReasoningGame({
-  // ── 必填（与 Shell-1 相同）─────────────────────────────
-  id:       'my-reasoning-game',
-  title:    { zh: '游戏名', en: 'Game Name' },
-  subtitle: { zh: '副标题', en: 'Subtitle' },
-  units:    MY_DATA.units,
-  passScore: 4,
-
-  // ── 必须实现：2个函数（不需要 renderSequence）──────────
-  renderOption(opt, q, unit) → string,  // 选项按钮的 innerHTML
-  checkAnswer(selected, q)  → bool,     // 返回是否正确
-
-  // ── 可选（与 Shell-1 相同）─────────────────────────────
-  theme: { primary, primary2, bg },
-  onAnswer(selected, q, isCorrect),
-  getVoiceText(q, index) → string
-});
-```
-
-**Shell-2 题目数据格式：**
-
-```javascript
-{
-  // Shell-1 沿用字段
-  answer:   'opt_a',
-  options:  ['opt_a', 'opt_b', 'opt_c', 'opt_d'],
-  hintZh:   '因为 A > B > C…',
-  hintEn:   'Because A > B > C…',
-
-  // Shell-2 新增字段（替代 seq/sequence）
-  premises: [
-    { zh: '条件一文本', en: 'Premise one text' },
-    { zh: '条件二文本', en: 'Premise two text' }
-  ],
-  questionZh: '问题文本？',
-  questionEn: 'Question text?',
-
-  // 选项定义（renderOption 从此读取标签）
-  optionDefs: {
-    opt_a: { zh: '选项A', en: 'Option A' },
-    opt_b: { zh: '选项B', en: 'Option B' }
-  },
-
-  // 干扰项类型（错误归因）
-  optionTypes: {
-    opt_a: 'correct',
-    opt_b: 'middle_item',
-    opt_c: 'wrong_end',
-    opt_d: 'irrelevant'
-  }
-}
-```
-
-**Shell-2 error_type 枚举：**
-
-| 类型 | 含义 |
-|------|------|
-| `correct` | 正确答案 |
-| `wrong_end` | 链条端点方向错误 |
-| `middle_item` | 选了链条中间项 |
-| `irrelevant` | 题目未提及的无关选项 |
-| `over_cautious` | 前提充分时仍选"无法确定" |
-
-**与 Shell-1 的差异对照：**
-
-| 维度 | Shell-1 | Shell-2 |
-|------|---------|---------|
-| 题目显示区 | 黄色序列框 `.s1-seq` | 前提卡片区 `.s2-qzone` |
-| 游戏实现函数 | 3 个（含 renderSequence）| 2 个（无 renderSequence）|
-| 前提渲染 | 游戏自定义 | Shell 自动从 `q.premises` 渲染 |
-| 问题渲染 | 游戏自定义 | Shell 自动从 `q.questionZh/En` 渲染 |
-| 所有其他功能 | 由 Shell 提供 | 由 Shell 提供（完全相同）|
 
 ---
 
@@ -411,7 +321,7 @@ shell.report({
   total:      10,
   timeMs:     45000,
   hintsUsed:  2,
-  shell:      'shell-1',   // 必须标注所属 Shell（shell-1 | shell-2 | …）
+  shell:      'shell-1',
   // 未来扩展：
   // abilityTags: ['seq-arithmetic', 'rule-induction']
 });
@@ -431,12 +341,13 @@ shell.report({
 
 ## 版本历史
 
+### v2.3.0 (2026-08-02)
+- 清理已弃用入口相关文档与说明
+- 统一为单入口 `shell.createGame()` 扩展策略
+- 更新时序基线与扩展章节表述，避免多入口歧义
+
 ### v2.2.0 (2026-07-03)
-- 发布 Shell-2：`shell.createReasoningGame()`（陈述推理型）
-- 新增 §7.1 Shell-2 API 参考、数据格式、error_type 枚举、差异对照表
-- 更新 §7 Shell 扩展规划表，标注 Shell-1/2 已发布
-- 新增 Shell 扩展原则 5 条
-- `shell.report()` 新增必填字段 `shell`，用于跨 Shell 数据归因
+- `shell.report()` 新增字段 `shell` 用于统计归类
 
 ### v2.1.0 (2026-07-03)
 - 新增治理门禁入口章节（0.1）

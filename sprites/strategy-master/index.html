@@ -66,7 +66,7 @@
       <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
     </a>
     <div class="nav-actions">
-      <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+      <button class="lang-btn" id="langBtn" type="button">CN / EN</button>
       <a class="back-link" href="../index.html"><span class="zh">返回小精灵系列</span><span class="en">Back to Sprite Series</span></a>
     </div>
   </nav>
@@ -88,7 +88,7 @@
       function applyLang(lang) {
         body.setAttribute('data-lang', lang === 'en' ? 'en' : 'zh');
         document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
-        langBtn.textContent = lang === 'en' ? 'EN / 中文' : '中文 / EN';
+        langBtn.textContent = lang === 'en' ? 'EN / CN' : 'CN / EN';
         localStorage.setItem('mindsevo-lang', lang);
       }
 

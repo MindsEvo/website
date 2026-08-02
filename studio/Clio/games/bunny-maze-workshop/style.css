@@ -10,6 +10,12 @@
   border-color: #f97316 !important;
 }
 
+.clio-shell-tools a.clio-shell-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 /* ── HUD row ──────────────────────────────────────────────────────────────── */
 .maze-hud {
   display: flex;

@@ -9,7 +9,7 @@
     var normalized = lang === 'en' ? 'en' : 'zh';
     body.setAttribute('data-lang', normalized);
     document.documentElement.lang = normalized === 'en' ? 'en' : 'zh-CN';
-    document.title = 'Clio Design | MindsEvo';
+    document.title = normalized === 'en' ? 'Clio Game List | MindsEvo' : 'Clio 游戏列表 | MindsEvo';
 
     nodes.forEach(function (node) {
       var text = node.getAttribute(normalized === 'en' ? 'data-en' : 'data-zh');
@@ -25,10 +25,10 @@
     if (window.shell && typeof window.shell.setLang === 'function') {
       window.shell.setLang(normalized);
     }
-    localStorage.setItem('mindsevo-lang', normalized);
+    localStorage.setItem('clio-games-lang', normalized);
   }
 
-  var saved = localStorage.getItem('mindsevo-lang');
+  var saved = localStorage.getItem('clio-games-lang');
   applyLang(saved === 'en' ? 'en' : 'zh');
 
   if (langBtn) {

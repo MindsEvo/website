@@ -1,16 +1,29 @@
 /**
- * Logic Pattern Hunter — Game Logic  v1.0.0  (Shell-2)
+ * Logic Pattern Hunter — Game Logic  v1.1.0  (Unified Shell GUI)
  * ─────────────────────────────────────────────────────────
- * Uses shell.createReasoningGame().
- * Shell-2 renders premises + question automatically from data.
- * Game only provides: renderOption, checkAnswer.
+ * Uses shell.createGame() with a reasoning-style renderSequence.
+ * GUI shell is unified with other Mind Seeds games.
  * Depends on: shell.js, data.js
  * ─────────────────────────────────────────────────────────
  */
 
+(function injectLogicStyles() {
+  if (document.getElementById('lph-style')) return;
+  var s = document.createElement('style');
+  s.id = 'lph-style';
+  s.textContent = [
+    '.lph-wrap{display:grid;gap:10px;text-align:left;width:100%;}',
+    '.lph-premise{display:flex;gap:8px;align-items:flex-start;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:8px 10px;}',
+    '.lph-num{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#ede9fe;color:#6d28d9;font-size:12px;font-weight:900;flex-shrink:0;margin-top:1px;}',
+    '.lph-text{color:#334155;font-size:14px;line-height:1.55;font-weight:700;}',
+    '.lph-q{background:#faf5ff;border:1px solid #ddd6fe;border-radius:10px;padding:10px 12px;color:#3b0764;font-size:15px;font-weight:900;line-height:1.5;}'
+  ].join('');
+  document.head.appendChild(s);
+}());
+
 var _lpErrorLog = {};
 
-shell.createReasoningGame({
+shell.createGame({
   id:        'logic-pattern-hunter',
   theme:     { primary: '#7c3aed', primary2: '#6d28d9', bg: '#f5f3ff' },
   gui: {
@@ -35,6 +48,24 @@ shell.createReasoningGame({
   subtitle: { zh: '读懂条件，推导结论', en: 'Read the clues and find the answer' },
   passScore: 4,
   units:     LP_DATA.units,
+
+  renderSequence: function (q, container) {
+    var premises = Array.isArray(q.premises) ? q.premises : [];
+    var premiseHtml = premises.map(function (p, i) {
+      return '<div class="lph-premise">' +
+        '<span class="lph-num">' + (i + 1) + '</span>' +
+        '<span class="lph-text"><span class="zh">' + (p.zh || '') + '</span><span class="en">' + (p.en || '') + '</span></span>' +
+      '</div>';
+    }).join('');
+
+    container.innerHTML = '<div class="lph-wrap">' +
+      premiseHtml +
+      '<div class="lph-q">' +
+        '<span class="zh">' + (q.questionZh || '') + '</span>' +
+        '<span class="en">' + (q.questionEn || '') + '</span>' +
+      '</div>' +
+    '</div>';
+  },
 
   renderOption: function (opt, q) {
     var def = q.optionDefs && q.optionDefs[opt];

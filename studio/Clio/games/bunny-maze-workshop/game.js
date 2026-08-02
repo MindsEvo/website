@@ -36,6 +36,7 @@
   var els = {
     titleText:    document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
+    backLink:     document.getElementById("backLink"),
     langBtn:      document.getElementById("langBtn"),
     startBtn:     document.getElementById("startBtn"),
     musicBtn:     document.getElementById("musicBtn"),
@@ -75,6 +76,7 @@
     zh: {
       title:       "兔兔方向迷宫",
       subtitle:    "点击方向控制，带小兔找到胡萝卜！",
+      back:        "\u2190 返回 Clio 游戏列表",
       levelLabel:  "关卡",
       moveLabel:   "步数",
       wallLabel:   "撞墙",
@@ -87,7 +89,7 @@
       off:         "关",
       dpadTitle:   "方向控制",
       dirCenter:   "方向\n控制",
-      lang:        "中文 / EN",
+      lang:        "CN / EN",
       idleMsg:     "▶ 点击【开始】或任意方向按钮开始游戏！",
       startMsg:    "进入 {0}，加油！🐰",
       moved:       "走一步！继续加油！",
@@ -107,6 +109,7 @@
     en: {
       title:       "Bunny Direction Maze",
       subtitle:    "Tap direction controls to lead the bunny to the carrot!",
+      back:        "\u2190 Back to Clio Games",
       levelLabel:  "Level",
       moveLabel:   "Moves",
       wallLabel:   "Walls",
@@ -119,7 +122,7 @@
       off:         "Off",
       dpadTitle:   "Direction",
       dirCenter:   "Direction\nControl",
-      lang:        "EN / 中文",
+      lang:        "EN / CN",
       idleMsg:     "▶ Click Start or any direction button to begin!",
       startMsg:    "Starting {0}! Go! 🐰",
       moved:       "One step! Keep going!",
@@ -526,6 +529,9 @@
     document.title = lang === "en" ? "Bunny Direction Maze | Clio" : "兔兔方向迷宫 | Clio";
     els.titleText.textContent    = DATA.title[lang];
     els.subtitleText.textContent = DATA.subtitle[lang];
+    if (els.backLink) {
+      els.backLink.textContent = t("back");
+    }
     els.langBtn.textContent      = t("lang");
     els.startBtn.textContent     = state.phase === "playing" ? t("reset") : t("start");
     els.musicBtn.textContent     = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
@@ -545,6 +551,11 @@
   // ── init ───────────────────────────────────────────────────────────────────
 
   function init() {
+    var savedLang = localStorage.getItem("mindsevo-lang");
+    if (savedLang === "en" || savedLang === "zh") {
+      state.lang = savedLang;
+    }
+
     // direction buttons
     bindDirBtn(els.btnUp,    -1,  0);
     bindDirBtn(els.btnDown,  +1,  0);
@@ -569,6 +580,10 @@
     // lang toggle
     els.langBtn.addEventListener("click", function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
+      localStorage.setItem("mindsevo-lang", state.lang);
+      if (window.shell && typeof window.shell.setLang === "function") {
+        window.shell.setLang(state.lang);
+      }
       applyLocale();
       drawMaze();
     });

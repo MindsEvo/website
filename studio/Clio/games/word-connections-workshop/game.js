@@ -7,6 +7,7 @@
     zh: {
       title: "连线组词 Word Match",
       subtitle: "连接左右完全相同的词，并排除只看位置的干扰策略。",
+      back: "\u2190 返回 Clio 游戏列表",
       subtitleSemantic: "连接意义明确的同义词或反义词配对。",
       level: "难度",
       undo: "撤销一步",
@@ -43,6 +44,7 @@
     en: {
       title: "Word Match",
       subtitle: "Match identical words across the two sides and resist position-only shortcuts.",
+      back: "\u2190 Back to Clio Games",
       subtitleSemantic: "Connect clear synonym or antonym pairs across the two sides.",
       level: "Level",
       undo: "Undo",
@@ -103,6 +105,7 @@
   var els = {
     titleText: document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
+    backLink: document.getElementById("backLink"),
     langBtn: document.getElementById("langBtn"),
     levelLabel: document.getElementById("levelLabel"),
     levelSelect: document.getElementById("levelSelect"),
@@ -375,6 +378,9 @@
     document.title = state.lang === "en" ? "Word Match | Clio" : "连线组词 Word Match | Clio";
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = isSemanticLevel() ? t("subtitleSemantic") : t("subtitle");
+    if (els.backLink) {
+      els.backLink.textContent = t("back");
+    }
     els.levelLabel.textContent = t("level");
     els.undoBtn.textContent = t("undo");
     els.resetBtn.textContent = t("reset");
@@ -388,7 +394,7 @@
     els.legendAntonym.textContent = isSemanticLevel() ? t("legendMatchSemantic") : t("legendMatch");
     els.legendCo.textContent = isSemanticLevel() ? t("legendNoDistractor") : t("legendDistractor");
     els.lineHint.textContent = isSemanticLevel() ? t("lineHintSemantic") : t("lineHint");
-    els.langBtn.textContent = state.lang === "zh" ? "中文 / EN" : "EN / 中文";
+    els.langBtn.textContent = state.lang === "zh" ? "CN / EN" : "EN / CN";
     els.musicBtn.textContent = (state.lang === "zh" ? "音乐" : "Music") + ": " + (state.musicEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
     els.sfxBtn.textContent = (state.lang === "zh" ? "音效" : "SFX") + ": " + (state.sfxEnabled ? (state.lang === "zh" ? "开" : "On") : (state.lang === "zh" ? "关" : "Off"));
     renderBoard();
@@ -789,7 +795,7 @@
       runtimeCtrl.resetSession();
     }
 
-    var savedLang = localStorage.getItem("clio-games-lang");
+    var savedLang = localStorage.getItem("mindsevo-lang");
     if (savedLang === "en" || savedLang === "zh") {
       state.lang = savedLang;
     }
@@ -818,7 +824,10 @@
 
     var onLangTap = function () {
       state.lang = state.lang === "zh" ? "en" : "zh";
-      localStorage.setItem("clio-games-lang", state.lang);
+      localStorage.setItem("mindsevo-lang", state.lang);
+      if (window.shell && typeof window.shell.setLang === "function") {
+        window.shell.setLang(state.lang);
+      }
       applyLocale();
       setFeedback(t("pickFirst"), "");
     };

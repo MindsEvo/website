@@ -94,7 +94,7 @@
       "id": "logic-pattern-hunter",
       "series": "mindseeds",
       "module": "logic-pattern",
-      "shell": "shell-2",
+      "shell": "shell-1",
       "titleZh": "逻辑推理",
       "titleEn": "Logic Pattern",
       "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],

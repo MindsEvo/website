@@ -58,6 +58,12 @@ body {
   cursor: pointer;
 }
 
+.top-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .subtitle {
   margin: 6px 0 12px;
   color: #334155;
