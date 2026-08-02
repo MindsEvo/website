@@ -23,7 +23,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先找等量关系，再把未知量放到方块位置进行推断。',
+      contentEn: 'Find equal relationships first, then infer the unknown value in the blank.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'learning-math-modeling-intro-001'
+    }
   },
   title:    { zh: '⚖️ 建立模型',             en: '⚖️ Modeling' },
   subtitle: { zh: '发现等量关系，建立代数思维的种子', en: 'Find equal relationships — plant the seeds of algebraic thinking' },

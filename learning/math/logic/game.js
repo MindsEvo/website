@@ -59,7 +59,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先提取题干中的条件关系，再排除与条件冲突的选项。',
+      contentEn: 'Extract condition relations first, then eliminate options that conflict with them.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'learning-math-logic-intro-001'
+    }
   },
   title:    { zh: '🧠 逻辑推理',             en: '🧠 Logic Reasoning' },
   subtitle: { zh: '从线索出发，用推理找到唯一正确的答案', en: 'Follow the clues — use reasoning to find the one correct answer' },

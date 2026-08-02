@@ -57,7 +57,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先看形状或旋转的变化顺序，再判断问号位置的图形。',
+      contentEn: 'Track shape or rotation changes, then infer the missing figure.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-visual-pattern-intro-001'
+    }
   },
   title:    { zh: '🎨 视觉规律',       en: '🎨 Visual Pattern Hunter' },
   subtitle: { zh: '观察图形，发现规律', en: 'Observe shapes and find patterns' },

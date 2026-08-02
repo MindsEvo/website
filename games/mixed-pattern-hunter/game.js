@@ -183,7 +183,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '同时观察两个维度的变化规则，再整合判断问号项。',
+      contentEn: 'Track two dimensions at once, then integrate clues to infer the missing item.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-mixed-pattern-intro-001'
+    }
   },
   title:    { zh: '🎯 综合规律',          en: '🎯 Mixed Pattern' },
   subtitle: { zh: '同时看懂两种规律',      en: 'Two Patterns, One Mind' },

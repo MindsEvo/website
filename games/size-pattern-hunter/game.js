@@ -59,7 +59,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '观察大小是递增、递减还是交替变化，再判断下一项。',
+      contentEn: 'Observe whether size increases, decreases, or alternates, then infer the next item.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-size-pattern-intro-001'
+    }
   },
   title: { zh: '📏 大小规律', en: '📏 Size Pattern' },
   subtitle: { zh: '看懂大小变化，预测下一步', en: 'Read size changes and predict the next step' },

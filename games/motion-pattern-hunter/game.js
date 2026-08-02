@@ -91,7 +91,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先识别方向、动作或位置轨迹的重复规则，再预测下一步。',
+      contentEn: 'Identify direction, action, or position-track rules before predicting the next move.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-motion-pattern-intro-001'
+    }
   },
   title:         { zh: '🏃 动作规律',              en: '🏃 Motion Pattern' },
   subtitle:      { zh: '看懂动作的节奏，预测下一步', en: 'Read the rhythm, predict the next move' },

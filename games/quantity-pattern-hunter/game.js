@@ -65,7 +65,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先比较数量变化是增加、减少还是重复，再判断问号处。',
+      contentEn: 'Compare how quantities change, then infer the missing quantity.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-quantity-pattern-intro-001'
+    }
   },
   title: { zh: '🧮 数量规律', en: '🧮 Quantity Pattern' },
   subtitle: { zh: '看懂数量的变化，预测下一步', en: 'Read quantity relationships and predict the next step' },

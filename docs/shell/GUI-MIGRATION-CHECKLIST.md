@@ -2,58 +2,61 @@
 
 ## 版本
 
-- draft v0.1.0 (2026-08-01)
+- v0.2.0 (2026-08-02)
 - 适用范围：Learning、Mind Seeds
 
-## 1. 迁移步骤
+## 1. 核查目标
 
-1. 在游戏配置中增加 `gui` 对象。
-2. 启用最小能力：header、language、audio、history。
-3. 验证默认值与 localStorage 状态一致。
-4. 验证游戏核心题目逻辑不受影响。
+1. 公共 GUI 接入一致：header、language、audio.music、audio.sound、history、help、video。
+2. RootGene 接入一致：每个已迁移游戏实现 `registerRootGenes()`。
+3. 回归后玩法不变：题目逻辑、判题、通关门槛不受 GUI 迁移影响。
 
-## 2. 最小配置模板
+## 2. 当前审计结果（14 个已迁移游戏）
 
-```javascript
-gui: {
-  header: { show: true, showBack: true },
-  language: { enabled: true, default: 'zh' },
-  audio: {
-    music: { enabled: true, defaultOn: false },
-    sound: { enabled: true, defaultOn: true }
-  },
-  history: { enabled: true }
-}
-```
+审计时间：2026-08-02（脚本审计）
 
-## 3. 回归检查项
+1. `gui + header + language + audio + history`：14/14 已接入。
+2. `registerRootGenes`：14/14 已接入。
+3. `gui.help`：2/14 已接入。
+4. `gui.video`：2/14 已接入。
 
-1. Home 与 Game 页头部显示正常。
-2. Back 按钮返回首页正常。
-3. 语言切换后标题、题干、选项均刷新。
-4. 音效开关图标状态可持久化。
-5. 音乐开关图标状态可持久化。
-6. 历史面板可展开/收起。
-7. 不配置 `gui` 的旧游戏仍可运行。
+## 3. 缺口矩阵（待补齐）
 
-## 4. 已完成迁移（本轮）
+1. `games/color-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+2. `games/visual-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+3. `games/motion-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+4. `games/temporal-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+5. `games/size-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+6. `games/spatial-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+7. `games/quantity-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+8. `games/logic-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+9. `games/mixed-pattern-hunter/game.js`：缺 `gui.help`、`gui.video`
+10. `learning/math/logic/game.js`：缺 `gui.help`、`gui.video`
+11. `learning/math/modeling/game.js`：缺 `gui.help`、`gui.video`
+12. `learning/math/strategy/game.js`：缺 `gui.help`、`gui.video`
 
-1. Learning: learning-math-logic
-2. Learning: learning-math-modeling
-3. Learning: learning-math-pattern
-4. Learning: learning-math-strategy
-5. Mind Seeds: number-pattern-hunter
-6. Mind Seeds: logic-pattern-hunter
-7. Mind Seeds: visual-pattern-hunter
-8. Mind Seeds: color-pattern-hunter
-9. Mind Seeds: motion-pattern-hunter
-10. Mind Seeds: temporal-pattern-hunter
-11. Mind Seeds: size-pattern-hunter
-12. Mind Seeds: quantity-pattern-hunter
-13. Mind Seeds: spatial-pattern-hunter
-14. Mind Seeds: mixed-pattern-hunter
+已完成（含 help/video）：
 
-## 5. 已知限制
+1. `games/number-pattern-hunter/game.js`
+2. `learning/math/pattern/game.js`
 
-1. 当前音乐开关仅统一状态，不强制接管各游戏音乐播放实现。
-2. Video 优先使用 `gui.video.url`，其次解析 `video.json`；若 `videoId` 未命中则显示占位提示。
+## 4. 逐个游戏对接批次
+
+1. 批次 A（Mind Seeds 视觉/动作）：color、visual、motion、temporal
+2. 批次 B（Mind Seeds 空间/数量/逻辑/综合）：size、spatial、quantity、logic、mixed
+3. 批次 C（Learning）：logic、modeling、strategy
+
+## 5. 每个游戏统一验收项
+
+1. 头部显示与返回按钮正常。
+2. 中英文切换后题干/选项/语音一致。
+3. 音乐与音效开关状态可持久化。
+4. History 入口可打开并显示记录。
+5. Help 入口可见、文案正确。
+6. Video 入口可见，`videoId` 可解析到 `video.json`。
+7. 结算后 report 含 `geneIds`，玩法得分逻辑保持不变。
+
+## 6. 已知限制
+
+1. 当前音乐开关统一状态，不强制接管每个游戏的音乐播放实现。
+2. Video 优先 `gui.video.url`，其次 `video.json` 的 `videoId` 解析；未命中时显示占位提示。

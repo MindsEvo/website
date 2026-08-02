@@ -47,7 +47,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先观察颜色变化节奏，再判断问号位置应该出现的颜色。',
+      contentEn: 'Observe the color change rhythm first, then infer the missing color.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-color-pattern-intro-001'
+    }
   },
   title:         { zh: '🎨 颜色规律',          en: '🎨 Color Pattern' },
   subtitle:      { zh: '发现颜色变化的规律',    en: 'Discover the color pattern' },

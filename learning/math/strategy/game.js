@@ -60,7 +60,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先比较各方案的收益与代价，再选择更优策略。',
+      contentEn: 'Compare benefit and cost of each plan before choosing the better strategy.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'learning-math-strategy-intro-001'
+    }
   },
   title:    { zh: '🧭 策略思维',             en: '🧭 Strategic Thinking' },
   subtitle: { zh: '先规划，后行动——好的策略让结果更好', en: 'Plan before you act — a good strategy leads to a better outcome' },

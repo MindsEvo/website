@@ -20,7 +20,16 @@ shell.createReasoningGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先读清前提条件，再逐项排除不符合逻辑的选项。',
+      contentEn: 'Read premises carefully, then eliminate options that violate logic.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-logic-pattern-intro-001'
+    }
   },
   title:    { zh: '🧠 逻辑推理', en: '🧠 Logic Pattern' },
   subtitle: { zh: '读懂条件，推导结论', en: 'Read the clues and find the answer' },

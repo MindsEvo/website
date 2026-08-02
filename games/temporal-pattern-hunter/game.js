@@ -113,7 +113,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先判断时间循环或事件先后顺序，再推断问号位置。',
+      contentEn: 'Determine temporal cycles or event order first, then infer the missing step.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-temporal-pattern-intro-001'
+    }
   },
   title:         { zh: '⏰ 时间规律',              en: '⏰ Temporal Pattern'     },
   subtitle:      { zh: '看懂时间的顺序，预测下一刻', en: 'Read time patterns, predict what comes next' },

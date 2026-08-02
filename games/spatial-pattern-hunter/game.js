@@ -141,7 +141,16 @@ shell.createGame({
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
     },
-    history: { enabled: true }
+    history: { enabled: true },
+    help: {
+      enabled: true,
+      contentZh: '先看位置关系或旋转规律，再推断问号位置的图形状态。',
+      contentEn: 'Track spatial relation or rotation rules, then infer the missing state.'
+    },
+    video: {
+      enabled: true,
+      videoId: 'mindseeds-spatial-pattern-intro-001'
+    }
   },
   title: { zh: '🧭 空间关系', en: '🧭 Spatial Pattern' },
   subtitle: { zh: '看懂位置的关系，预测下一步', en: 'Read position relationships and predict the next step' },
