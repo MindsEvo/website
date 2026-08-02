@@ -10,7 +10,7 @@
  *   L3 → G2     (100以内的数)
  */
 
-const LEVELS = [
+var LEVELS = [
   {
     id: 'L1',
     nameZh: 'L1 · 10以内的数',
@@ -55,21 +55,21 @@ function randInt(min, max) {
  * Returns { a, b, askBigger, correctSide, mode }
  */
 function makeQuestion(level) {
-  let a, b;
-  let attempts = 0;
+  var a, b;
+  var attempts = 0;
   do {
     a = randInt(level.min, level.max);
     b = randInt(level.min, level.max);
     attempts++;
   } while (Math.abs(a - b) < level.minGap && attempts < 100);
 
-  const askBigger = Math.random() < 0.5;
+  var askBigger = Math.random() < 0.5;
   // correctSide: which button (left=a, right=b) holds the correct answer
-  const aIsCorrect = askBigger ? (a > b) : (a < b);
+  var aIsCorrect = askBigger ? (a > b) : (a < b);
   return {
-    a,
-    b,
-    askBigger,
+    a: a,
+    b: b,
+    askBigger: askBigger,
     correctSide: aIsCorrect ? 'left' : 'right',
     mode: level.mode,
   };

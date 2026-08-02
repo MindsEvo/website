@@ -14,7 +14,7 @@
  *   L3 → G2     (100以内)
  */
 
-const LEVELS = [
+var LEVELS = [
   {
     id: 'L1',
     nameZh: 'L1 · 10以内数感',
@@ -59,17 +59,19 @@ function randInt(min, max) {
 }
 
 function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
   }
   return a;
 }
 
 // Normalized pair key to avoid "3+4" and "4+3" being treated as different
 function normKey(a, b) {
-  return `${Math.min(a, b)}+${Math.max(a, b)}`;
+  return String(Math.min(a, b)) + '+' + String(Math.max(a, b));
 }
 
 // ── Question generators ───────────────────────────────────────────────────────
@@ -79,30 +81,31 @@ function normKey(a, b) {
  * 4 options: 1 correct pair expression, 3 wrong ones.
  */
 function makeSplitQ(level) {
-  const target = randInt(4, level.splitMax);
-  const a = randInt(1, target - 1);
-  const b = target - a;
+  var target = randInt(4, level.splitMax);
+  var a = randInt(1, target - 1);
+  var b = target - a;
 
-  const seen = new Set([normKey(a, b)]);
-  const distractors = [];
-  let attempts = 0;
+  var seen = {};
+  seen[normKey(a, b)] = true;
+  var distractors = [];
+  var attempts = 0;
   while (distractors.length < 3 && attempts < 300) {
     attempts++;
-    const wa = randInt(1, level.splitMax);
-    const wb = randInt(1, level.splitMax);
+    var wa = randInt(1, level.splitMax);
+    var wb = randInt(1, level.splitMax);
     if (wa + wb === target) continue;       // accidentally correct → skip
-    const key = normKey(wa, wb);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    distractors.push(`${wa}+${wb}`);
+    var key = normKey(wa, wb);
+    if (seen[key]) continue;
+    seen[key] = true;
+    distractors.push(String(wa) + '+' + String(wb));
   }
 
-  const correctExpr = `${a}+${b}`;
+  var correctExpr = String(a) + '+' + String(b);
   return {
     type: 'split',
-    target,
-    correctExpr,
-    options: shuffle([correctExpr, ...distractors]),
+    target: target,
+    correctExpr: correctExpr,
+    options: shuffle([correctExpr].concat(distractors)),
   };
 }
 
@@ -110,8 +113,8 @@ function makeSplitQ(level) {
  * Proximity: which of two numbers is closer to the target?
  */
 function makeProximityQ(level) {
-  let target, a, b;
-  let attempts = 0;
+  var target, a, b;
+  var attempts = 0;
   do {
     target = randInt(level.proxMin + 1, level.proxMax - 1);
     a = randInt(level.proxMin, level.proxMax);
@@ -124,11 +127,12 @@ function makeProximityQ(level) {
     )
   );
 
-  const aCloser = Math.abs(a - target) < Math.abs(b - target);
+  var aCloser = Math.abs(a - target) < Math.abs(b - target);
   return {
     type: 'proximity',
-    target,
-    a, b,
+    target: target,
+    a: a,
+    b: b,
     correctSide: aCloser ? 'left' : 'right',
   };
 }
@@ -138,25 +142,29 @@ function makeProximityQ(level) {
  * 4 number options; pick the missing addend.
  */
 function makeCompleteQ(level) {
-  const sum = randInt(4, level.completeMax);
-  const known = randInt(1, sum - 1);
-  const missing = sum - known;
+  var sum = randInt(4, level.completeMax);
+  var known = randInt(1, sum - 1);
+  var missing = sum - known;
 
-  const wrong = new Set();
-  let attempts = 0;
-  while (wrong.size < 3 && attempts < 200) {
+  var wrongMap = {};
+  var wrongArr = [];
+  var attempts = 0;
+  while (wrongArr.length < 3 && attempts < 200) {
     attempts++;
-    const w = randInt(1, level.completeMax);
-    if (w !== missing) wrong.add(w);
+    var w = randInt(1, level.completeMax);
+    if (w !== missing && !wrongMap[w]) {
+      wrongMap[w] = true;
+      wrongArr.push(w);
+    }
   }
 
   return {
     type: 'complete',
-    sum,
-    known,
-    missing,
+    sum: sum,
+    known: known,
+    missing: missing,
     flipped: Math.random() < 0.5,          // "? + known" vs "known + ?"
-    options: shuffle([missing, ...[...wrong]]),
+    options: shuffle([missing].concat(wrongArr)),
   };
 }
 
@@ -164,8 +172,8 @@ function makeCompleteQ(level) {
  * Entry point: generate one question for the given level.
  */
 function makeQuestion(level) {
-  const types = level.types;
-  const type  = types[Math.floor(Math.random() * types.length)];
+  var types = level.types;
+  var type  = types[Math.floor(Math.random() * types.length)];
   if (type === 'split')     return makeSplitQ(level);
   if (type === 'proximity') return makeProximityQ(level);
   if (type === 'complete')  return makeCompleteQ(level);

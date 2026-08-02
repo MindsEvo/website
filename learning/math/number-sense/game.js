@@ -19,14 +19,32 @@
 }());
 
 function normalizeNsQuestion(raw) {
-  var options = raw.options.map(function (_, idx) { return idx; });
+  var options;
+  var answer;
+
+  if (raw.type === 'proximity') {
+    options = ['left', 'right'];
+    answer = raw.correctSide;
+  } else {
+    options = (raw.options || []).map(function (_, idx) { return idx; });
+    if (raw.type === 'split') {
+      answer = (raw.options || []).indexOf(raw.correctExpr);
+    } else {
+      answer = (raw.options || []).indexOf(raw.missing);
+    }
+  }
+
   return {
     type: raw.type,
     target: raw.target,
     left: raw.left,
+    a: raw.a,
+    b: raw.b,
+    known: raw.known,
+    flipped: !!raw.flipped,
     sum: raw.sum,
     options: options,
-    answer: raw.answerIndex,
+    answer: answer,
     source: raw,
     hintZh: '先识别题型，再计算或比较后作答。',
     hintEn: 'Identify the question type first, then compute or compare before answering.'
@@ -84,7 +102,10 @@ shell.createGame({
     } else if (q.type === 'proximity') {
       body = '<div class="ns-q"><span class="zh">哪个更接近 ' + q.target + '？</span><span class="en">Which is closer to ' + q.target + '?</span></div>';
     } else {
-      body = '<div class="ns-expr">' + q.left + ' + __ = ' + q.sum + '</div>' +
+      var expr = q.flipped
+        ? ('__ + ' + q.known + ' = ' + q.sum)
+        : (q.known + ' + __ = ' + q.sum);
+      body = '<div class="ns-expr">' + expr + '</div>' +
         '<div class="ns-sub"><span class="zh">选择正确的补数</span><span class="en">Choose the missing addend</span></div>';
     }
 
@@ -92,9 +113,14 @@ shell.createGame({
   },
 
   renderOption: function (opt, q) {
+    if (q.type === 'proximity') {
+      var value = opt === 'left' ? q.a : q.b;
+      return '<div class="ns-opt"><div class="ns-opt-val">' + String(value) + '</div></div>';
+    }
+
     var original = q.source.options[opt];
-    if (q.type === 'split' && Array.isArray(original)) {
-      return '<div class="ns-opt"><div class="ns-pair">' + original[0] + ' + ' + original[1] + '</div></div>';
+    if (q.type === 'split') {
+      return '<div class="ns-opt"><div class="ns-pair">' + String(original).replace('+', ' + ') + '</div></div>';
     }
     return '<div class="ns-opt"><div class="ns-opt-val">' + String(original) + '</div></div>';
   },
@@ -115,8 +141,8 @@ shell.createGame({
         : ('Which is closer to ' + q.target + '?');
     }
     return shell.lang === 'zh'
-      ? (q.left + '加几等于' + q.sum + '？')
-      : (q.left + ' plus what equals ' + q.sum + '?');
+      ? ((q.flipped ? ('几加' + q.known + '等于' + q.sum + '？') : (q.known + '加几等于' + q.sum + '？')))
+      : ((q.flipped ? ('What plus ' + q.known + ' equals ' + q.sum + '?') : (q.known + ' plus what equals ' + q.sum + '?')));
   },
 
   registerRootGenes: function (ctx) {
