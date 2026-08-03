@@ -102,6 +102,15 @@
       "lessonIds": ["mindseeds-difference-scout-l1"]
     },
     {
+      "id": "studio-comparison-lab-intro-001",
+      "titleZh": "创作器比较样板玩法介绍",
+      "titleEn": "Creator Comparison Lab Intro",
+      "url": "https://example.com/videos/studio-comparison-lab-intro-001",
+      "tags": ["studio", "creator", "comparison", "intro"],
+      "gameIds": ["studio-comparison-lab"],
+      "lessonIds": ["studio-comparison-lab-l1"]
+    },
+    {
       "id": "learning-math-pattern-intro-001",
       "titleZh": "数学规律训练介绍",
       "titleEn": "Math Pattern Training Intro",

@@ -146,6 +146,19 @@
       "gameIds": ["difference-scout"]
     },
     {
+      "id": "studio-comparison-lab-l1",
+      "series": "studio",
+      "module": "creator-comparison-template",
+      "difficulty": "L1",
+      "titleZh": "创作器比较样板 L1",
+      "titleEn": "Creator Comparison Lab L1",
+      "objectiveZh": "通过模板参数快速生成可试玩比较训练作品并完成闭环复盘。",
+      "objectiveEn": "Generate a playable comparison training game from template parameters and complete recap loop.",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.STRATEGY.DECISION.PLANNING"],
+      "videoIds": ["studio-comparison-lab-intro-001"],
+      "gameIds": ["studio-comparison-lab"]
+    },
+    {
       "id": "learning-math-pattern-l1",
       "series": "learning",
       "module": "pattern",

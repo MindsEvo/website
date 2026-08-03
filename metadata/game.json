@@ -124,6 +124,17 @@
       "videoIds": ["mindseeds-difference-scout-intro-001"]
     },
     {
+      "id": "studio-comparison-lab",
+      "series": "studio",
+      "module": "creator-comparison-template",
+      "shell": "shell-1",
+      "titleZh": "创作器比较样板",
+      "titleEn": "Creator Comparison Lab",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": ["studio-comparison-lab-l1"],
+      "videoIds": ["studio-comparison-lab-intro-001"]
+    },
+    {
       "id": "learning-math-pattern",
       "series": "learning",
       "module": "pattern",

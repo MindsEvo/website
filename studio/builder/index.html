@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>创作器 Builder | MindsEvo</title>
+  <link rel="stylesheet" href="../../shell-1.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body data-lang="zh">
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html" data-i18n="back" data-zh="← 返回创意工作坊" data-en="← Back to Studio">← 返回创意工作坊</a>
+      <div class="top-actions">
+        <button class="lang-btn" id="langBtn" type="button">CN / EN</button>
+      </div>
+    </div>
+
+    <h1 data-i18n="title" data-zh="创作器 v1 · 比较模板" data-en="Creator Builder v1 · Comparison Template">创作器 v1 · 比较模板</h1>
+    <p class="lead" data-i18n="lead" data-zh="输入少量参数，一键生成可试玩作品。试玩后会自动留下创作复盘记录。" data-en="Enter a few parameters to generate a playable game. A recap record is saved automatically after play.">输入少量参数，一键生成可试玩作品。试玩后会自动留下创作复盘记录。</p>
+
+    <section class="builder-grid">
+      <article class="card">
+        <div class="tag" data-i18n="config-tag" data-zh="创作配置" data-en="Creator Config">创作配置</div>
+        <form id="builderForm" class="builder-form">
+          <label>
+            <span data-i18n="creator-name" data-zh="创作者名" data-en="Creator Name">创作者名</span>
+            <input id="creatorName" type="text" maxlength="40" value="Clio" />
+          </label>
+          <label>
+            <span data-i18n="title-zh" data-zh="作品标题（中文）" data-en="Title (Chinese)">作品标题（中文）</span>
+            <input id="titleZh" type="text" maxlength="60" value="我的比较训练" />
+          </label>
+          <label>
+            <span data-i18n="title-en" data-zh="作品标题（英文）" data-en="Title (English)">作品标题（英文）</span>
+            <input id="titleEn" type="text" maxlength="60" value="My Comparison Lab" />
+          </label>
+
+          <div class="row2">
+            <label>
+              <span data-i18n="difficulty" data-zh="难度" data-en="Difficulty">难度</span>
+              <select id="difficulty">
+                <option value="L1">L1</option>
+                <option value="L2">L2</option>
+                <option value="L3">L3</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="rounds" data-zh="题量" data-en="Rounds">题量</span>
+              <select id="rounds">
+                <option value="4">4</option>
+                <option value="8">8</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row2">
+            <label>
+              <span data-i18n="mode" data-zh="题面风格" data-en="Question Mode">题面风格</span>
+              <select id="mode">
+                <option value="dots" data-i18n="mode-dots" data-zh="点阵 + 数字" data-en="Dots + Number">点阵 + 数字</option>
+                <option value="number" data-i18n="mode-num" data-zh="纯数字" data-en="Numbers Only">纯数字</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="min-gap" data-zh="最小差值" data-en="Min Gap">最小差值</span>
+              <input id="minGap" type="number" min="1" max="20" value="2" />
+            </label>
+          </div>
+
+          <div class="row2">
+            <label>
+              <span data-i18n="min" data-zh="最小值" data-en="Min Value">最小值</span>
+              <input id="minValue" type="number" min="1" max="99" value="1" />
+            </label>
+            <label>
+              <span data-i18n="max" data-zh="最大值" data-en="Max Value">最大值</span>
+              <input id="maxValue" type="number" min="2" max="199" value="12" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="go" type="submit" data-i18n="launch" data-zh="一键试玩" data-en="Launch Playtest">一键试玩</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="card recap" id="recapCard">
+        <div class="tag" data-i18n="recap-tag" data-zh="最近复盘" data-en="Latest Recap">最近复盘</div>
+        <div id="recapEmpty" class="desc" data-i18n="recap-empty" data-zh="还没有试玩记录。完成一次试玩后，这里会显示结果摘要。" data-en="No playtest recap yet. Complete one run to see summary here.">还没有试玩记录。完成一次试玩后，这里会显示结果摘要。</div>
+        <div id="recapBody" class="recap-body hidden"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="../../shell.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
