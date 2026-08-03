@@ -19,6 +19,8 @@
 1. game 元数据：metadata/game.json
 2. lesson 元数据：metadata/lesson.json
 3. video 元数据：metadata/video.json
+4. 元思维模块索引：metadata/metathinking/index.json
+5. 元思维模块对象（示例）：metadata/metathinking/comparison.json
 
 ## 3. 最小字段规范
 
@@ -112,11 +114,13 @@ gui: {
 新增校验工具：
 
 1. `tools/validate-metadata.mjs`
+2. `tools/validate-metathinking.mjs`
 
 执行方式（在 `web` 目录）：
 
 ```bash
 node tools/validate-metadata.mjs
+node tools/validate-metathinking.mjs
 ```
 
 当前检查内容：
@@ -134,3 +138,4 @@ node tools/validate-metadata.mjs
 1. 增加 `localeAssets` 支持多语言封面、字幕。
 2. 增加 `prerequisites` 支持学习路径依赖。
 3. 增加 `difficultyScore` 支持推荐排序。
+4. 将元思维模块（如 comparison）作为独立 JSON 发布，面向外部 AI 检索。

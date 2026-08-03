@@ -102,6 +102,15 @@
       "lessonIds": ["learning-math-pattern-l1"]
     },
     {
+      "id": "learning-math-comparison-intro-001",
+      "titleZh": "数学比较与数感训练介绍",
+      "titleEn": "Math Comparison and Number Sense Intro",
+      "url": "https://example.com/videos/learning-math-comparison-intro-001",
+      "tags": ["learning", "comparison", "number-sense", "intro"],
+      "gameIds": ["learning-math-comparison", "learning-math-number-sense"],
+      "lessonIds": ["learning-math-comparison-l1", "learning-math-number-sense-l1"]
+    },
+    {
       "id": "learning-math-logic-intro-001",
       "titleZh": "数学逻辑训练介绍",
       "titleEn": "Math Logic Training Intro",

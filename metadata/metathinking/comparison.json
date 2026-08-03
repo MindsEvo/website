@@ -1,0 +1,285 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-08-02",
+  "moduleType": "metathinking",
+  "id": "comparison",
+  "canonicalUrl": "/metadata/metathinking/comparison.json",
+  "title": {
+    "zh": "比较",
+    "en": "Comparison"
+  },
+  "description": {
+    "zh": "比较是一种基于共同维度，对两个或多个对象进行关系判断、差异识别、顺序定位或等同性确认的元思维操作。",
+    "en": "Comparison is a meta-thinking operation that uses shared dimensions to judge relations, identify differences, locate order, or confirm equivalence among two or more objects."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 12,
+    "noteZh": "覆盖 4-5 岁到小学毕业阶段。",
+    "noteEn": "Covers ages 4-5 through primary school graduation."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training."
+  },
+  "rootGeneIds": [
+    "RG.LOGIC.COMPARISON.BASIC",
+    "RG.MATH.NUMBER_SENSE.BASIC",
+    "RG.LEARNING.MATH.COMPARISON"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete", "symbolic", "abstract"]
+    },
+    {
+      "id": "dimension_complexity",
+      "zh": "维度复杂度",
+      "en": "Dimension Complexity",
+      "progression": ["single", "dual", "multi"]
+    },
+    {
+      "id": "relation_complexity",
+      "zh": "关系复杂度",
+      "en": "Relation Complexity",
+      "progression": ["direct", "indirect", "chain", "constrained"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["action", "question", "compound", "explain"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "cross-domain", "strategy", "evidence"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "quantity",
+      "nameZh": "数量比较",
+      "nameEn": "Quantity Comparison",
+      "status": "implemented",
+      "examples": [
+        "learning-math-comparison",
+        "learning-math-number-sense"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-comparison",
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1",
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "spatial_visual",
+      "nameZh": "空间与感知比较",
+      "nameEn": "Spatial and Perceptual Comparison",
+      "status": "planned",
+      "examples": [
+        "size/shape/length/position tasks"
+      ]
+    },
+    {
+      "id": "temporal",
+      "nameZh": "时间比较",
+      "nameEn": "Temporal Comparison",
+      "status": "planned",
+      "examples": [
+        "before/after/duration/rhythm tasks"
+      ]
+    },
+    {
+      "id": "logic_strategy",
+      "nameZh": "逻辑与策略比较",
+      "nameEn": "Logic and Strategy Comparison",
+      "status": "planned",
+      "examples": [
+        "condition-strength/solution-efficiency tasks"
+      ]
+    },
+    {
+      "id": "information",
+      "nameZh": "信息与证据比较",
+      "nameEn": "Information and Evidence Comparison",
+      "status": "planned",
+      "examples": [
+        "source reliability/evidence sufficiency tasks"
+      ]
+    }
+  ],
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "objectiveZh": "在单一感知维度上做直接比较（大/小、多/少、长/短）。",
+      "objectiveEn": "Perform direct comparison on a single perceptual dimension.",
+      "primaryTypes": ["quantity", "spatial_visual"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-comparison"],
+      "sourceLevels": ["L1"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "objectiveZh": "在 10 以内进行数量与图示对应比较。",
+      "objectiveEn": "Compare quantities within 10 using symbol-visual correspondence.",
+      "primaryTypes": ["quantity"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
+      "sourceLevels": ["L2"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "objectiveZh": "在 20 以内进行直接比较与接近判断。",
+      "objectiveEn": "Perform direct and proximity comparison within 20.",
+      "primaryTypes": ["quantity", "temporal"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
+      "sourceLevels": ["L3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "objectiveZh": "引入双维比较（如数量+长度），进行基础排序。",
+      "objectiveEn": "Introduce dual-dimension comparison and basic ranking.",
+      "primaryTypes": ["quantity", "spatial_visual"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L5",
+      "ageHint": "8-9",
+      "objectiveZh": "进行间接与链式比较（A>B, B>C 推导 A>C）。",
+      "objectiveEn": "Perform indirect and chain comparison.",
+      "primaryTypes": ["logic_strategy"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L6",
+      "ageHint": "9-10",
+      "objectiveZh": "在多维标准下比较并说明取舍理由。",
+      "objectiveEn": "Compare under multi-criteria and explain trade-offs.",
+      "primaryTypes": ["logic_strategy", "information"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L7",
+      "ageHint": "10-11",
+      "objectiveZh": "比较策略效率与条件充分性，形成可解释判断。",
+      "objectiveEn": "Compare strategy efficiency and condition sufficiency with explanations.",
+      "primaryTypes": ["logic_strategy", "information"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L8",
+      "ageHint": "11-12",
+      "objectiveZh": "比较证据强弱与信息可信度，完成综合判断。",
+      "objectiveEn": "Compare evidence strength and information reliability for integrated judgment.",
+      "primaryTypes": ["information"],
+      "status": "planned"
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "attention-and-classification",
+      "titleZh": "基础观察与分类",
+      "titleEn": "Basic Observation and Classification"
+    }
+  ],
+  "videos": [
+    {
+      "id": "learning-math-comparison-intro-001",
+      "titleZh": "数学比较与数感训练介绍",
+      "titleEn": "Math Comparison and Number Sense Intro",
+      "status": "implemented",
+      "linkedGameIds": ["learning-math-comparison", "learning-math-number-sense"],
+      "linkedLessonIds": ["learning-math-comparison-l1", "learning-math-number-sense-l1"]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "cmp-quantity-direct",
+      "type": "quantity",
+      "levelRange": ["L2", "L4"],
+      "descriptionZh": "数值直接比较与接近判断。",
+      "descriptionEn": "Direct number comparison and proximity judgment.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-math-comparison", "learning-math-number-sense"],
+      "sourceLessonIds": ["learning-math-comparison-l1", "learning-math-number-sense-l1"],
+      "sourceLevelIds": ["L1", "L2", "L3"]
+    },
+    {
+      "id": "cmp-chain-relation",
+      "type": "logic_strategy",
+      "levelRange": ["L5", "L7"],
+      "descriptionZh": "链式关系推导比较。",
+      "descriptionEn": "Chain relation inference comparison.",
+      "status": "planned"
+    },
+    {
+      "id": "cmp-evidence-quality",
+      "type": "information",
+      "levelRange": ["L7", "L8"],
+      "descriptionZh": "证据充分性与可信度比较。",
+      "descriptionEn": "Evidence sufficiency and credibility comparison.",
+      "status": "planned"
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "comparisonType",
+      "difficultyAxis",
+      "errorType",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate"
+    ]
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "comparisonType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "6岁适合哪些 Comparison 训练？",
+      "L5 的比较训练重点是什么？",
+      "哪些 comparison 练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "comparison",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

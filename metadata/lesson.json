@@ -146,6 +146,32 @@
       "gameIds": ["learning-math-pattern"]
     },
     {
+      "id": "learning-math-comparison-l1",
+      "series": "learning",
+      "module": "comparison",
+      "difficulty": "L1",
+      "titleZh": "数学比较 L1",
+      "titleEn": "Math Comparison L1",
+      "objectiveZh": "进行基础数量比较与大小判断。",
+      "objectiveEn": "Perform basic quantity comparison and greater/less judgment.",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "videoIds": ["learning-math-comparison-intro-001"],
+      "gameIds": ["learning-math-comparison"]
+    },
+    {
+      "id": "learning-math-number-sense-l1",
+      "series": "learning",
+      "module": "number-sense",
+      "difficulty": "L1",
+      "titleZh": "数学数感 L1",
+      "titleEn": "Math Number Sense L1",
+      "objectiveZh": "通过拆分、接近与补全强化比较直觉。",
+      "objectiveEn": "Strengthen comparison intuition through split, proximity, and completion tasks.",
+      "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
+      "videoIds": ["learning-math-comparison-intro-001"],
+      "gameIds": ["learning-math-number-sense"]
+    },
+    {
       "id": "learning-math-logic-l1",
       "series": "learning",
       "module": "logic",

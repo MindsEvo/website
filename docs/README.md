@@ -10,7 +10,8 @@
 4. `shell/SHELL-FEATURE-GATE.md`（哪些能力可以上升为公共层）
 5. `patterns/PATTERN-QUALITY-GATE.md`（Pattern 模块质量门禁）
 6. `metadata/AI-METADATA-STANDARD.md`（阶段 5：标准元数据）
-7. `rootgene/ROOTGENE-FRAMEWORK.md`（阶段 3：RootGene 标准）
+7. `metadata/METATHINKING-MODULE-STANDARD.md`（元思维模块机器可读标准）
+8. `rootgene/ROOTGENE-FRAMEWORK.md`（阶段 3：RootGene 标准）
 8. 对应模块规范（如 Spatial / Quantity）
 
 ## 架构主文档
@@ -33,6 +34,7 @@
 ## Metadata 规范
 
 1. `metadata/AI-METADATA-STANDARD.md`
+2. `metadata/METATHINKING-MODULE-STANDARD.md`
 
 ## RootGene 规范
 

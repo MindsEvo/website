@@ -1,0 +1,25 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-08-02",
+  "modules": [
+    {
+      "id": "comparison",
+      "moduleType": "metathinking",
+      "titleZh": "比较",
+      "titleEn": "Comparison",
+      "ageRange": {
+        "min": 4,
+        "max": 12
+      },
+      "levels": 8,
+      "canonicalUrl": "/metadata/metathinking/comparison.json",
+      "tags": [
+        "comparison",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "active"
+    }
+  ]
+}
