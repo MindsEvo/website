@@ -31,7 +31,8 @@ function renderDots(count, dotClass, wrapClass) {
   return html;
 }
 
-function normalizeQuestion(raw) {
+function normalizeQuestion(raw, level) {
+  var levelId = level && level.id ? String(level.id) : 'L0';
   return {
     mode: raw.mode,
     a: raw.a,
@@ -39,6 +40,15 @@ function normalizeQuestion(raw) {
     askBigger: !!raw.askBigger,
     options: ['left', 'right'],
     answer: raw.correctSide,
+    levelId: levelId,
+    comparisonType: 'quantity',
+    difficultyAxis: {
+      object_complexity: raw.mode === 'dots' ? 'concrete' : 'symbolic',
+      dimension_complexity: 'single',
+      relation_complexity: 'direct',
+      language_complexity: 'question',
+      transfer_complexity: 'within-domain'
+    },
     hintZh: '先比较两个数值，再判断题目要求是更大还是更小。',
     hintEn: 'Compare both values first, then check whether the prompt asks for bigger or smaller.'
   };
@@ -47,7 +57,7 @@ function normalizeQuestion(raw) {
 var cmpUnits = LEVELS.map(function (level) {
   var questions = [];
   for (var i = 0; i < level.rounds; i++) {
-    questions.push(normalizeQuestion(makeQuestion(level)));
+    questions.push(normalizeQuestion(makeQuestion(level), level));
   }
   return {
     id: level.id,
@@ -132,5 +142,24 @@ shell.createGame({
       'RG.LOGIC.COMPARISON.BASIC',
       'RG.LEARNING.MATH.COMPARISON.' + unitId
     ];
+  },
+
+  getReportContext: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var levelId = String(unit.id || 'L0');
+    return {
+      moduleId: 'comparison',
+      moduleType: 'metathinking',
+      levelId: levelId,
+      comparisonType: 'quantity',
+      difficultyAxis: {
+        object_complexity: levelId === 'L1' ? 'concrete' : 'symbolic',
+        dimension_complexity: 'single',
+        relation_complexity: 'direct',
+        language_complexity: 'question',
+        transfer_complexity: 'within-domain'
+      },
+      sourceGameId: 'learning-math-comparison'
+    };
   }
 });

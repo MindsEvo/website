@@ -18,9 +18,10 @@
   document.head.appendChild(s);
 }());
 
-function normalizeNsQuestion(raw) {
+function normalizeNsQuestion(raw, level) {
   var options;
   var answer;
+  var levelId = level && level.id ? String(level.id) : 'L0';
 
   if (raw.type === 'proximity') {
     options = ['left', 'right'];
@@ -45,6 +46,15 @@ function normalizeNsQuestion(raw) {
     sum: raw.sum,
     options: options,
     answer: answer,
+    levelId: levelId,
+    comparisonType: 'quantity',
+    difficultyAxis: {
+      object_complexity: levelId === 'L1' ? 'concrete' : 'symbolic',
+      dimension_complexity: raw.type === 'split' ? 'single' : 'dual',
+      relation_complexity: raw.type === 'proximity' ? 'direct' : 'indirect',
+      language_complexity: 'question',
+      transfer_complexity: 'within-domain'
+    },
     source: raw,
     hintZh: '先识别题型，再计算或比较后作答。',
     hintEn: 'Identify the question type first, then compute or compare before answering.'
@@ -54,7 +64,7 @@ function normalizeNsQuestion(raw) {
 var nsUnits = LEVELS.map(function (level) {
   var questions = [];
   for (var i = 0; i < level.rounds; i++) {
-    questions.push(normalizeNsQuestion(makeQuestion(level)));
+    questions.push(normalizeNsQuestion(makeQuestion(level), level));
   }
   return {
     id: level.id,
@@ -152,5 +162,25 @@ shell.createGame({
       'RG.MATH.NUMBER_SENSE.BASIC',
       'RG.LEARNING.MATH.NUMBER_SENSE.' + unitId
     ];
+  },
+
+  getReportContext: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var levelId = String(unit.id || 'L0');
+    var axisObject = levelId === 'L1' ? 'concrete' : 'symbolic';
+    return {
+      moduleId: 'comparison',
+      moduleType: 'metathinking',
+      levelId: levelId,
+      comparisonType: 'quantity',
+      difficultyAxis: {
+        object_complexity: axisObject,
+        dimension_complexity: 'dual',
+        relation_complexity: 'direct+indirect',
+        language_complexity: 'question',
+        transfer_complexity: 'within-domain'
+      },
+      sourceGameId: 'learning-math-number-sense'
+    };
   }
 });

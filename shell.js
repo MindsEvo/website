@@ -1217,6 +1217,26 @@
         }
       });
 
+      var reportContext = {};
+      if (cfg && typeof cfg.getReportContext === 'function') {
+        try {
+          reportContext = cfg.getReportContext({
+            gameId: GAME_ID,
+            unit: unit,
+            state: {
+              score: state.score,
+              total: total,
+              hints: state.hints,
+              passed: passed,
+              elapsedMs: elapsed
+            }
+          }) || {};
+        } catch (err) {
+          console.warn('[shell] getReportContext failed:', err);
+          reportContext = {};
+        }
+      }
+
       shell.report({
         gameId:    GAME_ID,
         unitId:    unit.id,
@@ -1225,7 +1245,13 @@
         timeMs:    elapsed,
         hintsUsed: state.hints,
         geneIds:   geneIds,
-        shell:     'shell-1'
+        shell:     'shell-1',
+        levelId:   reportContext.levelId || null,
+        comparisonType: reportContext.comparisonType || null,
+        difficultyAxis: reportContext.difficultyAxis || null,
+        moduleId: reportContext.moduleId || null,
+        moduleType: reportContext.moduleType || null,
+        context: reportContext
       });
 
       // Stash for lang-switch re-render

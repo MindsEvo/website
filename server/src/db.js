@@ -30,6 +30,11 @@ function initSchema(conn) {
       session_id TEXT PRIMARY KEY,
       game_key TEXT NOT NULL,
       locale TEXT,
+      module_id TEXT,
+      module_type TEXT,
+      level_id TEXT,
+      comparison_type TEXT,
+      difficulty_axis TEXT,
       started_at TEXT,
       finished_at TEXT,
       created_at TEXT NOT NULL
@@ -65,10 +70,19 @@ function initSchema(conn) {
     CREATE INDEX IF NOT EXISTS idx_sessions_game ON sessions(game_key);
   `);
 
+  ensureSessionColumn(conn, "gene_ids", "TEXT");
+  ensureSessionColumn(conn, "module_id", "TEXT");
+  ensureSessionColumn(conn, "module_type", "TEXT");
+  ensureSessionColumn(conn, "level_id", "TEXT");
+  ensureSessionColumn(conn, "comparison_type", "TEXT");
+  ensureSessionColumn(conn, "difficulty_axis", "TEXT");
+}
+
+function ensureSessionColumn(conn, name, type) {
   const sessionCols = conn.prepare("PRAGMA table_info(sessions)").all();
-  const hasGeneIds = sessionCols.some((c) => c && c.name === "gene_ids");
-  if (!hasGeneIds) {
-    conn.exec("ALTER TABLE sessions ADD COLUMN gene_ids TEXT;");
+  const exists = sessionCols.some((c) => c && c.name === name);
+  if (!exists) {
+    conn.exec("ALTER TABLE sessions ADD COLUMN " + name + " " + type + ";");
   }
 }
 

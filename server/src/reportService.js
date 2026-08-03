@@ -92,6 +92,21 @@ function validatePayload(payload) {
     }
   }
 
+  if (payload.context !== undefined && (typeof payload.context !== "object" || payload.context === null || Array.isArray(payload.context))) {
+    return "context must be an object when provided.";
+  }
+
+  const scalarFields = ["levelId", "comparisonType", "moduleId", "moduleType"];
+  for (const field of scalarFields) {
+    if (payload[field] !== undefined && typeof payload[field] !== "string") {
+      return field + " must be a string when provided.";
+    }
+  }
+
+  if (payload.difficultyAxis !== undefined && (typeof payload.difficultyAxis !== "string" && typeof payload.difficultyAxis !== "object")) {
+    return "difficultyAxis must be a string or object when provided.";
+  }
+
   return null;
 }
 

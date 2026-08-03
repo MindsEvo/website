@@ -27,6 +27,57 @@ function parseGeneIds(sessionRow) {
   }
 }
 
+function parseDifficultyAxisText(text) {
+  if (!text || typeof text !== "string") {
+    return null;
+  }
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
+}
+
+function normalizeContextPayload(payload) {
+  const ctx = payload && typeof payload.context === "object" && payload.context !== null ? payload.context : {};
+
+  const levelId = typeof payload.levelId === "string"
+    ? payload.levelId
+    : (typeof ctx.levelId === "string" ? ctx.levelId : null);
+
+  const comparisonType = typeof payload.comparisonType === "string"
+    ? payload.comparisonType
+    : (typeof ctx.comparisonType === "string" ? ctx.comparisonType : null);
+
+  const moduleId = typeof payload.moduleId === "string"
+    ? payload.moduleId
+    : (typeof ctx.moduleId === "string" ? ctx.moduleId : null);
+
+  const moduleType = typeof payload.moduleType === "string"
+    ? payload.moduleType
+    : (typeof ctx.moduleType === "string" ? ctx.moduleType : null);
+
+  const axisRaw = payload.difficultyAxis !== undefined ? payload.difficultyAxis : ctx.difficultyAxis;
+  let difficultyAxis = null;
+  if (typeof axisRaw === "string") {
+    difficultyAxis = axisRaw;
+  } else if (axisRaw && typeof axisRaw === "object") {
+    try {
+      difficultyAxis = JSON.stringify(axisRaw);
+    } catch {
+      difficultyAxis = null;
+    }
+  }
+
+  return {
+    levelId,
+    comparisonType,
+    moduleId,
+    moduleType,
+    difficultyAxis,
+  };
+}
+
 function avg(values) {
   if (!values.length) {
     return null;
@@ -38,7 +89,7 @@ function getHistoryRowsByGame(gameKey, limit) {
   return gameKey
     ? db
         .prepare(
-          `SELECT s.session_id, s.game_key, s.locale, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
+          `SELECT s.session_id, s.game_key, s.locale, s.module_id, s.module_type, s.level_id, s.comparison_type, s.difficulty_axis, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
            FROM sessions s
            JOIN reports r ON r.session_id = s.session_id
            WHERE s.game_key = ?
@@ -48,7 +99,7 @@ function getHistoryRowsByGame(gameKey, limit) {
         .all(gameKey, limit)
     : db
         .prepare(
-          `SELECT s.session_id, s.game_key, s.locale, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
+          `SELECT s.session_id, s.game_key, s.locale, s.module_id, s.module_type, s.level_id, s.comparison_type, s.difficulty_axis, s.gene_ids, s.created_at, r.accuracy, r.score, r.avg_response_ms, r.total_questions
            FROM sessions s
            JOIN reports r ON r.session_id = s.session_id
            ORDER BY s.created_at DESC
@@ -105,15 +156,21 @@ function saveHistory(req, res) {
   const payload = req.body;
   const attempts = payload.attempts.map((a, i) => normalizeAttempt(a, i));
   const geneIds = normalizeGeneIds(payload.geneIds);
+  const context = normalizeContextPayload(payload);
   const report = computeReport(attempts);
   const nowIso = new Date().toISOString();
 
   const insertSession = db.prepare(`
-    INSERT INTO sessions(session_id, game_key, locale, started_at, finished_at, created_at, gene_ids)
-    VALUES(?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO sessions(session_id, game_key, locale, module_id, module_type, level_id, comparison_type, difficulty_axis, started_at, finished_at, created_at, gene_ids)
+    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT(session_id) DO UPDATE SET
       game_key=excluded.game_key,
       locale=excluded.locale,
+      module_id=excluded.module_id,
+      module_type=excluded.module_type,
+      level_id=excluded.level_id,
+      comparison_type=excluded.comparison_type,
+      difficulty_axis=excluded.difficulty_axis,
       started_at=excluded.started_at,
       finished_at=excluded.finished_at,
       gene_ids=excluded.gene_ids
@@ -146,6 +203,11 @@ function saveHistory(req, res) {
       payload.sessionId,
       payload.gameKey,
       payload.locale || null,
+      context.moduleId,
+      context.moduleType,
+      context.levelId,
+      context.comparisonType,
+      context.difficultyAxis,
       payload.startedAt || null,
       payload.finishedAt || null,
       nowIso,
@@ -194,6 +256,7 @@ function saveHistory(req, res) {
     verified: true,
     report,
     geneIds,
+    context,
   });
 }
 
@@ -219,6 +282,11 @@ app.get("/api/v1/history/load/:sessionId", (req, res) => {
       sessionId: session.session_id,
       gameKey: session.game_key,
       locale: session.locale,
+      moduleId: session.module_id || null,
+      moduleType: session.module_type || null,
+      levelId: session.level_id || null,
+      comparisonType: session.comparison_type || null,
+      difficultyAxis: parseDifficultyAxisText(session.difficulty_axis),
       startedAt: session.started_at,
       finishedAt: session.finished_at,
       geneIds: parseGeneIds(session),
@@ -263,6 +331,7 @@ app.get("/api/v1/reports/:sessionId", (req, res) => {
     session: {
       ...session,
       geneIds: parseGeneIds(session),
+      difficulty_axis: parseDifficultyAxisText(session.difficulty_axis),
     },
     report: reportRow
       ? {
@@ -288,6 +357,8 @@ app.get("/api/v1/reports/:sessionId", (req, res) => {
 app.get("/api/v1/history/statistics", (req, res) => {
   const gameKey = typeof req.query.gameKey === "string" ? req.query.gameKey.trim() : "";
   const geneIdFilter = typeof req.query.geneId === "string" ? req.query.geneId.trim() : "";
+  const levelIdFilter = typeof req.query.levelId === "string" ? req.query.levelId.trim() : "";
+  const comparisonTypeFilter = typeof req.query.comparisonType === "string" ? req.query.comparisonType.trim() : "";
   const limitRaw = Number(req.query.limit);
   const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(Math.trunc(limitRaw), 1), 5000) : 500;
 
@@ -297,8 +368,12 @@ app.get("/api/v1/history/statistics", (req, res) => {
     .map((row) => ({
       ...row,
       geneIds: parseGeneIds(row),
+      levelId: row.level_id || null,
+      comparisonType: row.comparison_type || null,
     }))
-    .filter((row) => (geneIdFilter ? row.geneIds.includes(geneIdFilter) : true));
+    .filter((row) => (geneIdFilter ? row.geneIds.includes(geneIdFilter) : true))
+    .filter((row) => (levelIdFilter ? row.levelId === levelIdFilter : true))
+    .filter((row) => (comparisonTypeFilter ? row.comparisonType === comparisonTypeFilter : true));
 
   const totalSessions = sessions.length;
   const accuracyValues = sessions.map((s) => s.accuracy).filter((v) => Number.isFinite(v));
@@ -331,11 +406,30 @@ app.get("/api/v1/history/statistics", (req, res) => {
     }))
     .sort((a, b) => b.sessions - a.sessions || String(a.geneId).localeCompare(String(b.geneId)));
 
+  const byLevelMap = new Map();
+  const byTypeMap = new Map();
+  for (const s of sessions) {
+    const levelKey = s.levelId || "unknown";
+    const typeKey = s.comparisonType || "unknown";
+
+    if (!byLevelMap.has(levelKey)) byLevelMap.set(levelKey, { key: levelKey, sessions: 0, acc: [] });
+    if (!byTypeMap.has(typeKey)) byTypeMap.set(typeKey, { key: typeKey, sessions: 0, acc: [] });
+
+    byLevelMap.get(levelKey).sessions += 1;
+    byTypeMap.get(typeKey).sessions += 1;
+    if (Number.isFinite(s.accuracy)) {
+      byLevelMap.get(levelKey).acc.push(s.accuracy);
+      byTypeMap.get(typeKey).acc.push(s.accuracy);
+    }
+  }
+
   return res.json({
     ok: true,
     scope: {
       gameKey: gameKey || null,
       geneId: geneIdFilter || null,
+      levelId: levelIdFilter || null,
+      comparisonType: comparisonTypeFilter || null,
       sampledSessions: totalSessions,
       sampleLimit: limit,
     },
@@ -346,6 +440,8 @@ app.get("/api/v1/history/statistics", (req, res) => {
       avgScore: avg(scoreValues),
       avgResponseMs: avg(responseValues),
       geneStats,
+      byLevel: Array.from(byLevelMap.values()).map((x) => ({ levelId: x.key, sessions: x.sessions, avgAccuracy: avg(x.acc) })),
+      byComparisonType: Array.from(byTypeMap.values()).map((x) => ({ comparisonType: x.key, sessions: x.sessions, avgAccuracy: avg(x.acc) })),
     },
   });
 });
