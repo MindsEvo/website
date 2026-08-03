@@ -10,7 +10,7 @@
  *   Unit  6   → G2    (情境应用 · 归纳迁移)
  *
  * Difficulty curve: math concept complexity (NOT visual complexity).
- * Engine shared with Sprite Pattern Hunter; stats recorded independently.
+ * Engine shared with Mind Seeds Pattern Hunter; stats recorded independently.
  */
 
 var MP_DATA = {

@@ -113,6 +113,17 @@
       "videoIds": ["mindseeds-mixed-pattern-intro-001"]
     },
     {
+      "id": "difference-scout",
+      "series": "mindseeds",
+      "module": "difference-scout",
+      "shell": "shell-1",
+      "titleZh": "找不同侦探",
+      "titleEn": "Difference Scout",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "lessonIds": ["mindseeds-difference-scout-l1"],
+      "videoIds": ["mindseeds-difference-scout-intro-001"]
+    },
+    {
       "id": "learning-math-pattern",
       "series": "learning",
       "module": "pattern",

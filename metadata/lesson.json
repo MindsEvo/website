@@ -133,6 +133,19 @@
       "gameIds": ["mixed-pattern-hunter"]
     },
     {
+      "id": "mindseeds-difference-scout-l1",
+      "series": "mindseeds",
+      "module": "difference-scout",
+      "difficulty": "L1",
+      "titleZh": "找不同侦探 L1",
+      "titleEn": "Mind Seeds Difference Scout L1",
+      "objectiveZh": "通过左右比较快速定位唯一差异，训练视觉比较能力。",
+      "objectiveEn": "Find the single mismatch through left-right comparison to train visual comparison skills.",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "videoIds": ["mindseeds-difference-scout-intro-001"],
+      "gameIds": ["difference-scout"]
+    },
+    {
       "id": "learning-math-pattern-l1",
       "series": "learning",
       "module": "pattern",

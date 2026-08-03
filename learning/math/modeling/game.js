@@ -8,7 +8,7 @@
  * token so the equation is displayed intact.
  *
  * Stats stored under 'learning-math-modeling' — independent
- * from all other modules (Sprite and Learning alike).
+ * from all other modules (Mind Seeds and Learning alike).
  *
  * Depends on: shell.js, data.js (MM_DATA)
  */
