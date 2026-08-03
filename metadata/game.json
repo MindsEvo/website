@@ -75,7 +75,7 @@
       "shell": "shell-1",
       "titleZh": "空间关系",
       "titleEn": "Spatial Pattern",
-      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION"],
+      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"],
       "lessonIds": ["mindseeds-spatial-pattern-l1"],
       "videoIds": ["mindseeds-spatial-pattern-intro-001"]
     },

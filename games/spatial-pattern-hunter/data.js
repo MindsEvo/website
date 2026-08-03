@@ -16,6 +16,15 @@ var SPATIAL_DATA = {
   units: [
     {
       id: 'route-l1',
+      levelId: 'L1',
+      spatialType: 'route_planning',
+      difficultyAxis: {
+        object_complexity: 'concrete',
+        dimension_complexity: 'single',
+        relation_complexity: 'direct',
+        language_complexity: 'question',
+        transfer_complexity: 'within-domain'
+      },
       icon: '1️⃣',
       nameZh: 'L1 · 单步路径',
       nameEn: 'L1 · Basic Route',
@@ -54,6 +63,15 @@ var SPATIAL_DATA = {
     },
     {
       id: 'route-l2',
+      levelId: 'L2',
+      spatialType: 'route_planning',
+      difficultyAxis: {
+        object_complexity: 'concrete',
+        dimension_complexity: 'single',
+        relation_complexity: 'chain',
+        language_complexity: 'question',
+        transfer_complexity: 'within-domain'
+      },
       icon: '2️⃣',
       nameZh: 'L2 · 双步规划',
       nameEn: 'L2 · Two-step Planning',
@@ -92,6 +110,15 @@ var SPATIAL_DATA = {
     },
     {
       id: 'route-l3',
+      levelId: 'L3',
+      spatialType: 'route_planning',
+      difficultyAxis: {
+        object_complexity: 'concrete',
+        dimension_complexity: 'single',
+        relation_complexity: 'constrained',
+        language_complexity: 'question',
+        transfer_complexity: 'strategy'
+      },
       icon: '3️⃣',
       nameZh: 'L3 · 干扰路径',
       nameEn: 'L3 · Distractor Routes',

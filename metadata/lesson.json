@@ -87,9 +87,9 @@
       "difficulty": "L1",
       "titleZh": "空间规律小精灵 L1",
       "titleEn": "Mind Seeds Spatial Pattern L1",
-      "objectiveZh": "识别空间位置关系并进行推断",
-      "objectiveEn": "Infer spatial relationships and transformations",
-      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION"],
+      "objectiveZh": "通过路径规划与障碍规避训练空间推理与决策能力",
+      "objectiveEn": "Train spatial reasoning and decision skills through route planning and obstacle avoidance",
+      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"],
       "videoIds": ["mindseeds-spatial-pattern-intro-001"],
       "gameIds": ["spatial-pattern-hunter"]
     },

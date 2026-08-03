@@ -99,6 +99,13 @@ function renderBoard(q) {
   return html;
 }
 
+function levelFromUnit(unit) {
+  if (unit && unit.levelId) return String(unit.levelId).toUpperCase();
+  var raw = String((unit && unit.id) || 'L0').toUpperCase();
+  var match = raw.match(/L\d+/);
+  return match ? match[0] : 'L0';
+}
+
 shell.createGame({
   id: 'spatial-pattern-hunter',
   theme: { primary: '#0ea5e9', primary2: '#0284c7', bg: '#f0f9ff' },
@@ -159,6 +166,30 @@ shell.createGame({
       'RG.STRATEGY.DECISION.PLANNING',
       'RG.MINDSEEDS.SPATIAL_PATTERN.' + unitId
     ];
+  },
+
+  getReportContext: function (ctx) {
+    var unit = (ctx && ctx.unit) || {};
+    var levelId = levelFromUnit(unit);
+    var comparisonType = unit.spatialType || 'route_planning';
+
+    var axis = unit.difficultyAxis || {
+      object_complexity: 'concrete',
+      dimension_complexity: 'single',
+      relation_complexity: levelId === 'L1' ? 'direct' : (levelId === 'L2' ? 'chain' : 'constrained'),
+      language_complexity: 'question',
+      transfer_complexity: levelId === 'L3' ? 'strategy' : 'within-domain'
+    };
+
+    return {
+      moduleId: 'spatial-pattern',
+      moduleType: 'metathinking',
+      levelId: levelId,
+      comparisonType: comparisonType,
+      difficultyAxis: axis,
+      sourceGameId: 'spatial-pattern-hunter',
+      sampleMode: 'route-scout'
+    };
   },
 
   onCorrect: function (q, acts) {
