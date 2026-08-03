@@ -1,135 +1,103 @@
-/**
- * Spatial Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
- * ─────────────────────────────────────────────────────────
- * Spatial relationship only:
- * - position_swap
- * - shape_rotation
- *
- * Excludes trajectory movement and single-symbol orientation rotation.
- * Depends on: shell.js, data.js
- * ─────────────────────────────────────────────────────────
- */
+'use strict';
 
-function ensureSpatialStyles() {
-  if (document.getElementById('spa-style')) return;
-  var css = '' +
-    '.spa-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}' +
-    '.spa-step{display:flex;align-items:center;justify-content:center;}' +
-    '.spa-sep{font-size:18px;font-weight:900;color:#64748b;line-height:1;}' +
-    '.spa-grid{display:grid;grid-template-columns:repeat(3,26px);grid-template-rows:repeat(3,26px);border:2px solid #94a3b8;border-radius:8px;background:#fff;overflow:hidden;}' +
-    '.spa-cell{width:26px;height:26px;border-right:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;color:#0f172a;line-height:1;}' +
-    '.spa-sym{font-size:18px;font-weight:900;display:inline-block;transform:translateY(-0.5px);}' +
-    '.spa-cell:nth-child(3n){border-right:none;}' +
-    '.spa-cell:nth-child(n+7){border-bottom:none;}' +
-    '.spa-q{font-size:20px;font-weight:900;color:#ef4444;}' +
-    '.spa-seq-grid{transform:scale(1.04);}' +
-    '.spa-opt-grid{transform:scale(1.12);}' +
-    '@media (max-width:520px){' +
-      '.spa-grid{grid-template-columns:repeat(3,20px);grid-template-rows:repeat(3,20px);}' +
-      '.spa-cell{width:20px;height:20px;}' +
-      '.spa-sym{font-size:15px;}' +
-      '.spa-opt-grid{transform:scale(1.06);}' +
-      '.spa-seq-grid{transform:scale(1);}' +
-      '.spa-sep{font-size:16px;}' +
-    '}';
-  var styleEl = document.createElement('style');
-  styleEl.id = 'spa-style';
-  styleEl.textContent = css;
-  document.head.appendChild(styleEl);
+(function injectRouteScoutStyles() {
+  if (document.getElementById('rs-shell-style')) return;
+  var s = document.createElement('style');
+  s.id = 'rs-shell-style';
+  s.textContent = [
+    '.rs-wrap{display:grid;gap:10px;justify-items:center;}',
+    '.rs-q{font-size:21px;font-weight:900;color:#0f172a;line-height:1.3;text-align:center;}',
+    '.rs-sub{font-size:13px;font-weight:700;color:#64748b;text-align:center;}',
+    '.rs-board{display:grid;gap:2px;background:#cbd5e1;padding:4px;border-radius:10px;box-shadow:0 6px 18px rgba(15,23,42,.08);}',
+    '.rs-cell{width:30px;height:30px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#0f172a;}',
+    '.rs-wall{background:#334155;color:#334155;}',
+    '.rs-start{background:#bbf7d0;color:#166534;}',
+    '.rs-goal{background:#fde68a;color:#92400e;}',
+    '.rs-empty{background:#f8fafc;color:transparent;}',
+    '.rs-opt{display:grid;gap:4px;justify-items:center;align-content:center;min-height:72px;}',
+    '.rs-route{font-size:22px;font-weight:900;color:#0f172a;line-height:1;letter-spacing:1px;}',
+    '.rs-route-sub{font-size:11px;font-weight:700;color:#64748b;}',
+    '.rs-legend{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}',
+    '.rs-legend-item{font-size:11px;font-weight:700;color:#475569;background:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;padding:3px 8px;}',
+    '@media (max-width:520px){.rs-cell{width:24px;height:24px;font-size:13px;}.rs-route{font-size:18px;}}'
+  ].join('');
+  document.head.appendChild(s);
+}());
+
+function parseMap(rows) {
+  return rows.map(function (row) { return row.split(''); });
 }
 
-function emptyBoard() {
-  var b = [];
-  for (var r = 0; r < 3; r++) {
-    var row = [];
-    for (var c = 0; c < 3; c++) row.push('');
-    b.push(row);
+function findChar(board, ch) {
+  for (var r = 0; r < board.length; r++) {
+    for (var c = 0; c < board[r].length; c++) {
+      if (board[r][c] === ch) return { r: r, c: c };
+    }
   }
-  return b;
+  return null;
 }
 
-function slotsByOrientation(orientation) {
-  return orientation === 'vertical'
-    ? [[0, 1], [2, 1]]
-    : [[1, 0], [1, 2]];
+function routeToArrows(route) {
+  var out = '';
+  for (var i = 0; i < route.length; i++) {
+    var step = route.charAt(i);
+    out += step === 'U' ? '↑' : step === 'D' ? '↓' : step === 'L' ? '←' : '→';
+  }
+  return out;
 }
 
-function renderGrid(board, extraClass) {
-  extraClass = extraClass || '';
-  var html = '<div class="spa-grid ' + extraClass + '">';
-  for (var r = 0; r < 3; r++) {
-    for (var c = 0; c < 3; c++) {
-      var val = board[r][c] || '';
-      if (val && val.indexOf('<') === -1) {
-        val = '<span class="spa-sym">' + val + '</span>';
+function nextPos(pos, step) {
+  var r = pos.r;
+  var c = pos.c;
+  if (step === 'U') r--;
+  else if (step === 'D') r++;
+  else if (step === 'L') c--;
+  else if (step === 'R') c++;
+  return { r: r, c: c };
+}
+
+function isValidRoute(q, route) {
+  var board = parseMap(q.map);
+  var start = findChar(board, 'S');
+  var goal = findChar(board, 'G');
+  if (!start || !goal) return false;
+
+  var pos = { r: start.r, c: start.c };
+  for (var i = 0; i < route.length; i++) {
+    pos = nextPos(pos, route.charAt(i));
+    if (pos.r < 0 || pos.r >= board.length) return false;
+    if (pos.c < 0 || pos.c >= board[0].length) return false;
+    if (board[pos.r][pos.c] === '#') return false;
+  }
+  return pos.r === goal.r && pos.c === goal.c;
+}
+
+function renderBoard(q) {
+  var board = parseMap(q.map);
+  var html = '<div class="rs-board" style="grid-template-columns:repeat(' + board[0].length + ',1fr)">';
+  for (var r = 0; r < board.length; r++) {
+    for (var c = 0; c < board[r].length; c++) {
+      var cell = board[r][c];
+      var cls = 'rs-cell ';
+      var text = '';
+      if (cell === '#') {
+        cls += 'rs-wall';
+      } else if (cell === 'S') {
+        cls += 'rs-start';
+        text = 'S';
+      } else if (cell === 'G') {
+        cls += 'rs-goal';
+        text = 'G';
+      } else {
+        cls += 'rs-empty';
+        text = '·';
       }
-      html += '<span class="spa-cell">' + val + '</span>';
+      html += '<span class="' + cls + '">' + text + '</span>';
     }
   }
   html += '</div>';
   return html;
 }
-
-function boardForSwapState(q, stateKey) {
-  var board = emptyBoard();
-  var slots = slotsByOrientation(q.orientation);
-  var symbols = q.symbols || {};
-
-  var a = stateKey && stateKey.length > 0 ? stateKey.charAt(0) : 'A';
-  var b = stateKey && stateKey.length > 1 ? stateKey.charAt(1) : 'B';
-
-  board[slots[0][0]][slots[0][1]] = symbols[a] || '';
-  board[slots[1][0]][slots[1][1]] = symbols[b] || '';
-  return board;
-}
-
-function baseShapeCells(kind) {
-  if (kind === 'line2') return [[1, 0], [1, 1]];
-  return [[1, 1], [1, 2], [2, 1]]; // L3 default
-}
-
-function rotateCw(cell) {
-  return [cell[1], 2 - cell[0]];
-}
-
-function boardForRotation(kind, angle) {
-  var board = emptyBoard();
-  var turns = ((Number(angle) % 360) + 360) % 360;
-  turns = Math.floor(turns / 90);
-  var cells = baseShapeCells(kind).map(function (p) { return [p[0], p[1]]; });
-
-  for (var i = 0; i < turns; i++) {
-    cells = cells.map(rotateCw);
-  }
-  cells.forEach(function (p) {
-    board[p[0]][p[1]] = '●';
-  });
-  return board;
-}
-
-function renderSwapState(q, stateKey, mode) {
-  if (stateKey === '?') {
-    var qb = emptyBoard();
-    qb[1][1] = '<span class="spa-q">?</span>';
-    return renderGrid(qb, mode === 'option' ? 'spa-opt-grid' : 'spa-seq-grid');
-  }
-  var board = boardForSwapState(q, stateKey);
-  return renderGrid(board, mode === 'option' ? 'spa-opt-grid' : 'spa-seq-grid');
-}
-
-function renderRotationState(q, angle, mode) {
-  if (angle === '?') {
-    var qb = emptyBoard();
-    qb[1][1] = '<span class="spa-q">?</span>';
-    return renderGrid(qb, mode === 'option' ? 'spa-opt-grid' : 'spa-seq-grid');
-  }
-  var board = boardForRotation(q.shapeKind, angle);
-  return renderGrid(board, mode === 'option' ? 'spa-opt-grid' : 'spa-seq-grid');
-}
-
-var _errorLog = {};
-
-ensureSpatialStyles();
 
 shell.createGame({
   id: 'spatial-pattern-hunter',
@@ -144,8 +112,8 @@ shell.createGame({
     history: { enabled: true },
     help: {
       enabled: true,
-      contentZh: '先看位置关系或旋转规律，再推断问号位置的图形状态。',
-      contentEn: 'Track spatial relation or rotation rules, then infer the missing state.'
+      contentZh: '只保留路线规划核心：看地图、避开墙、选能到终点的路径。',
+      contentEn: 'Keep core route planning only: read the map, avoid walls, and pick the path that reaches goal.'
     },
     video: {
       enabled: true,
@@ -153,54 +121,34 @@ shell.createGame({
     }
   },
   title: { zh: '🧭 空间关系', en: '🧭 Spatial Pattern' },
-  subtitle: { zh: '看懂位置的关系，预测下一步', en: 'Read position relationships and predict the next step' },
-  passScore: 4,
+  subtitle: { zh: 'Route Scout：保留规划思维，简化复杂操作', en: 'Route Scout: keep planning value, simplify complex operations' },
+  passScore: 3,
   units: SPATIAL_DATA.units,
 
   renderSequence: function (q, container) {
-    var html = '<div class="spa-row">';
-    if (q.layout === 'swap') {
-      q.sequence.forEach(function (state, idx) {
-        html += '<span class="spa-step">' + renderSwapState(q, state, 'sequence') + '</span>';
-        if (idx < q.sequence.length - 1) html += '<span class="spa-sep">→</span>';
-      });
-    } else {
-      q.sequence.forEach(function (angle, idx) {
-        html += '<span class="spa-step">' + renderRotationState(q, angle, 'sequence') + '</span>';
-        if (idx < q.sequence.length - 1) html += '<span class="spa-sep">→</span>';
-      });
-    }
-    html += '</div>';
-    container.innerHTML = html;
+    container.innerHTML = '<div class="rs-wrap">' +
+      '<div class="rs-q"><span class="zh">哪条路线能到达终点？</span><span class="en">Which route reaches the goal?</span></div>' +
+      '<div class="rs-sub"><span class="zh">S 为起点，G 为终点，# 为障碍</span><span class="en">S is start, G is goal, # is wall</span></div>' +
+      renderBoard(q) +
+      '<div class="rs-legend">' +
+        '<span class="rs-legend-item"><span class="zh">只选一条可达路线</span><span class="en">Only one route is reachable</span></span>' +
+      '</div>' +
+    '</div>';
   },
 
-  renderOption: function (optKey, q) {
-    var def = q.optionDefs[optKey];
-    if (q.layout === 'swap') {
-      return renderSwapState(q, def.state, 'option');
-    }
-    return renderGrid(boardForRotation(def.shapeKind, def.angle), 'spa-opt-grid');
+  renderOption: function (opt) {
+    return '<div class="rs-opt"><span class="rs-route">' + routeToArrows(opt) + '</span>' +
+      '<span class="rs-route-sub">' + opt + '</span></div>';
   },
 
   checkAnswer: function (selected, q) {
     return String(selected) === String(q.answer);
   },
 
-  onAnswer: function (selected, q, isCorrect) {
-    var key = String(selected);
-    var type = (q.optionTypes && q.optionTypes[key]) || (isCorrect ? 'correct' : 'unknown');
-    SPATIAL_DATA.units.forEach(function (unit) {
-      if (unit.questions.indexOf(q) !== -1) {
-        if (!_errorLog[unit.patternType]) _errorLog[unit.patternType] = {};
-        _errorLog[unit.patternType][type] = (_errorLog[unit.patternType][type] || 0) + 1;
-      }
-    });
-  },
-
   getVoiceText: function (q, idx) {
     return shell.lang === 'zh'
-      ? '第' + (idx + 1) + '题，下一步的空间关系是什么？'
-      : 'Question ' + (idx + 1) + ', what is the next spatial relationship?';
+      ? '第' + (idx + 1) + '题，哪条路线可以到达终点？'
+      : 'Question ' + (idx + 1) + ', which route can reach the goal?';
   },
 
   registerRootGenes: function (ctx) {
@@ -208,7 +156,17 @@ shell.createGame({
     var unitId = String(unit.id || 'u0');
     return [
       'RG.PATTERN.SPATIAL.RELATION',
+      'RG.STRATEGY.DECISION.PLANNING',
       'RG.MINDSEEDS.SPATIAL_PATTERN.' + unitId
     ];
+  },
+
+  onCorrect: function (q, acts) {
+    if (!isValidRoute(q, q.answer)) {
+      var warn = document.createElement('div');
+      warn.className = 's1-fb s1-fb-err';
+      warn.textContent = 'Data warning: answer route does not reach goal.';
+      acts.parentNode.insertBefore(warn, acts);
+    }
   }
 });

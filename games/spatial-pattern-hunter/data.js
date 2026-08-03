@@ -1,368 +1,130 @@
+'use strict';
+
 /**
- * Spatial Pattern Hunter — Game Data  v1.0.0  (Shell-1 format)
- * ─────────────────────────────────────────────────────────
- * Scope in v1:
- * 1) position_swap  (horizontal/vertical slot exchange)
-          symbols: { A: '■', B: '●', C: '★' },
+ * Spatial Pattern Hunter — Route Scout Sample (Shell-1 format)
  *
- * Out of scope:
- * - single-point movement trajectories (belongs to Motion)
- * - single-symbol direction rotation (belongs to Visual)
+ * Adaptation principle:
+ * Keep planning + spatial reasoning value,
+ * remove heavy animation/physics complexity.
+ *
+ * Legend:
+ * S = start, G = goal, # = wall, . = walkable
+ * Route code letters: U D L R
  */
 
 var SPATIAL_DATA = {
   units: [
     {
-      id: 'position-swap',
-      icon: '↔️',
-      nameZh: '位置交换',
-      nameEn: 'Position Swap',
-      descZh: '看懂左右或上下关系的交换',
-      descEn: 'Read left-right / up-down relationship swaps',
-      abilityTag: 'spatial_relationship',
-      patternType: 'position_swap',
+      id: 'route-l1',
+      icon: '1️⃣',
+      nameZh: 'L1 · 单步路径',
+      nameEn: 'L1 · Basic Route',
+      descZh: '短路径，障碍少，先建立方向判断。',
+      descEn: 'Short routes with few blockers to build direction judgment.',
       questions: [
         {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 1,
-          orientation: 'horizontal',
-          symbols: { A: '▲', B: '○', C: '★' },
-          sequence: ['AB', 'BA', 'AB', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'BA' },
-            opt2: { state: 'AB' },
-            opt3: { state: 'AA' },
-            opt4: { state: 'AC' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '两个物体在左右槽位中交替交换。',
-          hintEn: 'The two objects alternate by swapping left-right slots.'
+          map: ['S..', '.##', '..G'],
+          answer: 'DDRR',
+          options: ['DDRR', 'RRDD', 'DRRD', 'RDDR'],
+          hintZh: '右下角通路被墙切开，先向下绕行。',
+          hintEn: 'Walls split the right-down area, so go down first and detour.'
         },
         {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 1,
-          orientation: 'vertical',
-          symbols: { A: '★', B: '●', C: '◆' },
-          sequence: ['AB', 'BA', 'AB', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'BA' },
-            opt2: { state: 'AB' },
-            opt3: { state: 'BB' },
-            opt4: { state: 'AC' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '上下关系在交替交换。',
-          hintEn: 'The up-down relationship swaps alternately.'
+          map: ['S#.', '..#', '..G'],
+          answer: 'DDRR',
+          options: ['DDRR', 'DRRD', 'RRDD', 'DRUR'],
+          hintZh: '起点右边是墙，只能向下开路。',
+          hintEn: 'A wall blocks the right side at start, so open path downward.'
         },
         {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 1,
-          orientation: 'horizontal',
-          symbols: { A: '■', B: '●', C: '★' },
-          sequence: ['BA', 'AB', 'BA', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'AB' },
-            opt2: { state: 'BA' },
-            opt3: { state: 'BB' },
-            opt4: { state: 'CB' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '先看上一步，再判断是否继续交换。',
-          hintEn: 'Look at the previous step and continue the swap rule.'
+          map: ['S..', '##.', '..G'],
+          answer: 'RRDD',
+          options: ['RRDD', 'RDRD', 'DDRR', 'RDDL'],
+          hintZh: '第二行左侧封死，只能先走右边。',
+          hintEn: 'Left side of row 2 is blocked, so move right side first.'
         },
         {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 2,
-          orientation: 'horizontal',
-          symbols: { A: '▲', B: '●', C: '★' },
-          sequence: ['AB', 'BA', 'AB', 'BA', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'AB' },
-            opt2: { state: 'BA' },
-            opt3: { state: 'AA' },
-            opt4: { state: 'BC' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '观察更多步数后，规律仍是交换。',
-          hintEn: 'Even with more steps, the rule remains swapping.'
-        },
-        {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 2,
-          orientation: 'vertical',
-          symbols: { A: '▲', B: '●', C: '■' },
-          sequence: ['BA', 'AB', 'BA', 'AB', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'BA' },
-            opt2: { state: 'AB' },
-            opt3: { state: 'AA' },
-            opt4: { state: 'CA' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '不要看图标朝向，只看上下顺序关系。',
-          hintEn: 'Ignore icon orientation; focus on up-down order relation.'
-        },
-        {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 2,
-          orientation: 'horizontal',
-          symbols: { A: '★', B: '■', C: '○' },
-          sequence: ['BA', 'AB', 'BA', 'AB', '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'BA' },
-            opt2: { state: 'AB' },
-            opt3: { state: 'BB' },
-            opt4: { state: 'AC' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '每一步都在左右互换。',
-          hintEn: 'Each step swaps left and right.'
-        },
-        {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 3,
-          orientation: 'horizontal',
-          symbols: { A: '▲', B: '●', C: '★' },
-          sequence: ['AB', 'BA', '?', 'BA', 'AB'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'AB' },
-            opt2: { state: 'BA' },
-            opt3: { state: 'AA' },
-            opt4: { state: 'AC' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '问号在中间，也要保持交换规律。',
-          hintEn: 'Even with a middle blank, keep the swapping rule.'
-        },
-        {
-          layout: 'swap',
-          patternType: 'position_swap',
-          level: 3,
-          orientation: 'vertical',
-          symbols: { A: '■', B: '●', C: '★' },
-          sequence: ['BA', 'AB', 'BA', '?', 'BA', 'AB'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { state: 'AB' },
-            opt2: { state: 'BA' },
-            opt3: { state: 'BB' },
-            opt4: { state: 'CB' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'order_unchanged',
-            opt3: 'position_wrong',
-            opt4: 'irrelevant_object'
-          },
-          hintZh: '步数更长时，先找交换节拍再补空位。',
-          hintEn: 'With longer sequences, find the swap rhythm first.'
+          map: ['S..', '.#G', '...'],
+          answer: 'RRD',
+          options: ['RRD', 'RDR', 'DRR', 'RDD'],
+          hintZh: '终点在右上区域，先到最右再下。',
+          hintEn: 'Goal is in the upper-right area: go far right, then down.'
         }
       ]
     },
     {
-      id: 'shape-rotation',
-      icon: '🔄',
-      nameZh: '整体旋转',
-      nameEn: 'Shape Rotation',
-      descZh: '看懂多格构型的整体旋转',
-      descEn: 'Read whole-shape rotation in a 3x3 grid',
-      abilityTag: 'spatial_relationship',
-      patternType: 'shape_rotation',
+      id: 'route-l2',
+      icon: '2️⃣',
+      nameZh: 'L2 · 双步规划',
+      nameEn: 'L2 · Two-step Planning',
+      descZh: '路径更长，需提前两步避开死路。',
+      descEn: 'Longer routes requiring two-step lookahead to avoid dead ends.',
       questions: [
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 1,
-          shapeKind: 'line2',
-          sequence: [0, 90, 180, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 270, shapeKind: 'line2' },
-            opt2: { angle: 90, shapeKind: 'line2' },
-            opt3: { angle: 180, shapeKind: 'line2' },
-            opt4: { angle: 270, shapeKind: 'L3' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: '构型每次整体转 90°。',
-          hintEn: 'The whole shape rotates 90° each step.'
+          map: ['S..#', '##.#', '...#', '#..G'],
+          answer: 'RRDDDR',
+          options: ['RRDDDR', 'RRDDRD', 'RRDRDD', 'RDRDDR'],
+          hintZh: '起点只能向右推进，之后沿右侧下行。',
+          hintEn: 'Start can only move right first, then descend along the right lane.'
         },
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 1,
-          shapeKind: 'line2',
-          sequence: [90, 180, 270, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 0, shapeKind: 'line2' },
-            opt2: { angle: 180, shapeKind: 'line2' },
-            opt3: { angle: 270, shapeKind: 'line2' },
-            opt4: { angle: 0, shapeKind: 'L3' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: '继续沿同方向旋转。',
-          hintEn: 'Continue rotating in the same direction.'
+          map: ['S.#.', '.#..', '.##.', '...G'],
+          answer: 'DDDRRR',
+          options: ['DDDRRR', 'DRRDRR', 'RRDDRR', 'DDRDRR'],
+          hintZh: '中部有竖向封锁，先到底再横向移动。',
+          hintEn: 'A vertical block in the middle means go to bottom first, then move across.'
         },
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 2,
-          shapeKind: 'line2',
-          sequence: [0, 270, 180, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 90, shapeKind: 'line2' },
-            opt2: { angle: 270, shapeKind: 'line2' },
-            opt3: { angle: 0, shapeKind: 'line2' },
-            opt4: { angle: 90, shapeKind: 'L3' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: '这是反方向旋转序列。',
-          hintEn: 'This sequence rotates in the opposite direction.'
+          map: ['S..#', '##..', '..#.', '.#G.'],
+          answer: 'RRDRDDL',
+          options: ['RRDRDDL', 'RRDDDRL', 'DDRRRDL', 'RRDRRDL'],
+          hintZh: '先走右上通道，再下探后回左到终点。',
+          hintEn: 'Take the upper-right corridor, then go down and return left to goal.'
         },
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 2,
-          shapeKind: 'line2',
-          sequence: [180, 90, 0, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 270, shapeKind: 'line2' },
-            opt2: { angle: 90, shapeKind: 'line2' },
-            opt3: { angle: 180, shapeKind: 'line2' },
-            opt4: { angle: 270, shapeKind: 'L3' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: '观察角度在如何递减。',
-          hintEn: 'Observe how the angles decrease each step.'
+          map: ['S#..', '.#.#', '...#', '##.G'],
+          answer: 'DDRRDR',
+          options: ['DDRRDR', 'DDRDRR', 'DRDRRR', 'RRDDDR'],
+          hintZh: '起点右侧封闭，先穿过下方通路再折向终点。',
+          hintEn: 'Right side at start is blocked; pass through lower lane before turning to goal.'
+        }
+      ]
+    },
+    {
+      id: 'route-l3',
+      icon: '3️⃣',
+      nameZh: 'L3 · 干扰路径',
+      nameEn: 'L3 · Distractor Routes',
+      descZh: '增加迷惑选项，训练稳定的空间推理。',
+      descEn: 'Adds distractor routes to train stable spatial reasoning.',
+      questions: [
+        {
+          map: ['S....', '###..', '...#.', '.#.#.', '.#..G'],
+          answer: 'RRRRDDDD',
+          options: ['RRRRDDDD', 'RRRDDDDD', 'DDRRRRDD', 'RRRRDDDR'],
+          hintZh: '第二行几乎封死，先在顶行走到最右。',
+          hintEn: 'Row 2 is mostly blocked, so traverse to far right on top row first.'
         },
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 3,
-          shapeKind: 'L3',
-          sequence: [0, 90, 180, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 270, shapeKind: 'L3' },
-            opt2: { angle: 90, shapeKind: 'L3' },
-            opt3: { angle: 0, shapeKind: 'L3' },
-            opt4: { angle: 270, shapeKind: 'line2' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: 'L 形不对称，更要看清旋转方向。',
-          hintEn: 'L-shape is asymmetric, so direction matters more.'
+          map: ['S#...', '.#.#.', '.#.#G', '.#.#.', '.....'],
+          answer: 'DDDDRRRRUU',
+          options: ['DDDDRRRRUU', 'DDDRRRRUU', 'RRDDDDRRUU', 'DDDDRRRUUU'],
+          hintZh: '中段竖墙连续，必须到底后再右移并上行。',
+          hintEn: 'Continuous middle walls force you to bottom first, then move right and go up.'
         },
         {
-          layout: 'rotation',
-          patternType: 'shape_rotation',
-          level: 3,
-          shapeKind: 'L3',
-          sequence: [90, 0, 270, '?'],
-          answer: 'opt1',
-          options: ['opt1', 'opt2', 'opt3', 'opt4'],
-          optionDefs: {
-            opt1: { angle: 180, shapeKind: 'L3' },
-            opt2: { angle: 0, shapeKind: 'L3' },
-            opt3: { angle: 270, shapeKind: 'L3' },
-            opt4: { angle: 180, shapeKind: 'line2' }
-          },
-          optionTypes: {
-            opt1: 'correct',
-            opt2: 'wrong_direction',
-            opt3: 'wrong_angle',
-            opt4: 'wrong_shape'
-          },
-          hintZh: '这是固定 90° 的逆向旋转。',
-          hintEn: 'This is fixed 90° rotation in the reverse direction.'
+          map: ['S....', '.###.', '....#', '.####', 'G....'],
+          answer: 'DDDD',
+          options: ['DDDD', 'RRRRDDDD', 'DDRRDD', 'DRDD'],
+          hintZh: '右侧是伪通道，真正可达路线在最左列。',
+          hintEn: 'Right side is a fake corridor; only the left column reaches goal.'
+        },
+        {
+          map: ['S..#.', '.#.#.', '.#.#.', '.#...', '...#G'],
+          answer: 'RRDDDRRD',
+          options: ['RRDDDRRD', 'DDRRRRDD', 'RRDDRDRD', 'RRDDDRDR'],
+          hintZh: '先沿上方开口进入中线，再向右下收尾。',
+          hintEn: 'Enter through the top opening into the middle lane, then finish at lower-right.'
         }
       ]
     }
