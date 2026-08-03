@@ -25,6 +25,12 @@ var LEVELS = [
     maxLen: 10,
     minGapLen: 4,
     minVisualGapPct: 35,
+    lengthVisual: 'solid',
+    lengthScenarios: [
+      { leftZh: '铅笔 A', rightZh: '铅笔 B', leftEn: 'Pencil A', rightEn: 'Pencil B' },
+      { leftZh: '小棒 A', rightZh: '小棒 B', leftEn: 'Stick A', rightEn: 'Stick B' },
+      { leftZh: '纸条 A', rightZh: '纸条 B', leftEn: 'Paper Strip A', rightEn: 'Paper Strip B' }
+    ],
     lengthStageZh: '基础长短比较（差异明显）',
     lengthStageEn: 'Basic length comparison (clear gap)'
   },
@@ -42,6 +48,12 @@ var LEVELS = [
     maxLen: 22,
     minGapLen: 7,
     minVisualGapPct: 35,
+    lengthVisual: 'segments',
+    lengthScenarios: [
+      { leftZh: '绳子 A', rightZh: '绳子 B', leftEn: 'Rope A', rightEn: 'Rope B' },
+      { leftZh: '丝带 A', rightZh: '丝带 B', leftEn: 'Ribbon A', rightEn: 'Ribbon B' },
+      { leftZh: '道路 A', rightZh: '道路 B', leftEn: 'Path A', rightEn: 'Path B' }
+    ],
     lengthStageZh: '进阶长短比较（范围更大）',
     lengthStageEn: 'Advanced length comparison (wider range)'
   },
@@ -99,6 +111,7 @@ function makeLengthQuestion(level) {
   var defaultGap = level && level.id === 'L1' ? 4 : 5;
   var minGap = typeof level.minGapLen === 'number' ? level.minGapLen : defaultGap;
   var minVisualGapPct = typeof level.minVisualGapPct === 'number' ? level.minVisualGapPct : 30;
+  var scenarios = level.lengthScenarios || [];
 
   function toVisualPercent(v) {
     if (maxLen <= minLen) return 50;
@@ -114,6 +127,7 @@ function makeLengthQuestion(level) {
 
   var askBigger = Math.random() < 0.5;
   var aIsCorrect = askBigger ? (a > b) : (a < b);
+  var scenario = scenarios.length ? scenarios[randInt(0, scenarios.length - 1)] : null;
 
   return {
     a: a,
@@ -122,6 +136,11 @@ function makeLengthQuestion(level) {
     correctSide: aIsCorrect ? 'left' : 'right',
     lenMin: minLen,
     lenMax: maxLen,
+    lengthVisual: level.lengthVisual || 'solid',
+    leftLabelZh: scenario ? scenario.leftZh : 'A',
+    rightLabelZh: scenario ? scenario.rightZh : 'B',
+    leftLabelEn: scenario ? scenario.leftEn : 'A',
+    rightLabelEn: scenario ? scenario.rightEn : 'B',
     lengthStageZh: level.lengthStageZh || '',
     lengthStageEn: level.lengthStageEn || '',
     mode: 'length',

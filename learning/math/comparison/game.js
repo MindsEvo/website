@@ -21,6 +21,10 @@
     '.cmp-bar{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#0ea5e9);border-radius:999px;}',
     '.cmp-opt-bar{display:block;width:100%;max-width:170px;height:14px;background:#dbeafe;border-radius:999px;overflow:hidden;}',
     '.cmp-opt-barfill{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,#2563eb);border-radius:999px;}',
+    '.cmp-seg-wrap{display:grid;grid-auto-flow:column;grid-auto-columns:12px;gap:3px;justify-content:start;width:100%;max-width:180px;}',
+    '.cmp-seg{height:14px;border-radius:5px;background:#93c5fd;box-shadow:0 1px 2px rgba(0,0,0,0.12);}',
+    '.cmp-seg-opt-wrap{display:grid;grid-auto-flow:column;grid-auto-columns:11px;gap:3px;justify-content:start;width:100%;max-width:170px;}',
+    '.cmp-seg-opt{height:14px;border-radius:5px;background:#60a5fa;box-shadow:0 1px 2px rgba(0,0,0,0.15);}',
     '.s1-opt{min-height:88px !important;}'
   ].join('');
   document.head.appendChild(s);
@@ -47,6 +51,26 @@ function getLengthPercent(q, value) {
   return 28 + Math.round(ratio * 68);
 }
 
+function getSegmentCount(q, value) {
+  var minLen = typeof q.lenMin === 'number' ? q.lenMin : 3;
+  var maxLen = typeof q.lenMax === 'number' ? q.lenMax : 12;
+  var safeValue = typeof value === 'number' ? value : minLen;
+  if (maxLen <= minLen) return 4;
+
+  var clamped = Math.max(minLen, Math.min(maxLen, safeValue));
+  var ratio = (clamped - minLen) / (maxLen - minLen);
+  return 3 + Math.round(ratio * 9);
+}
+
+function renderSegments(count, wrapClass, segClass) {
+  var html = '<span class="' + wrapClass + '">';
+  for (var i = 0; i < count; i++) {
+    html += '<span class="' + segClass + '"></span>';
+  }
+  html += '</span>';
+  return html;
+}
+
 function normalizeQuestion(raw, level, comparisonType) {
   var levelId = level && level.id ? String(level.id) : 'L0';
   var type = comparisonType || 'quantity';
@@ -60,6 +84,11 @@ function normalizeQuestion(raw, level, comparisonType) {
     answer: raw.correctSide,
     levelId: levelId,
     comparisonType: type,
+    lengthVisual: raw.lengthVisual || 'solid',
+    leftLabelZh: raw.leftLabelZh || 'A',
+    rightLabelZh: raw.rightLabelZh || 'B',
+    leftLabelEn: raw.leftLabelEn || 'A',
+    rightLabelEn: raw.rightLabelEn || 'B',
     lengthStageZh: raw.lengthStageZh || '',
     lengthStageEn: raw.lengthStageEn || '',
     difficultyAxis: {
@@ -164,8 +193,13 @@ shell.createGame({
       leftPreview = renderDots(q.a, 'cmp-dot', 'cmp-dots');
       rightPreview = renderDots(q.b, 'cmp-dot', 'cmp-dots');
     } else if (q.mode === 'length') {
-      leftPreview = '<span class="cmp-bar-wrap"><span class="cmp-bar" style="width:' + getLengthPercent(q, q.a) + '%"></span></span>';
-      rightPreview = '<span class="cmp-bar-wrap"><span class="cmp-bar" style="width:' + getLengthPercent(q, q.b) + '%"></span></span>';
+      if (q.lengthVisual === 'segments') {
+        leftPreview = renderSegments(getSegmentCount(q, q.a), 'cmp-seg-wrap', 'cmp-seg');
+        rightPreview = renderSegments(getSegmentCount(q, q.b), 'cmp-seg-wrap', 'cmp-seg');
+      } else {
+        leftPreview = '<span class="cmp-bar-wrap"><span class="cmp-bar" style="width:' + getLengthPercent(q, q.a) + '%"></span></span>';
+        rightPreview = '<span class="cmp-bar-wrap"><span class="cmp-bar" style="width:' + getLengthPercent(q, q.b) + '%"></span></span>';
+      }
     } else {
       leftPreview = '<span class="cmp-opt-num">' + q.a + '</span>';
       rightPreview = '<span class="cmp-opt-num">' + q.b + '</span>';
@@ -183,8 +217,8 @@ shell.createGame({
       '<div class="cmp-q">' + qText + '</div>' +
       '<div class="cmp-sub">' + hintLine + '</div>' +
       '<div class="cmp-preview">' +
-        '<div class="cmp-pcell">' + leftPreview + '<div class="cmp-pnum">A</div></div>' +
-        '<div class="cmp-pcell">' + rightPreview + '<div class="cmp-pnum">B</div></div>' +
+        '<div class="cmp-pcell">' + leftPreview + '<div class="cmp-pnum"><span class="zh">' + q.leftLabelZh + '</span><span class="en">' + q.leftLabelEn + '</span></div></div>' +
+        '<div class="cmp-pcell">' + rightPreview + '<div class="cmp-pnum"><span class="zh">' + q.rightLabelZh + '</span><span class="en">' + q.rightLabelEn + '</span></div></div>' +
       '</div>' +
     '</div>';
   },
@@ -195,7 +229,11 @@ shell.createGame({
     if (q.mode === 'dots') {
       body = renderDots(value, 'cmp-opt-dot', 'cmp-opt-dots') + '<span class="cmp-opt-num">' + value + '</span>';
     } else if (q.mode === 'length') {
-      body = '<span class="cmp-opt-bar"><span class="cmp-opt-barfill" style="width:' + getLengthPercent(q, value) + '%"></span></span>';
+      if (q.lengthVisual === 'segments') {
+        body = renderSegments(getSegmentCount(q, value), 'cmp-seg-opt-wrap', 'cmp-seg-opt');
+      } else {
+        body = '<span class="cmp-opt-bar"><span class="cmp-opt-barfill" style="width:' + getLengthPercent(q, value) + '%"></span></span>';
+      }
     } else {
       body = '<span class="cmp-opt-num">' + value + '</span>';
     }
