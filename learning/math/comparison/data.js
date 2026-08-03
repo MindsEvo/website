@@ -17,10 +17,16 @@ var LEVELS = [
     nameEn: 'L1 · Numbers within 10',
     refZh: '参考背景：一年级上学期',
     refEn: 'Ref: Grade 1 Sem 1',
-    rounds: 8,
+    rounds: 4,
     mode: 'dots',   // show dot arrays + numeral
     min: 1, max: 9,
     minGap: 1,      // minimum difference to avoid near-equal ambiguity
+    minLen: 2,
+    maxLen: 10,
+    minGapLen: 4,
+    minVisualGapPct: 35,
+    lengthStageZh: '基础长短比较（差异明显）',
+    lengthStageEn: 'Basic length comparison (clear gap)'
   },
   {
     id: 'L2',
@@ -28,10 +34,16 @@ var LEVELS = [
     nameEn: 'L2 · Numbers within 20',
     refZh: '参考背景：一年级下学期',
     refEn: 'Ref: Grade 1 Sem 2',
-    rounds: 8,
+    rounds: 4,
     mode: 'number',
     min: 1, max: 20,
     minGap: 1,
+    minLen: 6,
+    maxLen: 22,
+    minGapLen: 7,
+    minVisualGapPct: 35,
+    lengthStageZh: '进阶长短比较（范围更大）',
+    lengthStageEn: 'Advanced length comparison (wider range)'
   },
   {
     id: 'L3',
@@ -39,7 +51,7 @@ var LEVELS = [
     nameEn: 'L3 · Numbers within 100',
     refZh: '参考背景：二年级',
     refEn: 'Ref: Grade 2',
-    rounds: 10,
+    rounds: 4,
     mode: 'number',
     min: 10, max: 99,
     minGap: 3,
@@ -72,5 +84,46 @@ function makeQuestion(level) {
     askBigger: askBigger,
     correctSide: aIsCorrect ? 'left' : 'right',
     mode: level.mode,
+  };
+}
+
+/**
+ * Spatial-visual variant: compare bar lengths directly.
+ * Returns { a, b, askBigger, correctSide, mode: 'length' }
+ */
+function makeLengthQuestion(level) {
+  var a, b;
+  var attempts = 0;
+  var minLen = typeof level.minLen === 'number' ? level.minLen : 3;
+  var maxLen = typeof level.maxLen === 'number' ? level.maxLen : 12;
+  var defaultGap = level && level.id === 'L1' ? 4 : 5;
+  var minGap = typeof level.minGapLen === 'number' ? level.minGapLen : defaultGap;
+  var minVisualGapPct = typeof level.minVisualGapPct === 'number' ? level.minVisualGapPct : 30;
+
+  function toVisualPercent(v) {
+    if (maxLen <= minLen) return 50;
+    var ratio = (v - minLen) / (maxLen - minLen);
+    return 28 + ratio * 68;
+  }
+
+  do {
+    a = randInt(minLen, maxLen);
+    b = randInt(minLen, maxLen);
+    attempts++;
+  } while ((Math.abs(a - b) < minGap || Math.abs(toVisualPercent(a) - toVisualPercent(b)) <= minVisualGapPct) && attempts < 200);
+
+  var askBigger = Math.random() < 0.5;
+  var aIsCorrect = askBigger ? (a > b) : (a < b);
+
+  return {
+    a: a,
+    b: b,
+    askBigger: askBigger,
+    correctSide: aIsCorrect ? 'left' : 'right',
+    lenMin: minLen,
+    lenMax: maxLen,
+    lengthStageZh: level.lengthStageZh || '',
+    lengthStageEn: level.lengthStageEn || '',
+    mode: 'length',
   };
 }

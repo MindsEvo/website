@@ -88,10 +88,21 @@
       "id": "spatial_visual",
       "nameZh": "空间与感知比较",
       "nameEn": "Spatial and Perceptual Comparison",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
-        "size/shape/length/position tasks"
-      ]
+        "length comparison bars"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
     },
     {
       "id": "temporal",
@@ -137,7 +148,7 @@
       "ageHint": "5-6",
       "objectiveZh": "在 10 以内进行数量与图示对应比较。",
       "objectiveEn": "Compare quantities within 10 using symbol-visual correspondence.",
-      "primaryTypes": ["quantity"],
+      "primaryTypes": ["quantity", "spatial_visual"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
       "sourceLevels": ["L2"]
@@ -229,6 +240,17 @@
       "descriptionZh": "链式关系推导比较。",
       "descriptionEn": "Chain relation inference comparison.",
       "status": "planned"
+    },
+    {
+      "id": "cmp-length-direct",
+      "type": "spatial_visual",
+      "levelRange": ["L1", "L2"],
+      "descriptionZh": "通过直观线段长短进行直接比较。",
+      "descriptionEn": "Perform direct comparison by visual bar length.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-math-comparison"],
+      "sourceLessonIds": ["learning-math-comparison-l1"],
+      "sourceLevelIds": ["L1", "L2"]
     },
     {
       "id": "cmp-evidence-quality",
