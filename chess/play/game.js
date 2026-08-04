@@ -26,6 +26,7 @@
     autoplay: false,
     aiThinking: false,
     aiVsAiToken: 0,
+    aiVsAiSessionStarted: false,
     castlingRights: null,
     enPassantTarget: null,
     lastMove: null,
@@ -539,6 +540,50 @@
     state.aiThinking = false;
   }
 
+  function stopAiVsAiPlayback() {
+    if (state.mode === "ai_ai" || state.autoplay) {
+      invalidateAiVsAiLoop();
+    }
+    state.autoplay = false;
+  }
+
+  function updateAiVsAiModeButton() {
+    if (!btnAiAi) {
+      return;
+    }
+    if (state.mode !== "ai_ai") {
+      btnAiAi.textContent = "🤖";
+      btnAiAi.title = "AI对战模式";
+      return;
+    }
+    btnAiAi.textContent = state.autoplay ? "⏸🤖" : "▶🤖";
+    btnAiAi.title = state.autoplay ? "暂停AI对战" : (state.aiVsAiSessionStarted ? "继续AI对战" : "开始AI对战");
+  }
+
+  function toggleAiVsAiByModeButton() {
+    if (state.mode !== "ai_ai") {
+      return;
+    }
+
+    if (state.autoplay) {
+      stopAiVsAiPlayback();
+      updateAiVsAiModeButton();
+      voiceManager.speak("暂停AI对战", { force: true });
+      logger.info("mode", "ai-vs-ai.paused.by-mode-button", {});
+      renderAiVsAiPanel();
+      return;
+    }
+
+    state.aiVsAiSessionStarted = true;
+    state.autoplay = true;
+    state.aiVsAiToken += 1;
+    updateAiVsAiModeButton();
+    voiceManager.speak("开始AI对战", { force: true });
+    logger.info("mode", "ai-vs-ai.started.by-mode-button", {});
+    requestAiVsAiTurn(0, state.aiVsAiToken);
+    renderAiVsAiPanel();
+  }
+
   function getHumanAiEngineSettings() {
     var speed = Number(speedRange ? speedRange.value : 5);
     speed = Number.isFinite(speed) ? Math.max(1, Math.min(10, speed)) : 5;
@@ -838,13 +883,14 @@
     }
     if (btnAuto) {
       if (state.mode === "ai_ai") {
-        btnAuto.textContent = state.autoplay ? "⏸" : "▶";
-        btnAuto.title = state.autoplay ? "暂停AI对弈" : "开始AI对弈";
+        btnAuto.textContent = "▶";
+        btnAuto.title = "AI对战由🤖按钮控制";
       } else {
         btnAuto.textContent = state.autoplay ? "⏸" : "▶";
         btnAuto.title = "自动播放";
       }
     }
+    updateAiVsAiModeButton();
   }
 
   function setupBoardCoords() {
@@ -1524,8 +1570,7 @@
 
   function resetGame() {
     if (state.mode === "ai_ai") {
-      invalidateAiVsAiLoop();
-      state.autoplay = false;
+      stopAiVsAiPlayback();
     }
     resetEngineState();
     elNotationList.innerHTML = "";
@@ -1652,8 +1697,7 @@
 
   function setMode(mode) {
     if (state.mode === "ai_ai" && mode !== "ai_ai") {
-      invalidateAiVsAiLoop();
-      state.autoplay = false;
+      stopAiVsAiPlayback();
     }
     state.mode = mode;
     if (btnManual) btnManual.style.background = mode === "manual" ? "#e8f0ff" : "#ffffff";
@@ -1668,8 +1712,8 @@
       }
     }
     if (mode === "ai_ai") {
-      invalidateAiVsAiLoop();
-      state.autoplay = false;
+      stopAiVsAiPlayback();
+      state.aiVsAiSessionStarted = false;
       ensureAiMockData();
       syncAiVsAiPresetsFromUI();
       state.aiVsAi.white.level = getAiVsAiSettingsForSide("w").levelText;
@@ -1695,6 +1739,11 @@
       logger.info("ui", "hints.toggled", { enabled: state.hintsEnabled });
     });
     bindIf(btnAuto, "click", function () {
+      if (state.mode === "ai_ai") {
+        voiceManager.speak("AI对战请使用模式按钮", { force: true });
+        logger.info("mode", "ai-vs-ai.ignore.auto-button", {});
+        return;
+      }
       state.autoplay = !state.autoplay;
       btnAuto.textContent = state.autoplay ? "⏸" : "▶";
       if (state.mode === "human_ai") {
@@ -1704,15 +1753,6 @@
           updateAiMockTick();
           renderHumanAiPanel();
         }
-      }
-      if (state.mode === "ai_ai") {
-        if (state.autoplay) {
-          state.aiVsAiToken += 1;
-          requestAiVsAiTurn(0, state.aiVsAiToken);
-        } else {
-          invalidateAiVsAiLoop();
-        }
-        renderAiVsAiPanel();
       }
       logger.info("mode", "autoplay.toggled", { enabled: state.autoplay });
     });
@@ -1734,9 +1774,28 @@
       }
       logger.info("audio", "narration.toggled", { enabled: state.narrationOn });
     });
-    bindIf(btnManual, "click", function () { setMode("manual"); });
-    bindIf(btnHumanAi, "click", function () { setMode("human_ai"); });
-    bindIf(btnAiAi, "click", function () { setMode("ai_ai"); });
+    bindIf(btnManual, "click", function () {
+      if (state.mode === "ai_ai" && state.autoplay) {
+        voiceManager.speak("要先暂停AI", { force: true });
+        return;
+      }
+      setMode("manual");
+    });
+    bindIf(btnHumanAi, "click", function () {
+      if (state.mode === "ai_ai" && state.autoplay) {
+        voiceManager.speak("要先暂停AI", { force: true });
+        return;
+      }
+      setMode("human_ai");
+    });
+    bindIf(btnAiAi, "click", function () {
+      if (state.mode !== "ai_ai") {
+        setMode("ai_ai");
+        voiceManager.speak("AI对战准备模式", { force: true });
+        return;
+      }
+      toggleAiVsAiByModeButton();
+    });
     bindIf(btnColor, "click", function () {
       state.playerColor = state.playerColor === "white" ? "black" : "white";
       btnColor.textContent = state.playerColor === "white" ? "⚪" : "⚫";
