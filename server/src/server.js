@@ -4,6 +4,8 @@ const cors = require("cors");
 const { getDb, DB_PATH } = require("./db");
 const { normalizeAttempt, normalizeGeneIds, computeReport, validatePayload } = require("./reportService");
 const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
+const { analyzePosition, getEnginePath } = require("./stockfishService");
+const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("./stockfishDuelService");
 
 const app = express();
 const db = getDb();
@@ -13,6 +15,96 @@ app.use(express.json({ limit: "1mb" }));
 
 app.get("/health", (req, res) => {
   res.json({ ok: true, service: "mindsevo-report-server", dbPath: DB_PATH });
+});
+
+app.get("/api/v1/chess/engine/health", (req, res) => {
+  res.json({
+    ok: true,
+    engine: "stockfish",
+    enginePath: getEnginePath(),
+  });
+});
+
+app.post("/api/v1/chess/engine/analyze", async (req, res) => {
+  const fen = typeof req.body?.fen === "string" ? req.body.fen.trim() : "";
+  const movetime = Number(req.body?.movetime);
+  const depth = Number(req.body?.depth);
+  const skillLevel = Number(req.body?.skillLevel);
+  const multiPv = Number(req.body?.multiPv);
+
+  if (!fen) {
+    return res.status(400).json({ ok: false, error: "fen is required." });
+  }
+
+  try {
+    const result = await analyzePosition({
+      fen,
+      movetime,
+      depth,
+      skillLevel,
+      multiPv,
+    });
+
+    return res.json(result);
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: "Stockfish analyze failed.",
+      detail: String(error && error.message ? error.message : error),
+    });
+  }
+});
+
+app.get("/api/v1/chess/engine/duel/health", (req, res) => {
+  res.json({
+    ok: true,
+    engine: "stockfish-duel",
+    enginePath: getEnginePath(),
+    status: getDuelStatus(),
+  });
+});
+
+app.post("/api/v1/chess/engine/duel/config", async (req, res) => {
+  try {
+    const whiteSettings = req.body && req.body.white ? req.body.white : {};
+    const blackSettings = req.body && req.body.black ? req.body.black : {};
+
+    const white = await configureSide({ side: "white", settings: whiteSettings });
+    const black = await configureSide({ side: "black", settings: blackSettings });
+
+    return res.json({
+      ok: true,
+      white,
+      black,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: "Stockfish duel config failed.",
+      detail: String(error && error.message ? error.message : error),
+    });
+  }
+});
+
+app.post("/api/v1/chess/engine/duel/move", async (req, res) => {
+  const fen = typeof req.body?.fen === "string" ? req.body.fen.trim() : "";
+  const side = req.body?.side;
+  const settings = req.body?.settings || {};
+
+  if (!fen) {
+    return res.status(400).json({ ok: false, error: "fen is required." });
+  }
+
+  try {
+    const result = await analyzeForSide({ side, fen, settings });
+    return res.json(result);
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: "Stockfish duel move failed.",
+      detail: String(error && error.message ? error.message : error),
+    });
+  }
 });
 
 function parseGeneIds(sessionRow) {
@@ -679,6 +771,18 @@ app.use((err, req, res, next) => {
 });
 
 const port = Number(process.env.PORT || 8787);
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`[report-server] listening on http://localhost:${port}`);
 });
+
+async function closeServer() {
+  try {
+    await shutdownDuel();
+  } catch {
+    // ignore shutdown errors
+  }
+  server.close(() => process.exit(0));
+}
+
+process.on("SIGINT", closeServer);
+process.on("SIGTERM", closeServer);

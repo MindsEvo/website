@@ -9,6 +9,7 @@
   var FILES = ["a", "b", "c", "d", "e", "f", "g", "h"];
   var RANKS = [8, 7, 6, 5, 4, 3, 2, 1];
   var SPLIT_STORAGE_KEY = "mindsevo:chess:play:left-pane";
+  var ENGINE_API_BASE = "http://localhost:8787";
 
   var logger = ChessLogger.createLogger({ level: "debug", maxRecords: 3000 });
 
@@ -23,12 +24,19 @@
     muted: false,
     narrationOn: true,
     autoplay: false,
+    aiThinking: false,
+    aiVsAiToken: 0,
     castlingRights: null,
     enPassantTarget: null,
     lastMove: null,
     checkSquare: null,
     gameOver: false,
-    gameResultText: ""
+    gameResultText: "",
+    humanAi: null,
+    aiVsAi: {
+      black: null,
+      white: null
+    }
   };
 
   var elBoard = document.getElementById("board");
@@ -36,6 +44,10 @@
   var elNotationList = document.getElementById("notationList");
   var elLogConsole = document.getElementById("logConsole");
   var expandPanel = document.getElementById("expandPanel");
+  var manualWorkspace = document.getElementById("manualWorkspace");
+  var humanAiPanel = document.getElementById("humanAiPanel");
+  var aiVsAiPanel = document.getElementById("aiVsAiPanel");
+  var bankPanel = document.querySelector(".bank-panel");
   var playPage = document.querySelector(".play-page");
   var stageDivider = document.getElementById("stageDivider");
 
@@ -326,6 +338,513 @@
     state.checkSquare = null;
     state.gameOver = false;
     state.gameResultText = "";
+  }
+
+  function createAiMock(side) {
+    return {
+      side: side,
+      score: side === "black" ? -0.8 : 0.8,
+      depth: 0,
+      nodes: 0,
+      time: 0,
+      pv: "等待分析...",
+      eval: "等待分析...",
+      level: "高级10: 特级大师 (2400)",
+      preset: "advanced"
+    };
+  }
+
+  function ensureAiMockData() {
+    if (!state.humanAi) {
+      state.humanAi = {
+        score: 0.6,
+        depth: 0,
+        nodes: 0,
+        time: 0,
+        pv: "等待分析...",
+        eval: "🎯 局面评估系统已就绪\n开始下棋后，AI将为您分析局面优势，提供专业的棋局建议。\n⚡ 后续将整合 LLM 和专家系统，提供更深入的分析。",
+        level: "高级10: 特级大师 (2400)",
+        maxRetries: 2
+      };
+    }
+    if (!state.aiVsAi.black) {
+      state.aiVsAi.black = createAiMock("black");
+    }
+    if (!state.aiVsAi.white) {
+      state.aiVsAi.white = createAiMock("white");
+    }
+  }
+
+  function formatNodes(nodes) {
+    if (nodes >= 1000000) {
+      return (nodes / 1000000).toFixed(1) + "M";
+    }
+    if (nodes >= 1000) {
+      return (nodes / 1000).toFixed(1) + "K";
+    }
+    return String(nodes);
+  }
+
+  function updateAiMockTick() {
+    ensureAiMockData();
+    state.humanAi.depth = Math.min(24, state.humanAi.depth + 1);
+    state.humanAi.nodes += 15000;
+    state.humanAi.time += 220;
+    state.humanAi.score = Math.max(-3.2, Math.min(3.2, state.humanAi.score + 0.05));
+    state.humanAi.pv = "e2e4 e7e5 g1f3";
+    state.humanAi.eval = state.humanAi.score >= 0
+      ? "🎯 白方保持主动，建议继续发展子力并争夺中心。"
+      : "🎯 黑方反击机会增加，建议谨慎处理王翼安全。";
+
+    [state.aiVsAi.black, state.aiVsAi.white].forEach(function (item, index) {
+      item.depth = Math.min(24, item.depth + 1 + index);
+      item.nodes += 12000 + index * 3000;
+      item.time += 180 + index * 40;
+      item.score = Math.max(-3.2, Math.min(3.2, item.score + (index === 0 ? 0.08 : -0.06)));
+      item.pv = index === 0 ? "e7e5 g8f6 d7d6" : "e2e4 g1f3 f1c4";
+      item.eval = index === 0 ? "黑方保持稳固结构，等待中心反击。" : "白方空间略优，适合继续发展子力。";
+    });
+  }
+
+  function getAiVsAiEngineSettings() {
+    var speed = Number(speedRange ? speedRange.value : 5);
+    speed = Number.isFinite(speed) ? Math.max(1, Math.min(10, speed)) : 5;
+
+    return {
+      speed: speed,
+      skillLevel: Math.max(0, Math.min(20, Math.round(speed * 2))),
+      movetime: 240 + speed * 120,
+      depth: Math.max(8, Math.min(24, 6 + speed)),
+      multiPv: speed >= 8 ? 3 : 2,
+      levelText: "速度" + speed + "｜S" + Math.max(0, Math.min(20, Math.round(speed * 2))) + " D" + Math.max(8, Math.min(24, 6 + speed)) + " T" + (240 + speed * 120) + "ms"
+    };
+  }
+
+  function getAiPresetConfig(preset) {
+    if (preset === "beginner") return { skillLevel: 4, depth: 8, movetime: 420, multiPv: 1, label: "初学" };
+    if (preset === "intermediate") return { skillLevel: 8, depth: 10, movetime: 650, multiPv: 2, label: "中级" };
+    if (preset === "expert") return { skillLevel: 14, depth: 14, movetime: 1050, multiPv: 2, label: "专家" };
+    if (preset === "master") return { skillLevel: 20, depth: 18, movetime: 1500, multiPv: 3, label: "大师" };
+    return { skillLevel: 11, depth: 12, movetime: 820, multiPv: 2, label: "高级" };
+  }
+
+  function getAiVsAiSettingsForSide(side) {
+    ensureAiMockData();
+    var panel = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
+    var preset = panel.preset || "advanced";
+    var config = getAiPresetConfig(preset);
+    return {
+      skillLevel: config.skillLevel,
+      depth: config.depth,
+      movetime: config.movetime,
+      multiPv: config.multiPv,
+      levelText: config.label + "｜S" + config.skillLevel + " D" + config.depth + " T" + config.movetime + "ms",
+      preset: preset
+    };
+  }
+
+  function syncAiVsAiPresetsFromUI() {
+    if (!aiVsAiPanel) return;
+    ensureAiMockData();
+    var cards = aiVsAiPanel.querySelectorAll(".engine-card");
+    if (cards[0]) {
+      var blackPreset = cards[0].querySelector('[data-role="preset"]');
+      if (blackPreset) state.aiVsAi.black.preset = blackPreset.value || "advanced";
+    }
+    if (cards[1]) {
+      var whitePreset = cards[1].querySelector('[data-role="preset"]');
+      if (whitePreset) state.aiVsAi.white.preset = whitePreset.value || "advanced";
+    }
+  }
+
+  function renderAiCard(root, data) {
+    if (!root || !data) {
+      return;
+    }
+
+    var whiteWidth = Math.max(10, Math.min(90, 50 + data.score * 10));
+    var blackWidth = 100 - whiteWidth;
+    var advWhite = root.querySelector('[data-role="adv-white"]');
+    var advBlack = root.querySelector('[data-role="adv-black"]');
+    var advText = root.querySelector('[data-role="adv-text"]');
+    var depth = root.querySelector('[data-role="depth"]');
+    var nodes = root.querySelector('[data-role="nodes"]');
+    var time = root.querySelector('[data-role="time"]');
+    var pv = root.querySelector('[data-role="pv"]');
+    var evalBox = root.querySelector('[data-role="eval"]');
+    var level = root.querySelector('[data-role="level"]');
+
+    if (advWhite) advWhite.style.width = whiteWidth + "%";
+    if (advBlack) advBlack.style.width = blackWidth + "%";
+    if (advText) advText.textContent = "等价分析: " + (data.score > 0 ? "白方略优" : data.score < 0 ? "黑方略优" : "均势");
+    if (depth) depth.textContent = "深度: " + data.depth + " 层";
+    if (nodes) nodes.textContent = "节点: " + formatNodes(data.nodes);
+    if (time) time.textContent = "时间: " + (data.time / 1000).toFixed(1) + "s";
+    if (pv) pv.textContent = data.pv;
+    if (evalBox) evalBox.textContent = data.eval;
+    if (level) level.textContent = data.level;
+  }
+
+  function renderAiVsAiPanel() {
+    if (!aiVsAiPanel) {
+      return;
+    }
+    ensureAiMockData();
+    var cards = aiVsAiPanel.querySelectorAll(".engine-card");
+    if (cards[0]) renderAiCard(cards[0], state.aiVsAi.black);
+    if (cards[1]) renderAiCard(cards[1], state.aiVsAi.white);
+  }
+
+  function renderHumanAiPanel() {
+    if (!humanAiPanel) {
+      return;
+    }
+    ensureAiMockData();
+    var card = humanAiPanel.querySelector(".engine-card");
+    if (card) {
+      renderAiCard(card, state.humanAi);
+    }
+  }
+
+  function updateAiVsAiFromResponse(side, payload, settings) {
+    ensureAiMockData();
+    var panelState = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
+    var info = payload && payload.info ? payload.info : {};
+
+    panelState.depth = Number.isFinite(info.depth) ? info.depth : panelState.depth;
+    panelState.nodes = Number.isFinite(info.nodes) ? info.nodes : panelState.nodes;
+    panelState.time = Number.isFinite(info.time) ? info.time : panelState.time;
+    panelState.level = settings.levelText;
+    if (info.score && Number.isFinite(info.score.value)) {
+      panelState.score = info.score.type === "mate" ? (info.score.value > 0 ? 9 : -9) : info.score.value;
+    }
+
+    if (Array.isArray(payload && payload.multipv) && payload.multipv.length) {
+      panelState.pv = payload.multipv.slice(0, Math.min(payload.multipv.length, settings.multiPv)).map(function (line, idx) {
+        var pvText = Array.isArray(line.pv) && line.pv.length ? line.pv.slice(0, 8).join(" ") : "-";
+        return (idx + 1) + ") " + pvText;
+      }).join(" | ");
+    } else {
+      panelState.pv = Array.isArray(info.pv) && info.pv.length ? info.pv.join(" ") : "等待分析...";
+    }
+
+    panelState.eval = payload && payload.bestMove
+      ? ((side === "w" ? "白方" : "黑方") + "建议: " + payload.bestMove)
+      : "等待分析...";
+    renderAiVsAiPanel();
+  }
+
+  function invalidateAiVsAiLoop() {
+    state.aiVsAiToken += 1;
+    state.aiThinking = false;
+  }
+
+  function getHumanAiEngineSettings() {
+    var speed = Number(speedRange ? speedRange.value : 5);
+    speed = Number.isFinite(speed) ? Math.max(1, Math.min(10, speed)) : 5;
+
+    var skillLevel = Math.max(0, Math.min(20, Math.round(speed * 2)));
+    var movetime = 220 + speed * 120;
+    var depth = Math.max(6, Math.min(24, 6 + speed));
+    var multiPv = speed >= 8 ? 3 : 2;
+
+    return {
+      speed: speed,
+      skillLevel: skillLevel,
+      movetime: movetime,
+      depth: depth,
+      multiPv: multiPv,
+      levelText: "速度" + speed + "｜S" + skillLevel + " D" + depth + " T" + movetime + "ms"
+    };
+  }
+
+  function resolvePlayerColorCode() {
+    return state.playerColor === "white" ? "w" : "b";
+  }
+
+  function toFen() {
+    var rows = [];
+    for (var row = 0; row < 8; row++) {
+      var fenRow = "";
+      var empty = 0;
+      for (var col = 0; col < 8; col++) {
+        var piece = getPiece(row, col);
+        if (!piece) {
+          empty += 1;
+          continue;
+        }
+        if (empty > 0) {
+          fenRow += String(empty);
+          empty = 0;
+        }
+        var symbol = getKind(piece);
+        fenRow += getColor(piece) === "w" ? symbol.toUpperCase() : symbol;
+      }
+      if (empty > 0) {
+        fenRow += String(empty);
+      }
+      rows.push(fenRow);
+    }
+
+    var castling = "";
+    if (state.castlingRights.w.kingside && getPiece(7, 4) === "wk" && getPiece(7, 7) === "wr") castling += "K";
+    if (state.castlingRights.w.queenside && getPiece(7, 4) === "wk" && getPiece(7, 0) === "wr") castling += "Q";
+    if (state.castlingRights.b.kingside && getPiece(0, 4) === "bk" && getPiece(0, 7) === "br") castling += "k";
+    if (state.castlingRights.b.queenside && getPiece(0, 4) === "bk" && getPiece(0, 0) === "br") castling += "q";
+    if (!castling) castling = "-";
+
+    var ep = "-";
+    if (state.enPassantTarget) {
+      ep = FILES[state.enPassantTarget.col] + String(8 - state.enPassantTarget.row);
+    }
+
+    return rows.join("/") + " " + state.turn + " " + castling + " " + ep + " 0 1";
+  }
+
+  function parseUciMove(uci) {
+    if (!uci || uci.length < 4) {
+      return null;
+    }
+
+    var fromCol = FILES.indexOf(uci.charAt(0));
+    var fromRow = 8 - Number(uci.charAt(1));
+    var toCol = FILES.indexOf(uci.charAt(2));
+    var toRow = 8 - Number(uci.charAt(3));
+
+    if (fromCol < 0 || toCol < 0 || !inBounds(fromRow, fromCol) || !inBounds(toRow, toCol)) {
+      return null;
+    }
+
+    return {
+      fromRow: fromRow,
+      fromCol: fromCol,
+      toRow: toRow,
+      toCol: toCol,
+      promotionKind: uci.length >= 5 ? uci.charAt(4).toLowerCase() : null
+    };
+  }
+
+  function updateHumanAiFromResponse(payload) {
+    ensureAiMockData();
+    var engineSettings = getHumanAiEngineSettings();
+    var info = payload && payload.info ? payload.info : {};
+    state.humanAi.depth = Number.isFinite(info.depth) ? info.depth : state.humanAi.depth;
+    state.humanAi.nodes = Number.isFinite(info.nodes) ? info.nodes : state.humanAi.nodes;
+    state.humanAi.time = Number.isFinite(info.time) ? info.time : state.humanAi.time;
+    state.humanAi.level = engineSettings.levelText;
+    if (info.score && Number.isFinite(info.score.value)) {
+      state.humanAi.score = info.score.type === "mate" ? (info.score.value > 0 ? 9 : -9) : info.score.value;
+    }
+
+    if (Array.isArray(payload && payload.multipv) && payload.multipv.length) {
+      var topPv = payload.multipv.slice(0, Math.min(payload.multipv.length, engineSettings.multiPv));
+      state.humanAi.pv = topPv.map(function (line, idx) {
+        var pvText = Array.isArray(line.pv) && line.pv.length ? line.pv.slice(0, 8).join(" ") : "-";
+        var scoreText = "";
+        if (line.score && Number.isFinite(line.score.value)) {
+          scoreText = line.score.type === "mate" ? (" #" + line.score.value) : (line.score.value >= 0 ? " +" : " ") + line.score.value.toFixed(2);
+        }
+        return (idx + 1) + ") " + pvText + scoreText;
+      }).join(" | ");
+    } else {
+      state.humanAi.pv = Array.isArray(info.pv) && info.pv.length ? info.pv.join(" ") : "等待分析...";
+    }
+
+    state.humanAi.eval = payload && payload.bestMove
+      ? "AI 建议走法: " + payload.bestMove + "。当前评估已同步到面板。"
+      : "等待分析...";
+    renderHumanAiPanel();
+  }
+
+  async function requestHumanAiTurn(retryCount) {
+    var retries = Number.isFinite(retryCount) ? retryCount : 0;
+    if (state.mode !== "human_ai" || state.gameOver || state.aiThinking || state.turn === resolvePlayerColorCode()) {
+      return;
+    }
+
+    ensureAiMockData();
+    var engineSettings = getHumanAiEngineSettings();
+    state.aiThinking = true;
+    state.humanAi.level = engineSettings.levelText;
+    state.humanAi.eval = "AI 正在分析当前局面...（第" + (retries + 1) + "次）";
+    renderHumanAiPanel();
+
+    try {
+      var response = await fetch(ENGINE_API_BASE + "/api/v1/chess/engine/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fen: toFen(),
+          movetime: engineSettings.movetime,
+          depth: engineSettings.depth,
+          skillLevel: engineSettings.skillLevel,
+          multiPv: engineSettings.multiPv
+        })
+      });
+
+      var payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.detail || payload.error || "Stockfish analyze failed");
+      }
+
+      updateHumanAiFromResponse(payload);
+
+      var parsed = parseUciMove(payload.bestMove);
+      if (!parsed) {
+        throw new Error("Invalid bestmove returned: " + payload.bestMove);
+      }
+
+      var legalMoves = getLegalMoves(parsed.fromRow, parsed.fromCol);
+      var aiMove = findMoveByTarget(legalMoves, parsed.toRow, parsed.toCol);
+      if (!aiMove) {
+        throw new Error("Bestmove is not legal in current local state: " + payload.bestMove);
+      }
+      if (parsed.promotionKind) {
+        aiMove.promotionKind = parsed.promotionKind;
+      }
+
+      window.setTimeout(function () {
+        state.aiThinking = false;
+        executeMove(aiMove);
+      }, 200);
+      return;
+    } catch (error) {
+      state.aiThinking = false;
+      ensureAiMockData();
+      var detail = String(error && error.message ? error.message : error);
+      if (retries < state.humanAi.maxRetries) {
+        state.humanAi.eval = "引擎调用失败，正在重试...（" + (retries + 1) + "/" + state.humanAi.maxRetries + "）";
+        renderHumanAiPanel();
+        window.setTimeout(function () {
+          requestHumanAiTurn(retries + 1);
+        }, 320 * (retries + 1));
+        logger.warn("human-ai.request.retry", { retry: retries + 1, detail: detail });
+        return;
+      }
+
+      state.humanAi.eval = "引擎调用失败：" + detail + "。请先启动 web/server 下的 node src/server.js";
+      renderHumanAiPanel();
+      logger.error("human-ai.request.failed", { detail: detail });
+    }
+  }
+
+  async function requestAiVsAiTurn(retryCount, token) {
+    var retries = Number.isFinite(retryCount) ? retryCount : 0;
+    var runToken = Number.isFinite(token) ? token : state.aiVsAiToken;
+    if (runToken !== state.aiVsAiToken) {
+      return;
+    }
+
+    if (state.mode !== "ai_ai" || !state.autoplay || state.gameOver || state.aiThinking) {
+      return;
+    }
+
+    ensureAiMockData();
+    var side = state.turn;
+    var sideState = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
+    syncAiVsAiPresetsFromUI();
+    var settings = getAiVsAiSettingsForSide(side);
+    state.aiThinking = true;
+    sideState.level = settings.levelText;
+    sideState.eval = (side === "w" ? "白方" : "黑方") + "正在分析...（第" + (retries + 1) + "次）";
+    renderAiVsAiPanel();
+
+    try {
+      var response = await fetch(ENGINE_API_BASE + "/api/v1/chess/engine/duel/move", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fen: toFen(),
+          side: side === "w" ? "white" : "black",
+          settings: {
+            movetime: settings.movetime,
+            depth: settings.depth,
+            skillLevel: settings.skillLevel,
+            multiPv: settings.multiPv
+          }
+        })
+      });
+
+      var payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.detail || payload.error || "Stockfish analyze failed");
+      }
+
+      updateAiVsAiFromResponse(side, payload, settings);
+
+      var parsed = parseUciMove(payload.bestMove);
+      if (!parsed) {
+        throw new Error("Invalid bestmove returned: " + payload.bestMove);
+      }
+
+      var legalMoves = getLegalMoves(parsed.fromRow, parsed.fromCol);
+      var aiMove = findMoveByTarget(legalMoves, parsed.toRow, parsed.toCol);
+      if (!aiMove) {
+        throw new Error("Bestmove is not legal in current local state: " + payload.bestMove);
+      }
+      if (parsed.promotionKind) {
+        aiMove.promotionKind = parsed.promotionKind;
+      }
+
+      if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) {
+        state.aiThinking = false;
+        return;
+      }
+
+      window.setTimeout(function () {
+        if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) {
+          state.aiThinking = false;
+          return;
+        }
+        state.aiThinking = false;
+        executeMove(aiMove);
+      }, 120);
+      return;
+    } catch (error) {
+      state.aiThinking = false;
+      ensureAiMockData();
+      var detail = String(error && error.message ? error.message : error);
+      if (retries < 2 && runToken === state.aiVsAiToken && state.mode === "ai_ai" && state.autoplay) {
+        sideState.eval = "引擎调用失败，正在重试...（" + (retries + 1) + "/2）";
+        renderAiVsAiPanel();
+        window.setTimeout(function () {
+          requestAiVsAiTurn(retries + 1, runToken);
+        }, 320 * (retries + 1));
+        logger.warn("ai-vs-ai.request.retry", { retry: retries + 1, detail: detail });
+        return;
+      }
+
+      sideState.eval = "引擎调用失败：" + detail;
+      renderAiVsAiPanel();
+      logger.error("ai-vs-ai.request.failed", { detail: detail });
+    }
+  }
+
+  function setAiVsAiView(enabled) {
+    if (manualWorkspace) {
+      manualWorkspace.classList.toggle("hidden", enabled || state.mode === "human_ai");
+    }
+    if (humanAiPanel) {
+      humanAiPanel.classList.toggle("hidden", state.mode !== "human_ai");
+    }
+    if (aiVsAiPanel) {
+      aiVsAiPanel.classList.toggle("hidden", !enabled);
+    }
+    if (bankPanel) {
+      bankPanel.classList.toggle("hidden", enabled || state.mode === "human_ai");
+    }
+    if (stageDivider) {
+      stageDivider.style.display = enabled ? "none" : "";
+    }
+    if (btnAuto) {
+      if (state.mode === "ai_ai") {
+        btnAuto.textContent = state.autoplay ? "⏸" : "▶";
+        btnAuto.title = state.autoplay ? "暂停AI对弈" : "开始AI对弈";
+      } else {
+        btnAuto.textContent = state.autoplay ? "⏸" : "▶";
+        btnAuto.title = "自动播放";
+      }
+    }
   }
 
   function setupBoardCoords() {
@@ -922,6 +1441,17 @@
       checkmate: isCheckmate,
       stalemate: isStalemate
     });
+
+    if (state.mode === "human_ai" && !state.gameOver && state.turn !== resolvePlayerColorCode()) {
+      window.setTimeout(requestHumanAiTurn, 120);
+    }
+    if (state.mode === "ai_ai" && state.autoplay && !state.gameOver) {
+      var token = state.aiVsAiToken;
+      window.setTimeout(function () {
+        requestAiVsAiTurn(0, token);
+      }, 120);
+    }
+
     return true;
   }
 
@@ -932,6 +1462,14 @@
 
     if (state.gameOver) {
       logger.warn("game", "click.ignored.game-over", {});
+      return;
+    }
+
+    if (state.mode === "human_ai" && (state.aiThinking || state.turn !== resolvePlayerColorCode())) {
+      logger.debug("human-ai.click.ignored", { aiThinking: state.aiThinking, turn: state.turn, playerColor: state.playerColor });
+      return;
+    }
+    if (state.mode === "ai_ai") {
       return;
     }
 
@@ -985,9 +1523,20 @@
   }
 
   function resetGame() {
+    if (state.mode === "ai_ai") {
+      invalidateAiVsAiLoop();
+      state.autoplay = false;
+    }
     resetEngineState();
     elNotationList.innerHTML = "";
     renderBoard();
+    if (state.mode === "human_ai") {
+      ensureAiMockData();
+      renderHumanAiPanel();
+      if (state.turn !== resolvePlayerColorCode()) {
+        window.setTimeout(requestHumanAiTurn, 150);
+      }
+    }
     voiceManager.onReset();
     logger.info("game", "game.reset", {});
   }
@@ -1102,10 +1651,33 @@
   }
 
   function setMode(mode) {
+    if (state.mode === "ai_ai" && mode !== "ai_ai") {
+      invalidateAiVsAiLoop();
+      state.autoplay = false;
+    }
     state.mode = mode;
     if (btnManual) btnManual.style.background = mode === "manual" ? "#e8f0ff" : "#ffffff";
     if (btnHumanAi) btnHumanAi.style.background = mode === "human_ai" ? "#e8f0ff" : "#ffffff";
     if (btnAiAi) btnAiAi.style.background = mode === "ai_ai" ? "#e8f0ff" : "#ffffff";
+    setAiVsAiView(mode === "ai_ai");
+    if (mode === "human_ai") {
+      ensureAiMockData();
+      renderHumanAiPanel();
+      if (state.turn !== resolvePlayerColorCode()) {
+        window.setTimeout(requestHumanAiTurn, 150);
+      }
+    }
+    if (mode === "ai_ai") {
+      invalidateAiVsAiLoop();
+      state.autoplay = false;
+      ensureAiMockData();
+      syncAiVsAiPresetsFromUI();
+      state.aiVsAi.white.level = getAiVsAiSettingsForSide("w").levelText;
+      state.aiVsAi.black.level = getAiVsAiSettingsForSide("b").levelText;
+      state.aiVsAi.white.eval = "等待开始 AI 对弈...";
+      state.aiVsAi.black.eval = "等待开始 AI 对弈...";
+      renderAiVsAiPanel();
+    }
     logger.info("mode", "game-mode.changed", { mode: mode });
   }
 
@@ -1125,6 +1697,23 @@
     bindIf(btnAuto, "click", function () {
       state.autoplay = !state.autoplay;
       btnAuto.textContent = state.autoplay ? "⏸" : "▶";
+      if (state.mode === "human_ai") {
+        if (state.turn !== resolvePlayerColorCode()) {
+          requestHumanAiTurn();
+        } else {
+          updateAiMockTick();
+          renderHumanAiPanel();
+        }
+      }
+      if (state.mode === "ai_ai") {
+        if (state.autoplay) {
+          state.aiVsAiToken += 1;
+          requestAiVsAiTurn(0, state.aiVsAiToken);
+        } else {
+          invalidateAiVsAiLoop();
+        }
+        renderAiVsAiPanel();
+      }
       logger.info("mode", "autoplay.toggled", { enabled: state.autoplay });
     });
     bindIf(btnNext, "click", function () {
@@ -1151,6 +1740,9 @@
     bindIf(btnColor, "click", function () {
       state.playerColor = state.playerColor === "white" ? "black" : "white";
       btnColor.textContent = state.playerColor === "white" ? "⚪" : "⚫";
+      if (state.mode === "human_ai" && state.turn !== resolvePlayerColorCode()) {
+        window.setTimeout(requestHumanAiTurn, 120);
+      }
       logger.info("mode", "player-color.changed", { color: state.playerColor });
     });
     bindIf(btnExplain, "click", function () {
@@ -1173,6 +1765,21 @@
       speedValue.textContent = speedRange.value;
       logger.debug("ui", "speed.changed", { value: Number(speedRange.value) });
     });
+
+    if (aiVsAiPanel) {
+      var cards = aiVsAiPanel.querySelectorAll(".engine-card");
+      cards.forEach(function (card) {
+        var preset = card.querySelector('[data-role="preset"]');
+        if (preset) {
+          preset.addEventListener("change", function () {
+            syncAiVsAiPresetsFromUI();
+            state.aiVsAi.black.level = getAiVsAiSettingsForSide("b").levelText;
+            state.aiVsAi.white.level = getAiVsAiSettingsForSide("w").levelText;
+            renderAiVsAiPanel();
+          });
+        }
+      });
+    }
   }
 
   function init() {
@@ -1182,6 +1789,7 @@
     bindButtons();
     bindDivider();
     resetGame();
+    ensureAiMockData();
     setMode("manual");
     if (btnHints) {
       btnHints.style.background = "#e8f0ff";
