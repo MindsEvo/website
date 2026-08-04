@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>对弈模式 | 国际象棋</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="play-page">
+    <section class="left-stage">
+      <div class="board-topbar">
+        <a class="btn-link" href="../index.html">返回主页</a>
+      </div>
+
+      <div class="board-wrap">
+        <div class="board-shell">
+          <div class="ranks rank-left" id="rankLeft"></div>
+          <div class="board" id="board"></div>
+          <div class="files file-bottom" id="fileBottom"></div>
+        </div>
+      </div>
+
+      <div class="status-line" id="turnStatus">当前回合：白方</div>
+
+      <div class="control-bar">
+        <div class="control-row control-row-top">
+          <button class="ctrl-btn" id="btnReset" title="重置">↺</button>
+          <button class="ctrl-btn" id="btnAuto" title="自动播放">▶</button>
+          <button class="ctrl-btn" id="btnUndo" title="悔棋">↶</button>
+          <button class="ctrl-btn" id="btnNext" title="下一步">→</button>
+          <button class="ctrl-btn" id="btnSound" title="音效开关">🔊</button>
+          <button class="ctrl-btn" id="btnNarration" title="解说开关">🎤</button>
+          <button class="ctrl-btn" id="btnManual" title="手动模式">👥</button>
+          <button class="ctrl-btn" id="btnHumanAi" title="人机模式">👤</button>
+          <button class="ctrl-btn" id="btnAiAi" title="AI对弈">🤖</button>
+          <button class="ctrl-btn" id="btnColor" title="持子颜色">⚪</button>
+
+          <div class="slider-box">
+            <label for="volumeRange">音量:</label>
+            <input type="range" id="volumeRange" min="0" max="100" value="80" />
+            <span class="num" id="volumeValue">80</span>
+          </div>
+
+          <div class="slider-box">
+            <label for="speedRange">速度:</label>
+            <input type="range" id="speedRange" min="1" max="10" value="5" />
+            <span class="num" id="speedValue">5</span>
+          </div>
+        </div>
+
+        <div class="control-row control-row-bottom">
+          <button class="ctrl-btn ctrl-btn-secondary" id="btnHints" title="高亮">✦</button>
+          <button class="ctrl-btn ctrl-btn-secondary" id="btnExportLogs" title="导出日志">🧾</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="stage-divider" id="stageDivider" aria-hidden="true"></div>
+
+    <section class="right-stage">
+      <div class="workspace-col">
+        <div class="work-panel">
+        <div class="tabs">
+          <button class="tab active" data-target="notations">棋局</button>
+          <button class="tab" data-target="actions">答案</button>
+          <button class="tab" data-target="logs">开始记录</button>
+          <button class="tab action-tab" id="btnSaveNote">保存</button>
+        </div>
+
+        <div class="panel active" id="panel-notations">
+          <div class="placeholder">点击答案按钮加载答案内容...</div>
+          <h3>走子记录</h3>
+          <ol id="notationList" class="notation-list"></ol>
+        </div>
+
+        <div class="panel" id="panel-actions">
+          <div class="placeholder">请选择解说目录或题库题目...</div>
+          <h3>基础功能说明</h3>
+          <ul>
+            <li>当前阶段：手动对弈（选子/走子/吃子/悔棋/重置）</li>
+            <li>规则：基础走法已实现</li>
+            <li>后续移植：将军判定、易位、吃过路兵、升变面板、AI模式</li>
+          </ul>
+        </div>
+
+        <div class="panel" id="panel-logs">
+          <h3>运行日志</h3>
+          <div class="log-console" id="logConsole"></div>
+        </div>
+      </div>
+
+        <div class="inline-actions">
+          <button class="soft-btn" id="btnExplain">解说</button>
+          <button class="soft-btn" id="btnSaveExplain">保存解说</button>
+        </div>
+
+        <div class="expand-panel" id="expandPanel">
+          <div class="expand-placeholder">请选择解说目录或题库题目...</div>
+        </div>
+      </div>
+
+      <div class="bank-panel">
+        <h3>题库练习</h3>
+        <ul class="bank-tree">
+          <li>👑 专家推荐</li>
+          <li>残局基因 (endgame)</li>
+          <li>战术基因 (tactics)</li>
+          <li>攻杀基因 (mate)</li>
+          <li>开局基因 (opening)</li>
+          <li>综合基因 (comprehensive)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="./logger.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --line: #e2e8f0;
+  --text: #1f2937;
+  --muted: #64748b;
+  --primary: #3b82f6;
+  --accent: #7c3aed;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: radial-gradient(circle at 20% 0%, #f9fbff 0%, var(--bg) 42%, #eceff4 100%);
+  color: var(--text);
+}
+
+.home {
+  min-height: 100vh;
+  padding: 24px clamp(14px, 3vw, 34px) 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brand p {
+  margin: 8px 0 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.grid {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  min-height: 90px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #bfd3ff;
+  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.12);
+}
+
+.card .icon {
+  font-size: 22px;
+  opacity: 0.9;
+}
+
+.card.coming {
+  color: #94a3b8;
+  background: var(--surface-muted);
+  cursor: not-allowed;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { min-height: 82px; }
+}
