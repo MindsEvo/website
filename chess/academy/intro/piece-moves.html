@@ -610,6 +610,8 @@
                 <div class="chip-dropdown" id="pawnObserveMenu">
                   <button data-piece-action="p-move">走法演示</button>
                   <button data-piece-action="p-capture">吃子演示</button>
+                  <button data-piece-action="p-promote">兵升变</button>
+                  <button data-piece-action="p-en-passant">吃过路兵</button>
                 </div>
               </div>
             </div>
@@ -1523,9 +1525,127 @@
         demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
       }
 
-      // ================================================================
-
       function clearScope(scope) {
+
+      // --- PAWN PROMOTION DEMO ---
+      function runPawnPromotionDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[1][4] = 'wp';
+        renderBoard();
+        speak('兵升变演示');
+        demoSchedule(function() {
+          getSquare(1,4)&&getSquare(1,4).classList.add('hl-origin');
+          getSquare(0,4)&&getSquare(0,4).classList.add('hl-target');
+          speak('兵到达对方底线后必须升变，可选后车象马');
+        }, 2500);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[1][4]=''; boardMatrix[0][4]='wp'; renderBoard();
+          getSquare(0,4)&&getSquare(0,4).classList.add('hl-done');
+        }, 8500);
+        // queen
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[0][4]='wq'; renderBoard();
+          showPieceMoves(0, 4, function(r,c) { return sliderLegalMoves(r,c,DIRS_Q); });
+          speak('通常升变为后，威力最大');
+        }, 12000);
+        // rook
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[0][4]='wr'; renderBoard();
+          showPieceMoves(0, 4, function(r,c) { return sliderLegalMoves(r,c,DIRS_R); });
+          speak('也可以升变为车');
+        }, 18500);
+        // bishop
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[0][4]='wb'; renderBoard();
+          showPieceMoves(0, 4, function(r,c) { return sliderLegalMoves(r,c,DIRS_B); });
+          speak('也可以升变为象');
+        }, 24000);
+        // knight
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[0][4]='wn'; renderBoard();
+          showPieceMoves(0, 4, function(r,c) { return knightLegalMovesFn(r,c); });
+          speak('也可以升变为马，特殊局面很有用');
+        }, 29500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false;
+        }, 36500);
+      }
+
+      // --- PAWN EN PASSANT DEMO ---
+      function runPawnEnPassantDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+
+        function resetEpBoard() {
+          boardMatrix = emptyBoard();
+          boardMatrix[3][4]='wp'; boardMatrix[1][5]='bp';
+          renderBoard();
+        }
+
+        resetEpBoard();
+        speak('吃过路兵演示');
+
+        demoSchedule(function() {
+          speak('当对方兵走两格经过旁边时，可以立即斜吃');
+        }, 3000);
+
+        // Round 1: successful capture
+        demoSchedule(function() {
+          getSquare(1,5)&&getSquare(1,5).classList.add('hl-origin');
+          getSquare(3,5)&&getSquare(3,5).classList.add('hl-target');
+          speak('黑兵从起始位置走两格');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[1][5]=''; boardMatrix[3][5]='bp'; renderBoard();
+        }, 13000);
+        demoSchedule(function() {
+          getSquare(3,4)&&getSquare(3,4).classList.add('hl-origin');
+          getSquare(2,5)&&getSquare(2,5).classList.add('hl-target');
+          getSquare(3,5)&&getSquare(3,5).classList.add('hl-done');
+          speak('白兵可以斜吃过路兵');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[3][4]=''; boardMatrix[3][5]=''; boardMatrix[2][5]='wp'; renderBoard();
+          getSquare(2,5)&&getSquare(2,5).classList.add('hl-done');
+          speak('白兵斜吃，黑兵被吃掉');
+        }, 22000);
+
+        // Round 2: missed opportunity
+        demoSchedule(function() {
+          clearDemoHL(); resetEpBoard();
+          speak('注意：吃过路兵的机会只有一次，错过就永久消失');
+        }, 29000);
+        demoSchedule(function() {
+          getSquare(1,5)&&getSquare(1,5).classList.add('hl-origin');
+          getSquare(3,5)&&getSquare(3,5).classList.add('hl-target');
+          speak('黑兵再次走两格');
+        }, 36500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[1][5]=''; boardMatrix[3][5]='bp'; renderBoard();
+        }, 40000);
+        demoSchedule(function() {
+          getSquare(3,4)&&getSquare(3,4).classList.add('hl-origin');
+          getSquare(2,5)&&getSquare(2,5).classList.add('hl-target');
+        }, 43500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[3][4]=''; boardMatrix[2][4]='wp'; renderBoard();
+          speak('白兵选择直走，放弃了吃过路兵的机会');
+        }, 45000);
+        demoSchedule(function() {
+          clearDemoHL();
+          getSquare(2,5)&&getSquare(2,5).classList.add('hl-block');
+          speak('机会已过，吃过路兵只能在对方走完后立即执行');
+        }, 51500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false;
+        }, 58000);
+      }
+
+      // ================================================================
         if (scope === 'observe') cancelDemo();
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
@@ -1876,7 +1996,8 @@
         'r-move': runRookMoveDemo,    'r-capture': runRookCaptureDemo,
         'b-move': runBishopMoveDemo,  'b-capture': runBishopCaptureDemo,
         'n-move': runKnightMoveDemo,  'n-capture': runKnightCaptureDemo,
-        'p-move': runPawnMoveDemo,    'p-capture': runPawnCaptureDemo
+        'p-move': runPawnMoveDemo,    'p-capture': runPawnCaptureDemo,
+        'p-promote': runPawnPromotionDemo, 'p-en-passant': runPawnEnPassantDemo
       };
 
       ['queen','rook','bishop','knight','pawn'].forEach(function(name) {
