@@ -1524,6 +1524,8 @@
       }
 
       // ================================================================
+
+      function clearScope(scope) {
         if (scope === 'observe') cancelDemo();
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
