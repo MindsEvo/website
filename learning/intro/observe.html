@@ -5,39 +5,1341 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1. 初步观察 | 入门启航</title>
   <style>
-    :root { --bg:#f3f5f9; --card:#fff; --line:#e8edf5; --ink:#1f2a3a; --muted:#6f7f94; --blue:#2d77e8; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--bg); color:var(--ink); font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif; }
-    .page { width:min(1180px,100%); margin:0 auto; padding:20px; }
-    .top { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
-    .back { min-width:126px; height:34px; border-radius:8px; background:var(--blue); color:#fff; font-size:14px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
-    h1 { font-size:28px; margin-bottom:8px; }
-    .sub { color:var(--muted); font-size:16px; margin-bottom:18px; }
-    .block { border:1px solid var(--line); border-radius:10px; padding:14px; margin-bottom:10px; }
-    .block h2 { font-size:18px; margin-bottom:6px; }
-    .block p { color:#5f6f85; font-size:15px; line-height:1.6; }
+    :root {
+      --page-bg: #f3f5f9;
+      --card-bg: #ffffff;
+      --line: #e6ebf3;
+      --ink: #1a2433;
+      --muted: #6f7f94;
+      --blue: #3f74ae;
+      --green: #2eb25b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 8px 4px 4px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0 8px;
+      margin-bottom: 6px;
+    }
+
+    .top-btn {
+      min-width: 102px;
+      height: 30px;
+      border-radius: 6px;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-back { background: var(--blue); }
+    .btn-tip { background: var(--green); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.08fr 1.22fr;
+      gap: 12px;
+      min-height: calc(100vh - 52px);
+    }
+
+    .left,
+    .right {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .left {
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .board-wrap {
+      background: #6f8f4d;
+      border: 1px solid #6f8f4d;
+      padding: 10px;
+      margin-top: 4px;
+    }
+
+    .board-shell {
+      --board-size: min(78vw, 610px);
+      width: calc(var(--board-size) + 24px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 24px var(--board-size);
+      grid-template-rows: var(--board-size) 24px;
+    }
+
+    .board {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      width: var(--board-size);
+      height: var(--board-size);
+      border: 2px solid rgba(92, 111, 71, 0.9);
+    }
+
+    .square {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .piece-svg {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .piece-text {
+      font-size: 88%;
+      line-height: 1;
+      color: #101827;
+      pointer-events: none;
+    }
+
+    .piece-text-min {
+      font-size: 74%;
+      opacity: 0.95;
+    }
+
+    .files, .ranks {
+      display: grid;
+      color: #17212f;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .file-bottom { grid-template-columns: repeat(8, 1fr); grid-column: 2; grid-row: 2; }
+    .rank-left { grid-template-rows: repeat(8, 1fr); grid-column: 1; grid-row: 1; }
+
+    .files span,
+    .ranks span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 8px 2px 4px;
+    }
+
+    .ctrl-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      border: 1px solid #d7deea;
+      background: #fff;
+      font-size: 12px;
+      color: #1f2d40;
+    }
+
+    .ctrl-btn.active {
+      background: #f9cb2d;
+    }
+
+    .meta {
+      margin-left: 6px;
+      font-size: 13px;
+      color: #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .bar {
+      width: 52px;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #ff9800 0 68%, #d0d7e3 68% 100%);
+    }
+
+    .bar.speed {
+      background: linear-gradient(90deg, #4f46e5 0 64%, #34d399 64% 100%);
+    }
+
+    .meta-box {
+      min-width: 26px;
+      height: 22px;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      background: #f8fafc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .right {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .title-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .title-card h2 {
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .mode-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .small-pill {
+      min-width: 66px;
+      height: 36px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .small-pill.blue { background: #1c76ea; }
+    .small-pill.green { background: #16a34a; }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      flex: 1;
+    }
+
+    .group { margin-bottom: 18px; }
+    .group:last-child { margin-bottom: 0; }
+
+    .group h3 {
+      font-size: 34px;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    .chips {
+      display: grid;
+      gap: 7px;
+    }
+
+    .chips.rows-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .chips.rows-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+    .chip {
+      height: 34px;
+      border-radius: 6px;
+      border: 0;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      cursor: default;
+    }
+
+    .chip.practice-btn {
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .chip.practice-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+    }
+
+    .chip.practice-correct {
+      box-shadow: 0 0 0 2px #16a34a, 0 0 0 4px #bbf7d0;
+    }
+
+    .chip.practice-wrong {
+      box-shadow: 0 0 0 2px #dc2626, 0 0 0 4px #fecaca;
+    }
+
+    .chip.practice-current {
+      box-shadow: 0 0 0 2px #2563eb, 0 0 0 4px #bfdbfe;
+    }
+
+    .chip.quiz-btn {
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .chip.quiz-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+    }
+
+    .chip.quiz-current {
+      box-shadow: 0 0 0 2px #0f766e, 0 0 0 4px #99f6e4;
+    }
+
+    .chip.quiz-correct {
+      box-shadow: 0 0 0 2px #16a34a, 0 0 0 4px #bbf7d0;
+    }
+
+    .chip.quiz-wrong {
+      box-shadow: 0 0 0 2px #dc2626, 0 0 0 4px #fecaca;
+    }
+
+    .practice-status {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d8e2f1;
+      background: #f8fbff;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-status {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d8e2f1;
+      background: #f8fbff;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .quiz-opt {
+      height: 34px;
+      border-radius: 6px;
+      border: 0;
+      background: #0f77e8;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .quiz-opt:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+    }
+
+    .quiz-opt.correct {
+      box-shadow: 0 0 0 2px #16a34a, 0 0 0 4px #bbf7d0;
+      background: #22c55e;
+    }
+
+    .quiz-opt.wrong {
+      box-shadow: 0 0 0 2px #dc2626, 0 0 0 4px #fecaca;
+      background: #ef4444;
+    }
+
+    .tips-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.26);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      padding: 16px;
+    }
+
+    .tips-modal.hidden {
+      display: none;
+    }
+
+    .tips-dialog {
+      width: min(520px, 96vw);
+      min-height: 620px;
+      background: #fff;
+      border: 1px solid #d9e1ee;
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.26);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .tips-head {
+      padding: 14px 18px 8px;
+      border-bottom: 1px solid #edf2f7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tips-head h4 {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1f2d40;
+    }
+
+    .tips-close {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .tips-body {
+      padding: 16px 24px;
+      color: #1f334f;
+      font-size: 22px;
+      line-height: 1.6;
+    }
+
+    .tips-body h5 {
+      font-size: 28px;
+      color: #0f2547;
+      margin-bottom: 12px;
+    }
+
+    .tips-body ol {
+      padding-left: 26px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tips-foot {
+      padding: 10px 16px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tips-ok {
+      min-width: 120px;
+      height: 38px;
+      border: 0;
+      border-radius: 8px;
+      background: #2eb25b;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chip.observe-btn {
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .chip.observe-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.25);
+    }
+
+    .chip.observe-active {
+      box-shadow: 0 0 0 2px #fef3c7, 0 0 0 4px #f59e0b;
+    }
+
+    @keyframes observeBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.32; }
+    }
+
+    .observe-blink {
+      animation: observeBlink 0.65s ease-in-out infinite;
+    }
+
+    .observe-piece-white {
+      filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+    }
+
+    .observe-piece-black {
+      filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.85));
+    }
+
+    .observe-square-light {
+      box-shadow: inset 0 0 0 4px rgba(59, 130, 246, 0.75);
+    }
+
+    .observe-square-dark {
+      box-shadow: inset 0 0 0 4px rgba(168, 85, 247, 0.75);
+    }
+
+    .observe-border {
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.85) inset;
+    }
+
+    @keyframes practiceBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.26; }
+    }
+
+    .practice-blink {
+      animation: practiceBlink 0.58s ease-in-out infinite;
+    }
+
+    .practice-piece-white {
+      filter: drop-shadow(0 0 4px rgba(22, 163, 74, 0.9));
+    }
+
+    .practice-piece-black {
+      filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.9));
+    }
+
+    .practice-square-light {
+      box-shadow: inset 0 0 0 4px rgba(56, 189, 248, 0.85);
+    }
+
+    .practice-square-dark {
+      box-shadow: inset 0 0 0 4px rgba(99, 102, 241, 0.85);
+    }
+
+    .practice-border {
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.9) inset;
+    }
+
+    .c-red { background: #e8334c; }
+    .c-black { background: #3e4652; }
+    .c-green { background: #2cb34a; }
+    .c-blue { background: #1d73e8; }
+    .c-cyan { background: #2aa6bd; }
+    .c-violet { background: #e400ee; }
+
+    @media (max-width: 1200px) {
+      .layout { grid-template-columns: 1fr; min-height: auto; }
+      .title-card h2 { font-size: 26px; }
+      .group h3 { font-size: 24px; }
+      .chips.rows-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .chips.rows-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="top">
-      <a class="back" href="./index.html" id="btnBackIntro">返回入门启航</a>
-    </div>
-    <section class="card">
-      <h1>1. 初步观察</h1>
-      <p class="sub">观察国际象棋棋盘和棋子的基本构成</p>
-      <div class="block"><h2>学习目标</h2><p>认识棋盘由 8x8 方格构成，了解黑白格交替与横纵坐标结构。</p></div>
-      <div class="block"><h2>观察任务</h2><p>找出四个角格、中心格和兵线起始行，建立空间感知。</p></div>
+    <header class="topbar">
+      <a class="top-btn btn-back" href="./index.html" id="btnBackIntro">返回入门启航</a>
+      <button class="top-btn btn-tip" type="button" id="btnKeyTips">要点提示</button>
+    </header>
+
+    <section class="layout">
+      <section class="left">
+        <div class="board-wrap">
+          <div class="board-shell">
+            <div class="ranks rank-left" id="rankLeft"></div>
+            <div class="board" id="board"></div>
+            <div class="files file-bottom" id="fileBottom"></div>
+          </div>
+        </div>
+
+        <div class="control-strip">
+          <button class="ctrl-btn">↺</button>
+          <button class="ctrl-btn">▶</button>
+          <button class="ctrl-btn">↩</button>
+          <button class="ctrl-btn">→</button>
+          <button class="ctrl-btn">🔊</button>
+          <button class="ctrl-btn">🎤</button>
+          <button class="ctrl-btn active">👥</button>
+          <button class="ctrl-btn">👤</button>
+          <button class="ctrl-btn">🤖</button>
+          <button class="ctrl-btn">◔</button>
+          <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
+          <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="title-card">
+          <h2>1. 初步观察</h2>
+          <div class="mode-actions">
+            <button class="small-pill blue" id="btnStudentVoice" type="button">致学生</button>
+            <button class="small-pill green" id="btnParentVoice" type="button">致家长</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="group">
+            <h3>动态观察</h3>
+            <div class="chips rows-5">
+              <button class="chip c-red observe-btn" data-observe="white-pieces">白方棋子</button>
+              <button class="chip c-black observe-btn" data-observe="black-pieces">黑方棋子</button>
+              <button class="chip c-green observe-btn" data-observe="board-border">棋盘边框</button>
+              <button class="chip c-blue observe-btn" data-observe="light-squares">浅色格子</button>
+              <button class="chip c-violet observe-btn" data-observe="dark-squares">深色格子</button>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>操作练习</h3>
+            <div class="chips rows-5">
+              <button class="chip c-red practice-btn" data-practice="white-pieces">白方棋子</button>
+              <button class="chip c-black practice-btn" data-practice="black-pieces">黑方棋子</button>
+              <button class="chip c-blue practice-btn" data-practice="dark-squares">深色格子</button>
+              <button class="chip c-cyan practice-btn" data-practice="light-squares">浅色格子</button>
+              <button class="chip c-green practice-btn" data-practice="board-border">边框</button>
+            </div>
+            <div class="practice-status" id="practiceStatus">操作练习：请根据提示点击正确目标。</div>
+          </div>
+
+          <div class="group">
+            <h3>问答练习</h3>
+            <div class="chips rows-6">
+              <button class="chip c-blue quiz-btn" data-quiz="match-colors">对阵颜色</button>
+              <button class="chip c-blue quiz-btn" data-quiz="white-side">白方位置</button>
+              <button class="chip c-blue quiz-btn" data-quiz="dark-count">棋盘格子数</button>
+              <button class="chip c-blue quiz-btn" data-quiz="total-count">格子总数</button>
+              <button class="chip c-blue quiz-btn" data-quiz="board-colors">棋盘颜色</button>
+              <button class="chip c-blue quiz-btn" data-quiz="bottom-right-color">右下角颜色</button>
+            </div>
+            <div class="quiz-status" id="quizStatus">问答练习：请选择上方一个问题开始作答。</div>
+            <div class="quiz-options" id="quizOptions"></div>
+          </div>
+        </div>
+      </section>
     </section>
+
+    <div class="tips-modal hidden" id="tipsModal" aria-hidden="true">
+      <div class="tips-dialog" role="dialog" aria-modal="true" aria-labelledby="tipsTitle">
+        <div class="tips-head">
+          <h4 id="tipsTitle">要点提示</h4>
+          <button class="tips-close" type="button" id="btnTipsClose" aria-label="关闭">×</button>
+        </div>
+        <div class="tips-body">
+          <h5>📌 本单元学习要点</h5>
+          <ol>
+            <li>本单元是初步认识国际象棋，有一个大致的印象</li>
+            <li>点击动态观察的按钮，观察高亮</li>
+            <li>通过操作练习，进一步加深印象</li>
+            <li>完成简单的问答练习题目</li>
+          </ol>
+        </div>
+        <div class="tips-foot">
+          <button class="tips-ok" type="button" id="btnTipsOk">我知道了</button>
+        </div>
+      </div>
+    </div>
   </main>
+
   <script>
     (function () {
-      var btn = document.getElementById('btnBackIntro');
-      if (btn) {
-        btn.addEventListener('click', function (e) {
-          if (window.history.length > 1) { e.preventDefault(); window.history.back(); }
+      var DISPLAY_SETTINGS_KEY = 'cognichess:display-settings';
+      var PIECE_ASSET = {
+        wk: 'wK.svg', wq: 'wQ.svg', wr: 'wR.svg', wb: 'wB.svg', wn: 'wN.svg', wp: 'wP.svg',
+        bk: 'bK.svg', bq: 'bQ.svg', br: 'bR.svg', bb: 'bB.svg', bn: 'bN.svg', bp: 'bP.svg'
+      };
+      var PIECE_UNICODE = {
+        wk: '♔', wq: '♕', wr: '♖', wb: '♗', wn: '♘', wp: '♙',
+        bk: '♚', bq: '♛', br: '♜', bb: '♝', bn: '♞', bp: '♟'
+      };
+      var BOARD_THEMES = {
+        classic: { light: '#f1f1cf', dark: '#769656' },
+        ocean: { light: '#d9ecff', dark: '#4f7fb3' },
+        wood: { light: '#f6e5c9', dark: '#b9855a' }
+      };
+
+      var current = { boardTheme: 'classic', pieceStyle: 'svg' };
+
+      var backBtn = document.getElementById('btnBackIntro');
+      var boardEl = document.getElementById('board');
+      var fileBottom = document.getElementById('fileBottom');
+      var rankLeft = document.getElementById('rankLeft');
+      var boardWrap = document.querySelector('.board-wrap');
+      var observeButtons = document.querySelectorAll('[data-observe]');
+      var practiceButtons = document.querySelectorAll('[data-practice]');
+      var practiceStatus = document.getElementById('practiceStatus');
+      var quizButtons = document.querySelectorAll('[data-quiz]');
+      var quizStatus = document.getElementById('quizStatus');
+      var quizOptions = document.getElementById('quizOptions');
+      var btnKeyTips = document.getElementById('btnKeyTips');
+      var btnStudentVoice = document.getElementById('btnStudentVoice');
+      var btnParentVoice = document.getElementById('btnParentVoice');
+      var tipsModal = document.getElementById('tipsModal');
+      var btnTipsClose = document.getElementById('btnTipsClose');
+      var btnTipsOk = document.getElementById('btnTipsOk');
+      var observeStopTimer = null;
+      var practiceStopTimer = null;
+      var quizStopTimer = null;
+      var currentPracticeTarget = null;
+      var currentPracticeButton = null;
+      var practiceArmed = false;
+      var currentQuizKey = null;
+
+      var lessonVoices = {
+        explanation: '初步观察！让我们一起认识国际象棋的棋盘和棋子',
+        student: '致学生：现在我们一起来观察国际象棋棋盘。点击动态过程按钮看一看，点击操作练习按钮试一试',
+        parent: '致家长：请让孩子自己操作，必要时提示解释一下'
+      };
+
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          if (window.history.length > 1) {
+            e.preventDefault();
+            window.history.back();
+          }
         });
+      }
+
+      if (btnKeyTips) {
+        btnKeyTips.addEventListener('click', function () {
+          if (!tipsModal) {
+            return;
+          }
+          tipsModal.classList.remove('hidden');
+          tipsModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      function closeTipsModal() {
+        if (!tipsModal) {
+          return;
+        }
+        if (tipsModal.contains(document.activeElement) && document.activeElement && document.activeElement.blur) {
+          document.activeElement.blur();
+        }
+        tipsModal.classList.add('hidden');
+        tipsModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (btnTipsClose) {
+        btnTipsClose.addEventListener('click', closeTipsModal);
+      }
+
+      if (btnTipsOk) {
+        btnTipsOk.addEventListener('click', closeTipsModal);
+      }
+
+      if (tipsModal) {
+        tipsModal.addEventListener('click', function (e) {
+          if (e.target === tipsModal) {
+            closeTipsModal();
+          }
+        });
+      }
+
+      if (btnStudentVoice) {
+        btnStudentVoice.addEventListener('click', function () {
+          speak(lessonVoices.student);
+        });
+      }
+
+      if (btnParentVoice) {
+        btnParentVoice.addEventListener('click', function () {
+          speak(lessonVoices.parent);
+        });
+      }
+
+      function loadDisplaySettings() {
+        try {
+          var raw = localStorage.getItem(DISPLAY_SETTINGS_KEY);
+          if (!raw) return;
+          var parsed = JSON.parse(raw);
+          if (parsed && parsed.boardTheme && parsed.pieceStyle) {
+            current = parsed;
+          }
+        } catch {}
+      }
+
+      function renderCoords() {
+        var files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        var ranks = [8, 7, 6, 5, 4, 3, 2, 1];
+        fileBottom.innerHTML = files.map(function (f) { return '<span>' + f + '</span>'; }).join('');
+        rankLeft.innerHTML = ranks.map(function (r) { return '<span>' + r + '</span>'; }).join('');
+      }
+
+      function pieceNode(piece) {
+        if (!piece) return '';
+        var sideClass = piece.charAt(0) === 'w' ? 'white-piece' : 'black-piece';
+        if (current.pieceStyle === 'svg') {
+          return '<span class="piece-node ' + sideClass + '"><img class="piece-svg" alt="' + piece + '" src="../../chess/play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
+        }
+        if (current.pieceStyle === 'unicode-min') {
+          return '<span class="piece-node ' + sideClass + ' piece-text piece-text-min">' + PIECE_UNICODE[piece] + '</span>';
+        }
+        return '<span class="piece-node ' + sideClass + ' piece-text">' + PIECE_UNICODE[piece] + '</span>';
+      }
+
+      function renderBoard() {
+        var theme = BOARD_THEMES[current.boardTheme] || BOARD_THEMES.classic;
+        var matrix = [
+          ['br', 'bn', 'bb', 'bq', 'bk', 'bb', 'bn', 'br'],
+          ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+          ['wr', 'wn', 'wb', 'wq', 'wk', 'wb', 'wn', 'wr']
+        ];
+
+        var html = '';
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var bg = ((r + c) % 2 === 0) ? theme.light : theme.dark;
+            var sqClass = ((r + c) % 2 === 0) ? 'square square-light' : 'square square-dark';
+            html += '<div class="' + sqClass + '" style="background:' + bg + '">' + pieceNode(matrix[r][c]) + '</div>';
+          }
+        }
+        boardEl.innerHTML = html;
+      }
+
+      function speak(text) {
+        if (!window.speechSynthesis || !text) {
+          return;
+        }
+        try {
+          window.speechSynthesis.cancel();
+          var ut = new SpeechSynthesisUtterance(text);
+          ut.lang = 'zh-CN';
+          ut.rate = 0.92;
+          ut.pitch = 1;
+          window.speechSynthesis.speak(ut);
+        } catch {}
+      }
+
+      function clearObserveHighlights(removeActiveState) {
+        document.querySelectorAll('.observe-blink').forEach(function (el) {
+          el.classList.remove('observe-blink', 'observe-piece-white', 'observe-piece-black', 'observe-square-light', 'observe-square-dark');
+        });
+        if (boardWrap) {
+          boardWrap.classList.remove('observe-blink', 'observe-border');
+        }
+        if (removeActiveState) {
+          observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
+        }
+
+        if (observeStopTimer) {
+          window.clearTimeout(observeStopTimer);
+          observeStopTimer = null;
+        }
+      }
+
+      function clearPracticeHighlights() {
+        document.querySelectorAll('.practice-blink').forEach(function (el) {
+          el.classList.remove('practice-blink', 'practice-piece-white', 'practice-piece-black', 'practice-square-light', 'practice-square-dark');
+        });
+        if (boardWrap) {
+          boardWrap.classList.remove('practice-blink', 'practice-border');
+        }
+        if (practiceStopTimer) {
+          window.clearTimeout(practiceStopTimer);
+          practiceStopTimer = null;
+        }
+      }
+
+      function clearQuizHighlights() {
+        document.querySelectorAll('.quiz-blink').forEach(function (el) {
+          el.classList.remove('quiz-blink', 'observe-piece-white', 'observe-piece-black', 'observe-square-light', 'observe-square-dark', 'observe-border');
+        });
+        if (boardWrap) {
+          boardWrap.classList.remove('quiz-blink', 'observe-border');
+        }
+        if (quizStopTimer) {
+          window.clearTimeout(quizStopTimer);
+          quizStopTimer = null;
+        }
+      }
+
+      function scheduleObserveAutoStop() {
+        if (observeStopTimer) {
+          window.clearTimeout(observeStopTimer);
+        }
+        // Stop blinking automatically after 10 seconds.
+        observeStopTimer = window.setTimeout(function () {
+          clearObserveHighlights(false);
+        }, 10000);
+      }
+
+      function schedulePracticeAutoStop() {
+        if (practiceStopTimer) {
+          window.clearTimeout(practiceStopTimer);
+        }
+        practiceStopTimer = window.setTimeout(function () {
+          clearPracticeHighlights();
+        }, 10000);
+      }
+
+      function scheduleQuizAutoStop() {
+        if (quizStopTimer) {
+          window.clearTimeout(quizStopTimer);
+        }
+        quizStopTimer = window.setTimeout(function () {
+          clearQuizHighlights();
+        }, 10000);
+      }
+
+      function runObserve(action, options) {
+        var opts = options || {};
+        clearObserveHighlights(false);
+
+        if (action === 'white-pieces') {
+          document.querySelectorAll('.piece-node.white-piece').forEach(function (el) {
+            el.classList.add('observe-blink', 'observe-piece-white');
+          });
+          if (!opts.silent) {
+            speak('白方棋子高亮显示。白方棋子位于棋盘下方两行。');
+          }
+          scheduleObserveAutoStop();
+          return;
+        }
+
+        if (action === 'black-pieces') {
+          document.querySelectorAll('.piece-node.black-piece').forEach(function (el) {
+            el.classList.add('observe-blink', 'observe-piece-black');
+          });
+          if (!opts.silent) {
+            speak('黑方棋子高亮显示。黑方棋子位于棋盘上方两行。');
+          }
+          scheduleObserveAutoStop();
+          return;
+        }
+
+        if (action === 'board-border') {
+          if (boardWrap) {
+            boardWrap.classList.add('observe-blink', 'observe-border');
+          }
+          if (!opts.silent) {
+            speak('棋盘边框高亮显示。边框用于界定棋盘活动区域。');
+          }
+          scheduleObserveAutoStop();
+          return;
+        }
+
+        if (action === 'light-squares') {
+          document.querySelectorAll('.square.square-light').forEach(function (el) {
+            el.classList.add('observe-blink', 'observe-square-light');
+          });
+          if (!opts.silent) {
+            speak('浅色格子高亮显示。棋盘是浅深颜色交替排列。');
+          }
+          scheduleObserveAutoStop();
+          return;
+        }
+
+        if (action === 'dark-squares') {
+          document.querySelectorAll('.square.square-dark').forEach(function (el) {
+            el.classList.add('observe-blink', 'observe-square-dark');
+          });
+          if (!opts.silent) {
+            speak('深色格子高亮显示。右下角格子是浅色。');
+          }
+          scheduleObserveAutoStop();
+        }
+      }
+
+      function runPracticeHighlight(action) {
+        clearPracticeHighlights();
+
+        if (action === 'white-pieces') {
+          document.querySelectorAll('.piece-node.white-piece').forEach(function (el) {
+            el.classList.add('practice-blink', 'practice-piece-white');
+          });
+          schedulePracticeAutoStop();
+          return;
+        }
+
+        if (action === 'black-pieces') {
+          document.querySelectorAll('.piece-node.black-piece').forEach(function (el) {
+            el.classList.add('practice-blink', 'practice-piece-black');
+          });
+          schedulePracticeAutoStop();
+          return;
+        }
+
+        if (action === 'board-border') {
+          if (boardWrap) {
+            boardWrap.classList.add('practice-blink', 'practice-border');
+          }
+          schedulePracticeAutoStop();
+          return;
+        }
+
+        if (action === 'light-squares') {
+          document.querySelectorAll('.square.square-light').forEach(function (el) {
+            el.classList.add('practice-blink', 'practice-square-light');
+          });
+          schedulePracticeAutoStop();
+          return;
+        }
+
+        if (action === 'dark-squares') {
+          document.querySelectorAll('.square.square-dark').forEach(function (el) {
+            el.classList.add('practice-blink', 'practice-square-dark');
+          });
+          schedulePracticeAutoStop();
+        }
+      }
+
+      function runQuizExplain(action) {
+        clearQuizHighlights();
+        if (action === 'white-pieces') {
+          document.querySelectorAll('.piece-node.white-piece').forEach(function (el) {
+            el.classList.add('quiz-blink', 'observe-piece-white');
+          });
+          scheduleQuizAutoStop();
+          return;
+        }
+        if (action === 'black-pieces') {
+          document.querySelectorAll('.piece-node.black-piece').forEach(function (el) {
+            el.classList.add('quiz-blink', 'observe-piece-black');
+          });
+          scheduleQuizAutoStop();
+          return;
+        }
+        if (action === 'light-squares') {
+          document.querySelectorAll('.square.square-light').forEach(function (el) {
+            el.classList.add('quiz-blink', 'observe-square-light');
+          });
+          scheduleQuizAutoStop();
+          return;
+        }
+        if (action === 'dark-squares') {
+          document.querySelectorAll('.square.square-dark').forEach(function (el) {
+            el.classList.add('quiz-blink', 'observe-square-dark');
+          });
+          scheduleQuizAutoStop();
+          return;
+        }
+        if (action === 'board-border') {
+          if (boardWrap) {
+            boardWrap.classList.add('quiz-blink', 'observe-border');
+          }
+          scheduleQuizAutoStop();
+        }
+      }
+
+      var practicePrompts = {
+        'white-pieces': { label: '白方棋子', speak: '请点击白色棋子' },
+        'black-pieces': { label: '黑方棋子', speak: '请点击黑色棋子' },
+        'board-border': { label: '棋盘边框', speak: '请点击棋盘边框' },
+        'light-squares': { label: '浅色格子', speak: '请点击浅色格子' },
+        'dark-squares': { label: '深色格子', speak: '请点击深色格子' }
+      };
+
+      function clearPracticeButtonState() {
+        practiceButtons.forEach(function (btn) {
+          btn.classList.remove('practice-correct', 'practice-wrong', 'practice-current');
+        });
+      }
+
+      function armPractice(target, btn) {
+        if (!practicePrompts[target]) {
+          return;
+        }
+
+        clearPracticeButtonState();
+        currentPracticeTarget = target;
+        currentPracticeButton = btn || null;
+        practiceArmed = true;
+
+        if (currentPracticeButton) {
+          currentPracticeButton.classList.add('practice-current');
+        }
+
+        if (practiceStatus) {
+          practiceStatus.textContent = '操作练习：请点击 ' + practicePrompts[target].label;
+        }
+        speak(practicePrompts[target].speak);
+      }
+
+      function checkPracticeAnswer(selection) {
+        if (!practiceArmed || !currentPracticeTarget) {
+          return;
+        }
+
+        clearPracticeButtonState();
+        if (currentPracticeButton) {
+          currentPracticeButton.classList.add('practice-current');
+        }
+
+        if (selection === currentPracticeTarget) {
+          if (currentPracticeButton) {
+            currentPracticeButton.classList.remove('practice-current');
+            currentPracticeButton.classList.add('practice-correct');
+          }
+          runPracticeHighlight(currentPracticeTarget);
+          if (practiceStatus) {
+            practiceStatus.textContent = '✅ 回答正确：' + practicePrompts[currentPracticeTarget].label;
+          }
+          speak('回答正确');
+          practiceArmed = false;
+          return;
+        }
+
+        if (currentPracticeButton) {
+          currentPracticeButton.classList.remove('practice-current');
+          currentPracticeButton.classList.add('practice-wrong');
+        }
+        if (selection) {
+          runPracticeHighlight(selection);
+        }
+        if (practiceStatus) {
+          practiceStatus.textContent = '❌ 回答错误：请点击 ' + practicePrompts[currentPracticeTarget].label;
+        }
+        speak('回答错误，请再试一次');
+        practiceArmed = true;
+      }
+
+      function detectSelectionFromSquare(squareEl) {
+        if (!squareEl) {
+          return null;
+        }
+
+        if (squareEl.querySelector('.piece-node.white-piece')) {
+          return 'white-pieces';
+        }
+        if (squareEl.querySelector('.piece-node.black-piece')) {
+          return 'black-pieces';
+        }
+
+        if (squareEl.classList.contains('square-light')) {
+          return 'light-squares';
+        }
+        if (squareEl.classList.contains('square-dark')) {
+          return 'dark-squares';
+        }
+        return null;
+      }
+
+      function onPracticeClick(btn) {
+        if (!btn) {
+          return;
+        }
+        var target = btn.getAttribute('data-practice');
+        armPractice(target, btn);
+      }
+
+      var quizBank = {
+        'match-colors': {
+          ask: '国际象棋对阵双方棋子的颜色是？',
+          options: ['白和黑', '红和黑', '蓝和白'],
+          correct: '白和黑',
+          explain: '国际象棋对阵双方棋子的颜色是白和黑。',
+          highlight: 'white-pieces'
+        },
+        'white-side': {
+          ask: '开局时白方棋子在棋盘哪边？',
+          options: ['棋盘上方', '棋盘下方', '棋盘左边'],
+          correct: '棋盘下方',
+          explain: '白方棋子位于棋盘下方两行。',
+          highlight: 'white-pieces'
+        },
+        'dark-count': {
+          ask: '棋盘横竖各有多少个格子？',
+          options: ['各6个', '各8个', '各10个'],
+          correct: '各8个',
+          explain: '棋盘横竖各有8个格子。',
+          highlight: 'board-border'
+        },
+        'total-count': {
+          ask: '棋盘一共有多少个格子？',
+          options: ['48格', '72格', '64格'],
+          correct: '64格',
+          explain: '棋盘是 8 行乘 8 列，共 64 格。',
+          highlight: 'board-border'
+        },
+        'board-colors': {
+          ask: '棋盘格子的颜色排列是？',
+          options: ['深浅交替', '全是深色', '全是浅色'],
+          correct: '深浅交替',
+          explain: '棋盘由浅色与深色两种格子交替组成。',
+          highlight: 'light-squares'
+        },
+        'bottom-right-color': {
+          ask: '白方右手边角落的格子是什么颜色？',
+          options: ['深色', '浅色', '没有颜色'],
+          correct: '浅色',
+          explain: '右下角格子是浅色，这是标准摆法。',
+          highlight: 'light-squares'
+        }
+      };
+
+      function clearQuizButtonState() {
+        quizButtons.forEach(function (btn) {
+          btn.classList.remove('quiz-current', 'quiz-correct', 'quiz-wrong');
+        });
+      }
+
+      function renderQuizOptions(key) {
+        if (!quizOptions) {
+          return;
+        }
+        var q = quizBank[key];
+        if (!q) {
+          quizOptions.innerHTML = '';
+          return;
+        }
+        quizOptions.innerHTML = q.options.map(function (opt) {
+          return '<button class="quiz-opt" data-quiz-opt="' + opt + '">' + opt + '</button>';
+        }).join('');
+      }
+
+      function startQuiz(btn) {
+        var key = btn.getAttribute('data-quiz');
+        var q = quizBank[key];
+        if (!q) {
+          return;
+        }
+
+        clearQuizButtonState();
+        clearQuizHighlights();
+        currentQuizKey = key;
+        btn.classList.add('quiz-current');
+        if (quizStatus) {
+          quizStatus.textContent = '问答练习：' + q.ask;
+        }
+        renderQuizOptions(key);
+        speak(q.ask);
+      }
+
+      function answerQuiz(optionText) {
+        var q = quizBank[currentQuizKey];
+        if (!q || !quizOptions) {
+          return;
+        }
+        var chosen = String(optionText || '');
+        var isCorrect = chosen === q.correct;
+        var optionNodes = quizOptions.querySelectorAll('[data-quiz-opt]');
+        optionNodes.forEach(function (node) {
+          var text = node.getAttribute('data-quiz-opt');
+          node.classList.remove('correct', 'wrong');
+          if (text === chosen) {
+            node.classList.add(isCorrect ? 'correct' : 'wrong');
+          }
+          if (!isCorrect && text === q.correct) {
+            node.classList.add('correct');
+          }
+        });
+
+        var activeBtn = null;
+        quizButtons.forEach(function (btn) {
+          if (btn.getAttribute('data-quiz') === currentQuizKey) {
+            activeBtn = btn;
+          }
+          btn.classList.remove('quiz-correct', 'quiz-wrong');
+        });
+        if (activeBtn) {
+          activeBtn.classList.add(isCorrect ? 'quiz-correct' : 'quiz-wrong');
+        }
+
+        if (quizStatus) {
+          quizStatus.textContent = (isCorrect ? '✅ 回答正确：' : '❌ 回答错误：') + q.explain;
+        }
+        runQuizExplain(q.highlight);
+        speak(isCorrect ? '回答正确。' + q.explain : '回答错误。' + q.explain);
+      }
+
+      if (!boardEl || !fileBottom || !rankLeft) return;
+
+      loadDisplaySettings();
+      renderCoords();
+      renderBoard();
+
+      observeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          observeButtons.forEach(function (b) { b.classList.remove('observe-active'); });
+          btn.classList.add('observe-active');
+          runObserve(btn.getAttribute('data-observe'));
+        });
+      });
+
+      practiceButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          onPracticeClick(btn);
+        });
+      });
+
+      quizButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          startQuiz(btn);
+        });
+      });
+
+      if (quizOptions) {
+        quizOptions.addEventListener('click', function (e) {
+          var optBtn = e.target.closest('[data-quiz-opt]');
+          if (!optBtn || !currentQuizKey) {
+            return;
+          }
+          answerQuiz(optBtn.getAttribute('data-quiz-opt'));
+        });
+      }
+
+      boardEl.addEventListener('click', function (e) {
+        if (!practiceArmed) {
+          return;
+        }
+        var square = e.target.closest('.square');
+        if (!square) {
+          return;
+        }
+        checkPracticeAnswer(detectSelectionFromSquare(square));
+      });
+
+      if (boardWrap) {
+        boardWrap.addEventListener('click', function (e) {
+          if (!practiceArmed || currentPracticeTarget !== 'board-border') {
+            return;
+          }
+          if (e.target.closest('.board')) {
+            return;
+          }
+          checkPracticeAnswer('board-border');
+        });
+      }
+
+      if (practiceStatus) {
+        practiceStatus.textContent = '操作练习：先点击上方一个选项按钮，再在棋盘上作答。';
+      }
+      if (quizStatus) {
+        quizStatus.textContent = '问答练习：请选择上方一个问题开始作答。';
       }
     }());
   </script>
