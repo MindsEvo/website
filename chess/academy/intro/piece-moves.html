@@ -490,6 +490,37 @@
       cursor: pointer;
     }
 
+    /* --- dropdown menu for piece chips --- */
+    .chip-wrap { position: relative; }
+    .chip-dropdown {
+      position: absolute;
+      top: calc(100% + 3px);
+      left: 0;
+      z-index: 300;
+      background: #fff;
+      border: 1px solid #d7deea;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.14);
+      min-width: 110%;
+      display: none;
+      overflow: hidden;
+    }
+    .chip-dropdown.open { display: block; }
+    .chip-dropdown button {
+      display: block; width: 100%; padding: 8px 12px;
+      border: none; background: none; text-align: left;
+      color: #1f2d40; font-size: 13px; font-weight: 600;
+      cursor: pointer; white-space: nowrap; font-family: inherit;
+    }
+    .chip-dropdown button:hover { background: #eff6ff; color: #1d4ed8; }
+    .chip-dropdown button + button { border-top: 1px solid #f0f4f8; }
+
+    /* static highlight classes (no animation — override pulse) */
+    .hl-block  { box-shadow: inset 0 0 0 4px rgba(220,38,38,0.90) !important; animation: none !important; }
+    .hl-danger { box-shadow: inset 0 0 0 4px rgba(234,88,12,0.90) !important; animation: none !important; }
+    .hl-castle { box-shadow: inset 0 0 0 4px rgba(6,182,212,0.88) !important; animation: none !important; }
+    .hl-done   { box-shadow: inset 0 0 0 4px rgba(245,158,11,0.95) !important; animation: none !important; }
+
     @media (max-width: 1200px) {
       .layout { grid-template-columns: 1fr; min-height: auto; }
       .title-card h2 { font-size: 26px; }
@@ -537,7 +568,14 @@
           <div class="group">
             <h3>动态观察</h3>
             <div class="chips rows-6" id="observeButtons">
-              <button class="chip c-king" data-observe-piece="k">王 ▼</button>
+              <div class="chip-wrap">
+                <button class="chip c-king" id="kingObserveBtn">王 ▼</button>
+                <div class="chip-dropdown" id="kingObserveMenu">
+                  <button data-king-action="move">走法演示</button>
+                  <button data-king-action="capture">吃子演示</button>
+                  <button data-king-action="castle">王车易位</button>
+                </div>
+              </div>
               <button class="chip c-queen" data-observe-piece="q">后 ▼</button>
               <button class="chip c-rook" data-observe-piece="r">车 ▼</button>
               <button class="chip c-bishop" data-observe-piece="b">象 ▼</button>
@@ -778,8 +816,8 @@
         demoState.active = false;
         demoState.timers.forEach(window.clearTimeout);
         demoState.timers = [];
-        boardEl.querySelectorAll('.hl-origin, .hl-target, .hl-piece').forEach(function (el) {
-          el.classList.remove('hl-origin', 'hl-target', 'hl-piece');
+        boardEl.querySelectorAll('.hl-origin,.hl-target,.hl-piece,.hl-block,.hl-danger,.hl-castle,.hl-done').forEach(function (el) {
+          el.classList.remove('hl-origin','hl-target','hl-piece','hl-block','hl-danger','hl-castle','hl-done');
         });
         if (savedBoard) {
           boardMatrix = savedBoard;
@@ -884,6 +922,192 @@
         }, 1700);
       }
       // --- END KING DEMO ---
+
+      // helpers shared by capture and castling demos
+      function clearDemoHL() {
+        boardEl.querySelectorAll('.hl-origin,.hl-target,.hl-block,.hl-danger,.hl-castle,.hl-done').forEach(function (el) {
+          el.classList.remove('hl-origin','hl-target','hl-block','hl-danger','hl-castle','hl-done');
+        });
+      }
+
+      function emptyBoard() {
+        return Array(8).fill(null).map(function () { return Array(8).fill(''); });
+      }
+
+      // --- KING CAPTURE DEMO ---
+      function setupKingCaptureBoard() {
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4] = 'wk';  // e4  white king
+        boardMatrix[3][3] = 'wr';  // d5  own rook  (blocks left-up)
+        boardMatrix[4][3] = 'wn';  // d4  own knight (blocks left)
+        boardMatrix[5][3] = 'wb';  // d3  own bishop (blocks left-down)
+        boardMatrix[2][5] = 'br';  // f6  black rook (controls f-file)
+        boardMatrix[5][4] = 'bp';  // e3  unprotected black pawn
+        renderBoard();
+      }
+
+      function runKingCaptureDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        setupKingCaptureBoard();
+        speak('王的吃子規则演示');
+
+        // show legal squares: e5 and e3
+        demoSchedule(function () {
+          var o = getSquare(4,4); if (o) o.classList.add('hl-origin');
+          var e5 = getSquare(3,4); if (e5) e5.classList.add('hl-target');
+          var e3 = getSquare(5,4); if (e3) e3.classList.add('hl-target');
+          speak('王周器8个方向，只有合法格子才能落子');
+        }, 800);
+
+        // own-piece blocks
+        demoSchedule(function () {
+          clearDemoHL();
+          [[3,3],[4,3],[5,3]].forEach(function (rc) {
+            var s = getSquare(rc[0],rc[1]); if (s) s.classList.add('hl-block');
+          });
+          speak('不能走到己方棋子所在的格子');
+        }, 3800);
+
+        // enemy-controlled squares
+        demoSchedule(function () {
+          clearDemoHL();
+          [[3,5],[4,5],[5,5]].forEach(function (rc) {
+            var s = getSquare(rc[0],rc[1]); if (s) s.classList.add('hl-danger');
+          });
+          var rk = getSquare(2,5); if (rk) rk.classList.add('hl-origin');
+          speak('黑车在f6，控制了整条f列，王不能进入这些格子');
+        }, 7800);
+
+        // king moves to e5
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[4][4] = ''; boardMatrix[3][4] = 'wk';
+          renderBoard();
+          var sq = getSquare(3,4); if (sq) sq.classList.add('hl-origin');
+          showDemoHighlights(3,4);
+          speak('王可以走到空白格e5');
+        }, 12500);
+
+        // king returns to e4
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[3][4] = ''; boardMatrix[4][4] = 'wk';
+          renderBoard();
+        }, 15500);
+
+        // king captures e3 pawn
+        demoSchedule(function () {
+          var o = getSquare(4,4); if (o) o.classList.add('hl-origin');
+          var t = getSquare(5,4); if (t) t.classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[4][4] = ''; boardMatrix[5][4] = 'wk';
+          renderBoard();
+          var sq = getSquare(5,4); if (sq) sq.classList.add('hl-done');
+          speak('王吃掉没有保护的黑兵，这就是王的吃子规则');
+        }, 17800);
+
+        // restore
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          demoState.active = false;
+        }, 21500);
+      }
+
+      // --- KING CASTLING DEMO ---
+      function setupCastlingBoard() {
+        boardMatrix = emptyBoard();
+        boardMatrix[7][4] = 'wk';  // e1
+        boardMatrix[7][0] = 'wr';  // a1
+        boardMatrix[7][7] = 'wr';  // h1
+        renderBoard();
+      }
+
+      function runKingCastlingDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        setupCastlingBoard();
+        speak('王车易位：王和车的特殊配合走法');
+
+        // --- Phase 1: kingside (short) ---
+        demoSchedule(function () {
+          speak('短易位：王向王翼走两格');
+        }, 1800);
+        demoSchedule(function () {
+          var k = getSquare(7,4); if (k) k.classList.add('hl-origin');
+          var g1 = getSquare(7,6); if (g1) g1.classList.add('hl-target');
+          var h1 = getSquare(7,7); if (h1) h1.classList.add('hl-castle');
+          var f1 = getSquare(7,5); if (f1) f1.classList.add('hl-castle');
+          speak('王走到g1，h1的车跳到f1');
+        }, 4000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][4]=''; boardMatrix[7][7]='';
+          boardMatrix[7][6]='wk'; boardMatrix[7][5]='wr';
+          renderBoard();
+          var g = getSquare(7,6); if (g) g.classList.add('hl-done');
+          var f = getSquare(7,5); if (f) f.classList.add('hl-done');
+          speak('短易位完成，王更加安全');
+        }, 7500);
+
+        // --- Phase 2: queenside (long) ---
+        demoSchedule(function () {
+          clearDemoHL(); setupCastlingBoard();
+          speak('长易位：王向后翼走两格');
+        }, 12500);
+        demoSchedule(function () {
+          var k = getSquare(7,4); if (k) k.classList.add('hl-origin');
+          var c1 = getSquare(7,2); if (c1) c1.classList.add('hl-target');
+          var a1 = getSquare(7,0); if (a1) a1.classList.add('hl-castle');
+          var d1 = getSquare(7,3); if (d1) d1.classList.add('hl-castle');
+          speak('王走到c1，a1的车跳到d1');
+        }, 15000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][4]=''; boardMatrix[7][0]='';
+          boardMatrix[7][2]='wk'; boardMatrix[7][3]='wr';
+          renderBoard();
+          var c = getSquare(7,2); if (c) c.classList.add('hl-done');
+          var d = getSquare(7,3); if (d) d.classList.add('hl-done');
+          speak('长易位完成');
+        }, 18500);
+
+        // --- Phase 3: threat examples ---
+        demoSchedule(function () {
+          clearDemoHL(); setupCastlingBoard();
+          speak('重要规则：易位路径上的格子不能被对方控制');
+        }, 23500);
+        // black rook f5 → blocks kingside
+        demoSchedule(function () {
+          boardMatrix[3][5]='br'; renderBoard();
+          var f5 = getSquare(3,5); if (f5) f5.classList.add('hl-danger');
+          var f1 = getSquare(7,5); if (f1) f1.classList.add('hl-block');
+          speak('黑车在f5，控制f1格，短易位被阻止');
+        }, 28000);
+        // black bishop g5 → blocks queenside
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[3][5]=''; boardMatrix[3][6]='bb'; renderBoard();
+          var g5 = getSquare(3,6); if (g5) g5.classList.add('hl-danger');
+          var c1 = getSquare(7,2); if (c1) c1.classList.add('hl-block');
+          speak('黑象在g5，撙线控制c1，长易位也被阻止');
+        }, 35000);
+        // restore
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          speak('易位前需确保王和车均未移动，路径无子且不被对方控制');
+          demoSchedule(function () { demoState.active = false; }, 1500);
+        }, 41000);
+      }
+      // --- END CAPTURE/CASTLING DEMOS ---
 
       function clearScope(scope) {
         if (scope === 'observe') cancelDemo();
@@ -997,6 +1221,8 @@
 
       function runObserve(kind) {
         observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
+        var kingBtn = document.getElementById('kingObserveBtn');
+        if (kingBtn) kingBtn.classList.remove('observe-active');
         var btn = document.querySelector('[data-observe-piece="' + kind + '"]');
         if (btn) btn.classList.add('observe-active');
         if (kind === 'k') {
@@ -1201,6 +1427,30 @@
           var b = e.target.closest('[data-quiz-opt]');
           if (!b || currentQuizTopic === null || currentQuizIndex === null) return;
           answerQuiz(b.getAttribute('data-quiz-opt'));
+        });
+      }
+
+      // --- king observe dropdown ---
+      var kingObserveBtn = document.getElementById('kingObserveBtn');
+      var kingObserveMenu = document.getElementById('kingObserveMenu');
+      if (kingObserveBtn && kingObserveMenu) {
+        kingObserveBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          kingObserveMenu.classList.toggle('open');
+        });
+        kingObserveMenu.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-king-action]');
+          if (!b) return;
+          var action = b.getAttribute('data-king-action');
+          kingObserveMenu.classList.remove('open');
+          observeButtons.forEach(function (ob) { ob.classList.remove('observe-active'); });
+          kingObserveBtn.classList.add('observe-active');
+          if (action === 'move') runKingObserveDemo();
+          else if (action === 'capture') runKingCaptureDemo();
+          else if (action === 'castle') runKingCastlingDemo();
+        });
+        document.addEventListener('click', function () {
+          kingObserveMenu.classList.remove('open');
         });
       }
     }());
