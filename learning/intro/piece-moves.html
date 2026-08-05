@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. 棋子走法 | 入门启航</title>
+  <style>
+    :root {
+      --page-bg: #f3f5f9;
+      --card-bg: #ffffff;
+      --line: #e6ebf3;
+      --ink: #1a2433;
+      --muted: #6f7f94;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .page { width: min(1440px, 100%); margin: 0 auto; padding: 18px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .left-actions { display: flex; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 128px; height: 34px; border-radius: 7px; font-size: 14px; font-weight: 700;
+      color: #fff; text-decoration: none;
+    }
+    .btn-back { background: #3f74ae; }
+    .btn-prompt { background: #2eb25b; border: none; }
+    .layout { display: grid; grid-template-columns: 1.08fr 1.2fr; gap: 16px; min-height: calc(100vh - 98px); }
+    .left, .right { background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+    .left { padding: 10px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
+    .board-wrap { background: #6f8f4d; border: 1px solid #6f8f4d; padding: 10px; margin-top: 6px; }
+    .board-shell {
+      --board-size: min(78vw, 610px);
+      width: calc(var(--board-size) + 24px); margin: 0 auto; display: grid;
+      grid-template-columns: 24px var(--board-size); grid-template-rows: var(--board-size) 24px;
+    }
+    .board {
+      grid-column: 2; grid-row: 1; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);
+      width: var(--board-size); height: var(--board-size); border: 2px solid rgba(92, 111, 71, 0.9);
+    }
+    .sq-light { background: #f1f1cf; }
+    .sq-dark { background: #769656; }
+    .square { display: flex; align-items: center; justify-content: center; font-size: calc(var(--board-size) / 11.8); line-height: 1; }
+    .files, .ranks { display: grid; color: #17212f; font-size: 14px; font-weight: 600; }
+    .file-bottom { grid-template-columns: repeat(8, 1fr); grid-column: 2; grid-row: 2; }
+    .rank-left { grid-template-rows: repeat(8, 1fr); grid-column: 1; grid-row: 1; }
+    .files span, .ranks span { display: flex; align-items: center; justify-content: center; }
+    .control-strip { display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; padding: 6px 4px 2px; }
+    .ctrl-btn { width: 28px; height: 28px; border-radius: 5px; border: 1px solid #d7deea; background: #fff; font-size: 13px; color: #1f2d40; }
+    .mini-meta { font-size: 13px; color: #334155; margin-left: 10px; display: inline-flex; align-items: center; gap: 6px; }
+    .mini-box { min-width: 28px; height: 24px; border: 1px solid #d7deea; border-radius: 4px; background: #f8fafc; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+    .right { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .title-card {
+      border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .title-card h2 { font-size: 32px; font-weight: 900; }
+    .mode-actions { display: flex; gap: 6px; }
+    .small-pill { min-width: 66px; height: 36px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; }
+    .small-pill.blue { background: #1c76ea; }
+    .small-pill.green { background: #16a34a; }
+    .panel { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: #fff; flex: 1; }
+    .group { margin-bottom: 20px; }
+    .group:last-child { margin-bottom: 0; }
+    .group h3 { font-size: 32px; margin-bottom: 10px; font-weight: 900; }
+    .chips { display: grid; gap: 8px; }
+    .chips.rows-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .chips.rows-8 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .chip {
+      height: 34px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: 700;
+      display: inline-flex; align-items: center; justify-content: center; border: 0; white-space: nowrap;
+    }
+    .c-king { background: #ff6f0f; }
+    .c-queen { background: #8b5cf6; }
+    .c-rook { background: #ff2f6d; }
+    .c-bishop { background: #2b4797; }
+    .c-knight { background: #1e6f3d; }
+    .c-pawn { background: #ff9800; }
+    .c-blue { background: #1d73e8; }
+    @media (max-width: 1200px) {
+      .layout { grid-template-columns: 1fr; min-height: auto; }
+      .title-card h2 { font-size: 26px; }
+      .group h3 { font-size: 24px; }
+      .chips.rows-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .chips.rows-8 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="left-actions">
+        <a class="btn btn-back" href="./index.html" id="btnBackIntro">返回入门启航</a>
+        <button class="btn btn-prompt" type="button">要点提示</button>
+      </div>
+    </header>
+
+    <section class="layout">
+      <section class="left">
+        <div class="board-wrap">
+          <div class="board-shell">
+            <div class="ranks rank-left" id="rankLeft"></div>
+            <div class="board" id="board"></div>
+            <div class="files file-bottom" id="fileBottom"></div>
+          </div>
+        </div>
+        <div class="control-strip">
+          <button class="ctrl-btn">↺</button><button class="ctrl-btn">▶</button><button class="ctrl-btn">↩</button><button class="ctrl-btn">→</button>
+          <button class="ctrl-btn">🔊</button><button class="ctrl-btn">🎤</button><button class="ctrl-btn">👥</button><button class="ctrl-btn">👤</button>
+          <button class="ctrl-btn">🤖</button><button class="ctrl-btn">◔</button>
+          <span class="mini-meta">音量:<span class="mini-box">80</span></span>
+          <span class="mini-meta">速度:<span class="mini-box">5</span></span>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="title-card">
+          <h2>4. 棋子走法</h2>
+          <div class="mode-actions"><span class="small-pill blue">教学</span><span class="small-pill green">家长化</span></div>
+        </div>
+        <div class="panel">
+          <div class="group"><h3>动态观察</h3><div class="chips rows-6"><button class="chip c-king">王</button><button class="chip c-queen">后</button><button class="chip c-rook">车</button><button class="chip c-bishop">象</button><button class="chip c-knight">马</button><button class="chip c-pawn">兵</button></div></div>
+          <div class="group"><h3>操作练习</h3><div class="chips rows-6"><button class="chip c-king">王 ▼</button><button class="chip c-queen">后 ▼</button><button class="chip c-rook">车 ▼</button><button class="chip c-bishop">象 ▼</button><button class="chip c-knight">马 ▼</button><button class="chip c-pawn">兵 ▼</button></div></div>
+          <div class="group"><h3>问答练习</h3><div class="chips rows-8"><button class="chip c-blue">王 ▼</button><button class="chip c-blue">后 ▼</button><button class="chip c-blue">车 ▼</button><button class="chip c-blue">象 ▼</button><button class="chip c-blue">马 ▼</button><button class="chip c-blue">兵 ▼</button><button class="chip c-blue">特殊规则 ▼</button><button class="chip c-blue">和棋 ▼</button></div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var board = document.getElementById("board");
+      var fileBottom = document.getElementById("fileBottom");
+      var rankLeft = document.getElementById("rankLeft");
+      var backBtn = document.getElementById("btnBackIntro");
+
+      if (backBtn) {
+        backBtn.addEventListener("click", function (e) {
+          if (window.history.length > 1) {
+            e.preventDefault();
+            window.history.back();
+          }
+        });
+      }
+
+      if (!board || !fileBottom || !rankLeft) return;
+
+      var files = ["a","b","c","d","e","f","g","h"];
+      var ranks = [8,7,6,5,4,3,2,1];
+      fileBottom.innerHTML = files.map(function (f) { return "<span>" + f + "</span>"; }).join("");
+      rankLeft.innerHTML = ranks.map(function (r) { return "<span>" + r + "</span>"; }).join("");
+
+      var start = [
+        ["♜","♞","♝","♛","♚","♝","♞","♜"],
+        ["♟","♟","♟","♟","♟","♟","♟","♟"],
+        ["","","","","","","", ""],
+        ["","","","","","","", ""],
+        ["","","","","","","", ""],
+        ["","","","","","","", ""],
+        ["♙","♙","♙","♙","♙","♙","♙","♙"],
+        ["♖","♘","♗","♕","♔","♗","♘","♖"]
+      ];
+
+      var html = "";
+      for (var r = 0; r < 8; r++) {
+        for (var c = 0; c < 8; c++) {
+          var cls = ((r + c) % 2 === 0) ? "sq-light" : "sq-dark";
+          html += "<div class='square " + cls + "'>" + (start[r][c] || "") + "</div>";
+        }
+      }
+      board.innerHTML = html;
+    }());
+  </script>
+</body>
+</html>
