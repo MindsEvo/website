@@ -798,7 +798,7 @@
         if (!piece) return '';
         var sideClass = piece.charAt(0) === 'w' ? 'white-piece' : 'black-piece';
         if (current.pieceStyle === 'svg') {
-          return '<span class="piece-node ' + sideClass + '"><img class="piece-svg" alt="' + piece + '" src="../../chess/play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
+          return '<span class="piece-node ' + sideClass + '"><img class="piece-svg" alt="' + piece + '" src="../../play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
         }
         if (current.pieceStyle === 'unicode-min') {
           return '<span class="piece-node ' + sideClass + ' piece-text piece-text-min">' + PIECE_UNICODE[piece] + '</span>';

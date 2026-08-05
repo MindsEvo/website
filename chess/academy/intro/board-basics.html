@@ -112,6 +112,17 @@
       justify-content: center;
       line-height: 1;
       user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .square::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.18s ease;
     }
 
     .piece-svg {
@@ -376,34 +387,48 @@
       background: #ef4444;
     }
 
-    @keyframes observeBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    /* 边框脉冲动画：仅作用于棋盘轮廓线，不影响棋盘内容 */
+    @keyframes borderPulse {
+      0%   { outline-color: #28a745; outline-width: 4px; }
+      30%  { outline-color: #86efac; outline-width: 8px; }
+      60%  { outline-color: #28a745; outline-width: 4px; }
+      80%  { outline-color: #86efac; outline-width: 7px; }
+      100% { outline-color: #28a745; outline-width: 4px; }
     }
 
-    @keyframes practiceBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.24; }
+    .board-wrap.hl-border-overlay {
+      outline: 4px solid #28a745;
+      outline-offset: -4px;
+      animation: borderPulse 0.5s ease-in-out 3;
     }
 
-    @keyframes quizBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.28; }
+    .square.hl-light-overlay::after   { background: rgba(255, 87, 34, 0.78); opacity: 1; }
+    .square.hl-dark-overlay::after    { background: rgba(255, 87, 34, 0.88); opacity: 1; }
+    .square.hl-rank-overlay::after    { background: rgba(30, 58, 138, 0.68); opacity: 1; }
+    .square.hl-file-overlay::after    { background: rgba(22, 101, 52, 0.68); opacity: 1; }
+    .square.hl-diag-dark-overlay::after  { background: rgba(220, 20, 60, 0.75); opacity: 1; }
+    .square.hl-diag-light-overlay::after { background: rgba(34, 139, 34, 0.75); opacity: 1; }
+    .square.hl-coord-overlay::after   { background: rgba(245, 158, 11, 0.65); opacity: 1; }
+
+    .square.hl-light-overlay,
+    .square.hl-dark-overlay,
+    .square.hl-rank-overlay,
+    .square.hl-file-overlay,
+    .square.hl-diag-dark-overlay,
+    .square.hl-diag-light-overlay,
+    .square.hl-coord-overlay {
+      z-index: 2;
     }
 
-    .observe-blink { animation: observeBlink 0.65s ease-in-out infinite; }
-    .practice-blink { animation: practiceBlink 0.58s ease-in-out infinite; }
-    .quiz-blink { animation: quizBlink 0.62s ease-in-out infinite; }
-
-    .hl-piece-white { filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8)); }
-    .hl-piece-black { filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.85)); }
-    .hl-square-light { box-shadow: inset 0 0 0 4px rgba(56, 189, 248, 0.85); }
-    .hl-square-dark { box-shadow: inset 0 0 0 4px rgba(168, 85, 247, 0.8); }
-    .hl-border { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.85) inset; }
-    .hl-rank { box-shadow: inset 0 5px 0 rgba(37, 99, 235, 0.85), inset 0 -5px 0 rgba(37, 99, 235, 0.85); }
-    .hl-file { box-shadow: inset 5px 0 0 rgba(22, 163, 74, 0.85), inset -5px 0 0 rgba(22, 163, 74, 0.85); }
-    .hl-diag-dark { box-shadow: inset 0 0 0 4px rgba(220, 38, 38, 0.82); }
-    .hl-diag-light { box-shadow: inset 0 0 0 4px rgba(34, 197, 94, 0.82); }
+    .square.hl-light-overlay .piece-svg,
+    .square.hl-dark-overlay .piece-svg,
+    .square.hl-rank-overlay .piece-svg,
+    .square.hl-file-overlay .piece-svg,
+    .square.hl-diag-dark-overlay .piece-svg,
+    .square.hl-diag-light-overlay .piece-svg,
+    .square.hl-coord-overlay .piece-svg {
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+    }
 
     .tips-modal {
       position: fixed;
@@ -681,8 +706,8 @@
         'dark-squares': { voice: '请观察深色格子，它们与浅色格子交替排列形成棋盘' },
         'ranks': { voice: '请观察横格，棋盘从下到上有8行横格，称为第1行到第8行' },
         'files': { voice: '请观察竖格，棋盘从左到右有8列竖格，称为a列到h列' },
-        'dark-diagonals': { voice: '请观察深色对角线，深色象只在深色格上走，行走路线就是这些斜线' },
-        'light-diagonals': { voice: '请观察浅色对角线，浅色象只在浅色格上走，行走路线就是这些斜线' },
+        'dark-diagonals': { voice: '请观察深色对角线，这些深色格子连成的斜线在国际象棋中很重要' },
+        'light-diagonals': { voice: '请观察浅色对角线，这些浅色格子连成的斜线同样很关键' },
         'coordinates': { voice: '现在来认识棋盘坐标，每个格子都有唯一的坐标名称' }
       };
 
@@ -780,7 +805,7 @@
         if (!piece) return '';
         var sideClass = piece.charAt(0) === 'w' ? 'white-piece' : 'black-piece';
         if (current.pieceStyle === 'svg') {
-          return '<span class="piece-node ' + sideClass + '"><img class="piece-svg" alt="' + piece + '" src="../../chess/play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
+          return '<span class="piece-node ' + sideClass + '"><img class="piece-svg" alt="' + piece + '" src="../../play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
         }
         if (current.pieceStyle === 'unicode-min') {
           return '<span class="piece-node ' + sideClass + ' piece-text piece-text-min">' + PIECE_UNICODE[piece] + '</span>';
@@ -834,42 +859,95 @@
         return out;
       }
 
+      var activeIntervals = { observe: null, practice: null, quiz: null };
+
       function clearScope(scope) {
+        if (activeIntervals[scope]) {
+          window.clearTimeout(activeIntervals[scope]);
+          activeIntervals[scope] = null;
+        }
         var blinkClass = scope + '-blink';
-        var timerRef = null;
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
-          el.classList.remove(blinkClass, 'hl-piece-white', 'hl-piece-black', 'hl-square-light', 'hl-square-dark', 'hl-border', 'hl-rank', 'hl-file', 'hl-diag-dark', 'hl-diag-light', 'coord-active');
+          el.classList.remove(blinkClass, 'hl-light-overlay', 'hl-dark-overlay', 'hl-rank-overlay', 'hl-file-overlay', 'hl-diag-dark-overlay', 'hl-diag-light-overlay', 'hl-coord-overlay', 'coord-active');
         });
-        if (scope === 'observe' && observeTimer) {
-          window.clearTimeout(observeTimer);
-          observeTimer = null;
-        }
-        if (scope === 'practice' && practiceTimer) {
-          window.clearTimeout(practiceTimer);
-          practiceTimer = null;
-        }
-        if (scope === 'quiz' && quizTimer) {
-          window.clearTimeout(quizTimer);
-          quizTimer = null;
-        }
+        if (scope === 'observe') boardWrap.classList.remove('observe-blink', 'hl-border-overlay');
+        if (scope === 'practice') boardWrap.classList.remove('practice-blink', 'hl-border-overlay');
+        if (scope === 'quiz') boardWrap.classList.remove('quiz-blink', 'hl-border-overlay');
       }
 
-      function scheduleScopeStop(scope) {
-        var fn = function () { clearScope(scope); };
-        if (scope === 'observe') {
-          if (observeTimer) window.clearTimeout(observeTimer);
-          observeTimer = window.setTimeout(fn, 10000);
-          return;
+      function flashElements(scope, selector, className, cycles, onMs, offMs) {
+        var elements = Array.from(document.querySelectorAll(selector));
+        var cycle = 0;
+        function show() {
+          elements.forEach(function (el) { el.classList.add(scope + '-blink', className); });
+          activeIntervals[scope] = window.setTimeout(hide, onMs);
         }
-        if (scope === 'practice') {
-          if (practiceTimer) window.clearTimeout(practiceTimer);
-          practiceTimer = window.setTimeout(fn, 10000);
-          return;
+        function hide() {
+          elements.forEach(function (el) { el.classList.remove(className); });
+          cycle++;
+          if (cycle >= cycles) {
+            elements.forEach(function (el) { el.classList.remove(scope + '-blink', className); });
+            activeIntervals[scope] = null;
+            return;
+          }
+          activeIntervals[scope] = window.setTimeout(show, offMs);
         }
-        if (scope === 'quiz') {
-          if (quizTimer) window.clearTimeout(quizTimer);
-          quizTimer = window.setTimeout(fn, 10000);
+        show();
+      }
+
+      function sequentialFlash(scope, groups, className, stepMs, rounds) {
+        var round = 0;
+        var index = 0;
+        groups.forEach(function (group) {
+          group.forEach(function (el) { el.classList.remove(className); });
+        });
+        function step() {
+          groups.forEach(function (group) {
+            group.forEach(function (el) { el.classList.remove(className); });
+          });
+          groups[index].forEach(function (el) { el.classList.add(scope + '-blink', className); });
+          index++;
+          if (index >= groups.length) {
+            index = 0;
+            round++;
+            if (round >= rounds) {
+              groups.forEach(function (group) {
+                group.forEach(function (el) { el.classList.remove(scope + '-blink', className); });
+              });
+              activeIntervals[scope] = null;
+              return;
+            }
+          }
+          activeIntervals[scope] = window.setTimeout(step, stepMs);
         }
+        step();
+      }
+
+      function collectDiagonalGroups(color) {
+        var isDark = color === 'dark';
+        var groups = [];
+        var d, i, j, group;
+        for (d = 0; d <= 14; d++) {
+          group = [];
+          for (i = 0; i < 8; i++) {
+            j = d - i;
+            if (j >= 0 && j < 8 && ((i + j) % 2 === (isDark ? 1 : 0))) {
+              group.push(getSquare(i, j));
+            }
+          }
+          if (group.length) groups.push(group);
+        }
+        for (d = 0; d <= 14; d++) {
+          group = [];
+          for (i = 0; i < 8; i++) {
+            j = i - d + 7;
+            if (j >= 0 && j < 8 && ((i + j) % 2 === (isDark ? 1 : 0))) {
+              group.push(getSquare(i, j));
+            }
+          }
+          if (group.length) groups.push(group);
+        }
+        return groups;
       }
 
       function highlightMode(scope, mode, context) {
@@ -878,75 +956,83 @@
         var i;
 
         if (mode === 'board-border') {
-          boardWrap.classList.add(blinkClass, 'hl-border');
-          scheduleScopeStop(scope);
+          boardWrap.classList.add(blinkClass, 'hl-border-overlay');
+          activeIntervals[scope] = window.setTimeout(function () {
+            boardWrap.classList.remove(blinkClass, 'hl-border-overlay');
+            activeIntervals[scope] = null;
+          }, 1500);
           return;
         }
 
         if (mode === 'light-squares') {
-          boardEl.querySelectorAll('.square.square-light').forEach(function (el) {
-            el.classList.add(blinkClass, 'hl-square-light');
-          });
-          scheduleScopeStop(scope);
+          flashElements(scope, '.square.square-light', 'hl-light-overlay', 6, 600, 400);
           return;
         }
 
         if (mode === 'dark-squares') {
-          boardEl.querySelectorAll('.square.square-dark').forEach(function (el) {
-            el.classList.add(blinkClass, 'hl-square-dark');
-          });
-          scheduleScopeStop(scope);
+          flashElements(scope, '.square.square-dark', 'hl-dark-overlay', 6, 600, 400);
           return;
         }
 
         if (mode === 'ranks') {
           if (context && Number.isInteger(context.row)) {
             boardEl.querySelectorAll('.square[data-row="' + context.row + '"]').forEach(function (el) {
-              el.classList.add(blinkClass, 'hl-rank');
+              el.classList.add(blinkClass, 'hl-rank-overlay');
             });
             var rankNode = rankLeft.querySelector('[data-rank="' + context.row + '"]');
             if (rankNode) rankNode.classList.add(blinkClass, 'coord-active');
+            activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
           } else {
-            boardEl.querySelectorAll('.square').forEach(function (el) {
-              el.classList.add(blinkClass, 'hl-rank');
-            });
+            var rankGroups = [];
+            for (i = 7; i >= 0; i--) {
+              rankGroups.push(Array.from(boardEl.querySelectorAll('.square[data-row="' + i + '"]')));
+            }
+            sequentialFlash(scope, rankGroups, 'hl-rank-overlay', 280, 3);
           }
-          scheduleScopeStop(scope);
           return;
         }
 
         if (mode === 'files') {
           if (context && Number.isInteger(context.col)) {
             boardEl.querySelectorAll('.square[data-col="' + context.col + '"]').forEach(function (el) {
-              el.classList.add(blinkClass, 'hl-file');
+              el.classList.add(blinkClass, 'hl-file-overlay');
             });
             var fileNode = fileBottom.querySelector('[data-file="' + context.col + '"]');
             if (fileNode) fileNode.classList.add(blinkClass, 'coord-active');
+            activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
           } else {
-            boardEl.querySelectorAll('.square').forEach(function (el) {
-              el.classList.add(blinkClass, 'hl-file');
-            });
+            var fileGroups = [];
+            for (i = 0; i < 8; i++) {
+              fileGroups.push(Array.from(boardEl.querySelectorAll('.square[data-col="' + i + '"]')));
+            }
+            sequentialFlash(scope, fileGroups, 'hl-file-overlay', 280, 3);
           }
-          scheduleScopeStop(scope);
           return;
         }
 
-        if (mode === 'dark-diagonals' || mode === 'light-diagonals') {
-          var coords = [];
+        if (mode === 'dark-diagonals') {
           if (context && Number.isInteger(context.row) && Number.isInteger(context.col)) {
-            coords = collectDiagonalSquares(context.row, context.col);
-          } else {
-            boardEl.querySelectorAll(mode === 'dark-diagonals' ? '.square.square-dark' : '.square.square-light').forEach(function (el) {
-              coords.push([Number(el.dataset.row), Number(el.dataset.col)]);
+            collectDiagonalSquares(context.row, context.col).forEach(function (rc) {
+              var sq = getSquare(rc[0], rc[1]);
+              if (sq) sq.classList.add(blinkClass, 'hl-diag-dark-overlay');
             });
+            activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
+          } else {
+            sequentialFlash(scope, collectDiagonalGroups('dark'), 'hl-diag-dark-overlay', 220, 3);
           }
-          coords.forEach(function (rc) {
-            var sq = getSquare(rc[0], rc[1]);
-            if (sq) {
-              sq.classList.add(blinkClass, mode === 'dark-diagonals' ? 'hl-diag-dark' : 'hl-diag-light');
-            }
-          });
-          scheduleScopeStop(scope);
+          return;
+        }
+
+        if (mode === 'light-diagonals') {
+          if (context && Number.isInteger(context.row) && Number.isInteger(context.col)) {
+            collectDiagonalSquares(context.row, context.col).forEach(function (rc) {
+              var sq = getSquare(rc[0], rc[1]);
+              if (sq) sq.classList.add(blinkClass, 'hl-diag-light-overlay');
+            });
+            activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
+          } else {
+            sequentialFlash(scope, collectDiagonalGroups('light'), 'hl-diag-light-overlay', 280, 3);
+          }
           return;
         }
 
@@ -962,22 +1048,22 @@
             }
           } else {
             var sq = getSquare(row, col);
-            if (sq) sq.classList.add(blinkClass, 'hl-square-light');
+            if (sq) sq.classList.add(blinkClass, 'hl-coord-overlay');
             var f2 = fileBottom.querySelector('[data-file="' + col + '"]');
             var r2 = rankLeft.querySelector('[data-rank="' + row + '"]');
             if (f2) f2.classList.add(blinkClass, 'coord-active');
             if (r2) r2.classList.add(blinkClass, 'coord-active');
           }
-          scheduleScopeStop(scope);
+          activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
           return;
         }
 
         if (mode === 'main-diagonal') {
           collectMainDiagonalSquares().forEach(function (rc) {
             var sq2 = getSquare(rc[0], rc[1]);
-            if (sq2) sq2.classList.add(blinkClass, 'hl-diag-dark');
+            if (sq2) sq2.classList.add(blinkClass, 'hl-diag-dark-overlay');
           });
-          scheduleScopeStop(scope);
+          activeIntervals[scope] = window.setTimeout(function () { clearScope(scope); }, 2000);
           return;
         }
       }

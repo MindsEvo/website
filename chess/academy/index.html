@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智慧元中心 | MindsEvo</title>
+  <style>
+    :root {
+      --page-bg: #f3f5f9;
+      --card-bg: #ffffff;
+      --ink: #162234;
+      --muted: #6f7f94;
+      --line: #e6ebf3;
+      --blue: #2d77e8;
+      --green-soft: #ddf4e7;
+      --green: #0f8f43;
+      --sky-soft: #e6efff;
+      --sky: #2d62cc;
+      --orange-soft: #fff1de;
+      --orange: #d57c00;
+      --purple-soft: #f1e8ff;
+      --purple: #7f38cc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 18px 20px 28px;
+    }
+
+    .topbar {
+      position: relative;
+      min-height: 116px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .back-home {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 110px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(45, 119, 232, 0.28);
+    }
+
+    .title-wrap {
+      text-align: center;
+      padding-top: 12px;
+    }
+
+    .title-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .title-row .mark {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.06;
+      letter-spacing: 0.2px;
+      font-weight: 900;
+      color: #1f2d40;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #626f82;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 18px;
+      row-gap: 24px;
+      margin-top: 14px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      min-height: 168px;
+      padding: 24px 24px;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: #eef2f6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #516177;
+      flex: 0 0 auto;
+    }
+
+    .card-title {
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 900;
+      color: #1a2433;
+      letter-spacing: 0;
+    }
+
+    .desc {
+      font-size: 15px;
+      line-height: 1.35;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      height: 28px;
+      border-radius: 12px;
+      padding: 0 14px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .lv-green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .lv-blue {
+      background: var(--sky-soft);
+      color: var(--sky);
+    }
+
+    .lv-orange {
+      background: var(--orange-soft);
+      color: var(--orange);
+    }
+
+    .lv-purple {
+      background: var(--purple-soft);
+      color: var(--purple);
+    }
+
+    @media (max-width: 1260px) {
+      h1 { font-size: 26px; }
+      .subtitle { font-size: 15px; }
+      .card-title { font-size: 20px; }
+      .desc { font-size: 14px; }
+      .level { font-size: 14px; height: 26px; }
+      .grid { row-gap: 20px; }
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 16px;
+      }
+
+      .topbar {
+        min-height: 88px;
+      }
+
+      .back-home {
+        position: static;
+        margin-right: auto;
+      }
+
+      .title-wrap {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      h1 { font-size: 24px; }
+      .subtitle { font-size: 14px; }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .card-title { font-size: 20px; }
+      .desc { font-size: 14px; }
+      .level { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="back-home" href="../index.html" id="btnBackChess">返回主页</a>
+      <div class="title-wrap">
+        <div class="title-row">
+          <span class="mark">📊</span>
+          <h1>智慧元中心</h1>
+        </div>
+        <p class="subtitle">从基础到智慧的成长</p>
+      </div>
+    </header>
+
+    <section class="grid">
+      <a class="card" href="./intro/index.html">
+        <div class="card-head">
+          <div class="icon-box">🏁</div>
+          <h2 class="card-title">入门启航</h2>
+        </div>
+        <p class="desc">从好奇开始，发现思考的乐趣</p>
+        <span class="level lv-green">入门</span>
+      </a>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon-box">🎯</div>
+          <h2 class="card-title">② 残局入门</h2>
+        </div>
+        <p class="desc">探索残局的奇妙变化</p>
+        <span class="level lv-blue">初级</span>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon-box">🧠</div>
+          <h2 class="card-title">③ 战术运用</h2>
+        </div>
+        <p class="desc">掌握组合战术与应变思维</p>
+        <span class="level lv-orange">中级</span>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon-box">⚔️</div>
+          <h2 class="card-title">④ 攻杀技巧</h2>
+        </div>
+        <p class="desc">学习常见攻杀与得子手法</p>
+        <span class="level lv-orange">中级</span>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon-box">🎮</div>
+          <h2 class="card-title">⑤ 开局元思维</h2>
+        </div>
+        <p class="desc">16种元思维:从中心到战略</p>
+        <span class="level lv-purple">高级</span>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon-box">🏆</div>
+          <h2 class="card-title">⑥ 实战提升</h2>
+        </div>
+        <p class="desc">综合运用所学知识进行实战</p>
+        <span class="level lv-purple">高级</span>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("btnBackChess");
+      if (!btn) return;
+
+      btn.addEventListener("click", function (e) {
+        // Prefer going back to the previous page (expected chess home entry).
+        // Fallback to chess home when no usable history exists.
+        if (window.history.length > 1) {
+          e.preventDefault();
+          window.history.back();
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

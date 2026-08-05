@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. 棋子走法 | 入门启航</title>
+  <title>3. 认识棋子 | 入门启航</title>
   <style>
     :root {
       --page-bg: #f3f5f9;
       --card-bg: #ffffff;
       --line: #e6ebf3;
       --ink: #1a2433;
+      --muted: #6f7f94;
       --blue: #3f74ae;
       --green: #2eb25b;
     }
@@ -111,7 +112,6 @@
       justify-content: center;
       line-height: 1;
       user-select: none;
-      position: relative;
     }
 
     .piece-svg {
@@ -169,7 +169,9 @@
       color: #1f2d40;
     }
 
-    .ctrl-btn.active { background: #f9cb2d; }
+    .ctrl-btn.active {
+      background: #f9cb2d;
+    }
 
     .meta {
       margin-left: 6px;
@@ -270,7 +272,7 @@
     }
 
     .chips.rows-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-    .chips.rows-8 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .chips.rows-10 { grid-template-columns: repeat(10, minmax(0, 1fr)); }
 
     .chip {
       height: 34px;
@@ -294,18 +296,45 @@
 
     .c-king { background: #ff6f0f; }
     .c-queen { background: #8b5cf6; }
-    .c-rook { background: #ff2f6d; }
     .c-bishop { background: #2b4797; }
     .c-knight { background: #1e6f3d; }
+    .c-rook { background: #ff2f6d; }
     .c-pawn { background: #ff9800; }
     .c-blue { background: #1d73e8; }
+
+    .practice-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .practice-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .practice-row-label {
+      font-size: 26px;
+      font-weight: 900;
+      color: #1f2937;
+      text-align: right;
+      padding-right: 4px;
+    }
+
+    .practice-row .chip {
+      background: #565a60;
+    }
+
+    .practice-row.white .chip {
+      background: #ff6568;
+    }
 
     .observe-active {
       box-shadow: 0 0 0 2px #fef3c7, 0 0 0 4px #f59e0b;
     }
 
-    .practice-current,
-    .quiz-current {
+    .practice-current {
       box-shadow: 0 0 0 2px #2563eb, 0 0 0 4px #bfdbfe;
     }
 
@@ -319,6 +348,10 @@
       box-shadow: 0 0 0 2px #dc2626, 0 0 0 4px #fecaca;
     }
 
+    .quiz-current {
+      box-shadow: 0 0 0 2px #0f766e, 0 0 0 4px #99f6e4;
+    }
+
     .status-box {
       margin-top: 10px;
       padding: 8px 10px;
@@ -328,29 +361,6 @@
       color: #334155;
       font-size: 13px;
       font-weight: 600;
-    }
-
-    .sub-menu {
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 7px;
-    }
-
-    .sub-menu button {
-      height: 32px;
-      border: 1px solid #d6deec;
-      border-radius: 6px;
-      background: #f8fbff;
-      color: #1f2d40;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .sub-menu button:hover {
-      border-color: #3b82f6;
-      color: #1d4ed8;
     }
 
     .quiz-options {
@@ -406,17 +416,7 @@
     .practice-blink { animation: practiceBlink 0.58s ease-in-out infinite; }
     .quiz-blink { animation: quizBlink 0.62s ease-in-out infinite; }
 
-    .hl-origin {
-      box-shadow: inset 0 0 0 4px rgba(245, 158, 11, 0.95);
-    }
-
-    .hl-target {
-      box-shadow: inset 0 0 0 4px rgba(30, 64, 175, 0.88);
-    }
-
-    .hl-piece {
-      filter: drop-shadow(0 0 6px rgba(30, 64, 175, 0.85));
-    }
+    .hl-piece { filter: drop-shadow(0 0 6px rgba(30, 64, 175, 0.85)); }
 
     .tips-modal {
       position: fixed;
@@ -508,8 +508,10 @@
       .layout { grid-template-columns: 1fr; min-height: auto; }
       .title-card h2 { font-size: 26px; }
       .group h3 { font-size: 24px; }
-      .chips.rows-8 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .sub-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .chips.rows-10 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .chips.rows-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .practice-row { grid-template-columns: 1fr; }
+      .practice-row-label { text-align: left; }
     }
   </style>
 </head>
@@ -529,10 +531,18 @@
             <div class="files file-bottom" id="fileBottom"></div>
           </div>
         </div>
+
         <div class="control-strip">
-          <button class="ctrl-btn">↺</button><button class="ctrl-btn">▶</button><button class="ctrl-btn">↩</button><button class="ctrl-btn">→</button>
-          <button class="ctrl-btn">🔊</button><button class="ctrl-btn">🎤</button><button class="ctrl-btn active">👥</button><button class="ctrl-btn">👤</button>
-          <button class="ctrl-btn">🤖</button><button class="ctrl-btn">◔</button>
+          <button class="ctrl-btn">↺</button>
+          <button class="ctrl-btn">▶</button>
+          <button class="ctrl-btn">↩</button>
+          <button class="ctrl-btn">→</button>
+          <button class="ctrl-btn">🔊</button>
+          <button class="ctrl-btn">🎤</button>
+          <button class="ctrl-btn active">👥</button>
+          <button class="ctrl-btn">👤</button>
+          <button class="ctrl-btn">🤖</button>
+          <button class="ctrl-btn">◔</button>
           <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
           <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
         </div>
@@ -540,7 +550,7 @@
 
       <section class="right">
         <div class="title-card">
-          <h2>4. 棋子走法</h2>
+          <h2>3. 认识棋子</h2>
           <div class="mode-actions">
             <button class="small-pill blue" id="btnStudentVoice" type="button">致学生</button>
             <button class="small-pill green" id="btnParentVoice" type="button">致家长</button>
@@ -551,42 +561,57 @@
           <div class="group">
             <h3>动态观察</h3>
             <div class="chips rows-6" id="observeButtons">
-              <button class="chip c-king" data-observe-piece="k">王 ▼</button>
-              <button class="chip c-queen" data-observe-piece="q">后 ▼</button>
-              <button class="chip c-rook" data-observe-piece="r">车 ▼</button>
-              <button class="chip c-bishop" data-observe-piece="b">象 ▼</button>
-              <button class="chip c-knight" data-observe-piece="n">马 ▼</button>
-              <button class="chip c-pawn" data-observe-piece="p">兵 ▼</button>
+              <button class="chip c-king" data-observe-piece="k">王</button>
+              <button class="chip c-queen" data-observe-piece="q">后</button>
+              <button class="chip c-bishop" data-observe-piece="b">象</button>
+              <button class="chip c-knight" data-observe-piece="n">马</button>
+              <button class="chip c-rook" data-observe-piece="r">车</button>
+              <button class="chip c-pawn" data-observe-piece="p">兵</button>
             </div>
           </div>
 
           <div class="group">
             <h3>操作练习</h3>
-            <div class="chips rows-6" id="practiceButtons">
-              <button class="chip c-king" data-practice-piece="k">王 ▼</button>
-              <button class="chip c-queen" data-practice-piece="q">后 ▼</button>
-              <button class="chip c-rook" data-practice-piece="r">车 ▼</button>
-              <button class="chip c-bishop" data-practice-piece="b">象 ▼</button>
-              <button class="chip c-knight" data-practice-piece="n">马 ▼</button>
-              <button class="chip c-pawn" data-practice-piece="p">兵 ▼</button>
+            <div class="practice-row black">
+              <div class="practice-row-label">黑方:</div>
+              <div class="chips rows-6">
+                <button class="chip" data-practice-piece="k" data-practice-side="b">王</button>
+                <button class="chip" data-practice-piece="q" data-practice-side="b">后</button>
+                <button class="chip" data-practice-piece="b" data-practice-side="b">象</button>
+                <button class="chip" data-practice-piece="n" data-practice-side="b">马</button>
+                <button class="chip" data-practice-piece="r" data-practice-side="b">车</button>
+                <button class="chip" data-practice-piece="p" data-practice-side="b">兵</button>
+              </div>
+            </div>
+            <div class="practice-row white">
+              <div class="practice-row-label">白方:</div>
+              <div class="chips rows-6">
+                <button class="chip" data-practice-piece="k" data-practice-side="w">王</button>
+                <button class="chip" data-practice-piece="q" data-practice-side="w">后</button>
+                <button class="chip" data-practice-piece="b" data-practice-side="w">象</button>
+                <button class="chip" data-practice-piece="n" data-practice-side="w">马</button>
+                <button class="chip" data-practice-piece="r" data-practice-side="w">车</button>
+                <button class="chip" data-practice-piece="p" data-practice-side="w">兵</button>
+              </div>
             </div>
             <div class="status-box" id="practiceStatus">点击上方棋子按钮开始练习</div>
           </div>
 
           <div class="group">
             <h3>问答练习</h3>
-            <div class="chips rows-8" id="quizTopicButtons">
-              <button class="chip c-blue" data-quiz-topic="王">王 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="后">后 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="车">车 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="象">象 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="马">马 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="兵">兵 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="特殊规则">特殊规则 ▼</button>
-              <button class="chip c-blue" data-quiz-topic="和棋">和棋 ▼</button>
+            <div class="chips rows-10" id="quizButtons">
+              <button class="chip c-blue" data-quiz="kq-count">王和后数量</button>
+              <button class="chip c-blue" data-quiz="rnb-count">车马象数量</button>
+              <button class="chip c-blue" data-quiz="pawn-count">兵的数量</button>
+              <button class="chip c-blue" data-quiz="single-total">单方总数</button>
+              <button class="chip c-blue" data-quiz="all-total">全部总数</button>
+              <button class="chip c-blue" data-quiz="queen-value">后的价值</button>
+              <button class="chip c-blue" data-quiz="rook-value">车的价值</button>
+              <button class="chip c-blue" data-quiz="bn-value">象马价值</button>
+              <button class="chip c-blue" data-quiz="pawn-value">兵的价值</button>
+              <button class="chip c-blue" data-quiz="king-value">王的价值</button>
             </div>
-            <div class="sub-menu" id="quizSubMenu"></div>
-            <div class="status-box" id="quizStatus">问答练习：先点击上方分类，再选择具体问题。</div>
+            <div class="status-box" id="quizStatus">问答练习：请选择上方一个问题开始作答。</div>
             <div class="quiz-options" id="quizOptions"></div>
           </div>
         </div>
@@ -602,10 +627,10 @@
         <div class="tips-body">
           <h5>📌 本单元学习要点</h5>
           <ol>
-            <li>掌握王、后、车、象、马、兵的基础走法</li>
-            <li>通过动态观察理解每种棋子的移动规律</li>
-            <li>通过操作练习强化棋子识别和选取</li>
-            <li>完成问答练习巩固特殊规则与和棋概念</li>
+            <li>认识王、后、车、象、马、兵六种棋子</li>
+            <li>观察不同棋子在棋盘上的初始位置</li>
+            <li>通过操作练习快速区分不同棋子</li>
+            <li>完成问答练习巩固数量和子力价值概念</li>
           </ol>
         </div>
         <div class="tips-foot">
@@ -644,59 +669,6 @@
         ['wr', 'wn', 'wb', 'wq', 'wk', 'wb', 'wn', 'wr']
       ];
 
-      var lessonVoices = {
-        explanation: '现在我们来学习各种棋子的走法。',
-        student: '致学生：本课时我们学习棋子的走法，要多做尝试和练习，系统支持手动、人机和AI自动模式',
-        parent: '致家长：本课开始，学生将学习尝试各种国际象棋的走法和技巧，一定让学生轻松的大胆尝试'
-      };
-
-      var quizGroups = {
-        '王': [
-          { menu: '走法', text: '王怎么走？', options: ['任意方向任意格', '任意方向，但只走一格', '只能横竖走'], answer: 1, voice: '王怎么走？' },
-          { menu: '被将军', text: '王被将军时必须怎么做？', options: ['可以选择不管', '可以继续走其他棋子', '立即解除将军（移王、遮挡或吃掉攻击子）'], answer: 2, voice: '王被将军时必须怎么做？' },
-          { menu: '应将方法', text: '应将有哪三种方法？', options: ['移王、遮挡、吃掉攻击子', '移王、换子、投降', '吃子、遮挡、求和'], answer: 0, voice: '应将有哪三种方法？' },
-          { menu: '禁止落点', text: '王不能走到哪类格子上？', options: ['对方棋子正在控制的格子', '己方棋子所在的格子', '棋盘边界格'], answer: 0, voice: '王不能走到什么格子上？' }
-        ],
-        '后': [
-          { menu: '走法', text: '后怎么走？', options: ['只能斜走', '只能直走', '横竖斜任意方向任意格'], answer: 2, voice: '后怎么走？' },
-          { menu: '后和车', text: '后和车的区别是？', options: ['后走得更快', '后比车多了斜线方向', '后不能吃子'], answer: 1, voice: '后和车的区别是？' }
-        ],
-        '车': [
-          { menu: '走法', text: '车怎么走？', options: ['斜着走', 'L形走法', '横竖直线任意格'], answer: 2, voice: '车怎么走？' },
-          { menu: '能否跳子', text: '车能跳过其他棋子吗？', options: ['能', '不能', '只能跳己方棋子'], answer: 1, voice: '车能跳过其他棋子吗？' },
-          { menu: '车和后', text: '车和哪种棋子走法最相似？', options: ['马', '后（直线部分）', '象'], answer: 1, voice: '车和哪种棋子走法最相似？' }
-        ],
-        '象': [
-          { menu: '走法', text: '象怎么走？', options: ['横竖走', 'L形走', '斜线任意格'], answer: 2, voice: '象怎么走？' },
-          { menu: '格色限制', text: '象的移动有什么限制？', options: ['每次只走一格', '只能在同色格上活动', '不能吃子'], answer: 1, voice: '象的移动有什么限制？' },
-          { menu: '异色象', text: '开局白方两个象有什么关系？', options: ['走法不同', '可以互换位置', '一浅一深，永远不会相遇'], answer: 2, voice: '开局白方两个象有什么关系？' }
-        ],
-        '马': [
-          { menu: '走法', text: '马的走法是？', options: ['斜线任意格', '先走2格再转1格（L形）', '直线任意格'], answer: 1, voice: '马的走法是？' },
-          { menu: '跳子', text: '马和其他棋子最大的区别是？', options: ['只走一格', '只能向前走', '可以跳过其他棋子'], answer: 2, voice: '马和其他棋子最大的区别是？' },
-          { menu: '最优位置', text: '马在哪个位置控制格子最多？', options: ['角落', '边线', '中心区域'], answer: 2, voice: '马在哪个位置控制格子最多？' }
-        ],
-        '兵': [
-          { menu: '吃子', text: '兵怎么吃子？', options: ['向前直吃', '向前斜一格', '向后斜一格'], answer: 1, voice: '兵怎么吃子？' },
-          { menu: '升变', text: '兵到达对方底线后？', options: ['留在原地', '自动变成后', '可以升变为后、车、象或马'], answer: 2, voice: '兵到达对方底线后？' },
-          { menu: '起步', text: '兵的第一步最多可以走几格？', options: ['只能走1格', '一格或两格', '三格'], answer: 1, voice: '兵的第一步最多可以走几格？' }
-        ],
-        '特殊规则': [
-          { menu: '易位条件', text: '王车易位需要满足什么条件？', options: ['任何时候都可以', '王和车均未移动，中间无子，王未被将军', '只要王没移动过'], answer: 1, voice: '王车易位需要满足什么条件？' },
-          { menu: '短易位落点', text: '白方短易位后，王落在哪个格子？', options: ['f1', 'g1', 'h1'], answer: 1, voice: '白方短易位后，王落在哪个格子？' },
-          { menu: '过路兵条件', text: '吃过路兵在什么情况下可以发生？', options: ['任何时候', '对方兵走两格经过我兵旁边时', '对方兵升变时'], answer: 1, voice: '吃过路兵在什么情况下可以发生？' },
-          { menu: '过路兵时限', text: '吃过路兵的机会有多久？', options: ['随时都可以', '只有对方走完双步后的下一步', '三步之内'], answer: 1, voice: '吃过路兵的机会有多久？' },
-          { menu: '长易位落点', text: '白方长易位后，王落在哪个格子？', options: ['b1', 'c1', 'd1'], answer: 1, voice: '白方长易位后，王落在哪个格子？' }
-        ],
-        '和棋': [
-          { menu: '和棋类型一', text: '以下哪两种情况都属于和棋？', options: ['将死和子力不足', '困毙和子力不足', '将军和困毙'], answer: 1, voice: '哪两种情况属于和棋？' },
-          { menu: '和棋类型二', text: '以下哪种规则也能导致和棋？', options: ['一方连续将军10次', '同一局面重复出现3次，或连续50回合无吃子无动兵，或双方协商', '一方棋子比对方少'], answer: 1, voice: '还有哪些规则可以导致和棋？' },
-          { menu: '困毙定义', text: '什么是困毙（Stalemate）？', options: ['被将死', '轮到某方走棋，无路可走且未被将军', '双方同意和棋'], answer: 1, voice: '什么是困毙？' },
-          { menu: '子力不足', text: '双方只剩两个王时结果是？', options: ['先走方赢', '和棋（子力不足）', '继续对局直到有人犯错'], answer: 1, voice: '双方只剩两个王时结果是？' },
-          { menu: '五十步规则', text: '五十步规则要求连续50回合满足什么条件才能申请和棋（只是作为基本常识顺便提一下）？', options: ['双方各走了50步', '连续50步没有兵被移动且没有任何棋子被吃掉', '一方连续将军50次'], answer: 1, voice: '五十步规则是什么？' }
-        ]
-      };
-
       var backBtn = document.getElementById('btnBackIntro');
       var boardEl = document.getElementById('board');
       var fileBottom = document.getElementById('fileBottom');
@@ -705,8 +677,8 @@
 
       var observeButtons = document.querySelectorAll('[data-observe-piece]');
       var practiceButtons = document.querySelectorAll('[data-practice-piece]');
-      var quizTopicButtons = document.querySelectorAll('[data-quiz-topic]');
-      var quizSubMenu = document.getElementById('quizSubMenu');
+      var quizButtons = document.querySelectorAll('[data-quiz]');
+
       var practiceStatus = document.getElementById('practiceStatus');
       var quizStatus = document.getElementById('quizStatus');
       var quizOptions = document.getElementById('quizOptions');
@@ -722,12 +694,48 @@
       var practiceTimer = null;
       var quizTimer = null;
 
-      var currentPracticePiece = null;
-      var currentPracticeBtn = null;
       var practiceArmed = false;
+      var currentPractice = null;
+      var currentPracticeBtn = null;
 
-      var currentQuizTopic = null;
-      var currentQuizIndex = null;
+      var currentQuizKey = null;
+
+      var lessonVoices = {
+        explanation: '现在我们来认识国际象棋的棋子。',
+        student: '致学生：我们来认识这些有趣的棋子，每个棋子都有自己的名字和作用',
+        parent: '致家长：帮助孩子记住各种棋子的名称，可以通过游戏的方式学习'
+      };
+
+      var pieceMeta = {
+        k: { label: '王', voice: '请观察王，它是最重要的棋子，需要重点保护。' },
+        q: { label: '后', voice: '请观察后，它是棋盘上威力最大的棋子。' },
+        b: { label: '象', voice: '请观察象，它沿斜线移动。' },
+        n: { label: '马', voice: '请观察马，它的走法像日字。' },
+        r: { label: '车', voice: '请观察车，它沿横线和竖线移动。' },
+        p: { label: '兵', voice: '请观察兵，它是数量最多的棋子。' }
+      };
+
+      var practicePrompts = {
+        k: { display: '请点击王', voice: '现在请你点击棋盘上的王' },
+        q: { display: '请点击后', voice: '现在请你点击棋盘上的后' },
+        b: { display: '请点击象', voice: '现在请你点击棋盘上的象' },
+        n: { display: '请点击马', voice: '现在请你点击棋盘上的马' },
+        r: { display: '请点击车', voice: '现在请你点击棋盘上的车' },
+        p: { display: '请点击兵(Pawn)', voice: '现在请你点击棋盘上的兵' }
+      };
+
+      var quizBank = {
+        'kq-count': { ask: '白方的王和后各有几个？', options: ['各1个', '王1个后2个', '各2个'], correct: '各1个', explain: '白方王和后各有1个。' },
+        'rnb-count': { ask: '白方的车、马、象各有几个？', options: ['各2个', '各1个', '各3个'], correct: '各2个', explain: '白方车、马、象各有2个。' },
+        'pawn-count': { ask: '国际象棋中白方和黑方各有几个兵？', options: ['各6个', '各7个', '各8个'], correct: '各8个', explain: '白方和黑方各有8个兵。' },
+        'single-total': { ask: '国际象棋中白黑方各有多少个棋子？', options: ['14个', '15个', '16个'], correct: '16个', explain: '单方共有16个棋子。' },
+        'all-total': { ask: '国际象棋中白方和黑方总共有多少个棋子？', options: ['32个', '30个', '34个'], correct: '32个', explain: '双方总共有32个棋子。' },
+        'queen-value': { ask: '后的价值是多少分？', options: ['5分', '10分', '9分'], correct: '9分', explain: '后通常记作9分。' },
+        'rook-value': { ask: '车的价值是多少分？', options: ['5分', '3分', '9分'], correct: '5分', explain: '车通常记作5分。' },
+        'bn-value': { ask: '象和马各是多少分？', options: ['各1分', '各5分', '各3分'], correct: '各3分', explain: '象和马通常各记3分。' },
+        'pawn-value': { ask: '兵的价值是多少分？', options: ['0.5分', '1分', '2分'], correct: '1分', explain: '兵通常记作1分。' },
+        'king-value': { ask: '是多少分？', options: ['9分', '无限大，不能用分数衡量，丢掉王对弈就结束了', '10分'], correct: '无限大，不能用分数衡量，丢掉王对弈就结束了', explain: '王的价值无法用分数衡量，失王即败。' }
+      };
 
       function speak(text) {
         if (!window.speechSynthesis || !text) return;
@@ -761,14 +769,15 @@
 
       function pieceNode(piece) {
         if (!piece) return '';
+        var sideClass = piece.charAt(0) === 'w' ? 'white-piece' : 'black-piece';
         var kindClass = 'kind-' + piece.charAt(1);
         if (current.pieceStyle === 'svg') {
-          return '<span class="piece-node ' + kindClass + '"><img class="piece-svg" alt="' + piece + '" src="../../chess/play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
+          return '<span class="piece-node ' + sideClass + ' ' + kindClass + '"><img class="piece-svg" alt="' + piece + '" src="../../play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
         }
         if (current.pieceStyle === 'unicode-min') {
-          return '<span class="piece-node ' + kindClass + ' piece-text piece-text-min">' + PIECE_UNICODE[piece] + '</span>';
+          return '<span class="piece-node ' + sideClass + ' ' + kindClass + ' piece-text piece-text-min">' + PIECE_UNICODE[piece] + '</span>';
         }
-        return '<span class="piece-node ' + kindClass + ' piece-text">' + PIECE_UNICODE[piece] + '</span>';
+        return '<span class="piece-node ' + sideClass + ' ' + kindClass + ' piece-text">' + PIECE_UNICODE[piece] + '</span>';
       }
 
       function renderBoard() {
@@ -778,16 +787,21 @@
           for (var c = 0; c < 8; c++) {
             var bg = ((r + c) % 2 === 0) ? theme.light : theme.dark;
             var cls = ((r + c) % 2 === 0) ? 'square square-light' : 'square square-dark';
-            html += '<div class="' + cls + '" data-row="' + r + '" data-col="' + c + '" style="background:' + bg + '">' + pieceNode(boardMatrix[r][c]) + '</div>';
+            html += '<div class="' + cls + '" data-row="' + r + '" data-col="' + c + '">' + pieceNode(boardMatrix[r][c]) + '</div>';
           }
         }
         boardEl.innerHTML = html;
+        boardEl.querySelectorAll('.square').forEach(function (sq) {
+          var r = Number(sq.dataset.row);
+          var c = Number(sq.dataset.col);
+          sq.style.background = ((r + c) % 2 === 0) ? theme.light : theme.dark;
+        });
       }
 
-      function clearScope(scope) {
+      function clearByScope(scope) {
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
-          el.classList.remove(blinkClass, 'hl-origin', 'hl-target', 'hl-piece');
+          el.classList.remove(blinkClass, 'hl-piece');
         });
         if (scope === 'observe' && observeTimer) {
           window.clearTimeout(observeTimer);
@@ -804,7 +818,7 @@
       }
 
       function scheduleStop(scope) {
-        var fn = function () { clearScope(scope); };
+        var fn = function () { clearByScope(scope); };
         if (scope === 'observe') {
           if (observeTimer) window.clearTimeout(observeTimer);
           observeTimer = window.setTimeout(fn, 10000);
@@ -821,74 +835,14 @@
         }
       }
 
-      function getSquare(row, col) {
-        return boardEl.querySelector('.square[data-row="' + row + '"][data-col="' + col + '"]');
-      }
-
-      function kingMoves() {
-        return [[4,4],[3,3],[3,4],[3,5],[4,3],[4,5],[5,3],[5,4],[5,5]];
-      }
-
-      function rookMoves() {
-        var arr = [[4,4]], i;
-        for (i = 0; i < 8; i++) { if (i !== 4) arr.push([4, i]); }
-        for (i = 0; i < 8; i++) { if (i !== 4) arr.push([i, 4]); }
-        return arr;
-      }
-
-      function bishopMoves() {
-        var arr = [[4,4]], d;
-        for (d = 1; d < 8; d++) {
-          if (4 + d < 8 && 4 + d < 8) arr.push([4 + d, 4 + d]);
-          if (4 + d < 8 && 4 - d >= 0) arr.push([4 + d, 4 - d]);
-          if (4 - d >= 0 && 4 + d < 8) arr.push([4 - d, 4 + d]);
-          if (4 - d >= 0 && 4 - d >= 0) arr.push([4 - d, 4 - d]);
-        }
-        return arr;
-      }
-
-      function queenMoves() {
-        return rookMoves().concat(bishopMoves());
-      }
-
-      function knightMoves() {
-        return [[4,4],[2,3],[2,5],[3,2],[3,6],[5,2],[5,6],[6,3],[6,5]];
-      }
-
-      function pawnMoves() {
-        return [[6,4],[5,4],[4,4],[5,3],[5,5]];
-      }
-
-      function movePattern(kind) {
-        if (kind === 'k') return kingMoves();
-        if (kind === 'q') return queenMoves();
-        if (kind === 'r') return rookMoves();
-        if (kind === 'b') return bishopMoves();
-        if (kind === 'n') return knightMoves();
-        return pawnMoves();
-      }
-
-      function observeVoice(kind) {
-        if (kind === 'k') return '王可以向任意方向移动一格。';
-        if (kind === 'q') return '后可以沿横线、竖线、斜线移动任意格。';
-        if (kind === 'r') return '车可以沿横线和竖线移动任意格。';
-        if (kind === 'b') return '象可以沿斜线移动任意格。';
-        if (kind === 'n') return '马按日字移动，可以跳过其他棋子。';
-        return '兵通常向前移动，吃子时斜向前一格。';
-      }
-
-      function highlightMoves(scope, kind) {
-        clearScope(scope);
-        var blinkClass = scope + '-blink';
-        var pattern = movePattern(kind);
-        for (var i = 0; i < pattern.length; i++) {
-          var sq = getSquare(pattern[i][0], pattern[i][1]);
-          if (!sq) continue;
-          if (i === 0) sq.classList.add(blinkClass, 'hl-origin');
-          else sq.classList.add(blinkClass, 'hl-target');
-        }
-        document.querySelectorAll('.piece-node.kind-' + kind).forEach(function (el) {
-          el.classList.add(blinkClass, 'hl-piece');
+      function highlightPieceType(scope, kind, side) {
+        clearByScope(scope);
+        var cls = scope + '-blink';
+        var selector = '.piece-node.kind-' + kind;
+        if (side === 'w') selector += '.white-piece';
+        if (side === 'b') selector += '.black-piece';
+        document.querySelectorAll(selector).forEach(function (el) {
+          el.classList.add(cls, 'hl-piece');
         });
         scheduleStop(scope);
       }
@@ -897,62 +851,68 @@
         observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
         var btn = document.querySelector('[data-observe-piece="' + kind + '"]');
         if (btn) btn.classList.add('observe-active');
-        highlightMoves('observe', kind);
-        speak(observeVoice(kind));
+        highlightPieceType('observe', kind);
+        if (pieceMeta[kind]) speak(pieceMeta[kind].voice);
       }
 
       function armPractice(btn) {
         var kind = btn.getAttribute('data-practice-piece');
-        if (!kind) return;
+        var side = btn.getAttribute('data-practice-side');
+        if (!kind || !side) return;
+
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        currentPracticePiece = kind;
+        currentPractice = { kind: kind, side: side };
         currentPracticeBtn = btn;
         practiceArmed = true;
         btn.classList.add('practice-current');
 
-        var labels = {k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵'};
-        var text = '现在请你点击棋盘上的' + labels[kind];
-        if (practiceStatus) practiceStatus.textContent = text;
-        speak(text);
+        var prompt = practicePrompts[kind] || { display: '请点击棋子', voice: '现在请你点击棋盘上的棋子' };
+        if (practiceStatus) {
+          practiceStatus.textContent = (side === 'w' ? '白方：' : '黑方：') + prompt.display;
+        }
+        speak(prompt.voice);
       }
 
       function checkPractice(square) {
-        if (!practiceArmed || !currentPracticePiece || !square) return;
+        if (!practiceArmed || !currentPractice || !square) return;
+
         var node = square.querySelector('.piece-node');
-        var ok = !!(node && node.classList.contains('kind-' + currentPracticePiece));
+        var ok = false;
+        if (node) {
+          var kindOk = node.classList.contains('kind-' + currentPractice.kind);
+          var sideOk = (currentPractice.side === 'w' && node.classList.contains('white-piece')) ||
+                       (currentPractice.side === 'b' && node.classList.contains('black-piece'));
+          ok = kindOk && sideOk;
+        }
 
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        if (currentPracticeBtn) currentPracticeBtn.classList.add(ok ? 'practice-correct' : 'practice-wrong');
-
-        highlightMoves('practice', currentPracticePiece);
+        if (currentPracticeBtn) {
+          currentPracticeBtn.classList.add(ok ? 'practice-correct' : 'practice-wrong');
+        }
 
         if (ok) {
-          if (practiceStatus) practiceStatus.textContent = '✅ 回答正确';
+          highlightPieceType('practice', currentPractice.kind, currentPractice.side);
+          if (practiceStatus) {
+            practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
+          }
           speak('回答正确');
           practiceArmed = false;
         } else {
-          if (practiceStatus) practiceStatus.textContent = '❌ 回答错误，请再试一次';
+          highlightPieceType('practice', currentPractice.kind, currentPractice.side);
+          if (practiceStatus) {
+            practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
+          }
           speak('回答错误，请再试一次');
         }
       }
 
       function clearQuizButtonState() {
-        quizTopicButtons.forEach(function (btn) {
-          btn.classList.remove('quiz-current', 'quiz-correct', 'quiz-wrong');
-        });
+        quizButtons.forEach(function (btn) { btn.classList.remove('quiz-current', 'quiz-correct', 'quiz-wrong'); });
       }
 
-      function renderSubMenu(topic) {
-        if (!quizSubMenu) return;
-        var arr = quizGroups[topic] || [];
-        quizSubMenu.innerHTML = arr.map(function (q, idx) {
-          return '<button type="button" data-sub-topic="' + topic + '" data-sub-index="' + idx + '">' + q.menu + '</button>';
-        }).join('');
-      }
-
-      function renderQuizOptions(topic, idx) {
+      function renderQuizOptions(key) {
         if (!quizOptions) return;
-        var q = (quizGroups[topic] || [])[idx];
+        var q = quizBank[key];
         if (!q) {
           quizOptions.innerHTML = '';
           return;
@@ -962,53 +922,49 @@
         }).join('');
       }
 
-      function startQuizTopic(btn) {
-        var topic = btn.getAttribute('data-quiz-topic');
-        if (!quizGroups[topic]) return;
-        clearQuizButtonState();
-        btn.classList.add('quiz-current');
-        currentQuizTopic = topic;
-        currentQuizIndex = null;
-        renderSubMenu(topic);
-        if (quizStatus) quizStatus.textContent = '问答练习：请选择“' + topic + '”下的具体问题。';
-        if (quizOptions) quizOptions.innerHTML = '';
-      }
-
-      function startQuizQuestion(topic, idx) {
-        var q = (quizGroups[topic] || [])[idx];
+      function startQuiz(btn) {
+        var key = btn.getAttribute('data-quiz');
+        var q = quizBank[key];
         if (!q) return;
-        currentQuizTopic = topic;
-        currentQuizIndex = idx;
-        if (quizStatus) quizStatus.textContent = '问题：' + q.text;
-        renderQuizOptions(topic, idx);
-        speak(q.voice);
+        clearQuizButtonState();
+        clearByScope('quiz');
+        currentQuizKey = key;
+        btn.classList.add('quiz-current');
+        if (quizStatus) quizStatus.textContent = '问题：' + q.ask;
+        renderQuizOptions(key);
+        speak(q.ask);
       }
 
       function answerQuiz(optionText) {
-        var q = (quizGroups[currentQuizTopic] || [])[currentQuizIndex];
+        var q = quizBank[currentQuizKey];
         if (!q || !quizOptions) return;
         var chosen = String(optionText || '');
-        var correctText = q.options[q.answer];
-        var isCorrect = chosen === correctText;
-
+        var isCorrect = chosen === q.correct;
         quizOptions.querySelectorAll('[data-quiz-opt]').forEach(function (node) {
           var t = node.getAttribute('data-quiz-opt');
           node.classList.remove('correct', 'wrong');
           if (t === chosen) node.classList.add(isCorrect ? 'correct' : 'wrong');
-          if (!isCorrect && t === correctText) node.classList.add('correct');
+          if (!isCorrect && t === q.correct) node.classList.add('correct');
         });
 
-        quizTopicButtons.forEach(function (btn) {
-          if (btn.getAttribute('data-quiz-topic') === currentQuizTopic) {
-            btn.classList.remove('quiz-correct', 'quiz-wrong');
-            btn.classList.add(isCorrect ? 'quiz-correct' : 'quiz-wrong');
-          }
+        var active = null;
+        quizButtons.forEach(function (btn) {
+          if (btn.getAttribute('data-quiz') === currentQuizKey) active = btn;
+          btn.classList.remove('quiz-correct', 'quiz-wrong');
         });
+        if (active) active.classList.add(isCorrect ? 'quiz-correct' : 'quiz-wrong');
 
         if (quizStatus) {
-          quizStatus.textContent = (isCorrect ? '✅ 回答正确：' : '❌ 回答错误：') + q.text;
+          quizStatus.textContent = (isCorrect ? '✅ 回答正确：' : '❌ 回答错误：') + q.explain;
         }
-        speak(isCorrect ? '回答正确' : '回答错误');
+        var kind = null;
+        if (currentQuizKey === 'kq-count' || currentQuizKey === 'king-value') kind = 'k';
+        else if (currentQuizKey === 'queen-value') kind = 'q';
+        else if (currentQuizKey === 'rook-value') kind = 'r';
+        else if (currentQuizKey === 'bn-value') kind = 'n';
+        else if (currentQuizKey === 'pawn-count' || currentQuizKey === 'pawn-value') kind = 'p';
+        if (kind) highlightPieceType('quiz', kind);
+        speak((isCorrect ? '回答正确。' : '回答错误。') + q.explain);
       }
 
       function closeTipsModal() {
@@ -1029,7 +985,6 @@
           document.body.style.overflow = 'hidden';
         });
       }
-
       if (btnTipsClose) btnTipsClose.addEventListener('click', closeTipsModal);
       if (btnTipsOk) btnTipsOk.addEventListener('click', closeTipsModal);
       if (tipsModal) {
@@ -1058,7 +1013,8 @@
 
       observeButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          runObserve(btn.getAttribute('data-observe-piece'));
+          var kind = btn.getAttribute('data-observe-piece');
+          runObserve(kind);
         });
       });
 
@@ -1074,25 +1030,17 @@
         checkPractice(sq);
       });
 
-      quizTopicButtons.forEach(function (btn) {
+      quizButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          startQuizTopic(btn);
+          startQuiz(btn);
         });
       });
 
-      if (quizSubMenu) {
-        quizSubMenu.addEventListener('click', function (e) {
-          var b = e.target.closest('[data-sub-index]');
-          if (!b) return;
-          startQuizQuestion(b.getAttribute('data-sub-topic'), Number(b.getAttribute('data-sub-index')));
-        });
-      }
-
       if (quizOptions) {
         quizOptions.addEventListener('click', function (e) {
-          var b = e.target.closest('[data-quiz-opt]');
-          if (!b || currentQuizTopic === null || currentQuizIndex === null) return;
-          answerQuiz(b.getAttribute('data-quiz-opt'));
+          var opt = e.target.closest('[data-quiz-opt]');
+          if (!opt || !currentQuizKey) return;
+          answerQuiz(opt.getAttribute('data-quiz-opt'));
         });
       }
     }());

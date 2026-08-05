@@ -3,324 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>智慧元中心 | MindsEvo</title>
+  <title>学习系列 Learning Series | MindsEvo</title>
   <style>
     :root {
-      --page-bg: #f3f5f9;
-      --card-bg: #ffffff;
-      --ink: #162234;
-      --muted: #6f7f94;
-      --line: #e6ebf3;
-      --blue: #2d77e8;
-      --green-soft: #ddf4e7;
-      --green: #0f8f43;
-      --sky-soft: #e6efff;
-      --sky: #2d62cc;
-      --orange-soft: #fff1de;
-      --orange: #d57c00;
-      --purple-soft: #f1e8ff;
-      --purple: #7f38cc;
+      --dark: #071225;
+      --blue: #2563eb;
+      --green: #22c55e;
+      --text: #0f172a;
+      --muted: #64748b;
+      --bg: #f6f9ff;
+      --line: #e2e8f0;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      background: var(--page-bg);
-      color: var(--ink);
-      min-height: 100vh;
+      font-family: "SF Pro Display", "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px clamp(16px, 4vw, 56px);
+      background: rgba(7, 18, 37, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
-    .page {
-      width: min(1440px, 100%);
-      margin: 0 auto;
-      padding: 18px 20px 28px;
+    .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 20px; font-weight: 900; }
+    .brand img { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.28); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .back-link {
+      font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 12px;
     }
-
-    .topbar {
-      position: relative;
-      min-height: 116px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      margin-bottom: 22px;
-    }
-
-    .back-home {
-      position: absolute;
-      top: 10px;
-      left: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 110px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 3px 10px rgba(45, 119, 232, 0.28);
-    }
-
-    .title-wrap {
-      text-align: center;
-      padding-top: 12px;
-    }
-
-    .title-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .title-row .mark {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    h1 {
-      font-size: 28px;
-      line-height: 1.06;
-      letter-spacing: 0.2px;
-      font-weight: 900;
-      color: #1f2d40;
-    }
-
-    .subtitle {
-      font-size: 16px;
-      color: #626f82;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: 18px;
-      row-gap: 24px;
-      margin-top: 14px;
-    }
-
+    .lang-sw { display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.22); border-radius: 9px; overflow: hidden; }
+    .lang-sw button { background: none; border: none; cursor: pointer; padding: 6px 12px; color: rgba(255,255,255,0.58); font-size: 13px; font-weight: 700; font-family: inherit; }
+    .lang-sw button.active { background: rgba(255,255,255,0.16); color: #fff; }
+    .lang-sw .sep { color: rgba(255,255,255,0.24); font-size: 11px; }
+    .page { max-width: 1180px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 80px; }
+    .hero { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: clamp(22px, 4vw, 36px); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero p { max-width: 820px; color: var(--muted); font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .pill { font-size: 13px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--blue), var(--green)); border-radius: 999px; padding: 7px 12px; }
+    .muted-label { color: var(--muted); font-size: 14px; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      min-height: 168px;
-      padding: 24px 24px;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      background: #fff; border: 1.5px solid var(--line); border-radius: 16px;
+      padding: 24px 20px; display: flex; flex-direction: column; gap: 10px;
     }
-
-    .card-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
+    .card-link { cursor: pointer; transition: transform .18s, border-color .18s, box-shadow .18s; }
+    .card-link:hover { transform: translateY(-2px); border-color: #bfd2f7; box-shadow: 0 10px 24px rgba(37,99,235,0.08); }
+    .card-dim { background: #f8fafc; opacity: 0.6; }
+    .card-icon { font-size: 32px; line-height: 1; margin-bottom: 4px; }
+    .card h3 { font-size: 20px; font-weight: 850; line-height: 1.25; color: var(--text); }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.65; flex: 1; }
+    .card-status {
+      display: inline-block; width: fit-content; border-radius: 10px;
+      font-size: 13px; font-weight: 800; padding: 9px 12px;
+      background: #e2e8f0; color: #64748b; margin-top: 4px;
     }
-
-    .icon-box {
-      width: 58px;
-      height: 58px;
-      border-radius: 12px;
-      background: #eef2f6;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: #516177;
-      flex: 0 0 auto;
-    }
-
-    .card-title {
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 900;
-      color: #1a2433;
-      letter-spacing: 0;
-    }
-
-    .desc {
-      font-size: 15px;
-      line-height: 1.35;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .level {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 56px;
-      height: 28px;
-      border-radius: 12px;
-      padding: 0 14px;
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .lv-green {
-      background: var(--green-soft);
-      color: var(--green);
-    }
-
-    .lv-blue {
-      background: var(--sky-soft);
-      color: var(--sky);
-    }
-
-    .lv-orange {
-      background: var(--orange-soft);
-      color: var(--orange);
-    }
-
-    .lv-purple {
-      background: var(--purple-soft);
-      color: var(--purple);
-    }
-
-    @media (max-width: 1260px) {
-      h1 { font-size: 26px; }
-      .subtitle { font-size: 15px; }
-      .card-title { font-size: 20px; }
-      .desc { font-size: 14px; }
-      .level { font-size: 14px; height: 26px; }
-      .grid { row-gap: 20px; }
-    }
-
-    @media (max-width: 1024px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        row-gap: 24px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .page {
-        padding: 16px;
-      }
-
-      .topbar {
-        min-height: 88px;
-      }
-
-      .back-home {
-        position: static;
-        margin-right: auto;
-      }
-
-      .title-wrap {
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      h1 { font-size: 24px; }
-      .subtitle { font-size: 14px; }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .card-title { font-size: 20px; }
-      .desc { font-size: 14px; }
-      .level { font-size: 14px; }
-    }
+    .card-status.open { background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff; }
+    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .back-link { display: none; } }
+    body[data-lang="zh"] .en { display: none; }
+    body[data-lang="en"] .zh { display: none; }
   </style>
 </head>
-<body>
-  <main class="page">
-    <header class="topbar">
-      <a class="back-home" href="../chess/index.html" id="btnBackChess">返回主页</a>
-      <div class="title-wrap">
-        <div class="title-row">
-          <span class="mark">📊</span>
-          <h1>智慧元中心</h1>
-        </div>
-        <p class="subtitle">从基础到智慧的成长</p>
+<body data-lang="zh">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img src="../logo.png" alt="MindsEvo" />
+      <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
+    </a>
+    <div class="nav-right">
+      <a class="back-link" href="../index.html">
+        <span class="zh">← 返回主页</span>
+        <span class="en">← Home</span>
+      </a>
+      <div class="lang-sw">
+        <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+        <span class="sep">|</span>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
       </div>
-    </header>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">MindsEvo · Learning Series</div>
+      <h1>
+        <span class="zh">学习系列</span>
+        <span class="en">Learning Series</span>
+      </h1>
+      <p>
+        <span class="zh">从数学、逻辑到科学与人文，将知识学习与元思维训练相结合，让学习过程更有深度与意义。</span>
+        <span class="en">From math and logic to science and humanities — integrating knowledge with meta-thinking training, bringing depth and meaning to learning.</span>
+      </p>
+    </section>
+
+    <div class="toolbar">
+      <span class="pill"><span class="zh">当前开放</span><span class="en">Now Open</span></span>
+      <span class="muted-label"><span class="zh">数学思维已全面上线，更多领域持续推进中。</span><span class="en">Math Thinking is fully live. More domains coming.</span></span>
+    </div>
 
     <section class="grid">
-      <a class="card" href="./intro/index.html">
-        <div class="card-head">
-          <div class="icon-box">🏁</div>
-          <h2 class="card-title">入门启航</h2>
-        </div>
-        <p class="desc">从好奇开始，发现思考的乐趣</p>
-        <span class="level lv-green">入门</span>
+
+      <a class="card card-link" href="./math/index.html">
+        <div class="card-icon">🔢</div>
+        <h3><span class="zh">数学思维</span><span class="en">Math Thinking</span></h3>
+        <p><span class="zh">比较、数感、规律、建模、逻辑、策略 — 6 个能力模块，从元思维角度训练数学核心操作。</span><span class="en">Comparison, Number Sense, Pattern, Modeling, Logic, Strategy — 6 modules training core math operations from a meta-thinking perspective.</span></p>
+        <div class="card-status open"><span class="zh">进入训练</span><span class="en">Start Training</span></div>
       </a>
 
-      <article class="card">
-        <div class="card-head">
-          <div class="icon-box">🎯</div>
-          <h2 class="card-title">② 残局入门</h2>
-        </div>
-        <p class="desc">探索残局的奇妙变化</p>
-        <span class="level lv-blue">初级</span>
+      <article class="card card-dim">
+        <div class="card-icon">🔬</div>
+        <h3><span class="zh">科学探索</span><span class="en">Science</span></h3>
+        <p><span class="zh">观察、假设、实验、验证 — 培养系统性科学思维与探究精神。</span><span class="en">Observe, hypothesize, experiment, verify — developing systematic scientific thinking and inquiry.</span></p>
+        <div class="card-status"><span class="zh">即将推出</span><span class="en">Coming Soon</span></div>
       </article>
 
-      <article class="card">
-        <div class="card-head">
-          <div class="icon-box">🧠</div>
-          <h2 class="card-title">③ 战术运用</h2>
-        </div>
-        <p class="desc">掌握组合战术与应变思维</p>
-        <span class="level lv-orange">中级</span>
+      <article class="card card-dim">
+        <div class="card-icon">📖</div>
+        <h3><span class="zh">语文素养</span><span class="en">Language Arts</span></h3>
+        <p><span class="zh">阅读理解、表达逻辑、词汇积累 — 在真实语境中训练语言元思维能力。</span><span class="en">Reading comprehension, expressive logic, vocabulary — training language meta-thinking in real contexts.</span></p>
+        <div class="card-status"><span class="zh">即将推出</span><span class="en">Coming Soon</span></div>
       </article>
 
-      <article class="card">
-        <div class="card-head">
-          <div class="icon-box">⚔️</div>
-          <h2 class="card-title">④ 攻杀技巧</h2>
-        </div>
-        <p class="desc">学习常见攻杀与得子手法</p>
-        <span class="level lv-orange">中级</span>
-      </article>
-
-      <article class="card">
-        <div class="card-head">
-          <div class="icon-box">🎮</div>
-          <h2 class="card-title">⑤ 开局元思维</h2>
-        </div>
-        <p class="desc">16种元思维:从中心到战略</p>
-        <span class="level lv-purple">高级</span>
-      </article>
-
-      <article class="card">
-        <div class="card-head">
-          <div class="icon-box">🏆</div>
-          <h2 class="card-title">⑥ 实战提升</h2>
-        </div>
-        <p class="desc">综合运用所学知识进行实战</p>
-        <span class="level lv-purple">高级</span>
-      </article>
     </section>
   </main>
 
   <script>
-    (function () {
-      var btn = document.getElementById("btnBackChess");
-      if (!btn) return;
-
-      btn.addEventListener("click", function (e) {
-        // Prefer going back to the previous page (expected chess home entry).
-        // Fallback to chess home when no usable history exists.
-        if (window.history.length > 1) {
-          e.preventDefault();
-          window.history.back();
-        }
-      });
-    }());
+    function setLang(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('mindsevo-lang', lang);
+    }
+    const saved = localStorage.getItem('mindsevo-lang');
+    if (saved) setLang(saved);
   </script>
 </body>
 </html>
