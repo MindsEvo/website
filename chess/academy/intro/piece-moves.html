@@ -577,11 +577,41 @@
                   <button data-king-action="castle">王车易位</button>
                 </div>
               </div>
-              <button class="chip c-queen" data-observe-piece="q">后 ▼</button>
-              <button class="chip c-rook" data-observe-piece="r">车 ▼</button>
-              <button class="chip c-bishop" data-observe-piece="b">象 ▼</button>
-              <button class="chip c-knight" data-observe-piece="n">马 ▼</button>
-              <button class="chip c-pawn" data-observe-piece="p">兵 ▼</button>
+              <div class="chip-wrap">
+                <button class="chip c-queen" id="queenObserveBtn">后 ▼</button>
+                <div class="chip-dropdown" id="queenObserveMenu">
+                  <button data-piece-action="q-move">走法演示</button>
+                  <button data-piece-action="q-capture">吃子演示</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-rook" id="rookObserveBtn">车 ▼</button>
+                <div class="chip-dropdown" id="rookObserveMenu">
+                  <button data-piece-action="r-move">走法演示</button>
+                  <button data-piece-action="r-capture">吃子演示</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-bishop" id="bishopObserveBtn">象 ▼</button>
+                <div class="chip-dropdown" id="bishopObserveMenu">
+                  <button data-piece-action="b-move">走法演示</button>
+                  <button data-piece-action="b-capture">吃子演示</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-knight" id="knightObserveBtn">马 ▼</button>
+                <div class="chip-dropdown" id="knightObserveMenu">
+                  <button data-piece-action="n-move">走法演示</button>
+                  <button data-piece-action="n-capture">吃子演示</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-pawn" id="pawnObserveBtn">兵 ▼</button>
+                <div class="chip-dropdown" id="pawnObserveMenu">
+                  <button data-piece-action="p-move">走法演示</button>
+                  <button data-piece-action="p-capture">吃子演示</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1110,7 +1140,390 @@
       }
       // --- END CAPTURE/CASTLING DEMOS ---
 
-      function clearScope(scope) {
+      // ================================================================
+      // REMAINING PIECES: 后 车 象 马 兵  (走法 + 吃子)
+      // ================================================================
+
+      // --- move-calculation helpers ---
+      var DIRS_Q = [[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]];
+      var DIRS_R = [[-1,0],[1,0],[0,-1],[0,1]];
+      var DIRS_B = [[-1,-1],[-1,1],[1,-1],[1,1]];
+
+      function sliderLegalMoves(r, c, dirs) {
+        var out = [];
+        dirs.forEach(function(d) {
+          for (var i = 1; i < 8; i++) {
+            var nr = r + d[0]*i, nc = c + d[1]*i;
+            if (nr < 0 || nr > 7 || nc < 0 || nc > 7) break;
+            out.push([nr, nc]);
+          }
+        });
+        return out;
+      }
+
+      function knightLegalMovesFn(r, c) {
+        return [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]]
+          .map(function(d) { return [r+d[0], c+d[1]]; })
+          .filter(function(p) { return p[0]>=0 && p[0]<8 && p[1]>=0 && p[1]<8; });
+      }
+
+      function showPieceMoves(r, c, getTargets) {
+        clearDemoHL();
+        var o = getSquare(r, c); if (o) o.classList.add('hl-origin');
+        getTargets(r, c).forEach(function(p) {
+          var s = getSquare(p[0], p[1]); if (s) s.classList.add('hl-target');
+        });
+      }
+
+      function clearAllObserveActive() {
+        ['kingObserveBtn','queenObserveBtn','rookObserveBtn','bishopObserveBtn','knightObserveBtn','pawnObserveBtn'].forEach(function(id) {
+          var b = document.getElementById(id); if (b) b.classList.remove('observe-active');
+        });
+      }
+
+      // --- slider walk demo ---
+      function doSliderStep(code, r, c, dirs, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var all = sliderLegalMoves(r, c, dirs);
+        var pref = all.filter(function(m) {
+          return !visited.some(function(v) { return Math.abs(m[0]-v[0])+Math.abs(m[1]-v[1]) < 2; });
+        });
+        var pool = pref.length > 0 ? pref : all;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        boardMatrix[r][c] = '';
+        boardMatrix[next[0]][next[1]] = code;
+        renderBoard();
+        showPieceMoves(next[0], next[1], function(nr, nc) { return sliderLegalMoves(nr, nc, dirs); });
+        visited.push(next);
+        if (visited.length > 3) visited.shift();
+        demoSchedule(function() {
+          doSliderStep(code, next[0], next[1], dirs, visited, step+1, maxSteps, onDone);
+        }, 2200);
+      }
+
+      function runSliderMoveDemo(code, dirs, nameZh, moveDesc) {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function(row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4] = code;
+        renderBoard();
+        speak('\u8fd9\u662f' + nameZh);
+        demoSchedule(function() {
+          showPieceMoves(4, 4, function(r, c) { return sliderLegalMoves(r, c, dirs); });
+          speak(moveDesc);
+        }, 2500);
+        demoSchedule(function() {
+          doSliderStep(code, 4, 4, dirs, [[4,4]], 1, 6, function() {
+            demoSchedule(function() {
+              clearDemoHL();
+              boardMatrix = savedBoard; savedBoard = null; renderBoard();
+              demoState.active = false;
+            }, 1500);
+          });
+        }, 8000);
+      }
+
+      function runQueenMoveDemo()  { runSliderMoveDemo('wq', DIRS_Q, '\u767d\u540e', '\u540e\u53ef\u4ee5\u6a2a\u3001\u7ad6\u3001\u659c\u4efb\u610f\u65b9\u5411\u8d70\u4efb\u610f\u683c'); }
+      function runRookMoveDemo()   { runSliderMoveDemo('wr', DIRS_R, '\u767d\u8f66', '\u8f66\u53ef\u4ee5\u6a2a\u7ebf\u548c\u7ad6\u7ebf\u8d70\u4efb\u610f\u683c'); }
+      function runBishopMoveDemo() { runSliderMoveDemo('wb', DIRS_B, '\u767d\u8c61', '\u8c61\u53ea\u80fd\u8d70\u659c\u7ebf\uff0c\u683c\u5b50\u989c\u8272\u59cb\u7ec8\u4e0d\u53d8'); }
+
+      // --- knight walk demo ---
+      function doKnightStepFn(code, r, c, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var moves = knightLegalMovesFn(r, c);
+        var pref = moves.filter(function(m) {
+          return !visited.some(function(v) { return v[0]===m[0] && v[1]===m[1]; });
+        });
+        var pool = pref.length > 0 ? pref : moves;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        boardMatrix[r][c] = '';
+        boardMatrix[next[0]][next[1]] = code;
+        renderBoard();
+        showPieceMoves(next[0], next[1], function(nr, nc) { return knightLegalMovesFn(nr, nc); });
+        visited.push(next);
+        if (visited.length > 4) visited.shift();
+        demoSchedule(function() {
+          doKnightStepFn(code, next[0], next[1], visited, step+1, maxSteps, onDone);
+        }, 2000);
+      }
+
+      function runKnightMoveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function(row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4] = 'wn';
+        renderBoard();
+        speak('\u8fd9\u662f\u767d\u9a6c');
+        demoSchedule(function() {
+          showPieceMoves(4, 4, function(r, c) { return knightLegalMovesFn(r, c); });
+          speak('\u9a6c\u8d70\u65e5\u5b57\uff0c\u53ef\u4ee5\u8df3\u8fc7\u5176\u4ed6\u68cb\u5b50');
+        }, 2500);
+        demoSchedule(function() {
+          doKnightStepFn('wn', 4, 4, [[4,4]], 1, 8, function() {
+            demoSchedule(function() {
+              clearDemoHL();
+              boardMatrix = savedBoard; savedBoard = null; renderBoard();
+              demoState.active = false;
+            }, 1500);
+          });
+        }, 8000);
+      }
+
+      // --- pawn move demo ---
+      function runPawnMoveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function(row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[6][4] = 'wp';
+        renderBoard();
+        speak('\u8fd9\u662f\u767d\u5175');
+        demoSchedule(function() {
+          var o = getSquare(6,4); if(o) o.classList.add('hl-origin');
+          var t1 = getSquare(5,4); if(t1) t1.classList.add('hl-target');
+          var t2 = getSquare(4,4); if(t2) t2.classList.add('hl-target');
+          speak('\u767d\u5175\u4ece\u7b2c2\u884c\u51fa\u53d1\uff0c\u7b2c\u4e00\u6b65\u53ef\u8d70\u4e00\u683c\u6216\u4e24\u683c');
+        }, 2500);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[6][4]=''; boardMatrix[4][4]='wp'; renderBoard();
+          var o=getSquare(4,4); if(o) o.classList.add('hl-origin');
+          var t=getSquare(3,4); if(t) t.classList.add('hl-target');
+          speak('\u5175\u8d70\u4e24\u683c');
+        }, 8000);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[4][4]=''; boardMatrix[3][4]='wp'; renderBoard();
+          var o=getSquare(3,4); if(o) o.classList.add('hl-origin');
+          var t=getSquare(2,4); if(t) t.classList.add('hl-target');
+          speak('\u4e4b\u540e\u6bcf\u6b21\u53ea\u80fd\u8d70\u4e00\u683c');
+        }, 13000);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[3][4]=''; boardMatrix[2][4]='wp'; renderBoard();
+          var o=getSquare(2,4); if(o) o.classList.add('hl-origin');
+          getSquare(1,4) && getSquare(1,4).classList.add('hl-target');
+        }, 18000);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix[2][4]=''; boardMatrix[1][4]='wp'; renderBoard();
+          var o=getSquare(1,4); if(o) o.classList.add('hl-origin');
+          getSquare(0,4) && getSquare(0,4).classList.add('hl-target');
+          speak('\u6297\u8fbe\u5bf9\u65b9\u5e95\u7ebf\u540e\u53ef\u5347\u53d8\u4e3a\u540e\u3001\u8f66\u3001\u8c61\u6216\u9a6c');
+        }, 22500);
+        demoSchedule(function() {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          demoState.active = false;
+        }, 29000);
+      }
+
+      // --- queen capture demo ---
+      function runQueenCaptureDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        // wq center; br right; bb diagonal-right-up; wp own-down; wb own-left; bn behind-own-left
+        boardMatrix[4][4]='wq'; boardMatrix[4][6]='br'; boardMatrix[2][6]='bb';
+        boardMatrix[6][4]='wp'; boardMatrix[4][2]='wb'; boardMatrix[4][0]='bn';
+        renderBoard();
+        speak('\u540e\u7684\u5403\u5b50\u6f14\u793a');
+        demoSchedule(function() {
+          getSquare(4,4) && getSquare(4,4).classList.add('hl-origin');
+          for(var r=3;r>=0;r--){getSquare(r,4)&&getSquare(r,4).classList.add('hl-target');}
+          getSquare(4,5)&&getSquare(4,5).classList.add('hl-target'); getSquare(4,6)&&getSquare(4,6).classList.add('hl-target');
+          getSquare(3,5)&&getSquare(3,5).classList.add('hl-target'); getSquare(2,6)&&getSquare(2,6).classList.add('hl-target');
+          getSquare(5,4)&&getSquare(5,4).classList.add('hl-target'); getSquare(4,3)&&getSquare(4,3).classList.add('hl-target');
+          getSquare(3,3)&&getSquare(3,3).classList.add('hl-target'); getSquare(5,3)&&getSquare(5,3).classList.add('hl-target');
+          getSquare(5,5)&&getSquare(5,5).classList.add('hl-target'); getSquare(3,7)&&getSquare(3,7).classList.add('hl-target');
+          speak('\u540e\u53ef\u4ee5\u6a2a\u3001\u7ad6\u3001\u659c\u4efb\u610f\u65b9\u5411\u8d70\u4efb\u610f\u683c');
+        }, 3000);
+        demoSchedule(function() {
+          clearDemoHL();
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          getSquare(4,2)&&getSquare(4,2).classList.add('hl-block'); getSquare(6,4)&&getSquare(6,4).classList.add('hl-block');
+          getSquare(4,0)&&getSquare(4,0).classList.add('hl-danger');
+          speak('\u5df1\u65b9\u68cb\u5b50\u963b\u6321\uff0c\u9694\u7740\u5df1\u65b9\u68cb\u5b50\u4e0d\u80fd\u5230\u8fbe\u5bf9\u65b9');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(4,6)&&getSquare(4,6).classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[4][6]='wq'; renderBoard();
+          getSquare(4,6)&&getSquare(4,6).classList.add('hl-done'); speak('\u540e\u76f4\u7ebf\u5403\u6389\u5bf9\u65b9\u68cb\u5b50');
+        }, 18000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix[4][6]=''; boardMatrix[4][4]='wq'; renderBoard(); }, 23000);
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(2,6)&&getSquare(2,6).classList.add('hl-target');
+        }, 24500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[2][6]='wq'; renderBoard();
+          getSquare(2,6)&&getSquare(2,6).classList.add('hl-done'); speak('\u540e\u659c\u7ebf\u4e5f\u53ef\u4ee5\u5403\u5b50');
+        }, 26000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
+      }
+
+      // --- rook capture demo ---
+      function runRookCaptureDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4]='wr'; boardMatrix[4][6]='br'; boardMatrix[6][4]='wp'; boardMatrix[4][2]='wb'; boardMatrix[4][0]='bn';
+        renderBoard();
+        speak('\u8f66\u7684\u5403\u5b50\u6f14\u793a');
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          for(var r=3;r>=0;r--){getSquare(r,4)&&getSquare(r,4).classList.add('hl-target');}
+          getSquare(4,5)&&getSquare(4,5).classList.add('hl-target'); getSquare(4,6)&&getSquare(4,6).classList.add('hl-target');
+          getSquare(5,4)&&getSquare(5,4).classList.add('hl-target'); getSquare(4,3)&&getSquare(4,3).classList.add('hl-target');
+          speak('\u8f66\u53ef\u4ee5\u6a2a\u7ebf\u6216\u7ad6\u7ebf\u8d70\u4efb\u610f\u683c');
+        }, 3000);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          getSquare(4,2)&&getSquare(4,2).classList.add('hl-block'); getSquare(6,4)&&getSquare(6,4).classList.add('hl-block');
+          getSquare(4,0)&&getSquare(4,0).classList.add('hl-danger');
+          speak('\u5df1\u65b9\u68cb\u5b50\u963b\u6321\uff0c\u9694\u7740\u5df1\u65b9\u68cb\u5b50\u4e0d\u80fd\u5230\u8fbe\u5bf9\u65b9');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(1,4)&&getSquare(1,4).classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[1][4]='wr'; renderBoard();
+          getSquare(1,4)&&getSquare(1,4).classList.add('hl-done'); speak('\u8f66\u76f4\u7ebf\u8d70\u5230\u7a7a\u767d\u683c');
+        }, 18000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix[1][4]=''; boardMatrix[4][4]='wr'; renderBoard(); }, 23000);
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(4,6)&&getSquare(4,6).classList.add('hl-target');
+        }, 24500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[4][6]='wr'; renderBoard();
+          getSquare(4,6)&&getSquare(4,6).classList.add('hl-done'); speak('\u8f66\u76f4\u7ebf\u5403\u6389\u5bf9\u65b9\u68cb\u5b50');
+        }, 26000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
+      }
+
+      // --- bishop capture demo ---
+      function runBishopCaptureDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4]='wb'; boardMatrix[6][6]='bb'; boardMatrix[6][2]='wp'; boardMatrix[2][2]='wr'; boardMatrix[1][1]='bn';
+        renderBoard();
+        speak('\u8c61\u7684\u5403\u5b50\u6f14\u793a');
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          [[3,5],[2,6],[1,7],[5,5],[6,6],[5,3],[3,3]].forEach(function(p){getSquare(p[0],p[1])&&getSquare(p[0],p[1]).classList.add('hl-target');});
+          speak('\u8c61\u53ea\u80fd\u8d70\u659c\u7ebf\uff0c\u683c\u5b50\u989c\u8272\u59cb\u7ec8\u4e0d\u53d8');
+        }, 3000);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          getSquare(2,2)&&getSquare(2,2).classList.add('hl-block'); getSquare(6,2)&&getSquare(6,2).classList.add('hl-block');
+          getSquare(1,1)&&getSquare(1,1).classList.add('hl-danger');
+          speak('\u5df1\u65b9\u68cb\u5b50\u963b\u6321\uff0c\u9694\u7740\u5df1\u65b9\u68cb\u5b50\u4e0d\u80fd\u5230\u8fbe\u5bf9\u65b9');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(2,6)&&getSquare(2,6).classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[2][6]='wb'; renderBoard();
+          getSquare(2,6)&&getSquare(2,6).classList.add('hl-done'); speak('\u8c61\u659c\u7740\u8d70\u5230\u7a7a\u767d\u683c');
+        }, 18000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix[2][6]=''; boardMatrix[4][4]='wb'; renderBoard(); }, 23000);
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(6,6)&&getSquare(6,6).classList.add('hl-target');
+        }, 24500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[6][6]='wb'; renderBoard();
+          getSquare(6,6)&&getSquare(6,6).classList.add('hl-done'); speak('\u8c61\u659c\u7ebf\u5403\u6389\u5bf9\u65b9\u68cb\u5b50');
+        }, 26000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
+      }
+
+      // --- knight capture demo ---
+      function runKnightCaptureDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        // wn center; own pieces at 3 knight-spots; black pieces at 3 other knight-spots; blocking pieces on d/f files
+        boardMatrix[4][4]='wn';
+        boardMatrix[3][2]='wr'; boardMatrix[5][2]='wn'; boardMatrix[6][3]='wb';
+        boardMatrix[2][5]='br'; boardMatrix[3][6]='bn'; boardMatrix[5][6]='bb';
+        boardMatrix[5][5]='wp'; boardMatrix[4][5]='bp'; boardMatrix[3][5]='wr';
+        boardMatrix[5][3]='bp'; boardMatrix[4][3]='wp'; boardMatrix[3][3]='br';
+        renderBoard();
+        speak('\u9a6c\u7684\u5403\u5b50\u6f14\u793a');
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          [[2,3],[2,5],[3,6],[5,6],[6,5]].forEach(function(p){getSquare(p[0],p[1])&&getSquare(p[0],p[1]).classList.add('hl-target');});
+          speak('\u9a6c\u8d70\u65e5\u5b57\u5f62\uff0c\u53ef\u4ee5\u8df3\u8fc7\u4e2d\u95f4\u7684\u68cb\u5b50');
+        }, 3000);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          [[3,2],[5,2],[6,3]].forEach(function(p){getSquare(p[0],p[1])&&getSquare(p[0],p[1]).classList.add('hl-block');});
+          speak('\u4e0d\u80fd\u8d70\u5230\u5df1\u65b9\u68cb\u5b50\u6240\u5728\u7684\u683c\u5b50');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(2,3)&&getSquare(2,3).classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[2][3]='wn'; renderBoard();
+          getSquare(2,3)&&getSquare(2,3).classList.add('hl-done'); speak('\u9a6c\u8df3\u8fc7\u4e2d\u95f4\u68cb\u5b50\uff0c\u8d70\u5230\u7a7a\u767d\u683c');
+        }, 18000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix[2][3]=''; boardMatrix[4][4]='wn'; renderBoard(); }, 23500);
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(2,5)&&getSquare(2,5).classList.add('hl-target');
+        }, 25000);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[2][5]='wn'; renderBoard();
+          getSquare(2,5)&&getSquare(2,5).classList.add('hl-done'); speak('\u9a6c\u8df3\u8dc3\u5403\u6389\u5bf9\u65b9\u68cb\u5b50');
+        }, 26500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[2][5]=''; boardMatrix[4][4]='wn'; renderBoard();
+          speak('\u9a6c\u662f\u552f\u4e00\u80fd\u8df3\u8dc3\u68cb\u5b50\u7684\u68cb\u5b50');
+        }, 31500);
+        demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 38000);
+      }
+
+      // --- pawn capture demo ---
+      function runPawnCaptureDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function(r) { return r.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4]='wp'; boardMatrix[3][4]='bp'; boardMatrix[3][3]='br'; boardMatrix[3][5]='bb';
+        renderBoard();
+        speak('\u5175\u7684\u5403\u5b50\u89c4\u5219');
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          getSquare(3,3)&&getSquare(3,3).classList.add('hl-target'); getSquare(3,5)&&getSquare(3,5).classList.add('hl-target');
+          speak('\u5175\u53ea\u80fd\u659c\u524d\u65b9\u5403\u5b50\uff0c\u4e0d\u80fd\u76f4\u63a5\u5403\u524d\u9762\u7684\u68cb\u5b50');
+        }, 3000);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin');
+          getSquare(3,4)&&getSquare(3,4).classList.add('hl-block'); speak('\u524d\u65b9\u6709\u68cb\u5b50\u65f6\uff0c\u5175\u4e0d\u80fd\u5411\u524d\u8d70');
+        }, 9500);
+        demoSchedule(function() {
+          clearDemoHL(); getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(3,3)&&getSquare(3,3).classList.add('hl-target');
+        }, 16500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[3][3]='wp'; renderBoard();
+          getSquare(3,3)&&getSquare(3,3).classList.add('hl-done'); speak('\u5175\u659c\u524d\u65b9\u5403\u5b50');
+        }, 18000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix[3][3]=''; boardMatrix[4][4]='wp'; renderBoard(); }, 23000);
+        demoSchedule(function() {
+          getSquare(4,4)&&getSquare(4,4).classList.add('hl-origin'); getSquare(3,5)&&getSquare(3,5).classList.add('hl-target');
+        }, 24500);
+        demoSchedule(function() {
+          clearDemoHL(); boardMatrix[4][4]=''; boardMatrix[3][5]='wp'; renderBoard();
+          getSquare(3,5)&&getSquare(3,5).classList.add('hl-done'); speak('\u5de6\u524d\u65b9\u548c\u53f3\u524d\u65b9\u90fd\u53ef\u4ee5\u659c\u5403');
+        }, 26000);
+        demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
+      }
+
+      // ================================================================
         if (scope === 'observe') cancelDemo();
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
@@ -1454,6 +1867,40 @@
           kingObserveMenu.classList.remove('open');
         });
       }
+
+      // --- piece observe dropdowns (后 车 象 马 兵) ---
+      var PIECE_DEMOS = {
+        'q-move': runQueenMoveDemo,   'q-capture': runQueenCaptureDemo,
+        'r-move': runRookMoveDemo,    'r-capture': runRookCaptureDemo,
+        'b-move': runBishopMoveDemo,  'b-capture': runBishopCaptureDemo,
+        'n-move': runKnightMoveDemo,  'n-capture': runKnightCaptureDemo,
+        'p-move': runPawnMoveDemo,    'p-capture': runPawnCaptureDemo
+      };
+
+      ['queen','rook','bishop','knight','pawn'].forEach(function(name) {
+        var btn  = document.getElementById(name + 'ObserveBtn');
+        var menu = document.getElementById(name + 'ObserveMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          menu.classList.toggle('open');
+        });
+        menu.addEventListener('click', function(e) {
+          var b = e.target.closest('[data-piece-action]');
+          if (!b) return;
+          var action = b.getAttribute('data-piece-action');
+          menu.classList.remove('open');
+          clearAllObserveActive();
+          btn.classList.add('observe-active');
+          if (PIECE_DEMOS[action]) PIECE_DEMOS[action]();
+        });
+      });
+
+      document.addEventListener('click', function () {
+        ['queenObserveMenu','rookObserveMenu','bishopObserveMenu','knightObserveMenu','pawnObserveMenu'].forEach(function(id) {
+          var m = document.getElementById(id); if (m) m.classList.remove('open');
+        });
+      });
     }());
   </script>
 </body>
