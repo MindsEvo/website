@@ -1525,8 +1525,6 @@
         demoSchedule(function() { clearDemoHL(); boardMatrix=savedBoard; savedBoard=null; renderBoard(); demoState.active=false; }, 31000);
       }
 
-      function clearScope(scope) {
-
       // --- PAWN PROMOTION DEMO ---
       function runPawnPromotionDemo() {
         cancelDemo(); demoState.active = true;
@@ -1646,6 +1644,8 @@
       }
 
       // ================================================================
+
+      function clearScope(scope) {
         if (scope === 'observe') cancelDemo();
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
