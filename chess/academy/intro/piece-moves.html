@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -491,7 +491,8 @@
     }
 
     /* --- dropdown menu for piece chips --- */
-    .chip-wrap { position: relative; }
+    .chip-wrap { position: relative; display: flex; flex-direction: column; }
+    .chip-wrap > .chip { width: 100%; flex: 1; }
     .chip-dropdown {
       position: absolute;
       top: calc(100% + 3px);
@@ -893,7 +894,7 @@
         demoSchedule(function () {
           showDemoHighlights(wr, wc);
           speak('王可以向任意方向走一格，共有8个方向');
-        }, 900);
+        }, 2500);
 
         demoSchedule(function () {
           doKingStep('wk', wr, wc, [[wr, wc]], 1, 8, function () {
@@ -903,7 +904,7 @@
               boardMatrix[br][bc] = 'bk';
               renderBoard();
               speak('这是黑王，走法相同');
-              demoSchedule(function () { showDemoHighlights(br, bc); }, 800);
+              demoSchedule(function () { showDemoHighlights(br, bc); }, 1200);
               demoSchedule(function () {
                 doKingStep('bk', br, bc, [[br, bc]], 1, 6, function () {
                   demoSchedule(function () {
@@ -914,12 +915,12 @@
                       el.classList.remove('hl-origin', 'hl-target');
                     });
                     demoState.active = false;
-                  }, 1200);
+                  }, 1500);
                 });
-              }, 1400);
-            }, 1500);
+              }, 4200);
+            }, 2000);
           });
-        }, 1700);
+        }, 8200);
       }
       // --- END KING DEMO ---
 
@@ -952,15 +953,15 @@
         savedBoard = boardMatrix.map(function (r) { return r.slice(); });
 
         setupKingCaptureBoard();
-        speak('王的吃子規则演示');
+        speak('\u738b\u7684\u5403\u5b50\u6f14\u793a');
 
         // show legal squares: e5 and e3
         demoSchedule(function () {
           var o = getSquare(4,4); if (o) o.classList.add('hl-origin');
           var e5 = getSquare(3,4); if (e5) e5.classList.add('hl-target');
           var e3 = getSquare(5,4); if (e3) e3.classList.add('hl-target');
-          speak('王周器8个方向，只有合法格子才能落子');
-        }, 800);
+          speak('\u738b\u5468\u56688\u4e2a\u65b9\u5411\uff0c\u53ea\u80fd\u8d70\u5230\u5408\u6cd5\u683c\u5b50');
+        }, 3000);
 
         // own-piece blocks
         demoSchedule(function () {
@@ -969,7 +970,7 @@
             var s = getSquare(rc[0],rc[1]); if (s) s.classList.add('hl-block');
           });
           speak('不能走到己方棋子所在的格子');
-        }, 3800);
+        }, 9000);
 
         // enemy-controlled squares
         demoSchedule(function () {
@@ -978,8 +979,8 @@
             var s = getSquare(rc[0],rc[1]); if (s) s.classList.add('hl-danger');
           });
           var rk = getSquare(2,5); if (rk) rk.classList.add('hl-origin');
-          speak('黑车在f6，控制了整条f列，王不能进入这些格子');
-        }, 7800);
+          speak('\u9ed1\u8f66\u5728f6\u63a7\u5236f\u5217\uff0c\u738b\u4e0d\u80fd\u8fdb\u5165\u8fd9\u4e9b\u683c\u5b50');
+        }, 14500);
 
         // king moves to e5
         demoSchedule(function () {
@@ -988,35 +989,35 @@
           renderBoard();
           var sq = getSquare(3,4); if (sq) sq.classList.add('hl-origin');
           showDemoHighlights(3,4);
-          speak('王可以走到空白格e5');
-        }, 12500);
+          speak('\u738b\u53ef\u4ee5\u8d70\u5230\u7a7a\u767d\u683ce5');
+        }, 21000);
 
         // king returns to e4
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix[3][4] = ''; boardMatrix[4][4] = 'wk';
           renderBoard();
-        }, 15500);
+        }, 25000);
 
         // king captures e3 pawn
         demoSchedule(function () {
           var o = getSquare(4,4); if (o) o.classList.add('hl-origin');
           var t = getSquare(5,4); if (t) t.classList.add('hl-target');
-        }, 16500);
+        }, 26500);
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix[4][4] = ''; boardMatrix[5][4] = 'wk';
           renderBoard();
           var sq = getSquare(5,4); if (sq) sq.classList.add('hl-done');
-          speak('王吃掉没有保护的黑兵，这就是王的吃子规则');
-        }, 17800);
+          speak('\u738b\u53ef\u4ee5\u5403\u6389\u6ca1\u6709\u4fdd\u62a4\u7684\u5bf9\u65b9\u68cb\u5b50');
+        }, 28000);
 
         // restore
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix = savedBoard; savedBoard = null; renderBoard();
           demoState.active = false;
-        }, 21500);
+        }, 34000);
       }
 
       // --- KING CASTLING DEMO ---
@@ -1034,19 +1035,19 @@
         savedBoard = boardMatrix.map(function (r) { return r.slice(); });
 
         setupCastlingBoard();
-        speak('王车易位：王和车的特殊配合走法');
+        speak('\u738b\u8f66\u6613\u4f4d\u6f14\u793a');
 
         // --- Phase 1: kingside (short) ---
         demoSchedule(function () {
           speak('短易位：王向王翼走两格');
-        }, 1800);
+        }, 3500);
         demoSchedule(function () {
           var k = getSquare(7,4); if (k) k.classList.add('hl-origin');
           var g1 = getSquare(7,6); if (g1) g1.classList.add('hl-target');
           var h1 = getSquare(7,7); if (h1) h1.classList.add('hl-castle');
           var f1 = getSquare(7,5); if (f1) f1.classList.add('hl-castle');
-          speak('王走到g1，h1的车跳到f1');
-        }, 4000);
+          speak('\u738b\u8d70\u5230g1\uff0ch1\u7684\u8f66\u8df3\u5230f1');
+        }, 8000);
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix[7][4]=''; boardMatrix[7][7]='';
@@ -1054,21 +1055,21 @@
           renderBoard();
           var g = getSquare(7,6); if (g) g.classList.add('hl-done');
           var f = getSquare(7,5); if (f) f.classList.add('hl-done');
-          speak('短易位完成，王更加安全');
-        }, 7500);
+          speak('\u77ed\u6613\u4f4d\u5b8c\u6210\uff0c\u738b\u66f4\u52a0\u5b89\u5168');
+        }, 13500);
 
         // --- Phase 2: queenside (long) ---
         demoSchedule(function () {
           clearDemoHL(); setupCastlingBoard();
           speak('长易位：王向后翼走两格');
-        }, 12500);
+        }, 18500);
         demoSchedule(function () {
           var k = getSquare(7,4); if (k) k.classList.add('hl-origin');
           var c1 = getSquare(7,2); if (c1) c1.classList.add('hl-target');
           var a1 = getSquare(7,0); if (a1) a1.classList.add('hl-castle');
           var d1 = getSquare(7,3); if (d1) d1.classList.add('hl-castle');
-          speak('王走到c1，a1的车跳到d1');
-        }, 15000);
+          speak('\u738b\u8d70\u5230c1\uff0ca1\u7684\u8f66\u8df3\u5230d1');
+        }, 23000);
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix[7][4]=''; boardMatrix[7][0]='';
@@ -1076,36 +1077,36 @@
           renderBoard();
           var c = getSquare(7,2); if (c) c.classList.add('hl-done');
           var d = getSquare(7,3); if (d) d.classList.add('hl-done');
-          speak('长易位完成');
-        }, 18500);
+          speak('\u957f\u6613\u4f4d\u5b8c\u6210');
+        }, 28500);
 
         // --- Phase 3: threat examples ---
         demoSchedule(function () {
           clearDemoHL(); setupCastlingBoard();
           speak('重要规则：易位路径上的格子不能被对方控制');
-        }, 23500);
+        }, 32500);
         // black rook f5 → blocks kingside
         demoSchedule(function () {
           boardMatrix[3][5]='br'; renderBoard();
           var f5 = getSquare(3,5); if (f5) f5.classList.add('hl-danger');
           var f1 = getSquare(7,5); if (f1) f1.classList.add('hl-block');
-          speak('黑车在f5，控制f1格，短易位被阻止');
-        }, 28000);
+          speak('\u9ed1\u8f66\u5728f5\u63a7\u5236f1\uff0c\u77ed\u6613\u4f4d\u88ab\u963b\u6b62');
+        }, 39000);
         // black bishop g5 → blocks queenside
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix[3][5]=''; boardMatrix[3][6]='bb'; renderBoard();
           var g5 = getSquare(3,6); if (g5) g5.classList.add('hl-danger');
           var c1 = getSquare(7,2); if (c1) c1.classList.add('hl-block');
-          speak('黑象在g5，撙线控制c1，长易位也被阻止');
-        }, 35000);
+          speak('\u9ed1\u8c61\u5728g5\u63a7\u5236c1\uff0c\u957f\u6613\u4f4d\u4e5f\u88ab\u963b\u6b62');
+        }, 45500);
         // restore
         demoSchedule(function () {
           clearDemoHL();
           boardMatrix = savedBoard; savedBoard = null; renderBoard();
-          speak('易位前需确保王和车均未移动，路径无子且不被对方控制');
-          demoSchedule(function () { demoState.active = false; }, 1500);
-        }, 41000);
+          speak('\u6613\u4f4d\u524d\u9700\u786e\u4fdd\u738b\u548c\u8f66\u672a\u79fb\u52a8\uff0c\u8def\u5f84\u65e0\u5b50\u4e14\u4e0d\u88ab\u5bf9\u65b9\u63a7\u5236');
+          demoSchedule(function () { demoState.active = false; }, 2000);
+        }, 52000);
       }
       // --- END CAPTURE/CASTLING DEMOS ---
 
