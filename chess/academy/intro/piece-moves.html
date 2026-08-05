@@ -387,32 +387,18 @@
       background: #ef4444;
     }
 
-    @keyframes observeBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    /* box-shadow-only pulse — pieces never fade */
+    @keyframes hlOriginPulse {
+      0%, 100% { box-shadow: inset 0 0 0 4px rgba(245, 158, 11, 0.95); }
+      50%       { box-shadow: inset 0 0 0 6px rgba(245, 158, 11, 0.70), 0 0 10px rgba(245, 158, 11, 0.4); }
+    }
+    @keyframes hlTargetPulse {
+      0%, 100% { box-shadow: inset 0 0 0 4px rgba(30, 64, 175, 0.88); }
+      50%       { box-shadow: inset 0 0 0 6px rgba(30, 64, 175, 0.60), 0 0 8px rgba(30, 64, 175, 0.3); }
     }
 
-    @keyframes practiceBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.24; }
-    }
-
-    @keyframes quizBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.28; }
-    }
-
-    .observe-blink { animation: observeBlink 0.65s ease-in-out infinite; }
-    .practice-blink { animation: practiceBlink 0.58s ease-in-out infinite; }
-    .quiz-blink { animation: quizBlink 0.62s ease-in-out infinite; }
-
-    .hl-origin {
-      box-shadow: inset 0 0 0 4px rgba(245, 158, 11, 0.95);
-    }
-
-    .hl-target {
-      box-shadow: inset 0 0 0 4px rgba(30, 64, 175, 0.88);
-    }
+    .hl-origin { animation: hlOriginPulse 0.9s ease-in-out infinite; }
+    .hl-target { animation: hlTargetPulse 0.9s ease-in-out infinite; }
 
     .hl-piece {
       filter: drop-shadow(0 0 6px rgba(30, 64, 175, 0.85));
@@ -784,7 +770,123 @@
         boardEl.innerHTML = html;
       }
 
+      // --- KING AUTO-DEMO STATE ---
+      var demoState = { active: false, timers: [] };
+      var savedBoard = null;
+
+      function cancelDemo() {
+        demoState.active = false;
+        demoState.timers.forEach(window.clearTimeout);
+        demoState.timers = [];
+        boardEl.querySelectorAll('.hl-origin, .hl-target, .hl-piece').forEach(function (el) {
+          el.classList.remove('hl-origin', 'hl-target', 'hl-piece');
+        });
+        if (savedBoard) {
+          boardMatrix = savedBoard;
+          savedBoard = null;
+          renderBoard();
+        }
+      }
+
+      function demoSchedule(fn, delay) {
+        if (!demoState.active) return;
+        var t = window.setTimeout(function () {
+          if (!demoState.active) return;
+          fn();
+        }, delay);
+        demoState.timers.push(t);
+      }
+
+      function kingReachable(row, col) {
+        var out = [];
+        for (var dr = -1; dr <= 1; dr++) {
+          for (var dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue;
+            var r = row + dr, c = col + dc;
+            if (r >= 0 && r < 8 && c >= 0 && c < 8) out.push([r, c]);
+          }
+        }
+        return out;
+      }
+
+      function showDemoHighlights(fromRow, fromCol) {
+        boardEl.querySelectorAll('.hl-origin, .hl-target').forEach(function (el) {
+          el.classList.remove('hl-origin', 'hl-target');
+        });
+        var sq = getSquare(fromRow, fromCol);
+        if (sq) sq.classList.add('hl-origin');
+        kingReachable(fromRow, fromCol).forEach(function (rc) {
+          var s = getSquare(rc[0], rc[1]);
+          if (s) s.classList.add('hl-target');
+        });
+      }
+
+      function doKingStep(pieceCode, r, c, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var moves = kingReachable(r, c);
+        var pref = moves.filter(function (m) {
+          return !visited.some(function (v) { return v[0] === m[0] && v[1] === m[1]; });
+        });
+        var pool = pref.length > 0 ? pref : moves;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        boardMatrix[r][c] = '';
+        boardMatrix[next[0]][next[1]] = pieceCode;
+        renderBoard();
+        showDemoHighlights(next[0], next[1]);
+        visited.push(next);
+        if (visited.length > 4) visited.shift();
+        demoSchedule(function () {
+          doKingStep(pieceCode, next[0], next[1], visited, step + 1, maxSteps, onDone);
+        }, 1600);
+      }
+
+      function runKingObserveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (row) { return row.slice(); });
+
+        var wr = 4, wc = 4;
+        boardMatrix = Array(8).fill(null).map(function () { return Array(8).fill(''); });
+        boardMatrix[wr][wc] = 'wk';
+        renderBoard();
+        speak('这是白王');
+
+        demoSchedule(function () {
+          showDemoHighlights(wr, wc);
+          speak('王可以向任意方向走一格，共有8个方向');
+        }, 900);
+
+        demoSchedule(function () {
+          doKingStep('wk', wr, wc, [[wr, wc]], 1, 8, function () {
+            demoSchedule(function () {
+              boardMatrix = Array(8).fill(null).map(function () { return Array(8).fill(''); });
+              var br = 3, bc = 3;
+              boardMatrix[br][bc] = 'bk';
+              renderBoard();
+              speak('这是黑王，走法相同');
+              demoSchedule(function () { showDemoHighlights(br, bc); }, 800);
+              demoSchedule(function () {
+                doKingStep('bk', br, bc, [[br, bc]], 1, 6, function () {
+                  demoSchedule(function () {
+                    boardMatrix = savedBoard;
+                    savedBoard = null;
+                    renderBoard();
+                    boardEl.querySelectorAll('.hl-origin, .hl-target').forEach(function (el) {
+                      el.classList.remove('hl-origin', 'hl-target');
+                    });
+                    demoState.active = false;
+                  }, 1200);
+                });
+              }, 1400);
+            }, 1500);
+          });
+        }, 1700);
+      }
+      // --- END KING DEMO ---
+
       function clearScope(scope) {
+        if (scope === 'observe') cancelDemo();
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
           el.classList.remove(blinkClass, 'hl-origin', 'hl-target', 'hl-piece');
@@ -897,11 +999,17 @@
         observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
         var btn = document.querySelector('[data-observe-piece="' + kind + '"]');
         if (btn) btn.classList.add('observe-active');
+        if (kind === 'k') {
+          runKingObserveDemo();
+          return;
+        }
+        cancelDemo();
         highlightMoves('observe', kind);
         speak(observeVoice(kind));
       }
 
       function armPractice(btn) {
+        cancelDemo();
         var kind = btn.getAttribute('data-practice-piece');
         if (!kind) return;
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
