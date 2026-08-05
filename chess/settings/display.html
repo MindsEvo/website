@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>显示界面设置 | 国际象棋智慧平台</title>
+  <style>
+    :root{--bg:#f8f9fa;--card:#fff;--line:#e8edf5;--text:#2c2c2c;--muted:#666;--blue:#1a73e8;--board-light:#f1f1cf;--board-dark:#769656}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .page{min-height:100vh;padding:24px;display:flex;flex-direction:column;gap:16px}
+    .top{display:flex;align-items:center;justify-content:center;position:relative}
+    .back{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:40px;padding:0 16px;background:var(--blue);color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600}
+    h1{font-size:52px;font-weight:900;letter-spacing:.3px}
+    .content{display:grid;grid-template-columns:1fr 1.5fr;gap:24px;flex:1}
+    .left,.right{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+    .group{border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:16px}
+    .group h2{font-size:32px;font-weight:900;margin-bottom:12px}
+    .opts{display:grid;gap:8px}
+    .opt{height:44px;border:2px solid #e0e0e0;border-radius:8px;background:#f5f5f5;color:#333;font-size:16px;font-weight:700;cursor:pointer}
+    .opt:hover{border-color:#1a73e8;color:#1a73e8;background:#e3f2fd}
+    .opt.active{border-color:#1557a0;background:#1a73e8;color:#fff}
+    .right h2{font-size:36px;font-weight:900;margin-bottom:12px}
+    .board-wrap{display:flex;justify-content:center;align-items:center;padding:10px 0 6px}
+    .board-shell{--size:min(64vw,560px);width:calc(var(--size) + 24px);display:grid;grid-template-columns:24px var(--size);grid-template-rows:var(--size) 24px}
+    .board{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:var(--size);height:var(--size);border:2px solid rgba(92,111,71,.9)}
+    .sq{display:flex;align-items:center;justify-content:center;font-size:calc(var(--size)/11.8);line-height:1;user-select:none}
+    .files,.ranks{display:grid;color:#111827;font-size:14px}
+    .file-bottom{grid-template-columns:repeat(8,1fr);grid-column:2;grid-row:2}.rank-left{grid-template-rows:repeat(8,1fr);grid-column:1;grid-row:1}
+    .files span,.ranks span{display:flex;align-items:center;justify-content:center}
+    .foot{display:flex;justify-content:flex-end;gap:10px}
+    .btn{min-width:92px;height:38px;border-radius:8px;border:1px solid #d0d7e3;background:#fff;cursor:pointer;font-size:15px;font-weight:700}
+    .btn-primary{background:#1a73e8;color:#fff;border-color:#1a73e8}
+    @media(max-width:1100px){h1{font-size:38px}.group h2{font-size:26px}.right h2{font-size:30px}.content{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top">
+      <a class="back" href="./index.html">← 返回设置</a>
+      <h1>🎨 显示界面设置</h1>
+    </div>
+
+    <section class="content">
+      <section class="left">
+        <div class="group">
+          <h2>🎨 棋盘主题</h2>
+          <div class="opts" id="boardThemeOptions">
+            <button class="opt" data-board-theme="classic">✓ 标准绿</button>
+            <button class="opt" data-board-theme="ocean">🌊 海洋蓝</button>
+            <button class="opt" data-board-theme="wood">🔥 传统棕</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <h2>♟️ 棋子样式</h2>
+          <div class="opts" id="pieceStyleOptions">
+            <button class="opt" data-piece-style="svg">✓ 经典图像棋子</button>
+            <button class="opt" data-piece-style="unicode">🔥 简洁描边填充</button>
+            <button class="opt" data-piece-style="unicode-min">· 极简字符</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <h2>👁️ 实时预览</h2>
+        <div class="board-wrap">
+          <div class="board-shell">
+            <div class="ranks rank-left" id="rankLeft"></div>
+            <div class="board" id="previewBoard"></div>
+            <div class="files file-bottom" id="fileBottom"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="foot">
+      <button class="btn" id="btnCancel">取消</button>
+      <button class="btn btn-primary" id="btnApply">应用设置</button>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      var storageKey = 'cognichess:display-settings';
+      var settings = {
+        boardTheme: 'classic',
+        pieceStyle: 'svg'
+      };
+      var draft = { boardTheme: settings.boardTheme, pieceStyle: settings.pieceStyle };
+
+      var themes = {
+        classic: { light: '#f1f1cf', dark: '#769656' },
+        ocean: { light: '#d9ecff', dark: '#4f7fb3' },
+        wood: { light: '#f6e5c9', dark: '#b9855a' }
+      };
+
+      var unicodeMap = {
+        wk: '♔', wq: '♕', wr: '♖', wb: '♗', wn: '♘', wp: '♙',
+        bk: '♚', bq: '♛', br: '♜', bb: '♝', bn: '♞', bp: '♟'
+      };
+
+      var files = ['a','b','c','d','e','f','g','h'];
+      var ranks = [8,7,6,5,4,3,2,1];
+
+      var board = document.getElementById('previewBoard');
+      var fileBottom = document.getElementById('fileBottom');
+      var rankLeft = document.getElementById('rankLeft');
+
+      function load() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          if (!raw) return;
+          var parsed = JSON.parse(raw);
+          if (parsed && parsed.boardTheme && parsed.pieceStyle) {
+            settings = parsed;
+            draft = { boardTheme: parsed.boardTheme, pieceStyle: parsed.pieceStyle };
+          }
+        } catch {}
+      }
+
+      function save() {
+        localStorage.setItem(storageKey, JSON.stringify(draft));
+      }
+
+      function renderCoords() {
+        fileBottom.innerHTML = files.map(function (f) { return '<span>' + f + '</span>'; }).join('');
+        rankLeft.innerHTML = ranks.map(function (r) { return '<span>' + r + '</span>'; }).join('');
+      }
+
+      function getPreviewMatrix() {
+        return [
+          ['wr','wn','wb','wq','wk','wb','wn','wr'],
+          ['wp','wp','wp','wp','wp','wp','wp','wp'],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['bp','bp','bp','bp','bp','bp','bp','bp'],
+          ['br','bn','bb','bq','bk','bb','bn','br']
+        ];
+      }
+
+      function squareHtml(piece, style) {
+        if (!piece) return '';
+        if (style === 'svg') {
+          var map = { wk:'wK.svg',wq:'wQ.svg',wr:'wR.svg',wb:'wB.svg',wn:'wN.svg',wp:'wP.svg',bk:'bK.svg',bq:'bQ.svg',br:'bR.svg',bb:'bB.svg',bn:'bN.svg',bp:'bP.svg' };
+          return '<img src="../play/assets/pieces/' + map[piece] + '" alt="' + piece + '" style="width:88%;height:88%;object-fit:contain;pointer-events:none">';
+        }
+        if (style === 'unicode-min') {
+          return '<span style="font-size:0.86em;opacity:0.94">' + unicodeMap[piece] + '</span>';
+        }
+        return '<span>' + unicodeMap[piece] + '</span>';
+      }
+
+      function renderBoard() {
+        var theme = themes[draft.boardTheme] || themes.classic;
+        var matrix = getPreviewMatrix();
+        var html = '';
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var bg = ((r + c) % 2 === 0) ? theme.light : theme.dark;
+            html += '<div class="sq" style="background:' + bg + '">' + squareHtml(matrix[r][c], draft.pieceStyle) + '</div>';
+          }
+        }
+        board.innerHTML = html;
+      }
+
+      function syncButtons() {
+        document.querySelectorAll('[data-board-theme]').forEach(function (btn) {
+          btn.classList.toggle('active', btn.dataset.boardTheme === draft.boardTheme);
+        });
+        document.querySelectorAll('[data-piece-style]').forEach(function (btn) {
+          btn.classList.toggle('active', btn.dataset.pieceStyle === draft.pieceStyle);
+        });
+      }
+
+      document.querySelectorAll('[data-board-theme]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          draft.boardTheme = btn.dataset.boardTheme;
+          syncButtons();
+          renderBoard();
+        });
+      });
+      document.querySelectorAll('[data-piece-style]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          draft.pieceStyle = btn.dataset.pieceStyle;
+          syncButtons();
+          renderBoard();
+        });
+      });
+
+      document.getElementById('btnApply').addEventListener('click', function () {
+        save();
+        alert('显示设置已应用');
+      });
+
+      document.getElementById('btnCancel').addEventListener('click', function () {
+        draft = { boardTheme: settings.boardTheme, pieceStyle: settings.pieceStyle };
+        syncButtons();
+        renderBoard();
+      });
+
+      load();
+      renderCoords();
+      syncButtons();
+      renderBoard();
+    }());
+  </script>
+</body>
+</html>

@@ -10,6 +10,18 @@
   var RANKS = [8, 7, 6, 5, 4, 3, 2, 1];
   var SPLIT_STORAGE_KEY = "mindsevo:chess:play:left-pane";
   var ENGINE_API_BASE = "http://localhost:8787";
+  var DISPLAY_SETTINGS_KEY = "cognichess:display-settings";
+
+  var PIECE_UNICODE = {
+    wk: "♔", wq: "♕", wr: "♖", wb: "♗", wn: "♘", wp: "♙",
+    bk: "♚", bq: "♛", br: "♜", bb: "♝", bn: "♞", bp: "♟"
+  };
+
+  var BOARD_THEMES = {
+    classic: { light: "#f1f1cf", dark: "#769656" },
+    ocean: { light: "#d9ecff", dark: "#4f7fb3" },
+    wood: { light: "#f6e5c9", dark: "#b9855a" }
+  };
 
   var logger = ChessLogger.createLogger({ level: "debug", maxRecords: 3000 });
 
@@ -37,6 +49,10 @@
     aiVsAi: {
       black: null,
       white: null
+    },
+    display: {
+      boardTheme: "classic",
+      pieceStyle: "svg"
     }
   };
 
@@ -158,6 +174,47 @@
         beep();
       }
     };
+  }
+
+  function loadDisplaySettings() {
+    try {
+      var raw = localStorage.getItem(DISPLAY_SETTINGS_KEY);
+      if (!raw) {
+        return;
+      }
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.boardTheme && parsed.pieceStyle) {
+        state.display.boardTheme = parsed.boardTheme;
+        state.display.pieceStyle = parsed.pieceStyle;
+      }
+    } catch (error) {
+      logger.warn("display", "settings.parse.failed", { message: String(error && error.message || error) });
+    }
+  }
+
+  function applyBoardThemeVariables() {
+    var theme = BOARD_THEMES[state.display.boardTheme] || BOARD_THEMES.classic;
+    document.documentElement.style.setProperty("--board-light", theme.light);
+    document.documentElement.style.setProperty("--board-dark", theme.dark);
+  }
+
+  function buildPieceNode(piece) {
+    if (!piece) {
+      return null;
+    }
+
+    if (state.display.pieceStyle === "svg") {
+      var pieceEl = document.createElement("img");
+      pieceEl.className = "piece-svg";
+      pieceEl.alt = piece;
+      pieceEl.src = "./assets/pieces/" + PIECE_ASSET[piece];
+      return pieceEl;
+    }
+
+    var txt = document.createElement("span");
+    txt.className = state.display.pieceStyle === "unicode-min" ? "piece-text piece-text-min" : "piece-text";
+    txt.textContent = PIECE_UNICODE[piece] || "";
+    return txt;
   }
 
   function createVoiceManager() {
@@ -923,11 +980,10 @@
 
         var piece = state.board[row][col];
         if (piece) {
-          var pieceEl = document.createElement("img");
-          pieceEl.className = "piece-svg";
-          pieceEl.alt = piece;
-          pieceEl.src = "./assets/pieces/" + PIECE_ASSET[piece];
-          square.appendChild(pieceEl);
+          var pieceNode = buildPieceNode(piece);
+          if (pieceNode) {
+            square.appendChild(pieceNode);
+          }
         }
 
         if (state.lastMove && state.lastMove.fromRow === row && state.lastMove.fromCol === col) {
@@ -1842,6 +1898,8 @@
   }
 
   function init() {
+    loadDisplaySettings();
+    applyBoardThemeVariables();
     restoreDividerSplit();
     setupBoardCoords();
     bindTabs();

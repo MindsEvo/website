@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>系统设置 | 国际象棋智慧平台</title>
+  <style>
+    :root {
+      --bg:#f8f9fa;
+      --card:#ffffff;
+      --line:#e8edf5;
+      --text:#2c2c2c;
+      --muted:#666;
+      --blue:#1a73e8;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .page{min-height:100vh;display:flex;flex-direction:column;padding:24px}
+    .top{display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:22px}
+    .back{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;min-width:100px;height:40px;padding:0 16px;background:var(--blue);color:#fff;border-radius:8px;font-size:14px;font-weight:600}
+    h1{font-size:52px;font-weight:900;letter-spacing:.3px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;flex:1}
+    .card{background:var(--card);border-radius:16px;padding:22px 24px;min-height:180px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+    .card:hover{background:#f1f5ff}
+    .card h2{font-size:44px;font-weight:900;line-height:1.1;margin-bottom:4px}
+    .sub{font-size:28px;color:#4a4a4a;margin-bottom:10px}
+    .desc{font-size:24px;color:var(--muted);line-height:1.3}
+    .badge{display:inline-flex;align-items:center;justify-content:center;margin-top:12px;padding:2px 10px;border-radius:12px;font-size:14px;font-weight:700;width:fit-content}
+    .b1{background:#e8f5e8;color:#2e7d2e;border:1px solid #4caf50}
+    .b2{background:#e3f2fd;color:#1565c0;border:1px solid #2196f3}
+    .b3{background:#fff3e0;color:#e65100;border:1px solid #ff9800}
+    .b4{background:#f3e5f5;color:#7b1fa2;border:1px solid #9c27b0}
+    .b5{background:#ffebee;color:#c62828;border:1px solid #f44336}
+    .b6{background:#e8f5e8;color:#1b5e20;border:1px solid #66bb6a}
+    .footer{font-size:20px;color:#999;text-align:center;margin-top:18px}
+    @media (max-width:1200px){h1{font-size:40px}.card h2{font-size:34px}.sub{font-size:24px}.desc{font-size:18px}}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.back{position:static;margin-right:auto;margin-bottom:12px}.top{display:block;text-align:center}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top">
+      <a class="back" href="../index.html">返回主页</a>
+      <h1>⚙️ 系统设置</h1>
+    </div>
+
+    <section class="grid">
+      <article class="card">
+        <h2>🎮 游戏设置</h2>
+        <div class="sub">游戏体验配置</div>
+        <div class="desc">游戏体验、时间控制、难度等设置</div>
+        <span class="badge b1">基础</span>
+      </article>
+
+      <article class="card">
+        <h2>🤖 AI引擎</h2>
+        <div class="sub">AI引擎管理</div>
+        <div class="desc">引擎管理、性能配置、个性化设置</div>
+        <span class="badge b2">核心</span>
+      </article>
+
+      <article class="card">
+        <h2>🎵 语音音效</h2>
+        <div class="sub">声音配置</div>
+        <div class="desc">音效设置、语音播报、TTS配置</div>
+        <span class="badge b3">体验</span>
+      </article>
+
+      <a class="card" href="./display.html">
+        <h2>🎨 显示界面</h2>
+        <div class="sub">界面主题</div>
+        <div class="desc">主题外观、棋盘样式、界面布局</div>
+        <span class="badge b4">外观</span>
+      </a>
+
+      <article class="card">
+        <h2>🔧 高级设置</h2>
+        <div class="sub">系统配置</div>
+        <div class="desc">系统设置、数据管理、网络配置</div>
+        <span class="badge b5">高级</span>
+      </article>
+
+      <article class="card">
+        <h2>🧬 根基因库</h2>
+        <div class="sub">题目生成</div>
+        <div class="desc">根基因库管理、题目生成、AI测试配置</div>
+        <span class="badge b6">专业</span>
+      </article>
+    </section>
+
+    <div class="footer">© 2025 CogniChess - 象棋智能学习系统</div>
+  </main>
+</body>
+</html>
