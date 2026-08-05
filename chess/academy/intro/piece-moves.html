@@ -620,12 +620,54 @@
           <div class="group">
             <h3>操作练习</h3>
             <div class="chips rows-6" id="practiceButtons">
-              <button class="chip c-king" data-practice-piece="k">王 ▼</button>
-              <button class="chip c-queen" data-practice-piece="q">后 ▼</button>
-              <button class="chip c-rook" data-practice-piece="r">车 ▼</button>
-              <button class="chip c-bishop" data-practice-piece="b">象 ▼</button>
-              <button class="chip c-knight" data-practice-piece="n">马 ▼</button>
-              <button class="chip c-pawn" data-practice-piece="p">兵 ▼</button>
+              <div class="chip-wrap">
+                <button class="chip c-king" id="kingPracticeBtn">王 ▼</button>
+                <div class="chip-dropdown" id="kingPracticeMenu">
+                  <button data-prac-action="k-move-1">走法练习</button>
+                  <button data-prac-action="k-capture-1">吃子练习</button>
+                  <button data-prac-action="k-game-1">对弈练习</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-queen" id="queenPracticeBtn">后 ▼</button>
+                <div class="chip-dropdown" id="queenPracticeMenu">
+                  <button data-prac-action="q-move-1">走法练习</button>
+                  <button data-prac-action="q-capture-1">吃子练习</button>
+                  <button data-prac-action="q-game-1">对弈练习</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-rook" id="rookPracticeBtn">车 ▼</button>
+                <div class="chip-dropdown" id="rookPracticeMenu">
+                  <button data-prac-action="r-move-1">走法练习</button>
+                  <button data-prac-action="r-capture-1">吃子练习</button>
+                  <button data-prac-action="r-game-1">对弈练习</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-bishop" id="bishopPracticeBtn">象 ▼</button>
+                <div class="chip-dropdown" id="bishopPracticeMenu">
+                  <button data-prac-action="b-move-1">走法练习</button>
+                  <button data-prac-action="b-capture-1">吃子练习</button>
+                  <button data-prac-action="b-game-1">对弈练习</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-knight" id="knightPracticeBtn">马 ▼</button>
+                <div class="chip-dropdown" id="knightPracticeMenu">
+                  <button data-prac-action="n-move-1">走法练习</button>
+                  <button data-prac-action="n-capture-1">吃子练习</button>
+                  <button data-prac-action="n-game-1">对弈练习</button>
+                </div>
+              </div>
+              <div class="chip-wrap">
+                <button class="chip c-pawn" id="pawnPracticeBtn">兵 ▼</button>
+                <div class="chip-dropdown" id="pawnPracticeMenu">
+                  <button data-prac-action="p-move-1">走法练习</button>
+                  <button data-prac-action="p-capture-1">吃子练习</button>
+                  <button data-prac-action="p-game-1">对弈练习</button>
+                </div>
+              </div>
             </div>
             <div class="status-box" id="practiceStatus">点击上方棋子按钮开始练习</div>
           </div>
@@ -780,7 +822,7 @@
       var quizTimer = null;
 
       var currentPracticePiece = null; // kept for clearScope compat
-      var practiceState = { armed: false, kind: null, btn: null, pieceRow: -1, pieceCol: -1, targets: [], found: [] };
+      var practiceState = { armed: false, kind: null, btn: null, scenario: null, selectedPiece: null, legalTargets: [], pieceRow: -1, pieceCol: -1, targets: [], found: [] };
       var savedPracticeBoard = null;
 
       var currentQuizTopic = null;
@@ -1771,20 +1813,157 @@
         speak(observeVoice(kind));
       }
 
+      // --- PRACTICE SCENARIOS (translated from PyQt6 _PIECE_PRACTICE_LAYOUTS & _GAME_PRACTICE_LAYOUTS) ---
+      // setup: [[row, col, 'piece'], ...]
+      var PRAC_SCENARIOS = {
+        // ── KING 王 ──────────────────────────────────────
+        'k-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u4e24\u738b\u5bf9\u5cd9\uff0c\u8bd5\u7740\u8d70\u5230\u5bf9\u65b9\u5e95\u7ebf\uff01\u4e24\u738b\u4e0d\u80fd\u76f8\u90bb\uff0c\u9047\u5230\u9605\u8def\u65f6\u60f3\u60f3\u4ece\u54ea\u8fb9\u7ed5\u8fc7\u53bb\u3002',
+          setup:[[7,4,'wk'],[0,4,'bk']] },
+        'k-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u7528\u4e24\u79cd\u65b9\u5f0f\u628a\u4e09\u9897\u9ed1\u5b50\u5168\u90e8\u5403\u6389\uff01',
+          setup:[[4,4,'wk'],[3,4,'bp'],[3,3,'br'],[3,5,'bn']] },
+        'k-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u738b\u8f66\u8054\u624b\uff01\u8f66\u63a7\u5236\u6574\u6761\u76f4\u7ebf\uff0c\u738b\u6b65\u6b65\u9022\u8fc7\uff0c\u628a\u9ed1\u738b\u8d76\u5230\u8fb9\u89d2\u5c06\u6b7b\uff01',
+          setup:[[5,5,'wk'],[4,1,'wr'],[3,4,'bk']] },
+        // ── QUEEN 后 ─────────────────────────────────────
+        'q-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u53cc\u540e\u5bf9\u9635\uff0c\u540e\u662f\u6700\u5f3a\u68cb\u5b50\uff0c\u53ef\u6cbf\u4efb\u610f\u65b9\u5411\u8d70\u4efb\u610f\u683c\uff01',
+          setup:[[7,4,'wk'],[7,3,'wq'],[0,4,'bk']] },
+        'q-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u76f4\u7ebf\u56db\u5411\uff01\u767d\u540ed4\uff0c\u4e0a\u4e0b\u5de6\u53f3\u5404\u6709\u4e00\u9897\u9ed1\u8f66\u2014\u2014\u540e\u6cbf\u76f4\u7ebf\u5168\u90e8\u5403\u6389\uff01',
+          setup:[[4,3,'wq'],[1,3,'br'],[7,3,'br'],[4,0,'br'],[4,6,'br']] },
+        'q-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u738b\u5e2e\u540e\u9003\u89d2\uff01\u767d\u540e\u5c01\u4f4f\u9ed1\u738b\u6d3b\u52a8\u7a7a\u95f4\uff0c\u767d\u738b\u8ddf\u8fdb\u914d\u5408\uff0c\u9010\u6b65\u9017\u8feb\u9ed1\u738b\u5230\u89d2\u843d\uff01',
+          setup:[[5,5,'wk'],[4,1,'wq'],[3,4,'bk']] },
+        // ── ROOK 车 ──────────────────────────────────────
+        'r-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u53cc\u8f66\u5bf9\u5cd9\uff0c\u611f\u53d7\u8f66\u6cbf\u76f4\u7ebf\u8d70\u4efb\u610f\u683c\u7684\u5a01\u529b\uff01',
+          setup:[[7,4,'wk'],[7,0,'wr'],[7,7,'wr'],[0,4,'bk']] },
+        'r-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u56db\u65b9\u5343\u91cc\uff01\u767d\u8f66d4\uff0c\u4e0a\u4e0b\u5de6\u53f3\u5404\u6709\u4e00\u9897\u9ed1\u5b50\u2014\u2014\u8f66\u6a2a\u51b2\u76f4\u649e\uff0c\u6bcf\u65b9\u5411\u4e00\u6761\u76f4\u7ebf\u901a\u5230\u5e95\uff01',
+          setup:[[4,3,'wr'],[1,3,'br'],[7,3,'br'],[4,0,'br'],[4,7,'br']] },
+        'r-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u53cc\u8f66\u5c06\u6740\uff01\u53cc\u8f66\u8f6e\u6d41\u5c06\u6740\uff0c\u975e\u5e38\u7cbe\u5f69\uff01',
+          setup:[[7,4,'wk'],[7,6,'wr'],[7,7,'wr'],[6,0,'bk']] },
+        // ── BISHOP 象 ────────────────────────────────────
+        'b-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u53cc\u8c61\u5bf9\u89d2\uff0c\u611f\u53d7\u8c61\u6cbf\u659c\u7ebf\u8d70\u4efb\u610f\u683c\u7684\u7279\u70b9\uff01',
+          setup:[[7,4,'wk'],[7,2,'wb'],[7,5,'wb'],[0,4,'bk']] },
+        'b-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u659c\u7ebf\u56db\u5411\uff01\u767d\u8c61e4\uff0c\u56db\u6761\u659c\u7ebf\u5404\u6709\u4e00\u9897\u9ed1\u5175\u2014\u2014\u8c61\u53ea\u8d70\u659c\u7ebf\uff0c\u683c\u5b50\u989c\u8272\u59cb\u7ec8\u4e0d\u53d8\uff01',
+          setup:[[4,4,'wb'],[2,6,'bp'],[2,2,'bp'],[6,6,'bp'],[6,2,'bp']] },
+        'b-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u53cc\u8c61\u5bf9\u5b64\u738b\uff01\u4e24\u8c61\u5408\u529b\u53ef\u4ee5\u5c06\u6b7b\u5b64\u738b\uff0c\u6709\u4e00\u5b9a\u96be\u5ea6\uff01',
+          setup:[[7,4,'wk'],[6,2,'wb'],[6,5,'wb'],[0,4,'bk']] },
+        // ── KNIGHT 马 ────────────────────────────────────
+        'n-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u53cc\u9a6c\u76f8\u5bf9\uff0c\u611f\u53d7\u9a6c\u8d70\u65e5\u5b57\u7684\u8df3\u8dc3\u89c4\u5f8b\uff01',
+          setup:[[7,4,'wk'],[6,1,'wn'],[1,6,'bn'],[0,4,'bk']] },
+        'n-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u65e5\u5f62\u516b\u8df3\uff01\u767d\u9a6ce4\uff0c8\u4e2a\u65b9\u5411\u5404\u6709\u4e00\u9897\u9ed1\u5175\u2014\u2014\u611f\u53d7\u9a6c\u516b\u4e2a\u8df3\u8dc3\u65b9\u5411\uff0c\u8bd5\u7740\u8df3\u904d\u6240\u6709\u4f4d\u7f6e\uff01',
+          setup:[[4,4,'wn'],[2,3,'bp'],[2,5,'bp'],[3,2,'bp'],[3,6,'bp'],[5,2,'bp'],[5,6,'bp'],[6,3,'bp'],[6,5,'bp']] },
+        'n-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u8f66\u9a6c\u8054\u5408\u5bf9\u5b64\u738b\uff01\u8f66\u63a7\u5236\u6574\u6761\u76f4\u7ebf\uff0c\u9a6c\u8d70\u65e5\u5b57\u8df3\u8dc3\uff0c\u4e24\u8005\u8d70\u6cd5\u4e92\u8865\uff01',
+          setup:[[7,4,'wk'],[7,0,'wr'],[5,3,'wn'],[0,4,'bk']] },
+        // ── PAWN 兵 ──────────────────────────────────────
+        'p-move-1': { label:'\u8d70\u6cd5\u7ec3\u4e60',
+          voice:'\u53cc\u5175\u76f8\u5bf9\uff0c\u611f\u53d7\u5175\u7684\u8d70\u6cd5\u3001\u5403\u6cd5\uff0c\u4ee5\u53ca\u5347\u53d8\u65f6\u673a\uff01',
+          setup:[[7,4,'wk'],[6,4,'wp'],[1,3,'bp'],[0,4,'bk']] },
+        'p-capture-1': { label:'\u5403\u5b50\u7ec3\u4e60',
+          voice:'\u659c\u5403\u4e0d\u76f4\u8d70\uff01\u767d\u5175e4\uff0c\u6b63\u524d\u65b9\u9ed1\u5175\u4e0d\u80fd\u76f4\u63a5\u5403\uff0c\u5de6\u659c\u548c\u53f3\u659c\u624d\u662f\u5175\u7684\u653b\u51fb\u683c\uff01',
+          setup:[[4,4,'wp'],[3,4,'bp'],[3,3,'br'],[3,5,'bb']] },
+        'p-game-1': { label:'\u5bf9\u5f08\u7ec3\u4e60',
+          voice:'\u53cc\u5175\u8d5b\u8dd1\uff01\u767d\u5175\u548c\u9ed1\u5175\u90fd\u8ddd\u5e95\u7ebf\u4e24\u6b65\uff0c\u53cc\u738b\u8fdc\u5728\u89d2\u843d\u9e7e\u957f\u83ab\u53ca\u3002\u5148\u8d70\u5148\u5347\u53d8\uff01',
+          setup:[[6,7,'wk'],[2,5,'wp'],[1,0,'bk'],[5,2,'bp']] }
+      };
+
+      // Board-aware legal moves for white pieces in practice (no turn rules, captures allowed)
+      function getPracticeMovesForBoard(r, c) {
+        var piece = boardMatrix[r][c];
+        if (!piece || piece.charAt(0) !== 'w') return [];
+        var kind = piece.charAt(1);
+        var moves = [];
+        function canLand(nr, nc) {
+          if (nr < 0 || nr > 7 || nc < 0 || nc > 7) return false;
+          var t = boardMatrix[nr][nc];
+          return !t || t.charAt(0) === 'b';
+        }
+        if (kind === 'k') return kingReachable(r, c).filter(function(p) { return canLand(p[0], p[1]); });
+        if (kind === 'n') return knightLegalMovesFn(r, c).filter(function(p) { return canLand(p[0], p[1]); });
+        if (kind === 'q' || kind === 'r' || kind === 'b') {
+          var dirs = kind === 'q' ? DIRS_Q : (kind === 'r' ? DIRS_R : DIRS_B);
+          dirs.forEach(function(d) {
+            for (var i = 1; i < 8; i++) {
+              var nr = r + d[0]*i, nc = c + d[1]*i;
+              if (nr < 0 || nr > 7 || nc < 0 || nc > 7) break;
+              var t = boardMatrix[nr][nc];
+              if (t) { if (t.charAt(0) === 'b') moves.push([nr, nc]); break; }
+              moves.push([nr, nc]);
+            }
+          });
+          return moves;
+        }
+        if (kind === 'p') {
+          if (r-1 >= 0 && !boardMatrix[r-1][c]) {
+            moves.push([r-1, c]);
+            if (r === 6 && !boardMatrix[r-2][c]) moves.push([r-2, c]);
+          }
+          if (r-1 >= 0 && c-1 >= 0 && boardMatrix[r-1][c-1] && boardMatrix[r-1][c-1].charAt(0) === 'b') moves.push([r-1, c-1]);
+          if (r-1 >= 0 && c+1 < 8 && boardMatrix[r-1][c+1] && boardMatrix[r-1][c+1].charAt(0) === 'b') moves.push([r-1, c+1]);
+          return moves;
+        }
+        return [];
+      }
+
+      function updatePracticeHL() {
+        boardEl.querySelectorAll('.hl-origin,.hl-target').forEach(function(el) {
+          el.classList.remove('hl-origin', 'hl-target');
+        });
+        if (practiceState.selectedPiece) {
+          var sq = getSquare(practiceState.selectedPiece.row, practiceState.selectedPiece.col);
+          if (sq) sq.classList.add('hl-origin');
+          practiceState.legalTargets.forEach(function(p) {
+            var s = getSquare(p[0], p[1]); if (s) s.classList.add('hl-target');
+          });
+        }
+      }
+
+      function armPracticeScenario(key) {
+        cancelDemo();
+        var sc = PRAC_SCENARIOS[key];
+        if (!sc) return;
+        savedPracticeBoard = boardMatrix.map(function(row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        sc.setup.forEach(function(e) { boardMatrix[e[0]][e[1]] = e[2]; });
+        renderBoard();
+        practiceState.armed = true;
+        practiceState.scenario = key;
+        practiceState.selectedPiece = null;
+        practiceState.legalTargets = [];
+        if (practiceStatus) practiceStatus.textContent = sc.voice;
+        speak(sc.voice.substring(0, 45));
+      }
+
       function cancelPractice() {
         if (!practiceState.armed && !savedPracticeBoard) return;
         practiceState.armed = false;
-        practiceState.kind = null;
-        practiceState.btn = null;
-        practiceState.targets = [];
-        practiceState.found = [];
-        practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
+        practiceState.scenario = null;
+        practiceState.selectedPiece = null;
+        practiceState.legalTargets = [];
+        practiceState.kind = null; practiceState.btn = null;
+        practiceState.targets = []; practiceState.found = [];
+        practiceButtons.forEach(function(b) { b.classList.remove('practice-current','practice-correct','practice-wrong'); });
+        ['king','queen','rook','bishop','knight','pawn'].forEach(function(nm) {
+          var b = document.getElementById(nm + 'PracticeBtn');
+          if (b) b.classList.remove('practice-current','practice-correct','practice-wrong');
+        });
         if (savedPracticeBoard) {
           boardMatrix = savedPracticeBoard;
           savedPracticeBoard = null;
           renderBoard();
         }
-        if (practiceStatus) practiceStatus.textContent = '\u70b9\u51fb\u4e0a\u65b9\u68cb\u5b50\u6309\u9215\u5f00\u59cb\u7ec3\u4e60';
+        if (practiceStatus) practiceStatus.textContent = '\u70b9\u51fb\u4e0a\u65b9\u68cb\u5b50\u6309\u9215\u9009\u62e9\u7ec3\u4e60\u573a\u666f';
       }
 
       function getPracticeTargets(kind, r, c) {
@@ -1796,80 +1975,58 @@
         if (kind === 'p') {
           var moves = [];
           if (r-1 >= 0) moves.push([r-1, c]);
-          if (r === 6) moves.push([r-2, c]); // double step from starting rank
-          if (r-1 >= 0 && c-1 >= 0) moves.push([r-1, c-1]); // diagonal attack squares
+          if (r === 6) moves.push([r-2, c]);
+          if (r-1 >= 0 && c-1 >= 0) moves.push([r-1, c-1]);
           if (r-1 >= 0 && c+1 < 8) moves.push([r-1, c+1]);
           return moves;
         }
         return [];
       }
 
-      function armPractice(btn) {
-        cancelDemo();
-        var kind = btn.getAttribute('data-practice-piece');
-        if (!kind) return;
-
-        practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        btn.classList.add('practice-current');
-
-        // Save board, set up empty practice board with single piece
-        savedPracticeBoard = boardMatrix.map(function (row) { return row.slice(); });
-        var r = (kind === 'p') ? 6 : 4;
-        var c = 4;
-        boardMatrix = emptyBoard();
-        var codes = { k:'wk', q:'wq', r:'wr', b:'wb', n:'wn', p:'wp' };
-        boardMatrix[r][c] = codes[kind];
-        renderBoard();
-        var sq = getSquare(r, c); if (sq) sq.classList.add('hl-origin');
-
-        var targets = getPracticeTargets(kind, r, c);
-        practiceState.armed = true;
-        practiceState.kind = kind;
-        practiceState.btn = btn;
-        practiceState.pieceRow = r;
-        practiceState.pieceCol = c;
-        practiceState.targets = targets;
-        practiceState.found = [];
-
-        var labels = { k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵' };
-        var text = labels[kind] + '在中心，请找出全部 ' + targets.length + ' 个合法落点 (0/' + targets.length + ')';
-        if (practiceStatus) practiceStatus.textContent = text;
-        speak(labels[kind] + '可以到达多少个格子，请将它们都找出来');
-      }
+      function armPractice(btn) { /* legacy no-op; practice now uses armPracticeScenario */ }
 
       function checkPractice(square) {
         if (!practiceState.armed) return;
         var row = Number(square.dataset.row);
         var col = Number(square.dataset.col);
-        if (row === practiceState.pieceRow && col === practiceState.pieceCol) return;
-        var alreadyFound = practiceState.found.some(function (p) { return p[0] === row && p[1] === col; });
-        if (alreadyFound) return;
+        var piece = boardMatrix[row][col];
 
-        var isTarget = practiceState.targets.some(function (p) { return p[0] === row && p[1] === col; });
-        var labels = { k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵' };
-
-        if (isTarget) {
-          practiceState.found.push([row, col]);
-          square.classList.add('hl-done');
-          var remaining = practiceState.targets.length - practiceState.found.length;
-          if (remaining === 0) {
-            var label = labels[practiceState.kind] || '';
-            if (practiceStatus) practiceStatus.textContent = '✅ 全部找对！' + label + '共可到达 ' + practiceState.targets.length + ' 个格子';
-            if (practiceState.btn) { practiceState.btn.classList.remove('practice-current'); practiceState.btn.classList.add('practice-correct'); }
-            practiceState.armed = false;
-            speak('全部找对，回答正确');
-          } else {
-            if (practiceStatus) practiceStatus.textContent = '✅ 正确！' + labels[practiceState.kind] + '还剩 ' + remaining + ' 个落点未找 (' + practiceState.found.length + '/' + practiceState.targets.length + ')';
-          }
-        } else {
-          square.classList.add('hl-block');
-          window.setTimeout(function () { square.classList.remove('hl-block'); }, 700);
-          if (practiceState.btn) { practiceState.btn.classList.add('practice-wrong'); }
-          window.setTimeout(function () {
-            if (practiceState.btn) { practiceState.btn.classList.remove('practice-wrong'); }
-            if (practiceState.armed && practiceState.btn) practiceState.btn.classList.add('practice-current');
-          }, 700);
+        // Click selected piece → deselect
+        if (practiceState.selectedPiece &&
+            practiceState.selectedPiece.row === row &&
+            practiceState.selectedPiece.col === col) {
+          practiceState.selectedPiece = null;
+          practiceState.legalTargets = [];
+          updatePracticeHL();
+          return;
         }
+
+        // Click legal target → execute move
+        if (practiceState.selectedPiece) {
+          var isTarget = practiceState.legalTargets.some(function(p) { return p[0]===row && p[1]===col; });
+          if (isTarget) {
+            boardMatrix[row][col] = boardMatrix[practiceState.selectedPiece.row][practiceState.selectedPiece.col];
+            boardMatrix[practiceState.selectedPiece.row][practiceState.selectedPiece.col] = '';
+            practiceState.selectedPiece = null;
+            practiceState.legalTargets = [];
+            renderBoard();
+            return;
+          }
+        }
+
+        // Click a white piece → select it and show legal moves
+        if (piece && piece.charAt(0) === 'w') {
+          var targets = getPracticeMovesForBoard(row, col);
+          practiceState.selectedPiece = { row: row, col: col };
+          practiceState.legalTargets = targets;
+          updatePracticeHL();
+          return;
+        }
+
+        // Click elsewhere → deselect
+        practiceState.selectedPiece = null;
+        practiceState.legalTargets = [];
+        updatePracticeHL();
       }
 
       function clearQuizButtonState() {
@@ -2088,6 +2245,38 @@
       document.addEventListener('click', function () {
         ['queenObserveMenu','rookObserveMenu','bishopObserveMenu','knightObserveMenu','pawnObserveMenu'].forEach(function(id) {
           var m = document.getElementById(id); if (m) m.classList.remove('open');
+        });
+      });
+
+      // --- practice dropdowns ---
+      var PRAC_DEMOS = {};
+      Object.keys(PRAC_SCENARIOS).forEach(function(k) { PRAC_DEMOS[k] = function() { armPracticeScenario(k); }; });
+
+      ['king','queen','rook','bishop','knight','pawn'].forEach(function(name) {
+        var btn  = document.getElementById(name + 'PracticeBtn');
+        var menu = document.getElementById(name + 'PracticeMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          menu.classList.toggle('open');
+        });
+        menu.addEventListener('click', function(e) {
+          var b = e.target.closest('[data-prac-action]');
+          if (!b) return;
+          var action = b.getAttribute('data-prac-action');
+          menu.classList.remove('open');
+          ['king','queen','rook','bishop','knight','pawn'].forEach(function(nm) {
+            var pb = document.getElementById(nm + 'PracticeBtn');
+            if (pb) pb.classList.remove('practice-current','practice-correct','practice-wrong');
+          });
+          btn.classList.add('practice-current');
+          if (PRAC_DEMOS[action]) PRAC_DEMOS[action]();
+        });
+      });
+
+      document.addEventListener('click', function() {
+        ['king','queen','rook','bishop','knight','pawn'].forEach(function(name) {
+          var m = document.getElementById(name + 'PracticeMenu'); if (m) m.classList.remove('open');
         });
       });
     }());
