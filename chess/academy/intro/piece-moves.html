@@ -779,9 +779,9 @@
       var practiceTimer = null;
       var quizTimer = null;
 
-      var currentPracticePiece = null;
-      var currentPracticeBtn = null;
-      var practiceArmed = false;
+      var currentPracticePiece = null; // kept for clearScope compat
+      var practiceState = { armed: false, kind: null, btn: null, pieceRow: -1, pieceCol: -1, targets: [], found: [] };
+      var savedPracticeBoard = null;
 
       var currentQuizTopic = null;
       var currentQuizIndex = null;
@@ -857,6 +857,7 @@
           savedBoard = null;
           renderBoard();
         }
+        cancelPractice();
       }
 
       function demoSchedule(fn, delay) {
@@ -1770,39 +1771,104 @@
         speak(observeVoice(kind));
       }
 
+      function cancelPractice() {
+        if (!practiceState.armed && !savedPracticeBoard) return;
+        practiceState.armed = false;
+        practiceState.kind = null;
+        practiceState.btn = null;
+        practiceState.targets = [];
+        practiceState.found = [];
+        practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
+        if (savedPracticeBoard) {
+          boardMatrix = savedPracticeBoard;
+          savedPracticeBoard = null;
+          renderBoard();
+        }
+        if (practiceStatus) practiceStatus.textContent = '\u70b9\u51fb\u4e0a\u65b9\u68cb\u5b50\u6309\u9215\u5f00\u59cb\u7ec3\u4e60';
+      }
+
+      function getPracticeTargets(kind, r, c) {
+        if (kind === 'k') return kingReachable(r, c);
+        if (kind === 'q') return sliderLegalMoves(r, c, DIRS_Q);
+        if (kind === 'r') return sliderLegalMoves(r, c, DIRS_R);
+        if (kind === 'b') return sliderLegalMoves(r, c, DIRS_B);
+        if (kind === 'n') return knightLegalMovesFn(r, c);
+        if (kind === 'p') {
+          var moves = [];
+          if (r-1 >= 0) moves.push([r-1, c]);
+          if (r === 6) moves.push([r-2, c]); // double step from starting rank
+          if (r-1 >= 0 && c-1 >= 0) moves.push([r-1, c-1]); // diagonal attack squares
+          if (r-1 >= 0 && c+1 < 8) moves.push([r-1, c+1]);
+          return moves;
+        }
+        return [];
+      }
+
       function armPractice(btn) {
         cancelDemo();
         var kind = btn.getAttribute('data-practice-piece');
         if (!kind) return;
+
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        currentPracticePiece = kind;
-        currentPracticeBtn = btn;
-        practiceArmed = true;
         btn.classList.add('practice-current');
 
-        var labels = {k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵'};
-        var text = '现在请你点击棋盘上的' + labels[kind];
+        // Save board, set up empty practice board with single piece
+        savedPracticeBoard = boardMatrix.map(function (row) { return row.slice(); });
+        var r = (kind === 'p') ? 6 : 4;
+        var c = 4;
+        boardMatrix = emptyBoard();
+        var codes = { k:'wk', q:'wq', r:'wr', b:'wb', n:'wn', p:'wp' };
+        boardMatrix[r][c] = codes[kind];
+        renderBoard();
+        var sq = getSquare(r, c); if (sq) sq.classList.add('hl-origin');
+
+        var targets = getPracticeTargets(kind, r, c);
+        practiceState.armed = true;
+        practiceState.kind = kind;
+        practiceState.btn = btn;
+        practiceState.pieceRow = r;
+        practiceState.pieceCol = c;
+        practiceState.targets = targets;
+        practiceState.found = [];
+
+        var labels = { k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵' };
+        var text = labels[kind] + '在中心，请找出全部 ' + targets.length + ' 个合法落点 (0/' + targets.length + ')';
         if (practiceStatus) practiceStatus.textContent = text;
-        speak(text);
+        speak(labels[kind] + '可以到达多少个格子，请将它们都找出来');
       }
 
       function checkPractice(square) {
-        if (!practiceArmed || !currentPracticePiece || !square) return;
-        var node = square.querySelector('.piece-node');
-        var ok = !!(node && node.classList.contains('kind-' + currentPracticePiece));
+        if (!practiceState.armed) return;
+        var row = Number(square.dataset.row);
+        var col = Number(square.dataset.col);
+        if (row === practiceState.pieceRow && col === practiceState.pieceCol) return;
+        var alreadyFound = practiceState.found.some(function (p) { return p[0] === row && p[1] === col; });
+        if (alreadyFound) return;
 
-        practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        if (currentPracticeBtn) currentPracticeBtn.classList.add(ok ? 'practice-correct' : 'practice-wrong');
+        var isTarget = practiceState.targets.some(function (p) { return p[0] === row && p[1] === col; });
+        var labels = { k:'王', q:'后', r:'车', b:'象', n:'马', p:'兵' };
 
-        highlightMoves('practice', currentPracticePiece);
-
-        if (ok) {
-          if (practiceStatus) practiceStatus.textContent = '✅ 回答正确';
-          speak('回答正确');
-          practiceArmed = false;
+        if (isTarget) {
+          practiceState.found.push([row, col]);
+          square.classList.add('hl-done');
+          var remaining = practiceState.targets.length - practiceState.found.length;
+          if (remaining === 0) {
+            var label = labels[practiceState.kind] || '';
+            if (practiceStatus) practiceStatus.textContent = '✅ 全部找对！' + label + '共可到达 ' + practiceState.targets.length + ' 个格子';
+            if (practiceState.btn) { practiceState.btn.classList.remove('practice-current'); practiceState.btn.classList.add('practice-correct'); }
+            practiceState.armed = false;
+            speak('全部找对，回答正确');
+          } else {
+            if (practiceStatus) practiceStatus.textContent = '✅ 正确！' + labels[practiceState.kind] + '还剩 ' + remaining + ' 个落点未找 (' + practiceState.found.length + '/' + practiceState.targets.length + ')';
+          }
         } else {
-          if (practiceStatus) practiceStatus.textContent = '❌ 回答错误，请再试一次';
-          speak('回答错误，请再试一次');
+          square.classList.add('hl-block');
+          window.setTimeout(function () { square.classList.remove('hl-block'); }, 700);
+          if (practiceState.btn) { practiceState.btn.classList.add('practice-wrong'); }
+          window.setTimeout(function () {
+            if (practiceState.btn) { practiceState.btn.classList.remove('practice-wrong'); }
+            if (practiceState.armed && practiceState.btn) practiceState.btn.classList.add('practice-current');
+          }, 700);
         }
       }
 
