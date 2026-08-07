@@ -729,6 +729,70 @@
     .lang-sw button.active { background: rgba(255,255,255,.16); color: #fff; }
     .lang-sw .sep { color: rgba(255,255,255,.20); font-size: 11px; pointer-events: none; }
     @media (max-width: 780px) { .lang-sw { margin-left: 0; } }
+
+    /* -- PARADIGM SECTION (light) -------------------- */
+    .paradigm-section { background: #f8faff; }
+    .paradigm-section .section-label { color: var(--blue); }
+    .paradigm-compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+      margin-bottom: 52px;
+    }
+    .para-col { padding: 36px 32px; border-radius: 20px; }
+    .para-col.past { background: #fff; border: 1.5px solid #e4eef8; }
+    .para-col.future { background: linear-gradient(140deg, #071225, #1a3a6e); color: #fff; }
+    .para-label {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 22px; opacity: .7;
+    }
+    .para-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .para-flow span { font-size: 18px; font-weight: 850; }
+    .para-col.past .para-flow span { color: var(--text); }
+    .para-col.future .para-flow span { color: #fff; }
+    .para-flow .arr { font-size: 16px; opacity: .45; font-weight: 400; }
+    .para-col.future .para-flow .last { color: var(--accent); }
+    .paradigm-quotes { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+    .pq-item {
+      padding: 20px 28px; border-radius: 14px;
+      background: #fff; border-left: 4px solid var(--blue);
+      font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.65;
+    }
+    .pq-item strong { color: var(--blue); }
+    .paradigm-platform {
+      padding: 40px 48px; border-radius: 20px;
+      background: linear-gradient(135deg, #071225, #1a3a6e); color: #fff;
+    }
+    .paradigm-platform p { font-size: 16px; color: rgba(255,255,255,.78); line-height: 1.85; margin-bottom: 14px; }
+    .paradigm-platform p:last-child { margin-bottom: 0; }
+    .paradigm-vision { font-size: 18px !important; font-weight: 700 !important; color: rgba(255,255,255,.92) !important; }
+    @media (max-width: 640px) {
+      .paradigm-compare { grid-template-columns: 1fr; }
+      .paradigm-platform { padding: 28px 22px; }
+    }
+
+    /* -- PILLARS SECTION (dark) -------------------- */
+    .pillars-section { background: var(--dark); color: #fff; }
+    .pillars-section .section-label { color: var(--accent); }
+    .pillars-section .section-title { color: #fff; }
+    .pillars-section .section-sub { color: rgba(255,255,255,.60); }
+    .pillars-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-bottom: 44px; }
+    .pillar-card {
+      padding: 32px 28px; border-radius: 20px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      transition: border-color .2s;
+    }
+    .pillar-card:hover { border-color: rgba(255,255,255,.28); }
+    .pillar-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .pillar-icon { font-size: 32px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .pillar-name { font-size: 21px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
+    .pillar-tagline { font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,.58); }
+    .pillar-desc { font-size: 15px; color: rgba(255,255,255,.72); line-height: 1.8; margin-bottom: 16px; }
+    .pillar-motto { font-size: 13.5px; font-weight: 700; color: var(--cyan); font-style: italic; }
+    .pillars-conclusion {
+      text-align: center; padding: 34px 40px; border-radius: 18px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      font-size: clamp(17px, 2vw, 24px); font-weight: 900; color: #fff; line-height: 1.5;
+    }
+    @media (max-width: 780px) { .pillars-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body data-lang="zh">
@@ -739,14 +803,11 @@
     <span><span class="zh">思进启智</span><span class="en">MindsEvo</span></span>
   </a>
   <div class="nav-links">
-    <a href="#mission"><span class="zh">使命</span><span class="en">Mission</span></a>
-    <a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a>
-    <a href="#focus"><span class="zh">关注</span><span class="en">Focus</span></a>
-    <a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a>
+    <a href="#paradigm"><span class="zh">使命</span><span class="en">Mission</span></a>
+    <a href="#pillars"><span class="zh">四大体系</span><span class="en">Four Pillars</span></a>
     <a href="#applications"><span class="zh">探索</span><span class="en">Explore</span></a>
     <a href="history/index.html"><span class="zh">历史面板</span><span class="en">History Lab</span></a>
-    <a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a>
-    <a class="nav-cta" href="#thankyou"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
+    <a class="nav-cta" href="mailto:info@mindsevo.com?subject=Join"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
   </div>
   <div class="lang-sw" id="lang-sw">
     <button id="btn-zh" onclick="setLang('zh')" class="active">中文</button>
@@ -759,14 +820,11 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#mission" onclick="closeMenu()"><span class="zh">使命</span><span class="en">Mission</span></a>
-  <a href="#approach" onclick="closeMenu()"><span class="zh">方法</span><span class="en">Approach</span></a>
-  <a href="#focus"    onclick="closeMenu()"><span class="zh">关注</span><span class="en">Focus</span></a>
-  <a href="#platform" onclick="closeMenu()"><span class="zh">平台</span><span class="en">Platform</span></a>
+  <a href="#paradigm" onclick="closeMenu()"><span class="zh">使命</span><span class="en">Mission</span></a>
+  <a href="#pillars" onclick="closeMenu()"><span class="zh">四大体系</span><span class="en">Four Pillars</span></a>
   <a href="#applications" onclick="closeMenu()"><span class="zh">探索</span><span class="en">Explore</span></a>
   <a href="history/index.html" onclick="closeMenu()"><span class="zh">历史面板</span><span class="en">History Lab</span></a>
-  <a href="#journey"      onclick="closeMenu()"><span class="zh">旅程</span><span class="en">Journey</span></a>
-  <a href="#thankyou"     onclick="closeMenu()"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
+  <a href="mailto:info@mindsevo.com?subject=Join" onclick="closeMenu()"><span class="zh">加入我们</span><span class="en">Join Us</span> &rarr;</a>
 </div>
 
 <header class="hero" id="home">
@@ -785,24 +843,24 @@
     </h1>
     <p class="hero-desc">
       <span class="zh">
-        知识正在变得唾手可得。<br>
-        真正值得培养的是理解、判断、创造、反思，<br>
-        以及持续学习和自我进化的能力。
+        AI 时代，当知识触手可得，<br>
+        真正决定未来的，不再是记住多少知识，<br>
+        而是理解、判断、推理、创造，以及持续学习的能力。
       </span>
       <span class="en">
-        AI makes knowledge instantly accessible.<br>
-        What truly matters is the ability to understand, judge,<br>
-        create, reflect, and continuously evolve.
+        In the Age of AI, knowledge is instantly accessible.<br>
+        What truly shapes the future is no longer how much you know,<br>
+        but your ability to understand, judge, reason, create, and keep learning.
       </span>
     </p>
     <div class="hero-actions">
-      <a class="btn-primary" href="#mission">
-        <span class="zh">探索我们的使命 →</span>
-        <span class="en">Explore Our Mission →</span>
+      <a class="btn-primary" href="#paradigm">
+        <span class="zh">了解我们的方法 →</span>
+        <span class="en">Our Approach →</span>
       </a>
-      <a class="btn-outline" href="#platform">
-        <span class="zh">了解平台</span>
-        <span class="en">Learn More</span>
+      <a class="btn-outline" href="#pillars">
+        <span class="zh">四大体系</span>
+        <span class="en">Four Pillars</span>
       </a>
     </div>
   </div>
@@ -810,248 +868,152 @@
 
 <main>
 
-<section class="section mission-section" id="mission">
+<section class="section paradigm-section" id="paradigm">
   <div class="section-inner">
-    <div class="section-label"><span class="zh">我们的使命</span><span class="en">Our Mission</span></div>
-
-    <div class="mission-hero">
-      <div class="mission-left">
-        <h2 class="mission-h2">
-          <span class="zh">面对 AI 时代，<br>我们持续探索<br>更有效的<span class="hi">思维启发</span><br>与成长方式。</span>
-          <span class="en">In the Age of AI,<br>we explore more effective ways<br>of <span class="hi">inspiring thinking</span><br>and fostering growth.</span>
-        </h2>
-        <p class="mission-lead">
-          <span class="zh">AI 正在重新定义知识获取。<br><br>我们关注的，<br>是人类如何持续思考、<br>持续成长、<br>持续创造价值。</span>
-          <span class="en">AI is redefining how knowledge is accessed.<br><br>We focus on how humans can<br>keep thinking,<br>keep growing,<br>keep creating value.</span>
-        </p>
-        <div class="mission-divider"></div>
-      </div>
-      <div class="mission-right">
-        <div class="mission-quote-block">
-          <span class="mq-mark">&ldquo;</span>
-          <div class="mq-lines">
-            <p><span class="zh">内容会不断改变。</span><span class="en">Content will keep changing.</span></p>
-            <p><span class="zh">工具会不断进步。</span><span class="en">Tools will keep advancing.</span></p>
-            <p><span class="zh">技术会不断迭代。</span><span class="en">Technology will keep evolving.</span></p>
-            <p class="mq-highlight">
-              <span class="zh">唯有人的<span>思维能力</span>，<br>始终决定未来。</span>
-              <span class="en">Only human <span>thinking ability</span><br>will always shape the future.</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mission-cards">
-      <div class="m-card">
-        <div class="m-icon">&#128269;</div>
-        <h4><span class="zh">探索</span><span class="en">Explore</span></h4>
-        <p><span class="zh">不断提出值得思考的问题。</span><span class="en">Keep asking questions worth thinking about.</span></p>
-      </div>
-      <div class="m-card">
-        <div class="m-icon">&#129504;</div>
-        <h4><span class="zh">思考</span><span class="en">Think</span></h4>
-        <p><span class="zh">理解、判断、创造、反思。</span><span class="en">Understand, judge, create, reflect.</span></p>
-      </div>
-      <div class="m-card">
-        <div class="m-icon">&#9881;&#65039;</div>
-        <h4><span class="zh">实践</span><span class="en">Practice</span></h4>
-        <p><span class="zh">在真实反馈中持续成长。</span><span class="en">Grow continuously through real feedback.</span></p>
-      </div>
-      <div class="m-card">
-        <div class="m-icon">&#127807;</div>
-        <h4><span class="zh">进化</span><span class="en">Evolve</span></h4>
-        <p><span class="zh">让思维伴随一生不断发展。</span><span class="en">Let thinking develop throughout a lifetime.</span></p>
-      </div>
-    </div>
-
-    <div class="mission-banner">
-      <h3>
-        <span class="zh">真正改变未来的，<br>不是拥有更多知识，而是拥有<span>更好的思维</span>。</span>
-        <span class="en">What truly changes the future<br>is not more knowledge, but <span>better thinking</span>.</span>
-      </h3>
-      <p>
-        <span class="zh">真正改变未来的，不是拥有更多知识，而是拥有更好的思维。</span>
-        <span class="en">The future belongs not to those who know more, but to those who think better.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="section approach-section" id="approach">
-  <div class="section-inner">
-    <div class="section-label"><span class="zh">我们的方法</span><span class="en">Our Approach</span></div>
-
-    <div class="ap-header">
-      <div>
-        <h2 class="ap-title">
-          <span class="zh">我们如何探索？</span>
-          <span class="en">How Do We Explore?</span>
-        </h2>
-        <div class="ap-divider"></div>
-      </div>
-      <div>
-        <p class="ap-subtitle">
-          <span class="zh">从优秀实践中提炼思维模式，<br>通过科学的方法，让思维不断成长。</span>
-          <span class="en">Distilling thinking patterns from great practices,<br>enabling minds to grow through a scientific approach.</span>
-        </p>
-        <p class="ap-desc">
-          <span class="zh">人类在漫长的历史中积累了大量解决问题的智慧与实践。我们相信，这些实践中蕴含着可提炼、可训练、可迁移的思维模式。思进启智（MindsEvo）通过持续的探索与验证，帮助更多人掌握面向未来的思维能力。</span>
-          <span class="en">Humanity has accumulated vast wisdom and practices throughout history. We believe these practices contain thinking patterns that can be distilled, trained, and transferred. MindsEvo helps more people master the thinking abilities needed for the future through continuous exploration and validation.</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="ap-steps">
-      <div class="ap-step">
-        <div class="ap-step-icon">&#128269;</div>
-        <h4><span class="zh">发现</span><span class="en">Discover</span></h4>
-        <p><span class="zh">从多领域、多文化的优秀实践中，发现具有启发意义的思维方式与问题解决模式。</span><span class="en">From diverse fields and cultures, uncover thinking patterns and problem-solving models worth learning.</span></p>
-      </div>
-      <div class="ap-arrow">&rarr;</div>
-      <div class="ap-step">
-        <div class="ap-step-icon">&#128203;</div>
-        <h4><span class="zh">提炼</span><span class="en">Distill</span></h4>
-        <p><span class="zh">将实践中的思维精华进行抽象、归纳，提炼出可理解、可迁移的核心思维模式。</span><span class="en">Abstract and organize the thinking essence from practice into transferable core thinking patterns.</span></p>
-      </div>
-      <div class="ap-arrow">&rarr;</div>
-      <div class="ap-step">
-        <div class="ap-step-icon">&#9881;&#65039;</div>
-        <h4><span class="zh">训练</span><span class="en">Train</span></h4>
-        <p><span class="zh">通过互动体验与刻意练习，在真实情境中应用并强化思维模式。</span><span class="en">Through interactive experience and deliberate practice, apply and reinforce thinking patterns in real contexts.</span></p>
-      </div>
-      <div class="ap-arrow">&rarr;</div>
-      <div class="ap-step">
-        <div class="ap-step-icon">&#127807;</div>
-        <h4><span class="zh">进化</span><span class="en">Evolve</span></h4>
-        <p><span class="zh">基于反馈与数据，持续优化与迭代，让思维能力伴随终身成长。</span><span class="en">Based on feedback and data, continuously optimize and iterate — letting thinking grow throughout a lifetime.</span></p>
-      </div>
-    </div>
-
-    <div class="ap-banner">
-      <h3>
-        <span class="zh">我们不追求标准答案，<br>我们追求<span>更好的思考方式</span>，以及更<span>持续的成长</span>。</span>
-        <span class="en">We don't pursue standard answers.<br>We pursue <span>better ways of thinking</span>, and more <span>sustained growth</span>.</span>
-      </h3>
-    </div>
-  </div>
-</section>
-
-<section class="section focus-section" id="focus">
-  <div class="section-inner">
-    <div class="section-label"><span class="zh">我们的关注</span><span class="en">Our Focus</span></div>
+    <div class="section-label"><span class="zh">时代背景</span><span class="en">The Context</span></div>
     <h2 class="section-title">
-      <span class="zh">面向未来的重要思维能力</span>
-      <span class="en">Core Thinking Abilities for the Future</span>
+      <span class="zh">教育，正在发生一次范式转移</span>
+      <span class="en">Education Is Undergoing a Paradigm Shift</span>
     </h2>
-    <p class="focus-intro">
-      <span class="zh">我们关注的，是能够帮助人在复杂多变的世界中，持续成长、持续创造价値的关键思维能力。这些能力，彼此关联，共同构成面向未来的思维基础。</span>
-      <span class="en">We focus on the key thinking abilities that help people thrive and create value in a complex, changing world. These abilities are interconnected and together form the thinking foundation for the future.</span>
-    </p>
 
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#e8f0fe;">&#129504;</div>
-        <div>
-          <h4><span class="zh">理解</span><span class="en">Understanding</span></h4>
-          <p><span class="zh">把握事物的本质与关系，建立清晰、准确的认知。</span><span class="en">Grasp the essence and relationships of things; build clear, accurate cognition.</span></p>
+    <div class="paradigm-compare">
+      <div class="para-col past">
+        <div class="para-label"><span class="zh">过去，我们更多关注</span><span class="en">Before, we focused on</span></div>
+        <div class="para-flow zh">
+          <span>记忆</span><span class="arr">→</span><span>理解</span><span class="arr">→</span><span>应用</span><span class="arr">→</span><span class="last">成绩</span>
+        </div>
+        <div class="para-flow en">
+          <span>Memorize</span><span class="arr">→</span><span>Understand</span><span class="arr">→</span><span>Apply</span><span class="arr">→</span><span class="last">Achieve</span>
         </div>
       </div>
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#fef9c3;">&#9878;&#65039;</div>
-        <div>
-          <h4><span class="zh">判断</span><span class="en">Judgment</span></h4>
-          <p><span class="zh">在信息与情境中做出合理评估，选择更优的方向与行动。</span><span class="en">Make rational assessments from information and context; choose better directions and actions.</span></p>
+      <div class="para-col future">
+        <div class="para-label"><span class="zh">未来，我们更关注</span><span class="en">Now, we focus on</span></div>
+        <div class="para-flow zh">
+          <span>探索</span><span class="arr">→</span><span>建构</span><span class="arr">→</span><span>迁移</span><span class="arr">→</span><span class="last">成长</span>
         </div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#f0fdf4;">&#128279;</div>
-        <div>
-          <h4><span class="zh">推理</span><span class="en">Reasoning</span></h4>
-          <p><span class="zh">从已知出发，发现规律，推导结论，解决问题。</span><span class="en">Start from what’s known, discover patterns, draw conclusions, solve problems.</span></p>
-        </div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#fdf4ff;">&#128161;</div>
-        <div>
-          <h4><span class="zh">创造</span><span class="en">Creativity</span></h4>
-          <p><span class="zh">突破已有框架，产生新的想法，构建新的可能性。</span><span class="en">Break through existing frameworks, generate new ideas, build new possibilities.</span></p>
-        </div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#fff7ed;">&#129710;</div>
-        <div>
-          <h4><span class="zh">反思</span><span class="en">Reflection</span></h4>
-          <p><span class="zh">审视自己的思维过程与行为，发现改进空间，实现自我提升。</span><span class="en">Examine your thinking process and behaviors; find room for improvement and self-growth.</span></p>
-        </div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-icon" style="background:#f0fdfa;">&#9854;&#65039;</div>
-        <div>
-          <h4><span class="zh">持续学习</span><span class="en">Lifelong Learning</span></h4>
-          <p><span class="zh">保持好奇心与开放心态，在变化中不断更新与成长。</span><span class="en">Stay curious and open-minded; continuously update and grow amid change.</span></p>
+        <div class="para-flow en">
+          <span>Explore</span><span class="arr">→</span><span>Construct</span><span class="arr">→</span><span>Transfer</span><span class="arr">→</span><span class="last">Grow</span>
         </div>
       </div>
     </div>
 
-    <div class="focus-quote">
+    <div class="paradigm-quotes">
+      <div class="pq-item">
+        <span class="zh">学习的真正起点不是记忆，而是<strong>发现</strong>。</span>
+        <span class="en">The true starting point of learning is not memorization — it is <strong>discovery</strong>.</span>
+      </div>
+      <div class="pq-item">
+        <span class="zh">学习的真正目标不是答案，而是<strong>思维的生成</strong>。</span>
+        <span class="en">The true goal of learning is not answers — it is the <strong>generation of thinking</strong>.</span>
+      </div>
+    </div>
+
+    <div class="paradigm-platform">
       <p>
-        <span class="zh">思维能力，不是一蹴而就的结果，<br>而是在真实情境中，通过长期的<span>启发、训练与实践</span>，逐步内化而成的品质。</span>
-        <span class="en">Thinking ability is not achieved overnight.<br>It is gradually internalized through long-term <span>inspiration, training, and practice</span> in real contexts.</span>
+        <span class="zh">MindsEvo 是一个融合课程、游戏、棋类、创作与 AI 的开放式思维成长平台。我们通过启发式学习、真实探索和持续实践，帮助学习者建立面向未来的核心思维能力。</span>
+        <span class="en">MindsEvo is an open thinking growth platform integrating courses, games, chess, creativity, and AI. We help learners build core thinking abilities for the future through inquiry-based learning, real exploration, and sustained practice.</span>
+      </p>
+      <p class="paradigm-vision">
+        <span class="zh">我们希望，每一位学习者都能在真实的探索中，建立属于自己的思维体系，并持续成长。</span>
+        <span class="en">We hope every learner can build their own thinking system through genuine exploration — and keep growing.</span>
       </p>
     </div>
   </div>
 </section>
 
-<section class="section platform-section" id="platform">
+<section class="section pillars-section" id="pillars">
   <div class="section-inner">
-    <div class="section-label"><span class="zh">我们的平台</span><span class="en">Our Platform</span></div>
+    <div class="section-label"><span class="zh">四大体系</span><span class="en">Four Pillars</span></div>
     <h2 class="section-title">
-      <span class="zh">一个开放的思维发展平台</span>
-      <span class="en">An Open Platform for Thinking Development</span>
+      <span class="zh">MindsEvo 四大体系</span>
+      <span class="en">The Four Pillars of MindsEvo</span>
     </h2>
     <p class="section-sub">
-      <span class="zh">思进启智（MindsEvo）平台将方法、内容与工具融为一体，<br>为个人学习、家庭教育与学校教学提供完整支持。<br>我们致力于打造一个开放、智能、可持续进化的思维发展生态。</span>
-      <span class="en">MindsEvo integrates methods, content, and tools into one—<br>providing complete support for individual learning, family education, and schools.<br>We are building an open, intelligent, and continuously evolving thinking ecosystem.</span>
+      <span class="zh">思维的成长，不是一门课程，而是一个持续探索、实践与成长的过程。<br>MindsEvo 构建了四个相互协作的核心体系。</span>
+      <span class="en">Thinking growth is not a single course — it is a process of continuous exploration, practice, and growth.<br>MindsEvo has built four interconnected core pillars.</span>
     </p>
 
-    <div class="plat-grid">
-      <div class="plat-card">
-        <h4><span class="zh">个性化学习体系</span><span class="en">Personalized Learning</span></h4>
-        <p><span class="zh">根据学习者的特点与进度，提供个性化的学习路径与内容推荐，让每个人都能在适合自己的节奏中成长。</span><span class="en">Tailored learning paths and content recommendations based on each learner's strengths and pace.</span></p>
-      </div>
-      <div class="plat-card">
-        <h4><span class="zh">结构化内容与课程</span><span class="en">Structured Content</span></h4>
-        <p><span class="zh">基于思维发展目标，提供系统化、分层级的课程与练习，帮助学习者稳步提升思维能力。</span><span class="en">Systematic, leveled curricula and exercises designed around thinking development goals.</span></p>
-      </div>
-      <div class="plat-card">
-        <h4><span class="zh">智能工具与反馈</span><span class="en">AI Tools &amp; Feedback</span></h4>
-        <p><span class="zh">借助 AI 与数据分析，提供即时反馈、学习洞察与成长报告，让学习更高效、更可见。</span><span class="en">AI-powered instant feedback, learning insights, and growth reports to make progress visible.</span></p>
-      </div>
-      <div class="plat-card">
-        <h4><span class="zh">多场景支持</span><span class="en">Multi-scenario Support</span></h4>
-        <p><span class="zh">支持个人学习、家庭陪伴与学校教学，满足不同场景下的思维发展需求。</span><span class="en">Supports individual learners, family co-learning, and classroom teaching across diverse contexts.</span></p>
-      </div>
-    </div>
-
-    <div class="plat-bottom">
-      <div class="plat-eco">
-        <h4><span class="zh">持续进化的生态</span><span class="en">A Continuously Evolving Ecosystem</span></h4>
-        <p><span class="zh">思进启智（MindsEvo）平台将持续迭代与扩展，连接教育者、学习者与研究者，共同推动思维发展的实践与创新。</span><span class="en">MindsEvo will keep iterating and expanding—connecting educators, learners, and researchers to advance the practice and innovation of thinking development.</span></p>
-      </div>
-      <div class="plat-slogan">
-        <p>
-          <span class="zh">更好的工具，更好的内容，<br>更重要的是，更好的思维成长体验。</span>
-          <span class="en">Better tools. Better content.<br>Most importantly, a better experience for thinking growth.</span>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-icon">📚</div>
+          <div>
+            <h3 class="pillar-name"><span class="zh">学习系列</span><span class="en">Learning</span></h3>
+            <p class="pillar-tagline"><span class="zh">从思维角度重新对应知识体系</span><span class="en">Reconnecting knowledge through a thinking lens</span></p>
+          </div>
+        </div>
+        <p class="pillar-desc">
+          <span class="zh">围绕比较、规律、建模、逻辑、策略、数感等核心思维模式，构建与学校知识体系相对应的思维训练内容。</span>
+          <span class="en">Built around core thinking patterns — comparison, pattern recognition, modeling, logic, strategy, number sense — aligned with school knowledge systems.</span>
         </p>
-        <div class="plat-cta">
-          <span class="zh">这，就是我们正在构建的平台。</span>
-          <span class="en">This is the platform we are building.</span>
+        <div class="pillar-motto">
+          <span class="zh">知识是载体，思维才是目标。</span>
+          <span class="en">Knowledge is the vehicle; thinking is the goal.</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-icon">🌱</div>
+          <div>
+            <h3 class="pillar-name"><span class="zh">小精灵系列</span><span class="en">MindSeeds</span></h3>
+            <p class="pillar-tagline"><span class="zh">自由、灵活、有趣的思维训练</span><span class="en">Free, flexible, and fun thinking training</span></p>
+          </div>
+        </div>
+        <p class="pillar-desc">
+          <span class="zh">通过丰富有趣的小游戏，在轻松体验中培养观察、比较、分类、推理、创造等思维能力。</span>
+          <span class="en">Through diverse and engaging mini-games, cultivate observation, comparison, classification, reasoning, and creativity in a relaxed setting.</span>
+        </p>
+        <div class="pillar-motto">
+          <span class="zh">让思维训练像游戏一样自然。</span>
+          <span class="en">Make thinking training as natural as play.</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-icon">♟️</div>
+          <div>
+            <h3 class="pillar-name"><span class="zh">棋类系列</span><span class="en">Chess Series</span></h3>
+            <p class="pillar-tagline"><span class="zh">借助人类三大智慧瑰宝训练思维</span><span class="en">Three timeless games, one thinking mission</span></p>
+          </div>
+        </div>
+        <p class="pillar-desc">
+          <span class="zh">国际象棋、中国象棋和围棋，不仅是棋类，更是人类长期积累的思维智慧。我们将这些智慧转化为可以学习和训练的思维模式。</span>
+          <span class="en">Chess, Xiangqi, and Go embody millennia of human thinking wisdom. We transform that wisdom into learnable, trainable thinking patterns.</span>
+        </p>
+        <div class="pillar-motto">
+          <span class="zh">学棋，不只是为了下棋，而是通过下棋训练思维。</span>
+          <span class="en">We play to think — not just to win.</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-icon">🎨</div>
+          <div>
+            <h3 class="pillar-name"><span class="zh">创意工作坊</span><span class="en">Creative Workshop</span></h3>
+            <p class="pillar-tagline"><span class="zh">记录真实的创造，而不是展示结果</span><span class="en">Capture the journey, not just the outcome</span></p>
+          </div>
+        </div>
+        <p class="pillar-desc">
+          <span class="zh">记录每一次创意、探索与实践，让成长过程比最终作品更加珍贵。</span>
+          <span class="en">Document every creative moment, exploration, and practice — the process of growth is more valuable than the final product.</span>
+        </p>
+        <div class="pillar-motto">
+          <span class="zh">每一个创意，都值得被记录。</span>
+          <span class="en">Every creative act deserves to be remembered.</span>
         </div>
       </div>
     </div>
+
+    <div class="pillars-conclusion">
+      <span class="zh">四个体系，一个目标 —— 帮助每一位学习者持续成长。</span>
+      <span class="en">Four pillars, one goal — helping every learner keep growing.</span>
+    </div>
   </div>
 </section>
+
 <section class="section apps-section" id="applications">
   <div class="section-inner">
     <div class="section-label">
@@ -1157,91 +1119,6 @@
   </div>
 </section>
 
-<section class="section journey-section" id="journey">
-  <div class="section-inner">
-    <div class="section-label">
-      <span class="zh">旅程继续</span>
-      <span class="en">The Journey Continues</span>
-    </div>
-    <h2 class="journey-title">
-      <span class="zh">探索不会结束</span>
-      <span class="en">The Exploration Never Ends</span>
-    </h2>
-    <div class="journey-divider"></div>
-    
-    <div class="journey-content">
-      <p><span class="zh">我们不会停止寻找更好的思维训练方式。</span><span class="en">We will never stop seeking better ways to train thinking.</span></p>
-      <p><span class="zh">不会停止探索新的学习实践。</span><span class="en">We will never stop exploring new learning practices.</span></p>
-      <p><span class="zh">不会停止思考：</span><span class="en">We will never stop asking:</span></p>
-      <p class="journey-highlight">
-        <span class="zh">如何帮助更多人在 AI 时代成长。</span>
-        <span class="en">How can we help more people grow in the Age of AI.</span>
-      </p>
-    </div>
-
-    <div class="journey-separator"></div>
-
-    <div class="journey-vision">
-      <p>
-        <span class="zh">未来不是已经写好的，</span>
-        <span class="en">The future is not predetermined.</span><br>
-        <span class="zh">它由每一个<em>持续思考</em>的人共同创造。</span>
-        <span class="en">It is co-created by every person who <em>keeps thinking</em>.</span>
-      </p>
-    </div>
-
-    <a class="journey-cta" href="#thankyou">
-      <span class="zh">加入旅程</span>
-      <span class="en">Join the Journey</span>
-    </a>
-    <div class="journey-tagline">
-      <span class="zh">一起探索，共同成长</span>
-      <span class="en">Explore Together, Grow Together</span>
-    </div>
-  </div>
-</section>
-
-<section class="section thankyou-section" id="thankyou">
-  <div class="section-inner">
-    <div class="section-label">
-      <span class="zh">感谢</span>
-      <span class="en">Thank You</span>
-    </div>
-    <h2 class="thankyou-title">
-      <span class="zh">感谢您的关注</span>
-      <span class="en">Thank You for Your Attention</span>
-    </h2>
-    <div class="thankyou-divider"></div>
-    
-    <div class="thankyou-content">
-      <p><span class="zh">思考，让我们成为人类；</span><span class="en">Thinking makes us human.</span></p>
-      <p><span class="zh">探索，让我们不断进步。</span><span class="en">Exploration drives us forward.</span></p>
-    </div>
-
-    <div class="thankyou-mission">
-      <p>
-        <span class="zh">思进启智（MindsEvo）愿与您一起，在 AI 时代<br><em>探索思维的无限可能</em>，创造更美好的未来。</span>
-        <span class="en">MindsEvo is with you, in the Age of AI,<br>to <em>explore the infinite possibilities of thinking</em> and create a better future.</span>
-      </p>
-    </div>
-
-    <div class="thankyou-subtitle">
-      <span class="zh">保持连接，持续探索</span>
-      <span class="en">Stay Connected, Keep Exploring</span>
-    </div>
-
-    <a class="thankyou-cta" href="mailto:info@mindsevo.com?subject=Subscribe">
-      <span>📧</span>
-      <span class="zh">订阅我们的更新 →</span>
-      <span class="en">Subscribe to Our Updates →</span>
-    </a>
-    <div class="thankyou-note">
-      <span class="zh">获取最新动态、研究成果和产品更新</span>
-      <span class="en">Get the latest news, research insights, and product updates</span>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <div class="footer-main">
@@ -1252,7 +1129,7 @@
         <span class="zh">思进启智（MindsEvo）致力于先进的方法、<br>智能工具和优质内容，帮助更多人<br>在 AI 时代提升思维能力，实现成长。</span>
         <span class="en">MindsEvo is committed to advanced methods,<br>intelligent tools, and quality content to help more people<br>enhance thinking ability and achieve growth in the Age of AI.</span>
       </p>
-      <a href="#mission">
+      <a href="#paradigm">
         <span class="zh">了解更多 →</span>
         <span class="en">Learn More →</span>
       </a>
@@ -1264,11 +1141,10 @@
         <span class="en">Quick Links</span>
       </h4>
       <ul>
-        <li><a href="#mission"><span class="zh">使命</span><span class="en">Mission</span></a></li>
-        <li><a href="#approach"><span class="zh">方法</span><span class="en">Approach</span></a></li>
-        <li><a href="#platform"><span class="zh">平台</span><span class="en">Platform</span></a></li>
+        <li><a href="#paradigm"><span class="zh">使命</span><span class="en">Mission</span></a></li>
+        <li><a href="#pillars"><span class="zh">四大体系</span><span class="en">Four Pillars</span></a></li>
         <li><a href="#applications"><span class="zh">探索</span><span class="en">Explore</span></a></li>
-        <li><a href="#journey"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
+        <li><a href="history/index.html"><span class="zh">历史面板</span><span class="en">History Lab</span></a></li>
       </ul>
     </div>
 
@@ -1336,7 +1212,7 @@
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   }
 
-  var ids = ['home','mission','approach','focus','platform','applications','journey','thankyou'];
+  var ids = ['home','paradigm','pillars','applications'];
   var links = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', function() {
     var cur = 'home';
