@@ -731,7 +731,7 @@
     @media (max-width: 780px) { .lang-sw { margin-left: 0; } }
 
     /* -- PARADIGM SECTION (light) -------------------- */
-    .paradigm-section { background: #f8faff; }
+    .paradigm-section { background: #f4f6fb; }
     .paradigm-section .section-label { color: var(--blue); }
     .paradigm-compare {
       display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
@@ -739,7 +739,7 @@
     }
     .para-col { padding: 36px 32px; border-radius: 20px; }
     .para-col.past { background: #fff; border: 1.5px solid #e4eef8; }
-    .para-col.future { background: linear-gradient(140deg, #071225, #1a3a6e); color: #fff; }
+    .para-col.future { background: #fff; color: var(--text); border: 1.5px solid #e4eef8; }
     .para-label {
       font-size: 12px; font-weight: 700; text-transform: uppercase;
       letter-spacing: 1.5px; margin-bottom: 22px; opacity: .7;
@@ -747,9 +747,9 @@
     .para-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .para-flow span { font-size: 18px; font-weight: 850; }
     .para-col.past .para-flow span { color: var(--text); }
-    .para-col.future .para-flow span { color: #fff; }
+    .para-col.future .para-flow span { color: var(--text); }
     .para-flow .arr { font-size: 16px; opacity: .45; font-weight: 400; }
-    .para-col.future .para-flow .last { color: var(--accent); }
+    .para-col.future .para-flow .last { color: var(--green-dk); font-weight: 900; }
     .paradigm-quotes { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
     .pq-item {
       padding: 20px 28px; border-radius: 14px;
@@ -759,11 +759,11 @@
     .pq-item strong { color: var(--blue); }
     .paradigm-platform {
       padding: 40px 48px; border-radius: 20px;
-      background: linear-gradient(135deg, #071225, #1a3a6e); color: #fff;
+      background: #fff; border: 1.5px solid #e4eef8; color: var(--text);
     }
-    .paradigm-platform p { font-size: 16px; color: rgba(255,255,255,.78); line-height: 1.85; margin-bottom: 14px; }
+    .paradigm-platform p { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
     .paradigm-platform p:last-child { margin-bottom: 0; }
-    .paradigm-vision { font-size: 18px !important; font-weight: 700 !important; color: rgba(255,255,255,.92) !important; }
+    .paradigm-vision { font-size: 17px !important; font-weight: 800 !important; color: var(--text) !important; }
     @media (max-width: 640px) {
       .paradigm-compare { grid-template-columns: 1fr; }
       .paradigm-platform { padding: 28px 22px; }
@@ -834,7 +834,7 @@
       <span class="en">The Age of AI</span>
     </div>
     <div class="hero-question">
-      <span class="zh">AI 让知识唾手可得。</span>
+      <span class="zh">AI 让知识唾手可得</span>
       <span class="en">In the Age of AI,</span>
     </div>
     <h1>
@@ -843,12 +843,10 @@
     </h1>
     <p class="hero-desc">
       <span class="zh">
-        AI 时代，当知识触手可得，<br>
         真正决定未来的，不再是记住多少知识，<br>
         而是理解、判断、推理、创造，以及持续学习的能力。
       </span>
       <span class="en">
-        In the Age of AI, knowledge is instantly accessible.<br>
         What truly shapes the future is no longer how much you know,<br>
         but your ability to understand, judge, reason, create, and keep learning.
       </span>
