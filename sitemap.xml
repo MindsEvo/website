@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://mindsevo.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/learning/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/sprites/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/chess-series/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/studio/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/history/</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mindsevo.com/chess/</loc>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
