@@ -244,7 +244,8 @@
       btn.type = "button";
       btn.className = "opt-btn";
       btn.textContent = String(opt);
-      btn.addEventListener("click", function () { pickAnswer(opt, q.ans, btn); });
+      if (bridge) { bridge.bindTap(btn, function () { pickAnswer(opt, q.ans, btn); }); }
+      else { btn.addEventListener("click", function () { pickAnswer(opt, q.ans, btn); }); }
       els.optsGrid.appendChild(btn);
     });
   }
@@ -394,22 +395,37 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); revealChar(); }
     });
 
-    // Win / fail buttons
-    els.playAgainBtn.addEventListener("click", startSpin);
-    els.retryBtn.addEventListener("click", startSpin);
-    els.resetBtn.addEventListener("click", function () {
-      state.attempts  = 0;
-      state.bestScore = -1;
-      startSpin();
-    });
-
-    // Language
-    els.langBtn.addEventListener("click", function () {
-      state.lang = state.lang === "zh" ? "en" : "zh";
-      if (window.shell) window.shell.setLang(state.lang);
-      ClioAudio.setLang(state.lang);
-      applyLocale();
-    });
+    // Win / fail buttons — use bridge.bindTap for proper mobile touch (touchend + click dedup)
+    if (bridge) {
+      bridge.bindTap(els.playAgainBtn, startSpin);
+      bridge.bindTap(els.retryBtn, startSpin);
+      bridge.bindTap(els.resetBtn, function () {
+        state.attempts  = 0;
+        state.bestScore = -1;
+        bridge.resetSession();
+        startSpin();
+      });
+      bridge.bindTap(els.langBtn, function () {
+        state.lang = state.lang === "zh" ? "en" : "zh";
+        if (window.shell) window.shell.setLang(state.lang);
+        ClioAudio.setLang(state.lang);
+        applyLocale();
+      });
+    } else {
+      els.playAgainBtn.addEventListener("click", startSpin);
+      els.retryBtn.addEventListener("click", startSpin);
+      els.resetBtn.addEventListener("click", function () {
+        state.attempts  = 0;
+        state.bestScore = -1;
+        startSpin();
+      });
+      els.langBtn.addEventListener("click", function () {
+        state.lang = state.lang === "zh" ? "en" : "zh";
+        if (window.shell) window.shell.setLang(state.lang);
+        ClioAudio.setLang(state.lang);
+        applyLocale();
+      });
+    }
 
     applyLocale();
     ClioAudio.init(state.lang);

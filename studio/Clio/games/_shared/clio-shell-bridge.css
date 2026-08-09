@@ -59,6 +59,8 @@ body {
   font-weight: 700;
   padding: 7px 11px;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .clio-shell-card {

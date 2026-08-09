@@ -146,11 +146,16 @@
     if (state.phase === 'catch') updateBoyX(e.clientX);
   });
 
-  // Touchmove on document so dragging outside catchArea still works
-  document.addEventListener('touchmove', function (e) {
+  // Non-passive on catchArea: prevents iOS scroll from hijacking gameplay
+  els.catchArea.addEventListener('touchstart', function (e) {
+    if (state.phase === 'catch') e.preventDefault();
+  }, { passive: false });
+
+  els.catchArea.addEventListener('touchmove', function (e) {
     if (state.phase !== 'catch' || !e.touches.length) return;
+    e.preventDefault();
     updateBoyX(e.touches[0].clientX);
-  }, { passive: true });
+  }, { passive: false });
 
   // ══════════════════════════════════════════════════════════════════════════
   // Phase: CATCH
@@ -253,7 +258,7 @@
       btn.className   = 'opt-btn';
       btn.textContent = String(opt);
       btn.type        = 'button';
-      btn.addEventListener('click', function () { onAnswer(opt, btn); });
+      bridge.bindTap(btn, function () { onAnswer(opt, btn); });
       els.optsGrid.appendChild(btn);
     });
 
@@ -355,19 +360,19 @@
 
   // ── Init ────────────────────────────────────────────────────────────────────
   function init() {
-    els.langBtn.addEventListener('click', function () {
+    bridge.bindTap(els.langBtn, function () {
       applyLang(state.lang === 'zh' ? 'en' : 'zh');
     });
 
-    els.resetBtn.addEventListener('click', function () {
-      if (bridge) bridge.resetSession();
+    bridge.bindTap(els.resetBtn, function () {
+      bridge.resetSession();
       state.score = 0;
       updateHUD();
       startCatch();
     });
 
-    els.retryBtn.addEventListener('click', function () {
-      if (bridge) bridge.resetSession();
+    bridge.bindTap(els.retryBtn, function () {
+      bridge.resetSession();
       state.score = 0;
       updateHUD();
       startCatch();
