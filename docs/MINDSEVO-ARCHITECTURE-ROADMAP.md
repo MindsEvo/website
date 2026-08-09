@@ -1,4 +1,4 @@
-# MindsEvo 总体架构路线图（v1）
+﻿# MindsEvo 总体架构路线图（v1）
 
 ## 0. 当前进展快照（2026-08-02）
 
@@ -13,7 +13,7 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 
 平台分层：
 
-1. 产品层：Learning、Mind Seeds、Creative Workshop、Chess。
+1. 产品层：Learning、MindSeeds、Creative Workshop、Chess。
 2. 共性能力层：Unified GUI Framework、Unified Game Framework。
 3. 认知模型层：RootGene Framework。
 4. 数据智能层：History / Analytics / Recommendation。
@@ -40,14 +40,14 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 
 纵向进阶：幼儿园 -> 小学毕业，按抽象程度递进。
 
-### 2.2 Mind Seeds（小精灵系列）
+### 2.2 MindSeeds（小精灵系列）
 
 入口定位：高趣味、快反馈、可反复训练的游戏化思维练习。
 
 与 Learning 的差异：
 
 1. Learning 更强调体系化与递进课程。
-2. Mind Seeds 更强调玩法吸引力、短时循环与兴趣维持。
+2. MindSeeds 更强调玩法吸引力、短时循环与兴趣维持。
 3. 可以有思维能力重叠，但题面风格与交互目标要明确区分。
 
 当前例子可保留为体系样本，但后续需增加“热门经典玩法的思维化改编”路径。
@@ -84,7 +84,7 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 
 完成标准（DoD）：
 
-1. Learning 与 Mind Seeds 新游戏默认只接入统一 GUI，不重复写以上功能。
+1. Learning 与 MindSeeds 新游戏默认只接入统一 GUI，不重复写以上功能。
 2. 旧游戏可平滑迁移，不破坏已上线记录。
 
 ## 阶段 2：统一 Game Framework
@@ -162,7 +162,7 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 ## 6. 近期执行建议（两周内）
 
 1. 先完成 GUI Framework 的能力清单和最小 API 草案。
-2. 选 2 个 Learning 游戏 + 1 个 Mind Seeds 游戏做统一 GUI 试点。
+2. 选 2 个 Learning 游戏 + 1 个 MindSeeds 游戏做统一 GUI 试点。
 3. 同步定义 RootGene 最小字段集和映射约束。
 4. 在服务端增加统计聚合接口草案，先跑通雷达图数据输出。
 

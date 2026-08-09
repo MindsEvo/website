@@ -1,8 +1,8 @@
-# Clio Template Pack (Runtime-Compatible)
+﻿# Clio Template Pack (Runtime-Compatible)
 
 ## Purpose
 
-This pack is a starter for new Creating Studio games that should keep custom visuals but share global shell runtime safety.
+This pack is a starter for new Creative Workshop games that should keep custom visuals but share global shell runtime safety.
 
 ## Included
 

@@ -1,9 +1,9 @@
-# Unified GUI Framework 规范（阶段 1 草案）
+﻿# Unified GUI Framework 规范（阶段 1 草案）
 
 ## 版本
 
 - draft v0.1.0 (2026-08-01)
-- 适用范围：Learning、Mind Seeds、Creative Workshop（Chess 不强制）
+- 适用范围：Learning、MindSeeds、Creative Workshop（Chess 不强制）
 
 ## 1. 目标
 
@@ -164,7 +164,7 @@ shell.on('gui:videoOpened', function (payload) {
 ## 7. 验收标准（阶段 1）
 
 1. 统一 Header/Language/Music/Sound/History/Return/Theme/Help/Video 全部可配置。
-2. Learning 与 Mind Seeds 各至少一个游戏完成接入。
+2. Learning 与 MindSeeds 各至少一个游戏完成接入。
 3. 老游戏不配置 gui 仍可运行（向后兼容）。
 4. 移动端（<=520px）头部按钮布局无错位。
 5. 中英文切换与音频开关状态可持久化。

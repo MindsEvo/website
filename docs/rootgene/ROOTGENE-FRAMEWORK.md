@@ -1,9 +1,9 @@
-# RootGene Framework 标准（阶段 3）
+﻿# RootGene Framework 标准（阶段 3）
 
 ## 版本
 
 - draft v0.1.0 (2026-08-02)
-- 适用范围：Learning、Mind Seeds
+- 适用范围：Learning、MindSeeds
 
 ## 1. 目标
 
@@ -52,7 +52,7 @@ registerRootGenes(ctx) => string[]
 当前已覆盖：
 
 1. Learning（math）：logic、modeling、pattern、strategy
-2. Mind Seeds：number、color、visual、motion、temporal、size、spatial、quantity、logic、mixed
+2. MindSeeds：number、color、visual、motion、temporal、size、spatial、quantity、logic、mixed
 
 ## 7. 验收检查
 

@@ -1,16 +1,16 @@
-/**
+﻿/**
  * Math Pattern — Game Logic  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Pattern 规律
  *
- * Shares shell.createGame() engine with Mind Seeds Pattern Hunter.
+ * Shares shell.createGame() engine with MindSeeds Pattern Hunter.
  * Stats stored under separate gameId → completely independent history.
  * Depends on: shell.js, data.js (MP_DATA)
  */
 
 shell.createGame({
   id:       'learning-math-pattern',
-  theme:    { primary: '#d97706', primary2: '#92400e' },   // amber — distinct from Mind Seeds purple
+  theme:    { primary: '#d97706', primary2: '#92400e' },   // amber — distinct from MindSeeds purple
   gui: {
     header: { show: true, showBack: true },
     language: { enabled: true, default: 'zh' },
@@ -36,7 +36,7 @@ shell.createGame({
 
   /**
    * Render the number sequence.
-  * Uses the same mystery-token style as Mind Seeds Pattern Hunter.
+  * Uses the same mystery-token style as MindSeeds Pattern Hunter.
    */
   renderSequence: function (q, container) {
     container.innerHTML = q.seq.map(function (n) {
@@ -58,7 +58,7 @@ shell.createGame({
 
   /**
    * Voice prompt — reads the sequence aloud then asks the question.
-  * Independent from Mind Seeds voice (different sentence structure for math context).
+  * Independent from MindSeeds voice (different sentence structure for math context).
    */
   getVoiceText: function (q) {
     var items = q.seq.map(function (n) {

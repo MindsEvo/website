@@ -1,8 +1,8 @@
-# Creating Studio x Global Shell Compatibility Draft
+﻿# Creative Workshop x Global Shell Compatibility Draft
 
 ## Scope
 
-This note defines how Creating Studio (including Clio games) aligns with global Shell architecture while preserving existing playable pages.
+This note defines how Creative Workshop (including Clio games) aligns with global Shell architecture while preserving existing playable pages.
 
 ## Decision
 

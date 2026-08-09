@@ -1,8 +1,8 @@
-/**
+﻿/**
  * Logic Pattern Hunter — Game Logic  v1.1.0  (Unified Shell GUI)
  * ─────────────────────────────────────────────────────────
  * Uses shell.createGame() with a reasoning-style renderSequence.
- * GUI shell is unified with other Mind Seeds games.
+ * GUI shell is unified with other MindSeeds games.
  * Depends on: shell.js, data.js
  * ─────────────────────────────────────────────────────────
  */

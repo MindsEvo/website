@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Math Pattern — Game Data  (Shell-1 format)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Pattern 规律
@@ -10,7 +10,7 @@
  *   Unit  6   → G2    (情境应用 · 归纳迁移)
  *
  * Difficulty curve: math concept complexity (NOT visual complexity).
- * Engine shared with Mind Seeds Pattern Hunter; stats recorded independently.
+ * Engine shared with MindSeeds Pattern Hunter; stats recorded independently.
  */
 
 var MP_DATA = {

@@ -1,9 +1,9 @@
-# GUI Framework 迁移检查清单（阶段 1）
+﻿# GUI Framework 迁移检查清单（阶段 1）
 
 ## 版本
 
 - v0.2.0 (2026-08-02)
-- 适用范围：Learning、Mind Seeds
+- 适用范围：Learning、MindSeeds
 
 ## 1. 核查目标
 
@@ -42,8 +42,8 @@
 
 ## 4. 逐个游戏对接批次
 
-1. 批次 A（Mind Seeds 视觉/动作）：color、visual、motion、temporal
-2. 批次 B（Mind Seeds 空间/数量/逻辑/综合）：size、spatial、quantity、logic、mixed
+1. 批次 A（MindSeeds 视觉/动作）：color、visual、motion、temporal
+2. 批次 B（MindSeeds 空间/数量/逻辑/综合）：size、spatial、quantity、logic、mixed
 3. 批次 C（Learning）：logic、modeling、strategy
 
 ## 5. 每个游戏统一验收项

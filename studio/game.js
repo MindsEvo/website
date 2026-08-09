@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   var body = document.body;
@@ -9,7 +9,7 @@
     var normalized = lang === 'en' ? 'en' : 'zh';
     body.setAttribute('data-lang', normalized);
     document.documentElement.lang = normalized === 'en' ? 'en' : 'zh-CN';
-    document.title = normalized === 'en' ? 'Creating Studio | MindsEvo' : '创意工作坊 | MindsEvo';
+    document.title = normalized === 'en' ? 'Creative Workshop | MindsEvo' : '创意工作坊 | MindsEvo';
 
     nodes.forEach(function (node) {
       var text = node.getAttribute(normalized === 'en' ? 'data-en' : 'data-zh');

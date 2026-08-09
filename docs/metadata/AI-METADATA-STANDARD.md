@@ -1,9 +1,9 @@
-# AI Metadata 标准（game.json / lesson.json / video.json）
+﻿# AI Metadata 标准（game.json / lesson.json / video.json）
 
 ## 版本
 
 - draft v0.1.0 (2026-08-02)
-- 适用范围：Learning、Mind Seeds、Creative Workshop
+- 适用范围：Learning、MindSeeds、Creative Workshop
 
 ## 1. 目标
 
