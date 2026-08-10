@@ -131,9 +131,10 @@
 
     var targetLang = ((lang || shell.lang) === 'zh') ? 'zh-CN' : 'en-US';
     var u = new SpeechSynthesisUtterance(stripEmoji(text));
-    u.lang  = targetLang;
-    u.rate  = 0.88;
-    u.pitch = 1.05;
+    u.lang   = targetLang;
+    u.rate   = 0.88;
+    u.pitch  = 1.05;
+    u.volume = getVolume() / 100;
 
     // Android: pick a matching voice if available
     var voices = speechSynthesis.getVoices();
@@ -287,7 +288,23 @@
     var val = !!on;
     storage.set('user:settings:music', val);
     document.dispatchEvent(new CustomEvent('shell:gui:audioChanged', {
-      detail: { musicOn: val, soundOn: getSoundEnabled() }
+      detail: { musicOn: val, soundOn: getSoundEnabled(), volume: getVolume() }
+    }));
+  }
+
+  function getVolume() {
+    return Number(storage.get('user:settings:volume', 80));
+  }
+
+  function setVolume(v) {
+    var val = Math.max(0, Math.min(100, Number(v) || 0));
+    storage.set('user:settings:volume', val);
+    document.dispatchEvent(new CustomEvent('shell:gui:volumeChanged', {
+      detail: { volume: val, musicOn: getMusicEnabled(), soundOn: getSoundEnabled() }
+    }));
+    // also fire audioChanged so existing listeners see the update
+    document.dispatchEvent(new CustomEvent('shell:gui:audioChanged', {
+      detail: { musicOn: getMusicEnabled(), soundOn: getSoundEnabled(), volume: val }
     }));
   }
 
@@ -759,6 +776,7 @@
             '<button class="s1-btn s1-music" id="s1-music">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-mute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-lang">EN</button>',
+            '<input type="range" class="s1-vol" id="s1-vol" min="0" max="100" title="Volume">',
           '</div>',
         '</div>',
         '<div class="s1-sub" id="s1-sub"></div>',
@@ -792,6 +810,7 @@
             '<button class="s1-btn s1-music" id="s1-gmusic">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-gmute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-glang">EN</button>',
+            '<input type="range" class="s1-vol" id="s1-gvol" min="0" max="100" title="Volume">',
           '</div>',
         '</div>',
         '<div class="s1-ginfo">',
@@ -888,6 +907,9 @@
     _bindClick('s1-sum-sess-hdr', function () { _toggleSum('sess'); });
     _bindClick('s1-sum-hist-hdr', function () { _toggleSum('hist'); });
 
+    _bindVol('s1-vol');
+    _bindVol('s1-gvol');
+
     // Language change → re-render current screen
     document.addEventListener('shell:langchange', function () {
       _updLang();
@@ -899,6 +921,7 @@
     _renderHome();
     _updMute();
     _updMusic();
+    _updVol();
     _updLang();
 
     function _bindClick(id, handler) {
@@ -1460,6 +1483,17 @@
         b.classList.toggle('s1-active', on);
       });
     }
+    function _updVol() {
+      var v = getVolume();
+      document.querySelectorAll('.s1-vol').forEach(function (el) { el.value = v; });
+    }
+    function _bindVol(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { setVolume(Number(el.value)); });
+      // Keep all sliders in sync when one changes
+      document.addEventListener('shell:gui:volumeChanged', function () { _updVol(); });
+    }
     function _updLang() {
       var label = shell.lang === 'zh' ? 'EN' : 'CN';
       document.querySelectorAll('.s1-lang').forEach(function (b) { b.textContent = label; });
@@ -1513,6 +1547,8 @@
     loadVideoCatalog: loadVideoCatalog,
     resolveVideo:    resolveVideo,
     createGame:          createGame,
+    getVolume:           getVolume,
+    setVolume:           setVolume,
     gui:                 buildGuiRuntimeApi(),
     storage:             storage,
     runtime:             createRuntimeLayer(),

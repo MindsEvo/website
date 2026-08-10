@@ -510,17 +510,31 @@
 
   var CmpMusic = (function () {
     var _ac = null, _playing = false, _timerId = null, _idx = 0, _nextAt = 0;
+    var _track = null;
 
-    // Pentatonic scale C-maj: C D E G A — cheerful, simple, kid-friendly
-    var NOTES = [
-      261.63, 293.66, 329.63, 392.00, 440.00,   // C4 D4 E4 G4 A4
-      523.25, 587.33, 659.25, 783.99, 880.00     // C5 D5 E5 G5 A5
+    // Four tracks — different keys, tempos, and moods; all bright and gentle
+    var TRACKS = [
+      {  // C major pentatonic — cheerful, upbeat
+        notes: [261.63,293.66,329.63,392.00,440.00,523.25,587.33,659.25],
+        pattern: [0,2,4,5,4,2,1,0, 2,4,5,7,5,4,2,4, 0,2,4,5,4,7,6,5, 4,2,0,1,2,4,0,0],
+        beat: 0.42, type: 'triangle'
+      },
+      {  // G major pentatonic — gentle, flowing, calm
+        notes: [196.00,220.00,246.94,293.66,329.63,392.00,440.00,493.88],
+        pattern: [0,1,2,4,2,1,0,1, 2,4,5,6,5,4,2,4, 1,2,4,6,4,2,1,2, 0,2,4,5,2,1,0,0],
+        beat: 0.54, type: 'sine'
+      },
+      {  // F major pentatonic — warm, bouncy, playful
+        notes: [174.61,196.00,220.00,261.63,293.66,349.23,392.00,440.00,523.25],
+        pattern: [0,2,4,2,6,4,2,0, 2,4,6,8,6,4,2,4, 0,4,2,6,4,2,0,2, 2,4,6,4,2,0,2,0],
+        beat: 0.36, type: 'triangle'
+      },
+      {  // D major pentatonic — clear, focused, good for thinking
+        notes: [293.66,329.63,369.99,440.00,493.88,587.33,659.25,739.99],
+        pattern: [0,1,2,4,2,1,0,2, 1,3,4,5,4,3,1,3, 0,2,4,5,4,2,0,1, 2,4,3,1,2,1,0,0],
+        beat: 0.46, type: 'sine'
+      }
     ];
-
-    // Melody pattern — indices into NOTES[]
-    var PATTERN = [0,2,4,5,4,2,1,0, 2,4,5,7,5,4,2,4,
-                   0,2,4,5,4,9,8,7, 5,4,2,0,1,2,0,0];
-    var BEAT = 0.42;  // seconds per beat (≈143 bpm feels upbeat but not rushed)
 
     function _ac_get() {
       if (!_ac) _ac = new (window.AudioContext || window.webkitAudioContext)();
@@ -529,14 +543,15 @@
 
     function _note(freq, t, dur) {
       var ac = _ac_get();
+      var gainVal = 0.07 * (shell.getVolume ? shell.getVolume() / 100 : 0.8);
       var osc  = ac.createOscillator();
       var gain = ac.createGain();
       osc.connect(gain);
       gain.connect(ac.destination);
-      osc.type = 'triangle';  // softer timbre than sawtooth
+      osc.type = _track ? _track.type : 'triangle';
       osc.frequency.value = freq;
       gain.gain.setValueAtTime(0, t);
-      gain.gain.linearRampToValueAtTime(0.07, t + 0.03);
+      gain.gain.linearRampToValueAtTime(gainVal, t + 0.03);
       gain.gain.exponentialRampToValueAtTime(0.001, t + dur);
       osc.start(t);
       osc.stop(t + dur + 0.02);
@@ -544,10 +559,13 @@
 
     function _schedule() {
       var ac = _ac_get();
+      var notes   = _track.notes;
+      var pattern = _track.pattern;
+      var beat    = _track.beat;
       while (_nextAt < ac.currentTime + 0.25) {
-        var freq = NOTES[PATTERN[_idx % PATTERN.length]];
-        _note(freq, _nextAt, BEAT * 0.75);
-        _nextAt += BEAT;
+        var freq = notes[pattern[_idx % pattern.length]];
+        _note(freq, _nextAt, beat * 0.75);
+        _nextAt += beat;
         _idx++;
       }
       if (_playing) _timerId = setTimeout(_schedule, 120);
@@ -555,9 +573,12 @@
 
     function start() {
       if (_playing) return;
+      // Pick a random track each time music starts
+      _track = TRACKS[Math.floor(Math.random() * TRACKS.length)];
       var ac = _ac_get();
       if (ac.state === 'suspended') ac.resume();
       _playing  = true;
+      _idx      = 0;
       _nextAt   = ac.currentTime + 0.1;
       _schedule();
     }

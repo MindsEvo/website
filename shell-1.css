@@ -307,6 +307,30 @@ body {
    VOICE TRANSCRIPT BAR
    ══════════════════════════════════════════════════════════ */
 
+/* ── Volume slider ──────────────────────────────────────── */
+.s1-vol {
+  -webkit-appearance: none; appearance: none;
+  width: 62px; height: 4px;
+  border-radius: 2px; cursor: pointer; vertical-align: middle;
+  background: rgba(255,255,255,0.25);
+  outline: none; border: none;
+}
+.s1-vol::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.s1-vol::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; cursor: pointer; border: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+/* Slightly darker thumb on the white home screen */
+#s1-home .s1-vol { background: rgba(37,99,235,0.25); }
+#s1-home .s1-vol::-webkit-slider-thumb { background: var(--s1-primary); }
+#s1-home .s1-vol::-moz-range-thumb     { background: var(--s1-primary); }
+
 .s1-transcript {
   position: fixed; bottom: 0; left: 0; right: 0;
   background: rgba(7,18,37,0.92); backdrop-filter: blur(12px);
