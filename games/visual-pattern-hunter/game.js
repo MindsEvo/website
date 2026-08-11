@@ -1,13 +1,13 @@
-/**
- * Visual Pattern Hunter � Game Logic  v2.0.0  (Shell-1)
- * ---------------------------------------------------------
+﻿﻿/**
+ * Visual Pattern Hunter — Game Logic  v2.0.0  (Shell-1)
+ * ─────────────────────────────────────────────────────────
  * Only game-specific rendering logic here.
  * All UI, state, storage handled by shell.createGame().
  * Depends on: shell.js, data.js
- * ---------------------------------------------------------
+ * ─────────────────────────────────────────────────────────
  */
 
-// -- SVG Shape Renderer (game-specific) -----------------------
+// ── SVG Shape Renderer (game-specific) ───────────────────────
 function generateShape(type, size, color, rotation) {
   size  = size  || 40;
   color = color || '#667eea';
@@ -46,7 +46,7 @@ function shapeFor(item, unit) {
   return String(item);
 }
 
-// -- Shell-1 game config ---------------------------------------
+// ── Shell-1 game config ───────────────────────────────────────
 shell.createGame({
   id:       'visual-pattern-hunter',
   theme:    { primary: '#06b6d4', primary2: '#0891b2', bg: '#f0f9ff' },
@@ -60,7 +60,7 @@ shell.createGame({
     history: { enabled: true },
     help: {
       enabled: true,
-      contentZh: '????????????,???????????',
+      contentZh: '先看形状或旋转的变化顺序，再判断问号位置的图形。',
       contentEn: 'Track shape or rotation changes, then infer the missing figure.'
     },
     video: {
@@ -68,8 +68,8 @@ shell.createGame({
       videoId: 'mindseeds-visual-pattern-intro-001'
     }
   },
-  title:    { zh: '?? ????',       en: '?? Visual Pattern Hunter' },
-  subtitle: { zh: '????,????', en: 'Observe shapes and find patterns' },
+  title:    { zh: '🎨 视觉规律',       en: '🎨 Visual Pattern Hunter' },
+  subtitle: { zh: '观察图形，发现规律', en: 'Observe shapes and find patterns' },
   passScore: 4,
   units:    VPH_DATA.units,
 
@@ -89,7 +89,7 @@ shell.createGame({
 
   getVoiceText: function (q, idx) {
     return shell.lang === 'zh'
-      ? '?' + (idx + 1) + '?,???????'
+      ? '第' + (idx + 1) + '题，下一个是什么？'
       : 'Question ' + (idx + 1) + ', what comes next?';
   },
 

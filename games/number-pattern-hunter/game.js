@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Number Pattern Hunter — Game Logic  v2.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Games only implement renderSequence, renderOption, checkAnswer.

@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 /**
  * Comparison Game  v2.0  (Adaptive Engine Edition)
  *
@@ -16,7 +16,7 @@
 
 (function () {
 
-  // -- Styles -----------------------------------------------------------------
+  // ── Styles ─────────────────────────────────────────────────────────────────
 
   var styleEl = document.createElement('style');
   styleEl.id = 'cmp-shell-style';
@@ -95,7 +95,7 @@
   document.head.appendChild(styleEl);
 
 
-  // -- SVG shape renderer -----------------------------------------------------
+  // ── SVG shape renderer ─────────────────────────────────────────────────────
 
   function _shapeSvg(shape, color, size) {
     var sz = size || 52;
@@ -106,7 +106,7 @@
       case 'square':   inner = '<rect x="'+m+'" y="'+m+'" width="'+s2+'" height="'+s2+'" rx="4" fill="'+c+'"/>'; break;
       case 'triangle': inner = '<polygon points="'+sz/2+','+m+' '+(sz-m)+','+(sz-m)+' '+m+','+(sz-m)+'" fill="'+c+'"/>'; break;
       case 'star':     inner = _starPath(sz, c); break;
-      case 'heart':    inner = '<text x="'+sz/2+'" y="'+(sz*0.72)+'" text-anchor="middle" font-size="'+(sz*0.7)+'" fill="'+c+'">?</text>'; break;
+      case 'heart':    inner = '<text x="'+sz/2+'" y="'+(sz*0.72)+'" text-anchor="middle" font-size="'+(sz*0.7)+'" fill="'+c+'">♥</text>'; break;
       case 'diamond':  inner = '<polygon points="'+sz/2+','+m+' '+(sz-m)+','+sz/2+' '+sz/2+','+(sz-m)+' '+m+','+sz/2+'" fill="'+c+'"/>'; break;
       default:         inner = '<circle cx="'+sz/2+'" cy="'+sz/2+'" r="'+s2/2+'" fill="'+c+'"/>';
     }
@@ -119,7 +119,7 @@
     return '<polygon points="'+pts.trim()+'" fill="'+fill+'"/>';
   }
 
-  // -- Question renderers -----------------------------------------------------
+  // ── Question renderers ─────────────────────────────────────────────────────
 
   function renderSequence(q, container) {
     var html = '<div class="cq"><div class="cq-q">'+_questionText(q)+'</div>'+_sceneHtml(q)+'</div>';
@@ -134,20 +134,20 @@
   function _questionText(q) {
     var zh='', en='';
     switch (q.type) {
-      case 'size':         zh=q.askBigger?'??<b>??</b>?':'??<b>??</b>?'; en=q.askBigger?'Which is <b>bigger</b>?':'Which is <b>smaller</b>?'; break;
-      case 'length':       zh=q.askLonger?'??<b>??</b>?':'??<b>??</b>?'; en=q.askLonger?'Which is <b>longer</b>?':'Which is <b>shorter</b>?'; break;
-      case 'height':       zh=q.askTaller?'??<b>??</b>?':'??<b>??</b>?'; en=q.askTaller?'Which is <b>taller</b>?':'Which is <b>shorter</b>?'; break;
-      case 'quantity':     zh=q.askMore?'??<b>??</b>?':'??<b>??</b>?'; en=q.askMore?'Which side has <b>more</b>?':'Which side has <b>fewer</b>?'; break;
-      case 'number':       zh=q.askBigger?'????<b>??</b>?':'????<b>??</b>?'; en=q.askBigger?'Which number is <b>bigger</b>?':'Which number is <b>smaller</b>?'; break;
-      case 'shape':        zh='????<b>???</b>?'; en='Which shape is <b>different</b>?'; break;
-      case 'color':        zh='????<b>???</b>?'; en='Which color is <b>different</b>?'; break;
-      case 'position':     zh=q.askNearer?'???'+q.refNameZh+'<b>??</b>?':'???'+q.refNameZh+'<b>??</b>?'; en=q.askNearer?'Which is <b>closer</b> to the '+q.refNameEn+'?':'Which is <b>farther</b> from the '+q.refNameEn+'?'; break;
-      case 'fullness':     zh=q.askFuller?'????<b>??</b>?':'????<b>??</b>?'; en=q.askFuller?'Which is <b>fuller</b>?':'Which is <b>more empty</b>?'; break;
-      case 'weight':       zh=q.askHeavier?'??<b>??</b>?':'??<b>??</b>?'; en=q.askHeavier?'Which is <b>heavier</b>?':'Which is <b>lighter</b>?'; break;
-      case 'speed':        zh=q.askFaster?'??<b>??</b>?':'??<b>??</b>?'; en=q.askFaster?'Which is <b>faster</b>?':'Which is <b>slower</b>?'; break;
-      case 'time':         zh=q.askLongerDuration?'????<b>??</b>?':'???<b>?</b>???'; en=q.askLongerDuration?'Which duration is <b>longer</b>?':'Which happens <b>first</b>?'; break;
-      case 'multi_attribute': zh='??<b>??</b>?(?????)'; en='Which is <b>bigger</b>? (size only)'; break;
-      default: zh='???????'; en='Choose the correct answer.';
+      case 'size':         zh=q.askBigger?'哪个<b>更大</b>？':'哪个<b>更小</b>？'; en=q.askBigger?'Which is <b>bigger</b>?':'Which is <b>smaller</b>?'; break;
+      case 'length':       zh=q.askLonger?'哪根<b>更长</b>？':'哪根<b>更短</b>？'; en=q.askLonger?'Which is <b>longer</b>?':'Which is <b>shorter</b>?'; break;
+      case 'height':       zh=q.askTaller?'哪个<b>更高</b>？':'哪个<b>更矮</b>？'; en=q.askTaller?'Which is <b>taller</b>?':'Which is <b>shorter</b>?'; break;
+      case 'quantity':     zh=q.askMore?'哪边<b>更多</b>？':'哪边<b>更少</b>？'; en=q.askMore?'Which side has <b>more</b>?':'Which side has <b>fewer</b>?'; break;
+      case 'number':       zh=q.askBigger?'哪个数字<b>更大</b>？':'哪个数字<b>更小</b>？'; en=q.askBigger?'Which number is <b>bigger</b>?':'Which number is <b>smaller</b>?'; break;
+      case 'shape':        zh='哪个形状<b>不一样</b>？'; en='Which shape is <b>different</b>?'; break;
+      case 'color':        zh='哪个颜色<b>不一样</b>？'; en='Which color is <b>different</b>?'; break;
+      case 'position':     zh=q.askNearer?'哪个离'+q.refNameZh+'<b>更近</b>？':'哪个离'+q.refNameZh+'<b>更远</b>？'; en=q.askNearer?'Which is <b>closer</b> to the '+q.refNameEn+'?':'Which is <b>farther</b> from the '+q.refNameEn+'?'; break;
+      case 'fullness':     zh=q.askFuller?'哪个装得<b>更满</b>？':'哪个装得<b>更少</b>？'; en=q.askFuller?'Which is <b>fuller</b>?':'Which is <b>more empty</b>?'; break;
+      case 'weight':       zh=q.askHeavier?'哪个<b>更重</b>？':'哪个<b>更轻</b>？'; en=q.askHeavier?'Which is <b>heavier</b>?':'Which is <b>lighter</b>?'; break;
+      case 'speed':        zh=q.askFaster?'哪个<b>更快</b>？':'哪个<b>更慢</b>？'; en=q.askFaster?'Which is <b>faster</b>?':'Which is <b>slower</b>?'; break;
+      case 'time':         zh=q.askLongerDuration?'哪个时间<b>更长</b>？':'哪件事<b>先</b>发生？'; en=q.askLongerDuration?'Which duration is <b>longer</b>?':'Which happens <b>first</b>?'; break;
+      case 'multi_attribute': zh='哪个<b>更大</b>？（只比较大小）'; en='Which is <b>bigger</b>? (size only)'; break;
+      default: zh='选出正确答案。'; en='Choose the correct answer.';
     }
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
   }
@@ -226,10 +226,10 @@
     return '<div class="cq-containers">'+con(q.leftFillPct,q.leftEmoji,q.leftNameZh,q.leftNameEn)+con(q.rightFillPct,q.rightEmoji,q.rightNameZh,q.rightNameEn)+'</div>';
   }
 
-  // -- Option renderer --------------------------------------------------------
+  // ── Option renderer ────────────────────────────────────────────────────────
 
   function renderOption(opt, q) {
-    var lbl={left:{zh:'? A',en:'A'},right:{zh:'? B',en:'B'},A:{zh:'A',en:'A'},B:{zh:'B',en:'B'},C:{zh:'C',en:'C'}};
+    var lbl={left:{zh:'选 A',en:'A'},right:{zh:'选 B',en:'B'},A:{zh:'A',en:'A'},B:{zh:'B',en:'B'},C:{zh:'C',en:'C'}};
     var l=lbl[opt]||lbl.left;
     return '<div class="cq-opt">'+_optBody(opt,q)+
       '<div class="cq-opt-label"><span class="zh">'+l.zh+'</span><span class="en">'+l.en+'</span></div></div>';
@@ -287,31 +287,31 @@
     }
   }
 
-  // -- checkAnswer / voice ----------------------------------------------------
+  // ── checkAnswer / voice ────────────────────────────────────────────────────
 
   function checkAnswer(selected, q) { return selected === q.answer; }
 
   function getVoiceText(q) {
     var zh='', en='';
     switch(q.type){
-      case 'size':    zh=q.askBigger?'????,'+q.leftNameZh+'??'+q.rightNameZh+'?':'?????'; en=q.askBigger?'Which is bigger, '+q.leftNameEn+' or '+q.rightNameEn+'?':'Which is smaller?'; break;
-      case 'length':  zh=q.askLonger?'?????':'?????'; en=q.askLonger?'Which is longer?':'Which is shorter?'; break;
-      case 'height':  zh=q.askTaller?'?????':'?????'; en=q.askTaller?'Which is taller?':'Which is shorter?'; break;
-      case 'quantity':zh=q.askMore?'?????':'?????'; en=q.askMore?'Which side has more?':'Which side has fewer?'; break;
-      case 'number':  zh=q.askBigger?'????,'+q.leftNum+'??'+q.rightNum+'?':'?????'; en=q.askBigger?'Which is bigger, '+q.leftNum+' or '+q.rightNum+'?':'Which is smaller?'; break;
-      case 'shape':   zh='????????'; en='Which shape is different?'; break;
-      case 'color':   zh='????????'; en='Which color is different?'; break;
-      case 'position':zh=q.askNearer?'???'+q.refNameZh+'???':'?????'; en=q.askNearer?'Which is closer?':'Which is farther?'; break;
-      case 'fullness':zh=q.askFuller?'?????':'?????'; en=q.askFuller?'Which is fuller?':'Which is more empty?'; break;
-      case 'weight':  zh=q.askHeavier?'?????':'?????'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
-      case 'speed':   zh=q.askFaster?'?????':'?????'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;
-      case 'time':    zh=q.askLongerDuration?'???????':'???????'; en=q.askLongerDuration?'Which duration is longer?':'Which happens first?'; break;
-      default:        zh='??????'; en='Choose an answer.';
+      case 'size':    zh=q.askBigger?'哪个更大，'+q.leftNameZh+'还是'+q.rightNameZh+'？':'哪个更小？'; en=q.askBigger?'Which is bigger, '+q.leftNameEn+' or '+q.rightNameEn+'?':'Which is smaller?'; break;
+      case 'length':  zh=q.askLonger?'哪根更长？':'哪根更短？'; en=q.askLonger?'Which is longer?':'Which is shorter?'; break;
+      case 'height':  zh=q.askTaller?'哪个更高？':'哪个更矮？'; en=q.askTaller?'Which is taller?':'Which is shorter?'; break;
+      case 'quantity':zh=q.askMore?'哪边更多？':'哪边更少？'; en=q.askMore?'Which side has more?':'Which side has fewer?'; break;
+      case 'number':  zh=q.askBigger?'哪个更大，'+q.leftNum+'还是'+q.rightNum+'？':'哪个更小？'; en=q.askBigger?'Which is bigger, '+q.leftNum+' or '+q.rightNum+'?':'Which is smaller?'; break;
+      case 'shape':   zh='哪个形状不一样？'; en='Which shape is different?'; break;
+      case 'color':   zh='哪个颜色不一样？'; en='Which color is different?'; break;
+      case 'position':zh=q.askNearer?'哪个离'+q.refNameZh+'更近？':'哪个更远？'; en=q.askNearer?'Which is closer?':'Which is farther?'; break;
+      case 'fullness':zh=q.askFuller?'哪个更满？':'哪个更空？'; en=q.askFuller?'Which is fuller?':'Which is more empty?'; break;
+      case 'weight':  zh=q.askHeavier?'哪个更重？':'哪个更轻？'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
+      case 'speed':   zh=q.askFaster?'哪个更快？':'哪个更慢？'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;
+      case 'time':    zh=q.askLongerDuration?'哪个时间更长？':'哪件事先发生？'; en=q.askLongerDuration?'Which duration is longer?':'Which happens first?'; break;
+      default:        zh='请选择答案。'; en='Choose an answer.';
     }
     return shell.lang==='zh'?zh:en;
   }
 
-  // -- RootGene / engine hooks ------------------------------------------------
+  // ── RootGene / engine hooks ────────────────────────────────────────────────
 
   function registerRootGenes(ctx) {
     var unit=(ctx&&ctx.unit)||{}, genes=['RG.LOGIC.COMPARISON.BASIC'];
@@ -328,20 +328,20 @@
     CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl);
   }
 
-  // -- Grade level selector ---------------------------------------------------
+  // ── Grade level selector ───────────────────────────────────────────────────
 
   var GRADE_LEVELS=[
-    {id:'K1',badge:'K1',nameZh:'????/??',nameEn:'Pre-K',descZh:'3�4? � ????',descEn:'Age 3�4 � No numbers',free:true},
-    {id:'K2',badge:'K2',nameZh:'?????',nameEn:'Kindergarten',descZh:'5? � ????',descEn:'Age 5 � Intro numbers',free:true},
-    {id:'G1',badge:'G1',nameZh:'?????',nameEn:'Grade 1',descZh:'6? � 20??',descEn:'Age 6 � Within 20',free:true},
-    {id:'G2',badge:'G2',nameZh:'?????',nameEn:'Grade 2',descZh:'7? � 100??',descEn:'Age 7 � Within 100',free:true},
-    {id:'G3',badge:'G3',nameZh:'???',nameEn:'Grade 3',descZh:'????',descEn:'Coming Soon',free:false},
-    {id:'G4',badge:'G4',nameZh:'???',nameEn:'Grade 4',descZh:'????',descEn:'Coming Soon',free:false},
-    {id:'G5',badge:'G5',nameZh:'???',nameEn:'Grade 5',descZh:'????',descEn:'Coming Soon',free:false},
-    {id:'G6',badge:'G6',nameZh:'???',nameEn:'Grade 6',descZh:'????',descEn:'Coming Soon',free:false}
+    {id:'K1',badge:'K1',nameZh:'幼儿园小/中班',nameEn:'Pre-K',descZh:'3–4岁 · 无需数字',descEn:'Age 3–4 · No numbers',free:true},
+    {id:'K2',badge:'K2',nameZh:'幼儿园大班',nameEn:'Kindergarten',descZh:'5岁 · 数字入门',descEn:'Age 5 · Intro numbers',free:true},
+    {id:'G1',badge:'G1',nameZh:'小学一年级',nameEn:'Grade 1',descZh:'6岁 · 20以内',descEn:'Age 6 · Within 20',free:true},
+    {id:'G2',badge:'G2',nameZh:'小学二年级',nameEn:'Grade 2',descZh:'7岁 · 100以内',descEn:'Age 7 · Within 100',free:true},
+    {id:'G3',badge:'G3',nameZh:'三年级',nameEn:'Grade 3',descZh:'即将推出',descEn:'Coming Soon',free:false},
+    {id:'G4',badge:'G4',nameZh:'四年级',nameEn:'Grade 4',descZh:'即将推出',descEn:'Coming Soon',free:false},
+    {id:'G5',badge:'G5',nameZh:'五年级',nameEn:'Grade 5',descZh:'即将推出',descEn:'Coming Soon',free:false},
+    {id:'G6',badge:'G6',nameZh:'六年级',nameEn:'Grade 6',descZh:'即将推出',descEn:'Coming Soon',free:false}
   ];
 
-  // -- Bootstrap --------------------------------------------------------------
+  // ── Bootstrap ──────────────────────────────────────────────────────────────
 
   function _buildUnitsForLevel(levelId, templates) {
     _sessionTemplateMap={};
@@ -358,11 +358,11 @@
     var resuming = cycleStatus.sessionActive && cycleStatus.doneCount > 0;
     return [{
       id:levelId+'-session',
-      nameZh:levelId+' � ????'+(resuming?' � ?':''),
-      nameEn:levelId+' � Comparison'+(resuming?' (resume)':''),
-      icon:'??',
-      descZh:n+'? � ????',
-      descEn:n+' questions � Cycle',
+      nameZh:levelId+' · 比较挑战'+(resuming?' · 续':''),
+      nameEn:levelId+' · Comparison'+(resuming?' (resume)':''),
+      icon:'⚖️',
+      descZh:n+'题 · 轮次送题',
+      descEn:n+' questions · Cycle',
       rootGeneIds:['RG.LOGIC.COMPARISON.BASIC','RG.LEARNING.MATH.COMPARISON'],
       questions:questions
     }];
@@ -381,8 +381,8 @@
     wrap.id='cq-level-selector';
     wrap.innerHTML='<div class="cq-lvl-wrap">'+
       '<div class="cq-lvl-title-bar">'+
-        '<button class="cq-lvl-back" id="cq-sel-back">?? <span class="zh">????</span><span class="en">Math</span></button>'+
-        '<div class="cq-lvl-title"><span class="zh">?? � ????</span><span class="en">Comparison � Grade</span></div>'+
+        '<button class="cq-lvl-back" id="cq-sel-back">⬅️ <span class="zh">数学启智</span><span class="en">Math</span></button>'+
+        '<div class="cq-lvl-title"><span class="zh">比较 · 选择年级</span><span class="en">Comparison · Grade</span></div>'+
         IH.controlsHtml('lvl')+
       '</div>'+
       '<div class="cq-lvl-grid">'+
@@ -393,7 +393,7 @@
           '<div class="cq-lvl-badge">'+lvl.badge+'</div>'+
           '<div class="cq-lvl-name"><span class="zh">'+lvl.nameZh+'</span><span class="en">'+lvl.nameEn+'</span></div>'+
           '<div class="cq-lvl-desc"><span class="zh">'+lvl.descZh+'</span><span class="en">'+lvl.descEn+'</span></div>'+
-          '<div class="cq-lvl-tag '+(lk?'locked-tag':'free')+'"><span class="zh">'+(lk?'????':'??')+'</span><span class="en">'+(lk?'Soon':'Free')+'</span></div>'+
+          '<div class="cq-lvl-tag '+(lk?'locked-tag':'free')+'"><span class="zh">'+(lk?'即将推出':'免费')+'</span><span class="en">'+(lk?'Soon':'Free')+'</span></div>'+
           (function(){
             if(lk) return '';
             var cs=CmpEngine.getCycleStatus(lvl.id);
@@ -495,11 +495,11 @@
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.94);z-index:600;' +
       'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;';
 
-    var icon = sr.cycleComplete && sr.unlocked ? '??' : (attempt.result === 'correct' ? '?' : '??');
+    var icon = sr.cycleComplete && sr.unlocked ? '🏆' : (attempt.result === 'correct' ? '⭐' : '💪');
     overlay.innerHTML =
       '<div style="font-size:52px">' + icon + '</div>' +
       '<div style="font-size:20px;font-weight:900;color:#1e3a8a;text-align:center">' +
-        '<span class="zh">' + (attempt.result === 'correct' ? '???!' : '????!') + '</span>' +
+        '<span class="zh">' + (attempt.result === 'correct' ? '排对了！' : '继续尝试！') + '</span>' +
         '<span class="en">' + (attempt.result === 'correct' ? 'Correct order!' : 'Keep trying!') + '</span>' +
       '</div>' +
       '<div id="sor-acts" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>';
@@ -512,7 +512,7 @@
     // Next group button
     var nextBtn = document.createElement('button');
     nextBtn.className = 's1-abtn s1-primary';
-    nextBtn.innerHTML = '<span class="zh">??? ?</span><span class="en">Next Group ?</span>';
+    nextBtn.innerHTML = '<span class="zh">下一组 →</span><span class="en">Next Group →</span>';
     _applyLangVisibility(nextBtn);
     nextBtn.addEventListener('click', function () {
       overlay.remove();
@@ -525,7 +525,7 @@
       var upBtn = document.createElement('button');
       upBtn.className = 's1-abtn s1-primary';
       upBtn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
-      upBtn.innerHTML = '<span class="zh">??? ' + nextLevel + ' ?</span><span class="en">Next: ' + nextLevel + ' ?</span>';
+      upBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
       _applyLangVisibility(upBtn);
       upBtn.addEventListener('click', function () { overlay.remove(); _launchGame(nextLevel, templates); });
       acts.appendChild(upBtn);
@@ -534,7 +534,7 @@
     // Home button
     var homeBtn = document.createElement('button');
     homeBtn.className = 's1-abtn s1-outline';
-    homeBtn.innerHTML = '<span class="zh">????</span><span class="en">Home</span>';
+    homeBtn.innerHTML = '<span class="zh">返回主页</span><span class="en">Home</span>';
     _applyLangVisibility(homeBtn);
     homeBtn.addEventListener('click', function () { overlay.remove(); _showLevelSelector(templates); });
     acts.appendChild(homeBtn);
@@ -548,15 +548,15 @@
       theme:{primary:'#2563eb',primary2:'#1d4ed8',bg:'#eff6ff'},
       gui:{
         header:{show:true,showBack:true},
-        language: { enabled: true, default: 'en' },
+        language:{enabled:true,default:'en'},
         audio:{music:{enabled:true,defaultOn:false},sound:{enabled:true,defaultOn:true}},
         history:{enabled:true},
         help:{enabled:true,
-          contentZh:'??????,????????????/???:??????????????',
+          contentZh:'仔细观察题目，选出符合要求的答案。形状/颜色题：找出和其他两个不一样的那个。',
           contentEn:'Observe the question and pick the right answer. Shape/color: find the odd one out.'}
       },
-      title:{zh:'?? ?? � '+levelId,en:'?? Comparison � '+levelId},
-      subtitle:{zh:'????????',en:'Observe, Judge, Compare'},
+      title:{zh:'⚖️ 比较 · '+levelId,en:'⚖️ Comparison · '+levelId},
+      subtitle:{zh:'观察、判断、比较',en:'Observe, Judge, Compare'},
       passScore:3, debug:true, units:units,
       renderSequence:renderSequence, renderOption:renderOption,
       checkAnswer:checkAnswer, getVoiceText:getVoiceText,
@@ -570,14 +570,14 @@
     _watchForResultAndInjectNextLevel(levelId, templates);
   }
 
-  // Add "? ????" button to shell home header so user can go back to grade chooser.
+  // Add "← 返回选级" button to shell home header so user can go back to grade chooser.
   function _injectShellHomeBackButton(templates) {
     var homeHdr = document.querySelector('#s1-home .s1-hdr');
     if (!homeHdr || document.getElementById('cq-home-back')) return;
     var btn = document.createElement('button');
     btn.id = 'cq-home-back';
-    btn.innerHTML = '??';
-    btn.title = '???? / Back to levels';
+    btn.innerHTML = '⬅️';
+    btn.title = '返回选级 / Back to levels';
     btn.addEventListener('click', function() {
       _tearDownShell();
       _showLevelSelector(templates);
@@ -605,7 +605,7 @@
       var acts = document.getElementById('s1-racts');
       if (!acts) return;
 
-      // Rewrite retry button � it will relaunch with fresh questions
+      // Rewrite retry button — it will relaunch with fresh questions
       var retryBtn = acts.firstElementChild;
       if (retryBtn) {
         var freshRetry = retryBtn.cloneNode(true);
@@ -619,20 +619,20 @@
       _injectCycleProgress(levelId, sr, acts);
 
       if (sr.cycleComplete) {
-        // Cycle done � show upgrade or retry-cycle; no auto-advance
+        // Cycle done — show upgrade or retry-cycle; no auto-advance
         if (sr.unlocked && nextLevel) {
           var upgradeBtn = document.createElement('button');
           upgradeBtn.className = 's1-abtn s1-primary';
-          upgradeBtn.innerHTML = '<span class="zh">??? ' + nextLevel + ' ?</span><span class="en">Next: ' + nextLevel + ' ?</span>';
+          upgradeBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
           _applyLangVisibility(upgradeBtn);
           upgradeBtn.addEventListener('click', function() { _tearDownShell(); _launchGame(nextLevel, templates); });
           acts.insertBefore(upgradeBtn, acts.lastElementChild);
         }
       } else {
-        // Cycle in progress � show "next group" button instead of auto-advance
+        // Cycle in progress — show "next group" button instead of auto-advance
         var nextBtn = document.createElement('button');
         nextBtn.className = 's1-abtn s1-primary';
-        nextBtn.innerHTML = '<span class="zh">??? ?</span><span class="en">Next Group ?</span>';
+        nextBtn.innerHTML = '<span class="zh">下一组 →</span><span class="en">Next Group →</span>';
         _applyLangVisibility(nextBtn);
         nextBtn.addEventListener('click', function() {
           _tearDownShell();
@@ -656,15 +656,15 @@
     if (cycleComplete) {
       barPct  = accuracyPct;
       color   = sr.unlocked ? '#22c55e' : '#f59e0b';
-      labelZh = levelId + ' ???'; labelEn = levelId + ' Accuracy';
-      msgZh   = sr.unlocked ? levelId + ' ???!??? ' + accuracyPct + '% ??' : '??? ' + accuracyPct + '%,??????(?? =80%)';
-      msgEn   = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% ??' : 'Accuracy ' + accuracyPct + '%, try again (need =80%)';
+      labelZh = levelId + ' 准确率'; labelEn = levelId + ' Accuracy';
+      msgZh   = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
+      msgEn   = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
     } else {
       barPct  = pct;
       color   = '#3b82f6';
-      labelZh = levelId + ' ????'; labelEn = levelId + ' Cycle';
-      msgZh   = '??? ' + doneCount + '/' + totalCount + ' ?,????!';
-      msgEn   = doneCount + '/' + totalCount + ' done � keep going!';
+      labelZh = levelId + ' 本轮进度'; labelEn = levelId + ' Cycle';
+      msgZh   = '已完成 ' + doneCount + '/' + totalCount + ' 题，继续加油！';
+      msgEn   = doneCount + '/' + totalCount + ' done — keep going!';
     }
 
     var div = document.createElement('div');
@@ -690,30 +690,30 @@
     document.addEventListener('shell:langchange', function(e){ apply(e.detail && e.detail.lang); });
   }
 
-  // -- Background music (Web Audio API, no external files) -------------------
+  // ── Background music (Web Audio API, no external files) ───────────────────
 
   var CmpMusic = (function () {
     var _ac = null, _playing = false, _timerId = null, _idx = 0, _nextAt = 0;
     var _track = null;
 
-    // Four tracks � different keys, tempos, and moods; all bright and gentle
+    // Four tracks — different keys, tempos, and moods; all bright and gentle
     var TRACKS = [
-      {  // C major pentatonic � cheerful, upbeat
+      {  // C major pentatonic — cheerful, upbeat
         notes: [261.63,293.66,329.63,392.00,440.00,523.25,587.33,659.25],
         pattern: [0,2,4,5,4,2,1,0, 2,4,5,7,5,4,2,4, 0,2,4,5,4,7,6,5, 4,2,0,1,2,4,0,0],
         beat: 0.42, type: 'triangle'
       },
-      {  // G major pentatonic � gentle, flowing, calm
+      {  // G major pentatonic — gentle, flowing, calm
         notes: [196.00,220.00,246.94,293.66,329.63,392.00,440.00,493.88],
         pattern: [0,1,2,4,2,1,0,1, 2,4,5,6,5,4,2,4, 1,2,4,6,4,2,1,2, 0,2,4,5,2,1,0,0],
         beat: 0.54, type: 'sine'
       },
-      {  // F major pentatonic � warm, bouncy, playful
+      {  // F major pentatonic — warm, bouncy, playful
         notes: [174.61,196.00,220.00,261.63,293.66,349.23,392.00,440.00,523.25],
         pattern: [0,2,4,2,6,4,2,0, 2,4,6,8,6,4,2,4, 0,4,2,6,4,2,0,2, 2,4,6,4,2,0,2,0],
         beat: 0.36, type: 'triangle'
       },
-      {  // D major pentatonic � clear, focused, good for thinking
+      {  // D major pentatonic — clear, focused, good for thinking
         notes: [293.66,329.63,369.99,440.00,493.88,587.33,659.25,739.99],
         pattern: [0,1,2,4,2,1,0,2, 1,3,4,5,4,3,1,3, 0,2,4,5,4,2,0,1, 2,4,3,1,2,1,0,0],
         beat: 0.46, type: 'sine'

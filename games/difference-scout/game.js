@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 (function injectDifferenceScoutStyles() {
   if (document.getElementById('ds-shell-style')) return;

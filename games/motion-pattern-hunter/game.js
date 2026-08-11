@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Motion Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * 3 renderers:  direction cards | action cards | position track

@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 (function () {
   var ACTIVE_KEY = 'me:studio:creator:active';

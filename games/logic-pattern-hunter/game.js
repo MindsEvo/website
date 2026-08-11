@@ -1,10 +1,10 @@
-/**
- * Logic Pattern Hunter � Game Logic  v1.1.0  (Unified Shell GUI)
- * ---------------------------------------------------------
+﻿﻿/**
+ * Logic Pattern Hunter — Game Logic  v1.1.0  (Unified Shell GUI)
+ * ─────────────────────────────────────────────────────────
  * Uses shell.createGame() with a reasoning-style renderSequence.
  * GUI shell is unified with other MindSeeds games.
  * Depends on: shell.js, data.js
- * ---------------------------------------------------------
+ * ─────────────────────────────────────────────────────────
  */
 
 (function injectLogicStyles() {
@@ -36,7 +36,7 @@ shell.createGame({
     history: { enabled: true },
     help: {
       enabled: true,
-      contentZh: '???????,??????????????',
+      contentZh: '先读清前提条件，再逐项排除不符合逻辑的选项。',
       contentEn: 'Read premises carefully, then eliminate options that violate logic.'
     },
     video: {
@@ -44,8 +44,8 @@ shell.createGame({
       videoId: 'mindseeds-logic-pattern-intro-001'
     }
   },
-  title:    { zh: '?? ????', en: '?? Logic Pattern' },
-  subtitle: { zh: '????,????', en: 'Read the clues and find the answer' },
+  title:    { zh: '🧠 逻辑推理', en: '🧠 Logic Pattern' },
+  subtitle: { zh: '读懂条件，推导结论', en: 'Read the clues and find the answer' },
   passScore: 4,
   units:     LP_DATA.units,
 
@@ -89,7 +89,7 @@ shell.createGame({
       return shell.lang === 'zh' ? p.zh : p.en;
     });
     var question = shell.lang === 'zh' ? (q.questionZh || '') : (q.questionEn || '');
-    return parts.join(shell.lang === 'zh' ? ',' : '. ') + (shell.lang === 'zh' ? '?' : '. ') + question;
+    return parts.join(shell.lang === 'zh' ? '，' : '. ') + (shell.lang === 'zh' ? '。' : '. ') + question;
   },
 
   registerRootGenes: function (ctx) {

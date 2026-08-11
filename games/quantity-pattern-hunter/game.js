@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Quantity Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Concrete quantity relationships without Arabic numerals in UI text.

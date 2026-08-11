@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 (function injectRouteScoutStyles() {
   if (document.getElementById('rs-shell-style')) return;

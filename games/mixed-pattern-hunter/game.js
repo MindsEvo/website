@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Mixed Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Architecture: independent orthogonal dimension composition.

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Math Logic — Game Logic  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Logic 逻辑

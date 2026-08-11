@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Math Strategy — Game Logic  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Strategy 策略

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Color Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Depends on: shell.js, data.js

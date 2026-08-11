@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Temporal Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * No new shell.js or shell-1.css changes needed.

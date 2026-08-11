@@ -1,16 +1,16 @@
-/**
- * Math Pattern � Game Logic  (Shell-1)
- * ---------------------------------------------------------
- * Learning Foundation � Math Thinking � Pattern ??
+﻿﻿/**
+ * Math Pattern — Game Logic  (Shell-1)
+ * ─────────────────────────────────────────────────────────
+ * Learning Foundation · Math Thinking · Pattern 规律
  *
  * Shares shell.createGame() engine with MindSeeds Pattern Hunter.
- * Stats stored under separate gameId ? completely independent history.
+ * Stats stored under separate gameId → completely independent history.
  * Depends on: shell.js, data.js (MP_DATA)
  */
 
 shell.createGame({
   id:       'learning-math-pattern',
-  theme:    { primary: '#d97706', primary2: '#92400e' },   // amber � distinct from MindSeeds purple
+  theme:    { primary: '#d97706', primary2: '#92400e' },   // amber — distinct from MindSeeds purple
   gui: {
     header: { show: true, showBack: true },
     language: { enabled: true, default: 'en' },
@@ -21,7 +21,7 @@ shell.createGame({
     history: { enabled: true },
     help: {
       enabled: true,
-      contentZh: '???????,????????????????',
+      contentZh: '先识别重复节奏，再判断数字是递增、递减还是交替。',
       contentEn: 'Find the repeating rhythm first, then decide whether the numbers increase, decrease, or alternate.'
     },
     video: {
@@ -29,8 +29,8 @@ shell.createGame({
       videoId: 'learning-math-pattern-intro-001'
     }
   },
-  title:    { zh: '?? ????',              en: '?? Math Patterns' },
-  subtitle: { zh: '????????,?????????', en: 'Discover patterns in numbers � build prediction & generalization' },
+  title:    { zh: '🔢 数学规律',              en: '🔢 Math Patterns' },
+  subtitle: { zh: '在数字中发现规律，训练预测与归纳能力', en: 'Discover patterns in numbers — build prediction & generalization' },
   passScore: 7,
   units:    MP_DATA.units,
 
@@ -57,15 +57,15 @@ shell.createGame({
   },
 
   /**
-   * Voice prompt � reads the sequence aloud then asks the question.
+   * Voice prompt — reads the sequence aloud then asks the question.
   * Independent from MindSeeds voice (different sentence structure for math context).
    */
   getVoiceText: function (q) {
     var items = q.seq.map(function (n) {
-      return n === '?' ? (shell.lang === 'zh' ? '??' : 'blank') : String(n);
+      return n === '?' ? (shell.lang === 'zh' ? '问号' : 'blank') : String(n);
     });
     return shell.lang === 'zh'
-      ? items.join(',') + '??????'
+      ? items.join('，') + '。问号是几？'
       : items.join(', ') + '. What is the missing number?';
   },
 

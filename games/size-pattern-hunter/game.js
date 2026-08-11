@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Size Pattern Hunter — Game Logic  v1.2.0  (Shell-1)
  * ─────────────────────────────────────────────────────────
  * Pure geometric size perception.
