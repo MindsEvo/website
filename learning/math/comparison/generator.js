@@ -104,6 +104,72 @@ var GEN_DATA = {
     { emoji: '🏺', nameZh: '花瓶', nameEn: 'Vase' }
   ],
 
+  // Match: animals → homes by size
+  matchSizeGroups: [
+    {
+      size: 'big',
+      animals: [
+        { emoji: '🐘', nameZh: '大象', nameEn: 'Elephant' },
+        { emoji: '🦁', nameZh: '狮子', nameEn: 'Lion' },
+        { emoji: '🦛', nameZh: '河马', nameEn: 'Hippo' }
+      ],
+      homes: [
+        { emoji: '🏠', nameZh: '大房子', nameEn: 'Big House' },
+        { emoji: '🏢', nameZh: '大楼', nameEn: 'Tower' },
+        { emoji: '🏰', nameZh: '城堡', nameEn: 'Castle' }
+      ]
+    },
+    {
+      size: 'medium',
+      animals: [
+        { emoji: '🐑', nameZh: '绵羊', nameEn: 'Sheep' },
+        { emoji: '🐩', nameZh: '小狗', nameEn: 'Dog' },
+        { emoji: '🐈', nameZh: '猫咪', nameEn: 'Cat' }
+      ],
+      homes: [
+        { emoji: '🏡', nameZh: '小屋', nameEn: 'Cottage' },
+        { emoji: '⛺', nameZh: '帐篷', nameEn: 'Tent' },
+        { emoji: '🚐', nameZh: '小车', nameEn: 'Van' }
+      ]
+    },
+    {
+      size: 'small',
+      animals: [
+        { emoji: '🐭', nameZh: '小鼠', nameEn: 'Mouse' },
+        { emoji: '🐿', nameZh: '松鼠', nameEn: 'Squirrel' },
+        { emoji: '🐝', nameZh: '小蜜蜂', nameEn: 'Bee' }
+      ],
+      homes: [
+        { emoji: '🛖', nameZh: '小棚子', nameEn: 'Hut' },
+        { emoji: '🪺', nameZh: '小巢', nameEn: 'Nest' },
+        { emoji: '🎪', nameZh: '小帐篷', nameEn: 'Mini Tent' }
+      ]
+    }
+  ],
+
+  // Group: items to sort into big / small bins
+  groupSizeItems: {
+    big:   [
+      { emoji: '🐘', nameZh: '大象', nameEn: 'Elephant' },
+      { emoji: '🚗', nameZh: '汽车', nameEn: 'Car' },
+      { emoji: '🏠', nameZh: '房子', nameEn: 'House' },
+      { emoji: '🌳', nameZh: '大树', nameEn: 'Tree' }
+    ],
+    small: [
+      { emoji: '🐭', nameZh: '小鼠', nameEn: 'Mouse' },
+      { emoji: '🍓', nameZh: '草莓', nameEn: 'Strawberry' },
+      { emoji: '🔑', nameZh: '钥匙', nameEn: 'Key' },
+      { emoji: '🐝', nameZh: '蜜蜂', nameEn: 'Bee' }
+    ]
+  },
+
+  // Fit: bridge scenes
+  fitBridgeScenes: [
+    { gapPct: 56, leftEmoji: '🐰', rightEmoji: '🥕', riverColor: '#60a5fa', goalZh: '胡萝卜', goalEn: 'Carrot' },
+    { gapPct: 60, leftEmoji: '🐱', rightEmoji: '🐟', riverColor: '#93c5fd', goalZh: '小鱼', goalEn: 'Fish' },
+    { gapPct: 52, leftEmoji: '🐶', rightEmoji: '🦴', riverColor: '#bfdbfe', goalZh: '骨头', goalEn: 'Bone' }
+  ],
+
   shapes: ['circle', 'square', 'triangle', 'star', 'heart', 'diamond'],
   colors: ['red', 'blue', 'green', 'yellow', 'purple', 'orange'],
 
@@ -651,8 +717,7 @@ Generators.multiAttribute = function (params) {
 };
 
 /**
- * sortLength4: 4 bars with clearly distinct lengths for sort activity.
- * Returns items in random display order; targetOrder gives the correct ascending sequence.
+ * sortLength4: 4 bars with clearly distinct lengths for sort activity. * Returns items in random display order; targetOrder gives the correct ascending sequence.
  */
 Generators.sortLength4 = function (params) {
   var n = params.items || 4;
@@ -691,6 +756,119 @@ Generators.sortLength4 = function (params) {
     answer: targetOrder.join(','),
     hintZh: '把彩带从最短到最长，依次放入 1 到 ' + n + ' 号槽位。',
     hintEn: 'Place the ribbons from shortest to longest into slots 1 to ' + n + '.'
+  };
+};
+
+// ── Dispatch ──────────────────────────────────────────────────────────────────
+
+/**
+ * matchSize3: 3 animal–home pairs to drag-match by size (big/medium/small).
+ */
+Generators.matchSize3 = function (params) {
+  var groups = GEN_DATA.matchSizeGroups;
+  // Pick one animal and one home from each size tier
+  var tiers = groups.map(function (g) {
+    return {
+      size:   g.size,
+      animal: _pick(g.animals),
+      home:   _pick(g.homes)
+    };
+  });
+
+  // Left items = animals (shuffled)
+  var leftItems = _shuffle(tiers.map(function (t, i) {
+    return { id: 'L' + i, emoji: t.animal.emoji, nameZh: t.animal.nameZh, nameEn: t.animal.nameEn, size: t.size };
+  }));
+
+  // Right slots = homes (shuffled)
+  var rightSlots = _shuffle(tiers.map(function (t, i) {
+    return { id: 'R' + i, emoji: t.home.emoji, nameZh: t.home.nameZh, nameEn: t.home.nameEn, size: t.size };
+  }));
+
+  // Correct map: leftId → rightId (same size)
+  var correctMap = {};
+  leftItems.forEach(function (left) {
+    var right = rightSlots.filter(function (r) { return r.size === left.size; })[0];
+    if (right) correctMap[left.id] = right.id;
+  });
+
+  return {
+    type: 'match', subtype: 'size',
+    leftItems: leftItems, rightSlots: rightSlots,
+    correctMap: correctMap,
+    options: [], answer: 'all-matched',
+    hintZh: '把每只小动物拖到合适大小的家里。',
+    hintEn: 'Drag each animal to the home that fits its size.'
+  };
+};
+
+/**
+ * groupSize: 6 items (3 big + 3 small) to classify into two bins.
+ */
+Generators.groupSize = function (params) {
+  var n = params.itemsPerBin || 3;
+  var bigPool   = _shuffle(GEN_DATA.groupSizeItems.big.slice());
+  var smallPool = _shuffle(GEN_DATA.groupSizeItems.small.slice());
+
+  var bigItems   = bigPool.slice(0, n).map(function (o, i) {
+    return { id: 'G' + i,       emoji: o.emoji, nameZh: o.nameZh, nameEn: o.nameEn, bin: 'big' };
+  });
+  var smallItems = smallPool.slice(0, n).map(function (o, i) {
+    return { id: 'G' + (n + i), emoji: o.emoji, nameZh: o.nameZh, nameEn: o.nameEn, bin: 'small' };
+  });
+
+  var allItems = _shuffle(bigItems.concat(smallItems));
+
+  return {
+    type: 'group', subtype: 'size',
+    items: allItems,
+    bins: [
+      { id: 'big',   labelZh: '大',  labelEn: 'Big',   emoji: '🐘' },
+      { id: 'small', labelZh: '小',  labelEn: 'Small', emoji: '🐭' }
+    ],
+    options: [], answer: 'all-grouped',
+    hintZh: '把大的放进大筐，把小的放进小筐。',
+    hintEn: 'Put big things in the big basket and small things in the small basket.'
+  };
+};
+
+/**
+ * fitBridge: pick the board that is long enough to bridge a river gap.
+ */
+Generators.fitBridge = function (params) {
+  var scene   = _pick(GEN_DATA.fitBridgeScenes);
+  var gap     = scene.gapPct;
+  var margin  = params.margin || 10;  // how much longer the "too long" board is
+
+  // Three boards: clearly too short, just fits, clearly too long
+  var shortLen  = gap - 15 - Math.round(Math.random() * 8);   // clearly too short
+  var fitLen    = gap + Math.round(Math.random() * 5);          // just fits
+  var longLen   = gap + margin + Math.round(Math.random() * 8); // clearly too long
+
+  var palette   = ['#ef4444', '#22c55e', '#3b82f6'];
+  var colors    = _shuffle(palette);
+
+  var boards = _shuffle([
+    { id: 'B1', lengthPct: Math.max(10, shortLen), color: colors[0] },
+    { id: 'B2', lengthPct: fitLen,                 color: colors[1] },
+    { id: 'B3', lengthPct: Math.min(98, longLen),  color: colors[2] }
+  ]);
+
+  var correctId = boards.filter(function (b) {
+    return b.lengthPct === fitLen;
+  })[0].id;
+
+  return {
+    type: 'fit', subtype: 'length',
+    scene: {
+      gapPct: gap, riverColor: scene.riverColor,
+      leftEmoji: scene.leftEmoji, rightEmoji: scene.rightEmoji,
+      goalZh: scene.goalZh, goalEn: scene.goalEn
+    },
+    boards: boards, correctBoardId: correctId,
+    options: [], answer: correctId,
+    hintZh: '找一块能搭上对岸的木板，帮' + scene.leftEmoji + '过河吧！',
+    hintEn: 'Find a plank long enough to reach the other side!'
   };
 };
 

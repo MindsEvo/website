@@ -26,6 +26,7 @@ var SortRuntime = (function () {
   function _injectStyles() {
     if (_styled) return;
     _styled = true;
+    IH.injectStyles();
     var s = document.createElement('style');
     s.textContent = [
       // overlay fills the viewport above everything
@@ -37,22 +38,19 @@ var SortRuntime = (function () {
       '.sr-hdr-title{flex:1;font-size:15px;font-weight:800;color:#fff;}',
       // instruction
       '.sr-instr{text-align:center;font-size:18px;font-weight:900;color:#1e3a8a;padding:14px 16px 6px;flex-shrink:0;}',
-      // main stage
-      '.sr-stage{flex:1;display:flex;flex-direction:column;gap:14px;padding:0 18px 10px;overflow:hidden;}',
-      // holding area
-      '.sr-holding{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex-shrink:0;}',
+      // stage: centered column, elements constrained to max-width so they never fill a wide screen
+      '.sr-stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 18px 10px;overflow:hidden;}',
+      '.sr-holding{width:min(680px,100%);background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex-shrink:0;}',
       '.sr-holding-lbl{font-size:11px;font-weight:700;color:#94a3b8;text-align:center;letter-spacing:.5px;text-transform:uppercase;}',
       '.sr-holding-items{display:flex;flex-direction:column;gap:6px;min-height:32px;}',
-      // draggable item
       '.sr-item{display:flex;align-items:center;padding:5px 6px;border-radius:10px;cursor:grab;touch-action:none;user-select:none;background:#f8fafc;border:1.5px solid #e2e8f0;transition:opacity .15s;}',
       '.sr-item:active{cursor:grabbing;}',
       '.sr-item-bar{height:26px;border-radius:999px;flex-shrink:0;}',
-      // slots
-      '.sr-slots-wrap{flex:1;display:flex;flex-direction:column;gap:6px;}',
+      '.sr-slots-wrap{width:min(680px,100%);flex-shrink:0;display:flex;flex-direction:column;gap:6px;}',
       '.sr-slots-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#64748b;flex-shrink:0;}',
       '.sr-slots-arrow .sr-line{flex:1;height:2px;background:#cbd5e1;border-radius:1px;}',
-      '.sr-slots{display:flex;gap:8px;flex:1;align-items:stretch;}',
-      '.sr-slot{flex:1;min-height:60px;max-height:88px;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:border-color .15s,background .15s;}',
+      '.sr-slots{display:flex;gap:8px;align-items:stretch;}',
+      '.sr-slot{flex:1;min-height:70px;max-height:100px;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:border-color .15s,background .15s;}',
       '.sr-slot.pd-hover{border-color:#3b82f6;background:#eff6ff;}',
       '.sr-slot.sr-filled{border-style:solid;border-color:#bfdbfe;background:#fff;}',
       '.sr-slot-num{position:absolute;top:4px;left:7px;font-size:10px;font-weight:800;color:#94a3b8;}',
@@ -109,12 +107,13 @@ var SortRuntime = (function () {
 
     // Header
     root.innerHTML =
-      '<div class="sr-hdr">' +
-        '<button class="sr-hdr-back" id="sr-back">\u2b05\ufe0f</button>' +
-        '<div class="sr-hdr-title">' +
+      '<div class="ih-hdr">' +
+        '<button class="ih-back" id="sr-back">\u2b05\ufe0f</button>' +
+        '<div class="ih-title">' +
           '<span class="zh">' + s.ctx.levelId + ' \u00b7 \u6392\u5e8f</span>' +
           '<span class="en">' + s.ctx.levelId + ' \u00b7 Sort</span>' +
         '</div>' +
+        IH.controlsHtml('sr') +
       '</div>' +
       '<div class="sr-instr">' +
         '<span class="zh">\u628a\u5f69\u5e26\u4ece\u6700\u77ed\u5230\u6700\u957f\u6392\u597d \u2193</span>' +
@@ -140,6 +139,7 @@ var SortRuntime = (function () {
       '</div>';
 
     document.body.appendChild(root);
+    IH.wire('sr', { onReset: _reset });
     _applyLang();
 
     // Build slots
@@ -159,9 +159,9 @@ var SortRuntime = (function () {
     PointerDrag.registerDropZone(holdingItems, 'holding');
 
     document.getElementById('sr-back').addEventListener('click', function () {
+      var onBack = _st && _st.ctx.onBack;
       _tearDown();
-      if (_st && _st.ctx.onBack) _st.ctx.onBack();
-      else if (!_st) {}  // already torn down
+      if (onBack) onBack();
     });
 
     // Initial items render
@@ -349,11 +349,21 @@ var SortRuntime = (function () {
   }
 
   function _applyLang(el) {
+    if (!el || el.type) el = null;  // guard: called as event listener passes Event, not element
     var root = el || document.getElementById('sr-root');
     if (!root || !root.querySelectorAll) return;
     var lang = shell.lang || 'zh';
     root.querySelectorAll('.zh').forEach(function (n) { n.style.display = lang === 'zh' ? '' : 'none'; });
     root.querySelectorAll('.en').forEach(function (n) { n.style.display = lang === 'en' ? '' : 'none'; });
+  }
+
+  function _reset() {
+    if (!_st || _st.done) return;
+    _st.slots   = new Array(_st.items.length).fill(null);
+    _st.holding = _st.variant.items.map(function (i) { return i.id; });
+    _renderHolding();
+    _renderSlots();
+    _updateFoot();
   }
 
   function _tearDown() {

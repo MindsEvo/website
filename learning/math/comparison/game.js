@@ -65,11 +65,11 @@
     '.cq-opt-h-bar{width:38px;border-radius:5px 5px 0 0;margin:0 auto;}',
     '.s1-opts.cq-3opt{grid-template-columns:repeat(3,1fr)!important;}',
     '.cq-lvl-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}',
-    '.cq-lvl-title-bar{display:flex;align-items:center;width:100%;max-width:440px;}',
+    '.cq-lvl-title-bar{display:flex;align-items:center;width:100%;max-width:520px;gap:8px;}',
     '.cq-lvl-title{font-size:20px;font-weight:900;color:#1e3a8a;text-align:center;flex:1;}',
     '.cq-lvl-back{background:none;border:none;cursor:pointer;font-size:14px;font-weight:700;color:#2563eb;padding:4px 6px;border-radius:8px;white-space:nowrap;flex:0 0 auto;}',
     '.cq-lvl-back:hover{background:#eff6ff;}',
-    '.cq-lvl-spacer{flex:0 0 60px;}',
+    '.cq-lvl-spacer{flex:0 0 auto;}',
     '.cq-lvl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:440px;}',
     '.cq-lvl-card{border:2px solid #bfdbfe;border-radius:16px;padding:18px 14px;cursor:pointer;text-align:center;background:#fff;transition:transform .16s,border-color .16s,box-shadow .16s;}',
     '.cq-lvl-card:hover{transform:translateY(-2px);border-color:#3b82f6;box-shadow:0 8px 20px rgba(37,99,235,0.12);}',
@@ -383,7 +383,7 @@
       '<div class="cq-lvl-title-bar">'+
         '<button class="cq-lvl-back" id="cq-sel-back">⬅️ <span class="zh">数学启智</span><span class="en">Math</span></button>'+
         '<div class="cq-lvl-title"><span class="zh">比较 · 选择年级</span><span class="en">Comparison · Grade</span></div>'+
-        '<div class="cq-lvl-spacer"></div>'+
+        IH.controlsHtml('lvl')+
       '</div>'+
       '<div class="cq-lvl-grid">'+
       // appended below
@@ -412,6 +412,7 @@
     applyLang(lang);
     document.addEventListener('shell:langchange',function(e){applyLang(e.detail&&e.detail.lang);});
     document.body.appendChild(wrap);
+    IH.wire('lvl');
 
     var backBtn=document.getElementById('cq-sel-back');
     if(backBtn) backBtn.addEventListener('click',function(){window.location.href='../index.html';});

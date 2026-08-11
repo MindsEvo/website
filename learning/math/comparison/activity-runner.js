@@ -11,8 +11,11 @@ var ActivityRunner = {
   launch: function (template, variant, ctx) {
     var rt = template.runtime || template.mode;
     switch (rt) {
-      case 'sort': SortRuntime.run(template, variant, ctx); break;
-      default:     if (ctx.onPuzzle) ctx.onPuzzle(); break;
+      case 'sort':  SortRuntime.run(template, variant, ctx);  break;
+      case 'match': MatchRuntime.run(template, variant, ctx); break;
+      case 'group': GroupRuntime.run(template, variant, ctx); break;
+      case 'fit':   FitRuntime.run(template, variant, ctx);   break;
+      default:      if (ctx.onPuzzle) ctx.onPuzzle();         break;
     }
   }
 };
