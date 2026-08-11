@@ -86,9 +86,7 @@
         <span class="en">← Home</span>
       </a>
       <div class="lang-sw">
-        <button id="btn-zh" onclick="setLang('zh')">中文</button>
-        <span class="sep">|</span>
-        <button id="btn-en" onclick="setLang('en')" class="active">EN</button>
+        <button id="btn-lang" onclick="toggleLang()">中文</button>
       </div>
     </div>
   </nav>
@@ -145,12 +143,19 @@
     function setLang(lang) {
       document.body.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      localStorage.setItem('mindsevo-lang', lang);
+      var btn = document.getElementById('btn-lang');
+      if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
+      try { localStorage.setItem('me:user:settings:lang', JSON.stringify(lang)); } catch(e) {}
     }
-    const saved = localStorage.getItem('mindsevo-lang');
-    if (saved) setLang(saved);
+    function toggleLang() {
+      setLang(document.body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+    }
+    (function() {
+      var lang;
+      try { lang = JSON.parse(localStorage.getItem('me:user:settings:lang')); } catch(e) {}
+      if (!lang) { try { lang = localStorage.getItem('mindsevo-lang'); } catch(e) {} }
+      setLang(lang === 'zh' ? 'zh' : 'en');
+    }());
   </script>
 </body>
 </html>

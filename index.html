@@ -809,9 +809,7 @@
     <span style="opacity:.42;cursor:default;font-size:14.5px;font-weight:600;color:rgba(255,255,255,0.78);"><span class="zh">思维图谱</span><span class="en">Thinking Map</span></span>
   </div>
   <div class="lang-sw" id="lang-sw">
-    <button id="btn-zh" onclick="setLang('zh')">中文</button>
-    <span class="sep">|</span>
-    <button id="btn-en" onclick="setLang('en')" class="active">EN</button>
+    <button id="btn-lang" onclick="toggleLang()">中文</button>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -1178,9 +1176,19 @@
   function setLang(lang) {
     document.body.setAttribute('data-lang', lang);
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    var btn = document.getElementById('btn-lang');
+    if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
+    try { localStorage.setItem('me:user:settings:lang', JSON.stringify(lang)); } catch(e) {}
   }
+  function toggleLang() {
+    setLang(document.body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
+  }
+  (function() {
+    var lang;
+    try { lang = JSON.parse(localStorage.getItem('me:user:settings:lang')); } catch(e) {}
+    if (!lang) { try { lang = localStorage.getItem('mindsevo-lang'); } catch(e) {} }
+    setLang(lang === 'zh' ? 'zh' : 'en');
+  }());
 
   var ids = ['home','paradigm','pillars','applications'];
   var links = document.querySelectorAll('.nav-links a');
