@@ -80,8 +80,17 @@
     '.cq-lvl-tag{display:inline-block;font-size:10px;font-weight:700;border-radius:6px;padding:2px 8px;margin-top:6px;}',
     '.cq-lvl-tag.free{background:#dcfce7;color:#16a34a;}',
     '.cq-lvl-tag.locked-tag{background:#f1f5f9;color:#94a3b8;}',
+    '.cq-lvl-cycle{font-size:11px;font-weight:700;color:#3b82f6;margin-top:5px;}',
+    '.cq-lvl-cycle.done{color:#16a34a;}',
     '#s1-replay{display:none!important;}',
-    '#cq-home-back{margin-right:auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;color:#1e40af;line-height:1;}'
+    '#cq-home-back{margin-right:auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;color:#1e40af;line-height:1;}',
+    '.cq-prog{padding:12px 16px;background:#f8fafc;border-radius:12px;margin-bottom:10px;width:100%;max-width:360px;}',
+    '.cq-prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}',
+    '.cq-prog-label{font-size:13px;font-weight:700;color:#334155;}',
+    '.cq-prog-pct{font-size:15px;font-weight:900;}',
+    '.cq-prog-track{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-bottom:6px;}',
+    '.cq-prog-fill{height:100%;border-radius:999px;transition:width .5s ease;}',
+    '.cq-prog-msg{font-size:12px;color:#64748b;text-align:center;}'
   ].join('');
   document.head.appendChild(styleEl);
 
@@ -315,6 +324,7 @@
   function onAnswer(selected, q, correct, elapsedMs) {
     var tpl=_sessionTemplateMap[q.templateId];
     if(!tpl) return;
+    CmpEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
     CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl);
   }
 
@@ -335,7 +345,7 @@
 
   function _buildUnitsForLevel(levelId, templates) {
     _sessionTemplateMap={};
-    var selected=CmpEngine.selectSessionTemplates(levelId, templates);
+    var selected=CmpEngine.getSessionTemplates(levelId, templates);
     var questions=selected.map(function(tpl){
       var q=generateQuestion(tpl);
       if(!q) return null;
@@ -343,13 +353,16 @@
       _sessionTemplateMap[tpl.id]=tpl;
       return q;
     }).filter(Boolean);
+    var n = questions.length;
+    var cycleStatus = CmpEngine.getCycleStatus(levelId);
+    var resuming = cycleStatus.sessionActive && cycleStatus.doneCount > 0;
     return [{
       id:levelId+'-session',
-      nameZh:levelId+' · 比较挑战',
-      nameEn:levelId+' · Comparison Challenge',
+      nameZh:levelId+' · 比较挑战'+(resuming?' · 续':''),
+      nameEn:levelId+' · Comparison'+(resuming?' (resume)':''),
       icon:'⚖️',
-      descZh:'8题 · 自适应选题',
-      descEn:'8 questions · Adaptive',
+      descZh:n+'题 · 轮次送题',
+      descEn:n+' questions · Cycle',
       rootGeneIds:['RG.LOGIC.COMPARISON.BASIC','RG.LEARNING.MATH.COMPARISON'],
       questions:questions
     }];
@@ -381,6 +394,13 @@
           '<div class="cq-lvl-name"><span class="zh">'+lvl.nameZh+'</span><span class="en">'+lvl.nameEn+'</span></div>'+
           '<div class="cq-lvl-desc"><span class="zh">'+lvl.descZh+'</span><span class="en">'+lvl.descEn+'</span></div>'+
           '<div class="cq-lvl-tag '+(lk?'locked-tag':'free')+'"><span class="zh">'+(lk?'即将推出':'免费')+'</span><span class="en">'+(lk?'Soon':'Free')+'</span></div>'+
+          (function(){
+            if(lk) return '';
+            var cs=CmpEngine.getCycleStatus(lvl.id);
+            if(cs.unlocked) return '<div class="cq-lvl-cycle done"><span class="zh">\u2713 \u5df2\u89e3\u9501</span><span class="en">\u2713 Unlocked</span></div>';
+            if(cs.started)  return '<div class="cq-lvl-cycle"><span class="zh">\u8fdb\u5ea6 '+cs.doneCount+'/'+cs.totalCount+'</span><span class="en">'+cs.doneCount+'/'+cs.totalCount+' done</span></div>';
+            return '';
+          })()+
         '</div>';
       }).join('')+
       '</div></div>';
@@ -431,10 +451,10 @@
       },
       title:{zh:'⚖️ 比较 · '+levelId,en:'⚖️ Comparison · '+levelId},
       subtitle:{zh:'观察、判断、比较',en:'Observe, Judge, Compare'},
-      passScore:6, debug:true, units:units,
+      passScore:3, debug:true, units:units,
       renderSequence:renderSequence, renderOption:renderOption,
       checkAnswer:checkAnswer, getVoiceText:getVoiceText,
-      registerRootGenes:registerRootGenes, onAnswered:onAnswer,
+      registerRootGenes:registerRootGenes, onAnswer:onAnswer,
       getReportContext:function(ctx){
         return {moduleId:'comparison',moduleType:'metathinking',level:levelId,sourceGameId:'learning-math-comparison'};
       }
@@ -459,11 +479,10 @@
     homeHdr.insertBefore(btn, homeHdr.firstChild);
   }
 
-  // Inject "upgrade to next grade" button into result screen when it appears.
+  // Show progress + conditionally show upgrade button on result screen.
   function _watchForResultAndInjectNextLevel(levelId, templates) {
-    var nextIdx = LEVEL_ORDER.indexOf(levelId) + 1;
-    if (nextIdx <= 0 || nextIdx >= LEVEL_ORDER.length) return;  // no next level (G2 is last)
-    var nextLevel = LEVEL_ORDER[nextIdx];
+    var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
+    var nextLevel = nextIdx < LEVEL_ORDER.length ? LEVEL_ORDER[nextIdx] : null;
 
     var resultEl = document.getElementById('s1-result');
     if (!resultEl) return;
@@ -474,36 +493,95 @@
       injected = true;
       observer.disconnect();
 
+      // Finalise session and get cycle status
+      var sr = CmpEngine.completeSession(levelId);
+
       var acts = document.getElementById('s1-racts');
       if (!acts) return;
 
-      var btn = document.createElement('button');
-      btn.className = 's1-abtn s1-primary';
-      btn.innerHTML =
-        '<span class="zh">升级到 ' + nextLevel + ' →</span>' +
-        '<span class="en">Next: ' + nextLevel + ' →</span>';
+      // Rewrite retry button — it will relaunch with fresh questions
+      var retryBtn = acts.firstElementChild;
+      if (retryBtn) {
+        var freshRetry = retryBtn.cloneNode(true);
+        retryBtn.parentNode.replaceChild(freshRetry, retryBtn);
+        freshRetry.addEventListener('click', function() {
+          _tearDownShell();
+          _launchGame(levelId, templates);
+        });
+      }
 
-      // Apply current language visibility
-      var lang = shell.lang || 'zh';
-      btn.querySelectorAll('.zh').forEach(function(el){ el.style.display = lang === 'zh' ? '' : 'none'; });
-      btn.querySelectorAll('.en').forEach(function(el){ el.style.display = lang === 'en' ? '' : 'none'; });
-      document.addEventListener('shell:langchange', function(e) {
-        var l = e.detail && e.detail.lang;
-        btn.querySelectorAll('.zh').forEach(function(el){ el.style.display = l === 'zh' ? '' : 'none'; });
-        btn.querySelectorAll('.en').forEach(function(el){ el.style.display = l === 'en' ? '' : 'none'; });
-      });
+      _injectCycleProgress(levelId, sr, acts);
 
-      btn.addEventListener('click', function() {
-        _tearDownShell();
-        _launchGame(nextLevel, templates);
-      });
-
-      // Insert before "返回主页" (last button)
-      var lastBtn = acts.lastElementChild;
-      acts.insertBefore(btn, lastBtn);
+      if (sr.cycleComplete) {
+        // Cycle done — show upgrade or retry-cycle; no auto-advance
+        if (sr.unlocked && nextLevel) {
+          var upgradeBtn = document.createElement('button');
+          upgradeBtn.className = 's1-abtn s1-primary';
+          upgradeBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
+          _applyLangVisibility(upgradeBtn);
+          upgradeBtn.addEventListener('click', function() { _tearDownShell(); _launchGame(nextLevel, templates); });
+          acts.insertBefore(upgradeBtn, acts.lastElementChild);
+        }
+      } else {
+        // Cycle in progress — show "next group" button instead of auto-advance
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 's1-abtn s1-primary';
+        nextBtn.innerHTML = '<span class="zh">下一组 →</span><span class="en">Next Group →</span>';
+        _applyLangVisibility(nextBtn);
+        nextBtn.addEventListener('click', function() {
+          _tearDownShell();
+          _launchGame(levelId, templates);
+        });
+        acts.insertBefore(nextBtn, acts.lastElementChild);
+      }
     });
 
     observer.observe(resultEl, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  function _injectCycleProgress(levelId, sr, acts) {
+    var cycleComplete = sr.cycleComplete;
+    var doneCount  = sr.doneCount || 0;
+    var totalCount = sr.totalCount || 1;
+    var pct = Math.round(doneCount / totalCount * 100);
+    var accuracyPct = sr.accuracyPct || 0;
+
+    var color, labelZh, labelEn, msgZh, msgEn, barPct;
+    if (cycleComplete) {
+      barPct  = accuracyPct;
+      color   = sr.unlocked ? '#22c55e' : '#f59e0b';
+      labelZh = levelId + ' 准确率'; labelEn = levelId + ' Accuracy';
+      msgZh   = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
+      msgEn   = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
+    } else {
+      barPct  = pct;
+      color   = '#3b82f6';
+      labelZh = levelId + ' 本轮进度'; labelEn = levelId + ' Cycle';
+      msgZh   = '已完成 ' + doneCount + '/' + totalCount + ' 题，继续加油！';
+      msgEn   = doneCount + '/' + totalCount + ' done — keep going!';
+    }
+
+    var div = document.createElement('div');
+    div.className = 'cq-prog';
+    div.innerHTML =
+      '<div class="cq-prog-row">' +
+        '<span class="cq-prog-label"><span class="zh">' + labelZh + '</span><span class="en">' + labelEn + '</span></span>' +
+        '<span class="cq-prog-pct" style="color:' + color + '">' + (cycleComplete ? accuracyPct + '%' : doneCount + '/' + totalCount) + '</span>' +
+      '</div>' +
+      '<div class="cq-prog-track"><div class="cq-prog-fill" style="width:' + Math.min(100, barPct) + '%;background:' + color + '"></div></div>' +
+      '<div class="cq-prog-msg"><span class="zh">' + msgZh + '</span><span class="en">' + msgEn + '</span></div>';
+    _applyLangVisibility(div);
+    acts.parentNode.insertBefore(div, acts);
+  }
+
+  function _applyLangVisibility(el) {
+    var lang = shell.lang || 'zh';
+    function apply(l) {
+      el.querySelectorAll('.zh').forEach(function(n){ n.style.display = l==='zh' ? '' : 'none'; });
+      el.querySelectorAll('.en').forEach(function(n){ n.style.display = l==='en' ? '' : 'none'; });
+    }
+    apply(lang);
+    document.addEventListener('shell:langchange', function(e){ apply(e.detail && e.detail.lang); });
   }
 
   // ── Background music (Web Audio API, no external files) ───────────────────

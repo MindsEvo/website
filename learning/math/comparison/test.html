@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comparison Generator — Automated Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #38bdf8; margin-bottom: 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin-bottom: 24px; }
+    .suite  { margin-bottom: 32px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #38bdf8; }
+    .tpl    { margin-bottom: 16px; padding: 10px 14px; background: #1e293b;
+              border-radius: 8px; border: 1px solid #334155; }
+    .tpl-id { font-size: 12px; color: #7dd3fc; margin-bottom: 4px; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .stat   { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    .bar    { display:inline-block; background:#22d3ee; height:6px; border-radius:3px; margin-right:4px; vertical-align:middle; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    .sum-row { font-size: 14px; }
+    .badge { display:inline-block; border-radius:4px; padding:2px 8px; font-size:12px;
+             font-weight:700; margin-right:6px; }
+    .badge-ok   { background:#166534; color:#4ade80; }
+    .badge-fail { background:#7f1d1d; color:#f87171; }
+    .badge-warn { background:#78350f; color:#fbbf24; }
+    pre { margin:0; font-size:11px; line-height:1.5; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>⚖️ Comparison Generator — Validation Suite</h1>
+  <h2>Runs each template 20 times, checks uniqueness, answer balance, and required fields.</h2>
+  <div id="sum-out" class="sum-row">Loading…</div>
+</div>
+
+<div id="results"></div>
+
+<!-- Stub shell.getVolume so generator.js doesn't crash -->
+<script>
+  var shell = { getVolume: function() { return 80; }, lang: 'zh', storage: {
+    get: function(k,d){ try{ var v=localStorage.getItem('me:'+k); return v!==null?JSON.parse(v):d; }catch(e){ return d; } }
+  }};
+</script>
+<script src="generator.js"></script>
+<script>
+(function() {
+
+  var RUNS = 20;
+
+  // ── helpers ─────────────────────────────────────────────────────────────
+
+  function uid(q) {
+    // Build a fingerprint of the question's key visual parameters
+    if (q.type === 'size' || q.type === 'weight' || q.type === 'speed')
+      return q.leftEmoji + q.rightEmoji + (q.askBigger||q.askHeavier||q.askFaster?'B':'S');
+    if (q.type === 'number')   return q.leftNum + '|' + q.rightNum + '|' + q.askBigger;
+    if (q.type === 'quantity') return q.leftCount + '|' + q.rightCount + '|' + q.askMore;
+    if (q.type === 'length')   return Math.round(q.leftPct) + '|' + Math.round(q.rightPct) + '|' + q.askLonger;
+    if (q.type === 'height')   return Math.round(q.leftHeightPct) + '|' + Math.round(q.rightHeightPct) + '|' + q.askTaller;
+    if (q.type === 'shape' || q.type === 'color')
+      return q.items.map(function(i){ return i.shape+'_'+i.color; }).join('|') + '|' + q.answer;
+    if (q.type === 'position') return Math.round(q.leftDistPct) + '|' + Math.round(q.rightDistPct) + '|' + q.askNearer;
+    if (q.type === 'fullness') return Math.round(q.leftFillPct) + '|' + Math.round(q.rightFillPct) + '|' + q.askFuller;
+    if (q.type === 'time')     return q.leftEventZh + '|' + q.rightEventZh + '|' + q.answer;
+    if (q.type === 'multi_attribute') return JSON.stringify(q.left) + JSON.stringify(q.right);
+    return JSON.stringify(q);
+  }
+
+  function checkRequired(q) {
+    var missing = [];
+    if (!q.type)    missing.push('type');
+    if (!q.options) missing.push('options');
+    if (!q.answer)  missing.push('answer');
+    if (!q.hintZh)  missing.push('hintZh');
+    if (!q.hintEn)  missing.push('hintEn');
+    // answer must be in options
+    if (q.options && q.answer && q.options.indexOf(q.answer) === -1)
+      missing.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
+    return missing;
+  }
+
+  // ── run one template ──────────────────────────────────────────────────────
+
+  function runTemplate(tpl) {
+    var results = [], fingerprints = {}, answerCounts = {};
+    var errors = [];
+
+    for (var i = 0; i < RUNS; i++) {
+      var q;
+      try {
+        q = generateQuestion(tpl);
+      } catch(e) {
+        errors.push('RUN ' + i + ': ' + e.message);
+        continue;
+      }
+      if (!q) { errors.push('RUN ' + i + ': generateQuestion returned null'); continue; }
+
+      var missing = checkRequired(q);
+      if (missing.length) errors.push('missing fields: ' + missing.join(', '));
+
+      var fp = uid(q);
+      fingerprints[fp] = (fingerprints[fp] || 0) + 1;
+      answerCounts[q.answer] = (answerCounts[q.answer] || 0) + 1;
+      results.push(q);
+    }
+
+    var unique = Object.keys(fingerprints).length;
+    var dupMax = Math.max.apply(null, Object.values(fingerprints));
+    var uniquePct = Math.round(unique / RUNS * 100);
+
+    // Answer balance: for 2-option questions, each side should appear 30-70% of the time
+    var opts = results[0] && results[0].options || [];
+    var balanced = true;
+    if (opts.length === 2) {
+      opts.forEach(function(o) {
+        var pct = (answerCounts[o] || 0) / RUNS;
+        if (pct < 0.2 || pct > 0.8) balanced = false;
+      });
+    }
+
+    return {
+      id: tpl.id, type: tpl.type, generator: tpl.generator,
+      runs: results.length, unique: unique, uniquePct: uniquePct,
+      dupMax: dupMax, balanced: balanced,
+      answerCounts: answerCounts, opts: opts,
+      errors: errors, samples: results.slice(0, 3)
+    };
+  }
+
+  // ── render ────────────────────────────────────────────────────────────────
+
+  function sampleStr(q) {
+    if (!q) return '';
+    switch (q.type) {
+      case 'size':    return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer+' (ask '+(q.askBigger?'bigger':'smaller')+')';
+      case 'number':  return q.leftNum+' vs '+q.rightNum+' → '+q.answer;
+      case 'quantity':return q.leftCount+' vs '+q.rightCount+' dots → '+q.answer;
+      case 'length':  return Math.round(q.leftPct)+'% vs '+Math.round(q.rightPct)+'% → '+q.answer;
+      case 'height':  return Math.round(q.leftHeightPct)+'% vs '+Math.round(q.rightHeightPct)+'% → '+q.answer;
+      case 'shape':
+      case 'color':   return (q.items||[]).map(function(i,idx){return ['A','B','C'][idx]+':'+i.shape+'/'+i.color;}).join(' ')+' → odd='+q.answer;
+      case 'position':return q.leftEmoji+' ('+Math.round(q.leftDistPct)+'%) vs '+q.rightEmoji+' ('+Math.round(q.rightDistPct)+'%) → '+q.answer;
+      case 'fullness':return Math.round(q.leftFillPct)+'% vs '+Math.round(q.rightFillPct)+'% → '+q.answer;
+      case 'weight':  return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer;
+      case 'speed':   return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer;
+      case 'time':    return q.leftEventZh+' vs '+q.rightEventZh+' → '+q.answer;
+      case 'multi_attribute': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' → '+q.answer;
+      default: return q.answer;
+    }
+  }
+
+  function statusBadge(r) {
+    if (r.errors.length) return '<span class="badge badge-fail">FAIL</span>';
+    if (r.uniquePct < 50) return '<span class="badge badge-warn">LOW VAR</span>';
+    if (!r.balanced)     return '<span class="badge badge-warn">SKEWED</span>';
+    return '<span class="badge badge-ok">OK</span>';
+  }
+
+  function renderResult(r) {
+    var ansStr = Object.entries(r.answerCounts).map(function(e){
+      var pct = Math.round(e[1]/r.runs*100);
+      return e[0]+':'+pct+'%';
+    }).join('  ');
+
+    var samplesHtml = r.samples.map(function(q,i){
+      return (i+1)+'. ' + sampleStr(q);
+    }).join('\n');
+
+    var errHtml = r.errors.length
+      ? '<div class="fail">Errors:\n' + r.errors.join('\n') + '</div>'
+      : '';
+
+    var varBar = '<span class="bar" style="width:' + (r.uniquePct * 0.8) + 'px"></span>';
+
+    return [
+      '<div class="tpl">',
+        '<div class="tpl-id">' + statusBadge(r) + ' ' + r.id + '</div>',
+        '<div class="stat">',
+          varBar,
+          'Unique ' + r.unique + '/' + r.runs + ' (' + r.uniquePct + '%)  |  ',
+          'Max dup: ' + r.dupMax + '  |  ',
+          'Answers: ' + ansStr,
+        '</div>',
+        '<pre class="stat">' + samplesHtml + '</pre>',
+        errHtml,
+      '</div>'
+    ].join('');
+  }
+
+  // ── main ──────────────────────────────────────────────────────────────────
+
+  fetch('./templates.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      var templates = data.templates || [];
+      var byLevel = {};
+      templates.forEach(function(t) {
+        byLevel[t.level] = byLevel[t.level] || [];
+        byLevel[t.level].push(t);
+      });
+
+      var totalOk = 0, totalWarn = 0, totalFail = 0;
+      var html = '';
+
+      Object.keys(byLevel).sort().forEach(function(level) {
+        html += '<div class="suite"><div class="suite-title">' + level + ' — ' + byLevel[level].length + ' templates</div>';
+        byLevel[level].forEach(function(tpl) {
+          var r = runTemplate(tpl);
+          html += renderResult(r);
+          if (r.errors.length) totalFail++;
+          else if (r.uniquePct < 50 || !r.balanced) totalWarn++;
+          else totalOk++;
+        });
+        html += '</div>';
+      });
+
+      document.getElementById('results').innerHTML = html;
+      document.getElementById('sum-out').innerHTML =
+        '<span class="badge badge-ok">OK ' + totalOk + '</span>' +
+        '<span class="badge badge-warn">WARN ' + totalWarn + '</span>' +
+        '<span class="badge badge-fail">FAIL ' + totalFail + '</span>' +
+        ' — ' + templates.length + ' templates, ' + RUNS + ' runs each';
+    })
+    .catch(function(e) {
+      document.getElementById('sum-out').innerHTML =
+        '<span class="fail">Error loading templates.json: ' + e.message + '</span>';
+    });
+
+}());
+</script>
+</body>
+</html>

@@ -37,7 +37,7 @@ var CmpEngine = (function () {
   };
 
   var COVERAGE_WINDOW    = 20;
-  var SESSION_QUESTIONS  = 8;
+  var SESSION_QUESTIONS  = 4;
   var SCHEDULER_TOP_N    = 5;
   var MASTERED_COOLDOWN_DAYS = 7;
 
@@ -332,6 +332,11 @@ var CmpEngine = (function () {
       _addCoverageEntry(templateDef.type);
     }
 
+    // Track per-level attempt history for the mastery gate
+    if (templateDef && templateDef.level) {
+      _updateLevelAttempt(templateDef.level, correct);
+    }
+
     // Tick cooldowns on all known templates
     var allIds = _getAllKnownTemplateIds();
     if (allIds.indexOf(templateId) === -1) allIds.push(templateId);
@@ -423,12 +428,202 @@ var CmpEngine = (function () {
     return templateId + '-v' + rand;
   }
 
+  // ── Level Progress (kept for analytics; Cycle engine is now the scheduler) ─
+
+  function _updateLevelAttempt(level, correct) {
+    var data = _get('lvl:' + level, { sessions: 0, recentAttempts: [] });
+    data.recentAttempts.push(correct);
+    if (data.recentAttempts.length > 12) data.recentAttempts.shift();
+    _set('lvl:' + level, data);
+  }
+
+  function incrementLevelSession(level) {
+    var data = _get('lvl:' + level, { sessions: 0, recentAttempts: [] });
+    data.sessions = (data.sessions || 0) + 1;
+    _set('lvl:' + level, data);
+  }
+
+  // Gate: ≥3 sessions AND recent accuracy ≥75% over last 12 attempts
+  function getLevelProgress(level) {
+    var data = _get('lvl:' + level, { sessions: 0, recentAttempts: [] });
+    var sessions  = data.sessions || 0;
+    var attempts  = data.recentAttempts || [];
+    var correct   = attempts.filter(function(v){ return v; }).length;
+    var accuracy  = attempts.length >= 4 ? correct / attempts.length : 0;
+    return {
+      sessions:      sessions,
+      recentCount:   attempts.length,
+      recentAccuracy: accuracy,
+      accuracyPct:   Math.round(accuracy * 100),
+      ready:         sessions >= 3 && accuracy >= 0.75
+    };
+  }
+
+  // ── Cycle Scheduler ────────────────────────────────────────────────────────
+  // Primary scheduler: traverse ALL templates in type-balanced order each cycle.
+
+  function _shuffleInPlace(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
+  // Round-robin interleave across types so no type clusters within a session
+  function _typeBalancedShuffle(templates) {
+    var byType = Object.create(null);
+    templates.forEach(function(t) {
+      (byType[t.type] = byType[t.type] || []).push(t);
+    });
+    var types = _shuffleInPlace(Object.keys(byType));
+    types.forEach(function(type) { _shuffleInPlace(byType[type]); });
+    var result = [], counts = Object.create(null);
+    types.forEach(function(t) { counts[t] = 0; });
+    var total = templates.length;
+    while (result.length < total) {
+      types.forEach(function(type) {
+        if (result.length < total && counts[type] < byType[type].length) {
+          result.push(byType[type][counts[type]++]);
+        }
+      });
+    }
+    return result;
+  }
+
+  function _getCycleState(level) { return _get('cycle:' + level, null); }
+  function _saveCycleState(level, state) { _set('cycle:' + level, state); }
+
+  function _initNewCycle(level, templates) {
+    var pool = templates.filter(function(t) { return t.level === level; });
+    var plan = _typeBalancedShuffle(pool).map(function(t) { return t.id; });
+    var prev = _getCycleState(level) || { completedCycles: [], unlocked: false };
+    var state = {
+      plan: plan, doneInCycle: [],
+      cycleCorrect: 0, cycleAttempts: 0,
+      sessionPlan: [], sessionAnswered: {}, sessionActive: false,
+      completedCycles: prev.completedCycles || [],
+      unlocked: prev.unlocked || false
+    };
+    _saveCycleState(level, state);
+    return state;
+  }
+
+  // Returns template objects for the current session (handles mid-session resume)
+  function getSessionTemplates(level, templates) {
+    var pool = templates.filter(function(t) { return t.level === level; });
+    var tplMap = Object.create(null);
+    pool.forEach(function(t) { tplMap[t.id] = t; });
+
+    var state = _getCycleState(level);
+    if (!state || !state.plan || state.plan.length === 0) {
+      state = _initNewCycle(level, templates);
+    }
+
+    // Resume: active session with unanswered questions remaining
+    if (state.sessionActive && state.sessionPlan && state.sessionPlan.length > 0) {
+      var answered = Object.keys(state.sessionAnswered || {});
+      var resume = state.sessionPlan.filter(function(id) {
+        return answered.indexOf(id) === -1;
+      });
+      if (resume.length > 0) {
+        return resume.map(function(id) { return tplMap[id]; }).filter(Boolean);
+      }
+    }
+
+    // Start a new session from the remaining cycle plan
+    var done = state.doneInCycle || [];
+    var next = state.plan.filter(function(id) { return done.indexOf(id) === -1; });
+    if (next.length === 0) {
+      state = _initNewCycle(level, templates);
+      next = state.plan.slice();
+    }
+
+    var sessionIds = next.slice(0, SESSION_QUESTIONS);
+    state.sessionPlan = sessionIds;
+    state.sessionAnswered = {};
+    state.sessionActive = true;
+    _saveCycleState(level, state);
+    return sessionIds.map(function(id) { return tplMap[id]; }).filter(Boolean);
+  }
+
+  function recordSessionAnswer(level, templateId, correct) {
+    var state = _getCycleState(level);
+    if (!state) return;
+    if (!state.sessionAnswered) state.sessionAnswered = {};
+    state.sessionAnswered[templateId] = { correct: !!correct, ts: Date.now() };
+    state.cycleCorrect  = (state.cycleCorrect  || 0) + (correct ? 1 : 0);
+    state.cycleAttempts = (state.cycleAttempts || 0) + 1;
+    _saveCycleState(level, state);
+  }
+
+  // Finalize current session and return cycle status for result page display
+  function completeSession(level) {
+    var state = _getCycleState(level);
+    if (!state) return { cycleComplete: false, doneCount: 0, totalCount: 0, unlocked: false };
+
+    var answered = Object.keys(state.sessionAnswered || {});
+    var done = state.doneInCycle || [];
+    answered.forEach(function(id) { if (done.indexOf(id) === -1) done.push(id); });
+    state.doneInCycle = done;
+    state.sessionActive = false;
+
+    var remaining = state.plan.filter(function(id) { return done.indexOf(id) === -1; });
+    var cycleComplete = remaining.length === 0;
+    var accuracy = state.cycleAttempts > 0 ? state.cycleCorrect / state.cycleAttempts : 0;
+
+    if (cycleComplete) {
+      state.completedCycles = (state.completedCycles || []).concat([{
+        accuracy: accuracy, correct: state.cycleCorrect,
+        attempts: state.cycleAttempts, ts: Date.now()
+      }]);
+      if (accuracy >= 0.80) state.unlocked = true;
+    }
+    _saveCycleState(level, state);
+
+    return {
+      cycleComplete:   cycleComplete,
+      doneCount:       done.length,
+      totalCount:      state.plan.length,
+      accuracy:        accuracy,
+      accuracyPct:     Math.round(accuracy * 100),
+      unlocked:        state.unlocked || false,
+      completedCycles: (state.completedCycles || []).length
+    };
+  }
+
+  function getCycleStatus(level) {
+    var state = _getCycleState(level);
+    if (!state || !state.plan || state.plan.length === 0) {
+      return { started: false, doneCount: 0, totalCount: 0, unlocked: false, completedCycles: 0 };
+    }
+    var done = (state.doneInCycle || []).length;
+    var accuracy = state.cycleAttempts > 0 ? state.cycleCorrect / state.cycleAttempts : 0;
+    return {
+      started:         done > 0 || !!state.sessionActive,
+      doneCount:       done,
+      totalCount:      state.plan.length,
+      sessionActive:   !!state.sessionActive,
+      accuracyPct:     Math.round(accuracy * 100),
+      unlocked:        state.unlocked || false,
+      completedCycles: (state.completedCycles || []).length
+    };
+  }
+
   // ── Public API ─────────────────────────────────────────────────────────────
 
   return {
     MASTERY:                MASTERY,
+    // Cycle scheduler (primary)
+    getSessionTemplates:    getSessionTemplates,
+    recordSessionAnswer:    recordSessionAnswer,
+    completeSession:        completeSession,
+    getCycleStatus:         getCycleStatus,
+    // Analytics / legacy
     selectSessionTemplates: selectSessionTemplates,
     recordAttempt:          recordAttempt,
+    incrementLevelSession:  incrementLevelSession,
+    getLevelProgress:       getLevelProgress,
     getMasterySummary:      getMasterySummary,
     makeVariantId:          makeVariantId,
     flushUploadQueue:       _tryFlushQueue

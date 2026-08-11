@@ -74,14 +74,22 @@ var GEN_DATA = {
     { heavy: { emoji: '🐘', nameZh: '大象', nameEn: 'Elephant' }, light: { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' } },
     { heavy: { emoji: '🪨', nameZh: '大石头', nameEn: 'Big Rock' }, light: { emoji: '🍃', nameZh: '树叶', nameEn: 'Leaf' } },
     { heavy: { emoji: '📚', nameZh: '书', nameEn: 'Books' }, light: { emoji: '🪶', nameZh: '羽毛', nameEn: 'Feather' } },
-    { heavy: { emoji: '🛒', nameZh: '购物车', nameEn: 'Cart' }, light: { emoji: '🎈', nameZh: '气球', nameEn: 'Balloon' } }
+    { heavy: { emoji: '🛒', nameZh: '购物车', nameEn: 'Cart' }, light: { emoji: '🎈', nameZh: '气球', nameEn: 'Balloon' } },
+    { heavy: { emoji: '🦛', nameZh: '河马', nameEn: 'Hippo' }, light: { emoji: '🐦', nameZh: '小鸟', nameEn: 'Bird' } },
+    { heavy: { emoji: '🚗', nameZh: '汽车', nameEn: 'Car' }, light: { emoji: '🍂', nameZh: '落叶', nameEn: 'Leaf' } },
+    { heavy: { emoji: '🏋️', nameZh: '哑铃', nameEn: 'Dumbbell' }, light: { emoji: '🍬', nameZh: '糖果', nameEn: 'Candy' } },
+    { heavy: { emoji: '🪵', nameZh: '木头', nameEn: 'Log' }, light: { emoji: '🧸', nameZh: '玩具熊', nameEn: 'Teddy Bear' } }
   ],
 
   speedPairs: [
     { fast: { emoji: '🐆', nameZh: '猎豹', nameEn: 'Cheetah' }, slow: { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' } },
     { fast: { emoji: '✈️', nameZh: '飞机', nameEn: 'Plane' }, slow: { emoji: '🐌', nameZh: '蜗牛', nameEn: 'Snail' } },
     { fast: { emoji: '🚀', nameZh: '火箭', nameEn: 'Rocket' }, slow: { emoji: '🚶', nameZh: '走路', nameEn: 'Walking' } },
-    { fast: { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' }, slow: { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' } }
+    { fast: { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' }, slow: { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' } },
+    { fast: { emoji: '🏎️', nameZh: '赛车', nameEn: 'Race Car' }, slow: { emoji: '🐛', nameZh: '毛毛虫', nameEn: 'Caterpillar' } },
+    { fast: { emoji: '🦅', nameZh: '老鹰', nameEn: 'Eagle' }, slow: { emoji: '🐜', nameZh: '蚂蚁', nameEn: 'Ant' } },
+    { fast: { emoji: '🐎', nameZh: '马', nameEn: 'Horse' }, slow: { emoji: '🦥', nameZh: '树懒', nameEn: 'Sloth' } },
+    { fast: { emoji: '🚄', nameZh: '高铁', nameEn: 'Train' }, slow: { emoji: '🚲', nameZh: '自行车', nameEn: 'Bicycle' } }
   ],
 
   nearFarSubjects: [
