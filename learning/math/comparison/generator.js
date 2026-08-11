@@ -650,6 +650,50 @@ Generators.multiAttribute = function (params) {
   };
 };
 
+/**
+ * sortLength4: 4 bars with clearly distinct lengths for sort activity.
+ * Returns items in random display order; targetOrder gives the correct ascending sequence.
+ */
+Generators.sortLength4 = function (params) {
+  var n = params.items || 4;
+  var minGapPct = params.minGapPct || 18;
+  var minStart = 14, maxEnd = 88;
+
+  // Generate n lengths with guaranteed minimum gap between each adjacent pair
+  var sorted = [minStart + Math.random() * 8];
+  for (var i = 1; i < n; i++) {
+    var prev = sorted[i - 1];
+    var room = maxEnd - prev - minGapPct * (n - i);
+    sorted.push(prev + minGapPct + Math.random() * Math.max(0, room / (n - i)));
+  }
+  sorted = sorted.map(function (v) { return Math.round(v); });
+
+  // Assign distinct colors, shuffle them
+  var palette = ['#ef4444', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#ec4899'];
+  var colors = _shuffle(palette.slice(0, n));
+
+  // Items are labeled A–D; sorted ascending by length → A=shortest, D=longest
+  var items = sorted.map(function (len, idx) {
+    return { id: String.fromCharCode(65 + idx), lengthPct: len, color: colors[idx] };
+  });
+  var targetOrder = items.map(function (item) { return item.id; });
+
+  // Shuffle display order
+  var displayItems = _shuffle(items);
+
+  return {
+    type: 'sort',
+    subtype: 'length',
+    theme: params.theme || 'ribbon',
+    items: displayItems,
+    targetOrder: targetOrder,
+    options: [],              // not used for sort (no click options)
+    answer: targetOrder.join(','),
+    hintZh: '把彩带从最短到最长，依次放入 1 到 ' + n + ' 号槽位。',
+    hintEn: 'Place the ribbons from shortest to longest into slots 1 to ' + n + '.'
+  };
+};
+
 // ── Dispatch ──────────────────────────────────────────────────────────────────
 
 /**

@@ -436,7 +436,112 @@
   var LEVEL_ORDER = ['K1', 'K2', 'G1', 'G2'];
 
   function _launchGame(levelId, templates) {
-    var units=_buildUnitsForLevel(levelId, templates);
+    var selected = CmpEngine.getSessionTemplates(levelId, templates);
+
+    // Route interaction templates through ActivityRunner; puzzle batch uses shell.createGame
+    var firstInteraction = null;
+    var puzzleTemplates  = [];
+    selected.forEach(function (tpl) {
+      if (!firstInteraction && tpl.runtime && tpl.runtime !== 'puzzle') {
+        firstInteraction = tpl;
+      } else {
+        puzzleTemplates.push(tpl);
+      }
+    });
+
+    if (firstInteraction) {
+      _launchInteraction(firstInteraction, levelId, templates);
+    } else {
+      _launchPuzzleSession(levelId, templates);
+    }
+  }
+
+  // Run a single interaction template (sort / fit / match) via ActivityRunner
+  function _launchInteraction(tpl, levelId, templates) {
+    var variant = generateQuestion(tpl);
+    if (!variant) { _launchGame(levelId, templates); return; }
+    variant.variantId = CmpEngine.makeVariantId(tpl.id);
+
+    ActivityRunner.launch(tpl, variant, {
+      levelId:    levelId,
+      onComplete: function (attempt) {
+        // Record in cycle
+        CmpEngine.recordSessionAnswer(tpl.level, tpl.id, attempt.result === 'correct');
+        CmpEngine.recordAttempt(tpl.id, attempt.variantId, attempt.result === 'correct',
+          attempt.responseMs, false, tpl);
+
+        // Continue: if session still has puzzle templates (resume), run them now
+        var remaining = CmpEngine.getSessionRemaining(levelId);
+        if (remaining > 0) {
+          _launchGame(levelId, templates);   // resume picks up remaining templates
+        } else {
+          var sr = CmpEngine.completeSession(levelId);
+          _showInteractionResult(attempt, sr, levelId, templates);
+        }
+      },
+      onBack: function () {
+        _showLevelSelector(templates);
+      }
+    });
+  }
+
+  // Brief result overlay after a solo interaction activity
+  function _showInteractionResult(attempt, sr, levelId, templates) {
+    var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
+    var nextLevel = nextIdx < LEVEL_ORDER.length ? LEVEL_ORDER[nextIdx] : null;
+
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.94);z-index:600;' +
+      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;';
+
+    var icon = sr.cycleComplete && sr.unlocked ? '🏆' : (attempt.result === 'correct' ? '⭐' : '💪');
+    overlay.innerHTML =
+      '<div style="font-size:52px">' + icon + '</div>' +
+      '<div style="font-size:20px;font-weight:900;color:#1e3a8a;text-align:center">' +
+        '<span class="zh">' + (attempt.result === 'correct' ? '排对了！' : '继续尝试！') + '</span>' +
+        '<span class="en">' + (attempt.result === 'correct' ? 'Correct order!' : 'Keep trying!') + '</span>' +
+      '</div>' +
+      '<div id="sor-acts" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>';
+
+    document.body.appendChild(overlay);
+    _applyLangVisibility(overlay);
+
+    var acts = document.getElementById('sor-acts');
+
+    // Next group button
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 's1-abtn s1-primary';
+    nextBtn.innerHTML = '<span class="zh">下一组 →</span><span class="en">Next Group →</span>';
+    _applyLangVisibility(nextBtn);
+    nextBtn.addEventListener('click', function () {
+      overlay.remove();
+      _launchGame(levelId, templates);
+    });
+    acts.appendChild(nextBtn);
+
+    // Upgrade button if cycle complete + unlocked
+    if (sr.cycleComplete && sr.unlocked && nextLevel) {
+      var upBtn = document.createElement('button');
+      upBtn.className = 's1-abtn s1-primary';
+      upBtn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+      upBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
+      _applyLangVisibility(upBtn);
+      upBtn.addEventListener('click', function () { overlay.remove(); _launchGame(nextLevel, templates); });
+      acts.appendChild(upBtn);
+    }
+
+    // Home button
+    var homeBtn = document.createElement('button');
+    homeBtn.className = 's1-abtn s1-outline';
+    homeBtn.innerHTML = '<span class="zh">返回主页</span><span class="en">Home</span>';
+    _applyLangVisibility(homeBtn);
+    homeBtn.addEventListener('click', function () { overlay.remove(); _showLevelSelector(templates); });
+    acts.appendChild(homeBtn);
+  }
+
+  // Original puzzle flow (renamed to avoid confusion)
+  function _launchPuzzleSession(levelId, templates) {
+    var units = _buildUnitsForLevel(levelId, templates);
     shell.createGame({
       id:'learning-math-comparison',
       theme:{primary:'#2563eb',primary2:'#1d4ed8',bg:'#eff6ff'},

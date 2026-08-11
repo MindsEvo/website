@@ -4,6 +4,20 @@
   "updatedAt": "2026-08-10",
   "templates": [
     {
+      "id": "cmp-k1-sort-length-001",
+      "level": "K1",
+      "type": "length",
+      "mode": "sort",
+      "runtime": "sort",
+      "difficulty": 1,
+      "generator": "sortLength4",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "mastery": { "requiredCorrect": 3, "window": 5 },
+      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "params": { "items": 4, "minGapPct": 18, "theme": "ribbon" }
+    },
+    {
       "id": "cmp-k1-size-001",
       "level": "K1",
       "type": "size",

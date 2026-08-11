@@ -592,8 +592,17 @@ var CmpEngine = (function () {
     };
   }
 
-  function getCycleStatus(level) {
+  // Returns how many templates in the current session are still unanswered
+  function getSessionRemaining(level) {
     var state = _getCycleState(level);
+    if (!state || !state.sessionActive) return 0;
+    var answered = Object.keys(state.sessionAnswered || {});
+    return (state.sessionPlan || []).filter(function (id) {
+      return answered.indexOf(id) === -1;
+    }).length;
+  }
+
+  function getCycleStatus(level) {    var state = _getCycleState(level);
     if (!state || !state.plan || state.plan.length === 0) {
       return { started: false, doneCount: 0, totalCount: 0, unlocked: false, completedCycles: 0 };
     }
@@ -618,6 +627,7 @@ var CmpEngine = (function () {
     getSessionTemplates:    getSessionTemplates,
     recordSessionAnswer:    recordSessionAnswer,
     completeSession:        completeSession,
+    getSessionRemaining:    getSessionRemaining,
     getCycleStatus:         getCycleStatus,
     // Analytics / legacy
     selectSessionTemplates: selectSessionTemplates,
