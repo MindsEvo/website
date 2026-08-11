@@ -1538,7 +1538,7 @@
   // ── Public shell object ──────────────────────────────────────
   var shell = {
     version:         '1.3.0',
-    lang:            storage.get('user:settings:lang', 'zh') || 'zh',
+    lang:            storage.get('user:settings:lang', 'en') || 'en',
     t:               t,
     speak:           speak,
     setLang:         setLang,

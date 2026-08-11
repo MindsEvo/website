@@ -38,7 +38,7 @@ shell.createGame({
   theme: { primary: '#7c3aed', primary2: '#6d28d9', bg: '#f5f3ff' },
   gui: {
     header: { show: true, showBack: true },
-    language: { enabled: true, default: 'zh' },
+    language: { enabled: true, default: 'en' },
     audio: {
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }

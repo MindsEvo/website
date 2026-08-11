@@ -147,7 +147,7 @@
     theme: { primary: '#0ea5e9', primary2: '#22c55e', bg: '#ecfeff' },
     gui: {
       header: { show: true, showBack: true },
-      language: { enabled: true, default: 'zh' },
+      language: { enabled: true, default: 'en' },
       audio: {
         music: { enabled: true, defaultOn: false },
         sound: { enabled: true, defaultOn: true }

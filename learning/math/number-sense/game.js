@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 (function injectNumberSenseStyles() {
   if (document.getElementById('ns-shell-style')) return;
@@ -56,7 +56,7 @@ function normalizeNsQuestion(raw, level) {
       transfer_complexity: 'within-domain'
     },
     source: raw,
-    hintZh: '先识别题型，再计算或比较后作答。',
+    hintZh: '?????,??????????',
     hintEn: 'Identify the question type first, then compute or compare before answering.'
   };
 }
@@ -68,7 +68,7 @@ var nsUnits = LEVELS.map(function (level) {
   }
   return {
     id: level.id,
-    icon: '🔢',
+    icon: '??',
     nameZh: level.nameZh,
     nameEn: level.nameEn,
     descZh: level.refZh,
@@ -82,7 +82,7 @@ shell.createGame({
   theme: { primary: '#d97706', primary2: '#f59e0b', bg: '#fffbeb' },
   gui: {
     header: { show: true, showBack: true },
-    language: { enabled: true, default: 'zh' },
+    language: { enabled: true, default: 'en' },
     audio: {
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
@@ -90,12 +90,12 @@ shell.createGame({
     history: { enabled: true },
     help: {
       enabled: true,
-      contentZh: '先看清题型：拆分、接近还是补全，再用最快方式估算或计算。',
+      contentZh: '?????:?????????,????????????',
       contentEn: 'Identify whether it is split, proximity, or completion, then estimate or calculate quickly.'
     }
   },
-  title: { zh: '🔢 数感', en: '🔢 Number Sense' },
-  subtitle: { zh: '拆分、接近与补全练习', en: 'Split, proximity, and completion practice' },
+  title: { zh: '?? ??', en: '?? Number Sense' },
+  subtitle: { zh: '??????????', en: 'Split, proximity, and completion practice' },
   passScore: 6,
   units: nsUnits,
 
@@ -108,15 +108,15 @@ shell.createGame({
 
     var body = '';
     if (q.type === 'split') {
-      body = '<div class="ns-q"><span class="zh">' + q.target + ' 可以拆成哪一组？</span><span class="en">Which pair makes ' + q.target + '?</span></div>';
+      body = '<div class="ns-q"><span class="zh">' + q.target + ' ????????</span><span class="en">Which pair makes ' + q.target + '?</span></div>';
     } else if (q.type === 'proximity') {
-      body = '<div class="ns-q"><span class="zh">哪个更接近 ' + q.target + '？</span><span class="en">Which is closer to ' + q.target + '?</span></div>';
+      body = '<div class="ns-q"><span class="zh">????? ' + q.target + '?</span><span class="en">Which is closer to ' + q.target + '?</span></div>';
     } else {
       var expr = q.flipped
         ? ('__ + ' + q.known + ' = ' + q.sum)
         : (q.known + ' + __ = ' + q.sum);
       body = '<div class="ns-expr">' + expr + '</div>' +
-        '<div class="ns-sub"><span class="zh">选择正确的补数</span><span class="en">Choose the missing addend</span></div>';
+        '<div class="ns-sub"><span class="zh">???????</span><span class="en">Choose the missing addend</span></div>';
     }
 
     container.innerHTML = '<div class="ns-wrap">' + qTypeChip + body + '</div>';
@@ -142,16 +142,16 @@ shell.createGame({
   getVoiceText: function (q) {
     if (q.type === 'split') {
       return shell.lang === 'zh'
-        ? (q.target + '可以拆成哪一组？')
+        ? (q.target + '????????')
         : ('Which pair makes ' + q.target + '?');
     }
     if (q.type === 'proximity') {
       return shell.lang === 'zh'
-        ? ('哪个更接近' + q.target + '？')
+        ? ('?????' + q.target + '?')
         : ('Which is closer to ' + q.target + '?');
     }
     return shell.lang === 'zh'
-      ? ((q.flipped ? ('几加' + q.known + '等于' + q.sum + '？') : (q.known + '加几等于' + q.sum + '？')))
+      ? ((q.flipped ? ('??' + q.known + '??' + q.sum + '?') : (q.known + '????' + q.sum + '?')))
       : ((q.flipped ? ('What plus ' + q.known + ' equals ' + q.sum + '?') : (q.known + ' plus what equals ' + q.sum + '?')));
   },
 

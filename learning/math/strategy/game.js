@@ -55,7 +55,7 @@ shell.createGame({
   theme:    { primary: '#ea580c', primary2: '#9a3412' },  // orange-red — strategy identity
   gui: {
     header: { show: true, showBack: true },
-    language: { enabled: true, default: 'zh' },
+    language: { enabled: true, default: 'en' },
     audio: {
       music: { enabled: true, defaultOn: false },
       sound: { enabled: true, defaultOn: true }
