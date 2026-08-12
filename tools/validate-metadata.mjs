@@ -46,8 +46,13 @@ function listGameIdsFromSource() {
       }
       if (entry !== 'game.js') continue;
       const txt = readFileSync(p, 'utf8');
-      const m = txt.match(/id\s*:\s*['\"]([^'\"]+)['\"]/);
-      if (m && m[1]) ids.add(m[1]);
+      // Collect every declared id, not just the first match. Modules that build
+      // their units dynamically declare level tables (id:'K1') above their
+      // shell.createGame({ id: 'learning-math-comparison' }) call, so taking
+      // only the first match reported a false "id not found in source".
+      for (const m of txt.matchAll(/id\s*:\s*['"]([^'"]+)['"]/g)) {
+        if (m[1]) ids.add(m[1]);
+      }
     }
   }
 

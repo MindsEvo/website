@@ -348,7 +348,13 @@
     var selected=CmpEngine.getSessionTemplates(levelId, templates);
     var questions=selected.map(function(tpl){
       var q=generateQuestion(tpl);
-      if(!q) return null;
+      if(!q){
+        // Same guard as the interaction path: a template whose generator fails
+        // must leave the cycle, or getSessionTemplates() keeps handing it back.
+        console.warn('[comparison] generator produced no question for', tpl.id, '— skipping template');
+        CmpEngine.skipTemplate(levelId, tpl.id);
+        return null;
+      }
       q.variantId=CmpEngine.makeVariantId(tpl.id);
       _sessionTemplateMap[tpl.id]=tpl;
       return q;
@@ -439,16 +445,14 @@
   function _launchGame(levelId, templates) {
     var selected = CmpEngine.getSessionTemplates(levelId, templates);
 
-    // Route interaction templates through ActivityRunner; puzzle batch uses shell.createGame
-    var firstInteraction = null;
-    var puzzleTemplates  = [];
-    selected.forEach(function (tpl) {
-      if (!firstInteraction && tpl.runtime && tpl.runtime !== 'puzzle') {
-        firstInteraction = tpl;
-      } else {
-        puzzleTemplates.push(tpl);
-      }
-    });
+    // Interaction templates run one at a time through ActivityRunner; puzzle
+    // templates run as a batch through shell.createGame. We only need to find
+    // the first interaction here: getSessionTemplates() resumes from whatever is
+    // still unanswered, so draining the interactions one by one and re-entering
+    // this function is enough — the puzzle list never has to be carried across.
+    var firstInteraction = selected.filter(function (tpl) {
+      return tpl.runtime && tpl.runtime !== 'puzzle';
+    })[0];
 
     if (firstInteraction) {
       _launchInteraction(firstInteraction, levelId, templates);
@@ -457,10 +461,17 @@
     }
   }
 
-  // Run a single interaction template (sort / fit / match) via ActivityRunner
+  // Run a single interaction template (sort / match / group / fit) via ActivityRunner
   function _launchInteraction(tpl, levelId, templates) {
     var variant = generateQuestion(tpl);
-    if (!variant) { _launchGame(levelId, templates); return; }
+    if (!variant) {
+      // Broken template definition. Drop it out of the cycle instead of
+      // re-entering _launchGame with the same unanswered template forever.
+      console.warn('[comparison] generator produced no variant for', tpl.id, '— skipping template');
+      CmpEngine.skipTemplate(levelId, tpl.id);
+      _launchGame(levelId, templates);
+      return;
+    }
     variant.variantId = CmpEngine.makeVariantId(tpl.id);
 
     ActivityRunner.launch(tpl, variant, {
@@ -486,6 +497,17 @@
     });
   }
 
+  // Per-mode result wording. Every runtime keeps the child working until the
+  // activity is solved, so 'correct' is the normal path; INCORRECT_TEXT is the
+  // fallback for a runtime that chooses to hand back a failed attempt.
+  var INTERACTION_RESULT_TEXT = {
+    sort:  { zh: '排对了！',     en: 'Correct order!' },
+    match: { zh: '全部配对成功！', en: 'All matched!' },
+    group: { zh: '全部分类正确！', en: 'All sorted!' },
+    fit:   { zh: '成功过河了！',   en: 'Across the river!' }
+  };
+  var INTERACTION_INCORRECT_TEXT = { zh: '继续尝试！', en: 'Keep trying!' };
+
   // Brief result overlay after a solo interaction activity
   function _showInteractionResult(attempt, sr, levelId, templates) {
     var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
@@ -496,11 +518,14 @@
       'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;';
 
     var icon = sr.cycleComplete && sr.unlocked ? '🏆' : (attempt.result === 'correct' ? '⭐' : '💪');
+    var text = attempt.result === 'correct'
+      ? (INTERACTION_RESULT_TEXT[attempt.mode] || { zh: '做对了！', en: 'Well done!' })
+      : INTERACTION_INCORRECT_TEXT;
     overlay.innerHTML =
       '<div style="font-size:52px">' + icon + '</div>' +
       '<div style="font-size:20px;font-weight:900;color:#1e3a8a;text-align:center">' +
-        '<span class="zh">' + (attempt.result === 'correct' ? '排对了！' : '继续尝试！') + '</span>' +
-        '<span class="en">' + (attempt.result === 'correct' ? 'Correct order!' : 'Keep trying!') + '</span>' +
+        '<span class="zh">' + text.zh + '</span>' +
+        '<span class="en">' + text.en + '</span>' +
       '</div>' +
       '<div id="sor-acts" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>';
 

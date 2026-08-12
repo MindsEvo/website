@@ -34,7 +34,8 @@
 
 <div id="summary">
   <h1>⚖️ Comparison Generator — Validation Suite</h1>
-  <h2>Runs each template 20 times, checks uniqueness, answer balance, and required fields.</h2>
+  <h2>Runs each template 20 times. Puzzles: required fields, answer-in-options, answer balance.
+      Interactions (sort/match/group/fit): structural validity — unambiguous target, discriminable gaps, one-to-one mapping.</h2>
   <div id="sum-out" class="sum-row">Loading…</div>
 </div>
 
@@ -68,20 +69,145 @@
     if (q.type === 'fullness') return Math.round(q.leftFillPct) + '|' + Math.round(q.rightFillPct) + '|' + q.askFuller;
     if (q.type === 'time')     return q.leftEventZh + '|' + q.rightEventZh + '|' + q.answer;
     if (q.type === 'multi_attribute') return JSON.stringify(q.left) + JSON.stringify(q.right);
+    // Interaction activities: fingerprint the generated layout
+    if (q.type === 'sort')  return (q.items || []).map(function(i){ return i.id+':'+i.lengthPct; }).join('|');
+    if (q.type === 'match') return (q.leftItems || []).map(function(i){ return i.emoji+i.size; }).join('|') +
+                                   '/' + (q.rightSlots || []).map(function(r){ return r.emoji; }).join('|');
+    if (q.type === 'group') return (q.items || []).map(function(i){ return i.emoji+i.bin; }).join('|');
+    if (q.type === 'fit')   return (q.scene||{}).leftEmoji + '|' + (q.scene||{}).gapPct + '|' +
+                                   (q.boards || []).map(function(b){ return b.lengthPct; }).join(',');
     return JSON.stringify(q);
   }
 
-  function checkRequired(q) {
-    var missing = [];
-    if (!q.type)    missing.push('type');
-    if (!q.options) missing.push('options');
-    if (!q.answer)  missing.push('answer');
-    if (!q.hintZh)  missing.push('hintZh');
-    if (!q.hintEn)  missing.push('hintEn');
-    // answer must be in options
+  function modeOf(tpl) { return tpl.runtime || tpl.mode || 'puzzle'; }
+
+  function ids(arr) { return (arr || []).map(function(o){ return o.id; }); }
+
+  function hasDup(list) {
+    var seen = {};
+    for (var i = 0; i < list.length; i++) {
+      if (seen[list[i]]) return true;
+      seen[list[i]] = true;
+    }
+    return false;
+  }
+
+  // Puzzle questions are multiple-choice: options/answer must be consistent.
+  function checkPuzzle(q) {
+    var bad = [];
+    if (!q.options) bad.push('options');
+    if (!q.answer)  bad.push('answer');
     if (q.options && q.answer && q.options.indexOf(q.answer) === -1)
-      missing.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
-    return missing;
+      bad.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
+    return bad;
+  }
+
+  // Interaction activities have no clickable options; validate their structure
+  // instead — the drag target must be unambiguous and visually discriminable.
+  function checkInteraction(q, mode, tpl) {
+    var bad = [];
+    var p = tpl.params || {};
+
+    if (mode === 'sort') {
+      var items = q.items || [];
+      if (items.length < 2) { bad.push('sort: needs >=2 items'); return bad; }
+      items.forEach(function(it, i) {
+        if (!it.id)                          bad.push('sort: item['+i+'] missing id');
+        if (typeof it.lengthPct !== 'number' || it.lengthPct <= 0 || it.lengthPct > 100)
+          bad.push('sort: item['+i+'] lengthPct out of range ('+it.lengthPct+')');
+        if (!it.color)                       bad.push('sort: item['+i+'] missing color');
+      });
+      var order = q.targetOrder || [];
+      if (order.length !== items.length) bad.push('sort: targetOrder length '+order.length+' != items '+items.length);
+      if (hasDup(order))                 bad.push('sort: targetOrder has duplicates');
+      var itemIds = ids(items);
+      order.forEach(function(id) {
+        if (itemIds.indexOf(id) === -1) bad.push('sort: targetOrder id '+id+' not among items');
+      });
+      // targetOrder must be strictly ascending by length, with a discriminable gap
+      var minGap = (p.minGapPct || 18) - 1;   // -1 tolerance: generator rounds lengths
+      var lenOf = {};
+      items.forEach(function(it) { lenOf[it.id] = it.lengthPct; });
+      for (var k = 1; k < order.length; k++) {
+        var gap = lenOf[order[k]] - lenOf[order[k-1]];
+        if (!(gap > 0))       bad.push('sort: targetOrder not ascending at '+k+' ('+order[k-1]+'→'+order[k]+')');
+        else if (gap < minGap) bad.push('sort: gap '+Math.round(gap)+'% < minGapPct '+(p.minGapPct||18)+' at '+k);
+      }
+
+    } else if (mode === 'match') {
+      var left  = q.leftItems  || [];
+      var right = q.rightSlots || [];
+      if (left.length < 2)              bad.push('match: needs >=2 left items');
+      if (left.length !== right.length) bad.push('match: leftItems '+left.length+' != rightSlots '+right.length);
+      if (hasDup(ids(left)))            bad.push('match: duplicate left ids');
+      if (hasDup(ids(right)))           bad.push('match: duplicate right ids');
+      var map = q.correctMap || {};
+      // every left item must map to exactly one right slot of the same size
+      left.forEach(function(l) {
+        if (!l.size)      bad.push('match: left '+l.id+' missing size');
+        if (!map[l.id])   bad.push('match: left '+l.id+' has no correctMap entry');
+        var matches = right.filter(function(r) { return r.size === l.size; });
+        if (matches.length !== 1) bad.push('match: size "'+l.size+'" matches '+matches.length+' right slots (must be exactly 1)');
+        else if (map[l.id] !== matches[0].id) bad.push('match: correctMap['+l.id+'] != same-size slot '+matches[0].id);
+      });
+      var targets = Object.keys(map).map(function(k) { return map[k]; });
+      if (hasDup(targets)) bad.push('match: correctMap is not one-to-one');
+
+    } else if (mode === 'group') {
+      var gItems = q.items || [];
+      var bins   = q.bins  || [];
+      var perBin = p.itemsPerBin || 3;
+      if (bins.length < 2) bad.push('group: needs >=2 bins');
+      if (hasDup(ids(gItems))) bad.push('group: duplicate item ids');
+      if (gItems.length !== bins.length * perBin)
+        bad.push('group: '+gItems.length+' items != bins '+bins.length+' x itemsPerBin '+perBin);
+      var binIds = ids(bins), counts = {};
+      binIds.forEach(function(b) { counts[b] = 0; });
+      gItems.forEach(function(it, i) {
+        if (!it.bin)                       bad.push('group: item['+i+'] missing bin');
+        else if (binIds.indexOf(it.bin) === -1) bad.push('group: item['+i+'] bin "'+it.bin+'" is not a declared bin');
+        else counts[it.bin]++;
+      });
+      binIds.forEach(function(b) {
+        if (counts[b] !== perBin) bad.push('group: bin "'+b+'" holds '+counts[b]+', expected '+perBin);
+      });
+
+    } else if (mode === 'fit') {
+      var scene  = q.scene || {};
+      var boards = q.boards || [];
+      if (typeof scene.gapPct !== 'number') { bad.push('fit: scene.gapPct missing'); return bad; }
+      if (boards.length !== 3)   bad.push('fit: expected 3 boards, got '+boards.length);
+      if (hasDup(ids(boards)))   bad.push('fit: duplicate board ids');
+      boards.forEach(function(b, i) {
+        if (typeof b.lengthPct !== 'number') bad.push('fit: board['+i+'] lengthPct missing');
+        if (!b.color)                        bad.push('fit: board['+i+'] missing color');
+      });
+      var correct = boards.filter(function(b) { return b.id === q.correctBoardId; })[0];
+      if (!correct) { bad.push('fit: correctBoardId '+q.correctBoardId+' not among boards'); return bad; }
+      if (correct.lengthPct < scene.gapPct)
+        bad.push('fit: correct board '+correct.lengthPct+'% shorter than gap '+scene.gapPct+'%');
+      var tooShort = boards.filter(function(b) { return b.lengthPct < scene.gapPct; });
+      if (tooShort.length !== 1) bad.push('fit: expected exactly 1 too-short board, got '+tooShort.length);
+      // the correct board is the *best fit*: no other fitting board may be shorter
+      var fitting = boards.filter(function(b) { return b.lengthPct >= scene.gapPct; });
+      fitting.forEach(function(b) {
+        if (b.lengthPct < correct.lengthPct)
+          bad.push('fit: board '+b.id+' ('+b.lengthPct+'%) fits and is shorter than correct '+correct.lengthPct+'%');
+      });
+
+    } else {
+      bad.push('unknown interaction mode: ' + mode);
+    }
+    return bad;
+  }
+
+  function checkRequired(q, tpl) {
+    var missing = [];
+    if (!q.type)   missing.push('type');
+    if (!q.hintZh) missing.push('hintZh');
+    if (!q.hintEn) missing.push('hintEn');
+    var mode = modeOf(tpl);
+    return missing.concat(mode === 'puzzle' ? checkPuzzle(q) : checkInteraction(q, mode, tpl));
   }
 
   // ── run one template ──────────────────────────────────────────────────────
@@ -89,6 +215,8 @@
   function runTemplate(tpl) {
     var results = [], fingerprints = {}, answerCounts = {};
     var errors = [];
+    var mode = modeOf(tpl);
+    var isPuzzle = mode === 'puzzle';
 
     for (var i = 0; i < RUNS; i++) {
       var q;
@@ -100,21 +228,22 @@
       }
       if (!q) { errors.push('RUN ' + i + ': generateQuestion returned null'); continue; }
 
-      var missing = checkRequired(q);
-      if (missing.length) errors.push('missing fields: ' + missing.join(', '));
+      var missing = checkRequired(q, tpl);
+      if (missing.length) errors.push('RUN ' + i + ': ' + missing.join(', '));
 
       var fp = uid(q);
       fingerprints[fp] = (fingerprints[fp] || 0) + 1;
-      answerCounts[q.answer] = (answerCounts[q.answer] || 0) + 1;
+      if (isPuzzle) answerCounts[q.answer] = (answerCounts[q.answer] || 0) + 1;
       results.push(q);
     }
 
     var unique = Object.keys(fingerprints).length;
-    var dupMax = Math.max.apply(null, Object.values(fingerprints));
+    var dupMax = results.length ? Math.max.apply(null, Object.values(fingerprints)) : 0;
     var uniquePct = Math.round(unique / RUNS * 100);
 
-    // Answer balance: for 2-option questions, each side should appear 30-70% of the time
-    var opts = results[0] && results[0].options || [];
+    // Answer balance: for 2-option puzzles, each side should appear 20–80% of the time.
+    // Interaction activities have no options — their gate is the structural check above.
+    var opts = (isPuzzle && results[0] && results[0].options) || [];
     var balanced = true;
     if (opts.length === 2) {
       opts.forEach(function(o) {
@@ -124,7 +253,7 @@
     }
 
     return {
-      id: tpl.id, type: tpl.type, generator: tpl.generator,
+      id: tpl.id, type: tpl.type, generator: tpl.generator, mode: mode,
       runs: results.length, unique: unique, uniquePct: uniquePct,
       dupMax: dupMax, balanced: balanced,
       answerCounts: answerCounts, opts: opts,
@@ -150,6 +279,13 @@
       case 'speed':   return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer;
       case 'time':    return q.leftEventZh+' vs '+q.rightEventZh+' → '+q.answer;
       case 'multi_attribute': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' → '+q.answer;
+      case 'sort':    return (q.items||[]).map(function(i){ return i.id+':'+i.lengthPct+'%'; }).join(' ')+' → '+(q.targetOrder||[]).join(',');
+      case 'match':   return (q.leftItems||[]).map(function(l){
+                        return l.emoji+'('+l.size+')→'+((q.rightSlots||[]).filter(function(r){ return r.id===(q.correctMap||{})[l.id]; })[0]||{}).emoji;
+                      }).join(' ');
+      case 'group':   return (q.items||[]).map(function(i){ return i.emoji+'→'+i.bin; }).join(' ');
+      case 'fit':     return 'gap '+(q.scene||{}).gapPct+'% | boards '+
+                        (q.boards||[]).map(function(b){ return b.id+':'+b.lengthPct+'%'; }).join(' ')+' → '+q.correctBoardId;
       default: return q.answer;
     }
   }
@@ -162,10 +298,11 @@
   }
 
   function renderResult(r) {
-    var ansStr = Object.entries(r.answerCounts).map(function(e){
-      var pct = Math.round(e[1]/r.runs*100);
-      return e[0]+':'+pct+'%';
-    }).join('  ');
+    var ansStr = r.mode === 'puzzle'
+      ? 'Answers: ' + Object.entries(r.answerCounts).map(function(e){
+          return e[0]+':'+Math.round(e[1]/r.runs*100)+'%';
+        }).join('  ')
+      : 'Mode: ' + r.mode + ' (structural check)';
 
     var samplesHtml = r.samples.map(function(q,i){
       return (i+1)+'. ' + sampleStr(q);
@@ -184,7 +321,7 @@
           varBar,
           'Unique ' + r.unique + '/' + r.runs + ' (' + r.uniquePct + '%)  |  ',
           'Max dup: ' + r.dupMax + '  |  ',
-          'Answers: ' + ansStr,
+          ansStr,
         '</div>',
         '<pre class="stat">' + samplesHtml + '</pre>',
         errHtml,

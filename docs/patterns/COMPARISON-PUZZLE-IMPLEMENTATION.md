@@ -1,8 +1,11 @@
 # Comparison · Puzzle Mode — Implementation Reference
 
-**版本** v1.0 · 2026-08-10  
+**版本** v1.1 · 2026-08-12  
 **模块** `learning/math/comparison/`  
-**适用范围** Learning 系列所有 Puzzle 类型游戏的样板
+**适用范围** Learning 系列所有 Puzzle 类型游戏的样板  
+**配套文档** `COMPARISON-INTERACTION-IMPLEMENTATION.md`（拖放活动）
+
+> v1.1 变更：`test.html` 校验按 mode 分流；新增 `skipTemplate()`；事件上报端点改为显式配置；Interaction 已落地，更新限制表。
 
 ---
 
@@ -17,7 +20,10 @@ learning/math/comparison/
 ├── game.js             Shell 集成层（渲染器 + 年级选择器 + 结果页逻辑）
 ├── style.css           （保留，暂未使用）
 ├── data.js             （旧版，已停用，保留备查）
-└── test.html           自动化验证页（每模板跑20次，检查多样性和字段完整性）
+└── test.html           自动化验证页（每模板跑20次，检查多样性和结构完整性）
+
+    Interaction 模式另有 6 个文件（pointer-drag / interaction-ui /
+    sort|match|group|fit-runtime / activity-runner），见配套文档。
 ```
 
 **脚本加载顺序**（index.html）：
@@ -137,6 +143,10 @@ AND 本轮准确率 ≥ 80%
 
 状态转移：`NEW → LEARNING → FAMILIAR → MASTERED → REVIEW`
 
+旧的加权抽题函数 `selectSessionTemplates()` 已标记 `@deprecated`，调用时会打 console.warn。
+它连同 `_scoreTemplate` / `_tickCooldowns` / `_coverageBonus` 一起保留在 engine.js 里，
+只服务于分析层，**不要**再用它出题。
+
 ---
 
 ## 5. generator.js 题型一览
@@ -159,9 +169,19 @@ AND 本轮准确率 ≥ 80%
 **K1 设计原则**：几乎无数字，全视觉/直觉比较。  
 **sameDifferent** 是唯一3选1题型（options: ['A','B','C']）。
 
+Interaction 模式另有 4 个生成器，返回的是活动布局而不是选择题（`options` 为空数组）：
+
+| generator 函数 | mode | 出现级别 | 产出 |
+|----------------|------|----------|------|
+| `sortLength4`  | sort  | K1       | items + targetOrder |
+| `matchSize3`   | match | K1 K2    | leftItems + rightSlots + correctMap |
+| `groupSize`    | group | K1 K2    | items(含 bin) + bins |
+| `fitBridge`    | fit   | K1 K2 G1 | scene + boards + correctBoardId |
+
 每个 generator 函数接收 `template.params` 返回标准化 question 对象，必须包含：
-- `type` `options` `answer` `hintZh` `hintEn`
-- 以及渲染器所需的类型特定字段
+- `type` `hintZh` `hintEn`
+- Puzzle 额外需要 `options` `answer`（answer 必须在 options 内）
+- Interaction 额外需要各自的结构字段（见上表）
 
 ---
 
@@ -177,9 +197,15 @@ CmpEngine.getSessionTemplates(levelId, templates)
 CmpEngine.recordSessionAnswer(tpl.level, tpl.id, correct)   // Cycle 统计
 CmpEngine.recordAttempt(...)                                  // Mastery 分析
 
+// 生成器产不出题时（模板定义有 bug）
+CmpEngine.skipTemplate(levelId, tpl.id)   // 移出本轮，不计对错
+
 // 结果页出现时
 CmpEngine.completeSession(levelId)   // 返回 { cycleComplete, accuracyPct, unlocked, ... }
 ```
+
+> `skipTemplate()` 是必须的：`getSessionTemplates()` 只会返回"尚未作答"的模板，
+> 一个永远生成不出题目的模板若不移出，会被无限次重新取出，整个级别卡死。
 
 ### 6.2 Shell 回调名
 
@@ -222,11 +248,19 @@ shell.createGame({
 
 ## 8. 验证工具
 
-`test.html`（需本地服务器，fetch templates.json）：
+`test.html`（**必须通过本地 HTTP 服务打开**，它要 fetch templates.json；`file://` 下会被 CORS 拦掉）：
 
-- 每模板跑20次
-- 检查：字段完整性、answer 在 options 内、变体多样性 ≥50%、答案分布均衡（20%–80%）
-- 通过标准：`WARN 0 FAIL 0`
+- 每模板跑 20 次
+- 按 `mode` 分流校验：
+  - **puzzle**：字段完整性、answer 在 options 内、答案分布均衡（20%–80%）
+  - **interaction**（sort/match/group/fit）：结构合法性，见 Interaction 文档 §12.1
+- 通用检查：变体多样性 ≥ 50%
+
+**通过标准：`FAIL 0`。**
+
+`WARN`（LOW VAR / SKEWED）来自 20 次抽样的统计波动，同一份代码复跑会漂移
+（例如 `cmp-g2-time-001` 因 dailyEvents 池小而常报 LOW VAR）。
+出现 WARN 时先复跑两次确认是否稳定，稳定复现才需要扩池或调参，不要把它当硬门禁。
 
 ---
 
@@ -234,11 +268,12 @@ shell.createGame({
 
 | 限制 | 说明 |
 |------|------|
-| Interaction/Mini-game 未实现 | shell-1 仅支持 Puzzle；Interaction Adapter 留待 Phase 2 |
 | G3–G6 未实现 | 卡片已显示"即将推出"，templates 和 generators 需补充 |
 | 答题音效缺失 | TTS 工作，对错提示音（ding/buzz）尚未添加 |
-| 服务器事件上传 | 客户端已队列化事件，`/api/events` 端点需服务端实现接收 |
+| 服务器事件上传需显式开启 | 默认不上报；宿主页需调 `CmpEngine.setEventsEndpoint('http://localhost:8787/api/events')`。未配置时事件只在 localStorage 排队（上限 200 条） |
 | 跨设备同步 | 本地 localStorage 存储，无账号体系时无法同步 |
+| Interaction 不影响准确率 | 拖放活动恒记为答对，Cycle 准确率实际只由 Puzzle 决定 |
+| Mini-game 未实现 | Interaction Adapter 已稳定，Mini-game Runtime 留待后续 |
 
 ---
 

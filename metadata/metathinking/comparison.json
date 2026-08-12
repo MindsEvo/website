@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-08-02",
+  "version": "v0.2.0",
+  "updatedAt": "2026-08-12",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -136,40 +136,52 @@
     {
       "levelId": "L1",
       "ageHint": "4-5",
+      "gradeCode": "K1",
       "objectiveZh": "在单一感知维度上做直接比较（大/小、多/少、长/短）。",
       "objectiveEn": "Perform direct comparison on a single perceptual dimension.",
       "primaryTypes": ["quantity", "spatial_visual"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison"],
+      "implementedModes": ["puzzle", "sort", "match", "group", "fit"],
       "sourceLevels": ["L1"]
     },
     {
       "levelId": "L2",
       "ageHint": "5-6",
+      "gradeCode": "K2",
       "objectiveZh": "在 10 以内进行数量与图示对应比较。",
       "objectiveEn": "Compare quantities within 10 using symbol-visual correspondence.",
       "primaryTypes": ["quantity", "spatial_visual"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
+      "implementedModes": ["puzzle", "match", "group", "fit"],
       "sourceLevels": ["L2"]
     },
     {
       "levelId": "L3",
       "ageHint": "6-7",
+      "gradeCode": "G1",
       "objectiveZh": "在 20 以内进行直接比较与接近判断。",
       "objectiveEn": "Perform direct and proximity comparison within 20.",
       "primaryTypes": ["quantity", "temporal"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
+      "implementedModes": ["puzzle", "fit"],
       "sourceLevels": ["L3"]
     },
     {
       "levelId": "L4",
       "ageHint": "7-8",
+      "gradeCode": "G2",
       "objectiveZh": "引入双维比较（如数量+长度），进行基础排序。",
       "objectiveEn": "Introduce dual-dimension comparison and basic ranking.",
       "primaryTypes": ["quantity", "spatial_visual"],
-      "status": "planned"
+      "status": "partial",
+      "implementedBy": ["learning-math-comparison"],
+      "implementedModes": ["puzzle"],
+      "coverageGapZh": "多属性比较已实现（multi_attribute），拖放排序活动尚未覆盖该级别。",
+      "coverageGapEn": "Multi-attribute comparison is implemented; drag-to-sort activities are not yet available at this level.",
+      "sourceLevels": ["L4"]
     },
     {
       "levelId": "L5",
@@ -266,11 +278,17 @@
       "session_start",
       "answer_submit",
       "hint_open",
-      "session_finish"
+      "session_finish",
+      "activity_start",
+      "activity_move",
+      "activity_correction",
+      "activity_finish"
     ],
     "dimensions": [
       "levelId",
+      "gradeCode",
       "comparisonType",
+      "interactionMode",
       "difficultyAxis",
       "errorType",
       "ageBucket"
@@ -280,7 +298,9 @@
       "accuracy",
       "avgTimeMs",
       "hintRate",
-      "retryRate"
+      "retryRate",
+      "avgCorrections",
+      "optimalChoiceRate"
     ]
   },
   "aiQueryHints": {

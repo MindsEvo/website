@@ -18,8 +18,16 @@ function info(msg) {
   console.log('[metathinking] INFO :', msg);
 }
 
+// Tracks files that carried a UTF-8 BOM so it is reported as a locatable error
+// instead of aborting the whole run with an opaque JSON parse failure.
+const bomFiles = [];
+
 function loadJson(filePath) {
   const raw = readFileSync(filePath, 'utf8');
+  if (raw.charCodeAt(0) === 0xfeff) {
+    bomFiles.push(filePath);
+    return JSON.parse(raw.slice(1));
+  }
   return JSON.parse(raw);
 }
 
@@ -50,6 +58,31 @@ function validateComparisonModule(module, fileName, gameIds, lessonIds, videoIds
   if (uniq.size !== levels.length) {
     errors.push(fileName + ' levelMap has duplicate levelId entries');
   }
+
+  // Implementation cross-reference (see METATHINKING-MODULE-STANDARD.md §5a).
+  // A level that claims to be playable must name the in-game level and modes
+  // behind it; a partial level must state what is missing.
+  const allowedStatus = ['implemented', 'partial', 'planned'];
+  asArray(module.levelMap).forEach(function (lvl) {
+    if (!lvl || typeof lvl !== 'object') return;
+    const at = fileName + ' levelMap[' + (lvl.levelId || '?') + ']';
+    if (allowedStatus.indexOf(lvl.status) < 0) {
+      errors.push(at + ' has invalid status: ' + String(lvl.status) +
+                  ' (expected implemented | partial | planned)');
+      return;
+    }
+    if (lvl.status === 'planned') {
+      if ('gradeCode' in lvl || 'implementedModes' in lvl) {
+        errors.push(at + ' is planned but declares gradeCode/implementedModes');
+      }
+      return;
+    }
+    if (!lvl.gradeCode)        errors.push(at + ' is ' + lvl.status + ' but has no gradeCode');
+    if (!asArray(lvl.implementedModes).length)
+      errors.push(at + ' is ' + lvl.status + ' but has no implementedModes[]');
+    if (lvl.status === 'partial' && !(lvl.coverageGapZh && lvl.coverageGapEn))
+      errors.push(at + ' is partial but has no coverageGapZh/coverageGapEn');
+  });
 
   asArray(module.rootGeneIds).forEach(function (rg) {
     if (typeof rg !== 'string' || !/^RG\.[A-Z0-9_]+(\.[A-Z0-9_]+)+$/.test(rg)) {
@@ -129,10 +162,13 @@ function validate() {
   });
 
   warnings.forEach(warn);
+  bomFiles.forEach(function (f) {
+    fail(f + ' starts with a UTF-8 BOM — strip it, JSON must not carry one');
+  });
   errors.forEach(fail);
 
-  if (errors.length > 0) {
-    console.error('[metathinking] FAILED with ' + errors.length + ' error(s)');
+  if (errors.length > 0 || bomFiles.length > 0) {
+    console.error('[metathinking] FAILED with ' + (errors.length + bomFiles.length) + ' error(s)');
     process.exit(1);
   }
 

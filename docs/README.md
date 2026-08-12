@@ -12,7 +12,7 @@
 6. `metadata/AI-METADATA-STANDARD.md`（阶段 5：标准元数据）
 7. `metadata/METATHINKING-MODULE-STANDARD.md`（元思维模块机器可读标准）
 8. `rootgene/ROOTGENE-FRAMEWORK.md`（阶段 3：RootGene 标准）
-8. 对应模块规范（如 Spatial / Quantity）
+9. 对应模块规范（如 Spatial / Quantity / Comparison）
 
 ## 架构主文档
 
@@ -30,6 +30,14 @@
 1. `patterns/PATTERN-QUALITY-GATE.md`
 2. `patterns/SPATIAL-PATTERN-MODULE.md`
 3. `patterns/QUANTITY-PATTERN-MODULE.md`
+
+## 实现参考（Learning 系列样板）
+
+1. `patterns/COMPARISON-PUZZLE-IMPLEMENTATION.md`（Cycle 调度 + 选择题样板）
+2. `patterns/COMPARISON-INTERACTION-IMPLEMENTATION.md`（拖放活动样板）
+
+> 新建 Learning 模块请以这两篇为蓝本：`engine.js` 跨学科共享，
+> `templates.json` + `generator.js` 是每个模块的定制层。
 
 ## Metadata 规范
 

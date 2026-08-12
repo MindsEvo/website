@@ -52,6 +52,7 @@ var GroupRuntime = (function () {
       binContents: {},
       pool:        variant.items.map(function (i) { return i.id; }),
       moves:       0,
+      corrections: 0,   // items sent back out of a wrong bin
       startTime:   Date.now(),
       done:        false
     };
@@ -236,7 +237,7 @@ var GroupRuntime = (function () {
       var attempt = {
         templateId: s.template.id, variantId: s.variant.variantId || '',
         mode: 'group', result: 'correct', responseMs: Date.now() - s.startTime,
-        process: { moves: s.moves }
+        process: { moves: s.moves, corrections: s.corrections }
       };
       var onComplete = s.ctx.onComplete;
       setTimeout(function () { _tearDown(); onComplete(attempt); }, 1100);
@@ -252,6 +253,7 @@ var GroupRuntime = (function () {
           var item = _itemById(itemId);
           if (item && item.bin !== binId && s.pool.indexOf(itemId) === -1) {
             s.pool.push(itemId);
+            s.corrections++;
           }
         });
         s.binContents[binId] = s.binContents[binId].filter(function (itemId) {

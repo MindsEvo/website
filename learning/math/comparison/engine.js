@@ -243,11 +243,17 @@ var CmpEngine = (function () {
   /**
    * Select SESSION_QUESTIONS templates for a session.
    *
+   * @deprecated Superseded by getSessionTemplates() (Cycle scheduler). Mastery-
+   *   weighted picking let a strong child repeat easy types while weak types went
+   *   unseen, so it no longer drives question selection. Retained for reference
+   *   and because the scoring helpers below feed the analytics layer.
+   *
    * @param {string}   level      'K1' | 'K2' | 'G1' | 'G2'
    * @param {Object[]} templates  full template pool (from templates.json)
    * @returns {Object[]}          selected templates in play order
    */
   function selectSessionTemplates(level, templates) {
+    console.warn('[CmpEngine] selectSessionTemplates() is deprecated — use getSessionTemplates()');
     var pool = templates.filter(function (t) { return t.level === level; });
     var selected = [];
 
@@ -368,6 +374,18 @@ var CmpEngine = (function () {
 
   // ── Server upload queue ────────────────────────────────────────────────────
 
+  // No endpoint is configured by default. The report server in server/ listens
+  // on its own origin (http://localhost:8787), so posting to a same-origin
+  // /api/events would 404 against any static host. Events stay queued in
+  // localStorage until a host opts in:
+  //   CmpEngine.setEventsEndpoint('http://localhost:8787/api/events')
+  var _eventsEndpoint = null;
+
+  function setEventsEndpoint(url) {
+    _eventsEndpoint = url || null;
+    if (_eventsEndpoint) _tryFlushQueue();
+  }
+
   function _queueServerEvent(event) {
     var q = _get('upload_queue', []);
     q.push(event);
@@ -377,12 +395,13 @@ var CmpEngine = (function () {
   }
 
   function _tryFlushQueue() {
+    if (!_eventsEndpoint) return;      // nothing to flush to — keep queueing
     if (!navigator.onLine) return;
     var q = _get('upload_queue', []);
     if (!q.length) return;
     var payload = q.slice();
 
-    fetch('/api/events', {
+    fetch(_eventsEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ events: payload })
@@ -557,6 +576,20 @@ var CmpEngine = (function () {
     _saveCycleState(level, state);
   }
 
+  // Drop a template out of the current cycle WITHOUT recording an attempt.
+  // Used when a generator cannot produce a variant: the template is a content
+  // bug, so it must neither block the cycle nor count against the child.
+  function skipTemplate(level, templateId) {
+    var state = _getCycleState(level);
+    if (!state) return;
+    var done = state.doneInCycle || [];
+    if (done.indexOf(templateId) === -1) done.push(templateId);
+    state.doneInCycle = done;
+    state.sessionPlan = (state.sessionPlan || []).filter(function (id) { return id !== templateId; });
+    if (state.sessionAnswered) delete state.sessionAnswered[templateId];
+    _saveCycleState(level, state);
+  }
+
   // Finalize current session and return cycle status for result page display
   function completeSession(level) {
     var state = _getCycleState(level);
@@ -602,7 +635,8 @@ var CmpEngine = (function () {
     }).length;
   }
 
-  function getCycleStatus(level) {    var state = _getCycleState(level);
+  function getCycleStatus(level) {
+    var state = _getCycleState(level);
     if (!state || !state.plan || state.plan.length === 0) {
       return { started: false, doneCount: 0, totalCount: 0, unlocked: false, completedCycles: 0 };
     }
@@ -623,20 +657,24 @@ var CmpEngine = (function () {
 
   return {
     MASTERY:                MASTERY,
-    // Cycle scheduler (primary)
+    // Cycle scheduler (primary — this is what decides what the child sees)
     getSessionTemplates:    getSessionTemplates,
     recordSessionAnswer:    recordSessionAnswer,
+    skipTemplate:           skipTemplate,
     completeSession:        completeSession,
     getSessionRemaining:    getSessionRemaining,
     getCycleStatus:         getCycleStatus,
-    // Analytics / legacy
-    selectSessionTemplates: selectSessionTemplates,
+    // Analytics — recorded, never used to pick questions
     recordAttempt:          recordAttempt,
     incrementLevelSession:  incrementLevelSession,
     getLevelProgress:       getLevelProgress,
     getMasterySummary:      getMasterySummary,
     makeVariantId:          makeVariantId,
-    flushUploadQueue:       _tryFlushQueue
+    setEventsEndpoint:      setEventsEndpoint,
+    flushUploadQueue:       _tryFlushQueue,
+    // DEPRECATED: mastery/cooldown weighted picker, superseded by the Cycle
+    // scheduler above. Kept only so external callers do not break; do not use.
+    selectSessionTemplates: selectSessionTemplates
   };
 
 }());

@@ -13,9 +13,13 @@
  *
  * Attempt structure:
  * {
- *   templateId, variantId, mode:'sort', result:'correct'|'incorrect',
+ *   templateId, variantId, mode:'sort', result:'correct',
  *   responseMs, process: { moves, corrections, finalOrder, targetOrder }
  * }
+ *
+ * A wrong order is not an outcome: the slots stay filled, the misplaced ones
+ * shake, and the child keeps adjusting. onComplete only fires once solved, so
+ * process.corrections is what carries the struggle signal.
  */
 
 var SortRuntime = (function () {

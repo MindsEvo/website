@@ -717,7 +717,9 @@ Generators.multiAttribute = function (params) {
 };
 
 /**
- * sortLength4: 4 bars with clearly distinct lengths for sort activity. * Returns items in random display order; targetOrder gives the correct ascending sequence.
+ * sortLength4: 4 bars with clearly distinct lengths for the sort activity.
+ * Returns items in random display order; targetOrder gives the correct
+ * ascending sequence.
  */
 Generators.sortLength4 = function (params) {
   var n = params.items || 4;
@@ -758,8 +760,6 @@ Generators.sortLength4 = function (params) {
     hintEn: 'Place the ribbons from shortest to longest into slots 1 to ' + n + '.'
   };
 };
-
-// ── Dispatch ──────────────────────────────────────────────────────────────────
 
 /**
  * matchSize3: 3 animal–home pairs to drag-match by size (big/medium/small).

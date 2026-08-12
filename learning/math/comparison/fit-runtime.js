@@ -147,6 +147,12 @@ var FitRuntime = (function () {
     });
   }
 
+  // Three outcomes, not two:
+  //   too short           → wrong, "too short" feedback, child keeps trying
+  //   long enough + best  → correct, "a perfect fit" feedback
+  //   long enough + extra → correct, but told the plank is longer than needed
+  // Any plank that spans the gap really does carry the character across, so it
+  // counts as correct; process.optimal records whether it was the shortest fit.
   function _tryBoard(board) {
     var s = _st;
     if (s.done) return;
@@ -155,51 +161,67 @@ var FitRuntime = (function () {
     var scene = s.variant.scene;
     var fits  = board.lengthPct >= scene.gapPct;
 
-    if (fits && board.id === s.variant.correctBoardId) {
-      // SUCCESS
-      s.done = true;
-      s.usedBoards.push(board.id);
-      _renderBoards();
+    if (!fits) { _tooShort(board); return; }
 
-      // Show bridge crossing the river
-      var bridgeEl = document.getElementById('ft-bridge');
-      if (bridgeEl) {
-        var riverEl = document.querySelector('#ft-root .ft-river');
-        var riverW  = riverEl ? riverEl.offsetWidth : 200;
-        bridgeEl.style.width  = (riverW + 20) + 'px';
-        bridgeEl.style.background = board.color;
-        bridgeEl.style.animation  = 'ft-slide-in .4s ease forwards';
-        bridgeEl.classList.add('ft-visible');
-      }
+    var optimal = board.id === s.variant.correctBoardId;
 
-      _setMsg('\u6728\u677f\u641e\u5230\u5bf9\u5cb8\u4e86\uff01' + scene.leftEmoji + '\u8df3\u8fc7\u53bb\u4e86\ud83c\udf89',
-              'The plank reaches! ' + scene.leftEmoji + ' crosses! \ud83c\udf89', 'ok');
-      shell.speak(shell.lang === 'zh' ? '太棒了！' + scene.leftEmoji + '过河了！' : 'Amazing! The plank fits!');
+    s.done = true;
+    s.usedBoards.push(board.id);
+    _renderBoards();
 
-      var attempt = {
-        templateId: s.template.id, variantId: s.variant.variantId || '',
-        mode: 'fit', result: 'correct', responseMs: Date.now() - s.startTime,
-        process: { attempts: s.attempts, correctBoardId: board.id }
-      };
-      var onComplete = s.ctx.onComplete;
-      setTimeout(function () { _tearDown(); onComplete(attempt); }, 1400);
+    // Show bridge crossing the river
+    var bridgeEl = document.getElementById('ft-bridge');
+    if (bridgeEl) {
+      var riverEl = document.querySelector('#ft-root .ft-river');
+      var riverW  = riverEl ? riverEl.offsetWidth : 200;
+      bridgeEl.style.width  = (riverW + 20) + 'px';
+      bridgeEl.style.background = board.color;
+      bridgeEl.style.animation  = 'ft-slide-in .4s ease forwards';
+      bridgeEl.classList.add('ft-visible');
+    }
 
+    if (optimal) {
+      _setMsg('刚好搭到对岸了！' + scene.leftEmoji + '跳过去了🎉',
+              'A perfect fit! ' + scene.leftEmoji + ' crosses! 🎉', 'ok');
+      shell.speak(shell.lang === 'zh' ? '刚好！' + scene.leftEmoji + '过河了！' : 'A perfect fit! It crosses!');
     } else {
-      // TOO SHORT (or wrong)
-      s.usedBoards.push(board.id);
-      _renderBoards();
-      _setMsg('\u6728\u677f\u592a\u77ed\u4e86\uff0c\u8bd5\u8bd5\u522b\u7684', 'Too short — try another plank', 'err');
-      shell.speak(shell.lang === 'zh' ? '太短了，再试试别的！' : 'Too short, try another one!');
-      // Let child try another board (don't reset used boards)
-      // If all boards tried and none correct → very unlikely, but allow one retry cycle
-      var allUsed = s.variant.boards.every(function (b) { return s.usedBoards.indexOf(b.id) !== -1; });
-      if (allUsed) {
-        setTimeout(function () {
-          s.usedBoards = [];
-          _setMsg('', '', '');
-          _renderBoards();
-        }, 1000);
+      _setMsg('有点长，不过能过河！' + scene.leftEmoji + '跳过去了🎉',
+              'A bit long, but it works! ' + scene.leftEmoji + ' crosses! 🎉', 'ok');
+      shell.speak(shell.lang === 'zh' ? '有点长，不过能过河！' : 'A bit long, but it works!');
+    }
+
+    var attempt = {
+      templateId: s.template.id, variantId: s.variant.variantId || '',
+      mode: 'fit', result: 'correct', responseMs: Date.now() - s.startTime,
+      process: {
+        attempts:       s.attempts,
+        boardId:        board.id,       // the plank the child actually used
+        optimal:        optimal,        // was it the shortest plank that fits?
+        boardLengthPct: board.lengthPct,
+        gapPct:         scene.gapPct
       }
+    };
+    var onComplete = s.ctx.onComplete;
+    setTimeout(function () { _tearDown(); onComplete(attempt); }, 1400);
+  }
+
+  function _tooShort(board) {
+    var s = _st;
+    s.usedBoards.push(board.id);
+    _renderBoards();
+    _setMsg('木板太短了，试试长一点的', 'Too short — try a longer plank', 'err');
+    shell.speak(shell.lang === 'zh' ? '太短了，试试长一点的！' : 'Too short, try a longer one!');
+    // Let the child keep trying. If every plank has been tried without success
+    // (only reachable if the generator produced no fitting plank) restore the
+    // tray so the activity can never dead-end.
+    var allUsed = s.variant.boards.every(function (b) { return s.usedBoards.indexOf(b.id) !== -1; });
+    if (allUsed) {
+      setTimeout(function () {
+        if (!_st || _st.done) return;
+        _st.usedBoards = [];
+        _setMsg('', '', '');
+        _renderBoards();
+      }, 1000);
     }
   }
 
@@ -223,7 +245,8 @@ var FitRuntime = (function () {
   function _reset() {
     if (!_st || _st.done) return;
     _st.usedBoards = [];
-    _st.attempts   = 0;
+    // attempts is NOT cleared: like moves/corrections in the other runtimes it
+    // counts everything the child did, so a reset cannot hide the struggle.
     var bridgeEl = document.getElementById('ft-bridge');
     if (bridgeEl) { bridgeEl.classList.remove('ft-visible'); bridgeEl.style.animation = ''; }
     _setMsg('', '', '');
