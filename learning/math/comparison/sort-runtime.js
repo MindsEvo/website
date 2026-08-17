@@ -306,6 +306,7 @@ var SortRuntime = (function () {
       var slotEl = document.getElementById('sr-sl-' + i);
       if (slotEl) { slotEl.classList.add('sr-ok', 'sr-pop'); }
     }
+    if (shell.audio) shell.audio.sfx('win');
     shell.speak(shell.lang === 'zh' ? '太棒了！排对了！' : 'Excellent! Correct order!');
 
     var attempt = {
@@ -343,6 +344,7 @@ var SortRuntime = (function () {
         }
       }
     }
+    if (shell.audio) shell.audio.sfx('wrong');
     shell.speak(shell.lang === 'zh' ? '再看看，试着调整一下。' : 'Take another look and try adjusting.');
   }
 

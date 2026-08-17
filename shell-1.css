@@ -67,7 +67,7 @@ body {
 }
 .s1-title    { font-size: 36px; color: var(--s1-primary); font-weight: 900; }
 .s1-sub      { font-size: 15px; color: var(--s1-muted); margin-bottom: 32px; }
-.s1-controls { display: flex; gap: 8px; }
+.s1-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 
 .s1-btn {
   background: white; border: 2px solid var(--s1-border);
@@ -308,28 +308,64 @@ body {
    ══════════════════════════════════════════════════════════ */
 
 /* ── Volume slider ──────────────────────────────────────── */
+/* Default styling targets a LIGHT background (home / game / result cards are
+   white). Dark headers opt in to the white variant via .ih-hdr below. The
+   input itself is 26px tall so the touch target is not the 6px track. */
+.s1-volwrap {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0 8px 0 6px;
+  border: 2px solid var(--s1-border); border-radius: 20px;
+  background: white;
+}
+.s1-volicon { font-size: 14px; line-height: 1; user-select: none; }
+
 .s1-vol {
   -webkit-appearance: none; appearance: none;
-  width: 62px; height: 4px;
-  border-radius: 2px; cursor: pointer; vertical-align: middle;
-  background: rgba(255,255,255,0.25);
+  width: 78px; height: 26px;
+  margin: 0; padding: 0;
+  background: transparent;            /* the track pseudo-element paints it */
+  cursor: pointer; vertical-align: middle;
   outline: none; border: none;
+}
+.s1-vol::-webkit-slider-runnable-track {
+  height: 6px; border-radius: 3px;
+  background: rgba(37,99,235,0.28);
 }
 .s1-vol::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: #fff; cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--s1-primary); border: 2px solid #fff;
+  margin-top: -6px;                   /* centre the thumb on the 6px track */
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.s1-vol::-moz-range-track {
+  height: 6px; border-radius: 3px;
+  background: rgba(37,99,235,0.28);
 }
 .s1-vol::-moz-range-thumb {
-  width: 14px; height: 14px; border-radius: 50%;
-  background: #fff; cursor: pointer; border: none;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--s1-primary); border: 2px solid #fff; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
-/* Slightly darker thumb on the white home screen */
-#s1-home .s1-vol { background: rgba(37,99,235,0.25); }
-#s1-home .s1-vol::-webkit-slider-thumb { background: var(--s1-primary); }
-#s1-home .s1-vol::-moz-range-thumb     { background: var(--s1-primary); }
+.s1-vol:focus-visible { outline: 2px solid var(--s1-primary); outline-offset: 3px; }
+
+/* Dark header variant (Interaction / Mini-game headers, .ih-hdr) */
+.ih-hdr .s1-volwrap { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.28); }
+.ih-hdr .s1-vol::-webkit-slider-runnable-track { background: rgba(255,255,255,0.32); }
+.ih-hdr .s1-vol::-webkit-slider-thumb { background: #fff; border-color: rgba(255,255,255,0.55); }
+.ih-hdr .s1-vol::-moz-range-track { background: rgba(255,255,255,0.32); }
+.ih-hdr .s1-vol::-moz-range-thumb { background: #fff; border-color: rgba(255,255,255,0.55); }
+
+/* Muted (sound off or volume 0): still draggable, but reads as inactive —
+   the icon flips to 🔇 in shell.gui's control sync. */
+.s1-volwrap.s1-muted { opacity: 0.55; }
+.s1-volwrap.s1-muted .s1-vol::-webkit-slider-runnable-track { background: rgba(100,116,139,0.30); }
+.s1-volwrap.s1-muted .s1-vol::-webkit-slider-thumb { background: #94a3b8; }
+.s1-volwrap.s1-muted .s1-vol::-moz-range-track { background: rgba(100,116,139,0.30); }
+.s1-volwrap.s1-muted .s1-vol::-moz-range-thumb { background: #94a3b8; }
+.ih-hdr .s1-volwrap.s1-muted .s1-vol::-webkit-slider-thumb { background: rgba(255,255,255,0.65); }
+.ih-hdr .s1-volwrap.s1-muted .s1-vol::-moz-range-thumb { background: rgba(255,255,255,0.65); }
 
 .s1-transcript {
   position: fixed; bottom: 0; left: 0; right: 0;
@@ -423,10 +459,14 @@ body {
   .s1-rscore { font-size: 40px; }
   .s1-overlay { padding: 12px; }
   .s1-overlay-title { font-size: 16px; }
+  .s1-vol    { width: 56px; }
 }
 
 /* Very small phones (e.g. iPhone SE) */
 @media (max-width: 375px) {
+  .s1-volicon { display: none; }
+  .s1-volwrap { padding: 0 6px; }
+  .s1-vol    { width: 46px; }
   .s1-title  { font-size: 22px; }
   .s1-seq    { font-size: 24px; padding: 16px 8px; min-height: 80px; }
   .mystery   { font-size: 24px; padding: 2px 10px; }
@@ -447,7 +487,7 @@ body {
 
 /* Touch optimization - prevent iOS double-tap zoom */
 .s1-btn, .s1-opt, .s1-abtn, .s1-back, .s1-replay, .s1-card,
-.s1-sum-hdr, .s1-clearbtn {
+.s1-sum-hdr, .s1-clearbtn, .s1-vol {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }

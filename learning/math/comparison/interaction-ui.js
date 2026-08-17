@@ -26,48 +26,32 @@ var IH = (function () {
   function controlsHtml(prefix) {
     return '<div class="ih-controls">' +
       '<button class="s1-btn" id="ih-' + prefix + '-reset" title="Reset" style="display:none">\ud83d\udd04</button>' +
-      '<button class="s1-btn" id="ih-' + prefix + '-mute">🔊</button>' +
-      '<button class="s1-btn" id="ih-' + prefix + '-music">🎵</button>' +
-      '<button class="s1-btn" id="ih-' + prefix + '-lang">EN</button>' +
-      '<input type="range" class="s1-vol" id="ih-' + prefix + '-vol" min="0" max="100">' +
+      '<button class="s1-btn s1-mute"  id="ih-' + prefix + '-mute">🔊</button>' +
+      '<button class="s1-btn s1-music" id="ih-' + prefix + '-music">🎵</button>' +
+      '<button class="s1-btn s1-lang"  id="ih-' + prefix + '-lang">EN</button>' +
+      '<div class="s1-volwrap" id="ih-' + prefix + '-volwrap">' +
+        '<span class="s1-volicon">🔈</span>' +
+        '<input type="range" class="s1-vol" id="ih-' + prefix + '-vol" min="0" max="100" title="音量 / Volume" aria-label="音量 / Volume">' +
+      '</div>' +
     '</div>';
   }
 
   // opts.onReset: optional reset callback; shows the reset button when provided
   function wire(prefix, opts) {
     opts = opts || {};
-    var mute  = document.getElementById('ih-' + prefix + '-mute');
-    var music = document.getElementById('ih-' + prefix + '-music');
-    var lang  = document.getElementById('ih-' + prefix + '-lang');
-    var vol   = document.getElementById('ih-' + prefix + '-vol');
 
-    function _updMute()  { if (mute)  mute.textContent  = shell.storage.get('user:settings:sound', true)  ? '🔊' : '🔇'; }
-    function _updMusic() { if (music) music.textContent = shell.storage.get('user:settings:music', false) ? '🎵' : '🎶'; }
-    function _updLang()  { if (lang)  lang.textContent  = shell.lang === 'zh' ? 'EN' : 'CN'; }
-    function _updVol()   { if (vol && shell.getVolume)  vol.value = shell.getVolume(); }
-
-    if (mute)  mute.addEventListener('click', function () {
-      shell.gui.setSound(!shell.storage.get('user:settings:sound', true)); _updMute();
-    });
-    if (music) music.addEventListener('click', function () {
-      shell.gui.setMusic(!shell.storage.get('user:settings:music', false)); _updMusic();
-    });
-    if (lang)  lang.addEventListener('click', function () {
-      shell.gui.setLanguage(shell.lang === 'zh' ? 'en' : 'zh'); _updLang();
-    });
-    if (vol) {
-      vol.addEventListener('input', function () { if (shell.setVolume) shell.setVolume(Number(vol.value)); });
-      document.addEventListener('shell:gui:volumeChanged', _updVol);
-    }
-    document.addEventListener('shell:langchange', _updLang);
+    // Toggling, label/icon sync and the muted styling all come from the shell
+    // (shell.gui.mountControls), so an interaction header can never drift from
+    // the puzzle header — the s1-* classes in controlsHtml() are the contract.
+    var mute = document.getElementById('ih-' + prefix + '-mute');
+    var root = mute && mute.parentNode ? mute.parentNode : document;
+    if (shell.gui && shell.gui.mountControls) shell.gui.mountControls(root);
 
     var resetBtn = document.getElementById('ih-' + prefix + '-reset');
     if (resetBtn && opts.onReset) {
       resetBtn.style.display = '';
       resetBtn.addEventListener('click', opts.onReset);
     }
-
-    _updMute(); _updMusic(); _updLang(); _updVol();
   }
 
   return { injectStyles: injectStyles, controlsHtml: controlsHtml, wire: wire };

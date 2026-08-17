@@ -219,6 +219,7 @@ var MatchRuntime = (function () {
         var el = document.getElementById('mr-rs-' + slot.id);
         if (el) el.classList.add('mr-ok');
       });
+      if (shell.audio) shell.audio.sfx('win');
       shell.speak(shell.lang === 'zh' ? '太棒了！全部配对正确！' : 'Excellent! All matched correctly!');
       var attempt = {
         templateId: s.template.id, variantId: s.variant.variantId || '',
@@ -232,6 +233,7 @@ var MatchRuntime = (function () {
         var el = document.getElementById('mr-rs-' + id);
         if (el) { el.classList.add('mr-wrong'); setTimeout(function () { el.classList.remove('mr-wrong'); }, 500); }
       });
+      if (shell.audio) shell.audio.sfx('wrong');
       shell.speak(shell.lang === 'zh' ? '再看看，试着换一换。' : 'Take another look and try swapping.');
     }
   }

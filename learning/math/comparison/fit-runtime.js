@@ -183,10 +183,12 @@ var FitRuntime = (function () {
     if (optimal) {
       _setMsg('刚好搭到对岸了！' + scene.leftEmoji + '跳过去了🎉',
               'A perfect fit! ' + scene.leftEmoji + ' crosses! 🎉', 'ok');
+      if (shell.audio) shell.audio.sfx('win');
       shell.speak(shell.lang === 'zh' ? '刚好！' + scene.leftEmoji + '过河了！' : 'A perfect fit! It crosses!');
     } else {
       _setMsg('有点长，不过能过河！' + scene.leftEmoji + '跳过去了🎉',
               'A bit long, but it works! ' + scene.leftEmoji + ' crosses! 🎉', 'ok');
+      if (shell.audio) shell.audio.sfx('correct');
       shell.speak(shell.lang === 'zh' ? '有点长，不过能过河！' : 'A bit long, but it works!');
     }
 
@@ -210,6 +212,7 @@ var FitRuntime = (function () {
     s.usedBoards.push(board.id);
     _renderBoards();
     _setMsg('木板太短了，试试长一点的', 'Too short — try a longer plank', 'err');
+    if (shell.audio) shell.audio.sfx('bump');
     shell.speak(shell.lang === 'zh' ? '太短了，试试长一点的！' : 'Too short, try a longer one!');
     // Let the child keep trying. If every plank has been tried without success
     // (only reachable if the generator produced no fitting plank) restore the

@@ -435,6 +435,7 @@ var MiniGameRuntime = (function () {
     _stageEl().appendChild(veil);
     _applyLang();
     document.getElementById('mg-resume').addEventListener('click', _resume);
+    if (shell.audio) shell.audio.pauseMusic();
     if (source === 'hidden') _setMsg('', '', '');
   }
 
@@ -447,6 +448,7 @@ var MiniGameRuntime = (function () {
     s.phase = 'playing';
     var veil = document.getElementById('mg-paused');
     if (veil) veil.remove();
+    if (shell.audio) shell.audio.resumeMusic();
     if (s.pendingNext) { s.pendingNext = false; _nextRound(); }
   }
 
@@ -485,6 +487,7 @@ var MiniGameRuntime = (function () {
       '</div>';
     if (_stageEl()) _stageEl().appendChild(veil);
     _applyLang();
+    if (shell.audio) shell.audio.sfx(passed ? 'win' : 'fail');
     shell.speak((shell.lang || 'zh') === 'zh'
       ? (reason === 'timeout' ? '时间到！' : '完成啦！')
       : (reason === 'timeout' ? "Time's up!" : 'All done!'));
@@ -620,6 +623,7 @@ var MiniGameRuntime = (function () {
   }
 
   function _flash(correct) {
+    if (shell.audio) shell.audio.sfx(correct ? 'correct' : 'wrong');
     var el = document.getElementById('mg-flash');
     if (!el) return;
     el.textContent = correct ? '✅' : '💡';

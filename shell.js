@@ -308,6 +308,263 @@
     }));
   }
 
+  // ── Shared audio engine (Web Audio, no external files) ───────
+  /**
+   * shell.audio — background music + sound effects for every module.
+   *
+   *   shell.audio.startMusic() / stopMusic()   usually not needed: the engine
+   *                                           follows the 🎵 toggle by itself
+   *   shell.audio.sfx('correct'|'wrong'|'win'|'fail'|'tap'|'hop'|'bump'|'tick')
+   *   shell.audio.getSfxEnabled() / setSfxEnabled(bool)
+   *
+   * Music is gated by  user:settings:music,  SFX by  user:settings:sound
+   * (the 🔊 button) plus the optional  user:settings:sfx  sub-switch.
+   * Both are scaled by  user:settings:volume.
+   */
+  var audio = (function () {
+
+    var _ac = null;          // AudioContext (created lazily)
+    var _master = null;      // master gain — reflects the volume slider
+    var _musicGain = null;   // music bus
+    var _sfxGain = null;     // sfx bus
+
+    var _wantMusic = false;  // music should be playing (may be blocked by autoplay)
+    var _playing   = false;  // scheduler is running
+    var _timerId   = null;
+    var _idx = 0, _nextAt = 0, _bars = 0;
+    var _track = null, _trackIdx = -1;
+
+    // Four tracks — different keys, tempos and moods; all bright and gentle.
+    var TRACKS = [
+      {  // C major pentatonic — cheerful, upbeat
+        notes: [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25],
+        pattern: [0,2,4,5,4,2,1,0, 2,4,5,7,5,4,2,4, 0,2,4,5,4,7,6,5, 4,2,0,1,2,4,0,0],
+        beat: 0.42, type: 'triangle'
+      },
+      {  // G major pentatonic — gentle, flowing, calm
+        notes: [196.00, 220.00, 246.94, 293.66, 329.63, 392.00, 440.00, 493.88],
+        pattern: [0,1,2,4,2,1,0,1, 2,4,5,6,5,4,2,4, 1,2,4,6,4,2,1,2, 0,2,4,5,2,1,0,0],
+        beat: 0.54, type: 'sine'
+      },
+      {  // F major pentatonic — warm, bouncy, playful
+        notes: [174.61, 196.00, 220.00, 261.63, 293.66, 349.23, 392.00, 440.00, 523.25],
+        pattern: [0,2,4,2,6,4,2,0, 2,4,6,8,6,4,2,4, 0,4,2,6,4,2,0,2, 2,4,6,4,2,0,2,0],
+        beat: 0.36, type: 'triangle'
+      },
+      {  // D major pentatonic — clear, focused, good for thinking
+        notes: [293.66, 329.63, 369.99, 440.00, 493.88, 587.33, 659.25, 739.99],
+        pattern: [0,1,2,4,2,1,0,2, 1,3,4,5,4,3,1,3, 0,2,4,5,4,2,0,1, 2,4,3,1,2,1,0,0],
+        beat: 0.46, type: 'sine'
+      }
+    ];
+
+    var MUSIC_LEVEL = 0.07;  // music is deliberately quieter than SFX
+    var LOOPS_PER_TRACK = 2; // rotate to another track every 2 loops
+
+    function _ctx() {
+      if (_ac) return _ac;
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      try { _ac = new AC(); } catch (e) { return null; }
+      _master    = _ac.createGain();
+      _musicGain = _ac.createGain();
+      _sfxGain   = _ac.createGain();
+      _musicGain.connect(_master);
+      _sfxGain.connect(_master);
+      _master.connect(_ac.destination);
+      _applyVolume();
+      return _ac;
+    }
+
+    function _applyVolume() {
+      if (!_master) return;
+      _master.gain.value = Math.max(0, Math.min(1, getVolume() / 100));
+    }
+
+    // ── Music ────────────────────────────────────────────────
+    function _pickTrack() {
+      if (TRACKS.length < 2) { _trackIdx = 0; }
+      else {
+        var next = _trackIdx;
+        while (next === _trackIdx) next = Math.floor(Math.random() * TRACKS.length);
+        _trackIdx = next;
+      }
+      _track = TRACKS[_trackIdx];
+      _idx = 0;
+    }
+
+    function _note(freq, t, dur) {
+      var ac = _ctx(); if (!ac) return;
+      var osc  = ac.createOscillator();
+      var gain = ac.createGain();
+      osc.connect(gain);
+      gain.connect(_musicGain);
+      osc.type = _track ? _track.type : 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(MUSIC_LEVEL, t + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + dur);
+      osc.start(t);
+      osc.stop(t + dur + 0.02);
+    }
+
+    function _schedule() {
+      var ac = _ctx(); if (!ac) return;
+      var pattern = _track.pattern;
+      while (_nextAt < ac.currentTime + 0.25) {
+        _note(_track.notes[pattern[_idx % pattern.length]], _nextAt, _track.beat * 0.75);
+        _nextAt += _track.beat;
+        _idx++;
+        if (_idx % pattern.length === 0) {
+          // End of one loop — rotate the track so long sessions stay fresh.
+          _bars++;
+          if (_bars % LOOPS_PER_TRACK === 0) { _pickTrack(); _nextAt += _track.beat; }
+        }
+      }
+      if (_playing) _timerId = setTimeout(_schedule, 120);
+    }
+
+    function startMusic() {
+      _wantMusic = true;
+      if (_playing) return;
+      var ac = _ctx(); if (!ac) return;
+      if (ac.state === 'suspended') {
+        // No user gesture yet — browsers block audio. Retry on the first gesture.
+        try { ac.resume(); } catch (e) {}
+        if (ac.state === 'suspended') { _armGesture(); return; }
+      }
+      _playing = true;
+      _bars = 0;
+      _pickTrack();
+      _nextAt = ac.currentTime + 0.1;
+      _schedule();
+    }
+
+    function stopMusic() {
+      _wantMusic = false;
+      _playing = false;
+      if (_timerId) { clearTimeout(_timerId); _timerId = null; }
+    }
+
+    // Pause without forgetting that music is wanted (mini-game pause, etc.)
+    function pauseMusic() {
+      _playing = false;
+      if (_timerId) { clearTimeout(_timerId); _timerId = null; }
+    }
+    function resumeMusic() { if (_wantMusic) startMusic(); }
+
+    // ── Autoplay unlock ──────────────────────────────────────
+    var _armed = false;
+    function _onGesture() {
+      _armed = false;
+      var ac = _ctx(); if (!ac) return;
+      if (ac.state === 'suspended') { try { ac.resume(); } catch (e) {} }
+      if (_wantMusic && !_playing) startMusic();
+    }
+    function _armGesture() {
+      if (_armed) return;
+      _armed = true;
+      document.addEventListener('pointerdown', _onGesture, { once: true });
+      document.addEventListener('keydown',     _onGesture, { once: true });
+      document.addEventListener('touchstart',  _onGesture, { once: true, passive: true });
+    }
+
+    // ── SFX ──────────────────────────────────────────────────
+    function getSfxEnabled() {
+      // 🔊 is the master switch; user:settings:sfx is an optional sub-switch.
+      return getSoundEnabled() && storage.get('user:settings:sfx', true) !== false;
+    }
+    function setSfxEnabled(on) {
+      storage.set('user:settings:sfx', !!on);
+      document.dispatchEvent(new CustomEvent('shell:gui:audioChanged', {
+        detail: { musicOn: getMusicEnabled(), soundOn: getSoundEnabled(), sfxOn: !!on }
+      }));
+    }
+
+    function _tone(freq, type, vol, dur, delay) {
+      var ac = _ctx(); if (!ac) return;
+      var t0   = ac.currentTime + (delay || 0);
+      var osc  = ac.createOscillator();
+      var gain = ac.createGain();
+      osc.type = type || 'sine';
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(_sfxGain);
+      gain.gain.setValueAtTime(vol, t0);
+      gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+      osc.start(t0);
+      osc.stop(t0 + dur + 0.01);
+    }
+
+    function _noise(vol, dur, delay) {
+      var ac = _ctx(); if (!ac) return;
+      var len = Math.max(1, Math.floor(ac.sampleRate * dur));
+      var buf = ac.createBuffer(1, len, ac.sampleRate);
+      var d   = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+      var src  = ac.createBufferSource();
+      var gain = ac.createGain();
+      src.buffer = buf;
+      src.connect(gain);
+      gain.connect(_sfxGain);
+      gain.gain.value = vol;
+      src.start(ac.currentTime + (delay || 0));
+    }
+
+    // Scheduled entirely on the audio clock — no setTimeout, so a 400 ms
+    // feedback window is enough for even the longest cue.
+    var SFX = {
+      correct: function () {
+        _tone(523.25, 'sine', 0.18, 0.07, 0);
+        _tone(659.25, 'sine', 0.18, 0.09, 0.08);
+        _tone(783.99, 'sine', 0.18, 0.14, 0.17);
+      },
+      wrong: function () { _noise(0.16, 0.08, 0); _tone(207.65, 'triangle', 0.12, 0.16, 0.03); },
+      win: function () {
+        [523.25, 659.25, 783.99, 1046.50].forEach(function (f, i) {
+          _tone(f, 'sine', 0.20, 0.26, i * 0.13);
+        });
+      },
+      fail: function () {
+        _tone(300, 'sawtooth', 0.11, 0.10, 0);
+        _tone(190, 'sawtooth', 0.11, 0.18, 0.13);
+      },
+      tap:  function () { _tone(660, 'sine', 0.12, 0.06, 0); },
+      hop:  function () { _tone(520, 'sine', 0.15, 0.055, 0); _tone(780, 'sine', 0.13, 0.08, 0.05); },
+      bump: function () { _noise(0.22, 0.07, 0); },
+      tick: function () { _tone(880, 'square', 0.06, 0.04, 0); }
+    };
+
+    function sfx(name) {
+      if (!getSfxEnabled()) return;
+      var fn = SFX[name];
+      if (!fn) return;
+      var ac = _ctx(); if (!ac) return;
+      if (ac.state === 'suspended') { try { ac.resume(); } catch (e) {} }
+      fn();
+    }
+
+    // ── Follow the shell's GUI switches ──────────────────────
+    document.addEventListener('shell:gui:audioChanged', function (e) {
+      var on = e.detail ? e.detail.musicOn : getMusicEnabled();
+      if (on) startMusic(); else stopMusic();
+      _applyVolume();
+    });
+    document.addEventListener('shell:gui:volumeChanged', _applyVolume);
+
+    return {
+      startMusic: startMusic,
+      stopMusic:  stopMusic,
+      pauseMusic: pauseMusic,
+      resumeMusic: resumeMusic,
+      isMusicPlaying: function () { return _playing; },
+      sfx: sfx,
+      sfxNames: Object.keys(SFX),
+      getSfxEnabled: getSfxEnabled,
+      setSfxEnabled: setSfxEnabled
+    };
+  }());
+
   function registerVideoCatalog(catalog) {
     var items = [];
     if (Array.isArray(catalog)) {
@@ -439,10 +696,135 @@
     if (storage.get('user:settings:music', null) === null) {
       setMusicEnabled(guiCfg.audio.music.defaultOn);
     }
+    // Music remembered as ON from a previous session must be honoured on reload.
+    // The engine parks itself until the first user gesture if autoplay is blocked.
+    if (guiCfg.audio.music.enabled && getMusicEnabled()) audio.startMusic();
   }
+
+  // ── Shared header controls ──────────────────────────────────────────
+  // One implementation of the 🔊 / 🎵 / EN / volume behaviour for every
+  // surface: the Puzzle shell, the Interaction runtimes (IH) and Mini-games.
+  // A caller hands over a root element; every matching control inside it is
+  // bound and kept in sync, so nobody reads the settings keys directly.
+  var guiControls = (function () {
+    var mounts = [];
+
+    function _all(root, sel) {
+      return Array.prototype.slice.call((root || document).querySelectorAll(sel));
+    }
+
+    // 🔇 when there is nothing to hear, otherwise a fuller speaker as it rises.
+    function _volIcon(v, soundOn) {
+      if (!soundOn || v <= 0) return '🔇';
+      if (v < 34) return '🔈';
+      if (v < 67) return '🔉';
+      return '🔊';
+    }
+
+    function sync() {
+      // Runtimes tear down and rebuild their headers; drop detached roots so
+      // repeated mounts (one per activity launch) cannot pile up.
+      mounts = mounts.filter(function (m) {
+        return m.root === document || document.contains(m.root);
+      });
+
+      var soundOn = getSoundEnabled();
+      var musicOn = getMusicEnabled();
+      var v       = getVolume();
+      var zh      = (shell.lang || 'zh') === 'zh';
+      var muted   = !soundOn || v <= 0;
+
+      mounts.forEach(function (m) {
+        _all(m.root, '.s1-mute').forEach(function (b) {
+          b.textContent = soundOn ? '🔊' : '🔇';
+          b.classList.toggle('s1-active', soundOn);
+          b.title = soundOn ? (zh ? '关闭声音' : 'Turn sound off')
+                            : (zh ? '打开声音' : 'Turn sound on');
+          b.setAttribute('aria-label', b.title);
+          b.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+        });
+        _all(m.root, '.s1-music').forEach(function (b) {
+          b.textContent = musicOn ? '🎵' : '🎶';
+          b.classList.toggle('s1-active', musicOn);
+          b.title = musicOn ? (zh ? '关闭背景音乐' : 'Turn music off')
+                            : (zh ? '打开背景音乐' : 'Turn music on');
+          b.setAttribute('aria-label', b.title);
+          b.setAttribute('aria-pressed', musicOn ? 'true' : 'false');
+        });
+        _all(m.root, '.s1-lang').forEach(function (b) {
+          b.textContent = zh ? 'EN' : 'CN';
+          b.title = zh ? 'Switch to English' : '切换到中文';
+          b.setAttribute('aria-label', b.title);
+        });
+        _all(m.root, '.s1-vol').forEach(function (el) {
+          if (String(el.value) !== String(v)) el.value = v;
+          el.title = (zh ? '音量 ' : 'Volume ') + v;
+          el.setAttribute('aria-label', el.title);
+          el.setAttribute('aria-valuetext', String(v));
+        });
+        // The whole capsule dims and its icon flips when nothing is audible.
+        _all(m.root, '.s1-volwrap').forEach(function (w) {
+          w.classList.toggle('s1-muted', muted);
+          var ic = w.querySelector('.s1-volicon');
+          if (ic) ic.textContent = _volIcon(v, soundOn);
+        });
+      });
+    }
+
+    // Bound once per element so mounting twice (or nesting roots) is harmless.
+    function _bind(root, sel, ev, fn) {
+      _all(root, sel).forEach(function (el) {
+        var flag = 'data-s1b-' + ev;
+        if (el.getAttribute(flag) === '1') return;
+        el.setAttribute(flag, '1');
+        el.addEventListener(ev, fn);
+      });
+    }
+
+    // opts.music / opts.language: false disables that control (config-driven).
+    function mountControls(root, opts) {
+      root = root || document;
+      opts = opts || {};
+      var entry = { root: root, opts: opts };
+      mounts.push(entry);
+
+      _bind(root, '.s1-mute', 'click', function () {
+        setSoundEnabled(!getSoundEnabled());
+      });
+      _bind(root, '.s1-music', 'click', function () {
+        if (opts.music === false) return;
+        setMusicEnabled(!getMusicEnabled());
+      });
+      _bind(root, '.s1-lang', 'click', function () {
+        if (opts.language === false) return;
+        setLang((shell.lang || 'zh') === 'zh' ? 'en' : 'zh');
+      });
+      _bind(root, '.s1-vol', 'input', function (e) {
+        setVolume(Number(e.target.value));
+      });
+
+      sync();
+      return {
+        sync: sync,
+        unmount: function () {
+          var i = mounts.indexOf(entry);
+          if (i >= 0) mounts.splice(i, 1);
+        }
+      };
+    }
+
+    // Any state change anywhere re-syncs every mounted header at once.
+    document.addEventListener('shell:gui:audioChanged',  sync);
+    document.addEventListener('shell:gui:volumeChanged', sync);
+    document.addEventListener('shell:langchange',        sync);
+
+    return { mountControls: mountControls, sync: sync };
+  }());
 
   function buildGuiRuntimeApi() {
     return {
+      mountControls: guiControls.mountControls,
+      syncControls: guiControls.sync,
       getState: function () {
         return {
           lang: shell.lang,
@@ -776,7 +1158,10 @@
             '<button class="s1-btn s1-music" id="s1-music">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-mute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-lang">EN</button>',
-            '<input type="range" class="s1-vol" id="s1-vol" min="0" max="100" title="Volume">',
+            '<div class="s1-volwrap" id="s1-volwrap">',
+              '<span class="s1-volicon">🔈</span>',
+              '<input type="range" class="s1-vol" id="s1-vol" min="0" max="100" title="音量 / Volume" aria-label="音量 / Volume">',
+            '</div>',
           '</div>',
         '</div>',
         '<div class="s1-sub" id="s1-sub"></div>',
@@ -810,7 +1195,10 @@
             '<button class="s1-btn s1-music" id="s1-gmusic">🎵</button>',
             '<button class="s1-btn s1-mute" id="s1-gmute">🔊</button>',
             '<button class="s1-btn s1-lang" id="s1-glang">EN</button>',
-            '<input type="range" class="s1-vol" id="s1-gvol" min="0" max="100" title="Volume">',
+            '<div class="s1-volwrap" id="s1-gvolwrap">',
+              '<span class="s1-volicon">🔈</span>',
+              '<input type="range" class="s1-vol" id="s1-gvol" min="0" max="100" title="音量 / Volume" aria-label="音量 / Volume">',
+            '</div>',
           '</div>',
         '</div>',
         '<div class="s1-ginfo">',
@@ -890,13 +1278,13 @@
 
     _applyGuiLayout();
 
+    // Audio + language controls (both headers) come from the shared module.
+    guiControls.mountControls(document, {
+      music: guiCfg.audio.music.enabled,
+      language: guiCfg.language.enabled
+    });
+
     // Bind common event handlers
-    _bindClick('s1-mute', _toggleMute);
-    _bindClick('s1-lang', _toggleLang);
-    _bindClick('s1-gmute', _toggleMute);
-    _bindClick('s1-glang', _toggleLang);
-    _bindClick('s1-music', _toggleMusic);
-    _bindClick('s1-gmusic', _toggleMusic);
     _bindClick('s1-help', _openHelp);
     _bindClick('s1-ghelp', _openHelp);
     _bindClick('s1-video', _openVideo);
@@ -907,22 +1295,14 @@
     _bindClick('s1-sum-sess-hdr', function () { _toggleSum('sess'); });
     _bindClick('s1-sum-hist-hdr', function () { _toggleSum('hist'); });
 
-    _bindVol('s1-vol');
-    _bindVol('s1-gvol');
-
     // Language change → re-render current screen
     document.addEventListener('shell:langchange', function () {
-      _updLang();
       if (!$home.classList.contains('s1-hidden'))   _renderHome();
       if (!$game.classList.contains('s1-hidden'))   _renderQ();
       if (!$result.classList.contains('s1-hidden')) _renderResult();
     });
 
     _renderHome();
-    _updMute();
-    _updMusic();
-    _updVol();
-    _updLang();
 
     function _bindClick(id, handler) {
       var el = document.getElementById(id);
@@ -1142,6 +1522,7 @@
 
         fb.className = 's1-fb s1-fb-ok';
         fb.innerHTML = '<span class="zh">🎉 答对了！</span><span class="en">🎉 Correct!</span>';
+        audio.sfx('correct');
         shell.speak(shell.lang === 'zh' ? '答对了！' : 'Correct!');
 
         if (!state.firstWrong && !state.hintShown) {
@@ -1174,6 +1555,7 @@
 
         fb.className = 's1-fb s1-fb-err';
         fb.innerHTML = '<span class="zh">❌ 再想想！</span><span class="en">❌ Try again!</span>';
+        audio.sfx('wrong');
         shell.speak(shell.lang === 'zh' ? '再想想！' : 'Try again!');
         if (!state.firstWrong) state.firstWrong = true;
 
@@ -1334,6 +1716,7 @@
       homeBtn.addEventListener('click', _goHome);
       acts.appendChild(homeBtn);
 
+      audio.sfx(passed ? 'win' : 'fail');
       shell.speak(passed ? (shell.lang === 'zh' ? '太棒了！' : 'Great job!') : (shell.lang === 'zh' ? '继续加油！' : 'Keep going!'));
     }
 
@@ -1455,49 +1838,7 @@
       }
     }
 
-    function _toggleMute() {
-      var cur = getSoundEnabled();
-      setSoundEnabled(!cur);
-      _updMute();
-    }
-    function _toggleLang() {
-      if (!guiCfg.language.enabled) return;
-      shell.setLang(shell.lang === 'zh' ? 'en' : 'zh');
-    }
-    function _toggleMusic() {
-      var cur = getMusicEnabled();
-      setMusicEnabled(!cur);
-      _updMusic();
-    }
-    function _updMute() {
-      var on = getSoundEnabled();
-      document.querySelectorAll('.s1-mute').forEach(function (b) {
-        b.textContent = on ? '🔊' : '🔇';
-        b.classList.toggle('s1-active', on);
-      });
-    }
-    function _updMusic() {
-      var on = getMusicEnabled();
-      document.querySelectorAll('.s1-music').forEach(function (b) {
-        b.textContent = on ? '🎵' : '🎶';
-        b.classList.toggle('s1-active', on);
-      });
-    }
-    function _updVol() {
-      var v = getVolume();
-      document.querySelectorAll('.s1-vol').forEach(function (el) { el.value = v; });
-    }
-    function _bindVol(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('input', function () { setVolume(Number(el.value)); });
-      // Keep all sliders in sync when one changes
-      document.addEventListener('shell:gui:volumeChanged', function () { _updVol(); });
-    }
-    function _updLang() {
-      var label = shell.lang === 'zh' ? 'EN' : 'CN';
-      document.querySelectorAll('.s1-lang').forEach(function (b) { b.textContent = label; });
-    }
+    // 🔊 / 🎵 / EN / volume are owned by guiControls (see mountControls above).
     function _updScore() {
       ['s1-sc','s1-sc-e'].forEach(function (id) {
         var el = document.getElementById(id);
@@ -1549,6 +1890,7 @@
     createGame:          createGame,
     getVolume:           getVolume,
     setVolume:           setVolume,
+    audio:               audio,
     gui:                 buildGuiRuntimeApi(),
     storage:             storage,
     runtime:             createRuntimeLayer(),

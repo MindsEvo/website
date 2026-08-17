@@ -233,6 +233,7 @@ var GroupRuntime = (function () {
         var el = document.getElementById('gr-bin-' + b.id);
         if (el) el.classList.add('gr-ok');
       });
+      if (shell.audio) shell.audio.sfx('win');
       shell.speak(shell.lang === 'zh' ? '分对了！全部正确！' : 'Sorted correctly! Well done!');
       var attempt = {
         templateId: s.template.id, variantId: s.variant.variantId || '',
@@ -246,6 +247,7 @@ var GroupRuntime = (function () {
         var el = document.getElementById('gr-bin-' + id);
         if (el) { el.classList.add('gr-wrong'); setTimeout(function () { el.classList.remove('gr-wrong'); }, 500); }
       });
+      if (shell.audio) shell.audio.sfx('wrong');
       shell.speak(shell.lang === 'zh' ? '有些放错了，再检查一下。' : 'Some items are in the wrong basket. Try again.');
       // Move wrong items back to pool
       wrongBinIds.forEach(function (binId) {
