@@ -1088,7 +1088,9 @@
    *   subtitle:       { zh, en },       // game subtitle
    *   theme:          { primary, primary2, bg? },  // optional color override
    *   passScore:      number,           // score needed to unlock next unit (default 8)
-   *   debug:          boolean,          // unlock all units (default true)
+   *   debug:          boolean,          // unlock all units (default true;
+   *                                     // set false for real progression, or
+   *                                     // append ?debug=1 to the URL instead)
    *   units:          Unit[],           // see Shell-1 data format below
    *
    *   // Game-specific renderers (required):
@@ -1256,7 +1258,10 @@
   function _runGame(cfg, guiCfg) {
     var GAME_ID    = cfg.id;
     var PASS_SCORE = cfg.passScore || 8;
-    var DEBUG      = cfg.debug !== false;
+    // debug: unlock every unit. ?debug=1 in the URL turns it on for a game that
+    // ships with debug:false, so testing never needs a source edit.
+    var DEBUG      = cfg.debug !== false ||
+                     /[?&]debug=1(&|$)/.test(location.search || '');
 
     var state = {
       unitIdx: 0, qIdx: 0, score: 0,
@@ -1848,8 +1853,11 @@
 
     function _unitSave(id) {
       // parallelUnits: all units unlocked from start (for games where units test
-      // different cognitive abilities, not progressive difficulty)
-      var defaultUnlocked = cfg.parallelUnits ? true : (String(id) === '1');
+      // different cognitive abilities, not progressive difficulty).
+      // Otherwise the FIRST unit is always open — keyed on its real id, because
+      // generated units (e.g. 'K1-session') are not numbered '1'.
+      var first = cfg.units && cfg.units.length ? String(cfg.units[0].id) : '1';
+      var defaultUnlocked = cfg.parallelUnits ? true : (String(id) === first);
       return shell.storage.get(GAME_ID + ':unit:' + id,
         { unlocked: defaultUnlocked, bestScore: null, playCount: 0 });
     }

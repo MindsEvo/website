@@ -631,7 +631,9 @@
       },
       title:{zh:'⚖️ 比较 · '+levelId,en:'⚖️ Comparison · '+levelId},
       subtitle:{zh:'观察、判断、比较',en:'Observe, Judge, Compare'},
-      passScore:3, debug:true, units:units,
+      // debug:false → real progression (unit 1 open, the rest unlock on pass).
+      // Append ?debug=1 to the URL when testing later units.
+      passScore:3, debug:false, units:units,
       renderSequence:renderSequence, renderOption:renderOption,
       checkAnswer:checkAnswer, getVoiceText:getVoiceText,
       registerRootGenes:registerRootGenes, onAnswer:onAnswer,
