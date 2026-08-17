@@ -291,6 +291,32 @@ var CmpEngine = (function () {
 
   // ── AttemptLogger ─────────────────────────────────────────────────────────
 
+  // Flatten a runtime `process` payload into something safe to upload: scalars
+  // only, bounded key count. Runtimes are free to keep rich nested state (round
+  // arrays, per-move traces) locally; the server contract stays flat so a new
+  // Adapter cannot silently blow up the event size.
+  var PROCESS_MAX_KEYS = 24;
+
+  function _summarizeProcess(process) {
+    if (!process || typeof process !== 'object') return null;
+    var out = {}, n = 0;
+    for (var k in process) {
+      if (!Object.prototype.hasOwnProperty.call(process, k)) continue;
+      if (n >= PROCESS_MAX_KEYS) break;
+      var v = process[k];
+      var t = typeof v;
+      if (t === 'number' || t === 'boolean' || t === 'string') {
+        out[k] = (t === 'string' && v.length > 64) ? v.slice(0, 64) : v;
+        n += 1;
+      } else if (Array.isArray(v)) {
+        // Keep the shape, not the contents.
+        out[k + '_count'] = v.length;
+        n += 1;
+      }
+    }
+    return n ? out : null;
+  }
+
   /**
    * Record one attempt. Call this after the player answers.
    *
@@ -300,8 +326,17 @@ var CmpEngine = (function () {
    * @param {number}  responseMs
    * @param {boolean} hintUsed
    * @param {Object}  templateDef    the full template object (for cooldown def + rootGeneIds)
+   * @param {Object}  [meta]         activity-runtime detail. Optional so every existing
+   *                                 puzzle call site keeps working unchanged:
+   *                                   mode    'puzzle' | 'sort' | 'match' | 'group' | 'fit' | 'mini'
+   *                                   result  the runtime's own verdict, e.g. 'passed' |
+   *                                           'completed' | 'partial' | 'aborted'. `correct`
+   *                                           stays the boolean the mastery model needs;
+   *                                           this is the finer-grained label for analytics.
+   *                                   process the thinking-process payload the runtime built
+   *                                           (moves, corrections, rounds, streak, …)
    */
-  function recordAttempt(templateId, variantId, correct, responseMs, hintUsed, templateDef) {
+  function recordAttempt(templateId, variantId, correct, responseMs, hintUsed, templateDef, meta) {
     var now = Date.now();
     var state = _loadState(templateId);
     var masteryBefore = state.mastery;
@@ -350,15 +385,18 @@ var CmpEngine = (function () {
     _tickCooldowns(allIds);
 
     // Build and queue server event
+    var procSummary = _summarizeProcess(meta && meta.process);
     var event = {
       event:          'attempt',
-      schema_ver:     '1.0',
+      schema_ver:     '1.1',
       ts:             now,
       template_id:    templateId,
       variant_id:     variantId,
       level:          templateDef ? templateDef.level : '',
       type:           templateDef ? templateDef.type  : '',
-      game_mode:      'puzzle',
+      // Was hardcoded to 'puzzle', which made every interaction attempt
+      // misreport itself. Runtimes now declare their own mode.
+      game_mode:      (meta && meta.mode) || (templateDef && (templateDef.runtime || templateDef.mode)) || 'puzzle',
       difficulty:     templateDef ? (templateDef.difficulty || 1) : 1,
       result:         correct ? 'correct' : 'incorrect',
       response_ms:    responseMs || 0,
@@ -367,6 +405,12 @@ var CmpEngine = (function () {
       mastery_after:  masteryAfter,
       root_gene_ids:  templateDef ? (templateDef.rootGeneIds || []) : []
     };
+    // `result` stays the boolean-derived value the mastery model uses, so
+    // existing aggregation keeps working. The runtime's own verdict rides
+    // alongside it: a mini-game that finished below threshold is neither
+    // simply 'correct' nor 'incorrect'.
+    if (meta && meta.result) event.result_detail = meta.result;
+    if (procSummary)         event.process = procSummary;
     _queueServerEvent(event);
 
     return { masteryBefore: masteryBefore, masteryAfter: masteryAfter };

@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.0",
-  "updatedAt": "2026-08-12",
+  "version": "v0.4.0",
+  "updatedAt": "2026-08-16",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -142,7 +142,7 @@
       "primaryTypes": ["quantity", "spatial_visual"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison"],
-      "implementedModes": ["puzzle", "sort", "match", "group", "fit"],
+      "implementedModes": ["puzzle", "sort", "match", "group", "fit", "mini"],
       "sourceLevels": ["L1"]
     },
     {
@@ -154,7 +154,7 @@
       "primaryTypes": ["quantity", "spatial_visual"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
-      "implementedModes": ["puzzle", "match", "group", "fit"],
+      "implementedModes": ["puzzle", "match", "group", "fit", "mini"],
       "sourceLevels": ["L2"]
     },
     {
@@ -166,7 +166,7 @@
       "primaryTypes": ["quantity", "temporal"],
       "status": "implemented",
       "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
-      "implementedModes": ["puzzle", "fit"],
+      "implementedModes": ["puzzle", "fit", "mini"],
       "sourceLevels": ["L3"]
     },
     {
@@ -178,9 +178,9 @@
       "primaryTypes": ["quantity", "spatial_visual"],
       "status": "partial",
       "implementedBy": ["learning-math-comparison"],
-      "implementedModes": ["puzzle"],
-      "coverageGapZh": "多属性比较已实现（multi_attribute），拖放排序活动尚未覆盖该级别。",
-      "coverageGapEn": "Multi-attribute comparison is implemented; drag-to-sort activities are not yet available at this level.",
+      "implementedModes": ["puzzle", "mini"],
+      "coverageGapZh": "多属性比较已实现（multi_attribute），限时比较小游戏两种玩法均已覆盖（mini: quick_compare 快速比较 / build_time 限时搭塔，后者按序取最长/最短，是排序能力的入口）。仍缺自由拖放排序活动（sort runtime）。",
+      "coverageGapEn": "Multi-attribute comparison is implemented, and both timed mini-game engines are available (mini: quick_compare and build_time, the latter picking longest/shortest in order as an entry point to ranking). Free drag-to-sort activities (sort runtime) are still missing.",
       "sourceLevels": ["L4"]
     },
     {
@@ -282,13 +282,18 @@
       "activity_start",
       "activity_move",
       "activity_correction",
-      "activity_finish"
+      "activity_finish",
+      "round_start",
+      "round_answer",
+      "game_finish"
     ],
     "dimensions": [
       "levelId",
       "gradeCode",
       "comparisonType",
       "interactionMode",
+      "gameEngine",
+      "endReason",
       "difficultyAxis",
       "errorType",
       "ageBucket"
@@ -300,8 +305,31 @@
       "hintRate",
       "retryRate",
       "avgCorrections",
-      "optimalChoiceRate"
-    ]
+      "optimalChoiceRate",
+      "bestStreak",
+      "avgRoundMs"
+    ],
+    "aggregationRules": [
+      {
+        "id": "time-by-game-mode",
+        "appliesTo": ["avgTimeMs"],
+        "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，interaction 是单个活动时长，mini 是整局（12-18 个 round）净时长，三者不可混算。mini 的可比时间指标是 avgRoundMs。",
+        "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, interaction is per-activity time, mini is the whole run (12-18 rounds). They are not comparable; for mini use avgRoundMs instead."
+      },
+      {
+        "id": "one-template-one-attempt",
+        "appliesTo": ["completionRate", "accuracy"],
+        "ruleZh": "一个 mini 模板只产生一个 Attempt，权重与一道 puzzle 相同；round 数只存在于 process 中，round 级事件属遥测，不得计为 Attempt。",
+        "ruleEn": "A mini template yields exactly one Attempt, weighted like a single puzzle question. Round counts live only in process; round-level events are telemetry and must not be counted as attempts."
+      },
+      {
+        "id": "engine-not-poolable",
+        "appliesTo": ["accuracy", "avgRoundMs", "bestStreak", "errorType"],
+        "ruleZh": "gameEngine 已实现两个取值：quick_compare（左右二选一，一轮一次判断）与 build_time（从递减的一堆里取最长/最短，一轮一次放置）。两者的一轮不是同一件事；errorType 取值相同（perception / polarity_confusion），但同一个标签在两个引擎里指的是不同的失误（前者是「问更少却选了更多」，后者是抓了堆里的另一个极端）。因此 mini 内部仍必须按 gameEngine 分桶，不可只按 game_mode 汇总。",
+        "ruleEn": "gameEngine currently has two implemented values: quick_compare (a two-way choice per round) and build_time (taking the longest/shortest from a shrinking pile, one placement per round). A round is different work in each, and although both report the same errorType values (perception / polarity_confusion), the same label denotes a different slip per engine. Metrics inside mini MUST therefore still be bucketed by gameEngine, not pooled by game_mode alone."
+      }
+    ],
+    "note": "eventKeys round_start/round_answer/game_finish are declared for vocabulary stability; phase 1 uploads only the summary Attempt."
   },
   "aiQueryHints": {
     "supportedFilters": [

@@ -35,9 +35,11 @@
 
 1. `patterns/COMPARISON-PUZZLE-IMPLEMENTATION.md`（Cycle 调度 + 选择题样板）
 2. `patterns/COMPARISON-INTERACTION-IMPLEMENTATION.md`（拖放活动样板）
+3. `patterns/COMPARISON-MINIGAME-IMPLEMENTATION.md`（限时连续小游戏样板 + Adapter 框架）
 
-> 新建 Learning 模块请以这两篇为蓝本：`engine.js` 跨学科共享，
+> 新建 Learning 模块请以这三篇为蓝本：`engine.js` 跨学科共享，
 > `templates.json` + `generator.js` 是每个模块的定制层。
+> 三篇分别对应三种活动类型：一题一答 / 一次操作 / 一段限时连续场景。
 
 ## Metadata 规范
 

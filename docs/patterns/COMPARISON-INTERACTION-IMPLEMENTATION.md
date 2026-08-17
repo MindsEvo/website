@@ -216,14 +216,22 @@ Interaction 模板相比 Puzzle 多两个字段：
 
 ## 8. 当前模板覆盖
 
-| 级别 | sort | match | group | fit |
-|------|------|-------|-------|-----|
-| K1   | 1    | 2     | 1     | 2   |
-| K2   | 0    | 1     | 1     | 1   |
-| G1   | 0    | 0     | 0     | 1   |
-| G2   | 0    | 0     | 0     | 0   |
+| 级别 | sort | match | group | fit | mini |
+|------|------|-------|-------|-----|------|
+| K1   | 1    | 2     | 1     | 2   | 1    |
+| K2   | 0    | 1     | 1     | 1   | 1    |
+| G1   | 0    | 0     | 0     | 1   | 1    |
+| G2   | 0    | 0     | 0     | 0   | 2    |
 
-每种 Runtime 在 K1 至少有 1 个模板。注意 G2 目前为 0——越往高年级越退化成纯选择题，是当前最大的内容缺口。
+每种 Interaction Runtime 在 K1 至少有 1 个模板。注意 Interaction 的 G2 一栏为 0——越往高年级越退化成纯选择题，是当前最大的内容缺口。
+
+`mini` 一列是第三种 Runtime（Mini-game），四个层级都有覆盖，其中 G2 的两个分属
+两种玩法（`quick_compare` / `build_time`）。它按 `mode: 'mini_game'` 走
+`MiniGameRuntime`，不复用本文档的四个 Runtime，只共用 `pointer-drag.js`；
+详见 `COMPARISON-MINIGAME-IMPLEMENTATION.md`。**目前 G2 唯一的非 Puzzle 内容就来自
+Mini-game**，所以填 G2 的 Interaction 缺口这件事本身并没有因此消失。
+
+模板池共 73 个：Puzzle 58、Interaction 10、Mini-game 5。
 
 ---
 
@@ -265,7 +273,7 @@ pointer-drag.js 的 PointerEvents 方案在三端均表现正常。
 | Interaction 恒计为答对 | 四个 Runtime 都不判负，Cycle 准确率实际只由 Puzzle 决定（见 §6） |
 | 执行顺序非计划顺序 | 一组内 Interaction 先跑、Puzzle 后批量跑（见 §2.1） |
 | G1/G2 Interaction 模板少 | K2/G1/G2 的 sort/match/group 尚未添加，G2 完全为空 |
-| Mini-game 未实现 | Interaction Adapter 稳定后再扩展 Mini-game Runtime |
+| Mini-game 已实现 | 第三种 Runtime 已落地，见 `COMPARISON-MINIGAME-IMPLEMENTATION.md`（Runtime + Adapter 分层） |
 | 历史记录未区分 mode | shell.report() 的 geneIds 目前不含 mode 字段，可后续扩展 |
 
 ---

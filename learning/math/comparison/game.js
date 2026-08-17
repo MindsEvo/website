@@ -461,7 +461,7 @@
     }
   }
 
-  // Run a single interaction template (sort / match / group / fit) via ActivityRunner
+  // Run a single long-form template (sort / match / group / fit / mini) via ActivityRunner
   function _launchInteraction(tpl, levelId, templates) {
     var variant = generateQuestion(tpl);
     if (!variant) {
@@ -477,10 +477,25 @@
     ActivityRunner.launch(tpl, variant, {
       levelId:    levelId,
       onComplete: function (attempt) {
+        // A continuous activity cannot report a boolean, so runtimes may hand
+        // back 'passed' (reached the threshold) or 'completed' (played to the
+        // end below it). Both are real work; only the first counts as correct.
+        // 'aborted' means the child left mid-game: nothing is recorded and the
+        // template stays in the cycle, so leaving is never a scored failure.
+        if (attempt.result === 'aborted') {
+          _showLevelSelector(templates);
+          return;
+        }
+        var correct = attempt.result === 'correct' || attempt.result === 'passed';
+
         // Record in cycle
-        CmpEngine.recordSessionAnswer(tpl.level, tpl.id, attempt.result === 'correct');
-        CmpEngine.recordAttempt(tpl.id, attempt.variantId, attempt.result === 'correct',
-          attempt.responseMs, false, tpl);
+        CmpEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
+        CmpEngine.recordAttempt(tpl.id, attempt.variantId, correct,
+          attempt.responseMs, false, tpl, {
+            mode:    attempt.mode || tpl.runtime || tpl.mode,
+            result:  attempt.result,
+            process: attempt.process
+          });
 
         // Continue: if session still has puzzle templates (resume), run them now
         var remaining = CmpEngine.getSessionRemaining(levelId);
@@ -497,18 +512,50 @@
     });
   }
 
-  // Per-mode result wording. Every runtime keeps the child working until the
-  // activity is solved, so 'correct' is the normal path; INCORRECT_TEXT is the
-  // fallback for a runtime that chooses to hand back a failed attempt.
+  // Per-mode result wording. Every drag-and-drop runtime keeps the child working
+  // until the activity is solved, so 'correct' is the normal path there;
+  // INCORRECT_TEXT is the fallback for a runtime that hands back a failed
+  // attempt. Mini-games are different: they always run to the end, so their
+  // wording is keyed off 'passed' vs 'completed' instead.
   var INTERACTION_RESULT_TEXT = {
     sort:  { zh: '排对了！',     en: 'Correct order!' },
     match: { zh: '全部配对成功！', en: 'All matched!' },
     group: { zh: '全部分类正确！', en: 'All sorted!' },
-    fit:   { zh: '成功过河了！',   en: 'Across the river!' }
+    fit:   { zh: '成功过河了！',   en: 'Across the river!' },
+    mini:  { zh: '这一局完成了！', en: 'Round complete!' }
   };
   var INTERACTION_INCORRECT_TEXT = { zh: '继续尝试！', en: 'Keep trying!' };
+  // Below threshold is not a loss — the child finished the game.
+  var MINI_COMPLETED_TEXT = { zh: '玩完啦，越练越准！', en: 'Finished — keep practising!' };
 
-  // Brief result overlay after a solo interaction activity
+  // A mini-game is many rounds long, so the child deserves to see what the run
+  // actually was. The runtime deliberately does not draw this itself — it hands
+  // the numbers over in `process` and the shared result overlay renders them, so
+  // every future game gets the same summary for free. No score is shown on
+  // purpose: speed and accuracy are the feedback, points would become the goal.
+  function _miniStatsHtml(attempt) {
+    var p = attempt && attempt.process;
+    if (!p || attempt.mode !== 'mini' || !p.rounds) return '';
+    var acc = typeof p.accuracyPct === 'number' ? p.accuracyPct : 0;
+    var sec = p.avgRoundMs ? (p.avgRoundMs / 1000).toFixed(1) : null;
+    function cell(emoji, value, zh, en) {
+      return '<div style="min-width:78px;text-align:center">' +
+        '<div style="font-size:22px">' + emoji + '</div>' +
+        '<div style="font-size:20px;font-weight:900;color:#1d4ed8">' + value + '</div>' +
+        '<div style="font-size:12px;color:#64748b">' +
+          '<span class="zh">' + zh + '</span><span class="en">' + en + '</span></div>' +
+      '</div>';
+    }
+    return '<div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;' +
+      'background:#f8fafc;border:2px solid #e2e8f0;border-radius:16px;padding:12px 16px;">' +
+      cell('✅', p.correctRounds + '/' + p.rounds, '答对', 'Correct') +
+      cell('🎯', acc + '%', '准确率', 'Accuracy') +
+      cell('🔥', p.bestStreak || 0, '最长连对', 'Best streak') +
+      (sec ? cell('⚡', sec + 's', '平均用时', 'Avg time') : '') +
+    '</div>';
+  }
+
+  // Brief result overlay after a solo long-form activity
   function _showInteractionResult(attempt, sr, levelId, templates) {
     var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
     var nextLevel = nextIdx < LEVEL_ORDER.length ? LEVEL_ORDER[nextIdx] : null;
@@ -517,16 +564,18 @@
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.94);z-index:600;' +
       'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;';
 
-    var icon = sr.cycleComplete && sr.unlocked ? '🏆' : (attempt.result === 'correct' ? '⭐' : '💪');
-    var text = attempt.result === 'correct'
+    var good = attempt.result === 'correct' || attempt.result === 'passed';
+    var icon = sr.cycleComplete && sr.unlocked ? '🏆' : (good ? '⭐' : '💪');
+    var text = good
       ? (INTERACTION_RESULT_TEXT[attempt.mode] || { zh: '做对了！', en: 'Well done!' })
-      : INTERACTION_INCORRECT_TEXT;
+      : (attempt.result === 'completed' ? MINI_COMPLETED_TEXT : INTERACTION_INCORRECT_TEXT);
     overlay.innerHTML =
       '<div style="font-size:52px">' + icon + '</div>' +
       '<div style="font-size:20px;font-weight:900;color:#1e3a8a;text-align:center">' +
         '<span class="zh">' + text.zh + '</span>' +
         '<span class="en">' + text.en + '</span>' +
       '</div>' +
+      _miniStatsHtml(attempt) +
       '<div id="sor-acts" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>';
 
     document.body.appendChild(overlay);

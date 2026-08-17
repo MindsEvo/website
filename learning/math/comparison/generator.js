@@ -872,7 +872,208 @@ Generators.fitBridge = function (params) {
   };
 };
 
+// ── Mini-game round pools ─────────────────────────────────────────────────────
+
+// A mini-game template is generated ONCE, like every other template, but what
+// it produces is a whole short game: the config plus the full list of rounds the
+// child will play. Pre-generating the rounds (instead of letting the Adapter
+// call generators mid-play) keeps two properties that matter:
+//   1. the Adapter stays pure presentation — it walks a list,
+//   2. every round a child can be served is reachable from test.html without
+//      a browser, so round quality is validated headlessly like puzzles are.
+var MINI_DIMENSIONS = {
+  size:     { generator: 'sizeCompare',    type: 'size',     positive: 'bigger' },
+  quantity: { generator: 'quantityVisual', type: 'quantity', positive: 'more'   },
+  number:   { generator: 'numberCompare',  type: 'number',   positive: 'bigger' },
+  length:   { generator: 'lengthCompare',  type: 'length',   positive: 'longer' }
+};
+
+// Swap the two sides of a round. Used to force a balanced answer distribution:
+// a child who notices the answer is usually on the right stops comparing and
+// starts pattern-matching, which is exactly the thinking we are not training.
+function _mirrorRound(round) {
+  var out = {};
+  for (var k in round) {
+    if (!Object.prototype.hasOwnProperty.call(round, k)) continue;
+    if (k.indexOf('left') === 0)       { out['right' + k.slice(4)] = round[k]; continue; }
+    else if (k.indexOf('right') === 0) { out['left'  + k.slice(5)] = round[k]; continue; }
+    out[k] = round[k];
+  }
+  out.answer = round.answer === 'left' ? 'right' : 'left';
+  return out;
+}
+
+function _miniClamp(n, lo, hi, dflt) {
+  n = typeof n === 'number' && isFinite(n) ? n : dflt;
+  return Math.min(hi, Math.max(lo, n));
+}
+
+/**
+ * miniRound: build one Quick-Compare-style mini-game.
+ * params: dimension, durationSec, roundTarget, passThreshold, timerStyle,
+ *         askMode ('bigger'|'smaller'|…|'random'), roundParams (passed through
+ *         to the underlying single-question generator).
+ */
+Generators.miniRound = function (params) {
+  var dimKey = params.dimension || 'size';
+  var dim = MINI_DIMENSIONS[dimKey];
+  if (!dim) {
+    console.warn('[generator] miniRound: unknown dimension:', dimKey);
+    return null;
+  }
+  var makeRound = Generators[dim.generator];
+  if (!makeRound) return null;
+
+  var roundTarget = Math.round(_miniClamp(params.roundTarget, 3, 40, 12));
+  var askMode = params.askMode || dim.positive;
+
+  // Half the rounds answer left, half right, then shuffled.
+  var sides = [];
+  for (var i = 0; i < roundTarget; i++) sides.push(i % 2 === 0 ? 'left' : 'right');
+  sides = _shuffle(sides);
+
+  var roundParams = {};
+  for (var k in (params.roundParams || {})) {
+    if (Object.prototype.hasOwnProperty.call(params.roundParams, k)) roundParams[k] = params.roundParams[k];
+  }
+  roundParams.askMode = askMode;
+
+  var rounds = [];
+  for (var r = 0; r < roundTarget; r++) {
+    var q = makeRound(roundParams);
+    if (!q) return null;
+    if (q.answer !== sides[r]) q = _mirrorRound(q);
+    // One flag the Adapter can read for every dimension, instead of four
+    // differently-named ones (askBigger / askMore / askLonger / askTaller).
+    q.askPositive = !!(q.askBigger || q.askMore || q.askLonger || q.askTaller);
+    q.roundIndex = r;
+    rounds.push(q);
+  }
+
+  return {
+    type: dim.type,
+    engine: 'quick_compare',
+    mode: 'mini',
+    dimension: dimKey,
+    durationSec:   Math.round(_miniClamp(params.durationSec, 10, 120, 30)),
+    roundTarget:   roundTarget,
+    passThreshold: _miniClamp(params.passThreshold, 0.3, 1, 0.7),
+    timerStyle:    params.timerStyle === 'countdown' ? 'countdown' : 'collect',
+    rounds: rounds,
+    // Kept so the shared Attempt/answer plumbing has the fields it expects even
+    // though a mini-game has no single answer of its own.
+    options: [], answer: '',
+    titleZh: '快速比较', titleEn: 'Quick Compare',
+    hintZh: '看清楚问的是"更大"还是"更小"，再点。',
+    hintEn: 'Check whether it asks for more or fewer, then tap.'
+  };
+};
+
+/**
+ * miniBuild: build one Build-Under-Time mini-game.
+ *
+ * A tower is built by repeatedly taking the biggest block still in the pile
+ * (or the smallest, when askMode is negative), so every single move is a
+ * comparison across a shrinking set — a different skill from Quick Compare's
+ * pairwise choice, and the reason this game exists.
+ *
+ * The whole run is pre-generated: each round carries the pile it faces and the
+ * id of the block that belongs next, so `test.html` can re-derive every answer
+ * from the widths offline. A tower of N blocks yields N-1 scored rounds — the
+ * last block is never a comparison (nothing left to compare it with), so the
+ * adapter drops it in as a reward instead of scoring it.
+ *
+ * params: dimension ('size'|'length'), durationSec, roundTarget, passThreshold,
+ *         timerStyle, askMode, blocksPerTower, minGapPct
+ */
+Generators.miniBuild = function (params) {
+  var dimKey = params.dimension === 'length' ? 'length' : 'size';
+  var perTower = Math.round(_miniClamp(params.blocksPerTower, 3, 6, 4));
+  var minGapPct = _miniClamp(params.minGapPct, 8, 30, 16);
+  var roundTarget = Math.round(_miniClamp(params.roundTarget, 3, 40, 12));
+  var askPositive = _askMode(params.askMode || 'bigger');
+  var palette = ['#ef4444', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#ec4899'];
+
+  // Blocks live between these two widths (percent of the tower area). The gap
+  // asked for has to fit perTower-1 times inside that span, so a tall tower
+  // narrows the gap rather than pushing the widest block off the screen —
+  // requesting minGapPct:30 with 6 blocks is arithmetically impossible.
+  var MIN_W = 24, MAX_W = 96;
+  var span = MAX_W - MIN_W;
+  var gap = Math.min(Math.round(minGapPct), Math.floor(span / (perTower - 1)));
+
+  var scoredPerTower = perTower - 1;
+  var towerCount = Math.ceil(roundTarget / scoredPerTower);
+  var rounds = [];
+
+  for (var t = 0; t < towerCount && rounds.length < roundTarget; t++) {
+    // The slack left over after every mandatory gap is scattered randomly over
+    // the start offset and the gaps, so two towers never look alike while the
+    // widest block still lands inside MAX_W: "which is the biggest" is never a
+    // judgement call at a glance, and never clipped either. Every share is
+    // floored, so widths stay whole percents and the gap can only grow.
+    var slack = span - gap * (perTower - 1);
+    var share = [], total = 0;
+    for (var i = 0; i < perTower; i++) { var r = Math.random(); share.push(r); total += r; }
+
+    var w = MIN_W + Math.floor(slack * share[0] / total);
+    var widths = [w];
+    for (i = 1; i < perTower; i++) {
+      w += gap + Math.floor(slack * share[i] / total);
+      widths.push(w);
+    }
+    var colors = _shuffle(palette).slice(0, perTower);
+    var blocks = widths.map(function (wd, idx) {
+      return { id: 'T' + t + 'B' + idx, widthPct: wd, color: colors[idx] };
+    });
+
+    // Pile order is shuffled; the correct pick order is by width.
+    var pile = _shuffle(blocks);
+    for (var step = 0; step < scoredPerTower && rounds.length < roundTarget; step++) {
+      var best = pile[0];
+      for (var p = 1; p < pile.length; p++) {
+        if (askPositive ? pile[p].widthPct > best.widthPct : pile[p].widthPct < best.widthPct) best = pile[p];
+      }
+      rounds.push({
+        type: dimKey,
+        towerIndex: t,
+        step: step,
+        blocksPerTower: perTower,
+        pile: pile.map(function (b) { return { id: b.id, widthPct: b.widthPct, color: b.color }; }),
+        placed: blocks.filter(function (b) {
+          return pile.indexOf(b) === -1;
+        }).map(function (b) { return b.id; }),
+        answer: best.id,
+        askPositive: askPositive,
+        roundIndex: rounds.length
+      });
+      pile = pile.filter(function (b) { return b !== best; });
+    }
+  }
+
+  return {
+    type: dimKey,
+    engine: 'build_time',
+    mode: 'mini',
+    dimension: dimKey,
+    durationSec:   Math.round(_miniClamp(params.durationSec, 10, 120, 45)),
+    roundTarget:   rounds.length,
+    passThreshold: _miniClamp(params.passThreshold, 0.3, 1, 0.7),
+    timerStyle:    params.timerStyle === 'countdown' ? 'countdown' : 'collect',
+    blocksPerTower: perTower,
+    minGapPct: gap,               // the gap actually used, after fitting perTower blocks
+    askPositive: askPositive,
+    rounds: rounds,
+    options: [], answer: '',
+    titleZh: '限时搭塔', titleEn: 'Build Under Time',
+    hintZh: askPositive ? '每次先拿剩下最大的那块，塔才稳。' : '每次先拿剩下最小的那块。',
+    hintEn: askPositive ? 'Always take the biggest block left — that keeps the tower steady.'
+                        : 'Always take the smallest block left.'
+  };
+};
+
 // ── Dispatch ──────────────────────────────────────────────────────────────────
+
 
 /**
  * Generate a question from a template definition.

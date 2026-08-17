@@ -35,7 +35,8 @@
 <div id="summary">
   <h1>⚖️ Comparison Generator — Validation Suite</h1>
   <h2>Runs each template 20 times. Puzzles: required fields, answer-in-options, answer balance.
-      Interactions (sort/match/group/fit): structural validity — unambiguous target, discriminable gaps, one-to-one mapping.</h2>
+      Interactions (sort/match/group/fit): structural validity — unambiguous target, discriminable gaps, one-to-one mapping.
+      Mini-games: every round in the pool is re-derived from its values, plus answer-side balance and time-per-round.</h2>
   <div id="sum-out" class="sum-row">Loading…</div>
 </div>
 
@@ -56,6 +57,14 @@
   // ── helpers ─────────────────────────────────────────────────────────────
 
   function uid(q) {
+    // A mini-game is a pool of rounds, so its fingerprint is the pool: two runs
+    // that happen to draw the same 12 pairs really are the same game.
+    if (q.mode === 'mini') return (q.rounds || []).map(uid).join('/');
+    // A build_time round is a pile, not a pair, so it has no left/right to
+    // fingerprint — without this every tower would look like every other one and
+    // the variety check would report LOW VAR on a perfectly varied generator.
+    if (Array.isArray(q.pile))
+      return q.pile.map(function(b){ return b.widthPct; }).join(',') + '>' + q.answer;
     // Build a fingerprint of the question's key visual parameters
     if (q.type === 'size' || q.type === 'weight' || q.type === 'speed')
       return q.leftEmoji + q.rightEmoji + (q.askBigger||q.askHeavier||q.askFaster?'B':'S');
@@ -195,9 +204,169 @@
           bad.push('fit: board '+b.id+' ('+b.lengthPct+'%) fits and is shorter than correct '+correct.lengthPct+'%');
       });
 
+    } else if (mode === 'mini') {
+      bad = bad.concat(checkMini(q, tpl));
+
     } else {
       bad.push('unknown interaction mode: ' + mode);
     }
+    return bad;
+  }
+
+  // The two comparable values of one round, per dimension. Returning null means
+  // "this dimension is not renderable as a pair", which is itself a failure.
+  var MINI_PAIR = {
+    size:     function (r) { return [r.leftSizeRank, r.rightSizeRank]; },
+    quantity: function (r) { return [r.leftCount,    r.rightCount];    },
+    number:   function (r) { return [r.leftNum,      r.rightNum];      },
+    length:   function (r) { return [r.leftPct,      r.rightPct];      }
+  };
+
+  // A mini-game is checked round by round: the runtime shows every round it is
+  // handed, so one broken round in a pool of 18 is a broken game. The strongest
+  // assertion is re-deriving each answer from the values — that is what catches
+  // a mirroring bug, which would otherwise look like a perfectly valid round
+  // pointing at the wrong card.
+  //
+  // Everything above the engine split is what MiniGameRuntime itself relies on,
+  // so it holds for every adapter. What an answer looks like is the adapter's
+  // business, so it is checked per engine.
+  function checkMini(q, tpl) {
+    var bad = [], p = tpl.params || {};
+
+    if (!q.engine)                 bad.push('mini: missing engine (no adapter would be found)');
+    if (!Array.isArray(q.rounds))  { bad.push('mini: rounds is not an array'); return bad; }
+
+    var expected = p.roundTarget || 12;
+    if (q.rounds.length !== expected)
+      bad.push('mini: ' + q.rounds.length + ' rounds != roundTarget ' + expected);
+    if (!(q.durationSec >= 10 && q.durationSec <= 120))
+      bad.push('mini: durationSec out of range (' + q.durationSec + ')');
+    if (!(q.passThreshold >= 0.3 && q.passThreshold <= 1))
+      bad.push('mini: passThreshold out of range (' + q.passThreshold + ')');
+    if (q.timerStyle !== 'collect' && q.timerStyle !== 'countdown')
+      bad.push('mini: unknown timerStyle ' + q.timerStyle);
+    // K1/K2 must never see a countdown: a clock running out reads as failure at
+    // an age where nothing should (PATTERN-QUALITY-GATE.md §9.1).
+    if (q.timerStyle === 'countdown' && (tpl.level === 'K1' || tpl.level === 'K2'))
+      bad.push('mini: countdown timer at ' + tpl.level + ' (collect only below G1)');
+    // A round the child has no time to think about is a reflex test, not a
+    // comparison test. 1.5 s is the floor we hold every mini template to.
+    if (q.rounds.length && q.durationSec / q.rounds.length < 1.5)
+      bad.push('mini: only ' + (q.durationSec / q.rounds.length).toFixed(1) + 's per round (min 1.5s)');
+
+    q.rounds.forEach(function (r, i) {
+      var tag = 'mini: round[' + i + '] ';
+      if (!r || typeof r !== 'object')        { bad.push(tag + 'is not an object'); return; }
+      if (r.type !== q.type)                  bad.push(tag + 'type ' + r.type + ' != game type ' + q.type);
+      if (typeof r.askPositive !== 'boolean') bad.push(tag + 'askPositive is not a boolean');
+      if (r.roundIndex !== i)                 bad.push(tag + 'roundIndex ' + r.roundIndex + ' != position ' + i);
+    });
+
+    if (q.engine === 'quick_compare') return bad.concat(checkMiniQuick(q));
+    if (q.engine === 'build_time')    return bad.concat(checkMiniBuild(q));
+    bad.push('mini: no structural check for engine ' + q.engine);
+    return bad;
+  }
+
+  // quick_compare: every round is one pair, and the answer is a side.
+  function checkMiniQuick(q) {
+    var bad = [], sides = { left: 0, right: 0 };
+
+    q.rounds.forEach(function (r, i) {
+      var tag = 'mini: round[' + i + '] ';
+      if (!r || typeof r !== 'object') return;
+      if (r.answer !== 'left' && r.answer !== 'right') { bad.push(tag + 'answer ' + r.answer + ' is not a side'); return; }
+      sides[r.answer]++;
+
+      var pair = MINI_PAIR[q.type];
+      if (!pair) { bad.push(tag + 'dimension ' + q.type + ' has no renderable pair'); return; }
+      var v = pair(r);
+      if (typeof v[0] !== 'number' || typeof v[1] !== 'number') {
+        bad.push(tag + 'values not numeric (' + v[0] + ', ' + v[1] + ')'); return;
+      }
+      if (v[0] === v[1]) { bad.push(tag + 'both sides equal (' + v[0] + ') — no correct answer'); return; }
+      var bigger  = v[0] > v[1] ? 'left' : 'right';
+      var expects = r.askPositive ? bigger : (bigger === 'left' ? 'right' : 'left');
+      if (r.answer !== expects)
+        bad.push(tag + 'answer ' + r.answer + ' but ' + v[0] + ' vs ' + v[1] +
+                 ' asking ' + (r.askPositive ? 'more' : 'less') + ' → ' + expects);
+    });
+
+    // A child who notices the answer keeps landing on one side stops comparing.
+    if (Math.abs(sides.left - sides.right) > 1)
+      bad.push('mini: answer sides unbalanced (left ' + sides.left + ' / right ' + sides.right + ')');
+    return bad;
+  }
+
+  // build_time: every round is a shrinking pile, and the answer is the extreme
+  // block of THAT pile. Checking the whole tower chain is what catches a pile
+  // that forgets to drop the block just placed — the round would still look
+  // valid on its own while the tower silently repeats a block.
+  function checkMiniBuild(q) {
+    var bad = [], towers = {};
+    var gap = q.minGapPct;
+    if (!(gap >= 8)) bad.push('mini/build: effective minGapPct too small (' + gap + ')');
+
+    q.rounds.forEach(function (r, i) {
+      var tag = 'mini/build: round[' + i + '] ';
+      if (!r || typeof r !== 'object') return;
+      var pile = r.pile;
+      if (!Array.isArray(pile) || pile.length < 2) {
+        bad.push(tag + 'pile needs 2+ blocks to be a comparison, got ' +
+                 (Array.isArray(pile) ? pile.length : typeof pile));
+        return;
+      }
+      if (hasDup(ids(pile))) bad.push(tag + 'duplicate block ids in pile');
+
+      var widths = [];
+      pile.forEach(function (b, k) {
+        if (typeof b.widthPct !== 'number') bad.push(tag + 'block[' + k + '] widthPct missing');
+        else if (b.widthPct < 24 || b.widthPct > 96) bad.push(tag + 'block[' + k + '] width ' + b.widthPct + '% out of 24–96');
+        if (!b.color) bad.push(tag + 'block[' + k + '] missing color');
+        widths.push(b.widthPct);
+      });
+
+      // Two blocks a child cannot tell apart make the round a coin flip.
+      var sorted = widths.slice().sort(function (a, b) { return a - b; });
+      for (var k = 1; k < sorted.length; k++) {
+        if (sorted[k] - sorted[k - 1] < gap)
+          bad.push(tag + 'widths ' + sorted[k - 1] + '% and ' + sorted[k] + '% differ by less than ' + gap);
+      }
+
+      // Re-derive the answer from the widths alone.
+      var want = r.askPositive ? sorted[sorted.length - 1] : sorted[0];
+      var chosen = pile.filter(function (b) { return b.id === r.answer; })[0];
+      if (!chosen) { bad.push(tag + 'answer ' + r.answer + ' is not in the pile'); return; }
+      if (chosen.widthPct !== want)
+        bad.push(tag + 'answer is ' + chosen.widthPct + '% but asking for the ' +
+                 (r.askPositive ? 'biggest' : 'smallest') + ' → ' + want + '%');
+
+      (towers[r.towerIndex] = towers[r.towerIndex] || []).push(r);
+    });
+
+    // Per tower the pile must lose exactly the block just answered, so the run
+    // is playable end to end and the tower grows by one block a round.
+    Object.keys(towers).forEach(function (t) {
+      var rs = towers[t];
+      if (rs[0].step !== 0 || (rs[0].placed || []).length !== 0)
+        bad.push('mini/build: tower ' + t + ' does not start on bare ground');
+      if (rs.length > (q.blocksPerTower - 1))
+        bad.push('mini/build: tower ' + t + ' has ' + rs.length + ' rounds, max ' + (q.blocksPerTower - 1));
+      for (var k = 1; k < rs.length; k++) {
+        var prev = rs[k - 1], cur = rs[k];
+        if (cur.step !== prev.step + 1)
+          bad.push('mini/build: tower ' + t + ' step jumps ' + prev.step + ' → ' + cur.step);
+        if (cur.pile.length !== prev.pile.length - 1) {
+          bad.push('mini/build: tower ' + t + ' pile went ' + prev.pile.length + ' → ' + cur.pile.length + ' (must lose 1)');
+          continue;
+        }
+        var stillThere = cur.pile.filter(function (b) { return b.id === prev.answer; }).length;
+        if (stillThere) bad.push('mini/build: tower ' + t + ' keeps answered block ' + prev.answer + ' in the pile');
+        if ((cur.placed || []).length !== (prev.placed || []).length + 1)
+          bad.push('mini/build: tower ' + t + ' placed count did not grow by 1');
+      }
+    });
     return bad;
   }
 
@@ -263,8 +432,36 @@
 
   // ── render ────────────────────────────────────────────────────────────────
 
+  // One round of a mini-game, in the terms that round is actually judged in:
+  // a pair and a side for quick_compare, a pile and a block id for build_time.
+  function miniRoundStr(q, r) {
+    if (!r) return '(empty)';
+    var ask = r.askPositive ? 'more' : 'less';
+    if (q.engine === 'build_time') {
+      var widths = (r.pile || []).map(function (b) { return b.widthPct + '%'; }).join('/');
+      return 'tower ' + r.towerIndex + ' step ' + r.step + ' | ' + (r.pile || []).length +
+             ' left ' + widths + ' → ' + r.answer + ' (ask ' + ask + ')';
+    }
+    var pair = MINI_PAIR[q.type];
+    var v = pair ? pair(r) : null;
+    return (v ? v[0] + ' vs ' + v[1] : '?') + ' → ' + r.answer + ' (ask ' + ask + ')';
+  }
+
   function sampleStr(q) {
     if (!q) return '';
+    if (q.mode === 'mini') {
+      var rs = q.rounds || [];
+      var head = q.engine + ' / ' + q.dimension + ' | ' + rs.length + ' rounds in ' + q.durationSec + 's' +
+                 ' | pass ' + Math.round(q.passThreshold * 100) + '%';
+      if (q.engine === 'build_time') {
+        head += ' | ' + q.blocksPerTower + ' blocks/tower, gap ' + q.minGapPct;
+      } else {
+        var left = rs.filter(function (r) { return r.answer === 'left'; }).length;
+        head += ' | L' + left + '/R' + (rs.length - left);
+      }
+      return head + '\n     ' +
+             rs.slice(0, 3).map(function (r, i) { return '  r' + i + ': ' + miniRoundStr(q, r); }).join('\n     ');
+    }
     switch (q.type) {
       case 'size':    return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer+' (ask '+(q.askBigger?'bigger':'smaller')+')';
       case 'number':  return q.leftNum+' vs '+q.rightNum+' → '+q.answer;

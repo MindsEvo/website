@@ -2,6 +2,8 @@
 
 ## Version
 
+- draft v0.3.0 (2026-08-16) — added §5c `statistics` for Mini-game activities, the
+  `game_mode` bucketing rule for time KPIs, and the one-template-one-Attempt guarantee
 - draft v0.2.0 (2026-08-12) — added `levelMap` implementation cross-reference fields and the `partial` status
 - draft v0.1.0 (2026-08-02)
 - Scope: Meta-thinking modules for AI-readable publishing
@@ -97,6 +99,70 @@ enough. Modules that ship Interaction modes should also declare:
 
 See `docs/patterns/COMPARISON-INTERACTION-IMPLEMENTATION.md` §6 for the runtime-side
 `process` payload these aggregate over.
+
+## 5c. statistics for Mini-game Activities (v0.3.0)
+
+A mini-game is one timed continuous scene containing many rounds, reported as **one**
+Attempt. Modules that ship `mini` runtimes MUST declare:
+
+1. Event keys: `round_start`, `round_answer`, `game_finish`.
+   These are declared now but **not uploaded in phase 1** — only the summary Attempt is.
+   Declaring them early fixes the vocabulary so per-round telemetry can be switched on
+   later without a schema break.
+2. Dimensions: `gameEngine` (which adapter, e.g. `quick_compare`), `endReason`
+   (`roundTarget` | `timeout` | `poolEnd` | `adapter`).
+3. KPIs: `bestStreak` (sustained correctness under time pressure) and `avgRoundMs`
+   (the only time metric comparable across modes).
+
+### 5c.1 `avgTimeMs` MUST be bucketed by `game_mode`
+
+`responseMs` carries a different unit of work per mode:
+
+| mode | `responseMs` means | typical |
+|------|--------------------|---------|
+| `puzzle` | one question's thinking time | 2–15 s |
+| `sort` `match` `group` `fit` | one activity's completion time | 10–90 s |
+| `mini` | **the whole run, 12–18 rounds** | 30–40 s |
+
+Aggregating `avgTimeMs` across modes therefore overstates a child's per-question
+thinking time by an order of magnitude the moment a mini-game is played. Any
+time-based KPI MUST be split by the `game_mode` field that `engine.js` writes onto
+every event. For mini-games the comparable metric is `process.avgRoundMs`.
+
+### 5c.2 `implementedModes` value
+
+Mini-game levels add `"mini"` to `levelMap[].implementedModes`. The value names the
+**runtime**, not the adapter — a level running two different mini-games still lists
+`"mini"` once, and the adapter is distinguished by the `gameEngine` dimension.
+
+### 5c.3 One template, one Attempt
+
+Metadata consumers may assume: **a mini-game template contributes exactly one
+Attempt to a cycle**, identical in weight to one puzzle question. Round counts appear
+only inside `process`, never as attempt volume. Any future per-round event stream is
+telemetry and MUST NOT be counted as attempts.
+
+See `docs/patterns/COMPARISON-MINIGAME-IMPLEMENTATION.md` §9 for the runtime-side
+`process` payload these aggregate over.
+
+### 5c.4 Inside `mini`, metrics MUST still be bucketed by `gameEngine`
+
+`game_mode: 'mini'` is not a unit of work — each adapter defines its own round:
+
+| `gameEngine` | one round is | `polarity_confusion` there means |
+|--------------|--------------|----------------------------------|
+| `quick_compare` | a two-way choice between two cards | the ask was "which is less" and the child picked the bigger one |
+| `build_time` | one placement, taken from a shrinking pile | the child grabbed the opposite extreme of the pile |
+
+Both engines report the same two `errorType` values (`perception`,
+`polarity_confusion`), but a round costs different work and the same error label
+describes a different slip, so accuracy, `avgRoundMs`, `bestStreak` and error mix are
+comparable **within** an engine and not across engines. The module JSON states this as
+the `engine-not-poolable` aggregation rule.
+
+A level that ships two mini-games (comparison G2 does) still lists `"mini"` once in
+`implementedModes` per §5c.2 — `gameEngine` is where the split lives, which is exactly
+why that dimension is mandatory and not optional detail.
 
 ## 6. External AI Discoverability Notes
 

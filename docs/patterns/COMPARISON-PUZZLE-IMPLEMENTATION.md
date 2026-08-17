@@ -273,7 +273,7 @@ shell.createGame({
 | 服务器事件上传需显式开启 | 默认不上报；宿主页需调 `CmpEngine.setEventsEndpoint('http://localhost:8787/api/events')`。未配置时事件只在 localStorage 排队（上限 200 条） |
 | 跨设备同步 | 本地 localStorage 存储，无账号体系时无法同步 |
 | Interaction 不影响准确率 | 拖放活动恒记为答对，Cycle 准确率实际只由 Puzzle 决定 |
-| Mini-game 未实现 | Interaction Adapter 已稳定，Mini-game Runtime 留待后续 |
+| Mini-game 已实现 | 第三种 Runtime，见 `COMPARISON-MINIGAME-IMPLEMENTATION.md`；仍只算 Cycle 中一个模板 |
 
 ---
 
