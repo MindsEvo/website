@@ -57,10 +57,18 @@
     '.cq-ma-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;width:100%;max-width:320px;}',
     '.cq-ma-cell{display:flex;flex-direction:column;align-items:center;gap:6px;}',
     '.cq-ma-box{height:100px;display:flex;align-items:flex-end;justify-content:center;}',
-    '.cq-scene{position:relative;width:100%;max-width:380px;height:92px;background:linear-gradient(180deg,#bfdbfe 0%,#eff6ff 100%);border-radius:14px;border:1.5px solid #dbeafe;overflow:hidden;}',
-    '.cq-scene-ref{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:28px;line-height:1;}',
-    '.cq-scene-obj{position:absolute;bottom:6px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;}',
-    '.cq-scene-emoji{font-size:24px;line-height:1;}',
+    // position scene: the reference sits at ONE shared left edge and each object
+    // gets its own row, so both distances are drawn from the same start on the
+    // same track (§6.6) and "closer" is just "the shorter dotted path".
+    '.cq-scene{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:2px 6px;width:100%;max-width:380px;height:96px;padding:8px 12px 8px 8px;box-sizing:border-box;background:linear-gradient(180deg,#bfdbfe 0%,#eff6ff 100%);border-radius:14px;border:1.5px solid #dbeafe;}',
+    '.cq-scene-ref{font-size:30px;line-height:1;text-align:center;}',
+    '.cq-scene-rows{display:flex;flex-direction:column;gap:10px;}',
+    // The track is the ruler. Its width is definite (flex row of definite width),
+    // so the % below resolves — unlike a % height on an auto-height parent.
+    '.cq-scene-track{position:relative;height:30px;}',
+    '.cq-scene-path{position:absolute;left:0;top:50%;border-bottom:3px dotted #60a5fa;}',
+    '.cq-scene-obj{position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:3px;}',
+    '.cq-scene-emoji{font-size:22px;line-height:1;}',
     '.cq-containers{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:340px;}',
     '.cq-container-cell{display:flex;flex-direction:column;align-items:center;gap:6px;}',
     '.cq-container-visual{width:52px;height:70px;border:2.5px solid #94a3b8;border-radius:6px;background:#f1f5f9;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}',
@@ -306,16 +314,28 @@
     return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>';
   }
 
+  // position: distance from the reference is the compared attribute, so it has to
+  // BE a distance on screen. The old layout pinned the reference at 50% and put
+  // each object at `50 ± (dist − 50) × 0.45`, which made the drawn gap
+  // `0.45 × |dist − 50|` — a V shape: dist 50 landed on top of the reference and
+  // dist 10 and dist 90 landed equally far from it. With the generator's ranges
+  // the FAR object was routinely drawn nearer than the near one, so the answer
+  // looked reversed. Now the reference owns one shared left edge, each object has
+  // its own row on the same track, and the dotted path is the true distance.
   function _nearFarScene(q) {
-    var lx=50-(50-q.leftDistPct)*0.45, rx=50+(q.rightDistPct-50)*0.45;
-    function obj(idx,x,emoji){
-      return '<div class="cq-scene-obj" style="left:'+x+'%">'+
-        '<div class="cq-scene-emoji">'+emoji+'</div>'+_slotBadge(idx,q.type)+'</div>';
+    function row(idx, pct, emoji) {
+      return '<div class="cq-scene-track">' +
+        '<div class="cq-scene-path" style="width:' + pct + '%"></div>' +
+        '<div class="cq-scene-obj" style="left:' + pct + '%">' +
+          '<div class="cq-scene-emoji">' + emoji + '</div>' + _slotBadge(idx, q.type) +
+        '</div></div>';
     }
-    return '<div class="cq-scene">'+
-      '<div class="cq-scene-ref">'+q.refEmoji+'</div>'+
-      obj(0,lx,q.leftEmoji)+obj(1,rx,q.rightEmoji)+
-    '</div>';
+    return '<div class="cq-scene">' +
+      '<div class="cq-scene-ref">' + q.refEmoji + '</div>' +
+      '<div class="cq-scene-rows">' +
+        row(0, q.leftDistPct, q.leftEmoji) +
+        row(1, q.rightDistPct, q.rightEmoji) +
+      '</div></div>';
   }
 
   function _fullnessScene(q) {
@@ -408,7 +428,7 @@
       case 'number':  zh=q.askBigger?'哪个更大，'+q.leftNum+'还是'+q.rightNum+'？':'哪个更小？'; en=q.askBigger?'Which is bigger, '+q.leftNum+' or '+q.rightNum+'?':'Which is smaller?'; break;
       case 'shape':   zh='哪个形状不一样？'; en='Which shape is different?'; break;
       case 'color':   zh='哪个颜色不一样？'; en='Which color is different?'; break;
-      case 'position':zh=q.askNearer?'哪个离'+q.refNameZh+'更近？':'哪个更远？'; en=q.askNearer?'Which is closer?':'Which is farther?'; break;
+      case 'position':zh='哪个离'+q.refNameZh+(q.askNearer?'更近？':'更远？'); en=(q.askNearer?'Which is closer to the ':'Which is farther from the ')+q.refNameEn.toLowerCase()+'?'; break;
       case 'fullness':zh=q.askFuller?'哪个更满？':'哪个更空？'; en=q.askFuller?'Which is fuller?':'Which is more empty?'; break;
       case 'weight':  zh=q.askHeavier?'哪个更重？':'哪个更轻？'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
       case 'speed':   zh=q.askFaster?'哪个更快？':'哪个更慢？'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;

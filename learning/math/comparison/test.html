@@ -109,6 +109,25 @@
     if (q.options && q.answer && q.options.indexOf(q.answer) === -1)
       bad.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
     if (q.type === 'multi_attribute') bad = bad.concat(checkMultiAttr(q, tpl));
+    if (q.type === 'position')        bad = bad.concat(checkPosition(q));
+    return bad;
+  }
+
+  // position draws each distance as a dotted path from one shared edge, so the
+  // two percentages are compared as lengths on screen: they must be far enough
+  // apart to be told apart, and the answer must follow from them and askNearer.
+  function checkPosition(q) {
+    var bad = [], l = q.leftDistPct, r = q.rightDistPct;
+    if (typeof l !== 'number' || typeof r !== 'number')
+      return ['position: leftDistPct/rightDistPct missing'];
+    if (Math.abs(l - r) < 25)
+      bad.push('position: distances '+l+'/'+r+' differ by <25% of the track');
+    if (Math.min(l, r) / Math.max(l, r) > 0.6001)
+      bad.push('position: near path is '+(Math.min(l,r)/Math.max(l,r)).toFixed(2)+'x the far one (max 0.60)');
+    var nearer = l < r ? 'left' : 'right';
+    var want = q.askNearer ? nearer : (nearer === 'left' ? 'right' : 'left');
+    if (q.answer !== want)
+      bad.push('position: asked '+(q.askNearer?'nearer':'farther')+' but answer is '+q.answer+', expected '+want);
     return bad;
   }
 

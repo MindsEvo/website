@@ -512,9 +512,13 @@ Generators.nearFar = function (params) {
   var ref = subj.ref;
   var objs = _shuffle(subj.objs.slice());
 
-  // leftDist / rightDist: % from reference (lower = closer)
-  var leftDist = _ri(10, 40);
-  var rightDist = _ri(55, 90);
+  // leftDist / rightDist: % of the scene track, measured from the reference
+  // (lower = closer). The renderer draws these as two dotted paths from one
+  // shared edge, so the two numbers are compared as lengths on screen — keep the
+  // ranges far enough apart that the shorter path is obvious at a glance
+  // (worst case 35 vs 60, i.e. the near path is 0.58x the far one).
+  var leftDist = _ri(10, 35);
+  var rightDist = _ri(60, 90);
   // Randomly swap sides
   if (Math.random() < 0.5) { var tmp = leftDist; leftDist = rightDist; rightDist = tmp; }
 
