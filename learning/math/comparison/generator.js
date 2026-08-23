@@ -842,10 +842,16 @@ Generators.fitBridge = function (params) {
   var gap     = scene.gapPct;
   var margin  = params.margin || 10;  // how much longer the "too long" board is
 
-  // Three boards: clearly too short, just fits, clearly too long
-  var shortLen  = gap - 15 - Math.round(Math.random() * 8);   // clearly too short
-  var fitLen    = gap + Math.round(Math.random() * 5);          // just fits
-  var longLen   = gap + margin + Math.round(Math.random() * 8); // clearly too long
+  // Three boards: clearly too short, just fits, clearly too long.
+  // Every length is a percentage of the ONE ruler the gap is also drawn on
+  // (FitRuntime._layout), so these numbers are what the child sees:
+  //   - the fitting board must overhang by at least 4% of the ruler, or "just
+  //     long enough" is a difference too small to see,
+  //   - the long board is defined relative to fitLen, never to the gap, so the
+  //     order short < gap < fit < long can never collapse for a small margin.
+  var shortLen  = gap - 12 - Math.round(Math.random() * 8);      // clearly too short
+  var fitLen    = gap + 4 + Math.round(Math.random() * 4);       // just long enough
+  var longLen   = fitLen + margin + Math.round(Math.random() * 6); // clearly longer than needed
 
   var palette   = ['#ef4444', '#22c55e', '#3b82f6'];
   var colors    = _shuffle(palette);

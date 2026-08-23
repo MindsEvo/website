@@ -1,8 +1,9 @@
 # Comparison · Interaction Mode — Implementation Reference
 
-**版本** v1.1 · 2026-08-12  
+**版本** v1.2 · 2026-08-22  
 **前置文档** `docs/patterns/COMPARISON-PUZZLE-IMPLEMENTATION.md`
 
+> v1.2 变更：Fit 改为公共标尺布局（河宽由 `gapPct` 算出、木板竖排共基线、虚线标对岸、落位按真实长度、数字按年级开关），生成器长度重排，见 Puzzle 文档 §6.6。
 > v1.1 变更：Fit 三态判定与反馈文案；`process` 字段补齐；澄清 Interaction 在会话内的实际执行顺序；`test.html` 改为按 mode 分流校验；结果页文案按 mode 区分。
 
 ---
@@ -139,12 +140,22 @@ if (!el || el.type) el = null;  // event listener 传入 Event 对象时忽略�
 
 ```
 生成器：fitBridge
-参数：margin —— 「明显过长」那块板超出河宽的百分比（不是正确板的余量）
-三块木板：
-  太短 = gap − 15 − rand(0..8)
-  刚好 = gap + rand(0..5)        ← correctBoardId
-  过长 = gap + margin + rand(0..8)
+参数：margin —— 「明显过长」那块板比正确板多出的百分比
+三块木板（单位都是「公共标尺的百分比」）：
+  太短 = gap − 12 − rand(0..8)
+  刚好 = gap + 4 + rand(0..4)      ← correctBoardId，至少越线 4%
+  过长 = 刚好 + margin + rand(0..6)   ← 相对「刚好」定义，不是相对 gap
 ```
+
+**公共标尺（v1.2，Puzzle 文档 §6.6）**：一屏一把尺子
+`ruler = fieldWidth − bankL − 8`，河宽 = `gapPct% × ruler`，
+每块板 = `lengthPct% × ruler`，三块板竖排一列、左边缘全部压在近岸上，
+虚线 `#ft-goal-line` 画在 `bankL + riverW` = 对岸。于是"够长"= **越过虚线**，
+是孩子能看见的事实，不再只是代码里的一次数值比较。落位的板按自己的真实长度画，
+过长的板真的伸到对岸上；太短的板也照样铺下去、停在虚线前、然后沉进河里。
+数字按年级开关：K1/K2 无数字（板上、河面都没有），G1 起河面显示 `gapPct`、板上显示 `lengthPct`。
+河面按真实比例变窄，命中区因此单独放大（`.ft-drop-zone` 四周外扩）。
+`resize` 重跑 `_layout()`，已落位的板用 `_st.placed` 重画。
 
 **三态判定**（v1.1）：木板只要 `lengthPct >= gapPct` 就真的能过河，因此算正确；
 是否为「最优解」记在 `process.optimal`。
@@ -157,7 +168,7 @@ if (!el || el.type) el = null;  // event listener 传入 Event 对象时忽略�
 
 三块板全试完仍未成功时自动恢复托盘（仅当生成器没产出可用板才可能发生），保证活动不会死锁。
 
-**复位**：`usedBoards` 清空，桥隐藏，消息清空。
+**复位**：`usedBoards` 清空，`placed` 置 null，桥隐藏，消息清空。
 
 ---
 
