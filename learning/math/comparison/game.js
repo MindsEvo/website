@@ -32,10 +32,15 @@
     '.cq-bars{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;}',
     '.cq-bar-row{display:flex;align-items:center;gap:10px;}',
     '.cq-bar-track{flex:1;height:16px;background:#e2e8f0;border-radius:999px;overflow:hidden;}',
-    '.cq-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#0ea5e9);}',
-    '.cq-bar-label{font-size:13px;font-weight:800;color:#475569;min-width:36px;}',
-    '.cq-heights{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:flex-end;height:120px;width:100%;max-width:280px;}',
-    '.cq-h-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;}',
+    '.cq-bar-fill{height:100%;border-radius:999px;}',
+    // Slot marker: the letter (and colour) that ties a scene item to its option.
+    '.cq-slot{width:24px;height:24px;border-radius:8px;color:#fff;font-size:13px;font-weight:900;' +
+      'display:flex;align-items:center;justify-content:center;line-height:1;flex:0 0 auto;}',
+    '.cq-heights{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;width:100%;max-width:280px;}',
+    '.cq-h-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;}',
+    // Fixed-height track: the bar is sized in px against H_BAR_MAX, never in %,
+    // because a % height inside an auto-height flex column does not resolve.
+    '.cq-h-track{height:108px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;}',
     '.cq-h-bar{width:44px;border-radius:8px 8px 0 0;}',
     '.cq-h-emoji{font-size:28px;line-height:1;}',
     '.cq-dots-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:400px;}',
@@ -44,25 +49,25 @@
     '.cq-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;}',
     '.cq-items{display:flex;gap:10px;justify-content:center;width:100%;max-width:380px;}',
     '.cq-item{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:10px 12px;}',
-    '.cq-item-label{font-size:12px;font-weight:800;color:#64748b;}',
     '.cq-shape-svg{width:52px;height:52px;}',
-    '.cq-scene{position:relative;width:100%;max-width:380px;height:80px;background:linear-gradient(180deg,#bfdbfe 0%,#eff6ff 100%);border-radius:14px;border:1.5px solid #dbeafe;overflow:hidden;}',
+    '.cq-scene{position:relative;width:100%;max-width:380px;height:92px;background:linear-gradient(180deg,#bfdbfe 0%,#eff6ff 100%);border-radius:14px;border:1.5px solid #dbeafe;overflow:hidden;}',
     '.cq-scene-ref{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:28px;line-height:1;}',
-    '.cq-scene-obj{position:absolute;bottom:10px;font-size:24px;line-height:1;}',
+    '.cq-scene-obj{position:absolute;bottom:6px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;}',
+    '.cq-scene-emoji{font-size:24px;line-height:1;}',
     '.cq-containers{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:340px;}',
     '.cq-container-cell{display:flex;flex-direction:column;align-items:center;gap:6px;}',
     '.cq-container-visual{width:52px;height:70px;border:2.5px solid #94a3b8;border-radius:6px;background:#f1f5f9;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}',
     '.cq-fill{width:100%;border-radius:2px;background:linear-gradient(180deg,#7dd3fc,#2563eb);}',
     '.cq-container-label{font-size:12px;font-weight:700;color:#64748b;}',
     '.cq-opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:72px;padding:6px 4px;}',
+    // Option pointer: the only thing a scene-backed option is allowed to show.
+    '.cq-opt-ptr{width:40px;height:40px;border-radius:12px;color:#fff;font-size:20px;font-weight:900;' +
+      'display:flex;align-items:center;justify-content:center;line-height:1;}',
     '.cq-opt-emoji{font-size:30px;line-height:1;}',
     '.cq-opt-label{font-size:12px;font-weight:800;color:#64748b;}',
-    '.cq-opt-bar-wrap{width:100%;height:12px;background:#dbeafe;border-radius:999px;overflow:hidden;max-width:120px;}',
-    '.cq-opt-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#60a5fa,#2563eb);}',
     '.cq-opt-num{font-size:32px;font-weight:900;color:#1e293b;line-height:1;}',
     '.cq-opt-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;max-width:110px;}',
     '.cq-opt-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;}',
-    '.cq-opt-h-bar{width:38px;border-radius:5px 5px 0 0;margin:0 auto;}',
     '.s1-opts.cq-3opt{grid-template-columns:repeat(3,1fr)!important;}',
     '.cq-lvl-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}',
     '.cq-lvl-title-bar{display:flex;align-items:center;width:100%;max-width:520px;gap:8px;}',
@@ -152,6 +157,45 @@
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
   }
 
+  // ── Slot markers: the scene ⇄ option contract ──────────────────────────────
+  // Rule for every scene-backed type: the SCENE owns the compared attribute
+  // (shared baseline, obvious difference, one slot marker per item) and the
+  // OPTION is only a pointer at a slot. An option never re-draws the attribute —
+  // that used to put the real comparison inside the answer cards.
+  //
+  // Slot colour is used only where the items have no identity of their own
+  // (length and height are anonymous bars); everywhere else the marker is
+  // neutral slate and the option shows the item's own emoji/name instead.
+
+  var SLOT_LETTERS = ['A', 'B', 'C'];
+  var SLOT_COLORS  = ['#0ea5e9', '#10b981', '#f59e0b'];
+  var SLOT_NEUTRAL = '#64748b';
+  var SLOT_COLORED = { length: 1, height: 1 };
+  var H_BAR_MAX    = 80;   // px; must match .cq-h-track height minus the emoji
+
+  function _slotIdx(opt) {
+    if (opt === 'left')  return 0;
+    if (opt === 'right') return 1;
+    var i = SLOT_LETTERS.indexOf(String(opt));
+    return i === -1 ? 0 : i;
+  }
+
+  function _slotColor(idx, type) {
+    if (!SLOT_COLORED[type]) return SLOT_NEUTRAL;
+    return SLOT_COLORS[idx] || SLOT_NEUTRAL;
+  }
+
+  function _slotBadge(idx, type) {
+    return '<div class="cq-slot" style="background:' + _slotColor(idx, type) + '">' +
+      (SLOT_LETTERS[idx] || '?') + '</div>';
+  }
+
+  function _hasScene(type) {
+    return type === 'size' || type === 'length' || type === 'height' ||
+           type === 'quantity' || type === 'position' || type === 'fullness' ||
+           type === 'shape' || type === 'color';
+  }
+
   function _sceneHtml(q) {
     switch (q.type) {
       case 'size':     return _sizeScene(q);
@@ -170,23 +214,33 @@
     var max=Math.max(q.leftSizeRank,q.rightSizeRank);
     var lSz=Math.round(36+(q.leftSizeRank/max)*44), rSz=Math.round(36+(q.rightSizeRank/max)*44);
     return '<div class="cq-pair">'+
-      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+lSz+'px">'+q.leftEmoji+'</div><div class="cq-label"><span class="zh">'+q.leftNameZh+'</span><span class="en">'+q.leftNameEn+'</span></div></div>'+
-      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+rSz+'px">'+q.rightEmoji+'</div><div class="cq-label"><span class="zh">'+q.rightNameZh+'</span><span class="en">'+q.rightNameEn+'</span></div></div>'+
+      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+lSz+'px">'+q.leftEmoji+'</div><div class="cq-label"><span class="zh">'+q.leftNameZh+'</span><span class="en">'+q.leftNameEn+'</span></div>'+_slotBadge(0,q.type)+'</div>'+
+      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+rSz+'px">'+q.rightEmoji+'</div><div class="cq-label"><span class="zh">'+q.rightNameZh+'</span><span class="en">'+q.rightNameEn+'</span></div>'+_slotBadge(1,q.type)+'</div>'+
     '</div>';
   }
 
   function _lengthScene(q) {
-    return '<div class="cq-bars">'+
-      '<div class="cq-bar-row"><span class="cq-bar-label">A</span><div class="cq-bar-track"><div class="cq-bar-fill" style="width:'+q.leftPct+'%"></div></div></div>'+
-      '<div class="cq-bar-row"><span class="cq-bar-label">B</span><div class="cq-bar-track"><div class="cq-bar-fill" style="width:'+q.rightPct+'%"></div></div></div>'+
-    '</div>';
+    function row(idx,pct){
+      return '<div class="cq-bar-row">'+_slotBadge(idx,q.type)+
+        '<div class="cq-bar-track"><div class="cq-bar-fill" style="width:'+pct+'%;background:'+_slotColor(idx,q.type)+'"></div></div></div>';
+    }
+    return '<div class="cq-bars">'+row(0,q.leftPct)+row(1,q.rightPct)+'</div>';
   }
 
   function _heightScene(q) {
-    return '<div class="cq-heights">'+
-      '<div class="cq-h-col"><div class="cq-h-emoji">'+q.leftEmoji+'</div><div class="cq-h-bar" style="height:'+q.leftHeightPct+'%;background:#38bdf8;"></div></div>'+
-      '<div class="cq-h-col"><div class="cq-h-emoji">'+q.rightEmoji+'</div><div class="cq-h-bar" style="height:'+q.rightHeightPct+'%;background:#34d399;"></div></div>'+
-    '</div>';
+    // Bar heights are computed in px against H_BAR_MAX on purpose. A `height:X%`
+    // inside .cq-h-col does not resolve (auto-height flex column), which used to
+    // collapse both bars to 0px and made the two items look exactly the same
+    // height — while the option cards still showed the difference.
+    function col(idx,emoji,pct){
+      var px=Math.max(8,Math.round(pct/100*H_BAR_MAX));
+      return '<div class="cq-h-col">'+
+        '<div class="cq-h-track"><div class="cq-h-emoji">'+emoji+'</div>'+
+          '<div class="cq-h-bar" style="height:'+px+'px;background:'+_slotColor(idx,q.type)+'"></div></div>'+
+        _slotBadge(idx,q.type)+
+      '</div>';
+    }
+    return '<div class="cq-heights">'+col(0,q.leftEmoji,q.leftHeightPct)+col(1,q.rightEmoji,q.rightHeightPct)+'</div>';
   }
 
   function _quantityScene(q) {
@@ -195,85 +249,96 @@
       for(var i=0;i<count;i++) h+='<div class="cq-dot">'+q.objEmoji+'</div>';
       return h+'</div>';
     }
-    return '<div class="cq-dots-pair">'+
-      '<div class="cq-dots-cell">'+dots(q.leftCount)+(q.showNumbers?'<div class="cq-label">'+q.leftCount+'</div>':'')+'</div>'+
-      '<div class="cq-dots-cell">'+dots(q.rightCount)+(q.showNumbers?'<div class="cq-label">'+q.rightCount+'</div>':'')+'</div>'+
-    '</div>';
+    function cell(idx,count){
+      return '<div class="cq-dots-cell">'+dots(count)+
+        (q.showNumbers?'<div class="cq-label">'+count+'</div>':'')+_slotBadge(idx,q.type)+'</div>';
+    }
+    return '<div class="cq-dots-pair">'+cell(0,q.leftCount)+cell(1,q.rightCount)+'</div>';
   }
 
   function _sameDiffScene(q) {
     var h='<div class="cq-items">';
-    q.items.forEach(function(item,idx){h+='<div class="cq-item">'+_shapeSvg(item.shape,item.color)+'<div class="cq-item-label">'+['A','B','C'][idx]+'</div></div>';});
+    q.items.forEach(function(item,idx){h+='<div class="cq-item">'+_shapeSvg(item.shape,item.color)+_slotBadge(idx,q.type)+'</div>';});
     return h+'</div>';
   }
 
   function _nearFarScene(q) {
     var lx=50-(50-q.leftDistPct)*0.45, rx=50+(q.rightDistPct-50)*0.45;
+    function obj(idx,x,emoji){
+      return '<div class="cq-scene-obj" style="left:'+x+'%">'+
+        '<div class="cq-scene-emoji">'+emoji+'</div>'+_slotBadge(idx,q.type)+'</div>';
+    }
     return '<div class="cq-scene">'+
       '<div class="cq-scene-ref">'+q.refEmoji+'</div>'+
-      '<div class="cq-scene-obj" style="left:'+lx+'%">'+q.leftEmoji+'</div>'+
-      '<div class="cq-scene-obj" style="left:'+rx+'%">'+q.rightEmoji+'</div>'+
+      obj(0,lx,q.leftEmoji)+obj(1,rx,q.rightEmoji)+
     '</div>';
   }
 
   function _fullnessScene(q) {
-    function con(pct,emoji,zh,en){
+    function con(idx,pct,emoji,zh,en){
       return '<div class="cq-container-cell">'+
         '<div class="cq-emoji" style="font-size:22px">'+emoji+'</div>'+
         '<div class="cq-container-visual"><div class="cq-fill" style="height:'+pct+'%"></div></div>'+
-        '<div class="cq-container-label"><span class="zh">'+zh+'</span><span class="en">'+en+'</span></div></div>';
+        '<div class="cq-container-label"><span class="zh">'+zh+'</span><span class="en">'+en+'</span></div>'+
+        _slotBadge(idx,q.type)+'</div>';
     }
-    return '<div class="cq-containers">'+con(q.leftFillPct,q.leftEmoji,q.leftNameZh,q.leftNameEn)+con(q.rightFillPct,q.rightEmoji,q.rightNameZh,q.rightNameEn)+'</div>';
+    return '<div class="cq-containers">'+
+      con(0,q.leftFillPct,q.leftEmoji,q.leftNameZh,q.leftNameEn)+
+      con(1,q.rightFillPct,q.rightEmoji,q.rightNameZh,q.rightNameEn)+'</div>';
   }
 
   // ── Option renderer ────────────────────────────────────────────────────────
 
   function renderOption(opt, q) {
+    // Scene-backed type → pointer only. See the slot-marker contract above.
+    if (_hasScene(q.type)) return '<div class="cq-opt">'+_optPointer(opt,q)+'</div>';
+
+    // No scene (number / weight / speed / time / multi_attribute): the options
+    // ARE the question content, so they keep carrying it — plus a letter label.
     var lbl={left:{zh:'选 A',en:'A'},right:{zh:'选 B',en:'B'},A:{zh:'A',en:'A'},B:{zh:'B',en:'B'},C:{zh:'C',en:'C'}};
     var l=lbl[opt]||lbl.left;
     return '<div class="cq-opt">'+_optBody(opt,q)+
       '<div class="cq-opt-label"><span class="zh">'+l.zh+'</span><span class="en">'+l.en+'</span></div></div>';
   }
 
-  function _optBody(opt, q) {
-    if ((q.type==='shape'||q.type==='color') && q.items) {
-      var idx=['A','B','C'].indexOf(opt);
-      if (idx!==-1&&q.items[idx]) return _shapeSvg(q.items[idx].shape,q.items[idx].color,44);
-    }
+  // A pointer = the slot letter (in the slot colour) plus, when the two items
+  // are told apart by something other than the compared attribute, a neutral
+  // copy of that identity: the emoji at a FIXED size and the name. Never the
+  // attribute itself.
+  function _optPointer(opt, q) {
+    var idx=_slotIdx(opt);
+    var h='<div class="cq-opt-ptr" style="background:'+_slotColor(idx,q.type)+'">'+(SLOT_LETTERS[idx]||'?')+'</div>';
+    return h+_optIdentity(opt,q);
+  }
+
+  function _optIdentity(opt, q) {
     switch (q.type) {
-      case 'size': case 'weight': case 'speed': {
+      // Two distinct objects: the emoji/name identifies them without hinting.
+      case 'size': case 'position': case 'fullness': {
+        var left=opt==='left';
+        var em=left?q.leftEmoji:q.rightEmoji, nz=left?q.leftNameZh:q.rightNameZh, ne=left?q.leftNameEn:q.rightNameEn;
+        var h='<div class="cq-opt-emoji" style="font-size:24px">'+em+'</div>';
+        if (nz) h+='<div class="cq-opt-label"><span class="zh">'+nz+'</span><span class="en">'+ne+'</span></div>';
+        return h;
+      }
+      // length / height / quantity: anonymous items — the letter is the identity.
+      // shape / color: the identity IS the answer, so showing it would give it away.
+      default: return '';
+    }
+  }
+
+  // Bodies for the scene-less types only. Scene-backed types go through
+  // _optPointer instead, so nothing here may re-draw a compared attribute.
+  function _optBody(opt, q) {
+    switch (q.type) {
+      case 'weight': case 'speed': {
         var em=opt==='left'?q.leftEmoji:q.rightEmoji, nmz=opt==='left'?q.leftNameZh:q.rightNameZh, nme=opt==='left'?q.leftNameEn:q.rightNameEn;
         return '<div class="cq-opt-emoji">'+em+'</div><div class="cq-opt-label"><span class="zh">'+nmz+'</span><span class="en">'+nme+'</span></div>';
-      }
-      case 'height': {
-        var hp=opt==='left'?q.leftHeightPct:q.rightHeightPct, he=opt==='left'?q.leftEmoji:q.rightEmoji;
-        return '<div class="cq-opt-emoji" style="font-size:18px">'+he+'</div>'+
-          '<div class="cq-opt-h-bar" style="height:'+Math.round(hp*0.5)+'px;background:#38bdf8;border-radius:4px 4px 0 0;width:32px;"></div>';
-      }
-      case 'length': {
-        var pct=opt==='left'?q.leftPct:q.rightPct;
-        return '<div class="cq-opt-bar-wrap"><div class="cq-opt-bar-fill" style="width:'+pct+'%"></div></div>';
-      }
-      case 'quantity': {
-        var cnt=opt==='left'?q.leftCount:q.rightCount, dh='<div class="cq-opt-dots">';
-        for(var i=0;i<cnt;i++) dh+='<div class="cq-opt-dot">'+q.objEmoji+'</div>';
-        dh+='</div>';
-        return dh+(q.showNumbers?'<div class="cq-opt-num">'+cnt+'</div>':'');
       }
       case 'number': {
         var num=opt==='left'?q.leftNum:q.rightNum, dotH='';
         if(q.showDots){dotH='<div class="cq-opt-dots">';for(var d=0;d<num;d++) dotH+='<div class="cq-opt-dot" style="background:#93c5fd;border-radius:50%;width:14px;height:14px;"></div>';dotH+='</div>';}
         return dotH+'<div class="cq-opt-num">'+num+'</div>';
-      }
-      case 'position': {
-        var pe=opt==='left'?q.leftEmoji:q.rightEmoji, pnz=opt==='left'?q.leftNameZh:q.rightNameZh, pne=opt==='left'?q.leftNameEn:q.rightNameEn;
-        return '<div class="cq-opt-emoji">'+pe+'</div><div class="cq-opt-label"><span class="zh">'+pnz+'</span><span class="en">'+pne+'</span></div>';
-      }
-      case 'fullness': {
-        var fp=opt==='left'?q.leftFillPct:q.rightFillPct, fe=opt==='left'?q.leftEmoji:q.rightEmoji;
-        return '<div class="cq-opt-emoji" style="font-size:22px">'+fe+'</div>'+
-          '<div style="width:28px;height:44px;border:2px solid #94a3b8;border-radius:4px;background:#f1f5f9;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;">'+
-            '<div style="width:100%;height:'+fp+'%;background:#3b82f6;border-radius:2px;"></div></div>';
       }
       case 'time': {
         var tev=opt==='left'?{zh:q.leftEventZh,en:q.leftEventEn}:{zh:q.rightEventZh,en:q.rightEventEn};

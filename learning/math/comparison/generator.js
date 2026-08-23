@@ -334,8 +334,10 @@ Generators.lengthCompare = function (params) {
 Generators.heightCompare = function (params) {
   var set = params.set === 'buildings' ? GEN_DATA.buildings : GEN_DATA.trees;
   var gapPct = params.gapPct || 35;
+  // Both sides are the SAME object on purpose: two different species invite the
+  // child to compare the wrong attribute. Height alone must be the difference.
   var leftObj = _pick(set);
-  var rightObj = _pick(set);
+  var rightObj = leftObj;
 
   var a, b, attempts = 0;
   do {

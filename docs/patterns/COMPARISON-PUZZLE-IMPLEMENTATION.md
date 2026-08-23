@@ -232,6 +232,53 @@ shell.createGame({
 - 进行中：`进度 8/19`（蓝色）
 - 已解锁：`✓ 已解锁`（绿色）
 
+### 6.5 场景与选项的职责划分（Scene / Option 契约）
+
+**这是新增模板的验收项，违反则题目本身不成立。**
+
+一道 Puzzle 有两个渲染出口：`renderSequence()` 画黄框里的**场景**，
+`renderOption()` 画下面的**选项卡**。两者职责必须严格分开：
+
+| | 场景（`#s1-seqin`） | 选项卡（`.s1-opt`） |
+|---|---|---|
+| 被比较的属性（高矮/长短/多少/满空/形状/颜色…） | **只在这里出现** | **绝不出现** |
+| 共同基线 / 同一起点 | 必须有（否则无法比较） | — |
+| 差异是否要明显 | 必须明显（生成器已保证数据有 gap，渲染不能吃掉它） | — |
+| 槽位标记 `.cq-slot` | 每个选项对应一个，顺序 A B C | — |
+| 内容 | 场景本体 | 指针 `.cq-opt-ptr`（字母）+ 可选的**中性身份** |
+
+"中性身份"= 不泄露答案的辨识信息：固定字号的 emoji、物体名称。
+`size` / `position` / `fullness` 两侧是不同物体，选项显示 emoji + 名称帮助对应；
+`length` / `height` / `quantity` 两侧是匿名条/点，字母本身就是身份；
+`shape` / `color` 的身份**就是答案**，选项只能有字母。
+
+槽位颜色（`SLOT_COLORS`）只在 `length` / `height` 使用——匿名条需要颜色对应；
+其余类型用中性 slate（`SLOT_NEUTRAL`），避免颜色变成额外线索。
+
+**为什么写成硬规则**：早期 height 题的柱子因为
+`.cq-h-bar{height:X%}` 挂在自动高度的 flex 列上（百分比高度无法解析 → `auto` → 0px）
+整体塌陷，黄框里只剩两个同样大的 emoji，而选项卡用的是 px 高度、
+反而把高低差画了出来——**真正的比较跑到答案里去了**，题目变成"看选项猜题目"。
+因此：
+
+- 场景里所有靠尺寸表达的元素必须用 **px**（或放在固定高度容器内），
+  见 `.cq-h-track{height:108px}` + `H_BAR_MAX = 80`；
+- 同一道题两侧应是**同一个物体**（`heightCompare` 的 `rightObj = leftObj`），
+  两个不同物种会诱导孩子比较错误的属性。
+
+**无场景题型例外**：`number` / `weight` / `speed` / `time` / `multi_attribute`
+的 `_sceneHtml()` 返回 `''`，题面只有文字，选项**就是**题目内容
+（数字、物体、时刻），必须继续承载内容，也不加字母指针。
+判定依据是 `_hasScene(type)`。
+
+新增模板自查清单：
+
+1. 有场景吗？→ 有：选项只能是指针；没有：选项承载内容。
+2. 场景里两侧共基线、差异肉眼可辨吗？（用 px 而非 %）
+3. 槽位标记数量 = 选项数量，字母顺序一致吗？
+4. 选项里是否残留 `.cq-h-bar` / `.cq-bar-fill` / `.cq-dot` / `.cq-fill` / `.cq-shape-svg` 之类属性元素？
+5. `shape` / `color` 这类"身份即答案"的题，选项有没有泄露答案？
+
 ---
 
 ## 7. 音频
@@ -262,6 +309,19 @@ shell.createGame({
 （例如 `cmp-g2-time-001` 因 dailyEvents 池小而常报 LOW VAR）。
 出现 WARN 时先复跑两次确认是否稳定，稳定复现才需要扩池或调参，不要把它当硬门禁。
 
+**`test.html` 只验证数据，不验证渲染。** 它看不见"柱子被 CSS 塌成 0px"这类问题
+（§6.5 的起因）。校验渲染几何要另写一次性探针：一个和 `index.html` 引同一批脚本的页面，
+在 `shell.createGame` 上打桩截获 `cfg`，然后自己造 DOM
+（`#s1-seqin` + `#s1-opts`）调 `cfg.renderSequence()` / `cfg.renderOption()`，
+用 `offsetHeight` / `getBoundingClientRect()` 断言：
+
+- 柱高 = `pct/100 × H_BAR_MAX`（比例忠实，没被 flex 压扁）
+- 两侧 `bottom` 相同（共基线）
+- 选项卡里没有 `.cq-h-bar` / `.cq-bar-fill` / `.cq-dot` / `.cq-fill` / `.cq-shape-svg`
+- 槽位字母与选项字母一一对应
+
+探针放在单元目录内（同源才能量 DOM），跑完即删，不进仓库。
+
 ---
 
 ## 9. 已知限制和后续方向
@@ -269,7 +329,7 @@ shell.createGame({
 | 限制 | 说明 |
 |------|------|
 | G3–G6 未实现 | 卡片已显示"即将推出"，templates 和 generators 需补充 |
-| 答题音效缺失 | TTS 工作，对错提示音（ding/buzz）尚未添加 |
+| 音效为合成音 | `shell.audio` 用 WebAudio 合成 ding/buzz 等，未使用音频文件资源 |
 | 服务器事件上传需显式开启 | 默认不上报；宿主页需调 `CmpEngine.setEventsEndpoint('http://localhost:8787/api/events')`。未配置时事件只在 localStorage 排队（上限 200 条） |
 | 跨设备同步 | 本地 localStorage 存储，无账号体系时无法同步 |
 | Interaction 不影响准确率 | 拖放活动恒记为答对，Cycle 准确率实际只由 Puzzle 决定 |
@@ -284,8 +344,8 @@ shell.createGame({
 1. 复制 `comparison/` 目录
 2. 替换 `templates.json`（新学科的模板定义）
 3. 替换 `generator.js` 内的生成函数（或新增函数）
-4. 修改 `game.js` 的渲染器和 GRADE_LEVELS（如适用）
+4. 修改 `game.js` 的渲染器和 GRADE_LEVELS（如适用）——渲染器必须遵守 §6.5 的 Scene / Option 契约
 5. `engine.js` **无需修改**（Cycle 引擎完全通用）
-6. 运行 `test.html` 验证新生成器
+6. 运行 `test.html` 验证新生成器（数据层），再按 §8 末尾写一次性探针验证渲染几何
 
 > **engine.js 是跨学科共享层**，templates.json + generator.js 是每个模块的定制层。
