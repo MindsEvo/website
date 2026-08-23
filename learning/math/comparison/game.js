@@ -49,7 +49,14 @@
     '.cq-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;}',
     '.cq-items{display:flex;gap:10px;justify-content:center;width:100%;max-width:380px;}',
     '.cq-item{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:10px 12px;}',
+    // Default size only — _shapeSvg sets width/height inline whenever the size
+    // carries meaning, and an inline style must be free to win over this.
     '.cq-shape-svg{width:52px;height:52px;}',
+    // multi_attribute scene: two objects on ONE baseline inside a fixed-height
+    // box, so the size difference is the only thing the eye has to judge.
+    '.cq-ma-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;width:100%;max-width:320px;}',
+    '.cq-ma-cell{display:flex;flex-direction:column;align-items:center;gap:6px;}',
+    '.cq-ma-box{height:100px;display:flex;align-items:flex-end;justify-content:center;}',
     '.cq-scene{position:relative;width:100%;max-width:380px;height:92px;background:linear-gradient(180deg,#bfdbfe 0%,#eff6ff 100%);border-radius:14px;border:1.5px solid #dbeafe;overflow:hidden;}',
     '.cq-scene-ref{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:28px;line-height:1;}',
     '.cq-scene-obj{position:absolute;bottom:6px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;}',
@@ -111,17 +118,32 @@
       case 'square':   inner = '<rect x="'+m+'" y="'+m+'" width="'+s2+'" height="'+s2+'" rx="4" fill="'+c+'"/>'; break;
       case 'triangle': inner = '<polygon points="'+sz/2+','+m+' '+(sz-m)+','+(sz-m)+' '+m+','+(sz-m)+'" fill="'+c+'"/>'; break;
       case 'star':     inner = _starPath(sz, c); break;
-      case 'heart':    inner = '<text x="'+sz/2+'" y="'+(sz*0.72)+'" text-anchor="middle" font-size="'+(sz*0.7)+'" fill="'+c+'">♥</text>'; break;
+      case 'heart':    inner = _heartPath(sz, c); break;
       case 'diamond':  inner = '<polygon points="'+sz/2+','+m+' '+(sz-m)+','+sz/2+' '+sz/2+','+(sz-m)+' '+m+','+sz/2+'" fill="'+c+'"/>'; break;
       default:         inner = '<circle cx="'+sz/2+'" cy="'+sz/2+'" r="'+s2/2+'" fill="'+c+'"/>';
     }
-    return '<svg class="cq-shape-svg" viewBox="0 0 '+sz+' '+sz+'" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';
+    // The width/height MUST be inline. The viewBox is proportional to sz, so with
+    // only `.cq-shape-svg{width:52px}` every shape rendered at exactly 52px and
+    // the size argument was silently discarded — a "bigger" shape was not bigger.
+    return '<svg class="cq-shape-svg" style="width:'+sz+'px;height:'+sz+'px" ' +
+      'viewBox="0 0 '+sz+' '+sz+'" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';
   }
 
   function _starPath(sz, fill) {
     var cx=sz/2, cy=sz/2, r1=sz*0.42, r2=sz*0.18, pts='';
     for (var i=0;i<10;i++){var r=i%2===0?r1:r2,a=(Math.PI/5)*i-Math.PI/2;pts+=(cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2)+' ';}
     return '<polygon points="'+pts.trim()+'" fill="'+fill+'"/>';
+  }
+
+  // The heart is drawn, not typed. As a <text>♥</text> glyph its ink depended on
+  // whatever font the device had and covered far less of the box than the other
+  // shapes, so a big heart could look smaller than a small triangle. A path on
+  // the same 0.85-of-the-box footprint keeps all six shapes comparable.
+  function _heartPath(sz, fill) {
+    var s2=sz*0.85, k=s2/32, h=29.6*k;
+    return '<g transform="translate('+((sz-s2)/2).toFixed(2)+','+((sz-h)/2).toFixed(2)+') scale('+k.toFixed(4)+')" fill="'+fill+'">'+
+      '<path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4' +
+      'c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/></g>';
   }
 
   // ── Question renderers ─────────────────────────────────────────────────────
@@ -151,7 +173,10 @@
       case 'weight':       zh=q.askHeavier?'哪个<b>更重</b>？':'哪个<b>更轻</b>？'; en=q.askHeavier?'Which is <b>heavier</b>?':'Which is <b>lighter</b>?'; break;
       case 'speed':        zh=q.askFaster?'哪个<b>更快</b>？':'哪个<b>更慢</b>？'; en=q.askFaster?'Which is <b>faster</b>?':'Which is <b>slower</b>?'; break;
       case 'time':         zh=q.askLongerDuration?'哪个时间<b>更长</b>？':'哪件事<b>先</b>发生？'; en=q.askLongerDuration?'Which duration is <b>longer</b>?':'Which happens <b>first</b>?'; break;
-      case 'multi_attribute': zh='哪个<b>更大</b>？（只比较大小）'; en='Which is <b>bigger</b>? (size only)'; break;
+      case 'multi_attribute':
+        zh='哪个<b>更大</b>？'+(q.ignoreZh?'（不用管'+q.ignoreZh+'）':'');
+        en='Which is <b>bigger</b>?'+(q.ignoreEn?' (ignore the '+q.ignoreEn+')':'');
+        break;
       default: zh='选出正确答案。'; en='Choose the correct answer.';
     }
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
@@ -172,6 +197,8 @@
   var SLOT_NEUTRAL = '#64748b';
   var SLOT_COLORED = { length: 1, height: 1 };
   var H_BAR_MAX    = 80;   // px; must match .cq-h-track height minus the emoji
+  var MA_BOX       = 96;   // px; the biggest object in a multi_attribute pair
+                           // (must stay <= the .cq-ma-box height)
 
   function _slotIdx(opt) {
     if (opt === 'left')  return 0;
@@ -193,7 +220,7 @@
   function _hasScene(type) {
     return type === 'size' || type === 'length' || type === 'height' ||
            type === 'quantity' || type === 'position' || type === 'fullness' ||
-           type === 'shape' || type === 'color';
+           type === 'shape' || type === 'color' || type === 'multi_attribute';
   }
 
   function _sceneHtml(q) {
@@ -206,6 +233,7 @@
       case 'fullness': return _fullnessScene(q);
       case 'shape':
       case 'color':    return _sameDiffScene(q);
+      case 'multi_attribute': return _multiAttrScene(q);
       default: return '';
     }
   }
@@ -262,6 +290,22 @@
     return h+'</div>';
   }
 
+  // multi_attribute: size is the compared attribute, so it belongs in the scene
+  // (§6.5) and on one shared ruler (§6.6) — the bigger object fills MA_BOX and
+  // the other is drawn as its true fraction of it. Colour and shape vary on
+  // purpose; they are the distractors the child has to learn to ignore, which is
+  // exactly why the option cards must not repeat them.
+  function _multiAttrScene(q) {
+    var max = Math.max(q.left.size, q.right.size);
+    function cell(idx, item) {
+      var px = Math.max(30, Math.round(MA_BOX * item.size / max));
+      return '<div class="cq-ma-cell">' +
+        '<div class="cq-ma-box">' + _shapeSvg(item.shape, item.color, px) + '</div>' +
+        _slotBadge(idx, q.type) + '</div>';
+    }
+    return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>';
+  }
+
   function _nearFarScene(q) {
     var lx=50-(50-q.leftDistPct)*0.45, rx=50+(q.rightDistPct-50)*0.45;
     function obj(idx,x,emoji){
@@ -293,8 +337,8 @@
     // Scene-backed type → pointer only. See the slot-marker contract above.
     if (_hasScene(q.type)) return '<div class="cq-opt">'+_optPointer(opt,q)+'</div>';
 
-    // No scene (number / weight / speed / time / multi_attribute): the options
-    // ARE the question content, so they keep carrying it — plus a letter label.
+    // No scene (number / weight / speed / time): the options ARE the question
+    // content, so they keep carrying it — plus a letter label.
     var lbl={left:{zh:'选 A',en:'A'},right:{zh:'选 B',en:'B'},A:{zh:'A',en:'A'},B:{zh:'B',en:'B'},C:{zh:'C',en:'C'}};
     var l=lbl[opt]||lbl.left;
     return '<div class="cq-opt">'+_optBody(opt,q)+
@@ -323,6 +367,8 @@
       }
       // length / height / quantity: anonymous items — the letter is the identity.
       // shape / color: the identity IS the answer, so showing it would give it away.
+      // multi_attribute: shape and colour are the distractors, so repeating them
+      // in the card would put the noise back where the answer is chosen.
       default: return '';
     }
   }
@@ -343,10 +389,6 @@
       case 'time': {
         var tev=opt==='left'?{zh:q.leftEventZh,en:q.leftEventEn}:{zh:q.rightEventZh,en:q.rightEventEn};
         return '<div class="cq-opt-label" style="font-size:15px;font-weight:900;color:#1e293b;"><span class="zh">'+tev.zh+'</span><span class="en">'+tev.en+'</span></div>';
-      }
-      case 'multi_attribute': {
-        var item=opt==='left'?q.left:q.right, szPx=28+Math.round((item.size/10)*28);
-        return _shapeSvg(item.shape,item.color,szPx);
       }
       default: return '<div class="cq-opt-label">'+opt+'</div>';
     }
@@ -371,6 +413,10 @@
       case 'weight':  zh=q.askHeavier?'哪个更重？':'哪个更轻？'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
       case 'speed':   zh=q.askFaster?'哪个更快？':'哪个更慢？'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;
       case 'time':    zh=q.askLongerDuration?'哪个时间更长？':'哪件事先发生？'; en=q.askLongerDuration?'Which duration is longer?':'Which happens first?'; break;
+      case 'multi_attribute':
+        zh='哪个更大？'+(q.ignoreZh?'不用管'+q.ignoreZh+'。':'');
+        en='Which is bigger?'+(q.ignoreEn?' Ignore the '+q.ignoreEn+'.':'');
+        break;
       default:        zh='请选择答案。'; en='Choose an answer.';
     }
     return shell.lang==='zh'?zh:en;

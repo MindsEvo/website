@@ -102,12 +102,47 @@
   }
 
   // Puzzle questions are multiple-choice: options/answer must be consistent.
-  function checkPuzzle(q) {
+  function checkPuzzle(q, tpl) {
     var bad = [];
     if (!q.options) bad.push('options');
     if (!q.answer)  bad.push('answer');
     if (q.options && q.answer && q.options.indexOf(q.answer) === -1)
       bad.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
+    if (q.type === 'multi_attribute') bad = bad.concat(checkMultiAttr(q, tpl));
+    return bad;
+  }
+
+  // multi_attribute draws the two objects in the scene on one shared ruler, so
+  // the size gap has to survive being looked at, the answer must be the bigger
+  // object, and the distractors must vary exactly as the template asked — a
+  // distractor that is silently held equal deletes the skill being trained.
+  function checkMultiAttr(q, tpl) {
+    var bad = [], p = (tpl && tpl.params) || {};
+    var l = q.left || {}, r = q.right || {};
+    if (typeof l.size !== 'number' || typeof r.size !== 'number') {
+      bad.push('multi: left/right size missing');
+      return bad;
+    }
+    var big = Math.max(l.size, r.size), small = Math.min(l.size, r.size);
+    if (big - small < 3)
+      bad.push('multi: size gap '+(big-small)+' < 3 ranks — too small to see');
+    if (small / big > 0.7001)
+      bad.push('multi: smaller object is '+(small/big).toFixed(2)+'x the bigger (max 0.70)');
+    var bigger = l.size > r.size ? 'left' : 'right';
+    if (q.answer !== bigger)
+      bad.push('multi: answer '+q.answer+' is not the bigger side ('+bigger+')');
+
+    var attrs = p.attributes || [];
+    var wantColor = attrs.indexOf('color') !== -1 || p.ignoreAttribute === 'color';
+    var wantShape = attrs.indexOf('shape') !== -1 || p.ignoreAttribute === 'shape';
+    if (wantColor && l.color === r.color)
+      bad.push('multi: colour is a distractor but both sides are '+l.color);
+    if (!wantColor && l.color !== r.color)
+      bad.push('multi: colour varies ('+l.color+'/'+r.color+') but the template did not ask for it');
+    if (wantShape && l.shape === r.shape)
+      bad.push('multi: shape is a distractor but both sides are '+l.shape);
+    if (!wantShape && l.shape !== r.shape)
+      bad.push('multi: shape varies ('+l.shape+'/'+r.shape+') but the template did not ask for it');
     return bad;
   }
 
@@ -376,7 +411,7 @@
     if (!q.hintZh) missing.push('hintZh');
     if (!q.hintEn) missing.push('hintEn');
     var mode = modeOf(tpl);
-    return missing.concat(mode === 'puzzle' ? checkPuzzle(q) : checkInteraction(q, mode, tpl));
+    return missing.concat(mode === 'puzzle' ? checkPuzzle(q, tpl) : checkInteraction(q, mode, tpl));
   }
 
   // ── run one template ──────────────────────────────────────────────────────

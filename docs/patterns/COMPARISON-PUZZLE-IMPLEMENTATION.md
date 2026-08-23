@@ -1,10 +1,11 @@
 # Comparison · Puzzle Mode — Implementation Reference
 
-**版本** v1.2 · 2026-08-22  
+**版本** v1.3 · 2026-08-23  
 **模块** `learning/math/comparison/`  
 **适用范围** Learning 系列所有 Puzzle 类型游戏的样板  
 **配套文档** `COMPARISON-INTERACTION-IMPLEMENTATION.md`（拖放活动）
 
+> v1.3 变更：`multi_attribute` 从"无场景例外"移入场景题（§6.5.1），修掉 `_shapeSvg` 尺寸参数不生效的 bug；`timeOrder` 的 durations 池 4→10 项。
 > v1.2 变更：新增 §6.5 场景/选项契约与 §6.6 交互题公共标尺契约——两者都是新增模板的验收项。
 > v1.1 变更：`test.html` 校验按 mode 分流；新增 `skipTemplate()`；事件上报端点改为显式配置；Interaction 已落地，更新限制表。
 
@@ -267,7 +268,7 @@ shell.createGame({
 - 同一道题两侧应是**同一个物体**（`heightCompare` 的 `rightObj = leftObj`），
   两个不同物种会诱导孩子比较错误的属性。
 
-**无场景题型例外**：`number` / `weight` / `speed` / `time` / `multi_attribute`
+**无场景题型例外**：`number` / `weight` / `speed` / `time`
 的 `_sceneHtml()` 返回 `''`，题面只有文字，选项**就是**题目内容
 （数字、物体、时刻），必须继续承载内容，也不加字母指针。
 判定依据是 `_hasScene(type)`。
@@ -279,6 +280,45 @@ shell.createGame({
 3. 槽位标记数量 = 选项数量，字母顺序一致吗？
 4. 选项里是否残留 `.cq-h-bar` / `.cq-bar-fill` / `.cq-dot` / `.cq-fill` / `.cq-shape-svg` 之类属性元素？
 5. `shape` / `color` 这类"身份即答案"的题，选项有没有泄露答案？
+
+#### 6.5.1 `multi_attribute`：第三次犯同一个错
+
+`multi_attribute` 原来在上面的例外名单里——选项卡各画一个图形，大小写在
+`_optBody()` 里。线上表现是**"答案反了"**：绿卡上一颗小爱心、红卡上一个更大的
+三角形，判定却说爱心更大。
+
+根因不在判定，在渲染：`_shapeSvg()` 输出 `viewBox="0 0 sz sz"` 且内部几何全部
+按 `sz` 成比例，而 CSS 里写着 `.cq-shape-svg{width:52px;height:52px}`。
+**viewBox 只决定坐标系，实际尺寸由 CSS 盒子决定**，于是 `szPx`（34–53px）被
+静默丢弃，六种形状一律画成 52px。屏幕上唯一的差别是每种形状的**墨迹占比**：
+三角形 `<polygon>` 占盒子约 0.85，爱心当时是 `<text>♥</text>` 字形、占比小得多，
+且和 `item.size` 完全无关——所以看起来大约一半的题"答案反了"。
+
+三处修正：
+
+- `_shapeSvg()` 把 `width`/`height` 写成**内联样式**（`.cq-shape-svg` 降级为默认值），
+  尺寸参数这才真的到达像素；
+- 爱心改用 `_heartPath()` 路径绘制，和其余五种形状统一到 0.85 的墨迹占比，
+  不再依赖设备字体；
+- 大小既然是被比较的属性，就必须回到场景里：新增 `_multiAttrScene()`，
+  两个物体共底线放在固定高度的 `.cq-ma-box` 内，较大者占满 `MA_BOX = 96px`，
+  较小者按真实比例画（§6.6 的公共标尺，只是换成了 Puzzle 场景）；
+  选项卡退回纯字母指针。
+
+配套的数据和门禁：
+
+- `Generators.multiAttribute` 的差距从"≥2 档"放大到 `bigSize = 8..10`、
+  `smallSize = big − 3..5`，即较小者 ≤ 0.70×。原来 2 档差在 9 档量程上约等于
+  10% 的视觉差，六岁孩子无法稳定判断；
+- `ignoreAttribute` 的语义修反了——原实现把该属性**置为相同**，等于删掉了
+  `cmp-g2-multiattr-002` 要训练的干扰项。现在它表示"这个属性会变化，且要求忽略"，
+  题面和语音会点名说出来（"哪个更大？不用管颜色。"）；
+- `test.html` 新增 `checkMultiAttr()`：断言差距 ≥3 档且 ≤0.70×、`answer` 必须是
+  更大的那一侧、模板声明会变化的干扰项**确实在变**。
+
+**可复用的教训**：`viewBox` 不是尺寸。任何"尺寸有含义"的 SVG，
+宽高必须内联，不能只靠 class；否则数据层的差异到不了屏幕，而 CSS 里
+某个固定值会替你决定答案。
 
 ### 6.6 交互题的公共标尺（Common Scale 契约）
 

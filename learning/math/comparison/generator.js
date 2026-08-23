@@ -634,12 +634,22 @@ Generators.speedCompare = function (params) {
  * timeOrder: which daily event happens first / earlier.
  */
 Generators.timeOrder = function (params) {
+  // Ten durations, not four: with four entries there are only 6 pairs (12 once
+  // you count which side the longer one lands on), so a 20-run sample repeated
+  // itself and the suite reported LOW VAR. `order` is minutes throughout, which
+  // is what makes cross-unit pairs ("30分钟 vs 2小时") comparable at all.
   var pool = params.set === 'durations'
     ? [
+        { zh: '1分钟',  en: '1 minute',   order: 1 },
         { zh: '10分钟', en: '10 minutes', order: 10 },
-        { zh: '1小时', en: '1 hour', order: 60 },
-        { zh: '1天', en: '1 day', order: 1440 },
-        { zh: '1周', en: '1 week', order: 10080 }
+        { zh: '30分钟', en: '30 minutes', order: 30 },
+        { zh: '1小时',  en: '1 hour',     order: 60 },
+        { zh: '2小时',  en: '2 hours',    order: 120 },
+        { zh: '半天',   en: 'half a day', order: 720 },
+        { zh: '1天',    en: '1 day',      order: 1440 },
+        { zh: '3天',    en: '3 days',     order: 4320 },
+        { zh: '1周',    en: '1 week',     order: 10080 },
+        { zh: '1个月',  en: '1 month',    order: 43200 }
       ]
     : GEN_DATA.dailyEvents;
 
@@ -672,49 +682,58 @@ Generators.timeOrder = function (params) {
 };
 
 /**
- * multiAttribute: compare objects on multiple attributes; some distractors change irrelevant attrs.
+ * multiAttribute: pick the bigger object while irrelevant attributes change.
+ *
+ * Size is always the compared attribute and it is drawn in the scene on a shared
+ * baseline, so the gap has to survive being looked at: the smaller object is at
+ * most 0.70x the bigger one (>=3 ranks out of 10). A 2-rank gap on a 9-rank
+ * scale is ~10% of the drawn size, which no 6-year-old can call reliably.
+ *
+ * `attributes` lists what varies; `ignoreAttribute` names the distractor the
+ * prompt tells the child to ignore — it VARIES (that is what makes it a
+ * distractor), it is not held equal.
  */
 Generators.multiAttribute = function (params) {
   var attrs = params.attributes || ['size', 'color'];
-  var distractorCount = params.distractors || 1;
   var ignoreAttr = params.ignoreAttribute || null;
 
   var shapes = _shuffle(GEN_DATA.shapes);
   var colors = _shuffle(GEN_DATA.colors);
 
-  var targetSize = _ri(2, 9);
-  var foilSize   = _ri(2, 9);
-  while (Math.abs(targetSize - foilSize) < 2) { foilSize = _ri(2, 9); }
+  // How many distractors there are follows from what varies, so `distractors`
+  // in the template is descriptive only.
+  var varyColor = attrs.indexOf('color') !== -1 || ignoreAttr === 'color';
+  var varyShape = attrs.indexOf('shape') !== -1 || ignoreAttr === 'shape';
+
+  var bigSize   = _ri(8, 10);
+  var smallSize = bigSize - _ri(3, 5);
 
   var targetColor = colors[0];
-  var foilColor   = colors[1];
+  var foilColor   = varyColor ? colors[1] : colors[0];
   var targetShape = shapes[0];
-  var foilShape   = shapes[1];
+  var foilShape   = varyShape ? shapes[1] : shapes[0];
 
   var targetOnLeft = Math.random() < 0.5;
 
-  var left  = { size: targetOnLeft ? targetSize : foilSize, color: targetOnLeft ? targetColor : foilColor, shape: targetOnLeft ? targetShape : foilShape };
-  var right = { size: targetOnLeft ? foilSize : targetSize, color: targetOnLeft ? foilColor : targetColor, shape: targetOnLeft ? foilShape : targetShape };
+  var left  = { size: targetOnLeft ? bigSize : smallSize, color: targetOnLeft ? targetColor : foilColor, shape: targetOnLeft ? targetShape : foilShape };
+  var right = { size: targetOnLeft ? smallSize : bigSize, color: targetOnLeft ? foilColor : targetColor, shape: targetOnLeft ? foilShape : targetShape };
 
-  // The "correct" answer is the one with the bigger size (primary attribute for G1/G2 multi)
-  var answer = (left.size > right.size) ? 'left' : 'right';
+  var ignoreZh = varyColor && varyShape ? '颜色和形状' : varyColor ? '颜色' : varyShape ? '形状' : '';
+  var ignoreEn = varyColor && varyShape ? 'colour and shape' : varyColor ? 'colour' : varyShape ? 'shape' : '';
 
-  // If ignoreAttribute is set, both sides share that attribute value (distractor flips it)
-  if (ignoreAttr === 'color') {
-    right.color = left.color;  // same color, size is the real dimension
-  }
-
-  var primaryAttrZh = attrs[0] === 'size' ? '大小' : attrs[0];
   return {
     type: 'multi_attribute',
     options: ['left', 'right'],
-    answer: answer,
+    answer: (left.size > right.size) ? 'left' : 'right',
     left: left,
     right: right,
     attributes: attrs,
     ignoreAttribute: ignoreAttr,
-    hintZh: '重点比较' + primaryAttrZh + '，忽略其他不相关的变化。',
-    hintEn: 'Focus on ' + (attrs[0] || 'size') + ' and ignore other differences.'
+    sizeGap: bigSize - smallSize,
+    ignoreZh: ignoreZh,
+    ignoreEn: ignoreEn,
+    hintZh: '只比大小' + (ignoreZh ? '，' + ignoreZh + '不一样也没关系。' : '。'),
+    hintEn: 'Compare size only' + (ignoreEn ? ' — the ' + ignoreEn + ' does not matter.' : '.')
   };
 };
 
