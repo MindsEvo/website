@@ -63,12 +63,13 @@ shell.createGame({
   },
 
   // Stage-3 RootGene pilot: map current unit/session to RootGene IDs.
-  registerRootGenes: function (ctx) {
-    var unit = (ctx && ctx.unit) || {};
-    var unitId = String(unit.id || 'u0');
+  registerRootGenes: function () {
+    // Ability genes only. The unit location used to be appended here as a
+    // third gene; it now travels as unitId in the report, so the same ability
+    // trained in different units lands on one radar axis instead of many.
+    // See docs/rootgene/ROOTGENE-FRAMEWORK.md §5.
     return [
-      'RG.PATTERN.SEQUENCE.BASIC',
-      'RG.MINDSEEDS.NUMBER_PATTERN.' + unitId
+      'RG.PATTERN.SEQUENCE.BASIC'
     ];
   }
 });

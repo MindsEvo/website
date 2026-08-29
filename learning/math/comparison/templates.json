@@ -12,7 +12,7 @@
       "difficulty": 1,
       "generator": "sortLength4",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "items": 4, "minGapPct": 18, "theme": "ribbon" }
@@ -26,7 +26,7 @@
       "difficulty": 1,
       "generator": "matchSize3",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {}
@@ -40,7 +40,7 @@
       "difficulty": 1,
       "generator": "matchSize3",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {}
@@ -54,7 +54,7 @@
       "difficulty": 1,
       "generator": "groupSize",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "itemsPerBin": 3 }
@@ -68,7 +68,7 @@
       "difficulty": 1,
       "generator": "fitBridge",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "margin": 12 }
@@ -82,7 +82,7 @@
       "difficulty": 2,
       "generator": "fitBridge",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "margin": 8 }
@@ -96,7 +96,7 @@
       "difficulty": 2,
       "generator": "matchSize3",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {}
@@ -110,7 +110,7 @@
       "difficulty": 2,
       "generator": "groupSize",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "itemsPerBin": 3 }
@@ -124,7 +124,7 @@
       "difficulty": 2,
       "generator": "fitBridge",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "margin": 8 }
@@ -138,7 +138,7 @@
       "difficulty": 3,
       "generator": "fitBridge",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "margin": 6 }
@@ -153,7 +153,7 @@
       "difficulty": 1,
       "generator": "miniRound",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {
@@ -176,7 +176,7 @@
       "difficulty": 3,
       "generator": "miniRound",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {
@@ -199,7 +199,7 @@
       "difficulty": 4,
       "generator": "miniRound",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {
@@ -222,7 +222,7 @@
       "difficulty": 2,
       "generator": "miniBuild",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {
@@ -246,7 +246,7 @@
       "difficulty": 4,
       "generator": "miniBuild",
       "access": "free",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": {
@@ -268,7 +268,7 @@
       "difficulty": 1,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "animals", "askMode": "bigger" }
@@ -281,7 +281,7 @@
       "difficulty": 1,
       "generator": "sizeCompare",
       "promptType": "which_smaller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "objects", "askMode": "smaller" }
@@ -294,7 +294,7 @@
       "difficulty": 2,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "furniture", "askMode": "random" }
@@ -307,7 +307,7 @@
       "difficulty": 1,
       "generator": "lengthCompare",
       "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "ribbons", "gapPct": 40, "askMode": "longer" }
@@ -320,7 +320,7 @@
       "difficulty": 1,
       "generator": "lengthCompare",
       "promptType": "which_shorter",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "sticks", "gapPct": 40, "askMode": "shorter" }
@@ -333,7 +333,7 @@
       "difficulty": 2,
       "generator": "lengthCompare",
       "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "paths", "gapPct": 30, "askMode": "random" }
@@ -346,7 +346,7 @@
       "difficulty": 1,
       "generator": "heightCompare",
       "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "trees", "gapPct": 40, "askMode": "taller" }
@@ -359,7 +359,7 @@
       "difficulty": 1,
       "generator": "heightCompare",
       "promptType": "which_shorter",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "buildings", "gapPct": 40, "askMode": "shorter" }
@@ -372,7 +372,7 @@
       "difficulty": 1,
       "generator": "quantityVisual",
       "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "more" }
@@ -385,7 +385,7 @@
       "difficulty": 1,
       "generator": "quantityVisual",
       "promptType": "which_fewer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "fewer" }
@@ -398,7 +398,7 @@
       "difficulty": 2,
       "generator": "quantityVisual",
       "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 3, "maxCount": 9, "minGap": 1, "showNumbers": false, "askMode": "random" }
@@ -411,7 +411,7 @@
       "difficulty": 1,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SHAPE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "shape", "optionCount": 3, "distractor": "shape" }
@@ -424,7 +424,7 @@
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SHAPE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "shape", "optionCount": 3, "distractor": "color" }
@@ -437,7 +437,7 @@
       "difficulty": 1,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.COLOR"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "color", "optionCount": 3, "distractor": "color" }
@@ -450,7 +450,7 @@
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.COLOR"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
@@ -463,7 +463,7 @@
       "difficulty": 1,
       "generator": "nearFar",
       "promptType": "which_nearer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.POSITION"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "nearer" }
@@ -476,7 +476,7 @@
       "difficulty": 1,
       "generator": "nearFar",
       "promptType": "which_farther",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.POSITION"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "farther" }
@@ -489,7 +489,7 @@
       "difficulty": 1,
       "generator": "fullEmpty",
       "promptType": "which_fuller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.FULLNESS"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "fuller" }
@@ -502,7 +502,7 @@
       "difficulty": 1,
       "generator": "fullEmpty",
       "promptType": "which_emptier",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.FULLNESS"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "emptier" }
@@ -515,7 +515,7 @@
       "difficulty": 2,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "animals", "askMode": "random", "distractors": true }
@@ -528,7 +528,7 @@
       "difficulty": 2,
       "generator": "lengthCompare",
       "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "ropes", "gapPct": 25, "askMode": "random", "distractors": true }
@@ -541,7 +541,7 @@
       "difficulty": 2,
       "generator": "quantityVisual",
       "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 4, "maxCount": 10, "minGap": 1, "showNumbers": true, "askMode": "random" }
@@ -554,7 +554,7 @@
       "difficulty": 2,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 1, "max": 10, "minGap": 1, "showDots": true, "askMode": "random" }
@@ -567,7 +567,7 @@
       "difficulty": 3,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 1, "max": 10, "minGap": 1, "showDots": false, "askMode": "random" }
@@ -580,7 +580,7 @@
       "difficulty": 2,
       "generator": "weightCompare",
       "promptType": "which_heavier",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.WEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "heavier" }
@@ -593,7 +593,7 @@
       "difficulty": 2,
       "generator": "speedCompare",
       "promptType": "which_faster",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SPEED"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "faster" }
@@ -606,7 +606,7 @@
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SHAPE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "shape", "optionCount": 3, "distractor": "color_and_size" }
@@ -619,7 +619,7 @@
       "difficulty": 2,
       "generator": "heightCompare",
       "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "trees", "gapPct": 30, "askMode": "random", "distractors": true }
@@ -632,7 +632,7 @@
       "difficulty": 2,
       "generator": "heightCompare",
       "promptType": "which_shorter",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "buildings", "gapPct": 30, "askMode": "shorter" }
@@ -645,7 +645,7 @@
       "difficulty": 2,
       "generator": "nearFar",
       "promptType": "which_nearer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.POSITION"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random" }
@@ -658,7 +658,7 @@
       "difficulty": 2,
       "generator": "fullEmpty",
       "promptType": "which_fuller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.FULLNESS"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random" }
@@ -671,7 +671,7 @@
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.COLOR"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
@@ -684,7 +684,7 @@
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.COLOR"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
@@ -697,7 +697,7 @@
       "difficulty": 3,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 1, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
@@ -710,7 +710,7 @@
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 10, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
@@ -723,7 +723,7 @@
       "difficulty": 3,
       "generator": "lengthCompare",
       "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "rulers", "gapPct": 20, "visual": "segments", "askMode": "random" }
@@ -736,7 +736,7 @@
       "difficulty": 3,
       "generator": "quantityVisual",
       "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 8, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
@@ -749,7 +749,7 @@
       "difficulty": 3,
       "generator": "timeOrder",
       "promptType": "which_first",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.TIME"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "daily_events", "askMode": "first" }
@@ -762,7 +762,7 @@
       "difficulty": 3,
       "generator": "weightCompare",
       "promptType": "which_heavier",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.WEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random", "useScale": true }
@@ -775,7 +775,7 @@
       "difficulty": 4,
       "generator": "multiAttribute",
       "promptType": "which_matches",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.MULTI"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attributes": ["size", "color"], "distractors": 1 }
@@ -788,7 +788,7 @@
       "difficulty": 3,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "animals", "askMode": "random", "distractors": true }
@@ -801,7 +801,7 @@
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.COLOR"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
@@ -814,7 +814,7 @@
       "difficulty": 3,
       "generator": "nearFar",
       "promptType": "which_nearer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.POSITION"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random" }
@@ -827,7 +827,7 @@
       "difficulty": 3,
       "generator": "fullEmpty",
       "promptType": "which_fuller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.FULLNESS"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random" }
@@ -840,7 +840,7 @@
       "difficulty": 3,
       "generator": "speedCompare",
       "promptType": "which_faster",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SPEED"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random" }
@@ -853,7 +853,7 @@
       "difficulty": 3,
       "generator": "heightCompare",
       "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "buildings", "gapPct": 25, "askMode": "random" }
@@ -866,7 +866,7 @@
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 10, "max": 99, "minGap": 3, "showDots": false, "askMode": "random" }
@@ -879,7 +879,7 @@
       "difficulty": 5,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 50, "max": 99, "minGap": 2, "showDots": false, "askMode": "random", "nearEqual": true }
@@ -892,7 +892,7 @@
       "difficulty": 4,
       "generator": "lengthCompare",
       "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.LENGTH"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "measurements", "gapPct": 15, "visual": "number_with_unit", "askMode": "random" }
@@ -905,7 +905,7 @@
       "difficulty": 5,
       "generator": "multiAttribute",
       "promptType": "which_matches",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.MULTI"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attributes": ["size", "color", "shape"], "distractors": 2 }
@@ -918,7 +918,7 @@
       "difficulty": 5,
       "generator": "multiAttribute",
       "promptType": "ignore_distractor",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.MULTI"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "attributes": ["size"], "distractors": 2, "ignoreAttribute": "color" }
@@ -931,7 +931,7 @@
       "difficulty": 4,
       "generator": "timeOrder",
       "promptType": "which_longer_duration",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.TIME"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "durations", "askMode": "longer_duration" }
@@ -944,7 +944,7 @@
       "difficulty": 4,
       "generator": "speedCompare",
       "promptType": "which_faster",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SPEED"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random", "useContext": true }
@@ -957,7 +957,7 @@
       "difficulty": 4,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "objects", "askMode": "random", "distractors": true }
@@ -970,7 +970,7 @@
       "difficulty": 4,
       "generator": "heightCompare",
       "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.HEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "set": "buildings", "gapPct": 20, "askMode": "random" }
@@ -983,7 +983,7 @@
       "difficulty": 4,
       "generator": "quantityVisual",
       "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.QUANTITY"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "minCount": 10, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
@@ -996,7 +996,7 @@
       "difficulty": 4,
       "generator": "weightCompare",
       "promptType": "which_heavier",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.WEIGHT"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "askMode": "random", "useScale": true }
@@ -1009,7 +1009,7 @@
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.NUMBER"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
       "mastery": { "requiredCorrect": 3, "window": 5 },
       "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
       "params": { "min": 20, "max": 99, "minGap": 5, "showDots": false, "askMode": "random" }

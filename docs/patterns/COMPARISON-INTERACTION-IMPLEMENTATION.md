@@ -285,7 +285,25 @@ pointer-drag.js 的 PointerEvents 方案在三端均表现正常。
 | 执行顺序非计划顺序 | 一组内 Interaction 先跑、Puzzle 后批量跑（见 §2.1） |
 | G1/G2 Interaction 模板少 | K2/G1/G2 的 sort/match/group 尚未添加，G2 完全为空 |
 | Mini-game 已实现 | 第三种 Runtime 已落地，见 `COMPARISON-MINIGAME-IMPLEMENTATION.md`（Runtime + Adapter 分层） |
-| 历史记录未区分 mode | shell.report() 的 geneIds 目前不含 mode 字段，可后续扩展 |
+| **Interaction 不进深度轴** | Attempt 事件已带 `mode` 和 `meta.radar`（`grade_code / module_id / comparison_type / difficulty_axis / profile_id`），但 Interaction 收尾**不调 `shell.report()`**，所以 `me:{gameId}:history:*` 里只有 Puzzle 的会话。这是雷达的 P1 待办，见 `docs/HANDOFF-NEXT-STEPS.md` §2 |
+
+### 11.1 上报雷达坐标（必须）
+
+`game.js` 里的 `buildRadarContext(levelId, attrType)` 是 Puzzle 与 Interaction / Mini-game
+**共用**的唯一来源，Attempt 的 `meta.radar` 必须用它，不要另写一份：
+
+```javascript
+CmpEngine.recordAttempt(tpl.id, attempt.variantId, correct, attempt.responseMs, false, tpl, {
+  mode:    attempt.mode || tpl.runtime || tpl.mode,
+  result:  attempt.result,
+  process: attempt.process,
+  radar:   buildRadarContext(tpl.level || levelId, tpl.type)
+});
+```
+
+⚠️ `meta.process` 经过 `_summarizeProcess()`：primitive 保留（字符串截断 64），
+数组转 `key_count`，**普通对象会被静默丢弃**，上限 `PROCESS_MAX_KEYS = 24`。
+基因命名规范见 `docs/rootgene/ROOTGENE-FRAMEWORK.md`。
 
 ---
 

@@ -444,6 +444,120 @@
 
   // ── RootGene / engine hooks ────────────────────────────────────────────────
 
+  /**
+   * Thinking-radar contract for this module. Every activity in this unit —
+   * puzzle batches through shell.createGame, and sort/match/group/fit/mini
+   * through ActivityRunner — must describe itself the same way, or the radar
+   * cannot roll the two paths into one picture.
+   *
+   * Genes carry ABILITY only. Where the child was (this module, this level)
+   * travels in moduleId / levelId / gradeCode, never inside the gene id.
+   */
+  var MODULE_ID   = 'comparison';
+  var MODULE_TYPE = 'metathinking';
+  var SOURCE_GAME_ID = 'learning-math-comparison';
+
+  /**
+   * levelId → gradeCode. This module's level ids are already the canonical
+   * K1/K2/G1..G6 vocabulary, so the map is the identity — but it is written out
+   * rather than assumed, because shell.grade.normalize() refuses to guess and
+   * every other module has to declare its own mapping here too.
+   */
+  var LEVEL_GRADE = { K1:'K1', K2:'K2', G1:'G1', G2:'G2' };
+
+  /**
+   * Position on the five difficulty axes declared in
+   * metadata/metathinking/comparison.json → difficultyAxes.
+   *
+   * The base position comes from the level (that is what the levelMap
+   * objectives describe); `type` then refines the two axes that genuinely move
+   * within a level:
+   *   - multi_attribute compares along more than one dimension at once
+   *   - weight / speed / time cannot be read off the picture directly, so the
+   *     relation has to be inferred rather than seen
+   */
+  var INDIRECT_TYPES = { weight:1, speed:1, time:1, fullness:1 };
+
+  /**
+   * Template `type` → typeTree id in comparison.json. The template field names
+   * the attribute being compared (size, weight, time…); the typeTree names the
+   * kind of comparison it trains, which is what rolls up on the radar.
+   *
+   * multi_attribute lands in logic_strategy on purpose: comparing two objects
+   * on several criteria at once is the entry point to trade-off reasoning
+   * (levelMap L6), not another perceptual judgment.
+   */
+  var COMPARISON_TYPE_OF = {
+    quantity:'quantity', number:'quantity',
+    size:'spatial_visual', length:'spatial_visual', height:'spatial_visual',
+    position:'spatial_visual', shape:'spatial_visual', color:'spatial_visual',
+    fullness:'spatial_visual', weight:'spatial_visual',
+    time:'temporal', speed:'temporal',
+    multi_attribute:'logic_strategy'
+  };
+
+  function difficultyAxisFor(levelId, type) {
+    var base = {
+      K1: { object_complexity:'concrete', dimension_complexity:'single',
+            relation_complexity:'direct', language_complexity:'action',
+            transfer_complexity:'within-domain' },
+      K2: { object_complexity:'concrete', dimension_complexity:'single',
+            relation_complexity:'direct', language_complexity:'question',
+            transfer_complexity:'within-domain' },
+      G1: { object_complexity:'symbolic', dimension_complexity:'single',
+            relation_complexity:'direct', language_complexity:'question',
+            transfer_complexity:'within-domain' },
+      G2: { object_complexity:'symbolic', dimension_complexity:'dual',
+            relation_complexity:'indirect', language_complexity:'compound',
+            transfer_complexity:'cross-domain' }
+    }[levelId];
+    if (!base) return null;
+
+    var axis = Object.assign({}, base);
+    if (type === 'multi_attribute') {
+      axis.dimension_complexity = (levelId === 'G2') ? 'multi' : 'dual';
+    }
+    if (INDIRECT_TYPES[type] && axis.relation_complexity === 'direct') {
+      axis.relation_complexity = 'indirect';
+    }
+    return axis;
+  }
+
+  /**
+   * The single place that builds the radar payload. Both activity paths call
+   * this, so a change to the contract cannot land on one path and miss the
+   * other.
+   *
+   * `attrType` is the template's own `type` field (size / weight / time …).
+   * `comparisonType` is the typeTree id from comparison.json — the two are not
+   * the same vocabulary, so the raw attribute is kept alongside instead of
+   * being overwritten by its category.
+   */
+  function buildRadarContext(levelId, attrType, extra) {
+    var ctx = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        levelId || null,
+      gradeCode:      LEVEL_GRADE[levelId] || null,
+      comparisonType: attrType ? (COMPARISON_TYPE_OF[attrType] || 'quantity') : null,
+      attributeType:  attrType || null,
+      difficultyAxis: difficultyAxisFor(levelId, attrType),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    return extra ? Object.assign(ctx, extra) : ctx;
+  }
+
+  /** Most frequent value in an array, or null. Used to label a mixed batch. */
+  function _dominant(values) {
+    var counts = {}, best = null, bestN = 0;
+    values.forEach(function (v) {
+      if (!v) return;
+      counts[v] = (counts[v] || 0) + 1;
+      if (counts[v] > bestN) { bestN = counts[v]; best = v; }
+    });
+    return best;
+  }
+
   function registerRootGenes(ctx) {
     var unit=(ctx&&ctx.unit)||{}, genes=['RG.LOGIC.COMPARISON.BASIC'];
     if(unit.rootGeneIds&&Array.isArray(unit.rootGeneIds)) unit.rootGeneIds.forEach(function(g){genes.push(g);});
@@ -456,7 +570,11 @@
     var tpl=_sessionTemplateMap[q.templateId];
     if(!tpl) return;
     CmpEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
-    CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl);
+    CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl, {
+      mode:   'puzzle',
+      result: correct ? 'correct' : 'incorrect',
+      radar:  buildRadarContext(tpl.level, tpl.type)
+    });
   }
 
   // ── Grade level selector ───────────────────────────────────────────────────
@@ -500,7 +618,9 @@
       icon:'⚖️',
       descZh:n+'题 · 轮次送题',
       descEn:n+' questions · Cycle',
-      rootGeneIds:['RG.LOGIC.COMPARISON.BASIC','RG.LEARNING.MATH.COMPARISON'],
+      // Ability genes only. Where this session sits in the content tree travels
+      // in moduleId / unitId / levelId — see buildRadarContext().
+      rootGeneIds:['RG.LOGIC.COMPARISON.BASIC'],
       questions:questions
     }];
   }
@@ -625,7 +745,11 @@
           attempt.responseMs, false, tpl, {
             mode:    attempt.mode || tpl.runtime || tpl.mode,
             result:  attempt.result,
-            process: attempt.process
+            process: attempt.process,
+            // Interaction and mini activities never pass through
+            // getReportContext(), so the radar coordinates have to be attached
+            // here or these attempts land on the radar with no depth at all.
+            radar:   buildRadarContext(tpl.level || levelId, tpl.type)
           });
 
         // Continue: if session still has puzzle templates (resume), run them now
@@ -769,7 +893,19 @@
       checkAnswer:checkAnswer, getVoiceText:getVoiceText,
       registerRootGenes:registerRootGenes, onAnswer:onAnswer,
       getReportContext:function(ctx){
-        return {moduleId:'comparison',moduleType:'metathinking',level:levelId,sourceGameId:'learning-math-comparison'};
+        // A puzzle session is a mixed batch, so the batch is labelled with its
+        // dominant comparison type and the level's own axis position (no
+        // per-template refinement — that only makes sense per attempt).
+        var types = Object.keys(_sessionTemplateMap).map(function (id) {
+          return COMPARISON_TYPE_OF[_sessionTemplateMap[id].type] || null;
+        });
+        return buildRadarContext(levelId, null, {
+          comparisonType: _dominant(types),
+          comparisonTypes: types.filter(Boolean).filter(function (v, i, a) {
+            return a.indexOf(v) === i;
+          }),
+          activityRuntime: 'puzzle'
+        });
       }
     });
 

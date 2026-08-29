@@ -156,27 +156,35 @@ shell.createGame({
   },
 
   registerRootGenes: function (ctx) {
-    var unit = (ctx && ctx.unit) || {};
-    var unitId = String(unit.id || 'u0');
-    return [
-      'RG.MATH.NUMBER_SENSE.BASIC',
-      'RG.LEARNING.MATH.NUMBER_SENSE.' + unitId
-    ];
+    // Ability genes only — which thinking ability was exercised. The content
+    // location (module + unit) rides in getReportContext(), not in the gene id,
+    // so the same ability from a different module still lands on one radar axis.
+    return ['RG.MATH.NUMBER_SENSE.BASIC'];
   },
 
   getReportContext: function (ctx) {
     var unit = (ctx && ctx.unit) || {};
     var levelId = String(unit.id || 'L0');
     var axisObject = levelId === 'L1' ? 'concrete' : 'symbolic';
+    // levelId → gradeCode, per the knowledge-background mapping this module
+    // declares in data.js (L1 → G1 Sem1, L2 → G1 Sem2, L3 → G2). Declared here
+    // rather than inferred: 'L2' does not mean the same grade in every module,
+    // so shell.grade.normalize() refuses to guess.
+    var gradeCode = { L1: 'G1', L2: 'G1', L3: 'G2' }[levelId] || null;
     return {
-      moduleId: 'comparison',
+      moduleId: 'number-sense',
       moduleType: 'metathinking',
       levelId: levelId,
+      gradeCode: gradeCode,
       comparisonType: 'quantity',
       difficultyAxis: {
         object_complexity: axisObject,
         dimension_complexity: 'dual',
-        relation_complexity: 'direct+indirect',
+        // Values must come from the progression declared in
+        // metadata/metathinking/comparison.json → difficultyAxes. L1 stays at
+        // direct comparison within 10; the closer-to-target and missing-addend
+        // work in L2/L3 has to be inferred rather than read off.
+        relation_complexity: levelId === 'L1' ? 'direct' : 'indirect',
         language_complexity: 'question',
         transfer_complexity: 'within-domain'
       },

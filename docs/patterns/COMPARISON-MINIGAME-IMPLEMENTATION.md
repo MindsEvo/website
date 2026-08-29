@@ -394,7 +394,8 @@ Runtime 只闪 1.2 秒（`END_FLASH_MS`），**可读的结算由 `game.js._mini
 | 会话时长未设约束 | 一组 4 题里若排到 Mini-game，会话会明显变长。**先观察真实数据再决定**是否加"每会话最多 1 个长活动"的调度约束——过早加约束会把调度器复杂化 |
 | `onTick` 尚无使用者 | 两个已实现的 Adapter 都是静态画面：Quick Compare 是卡片，Build Under Time 靠塔在长高。**会动的游戏（Moving Choice）才是第一个使用者**——在那之前 `onTick` 是没被验证过的契约 |
 | 每个层级只有一种 engine | K1/G1 只有 quick_compare，K2 只有 build_time；同一层级两种玩法交替出现的体验还没验证过 |
-| 历史记录不分 mode | 与 Interaction 同一个已知限制 |
+| 历史记录不分 mode | 与 Interaction 同一个已知限制：Attempt 事件带 `mode` + `meta.radar`，但 Mini-game 收尾**不调 `shell.report()`**，会话不进深度轴。P1 待办见 `docs/HANDOFF-NEXT-STEPS.md` §2 |
+| 补 `shell.report()` 时注意 total | `_calcHist()` 会跳过没有 `r.total` 的记录。Mini-game 的 total 是**回合数**，必须显式填，否则新记录会被静默丢弃 |
 
 **后续 Adapter 计划**：
 

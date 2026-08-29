@@ -220,6 +220,12 @@
         moduleId: 'creative-workshop',
         moduleType: 'creative-workshop',
         levelId: cfg.difficulty,
+        // Deliberately ungraded. cfg.difficulty is a knob the creator turned
+        // (L1/L2/L3 = easier/harder inside this activity), not a school grade —
+        // a creator-authored activity has no curriculum position to claim. The
+        // session still reports its genes, so it counts toward WHICH abilities
+        // the child exercised; it just has no position on the depth axis.
+        gradeCode: null,
         comparisonType: 'quantity',
         difficultyAxis: difficultyAxis(cfg.difficulty),
         templateId: cfg.templateId,

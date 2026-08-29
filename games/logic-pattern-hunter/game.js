@@ -92,12 +92,13 @@ shell.createGame({
     return parts.join(shell.lang === 'zh' ? '，' : '. ') + (shell.lang === 'zh' ? '。' : '. ') + question;
   },
 
-  registerRootGenes: function (ctx) {
-    var unit = (ctx && ctx.unit) || {};
-    var unitId = String(unit.id || 'u0');
+  registerRootGenes: function () {
+    // Ability genes only. The unit location used to be appended here as a
+    // third gene; it now travels as unitId in the report, so the same ability
+    // trained in different units lands on one radar axis instead of many.
+    // See docs/rootgene/ROOTGENE-FRAMEWORK.md §5.
     return [
-      'RG.LOGIC.REASONING.BASIC',
-      'RG.MINDSEEDS.LOGIC_PATTERN.' + unitId
+      'RG.LOGIC.REASONING.BASIC'
     ];
   }
 });

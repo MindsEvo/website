@@ -159,12 +159,14 @@ shell.createGame({
   },
 
   registerRootGenes: function (ctx) {
-    var unit = (ctx && ctx.unit) || {};
-    var unitId = String(unit.id || 'u0');
+    // Ability genes only. 'RG.MINDSEEDS.SPATIAL_PATTERN.<unit>' used to be
+    // appended here, but that is a content coordinate, not an ability: it made
+    // every unit its own radar axis and prevented this module's spatial work
+    // from converging with the same ability trained elsewhere. The location now
+    // travels as moduleId + unitId in getReportContext().
     return [
       'RG.PATTERN.SPATIAL.RELATION',
-      'RG.STRATEGY.DECISION.PLANNING',
-      'RG.MINDSEEDS.SPATIAL_PATTERN.' + unitId
+      'RG.STRATEGY.DECISION.PLANNING'
     ];
   },
 
@@ -185,6 +187,13 @@ shell.createGame({
       moduleId: 'spatial-pattern',
       moduleType: 'metathinking',
       levelId: levelId,
+      // BACKLOG: this module has no declared level → grade band yet. Its L1-L3
+      // are difficulty steps inside route planning, not school grades, so
+      // asserting a gradeCode here would fabricate an age claim the content
+      // does not support. Reporting null keeps the session on the coverage axis
+      // (which ability) while leaving it off the depth axis until
+      // metadata/metathinking/ gains a spatial-pattern module with a levelMap.
+      gradeCode: null,
       comparisonType: comparisonType,
       difficultyAxis: axis,
       sourceGameId: 'spatial-pattern-hunter',

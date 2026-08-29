@@ -15,7 +15,9 @@
  *   shell.setLang(lang)              'zh' | 'en'
  *   shell.storage.get/set/remove()   localStorage with namespace + prefix
  *   shell.nav.goto/home/back()       page navigation
- *   shell.user.profile               user profile object
+ *   shell.user.profile               user account object (future server login)
+ *   shell.user.profileId()           anonymous device-local profile id
+ *   shell.grade.CODES/normalize()    canonical level vocabulary (radar axis 2)
  *   shell.report(payload)            game session reporting
  *   shell.registerStrings(obj)       register translation strings
  *
@@ -24,6 +26,7 @@
  *   e.g.  pattern-hunter:progress:unit1
  *         user:settings:lang
  *         user:profile
+ *         sys:profile          ← anonymous local profile (radar attribution)
  *         sys:syncPending
  * ─────────────────────────────────────────────────────────
  */
@@ -197,6 +200,69 @@
     },
     isLoggedIn: function () {
       return !!user.profile.id;
+    },
+
+    /**
+     * Anonymous, device-local profile id — stamped on every report so the
+     * records written today can still be attributed to a person tomorrow.
+     *
+     * Deliberately NOT the same thing as `user:profile.id`: that one means
+     * "signed in to a server account" and drives isLoggedIn(). This one is
+     * just a local bucket, so it must not flip isLoggedIn() to true.
+     *
+     * Created on first read and never rotated. There is no UI yet (no picker,
+     * no name, no switching) and none is needed — the point is the stamp. When
+     * real profile switching arrives, everything recorded so far already
+     * belongs to 'p1' instead of becoming unattributable.
+     *
+     * Scope: this device + this browser profile. Clearing localStorage loses
+     * it. That is acceptable — the job is to link one device's sessions into a
+     * progress curve, not to authenticate anybody.
+     */
+    profileId: function () {
+      var p = storage.get('sys:profile', null);
+      if (!p || !p.id) {
+        p = { id: 'p1', createdAt: Date.now(), label: null };
+        storage.set('sys:profile', p);
+      }
+      return p.id;
+    }
+  };
+
+  // ── Canonical Level Vocabulary (thinking-radar axis 2) ───────
+  /**
+   * The thinking radar is at least two-dimensional: rootGene × gradeCode.
+   * Axis 1 (rootGene) says WHICH thinking ability was exercised; axis 2
+   * (gradeCode) says AT WHAT DEPTH. Rolling up across activities is only
+   * possible if axis 2 speaks one language, so:
+   *
+   *   gradeCode ∈ K1 K2 G1 G2 G3 G4 G5 G6      ← the only canonical values
+   *
+   * Modules keep their own internal level ids for content routing ('L2',
+   * 'route-l1', 'K1' …) and report them as `levelId`. Each module is
+   * responsible for declaring its own levelId → gradeCode mapping in
+   * getReportContext(). A module that has not declared one reports
+   * gradeCode: null — it still contributes to coverage, but has no position
+   * on the depth axis.
+   *
+   * normalize() intentionally does NOT guess: 'L2' does not mean the same
+   * grade in every module, and a wrong grade band is worse than a missing
+   * one because it silently pollutes the aggregate.
+   */
+  var GRADE_CODES = ['K1', 'K2', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6'];
+  var grade = {
+    CODES: GRADE_CODES.slice(),
+    isValid: function (code) {
+      return GRADE_CODES.indexOf(String(code || '').toUpperCase()) >= 0;
+    },
+    /** Ordinal position on the depth axis, or -1. Use for sorting/plotting. */
+    index: function (code) {
+      return GRADE_CODES.indexOf(String(code || '').toUpperCase());
+    },
+    /** Canonical gradeCode, or null if the value is not already canonical. */
+    normalize: function (value) {
+      var v = String(value || '').toUpperCase();
+      return GRADE_CODES.indexOf(v) >= 0 ? v : null;
     }
   };
 
@@ -206,16 +272,46 @@
    *
    * payload = {
    *   gameId:    string     e.g. 'pattern-hunter'
-   *   geneIds:   string[]   root gene IDs, e.g. ['PTRN.visual.sequence.L1.arith.PH001.v1']
-   *   levelId:   string     e.g. 'L1-stage2-q5'
+   *   geneIds:   string[]   root gene IDs — ABILITY only, e.g. ['RG.LOGIC.COMPARISON.BASIC']
+   *                         (content location belongs in moduleId/unitId, not here)
+   *   levelId:   string     module-internal level id, e.g. 'L2' / 'K1' / 'route-l1'
+   *   gradeCode: string     canonical depth axis, one of shell.grade.CODES, or null
+   *   unitId:    string     which unit inside the module
    *   success:   boolean
    *   solutions: number     how many solutions the player found
    *   attempts:  number
    *   timeMs:    number
    * }
+   *
+   * report() stamps two things the caller must not have to remember:
+   *   profileId  — who this belongs to (see user.profileId)
+   *   gradeCode  — normalized, so the radar never has to parse level strings
    */
   function report(payload) {
+    payload = payload || {};
+
+    // Prefer an explicitly declared gradeCode; fall back to levelId only when
+    // it is already canonical (K1…G6). Never guess — see shell.grade.
+    var gradeCode = grade.normalize(payload.gradeCode) ||
+                    grade.normalize(payload.levelId);
+
+    // Warn only when nobody made a decision. A module that reports
+    // `gradeCode: null` on purpose (its levels are difficulty steps, not school
+    // grades) has declared its position and should stay quiet; a module that
+    // never mentions gradeCode at all has most likely forgotten it, and that is
+    // exactly the silent drift this warning exists to surface.
+    var declared = Object.prototype.hasOwnProperty.call(payload, 'gradeCode');
+    if (!gradeCode && payload.levelId && !declared) {
+      console.warn('[shell] report(): levelId "' + payload.levelId + '" (' +
+        (payload.gameId || '?') + ') has no gradeCode mapping — this session ' +
+        'counts toward gene coverage but has no depth position on the radar. ' +
+        'Declare levelId → gradeCode in getReportContext(), or report ' +
+        'gradeCode: null deliberately.');
+    }
+
     var record = Object.assign({}, payload, {
+      gradeCode: gradeCode,
+      profileId: user.profileId(),
       ts:   Date.now(),
       lang: shell.lang,
       ver:  shell.version
@@ -1647,7 +1743,7 @@
         }
       }
 
-      shell.report({
+      var reportPayload = {
         gameId:    GAME_ID,
         unitId:    unit.id,
         score:     state.score,
@@ -1662,7 +1758,13 @@
         moduleId: reportContext.moduleId || null,
         moduleType: reportContext.moduleType || null,
         context: reportContext
-      });
+      };
+      // Only forward gradeCode when the module actually declared the key, so
+      // report() can tell "deliberately ungraded" from "forgot to map it".
+      if (Object.prototype.hasOwnProperty.call(reportContext, 'gradeCode')) {
+        reportPayload.gradeCode = reportContext.gradeCode || null;
+      }
+      shell.report(reportPayload);
 
       // Stash for lang-switch re-render
       $result.dataset.passed  = passed;
@@ -1886,7 +1988,7 @@
 
   // ── Public shell object ──────────────────────────────────────
   var shell = {
-    version:         '1.3.0',
+    version:         '1.4.0',
     lang:            storage.get('user:settings:lang', 'en') || 'en',
     t:               t,
     speak:           speak,
@@ -1904,6 +2006,7 @@
     runtime:             createRuntimeLayer(),
     nav:             nav,
     user:            user,
+    grade:           grade,
     report:          report
   };
 

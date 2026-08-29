@@ -65,7 +65,7 @@ learning/math/comparison/
   "difficulty":  1,
   "generator":   "sizeCompare",
   "promptType":  "which_bigger",
-  "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LEARNING.MATH.COMPARISON.SIZE"],
+  "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
   "mastery":     { "requiredCorrect": 3, "window": 5 },
   "cooldown":    { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
   "params":      { "set": "animals", "askMode": "bigger" }
@@ -73,6 +73,11 @@ learning/math/comparison/
 ```
 
 **命名约定**：`{module}-{level}-{type}-{seq}`，如 `cmp-k1-size-001`
+
+> `rootGeneIds` **只放能力基因**。维度（size / quantity / …）由同一模板的 `type`
+> 字段承载，位置由 report 的 `moduleId` / `unitId` 承载，都不进基因 ID。
+> 理由见 `docs/rootgene/ROOTGENE-FRAMEWORK.md` §5。当前 73 个模板的
+> `rootGeneIds` 一律是 `["RG.LOGIC.COMPARISON.BASIC"]`。
 
 **level 取值**：`K1` `K2` `G1` `G2`（G3–G6 预留，标记 `free:false`）
 

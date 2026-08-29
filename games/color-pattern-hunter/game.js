@@ -132,12 +132,13 @@ shell.createGame({
       : 'Question ' + (idx + 1) + ', what color comes next?';
   },
 
-  registerRootGenes: function (ctx) {
-    var unit = (ctx && ctx.unit) || {};
-    var unitId = String(unit.id || 'u0');
+  registerRootGenes: function () {
+    // Ability genes only. The unit location used to be appended here as a
+    // third gene; it now travels as unitId in the report, so the same ability
+    // trained in different units lands on one radar axis instead of many.
+    // See docs/rootgene/ROOTGENE-FRAMEWORK.md §5.
     return [
-      'RG.PATTERN.VISUAL.COLOR',
-      'RG.MINDSEEDS.COLOR_PATTERN.' + unitId
+      'RG.PATTERN.VISUAL.COLOR'
     ];
   }
 });

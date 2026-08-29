@@ -55,6 +55,15 @@ var CmpEngine = (function () {
     shell.storage.set(_storageKey(key), val);
   }
 
+  // Anonymous device-local profile id, owned by the shell (sys:profile). Guarded
+  // because engine.js is also loadable in bare test harnesses without the shell.
+  function _profileId() {
+    try {
+      return (shell.user && typeof shell.user.profileId === 'function')
+        ? shell.user.profileId() : null;
+    } catch (e) { return null; }
+  }
+
   // ── MasteryTracker ─────────────────────────────────────────────────────────
 
   function _defaultTemplateState() {
@@ -335,6 +344,11 @@ var CmpEngine = (function () {
    *                                           this is the finer-grained label for analytics.
    *                                   process the thinking-process payload the runtime built
    *                                           (moves, corrections, rounds, streak, …)
+   *                                   radar   thinking-radar coordinates from the activity:
+   *                                           {gradeCode, moduleId, moduleType, comparisonType,
+   *                                            difficultyAxis}. The activity owns the
+   *                                           levelId → gradeCode mapping; the engine only
+   *                                           carries what it is handed.
    */
   function recordAttempt(templateId, variantId, correct, responseMs, hintUsed, templateDef, meta) {
     var now = Date.now();
@@ -403,7 +417,11 @@ var CmpEngine = (function () {
       hint_used:      !!hintUsed,
       mastery_before: masteryBefore,
       mastery_after:  masteryAfter,
-      root_gene_ids:  templateDef ? (templateDef.rootGeneIds || []) : []
+      root_gene_ids:  templateDef ? (templateDef.rootGeneIds || []) : [],
+      // Radar attribution. profile_id says WHOSE attempt this is, grade_code
+      // says at what depth — without both, a per-attempt event can be counted
+      // but cannot be plotted or turned into a progress curve.
+      profile_id:     _profileId()
     };
     // `result` stays the boolean-derived value the mastery model uses, so
     // existing aggregation keeps working. The runtime's own verdict rides
@@ -411,6 +429,17 @@ var CmpEngine = (function () {
     // simply 'correct' nor 'incorrect'.
     if (meta && meta.result) event.result_detail = meta.result;
     if (procSummary)         event.process = procSummary;
+
+    // The activity supplies the radar coordinates (it owns the levelId →
+    // gradeCode mapping); the engine only carries them.
+    var radar = (meta && meta.radar) || null;
+    if (radar) {
+      if (radar.gradeCode)      event.grade_code      = radar.gradeCode;
+      if (radar.moduleId)       event.module_id       = radar.moduleId;
+      if (radar.moduleType)     event.module_type     = radar.moduleType;
+      if (radar.comparisonType) event.comparison_type = radar.comparisonType;
+      if (radar.difficultyAxis) event.difficulty_axis = radar.difficultyAxis;
+    }
     _queueServerEvent(event);
 
     return { masteryBefore: masteryBefore, masteryAfter: masteryAfter };

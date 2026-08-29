@@ -1,6 +1,6 @@
 {
-  "version": "v0.4.0",
-  "updatedAt": "2026-08-16",
+  "version": "v0.5.0",
+  "updatedAt": "2026-08-23",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -25,8 +25,7 @@
   },
   "rootGeneIds": [
     "RG.LOGIC.COMPARISON.BASIC",
-    "RG.MATH.NUMBER_SENSE.BASIC",
-    "RG.LEARNING.MATH.COMPARISON"
+    "RG.MATH.NUMBER_SENSE.BASIC"
   ],
   "difficultyAxes": [
     {
@@ -186,6 +185,7 @@
     {
       "levelId": "L5",
       "ageHint": "8-9",
+      "gradeCode": "G3",
       "objectiveZh": "进行间接与链式比较（A>B, B>C 推导 A>C）。",
       "objectiveEn": "Perform indirect and chain comparison.",
       "primaryTypes": ["logic_strategy"],
@@ -194,6 +194,7 @@
     {
       "levelId": "L6",
       "ageHint": "9-10",
+      "gradeCode": "G4",
       "objectiveZh": "在多维标准下比较并说明取舍理由。",
       "objectiveEn": "Compare under multi-criteria and explain trade-offs.",
       "primaryTypes": ["logic_strategy", "information"],
@@ -202,6 +203,7 @@
     {
       "levelId": "L7",
       "ageHint": "10-11",
+      "gradeCode": "G5",
       "objectiveZh": "比较策略效率与条件充分性，形成可解释判断。",
       "objectiveEn": "Compare strategy efficiency and condition sufficiency with explanations.",
       "primaryTypes": ["logic_strategy", "information"],
@@ -210,6 +212,7 @@
     {
       "levelId": "L8",
       "ageHint": "11-12",
+      "gradeCode": "G6",
       "objectiveZh": "比较证据强弱与信息可信度，完成综合判断。",
       "objectiveEn": "Compare evidence strength and information reliability for integrated judgment.",
       "primaryTypes": ["information"],
