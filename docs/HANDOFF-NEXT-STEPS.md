@@ -1,8 +1,10 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.0 (2026-08-24)
+- 版本：v1.1 (2026-08-29)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
+
+> v1.1 变更：阶段 0 已落地（见 §1.4），P6 的第一刀已切，`shell.js` → v1.5.0。
 
 ---
 
@@ -15,7 +17,10 @@
 
 ---
 
-## 1. 本轮改了什么（已落地，共 20 个文件）
+## 1. 已落地的改动
+
+§1.1–1.3 是雷达架构那一轮（共 20 个文件，commit `751f85d`）；
+§1.4 是紧接着的阶段 0（响应式布局收口）。
 
 ### 1.1 `shell.js` → v1.4.0（架构核心）
 
@@ -49,6 +54,33 @@
 - `spatial-pattern-hunter` / `studio-comparison-lab`：显式 `gradeCode: null` + 理由注释；
 - 14 个 `game.js`：`registerRootGenes` 去掉位置式第三个基因，逐个对照
   `metadata/game.json` 校验一致。
+
+---
+
+### 1.4 阶段 0（2026-08-29，`shell.js` → v1.5.0）
+响应式布局收口的第一刀。完整契约见 `docs/shell/UNIFIED-GUI-FRAMEWORK.md` §8。
+
+| 改动 | 文件 | 说明 |
+|------|------|------|
+| `.board` 改容器驱动 | `studio/Clio/games/word-connections-workshop/style.css` | `repeat(auto-fit, minmax(min(320px,100%),1fr))` 取代 `@media(max-width:860px)` 里的 `grid-template-columns:1fr`；栏数不再由设备宽度决定 |
+| 删掉 `.link-canvas{display:none}` | 同上 | 连线是这个游戏的核心反馈，任何布局下都必须在；端点是相对 `.board` 量的，竖排也画得对 |
+| 新增 `s1-duo` / `s1-multi` | `shell-1.css` | 共享两栏 / 多栏原语，游戏只调 `--s1-duo-min` 决定塌栏点 |
+| 新增 `shell.diag` | `shell.js` | `?diag=1` 出诊断浮层：CSS 尺寸 / dpr / 物理像素 / **当前命中的所有标准断点** / UA |
+
+已用 headless Chrome 在 1280 / 900 / 700 / 420 四个宽度实测：
+1280 与 900 两栏、700 与 420 一栏、**四个宽度下 canvas 都是 `display:block`**。
+`?diag=1` 才出浮层，无 `?diag` 时不出，`window.onerror` 为空。
+
+⚠️ `?diag=1` 与 `?debug=1` 是两个独立开关。`debug` 解锁单元、多数游戏默认开；
+`diag` 只管浮层、默认关。**不要把两者合并**——否则每个玩家都会看到诊断浮层。
+
+⚠️ `.s1-duo` 假设**恰好两个 in-flow 子元素**。绝对定位的子元素（如 svg 画布）
+不占 track，是安全的；但再加第三个 in-flow 子元素会变成三栏。
+
+**用户已确认的现场情况**（写在这里，避免下一位重复排查）：
+learning 比较单元在 **PC / iOS / 安卓平板 / 手机上显示都正常**，新的公共 GUI 正常；
+**手上没有大屏安卓平板**，所以 word-connections 那台设备的复现只能等以后。
+因此本轮只做机制修正与可诊断性，不追加设备特定的 hack。
 
 ---
 
@@ -109,7 +141,12 @@ sessions / correct / wrong / hints / totalMs。
 
 `profileId` 先在本地积累。服务器动工时需要：`sessions.profile_id` 列 + 事件接收端点。
 
-### P6. 跨平台显示一致性（本轮新发现，见 §4）
+### P6. 跨平台显示一致性 —— **机制部分已完成（§1.4）**，剩余为逐个游戏收敛
+
+契约与原语已落地（`s1-duo` / `s1-multi` / `shell.diag`，见
+`docs/shell/UNIFIED-GUI-FRAMEWORK.md` §8），word-connections 已改完。
+剩下的活是把其余约 24 个自定义 `max-width` 断点在各自游戏改动时顺带迁移过来——
+**不必单独开一轮**，谁碰到哪个游戏就顺手改哪个。已核实的诊断过程保留在 §4。
 
 ---
 
@@ -169,7 +206,10 @@ sessions / correct / wrong / hints / totalMs。
 3. **可诊断**：加一个 debug 浮层显示 `innerWidth` / `devicePixelRatio` / 命中的断点，
    这样任何设备上的问题都能直接读数，不用猜。
 
-本轮**未改动**这些文件（用户要求先核实讨论）。建议作为 P6 独立提交。
+**本节保留为诊断记录**：上面三条结论已在阶段 0 落地（见 §1.4），
+`word-connections-workshop/style.css` 与 `shell-1.css` / `shell.js` 均已改动。
+留着这段是为了让下一位知道**当初是怎么定位到 dpr 的**——
+以后再出现「某台设备上布局莫名塌栏」，先加 `?diag=1` 读 `bp<=` 那一行。
 
 ---
 

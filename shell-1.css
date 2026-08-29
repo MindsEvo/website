@@ -712,3 +712,50 @@ body {
   .s1-track-q     { font-size: 12px !important; padding: 1px 6px !important; }
 }
 
+/* ══════════════════════════════════════════════════════════
+   Responsive layout primitives (shared contract)
+   ══════════════════════════════════════════════════════════
+   Two rules every activity layout must follow. They exist because a game
+   inventing its own device-width breakpoint gets cross-platform display wrong
+   in a way that is invisible on the developer's machine:
+
+   1. REFLOW ON CONTAINER WIDTH, NOT DEVICE WIDTH.
+      Media queries key off CSS px = physical px / devicePixelRatio. Android
+      devicePixelRatio ranges from 1.0 to 3.0+, so a physically LARGER
+      high-density tablet can report a NARROWER CSS viewport than a physically
+      smaller low-density one - and a `max-width` breakpoint then collapses the
+      layout on the big screen and not on the small one. Same Android version,
+      opposite result. `repeat(auto-fit, minmax(...))` asks the container how
+      much room it actually has, needs no breakpoint, and works on old Android
+      WebView (unlike @container).
+
+   2. REFLOW MAY REARRANGE, NEVER DELETE.
+      A narrow layout may stack, shrink or scroll. It must never
+      `display: none` an element the activity needs to be playable or to give
+      feedback. If it does not fit, make it smaller or move it - do not remove
+      the game's core affordance.
+
+   Usage: <div class="s1-duo"> with two children. Override the collapse point
+   per game with --s1-duo-min (the minimum width one column may have). */
+.s1-duo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--s1-duo-min, 320px), 100%), 1fr));
+  gap: var(--s1-duo-gap, 22px);
+  align-items: start;
+}
+
+/* Three-or-more column variant, same contract. */
+.s1-multi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--s1-multi-min, 220px), 100%), 1fr));
+  gap: var(--s1-multi-gap, 16px);
+  align-items: start;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Layout diagnostics overlay (shell.diag, opt in with ?diag=1)
+   ══════════════════════════════════════════════════════════
+   Styles live in shell.js as inline styles so the overlay also works on pages
+   that do not load this stylesheet. Nothing to define here - this note only
+   records where to look. */
+

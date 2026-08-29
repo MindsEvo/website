@@ -123,7 +123,13 @@ select {
 .board {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Container-driven, not device-driven: two columns whenever the board itself
+     is wide enough for them, one column when it is not. Deliberately NOT a
+     media query - those key off CSS px (= physical px / devicePixelRatio), so
+     on Android a physically larger high-density tablet can report a narrower
+     viewport than a smaller low-density one, and the board would collapse on
+     the big screen. auto-fit needs no breakpoint and no @container support. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 22px;
   min-height: 520px;
   background:
@@ -243,6 +249,10 @@ select {
   display: none;
 }
 
+/* Cosmetic tightening only. Column count is decided by the .board auto-fit
+   rule above, and no functional element may be hidden here: the link canvas is
+   this game's core feedback, so it stays visible in every layout. Endpoints are
+   measured relative to .board, so stacked columns draw valid lines too. */
 @media (max-width: 860px) {
   .topbar {
     grid-template-columns: 1fr;
@@ -252,7 +262,7 @@ select {
     flex-wrap: wrap;
   }
   .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .board { grid-template-columns: 1fr; min-height: auto; }
+  .board { min-height: auto; }
   .col {
     border-radius: 20px;
     min-height: auto;
@@ -266,5 +276,4 @@ select {
     min-width: 64px;
     max-width: 64px;
   }
-  .link-canvas { display: none; }
 }

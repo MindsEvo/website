@@ -345,6 +345,135 @@
     //   .then(function(r){ if(r.ok) storage.set('sys:syncPending', []); });
   }
 
+  // ── Layout diagnostics ───────────────────────────────────────
+  // Why this exists: a display bug that depends on devicePixelRatio cannot be
+  // reproduced by reasoning about screen size. Media queries key off CSS px
+  // (= physical px / devicePixelRatio), and Android devicePixelRatio spans
+  // 1.0 to 3.0+, so a physically larger high-density tablet can report a
+  // NARROWER CSS viewport than a smaller low-density one. When a user reports
+  // "the big tablet stacks the columns but the small one does not", the only
+  // way to settle it is to read the numbers off that device.
+  //
+  // Opt in with ?diag=1 (or shell.diag.toggle() from the console). Never on by
+  // default - note this is a separate switch from ?debug=1, which unlocks
+  // units and defaults to ON for most games.
+  //
+  // Styles are inline so the overlay works on pages that never load
+  // shell-1.css. Tap it to move it out of the way, long-press to dismiss.
+  var DIAG_BREAKPOINTS = [1200, 1180, 1100, 1024, 1020, 980, 860, 820, 780,
+                          700, 640, 520, 480, 375];
+  var DIAG_CORNERS = [
+    'left:8px;bottom:8px;',
+    'right:8px;bottom:8px;',
+    'right:8px;top:8px;',
+    'left:8px;top:8px;'
+  ];
+
+  function createDiagnostics() {
+    var box = null, corner = 0, tapAt = 0;
+
+    function info() {
+      var dpr = window.devicePixelRatio || 1;
+      var w = window.innerWidth, h = window.innerHeight;
+      var hits = [];
+      for (var i = 0; i < DIAG_BREAKPOINTS.length; i++) {
+        if (w <= DIAG_BREAKPOINTS[i]) hits.push(DIAG_BREAKPOINTS[i]);
+      }
+      return {
+        cssWidth:  w,
+        cssHeight: h,
+        dpr:       dpr,
+        devWidth:  Math.round(w * dpr),
+        devHeight: Math.round(h * dpr),
+        screenWidth:  (window.screen && window.screen.width)  || null,
+        screenHeight: (window.screen && window.screen.height) || null,
+        orientation: w >= h ? 'landscape' : 'portrait',
+        // Every standard max-width breakpoint in the repo that currently
+        // matches. If a layout collapsed unexpectedly, the culprit is here.
+        matchedBreakpoints: hits,
+        visualScale: (window.visualViewport && window.visualViewport.scale) || null,
+        ua: navigator.userAgent
+      };
+    }
+
+    function _row(label, value) {
+      return '<div style="display:flex;gap:6px">' +
+             '<span style="opacity:.6;min-width:52px">' + label + '</span>' +
+             '<span>' + value + '</span></div>';
+    }
+
+    function render() {
+      if (!box) return;
+      var d = info();
+      box.innerHTML =
+        _row('css',  d.cssWidth + ' x ' + d.cssHeight + '  ' + d.orientation) +
+        _row('dpr',  d.dpr + (d.visualScale && d.visualScale !== 1
+                              ? '   zoom ' + d.visualScale.toFixed(2) : '')) +
+        _row('phys', d.devWidth + ' x ' + d.devHeight +
+                     (d.screenWidth ? '   screen ' + d.screenWidth + ' x ' + d.screenHeight : '')) +
+        _row('bp<=', d.matchedBreakpoints.length
+                     ? d.matchedBreakpoints.join(' ')
+                     : '(none)') +
+        '<div style="opacity:.45;margin-top:4px;max-width:260px;' +
+        'word-break:break-all;line-height:1.25">' + d.ua + '</div>';
+    }
+
+    function _place() {
+      box.setAttribute('style',
+        'position:fixed;' + DIAG_CORNERS[corner] +
+        'z-index:2147483647;background:rgba(15,23,42,.92);color:#e2e8f0;' +
+        'font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;' +
+        'padding:8px 10px;border-radius:8px;border:1px solid rgba(148,163,184,.4);' +
+        'max-width:300px;pointer-events:auto;cursor:pointer;' +
+        '-webkit-user-select:none;user-select:none;touch-action:manipulation');
+    }
+
+    function show() {
+      if (box) return;
+      box = document.createElement('div');
+      box.id = 's1-diag';
+      _place();
+      // Tap cycles corners so the overlay can never permanently cover the
+      // thing being diagnosed; a 600ms+ press dismisses it.
+      box.addEventListener('pointerdown', function () { tapAt = Date.now(); });
+      box.addEventListener('pointerup', function () {
+        if (Date.now() - tapAt > 600) { hide(); return; }
+        corner = (corner + 1) % DIAG_CORNERS.length;
+        _place();
+        render();
+      });
+      document.body.appendChild(box);
+      render();
+      window.addEventListener('resize', render);
+      window.addEventListener('orientationchange', render);
+      // Also log once, so the numbers survive in remote-debug console output
+      // even if the user only sends a screenshot of the console.
+      try { console.log('[shell.diag]', JSON.stringify(info())); } catch (e) {}
+    }
+
+    function hide() {
+      if (!box) return;
+      window.removeEventListener('resize', render);
+      window.removeEventListener('orientationchange', render);
+      if (box.parentNode) box.parentNode.removeChild(box);
+      box = null;
+    }
+
+    function toggle() { if (box) { hide(); } else { show(); } }
+    function isOn()   { return !!box; }
+
+    return { show: show, hide: hide, toggle: toggle, isOn: isOn, info: info };
+  }
+
+  function autoStartDiagnostics() {
+    if (!/[?&]diag=1(&|$)/.test(location.search || '')) return;
+    if (document.body) {
+      shell.diag.show();
+    } else {
+      document.addEventListener('DOMContentLoaded', function () { shell.diag.show(); });
+    }
+  }
+
   // ── Language ─────────────────────────────────────────────────
   function setLang(lang) {
     shell.lang = lang;
@@ -1988,7 +2117,7 @@
 
   // ── Public shell object ──────────────────────────────────────
   var shell = {
-    version:         '1.4.0',
+    version:         '1.5.0',
     lang:            storage.get('user:settings:lang', 'en') || 'en',
     t:               t,
     speak:           speak,
@@ -2007,12 +2136,14 @@
     nav:             nav,
     user:            user,
     grade:           grade,
-    report:          report
+    report:          report,
+    diag:            createDiagnostics()
   };
 
   global.shell = shell;
 
   autoLoadVideoCatalog();
+  autoStartDiagnostics();
 
   // Apply persisted language to <html> on load
   document.documentElement.setAttribute('lang', shell.lang === 'zh' ? 'zh-CN' : 'en');
