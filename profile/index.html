@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>思维图谱 · Thinking Map | MindsEvo</title>
+  <meta name="description" content="MindsEvo Thinking Map: a per-child radar of which thinking abilities (rootGene) have been exercised and at what grade depth, read entirely from local play history." />
+  <!-- Not indexable content: the page is empty until this device has play history. -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="../shell-1.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="alternate" type="application/json" title="MindsEvo RootGene Registry" href="../metadata/rootgene.json" />
+</head>
+<body>
+  <div class="s1-wrap pf-wrap">
+    <div class="s1-screen">
+
+      <div class="s1-hdr">
+        <div class="s1-title">
+          <span class="zh">思维图谱</span><span class="en">Thinking Map</span>
+        </div>
+        <div class="s1-controls">
+          <a class="s1-btn" href="../index.html" title="返回首页 / Home">🏠</a>
+          <button class="s1-btn s1-mute" type="button">🔊</button>
+          <span class="s1-volwrap">
+            <span class="s1-volicon">🔊</span>
+            <input class="s1-vol" type="range" min="0" max="100" step="1" value="70" />
+          </span>
+          <button class="s1-btn s1-lang" type="button">EN</button>
+        </div>
+      </div>
+
+      <p class="pf-sub">
+        <span class="zh">这张图只读本机的游戏记录，不上传、不联网。横轴是<b>根基因</b>（练到了哪种思维），纵轴是<b>等级</b>（练到了多深）。</span>
+        <span class="en">Read from this device's play history only — nothing is uploaded. Axis 1 is the <b>rootGene</b> (which thinking ability), axis 2 is the <b>grade</b> (how deep).</span>
+      </p>
+
+      <!-- Everything below is written by profile.js. -->
+      <div id="pf-body"></div>
+
+    </div>
+  </div>
+
+  <script src="../shell.js"></script>
+  <script src="../radar-reader.js"></script>
+  <script src="./profile.js"></script>
+</body>
+</html>

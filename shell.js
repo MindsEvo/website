@@ -365,9 +365,58 @@
     var key = base, n = 0;
     while (storage.get(key) !== null && n < 50) { key = base + '-' + (++n); }
     storage.set(key, record);
+    _pruneHistory(payload.gameId);
 
     // 2. Queue for background server sync
     _queueSync(record);
+  }
+
+  // ── History retention ────────────────────────────────────────
+  /**
+   * Cap the stored history per game. Without this the store grows for the life
+   * of the device: nothing ever deleted a record, and radar-reader.js has to
+   * walk every key on every read.
+   *
+   * HISTORY_MAX is per game, so a child playing all four series keeps four
+   * windows of this size. 600 attempts in one module is already years of use,
+   * and 600 records is roughly 250KB — comfortably inside the ~5MB quota even
+   * with every series full.
+   *
+   * The OLDEST records go first. That is the right end to cut for this data:
+   * the radar's progress signal compares recent play against earlier play, and
+   * once the window is this long the earliest sessions describe a child who no
+   * longer exists. Aggregates are not folded in before deleting — a half-real
+   * half-summarised history would make every later reader lie about its
+   * sample size. Server sync (see _queueSync) is what preserves the long tail.
+   */
+  var HISTORY_MAX = 600;
+
+  function _pruneHistory(gameId) {
+    if (!gameId) return;
+    var prefix = 'me:' + gameId + ':history:';
+    var keys = [];
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(prefix) === 0) keys.push(k);
+      }
+    } catch (e) {
+      return;                                  // storage unavailable: nothing to do
+    }
+    if (keys.length <= HISTORY_MAX) return;
+    keys.sort(function (a, b) {
+      // Sort by the timestamp itself, not the string: the '-1' collision
+      // suffix would otherwise sort '…456-1' before '…4567'.
+      var ta = parseFloat(a.slice(prefix.length)) || 0;
+      var tb = parseFloat(b.slice(prefix.length)) || 0;
+      return ta - tb || (a < b ? -1 : (a > b ? 1 : 0));
+    });
+    var drop = keys.length - HISTORY_MAX;
+    for (var j = 0; j < drop; j++) {
+      try { localStorage.removeItem(keys[j]); } catch (e) { /* ignore */ }
+    }
+    console.info('[shell] history pruned for ' + gameId + ': dropped ' + drop +
+      ' oldest of ' + keys.length + ' (cap ' + HISTORY_MAX + ')');
   }
 
   // ── Background sync queue ────────────────────────────────────

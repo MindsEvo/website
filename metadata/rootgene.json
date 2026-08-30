@@ -1,0 +1,208 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-08-30",
+  "canonicalUrl": "/metadata/rootgene.json",
+  "title": {
+    "zh": "根基因登记表",
+    "en": "RootGene Registry"
+  },
+  "purpose": {
+    "zh": "根基因 ID 到中英文名称的唯一登记表。思维雷达的第一根轴用它显示名称，元数据校验器用它检查游戏声明的 ID 是否存在。ID 只描述能力，位置信息一律走 moduleId / unitId / levelId。",
+    "en": "The single registry mapping rootGene ids to bilingual names. Axis 1 of the thinking radar uses it for labels, and the metadata validator uses it to check that ids declared by games actually exist. An id describes ABILITY only; location always travels in moduleId / unitId / levelId."
+  },
+  "notes": {
+    "namingZh": "格式 RG.SCOPE.CATEGORY.NODE，全大写，段内用下划线。",
+    "namingEn": "Format RG.SCOPE.CATEGORY.NODE, upper case, underscores inside a segment.",
+    "unknownZh": "未登记的 ID 不是错误：radar-reader.js 会从 ID 本身推导出显示名，图表当天就能显示；登记只是为了给它一个人话名字。",
+    "unknownEn": "An unregistered id is not an error: radar-reader.js derives a label from the id itself, so a brand-new gene charts the day it is first reported. Registering it only gives it a human name.",
+    "mnZh": "根基因与模块是 M:N 关系。同一个基因可以被多个模块训练，同一个模块也可以声明多个基因。"
+  },
+  "categories": [
+    {
+      "id": "LOGIC",
+      "zh": "逻辑",
+      "en": "Logic",
+      "color": "#0d9488"
+    },
+    {
+      "id": "PATTERN",
+      "zh": "规律",
+      "en": "Pattern",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "MATH",
+      "zh": "数感",
+      "en": "Number Sense",
+      "color": "#ea580c"
+    },
+    {
+      "id": "STRATEGY",
+      "zh": "策略",
+      "en": "Strategy",
+      "color": "#2563eb"
+    },
+    {
+      "id": "MODELING",
+      "zh": "建模",
+      "en": "Modeling",
+      "color": "#be185d"
+    }
+  ],
+  "genes": {
+    "RG.LOGIC.COMPARISON.BASIC": {
+      "category": "LOGIC",
+      "zh": "比较判断",
+      "en": "Comparison",
+      "short": {
+        "zh": "比较",
+        "en": "Compare"
+      },
+      "descZh": "在共同维度上判断两个或多个对象的大小、多少、顺序与等同。",
+      "descEn": "Judge relation, order and equivalence among objects on a shared dimension."
+    },
+    "RG.LOGIC.REASONING.BASIC": {
+      "category": "LOGIC",
+      "zh": "推理",
+      "en": "Reasoning",
+      "short": {
+        "zh": "推理",
+        "en": "Reason"
+      },
+      "descZh": "由已知条件推出未知结论，包括传递关系与排除法。",
+      "descEn": "Derive an unknown conclusion from given facts, including transitivity and elimination."
+    },
+    "RG.PATTERN.SEQUENCE.BASIC": {
+      "category": "PATTERN",
+      "zh": "序列规律",
+      "en": "Sequence Pattern",
+      "short": {
+        "zh": "序列",
+        "en": "Sequence"
+      },
+      "descZh": "发现一串元素的重复或递进规则，并据此续写。",
+      "descEn": "Find the repeating or progressing rule in a run of elements and continue it."
+    },
+    "RG.PATTERN.VISUAL.SIZE": {
+      "category": "PATTERN",
+      "zh": "大小规律",
+      "en": "Size Pattern",
+      "short": {
+        "zh": "大小",
+        "en": "Size"
+      },
+      "descZh": "以尺寸为线索识别视觉规律。",
+      "descEn": "Read a visual pattern whose cue is size."
+    },
+    "RG.PATTERN.VISUAL.COLOR": {
+      "category": "PATTERN",
+      "zh": "颜色规律",
+      "en": "Color Pattern",
+      "short": {
+        "zh": "颜色",
+        "en": "Color"
+      },
+      "descZh": "以颜色为线索识别视觉规律。",
+      "descEn": "Read a visual pattern whose cue is color."
+    },
+    "RG.PATTERN.VISUAL.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "图形序列",
+      "en": "Visual Sequence",
+      "short": {
+        "zh": "图序",
+        "en": "Visual seq"
+      },
+      "descZh": "在图形排列中识别顺序规律。",
+      "descEn": "Identify order in an arrangement of shapes."
+    },
+    "RG.PATTERN.SPATIAL.RELATION": {
+      "category": "PATTERN",
+      "zh": "空间关系",
+      "en": "Spatial Relation",
+      "short": {
+        "zh": "空间",
+        "en": "Spatial"
+      },
+      "descZh": "判断上下、左右、内外、相邻等位置关系。",
+      "descEn": "Judge above/below, left/right, inside/outside and adjacency."
+    },
+    "RG.PATTERN.TEMPORAL.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "时间顺序",
+      "en": "Temporal Sequence",
+      "short": {
+        "zh": "时序",
+        "en": "Time seq"
+      },
+      "descZh": "判断事件的先后顺序与因果链条。",
+      "descEn": "Order events in time and follow a chain of causes."
+    },
+    "RG.PATTERN.MOTION.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "运动规律",
+      "en": "Motion Pattern",
+      "short": {
+        "zh": "运动",
+        "en": "Motion"
+      },
+      "descZh": "从移动、旋转、翻转中提取变化规则。",
+      "descEn": "Extract the rule behind movement, rotation or flipping."
+    },
+    "RG.PATTERN.QUANTITY.RELATION": {
+      "category": "PATTERN",
+      "zh": "数量关系",
+      "en": "Quantity Relation",
+      "short": {
+        "zh": "数量",
+        "en": "Quantity"
+      },
+      "descZh": "识别数量之间的增减、倍数与对应关系。",
+      "descEn": "Recognise increase, multiple and correspondence between quantities."
+    },
+    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION": {
+      "category": "PATTERN",
+      "zh": "多维整合",
+      "en": "Multi-dimension Integration",
+      "short": {
+        "zh": "多维",
+        "en": "Multi-dim"
+      },
+      "descZh": "同时跟踪两条以上线索，并把它们合起来判断。",
+      "descEn": "Track two or more cues at once and combine them into one judgement."
+    },
+    "RG.MATH.NUMBER_SENSE.BASIC": {
+      "category": "MATH",
+      "zh": "数感",
+      "en": "Number Sense",
+      "short": {
+        "zh": "数感",
+        "en": "Number"
+      },
+      "descZh": "对数的大小、多少与相对位置形成直觉。",
+      "descEn": "Build intuition for magnitude, quantity and relative position of numbers."
+    },
+    "RG.STRATEGY.DECISION.PLANNING": {
+      "category": "STRATEGY",
+      "zh": "决策规划",
+      "en": "Decision Planning",
+      "short": {
+        "zh": "决策",
+        "en": "Decide"
+      },
+      "descZh": "在多个可行方案中权衡取舍，并安排先后步骤。",
+      "descEn": "Weigh several workable options and order the steps between them."
+    },
+    "RG.MODELING.EQUATION.RELATION": {
+      "category": "MODELING",
+      "zh": "关系建模",
+      "en": "Relation Modeling",
+      "short": {
+        "zh": "建模",
+        "en": "Model"
+      },
+      "descZh": "把一个具体情境写成可计算的关系式。",
+      "descEn": "Turn a concrete situation into a relation that can be computed."
+    }
+  }
+}

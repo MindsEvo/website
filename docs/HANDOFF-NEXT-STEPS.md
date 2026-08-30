@@ -1,9 +1,13 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.2 (2026-08-30)
+- 版本：v1.3 (2026-08-30)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
 
+> v1.3 变更：**P2 完成**（`radar-reader.js` + `profile/` 雷达页上线，
+> 首页三处「思维图谱」占位改成真链接），陷阱 §3.6 的 history 无上限已修
+> （`HISTORY_MAX = 600` + `_pruneHistory()`），新增名称登记表
+> `metadata/rootgene.json`（P3 校验器应当拿它对撞）。见 §1.6。
 > v1.2 变更：**P1 完成**（三种 runtime 都上了深度轴），P2 的采集端完成、只剩 reader；
 > `shell.js` → v1.6.0。见 §1.5。
 > v1.1 变更：阶段 0 已落地（见 §1.4），P6 的第一刀已切，`shell.js` → v1.5.0。
@@ -14,15 +18,17 @@
 
 **架构骨架已经完成并且一致**：基因只表能力、深度轴用 `gradeCode`、匿名 `profileId` 已盖章，
 18 个已注册游戏 + 73 个模板 + 模块 metadata 三处口径统一。
+**读端也闭环了**：`profile/` 已经能把本机全部 history 画成 rootGene × grade 的雷达图（§1.6）。
 
-**剩下的都是「模块内的活」和「读端的活」**，不再需要改架构——这正是当初预期的低成本阶段。
+**剩下的都是「模块内的活」和「服务器端的活」**，不再需要改架构——这正是当初预期的低成本阶段。
 
 ---
 
 ## 1. 已落地的改动
 
 §1.1–1.3 是雷达架构那一轮（共 20 个文件，commit `751f85d`）；
-§1.4 是紧接着的阶段 0（响应式布局收口）；§1.5 是阶段 1 的 1.1–1.2。
+§1.4 是紧接着的阶段 0（响应式布局收口）；§1.5 是阶段 1 的 1.1–1.2；
+§1.6 是阶段 1 的 1.3–1.4（读端 + 雷达页，P2 到此关掉）。
 
 ### 1.1 `shell.js` → v1.4.0（架构核心）
 
@@ -122,6 +128,48 @@ learning 比较单元在 **PC / iOS / 安卓平板 / 手机上显示都正常**�
 
 ---
 
+### 1.6 阶段 1 的 1.3–1.4（2026-08-30，读端 + 雷达页）
+
+**做完的事**：用户说过「非常重要」的那张 profile 进步雷达图上线了，
+**跨全部四个系列**读本机 history，横轴 rootGene、纵轴 gradeCode，并给出下一步建议。
+纯静态、无库、不联网、不上传。
+
+| 新增 / 改动 | 文件 | 说明 |
+|------|------|------|
+| **读端** | `radar-reader.js`（新，root） | 扫全部 `me:{gameId}:history:{ts}`（**跨游戏**），按 `geneIds × gradeCode` 聚合。无 shell 依赖、无 fetch、无 DOM：接受一个 Storage-like 对象（默认 `localStorage`）或直接接受一个记录数组（`opts.records`），所以 `file://` 能跑、测试能直接喂数据 |
+| **名称登记表** | `metadata/rootgene.json`（新） | 14 个在用基因的 `{category, zh, en, short:{zh,en}, desc*}`，5 个分类带颜色。**表外的 id 不是错误**——reader 会从 id 推导标签（`RG.LOGIC.COMPARISON.BASIC` → `Logic · Comparison · Basic`），所以新基因上报当天就能上图，不必等谁补元数据 |
+| **雷达页** | `profile/index.html` + `profile/profile.js` + `profile/style.css`（新） | 纯 SVG（≈40 行三角函数），实心多边形 = `coverage`（练到的最深等级），虚线多边形 = `mastery`（≥70% 且 ≥2 次）。基因 < 3 个时画 8 格条带（两点多边形是一条线）。**等级表始终画**，因为雷达把纵轴压成了一个数 |
+| **history 保留策略** | `shell.js` `report()` | `HISTORY_MAX = 600` + `_pruneHistory(gameId)`，**按游戏**各留一个窗口，删最老的。修掉陷阱 §3.6 |
+| 首页三处占位改真链接 | `index.html` | `#main-nav`、`#mobile-menu`、footer 快速链接的「思维图谱（即将推出）」→ `profile/index.html` |
+
+**三条口径（reader 里写死并在页脚公开说明）**：
+
+1. **不许跨 runtime 相加 `total`**。puzzle/interaction 的 `total` 是题数/项数，
+   mini 的是**回合数**。可比的是每条记录的 `score / total` **比值**（无量纲），
+   所以所有正确率都是**「每条记录一票的比值平均」**；原始 `score/total`
+   仍然保留但**分 runtime 各存一份**（`byRuntime[rt].rawAccuracy`），
+   页脚打印时每个数字都带自己的单位，并明说不可相加。
+2. **基因 ↔ 模块是 M:N**，一条记录写了两个基因就在**两边各计一次**，
+   所以各基因 session 数之和 **不等于** 记录条数。这不是重复计数。
+3. **不发明数据**。没有 `gradeCode` 的记录进 `noGrade`，绝不猜到某个等级上；
+   丢掉的每一条都进 `skipped`（`unreadable / notARecord / noTotal / noGene /
+   otherProfile`），页面因此能说「读了 9/10 条」而不是悄悄少报。
+
+**下一步建议（`frontierCode`）的定义**，改过一次，别改回去：
+取**已经练过但还不稳的最浅等级**；如果练过的每一级都稳了，才往外挪一格到
+`reachedIndex + 1`；G6 已稳则为 `null`（该基因读作已通关）。
+**绝不推荐比已练过的更浅的等级**——初版用「reached↔mastered 之间的第一格」，
+结果一个 G2 拿 100% 的孩子被推回从没碰过的 K1。
+
+**已实测**（headless Chrome + 临时 seed 页，测完已删）：
+6 个基因 / 9 of 10 条记录 / 73% 均值 / 最深 G3 / −12% 趋势（4 次 → 5 次，79% → 68%）；
+6×8 等级表色阶与 tooltip 正确；未登记基因 `RG.LANGUAGE.WORD.ASSOCIATION` 按 id 显示；
+`gradeCode:null` 与 `total:0` 两条分别走 noGrade 与 skipped；
+中英双语（`shell:langchange` 重渲染）与空态（🧭 + 四个系列入口）都正确；
+360 / 480 宽都不塌；`test.html` 仍是 **OK 73 · WARN 0 · FAIL 0**。
+
+---
+
 ## 2. 待办（按性价比排序）
 
 ### ~~P1. Interaction / Mini-game 结算没有走 `shell.report()`~~ ✅ 已完成（§1.5）
@@ -130,21 +178,13 @@ learning 比较单元在 **PC / iOS / 安卓平板 / 手机上显示都正常**�
 activityRuntime`。`me:cmp:*`（engine 事件）保持不变，两套存储各管一件事：
 history 管深度轴，engine 事件管 process 细节。
 
-### P2. 本地雷达图只缺「读端」——采集端已就绪
+### ~~P2. 本地雷达图只缺「读端」~~ ✅ 已完成（§1.6）
 
-`_calcHist()` 现在按 runtime 分桶（§1.5），但仍**对基因和级别是盲的**。
+`radar-reader.js` + `profile/` 已上线，三种 runtime 的记录都进图。
+读端的三条口径与 `frontierCode` 的定义见 §1.6——**改动读端前先读那一节**，
+尤其是「不许跨 runtime 相加 `total`」和「绝不推荐比已练过的更浅的等级」。
 
-数据已经全在 `me:{gameId}:history:*` 里（`geneIds` + `gradeCode` + `profileId` +
-`activityRuntime`，且**三种 runtime 齐全**），所以本地雷达图**不需要新的采集，
-只需要一个 reader**：按 `geneIds × gradeCode` 分组聚合，就是用户要的 profile 进步雷达图。
-这是用户明确说过「非常重要」的一项。
-
-下一步就是原计划的 1.3 / 1.4：
-
-1. `radar-reader.js`：扫全部 `me:*:history:*`（跨游戏，不只 comparison），
-   按 `geneIds × gradeCode` 聚合；**按 runtime 分别算准确率再合并**，
-   不要把 mini 的回合数和 puzzle 的题数相加（§1.5 的红线）；
-2. profile 页里用纯 SVG 画雷达图，不引库。
+服务器端的聚合（P5）应当复用同一套口径：比值平均、分 runtime 存原始和。
 
 ### P3. metadata 词表校验器
 
@@ -155,6 +195,11 @@ history 管深度轴，engine 事件管 process 细节。
 
 建议加一个纯静态校验页（跟 `test.html` 同风格），把两边对撞一次。
 本轮的 number-sense 词表 bug 就是人工比对才发现的。
+
+**顺手多对撞一张表**：`metadata/rootgene.json`（§1.6）现在是基因名称的登记表。
+校验器应当检查代码里 `registerRootGenes()` 报的 id 是否都在表里——
+但请把它报成 **INFO 而不是 FAIL**：表外的 id 是合法的（reader 会从 id 推导标签），
+缺的只是一个好名字。反过来「表里有、代码里从没报过」的 id 才值得警告，那是死条目。
 
 ### P4. Clio 7 个 workshop 未注册
 
@@ -190,11 +235,15 @@ history 管深度轴，engine 事件管 process 细节。
 4. **本 VM 没有 JS runtime**：`node / nodejs / deno / bun` 都不存在，也没有 `~/.nvm`。
    `test.html`（73 模板 × 20 次）只能在浏览器里跑。基线：**OK 73 · WARN 0 · FAIL 0**。
 5. **内容缺口**：`comparison.json` 的 L4 `coverageGap` 记着 G2 没有自由拖拽排序（sort runtime）内容。
-6. **history 记录没有上限**：`storage.set()` 就是一次 `localStorage.setItem`，
-   既不裁剪也不计数。现在三种 runtime 都往里写，条数增速比以前快得多——
-   `radar-reader.js` 那一轮顺手定个保留策略（按 profileId + 时间窗聚合后归档）。
+6. ~~**history 记录没有上限**~~ ✅ 已修（§1.6）：`shell.js` 现在有
+   `HISTORY_MAX = 600` + `_pruneHistory(gameId)`，**按 gameId 各留一个窗口**
+   （四个系列互不挤占），超了删最老的并 `console.info` 说明删了几条。
+   删之前**故意不做聚合归档**：一半真记录一半摘要的历史会让之后每一个读端
+   都对自己的样本量说谎（`radar-reader.js` 的 `sessions` 就会开始骗人）。
+   600 局 ≈ 250KB，远在 ~5MB 配额内。
 7. **两行统计口径不同**：见 §1.5 的红线。任何新读端都要先看 `activityRuntime`
-   再决定 `total` 怎么解释。
+   再决定 `total` 怎么解释。`radar-reader.js` 的做法（比值平均 + 分 runtime
+   存原始和）是参考实现，别在别处另发明一套。
 
 ---
 
@@ -256,7 +305,8 @@ history 管深度轴，engine 事件管 process 细节。
 4. 棋类单独实现，暂不接入雷达
 
 用户已明确推迟到「Learning 两个 + MindSeeds 两个都落地之后」再做的：
-result 词表改造、服务器 schema、profile UI、推荐机制。
+result 词表改造、服务器 schema、推荐机制。
+（profile UI 本身已提前落地，见 §1.6；推迟的是**服务器端**的推荐与聚合。）
 
 ---
 

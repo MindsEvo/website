@@ -1,0 +1,186 @@
+/* ─────────────────────────────────────────────────────────────
+   Thinking Map (profile) — page-local styles.
+
+   Everything that is shared chrome (card, header, buttons, volume capsule,
+   theme tokens, the .s1-hstats auto-fit stat row) comes from shell-1.css and
+   is NOT redefined here. This file only adds what a chart page needs.
+
+   Per UNIFIED-GUI-FRAMEWORK.md §8: no media query below decides a column
+   count or hides anything. The grade table has exactly 8 grade columns
+   because there are exactly 8 grades — that is semantics, not layout — so
+   when it does not fit it SCROLLS (.pf-scroll) instead of dropping columns.
+   ───────────────────────────────────────────────────────────── */
+
+/* Wider than a game card: a radar plus an 8-column table needs the room. */
+.pf-wrap { max-width: 960px; }
+
+.pf-sub {
+  font-size: 14px;
+  color: var(--s1-muted);
+  margin: -6px 0 18px;
+  line-height: 1.6;
+}
+
+.pf-card {
+  border: 1px solid var(--s1-border);
+  border-radius: 16px;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  background: var(--s1-card);
+}
+
+.pf-h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--s1-text);
+  margin: 0 0 6px;
+}
+
+.pf-note {
+  font-size: 13px;
+  color: var(--s1-muted);
+  line-height: 1.65;
+  margin: 10px 0 0;
+}
+
+.pf-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 4px auto 0;
+}
+
+/* ── legend ── */
+.pf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 13px;
+  color: var(--s1-muted);
+  margin-top: 12px;
+}
+.pf-lg { display: flex; align-items: center; gap: 6px; }
+.pf-sw {
+  width: 16px; height: 12px; border-radius: 3px;
+  border: 1px solid var(--s1-border); flex: none;
+}
+.pf-sw-reach  { background: rgba(102, 126, 234, 0.26); border-color: var(--s1-primary); }
+.pf-sw-master { background: transparent; border: 2px dashed var(--s1-primary2); }
+
+/* ── bar fallback (fewer than 3 genes → a radar would be a line) ── */
+.pf-bars { display: grid; gap: 12px; }
+.pf-barrow { display: grid; gap: 5px; }
+.pf-barlbl {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 10px; font-size: 14px; font-weight: 700; color: var(--s1-text);
+}
+.pf-barlbl small { font-size: 12px; font-weight: 600; color: var(--s1-muted); }
+.pf-barcells {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+}
+.pf-bcell {
+  height: 26px;
+  border-radius: 5px;
+  background: var(--s1-bg);
+  border: 1px solid var(--s1-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--s1-muted);
+}
+.pf-bcell.pf-reached {
+  background: rgba(102, 126, 234, 0.16);
+  border-color: rgba(102, 126, 234, 0.45);
+  color: var(--s1-primary2);
+}
+.pf-bcell.pf-mastered {
+  background: var(--s1-primary);
+  border-color: var(--s1-primary2);
+  color: #fff;
+}
+
+/* ── grade table ── */
+.pf-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pf-grid {
+  display: grid;
+  grid-template-columns: minmax(104px, 1.6fr) repeat(8, minmax(38px, 1fr));
+  gap: 3px;
+  min-width: 480px;          /* below this the row scrolls, never collapses */
+}
+.pf-gh {
+  font-size: 11px; font-weight: 800; color: var(--s1-muted);
+  text-align: center; padding: 2px 0 4px;
+  letter-spacing: .02em;
+}
+.pf-gh.pf-ghname { text-align: left; }
+.pf-gname {
+  font-size: 13px; font-weight: 700; color: var(--s1-text);
+  display: flex; align-items: center; min-height: 34px;
+  padding-right: 6px; line-height: 1.25;
+}
+.pf-cell {
+  min-height: 34px; border-radius: 5px;
+  border: 1px solid var(--s1-border); background: var(--s1-bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; line-height: 1.1;
+  color: var(--s1-muted);
+}
+.pf-cell b { font-size: 12px; }
+/* Literal rgba() tints, not color-mix(): this page has to render on the same
+   old Android WebViews that rule out @container (framework §8.3), and nothing
+   else in the repo uses color-mix. The alphas below are the same ratios over
+   the white card background. */
+.pf-cell.pf-a4 { background: rgba(16, 185, 129, 0.24);
+                 border-color: rgba(16, 185, 129, 0.55); color: #166534; }
+.pf-cell.pf-a3 { background: rgba(16, 185, 129, 0.12);
+                 border-color: rgba(16, 185, 129, 0.34); color: #15803d; }
+.pf-cell.pf-a2 { background: rgba(245, 158, 11, 0.20);
+                 border-color: rgba(245, 158, 11, 0.55); color: #92400e; }
+.pf-cell.pf-a1 { background: rgba(239, 68, 68, 0.14);
+                 border-color: rgba(239, 68, 68, 0.40); color: #b91c1c; }
+
+/* ── next-step list ── */
+.pf-next { display: grid; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+.pf-nrow {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  font-size: 14px; color: var(--s1-text);
+  padding: 8px 10px; border-radius: 10px; background: var(--s1-bg);
+}
+.pf-nrow b { color: var(--s1-primary2); }
+.pf-tag {
+  font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 999px;
+  background: var(--s1-primary); color: #fff; flex: none;
+}
+.pf-tag.pf-tag-firm { background: var(--s1-yellow); color: #6b4200; }
+.pf-tag.pf-tag-done { background: var(--s1-green); }
+
+/* ── trend ── */
+.pf-delta-up   { color: #15803d; }
+.pf-delta-down { color: #b91c1c; }
+
+/* ── empty state ── */
+.pf-empty { text-align: center; padding: 12px 4px 4px; }
+.pf-empty-ico { font-size: 44px; line-height: 1; margin-bottom: 10px; }
+.pf-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 10px; margin-top: 16px;
+}
+.pf-links a {
+  display: block; padding: 12px 10px; border-radius: 12px;
+  border: 1px solid var(--s1-border); background: var(--s1-bg);
+  text-decoration: none; color: var(--s1-primary2); font-weight: 700;
+  font-size: 14px;
+}
+.pf-links a:hover { border-color: var(--s1-primary); }
+
+/* ── data footer ── */
+.pf-meta {
+  font-size: 12px; color: var(--s1-muted); line-height: 1.7;
+  border-top: 1px solid var(--s1-border); padding-top: 12px; margin-top: 4px;
+}
+.pf-meta code {
+  font-size: 11px; background: var(--s1-bg); padding: 1px 5px;
+  border-radius: 4px; border: 1px solid var(--s1-border);
+}
