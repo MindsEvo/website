@@ -287,8 +287,13 @@ body {
 .s1-table tr:last-child td { border-bottom: none; }
 
 /* History stats */
+/* Container-driven column count (see UNIFIED-GUI-FRAMEWORK.md §8 rule 1): the
+   row holds 5 cells for question-shaped play and 4 more for the continuous
+   activities, and a fixed track count would strand an empty cell or overflow.
+   auto-fit asks the panel how wide it really is, so this is dpr-immune. */
 .s1-hstats {
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(96px, 100%), 1fr));
   gap: 8px; padding: 18px 16px 14px;
   border-bottom: 1px solid var(--s1-border);
 }
@@ -455,7 +460,6 @@ body {
   .s1-cname  { font-size: 17px; }
   .s1-cicon  { font-size: 32px; min-width: 40px; }
   .s1-card   { padding: 14px 16px; gap: 12px; }
-  .s1-hstats { grid-template-columns: repeat(3, 1fr); }
   .s1-rscore { font-size: 40px; }
   .s1-overlay { padding: 12px; }
   .s1-overlay-title { font-size: 16px; }

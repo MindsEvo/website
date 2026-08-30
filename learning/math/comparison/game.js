@@ -712,6 +712,61 @@
     }
   }
 
+  /**
+   * Put an Interaction / Mini-game activity on the thinking radar's depth axis.
+   *
+   * Until now only the puzzle path reached `shell.report()` (createGame calls it
+   * for us), so the two continuous runtimes existed in the engine's own event
+   * stream but were invisible to `me:{gameId}:history:*` — i.e. invisible to the
+   * radar, which reads gene × gradeCode from exactly that key prefix.
+   *
+   * Two units of `total` meet here and must not be confused:
+   *   - puzzle / interaction: `total` counts questions or solved activities;
+   *   - mini-game:            `total` counts ROUNDS.
+   * That is why `activityRuntime` is stamped on the record — the history panel
+   * and the radar both need it to know which arithmetic applies. It must also be
+   * non-zero: shell's history reader skips records without a `total`, so a
+   * mini-game run with an unset round count would be dropped in silence.
+   */
+  function _reportInteraction(tpl, levelId, attempt, correct) {
+    if (!shell || typeof shell.report !== 'function') return;
+    var isMini = (attempt.mode || tpl.runtime || tpl.mode) === 'mini';
+    var p = attempt.process || {};
+    // A run that produced no rounds carries no evidence about the child; report
+    // one unit of work rather than a zero that the reader would discard.
+    var rounds = isMini ? (p.rounds || 0) : 0;
+    var radar = buildRadarContext(tpl.level || levelId, tpl.type);
+
+    shell.report({
+      gameId:    SOURCE_GAME_ID,
+      // Same cycle session as the puzzle batch, so keep the unit id and tell the
+      // two apart by activityRuntime / templateId instead of by a parallel id.
+      unitId:    levelId + '-session',
+      templateId: tpl.id,
+      variantId:  attempt.variantId || null,
+      score:     isMini ? (p.correctRounds || 0) : (correct ? 1 : 0),
+      total:     isMini ? (rounds || 1) : 1,
+      timeMs:    attempt.responseMs || 0,
+      // No interaction runtime has a hint affordance today (the templates carry
+      // hint text, nothing counts its use), so 0 is a fact, not a placeholder.
+      hintsUsed: 0,
+      geneIds:   registerRootGenes({ unit: tpl }),
+      shell:     'shell-1',
+      activityRuntime: isMini ? 'mini' : 'interaction',
+      activityMode:    attempt.mode || tpl.runtime || tpl.mode || null,
+      result:    attempt.result || null,
+      // The same four coordinates the puzzle path lifts out of its context are
+      // flattened here too, so one reader shape works for all three runtimes.
+      levelId:        radar.levelId,
+      gradeCode:      radar.gradeCode,
+      comparisonType: radar.comparisonType,
+      difficultyAxis: radar.difficultyAxis,
+      moduleId:       radar.moduleId,
+      moduleType:     radar.moduleType,
+      context:   radar
+    });
+  }
+
   // Run a single long-form template (sort / match / group / fit / mini) via ActivityRunner
   function _launchInteraction(tpl, levelId, templates) {
     var variant = generateQuestion(tpl);
@@ -751,6 +806,8 @@
             // here or these attempts land on the radar with no depth at all.
             radar:   buildRadarContext(tpl.level || levelId, tpl.type)
           });
+
+        _reportInteraction(tpl, levelId, attempt, correct);
 
         // Continue: if session still has puzzle templates (resume), run them now
         var remaining = CmpEngine.getSessionRemaining(levelId);

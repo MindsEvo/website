@@ -1,5 +1,5 @@
 /**
- * MindsEvo Shell  v1.1.0
+ * MindsEvo Shell  v1.6.0
  * ─────────────────────────────────────────────────────────
  * Shared foundation for ALL games and learning modules.
  *
@@ -277,16 +277,43 @@
    *   levelId:   string     module-internal level id, e.g. 'L2' / 'K1' / 'route-l1'
    *   gradeCode: string     canonical depth axis, one of shell.grade.CODES, or null
    *   unitId:    string     which unit inside the module
+   *   activityRuntime: 'puzzle' | 'interaction' | 'mini'
+   *                         how to read `score` / `total`. Puzzle counts
+   *                         questions, mini counts rounds. May also be declared
+   *                         inside getReportContext(); report() lifts it out.
    *   success:   boolean
    *   solutions: number     how many solutions the player found
    *   attempts:  number
    *   timeMs:    number
    * }
    *
-   * report() stamps two things the caller must not have to remember:
+   * report() stamps three things the caller must not have to remember:
    *   profileId  — who this belongs to (see user.profileId)
    *   gradeCode  — normalized, so the radar never has to parse level strings
+   *   geneIds    — de-duplicated, so the radar cannot double-count one ability
    */
+  /**
+   * Trim, drop non-strings, and de-duplicate a gene id list.
+   *
+   * Shared by resolveRootGenes() and report(): a module that both hardcodes its
+   * own gene and copies the unit's `rootGeneIds` ends up listing the same
+   * ability twice, and a radar that counts occurrences would show twice the
+   * coverage. createGame() callers were already normalized here; direct
+   * report() callers (Interaction / Mini-game) need the same guarantee.
+   */
+  function normalizeGeneIds(list) {
+    if (!Array.isArray(list)) return [];
+    var out = [], seen = Object.create(null);
+    list.forEach(function (id) {
+      if (typeof id !== 'string') return;
+      var key = id.trim();
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      out.push(key);
+    });
+    return out;
+  }
+
   function report(payload) {
     payload = payload || {};
 
@@ -310,15 +337,33 @@
     }
 
     var record = Object.assign({}, payload, {
+      geneIds:   normalizeGeneIds(payload.geneIds),
       gradeCode: gradeCode,
+      // Which of the three Activity Runtimes produced this record. Both the
+      // history panel and the radar reader have to tell a 10-question puzzle
+      // batch from a 30-round mini-game run — their `total` fields are not the
+      // same unit. Puzzle sessions declare it inside getReportContext(), so
+      // accept it from either place and keep it at the top level: a reader must
+      // not have to dig into `context` to know how to interpret the numbers.
+      // null = not declared, which readers treat as question-shaped.
+      activityRuntime: payload.activityRuntime ||
+        (payload.context && payload.context.activityRuntime) || null,
       profileId: user.profileId(),
       ts:   Date.now(),
       lang: shell.lang,
       ver:  shell.version
     });
 
-    // 1. Persist locally
-    var key = payload.gameId + ':history:' + record.ts;
+    // 1. Persist locally.
+    // The timestamp alone is not a unique key: two activities finishing inside
+    // the same millisecond (a mini-game run whose end also completes the cycle
+    // session, for instance) would share it and the second write would erase
+    // the first without a word. Readers only match the `me:{gameId}:history:`
+    // prefix, so a disambiguating suffix costs them nothing, and `record.ts`
+    // stays the plain timestamp.
+    var base = payload.gameId + ':history:' + record.ts;
+    var key = base, n = 0;
+    while (storage.get(key) !== null && n < 50) { key = base + '-' + (++n); }
     storage.set(key, record);
 
     // 2. Queue for background server sync
@@ -1103,17 +1148,7 @@
     }
 
     if (!Array.isArray(genes)) return [];
-
-    var out = [];
-    var seen = Object.create(null);
-    genes.forEach(function (id) {
-      if (typeof id !== 'string') return;
-      var key = id.trim();
-      if (!key || seen[key]) return;
-      seen[key] = true;
-      out.push(key);
-    });
-    return out;
+    return normalizeGeneIds(genes);
   }
 
   // ── Runtime Compatibility Layer (shared) ──
@@ -2010,10 +2045,32 @@
       var zh   = shell.lang === 'zh';
       var data = _calcHist();
 
-      if (data.sessions === 0) {
+      // "No history" must mean no records at all. A child who only played the
+      // continuous activities has a history; it just is not question-shaped.
+      if (data.sessions === 0 && data.inter.sessions === 0 && data.mini.sessions === 0) {
         body.innerHTML = '<div class="s1-empty">' +
           _bispan('还没有历史记录', 'No history yet') + '</div>';
         return;
+      }
+
+      // Second row only appears once the child has actually played a continuous
+      // activity, so games with puzzles only look exactly as they did before.
+      var extra = '';
+      if (data.inter.sessions || data.mini.sessions) {
+        var acc = data.mini.rounds
+          ? Math.round(data.mini.correct * 100 / data.mini.rounds) + '%'
+          : '—';
+        extra = '<div class="s1-hstats">' +
+          _stat(data.inter.sessions, zh ? '互动活动' : 'Activities') +
+          _stat(data.mini.sessions,  zh ? '小游戏局' : 'Mini runs') +
+          _stat(data.mini.rounds,    zh ? '小游戏回合' : 'Mini rounds') +
+          _stat(acc,                 zh ? '小游戏准确率' : 'Mini accuracy') +
+          // Row 1's 总用时 counts question-shaped play only, exactly as it always
+          // has; without this cell the time spent on the continuous activities
+          // would be invisible to a parent reading the panel.
+          _stat(_fmtTime(data.inter.totalMs + data.mini.totalMs),
+                                     zh ? '连续用时' : 'Activity Time') +
+        '</div>';
       }
 
       body.innerHTML =
@@ -2024,6 +2081,7 @@
           _stat(data.hints,             zh ? '用提示'   : 'Hints') +
           _stat(_fmtTime(data.totalMs), zh ? '总用时'   : 'Total Time') +
         '</div>' +
+        extra +
         '<div class="s1-hclear"><button class="s1-clearbtn" id="s1-clearbtn">' +
           (zh ? '🗑 清除历史记录' : '🗑 Clear History') +
         '</button></div>';
@@ -2046,13 +2104,33 @@
 
     function _calcHist() {
       var prefix = 'me:' + GAME_ID + ':history:';
+      // Question-shaped sessions only. Kept byte-for-byte compatible with the
+      // pre-runtime behaviour (`if (r && r.total)`) so the five numbers on the
+      // panel keep meaning exactly what they meant before Interaction and
+      // Mini-game records started landing under the same key prefix.
       var sessions = 0, correct = 0, wrong = 0, hints = 0, totalMs = 0;
+      // Continuous activities, counted separately: a mini-game's `total` is
+      // rounds, not questions, so adding it to `correct`/`wrong` above would
+      // silently redefine the accuracy the parent is reading.
+      var inter = { sessions: 0, correct: 0, totalMs: 0 };
+      var mini  = { sessions: 0, rounds: 0, correct: 0, totalMs: 0 };
       for (var i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
         if (key && key.indexOf(prefix) === 0) {
           try {
             var r = JSON.parse(localStorage.getItem(key));
-            if (r && r.total) {
+            if (!r) continue;
+            var rt = _histRuntime(r);
+            if (rt === 'mini') {
+              mini.sessions++;
+              mini.rounds  += (r.total     || 0);
+              mini.correct += (r.score     || 0);
+              mini.totalMs += (r.timeMs    || 0);
+            } else if (rt === 'interaction') {
+              inter.sessions++;
+              inter.correct += (r.score  || 0);
+              inter.totalMs += (r.timeMs || 0);
+            } else if (r.total) {
               sessions++;
               correct  += (r.score     || 0);
               wrong    += (r.total - (r.score || 0));
@@ -2062,7 +2140,22 @@
           } catch (e) {}
         }
       }
-      return { sessions: sessions, correct: correct, wrong: wrong, hints: hints, totalMs: totalMs };
+      return { sessions: sessions, correct: correct, wrong: wrong, hints: hints,
+               totalMs: totalMs, inter: inter, mini: mini };
+    }
+
+    /**
+     * Which Activity Runtime a stored record came from.
+     *
+     * Records written before report() lifted the field carry it inside
+     * `context` instead, and records from games that never declare one are
+     * question-shaped by definition — so 'puzzle' is the safe default and no
+     * existing game's panel changes.
+     */
+    function _histRuntime(r) {
+      return r.activityRuntime ||
+             (r.context && r.context.activityRuntime) ||
+             'puzzle';
     }
 
     // ── Helpers ─────────────────────────────────────────────────
@@ -2117,7 +2210,7 @@
 
   // ── Public shell object ──────────────────────────────────────
   var shell = {
-    version:         '1.5.0',
+    version:         '1.6.0',
     lang:            storage.get('user:settings:lang', 'en') || 'en',
     t:               t,
     speak:           speak,

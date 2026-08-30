@@ -114,6 +114,19 @@ shell.createGame({
 1. enabled: 是否显示历史入口。
 2. mode: panel 或 page（草案保留）。
 
+面板分两行，**第二行只在真的玩过连续活动时才出现**，所以只有 Puzzle 的游戏看起来
+和以前完全一样：
+
+| 行 | 统计谁 | 单元格 |
+|----|--------|--------|
+| 第一行 | 只算 question-shaped（`activityRuntime` 为 `puzzle` 或未声明） | 完成局数 / 总答对 / 总答错 / 用提示 / 总用时 |
+| 第二行 | Interaction + Mini-game | 互动活动 / 小游戏局 / 小游戏回合 / 小游戏准确率 / 连续用时 |
+
+⚠️ **两行不能相加**。Puzzle 的 `total` 是题数，Mini-game 的 `total` 是**回合数**，
+把它们并进同一个「总答对 / 总答错」会悄悄改掉家长正在读的那个正确率——
+这就是记录里要有 `activityRuntime` 的原因（见 `shell.report()`）。
+第一行的「总用时」同样只含 question-shaped，连续活动的时间在第二行单独给。
+
 ### 4.5 gui.theme
 
 1. name: 主题名（可选）。
@@ -250,6 +263,7 @@ bp<=  1200 1180 1100 1024
 | 游戏 | 状态 |
 |------|------|
 | `word-connections-workshop` | ✅ 已改为容器驱动，`.link-canvas` 不再隐藏 |
+| `.s1-hstats`（历史面板统计行，shell 自己的样式） | ✅ 已改为 `repeat(auto-fit, minmax(min(96px,100%),1fr))`，删掉了 820px 断点里的 `repeat(3,1fr)` |
 | 其余约 24 个自定义断点 | ⚪ 未迁移，逐个游戏改动时顺带收敛 |
 
 新游戏**必须**用 `s1-duo` / `s1-multi`，不得新增设备宽度断点来决定栏数。

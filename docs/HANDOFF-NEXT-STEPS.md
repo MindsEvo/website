@@ -1,9 +1,11 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.1 (2026-08-29)
+- 版本：v1.2 (2026-08-30)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
 
+> v1.2 变更：**P1 完成**（三种 runtime 都上了深度轴），P2 的采集端完成、只剩 reader；
+> `shell.js` → v1.6.0。见 §1.5。
 > v1.1 变更：阶段 0 已落地（见 §1.4），P6 的第一刀已切，`shell.js` → v1.5.0。
 
 ---
@@ -20,7 +22,7 @@
 ## 1. 已落地的改动
 
 §1.1–1.3 是雷达架构那一轮（共 20 个文件，commit `751f85d`）；
-§1.4 是紧接着的阶段 0（响应式布局收口）。
+§1.4 是紧接着的阶段 0（响应式布局收口）；§1.5 是阶段 1 的 1.1–1.2。
 
 ### 1.1 `shell.js` → v1.4.0（架构核心）
 
@@ -84,39 +86,65 @@ learning 比较单元在 **PC / iOS / 安卓平板 / 手机上显示都正常**�
 
 ---
 
+### 1.5 阶段 1 的 1.1–1.2（2026-08-30，`shell.js` → v1.6.0）
+
+**做完的事**：Interaction 与 Mini-game 的 session 现在**也在雷达的深度轴上**，
+同时历史面板的原有五个数字**含义一个字都没变**。P1 关掉，P2 只剩 reader。
+
+| 改动 | 文件 | 说明 |
+|------|------|------|
+| `activityRuntime` 升为记录顶层字段 | `shell.js` `report()` | `payload.activityRuntime` 或 `payload.context.activityRuntime`，都没有则 `null`。**读端不必再翻 `context`** 就知道该怎么解释 `score/total` |
+| `geneIds` 统一去重 | `shell.js` | 抽出 `normalizeGeneIds()`，`resolveRootGenes()` 与 `report()` 共用。comparison 的 `registerRootGenes()` 会把同一个基因列两次，直连 `report()` 后那就是真的雷达双计 |
+| **修真 bug：同毫秒记录互相覆盖** | `shell.js` `report()` | 原 key 是 `{gameId}:history:{ts}`。一局 Mini-game 结束同时结算 cycle session 时两条记录同毫秒，**后写的静默擦掉前一条**。现在冲突时加 `-1`/`-2`… 后缀（上限 50），`record.ts` 仍是纯时间戳，读端只匹配前缀所以零影响 |
+| `_calcHist()` 按 runtime 分桶 | `shell.js` | 返回 `{sessions,correct,wrong,hints,totalMs, inter:{…}, mini:{…}}`；puzzle 桶里**原封不动**保留 `if (r.total)` 老守卫 |
+| `_histRuntime(r)` 的默认值是 `'puzzle'` | `shell.js` | 老记录和从不声明 runtime 的游戏按定义就是 question-shaped，**所以别的游戏面板一点不变** |
+| 面板加第二行（条件出现） | `shell.js` `_renderHist()` | 只有 `inter.sessions || mini.sessions` 才渲染；「还没有历史记录」现在要求三个桶全空 |
+| `.s1-hstats` 改容器驱动 | `shell-1.css` | 一行 5 格、两行共 10 格，固定 `repeat(5,1fr)` 会空格或溢出；删掉 820px 断点里的 `repeat(3,1fr)` |
+| `_reportInteraction()` | `learning/math/comparison/game.js` | 在 `_launchInteraction` 的 `onComplete` 里紧跟 `recordAttempt()` 调用，payload 用 `buildRadarContext()` |
+
+**已实测**（headless Chrome + 真页面）：
+
+- 四条混合 runtime 记录全部落盘（同毫秒不再覆盖）；
+- 第一行 = 2 局 / 12 对 / 3 错 / 2 提示 / 1分30秒——**只含两条 question-shaped 记录**；
+- 第二行 = 互动 1 / 小游戏 1 局 / 24 回合 / 75% / 57 秒；
+- 真实驱动一次 sort：`interaction mode=sort grade=K1 score=1/1 genes=["RG.LOGIC.COMPARISON.BASIC"] profile=yes`；
+- 真实驱动一次 mini：`mini score=19/24`（**24 = 回合数**，19 = `correctRounds`），无 gradeCode 警告；
+- `.s1-hstats` 在 1100px 出 5 栏、420px 出 4 栏后换行；
+- `index.html?debug=1` 无 console 报错；`test.html` 仍是 **OK 73 · WARN 0 · FAIL 0**。
+
+⚠️ **Mini-game 的 `total` 是回合数，不是题数。** 两行统计**不许相加**：
+把回合并进「总答对 / 总答错」会悄悄改掉家长正在读的正确率。
+新 runtime 接入时必须自己填非零 `total`——`_calcHist()` 的 puzzle 桶仍会跳过没有
+`total` 的记录（`_reportInteraction()` 里用 `rounds || 1` 兜底）。
+
+⚠️ 目前 Interaction 的 `hintsUsed` 恒为 0：模板带提示文案，但**没有任何代码统计使用次数**。
+这是事实而不是占位，等真加了提示按钮再改。
+
+---
+
 ## 2. 待办（按性价比排序）
 
-### P1. Interaction / Mini-game 结算没有走 `shell.report()`
+### ~~P1. Interaction / Mini-game 结算没有走 `shell.report()`~~ ✅ 已完成（§1.5）
 
-**现状分裂**：
+三种 runtime 现在都写 `me:{gameId}:history:*`，都带 `gradeCode / geneIds / profileId /
+activityRuntime`。`me:cmp:*`（engine 事件）保持不变，两套存储各管一件事：
+history 管深度轴，engine 事件管 process 细节。
 
-| 存储 | 内容 | 覆盖范围 |
-|------|------|----------|
-| `me:{gameId}:history:{ts}` | 深度轴（gradeCode / geneIds / profileId） | **只有 Puzzle** |
-| `me:cmp:*`（engine 事件） | mode / process / 每次 attempt | 三种 runtime 都有 |
+### P2. 本地雷达图只缺「读端」——采集端已就绪
 
-所以 Interaction 和 Mini-game 的 session **不在雷达的深度轴上**。
+`_calcHist()` 现在按 runtime 分桶（§1.5），但仍**对基因和级别是盲的**。
 
-**为什么本轮没做**：`_renderHist()` 是用户正在真机测试的可见面板，
-往里灌三种 runtime 的记录会立刻改变面板显示（条数、正确率口径），
-风险不在写入端而在读取端。必须和读端改造一起做。
+数据已经全在 `me:{gameId}:history:*` 里（`geneIds` + `gradeCode` + `profileId` +
+`activityRuntime`，且**三种 runtime 齐全**），所以本地雷达图**不需要新的采集，
+只需要一个 reader**：按 `geneIds × gradeCode` 分组聚合，就是用户要的 profile 进步雷达图。
+这是用户明确说过「非常重要」的一项。
 
-**建议做法**：
+下一步就是原计划的 1.3 / 1.4：
 
-1. 在 Interaction / Mini-game 的收尾处调用 `shell.report()`，payload 用
-   `buildRadarContext()` 的结果 + `activityRuntime: 'interaction' | 'mini'`；
-2. 同时给 `_calcHist()` 加 runtime 过滤，保证面板口径不变；
-3. 注意 `_calcHist()` 会跳过没有 `r.total` 的记录——Mini-game 的「total」是回合数，
-   要显式填，否则新记录会被静默丢弃。
-
-### P2. 本地雷达图只缺「读端」
-
-`_calcHist()` / `_renderHist()` 目前**对基因和级别都是盲的**，只统计
-sessions / correct / wrong / hints / totalMs。
-
-数据其实已经全在 `me:{gameId}:history:*` 里了（geneIds + gradeCode + profileId），
-**所以本地雷达图不需要新的采集，只需要一个 reader**：按 `geneIds × gradeCode`
-分组聚合，就是用户要的 profile 进步雷达图。这是用户明确说过「非常重要」的一项。
+1. `radar-reader.js`：扫全部 `me:*:history:*`（跨游戏，不只 comparison），
+   按 `geneIds × gradeCode` 聚合；**按 runtime 分别算准确率再合并**，
+   不要把 mini 的回合数和 puzzle 的题数相加（§1.5 的红线）；
+2. profile 页里用纯 SVG 画雷达图，不引库。
 
 ### P3. metadata 词表校验器
 
@@ -162,6 +190,11 @@ sessions / correct / wrong / hints / totalMs。
 4. **本 VM 没有 JS runtime**：`node / nodejs / deno / bun` 都不存在，也没有 `~/.nvm`。
    `test.html`（73 模板 × 20 次）只能在浏览器里跑。基线：**OK 73 · WARN 0 · FAIL 0**。
 5. **内容缺口**：`comparison.json` 的 L4 `coverageGap` 记着 G2 没有自由拖拽排序（sort runtime）内容。
+6. **history 记录没有上限**：`storage.set()` 就是一次 `localStorage.setItem`，
+   既不裁剪也不计数。现在三种 runtime 都往里写，条数增速比以前快得多——
+   `radar-reader.js` 那一轮顺手定个保留策略（按 profileId + 时间窗聚合后归档）。
+7. **两行统计口径不同**：见 §1.5 的红线。任何新读端都要先看 `activityRuntime`
+   再决定 `total` 怎么解释。
 
 ---
 
