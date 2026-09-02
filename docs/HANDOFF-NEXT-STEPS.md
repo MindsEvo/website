@@ -1,9 +1,14 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.3 (2026-08-30)
+- 版本：v1.4 (2026-09-02)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
 
+> v1.4 变更：**阶段 2 完成**（P3 + P4）。新增校验页 `metadata/validate.html` +
+> `metadata/validate.js`，把 metadata 词表与代码取值对撞一次（当前
+> **OK 49 · INFO 13 · WARN 0 · FAIL 0**）；`metadata/game.json` → v0.2.0，
+> 25 条、每条带 `path`、Clio 7 个 workshop 已注册；`metadata/rootgene.json` → v0.2.0，
+> 17 个基因 / 7 个分类；`comparison.json` → v0.5.1，修掉两处 typeTree 状态谎报。见 §1.7。
 > v1.3 变更：**P2 完成**（`radar-reader.js` + `profile/` 雷达页上线，
 > 首页三处「思维图谱」占位改成真链接），陷阱 §3.6 的 history 无上限已修
 > （`HISTORY_MAX = 600` + `_pruneHistory()`），新增名称登记表
@@ -170,6 +175,89 @@ learning 比较单元在 **PC / iOS / 安卓平板 / 手机上显示都正常**�
 
 ---
 
+### 1.7 阶段 2（2026-09-02，P3 + P4：词表校验器 + Clio 注册）
+
+**做完的事**：metadata 的三张词表第一次有了读它们的东西——一个校验页。
+外加把 Clio 7 个 workshop 注册进目录，Creative Workshop 系列从此在雷达的
+「计划中」里有位置。
+
+| 新增 / 改动 | 文件 | 说明 |
+|------|------|------|
+| **校验页** | `metadata/validate.html` + `metadata/validate.js`（新） | 6 组 suite，跟 `test.html` 同风格（深色等宽）。纯静态，**需 HTTP 打开**（`file://` 下 fetch 被拦，页面会明确报出来而不是空白） |
+| **目录扩表** | `metadata/game.json` → v0.2.0 | 18 → 25 条：Clio 7 个 workshop 全部注册，`status: "planned"`；**每条新增 `path`**（仓库内目录，含末尾斜杠），校验器靠它定位 `index.html` 与 `game.js` |
+| **登记表扩表** | `metadata/rootgene.json` → v0.2.0 | 14 → 17 个基因，5 → 7 个分类（新增 `ATTENTION` / `LANGUAGE`）。新基因带 `status: "planned"` + `claimedBy` |
+| **修掉状态谎报** | `metadata/metathinking/comparison.json` → v0.5.1 | `typeTree.temporal` `planned` → `implemented`（题库里其实有 5 道），`logic_strategy` `planned` → `partial`（3 道，多属性已上线、链式未上线，写进 `coverageGap*`） |
+
+**6 组 suite 各查什么**：
+
+| Suite | 对撞的两边 |
+|------|------|
+| S1 | `rootgene.json` 登记表 ↔ 代码里出现的 `RG.*` id ↔ `game.json` 声明的 `rootGeneIds` |
+| S2 | `levelMap` 的 `levelId → gradeCode` ↔ 代码私有的 `LEVEL_GRADE`，外加 gradeCode 是否在 `RadarReader.GRADE_CODES` 里 |
+| S3 | `difficultyAxes[].progression` ↔ `difficultyAxisFor()` 的 `base` 表 **以及** 之后的 `axis.* =` 精调赋值 |
+| S4 | `typeTree` 的 id 与 status ↔ `COMPARISON_TYPE_OF` ↔ `templates.json` 里真有几道题 |
+| S5 | `implementedModes` / `primaryTypes` ↔ `templates.json` 的 `mode` / `type`（别名 **`mini_game ≡ mini`**，写死在 `MODE_ALIAS` 里） |
+| S6 | game / lesson / video / rootgene 之间的引用完整性 + 每条 `path` 下 `index.html` 真能取到 |
+
+**四档严重度的口径（照用户定的，别改回去）**：
+
+- **FAIL** = 两边矛盾，必须改一边。例：代码上线了 G2 而 `levelMap` 说 `planned`；
+  轴取值不在 `progression` 里；`typeTree` 说 `planned` 而题库里有题。
+- **WARN** = 死条目，**或者「查不动」**。提取器在 game.js 里找不到某个声明时
+  报 `cannot verify` 而**不是静默通过**——这是这个页面唯一一条不可退让的规则。
+- **INFO** = 合法但值得人看一眼：登记表外的 id（reader 会从 id 推导标签，
+  缺的只是一个好名字）、`status: "planned"` 的条目还没接线、
+  题库产生了 `primaryTypes` 之外的类别。
+- **OK**。
+
+**为什么代码侧是「读文本」而不是 import**：`LEVEL_GRADE`、`base` 轴表、
+`COMPARISON_TYPE_OF` 都是 game.js 那个 IIFE 里的私有变量，而 game.js 一加载就自启动，
+所以 `validate.js` 把 game.js **当文本 fetch**，`stripComments()` 去注释后用
+`sliceBlock()` 花括号配对切出对象字面量。**等哪天模块显式导出自己的契约**
+（例如 `window.CMP_CONTRACT = { LEVEL_GRADE, AXIS_BASE, TYPE_OF }`），
+就删掉对应的文本提取器改读导出，别再往正则上叠补丁。
+
+已经踩过的三个提取器坑，改的时候别踩回去：
+
+1. `axis\.(\w+)\s*=` 会吃到 `axis.relation_complexity === 'direct'`——
+   必须写 `=(?!=)`。
+2. 三元 `(levelId === 'G2') ? 'multi' : 'dual'` 的**条件**会被当成取值——
+   所以只取第一个 `?` 之后的引号字符串。
+3. 不去注释就会捞到文档里的占位 id：`radar-reader.js` 的 `RG.X.Y.Z` / `RG.A.B`，
+   以及 `games/spatial-pattern-hunter/game.js` 注释里的历史 id
+   `RG.MINDSEEDS.SPATIAL_PATTERN`。
+
+**已实测**（`python3 -m http.server` + headless Chrome）：
+干净状态 **OK 49 · INFO 13 · WARN 0 · FAIL 0**；
+另做了一轮**故障注入**（把 `temporal` 改回 planned、L4 的 gradeCode 改成 G3、
+删掉 `learning-math-comparison` 的声明基因、加一个 `RG.BOGUS.ID`），
+得到 **FAIL 6 · WARN 1** 且每条指向正确的那一处，随后按 md5 校验还原。
+`test.html` 仍是 **OK 73 · WARN 0 · FAIL 0**。
+
+**13 条 INFO 是什么**（都不是 bug，是待办清单）：
+7 个 Clio 条目 `status=planned` 尚未上报基因（其中 egg-catcher 与 word-connections
+另有 id 不一致，见下）+ 3 条 `primaryTypes` 比题库窄 + 3 条杂项。
+
+**两处 id 不一致，留给阶段 3 接线时一起改**：
+
+- `egg-catcher-workshop` 调的是 `createController('egg-catcher-workshop')`，
+  少了 `clio-` 前缀；
+- `word-connections-workshop` **完全没有游戏级 id**（只有关卡 `L1/L2/L3`）。
+
+metadata 已统一按 `clio-*-workshop` 登记，接线时改代码去对齐 metadata，不要反过来。
+
+**留给用户的课程决定**（我替 Clio 铸了 3 个新基因，需要复核）：
+`RG.LOGIC.CLASSIFICATION.BASIC`（分类归组）、`RG.ATTENTION.SEARCH.VISUAL`（视觉搜索）、
+`RG.LANGUAGE.SEMANTIC.RELATION`（词义关系），以及为它们新加的两个分类
+`ATTENTION` / `LANGUAGE`。
+
+**一条教训**（我在这一轮真犯了）：**不要凭记忆重打已有的 metadata**。
+第一次写 `game.json` 时凭记忆重录 18 条老条目，改坏了 26 个字段值
+（标题、module、lesson/video id）。正确做法是从 `git show HEAD:metadata/game.json`
+读出来，**程序化地只加新字段**，再 diff 回验（当时的输出是 `entries 25 regressions 0`）。
+
+---
+
 ## 2. 待办（按性价比排序）
 
 ### ~~P1. Interaction / Mini-game 结算没有走 `shell.report()`~~ ✅ 已完成（§1.5）
@@ -186,25 +274,20 @@ history 管深度轴，engine 事件管 process 细节。
 
 服务器端的聚合（P5）应当复用同一套口径：比值平均、分 runtime 存原始和。
 
-### P3. metadata 词表校验器
+### ~~P3. metadata 词表校验器~~ ✅ 已完成（§1.7）
 
-`difficultyAxes` / `levelMap` **没有任何 JS 读取**，所以：
+`metadata/validate.html` 上线，6 组 suite 把 `difficultyAxes` / `levelMap` / `typeTree` /
+`rootgene.json` 与代码对撞一次，当前 **OK 49 · INFO 13 · WARN 0 · FAIL 0**。
+它当场逮到了两处真谎报（`typeTree.temporal` 与 `logic_strategy` 写着 planned、
+题库里其实有 5 道和 3 道），已修。
 
-- 代码里写了词表外的取值 → 静默；
-- 模块声明的 `levelId → gradeCode` 与 metadata 的 `levelMap` 不一致 → 静默。
+**加字段或改提取器前先读 §1.7**：尤其是「找不到声明必须报 WARN cannot verify，
+不许静默通过」，以及那三个正则坑。
 
-建议加一个纯静态校验页（跟 `test.html` 同风格），把两边对撞一次。
-本轮的 number-sense 词表 bug 就是人工比对才发现的。
+### ~~P4. Clio 7 个 workshop 未注册~~ ✅ 已完成（§1.7）
 
-**顺手多对撞一张表**：`metadata/rootgene.json`（§1.6）现在是基因名称的登记表。
-校验器应当检查代码里 `registerRootGenes()` 报的 id 是否都在表里——
-但请把它报成 **INFO 而不是 FAIL**：表外的 id 是合法的（reader 会从 id 推导标签），
-缺的只是一个好名字。反过来「表里有、代码里从没报过」的 id 才值得警告，那是死条目。
-
-### P4. Clio 7 个 workshop 未注册
-
-`metadata/game.json` 只有 18 个游戏，Clio 的 7 个 workshop 全部缺席。
-7 行注册是接入 Creative Workshop 系列最便宜的第一步。
+`metadata/game.json` → 25 条，Clio 7 个全部注册（`status: "planned"`），
+每条另带 `path`。代码侧的 `registerRootGenes()` 接线属于阶段 3。
 
 ### P5. 服务器端缺用户身份
 

@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-08-30",
+  "version": "v0.2.0",
+  "updatedAt": "2026-09-01",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -15,7 +15,9 @@
     "namingEn": "Format RG.SCOPE.CATEGORY.NODE, upper case, underscores inside a segment.",
     "unknownZh": "未登记的 ID 不是错误：radar-reader.js 会从 ID 本身推导出显示名，图表当天就能显示；登记只是为了给它一个人话名字。",
     "unknownEn": "An unregistered id is not an error: radar-reader.js derives a label from the id itself, so a brand-new gene charts the day it is first reported. Registering it only gives it a human name.",
-    "mnZh": "根基因与模块是 M:N 关系。同一个基因可以被多个模块训练，同一个模块也可以声明多个基因。"
+    "mnZh": "根基因与模块是 M:N 关系。同一个基因可以被多个模块训练，同一个模块也可以声明多个基因。",
+    "statusZh": "status 缺省为 active。planned 表示这个基因已经被 metadata/game.json 认领，但还没有任何代码上报过它，校验器把它报成 INFO 而不是「死条目」警告。",
+    "statusEn": "status defaults to active. planned means the gene is already claimed by metadata/game.json but no code reports it yet, so the validator lists it as INFO instead of warning about a dead entry."
   },
   "categories": [
     {
@@ -47,6 +49,18 @@
       "zh": "建模",
       "en": "Modeling",
       "color": "#be185d"
+    },
+    {
+      "id": "ATTENTION",
+      "zh": "注意",
+      "en": "Attention",
+      "color": "#ca8a04"
+    },
+    {
+      "id": "LANGUAGE",
+      "zh": "语言",
+      "en": "Language",
+      "color": "#4d7c0f"
     }
   ],
   "genes": {
@@ -203,6 +217,45 @@
       },
       "descZh": "把一个具体情境写成可计算的关系式。",
       "descEn": "Turn a concrete situation into a relation that can be computed."
+    },
+    "RG.LOGIC.CLASSIFICATION.BASIC": {
+      "category": "LOGIC",
+      "zh": "分类归组",
+      "en": "Classification",
+      "short": {
+        "zh": "分类",
+        "en": "Classify"
+      },
+      "descZh": "按一条或多条属性把对象归入正确的组别。",
+      "descEn": "Put objects into the right group by one or more attributes.",
+      "status": "planned",
+      "claimedBy": ["clio-sorting-workshop"]
+    },
+    "RG.ATTENTION.SEARCH.VISUAL": {
+      "category": "ATTENTION",
+      "zh": "视觉搜索",
+      "en": "Visual Search",
+      "short": {
+        "zh": "搜索",
+        "en": "Search"
+      },
+      "descZh": "在干扰项中持续寻找并确认目标，数量未知时也不放弃。",
+      "descEn": "Keep locating and confirming targets among distractors, even when the count is unknown.",
+      "status": "planned",
+      "claimedBy": ["clio-find-it-workshop"]
+    },
+    "RG.LANGUAGE.SEMANTIC.RELATION": {
+      "category": "LANGUAGE",
+      "zh": "词义关系",
+      "en": "Semantic Relation",
+      "short": {
+        "zh": "词义",
+        "en": "Semantic"
+      },
+      "descZh": "判断词与词之间的相同、同义与反义关系。",
+      "descEn": "Judge sameness, synonymy and antonymy between words.",
+      "status": "planned",
+      "claimedBy": ["clio-word-connections-workshop"]
     }
   }
 }

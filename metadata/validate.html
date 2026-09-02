@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metadata ↔ Code — Vocabulary Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #38bdf8; margin: 0 0 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin: 0 0 12px; line-height: 1.6; }
+    .suite  { margin-bottom: 28px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #38bdf8; }
+    .suite-body { padding: 0 2px; }
+    .line   { font-size: 12px; line-height: 1.7; padding: 1px 0; }
+    .tag    { display: inline-block; width: 46px; font-weight: 700; }
+    .detail { font-size: 11px; color: #94a3b8; margin: 0 0 4px 46px; line-height: 1.6;
+              word-break: break-all; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .info   { color: #7dd3fc; }
+    .stat   { color: #94a3b8; font-size: 11px; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    #summary .badge, #summary > span { display: inline-block; border-radius: 4px;
+               padding: 3px 10px; font-size: 13px; font-weight: 700; }
+    .badge-ok   { background: #166534; color: #4ade80; }
+    .badge-fail { background: #7f1d1d; color: #f87171; }
+    .badge-warn { background: #78350f; color: #fbbf24; }
+    #version { font-size: 11px; color: #64748b; margin-left: 10px; font-weight: 400; }
+    .legend { font-size: 11px; color: #64748b; margin-top: 6px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>🧬 Metadata ↔ Code — 词表对撞校验</h1>
+  <h2>
+    metadata 里的 <b>difficultyAxes / levelMap / typeTree</b> 目前没有任何运行时 JS 读取，
+    所以代码写出词表外的取值、或与 levelMap 的 gradeCode 不一致时，全都是静默的。
+    这个页面把两边对撞一次：纯静态，无构建步骤，需通过 HTTP 打开。
+  </h2>
+  <span id="summary-badge" class="badge-warn">Loading…</span><span id="version"></span>
+  <div class="legend">
+    <span class="fail">FAIL</span> = 两边矛盾，必须改一边 ·
+    <span class="warn">WARN</span> = 死条目，或提取器没找到声明（<i>cannot verify</i>，不当成通过） ·
+    <span class="info">INFO</span> = 合法但值得人看一眼（未登记的基因 id、代码比 primaryTypes 更宽、planned 尚未接线）
+  </div>
+</div>
+
+<div id="suites"></div>
+
+<script src="../radar-reader.js"></script>
+<script src="validate.js"></script>
+
+</body>
+</html>

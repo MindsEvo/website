@@ -1,6 +1,6 @@
 {
-  "version": "v0.5.0",
-  "updatedAt": "2026-08-23",
+  "version": "v0.5.1",
+  "updatedAt": "2026-09-01",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -107,19 +107,45 @@
       "id": "temporal",
       "nameZh": "时间比较",
       "nameEn": "Temporal Comparison",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
-        "before/after/duration/rhythm tasks"
-      ]
+        "before/after/duration/rhythm tasks",
+        "speed and time comparison (K2 / G1 / G2)"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
     },
     {
       "id": "logic_strategy",
       "nameZh": "逻辑与策略比较",
       "nameEn": "Logic and Strategy Comparison",
-      "status": "planned",
+      "status": "partial",
       "examples": [
-        "condition-strength/solution-efficiency tasks"
-      ]
+        "condition-strength/solution-efficiency tasks",
+        "multi-attribute comparison (G1 / G2)"
+      ],
+      "coverageGapZh": "多属性比较已在 G1/G2 上线；链式与受约束比较（L5 起）尚未实现。",
+      "coverageGapEn": "Multi-attribute comparison ships at G1/G2; chain and constrained comparison (L5 and up) are not implemented yet.",
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
     },
     {
       "id": "information",
