@@ -1,6 +1,10 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-08-02",
+  "version": "v0.2.0",
+  "updatedAt": "2026-09-02",
+  "notes": {
+    "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
+    "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded."
+  },
   "modules": [
     {
       "id": "comparison",
@@ -20,6 +24,27 @@
         "ai-readable"
       ],
       "status": "active"
+    },
+    {
+      "id": "pattern",
+      "moduleType": "metathinking",
+      "titleZh": "规律",
+      "titleEn": "Pattern",
+      "ageRange": {
+        "min": 4,
+        "max": 12
+      },
+      "levels": 8,
+      "canonicalUrl": "/metadata/metathinking/pattern.json",
+      "tags": [
+        "pattern",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "元数据已定稿；learning/math/pattern/ 仍是旧三件套架构（只有 puzzle，无 engine / templates.json / 运行时），接线属于阶段 3。",
+      "statusNoteEn": "Metadata is finalised; learning/math/pattern/ is still the legacy three-file layout (puzzle only, no engine / templates.json / runtimes). Wiring it up is phase 3 work."
     }
   ]
 }

@@ -1,0 +1,376 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-02",
+  "moduleType": "metathinking",
+  "id": "pattern",
+  "canonicalUrl": "/metadata/metathinking/pattern.json",
+  "title": {
+    "zh": "规律",
+    "en": "Pattern"
+  },
+  "description": {
+    "zh": "规律是从一串元素的排列中提取重复或递进规则，并用这条规则向前续写、向内补全、向后逆推、修复破损或迁移到新载体的元思维操作。",
+    "en": "Pattern is a meta-thinking operation that extracts the repeating or progressing rule behind an arrangement of elements and then uses that rule to extend it forward, fill an interior gap, work backward, repair a broken run, or transfer it to a new carrier."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 12,
+    "noteZh": "覆盖 4-5 岁到小学毕业阶段。",
+    "noteEn": "Covers ages 4-5 through primary school graduation."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training."
+  },
+  "seriesBoundary": {
+    "policyZh": "小精灵系列的 9 个规律猎人按线索分工（颜色、大小、图形、运动、时间、空间、数量、逻辑、综合），训练的是在时间压力下对单一线索的快速识别，出题方向恒为「向前续写」。学习系列的规律单元不按线索再分一遍，而是按规则处理的深度分工：能不能说出规则、能不能向内与向后用、能不能发现并修好被破坏的规律、能不能换个载体照用。因此同一个根基因（如 RG.PATTERN.VISUAL.COLOR）会同时被两边训练，这是 M:N 关系，不是重复建设。",
+    "policyEn": "The nine MindSeeds pattern hunters split by cue (color, size, visual, motion, temporal, spatial, quantity, logic, mixed) and train fast recognition of a single cue under time pressure, always in the forward direction. The Learning pattern module does not re-partition by cue; it partitions by depth of rule handling: can the rule be stated, used inward and backward, used to find and repair a broken run, and carried to a new carrier. The same rootGene (e.g. RG.PATTERN.VISUAL.COLOR) is therefore trained on both sides — an M:N relation, not duplicated work.",
+    "gridAnchorZh": "3x3 图形阵列是小精灵 Spatial Pattern 的专属视觉锚点（见 docs/patterns/SPATIAL-PATTERN-MODULE.md）。学习系列的 structure 类型只用数表类载体（数表、加法表、日历），不占用 3x3 图形阵列。",
+    "gridAnchorEn": "The 3x3 shape grid is the exclusive visual anchor of MindSeeds Spatial Pattern (see docs/patterns/SPATIAL-PATTERN-MODULE.md). The Learning `structure` type uses number-table carriers only (number tables, addition tables, calendars) and never claims the 3x3 shape grid."
+  },
+  "rootGeneIds": [
+    "RG.PATTERN.SEQUENCE.BASIC",
+    "RG.PATTERN.QUANTITY.RELATION",
+    "RG.PATTERN.VISUAL.COLOR",
+    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete", "symbolic", "abstract"],
+      "sharedWith": ["comparison"],
+      "noteZh": "与 comparison 模块同名同取值，雷达图可跨模块对比：具体载体（水果、积木）→ 符号载体（数字、字母）→ 抽象载体（规则本身）。",
+      "noteEn": "Same id and values as in the comparison module so the radar can compare across modules: concrete carriers -> symbolic carriers -> the rule itself."
+    },
+    {
+      "id": "rule_complexity",
+      "zh": "规则复杂度",
+      "en": "Rule Complexity",
+      "progression": ["single", "two_step", "alternating", "compound"],
+      "noteZh": "single 一条规则（+1）；two_step 一条规则含两步（+2 再 +3 循环）；alternating 两条规则交错（奇偶位各自成规律）；compound 一条规则同时作用在两条线索上（颜色与大小同时变）。",
+      "noteEn": "single = one rule (+1); two_step = one rule with two steps (+2 then +3, repeating); alternating = two interleaved rules (odd and even positions each follow their own); compound = one rule acting on two cues at once (color and size both change)."
+    },
+    {
+      "id": "inference_direction",
+      "zh": "推理方向",
+      "en": "Inference Direction",
+      "progression": ["forward", "interior", "backward", "repair"],
+      "noteZh": "本模块最强的难度杠杆，也是与小精灵系列的分界：小精灵恒为 forward。interior 空缺在中间，两侧都能提供线索；backward 空缺在开头，必须反用规则；repair 没有空缺，序列里有一项被改错，要先发现再改对。",
+      "noteEn": "The strongest difficulty lever in this module and the boundary with MindSeeds, which is always forward. interior = the gap sits inside, with cues on both sides; backward = the gap is at the start and the rule must be inverted; repair = nothing is blank, one item is wrong and must first be found, then corrected."
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["action", "question", "compound", "explain"],
+      "sharedWith": ["comparison"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "cross-domain", "strategy", "evidence"],
+      "sharedWith": ["comparison"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "repetition",
+      "nameZh": "重复规律",
+      "nameEn": "Repetition Pattern",
+      "status": "planned",
+      "examples": [
+        "AB / AABB / ABC cycle continuation on color and shape carriers",
+        "find the item that breaks the cycle"
+      ],
+      "coverageGapZh": "K1/K2 的非数字重复规律内容尚未实现；现有题库全部是 G1/G2 的数字递进题。",
+      "coverageGapEn": "Non-numeric repetition content for K1/K2 is not implemented yet; the whole existing bank is G1/G2 numeric progression."
+    },
+    {
+      "id": "progression",
+      "nameZh": "递进规律",
+      "nameEn": "Progression Pattern",
+      "status": "partial",
+      "examples": [
+        "counting and skip counting within 20 (+1 / +2 / +3)",
+        "fives and tens (+5 / +10)",
+        "decreasing runs (-2 / -3 / -4 / -5 / -10)",
+        "doubling and tripling (x2 / x3)",
+        "story situations carrying a progression"
+      ],
+      "coverageGapZh": "只有单选 puzzle 一种模式，且题库未接入掌握度与循环调度；缺少拖放排序与限时玩法。",
+      "coverageGapEn": "Single-choice puzzle only, with the bank not yet wired to mastery and cycle scheduling; drag-to-sort and timed play are missing.",
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-pattern"
+        ],
+        "lessonIds": [
+          "learning-math-pattern-l1"
+        ],
+        "videoIds": [
+          "learning-math-pattern-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "alternating",
+      "nameZh": "交替与双规则",
+      "nameEn": "Alternating and Dual Rule",
+      "status": "planned",
+      "examples": [
+        "+2 / -1 alternating runs",
+        "odd and even positions each follow their own rule",
+        "color and size changing on two independent cycles"
+      ]
+    },
+    {
+      "id": "rule_induction",
+      "nameZh": "规律归纳与说明",
+      "nameEn": "Rule Induction and Explanation",
+      "status": "planned",
+      "examples": [
+        "state the rule in words after seeing several instances",
+        "apply the same rule to a new carrier",
+        "decide whether two runs share one rule"
+      ]
+    },
+    {
+      "id": "structure",
+      "nameZh": "结构规律",
+      "nameEn": "Structural Pattern",
+      "status": "planned",
+      "examples": [
+        "row and column rules in a number table",
+        "addition table and calendar regularities"
+      ]
+    }
+  ],
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "在颜色或形状载体上认出 AB 重复规律并续写下一个（不使用数字）。",
+      "objectiveEn": "Recognise an AB repetition on a color or shape carrier and continue it (no numerals).",
+      "primaryTypes": ["repetition"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "处理 AABB / ABC 重复规律，并在 10 以内把数量递增规律与图示对应起来。",
+      "objectiveEn": "Handle AABB / ABC repetition and match a quantity progression within 10 to its visual form.",
+      "primaryTypes": ["repetition", "progression"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "在 20 以内认出 +1 / +2 / +3 / +5 / +10 的递进规律，并补全序列中的空缺。",
+      "objectiveEn": "Recognise +1 / +2 / +3 / +5 / +10 progressions within 20 and fill the gap in a run.",
+      "primaryTypes": ["progression"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-pattern"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["L3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "处理递减与倍增规律，并在生活情境中把规律迁移使用。",
+      "objectiveEn": "Handle decreasing and multiplying progressions and transfer a pattern into everyday situations.",
+      "primaryTypes": ["progression", "alternating"],
+      "status": "partial",
+      "implementedBy": ["learning-math-pattern"],
+      "implementedModes": ["puzzle"],
+      "coverageGapZh": "递减、倍增与情境迁移都已有单选题，但缺少拖放排序（把打乱的规律卡片按规则排好）与限时玩法，交替双规则题型尚未实现。",
+      "coverageGapEn": "Decreasing, multiplying and story transfer all ship as single-choice questions, but drag-to-sort (ordering shuffled pattern cards) and timed play are missing, and alternating dual-rule items are not implemented.",
+      "sourceLevels": ["L4"]
+    },
+    {
+      "levelId": "L5",
+      "ageHint": "8-9",
+      "gradeCode": "G3",
+      "objectiveZh": "处理交替与两步规则，并能逆向推出序列开头。",
+      "objectiveEn": "Handle alternating and two-step rules and work backward to the start of a run.",
+      "primaryTypes": ["alternating", "rule_induction"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L6",
+      "ageHint": "9-10",
+      "gradeCode": "G4",
+      "objectiveZh": "用语言说明自己找到的规则，并把同一规则迁移到新载体。",
+      "objectiveEn": "State the discovered rule in words and transfer it to a new carrier.",
+      "primaryTypes": ["rule_induction", "structure"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L7",
+      "ageHint": "10-11",
+      "gradeCode": "G5",
+      "objectiveZh": "在数表的行列双向规律中定位并修复被破坏的一项。",
+      "objectiveEn": "Locate and repair a broken item inside the row-column rules of a number table.",
+      "primaryTypes": ["structure", "rule_induction"],
+      "status": "planned"
+    },
+    {
+      "levelId": "L8",
+      "ageHint": "11-12",
+      "gradeCode": "G6",
+      "objectiveZh": "判断多个候选规则中哪一条被证据支持，并说明为什么其余的不成立。",
+      "objectiveEn": "Judge which of several candidate rules the evidence supports and explain why the others fail.",
+      "primaryTypes": ["rule_induction"],
+      "status": "planned"
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "comparison",
+      "titleZh": "比较",
+      "titleEn": "Comparison",
+      "reasonZh": "要看出 AB AB 在重复，先得判断「这个和第一个一样」，同一性判断是规律的前置能力。",
+      "reasonEn": "Seeing that AB AB repeats requires first judging that an item is the same as an earlier one, so sameness judgement is prior to pattern."
+    },
+    {
+      "id": "attention-and-classification",
+      "titleZh": "基础观察与分类",
+      "titleEn": "Basic Observation and Classification"
+    }
+  ],
+  "videos": [
+    {
+      "id": "learning-math-pattern-intro-001",
+      "titleZh": "数学规律训练介绍",
+      "titleEn": "Math Pattern Training Intro",
+      "status": "implemented",
+      "linkedGameIds": ["learning-math-pattern"],
+      "linkedLessonIds": ["learning-math-pattern-l1"]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "pat-repeat-continue",
+      "type": "repetition",
+      "levelRange": ["L1", "L2"],
+      "descriptionZh": "在颜色或形状序列上续写重复周期。",
+      "descriptionEn": "Continue a repeating cycle on a color or shape sequence.",
+      "status": "planned"
+    },
+    {
+      "id": "pat-progression-fill",
+      "type": "progression",
+      "levelRange": ["L3", "L4"],
+      "descriptionZh": "补全递进序列中的空缺，含向前续写、向内补全与向后逆推。",
+      "descriptionEn": "Fill the gap in a progression, covering forward, interior and backward inference.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-math-pattern"],
+      "sourceLessonIds": ["learning-math-pattern-l1"],
+      "sourceLevelIds": ["L3", "L4"]
+    },
+    {
+      "id": "pat-repair-broken",
+      "type": "progression",
+      "levelRange": ["L4", "L7"],
+      "descriptionZh": "序列中有一项被改错，先发现再改对。",
+      "descriptionEn": "One item in the run is wrong; find it, then correct it.",
+      "status": "planned"
+    },
+    {
+      "id": "pat-rule-transfer",
+      "type": "rule_induction",
+      "levelRange": ["L6", "L8"],
+      "descriptionZh": "说明规则并迁移到新载体。",
+      "descriptionEn": "State the rule and transfer it to a new carrier.",
+      "status": "planned"
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish",
+      "activity_start",
+      "activity_move",
+      "activity_correction",
+      "activity_finish",
+      "round_start",
+      "round_answer",
+      "game_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "patternType",
+      "inferenceDirection",
+      "interactionMode",
+      "gameEngine",
+      "endReason",
+      "difficultyAxis",
+      "errorType",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate",
+      "avgCorrections",
+      "optimalChoiceRate",
+      "backwardAccuracy",
+      "bestStreak",
+      "avgRoundMs"
+    ],
+    "aggregationRules": [
+      {
+        "id": "time-by-game-mode",
+        "appliesTo": ["avgTimeMs"],
+        "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，interaction 是单个活动时长，mini 是整局净时长，三者不可混算。mini 的可比时间指标是 avgRoundMs。",
+        "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, interaction is per-activity time, mini is the whole run. They are not comparable; for mini use avgRoundMs instead."
+      },
+      {
+        "id": "one-template-one-attempt",
+        "appliesTo": ["completionRate", "accuracy"],
+        "ruleZh": "一个 mini 模板只产生一个 Attempt，权重与一道 puzzle 相同；round 数只存在于 process 中，round 级事件属遥测，不得计为 Attempt。",
+        "ruleEn": "A mini template yields exactly one Attempt, weighted like a single puzzle question. Round counts live only in process; round-level events are telemetry and must not be counted as attempts."
+      },
+      {
+        "id": "direction-not-poolable",
+        "appliesTo": ["accuracy", "avgTimeMs", "errorType"],
+        "ruleZh": "accuracy 必须按 inferenceDirection 分桶。forward 与 backward 不是同一件事：把两者混算会掩盖本模块最典型的画像——「只会往后接，不会往前推」。repair 更特殊，它的失败可能是根本没发现有错，与算错规则是两种不同的问题，errorType 因此不可跨方向合并。",
+        "ruleEn": "accuracy MUST be bucketed by inferenceDirection. forward and backward are not the same work, and pooling them hides this module's most characteristic profile: a child who can extend a run but cannot invert it. repair is different again — a failure there may mean the child never noticed anything was wrong, which is a different problem from misapplying the rule, so errorType must not be merged across directions."
+      }
+    ],
+    "note": "eventKeys round_start/round_answer/game_finish are declared for vocabulary stability; phase 1 uploads only the summary Attempt."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "patternType",
+      "inferenceDirection",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "6岁适合哪些 Pattern 训练？",
+      "哪些规律练习需要逆向推理？",
+      "学习系列的规律单元和小精灵的规律猎人有什么区别？"
+    ]
+  },
+  "tags": [
+    "pattern",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

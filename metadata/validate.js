@@ -1,5 +1,5 @@
 /**
- * metadata/validate.js — static metadata ↔ code cross-checker (v1.0.0)
+ * metadata/validate.js — static metadata ↔ code cross-checker (v1.1.0)
  *
  * Why this page exists
  * --------------------
@@ -11,18 +11,27 @@
  *
  * Severities
  *   FAIL  a contradiction: one of the two sides is wrong and must be edited.
- *   WARN  a dead metadata entry, or "cannot verify" (an extractor found nothing).
+ *   WARN  a dead metadata entry, or "cannot verify" on an `active` module.
  *   INFO  legal but worth a human look (unregistered gene id, code richer than
- *         the metadata's "primary" claim, planned entries not wired yet).
+ *         the metadata's "primary" claim, planned entries not wired yet,
+ *         "cannot verify" on an `in-progress` module).
  *
  * How the code side is read
  * -------------------------
- * `LEVEL_GRADE`, the axis base table and `COMPARISON_TYPE_OF` are private
+ * `LEVEL_GRADE`, the axis base table and `<MODULE>_TYPE_OF` are private
  * variables inside game.js's IIFE, and game.js self-boots on load, so we cannot
  * import them. This page fetches game.js AS TEXT, strips comments, and slices
  * the object literals out with a brace matcher. That is deliberately fragile in
- * ONE direction only: if an extractor finds nothing it reports WARN "cannot
- * verify", never a silent pass.
+ * ONE direction only: if an extractor finds nothing it reports "cannot verify",
+ * never a silent pass.
+ *
+ * The type-map name is derived from the module id, not configured:
+ * `comparison` → `COMPARISON_TYPE_OF`, `pattern` → `PATTERN_TYPE_OF`. A new
+ * module that follows the convention needs no edit here.
+ *
+ * "Cannot verify" is WARN for a module the catalog calls `active`, and INFO for
+ * one it calls `in-progress` — see `Suite.prototype.cv`. The honesty rule is
+ * unchanged: an extractor that finds nothing NEVER passes.
  *
  * When a module later exports its contract explicitly — e.g.
  * `window.CMP_CONTRACT = { LEVEL_GRADE, AXIS_BASE, TYPE_OF }` — delete the text
@@ -31,7 +40,7 @@
 (function (global) {
   "use strict";
 
-  var VERSION = "1.0.0";
+  var VERSION = "1.1.0";
   var BASE = "../";
 
   // Mode vocabularies overlap but are NOT the same list:
@@ -92,6 +101,22 @@
   Suite.prototype.warn = function (t, d) { counts.warn++; return this._line("warn", t, d); };
   Suite.prototype.info = function (t, d) { counts.info++; return this._line("info", t, d); };
   Suite.prototype.stat = function (t) { return this._line("stat", t); };
+
+  /**
+   * "cannot verify" for a module suite.
+   *
+   * The honesty rule stays: an extractor that finds nothing NEVER passes. But a
+   * module whose index.json entry says `in-progress` is telling us up front that
+   * its runtime is not wired yet, so a missing declaration is expected news, not
+   * a warning to chase — same treatment game.json's `status: "planned"` already
+   * gets in S1. Only `active` modules raise WARN here.
+   */
+  Suite.prototype.cv = function (mod, t, d) {
+    if (mod && mod.status === "in-progress") {
+      return this.info(t + " · 模块 status=in-progress，运行时尚未接线", d);
+    }
+    return this.warn(t, d);
+  };
 
   // ── fetch helpers ──────────────────────────────────────────────────────────
 
@@ -401,12 +426,12 @@
     }
 
     if (!mod.source) {
-      s.warn(mod.id + "：读不到 game.js，LEVEL_GRADE 无法核对（cannot verify）", mod.path + "game.js");
+      s.cv(mod, mod.id + "：读不到 game.js，LEVEL_GRADE 无法核对（cannot verify）", mod.path + "game.js");
       return;
     }
     var block = declBlock(mod.source, "LEVEL_GRADE");
     if (!block) {
-      s.warn("在 game.js 里找不到 LEVEL_GRADE 声明，无法核对（cannot verify）",
+      s.cv(mod, "在 game.js 里找不到 LEVEL_GRADE 声明，无法核对（cannot verify）",
         "extractor: /(var|let|const)? LEVEL_GRADE = {…}/");
       return;
     }
@@ -463,19 +488,19 @@
     }).join(" · "));
 
     if (!mod.source) {
-      s.warn(mod.id + "：读不到 game.js，取值无法核对（cannot verify）");
+      s.cv(mod, mod.id + "：读不到 game.js，取值无法核对（cannot verify）");
       return;
     }
     var block = declBlock(mod.source, "base");
     if (!block) {
-      s.warn("在 game.js 里找不到 difficultyAxisFor 的 base 表，无法核对（cannot verify）",
+      s.cv(mod, "在 game.js 里找不到 difficultyAxisFor 的 base 表，无法核对（cannot verify）",
         "extractor: /var base = {…}/");
       return;
     }
     var base = nestedStringMap(block.body);
     var levels = Object.keys(base);
     if (!levels.length) {
-      s.warn("base 表解析出 0 行，无法核对（cannot verify）");
+      s.cv(mod, "base 表解析出 0 行，无法核对（cannot verify）");
       return;
     }
     s.stat("代码 base 表覆盖 " + join(levels));
@@ -541,12 +566,12 @@
     }).join(" · "));
 
     if (!mod.source) {
-      s.warn(mod.id + "：读不到 game.js，分类映射无法核对（cannot verify）");
+      s.cv(mod, mod.id + "：读不到 game.js，分类映射无法核对（cannot verify）");
       return;
     }
-    var block = declBlock(mod.source, "COMPARISON_TYPE_OF");
+    var block = declBlock(mod.source, mod.typeMapName);
     if (!block) {
-      s.warn("找不到 COMPARISON_TYPE_OF，无法核对（cannot verify）", "extractor: /var COMPARISON_TYPE_OF = {…}/");
+      s.cv(mod, "找不到 " + mod.typeMapName + "，无法核对（cannot verify）", "extractor: /var " + mod.typeMapName + " = {…}/");
       return;
     }
     var typeOf = flatStringMap(block.body);
@@ -564,14 +589,14 @@
     }
 
     if (!mod.templates) {
-      s.warn(mod.id + "：读不到 templates.json，status 无法核对（cannot verify）");
+      s.cv(mod, mod.id + "：读不到 templates.json，status 无法核对（cannot verify）");
       return;
     }
     var shipped = {};   // typeId → { levels:{}, count:n, attrs:{} }
     arr(mod.templates.templates).forEach(function (t) {
       var typeId = typeOf[t.type];
       if (!typeId) {
-        s.fail("题库里的 type '" + t.type + "' 在 COMPARISON_TYPE_OF 里没有映射", t.id);
+        s.fail("题库里的 type '" + t.type + "' 在 " + mod.typeMapName + " 里没有映射", t.id);
         return;
       }
       var slot = shipped[typeId] || (shipped[typeId] = { levels: {}, count: 0, attrs: {} });
@@ -609,7 +634,7 @@
     s.stat("别名：mini_game ≡ mini（templates.json 用 mini_game，metadata 用 mini）");
 
     if (!mod.templates) {
-      s.warn(mod.id + "：读不到 templates.json，无法核对（cannot verify）");
+      s.cv(mod, mod.id + "：读不到 templates.json，无法核对（cannot verify）");
       return;
     }
     var byLevel = {};
@@ -787,6 +812,12 @@
     el.className = counts.fail ? "badge-fail" : (counts.warn ? "badge-warn" : "badge-ok");
   }
 
+  // The private type map inside a module's game.js is named after the module:
+  // comparison → COMPARISON_TYPE_OF, pattern → PATTERN_TYPE_OF.
+  function typeMapNameFor(id) {
+    return String(id).toUpperCase().replace(/-/g, "_") + "_TYPE_OF";
+  }
+
   function loadModules(catalog, games) {
     var mods = arr(catalog.modules).filter(function (m) {
       return m.status !== "retired";
@@ -809,6 +840,10 @@
           }
           return {
             id: m.id,
+            // `active` (default) validates at full strictness; `in-progress`
+            // downgrades cannot-verify lines to INFO. See Suite.prototype.cv.
+            status: m.status || "active",
+            typeMapName: typeMapNameFor(m.id),
             json: json,
             path: path || null,
             gameId: game ? game.id : null,
