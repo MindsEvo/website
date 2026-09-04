@@ -26,6 +26,8 @@
 **读端也闭环了**：`profile/` 已经能把本机全部 history 画成 rootGene × grade 的雷达图（§1.6）。
 
 **剩下的都是「模块内的活」和「服务器端的活」**，不再需要改架构——这正是当初预期的低成本阶段。
+**第二个模块已经证明了这一点**：规律单元接线上线（§1.8）时，`shell.js` / `shell-1.css` /
+`radar-reader.js` / `profile/` 一行都没有改。
 
 ---
 
@@ -33,7 +35,9 @@
 
 §1.1–1.3 是雷达架构那一轮（共 20 个文件，commit `751f85d`）；
 §1.4 是紧接着的阶段 0（响应式布局收口）；§1.5 是阶段 1 的 1.1–1.2；
-§1.6 是阶段 1 的 1.3–1.4（读端 + 雷达页，P2 到此关掉）。
+§1.6 是阶段 1 的 1.3–1.4（读端 + 雷达页，P2 到此关掉）；
+§1.7 是阶段 2（词表校验器 + Clio 注册，P3/P4 到此关掉）；
+§1.8 是阶段 3 的第一步（规律单元接线 + 题库审计）。
 
 ### 1.1 `shell.js` → v1.4.0（架构核心）
 
@@ -258,7 +262,62 @@ metadata 已统一按 `clio-*-workshop` 登记，接线时改代码去对齐 met
 
 ---
 
-## 2. 待办（按性价比排序）
+### 1.8 阶段 3 的第一步（2026-09-03，`learning-math-pattern` 接线 + 题库审计）
+
+**做完的事**：规律单元第一次真的可玩、可上报雷达，并且有了自己的题库审计页。
+这也是第二个元思维模块，用来验证「比较单元当模板」这件事是否成立——结论是成立的：
+`shell.js` / `shell-1.css` / `radar-reader.js` / profile 雷达页**一行都没改**。
+
+| 改动 | 文件 | 说明 |
+|------|------|------|
+| **入口打开** | `learning/math/index.html` | 规律卡片从 `card-disabled` 的「即将推出」`<article>` 改成 `<a class="card card-link" href="./pattern/index.html">`。用户说的「pattern puzzles 没有 enabled」就是这一处，跟运行时/锁无关 |
+| **雷达契约** | `learning/math/pattern/game.js`（重写） | 原来 82 行、双 BOM、裸调 `shell.createGame`、没有任何雷达接线。现在是 IIFE，带 `LEVEL_GRADE` / `UNIT_LEVEL` / `UNIT_RULE` / `PATTERN_TYPE_OF` / `difficultyAxisFor()` / `getReportContext()` |
+| **首个显式契约导出** | 同上 | `window.PATTERN_CONTRACT`，就是 §1.7 结尾说的那一步的第一次落地。**校验器暂时仍读文本**（comparison 还没导出），等两个模块都有了再一起删提取器 |
+| **题库审计页** | `learning/math/pattern/test.html`（新） | 7 组 suite，逐题过 60 道；跟 comparison 的 `test.html` 同风格（琥珀色而非天蓝）。规律单元**没有 generator**，所以审的是静态题库本身，不是抽样 |
+| **head 对齐** | `learning/math/pattern/index.html` | 补 meta description、`<link rel="alternate">` 指向 `pattern.json`、schema.org `DefinedTerm` |
+| **状态说明改准** | `metadata/metathinking/index.json` | pattern 的 `statusNote*` 改成「puzzle 已接线并上报雷达，仍缺 engine/templates.json/其余运行时/K1-K2 非数字内容」；`status` 仍是 `in-progress` |
+| **校验器措辞改准** | `metadata/validate.js` | `cv()` 的 INFO 后缀从「运行时尚未接线」改成「声明未齐属预期」——pattern 的运行时现在**是**接好的，缺的是 templates.json |
+
+**三个设计决定，改的时候先看理由**：
+
+1. **`LEVEL_GRADE` 必须是 `{ G1:'G1', G2:'G2' }` 这样的恒等映射**，因为 validate.js
+   S2 是拿 `gradeCode` 去 map 里查的。写成 `{ '1':'G1' }`（按 unit id）或
+   `{ L3:'G1' }`（按 metadata levelId）都会 FAIL。恒等也照样写出来，因为
+   `shell.grade.normalize()` 不猜等级。
+2. **G1 与 G2 的 `base` 轴表故意完全相同**。今天上线的东西在两个等级上都是
+   「单规则数字递变、从左往右读」，五根轴里没有一根编码「算术变难了」。
+   造一个假的差异就等于往雷达上放一个没有内容支撑的数字。**真正会动的是按题算的**：
+   story 题 → `cross-domain` + `compound`；空格位置 → `inference_direction`。
+3. **选项在会话级洗牌，`MP_DATA` 保持原样**。`shell.createGame` 不洗牌
+   （`q.options.forEach` 按声明顺序渲染），而静态题库里正确答案有
+   **42/60 落在第 3 个位置**（70%）——小孩会学到这个捷径。所以 `buildUnits()`
+   洗的是 `slice()` 出来的副本；原始题库不动，`test.html` 才能同时审
+   「原始偏斜」和「洗牌后均匀」。
+
+**已实测**（`python3 -m http.server 8765` + headless Chrome）：
+
+- `learning/math/pattern/test.html` → **PASS 30 · WARN 2 · FAIL 0**（6 units / 60 items）。
+  两条 WARN 都是设计意图，不要去「修」：
+  - 6 条跨单元重复数列，全是 unit 6 把 unit 2/3/5 的骨架改写成情境题——那正是它训练的迁移；
+  - 原始题库答案位置 slot3 = 70%，由 game.js 洗牌解决（S7 实测 200 轮，各槽位偏差 ≤ 6%）。
+- 60 道题的答案**全部能从数列自身的等差/等比规律反推出来，0 处不一致**；
+  空格位置分布 interior 48 / forward 7 / backward 5。
+- 端到端跑通：headless 里 iframe 载入游戏、按显示的数列反推答案点选，
+  unit 1 得 10/10，落地一条 `me:learning-math-pattern:history:*`，
+  `context` 里 `gradeCode:'G1'`、`patternType:'progression'`、`ruleType:'count_up'`、
+  `activityRuntime:'puzzle'`、`inferenceDirection:'interior'`、`profileId:'p1'` 都在。
+  随后 `profile/index.html` 读到它并画出「Sequence Pattern · G1 · 100%」——
+  **读端一行没改就认了新模块**。
+- `metadata/validate.html` 从 **OK 50 · INFO 17** 变成 **OK 58 · INFO 15 · WARN 0 · FAIL 0**：
+  pattern 的 S2/S3/S4 三条 `cannot verify` 变成真通过，剩下两条 INFO 是
+  templates.json 不存在（合理，还没写）。
+
+**下一步（Sonnet 的份）**：pattern 的 generator + `templates.json` + 其余运行时场景 +
+mini 适配器；以及 **K1/K2 的非数字重复规律内容**（AB / AABB / ABC，颜色与形状），
+这块今天**完全没有内容**——60 道题全是数字递变，而 `pattern.json` 声明了
+4 个 rootGene，代码只上报 `RG.PATTERN.SEQUENCE.BASIC`。这个缺口留给用户复核课程口径。
+
+---
 
 ### ~~P1. Interaction / Mini-game 结算没有走 `shell.report()`~~ ✅ 已完成（§1.5）
 
@@ -277,7 +336,8 @@ history 管深度轴，engine 事件管 process 细节。
 ### ~~P3. metadata 词表校验器~~ ✅ 已完成（§1.7）
 
 `metadata/validate.html` 上线，6 组 suite 把 `difficultyAxes` / `levelMap` / `typeTree` /
-`rootgene.json` 与代码对撞一次，当前 **OK 49 · INFO 13 · WARN 0 · FAIL 0**。
+`rootgene.json` 与代码对撞一次，当时 **OK 49 · INFO 13 · WARN 0 · FAIL 0**；
+规律单元接线后（§1.8）为 **OK 58 · INFO 15 · WARN 0 · FAIL 0**。
 它当场逮到了两处真谎报（`typeTree.temporal` 与 `logic_strategy` 写着 planned、
 题库里其实有 5 道和 3 道），已修。
 
@@ -399,3 +459,8 @@ result 词表改造、服务器 schema、推荐机制。
 - **分工**：本地实现 + 提交由模型做；**push 与线上 GitHub Pages 测试由用户自己做**。
 - 每次改完 comparison 相关代码，请用户在浏览器跑 `learning/math/comparison/test.html`，
   对基线 **OK 73 · WARN 0 · FAIL 0**。
+- 每次改完 pattern 相关代码，跑 `learning/math/pattern/test.html`，
+  对基线 **PASS 30 · WARN 2 · FAIL 0**（两条 WARN 是设计意图，见 §1.8）。
+  这一页不需要 fetch，`file://` 下也能开。
+- 改完 metadata 或任何 `LEVEL_GRADE` / `difficultyAxisFor` / `*_TYPE_OF` 声明，
+  跑 `metadata/validate.html`（**需 HTTP**），对基线 **OK 58 · INFO 15 · WARN 0 · FAIL 0**。

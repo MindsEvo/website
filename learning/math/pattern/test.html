@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pattern Bank — Automated Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #fbbf24; margin-bottom: 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin-bottom: 24px; }
+    .suite  { margin-bottom: 32px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #fbbf24; }
+    .tpl    { margin-bottom: 12px; padding: 10px 14px; background: #1e293b;
+              border-radius: 8px; border: 1px solid #334155; }
+    .tpl-id { font-size: 12px; color: #fcd34d; margin-bottom: 4px; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .stat   { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    .sum-row { font-size: 14px; }
+    .badge { display:inline-block; border-radius:4px; padding:2px 8px; font-size:12px;
+             font-weight:700; margin-right:6px; }
+    .badge-ok   { background:#166534; color:#4ade80; }
+    .badge-fail { background:#7f1d1d; color:#f87171; }
+    .badge-warn { background:#78350f; color:#fbbf24; }
+    pre { margin:0; font-size:11px; line-height:1.5; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>🔢 Pattern Bank — Validation Suite</h1>
+  <h2>The pattern unit ships a STATIC bank (no generator), so this audits every
+      one of its items instead of sampling a generator: structure, item validity,
+      answer re-derived from the sequence's own rule, distractor quality, the
+      radar contract (levelId → gradeCode → axes → inference direction), and the
+      per-session option shuffle.</h2>
+  <div id="sum-out" class="sum-row">Loading…</div>
+</div>
+
+<div id="results"></div>
+
+<!-- Stub the shell so game.js can register without a DOM game. createGame's
+     config is captured verbatim: that config is what the browser really runs. -->
+<script>
+  var CAPTURED = null;
+  var shell = {
+    lang: 'zh',
+    getVolume: function () { return 80; },
+    speak: function () {},
+    storage: { get: function (k, d) { return d; }, set: function () {} },
+    createGame: function (cfg) { CAPTURED = cfg; }
+  };
+</script>
+<script src="../../../radar-reader.js"></script>
+<script src="./data.js"></script>
+<script src="./game.js"></script>
+<script>
+(function () {
+
+  var SHUFFLE_RUNS = 200;   // for the option-position uniformity check
+
+  var results = [];         // { suite, name, level:'pass'|'warn'|'fail', detail }
+
+  function rec(suite, level, name, detail) {
+    results.push({ suite: suite, level: level, name: name, detail: detail || '' });
+  }
+  function check(suite, name, ok, detail, warnOnly) {
+    rec(suite, ok ? 'pass' : (warnOnly ? 'warn' : 'fail'), name, detail);
+    return ok;
+  }
+
+  // ── rule engine: re-derive the blank from the visible numbers ──────────────
+  //
+  // PATTERN-QUALITY-GATE §9.4 — the answer must be re-derived from the values,
+  // never trusted because the data file says so. Two rule shapes ship today:
+  // arithmetic (constant difference) and geometric (constant ratio). The rule is
+  // read off CONSECUTIVE known pairs, then the blank is filled from an adjacent
+  // known term and the whole filled run is re-verified.
+
+  function knownPairs(vals) {
+    var out = [];
+    for (var i = 0; i < vals.length - 1; i++) {
+      if (vals[i] !== null && vals[i + 1] !== null) out.push([vals[i], vals[i + 1]]);
+    }
+    return out;
+  }
+
+  function deriveRule(vals) {
+    var pairs = knownPairs(vals);
+    if (pairs.length < 2) return null;   // one pair fits infinitely many rules
+
+    var diffs = pairs.map(function (p) { return p[1] - p[0]; });
+    var sameDiff = diffs.every(function (d) { return d === diffs[0]; });
+    if (sameDiff) return { kind: 'arith', step: diffs[0] };
+
+    var ratios = pairs.map(function (p) { return p[0] === 0 ? NaN : p[1] / p[0]; });
+    var sameRatio = ratios.every(function (r) { return r === ratios[0]; });
+    if (sameRatio && isFinite(ratios[0])) return { kind: 'geom', step: ratios[0] };
+
+    return null;
+  }
+
+  function fill(vals, rule) {
+    var j = vals.indexOf(null);
+    if (j < 0 || !rule) return null;
+    if (rule.kind === 'arith') {
+      return j > 0 ? vals[j - 1] + rule.step : vals[j + 1] - rule.step;
+    }
+    return j > 0 ? vals[j - 1] * rule.step : vals[j + 1] / rule.step;
+  }
+
+  function verifyRun(vals, rule) {
+    for (var i = 0; i < vals.length - 1; i++) {
+      var want = rule.kind === 'arith' ? vals[i] + rule.step : vals[i] * rule.step;
+      if (vals[i + 1] !== want) return false;
+    }
+    return true;
+  }
+
+  function ruleStr(rule) {
+    if (!rule) return '—';
+    if (rule.kind === 'arith') return (rule.step >= 0 ? '+' : '−') + Math.abs(rule.step);
+    return '×' + rule.step;
+  }
+
+  // ── the bank ──────────────────────────────────────────────────────────────
+
+  var C = window.PATTERN_CONTRACT || {};
+  var units = (window.MP_DATA || {}).units || [];
+  var itemRows = [];        // rendered per-unit detail
+  var perUnit = {};
+
+  // S1 · structure
+  (function () {
+    var S = 'S1 · 结构 Structure';
+    check(S, 'MP_DATA.units 存在且非空', units.length > 0, units.length + ' units');
+    check(S, 'PATTERN_CONTRACT 已导出', !!C.LEVEL_GRADE && !!C.buildRadarContext);
+    check(S, 'shell.createGame 被调用', !!CAPTURED,
+      CAPTURED ? 'id=' + CAPTURED.id : 'game.js did not call createGame');
+    if (CAPTURED) {
+      check(S, 'game id 与 metadata 一致', CAPTURED.id === 'learning-math-pattern', CAPTURED.id);
+      check(S, 'registerRootGenes 返回 RG.PATTERN.SEQUENCE.BASIC',
+        typeof CAPTURED.registerRootGenes === 'function' &&
+        CAPTURED.registerRootGenes().join(',') === 'RG.PATTERN.SEQUENCE.BASIC',
+        typeof CAPTURED.registerRootGenes === 'function'
+          ? CAPTURED.registerRootGenes().join(',') : 'missing');
+      check(S, 'getReportContext 已实现', typeof CAPTURED.getReportContext === 'function');
+      check(S, 'passScore ≤ 题目数', CAPTURED.passScore <= (units[0] || {}).questions.length,
+        'passScore=' + CAPTURED.passScore);
+      check(S, 'debug 关闭（真实闯关进度）', CAPTURED.debug === false, String(CAPTURED.debug));
+    }
+
+    var ids = units.map(function (u) { return u.id; });
+    check(S, 'unit id 唯一', ids.length === ids.filter(function (v, i, a) {
+      return a.indexOf(v) === i;
+    }).length, ids.join(','));
+
+    units.forEach(function (u) {
+      var bad = [];
+      if (!u.nameZh || !u.nameEn) bad.push('name');
+      if (!u.descZh || !u.descEn) bad.push('desc');
+      if (!u.icon)                bad.push('icon');
+      if (!u.questions || u.questions.length < 10) bad.push('questions<10');
+      check(S, 'unit ' + u.id + ' 字段完整', bad.length === 0,
+        bad.length ? 'missing: ' + bad.join(', ') : (u.nameZh + ' · ' + u.questions.length + ' 题'));
+    });
+  })();
+
+  // S2/S3/S4 · per item
+  (function () {
+    var S2 = 'S2 · 题目合法性 Item validity';
+    var S3 = 'S3 · 答案重新推导 Answer re-derivation';
+    var S4 = 'S4 · 干扰项质量 Distractor quality';
+
+    var badValidity = [], badRule = [], badOpts = [];
+    var seqSeen = {}, dupCross = [], dupWithin = [];
+    var dirCount = { forward: 0, interior: 0, backward: 0 };
+    var ansIndex = {};
+
+    units.forEach(function (u) {
+      var rows = [];
+      (u.questions || []).forEach(function (q, k) {
+        var where = 'U' + u.id + '·Q' + (k + 1);
+        var seq = q.seq || [];
+        var blanks = seq.filter(function (x) { return x === '?'; }).length;
+
+        // ---- S2 validity
+        if (blanks !== 1) badValidity.push(where + ': blanks=' + blanks);
+        if (seq.length < 4) badValidity.push(where + ': seq too short (' + seq.length + ')');
+        seq.forEach(function (x) {
+          if (x !== '?' && typeof x !== 'number') badValidity.push(where + ': non-numeric term ' + x);
+        });
+        if (typeof q.answer !== 'number') badValidity.push(where + ': answer not a number');
+        if (!q.hintZh || !q.hintEn) badValidity.push(where + ': hint missing');
+
+        // ---- S4 options
+        var opts = q.options || [];
+        if (opts.length !== 4) badOpts.push(where + ': ' + opts.length + ' options');
+        if (new Set(opts).size !== opts.length) badOpts.push(where + ': duplicate options');
+        if (opts.indexOf(q.answer) < 0) badOpts.push(where + ': answer not in options');
+        if (opts.some(function (o) { return typeof o !== 'number' || o < 0; }))
+          badOpts.push(where + ': non-numeric or negative option');
+        var ai = opts.indexOf(q.answer);
+        if (ai >= 0) ansIndex[ai] = (ansIndex[ai] || 0) + 1;
+
+        // ---- S3 rule
+        var vals = seq.map(function (x) { return x === '?' ? null : x; });
+        var rule = deriveRule(vals);
+        var derived = fill(vals, rule);
+        if (!rule) {
+          badRule.push(where + ': no single arithmetic/geometric rule fits [' + seq.join(',') + ']');
+        } else if (derived !== q.answer) {
+          badRule.push(where + ': rule ' + ruleStr(rule) + ' ⇒ ' + derived + ', data says ' + q.answer);
+        } else {
+          var filled = vals.slice();
+          filled[filled.indexOf(null)] = derived;
+          if (!verifyRun(filled, rule))
+            badRule.push(where + ': filled run breaks its own rule ' + ruleStr(rule));
+        }
+
+        // ---- duplicates (identical numeric skeleton)
+        var key = seq.join(',');
+        if (seqSeen[key]) {
+          (seqSeen[key].unit === u.id ? dupWithin : dupCross)
+            .push(key + '  (' + seqSeen[key].where + ' ↔ ' + where + ')');
+        } else {
+          seqSeen[key] = { unit: u.id, where: where };
+        }
+
+        // ---- direction
+        var dir = C.inferenceDirectionOf ? C.inferenceDirectionOf(seq) : null;
+        if (dir) dirCount[dir]++;
+
+        rows.push(where + '  [' + seq.join(', ') + ']  rule ' + ruleStr(rule) +
+                  '  ⇒ ' + derived + '  dir=' + dir +
+                  '  opts[' + opts.join(',') + ']');
+      });
+      itemRows.push({ unit: u, rows: rows });
+      perUnit[u.id] = true;
+    });
+
+    check(S2, '每题只有一个空缺、项均为数值、双语提示齐全',
+      badValidity.length === 0, badValidity.join('\n'));
+    check(S3, '60 题答案全部可由序列自身规则重新推导出来',
+      badRule.length === 0, badRule.length ? badRule.join('\n') : '所有题目通过');
+    check(S4, '选项 4 个、无重复、答案在选项内', badOpts.length === 0, badOpts.join('\n'));
+
+    check(S4, '同一单元内无重复数列', dupWithin.length === 0, dupWithin.join('\n'));
+    // Unit 6 deliberately re-tells earlier skeletons as story problems: same
+    // numbers, different carrier, which is the transfer the unit trains. Flagged
+    // so it stays a decision, not a drift.
+    rec(S4, dupCross.length ? 'warn' : 'pass',
+      '跨单元重复数列（unit 6 情境复用为设计意图）',
+      dupCross.length ? dupCross.join('\n') : '无');
+
+    // With shell.js rendering q.options in declared order, a fixed answer slot
+    // is a shortcut a child can learn. The raw bank IS skewed — that is why
+    // game.js shuffles a copy per session (S6 below).
+    var total = Object.keys(ansIndex).reduce(function (n, k) { return n + ansIndex[k]; }, 0);
+    var maxPct = Math.max.apply(null, Object.keys(ansIndex).map(function (k) {
+      return Math.round(ansIndex[k] / total * 100);
+    }));
+    rec(S4, maxPct <= 40 ? 'pass' : 'warn',
+      '原始题库答案位置分布（需要 game.js 洗牌）',
+      Object.keys(ansIndex).sort().map(function (k) {
+        return 'slot ' + (Number(k) + 1) + ': ' + Math.round(ansIndex[k] / total * 100) + '%';
+      }).join('  ') + '  → max ' + maxPct + '%');
+
+    rec('S5 · 推理方向 Inference direction', 'pass', '方向分布（三种都有内容）',
+      'forward ' + dirCount.forward + ' · interior ' + dirCount.interior +
+      ' · backward ' + dirCount.backward);
+    check('S5 · 推理方向 Inference direction', 'forward / interior / backward 均有题目',
+      dirCount.forward > 0 && dirCount.interior > 0 && dirCount.backward > 0,
+      'repair 方向尚无内容（pattern.json L7，属未来）', true);
+  })();
+
+  // S6 · radar contract
+  (function () {
+    var S = 'S6 · 雷达契约 Radar contract';
+    var GRADES = (window.RadarReader || {}).GRADE_CODES || [];
+    check(S, 'radar-reader 已加载', GRADES.length === 8, GRADES.join(','));
+
+    var badUnit = [];
+    units.forEach(function (u) {
+      var lvl = C.UNIT_LEVEL[u.id];
+      if (!lvl) { badUnit.push('unit ' + u.id + ': no levelId'); return; }
+      if (!C.LEVEL_GRADE[lvl]) badUnit.push('unit ' + u.id + ': levelId ' + lvl + ' not in LEVEL_GRADE');
+      if (GRADES.indexOf(C.LEVEL_GRADE[lvl]) < 0)
+        badUnit.push('unit ' + u.id + ': gradeCode ' + C.LEVEL_GRADE[lvl] + ' not a canonical grade');
+      if (!C.UNIT_RULE[u.id]) badUnit.push('unit ' + u.id + ': no ruleType');
+      else if (!C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]])
+        badUnit.push('unit ' + u.id + ': ruleType ' + C.UNIT_RULE[u.id] + ' not in PATTERN_TYPE_OF');
+    });
+    check(S, '每个 unit 都能映射到 levelId → gradeCode → typeTree',
+      badUnit.length === 0, badUnit.length ? badUnit.join('\n') :
+      units.map(function (u) {
+        return u.id + '→' + C.UNIT_LEVEL[u.id] + '/' + C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]];
+      }).join('  '));
+
+    // The record the radar will actually read, built through the real config.
+    var built = [];
+    var badCtx = [];
+    units.forEach(function (u) {
+      var ctx = CAPTURED.getReportContext({
+        gameId: 'learning-math-pattern', unit: u,
+        state: { score: 8, total: u.questions.length, hints: 0, passed: true, elapsedMs: 60000 }
+      });
+      if (ctx.moduleId !== 'pattern')         badCtx.push('unit ' + u.id + ': moduleId');
+      if (ctx.moduleType !== 'metathinking')  badCtx.push('unit ' + u.id + ': moduleType');
+      if (GRADES.indexOf(ctx.gradeCode) < 0)  badCtx.push('unit ' + u.id + ': gradeCode ' + ctx.gradeCode);
+      if (ctx.patternType !== 'progression')  badCtx.push('unit ' + u.id + ': patternType ' + ctx.patternType);
+      if (ctx.activityRuntime !== 'puzzle')   badCtx.push('unit ' + u.id + ': activityRuntime');
+      if (ctx.sourceGameId !== 'learning-math-pattern') badCtx.push('unit ' + u.id + ': sourceGameId');
+      if (!ctx.difficultyAxis)                badCtx.push('unit ' + u.id + ': difficultyAxis missing');
+      if (['forward', 'interior', 'backward', 'repair'].indexOf(ctx.inferenceDirection) < 0)
+        badCtx.push('unit ' + u.id + ': inferenceDirection ' + ctx.inferenceDirection);
+      built.push('unit ' + u.id + ': ' + ctx.levelId + '/' + ctx.gradeCode +
+                 ' ' + ctx.ruleType + '→' + ctx.patternType +
+                 ' dir=' + ctx.inferenceDirection +
+                 ' [' + (ctx.inferenceDirections || []).join('|') + ']' +
+                 ' axis=' + JSON.stringify(ctx.difficultyAxis));
+    });
+    check(S, 'getReportContext 六个 unit 全部产出可上雷达的记录',
+      badCtx.length === 0, badCtx.length ? badCtx.join('\n') : built.join('\n'));
+
+    // Axis values must be inside pattern.json's own progressions. Duplicated
+    // here on purpose: metadata/validate.html checks the source text, this
+    // checks the values a live run produces.
+    var VOCAB = {
+      object_complexity:   ['concrete', 'symbolic', 'abstract'],
+      rule_complexity:     ['single', 'two_step', 'alternating', 'compound'],
+      inference_direction: ['forward', 'interior', 'backward', 'repair'],
+      language_complexity: ['action', 'question', 'compound', 'explain'],
+      transfer_complexity: ['within-domain', 'cross-domain', 'strategy', 'evidence']
+    };
+    var badAxis = [];
+    units.forEach(function (u) {
+      ['forward', 'interior', 'backward'].forEach(function (dir) {
+        var axis = C.difficultyAxisFor(C.UNIT_LEVEL[u.id], C.UNIT_RULE[u.id], dir) || {};
+        Object.keys(VOCAB).forEach(function (k) {
+          if (VOCAB[k].indexOf(axis[k]) < 0)
+            badAxis.push('unit ' + u.id + '/' + dir + ': ' + k + '=' + axis[k]);
+        });
+        if (axis.inference_direction !== dir)
+          badAxis.push('unit ' + u.id + ': axis did not follow direction ' + dir);
+      });
+    });
+    check(S, '五条难度轴的取值全部在 pattern.json 的 progression 里',
+      badAxis.length === 0, badAxis.join('\n'));
+
+    var storyAxis = C.difficultyAxisFor('G2', 'story', 'forward') || {};
+    check(S, '情境题标记为 cross-domain / compound',
+      storyAxis.transfer_complexity === 'cross-domain' &&
+      storyAxis.language_complexity === 'compound',
+      JSON.stringify(storyAxis));
+
+    check(S, '未知 levelId 返回 null（不猜等级）',
+      C.difficultyAxisFor('G9', 'count_up', 'forward') === null);
+  })();
+
+  // S7 · option shuffle
+  (function () {
+    var S = 'S7 · 选项洗牌 Option shuffle';
+    var raw = JSON.stringify(MP_DATA.units);
+    var slots = {}, lost = 0, n = 0;
+    for (var r = 0; r < SHUFFLE_RUNS; r++) {
+      var built = C.buildUnits(MP_DATA.units);
+      built.forEach(function (u, ui) {
+        u.questions.forEach(function (q, qi) {
+          var src = MP_DATA.units[ui].questions[qi];
+          var at  = q.options.indexOf(q.answer);
+          if (at < 0) lost++;
+          if (q.options.slice().sort().join(',') !== src.options.slice().sort().join(','))
+            lost++;
+          slots[at] = (slots[at] || 0) + 1;
+          n++;
+        });
+      });
+    }
+    check(S, '洗牌后答案仍在选项内、选项集合不变', lost === 0, lost + ' violations');
+    check(S, 'MP_DATA 未被就地修改', JSON.stringify(MP_DATA.units) === raw);
+    var pcts = [0, 1, 2, 3].map(function (i) { return Math.round((slots[i] || 0) / n * 100); });
+    var span = Math.max.apply(null, pcts) - Math.min.apply(null, pcts);
+    check(S, '答案位置接近均匀（' + SHUFFLE_RUNS + ' 轮，各槽位偏差 ≤ 6%）',
+      span <= 6, pcts.map(function (p, i) { return 'slot ' + (i + 1) + ': ' + p + '%'; }).join('  ') +
+      '  → span ' + span + '%');
+  })();
+
+  // ── render ────────────────────────────────────────────────────────────────
+
+  var bySuite = {}, order = [];
+  results.forEach(function (r) {
+    if (!bySuite[r.suite]) { bySuite[r.suite] = []; order.push(r.suite); }
+    bySuite[r.suite].push(r);
+  });
+
+  var nOk = 0, nWarn = 0, nFail = 0;
+  results.forEach(function (r) {
+    if (r.level === 'fail') nFail++; else if (r.level === 'warn') nWarn++; else nOk++;
+  });
+
+  var html = '';
+  order.forEach(function (suite) {
+    html += '<div class="suite"><div class="suite-title">' + suite + '</div>';
+    bySuite[suite].forEach(function (r) {
+      var badge = r.level === 'fail' ? '<span class="badge badge-fail">FAIL</span>'
+                : r.level === 'warn' ? '<span class="badge badge-warn">WARN</span>'
+                                     : '<span class="badge badge-ok">PASS</span>';
+      html += '<div class="tpl"><div class="tpl-id">' + badge + ' ' + r.name + '</div>' +
+              (r.detail ? '<pre class="stat ' + (r.level === 'fail' ? 'fail' : '') + '">' +
+                          String(r.detail).replace(/</g, '&lt;') + '</pre>' : '') +
+              '</div>';
+    });
+    html += '</div>';
+  });
+
+  html += '<div class="suite"><div class="suite-title">题库明细 Item detail</div>';
+  itemRows.forEach(function (g) {
+    html += '<div class="tpl"><div class="tpl-id">unit ' + g.unit.id + ' · ' +
+            g.unit.nameZh + ' / ' + g.unit.nameEn + '</div>' +
+            '<pre class="stat">' + g.rows.join('\n') + '</pre></div>';
+  });
+  html += '</div>';
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('sum-out').innerHTML =
+    '<span class="badge badge-ok">PASS ' + nOk + '</span>' +
+    '<span class="badge badge-warn">WARN ' + nWarn + '</span>' +
+    '<span class="badge badge-fail">FAIL ' + nFail + '</span>' +
+    ' — ' + units.length + ' units, ' +
+    units.reduce(function (n, u) { return n + u.questions.length; }, 0) + ' items';
+}());
+</script>
+</body>
+</html>

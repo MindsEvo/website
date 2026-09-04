@@ -43,8 +43,8 @@
         "ai-readable"
       ],
       "status": "in-progress",
-      "statusNoteZh": "元数据已定稿；learning/math/pattern/ 仍是旧三件套架构（只有 puzzle，无 engine / templates.json / 运行时），接线属于阶段 3。",
-      "statusNoteEn": "Metadata is finalised; learning/math/pattern/ is still the legacy three-file layout (puzzle only, no engine / templates.json / runtimes). Wiring it up is phase 3 work."
+      "statusNoteZh": "元数据已定稿；puzzle 运行时已接线并上报雷达（levelId → gradeCode、五轴、推理方向），题库为 6 单元 60 题的静态题库，由 learning/math/pattern/test.html 逐题校验。仍缺：engine / generator / templates.json、sort·match·group·fit·mini 运行时、K1-K2 的非数字重复规律内容。",
+      "statusNoteEn": "Metadata is finalised; the puzzle runtime is wired and reports to the radar (levelId → gradeCode, the five axes, inference direction), over a static bank of 6 units / 60 items audited item-by-item by learning/math/pattern/test.html. Still missing: engine / generator / templates.json, the sort·match·group·fit·mini runtimes, and the non-numeric K1-K2 repetition content."
     }
   ]
 }

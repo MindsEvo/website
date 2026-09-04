@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Math Pattern — Game Data  (Shell-1 format)
  * ─────────────────────────────────────────────────────────
  * Learning Foundation · Math Thinking · Pattern 规律

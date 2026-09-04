@@ -107,13 +107,19 @@
    *
    * The honesty rule stays: an extractor that finds nothing NEVER passes. But a
    * module whose index.json entry says `in-progress` is telling us up front that
-   * its runtime is not wired yet, so a missing declaration is expected news, not
-   * a warning to chase — same treatment game.json's `status: "planned"` already
+   * it is not fully built yet, so a missing declaration is expected news, not a
+   * warning to chase — same treatment game.json's `status: "planned"` already
    * gets in S1. Only `active` modules raise WARN here.
+   *
+   * The note says "声明未齐" rather than "运行时尚未接线": `in-progress` covers
+   * both a module with no runtime at all and one like `pattern`, whose puzzle
+   * runtime ships and reports to the radar while its templates.json and
+   * generator do not exist yet. Which of the two it is belongs in that module's
+   * own statusNote, not in a line the validator prints for every module.
    */
   Suite.prototype.cv = function (mod, t, d) {
     if (mod && mod.status === "in-progress") {
-      return this.info(t + " · 模块 status=in-progress，运行时尚未接线", d);
+      return this.info(t + " · 模块 status=in-progress，声明未齐属预期", d);
     }
     return this.warn(t, d);
   };
