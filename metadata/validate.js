@@ -1,5 +1,5 @@
 /**
- * metadata/validate.js — static metadata ↔ code cross-checker (v1.1.0)
+ * metadata/validate.js — static metadata ↔ code cross-checker (v1.2.0)
  *
  * Why this page exists
  * --------------------
@@ -36,11 +36,14 @@
  * When a module later exports its contract explicitly — e.g.
  * `window.CMP_CONTRACT = { LEVEL_GRADE, AXIS_BASE, TYPE_OF }` — delete the text
  * extractor for that module and read the export instead.
+ *
+ * v1.2.0 adds S7: the structure × task allowlist matrix (pattern's three-
+ * dimension model). See suiteMatrix for why a matrix exists at all.
  */
 (function (global) {
   "use strict";
 
-  var VERSION = "1.1.0";
+  var VERSION = "1.2.0";
   var BASE = "../";
 
   // Mode vocabularies overlap but are NOT the same list:
@@ -392,7 +395,11 @@
       s.pass("登记表没有死条目");
     }
     if (deadPlanned.length) {
-      s.info("有 " + deadPlanned.length + " 个基因 status=planned，已被 game.json 认领但代码未上报", join(deadPlanned));
+      // Dead AND planned: nobody declares it and no code reports it. That is the
+      // normal state of a gene minted ahead of the content it will label, so it
+      // is INFO — but do not claim game.json has claimed it, because a claimed
+      // gene is not dead and would have gone to `claimedOnly` below instead.
+      s.info("有 " + deadPlanned.length + " 个基因已登记但还没有任何模块认领（status=planned，属预期）", join(deadPlanned));
     }
 
     var claimedOnly = registryIds.filter(function (id) {
@@ -804,6 +811,288 @@
     }
   }
 
+  // ── S7 · structure × task allowlist matrix ─────────────────────────────────
+
+  /**
+   * Runs inside the per-module loop (so the page shows S2-S5 + S7 per module,
+   * then the global S6). Only modules that declare `taskMatrix` are checked;
+   * `comparison` expresses the same idea as mode × type inside templates.json
+   * and legitimately has no matrix, so its absence is a stat, not a warning.
+   *
+   * What this suite exists to stop: a three-dimension model degenerating into a
+   * cross product. 7 structures x 6 tasks = 42 cells and several of them are
+   * meaningless (a relational pattern has no "next item") or degenerate (matching
+   * two numeric runs is just "both are +2"). The matrix lists the cells that are
+   * allowed; `taskMatrixExclusions` lists the rest WITH A REASON. Together they
+   * must cover every cell exactly once — that is the invariant here, and it is
+   * what makes "we thought about all 42" checkable instead of asserted.
+   */
+  function suiteMatrix(data, mod) {
+    var json = mod.json || {};
+    if (!json.taskMatrix) { return; }
+
+    var s = new Suite("S7", mod.id + " · structure × task 白名单矩阵", "structure-task allowlist matrix");
+    var registry = (data.rootgene && data.rootgene.genes) || {};
+    var grades = (global.RadarReader && global.RadarReader.GRADE_CODES) || null;
+
+    var structures = arr(json.typeTree).map(function (t) { return t.id; });
+    var tasks = arr(json.taskTypes).map(function (t) { return t.id; });
+    var typeById = {};
+    arr(json.typeTree).forEach(function (t) { typeById[t.id] = t; });
+    var taskById = {};
+    arr(json.taskTypes).forEach(function (t) { taskById[t.id] = t; });
+    var rows = arr(json.taskMatrix);
+    var excl = arr(json.taskMatrixExclusions);
+
+    s.stat("结构 " + structures.length + " 类 × 任务 " + tasks.length + " 种 = " +
+      (structures.length * tasks.length) + " 格 · 允许 " + rows.length + " · 排除 " + excl.length);
+
+    // ── 1. every cell referenced must exist, and each appears exactly once ────
+    var seen = {}, dup = [], unknown = [];
+    rows.concat(excl).forEach(function (r) {
+      var key = r.structure + "×" + r.task;
+      if (structures.indexOf(r.structure) < 0 || tasks.indexOf(r.task) < 0) { unknown.push(key); }
+      seen[key] = (seen[key] || 0) + 1;
+      if (seen[key] === 2) { dup.push(key); }
+    });
+    if (unknown.length) {
+      s.fail("矩阵引用了 typeTree / taskTypes 里没有的 id", join(unique(unknown)));
+    } else {
+      s.pass("矩阵每一格的 structure 与 task 都已声明");
+    }
+    if (dup.length) {
+      s.fail("有格子被列了两次（允许与排除不能同时成立）", join(unique(dup)));
+    }
+
+    var missing = [];
+    structures.forEach(function (st) {
+      tasks.forEach(function (tk) {
+        if (!seen[st + "×" + tk]) { missing.push(st + "×" + tk); }
+      });
+    });
+    if (missing.length) {
+      s.fail("有 " + missing.length + " 格既没允许也没排除（未表态）", join(missing));
+    } else if (!dup.length) {
+      s.pass("允许 + 排除正好覆盖每一格一次（" + (rows.length + excl.length) + "/" +
+        (structures.length * tasks.length) + "）");
+    }
+
+    // ── 2. exclusions must carry a reason ────────────────────────────────────
+    var noReason = excl.filter(function (r) { return !r.reasonZh || !r.reasonEn; });
+    if (noReason.length) {
+      s.fail("有排除格没有写理由（排除必须可复核）", noReason.map(function (r) {
+        return r.structure + "×" + r.task;
+      }).join(" · "));
+    } else if (excl.length) {
+      s.pass("每个排除格都写了中英文理由");
+    }
+
+    // ── 3. levelFloor legality and runtime agreement ─────────────────────────
+    if (!grades) {
+      s.warn("RadarReader 未加载，levelFloor 合法性无法核对（cannot verify）");
+    } else {
+      var badFloor = rows.filter(function (r) { return grades.indexOf(r.levelFloor) < 0; });
+      if (badFloor.length) {
+        s.fail("有 levelFloor 不在 GRADE_CODES 里", badFloor.map(function (r) {
+          return r.structure + "×" + r.task + "→" + r.levelFloor;
+        }).join(" · "));
+      } else {
+        s.pass("每个允许格的 levelFloor 都是合法 gradeCode");
+      }
+    }
+
+    var badRt = rows.filter(function (r) {
+      var t = taskById[r.task];
+      return t && t.runtime && r.runtime !== t.runtime;
+    });
+    if (badRt.length) {
+      s.fail("矩阵的 runtime 与 taskTypes 声明的 runtime 不一致", badRt.map(function (r) {
+        return r.structure + "×" + r.task + " " + r.runtime + " ≠ " + taskById[r.task].runtime;
+      }).join(" · "));
+    } else {
+      s.pass("矩阵 runtime 与 taskTypes 一致（" + join(unique(rows.map(function (r) {
+        return r.task + "→" + r.runtime;
+      }).map(function (x) { return x.split("→")[1]; }))) + "）");
+    }
+
+    // ── 4. no orphan structure or task ───────────────────────────────────────
+    var usedSt = unique(rows.map(function (r) { return r.structure; }));
+    var usedTk = unique(rows.map(function (r) { return r.task; }));
+    var deadSt = diff(structures, usedSt);
+    var deadTk = diff(tasks, usedTk);
+    if (deadSt.length) {
+      s.fail("有结构一个任务都不允许，等于声明了做不了的类型", join(deadSt));
+    } else {
+      s.pass("每个结构都至少有一个允许的任务");
+    }
+    if (deadTk.length) {
+      s.fail("有任务在任何结构上都不允许", join(deadTk));
+    } else {
+      s.pass("每个任务都至少落在一个结构上");
+    }
+
+    // ── 5. a shipped cell needs a shipped structure ──────────────────────────
+    var liveRows = rows.filter(function (r) {
+      return r.status === "implemented" || r.status === "partial";
+    });
+    var lying = liveRows.filter(function (r) {
+      var t = typeById[r.structure];
+      return !t || (t.status !== "implemented" && t.status !== "partial");
+    });
+    if (lying.length) {
+      s.fail("矩阵说这格已上线，但它的 typeTree 结构还是 planned", lying.map(function (r) {
+        return r.structure + "×" + r.task + "(" + (typeById[r.structure] || {}).status + ")";
+      }).join(" · "));
+    } else {
+      s.pass("已上线的 " + liveRows.length + " 格，其结构在 typeTree 里也是已上线（" +
+        liveRows.map(function (r) { return r.structure + "×" + r.task; }).join(" · ") + "）");
+    }
+
+    // ── 6. genes referenced by structures / carriers ─────────────────────────
+    var scope = arr(json.rootGeneIds);
+    var geneRefs = [];
+    arr(json.typeTree).forEach(function (t) {
+      if (t.structureGeneId) { geneRefs.push([t.id, t.structureGeneId]); }
+      arr(t.extraGeneIds).forEach(function (g) { geneRefs.push([t.id, g]); });
+    });
+    arr(json.carriers).forEach(function (c) {
+      if (c.carrierGeneId) { geneRefs.push(["carrier:" + c.id, c.carrierGeneId]); }
+    });
+    var outOfScope = geneRefs.filter(function (p) { return scope.indexOf(p[1]) < 0; });
+    if (outOfScope.length) {
+      s.fail("结构 / 载体引用了 rootGeneIds 之外的基因", outOfScope.map(function (p) {
+        return p[0] + "→" + p[1];
+      }).join(" · "));
+    } else {
+      s.pass("结构与载体引用的基因全部在模块 rootGeneIds 之内（" + geneRefs.length + " 处引用）");
+    }
+    var unreg = unique(scope.filter(function (id) { return !registry[id]; }));
+    if (unreg.length) {
+      s.info("模块 rootGeneIds 里有 " + unreg.length + " 个 id 未登记（合法：reader 会推导标签）", join(unreg));
+    } else {
+      s.pass("模块 rootGeneIds " + scope.length + " 个 id 全部已登记");
+    }
+
+    // ── 7. every level can actually deliver the tasks it emphasises ──────────
+    if (grades) {
+      var allow = {};
+      rows.forEach(function (r) { allow[r.structure + "×" + r.task] = r; });
+      var unreachable = [];
+      arr(json.levelMap).forEach(function (row) {
+        var g = grades.indexOf(row.gradeCode);
+        arr(row.primaryTasks).forEach(function (task) {
+          var via = arr(row.primaryTypes).filter(function (st) {
+            var cell = allow[st + "×" + task];
+            return cell && grades.indexOf(cell.levelFloor) <= g;
+          });
+          if (!via.length) {
+            unreachable.push(row.levelId + "/" + row.gradeCode + " " + task);
+          }
+        });
+      });
+      if (unreachable.length) {
+        s.fail("有等级强调的任务，在它自己的 primaryTypes 上按矩阵做不出来", join(unreachable));
+      } else {
+        s.pass("levelMap 每一行的 primaryTasks 都能在它的 primaryTypes 上按矩阵实现");
+      }
+
+      var homeless = structures.filter(function (st) {
+        return !arr(json.levelMap).some(function (row) {
+          return arr(row.primaryTypes).indexOf(st) >= 0;
+        });
+      });
+      if (homeless.length) {
+        s.fail("有结构在 levelMap 里没有任何归属等级", join(homeless));
+      } else {
+        s.pass("7 类结构在 levelMap 里都有归属等级");
+      }
+
+      var badTask = [];
+      arr(json.levelMap).forEach(function (row) {
+        arr(row.primaryTasks).forEach(function (t) {
+          if (tasks.indexOf(t) < 0) { badTask.push(row.levelId + "→" + t); }
+        });
+      });
+      if (badTask.length) {
+        s.fail("levelMap 的 primaryTasks 里有未声明的任务 id", join(badTask));
+      }
+    }
+
+    // ── 8. code side: SESSION_SIZE, TASK_OF, STRUCTURE_GENES ─────────────────
+    var policy = json.sessionPolicy || {};
+    if (!mod.source) {
+      s.cv(mod, mod.id + "：读不到 game.js，SESSION_SIZE / TASK_OF 无法核对（cannot verify）");
+      return;
+    }
+    var m = /SESSION_SIZE\s*=\s*(\d+)/.exec(mod.source);
+    if (!m) {
+      s.cv(mod, "在 game.js 里找不到 SESSION_SIZE，无法核对（cannot verify）",
+        "extractor: /SESSION_SIZE = <number>/");
+    } else if (typeof policy.maxItemsPerSession !== "number") {
+      s.fail("代码有 SESSION_SIZE = " + m[1] + "，但 sessionPolicy.maxItemsPerSession 未声明");
+    } else if (Number(m[1]) !== policy.maxItemsPerSession) {
+      s.fail("SESSION_SIZE = " + m[1] + " 与 sessionPolicy.maxItemsPerSession = " +
+        policy.maxItemsPerSession + " 不一致");
+    } else {
+      s.pass("SESSION_SIZE 与 sessionPolicy.maxItemsPerSession 一致（" + m[1] + " 题）");
+    }
+
+    var taskBlock = declBlock(mod.source, "TASK_OF");
+    if (!taskBlock) {
+      s.cv(mod, "在 game.js 里找不到 TASK_OF，任务取值无法核对（cannot verify）",
+        "extractor: /var TASK_OF = {…}/");
+    } else {
+      var taskOf = flatStringMap(taskBlock.body);
+      var dirAxis = arr(json.difficultyAxes).filter(function (a) {
+        return a.id === "inference_direction";
+      })[0];
+      var dirVocab = dirAxis ? arr(dirAxis.progression) : [];
+      var badKeys = Object.keys(taskOf).filter(function (k) { return dirVocab.indexOf(k) < 0; });
+      var badVals = unique(Object.keys(taskOf).map(function (k) { return taskOf[k]; }))
+        .filter(function (v) { return tasks.indexOf(v) < 0; });
+      if (badKeys.length) {
+        s.fail("TASK_OF 的键不在 inference_direction 词表里", join(badKeys) +
+          "（允许：" + join(dirVocab) + "）");
+      }
+      if (badVals.length) {
+        s.fail("TASK_OF 的取值不在 taskTypes 里", join(badVals));
+      }
+      if (!badKeys.length && !badVals.length) {
+        s.pass("TASK_OF 方向→任务映射合法（" + Object.keys(taskOf).map(function (k) {
+          return k + "→" + taskOf[k];
+        }).join(" · ") + "）");
+      }
+      var uncovered = diff(dirVocab, Object.keys(taskOf));
+      if (uncovered.length) {
+        s.info("TASK_OF 没有覆盖的方向（这些方向的题还没上线）", join(uncovered));
+      }
+    }
+
+    var geneBlock = declBlock(mod.source, "STRUCTURE_GENES");
+    if (!geneBlock) {
+      s.cv(mod, "在 game.js 里找不到 STRUCTURE_GENES，上报基因无法核对（cannot verify）",
+        "extractor: /var STRUCTURE_GENES = {…}/");
+    } else {
+      var codeGenes = unique(geneBlock.body.match(GENE_SCAN_RE) || []);
+      var outside = codeGenes.filter(function (g) { return scope.indexOf(g) < 0; });
+      if (outside.length) {
+        s.fail("STRUCTURE_GENES 上报了模块 rootGeneIds 之外的基因", join(outside));
+      } else {
+        s.pass("STRUCTURE_GENES 上报的 " + codeGenes.length + " 个基因都在模块范围内（" +
+          join(codeGenes) + "）");
+      }
+      // keys are `structureId: [ … ]`, so they cannot be read by flatStringMap
+      var keyRe = /([A-Za-z_$][\w$]*)\s*:\s*\[/g, mm, keys = [];
+      while ((mm = keyRe.exec(geneBlock.body))) { keys.push(mm[1]); }
+      var unknownStruct = keys.filter(function (k) { return structures.indexOf(k) < 0; });
+      if (unknownStruct.length) {
+        s.fail("STRUCTURE_GENES 的键不是 typeTree 里的结构 id", join(unknownStruct));
+      } else if (keys.length) {
+        s.pass("STRUCTURE_GENES 的键全部是已声明结构（" + join(keys) + "）");
+      }
+    }
+  }
+
   // ── boot ───────────────────────────────────────────────────────────────────
 
   function renderSummary() {
@@ -903,6 +1192,7 @@
             suiteAxes(data, mod);
             suiteTypes(data, mod);
             suiteModes(data, mod);
+            suiteMatrix(data, mod);
           });
           suiteRefs(data);
           renderSummary();

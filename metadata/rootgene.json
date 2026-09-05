@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.0",
-  "updatedAt": "2026-09-01",
+  "version": "v0.2.1",
+  "updatedAt": "2026-09-04",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -184,6 +184,20 @@
       },
       "descZh": "同时跟踪两条以上线索，并把它们合起来判断。",
       "descEn": "Track two or more cues at once and combine them into one judgement."
+    },
+    "RG.PATTERN.TRANSFORMATION.RULE": {
+      "category": "PATTERN",
+      "zh": "变换规则",
+      "en": "Transformation Rule",
+      "short": {
+        "zh": "变换",
+        "en": "Transform"
+      },
+      "status": "planned",
+      "descZh": "看出前一个对象是怎么变成后一个的，并把这条变换用下去：部件增减、组合拆分、属性逐步改变。",
+      "descEn": "See how each object becomes the next one and apply that transformation onward: parts added or removed, assembly and splitting, an attribute changing step by step.",
+      "boundaryZh": "单符号的朝向旋转（↑→↓←）归小精灵 Visual Pattern，方向加步长的连续移动归 Motion Pattern；本基因只管可数的部件与属性变化。",
+      "boundaryEn": "Rotating a single symbol's heading is MindSeeds Visual Pattern and direction-plus-step movement is Motion Pattern; this gene covers only countable part and attribute changes."
     },
     "RG.MATH.NUMBER_SENSE.BASIC": {
       "category": "MATH",

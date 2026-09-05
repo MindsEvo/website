@@ -2,6 +2,7 @@
 
 ## 版本
 
+- v1.3.0 (2026-09-04) — 新增 §2.1 学习系列规律模块的三维附加必填项（结构 × 载体 × 任务 + 矩阵格）
 - v1.2.0 (2026-08-16) — 新增 §9 Mini-game（限时连续小游戏）门禁；原 §9 变更管理顺延为 §10
 - v1.1.0 (2026-08-12) — 新增 §8 Interaction（拖放活动）门禁
 - v1.0.0 (2026-07-03)
@@ -32,6 +33,23 @@
 9. 示例题与反例题
 
 未完成规格单，不得进入开发。
+
+### 2.1 学习系列规律模块的附加必填项（v1.3.0 起）
+
+学习系列的规律单元用三维模型出题（结构 × 载体 × 任务，见
+`docs/patterns/PATTERN-MODULE-ARCHITECTURE.md`），所以上面第 1 项
+`pattern_type` 对它不够用。该模块的每份规格单必须额外写明：
+
+1. `structure` —— `pattern.json → typeTree` 的 7 个 id 之一；
+2. `carrier` —— `pattern.json → carriers` 的 id，且其 `status` 不得为 `reserved`；
+3. `task` —— `pattern.json → taskTypes` 的 6 个 id 之一；
+4. **矩阵格与 `levelFloor`** —— `(structure, task)` 必须是
+   `pattern.json → taskMatrix` 里的允许格，且规格单声明的等级不低于该格的 `levelFloor`；
+5. 上报的**根基因**，按「结构基因 + 规则真正变化的载体基因」推出，不得自行增减。
+
+第 4 项是硬门禁：落在 `taskMatrixExclusions` 里的组合（如 `numerical × match`）
+连规格单都不许写。要新增组合，先改矩阵并在 `taskMatrixExclusions` 里删掉对应理由，
+`metadata/validate.html` 的 S7 会同时核对两边。
 
 ## 3. 通用质量门禁
 

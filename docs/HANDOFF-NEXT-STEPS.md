@@ -37,7 +37,8 @@
 §1.4 是紧接着的阶段 0（响应式布局收口）；§1.5 是阶段 1 的 1.1–1.2；
 §1.6 是阶段 1 的 1.3–1.4（读端 + 雷达页，P2 到此关掉）；
 §1.7 是阶段 2（词表校验器 + Clio 注册，P3/P4 到此关掉）；
-§1.8 是阶段 3 的第一步（规律单元接线 + 题库审计）。
+§1.8 是阶段 3 的第一步（规律单元接线 + 题库审计）；
+§1.9 是紧接着的架构补课（规律模块三维模型 v0.2.0 + 校验器 S7）。
 
 ### 1.1 `shell.js` → v1.4.0（架构核心）
 
@@ -317,6 +318,91 @@ mini 适配器；以及 **K1/K2 的非数字重复规律内容**（AB / AABB / A
 这块今天**完全没有内容**——60 道题全是数字递变，而 `pattern.json` 声明了
 4 个 rootGene，代码只上报 `RG.PATTERN.SEQUENCE.BASIC`。这个缺口留给用户复核课程口径。
 
+> **后续更新**：上面最后一句在 §1.9 里已经解决——用户复核后确认了三维模型，
+> `pattern.json` 升到 v0.2.0，基因上报规则改成「结构基因 + 载体基因」，
+> 代码现在上报 2 个，声明与代码对得上了。
+
+### 1.9 阶段 3 第一步的架构补课（2026-09-04，规律模块三维模型 v0.2.0）
+
+§1.8 让规律单元跑起来了，但它只是「数列题」——七类结构里只有一类，
+六种任务里只有两种。用户复核后给出了完整的模块定义，本节是它的落地。
+
+**定义**：规律 = 在重复、变化、位置与关系中发现稳定结构，并用这个结构预测、
+补全、纠错、迁移与创造。一句话：**比较看见「不同与相同」，规律发现「什么保持不变」。**
+
+架构全文在 **`docs/patterns/PATTERN-MODULE-ARCHITECTURE.md`**，这里只记决策与坑。
+
+| 改了什么 | 说明 |
+|----------|------|
+| 三维模型 | 结构 Structure × 载体 Carrier × 任务 Task，三维独立 |
+| `typeTree` 5 → 7 类 | `progression`→`numerical`；`structure` 并入 `numerical`；**`rule_induction` 移出**（它是任务不是结构）；新增 `growth` / `spatial` / `transformation` / `relational` |
+| 新增 `taskTypes` | 6 种：discover / continue / complete / repair / match / create |
+| 新增 `carriers` | 15 种，含用户特别要的 `action` / `temporal`，`audio` 为 **reserved**（留位不实现） |
+| 新增 `taskMatrix` + `taskMatrixExclusions` | **白名单矩阵**：允许 38 + 排除 4 = 42/42，排除必须写理由 |
+| 难度轴 5 → 6 根 | 新增 `task_complexity`；`repair` 从 `inference_direction` **移出** |
+| 新增 `geneReporting` | 结构基因 + 规则真正变化的载体基因；compound 加报多维整合 |
+| 新增 `sessionPolicy` | 一次最多 8 题，通过线 75% |
+| 新铸 1 个基因 | `RG.PATTERN.TRANSFORMATION.RULE`（唯一缺口） |
+| 校验器 S7 | 17 项 FAIL 级不变式，见架构文档 §10 |
+
+**决策与理由（不要「优化」掉）**
+
+1. **登记表已经覆盖了七类结构，所以只新铸了 1 个基因。**
+   `rootgene.json` 里 9 个 PATTERN 基因当初是为小精灵 9 个规律猎人建的，
+   按线索划分：颜色 / 大小 / 图形 / 空间 / 时间 / 运动 / 数量 / 序列 / 多维。
+   七类结构与主要载体正好落在里面，只有「变换」没有归宿。
+   **动作规律、时间规律的基因位早就存在**——只缺 renderer，不缺架构。
+
+2. **结构基因 + 载体基因两个都报，但载体基因有硬约束。**
+   两种切法不同（登记表按线索，本模块按结构），只报一个都会说谎。
+   约束是：**载体基因只在规律本身在这个属性上变化时才报**。
+   图形是彩色的但规律落在数量上 → 只报数量基因。
+   没有这条，每道题都会声称训练了颜色。
+
+3. **矩阵不是叉乘，而且「排除」必须写理由。**
+   7 × 6 = 42 格，4 格排除：`numerical × match`（两条数列的同构匹配退化成
+   「都是 +2」）、`relational × continue`（关系不是序列，没有「下一个」）、
+   `relational × create` 与 `transformation × create`（需要关系语法 / 变换编辑器）。
+   S7 守的不变式是**允许 + 排除正好覆盖每格一次**——不许有格子没表态。
+   这才让「我们想过全部 42 格」成为可核对的事实而不是断言。
+
+4. **3×3 图形阵列的独占保住了。**
+   `pattern.json → seriesBoundary.gridAnchorZh` 与 `SPATIAL-PATTERN-MODULE.md` §4.4
+   都写着它是小精灵 Spatial 的专属锚点。学习系列的 `spatial` 改用
+   **1×N / 2×N 位置条带**与数表。差异化不来自那 9 个格子长什么样，
+   来自 Task 维度和二维行列同时成立。同理 `transformation` 只做可数的部件与属性变化，
+   单符号朝向旋转归小精灵 Visual、方向+步长归 Motion。
+
+5. **`task` 由 `direction` 推出，永不独立赋值。**
+   `TASK_OF = { forward:'continue', interior:'complete', backward:'complete' }`。
+   这样一条记录里 `inference_direction` 与 `task_complexity` 不可能互相矛盾，
+   S7 与 test.html 两边都检查这一点。
+
+6. **一次 8 题，两边都声明、由校验器对撞。**
+   `sessionPolicy.maxItemsPerSession = 8` ↔ `game.js` 的 `var SESSION_SIZE = 8`。
+   抽题**不打乱题序**（题库按由易到难写），随机丢掉多余的那几道，
+   所以 10 题单元每次出不同的 8 道且仍由易到难。实测 200 轮 60 道题全被抽到，无死题。
+
+**实测结果**
+
+- `metadata/validate.html`：**OK 75 · INFO 16 · WARN 0 · FAIL 0**（validator v1.2.0），
+  S7 的 17 项全绿。多出的那条 INFO 是新铸基因还没人认领（预期）——
+  顺手把 S1 那句「已被 game.json 认领但代码未上报」改准了，
+  死条目 + planned 的正确说法是「已登记但还没有任何模块认领」。
+- `learning/math/pattern/test.html`：**PASS 34 · WARN 2 · FAIL 0**（原 30），
+  两条 WARN 仍是那两条设计意图。新增的检查：一次恰好 8 题、
+  200 轮内 60 道题无死题、`taskType` 跟随 `inferenceDirection`、六轴词表。
+- 记录里现在多了 `structure` / `carrier` / `taskType`，
+  `patternType` 从 `progression` 变成 `numerical`，
+  `geneIds` 从 1 个变成 2 个（`SEQUENCE.BASIC` + `QUANTITY.RELATION`）。
+
+**下一步（次序见架构文档 §9）**：第 2 步是 v1 那 **28 个母模板的规格单**
+（`PATTERN-QUALITY-GATE.md` §2 + 新增的 §2.1 三维附加必填项）——
+**瓶颈是规格单不是代码**；第 3 步是把 comparison 的 `engine.js` 与 4 个 runtime
+抽到共享目录（前缀参数化，默认 `cmp`）；第 4 步才是
+`sequence-engine.js` + 结构签名验证器 + generator + templates.json。
+第 1–3 步期间现有规律单元原样在线，没有回归风险。
+
 ---
 
 ### ~~P1. Interaction / Mini-game 结算没有走 `shell.report()`~~ ✅ 已完成（§1.5）
@@ -337,7 +423,8 @@ history 管深度轴，engine 事件管 process 细节。
 
 `metadata/validate.html` 上线，6 组 suite 把 `difficultyAxes` / `levelMap` / `typeTree` /
 `rootgene.json` 与代码对撞一次，当时 **OK 49 · INFO 13 · WARN 0 · FAIL 0**；
-规律单元接线后（§1.8）为 **OK 58 · INFO 15 · WARN 0 · FAIL 0**。
+规律单元接线后（§1.8）为 OK 58 · INFO 15；三维模型落地后（§1.9）加了第 7 组
+suite（structure × task 白名单矩阵），现为 **OK 75 · INFO 16 · WARN 0 · FAIL 0**。
 它当场逮到了两处真谎报（`typeTree.temporal` 与 `logic_strategy` 写着 planned、
 题库里其实有 5 道和 3 道），已修。
 
@@ -459,8 +546,18 @@ result 词表改造、服务器 schema、推荐机制。
 - **分工**：本地实现 + 提交由模型做；**push 与线上 GitHub Pages 测试由用户自己做**。
 - 每次改完 comparison 相关代码，请用户在浏览器跑 `learning/math/comparison/test.html`，
   对基线 **OK 73 · WARN 0 · FAIL 0**。
+  ⚠️ **这一页不是确定性的**：它把每个母模板随机跑 20 次，其中「变化度」检查
+  （`LOW VAR`，实测出现在 `cmp-k1-quantity-002` 这类取值域很小的模板上）
+  会随机偶发。同一份代码连跑三次实测为 OK 73 / 73 / 71。
+  所以判据是 **FAIL 必须为 0**；只出 `LOW VAR` / `SKEWED` 类 WARN 时**重跑两次**，
+  若时好时坏就是随机噪声，不是回归。真回归会稳定复现。
 - 每次改完 pattern 相关代码，跑 `learning/math/pattern/test.html`，
-  对基线 **PASS 30 · WARN 2 · FAIL 0**（两条 WARN 是设计意图，见 §1.8）。
+  对基线 **PASS 34 · WARN 2 · FAIL 0**（两条 WARN 是设计意图，见 §1.8）。
   这一页不需要 fetch，`file://` 下也能开。
-- 改完 metadata 或任何 `LEVEL_GRADE` / `difficultyAxisFor` / `*_TYPE_OF` 声明，
-  跑 `metadata/validate.html`（**需 HTTP**），对基线 **OK 58 · INFO 15 · WARN 0 · FAIL 0**。
+- 改完 metadata 或任何 `LEVEL_GRADE` / `difficultyAxisFor` / `*_TYPE_OF` /
+  `TASK_OF` / `STRUCTURE_GENES` / `SESSION_SIZE` 声明，
+  跑 `metadata/validate.html`（**需 HTTP**），对基线
+  **OK 75 · INFO 16 · WARN 0 · FAIL 0**（validator v1.2.0）。
+- 改 `pattern.json` 的 `typeTree` / `taskTypes` / `taskMatrix` 前先读
+  `docs/patterns/PATTERN-MODULE-ARCHITECTURE.md` §3 与 §10：
+  允许格 + 排除格必须**正好覆盖 structure × task 每一格一次**，S7 会挡。

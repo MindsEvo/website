@@ -4,14 +4,19 @@
  * Learning Foundation · Math Thinking · Pattern 规律
  *
  * This file carries the module's RADAR CONTRACT as well as its game config.
- * The contract is the four declarations below — LEVEL_GRADE, UNIT_LEVEL,
- * PATTERN_TYPE_OF and the `base` table inside difficultyAxisFor() — and it is
- * cross-checked against metadata/metathinking/pattern.json by
- * metadata/validate.html (suites S2 / S3 / S4). Keep them literal `var X = {`
- * declarations: the validator reads this file as text.
+ * The contract is the declarations below — LEVEL_GRADE, UNIT_LEVEL,
+ * PATTERN_TYPE_OF, TASK_OF, SESSION_SIZE and the `base` table inside
+ * difficultyAxisFor() — and it is cross-checked against
+ * metadata/metathinking/pattern.json by metadata/validate.html (suites S2 / S3 /
+ * S4 / S7). Keep them literal `var X = {` declarations: the validator reads this
+ * file as text.
+ *
+ * Three-dimension model (pattern.json → designModel):
+ *   structure × carrier × task. Everything shipped here is
+ *   structure=numerical · carrier=numeral · task=continue|complete.
  *
  * Metadata:  /metadata/metathinking/pattern.json
- * RootGene:  RG.PATTERN.SEQUENCE.BASIC
+ * RootGene:  RG.PATTERN.SEQUENCE.BASIC (structure) + RG.PATTERN.QUANTITY.RELATION (carrier)
  * Engine shared with MindSeeds Pattern Hunter; stats recorded independently.
  */
 (function () {
@@ -40,18 +45,45 @@
   var UNIT_RULE = { '1': 'count_up',   '2': 'skip_count', '3': 'fives_tens',
                     '4': 'count_down', '5': 'doubling',   '6': 'story' };
 
-  // Rule type → pattern.json typeTree id. Every rule shipped today lands in
-  // `progression`, which is the honest answer: the whole existing bank is
-  // numeric progression. `repetition` / `alternating` / `rule_induction` /
-  // `structure` get entries here when content for them actually ships.
+  // Rule type → pattern.json typeTree id (the STRUCTURE dimension). Every rule
+  // shipped today lands in `numerical`, which is the honest answer: the whole
+  // existing bank is a numeric run. The other six structures — repetition,
+  // growth, alternating, spatial, transformation, relational — get entries here
+  // when content for them actually ships.
+  //
+  // v0.2.0 renamed `progression` → `numerical` and folded the old `structure`
+  // (number tables) into it; both were "the change lives in the numeral".
   var PATTERN_TYPE_OF = {
-    count_up:   'progression',
-    skip_count: 'progression',
-    fives_tens: 'progression',
-    count_down: 'progression',
-    doubling:   'progression',
-    story:      'progression'
+    count_up:   'numerical',
+    skip_count: 'numerical',
+    fives_tens: 'numerical',
+    count_down: 'numerical',
+    doubling:   'numerical',
+    story:      'numerical'
   };
+
+  // Structure id → the rootGenes an item of that structure reports.
+  // Per pattern.json → geneReporting: the structure gene, plus the carrier gene
+  // of the attribute the rule actually varies. Everything here varies a
+  // quantity, so `numerical` reports both.
+  var STRUCTURE_GENES = {
+    numerical: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION']
+  };
+
+  // The carrier every item currently uses (pattern.json → carriers).
+  var CARRIER = 'numeral';
+
+  // Items shown in one run. The bank is bigger than a session on purpose: 8
+  // keeps a sitting short for a 6-8 year old and keeps testing fast. Mirrors
+  // pattern.json → sessionPolicy.maxItemsPerSession, which S7 collides.
+  var SESSION_SIZE = 8;
+
+  // Where the blank sits decides WHERE the child reasons (inference_direction);
+  // this table decides WHAT the job is (task_complexity). They are two axes:
+  // a gap at the end is "carry the run on" (continue); a gap anywhere else is
+  // "fill the hole" (complete), whether the cues sit on both sides or only
+  // after it.
+  var TASK_OF = { forward: 'continue', interior: 'complete', backward: 'complete' };
 
   /**
    * Where the blank sits decides which direction the child must reason in —
@@ -72,23 +104,23 @@
   }
 
   /**
-   * The five difficulty axes of pattern.json, per grade.
+   * The six difficulty axes of pattern.json, per grade.
    *
    * The two rows are deliberately identical. Everything shipped today is a
-   * single-rule numeric progression read left to right, at both grades; G1 and
-   * G2 differ only in the arithmetic of the rule (+1..+10 vs −n and ×n), and
-   * none of these five axes encodes that. Inventing a difference here would
-   * put a number on the radar that no content backs. What does move is set
-   * per ITEM below, from the item itself.
+   * single-rule numeric run read left to right, at both grades; G1 and G2 differ
+   * only in the arithmetic of the rule (+1..+10 vs −n and ×n), and none of these
+   * six axes encodes that. Inventing a difference here would put a number on the
+   * radar that no content backs. What does move is set per ITEM below, from the
+   * item itself.
    */
   function difficultyAxisFor(levelId, ruleType, direction) {
     var base = {
       G1: { object_complexity: 'symbolic', rule_complexity: 'single',
-            inference_direction: 'forward', language_complexity: 'question',
-            transfer_complexity: 'within-domain' },
+            inference_direction: 'forward', task_complexity: 'continue',
+            language_complexity: 'question', transfer_complexity: 'within-domain' },
       G2: { object_complexity: 'symbolic', rule_complexity: 'single',
-            inference_direction: 'forward', language_complexity: 'question',
-            transfer_complexity: 'within-domain' }
+            inference_direction: 'forward', task_complexity: 'continue',
+            language_complexity: 'question', transfer_complexity: 'within-domain' }
     }[levelId];
     if (!base) return null;
 
@@ -105,6 +137,11 @@
     // branches so the value is visible to validate.js as a literal.
     if (direction === 'backward')      { axis.inference_direction = 'backward'; }
     else if (direction === 'interior') { axis.inference_direction = 'interior'; }
+
+    // …and the task follows from the direction, never independently, so the two
+    // axes can never contradict each other in a record.
+    if (direction === 'backward')      { axis.task_complexity = 'complete'; }
+    else if (direction === 'interior') { axis.task_complexity = 'complete'; }
 
     return axis;
   }
@@ -130,17 +167,26 @@
   function buildRadarContext(unitId, direction, extra) {
     var levelId  = UNIT_LEVEL[unitId] || null;
     var ruleType = UNIT_RULE[unitId]  || null;
+    var structure = ruleType ? (PATTERN_TYPE_OF[ruleType] || null) : null;
     var ctx = {
       moduleId:    MODULE_ID,
       moduleType:  MODULE_TYPE,
       levelId:     levelId,
       gradeCode:   LEVEL_GRADE[levelId] || null,
-      patternType: ruleType ? (PATTERN_TYPE_OF[ruleType] || null) : null,
+      patternType: structure,
+      structure:   structure,
+      carrier:     CARRIER,
+      taskType:    direction ? (TASK_OF[direction] || null) : null,
       ruleType:    ruleType,
       difficultyAxis: difficultyAxisFor(levelId, ruleType, direction),
       sourceGameId: SOURCE_GAME_ID
     };
     return extra ? Object.assign(ctx, extra) : ctx;
+  }
+
+  /** The genes an item of this structure trains (pattern.json → geneReporting). */
+  function genesFor(structure) {
+    return (STRUCTURE_GENES[structure] || []).slice();
   }
 
   /**
@@ -158,10 +204,27 @@
     return a;
   }
 
+  /**
+   * Take SESSION_SIZE questions out of a unit, keeping the authored order.
+   *
+   * The bank authors each unit in rising difficulty, so the run is NOT shuffled;
+   * instead the surplus items are dropped at random. A unit of 10 therefore
+   * shows a different 8 each sitting while still reading easy → hard, and a unit
+   * at or under the limit is returned whole.
+   */
+  function _pickSession(questions) {
+    if (questions.length <= SESSION_SIZE) return questions.slice();
+    var keep = questions.map(function (_, i) { return i; });
+    while (keep.length > SESSION_SIZE) {
+      keep.splice(Math.floor(Math.random() * keep.length), 1);
+    }
+    return keep.map(function (i) { return questions[i]; });
+  }
+
   function buildUnits(source) {
     return (source || []).map(function (unit) {
       var copy = Object.assign({}, unit);
-      copy.questions = unit.questions.map(function (q) {
+      copy.questions = _pickSession(unit.questions).map(function (q) {
         var qc = Object.assign({}, q);
         qc.options = _shuffled(q.options);
         return qc;
@@ -176,13 +239,18 @@
     MODULE_ID: MODULE_ID,
     MODULE_TYPE: MODULE_TYPE,
     SOURCE_GAME_ID: SOURCE_GAME_ID,
+    SESSION_SIZE: SESSION_SIZE,
+    CARRIER: CARRIER,
     LEVEL_GRADE: LEVEL_GRADE,
     UNIT_LEVEL: UNIT_LEVEL,
     UNIT_RULE: UNIT_RULE,
     PATTERN_TYPE_OF: PATTERN_TYPE_OF,
+    TASK_OF: TASK_OF,
+    STRUCTURE_GENES: STRUCTURE_GENES,
     inferenceDirectionOf: inferenceDirectionOf,
     difficultyAxisFor: difficultyAxisFor,
     buildRadarContext: buildRadarContext,
+    genesFor: genesFor,
     buildUnits: buildUnits
   };
 
@@ -207,7 +275,7 @@
     title:    { zh: '🔢 数学规律', en: '🔢 Math Patterns' },
     subtitle: { zh: '在数字中发现规律，训练预测与归纳能力',
                 en: 'Discover patterns in numbers — build prediction & generalization' },
-    passScore: 7,
+    passScore: Math.ceil(SESSION_SIZE * 0.75),   // sessionPolicy.passRatio
     debug: false,
     units: buildUnits(MP_DATA.units),
 
@@ -227,7 +295,13 @@
                                  : items.join(', ') + '. What is the missing number?';
     },
 
-    registerRootGenes: function () { return ['RG.PATTERN.SEQUENCE.BASIC']; },
+    /**
+     * Structure gene + the carrier gene of the attribute the rule varies. The
+     * whole bank is `numerical` on a numeral carrier, so both come out of
+     * STRUCTURE_GENES.numerical — see pattern.json → geneReporting for why a
+     * carrier gene is reported only when the rule actually lives in it.
+     */
+    registerRootGenes: function () { return genesFor('numerical'); },
 
     /**
      * One Attempt per unit run. The batch is labelled with the direction the
@@ -245,6 +319,7 @@
       return buildRadarContext(unit.id, dominant, {
         inferenceDirection:  dominant,
         inferenceDirections: _unique(dirs),
+        taskTypes:           _unique(dirs.map(function (d) { return TASK_OF[d] || null; })),
         activityRuntime:     'puzzle'
       });
     }

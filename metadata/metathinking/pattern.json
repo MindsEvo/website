@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-02",
+  "version": "v0.2.0",
+  "updatedAt": "2026-09-04",
   "moduleType": "metathinking",
   "id": "pattern",
   "canonicalUrl": "/metadata/metathinking/pattern.json",
@@ -9,8 +9,15 @@
     "en": "Pattern"
   },
   "description": {
-    "zh": "规律是从一串元素的排列中提取重复或递进规则，并用这条规则向前续写、向内补全、向后逆推、修复破损或迁移到新载体的元思维操作。",
-    "en": "Pattern is a meta-thinking operation that extracts the repeating or progressing rule behind an arrangement of elements and then uses that rule to extend it forward, fill an interior gap, work backward, repair a broken run, or transfer it to a new carrier."
+    "zh": "规律是在重复、变化、位置与关系中发现稳定结构，并用这个结构预测、补全、纠错、迁移与创造的元思维操作。比较训练孩子看见「不同与相同」，规律训练孩子从这些变化中发现「什么保持不变」。",
+    "en": "Pattern is the meta-thinking operation of finding the stable structure inside repetition, change, position and relation, then using that structure to predict, complete, repair, transfer and create. Comparison trains a child to see what differs and what matches; Pattern trains them to find what stays invariant across those changes."
+  },
+  "designModel": {
+    "summaryZh": "一道规律题由三个相互独立的维度确定：规律结构（structure，规律本身怎样形成）× 表现载体（carrier，用什么呈现）× 思维任务（task，要孩子做什么）。同一个 AB 结构换载体、换任务，就是完全不同的体验，因此题量来自维度组合而不是逐题手写。",
+    "summaryEn": "One pattern item is fixed by three independent dimensions: structure (how the regularity is formed) x carrier (what presents it) x task (what the child must do). The same AB structure on a new carrier with a new task is a different experience, so volume comes from combining dimensions rather than hand-writing items.",
+    "orthogonalityZh": "三维独立，但不是叉乘：部分 (structure, task) 组合无意义或退化，允许的组合由 taskMatrix 白名单显式列出，被排除的组合连同理由记在 taskMatrixExclusions，两者合起来必须正好覆盖 structure x task 的每一格一次。",
+    "orthogonalityEn": "The three dimensions are independent but not a cross product: some (structure, task) cells are meaningless or degenerate. Allowed cells are listed explicitly in taskMatrix and excluded ones, with reasons, in taskMatrixExclusions; together they must cover every structure x task cell exactly once.",
+    "doc": "/docs/patterns/PATTERN-MODULE-ARCHITECTURE.md"
   },
   "ageRange": {
     "min": 4,
@@ -27,21 +34,47 @@
     "policyZh": "小精灵系列的 9 个规律猎人按线索分工（颜色、大小、图形、运动、时间、空间、数量、逻辑、综合），训练的是在时间压力下对单一线索的快速识别，出题方向恒为「向前续写」。学习系列的规律单元不按线索再分一遍，而是按规则处理的深度分工：能不能说出规则、能不能向内与向后用、能不能发现并修好被破坏的规律、能不能换个载体照用。因此同一个根基因（如 RG.PATTERN.VISUAL.COLOR）会同时被两边训练，这是 M:N 关系，不是重复建设。",
     "policyEn": "The nine MindSeeds pattern hunters split by cue (color, size, visual, motion, temporal, spatial, quantity, logic, mixed) and train fast recognition of a single cue under time pressure, always in the forward direction. The Learning pattern module does not re-partition by cue; it partitions by depth of rule handling: can the rule be stated, used inward and backward, used to find and repair a broken run, and carried to a new carrier. The same rootGene (e.g. RG.PATTERN.VISUAL.COLOR) is therefore trained on both sides — an M:N relation, not duplicated work.",
     "gridAnchorZh": "3x3 图形阵列是小精灵 Spatial Pattern 的专属视觉锚点（见 docs/patterns/SPATIAL-PATTERN-MODULE.md）。学习系列的 structure 类型只用数表类载体（数表、加法表、日历），不占用 3x3 图形阵列。",
-    "gridAnchorEn": "The 3x3 shape grid is the exclusive visual anchor of MindSeeds Spatial Pattern (see docs/patterns/SPATIAL-PATTERN-MODULE.md). The Learning `structure` type uses number-table carriers only (number tables, addition tables, calendars) and never claims the 3x3 shape grid."
+    "gridAnchorEn": "The 3x3 shape grid is the exclusive visual anchor of MindSeeds Spatial Pattern (see docs/patterns/SPATIAL-PATTERN-MODULE.md). The Learning `structure` type uses number-table carriers only (number tables, addition tables, calendars) and never claims the 3x3 shape grid.",
+    "transformationBoundaryZh": "变换规律的裁定沿用 docs/patterns/SPATIAL-PATTERN-MODULE.md §2：单符号朝向旋转归小精灵 Visual，方向加步长的连续移动归 Motion，学习系列的 transformation 只做可数的部件与属性变化。",
+    "transformationBoundaryEn": "Transformation follows the same adjudication as docs/patterns/SPATIAL-PATTERN-MODULE.md section 2: single-symbol heading rotation is MindSeeds Visual, direction-plus-step movement is Motion, and the Learning transformation type covers only countable part and attribute changes."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报「结构基因 + 规则真正变化的那个属性的载体基因」。载体基因只在规律本身在这个属性上变化时才报：图形是彩色的、但规律落在数量上，只报数量基因，不报颜色基因。rule_complexity=compound（一条规则同时作用在两条线索上）时额外加报 RG.PATTERN.INTEGRATION.MULTI_DIMENSION。",
+    "ruleEn": "Every attempt reports the structure gene plus the carrier gene of the attribute the rule actually varies. A carrier gene is reported only when the rule lives in that attribute: if the shapes are coloured but the rule is about quantity, report the quantity gene and not the colour gene. When rule_complexity=compound (one rule acting on two cues at once), also report RG.PATTERN.INTEGRATION.MULTI_DIMENSION.",
+    "whyZh": "登记表里那 9 个 PATTERN 基因是按线索（cue）划分的，本模块的 7 类是按结构划分的，两种切法不同。结构 + 变化属性同时上报，才能既如实说出「练的是哪种结构」又如实说出「练在哪条线索上」，也让 seriesBoundary 里那句 M:N 成为可核对的事实。",
+    "whyEn": "The registry's nine PATTERN genes partition by cue while this module's seven types partition by structure. Reporting both the structure and the varying attribute states honestly which structure was trained and on which cue, and turns the M:N claim in seriesBoundary into something checkable.",
+    "compoundGeneId": "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
   },
   "rootGeneIds": [
     "RG.PATTERN.SEQUENCE.BASIC",
     "RG.PATTERN.QUANTITY.RELATION",
     "RG.PATTERN.VISUAL.COLOR",
-    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
+    "RG.PATTERN.VISUAL.SIZE",
+    "RG.PATTERN.VISUAL.SEQUENCE",
+    "RG.PATTERN.SPATIAL.RELATION",
+    "RG.PATTERN.TEMPORAL.SEQUENCE",
+    "RG.PATTERN.MOTION.SEQUENCE",
+    "RG.PATTERN.TRANSFORMATION.RULE",
+    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION",
+    "RG.MODELING.EQUATION.RELATION"
   ],
+  "rootGeneScopeNote": {
+    "zh": "这是本模块做完七类结构后会训练到的全集（课程范围），不是任何单个游戏当前上报的集合——后者写在 metadata/game.json 各 game 条目的 rootGeneIds 里，由校验器 S1 与代码对撞。",
+    "en": "This is the full set the module will train once all seven structures ship (a curriculum scope claim), not what any single game reports today — that lives in each game entry's rootGeneIds in metadata/game.json and is collided with the code by S1."
+  },
   "difficultyAxes": [
     {
       "id": "object_complexity",
       "zh": "对象复杂度",
       "en": "Object Complexity",
-      "progression": ["concrete", "symbolic", "abstract"],
-      "sharedWith": ["comparison"],
+      "progression": [
+        "concrete",
+        "symbolic",
+        "abstract"
+      ],
+      "sharedWith": [
+        "comparison"
+      ],
       "noteZh": "与 comparison 模块同名同取值，雷达图可跨模块对比：具体载体（水果、积木）→ 符号载体（数字、字母）→ 抽象载体（规则本身）。",
       "noteEn": "Same id and values as in the comparison module so the radar can compare across modules: concrete carriers -> symbolic carriers -> the rule itself."
     },
@@ -49,7 +82,12 @@
       "id": "rule_complexity",
       "zh": "规则复杂度",
       "en": "Rule Complexity",
-      "progression": ["single", "two_step", "alternating", "compound"],
+      "progression": [
+        "single",
+        "two_step",
+        "alternating",
+        "compound"
+      ],
       "noteZh": "single 一条规则（+1）；two_step 一条规则含两步（+2 再 +3 循环）；alternating 两条规则交错（奇偶位各自成规律）；compound 一条规则同时作用在两条线索上（颜色与大小同时变）。",
       "noteEn": "single = one rule (+1); two_step = one rule with two steps (+2 then +3, repeating); alternating = two interleaved rules (odd and even positions each follow their own); compound = one rule acting on two cues at once (color and size both change)."
     },
@@ -57,52 +95,171 @@
       "id": "inference_direction",
       "zh": "推理方向",
       "en": "Inference Direction",
-      "progression": ["forward", "interior", "backward", "repair"],
-      "noteZh": "本模块最强的难度杠杆，也是与小精灵系列的分界：小精灵恒为 forward。interior 空缺在中间，两侧都能提供线索；backward 空缺在开头，必须反用规则；repair 没有空缺，序列里有一项被改错，要先发现再改对。",
-      "noteEn": "The strongest difficulty lever in this module and the boundary with MindSeeds, which is always forward. interior = the gap sits inside, with cues on both sides; backward = the gap is at the start and the rule must be inverted; repair = nothing is blank, one item is wrong and must first be found, then corrected."
+      "progression": [
+        "forward",
+        "interior",
+        "backward"
+      ],
+      "noteZh": "本模块最强的难度杠杆之一，也是与小精灵系列的分界：小精灵恒为 forward。这根轴只描述空缺的位置：forward 空缺在末尾，interior 空缺在中间、两侧都有线索，backward 空缺在开头、必须反用规则。v0.2.0 把 repair 移出本轴——「有一项被改错」是要做的事，不是空缺的位置，它归 task_complexity。",
+      "noteEn": "One of the two strongest difficulty levers here and the boundary with MindSeeds, which is always forward. This axis describes only WHERE the gap is: forward at the end, interior inside with cues on both sides, backward at the start so the rule must be inverted. v0.2.0 moved repair off this axis — \"one item is wrong\" is a job to do, not a gap position, and belongs to task_complexity.",
+      "movedOut": [
+        "repair"
+      ]
+    },
+    {
+      "id": "task_complexity",
+      "zh": "任务复杂度",
+      "en": "Task Complexity",
+      "progression": [
+        "discover",
+        "continue",
+        "complete",
+        "repair",
+        "match",
+        "create"
+      ],
+      "noteZh": "第三维「思维任务」的难度化：看见规律 → 预测规律 → 补全规律 → 检查规律 → 迁移规律 → 创造规律。与 inference_direction 正交：后者说空缺在哪，前者说要孩子做什么。",
+      "noteEn": "The Task dimension expressed as difficulty: see the rule, predict it, fill it in, check it, carry it over, create one. Orthogonal to inference_direction, which says where the gap is rather than what the child must do."
     },
     {
       "id": "language_complexity",
       "zh": "语言复杂度",
       "en": "Language Complexity",
-      "progression": ["action", "question", "compound", "explain"],
-      "sharedWith": ["comparison"]
+      "progression": [
+        "action",
+        "question",
+        "compound",
+        "explain"
+      ],
+      "sharedWith": [
+        "comparison"
+      ]
     },
     {
       "id": "transfer_complexity",
       "zh": "迁移复杂度",
       "en": "Transfer Complexity",
-      "progression": ["within-domain", "cross-domain", "strategy", "evidence"],
-      "sharedWith": ["comparison"]
+      "progression": [
+        "within-domain",
+        "cross-domain",
+        "strategy",
+        "evidence"
+      ],
+      "sharedWith": [
+        "comparison"
+      ]
     }
   ],
   "typeTree": [
     {
       "id": "repetition",
       "nameZh": "重复规律",
-      "nameEn": "Repetition Pattern",
+      "nameEn": "Repeating Pattern",
+      "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
       "status": "planned",
       "examples": [
-        "AB / AABB / ABC cycle continuation on color and shape carriers",
+        "AB / AAB / ABB / ABC / AABB / AABC cycle continuation",
+        "two attributes cycling at once (color and shape)",
         "find the item that breaks the cycle"
       ],
       "coverageGapZh": "K1/K2 的非数字重复规律内容尚未实现；现有题库全部是 G1/G2 的数字递进题。",
       "coverageGapEn": "Non-numeric repetition content for K1/K2 is not implemented yet; the whole existing bank is G1/G2 numeric progression."
     },
     {
-      "id": "progression",
-      "nameZh": "递进规律",
-      "nameEn": "Progression Pattern",
+      "id": "growth",
+      "nameZh": "增长与缩减规律",
+      "nameEn": "Growing and Shrinking Pattern",
+      "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
+      "status": "planned",
+      "examples": [
+        "one circle, two circles, three circles",
+        "small, medium, large",
+        "a shape gaining one edge each step",
+        "moving one slot forward each step"
+      ],
+      "noteZh": "与 numerical 的分界：变化落在载体的可数量上（几个、多大、多长）算 growth；变化落在数值本身算 numerical。",
+      "noteEn": "Boundary with numerical: if the change is in a countable property of the carrier (how many, how big) it is growth; if it is in the numeral itself it is numerical."
+    },
+    {
+      "id": "alternating",
+      "nameZh": "交替与双规则",
+      "nameEn": "Alternating and Dual Rule",
+      "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
+      "status": "planned",
+      "examples": [
+        "up down up down / on off on off",
+        "+2 / -1 alternating runs",
+        "odd and even positions each follow their own rule",
+        "color and size changing on two independent cycles"
+      ]
+    },
+    {
+      "id": "spatial",
+      "nameZh": "空间规律",
+      "nameEn": "Spatial Pattern",
+      "structureGeneId": "RG.PATTERN.SPATIAL.RELATION",
+      "status": "planned",
+      "examples": [
+        "left right left right on a 1xN position strip",
+        "top middle bottom repeating on a 2xN strip",
+        "a shape translating one slot each step",
+        "the missing cell of a position strip"
+      ],
+      "carrierBoundaryZh": "载体只用 1xN / 2xN 位置条带与数表，不使用 3x3 图形阵列（那是小精灵 Spatial Pattern 的专属视觉锚点，见 seriesBoundary.gridAnchorZh）。",
+      "carrierBoundaryEn": "Carriers are 1xN / 2xN position strips and number tables only, never the 3x3 shape grid, which is the exclusive visual anchor of MindSeeds Spatial Pattern (see seriesBoundary.gridAnchorZh)."
+    },
+    {
+      "id": "transformation",
+      "nameZh": "变换规律",
+      "nameEn": "Transformation Pattern",
+      "structureGeneId": "RG.PATTERN.TRANSFORMATION.RULE",
+      "status": "planned",
+      "examples": [
+        "one more dot each step",
+        "one part removed each step",
+        "shapes assembling and splitting",
+        "one attribute changing by a fixed rule each step"
+      ],
+      "carrierBoundaryZh": "只做可数的部件与属性变化。单符号朝向旋转（↑→↓←）归小精灵 Visual Pattern，方向加步长的连续移动归 Motion Pattern，见 docs/patterns/SPATIAL-PATTERN-MODULE.md §2。",
+      "carrierBoundaryEn": "Countable part and attribute changes only. Rotating a single symbol's heading belongs to MindSeeds Visual Pattern and direction-plus-step movement to Motion Pattern; see docs/patterns/SPATIAL-PATTERN-MODULE.md section 2."
+    },
+    {
+      "id": "relational",
+      "nameZh": "关系规律",
+      "nameEn": "Relational Pattern",
+      "structureGeneId": "RG.MODELING.EQUATION.RELATION",
+      "status": "planned",
+      "examples": [
+        "every big shape has a small one beside it",
+        "each animal maps to one food",
+        "the left group always has one more than the right",
+        "input a shape, output the transformed shape"
+      ],
+      "noteZh": "关注的是对象之间的对应关系，不是一条序列，所以它没有「下一个」——推进方式是再给一组输入，那属于 complete 任务。",
+      "noteEn": "It is about the correspondence between objects rather than a run, so it has no next item: advancing means supplying another input pair, which is the complete task."
+    },
+    {
+      "id": "numerical",
+      "nameZh": "数量与数据规律",
+      "nameEn": "Numerical and Data Pattern",
+      "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
       "status": "partial",
       "examples": [
         "counting and skip counting within 20 (+1 / +2 / +3)",
         "fives and tens (+5 / +10)",
         "decreasing runs (-2 / -3 / -4 / -5 / -10)",
         "doubling and tripling (x2 / x3)",
-        "story situations carrying a progression"
+        "story situations carrying a progression",
+        "row and column rules in a number table, addition table or calendar"
       ],
-      "coverageGapZh": "只有单选 puzzle 一种模式，且题库未接入掌握度与循环调度；缺少拖放排序与限时玩法。",
-      "coverageGapEn": "Single-choice puzzle only, with the bank not yet wired to mastery and cycle scheduling; drag-to-sort and timed play are missing.",
+      "coverageGapZh": "只有 puzzle 一种模式，且题库未接入掌握度与循环调度；缺少拖放排序与限时玩法。数表行列规律尚未实现。",
+      "coverageGapEn": "Single-choice puzzle only, with the bank not yet wired to mastery and cycle scheduling; drag-to-sort and timed play are missing, and number-table row/column rules are not implemented.",
+      "renamedFrom": [
+        "progression",
+        "structure"
+      ],
+      "renameNoteZh": "v0.2.0 合并：原 progression（数值递进）与原 structure（数表结构）都是「变化落在数值上」，拆成两类没有教学意义。",
+      "renameNoteEn": "Merged in v0.2.0: the former progression (numeric runs) and structure (number tables) are both cases of the change living in the numeral, and splitting them carried no teaching value.",
       "implementedBy": {
         "gameIds": [
           "learning-math-pattern"
@@ -113,41 +270,497 @@
         "videoIds": [
           "learning-math-pattern-intro-001"
         ]
-      }
-    },
-    {
-      "id": "alternating",
-      "nameZh": "交替与双规则",
-      "nameEn": "Alternating and Dual Rule",
-      "status": "planned",
-      "examples": [
-        "+2 / -1 alternating runs",
-        "odd and even positions each follow their own rule",
-        "color and size changing on two independent cycles"
-      ]
-    },
-    {
-      "id": "rule_induction",
-      "nameZh": "规律归纳与说明",
-      "nameEn": "Rule Induction and Explanation",
-      "status": "planned",
-      "examples": [
-        "state the rule in words after seeing several instances",
-        "apply the same rule to a new carrier",
-        "decide whether two runs share one rule"
-      ]
-    },
-    {
-      "id": "structure",
-      "nameZh": "结构规律",
-      "nameEn": "Structural Pattern",
-      "status": "planned",
-      "examples": [
-        "row and column rules in a number table",
-        "addition table and calendar regularities"
+      },
+      "extraGeneIds": [
+        "RG.PATTERN.QUANTITY.RELATION"
       ]
     }
   ],
+  "taskTypes": [
+    {
+      "id": "discover",
+      "nameZh": "发现",
+      "nameEn": "Discover",
+      "runtime": "puzzle",
+      "ladderZh": "看见规律",
+      "descZh": "从几组内容里找出存在规律的那一组。",
+      "descEn": "Pick the one run, among several, that actually follows a rule.",
+      "validator": "signature-exists"
+    },
+    {
+      "id": "continue",
+      "nameZh": "继续",
+      "nameEn": "Continue",
+      "runtime": "puzzle",
+      "ladderZh": "预测规律",
+      "descZh": "选出下一个或后面两个对象。",
+      "descEn": "Choose the next item, or the next two.",
+      "validator": "equals-next"
+    },
+    {
+      "id": "complete",
+      "nameZh": "补全",
+      "nameEn": "Complete",
+      "runtime": "puzzle",
+      "ladderZh": "补全规律",
+      "descZh": "填补序列中间或开头缺失的一项，而不总是最后一项。",
+      "descEn": "Fill a gap that sits inside or at the start of the run, not always at the end.",
+      "validator": "equals-gap"
+    },
+    {
+      "id": "repair",
+      "nameZh": "纠错",
+      "nameEn": "Repair",
+      "runtime": "puzzle",
+      "ladderZh": "检查规律",
+      "descZh": "序列没有空缺，其中一项被改错，先发现是哪一项再改对。",
+      "descEn": "Nothing is blank: one item is wrong, and it must be located before it is corrected.",
+      "validator": "index-and-value"
+    },
+    {
+      "id": "match",
+      "nameZh": "匹配",
+      "nameEn": "Match",
+      "runtime": "match",
+      "ladderZh": "迁移规律",
+      "descZh": "把一组规律与结构相同、外观不同的另一组配对（红蓝红蓝 ≡ 圆方圆方，都是 ABAB）。",
+      "descEn": "Pair a run with another that shares its structure but not its look (red blue red blue is the same ABAB as circle square circle square).",
+      "validator": "signature-equality"
+    },
+    {
+      "id": "create",
+      "nameZh": "创造",
+      "nameEn": "Create",
+      "runtime": "sort",
+      "ladderZh": "创造规律",
+      "descZh": "按给定约束拖放对象，自己造出一段符合规则的规律（约束式创造，可自动判定）。",
+      "descEn": "Drag objects to build a run that satisfies a given constraint set — constrained creation, so it stays machine-checkable.",
+      "validator": "constraint-satisfaction"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "color",
+      "zh": "颜色",
+      "en": "Color",
+      "objectComplexity": "concrete",
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.VISUAL.COLOR"
+    },
+    {
+      "id": "shape",
+      "zh": "图形",
+      "en": "Shape",
+      "objectComplexity": "concrete",
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.VISUAL.SEQUENCE"
+    },
+    {
+      "id": "size",
+      "zh": "大小",
+      "en": "Size",
+      "objectComplexity": "concrete",
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.VISUAL.SIZE"
+    },
+    {
+      "id": "count",
+      "zh": "数量",
+      "en": "Count",
+      "objectComplexity": "concrete",
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.QUANTITY.RELATION"
+    },
+    {
+      "id": "position",
+      "zh": "位置",
+      "en": "Position",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.SPATIAL.RELATION"
+    },
+    {
+      "id": "direction",
+      "zh": "方向",
+      "en": "Direction",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.SPATIAL.RELATION"
+    },
+    {
+      "id": "path",
+      "zh": "路径",
+      "en": "Path",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.SPATIAL.RELATION"
+    },
+    {
+      "id": "object",
+      "zh": "日常物品",
+      "en": "Everyday Object",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "noteZh": "物品只是外观，规律通常落在它的形状或数量上，所以不单独报载体基因。",
+      "noteEn": "An object is only the skin; the rule usually lives in its shape or count, so no separate carrier gene is reported."
+    },
+    {
+      "id": "action",
+      "zh": "动作",
+      "en": "Action",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.MOTION.SEQUENCE"
+    },
+    {
+      "id": "temporal",
+      "zh": "时间",
+      "en": "Time",
+      "objectComplexity": "concrete",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.TEMPORAL.SEQUENCE"
+    },
+    {
+      "id": "audio",
+      "zh": "声音",
+      "en": "Sound",
+      "objectComplexity": "concrete",
+      "status": "reserved",
+      "carrierGeneId": "RG.PATTERN.TEMPORAL.SEQUENCE",
+      "noteZh": "只在 schema 里预留，没有 renderer：声音载体上线前，任何模板不得声明 carrier=audio。",
+      "noteEn": "Reserved in the schema only, with no renderer: no template may declare carrier=audio until the sound carrier ships."
+    },
+    {
+      "id": "numeral",
+      "zh": "数字",
+      "en": "Numeral",
+      "objectComplexity": "symbolic",
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.QUANTITY.RELATION"
+    },
+    {
+      "id": "letter",
+      "zh": "字母与符号",
+      "en": "Letter and Symbol",
+      "objectComplexity": "symbolic",
+      "status": "planned"
+    },
+    {
+      "id": "table",
+      "zh": "数表与日历",
+      "en": "Number Table and Calendar",
+      "objectComplexity": "symbolic",
+      "status": "planned",
+      "carrierGeneId": "RG.PATTERN.QUANTITY.RELATION"
+    },
+    {
+      "id": "rule",
+      "zh": "规则本身",
+      "en": "The Rule Itself",
+      "objectComplexity": "abstract",
+      "status": "planned"
+    }
+  ],
+  "taskMatrix": [
+    {
+      "structure": "repetition",
+      "task": "discover",
+      "levelFloor": "K1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "repetition",
+      "task": "continue",
+      "levelFloor": "K1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "repetition",
+      "task": "complete",
+      "levelFloor": "K1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "repetition",
+      "task": "repair",
+      "levelFloor": "K2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "repetition",
+      "task": "match",
+      "levelFloor": "K2",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "repetition",
+      "task": "create",
+      "levelFloor": "K2",
+      "runtime": "sort",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "discover",
+      "levelFloor": "K2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "continue",
+      "levelFloor": "K2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "complete",
+      "levelFloor": "K2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "repair",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "match",
+      "levelFloor": "G1",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "growth",
+      "task": "create",
+      "levelFloor": "G1",
+      "runtime": "sort",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "discover",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "continue",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "complete",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "repair",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "match",
+      "levelFloor": "G2",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "alternating",
+      "task": "create",
+      "levelFloor": "G2",
+      "runtime": "sort",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "discover",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "continue",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "complete",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "match",
+      "levelFloor": "G2",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "spatial",
+      "task": "create",
+      "levelFloor": "G2",
+      "runtime": "sort",
+      "status": "planned"
+    },
+    {
+      "structure": "transformation",
+      "task": "discover",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "transformation",
+      "task": "continue",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "transformation",
+      "task": "complete",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "transformation",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "transformation",
+      "task": "match",
+      "levelFloor": "G2",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "relational",
+      "task": "discover",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "relational",
+      "task": "complete",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "relational",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "relational",
+      "task": "match",
+      "levelFloor": "G2",
+      "runtime": "match",
+      "status": "planned"
+    },
+    {
+      "structure": "numerical",
+      "task": "discover",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "numerical",
+      "task": "continue",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "implemented"
+    },
+    {
+      "structure": "numerical",
+      "task": "complete",
+      "levelFloor": "G1",
+      "runtime": "puzzle",
+      "status": "implemented"
+    },
+    {
+      "structure": "numerical",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtime": "puzzle",
+      "status": "planned"
+    },
+    {
+      "structure": "numerical",
+      "task": "create",
+      "levelFloor": "G2",
+      "runtime": "sort",
+      "status": "planned"
+    }
+  ],
+  "taskMatrixExclusions": [
+    {
+      "structure": "numerical",
+      "task": "match",
+      "reasonZh": "两条数列的同构匹配退化成「两组都是 +2」，与 discover 说出规则是同一件事。同构匹配要训练的是「外观不同、结构相同」，请用非数字载体。",
+      "reasonEn": "Matching two numeric runs degenerates into \"both are +2\", which is the same work as discover. Isomorphism matching is about same structure under a different look, so use a non-numeric carrier."
+    },
+    {
+      "structure": "relational",
+      "task": "continue",
+      "reasonZh": "关系规律不是序列，没有「下一个」。想推进只能再给一组输入，那本质上是 complete。",
+      "reasonEn": "A relational pattern is not a run and has no next item. Advancing means supplying another input pair, which is complete."
+    },
+    {
+      "structure": "relational",
+      "task": "create",
+      "reasonZh": "让孩子自己造一条对应关系，需要一套关系语法才能自动判定，超出约束式创造的表达能力。第二波再评估。",
+      "reasonEn": "Letting a child invent a correspondence needs a relation grammar before it can be auto-judged, which is beyond constrained creation. Re-evaluate in wave two."
+    },
+    {
+      "structure": "transformation",
+      "task": "create",
+      "reasonZh": "孩子要能定义「每次怎么变」才算创造变换，那需要一个变换编辑器，成本高于其余全部相加。第三波再评估。",
+      "reasonEn": "Creating a transformation means the child defines how each step changes, which needs a transformation editor — more expensive than everything else combined. Re-evaluate in wave three."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 puzzle 最多 8 题，便于快速测试与低龄注意力；题库可以更大，一次只抽 8 道。代码侧对应 game.js 的 SESSION_SIZE，校验器 S7 会把两边对撞。",
+    "noteEn": "A puzzle session shows at most 8 items, which keeps testing fast and suits short attention spans; the bank may be larger and a session draws 8 from it. The code-side counterpart is SESSION_SIZE in game.js, and S7 collides the two."
+  },
   "levelMap": [
     {
       "levelId": "L1",
@@ -155,7 +768,13 @@
       "gradeCode": "K1",
       "objectiveZh": "在颜色或形状载体上认出 AB 重复规律并续写下一个（不使用数字）。",
       "objectiveEn": "Recognise an AB repetition on a color or shape carrier and continue it (no numerals).",
-      "primaryTypes": ["repetition"],
+      "primaryTypes": [
+        "repetition"
+      ],
+      "primaryTasks": [
+        "discover",
+        "continue"
+      ],
       "status": "planned"
     },
     {
@@ -164,7 +783,16 @@
       "gradeCode": "K2",
       "objectiveZh": "处理 AABB / ABC 重复规律，并在 10 以内把数量递增规律与图示对应起来。",
       "objectiveEn": "Handle AABB / ABC repetition and match a quantity progression within 10 to its visual form.",
-      "primaryTypes": ["repetition", "progression"],
+      "primaryTypes": [
+        "repetition",
+        "growth",
+        "numerical"
+      ],
+      "primaryTasks": [
+        "continue",
+        "complete",
+        "create"
+      ],
       "status": "planned"
     },
     {
@@ -173,11 +801,23 @@
       "gradeCode": "G1",
       "objectiveZh": "在 20 以内认出 +1 / +2 / +3 / +5 / +10 的递进规律，并补全序列中的空缺。",
       "objectiveEn": "Recognise +1 / +2 / +3 / +5 / +10 progressions within 20 and fill the gap in a run.",
-      "primaryTypes": ["progression"],
+      "primaryTypes": [
+        "numerical"
+      ],
+      "primaryTasks": [
+        "continue",
+        "complete"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-pattern"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["L3"]
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "L3"
+      ]
     },
     {
       "levelId": "L4",
@@ -185,13 +825,26 @@
       "gradeCode": "G2",
       "objectiveZh": "处理递减与倍增规律，并在生活情境中把规律迁移使用。",
       "objectiveEn": "Handle decreasing and multiplying progressions and transfer a pattern into everyday situations.",
-      "primaryTypes": ["progression", "alternating"],
+      "primaryTypes": [
+        "numerical",
+        "alternating"
+      ],
+      "primaryTasks": [
+        "complete",
+        "repair"
+      ],
       "status": "partial",
-      "implementedBy": ["learning-math-pattern"],
-      "implementedModes": ["puzzle"],
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
       "coverageGapZh": "递减、倍增与情境迁移都已有单选题，但缺少拖放排序（把打乱的规律卡片按规则排好）与限时玩法，交替双规则题型尚未实现。",
       "coverageGapEn": "Decreasing, multiplying and story transfer all ship as single-choice questions, but drag-to-sort (ordering shuffled pattern cards) and timed play are missing, and alternating dual-rule items are not implemented.",
-      "sourceLevels": ["L4"]
+      "sourceLevels": [
+        "L4"
+      ]
     },
     {
       "levelId": "L5",
@@ -199,8 +852,19 @@
       "gradeCode": "G3",
       "objectiveZh": "处理交替与两步规则，并能逆向推出序列开头。",
       "objectiveEn": "Handle alternating and two-step rules and work backward to the start of a run.",
-      "primaryTypes": ["alternating", "rule_induction"],
-      "status": "planned"
+      "primaryTypes": [
+        "alternating",
+        "spatial",
+        "transformation"
+      ],
+      "primaryTasks": [
+        "complete",
+        "repair",
+        "match"
+      ],
+      "status": "planned",
+      "typeRenameNoteZh": "v0.2.0：原 primaryTypes 里的 rule_induction 是任务而非结构，已移到 primaryTasks。",
+      "typeRenameNoteEn": "v0.2.0: rule_induction in the former primaryTypes was a task rather than a structure and now lives in primaryTasks."
     },
     {
       "levelId": "L6",
@@ -208,8 +872,17 @@
       "gradeCode": "G4",
       "objectiveZh": "用语言说明自己找到的规则，并把同一规则迁移到新载体。",
       "objectiveEn": "State the discovered rule in words and transfer it to a new carrier.",
-      "primaryTypes": ["rule_induction", "structure"],
-      "status": "planned"
+      "primaryTypes": [
+        "repetition",
+        "numerical"
+      ],
+      "primaryTasks": [
+        "match",
+        "create"
+      ],
+      "status": "planned",
+      "typeRenameNoteZh": "v0.2.0：原 primaryTypes 里的 rule_induction 是任务而非结构，已移到 primaryTasks。",
+      "typeRenameNoteEn": "v0.2.0: rule_induction in the former primaryTypes was a task rather than a structure and now lives in primaryTasks."
     },
     {
       "levelId": "L7",
@@ -217,8 +890,16 @@
       "gradeCode": "G5",
       "objectiveZh": "在数表的行列双向规律中定位并修复被破坏的一项。",
       "objectiveEn": "Locate and repair a broken item inside the row-column rules of a number table.",
-      "primaryTypes": ["structure", "rule_induction"],
-      "status": "planned"
+      "primaryTypes": [
+        "numerical"
+      ],
+      "primaryTasks": [
+        "complete",
+        "repair"
+      ],
+      "status": "planned",
+      "typeRenameNoteZh": "v0.2.0：原 primaryTypes 里的 rule_induction 是任务而非结构，已移到 primaryTasks。",
+      "typeRenameNoteEn": "v0.2.0: rule_induction in the former primaryTypes was a task rather than a structure and now lives in primaryTasks."
     },
     {
       "levelId": "L8",
@@ -226,8 +907,17 @@
       "gradeCode": "G6",
       "objectiveZh": "判断多个候选规则中哪一条被证据支持，并说明为什么其余的不成立。",
       "objectiveEn": "Judge which of several candidate rules the evidence supports and explain why the others fail.",
-      "primaryTypes": ["rule_induction"],
-      "status": "planned"
+      "primaryTypes": [
+        "alternating",
+        "relational"
+      ],
+      "primaryTasks": [
+        "discover",
+        "match"
+      ],
+      "status": "planned",
+      "typeRenameNoteZh": "v0.2.0：原 primaryTypes 里的 rule_induction 是任务而非结构，已移到 primaryTasks。",
+      "typeRenameNoteEn": "v0.2.0: rule_induction in the former primaryTypes was a task rather than a structure and now lives in primaryTasks."
     }
   ],
   "prerequisites": [
@@ -250,45 +940,74 @@
       "titleZh": "数学规律训练介绍",
       "titleEn": "Math Pattern Training Intro",
       "status": "implemented",
-      "linkedGameIds": ["learning-math-pattern"],
-      "linkedLessonIds": ["learning-math-pattern-l1"]
+      "linkedGameIds": [
+        "learning-math-pattern"
+      ],
+      "linkedLessonIds": [
+        "learning-math-pattern-l1"
+      ]
     }
   ],
   "exercises": [
     {
       "id": "pat-repeat-continue",
       "type": "repetition",
-      "levelRange": ["L1", "L2"],
+      "levelRange": [
+        "L1",
+        "L2"
+      ],
       "descriptionZh": "在颜色或形状序列上续写重复周期。",
       "descriptionEn": "Continue a repeating cycle on a color or shape sequence.",
-      "status": "planned"
+      "status": "planned",
+      "task": "continue"
     },
     {
       "id": "pat-progression-fill",
-      "type": "progression",
-      "levelRange": ["L3", "L4"],
+      "type": "numerical",
+      "levelRange": [
+        "L3",
+        "L4"
+      ],
       "descriptionZh": "补全递进序列中的空缺，含向前续写、向内补全与向后逆推。",
       "descriptionEn": "Fill the gap in a progression, covering forward, interior and backward inference.",
       "status": "implemented",
-      "sourceGameIds": ["learning-math-pattern"],
-      "sourceLessonIds": ["learning-math-pattern-l1"],
-      "sourceLevelIds": ["L3", "L4"]
+      "sourceGameIds": [
+        "learning-math-pattern"
+      ],
+      "sourceLessonIds": [
+        "learning-math-pattern-l1"
+      ],
+      "sourceLevelIds": [
+        "L3",
+        "L4"
+      ],
+      "task": "complete"
     },
     {
       "id": "pat-repair-broken",
-      "type": "progression",
-      "levelRange": ["L4", "L7"],
+      "type": "numerical",
+      "levelRange": [
+        "L4",
+        "L7"
+      ],
       "descriptionZh": "序列中有一项被改错，先发现再改对。",
       "descriptionEn": "One item in the run is wrong; find it, then correct it.",
-      "status": "planned"
+      "status": "planned",
+      "task": "repair"
     },
     {
       "id": "pat-rule-transfer",
-      "type": "rule_induction",
-      "levelRange": ["L6", "L8"],
+      "type": "repetition",
+      "levelRange": [
+        "L6",
+        "L8"
+      ],
       "descriptionZh": "说明规则并迁移到新载体。",
       "descriptionEn": "State the rule and transfer it to a new carrier.",
-      "status": "planned"
+      "status": "planned",
+      "task": "match",
+      "noteZh": "v0.2.0：原 type=rule_induction。规则说明与迁移是 match 任务，结构维度上它落在 repetition。",
+      "noteEn": "v0.2.0: was type=rule_induction. Stating and carrying a rule over is the match task; on the structure axis it sits in repetition."
     }
   ],
   "statistics": {
@@ -310,6 +1029,8 @@
       "gradeCode",
       "patternType",
       "inferenceDirection",
+      "taskType",
+      "carrier",
       "interactionMode",
       "gameEngine",
       "endReason",
@@ -332,19 +1053,28 @@
     "aggregationRules": [
       {
         "id": "time-by-game-mode",
-        "appliesTo": ["avgTimeMs"],
+        "appliesTo": [
+          "avgTimeMs"
+        ],
         "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，interaction 是单个活动时长，mini 是整局净时长，三者不可混算。mini 的可比时间指标是 avgRoundMs。",
         "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, interaction is per-activity time, mini is the whole run. They are not comparable; for mini use avgRoundMs instead."
       },
       {
         "id": "one-template-one-attempt",
-        "appliesTo": ["completionRate", "accuracy"],
+        "appliesTo": [
+          "completionRate",
+          "accuracy"
+        ],
         "ruleZh": "一个 mini 模板只产生一个 Attempt，权重与一道 puzzle 相同；round 数只存在于 process 中，round 级事件属遥测，不得计为 Attempt。",
         "ruleEn": "A mini template yields exactly one Attempt, weighted like a single puzzle question. Round counts live only in process; round-level events are telemetry and must not be counted as attempts."
       },
       {
         "id": "direction-not-poolable",
-        "appliesTo": ["accuracy", "avgTimeMs", "errorType"],
+        "appliesTo": [
+          "accuracy",
+          "avgTimeMs",
+          "errorType"
+        ],
         "ruleZh": "accuracy 必须按 inferenceDirection 分桶。forward 与 backward 不是同一件事：把两者混算会掩盖本模块最典型的画像——「只会往后接，不会往前推」。repair 更特殊，它的失败可能是根本没发现有错，与算错规则是两种不同的问题，errorType 因此不可跨方向合并。",
         "ruleEn": "accuracy MUST be bucketed by inferenceDirection. forward and backward are not the same work, and pooling them hides this module's most characteristic profile: a child who can extend a run but cannot invert it. repair is different again — a failure there may mean the child never noticed anything was wrong, which is a different problem from misapplying the rule, so errorType must not be merged across directions."
       }
@@ -356,6 +1086,8 @@
       "age",
       "levelId",
       "patternType",
+      "carrier",
+      "taskType",
       "inferenceDirection",
       "difficultyAxis",
       "tag",

@@ -160,7 +160,7 @@
       "path": "learning/math/pattern/",
       "titleZh": "数学规律",
       "titleEn": "Math Patterns",
-      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC"],
+      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC", "RG.PATTERN.QUANTITY.RELATION"],
       "lessonIds": ["learning-math-pattern-l1"],
       "videoIds": ["learning-math-pattern-intro-001"]
     },

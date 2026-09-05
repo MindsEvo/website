@@ -134,6 +134,12 @@
   var itemRows = [];        // rendered per-unit detail
   var perUnit = {};
 
+  // The Task dimension (pattern.json → taskTypes) and the direction → task map
+  // the code claims. Restated here so a run can be checked against the vocabulary
+  // rather than against itself.
+  var TASKS = ['discover', 'continue', 'complete', 'repair', 'match', 'create'];
+  var TASK_OF_DIR = C.TASK_OF || {};
+
   // S1 · structure
   (function () {
     var S = 'S1 · 结构 Structure';
@@ -143,14 +149,21 @@
       CAPTURED ? 'id=' + CAPTURED.id : 'game.js did not call createGame');
     if (CAPTURED) {
       check(S, 'game id 与 metadata 一致', CAPTURED.id === 'learning-math-pattern', CAPTURED.id);
-      check(S, 'registerRootGenes 返回 RG.PATTERN.SEQUENCE.BASIC',
+      check(S, 'registerRootGenes 返回结构基因 + 载体基因',
         typeof CAPTURED.registerRootGenes === 'function' &&
-        CAPTURED.registerRootGenes().join(',') === 'RG.PATTERN.SEQUENCE.BASIC',
+        CAPTURED.registerRootGenes().join(',') ===
+          'RG.PATTERN.SEQUENCE.BASIC,RG.PATTERN.QUANTITY.RELATION',
         typeof CAPTURED.registerRootGenes === 'function'
           ? CAPTURED.registerRootGenes().join(',') : 'missing');
       check(S, 'getReportContext 已实现', typeof CAPTURED.getReportContext === 'function');
-      check(S, 'passScore ≤ 题目数', CAPTURED.passScore <= (units[0] || {}).questions.length,
-        'passScore=' + CAPTURED.passScore);
+      check(S, 'passScore ≤ 一次的题目数（SESSION_SIZE）',
+        CAPTURED.passScore <= C.SESSION_SIZE,
+        'passScore=' + CAPTURED.passScore + ' · SESSION_SIZE=' + C.SESSION_SIZE);
+      check(S, '每个单元一次只出 SESSION_SIZE 题',
+        (CAPTURED.units || []).every(function (u) {
+          return u.questions.length === Math.min(C.SESSION_SIZE, 10);
+        }),
+        (CAPTURED.units || []).map(function (u) { return u.questions.length; }).join('/'));
       check(S, 'debug 关闭（真实闯关进度）', CAPTURED.debug === false, String(CAPTURED.debug));
     }
 
@@ -312,15 +325,20 @@
       if (ctx.moduleId !== 'pattern')         badCtx.push('unit ' + u.id + ': moduleId');
       if (ctx.moduleType !== 'metathinking')  badCtx.push('unit ' + u.id + ': moduleType');
       if (GRADES.indexOf(ctx.gradeCode) < 0)  badCtx.push('unit ' + u.id + ': gradeCode ' + ctx.gradeCode);
-      if (ctx.patternType !== 'progression')  badCtx.push('unit ' + u.id + ': patternType ' + ctx.patternType);
+      if (ctx.patternType !== 'numerical')    badCtx.push('unit ' + u.id + ': patternType ' + ctx.patternType);
+      if (ctx.structure !== 'numerical')      badCtx.push('unit ' + u.id + ': structure ' + ctx.structure);
+      if (ctx.carrier !== 'numeral')          badCtx.push('unit ' + u.id + ': carrier ' + ctx.carrier);
+      if (TASKS.indexOf(ctx.taskType) < 0)    badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType);
+      if (ctx.taskType !== TASK_OF_DIR[ctx.inferenceDirection])
+        badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType + ' does not follow dir ' + ctx.inferenceDirection);
       if (ctx.activityRuntime !== 'puzzle')   badCtx.push('unit ' + u.id + ': activityRuntime');
       if (ctx.sourceGameId !== 'learning-math-pattern') badCtx.push('unit ' + u.id + ': sourceGameId');
       if (!ctx.difficultyAxis)                badCtx.push('unit ' + u.id + ': difficultyAxis missing');
-      if (['forward', 'interior', 'backward', 'repair'].indexOf(ctx.inferenceDirection) < 0)
+      if (['forward', 'interior', 'backward'].indexOf(ctx.inferenceDirection) < 0)
         badCtx.push('unit ' + u.id + ': inferenceDirection ' + ctx.inferenceDirection);
       built.push('unit ' + u.id + ': ' + ctx.levelId + '/' + ctx.gradeCode +
-                 ' ' + ctx.ruleType + '→' + ctx.patternType +
-                 ' dir=' + ctx.inferenceDirection +
+                 ' ' + ctx.ruleType + '→' + ctx.structure + '/' + ctx.carrier +
+                 ' dir=' + ctx.inferenceDirection + ' task=' + ctx.taskType +
                  ' [' + (ctx.inferenceDirections || []).join('|') + ']' +
                  ' axis=' + JSON.stringify(ctx.difficultyAxis));
     });
@@ -330,10 +348,14 @@
     // Axis values must be inside pattern.json's own progressions. Duplicated
     // here on purpose: metadata/validate.html checks the source text, this
     // checks the values a live run produces.
+    //
+    // v0.2.0: six axes. `repair` left inference_direction (it is a job, not a
+    // gap position) and task_complexity arrived to hold the six thinking tasks.
     var VOCAB = {
       object_complexity:   ['concrete', 'symbolic', 'abstract'],
       rule_complexity:     ['single', 'two_step', 'alternating', 'compound'],
-      inference_direction: ['forward', 'interior', 'backward', 'repair'],
+      inference_direction: ['forward', 'interior', 'backward'],
+      task_complexity:     TASKS,
       language_complexity: ['action', 'question', 'compound', 'explain'],
       transfer_complexity: ['within-domain', 'cross-domain', 'strategy', 'evidence']
     };
@@ -347,10 +369,18 @@
         });
         if (axis.inference_direction !== dir)
           badAxis.push('unit ' + u.id + ': axis did not follow direction ' + dir);
+        if (axis.task_complexity !== TASK_OF_DIR[dir])
+          badAxis.push('unit ' + u.id + '/' + dir + ': task_complexity ' +
+                       axis.task_complexity + ' ≠ ' + TASK_OF_DIR[dir]);
       });
     });
-    check(S, '五条难度轴的取值全部在 pattern.json 的 progression 里',
+    check(S, '六条难度轴的取值全部在 pattern.json 的 progression 里',
       badAxis.length === 0, badAxis.join('\n'));
+
+    check(S, 'inference_direction 与 task_complexity 永不矛盾（任务由方向推出）',
+      badAxis.length === 0,
+      'forward→' + TASK_OF_DIR.forward + ' · interior→' + TASK_OF_DIR.interior +
+      ' · backward→' + TASK_OF_DIR.backward);
 
     var storyAxis = C.difficultyAxisFor('G2', 'story', 'forward') || {};
     check(S, '情境题标记为 cross-domain / compound',
@@ -362,26 +392,47 @@
       C.difficultyAxisFor('G9', 'count_up', 'forward') === null);
   })();
 
-  // S7 · option shuffle
+  // S7 · session draw + option shuffle
   (function () {
-    var S = 'S7 · 选项洗牌 Option shuffle';
+    var S = 'S7 · 抽题与选项洗牌 Session draw and option shuffle';
     var raw = JSON.stringify(MP_DATA.units);
-    var slots = {}, lost = 0, n = 0;
+    var slots = {}, lost = 0, n = 0, sizes = {}, drawn = {};
     for (var r = 0; r < SHUFFLE_RUNS; r++) {
       var built = C.buildUnits(MP_DATA.units);
       built.forEach(function (u, ui) {
-        u.questions.forEach(function (q, qi) {
-          var src = MP_DATA.units[ui].questions[qi];
-          var at  = q.options.indexOf(q.answer);
+        sizes[u.questions.length] = 1;
+        u.questions.forEach(function (q) {
+          // A session drops surplus items, so positions no longer line up with
+          // the bank: find the source item by its `seq`, which buildUnits copies
+          // by reference.
+          var pool = MP_DATA.units[ui].questions;
+          var src = null, si = -1;
+          for (var k = 0; k < pool.length; k++) {
+            if (pool[k].seq === q.seq) { src = pool[k]; si = k; break; }
+          }
+          if (!src) { lost++; return; }
+          drawn['U' + u.id + '·Q' + (si + 1)] = 1;
+          var at = q.options.indexOf(q.answer);
           if (at < 0) lost++;
           if (q.options.slice().sort().join(',') !== src.options.slice().sort().join(','))
             lost++;
+          if (q.answer !== src.answer) lost++;
           slots[at] = (slots[at] || 0) + 1;
           n++;
         });
       });
     }
-    check(S, '洗牌后答案仍在选项内、选项集合不变', lost === 0, lost + ' violations');
+    check(S, '每次抽题都恰好 SESSION_SIZE 题',
+      Object.keys(sizes).length === 1 && Number(Object.keys(sizes)[0]) === C.SESSION_SIZE,
+      'observed sizes: ' + Object.keys(sizes).join(', ') + ' · SESSION_SIZE=' + C.SESSION_SIZE);
+    check(S, '题库每一道题都会被抽到（' + SHUFFLE_RUNS + ' 轮内无死题）',
+      Object.keys(drawn).length === units.reduce(function (t, u) {
+        return t + u.questions.length;
+      }, 0),
+      Object.keys(drawn).length + ' / ' + units.reduce(function (t, u) {
+        return t + u.questions.length;
+      }, 0) + ' items drawn at least once');
+    check(S, '洗牌后答案仍在选项内、选项集合与答案不变', lost === 0, lost + ' violations');
     check(S, 'MP_DATA 未被就地修改', JSON.stringify(MP_DATA.units) === raw);
     var pcts = [0, 1, 2, 3].map(function (i) { return Math.round((slots[i] || 0) / n * 100); });
     var span = Math.max.apply(null, pcts) - Math.min.apply(null, pcts);

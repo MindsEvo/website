@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.0",
-  "updatedAt": "2026-09-02",
+  "version": "v0.3.0",
+  "updatedAt": "2026-09-04",
   "notes": {
     "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
     "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded."
@@ -43,8 +43,8 @@
         "ai-readable"
       ],
       "status": "in-progress",
-      "statusNoteZh": "元数据已定稿；puzzle 运行时已接线并上报雷达（levelId → gradeCode、五轴、推理方向），题库为 6 单元 60 题的静态题库，由 learning/math/pattern/test.html 逐题校验。仍缺：engine / generator / templates.json、sort·match·group·fit·mini 运行时、K1-K2 的非数字重复规律内容。",
-      "statusNoteEn": "Metadata is finalised; the puzzle runtime is wired and reports to the radar (levelId → gradeCode, the five axes, inference direction), over a static bank of 6 units / 60 items audited item-by-item by learning/math/pattern/test.html. Still missing: engine / generator / templates.json, the sort·match·group·fit·mini runtimes, and the non-numeric K1-K2 repetition content."
+      "statusNoteZh": "元数据已升到 v0.2.0：三维模型（结构 × 载体 × 任务）定稿，7 类结构、6 种任务、15 种载体、38 允许 + 4 排除的白名单矩阵，难度轴六根（新增 task_complexity，repair 从 inference_direction 移出），基因上报规则为「结构基因 + 规则真正变化的载体基因」。架构见 docs/patterns/PATTERN-MODULE-ARCHITECTURE.md。运行时侧：puzzle 已接线并上报雷达，一次出 8 题（sessionPolicy），题库为 6 单元 60 题的静态题库，由 learning/math/pattern/test.html 逐题校验。仍缺：sequence-engine / 结构签名验证器 / generator / templates.json、sort·match·group·fit·mini 运行时、K1-K2 的非数字重复规律内容，以及 spatial·transformation·relational·growth 四类结构的全部内容。",
+      "statusNoteEn": "Metadata is at v0.2.0: the three-dimension model (structure x carrier x task) is settled — 7 structures, 6 tasks, 15 carriers, an allowlist matrix of 38 allowed plus 4 excluded cells, six difficulty axes (task_complexity added, repair moved off inference_direction), and a gene rule of \"structure gene plus the carrier gene of the attribute the rule varies\". See docs/patterns/PATTERN-MODULE-ARCHITECTURE.md. Runtime side: the puzzle is wired and reports to the radar, a session shows 8 items (sessionPolicy), over a static bank of 6 units / 60 items audited item-by-item by learning/math/pattern/test.html. Still missing: sequence-engine / the structure-signature validator / generator / templates.json, the sort-match-group-fit-mini runtimes, non-numeric K1-K2 repetition content, and all content for the spatial, transformation, relational and growth structures."
     }
   ]
 }
