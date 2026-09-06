@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.0",
-  "updatedAt": "2026-09-04",
+  "version": "v0.2.1",
+  "updatedAt": "2026-09-05",
   "moduleType": "metathinking",
   "id": "pattern",
   "canonicalUrl": "/metadata/metathinking/pattern.json",
@@ -156,14 +156,17 @@
       "nameZh": "重复规律",
       "nameEn": "Repeating Pattern",
       "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "AB / AAB / ABB / ABC / AABB / AABC cycle continuation",
         "two attributes cycling at once (color and shape)",
         "find the item that breaks the cycle"
       ],
-      "coverageGapZh": "K1/K2 的非数字重复规律内容尚未实现；现有题库全部是 G1/G2 的数字递进题。",
-      "coverageGapEn": "Non-numeric repetition content for K1/K2 is not implemented yet; the whole existing bank is G1/G2 numeric progression."
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "coverageGapZh": "K1 的颜色载体 AB 循环续写已实现；discover（挑出真正有规律的一组）与 K2 的 AABB/ABC 循环、纠错、迁移、创造尚未实现。",
+      "coverageGapEn": "K1's color-carrier AB cycle continue is implemented; discover (picking the one run that actually follows a rule) and K2's AABB/ABC cycles, repair, match and create are not implemented yet."
     },
     {
       "id": "growth",
@@ -185,13 +188,18 @@
       "nameZh": "交替与双规则",
       "nameEn": "Alternating and Dual Rule",
       "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "up down up down / on off on off",
         "+2 / -1 alternating runs",
         "odd and even positions each follow their own rule",
         "color and size changing on two independent cycles"
-      ]
+      ],
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "coverageGapZh": "G2 的 match（颜色规律与图形规律的同构配对）已实现；discover、continue、complete、repair、create 尚未实现。",
+      "coverageGapEn": "G2's match (isomorphism pairing between a color pattern and a shape pattern) is implemented; discover, continue, complete, repair and create are not implemented yet."
     },
     {
       "id": "spatial",
@@ -474,7 +482,7 @@
       "task": "continue",
       "levelFloor": "K1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "repetition",
@@ -579,7 +587,7 @@
       "task": "match",
       "levelFloor": "G2",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
@@ -775,7 +783,15 @@
         "discover",
         "continue"
       ],
-      "status": "planned"
+      "status": "partial",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "coverageGapZh": "continue（AB 循环续写）已实现；discover（挑出真正有规律的一组）尚未实现。",
+      "coverageGapEn": "continue (AB cycle continuation) is implemented; discover (picking the one run that actually follows a rule) is not implemented yet."
     },
     {
       "levelId": "L2",
@@ -838,10 +854,11 @@
         "learning-math-pattern"
       ],
       "implementedModes": [
-        "puzzle"
+        "puzzle",
+        "match"
       ],
-      "coverageGapZh": "递减、倍增与情境迁移都已有单选题，但缺少拖放排序（把打乱的规律卡片按规则排好）与限时玩法，交替双规则题型尚未实现。",
-      "coverageGapEn": "Decreasing, multiplying and story transfer all ship as single-choice questions, but drag-to-sort (ordering shuffled pattern cards) and timed play are missing, and alternating dual-rule items are not implemented.",
+      "coverageGapZh": "递减、倍增与情境迁移都已有单选题，交替规律的 match 也已实现，但缺少拖放排序（把打乱的规律卡片按规则排好）与限时玩法。",
+      "coverageGapEn": "Decreasing, multiplying and story transfer all ship as single-choice questions, and alternating's match is implemented, but drag-to-sort (ordering shuffled pattern cards) and timed play are missing.",
       "sourceLevels": [
         "L4"
       ]

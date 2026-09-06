@@ -31,25 +31,27 @@
   // in every module. This module's own levelId IS the grade code, exactly like
   // comparison's, so validate.js S2 can match it against pattern.json's
   // levelMap gradeCodes (L3→G1, L4→G2).
-  var LEVEL_GRADE = { G1: 'G1', G2: 'G2' };
+  var LEVEL_GRADE = { K1: 'K1', G1: 'G1', G2: 'G2' };
 
   // Unit id → levelId. Follows data.js's own header:
   //   units 1-3 = counting / skip-counting / fives-and-tens  → G1
   //   units 4-6 = decreasing / multiplying / story transfer   → G2
+  //   unit 7    = AB color repetition (no numerals)           → K1
   var UNIT_LEVEL = { '1': 'G1', '2': 'G1', '3': 'G1',
-                     '4': 'G2', '5': 'G2', '6': 'G2' };
+                     '4': 'G2', '5': 'G2', '6': 'G2',
+                     '7': 'K1' };
 
   // Unit id → the rule the unit trains. Finer grained than the typeTree on
   // purpose: the radar needs the typeTree id, a teacher reading the record
   // wants to know it was ×2 rather than +5.
   var UNIT_RULE = { '1': 'count_up',   '2': 'skip_count', '3': 'fives_tens',
-                    '4': 'count_down', '5': 'doubling',   '6': 'story' };
+                    '4': 'count_down', '5': 'doubling',   '6': 'story',
+                    '7': 'ab_repeat' };
 
   // Rule type → pattern.json typeTree id (the STRUCTURE dimension). Every rule
-  // shipped today lands in `numerical`, which is the honest answer: the whole
-  // existing bank is a numeric run. The other six structures — repetition,
-  // growth, alternating, spatial, transformation, relational — get entries here
-  // when content for them actually ships.
+  // shipped today lands in `numerical`, `repetition` or `alternating` —
+  // spatial, transformation, relational and growth get entries here when
+  // content for them actually ships.
   //
   // v0.2.0 renamed `progression` → `numerical` and folded the old `structure`
   // (number tables) into it; both were "the change lives in the numeral".
@@ -59,19 +61,27 @@
     fives_tens: 'numerical',
     count_down: 'numerical',
     doubling:   'numerical',
-    story:      'numerical'
+    story:      'numerical',
+    ab_repeat:  'repetition'
   };
 
   // Structure id → the rootGenes an item of that structure reports.
   // Per pattern.json → geneReporting: the structure gene, plus the carrier gene
-  // of the attribute the rule actually varies. Everything here varies a
-  // quantity, so `numerical` reports both.
+  // of the attribute the rule actually varies. Everything numerical varies a
+  // quantity, so it reports both. repetition varies color; alternating (the
+  // match sample) varies color AND shape, since match compares each carrier's
+  // own structural signature.
   var STRUCTURE_GENES = {
-    numerical: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION']
+    numerical:   ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION'],
+    repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR'],
+    alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE']
   };
 
-  // The carrier every item currently uses (pattern.json → carriers).
-  var CARRIER = 'numeral';
+  // Structure id → the carrier every item of that structure uses
+  // (pattern.json → carriers). `alternating`'s match activity spans two
+  // carriers at once and reports them explicitly via `carriers` in its own
+  // context builder instead of this single-carrier map.
+  var CARRIER_OF = { numerical: 'numeral', repetition: 'color', alternating: null };
 
   // Items shown in one run. The bank is bigger than a session on purpose: 8
   // keeps a sitting short for a 6-8 year old and keeps testing fast. Mirrors
@@ -115,6 +125,9 @@
    */
   function difficultyAxisFor(levelId, ruleType, direction) {
     var base = {
+      K1: { object_complexity: 'concrete', rule_complexity: 'single',
+            inference_direction: 'forward', task_complexity: 'continue',
+            language_complexity: 'action', transfer_complexity: 'within-domain' },
       G1: { object_complexity: 'symbolic', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'question', transfer_complexity: 'within-domain' },
@@ -175,7 +188,7 @@
       gradeCode:   LEVEL_GRADE[levelId] || null,
       patternType: structure,
       structure:   structure,
-      carrier:     CARRIER,
+      carrier:     CARRIER_OF[structure] || null,
       taskType:    direction ? (TASK_OF[direction] || null) : null,
       ruleType:    ruleType,
       difficultyAxis: difficultyAxisFor(levelId, ruleType, direction),
@@ -240,7 +253,7 @@
     MODULE_TYPE: MODULE_TYPE,
     SOURCE_GAME_ID: SOURCE_GAME_ID,
     SESSION_SIZE: SESSION_SIZE,
-    CARRIER: CARRIER,
+    CARRIER_OF: CARRIER_OF,
     LEVEL_GRADE: LEVEL_GRADE,
     UNIT_LEVEL: UNIT_LEVEL,
     UNIT_RULE: UNIT_RULE,
@@ -251,8 +264,123 @@
     difficultyAxisFor: difficultyAxisFor,
     buildRadarContext: buildRadarContext,
     genesFor: genesFor,
-    buildUnits: buildUnits
+    buildUnits: buildUnits,
+    // Exposed so test.html can audit the match sample's structural legitimacy
+    // (§8.1) without driving ActivityRunner/MatchRuntime through a real DOM.
+    matchTemplate: function () { return _matchTemplate(); },
+    matchVariant: function () { return _matchVariant(); }
   };
+
+  /**
+   * alternating × match (G2) — the one non-puzzle sample in this module.
+   * shell.createGame() has no hook for launching a non-puzzle activity, so
+   * this bypasses it: comparison's ActivityRunner + MatchRuntime are reused
+   * as-is (see match-runtime.js's compareKey/seqMode generalization), driven
+   * from a button injected into the shell-rendered home header. Hand-authored
+   * here rather than pooled in data.js/templates.json — it is a single fixed
+   * activity, not a session drawn from a bank.
+   */
+  function _matchTemplate() {
+    return {
+      id:         'pat-g2-match-altsig-001',
+      level:      'G2',
+      type:       'alternating',
+      mode:       'match',
+      runtime:    'match',
+      compareKey: 'signature',
+      instrZh:    '把颜色规律拖到结构相同的图形规律上 →',
+      instrEn:    'Drag each color pattern onto the shape pattern with the same structure →'
+    };
+  }
+
+  // 3 left (color) × 3 right (shape) items, each pair sharing a structural
+  // signature (ABAB / AABAAB / ABBABB) and no emoji vocabulary in common —
+  // per SPEC-alternating-match-g2.md, the child must compare structure, not
+  // literal glyphs.
+  function _matchVariant() {
+    var leftItems = [
+      { id: 'L0', emoji: '🔴🔵🔴🔵',     signature: 'ABAB',    nameZh: '颜色规律', nameEn: 'Color pattern' },
+      { id: 'L1', emoji: '🔴🔴🔵🔴🔴🔵', signature: 'AABAAB', nameZh: '颜色规律', nameEn: 'Color pattern' },
+      { id: 'L2', emoji: '🔴🔵🔵🔴🔵🔵', signature: 'ABBABB', nameZh: '颜色规律', nameEn: 'Color pattern' }
+    ];
+    var rightSlots = [
+      { id: 'R0', emoji: '⚪🔷⚪🔷',     signature: 'ABAB',    nameZh: '形状规律', nameEn: 'Shape pattern' },
+      { id: 'R1', emoji: '⚪⚪🔷⚪⚪🔷', signature: 'AABAAB', nameZh: '形状规律', nameEn: 'Shape pattern' },
+      { id: 'R2', emoji: '⚪🔷🔷⚪🔷🔷', signature: 'ABBABB', nameZh: '形状规律', nameEn: 'Shape pattern' }
+    ];
+    return {
+      seqMode:    true,
+      compareKey: 'signature',
+      leftItems:  _shuffled(leftItems),
+      rightSlots: _shuffled(rightSlots),
+      variantId:  'pat-g2-match-altsig-001-v1'
+    };
+  }
+
+  function _launchMatchActivity() {
+    ActivityRunner.launch(_matchTemplate(), _matchVariant(), {
+      levelId:    'G2',
+      onComplete: _reportMatchActivity,
+      onBack:     function () {}
+    });
+  }
+
+  /**
+   * One Attempt, reported the same way comparison's _reportInteraction
+   * flattens an interaction result — this activity never passes through
+   * shell.createGame()/getReportContext(), so the radar coordinates have to
+   * be attached here or the attempt is invisible to it.
+   */
+  function _reportMatchActivity(attempt) {
+    if (!shell || typeof shell.report !== 'function') return;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        'G2',
+      gradeCode:      'G2',
+      patternType:    'alternating',
+      structure:      'alternating',
+      carrier:        null,
+      carriers:       ['color', 'shape'],
+      taskType:       'match',
+      ruleType:       null,
+      difficultyAxis: difficultyAxisFor('G2', null, 'forward'),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    shell.report({
+      gameId:     SOURCE_GAME_ID,
+      unitId:     'alt-match',
+      templateId: attempt.templateId,
+      variantId:  attempt.variantId || null,
+      score:      attempt.result === 'correct' ? 1 : 0,
+      total:      1,
+      timeMs:     attempt.responseMs || 0,
+      hintsUsed:  0,
+      geneIds:    genesFor('alternating'),
+      shell:      'shell-1',
+      activityRuntime: 'interaction',
+      activityMode:    'match',
+      result:     attempt.result || null,
+      levelId:    'G2',
+      gradeCode:  'G2',
+      context:    context
+    });
+  }
+
+  // Add the match-activity trigger to the shell home header. #s1-home .s1-hdr
+  // is synchronously present once shell.createGame() returns (no
+  // MutationObserver needed — same idiom as comparison's
+  // _injectShellHomeBackButton).
+  function _injectMatchTrigger() {
+    var hdr = document.querySelector('#s1-home .s1-hdr');
+    if (!hdr || document.getElementById('mp-match-trigger')) return;
+    var btn = document.createElement('button');
+    btn.id = 'mp-match-trigger';
+    btn.innerHTML = '🧩';
+    btn.title = '交替规律配对 / Alternating pattern match';
+    btn.addEventListener('click', _launchMatchActivity);
+    hdr.insertBefore(btn, hdr.firstChild);
+  }
 
   shell.createGame({
     id:       SOURCE_GAME_ID,
@@ -285,9 +413,16 @@
       }).join(' ');
     },
     renderOption: function (opt) { return String(opt); },
-    checkAnswer: function (selected, q) { return Number(selected) === q.answer; },
+    // Relaxed from Number(selected) === q.answer: the K1 repetition unit's
+    // answers are emoji strings, not numerals.
+    checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
 
     getVoiceText: function (q) {
+      var numeric = q.seq.every(function (n) { return n === '?' || !isNaN(n); });
+      if (!numeric) {
+        return shell.lang === 'zh' ? '看规律，问号是什么？'
+                                   : 'Look at the pattern — what comes next?';
+      }
       var items = q.seq.map(function (n) {
         return n === '?' ? (shell.lang === 'zh' ? '问号' : 'blank') : String(n);
       });
@@ -296,12 +431,14 @@
     },
 
     /**
-     * Structure gene + the carrier gene of the attribute the rule varies. The
-     * whole bank is `numerical` on a numeral carrier, so both come out of
-     * STRUCTURE_GENES.numerical — see pattern.json → geneReporting for why a
-     * carrier gene is reported only when the rule actually lives in it.
+     * Structure gene + the carrier gene of the attribute the rule varies.
+     * Reports the deduped union across every structure this module ships,
+     * not just the unit in play — registerRootGenes fires once per game,
+     * before any unit is picked (see pattern.json → geneReporting).
      */
-    registerRootGenes: function () { return genesFor('numerical'); },
+    registerRootGenes: function () {
+      return _unique(genesFor('numerical').concat(genesFor('repetition'), genesFor('alternating')));
+    },
 
     /**
      * One Attempt per unit run. The batch is labelled with the direction the
@@ -324,4 +461,6 @@
       });
     }
   });
+
+  _injectMatchTrigger();
 })();

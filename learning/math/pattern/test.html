@@ -123,8 +123,44 @@
 
   function ruleStr(rule) {
     if (!rule) return '—';
+    if (rule.kind === 'repeat') return 'AB×2 (' + rule.a + rule.b + ')';
     if (rule.kind === 'arith') return (rule.step >= 0 ? '+' : '−') + Math.abs(rule.step);
     return '×' + rule.step;
+  }
+
+  // ── rule engine (repetition structure): AB two-step color cycle ────────────
+  //
+  // Same re-derivation discipline as verifyRun above, but for a periodic cycle
+  // instead of an arithmetic/geometric run: every even index must share one
+  // value, every odd index another, and the two values must differ (otherwise
+  // it is not a two-step cycle at all).
+
+  function deriveRepetitionRule(seq) {
+    var a = null, b = null;
+    for (var k = 0; k < seq.length; k++) {
+      if (seq[k] === '?') continue;
+      if (k % 2 === 0) {
+        if (a === null) a = seq[k]; else if (a !== seq[k]) return null;
+      } else {
+        if (b === null) b = seq[k]; else if (b !== seq[k]) return null;
+      }
+    }
+    if (a === null || b === null || a === b) return null;
+    return { kind: 'repeat', a: a, b: b };
+  }
+
+  function fillRepetition(seq, rule) {
+    var i = seq.indexOf('?');
+    if (i < 0 || !rule) return null;
+    return i % 2 === 0 ? rule.a : rule.b;
+  }
+
+  function verifyRepetitionRun(seq, rule) {
+    for (var k = 0; k < seq.length; k++) {
+      var want = k % 2 === 0 ? rule.a : rule.b;
+      if (seq[k] !== want) return false;
+    }
+    return true;
   }
 
   // ── the bank ──────────────────────────────────────────────────────────────
@@ -152,7 +188,7 @@
       check(S, 'registerRootGenes 返回结构基因 + 载体基因',
         typeof CAPTURED.registerRootGenes === 'function' &&
         CAPTURED.registerRootGenes().join(',') ===
-          'RG.PATTERN.SEQUENCE.BASIC,RG.PATTERN.QUANTITY.RELATION',
+          'RG.PATTERN.SEQUENCE.BASIC,RG.PATTERN.QUANTITY.RELATION,RG.PATTERN.VISUAL.COLOR,RG.PATTERN.VISUAL.SEQUENCE',
         typeof CAPTURED.registerRootGenes === 'function'
           ? CAPTURED.registerRootGenes().join(',') : 'missing');
       check(S, 'getReportContext 已实现', typeof CAPTURED.getReportContext === 'function');
@@ -196,6 +232,7 @@
 
     units.forEach(function (u) {
       var rows = [];
+      var isRepetition = C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]] === 'repetition';
       (u.questions || []).forEach(function (q, k) {
         var where = 'U' + u.id + '·Q' + (k + 1);
         var seq = q.seq || [];
@@ -204,10 +241,17 @@
         // ---- S2 validity
         if (blanks !== 1) badValidity.push(where + ': blanks=' + blanks);
         if (seq.length < 4) badValidity.push(where + ': seq too short (' + seq.length + ')');
-        seq.forEach(function (x) {
-          if (x !== '?' && typeof x !== 'number') badValidity.push(where + ': non-numeric term ' + x);
-        });
-        if (typeof q.answer !== 'number') badValidity.push(where + ': answer not a number');
+        if (!isRepetition) {
+          seq.forEach(function (x) {
+            if (x !== '?' && typeof x !== 'number') badValidity.push(where + ': non-numeric term ' + x);
+          });
+          if (typeof q.answer !== 'number') badValidity.push(where + ': answer not a number');
+        } else {
+          seq.forEach(function (x) {
+            if (x !== '?' && typeof x !== 'string') badValidity.push(where + ': non-string term ' + x);
+          });
+          if (typeof q.answer !== 'string' || !q.answer) badValidity.push(where + ': answer not a string');
+        }
         if (!q.hintZh || !q.hintEn) badValidity.push(where + ': hint missing');
 
         // ---- S4 options
@@ -215,27 +259,48 @@
         if (opts.length !== 4) badOpts.push(where + ': ' + opts.length + ' options');
         if (new Set(opts).size !== opts.length) badOpts.push(where + ': duplicate options');
         if (opts.indexOf(q.answer) < 0) badOpts.push(where + ': answer not in options');
-        if (opts.some(function (o) { return typeof o !== 'number' || o < 0; }))
-          badOpts.push(where + ': non-numeric or negative option');
+        if (!isRepetition) {
+          if (opts.some(function (o) { return typeof o !== 'number' || o < 0; }))
+            badOpts.push(where + ': non-numeric or negative option');
+        } else {
+          if (opts.some(function (o) { return typeof o !== 'string' || !o; }))
+            badOpts.push(where + ': empty or non-string option');
+        }
         var ai = opts.indexOf(q.answer);
         if (ai >= 0) ansIndex[ai] = (ansIndex[ai] || 0) + 1;
 
         // ---- S3 rule
-        var vals = seq.map(function (x) { return x === '?' ? null : x; });
-        var rule = deriveRule(vals);
-        var derived = fill(vals, rule);
-        if (!rule) {
-          badRule.push(where + ': no single arithmetic/geometric rule fits [' + seq.join(',') + ']');
-        } else if (derived !== q.answer) {
-          badRule.push(where + ': rule ' + ruleStr(rule) + ' ⇒ ' + derived + ', data says ' + q.answer);
+        var rule, derived;
+        if (!isRepetition) {
+          var vals = seq.map(function (x) { return x === '?' ? null : x; });
+          rule = deriveRule(vals);
+          derived = fill(vals, rule);
+          if (!rule) {
+            badRule.push(where + ': no single arithmetic/geometric rule fits [' + seq.join(',') + ']');
+          } else if (derived !== q.answer) {
+            badRule.push(where + ': rule ' + ruleStr(rule) + ' ⇒ ' + derived + ', data says ' + q.answer);
+          } else {
+            var filled = vals.slice();
+            filled[filled.indexOf(null)] = derived;
+            if (!verifyRun(filled, rule))
+              badRule.push(where + ': filled run breaks its own rule ' + ruleStr(rule));
+          }
         } else {
-          var filled = vals.slice();
-          filled[filled.indexOf(null)] = derived;
-          if (!verifyRun(filled, rule))
-            badRule.push(where + ': filled run breaks its own rule ' + ruleStr(rule));
+          rule = deriveRepetitionRule(seq);
+          derived = fillRepetition(seq, rule);
+          if (!rule) {
+            badRule.push(where + ': no AB two-step cycle fits [' + seq.join(',') + ']');
+          } else if (derived !== q.answer) {
+            badRule.push(where + ': cycle ' + ruleStr(rule) + ' ⇒ ' + derived + ', data says ' + q.answer);
+          } else {
+            var filledSeq = seq.slice();
+            filledSeq[filledSeq.indexOf('?')] = derived;
+            if (!verifyRepetitionRun(filledSeq, rule))
+              badRule.push(where + ': filled run breaks its own cycle ' + ruleStr(rule));
+          }
         }
 
-        // ---- duplicates (identical numeric skeleton)
+        // ---- duplicates (identical skeleton)
         var key = seq.join(',');
         if (seqSeen[key]) {
           (seqSeen[key].unit === u.id ? dupWithin : dupCross)
@@ -325,9 +390,11 @@
       if (ctx.moduleId !== 'pattern')         badCtx.push('unit ' + u.id + ': moduleId');
       if (ctx.moduleType !== 'metathinking')  badCtx.push('unit ' + u.id + ': moduleType');
       if (GRADES.indexOf(ctx.gradeCode) < 0)  badCtx.push('unit ' + u.id + ': gradeCode ' + ctx.gradeCode);
-      if (ctx.patternType !== 'numerical')    badCtx.push('unit ' + u.id + ': patternType ' + ctx.patternType);
-      if (ctx.structure !== 'numerical')      badCtx.push('unit ' + u.id + ': structure ' + ctx.structure);
-      if (ctx.carrier !== 'numeral')          badCtx.push('unit ' + u.id + ': carrier ' + ctx.carrier);
+      var expStructure = C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]];
+      var expCarrier = (C.CARRIER_OF && C.CARRIER_OF[expStructure]) || null;
+      if (ctx.patternType !== expStructure)   badCtx.push('unit ' + u.id + ': patternType ' + ctx.patternType + ' ≠ ' + expStructure);
+      if (ctx.structure !== expStructure)     badCtx.push('unit ' + u.id + ': structure ' + ctx.structure + ' ≠ ' + expStructure);
+      if (ctx.carrier !== expCarrier)         badCtx.push('unit ' + u.id + ': carrier ' + ctx.carrier + ' ≠ ' + expCarrier);
       if (TASKS.indexOf(ctx.taskType) < 0)    badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType);
       if (ctx.taskType !== TASK_OF_DIR[ctx.inferenceDirection])
         badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType + ' does not follow dir ' + ctx.inferenceDirection);
@@ -439,6 +506,42 @@
     check(S, '答案位置接近均匀（' + SHUFFLE_RUNS + ' 轮，各槽位偏差 ≤ 6%）',
       span <= 6, pcts.map(function (p, i) { return 'slot ' + (i + 1) + ': ' + p + '%'; }).join('  ') +
       '  → span ' + span + '%');
+  })();
+
+  // S8 · alternating×match sample structural legitimacy (§8.1)
+  (function () {
+    var S = 'S8 · alternating×match 结构合法性 Match sample legitimacy';
+    var variant = C.matchVariant ? C.matchVariant() : null;
+    check(S, 'matchVariant() 已导出', !!variant && !!variant.leftItems && !!variant.rightSlots);
+    if (!variant) return;
+
+    var left = variant.leftItems || [];
+    var right = variant.rightSlots || [];
+    check(S, '左右数量相等', left.length === right.length,
+      'left=' + left.length + ' right=' + right.length);
+
+    var leftSigs = left.map(function (x) { return x.signature; });
+    var rightSigs = right.map(function (x) { return x.signature; });
+    var dupLeft = leftSigs.filter(function (s, i) { return leftSigs.indexOf(s) !== i; });
+    var dupRight = rightSigs.filter(function (s, i) { return rightSigs.indexOf(s) !== i; });
+    check(S, '左侧签名互不重复', dupLeft.length === 0, dupLeft.join(','));
+    check(S, '右侧签名互不重复', dupRight.length === 0, dupRight.join(','));
+
+    var badMatch = [];
+    left.forEach(function (l) {
+      var hits = rightSigs.filter(function (s) { return s === l.signature; });
+      if (hits.length !== 1) badMatch.push(l.id + ' (' + l.signature + '): ' + hits.length + ' matches on the right');
+    });
+    check(S, '每个左侧项在右侧都恰好有一个签名匹配（一对一）',
+      badMatch.length === 0, badMatch.join('\n'));
+
+    // The point of cross-carrier match: literal glyphs must never overlap,
+    // otherwise a child could match by lookup instead of by structure.
+    var leftGlyphs = {}, rightGlyphs = {};
+    left.forEach(function (l) { Array.from(l.emoji || '').forEach(function (g) { leftGlyphs[g] = 1; }); });
+    right.forEach(function (r) { Array.from(r.emoji || '').forEach(function (g) { rightGlyphs[g] = 1; }); });
+    var overlap = Object.keys(leftGlyphs).filter(function (g) { return rightGlyphs[g]; });
+    check(S, '左右字形词汇不重叠（避免按字面匹配）', overlap.length === 0, overlap.join(','));
   })();
 
   // ── render ────────────────────────────────────────────────────────────────

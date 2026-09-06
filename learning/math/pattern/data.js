@@ -137,6 +137,25 @@ var MP_DATA = {
         { seq:[1,2,4,'?',16],    answer:8,  options:[6,7,8,9],
           hintZh:'细菌每小时繁殖成两倍，第4小时有多少？',       hintEn:'Bacteria double each hour — how many at hour 4?' }
       ]
+    },
+
+    // ── Unit 7: 色彩循环规律  (AB two-color cycle, K1) ────────────────────
+    {
+      id: '7', icon: '🔁',
+      nameZh: '色彩循环规律', nameEn: 'Color Cycle Pattern',
+      descZh: '颜色两两重复出现，预测下一个颜色', descEn: 'Colors repeat in a two-step cycle — predict the next color',
+      questions: [
+        { seq:['🔴','🔵','🔴','🔵','?'], answer:'🔴', options:['🔴','🔵','🟡','🟢'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🔵','🟡','🔵','🟡','?'], answer:'🔵', options:['🔵','🟡','🟢','🟣'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟡','🟢','🟡','🟢','?'], answer:'🟡', options:['🟡','🟢','🟣','🟠'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟢','🟣','🟢','🟣','?'], answer:'🟢', options:['🟢','🟣','🟠','🔴'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟣','🟠','🟣','🟠','?'], answer:'🟣', options:['🟣','🟠','🔴','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟠','🔴','🟠','🔴','?'], answer:'🟠', options:['🟠','🔴','🔵','🟡'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🔴','🟡','🔴','🟡','?'], answer:'🔴', options:['🔴','🟡','🟢','🟣'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🔵','🟢','🔵','🟢','?'], answer:'🔵', options:['🔵','🟢','🟠','🔴'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟡','🟣','🟡','🟣','?'], answer:'🟡', options:['🟡','🟣','🔴','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟢','🟠','🟢','🟠','?'], answer:'🟢', options:['🟢','🟠','🟡','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' }
+      ]
     }
   ]
 };

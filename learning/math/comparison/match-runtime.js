@@ -32,7 +32,10 @@ var MatchRuntime = (function () {
       '.mr-slot.mr-wrong{border-color:#ef4444!important;background:#fef2f2!important;animation:mr-shake .38s ease;}',
       '.mr-slot.mr-ok{border-color:#22c55e!important;background:#f0fdf4!important;}',
       '.mr-foot{text-align:center;font-size:13px;font-weight:700;color:#64748b;padding:8px 16px;flex-shrink:0;}',
-      '@keyframes mr-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}60%{transform:translateX(5px)}}'
+      '@keyframes mr-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}60%{transform:translateX(5px)}}',
+      // Multi-glyph sequence strings (e.g. emoji-pattern runs) don't fit the
+      // single-glyph animal/home font size — shrink and tighten them.
+      '.mr-seq .mr-item-emoji,.mr-seq .mr-slot-emoji{font-size:20px;letter-spacing:1px;}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -46,6 +49,7 @@ var MatchRuntime = (function () {
       template:    template,
       variant:     variant,
       ctx:         ctx,
+      compareKey:  variant.compareKey || 'size',
       leftItems:   variant.leftItems.slice(),
       rightSlots:  variant.rightSlots.slice(),
       // placements: rightSlotId → leftItemId | null
@@ -64,7 +68,7 @@ var MatchRuntime = (function () {
     var n = s.rightSlots.length;
 
     var root = document.createElement('div');
-    root.className = 'mr';
+    root.className = 'mr' + (s.variant.seqMode ? ' mr-seq' : '');
     root.id = 'mr-root';
     root.innerHTML =
       '<div class="ih-hdr">' +
@@ -76,8 +80,8 @@ var MatchRuntime = (function () {
         IH.controlsHtml('mr') +
       '</div>' +
       '<div class="mr-instr">' +
-        '<span class="zh">\u628a\u5c0f\u52a8\u7269\u62d6\u5230\u5b83\u5408\u9002\u7684\u5bb6 \u2192</span>' +
-        '<span class="en">Drag each animal to the right home \u2192</span>' +
+        '<span class="zh">' + (s.template.instrZh || '\u628a\u5c0f\u52a8\u7269\u62d6\u5230\u5b83\u5408\u9002\u7684\u5bb6 \u2192') + '</span>' +
+        '<span class="en">' + (s.template.instrEn || 'Drag each animal to the right home \u2192') + '</span>' +
       '</div>' +
       '<div class="mr-stage">' +
         '<div class="mr-col" id="mr-left"></div>' +
@@ -208,7 +212,7 @@ var MatchRuntime = (function () {
     s.rightSlots.forEach(function (slot) {
       var leftId = s.placements[slot.id];
       var leftItem = s.leftItems.filter(function (i) { return i.id === leftId; })[0];
-      if (!leftItem || leftItem.size !== slot.size) {
+      if (!leftItem || leftItem[s.compareKey] !== slot[s.compareKey]) {
         correct = false; wrongSlotIds.push(slot.id);
       }
     });
