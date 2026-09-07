@@ -350,6 +350,74 @@ var MP_DATA = {
             { seq:['☀️','🌙','➡️','⬅️','➡️','🌙'] }
           ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' }
       ]
+    },
+
+    // ── Unit 11: 找错改错  (repetition × repair, K2) ───────────────────────
+    // Full sequence, no blank. Exactly one item is wrong (SPEC-repetition-repair-k2.md
+    // §3): a valid AB color cycle with one position swapped to the *other*
+    // half of its own pair, so it stays inside the unit's vocabulary but
+    // breaks periodicity at that one spot. Step 1: tap the wrong item
+    // (brokenIndex). Step 2: pick its correct color from 4 options (answer +
+    // the swapped-in value itself as cycle_misalign + a third-color
+    // pattern_misread + an unrelated random color).
+    {
+      id: '11', icon: '🛠️',
+      nameZh: '找错改错', nameEn: 'Spot & Fix',
+      descZh: '找出打乱循环的那一个，再选出正确的颜色', descEn: 'Find the item that breaks the cycle, then pick the right color',
+      questions: [
+        { task:'repair', seq:['🔴','🔵','🔴','🔴','🔴','🔵'], brokenIndex:3, answer:'🔵',
+          options:['🔵','🔴','🟡','🟢'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟡','🟡','🔵','🟡','🔵','🟡'], brokenIndex:0, answer:'🔵',
+          options:['🔵','🟡','🟢','🟣'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟡','🟢','🟡','🟢','🟡','🟡'], brokenIndex:5, answer:'🟢',
+          options:['🟢','🟡','🟣','🟠'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟢','🟣','🟣','🟣','🟢','🟣'], brokenIndex:2, answer:'🟢',
+          options:['🟢','🟣','🟠','🔴'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟣','🟣','🟣','🟠','🟣','🟠'], brokenIndex:1, answer:'🟠',
+          options:['🟠','🟣','🔴','🔵'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟠','🔴','🟠','🔴','🔴','🔴'], brokenIndex:4, answer:'🟠',
+          options:['🟠','🔴','🔵','🟡'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟡','🟡','🔴','🟡','🔴','🟡'], brokenIndex:0, answer:'🔴',
+          options:['🔴','🟡','🟢','🟣'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🔵','🟢','🔵','🔵','🔵','🟢'], brokenIndex:3, answer:'🟢',
+          options:['🟢','🔵','🟠','🔴'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟡','🟣','🟡','🟣','🟡','🟡'], brokenIndex:5, answer:'🟣',
+          options:['🟣','🟡','🔴','🔵'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🟢','🟠','🟠','🟠','🟢','🟠'], brokenIndex:2, answer:'🟢',
+          options:['🟢','🟠','🟡','🔵'], hintZh:'颜色两两重复，找到错的那个再修好它', hintEn:'Colors repeat in twos — find the wrong one and fix it' }
+      ]
+    },
+
+    // ── Unit 12: 找错改方向  (alternating × repair, G1) ────────────────────
+    // Same repair shape as Unit 11 (SPEC-alternating-repair-g1.md), direction /
+    // day-night carrier instead of color. Same construction: one position
+    // swapped to the other half of its own two-state pair.
+    {
+      id: '12', icon: '🧭',
+      nameZh: '找错改方向', nameEn: 'Spot & Fix the Direction',
+      descZh: '找出打乱交替的那一个，再选出正确的方向', descEn: 'Find the item that breaks the alternation, then pick the right direction',
+      questions: [
+        { task:'repair', seq:['⬆️','⬇️','⬆️','⬆️','⬆️','⬇️'], brokenIndex:3, answer:'⬇️',
+          options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替，找到错的那个再修好它', hintEn:'Direction alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['⬇️','⬇️','⬆️','⬇️','⬆️'], brokenIndex:0, answer:'⬆️',
+          options:['⬆️','⬇️','➡️','⬅️'], hintZh:'方向两两交替，找到错的那个再修好它', hintEn:'Direction alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬆️'], brokenIndex:5, answer:'⬇️',
+          options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替，找到错的那个再修好它', hintEn:'Direction alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['⬆️','⬇️','⬇️','⬇️','⬆️'], brokenIndex:2, answer:'⬆️',
+          options:['⬆️','⬇️','➡️','⬅️'], hintZh:'方向两两交替，找到错的那个再修好它', hintEn:'Direction alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['⬆️','⬆️','⬆️','⬇️','⬆️','⬇️'], brokenIndex:1, answer:'⬇️',
+          options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替，找到错的那个再修好它', hintEn:'Direction alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['☀️','🌙','☀️','🌙','🌙','🌙'], brokenIndex:4, answer:'☀️',
+          options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替，找到错的那个再修好它', hintEn:'Day/night alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['🌙','🌙','☀️','🌙','☀️'], brokenIndex:0, answer:'☀️',
+          options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替，找到错的那个再修好它', hintEn:'Day/night alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['☀️','🌙','☀️','🌙','☀️','☀️'], brokenIndex:5, answer:'🌙',
+          options:['🌙','☀️','⭐','☁️'], hintZh:'昼夜两两交替，找到错的那个再修好它', hintEn:'Day/night alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['☀️','🌙','🌙','🌙','☀️'], brokenIndex:2, answer:'☀️',
+          options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替，找到错的那个再修好它', hintEn:'Day/night alternates in twos — find the wrong one and fix it' },
+        { task:'repair', seq:['☀️','☀️','☀️','🌙','☀️','🌙'], brokenIndex:1, answer:'🌙',
+          options:['🌙','☀️','⭐','☁️'], hintZh:'昼夜两两交替，找到错的那个再修好它', hintEn:'Day/night alternates in twos — find the wrong one and fix it' }
+      ]
     }
   ]
 };

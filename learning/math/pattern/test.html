@@ -163,6 +163,37 @@
     return true;
   }
 
+  // ── rule engine (repair task): majority-vote-by-parity ─────────────────────
+  //
+  // repair items ship a full sequence with exactly one wrong item and no
+  // blank, so the usual blank-fill re-derivation does not apply. Both spec
+  // sheets (SPEC-repetition-repair-k2.md, SPEC-alternating-repair-g1.md)
+  // define the fix as: split into even-index/odd-index sub-arrays, take the
+  // majority value of each, rebuild the "ideal" period-2 sequence from those
+  // majorities. Exactly one index may disagree with its own parity's ideal —
+  // that is brokenIndex, and the ideal's value there is answer. A tied
+  // majority in the parity group that contains the break makes the fix
+  // non-unique, which the spec sheets explicitly reject.
+
+  function deriveRepairFix(seq) {
+    function majority(arr) {
+      var counts = {};
+      arr.forEach(function (v) { counts[v] = (counts[v] || 0) + 1; });
+      var keys = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+      var tie = keys.length > 1 && counts[keys[0]] === counts[keys[1]];
+      return { value: keys[0], tie: tie };
+    }
+    var even = [], odd = [];
+    seq.forEach(function (v, i) { (i % 2 === 0 ? even : odd).push(v); });
+    var me = majority(even), mo = majority(odd);
+    var ideal = seq.map(function (v, i) { return i % 2 === 0 ? me.value : mo.value; });
+    var mismatches = [];
+    seq.forEach(function (v, i) { if (v !== ideal[i]) mismatches.push(i); });
+    var tieAtMismatch = mismatches.length === 1 &&
+      ((mismatches[0] % 2 === 0 && me.tie) || (mismatches[0] % 2 === 1 && mo.tie));
+    return { ideal: ideal, mismatches: mismatches, tie: tieAtMismatch };
+  }
+
   // ── the bank ──────────────────────────────────────────────────────────────
 
   var C = window.PATTERN_CONTRACT || {};
@@ -284,6 +315,51 @@
           rows.push(where + '  discover groups: ' +
             groups.map(function (g, gi) { return '#' + (gi + 1) + '[' + g.seq.join('') + ']'; }).join('  ') +
             '  answer=#' + q.answer + '  sigs=[' + groupSigs.join(', ') + ']');
+          return;
+        }
+
+        // ---- repair items carry a full (blank-free) q.seq plus a
+        // brokenIndex/answer pair. The fix is never trusted from the data
+        // file: it is re-derived here by the same majority-vote-by-parity
+        // method the spec sheets prescribe (split into even/odd-index
+        // sub-arrays, take the majority of each, the one index that
+        // disagrees with its own parity's majority is the break).
+        if (q.task === 'repair') {
+          var rseq = q.seq || [];
+          if (rseq.length < 4) badValidity.push(where + ': repair seq too short (' + rseq.length + ')');
+          if (rseq.indexOf('?') >= 0) badValidity.push(where + ': repair seq must have no blank');
+          if (typeof q.brokenIndex !== 'number' || q.brokenIndex < 0 || q.brokenIndex >= rseq.length)
+            badValidity.push(where + ': brokenIndex out of range');
+          if (!q.hintZh || !q.hintEn) badValidity.push(where + ': hint missing');
+
+          var rOpts = q.options || [];
+          if (rOpts.length !== 4) badOpts.push(where + ': ' + rOpts.length + ' options');
+          if (new Set(rOpts).size !== rOpts.length) badOpts.push(where + ': duplicate options');
+          if (rOpts.indexOf(q.answer) < 0) badOpts.push(where + ': answer not in options');
+          var rai = rOpts.indexOf(q.answer);
+          if (rai >= 0) ansIndex[rai] = (ansIndex[rai] || 0) + 1;
+
+          var fix = deriveRepairFix(rseq);
+          if (fix.mismatches.length !== 1)
+            badRule.push(where + ': majority-vote derivation finds ' + fix.mismatches.length +
+              ' mismatches (want exactly 1) — [' + rseq.join(',') + ']');
+          else if (fix.mismatches[0] !== q.brokenIndex)
+            badRule.push(where + ': derived brokenIndex ' + fix.mismatches[0] + ' ≠ data brokenIndex ' + q.brokenIndex);
+          else if (fix.tie)
+            badRule.push(where + ': brokenIndex ' + q.brokenIndex + ' sits in a tied parity group (non-unique derivation)');
+          else if (fix.ideal[q.brokenIndex] !== q.answer)
+            badRule.push(where + ': ideal value at brokenIndex is ' + fix.ideal[q.brokenIndex] + ', data says answer=' + q.answer);
+
+          var rKey = 'repair:' + rseq.join('') + '#' + q.brokenIndex;
+          if (seqSeen[rKey]) {
+            (seqSeen[rKey].unit === u.id ? dupWithin : dupCross)
+              .push(rKey + '  (' + seqSeen[rKey].where + ' ↔ ' + where + ')');
+          } else {
+            seqSeen[rKey] = { unit: u.id, where: where };
+          }
+
+          rows.push(where + '  repair seq: [' + rseq.join(', ') + ']  brokenIndex=' + q.brokenIndex +
+            '  answer=' + q.answer + '  derivedMismatches=[' + fix.mismatches.join(',') + ']');
           return;
         }
 
@@ -458,6 +534,17 @@
           badCtx.push('unit ' + u.id + ': discover difficultyAxis.inference_direction should be null');
         if (!ctx.difficultyAxis || ctx.difficultyAxis.task_complexity !== 'discover')
           badCtx.push('unit ' + u.id + ': discover difficultyAxis.task_complexity should be "discover"');
+      } else if (ctx.taskType === 'repair') {
+        // repair also has no gap to place — the sequence is full, the child
+        // points at an index instead of filling a slot — so it stays off the
+        // inference_direction axis exactly like discover (see game.js's
+        // repair branch in difficultyAxisFor).
+        if (ctx.inferenceDirection != null)
+          badCtx.push('unit ' + u.id + ': repair unit unexpectedly has inferenceDirection ' + ctx.inferenceDirection);
+        if (!ctx.difficultyAxis || ctx.difficultyAxis.inference_direction !== null)
+          badCtx.push('unit ' + u.id + ': repair difficultyAxis.inference_direction should be null');
+        if (!ctx.difficultyAxis || ctx.difficultyAxis.task_complexity !== 'repair')
+          badCtx.push('unit ' + u.id + ': repair difficultyAxis.task_complexity should be "repair"');
       } else {
         if (ctx.taskType !== TASK_OF_DIR[ctx.inferenceDirection])
           badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType + ' does not follow dir ' + ctx.inferenceDirection);
@@ -514,6 +601,13 @@
       discAxis9.inference_direction === null && discAxis9.task_complexity === 'discover' &&
       discAxis10.inference_direction === null && discAxis10.task_complexity === 'discover',
       JSON.stringify({ u9: discAxis9, u10: discAxis10 }));
+
+    var repairAxis11 = C.difficultyAxisFor(C.UNIT_LEVEL['11'], C.UNIT_RULE['11'], 'repair') || {};
+    var repairAxis12 = C.difficultyAxisFor(C.UNIT_LEVEL['12'], C.UNIT_RULE['12'], 'repair') || {};
+    check(S, 'repair 方向的难度轴：inference_direction=null，task_complexity="repair"',
+      repairAxis11.inference_direction === null && repairAxis11.task_complexity === 'repair' &&
+      repairAxis12.inference_direction === null && repairAxis12.task_complexity === 'repair',
+      JSON.stringify({ u11: repairAxis11, u12: repairAxis12 }));
 
     check(S, 'inference_direction 与 task_complexity 永不矛盾（任务由方向推出）',
       badAxis.length === 0,
@@ -616,6 +710,15 @@
     right.forEach(function (r) { Array.from(r.emoji || '').forEach(function (g) { rightGlyphs[g] = 1; }); });
     var overlap = Object.keys(leftGlyphs).filter(function (g) { return rightGlyphs[g]; });
     check(S, '左右字形词汇不重叠（避免按字面匹配）', overlap.length === 0, overlap.join(','));
+
+    // Cross-check: don't trust the hand-written .signature field — recompute
+    // it from the emoji tokens via the same helper the game uses at runtime.
+    var badSig = [];
+    left.concat(right).forEach(function (item) {
+      var computed = C.structureSignature(Array.from(item.emoji || ''));
+      if (computed !== item.signature) badSig.push(item.id + ': declared=' + item.signature + ' computed=' + computed);
+    });
+    check(S, '手写 signature 与 structureSignature() 计算结果一致', badSig.length === 0, badSig.join('\n'));
   })();
 
   // S9 · structureSignature / isPeriodicSignature (§6.1 fulcrum) — unit tests
@@ -766,6 +869,128 @@
           typeof label === 'string' && /(组|Group)/.test(label) && label.indexOf(String(q.answer)) >= 0, label);
       });
     });
+  })();
+
+  // S12 · repair@K2 (unit 11) / repair@G1 (unit 12) — same idiom as S11, but
+  // for the two-step tap-select interaction: checkAnswer must require BOTH
+  // the tapped index (q._repairIndex, closure-mutated by renderSequence's
+  // click handler) and the picked value to be correct.
+  (function () {
+    var S = 'S12 · repair 纠错任务 Repair task';
+    var u11 = units.filter(function (u) { return u.id === '11'; })[0];
+    var u12 = units.filter(function (u) { return u.id === '12'; })[0];
+    check(S, 'unit 11（repetition×repair，K2）存在', !!u11);
+    check(S, 'unit 12（alternating×repair，G1）存在', !!u12);
+    if (!u11 || !u12 || !CAPTURED) return;
+
+    check(S, 'unit 11 归入 repetition / K2',
+      C.PATTERN_TYPE_OF[C.UNIT_RULE['11']] === 'repetition' && C.UNIT_LEVEL['11'] === 'K2',
+      C.UNIT_RULE['11'] + ' / ' + C.UNIT_LEVEL['11']);
+    check(S, 'unit 12 归入 alternating / G1',
+      C.PATTERN_TYPE_OF[C.UNIT_RULE['12']] === 'alternating' && C.UNIT_LEVEL['12'] === 'G1',
+      C.UNIT_RULE['12'] + ' / ' + C.UNIT_LEVEL['12']);
+
+    [u11, u12].forEach(function (u) {
+      (u.questions || []).forEach(function (q, k) {
+        var where = 'U' + u.id + '·Q' + (k + 1);
+
+        var div = document.createElement('div');
+        try {
+          CAPTURED.renderSequence(q, div);
+          var itemEls = div.querySelectorAll('.mp-repair-item');
+          check(S, where + ': renderSequence 渲染出与序列等长的可点击项，不抛异常',
+            itemEls.length === q.seq.length, itemEls.length + ' items rendered, seq length ' + q.seq.length);
+        } catch (e) {
+          check(S, where + ': renderSequence 不抛异常', false, String(e));
+        }
+
+        try {
+          var voice = CAPTURED.getVoiceText(q);
+          check(S, where + ': getVoiceText 不依赖具体序列内容，返回固定提示语',
+            typeof voice === 'string' && voice.length > 0, voice);
+        } catch (e) {
+          check(S, where + ': getVoiceText 不抛异常', false, String(e));
+        }
+
+        q._repairIndex = q.brokenIndex;
+        check(S, where + ': checkAnswer 在下标和数值都正确时判定通过',
+          CAPTURED.checkAnswer(q.answer, q) === true);
+
+        q._repairIndex = (q.brokenIndex + 1) % q.seq.length;
+        check(S, where + ': checkAnswer 在下标点错时判定失败（即便数值正确）',
+          CAPTURED.checkAnswer(q.answer, q) === false);
+
+        q._repairIndex = q.brokenIndex;
+        var wrongOpt = (q.options || []).filter(function (o) { return o !== q.answer; })[0];
+        check(S, where + ': checkAnswer 在下标点对但数值选错时判定失败',
+          CAPTURED.checkAnswer(wrongOpt, q) === false);
+
+        delete q._repairIndex;
+      });
+    });
+  })();
+
+  // S13 · repetition×match sample structural legitimacy (§8.1) — mirrors S8,
+  // but for the K2 color/shape match activity added in direction-1 step 5.
+  (function () {
+    var S = 'S13 · repetition×match 结构合法性 Match sample legitimacy';
+    var variant = C.repMatchVariant ? C.repMatchVariant() : null;
+    check(S, 'repMatchVariant() 已导出', !!variant && !!variant.leftItems && !!variant.rightSlots);
+    if (!variant) return;
+
+    var left = variant.leftItems || [];
+    var right = variant.rightSlots || [];
+    check(S, '左右数量相等', left.length === right.length,
+      'left=' + left.length + ' right=' + right.length);
+
+    var leftSigs = left.map(function (x) { return x.signature; });
+    var rightSigs = right.map(function (x) { return x.signature; });
+    var dupLeft = leftSigs.filter(function (s, i) { return leftSigs.indexOf(s) !== i; });
+    var dupRight = rightSigs.filter(function (s, i) { return rightSigs.indexOf(s) !== i; });
+    check(S, '左侧签名互不重复', dupLeft.length === 0, dupLeft.join(','));
+    check(S, '右侧签名互不重复', dupRight.length === 0, dupRight.join(','));
+
+    var badMatch = [];
+    left.forEach(function (l) {
+      var hits = rightSigs.filter(function (s) { return s === l.signature; });
+      if (hits.length !== 1) badMatch.push(l.id + ' (' + l.signature + '): ' + hits.length + ' matches on the right');
+    });
+    check(S, '每个左侧项在右侧都恰好有一个签名匹配（一对一）',
+      badMatch.length === 0, badMatch.join('\n'));
+
+    // The point of cross-carrier match: literal glyphs must never overlap,
+    // otherwise a child could match by lookup instead of by structure.
+    var leftGlyphs = {}, rightGlyphs = {};
+    left.forEach(function (l) { Array.from(l.emoji || '').forEach(function (g) { leftGlyphs[g] = 1; }); });
+    right.forEach(function (r) { Array.from(r.emoji || '').forEach(function (g) { rightGlyphs[g] = 1; }); });
+    var overlap = Object.keys(leftGlyphs).filter(function (g) { return rightGlyphs[g]; });
+    check(S, '左右字形词汇不重叠（避免按字面匹配）', overlap.length === 0, overlap.join(','));
+
+    // Cross-check: don't trust the hand-written .signature field — recompute
+    // it from the emoji tokens via the same helper the game uses at runtime.
+    var badSig = [];
+    left.concat(right).forEach(function (item) {
+      var computed = C.structureSignature(Array.from(item.emoji || ''));
+      if (computed !== item.signature) badSig.push(item.id + ': declared=' + item.signature + ' computed=' + computed);
+    });
+    check(S, '手写 signature 与 structureSignature() 计算结果一致', badSig.length === 0, badSig.join('\n'));
+
+    // Each signature must be genuinely periodic at 2 full periods (§6.1
+    // fulcrum requirement: period strictly shorter than total length),
+    // otherwise isPeriodicSignature() would reject a legitimate item.
+    var notPeriodic = [];
+    left.concat(right).forEach(function (item) {
+      if (!C.isPeriodicSignature(item.signature)) notPeriodic.push(item.id + ' (' + item.signature + ')');
+    });
+    check(S, '每个签名都满足 isPeriodicSignature（周期严格小于总长）',
+      notPeriodic.length === 0, notPeriodic.join(','));
+
+    // Disjoint from alternating's already-used signature set, per
+    // SPEC-repetition-match-k2.md's variable-boundary rule (avoid training
+    // the same structural signature in two different match activities).
+    var altSigs = ['ABAB', 'AABAAB', 'ABBABB'];
+    var reused = leftSigs.filter(function (s) { return altSigs.indexOf(s) !== -1; });
+    check(S, '签名集合与 alternating×match@G2 不重复', reused.length === 0, reused.join(','));
   })();
 
   // ── render ────────────────────────────────────────────────────────────────

@@ -31,7 +31,7 @@
   // in every module. This module's own levelId IS the grade code, exactly like
   // comparison's, so validate.js S2 can match it against pattern.json's
   // levelMap gradeCodes (L3→G1, L4→G2).
-  var LEVEL_GRADE = { K1: 'K1', G1: 'G1', G2: 'G2' };
+  var LEVEL_GRADE = { K1: 'K1', K2: 'K2', G1: 'G1', G2: 'G2' };
 
   // Unit id → levelId. Follows data.js's own header:
   //   units 1-3 = counting / skip-counting / fives-and-tens  → G1
@@ -40,10 +40,13 @@
   //   unit 8    = up/down direction oscillation (alternating) → G1
   //   unit 9    = repetition × discover (candidate groups)    → K1
   //   unit 10   = alternating × discover (candidate groups)   → G1
+  //   unit 11   = repetition × repair (locate + fix)          → K2
+  //   unit 12   = alternating × repair (locate + fix)         → G1
   var UNIT_LEVEL = { '1': 'G1', '2': 'G1', '3': 'G1',
                      '4': 'G2', '5': 'G2', '6': 'G2',
                      '7': 'K1', '8': 'G1',
-                     '9': 'K1', '10': 'G1' };
+                     '9': 'K1', '10': 'G1',
+                     '11': 'K2', '12': 'G1' };
 
   // Unit id → the rule the unit trains. Finer grained than the typeTree on
   // purpose: the radar needs the typeTree id, a teacher reading the record
@@ -51,7 +54,8 @@
   var UNIT_RULE = { '1': 'count_up',   '2': 'skip_count', '3': 'fives_tens',
                     '4': 'count_down', '5': 'doubling',   '6': 'story',
                     '7': 'ab_repeat',  '8': 'updown_alternate',
-                    '9': 'ab_repeat_discover', '10': 'updown_alternate_discover' };
+                    '9': 'ab_repeat_discover', '10': 'updown_alternate_discover',
+                    '11': 'ab_repeat_repair', '12': 'updown_alternate_repair' };
 
   // Rule type → pattern.json typeTree id (the STRUCTURE dimension). Every rule
   // shipped today lands in `numerical`, `repetition` or `alternating` —
@@ -70,18 +74,21 @@
     ab_repeat:  'repetition',
     updown_alternate: 'alternating',
     ab_repeat_discover:        'repetition',
-    updown_alternate_discover: 'alternating'
+    updown_alternate_discover: 'alternating',
+    ab_repeat_repair:          'repetition',
+    updown_alternate_repair:   'alternating'
   };
 
   // Structure id → the rootGenes an item of that structure reports.
   // Per pattern.json → geneReporting: the structure gene, plus the carrier gene
   // of the attribute the rule actually varies. Everything numerical varies a
-  // quantity, so it reports both. repetition varies color; alternating (the
-  // match sample) varies color AND shape, since match compares each carrier's
-  // own structural signature.
+  // quantity, so it reports both. repetition's puzzle content varies color
+  // only, but its K2 match activity spans color AND shape (like alternating's
+  // G2 match sample), since match compares each carrier's own structural
+  // signature — so both structures report the shape gene too.
   var STRUCTURE_GENES = {
     numerical:   ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION'],
-    repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR'],
+    repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE'],
     alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE']
   };
 
@@ -138,6 +145,9 @@
       K1: { object_complexity: 'concrete', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'action', transfer_complexity: 'within-domain' },
+      K2: { object_complexity: 'concrete', rule_complexity: 'single',
+            inference_direction: 'forward', task_complexity: 'continue',
+            language_complexity: 'action', transfer_complexity: 'within-domain' },
       G1: { object_complexity: 'symbolic', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'question', transfer_complexity: 'within-domain' },
@@ -164,12 +174,17 @@
     // — it answers "which group is a pattern", not "where is the gap" (same
     // reasoning that moved `repair` off this axis in pattern.json).
     else if (direction === 'discover') { axis.inference_direction = null; }
+    // repair's sequence is full too — the reasoning is "which item is wrong
+    // and what should it be", not "where is the gap" — off the axis exactly
+    // like discover, per pattern.json's own `movedOut` note for repair.
+    else if (direction === 'repair')   { axis.inference_direction = null; }
 
     // …and the task follows from the direction, never independently, so the two
     // axes can never contradict each other in a record.
     if (direction === 'backward')      { axis.task_complexity = 'complete'; }
     else if (direction === 'interior') { axis.task_complexity = 'complete'; }
     else if (direction === 'discover') { axis.task_complexity = 'discover'; }
+    else if (direction === 'repair')   { axis.task_complexity = 'repair'; }
 
     return axis;
   }
@@ -241,7 +256,7 @@
       patternType: structure,
       structure:   structure,
       carrier:     CARRIER_OF[structure] || null,
-      taskType:    direction === 'discover' ? 'discover' : (direction ? (TASK_OF[direction] || null) : null),
+      taskType:    direction === 'discover' ? 'discover' : (direction === 'repair' ? 'repair' : (direction ? (TASK_OF[direction] || null) : null)),
       ruleType:    ruleType,
       difficultyAxis: difficultyAxisFor(levelId, ruleType, direction),
       sourceGameId: SOURCE_GAME_ID
@@ -323,7 +338,9 @@
     // Exposed so test.html can audit the match sample's structural legitimacy
     // (§8.1) without driving ActivityRunner/MatchRuntime through a real DOM.
     matchTemplate: function () { return _matchTemplate(); },
-    matchVariant: function () { return _matchVariant(); }
+    matchVariant: function () { return _matchVariant(); },
+    repMatchTemplate: function () { return _repMatchTemplate(); },
+    repMatchVariant: function () { return _repMatchVariant(); }
   };
 
   /**
@@ -437,6 +454,109 @@
     hdr.insertBefore(btn, hdr.firstChild);
   }
 
+  /**
+   * repetition × match (K2) — second non-puzzle sample, same runtime as
+   * alternating's G2 match activity (no runtime code changes: MatchRuntime's
+   * compareKey/seqMode generalization already covers this). Per
+   * SPEC-repetition-match-k2.md: signatures are AABB/ABC/AABBCC — the L2
+   * objective's repetition vocabulary — deliberately disjoint from
+   * alternating's ABAB/AABAAB/ABBABB set, and each taken to 2 full periods so
+   * isPeriodicSignature() holds (period strictly shorter than total length).
+   */
+  function _repMatchTemplate() {
+    return {
+      id:         'pat-k2-match-repsig-001',
+      level:      'K2',
+      type:       'repetition',
+      mode:       'match',
+      runtime:    'match',
+      compareKey: 'signature',
+      instrZh:    '把颜色规律拖到结构相同的图形规律上 →',
+      instrEn:    'Drag each color pattern onto the shape pattern with the same structure →'
+    };
+  }
+
+  // 3 left (color) × 3 right (shape) items, each pair sharing a structural
+  // signature (AABB / ABC / AABBCC) and no emoji vocabulary in common —
+  // per SPEC-repetition-match-k2.md, the child must compare structure, not
+  // literal glyphs.
+  function _repMatchVariant() {
+    var leftItems = [
+      { id: 'L0', emoji: '🔴🔴🔵🔵🔴🔴🔵🔵',         signature: 'AABBAABB',       nameZh: '颜色规律', nameEn: 'Color pattern' },
+      { id: 'L1', emoji: '🔴🔵🟡🔴🔵🟡',             signature: 'ABCABC',         nameZh: '颜色规律', nameEn: 'Color pattern' },
+      { id: 'L2', emoji: '🔴🔴🔵🔵🟡🟡🔴🔴🔵🔵🟡🟡', signature: 'AABBCCAABBCC',   nameZh: '颜色规律', nameEn: 'Color pattern' }
+    ];
+    var rightSlots = [
+      { id: 'R0', emoji: '⚪⚪🔷🔷⚪⚪🔷🔷',         signature: 'AABBAABB',       nameZh: '形状规律', nameEn: 'Shape pattern' },
+      { id: 'R1', emoji: '⚪🔷🔺⚪🔷🔺',             signature: 'ABCABC',         nameZh: '形状规律', nameEn: 'Shape pattern' },
+      { id: 'R2', emoji: '⚪⚪🔷🔷🔺🔺⚪⚪🔷🔷🔺🔺', signature: 'AABBCCAABBCC',   nameZh: '形状规律', nameEn: 'Shape pattern' }
+    ];
+    return {
+      seqMode:    true,
+      compareKey: 'signature',
+      leftItems:  _shuffled(leftItems),
+      rightSlots: _shuffled(rightSlots),
+      variantId:  'pat-k2-match-repsig-001-v1'
+    };
+  }
+
+  function _launchRepMatchActivity() {
+    ActivityRunner.launch(_repMatchTemplate(), _repMatchVariant(), {
+      levelId:    'K2',
+      onComplete: _reportRepMatchActivity,
+      onBack:     function () {}
+    });
+  }
+
+  function _reportRepMatchActivity(attempt) {
+    if (!shell || typeof shell.report !== 'function') return;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        'K2',
+      gradeCode:      'K2',
+      patternType:    'repetition',
+      structure:      'repetition',
+      carrier:        null,
+      carriers:       ['color', 'shape'],
+      taskType:       'match',
+      ruleType:       null,
+      difficultyAxis: difficultyAxisFor('K2', null, 'forward'),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    shell.report({
+      gameId:     SOURCE_GAME_ID,
+      unitId:     'rep-match',
+      templateId: attempt.templateId,
+      variantId:  attempt.variantId || null,
+      score:      attempt.result === 'correct' ? 1 : 0,
+      total:      1,
+      timeMs:     attempt.responseMs || 0,
+      hintsUsed:  0,
+      geneIds:    genesFor('repetition'),
+      shell:      'shell-1',
+      activityRuntime: 'interaction',
+      activityMode:    'match',
+      result:     attempt.result || null,
+      levelId:    'K2',
+      gradeCode:  'K2',
+      context:    context
+    });
+  }
+
+  // Second match trigger, same idiom as _injectMatchTrigger — a distinct
+  // button id/icon so both can coexist in the shell home header.
+  function _injectRepMatchTrigger() {
+    var hdr = document.querySelector('#s1-home .s1-hdr');
+    if (!hdr || document.getElementById('mp-rep-match-trigger')) return;
+    var btn = document.createElement('button');
+    btn.id = 'mp-rep-match-trigger';
+    btn.innerHTML = '🧷';
+    btn.title = '重复规律配对 / Repetition pattern match';
+    btn.addEventListener('click', _launchRepMatchActivity);
+    hdr.insertBefore(btn, hdr.firstChild);
+  }
+
   shell.createGame({
     id:       SOURCE_GAME_ID,
     theme:    { primary: '#d97706', primary2: '#92400e' },   // amber
@@ -468,6 +588,7 @@
 
     renderSequence: function (q, container) {
       if (q.task === 'discover') {
+        container.classList.remove('mp-repair');
         container.classList.add('mp-discover');
         container.innerHTML = q.groups.map(function (g, i) {
           var body = g.seq.map(function (tok) { return '<span>' + tok + '</span>'; }).join(' ');
@@ -475,7 +596,26 @@
         }).join('');
         return;
       }
+      if (q.task === 'repair') {
+        container.classList.remove('mp-discover');
+        container.classList.add('mp-repair');
+        container.innerHTML = q.seq.map(function (tok, i) {
+          return '<span class="mp-repair-item" data-i="' + i + '">' + tok + '</span>';
+        }).join(' ');
+        Array.prototype.forEach.call(container.querySelectorAll('.mp-repair-item'), function (el) {
+          if (Number(el.getAttribute('data-i')) === q._repairIndex) el.classList.add('mp-repair-selected');
+          el.addEventListener('click', function () {
+            q._repairIndex = Number(el.getAttribute('data-i'));
+            Array.prototype.forEach.call(container.querySelectorAll('.mp-repair-item'), function (s) {
+              s.classList.remove('mp-repair-selected');
+            });
+            el.classList.add('mp-repair-selected');
+          });
+        });
+        return;
+      }
       container.classList.remove('mp-discover');
+      container.classList.remove('mp-repair');
       container.innerHTML = q.seq.map(function (n) {
         return n === '?' ? '<span class="mystery">?</span>' : '<span>' + n + '</span>';
       }).join(' ');
@@ -488,12 +628,21 @@
     },
     // Relaxed from Number(selected) === q.answer: the K1 repetition unit's
     // answers are emoji strings, not numerals.
-    checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
+    checkAnswer: function (selected, q) {
+      if (q.task === 'repair') {
+        return q._repairIndex === q.brokenIndex && String(selected) === String(q.answer);
+      }
+      return String(selected) === String(q.answer);
+    },
 
     getVoiceText: function (q) {
       if (q.task === 'discover') {
         return shell.lang === 'zh' ? '看看这几组，哪一组是真的规律？'
                                    : 'Look at each group — which one is a real pattern?';
+      }
+      if (q.task === 'repair') {
+        return shell.lang === 'zh' ? '这排里有一个错了，先点出错的那个，再选出正确的。'
+                                   : 'One item in this row is wrong — tap it, then pick the right one.';
       }
       var numeric = q.seq.every(function (n) { return n === '?' || !isNaN(n); });
       if (!numeric) {
@@ -533,6 +682,12 @@
           activityRuntime: 'puzzle'
         });
       }
+      if (questions.length && questions[0].task === 'repair') {
+        return buildRadarContext(unit.id, 'repair', {
+          taskTypes:       ['repair'],
+          activityRuntime: 'puzzle'
+        });
+      }
       var dirs = questions.map(function (q) {
         return inferenceDirectionOf(q.seq);
       });
@@ -563,7 +718,26 @@
     ].join('');
     document.head.appendChild(s);
   }
+
+  /**
+   * repair's sequence has no blank, but every item must stay tappable so the
+   * child can point at the broken one — a plain hover/selected highlight on
+   * top of the existing .s1-seq row, same idiom as discover's own stylesheet.
+   */
+  function _injectRepairStyles() {
+    if (document.getElementById('mp-repair-style')) return;
+    var s = document.createElement('style');
+    s.id = 'mp-repair-style';
+    s.textContent = [
+      '.mp-repair-item{cursor:pointer;padding:2px 6px;border-radius:8px;transition:background .15s,transform .15s;}',
+      '.mp-repair-item:hover{background:rgba(0,0,0,.08);}',
+      '.mp-repair-selected{background:var(--s1-primary);transform:scale(1.1);}'
+    ].join('');
+    document.head.appendChild(s);
+  }
   _injectDiscoverStyles();
+  _injectRepairStyles();
 
   _injectMatchTrigger();
+  _injectRepMatchTrigger();
 })();

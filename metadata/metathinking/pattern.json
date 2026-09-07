@@ -165,8 +165,8 @@
       "implementedBy": [
         "learning-math-pattern"
       ],
-      "coverageGapZh": "K1 的颜色载体 AB 循环续写、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；K2 的纠错、配对、创造尚未实现。",
-      "coverageGapEn": "K1's color-carrier AB cycle continue, complete and discover (picking the one run that actually follows a rule) are implemented; K2's repair, match and create are not implemented yet."
+      "coverageGapZh": "K1 的颜色载体 AB 循环续写、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；K2 的纠错（repair，先点出打乱循环的那一项再修好它）与配对（match，颜色规律与图形规律的同构配对）也已实现；K2 的创造尚未实现。",
+      "coverageGapEn": "K1's color-carrier AB cycle continue, complete and discover (picking the one run that actually follows a rule) are implemented, as is K2's repair (tap the item that breaks the cycle, then fix it) and match (isomorphism pairing between a color pattern and a shape pattern); K2's create is not implemented yet."
     },
     {
       "id": "growth",
@@ -198,8 +198,8 @@
       "implementedBy": [
         "learning-math-pattern"
       ],
-      "coverageGapZh": "G1 的方向/昼夜载体振荡续写（continue）、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；G2 的 match（颜色规律与图形规律的同构配对）也已实现；repair、create 尚未实现。",
-      "coverageGapEn": "G1's direction/day-night oscillation continue, complete and discover (picking the one run that actually follows a rule) are implemented, as is G2's match (isomorphism pairing between a color pattern and a shape pattern); repair and create are not implemented yet."
+      "coverageGapZh": "G1 的方向/昼夜载体振荡续写（continue）、补全（complete）、发现（discover，挑出真正有规律的一组）与纠错（repair，先点出打乱交替的那一项再修好它）均已实现；G2 的 match（颜色规律与图形规律的同构配对）也已实现；create 尚未实现。",
+      "coverageGapEn": "G1's direction/day-night oscillation continue, complete, discover (picking the one run that actually follows a rule) and repair (tap the item that breaks the alternation, then fix it) are all implemented, as is G2's match (isomorphism pairing between a color pattern and a shape pattern); create is not implemented yet."
     },
     {
       "id": "spatial",
@@ -496,14 +496,14 @@
       "task": "repair",
       "levelFloor": "K2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "repetition",
       "task": "match",
       "levelFloor": "K2",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "repetition",
@@ -580,7 +580,7 @@
       "task": "repair",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
@@ -806,9 +806,20 @@
       "primaryTasks": [
         "continue",
         "complete",
+        "repair",
+        "match",
         "create"
       ],
-      "status": "planned"
+      "status": "partial",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "match"
+      ],
+      "coverageGapZh": "重复规律的纠错（repair，先点出打乱循环的那一项再修好它）与配对（match，颜色规律与图形规律的同构配对）均已实现；growth、numerical 载体与 create 任务尚未实现。",
+      "coverageGapEn": "Repetition's repair (tap the item that breaks the cycle, then fix it) and match (isomorphism pairing between a color pattern and a shape pattern) are both implemented; the growth and numerical carriers and the create task are not implemented yet."
     },
     {
       "levelId": "L3",
@@ -823,7 +834,8 @@
       "primaryTasks": [
         "discover",
         "continue",
-        "complete"
+        "complete",
+        "repair"
       ],
       "status": "implemented",
       "implementedBy": [
