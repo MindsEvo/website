@@ -86,10 +86,14 @@
   // only, but its K2 match activity spans color AND shape (like alternating's
   // G2 match sample), since match compares each carrier's own structural
   // signature — so both structures report the shape gene too.
+  // alternating also carries RG.PATTERN.SPATIAL.RELATION: its Unit 8 G1 puzzle
+  // content (up/down direction) and its G2 create activity both use the
+  // `direction` carrier (pattern.json → carriers), whose carrierGeneId is
+  // RG.PATTERN.SPATIAL.RELATION — omitted until now, which this fixes.
   var STRUCTURE_GENES = {
     numerical:   ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION'],
     repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE'],
-    alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE']
+    alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE', 'RG.PATTERN.SPATIAL.RELATION']
   };
 
   // Structure id → the carrier every item of that structure uses
@@ -340,7 +344,11 @@
     matchTemplate: function () { return _matchTemplate(); },
     matchVariant: function () { return _matchVariant(); },
     repMatchTemplate: function () { return _repMatchTemplate(); },
-    repMatchVariant: function () { return _repMatchVariant(); }
+    repMatchVariant: function () { return _repMatchVariant(); },
+    repCreateTemplate: function () { return _repCreateTemplate(); },
+    repCreateVariant: function () { return _repCreateVariant(); },
+    altCreateTemplate: function () { return _altCreateTemplate(); },
+    altCreateVariant: function () { return _altCreateVariant(); }
   };
 
   /**
@@ -557,6 +565,189 @@
     hdr.insertBefore(btn, hdr.firstChild);
   }
 
+  /**
+   * repetition × create (K2) — third non-puzzle sample, reusing comparison's
+   * SortRuntime (see sort-runtime.js's targetOrder/targetSignature
+   * generalization: no runtime fork). Per SPEC-repetition-create-k2.md: the
+   * child drags 2 red + 2 blue beads into 4 slots so the RESULT's structure
+   * signature is "AABB" — same-color beads grouped in twos, in either order
+   * (RRBB or BBRR both satisfy it; RBRB/RBBR/BRRB/BRBR do not) — a genuine
+   * construction task, not "sort into one fixed order" like comparison's own
+   * ribbon sort.
+   */
+  function _repCreateTemplate() {
+    return {
+      id:             'pat-k2-create-repsig-001',
+      level:          'K2',
+      type:           'repetition',
+      mode:           'create',
+      runtime:        'sort',
+      modeLabelZh:    '创造',
+      modeLabelEn:    'Create',
+      instrZh:        '把珠子排成"两个一样紧挨着"的规律 (AABB) →',
+      instrEn:        'Arrange the beads so each color makes a pair (AABB) →',
+      holdingLabelZh: '拖动珠子',
+      holdingLabelEn: 'Drag beads'
+    };
+  }
+
+  function _repCreateVariant() {
+    return {
+      targetSignature: 'AABB',
+      items: [
+        { id: 'C0', token: 'red',  emoji: '🔴' },
+        { id: 'C1', token: 'red',  emoji: '🔴' },
+        { id: 'C2', token: 'blue', emoji: '🔵' },
+        { id: 'C3', token: 'blue', emoji: '🔵' }
+      ],
+      variantId: 'pat-k2-create-repsig-001-v1'
+    };
+  }
+
+  function _launchRepCreateActivity() {
+    ActivityRunner.launch(_repCreateTemplate(), _repCreateVariant(), {
+      levelId:    'K2',
+      onComplete: _reportRepCreateActivity,
+      onBack:     function () {}
+    });
+  }
+
+  function _reportRepCreateActivity(attempt) {
+    if (!shell || typeof shell.report !== 'function') return;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        'K2',
+      gradeCode:      'K2',
+      patternType:    'repetition',
+      structure:      'repetition',
+      carrier:        'color',
+      taskType:       'create',
+      ruleType:       null,
+      difficultyAxis: difficultyAxisFor('K2', null, 'forward'),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    shell.report({
+      gameId:     SOURCE_GAME_ID,
+      unitId:     'rep-create',
+      templateId: attempt.templateId,
+      variantId:  attempt.variantId || null,
+      score:      attempt.result === 'correct' ? 1 : 0,
+      total:      1,
+      timeMs:     attempt.responseMs || 0,
+      hintsUsed:  0,
+      geneIds:    genesFor('repetition'),
+      shell:      'shell-1',
+      activityRuntime: 'interaction',
+      activityMode:    'create',
+      result:     attempt.result || null,
+      levelId:    'K2',
+      gradeCode:  'K2',
+      context:    context
+    });
+  }
+
+  function _injectRepCreateTrigger() {
+    var hdr = document.querySelector('#s1-home .s1-hdr');
+    if (!hdr || document.getElementById('mp-rep-create-trigger')) return;
+    var btn = document.createElement('button');
+    btn.id = 'mp-rep-create-trigger';
+    btn.innerHTML = '🎨';
+    btn.title = '重复规律创造 / Repetition pattern create';
+    btn.addEventListener('click', _launchRepCreateActivity);
+    hdr.insertBefore(btn, hdr.firstChild);
+  }
+
+  /**
+   * alternating × create (G2) — fourth non-puzzle sample, same SortRuntime
+   * signature-mode idiom as repetition's K2 create. Per
+   * SPEC-alternating-create-g2.md: the child drags 2 up + 2 down arrows into
+   * 4 slots so the result's signature is "ABAB" — true alternation (UDUD or
+   * DUDU), not two grouped runs (UUDD/DDUU) or any other arrangement.
+   */
+  function _altCreateTemplate() {
+    return {
+      id:             'pat-g2-create-altsig-001',
+      level:          'G2',
+      type:           'alternating',
+      mode:           'create',
+      runtime:        'sort',
+      modeLabelZh:    '创造',
+      modeLabelEn:    'Create',
+      instrZh:        '把箭头排成"一上一下交替"的规律 (ABAB) →',
+      instrEn:        'Arrange the arrows so they alternate up and down (ABAB) →',
+      holdingLabelZh: '拖动箭头',
+      holdingLabelEn: 'Drag arrows'
+    };
+  }
+
+  function _altCreateVariant() {
+    return {
+      targetSignature: 'ABAB',
+      items: [
+        { id: 'D0', token: 'up',   emoji: '⬆️' },
+        { id: 'D1', token: 'up',   emoji: '⬆️' },
+        { id: 'D2', token: 'down', emoji: '⬇️' },
+        { id: 'D3', token: 'down', emoji: '⬇️' }
+      ],
+      variantId: 'pat-g2-create-altsig-001-v1'
+    };
+  }
+
+  function _launchAltCreateActivity() {
+    ActivityRunner.launch(_altCreateTemplate(), _altCreateVariant(), {
+      levelId:    'G2',
+      onComplete: _reportAltCreateActivity,
+      onBack:     function () {}
+    });
+  }
+
+  function _reportAltCreateActivity(attempt) {
+    if (!shell || typeof shell.report !== 'function') return;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        'G2',
+      gradeCode:      'G2',
+      patternType:    'alternating',
+      structure:      'alternating',
+      carrier:        'direction',
+      taskType:       'create',
+      ruleType:       null,
+      difficultyAxis: difficultyAxisFor('G2', null, 'forward'),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    shell.report({
+      gameId:     SOURCE_GAME_ID,
+      unitId:     'alt-create',
+      templateId: attempt.templateId,
+      variantId:  attempt.variantId || null,
+      score:      attempt.result === 'correct' ? 1 : 0,
+      total:      1,
+      timeMs:     attempt.responseMs || 0,
+      hintsUsed:  0,
+      geneIds:    genesFor('alternating'),
+      shell:      'shell-1',
+      activityRuntime: 'interaction',
+      activityMode:    'create',
+      result:     attempt.result || null,
+      levelId:    'G2',
+      gradeCode:  'G2',
+      context:    context
+    });
+  }
+
+  function _injectAltCreateTrigger() {
+    var hdr = document.querySelector('#s1-home .s1-hdr');
+    if (!hdr || document.getElementById('mp-alt-create-trigger')) return;
+    var btn = document.createElement('button');
+    btn.id = 'mp-alt-create-trigger';
+    btn.innerHTML = '🖍️';
+    btn.title = '交替规律创造 / Alternating pattern create';
+    btn.addEventListener('click', _launchAltCreateActivity);
+    hdr.insertBefore(btn, hdr.firstChild);
+  }
+
   shell.createGame({
     id:       SOURCE_GAME_ID,
     theme:    { primary: '#d97706', primary2: '#92400e' },   // amber
@@ -740,4 +931,6 @@
 
   _injectMatchTrigger();
   _injectRepMatchTrigger();
+  _injectRepCreateTrigger();
+  _injectAltCreateTrigger();
 })();

@@ -13,9 +13,16 @@
  *
  * Attempt structure:
  * {
- *   templateId, variantId, mode:'sort', result:'correct',
+ *   templateId, variantId, mode: template.mode||'sort', result:'correct',
  *   responseMs, process: { moves, corrections, finalOrder, targetOrder }
  * }
+ *
+ * variant selects one of two verification modes:
+ *   targetOrder     — exact position match (comparison's own magnitude sort).
+ *   targetSignature — structure-signature equality (pattern's `create`):
+ *                      process gets finalSignature/targetSignature instead of
+ *                      targetOrder. Items may also carry `emoji` (rendered as
+ *                      text) instead of `lengthPct`/`color` (rendered as a bar).
  *
  * A wrong order is not an outcome: the slots stay filled, the misplaced ones
  * shake, and the child keeps adjusting. onComplete only fires once solved, so
@@ -50,6 +57,8 @@ var SortRuntime = (function () {
       '.sr-item{display:flex;align-items:center;padding:5px 6px;border-radius:10px;cursor:grab;touch-action:none;user-select:none;background:#f8fafc;border:1.5px solid #e2e8f0;transition:opacity .15s;}',
       '.sr-item:active{cursor:grabbing;}',
       '.sr-item-bar{height:26px;border-radius:999px;flex-shrink:0;}',
+      '.sr-item-emoji{width:100%;text-align:center;font-size:26px;line-height:1;padding:2px 4px;}',
+      '.sr-slot-inner .sr-item-emoji{font-size:22px;}',
       '.sr-slots-wrap{width:min(680px,100%);flex-shrink:0;display:flex;flex-direction:column;gap:6px;}',
       '.sr-slots-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#64748b;flex-shrink:0;}',
       '.sr-slots-arrow .sr-line{flex:1;height:2px;background:#cbd5e1;border-radius:1px;}',
@@ -105,6 +114,19 @@ var SortRuntime = (function () {
     var n = s.items.length;
     var lang = shell.lang || 'zh';
 
+    // Every label below defaults to comparison's own ribbon-sort wording, so a
+    // template that sets none of these (comparison's own templates.json
+    // entries) renders exactly as before. A signature-mode caller (pattern's
+    // `create`) supplies its own instrZh/instrEn/holdingLbl* and drops the
+    // Short\u2192Long arrow row, which only makes sense for a magnitude sort.
+    var modeZh    = s.template.modeLabelZh    || '\u6392\u5e8f';
+    var modeEn    = s.template.modeLabelEn    || 'Sort';
+    var instrZh   = s.template.instrZh        || '\u628a\u5f69\u5e26\u4ece\u6700\u77ed\u5230\u6700\u957f\u6392\u597d \u2193';
+    var instrEn   = s.template.instrEn        || 'Sort ribbons shortest \u2192 longest \u2193';
+    var holdingZh = s.template.holdingLabelZh || '\u62d6\u52a8\u5f69\u5e26';
+    var holdingEn = s.template.holdingLabelEn || 'Drag ribbons';
+    var sigMode   = !!s.variant.targetSignature;
+
     var root = document.createElement('div');
     root.className = 'sr';
     root.id = 'sr-root';
@@ -114,26 +136,27 @@ var SortRuntime = (function () {
       '<div class="ih-hdr">' +
         '<button class="ih-back" id="sr-back">\u2b05\ufe0f</button>' +
         '<div class="ih-title">' +
-          '<span class="zh">' + s.ctx.levelId + ' \u00b7 \u6392\u5e8f</span>' +
-          '<span class="en">' + s.ctx.levelId + ' \u00b7 Sort</span>' +
+          '<span class="zh">' + s.ctx.levelId + ' \u00b7 ' + modeZh + '</span>' +
+          '<span class="en">' + s.ctx.levelId + ' \u00b7 ' + modeEn + '</span>' +
         '</div>' +
         IH.controlsHtml('sr') +
       '</div>' +
       '<div class="sr-instr">' +
-        '<span class="zh">\u628a\u5f69\u5e26\u4ece\u6700\u77ed\u5230\u6700\u957f\u6392\u597d \u2193</span>' +
-        '<span class="en">Sort ribbons shortest \u2192 longest \u2193</span>' +
+        '<span class="zh">' + instrZh + '</span>' +
+        '<span class="en">' + instrEn + '</span>' +
       '</div>' +
       '<div class="sr-stage">' +
         '<div class="sr-holding">' +
-          '<div class="sr-holding-lbl"><span class="zh">\u62d6\u52a8\u5f69\u5e26</span><span class="en">Drag ribbons</span></div>' +
+          '<div class="sr-holding-lbl"><span class="zh">' + holdingZh + '</span><span class="en">' + holdingEn + '</span></div>' +
           '<div class="sr-holding-items" id="sr-holding-items"></div>' +
         '</div>' +
         '<div class="sr-slots-wrap">' +
+          (sigMode ? '' :
           '<div class="sr-slots-arrow">' +
             '<span class="zh">\u77ed</span><span class="en">Short</span>' +
             '<div class="sr-line"></div>' +
             '<span class="zh">\u957f</span><span class="en">Long</span>' +
-          '</div>' +
+          '</div>') +
           '<div class="sr-slots" id="sr-slots"></div>' +
         '</div>' +
       '</div>' +
@@ -207,11 +230,18 @@ var SortRuntime = (function () {
     var el = document.createElement('div');
     el.className = 'sr-item';
     el.dataset.itemId = item.id;
-    var bar = document.createElement('div');
-    bar.className = 'sr-item-bar';
-    bar.style.width = item.lengthPct + '%';
-    bar.style.background = item.color;
-    el.appendChild(bar);
+    if (item.emoji) {
+      var glyph = document.createElement('div');
+      glyph.className = 'sr-item-emoji';
+      glyph.textContent = item.emoji;
+      el.appendChild(glyph);
+    } else {
+      var bar = document.createElement('div');
+      bar.className = 'sr-item-bar';
+      bar.style.width = item.lengthPct + '%';
+      bar.style.background = item.color;
+      el.appendChild(bar);
+    }
     PointerDrag.makeDraggable(el, {
       onEnd: function (dragEl, dropZoneId) {
         _handleDrop(item.id, zoneId, dropZoneId);
@@ -288,18 +318,56 @@ var SortRuntime = (function () {
   function _verify() {
     var s = _st;
     if (s.done) return;
-    var finalOrder  = s.slots.slice();
-    var targetOrder = s.variant.targetOrder;
-    var correct = finalOrder.every(function (id, i) { return id === targetOrder[i]; });
-    if (correct) {
+    var finalOrder = s.slots.slice();
+    if (_isCorrect(finalOrder)) {
       s.done = true;
-      _onSuccess(finalOrder, targetOrder);
+      _onSuccess(finalOrder);
     } else {
-      _onWrong(finalOrder, targetOrder);
+      _onWrong(finalOrder);
     }
   }
 
-  function _onSuccess(finalOrder, targetOrder) {
+  /**
+   * Two verification modes, chosen by which field the variant sets:
+   *   targetOrder     — comparison's own mode: exact position match (sort by
+   *                      magnitude, one correct arrangement).
+   *   targetSignature — pattern's `create`: the arrangement's structure
+   *                      signature must match a target string (e.g. "AABB"),
+   *                      so any relabeling that preserves the same run shape
+   *                      is accepted, not just one exact order.
+   */
+  function _isCorrect(finalOrder) {
+    var s = _st;
+    if (s.variant.targetSignature) {
+      return _signatureOf(finalOrder.map(_tokenOf)) === s.variant.targetSignature;
+    }
+    var targetOrder = s.variant.targetOrder;
+    return finalOrder.every(function (id, i) { return id === targetOrder[i]; });
+  }
+
+  function _tokenOf(id) {
+    var item = _itemById(id);
+    return item ? (item.token != null ? item.token : item.id) : id;
+  }
+
+  // Local duplicate of pattern/game.js's structureSignature() — first-seen
+  // distinct tokens get sequential letters (A, B, C…). Kept here rather than
+  // reached into window.PATTERN_CONTRACT so this comparison-module runtime
+  // stays usable (and testable) without a pattern-module dependency; the
+  // algorithm is ~8 lines and the two copies are expected to never diverge
+  // since both encode the same "红蓝红蓝 → ABAB" rule from
+  // PATTERN-MODULE-ARCHITECTURE.md §6.1.
+  function _signatureOf(tokens) {
+    var labels = {}, next = 65, out = '';
+    (tokens || []).forEach(function (t) {
+      var key = String(t);
+      if (!labels.hasOwnProperty(key)) labels[key] = String.fromCharCode(next++);
+      out += labels[key];
+    });
+    return out;
+  }
+
+  function _onSuccess(finalOrder) {
     var s = _st;
     // Green flash on all slots
     for (var i = 0; i < s.slots.length; i++) {
@@ -309,18 +377,21 @@ var SortRuntime = (function () {
     if (shell.audio) shell.audio.sfx('win');
     shell.speak(shell.lang === 'zh' ? '太棒了！排对了！' : 'Excellent! Correct order!');
 
+    var process = { moves: s.moves, corrections: s.corrections, finalOrder: finalOrder };
+    if (s.variant.targetSignature) {
+      process.finalSignature  = _signatureOf(finalOrder.map(_tokenOf));
+      process.targetSignature = s.variant.targetSignature;
+    } else {
+      process.targetOrder = s.variant.targetOrder;
+    }
+
     var attempt = {
       templateId:  s.template.id,
       variantId:   s.variant.variantId || '',
-      mode:        'sort',
+      mode:        s.template.mode || 'sort',
       result:      'correct',
       responseMs:  Date.now() - s.startTime,
-      process: {
-        moves:       s.moves,
-        corrections: s.corrections,
-        finalOrder:  finalOrder,
-        targetOrder: targetOrder
-      }
+      process:     process
     };
 
     var onComplete = s.ctx.onComplete;
@@ -330,23 +401,31 @@ var SortRuntime = (function () {
     }, 1100);
   }
 
-  function _onWrong(finalOrder, targetOrder) {
+  function _onWrong(finalOrder) {
     var s = _st;
-    // Shake only the incorrectly placed slots
-    for (var i = 0; i < s.slots.length; i++) {
-      if (s.slots[i] !== targetOrder[i]) {
-        var slotEl = document.getElementById('sr-sl-' + i);
-        if (slotEl) {
-          slotEl.classList.add('sr-wrong');
-          (function (el) {
-            setTimeout(function () { el.classList.remove('sr-wrong'); }, 500);
-          })(slotEl);
-        }
+    if (_st.variant.targetSignature) {
+      // Signature equality has no single canonical "this slot is wrong" —
+      // shake the whole arrangement as one failed attempt instead.
+      for (var j = 0; j < _st.slots.length; j++) {
+        _shakeSlot(j);
+      }
+    } else {
+      var targetOrder = _st.variant.targetOrder;
+      for (var i = 0; i < _st.slots.length; i++) {
+        if (_st.slots[i] !== targetOrder[i]) _shakeSlot(i);
       }
     }
     if (shell.audio) shell.audio.sfx('wrong');
     shell.speak(shell.lang === 'zh' ? '再看看，试着调整一下。' : 'Take another look and try adjusting.');
   }
+
+  function _shakeSlot(pos) {
+    var slotEl = document.getElementById('sr-sl-' + pos);
+    if (!slotEl) return;
+    slotEl.classList.add('sr-wrong');
+    setTimeout(function () { slotEl.classList.remove('sr-wrong'); }, 500);
+  }
+
 
   // ── Helpers ────────────────────────────────────────────────────────────────
 

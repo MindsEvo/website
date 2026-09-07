@@ -219,7 +219,7 @@
       check(S, 'registerRootGenes 返回结构基因 + 载体基因',
         typeof CAPTURED.registerRootGenes === 'function' &&
         CAPTURED.registerRootGenes().join(',') ===
-          'RG.PATTERN.SEQUENCE.BASIC,RG.PATTERN.QUANTITY.RELATION,RG.PATTERN.VISUAL.COLOR,RG.PATTERN.VISUAL.SEQUENCE',
+          'RG.PATTERN.SEQUENCE.BASIC,RG.PATTERN.QUANTITY.RELATION,RG.PATTERN.VISUAL.COLOR,RG.PATTERN.VISUAL.SEQUENCE,RG.PATTERN.SPATIAL.RELATION',
         typeof CAPTURED.registerRootGenes === 'function'
           ? CAPTURED.registerRootGenes().join(',') : 'missing');
       check(S, 'getReportContext 已实现', typeof CAPTURED.getReportContext === 'function');
@@ -991,6 +991,85 @@
     var altSigs = ['ABAB', 'AABAAB', 'ABBABB'];
     var reused = leftSigs.filter(function (s) { return altSigs.indexOf(s) !== -1; });
     check(S, '签名集合与 alternating×match@G2 不重复', reused.length === 0, reused.join(','));
+  })();
+
+  // S14 · repetition×create@K2 / alternating×create@G2 sample structural
+  // legitimacy (§8.1 "create" — signature-match, not monotonicity). Checks
+  // that the target signature is genuinely achievable (not vacuous) and that
+  // it discriminates (not every arrangement satisfies it, or dragging would
+  // be trivial) by exhaustively trying every distinct token arrangement.
+  (function () {
+    function permute(arr) {
+      if (arr.length <= 1) return [arr];
+      var out = [];
+      arr.forEach(function (x, i) {
+        var rest = arr.slice(0, i).concat(arr.slice(i + 1));
+        permute(rest).forEach(function (p) { out.push([x].concat(p)); });
+      });
+      return out;
+    }
+
+    function checkCreateVariant(S, label, tpl, variant) {
+      check(S, label + ': template/variant 已导出', !!tpl && !!variant);
+      if (!tpl || !variant) return;
+      check(S, label + ': runtime 为 sort（复用 SortRuntime）', tpl.runtime === 'sort', tpl.runtime);
+
+      var items = variant.items || [];
+      check(S, label + ': targetSignature 已声明', typeof variant.targetSignature === 'string' && variant.targetSignature.length > 0);
+
+      var badItem = items.filter(function (it) { return !it.id || !it.token || !it.emoji; });
+      check(S, label + ': 每个 item 都有 id/token/emoji', badItem.length === 0,
+        badItem.map(function (it) { return JSON.stringify(it); }).join(','));
+
+      // token → emoji must be a consistent mapping (no item sharing a token
+      // with a different glyph), otherwise the visual and the structural
+      // signature would disagree.
+      var tokenGlyph = {}, badGlyph = [];
+      items.forEach(function (it) {
+        if (tokenGlyph.hasOwnProperty(it.token) && tokenGlyph[it.token] !== it.emoji) {
+          badGlyph.push(it.id + ': token ' + it.token + ' has both ' + tokenGlyph[it.token] + ' and ' + it.emoji);
+        }
+        tokenGlyph[it.token] = it.emoji;
+      });
+      check(S, label + ': 同一 token 的 emoji 一致', badGlyph.length === 0, badGlyph.join('\n'));
+
+      var tokens = items.map(function (it) { return it.token; });
+      var perms = permute(tokens);
+      var seen = {}, matching = 0;
+      perms.forEach(function (p) {
+        var key = p.join('|');
+        if (seen[key]) return;
+        seen[key] = true;
+        if (C.structureSignature(p) === variant.targetSignature) matching++;
+      });
+      var distinctCount = Object.keys(seen).length;
+      check(S, label + ': targetSignature 至少有一种排列可以达成（非空解）', matching > 0,
+        'matching=' + matching + ' / distinct=' + distinctCount);
+      check(S, label + ': targetSignature 并非所有排列都满足（有真实拖放难度）', matching < distinctCount,
+        'matching=' + matching + ' / distinct=' + distinctCount);
+    }
+
+    var S14a = 'S14a · repetition×create@K2 结构合法性 Create sample legitimacy';
+    checkCreateVariant(S14a, 'repCreate',
+      C.repCreateTemplate ? C.repCreateTemplate() : null,
+      C.repCreateVariant ? C.repCreateVariant() : null);
+
+    var S14b = 'S14b · alternating×create@G2 结构合法性 Create sample legitimacy';
+    checkCreateVariant(S14b, 'altCreate',
+      C.altCreateTemplate ? C.altCreateTemplate() : null,
+      C.altCreateVariant ? C.altCreateVariant() : null);
+
+    // The two samples must use disjoint carriers/glyphs — a child dragging
+    // one shouldn't be able to pattern-match against the other's vocabulary.
+    var rep = C.repCreateVariant ? C.repCreateVariant() : null;
+    var alt = C.altCreateVariant ? C.altCreateVariant() : null;
+    if (rep && alt) {
+      var repGlyphs = (rep.items || []).map(function (it) { return it.emoji; });
+      var altGlyphs = (alt.items || []).map(function (it) { return it.emoji; });
+      var overlap = repGlyphs.filter(function (g) { return altGlyphs.indexOf(g) !== -1; });
+      check('S14c · create 样本互不重叠 Create samples use disjoint glyphs',
+        'repCreate/altCreate 字形词汇不重叠', overlap.length === 0, overlap.join(','));
+    }
   })();
 
   // ── render ────────────────────────────────────────────────────────────────
