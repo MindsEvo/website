@@ -37,16 +37,21 @@
   //   units 1-3 = counting / skip-counting / fives-and-tens  → G1
   //   units 4-6 = decreasing / multiplying / story transfer   → G2
   //   unit 7    = AB color repetition (no numerals)           → K1
+  //   unit 8    = up/down direction oscillation (alternating) → G1
+  //   unit 9    = repetition × discover (candidate groups)    → K1
+  //   unit 10   = alternating × discover (candidate groups)   → G1
   var UNIT_LEVEL = { '1': 'G1', '2': 'G1', '3': 'G1',
                      '4': 'G2', '5': 'G2', '6': 'G2',
-                     '7': 'K1' };
+                     '7': 'K1', '8': 'G1',
+                     '9': 'K1', '10': 'G1' };
 
   // Unit id → the rule the unit trains. Finer grained than the typeTree on
   // purpose: the radar needs the typeTree id, a teacher reading the record
   // wants to know it was ×2 rather than +5.
   var UNIT_RULE = { '1': 'count_up',   '2': 'skip_count', '3': 'fives_tens',
                     '4': 'count_down', '5': 'doubling',   '6': 'story',
-                    '7': 'ab_repeat' };
+                    '7': 'ab_repeat',  '8': 'updown_alternate',
+                    '9': 'ab_repeat_discover', '10': 'updown_alternate_discover' };
 
   // Rule type → pattern.json typeTree id (the STRUCTURE dimension). Every rule
   // shipped today lands in `numerical`, `repetition` or `alternating` —
@@ -62,7 +67,10 @@
     count_down: 'numerical',
     doubling:   'numerical',
     story:      'numerical',
-    ab_repeat:  'repetition'
+    ab_repeat:  'repetition',
+    updown_alternate: 'alternating',
+    ab_repeat_discover:        'repetition',
+    updown_alternate_discover: 'alternating'
   };
 
   // Structure id → the rootGenes an item of that structure reports.
@@ -80,8 +88,10 @@
   // Structure id → the carrier every item of that structure uses
   // (pattern.json → carriers). `alternating`'s match activity spans two
   // carriers at once and reports them explicitly via `carriers` in its own
-  // context builder instead of this single-carrier map.
-  var CARRIER_OF = { numerical: 'numeral', repetition: 'color', alternating: null };
+  // context builder instead of this single-carrier map; its puzzle content
+  // (Unit 8, SPEC-alternating-continue-g1 / -complete-g1) is single-carrier
+  // (direction arrows / day-night state) and goes through this map normally.
+  var CARRIER_OF = { numerical: 'numeral', repetition: 'color', alternating: 'direction' };
 
   // Items shown in one run. The bank is bigger than a session on purpose: 8
   // keeps a sitting short for a 6-8 year old and keeps testing fast. Mirrors
@@ -150,11 +160,16 @@
     // branches so the value is visible to validate.js as a literal.
     if (direction === 'backward')      { axis.inference_direction = 'backward'; }
     else if (direction === 'interior') { axis.inference_direction = 'interior'; }
+    // discover has no blank to place, so it has no inference_direction at all
+    // — it answers "which group is a pattern", not "where is the gap" (same
+    // reasoning that moved `repair` off this axis in pattern.json).
+    else if (direction === 'discover') { axis.inference_direction = null; }
 
     // …and the task follows from the direction, never independently, so the two
     // axes can never contradict each other in a record.
     if (direction === 'backward')      { axis.task_complexity = 'complete'; }
     else if (direction === 'interior') { axis.task_complexity = 'complete'; }
+    else if (direction === 'discover') { axis.task_complexity = 'discover'; }
 
     return axis;
   }
@@ -176,6 +191,43 @@
     });
   }
 
+  /**
+   * Structure-signature normalization — PATTERN-MODULE-ARCHITECTURE.md §6.1,
+   * the technical fulcrum for match/create/repair: "红蓝红蓝 → ABAB". Labels
+   * distinct tokens A, B, C… in first-occurrence order, so two sequences with
+   * the same repeating shape but different literal carriers land on the same
+   * string. `'?'` passes through unlabeled — repair/discover items carry no
+   * blank, but this keeps the function usable on continue/complete's seqs too.
+   */
+  function structureSignature(seq) {
+    var labels = {}, next = 65; // 'A'
+    return (seq || []).map(function (tok) {
+      if (tok === '?' || tok == null) return '?';
+      var key = String(tok);
+      if (!(labels.hasOwnProperty(key))) { labels[key] = String.fromCharCode(next++); }
+      return labels[key];
+    }).join('');
+  }
+
+  /**
+   * True when `sig` tiles exactly with some period shorter than itself
+   * (e.g. "ABAB" tiles at 2, "AABAAB" at 3; "ABAC" tiles at nothing < 4).
+   * This is what makes `discover` gradable: a genuine pattern is one whose
+   * signature is periodic; a decoy group's signature is not.
+   */
+  function isPeriodicSignature(sig) {
+    var n = (sig || '').length;
+    for (var p = 1; p <= Math.floor(n / 2); p++) {
+      if (n % p !== 0) continue;
+      var unit = sig.slice(0, p), ok = true;
+      for (var i = p; i < n; i += p) {
+        if (sig.slice(i, i + p) !== unit) { ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+
   /** The record's `context`. One shape, one place, so the radar never guesses. */
   function buildRadarContext(unitId, direction, extra) {
     var levelId  = UNIT_LEVEL[unitId] || null;
@@ -189,7 +241,7 @@
       patternType: structure,
       structure:   structure,
       carrier:     CARRIER_OF[structure] || null,
-      taskType:    direction ? (TASK_OF[direction] || null) : null,
+      taskType:    direction === 'discover' ? 'discover' : (direction ? (TASK_OF[direction] || null) : null),
       ruleType:    ruleType,
       difficultyAxis: difficultyAxisFor(levelId, ruleType, direction),
       sourceGameId: SOURCE_GAME_ID
@@ -262,6 +314,8 @@
     STRUCTURE_GENES: STRUCTURE_GENES,
     inferenceDirectionOf: inferenceDirectionOf,
     difficultyAxisFor: difficultyAxisFor,
+    structureSignature: structureSignature,
+    isPeriodicSignature: isPeriodicSignature,
     buildRadarContext: buildRadarContext,
     genesFor: genesFor,
     buildUnits: buildUnits,
@@ -408,16 +462,34 @@
     units: buildUnits(MP_DATA.units),
 
     renderSequence: function (q, container) {
+      if (q.task === 'discover') {
+        container.classList.add('mp-discover');
+        container.innerHTML = q.groups.map(function (g, i) {
+          var body = g.seq.map(function (tok) { return '<span>' + tok + '</span>'; }).join(' ');
+          return '<div class="mp-discover-group"><span class="mp-discover-num">' + (i + 1) + '</span>' + body + '</div>';
+        }).join('');
+        return;
+      }
+      container.classList.remove('mp-discover');
       container.innerHTML = q.seq.map(function (n) {
         return n === '?' ? '<span class="mystery">?</span>' : '<span>' + n + '</span>';
       }).join(' ');
     },
-    renderOption: function (opt) { return String(opt); },
+    renderOption: function (opt, q) {
+      if (q && q.task === 'discover') {
+        return shell.lang === 'zh' ? '第 ' + opt + ' 组' : 'Group ' + opt;
+      }
+      return String(opt);
+    },
     // Relaxed from Number(selected) === q.answer: the K1 repetition unit's
     // answers are emoji strings, not numerals.
     checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
 
     getVoiceText: function (q) {
+      if (q.task === 'discover') {
+        return shell.lang === 'zh' ? '看看这几组，哪一组是真的规律？'
+                                   : 'Look at each group — which one is a real pattern?';
+      }
       var numeric = q.seq.every(function (n) { return n === '?' || !isNaN(n); });
       if (!numeric) {
         return shell.lang === 'zh' ? '看规律，问号是什么？'
@@ -449,7 +521,14 @@
      */
     getReportContext: function (ctx) {
       var unit = (ctx && ctx.unit) || {};
-      var dirs = (unit.questions || []).map(function (q) {
+      var questions = unit.questions || [];
+      if (questions.length && questions[0].task === 'discover') {
+        return buildRadarContext(unit.id, 'discover', {
+          taskTypes:       ['discover'],
+          activityRuntime: 'puzzle'
+        });
+      }
+      var dirs = questions.map(function (q) {
         return inferenceDirectionOf(q.seq);
       });
       var dominant = _dominant(dirs);
@@ -461,6 +540,25 @@
       });
     }
   });
+
+  /**
+   * discover's candidate-group layout (several stacked groups, no blank) does
+   * not fit .s1-seq's single-row flex layout, so it gets a small stylesheet of
+   * its own — same idiom as MatchRuntime._injectStyles, kept out of the
+   * cross-module shell-1.css because only this module's discover items use it.
+   */
+  function _injectDiscoverStyles() {
+    if (document.getElementById('mp-discover-style')) return;
+    var s = document.createElement('style');
+    s.id = 'mp-discover-style';
+    s.textContent = [
+      '.s1-seq.mp-discover{flex-direction:column;align-items:stretch;gap:10px;padding:16px 18px;font-size:28px;letter-spacing:2px;}',
+      '.mp-discover-group{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.55);border-radius:10px;padding:8px 12px;}',
+      '.mp-discover-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--s1-primary);color:#fff;font-size:15px;font-weight:900;flex-shrink:0;}'
+    ].join('');
+    document.head.appendChild(s);
+  }
+  _injectDiscoverStyles();
 
   _injectMatchTrigger();
 })();

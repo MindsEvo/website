@@ -154,7 +154,201 @@ var MP_DATA = {
         { seq:['🔴','🟡','🔴','🟡','?'], answer:'🔴', options:['🔴','🟡','🟢','🟣'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
         { seq:['🔵','🟢','🔵','🟢','?'], answer:'🔵', options:['🔵','🟢','🟠','🔴'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
         { seq:['🟡','🟣','🟡','🟣','?'], answer:'🟡', options:['🟡','🟣','🔴','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
-        { seq:['🟢','🟠','🟢','🟠','?'], answer:'🟢', options:['🟢','🟠','🟡','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' }
+        { seq:['🟢','🟠','🟢','🟠','?'], answer:'🟢', options:['🟢','🟠','🟡','🔵'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        // interior/backward blanks (SPEC-repetition-complete-k1) — same AB
+        // vocabulary, TASK_OF derives 'complete' from the blank position.
+        { seq:['🔴','🔵','?','🔵','🔴'], answer:'🔴', options:['🔴','🔵','🟡','🟢'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🔵','🟡','?','🟡','🔵'], answer:'🔵', options:['🔵','🟡','🟢','🟣'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['?','🟢','🟡','🟢','🟡'], answer:'🟡', options:['🟡','🟢','🟣','🟠'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['?','🟣','🟢','🟣','🟢'], answer:'🟢', options:['🟢','🟣','🟠','🔴'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' },
+        { seq:['🟠','?','🟠','🔴','🟠'], answer:'🔴', options:['🟠','🔴','🔵','🟡'], hintZh:'颜色两两重复出现', hintEn:'Colors repeat in a two-step cycle' }
+      ]
+    },
+
+    // ── Unit 8: 方向交替规律  (up/down state oscillation, alternating, G1) ──
+    {
+      id: '8', icon: '🔃',
+      nameZh: '方向交替规律', nameEn: 'Up-down Alternating Pattern',
+      descZh: '方向两两交替出现，续写或补全序列', descEn: 'Direction oscillates in two states — continue or complete the run',
+      questions: [
+        { seq:['⬆️','⬇️','⬆️','⬇️','?'], answer:'⬆️', options:['⬆️','⬇️','➡️','⬅️'], hintZh:'方向两两交替出现', hintEn:'Direction oscillates in a two-step cycle' },
+        { seq:['⬇️','⬆️','⬇️','⬆️','?'], answer:'⬇️', options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替出现', hintEn:'Direction oscillates in a two-step cycle' },
+        { seq:['☀️','🌙','☀️','🌙','?'], answer:'☀️', options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替出现', hintEn:'Day/night oscillates in a two-step cycle' },
+        { seq:['🌙','☀️','🌙','☀️','?'], answer:'🌙', options:['🌙','☀️','⭐','☁️'], hintZh:'昼夜两两交替出现', hintEn:'Day/night oscillates in a two-step cycle' },
+        { seq:['⬆️','⬇️','?','⬇️','⬆️'], answer:'⬆️', options:['⬆️','⬇️','➡️','⬅️'], hintZh:'方向两两交替出现', hintEn:'Direction oscillates in a two-step cycle' },
+        { seq:['⬇️','⬆️','?','⬆️','⬇️'], answer:'⬇️', options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替出现', hintEn:'Direction oscillates in a two-step cycle' },
+        { seq:['?','🌙','☀️','🌙','☀️'], answer:'☀️', options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替出现', hintEn:'Day/night oscillates in a two-step cycle' },
+        { seq:['?','⬆️','⬇️','⬆️','⬇️'], answer:'⬇️', options:['⬇️','⬆️','➡️','⬅️'], hintZh:'方向两两交替出现', hintEn:'Direction oscillates in a two-step cycle' },
+        { seq:['☀️','🌙','?','🌙','☀️'], answer:'☀️', options:['☀️','🌙','⭐','☁️'], hintZh:'昼夜两两交替出现', hintEn:'Day/night oscillates in a two-step cycle' },
+        { seq:['?','☀️','🌙','☀️','🌙'], answer:'🌙', options:['🌙','☀️','⭐','☁️'], hintZh:'昼夜两两交替出现', hintEn:'Day/night oscillates in a two-step cycle' }
+      ]
+    },
+
+    // ── Unit 9: 找规律  (repetition × discover, K1) ───────────────────────
+    // Each question shows 4 candidate groups, no blank. Exactly one group is
+    // a genuine two-color cycle (period 2, tiles the whole group); the other
+    // three are decoys (SPEC-repetition-discover-k1.md §3): one breaks the
+    // cycle at the very end (pattern_misread), one has the right unit but an
+    // incomplete trailing cycle (cycle_misalign), one is built from unrelated
+    // colors with no repeat at all (random). `answer`/`options` are 1-based
+    // group numbers, not colors — game.js checks the picked GROUP, not a value.
+    {
+      id: '9', icon: '🔍',
+      nameZh: '找规律', nameEn: 'Spot the Pattern',
+      descZh: '这几组里，只有一组真的两两重复——找出它', descEn: 'Only one of these groups truly repeats in twos — find it',
+      questions: [
+        { task:'discover', answer:2, options:[1,2,3,4],
+          groups:[
+            { seq:['🔴','🔵','🔴','🔵','🔴','🔴'] },
+            { seq:['🔴','🔵','🔴','🔵','🔴','🔵'] },
+            { seq:['🔴','🔵','🔴','🔵','🔴'] },
+            { seq:['🔴','🔵','🟡','🟢','🟡','🔵'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:4, options:[1,2,3,4],
+          groups:[
+            { seq:['🔵','🟡','🔵','🟡','🔵','🔵'] },
+            { seq:['🔵','🟡','🔵','🟡','🔵'] },
+            { seq:['🔵','🟡','🟢','🟣','🟢','🟡'] },
+            { seq:['🔵','🟡','🔵','🟡','🔵','🟡'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['🟡','🟢','🟡','🟢','🟡','🟢'] },
+            { seq:['🟡','🟢','🟡','🟢','🟡','🟡'] },
+            { seq:['🟡','🟢','🟡','🟢','🟡'] },
+            { seq:['🟡','🟢','🟣','🟠','🟣','🟢'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['🟢','🟣','🟢','🟣','🟢','🟢'] },
+            { seq:['🟢','🟣','🟢','🟣','🟢'] },
+            { seq:['🟢','🟣','🟢','🟣','🟢','🟣'] },
+            { seq:['🟢','🟣','🟠','🔴','🟠','🟣'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:2, options:[1,2,3,4],
+          groups:[
+            { seq:['🟣','🟠','🟣','🟠','🟣','🟣'] },
+            { seq:['🟣','🟠','🟣','🟠','🟣','🟠'] },
+            { seq:['🟣','🟠','🟣','🟠','🟣'] },
+            { seq:['🟣','🟠','🔴','🔵','🔴','🟠'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:4, options:[1,2,3,4],
+          groups:[
+            { seq:['🟠','🔴','🟠','🔴','🟠','🟠'] },
+            { seq:['🟠','🔴','🟠','🔴','🟠'] },
+            { seq:['🟠','🔴','🔵','🟡','🔵','🔴'] },
+            { seq:['🟠','🔴','🟠','🔴','🟠','🔴'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['🔴','🟡','🔴','🟡','🔴','🟡'] },
+            { seq:['🔴','🟡','🔴','🟡','🔴','🔴'] },
+            { seq:['🔴','🟡','🔴','🟡','🔴'] },
+            { seq:['🔴','🟡','🟢','🟣','🟢','🟡'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['🔵','🟢','🔵','🟢','🔵','🔵'] },
+            { seq:['🔵','🟢','🔵','🟢','🔵'] },
+            { seq:['🔵','🟢','🔵','🟢','🔵','🟢'] },
+            { seq:['🔵','🟢','🟠','🔴','🟠','🟢'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['🟢','🟡','🟢','🟡','🟢','🟢'] },
+            { seq:['🟢','🟡','🟢','🟡','🟢'] },
+            { seq:['🟢','🟡','🟢','🟡','🟢','🟡'] },
+            { seq:['🟢','🟡','🟣','🔴','🟣','🟡'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['🟠','🟣','🟠','🟣','🟠','🟣'] },
+            { seq:['🟠','🟣','🟠','🟣','🟠','🟠'] },
+            { seq:['🟠','🟣','🟠','🟣','🟠'] },
+            { seq:['🟠','🟣','🔵','🟢','🔵','🟣'] }
+          ], hintZh:'看哪一组从头到尾都两两重复', hintEn:'Find the group that repeats in twos all the way through' }
+      ]
+    },
+
+    // ── Unit 10: 找方向规律  (alternating × discover, G1) ─────────────────
+    // Same discover shape as Unit 9, direction/day-night carrier instead of
+    // color (SPEC-alternating-discover-g1.md). Decoys follow the same three
+    // categories (pattern_misread / cycle_misalign / random).
+    {
+      id: '10', icon: '🔍',
+      nameZh: '找方向规律', nameEn: 'Spot the Alternating Pattern',
+      descZh: '这几组里，只有一组真的两两交替——找出它', descEn: 'Only one of these groups truly alternates in twos — find it',
+      questions: [
+        { task:'discover', answer:2, options:[1,2,3,4],
+          groups:[
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬆️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬇️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️'] },
+            { seq:['⬆️','⬇️','➡️','⬅️','➡️','⬇️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:4, options:[1,2,3,4],
+          groups:[
+            { seq:['☀️','🌙','☀️','🌙','☀️','☀️'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️'] },
+            { seq:['☀️','🌙','⭐','☁️','⭐','🌙'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️','🌙'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️','⬆️'] },
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️','⬇️'] },
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️'] },
+            { seq:['⬇️','⬆️','⬅️','➡️','⬅️','⬆️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['🌙','☀️','🌙','☀️','🌙','🌙'] },
+            { seq:['🌙','☀️','🌙','☀️','🌙'] },
+            { seq:['🌙','☀️','🌙','☀️','🌙','☀️'] },
+            { seq:['🌙','☀️','☁️','⭐','☁️','☀️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:4, options:[1,2,3,4],
+          groups:[
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬆️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️'] },
+            { seq:['⬆️','⬇️','☀️','🌙','☀️','⬇️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬇️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['☀️','🌙','☀️','🌙','☀️','🌙'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️','☀️'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️'] },
+            { seq:['☀️','🌙','⬆️','⬇️','⬆️','🌙'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️','⬇️'] },
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️'] },
+            { seq:['⬇️','⬆️','⬇️','⬆️','⬇️','⬆️'] },
+            { seq:['⬇️','⬆️','⭐','☁️','⭐','⬆️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:2, options:[1,2,3,4],
+          groups:[
+            { seq:['🌙','☀️','🌙','☀️','🌙','🌙'] },
+            { seq:['🌙','☀️','🌙','☀️','🌙','☀️'] },
+            { seq:['🌙','☀️','🌙','☀️','🌙'] },
+            { seq:['🌙','☀️','➡️','⬅️','➡️','☀️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:3, options:[1,2,3,4],
+          groups:[
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬆️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️'] },
+            { seq:['⬆️','⬇️','⬆️','⬇️','⬆️','⬇️'] },
+            { seq:['⬆️','⬇️','⭐','☁️','⭐','⬇️'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' },
+        { task:'discover', answer:1, options:[1,2,3,4],
+          groups:[
+            { seq:['☀️','🌙','☀️','🌙','☀️','🌙'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️','☀️'] },
+            { seq:['☀️','🌙','☀️','🌙','☀️'] },
+            { seq:['☀️','🌙','➡️','⬅️','➡️','🌙'] }
+          ], hintZh:'看哪一组从头到尾都两两交替', hintEn:'Find the group that alternates in twos all the way through' }
       ]
     }
   ]

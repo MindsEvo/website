@@ -232,9 +232,61 @@
 
     units.forEach(function (u) {
       var rows = [];
-      var isRepetition = C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]] === 'repetition';
+      // repetition (AB color cycle) and alternating (AB direction/state
+      // oscillation) share the exact same period-2 math shape — both are
+      // string-carrier cycles, not numeric runs — so both take the
+      // deriveRepetitionRule branch below.
+      var unitStructure = C.PATTERN_TYPE_OF[C.UNIT_RULE[u.id]];
+      var isRepetition = unitStructure === 'repetition' || unitStructure === 'alternating';
       (u.questions || []).forEach(function (q, k) {
         var where = 'U' + u.id + '·Q' + (k + 1);
+
+        // ---- discover items carry no q.seq/blank at all — 4 candidate
+        // groups instead, answer is a 1-based group number. Validate and
+        // re-derive on that shape, then skip the seq-based checks below.
+        if (q.task === 'discover') {
+          var groups = q.groups || [];
+          if (groups.length !== 4) badValidity.push(where + ': discover groups=' + groups.length + ' (want 4)');
+          groups.forEach(function (g, gi) {
+            if (!g.seq || g.seq.length < 4) badValidity.push(where + ': group ' + (gi + 1) + ' seq too short');
+          });
+          if (!q.hintZh || !q.hintEn) badValidity.push(where + ': hint missing');
+
+          var dOpts = q.options || [];
+          if (dOpts.slice().sort().join(',') !== '1,2,3,4')
+            badOpts.push(where + ': discover options ' + dOpts.join(',') + ' ≠ 1,2,3,4');
+          if (dOpts.indexOf(q.answer) < 0) badOpts.push(where + ': answer ' + q.answer + ' not in options');
+          if (typeof q.answer !== 'number' || q.answer < 1 || q.answer > 4)
+            badValidity.push(where + ': discover answer ' + q.answer + ' not a 1..4 group number');
+          var dai = dOpts.indexOf(q.answer);
+          if (dai >= 0) ansIndex[dai] = (ansIndex[dai] || 0) + 1;
+
+          // ---- re-derive: exactly one of the 4 groups must be periodic,
+          // and it must be the group the data calls the answer — same
+          // "never trust the data file's own label" principle as S3 below.
+          var groupSigs = groups.map(function (g) { return C.structureSignature(g.seq || []); });
+          var periodicFlags = groupSigs.map(function (sig) { return C.isPeriodicSignature(sig); });
+          var periodicCount = periodicFlags.filter(Boolean).length;
+          var periodicAt = periodicFlags.indexOf(true) + 1; // 1-based
+          if (periodicCount !== 1)
+            badRule.push(where + ': ' + periodicCount + ' of 4 groups are periodic (want exactly 1) — sigs [' + groupSigs.join(', ') + ']');
+          else if (periodicAt !== q.answer)
+            badRule.push(where + ': periodic group is #' + periodicAt + ', data says answer=' + q.answer);
+
+          var dKey = 'discover:' + groups.map(function (g) { return (g.seq || []).join(''); }).join('|');
+          if (seqSeen[dKey]) {
+            (seqSeen[dKey].unit === u.id ? dupWithin : dupCross)
+              .push(dKey + '  (' + seqSeen[dKey].where + ' ↔ ' + where + ')');
+          } else {
+            seqSeen[dKey] = { unit: u.id, where: where };
+          }
+
+          rows.push(where + '  discover groups: ' +
+            groups.map(function (g, gi) { return '#' + (gi + 1) + '[' + g.seq.join('') + ']'; }).join('  ') +
+            '  answer=#' + q.answer + '  sigs=[' + groupSigs.join(', ') + ']');
+          return;
+        }
+
         var seq = q.seq || [];
         var blanks = seq.filter(function (x) { return x === '?'; }).length;
 
@@ -396,13 +448,25 @@
       if (ctx.structure !== expStructure)     badCtx.push('unit ' + u.id + ': structure ' + ctx.structure + ' ≠ ' + expStructure);
       if (ctx.carrier !== expCarrier)         badCtx.push('unit ' + u.id + ': carrier ' + ctx.carrier + ' ≠ ' + expCarrier);
       if (TASKS.indexOf(ctx.taskType) < 0)    badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType);
-      if (ctx.taskType !== TASK_OF_DIR[ctx.inferenceDirection])
-        badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType + ' does not follow dir ' + ctx.inferenceDirection);
+      if (ctx.taskType === 'discover') {
+        // discover has no gap to place — inference_direction stays null
+        // (see difficultyAxisFor's discover branch), so the usual
+        // taskType-follows-direction check does not apply here.
+        if (ctx.inferenceDirection != null)
+          badCtx.push('unit ' + u.id + ': discover unit unexpectedly has inferenceDirection ' + ctx.inferenceDirection);
+        if (!ctx.difficultyAxis || ctx.difficultyAxis.inference_direction !== null)
+          badCtx.push('unit ' + u.id + ': discover difficultyAxis.inference_direction should be null');
+        if (!ctx.difficultyAxis || ctx.difficultyAxis.task_complexity !== 'discover')
+          badCtx.push('unit ' + u.id + ': discover difficultyAxis.task_complexity should be "discover"');
+      } else {
+        if (ctx.taskType !== TASK_OF_DIR[ctx.inferenceDirection])
+          badCtx.push('unit ' + u.id + ': taskType ' + ctx.taskType + ' does not follow dir ' + ctx.inferenceDirection);
+        if (['forward', 'interior', 'backward'].indexOf(ctx.inferenceDirection) < 0)
+          badCtx.push('unit ' + u.id + ': inferenceDirection ' + ctx.inferenceDirection);
+      }
       if (ctx.activityRuntime !== 'puzzle')   badCtx.push('unit ' + u.id + ': activityRuntime');
       if (ctx.sourceGameId !== 'learning-math-pattern') badCtx.push('unit ' + u.id + ': sourceGameId');
       if (!ctx.difficultyAxis)                badCtx.push('unit ' + u.id + ': difficultyAxis missing');
-      if (['forward', 'interior', 'backward'].indexOf(ctx.inferenceDirection) < 0)
-        badCtx.push('unit ' + u.id + ': inferenceDirection ' + ctx.inferenceDirection);
       built.push('unit ' + u.id + ': ' + ctx.levelId + '/' + ctx.gradeCode +
                  ' ' + ctx.ruleType + '→' + ctx.structure + '/' + ctx.carrier +
                  ' dir=' + ctx.inferenceDirection + ' task=' + ctx.taskType +
@@ -444,6 +508,13 @@
     check(S, '六条难度轴的取值全部在 pattern.json 的 progression 里',
       badAxis.length === 0, badAxis.join('\n'));
 
+    var discAxis9  = C.difficultyAxisFor(C.UNIT_LEVEL['9'],  C.UNIT_RULE['9'],  'discover') || {};
+    var discAxis10 = C.difficultyAxisFor(C.UNIT_LEVEL['10'], C.UNIT_RULE['10'], 'discover') || {};
+    check(S, 'discover 方向的难度轴：inference_direction=null，task_complexity="discover"',
+      discAxis9.inference_direction === null && discAxis9.task_complexity === 'discover' &&
+      discAxis10.inference_direction === null && discAxis10.task_complexity === 'discover',
+      JSON.stringify({ u9: discAxis9, u10: discAxis10 }));
+
     check(S, 'inference_direction 与 task_complexity 永不矛盾（任务由方向推出）',
       badAxis.length === 0,
       'forward→' + TASK_OF_DIR.forward + ' · interior→' + TASK_OF_DIR.interior +
@@ -475,7 +546,10 @@
           var pool = MP_DATA.units[ui].questions;
           var src = null, si = -1;
           for (var k = 0; k < pool.length; k++) {
-            if (pool[k].seq === q.seq) { src = pool[k]; si = k; break; }
+            // discover items have no `seq` (both sides undefined would match
+            // slot 0 every time) — identify them by their `groups` reference
+            // instead, which buildUnits also copies by reference.
+            if (q.groups ? pool[k].groups === q.groups : pool[k].seq === q.seq) { src = pool[k]; si = k; break; }
           }
           if (!src) { lost++; return; }
           drawn['U' + u.id + '·Q' + (si + 1)] = 1;
@@ -542,6 +616,156 @@
     right.forEach(function (r) { Array.from(r.emoji || '').forEach(function (g) { rightGlyphs[g] = 1; }); });
     var overlap = Object.keys(leftGlyphs).filter(function (g) { return rightGlyphs[g]; });
     check(S, '左右字形词汇不重叠（避免按字面匹配）', overlap.length === 0, overlap.join(','));
+  })();
+
+  // S9 · structureSignature / isPeriodicSignature (§6.1 fulcrum) — unit tests
+  // against hand-picked sequences, covering the edge cases the "direction 1"
+  // plan called out: period-2, period-3, mixed-length runs, single-element
+  // runs, and the '?' passthrough used by continue/complete items.
+  (function () {
+    var S = 'S9 · structureSignature 结构签名 Signature helper';
+    check(S, 'structureSignature 已导出', typeof C.structureSignature === 'function');
+    check(S, 'isPeriodicSignature 已导出', typeof C.isPeriodicSignature === 'function');
+    if (typeof C.structureSignature !== 'function' || typeof C.isPeriodicSignature !== 'function') return;
+
+    var sig = C.structureSignature, per = C.isPeriodicSignature;
+
+    var cases = [
+      { seq: ['🔴', '🔵', '🔴', '🔵'], want: 'ABAB', periodic: true, label: 'period-2 ABAB' },
+      { seq: ['🔴', '🔵', '🔴', '🔵', '🔴', '🔵'], want: 'ABABAB', periodic: true, label: 'period-2 ×3' },
+      { seq: ['🔴', '🔴', '🔵', '🔵'], want: 'AABB', periodic: false, label: 'AABB is not periodic at p<4' },
+      { seq: ['🔴', '🔵', '🟢', '🔴', '🔵', '🟢'], want: 'ABCABC', periodic: true, label: 'period-3 ABCABC' },
+      { seq: ['🔴', '🔵', '🟢', '🔴', '🔵'], want: 'ABCAB', periodic: false, label: 'mixed-length run (incomplete final period)' },
+      { seq: ['🔴'], want: 'A', periodic: false, label: 'single-element run' },
+      { seq: ['🔴', '🔴', '🔴', '🔴'], want: 'AAAA', periodic: true, label: 'period-1 repeats' },
+      { seq: ['🔴', '🔵', '🔴', '🟢'], want: 'ABAC', periodic: false, label: 'decoy: looks cyclical, is not' },
+      { seq: ['🔴', '🔵', '?', '🔵'], want: 'AB?B', periodic: false, label: "'?' passes through unlabeled" }
+    ];
+    cases.forEach(function (c) {
+      var got = sig(c.seq);
+      check(S, c.label + ' → signature "' + c.want + '"', got === c.want,
+        'got "' + got + '"');
+      var isP = per(got);
+      check(S, c.label + ' → periodic=' + c.periodic, isP === c.periodic,
+        'got ' + isP + ' for signature "' + got + '"');
+    });
+
+    check(S, '相同结构、不同载体归一为同一签名（跨载体可比较）',
+      sig(['🔴', '🔵', '🔴', '🔵']) === sig(['🐱', '🐶', '🐱', '🐶']));
+    check(S, '不同结构不会被误判为相同签名',
+      sig(['🔴', '🔵', '🟢', '🔵']) !== sig(['🔴', '🔵', '🔴', '🔵']));
+  })();
+
+  // S10 · repetition×complete@K1 (unit 7) + alternating×continue/complete@G1
+  // (unit 8) — the "direction 1" plan's step-2 content cells. Both reuse the
+  // signature helper from S9 to confirm every item's filled-in run is
+  // genuinely periodic (not just "the data file says so").
+  (function () {
+    var S = 'S10 · complete@K1 / alternating@G1 内容合法性 New content legitimacy';
+    if (typeof C.structureSignature !== 'function' || typeof C.isPeriodicSignature !== 'function') return;
+
+    var u7 = units.filter(function (u) { return u.id === '7'; })[0];
+    var u8 = units.filter(function (u) { return u.id === '8'; })[0];
+    check(S, 'unit 7（repetition，色彩循环）存在', !!u7);
+    check(S, 'unit 8（alternating，方向交替）存在', !!u8);
+    if (!u7 || !u8) return;
+
+    check(S, 'unit 8 归入 alternating 结构（PATTERN_TYPE_OF）',
+      C.PATTERN_TYPE_OF[C.UNIT_RULE['8']] === 'alternating', C.UNIT_RULE['8']);
+    check(S, 'unit 8 载体为 direction（CARRIER_OF）',
+      C.CARRIER_OF && C.CARRIER_OF.alternating === 'direction');
+    check(S, 'unit 8 归入 G1 等级（UNIT_LEVEL）', C.UNIT_LEVEL['8'] === 'G1', C.UNIT_LEVEL['8']);
+
+    function checkFilledIsPeriodic(unit, label) {
+      var bad = [], dirTally = { forward: 0, interior: 0, backward: 0 };
+      (unit.questions || []).forEach(function (q, k) {
+        var where = 'U' + unit.id + '·Q' + (k + 1);
+        var dir = C.inferenceDirectionOf(q.seq);
+        if (dir) dirTally[dir] = (dirTally[dir] || 0) + 1;
+        var filled = q.seq.slice();
+        var i = filled.indexOf('?');
+        if (i < 0) { bad.push(where + ': no blank'); return; }
+        filled[i] = q.answer;
+        // isPeriodicSignature requires exact tiling (n % p === 0), so an
+        // odd-length run like "ABABA" (period 2, length 5) fails on its own
+        // full length even though it's a legitimate alternation. Tolerate one
+        // trailing incomplete period by also accepting periodicity of the
+        // signature with its last character dropped.
+        var sigFilled = C.structureSignature(filled);
+        var periodicOk = C.isPeriodicSignature(sigFilled) ||
+          C.isPeriodicSignature(sigFilled.slice(0, sigFilled.length - 1));
+        if (!periodicOk)
+          bad.push(where + ': filled run "' + sigFilled + '" is not periodic');
+        // taskType must follow the blank position, never be asserted separately.
+        var expTask = C.TASK_OF[dir];
+        if (!expTask) bad.push(where + ': no direction/task for seq ' + q.seq.join(','));
+      });
+      check(S, label + '：填入答案后的完整序列签名均为周期性（可由 structureSignature 复核）',
+        bad.length === 0, bad.join('\n'));
+      rec(S, 'pass', label + '：推理方向分布', JSON.stringify(dirTally));
+    }
+
+    checkFilledIsPeriodic(u7, 'unit 7 新增 interior/backward 题');
+    checkFilledIsPeriodic(u8, 'unit 8 全部题目');
+
+    // unit 8 must cover both task types this plan's spec sheets promised
+    // (continue@forward, complete@interior|backward), sharing one item bank.
+    var u8Dirs = (u8.questions || []).map(function (q) { return C.inferenceDirectionOf(q.seq); });
+    check(S, 'unit 8 同时含 forward（continue）与 interior/backward（complete）',
+      u8Dirs.indexOf('forward') >= 0 &&
+      (u8Dirs.indexOf('interior') >= 0 || u8Dirs.indexOf('backward') >= 0),
+      JSON.stringify(u8Dirs));
+  })();
+
+  // S11 · discover@K1 (unit 9) / discover@G1 (unit 10) — exercises the actual
+  // captured game.js functions (renderSequence/renderOption/checkAnswer/
+  // getVoiceText), not a re-derivation of the data — closing the loop between
+  // S2-S4's data-legitimacy checks above and what the browser actually runs
+  // for this task type, same idiom as S10 for the previous step's content.
+  (function () {
+    var S = 'S11 · discover 候选组任务 Discover candidate-group task';
+    var u9 = units.filter(function (u) { return u.id === '9'; })[0];
+    var u10 = units.filter(function (u) { return u.id === '10'; })[0];
+    check(S, 'unit 9（repetition×discover，K1）存在', !!u9);
+    check(S, 'unit 10（alternating×discover，G1）存在', !!u10);
+    if (!u9 || !u10 || !CAPTURED) return;
+
+    check(S, 'unit 9 归入 repetition / K1',
+      C.PATTERN_TYPE_OF[C.UNIT_RULE['9']] === 'repetition' && C.UNIT_LEVEL['9'] === 'K1',
+      C.UNIT_RULE['9'] + ' / ' + C.UNIT_LEVEL['9']);
+    check(S, 'unit 10 归入 alternating / G1',
+      C.PATTERN_TYPE_OF[C.UNIT_RULE['10']] === 'alternating' && C.UNIT_LEVEL['10'] === 'G1',
+      C.UNIT_RULE['10'] + ' / ' + C.UNIT_LEVEL['10']);
+
+    [u9, u10].forEach(function (u) {
+      (u.questions || []).forEach(function (q, k) {
+        var where = 'U' + u.id + '·Q' + (k + 1);
+
+        var div = document.createElement('div');
+        try {
+          CAPTURED.renderSequence(q, div);
+          var groupEls = div.querySelectorAll('.mp-discover-group').length;
+          check(S, where + ': renderSequence 渲染 4 个候选组，不抛异常', groupEls === 4, groupEls + ' groups rendered');
+        } catch (e) {
+          check(S, where + ': renderSequence 不抛异常', false, String(e));
+        }
+
+        try {
+          var voice = CAPTURED.getVoiceText(q);
+          check(S, where + ': getVoiceText 不依赖 q.seq，返回固定提示语',
+            typeof voice === 'string' && voice.length > 0, voice);
+        } catch (e) {
+          check(S, where + ': getVoiceText 不抛异常（不会读取不存在的 q.seq）', false, String(e));
+        }
+
+        check(S, where + ': checkAnswer 接受组号（字符串/数字均可）',
+          CAPTURED.checkAnswer(q.answer, q) === true && CAPTURED.checkAnswer(String(q.answer), q) === true);
+
+        var label = CAPTURED.renderOption(q.answer, q);
+        check(S, where + ': renderOption 输出"第 N 组 / Group N"而非裸数字',
+          typeof label === 'string' && /(组|Group)/.test(label) && label.indexOf(String(q.answer)) >= 0, label);
+      });
+    });
   })();
 
   // ── render ────────────────────────────────────────────────────────────────

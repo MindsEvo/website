@@ -165,8 +165,8 @@
       "implementedBy": [
         "learning-math-pattern"
       ],
-      "coverageGapZh": "K1 的颜色载体 AB 循环续写已实现；discover（挑出真正有规律的一组）与 K2 的 AABB/ABC 循环、纠错、迁移、创造尚未实现。",
-      "coverageGapEn": "K1's color-carrier AB cycle continue is implemented; discover (picking the one run that actually follows a rule) and K2's AABB/ABC cycles, repair, match and create are not implemented yet."
+      "coverageGapZh": "K1 的颜色载体 AB 循环续写、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；K2 的纠错、配对、创造尚未实现。",
+      "coverageGapEn": "K1's color-carrier AB cycle continue, complete and discover (picking the one run that actually follows a rule) are implemented; K2's repair, match and create are not implemented yet."
     },
     {
       "id": "growth",
@@ -198,8 +198,8 @@
       "implementedBy": [
         "learning-math-pattern"
       ],
-      "coverageGapZh": "G2 的 match（颜色规律与图形规律的同构配对）已实现；discover、continue、complete、repair、create 尚未实现。",
-      "coverageGapEn": "G2's match (isomorphism pairing between a color pattern and a shape pattern) is implemented; discover, continue, complete, repair and create are not implemented yet."
+      "coverageGapZh": "G1 的方向/昼夜载体振荡续写（continue）、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；G2 的 match（颜色规律与图形规律的同构配对）也已实现；repair、create 尚未实现。",
+      "coverageGapEn": "G1's direction/day-night oscillation continue, complete and discover (picking the one run that actually follows a rule) are implemented, as is G2's match (isomorphism pairing between a color pattern and a shape pattern); repair and create are not implemented yet."
     },
     {
       "id": "spatial",
@@ -475,7 +475,7 @@
       "task": "discover",
       "levelFloor": "K1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "repetition",
@@ -489,7 +489,7 @@
       "task": "complete",
       "levelFloor": "K1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "repetition",
@@ -559,21 +559,21 @@
       "task": "discover",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
       "task": "continue",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
       "task": "complete",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
@@ -781,17 +781,16 @@
       ],
       "primaryTasks": [
         "discover",
-        "continue"
+        "continue",
+        "complete"
       ],
-      "status": "partial",
+      "status": "implemented",
       "implementedBy": [
         "learning-math-pattern"
       ],
       "implementedModes": [
         "puzzle"
-      ],
-      "coverageGapZh": "continue（AB 循环续写）已实现；discover（挑出真正有规律的一组）尚未实现。",
-      "coverageGapEn": "continue (AB cycle continuation) is implemented; discover (picking the one run that actually follows a rule) is not implemented yet."
+      ]
     },
     {
       "levelId": "L2",
@@ -815,12 +814,14 @@
       "levelId": "L3",
       "ageHint": "6-7",
       "gradeCode": "G1",
-      "objectiveZh": "在 20 以内认出 +1 / +2 / +3 / +5 / +10 的递进规律，并补全序列中的空缺。",
-      "objectiveEn": "Recognise +1 / +2 / +3 / +5 / +10 progressions within 20 and fill the gap in a run.",
+      "objectiveZh": "在 20 以内认出 +1 / +2 / +3 / +5 / +10 的递进规律并补全空缺；在方向/昼夜载体上认出两两交替的振荡规律，续写或补全序列。",
+      "objectiveEn": "Recognise +1 / +2 / +3 / +5 / +10 progressions within 20 and fill the gap in a run; recognise a two-state oscillation on a direction/day-night carrier and continue or complete it.",
       "primaryTypes": [
-        "numerical"
+        "numerical",
+        "alternating"
       ],
       "primaryTasks": [
+        "discover",
         "continue",
         "complete"
       ],
