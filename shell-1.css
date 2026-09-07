@@ -98,6 +98,12 @@ body {
 .s1-cicon { font-size: 40px; min-width: 50px; text-align: center; }
 .s1-cinfo { flex: 1; }
 .s1-cname { font-size: 20px; font-weight: 800; margin-bottom: 3px; color: var(--s1-text); }
+.s1-cbadge {
+  display: inline-block; font-size: 12px; font-weight: 800;
+  color: white; background: var(--s1-primary);
+  border-radius: 6px; padding: 2px 7px; margin-right: 8px;
+  vertical-align: middle; letter-spacing: 0.5px;
+}
 .s1-cdesc { font-size: 14px; color: var(--s1-muted); }
 .s1-cstat {
   font-size: 13px; font-weight: 700; color: var(--s1-muted);

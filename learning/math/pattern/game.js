@@ -289,6 +289,7 @@
   function buildUnits(source) {
     return (source || []).map(function (unit) {
       var copy = Object.assign({}, unit);
+      copy.gradeCode = LEVEL_GRADE[UNIT_LEVEL[String(unit.id)]] || null;
       copy.questions = _pickSession(unit.questions).map(function (q) {
         var qc = Object.assign({}, q);
         qc.options = _shuffled(q.options);
@@ -459,6 +460,10 @@
                 en: 'Discover patterns in numbers — build prediction & generalization' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),   // sessionPolicy.passRatio
     debug: false,
+    // These 10 units are independent structures/grade-levels (K1 color cycle
+    // next to G2 doubling), not an escalating ladder — so every unit is open
+    // from the start, same as comparison's own reasoning for this flag.
+    parallelUnits: true,
     units: buildUnits(MP_DATA.units),
 
     renderSequence: function (q, container) {

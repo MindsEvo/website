@@ -1725,10 +1725,11 @@
 
         var card = document.createElement('div');
         card.className = 's1-card' + (locked ? ' s1-locked' : '');
+        var badge = unit.gradeCode ? '<span class="s1-cbadge">' + unit.gradeCode + '</span>' : '';
         card.innerHTML =
           '<div class="s1-cicon">' + (unit.icon || '') + '</div>' +
           '<div class="s1-cinfo">' +
-            '<div class="s1-cname">' + _bispan(unit.nameZh, unit.nameEn) + '</div>' +
+            '<div class="s1-cname">' + badge + _bispan(unit.nameZh, unit.nameEn) + '</div>' +
             '<div class="s1-cdesc">' + _bispan(unit.descZh, unit.descEn) + '</div>' +
           '</div>' +
           '<div class="s1-cstat">' + _bispan(statZh, statEn) + '</div>';
