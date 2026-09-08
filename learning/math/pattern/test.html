@@ -44,15 +44,30 @@
 <div id="results"></div>
 
 <!-- Stub the shell so game.js can register without a DOM game. createGame's
-     config is captured verbatim: that config is what the browser really runs. -->
+     config is captured verbatim: that config is what the browser really runs.
+     IH is stubbed too — this harness never loads interaction-ui.js, and the
+     grade selector's header controls (../index.html back-link chrome) aren't
+     part of what this suite audits. -->
 <script>
   var CAPTURED = null;
+  var IH = {
+    controlsHtml: function () { return ''; },
+    wire: function () {},
+    injectStyles: function () {}
+  };
   var shell = {
     lang: 'zh',
     getVolume: function () { return 80; },
     speak: function () {},
     storage: { get: function (k, d) { return d; }, set: function () {} },
-    createGame: function (cfg) { CAPTURED = cfg; }
+    createGame: function (cfg) {
+      // game.js now calls shell.createGame once per grade (from _launchGrade),
+      // not once for the whole bank. Drive every grade and concatenate their
+      // units so CAPTURED still looks like "the whole bank", which is what
+      // every check below assumes.
+      if (!CAPTURED) { CAPTURED = cfg; CAPTURED.units = []; }
+      CAPTURED.units = CAPTURED.units.concat(cfg.units || []);
+    }
   };
 </script>
 <script src="../../../radar-reader.js"></script>
@@ -60,6 +75,11 @@
 <script src="./game.js"></script>
 <script>
 (function () {
+  var GRADES_TO_DRIVE = ['K1', 'K2', 'G1', 'G2'];
+  var LC = window.PATTERN_CONTRACT || {};
+  if (typeof LC._launchGrade === 'function') {
+    GRADES_TO_DRIVE.forEach(function (lvl) { LC._launchGrade(lvl); });
+  }
 
   var SHUFFLE_RUNS = 200;   // for the option-position uniformity check
 

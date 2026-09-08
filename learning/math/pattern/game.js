@@ -339,6 +339,9 @@
     buildRadarContext: buildRadarContext,
     genesFor: genesFor,
     buildUnits: buildUnits,
+    // Exposed so test.html can drive the grade-selector's shell.createGame
+    // call directly (per grade) instead of clicking through #mp-lvl-selector.
+    _launchGrade: _launchGrade,
     // Exposed so test.html can audit the match sample's structural legitimacy
     // (§8.1) without driving ActivityRunner/MatchRuntime through a real DOM.
     matchTemplate: function () { return _matchTemplate(); },
@@ -748,7 +751,101 @@
     hdr.insertBefore(btn, hdr.firstChild);
   }
 
-  shell.createGame({
+  // ── Grade level selector ───────────────────────────────────────────────────
+  // Mirrors comparison's own K/G grade chooser (comparison/game.js
+  // GRADE_LEVELS + _showLevelSelector): the child picks a grade card before
+  // ever seeing a unit, instead of one flat list spanning K1 through G2.
+
+  var GRADE_LEVELS = [
+    { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K',        descZh: '3–4岁 · 无需数字',  descEn: 'Age 3–4 · No numbers',  free: true  },
+    { id: 'K2', badge: 'K2', nameZh: '幼儿园大班',    nameEn: 'Kindergarten', descZh: '5岁 · 数字入门',    descEn: 'Age 5 · Intro numbers', free: true  },
+    { id: 'G1', badge: 'G1', nameZh: '小学一年级',    nameEn: 'Grade 1',      descZh: '6岁 · 20以内',      descEn: 'Age 6 · Within 20',     free: true  },
+    { id: 'G2', badge: 'G2', nameZh: '小学二年级',    nameEn: 'Grade 2',      descZh: '7岁 · 100以内',     descEn: 'Age 7 · Within 100',    free: true  },
+    { id: 'G3', badge: 'G3', nameZh: '三年级',        nameEn: 'Grade 3',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false },
+    { id: 'G4', badge: 'G4', nameZh: '四年级',        nameEn: 'Grade 4',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false },
+    { id: 'G5', badge: 'G5', nameZh: '五年级',        nameEn: 'Grade 5',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false },
+    { id: 'G6', badge: 'G6', nameZh: '六年级',        nameEn: 'Grade 6',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false }
+  ];
+
+  function _unitsForLevel(levelId) {
+    return MP_DATA.units.filter(function (u) { return UNIT_LEVEL[String(u.id)] === levelId; });
+  }
+
+  /**
+   * Same idiom as _injectDiscoverStyles/_injectRepairStyles below: a small
+   * self-scoped stylesheet rather than the shared shell-1.css, because only
+   * the grade selector screen uses these classes. Adapted from comparison's
+   * own .cq-lvl-* rules — this module's selector is styled to match.
+   */
+  function _injectLevelSelectorStyles() {
+    if (document.getElementById('mp-lvl-style')) return;
+    var s = document.createElement('style');
+    s.id = 'mp-lvl-style';
+    s.textContent = [
+      '.mp-lvl-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}',
+      '.mp-lvl-title-bar{display:flex;align-items:center;width:100%;max-width:520px;gap:8px;}',
+      '.mp-lvl-title{font-size:20px;font-weight:900;color:#1e3a8a;text-align:center;flex:1;}',
+      '.mp-lvl-back{background:none;border:none;cursor:pointer;font-size:14px;font-weight:700;color:#2563eb;padding:4px 6px;border-radius:8px;white-space:nowrap;flex:0 0 auto;}',
+      '.mp-lvl-back:hover{background:#eff6ff;}',
+      '.mp-lvl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:440px;}',
+      '.mp-lvl-card{border:2px solid #bfdbfe;border-radius:16px;padding:18px 14px;cursor:pointer;text-align:center;background:#fff;transition:transform .16s,border-color .16s,box-shadow .16s;}',
+      '.mp-lvl-card:hover{transform:translateY(-2px);border-color:#3b82f6;box-shadow:0 8px 20px rgba(37,99,235,0.12);}',
+      '.mp-lvl-card.locked{opacity:0.45;cursor:default;pointer-events:none;}',
+      '.mp-lvl-badge{font-size:26px;font-weight:900;color:#1e40af;margin-bottom:4px;}',
+      '.mp-lvl-name{font-size:13px;font-weight:700;color:#334155;}',
+      '.mp-lvl-desc{font-size:11px;color:#94a3b8;margin-top:4px;}',
+      '.mp-lvl-tag{display:inline-block;font-size:10px;font-weight:700;border-radius:6px;padding:2px 8px;margin-top:6px;}',
+      '.mp-lvl-tag.free{background:#dcfce7;color:#16a34a;}',
+      '.mp-lvl-tag.locked-tag{background:#f1f5f9;color:#94a3b8;}'
+    ].join('');
+    document.head.appendChild(s);
+  }
+
+  function _showLevelSelector() {
+    _injectLevelSelectorStyles();
+    var lang = shell.lang || 'zh';
+    var wrap = document.createElement('div');
+    wrap.id = 'mp-lvl-selector';
+    wrap.innerHTML = '<div class="mp-lvl-wrap">' +
+      '<div class="mp-lvl-title-bar">' +
+        '<button class="mp-lvl-back" id="mp-sel-back">⬅️ <span class="zh">数学启智</span><span class="en">Math</span></button>' +
+        '<div class="mp-lvl-title"><span class="zh">规律 · 选择年级</span><span class="en">Pattern · Grade</span></div>' +
+        IH.controlsHtml('lvl') +
+      '</div>' +
+      '<div class="mp-lvl-grid">' +
+      GRADE_LEVELS.map(function (lvl) {
+        var lk = !lvl.free;
+        return '<div class="mp-lvl-card' + (lk ? ' locked' : '') + '" data-level="' + lvl.id + '">' +
+          '<div class="mp-lvl-badge">' + lvl.badge + '</div>' +
+          '<div class="mp-lvl-name"><span class="zh">' + lvl.nameZh + '</span><span class="en">' + lvl.nameEn + '</span></div>' +
+          '<div class="mp-lvl-desc"><span class="zh">' + lvl.descZh + '</span><span class="en">' + lvl.descEn + '</span></div>' +
+          '<div class="mp-lvl-tag ' + (lk ? 'locked-tag' : 'free') + '"><span class="zh">' + (lk ? '即将推出' : '免费') + '</span><span class="en">' + (lk ? 'Soon' : 'Free') + '</span></div>' +
+        '</div>';
+      }).join('') +
+      '</div></div>';
+
+    function applyLang(l) {
+      wrap.querySelectorAll('.zh').forEach(function (el) { el.style.display = l === 'zh' ? '' : 'none'; });
+      wrap.querySelectorAll('.en').forEach(function (el) { el.style.display = l === 'en' ? '' : 'none'; });
+    }
+    applyLang(lang);
+    document.addEventListener('shell:langchange', function (e) { applyLang(e.detail && e.detail.lang); });
+    document.body.appendChild(wrap);
+    IH.wire('lvl');
+
+    var backBtn = document.getElementById('mp-sel-back');
+    if (backBtn) backBtn.addEventListener('click', function () { window.location.href = '../index.html'; });
+
+    wrap.addEventListener('click', function (e) {
+      var card = e.target.closest('.mp-lvl-card:not(.locked)');
+      if (!card) return;
+      wrap.remove();
+      _launchGrade(card.getAttribute('data-level'));
+    });
+  }
+
+  function _launchGrade(levelId) {
+    shell.createGame({
     id:       SOURCE_GAME_ID,
     theme:    { primary: '#d97706', primary2: '#92400e' },   // amber
     gui: {
@@ -771,11 +868,12 @@
                 en: 'Discover patterns in numbers — build prediction & generalization' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),   // sessionPolicy.passRatio
     debug: false,
-    // These 10 units are independent structures/grade-levels (K1 color cycle
-    // next to G2 doubling), not an escalating ladder — so every unit is open
-    // from the start, same as comparison's own reasoning for this flag.
+    // A grade's units are independent structures (e.g. K1 color cycle next to
+    // G1 direction oscillation), not an escalating ladder — so every unit in
+    // the selected grade is open from the start, same as comparison's own
+    // reasoning for this flag.
     parallelUnits: true,
-    units: buildUnits(MP_DATA.units),
+    units: buildUnits(_unitsForLevel(levelId)),
 
     renderSequence: function (q, container) {
       if (q.task === 'discover') {
@@ -890,7 +988,16 @@
         activityRuntime:     'puzzle'
       });
     }
-  });
+    });
+
+    if (levelId === 'K2') {
+      _injectRepMatchTrigger();
+      _injectRepCreateTrigger();
+    } else if (levelId === 'G2') {
+      _injectMatchTrigger();
+      _injectAltCreateTrigger();
+    }
+  }
 
   /**
    * discover's candidate-group layout (several stacked groups, no blank) does
@@ -929,8 +1036,5 @@
   _injectDiscoverStyles();
   _injectRepairStyles();
 
-  _injectMatchTrigger();
-  _injectRepMatchTrigger();
-  _injectRepCreateTrigger();
-  _injectAltCreateTrigger();
+  _showLevelSelector();
 })();
