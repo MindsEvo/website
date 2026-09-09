@@ -67,6 +67,22 @@
 .pf-sw-reach  { background: rgba(102, 126, 234, 0.26); border-color: var(--s1-primary); }
 .pf-sw-master { background: transparent; border: 2px dashed var(--s1-primary2); }
 
+/* ── category axis label (clickable, drives the drill-down panel) ── */
+.pf-cat-label { cursor: pointer; }
+.pf-cat-label text { transition: opacity .15s; }
+.pf-cat-label:hover text,
+.pf-cat-label:focus text { opacity: .7; text-decoration: underline; }
+.pf-cat-label:focus { outline: none; }
+
+/* ── drill-down panel: nests visually under the main chart card ── */
+.pf-drill {
+  border: 1px solid var(--s1-border);
+  border-radius: 14px;
+  padding: 14px 12px 4px;
+  margin-top: 14px;
+  background: var(--s1-card);
+}
+
 /* ── bar fallback (fewer than 3 genes → a radar would be a line) ── */
 .pf-bars { display: grid; gap: 12px; }
 .pf-barrow { display: grid; gap: 5px; }

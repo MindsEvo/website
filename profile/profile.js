@@ -56,10 +56,15 @@
 
   var state = {
     labels: null,        // registry genes map, or null if it did not load
+    categories: null,    // registry categories array, or null if it did not load
     registryVersion: null,
     registryError: null
   };
   var mounted = null;
+  // Last read() result and which category's drill-down panel is open, kept
+  // outside `state` because they are render output/UI state, not input.
+  var lastResult = null;
+  var openCategory = null;
 
   // ── tiny helpers ────────────────────────────────────────────
 
@@ -113,6 +118,7 @@
       })
       .then(function (json) {
         state.labels = (json && json.genes) || null;
+        state.categories = (json && json.categories) || null;
         state.registryVersion = (json && json.version) || null;
         if (!state.labels) state.registryError = 'no-genes';
       })
@@ -220,6 +226,99 @@
   }
 
   /**
+   * The main chart: one spoke per rootGene CATEGORY (fixed, always the whole
+   * registry — 7 today), not per gene. A category nobody has played yet still
+   * gets a spoke; it is just empty. Structurally identical to radarSvg above
+   * (same rings/polygons/markers), only the axis source and label differ.
+   * Each axis label is wrapped in a clickable `<g class="pf-cat-label">` that
+   * drives the leaf-gene drill-down panel below the chart.
+   */
+  function categoryRadarSvg(result) {
+    var cats = result.categories;
+    var n = cats.length;
+    var rings = result.grades.length;               // 8
+    var W = 480, H = 420, cx = W / 2, cy = 208, R = 132;
+
+    function pt(frac, i) {
+      var a = -Math.PI / 2 + (i * 2 * Math.PI / n);
+      return [cx + Math.cos(a) * R * frac, cy + Math.sin(a) * R * frac];
+    }
+    function poly(frac0, pick) {
+      var pts = [];
+      for (var i = 0; i < n; i++) {
+        var f = pick ? pick(cats[i]) : frac0;
+        var p = pt(f, i);
+        pts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1));
+      }
+      return pts.join(' ');
+    }
+
+    var svg = [];
+    svg.push('<svg class="pf-chart" viewBox="0 0 ' + W + ' ' + H +
+             '" role="img" aria-label="' +
+             esc(T('思维雷达：大类 × 等级', 'Thinking radar: category by grade')) + '">');
+
+    for (var r = 1; r <= rings; r++) {
+      svg.push('<polygon points="' + poly(r / rings) +
+               '" fill="none" stroke="#e2e8f0" stroke-width="1" />');
+    }
+    for (var i = 0; i < n; i++) {
+      var e = pt(1, i);
+      svg.push('<line x1="' + cx + '" y1="' + cy + '" x2="' + e[0].toFixed(1) +
+               '" y2="' + e[1].toFixed(1) + '" stroke="#e2e8f0" stroke-width="1" />');
+    }
+    svg.push('<text x="' + (cx + 5) + '" y="' + (cy - R / rings + 4) +
+             '" font-size="10" fill="#94a3b8">' + esc(result.grades[0]) + '</text>');
+    svg.push('<text x="' + (cx + 5) + '" y="' + (cy - R + 4) +
+             '" font-size="10" fill="#94a3b8">' + esc(result.grades[rings - 1]) + '</text>');
+
+    svg.push('<polygon points="' + poly(0, function (c) { return c.coverage; }) +
+             '" fill="rgba(102,126,234,0.26)" stroke="#667eea" stroke-width="2" />');
+    var anyMastery = cats.some(function (c) { return c.mastery > 0; });
+    if (anyMastery) {
+      svg.push('<polygon points="' + poly(0, function (c) { return c.mastery; }) +
+               '" fill="none" stroke="#764ba2" stroke-width="2" ' +
+               'stroke-dasharray="6 4" />');
+    }
+    for (var k = 0; k < n; k++) {
+      var v = pt(cats[k].coverage, k);
+      svg.push('<circle cx="' + v[0].toFixed(1) + '" cy="' + v[1].toFixed(1) +
+               '" r="3" fill="#667eea" />');
+    }
+    if (anyMastery) {
+      for (var m = 0; m < n; m++) {
+        if (!(cats[m].mastery > 0)) continue;
+        var mv = pt(cats[m].mastery, m);
+        svg.push('<circle cx="' + mv[0].toFixed(1) + '" cy="' + mv[1].toFixed(1) +
+                 '" r="3.5" fill="#ffffff" stroke="#764ba2" stroke-width="2" />');
+      }
+    }
+    for (var j = 0; j < n; j++) {
+      var a = -Math.PI / 2 + (j * 2 * Math.PI / n);
+      var lx = cx + Math.cos(a) * (R + 20);
+      var ly = cy + Math.sin(a) * (R + 20);
+      var ca = Math.cos(a);
+      var anchor = ca > 0.25 ? 'start' : (ca < -0.25 ? 'end' : 'middle');
+      var dy = Math.sin(a) > 0.6 ? 12 : (Math.sin(a) < -0.6 ? -4 : 4);
+      var cat = cats[j];
+      var name = (isZh() ? cat.zh : cat.en) || cat.id;
+      svg.push('<g class="pf-cat-label" data-cat="' + esc(cat.id) +
+               '" tabindex="0" role="button" aria-label="' + esc(name) + '">');
+      svg.push('<rect x="' + (lx - 46).toFixed(1) + '" y="' + (ly + dy - 14).toFixed(1) +
+               '" width="92" height="30" fill="transparent" />');
+      svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy).toFixed(1) +
+               '" text-anchor="' + anchor + '" font-size="13" font-weight="700" ' +
+               'fill="' + esc(cat.color || '#1e293b') + '">' + esc(name) + '</text>');
+      svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy + 14).toFixed(1) +
+               '" text-anchor="' + anchor + '" font-size="11" fill="#64748b">' +
+               esc(cat.reachedCode || '—') + '</text>');
+      svg.push('</g>');
+    }
+    svg.push('</svg>');
+    return svg.join('');
+  }
+
+  /**
    * Fallback for 1–2 genes: one 8-cell strip per gene. Same two states as the
    * radar (reached / mastered) and the same axis 2, just drawn as a row —
    * because a 2-vertex polygon is a line, and a line implies a shape that is
@@ -321,6 +420,20 @@
   }
 
   function chartHtml(result) {
+    if (result.categories && result.categories.length) {
+      return '<div class="pf-card">' +
+        '<div class="pf-h2">' + esc(T('覆盖与掌握', 'Coverage and mastery')) + '</div>' +
+        '<p class="pf-note">' + esc(T(
+          '每条轴是一个思维大类，从中心往外的 8 圈依次是 K1 到 G6；轴永远都在，练过才会被填色。' +
+            '点击一个大类可以看到它下面具体的根基因。',
+          'Each spoke is a rootGene category; the 8 rings from the centre outward ' +
+            'are K1 through G6. Every spoke always shows — play fills it in. Click ' +
+            'a category to see the individual rootGenes underneath.')) + '</p>' +
+        categoryRadarSvg(result) +
+        legendHtml(result) +
+        '<div id="pf-drilldown"></div>' +
+        '</div>';
+    }
     var few = result.genes.length < 3;
     return '<div class="pf-card">' +
       '<div class="pf-h2">' + esc(T('覆盖与掌握', 'Coverage and mastery')) + '</div>' +
@@ -336,6 +449,54 @@
       (few ? barsHtml(result) : radarSvg(result)) +
       legendHtml(result) +
       '</div>';
+  }
+
+  /**
+   * Fills #pf-drilldown from the last read() result and `openCategory`,
+   * without re-reading history. Reuses radarSvg/barsHtml/tableHtml/nextHtml
+   * verbatim, re-scoped to the genes in the open category — no new stats.
+   */
+  function renderDrilldown() {
+    var host = document.getElementById('pf-drilldown');
+    if (!host) return;
+    if (!openCategory || !lastResult || !lastResult.categories) {
+      host.innerHTML = '';
+      return;
+    }
+    var catEntry = null;
+    for (var i = 0; i < lastResult.categories.length; i++) {
+      if (lastResult.categories[i].id === openCategory) { catEntry = lastResult.categories[i]; break; }
+    }
+    if (!catEntry) { host.innerHTML = ''; return; }
+
+    var genesInCat = lastResult.genes.filter(function (g) {
+      return state.labels && state.labels[g.geneId] &&
+        state.labels[g.geneId].category === openCategory;
+    });
+
+    var html = ['<div class="pf-drill">'];
+    html.push('<div class="pf-h2">' + esc((isZh() ? catEntry.zh : catEntry.en) || catEntry.id) + '</div>');
+
+    if (!genesInCat.length) {
+      var names = catEntry.geneIds.map(function (gid) {
+        var entry = state.labels[gid];
+        return (entry && (isZh() ? entry.zh : entry.en)) || global.RadarReader.deriveLabel(gid);
+      });
+      html.push('<p class="pf-note">' + esc(names.length
+        ? T('还没有练习记录。这个大类下已登记的根基因：', 'No records yet. RootGenes registered under this category: ') +
+          names.join('、')
+        : T('还没有练习记录，这个大类下也还没有登记根基因。',
+            'No records yet, and no rootGenes are registered under this category yet.')) + '</p>');
+    } else {
+      var sub = { genes: genesInCat, grades: lastResult.grades,
+                  config: lastResult.config, totals: lastResult.totals };
+      html.push(genesInCat.length < 3 ? barsHtml(sub) : radarSvg(sub));
+      html.push(legendHtml(sub));
+      html.push(tableHtml(sub));
+      html.push(nextHtml(sub));
+    }
+    html.push('</div>');
+    host.innerHTML = html.join('');
   }
 
   function tableHtml(result) {
@@ -542,6 +703,7 @@
     try {
       result = global.RadarReader.read({
         geneLabels: state.labels,
+        categories: state.categories,
         lang: isZh() ? 'zh' : 'en'
       });
     } catch (err) {
@@ -550,6 +712,8 @@
         esc((err && err.message) || err) + '</p></div>';
       return;
     }
+
+    lastResult = result;
 
     if (!result.genes.length) {
       // Still show the footer: "0 of 12 records had a gene id" is the single
@@ -561,6 +725,7 @@
 
     host.innerHTML = summaryHtml(result) + chartHtml(result) +
       tableHtml(result) + nextHtml(result) + metaHtml(result);
+    renderDrilldown();
   }
 
   // ── boot ────────────────────────────────────────────────────
@@ -578,6 +743,24 @@
     global.addEventListener('storage', function (e) {
       if (!e || !e.key || e.key.indexOf(':history:') < 0) return;
       render();
+    });
+    // Delegated, because the chart's SVG is thrown away and rebuilt on every
+    // render() — a per-element listener would just be leaked each time.
+    function toggleFromEvent(e) {
+      var el = e.target.closest ? e.target.closest('.pf-cat-label') : null;
+      if (!el) return;
+      var catId = el.getAttribute('data-cat');
+      if (!catId) return;
+      openCategory = (openCategory === catId) ? null : catId;
+      renderDrilldown();
+    }
+    document.addEventListener('click', toggleFromEvent);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var el = e.target.closest ? e.target.closest('.pf-cat-label') : null;
+      if (!el) return;
+      e.preventDefault();
+      toggleFromEvent(e);
     });
   }
 

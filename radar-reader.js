@@ -256,6 +256,10 @@ var RadarReader = (function (global) {
    *   records          pre-loaded record array (skips the scan; for tests)
    *   profileId        which profile to read (default: me:sys:profile)
    *   geneLabels       id → { zh, en, short, category } from the registry
+   *   categories       [{ id, zh, en, color }, …] from the registry; needs
+   *                     geneLabels too (that is the only join key), otherwise
+   *                     result.categories stays null and callers fall back
+   *                     to the leaf-gene chart
    *   masteryAccuracy  ratio bar for "mastered"  (default 0.7)
    *   masterySessions  session bar for the same  (default 2)
    *   trendMinRecords  records needed for a trend (default 4)
@@ -418,10 +422,51 @@ var RadarReader = (function (global) {
 
     finishRuntimes(byRuntimeAll);
 
+    // ── category aggregation (axis 1 of the fixed-territory radar) ──
+    // Requires both the category list and the gene registry, since the
+    // registry is the only place a leaf gene's category is known. Missing
+    // either costs the category view, not the leaf-gene one below it.
+    var categories = null;
+    if (Array.isArray(opts.categories) && labels) {
+      var catMap = Object.create(null);
+      opts.categories.forEach(function (c) {
+        if (!c || !c.id) return;
+        catMap[c.id] = {
+          id: c.id, zh: c.zh, en: c.en, color: c.color,
+          geneIds: [], playedGeneIds: [],
+          sessions: 0, reachedIndex: -1, masteredIndex: -1
+        };
+      });
+      Object.keys(labels).forEach(function (gid) {
+        var catId = labels[gid] && labels[gid].category;
+        if (catId && catMap[catId]) catMap[catId].geneIds.push(gid);
+      });
+      genes.forEach(function (gene) {
+        var catId = labels[gene.geneId] && labels[gene.geneId].category;
+        if (!catId || !catMap[catId] || !gene.sessions) return;
+        var cat = catMap[catId];
+        cat.playedGeneIds.push(gene.geneId);
+        cat.sessions += gene.sessions;
+        if (gene.reachedIndex > cat.reachedIndex) cat.reachedIndex = gene.reachedIndex;
+        if (gene.masteredIndex > cat.masteredIndex) cat.masteredIndex = gene.masteredIndex;
+      });
+      categories = opts.categories
+        .filter(function (c) { return c && c.id && catMap[c.id]; })
+        .map(function (c) {
+          var cat = catMap[c.id];
+          cat.reachedCode  = cat.reachedIndex  >= 0 ? GRADE_CODES[cat.reachedIndex]  : null;
+          cat.masteredCode = cat.masteredIndex >= 0 ? GRADE_CODES[cat.masteredIndex] : null;
+          cat.coverage = (cat.reachedIndex  + 1) / GRADE_CODES.length;
+          cat.mastery  = (cat.masteredIndex + 1) / GRADE_CODES.length;
+          return cat;
+        });
+    }
+
     return {
       profileId: profileId,
       grades: GRADE_CODES.slice(),
       genes: genes,
+      categories: categories,
       cells: cells,
       trend: trendOf(allSamples, cfg.trendMinRecords),
       config: cfg,
