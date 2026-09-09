@@ -79,6 +79,7 @@
     }
 
     .board-wrap {
+      position: relative;
       background: #6f8f4d;
       border: 1px solid #6f8f4d;
       padding: 10px;
@@ -106,6 +107,7 @@
     }
 
     .square {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -352,37 +354,42 @@
     }
 
     .quiz-options {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin-top: 8px;
     }
 
     .quiz-opt {
-      height: 34px;
-      border-radius: 6px;
-      border: 0;
-      background: #0f77e8;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
+      min-height: 44px;
+      border-radius: 8px;
+      border: 1px solid #d8e2f1;
+      background: #f8fbff;
+      color: #1a2433;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
     }
 
     .quiz-opt:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+      border-color: #a9c3e8;
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.15);
     }
 
     .quiz-opt.correct {
       box-shadow: 0 0 0 2px #16a34a, 0 0 0 4px #bbf7d0;
-      background: #22c55e;
+      background: #ecfdf3;
+      border-color: #16a34a;
     }
 
     .quiz-opt.wrong {
       box-shadow: 0 0 0 2px #dc2626, 0 0 0 4px #fecaca;
-      background: #ef4444;
+      background: #fef2f2;
+      border-color: #dc2626;
     }
 
     .tips-modal {
@@ -512,37 +519,78 @@
       box-shadow: inset 0 0 0 4px rgba(168, 85, 247, 0.75);
     }
 
+    /* higher specificity than .observe-blink/.quiz-blink: swaps the opacity fade for an actual color pulse */
+    @keyframes observeSquareLightPulse {
+      0%, 100% { box-shadow: inset 0 0 0 100px rgba(253, 224, 71, 0); }
+      50%       { box-shadow: inset 0 0 0 100px rgba(253, 224, 71, 0.92); }
+    }
+
+    .square.observe-square-light {
+      animation: observeSquareLightPulse 1.3s ease-in-out infinite;
+    }
+
+    @keyframes observeSquareDarkPulse {
+      0%, 100% { box-shadow: inset 0 0 0 100px rgba(20, 83, 45, 0); }
+      50%       { box-shadow: inset 0 0 0 100px rgba(20, 83, 45, 0.92); }
+    }
+
+    .square.observe-square-dark {
+      animation: observeSquareDarkPulse 1.3s ease-in-out infinite;
+    }
+
     .observe-border {
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.85) inset;
     }
 
-    @keyframes practiceBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.26; }
+    /* higher specificity than .observe-blink/.quiz-blink: overrides their opacity animation so only the border pulses */
+    @keyframes observeBorderPulse {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(134, 239, 172, 1) inset, 0 0 32px 8px rgba(34, 197, 94, 0.95); }
+      50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.7) inset, 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    .practice-blink {
-      animation: practiceBlink 0.58s ease-in-out infinite;
+    .board-wrap.observe-border {
+      animation: observeBorderPulse 2.6s ease-in-out infinite;
     }
 
-    .practice-piece-white {
-      filter: drop-shadow(0 0 4px rgba(22, 163, 74, 0.9));
+    /* practice feedback: a check/cross mark pops up at the clicked spot instead of blinking every matching element */
+    .practice-mark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.3);
+      width: 42%;
+      aspect-ratio: 1;
+      min-width: 22px;
+      min-height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.15em;
+      line-height: 1;
+      color: #fff;
+      pointer-events: none;
+      z-index: 20;
+      animation: practiceMarkPop 0.9s ease-out forwards;
     }
 
-    .practice-piece-black {
-      filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.9));
+    .practice-mark-correct {
+      background: rgba(34, 197, 94, 0.94);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28);
     }
 
-    .practice-square-light {
-      box-shadow: inset 0 0 0 4px rgba(56, 189, 248, 0.85);
+    .practice-mark-wrong {
+      background: rgba(220, 38, 38, 0.94);
+      box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.28);
     }
 
-    .practice-square-dark {
-      box-shadow: inset 0 0 0 4px rgba(99, 102, 241, 0.85);
-    }
-
-    .practice-border {
-      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.9) inset;
+    @keyframes practiceMarkPop {
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+      18%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+      32%  { transform: translate(-50%, -50%) scale(1); }
+      78%  { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
     }
 
     .c-red { background: #e8334c; }
@@ -703,7 +751,6 @@
       var btnTipsClose = document.getElementById('btnTipsClose');
       var btnTipsOk = document.getElementById('btnTipsOk');
       var observeStopTimer = null;
-      var practiceStopTimer = null;
       var quizStopTimer = null;
       var currentPracticeTarget = null;
       var currentPracticeButton = null;
@@ -861,19 +908,6 @@
         }
       }
 
-      function clearPracticeHighlights() {
-        document.querySelectorAll('.practice-blink').forEach(function (el) {
-          el.classList.remove('practice-blink', 'practice-piece-white', 'practice-piece-black', 'practice-square-light', 'practice-square-dark');
-        });
-        if (boardWrap) {
-          boardWrap.classList.remove('practice-blink', 'practice-border');
-        }
-        if (practiceStopTimer) {
-          window.clearTimeout(practiceStopTimer);
-          practiceStopTimer = null;
-        }
-      }
-
       function clearQuizHighlights() {
         document.querySelectorAll('.quiz-blink').forEach(function (el) {
           el.classList.remove('quiz-blink', 'observe-piece-white', 'observe-piece-black', 'observe-square-light', 'observe-square-dark', 'observe-border');
@@ -894,15 +928,6 @@
         // Stop blinking automatically after 10 seconds.
         observeStopTimer = window.setTimeout(function () {
           clearObserveHighlights(false);
-        }, 10000);
-      }
-
-      function schedulePracticeAutoStop() {
-        if (practiceStopTimer) {
-          window.clearTimeout(practiceStopTimer);
-        }
-        practiceStopTimer = window.setTimeout(function () {
-          clearPracticeHighlights();
         }, 10000);
       }
 
@@ -971,49 +996,6 @@
             speak('深色格子高亮显示。右下角格子是浅色。');
           }
           scheduleObserveAutoStop();
-        }
-      }
-
-      function runPracticeHighlight(action) {
-        clearPracticeHighlights();
-
-        if (action === 'white-pieces') {
-          document.querySelectorAll('.piece-node.white-piece').forEach(function (el) {
-            el.classList.add('practice-blink', 'practice-piece-white');
-          });
-          schedulePracticeAutoStop();
-          return;
-        }
-
-        if (action === 'black-pieces') {
-          document.querySelectorAll('.piece-node.black-piece').forEach(function (el) {
-            el.classList.add('practice-blink', 'practice-piece-black');
-          });
-          schedulePracticeAutoStop();
-          return;
-        }
-
-        if (action === 'board-border') {
-          if (boardWrap) {
-            boardWrap.classList.add('practice-blink', 'practice-border');
-          }
-          schedulePracticeAutoStop();
-          return;
-        }
-
-        if (action === 'light-squares') {
-          document.querySelectorAll('.square.square-light').forEach(function (el) {
-            el.classList.add('practice-blink', 'practice-square-light');
-          });
-          schedulePracticeAutoStop();
-          return;
-        }
-
-        if (action === 'dark-squares') {
-          document.querySelectorAll('.square.square-dark').forEach(function (el) {
-            el.classList.add('practice-blink', 'practice-square-dark');
-          });
-          schedulePracticeAutoStop();
         }
       }
 
@@ -1089,7 +1071,27 @@
         speak(practicePrompts[target].speak);
       }
 
-      function checkPracticeAnswer(selection) {
+      function showPracticeMark(container, isCorrect, clickEvent) {
+        if (!container) {
+          return;
+        }
+        var mark = document.createElement('div');
+        mark.className = 'practice-mark ' + (isCorrect ? 'practice-mark-correct' : 'practice-mark-wrong');
+        mark.textContent = isCorrect ? '\u2713' : '\u2717';
+        if (clickEvent) {
+          var rect = container.getBoundingClientRect();
+          mark.style.left = (clickEvent.clientX - rect.left) + 'px';
+          mark.style.top = (clickEvent.clientY - rect.top) + 'px';
+        }
+        container.appendChild(mark);
+        window.setTimeout(function () {
+          if (mark.parentNode) {
+            mark.parentNode.removeChild(mark);
+          }
+        }, 900);
+      }
+
+      function checkPracticeAnswer(selection, markContainer, clickEvent) {
         if (!practiceArmed || !currentPracticeTarget) {
           return;
         }
@@ -1099,12 +1101,14 @@
           currentPracticeButton.classList.add('practice-current');
         }
 
-        if (selection === currentPracticeTarget) {
+        var isCorrect = selection === currentPracticeTarget;
+        showPracticeMark(markContainer || boardWrap, isCorrect, clickEvent);
+
+        if (isCorrect) {
           if (currentPracticeButton) {
             currentPracticeButton.classList.remove('practice-current');
             currentPracticeButton.classList.add('practice-correct');
           }
-          runPracticeHighlight(currentPracticeTarget);
           if (practiceStatus) {
             practiceStatus.textContent = '✅ 回答正确：' + practicePrompts[currentPracticeTarget].label;
           }
@@ -1116,9 +1120,6 @@
         if (currentPracticeButton) {
           currentPracticeButton.classList.remove('practice-current');
           currentPracticeButton.classList.add('practice-wrong');
-        }
-        if (selection) {
-          runPracticeHighlight(selection);
         }
         if (practiceStatus) {
           practiceStatus.textContent = '❌ 回答错误：请点击 ' + practicePrompts[currentPracticeTarget].label;
@@ -1216,8 +1217,9 @@
           quizOptions.innerHTML = '';
           return;
         }
-        quizOptions.innerHTML = q.options.map(function (opt) {
-          return '<button class="quiz-opt" data-quiz-opt="' + opt + '">' + opt + '</button>';
+        quizOptions.innerHTML = q.options.map(function (opt, i) {
+          var letter = String.fromCharCode(65 + i);
+          return '<button class="quiz-opt" data-quiz-opt="' + opt + '">' + letter + '. ' + opt + '</button>';
         }).join('');
       }
 
@@ -1320,7 +1322,7 @@
         if (!square) {
           return;
         }
-        checkPracticeAnswer(detectSelectionFromSquare(square));
+        checkPracticeAnswer(detectSelectionFromSquare(square), square, null);
       });
 
       if (boardWrap) {
@@ -1331,7 +1333,7 @@
           if (e.target.closest('.board')) {
             return;
           }
-          checkPracticeAnswer('board-border');
+          checkPracticeAnswer('board-border', boardWrap, e);
         });
       }
 
