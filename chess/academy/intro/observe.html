@@ -59,7 +59,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 1.08fr 1.22fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr));
       gap: 12px;
       min-height: calc(100vh - 52px);
     }
@@ -553,7 +553,7 @@
     .c-violet { background: #e400ee; }
 
     @media (max-width: 1200px) {
-      .layout { grid-template-columns: 1fr; min-height: auto; }
+      .layout { min-height: auto; }
       .title-card h2 { font-size: 26px; }
       .group h3 { font-size: 24px; }
       .chips.rows-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
