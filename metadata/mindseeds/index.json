@@ -1,0 +1,28 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-09",
+  "series": "mindseeds",
+  "notes": {
+    "purposeZh": "小精灵系列的模块目录。与 metadata/metathinking/index.json 同结构、同 status 口径，因此 metadata/validate.js 可以用同一批 suite（S2 levelMap、S3 difficultyAxes）对撞两个系列，不必为小精灵另写校验逻辑。",
+    "purposeEn": "The MindSeeds module catalog. Same structure and same status vocabulary as metadata/metathinking/index.json, so metadata/validate.js can collide both series with the same suites (S2 levelMap, S3 difficultyAxes) instead of growing MindSeeds-specific validation logic.",
+    "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
+    "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded.",
+    "scopeZh": "只登记已经有 levelMap 与难度轴声明的小精灵模块。games/ 下另外 11 个游戏还没有各自的模块文件，它们在 metadata/game.json 里有目录条目，但不参与 S2/S3——其中 spatial-pattern-hunter 明确上报 gradeCode: null，正是因为它还没有这样一份 levelMap。",
+    "scopeEn": "Only MindSeeds modules that already declare a levelMap and difficulty axes are listed. The other 11 games under games/ have catalog entries in metadata/game.json but do not take part in S2/S3 — spatial-pattern-hunter reports gradeCode: null precisely because it has no levelMap like this one yet."
+  },
+  "modules": [
+    {
+      "id": "difference-scout",
+      "moduleType": "mindseeds",
+      "titleZh": "找不同侦探",
+      "titleEn": "Difference Scout",
+      "ageRange": { "min": 3, "max": 8 },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/difference-scout.json",
+      "tags": ["difference-scout", "mindseeds", "attention", "visual-search", "ai-readable"],
+      "status": "active",
+      "statusNoteZh": "四个等级 K1-G2 全部上线并上报雷达（gradeCode 非 null，是小精灵系列第一个）。内容无静态题库，由 generator.js 按等级现生成，逐项由 games/difference-scout/test.html 审计。仍缺：G3 以上（应当靠增加属性通道或引入变换，而不是继续加格子）、puzzle 以外的运行时。",
+      "statusNoteEn": "All four grades K1-G2 are shipped and reporting to the radar with a non-null gradeCode, the first MindSeeds module to do so. There is no static bank: generator.js builds content per grade and games/difference-scout/test.html audits it item by item. Still missing: anything above G2 (which should come from more attribute channels or transformations rather than more slots), and any runtime other than puzzle."
+    }
+  ]
+}

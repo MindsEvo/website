@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.1",
-  "updatedAt": "2026-09-04",
+  "version": "v0.2.2",
+  "updatedAt": "2026-09-09",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -255,8 +255,9 @@
       },
       "descZh": "在干扰项中持续寻找并确认目标，数量未知时也不放弃。",
       "descEn": "Keep locating and confirming targets among distractors, even when the count is unknown.",
-      "status": "planned",
-      "claimedBy": ["clio-find-it-workshop"]
+      "boundaryZh": "两个认领者分工不同，不是重复建设：find-it 在开放场景里找若干个目标（数量未知），difference-scout 在成对条带里找恰好一个（位置未知）。",
+      "boundaryEn": "The two claimants split the work rather than duplicating it: find-it searches an open scene for an unknown number of targets, while difference-scout searches paired strips for exactly one, at an unknown position.",
+      "claimedBy": ["difference-scout", "clio-find-it-workshop"]
     },
     "RG.LANGUAGE.SEMANTIC.RELATION": {
       "category": "LANGUAGE",

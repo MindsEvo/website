@@ -39,11 +39,22 @@
  *
  * v1.2.0 adds S7: the structure × task allowlist matrix (pattern's three-
  * dimension model). See suiteMatrix for why a matrix exists at all.
+ *
+ * v1.3.0 opens S2/S3 to a second series. MindSeeds modules that declare a
+ * levelMap and difficulty axes (metadata/mindseeds/*.json) are now collided the
+ * same way the metathinking modules are — `loadModules` takes the directory and
+ * the owning series as parameters instead of hard-coding "metathinking" and
+ * "learning". No MindSeeds-specific suite was added: suiteLevels and suiteAxes
+ * only ever touched mod.json.levelMap / mod.json.difficultyAxes / mod.source, so
+ * they were already series-agnostic. S4/S5/S7 are NOT run for MindSeeds —
+ * difference-scout has no typeTree, templates.json or task matrix, and inventing
+ * them to satisfy a suite is exactly the kind of status-lying this page exists
+ * to catch.
  */
 (function (global) {
   "use strict";
 
-  var VERSION = "1.2.0";
+  var VERSION = "1.3.0";
   var BASE = "../";
 
   // Mode vocabularies overlap but are NOT the same list:
@@ -1113,17 +1124,24 @@
     return String(id).toUpperCase().replace(/-/g, "_") + "_TYPE_OF";
   }
 
-  function loadModules(catalog, games) {
-    var mods = arr(catalog.modules).filter(function (m) {
+  /**
+   * Load one series' module files and pair each with its game's source text.
+   *
+   * `spec` names the two things that used to be hard-coded here:
+   *   dir     where the module json lives, e.g. "metadata/metathinking/"
+   *   series  which game.json series owns these modules — a module id equals the
+   *           `module` field of its game within that series.
+   */
+  function loadModules(catalog, games, spec) {
+    var mods = arr(catalog && catalog.modules).filter(function (m) {
       return m.status !== "retired";
     });
     return Promise.all(mods.map(function (m) {
-      // A metathinking module id equals the `module` field of its learning game.
       var game = games.filter(function (g) {
-        return g.series === "learning" && g.module === m.id;
+        return g.series === spec.series && g.module === m.id;
       })[0];
       var path = game && game.path;
-      return fetchJson("metadata/metathinking/" + m.id + ".json").then(function (json) {
+      return fetchJson(spec.dir + m.id + ".json").then(function (json) {
         var jobs = [
           path ? fetchTextOrNull(path + "game.js") : Promise.resolve(null),
           path ? fetchTextOrNull(path + "templates.json") : Promise.resolve(null)
@@ -1160,11 +1178,12 @@
       fetchJson("metadata/lesson.json"),
       fetchJson("metadata/video.json"),
       fetchJson("metadata/rootgene.json"),
-      fetchJson("metadata/metathinking/index.json")
+      fetchJson("metadata/metathinking/index.json"),
+      fetchJson("metadata/mindseeds/index.json")
     ]).then(function (out) {
       var data = {
         game: out[0], lesson: out[1], video: out[2],
-        rootgene: out[3], catalog: out[4],
+        rootgene: out[3], catalog: out[4], seedCatalog: out[5],
         code: {}, pathOk: {}
       };
       var games = arr(data.game.games);
@@ -1184,8 +1203,16 @@
       });
 
       return Promise.all(jobs)
-        .then(function () { return loadModules(data.catalog, games); })
-        .then(function (mods) {
+        .then(function () {
+          return Promise.all([
+            loadModules(data.catalog, games,
+              { dir: "metadata/metathinking/", series: "learning" }),
+            loadModules(data.seedCatalog, games,
+              { dir: "metadata/mindseeds/", series: "mindseeds" })
+          ]);
+        })
+        .then(function (loaded) {
+          var mods = loaded[0], seedMods = loaded[1];
           suiteGenes(data);
           mods.forEach(function (mod) {
             suiteLevels(data, mod);
@@ -1193,6 +1220,15 @@
             suiteTypes(data, mod);
             suiteModes(data, mod);
             suiteMatrix(data, mod);
+          });
+          // MindSeeds modules take S2 + S3 only. They carry a levelMap and
+          // difficulty axes, which is what earns them a place on the radar's
+          // depth axis; they carry no typeTree / templates.json / task matrix,
+          // and declaring empty ones just to light up S4/S5/S7 would be the
+          // status-lying §1.7 fixed rather than an honest gap.
+          seedMods.forEach(function (mod) {
+            suiteLevels(data, mod);
+            suiteAxes(data, mod);
           });
           suiteRefs(data);
           renderSummary();

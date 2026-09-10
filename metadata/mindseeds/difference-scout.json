@@ -1,0 +1,174 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-09",
+  "moduleType": "mindseeds",
+  "id": "difference-scout",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/difference-scout.json",
+  "title": { "zh": "找不同侦探", "en": "Difference Scout" },
+  "description": {
+    "zh": "在两列并排的图案中找出唯一不同的那一格。训练的是持续视觉搜索：在干扰项之间一格一格地做同/不同判断，直到锁定目标，而不是靠一眼的整体印象。难度由三件事决定——要扫多少格、不同之处有多细、以及需要同时关注几个属性通道。",
+    "en": "Find the one slot that differs between two side-by-side strips. What it trains is sustained visual search: working slot by slot through distractors, making a same/different judgement at each, until the target is confirmed — not a single gestalt glance. Difficulty comes from three things: how many slots must be scanned, how fine the difference is, and how many attribute channels have to be watched at once."
+  },
+  "designModel": {
+    "zh": "两个维度：干扰项相似度（跨类 → 同类 → 声明的近似对）× 属性通道数（单通道图案 → 双通道图案与大小）。扫描长度跟着等级走，是难度的第三个杠杆但不是独立维度——它只放大前两者。",
+    "en": "Two dimensions: distractor similarity (cross-family, then same-family, then a declared near-pair) times attribute channels (icon only, then icon and size). Scan length rises with grade as a third lever, but it is not an independent dimension — it only amplifies the other two."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "从 3-4 岁的一眼可辨，到 7 岁的双通道细微差异。不覆盖 G3 以上：再往上应当靠增加通道数与引入变换，而不是继续加格子。",
+    "noteEn": "From unmistakable differences at ages 3-4 to two-channel subtleties at 7. G3 and above are deliberately absent: going deeper should add channels or transformations, not more slots."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列（高趣味、快反馈、可反复训练），与学习系列的比较单元共用 RG.LOGIC.COMPARISON.BASIC，但分工明确：比较单元教「在哪个维度上比、比出什么关系」（大小、多少、顺序、等同），题量少而讲解重；找不同侦探不教维度，它训练在已知维度上把判断重复做几十次而不走神，题量大而讲解轻。同理它与 Clio 的 find-it-workshop 共用 RG.ATTENTION.SEARCH.VISUAL：find-it 是开放场景里找若干个目标（数量未知），本模块是成对条带里找恰好一个（位置未知）。",
+    "policyEn": "This module belongs to MindSeeds (high engagement, fast feedback, made to be replayed). It shares RG.LOGIC.COMPARISON.BASIC with the Learning series' comparison unit, but the split is clear: comparison teaches which dimension to compare on and what relation results (more, less, order, equality) — few items, heavy explanation. Difference Scout teaches no dimension; it trains repeating that judgement dozens of times without drifting — many items, light explanation. Likewise it shares RG.ATTENTION.SEARCH.VISUAL with Clio's find-it-workshop: find-it searches an open scene for an unknown number of targets, while this module searches paired strips for exactly one, at an unknown position."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 都上报两个基因，不按等级或题目变化：RG.ATTENTION.SEARCH.VISUAL（在干扰项中持续搜索并确认目标）与 RG.LOGIC.COMPARISON.BASIC（这个搜索是由一串成对的同/不同判断组成的）。只报其中一个都是半个事实——去掉注意基因，记录就读作「做了几十次比较」而丢掉了持续性；去掉比较基因，就读作「找到了东西」而丢掉了判断依据。",
+    "ruleEn": "Every attempt reports both genes, regardless of grade or item: RG.ATTENTION.SEARCH.VISUAL (sustained search for and confirmation of a target among distractors) and RG.LOGIC.COMPARISON.BASIC (that search is made of a run of paired same/different judgements). Reporting only one would be a half-truth either way — drop the attention gene and the record reads as a few dozen comparisons with the sustained part lost; drop the comparison gene and it reads as 'found a thing' with the basis of the judgement lost.",
+    "geneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"]
+  },
+  "rootGeneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"],
+  "rootGeneScopeNote": {
+    "zh": "本模块的课程范围与当前上报集合恰好相同（两个基因，每次都报），所以这份清单与 metadata/game.json 里 difference-scout 条目的 rootGeneIds 应当逐项一致，由校验器 S1 与代码对撞。",
+    "en": "This module's curriculum scope and what it actually reports are the same set (two genes, both every time), so this list should match the difference-scout entry's rootGeneIds in metadata/game.json item for item, which S1 collides against the code."
+  },
+  "difficultyAxes": [
+    {
+      "id": "scan_load",
+      "zh": "扫描长度",
+      "en": "Scan Load",
+      "progression": ["short", "medium", "long", "extended"],
+      "noteZh": "一列有几格：short 4、medium 5、long 6、extended 8。取值是词而不是数字，因为它描述的是注意力负荷，不是可以做算术的量；具体格数由 data.js 的 gradeConfig.length 给出。",
+      "noteEn": "Slots per strip: short 4, medium 5, long 6, extended 8. The values are words rather than numbers because the axis describes attentional load, not a quantity to do arithmetic on; the slot counts themselves live in gradeConfig.length in data.js."
+    },
+    {
+      "id": "distractor_similarity",
+      "zh": "干扰项相似度",
+      "en": "Distractor Similarity",
+      "progression": ["cross-family", "same-family", "near-pair"],
+      "noteZh": "不同的那一格与原图案有多像：cross-family 来自另一个图案族（一眼可辨）；same-family 来自同族的另一个成员，但明确排除声明过的近似对；near-pair 就是 data.js 里为该图案声明的近似对伙伴。「声明」是这根轴可核对的原因——近似不是抽样碰巧看起来像，而是列在 nearPairs 表里的事实。",
+      "noteEn": "How close the differing slot is to the original: cross-family draws from another icon family (unmistakable); same-family draws another member of the same family while explicitly excluding any declared look-alike; near-pair is exactly the partner declared for that icon in data.js. Being declared is what makes this axis checkable — nearness is an entry in the nearPairs table, not a draw that happened to look subtle."
+    },
+    {
+      "id": "attribute_count",
+      "zh": "属性通道数",
+      "en": "Attribute Count",
+      "progression": ["single", "dual"],
+      "noteZh": "需要同时关注几个通道：single 只有图案会变，大小恒定；dual 图案与大小都在变，因此不同之处可能在任一通道里。这是 G1 到 G2 的真实台阶——不是「同样的题变长」。",
+      "noteEn": "How many channels must be watched at once: single means only the icon varies and size is constant; dual means both vary, so the difference may live in either channel. This is the real step from G1 to G2 — not 'the same item, longer'."
+    },
+    {
+      "id": "option_span",
+      "zh": "候选范围",
+      "en": "Option Span",
+      "progression": ["all-slots", "subset"],
+      "noteZh": "all-slots 每一格都是候选，孩子只需指出看到的那格；subset 只给 4 个候选序号，因此还要把找到的位置与序号对上。K1 用 all-slots 是因为 4 格时两者相同，没必要额外加一层映射。",
+      "noteEn": "all-slots offers every slot as a candidate, so the child only has to point at what they saw; subset offers four slot numbers, so the position found must also be matched to its label. K1 uses all-slots because at 4 slots the two coincide, and adding a mapping step there would buy nothing."
+    },
+    {
+      "id": "mismatch_channel",
+      "zh": "差异通道",
+      "en": "Mismatch Channel",
+      "progression": ["identity", "size"],
+      "noteZh": "这一题的不同究竟落在哪个通道：identity 换了图案，size 图案不变而大小差一档（永远只差一档——差两档就退化成 identity 量级的差异，会让 G2 比 G1 更容易）。这是题目的属性而不是等级的属性，所以 base 表四行都写 identity，由代码按抽到的题精调；batch 上报时给出主导通道加去重列表，因为一次 G2 的 8 题会同时含两种。",
+      "noteEn": "Which channel this item's difference actually lives in: identity swaps the icon; size keeps the icon and moves it one step (always exactly one — two steps would be an identity-scale difference and would make G2 easier than G1). This is a property of the item, not of the grade, so all four base rows say identity and the code refines it per drawn item; a batch reports the dominant channel plus the de-duplicated list, because a G2 run of 8 contains both."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，通过线 75%（6/8）。代码侧对应 game.js 的 SESSION_SIZE 与 passScore。没有静态题库：每次进入单元由 generator.js 现生成 8 题，玩完立刻换一批（game.js 的 refillUnit），因为可反复训练是小精灵系列的定位，固定题库两次就被记住了。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). The code-side counterparts are SESSION_SIZE and passScore in game.js. There is no static bank: generator.js builds eight fresh items on entering a unit and swaps in a new set as soon as the run ends (refillUnit in game.js), because repeatable practice is what defines MindSeeds and a fixed bank is memorised in two sittings."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "在 4 格条带里找出唯一不同的一格，不同之处来自另一个图案族，一眼可辨。",
+      "objectiveEn": "Find the single differing slot in a 4-slot strip, where the difference comes from another icon family and is unmistakable.",
+      "axisValues": {
+        "scan_load": "short",
+        "distractor_similarity": "cross-family",
+        "attribute_count": "single",
+        "option_span": "all-slots"
+      },
+      "status": "implemented",
+      "implementedBy": ["difference-scout"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "在 5 格同族条带里逐格对比找出不同的一格，并把它的位置与给出的 4 个序号对上。",
+      "objectiveEn": "Work slot by slot through a 5-slot single-family strip to find the difference, then match its position to one of four offered slot numbers.",
+      "axisValues": {
+        "scan_load": "medium",
+        "distractor_similarity": "same-family",
+        "attribute_count": "single",
+        "option_span": "subset"
+      },
+      "status": "implemented",
+      "implementedBy": ["difference-scout"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "在 6 格条带里分辨一对声明过的近似图案，靠细节而非整体印象定位差异。",
+      "objectiveEn": "Tell apart a declared look-alike pair inside a 6-slot strip, locating the difference by detail rather than overall impression.",
+      "axisValues": {
+        "scan_load": "long",
+        "distractor_similarity": "near-pair",
+        "attribute_count": "single",
+        "option_span": "subset"
+      },
+      "status": "implemented",
+      "implementedBy": ["difference-scout"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "在 8 格条带里同时关注图案与大小两个通道：条带里含一对近似图案作干扰，而真正的差异可能是图案，也可能是大小差一档。",
+      "objectiveEn": "Watch both the icon and size channels across an 8-slot strip: the strip contains a look-alike pair as a distractor, while the real difference may be the icon or a one-step size change.",
+      "axisValues": {
+        "scan_load": "extended",
+        "distractor_similarity": "near-pair",
+        "attribute_count": "dual",
+        "option_span": "subset"
+      },
+      "status": "implemented",
+      "implementedBy": ["difference-scout"],
+      "implementedModes": ["puzzle"]
+    }
+  ],
+  "contentVocabulary": {
+    "families": 6,
+    "iconsPerFamily": 10,
+    "nearPairsPerFamily": 3,
+    "noteZh": "六个互不相交的图案族，每族 10 个图案与 3 对声明的近似对。互不相交是有约束力的：cross-family 的定义就是「替换项来自另一族」。每族至少要 G2 的格数 + 1 个图案，因为 identity 通道的近似对伙伴必须留在条带之外——它若同时出现在条带里，右列就会出现两个相同图案，等于把答案指出来。",
+    "noteEn": "Six mutually disjoint icon families, each with 10 icons and 3 declared near-pairs. Disjointness is load-bearing: cross-family is defined as 'the replacement comes from another family'. Each family needs at least G2's slot count plus one icon, because on the identity channel the near-pair partner has to stay out of the strip — if it also appeared inside it, the right strip would show the same icon twice and point at the answer."
+  },
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "mismatchChannel", "similarity", "families", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "meanTimePerItem 对本模块比准确率更有诊断价值：持续搜索的失败模式通常是「越往后越慢」或「放弃后乱点」，而不是判断错。activityRuntime 恒为 puzzle，score/total 的单位是题数。",
+    "noteEn": "meanTimePerItem is more diagnostic here than accuracy: sustained search usually fails as slowing down towards the end, or as guessing after giving up, rather than as a wrong judgement. activityRuntime is always puzzle, so score/total are counted in items."
+  },
+  "aiQueryHints": {
+    "supportedFilters": ["age", "levelId", "gradeCode", "difficultyAxis", "status"],
+    "exampleQueries": [
+      "3岁能玩哪个找不同等级？",
+      "哪些练习训练持续注意力而不是知识点？",
+      "找不同侦探和 Clio 的 find-it 有什么区别？"
+    ]
+  },
+  "tags": ["difference-scout", "mindseeds", "attention", "visual-search", "ai-readable"]
+}
