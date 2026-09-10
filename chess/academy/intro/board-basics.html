@@ -415,6 +415,17 @@
     .square.hl-diag-light-overlay::after { background: rgba(34, 139, 34, 0.75); opacity: 1; }
     .square.hl-coord-overlay::after   { background: rgba(245, 158, 11, 0.65); opacity: 1; }
 
+    /* first point picked for a 横/竖/斜 two-click line practice, waiting on the second click */
+    .square.practice-point::after {
+      background: rgba(37, 99, 235, 0.55);
+      opacity: 1;
+    }
+
+    .square.practice-point {
+      z-index: 3;
+      box-shadow: inset 0 0 0 3px #2563eb;
+    }
+
     .coord-label {
       position: absolute;
       top: 50%;
@@ -753,14 +764,22 @@
       var currentPracticeTarget = null;
       var currentPracticeButton = null;
       var currentPracticeCoord = null;
+      var linePracticeFirst = null;
+      var LINE_TARGETS = { ranks: true, files: true, 'dark-diagonals': true, 'light-diagonals': true };
+      var LINE_OVERLAY_CLASS = {
+        ranks: 'hl-rank-overlay',
+        files: 'hl-file-overlay',
+        'dark-diagonals': 'hl-diag-dark-overlay',
+        'light-diagonals': 'hl-diag-light-overlay'
+      };
       var practiceArmed = false;
 
       var currentQuizKey = null;
 
       var lessonVoices = {
         explanation: '让我们来认识熟悉一下棋盘',
-        student: '致学生：让我们一起探索棋盘的秘密，发现这些有趣的区域',
-        parent: '致家长：引导孩子了解棋盘的各个区域，增强空间概念'
+        student: '致学生：让我们一起探索棋盘的秘密，多做一下坐标和斜格的练习',
+        parent: '致家长：引导孩子了解棋盘和坐标的概念'
       };
 
       var observeConfig = {
@@ -1193,6 +1212,7 @@
         currentPracticeButton = btn;
         practiceArmed = true;
         if (btn) btn.classList.add('practice-current');
+        resetLinePracticePoint();
 
         if (target === 'coordinates') {
           currentPracticeCoord = { row: Math.floor(Math.random() * 8), col: Math.floor(Math.random() * 8) };
@@ -1229,6 +1249,92 @@
         }, 900);
       }
 
+      function resetLinePracticePoint() {
+        if (linePracticeFirst && linePracticeFirst.square) {
+          linePracticeFirst.square.classList.remove('practice-point');
+        }
+        linePracticeFirst = null;
+      }
+
+      function lineSquaresBetween(target, r1, c1, r2, c2) {
+        if (target === 'ranks') {
+          if (r1 !== r2 || c1 === c2) return null;
+          var lo = Math.min(c1, c2), hi = Math.max(c1, c2), out = [];
+          for (var c = lo; c <= hi; c++) out.push([r1, c]);
+          return out;
+        }
+        if (target === 'files') {
+          if (c1 !== c2 || r1 === r2) return null;
+          var lo2 = Math.min(r1, r2), hi2 = Math.max(r1, r2), out2 = [];
+          for (var r = lo2; r <= hi2; r++) out2.push([r, c1]);
+          return out2;
+        }
+        // dark-diagonals / light-diagonals: must move by equal steps on both axes
+        var dr = r2 - r1, dc = c2 - c1;
+        if (dr === 0 || Math.abs(dr) !== Math.abs(dc)) return null;
+        var stepR = dr > 0 ? 1 : -1, stepC = dc > 0 ? 1 : -1, steps = Math.abs(dr), out3 = [];
+        for (var i = 0; i <= steps; i++) out3.push([r1 + i * stepR, c1 + i * stepC]);
+        return out3;
+      }
+
+      function handleLinePracticeClick(target, row, col, square, isLight, isDark) {
+        var isDiagonal = target === 'dark-diagonals' || target === 'light-diagonals';
+        var colorOk = target === 'dark-diagonals' ? isDark : target === 'light-diagonals' ? isLight : true;
+
+        if (!linePracticeFirst) {
+          if (isDiagonal && !colorOk) {
+            practiceButtons.forEach(function (b) { b.classList.remove('practice-correct', 'practice-wrong', 'practice-current'); });
+            if (currentPracticeButton) currentPracticeButton.classList.add('practice-wrong');
+            showPracticeMark(square, false);
+            if (practiceStatus) practiceStatus.textContent = '❌ 回答错误：' + practiceConfig[target].prompt;
+            speak('回答错误，请再试一次');
+            return;
+          }
+          linePracticeFirst = { row: row, col: col, square: square };
+          square.classList.add('practice-point');
+          if (practiceStatus) practiceStatus.textContent = '操作练习：已选第一个点，请再点击同一条线上的第二个点';
+          speak('请再点击这条线上的第二个点');
+          return;
+        }
+
+        var first = linePracticeFirst;
+        resetLinePracticePoint();
+
+        var line = (first.row === row && first.col === col) ? null : lineSquaresBetween(target, first.row, first.col, row, col);
+        var ok = !!line && (!isDiagonal || colorOk);
+
+        practiceButtons.forEach(function (b) { b.classList.remove('practice-correct', 'practice-wrong', 'practice-current'); });
+        if (currentPracticeButton) {
+          currentPracticeButton.classList.add(ok ? 'practice-correct' : 'practice-wrong');
+        }
+        showPracticeMark(square, ok);
+
+        if (ok) {
+          var cls = LINE_OVERLAY_CLASS[target];
+          line.forEach(function (rc) {
+            var sq = getSquare(rc[0], rc[1]);
+            if (sq) sq.classList.add('practice-blink', cls);
+          });
+          window.setTimeout(function () {
+            line.forEach(function (rc) {
+              var sq = getSquare(rc[0], rc[1]);
+              if (sq) sq.classList.remove('practice-blink', cls);
+            });
+          }, 2000);
+          if (practiceStatus) {
+            practiceStatus.textContent = '✅ 回答正确：' + currentPracticeButton.textContent;
+          }
+          speak('回答正确');
+          practiceArmed = false;
+          return;
+        }
+
+        if (practiceStatus) {
+          practiceStatus.textContent = '❌ 回答错误：' + practiceConfig[target].prompt;
+        }
+        speak('回答错误，请再试一次');
+      }
+
       function checkPracticeBySquare(square) {
         if (!practiceArmed || !currentPracticeTarget || !square) {
           return;
@@ -1262,13 +1368,14 @@
           return;
         }
 
+        if (LINE_TARGETS[target]) {
+          handleLinePracticeClick(target, row, col, square, isLight, isDark);
+          return;
+        }
+
         var ok = false;
         if (target === 'light-squares') ok = isLight;
         else if (target === 'dark-squares') ok = isDark;
-        else if (target === 'ranks') ok = true;
-        else if (target === 'files') ok = true;
-        else if (target === 'dark-diagonals') ok = isDark;
-        else if (target === 'light-diagonals') ok = isLight;
         else if (target === 'board-border') ok = false;
 
         practiceButtons.forEach(function (b) { b.classList.remove('practice-correct', 'practice-wrong', 'practice-current'); });

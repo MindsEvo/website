@@ -107,6 +107,7 @@
     }
 
     .square {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -423,6 +424,109 @@
 
     .hl-piece { filter: drop-shadow(0 0 6px rgba(30, 64, 175, 0.85)); }
 
+    /* 3D-ish halo for 动态观察: a radial glow behind the piece instead of a flat blur ring */
+    .piece-node { position: relative; }
+    .piece-svg { position: relative; }
+
+    .piece-node.hl-value::before {
+      content: '';
+      position: absolute;
+      inset: var(--hlv-inset, -30%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 36% 30%, rgba(255, 255, 255, 0.9) 0%, var(--hlv-color, rgba(37, 99, 235, 0.85)) 40%, transparent 72%);
+      filter: blur(1.5px);
+      pointer-events: none;
+    }
+
+    .value-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      transform: scale(0.4);
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      line-height: 1;
+      padding: 4px 7px;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+      z-index: 8;
+      pointer-events: none;
+      white-space: nowrap;
+      animation: valueBadgePop 3.2s ease-out forwards;
+    }
+
+    .value-badge.king-badge {
+      background: linear-gradient(135deg, #facc15, #ca8a04);
+      box-shadow: 0 4px 12px rgba(202, 138, 4, 0.45);
+      font-size: 15px;
+      padding: 3px 6px;
+    }
+
+    @keyframes valueBadgePop {
+      0%   { opacity: 0; transform: scale(0.4); }
+      12%  { opacity: 1; transform: scale(1.15); }
+      22%  { transform: scale(1); }
+      85%  { opacity: 1; }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    /* knight demo: one out-and-back hop, dx/dy set inline per jump */
+    @keyframes knightHop {
+      0%   { transform: translate(0, 0) scale(1); }
+      22%  { transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5 - 30px)) scale(1.1); }
+      42%, 68% { transform: translate(var(--dx), var(--dy)) scale(1); }
+      88%  { transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5 - 30px)) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    .piece-node.knight-hop {
+      z-index: 9;
+      animation: knightHop 2.2s ease-in-out 1;
+    }
+
+    /* practice feedback: a check/cross mark on the clicked square, no answer-revealing highlight */
+    .practice-mark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.3);
+      width: 55%;
+      aspect-ratio: 1;
+      min-width: 22px;
+      min-height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.15em;
+      line-height: 1;
+      color: #fff;
+      pointer-events: none;
+      z-index: 10;
+      animation: practiceMarkPop 0.9s ease-out forwards;
+    }
+
+    .practice-mark-correct {
+      background: rgba(34, 197, 94, 0.94);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28);
+    }
+
+    .practice-mark-wrong {
+      background: rgba(220, 38, 38, 0.94);
+      box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.28);
+    }
+
+    @keyframes practiceMarkPop {
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+      18%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+      32%  { transform: translate(-50%, -50%) scale(1); }
+      78%  { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+
     .tips-modal {
       position: fixed;
       inset: 0;
@@ -605,16 +709,16 @@
           <div class="group">
             <h3>问答练习</h3>
             <div class="chips rows-10" id="quizButtons">
-              <button class="chip c-blue" data-quiz="kq-count">王和后数量</button>
+              <button class="chip c-blue" data-quiz="kq-count">王后数量</button>
               <button class="chip c-blue" data-quiz="rnb-count">车马象数量</button>
-              <button class="chip c-blue" data-quiz="pawn-count">兵的数量</button>
+              <button class="chip c-blue" data-quiz="pawn-count">兵数量</button>
               <button class="chip c-blue" data-quiz="single-total">单方总数</button>
               <button class="chip c-blue" data-quiz="all-total">全部总数</button>
-              <button class="chip c-blue" data-quiz="queen-value">后的价值</button>
-              <button class="chip c-blue" data-quiz="rook-value">车的价值</button>
-              <button class="chip c-blue" data-quiz="bn-value">象马价值</button>
-              <button class="chip c-blue" data-quiz="pawn-value">兵的价值</button>
-              <button class="chip c-blue" data-quiz="king-value">王的价值</button>
+              <button class="chip c-blue" data-quiz="queen-value">后</button>
+              <button class="chip c-blue" data-quiz="rook-value">车</button>
+              <button class="chip c-blue" data-quiz="bn-value">象马</button>
+              <button class="chip c-blue" data-quiz="pawn-value">兵</button>
+              <button class="chip c-blue" data-quiz="king-value">王</button>
             </div>
             <div class="status-box" id="quizStatus">问答练习：请选择上方一个问题开始作答。</div>
             <div class="quiz-options" id="quizOptions"></div>
@@ -708,16 +812,26 @@
       var lessonVoices = {
         explanation: '现在我们来认识国际象棋的棋子。',
         student: '致学生：我们来认识这些有趣的棋子，每个棋子都有自己的名字和作用',
-        parent: '致家长：帮助孩子记住各种棋子的名称，可以通过游戏的方式学习'
+        parent: '致家长：帮助孩子记住各种棋子的名称和价值'
       };
 
       var pieceMeta = {
-        k: { label: '王', voice: '请观察王，它是最重要的棋子，需要重点保护。' },
-        q: { label: '后', voice: '请观察后，它是棋盘上威力最大的棋子。' },
-        b: { label: '象', voice: '请观察象，它沿斜线移动。' },
-        n: { label: '马', voice: '请观察马，它的走法像日字。' },
-        r: { label: '车', voice: '请观察车，它沿横线和竖线移动。' },
-        p: { label: '兵', voice: '请观察兵，它是数量最多的棋子。' }
+        k: { label: '王', voice: '王是整盘棋的心脏！一旦被将死，游戏马上结束，你就输了。所以其他棋子都是保护王的卫士，王是无价之宝，没有分数可以衡量它。' },
+        q: { label: '后', voice: '后是棋盘上最强的超级英雄！她的价值是9到10分，比车还厉害，比象和马厉害好多。' },
+        b: { label: '象', voice: '象是走斜线的忍者，价值3分，速度快，但只能在同一种颜色的格子里穿梭。' },
+        n: { label: '马', voice: '马是调皮的小马驹，价值3分，走法很特别，我们以后再学。' },
+        r: { label: '车', voice: '车是强壮的战车，直冲直撞，价值5分，力量仅次于后。' },
+        p: { label: '兵', voice: '兵是最勇敢的小兵，价值1分，单个最弱，但人数最多，每方有8个，将来还有机会升级变成超级英雄！' }
+      };
+
+      // badge text + halo strength for the 动态观察 value demo (A: pop-up badge, C: 3D-ish halo tied to value)
+      var pieceValueInfo = {
+        k: { badge: '👑 无价', badgeClass: 'king-badge', glowColor: 'rgba(250, 204, 21, 0.95)', glowInset: '-42%' },
+        q: { badge: '9~10分', glowColor: 'rgba(37, 99, 235, 0.95)', glowInset: '-40%' },
+        r: { badge: '5分', glowColor: 'rgba(37, 99, 235, 0.8)', glowInset: '-32%' },
+        b: { badge: '3分', glowColor: 'rgba(37, 99, 235, 0.65)', glowInset: '-27%' },
+        n: { badge: '3分', glowColor: 'rgba(37, 99, 235, 0.65)', glowInset: '-27%' },
+        p: { badge: '1分', glowColor: 'rgba(37, 99, 235, 0.45)', glowInset: '-20%' }
       };
 
       var practicePrompts = {
@@ -730,28 +844,37 @@
       };
 
       var quizBank = {
-        'kq-count': { ask: '白方的王和后各有几个？', options: ['各1个', '王1个后2个', '各2个'], correct: '各1个', explain: '白方王和后各有1个。' },
-        'rnb-count': { ask: '白方的车、马、象各有几个？', options: ['各2个', '各1个', '各3个'], correct: '各2个', explain: '白方车、马、象各有2个。' },
-        'pawn-count': { ask: '国际象棋中白方和黑方各有几个兵？', options: ['各6个', '各7个', '各8个'], correct: '各8个', explain: '白方和黑方各有8个兵。' },
-        'single-total': { ask: '国际象棋中白黑方各有多少个棋子？', options: ['14个', '15个', '16个'], correct: '16个', explain: '单方共有16个棋子。' },
-        'all-total': { ask: '国际象棋中白方和黑方总共有多少个棋子？', options: ['32个', '30个', '34个'], correct: '32个', explain: '双方总共有32个棋子。' },
-        'queen-value': { ask: '后的价值是多少分？', options: ['5分', '10分', '9分'], correct: '9分', explain: '后通常记作9分。' },
-        'rook-value': { ask: '车的价值是多少分？', options: ['5分', '3分', '9分'], correct: '5分', explain: '车通常记作5分。' },
+        'kq-count': { ask: '双方王和后各有几个？', options: ['各1个', '王1个后2个', '各2个'], correct: '各1个', explain: '白方王和后各有1个。' },
+        'rnb-count': { ask: '双方车、马、象各有几个？', options: ['各2个', '各1个', '各3个'], correct: '各2个', explain: '白方车、马、象各有2个。' },
+        'pawn-count': { ask: '白方和黑方各有几个兵？', options: ['各6个', '各7个', '各8个'], correct: '各8个', explain: '白方和黑方各有8个兵。' },
+        'single-total': { ask: '白黑方各有多少个棋子？', options: ['14个', '15个', '16个'], correct: '16个', explain: '单方共有16个棋子。' },
+        'all-total': { ask: '白方和黑方总共有多少个棋子？', options: ['32个', '30个', '34个'], correct: '32个', explain: '双方总共有32个棋子。' },
+        'queen-value': { ask: '后价值是多少分？', options: ['5分', '10分', '9分'], correct: '9分', explain: '后通常记作9分。' },
+        'rook-value': { ask: '车价值是多少分？', options: ['5分', '3分', '9分'], correct: '5分', explain: '车通常记作5分。' },
         'bn-value': { ask: '象和马各是多少分？', options: ['各1分', '各5分', '各3分'], correct: '各3分', explain: '象和马通常各记3分。' },
-        'pawn-value': { ask: '兵的价值是多少分？', options: ['0.5分', '1分', '2分'], correct: '1分', explain: '兵通常记作1分。' },
-        'king-value': { ask: '是多少分？', options: ['9分', '无限大，不能用分数衡量，丢掉王对弈就结束了', '10分'], correct: '无限大，不能用分数衡量，丢掉王对弈就结束了', explain: '王的价值无法用分数衡量，失王即败。' }
+        'pawn-value': { ask: '兵价值是多少分？', options: ['0.5分', '1分', '2分'], correct: '1分', explain: '兵通常记作1分。' },
+        'king-value': { ask: '王是多少分？', options: ['9分', '无限大，不能用分数衡量，丢掉王对弈就结束了', '10分'], correct: '无限大，不能用分数衡量，丢掉王对弈就结束了', explain: '王的价值无法用分数衡量，失王即败。' }
       };
 
-      function speak(text) {
-        if (!window.speechSynthesis || !text) return;
+      function speak(text, onEnd) {
+        if (!window.speechSynthesis || !text) {
+          if (onEnd) onEnd();
+          return;
+        }
         try {
           window.speechSynthesis.cancel();
           var ut = new SpeechSynthesisUtterance(text);
           ut.lang = 'zh-CN';
           ut.rate = 0.92;
           ut.pitch = 1;
+          if (onEnd) {
+            ut.onend = onEnd;
+            ut.onerror = onEnd;
+          }
           window.speechSynthesis.speak(ut);
-        } catch {}
+        } catch {
+          if (onEnd) onEnd();
+        }
       }
 
       function loadDisplaySettings() {
@@ -806,8 +929,12 @@
       function clearByScope(scope) {
         var blinkClass = scope + '-blink';
         document.querySelectorAll('.' + blinkClass).forEach(function (el) {
-          el.classList.remove(blinkClass, 'hl-piece');
+          el.classList.remove(blinkClass, 'hl-piece', 'hl-value');
         });
+        if (scope === 'observe') {
+          document.querySelectorAll('.value-badge').forEach(function (el) { el.remove(); });
+          stopPawnFileTour();
+        }
         if (scope === 'observe' && observeTimer) {
           window.clearTimeout(observeTimer);
           observeTimer = null;
@@ -852,12 +979,119 @@
         scheduleStop(scope);
       }
 
+      function showValueBadge(kind) {
+        var info = pieceValueInfo[kind];
+        if (!info) return;
+        document.querySelectorAll('.piece-node.kind-' + kind).forEach(function (node) {
+          var square = node.closest('.square');
+          if (!square) return;
+          var badge = document.createElement('span');
+          badge.className = 'value-badge' + (info.badgeClass ? ' ' + info.badgeClass : '');
+          badge.textContent = info.badge;
+          square.appendChild(badge);
+        });
+      }
+
+      function jumpKnightRoundTrip(fromRow, fromCol, toRow, toCol) {
+        var fromSq = boardEl.querySelector('.square[data-row="' + fromRow + '"][data-col="' + fromCol + '"]');
+        var toSq = boardEl.querySelector('.square[data-row="' + toRow + '"][data-col="' + toCol + '"]');
+        var node = fromSq && fromSq.querySelector('.piece-node.kind-n');
+        if (!node || !toSq) return;
+        var r1 = fromSq.getBoundingClientRect();
+        var r2 = toSq.getBoundingClientRect();
+        node.style.setProperty('--dx', (r2.left - r1.left) + 'px');
+        node.style.setProperty('--dy', (r2.top - r1.top) + 'px');
+        node.classList.remove('knight-hop');
+        void node.offsetWidth; // restart the animation if it's re-triggered mid-flight
+        node.classList.add('knight-hop');
+        node.addEventListener('animationend', function handler() {
+          node.classList.remove('knight-hop');
+          node.removeEventListener('animationend', handler);
+        });
+      }
+
+      // 兵根据所在文件作用不同：车前/马前/象前/中间兵，依次高亮并语音介绍
+      var pawnFileGroups = [
+        { cols: [0, 7], voice: '车前面的兵负责守护侧翼。' },
+        { cols: [1, 6], voice: '马前面的兵能帮马站得更稳。' },
+        { cols: [2, 5], voice: '象前面的兵能控制斜线方向。' },
+        { cols: [3, 4], voice: '中间的兵最重要！它们控制棋盘中心。' }
+      ];
+
+      var pawnTourToken = 0;
+      var pawnTourTimer = null;
+      var pawnTourNodes = [];
+
+      function stopPawnFileTour() {
+        pawnTourToken++;
+        if (pawnTourTimer) {
+          window.clearTimeout(pawnTourTimer);
+          pawnTourTimer = null;
+        }
+        pawnTourNodes.forEach(function (el) { el.classList.remove('observe-blink', 'hl-value'); });
+        pawnTourNodes = [];
+      }
+
+      function highlightPawnFiles(cols) {
+        var nodes = [];
+        cols.forEach(function (col) {
+          [1, 6].forEach(function (row) {
+            var sq = boardEl.querySelector('.square[data-row="' + row + '"][data-col="' + col + '"]');
+            var node = sq && sq.querySelector('.piece-node.kind-p');
+            if (node) nodes.push(node);
+          });
+        });
+        var info = pieceValueInfo.p;
+        nodes.forEach(function (el) {
+          el.style.setProperty('--hlv-color', info.glowColor);
+          el.style.setProperty('--hlv-inset', info.glowInset);
+          el.classList.add('observe-blink', 'hl-value');
+        });
+        return nodes;
+      }
+
+      function runPawnFileTour() {
+        var token = ++pawnTourToken;
+        var idx = 0;
+        function step() {
+          if (token !== pawnTourToken) return;
+          pawnTourNodes.forEach(function (el) { el.classList.remove('observe-blink', 'hl-value'); });
+          pawnTourNodes = [];
+          if (idx >= pawnFileGroups.length) return;
+          var group = pawnFileGroups[idx++];
+          pawnTourNodes = highlightPawnFiles(group.cols);
+          speak(group.voice, function () {
+            if (token !== pawnTourToken) return;
+            pawnTourTimer = window.setTimeout(step, 200);
+          });
+        }
+        step();
+      }
+
       function runObserve(kind) {
         observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
         var btn = document.querySelector('[data-observe-piece="' + kind + '"]');
         if (btn) btn.classList.add('observe-active');
         highlightPieceType('observe', kind);
-        if (pieceMeta[kind]) speak(pieceMeta[kind].voice);
+        var info = pieceValueInfo[kind];
+        if (info) {
+          document.querySelectorAll('.piece-node.kind-' + kind + '.observe-blink').forEach(function (el) {
+            el.style.setProperty('--hlv-color', info.glowColor);
+            el.style.setProperty('--hlv-inset', info.glowInset);
+            el.classList.add('hl-value');
+          });
+        }
+        showValueBadge(kind);
+        if (kind === 'n') {
+          jumpKnightRoundTrip(7, 6, 5, 5); // white knight: g1 -> f3
+          jumpKnightRoundTrip(0, 1, 2, 2); // black knight: b8 -> c6
+        }
+        var voiceText = pieceMeta[kind] && pieceMeta[kind].voice;
+        if (kind === 'p') {
+          speak(voiceText, function () { runPawnFileTour(); });
+        } else if (voiceText) {
+          speak(voiceText);
+        }
       }
 
       function armPractice(btn) {
@@ -878,6 +1112,17 @@
         speak(prompt.voice);
       }
 
+      function showPracticeMark(square, isCorrect) {
+        if (!square) return;
+        var mark = document.createElement('div');
+        mark.className = 'practice-mark ' + (isCorrect ? 'practice-mark-correct' : 'practice-mark-wrong');
+        mark.textContent = isCorrect ? '\u2713' : '\u2717';
+        square.appendChild(mark);
+        window.setTimeout(function () {
+          if (mark.parentNode) mark.parentNode.removeChild(mark);
+        }, 900);
+      }
+
       function checkPractice(square) {
         if (!practiceArmed || !currentPractice || !square) return;
 
@@ -894,16 +1139,15 @@
         if (currentPracticeBtn) {
           currentPracticeBtn.classList.add(ok ? 'practice-correct' : 'practice-wrong');
         }
+        showPracticeMark(square, ok);
 
         if (ok) {
-          highlightPieceType('practice', currentPractice.kind, currentPractice.side);
           if (practiceStatus) {
             practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
           }
           speak('回答正确');
           practiceArmed = false;
         } else {
-          highlightPieceType('practice', currentPractice.kind, currentPractice.side);
           if (practiceStatus) {
             practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
           }
