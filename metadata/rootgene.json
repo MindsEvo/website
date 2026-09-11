@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.2",
-  "updatedAt": "2026-09-09",
+  "version": "v0.2.3",
+  "updatedAt": "2026-09-11",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -208,7 +208,8 @@
         "en": "Number"
       },
       "descZh": "对数的大小、多少与相对位置形成直觉。",
-      "descEn": "Build intuition for magnitude, quantity and relative position of numbers."
+      "descEn": "Build intuition for magnitude, quantity and relative position of numbers.",
+      "claimedBy": ["clio-egg-catcher-workshop", "clio-ufo-math-workshop"]
     },
     "RG.STRATEGY.DECISION.PLANNING": {
       "category": "STRATEGY",

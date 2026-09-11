@@ -6,19 +6,65 @@
     ? window.ClioRuntimeBridge.createController(DATA.id)
     : null;
 
+  /**
+   * This file carries the module's RADAR CONTRACT alongside its game logic —
+   * the first Clio module to do so. The declarations below (LEVEL_GRADE,
+   * GENES and the `base` table inside difficultyAxisFor()) are cross-checked
+   * against metadata/clio/ufo-math.json by metadata/validate.html (suites
+   * S2 / S3). Keep them literal `var X = {` declarations: the validator
+   * reads this file as text, not as a module.
+   */
+  var MODULE_ID      = 'ufo-math';
+  var MODULE_TYPE    = 'clio';
+  var SOURCE_GAME_ID = 'clio-ufo-math-workshop';
+
+  // gradeCode → gradeCode. Identity, because shell's grade normalizer can't
+  // guess across modules and validate.js's S2 looks up metadata levelMap
+  // rows BY gradeCode.
+  var LEVEL_GRADE = { K1: 'K1', K2: 'K2' };
+
+  var GENES = ['RG.MATH.NUMBER_SENSE.BASIC'];
+
+  /**
+   * The one difficulty axis of ufo-math.json: how far the arithmetic ranges.
+   * K1/K2 differ ONLY here — same mechanic (add/subtract, 4 options), wider
+   * numbers. Mirrors DATA.GRADE_CONFIG in data.js.
+   */
+  function difficultyAxisFor(gradeCode) {
+    var base = {
+      K1: { numberRange: 'within-5' },
+      K2: { numberRange: 'within-10' }
+    }[gradeCode];
+    return base ? Object.assign({}, base) : null;
+  }
+
+  // Exposed for studio/Clio/games/ufo-math-workshop/test.html — the contract
+  // above lives in this closure, so an audit page needs a handle onto it
+  // (mirrors games/difference-scout/game.js's window.DS_CONTRACT).
+  window.UFO_MATH_CONTRACT = {
+    MODULE_ID:      MODULE_ID,
+    MODULE_TYPE:    MODULE_TYPE,
+    SOURCE_GAME_ID: SOURCE_GAME_ID,
+    LEVEL_GRADE:    LEVEL_GRADE,
+    GENES:          GENES,
+    difficultyAxisFor: difficultyAxisFor
+  };
+
   // ── state ──────────────────────────────────────────────────────────────────
 
   var state = {
     lang:       (window.shell && window.shell.lang) || "zh",
     phase:      "idle",   // idle | revealing | math | moon | fail
     char:       "bunny",
+    grade:      "K1",
     questions:  [],
     qIdx:       0,
     correct:    0,
     answered:   false,
     results:    [],
     attempts:   0,
-    bestScore:  -1
+    bestScore:  -1,
+    runStartAt: 0
   };
 
   // ── element refs ───────────────────────────────────────────────────────────
@@ -27,6 +73,7 @@
     titleText:    document.getElementById("titleText"),
     subtitleText: document.getElementById("subtitleText"),
     langBtn:      document.getElementById("langBtn"),
+    gradeBtn:     document.getElementById("gradeBtn"),
     musicBtn:     document.getElementById("musicBtn"),
     sfxBtn:       document.getElementById("sfxBtn"),
     voiceBtn:     document.getElementById("voiceBtn"),
@@ -155,7 +202,7 @@
     state.correct  = 0;
     state.results  = [];
     state.answered = false;
-    state.questions = DATA.makeQuestions(DATA.TOTAL_QUESTIONS);
+    state.questions = DATA.makeQuestions(DATA.TOTAL_QUESTIONS, state.grade);
 
     if (bridge) bridge.resetSession();
 
@@ -193,12 +240,13 @@
   // ── Phase: Math ────────────────────────────────────────────────────────────
 
   function startMath() {
-    state.phase    = "math";
-    state.qIdx     = 0;
-    state.correct  = 0;
-    state.results  = [];
-    state.answered = false;
+    state.phase      = "math";
+    state.qIdx       = 0;
+    state.correct    = 0;
+    state.results    = [];
+    state.answered   = false;
     state.attempts++;
+    state.runStartAt = Date.now();
     updateHUD();
 
     els.mathCharBadge.textContent = DATA.CHARS[state.char].emoji;
@@ -303,9 +351,44 @@
       state.bestScore = state.correct;
     }
     updateHUD();
+    _reportRun();
 
     if (state.correct >= DATA.PASS_THRESHOLD) { showMoon(); }
     else { showFail(); }
+  }
+
+  // ── Radar report ──────────────────────────────────────────────────────────
+
+  function _reportRun() {
+    if (!window.shell || typeof window.shell.report !== 'function') return;
+    var gradeCode = state.grade;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        gradeCode,
+      gradeCode:      LEVEL_GRADE[gradeCode] || null,
+      numberRange:    difficultyAxisFor(gradeCode).numberRange,
+      difficultyAxis: difficultyAxisFor(gradeCode),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    window.shell.report({
+      gameId:          SOURCE_GAME_ID,
+      unitId:          'ufo-run',
+      templateId:      gradeCode,
+      variantId:       null,
+      score:           state.correct,
+      total:           DATA.TOTAL_QUESTIONS,
+      timeMs:          state.runStartAt ? (Date.now() - state.runStartAt) : 0,
+      hintsUsed:       0,
+      geneIds:         GENES.slice(),
+      shell:           'shell-1',
+      activityRuntime: 'puzzle',
+      activityMode:    'quiz',
+      result:          state.correct >= DATA.PASS_THRESHOLD ? 'pass' : 'fail',
+      levelId:         gradeCode,
+      gradeCode:       LEVEL_GRADE[gradeCode] || null,
+      context:         context
+    });
   }
 
   // ── Phase: Moon ────────────────────────────────────────────────────────────
@@ -368,6 +451,16 @@
     els.bestScore.textContent    = state.bestScore < 0 ? "—" : state.bestScore + "/5";
   }
 
+  function updateGradeBtn() {
+    els.gradeBtn.textContent = state.grade;
+  }
+
+  function toggleGrade() {
+    if (state.phase !== "idle") return;
+    state.grade = state.grade === "K1" ? "K2" : "K1";
+    updateGradeBtn();
+  }
+
   // ── Locale ─────────────────────────────────────────────────────────────────
 
   function applyLocale() {
@@ -411,6 +504,7 @@
         ClioAudio.setLang(state.lang);
         applyLocale();
       });
+      bridge.bindTap(els.gradeBtn, toggleGrade);
     } else {
       els.playAgainBtn.addEventListener("click", startSpin);
       els.retryBtn.addEventListener("click", startSpin);
@@ -425,9 +519,11 @@
         ClioAudio.setLang(state.lang);
         applyLocale();
       });
+      els.gradeBtn.addEventListener("click", toggleGrade);
     }
 
     applyLocale();
+    updateGradeBtn();
     ClioAudio.init(state.lang);
     ClioAudio.bindMusicBtn(els.musicBtn);
     ClioAudio.bindSfxBtn(els.sfxBtn);

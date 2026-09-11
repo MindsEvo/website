@@ -1,10 +1,9 @@
 window.CLIO_FIND_IT_DATA = {
   content_version: "findit_v1_2026_07",
-  target_type_count: 3,
-  target_repeat_min: 2,
-  target_repeat_max: 3,
-  total_count: 12,
-  min_distance: 76,
+  GRADE_CONFIG: {
+    K1: { target_type_count: 2, target_repeat_min: 2, target_repeat_max: 2, total_count: 8, min_distance: 90 },
+    K2: { target_type_count: 3, target_repeat_min: 2, target_repeat_max: 3, total_count: 12, min_distance: 76 }
+  },
   object_pool: [
     { id: "car", emoji: "🚗", en: "Car", zh: "汽车" },
     { id: "umbrella", emoji: "☂️", en: "Umbrella", zh: "雨伞" },

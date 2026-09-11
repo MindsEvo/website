@@ -1,0 +1,78 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-11",
+  "moduleType": "clio",
+  "id": "ufo-math",
+  "series": "studio",
+  "canonicalUrl": "/metadata/clio/ufo-math.json",
+  "title": { "zh": "飞盘登月", "en": "UFO Moon Adventure" },
+  "description": {
+    "zh": "点击飞盘揭晓小伙伴，通过 5 题加减法测试后带它登上月球；答对不足则重新来过。K1/K2 两个等级只改变算式的数字范围，玩法本身不变。",
+    "en": "Tap the UFO to reveal a character, pass a 5-question add/subtract test to land it on the moon; falling short sends you back to retry. K1/K2 only change the arithmetic's number range — the mechanic itself never changes."
+  },
+  "designModel": {
+    "zh": "单一难度轴模型：K1/K2 之间没有新机制、没有新场景，只有 data.js 的 GRADE_CONFIG.max 从 5 变成 10。这是 Clio 系列里最小的等级阶梯——比 MindSeeds 的 difference-scout（5 轴）小得多，先把「叙事驱动小游戏 + 雷达上报」的骨架立起来。",
+    "en": "Single-axis design: K1 and K2 add no new mechanic and no new scene — only data.js's GRADE_CONFIG.max moves from 5 to 10. This is the smallest grade ladder in the Clio series, deliberately smaller than MindSeeds's difference-scout (5 axes) — this module exists to stand up the 'narrative game + radar reporting' skeleton first."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 6,
+    "noteZh": "对应幼儿园 K1/K2 两个年龄段，与 data.js 的 GRADE_CONFIG 键一一对应。",
+    "noteEn": "Maps to kindergarten grades K1/K2, matching data.js's GRADE_CONFIG keys one-to-one."
+  },
+  "seriesBoundary": {
+    "policyZh": "Clio 是叙事驱动的沉浸式小游戏工坊：一次完整会话围绕一个故事（飞盘登月）展开，答题只是故事里的一道关卡，节奏比 MindSeeds 的高频快循环训练慢，也不像 Learning 系列那样显式讲解概念。飞盘登月不教「什么是加减法」，只提供一个有情境的练习场——概念讲解仍属于 Learning 系列的职责。",
+    "policyEn": "Clio is the narrative-driven, immersive game workshop series: one full session is wrapped in a story (landing a UFO on the moon), and the quiz is just one obstacle inside that story — paced slower than MindSeeds's high-frequency drill loops, and unlike the Learning series it never explicitly teaches a concept. UFO Moon Adventure does not teach what addition or subtraction is; it only supplies a themed practice ground — explicit concept instruction stays the Learning series's job."
+  },
+  "geneReporting": {
+    "ruleZh": "每次完整的 5 题测试结束（无论通过还是失败）都会上报 RG.MATH.NUMBER_SENSE.BASIC 一次，不按题目粒度上报——飞盘登月是批量测验，不是逐题打点。",
+    "ruleEn": "Every finished 5-question run (pass or fail) reports RG.MATH.NUMBER_SENSE.BASIC exactly once — UFO Moon Adventure reports per batch run, not per question.",
+    "geneIds": ["RG.MATH.NUMBER_SENSE.BASIC"]
+  },
+  "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
+  "rootGeneScopeNote": {
+    "zh": "这是仓库里第一个真实运行并上报 RG.MATH.NUMBER_SENSE.BASIC 的模块，让 NUMBER_SENSE 这一支雷达辐条第一次拿到真数据。",
+    "en": "This is the first module in the repo that actually runs and reports RG.MATH.NUMBER_SENSE.BASIC, giving the NUMBER_SENSE radar spoke its first real data."
+  },
+  "difficultyAxes": [
+    {
+      "id": "numberRange",
+      "zh": "数字范围",
+      "en": "Number Range",
+      "progression": ["within-5", "within-10"],
+      "noteZh": "唯一的难度轴。K1 的加减法运算数不超过 5，K2 不超过 10；镜像 data.js 的 GRADE_CONFIG 与 game.js 的 difficultyAxisFor()。",
+      "noteEn": "The only difficulty axis. K1 keeps every operand/result within 5, K2 within 10; mirrors data.js's GRADE_CONFIG and game.js's difficultyAxisFor()."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 5,
+    "passRatio": 0.6,
+    "noteZh": "一次会话固定 5 题（data.js 的 TOTAL_QUESTIONS），答对 3 题及以上（PASS_THRESHOLD）视为通过，对应 0.6 的通过率。",
+    "noteEn": "One session is always 5 questions (data.js's TOTAL_QUESTIONS); 3 or more correct (PASS_THRESHOLD) counts as a pass, i.e. a 0.6 pass ratio."
+  },
+  "levelMap": [
+    {
+      "levelId": "K1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "在 5 以内完成加减法测试，答对 3 题以上登月成功。",
+      "objectiveEn": "Pass a within-5 add/subtract test — 3 or more correct lands the UFO on the moon.",
+      "axisValues": { "numberRange": "within-5" },
+      "status": "implemented",
+      "implementedBy": ["clio-ufo-math-workshop"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "K2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "在 10 以内完成加减法测试，答对 3 题以上登月成功。",
+      "objectiveEn": "Pass a within-10 add/subtract test — 3 or more correct lands the UFO on the moon.",
+      "axisValues": { "numberRange": "within-10" },
+      "status": "implemented",
+      "implementedBy": ["clio-ufo-math-workshop"],
+      "implementedModes": ["puzzle"]
+    }
+  ],
+  "tags": ["ufo-math", "clio", "math", "number-sense", "ai-readable"]
+}

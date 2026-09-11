@@ -1179,11 +1179,12 @@
       fetchJson("metadata/video.json"),
       fetchJson("metadata/rootgene.json"),
       fetchJson("metadata/metathinking/index.json"),
-      fetchJson("metadata/mindseeds/index.json")
+      fetchJson("metadata/mindseeds/index.json"),
+      fetchJson("metadata/clio/index.json")
     ]).then(function (out) {
       var data = {
         game: out[0], lesson: out[1], video: out[2],
-        rootgene: out[3], catalog: out[4], seedCatalog: out[5],
+        rootgene: out[3], catalog: out[4], seedCatalog: out[5], studioCatalog: out[6],
         code: {}, pathOk: {}
       };
       var games = arr(data.game.games);
@@ -1208,11 +1209,13 @@
             loadModules(data.catalog, games,
               { dir: "metadata/metathinking/", series: "learning" }),
             loadModules(data.seedCatalog, games,
-              { dir: "metadata/mindseeds/", series: "mindseeds" })
+              { dir: "metadata/mindseeds/", series: "mindseeds" }),
+            loadModules(data.studioCatalog, games,
+              { dir: "metadata/clio/", series: "studio" })
           ]);
         })
         .then(function (loaded) {
-          var mods = loaded[0], seedMods = loaded[1];
+          var mods = loaded[0], seedMods = loaded[1], studioMods = loaded[2];
           suiteGenes(data);
           mods.forEach(function (mod) {
             suiteLevels(data, mod);
@@ -1227,6 +1230,13 @@
           // and declaring empty ones just to light up S4/S5/S7 would be the
           // status-lying §1.7 fixed rather than an honest gap.
           seedMods.forEach(function (mod) {
+            suiteLevels(data, mod);
+            suiteAxes(data, mod);
+          });
+          // Clio modules take the same S2 + S3-only treatment as MindSeeds:
+          // a levelMap and difficulty axes, no typeTree / templates.json /
+          // task matrix yet.
+          studioMods.forEach(function (mod) {
             suiteLevels(data, mod);
             suiteAxes(data, mod);
           });

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find It — Automated Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #c4b5fd; margin-bottom: 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin-bottom: 24px; }
+    .suite  { margin-bottom: 32px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #a78bfa; }
+    .tpl    { margin-bottom: 12px; padding: 10px 14px; background: #1e293b;
+              border-radius: 8px; border: 1px solid #334155; }
+    .tpl-id { font-size: 12px; color: #ddd6fe; margin-bottom: 4px; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .stat   { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    .sum-row { font-size: 14px; }
+    .badge { display:inline-block; border-radius:4px; padding:2px 8px; font-size:12px;
+             font-weight:700; margin-right:6px; }
+    .badge-ok   { background:#166534; color:#4ade80; }
+    .badge-fail { background:#7f1d1d; color:#f87171; }
+    .badge-warn { background:#78350f; color:#fbbf24; }
+    pre { margin:0; font-size:11px; line-height:1.5; white-space:pre-wrap; }
+    #stubDom { display: none; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>🔍 Find It — Validation Suite</h1>
+  <h2>This module has one difficulty axis (boardSize) and no static bank — buildRound() in
+      game.js draws items live from data.js's GRADE_CONFIG/object_pool. buildRound() itself is
+      private to game.js's closure, so this page checks it two ways: statically, by re-deriving
+      the same invariants from DATA the way ufo-math-workshop's test.html samples _oneQ/_opts
+      directly; and live, by letting game.js's bootstrap() run for real against a stub DOM and
+      inspecting the resulting board/target DOM it rendered. Checked: the radar contract exposed
+      as window.FIND_IT_CONTRACT, GRADE_CONFIG's K1/K2 shape, object_pool sufficiency, and the
+      live post-bootstrap board matching GRADE_CONFIG's default-grade numbers exactly.</h2>
+  <div id="sum-out" class="sum-row">Loading…</div>
+</div>
+
+<div id="results"></div>
+
+<!-- game.js's bootstrap() runs unconditionally and touches every element by id — stub them all
+     so the module can load headless, the way ufo-math-workshop's page stubs its own DOM. -->
+<div id="stubDom">
+  <span id="titleText"></span><span id="subtitleText"></span>
+  <a id="backLink"></a>
+  <button id="langBtn"></button><button id="gradeBtn"></button>
+  <button id="speakBtn"></button><button id="musicBtn"></button><button id="sfxBtn"></button>
+  <span id="foundLabel"></span><span id="progressText"></span>
+  <span id="mistakeLabel"></span><span id="doneLabel"></span>
+  <span id="mistakeCount"></span><span id="doneCount"></span>
+  <div id="targetTitle"></div><div id="targets"></div><div id="feedback"></div>
+  <div id="boardWrap"></div><div id="board"></div>
+  <div id="doneLayer"><div id="doneTitle"></div><button id="againBtn"></button></div>
+  <button id="resetBtn"></button><button id="dumpBtn"></button>
+</div>
+
+<script src="./data.js"></script>
+<script src="./game.js"></script>
+<script>
+(function () {
+  var C    = window.FIND_IT_CONTRACT || {};
+  var DATA = window.CLIO_FIND_IT_DATA;
+  var GRADES = ['K1', 'K2'];
+
+  var results = [];
+  function rec(suite, level, name, detail) {
+    results.push({ suite: suite, level: level, name: name, detail: detail || '' });
+  }
+  function check(suite, name, ok, detail) {
+    rec(suite, ok ? 'pass' : 'fail', name, detail);
+    return ok;
+  }
+  function uniq(a) { return a.filter(function (v, i, s) { return s.indexOf(v) === i; }); }
+
+  // ── S1 · radar contract ────────────────────────────────────────────────────
+  (function () {
+    var S = 'S1 · 雷达契约 Radar contract';
+
+    check(S, 'window.FIND_IT_CONTRACT 已暴露', !!window.FIND_IT_CONTRACT);
+    check(S, 'MODULE_ID / MODULE_TYPE / SOURCE_GAME_ID 齐全',
+      C.MODULE_ID === 'find-it' && C.MODULE_TYPE === 'clio' &&
+      C.SOURCE_GAME_ID === 'clio-find-it-workshop',
+      JSON.stringify({ MODULE_ID: C.MODULE_ID, MODULE_TYPE: C.MODULE_TYPE, SOURCE_GAME_ID: C.SOURCE_GAME_ID }));
+
+    var lg = C.LEVEL_GRADE || {};
+    var identity = Object.keys(lg).every(function (k) { return lg[k] === k; });
+    check(S, 'LEVEL_GRADE 是恒等映射（validate.js S2 按 gradeCode 查 levelMap）',
+      identity, JSON.stringify(lg));
+    check(S, 'LEVEL_GRADE 的键恰好是 K1/K2',
+      Object.keys(lg).sort().join(',') === GRADES.slice().sort().join(','),
+      Object.keys(lg).join(','));
+
+    check(S, '恰好两个基因，且是 RG.ATTENTION.SEARCH.VISUAL 与 RG.LOGIC.COMPARISON.BASIC',
+      (C.GENES || []).length === 2 &&
+      C.GENES.indexOf('RG.ATTENTION.SEARCH.VISUAL') >= 0 &&
+      C.GENES.indexOf('RG.LOGIC.COMPARISON.BASIC') >= 0,
+      JSON.stringify(C.GENES));
+
+    var axesOk = true, axisNotes = [];
+    GRADES.forEach(function (g) {
+      var ax = C.difficultyAxisFor(g);
+      var keys = Object.keys(ax || {});
+      if (keys.join(',') !== 'boardSize') { axesOk = false; }
+      axisNotes.push(g + ': ' + JSON.stringify(ax));
+    });
+    check(S, 'difficultyAxisFor 每个等级只有 boardSize 一根轴', axesOk, axisNotes.join(' · '));
+    check(S, 'K1 → small，K2 → large（与 metadata/clio/find-it.json 的 progression 一致）',
+      C.difficultyAxisFor('K1').boardSize === 'small' &&
+      C.difficultyAxisFor('K2').boardSize === 'large');
+    check(S, '未知等级返回 null（不猜）', C.difficultyAxisFor('G1') === null);
+  }());
+
+  // ── S2 · GRADE_CONFIG shape ─────────────────────────────────────────────────
+  (function () {
+    var S = 'S2 · 等级配置 GRADE_CONFIG';
+    var cfg = DATA.GRADE_CONFIG || {};
+
+    check(S, 'GRADE_CONFIG 恰好覆盖 K1/K2',
+      Object.keys(cfg).sort().join(',') === GRADES.slice().sort().join(','),
+      Object.keys(cfg).join(','));
+    check(S, 'K2 的目标种类数/总物品数都比 K1 多，间距比 K1 小（唯一难度轴必须真的变难）',
+      cfg.K1 && cfg.K2 &&
+      cfg.K2.target_type_count > cfg.K1.target_type_count &&
+      cfg.K2.total_count > cfg.K1.total_count &&
+      cfg.K2.min_distance < cfg.K1.min_distance,
+      JSON.stringify({ K1: cfg.K1, K2: cfg.K2 }));
+
+    GRADES.forEach(function (g) {
+      var c = cfg[g];
+      check(S, g + ' · target_repeat_min <= target_repeat_max',
+        c.target_repeat_min <= c.target_repeat_max,
+        'min=' + c.target_repeat_min + ' max=' + c.target_repeat_max);
+      check(S, g + ' · 目标实例数上限（type_count * repeat_max）不超过 total_count（否则 total_count 名不副实）',
+        c.target_type_count * c.target_repeat_max <= c.total_count,
+        'cap=' + (c.target_type_count * c.target_repeat_max) + ' total_count=' + c.total_count);
+    });
+  }());
+
+  // ── S3 · object_pool sufficiency ────────────────────────────────────────────
+  (function () {
+    var S = 'S3 · 物品池 object_pool';
+    var pool = DATA.object_pool || [];
+
+    check(S, 'object_pool 每项都有 id/emoji/en/zh，且 id 不重复',
+      pool.every(function (it) { return it.id && it.emoji && it.en && it.zh; }) &&
+      uniq(pool.map(function (it) { return it.id; })).length === pool.length);
+
+    GRADES.forEach(function (g) {
+      var c = DATA.GRADE_CONFIG[g];
+      check(S, g + ' · object_pool 足够抽出 target_type_count 个不重复目标类型',
+        pool.length >= c.target_type_count,
+        'pool=' + pool.length + ' need=' + c.target_type_count);
+      check(S, g + ' · 排除目标类型后，剩余物品池仍够填满非目标格（total_count - 目标实例数）',
+        pool.length - c.target_type_count >= 0,
+        'pool-targets=' + (pool.length - c.target_type_count));
+    });
+  }());
+
+  // ── S4 · live post-bootstrap board (buildRound is private — inspect the DOM it rendered) ──
+  (function () {
+    var S = 'S4 · 实机开局 Live bootstrap round';
+    var defaultGrade = 'K1';
+    var cfg = DATA.GRADE_CONFIG[defaultGrade];
+
+    var boardItems = document.querySelectorAll('#board .item');
+    var targetChips = document.querySelectorAll('#targets .target-item');
+
+    check(S, '默认等级是 K1（gradeBtn 上电即显示 K1）',
+      document.getElementById('gradeBtn').textContent === 'K1',
+      'gradeBtn=' + document.getElementById('gradeBtn').textContent);
+    check(S, 'K1 开局后棋盘物品数 == GRADE_CONFIG.K1.total_count',
+      boardItems.length === cfg.total_count,
+      'rendered=' + boardItems.length + ' expected=' + cfg.total_count);
+    check(S, 'K1 开局后目标清单条目数 == GRADE_CONFIG.K1.target_type_count',
+      targetChips.length === cfg.target_type_count,
+      'rendered=' + targetChips.length + ' expected=' + cfg.target_type_count);
+    check(S, '每个棋盘物品都定位在非负坐标（未落在棋盘外的负区域）',
+      Array.prototype.every.call(boardItems, function (el) {
+        return parseFloat(el.style.left) >= 0 && parseFloat(el.style.top) >= 0;
+      }));
+  }());
+
+  // ── render ────────────────────────────────────────────────────────────────
+
+  var bySuite = {}, order = [];
+  results.forEach(function (r) {
+    if (!bySuite[r.suite]) { bySuite[r.suite] = []; order.push(r.suite); }
+    bySuite[r.suite].push(r);
+  });
+
+  var nOk = 0, nWarn = 0, nFail = 0;
+  results.forEach(function (r) {
+    if (r.level === 'fail') { nFail++; } else if (r.level === 'warn') { nWarn++; } else { nOk++; }
+  });
+
+  var html = '';
+  order.forEach(function (suite) {
+    html += '<div class="suite"><div class="suite-title">' + suite + '</div>';
+    bySuite[suite].forEach(function (r) {
+      var badge = r.level === 'fail' ? '<span class="badge badge-fail">FAIL</span>'
+                : r.level === 'warn' ? '<span class="badge badge-warn">WARN</span>'
+                                     : '<span class="badge badge-ok">PASS</span>';
+      html += '<div class="tpl"><div class="tpl-id">' + badge + ' ' + r.name + '</div>' +
+              (r.detail ? '<pre class="stat ' + (r.level === 'fail' ? 'fail' : '') + '">' +
+                          String(r.detail).replace(/</g, '&lt;') + '</pre>' : '') +
+              '</div>';
+    });
+    html += '</div>';
+  });
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('sum-out').innerHTML =
+    '<span class="badge badge-ok">PASS ' + nOk + '</span>' +
+    '<span class="badge badge-warn">WARN ' + nWarn + '</span>' +
+    '<span class="badge badge-fail">FAIL ' + nFail + '</span>' +
+    ' — ' + GRADES.length + ' grades checked';
+}());
+</script>
+</body>
+</html>

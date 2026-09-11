@@ -260,8 +260,7 @@
       "titleEn": "Find It",
       "rootGeneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"],
       "lessonIds": [],
-      "videoIds": [],
-      "status": "planned"
+      "videoIds": []
     },
     {
       "id": "clio-prediction-workshop",
@@ -299,8 +298,7 @@
       "titleEn": "UFO Moon Adventure",
       "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
       "lessonIds": [],
-      "videoIds": [],
-      "status": "planned"
+      "videoIds": []
     },
     {
       "id": "clio-word-connections-workshop",
