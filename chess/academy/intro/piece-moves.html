@@ -338,6 +338,41 @@
       font-weight: 600;
     }
 
+    .game-mode-bar {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .game-mode-bar.hidden { display: none; }
+    .game-mode-label { font-size: 12px; color: #64748b; font-weight: 700; }
+    .game-mode-btn {
+      border: 1px solid #d8e2f1;
+      background: #fff;
+      color: #334155;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .game-mode-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+    }
+    .game-mode-select {
+      border: 1px solid #d8e2f1;
+      background: #fff;
+      color: #334155;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .sub-menu {
       margin-top: 8px;
       display: grid;
@@ -921,6 +956,20 @@
               </div>
             </div>
             <div class="status-box" id="practiceStatus">点击上方棋子按钮开始练习</div>
+            <div class="game-mode-bar hidden" id="gameModeBar">
+              <span class="game-mode-label">对弈模式：</span>
+              <button class="game-mode-btn" id="btnModeManual" data-mode="manual" title="手动模式：两人轮流点击操作">👥 手动</button>
+              <button class="game-mode-btn" id="btnModeHumanAi" data-mode="human_ai" title="人机模式：你执白，AI执黑自动应对">👤 人机</button>
+              <button class="game-mode-btn" id="btnModeAiAi" data-mode="ai_ai" title="AI对弈：双方由AI自动对局，可暂停/继续">🤖 AI对弈</button>
+              <span class="game-mode-label">AI预设：</span>
+              <select class="game-mode-select" id="aiPresetSelect" title="与对弈模式页面相同的AI难度预设">
+                <option value="beginner">初学</option>
+                <option value="intermediate">中级</option>
+                <option value="advanced">高级</option>
+                <option value="expert">专家</option>
+                <option value="master" selected>大师</option>
+              </select>
+            </div>
           </div>
 
           <div class="group">
@@ -1074,6 +1123,11 @@
       var practiceStatus = document.getElementById('practiceStatus');
       var quizStatus = document.getElementById('quizStatus');
       var quizOptions = document.getElementById('quizOptions');
+      var gameModeBar = document.getElementById('gameModeBar');
+      var btnModeManual = document.getElementById('btnModeManual');
+      var btnModeHumanAi = document.getElementById('btnModeHumanAi');
+      var btnModeAiAi = document.getElementById('btnModeAiAi');
+      var aiPresetSelect = document.getElementById('aiPresetSelect');
 
       var btnKeyTips = document.getElementById('btnKeyTips');
       var btnStudentVoice = document.getElementById('btnStudentVoice');
@@ -1089,7 +1143,7 @@
       var quizTimer = null;
 
       var currentPracticePiece = null; // kept for clearScope compat
-      var practiceState = { armed: false, kind: null, btn: null, scenario: null, selectedPiece: null, legalTargets: [], pieceRow: -1, pieceCol: -1, targets: [], found: [], turn: 'w', castlingRights: null, enPassantTarget: null };
+      var practiceState = { armed: false, kind: null, btn: null, scenario: null, selectedPiece: null, legalTargets: [], pieceRow: -1, pieceCol: -1, targets: [], found: [], turn: 'w', castlingRights: null, enPassantTarget: null, gameMode: 'manual', aiAutoplay: false, aiTimer: null, aiRequestId: 0, aiPreset: 'master', halfmoveClock: 0, positionCounts: {} };
       var savedPracticeBoard = null;
 
       var currentQuizTopic = null;
@@ -2620,8 +2674,337 @@
         playGameEndSound();
       }
 
-      // Shared end-of-turn resolution for -game- scenarios: flips the turn, checks for check/mate/stalemate,
-      // and updates status/voice. Called directly after a normal move, or after a promotion choice is made.
+      // Applies one move to the board (castling rook jump, en passant capture, promotion) and dispatches
+      // to the capture-practice or game-practice feedback path. Shared by human clicks (checkPractice) and
+      // AI-controlled moves (performAiMove) — aiMove=true skips the promotion modal and auto-picks a queen.
+      function executeMove(originRow, originCol, row, col, aiMove, aiPromoKind) {
+        var piece = boardMatrix[row][col];
+        var isCapturePractice = practiceState.scenario && practiceState.scenario.indexOf('-capture-') !== -1;
+        var isGamePractice = practiceState.scenario && practiceState.scenario.indexOf('-game-') !== -1;
+        var captured = !!piece && piece.charAt(0) === 'b';
+        var movingPiece = boardMatrix[originRow][originCol];
+        var movingColor = movingPiece.charAt(0);
+        var isCastleMove = isGamePractice && movingPiece.charAt(1) === 'k' && Math.abs(col - originCol) === 2;
+        var epTarget = practiceState.enPassantTarget;
+        var isEnPassantCapture = isGamePractice && movingPiece.charAt(1) === 'p' && !piece &&
+          col !== originCol && epTarget && row === epTarget[0] && col === epTarget[1];
+        boardMatrix[row][col] = movingPiece;
+        boardMatrix[originRow][originCol] = '';
+        if (isEnPassantCapture) {
+          boardMatrix[originRow][col] = ''; // remove the pawn that just passed by
+        }
+        if (isCastleMove) {
+          var homeRow = movingColor === 'w' ? 7 : 0;
+          if (col > originCol) { // kingside — rook a-side stays, h-rook jumps to f
+            boardMatrix[homeRow][5] = movingColor + 'r';
+            boardMatrix[homeRow][7] = '';
+          } else { // queenside — a-rook jumps to d
+            boardMatrix[homeRow][3] = movingColor + 'r';
+            boardMatrix[homeRow][0] = '';
+          }
+        }
+        practiceState.selectedPiece = null;
+        practiceState.legalTargets = [];
+
+        var needsPromotion = isGamePractice && movingPiece.charAt(1) === 'p' && (row === 0 || row === 7);
+
+        if (isGamePractice) {
+          practiceState.enPassantTarget = (movingPiece.charAt(1) === 'p' && Math.abs(row - originRow) === 2)
+            ? [(row + originRow) / 2, col] : null;
+          var isCaptureMove = !!piece || isEnPassantCapture;
+          practiceState.halfmoveClock = (isCaptureMove || movingPiece.charAt(1) === 'p') ? 0 : practiceState.halfmoveClock + 1;
+        }
+
+        if (isGamePractice && practiceState.castlingRights) {
+          if (movingPiece.charAt(1) === 'k') {
+            practiceState.castlingRights[movingColor].kingside = false;
+            practiceState.castlingRights[movingColor].queenside = false;
+          } else if (movingPiece.charAt(1) === 'r') {
+            var rHomeRow = movingColor === 'w' ? 7 : 0;
+            if (originRow === rHomeRow && originCol === 0) practiceState.castlingRights[movingColor].queenside = false;
+            if (originRow === rHomeRow && originCol === 7) practiceState.castlingRights[movingColor].kingside = false;
+          }
+        }
+
+        renderBoard();
+
+        if (isCapturePractice) {
+          drawCaptureProtectionArrows();
+          if (captured) {
+            playCaptureSound();
+            showPracticeMark(getSquare(row, col), true);
+            if (boardHasAnyBlackPiece()) {
+              if (practiceStatus) practiceStatus.textContent = '✅ 吃掉了！继续吃掉剩下的黑子。';
+              speak('吃掉了');
+            } else {
+              if (practiceStatus) practiceStatus.textContent = '✅ 太棒了，把所有黑子都吃掉了！';
+              speak('太棒了，把所有黑子都吃掉了');
+              practiceState.armed = false;
+            }
+          }
+        } else if (isGamePractice) {
+          if (needsPromotion) {
+            if (aiMove) {
+              boardMatrix[row][col] = movingColor + (aiPromoKind || 'q');
+              renderBoard();
+              finishGameMove(movingColor, isCastleMove);
+            } else {
+              showPromotionModal(movingColor, function(promoKind) {
+                boardMatrix[row][col] = movingColor + promoKind;
+                renderBoard();
+                finishGameMove(movingColor, isCastleMove);
+              });
+            }
+          } else {
+            finishGameMove(movingColor, isCastleMove);
+          }
+        }
+      }
+
+      // ── Game-practice mode switching (手动 / 人机 / AI对弈) ──────────────
+      var PIECE_VALUE = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+
+      function isHumanControlledTurn() {
+        if (practiceState.gameMode === 'manual') return true;
+        if (practiceState.gameMode === 'human_ai') return practiceState.turn === 'w'; // human always plays white
+        return false; // ai_ai: no human control
+      }
+
+      function clearAiTimer() {
+        if (practiceState.aiTimer) {
+          window.clearTimeout(practiceState.aiTimer);
+          practiceState.aiTimer = null;
+        }
+      }
+
+      // AI runs at the strongest (only) built-in level: it avoids hanging pieces by checking the
+      // opponent's best immediate recapture (1-ply threat lookahead), and always takes a forced checkmate.
+      function boardHasAnyLegalMoveOnBoard(simBoard, side) {
+        var savedBoard = boardMatrix;
+        boardMatrix = simBoard;
+        var has = sideHasAnyLegalMove(side);
+        boardMatrix = savedBoard;
+        return has;
+      }
+
+      function bestReplyGain(simBoard, movedColor) {
+        var oppo = movedColor === 'w' ? 'b' : 'w';
+        var savedBoard = boardMatrix;
+        boardMatrix = simBoard;
+        var best = 0;
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var p = simBoard[r][c];
+            if (p && p.charAt(0) === oppo) {
+              getPracticeMovesForBoard(r, c).forEach(function(m) {
+                var target = simBoard[m[0]][m[1]];
+                if (target) {
+                  var val = PIECE_VALUE[target.charAt(1)] || 0;
+                  if (val > best) best = val;
+                }
+              });
+            }
+          }
+        }
+        boardMatrix = savedBoard;
+        return best;
+      }
+
+      function pickAiMove(color) {
+        var oppo = color === 'w' ? 'b' : 'w';
+        var candidates = [];
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var p = boardMatrix[r][c];
+            if (p && p.charAt(0) === color) {
+              getPracticeMovesForBoard(r, c).forEach(function(m) {
+                candidates.push({ fromR: r, fromC: c, toR: m[0], toC: m[1] });
+              });
+            }
+          }
+        }
+        if (!candidates.length) return null;
+        var best = [];
+        var bestScore = -Infinity;
+        candidates.forEach(function(mv) {
+          var target = boardMatrix[mv.toR][mv.toC];
+          var captureGain = target ? (PIECE_VALUE[target.charAt(1)] || 0) : 0;
+          var sim = boardMatrix.map(function(row) { return row.slice(); });
+          sim[mv.fromR][mv.fromC] = '';
+          sim[mv.toR][mv.toC] = boardMatrix[mv.fromR][mv.fromC];
+          var oppoKing = findKingPos(sim, oppo);
+          var givesCheck = !!oppoKing && isSquareAttacked(sim, oppoKing[0], oppoKing[1], color);
+          var score = captureGain * 10 - bestReplyGain(sim, color) * 9 + (givesCheck ? 3 : 0);
+          if (givesCheck && !boardHasAnyLegalMoveOnBoard(sim, oppo)) score += 1000; // forced checkmate — always take it
+          if (score > bestScore) { bestScore = score; best = [mv]; }
+          else if (score === bestScore) { best.push(mv); }
+        });
+        return best[Math.floor(Math.random() * best.length)];
+      }
+
+      // Stockfish reference engine (same local server used by web/chess/play/game.js), run at max strength
+      // so it can serve as a "best move" reference. Falls back to the built-in heuristic if the local
+      // engine server (web/server, node src/server.js) isn't running.
+      var ENGINE_API_BASE = 'http://localhost:8787';
+      var FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+      // Same 5 presets as web/chess/play/game.js's getAiPresetConfig, so the dropdown here behaves
+      // identically to the play mode page's.
+      function getAiPresetConfig(preset) {
+        if (preset === 'beginner') return { skillLevel: 4, depth: 8, movetime: 420, multiPv: 1 };
+        if (preset === 'intermediate') return { skillLevel: 8, depth: 10, movetime: 650, multiPv: 2 };
+        if (preset === 'advanced') return { skillLevel: 11, depth: 12, movetime: 820, multiPv: 2 };
+        if (preset === 'expert') return { skillLevel: 14, depth: 14, movetime: 1050, multiPv: 2 };
+        return { skillLevel: 20, depth: 18, movetime: 1500, multiPv: 3 }; // master (default)
+      }
+
+      function buildFen() {
+        var rows = [];
+        for (var r = 0; r < 8; r++) {
+          var fenRow = '';
+          var empty = 0;
+          for (var c = 0; c < 8; c++) {
+            var p = boardMatrix[r][c];
+            if (!p) { empty++; continue; }
+            if (empty > 0) { fenRow += String(empty); empty = 0; }
+            var sym = p.charAt(1);
+            fenRow += p.charAt(0) === 'w' ? sym.toUpperCase() : sym;
+          }
+          if (empty > 0) fenRow += String(empty);
+          rows.push(fenRow);
+        }
+        var rights = practiceState.castlingRights || {};
+        var castling = '';
+        if (rights.w && rights.w.kingside && boardMatrix[7][4] === 'wk' && boardMatrix[7][7] === 'wr') castling += 'K';
+        if (rights.w && rights.w.queenside && boardMatrix[7][4] === 'wk' && boardMatrix[7][0] === 'wr') castling += 'Q';
+        if (rights.b && rights.b.kingside && boardMatrix[0][4] === 'bk' && boardMatrix[0][7] === 'br') castling += 'k';
+        if (rights.b && rights.b.queenside && boardMatrix[0][4] === 'bk' && boardMatrix[0][0] === 'br') castling += 'q';
+        if (!castling) castling = '-';
+        var ep = '-';
+        if (practiceState.enPassantTarget) {
+          ep = FILES[practiceState.enPassantTarget[1]] + String(8 - practiceState.enPassantTarget[0]);
+        }
+        return rows.join('/') + ' ' + practiceState.turn + ' ' + castling + ' ' + ep + ' 0 1';
+      }
+
+      function parseUciMove(uci) {
+        if (!uci || uci.length < 4) return null;
+        var fromC = FILES.indexOf(uci.charAt(0));
+        var fromR = 8 - Number(uci.charAt(1));
+        var toC = FILES.indexOf(uci.charAt(2));
+        var toR = 8 - Number(uci.charAt(3));
+        if (fromC < 0 || toC < 0 || fromR < 0 || fromR > 7 || toR < 0 || toR > 7) return null;
+        return { fromR: fromR, fromC: fromC, toR: toR, toC: toC, promotionKind: uci.length >= 5 ? uci.charAt(4).toLowerCase() : null };
+      }
+
+      async function requestStockfishMove() {
+        var config = getAiPresetConfig(practiceState.aiPreset);
+        var response = await fetch(ENGINE_API_BASE + '/api/v1/chess/engine/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fen: buildFen(),
+            movetime: config.movetime,
+            depth: config.depth,
+            skillLevel: config.skillLevel,
+            multiPv: config.multiPv
+          })
+        });
+        var payload = await response.json();
+        if (!response.ok || !payload.ok || !payload.bestMove) {
+          throw new Error((payload && (payload.detail || payload.error)) || 'Stockfish request failed');
+        }
+        var parsed = parseUciMove(payload.bestMove);
+        if (!parsed) throw new Error('Invalid bestmove: ' + payload.bestMove);
+        var isLegal = getPracticeMovesForBoard(parsed.fromR, parsed.fromC)
+          .some(function(m) { return m[0] === parsed.toR && m[1] === parsed.toC; });
+        if (!isLegal) throw new Error('Stockfish move not legal locally: ' + payload.bestMove);
+        return parsed;
+      }
+
+      async function performAiMove() {
+        if (!practiceState.armed) return;
+        var color = practiceState.turn;
+        var runId = ++practiceState.aiRequestId;
+        if (practiceStatus) practiceStatus.textContent = '🤔 AI（Stockfish 最高难度）正在思考最佳走法…';
+
+        var mv = null;
+        try {
+          mv = await requestStockfishMove();
+        } catch (e) {
+          mv = null;
+        }
+
+        // Ignore stale responses if the scenario/mode/turn changed while we were waiting.
+        if (runId !== practiceState.aiRequestId || !practiceState.armed || practiceState.turn !== color) return;
+
+        if (mv) {
+          executeMove(mv.fromR, mv.fromC, mv.toR, mv.toC, true, mv.promotionKind);
+          return;
+        }
+
+        // Fallback: local engine server unreachable — use the built-in heuristic so practice still works.
+        var fallback = pickAiMove(color);
+        if (!fallback) return; // no legal move — finishGameMove should already have ended the game
+        executeMove(fallback.fromR, fallback.fromC, fallback.toR, fallback.toC, true);
+      }
+
+      function scheduleAiMove(delay) {
+        clearAiTimer();
+        practiceState.aiTimer = window.setTimeout(function() {
+          practiceState.aiTimer = null;
+          performAiMove();
+        }, delay);
+      }
+
+      function maybeScheduleAiMove() {
+        if (!practiceState.armed) return;
+        if (practiceState.gameMode === 'human_ai' && practiceState.turn === 'b') {
+          scheduleAiMove(700);
+        } else if (practiceState.gameMode === 'ai_ai' && practiceState.aiAutoplay) {
+          scheduleAiMove(900);
+        }
+      }
+
+      function updateGameModeButtons() {
+        [btnModeManual, btnModeHumanAi, btnModeAiAi].forEach(function(b) { if (b) b.classList.remove('active'); });
+        var map = { manual: btnModeManual, human_ai: btnModeHumanAi, ai_ai: btnModeAiAi };
+        var current = map[practiceState.gameMode];
+        if (current) current.classList.add('active');
+        if (btnModeAiAi) {
+          if (practiceState.gameMode !== 'ai_ai') {
+            btnModeAiAi.textContent = '🤖 AI对弈';
+          } else {
+            btnModeAiAi.textContent = practiceState.aiAutoplay ? '⏸ 暂停对弈' : '▶ 继续对弈';
+          }
+        }
+      }
+
+      function setGameMode(mode) {
+        if (!practiceState.armed) return;
+        if (mode === 'ai_ai' && practiceState.gameMode === 'ai_ai') {
+          practiceState.aiAutoplay = !practiceState.aiAutoplay;
+        } else {
+          practiceState.gameMode = mode;
+          practiceState.aiAutoplay = mode === 'ai_ai';
+        }
+        clearAiTimer();
+        practiceState.aiRequestId++; // invalidate any in-flight Stockfish request from before the switch
+        updateGameModeButtons();
+        if (practiceState.gameMode !== 'manual') maybeScheduleAiMove();
+      }
+
+      if (btnModeManual) btnModeManual.addEventListener('click', function () { setGameMode('manual'); });
+      if (btnModeHumanAi) btnModeHumanAi.addEventListener('click', function () { setGameMode('human_ai'); });
+      if (btnModeAiAi) btnModeAiAi.addEventListener('click', function () { setGameMode('ai_ai'); });
+      if (aiPresetSelect) aiPresetSelect.addEventListener('change', function () {
+        practiceState.aiPreset = aiPresetSelect.value || 'master';
+      });
+
+      // Shared end-of-turn resolution for -game- scenarios: flips the turn, checks for check/mate/stalemate/
+      // draw-by-rule, and updates status text. Called directly after a normal move, or after a promotion
+      // choice is made. Only game-ending results (checkmate/stalemate/threefold/fifty-move) get a voice
+      // announcement — routine check/castle/turn-change stay silent (too disruptive during AI-vs-AI).
       function finishGameMove(movingColor, isCastleMove) {
         var oppoColor = movingColor === 'w' ? 'b' : 'w';
         var colorName = function(c) { return c === 'w' ? '白方' : '黑方'; };
@@ -2630,6 +3013,10 @@
         var oppoHasMoves = sideHasAnyLegalMove(oppoColor);
         var castlePrefix = isCastleMove ? '♜ 易位成功！' : '';
         practiceState.turn = oppoColor;
+        var posKey = buildFen();
+        practiceState.positionCounts[posKey] = (practiceState.positionCounts[posKey] || 0) + 1;
+        var isThreefold = practiceState.positionCounts[posKey] >= 3;
+        var isFiftyMove = practiceState.halfmoveClock >= 100;
         if (oppoInCheck && !oppoHasMoves) {
           if (practiceStatus) practiceStatus.textContent = castlePrefix + '🏁 将杀！' + colorName(movingColor) + '获胜！';
           speak('将杀，' + colorName(movingColor) + '获胜');
@@ -2637,18 +3024,27 @@
           if (oppoKingPos) showGameEndVisuals(true, oppoKingPos[0], oppoKingPos[1], findAttackers(boardMatrix, oppoKingPos[0], oppoKingPos[1], movingColor));
         } else if (!oppoInCheck && !oppoHasMoves) {
           if (practiceStatus) practiceStatus.textContent = castlePrefix + '🤝 和棋！' + colorName(oppoColor) + '无子可动。';
-          speak('和棋，无子可动');
+          speak('和棋，' + colorName(oppoColor) + '无子可动');
           practiceState.armed = false;
           if (oppoKingPos) showGameEndVisuals(false, oppoKingPos[0], oppoKingPos[1], null);
+        } else if (isThreefold) {
+          if (practiceStatus) practiceStatus.textContent = '🤝 三次重复局面，和棋！';
+          speak('三次重复局面，和棋');
+          practiceState.armed = false;
+          playGameEndSound();
+        } else if (isFiftyMove) {
+          if (practiceStatus) practiceStatus.textContent = '🤝 五十步无吃子无兵移动，和棋！';
+          speak('五十步无吃子无兵移动，和棋');
+          practiceState.armed = false;
+          playGameEndSound();
         } else if (oppoInCheck) {
           if (practiceStatus) practiceStatus.textContent = castlePrefix + '⚠️ 将军！轮到' + colorName(oppoColor) + '应将。';
-          speak('将军');
         } else if (isCastleMove) {
           if (practiceStatus) practiceStatus.textContent = castlePrefix + '轮到' + colorName(oppoColor) + '走子。';
-          speak('易位成功');
         } else {
           if (practiceStatus) practiceStatus.textContent = '轮到' + colorName(oppoColor) + '走子。';
         }
+        if (practiceState.armed) maybeScheduleAiMove();
       }
 
       function wouldLeaveKingInCheck(fromR, fromC, toR, toC, movingColor) {
@@ -2778,6 +3174,8 @@
         if (!sc) return;
         clearMateVisuals();
         closePromotionModal();
+        clearAiTimer();
+        practiceState.aiRequestId++;
         savedPracticeBoard = boardMatrix.map(function(row) { return row.slice(); });
         boardMatrix = emptyBoard();
         sc.setup.forEach(function(e) { boardMatrix[e[0]][e[1]] = e[2]; });
@@ -2789,6 +3187,13 @@
         practiceState.turn = 'w';
         practiceState.castlingRights = { w: { kingside: true, queenside: true }, b: { kingside: true, queenside: true } };
         practiceState.enPassantTarget = sc.enPassantTarget || null;
+        practiceState.gameMode = 'manual';
+        practiceState.aiAutoplay = false;
+        practiceState.halfmoveClock = 0;
+        practiceState.positionCounts = {};
+        if (key.indexOf('-game-') !== -1) practiceState.positionCounts[buildFen()] = 1;
+        if (gameModeBar) gameModeBar.classList.toggle('hidden', key.indexOf('-game-') === -1);
+        updateGameModeButtons();
         if (practiceStatus) practiceStatus.textContent = sc.voice;
         speak(sc.voice.substring(0, 45));
       }
@@ -2797,6 +3202,9 @@
         if (!practiceState.armed && !savedPracticeBoard) return;
         clearMateVisuals();
         closePromotionModal();
+        clearAiTimer();
+        practiceState.aiRequestId++;
+        if (gameModeBar) gameModeBar.classList.add('hidden');
         practiceState.armed = false;
         practiceState.scenario = null;
         practiceState.selectedPiece = null;
@@ -2855,80 +3263,7 @@
         if (practiceState.selectedPiece) {
           var isTarget = practiceState.legalTargets.some(function(p) { return p[0]===row && p[1]===col; });
           if (isTarget) {
-            var isCapturePractice = practiceState.scenario && practiceState.scenario.indexOf('-capture-') !== -1;
-            var isGamePractice = practiceState.scenario && practiceState.scenario.indexOf('-game-') !== -1;
-            var captured = !!piece && piece.charAt(0) === 'b';
-            var originRow = practiceState.selectedPiece.row;
-            var originCol = practiceState.selectedPiece.col;
-            var movingPiece = boardMatrix[originRow][originCol];
-            var movingColor = movingPiece.charAt(0);
-            var isCastleMove = isGamePractice && movingPiece.charAt(1) === 'k' && Math.abs(col - originCol) === 2;
-            var epTarget = practiceState.enPassantTarget;
-            var isEnPassantCapture = isGamePractice && movingPiece.charAt(1) === 'p' && !piece &&
-              col !== originCol && epTarget && row === epTarget[0] && col === epTarget[1];
-            boardMatrix[row][col] = movingPiece;
-            boardMatrix[originRow][originCol] = '';
-            if (isEnPassantCapture) {
-              boardMatrix[originRow][col] = ''; // remove the pawn that just passed by
-            }
-            if (isCastleMove) {
-              var homeRow = movingColor === 'w' ? 7 : 0;
-              if (col > originCol) { // kingside — rook a-side stays, h-rook jumps to f
-                boardMatrix[homeRow][5] = movingColor + 'r';
-                boardMatrix[homeRow][7] = '';
-              } else { // queenside — a-rook jumps to d
-                boardMatrix[homeRow][3] = movingColor + 'r';
-                boardMatrix[homeRow][0] = '';
-              }
-            }
-            practiceState.selectedPiece = null;
-            practiceState.legalTargets = [];
-
-            var needsPromotion = isGamePractice && movingPiece.charAt(1) === 'p' && (row === 0 || row === 7);
-
-            if (isGamePractice) {
-              practiceState.enPassantTarget = (movingPiece.charAt(1) === 'p' && Math.abs(row - originRow) === 2)
-                ? [(row + originRow) / 2, col] : null;
-            }
-
-            if (isGamePractice && practiceState.castlingRights) {
-              if (movingPiece.charAt(1) === 'k') {
-                practiceState.castlingRights[movingColor].kingside = false;
-                practiceState.castlingRights[movingColor].queenside = false;
-              } else if (movingPiece.charAt(1) === 'r') {
-                var rHomeRow = movingColor === 'w' ? 7 : 0;
-                if (originRow === rHomeRow && originCol === 0) practiceState.castlingRights[movingColor].queenside = false;
-                if (originRow === rHomeRow && originCol === 7) practiceState.castlingRights[movingColor].kingside = false;
-              }
-            }
-
-            renderBoard();
-
-            if (isCapturePractice) {
-              drawCaptureProtectionArrows();
-              if (captured) {
-                playCaptureSound();
-                showPracticeMark(getSquare(row, col), true);
-                if (boardHasAnyBlackPiece()) {
-                  if (practiceStatus) practiceStatus.textContent = '✅ 吃掉了！继续吃掉剩下的黑子。';
-                  speak('吃掉了');
-                } else {
-                  if (practiceStatus) practiceStatus.textContent = '✅ 太棒了，把所有黑子都吃掉了！';
-                  speak('太棒了，把所有黑子都吃掉了');
-                  practiceState.armed = false;
-                }
-              }
-            } else if (isGamePractice) {
-              if (needsPromotion) {
-                showPromotionModal(movingColor, function(promoKind) {
-                  boardMatrix[row][col] = movingColor + promoKind;
-                  renderBoard();
-                  finishGameMove(movingColor, isCastleMove);
-                });
-              } else {
-                finishGameMove(movingColor, isCastleMove);
-              }
-            }
+            executeMove(practiceState.selectedPiece.row, practiceState.selectedPiece.col, row, col, false);
             return;
           }
 
@@ -2957,7 +3292,7 @@
         var sc = PRAC_SCENARIOS[practiceState.scenario];
         var isGameScenario = practiceState.scenario && practiceState.scenario.indexOf('-game-') !== -1;
         var pickable = piece && (
-          isGameScenario ? piece.charAt(0) === practiceState.turn :
+          isGameScenario ? (piece.charAt(0) === practiceState.turn && isHumanControlledTurn()) :
           (piece.charAt(0) === 'w' || (sc && sc.freeColor && piece.charAt(0) === 'b'))
         );
         if (pickable) {

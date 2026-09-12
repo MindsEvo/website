@@ -45,6 +45,8 @@
     checkSquare: null,
     gameOver: false,
     gameResultText: "",
+    halfmoveClock: 0,
+    positionCounts: {},
     humanAi: null,
     aiVsAi: {
       black: null,
@@ -156,7 +158,7 @@
         if (!move) {
           return;
         }
-        if (move.isCheckmate) {
+        if (move.isCheckmate || move.isThreefold || move.isFiftyMove) {
           cloneAndPlay(assets.gameEnd);
           return;
         }
@@ -369,7 +371,9 @@
       lastMove: state.lastMove ? Object.assign({}, state.lastMove) : null,
       checkSquare: cloneTarget(state.checkSquare),
       gameOver: state.gameOver,
-      gameResultText: state.gameResultText
+      gameResultText: state.gameResultText,
+      halfmoveClock: state.halfmoveClock,
+      positionCounts: Object.assign({}, state.positionCounts)
     };
   }
 
@@ -382,7 +386,13 @@
     state.checkSquare = cloneTarget(snapshot.checkSquare);
     state.gameOver = !!snapshot.gameOver;
     state.gameResultText = snapshot.gameResultText || "";
+    state.halfmoveClock = snapshot.halfmoveClock || 0;
+    state.positionCounts = Object.assign({}, snapshot.positionCounts);
     state.selected = null;
+  }
+
+  function reducedPositionKey() {
+    return toFen().split(" ").slice(0, 4).join(" ");
   }
 
   function resetEngineState() {
@@ -396,6 +406,9 @@
     state.checkSquare = null;
     state.gameOver = false;
     state.gameResultText = "";
+    state.halfmoveClock = 0;
+    state.positionCounts = {};
+    state.positionCounts[reducedPositionKey()] = 1;
   }
 
   function createAiMock(side) {
@@ -408,7 +421,7 @@
       pv: "等待分析...",
       eval: "等待分析...",
       level: "高级10: 特级大师 (2400)",
-      preset: "advanced"
+      preset: "master"
     };
   }
 
@@ -422,6 +435,7 @@
         pv: "等待分析...",
         eval: "🎯 局面评估系统已就绪\n开始下棋后，AI将为您分析局面优势，提供专业的棋局建议。\n⚡ 后续将整合 LLM 和专家系统，提供更深入的分析。",
         level: "高级10: 特级大师 (2400)",
+        preset: "master",
         maxRetries: 2
       };
     }
@@ -489,7 +503,7 @@
   function getAiVsAiSettingsForSide(side) {
     ensureAiMockData();
     var panel = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
-    var preset = panel.preset || "advanced";
+    var preset = panel.preset || "master";
     var config = getAiPresetConfig(preset);
     return {
       skillLevel: config.skillLevel,
@@ -507,11 +521,11 @@
     var cards = aiVsAiPanel.querySelectorAll(".engine-card");
     if (cards[0]) {
       var blackPreset = cards[0].querySelector('[data-role="preset"]');
-      if (blackPreset) state.aiVsAi.black.preset = blackPreset.value || "advanced";
+      if (blackPreset) state.aiVsAi.black.preset = blackPreset.value || "master";
     }
     if (cards[1]) {
       var whitePreset = cards[1].querySelector('[data-role="preset"]');
-      if (whitePreset) state.aiVsAi.white.preset = whitePreset.value || "advanced";
+      if (whitePreset) state.aiVsAi.white.preset = whitePreset.value || "master";
     }
   }
 
@@ -642,21 +656,16 @@
   }
 
   function getHumanAiEngineSettings() {
-    var speed = Number(speedRange ? speedRange.value : 5);
-    speed = Number.isFinite(speed) ? Math.max(1, Math.min(10, speed)) : 5;
-
-    var skillLevel = Math.max(0, Math.min(20, Math.round(speed * 2)));
-    var movetime = 220 + speed * 120;
-    var depth = Math.max(6, Math.min(24, 6 + speed));
-    var multiPv = speed >= 8 ? 3 : 2;
-
+    ensureAiMockData();
+    var preset = state.humanAi.preset || "master";
+    var config = getAiPresetConfig(preset);
     return {
-      speed: speed,
-      skillLevel: skillLevel,
-      movetime: movetime,
-      depth: depth,
-      multiPv: multiPv,
-      levelText: "速度" + speed + "｜S" + skillLevel + " D" + depth + " T" + movetime + "ms"
+      skillLevel: config.skillLevel,
+      depth: config.depth,
+      movetime: config.movetime,
+      multiPv: config.multiPv,
+      levelText: config.label + "｜S" + config.skillLevel + " D" + config.depth + " T" + config.movetime + "ms",
+      preset: preset
     };
   }
 
@@ -1497,12 +1506,29 @@
     var isCheckmate = opponentInCheck && !opponentCanMove;
     var isStalemate = !opponentInCheck && !opponentCanMove;
 
+    var isPawnMove = getKind(piece) === "p";
+    state.halfmoveClock = (applied.isCapture || applied.isEnPassant || isPawnMove) ? 0 : state.halfmoveClock + 1;
+    var posKey = reducedPositionKey();
+    state.positionCounts[posKey] = (state.positionCounts[posKey] || 0) + 1;
+    var isThreefold = state.positionCounts[posKey] >= 3;
+    var isFiftyMove = state.halfmoveClock >= 100;
+
     if (isCheckmate) {
       state.gameOver = true;
       state.gameResultText = (state.turn === "w" ? "黑方" : "白方") + "将死获胜";
     } else if (isStalemate) {
       state.gameOver = true;
       state.gameResultText = "逼和";
+    } else if (isThreefold) {
+      state.gameOver = true;
+      state.gameResultText = "三次重复局面，和棋";
+    } else if (isFiftyMove) {
+      state.gameOver = true;
+      state.gameResultText = "五十步无吃子无兵移动，和棋";
+    }
+
+    if (state.gameOver) {
+      voiceManager.speak(state.gameResultText, { force: true });
     }
 
     state.lastMove = {
@@ -1517,6 +1543,8 @@
       isCheck: opponentInCheck,
       isCheckmate: isCheckmate,
       isStalemate: isStalemate,
+      isThreefold: isThreefold,
+      isFiftyMove: isFiftyMove,
       promotionKind: move.promotionKind || null
     };
 
@@ -1530,7 +1558,7 @@
 
     renderBoard();
     soundManager.playMove(state.lastMove);
-    voiceManager.onMove(piece, move, state.lastMove);
+    // Per-move voice narration removed — was too disruptive across manual/human-vs-AI/AI-vs-AI modes.
     logger.info("game", "move.done", {
       piece: piece,
       from: toCellName(move.fromRow, move.fromCol),
@@ -1880,6 +1908,18 @@
       speedValue.textContent = speedRange.value;
       logger.debug("ui", "speed.changed", { value: Number(speedRange.value) });
     });
+
+    if (humanAiPanel) {
+      var humanPreset = humanAiPanel.querySelector('[data-role="preset"]');
+      if (humanPreset) {
+        humanPreset.addEventListener("change", function () {
+          ensureAiMockData();
+          state.humanAi.preset = humanPreset.value || "master";
+          state.humanAi.level = getHumanAiEngineSettings().levelText;
+          renderHumanAiPanel();
+        });
+      }
+    }
 
     if (aiVsAiPanel) {
       var cards = aiVsAiPanel.querySelectorAll(".engine-card");
