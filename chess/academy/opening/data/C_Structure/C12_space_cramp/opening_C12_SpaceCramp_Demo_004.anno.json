@@ -1,0 +1,101 @@
+{
+  "game_id": "C12_SpaceCramp_Demo_004",
+  "description": "法国古典变 C11 — 空间优势的正确跟进：三件套作战计划",
+  "intro": {
+    "flash_squares": ["e5", "f4", "d1"],
+    "popup": "空间挤压 第4课\n\n建立了空间优势，然后呢？\n\n光有空间不够！\n必须有配套的子力计划\n才能把优势变成进攻！\n\n跟踪白方的三件套计划：\nBe3 → Qd2 → O-O-O",
+    "voice": true
+  },
+  "outro": {
+    "popup": "正确使用空间优势\n\n三件套模板：\n① 楔子e5 + 支援f4\n② Be3守护 + Nxd4控线\n③ Qd2指向 + O-O-O连接\n\n空间 + 目标 + 执行 = 优势！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e5", "f4"],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4 开局！"},
+    {"index": 1, "move": "e6", "popup": "e6 法国防御"},
+    {"index": 2, "move": "d4", "popup": "d4 扩大中心"},
+    {"index": 3, "move": "d5", "popup": "d5 反中心！双方争夺中心"},
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 发展马，支援e4"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6 发展马！攻击e4"
+    },
+    {
+      "index": 6,
+      "move": "e5",
+      "popup": "e5！推进楔子！\nNf6必须撤退……"
+    },
+    {
+      "index": 7,
+      "move": "Nfd7",
+      "popup": "Nfd7 马被迫撤退\nf6格被占，只能去d7",
+      "highlights": [
+        {"squares": ["f6", "e5", "d7"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 8,
+      "move": "f4",
+      "popup": "f4！⭐正确的跟进！\n\nf4支援e5楔子！\n这不是随意推进，而是计划的一部分：\nf4→f5，进攻黑方王翼！",
+      "highlights": [
+        {"squares": ["f4", "e5", "f5"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "c5",
+      "popup": "c5 黑方反击d4！\n这是黑方的核心对抗手段"
+    },
+    {"index": 10, "move": "Nf3", "popup": "Nf3 发展马，守护d4"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6 发展马，再攻d4"},
+    {
+      "index": 12,
+      "move": "Be3",
+      "popup": "Be3！⭐三件套第一件！\n\nBe3守护d4，发展象\n同时为Qd2做准备\n\n白方每一步都有协调意图！",
+      "highlights": [
+        {"squares": ["e3", "d4"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "cxd4",
+      "popup": "cxd4 黑方兑换！攻击d4"
+    },
+    {
+      "index": 14,
+      "move": "Nxd4",
+      "popup": "Nxd4！马重新占领d4\n中心控制维持！"
+    },
+    {
+      "index": 15,
+      "move": "Bc5",
+      "popup": "Bc5 象出来攻击d4！\n黑方的反压力来了"
+    },
+    {
+      "index": 16,
+      "move": "Qd2",
+      "popup": "Qd2！⭐三件套第二件！\n\n后来到d2：\n① 准备长易位\n② 指向h6（Bh6是威胁）\n③ 连接两车\n\n白方整体战略已成形！",
+      "highlights": [
+        {"squares": ["d2", "h6"], "color": "#8E24AA55"}
+      ]
+    },
+    {"index": 17, "move": "O-O", "popup": "O-O 黑方入城！\n王移向翼侧……但白方正盯着这里！"},
+    {
+      "index": 18,
+      "move": "O-O-O",
+      "popup": "O-O-O！⭐三件套第三件！\n\n长易位！计划完成！\n\n白方现在：\n① 车在d1，对齐d-线\n② 后+车+Nxd4+Be3全部协调\n③ 进攻方向：g4-h4-f5或Nf5\n\n这就是空间优势的正确使用：\n有楔子 + 有计划 + 子力全部执行！",
+      "highlights": [
+        {"squares": ["c1", "d1", "d2", "d4", "e3", "f4", "e5"], "color": "#C6D50044"}
+      ]
+    }
+  ]
+}

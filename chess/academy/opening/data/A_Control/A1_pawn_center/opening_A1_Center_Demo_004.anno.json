@@ -1,0 +1,708 @@
+{
+  "game_id": "A1_Center_Demo_004",
+  "description": "西西里防御——中心的争夺与反制 第4局，23步完整注释",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "e4",
+      "e5",
+      "c5"
+    ],
+    "popup": "西西里防御：黑方不正面抢中心，而是用 c5 从侧翼反制 d4！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "中心不一定要正面争夺，侧翼反制同样是控制中心的有效手段。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "e4",
+      "e5",
+      "c5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占领中心！</b><br>经典第一步，e4 兵踏上中心，控制 d5 和 f5。白方邀请黑方进行中心争夺——但黑方这一次不按套路出牌！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "⬇️ <b>1...c5 — 西西里防御！侧翼反制中心！</b><br>黑方不走 e5 对称，而是走 c5——这就是西西里防御的核心思路：<b>侧翼攻击 d4 格</b>，不让白方建立双兵中心。<br>c5 离中心不远，却把 d4 格纳入攻击范围，是聪明的不对称反制！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c5",
+          "to": "b4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 白马出动，准备 d4！</b><br>f3 马控制 e5 和 d4，为白方下一步推 d4 建立中心做好准备。<br>白方的计划：Nf3 → d4 → 建立双兵中心，然后用马重夺 d4。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4",
+            "g5",
+            "h4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "d6",
+      "popup": "⬇️ <b>2...d6 — 黑方准备 e5！</b><br>d6 为 e5 推进做铺垫，同时限制白方 e5 的格子。黑方不急于出子，先筑好阵型基础。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "⬆️ <b>3.d4 — 白方建立双兵中心！</b><br>白方果断推 d4，现在 e4+d4 双兵并立，完全掌控中心。<br>同时这也是对黑方 c5 的直接挑战——黑方必须做出选择！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "⬇️ <b>3...cxd4 — 黑方消灭中心兵！</b><br>黑方用 c5 吃掉 d4，打破了白方的双兵中心——开始争夺中心！<br>这就是西西里的策略：<b>不怕你建中心，吃掉就好。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nxd4",
+      "popup": "⬆️ <b>4.Nxd4 — 白马重占 d4！子力控制中心！</b><br>白马跳回 d4，中心从「兵控制」变为「马控制」。<br>d4 马威胁四面八方，子力控制的灵活性远超兵。这是一种更高级的中心控制形式！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c6",
+            "e6",
+            "b5",
+            "f5",
+            "b3",
+            "f3",
+            "c2",
+            "e2"
+          ],
+          "color": "#C6D50022",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c6",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d4",
+          "to": "e6",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d4",
+          "to": "f5",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "d4",
+          "to": "b5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑马来到 f6，直接威胁白方的 e4 兵，同时控制 d5 格。中心争夺进入白热化——<b>双方都在用子力争夺中心格。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 白马保护 e4！</b><br>c3 马支援 e4 兵，同时控制 d5。白方双马（d4+c3）构成强大的中心子力网络，共同掌控棋盘中央。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5",
+            "b5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "a6",
+      "popup": "⬇️ <b>5...a6 — 纳杰多夫变例！防止 Nb5！</b><br>a6 阻止白马跳到 b5，是西西里「纳杰多夫变例」的标志性一步。黑方在争夺中心的同时，防止白方用马插入腹地。这一步看似平淡，实则极有远见！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Be3",
+      "popup": "⬆️ <b>6.Be3 — 白象控制中心颜色格！</b><br>e3 象支援 d4，同时控制 d4-a7、f4-h6 等对角线，占据中心。<br>白方正在构建全面的中心控制网络——不只靠兵，还靠子力协作。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4",
+            "b6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "e3",
+          "to": "b6",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "e5",
+      "popup": "⬇️ <b>6...e5 — 黑方反击 d4！</b><br>黑方推 e5 直接挑战 d4 马，迫使白马后退。黑方终于在中心落子，双方的中心张力达到顶点。<br>e5 控制了 d4 和 f4，黑方也建立了中心支点！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD466",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Nb3",
+      "popup": "⬆️ <b>7.Nb3 — 白马主动后退！以退为进！</b><br>d4 马被 e5 赶走，退到 b3。暂时让出中心，但为后续反击做好准备：<br>黑方 e5 兵长期来看是弱点。白方以退为进，等待机会收割！",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5",
+            "a5",
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "c5",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "b3",
+          "to": "d4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Be6",
+      "popup": "⬇️ <b>7...Be6 — 黑象守护 e5！</b><br>黑象出动到 e6，加大控制范围。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "a2",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "e6",
+          "to": "h3",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "f3",
+      "popup": "⬆️ <b>8.f3 — 白方构建进攻基础！</b><br>f3 兵支撑 e4，准备 g4-g5 的王翼进攻。白方利用中心优势，开始酝酿侧翼进攻。<br>中心稳固是发动侧翼进攻的前提——这就是「中心控制转化进攻」的典型示范！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "g4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "f3",
+          "to": "g4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Be7",
+      "popup": "⬇️ <b>8...Be7 — 黑象防守，准备易位！</b><br>黑象退回 e7，为王翼易位清路，黑方优先保证国王安全。局面至此，白方在中心和进攻积极性上均占优，黑方以防守为主。",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Qd2",
+      "popup": "⬆️ <b>9.Qd2 — 白后出动，准备异翼易位！</b><br>d2 准备长易位（0-0-0，王去 c1）。白方即将把国王放在后翼，在王翼展开全面进攻。<br>后来 d2 是「异翼易位进攻」的标配——准备猛攻！",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "h6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "h6",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "e1",
+          "to": "c1",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "⬇️ <b>9...O-O — 黑方王翼易位，王安全！</b><br>黑方国王转移到 g8，完成王翼易位。但此刻白方也要去后翼易位——双方国王在<b>不同方向</b>，这预示着一场激烈的异翼对攻即将爆发！",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h8",
+          "to": "f8",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "O-O-O",
+      "popup": "⬆️ <b>10.O-O-O — 白方长易位，异翼对攻开始！</b><br>白方国王去后翼（c1），车激活到 d1。双方国王分处两翼，现在是速度竞赛——谁先攻破对方的王！<br>这是中心控制优势的终极转化：中心在手，才有资本放心进行侧翼进攻。",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "d1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "c1",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "a1",
+          "to": "d1",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nbd7",
+      "popup": "⬇️ <b>10...Nbd7 — 黑马出动，加固阵型！</b><br>黑方第二匹马出动，支援中心和后翼防线。黑方阵型紧密，没有明显弱点——但白方的进攻浪潮即将到来！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "c5",
+            "b6",
+            "f8"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "e5",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "d7",
+          "to": "c5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "g4",
+      "popup": "⬆️ <b>11.g4 — 王翼进攻正式启动！</b><br>g4 兵开始向黑方国王所在的王翼挺进，目标是 g5→g6 打开黑王前的防线。<br>白方已万事俱备：中心稳固、子力发展完毕、异翼易位完成——现在是进攻时间！",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "g6",
+            "h6"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "g5",
+          "color": "#FF8F00CC"
+        },
+        {
+          "from": "g5",
+          "to": "g6",
+          "color": "#FF8F0099"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "b5",
+      "popup": "⬇️ <b>11...b5 — 黑方后翼反击！</b><br>黑方用 b5 在后翼发动反攻，目标是白方国王所在的 c1 方向！这是异翼对攻的精髓：<b>双方同时向对方国王冲锋，谁快谁赢！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "b4",
+            "a4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "b4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "b5",
+          "to": "c4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "g5",
+      "popup": "⬆️ <b>12.g5 — 王翼攻势加速！</b><br>g5 兵继续推进，黑马 f6 被赶走，王翼防线动摇。白方的进攻比黑方更快更猛烈。<br>西西里防御展示了「侧翼反制中心」的精髓：c5攻击d4，打破白方双兵中心；双方都用子力争夺中心；中心争夺结束后，白方利用中心优势发动侧翼猛攻——<b>控制中心是进攻的基础！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "h6"
+          ],
+          "color": "#FF8F0055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g5",
+            "g4"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "f6",
+          "color": "#FF8F00CC"
+        },
+        {
+          "from": "g5",
+          "to": "h6",
+          "color": "#FF8F0099"
+        }
+      ]
+    }
+  ]
+}

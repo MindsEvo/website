@@ -1,0 +1,87 @@
+{
+  "game_id": "C11_OpenFiles_Demo_003",
+  "description": "后翼弃兵 D30 — 双车叠压开放线",
+  "intro": {
+    "flash_squares": ["c1", "c3", "c5", "c7", "c8"],
+    "popup": "双车叠压开放线 第3课\n\nQGD中白方提前Rc1\n预判c线即将开放\n\ndxc4兑换后c线打通\n双车叠压=压力×2！\n\n先预判，再布置！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "双车叠压小结\n✅ Rc1提前预判c线开放\n✅ dxc4后车已在最佳位置\n✅ Rxc3+Rd1双车叠压\n\n核心技巧：\n预判开放线→提前占位→兑换后自然叠压！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["c1", "c8"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4占中心"},
+    {"index": 1, "move": "d5", "popup": "d5对顶\nQGD开始"},
+    {"index": 2, "move": "c4", "popup": "c4挑战d5\n后翼弃兵"},
+    {"index": 3, "move": "e6", "popup": "e6稳固\n防止c5"},
+    {"index": 4, "move": "Nf3", "popup": "Nf3发展马"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6发展马"},
+    {"index": 6, "move": "Nc3", "popup": "Nc3发展马\n支援中心"},
+    {"index": 7, "move": "Be7", "popup": "Be7发展象\n准备入城"},
+    {"index": 8, "move": "Bg5", "popup": "Bg5钉住Nf6\n施压黑方"},
+    {"index": 9, "move": "O-O", "popup": "O-O率先入城"},
+    {"index": 10, "move": "e3", "popup": "e3稳固中心"},
+    {"index": 11, "move": "Nbd7", "popup": "Nbd7发展马\n为后来的c6准备"},
+    {
+      "index": 12,
+      "move": "Rc1",
+      "popup": "Rc1！战略预判！\nc线现在是封闭的\n但白方已经预判\n黑方迟早会dxc4打开c线！\n提前把车放好！",
+      "highlights": [
+        {"squares": ["c1", "c4", "c5", "c6", "c7", "c8"], "color": "#00BCD455"}
+      ]
+    },
+    {"index": 13, "move": "c6", "popup": "c6稳固黑方阵型"},
+    {"index": 14, "move": "Bd3", "popup": "Bd3发展象\n瞄准h7"},
+    {
+      "index": 15,
+      "move": "dxc4",
+      "popup": "dxc4！黑方兑换\nc线打开！\n白方Rc1已在最佳位置！",
+      "highlights": [
+        {"squares": ["c4", "c1"], "color": "#C6D50088"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Bxc4",
+      "popup": "Bxc4白象吃回\n象占主动位"
+    },
+    {
+      "index": 17,
+      "move": "Nd5",
+      "popup": "Nd5！黑马跳中心\n争夺c3或e3"
+    },
+    {
+      "index": 18,
+      "move": "Bxe7",
+      "popup": "Bxe7！简化\n消灭黑方纤维象"
+    },
+    {
+      "index": 19,
+      "move": "Qxe7",
+      "popup": "Qxe7黑后重建\n但位置稍有限制"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "popup": "O-O入城！\n现在Rd1准备叠压d线"
+    },
+    {
+      "index": 21,
+      "move": "Nxc3",
+      "popup": "Nxc3兑换白马"
+    },
+    {
+      "index": 22,
+      "move": "Rxc3",
+      "popup": "Rxc3！双车叠压形成！\nRc3控制整个c列\nRd1再来=Rcd3叠压d线！\n黑方d7/d8永远有压力！",
+      "highlights": [
+        {"squares": ["c3", "d1", "d7", "d8"], "color": "#E53935aa"}
+      ]
+    }
+  ]
+}

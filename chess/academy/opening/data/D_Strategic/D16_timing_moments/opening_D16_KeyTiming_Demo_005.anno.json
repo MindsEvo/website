@@ -1,0 +1,44 @@
+{
+  "game_id": "D16_KeyTiming_Demo_005",
+  "description": "国王印度防御E91 — 关键时机：e5突破与f5翼攻节奏",
+  "intro": {
+    "flash_squares": ["e4", "d4", "f5"],
+    "popup": "关键时机演示5\n\n国王印度防御！\n\ne5突破是KID的核心\n但f5翼攻何时启动？\n\n练习目标：\n识别e5和f5的时机节点",
+    "voice": true
+  },
+  "outro": {
+    "popup": "KID时机总结\n\n节奏控制：\n① e5！：白方Be2时抢先占中心\n② Nd7调度：为f5做充分准备\n③ f5！：Nd3就位后才启动\n④ g5：翼攻继续推进\n\n准备充分才能一击即中！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["e4", "d5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6"},
+    {"index": 2, "move": "c4", "popup": "c4"},
+    {"index": 3, "move": "g6", "popup": "g6 KID"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3"},
+    {"index": 5, "move": "Bg7", "popup": "Bg7 飞象"},
+    {"index": 6, "move": "e4", "popup": "e4"},
+    {"index": 7, "move": "d6", "popup": "d6"},
+    {"index": 8, "move": "Nf3", "popup": "Nf3"},
+    {"index": 9, "move": "O-O", "popup": "O-O"},
+    {"index": 10, "move": "Be2", "popup": "Be2"},
+    {"index": 11, "move": "e5", "popup": "e5！时机！\n白方巩固前抢先反制"},
+    {"index": 12, "move": "O-O", "popup": "O-O"},
+    {"index": 13, "move": "Nc6", "popup": "Nc6"},
+    {"index": 14, "move": "d5", "popup": "d5 封锁"},
+    {"index": 15, "move": "Ne7", "popup": "Ne7 马调度"},
+    {"index": 16, "move": "Ne1", "popup": "Ne1 白马重组"},
+    {"index": 17, "move": "Nd7", "popup": "Nd7！为f5准备"},
+    {"index": 18, "move": "Nd3", "popup": "Nd3 白马就位"},
+    {"index": 19, "move": "f5", "popup": "f5！时机！\nNd7+Nd3后启动翼攻"},
+    {"index": 20, "move": "Bd2", "popup": "Bd2"},
+    {"index": 21, "move": "Nf6", "popup": "Nf6 马再机动"},
+    {"index": 22, "move": "f3", "popup": "f3 白方巩固"},
+    {"index": 23, "move": "f4", "popup": "f4！继续推进"},
+    {"index": 24, "move": "Nf2", "popup": "Nf2"},
+    {"index": 25, "move": "g5", "popup": "g5！翼攻加速"},
+    {"index": 26, "move": "a4", "popup": "a4 白方翼攻"},
+    {"index": 27, "move": "Ng6", "popup": "Ng6 马就位\n对攻进入高潮"}
+  ]
+}

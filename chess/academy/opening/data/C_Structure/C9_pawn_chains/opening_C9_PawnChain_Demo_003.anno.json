@@ -1,0 +1,251 @@
+{
+  "game_id": "C9_PawnChain_Demo_003",
+  "description": "C14 — 法国防御古典变例，王翼g4-g5突破范例",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "f4"
+    ],
+    "popup": "兵链方向第3课\n\ne5有d4和f4两个根部支撑\n黑方c5仅攻d4一侧，效果有限\n本局真正亮点：白方王翼突破！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：e5有d4和f4双根部，c5仅攻d4一侧效果有限\n白方g4-g5-gxh6王翼强力突破\n打开g线，黑王岌岌可危！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4"
+    },
+    {
+      "index": 1,
+      "move": "e6"
+    },
+    {
+      "index": 2,
+      "move": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Nf6"
+    },
+    {
+      "index": 6,
+      "move": "Bg5"
+    },
+    {
+      "index": 7,
+      "move": "Be7"
+    },
+    {
+      "index": 8,
+      "move": "e5",
+      "popup": "e5！兵链形成！e5-d4\n后续f4加入后，e5将有d4和f4两个根部支撑",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nfd7"
+    },
+    {
+      "index": 10,
+      "move": "Bxe7"
+    },
+    {
+      "index": 11,
+      "move": "Qxe7"
+    },
+    {
+      "index": 12,
+      "move": "f4",
+      "popup": "f4！f4也是e5的根部\ne5现在有d4和f4两个根部支撑\n攻击根部需同时威胁两侧才彻底",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "a6",
+      "popup": "a6防守"
+    },
+    {
+      "index": 14,
+      "move": "Nf3",
+      "popup": "Nf3发展"
+    },
+    {
+      "index": 15,
+      "move": "c5",
+      "popup": "c5攻击根部d4\n但注意：e5还有f4这个根部未受攻击\nc5仅攻单根，效果不够彻底",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "dxc5",
+      "popup": "dxc5白轻松接受\nd4消失，但e5仍由f4支撑，兵链未破"
+    },
+    {
+      "index": 17,
+      "move": "Nxc5",
+      "popup": "Nxc5黑马占c5要点"
+    },
+    {
+      "index": 18,
+      "move": "Qd2",
+      "popup": "Qd2准备长易位"
+    },
+    {
+      "index": 19,
+      "move": "Nc6",
+      "popup": "Nc6增援"
+    },
+    {
+      "index": 20,
+      "move": "O-O-O",
+      "popup": "O-O-O长易位"
+    },
+    {
+      "index": 21,
+      "move": "b5",
+      "popup": "b5！！黑方沿兵链方向后翼进攻\n双翼竞速真正开始！",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "b4"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Kb1",
+      "popup": "Kb1王躲开对角线"
+    },
+    {
+      "index": 23,
+      "move": "Bd7",
+      "popup": "Bd7象出发展"
+    },
+    {
+      "index": 24,
+      "move": "Ne2",
+      "popup": "Ne2调兵"
+    },
+    {
+      "index": 25,
+      "move": "b4",
+      "popup": "b4！黑方继续推进"
+    },
+    {
+      "index": 26,
+      "move": "Ned4",
+      "popup": "Ned4！马强占d4！"
+    },
+    {
+      "index": 27,
+      "move": "Nxd4",
+      "popup": "Nxd4兑换"
+    },
+    {
+      "index": 28,
+      "move": "Nxd4",
+      "popup": "Nxd4白马重占"
+    },
+    {
+      "index": 29,
+      "move": "O-O",
+      "popup": "O-O黑易位"
+    },
+    {
+      "index": 30,
+      "move": "g4",
+      "popup": "g4！！白方王翼进攻！\n这才是本局真正主题：沿兵链头部方向发动突破！"
+    },
+    {
+      "index": 31,
+      "move": "Rfc8",
+      "popup": "Rfc8车准备"
+    },
+    {
+      "index": 32,
+      "move": "g5",
+      "popup": "g5！！白方王翼总攻！\ng4-g5连续推进，直逼黑王阵地！",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f4",
+            "e5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "h6",
+      "popup": "h6！黑方被迫应对\n挑战白g5是否过伸"
+    },
+    {
+      "index": 34,
+      "move": "gxh6",
+      "popup": "gxh6！g线打开！\ng4-g5-gxh6王翼突破成功\n黑王g线门户洞开！",
+      "highlights": [
+        {
+          "squares": [
+            "h6",
+            "g7"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "gxh6",
+      "popup": "gxh6黑回吃\ng线彻底打开，黑王危在旦夕！\n——王翼突破的经典范例！"
+    }
+  ]
+}

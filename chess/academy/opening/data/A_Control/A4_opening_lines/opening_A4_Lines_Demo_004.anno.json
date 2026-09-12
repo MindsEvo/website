@@ -1,0 +1,149 @@
+{
+  "game_id": "A4_Lines_Demo_004",
+  "description": "斯拉夫防御 D10 — 反例：c线开放后车放错位，黑方Rc8抢占c线",
+  "intro": {
+    "flash_squares": ["c1", "b1", "c4", "c5"],
+    "popup": "线路控制第4课\n这是一个反例！\nc线打开后，车放错了位置\n请注意白方Rab1的错误",
+    "voice": true
+  },
+  "outro": {
+    "popup": "反例总结\nRab1错在方向——c线开放却走了b线\n黑方Rc8率先占领c线\n白方虽能Rfc1补上\n但有失先的嫌疑，意义大不同",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4开局\n后翼兵型序列开始"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5对称\n黑方稳健"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "highlights": [{"squares": ["c4", "d5"], "color": "#FF8F0055"}],
+      "popup": "c4！后翼弃兵\nc4-c5线将成为关键战场\n注意c线的开放时机"
+    },
+    {
+      "index": 3,
+      "move": "c6",
+      "popup": "c6斯拉夫防御\n黑方不走e6\n保留发展黑格象的空间"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展\n支持c4，准备中心对抗"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展\n黑方轻子出动"
+    },
+    {
+      "index": 6,
+      "move": "cxd5",
+      "highlights": [{"squares": ["c4", "d5", "c1"], "color": "#C6D50044"}],
+      "concept_arrows": [{"from": "c4", "to": "d5", "color": "#00BCD4CC"}],
+      "popup": "cxd5兑换！\nc线立刻成为半开放线\n此时白方应该预判：\nRc1会是最好的布车"
+    },
+    {
+      "index": 7,
+      "move": "cxd5",
+      "highlights": [{"squares": ["c6", "d5", "c1"], "color": "#C6D50044"}],
+      "popup": "cxd5黑方重提\nc线已开放！\n白方下一步如何布车？"
+    },
+    {
+      "index": 8,
+      "move": "Bf4",
+      "popup": "Bf4发展象\n控制e5\n开局发展继续"
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "Nc6出马\n黑方发展"
+    },
+    {
+      "index": 10,
+      "move": "e3",
+      "popup": "e3稳固中心\n白方巩固发展"
+    },
+    {
+      "index": 11,
+      "move": "Bf5",
+      "popup": "Bf5黑格象出动\n斯拉夫特征：黑格象在c8-h3线上"
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "highlights": [{"squares": ["d3", "f5"], "color": "#FF8F0055"}],
+      "popup": "Bd3！白方象挑战黑格象\n准备兑换Bxd3或互换\n简化局面"
+    },
+    {
+      "index": 13,
+      "move": "Bxd3",
+      "popup": "黑方Bxd3兑换\n消除了黑格象之争"
+    },
+    {
+      "index": 14,
+      "move": "Qxd3",
+      "highlights": [{"squares": ["d3", "h7", "c1"], "color": "#FF8F0044"}],
+      "popup": "Qxd3重提\n皇后站d3，攻势初显\n此时c线已开，白方的布车选择至关重要！"
+    },
+    {
+      "index": 15,
+      "move": "e6",
+      "popup": "e6稳健\n黑方巩固中心"
+    },
+    {
+      "index": 16,
+      "move": "Nf3",
+      "popup": "Nf3发展\n白方轻子全部出动"
+    },
+    {
+      "index": 17,
+      "move": "Be7",
+      "popup": "Be7发展\n准备王车易位"
+    },
+    {
+      "index": 18,
+      "move": "O-O",
+      "popup": "白方王车易位\nf1车准备参战"
+    },
+    {
+      "index": 19,
+      "move": "O-O",
+      "popup": "黑方也王车易位\n开局发展完毕\n关键决策时刻到来"
+    },
+    {
+      "index": 20,
+      "move": "Rab1",
+      "highlights": [{"squares": ["a1", "b1"], "color": "#E5393555"}, {"squares": ["c1", "c8"], "color": "#C6D50033"}],
+      "concept_arrows": [
+        {"from": "a1", "to": "b1", "color": "#E53935CC"},
+        {"from": "a1", "to": "c1", "color": "#C6D50099"}
+      ],
+      "popup": "Rab1！这是错误！\nc线已经开放，白方应该Rac1\n但这里把a1车走到了b1\n→ b线没有打开，b1车没有价值\n→ c线控制权拱手相让\n绿色箭头：正确应走Rac1"
+    },
+    {
+      "index": 21,
+      "move": "Rc8",
+      "highlights": [{"squares": ["c8", "c1"], "color": "#C6D50066"}],
+      "concept_arrows": [{"from": "f8", "to": "c8", "color": "#C6D500CC"}],
+      "popup": "Rc8！黑方立刻抢占c线！\n白方Rab1浪费了一步\n黑车率先进驻c8\n白方想控制c线——已经晚了！\n如果白方走的是Rac1，就不会有这个问题"
+    },
+    {
+      "index": 22,
+      "move": "Rfc1",
+      "highlights": [{"squares": ["c1", "c8", "b1"], "color": "#FF8F0055"}],
+      "concept_arrows": [{"from": "c8", "to": "c1", "color": "#C6D500CC"}],
+      "popup": "Rfc1——亚羊补牢\n白方终于把车搬到c线\n但黑方Rc8已在c8，先手在黑\n双车共争c线——白方被动应对\n失先一步就是失了主动权"
+    }
+  ]
+}

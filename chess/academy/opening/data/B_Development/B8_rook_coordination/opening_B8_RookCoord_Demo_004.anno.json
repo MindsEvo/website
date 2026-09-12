@@ -1,0 +1,92 @@
+{
+  "game_id": "B8_RookCoord_Demo_004",
+  "description": "B18 — 卡罗-卡恩古典变例，后翼易位联通双车，再用Rhe1优先占据e列通道。",
+  "intro": {
+    "flash_squares": [
+      "e1",
+      "e7"
+    ],
+    "popup": "链接双车第4课\n后翼易位后，双车如何联通，\n以及为什么要先用Rhe1占据e列通道。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：O-O-O联通双车 → Rhe1占据e列。\n先建立通道，准备寻找攻击机会！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4控制中心\n开放子力"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6！卡罗-卡恩防御"
+    },
+    {
+      "index": 6,
+      "move": "Nxe4",
+      "popup": "Nxe4！白方吃回中心兵"
+    },
+    {
+      "index": 7,
+      "move": "Bf5",
+      "popup": "Bf5！黑象主动出动\n古典变例结构"
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "Bd3！主动交换黑方好象",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "g6"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Qxd3",
+      "popup": "Qxd3！后回到中心\n同时保持王车协调"
+    },
+    {
+      "index": 22,
+      "move": "O-O-O",
+      "popup": "O-O-O！后翼易位完成！\n双车自然联通！",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "Rhe1",
+      "popup": "Rhe1！Rh1→e1！\ne列就是未来渗透的高速路！\n本课先学会占据通道，不急着直接入侵。",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e7"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "game_id": "D16_KeyTiming_Demo_002",
+  "description": "西班牙开局C84 — 关键时机：d5突破的漫长准备",
+  "intro": {
+    "flash_squares": ["e4", "e5", "d4", "d5"],
+    "popup": "关键时机演示2\n\n西班牙开局！\n\n黑方何时发动d5突破？\n过早行动会失去先机\n\n练习目标：\n识别d5的最佳时机",
+    "voice": true
+  },
+  "outro": {
+    "popup": "西班牙时机总结\n\n三个时机节点：\n① c5：等白方d4准备后\n② cxd4：兑换打开局面\n③ d5：中心突破时机到！\n\n漫长积累，一击即中！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["e4", "e5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "e5", "popup": "e5"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6"},
+    {"index": 4, "move": "Bb5", "popup": "Bb5 西班牙开局"},
+    {"index": 5, "move": "a6", "popup": "a6"},
+    {"index": 6, "move": "Ba4", "popup": "Ba4"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6"},
+    {"index": 8, "move": "O-O", "popup": "O-O"},
+    {"index": 9, "move": "Be7", "popup": "Be7"},
+    {"index": 10, "move": "Re1", "popup": "Re1"},
+    {"index": 11, "move": "b5", "popup": "b5 驱象"},
+    {"index": 12, "move": "Bb3", "popup": "Bb3"},
+    {"index": 13, "move": "d6", "popup": "d6"},
+    {"index": 14, "move": "c3", "popup": "c3 准备d4"},
+    {"index": 15, "move": "O-O", "popup": "O-O"},
+    {"index": 16, "move": "h3", "popup": "h3"},
+    {"index": 17, "move": "Na5", "popup": "Na5 马机动"},
+    {"index": 18, "move": "Bc2", "popup": "Bc2"},
+    {"index": 19, "move": "c5", "popup": "c5！准备反制"},
+    {"index": 20, "move": "d4", "popup": "d4！白方中心推进"},
+    {"index": 21, "move": "Qc7", "popup": "Qc7 后激活"},
+    {"index": 22, "move": "Nbd2", "popup": "Nbd2 白方配置完成"},
+    {"index": 23, "move": "cxd4", "popup": "cxd4！时机来了！"},
+    {"index": 24, "move": "cxd4", "popup": "cxd4"},
+    {"index": 25, "move": "Nc6", "popup": "Nc6 马回中心"},
+    {"index": 26, "move": "d5", "popup": "d5！白方中心前进\n时机窗口打开"},
+    {"index": 27, "move": "Nb4", "popup": "Nb4 马机动"},
+    {"index": 28, "move": "Bb1", "popup": "Bb1"},
+    {"index": 29, "move": "a5", "popup": "a5 侧翼推进"},
+    {"index": 30, "move": "a3", "popup": "a3"},
+    {"index": 31, "move": "Na6", "popup": "Na6"},
+    {"index": 32, "move": "b4", "popup": "b4！翼部对攻"},
+    {"index": 33, "move": "axb4", "popup": "axb4"},
+    {"index": 34, "move": "axb4", "popup": "axb4 翼部打开"}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Demo_002",
+  "description": "维也纳对局 C26 — 易位后王的安全防线具体分析",
+  "intro": {
+    "flash_squares": ["g1", "f2", "g2", "h2", "e1"],
+    "popup": "王车易位第2课\n易位后王得到了全方位的保护！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "防线分析总结\n易位后王前边有多种阻挡和保护！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局"},
+    {"index": 1, "move": "e5", "popup": "e5对称"},
+    {"index": 2, "move": "Nc3", "popup": "Nc3发展马\n维也纳开局"},
+    {"index": 3, "move": "Nf6", "popup": "Nf6发展并反击e4"},
+    {"index": 4, "move": "f4", "highlights": [{"squares": ["f4","e5"], "color": "#FF8F0044"}], "popup": "f4！维也纳弃兵!\n进攻性极强\n但注意：f4走后王翼f兵消失\n此时王更需要尽快易位保护！"},
+    {"index": 5, "move": "d5", "popup": "d5！黑方反击中心\n对称进攻"},
+    {"index": 6, "move": "fxe5", "popup": "fxe5吃兵\n中心复杂化"},
+    {"index": 7, "move": "Nxe4", "popup": "Nxe4黑马跳入\n利用e4弱点"},
+    {"index": 8, "move": "Nf3", "highlights": [{"squares": ["f3","h2","g1"], "color": "#C6D50033"}], "popup": "Nf3发展\n马在f3的重要性：\n保护h2、g1格\n是王易位后的贴身护卫！"},
+    {"index": 9, "move": "Bg4", "popup": "Bg4牵制Nf3\n黑方施加压力\n正因如此白方要Be2解除牵制"},
+    {"index": 10, "move": "d4", "popup": "d4争夺中心"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6发展"},
+    {"index": 12, "move": "Be3", "popup": "Be3发展\n为Be2让位做准备"},
+    {"index": 13, "move": "Be7", "highlights": [{"squares": ["e7","g8"], "color": "#C6D50033"}], "popup": "Be7！黑方稳健发展\n象到e7，直接为易位铺路\ng8+f8清空，随时可以O-O！"},
+    {"index": 14, "move": "Be2", "highlights": [{"squares": ["e2","g4"], "color": "#00BCD433"}], "popup": "Be2！\n一举两得：\n1. 解除Bg4对Nf3的牵制\n2. 为王易位做最后准备\n现在e/f/g线清空，可以易位！"},
+    {"index": 15, "move": "Bxf3", "popup": "Bxf3黑方兑换\n消灭护卫马"},
+    {"index": 16, "move": "Bxf3", "popup": "Bxf3接回\n白方f3有强力象"},
+    {"index": 17, "move": "Nxc3", "popup": "Nxc3黑方兑换"},
+    {"index": 18, "move": "bxc3", "popup": "bxc3接回\n白方获得c线半开放"},
+    {"index": 19, "move": "O-O", "highlights": [{"squares": ["g8","f7","g7","h7","f8"], "color": "#C6D50066"}], "popup": "O-O！黑方立即易位！\n中心兑换结束，王不能再等！\n黑王安全到g8\n兵盾：f7+g7+h7\n这就是易位时机：子力交换后立刻易位！"},
+    {"index": 20, "move": "O-O", "highlights": [{"squares": ["e1","f1","g1","f2","g2","h2"], "color": "#C6D50066"}], "popup": "O-O！白方也易位！\n现在仔细看王的防线：\n王在g1\n兵盾：f2+g2+h2\n象在f3守护h1\n这就是王安全的具体体现！"},
+    {"index": 21, "move": "Re8", "highlights": [{"squares": ["f8","e8"], "color": "#00BCD455"}], "popup": "Re8！黑车激活！\n易位后车立刻占e线\ne8对准白方e5兵\n易位不只是王安全——车也激活了！"},
+    {"index": 22, "move": "Re1", "highlights": [{"squares": ["f1","e1","e8"], "color": "#C6D50044"}], "popup": "Re1！白车镜像激活！\n双方e线对抗：Re1 vs Re8\n王安全 + 车激活\n这就是易位一步换两个收益的精髓！"}
+  ]
+}

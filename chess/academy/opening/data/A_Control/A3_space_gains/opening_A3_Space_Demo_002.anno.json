@@ -1,0 +1,511 @@
+{
+  "game_id": "A3_Space_Demo_002",
+  "description": "意大利开局慢棋体系（Giuoco Pianissimo）— 子子有根，稳步扩展，平分秋色",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5",
+      "d4",
+      "d5"
+    ],
+    "popup": "观察这局几乎完全对称的意大利慢棋：双方每一步子力都互相保护，子子有根，稳健扩展。\n这是空间与安全的平衡艺术——互不冒进，力求协调。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "10回合后局面几乎完全对称，平分秋色。\n每一个子都有根，每一步推兵都有支撑——这就是「子子有根，稳步扩展」的精髓。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "e5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占领中心!</b><br>开局e4是安全的，目前没有任何威胁。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "e5",
+            "d5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方对称占中心！</b><br>黑方用同一步棋回应，e4 对 e5，双方平等。从这一刻起，双方的战略目标是一致的：保持 e 线中心兵，稳步发展子力。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 白马出动！马有根：兵保护马。</b><br>Nf3 的马攻击 e5，同时支撑 d4 和 e5 格的控制。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>黑马跳出，直接保护 e5 中心兵。e5 兵现在有根：Nc6 是它的守护者，白方若吃 e5，将面临反击。<br>",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "⬆️ <b>3.Bc4 — 意大利象！远程控制对角线。</b><br>白象来到 c4，瞄准 f7 要害格，同时控制 d5。这是意大利开局的标志性步骤。<b>",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF572288"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "⬇️ <b>3...Bc5 — 黑象完全对称！</b><br>黑象来到 c5，同样瞄准 f2 要害，控制 d4。这就是焦科钢琴变例（Giuoco Piano）——双方阵型几乎镜像。<br>💡 <b>此刻棋盘：两双马、两双象全部出动，完全对称——谁也不占便宜，谁也没有漏洞。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "f2",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "f2",
+          "color": "#FF572288"
+        },
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d3",
+      "popup": "⬆️ <b>4.d3 — 慢棋体系的关键！不急于推 d4。</b><br>这里白方选择 d3 而非 c3 准备 d4，这是意大利慢棋（Pianissimo）路线的核心选择：<br>• d3 巩固 e4，给象打开 c1-h6 对角线<br>• 不急于打破中心，先完成全部子力发展<br>🔑 <b>d3 兵有根：e4 兵从侧面支撑，d3 不会轻易被攻击。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "e4",
+            "c2"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d3",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "⬇️ <b>4...d6 — 黑方对称！同样稳健。</b><br>黑方用 d6 回应，巩固 e5 兵，同时给 c8 象开路。d3 对 d6，双方的慢棋意图一致——各自先把家里收拾好。<br>💡 <b>d6 兵有根：e5 兵守护着 d6，形成坚固的兵链。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d6",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 白方第二马出动！</b><br>c3 马支撑 d5 和 e4，与 Nf3 形成双马协防体系。此时白方三个子力（Nf3、Bc4、Nc3）全部指向中心，互相支撑。<br>🔑 <b>Nc3 马有根：d1 后通过 d 线给予侧面支撑，且马本身也支撑着 e4 中心兵。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#C6D50088"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nf6",
+      "popup": "⬇️ <b>5...Nf6 — 黑方第二马！完全对称！</b><br>f6 马控制 e4 和 d5，与 Nc6 形成双马协防。黑方四个子力（Nc6、Bc5、Nf6）全部出动，与白方完全镜像。<br>💡 <b>5步之后：双方均完成「四子出动」，阵型几乎完全对称——平分秋色！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e4",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#C6D50088"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "⬆️ <b>6.O-O — 白方易位，王安全！</b><br>子力发展完成，王立刻入城。易位后车到 f1，支撑 f 线，王翼防线完整。<br>🔑 <b>易位也是「有根」的体现：王在 g1 有 h2/f2/g2 三兵守护，f1 车随时支援。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "⬇️ <b>6...O-O — 黑方也易位！完全对称！</b><br>黑王同样入城，双方在第6步同时完成易位。这是本局对称性的高潮体现：从第1步到第6步，双方几乎每一步都是镜像。<br>💡 <b>6步后：双方易位完成，子力协调，兵形稳固——真正的「平分秋色」！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "a3",
+      "popup": "⬆️ <b>7.a3 — 防止 Bb4 钉马！预防性扩展。</b><br>a3 看似微小，却有明确目的：防止黑方 Bb4 钉住 c3 马（若 c3 马被钉，d5 和 e4 失去一个守护者）。<br>🔑 <b>预防性扩展：在威胁到来前先堵住漏洞，这也是「有根」思维的延伸——主动为子力创造安全环境。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a3",
+            "c3",
+            "b4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "b4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "a6",
+      "popup": "⬇️ <b>7...a6 — 黑方对称！同样预防 Bb5。</b><br>a6 防止白方 Bb5 钉住 c6 马。双方都在同一步做出预防性保护，保持完全均等的态势。<br>💡 <b>「互不侵犯」的体现：双方都知道对方的威胁所在，都选择预先防范而非冒进——这就是稳健开局的精髓。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a6",
+            "c6",
+            "b5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bd2",
+      "popup": "⬆️ <b>8.Bd2 — 暗格象激活，阵型更加协调。</b><br>c1 象发展到 d2，与 Bc4 形成双象阵型，覆盖两条对角线。同时 Bd2 保护了 c3 马，强化了阵型的互相支撑结构。<br>🔑 <b>Bd2 有根：d3 兵从前方支撑，c1 原格也有联系——每个子都嵌入整体结构中。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "c3",
+            "e3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "c3",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Bd7",
+      "popup": "⬇️ <b>8...Bd7 — 黑方暗格象出动！完全对称！</b><br>黑方 Bd7 与白方 Bd2 完全对称。Bd7 保护了 c6 马，加强了黑方整体结构的互相支撑。<br>💡 <b>8步后阵型总览：双方各有2马+2象+1王已易位+兵链稳固，每个子都有根，完美均衡！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "c6",
+            "e6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "c6",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "h3",
+      "popup": "⬆️ <b>9.h3 — 防止 Bg4/Ng4！空间性小步。</b><br>h3 推进一格，阻止黑方 Bg4 钉住 Nf3（若 Nf3 被钉，d4 推进的时机会受影响），也防止 Ng4 跳入。<br>🔑 <b>空间性扩展：h3 既是预防步，也在王翼获得一格空间——每一步小小的扩展都在积累优势。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g4",
+            "f3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h3",
+          "to": "g4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "h6",
+      "popup": "⬇️ <b>9...h6 — 黑方对称！防止 Bg5。</b><br>h6 阻止白方 Bg5 钉住 Nf6（若 Nf6 被钉，e4 的防守减弱）。h3 对 h6，双方都在王翼稳步推进一格，维持完全均等。<br>💡 <b>9步后局面：两边阵型几乎完全镜像，没有任何一方存在明显的弱点或优势。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "h6",
+            "g5",
+            "f6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h6",
+          "to": "g5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Re1",
+      "popup": "⬆️ <b>10.Re1 — 白车激活 e 线！</b><br>f1 车移到 e1，进入半开放的 e 线，支撑 e4 中心兵，同时对 e5 施加间接压力。车有根：e1 车直接护住 e4 兵，e4 兵也是整个中心体系的基石。<br>🔑 <b>发展的最后一步：车进入主要线路，白方所有子力全部处于最优位置，「子子有根」已经完全实现！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e4",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f1",
+          "to": "e1",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "e1",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Re8",
+      "popup": "⬇️ <b>10...Re8 — 黑车对称，平分秋色！</b><br>黑车同样进入 e 线，护住 e5 兵。Re8 对 Re1，完美对称。<br>🏁 <b>10回合总结——「子子有根，稳步扩展」：</b><br>• 每个子都有至少一个其他子保护<br>• d3/d6 稳健扩展，不冒进<br>• a3/a6 预防钉马<br>• h3/h6 王翼空间小步积累<br>• Re1/Re8 车进主线路<br><b>这是空间与安全的平衡：互不侵犯，局面均等，等待时机！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e8",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f8",
+          "to": "e8",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "e8",
+          "to": "e5",
+          "color": "#00BCD466"
+        }
+      ]
+    }
+  ]
+}

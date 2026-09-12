@@ -1,0 +1,93 @@
+{
+  "game_id": "C11_OpenFiles_Demo_005",
+  "description": "西西里斯维什尼科夫 B33 — 多线协同作战",
+  "intro": {
+    "flash_squares": ["c8", "d8", "c3", "d4"],
+    "popup": "多线协同作战 第5课\n\n西西里中黑方有c线半开放线\n斯维什尼科夫变例还将产生\ng线和d线！\n\n多条开放线→双车分工\n每条线分一辆车→全场压制！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "多线协同小结\n✅ c线半开放→Rc8施压\n✅ d线打通→Rd8或Rd1\n✅ g线半开放→Rg8威胁\n\n最终目标：\n每条开放线放一辆车\n形成全场多方向压力！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["c8", "g8"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4占中心"},
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5！半开放c线！\n黑方c线从此是天然车通道",
+      "highlights": [
+        {"squares": ["c5", "c4", "c3", "c2", "c1"], "color": "#C6D50044"}
+      ]
+    },
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6发展马"},
+    {"index": 4, "move": "d4", "popup": "d4反攻"},
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "cxd4兑换\nc线完全打通！",
+      "highlights": [
+        {"squares": ["c8", "c7", "c6", "c5", "c4", "c3", "c2", "c1"], "color": "#C6D50066"}
+      ]
+    },
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4白马占中心"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6发展"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3发展"},
+    {"index": 9, "move": "e5", "popup": "e5！斯维什尼科夫！\n黑方中心反击\n形成d6弱格但获得动态机会"},
+    {"index": 10, "move": "Ndb5", "popup": "Ndb5白马机动\n威胁d6"},
+    {"index": 11, "move": "d6", "popup": "d6防守\n稳固中心"},
+    {"index": 12, "move": "Bg5", "popup": "Bg5钉住Nf6"},
+    {"index": 13, "move": "a6", "popup": "a6逼马\n黑方争夺空间"},
+    {"index": 14, "move": "Na3", "popup": "Na3撤退\n准备Nc4或Nd5"},
+    {"index": 15, "move": "b5", "popup": "b5！黑方翼翼推进\n争夺c4格"},
+    {
+      "index": 16,
+      "move": "Bxf6",
+      "popup": "Bxf6兑换！\n消灭Nf6守护者",
+      "highlights": [
+        {"squares": ["f6", "g6", "h6"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 17,
+      "move": "gxf6",
+      "popup": "gxf6回吃！\n黑方叠兵但g线打开！\ng线=第三条半开放线！",
+      "highlights": [
+        {"squares": ["g8", "g7", "g6", "g5", "g4", "g3", "g2"], "color": "#C6D50066"}
+      ]
+    },
+    {"index": 18, "move": "Nd5", "popup": "Nd5！白马强占d5\n关键据点"},
+    {"index": 19, "move": "f5", "popup": "f5！黑方反击\n激进的翼翼推进"},
+    {"index": 20, "move": "Bd3", "popup": "Bd3发展象"},
+    {
+      "index": 21,
+      "move": "Be6",
+      "popup": "Be6发展象\n准备兑换d5马\n打通d线！",
+      "highlights": [
+        {"squares": ["e6", "d5", "d8"], "color": "#E5393555"}
+      ]
+    },
+    {"index": 22, "move": "O-O", "popup": "O-O入城"},
+    {
+      "index": 23,
+      "move": "Bxd5",
+      "popup": "Bxd5！兑换！\nd线即将打通！",
+      "highlights": [
+        {"squares": ["d5", "e6"], "color": "#FF8F0066"}
+      ]
+    },
+    {
+      "index": 24,
+      "move": "exd5",
+      "popup": "exd5兑回\nd5楔子前进！\n\n现在黑方有三条开放线：\n• c线半开放→Rc8！\n• g线半开放→Rg8！\n• d线共争→Rd8！\n\n双车分工，三路夹击！",
+      "highlights": [
+        {"squares": ["c8", "g8", "d8"], "color": "#C6D500aa"}
+      ]
+    }
+  ]
+}

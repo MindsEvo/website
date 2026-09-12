@@ -1,0 +1,230 @@
+{
+  "game_id": "B8_RookCoord_Demo_002",
+  "description": "D37 — 双车分驻两条开放列",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "e1",
+      "d4",
+      "e4"
+    ],
+    "popup": "链接双车第2课\n连接之后，分驻两条最重要的开放列\n看白方如何让Rfe1控e列、Rad1控d列！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Rfe1（e列），Rad1（d列）\n白方双车分占中心两列\n这是双车快速加入战斗的一个经典范例！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心\n计划：d4+c4后翼兵对"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6黑方马出动\n攻击d5格"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵\n计划：控制d5，争夺中心"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6黑方防御\n准备dxc4或d5"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3马出动\n协调：支援d4+控制d5"
+    },
+    {
+      "index": 5,
+      "move": "d5",
+      "popup": "d5！黑方挑战中心\n后翼弃兵防御"
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3！马出动\n激活：Nf3控e5和d4\n连接进度：轻子出动中…",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7黑方象出动\n准备易位"
+    },
+    {
+      "index": 8,
+      "move": "Bf4",
+      "popup": "Bf4！象出动\n激活：c1象控c1-h6斜线\n协调：Bf4+Nf3联合控e5"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O黑方易位\n黑方王安全"
+    },
+    {
+      "index": 10,
+      "move": "e3",
+      "popup": "e3稳固中心\n为Be2做准备"
+    },
+    {
+      "index": 11,
+      "move": "Nbd7",
+      "popup": "Nbd7黑方第2马出动\n准备c5反击"
+    },
+    {
+      "index": 12,
+      "move": "Be2",
+      "popup": "Be2！象出动\n连接进度：轻子全部出动！\n计划：易位后连接双车",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "f1"
+          ],
+          "color": "#8E24AA33"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "c5",
+      "popup": "c5！黑方反击\n挑战白方c4兵"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O！易位完成！\n激活：Rf1进入游戏\n连接进度：三步曲第二步✅\n计划：现在清空底线，然后分配双车！",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "g1"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "cxd4",
+      "popup": "cxd4黑方兑换\n打开c列"
+    },
+    {
+      "index": 16,
+      "move": "exd4",
+      "popup": "exd4重吃\n激活：e列和d列同时半开放！\n关键：两列开放，正好给双车各一条列！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "d1",
+            "e1"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "dxc4",
+      "popup": "dxc4黑方吃c4兵\nc列和d列全面开放"
+    },
+    {
+      "index": 18,
+      "move": "Bxc4",
+      "popup": "Bxc4象吃回\n激活：象重新激活"
+    },
+    {
+      "index": 19,
+      "move": "Nb6",
+      "popup": "Nb6黑马跳强格\n攻击c4象"
+    },
+    {
+      "index": 20,
+      "move": "Bb3",
+      "popup": "Bb3象后退\n保存象的活力"
+    },
+    {
+      "index": 21,
+      "move": "Bd7",
+      "popup": "Bd7黑方象出动\n防止Bg5"
+    },
+    {
+      "index": 22,
+      "move": "Qd3",
+      "popup": "Qd3！后出动\n激活：后来到d3\n协调：Qd3支援d4，联结双车\n计划：后+双车三位一体控制中心",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7",
+            "d4"
+          ],
+          "color": "#8E24AA33"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Nbd5",
+      "popup": "Nbd5黑马占中心强格\n黑方后翼反击"
+    },
+    {
+      "index": 24,
+      "move": "Rfe1",
+      "popup": "Rfe1！车进e列！\n激活：Rf1移到e1\n协调：Re1控制e列，监视Re8\n双车分工开始：Re1负责e列！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e4",
+            "e8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Re8",
+      "popup": "Re8黑方车进e列\n争夺e列"
+    },
+    {
+      "index": 26,
+      "move": "Rad1",
+      "popup": "Rad1！！双车协调完成！\n激活：Ra1进入d列！\n✅ 双车分工完成：\n♖ Rfe1 = e列守护者\n♖ Rad1 = d列守护者\nQd3+Rad1+Rfe1 = 中心完全统治！\n这是双车协作的教科书形态！",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1",
+            "d4"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

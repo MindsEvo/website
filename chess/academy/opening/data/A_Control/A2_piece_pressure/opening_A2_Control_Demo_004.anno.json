@@ -1,0 +1,321 @@
+{
+  "game_id": "A2_Control_Demo_004",
+  "description": "尼姆佐印度防御——用象钉住马，阻止中心也是控制，14步完整注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "黑方用象钉住白马——阻止对方建立中心也是控制！尼姆佐印度揭示控制中心的两面：建立压力，或摧毁压力来源",
+    "voice": true
+  },
+  "outro": {
+    "popup": "控制中心有两面：建立压力，或摧毁压力来源。Bb4 的钉制不是直接控制，而是通过瓦解对方的控制支柱来间接掌控局面——这是更高级的战略控制。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "⬆️ <b>1.d4 — 白方占领 d4！</b><br>d4 兵直接控制 c5 和 e5。白方计划建立强大中心，后续 c4+Nc3 将支撑 e4 推进。",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "⬇️ <b>1...Nf6 — 黑马出动，攻击 e4/d5！</b><br>黑方马在 f6 控制 e4 和 d5，直接挑战白方的中心计划。同时为后续发展做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "⬆️ <b>2.c4 — 翼路兵加入控制！</b><br>c4 兵从侧面控制 d5。白方的计划是 c4+d4+Nc3，为推 e4 做准备，建立庞大中心。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "⬇️ <b>2...e6 — 黑方稳固，为象开路。</b><br>e6 兵支撑中心，同时为黑格象（c8 象）开路，准备下一步的关键棋。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "⬆️ <b>3.Nc3 — 关键一步！支撑 e4 的推进。</b><br>Nc3 是白方计划的核心——这匹马将支撑 e4 推进，让白方建立 d4+e4 双兵中心。<br>但是……黑方下一步就是要破坏这个支柱！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "⬇️ <b>3...Bb4 — 尼姆佐的精髓！</b><br>黑象钉住 c3 的白马！马被钉制后，如果白方推 e4，黑方 Bxc3 破坏双兵，白方中心遭到破坏。<br><span style='color:#FF5722;'>★ Bb4 不直接占中心，而是<b>摧毁白方的中心支柱</b>——这是控制中心的第二种方式！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "c3",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#88888866"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "⬆️ <b>4.e3 — 白方用小兵「遮挡」钉制。</b><br>e3 兵打开 f1 象的道路，同时让马不那么怕被交换（马被吃后 e3 保持双兵结构）。Bb4 的威胁迫使白方调整！",
+      "highlights": [
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "c5",
+      "popup": "⬇️ <b>4...c5 — 黑方挑战 d4！</b><br>黑方推 c5，直接攻击 d4 兵。在 Bb4 钉制 Nc3 的背景下，白方 d4 面临双重压力！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "⬆️ <b>5.Nf3 — 白方继续发展。</b><br>Nf3 出动，加强对 e5 和 d4 的控制，同时为后续 Bd3 开路。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "⬇️ <b>5...Nc6 — 黑方加强中心压力。</b><br>黑马出动，控制 d4 和 e5，进一步向白方中心施压。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "⬆️ <b>6.Bd3 — 白象出动，准备 e4！</b><br>白象在 d3，支撑 e4 推进。即便面对 Bb4 的钉制，白方仍在为 e4 做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "⬇️ <b>6...O-O — 黑方易位！</b><br>黑方王翼易位完成，王的安全得到保障。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "⬆️ <b>7.O-O — 白方易位。</b><br>双方易位完成，进入复杂中局。Bb4 vs Nc3 的钉制关系仍是局面的核心矛盾。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "d5",
+      "popup": "⬇️ <b>7...d5 — 黑方打开中心！</b><br>黑方推 d5，在 Bb4 钉制仍然有效的背景下挑战白方。白方 Nc3 依然受到钉制，无法自由移动。<br><span style='color:#88CCFF;'>★ 总结：Bb4 的钉制贯穿整个开局，持续限制白方的中心计划——<b>阻止=控制！</b></span>",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "b4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "c3",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#FF5722AA"
+        }
+      ]
+    }
+  ]
+}

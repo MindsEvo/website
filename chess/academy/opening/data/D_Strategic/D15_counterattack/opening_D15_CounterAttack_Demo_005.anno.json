@@ -1,0 +1,144 @@
+{
+  "game_id": "D15_CounterAttack_Demo_005",
+  "description": "皮克防御 B07 — 超现代内爆：诱导白方扩张，e5反制",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心第5课\n\n皮克防御！\n超现代体系\n\n先让白方建立强大中心\n再瓦解它！\n\n核心问题：\n什么时候出击e5？\n如何把被动转为主动？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "皮克防御总结\n\n超现代反制模式：\n① 让对方中心扩张\n② 找准时机爆破\n③ 由守转攻\n\n反制成功标志：\n① e5爆破后局面开放？\n② 象g7活跃度提升？\n③ 马的活跃性如何？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "d6",
+      "popup": "d6 皮克！\n超现代体系"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4 白方建立强大中心"
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6 马发展"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 支援中心"
+    },
+    {
+      "index": 5,
+      "move": "g6",
+      "popup": "g6 超现代！\n让白方先扩张"
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3 发展"
+    },
+    {
+      "index": 7,
+      "move": "Bg7",
+      "popup": "Bg7！超现代象\n虎视中心"
+    },
+    {
+      "index": 8,
+      "move": "Be2",
+      "popup": "Be2 稳固"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 易位"
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "O-O 易位"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6 稳固结构"
+    },
+    {
+      "index": 12,
+      "move": "a4",
+      "popup": "a4 防止b5"
+    },
+    {
+      "index": 13,
+      "move": "Nbd7",
+      "popup": "Nbd7 马发展"
+    },
+    {
+      "index": 14,
+      "move": "h3",
+      "popup": "h3 预防Bg4"
+    },
+    {
+      "index": 15,
+      "move": "e5",
+      "popup": "e5！爆破时刻！\n内爆白方中心"
+    },
+    {
+      "index": 16,
+      "move": "dxe5",
+      "popup": "dxe5 接受挑战"
+    },
+    {
+      "index": 17,
+      "move": "dxe5",
+      "popup": "dxe5 局面开放"
+    },
+    {
+      "index": 18,
+      "move": "Bg5",
+      "popup": "Bg5 施压"
+    },
+    {
+      "index": 19,
+      "move": "Qc7",
+      "popup": "Qc7 后激活"
+    },
+    {
+      "index": 20,
+      "move": "Nd2",
+      "popup": "Nd2 调整"
+    },
+    {
+      "index": 21,
+      "move": "Nc5",
+      "popup": "Nc5！马激活\n争夺关键格"
+    },
+    {
+      "index": 22,
+      "move": "Nc4",
+      "popup": "Nc4 寸土必争"
+    },
+    {
+      "index": 23,
+      "move": "Ne6",
+      "popup": "Ne6 马占要点！"
+    }
+  ]
+}

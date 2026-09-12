@@ -1,0 +1,194 @@
+{
+  "game_id": "C10_WeakSquares_Demo_005",
+  "description": "尼姆佐-印度 E43 — 利用d5弱格建立马据点",
+  "intro": {
+    "flash_squares": [
+      "d5",
+      "f3",
+      "e4",
+      "c3"
+    ],
+    "popup": "利用d5弱格 第5课\n\nf3+e4组合专门为d5弱格服务\n黑方c5+d6布局留下d5空档\n\n白方目标：Nd5占据最强弱格\n弱格不会自动产生—需要主动创造！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "建立马据点小结\n✅ bxc3后虽有叠兵，但换来d5弱格\n✅ f3+e4撑起d5弱格框架\n✅ e4推进后Nd5将进驻弱格\n\n核心原则：\n先制造弱格，再占据弱格！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧扩张"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6准备Nimzo"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！Nimzo钉马",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "c3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3保留双象\n选择比Qc2更平稳的变例"
+    },
+    {
+      "index": 7,
+      "move": "b6",
+      "popup": "b6准备Bb7\n黑方建立长斜线"
+    },
+    {
+      "index": 8,
+      "move": "Bd3",
+      "popup": "Bd3发展象\n守护e4，瞄准h7"
+    },
+    {
+      "index": 9,
+      "move": "Bb7",
+      "popup": "Bb7建立长对角线\n黑格象射向g2方向"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3发展马"
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O白方入城"
+    },
+    {
+      "index": 13,
+      "move": "c5",
+      "popup": "c5冲击！\n黑方挑战d4\n注意：c5+d6布局让d5格空档"
+    },
+    {
+      "index": 14,
+      "move": "a3",
+      "popup": "a3逼迫兑换"
+    },
+    {
+      "index": 15,
+      "move": "Bxc3",
+      "popup": "Bxc3兑换！\n白格象消失",
+      "highlights": [
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "bxc3",
+      "popup": "bxc3叠兵\n代价是叠兵，收益是d5弱格！",
+      "highlights": [
+        {
+          "squares": [
+            "c2",
+            "c3",
+            "d5"
+          ],
+          "color": "#FF8F00aa"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "d6",
+      "popup": "d6防守\n但c5+d6留下d5空档",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nd2",
+      "popup": "Nd2重组！\n马准备走到f1-e3路线\n目标是Nd5弱格据点"
+    },
+    {
+      "index": 19,
+      "move": "Nbd7",
+      "popup": "Nbd7发展马\n黑方阵型稳固"
+    },
+    {
+      "index": 20,
+      "move": "f3",
+      "popup": "f3加强！\n为e4推进铺路\n同时限制黑马跳e4",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e4"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Rc8",
+      "popup": "Rc8增援c列"
+    },
+    {
+      "index": 22,
+      "move": "e4",
+      "popup": "e4推进！\nd5格完全脱离黑兵守护\n下一步：Nd2-Nb1-Nc3-Nd5或Nf1-Ne3-Nd5\n弱格据点即将建立！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    }
+  ]
+}

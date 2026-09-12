@@ -1,0 +1,243 @@
+{
+  "game_id": "C10_WeakSquares_Demo_003",
+  "description": "国王印度 E91 — 马占据弱格据点",
+  "intro": {
+    "flash_squares": [
+      "d5",
+      "e4",
+      "g5",
+      "g3"
+    ],
+    "popup": "马占据弱格据点 第3课\n\nd5楔子后白马强占Nd5\n黑方g5反击造成战术风暴\n\nNxe4/Nxg3等交换后\nNd5据点始终屹立！",
+    "voice": true
+  },
+  "outro": {
+      "popup": "马据点战术小结\n✅ d5楔子后Nxd5建立据点\n✅ 黑g5+Nxe4战术未能动摇Nd5\n✅ Nd2反击，hxg3后据点屹立\n\n核心原则：\n真正的弱格据点，战术风暴中也稳固！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5",
+      "e4",
+      "g3"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马\n国王印度防御开始"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4扩张"
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "g6飞象布局\n国王印度特征"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "Bg7国王印度象\n沿h8-a1对角线虎视眈眈",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "h8",
+            "a1"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4占领中心\n白方中心优势",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c4"
+          ],
+          "color": "#00BCD433"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "d6防守\n防止e5楔子"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3发展马"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "Be2稳健发展"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5挑战中心！\n黑方寻求反击"
+    },
+    {
+      "index": 12,
+      "move": "d5",
+      "popup": "d5楔子！关键一步\n封锁黑方c+d列交流\n此后e6和f5成为弱格",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e6",
+            "f5",
+            "c6"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "e6",
+      "popup": "e6反击！\n黑方试图打开楔子"
+    },
+    {
+      "index": 14,
+      "move": "Bg5",
+      "popup": "Bg5施压\n攻击h7方向"
+    },
+    {
+      "index": 15,
+      "move": "h6",
+      "popup": "h6赶象"
+    },
+    {
+      "index": 16,
+      "move": "Bh4",
+      "popup": "Bh4保留\n继续施压"
+    },
+    {
+      "index": 17,
+      "move": "exd5",
+      "popup": "exd5打开中路\n接受孤立兵，但...\nd5格的争夺开始！"
+    },
+    {
+      "index": 18,
+      "move": "Nxd5",
+      "popup": "Nxd5！白马飞入d5\n强占弱格据点\n看这匹马：有任何黑兵能赶走它吗？",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c7",
+            "e7",
+            "b6",
+            "f6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "g5",
+      "popup": "g5！黑方激进反击\n进攻Bh4，试图逼退白象\n并趁乱夺回e4兵！",
+      "highlights": [
+        {
+          "squares": ["g5", "h4"],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Bg3",
+      "popup": "Bg3！象撤退g3\n不与g4对碰\n但此时e4兵失去强力守护",
+      "highlights": [
+        {
+          "squares": ["g3", "e4"],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nxe4",
+      "popup": "Nxe4！战术得兵！\nNf6跳入e4，白马被打\n这就是g5的目的！",
+      "highlights": [
+        {
+          "squares": ["e4", "f6"],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Nd2",
+      "popup": "Nd2！反击！\nNf3跳到d2攻击e4马\n白方不让黑方白赚",
+      "highlights": [
+        {
+          "squares": ["d2", "e4"],
+          "color": "#FF8F0066"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Nxg3",
+      "popup": "Nxg3被迫兑换！\ne4马打g3象，取象撤退\n白方叠兵但局面可以接受",
+      "highlights": [
+        {
+          "squares": ["g3", "e4"],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "hxg3",
+      "popup": "hxg3重建\n白方h列叠兵\n但关键是——Nd5还在d5！",
+      "highlights": [
+        {
+          "squares": ["g3", "h2", "d5"],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Nc6",
+      "popup": "Nc6黑方发展\n经历战术风暴后\nNd5据点依然屹立不倒！\n弱格马的价值在战术中得到验证",
+      "highlights": [
+        {
+          "squares": ["d5", "c6"],
+          "color": "#C6D50055"
+        }
+      ]
+    }
+  ]
+}

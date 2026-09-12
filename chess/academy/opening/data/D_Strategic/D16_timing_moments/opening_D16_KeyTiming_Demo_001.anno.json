@@ -1,0 +1,48 @@
+{
+  "game_id": "D16_KeyTiming_Demo_001",
+  "description": "彼特罗夫防御 C42 — 关键时机：d6先于Nxe4的精确顺序",
+  "intro": {
+    "flash_squares": ["e4", "e5"],
+    "popup": "关键时机演示1\n\n彼特罗夫防御！\n\n黑方不防守e5，\n而是反击e4！\n\n核心问题：\n什么时候吃回兵？\n顺序为何至关重要？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "彼特罗夫时机总结\n\n精确顺序是关键：\n① 先3...d6驱马（不能省！）\n② 再4...Nxe4安全吃回\n③ 若3...Nxe4?? 则Qe2立刻输子\n\n一步之差，结果天壤之别！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e4", "e5"],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "e5", "popup": "e5"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3 攻击e5"},
+    {"index": 3, "move": "Nf6", "popup": "Nf6！反击e4\n不防守，而是进攻"},
+    {"index": 4, "move": "Nxe5", "popup": "Nxe5 白马吃兵"},
+    {"index": 5, "move": "d6", "popup": "d6！关键时机！\n先驱走白马，不能直接Nxe4"},
+    {"index": 6, "move": "Nf3", "popup": "Nf3 马被迫撤退"},
+    {"index": 7, "move": "Nxe4", "popup": "Nxe4！现在安全吃回\n完全对等！"},
+    {"index": 8, "move": "d4", "popup": "d4"},
+    {"index": 9, "move": "d5", "popup": "d5 对称"},
+    {"index": 10, "move": "Bd3", "popup": "Bd3"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6"},
+    {"index": 12, "move": "O-O", "popup": "O-O"},
+    {"index": 13, "move": "Be7", "popup": "Be7"},
+    {"index": 14, "move": "c4", "popup": "c4 白方打破对称"},
+    {"index": 15, "move": "Nb4", "popup": "Nb4 马机动"},
+    {"index": 16, "move": "Be2", "popup": "Be2"},
+    {"index": 17, "move": "O-O", "popup": "O-O 黑方易位"},
+    {"index": 18, "move": "Nc3", "popup": "Nc3"},
+    {"index": 19, "move": "Nxc3", "popup": "Nxc3 兑换"},
+    {"index": 20, "move": "bxc3", "popup": "bxc3"},
+    {"index": 21, "move": "Nc6", "popup": "Nc6 马回防"},
+    {"index": 22, "move": "Re1", "popup": "Re1 车激活"},
+    {"index": 23, "move": "Bf5", "popup": "Bf5 象激活"},
+    {"index": 24, "move": "cxd5", "popup": "cxd5 兑换"},
+    {"index": 25, "move": "Qxd5", "popup": "Qxd5"},
+    {"index": 26, "move": "c4", "popup": "c4 争夺空间"},
+    {"index": 27, "move": "Qd7", "popup": "Qd7 后机动"},
+    {"index": 28, "move": "d5", "popup": "d5！白方中心推进\n时机成熟"}
+  ]
+}

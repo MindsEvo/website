@@ -1,0 +1,43 @@
+{
+  "game_id": "D16_KeyTiming_Demo_003",
+  "description": "尼姆佐印度E32 — 关键时机：Bxc3交换时机的判断",
+  "intro": {
+    "flash_squares": ["c3", "b4"],
+    "popup": "关键时机演示3\n\n尼姆佐印度防御！\n\n黑方象几乎随时可以Bxc3\n但何时交换最有价值？\n\n练习目标：\n理解5...Bxc3+的时机意义",
+    "voice": true
+  },
+  "outro": {
+    "popup": "尼姆佐时机总结\n\n三个关键判断：\n① a3时Bxc3+：迫使后接，产生双重兵\n② c5：利用双重兵向中心反击\n③ e5+d5：时机成熟，中心突破\n\n时机不同，价值截然不同！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["c4", "e4"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6"},
+    {"index": 2, "move": "c4", "popup": "c4"},
+    {"index": 3, "move": "e6", "popup": "e6"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3"},
+    {"index": 5, "move": "Bb4", "popup": "Bb4！尼姆佐！\n钉住白方c3马"},
+    {"index": 6, "move": "Qc2", "popup": "Qc2 防止双重兵"},
+    {"index": 7, "move": "O-O", "popup": "O-O"},
+    {"index": 8, "move": "a3", "popup": "a3 催促黑方表态"},
+    {"index": 9, "move": "Bxc3+", "popup": "Bxc3+！时机！\n迫使后接，产生双重兵"},
+    {"index": 10, "move": "Qxc3", "popup": "Qxc3 后必须接"},
+    {"index": 11, "move": "b6", "popup": "b6 准备Bb7"},
+    {"index": 12, "move": "Bg5", "popup": "Bg5 施压"},
+    {"index": 13, "move": "Bb7", "popup": "Bb7 象机动完成"},
+    {"index": 14, "move": "e3", "popup": "e3"},
+    {"index": 15, "move": "d6", "popup": "d6"},
+    {"index": 16, "move": "f3", "popup": "f3 巩固"},
+    {"index": 17, "move": "Nbd7", "popup": "Nbd7"},
+    {"index": 18, "move": "Bd3", "popup": "Bd3"},
+    {"index": 19, "move": "c5", "popup": "c5！利用双重兵软肋\n向中心反击"},
+    {"index": 20, "move": "Ne2", "popup": "Ne2"},
+    {"index": 21, "move": "Rc8", "popup": "Rc8 车激活"},
+    {"index": 22, "move": "O-O", "popup": "O-O"},
+    {"index": 23, "move": "Re8", "popup": "Re8"},
+    {"index": 24, "move": "Rad1", "popup": "Rad1"},
+    {"index": 25, "move": "e5", "popup": "e5！中心反制"},
+    {"index": 26, "move": "d5", "popup": "d5！时机成熟\n白方中心推进"}
+  ]
+}

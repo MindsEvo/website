@@ -1,0 +1,223 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_003",
+  "description": "后翼弃兵兑换变例 D35 — 及时cxd5：制造对称兵形，孤立d5兵长期受压",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "d5",
+      "c4"
+    ],
+    "popup": "及时兑子 第3课\n\n后翼弃兵兑换变例（D35）\n\n白方第4步cxd5——这是最经典的\"及时兑子\"！\n\n⭐ 兑换逻辑：\n白方放弃c4兵，换掉黑方d5兵\n制造对称兵形 d5 vs d4\n\n关键问题：\n兑换之后谁的结构更好？\n白方怎么利用d5的潜在弱点？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "后翼弃兵兑换变例总结\n\n及时兑子的第三模式——结构型兑换：\n\n① cxd5：白方主动兑换，打开c列\n② 黑方exd5回吃，d5兵出现\n③ 白方Bg5+Bd3+Qc2——钉住并瞄准d5！\n\n规律：\n• 兑换创造了弱点（d5易成孤立兵）\n• 白方子力围绕这个弱点部署\n• 及时兑子的价值 = 长期结构优势\n\n教训：及时兑子要看结构，不只是材料！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4！占领中心\n后翼弃兵体系"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5！黑方也占中心\n对称应对"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵！\n向黑方d5发起挑战",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6 黑方最稳健的应对\n先支撑d5，再谋发展"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 发展马，支撑d4"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6 黑马最自然的位置"
+    },
+    {
+      "index": 6,
+      "move": "cxd5",
+      "popup": "cxd5！及时兑换！\n\n⭐ 关键决策时刻！\n白方主动兑换c4换d5：\n① 打开c列（白方半开放线）\n② 黑方必须回吃，d5兵暴露\n③ 创造对称兵形 d4 vs d5\n\n这就是\"及时\"：趁黑方发展未完成先换！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "exd5",
+      "popup": "exd5 黑方e兵回吃\n\n⭐ 结果分析：\n① d5兵出现——有可能成为孤立兵！\n② 黑方e6不再能守护d5\n③ c列对白方半开放\n\n白方的长期目标：让d5成为弱点！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c5",
+            "e5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bg5",
+      "popup": "Bg5！钉住Nf6！\n\n⭐ 结构联动：\n若Nf6移走 + 之后f6开路\n白方可用Bxf6打成黑方叠兵\n或者Bg5一直钉住，让Nf6不舒服\n\n第一步压力已经形成！",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "Be7 黑象解钉\n准备入城并保护Nf6"
+    },
+    {
+      "index": 10,
+      "move": "e3",
+      "popup": "e3 巩固d4，稳健发展"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6 黑方守护d5\n防止白方Nb5-Nd4攻击",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "Bd3！白象瞄准d5！\n\n⭐ 战略意图：\nBd3+Qc2直接和间接攻击d5\n未来Ne5和f4-f5推进都可配合\n白方子力协调指向d5！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "d5"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O 黑王入城"
+    },
+    {
+      "index": 14,
+      "move": "h3",
+      "popup": "h3 防止Bg4钉住白马\n保持灵活性",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g4"
+          ],
+          "color": "#95A5A644"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nbd7",
+      "popup": "Nbd7 黑马支援\n守护d5",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Nf3",
+      "popup": "Nf3！马的最佳位置\n发展完成，准备协调攻击"
+    },
+    {
+      "index": 17,
+      "move": "Re8",
+      "popup": "Re8 黑车占e列\n支援中心"
+    },
+    {
+      "index": 18,
+      "move": "Qc2",
+      "popup": "Qc2！后炮对准h7和d5！\n\n⭐ 后的多重威胁：\n① 间接瞄准d5（Bd3+Qc2连线）\n② 威胁Bxf6打成双叠兵\n③ 王翼攻击预备\n\n白方优势已经系统化！",
+      "highlights": [
+        {
+          "squares": [
+            "c2",
+            "h7",
+            "d5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nf8",
+      "popup": "Nf8 黑方调整\n抵御f7一侧的威胁"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "popup": "O-O！白王入城！\n\n⭐ 局面总结：\n白方优势清晰：\n① d5潜在弱点（被Bd3/Qc2瞄准）\n② 白方子力全部指向d5区域\n③ c列半开放 + 后翼活跃\n\n这就是cxd5\"及时兑子\"的全部价值——\n一次结构型兑换创造了长期优势！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d3",
+            "c2"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    }
+  ]
+}

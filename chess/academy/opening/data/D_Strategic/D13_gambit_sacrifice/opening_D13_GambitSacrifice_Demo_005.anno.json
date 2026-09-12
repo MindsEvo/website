@@ -1,0 +1,231 @@
+{
+  "game_id": "D13_GambitSacrifice_Demo_005",
+  "description": "苏格兰弃兵 C44 — 速度优势有时限：如何判断临界点",
+  "intro": {
+    "flash_squares": ["d4", "c4", "e4"],
+    "popup": "弃兵争先 第5课（核心原理）\n\n前4课都在讲弃兵的收益\n这一课讲最重要的问题：\n\n速度优势的有效期是多长？\n\n苏格兰弃兵：\n白方用d4换取发展先手\n黑方正确防守——\n看看白方的优势如何一步步缩水！\n\n临界点原理：所有弃兵都有时限",
+    "voice": true
+  },
+  "outro": {
+    "popup": "速度优势时限总结\n\n弃兵优势的有效期由以下决定：\n① 对方子力是否协调（越协调，时限越短）\n② 是否有具体的进攻目标（无目标=优势流失）\n③ 中心是否稳固（中心锁死=弃兵价值下降）\n\n最终原则：\n弃兵后必须在对方稳固之前行动\n时间就是弃兵争先的货币！\n\n弃兵→争先→进攻→兑现\n任何一步延误，优势消失！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d4"],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 中心第一步"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称回应"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 发展马，攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 保护e5，发展马"
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "d4！苏格兰开局！\n\n白方主动推d4，开放中心\n用兵换兵换中心活力——\n这是弃兵争先的变体！",
+      "highlights": [
+        {"squares": ["d4", "e5"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "exd4",
+      "popup": "exd4 黑方吃掉d4\n\n苏格兰弃兵开始：\n白方选择Bc4，不夺回d4，换发展！",
+      "highlights": [
+        {"squares": ["d4", "e5"], "color": "#00BCD444"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Bc4",
+      "popup": "Bc4！苏格兰弃兵！\n\n白方把象发展到最强位置\n不急于夺回d4兵\n\n换来：Bc4瞄准f7 + 下一步O-O快速出车",
+      "highlights": [
+        {"squares": ["c4", "f7", "d4"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bc5",
+      "popup": "Bc5！黑方最强应对：对称发展！\n\n不守d4，也发展象\n黑方c5象同样瞄准f2，制造反压",
+      "highlights": [
+        {"squares": ["c5", "f2"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "O-O！白方入城！\n\n车上f1线，速度优势到达顶点\n\n⭐ 临界点第一次出现：\n此刻若不行动，黑方会稳固！",
+      "highlights": [
+        {"squares": ["f1", "f7"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d6",
+      "popup": "d6 黑方稳固！\n\n⭐ 时限减少中……\n黑方每走一步稳固，白方速度优势就减少一分"
+    },
+    {
+      "index": 10,
+      "move": "Nxd4",
+      "popup": "Nxd4 白方夺回d4兵\n\n马占d4，同时攻击c6和b5\n\n注意：黑方Bc5现在与Nxd4形成兑换威胁！",
+      "highlights": [
+        {"squares": ["d4", "c6", "b5"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Bxd4",
+      "popup": "Bxd4！黑方象吃马！\n\n⭐ 关键时刻！\n黑方兑掉了白方的d4马，清除中心威胁\n白方如何应对？",
+      "highlights": [
+        {"squares": ["d4", "c5"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "a4",
+      "popup": "a4！白方扩展翼侧！\n\n阻止黑方b5推兵逼走象\n同时为Ba4-Bb3创造路线\n\n白方以翼侧扩张维持主动",
+      "highlights": [
+        {"squares": ["a4", "b5"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展马\n\n⭐ 发展对比：\n白方：Nf3+Bc4+O-O+Nxd4+a4\n黑方：Nc6+Bc5+d6+Bxd4+Nf6\n双方均衡，但白方王翼先就绪"
+    },
+    {
+      "index": 14,
+      "move": "Bb5",
+      "popup": "Bb5！白方象入攻击位！\n\n施压c6马，制造牵制\n白方开始把速度优势转化为位置压力",
+      "highlights": [
+        {"squares": ["b5", "c6"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Bc5",
+      "popup": "Bc5 黑方象退后\n\n回归c5强格，瞄准f2\n黑方依然活跃"
+    },
+    {
+      "index": 16,
+      "move": "Nc3",
+      "popup": "Nc3 白方发展另一匹马\n\n⭐ 发展全面完成！\n所有大子就位，明显的位置协调优势"
+    },
+    {
+      "index": 17,
+      "move": "Bg4",
+      "popup": "Bg4！黑方象牵制Nf3！\n\n黑方主动反击：牵制白方马\n造成后被迫守护或马不能移动的压力",
+      "highlights": [
+        {"squares": ["g4", "f3"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Qe1",
+      "popup": "Qe1！白后巧妙躲避！\n\n解除牵制，同时后转到e线\n不用兑换，更灵活",
+      "highlights": [
+        {"squares": ["e1", "f2"], "color": "#00BCD444"}
+      ]
+    },
+    {
+      "index": 19,
+      "move": "a6",
+      "popup": "a6 黑方逼走象\n\n⭐ 时限临界点到了！\n黑方开始稳固——a6赶走Bb5\n这是黑方在追求稳定"
+    },
+    {
+      "index": 20,
+      "move": "Bxc6",
+      "popup": "Bxc6！白方主动兑换！\n\n破坏黑方王翼兵链\nb7成为虚弱的孤兵\n\n⭐ 速度转化为结构优势！",
+      "highlights": [
+        {"squares": ["c6", "b7"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 21,
+      "move": "bxc6",
+      "popup": "bxc6 黑方必须吃回\n\nb7兵已变成c6+c7双联兵\n黑方王翼结构出现裂缝",
+      "highlights": [
+        {"squares": ["c6", "c7"], "color": "#8E24AA44"}
+      ]
+    },
+    {
+      "index": 22,
+      "move": "h3",
+      "popup": "h3 驱逐g4象\n\n简单实用：逼退黑方活跃的g4象\n白方在整理局面",
+      "highlights": [
+        {"squares": ["h3", "g4"], "color": "#00BCD444"}
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Be6",
+      "popup": "Be6 黑象转向中心\n\n主动退回，守护d5格\n黑方在找平衡"
+    },
+    {
+      "index": 24,
+      "move": "Bg5",
+      "popup": "Bg5！白方施压！\n\n攻击Nf6，牵制d8后\n白方继续制造威胁",
+      "highlights": [
+        {"squares": ["g5", "f6", "d8"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 25,
+      "move": "h6",
+      "popup": "h6 驱逐g5象\n\n黑方拒绝被牵制，主动出击"
+    },
+    {
+      "index": 26,
+      "move": "Bh4",
+      "popup": "Bh4 白象保持压力\n\n象退h4，继续牵制f6马\n白方象的机动性展示！",
+      "highlights": [
+        {"squares": ["h4", "f6"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 27,
+      "move": "g5",
+      "popup": "g5！黑方激进反击！\n\n⭐ 关键时刻！\n黑方用g5推兵驱逐象，但这削弱了王翼！\n这就是速度优势转化的结果：\n黑方被迫走出软弱的棋",
+      "highlights": [
+        {"squares": ["g5", "h4", "f6"], "color": "#8E24AA66"}
+      ]
+    },
+    {
+      "index": 28,
+      "move": "Bg3",
+      "popup": "Bg3 白象继续机动\n\n不接受g5推走象，象安全转移\n白方象的机动性始终保持",
+      "highlights": [
+        {"squares": ["g3", "d6"], "color": "#00BCD444"}
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Nh5",
+      "popup": "Nh5 黑马攻击g3象\n\n黑方尝试兑换白方活跃的象\n减少压力"
+    },
+    {
+      "index": 30,
+      "move": "Bh2",
+      "popup": "Bh2！象再度转移！\n\n⭐ 最终总结——弃兵争先成果：\n白方用d4一个兵，换来了：\n① f线车的活跃（O-O后Rf1）\n② 象的持续机动性\n③ 黑方王翼结构削弱（c6双联兵、g5软弱）\n④ 贯穿全局的位置压力\n\n这就是速度优势转化为持久位置优势的典范！",
+      "highlights": [
+        {"squares": ["h2", "g1", "f4"], "color": "#C6D50055"}
+      ]
+    }
+  ]
+}

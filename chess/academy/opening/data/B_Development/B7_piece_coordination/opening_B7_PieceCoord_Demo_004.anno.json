@@ -1,0 +1,42 @@
+{
+  "game_id": "B7_PieceCoord_Demo_004",
+  "description": "C25 — 后是后盾，不是独行侠",
+  "intro": {
+    "flash_squares": ["c4", "e3", "f3", "c3", "e2"],
+    "popup": "子力协调第4课\n王后的正确角色：后盾，不是独行侠\n轻子先占位，后最后出动，在后方统筹协调",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：轻子先行、后作后盾是协调的铁律\nQe2是后的最佳协调位置——连接双车、支援中路",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4占中心"},
+    {"index": 1, "move": "e5", "popup": "e5对称"},
+    {"index": 2, "move": "Nc3", "popup": "Nc3第1个马出动！\n激活：马出动控制中心格\n协调：Nc3控d5/e4/b5\n⚠️ 注意：轻子先行，后绝不出动！", "highlights": [{"squares": ["d5", "e4", "b5"], "color": "#C6D50033"}]},
+    {"index": 3, "move": "Nf6", "popup": "Nf6黑方马出动\n攻击e4"},
+    {"index": 4, "move": "Bc4", "popup": "Bc4象出动！\n激活：象瞄准f7，同时控制d5斜线\n协调：Bc4+Nc3形成双子压制\n计划：此时后在d1安心当后盾", "highlights": [{"squares": ["c4", "f7", "d5", "e6"], "color": "#00BCD433"}]},
+    {"index": 5, "move": "Nc6", "popup": "Nc6黑方第2马出动\n保护e5"},
+    {"index": 6, "move": "d3", "popup": "d3稳健推进\n激活：开放c1象的斜线\n计划：维也纳稳健体系——轻子全出后再出后"},
+    {"index": 7, "move": "Bc5", "popup": "Bc5黑方象出动\n瞄准f2/b4"},
+    {"index": 8, "move": "Nf3", "popup": "Nf3第2个马出动！\n激活：第3枚轻子上场\n协调：Nc3+Nf3双马联控d4/e5\n⚠️ 后仍在d1，继续等待！\n规律：轻子没出齐，后绝不出动", "highlights": [{"squares": ["f3", "d4", "e5", "c3"], "color": "#C6D50033"}]},
+    {"index": 9, "move": "d6", "popup": "d6黑方守主"},
+    {"index": 10, "move": "Be3", "popup": "Be3第4枚轻子出动！\n激活：c1象出动，守护d4/f4格\n协调：Bc4+Be3（两象互补，覆盖两种斜线）\n计划：轻子即将全出，后的出场时机将至", "highlights": [{"squares": ["e3", "d4", "f4", "c5"], "color": "#FF8F0033"}]},
+    {"index": 11, "move": "Bxe3", "popup": "Bxe3黑方换象\n黑方以Bc5换掉Be3\n黑方试图破坏白方协调"},
+    {"index": 12, "move": "fxe3", "popup": "fxe3！f兵回吃\n激活：开放f列！Rf1可进入游戏\n协调：fxe3后f列半开，Re1/Rf1可激活\n计划：易位后双车全部激活"},
+    {"index": 13, "move": "O-O", "popup": "O-O黑方易位\n黑方国王入安全区"},
+    {"index": 14, "move": "O-O", "popup": "O-O白方易位！\n激活：Rf1激活，加入协调阵列\n协调：Bc4+Nc3+Nf3+Rf1四子联动\n✅ 所有轻子就位，是后出场的信号！", "highlights": [{"squares": ["c4", "c3", "f3", "f1"], "color": "#C6D50066"}]},
+    {"index": 15, "move": "Na5", "popup": "Na5黑方马攻击Bc4\n黑方准备换掉白方象"},
+    {"index": 16, "move": "Bb3", "popup": "Bb3象主动撤退\n激活：Bb3控制a2-g8斜线\n协调：Bb3位置稳固，不怕被Na5换掉"},
+    {"index": 17, "move": "Nxb3", "popup": "Nxb3黑方换象\n黑方换掉白方象"},
+    {"index": 18, "move": "axb3", "popup": "axb3a兵回吃\n激活：a列半开放\n协调：Ra1可向前推进"},
+    {"index": 19, "move": "Be6", "popup": "Be6黑方象出动\n黑方轻子发展完成"},
+    {"index": 20, "move": "Re1", "popup": "Re1！车激活！\n激活：Re1控制e列\n协调：Re1+Nc3+Nf3三子联动控中心\n计划：e列已由Re1控制，后的出场时机到了！", "highlights": [{"squares": ["e1", "e4", "e5"], "color": "#C6D50033"}]},
+    {"index": 21, "move": "Re8", "popup": "Re8黑方车激活\n黑方车也进e列争夺"},
+    {"index": 22, "move": "Qe2", "popup": "Qe2！！后最后出场！\n激活：后在e2，统筹全局\n协调：Qe2的任务分工\n  ♛ 支援Re1控制e列\n  ♛ 连接Ra1+Re1双车\n  ♛ 支援Nc3+Nf3守中心\n✅ 后在e2是后盾的最佳位置！\n\n铁律验证：\n第2步马→第3步象→第5步马→第6步象\n全部就位后，第12步后才出场！", "highlights": [{"squares": ["e2", "e1", "a1", "c3", "f3"], "color": "#8E24AA66"}]}
+  ]
+}

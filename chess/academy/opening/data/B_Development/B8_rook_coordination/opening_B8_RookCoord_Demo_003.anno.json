@@ -1,0 +1,175 @@
+{
+  "game_id": "B8_RookCoord_Demo_003",
+  "description": "E32 — 尼姆佐-印度防御，Rfe1连接→Re2前进→Rde1叠车",
+  "intro": {
+    "flash_squares": [
+      "e1",
+      "e2",
+      "f1",
+      "g1"
+    ],
+    "popup": "链接双车第3课\n连接之后，更进一步——叠车！\n两辆车叠在同一列，火力翻倍！\n看白方三步完成e列双车叠压！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Rfe1连接 → Re2前进 → Rde1叠车！\nRe2+Re1 = e列叠车，双重压制！\n叠车是双车加大威力的经典手段！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心\n后翼开局"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6黑马出动\n攻击d5"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵\n争夺d5"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3！轻子出动第2步\n支援d4"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！尼姆佐-印度防御！\n钉住Nc3",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "O-O黑方易位"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O！易位完成！三步曲第二步！\n白方双车连接即将完成！",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "g1"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "cxd4",
+      "popup": "cxd4黑方兑换\ne列逐渐开放"
+    },
+    {
+      "index": 14,
+      "move": "exd4",
+      "popup": "exd4！e列半开放！\ne列成为白方的主攻方向！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e8"
+          ],
+          "color": "#FF572233"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "dxc4",
+      "popup": "dxc4黑方兑换\n白方象重新激活"
+    },
+    {
+      "index": 22,
+      "move": "Rfe1",
+      "popup": "Rfe1！！三步曲第三步——双车连接！\nRf1→e1，进入e列！\n连接完成：Ra1——Rd1——Re1",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Bb7",
+      "popup": "Bb7黑象出动\n控制g2-a8斜线"
+    },
+    {
+      "index": 24,
+      "move": "Rad1",
+      "popup": "Rad1！Ra1→d列！\n双车分控：Re1（e列）+ Rd1（d列）",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Re8",
+      "popup": "Re8！黑方车也进e列！\n争夺e列"
+    },
+    {
+      "index": 26,
+      "move": "Re2",
+      "popup": "Re2！！第一辆车前进！\nRe1→e2，向第7排推进！\n同时为Rd1→e1腾出位置！",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "e7"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Qe7",
+      "popup": "Qe7黑后联结双车"
+    },
+    {
+      "index": 28,
+      "move": "Rde1",
+      "popup": "Rde1！！叠车完成！\nRd1→e1，双车全部进入e列！\nRe2（前）+ Re1（后）= e列叠车！\n火力翻倍，直指黑方第7排！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e2"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

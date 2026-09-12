@@ -1,0 +1,133 @@
+{
+  "game_id": "C12_SpaceCramp_Demo_001",
+  "description": "法国推进变 C02 — 识别空间挤压信号：坏象诞生",
+  "intro": {
+    "flash_squares": ["c8", "e6", "d5"],
+    "popup": "空间挤压 第1课\n\n如何识别谁被挤压了？\n\n跟踪黑方c8象的命运：\n它从第1手就开始被封锁\n10手之后仍然动弹不得！\n\n这就是空间挤压最直观的信号。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "空间挤压识别总结\n\n三个信号：\n① 坏象——被自己兵封锁\n② 马被迫绕路——Nge7代替Nf6\n③ 发展不对称——对方全线出动\n\n看到这些信号 = 有人被空间挤压！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["c8"],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心！开局最有力的第一步"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "e6！法国防御的标志。\n\n注意：e6封锁了c8-h3对角线\nc8象从此开始受限！",
+      "highlights": [
+        {"squares": ["c8", "d7", "e6"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4 扩大中心控制"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5 反中心！\n\ne6 + d5 形成双层封锁\nc8象的出路被堵死了！",
+      "highlights": [
+        {"squares": ["c8", "d5", "e6"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！白方推进楔子！\n\n三重封锁完成：e6 + d5 + e5\nc8象彻底困死！\n\n而且 f6格被封——\n黑马再也不能走Nf6！",
+      "highlights": [
+        {"squares": ["e5", "e6", "d5", "c8", "f6"], "color": "#E5393588"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "c5",
+      "popup": "c5！黑方必须反击！\n攻击d4是此局最有力的抗衡"
+    },
+    {
+      "index": 6,
+      "move": "c3",
+      "popup": "c3 支援d4，稳固中心"
+    },
+    {
+      "index": 7,
+      "move": "Nc6",
+      "popup": "Nc6 发展马，再次攻击d4"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3 守护d4，白方稳健"
+    },
+    {
+      "index": 9,
+      "move": "Qb6",
+      "popup": "Qb6 攻击d4！黑方施压\n注意：c8象仍然没有动！"
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "Be2 稳固发展\n白方的象可以自由发展！"
+    },
+    {
+      "index": 11,
+      "move": "cxd4",
+      "popup": "cxd4 兑换！\n\n即使完成兑换……\nc8象仍然在原地！\n兑换不能解救坏象！",
+      "highlights": [
+        {"squares": ["c8"], "color": "#E5393599"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "cxd4",
+      "popup": "cxd4 重新占领中心\n白方继续保持e5楔子"
+    },
+    {
+      "index": 13,
+      "move": "Nge7",
+      "popup": "Nge7！\n\nf6格被e5封住了！\ng8马只能走e7绕路。\n\n被迫绕路的马\n= 空间不足的信号！",
+      "highlights": [
+        {"squares": ["f6", "e5", "e7", "g8"], "color": "#FF8F0066"}
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nc3",
+      "popup": "Nc3 发展马，白方进度领先"
+    },
+    {
+      "index": 15,
+      "move": "Nf5",
+      "popup": "Nf5 马跳好格！\n但c8象仍然静止……"
+    },
+    {
+      "index": 16,
+      "move": "Na4",
+      "popup": "Na4！驱逐Qb6\n白方不断改善位置"
+    },
+    {
+      "index": 17,
+      "move": "Qd8",
+      "popup": "Qd8 后被驱回原格\n黑方损失了宝贵时间"
+    },
+    {
+      "index": 18,
+      "move": "Bd3",
+      "popup": "Bd3！白方象自由发展！\n\n对比：\n白方象——自由活跃，到达最佳位置\n黑方c8象——10手过去，一步未走！\n\n这就是空间挤压：子力被锁住，动弹不得。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#C6D50055"},
+        {"squares": ["c8"], "color": "#E5393588"}
+      ]
+    }
+  ]
+}

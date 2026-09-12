@@ -1,0 +1,239 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_001",
+  "description": "Ruy Lopez兑换变例 C68 — 象换马制造叠兵：战略性兑换的长期价值",
+  "intro": {
+    "flash_squares": [
+      "b5",
+      "c6",
+      "c6"
+    ],
+    "popup": "及时兑子 第1课\n\n西班牙开局——白方第3手走Bb5\n瞄准黑方Nc6\n\n白方第4手：Bxc6！\n主动用象换马！\n\n直接损失：放弃双象优势\n获得的是什么？\n\n制造黑方叠兵 c6+c5\n这个结构弱点将伴随整局！\n\n⭐ 及时兑子的核心问题：\n这次兑换现在值得吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "Ruy Lopez兑换总结\n\n及时兑子的第一模式：\n\n① 战略目的明确：Bxc6制造叠兵\n② 叠兵是残局弱点（c6+c5不可移动）\n③ 白方主动兑后简化——有利局面入残局\n\n兑换前问自己：\n① 这次兑换对我有什么结构好处？\n② 对方能修复这个弱点吗？\n③ 现在是兑换的最佳时机吗？\n\n这就是及时兑子的三个核心问题！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "c6"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称回应"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 发展马，攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 保护e5，发展马"
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "popup": "Bb5！西班牙开局！\n象钉住Nc6——\n如果Nc6移动，e5兵悬空\n\n⭐ 注意：白方并没有立刻Bxc6\n而是先钉住，伺机而动",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6",
+            "e5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "a6",
+      "popup": "a6 质问象的去向\n黑方迫使白方表态：\n留在b5，还是Bxc6兑换？"
+    },
+    {
+      "index": 6,
+      "move": "Bxc6",
+      "popup": "Bxc6！！白方主动兑换！\n\n⭐ 关键决策时刻！\n白方选择了兑换——为什么？\n\n损失：放弃活跃象（双象优势消失）\n收益：\n① 黑方c列形成叠兵（c6+c5）\n② 黑方必须用兵回吃，d兵不能发展\n\n⭐ 及时兑子的时机：a6已迫使象必须表态，现在是兑换的最好时机！",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "b5"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "dxc6",
+      "popup": "dxc6 黑方用d兵回吃\n\n⭐ 关键结果：\n① 黑方c列叠兵出现：c6+c5（将来）\n② d线开放给白方半开放\n③ 黑方d兵消失，d5格变成白方强格\n\n叠兵的代价：终身结构弱点",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "c5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "O-O 白方先入城！\n稳固王的安全，准备攻击"
+    },
+    {
+      "index": 9,
+      "move": "f6",
+      "popup": "f6 黑方f6保护e5\n加固中心——但f6也削弱了黑方王翼"
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "popup": "d4！中心对抗！\n开放d列，d5格成为白方强格\n\n⭐ 叠兵的弱点开始显现：\n黑方c6兵无法向前参与中心战斗",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5",
+            "c6"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "exd4",
+      "popup": "exd4 中心兑换\n黑方吃掉d4，d列开放"
+    },
+    {
+      "index": 12,
+      "move": "Nxd4",
+      "popup": "Nxd4 白方马占强格d4\n\n⭐ d4/d5强格：\n黑方叠兵无法攻击这些格！\nd列完全归白方控制"
+    },
+    {
+      "index": 13,
+      "move": "c5",
+      "popup": "c5！叠兵推进！\n\n⭐ 叠兵开始活动——\n但这也进一步削弱了b5和d5格\n叠兵活跃是把双刃剑",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "c6"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Ne2",
+      "popup": "Ne2 马重组！\n准备Ng3或Nc3，获得更好位置"
+    },
+    {
+      "index": 15,
+      "move": "Qxd1",
+      "popup": "Qxd1！！白方主动兑后！\n\n⭐ 及时兑子的另一面：\n有利局面时，主动简化！\n兑后进入残局——叠兵弱点在残局中更明显！\n\n这是白方的第二次关键兑换决策",
+      "highlights": [
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Rxd1",
+      "popup": "Rxd1 车占d列\n\n⭐ d列归白：\n白方车控制d列，黑方叠兵受压"
+    },
+    {
+      "index": 17,
+      "move": "Bd6",
+      "popup": "Bd6 黑象发展，保护e5"
+    },
+    {
+      "index": 18,
+      "move": "f3",
+      "popup": "f3 白方f3稳固中心\n准备Be3+Nd4重组"
+    },
+    {
+      "index": 19,
+      "move": "Ne7",
+      "popup": "Ne7 黑马重组，支持d5或f5"
+    },
+    {
+      "index": 20,
+      "move": "Be3",
+      "popup": "Be3！象占强格，控制d4和c5",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "b6",
+      "popup": "b6 黑方b6巩固c5\n但b5格变弱——白方马可以占b5！"
+    },
+    {
+      "index": 22,
+      "move": "Nd2",
+      "popup": "Nd2 马重组！\n准备Nb3攻击c5或进入d5"
+    },
+    {
+      "index": 23,
+      "move": "Bb7",
+      "popup": "Bb7 黑象转移\n通过b7参与中心"
+    },
+    {
+      "index": 24,
+      "move": "Nf1",
+      "popup": "Nf1 马继续重组\n白方所有子力稳步改善位置"
+    },
+    {
+      "index": 25,
+      "move": "O-O-O",
+      "popup": "O-O-O！黑方长易位！\n王在c8，寻求安全\n\n⭐ 局面评估：\n白方结构优势，叠兵是永久弱点\n残局中白方的技术优势将逐渐转化",
+      "highlights": [
+        {
+          "squares": [
+            "c8",
+            "a8"
+          ],
+          "color": "#8E24AA55"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Ng3",
+      "popup": "Ng3！马占用最佳格\n控制f5和h5"
+    },
+    {
+      "index": 27,
+      "move": "g6",
+      "popup": "g6 黑方g6削弱王翼\n\n⭐ 总结：\n第4手Bxc6的战略价值在整个残局中逐步体现！\n叠兵 → d5强格 → 主动兑后 → 残局优势！\n\n这就是及时兑子：\n在正确的时刻，为了正确的理由，做出正确的兑换！"
+    }
+  ]
+}

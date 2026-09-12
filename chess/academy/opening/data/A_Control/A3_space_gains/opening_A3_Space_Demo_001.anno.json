@@ -1,0 +1,323 @@
+{
+  "game_id": "A3_Space_Demo_001",
+  "description": "法国推进变 C02 — 空间压缩直观演示",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d5",
+      "c5",
+      "f5"
+    ],
+    "popup": "本局展示空间占领概念。\n白方第3步走e5，把黑方压缩到后三排。\n数一数白方能用几排，黑方能用几排？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "e5兵像一堵墙，黑方活动区域只剩后三排。\n空间优势就是己方又更多的空间， 压迫对方的空间。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d5",
+      "c5",
+      "f5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "▶️ <b>e4</b><br>白方占领中心，准备建立空间",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "e5",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "▶️ <b>e6</b><br>法国防御——黑方用e6防守d5<br>注意：e6兵将来会限制黑方c8象的活动！",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "f7",
+            "g7",
+            "h7"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "▶️ <b>d4</b><br>白方建立双兵中心e4+d4<br>这是白方的理想阵型",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "▶️ <b>d5</b><br>黑方争夺中心！<br>现在e4兵受到威胁，白方怎么应对？",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#E5393544",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "🚀 <b>e5！关键步骤！</b><br>白方不交换，直接推进！<br>观察：黑方原本最好的格子 f6 被封锁了<br>黑方所有棋子都要被挤到后面！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f6",
+            "d6",
+            "c6"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "e5",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "e5",
+          "to": "f6",
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "c5",
+      "popup": "▶️ <b>c5</b><br>黑方寻找反击！攻击白方d4<br>这是法国防御中寻找出路的经典手段",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "c3",
+      "popup": "▶️ <b>c3</b><br>白方巩固d4，拒绝被动<br>子力支撑！c3保护d4，白方阵型很稳固",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nc6",
+      "popup": "▶️ <b>Nc6</b><br>黑方b8马走到c6<br>注意g8马：e5之前本可走Nf6，现在f6被封锁了！",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f6",
+            "c6"
+          ],
+          "color": "#E5393544",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "f6",
+          "color": "#E5393599"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "▶️ <b>Nf3</b><br>白方出动马，支援e5兵<br>白方第4-5排有很多空间可供棋子活动",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bd7",
+      "popup": "▶️ <b>Bd7</b><br>黑方被迫走Bd7——只有这里可去<br>对比Demo 002中的黑方象Bc5，Bd7的位置差多了！",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "c8",
+            "e6",
+            "e5"
+          ],
+          "color": "#E5393544",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "▶️ <b>Be2</b><br>白方稳步发展，一切棋子配合到位<br>注意：白方没有一个棋子是孤立的",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "d3",
+            "f3",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Nge7",
+      "popup": "▶️ <b>Nge7</b><br>g8马只能委屈走到e7，f6去不了<br>现在黑方的棋子都挤在后三排，活动极其受限",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f6",
+            "e7"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "f6",
+          "color": "#E5393599"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "✅ <b>O-O — 总结局面</b><br>白方王安全，棋子协调，空间优势明显<br>• 白方控制第3-5排<br>• 黑方棋子全挤在第6-8排<br>• 这就是e5带来的空间压制！",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d6",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "e5",
+          "to": "f6",
+          "color": "#FF5722CC"
+        }
+      ]
+    }
+  ]
+}

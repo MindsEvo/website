@@ -1,0 +1,470 @@
+{
+  "game_id": "B5_Castle_Demo_005",
+  "description": "意大利慢棋 C50 — 白方及时易位，Bg5施压，Bxf6制造叠兵+g线开放",
+  "intro": {
+    "flash_squares": [
+      "g1",
+      "g8",
+      "f6",
+      "g6"
+    ],
+    "popup": "王车易位第5课\n白方第6步就易位，黑方却走Qd7拖延！\n观察白方Bg5如何抓住黑方的犹豫，\n最终Bxf6造成叠兵和g线开放——\n这就是推迟易位的代价。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "推迟易位的后果：\n① Bg5钉住Nf6，黑方被迫Ne7退步\n② Bxf6强制叠兵，g线永久开放\n③ Qd2后续Rfd1，白方有稳定的主动权\n\n教训：Qd7是疑问手，本来可以保护马的！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "g1",
+      "g8"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 开放局，占据中心。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 对称占中心，意大利体系起点。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 白马出动，攻击 e5。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "⬆️ <b>3.Bc4 — 意大利象，瞄准 f7。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "⬇️ <b>3...Bc5 — 黑象对称发展，瞄准 f2。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "f2"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "f2",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d3",
+      "popup": "⬆️ <b>4.d3 — 慢棋体系！巩固 e4，不急推 d4。</b><br>白方选择稳健的 Pianissimo 路线，先完成子力发展和易位，再考虑中心推进。",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马出动，控制 e4。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 白方第二马出动，支援中心。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "d6",
+      "popup": "⬇️ <b>5...d6 — 黑方巩固 e5，开放 c8 象。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "⬆️ <b>6.O-O — 白方及时易位！王安全！</b><br>轻子全部出动，立刻易位。王到 g1，f1 车激活，为下一步 Bg5 或 d4 做好准备。<br>🔑 <b>这是白方的模范操作：发展完成→立刻易位，不拖延！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Qd7",
+      "popup": "⬇️ <b>6...Qd7 — 黑方走后而非易位！</b><br>Qd7 看似准备连接车，但此刻黑王仍在 e8，f8 象还在原位，王翼没有清理好。<br>⚠️ <b>关键疑问：黑方为什么不 O-O？Qd7目的不明确， 黑方将推迟易位——这给了白方抓住机会的时间！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e8",
+            "f8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Bg5",
+      "popup": "⬆️ <b>7.Bg5 — 白方立刻抓住机会！钉住 Nf6！</b><br>Bg5 钉住 f6 马。<br>🎯 <b>白方已经易位，黑方还没有。这正是 Bg5 施压的最好时机：对手王还在中央，每一步攻击都有分量！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "f6",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Ne7",
+      "popup": "⬇️ <b>7...Ne7 — 黑马被迫退步！</b><br>Nf6 在钉制下无法轻易移动，黑方选择 Ne7 撤退——让出 f6 格，避免被换掉。但马退到 e7，对中心的控制减弱，且仍未易位。<br>⚠️ <b>退步 = 浪费时间。每步退步都让白方多积累一步主动权。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "f6"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e7",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "d4",
+      "popup": "⬆️ <b>8.d4 — 中心推进！乘势扩大优势。</b><br>白方子力协调，王已安全，立刻推 d4 打开局面。e5 兵面临压力，黑方必须回应，而此时黑王仍在 e8！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "d4",
+          "color": "#C6D500BB"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "exd4",
+      "popup": "⬇️ <b>8...exd4 — 黑方兑换，打开 e 线。</b><br>黑方吃掉 d4，e 线半开放，而黑王仍在 e8——e 线压力随时可能到来。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Nxd4",
+      "popup": "⬆️ <b>9.Nxd4 — 马重夺 d4，巩固中心。</b><br>白马到 d4，控制中心，同时威胁 Nc6 或配合 Bg5 发动进攻。白方阵型整体协调。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "⬇️ <b>9...O-O — 黑方终于易位！但已经被动。</b><br>黑方迟迟才完成易位——但代价已经到来：Bg5 的钉制使 Nf6 被迫退走，而接下来白方将用 Bxf6 强制叠兵！<br>💡 <b>对比白方第6步的及时易位，黑方晚了整整3步。这3步的差距，白方全部用来积累压力。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Bxf6",
+      "popup": "⬆️ <b>10.Bxf6 — 白方主动兑换！制造叠兵！</b><br>白象吃掉 f6 格上的……实际上是 Ne7 之后 f6 仍是黑方的兵/格。白方主动兑换，强制黑方 gxf6 重提。<br>🎯 <b>这步棋的战略意图：① 制造黑方叠兵（f7+f6）；② 打开 g 线——黑王就在 g8！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "g5"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "f6",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "gxf6",
+      "popup": "⬇️ <b>10...gxf6 — 叠兵！g 线开放！</b><br>黑方只能用 g 兵吃回，f7+f6 叠兵形成，g 线完全开放。<br>📊 <b>黑方的长期弱点：</b><br>• f6、f7 叠兵难以推进，后翼无用<br>• g 线开放，黑王在 g8 直接暴露在白方车的潜在攻击下<br>• 黑方王翼兵形结构永久性损坏",
+      "highlights": [
+        {
+          "squares": [
+            "g6",
+            "f6",
+            "f7",
+            "g8"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "f6",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Qd2",
+      "popup": "⬆️ <b>11.Qd2 — 后发展，瞄准 g 线！</b><br>Qd2 连通后翼，后视线对准 g5 方向，与 f1 车的潜在 Rg1 形成对 g 线的立体控制。<br>🏁 <b>第5局总结——推迟易位的代价：</b><br>• 黑方 Qd7 拖延易位 → Bg5 钉马 → Ne7 退步（浪费时间）<br>• 迟到的 O-O → Bxf6 强制叠兵 → g 线开放，王翼永久残破<br><b>白方仅用易位时机的优势，就将黑方的兵形搞残、g 线送给自己——这就是「及时易位 vs 推迟易位」最直观的差距！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "g5",
+            "g6",
+            "g8"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "g5",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "f1",
+          "to": "g1",
+          "color": "#C6D50077"
+        }
+      ]
+    }
+  ]
+}

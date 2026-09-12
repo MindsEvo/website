@@ -1,0 +1,138 @@
+{
+  "game_id": "C12_SpaceCramp_Demo_002",
+  "description": "卡罗-卡恩推进变 B12 — 识别反击点：被压方的自救",
+  "intro": {
+    "flash_squares": ["e5", "f7", "f6"],
+    "popup": "空间挤压 第2课\n\n被挤压不等于必输！\n\n白方e5楔子压制了黑方空间\n但黑方有一个关键反击点——\n\n你能找到这个格子吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "反击点总结\n\n被压方的三条出路：\n① ...f6：直接打击e5楔子\n② ...c4：稳固翼侧空间\n③ Ng6→Nh4：骑士渗入\n\n识别挤压 → 找反击点！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e5"],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6！卡罗-卡恩防御\n准备d5，同时为象留好发展路线"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4 扩大中心"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5 反击中心！"
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！白方楔子推进！\n对比法国防御：黑方象还没被关住！",
+      "highlights": [
+        {"squares": ["e5", "d5", "f6"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bf5",
+      "popup": "Bf5！卡罗-卡恩的精华！\n\ne5推进之前/同时，象已经溜出来！\n对比法国：象被关在c8\n卡罗：象在f5，自由活跃！",
+      "highlights": [
+        {"squares": ["f5", "c8"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3 发展马，守护d4"
+    },
+    {
+      "index": 7,
+      "move": "e6",
+      "popup": "e6 稳固d5\n这次e6封的不是象，象已经在f5外面了！"
+    },
+    {
+      "index": 8,
+      "move": "Be2",
+      "popup": "Be2 稳固发展"
+    },
+    {
+      "index": 9,
+      "move": "c5",
+      "popup": "c5！攻击d4！\n这是被压方的核心反击手段",
+      "highlights": [
+        {"squares": ["c5", "d4"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Be3",
+      "popup": "Be3 守护d4，稳固中心"
+    },
+    {
+      "index": 11,
+      "move": "Nd7",
+      "popup": "Nd7！\n马到d7，为下一步Nge7→Ng6做准备\n马的路线开始展开……",
+      "highlights": [
+        {"squares": ["d7", "e7", "g6"], "color": "#FF8F0044"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "c3",
+      "popup": "c3 支援d4，白方稳固"
+    },
+    {
+      "index": 13,
+      "move": "Nge7",
+      "popup": "Nge7！g8马出来，下一步瞄准g6！",
+      "highlights": [
+        {"squares": ["e7", "g6"], "color": "#FF8F0055"}
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nbd2",
+      "popup": "Nbd2 发展马，支援中心"
+    },
+    {
+      "index": 15,
+      "move": "Ng6",
+      "popup": "Ng6！马到达目标格！\n\nNg6的威力：\n① 正对e5楔子侧面\n② 准备...f5或...Nh4\n③ 紧逼白方！",
+      "highlights": [
+        {"squares": ["g6", "e5", "f4"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "h4",
+      "popup": "h4！白方威胁h5-hxg6赶走Ng6！\n反制来了——谁能主动？"
+    },
+    {
+      "index": 17,
+      "move": "h5",
+      "popup": "h5！封锁！\n黑方主动！h5稳固了Ng6\n白方h4-h5计划失败！",
+      "highlights": [
+        {"squares": ["h5", "h4", "g6"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nb3",
+      "popup": "Nb3 攻击c5\n白方试图动摇黑方反击基础\n\n黑方下一步：...cxd4或...c4稳固\n\n关键问题：黑方的...f6何时打出？\n那是最终的爆破点！",
+      "highlights": [
+        {"squares": ["f6", "e5"], "color": "#E5393544"}
+      ]
+    }
+  ]
+}

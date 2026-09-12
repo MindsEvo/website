@@ -1,0 +1,610 @@
+{
+  "game_id": "A1_Center_Demo_003",
+  "description": "伦敦体系——建立巩固双兵中心 第3局，19步完整注释",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "e3",
+      "d5",
+      "e5"
+    ],
+    "popup": "伦敦体系：用兵链稳固中心，不求快速扩张，求稳固控制！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "稳固的中心比激进的中心更难被破坏——这是伦敦体系的核心智慧。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "e3",
+      "d5",
+      "e5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "⬆️ <b>1.d4 — 白方占领中心！</b><br>d4兵踏上中心，控制 c5 和 e5。伦敦体系从这一步开始——先建立中心支点，再有序出子。",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "⬇️ <b>1...d5 — 黑方中心对抗！</b><br>黑方也在 d5 落子，与白方 d4 正面对峙，中心张力立刻形成。双方各占一格，局面对称均衡。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 白马出动，控制 e5！</b><br>f3 是开局最重要的马位，同时完成两件事：控制 e5 格、为王翼易位清路。<br>伦敦体系核心思路：<b>先出子，再用 e3 支撑 d4</b>，不急于推兵。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4",
+            "g5",
+            "h4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "⬇️ <b>2...Nf6 — 黑马对称出动！</b><br>f6 马控制 e4 和 d5。双方马均在最佳位置，发展均衡。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5",
+            "g4",
+            "h5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bf4",
+      "popup": "⬆️ <b>3.Bf4 — 伦敦体系标志性一步！</b><br>象出动到 f4，控制 e5 和 c7，是伦敦体系的招牌走法。<br>白方出子顺畅，每步都在争取子力活动空间，没有浪费任何步骤。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "c7",
+            "d6"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "e5",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "f4",
+          "to": "c7",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "e6",
+      "popup": "⬇️ <b>3...e6 — 黑方支撑 d5，阵型稳固！</b><br>e6 兵支援 d5，让黑方中心更加稳固。代价是封锁了 c8 象——但黑方整体阵型坚实，没有明显弱点。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "⬆️ <b>4.e3 — 关键！用 e3 巩固 d4！</b><br>这是伦敦体系的核心思路：<b>不急于推 e4，先用 e3 稳固 d4</b>。<br>e3 兵支撑 d4，同时为 f1 象让路，让白方可以完成王翼易位。<br>稳固 > 激进，中心坚如磐石才是长远优势。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e3"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bd6",
+      "popup": "⬇️ <b>4...Bd6 — 黑象出动，攻击 Bf4！</b><br>黑象来到 d6，直接瞄准白方的 f4 象，形成威胁。黑方积极出子，同时向白方施压。",
+      "highlights": [
+        {
+          "squares": [
+            "f4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d6"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "f4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bg3",
+      "popup": "⬆️ <b>5.Bg3 — 象后退到好位！</b><br>白象从 f4 退到 g3， 选择有利的兑换位置。若改走 Bxd6，黑方 Qxd6 后黑后站上强格，白方反而吃亏。<br>若黑方 Bxg3 吃象，白方 hxg3 叠兵——但 h 线同时打开，白车可利用，叠兵不是弱点，是伦敦体系的标准变化！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5",
+            "f4",
+            "h4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "d6",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "g3",
+          "to": "h4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "⬇️ <b>5...O-O — 黑方完成王翼易位！</b><br>黑方国王安全转移，车激活。至此双方出子都较为顺畅，但白方中心更稳固，有长期优势。",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h8",
+          "to": "f8",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "⬆️ <b>6.Bd3 — 白象出动，控制 e4！</b><br>d3 象控制 e4 格，同时清空 f1，为白方王翼易位做好准备。<br>白方现在：d4+e3 稳固中心、Nf3+Bg3+Bd3 三子协调，发展完美！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "h7",
+            "g6"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d3",
+          "to": "h7",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "⬇️ <b>6...c5 — 黑方反击中心！</b><br>黑方推 c5 挑战白方的 d4，这是正确的中心反制策略。<br>面对稳固中心，最有力的应对就是用侧翼兵打破它——c5 是经典的黑方反击手段。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "c3",
+      "popup": "⬆️ <b>7.c3 — 白方再次巩固 d4，稳如磐石！</b><br>c3 兵支撑 d4，黑方的 c5 攻击被化解。现在 d4 有 e3 和 c3 双重保护，无懈可击。<br>这就是伦敦体系的精髓：<b>中心稳固，让对手无处下手。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c3",
+            "e3"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "⬇️ <b>7...Nc6 — 黑马出动，控制e5！</b><br>c6 马支持 c5 兵，同时给 d4 施加更多压力。黑方在侧翼积极寻找反击机会，但白方中心已固若金汤。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5",
+            "b4"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nbd2",
+      "popup": "⬆️ <b>8.Nbd2 — 白方第二匹马出动！</b><br>d2 马为 Ne5 进军中心做准备，同时支援 c4 或 f1 的跳转。<br>白方子力已全面展开：双象、双马、中心稳固，随时可以发动进攻！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "f3",
+            "b3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "e4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "d2",
+          "to": "b3",
+          "color": "#00BCD477"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Qe7",
+      "popup": "⬇️ <b>8...Qe7 — 黑后出动，准备推进！</b><br>黑后来到 e7，一方面支援 e6-e5 的推进，另一方面保护 d6 象。黑方正在积极寻找机会打破白方中心。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d6"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "e5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "⬆️ <b>9.O-O — 白方完成王翼易位！</b><br>国王安全转移到 g1，车激活到 f1。白方所有准备工作就绪：中心稳固、子力发展完毕、王位安全——随时可以展开全面进攻！",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h1",
+          "to": "f1",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "b6",
+      "popup": "⬇️ <b>9...b6 — 黑方准备出象！</b><br>b6 为 c8 象（经由 b7）开路，黑方试图激活被困在 c8 的象。这说明黑方之前第3步走 e6 的代价——封住了 c8 象，现在必须花步骤来弥补。",
+      "highlights": [
+        {
+          "squares": [
+            "b7",
+            "c8"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "b7",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "b7",
+          "to": "a6",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Ne5",
+      "popup": "⬆️ <b>10.Ne5 — 马占中心最强格，伦敦体系巅峰！</b><br>白马跳到 e5，占据棋盘中央最强的格子！这正是 d4+e3 稳固中心带来的最大红利——e5 永远是白马的绝佳据点。<br>🏆 <b>伦敦体系总结：</b><br>先稳固中心（d4+e3+c3），再出子发展，最终马占 e5，全局优势！<br>这就是「先建中心、再借力发挥」的元思维。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D500AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d4",
+            "e3",
+            "c3"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f7",
+            "d7",
+            "c4",
+            "g4",
+            "g6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "f7",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e5",
+          "to": "d7",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "e5",
+          "to": "c4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "e5",
+          "to": "c6",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "e5",
+          "to": "g6",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "e5",
+          "to": "g4",
+          "color": "#00BCD499"
+        }
+      ]
+    }
+  ]
+}

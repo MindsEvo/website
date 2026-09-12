@@ -1,0 +1,143 @@
+{
+  "game_id": "B8_RookCoord_Demo_001",
+  "description": "C54 — 意大利开局，连接双车的三步曲",
+  "intro": {
+    "flash_squares": [
+      "a1",
+      "e1",
+      "f1",
+      "g1"
+    ],
+    "popup": "链接双车第1课\n开局三步曲：\n①出动所有轻子\n②国王易位\n③底线清空→双车连接！\n每一步都自然，每一步都有价值！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Be3+Nbd2+Qe2 = 三步清空底线\nRfe1！双车连接完成！\n记住这个模式——这是每局棋都要做到的！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称回应"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3！轻子出动第1步\n三步曲启动：发展轻子！"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "Bc4！轻子出动第2步\n意大利开局：控制中心！"
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "O-O！易位完成！三步曲第二步！\n底线：Ra1-Nb1-Bc1-Qd1-[e1]-Rf1-Kg1\n还需清空方可连接！",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "g1"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O黑方易位"
+    },
+    {
+      "index": 10,
+      "move": "Be3",
+      "popup": "Be3！！关键一步！\nBc1→e3 自然发展象，同时清空c1！\n底线：Ra1-Nb1-[c1空]-Qd1-Rf1",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "c1"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Bxe3",
+      "popup": "Bxe3黑象兑换"
+    },
+    {
+      "index": 12,
+      "move": "fxe3",
+      "popup": "fxe3兵吃回，e列半开放"
+    },
+    {
+      "index": 16,
+      "move": "Bb3",
+      "popup": "Bb3象后撤，保持对角线控制"
+    },
+    {
+      "index": 18,
+      "move": "Nbd2",
+      "popup": "Nbd2！马自然出动，清空b1！\n底线：Ra1-[b1空]-[c1空]-Qd1-Rf1",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "b1"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Re8",
+      "popup": "Re8黑方激活车"
+    },
+    {
+      "index": 20,
+      "move": "Qe2",
+      "popup": "Qe2！！后联结，清空d1！\n底线：Ra1-[b1]-[c1]-[d1空]-Rf1\n一切就绪！Rfe1即完成连接！",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "d1",
+            "a1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Rfe1",
+      "popup": "Rfe1！！双车连接完成！\nRf1→e1，底线全部清空！\nRa1—[b1]—[c1]—[d1]—Re1\n三步曲完成：①轻子出 ②易位 ③底线清空双车连接！比较协调的开局模式！",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

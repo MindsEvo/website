@@ -1,0 +1,180 @@
+{
+  "game_id": "B6_DevSpeed_Demo_001",
+  "description": "C50 — 认识轻子，每步出新子",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第1课\n马象是轻子都是价值3分， 应在开局优先出动，每步走一个新子，尽量不要重复",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：认识轻子，优先发展，是开局基本原则",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4占领中心\n开局第一步：占中心格\n控制d5和f5"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称\n黑方也占中心\n对称局面"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3！第1个轻子出动\n马是轻子之一\n攻击e5兵，同时控制d4"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6出动\n黑方第1个轻子\n保护e5兵"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "Bc4！第2个轻子出动\n象是轻子之一\n意大利开局，瞄准f7"
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "Bc5出动\n黑方第2个轻子\n对称发展"
+    },
+    {
+      "index": 6,
+      "move": "d3",
+      "popup": "d3稳固中心\n为Nc3让路\n意大利封闭体系"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6出动\n黑方第3个轻子\n攻击e4，准备易位"
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3！第3个轻子出动\n白方3个轻子全部出动\n现在可以考虑易位了！",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d6",
+      "popup": "d6稳固\n黑方第4个轻子待出"
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "O-O！白方易位\n轻子出动后立即易位\n王安全，车连通",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "O-O！黑方也易位\n双方王都安全了\n进入中局阶段",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8",
+            "e8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "h3",
+      "popup": "h3防护\n防止Be6-Bg4牵制\n细节处理"
+    },
+    {
+      "index": 13,
+      "move": "Be6",
+      "popup": "Be6出动\n黑方第4个轻子出动"
+    },
+    {
+      "index": 14,
+      "move": "Bb3",
+      "popup": "Bb3象撤退\n避免被兑换亏损"
+    },
+    {
+      "index": 15,
+      "move": "Bxb3",
+      "popup": "Bxb3兑换\n黑方简化局面"
+    },
+    {
+      "index": 16,
+      "move": "axb3",
+      "popup": "axb3接回\n白方开放a线"
+    },
+    {
+      "index": 17,
+      "move": "a6",
+      "popup": "a6防护\n阻止白棋Nb5"
+    },
+    {
+      "index": 18,
+      "move": "Bg5",
+      "popup": "Bg5出动\n白方再激活象\n牵制f6马"
+    },
+    {
+      "index": 19,
+      "move": "h6",
+      "popup": "h6逼象\n黑方追击"
+    },
+    {
+      "index": 20,
+      "move": "Bxf6",
+      "popup": "Bxf6兑换\n简化局面"
+    },
+    {
+      "index": 21,
+      "move": "Qxf6",
+      "popup": "Qxf6接回\n黑方后活跃"
+    },
+    {
+      "index": 22,
+      "move": "d4",
+      "popup": "d4！推进中心\n双方轻子全出，易位完毕\n现在是推进中心的时候了！\n此前若无发展，d4就是弱点",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    }
+  ]
+}

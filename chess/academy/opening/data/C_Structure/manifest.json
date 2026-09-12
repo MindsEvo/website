@@ -1,0 +1,50 @@
+﻿{
+  "label": "结构类",
+  "color": "#2980B9",
+  "categories": [
+    {
+      "key": "C9_pawn_chains",
+      "label": "C9  兵链方向",
+      "items": [
+        { "id": "opening_C9_PawnChain_Demo_001", "label": "1. 法国防御古典变例（C11）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Demo_002", "label": "2. 法国防御推进变例（C02）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Demo_003", "label": "3. 斯坦尼茨变例，攻击根部（C14）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Demo_004", "label": "4. QGD少数兵突破（D36）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Demo_005", "label": "5. 卡罗坎推进变例对比（B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C10_weak_squares",
+      "label": "C10 弱格利用",
+      "items": [
+        { "id": "opening_C10_WeakSquares_Demo_001", "label": "1. 弱格是怎么产生的（尼姆佐印度 E32）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Demo_002", "label": "2. 象对弱色格的控制（后翼弃兵 D53）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Demo_003", "label": "3. 马占据弱格强格（国王印度 E91）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Demo_004", "label": "4. 兵前进留下弱格（法国温纳瓦尔 C19）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Demo_005", "label": "5. 利用d5弱格建立马的据点（尼姆佐印度 E43）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C11_open_files",
+      "label": "C11 开放线",
+      "items": [
+        { "id": "opening_C11_OpenFiles_Demo_001", "label": "1. 什么是半开放线（西西里防御 B20）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Demo_002", "label": "2. 争夺开放线的控制权（法国防御交换变 C01）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Demo_003", "label": "3. 双车叠压开放线（后翼弃兵 D30）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Demo_004", "label": "4. d线争夺与车占中心格（国王印度 E61）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Demo_005", "label": "5. 多线协同作战（西西里斯维什尼科夫 B33）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C12_space_cramp",
+      "label": "C12 空间挤压",
+      "items": [
+        { "id": "opening_C12_SpaceCramp_Demo_001", "label": "1. 识别挤压信号：法国推进变中的坏象（C02）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Demo_002", "label": "2. 识别反击点：被压方的自救（卡罗-卡恩推进变 B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Demo_003", "label": "3. 子力拥挤可视化：活动格计数（国王印度 E94）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Demo_004", "label": "4. 空间优势的正确跟进：不能空转（法国古典变 C11）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Demo_005", "label": "5. 弹簧效应：过度压缩被反扑（国王印度四兵进攻 E76）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

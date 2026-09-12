@@ -1,0 +1,300 @@
+{
+  "game_id": "A2_Control_Demo_001",
+  "description": "雷帝开局——马不占中心却控制中心，超现代主义入门，13步完整注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "马不占中心，却用眼睛盯住中心——超现代主义奥秘！本局展示 1.Nf3 如何在不踏中心的情况下控制中心关键格",
+    "voice": true
+  },
+  "outro": {
+    "popup": "子力的控制与兵的占领同样有效，有时更灵活。Nf3加Bg2构成的远程控制网络，让白方在准备充分后才推进中心——这就是超现代的力量。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "⬆️ <b>1.Nf3 — 马不踏中心，却盯住中心！</b><br>f3 马同时控制 <b>e5</b> 和 <b>d4</b> 两个中心格。白方没有走 e4 或 d4，却已经在控制中心——这就是超现代主义的思维！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "⬇️ <b>1...d5 — 黑方占领 d5！</b><br>传统正统应对：直接用兵占领中心格。黑方 d5 兵控制 c4 和 e4 两个格子。",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "e4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "g3",
+      "popup": "⬆️ <b>2.g3 — 为象铺路！</b><br>白方推 g3，准备将象发展到 g2，占据 h1-a8 长对角线。这条斜线将穿越整个棋盘，远程瞄准 d5！",
+      "highlights": [
+        {
+          "squares": [
+            "g2",
+            "h1",
+            "a8"
+          ],
+          "color": "#00BCD422",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "f4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "⬇️ <b>2...Nf6 — 黑马出击控制 e4！</b><br>f6 马控制 e4 和 d5，黑方也在用子力控制中心。双方都在用马控制中心，而非占领！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bg2",
+      "popup": "⬆️ <b>3.Bg2 — 象进入长斜线，远程狙击 d5！</b><br>白象占据 g2，开始沿 h1-a8 对角线控制。<b>d5</b> 格正处于这条斜线上——Bg2 在远处「锁定」了黑方的中心兵！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c6",
+            "b7",
+            "a8"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "a8",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "e6",
+      "popup": "⬇️ <b>3...e6 — 黑方稳固中心。</b><br>黑方用 e6 兵支撑 d5，同时为黑格象开路。中心稳固后可以准备易位。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "O-O",
+      "popup": "⬆️ <b>4.O-O — 白方安全第一！</b><br>白方选择先易位，将王安全，而不急于在中心动作。子力控制已经就位，不需要着急推兵。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "⬇️ <b>4...Be7 — 黑方出象，准备易位。</b><br>标准发展，为王翼易位做准备。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "d3",
+      "popup": "⬆️ <b>5.d3 — 支撑 e4 的推进，但不急！</b><br>白方 d3 稳固阵型，为未来 e4 推进奠定基础!",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "⬇️ <b>5...O-O — 黑方易位完成。</b><br>双方阵型稳固，进入中局阶段的前奏。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Nbd2",
+      "popup": "⬆️ <b>6.Nbd2 — 第二马出动，支援 e4！</b><br>马从 d2 准备支撑 e4 的推进, 现在白方基本完成准备工作！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "f3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "f3",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "d2",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "⬇️ <b>6...c5 — 黑方反击 d 翼！</b><br>黑方推 c5，向白方的 d 翼施压，测试白方阵型。这是常见的翼路反击手段。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "e4",
+      "popup": "⬆️ <b>7.e4 — 终于推进中心！</b><br>经过 6 步的精心准备，白方现在推出 e4。此时 Nf3、Nbd2、Bg2、d3 全部在支撑 e4。<br><span style='color:#88CCFF;'>★ 这就是超现代的精髓：<b>先控制，再推进</b>——时机到了，开始进攻！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    }
+  ]
+}

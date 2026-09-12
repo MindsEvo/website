@@ -1,0 +1,46 @@
+{
+  "game_id": "B7_PieceCoord_Demo_003",
+  "description": "E00 — 双象体系的隐形覆盖威力",
+  "intro": {
+    "flash_squares": ["g2", "d2", "c2", "d1", "f1"],
+    "popup": "子力协调第3课\n双象体系：一个象控白格，一个象控黑格\n两象合力，整个棋盘斜线无死角！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：双象是最强的子力联合形式之一\n双象+双车协调，控制全棋盘",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4占领中心\n后翼开局，控制c5/e5"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6黑方出马\n控制e4"},
+    {"index": 2, "move": "c4", "popup": "c4弃兵！\n卡塔兰的特征推进\n准备大象的对角线"},
+    {"index": 3, "move": "e6", "popup": "e6黑方守中心\n封闭体系"},
+    {"index": 4, "move": "g3", "popup": "g3！为Bg2做准备\n激活：准备卡塔兰象\n计划：Bg2将控制h1-a8大斜线"},
+    {"index": 5, "move": "d5", "popup": "d5黑方占中心"},
+    {"index": 6, "move": "Bg2", "popup": "Bg2！卡塔兰象进场！\n🏹 白格象登场：控制h1-a8对角线\n激活：Bg2是白方最强的一枚棋子\n注意：象现在只是蓄势，威力待爆发", "highlights": [{"squares": ["g2", "h1", "f3", "e4", "d5", "c6", "b7", "a8"], "color": "#FF8F0033"}]},
+    {"index": 7, "move": "Be7", "popup": "Be7黑方守备\n抵挡Bg2的压力"},
+    {"index": 8, "move": "Nf3", "popup": "Nf3马出动\n协调：Nf3与Bg2互补\nBg2控斜线，Nf3控格子"},
+    {"index": 9, "move": "O-O", "popup": "O-O黑方易位"},
+    {"index": 10, "move": "O-O", "popup": "O-O白方易位\n激活：Rf1进入游戏\n计划：Rfd1控d列"},
+    {"index": 11, "move": "dxc4", "popup": "dxc4黑方吃兵\n黑方吃掉c4，但Bg2现在对准d5线路更通畅了！", "highlights": [{"squares": ["g2", "d5", "c6", "b7"], "color": "#FF8F0033"}]},
+    {"index": 12, "move": "Qc2", "popup": "Qc2后出动\n激活：后在c2联结双车\n协调：Qc2+Bg2，后支援象的斜线\n计划：Qxc4夺回兵后后守c2"},
+    {"index": 13, "move": "a6", "popup": "a6黑方准备...b5"},
+    {"index": 14, "move": "Qxc4", "popup": "Qxc4夺回兵\n等量交换，局面平衡"},
+    {"index": 15, "move": "b5", "popup": "b5黑方翼攻\n逼后再退"},
+    {"index": 16, "move": "Qc2", "popup": "Qc2后退守\n后在c2是最好的联络位"},
+    {"index": 17, "move": "Bb7", "popup": "Bb7！黑方象激活\n黑方的黑格象终于出来了\n控制g2-a8大斜线，与Bg2对抗"},
+    {"index": 18, "move": "Bd2", "popup": "Bd2！黑格象激活！\n激活：c1象出动，控制黑格斜线\n🏹 双象体系完成！\nBg2（白格）+ Bd2（黑格）= 两象覆盖所有方向！", "highlights": [{"squares": ["d2", "c3", "b4", "a5", "e3", "f4", "g5", "h6", "g2", "h1"], "color": "#8E24AA66"}]},
+    {"index": 19, "move": "Nc6", "popup": "Nc6黑方出马\n黑方想用马对抗双象"},
+    {"index": 20, "move": "e3", "popup": "e3稳固\n加固d4，守住中心"},
+    {"index": 21, "move": "Nb4", "popup": "Nb4黑马冒进\n黑马突入b4，攻击Qc2"},
+    {"index": 22, "move": "Bxb4", "popup": "Bxb4换象！\n激活：黑格象换掉黑马\n💡 白方愿意换掉一个象，是因为剩下的Bg2已足够强大"},
+    {"index": 23, "move": "Bxb4", "popup": "Bxb4黑方吃象\n黑方夺回材料"},
+    {"index": 24, "move": "Nbd2", "popup": "Nbd2马补上\n激活：第2个马进入游戏\n协调：Bg2（白格象）+ Nf3+Nbd2（双马控格）\n这是卡塔兰的核心协调：大象+双马"},
+    {"index": 25, "move": "Rc8", "popup": "Rc8黑方车激活\n黑方车控c列"},
+    {"index": 26, "move": "Rfd1", "popup": "Rfd1！车进d列！\n激活：最后一子入场\n协调终结态：\n♗ Bg2（白格象）控全棋盘白格斜线\n♘ Nf3+Nbd2 控中心格子\n♖ Rfd1+Rac1 控d列+c列\n♛ Qc2 联结所有子力\n✅ 5子全协调——无废子！", "highlights": [{"squares": ["d1", "d4", "d5", "d6", "d7", "d8"], "color": "#C6D50066"}]}
+  ]
+}

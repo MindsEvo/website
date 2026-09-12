@@ -1,0 +1,227 @@
+{
+  "game_id": "C9_PawnChain_Demo_001",
+  "description": "C11 — 法国防御古典变例，兵链概念引入",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "f4"
+    ],
+    "popup": "兵链方向第1课\n核心法则：\n兵链的倾斜方向=进攻方向！\ne5-d4链向右上方倾斜\n→白方必须向王翼（f4→g4）进攻！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：e5确立兵链 → f4支撑 → h4-g4总攻\n每步都沿兵链方向前进！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4控制中心，准备e5推进"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "法国防御！e6-d5对抗白方中心"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4建立兵链根部！e5-d4链开始成形"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5！黑方针锋相对建立对称"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3支援e4，准备e5推进"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6！马对抗白方中心"
+    },
+    {
+      "index": 6,
+      "move": "Bg5",
+      "popup": "Bg5钉住黑马，准备e5"
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7解钉，稳固发展"
+    },
+    {
+      "index": 8,
+      "move": "e5",
+      "popup": "e5！！兵链形成！e5-d4-c3链确立\n白方王翼进攻方向已定！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nfd7",
+      "popup": "Nfd7！马被迫后撤，兵链威力显现"
+    },
+    {
+      "index": 10,
+      "move": "Bxe7",
+      "popup": "Bxe7简化，避免黑马重返"
+    },
+    {
+      "index": 11,
+      "move": "Qxe7",
+      "popup": "Qxe7！后取象"
+    },
+    {
+      "index": 12,
+      "move": "f4",
+      "popup": "f4！！沿兵链方向推进！\nf4支撑e5，准备f5向黑王翼冲锋",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O易位，王翼安全"
+    },
+    {
+      "index": 14,
+      "move": "Nf3",
+      "popup": "Nf3发展，棋子协调"
+    },
+    {
+      "index": 15,
+      "move": "c5",
+      "popup": "c5！黑方攻击兵链根部d4——正确反击！"
+    },
+    {
+      "index": 16,
+      "move": "Qd2",
+      "popup": "Qd2❗长易位准备！白王去后翼\n王翼全力进攻，双翼竞速开始",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "g5"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nc6",
+      "popup": "Nc6增援，黑方准备后翼进攻"
+    },
+    {
+      "index": 18,
+      "move": "dxc5",
+      "popup": "dxc5！白方接受交换，简化结构"
+    },
+    {
+      "index": 19,
+      "move": "Nxc5",
+      "popup": "Nxc5！黑马占据c5要点"
+    },
+    {
+      "index": 20,
+      "move": "O-O-O",
+      "popup": "O-O-O！！双翼竞速开始！\n白王安全在后翼，王翼全力攻击",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "e1"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "a6",
+      "popup": "a6！黑方防守，准备b5反攻"
+    },
+    {
+      "index": 22,
+      "move": "h4",
+      "popup": "h4！！王翼总攻！\nh4-g4将沿兵链头部方向全力冲锋！",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "g4",
+            "f4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "b5",
+      "popup": "b5！黑方沿后翼方向反攻"
+    },
+    {
+      "index": 24,
+      "move": "Kb1",
+      "popup": "Kb1！王躲开对角线，更安全"
+    },
+    {
+      "index": 25,
+      "move": "b4",
+      "popup": "b4！黑方继续后翼推进"
+    },
+    {
+      "index": 26,
+      "move": "Ne2",
+      "popup": "Ne2调整，准备支援王翼"
+    },
+    {
+      "index": 27,
+      "move": "a5",
+      "popup": "a5！黑方后翼兵链继续前进"
+    },
+    {
+      "index": 28,
+      "move": "g4",
+      "popup": "g4！！王翼总攻高潮！\ng4沿兵链方向前进——双翼竞速！",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "f4",
+            "e5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    }
+  ]
+}

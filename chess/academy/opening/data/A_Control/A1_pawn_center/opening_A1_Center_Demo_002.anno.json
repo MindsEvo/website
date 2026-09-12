@@ -1,0 +1,527 @@
+{
+  "game_id": "A1_Center_Demo_002",
+  "description": "中心优势对比演示第2局 — 15步，完整注释（中心 vs 边路）",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "本局给出占领和不占领中心的对比：一方占中心，另一方走边路——差距将一目了然！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "由本局可以看到占领中心的一方活动空间更大，这就是中心优势的直观体现。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占中心！</b><br>e4兵踏上中心格，控制 d5 和 f5。开局第一步就争中心。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "a6",
+      "popup": "⬇️ ❌ <b>1...a6 — 黑方走边兵，浪费先手！</b><br>a6兵远离中心，对棋局几乎没有贡献。<br>对比白方：白兵在中心 e4，黑兵在边路 a6——差距已经开始了。",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "e5",
+            "d5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "a6",
+          "to": "a5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "⬆️ <b>2.d4 — 白方建立双兵中心！</b><br>e4+d4 两兵并肩，完全控制中心。这是开局最强的兵形——控制 c5、e5、f6 等大片格子，白方子力活动空间极大。",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "e5",
+            "f6"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "h6",
+      "popup": "⬇️ ❌ <b>2...h6 — 黑方再走边兵！</b><br>第二步又是边兵！h6兵对中心没有任何影响。<br>白方已有双兵中心，黑方两步都花在边路，<b>开局节奏已经落后</b>。",
+      "highlights": [
+        {
+          "squares": [
+            "h6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#E5393533",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "⬆️ <b>3.Nf3 — 白马出子，控制中心！</b><br>f3 是开局最好的马位之一，控制前方4个要点。<br>白方：出子 + 争中心，黑方对中心没有任何控制！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "g5",
+            "d4",
+            "h4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "g5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "a5",
+      "popup": "⬇️ ❌❌ <b>3...a5 — 黑方第三步还在走边兵！</b><br>一个子都没出！<br>对比白方：白马已在 f3，双兵控中心。<b>这就是「忽视中心」的代价——完全浪费先手。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a5",
+            "a6",
+            "h6"
+          ],
+          "color": "#FF5722AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "a5",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Bc4",
+      "popup": "⬆️ <b>4.Bc4 — 白象出动，瞄准 f7！</b><br>c4 象锁定最弱的格子 f7，隐含威胁。<br>白方现已出 4 枚棋子（e4、d4、Nf3、Bc4），全部指向中心和攻击方向。<b>出子速度领先整整 4 步！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FF8F0055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d5",
+            "e6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF8F00DD"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "h5",
+      "popup": "⬇️ ❌❌❌ <b>4...h5 — 黑方第四步仍是边兵！</b><br>四步全部走边兵。<br>这个极端例子揭示展示了占领中心和出子速度的重要性。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a5",
+            "a6",
+            "h5",
+            "h6"
+          ],
+          "color": "#FF8F00AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 白方第二匹马出动！</b><br>c3 继续美支援中心。<br>白方：双兵 + 双马 + 象，<b>5 枚棋子全部积极参战</b>，控制棋盘中央大片区域。黑方：仍无任何子出动！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4",
+            "b5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+         {
+          "from": "c3",
+          "to": "c5",
+          "color": "#00BCD4CC"
+        },
+         {
+          "from": "c3",
+          "to": "a4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "⬇️ <b>5...Nc6 — 黑马终于出来了！</b><br>黑方第五步才出第一个子！比白方<b>整整晚了 4 步</b>。<br>虽然 c6 马占据不错的位置，但白方已完全控制中心，黑方要追赶非常困难。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5",
+            "b4"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "c6",
+          "to": "b4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "c6",
+          "to": "a5",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "⬆️ <b>6.O-O — 白方易位，王安全！</b><br>白方提前完成王翼易位：国王安全转移到 g1，车激活到 f1。<br>易位的条件是：王路上无子、无将军，且王和车均未动。白方具备一切条件，顺利完成！",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e1",
+            "h1"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h1",
+          "to": "f1",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "d6",
+      "popup": "⬇️ <b>6...d6 — 黑方被迫保守防守！</b><br>黑方空间极度受限，走d6加强防守。<br> 黑方发展步数严重落后。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "e5",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "d6",
+          "to": "c5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Be3",
+      "popup": "⬆️ <b>7.Be3 — 白象占据好位，协调子力！</b><br>e3 象支援 d4 兵，同时控制 d4-a7 对角线，整个白方棋子形成完整的网络。<br>白方现在：双兵中心 + 双马 + 双象 + 车已激活，全军备战！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c5",
+            "b6",
+            "a7"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f4",
+            "g5",
+            "h6"
+          ],
+          "color": "#C6D50022",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "e3",
+          "to": "a7",
+          "color": "#00BCD477"
+        },
+        {
+          "from": "e3",
+          "to": "h6",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nf6",
+      "popup": "⬇️ <b>7...Nf6 — 黑方第二匹马出动！</b><br>f6 马是黑方最好的出子，控制 e4 和 d5。但黑方仍有象、后、车无法出动——<b>发展度严重不足</b>。<br>白方已完全掌控局面，黑方处于被动防守。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5",
+            "g4",
+            "h5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Qd2",
+      "popup": "⬆️ <b>8.Qd2 — 白方完全占领中心！</b><br>最终对比：</b><br>白方：双兵中心,双马,双象,后,车已易位，全军出动、协调一致。<br>黑方：只有双马出动，2个边兵毫无贡献，处于严重劣势！<br><b>这就是「占领中心」的价值——一步步积累优势，让对手无法呼吸。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a5",
+            "a6",
+            "h5",
+            "h6"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "g5",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d2",
+          "to": "a5",
+          "color": "#00BCD477"
+        },
+        {
+          "from": "d2",
+          "to": "h6",
+          "color": "#00BCD466"
+        }
+      ]
+    }
+  ]
+}

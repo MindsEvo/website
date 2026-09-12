@@ -1,0 +1,169 @@
+{
+  "game_id": "D15_CounterAttack_Demo_002",
+  "description": "法式防御古典变例 C11 — 延迟c5爆破：先稳固后反击",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心第2课\n\n法式防御！\n黑方不立刻反击\n\n先用e6稳固结构\n等待最佳时机！\n\n核心问题：\n什么时候出击c5？\n过早还是过晚？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "法式防御总结\n\n延迟反制的模式：\n① 先发展，稳固结构\n② 用翼兵（b5/a6）准备\n③ c5时机到来时果断反击\n\n反制时机三问：\n① 翼兵准备好了吗？\n② 象的对角线是否畅通？\n③ 对方是否已经过度进取？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "e6 法式！\n先稳固，不立刻反击\n等待时机"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4 巩固中心"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5 现在反制！"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 支援中心"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6 发展马"
+    },
+    {
+      "index": 6,
+      "move": "Bg5",
+      "popup": "Bg5 施压Nf6"
+    },
+    {
+      "index": 7,
+      "move": "dxe4",
+      "popup": "dxe4！主动简化\n释放c8象"
+    },
+    {
+      "index": 8,
+      "move": "Nxe4",
+      "popup": "Nxe4 重建中心"
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "Be7 发展象"
+    },
+    {
+      "index": 10,
+      "move": "Bxf6",
+      "popup": "Bxf6 兑换，制造c6弱点"
+    },
+    {
+      "index": 11,
+      "move": "gxf6",
+      "popup": "gxf6 接受双象"
+    },
+    {
+      "index": 12,
+      "move": "Nf3",
+      "popup": "Nf3 发展"
+    },
+    {
+      "index": 13,
+      "move": "a6",
+      "popup": "a6！为b5准备"
+    },
+    {
+      "index": 14,
+      "move": "g3",
+      "popup": "g3 超现代布局"
+    },
+    {
+      "index": 15,
+      "move": "b5",
+      "popup": "b5！翼兵推进"
+    },
+    {
+      "index": 16,
+      "move": "Bg2",
+      "popup": "Bg2 象就位"
+    },
+    {
+      "index": 17,
+      "move": "Bb7",
+      "popup": "Bb7！象激活\n长对角线施压"
+    },
+    {
+      "index": 18,
+      "move": "Qe2",
+      "popup": "Qe2 后激活\n控制e列，为马的活跃造势"
+    },
+    {
+      "index": 19,
+      "move": "f5",
+      "popup": "f5！黑方f5！\n翼兵推进，争夺空间\n法式双象的优势体现"
+    },
+    {
+      "index": 20,
+      "move": "Nc5",
+      "popup": "Nc5！白马跳c5！\n占据要地，威胁黑方内活"
+    },
+    {
+      "index": 21,
+      "move": "Bxc5",
+      "popup": "Bxc5 黑象吃马\n换取中心格位控制"
+    },
+    {
+      "index": 22,
+      "move": "dxc5",
+      "popup": "dxc5 兵吃回\n形成c5通路兵优势"
+    },
+    {
+      "index": 23,
+      "move": "Be4",
+      "popup": "Be4！黑象占e4！\n执掉c2兵的威胁\n控制关键中心格"
+    },
+    {
+      "index": 24,
+      "move": "O-O",
+      "popup": "O-O 白方安全易位"
+    },
+    {
+      "index": 25,
+      "move": "Nc6",
+      "popup": "Nc6 黑马发展\n支援Be4，施压夺子"
+    },
+    {
+      "index": 26,
+      "move": "Rfd1",
+      "popup": "Rfd1 车占d列\n威胁黑象\uff0c追问黑方下步"
+    },
+    {
+      "index": 27,
+      "move": "Qf6",
+      "popup": "Qf6 黑后活跃\n占据f6，准备反击"
+    },
+    {
+      "index": 28,
+      "move": "c3",
+      "popup": "c3 逼走黑象\n此时局面势均力敌\n反制主题已展开"
+    }
+  ]
+}

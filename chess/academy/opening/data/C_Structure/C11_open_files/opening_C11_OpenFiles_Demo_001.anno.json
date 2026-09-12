@@ -1,0 +1,129 @@
+{
+  "game_id": "C11_OpenFiles_Demo_001",
+  "description": "西西里防御 B20 — 什么是半开放线",
+  "intro": {
+    "flash_squares": ["c5", "c4", "c3", "c2", "c1"],
+    "popup": "什么是半开放线 第1课\n\n黑方第一手c5！\nc列从此无黑兵\n\n半开放线=只有一方无兵的列\n黑方c线是天然的车通道！\n\n把车放到c8，控制c线！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "半开放线小结\n✅ c5→cxd4：c线完全打通\n✅ 黑方c列无兵=半开放线\n✅ 车放c8 = 控制战略通道\n\n核心公式：\n有半开放线→车放上去→施压对方！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["c8", "c5"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4占中心\n这是白方最常见的第一手"
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5！半开放线诞生！\n从此c列再无黑兵\n黑方c线=半开放线！",
+      "highlights": [
+        {"squares": ["c5", "c4", "c3", "c2", "c1"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n控制d4和e5"
+    },
+    {
+      "index": 3,
+      "move": "d6",
+      "popup": "d6稳固中心\n为Nf6做准备"
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "d4！白方反中心\n挑战c5，试图打开中心"
+    },
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "cxd4！黑方兑换！\nc线完全打通！\n从c8到c1没有任何黑兵！",
+      "highlights": [
+        {"squares": ["c8", "c7", "c6", "c5", "c4", "c3", "c2", "c1"], "color": "#C6D50088"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nxd4",
+      "popup": "Nxd4白马占中心\n白方有中心控制优势"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6发展马\n攻击e4，施加压力"
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3发展马\n支援中心"
+    },
+    {
+      "index": 9,
+      "move": "a6",
+      "popup": "a6防守！\n防止白马跳b5\n西西里经典小手段"
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "Be2稳固发展\n准备入城"
+    },
+    {
+      "index": 11,
+      "move": "e6",
+      "popup": "e6稳固中心\n为象发展做准备"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O白方入城\n王安全，准备翼翼进攻"
+    },
+    {
+      "index": 13,
+      "move": "Be7",
+      "popup": "Be7发展象\n准备入城"
+    },
+    {
+      "index": 14,
+      "move": "Be3",
+      "popup": "Be3发展象\n守护d4马"
+    },
+    {
+      "index": 15,
+      "move": "O-O",
+      "popup": "O-O黑方入城！\n王安全，Re8或Rc8即将部署",
+      "highlights": [
+        {"squares": ["c8", "f8"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "f4",
+      "popup": "f4！白方翼翼进攻\n准备f5推进"
+    },
+    {
+      "index": 17,
+      "move": "Nc6",
+      "popup": "Nc6发展马\n攻击d4马，争夺中心\n同时Rc8即将占领c线！",
+      "highlights": [
+        {"squares": ["c6", "c8"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nb3",
+      "popup": "Nb3撤退\n白马离开d4\n黑方现在可以Rc8！\n完全控制c线半开放线！",
+      "highlights": [
+        {"squares": ["c8", "c7", "c6", "c5"], "color": "#C6D50088"}
+      ]
+    }
+  ]
+}

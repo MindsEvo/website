@@ -1,0 +1,42 @@
+{
+  "game_id": "B7_PieceCoord_Demo_001",
+  "description": "C50 — 每个棋子都有任务吗？",
+  "intro": {
+    "flash_squares": ["c4", "f3", "c3", "e3", "e1"],
+    "popup": "子力协调第1课\n出子之后要问自己：这个棋子的任务是什么？\n所有棋子服务于同一计划，才叫协调",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：出子只是开始，协调才是目标\n每步走完，问：这个棋子在干什么？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4占领中心\n激活：开放e和d列\n计划：为Bc4+Nf3铺路"},
+    {"index": 1, "move": "e5", "popup": "e5对称\n黑方也占领中心"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3！第1个轻子出动\n激活：马控e5和d4\n协调：为Bc4象的斜线清路\n计划：轻子首先，重子最后", "highlights": [{"squares": ["e5", "d4"], "color": "#C6D50033"}]},
+    {"index": 3, "move": "Nc6", "popup": "Nc6出动\n黑方保护e5兵"},
+    {"index": 4, "move": "Bc4", "popup": "Bc4！第2个轻子\n激活：象瞄准f7\n协调：Nf3+Bc4联合施压f7\n计划：意大利开局体系", "highlights": [{"squares": ["f7", "d5"], "color": "#FF8F0033"}]},
+    {"index": 5, "move": "Bc5", "popup": "Bc5出动\n黑方对称，瞄准f2"},
+    {"index": 6, "move": "Nc3", "popup": "Nc3！第3个轻子出动\n激活：第2个马\n协调：Nf3+Nc3联合，d5+e4全控\n计划：3子全出，可以易位了！", "highlights": [{"squares": ["c3", "d5", "e4", "f3"], "color": "#C6D50033"}]},
+    {"index": 7, "move": "Nf6", "popup": "Nf6出动\n黑方攻击e4，灵活"},
+    {"index": 8, "move": "d3", "popup": "d3稳固中心\n为Be3做准备\n意大利封闭体系"},
+    {"index": 9, "move": "d6", "popup": "d6防守\n黑方加固中心"},
+    {"index": 10, "move": "O-O", "popup": "O-O易位！\n激活：Rf1进入游戏\n计划：易位后准备Re1激活车"},
+    {"index": 11, "move": "O-O", "popup": "O-O黑方易位\n双方王安全，进入中盘"},
+    {"index": 12, "move": "Be3", "popup": "Be3！象出动\n激活：c1象激活\n协调：Be3支援d4格，与Nf3/Nc3联动\n计划：Be3+Nf3+Nc3三子协调控制中心", "highlights": [{"squares": ["d4", "c5", "f4"], "color": "#00BCD433"}]},
+    {"index": 13, "move": "Bxe3", "popup": "Bxe3黑方换象\n黑方换掉白方Be3"},
+    {"index": 14, "move": "fxe3", "popup": "fxe3重新吃象\n激活：f列半开放\n协调：e列+f列联合压力\n计划：Rfe1沿e列施压"},
+    {"index": 15, "move": "Na5", "popup": "Na5黑方马冒进\n⚠️ 马到边缘，脱离协调\n黑方马在a5是边缘马，任务不明确"},
+    {"index": 16, "move": "Bb3", "popup": "Bb3象后退\n激活：象离开对方马的攻击\n协调：Bb3仍控制d5和f7\n计划：保留象的活力"},
+    {"index": 17, "move": "Nxb3", "popup": "Nxb3黑方换象\n黑方换掉白方b3象"},
+    {"index": 18, "move": "axb3", "popup": "axb3重新夺回\n激活：a列半开放\n协调：b3兵加固中心"},
+    {"index": 19, "move": "Re8", "popup": "Re8黑方车激活\n黑方车进入e列"},
+    {"index": 20, "move": "Qd2", "popup": "Qd2后出动\n激活：后联结双车\n协调：Qd2连接Ra1+Rf1，准备双车进列\n计划：后是联结者，不是独行侠", "highlights": [{"squares": ["d2", "a1", "f1"], "color": "#8E24AA33"}]},
+    {"index": 21, "move": "a6", "popup": "a6黑方巩固\n防止白方Nb5"},
+    {"index": 22, "move": "Rfe1", "popup": "Rfe1！车进e列！\n激活：最后一个子力进入游戏\n协调：Re1+Nc3+Nf3三子控制e列和中心\n计划：协调完整——每个子力都有任务！\n✅ 这就是子力协调的完成状态", "highlights": [{"squares": ["e1", "e4", "e5"], "color": "#C6D50066"}]}
+  ]
+}

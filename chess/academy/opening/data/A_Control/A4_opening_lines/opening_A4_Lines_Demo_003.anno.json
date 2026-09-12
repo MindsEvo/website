@@ -1,0 +1,152 @@
+{
+  "game_id": "A4_Lines_Demo_003",
+  "description": "埃文斯弃兵 C51 — 打开斜线，Ba3象占长对角线攻f8",
+  "intro": {
+    "flash_squares": ["a3", "f8", "b4", "c5"],
+    "popup": "线路控制第3课\n打开斜线，象控对角线\n本局核心：Ba3\n控制a3-f8长对角线！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "斜线控制精华\nBa3象控a3-f8\n直逼黑王位\n斜线威胁往往更加隐蔽致命！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局\n占中心，开斜线\n白方主动争取空间"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称应对\n双方封闭e线\n意大利开局进入"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3发展\n攻击e5，施压"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6保护e5\n黑方标准应对"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "highlights": [{"squares": ["c4", "f7"], "color": "#FF8F0055"}],
+      "popup": "Bc4！意大利象\n瞄准f7\n埃文斯弃兵即将上演"
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "Bc5发展\n黑方也占主动位置"
+    },
+    {
+      "index": 6,
+      "move": "b4",
+      "highlights": [{"squares": ["b4", "c5"], "color": "#E5393544"}],
+      "concept_arrows": [{"from": "b4", "to": "c5", "color": "#E53935CC"}],
+      "popup": "b4！埃文斯弃兵\n白方牺牲b4兵\n换取速度和斜线控制\n这是19世纪最流行的攻击开局"
+    },
+    {
+      "index": 7,
+      "move": "Bxb4",
+      "highlights": [{"squares": ["b4", "c3"], "color": "#00BCD444"}],
+      "popup": "黑方接受弃兵\nBxb4吃兵\n但白方c3将追象，获得节奏"
+    },
+    {
+      "index": 8,
+      "move": "c3",
+      "highlights": [{"squares": ["c3", "b4", "d4"], "color": "#C6D50044"}],
+      "popup": "c3！追击b4象\n同时为d4做准备\n白方将在速度上超越黑方"
+    },
+    {
+      "index": 9,
+      "move": "Bc5",
+      "popup": "Bc5象撤回c5\n黑方保住象，但已浪费一步\n白方下一步d4，中心主动权在握"
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "highlights": [{"squares": ["d4", "e5", "a5"], "color": "#FF8F0055"}],
+      "popup": "d4！白方快速打开中心\n攻击e5，同时威胁a5象\n白方速度领先两步"
+    },
+    {
+      "index": 11,
+      "move": "exd4",
+      "highlights": [{"squares": ["d4", "e4"], "color": "#C6D50044"}],
+      "popup": "exd4兑换\ne线打开\n白方下一步O-O，车将占e1"
+    },
+    {
+      "index": 12,
+      "move": "cxd4",
+      "highlights": [{"squares": ["c3", "d4"], "color": "#C6D50044"}],
+      "popup": "cxd4重提！\nc3兵吃回d4\n中心兵链恢复，白方无顾虑"
+    },
+    {
+      "index": 13,
+      "move": "Bb6",
+      "highlights": [{"squares": ["b6", "a3", "f8"], "color": "#00BCD444"}],
+      "popup": "Bb6象撤到b6\n注意：b6象暂时挡住a3-f8斜线\n白方将通过易位+推进来清除障碍……"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "highlights": [{"squares": ["f1", "g1", "e1"], "color": "#C6D50044"}],
+      "popup": "O-O王车易位\n王走安全，车到f1参战\n白方出子全面领先"
+    },
+    {
+      "index": 15,
+      "move": "d6",
+      "popup": "d6稳定中心\n黑方防守，准备发展\nb6象仍挡着斜线——等白方推e5打通"
+    },
+    {
+      "index": 16,
+      "move": "e5",
+      "highlights": [{"squares": ["e5", "d6"], "color": "#FF8F0055"}],
+      "popup": "e5！白方推兵进攻\n直接攻击d6黑兵\n中心推进，为斜线开路"
+    },
+    {
+      "index": 17,
+      "move": "dxe5",
+      "highlights": [{"squares": ["d6", "e5"], "color": "#C6D50044"}],
+      "popup": "dxe5黑方吃回\nd6兵吃e5兵\nd6格清空——斜线开始打通"
+    },
+    {
+      "index": 18,
+      "move": "dxe5",
+      "highlights": [{"squares": ["d4", "e5", "b4", "c5", "d6"], "color": "#FF8F0055"}],
+      "popup": "dxe5！白方重提\nd4兵吃回e5\na3-f8斜线已大致清空！\n只剩e7一格……"
+    },
+    {
+      "index": 19,
+      "move": "Nge7",
+      "highlights": [{"squares": ["e7", "a3", "f8"], "color": "#00BCD444"}],
+      "popup": "Nge7马撤到e7\n黑方整理位置\n注意e7马暂坐在a3-f8斜线上\n白方象将如何突破？"
+    },
+    {
+      "index": 20,
+      "move": "Nc3",
+      "highlights": [{"squares": ["c3", "d5", "e4"], "color": "#C6D50044"}],
+      "popup": "Nc3快速发展！\n白方出子抢先\n中心控制，为Ba3蓄势"
+    },
+    {
+      "index": 21,
+      "move": "O-O",
+      "highlights": [{"squares": ["g8", "f8", "e7"], "color": "#E5393544"}],
+      "popup": "黑方王车易位\n王到g8，车到f8\nNe7仍在斜线上……\nBa3将如何利用？"
+    },
+    {
+      "index": 22,
+      "move": "Ba3",
+      "highlights": [{"squares": ["a3", "e7", "f8"], "color": "#C6D50066"}],
+      "concept_arrows": [{"from": "a3", "to": "f8", "color": "#C6D500CC"}],
+      "popup": "Ba3！斜线控制精华\n象占a3，锁定a3-f8长对角线\nBa3直接攻击e7马！\n马若移开→f8车立即暴露\n这就是斜线压制——一步棋，双重威胁！"
+    }
+  ]
+}

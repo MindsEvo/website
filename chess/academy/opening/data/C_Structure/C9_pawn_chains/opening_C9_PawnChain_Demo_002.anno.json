@@ -1,0 +1,237 @@
+{
+  "game_id": "C9_PawnChain_Demo_002",
+  "description": "C02 — 法国防御推进变例，锁定兵链最清晰形态",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "c3"
+    ],
+    "popup": "兵链方向第2课\ne5推进变例！\n白方第3步直接e5\n立刻锁定兵链，结构第一！\nc5要攻根部d4\nb4→b5要推后翼\n双翼竞速！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "本局演示了兵链推进的例子！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "e6法国防御"
+    },
+    {
+      "index": 2,
+      "move": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5"
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！！推进变例！一步锁定兵链e5-d4\n结构立刻确立！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "c5",
+      "popup": "c5！正确！攻击兵链根部d4\n——推进变例黑方核心反击！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "c3",
+      "popup": "c3！支撑兵链根部d4，坚守链根"
+    },
+    {
+      "index": 7,
+      "move": "Nc6",
+      "popup": "Nc6发展马"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3出马，王翼准备"
+    },
+    {
+      "index": 9,
+      "move": "Qb6",
+      "popup": "Qb6！后出动攻击b2，双重压力"
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "Bd3发展，支撑e5"
+    },
+    {
+      "index": 11,
+      "move": "Bd7",
+      "popup": "Bd7），象出发展"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O易位"
+    },
+    {
+      "index": 13,
+      "move": "cxd4",
+      "popup": "cxd4！黑方终于打击d4根部！"
+    },
+    {
+      "index": 14,
+      "move": "cxd4",
+      "popup": "cxd4白方回兵重建链"
+    },
+    {
+      "index": 15,
+      "move": "Nge7",
+      "popup": "Nge7马出动"
+    },
+    {
+      "index": 16,
+      "move": "Nc3",
+      "popup": "Nc3马向王翼集结"
+    },
+    {
+      "index": 17,
+      "move": "Nf5",
+      "popup": "Nf5马占据好位"
+    },
+    {
+      "index": 18,
+      "move": "Na4",
+      "popup": "Na4！驱逐黑后"
+    },
+    {
+      "index": 19,
+      "move": "Qa5",
+      "popup": "Qa5后撤"
+    },
+    {
+      "index": 20,
+      "move": "Bd2",
+      "popup": "Bd2发展"
+    },
+    {
+      "index": 21,
+      "move": "Bb4+",
+      "popup": "Bb4+象将军"
+    },
+    {
+      "index": 22,
+      "move": "Bxb4"
+    },
+    {
+      "index": 23,
+      "move": "Nxb4"
+    },
+    {
+      "index": 24,
+      "move": "Bb1",
+      "popup": "Bb1！象后撤保护后翼"
+    },
+    {
+      "index": 25,
+      "move": "O-O",
+      "popup": "O-O黑易位"
+    },
+    {
+      "index": 26,
+      "move": "a3",
+      "popup": "a3！驱逐黑马"
+    },
+    {
+      "index": 27,
+      "move": "Nc6",
+      "popup": "Nc6马回撤"
+    },
+    {
+      "index": 28,
+      "move": "b4",
+      "popup": "b4！！双翼竞速！b4后翼推进\n兵链方向清晰指引行动！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "b5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Qd8",
+      "popup": "Qd8后撤"
+    },
+    {
+      "index": 30,
+      "move": "b5",
+      "popup": "b5！！少数兵突破！沿后翼推进"
+    },
+    {
+      "index": 31,
+      "move": "Na5",
+      "popup": "Na5马转移"
+    },
+    {
+      "index": 32,
+      "move": "Ne1",
+      "popup": "Ne1！！战略重组\n调马去f3→g5/f5，准备f4王翼突破",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "f3"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "f6",
+      "popup": "f6！黑方攻击链头e5"
+    },
+    {
+      "index": 34,
+      "move": "exf6",
+      "popup": "exf6！白吃，兑换"
+    },
+    {
+      "index": 35,
+      "move": "Rxf6",
+      "popup": "Rxf6！车进攻"
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "game_id": "B6_DevSpeed_Demo_003",
+  "description": "C20 帕勒姆进攻 — 后早出，被轻子反复威胁，每追一次失去一步先手",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "h5",
+      "f3",
+      "e3"
+    ],
+    "popup": "快速出子第3课\n后是9分的最大重子\n今天看看，过早出动的代价！\n白方将走Qh5——仅第2步就出后！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：后早出的代价\nQh5被g6（1分兵）追→浪费1步先手\nQf3被Nd4（3分马）追→浪费1步先手\n后是最强子，却成了最大的包袱\n正确做法：先出轻子，后在后方保护",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4占领中心\n开局第一步"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称\n黑方也占中心"
+    },
+    {
+      "index": 2,
+      "move": "Qh5",
+      "highlights": [
+        {
+          "squares": [
+            "h5",
+            "e5",
+            "f7"
+          ],
+          "color": "#E5393555"
+        }
+      ],
+      "popup": "⚠️ Qh5！后第1次出动\n开局仅第2步，后就冲出来了！\n表面上攻击e5，威胁Qxe5+甚至Qxf7#\n但后暴露在外边——等着被轻子赶！"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6出动\n黑方第1个轻子\n保护e5兵，同时做好迎接后续的准备"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "Bc4发展\n白方象出动"
+    },
+    {
+      "index": 5,
+      "move": "g6",
+      "highlights": [
+        {
+          "squares": [
+            "g6",
+            "h5"
+          ],
+          "color": "#C6D50066"
+        }
+      ],
+      "popup": "g6！仅一个兵，就把9分的后赶走！\n关键时刻：\n黑方用1分的兵，威胁9分的后\n后必须逃——白方白白浪费了一步先手！"
+    },
+    {
+      "index": 6,
+      "move": "Qf3",
+      "highlights": [
+        {
+          "squares": [
+            "h5",
+            "f3"
+          ],
+          "color": "#E5393544"
+        }
+      ],
+      "popup": "Qf3 — 后第2次移动！\n后Qh5→Qf3，被一个兵追着跑\n⚠️ 这一步本可以走Nf3发展马\n白方浪费了1步先手：后走了2步，出了0个轻子"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6！黑方第2个轻子出动\n发展出子，同时攻击e4\n对比白方：后用了2步，黑方出了2个轻子"
+    },
+    {
+      "index": 8,
+      "move": "d3",
+      "popup": "d3稳固中心\n为象和马的发展做准备"
+    },
+    {
+      "index": 9,
+      "move": "Bg7",
+      "popup": "Bg7！黑方第3个轻子出动\n象到g7，控制长对角线\n黑方每步都在出新子"
+    },
+    {
+      "index": 10,
+      "move": "Ne2",
+      "popup": "Ne2出动\n白方终于出第1个马\n注意：因为后占着f3，马只能走Ne2而不是Nf3\n后的早出连马的发展位置都被占了！"
+    },
+    {
+      "index": 11,
+      "move": "d6",
+      "popup": "d6稳固\n黑方第4步：巩固中心\n为象的出动打开通道"
+    },
+    {
+      "index": 12,
+      "move": "Nbc3",
+      "popup": "Nbc3出动\n白方第2个马出动"
+    },
+    {
+      "index": 13,
+      "move": "Be6",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "c4"
+          ],
+          "color": "#C6D50033"
+        }
+      ],
+      "popup": "Be6！黑方第4个轻子出动\n还攻击白方Bc4\n黑方4个轻子全部出动，随时可以易位！"
+    },
+    {
+      "index": 14,
+      "move": "Bg5",
+      "popup": "Bg5出动\n白方象出动，牵制Nf6"
+    },
+    {
+      "index": 15,
+      "move": "Nd4",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f3",
+            "e3"
+          ],
+          "color": "#C6D50055"
+        }
+      ],
+      "popup": "Nd4！⚠️ 黑马跳入d4——再次威胁白后！\n第1次：兵g6追后（Qh5退到Qf3）\n第2次：马Nd4追后（Qf3再退）\n马只有3分，但后9分不可以与之交换！"
+    },
+    {
+      "index": 16,
+      "move": "Qe3",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e3"
+          ],
+          "color": "#E5393544"
+        }
+      ],
+      "popup": "Qe3 — 后第3次移动！\n后Qh5→Qf3→Qe3，已经走了3步！\n3步本可以发展3个轻子\n⚠️ 更糟糕的是：Nd4还有Nxe2的后续手！\n白方非常被动"
+    },
+    {
+      "index": 17,
+      "move": "Nxe2",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e2"
+          ],
+          "color": "#E5393566"
+        }
+      ],
+      "popup": "Nxe2！黑马主动吃掉Ne2交换！"
+    },
+    {
+      "index": 18,
+      "move": "Nxe2",
+      "popup": "白方吃掉黑马， 交换"
+    },
+    {
+      "index": 19,
+      "move": "O-O",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8",
+            "e8"
+          ],
+          "color": "#C6D50066"
+        }
+      ],
+      "popup": "O-O！黑方从容易位\n4个轻子全出，王安全，出子完整\n对比白方：后走了3步，局面落后"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "popup": "O-O白方也易位\n但代价已经付出了"
+    },
+    {
+      "index": 21,
+      "move": "c6",
+      "popup": "c6巩固\n黑方稳固"
+    },
+    {
+      "index": 22,
+      "move": "d4",
+      "highlights": [
+        {
+          "squares": [
+            "h5",
+            "f3",
+            "e3"
+          ],
+          "color": "#E5393533"
+        }
+      ],
+      "popup": "d4推进中心\n回顾后的轨迹：Qh5→Qf3→Qe3\n后走了3步 = 浪费3步先手\n黑方同样3步：出了Nf6、Bg7、Be6三个轻子\n后（9分）早早出动，却成了全局的累赘\n后应该待在后方保护轻子，等时机成熟再出击！"
+    }
+  ]
+}

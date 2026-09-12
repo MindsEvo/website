@@ -1,0 +1,42 @@
+{
+  "game_id": "B7_PieceCoord_Demo_002",
+  "description": "C60 — 马象互补，分工覆盖",
+  "intro": {
+    "flash_squares": ["b3", "f3", "d2", "e1", "c2"],
+    "popup": "子力协调第2课\n马和象有不同的特长\n马善守封闭格，象善控开放线\n二者不要重叠，要互补！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：马象互补是子力协调的基础\n马守格子，象守斜线，分工明确",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局\n占中心，开象的线路"},
+    {"index": 1, "move": "e5", "popup": "e5对称\n黑方占中心"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3马出动\n🐴 马的特点：善跳封闭格\n马在f3控制e5和d4", "highlights": [{"squares": ["e5", "d4", "g5"], "color": "#C6D50033"}]},
+    {"index": 3, "move": "Nc6", "popup": "Nc6\n黑方马出动，保护e5"},
+    {"index": 4, "move": "Bb5", "popup": "Bb5象出动\n🏹 象的特点：善射开放斜线\nBb5牵制Nc6，间接控d5\n注意：象在斜线上射击，马守固定格子", "highlights": [{"squares": ["c6", "d7", "e8", "a4", "c4"], "color": "#FF8F0033"}]},
+    {"index": 5, "move": "a6", "popup": "a6逼迫象表态\n黑方问：你的象到底退哪里？"},
+    {"index": 6, "move": "Ba4", "popup": "Ba4象暂退\n激活：象继续控制c6-d7线\n协调：Nf3（马守e5格）+ Ba4（象守斜线）互不干扰", "highlights": [{"squares": ["c6", "d7"], "color": "#FF8F0033"}]},
+    {"index": 7, "move": "Nf6", "popup": "Nf6出动\n黑方第2轻子，攻击e4"},
+    {"index": 8, "move": "O-O", "popup": "O-O易位\n激活：Rf1进入游戏\n计划：Re1压e列"},
+    {"index": 9, "move": "Be7", "popup": "Be7守备\n黑方象保护王"},
+    {"index": 10, "move": "Re1", "popup": "Re1！车激活\n激活：车进入e列\n协调：Re1（重子）+ Nf3+Ba4（轻子）协调\n计划：e列是白方的压力轴线", "highlights": [{"squares": ["e1", "e5", "e4"], "color": "#C6D50033"}]},
+    {"index": 11, "move": "b5", "popup": "b5黑方反击\n黑方翼兵推进，逼象再退"},
+    {"index": 12, "move": "Bb3", "popup": "Bb3象最终归位\n激活：象在b3最佳位置\n协调：Bb3（象控d5+f7斜线）+ Nf3（马控e5格）\n🏹 象控斜线：b3-f7整条对角线\n🐴 马守格子：Nf3守e5和d4", "highlights": [{"squares": ["b3", "f7", "d5"], "color": "#00BCD433"}]},
+    {"index": 13, "move": "d6", "popup": "d6黑方巩固中心"},
+    {"index": 14, "move": "c3", "popup": "c3巩固\n激活：为d4做准备\n协调：c3后d4推进，马进d4"},
+    {"index": 15, "move": "O-O", "popup": "O-O黑方易位"},
+    {"index": 16, "move": "h3", "popup": "h3预防\n防止Bg4牵制Nf3\n保护马的协调位置"},
+    {"index": 17, "move": "Na5", "popup": "Na5黑方攻击b3象\n黑方想换掉白方Bb3"},
+    {"index": 18, "move": "Bc2", "popup": "Bc2象退守\n激活：象到c2\n协调：Bc2（象控e4对角线）+ Nbd2（马守中心格）\n新的马象分工已建立！", "highlights": [{"squares": ["c2", "e4", "h7"], "color": "#FF8F0033"}]},
+    {"index": 19, "move": "c5", "popup": "c5黑方推进\n黑方打开c列反击"},
+    {"index": 20, "move": "d4", "popup": "d4中心推进！\n激活：打开d列，激活Bc2象\n计划：d4推进后Nbd2进入中心", "highlights": [{"squares": ["d4", "c5", "e5"], "color": "#FF5722033"}]},
+    {"index": 21, "move": "Qc7", "popup": "Qc7黑方后守备\n准备...cxd4"},
+    {"index": 22, "move": "Nbd2", "popup": "Nbd2！马象互补完成！\n激活：b1马终于激活\n协调体系最终形成：\n🐴 Nf3（控e5/d4格）+ Nbd2（控c4/e4格）\n🏹 Bc2（控e4/h7斜线）\n三子互补，覆盖白格和黑格！", "highlights": [{"squares": ["d2", "c4", "e4", "f3", "c2"], "color": "#C6D50066"}]}
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "game_id": "C10_WeakSquares_Demo_001",
+  "description": "尼姆佐-印度 E32 — 失去黑格象后弱格的产生",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "e4",
+      "c3",
+      "b4"
+    ],
+    "popup": "弱格是怎么产生的 第1课\n\n黑方的黑格象兑换白马后：\n→ 黑方失去黑格象\n→ 白方失去一马\n失去某色象→己方该色格趋弱",
+    "voice": true
+  },
+  "outro": {
+    "popup": "弱格产生小结\n✅ 黑失黑格象，白失马\n✅ Qxc3：白方无叠兵，双象完好\n✅ 失去某颜色象 → 己方该色格趋向弱化",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "e4"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4占领中心\n控制e5和c5"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马\n准备Nimzo体系"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧扩张\n经典英国/印度开局"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6准备纤维局\n为Bb4留空间"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马\n控制d5中心格",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！尼姆佐招牌\n钉住c3马，威胁兑换\n若兑换→黑方黑格弱化\n（Bb4是黑格象，b4=黑格）",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "c3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Qc2",
+      "popup": "Qc2防止兑换后叠兵\n稳定c3马"
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "O-O黑方率先入城\n王安全"
+    },
+    {
+      "index": 8,
+      "move": "a3",
+      "popup": "a3逼迫黑象表态\n现在—兑换还是撤？",
+      "highlights": [
+        {
+          "squares": [
+            "a3",
+            "b4"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bxc3+",
+      "popup": "Bxc3+兑换！\n关键事实：\n黑方失去黑格象（Bb4在黑格b4）\n白方失去的是马Nc3（非象！）\n白方双象均仍完好在棋盘",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "b4"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Qxc3",
+      "popup": "Qxc3以后吃回！无叠兵！\n白方兵型完整，且有双象优势\n代价：失去马，d5/e4控制略松\nd4仍由e3兵和Nf3守护",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c3"
+          ],
+          "color": "#FF8F00aa"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "b6",
+      "popup": "b6准备Bb7\n黑方建立白格象对角线\n（Bb7在白格b7，走白格长斜线）"
+    },
+    {
+      "index": 12,
+      "move": "Bg5",
+      "popup": "Bg5牵制Nf6（钉住马不能轻动）\n限制黑方e5推进，争中心主导权",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "d8",
+            "f6"
+          ],
+          "color": "#8E24AA44"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Bb7",
+      "popup": "Bb7建立长斜线\n白格象（Bb4已换，留下的是白格象）\n沿a8-h1白格长对角线施压g2",
+      "highlights": [
+        {
+          "squares": [
+            "b7",
+            "g2"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "e3",
+      "popup": "e3加强中心\n稳固d4"
+    },
+    {
+      "index": 15,
+      "move": "d6",
+      "popup": "d6稳固防守\n为黑方马留c5/e5跳点"
+    },
+    {
+      "index": 16,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n控制e5和d4"
+    },
+    {
+      "index": 17,
+      "move": "Nbd7",
+      "popup": "Nbd7重马发展\n准备c5冲击中心"
+    },
+    {
+      "index": 18,
+      "move": "Be2",
+      "popup": "Be2象退守\n为王车易位做准备"
+    },
+    {
+      "index": 19,
+      "move": "Re8",
+      "popup": "Re8增援e列\n准备e5反击"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "popup": "O-O白方入城\n王安全后才能放心行棋"
+    },
+    {
+      "index": 21,
+      "move": "e5",
+      "popup": "e5！黑方发动反击\n挑战白方d4中心",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "dxe5",
+      "popup": "dxe5打开局面！\nd4（黑格）随之空出，成争夺要点\n黑马可占d4——黑格象换马的长期影响\n白方须警惕d4的黑格弱化",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c3"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    }
+  ]
+}

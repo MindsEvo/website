@@ -1,0 +1,127 @@
+{
+  "game_id": "C12_SpaceCramp_Demo_003",
+  "description": "国王印度防御 E94 — 子力拥挤可视化：活动格计数",
+  "intro": {
+    "flash_squares": ["d5", "c6", "f6"],
+    "popup": "空间挤压 第3课\n\n如何量化拥挤程度？\n\n学习活动格计数法：\n数一数每个马有多少个能走的格子\n差距越大，挤压越严重！\n\n跟踪白方d5推进后，\n黑方的马发生了什么……",
+    "voice": true
+  },
+  "outro": {
+    "popup": "活动格计数结果\n\n白方马（d3）：6个活动格\n黑方马（e7，d7）：各约3个\n\nd5绑定直接造成差距！\n\n公式：活动格越少 = 被压迫越深",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d5"],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4！控制中心，开局第一步"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6！超现代路线开始\n控制中心而不急于占领"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！超级中心，占领c4+d4"
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "g6 准备Bg7对角线控制\n国王印度的标志性走法"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 发展马，支援中心"
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "Bg7！国王印度象！\n长对角线a1-h8，透视力极强"
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4！白方建立超强中心\nd4+c4+e4，横跨中心三格！"
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "d6 稳固后方，支援e5"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3 发展马"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 王车易位，王已安全"
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "Be2 稳固发展，准备入城"
+    },
+    {
+      "index": 11,
+      "move": "e5",
+      "popup": "e5！黑方占领中心格！\n双方都有中心兵——局面均衡"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O 白方入城"
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "Nc6 发展马，攻击d4\n此时Nc6还有不错的活动空间"
+    },
+    {
+      "index": 14,
+      "move": "d5",
+      "popup": "d5！！关键战略推进！\n\n白方用d5关上了中心的大门\n棋盘被分成两半：\n左翼(白)：d5之前全是白方领地\n右翼(黑)：f5-f4区域是黑方活动区\n\n⚠ 现在：Nc6的好格子还剩几个？",
+      "highlights": [
+        {"squares": ["d5", "c4", "e4"], "color": "#00BCD466"}
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ne7",
+      "popup": "Ne7！马从c6撤退！\n\nc6马失去了中心控制力\n好格e5被白方控制，b4太偏远\n马只能退到e7！\n\n这就是d5绑定的立竿见影效果",
+      "highlights": [
+        {"squares": ["c6", "e7"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Ne1",
+      "popup": "Ne1！白马主动撤退！\n\n为什么？白方是主动的：\n撤退是为了重新部署到更好的格：\nNe1→d3→c5或f4！\n\n对比黑方Ne7：被迫退，\n白方Ne1：主动退，计划明确！"
+    },
+    {
+      "index": 17,
+      "move": "Nd7",
+      "popup": "Nd7！黑方f6马也退了！\n\n又一次退马！\n因为d5把黑方好格全压住了\n\n⚠ 活动格计数：\nNd7的好格：b6、b8、f6（受限）\n约2-3个好格……很拥挤！",
+      "highlights": [
+        {"squares": ["d7", "f6", "b6"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nd3",
+      "popup": "Nd3！白马到达绝佳格！\n\n白马Nd3的活动格：\nc1、b4、c5、e5、f4、f2……6个以上！\n\n对比黑方Ne7+Nd7：各约3个\n\n这就是d5绑定造成的空间压缩——\n活动格的数量差距=空间挤压的程度！",
+      "highlights": [
+        {"squares": ["d3", "c5", "e5", "f4"], "color": "#C6D50066"},
+        {"squares": ["e7", "d7"], "color": "#E5393544"}
+      ]
+    }
+  ]
+}

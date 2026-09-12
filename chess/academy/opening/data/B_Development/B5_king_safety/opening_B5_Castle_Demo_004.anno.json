@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Demo_004",
+  "description": "西西里防御 B57 — 异侧易位对攻，速度决定一切",
+  "intro": {
+    "flash_squares": ["g1", "c8", "g4", "a5"],
+    "popup": "王车易位第4课\n异侧易位对攻！\n黑方短易位\n白方长易位\n双方向对方王翼冲兵——争取优势！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "异侧易位总结\n白长易位对黑短易位：\n① 白方g4/g5/h4冲击黑王翼\n② 黑方a5/b4/b5冲击白王翼\n③ 双方都加快进攻速度，争取先手！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c5", "popup": "c5西西里防御"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6发展"},
+    {"index": 4, "move": "d4", "popup": "d4打开中心"},
+    {"index": 5, "move": "cxd4", "popup": "cxd4兑换"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6发展"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3发展"},
+    {"index": 9, "move": "d6", "popup": "d6稳固"},
+    {"index": 10, "move": "Bc4", "popup": "Bc4象占主动格"},
+    {"index": 11, "move": "e6", "popup": "e6准备易位"},
+    {"index": 12, "move": "Be3", "popup": "Be3准备Qe2"},
+    {"index": 13, "move": "Be7", "popup": "Be7准备短易位"},
+    {"index": 14, "move": "Qe2", "popup": "Qe2为长易位做准备"},
+    {"index": 15, "move": "O-O", "highlights": [{"squares": ["g8","g7","h7","f7"], "color": "#C6D50066"}], "popup": "O-O！黑方短易位\n王到g8，安全！\n但是……白方下一步要长易位"},
+    {"index": 16, "move": "O-O-O", "highlights": [{"squares": ["c1","d1","a1","b1"], "color": "#FF8F0066"}], "popup": "O-O-O！白方长易位！\n现在双方王在对面：\n白王c1——黑王g8\n这是异侧易位的典型局面\n双方要向对方王翼冲兵！"},
+    {"index": 17, "move": "a6", "popup": "a6！黑方开始冲\n准备b5/b4进攻白王"},
+    {"index": 18, "move": "Bb3", "popup": "Bb3象后撤\n避开a5攻击"},
+    {"index": 19, "move": "Na5", "highlights": [{"squares": ["a5","b3","c1"], "color": "#00BCD433"}], "popup": "Na5！马跳出\n攻击Bb3，瞄准c2格\n黑方向白王发动进攻"},
+    {"index": 20, "move": "g4", "highlights": [{"squares": ["g2","g4","g8"], "color": "#E5393555"}], "popup": "g4！白方也冲兵\n速度极快，双方同时进攻\n白方向黑王翼冲兵！"},
+    {"index": 21, "move": "b5", "popup": "b5！黑方跟进\n双方对攻，互不相让"},
+    {"index": 22, "move": "g5", "highlights": [{"squares": ["g4","g5","f6"], "color": "#E5393566"}], "popup": "g5！白方兵暴推进\n直扑f6马\n速度决定一切！\n谁先突破，谁先获胜！"}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "game_id": "B7_PieceCoord_Demo_005",
+  "description": "C47 — 完美协调模型：每子角色清晰",
+  "intro": {
+    "flash_squares": ["b5", "b4", "g3", "f5", "h5"],
+    "popup": "子力协调第5课\n四马开局是很好的协调步调，各4个轻子全出！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Nf5是协调攻击的顶点\n每步棋都推进了同一计划：攻击黑方王翼",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局"},
+    {"index": 1, "move": "e5", "popup": "e5对称"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3第1马\n控制e5/d4"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6第1马\n保护e5"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3第2马\n四马开局第2步\n协调：Nf3+Nc3双马联动控中心", "highlights": [{"squares": ["d5", "e4", "f3", "c3"], "color": "#C6D50033"}]},
+    {"index": 5, "move": "Nf6", "popup": "Nf6黑方第2马\n四马出齐！双方各有2匹马"},
+    {"index": 6, "move": "Bb5", "popup": "Bb5！白方策略：牵制\n激活：象出动牵制Nc6\n计划：Bb5使Nc6\"哑火\"，破坏黑方协调\n这是主动破坏对方协调的典型手法！", "highlights": [{"squares": ["c6", "d7"], "color": "#E5393533"}]},
+    {"index": 7, "move": "Bb4", "popup": "Bb4！黑方反牵制\n激活：黑方象反牵制Nc3\n协调：Bb4牵制Nc3，破坏白方中心控制\n互相牵制：最复杂的协调对抗！"},
+    {"index": 8, "move": "O-O", "popup": "O-O白方易位\n激活：Rf1进入游戏\n计划：先稳定，让黑方先表态"},
+    {"index": 9, "move": "O-O", "popup": "O-O黑方也易位\n双方王安全，进入协调大战"},
+    {"index": 10, "move": "d3", "popup": "d3稳固\n激活：为Ne2做准备\n计划：Ne2→Ng3→Nf5攻王路线开始！", "highlights": [{"squares": ["e2", "g3", "f5", "h5"], "color": "#FF8F0033"}]},
+    {"index": 11, "move": "d6", "popup": "d6黑方守中心"},
+    {"index": 12, "move": "Ne2", "popup": "Ne2！马开始机动\n激活：马从c3移到e2\n⚠️ 看起来像退步，实际是攻击路线中转站\n计划：Ne2→Ng3→Nh5或Nf5进攻王翼\n协调：Bb5（牵制Nc6）+ Ne2（机动进攻）联合", "highlights": [{"squares": ["e2", "g3", "f5", "h5"], "color": "#FF8F0033"}]},
+    {"index": 13, "move": "Ne7", "popup": "Ne7黑方马退守\n黑方马也开始机动"},
+    {"index": 14, "move": "c3", "popup": "c3逼象表态\n激活：逼迫Bb4离开牵制位\n计划：Bb4一旦撤退，Nc3控制力恢复"},
+    {"index": 15, "move": "Ba5", "popup": "Ba5黑方象撤退\n黑方象退出牵制，但失去主动"},
+    {"index": 16, "move": "Ng3", "popup": "Ng3！马到达g3！\n激活：马向王翼推进\n协调：Ng3（准备h4-h5推进）+ Bb5（牵制Nc6）\n计划：Ng3准备跳f5，攻击黑方王翼！", "highlights": [{"squares": ["g3", "f5", "h5"], "color": "#FF8F0033"}]},
+    {"index": 17, "move": "c6", "popup": "c6黑方反击Bb5\n黑方翼兵推进，逼Bb5表态"},
+    {"index": 18, "move": "Ba4", "popup": "Ba4象再退\n激活：象仍然牵制黑方Nc6→c6\n协调：Ba4（牵制）+ Ng3（攻王）两翼互不干扰"},
+    {"index": 19, "move": "Ng6", "popup": "Ng6黑方防守\n黑方马到g6，准备防守h5"},
+    {"index": 20, "move": "h4", "popup": "h4！兵推进！\n激活：h兵推进，配合Ng3\n协调：h4+Ng3协同推进\n计划：h4-h5限制g6马的退路，让Nf5无法被马吃", "highlights": [{"squares": ["h4", "h5", "g6"], "color": "#FF5722033"}]},
+    {"index": 21, "move": "h6", "popup": "h6黑方防守h5\n黑方试图阻止h5推进"},
+    {"index": 22, "move": "h5", "popup": "h5！继续压！\n激活：h5兵压制g6马\n协调：h5（压制g6马）+ Ng3（准备Nf5）联合\n黑方Ng6已经被封锁！", "highlights": [{"squares": ["g6", "h5", "h6"], "color": "#E5393533"}]},
+    {"index": 23, "move": "Nf4", "popup": "Nf4黑方马出击\n黑方马反扑，攻击Ng3"},
+    {"index": 24, "move": "Bxf4", "popup": "Bxf4换掉黑马\n激活：换掉反扑的Nf4\n计划：清除障碍，让Ng3可以进入f5"},
+    {"index": 25, "move": "exf4", "popup": "exf4黑方吃回\n黑方重新夺回格子"},
+    {"index": 26, "move": "Nf5", "popup": "Nf5！马进驻f5！！\n激活：马到达最强攻击格！\n协调完美模型最终形成：\n🐴 Nf5（进驻f5强格）\n🏹 Ba4（牵制黑方援兵）\n🏰 Rf1（控制f列）\n♟♟ h5兵（封锁g6马）\n✅ 四子联合攻击黑王——这就是完美协调！", "highlights": [{"squares": ["f5", "h7", "g7", "e7"], "color": "#E5393566"}]}
+  ]
+}

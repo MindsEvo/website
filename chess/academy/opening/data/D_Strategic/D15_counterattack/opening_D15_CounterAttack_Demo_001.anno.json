@@ -1,0 +1,174 @@
+{
+  "game_id": "D15_CounterAttack_Demo_001",
+  "description": "斯堪的纳维亚防御 B01 — 即时反制中心：1...d5直接挑战白方e4",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d5"
+    ],
+    "popup": "反制中心第1课\n\n斯堪的纳维亚防御！\n黑方第一手就反制中心\n\n1...d5 直接挑战e4\n\n反制的核心问题：\n现在反制时机对吗？\n反制后如何保持优势？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "斯堪的纳维亚总结\n\n反制中心的第一模式：\n① 选择时机：第一手即反制\n② 后的活跃：Qa5机动\n③ 棋子活跃度补偿发展落后\n\n反制前问自己：\n① 反制能打乱对方节奏吗？\n② 我的棋子有足够活跃空间吗？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5！即时反制！\n黑方直接挑战白方的中心控制\n这是最直接的反制形式"
+    },
+    {
+      "index": 2,
+      "move": "exd5",
+      "popup": "exd5 吃兵"
+    },
+    {
+      "index": 3,
+      "move": "Qxd5",
+      "popup": "Qxd5 后出动\n看似冒险，实则灵活"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 攻击后"
+    },
+    {
+      "index": 5,
+      "move": "Qa5",
+      "popup": "Qa5！后退至a5\n灵活机动，保持活跃"
+    },
+    {
+      "index": 6,
+      "move": "d4",
+      "popup": "d4 巩固中心"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6 发展马"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3 发展马，攻击d4"
+    },
+    {
+      "index": 9,
+      "move": "Bf5",
+      "popup": "Bf5 象出动，争夺中心"
+    },
+    {
+      "index": 10,
+      "move": "Ne5",
+      "popup": "Ne5！马占中心要点"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6 防守b5，准备反击"
+    },
+    {
+      "index": 12,
+      "move": "Bc4",
+      "popup": "Bc4 发展象"
+    },
+    {
+      "index": 13,
+      "move": "e6",
+      "popup": "e6 稳固结构"
+    },
+    {
+      "index": 14,
+      "move": "Bg5",
+      "popup": "Bg5 施压！"
+    },
+    {
+      "index": 15,
+      "move": "Bb4",
+      "popup": "Bb4 反钉白马"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O！白方王翼易位\n安全落地，激活车"
+    },
+    {
+      "index": 17,
+      "move": "Bxc3",
+      "popup": "Bxc3！黑象吃c3马\n破坏白方兵形"
+    },
+    {
+      "index": 18,
+      "move": "bxc3",
+      "popup": "bxc3 兵吃回\n出现双叠兵弱点"
+    },
+    {
+      "index": 19,
+      "move": "Qxc3",
+      "popup": "Qxc3！黑后夺子！\n抓住叠兵弱点，主动反制"
+    },
+    {
+      "index": 20,
+      "move": "Re1",
+      "popup": "Re1 车激活e路\n盯住黑后，形成威胁"
+    },
+    {
+      "index": 21,
+      "move": "Nbd7",
+      "popup": "Nbd7 马发展\n为防守和反击做准备"
+    },
+    {
+      "index": 22,
+      "move": "Nxd7",
+      "popup": "Nxd7 白马吃d7\nNe5跳出后的强力兑换"
+    },
+    {
+      "index": 23,
+      "move": "Nxd7",
+      "popup": "Nxd7 黑马回吃\n局面简化，双方重组"
+    },
+    {
+      "index": 24,
+      "move": "Bb3",
+      "popup": "Bb3 象后撤\n保持对d5格的控制"
+    },
+    {
+      "index": 25,
+      "move": "O-O",
+      "popup": "O-O！黑方易位\n王安全，进入中盘"
+    },
+    {
+      "index": 26,
+      "move": "Re3",
+      "popup": "Re3 车横向转移\n准备向g3/h3调动攻击"
+    },
+    {
+      "index": 27,
+      "move": "Qa5",
+      "popup": "Qa5！黑后转移\n继续保持活跃，施压白方"
+    },
+    {
+      "index": 28,
+      "move": "Rg3",
+      "popup": "Rg3！车跳g3\n瞄准g7，形成王翼威胁"
+    },
+    {
+      "index": 29,
+      "move": "Rae8",
+      "popup": "Rae8！车占e路\n反制白方车的威胁，双车联动"
+    }
+  ]
+}

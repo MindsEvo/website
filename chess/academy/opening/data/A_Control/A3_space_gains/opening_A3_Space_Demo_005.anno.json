@@ -1,0 +1,533 @@
+{
+  "game_id": "A3_Space_Demo_005",
+  "description": "法国防御 C11 — Nf6诱敌深入，c5灵活反击白方冒进兵链",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "f4",
+      "c5"
+    ],
+    "popup": "观察黑方如何用 Nf6「诱敌深入」，再用 c5 精准反击白方冒进的兵链。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "诱敌深入的精髓：先让对方过来，等他冒进，再精准反击。\n黑方 c5 打破白方 d4，后翼突破赢回兵并保持主动——灵活反击胜于被动防守！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "f4",
+      "c5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占中心，法国防御的起点。</b><br>e4 控制中心，黑方下一步将用 e6 回应，布下法国防御的棋形。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "⬇️ <b>1...e6 — 法国防御！有意限制 c8 象。</b><br>e6 封住了 c8 象的对角线——这看起来是弱点，但黑方有明确的计划：用 d5+c5 双兵反击来解放阵型。<br>💡 <b>法国防御的核心：先忍耐，等待时机，后发制人。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "c8"
+          ],
+          "color": "#88888833",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "c8",
+          "color": "#88888866"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "⬆️ <b>2.d4 — 白方建立强大的双兵中心。</b><br>d4+e4 双兵控制中心，白方阵型扎实。黑方必须争夺 d5，否则中心将被完全碾压。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "⬇️ <b>2...d5 — 黑方争夺中心！</b><br>d5 顶住白方 e4，双方开始中心角力。这是法国防御的经典结构——黑方用 d5 建立反压，为将来的 c5 反击打好基础。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "⬆️ <b>3.Nc3 — 白马支援 e4，增加中心控制。</b><br>c3 马支撑 d5 和 e4 两个格，同时威胁 e4 兵推进到 e5。白方正在准备空间扩展。",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "e4",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "⬇️ <b>3...Nf6 — 黑马攻击 e4！看似正常，实则「诱敌」！</b><br>Nf6 控制 e4 和 d5，但它真正的妙处在于：它在等待白方推 e5 把它驱走！<br>🎯 <b>诱敌深入的第一步：黑方知道白方会推 e5，而推 e5 之后白方的兵链会越来越长——正是黑方要的！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e4",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e5",
+      "popup": "⬆️ <b>4.e5 — 白方推进！兵链开始延伸。</b><br>e5 把 Nf6 驱走，白方获得了更多空间。但代价是：兵链变长（d4+e5），每向前一步就需要更多保护。<br>⚠️ <b>关键问题：e5+f4 兵大推进之后，白方中心真的稳固吗？黑方马上会发出挑战！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f6",
+            "d4"
+          ],
+          "color": "#FF8F0055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "e5",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nfd7",
+      "popup": "⬇️ <b>4...Nfd7 — 马主动退后，看起来很被动——但这正是计划的一部分！可以参与 c5 之后的中心争夺。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "c5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c5",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "f4",
+      "popup": "⬆️ <b>5.f4 — 白方再次推进！三兵已在前线！</b><br>f4 巩固 e5，d4+e5+f4 形成三兵推进阵型，看起来壮观。但这三个兵都在对方阵地前线， 有点儿冒进！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5",
+            "d4"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f2",
+          "to": "f4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "f4",
+          "to": "e5",
+          "color": "#FF572266"
+        },
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#FF572244"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "c5",
+      "popup": "⬇️ <b>5...c5 — 精准反击！黑方c5 直接攻击 d4——白方兵链的一个根，迫使白方立即应对。<br>🎯 <b>这就是诱敌深入的结果：等白方把三个兵全推出来，司机反击！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#C6D500AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c5",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#C6D500BB"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "⬆️ <b>6.Nf3 — 白方发展，维持局面。</b><br>Nf3 保护 d4，同时正常发展。白方在 c5 的压力下还是选择继续发展而非立即进行激烈变化。",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "cxd4",
+      "popup": "⬇️ <b>6...cxd4 — 黑方打开局面！</b><br>黑方用 c5 兵吃 d4，打开 c 线。白方兵链的一个根被破坏。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Nxd4",
+      "popup": "⬆️ <b>7.Nxd4 — 白马夺回 d4。</b><br>白马重新占据中心，局面趋于复杂。白方仍有空间优势（e5+f4），但黑方已削弱了白方对中心的控制，接下来将发展子力争夺主动权。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5",
+            "f4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "⬇️ <b>7...Nc6 — 黑马攻击 d4！</b><br>Nc6 发展马同时直接攻击 d4 上的白马，迫使白方再次应对。黑方子力迅速激活，d7 的马加上 c6 的马共同向中心施压。",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#C6D500BB"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Be3",
+      "popup": "⬆️ <b>8.Be3 — 白方象保护 d4 马，稳固结构。</b><br>Be3 支撑 d4 马，防止黑方用 Nc6 直接换掉它。白方阵型仍然完整，但黑方后翼正在酝酿新的突破。",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Qb6",
+      "popup": "⬇️ <b>8...Qb6 — 黑后出动！双重攻击！</b><br>后到 b6，同时攻击 d4 马和 b2 兵！白方必须保护两个目标——这正是反击成功后的「多重威胁」：一步棋迫使对方应对多个问题。<br>🎯 <b>黑方掌握主动！c5 反击之后，黑方从防守转为进攻。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "b6",
+            "d4",
+            "b2"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "d4",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "b6",
+          "to": "b2",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Qd2",
+      "popup": "⬆️ <b>9.Qd2 — 白方后Qd2，提前止损，保护c3的马，但 b2 兵无人保护。",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "d4",
+            "b2"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Qxb2",
+      "popup": "⬇️ <b>9...Qxb2 — 黑后吃兵！赢得物质！</b><br>黑后果断吃掉 b2 兵，获得物质优势。这是 c5 反击的直接红利——打破白方中心之后，黑方的子力得以活跃，后翼的弱点被暴露。",
+      "highlights": [
+        {
+          "squares": [
+            "b2",
+            "a1",
+            "c1"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "b2",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Rb1",
+      "popup": "⬆️ <b>10.Rb1 — 白车驱逐黑后！</b><br>车到 b1，攻击黑后，强迫后撤退。白方用车来夺回主动，但黑后已经吃到了兵，且黑方整体子力协调，局面对黑方有利。",
+      "highlights": [
+        {
+          "squares": [
+            "b1",
+            "b2"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a1",
+          "to": "b1",
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Qa3",
+      "popup": "⬇️ <b>10...Qa3 — 后撤至安全格，继续施压！</b><br>后退到 a3，脱离车的攻击，同时继续威胁白方的后翼结构。黑后活跃，白方仍需应对多处压力。",
+      "highlights": [
+        {
+          "squares": [
+            "a3",
+            "a2",
+            "c1"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b2",
+          "to": "a3",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Bb5",
+      "popup": "⬆️ <b>11.Bb5 — 白方钉住 c6 马，反制！</b><br>Bb5 钉住黑方 c6 马，白方试图用主动的象来牵制黑方子力，重新夺回局面的控制权。<br>🏁 <b>第5局总结——灵活反击的艺术：</b><br>黑方 Nf6 看似被动，实则在等待白方过度推进。>「诱敌深入」= 让对方冒进，再精准抓住机会反击！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6",
+            "a3"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e5",
+            "f4",
+            "c5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "c6",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#C6D50077"
+        }
+      ]
+    }
+  ]
+}

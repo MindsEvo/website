@@ -1,0 +1,207 @@
+{
+  "game_id": "C10_WeakSquares_Demo_002",
+  "description": "后翼弃兵 D53 — 象对弱色格的控制",
+  "intro": {
+    "flash_squares": [
+      "d5",
+      "c4",
+      "h4",
+      "b7"
+    ],
+    "popup": "象对弱色格的控制 第2课\n\n象是远程狙击手—\n不需要靠近，沿对角线长期施压\n\nBh4守护白格，Bb7射向白方阵地\n谁的象更好，谁控制更多弱格！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "象的弱格控制小结\n✅ Bh4守护白格，不轻易兑换\n✅ Bb7黑格象控制长对角线\n✅ dxc5后d5格失去黑兵守护\n\n核心原则：\n象的颜色 = 它能控制的弱格颜色",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "d5"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5对称防守\n坚固的后翼兵型"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧扩张\n后翼弃兵变例开始"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固d5\n准备轻子发展"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展马\n准备入城"
+    },
+    {
+      "index": 6,
+      "move": "Bg5",
+      "popup": "Bg5！D53变例核心\n牵制Nf6，准备cxd5后压d5",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6",
+            "d8"
+          ],
+          "color": "#8E24AA44"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7灵活\n不用h6赶象，保留弹性"
+    },
+    {
+      "index": 8,
+      "move": "e3",
+      "popup": "e3加强中心"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O率先入城\n王安全"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3发展马"
+    },
+    {
+      "index": 11,
+      "move": "h6",
+      "popup": "h6试探白象\n逼白象表态"
+    },
+    {
+      "index": 12,
+      "move": "Bh4",
+      "popup": "Bh4！保留象\n不与Nf6兑换\n这个象守护d8-h4对角线弱格",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "d8"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "b6",
+      "popup": "b6准备Bb7\n黑方建立黑格象计划"
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "Bd3发展象\n瞄准h7",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Bb7",
+      "popup": "Bb7建立长斜线！\n黑格象沿b7-g2方向施压\n这就是象控制弱格的威力",
+      "highlights": [
+        {
+          "squares": [
+            "b7",
+            "g2",
+            "f3"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O白方入城"
+    },
+    {
+      "index": 17,
+      "move": "Nbd7",
+      "popup": "Nbd7发展重马\n准备c5冲击"
+    },
+    {
+      "index": 18,
+      "move": "Qe2",
+      "popup": "Qe2中心协调\n连接双车"
+    },
+    {
+      "index": 19,
+      "move": "c5",
+      "popup": "c5冲击！\n黑方挑战d4中心\n若dxc5→d5弱格暴露",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Rfd1",
+      "popup": "Rfd1！关键一步\n车到d1守护d4\n预防黑方c4后扰乱中心",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d4"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Rc8",
+      "popup": "Rc8车到c列\n准备c4冲击"
+    },
+    {
+      "index": 22,
+      "move": "dxc5",
+      "popup": "dxc5打开局面\n此后d5格无黑兵守护\nd5成为白马的绝佳弱格",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e5"
+          ],
+          "color": "#FF8F0088"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "game_id": "D16_KeyTiming_Demo_004",
+  "description": "卡特兰开局E06 — 关键时机：dxc4接收与c5反击的节奏",
+  "intro": {
+    "flash_squares": ["c4", "d5"],
+    "popup": "关键时机演示4\n\n卡特兰开局！\n\n白方c4兵暴露在外\n黑方何时接受这个'礼物'？\n\n练习目标：\n掌握dxc4的最佳时机",
+    "voice": true
+  },
+  "outro": {
+    "popup": "卡特兰时机总结\n\n三步时机组合：\n① dxc4：O-O后接受才有价值\n② a6+b5：阻止后立即夺回\n③ c5→Nxc5：Be4控制后推c5再吃回\n\n先吃后反击的节奏！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["c4", "g2"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6"},
+    {"index": 2, "move": "c4", "popup": "c4"},
+    {"index": 3, "move": "e6", "popup": "e6"},
+    {"index": 4, "move": "Nf3", "popup": "Nf3"},
+    {"index": 5, "move": "d5", "popup": "d5"},
+    {"index": 6, "move": "g3", "popup": "g3 卡特兰"},
+    {"index": 7, "move": "Be7", "popup": "Be7"},
+    {"index": 8, "move": "Bg2", "popup": "Bg2 对角线象"},
+    {"index": 9, "move": "O-O", "popup": "O-O"},
+    {"index": 10, "move": "O-O", "popup": "O-O 白方易位"},
+    {"index": 11, "move": "dxc4", "popup": "dxc4！时机！\nO-O后接受最有效"},
+    {"index": 12, "move": "Qc2", "popup": "Qc2 后夺回"},
+    {"index": 13, "move": "a6", "popup": "a6！阻止后立即b5"},
+    {"index": 14, "move": "Qxc4", "popup": "Qxc4 后吃回"},
+    {"index": 15, "move": "b5", "popup": "b5！逼后继续退"},
+    {"index": 16, "move": "Qc2", "popup": "Qc2 后再退"},
+    {"index": 17, "move": "Bb7", "popup": "Bb7 象就位"},
+    {"index": 18, "move": "Bd2", "popup": "Bd2"},
+    {"index": 19, "move": "Be4", "popup": "Be4！占据强格"},
+    {"index": 20, "move": "Qc3", "popup": "Qc3"},
+    {"index": 21, "move": "c5", "popup": "c5！时机！\nBe4就位后推进"},
+    {"index": 22, "move": "dxc5", "popup": "dxc5"},
+    {"index": 23, "move": "Nd5", "popup": "Nd5 马就位"},
+    {"index": 24, "move": "Qc1", "popup": "Qc1 后退守"},
+    {"index": 25, "move": "Nd7", "popup": "Nd7 马重新调整"},
+    {"index": 26, "move": "Nc3", "popup": "Nc3 马出动"},
+    {"index": 27, "move": "Nxc3", "popup": "Nxc3 兑换马"},
+    {"index": 28, "move": "Bxc3", "popup": "Bxc3 象夺回"},
+    {"index": 29, "move": "Nxc5", "popup": "Nxc5！时机！\n终于吃回多余兵"},
+    {"index": 30, "move": "Rd1", "popup": "Rd1 车进中心"}
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "game_id": "D15_CounterAttack_Demo_003",
+  "description": "卡罗-坎恩古典变例 B17 — 兑换后反制：c5爆破制造孤兵弱点",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心第3课\n\n卡罗-坎恩防御！\nc6稳固结构\n\n不急于反击\n等待c5时机！\n\n核心问题：\n何时出击c5？\n孤兵如何利用？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "卡罗-坎恩总结\n\n兑换后反制模式：\n① c5制造孤兵弱点\n② 黑象比法式更好\n③ 马占e5控制中心\n\n反制成功标志：\n① 白方原有优势削弱？\n② 孤兵成为长期弱点？\n③ 黑方棋子协调性如何？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6 卡罗-坎恩！\n稳固结构"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4 巩固中心"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5 反制中心"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 支援中心"
+    },
+    {
+      "index": 5,
+      "move": "dxe4",
+      "popup": "dxe4 简化局面"
+    },
+    {
+      "index": 6,
+      "move": "Nxe4",
+      "popup": "Nxe4 马重建中心"
+    },
+    {
+      "index": 7,
+      "move": "Nd7",
+      "popup": "Nd7 马发展"
+    },
+    {
+      "index": 8,
+      "move": "Bc4",
+      "popup": "Bc4 象激活"
+    },
+    {
+      "index": 9,
+      "move": "Ngf6",
+      "popup": "Ngf6 马发展"
+    },
+    {
+      "index": 10,
+      "move": "Ng5",
+      "popup": "Ng5 马进攻"
+    },
+    {
+      "index": 11,
+      "move": "e6",
+      "popup": "e6 防御"
+    },
+    {
+      "index": 12,
+      "move": "Qe2",
+      "popup": "Qe2 后激活"
+    },
+    {
+      "index": 13,
+      "move": "Nb6",
+      "popup": "Nb6 马反击"
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "Bd3 象就位"
+    },
+    {
+      "index": 15,
+      "move": "h6",
+      "popup": "h6 赶走马"
+    },
+    {
+      "index": 16,
+      "move": "N5f3",
+      "popup": "N5f3 马后退"
+    },
+    {
+      "index": 17,
+      "move": "c5",
+      "popup": "c5！反击！\n爆破白方中心"
+    },
+    {
+      "index": 18,
+      "move": "dxc5",
+      "popup": "dxc5 接受挑战"
+    },
+    {
+      "index": 19,
+      "move": "Bxc5",
+      "popup": "Bxc5 象激活！"
+    },
+    {
+      "index": 20,
+      "move": "Ne5",
+      "popup": "Ne5！白马占要点"
+    },
+    {
+      "index": 21,
+      "move": "Nbd7",
+      "popup": "Nbd7 马发展"
+    },
+    {
+      "index": 22,
+      "move": "Nc4",
+      "popup": "Nc4 继续施压"
+    },
+    {
+      "index": 23,
+      "move": "O-O",
+      "popup": "O-O 黑方易位完成"
+    }
+  ]
+}

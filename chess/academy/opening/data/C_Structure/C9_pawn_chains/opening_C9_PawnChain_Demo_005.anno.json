@@ -1,0 +1,305 @@
+{
+  "game_id": "C9_PawnChain_Demo_005",
+  "description": "B12 — 卡罗坎防御推进变例，与法国兵链对比",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "c6"
+    ],
+    "popup": "兵链方向第5课\n卡罗兵链 vs 法国兵链：\n• 法国：e6-d5链，有e6弱点\n• 卡罗：c6-d5链，无e6弱点！\n结构更坚固，但反击方法相同：\nc5攻根部d4！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：卡罗兵链更坚固 → 但c5攻根部原则不变 → Ne4利用反弹\n兵链方向的普遍原则！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6卡罗坎！准备d5但不封闭暗格象"
+    },
+    {
+      "index": 2,
+      "move": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5！c6-d5链，无e6弱点"
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！推进！但与法国不同：c6-d5链无e6弱点\n黑方结构更坚固！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bf5",
+      "popup": "Bf5！！象出！\n卡罗的最大优势：暗格象已经通畅出动\n法国做不到这一点！",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "b1"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nf3"
+    },
+    {
+      "index": 7,
+      "move": "e6",
+      "popup": "e6黑主动e6：此时是主动选择，非被动结构"
+    },
+    {
+      "index": 8,
+      "move": "Be2"
+    },
+    {
+      "index": 9,
+      "move": "Nd7"
+    },
+    {
+      "index": 10,
+      "move": "O-O"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5！c5攻根部！黑攻击白d4根部\n——卡罗版Nimzo原则！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "c3",
+      "popup": "c3支撑d4"
+    },
+    {
+      "index": 13,
+      "move": "Ne7"
+    },
+    {
+      "index": 14,
+      "move": "Na3"
+    },
+    {
+      "index": 15,
+      "move": "Nc6"
+    },
+    {
+      "index": 16,
+      "move": "Nb5"
+    },
+    {
+      "index": 17,
+      "move": "cxd4",
+      "popup": "cxd4！黑方兑换根部"
+    },
+    {
+      "index": 18,
+      "move": "cxd4",
+      "popup": "cxd4白重建"
+    },
+    {
+      "index": 19,
+      "move": "Bb4",
+      "popup": "Bb4！象出发展，准备长易位"
+    },
+    {
+      "index": 20,
+      "move": "Bd2",
+      "popup": "Bd2挡将"
+    },
+    {
+      "index": 21,
+      "move": "Bxd2"
+    },
+    {
+      "index": 22,
+      "move": "Qxd2"
+    },
+    {
+      "index": 23,
+      "move": "O-O"
+    },
+    {
+      "index": 24,
+      "move": "Nc3"
+    },
+    {
+      "index": 25,
+      "move": "f6",
+      "popup": "f6！f6攻链头e5！\n代价：黑方f线开放，但获得反击机会",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e5"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "exf6"
+    },
+    {
+      "index": 27,
+      "move": "Rxf6",
+      "popup": "Rxf6车进攻"
+    },
+    {
+      "index": 28,
+      "move": "Rae1",
+      "popup": "Rae1双车连接"
+    },
+    {
+      "index": 29,
+      "move": "Qc7",
+      "popup": "Qc7后出动"
+    },
+    {
+      "index": 30,
+      "move": "Nh4",
+      "popup": "Nh4！马让出f3，准备f4"
+    },
+    {
+      "index": 31,
+      "move": "Bg6"
+    },
+    {
+      "index": 32,
+      "move": "f4",
+      "popup": "f4！！白方沿兵链方向总攻"
+    },
+    {
+      "index": 33,
+      "move": "Re8"
+    },
+    {
+      "index": 34,
+      "move": "Nxg6"
+    },
+    {
+      "index": 35,
+      "move": "hxg6"
+    },
+    {
+      "index": 36,
+      "move": "Na4",
+      "popup": "Na4！白马绕道a4，准备Nc5占后翼要点",
+      "highlights": [
+        {
+          "squares": [
+            "a4",
+            "c5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Qd6",
+      "popup": "Qd6！黑后活跃，盯住d4弱兵并施压白阵"
+    },
+    {
+      "index": 38,
+      "move": "a3",
+      "popup": "a3！白方巩固后翼，防止黑方潜入b4"
+    },
+    {
+      "index": 39,
+      "move": "Rc8",
+      "popup": "Rc8！黑车占c线，准备后翼反压"
+    },
+    {
+      "index": 40,
+      "move": "g3",
+      "popup": "g3！白方巩固王翼结构，防止黑后进入",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "h2"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "move": "Ne7",
+      "popup": "Ne7！马重新调整，准备Ng6或Nf5"
+    },
+    {
+      "index": 42,
+      "move": "Bd3",
+      "popup": "Bd3！白象主动占据d3-h7对角线，瞄准g6弱兵",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "g6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "move": "Rf7",
+      "popup": "Rf7！黑车撤回f7，守护f线并支持反击"
+    },
+    {
+      "index": 44,
+      "move": "Qe3",
+      "popup": "Qe3！白后强占e3！\n同时盯住a7孤兵和g5进攻可能\n白方位置优势明显！",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "a7",
+            "g5"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

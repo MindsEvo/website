@@ -1,0 +1,50 @@
+﻿{
+  "label": "发展类",
+  "color": "#16A085",
+  "categories": [
+    {
+      "key": "B5_king_safety",
+      "label": "B5 王车易位",
+      "items": [
+        { "id": "opening_B5_Castle_Demo_001", "label": "1. 易位的时机——轻子出完立即易位（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_002", "label": "2. 易位后王的安全——防线具体分析（维也纳对局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_003", "label": "3. 长易位主动进攻——长易位不只是防御（皮尔斯防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_004", "label": "4. 异侧易位对攻——速度决定一切（西西里防御B57）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_005", "label": "5. 迟迟不易位的代价——Bg5钉马、叠兵、g线开放（意大利慢棋）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B6_rapid_development",
+      "label": "B6 快速出子",
+      "items": [
+        { "id": "opening_B6_DevSpeed_Demo_001", "label": "1. 什么是轻子？每步出一个新的（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_002", "label": "2. 轻子先行，重子随后（苏格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_003", "label": "3. 后早出被轻子追着跑——每次被追就是失去先手（帕勒姆进攻）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_004", "label": "4. 重复走子等于放弃先手——马走两次节奏损失（双骑士）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_005", "label": "5. 弃兵换出子速度——丹麦弃兵的爆发力（丹麦弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B7_piece_coordination",
+      "label": "B7 子力协调",
+      "items": [
+        { "id": "opening_B7_PieceCoord_Demo_001", "label": "1. 每个棋子都有任务吗？（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_002", "label": "2. 马象互补，分工覆盖（西班牙开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_003", "label": "3. 双象体系的覆盖威力（卡塔兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_004", "label": "4. 后是后盾，不是独行侠（维也纳开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_005", "label": "5. 完美协调模型——每子角色清晰（四马开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B8_rook_coordination",
+      "label": "B8 连接双车",
+      "items": [
+        { "id": "opening_B8_RookCoord_Demo_001", "label": "1. 连接双车的三步曲（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_002", "label": "2. 双车分驻两条开放列（后翼弃兵防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_003", "label": "3. 叠车压制——双车叠在e列（尼姆佐-印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_004", "label": "4. 后翼易位与占据通道（卡罗-卡恩古典变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_005", "label": "5. 后+双车三子协调——最强阵型", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

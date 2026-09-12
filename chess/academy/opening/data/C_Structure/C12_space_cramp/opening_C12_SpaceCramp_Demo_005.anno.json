@@ -1,0 +1,96 @@
+{
+  "game_id": "C12_SpaceCramp_Demo_005",
+  "description": "国王印度四兵进攻 E76 — 弹簧效应：过度压缩的反扑",
+  "intro": {
+    "flash_squares": ["e4", "f4", "d4", "c4"],
+    "popup": "空间挤压 第5课\n\n这就是弹簧效应：\n\n你是否遇到过这种情况？\n把对手压得很充分\n但攻不破，被反扑了……\n\n白方将用四个兵建立巨大空间\n然后看看为什么会被弹回来！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "弹簧效应总结\n\n10手：白方推e5（又一个兵向前！）\n\n黑方下一步：Ng4！\n马跳出来攻击e5\n所有被压缩的子力开始爆发！\n\n结论：\n压缩越深 + 无进攻目标\n= 弹簧能量越大\n= 反扑越猛烈！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e5", "f4"],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4 中心第一兵"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6 超现代！黑方控制不占领中心"},
+    {"index": 2, "move": "c4", "popup": "c4！第二个中心兵"},
+    {"index": 3, "move": "g6", "popup": "g6 准备Bg7，超现代思路"},
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 发展马"
+    },
+    {"index": 5, "move": "Bg7", "popup": "Bg7 长斜线象，瞄准白方中心"},
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4！第三个中心兵！\n白方已有d4+c4+e4三格控制"
+    },
+    {"index": 7, "move": "d6", "popup": "d6 支援e5推进"},
+    {
+      "index": 8,
+      "move": "f4",
+      "popup": "f4！第四个兵！四兵进攻！\n\nd4+c4+e4+f4，四兵占满中心！\n\n优点：黑方活动极受限\n⚠ 危险：四兵全部前推，后方空洞！",
+      "highlights": [
+        {"squares": ["d4", "c4", "e4", "f4"], "color": "#E5393555"}
+      ]
+    },
+    {"index": 9, "move": "O-O", "popup": "O-O 黑方入城，积蓄能量"},
+    {"index": 10, "move": "Nf3", "popup": "Nf3 发展马"},
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5！黑方第一个反击！\n攻击d4！弹簧开始充电……",
+      "highlights": [
+        {"squares": ["c5", "d4"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "d5",
+      "popup": "d5！白方锁定中心——\n不让黑方在d4制造麻烦\n但现在e6成了黑方的武器！"
+    },
+    {
+      "index": 13,
+      "move": "e6",
+      "popup": "e6！攻击d5！\n⭐ 弹簧充电第二步！\n黑方打开了e-线的可能性……",
+      "highlights": [
+        {"squares": ["e6", "d5"], "color": "#FF8F0055"}
+      ]
+    },
+    {"index": 14, "move": "Be2", "popup": "Be2 发展象，守护d1-h5对角"},
+    {
+      "index": 15,
+      "move": "exd5",
+      "popup": "exd5！兑换！e-线打开了！\n⭐ 弹簧充电第三步！",
+      "highlights": [
+        {"squares": ["e8", "e5", "e1"], "color": "#8E24AA33"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "cxd5",
+      "popup": "cxd5 白方重新封中"
+    },
+    {
+      "index": 17,
+      "move": "Re8",
+      "popup": "Re8！⭐弹簧充电完成！\n\n车对准e5！\n黑方的所有子力正在积蓄反击能量：\nBg7瞄准d4-c3链\nRe8瞄准e5\nNf6准备Ng4！\n\n现在的问题：白方有具体进攻目标吗？",
+      "highlights": [
+        {"squares": ["e8", "e5"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "e5",
+      "popup": "e5！！白方过度推进！\n\n第五个兵向前！\n但黑方的反击来了：\n\n..Ng4！攻击e5！\n若fxe5 → dxe5 → Nd4！\n黑方所有子力爆发！\n\n这就是弹簧效应：\n压得越深，反弹越猛！",
+      "highlights": [
+        {"squares": ["e5", "g4", "d4"], "color": "#E5393588"}
+      ]
+    }
+  ]
+}

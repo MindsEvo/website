@@ -1,0 +1,280 @@
+{
+  "game_id": "A1_Center_Demo_001",
+  "description": "中心控制基础演示第1局 — 9步，完整注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "棋盘中央这四个格子叫「中心格」，是双方争夺控制的要点！本局给出简单直观的演示",
+    "voice": true
+  },
+  "outro": {
+    "popup": "本局只是直观的演示了占领中心的重要性，这是国际象棋最重要的原则之一。但是重子如后车不适宜过早占领中心，否则容易被攻击浪费步数陷入被动而失先。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占领中心！</b><br>e4兵直接踏上中心格，同时控制 d5 和 f5 两个要点。开局第一步就争夺中心。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方同样抢占中心！</b><br>黑方立刻跟进，e5兵也踏上中心格，控制 d4 和 f4。双方各占中心一格，势均力敌。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "⬆️ <b>2.d4 — 白方扩大中心！</b><br>白方再上一兵，现在 e4+d4 两兵共同压制中心。d4兵威胁黑方的 e5 兵，主动挑战！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "c5"
+          ],
+          "color": "#FF8F0055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#FF8F00CC"
+        },
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#FF8F00CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "exd4",
+      "popup": "⬇️ <b>2...exd4 — 黑方吃掉 d4 兵！</b><br>黑方不让白方双兵盘踞中心，主动拆掉白兵。中心格 d4 现在由黑兵占领，局面更加复杂。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#AA333355",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Qxd4",
+      "popup": "⬆️ <b>3.Qxd4 — 白后重夺中心！</b><br>白方用后吃回 d4，后的控制范围极大，整条对角线和直线都受威胁。但后出动太早，容易被攻击……",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a4",
+            "g4",
+            "h4"
+          ],
+          "color": "#C6D50028",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "g7",
+          "color": "#00BCD466"
+        },
+        {
+          "from": "d4",
+          "to": "a7",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nc6",
+      "popup": "⬇️ <b>3...Nc6 — 黑马攻击白后！</b><br>黑方出马直接威胁 d4 的白后，白后必须移动。这说明后过早进中心是有风险的——容易被子力攻击。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572288",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Qe3",
+      "popup": "⬆️ <b>4.Qe3 — 白后退出中心！</b><br>白后被迫离开中心格 d4，退到 e3。这印证了开局原则：<b>后不宜过早进中心</b>，因为太容易被攻击而失先。",
+      "highlights": [
+        {
+          "squares": [
+            "e3"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#88888833",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑方出第二匹马，直接威胁 e4 兵。f6 是开局最重要的马的位置之一，控制 e4、d5 两个中心格。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#FF572288",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d5",
+            "g4",
+            "h5",
+            "e8"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 白马保护 e4！</b><br>白方出马守护 e4 兵，同时 c3 也是马的最佳格之一，控制d5要点。<br><span style='color:#88CCFF;'>★ 记住：开局要<b>先出小子（马、象）</b>，再考虑后和车！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d5",
+            "e4",
+            "a4",
+            "b5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#C6D500AA"
+        }
+      ]
+    }
+  ]
+}

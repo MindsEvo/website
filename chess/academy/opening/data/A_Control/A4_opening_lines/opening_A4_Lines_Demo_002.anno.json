@@ -1,0 +1,153 @@
+{
+  "game_id": "A4_Lines_Demo_002",
+  "description": "后翼兵型 D30 — 预判c线，Rc1提前占位",
+  "intro": {
+    "flash_squares": ["c1", "c4", "c5", "c8"],
+    "popup": "线路控制第2课\n预判线路，提前布车\n本局核心：Rc1\n在c线打开前就占位！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "预判原则成功实现！\nRc1在c线打开前就已就位\nbxc5之后c5兵直接暴露在车下\n这就是预判线路的价值！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4占中心\n控制e5、c5\n后翼开局开始"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "黑方d5对称\n双方兵对峙\n封闭中心格局"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "highlights": [{"squares": ["c4", "d5"], "color": "#FF8F0055"}],
+      "popup": "c4！后翼弃兵\n白方c4挑战d5\nc线即将成为战场"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "黑方e6保护d5\n稳健的后翼防御\n暂时不接受兑换"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马\n支持c4，准备反压\n白方建立中心优势"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展马\n攻击e4（如果白方走）\n黑方灵活应对"
+    },
+    {
+      "index": 6,
+      "move": "Bg5",
+      "highlights": [{"squares": ["g5", "f6"], "color": "#FF8F0055"}],
+      "popup": "Bg5象施压f6马\n如果黑方不处理\n白方可Bxf6后局面变化\nc线争夺加剧"
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7稳健应对\n黑方保持f6马\n准备王车易位"
+    },
+    {
+      "index": 8,
+      "move": "e3",
+      "popup": "e3巩固中心\n白方稳健发展\n准备完成开局"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "黑方王车易位\n王躲安全\n注意：h6-Bh4-b6序列即将到来"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n白方轻子全部出动\n现在需要处理c4-d5的紧张局面"
+    },
+    {
+      "index": 11,
+      "move": "h6",
+      "popup": "h6追象\n黑方不想让Bg5换掉f6马\n白方象被迫撤退"
+    },
+    {
+      "index": 12,
+      "move": "Bh4",
+      "highlights": [{"squares": ["h4", "f6"], "color": "#FF8F0044"}],
+      "popup": "Bh4撤退\n白方保留象，等待时机\n继续盯住f6马"
+    },
+    {
+      "index": 13,
+      "move": "b6",
+      "highlights": [{"squares": ["b6", "b7", "c8"], "color": "#00BCD444"}],
+      "popup": "b6准备Bb7\n黑方发展黑格象到b7\n后翼防御体系成型"
+    },
+    {
+      "index": 14,
+      "move": "cxd5",
+      "highlights": [{"squares": ["c4", "d5", "c1"], "color": "#C6D50044"}],
+      "concept_arrows": [{"from": "c4", "to": "d5", "color": "#00BCD4CC"}],
+      "popup": "cxd5！c线开始打开\n白方兑换后c线半开放\n现在车应该去哪？"
+    },
+    {
+      "index": 15,
+      "move": "exd5",
+      "highlights": [{"squares": ["e6", "d5", "c1"], "color": "#C6D50044"}],
+      "popup": "exd5黑方重提\nd5有力兵\nc线正式半开放"
+    },
+    {
+      "index": 16,
+      "move": "Bd3",
+      "highlights": [{"squares": ["d3", "h7"], "color": "#FF8F0055"}],
+      "popup": "Bd3！象占主动位\n瞄准h7方向\n白方进攻态势初显"
+    },
+    {
+      "index": 17,
+      "move": "Bb7",
+      "highlights": [{"squares": ["b7", "g2"], "color": "#00BCD444"}],
+      "popup": "Bb7黑格象出动\n控制g2-b7斜线\n黑方后翼防御基本完成"
+    },
+    {
+      "index": 18,
+      "move": "O-O",
+      "popup": "白方王车易位\n开局发展完毕\n下一步：如何利用c线？"
+    },
+    {
+      "index": 19,
+      "move": "Nbd7",
+      "popup": "Nbd7发展马\n黑方准备c5反击\n黑方阵形趋于完整"
+    },
+    {
+      "index": 20,
+      "move": "Rc1",
+      "highlights": [{"squares": ["c1", "c5", "c7", "c8"], "color": "#C6D50066"}],
+      "concept_arrows": [{"from": "a1", "to": "c1", "color": "#C6D500CC"}],
+      "popup": "Rc1！预判布车\n此时c线还是半开放\n但白方已经预见——\n黑方必推c5，届时c线全开！\nRc1提前就位，占领先机"
+    },
+    {
+      "index": 21,
+      "move": "c5",
+      "highlights": [{"squares": ["c5", "d4", "c1"], "color": "#E5393544"}],
+      "popup": "c5！黑方反击中心\n正如白方预料！\n现在Rc1的价值显现：\nc线即将完全开放"
+    },
+    {
+      "index": 22,
+      "move": "dxc5",
+      "highlights": [{"squares": ["d4", "c5", "c1"], "color": "#C6D50055"}],
+      "popup": "dxc5白方兑换\nc线完全开放！\nRc1直接控制c线\n黑方的c5兵受到压力"
+    },
+    {
+      "index": 23,
+      "move": "bxc5",
+      "highlights": [{"squares": ["b6", "c5", "c1"], "color": "#C6D50066"}],
+      "popup": "bxc5黑方重提\nc5兵暴露在c1车的攻击下\nRc1的预判完全正确！\n预判线路→提前布车→线开即控"
+    }
+  ]
+}

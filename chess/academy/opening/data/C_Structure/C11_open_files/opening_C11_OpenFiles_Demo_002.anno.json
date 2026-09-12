@@ -1,0 +1,145 @@
+{
+  "game_id": "C11_OpenFiles_Demo_002",
+  "description": "法国防御交换变 C01 — 争夺开放线",
+  "intro": {
+    "flash_squares": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8"],
+    "popup": "争夺开放线 第2课\n\nexd5 exd5兑换后\nd线全部打开！\n\n从d1到d8无任何阻隔\n双方立刻争夺控制权！\n\n谁先把车占上去谁主动！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "开放线争夺小结\n✅ exd5 exd5：e线瞬间全开\n✅ 双方同时争着占e线\n✅ Re1→Rd1是典型的争线路线\n\n核心原则：\n开放线出现→立刻争夺→谁占着谁主动！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d1", "d8"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4占中心"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "e6！法国防御\n坚固但限制象"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4扩张中心\n形成e4+d4强中心"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5反击中心\n法国防御核心！"
+    },
+    {
+      "index": 4,
+      "move": "exd5",
+      "popup": "exd5交换变！\n白方选择兑换简化",
+      "highlights": [
+        {"squares": ["d5", "e4"], "color": "#FF8F0055"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "exd5",
+      "popup": "exd5黑方回吃\nd线全开！！\nd1到d8无任何棋子阻挡！",
+      "highlights": [
+        {"squares": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8"], "color": "#C6D50088"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n先不抢d线，先发展"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6镜像发展\n争着快速入城"
+    },
+    {
+      "index": 8,
+      "move": "Bd3",
+      "popup": "Bd3！象占主动\n瞄准h7，为入城做准备"
+    },
+    {
+      "index": 9,
+      "move": "Bd6",
+      "popup": "Bd6黑方对应\n同样瞄准对方阵营"
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "O-O白方率先入城！\nRf1→Rd1即将占d线！",
+      "highlights": [
+        {"squares": ["f1", "d1"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "O-O黑方入城\nRf8→Rd8争d线！",
+      "highlights": [
+        {"squares": ["f8", "d8"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bg5",
+      "popup": "Bg5钉住Nf6\n阻止黑马自由活动"
+    },
+    {
+      "index": 13,
+      "move": "Bg4",
+      "popup": "Bg4对应！\n钉住Nf3，以钉制钉"
+    },
+    {
+      "index": 14,
+      "move": "Nbd2",
+      "popup": "Nbd2发展马\n准备Ne5等好位置"
+    },
+    {
+      "index": 15,
+      "move": "Nbd7",
+      "popup": "Nbd7发展马\n避让d线，方便Rd8"
+    },
+    {
+      "index": 16,
+      "move": "Re1",
+      "popup": "Re1！白车占e1\n准备Rxe8后占d1\n间接争夺d线！",
+      "highlights": [
+        {"squares": ["e1", "d1"], "color": "#00BCD488"}
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Re8",
+      "popup": "Re8黑车争开放线！\n抢先一步控制e列\n并监视d列",
+      "highlights": [
+        {"squares": ["e8", "d8"], "color": "#E5393588"}
+      ]
+    },
+    {
+      "index": 18,
+      "move": "c3",
+      "popup": "c3稳固\n支撑d4中心兵"
+    },
+    {
+      "index": 19,
+      "move": "c6",
+      "popup": "c6稳固黑方阵型\n防止d5孤立"
+    },
+    {
+      "index": 20,
+      "move": "Qc2",
+      "popup": "Qc2后出动\n支援d1方向\n为Rd1腾出d1空间！\n\n开放线的争夺仍在继续——",
+      "highlights": [
+        {"squares": ["c2", "d1", "d8"], "color": "#FF8F0055"}
+      ]
+    }
+  ]
+}

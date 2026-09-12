@@ -1,0 +1,185 @@
+{
+  "game_id": "B6_DevSpeed_Demo_004",
+  "description": "C57 — 重复走子等于放弃先手",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第4课\n每步棋都要稳妥高效，重复走同一个子等于浪费先手",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：不重复走子是快速出子的核心原则",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3！马第1次出动\n正确发展，攻击e5",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6发展\n黑方第1个轻子"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "Bc4象出动\n白方第2个轻子，意大利开局"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展\n黑方第2个轻子，攻击e4"
+    },
+    {
+      "index": 6,
+      "move": "Ng5",
+      "popup": "Ng5！⚠️ 白马第2次移动（f3→g5）\n马跳向g5，威胁f7\n但这是同一匹马！\n正确应走Nc3发展新子",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f7"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "d5",
+      "popup": "d5！黑方反击！\n每次有马跳入，就用兵反击\n打开中心，赶走威胁"
+    },
+    {
+      "index": 8,
+      "move": "exd5",
+      "popup": "exd5吃兵"
+    },
+    {
+      "index": 9,
+      "move": "Na5",
+      "popup": "Na5！追击象\n黑方继续发展，追击白方象"
+    },
+    {
+      "index": 10,
+      "move": "Bb5+",
+      "popup": "Bb5+将军\n白象走第2次（c4→b5）"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6挡将\n黑方步步有力"
+    },
+    {
+      "index": 12,
+      "move": "dxc6",
+      "popup": "dxc6吃兵"
+    },
+    {
+      "index": 13,
+      "move": "bxc6",
+      "popup": "bxc6接回"
+    },
+    {
+      "index": 14,
+      "move": "Be2",
+      "popup": "Be2象退回\n白象走了3次（c4→b5→e2）\n象也在浪费先手！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "b5",
+            "e2"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "h6",
+      "popup": "h6！追马\n黑方逼退g5的马！"
+    },
+    {
+      "index": 16,
+      "move": "Nf3",
+      "popup": "Nf3！⚠️ 白马第3次移动！（f3→g5→f3）\n马走了圈，回到原地！\n这3步几乎等于白走\n黑方利用这时间完成了更多发展",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "e4",
+      "popup": "e4推兵\n黑方推兵争夺空间，利用节奏优势"
+    },
+    {
+      "index": 18,
+      "move": "Ne5",
+      "popup": "Ne5马跳中心\n白方尝试激活"
+    },
+    {
+      "index": 19,
+      "move": "Bd6",
+      "popup": "Bd6发展\n黑方继续出子"
+    },
+    {
+      "index": 20,
+      "move": "d4",
+      "popup": "d4推进"
+    },
+    {
+      "index": 21,
+      "move": "exd3",
+      "popup": "exd3兑换"
+    },
+    {
+      "index": 22,
+      "move": "Nxd3",
+      "popup": "Nxd3\n总结：Nf3→Ng5→Nf3 = 马走3步回原地\n等于浪费2个先手\n黑方发展领先，这就是节奏损失的代价！",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "g5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    }
+  ]
+}

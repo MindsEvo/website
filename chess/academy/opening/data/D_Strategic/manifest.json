@@ -1,0 +1,50 @@
+﻿{
+  "label": "战略类",
+  "color": "#27AE60",
+  "categories": [
+    {
+      "key": "D13_gambit_sacrifice",
+      "label": "D13 弃兵争先",
+      "items": [
+        { "id": "opening_D13_GambitSacrifice_Demo_001", "label": "1. 国王弃兵接受变（费舍尔防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_002", "label": "2. 埃文斯弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_003", "label": "3. 丹麦弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_004", "label": "4. 布达佩斯弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_005", "label": "5. 苏格兰弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D14_useful_exchanges",
+      "label": "D14 及时兑子",
+      "items": [
+        { "id": "opening_D14_UsefulExchange_Demo_001", "label": "1. 西班牙开局兑换变（C68）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_002", "label": "2. 后翼弃兵兑换变（D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_003", "label": "3. 后翼弃兵兑换变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_004", "label": "4. 国王印度正统变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_005", "label": "5. 彼得罗夫防御古典进攻（C42）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D15_counterattack",
+      "label": "D15 反制中心",
+      "items": [
+        { "id": "opening_D15_CounterAttack_Demo_001", "label": "1. 斯堪的纳维亚防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_002", "label": "2. 法式防御古典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_003", "label": "3. 卡罗-坎恩古典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_004", "label": "4. 西西里那科多夫变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_005", "label": "5. 皮克防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D16_timing_moments",
+      "label": "D16 关键时机",
+      "items": [
+        { "id": "opening_D16_KeyTiming_Demo_001", "label": "1. 彼特罗夫防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_002", "label": "2. 西班牙开局开放系统", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_003", "label": "3. 尼姆佐印度经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_004", "label": "4. 卡特兰开局封闭变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_005", "label": "5. 国王印度防御经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

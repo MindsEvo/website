@@ -1,0 +1,217 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_004",
+  "description": "国王印度防御 E94 — 马的重组路线：Ne1-Nd3占强格，坏象与好马的战略判断",
+  "intro": {
+    "flash_squares": [
+      "e1",
+      "d3",
+      "f4"
+    ],
+    "popup": "及时兑子 第4课\n\n国王印度正统变例（E94）\n\n封闭中心后棋子重组！\n\n白方下了d5封锁中心后：\n• Bg7龙象的f8-a3对角线被封堵\n• 白方Ne1重组到d3/f2——寻找强格\n\n⭐ 核心问题：\n封闭局面中马和象谁更强？\n什么时候应该兑换？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "国王印度正统变例总结\n\n及时兑子的第四模式——重组型策略：\n\n① d5封闭中心后，龙象Bg7变坏象（对角线被封）\n② 白方Ne1重组到d3，寻找强格前哨站\n③ 双方都在封闭局面中重组子力\n\n兑换时机的判断：\n• 封闭局面：马优于象（可以跳格）\n• 开放局面：象优于马（长斜线活跃）\n• 兑换前问：我的象/马现在是好的还是坏的？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4 占领中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6 国王印度防御开始！\n黑方不立刻占d5，而是发展马"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵体系\n再一次向中心施压"
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "g6！\n准备Bg7飞象——国王印度龙象体系"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 马控制d5和e4"
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "Bg7！龙象！\n沿g7-b2-a1大对角线活跃\n潜力巨大！",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "b2",
+            "a1"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4！！白方大中心！\nd4+e4+c4控制四中心格",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c4"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "d6 黑方稳健守住\n准备e5反击"
+    },
+    {
+      "index": 8,
+      "move": "Be2",
+      "popup": "Be2 白方保守发展\n准备入城"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 黑方入城"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3 马控制e5和d4"
+    },
+    {
+      "index": 11,
+      "move": "e5",
+      "popup": "e5！黑方反击！\n攻击d4，并封锁e5格\n如dxe5则Nxe5马占强格！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O 白方入城\n等待黑方动向再决定计划"
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "Nc6 黑马发展\n支撑e5，控制d4"
+    },
+    {
+      "index": 14,
+      "move": "d5",
+      "popup": "d5！白方封锁中心！\n\n⭐ 关键时刻！中心封锁！\n阵型变封闭，白方优势在空间\n\n⭐ 坏象出现！\n黑方Bg7的对角线被d6+e5+f6封堵\n龙象变成坏象！！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e5",
+            "d6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ne7",
+      "popup": "Ne7 Nc6必须退开\n让出d5给白方兵，准备重组",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c6"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Ne1",
+      "popup": "Ne1！！白马重组开始！\n\n⭐ 战略重组：\nNf3-e1，准备走Nd3或Nf2\n在封闭局面中寻找理想前哨站！\n\n马可以跳格，不受兵阻挡——封闭局面中马比象强！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "d3",
+            "f4"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nd7",
+      "popup": "Nd7 黑马重组\n准备Nf6-e8-d6前哨站路线"
+    },
+    {
+      "index": 18,
+      "move": "f3",
+      "popup": "f3！巩固中心！\n\n⭐ f3的双重目的：\n① 巩固e4兵（防止黑方exf？或Nf4跳入）\n② 为g4-g5王翼进攻预备\n③ 白方Ne1可走Nd3然后f4继续推进！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "f3"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "f5",
+      "popup": "f5！黑方反击王翼！\n\n⭐ 双方各有计划：\n白方：g4-g5王翼扩张\n黑方：f5-f4-g5-h5王翼冲击\n\n封闭中心后双方各自一翼进攻——\n这是国王印度最经典的双翼博弈！",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "g4",
+            "h3"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Be3",
+      "popup": "Be3！白象进入战场！\n\n⭐ 局面总结：\n白方计划：Be3+Nd3+g4推进\n黑方计划：f4+g5冲击白王翼\n\n封闭中心后的兑换判断：\n什么时候Ne1-d3应该换掉黑方的坏象？\n当换掉对方弱子能直接赢得优势时！",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "d3",
+            "f4"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    }
+  ]
+}

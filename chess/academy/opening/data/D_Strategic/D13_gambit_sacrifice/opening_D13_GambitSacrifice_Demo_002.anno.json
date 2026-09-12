@@ -1,0 +1,141 @@
+{
+  "game_id": "D13_GambitSacrifice_Demo_002",
+  "description": "Evans Gambit C51 — 弃兵后发展领先的量化：用速度攻王",
+  "intro": {
+    "flash_squares": ["b4", "c5", "b2"],
+    "popup": "弃兵争先 第2课\n\n埃文斯弃兵是19世纪最凶惍的武器\n\n白方第4手：把b4象祭出去！\n直接换什么？\n\n不是战术，是速度：\n白方用一个兵把黑方象\n从最佳位置驱逐——\n\n发展领先 × 阵型优先\n= 弃兵争先的另一面",
+    "voice": true
+  },
+  "outro": {
+    "popup": "埃文斯弃兵总结\n\n弃兵争先的第二种模式：\n\n① 驱逐对方已发展的子力\n（黑象从 c5被赶到 a5→b6→a7，浪费 3步！）\n\n② 强化己方中心（c3+d4超强中心）\n\n③ 进攻速度领先\n\n节拍差：白方比黑方多3-4步！\n这就是弃兵争先的本质",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["b4"],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称回应"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 发展马，攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 保护e5，发展马"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "Bc4！意大利开局开始\n象瞄准f7弱点"
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "Bc5！双方对称发展\n黑象占据绝佳格c5！",
+      "highlights": [
+        {"squares": ["c5"], "color": "#C6D50044"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "b4",
+      "popup": "b4！！埃文斯弃兵！\n\n白方把b4兵送上去！\n目的不是直接战术\n而是驱逐黑方最好的子——Bc5！\n\n⭐ 弃兵争先的第二模式：\n用一个兵赶走对方已发展的好子",
+      "highlights": [
+        {"squares": ["b4", "c5"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bxb4",
+      "popup": "Bxb4 黑方吃兵\n\n现在黑方多一个兵\n但Bc5已经离开最佳格！\n白方的计划开始展开……"
+    },
+    {
+      "index": 8,
+      "move": "c3",
+      "popup": "c3！驱逐Bb4，建设超强中心！\n\nc3有双重目的：\n① 迫使黑象再移动（浪费节拍）\n② 准备d4，建立c3+d4超强中心！",
+      "highlights": [
+        {"squares": ["c3", "d4"], "color": "#00BCD455"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Ba5",
+      "popup": "Ba5 黑象被迫撤退\n\n黑象已经走了：c5→b4→a5\n浪费了两步！\n白方一个兵换了黑方两步节拍！",
+      "highlights": [
+        {"squares": ["c5", "b4", "a5"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "popup": "d4！！白方超强中心建立！\n\nc3+d4：白方控制了整个中心\n\n对比黑方：\n象在边路a5，马在c6\n黑方发展滞后！",
+      "highlights": [
+        {"squares": ["c3", "d4", "e4"], "color": "#E5393588"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "exd4",
+      "popup": "exd4 黑方兑换中心兵\n\n取得了材料优势（兵）\n但中心失去控制……"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O！白方先入城！\n\n优先安全，准备进攻\n白方已出子：Nf3+Bc4+O-O\n黑方只出了：Nc6+Bc5（现在在a5）\n\n发展差距：3步 vs 1步！",
+      "highlights": [
+        {"squares": ["g1", "e1", "h1"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "d6",
+      "popup": "d6 黑方稳固，挡住d4威胁"
+    },
+    {
+      "index": 14,
+      "move": "cxd4",
+      "popup": "cxd4 白方重建中心\n\n超强中心再次出现！\n发展精力全部集中在进攻上"
+    },
+    {
+      "index": 15,
+      "move": "Bb6",
+      "popup": "Bb6 黑象再次移动：a5→b6\n\n⭐ 节拍簿：\n黑方象已走：c5→b4→a5→b6\n共走了3步！\n只为了一个兵……代价太高了！",
+      "highlights": [
+        {"squares": ["b6", "c5"], "color": "#E53935CC"}
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Nc3",
+      "popup": "Nc3！白方所有子力都在参战！\n马、象、车、后——全线出动\n\n对比黑方：\n象在边路、马没有最佳格\n这就是发展领先的真实面貌！",
+      "highlights": [
+        {"squares": ["c3", "f3", "c4", "d4", "g1"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展Nf6\n试图追赶……"
+    },
+    {
+      "index": 18,
+      "move": "e5",
+      "popup": "e5！！发动进攻！\n\n白方速度优势到达顶点\n立刻发动攻击——\n速度优势有时限，必须行动！\n\n⭐ 关键判断：\n为什么现在e5而不是等待？\n因为等待=黑方追上节拍=优势消失！",
+      "highlights": [
+        {"squares": ["e5", "f6", "d4"], "color": "#E5393588"}
+      ]
+    }
+  ]
+}

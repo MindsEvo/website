@@ -1,0 +1,258 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_005",
+  "description": "彼得罗夫防御 C42 — 对称兑换：黑方及时兑换获得结构均衡",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "e4",
+      "e5"
+    ],
+    "popup": "及时兑子 第5课\n\n彼得罗夫防御——最坚固的对称防御\n\n黑方第2手：Nf6！\n不保护e5，而是反攻e4！\n\n白方必须选择：\nA. Nxe5（吃掉e5兵）\nB. 继续发展\n\n双方都在进行战略性兑换！\n\n⭐ 兑换与结构：\n及时兑换如何获得均衡？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "彼得罗夫防御总结\n\n及时兑子的第五模式：\n\n① 对称兑换：双方各吃一兵，保持均衡\n② 黑方及时Nxe5，避免落后发展\n③ 关键步d5！！——必须立刻反击，不能先发展\n\n重要教训：\n兑子的时机可以是防御性的——\n通过正确的对称兑换，\n黑方从不利局面变成完全均衡！\n\n及时兑子：不只是进攻，也是防守！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "e5"
+    ],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6！！彼得罗夫防御！\n\n黑方不守e5，反攻e4！\n这是最坚固的防御之一\n对称+主动反击！",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nxe5",
+      "popup": "Nxe5！白方吃e5兵！\n\n⭐ 白方选择吃兵——似乎多了一个兵\n但黑方有精彩的反击！\n黑方现在应该……",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "d6",
+      "popup": "d6！黑方先驱逐白马！\n\n⭐ 关键顺序！！\n黑方不能立刻Nxe4——\n因为白方Qe2！钉住黑马，得子！\n\n必须先d6驱马，再Nxe4！\n这就是及时性的关键：顺序很重要！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3 白马被迫退回\n\n⭐ 白方的兵优势已消失：\n黑方将在下一步夺回e4兵！"
+    },
+    {
+      "index": 7,
+      "move": "Nxe4",
+      "popup": "Nxe4！！黑方夺回中心兵！\n\n⭐ 对称完成！\n双方各吃一个e列中心兵\n局面完全均衡！\n\n这就是彼得罗夫的精华：\n通过正确的及时兑换，实现完美均衡",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "f6"
+          ],
+          "color": "#C6D50077"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "d4",
+      "popup": "d4！白方后手争优势\n占据中心，打压黑方Ne4"
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "popup": "d5！黑方反击！\n\n⭐ 又一次关键的及时兑子时机：\n黑方现在必须d5！\n如果先Nf6退，白方e5！Ne4被追，白方建立中心优势\n\nd5先手争取空间！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "Bd3！白象发展\n攻击Ne4"
+    },
+    {
+      "index": 11,
+      "move": "Nc6",
+      "popup": "Nc6！黑方发展马\n支撑Ne4的位置",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e4"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O 白方入城"
+    },
+    {
+      "index": 13,
+      "move": "Be7",
+      "popup": "Be7 黑方准备入城"
+    },
+    {
+      "index": 14,
+      "move": "c4",
+      "popup": "c4！白方进攻d5兵！\n向中心施压",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nb4",
+      "popup": "Nb4！黑马跳b4！\n攻击Bd3，寻求兑换",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "d3"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Be2",
+      "popup": "Be2 象让步\n白方避免兑换"
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "O-O 黑方入城\n双方局面趋于均衡"
+    },
+    {
+      "index": 18,
+      "move": "Nc3",
+      "popup": "Nc3！白马发展\n向d5施压",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Bf5",
+      "popup": "Bf5！黑象主动！\n寻求兑换减轻压力",
+      "highlights": [
+        {
+          "squares": [
+            "f5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "a3",
+      "popup": "a3！白方驱马！\n迫使Nb4离开威胁格"
+    },
+    {
+      "index": 21,
+      "move": "Nc6",
+      "popup": "Nc6 马撤回改位置"
+    },
+    {
+      "index": 22,
+      "move": "Nxe4",
+      "popup": "Nxe4！白方主动兑换！\n\n⭐ 白方判断：\n现在兑换Ne4有利！\n消灭黑方强马，简化局面\n白方d4+c4的兵优势更明显",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "c3"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Bxe4",
+      "popup": "Bxe4 黑象回吃\n局面继续均衡化"
+    },
+    {
+      "index": 24,
+      "move": "cxd5",
+      "popup": "cxd5！白方中心兑换！\n\n⭐ 全局总结：\n双方进行了多次及时且均衡的兑换\n彼得罗夫防御的核心就是：\n通过精确的兑换顺序，\n黑方维持了完全均衡的局面！\n\n及时兑子：防守中的艺术！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    }
+  ]
+}

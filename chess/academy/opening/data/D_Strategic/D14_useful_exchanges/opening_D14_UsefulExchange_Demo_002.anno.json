@@ -1,0 +1,251 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_002",
+  "description": "后翼弃兵兑换变例 D35 — 白方主动cxd5：开放列施压的战略兑换",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "d5",
+      "c4"
+    ],
+    "popup": "及时兑子 第2课\n\n后翼弃兵——白方c4对抗黑方d5\n双方中心兵紧张对峙\n\n白方第5手：cxd5！\n主动兑换中心兵！\n\n直接结果：c列开放\n战略目标：白方利用c列施压，\n并在d5放置强马！\n\n⭐ 中心兑换：什么时候cxd5最强？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "QGD兑换变例总结\n\n及时兑子的第二模式：\n\n① 中心兑换开放列（c列归白）\n② d5成为白方强格（马占d5）\n③ 少数兵推进：b4-b5攻击黑方弱点\n\n兑换判断标准：\n① c列开放——白方重子可以利用\n② d5强格——马的完美位置\n③ 少数兵攻击——结构性长期优势\n\n这是职业棋手最常用的战略套路之一！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5"
+    ],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4 中央控制"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5 对称中心"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵！\n向d5发起挑战"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6 黑方防御c4兵\n同时准备出象——后翼弃兵防御"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3 发展马，支持d4+c4"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6 发展马，守护d5"
+    },
+    {
+      "index": 6,
+      "move": "Bf4",
+      "popup": "Bf4！london象！\n象在c1-h6对角线活跃\n这是白方的系统性方案"
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7 黑方保守发展\n准备短易位"
+    },
+    {
+      "index": 8,
+      "move": "e3",
+      "popup": "e3 巩固d4，准备入城"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 黑方入城\n王翼安全"
+    },
+    {
+      "index": 10,
+      "move": "cxd5",
+      "popup": "cxd5！！白方中心兑换！\n\n⭐ 关键时机——为什么现在？\n① 黑方已入城（c列开放后无危险）\n② 白方Bf4已就位（可以控制c7）\n③ Nc3准备好进入d5或e5\n\n⭐ 兑换创造什么？\nc列开放！白方重子可以利用。",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "exd5",
+      "popup": "exd5 黑方用e兵回吃\n\n⭐ 局面变化：\n① c列对白方开放（白方半开放c列）\n② 黑方d5兵孤立了——没有e兵支持\n③ d5兵需要保护！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c7"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "Bd3！象占强格！\n象从d3瞄准h7，并支持e4\n白方发展速度加快",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "c6",
+      "popup": "c6 黑方c6支持d5\n保护孤立兵——这是关键一步",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nf3",
+      "popup": "Nf3！白方马发展\n准备Ne5——最强格"
+    },
+    {
+      "index": 15,
+      "move": "Nbd7",
+      "popup": "Nbd7 黑方马发展\n支持Nf6，守护中心"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O 白方入城\n所有子力协调",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Re8",
+      "popup": "Re8 黑车到e列\n支持e6-e5的可能反击"
+    },
+    {
+      "index": 18,
+      "move": "Qc2",
+      "popup": "Qc2！后配合Bf4\n控制c列，准备Rac1",
+      "highlights": [
+        {
+          "squares": [
+            "c2",
+            "c7"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nf8",
+      "popup": "Nf8 黑马重组\n准备Ng6，加强防守"
+    },
+    {
+      "index": 20,
+      "move": "Rac1",
+      "popup": "Rac1！车占c列！\n\n⭐ cxd5的成果：\n白方重车c1+f1压制c列\n白方全部子力协调一致！\n\n⭐ 白方的计划：\nb4-b5推进（少数兵攻击！）\n攻击c6叠兵链的根部……",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "c7"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Ne6",
+      "popup": "Ne6 黑马进入e6\n试图反制……"
+    },
+    {
+      "index": 22,
+      "move": "Bg5",
+      "popup": "Bg5！兑换提议！\n\n⭐ 二次兑换机会：\nBxf6！可以兑换黑方防守马\n削弱黑方防守结构\n\n什么时候放弃双象换取位置优势？",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "h6",
+      "popup": "h6 黑方质问象的意图"
+    },
+    {
+      "index": 24,
+      "move": "Bxf6",
+      "popup": "Bxf6！！象换马！\n\n⭐ 第二次战略兑换！\n白方放弃双象优势\n但破坏了黑方的防守结构！\n黑方回吃后王翼变弱",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "g5"
+          ],
+          "color": "#E5393577"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Bxf6",
+      "popup": "Bxf6 黑方象回吃\n维持双象，但结构已受损"
+    },
+    {
+      "index": 26,
+      "move": "b4",
+      "popup": "b4！！少数兵进攻！\n\n⭐ 战略精华：\nWhite的c兵不见了（兑换了）\n但用少数兵b4-b5攻击c6！\n这是cxd5之后的标准计划！\n\n总结：每次兑换都为这一刻服务！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "b5",
+            "c6"
+          ],
+          "color": "#E5393588"
+        }
+      ]
+    }
+  ]
+}

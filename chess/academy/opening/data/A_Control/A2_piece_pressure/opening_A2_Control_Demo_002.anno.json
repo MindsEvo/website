@@ -1,0 +1,335 @@
+{
+  "game_id": "A2_Control_Demo_002",
+  "description": "意大利开局——三个轻子协调瞄准中心，13步完整注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "三个轻子齐上阵，共同瞄准黑方要害格！意大利开局展示占领与子力控制的完美组合",
+    "voice": true
+  },
+  "outro": {
+    "popup": "子力协调控制，比单独一兵更难被破坏。e4，Nf3， Bc4，Nc3 四子形成立体控制网，这就是为什么意大利开局历经几百年仍是经典。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 占领中心格！</b><br>e4 兵直接踏上中心，控制 d5 和 f5 两格。占领是最直接的控制方式。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方对称占领！</b><br>黑方也占 e5，e5 兵控制 d4 和 f4。双方中心兵直接对峙。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 子力控制加入！</b><br>马从 f3 直接攻击黑方的 <b>e5</b> 兵，同时控制 d4。第一个子力的控制：迫使黑方守护 e5！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>c6 马出动，守住 e5，同时控制 d4 和 e5。出子防守，一举两得——效率最优。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "⬆️ <b>3.Bc4 — 白象加入控制！</b><br>白象在 c4，斜线瞄准 <b>d5</b> 和黑方的 f7 要点。这是意大利开局的关键步——第二个轻子加入中心控制！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f7"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF8F0088"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "⬇️ <b>3...Nf6 — 黑马出击攻击 e4！</b><br>黑马在 f6 控制 e4 和 d5。注意黑方也在用子力控制中心格——这不是特权，双方都能这样做！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d3",
+      "popup": "⬆️ <b>4.d3 — 稳固 e4，不急冒进。</b><br>白方 d3 支撑 e4 兵，而不是激进的 d4 推进。稳固阵型优先——子力未就位时不急于中心推进。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bc5",
+      "popup": "⬇️ <b>4...Bc5 — 黑象也加入控制！</b><br>黑方象在 c5，斜线瞄准 <b>d4</b> 格。双方都在用象进行斜线控制——这就是「控制中心」的双向博弈！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "c5",
+          "to": "b4",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "⬆️ <b>5.Nc3 — 第三个轻子加入控制网！</b><br>白马在 c3，控制 <b>d5</b> 和 e4。现在 <b>e4（兵）+ Nf3 + Bc4 + Nc3</b>，四子全部指向中心！<br><span style='color:#FFD700;'>★ 这就是子力协调控制的力量：多子叠加，难以被单一手段破坏！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD466"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d6",
+      "popup": "⬇️ <b>5...d6 — 黑方稳固阵型。</b><br>黑方 d6 支撑 e5。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "⬆️ <b>6.O-O — 白方易位！</b><br>子力发展完成，白方易位完成基础阵型。现在可以安心执行中长期计划。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "⬇️ <b>6...O-O — 黑方易位！</b><br>双方易位完成，进入中局。双方都已完成开局发展。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Be3",
+      "popup": "⬆️ <b>7.Be3 — 第四子加入协调！</b><br>Be3 白象支撑 d4 推进，同时与 Bc4 形成完整的象的配置。<br><span style='color:#88CCFF;'>★ 现在白方有 <b>4 个子力</b>全部协调指向中心，这就是「子力协调控制」的最高表现！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD466"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD466"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    }
+  ]
+}

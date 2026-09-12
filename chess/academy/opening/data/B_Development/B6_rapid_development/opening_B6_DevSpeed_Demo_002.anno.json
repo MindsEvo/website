@@ -1,0 +1,188 @@
+{
+  "game_id": "B6_DevSpeed_Demo_002",
+  "description": "C44 — 轻子先行，重子随后",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第2课\n必须先出动所有轻子，然后再激活后和车等重子， 车价值5分， 后价值9分",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：轻子先行是出子顺序的铁律",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局\n控制中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称\n对称局面"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3！轻子第1步\n马出动，攻击e5\n苏格兰开局前奏"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6保护e5\n黑方第1个轻子"
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "d4！苏格兰弃兵\n直接争夺中心\n比e4/e5保守体系更积极"
+    },
+    {
+      "index": 5,
+      "move": "exd4",
+      "popup": "exd4接受\n黑方吃兵"
+    },
+    {
+      "index": 6,
+      "move": "Nxd4",
+      "popup": "Nxd4！马再发展\n马在d4控制中心\n苏格兰开局"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6出动\n黑方第2个轻子\n攻击e4"
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3！白方第2个马出动\n两匹马控制中心\n轻子第2步",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "f5"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bb4",
+      "popup": "Bb4出动\n黑方象牵制白马\n给白方施压"
+    },
+    {
+      "index": 10,
+      "move": "Nxc6",
+      "popup": "Nxc6兑换\n简化中心局面"
+    },
+    {
+      "index": 11,
+      "move": "bxc6",
+      "popup": "bxc6接回\n黑方棋形损坏"
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "Bd3！白方象出动\n白方轻子全部出动完毕！\n此刻可以易位了",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "d5",
+      "popup": "d5推进\n黑方争夺中心"
+    },
+    {
+      "index": 14,
+      "move": "exd5",
+      "popup": "exd5兑换\n开放局面"
+    },
+    {
+      "index": 15,
+      "move": "cxd5",
+      "popup": "cxd5接回\n黑方d5强兵"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O！白方易位\n轻子全出后立即易位\n王安全，车连通",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "O-O！黑方也易位\n双方王安全",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8",
+            "e8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Bg5",
+      "popup": "Bg5！白方最后一个象出动\n牵制黑方f6马\n只剩重子待激活"
+    },
+    {
+      "index": 19,
+      "move": "c6",
+      "popup": "c6防守\n黑方巩固"
+    },
+    {
+      "index": 20,
+      "move": "Qf3",
+      "popup": "Qf3后出动\n白方后和主教协调"
+    },
+    {
+      "index": 21,
+      "move": "Be7",
+      "popup": "Be7黑方象出动\n黑方轻子发展完毕"
+    },
+    {
+      "index": 22,
+      "move": "Rfe1",
+      "popup": "Rfe1！重子激活！\n这是关键时刻：\n轻子全出→易位→现在激活车！\n车到e1占据开放线，是出子顺序的完美典范",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "e1"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Demo_001",
+  "description": "意大利开局 C54 — 轻子出完立即易位，时机判断",
+  "intro": {
+    "flash_squares": ["g1", "f1", "e1", "g8"],
+    "popup": "王车易位第1课\n何时易位？\n轻子全部出动后，立即易位！\n每拖一步，都是给对手的机会",
+    "voice": true
+  },
+  "outro": {
+    "popup": "易位时机总结\n✅ 轻子出完 → 立即易位\n✅ 易位后王藏在兵盾后\n✅ 车立刻连通，准备参战\n不要贪图一步棋而延误易位！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4占中心\n意大利开局开始"},
+    {"index": 1, "move": "e5", "popup": "e5对称\n中心对峙"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展马\n攻击e5，轻子第1步"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6保护e5\n黑方轻子第1步"},
+    {"index": 4, "move": "Bc4", "highlights": [{"squares": ["c4","f7"], "color": "#FF8F0044"}], "popup": "Bc4意大利象\n瞄准f7弱格\n轻子第2步"},
+    {"index": 5, "move": "Bc5", "popup": "Bc5对称\n黑方轻子第2步"},
+    {"index": 6, "move": "c3", "popup": "c3为d4做准备\n稳健推进"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6发展\n黑方轻子第3步\n准备易位！"},
+    {"index": 8, "move": "d3", "popup": "d3稳固中心\n意大利封闭体系\n白方稳步布局"},
+    {"index": 9, "move": "d6", "popup": "d6稳固\n黑方继续发展"},
+    {"index": 10, "move": "Nbd2", "popup": "Nbd2发展马\n白方轻子全部出动\n此刻具备易位条件！"},
+    {"index": 11, "move": "O-O", "highlights": [{"squares": ["e8","f8","g8"], "color": "#C6D50066"}], "popup": "O-O！黑方率先易位\n轻子出完立即易位\n王藏在g8，f8车激活"},
+    {"index": 12, "move": "O-O", "highlights": [{"squares": ["e1","f1","g1"], "color": "#C6D50066"}], "popup": "O-O！白方跟进易位\n王到g1，安全！\n注意：f1车现在可以立刻移动了\n双车已连通"},
+    {"index": 13, "move": "Re8", "popup": "Re8！\n易位后立刻激活车\n黑车占领e线"},
+    {"index": 14, "move": "Re1", "highlights": [{"squares": ["f1","e1"], "color": "#00BCD444"}], "popup": "Re1！\n白车也立刻激活\n占领e线与黑车对峙"},
+    {"index": 15, "move": "Bb6", "popup": "Bb6象撤退\n避开攻击，调整阵型"},
+    {"index": 16, "move": "Nf1", "popup": "Nf1马重新部署\n准备Ng3-f5强占好格"},
+    {"index": 17, "move": "Ne7", "popup": "Ne7马调整\n黑方重新部署"},
+    {"index": 18, "move": "Ng3", "popup": "Ng3马到好位\n控制f5和h5"},
+    {"index": 19, "move": "c6", "popup": "c6稳固\n黑方巩固"},
+    {"index": 20, "move": "h3", "popup": "h3备手\n防止Bg4牵制"},
+    {"index": 21, "move": "Ng6", "popup": "Ng6马活跃\n黑方出子"},
+    {"index": 22, "move": "d4", "highlights": [{"squares": ["d3","d4","e5"], "color": "#C6D50044"}], "popup": "d4！推进中心\n双方均已易位完毕\n才有资格推进中心\n若无易位，d4推进暴露中路国王！"}
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "game_id": "B6_DevSpeed_Demo_005",
+  "description": "C21 — 弃兵换出子速度",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第5课\n牺牲物质换取出子速度，先手发展可以转化为攻势",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：弃兵是出子加速的高级手段",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4！主动攻击中心\n丹麦弃兵开始！\n白方准备主动弃兵换发展"
+    },
+    {
+      "index": 3,
+      "move": "exd4",
+      "popup": "exd4接受\n黑方吃兵，理所当然"
+    },
+    {
+      "index": 4,
+      "move": "c3",
+      "popup": "c3！第2个弃兵！\n白方又让黑方吃兵\n换来什么？——快速出子！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c3"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "dxc3",
+      "popup": "dxc3接受\n黑方得到2个兵"
+    },
+    {
+      "index": 6,
+      "move": "Bc4",
+      "popup": "Bc4！白方第1个轻子\n象到意大利格——最佳位置\n瞄准f7！\n注意：这里才走3步，白方象就到了最强位置",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "cxb2",
+      "popup": "cxb2黑方继续吃兵\n黑方得3个兵，但发展落后"
+    },
+    {
+      "index": 8,
+      "move": "Bxb2",
+      "popup": "Bxb2！白方第2个轻子激活\n只花1步，象到b2控制长对角线\n现在白方有双象，轰炸中心！",
+      "highlights": [
+        {
+          "squares": [
+            "b2",
+            "h8"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d6",
+      "popup": "d6黑方稳固\n黑方有3个兵的优势，但子力未出"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3！第3个轻子出动\n马到最佳位置\n3步走出了3个轻子！",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nc6",
+      "popup": "Nc6黑方马出动\n黑方开始追赶"
+    },
+    {
+      "index": 12,
+      "move": "Nc3",
+      "popup": "Nc3！第4个轻子出动\n所有4个轻子全部出动！\n白方发展完整，尽管少了2个兵",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nf6",
+      "popup": "Nf6黑方继续发展"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O！即刻易位\n4个轻子全出，立即易位\n王安全，车连通",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Be7",
+      "popup": "Be7黑方象出动"
+    },
+    {
+      "index": 16,
+      "move": "Re1",
+      "popup": "Re1！车激活\n占据e线，配合中心推进\n弃了2兵但换来完美局面",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "e1"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "O-O黑方也易位"
+    },
+    {
+      "index": 18,
+      "move": "Qd2",
+      "popup": "Qd2后出动\n协调进攻"
+    },
+    {
+      "index": 19,
+      "move": "Bg4",
+      "popup": "Bg4黑方牵制"
+    },
+    {
+      "index": 20,
+      "move": "Nd5",
+      "popup": "Nd5！白马跳入心脏\n弃兵换来的先手转化为具体攻势！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "b6",
+            "f6"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nxd5",
+      "popup": "Nxd5黑方必吃"
+    },
+    {
+      "index": 22,
+      "move": "exd5",
+      "popup": "exd5！\n总结：丹麦弃兵路线：\n弃2兵→双象激活+Nf3/Nc3出动\n出子速度=攻击优势\n这是弃子换节奏的最佳范例！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4",
+            "b2"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    }
+  ]
+}

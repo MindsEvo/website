@@ -1,0 +1,50 @@
+﻿{
+  "label": "控制类",
+  "color": "#8E44AD",
+  "categories": [
+    {
+      "key": "A1_pawn_center",
+      "label": "A1 占领中心",
+      "items": [
+        { "id": "opening_A1_Center_Demo_001", "label": "1. 什么是中心？", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_002", "label": "2. 中心优势对比", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_003", "label": "3. 建立巩固双兵中心（伦敦体系）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_004", "label": "4. 中心的争夺与反制（西西里防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_005", "label": "5. 意大利开局：焦科钢琴变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A2_piece_pressure",
+      "label": "A2 控制中心",
+      "items": [
+        { "id": "opening_A2_Control_Demo_001", "label": "1. 马不占中心，却控制中心（雷帝开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_002", "label": "2. 三个轻子协调瞄准要害格（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_003", "label": "3. 翼路兵加马象悄悄控住中心四格（英格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_004", "label": "4. 用象钉住马，阻止中心也是控制（尼姆佐印度）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_005", "label": "5. 黑象斜跨棋盘远程狙击d4（国王印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A3_space_gains",
+      "label": "A3 空间控制",
+      "items": [
+        { "id": "opening_A3_Space_Demo_001", "label": "1. 一步e5，黑方棋子挤成一团（法国推进）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_002", "label": "2. 有保护的安全扩展，每步兵推进都有子力支撑（意大利）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_003", "label": "3. d5关闭中心，空间分割双方各守一翼（国王印度四兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_004", "label": "4. 反例——用兵追杀子力，后防空虚，e5无人守护被白送（阿列欣防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_005", "label": "5. 诱敌深入，c5精准反击冒进兵链（法国防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A4_opening_lines",
+      "label": "A4 线路控制",
+      "items": [
+        { "id": "opening_A4_Lines_Demo_001", "label": "1. 打开e线，车立刻参战（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_002", "label": "2. 预判c线，提前布车等待（后翼弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_003", "label": "3. 打开斜线，象参战（埃文斯弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_004", "label": "4. 反例——c线打开了，车放错位置（斯拉夫防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_005", "label": "5. 同时打开多条线路，多子参战（苏格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

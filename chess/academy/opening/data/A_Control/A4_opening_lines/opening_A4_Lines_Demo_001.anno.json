@@ -1,0 +1,151 @@
+{
+  "game_id": "A4_Lines_Demo_001",
+  "description": "意大利开局 C54 — 打开e线，Rfe1立刻参战",
+  "intro": {
+    "flash_squares": ["e1", "e4", "e5", "d4"],
+    "popup": "线路控制第1课\n打开纵线→车立刻占领\n本局核心：exd5打开e线\nRfe1直接进驻",
+    "voice": true
+  },
+  "outro": {
+    "popup": "核心原则\ne线打开→Rfe1立刻控制\n线路打开的第一时间\n重子必须抢占！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "白方占中心\ne4控制d5、f5\n意大利开局的第一步"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "黑方对称回应\n双方各占中心一格\ne线暂时封闭"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n同时攻击e5兵\n白方施加中心压力"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6保护e5兵\n黑方发展轻子\n意大利开局正式进入"
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "highlights": [{"squares": ["c4", "f7"], "color": "#FF8F0055"}],
+      "popup": "Bc4意大利象！\n瞄准f7弱格\n白方象占据强力斜线"
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "Bc5对称发展\n黑方也占主动斜线\n双方均有进攻意图"
+    },
+    {
+      "index": 6,
+      "move": "c3",
+      "highlights": [{"squares": ["c3", "d4"], "color": "#C6D50044"}],
+      "popup": "c3为d4做准备\n白方计划推d4\n打开中心——也打开e线！"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6发展并攻击e4\n黑方施加反压力\n白方需要快速推进"
+    },
+    {
+      "index": 8,
+      "move": "d4",
+      "highlights": [{"squares": ["d4", "e5", "e4"], "color": "#FF8F0055"}],
+      "concept_arrows": [{"from": "d4", "to": "e5", "color": "#00BCD4CC"}],
+      "popup": "d4！中心冲突\n白方挑战e5\n如果exd4→cxd4\ne线将部分打开"
+    },
+    {
+      "index": 9,
+      "move": "exd4",
+      "highlights": [{"squares": ["d4", "e4"], "color": "#C6D50044"}],
+      "popup": "黑方exd4兑换\ne线开始打开\n白方cxd4重提，e线清空"
+    },
+    {
+      "index": 10,
+      "move": "cxd4",
+      "highlights": [{"squares": ["d4", "e4", "e1"], "color": "#C6D50044"}],
+      "popup": "cxd4重提\nd4有力兵，e线半开放\n白方e线压力逐渐形成"
+    },
+    {
+      "index": 11,
+      "move": "Bb4+",
+      "highlights": [{"squares": ["b4", "e1"], "color": "#E5393544"}],
+      "concept_arrows": [{"from": "b4", "to": "e1", "color": "#E53935CC"}],
+      "popup": "Bb4+将军！\n黑方象直接瞄准e1\n注意：白方如果不处理\ne线的车将受到威胁"
+    },
+    {
+      "index": 12,
+      "move": "Bd2",
+      "popup": "Bd2挡将\n同时准备兑换黑方b4象\n清除d2格障碍"
+    },
+    {
+      "index": 13,
+      "move": "Bxd2+",
+      "highlights": [{"squares": ["d2"], "color": "#FF8F0055"}],
+      "popup": "黑方Bxd2+兑换\n再次将军\n白方必须重提"
+    },
+    {
+      "index": 14,
+      "move": "Nbxd2",
+      "highlights": [{"squares": ["d2", "e4", "e1"], "color": "#C6D50044"}],
+      "popup": "马重提到d2\ne线障碍清除！\ne4-e1整条纵线将全部开放"
+    },
+    {
+      "index": 15,
+      "move": "d5",
+      "highlights": [{"squares": ["d5", "e4"], "color": "#E5393544"}],
+      "popup": "黑方d5反击！\n攻击e4兵\ne线冲突即将爆发"
+    },
+    {
+      "index": 16,
+      "move": "exd5",
+      "highlights": [{"squares": ["d5", "e1", "e4", "e5"], "color": "#C6D50055"}],
+      "concept_arrows": [{"from": "e4", "to": "d5", "color": "#00BCD4CC"}],
+      "popup": "exd5！e线完全打开！\n白方兑换后\ne1-e8纵线畅通无阻\n现在——谁来占这条线？"
+    },
+    {
+      "index": 17,
+      "move": "Nxd5",
+      "popup": "黑方Nxd5重提\nd5格马攻击c3、b4\n中心暂时稳定"
+    },
+    {
+      "index": 18,
+      "move": "Qb3",
+      "highlights": [{"squares": ["b3", "d5", "f7"], "color": "#FF8F0055"}],
+      "popup": "Qb3！双重威胁\n攻击d5马和f7格\n黑方必须处理"
+    },
+    {
+      "index": 19,
+      "move": "Nce7",
+      "popup": "Nce7撤退保护\n马撤守e7\n黑方阵形趋于稳定"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "highlights": [{"squares": ["f1", "g1", "h1"], "color": "#C6D50044"}],
+      "popup": "白方王车易位\n王躲安全\n现在f1车要参战了！"
+    },
+    {
+      "index": 21,
+      "move": "O-O",
+      "popup": "黑方也王车易位\n双方完成开局发展\n关键时刻到来……"
+    },
+    {
+      "index": 22,
+      "move": "Rfe1",
+      "highlights": [{"squares": ["e1", "e4", "e8"], "color": "#C6D50066"}],
+      "concept_arrows": [{"from": "f1", "to": "e1", "color": "#C6D500CC"}],
+      "popup": "Rfe1！线路控制精华\ne线打开了，车立刻占领！\nRfe1直接控制整条e纵线\n这就是线路控制的基本原则\n打开→立刻占领→保持压力"
+    }
+  ]
+}

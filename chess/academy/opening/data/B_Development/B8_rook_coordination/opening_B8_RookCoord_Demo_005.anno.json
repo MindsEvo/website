@@ -1,0 +1,128 @@
+{
+  "game_id": "B8_RookCoord_Demo_005",
+  "description": "D37 — 链接双车 - 第5课：后+双车三子协调——最强阵型",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "e1",
+      "e2",
+      "d4"
+    ],
+    "popup": "链接双车第5课\n双车+后 = 重子协调的威力极强\nQe2控制中心，Re1控e列，Rd1控d列\n三子配合，威力倍加！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Qe2，R1，Rd1 = 后+双车三角控制\n三个重子各司其职，这是很强的协调形态！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6黑马"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O黑方易位"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3！底线马出动",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#8E24AA33"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O！三步曲完成！双车连接！\n计划：Qe2联结双车，Rd1+Re1分控两列",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nb6",
+      "popup": "Nb6黑马跳强格"
+    },
+    {
+      "index": 22,
+      "move": "Qe2",
+      "popup": "Qe2！后联结双车\n计划：Qe2是后+双车协调的指挥中心",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "a1",
+            "f1"
+          ],
+          "color": "#8E24AA33"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Nbd5",
+      "popup": "Nbd5黑马再跳强格"
+    },
+    {
+      "index": 24,
+      "move": "Rfe1",
+      "popup": "Rfe1！车进e列！\n激活：Rf1→e1——e列由白方掌控！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Rfe8",
+      "popup": "Rfe8黑方车联结"
+    },
+    {
+      "index": 26,
+      "move": "Rad1",
+      "popup": "Rad1！！最终形态！\n三角阵型完成：\n后Qe2＋Re1（e列）＋Rd1（d列）\n= 后+双车最强协调！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "e1",
+            "e2"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

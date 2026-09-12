@@ -1,0 +1,354 @@
+{
+  "game_id": "A2_Control_Demo_003",
+  "description": "英格兰开局——翼路兵加子力控住中心，15步完整注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "兵走翼路，却用马和象悄悄控住中心四格！英格兰开局展示不走 e4 也能掌控中心的超现代核心逻辑",
+    "voice": true
+  },
+  "outro": {
+    "popup": "不走 e4 也能控制中心——超现代核心逻辑。c4 兵在侧翼却控制 d5，配合 Bg2 和双马，形成无形但强大的中心控制网络。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "c4",
+      "popup": "⬆️ <b>1.c4 — 翼路兵，却控制中心！</b><br>c4 兵不在中心，却通过控制 <b>d5</b> 格来影响中心争夺。这就是超现代主义的起点——兵的位置在翼路，但眼光在中心！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方占领中心！</b><br>黑方直接用兵占 e5，传统回应。e5 兵控制 d4 和 f4。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nc3",
+      "popup": "⬆️ <b>2.Nc3 — 马加入控制！</b><br>c3 马直接控制 <b>d5</b> 和 <b>e4</b> 两个中心格。与 c4 兵配合，d5 格受到双重控制！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "⬇️ <b>2...Nf6 — 黑马控制 e4！</b><br>黑马在 f6，控制 e4 和 d5。黑方也在用子力控制中心，而非只靠 e5 兵。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "g3",
+      "popup": "⬆️ <b>3.g3 — 为长斜线象铺路！</b><br>白方准备将象发展到 g2，沿 h1-a8 斜线覆盖中心区域。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "d5",
+      "popup": "⬇️ <b>3...d5 — 黑方挑战 c4！</b><br>黑方推 d5，直接测试白方 c4 兵对 d5 的控制。这是对「翼路控制」的直接挑战！",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "cxd5",
+      "popup": "⬆️ <b>4.cxd5 — 白方吃掉 d5！</b><br>白方 c4 兵对 d5 的控制变成了现实！c4 不是虚张声势，而是真正的威胁。翼路控制就这样兑现了价值。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nxd5",
+      "popup": "⬇️ <b>4...Nxd5 — 黑马重夺 d5！</b><br>黑马吃回 d5，重新占领该格。但马占 d5 与兵占 d5 不同——马更容易被驱逐。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bg2",
+      "popup": "⬆️ <b>5.Bg2 — 象入长斜线！</b><br>白象进入 g2，沿 h1-a8 斜线遥控 <b>d5</b>！即使黑马在 d5，Bg2 也在施加远程压力。<br><span style='color:#44CCFF;'>★ Bg2 是超现代控制的核心棋子——从后方远程「监视」中心！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c6",
+            "b7",
+            "a8"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nb6",
+      "popup": "⬇️ <b>5...Nb6 — 黑马撤离 d5。</b><br>在 Bg2 的压力下，黑马退到 b6。d5 的控制权再次移位——翼路控制的效果已经显现！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "⬆️ <b>6.Nf3 — 第二马出动！</b><br>f3 马攻击 e5，与 Nc3 配合，双马共同控制中心区域。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nc6",
+      "popup": "⬇️ <b>6...Nc6 — 黑方出马。</b><br>黑方第二马出动，加强对中心的影响。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "⬆️ <b>7.O-O — 白方易位！</b><br>子力发展就绪，白方易位安全。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "Be7",
+      "popup": "⬇️ <b>7...Be7 — 黑方出象。</b><br>黑方准备易位。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "d3",
+      "popup": "⬆️ <b>8.d3 — 稳固阵型，等待时机。</b><br>白方 d3 稳固，为未来的中心推进做准备。<br><span style='color:#88CCFF;'>★ 总结：c4,Nc3,Bg2,Nf3 四子协调控制中心，不走 e4 也做到了！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "a8",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD466"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD466"   
+        },
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#00BCD466"   
+        },
+        {
+          "from": "d3",
+          "to": "c4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    }
+  ]
+}

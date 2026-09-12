@@ -1,0 +1,323 @@
+{
+  "game_id": "C9_PawnChain_Demo_004",
+  "description": "D36 — QGD兑换变例，少数兵突破c6根部",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "d4",
+      "b4"
+    ],
+    "popup": "兵链方向第4课\n倒向兵链！\n白方链c4-d4-e3向左倾斜\n→指向黑方后翼！\nb4→b5少数兵突破：\n用3个兵打4个兵\n目标：制造c5弱格！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：b5突破 → cxb5 → Ne4占c5\n少数兵突破经典范例！\n兵链方向指引后翼进攻！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "c4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4"
+    },
+    {
+      "index": 1,
+      "move": "d5"
+    },
+    {
+      "index": 2,
+      "move": "c4"
+    },
+    {
+      "index": 3,
+      "move": "e6"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Nf6"
+    },
+    {
+      "index": 6,
+      "move": "cxd5",
+      "popup": "cxd5！兑换！对称兵链形成\nd5-e6 vs d4-e3\n白方少数兵计划蓄势！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c4",
+            "e3"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "exd5"
+    },
+    {
+      "index": 8,
+      "move": "Bg5"
+    },
+    {
+      "index": 9,
+      "move": "Be7"
+    },
+    {
+      "index": 10,
+      "move": "e3",
+      "popup": "e3建立白方兵链e3-d4-c4"
+    },
+    {
+      "index": 11,
+      "move": "O-O"
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "Bd3象出"
+    },
+    {
+      "index": 13,
+      "move": "c6",
+      "popup": "c6！黑方加强d5，形成d5-c6链根"
+    },
+    {
+      "index": 14,
+      "move": "Qc2",
+      "popup": "Qc2！白方少数兵计划开始\nb4→b5将打击黑方c6兵链根部！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "b5",
+            "c6"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nbd7"
+    },
+    {
+      "index": 16,
+      "move": "Nge2"
+    },
+    {
+      "index": 17,
+      "move": "Re8"
+    },
+    {
+      "index": 18,
+      "move": "O-O"
+    },
+    {
+      "index": 19,
+      "move": "Nf8"
+    },
+    {
+      "index": 20,
+      "move": "b4",
+      "popup": "b4！！！少数兵推进开始！\n белый方b4→b5突破"
+    },
+    {
+      "index": 21,
+      "move": "Ng6"
+    },
+    {
+      "index": 22,
+      "move": "b5",
+      "popup": "b5！！少数兵突破！\n直接攻击c6根部——兵链方向决定了这一切！",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6",
+            "c5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "cxb5",
+      "popup": "cxb5！黑被迫接受，后翼兵形瓦解，c5洞开"
+    },
+    {
+      "index": 24,
+      "move": "Nxb5",
+      "popup": "Nxb5马强占b5"
+    },
+    {
+      "index": 25,
+      "move": "Bd7",
+      "popup": "Bd7象出"
+    },
+    {
+      "index": 26,
+      "move": "Nec3",
+      "popup": "Nec3另马支援"
+    },
+    {
+      "index": 27,
+      "move": "Ne4",
+      "popup": "Ne4！！黑马占据e4，反击"
+    },
+    {
+      "index": 28,
+      "move": "Bxe7",
+      "popup": "Bxe7兑换"
+    },
+    {
+      "index": 29,
+      "move": "Rxe7"
+    },
+    {
+      "index": 30,
+      "move": "f3",
+      "popup": "f3！驱逐黑方强马！\nNe4是黑方最强的中心据点，f3强制它撤退",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "f3"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Nf6",
+      "popup": "Nf6！马被迫后撤\nf3的代价是削弱e3，但换来了黑马离开中心"
+    },
+    {
+      "index": 32,
+      "move": "a4",
+      "popup": "a4！！提前推进a兵！\na4在a6之前推进，为a5突破做准备\n——少数兵计划的关键时序！",
+      "highlights": [
+        {
+          "squares": [
+            "a4",
+            "a5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "a6",
+      "popup": "a6！黑方防守b5，阻止白马利用b5",
+      "highlights": [
+        {
+          "squares": [
+            "a6",
+            "b5"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "move": "Nd6",
+      "popup": "Nd6！！白马强占d6！\n攻击Re7，威胁从d6向黑阵深处施压\n——这才是Nb5的最佳利用方式！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e7",
+            "e8"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "Be6",
+      "popup": "Be6！黑方主动出击！\nNd6踏上d6后，黑方用象对抗，试图兑换白方强马",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "d6"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "move": "Nf5",
+      "popup": "Nf5！！白马跳f5！\n放弃d6换来更危险的f5据点\nNf5直接威胁g7，将攻打黑王！",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "g7",
+            "h6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Bxf5",
+      "popup": "Bxf5！黑方被迫兑换！\n否则Nxg7后黑王暴露"
+    },
+    {
+      "index": 38,
+      "move": "Bxf5",
+      "popup": "Bxf5！白方象占f5！\n白象主宰对角线，兵形优势转为子力活跃度",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "b1"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "move": "Rxe3",
+      "popup": "Rxe3！黑方抓住机会夺兵！\nf3推进削弱了e3，黑车利用这个弱点！",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "f3"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "move": "Qd2",
+      "popup": "Qd2！白方冷静应对！\n后接后翼，准备反击并控制局面"
+    },
+    {
+      "index": 41,
+      "move": "Re7",
+      "popup": "Re7！黑方车撤退保守，局面紧张\n白方Bf5强大，双翼均有压力"
+    }
+  ]
+}
