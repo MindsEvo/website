@@ -1,0 +1,88 @@
+{
+  "game_id": "eg_KBP-K_L1-002-1",
+  "description": "象兵对王-L1 演示2：边路兵闪电绝杀",
+  "intro": {
+    "flash_squares": ["g6", "h6", "h4", "h8"],
+    "popup": "💡 <b>象兵对王·边路绝杀</b><br>白王g6，h兵在h6，象在h4。黑王刚进h8——<b>仅需两步完成绝杀！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 三重封锁：兵封g8 + 王封g7/f7 + 象控h8——角落无处可逃！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kg8",
+      "popup": "黑王唯一活动。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "h7+",
+      "popup": "⭐ <b>h7+！</b>兵冲出，攻击g8黑王——将军！黑王只能退回h8。",
+      "highlights": [
+        {
+          "squares": ["h7"],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["g8"],
+          "color": "#F4433640",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h6",
+          "to": "h7",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "h7",
+          "to": "g8",
+          "color": "#F44336CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kh8",
+      "popup": "黑王被迫退回角落，无路可逃。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "Bf6#",
+      "popup": "⭐ <b>Bf6# 绝杀！</b>象到f6，守住g7/h8斜线——黑王在角落束手就擒！",
+      "highlights": [
+        {
+          "squares": ["f6"],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["g7", "h8"],
+          "color": "#F4433640",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "f6",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "f6",
+          "to": "h8",
+          "color": "#F44336CC"
+        }
+      ]
+    }
+  ]
+}

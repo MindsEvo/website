@@ -1,0 +1,216 @@
+{
+  "game_id": "eg_KNP-K_L1-002-1",
+  "description": "非角兵+马获胜 — 王先激活，马将军配合推兵",
+  "intro": {
+    "flash_squares": ["f3", "g1", "f4"],
+    "popup": "<b>马和非角兵白可胜！</b>白王先激活走向中心，马用将军驱赶黑王",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>马和非角兵白可胜。王马配合可保兵升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke2",
+      "popup": "<b>白王激活！</b><br>白王立刻向中心推进，这是赢棋的第一步。",
+      "highlights": [{"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f1", "to": "e2", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf5",
+      "popup": "黑王也向中心靠近，试图阻止兵推进。",
+      "highlights": [{"squares": ["f5"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "f5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ke3",
+      "popup": "白王继续前进到e3。",
+      "highlights": [{"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e2", "to": "e3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke5",
+      "popup": "黑王占据e5中心格。",
+      "highlights": [{"squares": ["e5"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "e5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "f4+",
+      "popup": "<b>兵f4将军！</b><br>兵前进同时将军，驱赶黑王远离中心。",
+      "highlights": [{"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f3", "to": "f4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kd5",
+      "popup": "黑王被赶到d5。",
+      "highlights": [{"squares": ["d5"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "d5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ne2",
+      "popup": "<b>马激活！</b><br>马从g1到e2，开始向关键位置进发。",
+      "highlights": [{"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g1", "to": "e2", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kd6",
+      "popup": "黑王继续周旋。",
+      "highlights": [{"squares": ["d6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "d6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kd4",
+      "popup": "白王稳步推进。",
+      "highlights": [{"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e3", "to": "d4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Ke6",
+      "popup": "黑王跑到e6。",
+      "highlights": [{"squares": ["e6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "e6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Ke4",
+      "popup": "白王到e4，控制中心。",
+      "highlights": [{"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "e4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Kf6",
+      "popup": "黑王移到f6，守护f8升变格。",
+      "highlights": [{"squares": ["f6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "f6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "f5",
+      "popup": "兵再前进，步步逼近升变！",
+      "highlights": [{"squares": ["f5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "Kf7",
+      "popup": "黑王退到f7，继续阻挡升变格。",
+      "highlights": [{"squares": ["f7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "Ke5",
+      "popup": "白王前进到e5，王马兵齐头并进。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Ke7",
+      "popup": "黑王守在e7。",
+      "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "e7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 16,
+      "move": "f6+",
+      "popup": "<b>兵f6将军！</b><br>兵再次将军驱赶黑王。",
+      "highlights": [{"squares": ["e7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "f6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 17,
+      "move": "Kf7",
+      "popup": "黑王被迫退到f7。",
+      "highlights": [{"squares": ["f7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 18,
+      "move": "Nf4",
+      "popup": "<b>马到f4！</b><br>马占据f4关键格，准备跳到g6/e6封锁黑王。",
+      "highlights": [{"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e2", "to": "f4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 19,
+      "move": "Ke8",
+      "popup": "黑王挣扎移到e8。",
+      "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "e8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 20,
+      "move": "Ke6",
+      "popup": "<b>白王到e6！占据关键格。</b><br>白王+马+兵围死黑王。",
+      "highlights": [{"squares": ["e6", "f7", "f8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "e6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 21,
+      "move": "Kd8",
+      "popup": "黑王被迫退到d8。",
+      "highlights": [{"squares": ["d8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e8", "to": "d8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 22,
+      "move": "f7",
+      "popup": "兵推到f7，升变迫在眉睫！",
+      "highlights": [{"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "f7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 23,
+      "move": "Kc7",
+      "popup": "黑王试图逃脱。",
+      "highlights": [{"squares": ["c7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d8", "to": "c7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 24,
+      "move": "f8=Q",
+      "popup": "<b>兵升后！白方获胜！</b><br>f8=Q，黑王无法阻止，白方胜势确立。",
+      "highlights": [{"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "f8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

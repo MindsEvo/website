@@ -1,0 +1,58 @@
+{
+  "game_id": "eg_P-P_L2-002-1",
+  "description": "兵对兵②：对峙和局 — 双方兵正面对峙，白先无法突破",
+  "intro": {
+    "flash_squares": ["e3", "e4", "e5", "e6"],
+    "concept_arrows": [
+      {"from": "e4", "to": "e5", "color": "#FF6B35CC"},
+      {"from": "e5", "to": "e4", "color": "#4CAF50CC"}
+    ],
+    "popup": "💡 <b>对峙和局</b>：两兵正面锁定在 e4/e5，双王分立两侧。白先，能否突破？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "☰ <b>结论：和局！</b> 正面对峙时，先走方反而不利——任何推进都将失去兵，双方保持平衡。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kd3",
+      "popup": "1.Kd3 — 白王尝试从侧翼迂回。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e3", "to": "d3", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd6",
+      "popup": "1...Kd6 — 黑王同步防守，保持对称。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e6", "to": "d6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kc4",
+      "popup": "2.Kc4 — 白王继续迂回。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "d3", "to": "c4", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kc6",
+      "popup": "2...Kc6 — 黑王对应，始终保持对立位，白方无法打破平衡。",
+      "highlights": [
+        {"squares": ["c4", "c6"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "c6", "color": "#4CAF50CC"}
+      ]
+    }
+  ]
+}

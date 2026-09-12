@@ -1,0 +1,11 @@
+... Ra8+
+2. Kd7 Ra7+
+3. Kd6 Ra6+
+4. Kd5 Ra5+
+5. Kd4 Ra8
+6. Kc5 Ra5+
+7. Kd6 Ra6+
+8. Ke5 Ra5+
+9. Kd6 Ra6+
+# END
+# 解法 1

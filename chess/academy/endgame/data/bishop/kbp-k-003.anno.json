@@ -1,0 +1,163 @@
+{
+  "game_id": "eg_KBP-K_L1-003-1",
+  "description": "象兵对王-L1 演示3：象清路、兵升变、后追杀",
+  "intro": {
+    "flash_squares": ["d5", "e5", "d6", "f8"],
+    "popup": "💡 <b>象兵配合升变</b><br>王在d5，象在e5，兵在d6。黑王在f8试图阻挡——白方精准配合完成升变并杀王！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 象清除e7通道→兵升变为后→后+王追杀——象兵合力三步完成胜局！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke6",
+      "popup": "♔ 王到e6，封锁e7，阻止黑王靠近。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e6",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Bf6",
+      "popup": "⭐ <b>象到f6！</b>封锁e7/g7，驱逐黑王离开d-路线。",
+      "highlights": [
+        {
+          "squares": ["e7", "g7", "d8"],
+          "color": "#4CAF5025",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "f6",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "f6",
+          "to": "e7",
+          "color": "#4CAF5066"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kf8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "d7",
+      "popup": "⭐ <b>兵推d7！</b>升变一步之遥，黑王无法阻拦。",
+      "highlights": [
+        {
+          "squares": ["d7"],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["d8"],
+          "color": "#4CAF5030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kg8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "d8=Q+",
+      "popup": "⭐ <b>升变为后！将军！</b>后在d8攻击黑王。",
+      "highlights": [
+        {
+          "squares": ["d8"],
+          "color": "#2196F355",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "h8",
+          "color": "#F44336CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kh7",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Kf7",
+      "popup": "♔ 王到f7，包围黑王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "f7",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kh6",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Qh8#",
+      "popup": "⭐ <b>Qh8# 将死！</b>",
+      "highlights": [
+        {
+          "squares": ["h8"],
+          "color": "#F4433655",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "h8",
+          "color": "#F44336CC"
+        }
+      ]
+    }
+  ]
+}

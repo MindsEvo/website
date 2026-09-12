@@ -1,0 +1,11 @@
+1. Kf6 h6
+2. h4 h5
+3. Ke6 Kg7
+4. Ke7 Kg6
+5. f8=Q Kh7
+6. Qf4 Kh8
+7. Kf7 Kh7
+8. Qg5 Kh8
+9. Qxh5#
+# END
+# 解法 1

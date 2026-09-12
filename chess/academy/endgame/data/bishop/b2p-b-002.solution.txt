@@ -1,0 +1,20 @@
+1. Bd5+ Kf8
+2. Kf4 Bh8
+3. Kf5 Bd4
+4. Ke4 Bb2
+5. Bb3 Ba1
+6. Bd5 Bc3
+7. Be6 Bf6
+8. Kd5 Bc3
+9. Ke4 Bb2
+10. Kf5 Bd4
+11. Ke4 Bf6
+12. Kf5 Bd4
+13. Ke4 Bc3
+14. Kd3 Ba1
+15. Ke3 Bf6
+16. Ke4 Bb2
+17. Bd5 Ba1
+18. Be6 Bf6
+# END
+# 解法 1

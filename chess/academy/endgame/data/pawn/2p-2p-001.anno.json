@@ -1,0 +1,142 @@
+{
+  "game_id": "eg_2P-2P_L3-001-1",
+  "description": "双兵对峙①：连通兵封锁 — d5+d6连通兵锁住黑方d7兵，白王奔袭g6",
+  "intro": {
+    "flash_squares": [
+      "e1",
+      "d5",
+      "d6",
+      "b4",
+      "d7",
+      "g6"
+    ],
+    "concept_arrows": [
+      {
+        "from": "d5",
+        "to": "d6",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "d6",
+        "to": "d7",
+        "color": "#FF000066"
+      }
+    ],
+    "popup": "💡 <b>连通兵封锁</b>：白方 d5+d6 连通兵将黑 d7 兵死死封锁。黑方 g6 兵孤立无援，白王可轻松吃掉它，再推兵升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王吃掉 g6 后，d 兵无阻挡顺利升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf2",
+      "popup": "1.Kf2 — 白王出动，奔向 g6 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "f2",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kc3",
+      "popup": "1...Kc3 — 黑王试图干扰 d 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "c3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kg3",
+      "popup": "2.Kg3 — 白王继续进发。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f2",
+          "to": "g3",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kxd5",
+      "popup": "2...Kxd5？ — 黑王吃掉 d5 兵，但为时已晚。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kxg6",
+      "popup": "3.Kxg6 — 白王吃掉 g6 孤兵！",
+      "highlights": [
+        {
+          "squares": [
+            "g6"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "g6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ke6",
+      "popup": "3...Ke6 — 黑王无奈，回头拦截 d 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d7",
+      "popup": "4.d7 — 升变在即，黑方无法阻挡！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

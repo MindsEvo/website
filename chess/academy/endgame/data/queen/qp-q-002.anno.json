@@ -1,0 +1,96 @@
+{
+  "game_id": "eg_QP-Q_L2-002-1",
+  "description": "后兵对后 — 黑方永续将军，和棋",
+  "intro": {
+    "flash_squares": ["h8", "f4", "e4", "e7", "a1"],
+    "popup": "🛡️ <b>黑方的求和绝技</b><br>白兵e7即将升变，白后e4、白王f4护卫。<br>黑方先手：<b>黑后不断将军，白王无处逃脱，三次重复局面——和棋！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>永续将军，和棋！</b>黑后在h4、h1、e1之间循环将军，白王在f3、f4、e3之间徘徊，无法靠近e7帮助升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qh4+",
+      "popup": "⚡ 黑后主动出击，从h8直扑h4将军！",
+      "highlights": [{"squares": ["h4", "f4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h8", "to": "h4", "color": "#E53935CC"}, {"from": "h4", "to": "f4", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 1,
+      "move": "Kf3",
+      "popup": "白王逃向f3，试图摆脱将军。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f4", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Qh1+",
+      "popup": "黑后追击！调换角度从h1斜线再发将军。",
+      "highlights": [{"squares": ["h1", "f3"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "h1", "color": "#E53935CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Ke3",
+      "popup": "白王向e3靠近，意图接近e7升变路线。",
+      "highlights": [{"squares": ["e7"], "color": "#FFD70055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f3", "to": "e3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Qe1+",
+      "popup": "🔑 <b>关键一着！</b>黑后守住e1，将军的同时封锁e线，白王无路向前！",
+      "highlights": [
+        {"squares": ["e1", "e3"], "color": "#FF000077", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "h1", "to": "e1", "color": "#E53935CC"}, {"from": "e1", "to": "e3", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 5,
+      "move": "Kf3",
+      "popup": "白王被迫退回f3，无法突破。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e3", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Qh1+",
+      "popup": "🔄 黑后回到h1将军——局面与第3步完全相同！",
+      "highlights": [{"squares": ["h1"], "color": "#FFD70077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e1", "to": "h1", "color": "#E53935CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Kf4",
+      "popup": "白王尝试回到f4，寻找突围机会。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f3", "to": "f4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Qh4+",
+      "popup": "🔄 黑后h4将军——与第1步完全相同的局面再次出现！",
+      "highlights": [{"squares": ["h4", "f4"], "color": "#FFD70077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h1", "to": "h4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Kf3",
+      "popup": "白王只能回f3，别无选择。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f4", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 10,
+      "move": "Qh1+",
+      "popup": "🤝 <b>第三次重复！永续将军，和棋。</b>白方升变梦破碎，黑方成功求和。",
+      "highlights": [{"squares": ["h1", "f3"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "h1", "color": "#E53935CC"}]
+    }
+  ]
+}

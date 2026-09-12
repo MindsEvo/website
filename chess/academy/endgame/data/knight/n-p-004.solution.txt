@@ -1,0 +1,17 @@
+1. Ke7 Kd2
+2. f8=Q Kc3
+3. Kd6 Nd3
+4. Qg7+ Kc4
+5. Qg4+ Kc3
+6. Kd5 Nb4+
+7. Ke4 Kc4
+8. Qf5 Nc2
+9. Qd5+ Kb4
+10. Qd2+ Kb3
+11. Qd3+ Kb2
+12. Qc4 Ne1
+13. Qb4+ Kc1
+14. Qxe1+ Kb2
+15. Kd3
+# END
+# 解法 1

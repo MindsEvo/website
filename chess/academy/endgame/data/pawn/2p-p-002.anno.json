@@ -1,0 +1,142 @@
+{
+  "game_id": "eg_2P-P_L2-002-1",
+  "description": "双兵对单兵②：联兵制胜 — e兵进击牵制黑王，联兵推进升变",
+  "intro": {
+    "flash_squares": [
+      "f5",
+      "e5",
+      "h5",
+      "f7",
+      "h6"
+    ],
+    "concept_arrows": [
+      {
+        "from": "e5",
+        "to": "e8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "h5",
+        "to": "h8",
+        "color": "#FF6B35CC"
+      }
+    ],
+    "popup": "💡 <b>联兵制胜</b>：白方 e5+h5 联兵，黑方仅 h6 一兵。e 兵冲锋逼退黑王，联兵合力升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> e 兵升变，黑方无法同时阻挡两路进攻。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "e6+",
+      "popup": "1.e6+ — 将军！逼退黑王，清开升变道路。",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "e6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke8",
+      "popup": "1...Ke8 — 黑王被迫后退。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f7",
+          "to": "e8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ke5",
+      "popup": "2.Ke5 — 白王跟进支援 e 兵推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f5",
+          "to": "e5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd8",
+      "popup": "2...Kd8 — 黑王试图阻挡 e 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "d8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kd6",
+      "popup": "3.Kd6 — 白王护送 e 兵前进。",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e6"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc8",
+      "popup": "3...Kc8 — 黑王无路可守。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "c8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e7",
+      "popup": "4.e7 — e 兵即将升变！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "e7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

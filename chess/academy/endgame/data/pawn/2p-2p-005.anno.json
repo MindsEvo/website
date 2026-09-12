@@ -1,0 +1,143 @@
+{
+  "game_id": "eg_2P-2P_L3-005-1",
+  "description": "双兵对峙⑤：通路兵升变 — 白方a7通路兵立即升变，黑方无法阻止",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "a7",
+      "g1",
+      "e5",
+      "c8",
+      "h5"
+    ],
+    "concept_arrows": [
+      {
+        "from": "a7",
+        "to": "a8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "g1",
+        "to": "g8",
+        "color": "#9C27B0CC"
+      }
+    ],
+    "popup": "💡 <b>通路兵升变</b>：白方 a7 通路兵已在七线，黑王（e5）距 a8 太远，无法阻止白兵升变。g1 兵牵制黑方 h5。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白后吃掉黑方 c8 兵，再控制 h 兵，白胜定局。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "a8=Q",
+      "popup": "1.a8=Q！— 立即升变为后！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a7",
+          "to": "a8",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd6",
+      "popup": "1...Kd6 — 黑王靠近，但已无法阻挡。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Qxc8",
+      "popup": "2.Q×c8 — 白后吃掉黑 c8 兵！消除威胁。",
+      "highlights": [
+        {
+          "squares": [
+            "c8"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a8",
+          "to": "c8",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "h4",
+      "popup": "2...h4 — 黑方唯一反抗：h 兵推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "h4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "g2",
+      "popup": "3.g2 — g 兵升变在即，同时控制黑兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g1",
+          "to": "g2",
+          "color": "#9C27B0CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "h3",
+      "popup": "3...h3 — 黑兵拼命推进，已无济于事。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "h3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "g3",
+      "popup": "4.g3 — 白方从容应对，优势明显。",
+      "highlights": [
+        {
+          "squares": [
+            "c8",
+            "a8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "g3",
+          "color": "#9C27B0CC"
+        }
+      ]
+    }
+  ]
+}

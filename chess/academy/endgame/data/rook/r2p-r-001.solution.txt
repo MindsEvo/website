@@ -1,0 +1,18 @@
+1. Kf3 Kc2
+2. d5 Re5
+3. Kf4 Rh5
+4. c4 Kc3
+5. Rc8 Rh1
+6. d6 Kd4
+7. d7 Rf1+
+8. Kg3 Kc3
+9. d8=Q Rg1+
+10. Kf2 Rb1
+11. Ke2 Rb2+
+12. Ke3 Rb7
+13. Qd4+ Kc2
+14. Qe4+ Kb2
+15. Qxb7+ Kc3
+16. Ra8
+# END
+# 解法 1

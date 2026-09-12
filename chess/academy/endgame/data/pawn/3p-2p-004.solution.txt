@@ -1,0 +1,11 @@
+1. Ke1 Ke5
+2. Kd1 Kd5
+3. Kd2 Kd4
+4. Ke2 Ke4
+5. Ke1 Kd3
+6. Kd1 Kc3
+7. Ke1 Kd3
+8. Kd1 Kc3
+9. Ke1 Kd3
+# END
+# 解法 1

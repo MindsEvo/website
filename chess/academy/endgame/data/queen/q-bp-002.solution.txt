@@ -1,0 +1,17 @@
+... Qd4+
+2. Kb7 Qb4+
+3. Kc7 Qc5
+4. Kb7 Ke5
+5. a7 Kd6
+6. a8=Q Qxc6+
+7. Ka7 Qc5+
+8. Ka6 Qa3+
+9. Kb7 Qb4+
+10. Ka6 Qa4+
+11. Kb7 Qb5+
+12. Ka7 Kc7
+13. Qd8+ Kxd8
+14. Ka8 Kc7
+15. Ka7 Qa4#
+# END
+# 解法 1

@@ -1,0 +1,11 @@
+1. Kc1 f3
+2. Ra2+ Ke1
+3. Ra8 Ke2
+4. Re8+ Kd3
+5. Kd1 f2
+6. Rf8 Ke3
+7. Rf6 Kd3
+8. Rxf2 Ke3
+9. Ra2 Kd4
+# END
+# 解法 1

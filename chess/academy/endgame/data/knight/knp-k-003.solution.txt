@@ -1,0 +1,12 @@
+1. Ne4 Ke7
+2. Kc4 Kd7
+3. Kc5 Kc7
+4. d6+ Kd7
+5. Kd5 Ke8
+6. Nc5 Kd8
+7. Kc6 Ke8
+8. d7+ Ke7
+9. Nb7 Kf6
+10. d8=Q+ Ke5
+# END
+# 解法 1

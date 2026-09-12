@@ -1,0 +1,153 @@
+{
+  "game_id": "eg_3P-3P_L3-004-1",
+  "description": "三兵对峙④：通路兵竞争 — 白王d4控中，d5+g5双通路兵赛跑胜过黑方",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "d5",
+      "e3",
+      "g5",
+      "a3",
+      "b2",
+      "e5",
+      "g2"
+    ],
+    "concept_arrows": [
+      {
+        "from": "d5",
+        "to": "d8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "g5",
+        "to": "g8",
+        "color": "#FF6B35CC"
+      }
+    ],
+    "popup": "💡 <b>通路兵竞争</b>：白方 d5+g5 是通路兵，黑方 b2+g2 也威胁升变。白王（d4）靠近 b2，能阻止黑兵同时推进白方通路。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王控制 b2 兵同时，d5/g5 通路兵不可阻挡。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc3",
+      "popup": "1.Kc3！— 白王直奔 b2，先消灭最危险的黑兵。",
+      "highlights": [
+        {
+          "squares": [
+            "b2"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c3",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "g1=Q",
+      "popup": "1...g1=Q — 黑方 g2 兵升变！局面复杂。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "g1",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kxb2",
+      "popup": "2.K×b2！— 白王吃掉 b2 兵，最大威胁消除。",
+      "highlights": [
+        {
+          "squares": [
+            "b2"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "b2",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Qxe3",
+      "popup": "2...Q×e3 — 黑后吃掉 e3，但白方通路兵仍在。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g1",
+          "to": "e3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "d6",
+      "popup": "3.d6！— d 通路兵继续推进，形成双重威胁。",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "g5"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Qxg5",
+      "popup": "3...Q×g5 — 黑后吃掉 g5 兵，但已无法阻止 d 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "g5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d7",
+      "popup": "4.d7 — 升变前一步！白胜！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

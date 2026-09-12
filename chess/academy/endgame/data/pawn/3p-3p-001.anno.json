@@ -1,0 +1,137 @@
+{
+  "game_id": "eg_3P-3P_L3-001-1",
+  "description": "三兵对峙①：侧翼突破 — g4通路兵冲击，白王b4切断黑王，实现突破",
+  "intro": {
+    "flash_squares": [
+      "b4",
+      "e4",
+      "g4",
+      "h2",
+      "h3",
+      "b5",
+      "d6",
+      "h8"
+    ],
+    "concept_arrows": [
+      {
+        "from": "g4",
+        "to": "g8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "b4",
+        "to": "c5",
+        "color": "#FF6B35CC"
+      }
+    ],
+    "popup": "💡 <b>侧翼突破</b>：白方 g4 兵是关键通路兵，黑方 h8 兵距战场遥远。白王（b4）向中央进发支援 g 兵，黑王（h3）无法兼顾两翼。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> g 兵突破升变，黑方无法应对两翼威胁。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "g5",
+      "popup": "1.g5 — g 兵大步向前！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "g5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kg4",
+      "popup": "1...Kg4 — 黑王追赶 g 兵，但白王反向包抄。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h3",
+          "to": "g4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kc5",
+      "popup": "2.Kc5！— 白王进入中央，切断黑王退路，同时威胁 b5 和 d6。",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "d6"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "c5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kf5",
+      "popup": "2...Kf5 — 黑王改变方向，追赶 g5 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "f5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "g6",
+      "popup": "3.g6 — g 兵继续推进！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "g6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ke6",
+      "popup": "3...Ke6 — 黑王正面阻挡 g6。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f5",
+          "to": "e6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "g7",
+      "popup": "4.g7 — 升变前一步，白胜已定！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g6",
+          "to": "g7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

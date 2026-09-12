@@ -1,0 +1,219 @@
+{
+  "game_id": "eg_NP-N_L2-002-1",
+  "description": "马兵对马 — 马兵联合推进",
+  "intro": {
+    "flash_squares": [
+      "c5",
+      "e5",
+      "b4",
+      "a3"
+    ],
+    "popup": "♞🐴 <b>马兵联合推进！</b><br>白马在e5控制关键格，白兵在b4准备冲锋。<br>黑马在a3距离较远，黑王也在翼侧。<br>关键：<b>白马护卫兵一路推到b8升变！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♛ <b>升变成后后吃马！</b>白方b兵在白马护驾下一路推进，最终升变并消灭黑马。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nc4",
+      "popup": "白马到c4，直接护卫b5推进。",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "c4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Nc2",
+      "popup": "黑马靠近，试图阻截。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "c2",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "b5",
+      "popup": "兵向前！白马已为其保驾护航。",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "b5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ne1",
+      "popup": "黑马换位，试图找新阻截点。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c2",
+          "to": "e1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "b6",
+      "popup": "兵继续前进！",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "b6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nd3+",
+      "popup": "黑马将军，试图拖延时间。",
+      "highlights": [
+        {
+          "squares": [
+            "d3"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "d3",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kb5",
+      "popup": "白王从容躲将，跟随兵的前进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "b5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nf4",
+      "popup": "黑马再次跳动，无法阻止升变。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "f4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "b7",
+      "popup": "兵到b7，离升变仅一步！",
+      "highlights": [
+        {
+          "squares": [
+            "b7"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "b7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kg6",
+      "popup": "黑王奔赴战场，但已经太迟。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h7",
+          "to": "g6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "b8=Q",
+      "popup": "♛ <b>升变成后！</b>白兵成功升变！",
+      "highlights": [
+        {
+          "squares": [
+            "b8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b7",
+          "to": "b8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    }
+  ]
+}

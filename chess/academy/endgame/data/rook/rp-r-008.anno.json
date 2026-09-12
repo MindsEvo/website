@@ -1,0 +1,96 @@
+{
+  "game_id": "eg_RP-R_L2-008-1",
+  "description": "h兵推进——将军赶黑王后升变",
+  "intro": {
+    "flash_squares": ["h5", "c3", "f8"],
+    "popup": "<b>h兵在5线，黑车背后将军</b>白方需驱赶黑王，再推进h兵升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>白胜</b>黑车被引离，h兵顺利升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb8+",
+      "popup": "黑车将军，驱赶白王。",
+      "highlights": [{"squares": ["b1"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "b8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kd7",
+      "popup": "白王前进，顺势靠近兵！",
+      "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b1", "to": "d7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rb7+",
+      "popup": "黑车继续追着将军。",
+      "highlights": [{"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "b7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kd6",
+      "popup": "白王再进一步，越来越近。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "d6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rb8",
+      "popup": "黑车退守，无法继续将军。",
+      "highlights": [{"squares": ["b8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "b8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rf4",
+      "popup": "白车移位，切断黑车活动空间。",
+      "highlights": [{"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "f4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ra8",
+      "popup": "黑车换位。",
+      "highlights": [{"squares": ["a8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "a8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Ra4",
+      "popup": "<b>白车到a4！</b>引诱黑车换子。",
+      "highlights": [{"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "a4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rxa4",
+      "popup": "黑车吃车，但代价惨重。",
+      "highlights": [{"squares": ["a4"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a8", "to": "a4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "h6",
+      "popup": "<b>兵推进！</b>黑车远在a4，无法回防。",
+      "highlights": [{"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h5", "to": "h6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

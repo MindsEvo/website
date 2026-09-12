@@ -1,0 +1,80 @@
+{
+  "game_id": "eg_N-P_L2-005-1",
+  "description": "黑马恰好赶上 — 精确计步和棋！",
+  "intro": {
+    "flash_squares": ["b6", "c7", "e1"],
+    "popup": "<b>黑先走！黑马能赶上吗？</b><br>白方b6兵很近升变，黑马在e1距离很远。<br>一定要仔细计算马的步数——刚好能赶到！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点：精确计算马的步数！</b><br>Nd3→Ne5+不断将军，马恰好能追上b6兵阻止升变。<br>这是马阻击兵的极限算法，差一步就输！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nd3",
+      "popup": "<b>黑马出发！</b><br>黑马第一步跳到d3，开始追赶白兵。计算好步数是关键。",
+      "highlights": [{"squares": ["d3", "b6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e1", "to": "d3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kc6",
+      "popup": "白王前进，掩护兵推进升变。",
+      "highlights": [{"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ne5+",
+      "popup": "<b>黑马将军！</b><br>Ne5+将军白王，迫使白王后退，同时马继续向b7逼近。",
+      "highlights": [{"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "e5", "color": "#E53935CC"}, {"from": "e5", "to": "c6", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kc7",
+      "popup": "白王退回c7。",
+      "highlights": [{"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "c7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nd3",
+      "popup": "黑马回到d3，等待下一个将军机会。",
+      "highlights": [{"squares": ["d3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "d3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kc6",
+      "popup": "白王再次前进。",
+      "highlights": [{"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ne5+",
+      "popup": "<b>黑马再次将军！</b><br>Nd3↔Ne5+循环——马精确追住了白王，兵无法前进！",
+      "highlights": [{"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}, {"squares": ["b6", "b7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "e5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kc7",
+      "popup": "<b>三次重复！和棋！</b><br>白王一前进马就将军，白方无法推进兵，和棋！",
+      "highlights": [{"squares": ["b6", "e5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "c7", "color": "#4CAF50CC"}, {"from": "e5", "to": "c6", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    }
+  ]
+}

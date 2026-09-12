@@ -1,0 +1,222 @@
+{
+  "game_id": "eg_Q-BP_L2-002-1",
+  "description": "后对象兵 — 黑后连将，吃象后绝杀白王",
+  "intro": {
+    "flash_squares": ["g7", "a6", "b6", "c6"],
+    "popup": "♛♗♟ <b>黑后的精彩绝杀！</b><br>白有王b6+象c6+兵a6，黑后g7+王f4。<br>黑方的计划：<b>连将逼走白王，让兵升变后吃掉新后，最终黑后将死白王！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♟✅ <b>黑方绝杀！</b>精彩的连将组合：黑后逼走白王→兵升变→取象→黑后连将→捉白新后→最终将死。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qd4+",
+      "popup": "⚡ 黑后将军，白王被迫移动。",
+      "highlights": [{"squares": ["d4", "b6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "d4", "color": "#E53935CC"}, {"from": "d4", "to": "b6", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 1,
+      "move": "Kb7",
+      "popup": "白王逃离，向a8方向撤退。",
+      "highlights": [],
+      "concept_arrows": [{"from": "b6", "to": "b7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Qb4+",
+      "popup": "黑后继续将军追击！",
+      "highlights": [{"squares": ["b4", "b7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "b4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Kc7",
+      "popup": "白王横移，但还是无法摆脱。",
+      "highlights": [],
+      "concept_arrows": [{"from": "b7", "to": "c7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Qc5",
+      "popup": "黑后到c5，威胁吃白象c6！",
+      "highlights": [{"squares": ["c5", "c6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "c5", "color": "#E53935CC"}, {"from": "c5", "to": "c6", "color": "#E5393566"}]
+    },
+    {
+      "index": 5,
+      "move": "Kb7",
+      "popup": "白王后退，试图保护象。",
+      "highlights": [],
+      "concept_arrows": [{"from": "c7", "to": "b7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Ke5",
+      "popup": "⭐ <b>黑王入场！</b>趁白方守象时，黑王向中心进发。",
+      "highlights": [{"squares": ["e5"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "e5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 7,
+      "move": "a7",
+      "popup": "白兵强推第7格！升变迫在眉睫。",
+      "highlights": [{"squares": ["a7", "a8"], "color": "#FFD70055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "a7", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Kd6",
+      "popup": "黑王靠近，阻止兵升变。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e5", "to": "d6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 9,
+      "move": "a8=Q",
+      "popup": "♟ <b>白兵升变！但黑方早有准备——</b>",
+      "highlights": [{"squares": ["a8"], "color": "#FFD700BB", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "a8", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 10,
+      "move": "Qxc6+",
+      "popup": "🎯 <b>黑后吃象将军！</b>象被消灭，白王暴露在黑后的攻击下。",
+      "highlights": [{"squares": ["c6"], "color": "#E5393577", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "c6", "color": "#E53935CC"}, {"from": "c6", "to": "b7", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 11,
+      "move": "Ka7",
+      "popup": "白王逃到被新后保护的a列。",
+      "highlights": [{"squares": ["a8"], "color": "#4CAF5033", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "a7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 12,
+      "move": "Qc5+",
+      "popup": "连将！黑后从c5将军。",
+      "highlights": [{"squares": ["c5", "a7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "c5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Ka6",
+      "popup": "白王被迫继续移动。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Qa3+",
+      "popup": "连将继续！",
+      "highlights": [{"squares": ["a3", "a6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "a3", "color": "#E53935CC"}]
+    },
+    {
+      "index": 15,
+      "move": "Kb7",
+      "popup": "白王逃跑。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Qb4+",
+      "popup": "再将！黑后追击。",
+      "highlights": [],
+      "concept_arrows": [{"from": "a3", "to": "b4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 17,
+      "move": "Ka6",
+      "popup": "白王又回a6，进退两难。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Qa4+",
+      "popup": "黑后从a4将军，白王无处藏身。",
+      "highlights": [{"squares": ["a4", "a6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "a4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 19,
+      "move": "Kb7",
+      "popup": "白王又逃b7。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Qb5+",
+      "popup": "黑后b5将军，白王没有安全格！",
+      "highlights": [{"squares": ["b5", "b7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a4", "to": "b5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 21,
+      "move": "Ka7",
+      "popup": "白王退到a7——新后a8仍然在。",
+      "highlights": [{"squares": ["a8"], "color": "#4CAF5033", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "Kc7",
+      "popup": "⭐ <b>黑王进入关键位置！</b>逼近白方新后。",
+      "highlights": [{"squares": ["c7", "a8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "c7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 23,
+      "move": "Qd8+",
+      "popup": "白方新后拼命将军，试图阻止。",
+      "highlights": [{"squares": ["d8", "c7"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a8", "to": "d8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 24,
+      "move": "Kxd8",
+      "popup": "🎯 <b>黑王吃掉白方新后！</b>精彩！白方兵升变功亏一篑。",
+      "highlights": [{"squares": ["d8"], "color": "#E5393577", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "d8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 25,
+      "move": "Ka8",
+      "popup": "白王退到角落，无路可走。",
+      "highlights": [{"squares": ["a8"], "color": "#4CAF5022", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 26,
+      "move": "Kc7",
+      "popup": "黑王靠近，准备最后绝杀。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d8", "to": "c7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 27,
+      "move": "Ka7",
+      "popup": "白王在角落徘徊，无路可走。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Qa4#",
+      "popup": "♛ <b>黑后将死！</b>连将绝技完美演绎——将死白王于角落。",
+      "highlights": [
+        {"squares": ["a4", "a7"], "color": "#E5393577", "duration_ms": 0},
+        {"squares": ["a8", "b7", "b8"], "color": "#E5393533", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "b5", "to": "a4", "color": "#E53935CC"}]
+    }
+  ]
+}

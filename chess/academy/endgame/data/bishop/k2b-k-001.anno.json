@@ -1,0 +1,297 @@
+{
+  "game_id": "eg_K2B-K_L1-001-1",
+  "description": "双象对王-L1 演示：两象控制两色，必胜局",
+  "intro": {
+    "flash_squares": ["g8", "h8", "f7", "b6"],
+    "popup": "💡 <b>双象对王</b><br>两个象分别控制深色格和浅色格。<br>关键技巧：<b>通过和王的配合强迫黑王进入死角！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Bb7# — 绝杀！</b>要点：两象两色无缝覆盖 + 王助攻 + 等着逼王移动——双象残局的完美收官！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kg7",
+      "popup": "♔ 1.Kg7 — 白王开始向黑王方向逼近。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g8", "to": "g7", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Kc5",
+      "popup": "↓ Kc5 — 黑王向中心迁移。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Kg6",
+      "popup": "♔ 2.Kg6 — 白王开始靠近。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g7", "to": "g6", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Kb6",
+      "popup": "↓ Kb6 — 黑王继续游走。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Kf5",
+      "popup": "♔ 3.Kf5 — 白王加速向中心推进。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g6", "to": "f5", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Kc5",
+      "popup": "↓ Kc5 — 黑王徘徊。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Ke5",
+      "popup": "♔ 4.Ke5 — 白王到e5，开始控制中心。",
+      "highlights": [{"squares": ["d4","d5","d6","f4","f5","f6"], "color": "#2196F320", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "e5", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Kc6",
+      "popup": "↓ Kc6 — 黑王对峙。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Ke6",
+      "popup": "♔ 5.Ke6 — 白王到e6，与黑王形成对抗。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e5", "to": "e6", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Kc7",
+      "popup": "↓ Kc7 — 黑王后退。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Bd4",
+      "popup": "🔄 <b>6.Bd4 — 深色格象重新定位！</b><br>控制深色两条斜线。",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e3","f2","g1","e5","f6","g7","h8"], "color": "#4CAF5020", "duration_ms": 0},
+        {"squares": ["a7","b6","c5"], "color": "#4CAF5020", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "d4", "color": "#4CAF50CC"},
+        {"from": "d4", "to": "a7", "color": "#4CAF5066"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kc6",
+      "popup": "↓ Kc6 — 黑王对峙。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Be8+",
+      "popup": "⭐ 7.Be8+ — 浅色格象将军，驱逐黑王！",
+      "highlights": [{"squares": ["e8"], "color": "#2196F355", "duration_ms": 0}],
+      "concept_arrows": [
+        {"from": "f7", "to": "e8", "color": "#2196F3CC"},
+        {"from": "e8", "to": "c6", "color": "#FF000033"},
+        {"from": "d4", "to": "a7", "color": "#2196F3CC"}
+    ]
+    },
+    {
+      "index": 13,
+      "move": "Kb7",
+      "popup": "↓ Kb7 — 黑王被迫后退。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Bb5",
+      "popup": "🔄 8.Bb5 — 浅色格象到b5，封锁a6-c4对角线。",
+      "highlights": [{"squares": ["b5"], "color": "#2196F355", "duration_ms": 0}],
+      "concept_arrows": [
+        {"from": "e8", "to": "b5", "color": "#2196F3CC"},
+        {"from": "b5", "to": "a6", "color": "#2196F3CC"},
+        {"from": "d4", "to": "a7", "color": "#2196F3CC"}
+    ]
+    },
+    {
+      "index": 15,
+      "move": "Kc7",
+      "popup": "↓ Kc7 — 黑王横移。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Be3",
+      "popup": "⚡ <b>9.Be3 — 关键等着！（Zugzwang）</b><br>深色格象主动后撤到e3——看似无用，实则精算：<br>① 黑王必须走，而任何走法都只会让局面更差<br>② 黑王若走Kd8，白方立刻Bb6+逼回，路路封死",
+      "highlights": [
+        {"squares": ["e3"], "color": "#FFD70077", "duration_ms": 0},
+        {"squares": ["d2","f4","g5","h6","f2","g1","d4"], "color": "#FFD70033", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "a7", "color": "#FFD700CC"},
+        {"from": "b5", "to": "a6", "color": "#2196F366"},
+        {"from": "b5", "to": "c6", "color": "#2196F366"}
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Kd8",
+      "popup": "↓ Kd8 — 黑王被迫走Kd8，局面已恶化。",
+      "highlights": [{"squares": ["d8"], "color": "#FF000033", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Bb6+",
+      "popup": "⭐ 10.Bb6+ — 等着奏效！象立刻将军，驱逐黑王。",
+      "highlights": [{"squares": ["b6"], "color": "#2196F355", "duration_ms": 0}],
+      "concept_arrows": [
+        {"from": "e3", "to": "b6", "color": "#2196F3CC"},
+        {"from": "b6", "to": "d8", "color": "#2196F366"},
+        {"from": "b5", "to": "e8", "color": "#2196F366"}
+    ]
+    },
+    {
+      "index": 19,
+      "move": "Kc8",
+      "popup": "↓ Kc8 — 黑王被迫靠近角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Ba6+",
+      "popup": "⭐ 11.Ba6+ — 再次将军，进一步逼近a8角！",
+      "highlights": [{"squares": ["a6"], "color": "#2196F355", "duration_ms": 0}],
+      "concept_arrows": [
+        {"from": "b5", "to": "a6", "color": "#2196F3CC"},
+        {"from": "a6", "to": "c8", "color": "#2196F366"},
+        {"from": "b6", "to": "d8", "color": "#2196F366"},
+        {"from": "e6", "to": "d7", "color": "#2196F366"}
+    ]
+    },
+    {
+      "index": 21,
+      "move": "Kb8",
+      "popup": "↓ Kb8 — 黑王接近角落，危机加剧。",
+      "highlights": [{"squares": ["b8"], "color": "#FF000033", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "Kd6",
+      "popup": "♔ 12.Kd6 — 白王跟进包抄，准备与双象形成包围网。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e6", "to": "d6", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 23,
+      "move": "Ka8",
+      "popup": "↓ Ka8 — 黑王退入角落！",
+      "highlights": [{"squares": ["a8"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "Be3",
+      "popup": "⚡ <b>13.Be3 — 第二次等着！（王三角）</b><br>象再次退回e3，黑王只能回到b8！",
+      "highlights": [
+        {"squares": ["e3"], "color": "#FFD70077", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "a7", "color": "#FFD700CC"},
+        {"from": "a6", "to": "c8", "color": "#2196F366"}
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Kb8",
+      "popup": "↓ Kb8 — 被等着逼迫，黑王只能离开角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 26,
+      "move": "Kc6",
+      "popup": "♔ 14.Kc6 — 白王开始逼近角落。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d6", "to": "c6", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 27,
+      "move": "Ka8",
+      "popup": "↓ Ka8 — 黑王回到角落，无路可走。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Kb6",
+      "popup": "♔ 15.Kb6 — 白王进一步逼近角落，为完成最后的封杀做好准备！",
+      "highlights": [],
+      "concept_arrows": [{"from": "c6", "to": "b6", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 29,
+      "move": "Kb8",
+      "popup": "↓ Kb8 — 黑王被迫归来。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 30,
+      "move": "Bf4+",
+      "popup": "⭐ 16.Bf4+ — 将军！象将军把黑王赶回a8。<br>既将军又封锁b8。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["b8","c7","d6","e5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "f4", "color": "#2196F3CC"},
+        {"from": "f4", "to": "b8", "color": "#FF0000AA"}
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Ka8",
+      "popup": "↓ Ka8 — 被迫入角，末日将至。",
+      "highlights": [{"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 32,
+      "move": "Bb7#",
+      "popup": "🏁 <b>Bb7# — 将死！双象封杀！</b><br>浅色格象跃到b7将死：<br>• b7(象占) — 黑王无法到达<br>• b8(Bf4控制) — 封死<br>• a7(Kb6控制) — 封死<br>双象各司其职，王协助收尾！",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b8"], "color": "#FF000044", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000044", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a6", "to": "b7", "color": "#4CAF50CC"},
+        {"from": "b7", "to": "a8", "color": "#FF0000AA"},
+        {"from": "f4", "to": "b8", "color": "#FF0000AA"}
+      ]
+    }
+  ]
+}

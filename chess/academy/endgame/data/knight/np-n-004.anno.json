@@ -1,0 +1,96 @@
+{
+  "game_id": "eg_NP-N_L2-004-1",
+  "description": "马兵对马 — 兵吃马升变将军！",
+  "intro": {
+    "flash_squares": [
+      "d7",
+      "e7",
+      "c6",
+      "f7",
+      "h7"
+    ],
+    "popup": "⚠️ <b>陷阱！</b><br>白方 王d7+兵e7+马c6 vs 黑方 王f7+马h7。<br>黑方率先走棋，马h7跳来将军企图阻止升变……<br><b>白方出乎意料的回应：兵吃马升变将军！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♛ <b>exf8=Q+ 升变将军！</b>黑马企图阻止升变反而被白兵吃掉并升变将军——完全出乎意料！黑王被迫吃后，白方仍有王占优势。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf8+",
+      "popup": "黑马将军！黑方以为可以阻止e7兵升变。",
+      "highlights": [
+        {
+          "squares": [
+            "f8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h7",
+          "to": "f8",
+          "color": "#E53935CC"
+        },
+        {
+          "from": "f8",
+          "to": "d7",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "exf8=Q+",
+      "popup": "🎯 <b>白兵直接吃马升变！</b>将军！黑马非但没能阻止升变，反而变成了升变的踏脚石！",
+      "highlights": [
+        {
+          "squares": [
+            "f8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "f8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kxf8",
+      "popup": "黑王只能吃后——但已经输掉了马，残局不乐观。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f7",
+          "to": "f8",
+          "color": "#E53935CC"
+        }
+      ]
+    }
+  ]
+}

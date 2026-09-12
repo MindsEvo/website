@@ -1,0 +1,231 @@
+{
+  "game_id": "eg_KQ-KP_L1-002-1",
+  "description": "后对g兵 — 将军驱逐，让兵升后再吃",
+  "intro": {
+    "flash_squares": [
+      "g2",
+      "g1"
+    ],
+    "popup": "⚡ g兵就要升后了！<br>白方不能直接堵升变，要先<b>将军逼走黑王</b>，再让王靠近。让兵升后再吃掉，也是一种办法！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ g兵虽能升后，但白王早已靠近。<br>核心：<b>先将军逼走黑王，再让王靠近</b>，让兵升后之后立刻吃掉，最终将死。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qg3",
+      "popup": "后守住升变路，黑王没有退路了！",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "g1"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "g3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kh1",
+      "popup": "黑王被迫走角。",
+      "highlights": [
+        {
+          "squares": [
+            "h1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g1",
+          "to": "h1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Qh4+",
+      "popup": "将军！逼黑王离开角落区域。",
+      "highlights": [
+        {
+          "squares": [
+            "h4"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "h4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kg1",
+      "popup": "黑王回到g1——仍在守兵。",
+      "highlights": [
+        {
+          "squares": [
+            "g1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h1",
+          "to": "g1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kc5",
+      "popup": "⚡ 白王靠向中路！后在等，王在走。",
+      "highlights": [
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "c5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Qg3",
+      "popup": "后再次封住升变路，耐心等待白王就位。",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "g1"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "g3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "g1=Q+",
+      "popup": "黑兵升后！将军。",
+      "highlights": [
+        {
+          "squares": [
+            "g1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "g1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Qxg1",
+      "popup": "⚡ 立刻吃掉！白后吃黑后。",
+      "highlights": [
+        {
+          "squares": [
+            "g1"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "g1",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Kd4",
+      "popup": "白王继续推进，配合后将死。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Qg1#",
+      "popup": "✅ 将死！",
+      "highlights": [
+        {
+          "squares": [
+            "g1"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "g1",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+1. Kb1 a3
+2. b3 Ke6
+3. Ka2 Kd7
+4. Kxa3 Kc6
+5. Ka4 Kb6
+6. Kb4 Kc6
+7. Ka5 Kb7
+8. Kb5 Ka7
+9. Kc6 Ka8
+10. Kb6 Kb8
+11. b4 Ka8
+12. Ka6 Kb8
+13. b5 Kc7
+14. b6+ Kc8
+15. Ka7 Kd7
+16. b7 Ke6
+17. b8=Q Kf5
+18. Qb4
+# END
+# 解法 1

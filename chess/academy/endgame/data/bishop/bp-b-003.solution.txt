@@ -1,0 +1,9 @@
+... Bh5
+2. Be8 Kh7
+3. Bxh5 Kh6
+4. Bd1 Kg5
+5. f7 Kf4
+6. Ke6 Ke4
+7. f8=Q Kd3
+# END
+# 解法 1

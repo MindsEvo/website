@@ -1,0 +1,66 @@
+{
+  "game_id": "eg_P-P_L2-001-1",
+  "description": "兵对兵①：对立位制胜 — 白王在侧翼占据对立位，强行突破",
+  "intro": {
+    "flash_squares": ["b5", "d4", "f4", "d5"],
+    "concept_arrows": [
+      {"from": "b5", "to": "d5", "color": "#FF6B35CC"}
+    ],
+    "popup": "💡 <b>对立位制胜</b>：白王 b5 与黑王 f4 不在同一列，白方争夺对立位后可强行推进 d 兵。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王占据对立位后，d 兵无法被拦截，顺利升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc5",
+      "popup": "1.Kc5 — 白王靠近，争夺对立位。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "b5", "to": "c5", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke4",
+      "popup": "1...Ke4 — 黑王试图阻挡白兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "f4", "to": "e4", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kc4",
+      "popup": "2.Kc4 — 白王取得对立位，d 兵可安全前进。",
+      "highlights": [
+        {"squares": ["c4", "e4"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "c4", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ke5",
+      "popup": "2...Ke5 — 黑王别无选择，让出 d 线。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e4", "to": "e5", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 4,
+      "move": "d5",
+      "popup": "3.d5 — 兵安全前进！",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "d4", "to": "d5", "color": "#FF6B35CC"}
+      ]
+    }
+  ]
+}

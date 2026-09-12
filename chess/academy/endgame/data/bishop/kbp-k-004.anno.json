@@ -1,0 +1,179 @@
+{
+  "game_id": "eg_KBP-K_L1-004-1",
+  "description": "象兵对王-L1 演示4：象护兵升变、后王追杀",
+  "intro": {
+    "flash_squares": ["c6", "d6", "d4", "f8"],
+    "popup": "💡 <b>象护兵升变</b><br>象在c6守护d6兵。黑王在f8试图拦截——但象的保护让兵势不可挡！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 象保护升变 → 后追逐黑王 → 王+后配合将杀，这是象兵对抗散王时的标准胜技。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kg7",
+      "popup": "黑王靠向升变路线，试图阻拦。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "d7",
+      "popup": "⭐ <b>兵推d7！</b>象在c6守护，黑王无法吃兵。",
+      "highlights": [
+        {
+          "squares": ["d7"],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "c6",
+          "to": "d7",
+          "color": "#4CAF5066"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kf6",
+      "popup": "黑王靠近，等待后出现再吃。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "d8=Q+",
+      "popup": "⭐ <b>升变为后！将军！</b>",
+      "highlights": [
+        {
+          "squares": ["d8"],
+          "color": "#2196F355",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "f6",
+          "color": "#F44336CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kf5",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Qh4",
+      "popup": "后到h4，控制关键格，准备逐步缩小包围圈。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "h4",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kg6",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Ke6",
+      "popup": "♔ 白王加入，围堵黑王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e6",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Kg7",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Qg5+",
+      "popup": "后将！黑王被逼向角落。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "g5",
+          "color": "#F44336CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Kh8",
+      "popup": "黑王逃入角落——陷阱即将收紧。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Kf7",
+      "popup": "♔ 白王到f7，封杀逃路。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "f7",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Kh7",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "Qg7#",
+      "popup": "⭐ <b>Qg7# 绝杀！</b>",
+      "highlights": [
+        {
+          "squares": ["g7"],
+          "color": "#F4433655",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "g7",
+          "color": "#F44336CC"
+        }
+      ]
+    }
+  ]
+}

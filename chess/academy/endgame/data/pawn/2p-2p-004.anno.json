@@ -1,0 +1,143 @@
+{
+  "game_id": "eg_2P-2P_L3-004-1",
+  "description": "双兵对峙④：分翼竞赛 — 白c兵果断推进，黑a兵被牺牲换取胜局",
+  "intro": {
+    "flash_squares": [
+      "f4",
+      "a2",
+      "c4",
+      "a4",
+      "a5",
+      "h6"
+    ],
+    "concept_arrows": [
+      {
+        "from": "c4",
+        "to": "c8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "a5",
+        "to": "a1",
+        "color": "#4CAF50CC"
+      }
+    ],
+    "popup": "💡 <b>分翼竞赛</b>：白方 a2+c4 分置两翼，黑王（a4）靠近白方 a2 兵。白方关键：c 兵果断向前，不顾 a2 被吃！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白方牺牲 a2 兵，c 兵升变是唯一出路。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "c5",
+      "popup": "1.c5！ — c 兵果断推进，不理会 a2 兵受威胁。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "c5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ka3",
+      "popup": "1...Ka3 — 黑王奔向 a2 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "a3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "c6",
+      "popup": "2.c6 — c 兵继续前进，态度坚决。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "c6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kxa2",
+      "popup": "2...K×a2 — 黑王吃掉 a2 兵，但 c 兵已不可阻挡。",
+      "highlights": [
+        {
+          "squares": [
+            "a2"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "a2",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "c7",
+      "popup": "3.c7 — 升变前一步！黑王来不及赶回。",
+      "highlights": [
+        {
+          "squares": [
+            "c7",
+            "c8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "c7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ka3",
+      "popup": "3...Ka3 — 黑王赶路，但距 c8 太远。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a2",
+          "to": "a3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "c8=Q",
+      "popup": "4.c8=Q — 升变为后，白胜！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c8",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

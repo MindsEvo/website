@@ -1,0 +1,40 @@
+{
+  "piece": "象",
+  "categories": [
+    {
+      "key": "k2b-k",
+      "label": "双象对王",
+      "items": [
+        { "id": "k2b-k-001", "fen": "6KB/5B2/1k6/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "k2b-k-001" }] }
+      ]
+    },
+    {
+      "key": "kbp-k",
+      "label": "象兵对王",
+      "items": [
+        { "id": "kbp-k-001", "fen": "k7/8/1B6/P7/3K4/8/8/8 b - - 0 1", "solutions": [{ "id": "kbp-k-001" }] },
+        { "id": "kbp-k-002", "fen": "7k/8/6KP/8/7B/8/8/8 b - - 0 1", "solutions": [{ "id": "kbp-k-002" }] },
+        { "id": "kbp-k-003", "fen": "5k2/8/3P4/3KB3/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kbp-k-003" }] },
+        { "id": "kbp-k-004", "fen": "5k2/8/2BP4/3K4/8/8/8/8 b - - 0 1", "solutions": [{ "id": "kbp-k-004" }] },
+        { "id": "kbp-k-005", "fen": "4k3/8/4B3/7P/8/5K2/8/8 b - - 0 1", "solutions": [{ "id": "kbp-k-005" }] }
+      ]
+    },
+    {
+      "key": "b2p-b",
+      "label": "象双兵对象",
+      "items": [
+        { "id": "b2p-b-001", "fen": "4k3/8/4PP2/4K3/1b6/8/4B3/8 w - - 0 1", "solutions": [{ "id": "b2p-b-001" }] },
+        { "id": "b2p-b-002", "fen": "6k1/8/6PP/6K1/3b4/5B2/8/8 w - - 0 1", "solutions": [{ "id": "b2p-b-002" }] }
+      ]
+    },
+    {
+      "key": "bp-b",
+      "label": "象兵对象",
+      "items": [
+        { "id": "bp-b-001", "fen": "8/8/P3k3/8/6b1/8/5K1B/8 b - - 0 1", "solutions": [{ "id": "bp-b-001" }] },
+        { "id": "bp-b-002", "fen": "5k2/3b4/3P1K2/8/8/8/8/3B4 w - - 0 1", "solutions": [{ "id": "bp-b-002" }] },
+        { "id": "bp-b-003", "fen": "6k1/3BK3/5P2/8/8/5b2/8/8 b - - 0 1", "solutions": [{ "id": "bp-b-003" }] }
+      ]
+    }
+  ]
+}

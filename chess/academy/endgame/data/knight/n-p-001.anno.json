@@ -1,0 +1,88 @@
+{
+  "game_id": "eg_N-P_L2-001-1",
+  "description": "黑马永远守住b8 — 和棋！",
+  "intro": {
+    "flash_squares": ["b7", "d7", "b8"],
+    "popup": "<b>和棋？！黑马能守住！</b><br>白方有b7兵快要升变，但黑马一直守在b8/na6循环。<br>马离不开b8方格，白方无法推进。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点</b><br>黑马Na6↔Nb8来回摆动，永远盯住b8升变格。<br>白王追不上，白兵也无法升变——和棋！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc6",
+      "popup": "<b>白王试图逼走黑马！</b><br>白王向b8方向进逼，想驱赶黑马离开守护位置。",
+      "highlights": [{"squares": ["c6", "b8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Nb8+",
+      "popup": "<b>黑马将军！</b><br>黑马先将军，迫使白王后退，再守住b8。",
+      "highlights": [{"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "b8", "color": "#E53935CC"}, {"from": "b8", "to": "c6", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kc7",
+      "popup": "白王到c7，继续逼近b8。",
+      "highlights": [{"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "c7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Na6+",
+      "popup": "<b>黑马将军！再次将军驱王。</b><br>Na6+，黑马在Na6和Nb8之间不断跳动。",
+      "highlights": [{"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "a6", "color": "#E53935CC"}, {"from": "a6", "to": "c7", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kb6",
+      "popup": "白王被迫退到b6。",
+      "highlights": [{"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "b6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Nb8",
+      "popup": "<b>黑马回到b8！</b><br>黑马守住了升变格，循环开始。",
+      "highlights": [{"squares": ["b8", "b7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "b8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kc7",
+      "popup": "白王继续进逼，但黑马早有准备。",
+      "highlights": [{"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "c7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Na6+",
+      "popup": "黑马再次将军！Na6↔Nb8循环永远能守住。",
+      "highlights": [{"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "a6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 20,
+      "move": "Kc7",
+      "popup": "<b>三次重复！和棋。</b><br>同一局面反复出现，黑马成功守住b8升变格，达成和棋。",
+      "highlights": [{"squares": ["b7", "b8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "kb6", "to": "c7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

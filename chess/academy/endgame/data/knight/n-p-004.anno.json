@@ -1,0 +1,248 @@
+{
+  "game_id": "eg_N-P_L2-004-1",
+  "description": "白兵直接升变 — 黑马太远无法阻击",
+  "intro": {
+    "flash_squares": ["f7", "f8", "c5"],
+    "popup": "<b>白兵距升变一步！</b><br>白王在f8，兵在f7，黑马在c5无法进时。<br>兵直接升后，然后后追逐马直到吃掉，白方获胜。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点</b><br>马离兵太远时，无法阻止升变。升变后后对马 = 白方必胜。<br>这是马的典型弱点：行动迟缓，远距离无法及时支援。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke7",
+      "popup": "<b>白王让位！</b><br>白王从f8移开，让兵升变。",
+      "highlights": [{"squares": ["e7", "f8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "e7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kd2",
+      "popup": "黑王靠近，但黑马还很远。",
+      "highlights": [{"squares": ["d2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c1", "to": "d2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "f8=Q",
+      "popup": "<b>兵升后！</b><br>f8=Q！黑马没有办法阻止。",
+      "highlights": [{"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "f8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kc3",
+      "popup": "黑王继续前进，黑马还在c5等待机会。",
+      "highlights": [{"squares": ["c3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d2", "to": "c3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kd6",
+      "popup": "白王和后协同，向中心推进。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "d6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Nd3",
+      "popup": "黑马试图靠近，但为时太晚。",
+      "highlights": [{"squares": ["d3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "d3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qg7+",
+      "popup": "<b>后将军驱王！</b><br>白后从f8灵活移动，将军黑王。",
+      "highlights": [{"squares": ["c3"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kc4",
+      "popup": "黑王逃到c4。",
+      "highlights": [{"squares": ["c4"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "c4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qg4+",
+      "popup": "后继续将军逼迫黑王。",
+      "highlights": [{"squares": ["c4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "g4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kc3",
+      "popup": "黑王逃到c3。",
+      "highlights": [{"squares": ["c3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c4", "to": "c3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Kd5",
+      "popup": "白王向中心推进，配合白后收网。",
+      "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Nb4+",
+      "popup": "黑马将军反击！",
+      "highlights": [{"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "b4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "Ke4",
+      "popup": "白王逃开，继续压制。",
+      "highlights": [{"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "e4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "Kc4",
+      "popup": "黑王到c4。",
+      "highlights": [{"squares": ["c4"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "c4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "Qf5",
+      "popup": "<b>后到f5！</b><br>后控制更多格子，进一步压缩黑方空间。",
+      "highlights": [{"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g4", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Nc2",
+      "popup": "黑马继续周旋。",
+      "highlights": [{"squares": ["c2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "c2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 16,
+      "move": "Qd5+",
+      "popup": "后将军，继续缩小包围圈。",
+      "highlights": [{"squares": ["c4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 17,
+      "move": "Kb4",
+      "popup": "黑王逃往b4。",
+      "highlights": [{"squares": ["b4"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c4", "to": "b4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 18,
+      "move": "Qd2+",
+      "popup": "后将军驱王。",
+      "highlights": [{"squares": ["b4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "d2", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 19,
+      "move": "Kb3",
+      "popup": "黑王逃到b3。",
+      "highlights": [{"squares": ["b3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "b3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 20,
+      "move": "Qd3+",
+      "popup": "后追黑王，不断压缩。",
+      "highlights": [{"squares": ["b3"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d2", "to": "d3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 21,
+      "move": "Kb2",
+      "popup": "黑王被迫退到b2。",
+      "highlights": [{"squares": ["b2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b3", "to": "b2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 22,
+      "move": "Qc4",
+      "popup": "后控制大面积格子，黑王活动空间极小。",
+      "highlights": [{"squares": ["c4", "b3", "a2", "c2", "b5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "c4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 23,
+      "move": "Ne1",
+      "popup": "黑马最后挣扎。",
+      "highlights": [{"squares": ["e1"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c2", "to": "e1", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 24,
+      "move": "Qb4+",
+      "popup": "后将军逼黑王上角。",
+      "highlights": [{"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c4", "to": "b4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 25,
+      "move": "Kc1",
+      "popup": "黑王到c1，被逼到角落。",
+      "highlights": [{"squares": ["c1"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b2", "to": "c1", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 26,
+      "move": "Qxe1+",
+      "popup": "<b>后吃马并将军！</b><br>白后吃掉黑马同时将军，大局已定。",
+      "highlights": [{"squares": ["e1", "c1"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "e1", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 27,
+      "move": "Kb2",
+      "popup": "黑王逃离将军。",
+      "highlights": [{"squares": ["b2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c1", "to": "b2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 28,
+      "move": "Kd3",
+      "popup": "<b>白王到d3，白方必胜。</b><br>白方后优势巨大，黑方无路可逃。",
+      "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "d3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

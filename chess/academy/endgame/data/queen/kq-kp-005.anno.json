@@ -1,0 +1,125 @@
+{
+  "game_id": "eg_KQ-KP_L1-005-1",
+  "description": "后对h兵（车路兵）— 黑王在角落，必然平局",
+  "intro": {
+    "flash_squares": [
+      "h2",
+      "h1"
+    ],
+    "popup": "⚠️ <b>车路兵角落陷阱！</b><br>h兵+黑王已在角落 = <b>必然平局</b>。<br>白方无论如何都逃不出永续将的命运——看清楚！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>平局！车路兵角落定律：</b><br>当黑王在h1角，白后只能无休止将军，无法让王离开角落又阻升变。<br>记住：<b>h兵+黑王在角 = 永远平局！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qd5+",
+      "popup": "白尝试将军——逼黑王离角。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kg1",
+      "popup": "黑王向g1逃——仍在角落区。",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h1",
+          "to": "g1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Qd1+",
+      "popup": "继续将军，黑王还得走。",
+      "highlights": [
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d1",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kg2",
+      "popup": "黑王来回游走……永远不脱离角落。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g1",
+          "to": "g2",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Qd1+",
+      "popup": "🤝 <b>永续将！</b>白方无法突破——三次重复，平局。",
+      "highlights": [
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d1",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

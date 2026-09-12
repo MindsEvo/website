@@ -1,0 +1,88 @@
+{
+  "game_id": "eg_R2P-R_L3-002-1",
+  "description": "g兵直冲，白车封住黑车后升变",
+  "intro": {
+    "flash_squares": ["g5", "f4", "g2", "h1"],
+    "popup": "<b>双兵推进</b>白方g、f双兵已过半，白车在g线控制，黑车在角落被动应付。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>白方胜势</b>g兵成功推进到g7，升变不可阻挡。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "g6",
+      "popup": "<b>g兵直冲！</b>直接推进，黑方必须立即应对。",
+      "highlights": [{"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g5", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rh8",
+      "popup": "黑车跑到h线准备从后将军。",
+      "highlights": [{"squares": ["h8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h1", "to": "h8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "g7",
+      "popup": "<b>g兵到g7，升变只差一步！</b>黑方必须应对。",
+      "highlights": [{"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g6", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rg8",
+      "popup": "黑车封锁升变格，阻止兵前进。",
+      "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h8", "to": "g8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rg1",
+      "popup": "<b>白车转到g1！</b>对面逼迫黑车，准备从背后支援兵。",
+      "highlights": [{"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g2", "to": "g1", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kf6",
+      "popup": "黑王靠近，试图支援车阻止升变。",
+      "highlights": [{"squares": ["f6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "f6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ke4",
+      "popup": "白王进入中心，配合双兵形成攻势。",
+      "highlights": [{"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e3", "to": "e4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Re8+",
+      "popup": "黑车将军，尝试驱赶白王干扰推进。",
+      "highlights": [{"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "e8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kd5",
+      "popup": "白王侧移躲开将军，保持进攻。",
+      "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

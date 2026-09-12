@@ -1,0 +1,107 @@
+{
+  "game_id": "eg_BP-B_L2-003-1",
+  "description": "异色格象 — 白方吃象后兵升变获胜",
+  "intro": {
+    "flash_squares": ["f6", "d7", "f3", "g8"],
+    "popup": "♗ <b>对换象后升变</b><br>白有象+兵，黑有象。<br>白方能否用象换掉黑象，让兵顺利升变？<b>是的——关键是时机！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！</b>Be8精准后撤，诱使黑方退到h5，随即Bxh5吃掉黑象，兵升变赢棋。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bh5",
+      "popup": "黑象向h5后撤，试图守住兵的升变路。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f3", "to": "h5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Be8",
+      "popup": "⭐ <b>白象精准后撤！</b>占据e8，等待黑象暴露。",
+      "highlights": [{"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "e8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Kh7",
+      "popup": "黑王移动，局面难以改变。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "Bxh5",
+      "popup": "⚡ <b>吃象！</b>白象吃掉黑象，现在兵无阻碍。",
+      "highlights": [{"squares": ["h5"], "color": "#4CAF5077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e8", "to": "h5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Kh6",
+      "popup": "黑王追击白象，试图干扰。",
+      "highlights": [],
+      "concept_arrows": [{"from": "h7", "to": "h6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Bd1",
+      "popup": "白象安全撤退，黑王追不上。",
+      "highlights": [],
+      "concept_arrows": [{"from": "h5", "to": "d1", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Kg5",
+      "popup": "黑王转向，试图靠近白兵。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "f7",
+      "popup": "♟ <b>白兵推进到第7格！</b>升变迫在眉睫。",
+      "highlights": [{"squares": ["f7", "f8"], "color": "#FFD70077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "f7", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Kf4",
+      "popup": "黑王急速逼近，但已无力回天。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Ke6",
+      "popup": "白王护住白兵，拦住黑王。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e7", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 10,
+      "move": "Ke4",
+      "popup": "黑王无法突破白王防线。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "f8=Q",
+      "popup": "🎉 <b>升变！白方获胜！</b>",
+      "highlights": [{"squares": ["f8"], "color": "#FFD700BB", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "f8", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 12,
+      "move": "Kd3",
+      "popup": "黑王认输撤退，大局已定。",
+      "highlights": [],
+      "concept_arrows": []
+    }
+  ]
+}

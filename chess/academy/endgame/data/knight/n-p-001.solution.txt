@@ -1,0 +1,8 @@
+1. Kd6 Nb8
+2. Kc7 Na6+
+3. Kb6 Nb8
+4. Kc7 Na6+
+5. Kb6 Nb8
+6. Kc7
+# END
+# 解法 1

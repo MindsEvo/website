@@ -1,0 +1,8 @@
+1. Qd5 Ka7
+2. Ke8 Ka6
+3. Kd7 Ka7
+4. Kc7 Ka6
+5. Qf5 Ka7
+6. Qa5#
+# END
+# 解法 2

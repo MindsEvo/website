@@ -1,0 +1,104 @@
+{
+  "game_id": "eg_R2P-R_L3-006-1",
+  "description": "黑方精确防守，车切断白王保和",
+  "intro": {
+    "flash_squares": ["a7", "b8", "g5", "h5", "g2"],
+    "popup": "<b>黑方先走</b>白方双兵配合车威胁很大，黑方必须精确防守才能保和。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>和棋！</b>黑车精确切断白王，使双兵无法升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb6",
+      "popup": "<b>黑车占据b6！</b>切断白王的活动范围，使白王无法配合双兵。",
+      "highlights": [{"squares": ["b6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "b6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ra8+",
+      "popup": "白车将军，驱赶黑王。",
+      "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "a8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kg7",
+      "popup": "黑王躲开，仍然守住位置。",
+      "highlights": [{"squares": ["g7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "g7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "g4",
+      "popup": "白方推进g兵，准备双兵齐进。",
+      "highlights": [{"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g5", "to": "g4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rb7",
+      "popup": "<b>黑车继续切断！</b>保持对白王的切断，白王无法越过b线。",
+      "highlights": [{"squares": ["b7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "b7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Ra6",
+      "popup": "白车换位，尝试打破黑方防线。",
+      "highlights": [{"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a8", "to": "a6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kh7",
+      "popup": "黑王稳住，不急于移动。",
+      "highlights": [{"squares": ["h7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "h7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Re6",
+      "popup": "白车移到e6，新的威胁。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "e6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kg8",
+      "popup": "黑王回到g8，控制升变格。",
+      "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h7", "to": "g8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Rg6+",
+      "popup": "白车在g线将军，逼迫黑王表态。",
+      "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Kh7",
+      "popup": "<b>黑王稳守！</b>黑王始终守住关键位置，白方无法突破，和棋成立。",
+      "highlights": [{"squares": ["h7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}],
+      "concept_lines": []
+    }
+  ]
+}

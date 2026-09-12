@@ -1,0 +1,12 @@
+1. Nc4 Nc2
+2. b5 Ne1
+3. b6 Nd3+
+4. Kb5 Nf4
+5. b7 Kg6
+6. b8=Q Kf5
+7. Qe5+ Kg4
+8. Qf6 Nd3
+9. Qg6+ Kf3
+10. Qxd3+ Kf4
+# END
+# 解法 1

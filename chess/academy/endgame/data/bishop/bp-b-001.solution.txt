@@ -1,0 +1,7 @@
+... Bf5
+2. Kf3 Bc2
+3. a7 Bb3
+4. a8=Q Bd5+
+5. Qxd5+, Kxd5
+# END
+# 解法 1

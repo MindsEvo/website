@@ -1,0 +1,72 @@
+{
+  "game_id": "eg_RP-R_L2-002-1",
+  "description": "象前兵h边线空出 — 白方赶走黑王夺车白胜",
+  "intro": {
+    "flash_squares": ["b8", "g8", "f6"],
+    "popup": "<b>关键对比：h边线空出！</b><br>h线有空间让白车运转。<br>白方可以用将军赶走黑王，然后吃掉黑车！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点</b>h线通时，白方可以赶走黑王，并且可以将军吃掉黑车！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rg7+",
+      "popup": "<b>将军驱王！</b><br>白车到g7将军，黑王被迫离开g8角落。",
+      "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "g7", "color": "#4CAF50CC"}, {"from": "g7", "to": "g8", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf8",
+      "popup": "黑王被迫去f8，h线正式空出。",
+      "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "f8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh7",
+      "popup": "<b>白车入h线！</b><br>h边线空出正是关键，白车顺利进驻h7。",
+      "highlights": [{"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "h7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke8",
+      "popup": "黑王试图接近己方车。",
+      "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "e8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rh8+",
+      "popup": "<b>h8将军！</b><br>白车到h8，黑王再次被赶离黑车。",
+      "highlights": [{"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h7", "to": "h8", "color": "#4CAF50CC"}, {"from": "h8", "to": "e8", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kd7",
+      "popup": "黑王逃向d7，远离黑车。",
+      "highlights": [{"squares": ["d7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e8", "to": "d7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rxb8",
+      "popup": "<b>白车吃掉黑车！白方获胜。</b><br>黑王已离得太远，无法守护黑车。",
+      "highlights": [{"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h8", "to": "b8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+1. Kd8 Kf8
+2. Kd7 Kf7
+3. Kd8 Kf8
+4. Kd7 Kf7
+5. Kd8
+# END
+# 解法 1

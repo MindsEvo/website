@@ -1,0 +1,6 @@
+1. Ke3 Ka8
+2. Kd4 Kb7
+3. Kc5 Ka8
+4. Kc6
+# END
+# 解法 1

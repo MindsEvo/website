@@ -1,0 +1,7 @@
+1. Ke6 Ke8
+2. Bf6 Kf8
+3. d7 Kg8
+4. d8=Q+ Kh7
+5. Kf5
+# END
+# 解法 1

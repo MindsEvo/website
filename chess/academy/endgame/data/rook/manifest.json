@@ -1,0 +1,58 @@
+{
+  "piece": "车",
+  "categories": [
+    {
+      "key": "k2r-k",
+      "label": "双车对王",
+      "items": [
+        { "id": "k2r-k-001", "fen": "8/7k/3K4/R7/8/8/8/4R3 w - - 0 1", "solutions": [{ "id": "k2r-k-001" }] }
+      ]
+    },
+    {
+      "key": "kr-k",
+      "label": "车对王",
+      "items": [
+        { "id": "kr-k-001", "fen": "8/8/3k4/8/4K3/8/1R6/8 w - - 0 1", "solutions": [{ "id": "kr-k-001" }] }
+      ]
+    },
+    {
+      "key": "kr-kp",
+      "label": "车对升变兵",
+      "items": [
+        { "id": "kr-kp-001", "fen": "6K1/8/2k5/1p5R/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-001" }] },
+        { "id": "kr-kp-002", "fen": "3K4/8/5k2/8/6p1/8/8/1R6 w - - 0 1", "solutions": [{ "id": "kr-kp-002" }] },
+        { "id": "kr-kp-003", "fen": "6K1/8/8/4p3/3k4/8/8/2R5 w - - 0 1", "solutions": [{ "id": "kr-kp-003" }] },
+        { "id": "kr-kp-004", "fen": "8/3RK3/8/5kp1/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-004" }] },
+        { "id": "kr-kp-005", "fen": "4K3/3R4/8/6p1/8/5k2/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-005" }] },
+        { "id": "kr-kp-006", "fen": "8/8/8/8/5p2/8/1K2k3/R7 w - - 0 1", "solutions": [{ "id": "kr-kp-006" }] }
+      ]
+    },
+    {
+      "key": "rp-r",
+      "label": "车兵对车",
+      "items": [
+        { "id": "rp-r-001", "fen": "1r5k/3R4/6PK/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-001" }] },
+        { "id": "rp-r-002", "fen": "1r4k1/3R4/5PK1/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-002" }] },
+        { "id": "rp-r-003", "fen": "4k3/6R1/8/4PK2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "rp-r-003" }] },
+        { "id": "rp-r-004", "fen": "8/4k1K1/6P1/8/8/8/6r1/5R2 w - - 0 1", "solutions": [{ "id": "rp-r-004" }] },
+        { "id": "rp-r-005", "fen": "4K3/4P1k1/8/8/8/r7/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-005" }] },
+        { "id": "rp-r-006", "fen": "4K3/4P1k1/8/8/8/r7/8/4R3 b - - 0 1", "solutions": [{ "id": "rp-r-006" }] },
+        { "id": "rp-r-007", "fen": "4K3/4P1k1/8/8/8/8/2r5/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-007" }] },
+        { "id": "rp-r-008", "fen": "4K3/4P1k1/8/8/8/1r6/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-008" }] },
+        { "id": "rp-r-009", "fen": "5k2/R7/5K2/5P2/8/8/8/5r2 b - - 0 1", "solutions": [{ "id": "rp-r-009" }] }
+      ]
+    },
+    {
+      "key": "r2p-r",
+      "label": "车双兵对车",
+      "items": [
+        { "id": "r2p-r-001", "fen": "4r3/8/8/2R5/3P4/1kP5/6K1/8 w - - 0 1", "solutions": [{ "id": "r2p-r-001" }] },
+        { "id": "r2p-r-002", "fen": "8/8/8/5kP1/5P2/4K3/6R1/7r w - - 0 1", "solutions": [{ "id": "r2p-r-002" }] },
+        { "id": "r2p-r-003", "fen": "2R5/8/6k1/6P1/2P3K1/2r5/8/8 w - - 0 1", "solutions": [{ "id": "r2p-r-003" }] },
+        { "id": "r2p-r-004", "fen": "8/5K1k/4R2P/5P2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-004" }] },
+        { "id": "r2p-r-005", "fen": "8/7k/4R2P/5P2/5K2/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-005" }] },
+        { "id": "r2p-r-006", "fen": "1r4k1/R7/8/6PK/8/8/6P1/8 b - - 0 1", "solutions": [{ "id": "r2p-r-006" }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+1. Be7 Kh6
+2. Kf4 Kg6
+3. Ke4 Kg7
+4. Kf5 Kh6
+5. Ne6 Kh5
+6. Nf4+ Kh6
+7. Kf6 Kh7
+8. Bf8 Kh8
+9. Kf7 Kh7
+10. Nh3 Kh8
+11. Bg7+ Kh7
+12. Ng5#
+# END
+# 解法 1

@@ -1,0 +1,12 @@
+1. Kh7 Rh2+
+2. Kg8 Rg2
+3. g7 Rg3
+4. Re1+ Kd6
+5. Re4 Rf3
+6. Kh7 Rh3+
+7. Kg6 Rg3+
+8. Kf6 Rf3+
+9. Kg5 Rg3+
+10. Rg4
+# END
+# 解法 1

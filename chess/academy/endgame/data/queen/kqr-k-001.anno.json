@@ -1,0 +1,231 @@
+{
+  "game_id": "eg_KQR-K_L1-001-1",
+  "description": "后车对王-L1 演示1：王靠近-后控7排-车封a列",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "d7",
+      "b5",
+      "a1"
+    ],
+    "popup": "💡 <b>演示1：后车王的完美配合！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Ra1+ —— 后车王对单王，主要是为了给初学者演示和熟悉基本走法和攻杀！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc4",
+      "popup": "♔ <b>1.Kc4 —— 白王主动靠近！</b><br>白王向黑王逼近，同时控制，压缩黑王的活动空间。",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b5",
+            "d5"
+          ],
+          "color": "#4CAF5030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "c4",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "c4",
+          "to": "b5",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "c4",
+          "to": "c5",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kb6",
+      "popup": "⬆️ Kb6 —— 黑王向上退！<br>黑王向上逃。黑王被迫离开中心，开始向边线靠拢。",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#FFD70030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Qd7+",
+      "popup": "⬆️ <b>2.Qd7+ —— 后切入第7排，封锁退路！</b><br>黑王失去向上退出的可能，被迫向a列方向移动。",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a7",
+            "b7",
+            "c7",
+            "e7",
+            "f7",
+            "g7",
+            "h7"
+          ],
+          "color": "#2196F320",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d1",
+          "to": "d7",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "d7",
+          "to": "a7",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "d7",
+          "to": "h7",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "d7",
+          "to": "a4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ka6",
+      "popup": "⬅️ Ka6 —— 黑王退a6！<br>第7排被后封锁，黑王b6只能向左退至a6，继续向角落方向躲藏。",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#FFD70030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Qb5+",
+      "popup": "⬆️ <b>3.Qb5+ —— 后斜线将军！</b><br>后从d7斜跳到b5，沿对角线朝a6方向将军！黑王a6只能继续向a7角落方向逃。",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FF572230",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "b5",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "b5",
+          "to": "a6",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ka7",
+      "popup": "⬅️ Ka7 —— 黑王贴边！<br>黑王被迫退至a7——贴着边线，几乎已无路可走。接下来白方只需车加入即可完成将军！",
+      "highlights": [
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF000030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Ra1+",
+      "popup": "⬆️ <b>4.Ra1+ —— 车封a列将军！</b><br>车从e1平移到a1，整个a列全部被车控制！黑王a7在a列上被将，包围圈已经完成！<br>🎯 后+车+王的完美配合！",
+      "highlights": [
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a8"
+          ],
+          "color": "#2196F320",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "a1",
+          "color": "#2196F3CC"
+        },
+        {
+          "from": "a1",
+          "to": "a7",
+          "color": "#2196F3AA"
+        }
+      ]
+    }
+  ]
+}

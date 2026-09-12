@@ -1,0 +1,7 @@
+1. Qc4 Ka5
+2. Ke7 Kb6
+3. Kd6 Kb7
+4. Qc5 Ka6
+5. Kc7
+# END
+# 解法 4

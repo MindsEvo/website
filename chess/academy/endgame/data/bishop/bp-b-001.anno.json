@@ -1,0 +1,79 @@
+{
+  "game_id": "eg_BP-B_L2-001-1",
+  "description": "异色格象 — 白方胜：黑象无法守住升变格",
+  "intro": {
+    "flash_squares": ["a6", "a8", "g4", "h2"],
+    "popup": "⚠️ <b>异色格象关键局</b><br>白兵奔向a8（浅色格），白象守护浅色格。<br>黑象只能走深色格——<b>永远无法阻挡升变！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！</b>关键在第2步：白王走f3切断黑象的退路，令黑象无法及时回防。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bf5",
+      "popup": "黑象主动出击，寻找干扰机会。",
+      "highlights": [{"squares": ["f5"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g4", "to": "f5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Kf3",
+      "popup": "⚡ <b>关键！白王走f3</b>，封锁黑象经由e2返回的通道。",
+      "highlights": [{"squares": ["f3", "e2", "d1"], "color": "#4CAF5033", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Bc2",
+      "popup": "黑象换路，但已很难追上白兵。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f5", "to": "c2", "color": "#E53935CC"}]
+    },
+    {
+      "index": 3,
+      "move": "a7",
+      "popup": "♟ 白兵推进到第7格，升变在即！",
+      "highlights": [{"squares": ["a7", "a8"], "color": "#FFD70077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "a7", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Bb3",
+      "popup": "黑象最后一搏，试图拦截白兵。",
+      "highlights": [],
+      "concept_arrows": [{"from": "c2", "to": "b3", "color": "#E53935CC"}]
+    },
+    {
+      "index": 5,
+      "move": "a8=Q",
+      "popup": "🎉 <b>升变！</b>黑象是暗格象，a8是浅色格，无法阻止。",
+      "highlights": [{"squares": ["a8"], "color": "#FFD700BB", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "a8", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Bd5+",
+      "popup": "黑象将军，作最后挣扎。",
+      "highlights": [{"squares": ["d5", "a8"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b3", "to": "d5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Qxd5+",
+      "popup": "白后吃象并将军，大势已定。",
+      "highlights": [],
+      "concept_arrows": [{"from": "a8", "to": "d5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Kxd5",
+      "popup": "黑王吃后，剩白方轻松胜。",
+      "highlights": [],
+      "concept_arrows": []
+    }
+  ]
+}

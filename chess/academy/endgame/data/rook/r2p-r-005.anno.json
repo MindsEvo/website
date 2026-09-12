@@ -1,0 +1,120 @@
+{
+  "game_id": "eg_R2P-R_L3-005-1",
+  "description": "黑方侧翼将军循环，双兵难以推进保和",
+  "intro": {
+    "flash_squares": ["e6", "h6", "f5", "h7", "b2"],
+    "popup": "<b>黑方先走保和</b>白方双兵看似威胁，但黑方侧翼将军战术可以保住和棋。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>和棋！</b>黑方车的侧翼将军循环，白方无法推进。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rg2",
+      "popup": "<b>黑车占g线！</b>封锁g兵推进，同时准备侧翼将军。",
+      "highlights": [{"squares": ["g2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b2", "to": "g2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ra6",
+      "popup": "白车尝试驱赶黑车。",
+      "highlights": [{"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "a6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg8",
+      "popup": "黑车退到g8，继续封锁兵的升变格。",
+      "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g2", "to": "g8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rb6",
+      "popup": "白车尝试换位打开通道。",
+      "highlights": [{"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "b6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rg2",
+      "popup": "<b>黑车回到g2！</b>同样的思路——只要白方推兵，黑车就从后方攻击。",
+      "highlights": [{"squares": ["g2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "g2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Ke5",
+      "popup": "白王进入中心，尝试解决困局。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ra2",
+      "popup": "黑车换方向，准备从a线将军。",
+      "highlights": [{"squares": ["a2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g2", "to": "a2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Rg6",
+      "popup": "白车进入g6，为兵保驾护航。",
+      "highlights": [{"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rb2",
+      "popup": "<b>黑车侧翼将军循环</b>白王不管去哪里，黑车都能侧面将军。",
+      "highlights": [{"squares": ["b2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a2", "to": "b2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kf4",
+      "popup": "白王躲避，但黑车继续将军。",
+      "highlights": [{"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "f4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Rf2+",
+      "popup": "黑车继续将军，白方无法摆脱。",
+      "highlights": [{"squares": ["f4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b2", "to": "f2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Kg4",
+      "popup": "白王再次躲避。",
+      "highlights": [{"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "g4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "Rg2+",
+      "popup": "<b>将军循环！</b>黑车始终跟随白王侧翼将军，双兵无法推进，和棋成立。",
+      "highlights": [{"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "g2", "color": "#E53935CC"}],
+      "concept_lines": []
+    }
+  ]
+}

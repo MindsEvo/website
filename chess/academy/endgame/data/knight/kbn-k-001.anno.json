@@ -1,0 +1,190 @@
+{
+  "game_id": "eg_KBN-K_L1-001-1",
+  "description": "象马对王-L1 演示：象马王配合将死黑王",
+  "intro": {
+    "flash_squares": ["g5", "c5", "f3", "f1"],
+    "popup": "💡 <b>象马对王</b>>象马比双马强大：<b>象负责封锁颜色盲区，马控制毗邻格</b>——两者互补！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Bg2# — 象马配合将死！</b><br>三子分工完美：象覆盖了马控制不到的颜色格子！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nd3",
+      "popup": "⭐ 1.Nd3 — 马从c5跳到d3，控制e1、f2、f4，准备与象配合封锁h路。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["e1","f2","f4","b2","b4","e5","c5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "c5", "to": "d3", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Kg1",
+      "popup": "↓ Kg1 — 黑王只能走g1（e1/f2被马控制，g2被象封锁）。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Kg4",
+      "popup": "♔ 2.Kg4 — 白王靠近！准备走Kh4封锁h3出口。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g5", "to": "g4", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Kh2",
+      "popup": "↓ Kh2 — 黑王贴边，试图守住h路。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Kh4",
+      "popup": "♔ 3.Kh4 — 白王到h4，完全封住h3出口！黑王无法从右侧逃脱。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["g3","h3","g5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "h4", "color": "#2196F3CC"},
+        {"from": "h4", "to": "h3", "color": "#FF000066"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kg1",
+      "popup": "↓ Kg1 — 黑王回到g1，无处可去。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kg3",
+      "popup": "♔ 4.Kg3 — 白王到g3，封住h2！三面合围初成。",
+      "highlights": [
+        {"squares": ["g3"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["f2","g2","h2","f3","h3","f4"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "g3", "color": "#2196F3CC"},
+        {"from": "g3", "to": "h2", "color": "#FF000066"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kf1",
+      "popup": "↓ Kf1 — 黑王被迫离开g1（g2将被象封锁），避往f1。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bg4",
+      "popup": "🔄 <b>5.Bg4 — 象开始重新定位！</b><br>象从f3跳到g4，准备沿g4→h3→g2路线逐步封锁角落。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h3","h5","f5","f3","e2","d1"], "color": "#4CAF5022", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g4", "to": "h3", "color": "#4CAF5066"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kg1",
+      "popup": "↓ Kg1 — 黑王回到g1。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Bh3",
+      "popup": "🔄 <b>6.Bh3 — 象到h3，封锁g2！</b><br>黑王现在只能去h1——角落陷阱已布好。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g2","f1","g4","f5"], "color": "#4CAF5033", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "h3", "color": "#4CAF50CC"},
+        {"from": "h3", "to": "g2", "color": "#FF000066"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kh1",
+      "popup": "↓ Kh1 — 黑王被逼入h1角落！",
+      "highlights": [
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Nf4",
+      "popup": "⭐ <b>7.Nf4 — 马到f4，完成包围圈！</b><br>Nf4控制g2、e2、h5等——与象h3形成双重封锁。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["g2","e2","e6","d5","d3","h5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "f4", "color": "#2196F3CC"},
+        {"from": "f4", "to": "g2", "color": "#2196F366"},
+        {"from": "f4", "to": "e2", "color": "#2196F366"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Kg1",
+      "popup": "↓ Kg1 — 黑王试图逃出角落！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Ne2+",
+      "popup": "⭐ <b>8.Ne2+ — 马将军！</b><br>马从f4跳到e2将军，同时控制g1——黑王被迫回到h1角落。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["g1","g3","c1","c3","d4","f4"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "e2", "color": "#2196F3CC"},
+        {"from": "e2", "to": "g1", "color": "#FF000055"}
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Kh1",
+      "popup": "↓ Kh1 — 被迫！g1被马控制，g2被象封锁，h2被白王守住。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#2196F333", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#4CAF5033", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#2196F333", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Bg2#",
+      "popup": "🏁 <b>Bg2# — 将死！象马配合完美！</b><br>象从h3到g2将死：<br>• g1 → 马Ne2守卫<br>• g2 → 象占据<br>• h2 → 白王Kg3控制<br><b>象马对王成功！象补齐了马控制不到的颜色！</b>",
+      "highlights": [
+        {"squares": ["g2"], "color": "#4CAF5077", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000044", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000044", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "g2", "color": "#4CAF50CC"},
+        {"from": "g2", "to": "h1", "color": "#FF0000AA"},
+        {"from": "e2", "to": "g1", "color": "#FF0000AA"},
+        {"from": "g3", "to": "h2", "color": "#FF0000AA"}
+      ]
+    }
+  ]
+}

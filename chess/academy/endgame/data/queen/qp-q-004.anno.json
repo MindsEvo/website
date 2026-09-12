@@ -1,0 +1,79 @@
+{
+  "game_id": "eg_QP-Q_L2-004-1",
+  "description": "后兵对后 — 黑方永续将军，和棋",
+  "intro": {
+    "flash_squares": ["h8", "g7", "g3", "c2"],
+    "popup": "🛡️ <b>永续将军求和</b><br>白兵g7即将升变，白后c2护卫，白王h8。<br>黑方妙手：<b>黑后不断将军，白后疲于应付，无法升变！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>永续将军，和棋！</b>无论白方如何应对，黑后都能不断将军——局面重复三次，和棋。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qh4+",
+      "popup": "⚡ 黑后将军白王！",
+      "highlights": [{"squares": ["h4", "h8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g3", "to": "h4", "color": "#E53935CC"}, {"from": "h4", "to": "h8", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 1,
+      "move": "Qh7",
+      "popup": "白后h7挡将——同时掩护g7兵升变。",
+      "highlights": [{"squares": ["h7", "g7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c2", "to": "h7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Qd8+",
+      "popup": "黑后换角度将军！",
+      "highlights": [{"squares": ["d8", "h8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "d8", "color": "#E53935CC"}, {"from": "d8", "to": "h8", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 3,
+      "move": "g8=Q",
+      "popup": "♟ <b>白兵升变！</b>白方利用黑后移开的瞬间升变。",
+      "highlights": [{"squares": ["g8"], "color": "#FFD700BB", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "g8", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Qf6+",
+      "popup": "黑后立刻将新后！",
+      "highlights": [{"squares": ["f6", "g7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d8", "to": "f6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Qg7",
+      "popup": "白g8后挡将。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g8", "to": "g7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Qh4+",
+      "popup": "🔄 <b>黑后回到h4将军，局面与第1步相同！</b>",
+      "highlights": [{"squares": ["h4", "h8"], "color": "#FFD70077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "h4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Qh7",
+      "popup": "白后再次h7挡。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g7", "to": "h7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Qf6+",
+      "popup": "🔄 <b>第三次重复！永续将军，和棋。</b>黑方成功化解升变威胁。",
+      "highlights": [{"squares": ["f6"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "f6", "color": "#E53935CC"}]
+    }
+  ]
+}

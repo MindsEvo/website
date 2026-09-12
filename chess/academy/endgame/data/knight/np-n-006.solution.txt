@@ -1,0 +1,14 @@
+... Nf6+
+2. Kd8 Nd5
+3. Ne4 Ne7
+4. Kc7 Ng6
+5. Kd6 Ke8
+6. Nf6+ Kd8
+7. Nd5 Ke8
+8. Nc7+ Kd8
+9. Nd5 Ke8
+10. Nf6+ Kf8
+11. Nh5 Ke8
+12. Nf6+
+# END
+# 解法 1

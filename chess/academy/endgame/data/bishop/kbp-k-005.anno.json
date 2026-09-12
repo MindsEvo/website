@@ -1,0 +1,187 @@
+{
+  "game_id": "eg_KBP-K_L1-005-1",
+  "description": "象兵对王-L1 演示5：错色象仍能胜——黑王来不及守角",
+  "intro": {
+    "flash_squares": ["e6", "h5", "f3", "e8", "h8"],
+    "popup": "💡 <b>错色象与h兵</b><br>象在e6（浅色格），h8是深色格——通常这是和局特征！<br>但此刻黑王在e8，<b>离h8太远，无法及时回防！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "⚠️ 关键区别：若黑王已在h8/g8，方是和局；黑王远离时，白方抢先推兵升变仍可胜！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke4",
+      "popup": "♔ 白王向前，向h兵靠拢准备护送。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e4",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd8",
+      "popup": "黑王往左跑——远离h8！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Kd5",
+      "popup": "♔ 白王继续乘势推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kc7",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "h6",
+      "popup": "⭐ <b>h6！</b>兵冲出——黑王已无法在兵升变前到达h8。",
+      "highlights": [
+        {
+          "squares": ["h6", "h7", "h8"],
+          "color": "#4CAF5025",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "h6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kb6",
+      "popup": "黑王往回跑，但已为时太晚。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "h7",
+      "popup": "⭐ <b>h7——升变在即！</b>",
+      "highlights": [
+        {
+          "squares": ["h7"],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h6",
+          "to": "h7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ka5",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "h8=Q",
+      "popup": "⭐ <b>h8=Q 升变！</b>黑王没能守住角落，白方升变成功。",
+      "highlights": [
+        {
+          "squares": ["h8"],
+          "color": "#2196F355",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Kb4",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Qb2+",
+      "popup": "后将！追击黑王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h8",
+          "to": "b2",
+          "color": "#F44336CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Ka5",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Kc5",
+      "popup": "♔ 白王包抄！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c5",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Ka4",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Qa1#",
+      "popup": "⭐ <b>Qa1# 绝杀！</b>",
+      "highlights": [
+        {
+          "squares": ["a1"],
+          "color": "#F4433655",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b2",
+          "to": "a1",
+          "color": "#F44336CC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "game_id": "eg_B2P-B_L2-002-1",
+  "description": "象双兵对象（边路）— 黑方正确防守：边兵难赢",
+  "intro": {
+    "flash_squares": ["g6", "h6", "d4", "g8"],
+    "popup": "⚡ <b>边路双兵的弱点</b><br>白方双兵（g6、h6）紧靠边线，黑象在d4。<br>对比中央，边路兵活动空间受限，<b>黑方只需守住f6-g7斜线便可求和！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>和棋！</b>黑象始终守住f6-g7对角线，白方双兵无法突破。<br>这道题和前一道中路兵形成对比——边路兵可防守空间少，更容易和棋。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bd5+",
+      "popup": "白象将军，驱逐黑王。",
+      "highlights": [{"squares": ["d5", "g8"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f3", "to": "d5", "color": "#4CAF50CC"}, {"from": "d5", "to": "g8", "color": "#FF6B3599"}]
+    },
+    {
+      "index": 1,
+      "move": "Kf8",
+      "popup": "黑王撤往侧翼。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Kf4",
+      "popup": "白王向前逼近。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g5", "to": "f4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Bh8",
+      "popup": "🛡️ 黑象撤回h8！躲进角落，避免兑换。",
+      "highlights": [{"squares": ["h8"], "color": "#E5393566", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "h8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Kf5",
+      "popup": "白王继续压迫。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Bd4",
+      "popup": "黑象从角落出来，开始主动游走。",
+      "highlights": [],
+      "concept_arrows": [{"from": "h8", "to": "d4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Ke4",
+      "popup": "白王向中央靠近，寻找突破。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Bb2",
+      "popup": "黑象继续游走，不断变换位置。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bb3",
+      "popup": "白象变换角度进攻。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d5", "to": "b3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Ba1",
+      "popup": "黑象退到角落，无法被兑换。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Bd5",
+      "popup": "白象再次移动，试图封锁。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Bc3",
+      "popup": "黑象随时准备应对。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Be6",
+      "popup": "白象到e6，占据有利斜线。",
+      "highlights": [{"squares": ["e6", "f7", "g8"], "color": "#4CAF5033", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Bf6",
+      "popup": "🛡️ <b>关键防守！</b>黑象占f6，直接封堵g7路线。",
+      "highlights": [{"squares": ["f6", "g7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "f6", "color": "#E53935CC"}, {"from": "f6", "to": "g7", "color": "#E5393566"}]
+    },
+    {
+      "index": 14,
+      "move": "Kd5",
+      "popup": "白王继续游走，寻找突破机会。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 15,
+      "move": "Bc3",
+      "popup": "黑象依然灵活，等待对手失误。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Ke4",
+      "popup": "白王继续周旋，找不到突破。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "Bb2",
+      "popup": "黑象游走，立场稳固。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Kf5",
+      "popup": "白王来回移动，局面僵持。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 19,
+      "move": "Bd4",
+      "popup": "黑象重回d4，防守从容。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Ke4",
+      "popup": "白王绕来绕去，无法取得进展。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 21,
+      "move": "Bf6",
+      "popup": "黑象再次守住f6。",
+      "highlights": [{"squares": ["f6"], "color": "#E5393544", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "f6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 22,
+      "move": "Kf5",
+      "popup": "白王没有进展。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 23,
+      "move": "Bd4",
+      "popup": "黑象灵活切换。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "Ke4",
+      "popup": "白王依旧无法取得突破。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 25,
+      "move": "Bc3",
+      "popup": "黑象从容应对。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 26,
+      "move": "Kd3",
+      "popup": "白王绕到另一侧，最后一搏。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 27,
+      "move": "Ba1",
+      "popup": "黑象退角，固守阵地。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Ke3",
+      "popup": "白方依旧找不到突破点。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 29,
+      "move": "Bf6",
+      "popup": "黑象第三次守住f6。",
+      "highlights": [{"squares": ["f6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a1", "to": "f6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 30,
+      "move": "Ke4",
+      "popup": "白王返回原位，局面陷入僵局。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 31,
+      "move": "Bb2",
+      "popup": "黑象继续游走，防守稳固。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 32,
+      "move": "Bd5",
+      "popup": "白象再次尝试，徒劳无功。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 33,
+      "move": "Ba1",
+      "popup": "黑象稳稳退守。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 34,
+      "move": "Be6",
+      "popup": "白象最后一次回到e6。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 35,
+      "move": "Bf6",
+      "popup": "🔄 <b>三次重复！和棋。</b>黑象第三次走f6，局面重复三次，黑方成功求和！",
+      "highlights": [{"squares": ["f6"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a1", "to": "f6", "color": "#E53935CC"}]
+    }
+  ]
+}

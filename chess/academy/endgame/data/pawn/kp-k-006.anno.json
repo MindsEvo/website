@@ -1,0 +1,360 @@
+{
+  "game_id": "eg_KP-K_L1-006-1",
+  "description": "远程先手对王：双王相距五排，1.Kd4 构成远程对王，逐步缩短距离，踏关键格赢棋",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "d5",
+      "d6",
+      "d7",
+      "d8"
+    ],
+    "popup": "💡 <b>远程先手对王</b>：基本规律不变，远程先手对王！</b>主动权在手。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🏆 <b>结论：掌握先手对王是兵王残局的核心要点！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kd4",
+      "popup": "⭐ 1.Kd4! — 白王进入 d 列，与黑王 Kd8 同列间距 3 格（奇数）= <b>远程先手对王！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5",
+            "d6",
+            "d7",
+            "d8"
+          ],
+          "color": "#2196F322",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke8",
+      "popup": "♚ Ke8 — 黑王侧移，回避 d 列对王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "e8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ke5",
+      "popup": "♔ 2.Ke5 — 白王继续向上逼近，保持压力。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd7",
+      "popup": "♚ Kd7 — 黑王回 d7，接近接触。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "d7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kd5",
+      "popup": "⭐ 3.Kd5 — <b>近程先手对王！</b>Kd5 对 Kd7，间距 1 格，白刚走完 = 白有先手对王。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d6",
+            "d7"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d5",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ke7",
+      "popup": "♚ Ke7 — 黑王侧移，逃开 d 列对王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "e7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kc6",
+      "popup": "⭐ 4.Kc6! — <b>侧翼绕入关键格区域！</b>后续配合兵推进。",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d6",
+            "e6"
+          ],
+          "color": "#FFD70033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c6",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ke6",
+      "popup": "♚ Ke6 — 黑王进入关键格 e6，试图抵抗。",
+      "highlights": [
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#FF000044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "e6",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "d4",
+      "popup": "♟ 5.d4 — 兵开始前行！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "d4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Ke7",
+      "popup": "♚ Ke7 — 黑王后退，守住后方。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "e7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "d5",
+      "popup": "♟ 6.d5 — 兵继续推进！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "d5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kd8",
+      "popup": "♚ Kd8 — 黑王退回底线，死守 d 列。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "d8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Kd6",
+      "popup": "⭐ 7.Kd6 — <b>白王踏上关键格d6， 先手对王！</b>大局已定。",
+      "highlights": [
+        {
+          "squares": [
+            "d6"
+          ],
+          "color": "#FFD700BB",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d6",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Ke8",
+      "popup": "♚ Ke8 — 黑王仍在底线挣扎。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "e8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Kc7",
+      "popup": "♔ 8.Kc7 — 白王护兵前进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "c7",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ke7",
+      "popup": "♚ Ke7 — 黑王最后一搏，贴近白王。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "e7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "d6+",
+      "popup": "🔥 9.d6+! — 兵将军！黑王被迫让路。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Ke6",
+      "popup": "♚ Ke6 — 黑王只能贴兵，螳臂当车。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "e6",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "d7",
+      "popup": "♟ 10.d7 — 兵距升变一步之遥！",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "d8"
+          ],
+          "color": "#FF6B3533",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Kd5",
+      "popup": "♚ Kd5 — 黑王跑离，无力回天。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "d5",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "d8=Q+",
+      "popup": "👑 11.d8=Q+ — <b>升后将军，白方全胜！</b><br>从远程对王起步，缩短距离，踏上关键格，完成升变。",
+      "highlights": [
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FFD700BB",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d8",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

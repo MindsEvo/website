@@ -1,0 +1,18 @@
+1. Kb5 Na7+
+2. Kc5 Ke1
+3. Kb6 Nc8+
+4. Kb7 Nd6+
+5. Kc7 Nb5+
+6. Kb7 Ke2
+7. Kc6 Na7+
+8. Kb6 Nc8+
+9. Kb7 Nd6+
+10. Kc7 Nb5+
+11. Kc6 Na7+
+12. Kb7 Nb5
+13. Kb6 Nd6
+14. Kc7 Nb5+
+15. Kb6 Nd6
+16. Kc7
+# END
+# 解法 1

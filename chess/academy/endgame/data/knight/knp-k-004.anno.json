@@ -1,0 +1,168 @@
+{
+  "game_id": "eg_KNP-K_L1-004-1",
+  "description": "马吃黑兵后推进升变 — 综合技术总结",
+  "intro": {
+    "flash_squares": ["g4", "g6", "e3"],
+    "popup": "<b>马兵对王 — 综合技术</b><br>黑方多一兵干扰。<br>白马先吃掉黑兵，然后辅助白兵顺利升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>多熟悉体会马的特点</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "g5",
+      "popup": "<b>兵推g5！</b><br>白兵主动前进，逼迫黑王做出反应。",
+      "highlights": [{"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g4", "to": "g5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf7",
+      "popup": "黑王靠近战场。",
+      "highlights": [{"squares": ["f7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nd3",
+      "popup": "<b>马到d3！</b><br>马从e1激活，向e5/f4方向前进，为吃g6兵作准备。",
+      "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e1", "to": "d3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "黑王继续守中心。",
+      "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "e7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ne5",
+      "popup": "<b>马到e5！</b><br>马占据中心强格，威胁f7和g6。",
+      "highlights": [{"squares": ["e5", "g6", "f7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Ke8",
+      "popup": "黑王暂时躲避。",
+      "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "e8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ke4",
+      "popup": "白王前进到e4，配合马和兵的推进。",
+      "highlights": [{"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f3", "to": "e4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kf8",
+      "popup": "黑王在f8等待。",
+      "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e8", "to": "f8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Nxg6+",
+      "popup": "<b>马吃g6兵！将军！</b><br>马吃掉黑方的g6兵，解除隐患，同时将军黑王。",
+      "highlights": [{"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kf7",
+      "popup": "黑王逃到f7。",
+      "highlights": [{"squares": ["f7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Kf5",
+      "popup": "白王前进到f5，直接逼近。",
+      "highlights": [{"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Kg7",
+      "popup": "黑王退向角落方向。",
+      "highlights": [{"squares": ["g7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "g7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "Ne5",
+      "popup": "马回到e5，保持控制。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g6", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "Kf8",
+      "popup": "黑王继续周旋。",
+      "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "f8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "g6",
+      "popup": "<b>兵推g6！</b><br>黑方g6兵已被吃掉，白方g5兵顺利推进！",
+      "highlights": [{"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g5", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Ke7",
+      "popup": "黑王试图阻截。",
+      "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "e7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 16,
+      "move": "g7",
+      "popup": "<b>兵到g7！</b><br>升变只差一步！",
+      "highlights": [{"squares": ["g7", "g8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g6", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 17,
+      "move": "Kd6",
+      "popup": "黑王逃往d6。",
+      "highlights": [{"squares": ["d6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "d6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 18,
+      "move": "g8=Q",
+      "popup": "<b>g8=Q！白方获胜！</b><br>兵顺利升后，马兵配合技术完美演示。",
+      "highlights": [{"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "g8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "game_id": "eg_N-P_L2-002-1",
+  "description": "白兵快速升变 — 黑马太远无法拦截",
+  "intro": {
+    "flash_squares": ["a7", "c7", "a6"],
+    "popup": "<b>兵是强势！马是弱势！</b><br>白方a7兵距升变只剩一步，黑马在a6太远。<br>王逼近封锁黑马后兵立刻升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点</b><br>兵快速升变 → 后对马 = 白方轻松获胜。<br>这正好与001局对比：a7兵+马=和棋，但马没有的话a7兵=白胜。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc6",
+      "popup": "<b>白王到c6封锁黑马！</b><br>Kc6威胁黑马a6被困，黑马必须移动。",
+      "highlights": [{"squares": ["c6", "a6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "c6", "color": "#4CAF50CC"}, {"from": "c6", "to": "a6", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ne8",
+      "popup": "黑马跑到e8，试图去c7阻止升变。",
+      "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "e8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "a8=Q",
+      "popup": "<b>直接升后！</b><br>黑马还在e8，无法阻止兵升变。",
+      "highlights": [{"squares": ["a8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "a8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nd6",
+      "popup": "黑马试图跳回来。",
+      "highlights": [{"squares": ["d6"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e8", "to": "d6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qb8",
+      "popup": "<b>后到b8！</b><br>白后控制b8和a7，等待吃掉黑马。",
+      "highlights": [{"squares": ["b8", "d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a8", "to": "b8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kf3",
+      "popup": "黑王试图靠近，但为时已晚。",
+      "highlights": [{"squares": ["f3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g3", "to": "f3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxd6",
+      "popup": "<b>后吃马！白方获胜。</b><br>白后吃掉黑马，剩余局面轻松获胜。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "d6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

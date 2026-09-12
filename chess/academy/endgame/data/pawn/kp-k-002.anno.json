@@ -1,0 +1,154 @@
+{
+  "game_id": "eg_KP-K_L1-002-1",
+  "description": "正方形法则2：a4 通路兵，黑王在正方形外，追不上——白胜",
+  "intro": {
+    "flash_squares": ["a4", "e4", "e8", "a8"],
+    "concept_lines": [
+      {"from": "a4", "to": "e4", "color": "#FFD700CC"},
+      {"from": "e4", "to": "e8", "color": "#FFD700CC"},
+      {"from": "e8", "to": "a8", "color": "#FFD700CC"},
+      {"from": "a8", "to": "a4", "color": "#FFD700CC"}
+    ],
+    "popup": "💡 <b>对比1</b>：同样的通路兵<b>现在黑王在——正方形之外！</b>白先走，黑方还能追到吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🏆 <b>结论：白方升变赢棋！</b> 黑王永远落在正方形右侧之外，无法拦住通路兵。<br>📐 黑王在正方形<b>外</b> → 白胜。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "a5",
+      "popup": "♟ 1.a5 — 白兵前进！新正方形：a5-d5-d8-a8。<b>黑王 f3 仍在正方形右侧之外。</b>",
+      "highlights": [
+        {
+          "squares": ["f3"],
+          "color": "#FF000044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "a5", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": [
+        {"from": "a5", "to": "d5", "color": "#FFD700CC"},
+        {"from": "d5", "to": "d8", "color": "#FFD700CC"},
+        {"from": "d8", "to": "a8", "color": "#FFD700CC"},
+        {"from": "a8", "to": "a5", "color": "#FFD700CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke4",
+      "popup": "♚ Ke4 — 黑王赶往 e4，试图进入正方形……但 e4 已在新正方形（右边界 d 列）之外！",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#FF880044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e4",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "a6",
+      "popup": "♟ 2.a6 — 兵再进！新正方形：a6-c6-c8-a8（右边界 c 列）。黑王 e4 仍在外。",
+      "highlights": [
+        {
+          "squares": ["e4"],
+          "color": "#FF000044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a6", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": [
+        {"from": "a6", "to": "c6", "color": "#FFD700CC"},
+        {"from": "c6", "to": "c8", "color": "#FFD700CC"},
+        {"from": "c8", "to": "a8", "color": "#FFD700CC"},
+        {"from": "a8", "to": "a6", "color": "#FFD700CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd5",
+      "popup": "♚ Kd5 — 黑王继续追……步伐始终落后正方形一步。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "a7",
+      "popup": "♟ 3.a7 — 最后冲刺！黑王 d5 距 a 列太远，无法阻止。",
+      "highlights": [
+        {
+          "squares": [
+            "a7",
+            "a8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "a7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc6",
+      "popup": "♚ Kc6 — 黑王仍在奔跑，但 a8 已无法阻止。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c6",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "a8=Q+",
+      "popup": "👑 4.a8=Q! — <b>白方升变！</b>黑王 c6 距 a8 太远，无法吃后。<b>白胜！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a8"
+          ],
+          "color": "#FFD700BB",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a7",
+          "to": "a8",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

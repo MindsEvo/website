@@ -1,0 +1,15 @@
+1. Ke2 Kf5
+2. Ke3 Ke5
+3. f4+ Kd5
+4. Ne2 Kd6
+5. Kd4 Ke6
+6. Ke4 Kf6
+7. f5 Kf7
+8. Ke5 Ke7
+9. f6+ Kf7
+10. Nf4 Ke8
+11. Ke6 Kd8
+12. f7 Kc7
+13. f8=Q Kb6
+# END
+# 解法 1

@@ -1,0 +1,28 @@
+1. h4 Kf7
+2. Kh2 Kg6
+3. Kg3 Kh5
+4. f3 h6
+5. Kh3 Kg6
+6. Kg4 h5+
+7. Kf4 Kf6
+8. Ke4 Ke6
+9. g3 g6
+10. g4 hxg4
+11. fxg4 Kf6
+12. Kd5 Ke7
+13. Ke5 Kf7
+14. Kd6 Kf6
+15. g5+ Kf7
+16. Kd7 Kf8
+17. Ke6 Kg7
+18. Ke7 Kg8
+19. Kf6 Kf8
+20. Kxg6 Ke7
+21. h5 Ke6
+22. h6 Ke5
+23. h7 Kf4
+24. h8=Q Ke4
+25. Qc3 Kd5
+26. Kf6
+# END
+# 解法 1

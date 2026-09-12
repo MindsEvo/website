@@ -1,0 +1,166 @@
+{
+  "game_id": "eg_KP-K_L1-001-1",
+  "description": "正方形法则①：a4 通路兵，黑王在正方形内，白先，黑方追上——和局",
+  "intro": {
+    "flash_squares": ["a4", "e4", "e8", "a8"],
+    "concept_lines": [
+      {"from": "a4", "to": "e4", "color": "#FFD700CC"},
+      {"from": "e4", "to": "e8", "color": "#FFD700CC"},
+      {"from": "e8", "to": "a8", "color": "#FFD700CC"},
+      {"from": "a8", "to": "a4", "color": "#FFD700CC"}
+    ],
+    "popup": "💡 <b>正方形法则</b>：a4 兵需走 4 步升变，<b>黑王正好在正方形的角上</b>——白先走，黑方能否追上？ 顺便介绍一下， 这种前边没有阻碍的兵叫通路兵",
+    "voice": true
+  },
+  "outro": {
+    "popup": "☰ <b>结论：和局！</b> 黑王正好可以追上白兵，成功吃掉升变后的白后。<br>📐 黑王在正方形内（含边界），且对方先走 → 黑可追上。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "a5",
+      "popup": "♟ 1.a5 — 白兵前进，正方形更新为 a5-d5-d8-a8（边长3）。黑王还在里面吗？",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "a4", "to": "a5", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": [
+        {"from": "a5", "to": "d5", "color": "#FFD700CC"},
+        {"from": "d5", "to": "d8", "color": "#FFD700CC"},
+        {"from": "d8", "to": "a8", "color": "#FFD700CC"},
+        {"from": "a8", "to": "a5", "color": "#FFD700CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd5",
+      "popup": "♚ Kd5 — 黑王踏上正方形新角 d5，追上了！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "a6",
+      "popup": "♟ 2.a6 — 新正方形：a6-c6-c8-a8（边长2）。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "a5", "to": "a6", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": [
+        {"from": "a6", "to": "c6", "color": "#FFD700CC"},
+        {"from": "c6", "to": "c8", "color": "#FFD700CC"},
+        {"from": "c8", "to": "a8", "color": "#FFD700CC"},
+        {"from": "a8", "to": "a6", "color": "#FFD700CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kc6",
+      "popup": "♚ Kc6 — 黑王再踏新角，继续跟随！",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "a7",
+      "popup": "♟ 3.a7 — 最后一步！正方形缩为 a7-b7-b8-a8（边长1）。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "a6", "to": "a7", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": [
+        {"from": "a7", "to": "b7", "color": "#FFD700CC"},
+        {"from": "b7", "to": "b8", "color": "#FFD700CC"},
+        {"from": "b8", "to": "a8", "color": "#FFD700CC"},
+        {"from": "a8", "to": "a7", "color": "#FFD700CC"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kb7",
+      "popup": "♚ Kb7 — 黑王抵达 b7，卡住升变路线！",
+      "highlights": [
+        {
+          "squares": [
+            "b7"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "b7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "a8=Q+",
+      "popup": "♟ 4.a8=Q+ — 白方升变将军，黑王别无选择……",
+      "highlights": [
+        {
+          "squares": [
+            "a8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a7",
+          "to": "a8",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kxa8",
+      "popup": "♚ Kxa8 — <b>黑王吃后！只剩双王，和局。</b> 黑王始终保持在正方形内，成功拦截通路兵。",
+      "highlights": [
+        {
+          "squares": [
+            "a8"
+          ],
+          "color": "#2196F388",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    }
+  ]
+}

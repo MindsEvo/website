@@ -1,0 +1,66 @@
+{
+  "game_id": "eg_P-P_L2-004-1",
+  "description": "兵对兵④：主动突破 — 白王主动绕侧翼，迫使黑方让步",
+  "intro": {
+    "flash_squares": ["f3", "e5", "b8", "e6"],
+    "concept_arrows": [
+      {"from": "f3", "to": "e4", "color": "#FF6B35CC"}
+    ],
+    "popup": "💡 <b>主动突破</b>：白王 f3，兵 e5 对黑兵 e6。黑王远在 b8。白方可以绕过兵的对峙，从侧翼强行突破！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 黑王太远，无法及时支援。白王绕侧翼取得对立位后，黑兵无法防守。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke4",
+      "popup": "1.Ke4 — 白王进入中心，准备绕行。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "f3", "to": "e4", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kc7",
+      "popup": "1...Kc7 — 黑王急忙赶回，但路途遥远。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "b8", "to": "c7", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kd4",
+      "popup": "2.Kd4 — 白王向 d 线靠拢，从侧翼包抄。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e4", "to": "d4", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd7",
+      "popup": "2...Kd7 — 黑王努力接近，但已经落后。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "c7", "to": "d7", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kc5",
+      "popup": "3.Kc5 — 白王抵达 c5，占据对立位！",
+      "highlights": [
+        {"squares": ["c5", "d7"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "c5", "color": "#FF6B35CC"}
+      ]
+    }
+  ]
+}

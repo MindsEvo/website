@@ -1,0 +1,191 @@
+{
+  "game_id": "eg_Q-N_L2-001-1",
+  "description": "后对马 — 王后配合围追，吃掉马后获胜",
+  "intro": {
+    "flash_squares": ["d5", "e5", "d2", "e2"],
+    "popup": "♛♞ <b>马的弱点：跳法固定，容易被后逼到边角。<br>白王和后配合逼迫黑王和马，寻机吃掉马b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方将获胜！</b>技巧：白后封锁马的跳法，白王贴近施压，马迟早被吃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf3",
+      "popup": "♔ 白王向中心推进，逼近黑方。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e2", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Ke6",
+      "popup": "黑王向中心移动，试图保护马。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Ke4",
+      "popup": "白王继续前进，与后形成配合。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f3", "to": "e4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Nf6+",
+      "popup": "马将军，试图干扰白王！",
+      "highlights": [{"squares": ["f6", "e4"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "f6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Kd4",
+      "popup": "白王躲开将军，继续靠近。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e4", "to": "d4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Kf5",
+      "popup": "黑王跟上，马和王尽量协作。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Qf2+",
+      "popup": "白后将军，驱赶黑王。",
+      "highlights": [{"squares": ["f2", "f5"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d2", "to": "f2", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Ke6",
+      "popup": "黑王被迫后退。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Qf4",
+      "popup": "白后控制f列，进一步压缩黑王空间。",
+      "highlights": [{"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "f4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Ke7",
+      "popup": "黑王退到边缘，马被孤立。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Ke5",
+      "popup": "白王到e5，与白后形成围攻。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "e5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 11,
+      "move": "Nd7+",
+      "popup": "马跳出将军，最后的反抗。",
+      "highlights": [{"squares": ["d7", "e5"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "d7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 12,
+      "move": "Kf5",
+      "popup": "白王步步紧逼。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e5", "to": "f5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Ke8",
+      "popup": "黑王退到底线，空间越来越小。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Ke6",
+      "popup": "白王贴近，准备最后围剿。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f5", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 15,
+      "move": "Nf8+",
+      "popup": "马跳到f8，躲避围追。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d7", "to": "f8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 16,
+      "move": "Kd6",
+      "popup": "白王跟上，逼马退到死角。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e6", "to": "d6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 17,
+      "move": "Nd7",
+      "popup": "马退到d7，无路可走。",
+      "highlights": [{"squares": ["d7"], "color": "#E5393566", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "d7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 18,
+      "move": "Qe4+",
+      "popup": "白后将军，迫使黑王移动，暴露马。",
+      "highlights": [{"squares": ["e4", "e8"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "e4", "color": "#4CAF50CC"}, {"from": "e4", "to": "e8", "color": "#FF6B3599"}]
+    },
+    {
+      "index": 19,
+      "move": "Kf7",
+      "popup": "黑王撤离，马与王分离。",
+      "highlights": [{"squares": ["d7"], "color": "#E5393544", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Qe6+",
+      "popup": "白后再次将军，持续逼压。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e4", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 21,
+      "move": "Kg7",
+      "popup": "黑王进一步撤离。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "Kxd7",
+      "popup": "⚡ <b>白王吃掉马！</b>大局已定。",
+      "highlights": [{"squares": ["d7"], "color": "#4CAF5077", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "d7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 23,
+      "move": "Kf8",
+      "popup": "黑王最后挣扎。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "Ke7",
+      "popup": "白王逼近，绝杀在即。",
+      "highlights": [],
+      "concept_arrows": []
+    }
+  ]
+}

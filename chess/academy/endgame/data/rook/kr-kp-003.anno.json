@@ -1,0 +1,18 @@
+{
+  "game_id": "eg_KR-KP_L1-003-1",
+  "description": "车对e兵 — 车将军腾挪，等王协作",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "c1"
+    ],
+    "popup": "💡 白王远离，但车可以将军转移！<br>策略：<b>车先将军</b>逼走黑王，抢占兵升变路。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 核心原则：车利用<b>将军腾挪</b>占据兵的升变路，等待白王进入战场协同作战。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": []
+}

@@ -1,0 +1,190 @@
+{
+  "game_id": "eg_NP-N_L2-001-1",
+  "description": "马兵对马 — 弃马换升变",
+  "intro": {
+    "flash_squares": [
+      "b8",
+      "d6",
+      "d8",
+      "a2"
+    ],
+    "popup": "♞🐴 <b>弃马换升变！</b><br>白马在b8，白兵在d6蓄势待发。<br>黑马远在a2，无法及时阻止兵的推进。<br>关键：<b>白马主动献祭，为兵清开升变通路！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♟ <b>升变成后！</b>弃马献祭是精妙手段——黑马被迫吃马后，白王路通d8，兵顺利升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke6",
+      "popup": "⭐ 白王到e6，切断黑王的防守路线！",
+      "highlights": [
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "e6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Nb4",
+      "popup": "黑马从a2跳来，试图靠近战场。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a2",
+          "to": "b4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d7",
+      "popup": "兵冲上d7！离升变只差一步。",
+      "highlights": [
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kc7",
+      "popup": "黑王急忙赶来试图阻挡。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "c7",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Na6+",
+      "popup": "🎯 <b>弃马！</b>白马跳a6将军，强迫黑马吃马，清出升变要道！",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b8",
+          "to": "a6",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "a6",
+          "to": "c7",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nxa6",
+      "popup": "黑马被迫吃掉白马，升变路线已通！",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "a6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Ke7",
+      "popup": "白王前进到e7，支援兵升变。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "e7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kc6",
+      "popup": "黑王逼近，但已经来不及了。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "d8=Q",
+      "popup": "♛ <b>升变成后！白方大优。</b>弃马的代价换来了一个后！",
+      "highlights": [
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    }
+  ]
+}

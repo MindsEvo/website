@@ -1,0 +1,14 @@
+1. Rf7+ Ke3
+2. Rg7 Kf4
+3. Kf7 Kf5
+4. Rg8 g4
+5. Rg7 Kf4
+6. Kg6 g3
+7. Kh5 Kf3
+8. Kh4 g2
+9. Kh3 g1=Q
+10. Rxg1 Ke4
+11. Rd1 Ke3
+12. Kg3 Ke4
+# END
+# 解法 1

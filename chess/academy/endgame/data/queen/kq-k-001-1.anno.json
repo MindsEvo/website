@@ -1,0 +1,117 @@
+{
+  "game_id": "eg_KQ-K_L1-001-1",
+  "description": "后对王-L1 解法1：中心推进法",
+  "intro": {
+    "flash_squares": ["a8", "b8"],
+    "popup": "💡 <b>解法1：中心推进法， 后切断逃路，王慢慢靠近，把黑王逼入角落将死！</b> ⚠️ 注意：绝不能造成困毙（和棋）！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Qb7 — 将死！</b>要点：后切断逃路 → 王协助靠近 → 角落将死</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qd5",
+      "popup": "⬆️ <b>1.Qd5 — 后占中心！</b><br>后走d5，控制整个第5排，把黑王活动区域限制在左上方。",
+      "highlights": [
+        {"squares": ["a8", "b8", "a7", "b7"], "color": "#FF572230", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "a8", "color": "#00BCD4CC"},
+        {"from": "d5", "to": "a5", "color": "#00BCD4CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ka7",
+      "popup": "⬇️ Ka7 — 黑王被迫退边。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Qb5",
+      "popup": "⬆️ <b>2.Qb5 — 后切断b列！</b><br>后移到b5，控制整个b列，黑王只剩a8一格可走。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FF572255", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "b8", "color": "#FF5722CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ka8",
+      "popup": "⬇️ Ka8 — 黑王退入角落，正是我们想要的位置！",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Ke7",
+      "popup": "⬆️ <b>3.Ke7 — 白王开始协助！</b><br>王向黑王靠近，配合后封锁逃路。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e7", "to": "d6", "color": "#4CAF50CC"},
+        {"from": "d6", "to": "c6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ka7",
+      "popup": "⬇️ Ka7 — 黑王暂时逃出角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kd6",
+      "popup": "⬆️ <b>4.Kd6 — 白王继续逼近！</b><br>王到d6，控制c7/d7/e7，目标是到达c6配合将死。",
+      "highlights": [
+        {"squares": ["c7", "d7", "e7"], "color": "#4CAF5030", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "c6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ka8",
+      "popup": "⬇️ Ka8 — 黑王回到角落，无处可逃。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Kc6",
+      "popup": "⬆️ <b>5.Kc6 — 白王就位！</b><br>王到c6，封死b7/c7/d7三格。黑王插翅难飞！",
+      "highlights": [
+        {"squares": ["b7", "c7", "d7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Ka7",
+      "popup": "⬇️ Ka7 — 黑王别无选择。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Qb7#",
+      "popup": "⬆️ <b>6.Qb7# — 将死！</b><br>后沿b列将军，白王封死b7/c7，黑王在a7被将且无处可逃。",
+      "highlights": [
+        {"squares": ["a7", "a8", "b8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "b7", "color": "#FF0000CC"}
+      ]
+    }
+  ]
+}

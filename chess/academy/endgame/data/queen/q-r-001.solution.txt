@@ -1,0 +1,10 @@
+... Rh7+
+2. Kg3 Rg7+
+3. Kf4 Rf7+
+4. Kg5 Rg7+
+5. Kf4 Rf7+
+6. Kg5 Rg7+
+7. Kh6 Rh7+
+8. Kg5 Rg7+
+# END
+# 解法 1

@@ -1,0 +1,72 @@
+{
+  "piece": "兵",
+  "categories": [
+    {
+      "key": "kp-k",
+      "label": "兵对王",
+      "items": [
+        { "id": "kp-k-001", "fen": "8/8/8/8/P3k3/8/8/3K4 w - - 0 1", "solutions": [{ "id": "kp-k-001" }] },
+        { "id": "kp-k-002", "fen": "8/8/8/8/P7/5k2/8/3K4 w - - 0 1", "solutions": [{ "id": "kp-k-002" }] },
+        { "id": "kp-k-003", "fen": "8/3k4/8/3K4/3P4/8/8/8 w - - 0 1", "solutions": [{ "id": "kp-k-003" }] },
+        { "id": "kp-k-004", "fen": "8/3k4/8/3K4/8/3P4/8/8 w - - 0 1", "solutions": [{ "id": "kp-k-004" }] },
+        { "id": "kp-k-005", "fen": "8/8/3k4/8/3P4/4K3/8/8 w - - 0 1", "solutions": [{ "id": "kp-k-005" }] },
+        { "id": "kp-k-006", "fen": "3k4/8/8/8/8/3PK3/8/8 w - - 0 1", "solutions": [{ "id": "kp-k-006" }] },
+        { "id": "kp-k-007", "fen": "8/3k4/8/PK6/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kp-k-007" }] }
+      ]
+    },
+    {
+      "key": "2p-p",
+      "label": "双兵对单兵",
+      "items": [
+        { "id": "2p-p-001", "fen": "8/5k2/7p/4PK1P/8/8/8/8 w - - 0 1", "solutions": [{ "id": "2p-p-001" }] },
+        { "id": "2p-p-002", "fen": "5k2/5P1p/4K3/8/8/8/7P/8 w - - 0 1", "solutions": [{ "id": "2p-p-002" }] },
+        { "id": "2p-p-003", "fen": "k7/1p1K4/1P6/2P5/8/8/8/8 w - - 0 1", "solutions": [{ "id": "2p-p-003" }] },
+        { "id": "2p-p-004", "fen": "8/4k1p1/6P1/4KP2/8/8/8/8 w - - 0 1", "solutions": [{ "id": "2p-p-004" }] }
+      ]
+    },
+    {
+      "key": "p-p",
+      "label": "兵对兵",
+      "items": [
+        { "id": "p-p-001", "fen": "8/8/8/1K1p4/3P1k2/8/8/8 w - - 0 1", "solutions": [{ "id": "p-p-001" }] },
+        { "id": "p-p-002", "fen": "8/8/4k3/4p3/4P3/4K3/8/8 w - - 0 1", "solutions": [{ "id": "p-p-002" }] },
+        { "id": "p-p-003", "fen": "8/8/8/3p1k2/1K1P4/8/8/8 w - - 0 1", "solutions": [{ "id": "p-p-003" }] },
+        { "id": "p-p-004", "fen": "8/8/5k2/8/p7/8/1PK5/8 w - - 0 1", "solutions": [{ "id": "p-p-004" }] },
+        { "id": "p-p-005", "fen": "8/2p5/8/1k1P4/8/K7/8/8 w - - 0 1", "solutions": [{ "id": "p-p-005" }] }
+      ]
+    },
+    {
+      "key": "2p-2p",
+      "label": "双兵对峙",
+      "items": [
+        { "id": "2p-2p-001", "fen": "8/7p/6p1/8/5K2/3k4/6PP/8 w - - 0 1", "solutions": [{ "id": "2p-2p-001" }] },
+        { "id": "2p-2p-002", "fen": "8/6p1/7p/8/5K2/3k4/6PP/8 w - - 0 1", "solutions": [{ "id": "2p-2p-002" }] },
+        { "id": "2p-2p-003", "fen": "8/5K1k/6pp/8/8/8/6PP/8 w - - 0 1", "solutions": [{ "id": "2p-2p-003" }] },
+        { "id": "2p-2p-004", "fen": "8/8/7p/p7/k1P2K2/8/P7/8 w - - 0 1", "solutions": [{ "id": "2p-2p-004" }] },
+        { "id": "2p-2p-005", "fen": "8/8/8/1p2kPp1/6P1/4K3/8/8 w - - 0 1", "solutions": [{ "id": "2p-2p-005" }] }
+      ]
+    },
+    {
+      "key": "3p-2p",
+      "label": "三兵对双兵",
+      "items": [
+        { "id": "3p-2p-001", "fen": "8/ppk5/8/2K5/PPP5/8/8/8 w - - 0 1", "solutions": [{ "id": "3p-2p-001" }] },
+        { "id": "3p-2p-002", "fen": "6k1/6pp/8/8/8/8/5PPP/6K1 w - - 0 1", "solutions": [{ "id": "3p-2p-002" }] },
+        { "id": "3p-2p-003", "fen": "8/8/4k1p1/6Pp/4KP1P/8/8/8 w - - 0 1", "solutions": [{ "id": "3p-2p-003" }] },
+        { "id": "3p-2p-004", "fen": "8/8/8/7p/4k1pP/6P1/4KP2/8 w - - 0 1", "solutions": [{ "id": "3p-2p-004" }] },
+        { "id": "3p-2p-005", "fen": "8/3K1kp1/7p/5P1P/6P1/8/8/8 w - - 0 1", "solutions": [{ "id": "3p-2p-005" }] }
+      ]
+    },
+    {
+      "key": "3p-3p",
+      "label": "三兵对峙",
+      "items": [
+        { "id": "3p-3p-001", "fen": "6k1/ppp5/8/PPP5/8/5K2/8/8 w - - 0 1", "solutions": [{ "id": "3p-3p-001" }] },
+        { "id": "3p-3p-002", "fen": "1k6/ppp5/8/8/8/8/PPP5/1K6 w - - 0 1", "solutions": [{ "id": "3p-3p-002" }] },
+        { "id": "3p-3p-003", "fen": "8/6pp/3k1p2/5PP1/5K1P/8/8/8 w - - 0 1", "solutions": [{ "id": "3p-3p-003" }] },
+        { "id": "3p-3p-004", "fen": "8/8/1p4K1/p1p5/P1P5/1P4k1/8/8 w - - 0 1", "solutions": [{ "id": "3p-3p-004" }] },
+        { "id": "3p-3p-005", "fen": "8/4k1pp/4p3/4K3/7P/6P1/5P2/8 w - - 0 1", "solutions": [{ "id": "3p-3p-005" }] }
+      ]
+    }
+  ]
+}

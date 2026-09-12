@@ -1,0 +1,49 @@
+{
+  "game_id": "eg_RP-R_L2-003-1",
+  "description": "兵在5线 — 黑方车可直接6线拦截，白方无法推进",
+  "intro": {
+    "flash_squares": ["e5", "g7", "b2"],
+    "popup": "<b>兵在5线，黑方车直接6线拦截</b>白方难以推进，只好简单换车。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>和棋</b><br> 黑车直接6线拦截，黑王守住关键位置，黑方成功防守。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb6",
+      "popup": "黑车直接6线拦截",
+      "highlights": [{"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}]
+    },
+    {
+      "index": 1,
+      "move": "Rg6",
+      "popup": "<b>白方知道无法突破， 直接换车。",
+      "highlights": [{"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}]
+    },
+    {
+      "index": 2,
+      "move": "Ke6",
+      "popup": "直接换掉车。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf8",
+      "popup": "吃车。",
+      "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}]
+    },
+    {
+      "index": 4,
+      "move": "Rd7",
+      "popup": "黑王防守",
+      "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}]
+    }
+ 
+  ]
+}

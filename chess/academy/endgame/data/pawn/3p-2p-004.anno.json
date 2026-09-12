@@ -1,0 +1,144 @@
+{
+  "game_id": "eg_3P-2P_L3-004-1",
+  "description": "三兵对双兵④：兵形突破 — g5通路兵配合f4/h4，白方兵形占优强行突破",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "f4",
+      "g5",
+      "h4",
+      "e6",
+      "g6",
+      "h5"
+    ],
+    "concept_arrows": [
+      {
+        "from": "g5",
+        "to": "g6",
+        "color": "#FF000066"
+      },
+      {
+        "from": "f4",
+        "to": "f5",
+        "color": "#FF6B35CC"
+      }
+    ],
+    "popup": "💡 <b>兵形突破</b>：白方 g5 兵已过黑方 g6 旁侧（绕过无法被 g6 攻击），f4+h4 形成两翼威胁。黑方 g6+h5 无法同时应对。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白方通过 f5+ 将军强行突破，黑方双兵被各个击破。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke5",
+      "popup": "1.Ke5！— 白王进入中央，支援 f 兵推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "e5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kf7",
+      "popup": "1...Kf7 — 黑王退后，试图阻挡 f 兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "f7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "f5",
+      "popup": "2.f5！— f 兵突破！威胁 f6 创造通路。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "f5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "gxf5",
+      "popup": "2...g×f5 — 黑兵被迫吃掉 f5，但 h5 兵暴露。",
+      "highlights": [
+        {
+          "squares": [
+            "f5"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g6",
+          "to": "f5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kxf5",
+      "popup": "3.K×f5 — 白王回吃，同时攻击 h5 和 g5 兵的推进路线。",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "h5"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "f5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ke7",
+      "popup": "3...Ke7 — 黑王挣扎，难以应对。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f7",
+          "to": "e7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kxh5",
+      "popup": "4.K×h5 — 白王吃掉 h5 兵！白方多兵，胜局已定。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f5",
+          "to": "h5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

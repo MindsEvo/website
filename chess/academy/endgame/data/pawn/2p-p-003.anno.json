@@ -1,0 +1,97 @@
+{
+  "game_id": "eg_2P-P_L2-003-1",
+  "description": "双兵对单兵③：七线兵威 — f7兵威胁升变，黑王被困，h兵辅助形成双重威胁",
+  "intro": {
+    "flash_squares": [
+      "e6",
+      "f7",
+      "h2",
+      "f8",
+      "h7"
+    ],
+    "concept_arrows": [
+      {
+        "from": "f7",
+        "to": "f8",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "h2",
+        "to": "h8",
+        "color": "#9C27B0CC"
+      }
+    ],
+    "popup": "💡 <b>七线兵威</b>：白方 f7 兵已在七线，黑王（f8）必须守住 f8，否则白兵立即升变。白方 h2 兵将创造第二威胁。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 黑王被钉死在 f8，白方通过 h 兵推进完成双重威胁，黑方无法应对。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "h4",
+      "popup": "1.h4 — 推进 h 兵！黑王不得离开 f8，否则 f8=Q。",
+      "highlights": [
+        {
+          "squares": [
+            "f8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h2",
+          "to": "h4",
+          "color": "#9C27B0CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "h5",
+      "popup": "1...h5 — 黑兵试图阻挡 h 兵（王不可动，离开 f8 则 2.f8=Q+！）。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h7",
+          "to": "h5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ke5",
+      "popup": "2.Ke5 — 白王向中央进发，威胁进一步推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "e5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kf8",
+      "popup": "2...Kf8 — 黑王坚守阵地，别无选择。",
+      "highlights": [
+        {
+          "squares": [
+            "f7",
+            "f8"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+... Qh4+
+2. Qh7 Qd8+
+3. g8=Q Qd4+
+4. Qg7 Qh4+
+5. Qh7 Qf6+
+6. Qg7 Qd8+
+7. Qg8 Qf6+
+8. Qg7 Qh4+
+9. Qh7 Qf6+
+# END
+# 解法 1

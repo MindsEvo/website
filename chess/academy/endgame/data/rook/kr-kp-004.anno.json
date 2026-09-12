@@ -1,0 +1,109 @@
+{
+  "game_id": "eg_KR-KP_L1-004-1",
+  "description": "车对g兵 — 白王切割黑王联系",
+  "intro": {
+    "flash_squares": [
+      "g5",
+      "f5"
+    ],
+    "popup": "⚡ 白王和车处于良好位置！<br>策略：白王<b>切割黑王与兵的联系</b>，车控制g线。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 标准<b>王切割</b>技巧。<br>白王步步深入，切断黑方联系，配合车收拾黑兵。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kd6",
+      "popup": "白王跨过！切断黑王护兵路线。",
+      "highlights": [
+        {
+          "squares": [
+            "d6"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "d6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Rg7",
+      "popup": "车锁入g线，盯住黑兵！",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "g5"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "g7",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "g7",
+          "to": "g5",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kd5",
+      "popup": "白王继续深入，完全切割黑方。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Rxg3",
+      "popup": "⚡ 吃掉黑兵！",
+      "highlights": [
+        {
+          "squares": [
+            "g3"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "g3",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

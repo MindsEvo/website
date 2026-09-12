@@ -1,0 +1,19 @@
+1. f5+ gxf5+
+2. Kf4 Kf7
+3. Kxf5 Kg7
+4. Ke5 Kf7
+5. Kd6 Kg7
+6. Ke7 Kg6
+7. Ke6 Kg7
+8. Kf5 Kh7
+9. Kf6 Kg8
+10. Kg6 Kf8
+11. Kxh5 Kg7
+12. g6 Kf6
+13. Kh6 Ke6
+14. g7 Kf7
+15. Kh7 Kf6
+16. g8=Q Ke5
+17. Qc4
+# END
+# 解法 1

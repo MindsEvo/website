@@ -1,0 +1,88 @@
+{
+  "game_id": "eg_R2P-R_L3-003-1",
+  "description": "白车切断黑王，c兵和g兵协同推进",
+  "intro": {
+    "flash_squares": ["c8", "g5", "c4", "c3", "g4"],
+    "popup": "<b>车切断黑王</b>白车在c线切断黑王，配合c、g双兵向前推进。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>白方胜势</b>黑王被切断，无法阻止双兵推进。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc6+",
+      "popup": "<b>车将军切断！</b>白车占c6，将军同时切断黑王。",
+      "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c8", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf7",
+      "popup": "黑王被迫远离兵区。",
+      "highlights": [{"squares": ["f7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g6", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kf5",
+      "popup": "白王进入中心，直接配合双兵。",
+      "highlights": [{"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g4", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "黑王试图回防，靠近c兵。",
+      "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "e7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "c5",
+      "popup": "<b>c兵挺进！</b>两兵齐头并进，黑方压力倍增。",
+      "highlights": [{"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c4", "to": "c5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rf3+",
+      "popup": "黑车将军骚扰，尝试拖延。",
+      "highlights": [{"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "f3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kg6",
+      "popup": "白王躲开将军，继续保护推进路线。",
+      "highlights": [{"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Rc3",
+      "popup": "黑车回来牵制c兵。",
+      "highlights": [{"squares": ["c3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f3", "to": "c3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kg7",
+      "popup": "<b>白王逼近升变格！</b>g8升变威胁已非常紧迫。",
+      "highlights": [{"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g6", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

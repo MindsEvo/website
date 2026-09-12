@@ -1,0 +1,169 @@
+{
+  "game_id": "eg_KQ-KP_L1-006-1",
+  "description": "后对h兵（白王在h5近侧）— 对比上局：王够近就能吃兵！",
+  "intro": {
+    "flash_squares": [
+      "h2",
+      "h1",
+      "h5"
+    ],
+    "popup": "⚡ <b>对比上局！</b><br>同样的h兵角落，但白王就在旁边。<br>这次白方能赢——靠<b>先走王靠近，再用将军逼王离角，直接吃兵！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！</b><br>关键：白王在h5，走Kg4后可将军逼黑王离角，然后直接<b>吃掉h兵</b>！<br>上局白王在e7太远——就是平局的原因。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kg4",
+      "popup": "⚡ 白王先靠近！不急着将军，先走王。",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "h2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "g4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kg2",
+      "popup": "黑王想保护h兵。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h1",
+          "to": "g2",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Qa2+",
+      "popup": "将军！逼黑王离开h兵保护范围。",
+      "highlights": [
+        {
+          "squares": [
+            "a2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "a2",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kf1",
+      "popup": "黑王离开——h兵暴露了！",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "h2"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "f1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Qxh2",
+      "popup": "⚡ <b>后直接吃兵！</b>王已够近，不怕黑王追过来。",
+      "highlights": [
+        {
+          "squares": [
+            "h2"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a2",
+          "to": "h2",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Kf3",
+      "popup": "王进来参与将死。",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "f3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Qc1#",
+      "popup": "✅ 将死！",
+      "highlights": [
+        {
+          "squares": [
+            "c1"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b2",
+          "to": "c1",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

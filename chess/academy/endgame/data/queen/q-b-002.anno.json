@@ -1,0 +1,132 @@
+{
+  "game_id": "eg_Q-B_L2-002-1",
+  "description": "后对象 — 将军抓象，后王配合逼杀",
+  "intro": {
+    "flash_squares": ["e4", "e3", "e7"],
+    "popup": "♛♗ <b>白后在e4，黑象在e3——先用将军驱开黑王，再吃掉黑象！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！</b>关键技巧：将军驱王、逼入死角、后王配合绝杀",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qe5+",
+      "popup": "⚡ 白王沿着象的异色格子移动。",
+      "highlights": [{"squares": ["e5", "e3"], "color": "#4CAF5033", "duration_ms": 0}]
+    },
+    {
+      "index": 1,
+      "move": "Kf8",
+      "popup": "黑王没有太多选择。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Qxe3",
+      "popup": "白王继续逼近。",
+      "highlights": [{"squares": ["e3"], "color": "#4CAF5066", "duration_ms": 0}]
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王逃向角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Kb5",
+      "popup": "白王积极参战，向中心推进配合白后。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Kh8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kc6",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Kg8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Kd7",
+      "popup": "白王逼近，限制黑王活动范围。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g6", "to": "f7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Kh8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Ke8",
+      "popup": "白王到达e8，堵住黑王退路。",
+      "highlights": [{"squares": ["e8", "h8"], "color": "#4CAF5033", "duration_ms": 0}],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Kg8",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Qe7",
+      "popup": "♛ 白后封锁g8和f8，黑王被赶向角落。",
+      "highlights": [{"squares": ["e7", "g8", "f8"], "color": "#FF000033", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "e7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Kh8",
+      "popup": "黑王被迫入角。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Kf7",
+      "popup": "白后继续封锁",
+      "highlights": [],
+      "concept_arrows": [{"from": "d7", "to": "f7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 15,
+      "move": "Kh7",
+      "popup": "",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Qh4#",
+      "popup": "白后继续逼近。",
+      "highlights": [{"squares": ["h7", "h4"], "color": "#E5393566", "duration_ms": 0}]
+    }
+  ]
+}

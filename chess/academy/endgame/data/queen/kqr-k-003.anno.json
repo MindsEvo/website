@@ -1,0 +1,71 @@
+{
+  "game_id": "eg_KQR-K_L1-003-1",
+  "description": "后车对王-L1 演示3：车引路，后封杀",
+  "intro": {
+    "flash_squares": ["c5", "d5", "a5"],
+    "popup": "💡 <b>演示3：后车完美配合封杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>车到d5，将军！ 黑王被迫无路可逃，绝杀！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rd1",
+      "popup": "⬆️ <b>1.Rd1 — 车入主d列！</b><br>车控制d列切断黑王右路。",
+      "highlights": [
+        {"squares": ["d1", "d5", "d6", "d7", "d8"], "color": "#2196F330", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "d1", "color": "#2196F3CC"},
+        {"from": "d1", "to": "d8", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kb5",
+      "popup": "⬇️ Kb5 — 黑王被迫往边线跑。d列快被车控制，黑王选择向左边逃。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Qd6",
+      "popup": "⬆️ <b>2.Qd6 — 后封锁要道！</b><br>后到d6，控制d列上方并覆盖a6/b8/c7等关键格。黑王在b5，被逼只能去a5。",
+      "highlights": [
+        {"squares": ["a6", "b8", "c7", "c5"], "color": "#FF572230", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "d6", "color": "#FF5722CC"},
+        {"from": "d6", "to": "a6", "color": "#FF5722AA"},
+        {"from": "d6", "to": "a3", "color": "#FF5722AA"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ka5",
+      "popup": "⬇️ Ka5 — 黑王只能退到边线a5！",
+      "highlights": [
+        {"squares": ["a5"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Rd5#",
+      "popup": "⬆️ <b>3.Rd5 — 将死！</b><br>车平移到d5，绝杀！",
+      "highlights": [
+        {"squares": ["a5", "a4", "a6", "b5", "b6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d5", "color": "#2196F3CC"},
+        {"from": "d5", "to": "a5", "color": "#FF0000CC"},
+        {"from": "d6", "to": "a6", "color": "#FF5722AA"},
+        {"from": "d6", "to": "b4", "color": "#FF5722AA"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "game_id": "eg_KP-K_L1-007-1",
+  "description": "a 兵和局：黑方持续对王，封锁 a8 升变格，和局",
+  "intro": {
+    "flash_squares": [
+      "a8",
+      "b8",
+      "a7"
+    ],
+    "popup": "⚠️ <b>a 兵陷阱！</b>白有 a5 通路兵， 但升变格附近极易产生逼和。<br>本例展示黑方如何利用<b>先手对王</b>技巧守住 a8，最终和局。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "☰ <b>结论：和局！</b><br>黑方通过持续先手对王，成功封锁a8升变格。<br>白毫无办法！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kb6",
+      "popup": "♔ 1.Kb6 — 白王靠近，准备护兵推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "b6",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kc8",
+      "popup": "♚ Kc8! — <b>黑王抢占 c8！</b>直接向 a8 区域进发，封锁白王前进通道。",
+      "highlights": [
+        {
+          "squares": [
+            "a8",
+            "b8",
+            "c8"
+          ],
+          "color": "#4CAF5022",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "c8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ka7",
+      "popup": "⚠️ 2.Ka7? — <b>白王走到a7， 想阻止黑王接近关键格！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a5",
+            "a6"
+          ],
+          "color": "#FF444422",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "a7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kc7",
+      "popup": "♚ Kc7! — <b>黑方取得先手对王！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "b8"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "c7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "a6",
+      "popup": "♟ 3.a6 — 白方推兵 a5→a6，控制b7格。",
+      "highlights": [
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF444422",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a5",
+          "to": "a6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc8",
+      "popup": "♚ Kc8 — 黑王回守，盯住 b8，b7等待时机。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kb6",
+      "popup": "♔ 4.Kb6 — 白王移开 a7，为兵让路。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a7",
+          "to": "b6",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kb8",
+      "popup": "♚ Kb8! — <b>黑王占领 b8，b 列先手对王！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "b6",
+            "b8"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "b8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "a7+",
+      "popup": "🔥 5.a7+ — 兵将军（a6→a7 攻击 b8）",
+      "highlights": [
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF6B3544",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "a7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Ka8",
+      "popup": "♚ Ka8! — <b>黑王占住 a8——白兵无法升变！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a8"
+          ],
+          "color": "#4CAF50BB",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FF6B3533",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b8",
+          "to": "a8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Ka6",
+      "popup": "♔ 6.Ka6 — 白王靠近，和棋！白王如果离开，黑王就吃兵。<b>还是和局！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a8"
+          ],
+          "color": "#4CAF50BB",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a7"
+          ],
+          "color": "#FFD70044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "a6",
+          "color": "#2196F3CC"
+        }
+      ]
+    }
+  ]
+}

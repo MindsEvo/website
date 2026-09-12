@@ -1,0 +1,163 @@
+{
+  "game_id": "eg_Q-B_L2-001-1",
+  "description": "后对象 — 白方逼迫黑象暴露，对换后获胜",
+  "intro": {
+    "flash_squares": ["d5", "b5", "d2", "e2"],
+    "popup": "♛♗ </b>把白王走到与黑象异色的格子——黑象无法将军！充分体会后和象的特点！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！技巧：白王始终走浅色格（与黑象异色），让黑象的威胁归零。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke3",
+      "popup": "♔ 白王主动逼近，目标是浅色格（与黑象异色）。",
+      "highlights": [{"squares": ["e3", "d4", "f4", "d2", "f2"], "color": "#4CAF5022", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d2", "to": "e3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Bd4+",
+      "popup": "黑象将军，试图干扰白王前进。",
+      "highlights": [{"squares": ["d4", "e3"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "e3", "color": "#FF6B3599"}]
+    },
+    {
+      "index": 2,
+      "move": "Kf3",
+      "popup": "白王移到浅色格f3——黑象无法将军浅色格！",
+      "highlights": [{"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e3", "to": "f3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Kc5",
+      "popup": "黑王移动，尝试重新部署。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Qd3",
+      "popup": "白后中心化，控制更多格子。",
+      "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e2", "to": "d3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Be5",
+      "popup": "黑象后撤，试图防守黑王。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d4", "to": "e5", "color": "#E53935CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Qf5",
+      "popup": "白后积极逼压，驱赶黑王。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d3", "to": "f5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Kd5",
+      "popup": "黑王中心化，顽抗。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Qf7+",
+      "popup": "白后将军，驱王离开象的保护范围。",
+      "highlights": [{"squares": ["f7", "d5"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "f7", "color": "#4CAF50CC"}, {"from": "f7", "to": "d5", "color": "#FF6B3599"}]
+    },
+    {
+      "index": 9,
+      "move": "Kc6",
+      "popup": "黑王被迫移动。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Qe6+",
+      "popup": "白后再次将军，逼黑象出现。",
+      "highlights": [{"squares": ["e6", "c6"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 11,
+      "move": "Bd6",
+      "popup": "黑象跳出来挡将——象暴露了！",
+      "highlights": [{"squares": ["d6"], "color": "#E5393577", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "d6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 12,
+      "move": "Ke4",
+      "popup": "白王向前逼近，配合白后准备吃象。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f3", "to": "e4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Kc5",
+      "popup": "黑王试图保护黑象。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Qd5+",
+      "popup": "白后将军，分离黑王与黑象。",
+      "highlights": [{"squares": ["d5", "c5"], "color": "#FF000044", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "d5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 15,
+      "move": "Kb4",
+      "popup": "黑王被迫远离黑象。",
+      "highlights": [{"squares": ["d6"], "color": "#E5393544", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "b4", "color": "#E53935CC"}]
+    },
+    {
+      "index": 16,
+      "move": "Qxd6+",
+      "popup": "⚡ <b>白后吃掉黑象！</b>象被捉住，白方轻松取胜。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 17,
+      "move": "Kc4",
+      "popup": "黑王追后，徒劳。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Qd4+",
+      "popup": "白后将军，白王围攻。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d6", "to": "d4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 19,
+      "move": "Kb5",
+      "popup": "黑王继续逃跑。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Kd5",
+      "popup": "白王进入中心，绝杀即将到来。",
+      "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "d5", "color": "#4CAF50CC"}]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+1. Ke4 Ke6
+2. d5+ Kd6
+3. Kd4 Kd7
+4. Kc5 Kc7
+5. d6+ Kd8
+6. Kc6 Kc8
+7. d7+ Kd8
+8. Kd6
+# END
+# 解法 1

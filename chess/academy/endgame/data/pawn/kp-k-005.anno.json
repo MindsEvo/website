@@ -1,0 +1,291 @@
+{
+  "game_id": "eg_KP-K_L1-005-1",
+  "description": "先手对王③：1.Ke4! 接 d5+ 强制对王，Kc6 踏关键格，白方赢",
+  "intro": {
+    "flash_squares": [
+      "c6",
+      "d6",
+      "e6"
+    ],
+    "popup": "💡 <b>本局演示兵前王后的局面， 看看结果如何？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🏆 <b>结论：这种局面是和棋， 黑一直坚持先手对王， 最后利用规则取得和棋。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke4",
+      "popup": "⭐ 1.Ke4! — 白王踏上 e4，向关键格区域逼近，同时为 d5+ 将军做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e5"
+          ],
+          "color": "#2196F333",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "e4",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke6",
+      "popup": "♚ Ke6 — 黑王移步关键格 e6，先手对王！",
+      "highlights": [
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#FF000044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "e6",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "d5+",
+      "popup": "🔥 2.d5+! — 兵将军！<b>黑王被逐离。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e6"
+          ],
+          "color": "#FF6B3544",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "d5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd6",
+      "popup": "♚ Kd6 — 被将军，移到d6， 阻挡</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d6"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "d6",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kd4",
+      "popup": "♔ 3.Kd4 — 白王后撤，准备侧翼再攻。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d4",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kd7",
+      "popup": "♚ Kd7 — 黑王后退，腾出 d6。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kc5",
+      "popup": "⭐ 4.Kc5! — 白王向 c6 关键格进发！",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#2196F3CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kc7",
+      "popup": "♚ Kc7 — 黑王先手对王！",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "c7",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "d6+",
+      "popup": "🔥 5.d6+! — 兵将军，黑王被再次驱离！",
+      "highlights": [
+        {
+          "squares": [
+            "d6"
+          ],
+          "color": "#FF6B3544",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kd8",
+      "popup": "♚ Kd8 — 被将军，退到底线。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "d8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Kc6",
+      "popup": "⭐ 6.Kc6! — <b>白王继续侧翼前行！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FFD700BB",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "c6",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kc8",
+      "popup": "♚ Kc8 — 黑王最后取得先手对王的机会。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "c8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "d7+",
+      "popup": "🔥 7.d7+! — 兵冲 d7，将军！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d7",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Kd8",
+      "popup": "♚ Kd8 — 被将军，黑王d8， 成功的取得了和棋的机会。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "d8",
+          "color": "#FF4444CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Kd6",
+      "popup": "♔ 8.Kd6 — <b>白只能走王，此时黑棋无棋可走，也没有被将军，和棋！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "d7"
+          ],
+          "color": "#FFD700BB",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d6",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

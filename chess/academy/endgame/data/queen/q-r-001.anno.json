@@ -1,0 +1,79 @@
+{
+  "game_id": "eg_Q-R_L2-001-1",
+  "description": "后对车 — 车的永续将军，经典和棋",
+  "intro": {
+    "flash_squares": ["g7", "e6", "h2", "f8"],
+    "popup": "🛡️ <b>车的永续将军求和</b><br>黑方王+车 vs 白方王+后，表面看白方大优。<br>经典和棋手段：<b>黑车不断从侧翼将军白王，白王无法逃脱，更无法安全靠近！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>永续将军，和棋！</b><br>白王无论走到哪，黑车都能从侧翼追击将军。<br>这是后对车残局中，黑方最重要的求和手段，务必掌握！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rh7+",
+      "popup": "⚡ <b>黑车将军！</b>从h列侧翼攻击——永续将军开始。",
+      "highlights": [{"squares": ["h7", "h2"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "h7", "color": "#E53935CC"}, {"from": "h7", "to": "h2", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 1,
+      "move": "Kg3",
+      "popup": "白王逃向g3。",
+      "highlights": [],
+      "concept_arrows": [{"from": "h2", "to": "g3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Rg7+",
+      "popup": "黑车立刻追上，g列将军！",
+      "highlights": [{"squares": ["g7", "g3"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h7", "to": "g7", "color": "#E53935CC"}, {"from": "g7", "to": "g3", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 3,
+      "move": "Kf4",
+      "popup": "白王向前移动，试图摆脱将军。",
+      "highlights": [],
+      "concept_arrows": [{"from": "g3", "to": "f4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Rf7+",
+      "popup": "黑车继续追击，f列将军！",
+      "highlights": [{"squares": ["f7", "f4"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "f7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Kg5",
+      "popup": "白王移到g5，继续逃跑。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f4", "to": "g5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Rg7+",
+      "popup": "黑车再次g列将军！",
+      "highlights": [{"squares": ["g7", "g5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "g7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Kf4",
+      "popup": "白王回到f4——与第3步相同！",
+      "highlights": [],
+      "concept_arrows": [{"from": "g5", "to": "f4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Rf7+",
+      "popup": "🔄 <b>第三次重复！永续将军，和棋。</b>黑车只需在白王移动的横线上不断将军，白方无计可施。",
+      "highlights": [{"squares": ["f7"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "f7", "color": "#E53935CC"}]
+    }
+  ]
+}

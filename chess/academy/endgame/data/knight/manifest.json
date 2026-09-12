@@ -1,0 +1,46 @@
+{
+  "piece": "马",
+  "categories": [
+    {
+      "key": "kbn-k",
+      "label": "象马对王",
+      "items": [
+        { "id": "kbn-k-001", "fen": "8/8/8/2N3K1/8/5B2/8/5k2 w - - 0 1", "solutions": [{ "id": "kbn-k-001" }] },
+        { "id": "kbn-k-002", "fen": "3N1B2/8/8/7k/8/5K2/8/8 w - - 0 1", "solutions": [{ "id": "kbn-k-002" }] }
+      ]
+    },
+    {
+      "key": "knp-k",
+      "label": "马兵对王",
+      "items": [
+        { "id": "knp-k-001", "fen": "8/Pk6/8/1N6/8/8/5K2/8 w - - 0 1", "solutions": [{ "id": "knp-k-001" }] },
+        { "id": "knp-k-002", "fen": "8/8/8/8/5k2/5P2/8/5KN1 w - - 0 1", "solutions": [{ "id": "knp-k-002" }] },
+        { "id": "knp-k-003", "fen": "8/3k4/8/3P4/8/3K4/3N4/8 w - - 0 1", "solutions": [{ "id": "knp-k-003" }] },
+        { "id": "knp-k-004", "fen": "8/6k1/6p1/8/6P1/5K2/8/4N3 w - - 0 1", "solutions": [{ "id": "knp-k-004" }] }
+      ]
+    },
+    {
+      "key": "np-n",
+      "label": "马兵对马",
+      "items": [
+        { "id": "np-n-001", "fen": "1N1k4/8/3P4/4K3/8/8/n7/8 w - - 0 1", "solutions": [{ "id": "np-n-001" }] },
+        { "id": "np-n-002", "fen": "8/7k/8/2K1N3/1P6/n7/8/8 w - - 0 1", "solutions": [{ "id": "np-n-002" }] },
+        { "id": "np-n-003", "fen": "8/6k1/8/8/1PNK4/8/8/1n6 b - - 0 1", "solutions": [{ "id": "np-n-003" }] },
+        { "id": "np-n-004", "fen": "8/3KPk1n/2N5/8/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-004" }] },
+        { "id": "np-n-005", "fen": "8/3KPk1n/8/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-005" }] },
+        { "id": "np-n-006", "fen": "5kn1/3K4/4P3/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-006" }] }
+      ]
+    },
+    {
+      "key": "n-p",
+      "label": "马对兵",
+      "items": [
+        { "id": "n-p-001", "fen": "8/1P1n4/8/3K4/8/8/7k/8 w - - 0 1", "solutions": [{ "id": "n-p-001" }] },
+        { "id": "n-p-002", "fen": "8/P1n5/8/2K5/8/6k1/8/8 w - - 0 1", "solutions": [{ "id": "n-p-002" }] },
+        { "id": "n-p-003", "fen": "8/8/P1n5/8/2K5/8/8/5k2 w - - 0 1", "solutions": [{ "id": "n-p-003" }] },
+        { "id": "n-p-004", "fen": "5K2/5P2/8/2n5/8/8/8/2k5 w - - 0 1", "solutions": [{ "id": "n-p-004" }] },
+        { "id": "n-p-005", "fen": "8/2K5/1P6/8/8/8/6k1/4n3 b - - 0 1", "solutions": [{ "id": "n-p-005" }] }
+      ]
+    }
+  ]
+}

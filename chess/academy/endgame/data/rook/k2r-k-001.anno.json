@@ -1,0 +1,106 @@
+{
+  "game_id": "eg_K2R-K_L1-001-1",
+  "description": "双车对王-L1 演示：双车割草，轮番压排将死",
+  "intro": {
+    "flash_squares": ["g1", "a2", "h2"],
+    "popup": "💡 <b>双车割草：双车轮番封排或列，收紧包围——三步将死！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Rh2 — 将死！</b>要点：双车「割草机」——一车先占一排，另一车越过再占一排，逐步把黑王压入无路可走！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rg1",
+      "popup": "⬆️ <b>1.Rg1 — 车移到g1，准备封锁g/h列！</b><br>车从移到g1，把黑王封锁在h列",
+      "highlights": [
+        {
+          "squares": ["g1"],
+          "color": "#2196F355",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["g2", "g3", "g4", "g5", "g6", "g7", "g8"],
+          "color": "#2196F320",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "g1", "color": "#2196F3CC"},
+        {"from": "g1", "to": "g8", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kh6",
+      "popup": "⬇️ Kh6 — 黑王只能在h列上下移动了！",
+      "highlights": [
+        {
+          "squares": ["h6"],
+          "color": "#FFD70030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Ra2",
+      "popup": "⬆️ <b>2.Ra2 — 另一车走到a2为下一步到和列做准备！注意黑车此时不可以直接到h5!",
+      "highlights": [
+        {
+          "squares": ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"],
+          "color": "#2196F320",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a2", "color": "#2196F3CC"},
+        {"from": "a2", "to": "h2", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kh7",
+      "popup": "⬆️ Kh7 — 黑王只能退回在h列活动！",
+      "highlights": [
+        {
+          "squares": ["h7"],
+          "color": "#FF000030",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Rh2#",
+      "popup": "⬆️ <b>3.Rh2# — 将死！</b><br>车沿平移到h2，双车割草完成！",
+      "highlights": [
+        {
+          "squares": ["h7"],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["h1", "h3", "h4", "h5", "h6", "h8"],
+          "color": "#FF572220",
+          "duration_ms": 0
+        },
+        {
+          "squares": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8"],
+          "color": "#2196F315",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {"from": "a2", "to": "h2", "color": "#FF0000CC"},
+        {"from": "h2", "to": "h8", "color": "#FF0000AA"},
+        {"from": "g1", "to": "g8", "color": "#2196F3AA"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "game_id": "eg_KR-K_L1-001-1",
+  "description": "车对王-L1 演示1：王领路，车跟进封线逼角",
+  "intro": {
+    "flash_squares": ["c2", "c7", "a7", "a8"],
+    "popup": "💡 <b>演示1：王车配合，车封锁，王主动靠近逼迫，直到边或角取胜！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Ra8 — 将死！</b><br>要点：车封锁， 王逼迫，车等待时机完成将死！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc2",
+      "popup": "⬆️ <b>1.Rc2 — 白王靠近逼迫黑王，白车封锁c列。",
+      "highlights": [
+        {"squares": ["c2"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["c7", "c8"], "color": "#2196F325", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b2", "to": "c2", "color": "#2196F3CC"},
+        {"from": "c2", "to": "c7", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd7",
+      "popup": "⬇️ Kd7 — 黑王退向第7排，维持对抗。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Ke5",
+      "popup": "♔ <b>2.Ke5 — 白王主动靠近！</b><br>白王向黑王逼近，争夺关键格，同时保护车的下一步切入。王的参与是车对王残局的核心——没有白王，单车永远无法将死。",
+      "highlights": [
+        {"squares": ["ke5", "d6", "d7", "f6", "f7"], "color": "#4CAF5025", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "e5", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "⬇️ Ke7 — 黑王横移阻挡，不肯轻易退角。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Rc7+",
+      "popup": "⬆️ <b>3.Rc7+ — 车切入第7排，将军！</b><br>白车王配合，黑王只能退入第8排——包围圈开始收紧。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FF572255", "duration_ms": 0},
+        {"squares": ["a7", "b7", "d7", "e7", "f7", "g7", "h7"], "color": "#2196F320", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "c7", "color": "#2196F3CC"},
+        {"from": "c7", "to": "a7", "color": "#2196F3AA"},
+        {"from": "c7", "to": "h7", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kd8",
+      "popup": "⬇️ Kd8 — 黑王被迫退入第8排，空间越来越小，但还在威胁白车。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kd6",
+      "popup": "♔ <b>4.Kd6 — 白王紧跟！</b><br>白王跟进保护车，把黑王死死压在第8排。",
+      "highlights": [
+        {"squares": ["c7", "d7", "e7", "c8", "e8"], "color": "#4CAF5025", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "d6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ke8",
+      "popup": "⬇️ Ke8 — 黑王往右逃，试图绕开。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Ra7",
+      "popup": "⬆️ <b>5.Ra7 — 白车左移避黑王纠缠， 同时封死整个第7排！</b><br>黑王如回到d8, 立刻被将死， 黑无奈只能往右逃",
+      "highlights": [
+        {"squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"], "color": "#2196F320", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c7", "to": "a7", "color": "#2196F3CC"},
+        {"from": "a7", "to": "h7", "color": "#2196F3AA"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kf8",
+      "popup": "⬇️ Kf8 — 黑王向右逃，贴近角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Ke6",
+      "popup": "♔ Ke6 — 白王继续追逼，对黑王施加压力。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "d6", "to": "e6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kg8",
+      "popup": "⬇️ Kg8 — 黑王被迫向角落方向移动。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Kf6",
+      "popup": "♔ Kf6 — 白王再进一步，封住f7退路。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e6", "to": "f6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Kh8",
+      "popup": "⬇️ Kh8 — 黑王贴住角落！h8是最后的藏身处。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FF000030", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Kg6",
+      "popup": "♔ <b>Kg6 — 白王到位！</b><br>白王靠近封住黑王的所有逃路等黑王动。",
+      "highlights": [
+        {"squares": ["f7", "g7", "h7"], "color": "#4CAF5025", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "g6", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Kg8",
+      "popup": "⬇️ Kg8 — 黑王只有这一步可走！正是白方需要的时机。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Ra8#",
+      "popup": "⬆️ <b>Ra8# — 将死！</b><br>车一步将死对方黑王无处可逃——王车配合完美收官！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FF572255", "duration_ms": 0},
+        {"squares": ["a8", "b8", "c8", "d8", "e8", "f8", "h8"], "color": "#FF572220", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a7", "to": "a8", "color": "#FF0000CC"},
+        {"from": "a8", "to": "h8", "color": "#FF0000AA"},
+        {"from": "g6", "to": "g7", "color": "#4CAF50AA"},
+        {"from": "g6", "to": "f7", "color": "#4CAF50AA"},
+        {"from": "g6", "to": "h7", "color": "#4CAF50AA"}
+      ]
+    }
+  ]
+}

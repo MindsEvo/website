@@ -1,0 +1,7 @@
+1. Rb5 g3
+2. Rb3 g2
+3. Rg3 Ke5
+4. Rxg2 Ke4
+5. Ke7
+# END
+# 解法 1

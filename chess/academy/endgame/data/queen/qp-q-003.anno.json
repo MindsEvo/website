@@ -1,0 +1,71 @@
+{
+  "game_id": "eg_QP-Q_L2-003-1",
+  "description": "后兵对后 — 白方王的挺进，穿越连将护送c兵升变",
+  "intro": {
+    "flash_squares": ["c7", "d4", "g2", "c8", "a1"],
+    "popup": "⚔️ <b>后兵对后</b><br>白兵c7只差一步升变！黑后守在c8封锁通路。<br>白方计划：<b>王向前挺进，后伺机截断黑后连将，兵升变后双后绝杀！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>白方获胜！</b>王的挺进迫使黑后不断换位，白后在b5关键截断，c兵成功升变。双后联手完成绝杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qc5",
+      "popup": "白后占c5，控制升变通路，王准备前进。",
+      "highlights": [{"squares": ["c5", "c7", "c8"], "color": "#FFD70055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "c5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Kg3",
+      "popup": "白王毅然前进！",
+      "highlights": [{"squares": ["c7"], "color": "#FFD70055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g2", "to": "g3", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Qg8+",
+      "popup": "⚡ 黑后连将开始，企图阻止白王推进！",
+      "highlights": [{"squares": ["g8", "g3"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c8", "to": "g8", "color": "#E53935CC"}, {"from": "g8", "to": "g3", "color": "#FF6B35AA"}]
+    },
+    {
+      "index": 10,
+      "move": "Kd7",
+      "popup": "白王直抵第7行！连将阻止不了王的推进。",
+      "highlights": [{"squares": ["d7", "c7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "d7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 20,
+      "move": "Qb5",
+      "popup": "⭐ <b>关键截断！</b>白后移至b5，封堵黑后连将路线——c7兵升变之路打开！",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5088", "duration_ms": 0},
+        {"squares": ["c7"], "color": "#FFD700AA", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "b5", "color": "#4CAF50CC"},
+        {"from": "b3", "to": "b5", "color": "#FF000044"}
+      ]
+    },
+    {
+      "index": 22,
+      "move": "c8=Q",
+      "popup": "🎉 <b>升变！</b>c7兵晋升为后，白方双后登场！",
+      "highlights": [{"squares": ["c8"], "color": "#FFD700BB", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "c8", "color": "#FFD700CC"}]
+    },
+    {
+      "index": 38,
+      "move": "Qa1#",
+      "popup": "♛♛ <b>双后绝杀！</b>黑王困于角落，无路可逃。",
+      "highlights": [{"squares": ["a1"], "color": "#FF0000AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a4", "to": "a1", "color": "#4CAF50CC"}]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+1. Qd5+ Kg1
+2. Qd1+ Kg2
+3. Qd2+ Kg1
+4. Qd1+ Kg2
+5. Qd5+ Kg1
+6. Qd1+
+# END
+# 解法 1

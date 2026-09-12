@@ -1,0 +1,66 @@
+{
+  "game_id": "eg_P-P_L2-005-1",
+  "description": "兵对兵⑤：兵的通路 — 白方利用通路兵优势取胜",
+  "intro": {
+    "flash_squares": ["c2", "b2", "f6", "a4"],
+    "concept_arrows": [
+      {"from": "b2", "to": "b8", "color": "#FF6B35CC"}
+    ],
+    "popup": "💡 <b>兵的通路</b>：白兵 b2 前方畅通无阻（通路兵），黑兵 a4 也是通路兵，但白方先走且白王更靠近。谁能先升变？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王能护送 b 兵升变，同时拦截黑兵。通路兵 + 王的支援 = 取胜关键。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kb3",
+      "popup": "1.Kb3 — 白王向 a4 靠近，准备吃掉黑的通路兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "c2", "to": "b3", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Ke5",
+      "popup": "1...Ke5 — 黑王向中心进发，试图拦截白兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "f6", "to": "e5", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Kxa4",
+      "popup": "2.Kxa4 — 白王吃掉黑的通路兵！现在只有白兵 b2 还在。",
+      "highlights": [
+        {"squares": ["a4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "a4", "color": "#FF6B35CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Kd4",
+      "popup": "2...Kd4 — 黑王全力追赶白兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e5", "to": "d4", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 4,
+      "move": "b4",
+      "popup": "3.b4 — 白兵前进！白王护送，黑王无法追上。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "b2", "to": "b4", "color": "#FF6B35CC"}
+      ]
+    }
+  ]
+}

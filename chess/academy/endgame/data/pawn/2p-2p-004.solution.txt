@@ -1,0 +1,14 @@
+1. a3 h5
+2. Kg3 h4+
+3. Kh3 Kb3
+4. c5 Kc4
+5. c6 Kb3
+6. Kxh4 Kxa3
+7. c7 a4
+8. c8=Q Kb3
+9. Qc5 a3
+10. Qb5+ Kc3
+11. Qa4 a2
+12. Qxa2 Kd4
+# END
+# 解法 1

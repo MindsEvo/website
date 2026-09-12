@@ -1,0 +1,82 @@
+{
+  "game_id": "eg_KRP-KR_L2-001-1",
+  "description": "六线守和法 — 车兵对车残局的和棋技法",
+  "intro": {
+    "flash_squares": ["a2", "d6"],
+    "popup": "<b>对于马前兵和车前兵， 当对方王占领升变格时，有兵方无法取胜",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>车兵对车的这种和棋情况需要练习牢记。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kd2",
+      "popup": "<b>王将军试图驱赶黑王。",
+      "highlights": [{"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}, {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e1", "to": "d2", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ra6",
+      "popup": "<b>王躲将！",
+      "highlights": [{"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}]
+    },
+    {
+      "index": 2,
+      "move": "Kc3",
+      "popup": "白继续将军。",
+      "highlights": [{"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d2", "to": "c3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke6",
+      "popup": "黑王又回到角落。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}]
+    },
+    {
+      "index": 4,
+      "move": "Kd4",
+      "popup": "白车等着。",
+      "highlights": [{"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "d4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Ra4+",
+      "popup": "<b>黑王来回重复。"
+    },
+    {
+      "index": 6,
+      "move": "Kc5",
+      "popup": "白继续等着。",
+      "highlights": [{"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "c5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Ra1",
+      "popup": "<b>黑车也等着。",
+      "highlights": [{"squares": ["a1"], "color": "#4CAF5055", "duration_ms": 0}]
+    },
+    {
+      "index": 8,
+      "move": "d7",
+      "popup": "白继续将军！",
+      "highlights": [{"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}]
+    },
+    {
+      "index": 9,
+      "move": "Rd1",
+      "popup": "<b>黑王继续在角落来回重复， 和棋！"
+    }
+  ]
+}

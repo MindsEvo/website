@@ -1,0 +1,72 @@
+{
+  "game_id": "eg_KNP-K_L1-001-1",
+  "description": "a兵+马 = 和棋 演示",
+  "intro": {
+    "flash_squares": ["a7", "a8", "b5"],
+    "popup": "<b>白方有a兵和马，看似即将升变。<br>黑王有没有守和的方法？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b><br>黑王坚守a8角落，马无法赶走它；<br>如果兵升变后黑王可立即吃掉，仔细体会。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ke3",
+      "popup": "白王加速推进，支援兵升变。",
+      "highlights": [{"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "e3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ka8",
+      "popup": "<b>黑王直扑角落！</b>这是唯一的守和要点。",
+      "highlights": [{"squares": ["a8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "a8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kd4",
+      "popup": "白王继续逼近。",
+      "highlights": [{"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e3", "to": "d4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kb7",
+      "popup": "黑王灵活摆动，随时可回角落。",
+      "highlights": [{"squares": ["b7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a8", "to": "b7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kc5",
+      "popup": "白王步步紧逼。",
+      "highlights": [{"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "c5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Ka8",
+      "popup": "黑王再回角落，循环往复。",
+      "highlights": [{"squares": ["a8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "a8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kc6",
+      "popup": "白王已到最近，但无法突破——兵升变立即被吃，马帮不上忙。<b>和棋！</b>",
+      "highlights": [{"squares": ["a8", "a7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

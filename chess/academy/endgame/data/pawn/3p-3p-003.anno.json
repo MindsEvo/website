@@ -1,0 +1,139 @@
+{
+  "game_id": "eg_3P-3P_L3-003-1",
+  "description": "三兵对峙③：先手突破 — 对称阵型白先，b3创造兵形不对称，强行突破",
+  "intro": {
+    "flash_squares": [
+      "b1",
+      "a2",
+      "b2",
+      "c2",
+      "b8",
+      "a7",
+      "b7",
+      "c7"
+    ],
+    "concept_arrows": [
+      {
+        "from": "b2",
+        "to": "b4",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "b7",
+        "to": "b5",
+        "color": "#FF000066"
+      }
+    ],
+    "popup": "💡 <b>先手突破</b>：完全对称的阵型，白方先走占据优势。关键：1.b4！打破对称，迫使黑方做出不利选择。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白方利用先手权打破对称，创造不可阻挡的通路兵。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "b4",
+      "popup": "1.b4！— 打破对称！b 兵直冲，迫使黑方表态。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b2",
+          "to": "b4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "a5",
+      "popup": "1...a5 — 黑方侧翼反击。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a7",
+          "to": "a5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "2.c4 — c 兵跟进，白方三兵全线出动！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c2",
+          "to": "c4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "c5",
+      "popup": "2...c5 — 黑方也推 c 兵，但白方已占主动。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "b5",
+      "popup": "3.b5！— b 兵形成通路，黑方无法阻挡！",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "b6",
+            "b7",
+            "b8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "b5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc7",
+      "popup": "3...Kc7 — 黑王赶向 b 列，但已无法拦截。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b8",
+          "to": "c7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "a4",
+      "popup": "4.a4！— a 兵跟进，白方三路全面压制！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a2",
+          "to": "a4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

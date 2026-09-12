@@ -1,0 +1,120 @@
+{
+  "game_id": "eg_N-P_L2-003-1",
+  "description": "黑马追上白兵 — 和棋（重复局面）",
+  "intro": {
+    "flash_squares": ["a6", "c6", "f1"],
+    "popup": "<b>黑马能追上吗？</b><br>白方a6兵靠近升变，黑马在c6可以阻击。<br>黑马反复将军 + 守住升变格 = 成功保和！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>要点</b><br>黑马将军→驱王→守住a8升变格，循环往复。<br>与001/002对比：马阻击兵升变是可行的，但要计算清楚马的步数！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kb5",
+      "popup": "<b>白王向升变格推进！</b><br>白王前进企图保护a6兵推进升变。",
+      "highlights": [{"squares": ["b5", "a6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "b5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Na7+",
+      "popup": "<b>黑马将军！</b><br>Na7+将军白王，同时跳到a7后可以跳到c8或b5守住升变路线。",
+      "highlights": [{"squares": ["b5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "a7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kc5",
+      "popup": "白王退回c5。",
+      "highlights": [{"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b5", "to": "c5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke1",
+      "popup": "黑王待机，等待时机。",
+      "highlights": [{"squares": ["e1"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f1", "to": "e1", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kb6",
+      "popup": "白王再次逼近。",
+      "highlights": [{"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "b6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Nc8+",
+      "popup": "<b>马到c8将军！</b><br>黑马此刻在c8，恰好守住了a7和b6要点。",
+      "highlights": [{"squares": ["b6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "c8", "color": "#E53935CC"}, {"from": "c8", "to": "b6", "color": "#FF6B35CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kb7",
+      "popup": "白王逼近到b7。",
+      "highlights": [{"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "b7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Nd6+",
+      "popup": "<b>马到d6将军！</b><br>马继续将军，黑马不断跳跃牢牢牵制白王。",
+      "highlights": [{"squares": ["b7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c8", "to": "d6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kc7",
+      "popup": "白王到c7。",
+      "highlights": [{"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "c7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Nb5+",
+      "popup": "黑马将军！",
+      "highlights": [{"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "b5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Kb7",
+      "popup": "白王退回b7。",
+      "highlights": [{"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "b7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Ke2",
+      "popup": "黑王缓缓靠近战场。",
+      "highlights": [{"squares": ["e2"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e1", "to": "e2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Kc7",
+      "popup": "<b>三次重复！和棋！</b><br>同一局面已出现三次，黑马守住了升变格，和棋！",
+      "highlights": [{"squares": ["a6", "a7", "a8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

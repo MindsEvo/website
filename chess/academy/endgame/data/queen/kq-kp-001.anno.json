@@ -1,0 +1,174 @@
+{
+  "game_id": "eg_KQ-KP_L1-001-1",
+  "description": "后对d兵 — 将军牵制 + 白王推进取胜",
+  "intro": {
+    "flash_squares": [
+      "d2",
+      "d1"
+    ],
+    "popup": "⚠️ 黑兵即将升后！<br>白方策略：<b>将军逼走黑王</b>，再让后占牵制格守住升变路，白王缓缓推进协助。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 中心兵无法对抗后+王的配合。<br>关键技巧：后先<b>将军驱逐</b>，再<b>占牵制格</b>锁住升变路，最终白王靠近结束战斗。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qe8+",
+      "popup": "将军！逼黑王离开护兵位置。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "e8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Qa4",
+      "popup": "⚡ 关键！后占牵制格，从斜线死死锁住d1升变路。",
+      "highlights": [
+        {
+          "squares": [
+            "a4",
+            "d1",
+            "d2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "a4",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "a4",
+          "to": "d1",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Kd7",
+      "popup": "⚡ 白王出动推进！后守住升变路，王来参战。",
+      "highlights": [
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "d7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Ke6",
+      "popup": "王继续靠近——包围圈越来越小。",
+      "highlights": [
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "e6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "move": "Kd5",
+      "popup": "王步步逼近，黑方已无法继续守兵。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "move": "Qxd2",
+      "popup": "⚡ 后终于吃掉d兵！",
+      "highlights": [
+        {
+          "squares": [
+            "d2"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d2",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "move": "Qg2#",
+      "popup": "✅ 将死！",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "g2",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

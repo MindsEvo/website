@@ -1,0 +1,125 @@
+{
+  "game_id": "eg_KR-KP_L1-001-1",
+  "description": "车对b兵 — 王车协同，驱王追兵",
+  "intro": {
+    "flash_squares": [
+      "b5",
+      "g8"
+    ],
+    "popup": "⚠️ 黑b5兵正在推进！<br>策略：<b>白王靠近</b>，车驱逐黑王，逐步截断黑兵。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 标准王车取兵！<br>关键：<b>车驱逐黑王</b>，白王趁机推进，最终截断兵路。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf7",
+      "popup": "白王向黑兵侧进发！",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "f7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Rh8",
+      "popup": "车将黑王驱离！白王继续推进。",
+      "highlights": [
+        {
+          "squares": [
+            "h8"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "h8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Rb4",
+      "popup": "⚡ 关键！车截住黑兵退路！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "b3"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b8",
+          "to": "b4",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Rxb3",
+      "popup": "吃掉黑兵，胜势确立！",
+      "highlights": [
+        {
+          "squares": [
+            "b3"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "b3",
+          "color": "#FFD700CC"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "move": "Rg8#",
+      "popup": "✅ 将死！",
+      "highlights": [
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "g8",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

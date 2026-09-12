@@ -1,0 +1,303 @@
+{
+  "game_id": "eg_Q-R_L2-005-1",
+  "description": "后对车 — 王后配合驱王到角，逼走黑车，完成将死",
+  "intro": {
+    "flash_squares": ["e5", "f5", "d7", "e7"],
+    "popup": "♛🏰 <b>后对车经典制胜手法</b><br>白King e5、白Queen f5，黑Rook d7、黑King e7。<br>白方目标：<b>连将驱赶黑王到角落，再迫使黑车脱离防守，最终吃车制胜！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Qa3将杀！</b>历经21步，黑王被困在角落，失去黑车后无力抵抗。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qg5+",
+      "popup": "将军！白后开始驱赶黑王。",
+      "highlights": [{"squares": ["g5", "e7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "g5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 1,
+      "move": "Kf7",
+      "popup": "黑王逃向f7。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e7", "to": "f7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 2,
+      "move": "Qh5+",
+      "popup": "继续追击，侧翼将军！",
+      "highlights": [{"squares": ["h5", "f7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g5", "to": "h5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "黑王退回e7。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f7", "to": "e7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 4,
+      "move": "Qh4+",
+      "popup": "白后换角度，继续将军。",
+      "highlights": [{"squares": ["h4", "e7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h5", "to": "h4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Kf7",
+      "popup": "黑王再次逃向f7。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e7", "to": "f7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 6,
+      "move": "Qh7+",
+      "popup": "白后h7将军，继续驱赶！",
+      "highlights": [{"squares": ["h7", "f7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "h7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Ke8",
+      "popup": "黑王被迫退到第8横线。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f7", "to": "e8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 8,
+      "move": "Qg8+",
+      "popup": "白后g8将军，将黑王赶上第8横线！",
+      "highlights": [{"squares": ["g8", "e8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h7", "to": "g8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 9,
+      "move": "Ke7",
+      "popup": "黑王在第8横线上被迫来回移动。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e8", "to": "e7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 10,
+      "move": "Qc8",
+      "popup": "⭐ <b>关键静着！</b>白后到c8，封锁黑王所有后退路线，黑车被迫主动出击。",
+      "highlights": [{"squares": ["c8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "c8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 11,
+      "move": "Rd2",
+      "popup": "黑车无处可躲，冲出来活动。",
+      "highlights": [{"squares": ["d2"], "color": "#E5393566", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "d2", "color": "#E53935CC"}]
+    },
+    {
+      "index": 12,
+      "move": "Qc5+",
+      "popup": "将军！同时威胁黑车。",
+      "highlights": [{"squares": ["c5", "e7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c8", "to": "c5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 13,
+      "move": "Kd7",
+      "popup": "黑王被迫移动，与黑车更远了。",
+      "highlights": [{"squares": ["d2"], "color": "#E5393544", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "d7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 14,
+      "move": "Qb5+",
+      "popup": "将军，继续驱赶黑王向边角。",
+      "highlights": [{"squares": ["b5", "d7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "b5", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 15,
+      "move": "Kc8",
+      "popup": "黑王被逼到c8。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d7", "to": "c8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 16,
+      "move": "Ke6",
+      "popup": "⭐ <b>白王加入！</b>白王前进到e6，全面压制。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "e6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 17,
+      "move": "Rc2",
+      "popup": "黑车换位，保持距离。",
+      "highlights": [],
+      "concept_arrows": [{"from": "d2", "to": "c2", "color": "#E53935CC"}]
+    },
+    {
+      "index": 18,
+      "move": "Kd6",
+      "popup": "白王步步紧逼，向d6前进。",
+      "highlights": [],
+      "concept_arrows": [{"from": "e6", "to": "d6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 19,
+      "move": "Rh2",
+      "popup": "黑车逃到h列，远离战场。",
+      "highlights": [],
+      "concept_arrows": [{"from": "c2", "to": "h2", "color": "#E53935CC"}]
+    },
+    {
+      "index": 20,
+      "move": "Qc6+",
+      "popup": "将军！压迫黑王到角落。",
+      "highlights": [{"squares": ["c6", "c8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b5", "to": "c6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 21,
+      "move": "Kb8",
+      "popup": "黑王向b8退缩。",
+      "highlights": [],
+      "concept_arrows": [{"from": "c8", "to": "b8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 22,
+      "move": "Qb6+",
+      "popup": "将军！再把黑王逼向角落。",
+      "highlights": [{"squares": ["b6", "b8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "b6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 23,
+      "move": "Ka8",
+      "popup": "黑王被迫退到角落！",
+      "highlights": [{"squares": ["a8"], "color": "#E5393566", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "a8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 24,
+      "move": "Qb1",
+      "popup": "白后转移到b1，重新布局瞄准黑车。",
+      "highlights": [{"squares": ["b1"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "b1", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 25,
+      "move": "Rf2",
+      "popup": "黑车从h2移向f2，准备侧翼将军。",
+      "highlights": [],
+      "concept_arrows": [{"from": "h2", "to": "f2", "color": "#E53935CC"}]
+    },
+    {
+      "index": 26,
+      "move": "Qe4+",
+      "popup": "将军，继续追击黑王。",
+      "highlights": [{"squares": ["e4", "a8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b1", "to": "e4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 27,
+      "move": "Kb8",
+      "popup": "黑王从角落溜出。",
+      "highlights": [],
+      "concept_arrows": [{"from": "a8", "to": "b8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 28,
+      "move": "Qb4+",
+      "popup": "将军，把黑王再次逼回角落。",
+      "highlights": [{"squares": ["b4", "b8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "b4", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 29,
+      "move": "Ka8",
+      "popup": "黑王被迫回到a8角落。",
+      "highlights": [{"squares": ["a8"], "color": "#E5393566", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "a8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 30,
+      "move": "Kc6",
+      "popup": "⭐ 白王再次向前，进入关键位置！",
+      "highlights": [],
+      "concept_arrows": [{"from": "d6", "to": "c6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 31,
+      "move": "Rf6+",
+      "popup": "黑车将军！拼死拖延。",
+      "highlights": [{"squares": ["f6", "c6"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "f6", "color": "#E53935CC"}]
+    },
+    {
+      "index": 32,
+      "move": "Kc7",
+      "popup": "白王躲将，继续前进。",
+      "highlights": [],
+      "concept_arrows": [{"from": "c6", "to": "c7", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 33,
+      "move": "Rf7+",
+      "popup": "黑车再次将军，继续骚扰。",
+      "highlights": [{"squares": ["f7", "c7"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "f7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 34,
+      "move": "Kc8",
+      "popup": "白王继续前进到c8！",
+      "highlights": [],
+      "concept_arrows": [{"from": "c7", "to": "c8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 35,
+      "move": "Rf8+",
+      "popup": "黑车最后一次将军。",
+      "highlights": [{"squares": ["f8", "c8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "f8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 36,
+      "move": "Qxf8",
+      "popup": "🎯 <b>白后吃掉黑车！</b>白后从b4直扑f8，吃子！",
+      "highlights": [{"squares": ["f8"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b4", "to": "f8", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 37,
+      "move": "Ka7",
+      "popup": "黑王从角落溜出，试图逃跑。",
+      "highlights": [],
+      "concept_arrows": [{"from": "a8", "to": "a7", "color": "#E53935CC"}]
+    },
+    {
+      "index": 38,
+      "move": "Qd6",
+      "popup": "白后到d6，封锁逃路，准备将军。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "d6", "color": "#4CAF50CC"}]
+    },
+    {
+      "index": 39,
+      "move": "Ka8",
+      "popup": "黑王无路可走，退回角落。",
+      "highlights": [],
+      "concept_arrows": [{"from": "a7", "to": "a8", "color": "#E53935CC"}]
+    },
+    {
+      "index": 40,
+      "move": "Qa3#",
+      "popup": "♟ <b>将杀！</b>白后a3，白王c8联合围住黑王，无处可逃！",
+      "highlights": [{"squares": ["a3", "a8"], "color": "#FFD700AA", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "a3", "color": "#4CAF50CC"}]
+    }
+  ]
+}

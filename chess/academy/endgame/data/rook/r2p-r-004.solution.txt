@@ -1,0 +1,19 @@
+... Rb8
+2. Re8 Rb6
+3. Re1 Rb7+
+4. Kf8 Rb8+
+5. Re8 Rb4
+6. f6 Rb5
+7. f7 Rb7
+8. Re6 Rb8+
+9. Ke7 Rb7+
+10. Kf6 Rb8
+11. Re7 Kxh6
+12. Re8 Rb6+
+13. Ke5 Rb5+
+14. Kd4 Rb4+
+15. Kc3 Rf4
+16. f8=Q+ Rxf8
+17. Rxf8 Kg7
+# END
+# 解法 1

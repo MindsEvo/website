@@ -1,0 +1,7 @@
+... Nd3
+2. Kc6 Ne5+
+3. Kc7 Nd3
+4. Kc6 Ne5+
+5. Kc7 Nd3
+# END
+# 解法 1

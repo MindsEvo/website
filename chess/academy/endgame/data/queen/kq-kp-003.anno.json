@@ -1,0 +1,171 @@
+{
+  "game_id": "eg_KQ-KP_L1-003-1",
+  "description": "后对f兵 — 平局陷阱：黑王躲入角落，永续将",
+  "intro": {
+    "flash_squares": [
+      "f2",
+      "h1"
+    ],
+    "popup": "⚠️ <b>警告！平局陷阱！</b><br>f兵+黑王向角落跑 = <b>必然平局</b>。<br>白方无论怎样都会陷入永续将——看清楚为什么！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>平局！永续将。</b><br>关键：黑王进入h1角后，后无法既将军又阻升变，陷入死局。<br>记住：<b>f兵角落 = 平局！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qg7+",
+      "popup": "白方尝试将军驱逐。",
+      "highlights": [
+        {
+          "squares": [
+            "g7"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f8",
+          "to": "g7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kh1",
+      "popup": "⚡ 黑王钻进角落！这是关键一步——白方的麻烦开始了。",
+      "highlights": [
+        {
+          "squares": [
+            "h1",
+            "g1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "h1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Qe3",
+      "popup": "白尝试封住升变路——阻止f1升后。",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "f2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h6",
+          "to": "e3",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kg2",
+      "popup": "黑王安然游走。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h1",
+          "to": "g2",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Qe2",
+      "popup": "白再次封堵——下步要升变了！",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "f1",
+            "f2"
+          ],
+          "color": "#4CAF5033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "e2",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kg1",
+      "popup": "黑王回到角落！后若离开e2，兵就升变……",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "g1",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Qg5+",
+      "popup": "🤝 永续将！白方已无法进步——平局成立。",
+      "highlights": [
+        {
+          "squares": [
+            "g5"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "g5",
+          "color": "#FFD700CC"
+        }
+      ]
+    }
+  ]
+}

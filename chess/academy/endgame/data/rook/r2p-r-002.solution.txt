@@ -1,0 +1,16 @@
+1. g6 Rh8
+2. g7 Rg8
+3. Rg5+ Kf6
+4. Ke4 Re8+
+5. Kd5 Rd8+
+6. Kc6 Kf7
+7. Kc7 Rg8
+8. Kd7 Kf6
+9. Rg2 Kf5
+10. Ke7 Ke4
+11. Kf7 Ra8
+12. g8=Q Rxg8
+13. Rxg8 Kxf4
+14. Re8 Kg5
+# END
+# 解法 1

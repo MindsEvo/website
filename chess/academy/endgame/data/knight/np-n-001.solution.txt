@@ -1,0 +1,10 @@
+1. Ke6 Nb4
+2. d7 Kc7
+3. Na6+ Nxa6
+4. Ke7 Kc6
+5. d8=Q Nb4
+6. Qd4 Nd5+
+7. Ke6 Nb6
+8. Qb4
+# END
+# 解法 1

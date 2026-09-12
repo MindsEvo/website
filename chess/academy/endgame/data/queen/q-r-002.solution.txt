@@ -1,0 +1,11 @@
+1. Qd5+ Kh7
+2. Qh1+ Kg8
+3. Qh5 Rg1
+4. Qd5+ Kh7
+5. Qe4+ Kh8
+6. Qa8+ Kh7
+7. Qa7+ Kg8
+8. Qxg1+ Kf8
+9. Qa7 Ke8
+# END
+# 解法 1

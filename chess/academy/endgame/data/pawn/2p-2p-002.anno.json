@@ -1,0 +1,140 @@
+{
+  "game_id": "eg_2P-2P_L3-002-1",
+  "description": "双兵对峙②：王兵协同 — 白王占据有利位置，g/h联兵配合推进",
+  "intro": {
+    "flash_squares": [
+      "f4",
+      "g2",
+      "h2",
+      "d3",
+      "g6",
+      "h7"
+    ],
+    "concept_arrows": [
+      {
+        "from": "f4",
+        "to": "g5",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "g2",
+        "to": "g5",
+        "color": "#FF6B35CC"
+      }
+    ],
+    "popup": "💡 <b>王兵协同</b>：白王（f4）已在黑方阵地中，比黑王（d3）更靠近双兵战场。白方推进 g/h 联兵，白王保驾护航。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王在前，联兵跟进，黑方无法同时阻挡两路推进。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "g4",
+      "popup": "1.g4 — 联兵出动！两兵齐头并进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "g4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "h5",
+      "popup": "1...h5 — 黑兵试图阻挡 h 路推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h7",
+          "to": "h5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "g5",
+      "popup": "2.g5 — g 兵继续前进！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "g5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ke4",
+      "popup": "2...Ke4 — 黑王加速追赶。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "h4",
+      "popup": "3.h4 — h 兵跟进，双路推进！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h2",
+          "to": "h4",
+          "color": "#FF6B35CC"
+        },
+        {
+          "from": "g5",
+          "to": "g8",
+          "color": "#FF6B3566"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "hxg5",
+      "popup": "3...h×g5 — 黑兵吃掉 g5，但 h 兵仍在。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "g5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "hxg5",
+      "popup": "4.h×g5 — 白 h 兵回吃，局面清晰，白王+g5 兵胜。",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "g5"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "g5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "game_id": "eg_KQ-K_L1-001-3",
+  "description": "后对王-L1 解法3：理想型角落将死法",
+  "intro": {
+    "flash_squares": ["a8"],
+    "popup": "💡 <b>解法3：简洁的角落将死示范！<b>思路：最短路线把黑王赶进a8角落，一步将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Qa6 — 将死！</b>5步完成将死，是三种解法中最直接的角落将死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qc4",
+      "popup": "⬆️ <b>1.Qc4 — 后走c4！</b><br>与前两种解法不同，后先走c4控制对角线，黑王被迫向上退。",
+      "highlights": [
+        {"squares": ["b5", "a6", "b3", "a2"], "color": "#00BCD430", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "a6", "color": "#00BCD4CC"},
+        {"from": "c4", "to": "c7", "color": "#00BCD4CC"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kb7",
+      "popup": "⬇️ Kb7 — 黑王往上走，朝着角落方向。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Ke7",
+      "popup": "⬆️ <b>2.Ke7 — 白王快速逼近！</b><br>王到e7，准备走d7→c7快速封锁。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "e7", "to": "d7", "color": "#4CAF50CC"},
+        {"from": "d7", "to": "c7", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ka8",
+      "popup": "⬇️ Ka8 — 黑王被逼入角落！",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Kd7",
+      "popup": "⬆️ <b>3.Kd7 — 白王步步紧逼！</b><br>走向c7的必经路。",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "d7", "to": "c7", "color": "#4CAF50CC"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ka7",
+      "popup": "⬇️ Ka7 — 黑王从角落逃出，但只能暂时。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kc7",
+      "popup": "⬆️ <b>4.Kc7 — 白王就位c7！</b><br>封死b6/b7/b8，黑王又只剩a8。",
+      "highlights": [
+        {"squares": ["b6", "b7", "b8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Ka8",
+      "popup": "⬇️ Ka8 — 黑王再次退入角落，无路可走。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Qa6#",
+      "popup": "⬆️ <b>5.Qa6# — 将死！</b><br>后一步从c4斜线将军a6！王控制b列，黑王困在a8，三角将死完成！",
+      "highlights": [
+        {"squares": ["a8", "b8", "b7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "a6", "color": "#FF0000CC"}
+      ]
+    }
+  ]
+}

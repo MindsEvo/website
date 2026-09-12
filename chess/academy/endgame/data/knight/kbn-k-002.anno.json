@@ -1,0 +1,238 @@
+{
+  "game_id": "eg_KBN-K_L1-002-1",
+  "description": "象马对王-L1 演示②：深色格象逼入h8深色角落",
+  "intro": {
+    "flash_squares": ["f7", "d8", "f8", "h5"],
+    "popup": "💡 <b>深色格象示例</b><br>象的颜色决定要逼入哪个角落！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>Ng5# — 绝杀！深色象→h8角！</b>象的颜色=目标角落的颜色！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Be7",
+      "popup": "🔄 1.Be7 — 深色象从f8移至e7，开始协调王和马向h8发起逼迫。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "e7", "color": "##FF0000AA"},
+        {"from": "e7", "to": "h4", "color": "#FF0000AA"}
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kh6",
+      "popup": "↓ Kh6 — 黑王向h路退缩。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Kf4",
+      "popup": "♔ 2.Kf4 — 白王向中心逼近，准备封锁h路逃跑。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f3", "to": "f4", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 3,
+      "move": "Kg6",
+      "popup": "↓ Kg6 — 黑王挣扎。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Ke4",
+      "popup": "♔ 3.Ke4 — 白王等了一步。",
+      "highlights": [],
+      "concept_arrows": [{"from": "f4", "to": "e4", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 5,
+      "move": "Kg7",
+      "popup": "↓ Kg7 — 黑王继续在g、h路徘徊。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Kf5",
+      "popup": "♔ 4.Kf5 — 白王到f5，开始逼迫黑王。",
+      "highlights": [
+        {"squares": ["g4","g5","g6","h4","h5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "e4", "to": "f5", "color": "#2196F3CC"}]
+    },
+    {
+      "index": 7,
+      "move": "Kh6",
+      "popup": "↓ Kh6 — 黑王沿h路移动，试图逃出。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Ne6",
+      "popup": "⭐ 5.Ne6 — 马准备加入包围。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["c5","c7","d4","d8","f4","f8","g5","g7"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d8", "to": "e6", "color": "#2196F3CC"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kh5",
+      "popup": "↓ Kh5 — 黑王还在试图逃脱。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Nf4+",
+      "popup": "⭐ 6.Nf4+ — 将军！马加入包围！",
+      "highlights": [
+        {"squares": ["f4"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["h5","g6","h3","g2","e2","d3","d5","e6"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "f4", "color": "#2196F3CC"},
+        {"from": "f4", "to": "h5", "color": "#FF0000AA"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Kh6",
+      "popup": "↓ Kh6 — 唯一合法走法！）",
+      "highlights": [
+        {"squares": ["h4","g4","g5"], "color": "#2196F333", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#2196F333", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Kf6",
+      "popup": "♔ 7.Kf6 — 白王直逼h8方向，封锁g7出口！",
+      "highlights": [],
+      "concept_arrows": [
+        {"from": "f5", "to": "f6", "color": "#2196F3CC"},
+        {"from": "f6", "to": "g7", "color": "#FF000044"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Kh7",
+      "popup": "↓ Kh7 — 黑王沿h路后退，逐渐被逼向角落。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Bf8",
+      "popup": "🔄 <b>8.Bf8 — 象进一步封锁！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7","h6"], "color": "#4CAF5033", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "g7", "color": "#4CAF5066"},
+        {"from": "f8", "to": "h6", "color": "#4CAF5066"}
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Kh8",
+      "popup": "↓ <b>Kh8 — 黑王退入深色角落h8！是唯一选择！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Kf7",
+      "popup": "♔ 9.Kf7 — 白王到f7，封死g8！<br>黑王在h8只剩h7可走。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#2196F333", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "f7", "color": "#2196F3CC"},
+        {"from": "f7", "to": "g8", "color": "#FF000044"}
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Kh7",
+      "popup": "↓ Kh7 — 被迫！只能走h7。",
+      "highlights": [
+        {"squares": ["g7","g8"], "color": "#FF000033", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Nh3",
+      "popup": "⭐ <b>10.Nh3 — 马重新定位，准备最终将杀！</b><br>马从f4跳到h3，准备Ng5——届时将控制h7！",
+      "highlights": [
+        {"squares": ["h3"], "color": "#2196F355", "duration_ms": 0},
+        {"squares": ["g1","f2","f4","g5"], "color": "#2196F322", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "h3", "color": "#2196F3CC"},
+        {"from": "h3", "to": "g5", "color": "#2196F366"}
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Kh8",
+      "popup": "↓ Kh8 — 黑王回到角落；试图抵抗。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FF000044", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Bg7+",
+      "popup": "⭐ 11.Bg7+ — 象将军！<br>象从f8跳到g7，直接将军h8！<br>黑王只能逃往h7（g8=白王Kf7封死）。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h8", "color": "#FF0000AA"}
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Kh7",
+      "popup": "↓ Kh7 — 被迫！g8=Kf7，只能去h7。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "Ng5#",
+      "popup": "🏁 <b>Ng5# — 将死！深色象→h8角完成！</b><br>马从h3跃至g5将死h7：<br>• g6 → 白王Kf7控制<br>• g7 → 象Bg7占据<br>• g8 → 白王Kf7控制<br>• h6 → 象Bg7攻击(g7→h6 ✓)<br>• h8 → 象Bg7攻击(g7→h8 ✓)<br><b>对称之美：深色象→h8 = 浅色象→h1！</b>",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5077", "duration_ms": 0},
+        {"squares": ["g6","g8"], "color": "#2196F333", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#4CAF5044", "duration_ms": 0},
+        {"squares": ["h6","h8"], "color": "#FF000044", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "g5", "color": "#4CAF50CC"},
+        {"from": "g5", "to": "h7", "color": "#FF0000AA"}
+      ]
+    }
+  ]
+}

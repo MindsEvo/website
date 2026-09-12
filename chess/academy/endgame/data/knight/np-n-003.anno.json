@@ -1,0 +1,332 @@
+{
+  "game_id": "eg_NP-N_L2-003-1",
+  "description": "马兵对马 — 王马配合强行升变",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "c4",
+      "b4",
+      "b1"
+    ],
+    "popup": "♞🐴 <b>王马协作推进！</b><br>白方 王+马+b4兵 vs 黑方 王g7+马b1。<br>黑方率先走棋——黑方必须<b>用王快速过来拦截白方推进！</b><br>看白方如何用王马配合强行升变。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♛ <b>b8=Q+ 升变成后将军！</b>白方王马默契配合，兵一路推到底线，黑方无法阻拦。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf7",
+      "popup": "黑王快速靠近，试图拦截白兵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "f7",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "b5",
+      "popup": "白兵不顾黑王，继续前进！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "b5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ke7",
+      "popup": "黑王继续靠近，争夺阻截位置。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f7",
+          "to": "e7",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "b6",
+      "popup": "兵继续向前，已过半程！",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "b6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Kd7",
+      "popup": "黑王赶到d7，试图直接封锁升变路线。",
+      "highlights": [
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "d7",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc5",
+      "popup": "⭐ 白王前进到c5，配合马控制关键格。",
+      "highlights": [
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nc3",
+      "popup": "黑马从b1跳到c3，试图换掉白马或阻拦。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b1",
+          "to": "c3",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ne5+",
+      "popup": "白马将军！驱逐在d7的黑王。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "e5",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "e5",
+          "to": "d7",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Kc8",
+      "popup": "黑王被迫逃走。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "c8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Kc6",
+      "popup": "白王到c6，完全控制升变区域。",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "c6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Kb8",
+      "popup": "黑王后撤到b8，守在升变格旁。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "b8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nd7+",
+      "popup": "⭐ 白马将军将黑王赶走！",
+      "highlights": [
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d7",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "d7",
+          "to": "b8",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Kc8",
+      "popup": "黑王只能逃到c8。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b8",
+          "to": "c8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "b7+",
+      "popup": "兵到b7将军！黑王必须移动。",
+      "highlights": [
+        {
+          "squares": [
+            "b7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "b7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Kd8",
+      "popup": "黑王被迫离开升变区。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "d8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "b8=Q+",
+      "popup": "♛ <b>升变成后将军！白方完胜。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "b8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b7",
+          "to": "b8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    }
+  ]
+}

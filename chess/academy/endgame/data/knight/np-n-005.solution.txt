@@ -1,0 +1,8 @@
+... Nf6+
+2. Kd8 Ne8
+3. Ne6 Nf6
+4. Ng5+ Kg6
+5. Ne4 Nxe4
+6. e8=Q+
+# END
+# 解法 1

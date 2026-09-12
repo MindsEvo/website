@@ -1,0 +1,8 @@
+1. Kg4 Kg2
+2. Qa2+ Kf1
+3. Qxh2 Ke1
+4. Qb2 Kf1
+5. Kf3 Ke1
+6. Qc1#
+# END
+# 解法 1

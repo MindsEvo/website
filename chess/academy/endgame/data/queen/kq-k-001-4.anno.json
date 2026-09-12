@@ -1,0 +1,93 @@
+{
+  "game_id": "eg_KQ-K_L1-001-4",
+  "description": "后对王-L1 解法4：困毙陷阱警示",
+  "intro": {
+    "flash_squares": ["a6"],
+    "popup": "⚠️ <b>解法4：困毙陷阱！</b><br>这一局演示了一个严重错误！白方本来必胜，却因为一步失误造成<b>和棋（困毙）</b>。<br>仔细看白方第5步——Kc7 对吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "⚠️ <b>Kc7 — 困毙！和棋！</b><br>黑王在a6没有被将军，但也没有任何合法走步——这就是「困毙」！<br><b>必赢的残局瞬间变成和棋。后残局中这是最常见的失误！</b>",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qc4",
+      "popup": "⬆️ 1.Qc4 — 开局看起来很正常。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "Ka5",
+      "popup": "⬇️ Ka5 — 黑王向下走，避开角落方向。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Ke7",
+      "popup": "⬆️ 2.Ke7 — 白王开始逼近。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "Kb6",
+      "popup": "⬇️ Kb6 — 黑王向中间走。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Kd6",
+      "popup": "⬆️ 3.Kd6 — 白王继续跟进。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Kb7",
+      "popup": "⬇️ Kb7 — 黑王往角落方向撤退。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Qc5",
+      "popup": "⬆️ 4.Qc5 — 后控制关键格。<br>Qc5控制a5、b6/a7对角线，黑王活动空间越来越小。",
+      "highlights": [
+        {"squares": ["a5", "b6", "a7"], "color": "#FF572230", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "c8", "color": "#FF5722CC"},
+        {"from": "c5", "to": "a7", "color": "#FF5722CC"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ka6",
+      "popup": "⬇️ Ka6 — 黑王只能在a6。<br>⚠️ <b>现在注意！黑王在a6，没有被将军，但下一步可能无处可走！</b><br>请仔细看白方下一步……",
+      "highlights": [
+        {"squares": ["a5", "a7", "b5", "b6", "b7"], "color": "#FF572240", "duration_ms": 0}
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Kc7",
+      "popup": "🔴 <b>5.Kc7 — 和棋！困毙！</b><br>黑王在a6：a5被Qc5封锁，a7被Qc5对角线封锁，b5/b6/b7被王和后共同封锁。<br><b>黑王没有被将军，却无路可走 = 困毙 = 和棋！</b><br>必赢的残局瞬间变成平局 —— 这是后残局最常见也最危险的失误！",
+      "highlights": [
+        {"squares": ["a6"], "color": "#FF000088", "duration_ms": 4000},
+        {"squares": ["a5", "a7", "b5", "b6", "b7"], "color": "#FF572255", "duration_ms": 4000}
+      ],
+      "concept_arrows": [
+        {"from": "c7", "to": "b6", "color": "#FF0000CC"},
+        {"from": "c5", "to": "a5", "color": "#FF0000CC"},
+        {"from": "c5", "to": "a7", "color": "#FF0000CC"}
+      ]
+    }
+  ]
+}

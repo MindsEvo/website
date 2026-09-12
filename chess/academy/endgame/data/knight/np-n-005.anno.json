@@ -1,0 +1,254 @@
+{
+  "game_id": "eg_NP-N_L2-005-1",
+  "description": "马兵对马 — 马的路线组合清除封堵",
+  "intro": {
+    "flash_squares": [
+      "d7",
+      "e7",
+      "c5",
+      "f7",
+      "h7"
+    ],
+    "popup": "♞✨ <b>白马的妙手路线！</b><br>白方 王d7+兵e7+马c5 vs 黑方 王f7+马h7。<br>黑马封堵在h7——看似稳固，实则白马有连贯的跳法路线将其驱走！<br><b>白马走 Ne6-Ng5-Ne4，最终迫使黑马自我献祭！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "♛ <b>e8=Q+ 升变将军！</b>白马一连串调动，让黑马的封堵功亏一篑——黑马被迫吃白马，兵顺利升变！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf6+",
+      "popup": "黑马将军，试图拖延时间。",
+      "highlights": [
+        {
+          "squares": [
+            "f6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h7",
+          "to": "f6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd8",
+      "popup": "白王巧妙退到d8，同时支援兵并躲将。",
+      "highlights": [
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ne8",
+      "popup": "黑马跳到e8封住升变格！看似守住了。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ne6",
+      "popup": "⭐ <b>白马到e6！</b>第一步——攻击黑马并准备下一跳。",
+      "highlights": [
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "e6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nf6",
+      "popup": "黑马被迫退到f6，暂时离开e8。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "f6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ng5+",
+      "popup": "白马跳ng5将军！驱赶黑王，同时为下一步Ne4做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "g5"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "g5",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "g5",
+          "to": "f7",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kg6",
+      "popup": "黑王被迫逃到g6，脱离守卫位置。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f7",
+          "to": "g6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Ne4",
+      "popup": "🎯 <b>白马到e4！</b>攻击黑马，黑马无处可逃只能被吃！",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f6"
+          ],
+          "color": "#FF000044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "e4",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "e4",
+          "to": "f6",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nxe4",
+      "popup": "黑马被迫吃白马——升变通路彻底清空！",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "e8=Q+",
+      "popup": "♛ <b>升变将军！</b>白兵在e8升变成后，将军黑王！",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "e8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    }
+  ]
+}

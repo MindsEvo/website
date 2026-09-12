@@ -1,0 +1,140 @@
+{
+  "game_id": "eg_3P-3P_L3-005-1",
+  "description": "三兵对峙⑤：王的位置 — 白王g6比黑王g3高出三行，兵形相同王位决定胜负",
+  "intro": {
+    "flash_squares": [
+      "g6",
+      "a4",
+      "b3",
+      "c4",
+      "g3",
+      "a5",
+      "b6",
+      "c5"
+    ],
+    "concept_arrows": [
+      {
+        "from": "g6",
+        "to": "f6",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "g3",
+        "to": "f3",
+        "color": "#4CAF50CC"
+      }
+    ],
+    "popup": "💡 <b>王的位置</b>：白王（g6）比黑王（g3）高出整整三行！兵形完全对称，但王的位置优势使白方必胜。白王可以直接支援 b 兵或 c 兵突破。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 白王位置优势在兵形对称时决定胜负，白方必胜。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf6",
+      "popup": "1.Kf6！— 白王向 b 兵方向进发，开始包抄。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g6",
+          "to": "f6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kf4",
+      "popup": "1...Kf4 — 黑王跟随，努力保持王的对立。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "f4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Ke6",
+      "popup": "2.Ke6 — 白王继续深入，朝 d/c 兵方向推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ke4",
+      "popup": "2...Ke4 — 黑王紧追，试图阻挡白王入侵。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "e4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "b4",
+      "popup": "3.b4！— 打破对称，b 兵突破！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "b4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "axb4",
+      "popup": "3...a×b4 — 黑方被迫交换。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a5",
+          "to": "b4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "axb4",
+      "popup": "4.a×b4 — 白方回吃，b 通路兵形成，白胜！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "b5",
+            "b6",
+            "b7",
+            "b8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "b4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}

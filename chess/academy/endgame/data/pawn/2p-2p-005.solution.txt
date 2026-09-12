@@ -1,0 +1,8 @@
+1. Kd2 Kd5
+2. Kc3 Kc5
+3. Kd3 Kd5
+4. Kc3 Kc5
+5. Kd3 Kd5
+6. Kc3
+# END
+# 解法 1

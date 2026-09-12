@@ -1,0 +1,6 @@
+1. Kc6 Ne8
+2. a8=Q Nd6
+3. Qb8 Kf3
+4. Qxd6 Kf2
+# END
+# 解法 1

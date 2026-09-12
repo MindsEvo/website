@@ -1,0 +1,258 @@
+{
+  "game_id": "eg_NP-N_L2-006-1",
+  "description": "马兵对马 — 正确防守：王封锁升变格，和棋！",
+  "intro": {
+    "flash_squares": [
+      "d7",
+      "e6",
+      "c5",
+      "f8",
+      "g8"
+    ],
+    "popup": "🛡️ <b>黑方正确防守！</b><br>白方 王d7+兵e6+马c5 vs 黑方 王f8+马g8。<br>看起来白方形势大好——但黑方有精确防守！<br><b>黑马持续将军，黑王守住升变格，最终和棋！</b>",
+    "voice": true
+  },
+  "outro": {
+    "popup": "🤝 <b>三次重复，和棋！</b>黑方坚守：马不断将军、王不离升变格，白方无法强行升变。这是马兵对马的经典和棋防守手段，务必牢记！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf6+",
+      "popup": "黑马将军！让白王离开d7。",
+      "highlights": [
+        {
+          "squares": [
+            "f6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g8",
+          "to": "f6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd8",
+      "popup": "白王退到d8边角，维持对e7的压力。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d8",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nd5",
+      "popup": "黑马到d5，威胁阻断e7推进。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ne4",
+      "popup": "白马调动到e4，试图为兵打通道路。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "e4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Ne7",
+      "popup": "🔑 <b>黑马到e7！</b>直接封堵升变格，白兵无路可走。",
+      "highlights": [
+        {
+          "squares": [
+            "e7"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e7",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Kc7",
+      "popup": "白王尝试绕路接近。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "c7",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Ng6",
+      "popup": "黑马跳离，准备再次将军。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "g6",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Kd6",
+      "popup": "白王向前推进。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "d6",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Ke8",
+      "popup": "🔑 <b>黑王守住e8！</b>升变格被黑王占据，白兵永远无法到达。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f8",
+          "to": "e8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nf6+",
+      "popup": "白马将军，试图把黑王赶走。",
+      "highlights": [
+        {
+          "squares": [
+            "f6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "f6",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "f6",
+          "to": "d8",
+          "color": "#FF6B35AA"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Kd8",
+      "popup": "黑王来回摆动——永远不让出e8！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "d8",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nd5",
+      "popup": "白马继续移动，无法找到突破口。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Ke8",
+      "popup": "🔄 <b>黑王再次回到e8！</b>永久占据升变格——和棋局面。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#4CAF5077",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "e8",
+          "color": "#E53935CC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+... Qh4+
+2. Kf3 Qh1+
+3. Ke3 Qe1+
+4. Kf3 Qh1+
+5. Kf4 Qh4+
+6. Kf3 Qh1+
+# END
+# 解法 1

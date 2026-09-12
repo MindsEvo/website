@@ -1,0 +1,19 @@
+... Rb6
+2. Rd7 Ra6
+3. g4 Rc6
+4. Rb7 Ra6
+5. Rb8+ Kg7
+6. Rb7+ Kg8
+7. g6 Ra1
+8. Kh6 Rh1+
+9. Kg5 Rf1
+10. Ra7 Rc1
+11. Rb7 Ra1
+12. g7 Ra5+
+13. Kg6 Ra6+
+14. Kh5 Rh6+
+15. Kg5 Rc6
+16. Kf4 Ra6
+17. Kg5 Kh7
+# END
+# 解法 1

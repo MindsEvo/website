@@ -1,0 +1,112 @@
+{
+  "game_id": "eg_RP-R_L2-009-1",
+  "description": "白车不断驱王——腾空间推进f兵",
+  "intro": {
+    "flash_squares": ["f5", "a7", "f1"],
+    "popup": "<b>白车控制7线，f兵待推</b>白方用车不断驱赶黑王，腾出兵推进的空间。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "<b>白胜</b>黑王被驱到角落，f兵顺利推进。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kg8",
+      "popup": "黑王靠近，试图阻挡兵。",
+      "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "g8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rg7+",
+      "popup": "<b>白车将军驱王！</b>把黑王赶回f8。",
+      "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kf8",
+      "popup": "黑王被迫回f8。",
+      "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "f8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rd7",
+      "popup": "白车移到d7，控制关键列。",
+      "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "d7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kg8",
+      "popup": "黑王再次靠近。",
+      "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "g8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rg7+",
+      "popup": "<b>再次将军！</b>白车坚持驱赶黑王。",
+      "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "g7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kh8",
+      "popup": "黑王被赶到角落。",
+      "highlights": [{"squares": ["h8"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "h8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Ra7",
+      "popup": "白车退到a7，等黑车暴露。",
+      "highlights": [{"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "a7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rf3",
+      "popup": "黑车换位试图骚扰。",
+      "highlights": [{"squares": ["f3"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f1", "to": "f3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Ra4",
+      "popup": "<b>白车到a4！</b>封住黑车，准备推兵。",
+      "highlights": [{"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a7", "to": "a4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Kh7",
+      "popup": "黑王出角，但大势已去。",
+      "highlights": [{"squares": ["h7"], "color": "#E5393555", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h8", "to": "h7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "f6",
+      "popup": "<b>兵推进！</b>黑方无法阻挡。",
+      "highlights": [{"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "f6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

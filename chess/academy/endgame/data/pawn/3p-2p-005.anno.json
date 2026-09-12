@@ -1,0 +1,153 @@
+{
+  "game_id": "eg_3P-2P_L3-005-1",
+  "description": "三兵对双兵⑤：兵的交换 — f3+强制突破，白方三兵换掉黑方双兵后升变",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "f2",
+      "g3",
+      "h4",
+      "e4",
+      "g4",
+      "h5"
+    ],
+    "concept_arrows": [
+      {
+        "from": "f2",
+        "to": "f3",
+        "color": "#FF6B35CC"
+      },
+      {
+        "from": "g4",
+        "to": "g3",
+        "color": "#FF000066"
+      }
+    ],
+    "popup": "💡 <b>兵的交换</b>：白方 f2 兵冲出 f3+！将军逼退黑王，同时消灭黑方 g4 兵。白方 g3+h4 形成通路。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>结论：白胜！</b> 黑方双兵被消灭后，白方剩余兵轻松升变。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "f3+",
+      "popup": "1.f3+！— 将军！逼退黑王，同时威胁 g4 兵。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f2",
+          "to": "f3",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Kd4",
+      "popup": "1...Kd4 — 黑王被迫离开 e4。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "fxg4",
+      "popup": "2.f×g4！— 白兵吃掉 g4 兵，消除威胁。",
+      "highlights": [
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#FF000033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "g4",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "hxg4",
+      "popup": "2...h×g4 — 黑兵回吃，但白方 h4 兵牵制了局面。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "g4",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "h5",
+      "popup": "3.h5 — h 兵挺进！黑方 g4 兵无法阻挡。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "h5",
+          "color": "#FF6B35CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Ke5",
+      "popup": "3...Ke5 — 黑王奔向白兵，但来不及拦截。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#4CAF50CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "h6",
+      "popup": "4.h6 — h 兵势不可挡，白胜！",
+      "highlights": [
+        {
+          "squares": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "color": "#FFD70055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "h6",
+          "color": "#FF6B35CC"
+        }
+      ]
+    }
+  ]
+}
