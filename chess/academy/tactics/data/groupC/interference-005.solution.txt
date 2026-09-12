@@ -1,0 +1,8 @@
+... Rc4+
+2. Kd2 Rc1
+3. Kxc1 h2
+4. g5 h1=Q+
+5. Kd2 Qe4
+# END
+# tac_interference_L1-005（拦截）
+# 解法 1

@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_intermezzo_L1-007",
+  "description": "黑方中间捉后，再应对换子",
+  "intro": {
+    "flash_squares": ["d7", "a7", "d5"],
+    "popup": "💡 <b>中间招</b>：白后a7是挂子。黑方不急着应对Rd5威胁，先Rd7！中间捉后——白后被迫逃跑！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rd7！中间捉无根白后——白后必须逃，黑方主动争取了时间和子力优势！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rd7",
+      "popup": "黑车Rd7！中间招——直接攻击无根的白后a7（挂子），强迫白后先应对！",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d8", "to": "d7", "color": "#4CAF50CC"},
+        {"from": "d7", "to": "a7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qe3",
+      "popup": "白后Qe3——被迫逃离，a7挂子威胁解除！黑方中间招成功争取了主动！",
+      "highlights": [
+        {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a7", "to": "e3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf4",
+      "popup": "黑马Nf4！现在轮到黑方发展，攻击Qe3——中间招使黑方完全掌握主动！",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "f4", "color": "#4CAF50CC"},
+        {"from": "f4", "to": "e3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "game_id": "tac_trappedPiece_L1-002",
+  "description": "黑象深入白方阵地，困子局面识别",
+  "intro": {
+    "flash_squares": ["a3", "e3", "a4", "b1"],
+    "popup": "💡 <b>困子</b>：黑象在a3，黑后在e3，深入白方阵地。仔细观察：哪些棋子陷入了困境？白方如何利用？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：黑象a3深入白方领地，白王可以向c2逼近，配合Bb3、Bc3封死象的退路。黑后e3也面临白方重子的围攻。深入对方阵地的棋子要有退路！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": []
+}

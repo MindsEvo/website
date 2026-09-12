@@ -1,0 +1,108 @@
+{
+  "game_id": "tac_attraction_L1-009",
+  "description": "双重引入：象引后，马将引后，赢车",
+  "intro": {
+    "flash_squares": ["d5", "b7", "e7", "a8"],
+    "popup": "💡 <b>引入</b>：白象在d5，白马在f5，黑后在d7，黑车在a8。能用双重引入先赢后再得车吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bxb7引后到b7，Qd5！再Nxe7+引后到e7远离a8，Qxa8赢车！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bxb7",
+      "popup": "象牺牲Bxb7！引诱黑后到b7，远离d7防守位置。",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "b7", "color": "#4CAF50CC"},
+        {"from": "b7", "to": "a8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxb7",
+      "popup": "黑后Qxb7——被引到b7！",
+      "highlights": [
+        {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "b7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qd5",
+      "popup": "白后Qd5！占据中心强格，多路威胁。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "a8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qd7",
+      "popup": "黑后撤回d7，试图防守。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "d7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nxe7+",
+      "popup": "马Nxe7+！将军！引诱黑后到e7，远离a8——第二次引入！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "e7", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "g8", "color": "#FF4444CC"},
+        {"from": "d5", "to": "a8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Qxe7",
+      "popup": "黑后必须吃马——被引离a8！Ra8此刻失去保护。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxa8",
+      "popup": "白后Qxa8！赢得黑车——双重引入战术大获全胜！",
+      "highlights": [
+        {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "a8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

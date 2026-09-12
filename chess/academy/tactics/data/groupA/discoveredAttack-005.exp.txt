@@ -1,0 +1,5 @@
+兵闪击的例子。
+
+# END
+# tac_discoveredAttack_L1-005（闪击）
+# 解法 1

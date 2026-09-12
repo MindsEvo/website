@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_attraction_L1-008",
+  "description": "车牺牲引王，白得后",
+  "intro": {
+    "flash_squares": ["d1", "d8", "e8", "c6"],
+    "popup": "💡 <b>引入</b>：白车在d1，黑王在e8，黑后在c6。能用车牺牲引黑王到d8，让黑后失去保护吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rd8+！引王到d8，Qxc6——引入战术白得后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rd8+",
+      "popup": "白车Rd8+！引诱黑王到d8，让黑后失去保护。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d8", "color": "#4CAF50CC"},
+        {"from": "a4", "to": "c6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxd8",
+      "popup": "黑王吃车——被引到d8！Qc6已无王保护。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxc6",
+      "popup": "白后Qxc6！引入战术，白方白得黑后。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "c6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+... Bg5
+2. Qxg5 Nh3+
+3. Kh1 Nxg5
+4. Bxg5 Rd8
+5. Rf3
+# END
+# tac_attraction_L1-007（引入）
+# 解法 1

@@ -1,0 +1,5 @@
+1. Rxh7+ Bxh7
+2. Qxh7#
+# END
+# tac_xRayAttack_L1-007（透视攻击）
+# 解法 1

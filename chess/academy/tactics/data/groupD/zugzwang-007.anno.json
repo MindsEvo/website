@@ -1,0 +1,117 @@
+{
+  "game_id": "tac_zugzwang_L1-007",
+  "description": "白象将军引王，逼着展开，d8升变为车将死",
+  "intro": {
+    "flash_squares": ["d6", "e5", "a7", "g8"],
+    "popup": "💡 <b>逼着</b>：白方如何以将军引入逼着，一步步逼迫黑王到死角，最终d8=R将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bh7+将军引王，Qxe6清除守护子，然后白车强制兑换，最终d7 d8=R绝杀！每一步都是强制逼着。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Bh7+",
+      "popup": "白象Bh7+！将军引王——黑王必须吃象，离开安全位置。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "Kxh7",
+      "popup": "黑王Kxh7，被迫吃象，暴露在外。",
+      "highlights": [{"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "Qxe6",
+      "popup": "白后Qxe6，吃掉黑象！清除f7兵的守护子。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "e6", "color": "#4CAF50CC"},
+        {"from": "e6", "to": "f7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3, "move": "Rf8",
+      "popup": "黑车Rf8，守住f7兵——顽强抵抗。",
+      "highlights": [{"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b8", "to": "f8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4, "move": "Rxf7+",
+      "popup": "白车Rxf7+，强制兑换！将军，黑车必须回吃。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "a7", "to": "f7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5, "move": "Rxf7",
+      "popup": "黑车Rxf7，只能回吃。",
+      "highlights": [{"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f8", "to": "f7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6, "move": "Qxf7+",
+      "popup": "白后Qxf7+，再次将军，把黑王逼进死角！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "e6", "to": "f7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7, "move": "Kh8",
+      "popup": "黑王Kh8，被逼进角落——无路可走。",
+      "highlights": [{"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h7", "to": "h8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8, "move": "d7",
+      "popup": "d7！白兵大步前进，升变威胁无法阻挡。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "d6", "to": "d7", "color": "#4CAF50CC"}, {"from": "d7", "to": "d8", "color": "#FF4444CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9, "move": "c2",
+      "popup": "黑兵c2，黑方唯一的反攻——但已无力回天。",
+      "highlights": [{"squares": ["c2"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "c2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10, "move": "d8=R#",
+      "popup": "d8=R将死！升变为车（不升变为后以防逼和），黑王在h8被新升变的车将死！",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "d7", "to": "d8", "color": "#4CAF50CC"}, {"from": "d8", "to": "h8", "color": "#FF4444CC"}],
+      "concept_lines": []
+    }
+  ]
+}

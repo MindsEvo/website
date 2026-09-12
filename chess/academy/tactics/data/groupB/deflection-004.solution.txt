@@ -1,0 +1,6 @@
+1. Re8+ Kh7
+2. Qxd5 Rxd5
+3. Rxa8
+# END
+# tac_deflection_L1-004（引离）
+# 解法 1

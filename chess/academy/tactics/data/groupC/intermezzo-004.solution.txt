@@ -1,0 +1,6 @@
+1. Ng4 Qxg3
+2. Nxf6+ gxf6
+3. hxg3
+# END
+# tac_intermezzo_L1-004（中间招）
+# 解法 1

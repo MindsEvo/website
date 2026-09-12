@@ -1,0 +1,7 @@
+1. Bc2 Kg6
+2. g4 Kf6
+3. Bxf5 Ke7
+4. Kf2 Kf6
+# END
+# tac_pin_L1-004（牵制）
+# 解法 1

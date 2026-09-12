@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-003",
+  "description": "车牺牲消除象，两步绝杀",
+  "intro": {
+    "flash_squares": ["c7", "d7", "e7", "e8"],
+    "popup": "💡 <b>消除保护</b>：黑象Bd7守住了e8格，阻止Re8#。白方如何一步消除这个保护？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rc8+！牺牲车强制Bxc8，象离开d7，Re8#！两步绝杀的完美示范。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc8+",
+      "popup": "车牺牲Rc8+！强制黑象必须应将——Bxc8，否则被将死。",
+      "highlights": [
+        {"squares": ["c8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FF990055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#2196F355", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c7", "to": "c8", "color": "#4CAF50CC"},
+        {"from": "d7", "to": "c8", "color": "#FF9900CC"},
+        {"from": "e7", "to": "e8", "color": "#2196F3CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxc8",
+      "popup": "象被迫吃车，d7清空——e8门户大开！",
+      "highlights": [
+        {"squares": ["c8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "c8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re8#",
+      "popup": "Re8#！将死！象已不在，e8无人保护。",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "e8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

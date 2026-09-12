@@ -1,0 +1,173 @@
+{
+  "game_id": "tac_xRayAttack_L1-001",
+  "description": "黑后透视攻击白后，引入后连续将军赢子",
+  "intro": {
+    "flash_squares": ["e8", "b2", "d2", "h2"],
+    "popup": "💡 <b>透视攻击</b>：黑车在e8，黑后在b2，白后在d2，白王在h2。黑方如何利用透视攻击？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Re2+引入——白后被迫离开d2，黑后透视白后直击e2，连续将军赢子！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re2+",
+      "popup": "黑车弃子Re2+！车沿第2横线将军白王，强制白后离开d2，为黑后的透视攻击让路。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e2", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "h2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe2",
+      "popup": "白后被迫吃车，离开d2。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "e2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxe2+",
+      "popup": "透视攻击！黑后b2透视穿越白后所在的d2，现在直接吃白后并将军白王！黑后得子且继续进攻。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b2", "to": "e2", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "h2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg1",
+      "popup": "白王逃至g1。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qe3+",
+      "popup": "黑后Qe3+，沿对角线将军g1，白王继续被追。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "g1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kf1",
+      "popup": "白王逃至f1。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g1", "to": "f1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxf3+",
+      "popup": "黑后吃白兵f3，沿f列将军f1，白王再次被逼。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "f1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Ke1",
+      "popup": "白王逃至e1。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "e1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qe3+",
+      "popup": "黑后Qe3+沿e列将军，白王再逃。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "e1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kd1",
+      "popup": "白王逃至d1。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "d1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Qxd4+",
+      "popup": "黑后吃白车d4将军！透视攻击引发连续将军，黑方赢得决定性物质优势。",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "d4", "color": "#4CAF50CC"},
+        {"from": "d4", "to": "d1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Ke2",
+      "popup": "白王逃至e2，黑方已赢得车，优势在握。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "e2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

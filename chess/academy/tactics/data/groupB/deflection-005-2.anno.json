@@ -1,0 +1,98 @@
+{
+  "game_id": "tac_deflection_L1-005",
+  "description": "引离白后——解法2：Qxe1引后离d1，后Qh5绝杀",
+  "intro": {
+    "flash_squares": [
+      "e8",
+      "d1",
+      "h2"
+    ],
+    "popup": "💡 解法2：白后吃车（不是白车），黑后Qh5绝杀！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：若白后来吃车（Qxe1），d1空虚无关，但黑后Qh5直接绝杀h2白王——后在h5通过h线控制王。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re1!",
+      "popup": "同样Re1，看白方如何回应。",
+      "highlights": [
+        {
+          "squares": [
+            "e1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "e1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe1",
+      "popup": "白后Qxe1！白后来吃（而非白车），d1暂时空虚。",
+      "highlights": [
+        {
+          "squares": [
+            "e1"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d1",
+          "to": "e1",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qh5#",
+      "popup": "黑后Qh5# 绝杀！白王h2在h线上被后将死——h列全控制。",
+      "highlights": [
+        {
+          "squares": [
+            "h5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "h5",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "h5",
+          "to": "h2",
+          "color": "#FF4444CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

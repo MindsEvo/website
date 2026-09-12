@@ -1,0 +1,7 @@
+1. Bf3 Qc7
+2. Bxb7 Qd7
+3. Rh1 Kg8
+4. Be4
+# END
+# tac_skewer_L1-001（串击）
+# 解法 1

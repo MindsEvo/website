@@ -1,0 +1,81 @@
+{
+  "game_id": "tac_sacrifice_L1-003",
+  "description": "黑方弃后引开白车，双车接力将死白王",
+  "intro": {
+    "flash_squares": ["f5", "e8", "f8", "g1"],
+    "popup": "💡 <b>弃子</b>：黑方后在f5，双车在e8和f8，白王在g1。如何用弃后开启双车将杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxf2+弃后引开白车，Re1+逼白车退到f1，Rxf1#后车将死！这是\"弃后引车——接力将杀\"的典型链条。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxf2+",
+      "popup": "黑后Qxf2+！弃掉后，将军同时引开f1白车——为黑车占领e1让路。",
+      "highlights": [
+        {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f2", "color": "#4CAF50CC"},
+        {"from": "f2", "to": "g1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxf2",
+      "popup": "白车必须吃后——f1车被引离，e1格门户洞开。",
+      "highlights": [
+        {"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re1+",
+      "popup": "黑车Re1+！占领底线，将军白王——白车只能后撤封挡。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e1", "color": "#4CAF50CC"},
+        {"from": "e1", "to": "g1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rf1",
+      "popup": "白车Rf1封挡——但另一枚黑车早已虎视眈眈。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxf1#",
+      "popup": "黑车Rxf1#！f8车吃掉封挡的白车，将死！弃后换来双车接力将杀。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "f1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

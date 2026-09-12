@@ -1,0 +1,8 @@
+1. Qe3+ Qb6
+2. Ra8+ Kb7
+3. Qe4+ Qc6
+4. Ra7+ Kxa7
+5. Qxc6 Rb7
+# END
+# tac_removalOfTheDefender_L1-004（消除保护）
+# 解法 1

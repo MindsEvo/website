@@ -1,0 +1,54 @@
+{
+  "game_id": "tac_trappedPiece_L1-008",
+  "description": "黑象开局走错成困子，被迫以象换兵",
+  "intro": {
+    "flash_squares": ["d6", "c4", "d4"],
+    "popup": "💡 <b>困子</b>：黑象在d6，白方兵c4+d4准备推进c5。黑象如何应对？能逃出这个陷阱吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：c5攻象→黑象无好退路被迫Bxc5→dxc5赢得象！开局时象不应该走到容易被兵攻击的位置。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "c5",
+      "popup": "白方c4兵推进到c5！直接攻击黑象d6（c5兵攻d6格）。黑象必须做出选择：逃跑还是吃兵？",
+      "highlights": [
+        {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "c5", "color": "#4CAF50CC"},
+        {"from": "c5", "to": "d6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxc5",
+      "popup": "黑象Bxc5——被迫吃兵。逃跑的路线（如b4）随后会被白方Bd2再次驱逐，象无处可逃，只能换子。",
+      "highlights": [
+        {"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "c5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "dxc5",
+      "popup": "白方d4兵取c5象！以兵换象，白方赢得材料优势。黑象d6在开局走到了错误的位置，成为困子。",
+      "highlights": [
+        {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "c5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

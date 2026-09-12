@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_intermezzo_L1-006",
+  "description": "中间将军，赢挂后",
+  "intro": {
+    "flash_squares": ["b5", "a3", "b7"],
+    "popup": "💡 <b>中间招</b>：白车吃b5兵，黑后a3是挂子准备吃白后。白方Rxb5后不应对，先Rb7+将军！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxb5吃兵后，黑后Qxa3吃后——白方Rb7+中间将军！Qe7被迫，Rxe7+赢回黑后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxb5",
+      "popup": "白车Rxb5！吃掉黑兵，同时创造Rb7+将军路线！",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "b5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxa3",
+      "popup": "黑后Qxa3！吃掉白后——但中间将军已准备就绪！",
+      "highlights": [
+        {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "a3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rb7+",
+      "popup": "白车Rb7+！中间将军——黑王被迫，黑后必须来挡！",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "b7", "color": "#4CAF50CC"},
+        {"from": "b7", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qe7",
+      "popup": "黑后Qe7——被迫回来拦截将军！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a3", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxe7+",
+      "popup": "白车Rxe7+！吃掉黑后——中间招完成，净赚一后！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "e7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

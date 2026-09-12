@@ -1,0 +1,81 @@
+{
+  "game_id": "tac_interference_L1-005",
+  "description": "黑车将军插路，诱王离位后升变赢",
+  "intro": {
+    "flash_squares": ["a4", "c4", "c2", "h3"],
+    "popup": "💡 <b>拦截</b>：黑方行动！黑车在a4，黑兵在h3。车跳c4将军，能拦截白方阻止兵升变的路线吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rc4+逼王到d2，Rc1！车插c1拦截——王被迫吃车，h兵升后赢！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc4+",
+      "popup": "黑车Rc4+！c列将军，白王必须离开c2，远离h1升变格！",
+      "highlights": [
+        {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "c4", "color": "#4CAF50CC"},
+        {"from": "c4", "to": "c2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kd2",
+      "popup": "白王Kd2——被迫离开，c1已无王防守！",
+      "highlights": [
+        {"squares": ["d2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "d2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rc1",
+      "popup": "黑车Rc1！插入c1，拦截白王重回c1防止升变——白王必须吃车！",
+      "highlights": [
+        {"squares": ["c1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "c1", "color": "#4CAF50CC"},
+        {"from": "h3", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kxc1",
+      "popup": "白王Kxc1——被迫吃车，远离h1，黑兵升后已无阻！",
+      "highlights": [
+        {"squares": ["c1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "c1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "h2",
+      "popup": "黑兵h2！一步升后在即——拦截战术完美，赢定！",
+      "highlights": [
+        {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "h2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

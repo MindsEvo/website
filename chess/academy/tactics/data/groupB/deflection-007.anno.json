@@ -1,0 +1,119 @@
+{
+  "game_id": "tac_deflection_L1-007",
+  "description": "引离b7兵——后牺牲引兵，象a6绝杀",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "c6",
+      "a6"
+    ],
+    "popup": "💡 白方如何牺牲后引离b7兵，让象走a6绝杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Qxc6+！后牺牲引离b7兵——兵被迫bxc6，打通b7格，Ba6绝杀黑王c8！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxc6+!",
+      "popup": "白后Qxc6+！后牺牲！引离b7兵——b7兵必须来吃后，同时打开b7格。",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b7"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "c6",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "bxc6",
+      "popup": "黑兵bxc6！引离成功——b7格打开，象可以到a6了！",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b7",
+          "to": "c6",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ba6#",
+      "popup": "白象Ba6# 绝杀！象覆盖b7格，Bg3象封c8方向，黑王c8无处可逃！",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "a6",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "a6",
+          "to": "b7",
+          "color": "#FF4444CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

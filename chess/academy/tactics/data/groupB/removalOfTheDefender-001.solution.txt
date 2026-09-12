@@ -1,0 +1,7 @@
+﻿... Re1+
+2. Rxe1 Qxd4+
+3. Kf1 h5
+4. Re8+
+# END
+# tac_removalOfTheDefender_L1-001（消除保护）
+# 解法 1

@@ -1,0 +1,5 @@
+1. gxf7+ Kh7
+2. Qg7#
+# END
+# tac_doubleCheck_L1-003（双将）
+# 解法 1

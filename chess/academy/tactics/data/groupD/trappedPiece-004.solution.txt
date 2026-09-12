@@ -1,0 +1,6 @@
+1. Bxd5 Bd6
+2. Bxg8 Qxg8
+3. O-O Be6
+# END
+# tac_trappedPiece_L1-004（困子）
+# 解法 1

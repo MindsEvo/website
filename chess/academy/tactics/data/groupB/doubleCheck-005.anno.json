@@ -1,0 +1,58 @@
+{
+  "game_id": "tac_doubleCheck_L1-005",
+  "description": "经典车马双将，两步将死",
+  "intro": {
+    "flash_squares": ["e4", "e1", "e8", "d6"],
+    "popup": "💡 <b>双将</b>：白马在e4，白车在e1，黑王在e8。典型的车马配合——白方如何双将将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nd6+双将！马攻e8，车揭开e列将军，黑王只能逃至d8，然后Nf7#将死。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nd6+",
+      "popup": "双将！白马跳d6，马攻e8，同时揭开白车e1沿e列直指e8！黑王无法同时应对马将和车将。",
+      "highlights": [
+        {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "d6", "color": "#4CAF50CC"},
+        {"from": "d6", "to": "e8", "color": "#FF4444CC"},
+        {"from": "e1", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kd8",
+      "popup": "黑王逃至d8，唯一的逃脱方向。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf7#",
+      "popup": "白马Nf7将死！马攻d8，黑王被周围棋子团团困住，无路可逃。车马双将完美配合！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "d8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

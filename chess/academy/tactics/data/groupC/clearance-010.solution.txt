@@ -1,0 +1,8 @@
+... Nxf3
+2. Nxf3 Nxe4
+3. Nxe4 Rxb2+
+4. Kc1 Rb1+
+5. Kxb1 Qb8+
+# END
+# tac_clearance_L1-010（腾挪）
+# 解法 1

@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_trappedPiece_L1-005",
+  "description": "黑兵推进困死白后，连续得子",
+  "intro": {
+    "flash_squares": ["e3", "f5", "c6"],
+    "popup": "💡 <b>困子</b>：白后在e3位置不佳，黑方如何通过兵推和马跳困死白后并赢得子力？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：f4攻后→Qd3逃→Nb4再攻→Ng5反威胁→Nxd3赢后！白后在中场无处可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "f4",
+      "popup": "黑方f5兵推进到f4！直接攻击白后e3（f4兵攻e3格），白后被迫移动。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f4", "color": "#4CAF50CC"},
+        {"from": "f4", "to": "e3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qd3",
+      "popup": "白后退到d3，暂时逃开。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "d3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nb4",
+      "popup": "黑马Nb4！马从c6跳到b4，再次攻击白后d3。白后在d3依然无法立足。",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "b4", "color": "#4CAF50CC"},
+        {"from": "b4", "to": "d3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ng5",
+      "popup": "白马Ng5！白方不顾后的安危，制造反威胁（攻击h7和e6）。但白后已经无路可逃。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "g5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nxd3",
+      "popup": "黑马Nxd3！马直接吃掉白后，不管白马的威胁。白方最终丢失了后，黑方大优！",
+      "highlights": [
+        {"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b4", "to": "d3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "game_id": "tac_deflection_L1-003",
+  "description": "引离d8黑车——Re8+引车，夺得黑后",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d8",
+      "d5"
+    ],
+    "popup": "💡 白方如何引离d8的黑车，从而得后？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Re8+！引离d8的黑车——黑车被迫吃到e8，d5黑后失去车的保护，Qxd5赢得黑后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re8+!",
+      "popup": "白车Re8+！将军——引离黑车d8！黑车必须回吃。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "e8",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxe8",
+      "popup": "黑车被引离到e8！d5黑后失去d8车的保护。",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d8",
+          "to": "e8",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxd5",
+      "popup": "白后Qxd5！赢得黑后！黑车在e8，无法保护d5了。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "d5",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Re7",
+      "popup": "黑车Re7，最后挣扎，试图捣乱。",
+      "highlights": [
+        {
+          "squares": [
+            "e7"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qc5",
+      "popup": "白后Qc5，威胁推进兵和多子优势稳赢。",
+      "highlights": [
+        {
+          "squares": [
+            "c5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

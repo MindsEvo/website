@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_attraction_L1-003",
+  "description": "后牺牲引王到中心，象将杀",
+  "intro": {
+    "flash_squares": ["f3", "d5", "c6", "e4"],
+    "popup": "💡 <b>引入</b>：白后在f3，黑王在c6，d5有黑兵。能用后牺牲引王到d5，再用象将杀吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxd5+！引王到开阔中心，Be4将杀！四面封死无路逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxd5+",
+      "popup": "后牺牲Qxd5+！引诱黑王踏上d5这片危险之地。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "e4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxd5",
+      "popup": "黑王贪吃——被引到开阔的中心！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "d5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Be4#",
+      "popup": "象Bc2-e4将杀！d4兵封c5，Re6封e5，象封c6——黑王已无路可逃！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "e4", "color": "#4CAF50CC"},
+        {"from": "e4", "to": "d5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

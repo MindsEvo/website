@@ -1,0 +1,6 @@
+1. Qd8+ Kxd8
+2. Bg5+ Ke8
+3. Rd8#
+# END
+# tac_doubleCheck_L1-009（双将）
+# 解法 1

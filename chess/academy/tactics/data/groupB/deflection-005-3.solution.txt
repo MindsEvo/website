@@ -1,0 +1,6 @@
+... Re1
+2. Qg4 Qh1+
+3. Rxh1 Rxh1#
+# END
+# tac_deflection_L1-005（引离）
+# 解法 3

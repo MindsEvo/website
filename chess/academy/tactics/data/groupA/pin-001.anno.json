@@ -1,0 +1,79 @@
+{
+  "game_id": "tac_pin_L1-001",
+  "description": "车全牵制——马被钉死无法动弹",
+  "intro": {
+    "flash_squares": ["b1", "d4", "g4"],
+    "popup": "💡 <b>全牵制</b>：白车b1、黑马d4、黑王g4在同一横线。白方如何利用这条线路牵制黑马？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rb4全牵制！黑马钉死在d4无法移动（动则丢王），白方从容吃马得子。牵制目标是王时称为全牵制。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb4",
+      "popup": "白车Rb4！沿第4横线牵制黑马——马在白车与黑王之间，动则丢王。",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b1", "to": "b4", "color": "#4CAF50CC"},
+        {"from": "b4", "to": "d4", "color": "#FF4444CC"},
+        {"from": "d4", "to": "g4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "黑马被钉死，只能走兵e5。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "e3",
+      "popup": "白兵e3推进，威胁exd4直接吃掉被牵制的马！",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "d4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "e4",
+      "popup": "黑兵继续推进，但马仍无法解套。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "exd4",
+      "popup": "白兵exd4！吃掉被牵制的马，白方得子！",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "d4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

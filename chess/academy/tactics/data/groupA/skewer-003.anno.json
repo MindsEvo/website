@@ -1,0 +1,82 @@
+{
+  "game_id": "tac_skewer_L1-003",
+  "description": "先弃车引白后到e4，再黑象串击后和车",
+  "intro": {
+    "flash_squares": ["e8", "e4", "d6", "h1"],
+    "popup": "💡 <b>串击</b>：黑方先弃车把白后引到e4，再用象串击白后和h1的车——你看出来了吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃车引后，Bc6串击！象攻击e4的后，对角线后方还有h1的白车，白方两全不了。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxe4",
+      "popup": "弃车！黑车吃e4的象，引白后来到e4。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe4",
+      "popup": "白后吃车，来到e4——正中黑方下怀。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "e4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bc6",
+      "popup": "黑象到c6串击！沿对角线攻击e4的白后，后方h1还有白车——白后必须移开！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF444455", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "c6", "color": "#4CAF50CC"},
+        {"from": "c6", "to": "e4", "color": "#FF4444CC"},
+        {"from": "e4", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qd3",
+      "popup": "白后被迫撤退，h1的车已无法保住。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "d3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bxh1",
+      "popup": "黑象吃车！以弃车赢车，黑方净赚。",
+      "highlights": [
+        {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "h1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

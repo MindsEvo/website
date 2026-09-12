@@ -1,0 +1,43 @@
+1. Rf8+ Nxf8
+2. Qxg4 g6
+3. Qf3 Kg8
+4. Kg2 Rd7
+5. Kg3 Kg7
+6. h5 gxh5
+7. Kh4 Re7
+8. Kxh5 Rd7
+9. Qc3+ Kh7
+10. Kg4 Kg8
+11. Qc5 Kg7
+12. Qe5+ Kh7
+13. Qb8 Kg8
+14. Qb3+ Kg7
+15. Qa2 Kh8
+16. Kf3 Kh7
+17. Kg4 Kg7
+18. Qc4 Kh7
+19. Kf3 Kh8
+20. Kg4 Rg7
+21. Qc8 Kg8
+22. Qc4+ Rf7
+23. Qb3 Kg7
+24. Qa2 Rd7
+25. Qb2+ Kg8
+26. Qf2 Rd6
+27. Qc2 Rd7
+28. Kf3 Rf7+
+29. Kg4 Rg7
+30. Qb3+ Kh8
+31. Qf3 Nh7
+32. Qa8+ Rg8
+33. Qa1+ Rg7
+34. g6 Nf8
+35. Kg5 Kg8
+36. Qa2+ Kh8
+37. Qh2+ Kg8
+38. Qa2+ Kh8
+39. Qb2 Kg8
+40. Qa2+
+# END
+# tac_discoveredAttack_L1-003（闪击）
+# 解法 1

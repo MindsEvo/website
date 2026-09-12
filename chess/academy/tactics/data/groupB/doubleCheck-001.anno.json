@@ -1,0 +1,133 @@
+{
+  "game_id": "tac_doubleCheck_L1-001",
+  "description": "白车连将，双将强制将死黑王",
+  "intro": {
+    "flash_squares": ["f3", "g6", "g7", "h7", "h8"],
+    "popup": "💡 <b>双将</b>：白方如何利用车的连续将军，逼迫黑王走入死角？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：双将时，被将方只能逃王，无法同时应对两路攻击。白车利用双将强制将死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxf6",
+      "popup": "白车吃马！牺牲换取攻击线路，为后续双将铺路。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxd1",
+      "popup": "黑象吃后，黑方兑子。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "d1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg6+",
+      "popup": "白车Rg6+将军！黑王被迫逃离。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "g6", "color": "#4CAF50CC"},
+        {"from": "g6", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh7",
+      "popup": "黑王逃至h7。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rg7+",
+      "popup": "白车Rg7+将军！车沿第7横线将军，黑王再次被迫逃跑。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh8",
+      "popup": "黑王逃至h8。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rh7+",
+      "popup": "双将！白车Rh7+，车将军h8，同时揭开白象b2沿对角线直指h8！黑王只能逃跑。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "h8", "color": "#FF4444CC"},
+        {"from": "b2", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kg8",
+      "popup": "黑王逃至g8，背水一战。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rh8#",
+      "popup": "白车Rh8将死！黑王无路可逃，双将组合完美收官。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

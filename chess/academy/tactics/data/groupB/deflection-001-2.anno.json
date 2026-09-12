@@ -1,0 +1,183 @@
+{
+  "game_id": "tac_deflection_L1-001",
+  "description": "引离白后——解法2：白方避让，黑车杀入f3",
+  "intro": {
+    "flash_squares": [
+      "c8",
+      "b6",
+      "f1"
+    ],
+    "popup": "💡 解法2：白方不上当，改走Bxb6（不用后吃），黑车如何利用f线杀入？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：白方避开引离（不走Qxb5），但黑车Rxf3+强行打开f线，白象被迫回f2阻挡，黑车Rxf2同样绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ba6!",
+      "popup": "同样从Ba6开始。",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "a6",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "b5",
+      "popup": "白兵b5攻象。",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxb5",
+      "popup": "黑象吃兵——现在白方换一招！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Bxb6",
+      "popup": "白象Bxb6！白方避免后被引离，改用象吃黑兵——但f3的象已经离开！",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f2",
+          "to": "b6",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxf3+!",
+      "popup": "黑车Rxf3+！f3象已离开，黑车闯入f3将军！",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f8",
+          "to": "f3",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Bf2",
+      "popup": "白象被迫从b6回来到f2挡将——白象被反将了！",
+      "highlights": [
+        {
+          "squares": [
+            "f2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "f2",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rxf2#",
+      "popup": "黑车Rxf2# 绝杀！吃掉阻挡的白象，绝杀！白后在b5毫无用武之地。",
+      "highlights": [
+        {
+          "squares": [
+            "f2"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "f2",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

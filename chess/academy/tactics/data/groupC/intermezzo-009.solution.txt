@@ -1,0 +1,9 @@
+... Rxg2
+2. Qxf6 Rg1+
+3. Ke2 Rxe1+
+4. Rxe1 Nxf6
+5. Bf3 Rg5
+6. Rh1
+# END
+# tac_intermezzo_L1-009（中间招）
+# 解法 1

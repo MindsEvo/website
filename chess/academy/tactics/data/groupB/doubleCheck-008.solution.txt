@@ -1,0 +1,4 @@
+... Bb4#
+# END
+# tac_doubleCheck_L1-008（双将）
+# 解法 1

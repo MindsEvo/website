@@ -1,0 +1,7 @@
+1. Nf5 Rd7
+2. Nxh6 Bc5
+3. Bf5 Rd4
+4. g3 Rd5
+5. Kg2 b5
+# END
+# 解法 1

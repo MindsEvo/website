@@ -1,0 +1,5 @@
+1. Rh6 gxh6
+2. g7#
+# END
+# tac_zugzwang_L1-002（逼着）
+# 解法 1

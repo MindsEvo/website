@@ -1,0 +1,6 @@
+1. Ra8 Qxa8
+2. Bf3+ Kc5
+3. Bxa8 h5
+# END
+# tac_skewer_L1-007（串击）
+# 解法 1

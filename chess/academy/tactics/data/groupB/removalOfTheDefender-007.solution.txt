@@ -1,0 +1,6 @@
+... Nf3+
+2. Kh1 Nxd4
+3. Qxc6+ Nxc6
+# END
+# tac_removalOfTheDefender_L1-007（消除保护）
+# 解法 1

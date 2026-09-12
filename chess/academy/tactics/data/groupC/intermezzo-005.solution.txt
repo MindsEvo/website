@@ -1,0 +1,9 @@
+1. Bc3 Qb6
+2. Bxf6 h6
+3. Qg3 g5
+4. Qd3 Re8
+5. Qh7+ Kf8
+6. Bg7#
+# END
+# tac_intermezzo_L1-005（中间招）
+# 解法 1

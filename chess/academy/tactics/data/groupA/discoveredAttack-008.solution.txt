@@ -1,0 +1,6 @@
+1. Rxe5 Qxe5
+2. Ng6 Qxh2
+3. Ne7#
+# END
+# tac_discoveredAttack_L1-008（闪击）
+# 解法 1

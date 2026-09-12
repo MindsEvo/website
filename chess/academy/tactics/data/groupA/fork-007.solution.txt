@@ -1,0 +1,6 @@
+... f5
+2. Bd3 e4
+3. Bxe4 fxe4
+4. Qxe4 Nf6
+# END
+# 解法 1

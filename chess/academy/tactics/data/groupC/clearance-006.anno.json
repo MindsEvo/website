@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_clearance_L1-006",
+  "description": "兵升变腾挪，清开d7让车占据",
+  "intro": {
+    "flash_squares": ["d7", "d6", "c7"],
+    "popup": "💡 <b>腾挪</b>：白兵在d7，挡住了Rd6进d7的路线。如何腾挪d7、让车到第七横线？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：d8=Q！兵升变腾挪d7，强迫Bxd8——Rd7占据第七横线，优势决定性！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "d8=Q",
+      "popup": "白兵d8=Q升变！兵离开d7，腾出d7格——Bxd8被迫应对！",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "d8", "color": "#4CAF50CC"},
+        {"from": "d6", "to": "d7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxd8",
+      "popup": "黑象Bxd8——吃后，d7已腾空！",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qc3+",
+      "popup": "白后Qc3+！将军驱王，同时Rd7已在计划中。",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "c3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王Kg8——应将。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rd7",
+      "popup": "白车Rd7！占据腾空的d7，控制第七横线——白方优势决定性！",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "d7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

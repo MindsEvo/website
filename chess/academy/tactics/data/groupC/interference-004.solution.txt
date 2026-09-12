@@ -1,0 +1,10 @@
+1. Bd5 exd5
+2. Rh3 Bh4
+3. Rxh4 Re8
+4. Qxh7+ Kf8
+5. Qh8+ Ke7
+6. Qxe5+ Kd7
+7. Qf4 Re7
+# END
+# tac_interference_L1-004（拦截）
+# 解法 1

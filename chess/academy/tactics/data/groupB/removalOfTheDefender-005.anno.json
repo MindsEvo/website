@@ -1,0 +1,81 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-005",
+  "description": "车消除控制e5的象，三步将杀",
+  "intro": {
+    "flash_squares": ["d2", "d4", "e1", "e5"],
+    "popup": "💡 <b>消除保护</b>：黑象Bd4控制着e5格，阻止白车Re5+将军。如何消除这个障碍？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxd4消除控制e5的象！exd4后Re5+迫使国王踏上g4，f3#将杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxd4",
+      "popup": "车消除象！Bd4是守住e5格的关键防守子，牺牲换掉它！",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#2196F355", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "d4", "color": "#4CAF50CC"},
+        {"from": "d4", "to": "e5", "color": "#FF9900CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "exd4",
+      "popup": "兵吃车，但e5格现已畅通无阻！",
+      "highlights": [
+        {"squares": ["d4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "d4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re5+",
+      "popup": "Re5+将军！象已消除，此着成立。国王只能去g4……",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "f5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kxg4",
+      "popup": "国王被迫吃马，落入陷阱！",
+      "highlights": [
+        {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "g4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "f3#",
+      "popup": "f3将杀！兵f3将死孤王。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

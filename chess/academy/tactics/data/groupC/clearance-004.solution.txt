@@ -1,0 +1,10 @@
+1. f6 Bxf6
+2. Rf5 Nd5
+3. Rxh5 Qxc3
+4. Qxc3 Nxc3
+5. Nf3 O-O-O
+6. Bd2 Nd5
+7. Rf1
+# END
+# tac_clearance_L1-004（腾挪）
+# 解法 1

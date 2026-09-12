@@ -1,0 +1,61 @@
+{
+  "game_id": "tac_blockade_L1-009",
+  "description": "白后将军逼象阻塞退路，后象联合将死",
+  "intro": {
+    "flash_squares": ["d6", "f8", "e6"],
+    "popup": "💡 <b>阻塞将军</b>：黑王在d6，左右还有空间。白方如何用一将，逼黑象自己堵死左路，再用白后将死黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf6+将军，黑象被迫到e6阻塞黑王左退路，白后Qxf8将死——精准的两步组合！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf6+",
+      "popup": "白后将军！黑象只能垫到e6，阻塞了黑王向左撤退的路线。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Be6",
+      "popup": "黑象垫到e6——阻塞了d6王向左的退路，黑王只剩e7。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF980055", "duration_ms": 0},
+        {"squares": ["c4"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "e6", "color": "#E53935CC"},
+        {"from": "e6", "to": "c4", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxf8#",
+      "popup": "后将死！白后吃f8象，同时将军——黑王被e6象和兵彻底封死，无路可逃！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e6"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "d6", "color": "#FF6B35CC"},
+        {"from": "e5", "to": "d6", "color": "#FF6B35CC"},
+        {"from": "e6", "to": "c4", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "game_id": "tac_discoveredAttack_L1-008",
+  "description": "车牺牲引后，马闪击双击绝杀",
+  "intro": {
+    "flash_squares": ["e1", "e5", "f4", "g6", "e8"],
+    "popup": "💡 <b>闪击</b>：白车在e1，白马在f4，黑后在e8。先牺牲车引后到e5，再用马闪击——能绝杀吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxe5引后到e5，Ng6！马攻后兼胁Ne7将杀——闪击绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxe5",
+      "popup": "白车Rxe5！牺牲换子，目的是引黑后到e5，为马的闪击做准备。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "f4", "to": "g6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe5",
+      "popup": "黑后Qxe5——被引到e5，正中白方计谋！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ng6",
+      "popup": "白马Ng6！双重威胁：攻击e5的黑后，同时威胁Ne7将杀！黑方无法同时化解。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "g6", "color": "#4CAF50CC"},
+        {"from": "g6", "to": "e5", "color": "#FF4444CC"},
+        {"from": "g6", "to": "e7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxh2",
+      "popup": "黑后逃吃——无奈之举，但终局已定。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "h2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ne7#",
+      "popup": "马Ne7将杀！白马跳e7，攻击g8黑王，四面封死——闪击组合绝杀！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "e7", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

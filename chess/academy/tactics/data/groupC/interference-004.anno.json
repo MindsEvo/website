@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_interference_L1-004",
+  "description": "白象插中路，强迫兵吃后打开h路发动杀攻",
+  "intro": {
+    "flash_squares": ["b3", "d5", "c6", "e6"],
+    "popup": "💡 <b>拦截</b>：白象在b3，黑后c6和黑马e5都守着。象插入d5，能切断黑方协防，强迫对方让路发动攻击吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bd5！象插d5威胁e6，黑方exd5被迫让路——Rh3随后发动h路杀攻！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bd5",
+      "popup": "白象Bd5！插入d5，攻击e6兵，同时切断Qc6与Ne5的协防——黑方必须应对！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "e6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "exd5",
+      "popup": "黑兵exd5——被迫吃象，e6→d5，h路攻击线被打开！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "d5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh3",
+      "popup": "白车Rh3！拦截打开通路，车立即占据h3——Qh6+Rh3的杀攻组合威力无穷！",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g3", "to": "h3", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

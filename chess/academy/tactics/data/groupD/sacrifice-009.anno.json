@@ -1,0 +1,108 @@
+{
+  "game_id": "tac_sacrifice_L1-009",
+  "description": "白方主动送出双车换取象将死——反直觉的连续弃子",
+  "intro": {
+    "flash_squares": ["a1", "h1", "f3", "e2"],
+    "popup": "💡 <b>弃子</b>：白方双车在a1和h1，后在f3，象在e2。黑后在a5虎视a1车。白方居然要主动送出双车——你能看出背后的将杀计划吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：axb4让黑后吃a1车，再让黑后吃h1车，然后Qxc6+引兵，Ba6#！双车全弃，换取象将死。反直觉但无解。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "axb4",
+      "popup": "白兵axb4！看似普通吃兵——实际是在邀请黑后吃白方a1车，为后续组合铺路。",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a3", "to": "b4", "color": "#4CAF50CC"},
+        {"from": "a5", "to": "a1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxa1+",
+      "popup": "黑后Qxa1+！吃掉白车——白王被将，但这正是白方算好的！",
+      "highlights": [
+        {"squares": ["a1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kd2",
+      "popup": "白王Kd2！王主动走向中央，让开h1车——黑后会继续吃。",
+      "highlights": [
+        {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "d2", "color": "#4CAF50CC"},
+        {"from": "a1", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxh1",
+      "popup": "黑后Qxh1——吃掉第二个车！黑后拥有双车的物质优势，但白方后手已至。",
+      "highlights": [
+        {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a1", "to": "h1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxc6+",
+      "popup": "白后Qxc6+将军！弃后到c6，引开b7黑兵——为象打开a6的对角线。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "c6", "color": "#4CAF50CC"},
+        {"from": "c6", "to": "c8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "bxc6",
+      "popup": "黑兵必须吃后——b7兵被引走，a6-d3对角线完全打开！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "c6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ba6#",
+      "popup": "白象Ba6#！象从e2斜线打到a6，将死黑王！弃双车和后，仅凭一枚象将杀——令人叹为观止的弃子组合！",
+      "highlights": [
+        {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "a6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+... Qe2+
+2. Rf2 Qxf2+
+3. Kxf2 Bd8+
+4. Ke2 Bxa5
+5. b4 Bd8
+# END
+# tac_discoveredAttack_L1-009（闪击）
+# 解法 1

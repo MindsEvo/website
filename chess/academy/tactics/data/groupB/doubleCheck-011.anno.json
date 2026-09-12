@@ -1,0 +1,137 @@
+{
+  "game_id": "tac_doubleCheck_L1-011",
+  "description": "弃后引入，车象双将，连将将死",
+  "intro": {
+    "flash_squares": ["g5", "f3", "d5", "g1", "g2"],
+    "popup": "💡 <b>双将</b>：黑方先走，黑后在g5，黑车在f3，黑象在d5。弃后引入白王，车象双将将死！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃后引入→Rg3+双将（车攻g2，象揭开对角线）→连将将死Rh1#。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxg2+",
+      "popup": "黑后弃子！Qxg2+将军，强制白王吃后，将白王引至g2——车象双将陷阱已张开。",
+      "highlights": [
+        {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "g2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxg2",
+      "popup": "白王被迫吃后，落入陷阱。",
+      "highlights": [
+        {"squares": ["g2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g1", "to": "g2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg3+",
+      "popup": "双将！黑车跳g3，车沿g列将军g2，同时揭开黑象d5沿对角线攻g2！白王无法同时挡车和挡象。",
+      "highlights": [
+        {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "g3", "color": "#4CAF50CC"},
+        {"from": "g3", "to": "g2", "color": "#FF4444CC"},
+        {"from": "d5", "to": "g2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh2",
+      "popup": "白王逃至h2，双将下只能逃王。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "h2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rg2+",
+      "popup": "黑车Rg2+！车沿第2横线将军h2，白王继续被追杀。",
+      "highlights": [
+        {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g3", "to": "g2", "color": "#4CAF50CC"},
+        {"from": "g2", "to": "h2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh1",
+      "popup": "白王逃至h1，退无可退。",
+      "highlights": [
+        {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "h1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rh2+",
+      "popup": "黑车Rh2+！车沿h列将军h1，同时揭开黑象d5沿对角线攻h1！再次双将，白王只能逃至g1。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "h2", "color": "#4CAF50CC"},
+        {"from": "h2", "to": "h1", "color": "#FF4444CC"},
+        {"from": "d5", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kg1",
+      "popup": "白王逃至g1，这是最后的挣扎。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h1", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rh1#",
+      "popup": "黑车Rh1将死！白王在g1被车从h列攻击，象控制g2，自己的马和兵封死逃路，无路可逃。精彩的双将组合！",
+      "highlights": [
+        {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "h1", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "g2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

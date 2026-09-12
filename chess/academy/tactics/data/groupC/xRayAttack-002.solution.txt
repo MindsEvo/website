@@ -1,0 +1,5 @@
+... Qxe1+
+2. Rxe1 Rxe1#
+# END
+# tac_xRayAttack_L1-002（透视攻击）
+# 解法 1

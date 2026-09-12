@@ -1,0 +1,5 @@
+1. Bd6+ exd6
+2. Qa7#
+# END
+# tac_clearance_L1-001（腾挪）
+# 解法 1

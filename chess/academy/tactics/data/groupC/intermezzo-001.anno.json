@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_intermezzo_L1-001",
+  "description": "中间将军，再吃挂马",
+  "intro": {
+    "flash_squares": ["d5", "a5", "f1"],
+    "popup": "💡 <b>中间招</b>（又称「过渡」）：黑马a5无根是挂子。白方不急着吃，先插入Qf1+将军——王被迫应对，再回来吃马！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf1+中间将军！黑王应将后，Bxa5吃掉挂马——比直接吃马多赚一步先手！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf1+",
+      "popup": "白后Qf1+！中间将军——不急着吃a5挂马，先强迫黑王应将！",
+      "highlights": [
+        {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a1", "to": "f1", "color": "#4CAF50CC"},
+        {"from": "f1", "to": "f8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg8",
+      "popup": "黑王Kg8——被迫应将，无法救马！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxa5",
+      "popup": "白象Bxa5！吃掉无根的挂马——中间招完成，多赚一子！",
+      "highlights": [
+        {"squares": ["a5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "a5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

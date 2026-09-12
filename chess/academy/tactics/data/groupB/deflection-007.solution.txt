@@ -1,0 +1,5 @@
+1. Qxc6+ bxc6
+2. Ba6#
+# END
+# tac_deflection_L1-007（引离）
+# 解法 1

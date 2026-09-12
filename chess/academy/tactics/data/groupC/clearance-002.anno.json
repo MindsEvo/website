@@ -1,0 +1,105 @@
+{
+  "game_id": "tac_clearance_L1-002",
+  "description": "车腾挪h6，清开g列让后杀攻",
+  "intro": {
+    "flash_squares": ["g6", "g2", "g5"],
+    "popup": "💡 <b>腾挪</b>：白车在g6，挡住了白后从g2到g5的路线。如何清开g列发动杀攻？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxh6+！车牺牲腾挪，清开g6——白后从g2冲入g5，步步将杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxh6+",
+      "popup": "白车Rxh6+！牺牲自身，腾挪g6——g列通路打开，白后可进g5！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "g2", "to": "g5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxh6",
+      "popup": "黑王Kxh6——被迫到h6，g列完全清空！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qg5+",
+      "popup": "白后Qg5+！g列已通，后冲入g5将军！",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "g5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh7",
+      "popup": "黑王Kh7——逃跑。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qh4+",
+      "popup": "白后Qh4+！步步紧逼——Kg6, f5将杀！",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "h4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kg6",
+      "popup": "黑王Kg6。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "f5#",
+      "popup": "f5将杀！兵腾挪的余波——绝杀！",
+      "highlights": [
+        {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "f5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

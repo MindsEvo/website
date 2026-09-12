@@ -1,0 +1,7 @@
+1. d6 Bxd6
+2. Nd5 Bxh2
+3. Nxb6+ axb6
+4. Rxh2 Nc7
+# END
+# tac_clearance_L1-005（腾挪）
+# 解法 1

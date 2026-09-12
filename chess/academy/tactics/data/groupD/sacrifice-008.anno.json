@@ -1,0 +1,209 @@
+{
+  "game_id": "tac_sacrifice_L1-008",
+  "description": "白方连续弃子打通底线，后车将死——双车弃子组合",
+  "intro": {
+    "flash_squares": ["c3", "b5", "c4", "e8"],
+    "popup": "💡 <b>弃子</b>：白方马在c3，双象在b5格和c4格，黑王在e8。如何用连续弃子打开攻击通道？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nxb5弃马，Bxb5+弃象，连续弃子打开b线；Rxd7弃车引走黑方守将；最终Rd8#。弃子链条层层递进，每一步都有目的。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nxb5",
+      "popup": "白马Nxb5！弃马——吃掉c6兵虽得一兵，但更重要的是打开b线。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "b5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "cxb5",
+      "popup": "黑兵必须吃马——b线被打开，白象随即发力。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "b5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxb5+",
+      "popup": "白象Bxb5+将军！弃象，将黑王暴露在b线上——黑马必须来挡将。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "b5", "color": "#4CAF50CC"},
+        {"from": "b5", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nbd7",
+      "popup": "黑马bd7挡将——但白方接下来长易位后继续施压。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "d7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "O-O-O",
+      "popup": "白方长易位！车来到d1，直接对准d7封挡马，准备决定性的弃车。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a1", "to": "d1", "color": "#4CAF50CC"},
+        {"from": "d1", "to": "d7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rd8",
+      "popup": "黑车Rd8——试图守住底线，但攻势已不可阻挡。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rxd7",
+      "popup": "白车Rxd7！弃车吃掉d7封挡马——d线和底线同时洞开！",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Rxd7",
+      "popup": "黑车吃回——但白方第二车随即占领d线。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d8", "to": "d7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rd1",
+      "popup": "白车Rd1！再次占领d线，盯住d7黑车——黑后被迫应对。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h1", "to": "d1", "color": "#4CAF50CC"},
+        {"from": "d1", "to": "d7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Qe6",
+      "popup": "黑后Qe6——试图防守，但无济于事。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "e6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Bxd7+",
+      "popup": "白象Bxd7+将军！再次弃象，引走d7黑车，打开b8-h2对角线。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "d7", "color": "#4CAF50CC"},
+        {"from": "d7", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Nxd7",
+      "popup": "黑马吃象——底线d线完全暴露！",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "d7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "Qb8+",
+      "popup": "白后Qb8+将军！弃后到b8——黑马必须吃后，d8格洞开给白车。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "b8", "color": "#4CAF50CC"},
+        {"from": "b8", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "Nxb8",
+      "popup": "黑马必须吃后——d8格被让开。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "b8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "Rd8#",
+      "popup": "白车Rd8#！底线将死！经过马、象、车、象、后的一系列弃子，白方完成底线将杀。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

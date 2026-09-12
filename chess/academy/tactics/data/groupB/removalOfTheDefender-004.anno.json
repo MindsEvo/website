@@ -1,0 +1,129 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-004",
+  "description": "连续将军强制消除黑后保护作用",
+  "intro": {
+    "flash_squares": ["e8", "a7", "b7", "e6"],
+    "popup": "💡 <b>消除保护</b>：黑后Qb7保护着a7国王。白方如何通过强制手段消除这个保护，赢得黑后？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qe3+迫使黑后挡将，Ra8+迫走国王，Qe4+再迫黑后，Ra7+！国王吃车，Qxc6！黑后被消除。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qe3+",
+      "popup": "后沿对角线将军！黑后必须挡在b6，暂时离开对a7的直接保护。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "a7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qb6",
+      "popup": "黑后被迫挡将——但白方早有后手。",
+      "highlights": [
+        {"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "b6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ra8+",
+      "popup": "车Ra8+将军！国王被迫移位，白方获得新的攻击角度。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "a8", "color": "#4CAF50CC"},
+        {"from": "a8", "to": "a7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kb7",
+      "popup": "国王逃往b7。",
+      "highlights": [
+        {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a7", "to": "b7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qe4+",
+      "popup": "白后再次将军，继续压迫黑后的位置。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "e4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Qc6",
+      "popup": "黑后再次被迫挡将。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b6", "to": "c6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ra7+",
+      "popup": "车Ra7+！国王被迫吃车——白后伺机而动。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "a7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kxa7",
+      "popup": "国王被迫吃车，黑后彻底失去保护！",
+      "highlights": [
+        {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "a7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qxc6",
+      "popup": "得后！白方赢得决定性物质优势。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "c6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

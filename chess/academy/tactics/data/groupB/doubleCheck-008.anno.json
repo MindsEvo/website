@@ -1,0 +1,32 @@
+{
+  "game_id": "tac_doubleCheck_L1-008",
+  "description": "黑象弃后双将，一步将死",
+  "intro": {
+    "flash_squares": ["e7", "e8", "e1", "b4"],
+    "popup": "💡 <b>双将</b>：黑方先走，黑象在e7，黑后在e8，白王在e1。一步双将将死白王！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：...Bb4#双将！象攻e1对角线，揭开黑后e列将军，白王被自己的棋子困死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bb4#",
+      "popup": "双将将死！黑象从e7跳至b4，象沿对角线攻e1，同时揭开黑后e8沿e列直指e1！白王被自己棋子团团围住，无路可逃。",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "b4", "color": "#4CAF50CC"},
+        {"from": "b4", "to": "e1", "color": "#FF4444CC"},
+        {"from": "e8", "to": "e1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

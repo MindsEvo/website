@@ -1,0 +1,12 @@
+... f4
+2. Qd3 Nb4
+3. Ng5 Nxd3
+4. Nxe6 Qc8
+5. Bg4 Nxb2
+6. Nd5 Rf7
+7. Rb1 Nc4
+8. Rd3 Bh4
+9. Nc7
+# END
+# tac_trappedPiece_L1-005（困子）
+# 解法 1

@@ -1,0 +1,9 @@
+1. a4 Kc6
+2. Kc3 Kc7
+3. Kd3 Kc6
+4. Kd4 Kd6
+5. Kc3 Kc5
+6. Kd3 Kc6
+# END
+# tac_zugzwang_L1-006（逼着）
+# 解法 1

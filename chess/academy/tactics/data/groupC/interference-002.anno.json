@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_interference_L1-002",
+  "description": "白象插入长斜，切断黑方后象联系",
+  "intro": {
+    "flash_squares": ["b3", "d5", "c6", "b7"],
+    "popup": "💡 <b>拦截</b>：黑后在c6，黑象在b7，都在a8-h1长斜上协同。白象能插入d5，切断它们的联系吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bd5！象插入d5，直接威胁Qc6同时切断Bb7支援——黑方被迫失后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bd5",
+      "popup": "白象Bd5！插入d5，直接攻击Qc6，同时切断Bb7通过长斜支援黑后的路线！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "c6", "color": "#FF4444CC"},
+        {"from": "b7", "to": "c6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bg5",
+      "popup": "黑方Be7→Bg5——象撤退，但Qc6已无法守护，黑后处境危险。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "g5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxc6",
+      "popup": "白象Bxc6！吃掉黑后——拦截战术成功，白方大获！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "c6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

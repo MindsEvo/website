@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_discoveredAttack_L1-001",
+  "description": "象将军开线，车闪击得后",
+  "intro": {
+    "flash_squares": ["e5", "g7", "e4", "e8"],
+    "popup": "💡 <b>闪击</b>：白象在e5，白车在e4，黑后在e8。象走开时能同时将军，并让车闪击黑后吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bxg7+！象走开兼将军，白车e4的攻击线对准e8黑后——闪击得后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bxg7+",
+      "popup": "象Bxg7+！一步走开将军：黑王必须应将，白车对e8黑后的攻击同时展开！",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "e4", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxg7",
+      "popup": "黑王被迫吃象——应将之后，e8的黑后已无法同时防守。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxe8",
+      "popup": "白车Rxe8！闪击成功，得后！这就是闪击：移子将军，身后棋子趁机攻击！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "e8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

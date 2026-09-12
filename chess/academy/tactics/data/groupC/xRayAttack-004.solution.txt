@@ -1,0 +1,6 @@
+1. Be5+ Qxe5
+2. Qxe5+ Kg8
+3. Qxb2 c5
+# END
+# tac_xRayAttack_L1-004（透视攻击）
+# 解法 1

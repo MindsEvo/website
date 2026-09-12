@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_fork_L1-006",
+  "description": "王捉双——王同时攻击马和车",
+  "intro": {
+    "flash_squares": ["f2", "e4", "g4"],
+    "popup": "💡 <b>捉双</b>：白王在f2，如何走一步同时攻击马和车？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Kf3王叉！王同时攻击e4马和g4车，对手两子不能兼顾。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf3",
+      "popup": "王走f3！同时攻击e4马和g4车——王叉！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "e4", "color": "#FF4444CC"},
+        {"from": "f3", "to": "g4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rg7",
+      "popup": "黑车逃走，王随即吃马。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "g7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kxe4",
+      "popup": "王吃e4马，白方得子！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "e4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

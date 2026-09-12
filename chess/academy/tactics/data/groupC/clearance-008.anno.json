@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_clearance_L1-008",
+  "description": "车腾挪c5，攻击黑后同时清开g列",
+  "intro": {
+    "flash_squares": ["g5", "c5", "c4"],
+    "popup": "💡 <b>腾挪</b>：白车在g5。车腾挪到c5，能攻击黑后c4同时清开g列吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rc5！车腾挪攻击黑后——Ne8被迫，Rxc4换后，Ne3赢子！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc5",
+      "popup": "白车Rc5！从g5腾挪到c5，直接攻击黑后c4，同时清开g5！",
+      "highlights": [
+        {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c4"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "c5", "color": "#4CAF50CC"},
+        {"from": "c5", "to": "c4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ne8",
+      "popup": "黑马Ne8——撤退，黑后c4暂时守住，但被动！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "e8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxc4",
+      "popup": "白车Rxc4！吃掉黑后——腾挪获得重大收益！",
+      "highlights": [
+        {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "c4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxc4",
+      "popup": "黑车Rxc4吃回——双方换子，但白方材料优势已确立。",
+      "highlights": [
+        {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "c4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ne3",
+      "popup": "白马Ne3！跳入e3，攻击c4黑车——白方完全掌控！",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "e3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

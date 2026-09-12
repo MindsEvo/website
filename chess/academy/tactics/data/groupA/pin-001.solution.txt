@@ -1,0 +1,11 @@
+1. Rb4 e5
+2. e3 e4
+3. exd4 Kf5
+4. Ke2 Ke6
+5. Ke3 Kd5
+6. Rb6 Kc4
+7. Kxe4 Kc3
+8. Rb5
+# END
+# tac_pin_L1-003（牵制）
+# 解法 1

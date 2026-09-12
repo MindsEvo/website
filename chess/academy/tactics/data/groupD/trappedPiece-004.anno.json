@@ -1,0 +1,66 @@
+{
+  "game_id": "tac_trappedPiece_L1-004",
+  "description": "黑车困在角落，白象穿越捉死",
+  "intro": {
+    "flash_squares": ["g8", "c4", "g3"],
+    "popup": "💡 <b>困子</b>：黑车在g8几乎动弹不了——被Bf8和角落限制。白方如何利用这个困子？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bxd5开通对角线→Bxg8直接捉死困子！黑车困在角落被迫换象，白方赢得交换。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bxd5",
+      "popup": "白象Bxd5！象从c4吃掉d5兵，打开了通往g8的对角线（d5-e6-f7-g8）。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bd6",
+      "popup": "黑象f8跑到d6，试图防守。",
+      "highlights": [
+        {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "d6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxg8",
+      "popup": "白象Bxg8！象从d5沿对角线直取g8困子！黑车几乎没有退路（g7有黑后，h8是死角），被白象吞掉！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "g8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxg8",
+      "popup": "黑后Qxg8吃回，以后换象，白方赢得交换（象换车）大优。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

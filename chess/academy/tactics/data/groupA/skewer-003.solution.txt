@@ -1,0 +1,6 @@
+... Rxe4
+2. Qxe4 Bc6
+3. Qd3 Bxh1
+# END
+# tac_skewer_L1-003（串击）
+# 解法 1

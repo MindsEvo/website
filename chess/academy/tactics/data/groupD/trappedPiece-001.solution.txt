@@ -1,0 +1,6 @@
+... Nf4
+2. Qf3 g4
+3. Qxf4 exf4
+# END
+# tac_trappedPiece_L1-001（困子）
+# 解法 1

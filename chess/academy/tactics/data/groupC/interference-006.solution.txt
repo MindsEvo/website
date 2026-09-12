@@ -1,0 +1,7 @@
+1. Be5 Nf5
+2. Nxf5 Qc7
+3. Qxc7 g5
+4. Qxg7#
+# END
+# tac_interference_L1-006（拦截）
+# 解法 1

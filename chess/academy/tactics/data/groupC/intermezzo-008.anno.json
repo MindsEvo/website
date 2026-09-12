@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_intermezzo_L1-008",
+  "description": "中间攻击挂车，再组织将杀",
+  "intro": {
+    "flash_squares": ["a5", "a8", "g5"],
+    "popup": "💡 <b>中间招</b>：黑车a8无根是挂子。白方先Qa5！中间攻击挂车——黑方必须应对，白方再转为将杀！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qa5中间捉挂车！黑方Re8应对，Qg5转移——白方攻势更强！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qa5",
+      "popup": "白后Qa5！中间招——攻击无根的黑车a8（挂子），同时准备Qg5将攻！",
+      "highlights": [
+        {"squares": ["a5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "a5", "color": "#4CAF50CC"},
+        {"from": "a5", "to": "a8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Re8",
+      "popup": "黑车Re8——应对白后威胁，车移至e8守住！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "e8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qg5",
+      "popup": "白后Qg5！中间招连续——转移攻击，白方发动将杀威胁！",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "g5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

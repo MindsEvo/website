@@ -1,0 +1,5 @@
+... Ne3+
+2. Kh1 Qg2#
+# END
+# tac_doubleCheck_L1-006（双将）
+# 解法 1

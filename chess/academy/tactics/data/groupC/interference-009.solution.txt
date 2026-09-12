@@ -1,0 +1,12 @@
+1. Rf1 Rd8
+2. Bf7+ Kh8
+3. Be8 Qf7
+4. Bxf7 b6
+5. Be8 Bxc5+
+6. Qxc5 h6
+7. Rf8+ Kh7
+8. Qf5+ g6
+9. Qxg6#
+# END
+# tac_interference_L1-009（拦截）
+# 解法 1

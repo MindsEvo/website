@@ -1,0 +1,8 @@
+1. Rh6+ Ke7
+2. Rxc6 Kd7
+3. Be8+ Kd8
+4. Bf7 Kd7
+5. Bxd5 Bxf4
+6. Nf5 Nb1
+# END
+# 解法 1

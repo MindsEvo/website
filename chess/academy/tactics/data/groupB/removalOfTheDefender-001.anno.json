@@ -1,0 +1,59 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-001",
+  "description": "黑车牺牲引离白车，消除对白后的保护",
+  "intro": {
+    "flash_squares": ["e8", "d1", "d4", "g4"],
+    "popup": "💡 <b>消除保护</b>：白车Rd1正在保护Qd4。黑方如何消除这个保护，吃掉白后？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Re1+将白车引离d1，Qd4失去唯一保护者，Qxd4+轻松得后！",
+    "voice": true
+  },
+  "board_always": [
+    {"highlight_squares": ["d1"], "color": "#FF990033"},
+    {"highlight_squares": ["d4"], "color": "#4CAF5033"}
+  ],
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re1+",
+      "popup": "车牺牲！Re1+强制白车离开d1，消除对Qd4的保护。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d1"], "color": "#FF990055", "duration_ms": 0},
+        {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e1", "color": "#4CAF50CC"},
+        {"from": "d1", "to": "d4", "color": "#FF9900CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxe1",
+      "popup": "白车被迫吃车，d4失去保护者！",
+      "highlights": [
+        {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "e1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxd4+",
+      "popup": "吃掉无保护的白后！消除保护战术成功。",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "d4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

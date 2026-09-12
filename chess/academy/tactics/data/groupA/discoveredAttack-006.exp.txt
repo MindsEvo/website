@@ -1,0 +1,5 @@
+一个比较隐蔽的闪击的例子。
+
+# END
+# tac_discoveredAttack_L1-006（闪击）
+# 解法 1

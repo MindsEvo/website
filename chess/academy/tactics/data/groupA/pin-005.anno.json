@@ -1,0 +1,143 @@
+{
+  "game_id": "tac_pin_L1-005",
+  "description": "白后牵制黑象——直接得子",
+  "intro": {
+    "flash_squares": ["c2", "e5", "e6"],
+    "popup": "💡 <b>牵制</b>：白后在c2，黑象在e5，黑后在e6。三子同纵线，白方如何利用牵制直接得子？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qe2牵制黑象！黑象被钉在e5无法移动（动则丢后），白方随即Qxe5免费得象，优势明显。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qe2",
+      "popup": "白后Qe2！沿e列牵制黑象——黑象若动，白后立刻吃掉e6后。",
+      "highlights": [
+        {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "e2", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "e5", "color": "#FF4444CC"},
+        {"from": "e5", "to": "e6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "b6",
+      "popup": "黑方兵推b6——黑象被牵制无法动弹，只能走其他着法。",
+      "highlights": [
+        {"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "b6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxe5",
+      "popup": "白后吃象！被牵制的棋子无法逃跑，白方免费得象。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "e5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qf7",
+      "popup": "黑后Qf7撤退，白方已多得一象，优势确立。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "f7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "h4",
+      "popup": "白兵h4推进，多子优势下白方开始展开进攻。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "h4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "a5",
+      "popup": "黑兵推进，争取边路空间抗衡。",
+      "highlights": [
+        {"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a7", "to": "a5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "h5",
+      "popup": "白兵h5继续推进，h兵威胁升变。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "h5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "a4",
+      "popup": "黑兵跟进，双方各推各的通路兵。",
+      "highlights": [
+        {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "h6",
+      "popup": "白兵h6！距离升变只差一步，白方优势巨大。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "h6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "a3",
+      "popup": "黑兵推a3，但白方h兵更快——牵制得子的优势已决定胜负。",
+      "highlights": [
+        {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "a3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}
+

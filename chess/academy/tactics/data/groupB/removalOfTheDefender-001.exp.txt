@@ -1,0 +1,5 @@
+这是一个简单的消除保护的例子。把保护的棋子引开。
+
+# END
+# tac_removalOfTheDefender_L1-001（消除保护）
+# 解法 1

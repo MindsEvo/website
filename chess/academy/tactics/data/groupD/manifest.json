@@ -1,0 +1,65 @@
+{
+  "group": "战术D组",
+  "categories": [
+    {
+      "key": "trappedPiece",
+      "label": "困子",
+      "items": [
+        { "id": "trappedPiece-001", "fen": "r4r2/p2q2kp/1p3pn1/4p1pQ/3pP3/3P2N1/PP3PPP/3R1RK1 b - - 0 1", "solutions": [{ "id": "trappedPiece-001" }] },
+        { "id": "trappedPiece-002", "fen": "3r1rk1/1p3pp1/2p4p/3pP3/p2R2b1/bBB1qN2/2P3PR/1K3Q2 w - - 0 1", "solutions": [{ "id": "trappedPiece-002" }] },
+        { "id": "trappedPiece-003", "fen": "3r1rk1/1p3pp1/2p4p/3pP3/p2R2b1/bBB1qN2/2P3PR/1K3Q2 w - - 0 1", "solutions": [{ "id": "trappedPiece-003" }] },
+        { "id": "trappedPiece-004", "fen": "rnbk1br1/ppp3q1/5pN1/3pp3/2B5/2P3Q1/PPP3PP/R1B1K2R w KQ - 0 1", "solutions": [{ "id": "trappedPiece-004" }] },
+        { "id": "trappedPiece-005", "fen": "r2q1rk1/1p2b1p1/p1npb2p/4pp2/4P3/2N1QN1P/PPPRBPP1/3R2K1 b - - 0 1", "solutions": [{ "id": "trappedPiece-005" }] },
+        { "id": "trappedPiece-006", "fen": "1k6/pp3p1p/2p1p1p1/1P6/2P4P/3K2P1/1r1P1P2/R7 w - - 0 1", "solutions": [{ "id": "trappedPiece-006" }] },
+        { "id": "trappedPiece-007", "fen": "r2qkb1r/1Qp2ppp/n2p1n2/p2Ppb2/2P5/2N1PN2/PP1B1PPP/R3KB1R b - - 0 1", "solutions": [{ "id": "trappedPiece-007" }] },
+        { "id": "trappedPiece-008", "fen": "rn1qk2r/ppp1nppp/3bb3/3p4/2PP4/5N1P/PP3PP1/RNBQKB1R w - - 0 1", "solutions": [{ "id": "trappedPiece-008" }] }
+      ]
+    },
+    {
+      "key": "blockade",
+      "label": "阻塞",
+      "items": [
+        { "id": "blockade-001", "fen": "3r2rk/6p1/5n1p/5Q2/3q3N/8/PPB5/K7 w - - 0 1", "solutions": [{ "id": "blockade-001" }] },
+        { "id": "blockade-002", "fen": "6R1/3r3p/1p1n2pk/2p1Q3/1PB3P1/PKP5/5q2/8 w - - 0 1", "solutions": [{ "id": "blockade-002" }] },
+        { "id": "blockade-003", "fen": "4r1k1/pn3pp1/2b3r1/5N2/1QP5/P2R2NR/1P3P1K/2q5 w - - 0 1", "solutions": [{ "id": "blockade-003" }] },
+        { "id": "blockade-004", "fen": "8/8/4b3/7p/5K1k/2b1P1R1/6P1/8 w - - 0 1", "solutions": [{ "id": "blockade-004" }] },
+        { "id": "blockade-005", "fen": "r1b5/pp2kp2/2p2p1P/4nP2/4N2P/8/PP4B1/2KR4 w - - 0 1", "solutions": [{ "id": "blockade-005" }] },
+        { "id": "blockade-006", "fen": "1r5k/2q2p1p/p2p3B/5PQ1/n1p5/2b4P/PrB3P1/2R1R1K1 w - - 0 1", "solutions": [{ "id": "blockade-006" }] },
+        { "id": "blockade-007", "fen": "k1r4q/p1p5/Q2pp2p/3b2p1/8/2R2P2/P4P1P/KR6 w - - 0 1", "solutions": [{ "id": "blockade-007" }] },
+        { "id": "blockade-008", "fen": "7k/7p/p3b3/2p1b2q/2P5/1PB5/P4Q1P/7K w - - 0 1", "solutions": [{ "id": "blockade-008" }] },
+        { "id": "blockade-009", "fen": "rnb2b2/ppp2Q2/3k4/3pN3/3Pp3/8/PP2KP1P/RNq5 w - - 0 1", "solutions": [{ "id": "blockade-009" }] },
+        { "id": "blockade-010", "fen": "r6k/1ppnNr1p/p4p1Q/2q2N2/2n2P2/4R3/PPP3PP/6K1 w - - 0 1", "solutions": [{ "id": "blockade-010" }] },
+        { "id": "blockade-011", "fen": "3rqk2/ppr1pp1Q/2n2b2/2p2N2/2P5/3P2PP/P1P2P1K/R3R3 w - - 0 1", "solutions": [{ "id": "blockade-011" }] }
+      ]
+    },
+    {
+      "key": "zugzwang",
+      "label": "逼着",
+      "items": [
+        { "id": "zugzwang-001", "fen": "8/8/8/3p4/2kP1K2/8/8/8 w - - 0 1", "solutions": [{ "id": "zugzwang-001" }] },
+        { "id": "zugzwang-002", "fen": "5Kbk/6pp/6P1/8/8/8/8/7R w - - 0 1", "solutions": [{ "id": "zugzwang-002" }] },
+        { "id": "zugzwang-003", "fen": "8/8/3k4/1p1p1p2/1P1K1P2/2P5/8/8 b - - 0 1", "solutions": [{ "id": "zugzwang-003" }] },
+        { "id": "zugzwang-004", "fen": "8/1p1k4/1P6/2PK4/8/8/8/8 w - - 0 1", "solutions": [{ "id": "zugzwang-004" }] },
+        { "id": "zugzwang-005", "fen": "5k2/4bP2/p2p4/2pPpK1B/1pP2p2/1P1P4/8/8 w - - 0 1", "solutions": [{ "id": "zugzwang-005" }] },
+        { "id": "zugzwang-006", "fen": "8/6p1/pp4P1/2k2p1p/2P2P1P/P2K4/8/8 w - - 2 51", "solutions": [{ "id": "zugzwang-006" }] },
+        { "id": "zugzwang-007", "fen": "1r4k1/R4p2/3Pb2p/4Q1p1/1p2B3/2p3P1/1P3P2/6K1 w - - 0 1", "solutions": [{ "id": "zugzwang-007" }] },
+        { "id": "zugzwang-008", "fen": "5r2/1R6/3pBk2/2bP1P2/1p2K3/1P6/7P/8 w - - 0 1", "solutions": [{ "id": "zugzwang-008" }] }
+      ]
+    },
+    {
+      "key": "sacrifice",
+      "label": "弃子",
+      "items": [
+        { "id": "sacrifice-001", "fen": "5Bk1/1p4pp/p1p1p3/P6q/4P3/P4r1P/2P1QbP1/3RR2K b - - 0 1", "solutions": [{ "id": "sacrifice-001" }] },
+        { "id": "sacrifice-002", "fen": "5q2/1kp3PP/1p6/3P4/p7/PrP3Q1/1P6/KR6 b - - 0 1", "solutions": [{ "id": "sacrifice-002" }] },
+        { "id": "sacrifice-003", "fen": "4rrk1/7p/p2Q2p1/1p3q2/3R4/2P5/PP3PPP/5RK1 b - - 0 1", "solutions": [{ "id": "sacrifice-003" }] },
+        { "id": "sacrifice-004", "fen": "r2q1rk1/5pb1/1np1p2p/pp4N1/3PN3/2P3P1/PPQ1bPPR/2KR4 w - - 0 1", "solutions": [{ "id": "sacrifice-004" }] },
+        { "id": "sacrifice-005", "fen": "rn2q3/pp3r1k/4p2p/2p5/1b1P2R1/4PP1Q/PP2KP1P/6R1 w - - 0 1", "solutions": [{ "id": "sacrifice-005" }] },
+        { "id": "sacrifice-006", "fen": "rn3rk1/pbppq1pp/1p2pb2/4N2Q/3PN3/3B4/PPP2PPP/R3K2R w - - 0 1", "solutions": [{ "id": "sacrifice-006" }] },
+        { "id": "sacrifice-007", "fen": "r1b2rk1/pp1n2pp/2p1p3/3p1pNq/2PP1Pn1/3BP1P1/PP2N1Kb/R1BQ1R2 b - - 0 1", "solutions": [{ "id": "sacrifice-007" }] },
+        { "id": "sacrifice-008", "fen": "rn2kb1r/p3qppp/2p2n2/1p2p1B1/2B1P3/1QN5/PPP2PPP/R3K2R w KQkq - 0 1", "solutions": [{ "id": "sacrifice-008" }] },
+        { "id": "sacrifice-009", "fen": "2kr2nr/pp1n1ppp/2p1p3/q7/1b1P1B2/P1N2Q1P/1PP1BPP1/R3K2R w KQ - 0 1", "solutions": [{ "id": "sacrifice-009" }] }
+      ]
+    }
+  ]
+}

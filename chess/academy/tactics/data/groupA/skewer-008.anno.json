@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_skewer_L1-008",
+  "description": "串击练习——局面待完善",
+  "intro": {
+    "flash_squares": [],
+    "popup": "💡 <b>串击</b>：找出本局的串击手段！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxf8+弃车引象到f8，再Rd8+将军串击！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxf8+",
+      "popup": "弃车将军！引诱黑象来到f8，为后续串击创造条件。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxf8",
+      "popup": "黑象吃车来到f8。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxh6",
+      "popup": "后吃h6，获得子力优势。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Bxh6",
+      "popup": "黑象吃后，但白方随即发动串击。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rd8+",
+      "popup": "车到d8将军，开始串击！",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+1. axb4 Qxa1+
+2. Kd2 Qxh1
+3. Qxc6+ bxc6
+4. Ba6#
+# END
+# tac_sacrifice_L1-009（弃子）
+# 解法 1

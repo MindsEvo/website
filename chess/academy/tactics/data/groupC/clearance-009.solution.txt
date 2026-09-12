@@ -1,0 +1,5 @@
+1. Nf6+ Kf8
+2. Re8#
+# END
+# tac_clearance_L1-009（腾挪）
+# 解法 1

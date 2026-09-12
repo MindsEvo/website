@@ -1,0 +1,6 @@
+1. Be5+ Kxe5
+2. Qc3+ Kd5
+3. Qxg7 Ke6
+# END
+# tac_skewer_L1-004（串击）
+# 解法 1

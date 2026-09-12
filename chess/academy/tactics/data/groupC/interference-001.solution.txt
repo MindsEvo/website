@@ -1,0 +1,7 @@
+... Nd3+
+2. Rxd3 cxd3
+3. Qxe7 Rxe7
+4. Kd2
+# END
+# tac_interference_L1-001（拦截）
+# 解法 1

@@ -1,0 +1,86 @@
+{
+  "game_id": "tac_blockade_L1-008",
+  "description": "白后将军引象阻塞，再弃后用象将死",
+  "intro": {
+    "flash_squares": ["h8", "f8", "f6"],
+    "popup": "💡 <b>连续阻塞</b>：黑王在角落，有象在旁边保护横向。白方如何用两步后，把黑象引到阻塞自己退路的位置，再用象将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf8+引黑象到g8阻塞，Qf6+再弃后，黑象吃后后被白象将死！两步弃后的连续阻塞。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf8+",
+      "popup": "后进底线将军！黑只能用象垫在g8，阻塞了黑王横向出路。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bg8",
+      "popup": "黑象垫将——阻塞了g8！黑王只剩f6方向，但白后马上来了。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "g8", "color": "#E53935CC"},
+        {"from": "g8", "to": "h8", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qf6+",
+      "popup": "白后再将军！这次黑象必须吃后，进一步阻塞黑王退路。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Bxf6",
+      "popup": "黑象吃后——完全封死了黑王的所有出路！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "f6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bxf6#",
+      "popup": "白象将死！黑王在h8，g7被黑兵挡，g8被黑象封，f6再被白象将军——绝无逃路！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "f6", "to": "h8", "color": "#FF6B35CC"},
+        {"from": "f6", "to": "g7", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

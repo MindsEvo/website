@@ -1,0 +1,151 @@
+{
+  "game_id": "tac_pin_L1-008",
+  "description": "西班牙开局——Bb5经典牵制Nc6",
+  "intro": {
+    "flash_squares": ["b1", "e8"],
+    "popup": "💡 西班牙开局（鲁伊·洛佩兹）！白方用象牵制黑马与黑王的经典走法，观察b5→c6→e8斜线牵制。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Bb5沿b5-c6-e8斜线牵制黑马Nc6——黑马动则黑王被将。白方随后Bxc6换子，破坏黑方兵形，获得持续主动权。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "白兵e4，开放游戏，占据中心。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "黑兵e5，对称应对，双方各占中心一格。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "白马Nf3，攻击e5，发展棋子。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "e5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "黑马Nc6，保护e5——注意这个马即将被白方牵制！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "e5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bb5!",
+      "popup": "白象Bb5！西班牙开局的精髓——沿b5-c6-e8斜线牵制黑马！黑马若动，黑王直接被将。这是全牵制（目标是王）！",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "b5", "color": "#4CAF50CC"},
+        {"from": "b5", "to": "c6", "color": "#FF4444CC"},
+        {"from": "c6", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "d6",
+      "popup": "黑方d6，巩固e5，暂时不理会牵制。",
+      "highlights": [
+        {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "d4",
+      "popup": "白兵d4！白方打开中心，向e5施压，同时进一步激活Bb5的牵制。",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "e5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Bd7",
+      "popup": "黑象Bd7，挑战白象——若白象被换，Nc6就解除牵制。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["b5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "b5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Bxc6!",
+      "popup": "白象Bxc6！主动换子——消灭被牵制的黑马，让黑方兵形双叠。这是利用牵制的换子策略！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "c6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Bxc6",
+      "popup": "黑象Bxc6回吃——黑方兵形遭到破坏，c6和c7两个兵叠在一起，长期劣势。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "c6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Nc3",
+      "popup": "白马Nc3发展，白方完成出子，局面优势明显。西班牙开局的牵制策略取得成功！",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b1", "to": "c3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

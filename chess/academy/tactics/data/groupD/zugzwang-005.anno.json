@@ -1,0 +1,99 @@
+{
+  "game_id": "tac_zugzwang_L1-005",
+  "description": "复杂残局，白方每步逼着黑方被动",
+  "intro": {
+    "flash_squares": ["f5", "f8", "f7", "h5"],
+    "popup": "💡 <b>逼着</b>：局面极为复杂，白方几乎每步都在逼着黑方处于被动。Ke6是关键第一步！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：白方通过Ke6进入要冲，Bd1控制黑象，再Kxd6吃兵取得决定性优势，全程逼着黑方应对。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Ke6",
+      "popup": "白王Ke6，进入要冲！威胁Kxd6吃黑兵，同时向f7兵施压。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6", "f7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "e6", "color": "#4CAF50CC"},
+        {"from": "e6", "to": "d6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "a5",
+      "popup": "黑兵a5，黑方被迫寻找反攻——没有好的防守手段。",
+      "highlights": [{"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "a6", "to": "a5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "Bd1",
+      "popup": "白象Bd1！等招，盯住黑象，逼着黑象走棋暴露弱点。",
+      "highlights": [{"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h5", "to": "d1", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3, "move": "Bh4",
+      "popup": "黑象Bh4，被迫走棋，离开了原来的位置。",
+      "highlights": [{"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "h4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4, "move": "Kxd6",
+      "popup": "白王吃d6！逼着奏效，白方获得关键兵的优势。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "d6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5, "move": "Bf2",
+      "popup": "黑象Bf2，试图牵制白方。",
+      "highlights": [{"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "f2", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6, "move": "Ke6",
+      "popup": "白王Ke6，继续保持压力，威胁f7兵。",
+      "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d6", "to": "e6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7, "move": "Bh4",
+      "popup": "黑象Bh4，被迫退守。",
+      "highlights": [{"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f2", "to": "h4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8, "move": "d6",
+      "popup": "d6！白兵前进，逼着黑方疲于应付多个威胁。",
+      "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9, "move": "Bg3",
+      "popup": "黑象Bg3，继续试图阻拦。",
+      "highlights": [{"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "h4", "to": "g3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10, "move": "Kd5",
+      "popup": "白王Kd5，进一步控制局面，后续推c兵或d兵升变。",
+      "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

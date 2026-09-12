@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-002",
+  "description": "白车消除黑马，打开攻王通道",
+  "intro": {
+    "flash_squares": ["f3", "f6", "g8", "h7"],
+    "popup": "💡 <b>消除保护</b>：Nf6是保护黑方国王的关键防守马。白方如何消除它，发动攻王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxf6消除防守马！若gxf6则Qxh7#，黑方被迫g6，白方借势展开持续攻击。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxf6",
+      "popup": "车消除防守马Nf6！注意：若黑方gxf6，白方Qxh7#直接将杀！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "h4", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "g6",
+      "popup": "黑方不敢gxf6（否则Qxh7#），被迫g6阻挡。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "g6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bb3+",
+      "popup": "象Bb3+将军，继续施压！国王处于危险中。",
+      "highlights": [
+        {"squares": ["b3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "b3", "color": "#4CAF50CC"},
+        {"from": "b3", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

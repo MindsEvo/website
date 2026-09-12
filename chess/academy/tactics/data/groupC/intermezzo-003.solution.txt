@@ -1,0 +1,9 @@
+1. Rxd6 Rb4
+2. Rxc7 Rf5
+3. Bg4 Rf4
+4. g3 Rc4
+5. Rxc4 Rxc4
+6. Rb6 Kf8
+# END
+# tac_intermezzo_L1-003（中间招）
+# 解法 1

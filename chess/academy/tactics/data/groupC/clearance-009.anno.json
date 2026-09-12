@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_clearance_L1-009",
+  "description": "马腾挪e4，清开e列让车将杀",
+  "intro": {
+    "flash_squares": ["e4", "f6", "e8"],
+    "popup": "💡 <b>腾挪</b>：白马在e4，挡住了Re1→e8的e列通路。如何腾挪马，让车冲入e8将杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nf6+！马腾挪离开e4，清开e列，Kf8被迫——Re8将杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf6+",
+      "popup": "白马Nf6+！从e4腾挪到f6——清开整条e列（e4已空），同时将军！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "e1", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf8",
+      "popup": "黑王Kf8——被迫应将，e列彻底清空！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "f8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re8#",
+      "popup": "白车Re8将杀！e列清空后车冲入——腾挪一击制胜！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+1. Bg3 Rxh2
+2. Kxh2 Rh8+
+3. Kg1 Rh1+
+4. Kxh1 Qh3+
+5. Kg1 Qxg2#
+# END
+# tac_pin_L1-006（牵制）
+# 解法 1

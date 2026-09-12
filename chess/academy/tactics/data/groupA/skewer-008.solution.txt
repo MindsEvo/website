@@ -1,0 +1,9 @@
+1. Rxf8+ Bxf8
+2. Qxh6 Bxh6
+3. Rd8+ Kg7
+4. Rg8+ Kf6
+5. Rxg4 bxa4
+6. Rxa4 Ke5
+# END
+# tac_skewer_L1-008（串击）
+# 解法 1

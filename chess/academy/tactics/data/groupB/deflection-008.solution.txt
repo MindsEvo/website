@@ -1,0 +1,9 @@
+... Qb2
+2. Kf1 Qxc3
+3. g4 Qc1+
+4. Kg2 Qd1
+5. Kf3 Qxe2+
+6. Kxe2 Rd6
+# END
+# tac_deflection_L1-008（引离）
+# 解法 1

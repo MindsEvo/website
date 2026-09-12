@@ -1,0 +1,8 @@
+1. Qxf7+ Qxf7
+2. Ra7+ Kd8
+3. Rxf7 Ke8
+4. Ra7 Kf8
+5. Kg1 f3
+# END
+# tac_skewer_L1-005（串击）
+# 解法 1

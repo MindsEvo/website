@@ -1,0 +1,5 @@
+1. Qxh6+ Kxh6
+2. Rh4#
+# END
+# tac_sacrifice_L1-005（弃子）
+# 解法 1

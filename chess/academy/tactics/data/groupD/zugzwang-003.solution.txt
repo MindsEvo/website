@@ -1,0 +1,13 @@
+... Kc6
+2. Ke5 Kc7
+3. Kxd5 Kd7
+4. Ke5 Kc6
+5. Kxf5 Kd5
+6. Kg6 Kc4
+7. f5 Kb3
+8. f6 Kxc3
+9. f7 Kxb4
+10. f8=Q+
+# END
+# tac_zugzwang_L1-003（逼着）
+# 解法 1

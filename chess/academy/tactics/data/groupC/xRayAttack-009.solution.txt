@@ -1,0 +1,6 @@
+... Qf1+
+2. Bg1 Qf3+
+3. Bxf3 Bxf3#
+# END
+# tac_xRayAttack_L1-009（透视攻击）
+# 解法 1

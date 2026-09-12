@@ -1,0 +1,5 @@
+非常漂亮的通过消除保护的组合攻击。
+
+# END
+# tac_removalOfTheDefender_L1-005（消除保护）
+# 解法 1

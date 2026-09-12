@@ -1,0 +1,9 @@
+1. Bxb7 Qxb7
+2. Qd5 Qd7
+3. Nxe7+ Qxe7
+4. Qxa8 Re8
+5. Be3 Nd7
+6. Qg2 Nf6
+# END
+# tac_attraction_L1-009（引入）
+# 解法 1

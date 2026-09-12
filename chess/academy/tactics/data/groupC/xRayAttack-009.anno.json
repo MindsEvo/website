@@ -1,0 +1,83 @@
+{
+  "game_id": "tac_xRayAttack_L1-009",
+  "description": "黑后引入堵塞，黑象透视将死",
+  "intro": {
+    "flash_squares": ["f7", "c6", "e4", "h1"],
+    "popup": "💡 <b>透视攻击</b>：黑后在f7，黑象在c6，透视穿越白象e4，直指h1白王。黑方如何完成透视将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf1+引入→Bg1堵塞→Qf3+强迫象让路→黑象透视c6-f3将死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf1+",
+      "popup": "黑后Qf1+！后沿第1横线将军白王h1，强迫白象到g1堵将，为后续透视攻击布局。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "f1", "color": "#4CAF50CC"},
+        {"from": "f1", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bg1",
+      "popup": "白象被迫到g1堵将，堵死了白王的退路，透视攻击的关键棋子就位！",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qf3+",
+      "popup": "黑后Qf3+！后沿对角线将军h1，强迫白象e4必须吃后，为黑象c6的透视路线让路！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Bxf3",
+      "popup": "白象被迫从e4吃后到f3，离开了黑象c6的透视对角线！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "f3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bxf3#",
+      "popup": "透视攻击将死！黑象c6早已透视白象e4盯住f3和h1，白象移走后黑象直取f3将死白王！白王被自己的象和兵困死，无路可逃。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "c6", "to": "e4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

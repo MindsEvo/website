@@ -1,0 +1,5 @@
+同时威胁吃两个子也是一种闪击。
+
+# END
+# tac_discoveredAttack_L1-004（闪击）
+# 解法 1

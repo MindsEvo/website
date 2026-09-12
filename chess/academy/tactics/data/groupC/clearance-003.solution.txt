@@ -1,0 +1,9 @@
+... Qxf3+
+2. gxf3 Ne3+
+3. Kf2 Nxc2
+4. Bc3 Ne3
+5. Re1 Nf5
+6. Bd3
+# END
+# tac_clearance_L1-003（腾挪）
+# 解法 1

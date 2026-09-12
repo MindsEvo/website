@@ -1,0 +1,182 @@
+{
+  "game_id": "tac_deflection_L1-008",
+  "description": "引离白后——Qb2双威胁，得车得优势",
+  "intro": {
+    "flash_squares": [
+      "b6",
+      "e2",
+      "c3"
+    ],
+    "popup": "💡 黑方如何利用Qb2，引离白后使其无法同时防守e2和c3？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Qb2！同时威胁Qxc3（吃车）和若Qxb2则Rd1+绝杀。白方两头无法兼顾——引离思路：让守卫者顾此失彼。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qb2!",
+      "popup": "黑后Qb2！双重威胁——1.Qxc3赢车；2.若Qxb2?则Rd1+绝杀！白方两难。",
+      "highlights": [
+        {
+          "squares": [
+            "b2"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b6",
+          "to": "b2",
+          "color": "#4CAF50CC"
+        },
+        {
+          "from": "b2",
+          "to": "c3",
+          "color": "#FF4444CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf1",
+      "popup": "白王Kf1，避开d1杀，防止Rd1+。",
+      "highlights": [
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxc3",
+      "popup": "黑后Qxc3！白车被引离无人守护，黑方赢车！",
+      "highlights": [
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b2",
+          "to": "c3",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "g4",
+      "popup": "白方g4，试图挺兵争棋。",
+      "highlights": [
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qc1+",
+      "popup": "黑后Qc1+！将军——引白王离开f1。",
+      "highlights": [
+        {
+          "squares": [
+            "c1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "c1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kg2",
+      "popup": "白王Kg2，逃离。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qd1",
+      "popup": "黑后Qd1！威胁Qxe2——黑方多车胜定。",
+      "highlights": [
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c1",
+          "to": "d1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

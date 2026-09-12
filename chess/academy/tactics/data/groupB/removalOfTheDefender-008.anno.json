@@ -1,0 +1,91 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-008",
+  "description": "车消除保护f8的马，后续组合攻杀",
+  "intro": {
+    "flash_squares": ["e5", "e6", "f8", "f3"],
+    "popup": "💡 <b>消除保护</b>：黑马Ne6保护着黑象Bf8。白方如何消除这个保护，打开攻势？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxe6消除保护f8的马！Qxf8后车Rxg7+剥开国王，联合绝杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxe6",
+      "popup": "车消除防守马！Ne6是保护Bf8的关键子，拿掉它！",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#2196F355", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "e6", "color": "#4CAF50CC"},
+        {"from": "e6", "to": "f8", "color": "#FF9900CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe6",
+      "popup": "黑后吃车，马已消除。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxf8",
+      "popup": "白后吃象！马已不在，f8失去保护！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "f8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxf8",
+      "popup": "黑车吃后，但白方还有绝招！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "f8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxg7+",
+      "popup": "车Rxg7+！撕开国王防线，将军！",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c7", "to": "g7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh8",
+      "popup": "国王逃至h8。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+1. Re5 Bxe5
+2. f6 Rg8
+3. Bg7+ Rxg7
+4. Qxg7#
+# END
+# 解法 1

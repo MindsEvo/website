@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_skewer_L1-001",
+  "description": "白象串击——象沿对角线同时攻击黑后和黑车",
+  "intro": {
+    "flash_squares": ["g4", "c6", "b7"],
+    "popup": "💡 <b>串击</b>：白象在g4，黑后在c6，后面还有b7的车——如何一步串击？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bf3串击！象攻击c6的后，后方b7还有黑车，对手无法两全。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bf3",
+      "popup": "象到f3！沿对角线同时威胁c6的后和b7的车——串击！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b7"], "color": "#FF444455", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "c6", "color": "#FF4444CC"},
+        {"from": "c6", "to": "b7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qc7",
+      "popup": "黑后被迫退守，但b7的车已暴露在象的攻击线上。",
+      "highlights": [
+        {"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["b7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "c7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxb7",
+      "popup": "白象吃车！串击成功，白方赢得车。",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "b7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

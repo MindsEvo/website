@@ -1,0 +1,146 @@
+{
+  "game_id": "tac_pin_L1-007",
+  "description": "开局全牵制陷阱——Qe2牵制黑王，Nd6绝杀",
+  "intro": {
+    "flash_squares": ["e1", "e8"],
+    "popup": "💡 开局陷阱！白方如何利用e线全牵制，仅6步将死黑王？注意白后Qe2的牵制威胁。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Qe2对准e8黑王，Ne4是隐藏的牵制棋子。黑Nd7??自堵d7退路，Nd6++双将绝杀！牵制让黑王无路可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "白兵e4，占领中心。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "黑兵c6，卡罗-坎防御——准备d5争夺中心。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "白马Nf3，发展棋子，攻击d4。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "黑兵d5，挑战白方中心。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "白马Nc3，增援e4，保持中心。",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "dxe4",
+      "popup": "黑兵dxe4，吃掉e4——白马必须重新夺回。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Nxe4",
+      "popup": "白马Nc3xe4！马来到e4，正对e线——关键位置！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "黑马Nf6！攻击Ne4，看似合理——但白方有绝妙伏招！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "e4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qe2!",
+      "popup": "白后Qe2！关键着法——后对准e线直指黑王e8！Ne4是【牵制棋子】：若Ne4移开，Qe2直接将军。黑马Nf6被全牵制，一动则Nd6绝杀！",
+      "highlights": [
+        {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "e2", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Nd7??",
+      "popup": "黑马Nd7??——致命失误！马从f6移走，且d7正是黑王的唯一退路，现在被自己的马堵死！",
+      "highlights": [
+        {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "d7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Nd6#",
+      "popup": "Nd6## 绝杀！白马跳d6——既将军（马攻e8），又闪出e线让白后将军！双将，黑王无处可逃：d8有黑后，d7被黑马堵死，f8有黑象，e7被白后控制。",
+      "highlights": [
+        {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "d6", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "e8", "color": "#FF4444CC"},
+        {"from": "d6", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+黑马将军， 白方的各种走法都会吃亏。
+
+# END
+# tac_removalOfTheDefender_L1-007（消除保护）
+# 解法 1

@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_sacrifice_L1-005",
+  "description": "白方弃后引开黑王，车将死",
+  "intro": {
+    "flash_squares": ["h3", "g4", "g1", "h7"],
+    "popup": "💡 <b>弃子</b>：白后在h3，双车在g4和g1，黑王在h7。如何弃后引王入陷阱？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxh6+弃后！黑王被迫吃后来到h6，然后Rh4#车将死。弃后两步将杀，干净利落。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxh6+",
+      "popup": "白后Qxh6+！弃掉后，将军——黑王只能吃后，走入白车的射程。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxh6",
+      "popup": "黑王必须吃后——但这恰好踏入了白车的控制线。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh4#",
+      "popup": "白车Rh4#！车沿h线将死黑王，黑王无路可逃。弃后换来一步将杀！",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "h4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

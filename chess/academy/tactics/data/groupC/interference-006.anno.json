@@ -1,0 +1,84 @@
+{
+  "game_id": "tac_interference_L1-006",
+  "description": "白象插e列，切断黑马与黑车的配合",
+  "intro": {
+    "flash_squares": ["g3", "e5", "e7", "e2"],
+    "popup": "💡 <b>拦截</b>：黑马在e7，黑车在e2，在e列协同。白象能插入e5，切断它们的联系后赢子吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Be5！象插e5，切断Ne7与Re2的e列联系——马被迫移走，白方赢子绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Be5",
+      "popup": "白象Be5！插入e5，站在黑马e7和黑车e2之间，切断e列协同！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g3", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "e5", "color": "#FF4444CC"},
+        {"from": "e2", "to": "e5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Nf5",
+      "popup": "黑马Nf5——被迫离开e7，e列黑车失去马的配合！",
+      "highlights": [
+        {"squares": ["f5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "f5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nxf5",
+      "popup": "白马Nd6吃Nf5！马被消灭，同时白后f7对黑王形成杀威！",
+      "highlights": [
+        {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "f5", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qc7",
+      "popup": "黑后撤c7——但大局已定。",
+      "highlights": [
+        {"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "c7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxc7",
+      "popup": "白后Qxc7吃黑后，随后Qxg7将杀——拦截断联，全盘告捷！",
+      "highlights": [
+        {"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "c7", "color": "#4CAF50CC"},
+        {"from": "c7", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

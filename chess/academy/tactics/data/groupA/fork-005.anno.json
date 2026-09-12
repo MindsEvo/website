@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_fork_L1-005",
+  "description": "车将军兼捉车——将军并攻击另一个子",
+  "intro": {
+    "flash_squares": ["h7", "f6", "c6"],
+    "popup": "💡 <b>捉双</b>：白车在h7，如何将军同时威胁黑车？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rh6+将军！黑王被迫应将，白车随即吃掉c6车。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rh6+",
+      "popup": "车到h6将军！同时沿第6横线威胁c6车——捉双！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "f6", "color": "#FF4444CC"},
+        {"from": "h6", "to": "c6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ke7",
+      "popup": "黑王被迫离开，c6车无人保护。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxc6",
+      "popup": "车吃c6车，白方赢得子力！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "c6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

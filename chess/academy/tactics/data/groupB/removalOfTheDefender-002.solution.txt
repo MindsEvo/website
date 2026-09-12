@@ -1,0 +1,19 @@
+1. Rxf6 g6
+2. Bb3 Kg7
+3. Rf3 f6
+4. Qf4 Qe7
+5. Re3 Qc5
+6. Rd3 Qc6
+7. Qd2 Kh8
+8. g3 Qb6
+9. Qh6 Ra8
+10. Rd7 Ra1+
+11. Kg2 Qc6+
+12. f3 Ra2+
+13. Bxa2 Qc2+
+14. Kh1 Qb1+
+15. Bxb1 Kg8
+16. Qg7#
+# END
+# tac_removalOfTheDefender_L1-002（消除保护）
+# 解法 1

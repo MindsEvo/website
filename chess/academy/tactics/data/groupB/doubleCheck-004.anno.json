@@ -1,0 +1,82 @@
+{
+  "game_id": "tac_doubleCheck_L1-004",
+  "description": "黑方双将，马揭开车将军逼王",
+  "intro": {
+    "flash_squares": ["b4", "b5", "b2", "d3"],
+    "popup": "💡 <b>双将</b>：黑方先走，黑马在b4，黑车在b5，白王在b2。黑方如何利用双将夺得优势？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：...Nd3+双将！马攻b2，同时揭开Rb5沿b列将军，白王只能逃，黑方赢得子力。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nd3+",
+      "popup": "双将！黑马跳d3，马攻白王b2，同时揭开黑车b5沿b列直指b2！白王无法同时挡马和挡车。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b4", "to": "d3", "color": "#4CAF50CC"},
+        {"from": "d3", "to": "b2", "color": "#FF4444CC"},
+        {"from": "b5", "to": "b2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kc2",
+      "popup": "白王逃至c2，双将下只能逃王。",
+      "highlights": [
+        {"squares": ["c2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b2", "to": "c2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxa3",
+      "popup": "黑车吃白车！双将得手，黑方赢得子力优势。",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "a3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nxf5+",
+      "popup": "白马吃兵将军，反击。",
+      "highlights": [
+        {"squares": ["f5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "f5", "color": "#E53935CC"},
+        {"from": "f5", "to": "e7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kf6",
+      "popup": "黑王逃至f6，局面进入残局，黑方凭借子力优势掌握主动。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "f6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

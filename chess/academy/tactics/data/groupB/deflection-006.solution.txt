@@ -1,0 +1,8 @@
+1. Rg3+ Kh8
+2. Qh6 Rg8
+3. Re8 Qg5
+4. Qf6+ Qg7
+5. Qxg7#
+# END
+# tac_deflection_L1-006（引离）
+# 解法 1

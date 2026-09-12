@@ -1,0 +1,7 @@
+1. Bd5 Bg5
+2. Bxc6 Bxh6
+3. Bxh6 Bxc6
+4. Bxf8 Rxf8
+# END
+# tac_interference_L1-002（拦截）
+# 解法 1

@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_trappedPiece_L1-006",
+  "description": "白王逼近，黑车看似空间大却是困子",
+  "intro": {
+    "flash_squares": ["b2", "d3", "a1"],
+    "popup": "💡 <b>困子</b>：黑车在b2，看起来自由，实则被白王和白车的配合困死。白方如何捉死黑车？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Kc3逼近b2（王攻车！）→黑车无处可逃（b1被白车控制，其余格被白兵封死或被王控制）→Kxb2赢车！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc3",
+      "popup": "白王Kc3！王主动逼近黑车b2，直接攻击b2格。黑车b2被王攻击，必须移动或被吃掉。",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "c3", "color": "#4CAF50CC"},
+        {"from": "c3", "to": "b2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "cxb5",
+      "popup": "黑方不得不放弃车，走兵cxb5（兵吃b5白兵）。b1被白车控制、b3-b4被白王攻击、a2被白车控制——车无路可逃！",
+      "highlights": [
+        {"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["b1", "b3", "b4", "a2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "b5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kxb2",
+      "popup": "白王Kxb2！王直接吃掉黑车！黑车b2看似空间大，实则被白王+白车+白兵联手困死。白方赢得一车。",
+      "highlights": [
+        {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "b2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

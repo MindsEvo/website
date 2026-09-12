@@ -1,0 +1,11 @@
+1. Nxb5 cxb5
+2. Bxb5+ Nbd7
+3. O-O-O Rd8
+4. Rxd7 Rxd7
+5. Rd1 Qe6
+6. Bxd7+ Nxd7
+7. Qb8+ Nxb8
+8. Rd8#
+# END
+# tac_sacrifice_L1-008（弃子）
+# 解法 1

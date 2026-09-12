@@ -1,0 +1,11 @@
+1. Rxa6 Qc5+
+2. Kf1 bxc2
+3. Rc6 Qb4
+4. Nc4 Rc8
+5. Qxc2 Qb5
+6. Qd3 Rxc6
+7. dxc6 Qxc6
+8. Ba3 a5
+# END
+# tac_xRayAttack_L1-005（透视攻击）
+# 解法 1

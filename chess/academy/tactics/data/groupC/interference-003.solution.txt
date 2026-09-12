@@ -1,0 +1,7 @@
+... Re1+
+2. Kg2 Rxd1
+3. Rxd1 Bh4
+4. Rd2
+# END
+# tac_interference_L1-003（拦截）
+# 解法 1

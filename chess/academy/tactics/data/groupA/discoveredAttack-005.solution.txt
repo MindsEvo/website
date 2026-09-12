@@ -1,0 +1,5 @@
+1. e6+ Kxe6
+2. Qxc7 Bxh6
+# END
+# tac_discoveredAttack_L1-005（闪击）
+# 解法 1

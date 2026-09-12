@@ -1,0 +1,10 @@
+1. Qf1+ Kg8
+2. Bxa5 Bd4+
+3. Kh1 Kh7
+4. Qd3 Bf2
+5. Bc3 h4
+6. Bd4 Bg3
+7. Ne3 Bf4
+# END
+# tac_intermezzo_L1-001（中间招）
+# 解法 1

@@ -1,0 +1,11 @@
+1. Rxh7+ Rxh7
+2. Rxh7+ Kxh7
+3. Qh1+ Kg7
+4. f6+ Kf8
+5. Nxd7+ Ke8
+6. Nxb6 Kf7
+7. Qh7+ Kxf6
+8. Qxg8 Ke7
+# END
+# tac_fork_L1-009（捉双）
+# 解法 1

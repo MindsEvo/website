@@ -1,0 +1,229 @@
+{
+  "game_id": "tac_deflection_L1-006",
+  "description": "双重引离——Rg3+引王，Re8引后，Qxg7绝杀",
+  "intro": {
+    "flash_squares": [
+      "h3",
+      "g8",
+      "d8"
+    ],
+    "popup": "💡 白方如何先引离黑王，再引离黑后，最终Qxg7绝杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：双重引离！Rg3+引王到h8，Re8引后离开d8，最后Qf6+逼后挡，Qxg7绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rg3+!",
+      "popup": "白车Rg3+！将军，引离黑王——黑王必须逃离g8。",
+      "highlights": [
+        {
+          "squares": [
+            "g3"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h3",
+          "to": "g3",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王Kh8，逃到角落。现在g8空了！",
+      "highlights": [
+        {
+          "squares": [
+            "h8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qh6",
+      "popup": "白后Qh6！威胁Qxh7绝杀，黑方必须防守。",
+      "highlights": [
+        {
+          "squares": [
+            "h6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "h6",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rg8",
+      "popup": "黑车Rg8，占g8试图防守h7。",
+      "highlights": [
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Re8",
+      "popup": "白车Re8！引离黑后——黑后d8必须应对！",
+      "highlights": [
+        {
+          "squares": [
+            "e8"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "e8",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Qg5",
+      "popup": "黑后Qg5，顽抗，不吃车。",
+      "highlights": [
+        {
+          "squares": [
+            "g5"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qf6+",
+      "popup": "白后Qf6+！将军，逼黑后来挡！",
+      "highlights": [
+        {
+          "squares": [
+            "f6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h6",
+          "to": "f6",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Qg7",
+      "popup": "黑后Qg7被迫挡将——现在Qxg7绝杀！",
+      "highlights": [
+        {
+          "squares": [
+            "g7"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qxg7#",
+      "popup": "白后Qxg7# 绝杀！黑王h8，h7有己方兵，g8有己方车——绝杀！",
+      "highlights": [
+        {
+          "squares": [
+            "g7"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h8"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "g7",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_clearance_L1-001",
+  "description": "象腾挪c5，清开斜线让后将杀",
+  "intro": {
+    "flash_squares": ["c5", "d4", "a7"],
+    "popup": "💡 <b>腾挪</b>：白象在c5，挡住了白后d4→a7的斜线通路。如何让后走到a7将杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bd6+！象腾挪离开c5，清开d4-a7斜线——Qa7#绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bd6+",
+      "popup": "白象Bd6+！腾挪离开c5，清开d4→c5→b6→a7斜线，同时将军！",
+      "highlights": [
+        {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "d6", "color": "#4CAF50CC"},
+        {"from": "d4", "to": "a7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "exd6",
+      "popup": "黑兵被迫exd6——c5已清空，斜线通了！",
+      "highlights": [
+        {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "d6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qa7#",
+      "popup": "白后Qa7将杀！腾挪清路——一击制胜！",
+      "highlights": [
+        {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "a7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "game_id": "tac_xRayAttack_L1-006",
+  "description": "弃车过渡，后透视攻击，连续将军赢子",
+  "intro": {
+    "flash_squares": ["f1", "f6", "e1", "e7", "h4", "g7"],
+    "popup": "💡 <b>透视攻击</b>：白方双车和白后联手，通过弃车过渡和透视攻击，连续将军赢得大量子力。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃Rxf6引入→Re7+过渡→后透视黑后将军，连续将军赢后赢子。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxf6",
+      "popup": "白车Rxf6！弃车引入，强制黑后必须应对，为白车e1和白后的透视进攻打开通路。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxf6",
+      "popup": "黑后被迫吃车，来到f6。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "f6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re7+",
+      "popup": "白车Re7+过渡将军！车沿e列将军黑王g7，黑后被迫再次吃车来挡将。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e7", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxe7",
+      "popup": "黑后从f6来到e7应将，离开了f列防线。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxe7+",
+      "popup": "透视攻击！白后h4早已透视黑后f6（现e7）盯住e7，黑后移走后白后直取e7将军！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "e7", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh6",
+      "popup": "黑王逃至h6。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxd6",
+      "popup": "白后吃兵d6，继续扩大优势，局面对白方极为有利。",
+      "highlights": [
+        {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "d6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

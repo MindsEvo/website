@@ -1,0 +1,11 @@
+1. Rxb5 Qxa3
+2. Rb7+ Qe7
+3. Rxe7+ Kg8
+4. Rb7 Rb8
+5. Rxb8+ Rxb8
+6. Ra1 Rxb2
+7. Rxa5 Rb1+
+8. Kh2 Rb2
+# END
+# tac_intermezzo_L1-006（中间招）
+# 解法 1

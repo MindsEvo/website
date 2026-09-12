@@ -1,0 +1,6 @@
+1. Kc3 cxb5
+2. Kxb2 bxc4
+3. Kc3 a6
+# END
+# tac_trappedPiece_L1-006（困子）
+# 解法 1

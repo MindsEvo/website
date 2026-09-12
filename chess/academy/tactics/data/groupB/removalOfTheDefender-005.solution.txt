@@ -1,0 +1,6 @@
+1. Rxd4 exd4
+2. Re5+ Kxg4
+3. f3#
+# END
+# tac_removalOfTheDefender_L1-005（消除保护）
+# 解法 1

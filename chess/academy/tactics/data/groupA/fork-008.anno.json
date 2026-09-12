@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_fork_L1-008",
+  "description": "白象捉双——同时攻击两匹马",
+  "intro": {
+    "flash_squares": ["b3", "c6", "e4"],
+    "popup": "💡 <b>捉双</b>：白象在b3，如何一步同时攻击两匹黑马？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bd5捉双！象同时攻击c6马和e4马，黑方只能保住一匹。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bd5",
+      "popup": "象跳d5！同时攻击c6马和e4马——捉双！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "d5", "color": "#4CAF50CC"},
+        {"from": "d5", "to": "c6", "color": "#FF4444CC"},
+        {"from": "d5", "to": "e4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bb7",
+      "popup": "黑方撤象，但两匹马仍无法同时保护。",
+      "highlights": [
+        {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "b7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxe4",
+      "popup": "象吃e4马，白方得子！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "e4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

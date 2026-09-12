@@ -1,0 +1,8 @@
+... Be4
+2. Rxa7 Rxa7
+3. c7 Nd7
+4. c8=Q+ Kh7
+5. Be3 Ra6
+# END
+# tac_fork_L1-010（捉双）
+# 解法 1

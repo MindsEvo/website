@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_interference_L1-001",
+  "description": "黑马插入d列，切断白后与白车联系",
+  "intro": {
+    "flash_squares": ["e5", "d3", "d6", "d1"],
+    "popup": "💡 <b>拦截</b>：白后在d6，白车在d1，都在d列协同。黑马能插入d3，切断它们的联系吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nd3+！马插入d3，切断Qd6与Rd1的d列联系——强迫Rxd3，cxd3吃回，白车离开！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nd3+",
+      "popup": "黑马Nd3+！马插入d3，精确切断白后d6和白车d1的d列协同，同时将军！",
+      "highlights": [
+        {"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "d3", "color": "#4CAF50CC"},
+        {"from": "d6", "to": "d1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxd3",
+      "popup": "白车Rxd3——必须吃掉插入子，但白车离开了d1！",
+      "highlights": [
+        {"squares": ["d3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "cxd3",
+      "popup": "cxd3！黑兵吃回——拦截成功，白车已无法守护Qd6！",
+      "highlights": [
+        {"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "d3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxe7",
+      "popup": "白后Qxe7吃黑后——利用先手换子，白方应对。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxe7",
+      "popup": "黑车吃回——拦截打乱白方协调，局面已向黑方倾斜。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

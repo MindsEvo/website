@@ -1,0 +1,7 @@
+... Qg4
+2. hxg4 gxf6
+3. Bxf6 Re8
+4. g5
+# END
+# tac_interference_L1-010（拦截）
+# 解法 1

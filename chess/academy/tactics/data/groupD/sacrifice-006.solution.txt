@@ -1,0 +1,10 @@
+1. Qxh7+ Kxh7
+2. Nxf6+ Kh6
+3. Neg4+ Kg5
+4. h4+ Kf4
+5. g3+ Kf3
+6. Kf1 gxf6
+7. Nh2#
+# END
+# tac_sacrifice_L1-006（弃子）
+# 解法 1

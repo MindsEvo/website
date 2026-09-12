@@ -1,0 +1,82 @@
+{
+  "game_id": "tac_attraction_L1-005",
+  "description": "双车连续牺牲引王，后将杀",
+  "intro": {
+    "flash_squares": ["g5", "g7", "f2", "h7"],
+    "popup": "💡 <b>引入</b>：白车在g5和f2，白后在e4。能连续牺牲两车，把黑王引到h8再将杀吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxg7+引王到g7，Rxf7+赶王到h8，Qh7将杀！连续引入绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxg7+",
+      "popup": "白车Rxg7+！第一步引诱黑王到g7。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "f7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxg7",
+      "popup": "黑王吃车——引入第一步成功！",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "g7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxf7+",
+      "popup": "白车再牺牲Rxf7+！把黑王赶向角落。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh8",
+      "popup": "黑王被迫退到h8——落入陷阱！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qh7#",
+      "popup": "白后Qh7将杀！连续引入绝杀，两车牺牲尽显引入之威！",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

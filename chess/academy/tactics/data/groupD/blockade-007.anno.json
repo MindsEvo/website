@@ -1,0 +1,83 @@
+{
+  "game_id": "tac_blockade_L1-007",
+  "description": "车b2阻塞黑后将军路线，弃后双车将死黑王",
+  "intro": {
+    "flash_squares": ["a8", "b2", "a3"],
+    "popup": "💡 <b>阻塞将军路线</b>：白方想弃后攻杀黑王。但黑后在a8，如果白后走a7，黑后将军换掉白后。白方如何先封死黑后的将军线？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rb2先阻断黑后的将军路线！然后弃后，双车协力将死黑王。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb2",
+      "popup": "车到b2！阻断了黑后方向对白王的将军路线，铺垫弃后攻杀。",
+      "highlights": [
+        {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c5"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b1", "to": "b2", "color": "#4CAF50CC"},
+        {"from": "h8", "to": "b2", "color": "#E5393599"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rb8",
+      "popup": "黑车移动，黑王暴露更多。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "b8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxa7+",
+      "popup": "弃后将军！黑王被迫吃后，进入白车的将军线。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a6", "to": "a7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kxa7",
+      "popup": "黑王吃后，走到a7——双车将杀！",
+      "highlights": [
+        {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "a7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ra3#",
+      "popup": "车将死！b2车控制b列，a3车将军，黑王无路可逃——双车绞杀！",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["b7"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "a3", "color": "#4CAF50CC"},
+        {"from": "a3", "to": "a7", "color": "#FF6B35CC"},
+        {"from": "b2", "to": "b7", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

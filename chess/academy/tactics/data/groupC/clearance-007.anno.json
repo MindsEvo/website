@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_clearance_L1-007",
+  "description": "象腾挪b7，威胁后的同时清开斜线",
+  "intro": {
+    "flash_squares": ["e4", "b7", "a6"],
+    "popup": "💡 <b>腾挪</b>：白象在e4。象跳到b7，能攻击黑后a6同时发挥更大价值吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bb7！象腾挪攻击Qa6——黑方Kxh6应对，Bxa6赢后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bb7",
+      "popup": "白象Bb7！腾挪到b7，直接攻击黑后a6——后被迫应对或逃跑！",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "b7", "color": "#4CAF50CC"},
+        {"from": "b7", "to": "a6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxh6",
+      "popup": "黑王Kxh6——吃白车，但黑后a6无法守！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxa6",
+      "popup": "白象Bxa6！赢得黑后——腾挪战术完成！",
+      "highlights": [
+        {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "a6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

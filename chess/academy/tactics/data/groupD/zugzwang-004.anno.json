@@ -1,0 +1,113 @@
+{
+  "game_id": "tac_zugzwang_L1-004",
+  "description": "白王精确过渡，逼着黑王失去控制格，推b兵升变",
+  "intro": {
+    "flash_squares": ["d5", "d7", "b6", "c5"],
+    "popup": "💡 <b>逼着</b>：看似简单，白方如何通过精确走位，逼着黑王失去关键位置，最终推b兵升变？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：白王通过等招过渡，一步步逼着黑王暴露弱点，c6牺牲引走黑兵，b7快速升变！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Kd4",
+      "popup": "白王Kd4，等招！逼着黑王亮出意图。",
+      "highlights": [{"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "d4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "Kc8",
+      "popup": "黑王Kc8退守，无好棋。",
+      "highlights": [{"squares": ["c8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "c8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "Ke5",
+      "popup": "白王Ke5，进入要冲。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3, "move": "Kd7",
+      "popup": "黑王Kd7，试图阻挡c5兵前进。",
+      "highlights": [{"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c8", "to": "d7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4, "move": "Kd5",
+      "popup": "白王Kd5，控制c6格，准备推c兵。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "e5", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5, "move": "Ke7",
+      "popup": "黑王Ke7，被迫离开d7，无法同时守住c6和b6。",
+      "highlights": [{"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "e7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6, "move": "c6",
+      "popup": "c6！兵前进，强迫黑方应对。",
+      "highlights": [{"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7, "move": "bxc6+",
+      "popup": "黑方bxc6+，被迫吃兵（否则c7直接升变）。",
+      "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "c6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8, "move": "Kxc6",
+      "popup": "白王Kxc6，吃回，同时护住b6兵。",
+      "highlights": [{"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "c6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9, "move": "Ke6",
+      "popup": "黑王Ke6，最后抵抗。",
+      "highlights": [{"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e7", "to": "e6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10, "move": "b7",
+      "popup": "b7！b兵大步前进，升变无法阻拦！",
+      "highlights": [
+        {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "b6", "to": "b7", "color": "#4CAF50CC"}, {"from": "b7", "to": "b8", "color": "#FF4444CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11, "move": "Ke5",
+      "popup": "黑王Ke5，无法赶到b8。",
+      "highlights": [{"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e6", "to": "e5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12, "move": "b8=Q+",
+      "popup": "b8=Q+！升变为后将军，白方获胜！",
+      "highlights": [{"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b7", "to": "b8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

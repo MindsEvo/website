@@ -1,0 +1,81 @@
+{
+  "game_id": "tac_pin_L1-002",
+  "description": "象全牵制——车被钉住后进兵得子",
+  "intro": {
+    "flash_squares": ["d1", "f5", "h7"],
+    "popup": "💡 <b>象牵制</b>：白象d1、黑车f5、黑王h7在同一斜线。白方如何用象牵制黑车？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bc2沿对角线牵制黑车！g4进兵攻击被钉住的车，黑车动则丢王，白方得子。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bc2",
+      "popup": "白象Bc2！沿c2-h7斜线牵制黑车——车若移动，黑王直接被将。",
+      "highlights": [
+        {"squares": ["c2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "c2", "color": "#4CAF50CC"},
+        {"from": "c2", "to": "f5", "color": "#FF4444CC"},
+        {"from": "f5", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg6",
+      "popup": "黑王试图走到g6，但白车仍被牵制。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "g4",
+      "popup": "白兵g4！直接攻击被牵制的黑车，车无路可逃。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g4", "to": "f5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf6",
+      "popup": "黑王靠近，但救不了被攻击的车。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bxf5",
+      "popup": "白象Bxf5！吃掉被牵制的车，白方得子！",
+      "highlights": [
+        {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "f5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

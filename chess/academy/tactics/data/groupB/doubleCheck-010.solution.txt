@@ -1,0 +1,9 @@
+1. Bg7+ Kxg7
+2. Ne8+ Kh6
+3. Qf4+ g5
+4. Qf6+ Kh5
+5. Ng7+ Kh4
+6. Qf2#
+# END
+# tac_doubleCheck_L1-010（双将）
+# 解法 1

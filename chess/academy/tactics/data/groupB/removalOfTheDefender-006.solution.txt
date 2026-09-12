@@ -1,0 +1,7 @@
+... Qxd4
+2. Bxd4 Nf3+
+3. Kf1 Bb5+
+4. Qc4 Bxc4#
+# END
+# tac_removalOfTheDefender_L1-006（消除保护）
+# 解法 1

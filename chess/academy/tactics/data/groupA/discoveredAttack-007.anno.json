@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_discoveredAttack_L1-007",
+  "description": "马吃子开列，后闪击赢后",
+  "intro": {
+    "flash_squares": ["e5", "c6", "e2", "e7"],
+    "popup": "💡 <b>闪击</b>：白马在e5，白后在e2，黑后在e7。马吃c6，能让后e2闪击黑后e7吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nxc6！马吃c6走开e列，白后e2直击e7黑后——闪击赢后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nxc6",
+      "popup": "白马Nxc6！马吃子同时走开e列，白后e2对准e7黑后的攻击路打通！",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "c6", "color": "#4CAF50CC"},
+        {"from": "e2", "to": "e7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxc6",
+      "popup": "黑象吃马，但e7的黑后已无处可逃。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "c6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxe7",
+      "popup": "白后Qxe7！马走开e列，白后闪击赢后！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "e7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

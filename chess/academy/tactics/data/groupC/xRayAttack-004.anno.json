@@ -1,0 +1,82 @@
+{
+  "game_id": "tac_xRayAttack_L1-004",
+  "description": "白后透视黑后对角线，象清路得子",
+  "intro": {
+    "flash_squares": ["c3", "d4", "f4", "h8"],
+    "popup": "💡 <b>透视攻击</b>：白后在c3，透视穿越黑后d4，沿对角线直指h8。白方如何利用这条透视线？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Be5+强制黑后离开d4，白后透视线畅通，Qxe5+将军赢后，再Qxb2得子！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Be5+",
+      "popup": "白象跳e5将军黑王h8！象沿对角线将军，强制黑后必须应将，透视线即将打通。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxe5",
+      "popup": "黑后被迫从d4吃象应将，离开了白后的透视线。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxe5+",
+      "popup": "透视攻击！白后c3早已透视黑后d4盯住e5和h8。黑后离开后，白后直取e5将军！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "h8", "color": "#FF4444CC"},
+        {"from": "c3", "to": "d4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王逃至g8。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxb2",
+      "popup": "白后吃黑马b2！透视攻击连续得子，白方赢得决定性物质优势。",
+      "highlights": [
+        {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "b2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

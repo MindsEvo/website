@@ -1,0 +1,10 @@
+1. c5 Bxc5
+2. dxc5 Nd7
+3. Qc2 c6
+4. Bd3 Qa5+
+5. Kf1 Qxc5
+6. Nc3 Qd6
+7. Be3 f6
+# END
+# tac_trappedPiece_L1-008（困子）
+# 解法 1

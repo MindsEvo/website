@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_discoveredAttack_L1-004",
+  "description": "马移位开列，车闪击得马",
+  "intro": {
+    "flash_squares": ["d4", "f3", "d2", "d5"],
+    "popup": "💡 <b>闪击</b>：白马在d4，白车在d2，黑马在d5。马走开，能让车闪击d5黑马吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nf3！马离开d4，车d2对准d5黑马——闪击赢马！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "白马Nf3！马离开d4，d列打通：白车d2直接攻击d5黑马！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "d2", "to": "d5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Re3",
+      "popup": "黑车Re3试图反击，但黑马d5已无法兼顾。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxd5",
+      "popup": "白车Rxd5！闪击成功——马走开，车得马！",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "d5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

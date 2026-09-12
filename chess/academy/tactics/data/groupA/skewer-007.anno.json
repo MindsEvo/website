@@ -1,0 +1,83 @@
+{
+  "game_id": "tac_skewer_L1-007",
+  "description": "弃车引后到a8，再象串击王和后",
+  "intro": {
+    "flash_squares": ["a5", "h5", "c6", "g8"],
+    "popup": "💡 <b>串击</b>：白方先弃车把黑后引到a8，再用象串击黑王和黑后——你看出来了吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Ra8弃车引后，Bf3+串击！象攻击c6的王，对角线延伸到a8的后，王动象吃后。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ra8",
+      "popup": "弃车！车到a8，引诱黑后来吃，为象的串击布局。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FFD70055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxa8",
+      "popup": "黑后吃车来到a8——正好落在象的串击线上！",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "a8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bf3+",
+      "popup": "象到f3串击！沿对角线攻击c6的王，后方a8还有黑后——王必须逃！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["a8"], "color": "#FF444455", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "c6", "color": "#FF4444CC"},
+        {"from": "c6", "to": "a8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kc5",
+      "popup": "黑王逃离，黑后在a8无人保护。",
+      "highlights": [
+        {"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "c5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bxa8",
+      "popup": "象吃后！弃车换后，白方大获全胜。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "a8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

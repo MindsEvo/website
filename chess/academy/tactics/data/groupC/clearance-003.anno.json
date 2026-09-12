@@ -1,0 +1,84 @@
+{
+  "game_id": "tac_clearance_L1-003",
+  "description": "黑后牺牲腾挪e3，让马跳入叉将",
+  "intro": {
+    "flash_squares": ["e3", "f3", "c2"],
+    "popup": "💡 <b>腾挪</b>：黑方有Ne4/Ng4，e3格被白马占据。黑后能牺牲清开e3，让马跳入叉将吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxf3+！后牺牲腾挪e3——Ne3+叉击白王和白车，赢取子力！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxf3+",
+      "popup": "黑后Qxf3+！牺牲自身，同时将军！后从e3移走，e3格清空——白王必须应将！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "f1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "gxf3",
+      "popup": "白兵gxf3——吃后，e3已完全腾空！",
+      "highlights": [
+        {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "f3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ne3+",
+      "popup": "黑马Ne3+！跳入腾空的e3，叉击白王和白车c2——腾挪成功！",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "f1", "color": "#FF4444CC"},
+        {"from": "e3", "to": "c2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf2",
+      "popup": "白王Kf2——应将，但Nxc2赢得白车！",
+      "highlights": [
+        {"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nxc2",
+      "popup": "黑马Nxc2！赢得白车——后换车+马，腾挪战术大获！",
+      "highlights": [
+        {"squares": ["c2"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "c2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

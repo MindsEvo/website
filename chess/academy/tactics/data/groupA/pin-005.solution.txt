@@ -1,0 +1,32 @@
+1. Qe2 b6
+2. Qxe5 Qf7
+3. h4 a5
+4. h5 a4
+5. h6 a3
+6. Qg7 Qh5+
+7. Kg1 a2
+8. Qg8+ Kb7
+9. Qxa2 Qxh6
+10. Qd5+ Ka6
+11. g4 c5
+12. g5 Qg6
+13. Kg2 Ka7
+14. Kg3 Ka6
+15. Nh4 Qh5
+16. f4 Ka5
+17. Qe5 Qd1
+18. Nf3 Qd3
+19. f5 Qb3
+20. g6 b5
+21. f6 Qg8
+22. g7 Kb4
+23. Ng5 Qb3+
+24. Kf4 Qd1
+25. f7 Qd2+
+26. Kf5 Qd7+
+27. Qe6 Qd2
+28. Qe4+ Kb3
+29. f8=Q c4
+# END
+# tac_pin_L1-002（牵制）
+# 解法 1

@@ -1,0 +1,5 @@
+... Rxa3+
+2. bxa3 Qxa3#
+# END
+# tac_sacrifice_L1-002（弃子）
+# 解法 1

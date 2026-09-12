@@ -1,0 +1,145 @@
+{
+  "game_id": "tac_deflection_L1-005",
+  "description": "引离白车——解法3：白方走Qg4，后Qh1+引车到h1，Rxh1绝杀",
+  "intro": {
+    "flash_squares": [
+      "e8",
+      "g1",
+      "h1"
+    ],
+    "popup": "💡 解法3：白方走Qg4逃避，黑方如何引离g1白车到h1，再Rxh1绝杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Re1→Qh1+引车到h1→Rxh1绝杀。三步连环，每步都是引离——引白车从g1到h1，再被吃掉。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re1!",
+      "popup": "黑车Re1！第一步引离开始。",
+      "highlights": [
+        {
+          "squares": [
+            "e1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "e1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qg4",
+      "popup": "白后Qg4，不吃车——试图防守。",
+      "highlights": [
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qh1+!",
+      "popup": "黑后Qh1+！牺牲黑后将军，引白车到h1！",
+      "highlights": [
+        {
+          "squares": [
+            "h1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "h1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxh1",
+      "popup": "白车Rxh1！被迫吃后——白车引离到h1。",
+      "highlights": [
+        {
+          "squares": [
+            "h1"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g1"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g1",
+          "to": "h1",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxh1#",
+      "popup": "黑车Rxh1# 绝杀！吃掉h1白车，白王h2在h线上被绝杀！",
+      "highlights": [
+        {
+          "squares": [
+            "h1"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "h1",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

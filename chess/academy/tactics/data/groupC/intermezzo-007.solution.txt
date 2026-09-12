@@ -1,0 +1,9 @@
+... Rd7
+2. Qe3 Nf4
+3. Rd5 Rxd5
+4. f3 Nh3+
+5. Kg2 Nxg5
+6. h4 Nh7
+# END
+# tac_intermezzo_L1-007（中间招）
+# 解法 1

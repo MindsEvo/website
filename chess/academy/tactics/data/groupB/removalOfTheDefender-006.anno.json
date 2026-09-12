@@ -1,0 +1,105 @@
+{
+  "game_id": "tac_removalOfTheDefender_L1-006",
+  "description": "后牺牲消除白马，打通绝杀路线",
+  "intro": {
+    "flash_squares": ["d4", "f3", "e5", "c4"],
+    "popup": "💡 <b>消除保护</b>：白马Nd4守住了f3格（可回防），阻止黑马Nf3+。黑方如何消除它？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxd4后牺牲消除白马！Nf3+→Kf1→Bb5+→Qc4→Bxc4#，绝杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxd4",
+      "popup": "后牺牲！Qxd4消除白马Nd4，为Nf3+开路。",
+      "highlights": [
+        {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#2196F355", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "d4", "color": "#4CAF50CC"},
+        {"from": "d4", "to": "f3", "color": "#FF9900CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxd4",
+      "popup": "白象被迫吃后，马路已通！",
+      "highlights": [
+        {"squares": ["d4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e3", "to": "d4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3+",
+      "popup": "马入f3将军！白马已消除，此着得以实现。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "f3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf1",
+      "popup": "国王逃往f1。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g1", "to": "f1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bb5+",
+      "popup": "象Bb5+！沿对角线将军，白后必须挡。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "b5", "color": "#4CAF50CC"},
+        {"from": "b5", "to": "f1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Qc4",
+      "popup": "白后被迫挡将c4。",
+      "highlights": [
+        {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c1", "to": "c4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Bxc4#",
+      "popup": "象Bxc4将杀！吃掉白后，将死。",
+      "highlights": [
+        {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b5", "to": "c4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

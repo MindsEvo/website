@@ -1,0 +1,145 @@
+{
+  "game_id": "tac_zugzwang_L1-003",
+  "description": "黑王先走是逼着，被迫放弃对d5兵的守护，白方推f兵升变",
+  "intro": {
+    "flash_squares": ["d6", "d4", "b5", "d5", "f4", "f5"],
+    "popup": "💡 <b>逼着</b>：轮到黑方先走，黑王处于逼着——任何走法都会放弃关键位置！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：黑方先走是致命的逼着。黑王离开d6就无法同时守住d5和f5，白方吃兵推f兵升变获胜！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Kc6",
+      "popup": "黑王Kc6，被迫走棋——离开d6就放弃了对d5的守护。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "d6", "to": "c6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "Ke5",
+      "popup": "白王Ke5，进入要冲，威胁Kxd5。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d4", "to": "e5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "Kc7",
+      "popup": "黑王Kc7退守，无力阻止。",
+      "highlights": [{"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "c7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3, "move": "Kxd5",
+      "popup": "白王吃d5！白方获得兵的优势。",
+      "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "d5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4, "move": "Kd7",
+      "popup": "黑王Kd7追击。",
+      "highlights": [{"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c7", "to": "d7", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5, "move": "Ke5",
+      "popup": "白王Ke5！掉头吃f5——黑王顾了d5顾不了f5。",
+      "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}, {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "e5", "color": "#4CAF50CC"}, {"from": "e5", "to": "f5", "color": "#FF4444CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6, "move": "Kc6",
+      "popup": "黑王Kc6追赶。",
+      "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d7", "to": "c6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7, "move": "Kxf5",
+      "popup": "白王吃f5！又吃一兵，白方两兵领先。",
+      "highlights": [{"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e5", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8, "move": "Kd5",
+      "popup": "黑王Kd5，试图干扰推兵。",
+      "highlights": [{"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c6", "to": "d5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9, "move": "Kg6",
+      "popup": "白王Kg6，护f兵推进，黑方无法阻拦。",
+      "highlights": [{"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "g6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10, "move": "Kc4",
+      "popup": "黑王Kc4，放弃阻挡，寻求反攻。",
+      "highlights": [{"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d5", "to": "c4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 11, "move": "f5",
+      "popup": "f5！兵推进，升变进入倒计时。",
+      "highlights": [{"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f4", "to": "f5", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 12, "move": "Kb3",
+      "popup": "黑王冲向白方后翼兵。",
+      "highlights": [{"squares": ["b3"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c4", "to": "b3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 13, "move": "f6",
+      "popup": "f6！兵继续推进。",
+      "highlights": [{"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f5", "to": "f6", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 14, "move": "Kxc3",
+      "popup": "黑王吃c3兵，但已无法阻止升变。",
+      "highlights": [{"squares": ["c3"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b3", "to": "c3", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 15, "move": "f7",
+      "popup": "f7！兵抵达第7排。",
+      "highlights": [{"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "f7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 16, "move": "Kxb4",
+      "popup": "黑王吃b4，但已无济于事。",
+      "highlights": [{"squares": ["b4"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c3", "to": "b4", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 17, "move": "f8=Q+",
+      "popup": "f8=Q+！升变为后并将军，白方获胜！",
+      "highlights": [{"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f7", "to": "f8", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    }
+  ]
+}

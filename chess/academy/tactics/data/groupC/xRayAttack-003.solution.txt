@@ -1,0 +1,5 @@
+... Qf1+
+2. Rxf1 Rxf1#
+# END
+# tac_xRayAttack_L1-003（透视攻击）
+# 解法 1

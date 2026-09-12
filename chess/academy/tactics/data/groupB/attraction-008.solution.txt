@@ -1,0 +1,5 @@
+1. Rd8+ Kxd8
+2. Qxc6 h5
+# END
+# tac_attraction_L1-008（引入）
+# 解法 1

@@ -1,0 +1,105 @@
+{
+  "game_id": "tac_interference_L1-008",
+  "description": "白象插第八横线，切断黑方后车联系",
+  "intro": {
+    "flash_squares": ["h5", "e8", "f8", "d8"],
+    "popup": "💡 <b>拦截</b>：黑车在d8，黑象在f8，在第八横线协同。白象能插入e8，切断它们的联系，逼黑后妥协吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：先Rf1！车换位后，Bf7+引王到h8，Be8插入第八横线——黑后必须移到f7，Bxf7赢后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rf1",
+      "popup": "白车Rf1！先调车到f1，为象对角线将军做准备。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a1", "to": "f1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rd8",
+      "popup": "黑车Rd8——退回d8，守住第八横线。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bf7+",
+      "popup": "白象Bf7+！对角线将军，黑王必须到h8角落！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "f7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh8",
+      "popup": "黑王Kh8——王角被迫，第八横线上d8车和f8象仍在。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Be8",
+      "popup": "白象Be8！插入e8，切断黑Rd8与黑Bf8在第八横线的联系——黑后c7被迫应对！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "e8", "color": "#4CAF50CC"},
+        {"from": "d8", "to": "e8", "color": "#FF4444CC"},
+        {"from": "f8", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Qf7",
+      "popup": "黑后Qf7——被迫来应对白象，守住e8方向。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c7", "to": "f7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Bxf7",
+      "popup": "白象Bxf7！吃掉黑后——拦截战术完成，白方赢后！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "f7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

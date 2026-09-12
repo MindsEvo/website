@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_skewer_L1-009",
+  "description": "串击练习——局面待完善",
+  "intro": {
+    "flash_squares": [],
+    "popup": "💡 <b>串击</b>：找出本局的串击手段！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxg6弃车引后，Rg8+串击！车攻击黑王，后方还有黑后，王一动车吃后。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxg6",
+      "popup": "弃车！引诱黑后来吃，为串击布局。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxh5",
+      "popup": "黑后吃子，但白方随即发动串击。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg8+",
+      "popup": "车将军串击！攻击黑王，后方还有黑后——王必须逃！",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "黑王逃离，黑后暴露无援。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxa8",
+      "popup": "车吃后！串击成功，白方获得决定性优势。",
+      "highlights": [],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

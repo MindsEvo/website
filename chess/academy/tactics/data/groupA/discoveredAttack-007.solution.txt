@@ -1,0 +1,7 @@
+1. Nxc6 Bxc6
+2. Qxe7 h5
+3. Qxf7 Be5
+4. Bxe5
+# END
+# tac_discoveredAttack_L1-007（闪击）
+# 解法 1

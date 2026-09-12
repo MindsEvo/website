@@ -1,0 +1,83 @@
+{
+  "game_id": "tac_pin_L1-003",
+  "description": "后牵制威胁——黑方被迫用后吃兵避免马被钉死",
+  "intro": {
+    "flash_squares": ["f2", "b6", "d5", "d8"],
+    "popup": "💡 <b>牵制威胁</b>：白后f2，黑马b6，白兵d5，黑后d8。白后进入d2可威胁d列牵制！若黑马吃兵Nxd5则被钉死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qd2制造牵制威胁！黑若Nxd5，马被后钉在d列动不了（动则丢后）。黑方只能后换后应对，白方借牵制夺得主动。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qd2",
+      "popup": "白后Qd2！制造d列牵制威胁：若黑马Nxd5，马被白后钉死在d5（后在d2，马在d5，黑后在d8）。",
+      "highlights": [
+        {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "d2", "color": "#4CAF50CC"},
+        {"from": "d2", "to": "d5", "color": "#FF4444CC"},
+        {"from": "d5", "to": "d8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxd5",
+      "popup": "黑方用后吃兵，避免马被牵制——马吃则被后钉死。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d8", "to": "d5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxd5",
+      "popup": "白后吃回，双方换后，白方局面更好。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "d5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nxd5",
+      "popup": "黑马Nxd5回吃，但已没有牵制威胁，白方另有计划。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b6", "to": "d5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "c4",
+      "popup": "白兵c4攻击d5上的黑马！马必须撤退，白方夺得主动。",
+      "highlights": [
+        {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "c4", "color": "#4CAF50CC"},
+        {"from": "c4", "to": "d5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

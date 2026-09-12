@@ -1,0 +1,231 @@
+{
+  "game_id": "tac_pin_L1-004",
+  "description": "白车牵制黑马——牵制与反牵制的博弈",
+  "intro": {
+    "flash_squares": ["c3", "e5", "e8"],
+    "popup": "💡 <b>牵制</b>：白车在c3，黑马在e5，黑车在e8，三子同纵线——白方如何建立牵制？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：牵制是把双刃剑。白车牵制黑马，黑车反牵制白马。白王为白车生根后，反牵制化解，白方占优。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re3",
+      "popup": "白车Re3！沿e列牵制黑马——黑马动则失车。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "e3", "color": "#4CAF50CC"},
+        {"from": "e3", "to": "e5", "color": "#FF4444CC"},
+        {"from": "e5", "to": "e8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Re7",
+      "popup": "黑车Re7——上前一步，准备为马跳开创造条件。牵制依然存在。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "e7", "color": "#E53935CC"},
+        {"from": "e3", "to": "e5", "color": "#FF4444CC"},
+        {"from": "e5", "to": "e7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ng5",
+      "popup": "白马Ng5参战！阻止黑马跳出后用车兑换，增强对e5的控制。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "g5", "color": "#4CAF50CC"},
+        {"from": "g5", "to": "e4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ng6",
+      "popup": "黑马Ng6！跳出牵制线，但白马g5挡住了交换路线。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "g6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ne4",
+      "popup": "白马Ne4——落入e列，被黑车Re7反牵制！白马暂时无法随意移动。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "e4", "color": "#4CAF50CC"},
+        {"from": "e7", "to": "e4", "color": "#FF4444CC"},
+        {"from": "e4", "to": "e3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "a5",
+      "popup": "黑兵a5推进，双方开始调兵遣将。",
+      "highlights": [
+        {"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a7", "to": "a5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "f4",
+      "popup": "白兵f4推进，为王开路，同时限制黑马的落点。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "b5",
+      "popup": "黑兵b5跟进，双方边路兵都在推进。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "b5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "h4",
+      "popup": "白兵h4！准备逼走黑马g6。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "h4", "color": "#4CAF50CC"},
+        {"from": "h4", "to": "g5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "a4",
+      "popup": "黑兵继续推进，争取边路空间。",
+      "highlights": [
+        {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "a4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "h5",
+      "popup": "白兵h5！直接威胁h5×g6，黑马被逼离开。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "h5", "color": "#4CAF50CC"},
+        {"from": "h5", "to": "g6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Nh8",
+      "popup": "黑马Nh8被迫退回！马已远离战场，黑方在e列的反牵制压力减弱。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "Kf3",
+      "popup": "白王Kf3！为e3车生根——车有了保护，反牵制彻底化解，白马可以自由移动了。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "f3", "color": "#4CAF50CC"},
+        {"from": "f3", "to": "e3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "Ka7",
+      "popup": "黑王Ka7——牵制无效，黑方转去边路防守。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "a7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "g4",
+      "popup": "白兵g4推进，白方兵型活跃，优势明显。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g3", "to": "g4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Rh7",
+      "popup": "黑车Rh7转移——去拦截白h兵，这是黑方最后的防线。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}
+

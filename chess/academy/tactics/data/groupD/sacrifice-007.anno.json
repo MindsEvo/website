@@ -1,0 +1,258 @@
+{
+  "game_id": "tac_sacrifice_L1-007",
+  "description": "黑方连续弃子驱逐白王，h兵将死——连环弃子组合",
+  "intro": {
+    "flash_squares": ["h2", "g4", "h5", "g2"],
+    "popup": "💡 <b>弃子</b>：黑方象在h2，马在g4，后在h5，白王在g2处境危险。Bg1弃象是第一步——之后将掀起连环弃子风暴。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：连续弃子（象、马、马、象）不断攻击白王，最终h5#将死。弃子的目的是把白王驱赶到无路可逃的格子上。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bg1",
+      "popup": "黑象Bg1！弃象到g1——引开白马，为后从h5打入奠定基础。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "g1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Nxg1",
+      "popup": "白马必须吃象——但e2马被牵离，后路打开。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qh2+",
+      "popup": "黑后Qh2+将军！白王被迫离开g2，进入黑子的围攻。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "h2", "color": "#4CAF50CC"},
+        {"from": "h2", "to": "g2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf3",
+      "popup": "白王Kf3——逃向中央，但黑方有更多弃子手段。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "f3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "黑方e5！安静推进，为Ndxe5+做准备，同时打开e列通道。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "e5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "dxe5",
+      "popup": "白兵吃e5——但黑方d7马随即跳出将军，又是弃子！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Ndxe5+",
+      "popup": "黑马Ndxe5+将军！弃第二个马——白王被迫继续逃跑。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "f3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "fxe5",
+      "popup": "白兵吃马——但g4马立刻接上，连环弃子继续！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Nxe5+",
+      "popup": "黑马Nxe5+！g4马加入将军，白王再次被追。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "f3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kf4",
+      "popup": "白王Kf4——被迫离开f3，走向f4。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "f4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Ng6+",
+      "popup": "黑马Ng6+！马从e5跳g6将军，封锁逃跑路线。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "g6", "color": "#4CAF50CC"},
+        {"from": "g6", "to": "f4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 11,
+      "move": "Kf3",
+      "popup": "白王Kf3——只能原路返回。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "f3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 12,
+      "move": "f4",
+      "popup": "黑兵f4！推进限制白王，为最终象将杀腾出路线。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 13,
+      "move": "exf4",
+      "popup": "白兵吃掉f4——但对角线就此打开。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "f4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 14,
+      "move": "Bg4+",
+      "popup": "黑象Bg4+将军！弃象到g4——白王只能吃象，走入致命格。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g4", "to": "f3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 15,
+      "move": "Kxg4",
+      "popup": "白王吃象——走入g4，这是最后一步。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "g4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 16,
+      "move": "Ne5+",
+      "popup": "黑马Ne5+将军！白王只能走到有限格子。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "g4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 17,
+      "move": "fxe5",
+      "popup": "白兵吃马——白王获得片刻喘息，但h5兵已经在瞄准。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 18,
+      "move": "h5#",
+      "popup": "黑兵h5#！小兵将死白王！漫长的连环弃子组合终于以最朴实的兵将死收尾。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "h5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

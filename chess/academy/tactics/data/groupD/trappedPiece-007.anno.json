@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_trappedPiece_L1-007",
+  "description": "白后孤军深入b7成困子，被迫换车",
+  "intro": {
+    "flash_squares": ["b7", "a6", "a8"],
+    "popup": "💡 <b>困子</b>：白后孤军深入到b7！黑方如何利用马和车配合，将白后困死并赢得子力？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nc5攻后→Qxa8是唯一逃路→黑后Qxa8赢回！白后深入被困，以后换车损失惨重。开局切忌后孤军深入！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nc5",
+      "popup": "黑马Nc5！马从a6跳到c5，直接攻击白后b7。白后b7被马攻击，退路极为有限！",
+      "highlights": [
+        {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a6", "to": "c5", "color": "#4CAF50CC"},
+        {"from": "c5", "to": "b7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qxa8",
+      "popup": "白后被迫Qxa8！只能去吃黑车a8，别无出路（b8、c8、c7、b6等都被黑方棋子控制）。这是丢后的困境。",
+      "highlights": [
+        {"squares": ["a8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["b8", "c8", "c7", "b6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b7", "to": "a8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxa8",
+      "popup": "黑后Qxa8！黑后从d8取回白后，黑方以后换后+车，净赚一车。白方后深入代价惨重！",
+      "highlights": [
+        {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d8", "to": "a8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

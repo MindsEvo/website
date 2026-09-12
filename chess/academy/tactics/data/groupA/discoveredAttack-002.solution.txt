@@ -1,0 +1,6 @@
+1. Ng6+ hxg6
+2. Rxe6 Kg7
+3. d5 Kf7
+# END
+# tac_discoveredAttack_L1-002（闪击）
+# 解法 1

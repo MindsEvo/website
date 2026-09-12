@@ -1,0 +1,5 @@
+1. Bb7 Kxh6
+2. Bxa6 Kg7
+# END
+# tac_clearance_L1-007（腾挪）
+# 解法 1

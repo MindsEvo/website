@@ -1,0 +1,13 @@
+... Bg1
+2. Nxg1 Qh2+
+3. Kf3 e5
+4. dxe5 Ndxe5+
+5. fxe5 Nxe5+
+6. Kf4 Ng6+
+7. Kf3 f4
+8. exf4 Bg4+
+9. Kxg4 Ne5+
+10. fxe5 h5#
+# END
+# tac_sacrifice_L1-007（弃子）
+# 解法 1

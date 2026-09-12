@@ -1,0 +1,8 @@
+... Nd3+
+2. Kc2 Rxa3
+3. Nxf5+ Kf6
+4. Rb1 Rxb1
+5. Kxb1 Kxf5
+# END
+# tac_doubleCheck_L1-004（双将）
+# 解法 1

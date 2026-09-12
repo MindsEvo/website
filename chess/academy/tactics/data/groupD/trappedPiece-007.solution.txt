@@ -1,0 +1,6 @@
+... Nc5
+2. Qxa8 Qxa8
+3. Nb5 Kd7
+# END
+# tac_trappedPiece_L1-007（困子）
+# 解法 1

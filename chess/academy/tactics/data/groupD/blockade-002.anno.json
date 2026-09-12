@@ -1,0 +1,59 @@
+{
+  "game_id": "tac_blockade_L1-002",
+  "description": "弃后阻塞黑王通路，兵入绝杀",
+  "intro": {
+    "flash_squares": ["g6", "h6", "h5"],
+    "popup": "💡 <b>弃后阻塞</b>：黑王在g6，看似还有空间。白方如何用一步弃后，让黑王完全动弹不得，再用兵将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qh5+弃后，黑兵被迫吃后阻塞了自己的通路，白车控制g线，白兵g5一步将死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qh5+",
+      "popup": "白后将军！黑只能用g兵吃后，退路被彻底封死。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "h5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "gxh5",
+      "popup": "黑兵吃后——阻塞！黑王h6和g5均被封死，白车从g8封顶。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF980055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "h5", "color": "#E53935CC"},
+        {"from": "g8", "to": "g6", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "g5#",
+      "popup": "兵将死！黑王被己方兵和白车四面封死，无路可走。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "g5", "color": "#4CAF50CC"},
+        {"from": "g8", "to": "g6", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

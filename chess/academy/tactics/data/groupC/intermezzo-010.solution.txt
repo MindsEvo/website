@@ -1,0 +1,7 @@
+... Rxc4
+2. Rg1 Rb4
+3. Qxb4 Qxg1
+4. Rxg1 axb4
+# END
+# tac_intermezzo_L1-010（中间招）
+# 解法 1

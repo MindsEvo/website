@@ -1,0 +1,7 @@
+1. Nxf7+ Kg8
+2. Nh6+ Kh8
+3. Qg8+ Rxg8
+4. Nf7#
+# END
+# tac_doubleCheck_L1-002（双将）
+# 解法 1

@@ -1,0 +1,110 @@
+{
+  "game_id": "tac_blockade_L1-006",
+  "description": "车到e5阻塞黑象，f6兵路打开，后将死黑王",
+  "intro": {
+    "flash_squares": ["h8", "e5", "g7"],
+    "popup": "💡 <b>精妙阻塞</b>：白后到g7可以将死黑王，但g7被黑象控制。直接走f6拦截象，黑后c5将军可以换后。白方的突破口在哪里？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Re5先阻塞黑象！黑象必须吃车离开斜线，f6随即封死，白后Qg7将死——三步精妙组合！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Re5",
+      "popup": "车到e5！目的不是吃子，而是阻断黑c3象的斜线控制——阻塞！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c3"], "color": "#FF980055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "c3", "to": "g7", "color": "#E5393599"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxe5",
+      "popup": "黑象吃车，离开了g7的控制——正中白方下怀！",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "f6",
+      "popup": "兵到f6！封锁局面，同时阻止黑方反击，为白后杀入g7做准备。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rg8",
+      "popup": "黑车撤防。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bg7+",
+      "popup": "白象将军！引诱黑车吃象，h文件暴露。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "g7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rxg7",
+      "popup": "黑车吃象，黑王暴露在h8。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "g7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxg7#",
+      "popup": "后将死！白后吃车进g7，黑王被重重包围，无路可逃！",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h8", "color": "#FF6B35CC"},
+        {"from": "g7", "to": "f8", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

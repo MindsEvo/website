@@ -1,0 +1,162 @@
+{
+  "game_id": "tac_doubleCheck_L1-010",
+  "description": "弃象引入，马后双将，连串将杀",
+  "intro": {
+    "flash_squares": ["h6", "f6", "e5", "h8", "g7"],
+    "popup": "💡 <b>双将</b>：白方弃象引入黑王，利用马后双将发动连串攻击。此局较复杂，可多加研究。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃象引入→Ne8+双将（马攻g7，后揭开对角线）→连串将杀→Qf2#。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bg7+",
+      "popup": "白象弃子！Bg7+将军，强制黑王吃象，将黑王引至g7——为马后双将创造条件。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "g7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxg7",
+      "popup": "黑王被迫吃象，落入陷阱。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ne8+",
+      "popup": "双将！白马跳e8攻g7，同时揭开白后e5沿对角线直指g7！黑王无法同时挡马和挡后。",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "e8", "color": "#4CAF50CC"},
+        {"from": "e8", "to": "g7", "color": "#FF4444CC"},
+        {"from": "e5", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh6",
+      "popup": "黑王逃至h6。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qf4+",
+      "popup": "白后Qf4+，沿对角线攻h6将军，黑方只能用兵阻挡。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "f4", "color": "#4CAF50CC"},
+        {"from": "f4", "to": "h6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "g5",
+      "popup": "黑兵g5挡将，但这为白方后续将杀制造了新漏洞。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "g5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qf6+",
+      "popup": "白后Qf6+，沿第6横线将军h6，黑马保护f6使黑王无法吃后。黑王被迫逃跑。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "f6", "to": "h6", "color": "#FF4444CC"},
+        {"from": "e8", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kh5",
+      "popup": "黑王逃至h5，继续被追杀。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "h5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Ng7+",
+      "popup": "白马Ng7+将军h5，黑王只能继续逃跑。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Kh4",
+      "popup": "黑王逃至h4，已无处可躲。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "h4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 10,
+      "move": "Qf2#",
+      "popup": "白后Qf2将死！后攻h4对角线，马h3和车h1封死逃路，黑王无路可逃。精彩的连串将杀！",
+      "highlights": [
+        {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "f2", "color": "#4CAF50CC"},
+        {"from": "f2", "to": "h4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

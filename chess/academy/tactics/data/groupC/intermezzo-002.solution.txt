@@ -1,0 +1,7 @@
+1. Nd5 Qxb3
+2. Nxe7+ Kh7
+3. axb3 Rb8
+4. Rd3 a5
+# END
+# tac_intermezzo_L1-002（中间招）
+# 解法 1

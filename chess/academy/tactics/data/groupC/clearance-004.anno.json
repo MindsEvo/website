@@ -1,0 +1,70 @@
+{
+  "game_id": "tac_clearance_L1-004",
+  "description": "兵腾挪f5，清开f列让车入局",
+  "intro": {
+    "flash_squares": ["f5", "f1", "h5"],
+    "popup": "💡 <b>腾挪</b>：白兵在f5，挡住了白车Rf1进入f5的路线。如何清开f5让车赢得黑象？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：f6！兵腾挪f5→f6，强迫Bxf6，白车Rf5立即占据——Rxh5赢象！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "f6",
+      "popup": "白兵f6！从f5推进到f6，腾挪f5格，强迫黑象应对！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "f1", "to": "f5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxf6",
+      "popup": "黑象Bxf6——被迫吃兵，f5已完全腾空！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "f6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rf5",
+      "popup": "白车Rf5！占据腾空的f5格——车直接攻击h5黑象！",
+      "highlights": [
+        {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f5", "color": "#4CAF50CC"},
+        {"from": "f5", "to": "h5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxh5",
+      "popup": "白车Rxh5！赢得黑象——兵腾挪、车入局，战术完成！",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "h5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_sacrifice_L1-001",
+  "description": "黑方弃车引开白兵，后将死白王",
+  "intro": {
+    "flash_squares": ["f3", "h5", "h3", "h1"],
+    "popup": "💡 <b>弃子</b>：黑方车在f3，后在h5，白王在h1被堵死。如何用弃子完成将杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxh3+！弃车引开h3白兵，后立刻从h5打到h3将死白王——弃子换取将杀路线的经典范例。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxh3+",
+      "popup": "黑车Rxh3+！将军同时弃掉整个车——目的是引开g2白兵，打开后通往h3的通道。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "h3", "color": "#4CAF50CC"},
+        {"from": "h3", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "gxh3",
+      "popup": "白方必须吃车——但这正是黑方的目的，h列现在为黑后让路！",
+      "highlights": [
+        {"squares": ["h3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "h3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxh3#",
+      "popup": "黑后Qxh3#！白王被困死在角落，将死！弃子换来直接将杀。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "h3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

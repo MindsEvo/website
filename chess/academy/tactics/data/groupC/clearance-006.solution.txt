@@ -1,0 +1,11 @@
+1. d8=Q Bxd8
+2. Qc3+ Kg8
+3. Rd7 Bf6
+4. Qc4+ Kh8
+5. Qf4 Bg7
+6. Qxc7 Qxc7
+7. Rxc7 Bd4
+8. Rf1 a6
+# END
+# tac_clearance_L1-006（腾挪）
+# 解法 1

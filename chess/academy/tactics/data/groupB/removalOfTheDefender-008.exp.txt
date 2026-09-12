@@ -1,0 +1,5 @@
+非常精准的计算， 大胆的精彩的攻击。
+
+# END
+# tac_removalOfTheDefender_L1-008（消除保护）
+# 解法 1

@@ -1,0 +1,6 @@
+1. Rxg7+ Kxg7
+2. Rxf7+ Kh8
+3. Qh7#
+# END
+# tac_attraction_L1-005（引入）
+# 解法 1

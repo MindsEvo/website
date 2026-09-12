@@ -1,0 +1,7 @@
+1. Qd2 Qxd5
+2. Qxd5 Nxd5
+3. c4 Ne7
+4. b4 h5
+# END
+# tac_pin_L1-005（牵制）
+# 解法 1

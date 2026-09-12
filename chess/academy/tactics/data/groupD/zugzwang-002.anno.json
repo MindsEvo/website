@@ -1,0 +1,52 @@
+{
+  "game_id": "tac_zugzwang_L1-002",
+  "description": "弃车逼着，g兵升格将死",
+  "intro": {
+    "flash_squares": ["h1", "g6", "g8", "h8"],
+    "popup": "💡 <b>逼着</b>：白方如何逼迫黑方吃车，然后g兵将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rh6弃车！黑方被迫gxh6，但h7兵堵死了黑王，g7正好将死——这就是逼着弃子的力量！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Rh6",
+      "popup": "白车Rh6！弃车——黑方g7兵必须吃，否则Rxh7#将直接将死。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h1", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "gxh6",
+      "popup": "黑方gxh6，被迫吃车——但h7兵现在封死了黑王的h7逃格！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "g7", "to": "h6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "g7#",
+      "popup": "g7将死！黑王在h8，被g7兵将军，g8有黑象、h7被黑兵占据，黑王无处可逃！",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

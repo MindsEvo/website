@@ -1,0 +1,24 @@
+1. Nf3 Re3
+2. Rxd5 Kh7
+3. Kg3 Ra3
+4. Kg4 Ra6
+5. Ng5+ Kg6
+6. Rd4 Kf6
+7. Kh5 Ra8
+8. Rf4+ Ke5
+9. g3 Ra6
+10. Nf3+ Kd5
+11. g4 Rh6+
+12. Kg5 Ke6
+13. Nh4 Ke5
+14. Rf1 Ra6
+15. Re1+ Kd5
+16. Ng6 Kd6
+17. Kh5 Ra5+
+18. g5 Ra4
+19. Ne7 Kc5
+20. Kg6 Rf4
+21. Kxg7 Rf2
+# END
+# tac_discoveredAttack_L1-004（闪击）
+# 解法 1

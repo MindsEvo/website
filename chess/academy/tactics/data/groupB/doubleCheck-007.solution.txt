@@ -1,0 +1,7 @@
+1. Qxe5+ Nxe5
+2. Bf6+ Kh6
+3. Bg7+ Kh5
+4. Rh6#
+# END
+# tac_doubleCheck_L1-007（双将）
+# 解法 1

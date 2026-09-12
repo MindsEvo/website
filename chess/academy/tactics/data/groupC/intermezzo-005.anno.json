@@ -1,0 +1,56 @@
+{
+  "game_id": "tac_intermezzo_L1-005",
+  "description": "中间象入场，驱后后吃挂马",
+  "intro": {
+    "flash_squares": ["c3", "b6", "f6"],
+    "popup": "💡 <b>中间招</b>：黑马f6无根是挂子。白方先Bc3！中间象入场攻击Qb6——后被驱走，Bxf6吃挂马！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bc3中间入场！黑后被迫离开b6，Bxf6吃掉挂马——局面顿时大优！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bc3",
+      "popup": "白象Bc3！中间入场攻击Qb6——黑后无根，是挂子，必须逃！",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b2", "to": "c3", "color": "#4CAF50CC"},
+        {"from": "c3", "to": "b6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qb6",
+      "popup": "黑后Qb6——退守b6，但f6马仍无根！",
+      "highlights": [
+        {"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "b6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxf6",
+      "popup": "白象Bxf6！吃掉无根的挂马——中间招完成，白方得子大优！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c3", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

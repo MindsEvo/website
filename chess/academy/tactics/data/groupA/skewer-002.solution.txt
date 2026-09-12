@@ -1,0 +1,9 @@
+1. Rd2 Qxd2
+2. Bxd2 Nxe4
+3. Rc2 Ng5
+4. Qb1 Ne6
+5. Rb2 h6
+6. Kh2 Nc5
+# END
+# tac_skewer_L1-002（串击）
+# 解法 1

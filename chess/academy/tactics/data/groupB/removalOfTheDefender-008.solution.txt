@@ -1,0 +1,9 @@
+1. Rxe6 Qxe6
+2. Qxf8 Rxf8
+3. Rxg7+ Kh8
+4. Rxg6+ Rf6
+5. Rxf6 Qxf6
+6. Bxf6+ Kg8
+# END
+# tac_removalOfTheDefender_L1-008（消除保护）
+# 解法 1

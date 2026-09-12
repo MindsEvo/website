@@ -1,0 +1,9 @@
+1. Bh7+ Kxh7
+2. Qxe6 Rf8
+3. Rxf7+ Rxf7
+4. Qxf7+ Kh8
+5. d7 c2
+6. d8=R#
+# END
+# tac_zugzwang_L1-007（逼着）
+# 解法 1

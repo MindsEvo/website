@@ -1,0 +1,55 @@
+{
+  "game_id": "tac_sacrifice_L1-002",
+  "description": "黑方弃车引开a线白兵，后将死白王",
+  "intro": {
+    "flash_squares": ["b3", "f8", "a3", "a1"],
+    "popup": "💡 <b>弃子</b>：黑方车在b3，后在f8，白王被困在a1角落。如何弃车打通后的将杀路线？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxa3+！弃车引开b2白兵，后立刻从f8打到a3将死白王——与弃车引兵后将杀的经典模式完全一致。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxa3+",
+      "popup": "黑车Rxa3+！弃掉整个车，将军并引开b2白兵——为后从f8奔赴a3的将杀清路。",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "a3", "color": "#4CAF50CC"},
+        {"from": "a3", "to": "a1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "bxa3",
+      "popup": "白兵必须吃车——a线被封死，但白王身边再无遮挡。",
+      "highlights": [
+        {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b2", "to": "a3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxa3#",
+      "popup": "黑后Qxa3#！从f8长途奔袭，白王被封死在角落，将死！",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["a1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "a3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

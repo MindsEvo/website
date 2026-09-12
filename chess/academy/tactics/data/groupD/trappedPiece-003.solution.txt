@@ -1,0 +1,9 @@
+1. Bd2 Qe4
+2. Rxe4 dxe4
+3. Ba2 Be7
+4. Qe1 exf3
+5. gxf3 Bxf3
+6. Qg3
+# END
+# tac_trappedPiece_L1-003（困子）
+# 解法 1

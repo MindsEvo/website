@@ -1,0 +1,9 @@
+1. Qa5 Re8
+2. Qg5 Qb1+
+3. Kg2 g6
+4. Qh6 Qg1+
+5. Kxg1 e3
+6. Qg7#
+# END
+# tac_intermezzo_L1-008（中间招）
+# 解法 1

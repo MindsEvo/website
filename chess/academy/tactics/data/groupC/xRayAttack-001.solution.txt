@@ -1,0 +1,10 @@
+... Re2+
+2. Qxe2 Qxe2+
+3. Kg1 Qe3+
+4. Kf1 Qxf3+
+5. Ke1 Qe3+
+6. Kd1 Qxd4+
+7. Ke2 Kf7
+# END
+# tac_xRayAttack_L1-001（透视攻击）
+# 解法 1

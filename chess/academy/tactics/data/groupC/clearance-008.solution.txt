@@ -1,0 +1,6 @@
+1. Rc5 Ne8
+2. Rxc4 Rxc4
+3. Ne3 Rc6
+# END
+# tac_clearance_L1-008（腾挪）
+# 解法 1

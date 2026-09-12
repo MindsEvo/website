@@ -1,0 +1,141 @@
+{
+  "game_id": "tac_pin_L1-006",
+  "description": "双车献祭绝杀——精彩攻击组合",
+  "intro": {
+    "flash_squares": ["g4", "h8", "c8", "g1"],
+    "popup": "💡 精彩组合！白象Bg3后，黑方双车轮流献祭占领h线，引导黑后Qxg2绝杀。观察完整的攻击序列！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：双车献祭把白王引向h1，黑后Qh3→Qxg2绝杀。白方重子因受牵制无法援救。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bg3",
+      "popup": "白象Bg3——此刻黑方已有决定性反击！",
+      "highlights": [
+        {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "g3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxh2!!",
+      "popup": "黑车Rxh2!! 第一次献祭！把白王引向h2，打开h线通道。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "h2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kxh2",
+      "popup": "白王别无选择，吃下黑车——h线已开放！",
+      "highlights": [
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g1", "to": "h2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rh8+",
+      "popup": "黑车Rh8+！第二个车杀入h线，将军！白王必须退回。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "h8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Kg1",
+      "popup": "白王被迫退回g1——陷入死局。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h2", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rh1+!",
+      "popup": "黑车Rh1+！第二次献祭，把白王引向h1角！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Kxh1",
+      "popup": "白王吃第二个车——走进死角！",
+      "highlights": [
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g1", "to": "h1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Qh3+",
+      "popup": "黑后Qh3+！后从g4杀到h3，将军！白王只能回g1。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "h3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Kg1",
+      "popup": "白王回到g1——无路可走，绝杀在即。",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h1", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Qxg2#",
+      "popup": "黑后Qxg2# 绝杀！双车献祭的完美收官，精彩组合！",
+      "highlights": [
+        {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "g2", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

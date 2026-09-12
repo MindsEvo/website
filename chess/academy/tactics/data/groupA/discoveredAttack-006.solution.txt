@@ -1,0 +1,8 @@
+... Ng4
+2. g3 Bxb2
+3. Rd1 Qc7
+4. h3 Nf6
+5. g4 Rd8
+# END
+# tac_discoveredAttack_L1-006（闪击）
+# 解法 1

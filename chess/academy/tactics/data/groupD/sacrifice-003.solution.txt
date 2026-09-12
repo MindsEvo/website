@@ -1,0 +1,6 @@
+... Qxf2+
+2. Rxf2 Re1+
+3. Rf1 Rxf1#
+# END
+# tac_sacrifice_L1-003（弃子）
+# 解法 1

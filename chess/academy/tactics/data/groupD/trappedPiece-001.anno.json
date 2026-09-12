@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_trappedPiece_L1-001",
+  "description": "黑马困死白后，强迫换子得子",
+  "intro": {
+    "flash_squares": ["h5", "g6", "g5"],
+    "popup": "💡 <b>困子</b>：白后孤军深入到h5，黑方如何利用马和兵的配合将其困死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nf4攻后→后退f3→g4封死后→Qxf4解围→exf4赢后。白后深入反被围困！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf4",
+      "popup": "黑马Nf4！马从g6跳到f4，直接攻击白后h5。白后被迫逃离。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "f4", "color": "#4CAF50CC"},
+        {"from": "f4", "to": "h5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qf3",
+      "popup": "白后被迫退到f3，暂时逃开。但f3的退路已经陷阱重重——马在f4，兵在e4，g2。",
+      "highlights": [
+        {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "f3", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "g4",
+      "popup": "g4！黑方g5兵推进到g4，彻底封死白后f3！f4有马、e4有白兵、g4有黑兵、g2有白兵——白后无路可逃！",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f4", "e4", "g2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "g4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxf4",
+      "popup": "白后只能Qxf4吃马，做最后挣扎。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f3", "to": "f4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "exf4",
+      "popup": "黑方e5兵取f4！白后被完全消灭，黑方赢得白后，黑方大优！",
+      "highlights": [
+        {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "f4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

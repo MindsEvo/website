@@ -1,0 +1,80 @@
+{
+  "game_id": "tac_fork_L1-010",
+  "description": "黑象捉双——同时攻击马和过路兵",
+  "intro": {
+    "flash_squares": ["b1", "f3", "c6"],
+    "popup": "💡 <b>捉双</b>：黑象在b1，如何一步同时攻击白马和重要兵？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Be4捉双！象同时攻击f3马和c6兵，白方顾此失彼。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Be4",
+      "popup": "象跳e4！同时攻击f3马和c6兵——捉双！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b1", "to": "e4", "color": "#4CAF50CC"},
+        {"from": "e4", "to": "f3", "color": "#FF4444CC"},
+        {"from": "e4", "to": "c6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxa7",
+      "popup": "白车吃a7兵，白方反击。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a1", "to": "a7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxa7",
+      "popup": "黑车吃回，双方都在争夺子力。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "a7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "c7",
+      "popup": "兵推c7！过路兵威胁升变。",
+      "highlights": [
+        {"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "c7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nd7",
+      "popup": "黑马跳d7阻挡升变，局势复杂。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "d7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "game_id": "tac_zugzwang_L1-008",
+  "description": "白车等招Rd7，逼着黑王，打开僵持局面",
+  "intro": {
+    "flash_squares": ["b7", "f6", "e6", "d6"],
+    "popup": "💡 <b>逼着</b>：局面僵持，白方如何用一步等招打开局面，逼着黑王让路？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rd7是关键等招！黑方无棋可走，只能移王，白车立刻Rg7+把黑王逼至角落，再用白王和车步步逼着，最终获胜。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0, "move": "Rd7",
+      "popup": "白车Rd7！等招逼着——黑棋无棋可走，只能走王，白车借机展开进攻。",
+      "highlights": [
+        {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "b7", "to": "d7", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 1, "move": "Kg5",
+      "popup": "黑王Kg5，被迫走王——逼着奏效！",
+      "highlights": [{"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "f6", "to": "g5", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 2, "move": "Rg7+",
+      "popup": "白车Rg7+！将军，把黑王赶到h线角落。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "d7", "to": "g7", "color": "#4CAF50CC"}, {"from": "g7", "to": "g5", "color": "#FF4444CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 3, "move": "Kh6",
+      "popup": "黑王Kh6，被将军后逃往角落。",
+      "highlights": [{"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g5", "to": "h6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 4, "move": "Rg4",
+      "popup": "白车Rg4，控制h4格，切断黑象的活动范围。",
+      "highlights": [{"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "g7", "to": "g4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 5, "move": "Bb6",
+      "popup": "黑象Bb6，试图阻拦白方的推进计划。",
+      "highlights": [{"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "c5", "to": "b6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 6, "move": "Kd3",
+      "popup": "白王Kd3，主动前进，配合车逼迫黑象。",
+      "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "e4", "to": "d3", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 7, "move": "Bd8",
+      "popup": "黑象Bd8，被迫退守。",
+      "highlights": [{"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "b6", "to": "d8", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 8, "move": "Kc4",
+      "popup": "白王Kc4，继续前进，逐步逼近黑象。",
+      "highlights": [{"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d3", "to": "c4", "color": "#4CAF50CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 9, "move": "Bf6",
+      "popup": "黑象Bf6，再次挣扎。",
+      "highlights": [{"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}],
+      "concept_arrows": [{"from": "d8", "to": "f6", "color": "#E53935CC"}],
+      "concept_lines": []
+    },
+    {
+      "index": 10, "move": "Kb5",
+      "popup": "白王Kb5，逼着b4兵，同时向黑象施压。",
+      "highlights": [
+        {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b4"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [{"from": "c4", "to": "b5", "color": "#4CAF50CC"}, {"from": "b5", "to": "b4", "color": "#FF4444CC"}],
+      "concept_lines": []
+    }
+  ]
+}

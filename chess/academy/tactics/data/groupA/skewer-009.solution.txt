@@ -1,0 +1,11 @@
+1. Rxg6 Qxh5
+2. Rg8+ Ke7
+3. Rxa8 Qb5
+4. Rxa7 Qb8
+5. Qf2 c5
+6. Qa2 Bb5
+7. Qa5 Kd7
+8. Qa2 Ke7
+# END
+# tac_skewer_L1-009（串击）
+# 解法 1

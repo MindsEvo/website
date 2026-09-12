@@ -1,0 +1,152 @@
+{
+  "game_id": "tac_deflection_L1-001",
+  "description": "引离白后——解法1：象牺牲引后，黑后杀入f2",
+  "intro": {
+    "flash_squares": [
+      "c8",
+      "b5",
+      "f2"
+    ],
+    "popup": "💡 <b>引离</b>：黑方如何牺牲象，把白后引离e2，让黑后杀入f2绝杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ 要点：Ba6！白方若Qxb5（被引离），白后离开e2保护，黑后Qxf2绝杀。引离的精华：让保护者离开关键防线。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ba6!",
+      "popup": "黑象Ba6！冷静的弃子——吸引白兵b5来吃，进而引离白后。",
+      "highlights": [
+        {
+          "squares": [
+            "a6"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "a6",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "b5",
+      "popup": "白兵b5攻象——白方上钩了！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxb5",
+      "popup": "黑象Bxb5，吃掉白兵，白后必须吃回。",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxb5",
+      "popup": "白后被引离e2！后去了b5，f2的防守空虚了！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e2"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f2"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "b5",
+          "color": "#E53935CC"
+        }
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxf2#",
+      "popup": "黑后Qxf2# 绝杀！白后已被引离，f2无人守卫，绝杀！",
+      "highlights": [
+        {
+          "squares": [
+            "f2"
+          ],
+          "color": "#4CAF5055",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#FF000055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h2",
+          "to": "f2",
+          "color": "#4CAF50CC"
+        }
+      ],
+      "concept_lines": []
+    }
+  ]
+}

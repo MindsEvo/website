@@ -1,0 +1,112 @@
+{
+  "game_id": "tac_doubleCheck_L1-007",
+  "description": "弃后引入，两次双将，最终将杀",
+  "intro": {
+    "flash_squares": ["e6", "g5", "d6", "g3", "g7"],
+    "popup": "💡 <b>双将</b>：白方弃后起手，后续两次双将连环将杀。此局需严密计算，可多加研究。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃后→Bf6+（象车双将）→Bg7+（象车双将）→Rh6#，连续双将强制将死黑王。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxe5+",
+      "popup": "白后弃子！Qxe5+将军，逼黑马吃后，清除障碍准备连续双将。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "e5", "color": "#4CAF50CC"},
+        {"from": "e5", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Nxe5",
+      "popup": "黑马被迫吃后。",
+      "highlights": [
+        {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "e5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bf6+",
+      "popup": "第一次双将！白象跳f6攻g7，同时揭开白车g3沿g列直指g7！黑王无法同时应对两将。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "f6", "to": "g7", "color": "#FF4444CC"},
+        {"from": "g3", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh6",
+      "popup": "黑王逃至h6，躲开双将。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "h6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bg7+",
+      "popup": "第二次双将！白象到g7攻h6，同时揭开白车d6沿第6横线直指h6！黑王再次无路可逃。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "g7", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "h6", "color": "#FF4444CC"},
+        {"from": "d6", "to": "h6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh5",
+      "popup": "黑王逃至h5，继续躲避。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "h5", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rh6#",
+      "popup": "白车Rh6将死！车d6平移到h6，黑王在h5被车从旁翼攻击，无路可逃。连续双将完美收官！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d6", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "h5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

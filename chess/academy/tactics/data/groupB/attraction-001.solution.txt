@@ -1,0 +1,7 @@
+1. Rf8+ Kxf8
+2. Nd7+ Kf7
+3. Nxb6 Ke6
+4. Kf2
+# END
+# tac_attraction_L1-001（引入）
+# 解法 1

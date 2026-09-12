@@ -1,0 +1,6 @@
+1. Rb8+ Rc8
+2. Qd8+ Rxd8
+3. Rxd8#
+# END
+# tac_xRayAttack_L1-008（透视攻击）
+# 解法 1

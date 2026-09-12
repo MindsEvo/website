@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_interference_L1-010",
+  "description": "黑后牺牲拦截白兵，打开g路赢白后",
+  "intro": {
+    "flash_squares": ["e2", "g4", "h3", "f6"],
+    "popup": "💡 <b>拦截</b>：黑方行动！白后在f6，白兵在h3和g4。黑后跳g4，能牺牲拦截h3兵，让g7兵吃掉白后吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qg4！后牺牲跳g4，hxg4被迫拦截黑后，g7兵gxf6吃掉白后——妙！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qg4",
+      "popup": "黑后Qg4！后牺牲跳到g4——站在g4，引诱白h3兵来吃，同时g7兵将可gxf6！",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g7", "to": "f6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "hxg4",
+      "popup": "白兵hxg4——吃掉黑后，但白兵现在站在g4，拦截了白后f6的g路逃跑！",
+      "highlights": [
+        {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "g4", "color": "#E53935CC"},
+        {"from": "f6", "to": "g5", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "gxf6",
+      "popup": "黑兵gxf6！g7兵吃掉白后——拦截战术完成，黑方大获！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "f6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

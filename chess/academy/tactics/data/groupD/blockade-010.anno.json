@@ -1,0 +1,84 @@
+{
+  "game_id": "tac_blockade_L1-010",
+  "description": "马将军逼车阻塞，弃后马将死精妙三步",
+  "intro": {
+    "flash_squares": ["h8", "g7", "h6"],
+    "popup": "💡 <b>精妙阻塞杀</b>：黑王在h8，有车在f7保护。白方如何连续将军，让黑车阻塞黑王退路，再用马将死？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Ng6+迫使黑王到g8，Qg7+弃后引黑车到g7阻塞，Nh6#马将死！三步行云流水。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ng6+",
+      "popup": "马将军！黑王被迫离开h8，只能走g8。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e7", "to": "g6", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg8",
+      "popup": "黑王走g8，暂时脱将。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qg7+",
+      "popup": "弃后将军！黑车必须吃后，进入g7，自己阻断了黑王的逃路。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "g7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxg7",
+      "popup": "黑车吃后，进入g7——阻塞！黑王退路g7被封死。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "g7", "color": "#E53935CC"},
+        {"from": "g7", "to": "g8", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nh6#",
+      "popup": "马将死！h8被g6马控制，g7被黑车封死，f8被白马封，黑王无处可逃！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF980055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "h8", "color": "#FF6B35CC"},
+        {"from": "h6", "to": "f7", "color": "#FF6B35CC"},
+        {"from": "g6", "to": "f8", "color": "#FF6B35CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

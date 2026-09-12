@@ -1,0 +1,7 @@
+... Ba6
+2. b5 Bxb5
+3. Bxb6 Rxf3+
+4. Bf2 Rxf2#
+# END
+# tac_deflection_L1-001（引离）
+# 解法 2

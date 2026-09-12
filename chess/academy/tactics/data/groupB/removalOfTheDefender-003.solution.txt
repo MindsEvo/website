@@ -1,0 +1,5 @@
+1. Rc8+ Bxc8
+2. Re8#
+# END
+# tac_removalOfTheDefender_L1-003（消除保护）
+# 解法 1

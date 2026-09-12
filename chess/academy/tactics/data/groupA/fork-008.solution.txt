@@ -1,0 +1,7 @@
+1. Bd5 Bb7
+2. Bxe4 d5
+3. Bc2 e4
+4. Re1 Bd6
+5. d3
+# END
+# 解法 1

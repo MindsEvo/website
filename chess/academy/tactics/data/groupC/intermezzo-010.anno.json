@@ -1,0 +1,105 @@
+{
+  "game_id": "tac_intermezzo_L1-010",
+  "description": "双方交替中间招，最终黑方得子",
+  "intro": {
+    "flash_squares": ["c4", "g1", "b4"],
+    "popup": "💡 <b>中间招</b>：黑方Rxc4吃挂马，白方Rg1中间捉后——黑方Rb4中间捉后！双方交替中间招，最终黑方赢得子力！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：双方交替中间招——谁能坚持到最后谁获胜！Rxc4→Rg1→Rb4→Qxb4，最终Qxg1赢后！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxc4",
+      "popup": "黑车Rxc4！吃掉无根的白马（挂子）——中间招序列开始！",
+      "highlights": [
+        {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "c4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rg1",
+      "popup": "白车Rg1！白方中间招——不急着应对Rxc4，先捉黑后g2（挂子）！",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h1", "to": "g1", "color": "#E53935CC"},
+        {"from": "g1", "to": "g2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rb4",
+      "popup": "黑车Rb4！黑方中间招反将——攻击白后Qb6（挂子）！以攻对攻！",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c4", "to": "b4", "color": "#4CAF50CC"},
+        {"from": "b4", "to": "b6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxb4",
+      "popup": "白后Qxb4——吃车应对，但黑方g2后仍无根！",
+      "highlights": [
+        {"squares": ["b4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b6", "to": "b4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxg1",
+      "popup": "黑后Qxg1！吃掉白车——双方中间招交锋后，黑方净赚子力！",
+      "highlights": [
+        {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g2", "to": "g1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Rxg1",
+      "popup": "白车Rxg1——吃回，但黑方已完成中间招序列，净多一马！",
+      "highlights": [
+        {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "g1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "axb4",
+      "popup": "黑兵axb4——吃回白后，最终黑方净多一马，大优！",
+      "highlights": [
+        {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a5", "to": "b4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+1. f5 Rxg3
+2. Bxg3 Ng5
+3. f6 Kc8
+4. f7 Bc5
+5. f8=Q+ Bxf8
+6. Rxf8+ Kd7
+7. h4
+# END
+# 解法 1

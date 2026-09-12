@@ -1,0 +1,57 @@
+{
+  "game_id": "tac_fork_L1-003",
+  "description": "白象捉双——同时攻击车和马",
+  "intro": {
+    "flash_squares": ["h4", "h8", "c3"],
+    "popup": "💡 <b>捉双</b>：白象在h4，如何一步同时攻击车和马？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bf6捉双！象同时攻击h8车和c3马，对手无法两全。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bf6",
+      "popup": "象跳f6！同时攻击h8车和c3马——捉双！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "f6", "to": "h8", "color": "#FF4444CC"},
+        {"from": "f6", "to": "c3", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Re8",
+      "popup": "黑车移动，但马仍然暴露。",
+      "highlights": [
+        {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["c3"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "e8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bxc3",
+      "popup": "象吃c3马，白方得子！",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "c3", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}
