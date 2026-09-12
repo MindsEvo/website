@@ -1,0 +1,47 @@
+{
+  "game_id": "mate_arabianMate_L1-002",
+  "description": "阿拉伯杀：精彩的弃后过渡，引黑车至h7，Rxg8#将死",
+  "intro": {
+    "flash_squares": ["h8"],
+    "popup": "💡 <b>阿拉伯杀</b>：白方有精彩的弃后手法！引诱黑车走到h7封死王的逃格，再车将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：精彩的弃后过渡阿拉伯杀。Qxh7+引黑车至h7，Rxg8#一击致命——车和马的经典配合。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxh7+",
+      "popup": "白后弃后Qxh7+！将军，引诱黑车来吃，为Rxg8#创造条件。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxh7",
+      "popup": "黑车Rxh7，被迫吃后。现在h7被黑车堵死，王的逃格消失了。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxg8#",
+      "popup": "白车Rxg8#，阿拉伯杀！黑车堵住h7，马封逃格，王被将死。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

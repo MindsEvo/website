@@ -1,0 +1,7 @@
+1. hxg6 hxg6
+2. Rf8+ Qxf8
+3. Rxf8+ Rxf8
+4. Qxg6#
+# END
+# mate_dovetailMate_L1-009（燕尾杀）
+# 解法 1

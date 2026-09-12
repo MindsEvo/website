@@ -1,0 +1,132 @@
+{
+  "game_id": "mate_smotheredMate_L1-001",
+  "description": "菲利道尔闷杀：马后、弃后迫使黑王被自己棋子围死",
+  "intro": {
+    "flash_squares": ["d4", "g5", "g8", "e8"],
+    "popup": "💡 <b>闷杀（菲利道尔闷杀）</b>：白后在d4，马在g5，如何用经典的闷杀手法将死黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：白后引路、马跳双将、弃后引入黑车，最终马踏f7闷杀——黑王被自己的车和兵团团围住！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qd5+",
+      "popup": "白后Qd5+将军！逼迫黑王躲到h8角落。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "d5", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王被迫退到h8角落。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf7+",
+      "popup": "白马Nf7+跳入，将军并攻击h8！黑王只能回到g8。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王回到g8——陷阱即将合拢！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nh6+",
+      "popup": "白马Nh6+双将！马攻击g8，后也攻击g8，黑王必须再逃h8。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "g8", "color": "#FF4444CC"},
+        {"from": "d5", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh8",
+      "popup": "黑王再次被迫退回h8。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qg8+",
+      "popup": "白后Qg8+精妙弃后！强迫黑车吃后，自断退路。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d5", "to": "g8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Rxg8",
+      "popup": "黑车被迫吃后，却堵死了g8！黑王陷入绝境。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Nf7#",
+      "popup": "白马Nf7#闷杀！黑王在h8被己方棋子团团围住，无路可走——闷杀成功！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

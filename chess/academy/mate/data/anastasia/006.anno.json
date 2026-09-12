@@ -1,0 +1,67 @@
+{
+  "game_id": "mate_anastasia_L1-006",
+  "description": "安娜斯塔西亚杀：弃马引离，车将军，吃马将死",
+  "intro": {
+    "flash_squares": ["h7", "g5", "h5"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：弃马引离黑兵，车沿h线将军，再吃马将死——精彩三步组合。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Ng5+弃马引黑兵至g5，Rh3+车将军迫黑马拦截，Rxh5#吃马将死——安娜斯塔西亚杀经典变形。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ng5+",
+      "popup": "白马弃马Ng5+！将军黑王（在h7），引诱黑兵来吃，清空h6，打开白车进攻通道。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "hxg5",
+      "popup": "黑兵hxg5被迫吃马，h6格清空，但白车即将沿h线发动攻击。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh3+",
+      "popup": "白车Rh3+！从f3横向到h3，沿h线将军黑王，黑方必须拦截。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Nh5",
+      "popup": "黑马Nh5拦截将军（黑方唯一应手），跳到h5挡住白车。但这反而送马入口。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#E5393555", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxh5#",
+      "popup": "白车Rxh5#！吃掉黑马，将死黑王！白马e7封住g6，黑王在h7被困：h线被车控制，g6被马封住，g7有己方兵，无处逃脱。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

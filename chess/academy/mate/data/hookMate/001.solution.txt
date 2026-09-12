@@ -1,0 +1,4 @@
+1. Rc8#
+# END
+# mate_hookMate_L1-001（钩杀）
+# 解法 1

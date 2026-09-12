@@ -1,0 +1,6 @@
+... d5
+2. Bxd5 Qxc3+
+3. bxc3 Ba3#
+# END
+# mate_bodenMate_L1-008（博登杀）
+# 解法 1

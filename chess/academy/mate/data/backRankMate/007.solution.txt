@@ -1,0 +1,14 @@
+1. Qg4 Qb5
+2. Qc4 Qd7
+3. Qc7 Qb5
+4. Qc4 Qd7
+5. Qc7 Qb5
+6. a4 Qxa4
+7. Re4 Qxe4
+8. Rxe4 Rf8
+9. Qxb7 Rb8
+10. Qa6 Bxb2
+11. g4 Ba3
+# END
+# mate_backRankMate_L1-007（底线杀）
+# 解法 1

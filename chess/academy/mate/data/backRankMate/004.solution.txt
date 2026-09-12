@@ -1,0 +1,6 @@
+1. Qf7+ Kh8
+2. Qf8+ Rxf8
+3. Rxf8#
+# END
+# mate_backRankMate_L1-004（底线杀）
+# 解法 1

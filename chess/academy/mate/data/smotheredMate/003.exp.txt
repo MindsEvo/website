@@ -1,0 +1,5 @@
+精彩的弃后引入阻塞闷杀。
+
+# END
+# mate_smotheredMate_L1-003（闷杀）
+# 解法 1

@@ -1,0 +1,15 @@
+{
+  "label": "博登杀",
+  "items": [
+    { "id": "001", "fen": "2kr3r/pp1nqpp1/2p1pnp1/8/1bBP1BP1/2N2Q1P/PPP5/R4RK1 w - - 0 1" },
+    { "id": "002", "fen": "4rk1r/7p/6p1/5p2/2B5/8/8/2B1R1K1 w - - 0 1" },
+    { "id": "003", "fen": "2kr4/3n4/8/8/5B2/8/8/2K2B2 w - - 0 1" },
+    { "id": "004", "fen": "2kr4/pp1n4/2p5/8/5B2/8/2Q5/2K2B2 w - - 0 1" },
+    { "id": "005", "fen": "1bkr3r/pp1n1ppp/2q1pn2/1N6/2BP1B2/5Q2/PPP3PP/3RR2K w - - 0 1" },
+    { "id": "006", "fen": "r1bqk2r/p1pn1pp1/1p2pn1p/8/3P4/B1PB4/P1P1QPPP/R3K1NR w k - 0 1" },
+    { "id": "007", "fen": "r3r2k/1q2n1p1/5p2/2p2B2/4PB2/R7/5PP1/Q5K1 w - - 0 1" },
+    { "id": "008", "fen": "2k1rb1r/ppp3pp/2np1q2/5b2/2B2P2/2P1BQ2/PP1N1P1P/2KR3R b - - 0 1" },
+    { "id": "009", "fen": "r3k1nB/ppp4p/2np1p2/5b2/1bB2P2/6P1/P2NN2P/2KR3R w q - 0 14" },
+    { "id": "010", "fen": "r2q1rk1/bppb1ppp/p2p4/P2Pn3/1P2P3/2N2P2/1BQ1B1PP/R3RK2 w - - 1 20" }
+  ]
+}

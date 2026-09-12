@@ -1,0 +1,6 @@
+1. f8=N+ Kg8
+2. Ng6+ Kf7
+3. Rf8#
+# END
+# mate_hookMate_L1-002（钩杀）
+# 解法 1

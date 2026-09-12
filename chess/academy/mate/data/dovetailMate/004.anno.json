@@ -1,0 +1,57 @@
+{
+  "game_id": "mate_dovetailMate_L1-004",
+  "description": "燕尾杀：弃后开路，车将军逼王，黑后完成燕尾杀",
+  "intro": {
+    "flash_squares": ["c1"],
+    "popup": "💡 <b>燕尾杀</b>：这道题需要多步铺垫——先弃后，再将军逼王走入死角，最后后完成燕尾杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxc4开路，Re1+逼王，Kc2走入死角，Qd1#燕尾杀。先创造条件，再一击致命。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxc4",
+      "popup": "白后吃c4兵，为黑方的攻势创造条件。",
+      "highlights": [
+        {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Re1+",
+      "popup": "黑车Re1+将军！逼迫白王离开c1。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Kc2",
+      "popup": "白王走c2，唯一应将，落入燕尾杀的封闭位置。",
+      "highlights": [
+        {"squares": ["c2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qd1#",
+      "popup": "黑后Qd1#，燕尾杀！王被己方棋子封死，后从对角线将死。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+... Ng4
+2. Qf4 Qxh2+
+3. Qxh2 Nxf2#
+# END
+# mate_smotheredMate_L1-008（闷杀）
+# 解法 1

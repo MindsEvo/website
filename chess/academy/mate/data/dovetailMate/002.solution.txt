@@ -1,0 +1,4 @@
+1. Qg5#
+# END
+# mate_dovetailMate_L1-002（燕尾杀）
+# 解法 1

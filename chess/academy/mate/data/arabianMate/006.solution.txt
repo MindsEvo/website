@@ -1,0 +1,5 @@
+1. Rg4 Rxg4
+2. Qxh7#
+# END
+# mate_arabianMate_L1-006（阿拉伯杀）
+# 解法 1

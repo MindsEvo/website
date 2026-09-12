@@ -1,0 +1,37 @@
+{
+  "game_id": "mate_dovetailMate_L1-007",
+  "description": "燕尾杀：白后走位封住王的逃格，黑后对角线将死",
+  "intro": {
+    "flash_squares": ["f2"],
+    "popup": "💡 <b>燕尾杀</b>：注意白王的位置。白后走位后，黑后将从对角线发动燕尾杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf4走位封锁逃格，Qe1#完成燕尾杀。白后的位置变化是关键。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf4",
+      "popup": "白后走f4，封住了白王的逃路。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qe1#",
+      "popup": "黑后Qe1#，燕尾杀！王被己方棋子封死，后沿对角线将死。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

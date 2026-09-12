@@ -1,0 +1,4 @@
+1. Ba6#
+# END
+# mate_bodenMate_L1-003（博登杀）
+# 解法 1

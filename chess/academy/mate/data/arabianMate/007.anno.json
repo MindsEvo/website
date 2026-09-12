@@ -1,0 +1,15 @@
+{
+  "game_id": "mate_arabianMate_L1-007",
+  "description": "阿拉伯杀：精彩的引入弃子攻杀",
+  "intro": {
+    "flash_squares": ["g7"],
+    "popup": "💡 <b>阿拉伯杀</b>：精彩的引入弃子攻杀！多熟悉这种棋形和思路。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：精彩的引入弃子攻杀，多熟悉这种棋形和思路。车马配合将死角落的王是阿拉伯杀的核心。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": []
+}

@@ -1,0 +1,14 @@
+{
+  "label": "底线杀",
+  "items": [
+    { "id": "001", "fen": "6k1/pp3ppp/5q2/8/8/8/PP3PPP/2RR2K1 w - - 0 1" },
+    { "id": "002", "fen": "8/p4k2/1p2R2Q/2p2p2/4qP2/1NP5/P5PP/7K b - - 0 1" },
+    { "id": "003", "fen": "rnqb1k1r/5ppp/pB1p4/8/5PP1/1P5P/6K1/3QR3 w - - 0 1" },
+    { "id": "004", "fen": "r5k1/1p1Q2pp/1q2p3/p2p4/6B1/1PP5/P2b2PP/5R1K w - - 0 1" },
+    { "id": "005", "fen": "rr4k1/5ppp/q4p2/8/1p1R1Q2/P1P5/1K3PPP/3R4 w - - 0 1" },
+    { "id": "006", "fen": "7k/pp4pp/8/2Q5/6q1/8/PPPr1r2/1R3R1K w - - 0 1" },
+    { "id": "007", "fen": "2r1r1k1/1p1q1ppp/3p1b2/p2P4/3Q4/5N2/PP2RPPP/4R1K1 w - - 0 1" },
+    { "id": "008", "fen": "1r1r2k1/1bp2pp1/2n4p/q2p4/3P4/2P5/2B1QPPP/1RB1R1K1 w - - 0 1" },
+    { "id": "009", "fen": "8/6pk/Q2p3p/1P6/4Pr2/8/Pb4PP/6K1 b - - 0 1" }
+  ]
+}

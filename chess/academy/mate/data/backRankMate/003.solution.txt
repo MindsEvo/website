@@ -1,0 +1,7 @@
+1. Qxd6+ Be7
+2. Qxe7+ Kg8
+3. Qe8+ Qxe8
+4. Rxe8#
+# END
+# mate_backRankMate_L1-003（底线杀）
+# 解法 1

@@ -1,0 +1,15 @@
+{
+  "game_id": "mate_anastasia_L1-002",
+  "description": "安娜斯塔西亚杀：待补充",
+  "intro": {
+    "flash_squares": ["h6", "h8"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：车和马配合，将王困在边线将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：安娜斯塔西亚杀的核心是马封住王的内侧逃格，车沿边线将死。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": []
+}

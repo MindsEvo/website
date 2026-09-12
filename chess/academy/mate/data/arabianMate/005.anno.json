@@ -1,0 +1,67 @@
+{
+  "game_id": "mate_arabianMate_L1-005",
+  "description": "阿拉伯杀：精彩弃后，引王出角，车将军逼回，Rg8#将死",
+  "intro": {
+    "flash_squares": ["g7"],
+    "popup": "💡 <b>阿拉伯杀</b>：精彩的弃后攻杀！先弃后引王出角，再用车将军驱王，最后完成阿拉伯杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：精彩的弃后攻杀。Qxf8+引王，Re8+驱王，Rg8#完成阿拉伯杀，车马配合的威力。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxf8+",
+      "popup": "白后弃后Qxf8+！将军，引诱黑王来吃。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxf8",
+      "popup": "黑王Kxf8吃后，走出原位。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Re8+",
+      "popup": "白车Re8+将军！逼黑王退回g7。",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg7",
+      "popup": "黑王被迫Kg7，退回原处。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rg8#",
+      "popup": "白车Rg8#，阿拉伯杀！马封逃格，车将死黑王。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

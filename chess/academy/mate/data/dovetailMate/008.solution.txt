@@ -1,0 +1,7 @@
+1. Rd8+ Qxd8
+2. Qe6+ Kh7
+3. Rxh6+ gxh6
+4. Qf7#
+# END
+# mate_dovetailMate_L1-008（燕尾杀）
+# 解法 1

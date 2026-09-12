@@ -1,0 +1,5 @@
+1. fxg5+ Kg6
+2. Rg8#
+# END
+# mate_hookMate_L1-003（钩杀）
+# 解法 1

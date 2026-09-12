@@ -1,0 +1,27 @@
+{
+  "game_id": "mate_anastasia_L1-001",
+  "description": "安娜斯塔西亚杀：1步，车直接将死角落王",
+  "intro": {
+    "flash_squares": ["h8", "h5"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：王被困在角落，马封住内侧逃格，车沿边线一击致命。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rh5#，车控制整条h线，黑王被困h8角落——马挡g8，兵挡g7，无处可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rh5#",
+      "popup": "白车Rh5#！沿h线直插，将死黑王。王在h8角落：g8被马封住，g7被己方兵堵死，h7被车控制，无路可逃。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

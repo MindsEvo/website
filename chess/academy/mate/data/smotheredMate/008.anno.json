@@ -1,0 +1,84 @@
+{
+  "game_id": "mate_smotheredMate_L1-008",
+  "description": "黑先闷杀：马跳g4布局，弃后引白后，马踏f2",
+  "intro": {
+    "flash_squares": ["h6", "h4", "h1", "g1"],
+    "popup": "💡 <b>黑先闷杀</b>：黑马在h6，黑后在h4，白王在h1，如何布局后弃后闷杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：先跳马g4威胁f2，弃后引白后到h2，马踏f2——白王被自己的车兵象团团困死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ng4",
+      "popup": "黑马Ng4！马跳到g4，同时威胁Nxf2#和Nxh2，白方必须应对。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f2"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g4", "to": "f2", "color": "#FF4444CC"},
+        {"from": "g4", "to": "h2", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qf4",
+      "popup": "白后Qf4，白方希望防守h2的白象，为吃回黑后做准备。",
+      "highlights": [
+        {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "f4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxh2+",
+      "popup": "黑后Qxh2+弃后将军！吃掉白象，将军白王h1，强迫白后吃回封锁h2。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "h2", "color": "#4CAF50CC"},
+        {"from": "h2", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Qxh2",
+      "popup": "白后被迫吃回——h2被白后堵死！白王h1：g1有白车，g2有白兵，h2有白后。",
+      "highlights": [
+        {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "h2", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nxf2#",
+      "popup": "黑马Nxf2#闷杀！马吃f2，攻击h1，白王被g1白车、g2白兵、h2白后团团围死——完美闷杀！",
+      "highlights": [
+        {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g4", "to": "f2", "color": "#4CAF50CC"},
+        {"from": "f2", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+白底线空虚， 被闷杀。
+
+# END
+# mate_backRankMate_L1-002（底线杀）
+# 解法 1

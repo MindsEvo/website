@@ -1,0 +1,69 @@
+{
+  "game_id": "mate_anastasia_L1-008",
+  "description": "安娜斯塔西亚杀：黑方精彩攻杀，车将军逐白王，马封路，车将死（黑先）",
+  "intro": {
+    "flash_squares": ["h1", "f1", "h3"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：黑方精彩四步攻杀——车将军驱白王，马跳将军封路，车沿h线绝杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rxf1+逐白王离开h1，Nce3+马将军封住g2，Kh3白王被迫走h3，Rh1#车沿h线将死——黑马封g4、g2，白王在h3无路可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rxf1+",
+      "popup": "黑车Rxf1+！吃掉白车，将军白王（在h1），强迫白王离开h1。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg2",
+      "popup": "白王被迫Kg2，向g2撤退——但这正落入黑方的计划。",
+      "highlights": [
+        {"squares": ["g2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nce3+",
+      "popup": "黑马Nce3+！c2马跳到e3将军，同时封住g2和g4，白王只能去h3。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g2", "g4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kh3",
+      "popup": "白王被迫Kh3，退到h3——g2被马封住，g3有己方兵（g3），只有h3可去。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rh1#",
+      "popup": "黑车Rh1#！从f1横向走到h1，沿h线将死白王。马在e3封g2，马在g4封h2，g3有白兵，h4被马控制，白王在h3绝无逃路。",
+      "highlights": [
+        {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h3"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e3", "g4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

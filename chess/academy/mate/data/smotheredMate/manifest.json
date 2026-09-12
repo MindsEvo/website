@@ -1,0 +1,15 @@
+{
+  "label": "闷杀",
+  "items": [
+    { "id": "001", "fen": "4r1k1/6pp/8/6N1/3Q4/8/6P1/6K1 w - - 0 1" },
+    { "id": "002", "fen": "r5k1/p4Npp/1p2Q3/1qpp2B1/2b5/2P5/P4PPP/4R1K1 w - - 0 1" },
+    { "id": "003", "fen": "r2q2rk/pp4bp/2p1n1b1/3pPpN1/3P1P1Q/1P6/PB4BP/R4RK1 w - - 0 1" },
+    { "id": "004", "fen": "3r3k/pbq3p1/1p1b1n1p/5Q1P/3n3N/P7/BP3PP1/2B1R1K1 w - - 0 1" },
+    { "id": "005", "fen": "3r2k1/p4rPp/1b1q3Q/n1p1pP2/1p6/3B1NR1/P4P1P/6RK w - - 0 1" },
+    { "id": "006", "fen": "r4rk1/1b3p1p/pp2p3/2b1B1p1/P4P2/1P1Bq3/4QRPP/R5K1 w - - 0 1" },
+    { "id": "007", "fen": "r4rk1/p7/1q2b2p/3p1pp1/5p2/8/PPQN1nPP/R1B2RK1 b - - 0 1" },
+    { "id": "008", "fen": "7k/6pp/3P3n/8/7q/8/3Q1PPB/6RK b - - 0 1" },
+    { "id": "009", "fen": "rr4k1/6pp/2Q5/3KN3/8/q7/8/8 w - - 0 1" },
+    { "id": "010", "fen": "5kr1/ppp1r1pR/1q1p1p2/1b3P1B/4P3/1Q6/PPP3P1/1K5R w - - 0 1" }
+  ]
+}

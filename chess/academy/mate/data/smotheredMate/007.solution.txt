@@ -1,0 +1,6 @@
+... Nh3+
+2. Kh1 Qg1+
+3. Rxg1 Nf2#
+# END
+# mate_smotheredMate_L1-007（闷杀）
+# 解法 1

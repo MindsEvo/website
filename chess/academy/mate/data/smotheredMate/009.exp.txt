@@ -1,0 +1,5 @@
+非常经典的闷杀思路！
+
+# END
+# mate_smotheredMate_L1-009（闷杀）
+# 解法 1

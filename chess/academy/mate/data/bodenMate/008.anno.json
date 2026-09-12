@@ -1,0 +1,67 @@
+{
+  "game_id": "mate_bodenMate_L1-008",
+  "description": "博登杀：黑先，隐蔽兵进，弃后，双象交叉将死白王",
+  "intro": {
+    "flash_squares": ["c1"],
+    "popup": "💡 <b>博登杀</b>：黑先！黑兵d5是非常隐蔽的一招，为象闪开进攻路线，紧接着弃后形成博登杀，非常精彩！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：d5隐蔽闪让，Bxd5后Qxc3+弃后引兵，Ba3#双象交叉将死白王。黑方的隐蔽手法极具突然性。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "d5",
+      "popup": "黑兵d5！隐蔽的一步——为象闪开进攻路线，同时邀请白象来吃。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxd5",
+      "popup": "白象Bxd5吃兵，落入陷阱。",
+      "highlights": [
+        {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxc3+",
+      "popup": "黑后弃后Qxc3+！将军，引诱白兵至c3，打开对角线。",
+      "highlights": [
+        {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "bxc3",
+      "popup": "白兵bxc3被迫吃后，b2格清空，博登杀对角线打开。",
+      "highlights": [
+        {"squares": ["c3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ba3#",
+      "popup": "黑象Ba3#，博登杀！双象交叉将死白王，精彩的隐蔽组合！",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

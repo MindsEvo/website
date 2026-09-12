@@ -1,0 +1,81 @@
+{
+  "game_id": "mate_backRankMate_L1-005",
+  "description": "白方弃后换车，双车连续将军完成底线杀",
+  "intro": {
+    "flash_squares": ["g8", "a8", "b8", "d4", "d1", "f4"],
+    "popup": "💡 <b>底线杀</b>：黑王在g8，黑双车守底线（a8、b8）。白后在f4、双车在d4和d1。如何打开底线？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxb8+弃后迫Rxb8，再Rd8+迫Rxd8，Rxd8#——连续弃子换车，将车诱入封死的底线格。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxb8+",
+      "popup": "白后Qxb8+！弃后吃车将军，黑方必须用a8车应将。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "b8", "color": "#4CAF50CC"},
+        {"from": "b8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxb8",
+      "popup": "黑车a8吃后——b8现在只剩一个黑车。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "b8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rd8+",
+      "popup": "白车Rd8+！将军，黑车必须到d8挡。底线仅剩一个格子。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "d8", "color": "#4CAF50CC"},
+        {"from": "d8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxd8",
+      "popup": "黑车b8到d8挡将——底线现在只有黑车，被白车钉死。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxd8#",
+      "popup": "Rxd8#！白车吃掉最后一个守卫，将死黑王。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

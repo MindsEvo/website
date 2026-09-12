@@ -1,0 +1,5 @@
+1. Qxc6+ bxc6
+2. Ba6#
+# END
+# mate_bodenMate_L1-001（博登杀）
+# 解法 1

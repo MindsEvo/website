@@ -1,0 +1,67 @@
+{
+  "game_id": "mate_arabianMate_L1-008",
+  "description": "阿拉伯杀：白王主动走位，车将军驱王，Rh8#将死",
+  "intro": {
+    "flash_squares": ["h7"],
+    "popup": "💡 <b>阿拉伯杀</b>：精彩有趣的阿拉伯杀！白王先主动走位，创造条件，再车将军驱王至角落将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：精彩有趣的阿拉伯杀。Kf6走位，Rxh5+将军驱王，Rh8#完成车马角落将杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kf6",
+      "popup": "白王Kf6主动走位！为车将军后配合马封杀创造条件。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rg2",
+      "popup": "黑车Rg2，试图反击。",
+      "highlights": [
+        {"squares": ["g2"], "color": "#E5393555", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxh5+",
+      "popup": "白车Rxh5+将军！驱逐黑王走向角落。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王Kg8被迫退入角落。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rh8#",
+      "popup": "白车Rh8#，阿拉伯杀！车控h线，马封逃格，王困在角落被将死。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

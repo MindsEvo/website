@@ -1,0 +1,7 @@
+1. Rh3+ Kg8
+2. Be6+ Kf8
+3. Qxf6+ gxf6
+4. Bh6#
+# END
+# mate_bodenMate_L1-007（博登杀）
+# 解法 1

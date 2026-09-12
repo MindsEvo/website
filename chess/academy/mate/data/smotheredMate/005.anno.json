@@ -1,0 +1,132 @@
+{
+  "game_id": "mate_smotheredMate_L1-005",
+  "description": "安德森闷杀：弃后、闪将、弃象、车将闷杀",
+  "intro": {
+    "flash_squares": ["h6", "d3", "g3", "g8"],
+    "popup": "💡 <b>安德森闷杀</b>：白后在h6，白象在d3，白车在g3，如何用连续弃子将死黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃后引王入险，兵前进闪将，弃象再度引入，车将连环闷杀——象后配合的安德森闷杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxh7+",
+      "popup": "白后Qxh7+弃后将军！逼迫黑王吃后进入h7。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "h7", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxh7",
+      "popup": "黑王吃后来到h7——已入陷阱！",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "f6+",
+      "popup": "兵f6+闪将！兵前进，揭开白象d3对黑王h7的斜线将军——发现将！",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f5", "to": "f6", "color": "#4CAF50CC"},
+        {"from": "d3", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王被迫退回g8。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bh7+",
+      "popup": "白象Bh7+再度弃子将军！象移到h7检查黑王在g8——逼王再吃象。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kxh7",
+      "popup": "黑王吃象再到h7——连续引入，王无处可逃！",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Rh3+",
+      "popup": "白车Rh3+将军！沿h线上升攻击黑王h7，逼王返回g8。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g3", "to": "h3", "color": "#4CAF50CC"},
+        {"from": "h3", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Kg8",
+      "popup": "黑王再次退回g8——最后一步将杀已到！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Rh8#",
+      "popup": "白车Rh8#闷杀！车到h8将军，g7有白兵，f8/h7被车封，黑王无路可逃——安德森闷杀完成！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h3", "to": "h8", "color": "#4CAF50CC"},
+        {"from": "h8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

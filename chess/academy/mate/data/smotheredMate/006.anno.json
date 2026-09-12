@@ -1,0 +1,83 @@
+{
+  "game_id": "mate_smotheredMate_L1-006",
+  "description": "安德森闷杀：弃象引王，后将军，后到h8绝杀",
+  "intro": {
+    "flash_squares": ["d3", "e2", "g8", "f7"],
+    "popup": "💡 <b>安德森闷杀</b>：白象在d3，白后在e2，黑王在g8，如何三步完成闷杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Bxh7+弃象引王，Qh5+逼王返回，Qh8#后到h8绝杀——黑兵f7是关键屏障！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bxh7+",
+      "popup": "白象Bxh7+弃象将军！象吃h7兵后攻击黑王g8，逼王入h7。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d3", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxh7",
+      "popup": "黑王吃象来到h7——引入成功！",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qh5+",
+      "popup": "白后Qh5+沿h线将军！逼迫黑王从h7退回g8——逃无可逃。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "h5", "color": "#4CAF50CC"},
+        {"from": "h5", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王退回g8——最后的陷阱已经合拢！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qh8#",
+      "popup": "白后Qh8#闷杀！后到h8，攻击g8和h7，f7黑兵挡路，g7空格被后斜线封——黑王窒息！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "h8", "color": "#4CAF50CC"},
+        {"from": "h8", "to": "g8", "color": "#FF4444CC"},
+        {"from": "h8", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "game_id": "mate_bodenMate_L1-005",
+  "description": "博登杀：弃马引象，弃后引兵，双象交叉将死",
+  "intro": {
+    "flash_squares": ["c8"],
+    "popup": "💡 <b>博登杀</b>：精彩的多步组合！先弃马引离黑象，再弃后引离黑兵，最终形成博登杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：精彩的弃马引离黑象，弃后引离黑兵，形成博登杀。每步弃子都是为最终的双象交叉服务。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nxa7+",
+      "popup": "白马弃马Nxa7+！将军，引诱黑象来吃，清除a7格障碍。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxa7",
+      "popup": "黑象Bxa7吃马，离开原位，b8-a7对角线被占据。",
+      "highlights": [
+        {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxc6+",
+      "popup": "白后弃后Qxc6+！将军，引诱黑兵至c6，打开a6-c8对角线。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "bxc6",
+      "popup": "黑兵bxc6被迫吃后，b7格清空，对角线完全打开。",
+      "highlights": [
+        {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Ba6#",
+      "popup": "白象Ba6#，博登杀！两步弃子铺垫，双象交叉将死，精彩！",
+      "highlights": [
+        {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

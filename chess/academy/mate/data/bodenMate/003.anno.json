@@ -1,0 +1,27 @@
+{
+  "game_id": "mate_bodenMate_L1-003",
+  "description": "博登杀：最简直接示例，双象交叉将死",
+  "intro": {
+    "flash_squares": ["c8"],
+    "popup": "💡 <b>博登杀</b>：最简单直接的示例——黑王逃路被己方车和马挡住，白方双象交叉一步将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：黑王逃格被己方车和马封死，Ba6#一步完成博登杀。熟悉这种双象交叉的基本形态。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ba6#",
+      "popup": "白象Ba6#，博登杀！黑车和马挡住王的逃路，双象从两条对角线交叉将死。",
+      "highlights": [
+        {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+... Rxf1+
+2. Kg2 Nce3+
+3. Kh3 Rh1#
+# END
+# mate_anastasia_L1-008（安娜斯塔西亚杀）
+# 解法 1

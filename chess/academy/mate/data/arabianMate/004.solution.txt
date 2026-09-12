@@ -1,0 +1,5 @@
+1. Rb8+ Kg7
+2. Rg8#
+# END
+# mate_arabianMate_L1-004（阿拉伯杀）
+# 解法 1

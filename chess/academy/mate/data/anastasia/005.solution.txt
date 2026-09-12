@@ -1,0 +1,5 @@
+... Qh5+
+2. gxh5 Rh4#
+# END
+# mate_anastasia_L1-005（安娜斯塔西亚杀）
+# 解法 1

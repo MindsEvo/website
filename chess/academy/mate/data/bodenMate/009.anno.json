@@ -1,0 +1,37 @@
+{
+  "game_id": "mate_bodenMate_L1-009",
+  "description": "博登杀：白方无意间吃马，黑象突然将死",
+  "intro": {
+    "flash_squares": ["c1"],
+    "popup": "💡 <b>博登杀</b>：白方没有意识到有致命的博登杀——突然直接被绝杀，要多熟悉这种局面和结构！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：白方Bxg8吃马，移走了对角线上的保护棋子，黑象Ba3#瞬间完成博登杀。要多熟悉这种结构！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Bxg8",
+      "popup": "白象Bxg8吃马，但这步棋移走了对角线上的关键棋子，给黑方创造了博登杀条件。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Ba3#",
+      "popup": "黑象Ba3#，博登杀！突然一击，白王被双象交叉将死，猝不及防！",
+      "highlights": [
+        {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["c1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

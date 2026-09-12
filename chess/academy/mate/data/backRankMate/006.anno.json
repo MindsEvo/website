@@ -1,0 +1,56 @@
+{
+  "game_id": "mate_backRankMate_L1-006",
+  "description": "白方弃后透视将军，引黑车到f8，车完成底线杀",
+  "intro": {
+    "flash_squares": ["h8", "c5", "f1", "f2"],
+    "popup": "💡 <b>底线杀</b>：黑王在h8，白后在c5，白车在f1和b1。黑方双车在f2和d2守底线。如何一击制胜？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf8+弃后！黑车吃后到f8，恰好封死了逃路，Rxf8#——弃后利用透视（车在f1后面），一步完成底线杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf8+",
+      "popup": "白后Qf8+！弃后将军，黑车必须到f8吃后——f1白车的路已经打开。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c5", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "h8", "color": "#FF4444CC"},
+        {"from": "f1", "to": "f8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Rxf8",
+      "popup": "黑车被迫到f8吃后——f列底线瞬间被白车控制。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f2", "to": "f8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rxf8#",
+      "popup": "Rxf8#！白车吃车将死，黑王在h8毫无出路。弃后透视底线杀完成！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

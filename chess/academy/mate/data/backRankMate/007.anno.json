@@ -1,0 +1,92 @@
+{
+  "game_id": "mate_backRankMate_L1-007",
+  "description": "白方利用底线杀威胁逼迫黑后疲于应付，车换后获优势",
+  "intro": {
+    "flash_squares": ["g8", "c8", "e8", "d4", "e2", "e1"],
+    "popup": "💡 <b>底线弱点</b>：黑王在g8，底线有双车（c8、e8），看似安全。但白方如何利用底线将杀的威胁，迫使黑方处处受制？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：白方用Qg4、Qc4等反复调动，迫使黑后守底线。牺牲a兵诱后离位，Re4换掉黑后——底线威胁是整个策略的核心。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qg4",
+      "popup": "白后Qg4！瞄准g7，同时威胁底线。黑方必须认真应对。",
+      "highlights": [
+        {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d4", "to": "g4", "color": "#4CAF50CC"},
+        {"from": "g4", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "a4",
+      "popup": "关键！白方推a4兵，引诱黑后离开守底线的位置。",
+      "highlights": [
+        {"squares": ["a4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a2", "to": "a4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qxa4",
+      "popup": "黑后吃兵！但这让黑方底线暂时无后防守。",
+      "highlights": [
+        {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0},
+        {"squares": ["e8", "c8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a6", "to": "a4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Re4",
+      "popup": "白车Re4！攻击黑后，黑方只能用后吃车——这正是白方的目的！",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e2", "to": "e4", "color": "#4CAF50CC"},
+        {"from": "e4", "to": "a4", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Qxe4",
+      "popup": "黑后吃车——但白方用车换后，获得巨大材料优势。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a4", "to": "e4", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 9,
+      "move": "Rxe4",
+      "popup": "Rxe4！白方用车换后，底线威胁始终是推动黑方失误的关键。",
+      "highlights": [
+        {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e1", "to": "e4", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

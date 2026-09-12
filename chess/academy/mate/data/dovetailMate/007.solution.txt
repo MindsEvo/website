@@ -1,0 +1,5 @@
+1. Qxg7+ Kxf5
+2. Qg4#
+# END
+# mate_dovetailMate_L1-007（燕尾杀）
+# 解法 1

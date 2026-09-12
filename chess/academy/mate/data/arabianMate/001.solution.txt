@@ -1,0 +1,4 @@
+1. Rh7#
+# END
+# mate_arabianMate_L1-001（阿拉伯杀）
+# 解法 1

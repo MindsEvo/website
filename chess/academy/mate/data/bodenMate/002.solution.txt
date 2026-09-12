@@ -1,0 +1,4 @@
+1. Bh6#
+# END
+# mate_bodenMate_L1-002（博登杀）
+# 解法 1

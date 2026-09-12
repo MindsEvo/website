@@ -1,0 +1,47 @@
+{
+  "game_id": "mate_arabianMate_L1-004",
+  "description": "阿拉伯杀：将军驱王，Rg8#将死",
+  "intro": {
+    "flash_squares": ["h8"],
+    "popup": "💡 <b>阿拉伯杀</b>：用将军把王从角落驱赶到另一格，再完成将杀。解说提示：此局也具有钩杀特征，了解两者区别即可。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：本局兼具钩杀与阿拉伯杀特征，知道差别即可，关键是掌握这类车马封锁的棋形。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rb8+",
+      "popup": "白车Rb8+将军！驱逐黑王，为下一步做准备。",
+      "highlights": [
+        {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg7",
+      "popup": "黑王被迫走Kg7，离开角落。",
+      "highlights": [
+        {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg8#",
+      "popup": "白车Rg8#，将杀！车控g线，马封逃格，黑王无处可逃。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

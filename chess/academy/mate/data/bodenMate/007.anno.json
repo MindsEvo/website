@@ -1,0 +1,87 @@
+{
+  "game_id": "mate_bodenMate_L1-007",
+  "description": "博登杀：精彩多步组合，车将军逼王，弃象弃后，双象交叉将死",
+  "intro": {
+    "flash_squares": ["h8"],
+    "popup": "💡 <b>博登杀</b>：非常精彩的组合战术！车将军驱王，弃象再弃后，最终双象交叉将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rh3+驱王，Be6+将军，Qxf6+弃后引兵，Bh6#双象博登杀。多步铺垫，一招致命。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rh3+",
+      "popup": "白车Rh3+将军！驱逐黑王离开h8。",
+      "highlights": [
+        {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg8",
+      "popup": "黑王Kg8被迫走开。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Be6+",
+      "popup": "白象Be6+将军！继续逼迫黑王移动。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf8",
+      "popup": "黑王Kf8，再次被迫移动。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxf6+",
+      "popup": "白后弃后Qxf6+！将军，引诱黑兵至f6，为双象清开对角线。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "gxf6",
+      "popup": "黑兵gxf6被迫吃后，g7格清空，博登杀对角线全部打开。",
+      "highlights": [
+        {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Bh6#",
+      "popup": "白象Bh6#，博登杀！多步铺垫后双象交叉将死，精彩组合！",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

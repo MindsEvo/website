@@ -1,0 +1,5 @@
+1. Rc8+ Qd8
+2. Rdxd8#
+# END
+# mate_backRankMate_L1-001（底线杀）
+# 解法 1

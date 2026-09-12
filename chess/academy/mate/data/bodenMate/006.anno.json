@@ -1,0 +1,47 @@
+{
+  "game_id": "mate_bodenMate_L1-006",
+  "description": "博登杀：弃后引兵，双象交叉将死黑王e8",
+  "intro": {
+    "flash_squares": ["e8"],
+    "popup": "💡 <b>博登杀</b>：白方突然弃后，形成博登杀，非常精彩！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxe6+弃后引兵，Bg6#双象交叉将死。博登杀的突然性是其最大特点。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxe6+",
+      "popup": "白后弃后Qxe6+！将军，引诱黑兵至e6，打开对角线。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "fxe6",
+      "popup": "黑兵fxe6被迫吃后，f7格清空，双象对角线全部打开。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Bg6#",
+      "popup": "白象Bg6#，博登杀！双象从两条对角线交叉将死黑王。",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

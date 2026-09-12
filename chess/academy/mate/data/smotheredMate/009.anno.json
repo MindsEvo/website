@@ -1,0 +1,133 @@
+{
+  "game_id": "mate_smotheredMate_L1-009",
+  "description": "经典菲利道尔闷杀：白后引路，马双将，弃后，马踏f7",
+  "intro": {
+    "flash_squares": ["c6", "e5", "g8", "a8"],
+    "popup": "💡 <b>经典闷杀</b>：白后在c6，白马在e5，黑王在g8，如何重现经典的菲利道尔闷杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：后逼王入角，马双将驱王来回，弃后引车封路，马踏f7——菲利道尔闷杀的完美演绎！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qe6+",
+      "popup": "白后Qe6+将军！后从c6到e6，斜线攻击黑王g8，逼王躲入h8。",
+      "highlights": [
+        {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c6", "to": "e6", "color": "#4CAF50CC"},
+        {"from": "e6", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王被迫躲入h8角落。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf7+",
+      "popup": "白马Nf7+将军！马从e5跳到f7，攻击h8，逼王回g8。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e5", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kg8",
+      "popup": "黑王回到g8——进退两难的拉锯已开始！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nh6+",
+      "popup": "白马Nh6+双将！马跳h6攻击g8，同时后在e6也攻击g8——双将逼王再入h8。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "g8", "color": "#FF4444CC"},
+        {"from": "e6", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "Kh8",
+      "popup": "黑王再度被迫退入h8——陷阱即将合拢！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Qg8+",
+      "popup": "白后Qg8+精妙弃后！强迫黑车吃后，黑车自堵g8逃路。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "g8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 7,
+      "move": "Rxg8",
+      "popup": "黑车被迫吃后，堵死g8——黑王无路可逃！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 8,
+      "move": "Nf7#",
+      "popup": "白马Nf7#闷杀！g8被黑车封，g7被黑兵封，h7被黑兵封——黑王在h8彻底窒息！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

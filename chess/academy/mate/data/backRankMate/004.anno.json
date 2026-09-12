@@ -1,0 +1,81 @@
+{
+  "game_id": "mate_backRankMate_L1-004",
+  "description": "白后两步将军迫使黑车挡死底线，车完成将杀",
+  "intro": {
+    "flash_squares": ["g8", "a8", "d7", "f1"],
+    "popup": "💡 <b>底线杀</b>：黑王在g8，黑车在a8守底线。白后在d7，白车在f1。如何迫使黑车离开a8、去到被将杀的位置？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qf7+将军逼王到h8，再Qf8+弃后迫使黑车到f8，Rxf8#——弃后引车，底线将杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qf7+",
+      "popup": "白后Qf7+将军！黑王只能逃到h8。",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d7", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王到h8——被赶到角落，退路更少。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qf8+",
+      "popup": "白后Qf8+！弃后将军，黑车必须到f8挡——底线将杀马上到来。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxf8",
+      "popup": "黑车被迫到f8吃后——恰好封死了f线，白车将杀。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "f8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxf8#",
+      "popup": "Rxf8#！白车底线将杀，黑王在h8无路可走。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f1", "to": "f8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+1. Rh7+ Kf8
+2. Rh8+ Ke7
+3. Rxc8 d1=Q
+4. Re8#
+# END
+# mate_hookMate_L1-005（钩杀）
+# 解法 1

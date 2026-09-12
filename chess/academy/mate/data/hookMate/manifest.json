@@ -1,0 +1,11 @@
+{
+  "label": "钩杀",
+  "items": [
+    { "id": "001", "fen": "6R1/1pk5/1N6/2P5/5r2/3n4/5PK1/8 w - - 0 1" },
+    { "id": "002", "fen": "4R3/p4Ppk/1p5p/5P2/8/P1p5/5K2/3q4 w - - 0 1" },
+    { "id": "003", "fen": "7R/5p1p/4pN1k/4P1p1/5PK1/6P1/q1r5/7r w - - 0 1" },
+    { "id": "004", "fen": "4r3/3r4/1k3p2/1bp3pp/4Q1nP/6PP/6K1/5BRR b - - 0 1" },
+    { "id": "005", "fen": "2r5/5pk1/4pNp1/4K1P1/7R/P6P/3pnP2/8 w - - 0 1" },
+    { "id": "006", "fen": "6k1/8/2R4p/p3P1p1/3P1p2/P4NnP/5rP1/7K w - - 1 35" }
+  ]
+}

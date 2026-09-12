@@ -1,0 +1,5 @@
+... Bd4+
+2. Kh1 Rf1#
+# END
+# mate_backRankMate_L1-009（底线杀）
+# 解法 1

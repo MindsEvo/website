@@ -1,0 +1,111 @@
+{
+  "game_id": "mate_hookMate_L1-005",
+  "description": "抢在升变前完成钩杀：车连将，吃车，Re8绝杀",
+  "intro": {
+    "flash_squares": ["h4", "f6", "e5", "c8", "d2"],
+    "popup": "💡 <b>抢先钩杀</b>：白车在h4，白马在f6，白王在e5——黑兵d2即将升变为后，白方如何抢先完成钩杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：连续将军逼走黑王，吃掉黑车清路，Re8#钩杀——在黑兵升变前一步将死！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rh7+",
+      "popup": "白车Rh7+将军！车从h4杀到h7，攻击黑王g7，逼王离开g7逃往f8。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "g7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kf8",
+      "popup": "黑王逃往f8——g8被马封（f6马攻g8），h8被车封。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g7", "to": "f8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh8+",
+      "popup": "白车Rh8+将军！车从h7到h8，沿第8列攻击黑王f8，继续追击。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h8", "color": "#4CAF50CC"},
+        {"from": "h8", "to": "f8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Ke7",
+      "popup": "黑王被迫逃往e7——越来越靠近白王的控制圈！",
+      "highlights": [
+        {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "e7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rxc8",
+      "popup": "白车Rxc8吃掉黑车！车从h8横扫c8，吃掉黑车，同时拉直到c列形成新的控制线。",
+      "highlights": [
+        {"squares": ["c8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "c8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 5,
+      "move": "d1=Q",
+      "popup": "黑兵d2升变为后！但已经太迟——白方下一步就是钩杀。",
+      "highlights": [
+        {"squares": ["d1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d2", "to": "d1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 6,
+      "move": "Re8#",
+      "popup": "白车Re8#钩杀！车从c8移到e8，攻击e7黑王——马守d7、f7、d5等逃格，白王e5封住d5、d6、e4、f4——黑王e7被钩住，即使升变为后也无济于事！",
+      "highlights": [
+        {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c8", "to": "e8", "color": "#4CAF50CC"},
+        {"from": "e8", "to": "e7", "color": "#FF4444CC"},
+        {"from": "f6", "to": "d7", "color": "#FF4444CC"},
+        {"from": "f6", "to": "d5", "color": "#FF4444CC"},
+        {"from": "e5", "to": "d6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

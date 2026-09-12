@@ -1,0 +1,48 @@
+{
+  "game_id": "mate_anastasia_L1-005",
+  "description": "安娜斯塔西亚杀：黑方弃后引离，车将死白王（黑先）",
+  "intro": {
+    "flash_squares": ["h1", "h5", "h4"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：黑方弃后引白兵，黑马封住g1，黑车沿h线将死白王。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qh5+弃后引白兵至h5，gxh5之后Rh4#——黑马在e2封住g1，白王被困h1无处可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qh5+",
+      "popup": "黑后弃后Qh5+！沿h线将白王，引诱白兵来吃，打通黑车入局通道。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "gxh5",
+      "popup": "白兵gxh5被迫吃后，g4格清空，但h线仍在黑车控制之中。",
+      "highlights": [
+        {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh4#",
+      "popup": "黑车Rh4#！安娜斯塔西亚杀！车从e4横向走到h4，沿h线将死白王。黑马在e2封住g1，白兵在g2堵死g2，白王在h1无路可逃。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

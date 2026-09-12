@@ -1,0 +1,37 @@
+{
+  "game_id": "mate_dovetailMate_L1-003",
+  "description": "燕尾杀：白王走入死角，黑后对角线将死",
+  "intro": {
+    "flash_squares": ["d2"],
+    "popup": "💡 <b>燕尾杀</b>：注意白王的位置。黑后将从对角线发动燕尾杀——王被己方两子封住斜向逃格，形如燕尾。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Kc2走入封闭位置，Qd3#完成燕尾杀。棋形与上题类似，多熟悉此形。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Kc2",
+      "popup": "白王走c2，陷入封闭位置，逃格被己方棋子封死。",
+      "highlights": [
+        {"squares": ["c2"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qd3#",
+      "popup": "黑后Qd3#，燕尾杀！王被己方棋子封住，后从对角线将死。",
+      "highlights": [
+        {"squares": ["d3"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

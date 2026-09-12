@@ -1,0 +1,14 @@
+{
+  "label": "燕尾杀",
+  "items": [
+    { "id": "001", "fen": "8/8/2p5/1pk5/7Q/3K4/8/8 w - - 0 1" },
+    { "id": "002", "fen": "8/5p1p/6k1/3Q4/7P/8/q7/6K1 w - - 0 1" },
+    { "id": "003", "fen": "1rkr4/7p/8/8/4Q3/8/5P2/6K1 w - - 0 1" },
+    { "id": "004", "fen": "r2qkr2/ppp4Q/8/4ppb1/2B1N3/3P3P/PP4P1/n2K1R2 w q - 0 1" },
+    { "id": "005", "fen": "3r2k1/5pp1/8/3P3p/4QP2/4R1P1/P3p2P/3q2K1 w - - 2 43" },
+    { "id": "006", "fen": "2rkr3/pp4Q1/4p2p/3pP3/3N4/2P1R3/Pq4PP/5R1K w - - 0 1" },
+    { "id": "007", "fen": "8/3Q2p1/3p1pkp/4qN2/8/4p2P/6P1/7K w - - 0 1" },
+    { "id": "008", "fen": "r1q3kr/1p4p1/p1p2R1p/8/8/1PP1Q2P/5PP1/3R2K1 w - - 0 1" },
+    { "id": "009", "fen": "r3q1kr/ppp4p/6nQ/7P/3PPRb1/5R2/PPP3P1/6K1 w - - 0 1" }
+  ]
+}

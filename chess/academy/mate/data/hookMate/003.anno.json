@@ -1,0 +1,62 @@
+{
+  "game_id": "mate_hookMate_L1-003",
+  "description": "兵引离后钩杀：吃兵将军驱王，车踏g8将死",
+  "intro": {
+    "flash_squares": ["h8", "f6", "f4", "g4", "h6"],
+    "popup": "💡 <b>引离钩杀</b>：白车在h8，白马在f6，白兵在f4，白王在g4——如何先将军引走黑王，再钩杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：fxg5+兵将军引王离开h6，Rg8#车马兵王构成钩形将死——白王在g4也是钩杀拼图的一部分！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "fxg5+",
+      "popup": "白兵fxg5+将军！兵吃掉g5黑兵，新兵在g5攻击h6，逼迫黑王离开h6。",
+      "highlights": [
+        {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f4", "to": "g5", "color": "#4CAF50CC"},
+        {"from": "g5", "to": "h6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg6",
+      "popup": "黑王逃往g6——正中白方下怀！",
+      "highlights": [
+        {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "g6", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rg8#",
+      "popup": "白车Rg8#钩杀！车从h8到g8沿g列将军，马守h5/h7/f7/f5，兵守h6，白王封f5——黑王g6四面被钩！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h8", "to": "g8", "color": "#4CAF50CC"},
+        {"from": "g8", "to": "g6", "color": "#FF4444CC"},
+        {"from": "f6", "to": "h5", "color": "#FF4444CC"},
+        {"from": "f6", "to": "h7", "color": "#FF4444CC"},
+        {"from": "g5", "to": "h6", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

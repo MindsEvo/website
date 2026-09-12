@@ -1,0 +1,6 @@
+1. Qxg8+ Kxg8
+2. Rh8+ Kxh8
+3. Bf7#
+# END
+# mate_smotheredMate_L1-010（闷杀）
+# 解法 1

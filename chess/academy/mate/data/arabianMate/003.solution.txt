@@ -1,0 +1,5 @@
+1. Qxh6+ gxh6
+2. Rh7#
+# END
+# mate_arabianMate_L1-003（阿拉伯杀）
+# 解法 1

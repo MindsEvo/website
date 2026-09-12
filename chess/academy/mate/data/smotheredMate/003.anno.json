@@ -1,0 +1,58 @@
+{
+  "game_id": "mate_smotheredMate_L1-003",
+  "description": "弃后引入：白后弃子，黑象堵死h7，马踏f7闷杀",
+  "intro": {
+    "flash_squares": ["h4", "g5", "h8", "g7"],
+    "popup": "💡 <b>弃后引入闷杀</b>：白后在h4，白马在g5，如何用两步将死角落的黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qxh7+弃后吸引黑象到h7，黑象自堵逃路，Nf7#马踏闷杀——黑象成了帮凶！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxh7+",
+      "popup": "白后Qxh7+弃后将军！强迫黑象或其他子吃后，堵塞黑王逃路。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h4", "to": "h7", "color": "#4CAF50CC"},
+        {"from": "h7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Bxh7",
+      "popup": "黑象被迫吃后——却堵死了h7！黑王g7、h7两路全无，只剩g8被马攻击。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g6", "to": "h7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Nf7#",
+      "popup": "白马Nf7#闷杀！马攻击h8，g8被黑车占，g7被黑象占，h7被黑象占——黑王被自己的棋子团团围死！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g5", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "game_id": "mate_dovetailMate_L1-006",
+  "description": "燕尾杀：兵吃子开路，黑后对角线将死",
+  "intro": {
+    "flash_squares": ["g2"],
+    "popup": "💡 <b>燕尾杀</b>：注意白王的位置。白兵吃子后，黑后将从对角线发动燕尾杀。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：fxe3吃子开路，Qf1#完成燕尾杀。兵的吃子为对角线将杀创造了条件。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "fxe3",
+      "popup": "白兵fxe3，吃掉黑马，为将杀创造条件。",
+      "highlights": [
+        {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qf1#",
+      "popup": "黑后Qf1#，燕尾杀！王被己方棋子封死，后沿对角线将死。",
+      "highlights": [
+        {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

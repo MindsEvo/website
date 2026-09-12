@@ -1,0 +1,68 @@
+{
+  "game_id": "mate_anastasia_L1-007",
+  "description": "安娜斯塔西亚杀：马将军驱王入角，弃后引入，车将死",
+  "intro": {
+    "flash_squares": ["e7", "h7", "h4"],
+    "popup": "💡 <b>安娜斯塔西亚杀</b>：熟悉这一经典攻杀思路——马将军驱王入角，弃后引王至h7，车沿h线将死。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Ne7+驱王入角，Qxh7+弃后引黑王至h7，Rh4#车将死——马封g8、g6，黑王在h7无处可逃。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Ne7+",
+      "popup": "白马Ne7+！将军，封住g8和g6两个逃格，黑王只能退到h8。",
+      "highlights": [
+        {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8", "g6"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王被迫退到h8角落，f8有己方车，g7有己方兵，只有h8可去。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxh7+",
+      "popup": "白后弃后Qxh7+！对角线斜捉h7兵将军，引诱黑王来吃，把王拉到h7。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kxh7",
+      "popup": "黑王Kxh7被迫吃后，走到h7，已进入白方的杀局陷阱。",
+      "highlights": [
+        {"squares": ["h7"], "color": "#E5393555", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rh4#",
+      "popup": "白车Rh4#！从c4横向走到h4，沿h线将死黑王。马封g8、g6，兵挡g7，h线被车锁死，黑王在h7无处可逃。",
+      "highlights": [
+        {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [],
+      "concept_lines": []
+    }
+  ]
+}

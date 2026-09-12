@@ -1,0 +1,84 @@
+{
+  "game_id": "mate_smotheredMate_L1-010",
+  "description": "弃后弃车引入：象踏f7闪将绝杀",
+  "intro": {
+    "flash_squares": ["b3", "h7", "h5", "f8"],
+    "popup": "💡 <b>弃后弃车引入</b>：白后在b3，白车在h7，白象在h5，如何用三步弃子闷杀黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：弃后引王到g8，弃车引王到h8，象踏f7发现将——白车h1封锁h线，黑王g7被黑兵封，闷杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qxg8+",
+      "popup": "白后Qxg8+弃后将军！后吃掉g8黑车，攻击f8黑王，逼王吃后到g8。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "g8", "color": "#4CAF50CC"},
+        {"from": "g8", "to": "f8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kxg8",
+      "popup": "黑王吃后来到g8——第一步引入成功！",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rh8+",
+      "popup": "白车Rh8+弃车将军！车从h7到h8，攻击g8黑王，逼王吃车来到h8。",
+      "highlights": [
+        {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "h8", "color": "#4CAF50CC"},
+        {"from": "h8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kxh8",
+      "popup": "黑王吃车来到h8角落——第二步引入成功，黑王已无路可逃！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Bf7#",
+      "popup": "白象Bf7#发现将绝杀！象从h5移到f7，揭开白车h1对h8的攻击，象又封锁g8——黑王g7被黑兵封，四面无路，闷杀！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h5", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "h1", "to": "h8", "color": "#FF4444CC"},
+        {"from": "f7", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

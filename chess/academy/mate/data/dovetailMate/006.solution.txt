@@ -1,0 +1,7 @@
+1. Nxe6+ Rxe6
+2. Rf8+ Re8
+3. Qf6+ Kc7
+4. Qd6#
+# END
+# mate_dovetailMate_L1-006（燕尾杀）
+# 解法 1

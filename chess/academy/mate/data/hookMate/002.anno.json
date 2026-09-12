@@ -1,0 +1,83 @@
+{
+  "game_id": "mate_hookMate_L1-002",
+  "description": "兵升变马钩杀：升马闪将，车踏f8将死",
+  "intro": {
+    "flash_squares": ["f7", "e8", "f5", "h7"],
+    "popup": "💡 <b>升变马钩杀</b>：白兵在f7，白车在e8，白兵在f5，黑王在h7——兵升变哪种子才能组成钩杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：升变为马！f8=N+驱王，Ng6+闪将，Rf8#车马兵构成钩形将死——升变为后反而无法完成钩杀！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "f8=N+",
+      "popup": "白兵f7升变为马！f8=N+，马攻击h7，逼迫黑王离开h7移往g8。",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "h7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kg8",
+      "popup": "黑王被迫退到g8。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h7", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Ng6+",
+      "popup": "白马Ng6+发现将！马从f8跳到g6，让开f8格，揭开白车e8沿第8列攻击g8的线路——发现将！",
+      "highlights": [
+        {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f8", "to": "g6", "color": "#4CAF50CC"},
+        {"from": "e8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Kf7",
+      "popup": "黑王逃往f7——进入钩杀的最后陷阱！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "f7", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Rf8#",
+      "popup": "白车Rf8#钩杀！车到f8，马在g6，兵在f5——三者构成钩形，黑王f7被围，e6/e8/g8被车封，g7/h5/h7被马封，g6/e6被兵封——无路可逃！",
+      "highlights": [
+        {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["f7"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e8", "to": "f8", "color": "#4CAF50CC"},
+        {"from": "f8", "to": "f7", "color": "#FF4444CC"},
+        {"from": "g6", "to": "f7", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

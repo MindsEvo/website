@@ -1,0 +1,7 @@
+1. Ng6+ Kh7
+2. Nf8+ Kh8
+3. Qh7+ Nxh7
+4. Ng6#
+# END
+# mate_smotheredMate_L1-004（闷杀）
+# 解法 1

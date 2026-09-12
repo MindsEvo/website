@@ -1,0 +1,5 @@
+1. Qxh7+ Bxh7
+2. Nf7#
+# END
+# mate_smotheredMate_L1-003（闷杀）
+# 解法 1

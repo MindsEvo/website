@@ -1,0 +1,56 @@
+{
+  "game_id": "mate_backRankMate_L1-001",
+  "description": "白方双车引后到底线，完成底线杀",
+  "intro": {
+    "flash_squares": ["g8", "c1", "d1", "f6"],
+    "popup": "💡 <b>底线杀</b>：白方双车在底线，黑王在g8被己方兵封死。黑后在f6守着底线。如何迫使黑后离开，完成将杀？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Rc8+！引诱黑后移到d8挡将，随即Rdxd8#——利用后被迫占据底线的空格，实现双车底线将杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Rc8+",
+      "popup": "白车Rc8+！将军迫使黑后移到d8挡将——这正是白方的目的。",
+      "highlights": [
+        {"squares": ["c8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c1", "to": "c8", "color": "#4CAF50CC"},
+        {"from": "c8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Qd8",
+      "popup": "黑后被迫到d8挡将——底线现在有两个白车的攻击目标。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f6", "to": "d8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Rdxd8#",
+      "popup": "Rdxd8#！d车吃后将死——黑王被己方兵封死，底线无处可逃。",
+      "highlights": [
+        {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "d1", "to": "d8", "color": "#4CAF50CC"},
+        {"from": "c8", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "game_id": "mate_backRankMate_L1-002",
+  "description": "黑方利用白底线空虚，逐步迫使白子堵死自己，完成底线杀",
+  "intro": {
+    "flash_squares": ["h1", "e4", "b3", "e6"],
+    "popup": "💡 <b>底线杀</b>：白王在h1，底线空虚。黑后在e4，白马在b3、白车在e6。黑方如何利用底线弱点将死白王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Qb1+迫马到c1，Qxc1+再迫车到e1，Qxe1#——白方自己的棋子一步步封死了底线退路，黑后最终将杀。",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Qb1+",
+      "popup": "黑后Qb1+！将军，白王无法移动，只能用马挡在c1。",
+      "highlights": [
+        {"squares": ["b1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e4", "to": "b1", "color": "#4CAF50CC"},
+        {"from": "b1", "to": "h1", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Nc1",
+      "popup": "白马被迫到c1挡将——底线越来越拥挤。",
+      "highlights": [
+        {"squares": ["c1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b3", "to": "c1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qxc1+",
+      "popup": "黑后吃马将军！白车被迫到e1挡——底线彻底封死。",
+      "highlights": [
+        {"squares": ["c1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "b1", "to": "c1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Re1",
+      "popup": "白车到e1挡将——三个白子全部堆在底线，白王无路可走。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "e1", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Qxe1#",
+      "popup": "Qxe1#！黑后吃车将死，白底线已无任何退路。",
+      "highlights": [
+        {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "c1", "to": "e1", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}

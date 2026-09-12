@@ -1,0 +1,80 @@
+{
+  "game_id": "mate_smotheredMate_L1-002",
+  "description": "经典闷杀：马跳h6、弃后g8、马踏f7",
+  "intro": {
+    "flash_squares": ["f7", "e6", "g8", "a8"],
+    "popup": "💡 <b>闷杀</b>：白马在f7，白后在e6，如何用三步闷杀黑王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "✅ <b>要点</b>：Nh6+逼王入角，Qg8+弃后引车，Nf7#马踏闷杀——三步精准组合！",
+    "voice": true
+  },
+  "board_always": null,
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nh6+",
+      "popup": "白马Nh6+将军！马从f7跳到h6，攻击g8，逼迫黑王躲到h8角落。",
+      "highlights": [
+        {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "f7", "to": "h6", "color": "#4CAF50CC"},
+        {"from": "h6", "to": "g8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 1,
+      "move": "Kh8",
+      "popup": "黑王退入h8角落——闷杀的前奏！",
+      "highlights": [
+        {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "g8", "to": "h8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 2,
+      "move": "Qg8+",
+      "popup": "白后Qg8+精妙弃后！强迫黑车吃后，车堵死g8，黑王无路可逃。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "e6", "to": "g8", "color": "#4CAF50CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 3,
+      "move": "Rxg8",
+      "popup": "黑车被迫吃后——g8被堵死！黑王彻底被自己的棋子围住。",
+      "highlights": [
+        {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "a8", "to": "g8", "color": "#E53935CC"}
+      ],
+      "concept_lines": []
+    },
+    {
+      "index": 4,
+      "move": "Nf7#",
+      "popup": "白马Nf7#闷杀！黑王在h8，g8有黑车，g7有黑兵，h7有黑兵——四面楚歌，闷杀成功！",
+      "highlights": [
+        {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
+        {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
+      ],
+      "concept_arrows": [
+        {"from": "h6", "to": "f7", "color": "#4CAF50CC"},
+        {"from": "f7", "to": "h8", "color": "#FF4444CC"}
+      ],
+      "concept_lines": []
+    }
+  ]
+}
