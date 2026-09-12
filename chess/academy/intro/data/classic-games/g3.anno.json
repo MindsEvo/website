@@ -1,0 +1,477 @@
+{
+  "game_id": "G3_immortal_game",
+  "description": "不朽之局 — 45步，完整注释",
+  "intro": {
+    "flash_squares": [],
+    "popup": "不朽之局， 这局棋被誉为有史以来最精彩的对局之一！白方通过弃掉两个车、一个象和后，入局取胜！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "白方用惊人的子力牺牲，最终用两个马和一个象将死了黑王。这局棋展示了国际象棋的无穷魅力！",
+    "voice": true
+  },
+  "board_always": {},
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4</b> — 王前兵开局",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5</b> — 对称回应",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "f4",
+      "popup": "⬆️ <b>2.f4 — 王翼弃兵！</b><br>这是著名的【王翼弃兵开局】，白方主动献出f4兵来换取更快的发展速度。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "exf4",
+      "popup": "⬇️ <b>2...exf4 — 接受弃兵</b><br>黑方笑纳这个兵，但将为此付出代价。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "⬆️ <b>3.Bc4</b> — 象快速出动，瞄准f7",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Qh4+",
+      "popup": "⬇️ <b>3...Qh4+ — 将军！</b><br>黑后出动将军，迫使白王移动，白方失去了王车易位的权利！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "h4"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "e1",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Kf1",
+      "popup": "⬆️ <b>4.Kf1 — 王被迫移动！</b><br>白王逃到f1，失去了王车易位权利。局面对白方不利……但安德森有惊人的反击！",
+      "highlights": [
+        {
+          "squares": [
+            "f1"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "b5",
+      "popup": "⬇️ <b>4...b5 — 攻击白象！</b><br>黑方用b5兵攻击c4的白象，试图赢得材料。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bxb5",
+      "popup": "⬆️ <b>5.Bxb5 — 弃象！</b><br>白方毫不犹豫地用象吃掉b5兵！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#D81B6044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Nf6",
+      "popup": "⬇️ <b>5...Nf6</b> — 黑马攻击白兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "⬆️ <b>6.Nf3</b> — 白马出动，同时攻击h4黑后",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Qh6",
+      "popup": "⬇️ <b>6...Qh6</b> — 黑后退回",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "d3",
+      "popup": "⬆️ <b>7.d3</b> — 巩固中心",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "Nh5",
+      "popup": "⬇️ <b>7...Nh5</b> — 黑方试图攻击g3",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Nh4",
+      "popup": "⬆️ <b>8.Nh4</b> — 马跳向进攻位置",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 15,
+      "move": "Qg5",
+      "popup": "⬇️ <b>8...Qg5</b> — 黑后继续骚扰",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Nf5",
+      "popup": "⬆️ <b>9.Nf5 — 马跳f5！</b><br>白马来到极佳的攻击位置，威胁黑后！",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "g7",
+            "h6"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "c6",
+      "popup": "⬇️ <b>9...c6</b> — 攻击白象",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "g4",
+      "popup": "⬆️ <b>10.g4 — 进攻推进！</b><br>白方g4兵攻击黑马，同时为进一步推进做准备。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 19,
+      "move": "Nf6",
+      "popup": "⬇️ <b>10...Nf6</b> — 黑马撤回",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Rg1",
+      "popup": "⬆️ <b>11.Rg1 — 车支援进攻！</b><br>白方没有躲象， 而是车占领g线，加快进攻节奏！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 21,
+      "move": "cxb5",
+      "popup": "⬇️ <b>11...cxb5</b> — 黑方终于吃掉象",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "h4",
+      "popup": "⬆️ <b>12.h4 — h兵推进</b><br>攻击黑后，进一步压迫黑方。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 23,
+      "move": "Qg6",
+      "popup": "⬇️ <b>12...Qg6</b> — 黑后再次移动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "h5",
+      "popup": "⬆️ <b>13.h5 — h兵再推！</b><br>白方h兵推进赶黑后，令黑方疲于应付。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 25,
+      "move": "Qg5",
+      "popup": "⬇️ <b>13...Qg5</b> — 黑后躲开攻击",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 26,
+      "move": "Qf3",
+      "popup": "⬆️ <b>14.Qf3 — 后加入进攻！</b><br>白后出动，威胁a8的车，白方进一步加强攻势！",
+      "highlights": [
+        {
+          "squares": [
+            "f7",
+            "a8"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "a8",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Ng8",
+      "popup": "⬇️ <b>14...Ng8</b> — 黑马撤回原位！<br>黑马退回原位，防止白兵e5, 同时要吃马和a8的车",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Bxf4",
+      "popup": "⬆️ <b>15.Bxf4 — 象吃掉f4兵</b><br>白方将弃出的f4兵重新夺回，现在局面大好。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 29,
+      "move": "Qf6",
+      "popup": "⬇️ <b>15...Qf6</b> — 黑后试躲避白象， 同时威胁a1的车",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 30,
+      "move": "Nc3",
+      "popup": "⬆️ <b>16.Nc3 — 马加入进攻阵营</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 31,
+      "move": "Bc5",
+      "popup": "⬇️ <b>16...Bc5</b> — 黑方终于出子发展，要吃白方g1的车！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 32,
+      "move": "Nd5",
+      "popup": "⬆️ <b>17.Nd5 — 马跳中心要点！</b><br>白马踏上d5绝佳位置，威胁更有价值的后！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "f6",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "Qxb2",
+      "popup": "⬇️ <b>17...Qxb2</b> — 黑后贪吃白兵<br>黑后吃兵，威胁车并连带将军",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 34,
+      "move": "Bd6",
+      "popup": "⬆️ <b>18.Bd6 — 弃象！🔥</b><br>白方不仅没有躲车，还送出白象！这是不朽之局最精彩的一步！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e7",
+            "c7"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 35,
+      "move": "Bxg1",
+      "popup": "⬇️ <b>18...Bxg1</b> — 黑方吃掉g1的车！<br>黑方不接受换象，直接吃白车。但白方已经做好了下一步的计划！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 36,
+      "move": "e5",
+      "popup": "⬆️ <b>19.e5 — 弃第二个车！🔥🔥</b><br>白兵继续推！白方甘愿损失两个车来追求将杀！这就是浪漫派的精神！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f6",
+            "d6"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "f6",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Qxa1+",
+      "popup": "⬇️ <b>19...Qxa1+ — 黑后吃白车并将军</b><br>黑方把白方第二个车也吃掉了，还将军！白方大量损失子力……真的输了吗？",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 38,
+      "move": "Ke2",
+      "popup": "⬆️ <b>20.Ke2 — 王躲过将军！</b><br>这是提前预判过的！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 39,
+      "move": "Na6",
+      "popup": "⬇️ <b>20...Na6</b> — 黑方暂时没有进一步的进攻手段， 只能发展马",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 40,
+      "move": "Nxg7+",
+      "popup": "⬆️ <b>21.Nxg7+ — 将军！最终序列开始！</b><br>马吃g7将军，将杀序列启动！",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "e8"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "e8",
+          "color": "#FF8F00CC"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "move": "Kd8",
+      "popup": "⬇️ <b>21...Kd8</b> — 王被迫移动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 42,
+      "move": "Qf6+",
+      "popup": "⬆️ <b>22.Qf6+ — 后将军！</b><br>白后将军， 通过送后引出黑马。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d8",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "move": "Nxf6",
+      "popup": "⬇️ <b>22...Nxf6 — 黑马被迫吃后！</b><br>黑方只能用马吃掉白后！但这正是白方的计划……",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 44,
+      "move": "Be7#",
+      "popup": "⬆️ <b>23.Be7# — 将死！🏆✨</b><br><b>象将死！</b>白方用最后剩下的象完成绝杀！<br>黑王无处可逃，白方赢得了这场惊天大战！<br><span style='color:#FFD700'>★ 这就是「不朽之局」，象棋历史上最伟大的进攻之一！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "d8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "d8",
+          "color": "#FFD700FF"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "G1_fools_mate",
+  "sequence": 1,
+  "type": "classic_game_demo",
+  "difficulty": "L0_intro",
+  "name_en": "Fool's Mate",
+  "name_cn": "经典棋局 - 傻瓜将杀",
+  "players": "（假设对局）",
+  "year": "经典教学局",
+  "moves": 2,
+  "total_moves": 4,
+  "key_concepts": [
+    "最短将杀",
+    "王翼弱化",
+    "后的威力"
+  ],
+  "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "pgn": "1. f3 e5 2. g4 Qh4#",
+  "move_sequence": [
+    "f3",
+    "e5",
+    "g4",
+    "Qh4#"
+  ],
+  "curated": true,
+  "lesson_order": 1
+}

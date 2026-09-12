@@ -1,0 +1,469 @@
+{
+  "game_id": "G5_evergreen_game",
+  "description": "常青树之局 — 47步，完整注释",
+  "intro": {
+    "flash_squares": [],
+    "popup": "【常青树之局】1852年，安德森再次创造奇迹！这局棋展示了后和车的双重牺牲，最终用双象完成绝杀，被誉为常青树之局",
+    "voice": true
+  },
+  "outro": {
+    "popup": "安德森先后献出了车e7和后d7，最终用象将死黑王！这局棋以其绝妙的收官被后世反复研究。",
+    "voice": true
+  },
+  "board_always": {},
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4</b> — 经典开局",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3</b> — 马出动攻击e5",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6</b> — 马保护e5",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Bc4",
+      "popup": "⬆️ <b>3.Bc4</b> — 意大利开局，象瞄准f7",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FFD70044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FFD700AA"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Bc5",
+      "popup": "⬇️ <b>3...Bc5</b> — 黑方同样出象，慢象开局",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "b4",
+      "popup": "⬆️ <b>4.b4! — 依文斯弃兵！</b><br>著名的依文斯弃兵！白方献出b4兵换取更快的发展。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Bxb4",
+      "popup": "⬇️ <b>4...Bxb4</b> — 黑象接受弃兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "c3",
+      "popup": "⬆️ <b>5.c3</b> — 准备d4推进，为中心让路",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "Ba5",
+      "popup": "⬇️ <b>5...Ba5</b> — 黑象撤退",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "popup": "⬆️ <b>6.d4!</b> — 占据中心，反击！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "exd4",
+      "popup": "⬇️ <b>6...exd4</b> — 黑方被迫吃兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "⬆️ <b>7.O-O!</b> — 王车易位，暂不吃回d4兵！<br>白方王车易位，把安全放在首位，展现宏大构想。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "d3",
+      "popup": "⬇️ <b>7...d3</b> — 黑方兵继续推进",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Qb3",
+      "popup": "⬆️ <b>8.Qb3</b> — 后出动，双重攻击f7和b7",
+      "highlights": [
+        {
+          "squares": [
+            "f7",
+            "b7"
+          ],
+          "color": "#FFD70044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "f7",
+          "color": "#FFD700AA"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Qf6",
+      "popup": "⬇️ <b>8...Qf6</b> — 黑后出动防守f7",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "e5",
+      "popup": "⬆️ <b>9.e5!</b> — 兵推进攻击黑后",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "Qg6",
+      "popup": "⬇️ <b>9...Qg6</b> — 黑后被迫撤退",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Re1",
+      "popup": "⬆️ <b>10.Re1</b> — 车加入攻势！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 19,
+      "move": "Nge7",
+      "popup": "⬇️ <b>10...Nge7</b> — 黑方出马发展",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Ba3",
+      "popup": "⬆️ <b>11.Ba3!</b> — 象阻止黑方王车易位！<br>这步棋使黑王无法易位，黑王将永远处于危险中。",
+      "highlights": [
+        {
+          "squares": [
+            "e7"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "e7",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "b5",
+      "popup": "⬇️ <b>11...b5</b> — 黑方试图驱逐白象",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 22,
+      "move": "Qxb5",
+      "popup": "⬆️ <b>12.Qxb5!</b> — 后弃兵取得优势，仍然进攻！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 23,
+      "move": "Rb8",
+      "popup": "⬇️ <b>12...Rb8</b> — 黑车攻击白后",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "Qa4",
+      "popup": "⬆️ <b>13.Qa4</b> — 后撤退保持压力",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 25,
+      "move": "Bb6",
+      "popup": "⬇️ <b>13...Bb6</b> — 黑象撤退",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 26,
+      "move": "Nbd2",
+      "popup": "⬆️ <b>14.Nbd2</b> — 马加入进攻",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 27,
+      "move": "Bb7",
+      "popup": "⬇️ <b>14...Bb7</b> — 黑象发展",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Ne4",
+      "popup": "⬆️ <b>15.Ne4</b> — 马跳控制中心！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 29,
+      "move": "Qf5",
+      "popup": "⬇️ <b>15...Qf5</b> — 黑后被迫移动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 30,
+      "move": "Bxd3",
+      "popup": "⬆️ <b>16.Bxd3</b> — 象吃d3兵，得回子力",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 31,
+      "move": "Qh5",
+      "popup": "⬇️ <b>16...Qh5</b> — 黑后攻白马",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 32,
+      "move": "Nf6+",
+      "popup": "⬆️ <b>17.Nf6+! — 马将军！</b><br>安德森弃马！这是将杀序列的开始！",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e8"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "g8",
+          "color": "#FF8F00CC"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "gxf6",
+      "popup": "⬇️ <b>17...gxf6</b> — 黑方吃掉马，打开g线",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 34,
+      "move": "exf6",
+      "popup": "⬆️ <b>18.exf6!</b> — 兵继续推进，封锁局面！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 35,
+      "move": "Rg8",
+      "popup": "⬇️ <b>18...Rg8</b> — 黑车进g线",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 36,
+      "move": "Rad1",
+      "popup": "⬆️ <b>19.Rad1</b> — 车加入攻势！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 37,
+      "move": "Qxf3",
+      "popup": "⬇️ <b>19...Qxf3</b> — 黑后吃白马！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 38,
+      "move": "Rxe7+",
+      "popup": "⬆️ <b>20.Rxe7+!! — 献车！🔥🔥🔥</b><br>安德森献出白车！这是局中最精妙的一步！",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "e8"
+          ],
+          "color": "#FF8F0088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "e8",
+          "color": "#FF8F00FF"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "move": "Nxe7",
+      "popup": "⬇️ <b>20...Nxe7</b> — 黑马无奈吃车",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 40,
+      "move": "Qxd7+",
+      "popup": "⬆️ <b>21.Qxd7+!! — 献后！🔥🔥🔥🔥</b><br>安德森再献出后！黑王必须吃后，然后双象将杀！<br><span style='color:#FFD700'>这是经典的献后将杀！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "d8"
+          ],
+          "color": "#FF8F0099",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "d8",
+          "color": "#FF8F00FF"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "move": "Kxd7",
+      "popup": "⬇️ <b>21...Kxd7</b> — 黑王被迫吃后",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 42,
+      "move": "Bf5+",
+      "popup": "⬆️ <b>22.Bf5+</b> — 象将军，追逐黑王！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "f5",
+          "to": "d7",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "move": "Ke8",
+      "popup": "⬇️ <b>22...Ke8</b> — 王继续逃跑",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 44,
+      "move": "Bd7+",
+      "popup": "⬆️ <b>23.Bd7+</b> — 另一个象将军！<br>双象联合追杀黑王！",
+      "highlights": [
+        {
+          "squares": [
+            "e8",
+            "d7"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "e8",
+          "color": "#FFD700DD"
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "move": "Kf8",
+      "popup": "⬇️ <b>23...Kf8</b> — 王再次逃跑",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 46,
+      "move": "Bxe7#",
+      "popup": "⬆️ <b>24.Bxe7# — 将死！🏆✨</b><br>象将死黑王！双象完成了精彩的将杀！<br><span style='color:#FFD700'>★ 这就是「常青树之局」！先献车、再献后，最终双象将杀！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "f8"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "f8",
+          "color": "#FFD700FF"
+        }
+      ]
+    }
+  ]
+}

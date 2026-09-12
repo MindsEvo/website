@@ -1,0 +1,165 @@
+{
+  "game_id": "G2_scholars_mate",
+  "description": "学者将杀 — 7步，完整注释",
+  "intro": {
+    "flash_squares": [],
+    "popup": "【学者将杀】是一种在4步内将死黑王的快速开局陷阱",
+    "voice": "这是初学者最常遇到的开局陷阱！白方只用4步棋就能将杀。"
+  },
+  "outro": {
+    "popup": "f7格是黑方开局最大的弱点，只有王一个棋子保护！白方象和后联合攻击f7，一旦黑方不警惕就会被将杀。",
+    "voice": true
+  },
+  "board_always": {},
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 白方占据中心</b><br>经典的王前兵开局，控制中心、为象和后的出动铺路。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#8E24AA44",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#8E24AAAA"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#8E24AAAA"
+        },
+        {
+          "from": "f1",
+          "to": "a6",
+          "color": "#8E24AAAA"
+        },
+        {
+          "from": "d1",
+          "to": "h5",
+          "color": "#8E24AAAA"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 对称应对</b><br>黑方同样占中心，是最自然的应法。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Bc4",
+      "popup": "⬆️ <b>2.Bc4 — 象瞄准f7！</b><br>白象来到c4，对准了黑王身旁的f7格。f7在开局时只有黑王一个棋子保护，这是黑方最大的弱点！",
+      "highlights": [
+        {
+          "squares": [
+            "f7"
+          ],
+          "color": "#FF572288",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 普通发展</b><br>黑马自然出子，控制d4/e5格。但要注意f7格正在被威胁！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Qh5",
+      "popup": "⬆️ <b>3.Qh5 — 双重威胁！⚠️</b><br>白后来到h5，同时威胁两个目标：<br>① 攻击e5兵<br>② 与c4象配合，再次攻击f7！<br>黑方必须小心应对！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f7"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "e5",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "h5",
+          "to": "f7",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "⬇️ <b>3...Nf6? — 错误！忽视了威胁</b><br>黑方出马攻击白后，看似合理，但完全忽视了f7格的危险！<br><span style='color:#FF8F00'>⚠️ 正确下法应该是3...g6，把白后赶走！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "h5"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "h5",
+          "color": "#FF8F00AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Qxf7#",
+      "popup": "⬆️ <b>4.Qxf7# — 学者将杀！🏆</b><br>在象的支持下，白后吃掉f7兵，将死黑王！<br>• 无棋子能吃后<br>• 也无棋子能挡住将军<br><span style='color:#FFD700'>★ 这就是学者将杀！用象+后联合攻击f7！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "f7",
+            "e8",
+            "e7",
+            "d8"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "f7",
+          "color": "#FF5722FF"
+        },
+        {
+          "from": "c4",
+          "to": "f7",
+          "color": "#FF5722FF"
+        }
+      ]
+    }
+  ]
+}

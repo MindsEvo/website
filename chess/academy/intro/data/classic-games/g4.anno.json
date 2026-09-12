@@ -1,0 +1,750 @@
+{
+  "game_id": "G4_game_of_century",
+  "description": "世纪之局 — 82步，完整注释",
+  "intro": {
+    "flash_squares": [],
+    "popup": "【世纪之局】1956年，13岁的费舍尔在对阵成年高手拜恩时，走出华丽的后弃子组合、极其成熟的战略布局！这局棋被誉为世纪之局。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "费舍尔以精准的计算，用马的牺牲换取了决定性的优势，最终以令人叹为观止的方式将死对方！",
+    "voice": true
+  },
+  "board_always": {},
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "⬆️ <b>1.Nf3</b> — 王马发展",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "⬇️ <b>1...Nf6</b> — 黑马对称出动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "⬆️ <b>2.c4</b> — 英式开局，争夺d5",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "⬇️ <b>2...g6</b> — 黑方准备象纤维化，国王印度风格",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "⬆️ <b>3.Nc3</b> — 马发展控制中心",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "⬇️ <b>3...Bg7</b> — 象纤维化完成！控制h8-a1对角线",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "h8"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "a1",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d4",
+      "popup": "⬆️ <b>4.d4</b> — 白方建立双兵中心",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "⬇️ <b>4...O-O</b> — 黑王易位，王安全",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bf4",
+      "popup": "⬆️ <b>5.Bf4</b> — 象出动控制c7",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "popup": "⬇️ <b>5...d5</b> — 反击中心！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Qb3",
+      "popup": "⬆️ <b>6.Qb3</b> — 后出动攻击d5和b7",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "b7"
+          ],
+          "color": "#FFD70044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "dxc4",
+      "popup": "⬇️ <b>6...dxc4!</b> — 弃兵换取主动权， 将白后引入到不太安全的位置！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Qxc4",
+      "popup": "⬆️ <b>7.Qxc4</b> — 后夺回兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "c6",
+      "popup": "⬇️ <b>7...c6</b> — 加强中心控制，为马开路",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "e4",
+      "popup": "⬆️ <b>8.e4</b> — 扩大中心优势",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 15,
+      "move": "Nbd7",
+      "popup": "⬇️ <b>8...Nbd7</b> — 马发展，准备Nb6",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "Rd1",
+      "popup": "⬆️ <b>9.Rd1</b> — 车移到d列支援",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "Nb6",
+      "popup": "⬇️ <b>9...Nb6</b> — 攻击白后",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 18,
+      "move": "Qc5",
+      "popup": "⬆️ <b>10.Qc5</b> — 后进攻位置",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 19,
+      "move": "Bg4",
+      "popup": "⬇️ <b>10...Bg4</b> — 象钉住马",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 20,
+      "move": "Bg5",
+      "popup": "⬆️ <b>11.Bg5</b> — 反钉黑马",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 21,
+      "move": "Na4",
+      "popup": "⬇️ <b>11...Na4! — 马跳！</b><br>黑方的第一个关键步！马跳向进攻位置，攻击白后！也做好牺牲马的准备！",
+      "highlights": [
+        {
+          "squares": [
+            "a4",
+            "c5",
+            "c3",
+            "b2"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "c5",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "a4",
+          "to": "c3",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Qa3",
+      "popup": "⬆️ <b>12.Qa3</b> — 白方认为直接吃马会失去对e4的控制，后被迫撤退",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 23,
+      "move": "Nxc3",
+      "popup": "⬇️ <b>12...Nxc3!</b> — 马开始吃子！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 24,
+      "move": "bxc3",
+      "popup": "⬆️ <b>13.bxc3</b> — 兵吃马",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 25,
+      "move": "Nxe4",
+      "popup": "⬇️ <b>13...Nxe4! ⚡ 马出击！</b><br>这是世纪之局最震撼的一步！做好了被白象攻击的准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "c5",
+            "b4"
+          ],
+          "color": "#FF8F0088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "c5",
+          "color": "#FF8F00CC"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Bxe7",
+      "popup": "⬆️ <b>14.Bxe7</b> — 象吃e7，攻击黑后和车",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 27,
+      "move": "Qb6",
+      "popup": "⬇️ <b>14...Qb6!</b> — 后出击！",
+      "highlights": [
+        {
+          "squares": [
+            "b6",
+            "b2",
+            "f2"
+          ],
+          "color": "#FFD70066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 28,
+      "move": "Bc4",
+      "popup": "⬆️ <b>15.Bc4</b> — 象威胁f7",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 29,
+      "move": "Nxc3",
+      "popup": "⬇️ <b>15...Nxc3!</b> — 马继续吃子！做好弃子的准备！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 30,
+      "move": "Bc5",
+      "popup": "⬆️ <b>16.Bc5</b> — 白方象直接威胁黑后！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 31,
+      "move": "Rfe8+",
+      "popup": "⬇️ <b>16...Rfe8+ — 车将军！</b><br>黑车加入进攻，将军！",
+      "highlights": [
+        {
+          "squares": [
+            "e1"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "e1",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "move": "Kf1",
+      "popup": "⬆️ <b>17.Kf1</b> — 王被迫移动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 33,
+      "move": "Be6",
+      "popup": "⬇️ <b>17...Be6!</b> — 象攻击c4！<br>黑象攻击白象，同时威胁白后！做好了弃掉后的准备！",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "c4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "move": "Bxb6",
+      "popup": "⬆️ <b>18.Bxb6</b> — 吃掉黑后？！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 35,
+      "move": "Bxc4+",
+      "popup": "⬇️ <b>18...Bxc4+ — 将军！</b><br>吃象将军！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "f1",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "move": "Kg1",
+      "popup": "⬆️ <b>19.Kg1</b> — 王撤退",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 37,
+      "move": "Ne2+",
+      "popup": "⬇️ <b>19...Ne2+ — 马将军！</b>",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "g1",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "move": "Kf1",
+      "popup": "⬆️ <b>20.Kf1</b> — 王被迫移动",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 39,
+      "move": "Nxd4+",
+      "popup": "⬇️ <b>20...Nxd4+ — 马吃兵将军！</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 40,
+      "move": "Kg1",
+      "popup": "⬆️ <b>21.Kg1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 41,
+      "move": "Ne2+",
+      "popup": "⬇️ <b>21...Ne2+</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 42,
+      "move": "Kf1",
+      "popup": "⬆️ <b>22.Kf1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 43,
+      "move": "Nc3+",
+      "popup": "⬇️ <b>22...Nc3+</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 44,
+      "move": "Kg1",
+      "popup": "⬆️ <b>23.Kg1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 45,
+      "move": "axb6",
+      "popup": "⬇️ <b>23...axb6</b> — 黑方吃掉象！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 46,
+      "move": "Qb4",
+      "popup": "⬆️ <b>24.Qb4</b> — 白后试图反击",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 47,
+      "move": "Ra4",
+      "popup": "⬇️ <b>24...Ra4!</b> — 车攻击白后！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 48,
+      "move": "Qxb6",
+      "popup": "⬆️ <b>25.Qxb6</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 49,
+      "move": "Nxd1",
+      "popup": "⬇️ <b>25...Nxd1!</b> — 马吃白车！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 50,
+      "move": "h3",
+      "popup": "⬆️ <b>26.h3</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 51,
+      "move": "Rxa2",
+      "popup": "⬇️ <b>26...Rxa2</b> — 车吃a2兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 52,
+      "move": "Kh2",
+      "popup": "⬆️ <b>27.Kh2</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 53,
+      "move": "Nxf2",
+      "popup": "⬇️ <b>27...Nxf2!</b> — 马吃f2兵！进一步得子！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 54,
+      "move": "Re1",
+      "popup": "⬆️ <b>28.Re1</b> — 白方孤注一掷",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 55,
+      "move": "Rxe1",
+      "popup": "⬇️ <b>28...Rxe1!</b> — 车吃车！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 56,
+      "move": "Qd8+",
+      "popup": "⬆️ <b>29.Qd8+ — 白后将军，困兽犹斗！</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 57,
+      "move": "Bf8",
+      "popup": "⬇️ <b>29...Bf8</b> — 黑象挡将，守住阵线",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 58,
+      "move": "Nxe1",
+      "popup": "⬆️ <b>30.Nxe1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 59,
+      "move": "Bd5",
+      "popup": "⬇️ <b>30...Bd5!</b> — 象占中心要道，控制局面！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 60,
+      "move": "Nf3",
+      "popup": "⬆️ <b>31.Nf3</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 61,
+      "move": "Ne4",
+      "popup": "⬇️ <b>31...Ne4!</b> — 马跳入绝佳位置",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "c3",
+            "f2",
+            "d2"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 62,
+      "move": "Qb8",
+      "popup": "⬆️ <b>32.Qb8</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 63,
+      "move": "b5",
+      "popup": "⬇️ <b>32...b5</b> — 兵前进到安全位置",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 64,
+      "move": "h4",
+      "popup": "⬆️ <b>33.h4</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 65,
+      "move": "h5",
+      "popup": "⬇️ <b>33...h5</b> — 封锁白方h兵",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 66,
+      "move": "Ne5",
+      "popup": "⬆️ <b>34.Ne5</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 67,
+      "move": "Kg7",
+      "popup": "⬇️ <b>34...Kg7</b> — 王移到更安全位置",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 68,
+      "move": "Kg1",
+      "popup": "⬆️ <b>35.Kg1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 69,
+      "move": "Bc5+",
+      "popup": "⬇️ <b>35...Bc5+ — 象将军！</b><br>黑象将军，追逐白王！",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "f2",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "move": "Kf1",
+      "popup": "⬆️ <b>36.Kf1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 71,
+      "move": "Ng3+",
+      "popup": "⬇️ <b>36...Ng3+ — 马将军！</b>",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g3",
+          "to": "f1",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "move": "Ke1",
+      "popup": "⬆️ <b>37.Ke1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 73,
+      "move": "Bb4+",
+      "popup": "⬇️ <b>37...Bb4+ — 象将军！</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 74,
+      "move": "Kd1",
+      "popup": "⬆️ <b>38.Kd1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 75,
+      "move": "Bb3+",
+      "popup": "⬇️ <b>38...Bb3+ — 又是象将军！</b><br>黑方不断将军，白王四处奔逃！",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 76,
+      "move": "Kc1",
+      "popup": "⬆️ <b>39.Kc1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 77,
+      "move": "Ne2+",
+      "popup": "⬇️ <b>39...Ne2+ — 马将军！</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 78,
+      "move": "Kb1",
+      "popup": "⬆️ <b>40.Kb1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 79,
+      "move": "Nc3+",
+      "popup": "⬇️ <b>40...Nc3+ — 马再将军！</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 80,
+      "move": "Kc1",
+      "popup": "⬆️ <b>41.Kc1</b>",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 81,
+      "move": "Rc2#",
+      "popup": "⬇️ <b>41...Rc2# — 将死！🏆🌟</b><br>黑车来到c2，将死白王！白王被马、象和车团团包围，无处可逃！<br><span style='color:#FFD700'>★ 这就是世纪之局！13岁的费舍尔用天才之作震惊了整个国际象棋世界！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "c2",
+            "c1",
+            "b1",
+            "d1"
+          ],
+          "color": "#FFD700AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c2",
+          "to": "c1",
+          "color": "#FFD700FF"
+        }
+      ]
+    }
+  ]
+}

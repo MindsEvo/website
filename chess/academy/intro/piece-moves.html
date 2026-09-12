@@ -179,6 +179,15 @@
 
     .ctrl-btn.active { background: #f9cb2d; }
 
+    .ai-preset-select {
+      height: 26px;
+      border-radius: 4px;
+      border: 1px solid #d7deea;
+      background: #fff;
+      font-size: 12px;
+      color: #1f2d40;
+    }
+
     .meta {
       margin-left: 6px;
       font-size: 13px;
@@ -336,41 +345,6 @@
       color: #334155;
       font-size: 13px;
       font-weight: 600;
-    }
-
-    .game-mode-bar {
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .game-mode-bar.hidden { display: none; }
-    .game-mode-label { font-size: 12px; color: #64748b; font-weight: 700; }
-    .game-mode-btn {
-      border: 1px solid #d8e2f1;
-      background: #fff;
-      color: #334155;
-      border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .game-mode-btn.active {
-      background: #2563eb;
-      border-color: #2563eb;
-      color: #fff;
-    }
-    .game-mode-select {
-      border: 1px solid #d8e2f1;
-      background: #fff;
-      color: #334155;
-      border-radius: 999px;
-      padding: 3px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
     }
 
     .sub-menu {
@@ -750,10 +724,20 @@
         </div>
         <div class="control-strip">
           <button class="ctrl-btn">↺</button><button class="ctrl-btn">▶</button><button class="ctrl-btn">↩</button><button class="ctrl-btn">→</button>
-          <button class="ctrl-btn">🔊</button><button class="ctrl-btn">🎤</button><button class="ctrl-btn active">👥</button><button class="ctrl-btn">👤</button>
-          <button class="ctrl-btn">🤖</button><button class="ctrl-btn">◔</button>
+          <button class="ctrl-btn">🔊</button><button class="ctrl-btn">🎤</button>
+          <button class="ctrl-btn active" id="btnModeManual" title="手动模式：两人轮流点击操作">👥</button>
+          <button class="ctrl-btn" id="btnModeHumanAi" title="人机模式：你执白，AI执黑自动应对">👤</button>
+          <button class="ctrl-btn" id="btnModeAiAi" title="AI对弈：双方由AI自动对局，可暂停/继续">🤖</button>
+          <button class="ctrl-btn">◔</button>
           <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
           <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+          <span class="meta">AI预设:<select class="ai-preset-select" id="aiPresetSelect" title="仅在对弈练习中生效">
+            <option value="beginner">初学</option>
+            <option value="intermediate">中级</option>
+            <option value="advanced">高级</option>
+            <option value="expert">专家</option>
+            <option value="master" selected>大师</option>
+          </select></span>
         </div>
       </section>
 
@@ -956,20 +940,6 @@
               </div>
             </div>
             <div class="status-box" id="practiceStatus">点击上方棋子按钮开始练习</div>
-            <div class="game-mode-bar hidden" id="gameModeBar">
-              <span class="game-mode-label">对弈模式：</span>
-              <button class="game-mode-btn" id="btnModeManual" data-mode="manual" title="手动模式：两人轮流点击操作">👥 手动</button>
-              <button class="game-mode-btn" id="btnModeHumanAi" data-mode="human_ai" title="人机模式：你执白，AI执黑自动应对">👤 人机</button>
-              <button class="game-mode-btn" id="btnModeAiAi" data-mode="ai_ai" title="AI对弈：双方由AI自动对局，可暂停/继续">🤖 AI对弈</button>
-              <span class="game-mode-label">AI预设：</span>
-              <select class="game-mode-select" id="aiPresetSelect" title="与对弈模式页面相同的AI难度预设">
-                <option value="beginner">初学</option>
-                <option value="intermediate">中级</option>
-                <option value="advanced">高级</option>
-                <option value="expert">专家</option>
-                <option value="master" selected>大师</option>
-              </select>
-            </div>
           </div>
 
           <div class="group">
@@ -1123,7 +1093,6 @@
       var practiceStatus = document.getElementById('practiceStatus');
       var quizStatus = document.getElementById('quizStatus');
       var quizOptions = document.getElementById('quizOptions');
-      var gameModeBar = document.getElementById('gameModeBar');
       var btnModeManual = document.getElementById('btnModeManual');
       var btnModeHumanAi = document.getElementById('btnModeHumanAi');
       var btnModeAiAi = document.getElementById('btnModeAiAi');
@@ -2973,15 +2942,23 @@
         if (current) current.classList.add('active');
         if (btnModeAiAi) {
           if (practiceState.gameMode !== 'ai_ai') {
-            btnModeAiAi.textContent = '🤖 AI对弈';
+            btnModeAiAi.textContent = '🤖';
+            btnModeAiAi.title = 'AI对弈：双方由AI自动对局，可暂停/继续';
+          } else if (practiceState.aiAutoplay) {
+            btnModeAiAi.textContent = '⏸';
+            btnModeAiAi.title = '暂停对弈';
           } else {
-            btnModeAiAi.textContent = practiceState.aiAutoplay ? '⏸ 暂停对弈' : '▶ 继续对弈';
+            btnModeAiAi.textContent = '▶';
+            btnModeAiAi.title = '继续对弈';
           }
         }
       }
 
       function setGameMode(mode) {
         if (!practiceState.armed) return;
+        // These buttons live in the shared control-strip (visible for all practice types), but the
+        // manual/human_ai/ai_ai concept only applies to -game- scenarios — no-op otherwise.
+        if (mode !== 'manual' && (!practiceState.scenario || practiceState.scenario.indexOf('-game-') === -1)) return;
         if (mode === 'ai_ai' && practiceState.gameMode === 'ai_ai') {
           practiceState.aiAutoplay = !practiceState.aiAutoplay;
         } else {
@@ -3192,7 +3169,6 @@
         practiceState.halfmoveClock = 0;
         practiceState.positionCounts = {};
         if (key.indexOf('-game-') !== -1) practiceState.positionCounts[buildFen()] = 1;
-        if (gameModeBar) gameModeBar.classList.toggle('hidden', key.indexOf('-game-') === -1);
         updateGameModeButtons();
         if (practiceStatus) practiceStatus.textContent = sc.voice;
         speak(sc.voice.substring(0, 45));
@@ -3204,7 +3180,6 @@
         closePromotionModal();
         clearAiTimer();
         practiceState.aiRequestId++;
-        if (gameModeBar) gameModeBar.classList.add('hidden');
         practiceState.armed = false;
         practiceState.scenario = null;
         practiceState.selectedPiece = null;

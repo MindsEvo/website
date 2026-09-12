@@ -1,0 +1,115 @@
+{
+  "game_id": "G1_fools_mate",
+  "description": "傻瓜将杀 — 4步，完整注释",
+  "intro": {
+    "flash_squares": [],
+    "popup": "傻瓜将杀是国际象棋最快的将杀经典棋局，只需两步！看看白方犯了什么致命错误",
+    "voice": true
+  },
+  "outro": {
+    "popup": "f3和g4两步棋严重削弱了白王的防护，黑后从h4直接将死白王。开局走兵要注意线路和子力协调问题！",
+    "voice": true
+  },
+  "board_always": {},
+  "moves": [
+    {
+      "index": 0,
+      "move": "f3",
+      "popup": "⬆️ <b>1.f3 — 危险的一步！</b><br>f3把王翼的保护兵推走，严重削弱了白王的安全。f3兵原本封锁着黑方进攻的通道……",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e4",
+            "g4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方占据中心</b><br>黑方利用机会占据中心，同时为后的出动做好准备。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "g4",
+      "popup": "⬆️ <b>2.g4 — 致命错误！</b><br>这步棋彻底打开了h4到e1的对角线！白王完全暴露在黑后的攻击路线上……<br><span style='color:#FF8F00'>⚠️ 黑方下一步将有致命一击！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "g3",
+            "f2",
+            "e1"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "e1",
+          "color": "#FF8F00CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Qh4#",
+      "popup": "⬇️ <b>2...Qh4# — 将死！🏆</b><br>黑后出击h4，<b>将死白王！</b><br>白王被后控制，向任何方向都无法逃脱，旁边也没有棋子能挡住后的攻击。<br><span style='color:#FFD700'>★ 这就是傻瓜将杀，全程只用了2步！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "e1",
+            "g3",
+            "f2",
+            "h1",
+            "g5"
+          ],
+          "color": "#FFD70088",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h4",
+          "to": "e1",
+          "color": "#FFD700FF"
+        },
+        {
+          "from": "h4",
+          "to": "h1",
+          "color": "#FFD700AA"
+        }
+      ]
+    }
+  ]
+}

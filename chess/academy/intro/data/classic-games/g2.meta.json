@@ -1,0 +1,30 @@
+{
+  "id": "G2_scholars_mate",
+  "sequence": 2,
+  "type": "classic_game_demo",
+  "difficulty": "L0_intro",
+  "name_en": "Scholar's Mate",
+  "name_cn": "经典棋局 - 学者将杀",
+  "players": "（最常见开局陷阱）",
+  "year": "经典教学局",
+  "moves": 3,
+  "total_moves": 7,
+  "key_concepts": [
+    "f7弱点",
+    "象后配合",
+    "开局陷阱"
+  ],
+  "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "pgn": "1. e4 e5 2. Bc4 Nc6 3. Qh5 Nf6 4. Qxf7#",
+  "move_sequence": [
+    "e4",
+    "e5",
+    "Bc4",
+    "Nc6",
+    "Qh5",
+    "Nf6",
+    "Qxf7#"
+  ],
+  "curated": true,
+  "lesson_order": 2
+}

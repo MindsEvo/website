@@ -5,27 +5,969 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5. 棋局演示 | 入门启航</title>
   <style>
-    :root { --bg:#f3f5f9; --card:#fff; --line:#e8edf5; --ink:#1f2a3a; --muted:#6f7f94; --blue:#2d77e8; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--bg); color:var(--ink); font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif; }
-    .page { width:min(1180px,100%); margin:0 auto; padding:20px; }
-    .top { margin-bottom:16px; }
-    .back { min-width:126px; height:34px; border-radius:8px; background:var(--blue); color:#fff; font-size:14px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
-    .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px; }
-    h1 { font-size:28px; margin-bottom:8px; }
-    .sub { color:var(--muted); font-size:16px; margin-bottom:14px; }
-    .tip { background:#f8fbff; border:1px dashed #c8d9f6; border-radius:10px; padding:14px; color:#4f647f; font-size:15px; line-height:1.7; }
+    :root {
+      --page-bg: #f3f5f9;
+      --card-bg: #ffffff;
+      --line: #e6ebf3;
+      --ink: #1a2433;
+      --blue: #3f74ae;
+      --green: #2eb25b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 8px 4px 4px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0 8px;
+      margin-bottom: 6px;
+    }
+
+    .top-btn {
+      min-width: 102px;
+      height: 30px;
+      border-radius: 6px;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-back { background: var(--blue); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr));
+      gap: 12px;
+      min-height: calc(100vh - 52px);
+    }
+
+    .left,
+    .right {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .left {
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .popup-box {
+      margin: 4px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #1f3a63;
+      color: #eaf1ff;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 20px;
+    }
+
+    .popup-box.hidden { display: none; }
+
+    .board-wrap {
+      background: #6f8f4d;
+      border: 1px solid #6f8f4d;
+      padding: 10px;
+      margin-top: 4px;
+    }
+
+    .board-shell {
+      --board-size: min(78vw, 610px);
+      width: calc(var(--board-size) + 24px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 24px var(--board-size);
+      grid-template-rows: var(--board-size) 24px;
+    }
+
+    .board {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      width: var(--board-size);
+      height: var(--board-size);
+      border: 2px solid rgba(92, 111, 71, 0.9);
+      position: relative;
+    }
+
+    .board-arrows {
+      grid-column: 2;
+      grid-row: 1;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .square {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      user-select: none;
+      position: relative;
+    }
+
+    .square-hl {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .piece-svg {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      pointer-events: none;
+      position: relative;
+      z-index: 3;
+    }
+
+    .files, .ranks {
+      display: grid;
+      color: #17212f;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .file-bottom { grid-template-columns: repeat(8, 1fr); grid-column: 2; grid-row: 2; }
+    .rank-left { grid-template-rows: repeat(8, 1fr); grid-column: 1; grid-row: 1; }
+
+    .files span,
+    .ranks span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 8px 2px 4px;
+    }
+
+    .ctrl-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      border: 1px solid #d7deea;
+      background: #fff;
+      font-size: 12px;
+      color: #1f2d40;
+      cursor: pointer;
+    }
+
+    .ctrl-btn.active { background: #f9cb2d; }
+
+    .meta {
+      margin-left: 6px;
+      font-size: 13px;
+      color: #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta input[type="range"] { width: 70px; }
+
+    .right {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .title-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .title-card h2 { font-size: 26px; font-weight: 900; }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .panel h3 { font-size: 22px; margin-bottom: 10px; font-weight: 900; }
+
+    .game-chips {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .game-chip {
+      height: 36px;
+      border-radius: 8px;
+      border: 0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0 2px;
+      transition: transform 0.12s ease;
+    }
+
+    .game-chip:hover { transform: translateY(-1px); }
+    .game-chip.active { box-shadow: inset 0 0 0 3px rgba(0,0,0,0.35); }
+
+    .g1 { background: #c0392b; }
+    .g2 { background: #d68910; }
+    .g3 { background: #7d3c98; }
+    .g4 { background: #2471a3; }
+    .g5 { background: #1e8449; }
+
+    .solution-flex {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .solution-box, .explanation-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 220px;
+      max-height: 46vh;
+    }
+
+    .solution-box h4, .explanation-box h4 {
+      font-size: 14px;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .solution-lines {
+      overflow-y: auto;
+      font-family: Consolas, "Microsoft YaHei", monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #2c2c2c;
+      flex: 1;
+    }
+
+    .solution-line {
+      padding: 1px 4px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+    }
+
+    .solution-line.current {
+      background: #1a73e8;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .explanation-text {
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #2c2c2c;
+      white-space: pre-wrap;
+      flex: 1;
+    }
+
+    .explain-btn {
+      border: 1px solid var(--line);
+      background: #f0f6ff;
+      color: var(--blue);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+
+    .explain-btn.speaking { background: var(--blue); color: #fff; }
+
+    .status-box {
+      margin: 4px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d8e2f1;
+      background: #f8fbff;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1200px) {
+      .layout { min-height: auto; }
+    }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="top"><a class="back" href="./index.html" id="btnBackIntro">返回入门启航</a></div>
-    <section class="card">
-      <h1>5. 棋局演示</h1>
-      <p class="sub">本部分演示几个经典的国际象棋对局，对对弈有个初步认识</p>
-      <div class="tip">将接入示例对局播放、关键步讲解和局面提示。当前为页面骨架，便于后续接数据与交互。</div>
+    <header class="topbar">
+      <a class="top-btn btn-back" href="./index.html" id="btnBackIntro">返回入门启航</a>
+    </header>
+
+    <section class="layout">
+      <div class="left">
+        <div class="popup-box hidden" id="popupBox"></div>
+        <div class="board-wrap" id="boardWrap">
+          <div class="board-shell">
+            <div class="ranks rank-left" id="rankLeft"></div>
+            <div class="board" id="board"></div>
+            <svg class="board-arrows" id="boardArrows" width="100%" height="100%"></svg>
+            <div class="files file-bottom" id="fileBottom"></div>
+          </div>
+        </div>
+        <div class="control-strip">
+          <button class="ctrl-btn" id="btnReset" title="重置到开局">↺</button>
+          <button class="ctrl-btn" id="btnPrev" title="上一步">↩</button>
+          <button class="ctrl-btn" id="btnPlay" title="开始自动播放">▶</button>
+          <button class="ctrl-btn" id="btnNext" title="下一步">→</button>
+          <button class="ctrl-btn active" id="btnSound" title="音效开关">🔊</button>
+          <button class="ctrl-btn active" id="btnVoice" title="语音讲解开关">🎤</button>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span id="volumeValue">80</span></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span id="speedValue">5</span></span>
+        </div>
+        <div class="status-box" id="playStatus">请选择右侧的经典棋局开始演示</div>
+      </div>
+
+      <div class="right">
+        <div class="title-card">
+          <h2>5. 棋局演示</h2>
+        </div>
+
+        <div class="panel">
+          <h3>动态观察</h3>
+          <div class="game-chips">
+            <button class="game-chip g1" data-game="g1">傻瓜将杀</button>
+            <button class="game-chip g2" data-game="g2">学者将杀</button>
+            <button class="game-chip g3" data-game="g3">不朽之局</button>
+            <button class="game-chip g4" data-game="g4">世纪之局</button>
+            <button class="game-chip g5" data-game="g5">常青树之局</button>
+          </div>
+        </div>
+
+        <div class="panel solution-flex">
+          <div class="solution-box">
+            <h4>棋谱解法</h4>
+            <div class="solution-lines" id="solutionLines">请选择棋局以显示棋谱</div>
+          </div>
+          <div class="explanation-box">
+            <h4>解说内容 <button class="explain-btn" id="btnExplainVoice">🔊 解说</button></h4>
+            <div class="explanation-text" id="explanationText">请选择棋局以显示解说内容</div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
-  <script>(function(){var b=document.getElementById('btnBackIntro');if(b){b.addEventListener('click',function(e){if(window.history.length>1){e.preventDefault();window.history.back();}});}}());</script>
+
+  <script>
+    (function () {
+      var PIECE_ASSET = {
+        wk: 'wK.svg', wq: 'wQ.svg', wr: 'wR.svg', wb: 'wB.svg', wn: 'wN.svg', wp: 'wP.svg',
+        bk: 'bK.svg', bq: 'bQ.svg', br: 'bR.svg', bb: 'bB.svg', bn: 'bN.svg', bp: 'bP.svg'
+      };
+      var PIECE_NAME_CN = { k: '王', q: '后', r: '车', b: '象', n: '马', p: '兵' };
+      var FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+      var GAMES = [
+        { key: 'g1', label: '傻瓜将杀' },
+        { key: 'g2', label: '学者将杀' },
+        { key: 'g3', label: '不朽之局' },
+        { key: 'g4', label: '世纪之局' },
+        { key: 'g5', label: '常青树之局' }
+      ];
+
+      // ── DOM refs ──────────────────────────────────────
+      var boardEl = document.getElementById('board');
+      var arrowsEl = document.getElementById('boardArrows');
+      var rankLeft = document.getElementById('rankLeft');
+      var fileBottom = document.getElementById('fileBottom');
+      var popupBox = document.getElementById('popupBox');
+      var playStatus = document.getElementById('playStatus');
+      var solutionLines = document.getElementById('solutionLines');
+      var explanationText = document.getElementById('explanationText');
+      var btnExplainVoice = document.getElementById('btnExplainVoice');
+      var btnReset = document.getElementById('btnReset');
+      var btnPrev = document.getElementById('btnPrev');
+      var btnPlay = document.getElementById('btnPlay');
+      var btnNext = document.getElementById('btnNext');
+      var btnSound = document.getElementById('btnSound');
+      var btnVoice = document.getElementById('btnVoice');
+      var volumeRange = document.getElementById('volumeRange');
+      var volumeValue = document.getElementById('volumeValue');
+      var speedRange = document.getElementById('speedRange');
+      var speedValue = document.getElementById('speedValue');
+
+      var files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+      var ranks = [8, 7, 6, 5, 4, 3, 2, 1];
+      fileBottom.innerHTML = files.map(function (f) { return '<span>' + f + '</span>'; }).join('');
+      rankLeft.innerHTML = ranks.map(function (r) { return '<span>' + r + '</span>'; }).join('');
+
+      // ── Sounds ────────────────────────────────────────
+      var SOUND_BASE = '../../play/assets/sounds/';
+      var sounds = {
+        move: new Audio(SOUND_BASE + 'move.wav'),
+        capture: new Audio(SOUND_BASE + 'capture.wav'),
+        check: new Audio(SOUND_BASE + 'check.wav'),
+        gameEnd: new Audio(SOUND_BASE + 'game_over.wav')
+      };
+      function playSound(name) {
+        if (!state.soundOn) return;
+        try {
+          var s = sounds[name].cloneNode();
+          s.volume = Number(volumeRange.value) / 100;
+          s.play().catch(function () {});
+        } catch (e) {}
+      }
+
+      function speak(text) {
+        if (!state.voiceOn || !text || !window.speechSynthesis) return;
+        try {
+          window.speechSynthesis.cancel();
+          var ut = new SpeechSynthesisUtterance(text);
+          ut.lang = 'zh-CN';
+          ut.rate = 0.85 + (Number(speedRange.value) - 5) * 0.03;
+          ut.volume = Number(volumeRange.value) / 100;
+          window.speechSynthesis.speak(ut);
+        } catch (e) {}
+      }
+
+      function stripHtml(html) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        return (div.textContent || div.innerText || '').trim();
+      }
+
+      // ── Board engine (SAN replay) ───────────────────────
+      function createInitialBoard() {
+        return [
+          ['br', 'bn', 'bb', 'bq', 'bk', 'bb', 'bn', 'br'],
+          ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+          ['wr', 'wn', 'wb', 'wq', 'wk', 'wb', 'wn', 'wr']
+        ];
+      }
+      function cloneBoard(b) { return b.map(function (row) { return row.slice(); }); }
+      function squareToRC(sq) { return [8 - Number(sq.charAt(1)), FILES.indexOf(sq.charAt(0))]; }
+      function rcToSquare(r, c) { return FILES[c] + String(8 - r); }
+
+      function findKingPos(board, color) {
+        for (var r = 0; r < 8; r++) for (var c = 0; c < 8; c++) if (board[r][c] === color + 'k') return [r, c];
+        return null;
+      }
+
+      function isSquareAttacked(board, row, col, byColor) {
+        var pr = byColor === 'w' ? row + 1 : row - 1;
+        if (pr >= 0 && pr < 8) {
+          if (col - 1 >= 0 && board[pr][col - 1] === byColor + 'p') return true;
+          if (col + 1 < 8 && board[pr][col + 1] === byColor + 'p') return true;
+        }
+        var nOffsets = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
+        for (var i = 0; i < nOffsets.length; i++) {
+          var nr = row + nOffsets[i][0], nc = col + nOffsets[i][1];
+          if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8 && board[nr][nc] === byColor + 'n') return true;
+        }
+        for (var dr = -1; dr <= 1; dr++) {
+          for (var dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue;
+            var kr = row + dr, kc = col + dc;
+            if (kr >= 0 && kr < 8 && kc >= 0 && kc < 8 && board[kr][kc] === byColor + 'k') return true;
+          }
+        }
+        var orthoDirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+        for (var od = 0; od < orthoDirs.length; od++) {
+          var d = orthoDirs[od];
+          for (var s = 1; s < 8; s++) {
+            var sr = row + d[0] * s, sc = col + d[1] * s;
+            if (sr < 0 || sr >= 8 || sc < 0 || sc >= 8) break;
+            var t = board[sr][sc];
+            if (t) { if (t.charAt(0) === byColor && (t.charAt(1) === 'r' || t.charAt(1) === 'q')) return true; break; }
+          }
+        }
+        var diagDirs = [[-1, -1], [-1, 1], [1, -1], [1, 1]];
+        for (var dd = 0; dd < diagDirs.length; dd++) {
+          var d2 = diagDirs[dd];
+          for (var s2 = 1; s2 < 8; s2++) {
+            var sr2 = row + d2[0] * s2, sc2 = col + d2[1] * s2;
+            if (sr2 < 0 || sr2 >= 8 || sc2 < 0 || sc2 >= 8) break;
+            var t2 = board[sr2][sc2];
+            if (t2) { if (t2.charAt(0) === byColor && (t2.charAt(1) === 'b' || t2.charAt(1) === 'q')) return true; break; }
+          }
+        }
+        return false;
+      }
+
+      function isPathClear(board, r1, c1, r2, c2) {
+        var dr = r2 === r1 ? 0 : (r2 - r1) / Math.abs(r2 - r1);
+        var dc = c2 === c1 ? 0 : (c2 - c1) / Math.abs(c2 - c1);
+        var r = r1 + dr, c = c1 + dc;
+        while (r !== r2 || c !== c2) {
+          if (board[r][c]) return false;
+          r += dr; c += dc;
+        }
+        return true;
+      }
+
+      function canReach(board, fromR, fromC, toR, toC, kind, color, enPassantTarget, isCapture) {
+        var dr = toR - fromR, dc = toC - fromC;
+        if (kind === 'p') {
+          var dir = color === 'w' ? -1 : 1;
+          var startRow = color === 'w' ? 6 : 1;
+          if (dc === 0) {
+            if (isCapture || board[toR][toC]) return false;
+            if (dr === dir) return true;
+            if (dr === dir * 2 && fromR === startRow && !board[fromR + dir][fromC]) return true;
+            return false;
+          }
+          if (Math.abs(dc) === 1 && dr === dir && isCapture) return true;
+          return false;
+        }
+        if (kind === 'n') {
+          return (Math.abs(dr) === 2 && Math.abs(dc) === 1) || (Math.abs(dr) === 1 && Math.abs(dc) === 2);
+        }
+        if (kind === 'k') {
+          return Math.max(Math.abs(dr), Math.abs(dc)) === 1;
+        }
+        if (kind === 'b') {
+          return Math.abs(dr) === Math.abs(dc) && dr !== 0 && isPathClear(board, fromR, fromC, toR, toC);
+        }
+        if (kind === 'r') {
+          return (dr === 0 || dc === 0) && (dr !== 0 || dc !== 0) && isPathClear(board, fromR, fromC, toR, toC);
+        }
+        if (kind === 'q') {
+          var straight = (dr === 0 || dc === 0) && (dr !== 0 || dc !== 0);
+          var diag = Math.abs(dr) === Math.abs(dc) && dr !== 0;
+          return (straight || diag) && isPathClear(board, fromR, fromC, toR, toC);
+        }
+        return false;
+      }
+
+      function wouldLeaveKingInCheck(board, fromR, fromC, toR, toC, color, epCapRC) {
+        var sim = cloneBoard(board);
+        var moved = sim[fromR][fromC];
+        sim[fromR][fromC] = '';
+        sim[toR][toC] = moved;
+        if (epCapRC) sim[epCapRC[0]][epCapRC[1]] = '';
+        var kingPos = moved === color + 'k' ? [toR, toC] : findKingPos(sim, color);
+        if (!kingPos) return false;
+        return isSquareAttacked(sim, kingPos[0], kingPos[1], color === 'w' ? 'b' : 'w');
+      }
+
+      function parseSan(san) {
+        var clean = san.replace(/[+#]$/, '');
+        if (clean === 'O-O' || clean === '0-0') return { castle: 'king' };
+        if (clean === 'O-O-O' || clean === '0-0-0') return { castle: 'queen' };
+        var m = clean.match(/^([KQRBN])?([a-h])?([1-8])?(x)?([a-h][1-8])(?:=([QRBN]))?$/);
+        if (!m) return null;
+        return {
+          piece: m[1] || 'P',
+          fromFile: m[2] || null,
+          fromRank: m[3] || null,
+          capture: !!m[4],
+          dest: m[5],
+          promotion: m[6] || null
+        };
+      }
+
+      // Applies one SAN move to `board` in place. Returns move metadata, or null on parse/resolve failure.
+      function applySanMove(board, sanRaw, color, enPassantTarget) {
+        var parsed = parseSan(sanRaw);
+        if (!parsed) { console.warn('SAN parse failed:', sanRaw); return null; }
+        var isCheck = /\+$/.test(sanRaw);
+        var isMate = /#$/.test(sanRaw);
+
+        if (parsed.castle) {
+          var homeRow = color === 'w' ? 7 : 0;
+          var kingToC = parsed.castle === 'king' ? 6 : 2;
+          var rookFromC = parsed.castle === 'king' ? 7 : 0;
+          var rookToC = parsed.castle === 'king' ? 5 : 3;
+          board[homeRow][kingToC] = color + 'k';
+          board[homeRow][4] = '';
+          board[homeRow][rookToC] = color + 'r';
+          board[homeRow][rookFromC] = '';
+          return { from: [homeRow, 4], to: [homeRow, kingToC], isCastle: true, isCheck: isCheck, isMate: isMate, san: sanRaw };
+        }
+
+        var destRC = squareToRC(parsed.dest);
+        var kindChar = parsed.piece.toLowerCase() === 'p' ? 'p' : parsed.piece.toLowerCase();
+        var candidates = [];
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var p = board[r][c];
+            if (!p || p.charAt(0) !== color || p.charAt(1) !== kindChar) continue;
+            if (parsed.fromFile && FILES[c] !== parsed.fromFile) continue;
+            if (parsed.fromRank && String(8 - r) !== parsed.fromRank) continue;
+            if (canReach(board, r, c, destRC[0], destRC[1], kindChar, color, enPassantTarget, parsed.capture)) {
+              candidates.push([r, c]);
+            }
+          }
+        }
+        if (candidates.length > 1) {
+          candidates = candidates.filter(function (o) {
+            return !wouldLeaveKingInCheck(board, o[0], o[1], destRC[0], destRC[1], color, null);
+          });
+        }
+        if (!candidates.length) { console.warn('No origin found for SAN:', sanRaw); return null; }
+        var origin = candidates[0];
+        var movingPiece = board[origin[0]][origin[1]];
+        var isEnPassant = kindChar === 'p' && parsed.capture && !board[destRC[0]][destRC[1]];
+        var captured = board[destRC[0]][destRC[1]] || null;
+        if (isEnPassant) {
+          captured = board[origin[0]][destRC[1]];
+          board[origin[0]][destRC[1]] = '';
+        }
+        board[destRC[0]][destRC[1]] = parsed.promotion ? color + parsed.promotion.toLowerCase() : movingPiece;
+        board[origin[0]][origin[1]] = '';
+
+        var newEnPassant = null;
+        if (kindChar === 'p' && Math.abs(destRC[0] - origin[0]) === 2) {
+          newEnPassant = [(destRC[0] + origin[0]) / 2, origin[1]];
+        }
+
+        return {
+          from: origin, to: destRC, captured: captured, isCastle: false,
+          isEnPassant: isEnPassant, isPromotion: !!parsed.promotion,
+          isCheck: isCheck, isMate: isMate, san: sanRaw, newEnPassant: newEnPassant
+        };
+      }
+
+      // Builds the full timeline of board snapshots + move metadata from a SAN move list.
+      function buildTimeline(moveSequence) {
+        var board = createInitialBoard();
+        var states = [cloneBoard(board)];
+        var moveMetas = [];
+        var color = 'w';
+        var enPassantTarget = null;
+        moveSequence.forEach(function (san) {
+          var mv = applySanMove(board, san, color, enPassantTarget);
+          if (!mv) { mv = { from: null, to: null, san: san }; }
+          moveMetas.push(mv);
+          states.push(cloneBoard(board));
+          enPassantTarget = mv.newEnPassant || null;
+          color = color === 'w' ? 'b' : 'w';
+        });
+        return { states: states, moveMetas: moveMetas };
+      }
+
+      // ── Rendering ─────────────────────────────────────
+      function pieceNode(piece) {
+        if (!piece) return '';
+        return '<img class="piece-svg" alt="' + piece + '" src="../../play/assets/pieces/' + PIECE_ASSET[piece] + '">';
+      }
+
+      function renderBoardMatrix(board) {
+        var html = '';
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var isLight = (r + c) % 2 === 0;
+            var bg = isLight ? '#f1f1cf' : '#769656';
+            html += '<div class="square" data-row="' + r + '" data-col="' + c + '" style="background:' + bg + '">' + pieceNode(board[r][c]) + '</div>';
+          }
+        }
+        boardEl.innerHTML = html;
+      }
+
+      function getSquareEl(r, c) { return boardEl.querySelector('[data-row="' + r + '"][data-col="' + c + '"]'); }
+
+      function squareCenterPx(r, c) {
+        var rect = boardEl.getBoundingClientRect();
+        var cell = rect.width / 8;
+        return { x: (c + 0.5) * cell, y: (r + 0.5) * cell };
+      }
+
+      function clearOverlays() {
+        boardEl.querySelectorAll('.square-hl').forEach(function (el) { el.remove(); });
+        arrowsEl.innerHTML = '';
+      }
+
+      function addHighlight(square, color) {
+        var rc = squareToRC(square);
+        var el = getSquareEl(rc[0], rc[1]);
+        if (!el) return;
+        var hl = document.createElement('div');
+        hl.className = 'square-hl';
+        hl.style.background = color;
+        el.appendChild(hl);
+      }
+
+      function drawArrow(fromSq, toSq, color) {
+        var fromRC = squareToRC(fromSq), toRC = squareToRC(toSq);
+        var p1 = squareCenterPx(fromRC[0], fromRC[1]);
+        var p2 = squareCenterPx(toRC[0], toRC[1]);
+        var dx = p2.x - p1.x, dy = p2.y - p1.y;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var ux = dx / len, uy = dy / len;
+        var shrink = 14;
+        var ex = p2.x - ux * shrink, ey = p2.y - uy * shrink;
+        var ns = 'http://www.w3.org/2000/svg';
+        var line = document.createElementNS(ns, 'line');
+        line.setAttribute('x1', p1.x); line.setAttribute('y1', p1.y);
+        line.setAttribute('x2', ex); line.setAttribute('y2', ey);
+        line.setAttribute('stroke', color);
+        line.setAttribute('stroke-width', 4);
+        line.setAttribute('stroke-linecap', 'round');
+        arrowsEl.appendChild(line);
+        var ah = 9;
+        var angle = Math.atan2(dy, dx);
+        var a1x = ex - ah * Math.cos(angle - Math.PI / 7), a1y = ey - ah * Math.sin(angle - Math.PI / 7);
+        var a2x = ex - ah * Math.cos(angle + Math.PI / 7), a2y = ey - ah * Math.sin(angle + Math.PI / 7);
+        var tri = document.createElementNS(ns, 'polygon');
+        tri.setAttribute('points', ex + ',' + ey + ' ' + a1x + ',' + a1y + ' ' + a2x + ',' + a2y);
+        tri.setAttribute('fill', color);
+        arrowsEl.appendChild(tri);
+      }
+
+      // ── App state ─────────────────────────────────────
+      var state = {
+        game: null, meta: null, anno: null, states: [], moveMetas: [],
+        ply: -1, playing: false, timer: null, soundOn: true, voiceOn: true
+      };
+
+      function totalPlies() { return state.moveMetas.length; }
+
+      function renderSolutionLines() {
+        if (!state.meta) { solutionLines.innerHTML = '请选择棋局以显示棋谱'; return; }
+        var seq = state.meta.move_sequence;
+        var lines = [];
+        for (var i = 0; i < seq.length; i += 2) {
+          var num = (i / 2) + 1;
+          var text = num + '. ' + seq[i] + (seq[i + 1] ? ' ' + seq[i + 1] : '');
+          lines.push(text);
+        }
+        solutionLines.innerHTML = lines.map(function (t, idx) {
+          return '<div class="solution-line" data-line="' + idx + '">' + t + '</div>';
+        }).join('');
+      }
+
+      function highlightSolutionLine(ply) {
+        var lineIdx = ply >= 0 ? Math.floor(ply / 2) : -1;
+        solutionLines.querySelectorAll('.solution-line').forEach(function (el) {
+          el.classList.toggle('current', Number(el.dataset.line) === lineIdx);
+        });
+        var current = solutionLines.querySelector('.solution-line.current');
+        if (current) current.scrollIntoView({ block: 'nearest' });
+      }
+
+      function showPopup(html) {
+        if (!html) { popupBox.classList.add('hidden'); return; }
+        popupBox.classList.remove('hidden');
+        popupBox.innerHTML = html;
+      }
+
+      // Builds a natural-language 棋谱 announcement for ply `n` (e.g. "马f3，将军").
+      function moveSpeechText(n) {
+        var mv = state.moveMetas[n];
+        if (mv.isCastle) {
+          var text0 = '王车易位';
+          if (mv.isMate) text0 += '，将杀';
+          else if (mv.isCheck) text0 += '，将军';
+          return text0;
+        }
+        var beforeBoard = state.states[n];
+        var piece = mv.from ? beforeBoard[mv.from[0]][mv.from[1]] : null;
+        var pieceCn = PIECE_NAME_CN[piece ? piece.charAt(1) : 'p'] || '棋子';
+        var destName = mv.to ? rcToSquare(mv.to[0], mv.to[1]) : '';
+        var text = pieceCn + destName;
+        if (mv.isEnPassant) text += '，吃过路兵';
+        else if (mv.isPromotion) text += '，升变';
+        else if (mv.captured) text += '，吃子';
+        if (mv.isMate) text += '，将杀';
+        else if (mv.isCheck) text += '，将军';
+        return text;
+      }
+
+      // Renders ply `n` (-1 = intro/initial position, totalPlies() = outro/final position).
+      function goToPly(n) {
+        n = Math.max(-1, Math.min(totalPlies(), n));
+        state.ply = n;
+        var stateIdx = Math.min(n + 1, state.states.length - 1); // outro (n===totalPlies()) reuses the last real state
+        renderBoardMatrix(state.states[stateIdx]);
+        clearOverlays();
+        highlightSolutionLine(n);
+
+        var narrateText = null;
+        if (n === -1) {
+          showPopup(state.anno.intro && state.anno.intro.popup);
+          if (state.anno.intro) {
+            narrateText = state.anno.intro.voice === true ? stripHtml(state.anno.intro.popup)
+              : (typeof state.anno.intro.voice === 'string' ? state.anno.intro.voice : null);
+          }
+          playStatus.textContent = '开局位置 — 点击▶开始自动播放，或用↩/→单步查看';
+        } else if (n === totalPlies()) {
+          showPopup(state.anno.outro && state.anno.outro.popup);
+          if (state.anno.outro) {
+            narrateText = state.anno.outro.voice === true ? stripHtml(state.anno.outro.popup)
+              : (typeof state.anno.outro.voice === 'string' ? state.anno.outro.voice : null);
+          }
+          playStatus.textContent = '🏁 演示结束';
+          playSound('gameEnd');
+        } else {
+          var mv = state.moveMetas[n];
+          var annoMove = state.anno.moves && state.anno.moves[n];
+          if (annoMove) {
+            showPopup(annoMove.popup);
+            (annoMove.highlights || []).forEach(function (h) {
+              (h.squares || []).forEach(function (sq) { addHighlight(sq, h.color); });
+            });
+            (annoMove.concept_arrows || []).forEach(function (a) { drawArrow(a.from, a.to, a.color); });
+          }
+          narrateText = moveSpeechText(n);
+          if (mv.isMate) playSound('gameEnd');
+          else if (mv.isCheck) playSound('check');
+          else if (mv.captured || mv.isEnPassant) playSound('capture');
+          else playSound('move');
+          playStatus.textContent = '第 ' + (Math.floor(n / 2) + 1) + '回合 · ' + (n % 2 === 0 ? '白方' : '黑方') + '：' + mv.san;
+        }
+        speak(narrateText);
+      }
+
+      function stopAutoplay() {
+        state.playing = false;
+        if (state.timer) { window.clearTimeout(state.timer); state.timer = null; }
+        btnPlay.textContent = '▶';
+        btnPlay.title = '开始自动播放';
+      }
+
+      function stepAutoplay() {
+        if (!state.playing) return;
+        if (state.ply >= totalPlies()) { stopAutoplay(); return; }
+        goToPly(state.ply + 1);
+        if (state.ply >= totalPlies()) { stopAutoplay(); return; }
+        var delay = 2400 - Number(speedRange.value) * 180;
+        state.timer = window.setTimeout(stepAutoplay, Math.max(500, delay));
+      }
+
+      function startAutoplay() {
+        if (!state.anno) return;
+        state.playing = true;
+        btnPlay.textContent = '⏸';
+        btnPlay.title = '暂停自动播放';
+        stepAutoplay();
+      }
+
+      // ── Data loading ──────────────────────────────────
+      function loadGame(key) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        document.querySelectorAll('.game-chip').forEach(function (b) { b.classList.toggle('active', b.dataset.game === key); });
+        playStatus.textContent = '正在加载棋局...';
+        Promise.all([
+          fetch('./data/classic-games/' + key + '.meta.json').then(function (r) { return r.json(); }),
+          fetch('./data/classic-games/' + key + '.anno.json').then(function (r) { return r.json(); }),
+          fetch('./data/classic-games/' + key + '.exp.txt').then(function (r) { return r.text(); })
+        ]).then(function (res) {
+          state.game = key;
+          state.meta = res[0];
+          state.anno = res[1];
+          var timeline = buildTimeline(state.meta.move_sequence);
+          state.states = timeline.states;
+          state.moveMetas = timeline.moveMetas;
+          explanationText.textContent = res[2].replace(/\s*#\s*END\s*$/, '').trim();
+          renderSolutionLines();
+          goToPly(-1);
+        }).catch(function (e) {
+          playStatus.textContent = '棋局加载失败: ' + e.message;
+        });
+      }
+
+      // ── Controls ──────────────────────────────────────
+      document.querySelectorAll('.game-chip').forEach(function (btn) {
+        btn.addEventListener('click', function () { loadGame(btn.dataset.game); });
+      });
+
+      btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
+      btnPrev.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply - 1); });
+      btnNext.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply + 1); });
+      btnPlay.addEventListener('click', function () {
+        if (!state.anno) return;
+        if (state.playing) stopAutoplay(); else startAutoplay();
+      });
+      btnSound.addEventListener('click', function () {
+        state.soundOn = !state.soundOn;
+        btnSound.classList.toggle('active', state.soundOn);
+      });
+      btnVoice.addEventListener('click', function () {
+        state.voiceOn = !state.voiceOn;
+        btnVoice.classList.toggle('active', state.voiceOn);
+        if (!state.voiceOn && window.speechSynthesis) window.speechSynthesis.cancel();
+      });
+      volumeRange.addEventListener('input', function () { volumeValue.textContent = volumeRange.value; });
+      speedRange.addEventListener('input', function () { speedValue.textContent = speedRange.value; });
+
+      btnExplainVoice.addEventListener('click', function () {
+        if (!window.speechSynthesis) return;
+        if (btnExplainVoice.classList.contains('speaking')) {
+          window.speechSynthesis.cancel();
+          btnExplainVoice.classList.remove('speaking');
+          return;
+        }
+        var text = explanationText.textContent.trim();
+        if (!text) return;
+        window.speechSynthesis.cancel();
+        var ut = new SpeechSynthesisUtterance(text);
+        ut.lang = 'zh-CN';
+        ut.rate = 0.92;
+        ut.volume = Number(volumeRange.value) / 100;
+        ut.onend = function () { btnExplainVoice.classList.remove('speaking'); };
+        ut.onerror = function () { btnExplainVoice.classList.remove('speaking'); };
+        btnExplainVoice.classList.add('speaking');
+        window.speechSynthesis.speak(ut);
+      });
+
+      var btnBackIntro = document.getElementById('btnBackIntro');
+      if (btnBackIntro) {
+        btnBackIntro.addEventListener('click', function (e) {
+          if (window.history.length > 1) { e.preventDefault(); window.history.back(); }
+        });
+      }
+
+      renderBoardMatrix(createInitialBoard());
+    })();
+  </script>
 </body>
 </html>
