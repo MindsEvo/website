@@ -1,0 +1,48 @@
+{
+  "game_id": "B7_PieceCoord_Practice_010",
+  "description": "B96 — 极限协调施压：对攻中的子力分工",
+  "intro": {
+    "flash_squares": ["g5", "f4", "f3", "d4", "c3"],
+    "popup": "子力协调第10局\n西西里纳伊多夫：对攻局面的极限协调\nBg5，f4，Qf3三子协调攻击——每子分工明确",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：对攻中的协调是最高境界\n每一子都在同时执行攻击任务，无一废子",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局\n王翼控制"},
+    {"index": 1, "move": "c5", "popup": "c5！西西里防御\n黑方不对称反击"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3第1马"},
+    {"index": 3, "move": "d6", "popup": "d6黑方守中心"},
+    {"index": 4, "move": "d4", "popup": "d4！打开中心\n激活：打开d列，让Nf3进入d4"},
+    {"index": 5, "move": "cxd4", "popup": "cxd4黑方换兵\n西西里的核心：打开c列"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4马进中心\n激活：马控c2/b3/f3/e6\n计划：Nxd4是白方中心的核心"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6黑方马出动\n攻击e4"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3第2马\n协调：Nxd4+Nc3双马控制中心\n计划：后翼子力控中，王翼开始攻击！", "highlights": [{"squares": ["d4", "c3", "e4"], "color": "#C6D50033"}]},
+    {"index": 9, "move": "a6", "popup": "a6防止Nb5\n黑方典型的纳伊多夫标志"},
+    {"index": 10, "move": "Bg5", "popup": "Bg5！攻击三角第1支柱！\n激活：象出动牵制Nf6\n协调：Bg5（牵制f6马）是白方攻击体系的\"第一刀\"\n任务：限制黑方f6马的活动，使黑方防守被动", "highlights": [{"squares": ["f6", "e7"], "color": "#E5393533"}]},
+    {"index": 11, "move": "e6", "popup": "e6黑方守备\n黑方开放e线，Be7解救Nf6"},
+    {"index": 12, "move": "f4", "popup": "f4！攻击三角第2支柱！\n激活：f4兵推进\n协调：f4（推进控e5/准备f5）+ Bg5（牵制）联动\n任务：f4→f5的推进是王翼攻击的主轴！", "highlights": [{"squares": ["f4", "f5", "f6", "f7"], "color": "#FF5722033"}]},
+    {"index": 13, "move": "Be7", "popup": "Be7黑方象出动\n黑方解救Nf6"},
+    {"index": 14, "move": "Qf3", "popup": "Qf3！攻击三角第3支柱！\n激活：后出来支援\n协调三角完成：\n  Bg5（牵制f6马）\n  f4（f列推进轴）\n  Qf3（后支援f5+威胁Bxf6）\n三角协调攻击形成！\n计划：后+象+f兵，三子同时施压黑方", "highlights": [{"squares": ["f3", "f5", "b7", "g4"], "color": "#8E24AA66"}]},
+    {"index": 15, "move": "Qc7", "popup": "Qc7黑方后联结双车\n黑方准备后翼反击"},
+    {"index": 16, "move": "O-O-O", "popup": "O-O-O！长易位！\n激活：双车控d/e列\n协调：长易位后Rd1控d列\n计划：后翼控制（Nd4+Nc3+Rd1）+王翼攻击（Bg5+f4+Qf3）\n双翼协调并进！这是极限协调的最高形式！", "highlights": [{"squares": ["d1", "d4", "c3"], "color": "#FF8F0033"}]},
+    {"index": 17, "move": "Nbd7", "popup": "Nbd7黑方第2马出动\n准备后翼反击"},
+    {"index": 18, "move": "g4", "popup": "g4！翼兵推进！\n激活：g4开启g列攻击\n协调：g4+f4双兵推进\n任务：g4→g5，逼黑方Nf6离开防守位", "highlights": [{"squares": ["g4", "g5", "f6"], "color": "#E5393533"}]},
+    {"index": 19, "move": "b5", "popup": "b5！黑方后翼反击！\n协调对抗：黑方在后翼推进回应白方王翼攻击\n这就是对攻：双方协调各自的攻击！"},
+    {"index": 20, "move": "Bxf6", "popup": "Bxf6！！消除Nf6！\n激活：象换马，清除黑方关键防守子\n协调：Bg5的任务完成——牵制后再消除\n计划：换掉Nf6后，g5推进无阻挡！", "highlights": [{"squares": ["f6", "g5"], "color": "#E5393566"}]},
+    {"index": 21, "move": "Nxf6", "popup": "Nxf6黑方吃回\n黑方Nd7跳入f6补位"},
+    {"index": 22, "move": "f5", "popup": "f5！！主轴突破！\n激活：f5兵打开e6守备\n协调：f4→f5是白方攻击体系的最终一击\n  Qf3（支援f5推进）\n  g4（配合f5，双兵联进）\n  Rd1（车控d列，随时增援）\n计划：f5强行打开e6，也同时消除了黑方e6兵对d5的控制！", "highlights": [{"squares": ["f5", "e6"], "color": "#E5393566"}]},
+    {"index": 23, "move": "exf5", "popup": "exf5黑方被迫吃回\n黑方e6兵吃f5，中心被强行打开\n✅ 重要：e6空了！白方d5崁子不再被吃！"},
+    {"index": 24, "move": "gxf5", "popup": "gxf5！g兵吃回！\n激活：g4兵加入攻击航线\n协调：g落在f5，f列+g列将全面开放\n现在e6已空，d5格安全无忧！", "highlights": [{"squares": ["f5", "g4"], "color": "#FF5722066"}]},
+    {"index": 25, "move": "O-O", "popup": "O-O黑方易位\n黑方国王认为逃到安全区，但实际上走入了白方攻击范围！"},
+    {"index": 26, "move": "Nd5", "popup": "Nd5！！马占领中心强格！\n激活：Nc3跳入d5——完美中心格！\n✅ e6已空，Nd5安全不被吃！\n协调：Nd5（进攻型、攻击Qc7）+ Qf3（支援）+ Rd1（车控d列）\n黑方Qc7被头马攻击，必须撤退！", "highlights": [{"squares": ["d5", "c7", "b6", "e7", "e3", "f4"], "color": "#8E24AA66"}]},
+    {"index": 27, "move": "Qd8", "popup": "Qd8黑后被迫撤退\n黑方后失去主动权，守备被动"},
+    {"index": 28, "move": "Nxf6+", "popup": "Nxf6+！！马吃马将军！\n激活：Nd5跳入f6，吃掉黑方马并将军！\n协调终结态：\n♞ Nxf6+（马吃马并将军）\n♟ f5（兵打开中心）\n♖ Rd1（车控d列）\n♛ Qf3（后遥控全局）\n✅ Bg5（消除Nf6）→f4+g4（双兵打基）→f5（突破e6）→Nd5（马占中心）→Nxf6+（最终一击）\n这是最极限的协调攻击体系！", "highlights": [{"squares": ["f6", "d5", "f5", "f3", "d1"], "color": "#E5393566"}]}
+  ]
+}

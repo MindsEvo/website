@@ -1,0 +1,50 @@
+﻿{
+  "label": "结构类",
+  "color": "#2980B9",
+  "categories": [
+    {
+      "key": "C9_pawn_chains",
+      "label": "C9  兵链方向",
+      "items": [
+        { "id": "opening_C9_PawnChain_Practice_006", "label": "6. 练习6：法国温洩变例双翼竞速（C18）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Practice_007", "label": "7. 练习7：国王印度马德普拉塔双链对攻（E97）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Practice_008", "label": "8. 练习8：尼姆佐古典变例根部反击（E41）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Practice_009", "label": "9. 练习9：QGD大中心变例兵链与残局（D55）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C9_PawnChain_Practice_010", "label": "10. 练习10：英国开局非对称双兵链总结（A25）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C10_weak_squares",
+      "label": "C10 弱格利用",
+      "items": [
+        { "id": "opening_C10_WeakSquares_Practice_006", "label": "6. Ba6瞄准弱格（后翼印度防御 E15）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Practice_007", "label": "7. 孤立兵制造弱格（英格兰开局 A13）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Practice_008", "label": "8. 兑换后的e5弱格（后翼弃兵 D30）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Practice_009", "label": "9. 黑格弱点链（尼姆佐印度 E47）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C10_WeakSquares_Practice_010", "label": "10. Ne4占据弱格+c3通路兵强制得子（英格兰开局 A17）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C11_open_files",
+      "label": "C11 开放线",
+      "items": [
+        { "id": "opening_C11_OpenFiles_Practice_006", "label": "6. 抢占c线主动权（西西里四马变 B45）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Practice_007", "label": "7. 车借d线入侵（QGD交换变 D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Practice_008", "label": "8. e线开放后的战术得子（彼得罗夫防御 C42）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Practice_009", "label": "9. 开放线配合底行弱点（雷蒂开局 A07）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C11_OpenFiles_Practice_010", "label": "10. f6挑战楔子打通f线（卡罗-卡恩 B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "C12_space_cramp",
+      "label": "C12 空间挤压",
+      "items": [
+        { "id": "opening_C12_SpaceCramp_Practice_006", "label": "6. 练习6：指出被压子力并找到反击点（卡罗-卡恩推进变 B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Practice_007", "label": "7. 练习7：吃兵换来空间失衡（后翼弃兵接受变 D20）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Practice_008", "label": "8. 练习8：局促中找反击（后印度防御 E12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Practice_009", "label": "9. 练习9：超现代防御：为什么主动让出空间？（现代防御 B06）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_C12_SpaceCramp_Practice_010", "label": "10. 练习10：谁的空间更有价值？（雷蒂改良KIA A07）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

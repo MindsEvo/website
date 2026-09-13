@@ -1,0 +1,244 @@
+{
+  "game_id": "D14_UsefulExchange_Practice_006",
+  "description": "柏林防御 C67 — 练习：白方及时换后进入柏林残局，获得结构优势",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "d8",
+      "d1"
+    ],
+    "popup": "及时兑子 练习第1局\n\n柏林防御（C67）——最著名的【换后局】！\n\n⭐ 练习目标：\n找到正确的兑换时机和方式\n白方在第8步有机会换后！\n\n思考：\n• 8.Qxd8+ 是【及时兑换】吗？\n• 换后之后白方获得什么优势？\n• 黑方叠兵（c6+c5）有多弱？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "柏林防御练习总结\n\n你完成了及时兑子的经典练习！\n\n这局的兑换链：\n① 6.Bxc6 象换马 → 制造叠兵\n② 7.dxe5 兵换兵 → 打开d列\n③ 8.Qxd8+ 换后！ → 进入结构优势残局\n④ 12.Nxd4 马换马 → 简化获利\n\n及时兑子的核心判断：\n每次兑换都有明确的战略目的！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d8"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称应对"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 发展马"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 守护e5"
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "popup": "Bb5！柏林系统开始\n象对准Nc6"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6！柏林防御！\n黑马发展，不怕白方4.Bxc6"
+    },
+    {
+      "index": 6,
+      "move": "O-O",
+      "popup": "O-O 白方入城\n准备Pe4的后续"
+    },
+    {
+      "index": 7,
+      "move": "Nxe4",
+      "popup": "Nxe4！黑马吃兵！\n柏林的核心变化"
+    },
+    {
+      "index": 8,
+      "move": "d4",
+      "popup": "d4！攻击Nc6！\n白方开启进攻"
+    },
+    {
+      "index": 9,
+      "move": "Nd6",
+      "popup": "Nd6 马退到d6\n避开白方d4的攻击",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d6"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Bxc6",
+      "popup": "Bxc6！！第一次兑换！\n\n⭐ 兑换决策：\n白象用Bb5换掉Nc6！\n① Nc6是黑方守护e5的主力\n② 换掉后黑方e5兵失去保护\n③ 制造c6+c7叠兵！\n\n代价：失去活跃的白格象",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "dxc6",
+      "popup": "dxc6 黑d兵回吃\n\n⭐ 结果：\n叠兵c6+c7出现！\nd列半开放，黑方d6→c7路线受阻",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "c7"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "dxe5",
+      "popup": "dxe5！第二次兑换！\n\n⭐ 白方利用叠兵：\n黑方e5兵已失去Nc6的保护\n白方立刻 d4吃e5！\n打开d列，e5强格属于白方！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nf5",
+      "popup": "Nf5 黑马跳入f5\n攻击e3格，寻找反击机会"
+    },
+    {
+      "index": 14,
+      "move": "Qxd8+",
+      "popup": "Qxd8+！！！换后！！\n\n⭐⭐ 关键兑换时机！\n白方主动兑换王后！为什么？\n\n① 黑方叠兵（c6/c5）已经是永久弱点\n② 换后进入残局，叠兵弱点更难防守\n③ 白方结构更好，残局优势明显！\n\n这正是柏林残局的精髓：\n为了结构优势，主动简化！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d8"
+          ],
+          "color": "#E5393577"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Kxd8",
+      "popup": "Kxd8 黑王必须回吃\n\n⭐ 代价：黑王失去入城权！\n残局中黑王在d8是一个问题——\n王在中心，开放局面中容易受到攻击"
+    },
+    {
+      "index": 16,
+      "move": "Rd1+",
+      "popup": "Rd1+！车占d1将军！\n\n⭐ 这步比Nc3更强！\n白方先将军黑王，黑王必须移到e8\n白困黑王在e列，配合Nc3和Re1的后续压制",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d8"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Ke8",
+      "popup": "Ke8 黑王叨四e8\n黑王被困在e列，发展受阻"
+    },
+    {
+      "index": 18,
+      "move": "Nc3",
+      "popup": "Nc3！白马发展！\n准备Nd5跳入强格，攻击叠兵",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Be7",
+      "popup": "Be7 黑象发展\n准备入城，但黑王已在e8无法入城"
+    },
+    {
+      "index": 20,
+      "move": "g4",
+      "popup": "g4！白方王翣进攻！\n\n⭐ 攻击Nf5！\n白兵g4直接攻击黑马f5\n黑马必须移开，白方王翣空间扩张",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "f5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nh4",
+      "popup": "Nh4！黑马跳入h4！\n\n⭐ 黑方的饭馈！\nNf5→h4，黑马着陆强格h4\n探索白方王翣的弱点",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "h4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Nxh4",
+      "popup": "Nxh4！白马吃掉入侵的马！\n\n⭐ 第四次兑换！\nNf3吃Nh4，清除入侵弱子\n白方马占据强h4前哨站",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "h4"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Bxh4",
+      "popup": "Bxh4！黑象回吃！\n\n⭐ 兑换结束！\n黑象Be7沿对角线吃採Nh4\n\n局面总结：\n白方：叠兵优势 + 黑王困在e列 + 敞开b列\n黑方：庄内兵结构叠加王位困境\n\n及时兑子的全套！\n每次兑换都有清晰的战略目的！",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "h4"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    }
+  ]
+}

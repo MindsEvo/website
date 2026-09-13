@@ -1,0 +1,487 @@
+{
+  "game_id": "B8_RookCoord_Practice_009",
+  "description": "D20 — 链接双车 - 第9局：叠车压制（后翼弃兵接受变例）",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "d5",
+      "d7",
+      "e7",
+      "e8"
+    ],
+    "popup": "链接双车练习 9\n后翼弃兵叠车压制！\n白方双车叠加在d线！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "叠车压制的完整流程：Rad1 → d5突破 → Rxd5夺据点 → Rcd1叠车完成 → R5d3灵活机动。\n黑方沉着应对， 势均力敌中白方略占主动！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4！后翼弃兵开局——控制中心"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5：黑方占中心，针锋相对"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4！后翼弃兵——白方邀请黑方吃兵",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "dxc4",
+      "popup": "dxc4！接受弃兵——后翼弃兵接受变例（QGA）",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "Nf3：马出动，助攻中心"
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3：巩固中心，准备象c4收回弃兵"
+    },
+    {
+      "index": 8,
+      "move": "Bxc4",
+      "popup": "Bxc4！白方象收回c4，控制对角线",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "O-O：王翼易位，双车开始连接！",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "g1",
+            "h1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "exd4",
+      "popup": "exd4：白方兑换，建立孤立d兵（但d线将成为武器！）",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Nbd7",
+      "popup": "Nbd7：关键！黑马跳d7而非c6——保持c6空格，b7象斜线畅通",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "c6",
+            "b7"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nc3",
+      "popup": "Nc3：大马出动，支持d线推进"
+    },
+    {
+      "index": 16,
+      "move": "Be3",
+      "popup": "Be3：象保护d4兵，准备d5突破"
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "O-O：黑方也易位，双方进入中局"
+    },
+    {
+      "index": 18,
+      "move": "Qe2",
+      "popup": "Qe2！关键一步：退后e2（不是d3！），为d1腾空，让车进d线",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "d1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Rad1",
+      "popup": "☆ Rad1！第一车进d线！双车开始连接，d线争夺开始！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d4",
+            "d5",
+            "d8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Bb7",
+      "popup": "Bb7：黑象斜线防守——但白方已胸有成竹"
+    },
+    {
+      "index": 22,
+      "move": "d5",
+      "popup": "☆☆ d5！中心突破！d线炸开！黑方防线动摇！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e6"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "Nxd5",
+      "popup": "Nxd5：马占d5，强化中心，邀请黑马兑换"
+    },
+    {
+      "index": 25,
+      "move": "Nxd5",
+      "popup": "Nxd5：黑马吃回，但让d5变成开放地带"
+    },
+    {
+      "index": 26,
+      "move": "Bxd5",
+      "popup": "Bxd5：象取d5，迫使黑方应对！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Bxd5",
+      "popup": "Bxd5：黑象自然吃回！（c6空着，斜线畅通——这才是正确的棋！）",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "b7",
+            "c6"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "move": "Rxd5",
+      "popup": "☆☆☆ Rxd5！车换象！白方主动以车换象，夺取d5据点，建立d线主动权！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d1"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Qc7",
+      "popup": "黑后来到c7，防御d线并保持棋形紧凑。",
+      "highlights": [
+        {
+          "squares": [
+            "c7",
+            "d5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "move": "Rc1",
+      "popup": "☆☆☆☆ Rc1！第二车进c线！双车分布在c、d两条纵线，立体控制中心。",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a1",
+          "to": "c1",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Qb7",
+      "popup": "黑后退到b7，加强后翼防守，避开c线车的压力。",
+      "highlights": [
+        {
+          "squares": [
+            "b7",
+            "c1"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 32,
+      "move": "Rcd1",
+      "popup": "☆☆☆☆☆ Rcd1！叠车完成！双车汇聚d线（Rd5+Rd1），d线从头到尾尽在掌控！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d5"
+          ],
+          "color": "#C6D50099",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c1",
+          "to": "d1",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "d1",
+          "to": "d8",
+          "color": "#C6D50077"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "Nf6",
+      "popup": "黑马出击，跳f6攻击d5的车，试图驱逐它。",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "move": "R5d3",
+      "popup": "白车灵活后撤至d3，避开马的攻击，同时保持双车叠加在d线的格局。叠车不必硬撑，灵活机动才是关键！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "d1"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "d3",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "Qe4",
+      "popup": "黑后进入e4，攻击白方c2兵，同时活跃位置。双方均势，各有棋子活跃。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "c2"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "c2",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "move": "h3",
+      "popup": "白方走h3，防止Bg4钉住Nf3，巩固王翼结构。",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 37,
+      "move": "h6",
+      "popup": "黑方h6对称防守，防止Bg5，双方各自稳固阵型。",
+      "highlights": [
+        {
+          "squares": [
+            "h6",
+            "g5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 38,
+      "move": "Rd4",
+      "popup": "白车Rd4，后撤一步保持灵活，伺机进攻d7或配合另一车施压。双车仍叠加在d线（Rd4+Rd3）。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d3"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "d4",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "move": "Qe6",
+      "popup": "🏁 黑后到e6，局面趋于均势。\n\n本局总结——叠车的完整流程：\n① Rad1（第一车进d线）\n② d5突破，打开d线\n③ Rxd5（车换象，夺d5据点）\n④ Rc1+Rcd1（双车汇聚d线）\n⑤ R5d3（灵活机动，保持叠车格局）\n\n叠车不是为了立刻赢子，而是通过d线的持续压力让对方棋子被动、活动受限——这才是「叠车压制」的真正意义！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d3"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d1",
+          "to": "d8",
+          "color": "#C6D50055"
+        },
+        {
+          "from": "d3",
+          "to": "d8",
+          "color": "#C6D50055"
+        }
+      ]
+    }
+  ]
+}

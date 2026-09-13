@@ -1,0 +1,416 @@
+{
+  "game_id": "A3_Space_Practice_007",
+  "description": "后翼弃兵 D30 — 步步为营，每步扩展都要确认有子力支撑",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "c4",
+      "e3",
+      "d5"
+    ],
+    "popup": "每步跟着白方走，确认d4和c4推进时是否有子力在保护。\n安全才能扩展。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "步步为营，每步推进都有支撑。\n后翼弃兵是最经典的安全扩展体系。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "c4",
+      "e3",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "▶️ <b>d4</b><br>白方开局，占中心",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c5",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "▶️ <b>d5</b><br>黑方对称争中心",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "▶️ <b>c4 — 后翼弃兵！</b><br>白方提供c4弃兵，扩大中心控制<br>如果黑方吃，白方得到快速发展",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#FF8F0055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "▶️ <b>e6</b><br>黑方不吃弃兵，选择巩固中心<br>这是后翼弃兵拒绝变例",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "d5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "🔑 <b>Nf3 — 先出棋子！</b><br>白方出马，保护d4并控制e5<br>记住：每步推兵前先确认有子力支撑！",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "▶️ <b>Nf6</b><br>黑方也出马，局面平衡发展",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "d5",
+            "e4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Nc3",
+      "popup": "🔑 <b>Nc3 — 第二个马加入中心控制。",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4",
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#C6D500CC"
+        },
+         {
+          "from": "c3",
+          "to": "d5",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "▶️ <b>Be7</b><br>黑方象出动，准备易位<br>稳健的防御，不冒进",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "f6"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Bg5",
+      "popup": "🔑 <b>Bg5 — 战略牵制！</b><br>白方象钉住黑方Nf6<br>这有什么战略价值？<br>削弱黑方对中心的控制，限制黑方的反击能力。",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6",
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "f6",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "▶️ <b>O-O</b><br>黑方易位，王安全<br>现在黑方准备好发动中心反击了",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "g1"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "e3",
+      "popup": "🔑 <b>e3 — 又一个支撑步！</b><br>白方通过e3巩固d4和c4",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "d4",
+            "c4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "d4",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "e3",
+          "to": "c4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nbd7",
+      "popup": "▶️ <b>Nbd7</b><br>黑方出马，准备c5反击<br>黑方在等待时机",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "f6",
+            "c5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "c5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Rc1",
+      "popup": "🔑 <b>Rc1 — 车保护c4！</b><br>白方把车放到c1，在c列支援c4<br>这是「步步为营」的精髓：提前布好防线，让每步兵都有后援",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "c4",
+            "c5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c1",
+          "to": "c4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "c6",
+      "popup": "▶️ <b>c6</b><br>黑方准备推进c5，先走c6支撑<br>黑方也在「步步为营」地准备反击",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "c5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "c5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "🔑 <b>Bd3 — 准备推e4！</b><br>白方象到d3，目的是支援e4推进<br>现在e4有：Bd3对角线 + Nc3 + Nf3的支撑<br>白方什么时候推e4才是安全的？答：等Re1也就位后！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "e4",
+            "c4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "dxc4",
+      "popup": "▶️ <b>dxc4</b><br>黑方换掉c4，改变局面！<br>为什么黑方这时候选择换？",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d5"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Bxc4",
+      "popup": "▶️ <b>Bxc4</b><br>白方象吃回，迅速恢复态势<br>白方在c4还有一个活跃的象",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7",
+            "d5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "Nd5",
+      "popup": "✅ <b>Nd5！黑方最后的反击！</b><br>黑方马跳到d5，一个非常强的中心格！<br>• 攻击白方Bg5和c3<br>• 占据了d5的「空缺」<br>这是黑方通过「步步为营」准备的最终反击手段<br>双方都做到了安全扩展，局面很平衡！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "g5",
+            "c3",
+            "f4"
+          ],
+          "color": "#00BCD466",
+          "duration_ms": 2000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "g5",
+          "color": "#E53935CC"
+        },
+        {
+          "from": "d5",
+          "to": "c3",
+          "color": "#E53935CC"
+        }
+      ]
+    }
+  ]
+}

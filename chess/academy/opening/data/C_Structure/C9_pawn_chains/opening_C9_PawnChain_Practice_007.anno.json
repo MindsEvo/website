@@ -1,0 +1,236 @@
+{
+  "game_id": "C9_PawnChain_Practice_007",
+  "description": "E97 — 国王印度古典变例马德普拉塔，双兵链对攻教科书",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d5",
+      "e5",
+      "d6"
+    ],
+    "popup": "兵链方向练习7\n最经典双兵链对攻！\n白链e4-d5→指向黑后翼\n黑链e5-d6→指向白王翼\n两个兵链方向完全相对！\n每步棋都要沿本方链方向前进！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：d5锁定双链 → f5-f4锁死 → c5突破后翼 → g4总攻\n双兵链对攻最纯粹示范！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4"
+    },
+    {
+      "index": 1,
+      "move": "Nf6"
+    },
+    {
+      "index": 2,
+      "move": "c4"
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "g6国王印度"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Bg7"
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4！白方建立大中心e4-d4"
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "d6黑方策略：绕道进攻"
+    },
+    {
+      "index": 8,
+      "move": "Nf3"
+    },
+    {
+      "index": 9,
+      "move": "O-O"
+    },
+    {
+      "index": 10,
+      "move": "Be2"
+    },
+    {
+      "index": 11,
+      "move": "e5",
+      "popup": "e5！！黑方推进！e5-d6链雏形出现"
+    },
+    {
+      "index": 12,
+      "move": "O-O"
+    },
+    {
+      "index": 13,
+      "move": "Nc6"
+    },
+    {
+      "index": 14,
+      "move": "d5",
+      "popup": "d5！！双兵链形成！\n白e4-d5链→指向黑后翼\n黑e5-d6链→指向白王翼\n这是双兵链对攻最经典结构！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5",
+            "e5",
+            "d6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ne7",
+      "popup": "Ne7马转移，准备f5"
+    },
+    {
+      "index": 16,
+      "move": "Ne1",
+      "popup": "Ne1马重组"
+    },
+    {
+      "index": 17,
+      "move": "Nd7"
+    },
+    {
+      "index": 18,
+      "move": "Nd3"
+    },
+    {
+      "index": 19,
+      "move": "f5",
+      "popup": "f5！！黑f5！沿黑方兵链方向推进\nf4锁死局面，王翼竞速准备就绪",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "e5",
+            "d6"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Bd2"
+    },
+    {
+      "index": 21,
+      "move": "Nf6"
+    },
+    {
+      "index": 22,
+      "move": "f3",
+      "popup": "f3！白f3准备c5，攻d6根部"
+    },
+    {
+      "index": 23,
+      "move": "f4",
+      "popup": "f4！！f4锁定！兵链冻结，双翼竞速正式开始"
+    },
+    {
+      "index": 24,
+      "move": "c5",
+      "popup": "c5！！白方c5！沿兵链方向后翼突破\n攻击d6根部！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d5",
+            "d6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "g5",
+      "popup": "g5！黑方g侧推进，沿黑方链方向"
+    },
+    {
+      "index": 26,
+      "move": "cxd6",
+      "popup": "cxd6兑换"
+    },
+    {
+      "index": 27,
+      "move": "cxd6"
+    },
+    {
+      "index": 28,
+      "move": "Nb5",
+      "popup": "Nb5马强占b5"
+    },
+    {
+      "index": 29,
+      "move": "Neg6"
+    },
+    {
+      "index": 30,
+      "move": "Rc1"
+    },
+    {
+      "index": 31,
+      "move": "Rf7"
+    },
+    {
+      "index": 32,
+      "move": "a4"
+    },
+    {
+      "index": 33,
+      "move": "h5"
+    },
+    {
+      "index": 34,
+      "move": "a5"
+    },
+    {
+      "index": 35,
+      "move": "g4",
+      "popup": "g4！！黑方王翼总攻！"
+    },
+    {
+      "index": 36,
+      "move": "fxg4"
+    },
+    {
+      "index": 37,
+      "move": "hxg4",
+      "popup": "hxg4！黑方兵海总冲锋！\n双翼竞速进入最后阶段——谁先到达对方的王？",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "g3",
+            "h2"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    }
+  ]
+}

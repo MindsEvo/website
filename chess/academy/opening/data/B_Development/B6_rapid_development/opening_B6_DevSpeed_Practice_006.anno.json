@@ -1,0 +1,186 @@
+{
+  "game_id": "B6_DevSpeed_Practice_006",
+  "description": "C40 — 标准出子秩序完整展示",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第6局\n在非常规局面中也要坚持正确的出子顺序",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：标准出子顺序在任何变例中都适用",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3出动\n第1个轻子，正确"
+    },
+    {
+      "index": 3,
+      "move": "f5",
+      "popup": "f5！黑方推翼兵\n费隆佐尼弃兵，激进但有风险"
+    },
+    {
+      "index": 4,
+      "move": "Nxe5",
+      "popup": "Nxe5！白马抓机会\n黑方f5推兵后e5弱了"
+    },
+    {
+      "index": 5,
+      "move": "Qf6",
+      "popup": "Qf6黑方后出动\n⚠️ 黑方后过早出动，追逐白马"
+    },
+    {
+      "index": 6,
+      "move": "Nc4",
+      "popup": "Nc4马后退\n白马保留，让黑方后扑空"
+    },
+    {
+      "index": 7,
+      "move": "fxe4",
+      "popup": "fxe4黑方推进"
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3！白方第2个马出动\n继续发展，不理会黑方威胁",
+      "highlights": [
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Qf7",
+      "popup": "Qf7后再移动\n黑方后已走2步（f6→f7）\n发展落后"
+    },
+    {
+      "index": 10,
+      "move": "Ne3",
+      "popup": "Ne3马调整\n白方灵活部署"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6黑方稳固"
+    },
+    {
+      "index": 12,
+      "move": "d3",
+      "popup": "d3推进\n打开象的通道"
+    },
+    {
+      "index": 13,
+      "move": "exd3",
+      "popup": "exd3兑换"
+    },
+    {
+      "index": 14,
+      "move": "Bxd3",
+      "popup": "Bxd3！象出动\n白方第3个轻子出动，到达最佳位置",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "d5",
+      "popup": "d5黑方争中心"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O！易位\n轻子全出，立即易位",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nf6",
+      "popup": "Nf6黑方马出动（较晚）"
+    },
+    {
+      "index": 18,
+      "move": "Re1",
+      "popup": "Re1！车激活\n只有完成易位后车才出动\n这是出子顺序的正确示范",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "e1"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Be7",
+      "popup": "Be7黑方象出动"
+    },
+    {
+      "index": 20,
+      "move": "Nf5",
+      "popup": "Nf5马激进\n利用先手优势"
+    },
+    {
+      "index": 21,
+      "move": "O-O",
+      "popup": "O-O黑方终于易位"
+    },
+    {
+      "index": 22,
+      "move": "Bg5",
+      "popup": "Bg5！出子完整的奖励！\nc1象终于出动，全部子力激活\nBg5牵制Nf6——因为Nf6被象钉在Be7上，\n不能轻易移动，否则损失更大的子\n这就是出子完整后每颗子都有威胁力的体现！",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6",
+            "e7"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    }
+  ]
+}

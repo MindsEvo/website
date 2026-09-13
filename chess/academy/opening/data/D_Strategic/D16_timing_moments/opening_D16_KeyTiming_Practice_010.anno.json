@@ -1,0 +1,44 @@
+{
+  "game_id": "D16_KeyTiming_Practice_010",
+  "description": "后翼弃兵接受D27 — 关键时机：dxc4→c5→b5→e5四步时机链",
+  "intro": {
+    "flash_squares": ["c4", "d5"],
+    "popup": "关键时机练习10\n\n后翼弃兵接受！\n\n接受兵容易，何时出击才难\n\n练习目标：\n掌握dxc4→c5→b5→e5四步时机链",
+    "voice": true
+  },
+  "outro": {
+    "popup": "QGA时机总结\n\n四步时机链：\n① dxc4！：白方推c4立刻接受\n② c5！：象在c4时挑战d4\n③ b5！：后在e2时驱逐象\n④ e5！：白方e4时立即反击\n\n时机是连续的！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["c4", "e5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "d5", "popup": "d5"},
+    {"index": 2, "move": "c4", "popup": "c4 弃兵"},
+    {"index": 3, "move": "dxc4", "popup": "dxc4！时机！\n立刻接受，保持领先"},
+    {"index": 4, "move": "Nf3", "popup": "Nf3"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6"},
+    {"index": 6, "move": "e3", "popup": "e3"},
+    {"index": 7, "move": "e6", "popup": "e6"},
+    {"index": 8, "move": "Bxc4", "popup": "Bxc4 象夺回"},
+    {"index": 9, "move": "c5", "popup": "c5！时机！\n象在c4时立刻反击d4"},
+    {"index": 10, "move": "O-O", "popup": "O-O"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6"},
+    {"index": 12, "move": "Nc3", "popup": "Nc3"},
+    {"index": 13, "move": "a6", "popup": "a6 防Nb5"},
+    {"index": 14, "move": "dxc5", "popup": "dxc5"},
+    {"index": 15, "move": "Bxc5", "popup": "Bxc5 象就位"},
+    {"index": 16, "move": "Qe2", "popup": "Qe2"},
+    {"index": 17, "move": "b5", "popup": "b5！时机！\n后在e2，象在c4\n用b5驱象赢节奏"},
+    {"index": 18, "move": "Bd3", "popup": "Bd3 象退守"},
+    {"index": 19, "move": "Bb7", "popup": "Bb7 象机动"},
+    {"index": 20, "move": "a3", "popup": "a3 准备b4"},
+    {"index": 21, "move": "O-O", "popup": "O-O"},
+    {"index": 22, "move": "b4", "popup": "b4 逐象"},
+    {"index": 23, "move": "Bb6", "popup": "Bb6 象撤退"},
+    {"index": 24, "move": "Bb2", "popup": "Bb2 象就位"},
+    {"index": 25, "move": "Qe7", "popup": "Qe7 后待机"},
+    {"index": 26, "move": "e4", "popup": "e4 白方中心推进"},
+    {"index": 27, "move": "e5", "popup": "e5！时机！\n白方e4时立即反击！\n不等待就是时机"}
+  ]
+}

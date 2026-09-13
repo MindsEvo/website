@@ -1,0 +1,311 @@
+{
+  "game_id": "C9_PawnChain_Practice_006",
+  "description": "C18 — 法国防御温洩变例，双翼竞速最激烈形式",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "g5"
+    ],
+    "popup": "兵链方向练习6\n温洩变例——最激烈双翼竞速！\nBb4钉住Nc3\n→c3叠兵是弱点\n→但白方兵链完整！\n白攻g侧，黑攻c侧\n谁先到达对方的王？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Bxg4开放局面 → 后翼进攻与王翼防守激烈对抗\nNd8调整マ！Nf7刺探！g3封锁 → 白方位置优势",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4"
+    },
+    {
+      "index": 1,
+      "move": "e6"
+    },
+    {
+      "index": 2,
+      "move": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4温洩变例！钉住Nc3"
+    },
+    {
+      "index": 6,
+      "move": "e5",
+      "popup": "e5！温洩兵链形成！Bb4钉住Nc3\n白e5推进建立兵链",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "c5",
+      "popup": "c5！黑立刻攻击根部"
+    },
+    {
+      "index": 8,
+      "move": "a3",
+      "popup": "a3！逼兑！白接受双叠兵\n换取兵链完整——战略交换！",
+      "highlights": [
+        {
+          "squares": [
+            "a3",
+            "c3"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bxc3+"
+    },
+    {
+      "index": 10,
+      "move": "bxc3",
+      "popup": "bxc3！叠兵但兵链完整！"
+    },
+    {
+      "index": 11,
+      "move": "Ne7"
+    },
+    {
+      "index": 12,
+      "move": "Nf3"
+    },
+    {
+      "index": 13,
+      "move": "Qc7"
+    },
+    {
+      "index": 14,
+      "move": "Be2"
+    },
+    {
+      "index": 15,
+      "move": "Nbc6"
+    },
+    {
+      "index": 16,
+      "move": "O-O"
+    },
+    {
+      "index": 17,
+      "move": "c4",
+      "popup": "c4！黑方后翼扩张"
+    },
+    {
+      "index": 18,
+      "move": "Re1",
+      "popup": "Re1双车激活"
+    },
+    {
+      "index": 19,
+      "move": "h5",
+      "popup": "h5！黑方h侧反攻"
+    },
+    {
+      "index": 20,
+      "move": "Nd2",
+      "popup": "Nd2！调兵准备f5推进"
+    },
+    {
+      "index": 21,
+      "move": "Bd7"
+    },
+    {
+      "index": 22,
+      "move": "Nf1"
+    },
+    {
+      "index": 23,
+      "move": "g5",
+      "popup": "g5！黑方逼进，g侧扩张"
+    },
+    {
+      "index": 24,
+      "move": "Ne3",
+      "popup": "Ne3调兵"
+    },
+    {
+      "index": 25,
+      "move": "O-O-O",
+      "popup": "O-O-O！黑方长易位，后翼竞速"
+    },
+    {
+      "index": 26,
+      "move": "Bxh5",
+      "popup": "Bxh5！白取h5兵"
+    },
+    {
+      "index": 27,
+      "move": "g4",
+      "popup": "g4！黑方g4！强力推进"
+    },
+    {
+      "index": 28,
+      "move": "Bxg4",
+      "popup": "Bxg4！白象取g4，开放局面\n双翼竞速进入消耗阶段",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "f5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "f5",
+      "popup": "f5！黑方推进f兵\n进一步激活后翼进攻路线"
+    },
+    {
+      "index": 30,
+      "move": "Bh5",
+      "popup": "Bh5！白象退守h5，保持对f7压力"
+    },
+    {
+      "index": 31,
+      "move": "Be8",
+      "popup": "Be8！黑方象撤退保护，准备简化"
+    },
+    {
+      "index": 32,
+      "move": "Bxe8",
+      "popup": "Bxe8！消除黑象，简化局面"
+    },
+    {
+      "index": 33,
+      "move": "Rdxe8",
+      "popup": "Rdxe8！车夺回主动，控制e线"
+    },
+    {
+      "index": 34,
+      "move": "Nf1",
+      "popup": "Nf1！白马重新调整，准备转向王翼"
+    },
+    {
+      "index": 35,
+      "move": "Rhg8",
+      "popup": "Rhg8！车占g线，准备g线反攻",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "g7"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "move": "f4",
+      "popup": "f4！白方巩固e5兵链，封锁黑方进攻通道",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Ng6",
+      "popup": "Ng6！黑马跳入活跃格，威胁f4"
+    },
+    {
+      "index": 38,
+      "move": "Re2",
+      "popup": "Re2！车集中守备，防止黑车入侵"
+    },
+    {
+      "index": 39,
+      "move": "Nd8",
+      "popup": "Nd8！马撤退d8，准备重新调整路线\n为黑车让出c6格"
+    },
+    {
+      "index": 40,
+      "move": "Rf2",
+      "popup": "Rf2！双车联动，加强f路线压力"
+    },
+    {
+      "index": 41,
+      "move": "Qh7",
+      "popup": "Qh7！黑后进攻h7，施压王翼"
+    },
+    {
+      "index": 42,
+      "move": "a4",
+      "popup": "a4！白方后翼扩展\n封锁黑方b5反击可能",
+      "highlights": [
+        {
+          "squares": [
+            "a4",
+            "b5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "move": "Nf7",
+      "popup": "Nf7！黑马刺探f7！\n威胁e5并试探白方防守"
+    },
+    {
+      "index": 44,
+      "move": "Qe2",
+      "popup": "Qe2！白后活跃，控制e线 同时支持中心防守"
+    },
+    {
+      "index": 45,
+      "move": "Nh4",
+      "popup": "Nh4！黑马跳h4，直接威胁g2和f3"
+    },
+    {
+      "index": 46,
+      "move": "g3",
+      "popup": "g3！白方封锁Nh4！\n兵形巩固，白方阵地优势明显\n双翼竞速下白方最终占据上风！",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "h4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    }
+  ]
+}

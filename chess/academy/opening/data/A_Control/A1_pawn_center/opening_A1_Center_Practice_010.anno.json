@@ -1,0 +1,710 @@
+{
+  "game_id": "A1_Center_Practice_010",
+  "description": "反面教材——忽视中心的惨痛代价，24步警示注释",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "e4",
+      "d5",
+      "e5"
+    ],
+    "popup": "反面教材：白方将连续走4步边路兵——请观察中心格会发生什么！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "忽视中心的代价是惨痛的。记住：开局每一步都应该与中心控制有关。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "e4",
+      "d5",
+      "e5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "g4",
+      "popup": "⬆️ <b>1.g4 — ❌ 错误！边路兵，完全无视中心！</b><br>白方推 g4，这是一步非常糟糕的开局！g4 对中心没有任何影响，还削弱了白方王翼，让 f3 和 h3 变得虚弱。<br>⚠️ <b>记住：开局的每一步都应该争夺中心！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5",
+            "e4",
+            "e5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "d4",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "⬇️ <b>1...d5 — ✅ 黑方立即占领中心！</b><br>黑方做了白方没做的事——立即占领 d5。黑方一步就控制了中心，而白方在 g4 那步什么中心都没控制。差距已经开始！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4",
+            "e4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "h3",
+      "popup": "⬆️ <b>2.h3 — ❌ 又是边路兵！两步全是错的！</b><br>白方再次推边路兵！这是浪费时间。正确的应对应该是 1.d4 或 1.e4，现在已经浪费了两步！黑方的中心优势继续扩大。",
+      "highlights": [
+        {
+          "squares": [
+            "h3"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "e5",
+      "popup": "⬇️ <b>2...e5 — ✅ 黑方建立双兵中心！</b><br>黑方轻松建立 d5+e5 双兵中心！两步棋，黑方控制了 4 个中心格（c4、d4、f4、e4 的影响），而白方控制了 0 个中心格。差距是4:0！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e5"
+          ],
+          "color": "#C6D50088",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c4",
+            "f4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#C6D50099"
+        },
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#C6D50099"
+        },
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#C6D50099"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "a3",
+      "popup": "⬆️ <b>3.a3 — ❌ 后翼边兵！三步没有一步中心！</b><br>a3 依然是边路兵，对中心毫无贡献。白方三步全部浪费在边路，这在任何水平的对弈中都是严重错误。<br>❌ <b>白方三步 = 中心格控制：0</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a3"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d4",
+            "e4"
+          ],
+          "color": "#FF572222",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "⬇️ <b>3...Nf6 — ✅ 黑马发展，控制更多中心！</b><br>黑方出马，控制 d5 和 e4，整个中心区域都在黑方掌控之中。子力发展 + 中心控制，黑方每步棋都在积累优势。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "b3",
+      "popup": "⬆️ <b>4.b3 — ❌ 四步边路！完全放弃中心！</b><br>b3 为后翼象发展做准备，但 g2 象即使出来，d4 和 e4 格也没有白方兵占据，黑方的兵已经扎根中心。<br>📊 <b>4步后对比：黑方中心格控制 6+ vs 白方 0！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "h3",
+            "a3",
+            "b3"
+          ],
+          "color": "#E5393533",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d5",
+            "e5",
+            "f6"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Bc5",
+      "popup": "⬇️ <b>4...Bc5 — ✅ 黑象出动，控制长对角线！</b><br>黑象发展到 c5，攻击 f2 格，同时支持 e5 中心兵。黑方四步完成了两个兵的中心控制、一个马的发展、一个象的发展——教科书式的开局！",
+      "highlights": [
+        {
+          "squares": [
+            "f2",
+            "e3",
+            "d4",
+            "b4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "f2",
+          "color": "#C6D500BB"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bg2",
+      "popup": "⬆️ <b>5.Bg2 — 白象出来了，但太晚了！</b><br>白象终于出来，控制长对角线。但对角线上有黑方的 e5 兵挡着——g2 象被封锁了！而且白方仍然没有一个兵在中心。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "⬇️ <b>5...Nc6 — ✅ 黑方第二匹马出动！</b><br>黑方发展完成，中心稳固，所有子力和谐。黑方准备易位，进入中局的全面进攻阶段。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "c3",
+      "popup": "⬆️ <b>6.c3 — 白方试图建立中心，已经太晚！</b><br>白方终于准备推 d4，但黑方已经完成大半发展，黑方有更好的位置阻止或利用白方的迟到中心。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "⬇️ <b>6...O-O — ✅ 黑方轻松易位！</b><br>黑方完成易位，王安全，所有子力就位。黑方现在可以从容发动进攻，白方还在完成开局发展。",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "d3",
+      "popup": "⬆️ <b>7.d3 — 白方只走了 d3，不是 d4！</b><br>白方仍然不敢推 d4，因为黑方子力太强大。d3 是被动的防守步，不能建立真正的中心控制。<br>⚠️ <b>对比：黑方第2步就有 d5+e5，白方第7步还没有中心兵！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d3"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50022",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "Re8",
+      "popup": "⬇️ <b>7...Re8 — ✅ 黑车激活，支援中心！</b><br>黑车转移到 e8，支撑 e5 兵。黑方正在准备推进 e4——深入白方阵地！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "e4",
+            "e3"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "e5",
+          "color": "#C6D500BB"
+        },
+        {
+          "from": "e5",
+          "to": "e4",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nd2",
+      "popup": "⬆️ <b>8.Nd2 — 白方迟到的马出动！</b><br>白马终于出动，但它只能到 d2，被自己的兵挡住，活动空间极度受限。这就是边路兵推进的代价：自己的子力被堵死！",
+      "highlights": [
+        {
+          "squares": [
+            "d2"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 15,
+      "move": "e4",
+      "popup": "⬇️ <b>8...e4 — ✅ 黑方中心兵深入！白方陷入被动！</b><br>黑方推 e4，过路兵深入白方阵地！白方的 d3 兵直接受到攻击，局面已经对白方非常不利。这就是7步无所作为的代价！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d3"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d3",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "dxe4",
+      "popup": "⬆️ <b>9.dxe4 — 白方被迫应对！</b><br>白方必须用 d3 吃 e4，否则过路兵继续推进。注意此时黑方的 d5 兵也有机会推进！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "dxe4",
+      "popup": "⬇️ <b>9...dxe4 — ✅ 黑兵吃回，e4 强大过路兵！</b><br>d5 兵吃掉白方 e4，黑方在 e4 有强大的中心兵，被 f6 马、c5 象、e8 车共同支撑，白方无法消除这个威胁！",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50099",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f6",
+            "c5",
+            "e8"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#C6D500AA"
+        },
+        {
+          "from": "c5",
+          "to": "e3",
+          "color": "#C6D50088"
+        },
+        {
+          "from": "e8",
+          "to": "e4",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "e3",
+      "popup": "⬆️ <b>10.e3 — 白方试图挡住 e4！</b><br>白方推 e3，试图阻挡黑方 e4 的影响，但只是在加固一条防线，无法改变整体劣势。白方已经陷入被动防守。",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "e4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "e4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Ne5",
+      "popup": "⬇️ <b>10...Ne5 — ✅ 黑马占领中心强格 e5！</b><br>黑马从 f6 跳入 e5，占据强大的中心前哨站！e5 深入白方阵地，马在此威胁四面八方。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D500AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "d3",
+            "f3",
+            "c4",
+            "g4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d3",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "e5",
+          "to": "c4",
+          "color": "#00BCD488"
+        },
+         {
+          "from": "e5",
+          "to": "g4",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "e5",
+          "to": "f3",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Ra2",
+      "popup": "⬆️ <b>11.Ra2 — <br>黑方的马已经占领 e5，随时可以跳入 d3 将军, 白方暂时没有好的手段， 车a2在为后续的有效防守做准备。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "a2"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e5",
+            "d3"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d3",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nd3+",
+      "popup": "⬇️ <b>11...Nd3+ — ✅ 马跳 d3！将军！捉双！</b><br>黑马从 e5 跳入 d3，直接将白王！白王被迫移动。d3 格还同时威胁周围白方子力——这就是中心强格的威力：马站在那里，可以把整盘棋搅乱！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "e1"
+          ],
+          "color": "#FF5722AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d3",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "d3",
+          "to": "e1",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Kf1",
+      "popup": "⬆️ <b>12.Kf1 — 白王被迫逃往 f1！</b><br>白王只能逃到 f1，王翼易位权已丧失，王的安全岌岌可危。d3 上的黑马仍在，随时引发新威胁。白方局面全面崩溃。",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "d3"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "f1",
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "h5",
+      "popup": "⬇️ <b>12...h5 — ✅ 黑兵推进，继续扩大优势！</b><br>黑方推 h5，王翼兵线开始推进，进一步压缩白王空间。黑方有中心优势、棋子活跃度优势、王的安全优势——全面领先！",
+      "highlights": [
+        {
+          "squares": [
+            "h5",
+            "h4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "h4",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "Nxe4",
+      "popup": "⬆️ <b>13.Nxe4 — 白方终于夺回 e4，但代价巨大！</b><br>白马终于吃掉 e4 兵，但白方为此付出了：王的安全、发展落后、被动守势。即便拿回这个兵，局面也已经无法挽回——中心控制权早已彻底属于黑方。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "e4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Nxe4",
+      "popup": "⬇️ <b>13...Nxe4 — ✅ 黑马吃 e4！优势确立！</b><br>黑马从 d3 吃 e4，黑方保持子力协调活跃度，白方的阵型一团糟。<br><br>白方13步中没有一步真正控制中心，黑方轻松建立双兵中心，用中心强格 e5→d3 渗透直接将军，白王被逼出。<b>开局核心铁律：每步必须争夺中心，否则一切皆虚！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D500AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "f1",
+            "a2"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#C6D500CC"
+        }
+      ]
+    }
+  ]
+}

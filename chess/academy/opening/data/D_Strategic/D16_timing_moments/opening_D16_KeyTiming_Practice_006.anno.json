@@ -1,0 +1,45 @@
+{
+  "game_id": "D16_KeyTiming_Practice_006",
+  "description": "后翼弃兵防御D37 — 关键时机：c5反制时机与Ne4战术时机",
+  "intro": {
+    "flash_squares": ["c4", "d5"],
+    "popup": "关键时机练习6\n\n后翼弃兵防御！\n\n白方Bf4位于f4\n黑方何时走c5最有力？\n\n练习目标：\n识别c5和Ne4的时机",
+    "voice": true
+  },
+  "outro": {
+    "popup": "QGD时机总结\n\n两个关键时机：\n① c5！：Bf4配置时出击\n② Nxd4！：等Nd4入中心后兑换\n\n时机链：布局→中心→兑换！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["d4", "d5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "d5", "popup": "d5"},
+    {"index": 2, "move": "c4", "popup": "c4"},
+    {"index": 3, "move": "e6", "popup": "e6"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6"},
+    {"index": 6, "move": "Nf3", "popup": "Nf3"},
+    {"index": 7, "move": "Be7", "popup": "Be7"},
+    {"index": 8, "move": "Bf4", "popup": "Bf4 象在f4"},
+    {"index": 9, "move": "O-O", "popup": "O-O"},
+    {"index": 10, "move": "e3", "popup": "e3"},
+    {"index": 11, "move": "c5", "popup": "c5！时机！\nBf4配置时c5最有力"},
+    {"index": 12, "move": "dxc5", "popup": "dxc5"},
+    {"index": 13, "move": "Bxc5", "popup": "Bxc5 象就位"},
+    {"index": 14, "move": "Qc2", "popup": "Qc2"},
+    {"index": 15, "move": "Nc6", "popup": "Nc6"},
+    {"index": 16, "move": "a3", "popup": "a3"},
+    {"index": 17, "move": "Qa5", "popup": "Qa5！后施压"},
+    {"index": 18, "move": "cxd5", "popup": "cxd5"},
+    {"index": 19, "move": "exd5", "popup": "exd5"},
+    {"index": 20, "move": "Rd1", "popup": "Rd1"},
+    {"index": 21, "move": "Be6", "popup": "Be6 象机动"},
+    {"index": 22, "move": "Bd3", "popup": "Bd3 象就位"},
+    {"index": 23, "move": "h6", "popup": "h6 防象入侵"},
+    {"index": 24, "move": "O-O", "popup": "O-O 白方易位"},
+    {"index": 25, "move": "Be7", "popup": "Be7 象防守"},
+    {"index": 26, "move": "Nd4", "popup": "Nd4！马入中心关键格"},
+    {"index": 27, "move": "Nxd4", "popup": "Nxd4！时机！\n等Nd4入位后兑换"},
+    {"index": 28, "move": "exd4", "popup": "exd4 白方中心形成"}
+  ]
+}

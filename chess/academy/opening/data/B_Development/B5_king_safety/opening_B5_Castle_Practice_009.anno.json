@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Practice_009",
+  "description": "西西里飞龙 B78 — 异侧易位攻防节奏",
+  "intro": {
+    "flash_squares": ["g8", "c1", "h4", "a5"],
+    "popup": "练习第9局\n西西里飞龙\n经典异侧易位！\n黑方O-O短易位（王翼）\n白方O-O-O长易位（后翼）\nh4冲兵！谁先到谁赢\n这是国际象棋最激烈的开局之一！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "异侧易位的攻防节奏\n飞龙体系核心：\n① 黑方g6+Bg7建立飞龙象\n② 白方长易位后向h4冲兵\n③ 黑方向b4/a5推进反攻\n④ 双方几乎不考虑防御！\n节奏：谁先完成攻击准备，谁就赢！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c5", "popup": "c5"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6"},
+    {"index": 4, "move": "d4", "popup": "d4"},
+    {"index": 5, "move": "cxd4", "popup": "cxd4"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4"},
+    {"index": 7, "move": "g6", "popup": "g6飞龙！准备象出g7"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3"},
+    {"index": 9, "move": "Bg7", "popup": "Bg7飞龙象就位\n这头龙是黑方的主要武器"},
+    {"index": 10, "move": "Be3", "popup": "Be3"},
+    {"index": 11, "move": "Nf6", "popup": "Nf6"},
+    {"index": 12, "move": "f3", "popup": "f3稳固，防止Ne4"},
+    {"index": 13, "move": "O-O", "highlights": [{"squares": ["g8","g7","h8","h7","f7"], "color": "#C6D50066"}], "popup": "O-O黑方短易位！\n王去g8，受到飞龙象和各子保护\n王翼阵型完整"},
+    {"index": 14, "move": "Qd2", "popup": "Qd2！白方准备长易位\n这是飞龙体系标准做法"},
+    {"index": 15, "move": "d6", "popup": "d6黑方巩固中心"},
+    {"index": 16, "move": "O-O-O", "highlights": [{"squares": ["c1","d1","a1","b1"], "color": "#FF8F0066"}], "popup": "O-O-O！白方长易位！\n双方王现在在对面：\n黑王g8 vs 白王c1\n异侧易位正式开始！\n双方都要向对方王翼冲兵！"},
+    {"index": 17, "move": "Nxd4", "popup": "Nxd4兑换"},
+    {"index": 18, "move": "Bxd4", "popup": "Bxd4"},
+    {"index": 19, "move": "Be6", "popup": "Be6象发展"},
+    {"index": 20, "move": "Kb1", "highlights": [{"squares": ["b1","c1"], "color": "#FF8F0044"}], "popup": "Kb1！王步微调\n王去b1，远离c列\n避免将来c列打开后王受攻击"},
+    {"index": 21, "move": "Qc7", "popup": "Qc7黑后集中，准备进攻"},
+    {"index": 22, "move": "h4", "highlights": [{"squares": ["h4","h7","g7","g8"], "color": "#E5393566"}], "popup": "h4！白方h兵冲进！\n直指g7飞龙象和黑王阵地\n飞龙体系最关键的进攻手段\n节奏决定一切——谁先突破谁赢！"}
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "game_id": "A4_Lines_Demo_008",
+  "description": "尼姆佐印度防御 E32 — d5推进封锁d线，切断黑方纵线资源",
+  "intro": {
+    "flash_squares": ["d5", "d8", "d1", "e5"],
+    "popup": "线路控制第8课\n封闭对方的线路！\n不只是占线——\n有时候封住对手的线路更有力",
+    "voice": true
+  },
+  "outro": {
+    "popup": "封线总结\nd5一推，d线被封死\n封线=剥夺对手的线路资源\n攻守兼备的线路控制！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4后翼开局\n占领中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展\n攻击e4"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4后翼弃兵\n争夺d5"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固\n准备Bb4尼姆佐"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展\n控制d5"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "highlights": [{"squares": ["b4", "c3"], "color": "#E5393544"}],
+      "popup": "Bb4！尼姆佐印度\n钉住c3马\n黑方牵制白方中心控制"
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3稳固\n支持d4"
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "O-O王车易位\n黑方先安全"
+    },
+    {
+      "index": 8,
+      "move": "Bd3",
+      "popup": "Bd3发展\n准备中心推进"
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "highlights": [{"squares": ["d5", "c4", "e4"], "color": "#00BCD444"}],
+      "popup": "d5反击中心\n黑方争夺空间\n注意：d线即将打开"
+    },
+    {
+      "index": 10,
+      "move": "Nf3",
+      "popup": "Nf3发展\n白方出子完成"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "highlights": [{"squares": ["c5", "d4"], "color": "#E5393544"}],
+      "popup": "c5反击d4\n黑方积极对抗\n白方中心受压"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O白方易位\n准备应对中心兑换"
+    },
+    {
+      "index": 13,
+      "move": "dxc4",
+      "highlights": [{"squares": ["d5", "c4", "d1", "d8"], "color": "#C6D50044"}],
+      "popup": "dxc4兑换\nd线半开放！\n黑方Rd8将可以利用d线\n白方必须做出反应"
+    },
+    {
+      "index": 14,
+      "move": "Bxc4",
+      "popup": "Bxc4重提\n白象占c4，压制d5"
+    },
+    {
+      "index": 15,
+      "move": "Nc6",
+      "popup": "Nc6发展\n增援中心"
+    },
+    {
+      "index": 16,
+      "move": "a3",
+      "highlights": [{"squares": ["a3", "b4"], "color": "#FF8F0055"}],
+      "popup": "a3！驱逐b4象\n白方消除牵制\n为下一步bxc3后cxd4做准备"
+    },
+    {
+      "index": 17,
+      "move": "Bxc3",
+      "popup": "Bxc3兑换\n黑方拆掉c3马\n双兵换了马+象"
+    },
+    {
+      "index": 18,
+      "move": "bxc3",
+      "popup": "bxc3重提\nc线半开放，但白方有双联兵"
+    },
+    {
+      "index": 19,
+      "move": "cxd4",
+      "highlights": [{"squares": ["c5", "d4", "d1", "d8"], "color": "#C6D50055"}],
+      "popup": "cxd4！黑方兑换d4\nd线完全开放\n黑方Rd8将是强力棋"
+    },
+    {
+      "index": 20,
+      "move": "cxd4",
+      "popup": "cxd4白方重提\nd4兵重建\n但d线已开，黑方虎视眈眈"
+    },
+    {
+      "index": 21,
+      "move": "e5",
+      "highlights": [{"squares": ["e5", "d4", "d8"], "color": "#E5393555"}],
+      "popup": "e5！黑方推进\n攻击d4，开放d线\n黑方将用Rd8控制d线\n白方如何阻止？"
+    },
+    {
+      "index": 22,
+      "move": "d5",
+      "highlights": [{"squares": ["d5", "d4", "d8", "e6"], "color": "#C6D50066"}],
+      "concept_arrows": [
+        {"from": "d4", "to": "d5", "color": "#C6D500CC"},
+        {"from": "d8", "to": "d5", "color": "#E53935AA"}
+      ],
+      "popup": "d5！封线绝招！\n白兵推到d5，d线被完全封死\n黑方e6格也被压制\n一步兵，同时封线+压格\n这就是封闭线路的战略价值！"
+    }
+  ]
+}

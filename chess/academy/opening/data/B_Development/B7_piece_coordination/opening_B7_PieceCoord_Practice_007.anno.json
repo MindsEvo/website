@@ -1,0 +1,46 @@
+{
+  "game_id": "B7_PieceCoord_Practice_007",
+  "description": "E32 — 用Bb4破坏白方协调体系",
+  "intro": {
+    "flash_squares": ["b4", "c3", "g5", "f6", "d2"],
+    "popup": "子力协调第7局\n学会破坏对方协调！\nBb4牵制Nc3，一枚象让白方整个协调体系\"卡壳\"",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：理解协调，才能知道如何破坏它\n破坏关键枢纽马（Nc3），让对方重建协调",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4占中心"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6防御d4"},
+    {"index": 2, "move": "c4", "popup": "c4后翼弃兵"},
+    {"index": 3, "move": "e6", "popup": "e6防御"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3！白方协调枢纽马\n激活：Nc3是白方协调的关键\n协调：Nc3控d5+e4，是白方中心的\"大梁\"", "highlights": [{"squares": ["d5", "e4"], "color": "#C6D50066"}]},
+    {"index": 5, "move": "Bb4", "popup": "Bb4！！黑方精彩一击！\n激活：象直接牵制Nc3！\n破坏：Nc3被牵制后，\n  → 不能自由跳入d5/e4\n  → 不能支援c4兵\n  → 白方整个协调体系卡壳！\n这就是\"破坏协调\"的典型战术！", "highlights": [{"squares": ["b4", "c3"], "color": "#E5393566"}]},
+    {"index": 6, "move": "Qc2", "popup": "Qc2白方反制！\n激活：后早出，为何？\n计划：Qc2防止Bxc3+后重吃，\n  若Bxc3+ Qxc3不损失双兵结构\n注意：白方被迫过早出后——这是被破坏协调后的代价！"},
+    {"index": 7, "move": "O-O", "popup": "O-O黑方易位\n黑方稳健王安全"},
+    {"index": 8, "move": "a3", "popup": "a3！白方逼象表态\n激活：强迫Bb4离开或换马\n计划：若Bxc3+，Qxc3重新控中心\n白方接受换马，尝试重建协调"},
+    {"index": 9, "move": "Bxc3+", "popup": "Bxc3+！黑方执行换马\n破坏：Nc3被换掉！\n代价分析：\n  ✅ 黑方：换掉白方协调枢纽马\n  ❌ 白方：Nc3消失，d5/e4控制力减弱\n  ❌ 白方：双兵结构后可能受损"},
+    {"index": 10, "move": "Qxc3", "popup": "Qxc3重新夺回\n激活：后收回Nc3的控制功能\n协调重建开始：Qc3+Bg5+Nf3\n但后在c3过于靠前，仍有弊端"},
+    {"index": 11, "move": "b6", "popup": "b6黑方准备出象\n黑方扩展空间"},
+    {"index": 12, "move": "Bg5", "popup": "Bg5白方重建！\n激活：象出动牵制Nf6\n协调重建：Bg5（换走Nc3后的替代协调子）\n计划：Bg5+Nf3联合，部分恢复对e5/d5的压力", "highlights": [{"squares": ["f6", "e7"], "color": "#FF8F0033"}]},
+    {"index": 13, "move": "Bb7", "popup": "Bb7黑方象出动\n激活：Bb7控制g2-a8大斜线\n协调：Bb7与Nf6联合，黑方协调稳固"},
+    {"index": 14, "move": "Nf3", "popup": "Nf3白方马出来\n激活：第2个马\n协调：Nf3（控e5）+ Bg5（牵制f6）+ Qc3（控中心）\n白方协调在重建中"},
+    {"index": 15, "move": "d6", "popup": "d6黑方守中心"},
+    {"index": 16, "move": "e3", "popup": "e3稳固\n激活：开放象斜线"},
+    {"index": 17, "move": "Nbd7", "popup": "Nbd7黑方第2马\n守备且准备...e5反击"},
+    {"index": 18, "move": "Be2", "popup": "Be2象守备\n激活：象到e2，准备易位\n协调：Be2支援Nf3，稳固中心"},
+    {"index": 19, "move": "Re8", "popup": "Re8黑方车进e列\n激活：车激活，准备...e5推进"},
+    {"index": 20, "move": "O-O", "popup": "O-O白方终于易位\n激活：Rf1进入游戏\n协调恢复：易位后双车可联结"},
+    {"index": 21, "move": "e5", "popup": "e5！黑方中路爆发\n激活：黑方利用白方协调被破坏的时间差反击！\n计划：e5后d4弱，黑方主动"},
+    {"index": 22, "move": "dxe5", "popup": "dxe5白方吃兵"},
+    {"index": 23, "move": "dxe5", "popup": "dxe5黑方吃回\n开放局面"},
+    {"index": 24, "move": "Rfd1", "popup": "Rfd1！车进d列\n激活：白方车终于激活\n协调修复：Rfd1+Qc3控d列\n但是……对比Practice 006，白方缺少Rc1的早期战略准备"},
+    {"index": 25, "move": "Qe7", "popup": "Qe7黑方后联结\n黑方后+车+马协调"},
+    {"index": 26, "move": "Rd2", "popup": "Rd2车到d2\n激活：车在d2支援\n教训：白方最终重建了协调，但付出了时间代价\n黑方Bb4破坏协调后，黑方主动争取到了...e5反击！\n✅ 结论：破坏对方协调是高价值战术", "highlights": [{"squares": ["d2", "c3", "g5"], "color": "#8E24AA33"}]}
+  ]
+}

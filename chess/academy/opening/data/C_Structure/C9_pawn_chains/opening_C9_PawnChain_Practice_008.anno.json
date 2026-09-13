@@ -1,0 +1,291 @@
+{
+  "game_id": "C9_PawnChain_Practice_008",
+  "description": "E41 — 尼姆佐印度古典变例，大兵链vs根部反击",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "c4",
+      "e3"
+    ],
+    "popup": "兵链方向练习8\n尼姆佐印度！\n核心思想：\nBb4钉住Nc3\n→破坏白方建立大兵链\nc5立刻攻d4根部\n——Nimzo核心！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Bh4被g5逐走 → Bg3换象 → d5-d6兵链强推\nQd4中心化！白方位置优势不可挡！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "c4"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4"
+    },
+    {
+      "index": 1,
+      "move": "Nf6"
+    },
+    {
+      "index": 2,
+      "move": "c4"
+    },
+    {
+      "index": 3,
+      "move": "e6"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！Nimzo！钉住Nc3\n准备破坏c4-d4-e3白方兵链\n——尼姆佐核心战略！",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "c3"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3建立c4-d4-e3兵链"
+    },
+    {
+      "index": 7,
+      "move": "c5",
+      "popup": "c5！c5攻根部！黑立刻冲击d4\n——Nimzo核心思想实践！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bd3"
+    },
+    {
+      "index": 9,
+      "move": "Nc6"
+    },
+    {
+      "index": 10,
+      "move": "Nge2"
+    },
+    {
+      "index": 11,
+      "move": "cxd4",
+      "popup": "cxd4！兑换根部"
+    },
+    {
+      "index": 12,
+      "move": "exd4"
+    },
+    {
+      "index": 13,
+      "move": "d5",
+      "popup": "d5！！白方d5推进！建立新兵链\n用d5来回答黑方对d4的压力",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4",
+            "e3"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "O-O"
+    },
+    {
+      "index": 15,
+      "move": "O-O"
+    },
+    {
+      "index": 16,
+      "move": "a3",
+      "popup": "a3驱逐Bb4"
+    },
+    {
+      "index": 17,
+      "move": "Bd6",
+      "popup": "Bd6象撤退"
+    },
+    {
+      "index": 18,
+      "move": "Bg5"
+    },
+    {
+      "index": 19,
+      "move": "h6"
+    },
+    {
+      "index": 20,
+      "move": "Bh4"
+    },
+    {
+      "index": 21,
+      "move": "dxc4",
+      "popup": "dxc4！黑打击c4根部！根部突破战略！"
+    },
+    {
+      "index": 22,
+      "move": "Bxc4"
+    },
+    {
+      "index": 23,
+      "move": "b6"
+    },
+    {
+      "index": 24,
+      "move": "Re1",
+      "popup": "Re1双车激活"
+    },
+    {
+      "index": 25,
+      "move": "Bb7"
+    },
+    {
+      "index": 26,
+      "move": "Bb3"
+    },
+    {
+      "index": 27,
+      "move": "Na5"
+    },
+    {
+      "index": 28,
+      "move": "Ba2"
+    },
+    {
+      "index": 29,
+      "move": "Rc8"
+    },
+    {
+      "index": 30,
+      "move": "Qd3"
+    },
+    {
+      "index": 31,
+      "move": "g5",
+      "popup": "g5！黑方王翼扩张，逼走白象Bh4",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "h4"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "move": "Bg3",
+      "popup": "Bg3！白象撤守g3，保持对d6格的控制"
+    },
+    {
+      "index": 33,
+      "move": "Bxg3",
+      "popup": "Bxg3！黑方主动换象，消除白象"
+    },
+    {
+      "index": 34,
+      "move": "Nxg3",
+      "popup": "Nxg3！白马复夺g3，王翼结构巩固",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "h5",
+            "f5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "Nc6",
+      "popup": "Nc6！黑马重返c6，向d4继续施压"
+    },
+    {
+      "index": 36,
+      "move": "d5",
+      "popup": "d5！！白方兵链强推！\n封锁黑方c6马，建立强大过路兵",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c6",
+            "e6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Ne7",
+      "popup": "Ne7！黑马撤回a避开d5控制范围"
+    },
+    {
+      "index": 38,
+      "move": "d6",
+      "popup": "d6！！白方前锋深入黑阵！\nd6过路兵直逼黑方后翼",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "c7",
+            "e7"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "move": "Ng6",
+      "popup": "Ng6！黑马机动，试图限制d6兵前进"
+    },
+    {
+      "index": 40,
+      "move": "Qd4",
+      "popup": "Qd4！白后强占d4中心！\n与d6兵联动形成强大压力\n白方局面优势明显！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d6",
+            "g7"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "move": "Nh4",
+      "popup": "Nh4！黑马跳入h4，但白方优势已无法挽回\n白方兵链战术完胜！"
+    }
+  ]
+}

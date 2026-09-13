@@ -1,0 +1,154 @@
+{
+  "game_id": "D15_CounterAttack_Practice_006",
+  "description": "法式温纳瓦变例 C18 — c5反制时机练习：判断反击的最佳时机",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心练习6\n\n法式温纳瓦！\n\n黑方有机会用c5反击\n但时机至关重要！\n\n练习目标：\n找出c5的最佳时机\n判断反击代价是否值得",
+    "voice": true
+  },
+  "outro": {
+    "popup": "温纳瓦总结\n\n时机判断要素：\n① 棋子是否都发展好了？\n② 对方翼兵攻到哪里了？\n③ 反击后能否维持阵形？\n\n这局棋的关键决策点：\n早期c5 vs 晚期c5的区别",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 占中心"
+    },
+    {
+      "index": 1,
+      "move": "e6",
+      "popup": "e6 法式"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5 反制"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！温纳瓦！钉住Nc3"
+    },
+    {
+      "index": 6,
+      "move": "e5",
+      "popup": "e5 关闭中心"
+    },
+    {
+      "index": 7,
+      "move": "c5",
+      "popup": "c5！现在就反击！"
+    },
+    {
+      "index": 8,
+      "move": "a3",
+      "popup": "a3 逼走象"
+    },
+    {
+      "index": 9,
+      "move": "Bxc3+",
+      "popup": "Bxc3+ 放弃双象"
+    },
+    {
+      "index": 10,
+      "move": "bxc3",
+      "popup": "bxc3 白方双象消失"
+    },
+    {
+      "index": 11,
+      "move": "Qa5",
+      "popup": "Qa5 后激活"
+    },
+    {
+      "index": 12,
+      "move": "Bd2",
+      "popup": "Bd2 防守"
+    },
+    {
+      "index": 13,
+      "move": "Qa4",
+      "popup": "Qa4 后继续施压"
+    },
+    {
+      "index": 14,
+      "move": "Qb1",
+      "popup": "Qb1 后转移"
+    },
+    {
+      "index": 15,
+      "move": "c4",
+      "popup": "c4！锁定位置"
+    },
+    {
+      "index": 16,
+      "move": "Nh3",
+      "popup": "Nh3 马发展"
+    },
+    {
+      "index": 17,
+      "move": "b5",
+      "popup": "b5！翼兵推进"
+    },
+    {
+      "index": 18,
+      "move": "Nf4",
+      "popup": "Nf4 马就位"
+    },
+    {
+      "index": 19,
+      "move": "Nc6",
+      "popup": "Nc6 马发展"
+    },
+    {
+      "index": 20,
+      "move": "h4",
+      "popup": "h4！翼兵攻！"
+    },
+    {
+      "index": 21,
+      "move": "Nge7",
+      "popup": "Nge7 马防守"
+    },
+    {
+      "index": 22,
+      "move": "g4",
+      "popup": "g4！翼兵继续推进\ng5之后完全封锁f6"
+    },
+    {
+      "index": 23,
+      "move": "Bd7",
+      "popup": "Bd7 象机动\n准备后翼易位"
+    },
+    {
+      "index": 24,
+      "move": "Bh3",
+      "popup": "Bh3！象就位\n对角线瞄准对方阵地"
+    },
+    {
+      "index": 25,
+      "move": "O-O-O",
+      "popup": "O-O-O！后翼易位\n黑方王逃入安全堡垒"
+    }
+  ]
+}

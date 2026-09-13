@@ -1,0 +1,50 @@
+﻿{
+  "label": "控制类",
+  "color": "#8E44AD",
+  "categories": [
+    {
+      "key": "A1_pawn_center",
+      "label": "A1 占领中心",
+      "items": [
+        { "id": "opening_A1_Center_Practice_006", "label": "6. 中心优势转化王翼进攻（西班牙开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Practice_007", "label": "7. 弃兵换中心控制权（国王弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Practice_008", "label": "8. 封闭中心后侧翼突破（国王印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Practice_009", "label": "9. 中心压制速胜（四马开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Practice_010", "label": "10. 忽视中心的代价（反面教材）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A2_piece_pressure",
+      "label": "A2 控制中心",
+      "items": [
+        { "id": "opening_A2_Control_Practice_006", "label": "6. 观察每步如何让轻子控制格子越来越多（伦敦体系）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Practice_007", "label": "7. Bb5没有直接占中心，却做了什么（西班牙开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Practice_008", "label": "8. 双方都用子力控中心，谁更协调谁占优（英格兰对称）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Practice_009", "label": "9. Bg2斜线加c4，兵的占领与子的控制完美结合（卡塔兰）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Practice_010", "label": "10. 轻子走边路，中心格彻底失控（反面教材）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A3_space_gains",
+      "label": "A3 空间控制",
+      "items": [
+        { "id": "opening_A3_Space_Practice_006", "label": "6. 判断空间差，对比双方活动区域（卡罗坎推进）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Practice_007", "label": "7. 步步为营扩展，每步兵推进有子力支撑（后翼弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Practice_008", "label": "8. 双向空间竞赛，找出白方f4冒进漏洞（西西里龙式）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Practice_009", "label": "9. 被压制时如何突围，找到c5关键解脱步（法国防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Practice_010", "label": "10. f5是安全还是冒进？判断空间推进时机（国王印度）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "A4_opening_lines",
+      "label": "A4 线路控制",
+      "items": [
+        { "id": "opening_A4_Lines_Practice_006", "label": "6. 弃子打开d线，车入侵d7赢后（菲利多尔防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Practice_007", "label": "7. 用兑换主动打开线路（卡洛卡恩兑换变体）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Practice_008", "label": "8. 封闭对方线路——d5兵封锁d线（尼姆佐印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Practice_009", "label": "9. Re1占e线，瞄准第5横线渗透（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Practice_010", "label": "10. 纵线+斜线联合——Re1与Bc2构建立体控制（西班牙封闭）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

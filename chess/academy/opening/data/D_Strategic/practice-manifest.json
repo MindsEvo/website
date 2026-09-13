@@ -1,0 +1,50 @@
+﻿{
+  "label": "战略类",
+  "color": "#27AE60",
+  "categories": [
+    {
+      "key": "D13_gambit_sacrifice",
+      "label": "D13 弃兵争先",
+      "items": [
+        { "id": "opening_D13_GambitSacrifice_Practice_006", "label": "6. 法尔克贝尔反弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Practice_007", "label": "7. 埃文斯弃兵拒绝变", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Practice_008", "label": "8. 布莱克马-迪默弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Practice_009", "label": "9. 格林弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Practice_010", "label": "10. 阿尔宾反弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D14_useful_exchanges",
+      "label": "D14 及时兑子",
+      "items": [
+        { "id": "opening_D14_UsefulExchange_Practice_006", "label": "6. 柏林防御温纳瓦变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Practice_007", "label": "7. 西西里大奖赛进攻（B23）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Practice_008", "label": "8. 伦敦体系兑换时机（D06）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Practice_009", "label": "9. 西班牙马歇尔进攻（C84）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Practice_010", "label": "10. 国王印度进攻综合练习（A48）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D15_counterattack",
+      "label": "D15 反制中心",
+      "items": [
+        { "id": "opening_D15_CounterAttack_Practice_006", "label": "6. 法式温纳瓦变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Practice_007", "label": "7. 卡罗-坎恩推进变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Practice_008", "label": "8. 现代防御150攻击", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Practice_009", "label": "9. 老贝诺尼防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Practice_010", "label": "10. 西西里坎变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "D16_timing_moments",
+      "label": "D16 关键时机",
+      "items": [
+        { "id": "opening_D16_KeyTiming_Practice_006", "label": "6. 后翼弃兵防御经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Practice_007", "label": "7. 西西里飞龙变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Practice_008", "label": "8. 法式温纳瓦进攻变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Practice_009", "label": "9. 卡罗-坎恩推进变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Practice_010", "label": "10. 后翼弃兵接受经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

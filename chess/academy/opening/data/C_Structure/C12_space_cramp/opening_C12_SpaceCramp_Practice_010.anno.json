@@ -1,0 +1,72 @@
+{
+  "game_id": "C12_SpaceCramp_Practice_010",
+  "description": "雷蒂改良KIA A07 — 练习：谁的空间更有价值？",
+  "intro": {
+    "flash_squares": ["e5", "d4", "a5", "c4"],
+    "popup": "空间挤压 练习10（高级综合）\n\n这是最复杂的问题：\n\n黑方有中心空间（e5，d4）\n白方有翼侧空间（a4-a5，Nc4）\n\n谁的空间更有价值？\n能转化为进攻的空间才是真优势！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "空间价值判断\n\n白方翼侧空间更有转化潜力：\na5，b4，b5→打开b-线\nNc4是翼翼的强马\n\n黑方中心稳固但静止：\nd4锁中心→无推进可能\nBg2被封→攻击力减弱\n\n可以转化的空间才是优势！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d4", "a5"],
+    "color": "#8E24AA22"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "Nf3！雷蒂开局！\n不急于占中心，先发展马"
+    },
+    {"index": 1, "move": "d5", "popup": "d5 黑方占中心"},
+    {"index": 2, "move": "g3", "popup": "g3 准备Bg2，超现代风格"},
+    {"index": 3, "move": "c5", "popup": "c5 黑方再占！加强中心控制"},
+    {
+      "index": 4,
+      "move": "Bg2",
+      "popup": "Bg2！白方的超现代武器！\n从g2瞄准中心d5格",
+      "highlights": [{"squares": ["g2", "d5"], "color": "#C6D50044"}]
+    },
+    {"index": 5, "move": "Nc6", "popup": "Nc6 发展马，支援中心"},
+    {"index": 6, "move": "O-O", "popup": "O-O 白方入城"},
+    {"index": 7, "move": "e5", "popup": "e5！黑方推e5！\n黑方现在有c5+d5+e5的大中心！"},
+    {"index": 8, "move": "d3", "popup": "d3 稳固，不急于争中心"},
+    {"index": 9, "move": "Nf6", "popup": "Nf6 出马"},
+    {"index": 10, "move": "Nbd2", "popup": "Nbd2 准备e4"},
+    {"index": 11, "move": "Be7", "popup": "Be7 发展象，准备O-O"},
+    {
+      "index": 12,
+      "move": "e4",
+      "popup": "e4！白方也推！中心对撞！"
+    },
+    {
+      "index": 13,
+      "move": "d4",
+      "popup": "d4！！黑方关门！\n\n黑方封住了中心——\n优势：白方Bg2被d4完全封锁！\n代价：中心锁死，双方无法推进，活动受限",
+      "highlights": [
+        {"squares": ["d4", "g2"], "color": "#E5393544"},
+        {"squares": ["d4"], "color": "#FF8F0066"}
+      ]
+    },
+    {"index": 14, "move": "a4", "popup": "a4！白方转向翼侧！\n中心既然锁了，就去翼侧找机会"},
+    {"index": 15, "move": "O-O", "popup": "O-O 黑方入城"},
+    {
+      "index": 16,
+      "move": "Nc4",
+      "popup": "Nc4！⭐白方的强格！\n\nNc4攻击d6（若黑方有d6）\n或配合a5-b4-b5进攻\n\n翼侧空间开始有了具体计划！",
+      "highlights": [{"squares": ["c4", "b6", "d6"], "color": "#C6D50055"}]
+    },
+    {"index": 17, "move": "Qc7", "popup": "Qc7 稳固，准备b5反击？"},
+    {
+      "index": 18,
+      "move": "a5",
+      "popup": "a5！！白方锁定翼翼！\n\n现在：\n白方：a4-a5+Nc4，翼侧扩张并有具体进攻\n黑方：e5+d4，中心稳固但静止\n\n⭐ 练习问题：\n谁的空间更有进攻价值？\n白方a5-b4-b5打开b线 vs 黑方……能推进吗？",
+      "highlights": [
+        {"squares": ["a5", "b4", "b5"], "color": "#C6D50055"},
+        {"squares": ["e5", "d4"], "color": "#8E24AA44"}
+      ]
+    }
+  ]
+}

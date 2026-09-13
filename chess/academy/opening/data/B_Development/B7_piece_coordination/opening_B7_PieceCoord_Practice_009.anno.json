@@ -1,0 +1,46 @@
+{
+  "game_id": "B7_PieceCoord_Practice_009",
+  "description": "C54 — 双方协调竞速，谁先完成谁占优",
+  "intro": {
+    "flash_squares": ["e1", "f1", "e3", "d4", "b3"],
+    "popup": "子力协调第9局\n焦科钢琴态势体：小意大利亚（慢节奏）\n白方通过Re1+马跨路渐进完成协调竞速",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：协调完整就是优势\nRe1加上马Nxd4占领中心，不错的协调步调！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局"},
+    {"index": 1, "move": "e5", "popup": "e5对称"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3第1马\n控制e5/d4"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6保护e5"},
+    {"index": 4, "move": "Bc4", "popup": "Bc4意大利开局\n激活：象瞄准f7\n计划：准备c3+d3稳健体系"},
+    {"index": 5, "move": "Bc5", "popup": "Bc5对称\n黑方象瞄准f2"},
+    {"index": 6, "move": "d3", "popup": "d3稳健推进！\n激活：开放c1象的斜线\n协调：d3是小意大利亚体系的核心\n计划：带出双马，然后易位、车激活、后出场"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6黑方第2马！\n攻击e4"},
+    {"index": 8, "move": "c3", "popup": "c3准备d4！\n激活：为d4进一步奠基\n协调：c3+d3双兵山，马绎路更有价值"},
+    {"index": 9, "move": "d6", "popup": "d6黑方守中心"},
+    {"index": 10, "move": "Nbd2", "popup": "Nbd2第2马出动！\n激活：b1马出动\n协调：Nf3+Nd2双马控制中心\n计划：Nd2将来跨路：f1→e3，进入中心！", "highlights": [{"squares": ["d2", "f1", "e3", "d5"], "color": "#C6D50033"}]},
+    {"index": 11, "move": "O-O", "popup": "O-O黑方易位\n国王进安全区"},
+    {"index": 12, "move": "O-O", "popup": "O-O白方易位！\n激活：Rf1激活\n协调：易位后下一步Re1，车控e列\n计划：易位完成，全力参与中心大战"},
+    {"index": 13, "move": "Be6", "popup": "Be6黑方象出动\n黑方轻子继续发展"},
+    {"index": 14, "move": "Bb3", "popup": "Bb3象调整！\n激活：Bb3控制a2-g8实用斜线\n协调：Bb3+Nd2+Nf3三子投射中心"},
+    {"index": 15, "move": "Bxb3", "popup": "Bxb3黑方换象\n黑方主动换掉白方Bb3"},
+    {"index": 16, "move": "axb3", "popup": "axb3 a兵回吃！\n激活：a列半开放\n协调：Ra1将可动用"},
+    {"index": 17, "move": "a6", "popup": "a6黑方展开后翼"},
+    {"index": 18, "move": "Re1", "popup": "Re1！车激活！！\n激活：Re1控制e列\n协调：Re1（车）+Nf3（马）+Nd2（马）三子联动！\n计划：e列控制就位，步步推进协调！", "highlights": [{"squares": ["e1", "e4", "e5"], "color": "#C6D50066"}]},
+    {"index": 19, "move": "Ne7", "popup": "Ne7黑方马调整\n黑方准备马跨路"},
+    {"index": 20, "move": "Nf1", "popup": "Nf1！马开始跨路旅行！\n激活：Nd2移到f1\n路径：d2→f1→e3，进入中心！\n计划：马将到达最佳格！", "highlights": [{"squares": ["f1", "e3"], "color": "#FF8F0033"}]},
+    {"index": 21, "move": "Ng6", "popup": "Ng6黑方马进入王翼！\n黑方马也向王翼发起威胁"},
+    {"index": 22, "move": "Ne3", "popup": "Ne3！马到达目标！\n激活：f1马抵达e3中心强格！\n协调：Ne3（控制d5/f5/c4）+Re1（控e列）+Nf3（已就位）\n✅ 三子协调联合开歌！", "highlights": [{"squares": ["e3", "d5", "f5", "c4"], "color": "#8E24AA33"}]},
+    {"index": 23, "move": "Nh5", "popup": "Nh5黑方马向g3/f4\n黑方马在王翼寻找机会"},
+    {"index": 24, "move": "d4", "popup": "d4！中心爆发！\n激活：d4打开中心\n协调：Ne3+Nf3两马就待等d4开放\n计划：d4后，Nxd4卡马中心！", "highlights": [{"squares": ["d4", "d5", "e5"], "color": "#FF5722033"}]},
+    {"index": 25, "move": "exd4", "popup": "exd4黑方吃兵\n黑方开放中心"},
+    {"index": 26, "move": "Nxd4", "popup": "Nxd4！！马占领中心！\n激活：Nf3跳入d4，占领中心强格\n协调终结态：\n♙ Nxd4（马占领d4）\n♕ Ne3（马精准占据e3）\n♜ Re1（车控e列）\n♙ c3+d3（马色格兵为主，马备最适）\n✅ 先完成马+车协调的一方就占中心优势！", "highlights": [{"squares": ["d4", "e3", "e1"], "color": "#8E24AA66"}]}
+  ]
+}

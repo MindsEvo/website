@@ -1,0 +1,193 @@
+{
+  "game_id": "B6_DevSpeed_Practice_009",
+  "description": "C33 — 弃子换节奏的经典示范",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第9局\n白方主动弃兵（f4），换取比对方更快的出子速度",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：弃兵换节奏是快速出子的高阶应用",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称"
+    },
+    {
+      "index": 2,
+      "move": "f4",
+      "popup": "f4！国王弃兵！\n主动献出f4兵\n换取快速出子速度\n王翼兵占据中心",
+      "highlights": [
+        {
+          "squares": [
+            "f4"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "exf4",
+      "popup": "exf4黑方接受弃兵\n黑方得兵，白方先手"
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "Nf3！第1个轻子出动\n同时保护e5\n立即开始发展",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6黑方出动\n攻击e4"
+    },
+    {
+      "index": 6,
+      "move": "e5",
+      "popup": "e5推进！\n打击黑马，争夺空间\n中心控制"
+    },
+    {
+      "index": 7,
+      "move": "Nh5",
+      "popup": "Nh5马被迫边缘化\n黑马跑到边线，位置差"
+    },
+    {
+      "index": 8,
+      "move": "Bc4",
+      "popup": "Bc4！第2个轻子出动\n象到意大利格，瞄准f7\n弃兵的收益已经体现：Bc4早早开动！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "f7"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "popup": "d5黑方反击\n争夺空间"
+    },
+    {
+      "index": 10,
+      "move": "exd6",
+      "popup": "exd6过路兵吃\n简化中心"
+    },
+    {
+      "index": 11,
+      "move": "Bxd6",
+      "popup": "Bxd6黑方象出动\n黑方第1个象出动"
+    },
+    {
+      "index": 12,
+      "move": "d4",
+      "popup": "d4！占中心\n白方牢牢控制中心\n中心控制+快速出子是双重优势"
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O！黑方易位\n黑方及时易位，王安全"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O！白方易位\n白方3个轻子出动后立即易位",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nc6",
+      "popup": "Nc6黑方马出动"
+    },
+    {
+      "index": 16,
+      "move": "c3",
+      "popup": "c3支撑\n稳固中心"
+    },
+    {
+      "index": 17,
+      "move": "Bg4",
+      "popup": "Bg4牵制\n黑方牵制白方马"
+    },
+    {
+      "index": 18,
+      "move": "Qe1",
+      "popup": "Qe1后激活\n解除牵制，灵活"
+    },
+    {
+      "index": 19,
+      "move": "Nf6",
+      "popup": "Nf6黑方马调整"
+    },
+    {
+      "index": 20,
+      "move": "Nbd2",
+      "popup": "Nbd2！第4个轻子出动\n白方所有轻子全部出动！",
+      "highlights": [
+        {
+          "squares": [
+            "d2"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nd5",
+      "popup": "Nd5黑马跳入"
+    },
+    {
+      "index": 22,
+      "move": "Ne4",
+      "popup": "Ne4！白马进攻\n弃兵→快速出子→完整阵型→进攻！\n这是弃兵换节奏的完整链条",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d6",
+            "f6"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    }
+  ]
+}

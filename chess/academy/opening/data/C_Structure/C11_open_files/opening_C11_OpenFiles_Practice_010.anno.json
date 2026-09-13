@@ -1,0 +1,95 @@
+{
+  "game_id": "C11_OpenFiles_Practice_010",
+  "description": "卡罗-卡恩推进变 B12 — f6挑战楔子打通f线",
+  "intro": {
+    "flash_squares": ["e5", "f6", "f8", "f1"],
+    "popup": "f线突破 练亘10\n\ne5楔子封锁中心！\n\n黑方反击：\nf6挑战楔子！\nfxe5打通f线！\n\nf线开放→强大压力！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "f线开放小结\n✅ cxd4：c线打通\n✅ Ne1→Ne3：守护e5\n✅ f6！fxe5：f线打通！\n\n核心成果：\n消灭e5楔子→f线开放\n→Rf8施压→黑方优势！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e5", "f6"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c6", "popup": "c6！卡罗-卡恩"},
+    {"index": 2, "move": "d4", "popup": "d4扩张"},
+    {"index": 3, "move": "d5", "popup": "d5反中心"},
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！推进变！\n白方楔子封锁中心",
+      "highlights": [{"squares": ["e5", "d5"], "color": "#FF8F0055"}]
+    },
+    {"index": 5, "move": "Bf5", "popup": "Bf5！象出动"},
+    {"index": 6, "move": "Nf3", "popup": "Nf3发展"},
+    {"index": 7, "move": "e6", "popup": "e6稳固"},
+    {"index": 8, "move": "Be2", "popup": "Be2发展"},
+    {
+      "index": 9,
+      "move": "c5",
+      "popup": "c5！黑方反击！\nc线即将打通！",
+      "highlights": [{"squares": ["c5", "c8"], "color": "#C6D50055"}]
+    },
+    {"index": 10, "move": "O-O", "popup": "O-O入城"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6发展"},
+    {"index": 12, "move": "c3", "popup": "c3稳固\n等待cxd4"},
+    {"index": 13, "move": "Nge7", "popup": "Nge7发展马"},
+    {"index": 14, "move": "Na3", "popup": "Na3发展\n准备Nc2机动"},
+    {
+      "index": 15,
+      "move": "cxd4",
+      "popup": "cxd4！兑换！\nc线打通！\n双方c列都无阻隔！",
+      "highlights": [{"squares": ["c8", "c7", "c6", "c4", "c3", "c2", "c1"], "color": "#C6D50066"}]
+    },
+    {
+      "index": 16,
+      "move": "cxd4",
+      "popup": "cxd4白方回吃\nc线完全开放！"
+    },
+    {
+      "index": 17,
+      "move": "Ng6",
+      "popup": "Ng6！马到g6\n控制中心格"
+    },
+    {"index": 18, "move": "Nc2", "popup": "Nc2机动\n马到c2 准备更好位置"},
+    {"index": 19, "move": "Be7", "popup": "Be7发展象"},
+    {
+      "index": 20,
+      "move": "Ne1",
+      "popup": "Ne1！马重新部署！\nf3→e1→e3\n守护e5楔子",
+      "highlights": [{"squares": ["e1", "e5"], "color": "#00BCD455"}]
+    },
+    {
+      "index": 21,
+      "move": "f6",
+      "popup": "f6！黑方关键反击！\n挑战e5楔子！\nf线即将打开！",
+      "highlights": [{"squares": ["f6", "e5", "f8"], "color": "#E5393566"}]
+    },
+    {
+      "index": 22,
+      "move": "Ne3",
+      "popup": "Ne3！白马守e5！\n坚守楔子，争夺中心",
+      "highlights": [{"squares": ["e3", "e5"], "color": "#00BCD455"}]
+    },
+    {
+      "index": 23,
+      "move": "fxe5",
+      "popup": "fxe5！黑方消灭e5楔子！\nf线完全打开！\n黑Rf8将在f线发威！",
+      "highlights": [{"squares": ["f8", "f6", "f5", "f4", "f3", "f2", "f1"], "color": "#C6D50066"}]
+    },
+    {
+      "index": 24,
+      "move": "dxe5",
+      "popup": "dxe5白方重守中心\nf线已对黑方全面开放！\n\n黑方战略成果：\n• f线开放→Rf8强压\n• e5楔子被消除\n黑方开放线优势已建立！",
+      "highlights": [
+        {"squares": ["f8", "f1"], "color": "#E5393588"},
+        {"squares": ["e5"], "color": "#FF8F0055"}
+      ]
+    }
+  ]
+}

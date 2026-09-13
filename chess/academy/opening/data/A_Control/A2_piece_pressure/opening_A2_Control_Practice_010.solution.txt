@@ -1,0 +1,11 @@
+1. Nh3 e5
+2. Na3 d5
+3. c3  Nc6
+4. Nc2 Bxh3
+5. gxh3 Ne7
+6. d4  Ng6
+7. dxe5 Ncxe5
+8. Bg2 c6
+9. O-O Nh4
+# END
+# 解法 1

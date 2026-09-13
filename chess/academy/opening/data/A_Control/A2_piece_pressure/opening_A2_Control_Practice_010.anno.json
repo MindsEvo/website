@@ -1,0 +1,507 @@
+{
+  "game_id": "A2_Control_Practice_010",
+  "description": "反面教材——双马走边路，h3马被白白吃掉，王翼残破，18步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "白方前两步把双马发展到边路（Nh3、Na3），随后试图补救！观察接下来会发生什么！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "边路的马不如中心的马——代价是显而易见的惩罚。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nh3",
+      "popup": "⬆️ <b>1.Nh3 — 错误！马走边路！</b><br>h3 位置的马控制 f2 和 g5，但对中心四格（e4/d4/e5/d5）<b>没有任何直接控制！</b><br><span style='color:#FF5722;'>❌ 边路的马控制的是角落格，中心格完全无视！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "f2",
+            "g5",
+            "f4"
+          ],
+          "color": "#88888844",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "e5",
+            "d5"
+          ],
+          "color": "#FF572222",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h3",
+          "to": "f4",
+          "color": "#88888888"
+        },
+        {
+          "from": "h3",
+          "to": "g5",
+          "color": "#88888888"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方立即占领中心！</b><br>黑方教科书式第一步，e5 兵占领中心格，控制 d4 和 f4。黑方此时对中心的控制 vs 白方的 0，差距已开始！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Na3",
+      "popup": "⬆️ <b>2.Na3 — 又是边路！</b><br>a3 位置的马控制 b1、b5、c4，但对中心格依然<b>没有贡献！</b><br>白方已走两步，中心控制仍然是 0。<br><span style='color:#FF5722;'>❌ 两步都走边路——中心格彻底放弃！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c4",
+            "b1"
+          ],
+          "color": "#88888833",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "e5",
+            "d5"
+          ],
+          "color": "#FF572222",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "b5",
+          "color": "#88888877"
+        },
+        {
+          "from": "a3",
+          "to": "c4",
+          "color": "#88888866"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "⬇️ <b>2...d5 — 黑方建立双兵中心！</b><br>黑方 d5+e5 双兵占领中心两个格！黑方对中心四格的控制：e5(占) + d5(占) + 两格的控制 = 4格全覆盖。<br>白方控制：仍是 <b>0</b>！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d5"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "c3",
+      "popup": "⬆️ <b>3.c3 — 白方试图建立中心，但已错失时机！</b><br>白方推 c3，准备推 d4。这步本身算是正常，但前两步（Nh3、Na3）全部浪费在边路，h3 上的马仍孤零零悬空在角落。<br>⚠️ 黑方已经建立 e5+d5 双兵中心，白方的反应已经整整晚了两步！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h3"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nc6",
+      "popup": "⬇️ <b>3...Nc6 — 黑马控制 d4 和 e5！</b><br>黑马出动，在 c6 控制 d4 和 e5 两个关键中心格。<br>⚠️ <b>同时注意：</b>黑方的象（c8）现在对角线对准了 h3 白马！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h3"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF572288"
+        },
+        {
+          "from": "c8",
+          "to": "h3",
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nc2",
+      "popup": "⬆️ <b>4.Nc2 — a3 马退回 c2！</b><br><span style='color:#FF5722;'>❌ 白方两匹马：一匹在 h3 成为靶子，一匹在 c2 被迫调整支持中心格！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "c2"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "h3"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a3",
+          "to": "c2",
+          "color": "#88888888"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bxh3",
+      "popup": "⬇️ <b>4...Bxh3 — 黑象直接吃 h3 马！</b><br><span style='color:#FF5722;'>❌ 虽然白方的兵可以吃回黑象， 但形成h线的叠兵， 是巨大隐患。</span>",
+      "highlights": [
+        {
+          "squares": [
+            "h3"
+          ],
+          "color": "#FF5722AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "h3",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "gxh3",
+      "popup": "⬆️ <b>5.gxh3 — 被迫用 g 兵吃回！王翼残破！</b><br>王翼出现漏洞。白方现在无法在王翼安全易位，整个王翼防线已经破损！<br>",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g1"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "h3",
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Ne7",
+      "popup": "⬇️ <b>5...Ne7 — 黑马出动，调往 g6！</b><br>黑方 g8 马发展到 e7，下一步可跳 g6，在王翼形成压力。黑方子力有条不紊地就位，每步都有明确目的，与白方的混乱形成鲜明对比。",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "g6"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "g6",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "popup": "⬆️ <b>6.d4 — 白方终于推 d4， 建立c3+d4 中心，局面已经严重落后！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "d4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Ng6",
+      "popup": "⬇️ <b>6...Ng6 — 黑马跳 g6！直指王翼漏洞！</b><br>e7 马跳到 g6，王翼施压正式开始。g6 马攻击 h4 和 f4，而白方的 g 线已经因为 gxh3 打开，王的安全岌岌可危！",
+      "highlights": [
+        {
+          "squares": [
+            "g6",
+            "h4",
+            "f4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "g6",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "g6",
+          "to": "h4",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "dxe5",
+      "popup": "⬆️ <b>7.dxe5 — 白方主动交换，释放中心压力。</b><br>白方 d4 吃 e5，主动换掉黑方中心兵。这是困难局面下的次优选择，但此举让黑方有机会用子力重占中心强格 e5。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Ncxe5",
+      "popup": "⬇️ <b>7...Ncxe5 — 黑马重占 e5！中心前哨站！</b><br>c6 马吃 e5，在中心强格站稳！e5 马不受任何白方兵的威胁（c3、e3 均不能打 e5），还威胁 d3、f3 等格，占据了中心制高点！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d3",
+            "f3",
+            "c4",
+            "g4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "e5",
+          "to": "d3",
+          "color": "#C6D50088"
+        },
+        {
+          "from": "e5",
+          "to": "f3",
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bg2",
+      "popup": "⬆️ <b>8.Bg2 — 白方展开飞象，亡羊补牢！</b><br>白方象进驻 g2（g 兵已移走，此格空出），进入长对角线。但此象被 e5 马等挡住，效力有限。白方只是在尽量收拾残局。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f1",
+          "to": "g2",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "c6",
+      "popup": "⬇️ <b>8...c6 — 黑方巩固阵型！</b><br>c6 兵支撑阵地，限制白方 c2 马的调动空间，同时为将来提供更多的兵形选择。黑方子力充分发展，局面全面领先。",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "c2"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "⬆️ <b>9.O-O — 白方易位，但王翼满目疮痍！</b><br>白方终于易位，但王翼上有 h3 孤兵、g 线打开，王的安全极差。即便如此，这已经是白方的最佳选择——继续拖延只会让黑方积累更多优势。",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h3"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nh4",
+      "popup": "⬇️ <b>9...Nh4 — 黑马开始攻击！</b><br>白方残破的王翼雪上加霜。<br>🏆 <b>>白方开局双边马（Nh3/Na3）直接导致被动阵型——<b>边路的马不如中心的马，从第一步就开始付出代价！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "h3",
+            "f3"
+          ],
+          "color": "#FF5722AA",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g6",
+          "to": "h4",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "h4",
+          "to": "h3",
+          "color": "#FF5722BB"
+        },
+        {
+          "from": "h4",
+          "to": "f3",
+          "color": "#FF572288"
+        }
+      ]
+    }
+  ]
+}

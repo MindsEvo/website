@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Practice_006",
+  "description": "西班牙开局 C84 — 短易位后双车连接，Re1激活",
+  "intro": {
+    "flash_squares": ["g1", "e1", "h1", "f1"],
+    "popup": "练习第6局\n西班牙开局\n短易位之后……\n注意白方如何激活双车：\nRe1挂住e5，双车连通\n最后Nbd2补充发展，阵型完整！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "短易位后的双车协同\n① O-O易位后车到h1\n② Re1！车激活到e1\n③ 两车连通：Re1 & Rh1\n④ Nbd2补充发展，控制中心\n完整阵型：王安全+子力协调！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "e5", "popup": "e5"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6"},
+    {"index": 4, "move": "Bb5", "popup": "Bb5西班牙主线"},
+    {"index": 5, "move": "a6", "popup": "a6逼象"},
+    {"index": 6, "move": "Ba4", "popup": "Ba4象后撤"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6马发展"},
+    {"index": 8, "move": "O-O", "highlights": [{"squares": ["g1","f1","g2","h2"], "color": "#C6D50066"}], "popup": "O-O！白方早早易位\n西班牙开局经典——第5步即易位\n王翼安全，准备Re1"},
+    {"index": 9, "move": "Be7", "popup": "Be7象发展"},
+    {"index": 10, "move": "Re1", "highlights": [{"squares": ["e1","e8"], "color": "#00BCD466"}], "popup": "Re1！车激活！\n车移到e1，与e5兵形成对位\n支持中心，随时可以e5兵前推"},
+    {"index": 11, "move": "b5", "popup": "b5黑方冲兵"},
+    {"index": 12, "move": "Bb3", "popup": "Bb3象后撤，继续守e5格"},
+    {"index": 13, "move": "d6", "popup": "d6黑方稳固中心"},
+    {"index": 14, "move": "c3", "popup": "c3准备d4推进"},
+    {"index": 15, "move": "O-O", "highlights": [{"squares": ["g8","g7","h7","f7"], "color": "#C6D50066"}], "popup": "O-O黑方也易位\n双方王翼均已安全"},
+    {"index": 16, "move": "h3", "popup": "h3防象入g4"},
+    {"index": 17, "move": "Na5", "popup": "Na5马跳出攻Bb3"},
+    {"index": 18, "move": "Bc2", "popup": "Bc2象继续守"},
+    {"index": 19, "move": "c5", "popup": "c5黑方对中心发力"},
+    {"index": 20, "move": "d4", "popup": "d4！白方推中心\n充分准备后才推"},
+    {"index": 21, "move": "Qc7", "popup": "Qc7黑后集中"},
+    {"index": 22, "move": "Nbd2", "highlights": [{"squares": ["d2","e1","h1"], "color": "#FF8F0055"}], "popup": "Nbd2！马补充发展\n双车Re1+Rh1已经连通\nNbd2完成阵型整合\n白方布局完成：王安全+子力协调！"}
+  ]
+}

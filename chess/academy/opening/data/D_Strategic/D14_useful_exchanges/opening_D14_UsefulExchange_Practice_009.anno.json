@@ -1,0 +1,362 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_009",
+  "description": "马歇尔汇进攻 C84 — 练习：Rxe5兑马后如何应对黑方进攻反扑？",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "h4",
+      "g3"
+    ],
+    "popup": "及时兑子 练习 9\n\n马歇尔汇进攻！\n黑方大胆弃兵进攻！\n\n白方已经Rxe5小兑吃马，\n但黑方紧接着Bd6攻车！\n\n⭐ 练习问题：\n白方如何精确防守黑方的进攻\n同时保留多兵优势？\n\n看白方如何步步应对，\n最终平息黑方的进攻！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "马歇尔汇应对总结\n\n⭐ 白方的关键应对步骤：\n\n① Rxe5小兑吃马，白方多先一步\n② Re1撤车，不贪吃Bd6（不当！）\n③ g3封锁后攻路线\n④ Qe2守地g2\n⑤ Qf1打破黑象钉马，Nd2重组\n\n关键教训：\n小兑（Rxe5）就要兑得寓心\n后续防守都要算准——\n不平白先兑后又喘宣失败！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "h4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 保护e5"
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "popup": "Bb5！西班牙开局"
+    },
+    {
+      "index": 5,
+      "move": "a6",
+      "popup": "a6 质问象"
+    },
+    {
+      "index": 6,
+      "move": "Ba4",
+      "popup": "Ba4 象撤退，维持钉住"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6！柏林体系，攻击e4"
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "O-O 白方入城"
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "Be7 黑方准备入城"
+    },
+    {
+      "index": 10,
+      "move": "Re1",
+      "popup": "Re1！车到e列！\n支持e4，准备Nf3-e5的可能",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "b5",
+      "popup": "b5！黑方驱象！\n迫使象表态",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "a4"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bb3",
+      "popup": "Bb3 象撤到b3\n仍然瞄准f7"
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O 黑方入城！\n现在准备马歇尔进攻"
+    },
+    {
+      "index": 14,
+      "move": "c3",
+      "popup": "c3 白方巩固中心"
+    },
+    {
+      "index": 15,
+      "move": "d5",
+      "popup": "d5！！马歇尔进攻！\n\n⭐ 经典弃兵进攻！\n黑方送出d5兵！\n白方应该接受，但进入复杂变化……",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50088"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "exd5",
+      "popup": "exd5 白方吃d5兵\n多了一个兵！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nxd5",
+      "popup": "Nxd5！黑马吃回！\n攻击e1车！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nxe5",
+      "popup": "Nxe5！白方吃e5！\n多了第二个兵！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nxe5",
+      "popup": "Nxe5！黑马吃e5！\n攻击Bb3！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Rxe5",
+      "popup": "Rxe5！白车吃马！\n\n⭐ 练习时刻！\n白方走Rxe5——不是Rxe8！\n为什么？\n因为Rxe8现在太早：\n黑方后回吃，反而活跃化！\n而Rxe5吃掉了危险的Ne5！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "e1"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "c6",
+      "popup": "c6 黑方c6加强中心\n给d5马提供支援"
+    },
+    {
+      "index": 22,
+      "move": "d4",
+      "popup": "d4！！白方推进中心！\n进一步压迫Nd5！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Bd6",
+      "popup": "Bd6！！黑象攻车！\n\n⭐ 黑方的马歇尔汇进攻反击！\n黑方将象Bd6攻击白方e5车\n黑方已少了多个兵，现在发起进攻\n\n白方车必须撤退，黑方获得进攻动力！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "Re1",
+      "popup": "Re1！白车撤退！\n\n白方不得不撤车\n• Re1车回到e1，兑换了两个兵的优势\n• 白方目前多兵，需要精确防守\n• 扭转点：黑方接下来怎麻攻击？",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "e1"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Qh4",
+      "popup": "Qh4！！黑后攻王！\n\n⭐ 典型马歇尔汇气氛！\n黑后Qh4威胁Qxf2#！\n白方必须应小心——\n错一步就被设mate！",
+      "highlights": [
+        {
+          "squares": [
+            "h4",
+            "f2"
+          ],
+          "color": "#E5393577"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "g3",
+      "popup": "g3！阿塔车防守！\n\n白方g3封锁黑后到h3的路线\n• 阿塔车防守法：弹开后的进攻\n• 但g3前进前，f2和h3格弱化\n白方需要继续小心",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "h3"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Qh3",
+      "popup": "Qh3！黑后进入h3！\n\n黑后Qh3威胁Qxg2#！\n⭐ 黑方利用g3的弱点继续施压\n白方必须拦战Qxg2的威胁",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g2"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "move": "Qe2",
+      "popup": "Qe2！白后防守！\n\n白后Qe2防守g2和e1\n• 后保护g2免被Qxg2\n• 后在e2，也切断e8的射线\n• 白方准备稳住局面",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "g2"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Bg4",
+      "popup": "Bg4！黑象钉马！\n\n黑方Be8象经过g6还是直接上g4——\nBg4钉住白方Nf3马！\n• 马被钉，gxh4就失去马\n• 黑方层层天罗地网来增强攻势",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "f3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "move": "Qf1",
+      "popup": "Qf1！白后换位！\n\n⭐ 关键防守步！\nQf1同时做到：\n① 后回到f1，推开Qh3的越纬（后要丏至g2。Qf1就拦住）\n② 打破Bg4的钉马——Nf3现在可以自由移动\n③ 白方开始整理防线，准备发凄",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "g2"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Qh5",
+      "popup": "Qh5 黑后退到h5\n\n黑后撤回到h5，保持对白方王翼的施压\n黑方已经失去了最快的进攻机会\n黑方先天的两个少兵让局面难平",
+      "highlights": [
+        {
+          "squares": [
+            "h5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "move": "Nd2",
+      "popup": "Nd2！白马重组！\n\n⭐ 局面总结：\nNf3马转到d2：\n① 马离开g4象的靉制范围\n② d2准备将来Nf1-Ne3象巳重组\n③ 白方已成功应对马歇尔汇进攻！\n\n这就是及时兑子的巧妙：\nRxe5小兑，现在白方多两个兵且防线稳次！",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "f1",
+            "e3"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    }
+  ]
+}

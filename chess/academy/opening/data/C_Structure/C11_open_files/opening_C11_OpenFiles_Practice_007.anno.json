@@ -1,0 +1,90 @@
+{
+  "game_id": "C11_OpenFiles_Practice_007",
+  "description": "QGD交换变 D35 — 车借d线入侵",
+  "intro": {
+    "flash_squares": ["d1", "d5", "e1", "e8"],
+    "popup": "双开放线控制 练亘7\n\nQGD交换变cxd5后\nd线完全打开！\n\n白方计划：\nRe1争夺e线对应Re8\n+Rad1叠压d线！\n\nd线+e线双重控制！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "双线控制小结\n✅ cxd5 exd5：d线打通\n✅ Re1：争夺e线\n✅ Rad1：叠压d线计划\n\n核心战略：\nd线叠压+e线对峡\n→双开放线持久压力！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d1", "e1"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "d5", "popup": "d5QGD"},
+    {"index": 2, "move": "c4", "popup": "c4挑战"},
+    {"index": 3, "move": "e6", "popup": "e6稳固"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3发展"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6发展"},
+    {
+      "index": 6,
+      "move": "cxd5",
+      "popup": "cxd5！交换变！\nd线开始打开",
+      "highlights": [{"squares": ["d5", "c4"], "color": "#FF8F0055"}]
+    },
+    {
+      "index": 7,
+      "move": "exd5",
+      "popup": "exd5回吃\nd线全开！\nd1到d8完全通畅！",
+      "highlights": [{"squares": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8"], "color": "#C6D50066"}]
+    },
+    {"index": 8, "move": "Bg5", "popup": "Bg5钉马"},
+    {"index": 9, "move": "c6", "popup": "c6稳固"},
+    {"index": 10, "move": "e3", "popup": "e3稳固中心"},
+    {"index": 11, "move": "Be7", "popup": "Be7发展"},
+    {"index": 12, "move": "Bd3", "popup": "Bd3！瞄准h7"},
+    {"index": 13, "move": "O-O", "popup": "O-O入城"},
+    {"index": 14, "move": "Nge2", "popup": "Nge2发展\n为f3做准备"},
+    {"index": 15, "move": "Nbd7", "popup": "Nbd7发展"},
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O入城！\n白方Rf1→Rd1即将叠压d线",
+      "highlights": [{"squares": ["f1", "d1"], "color": "#00BCD455"}]
+    },
+    {
+      "index": 17,
+      "move": "Re8",
+      "popup": "Re8！黑方占e线\n守护e列，监视d线",
+      "highlights": [{"squares": ["e8", "e1"], "color": "#E5393544"}]
+    },
+    {"index": 18, "move": "Qc2", "popup": "Qc2出动\n为f3支援"},
+    {
+      "index": 19,
+      "move": "Nf8",
+      "popup": "Nf8！黑马转移\nNf8→Ng6→Nf4争夺好位置"
+    },
+    {
+      "index": 20,
+      "move": "f3",
+      "popup": "f3！关键手！\n为e4推进做基础\n同时防止Nf6→e4",
+      "highlights": [{"squares": ["f3", "e4"], "color": "#00BCD455"}]
+    },
+    {"index": 21, "move": "Be6", "popup": "Be6发展象\n守护d5"},
+    {
+      "index": 22,
+      "move": "Kh1",
+      "popup": "Kh1！王移角！\n为g4推进让出g1给车\n王翼进攻准备启动！",
+      "highlights": [{"squares": ["h1", "g1"], "color": "#FF8F0044"}]
+    },
+    {
+      "index": 23,
+      "move": "Ng6",
+      "popup": "Ng6机动\n黑马寻找反击机会"
+    },
+    {
+      "index": 24,
+      "move": "Re1",
+      "popup": "Re1！车争e线！\n对应黑方Re8，e线对峡！\nRad1叠压d线计划就绪！\n\nd线+e线双重控制！",
+      "highlights": [
+        {"squares": ["e1", "e8"], "color": "#E5393566"},
+        {"squares": ["d1", "d5"], "color": "#00BCD488"}
+      ]
+    }
+  ]
+}

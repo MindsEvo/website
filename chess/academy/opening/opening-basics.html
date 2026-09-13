@@ -468,21 +468,21 @@
         <div class="panel panel-placeholder">
           <h3>操作练习</h3>
           <div class="group-chips">
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#8E44AD">控制类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-practice-group="A_Control">
+              <button class="group-chip" id="practiceA_Control" data-practice-group="A_Control" style="background:#8E44AD">控制类</button>
+              <div class="dropdown-menu" id="menuPracticeA_Control"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#16A085">发展类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-practice-group="B_Development">
+              <button class="group-chip" id="practiceB_Development" data-practice-group="B_Development" style="background:#16A085">发展类</button>
+              <div class="dropdown-menu" id="menuPracticeB_Development"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#2980B9">结构类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-practice-group="C_Structure">
+              <button class="group-chip" id="practiceC_Structure" data-practice-group="C_Structure" style="background:#2980B9">结构类</button>
+              <div class="dropdown-menu" id="menuPracticeC_Structure"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#27AE60">战略类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-practice-group="D_Strategic">
+              <button class="group-chip" id="practiceD_Strategic" data-practice-group="D_Strategic" style="background:#27AE60">战略类</button>
+              <div class="dropdown-menu" id="menuPracticeD_Strategic"></div>
             </div>
           </div>
         </div>
@@ -537,6 +537,19 @@
       // category's dropdown lists its 4 abbreviated meta-gene names (e.g. "A1 占领中心")
       // as the middle menu tier, ported as-is from META_GENE_CONFIG in the source app.
       var GROUP_DEFS = [
+        { key: 'A_Control', label: '控制类', folder: 'A_Control', enabled: true },
+        { key: 'B_Development', label: '发展类', folder: 'B_Development', enabled: true },
+        { key: 'C_Structure', label: '结构类', folder: 'C_Structure', enabled: true },
+        { key: 'D_Strategic', label: '战略类', folder: 'D_Strategic', enabled: true }
+      ];
+
+      // 操作练习 for this course is IDENTICAL to 动态观察 (unlike endgame/tactics/mate's
+      // simplified no-popup practice mode) — the source's practice puzzles are the SAME
+      // "_Practice_"-suffixed files living alongside the "_Demo_" files in the same
+      // sub-gene folder, filtered by filename, with the SAME full anno.json (popup,
+      // highlights, arrows, board_always) as 动态观察. So this reuses the observation
+      // engine's functions verbatim via a separate manifest + button set.
+      var PRACTICE_GROUP_DEFS = [
         { key: 'A_Control', label: '控制类', folder: 'A_Control', enabled: true },
         { key: 'B_Development', label: '发展类', folder: 'B_Development', enabled: true },
         { key: 'C_Structure', label: '结构类', folder: 'C_Structure', enabled: true },
@@ -650,6 +663,7 @@
           var rest = m ? m[1] : line.replace(/^\.+\s*/, '');
           rest.split(/\s+/).forEach(function (tok) {
             tok = tok.replace(/,$/, ''); // some source files use a stray trailing comma
+            tok = tok.replace(/[!?]+$/, ''); // strip move-quality marks like "Nxb5!"/"e4?!"
             if (tok && SAN_TOKEN_RE.test(tok)) moves.push(tok);
           });
         });
@@ -1173,15 +1187,123 @@
         });
       }
 
+      // ── 操作练习 (hands-on practice) ── unlike the other 3 courses, this reuses
+      // the FULL anno.json-driven engine (popup box, highlights, arrows, board_always) since the
+      // source's practice puzzles are genuinely annotated the same way as 动态观察's, just filtered by
+      // filename ("_Practice_" vs "_Demo_"). Functions below are near-verbatim copies of the
+      // observation-mode ones above, pointed at a separate `practice-manifest.json` + button set.
+      var practiceManifestCache = {};
+
+      function findPracticeItem(manifest, itemId) {
+        for (var i = 0; i < manifest.categories.length; i++) {
+          var cat = manifest.categories[i];
+          for (var j = 0; j < cat.items.length; j++) {
+            if (cat.items[j].id === itemId) return { item: cat.items[j], subKey: cat.key };
+          }
+        }
+        return null;
+      }
+
+      function renderPracticeDropdownMenu(groupDef, manifest, menuEl) {
+        var html = '';
+        manifest.categories.forEach(function (cat) {
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          html += '<div class="submenu">';
+          cat.items.forEach(function (item) {
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          });
+          html += '</div></div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadPracticeItem(groupDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+        menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            if (e.target.closest('.submenu-item')) return;
+            e.stopPropagation();
+            var wasOpen = row.classList.contains('open');
+            menuEl.querySelectorAll('.menu-row').forEach(function (r) { r.classList.remove('open'); });
+            if (!wasOpen) row.classList.add('open');
+          });
+        });
+      }
+
+      function selectPracticeGroup(groupDef) {
+        var menuEl = document.getElementById('menuPractice' + groupDef.key);
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (!groupDef.enabled) {
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + groupDef.label + '"暂未上线，敬请期待</div>';
+          menuEl.classList.add('open');
+          return;
+        }
+        if (practiceManifestCache[groupDef.key]) {
+          renderPracticeDropdownMenu(groupDef, practiceManifestCache[groupDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + groupDef.folder + '/practice-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            practiceManifestCache[groupDef.key] = manifest;
+            renderPracticeDropdownMenu(groupDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadPracticeItem(groupDef, manifest, itemId) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var found = findPracticeItem(manifest, itemId);
+        if (!found) return;
+        var item = found.item;
+        playStatus.textContent = '正在加载练习题...';
+        var base = './data/' + groupDef.folder + '/' + found.subKey + '/';
+        Promise.all([
+          fetch(base + itemId + '.anno.json').then(function (r) { return r.json(); }),
+          fetch(base + itemId + '.solution.txt').then(function (r) { return r.text(); }),
+          fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
+        ]).then(function (res) {
+          state.anno = res[0];
+          var moveList = parseSolutionMoves(res[1]);
+          var timeline = buildTimelineFromFen(item.fen, moveList);
+          state.states = timeline.states;
+          state.moveMetas = timeline.moveMetas;
+          state.annoByIndex = {};
+          (state.anno.moves || []).forEach(function (m) { state.annoByIndex[m.index] = m; });
+          explanationText.textContent = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          renderSolutionLines();
+          goToPly(-1);
+        }).catch(function (e) {
+          playStatus.textContent = '棋局加载失败: ' + e.message;
+        });
+      }
+
       // ── Controls ──────────────────────────────────────
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectGroup(groupDef); });
       });
 
-      // 操作练习/问答练习 are not implemented yet — their buttons just show a
-      // "敬请期待" placeholder in the same dropdown style used for locked groups.
-      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap').forEach(function (wrap) {
+      PRACTICE_GROUP_DEFS.forEach(function (groupDef) {
+        var el = document.querySelector('.group-chip[data-practice-group="' + groupDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticeGroup(groupDef); });
+      });
+
+      // 问答练习 is not implemented yet — its buttons just show a "敬请期待"
+      // placeholder in the same dropdown style used for locked groups.
+      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap:not([data-practice-group])').forEach(function (wrap) {
         var btn = wrap.querySelector('.group-chip');
         var menuEl = wrap.querySelector('.dropdown-menu');
         btn.addEventListener('click', function (e) {

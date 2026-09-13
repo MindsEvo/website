@@ -1,0 +1,46 @@
+{
+  "game_id": "D16_KeyTiming_Practice_009",
+  "description": "卡罗-坎恩推进 B12 — 关键时机：c5兑换与Nxd4兑换中心马",
+  "intro": {
+    "flash_squares": ["e5", "c5"],
+    "popup": "关键时机练习9\n\n卡罗-坎恩推进变例！\n\nc5兑换是关键选择\n中局还有Nxe5时机判断\n\n练习目标：\n识别两个连续的时机节点",
+    "voice": true
+  },
+  "outro": {
+    "popup": "卡罗时机总结\n\n三个时机层次：\n① c5！：dxc5后Bxc5优化象\n② Nxd4！：Wd4入中心后立即兑换\n③ Nc6！：Nb8-Nc6重新进中心\n\n时机是连续的！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["e5", "c5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c6", "popup": "c6 卡罗-坎恩"},
+    {"index": 2, "move": "d4", "popup": "d4"},
+    {"index": 3, "move": "d5", "popup": "d5"},
+    {"index": 4, "move": "e5", "popup": "e5 推进"},
+    {"index": 5, "move": "Bf5", "popup": "Bf5 象出动"},
+    {"index": 6, "move": "Nf3", "popup": "Nf3"},
+    {"index": 7, "move": "e6", "popup": "e6"},
+    {"index": 8, "move": "Be2", "popup": "Be2"},
+    {"index": 9, "move": "c5", "popup": "c5！时机！\n反制白方中心"},
+    {"index": 10, "move": "dxc5", "popup": "dxc5"},
+    {"index": 11, "move": "Nd7", "popup": "Nd7"},
+    {"index": 12, "move": "O-O", "popup": "O-O"},
+    {"index": 13, "move": "Bxc5", "popup": "Bxc5 象就位"},
+    {"index": 14, "move": "Nd4", "popup": "Nd4"},
+    {"index": 15, "move": "Ne7", "popup": "Ne7"},
+    {"index": 16, "move": "Nxf5", "popup": "Nxf5"},
+    {"index": 17, "move": "Nxf5", "popup": "Nxf5"},
+    {"index": 18, "move": "c3", "popup": "c3"},
+    {"index": 19, "move": "O-O", "popup": "O-O"},
+    {"index": 20, "move": "Nd2", "popup": "Nd2"},
+    {"index": 21, "move": "Qb6", "popup": "Qb6！后攻击"},
+    {"index": 22, "move": "Nb3", "popup": "Nb3"},
+    {"index": 23, "move": "Be7", "popup": "Be7"},
+    {"index": 24, "move": "Nd4", "popup": "Nd4！白马进中心"},
+    {"index": 25, "move": "Nxd4", "popup": "Nxd4！时机！\n立即兑换白方强马"},
+    {"index": 26, "move": "cxd4", "popup": "cxd4 开放列"},
+    {"index": 27, "move": "Nb8", "popup": "Nb8 马退路重组"},
+    {"index": 28, "move": "Rb1", "popup": "Rb1 车就位"},
+    {"index": 29, "move": "Nc6", "popup": "Nc6！马重进中心\n攻凼d4兵"}
+  ]
+}

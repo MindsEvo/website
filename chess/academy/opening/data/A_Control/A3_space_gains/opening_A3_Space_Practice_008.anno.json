@@ -1,0 +1,384 @@
+{
+  "game_id": "A3_Space_Practice_008",
+  "description": "西西里龙式 B72 — 双向竞赛，判断f4是安全扩展还是冒进",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "f4",
+      "d6",
+      "b5"
+    ],
+    "popup": "白方王翼f4，黑方后翼b5，双方各自扩张。\n找出白方f4推进是否过于冒进。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "双翼竞赛时，谁先冒进漏洞谁先输。\nf4推进需要王安全、子力支撑才是安全的。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "f4",
+      "d6",
+      "b5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "▶️ <b>e4</b><br>白方开局，占中心",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "▶️ <b>c5</b><br>西西里！黑方用c5挑战白方，但不是对称的<br>这将是一场非对称的博弈！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "▶️ <b>Nf3</b><br>白方出马，准备d4推进",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "d4",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "d6",
+      "popup": "▶️ <b>d6</b><br>黑方加固阵型，支持e5<br>d6是西西里防御的骨干兵",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "▶️ <b>d4</b><br>白方推d4，开放中心<br>Nf3已在位保护d4，这是安全推进",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c5",
+            "f3"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "d4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "▶️ <b>cxd4</b><br>黑方吃掉d4，开放c列<br>这是西西里最重要的换子",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c5",
+            "c8"
+          ],
+          "color": "#E5393544",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 6,
+      "move": "Nxd4",
+      "popup": "▶️ <b>Nxd4</b><br>白方马吃回，站在中心强格<br>d4的马非常活跃，可以向多个方向跳",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "b5",
+            "f5",
+            "c6",
+            "e6"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "▶️ <b>Nf6</b><br>黑方出马，控制e4并准备g6-Bg7",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "e4",
+            "d5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "▶️ <b>Nc3</b><br>白方出另一个马，加强中心控制<br>中心非常稳固：e4+d4，两匹马都在位",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "g6",
+      "popup": "▶️ <b>g6</b><br>龙式！黑方准备走Bg7<br>Bg7将射击白方d4和e5方向",
+      "highlights": [
+        {
+          "squares": [
+            "g6",
+            "g7",
+            "d4"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "▶️ <b>Be2</b><br>白方象出动，为易位做准备<br>稳步发展",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "d3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Bg7",
+      "popup": "▶️ <b>Bg7</b><br>黑方龙式象就位！<br>Bg7射向d4，牵制白方中心",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "d4",
+            "e5",
+            "a1"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "▶️ <b>O-O</b><br>白方易位！王安全后，可以开始计划王翼攻击<br>记住：王安全是进攻的前提！",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1",
+            "f1"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "▶️ <b>O-O</b><br>黑方也易位！双方都准备好了<br>现在是真正的空间竞赛时刻",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "h8",
+            "f8"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Be3",
+      "popup": "🔑 <b>Be3 — 王翼攻击的准备！</b><br>白方象到e3，有多个作用：<br>• 防御c5方向<br>• 准备f4推进（Be3支撑f4后的弱点）<br>• 控制d4周围",
+      "highlights": [
+        {
+          "squares": [
+            "e3",
+            "c5",
+            "f4",
+            "d4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e3",
+          "to": "f4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nc6",
+      "popup": "▶️ <b>Nc6</b><br>黑方出马，攻击d4<br>黑方在中心施压",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d4"
+          ],
+          "color": "#E5393544",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "f4",
+      "popup": "🚀 <b>f4！白方开始王翼扩展！</b><br>这步棋安全吗？用三个维度检验：<br>① 中心稳固？✓ e4+d4，Nc3+Nd4都在<br>② 王安全？✓ O-O已完成<br>③ 子力支撑f4？✓ Be3+Nc3+Nd4<br>结论：f4是安全扩展！",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e3",
+            "c3",
+            "d4"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 2000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "f5",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "b5",
+      "popup": "⚔️ <b>b5！双向竞赛正式开始！</b><br>黑方发动后翼反击！<br>• 白方：推f5，进攻黑王<br>• 黑方：推b4，攻击Nc3<br>谁先到达目标，谁赢得这场竞赛！<br>这就是西西里龙式的本质——双向竞赛！",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c3",
+            "b4",
+            "f5",
+            "g7"
+          ],
+          "color": "#E5393566",
+          "duration_ms": 2500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "b4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f4",
+          "to": "f5",
+          "color": "#FF5722CC"
+        }
+      ]
+    }
+  ]
+}

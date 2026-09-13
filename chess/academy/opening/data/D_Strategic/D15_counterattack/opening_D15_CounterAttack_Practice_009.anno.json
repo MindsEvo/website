@@ -1,0 +1,144 @@
+{
+  "game_id": "D15_CounterAttack_Practice_009",
+  "description": "老贝诺尼防御 A43 — 封闭局面反制练习：慢热型c列反击",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心练习9\n\n老贝诺尼防御！\n\n封闭局面！\n无法立刻反击\n\n练习目标：\n封闭局面中如何积累\n找出翼攻反制的时机",
+    "voice": true
+  },
+  "outro": {
+    "popup": "老贝诺尼总结\n\n慢热型反制要素：\n① 封闭局面中积累能量\n② Ne5占据中心要点\n③ g线开放后翼攻爆发\n\n耐心是封闭局面的关键！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5！贝诺尼！\n主动反制d4"
+    },
+    {
+      "index": 2,
+      "move": "d5",
+      "popup": "d5 白方推进，封锁"
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "g6",
+      "popup": "g6 贝诺尼体系"
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "e4 白方强大空间"
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "d6 稳固"
+    },
+    {
+      "index": 8,
+      "move": "f3",
+      "popup": "f3 e4的后盾"
+    },
+    {
+      "index": 9,
+      "move": "Bg7",
+      "popup": "Bg7！象激活"
+    },
+    {
+      "index": 10,
+      "move": "Be3",
+      "popup": "Be3"
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "O-O"
+    },
+    {
+      "index": 12,
+      "move": "Qd2",
+      "popup": "Qd2"
+    },
+    {
+      "index": 13,
+      "move": "a6",
+      "popup": "a6 准备b5"
+    },
+    {
+      "index": 14,
+      "move": "a4",
+      "popup": "a4 阻止b5"
+    },
+    {
+      "index": 15,
+      "move": "Nbd7",
+      "popup": "Nbd7 马发展"
+    },
+    {
+      "index": 16,
+      "move": "Nge2",
+      "popup": "Nge2"
+    },
+    {
+      "index": 17,
+      "move": "Ne5",
+      "popup": "Ne5！马占中心要点！"
+    },
+    {
+      "index": 18,
+      "move": "Ng3",
+      "popup": "Ng3 抵制"
+    },
+    {
+      "index": 19,
+      "move": "Nh5",
+      "popup": "Nh5！挑战白马"
+    },
+    {
+      "index": 20,
+      "move": "Nxh5",
+      "popup": "Nxh5 接受兑换"
+    },
+    {
+      "index": 21,
+      "move": "gxh5",
+      "popup": "gxh5！开放g线！"
+    },
+    {
+      "index": 22,
+      "move": "Be2",
+      "popup": "Be2"
+    },
+    {
+      "index": 23,
+      "move": "h4",
+      "popup": "h4！翼兵继续推进"
+    }
+  ]
+}

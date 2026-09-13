@@ -1,0 +1,15 @@
+1. e4 c6
+2. d4 d5
+3. e5 Bf5
+4. Nf3 e6
+5. Be2 c5
+6. O-O Nc6
+7. c3 Nge7
+8. Na3 cxd4
+9. cxd4 Ng6
+10. Nc2 Be7
+11. Ne1 f6
+12. Ne3 fxe5
+13. dxe5 
+# END
+# 解法 1

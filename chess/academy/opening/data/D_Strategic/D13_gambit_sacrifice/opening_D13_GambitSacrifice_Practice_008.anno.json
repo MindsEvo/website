@@ -1,0 +1,124 @@
+{
+  "game_id": "D13_GambitSacrifice_Practice_008",
+  "description": "布莱克马-迪默弃兵 D00 — 练习：d4体系也能弃兵！普遍原理的验证",
+  "intro": {
+    "flash_squares": ["e4", "d4", "d5"],
+    "popup": "弃兵争先 练习8\n\n前几课都是e4开局弃兵\n\n问题：d4体系也能弃兵争先吗？\n\n布莱克马-迪默弃兵：\n白方在d4体系里送e4！\n\n练习目标：\n用弃兵三要素验证这个弃兵\n判断它是否和e4体系的弃兵一样有效？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "布莱克马-迪默弃兵总结\n\n三要素检验结果：\n① 开放线路——f3推进后e线、f线均可开放\n② 发展领先——白方比黑方多1-2步（结构上）\n③ 进攻目标——黑方f6马可能被e5攻击\n\n结论：弃兵争先是普遍原理！\n在d4体系同样适用——\n核心逻辑不变：\n用一个兵换取发展速度和主动权\n\n只要三要素成立，任何棋子颜色都能弃！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e4", "d5"],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4 d4开局！不是e4！\n\n本局验证：d4体系的弃兵争先"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5 黑方d5，对称中心"
+    },
+    {
+      "index": 2,
+      "move": "e4",
+      "popup": "e4！！布莱克马弃兵！\n\n白方送出e4！\n这不是失误——这是弃兵争先！\n\n在d4体系里弃兵：\n白方两步走了两个中心兵\n速度vs材料的对决开始！",
+      "highlights": [
+        {"squares": ["e4", "d5"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "dxe4",
+      "popup": "dxe4 黑方吃掉e4！\n\n黑方接受弃兵，多了一个中心兵\n但现在d5没有了……\n\n白方的计划：快速发展，f3夺回！"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3！发展马！\n\n白方不急于夺回兵\n优先发展！\n\n⭐ 这和国王弃兵一样的逻辑：\n材料不急，发展先行！",
+      "highlights": [
+        {"squares": ["c3", "e4", "d5"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展马，守护e4",
+      "highlights": [
+        {"squares": ["f6", "e4"], "color": "#C6D50044"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "f3",
+      "popup": "f3！！白方推f3！\n\n⭐ 关键时刻！\n白方请求夺回e4！\n\nf3同时服务三件事：\n① 夺回e4兵\n② 打开f线（exf3后Nxf3或Qxf3）\n③ 驱赶Nf6，开放中心\n\n对比国王弃兵的O-O：\n同样是以攻代守！",
+      "highlights": [
+        {"squares": ["f3", "e4", "f1"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 7,
+      "move": "exf3",
+      "popup": "exf3 黑方再吃！\n\n黑方现在多了f3兵！\n但f线完全开放……\n\n⭐ 判断：白方f线开放后意味着什么？",
+      "highlights": [
+        {"squares": ["f3", "f1", "f7"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nxf3",
+      "popup": "Nxf3!白方夺回\n马占f3，f线控制！\n\n⭐ 发展对比：\n白方：Nc3+Nf3（2马完成）\n黑方：Nf6（只有1马）\n发展领先一步！",
+      "highlights": [
+        {"squares": ["f3", "d4", "e5", "g5"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 9,
+      "move": "g6",
+      "popup": "g6 黑方准备fianchetto\n\n⭐ 黑方想把象放到g7守卫中心\n但这需要时间……"
+    },
+    {
+      "index": 10,
+      "move": "Bc4",
+      "popup": "Bc4！象瞄准f7！\n\n⭐ 完全相同的模式！\n和国王弃兵一样：Bc4直指f7\n弃兵争先在不同体系里，用的是同样的语言！",
+      "highlights": [
+        {"squares": ["c4", "f7"], "color": "#E5393566"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Bg7",
+      "popup": "Bg7 黑方象完成fianchetto\n长对角线，保护中心"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O！白方入城！\n\n⭐ 与国王弃兵如出一辙：\n发展完成→入城→车参战\n\n白方攻击雏形：\nRf1或Re1+Bg5+Ne5",
+      "highlights": [
+        {"squares": ["g1", "f1"], "color": "#C6D50055"}
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O 黑方也入城\n\n⭐ 练习问题（双重）：\n① 白方现在最好的进攻计划是什么？\n提示：如何利用f线？Bg5+Ne5？\n\n② 如果白方什么都不做，等待……\n黑方的Bg7会如何在中局发挥作用？\n谁的时限更紧迫？",
+      "highlights": [
+        {"squares": ["f7", "e5", "g5", "f1"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bg5",
+      "popup": "Bg5！白方发展，施压Nf6！\n\nd4体系弃兵争先的完整形态展现：\n白方：Nc3+Nf3+Bc4+O-O+Bg5\n5枚子全部出动！\n\n黑方：Nf6+Bg7+O-O（3枚子）\n\n发展差距：2步！\n这就是布莱克马弃兵送出一个兵的收益！",
+      "highlights": [
+        {"squares": ["g5", "f6", "c4", "f7"], "color": "#E5393577"}
+      ]
+    }
+  ]
+}

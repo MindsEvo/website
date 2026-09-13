@@ -1,0 +1,48 @@
+{
+  "game_id": "B7_PieceCoord_Practice_006",
+  "description": "D30 — 无废子典范：每个白棋子都有任务",
+  "intro": {
+    "flash_squares": ["c1", "g5", "d3", "f3", "c3"],
+    "popup": "子力协调第6局\n后翼弃兵防御（QGD）是无废子的经典教学局\n白方每步棋都服务于同一计划：控制c列",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Qc2连接所有子力\n后翼棋子无一废子——这是一个很好的子力协调范例！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4占中心"},
+    {"index": 1, "move": "d5", "popup": "d5对抗d4"},
+    {"index": 2, "move": "c4", "popup": "c4后翼弃兵！\n弃兵开放c列\n计划：Rc1控制c列"},
+    {"index": 3, "move": "e6", "popup": "e6封闭体系\n黑方拒绝弃兵，稳固中心"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3第1支柱\n激活：马控d5和e4\n协调：Nc3是白方协调体系的枢纽", "highlights": [{"squares": ["d5", "e4"], "color": "#C6D50033"}]},
+    {"index": 5, "move": "Nf6", "popup": "Nf6黑方出马"},
+    {"index": 6, "move": "Bg5", "popup": "Bg5第2支柱！\n激活：象出动牵制Nf6\n协调：Bg5限制f6马，使黑方d5得不到充分保护\n计划：Bg5+Nc3联合施压d5", "highlights": [{"squares": ["f6", "e7"], "color": "#E5393533"}]},
+    {"index": 7, "move": "Be7", "popup": "Be7黑方守备\n黑方象保护f6马"},
+    {"index": 8, "move": "e3", "popup": "e3稳固\n激活：开放c1象有斜线\n协调：e3为Bd3的激活做铺垫"},
+    {"index": 9, "move": "O-O", "popup": "O-O黑方易位"},
+    {"index": 10, "move": "Nf3", "popup": "Nf3第3支柱\n激活：第2个马出动\n协调：Nf3（控e5）+ Nc3（控d5）+ Bg5（牵制f6）三子联动", "highlights": [{"squares": ["e5", "d4"], "color": "#C6D50033"}]},
+    {"index": 11, "move": "Nbd7", "popup": "Nbd7黑方马出动\n黑方准备...c6支援d5"},
+    {"index": 12, "move": "Rc1", "popup": "Rc1！！ 最关键一步！\n激活：车直接进入战斗位置！\n协调：Rc1（控c列）+ Nc3（支援c4）+ Bg5（牵制f6）三子配合\n计划：c列是白方的主攻轴线\n💡 这步棋证明白方计划从第2步就已确定！", "highlights": [{"squares": ["c1", "c4", "c5", "c6", "c7", "c8"], "color": "#FF8F0066"}]},
+    {"index": 13, "move": "c6", "popup": "c6黑方守d5\n黑方巩固中心"},
+    {"index": 14, "move": "Bd3", "popup": "Bd3第4支柱\n激活：象到达最佳格\n协调：Bd3（象控e4和b5斜线）+ Nf3（守e5）+ Rc1（控c列）\n计划：Bd3准备易位后的进攻", "highlights": [{"squares": ["d3", "h7", "b5", "e4"], "color": "#00BCD433"}]},
+    {"index": 15, "move": "dxc4", "popup": "dxc4黑方吃兵\n黑方终于吃c4兵"},
+    {"index": 16, "move": "Bxc4", "popup": "Bxc4象到c4\n激活：象控制f7格\n协调：Bxc4（象控f1-a6斜线）更加锋利"},
+    {"index": 17, "move": "Nd5", "popup": "Nd5黑方马冒进\n黑方马突入d5"},
+    {"index": 18, "move": "Bxe7", "popup": "Bxe7换象！\n激活：换掉Be7后，黑方d5马失去后方支撑\n协调：换象打乱黑方协调体系"},
+    {"index": 19, "move": "Qxe7", "popup": "Qxe7黑方吃回"},
+    {"index": 20, "move": "O-O", "popup": "O-O白方易位\n激活：Rf1进入游戏\n计划：易位后双车将联合控制"},
+    {"index": 21, "move": "Nxc3", "popup": "Nxc3黑方换马\n黑方换掉Nc3"},
+    {"index": 22, "move": "Rxc3", "popup": "Rxc3车吃马！\n激活：Rc1变成Rc3，车进入c3强格！\n协调：Rc3（车控c3-c8）+ Rfc1（待机）= 双车控c列\n计划：双车控c列，压力巨大！", "highlights": [{"squares": ["c3", "c8"], "color": "#FF8F0066"}]},
+    {"index": 23, "move": "e5", "popup": "e5黑方反击\n黑方中路爆发"},
+    {"index": 24, "move": "dxe5", "popup": "dxe5白方吃兵"},
+    {"index": 25, "move": "Nxe5", "popup": "Nxe5黑方马吃"},
+    {"index": 26, "move": "Nxe5", "popup": "Nxe5白马吃\n大量换子后局面清晰"},
+    {"index": 27, "move": "Qxe5", "popup": "Qxe5黑方后上来"},
+    {"index": 28, "move": "Qc2", "popup": "Qc2！后出动！\n激活：后进入c2将所有子力联结\n协调终结：\n♛ Qc2（连接双车，控c2-h7斜线）\n♖ Rc3（控c列）\n♖ Rfc1（控c1等待）\n协调形成：后+双车控c列，这就是QGD的精髓！\n✅ 无废子验证通过！", "highlights": [{"squares": ["c2", "c3", "c1", "h7"], "color": "#8E24AA66"}]}
+  ]
+}

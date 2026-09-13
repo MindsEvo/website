@@ -1,0 +1,361 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_008",
+  "description": "伦敦体系 D06 — 练习：Ne5占据强格 + 中心推进的兑换时机",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d4",
+      "f4"
+    ],
+    "popup": "及时兑子 练习 8\n\n伦敦体系——白方Bf4+Nf3体系\n稳固而富含战略深度\n\n白方均有一西 Ne5 强格！\n黑方不兑马，而是走Qc7！\n\n⭐ 练习问题：\n白方如何利用Ne5强格？\nf4+e4的中心推进时机如何把握？\n\n看白方如何步步为营，\n通过兑换链打开c列！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "伦敦Ne5体系评估总结\n\n⭐ 白方的战略脚步：\n\n① Ne5占据中心强格\n② f4+O-O稳固王翼后再推e4\n③ cxd4保留中心，exd5开放e列\n④ Rc1占据c列，施压后翼\n\n教训：Ne5强格的价值——\n不要急于与对方兑换，\n等待时机成熟再展开攻势！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5"
+    ],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4 中心"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5 对称"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3 发展马"
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展马"
+    },
+    {
+      "index": 4,
+      "move": "Bf4",
+      "popup": "Bf4！伦敦体系！\n\n⭐ Bf4是伦敦体系的核心！\n象在f4活跃，控制e5+c7\n\n白方准备发展Ne5占强格",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5",
+            "c7"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "e6",
+      "popup": "e6 黑方准备发展象"
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3 白方已囍d4"
+    },
+    {
+      "index": 7,
+      "move": "Bd6",
+      "popup": "Bd6！黑象发展！\n\n⭐ 重要时刻：\n黑象Bd6占据了一个有趣的格\n如果白方走Bxd6，等于帮黑方修复结构！\n白方不要轻易兑象——等待更好时机！",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "f4"
+          ],
+          "color": "#E5393533"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bg3",
+      "popup": "Bg3！白象退后！\n\n⭐ 战略选择：\n白方不急于Bxd6\n而是保留象，继续发展\n现在象在g3，控制h2-b8对角线！",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "b8"
+          ],
+          "color": "#00BCD433"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 黑方入城"
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "Bd3！白象重新定位！\n\n⭐ 注意：白方选择Bd3而不是Bxd6！\nBd3的目的：\n① 保留双象优势\n② 配合e4的可能推进\n③ 等待更好的兑换时机",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nbd7",
+      "popup": "Nbd7 黑方马发展\n准备c5或e5"
+    },
+    {
+      "index": 12,
+      "move": "Nbd2",
+      "popup": "Nbd2 白方马发展\n准备Ne5或Nf1-e3"
+    },
+    {
+      "index": 13,
+      "move": "c5",
+      "popup": "c5！黑方反击！\n攻凭d4兵，争夺中心",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "c3",
+      "popup": "c3 已囍d4\n稳固中心不让步"
+    },
+    {
+      "index": 15,
+      "move": "Re8",
+      "popup": "Re8 车到e列\n准备e5反击"
+    },
+    {
+      "index": 16,
+      "move": "Ne5",
+      "popup": "Ne5！！白马占据中心强格！\n\n⭐ Ne5是白方的计划核心！\n马在e5：\n① 控制d7和c6\n② 配合f4-g4进攻王翼\n③ 强格守护很难被封住",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d7",
+            "f7"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Qc7",
+      "popup": "Qc7！黑方不兑马！\n\n黑方选择Qc7而非Nxe5\n• 黑后Qc7守护e5和c6\n• 黑方准备后翼反击（b5/a5）\n• 不为白方兑出Ne5强格计划合播",
+      "highlights": [
+        {
+          "squares": [
+            "c7",
+            "e5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "f4",
+      "popup": "f4！白方加强王翼！\n\nf4强化了Ne5的支撒\n白方f4+Ne5形成进攻组合\n准备将来的e4中心推进",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "b5",
+      "popup": "b5！黑方后翼反击！\n黑方争夺b5-c4空间\n准备a5+Ba6展开后翼攻势",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c4"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "popup": "O-O！白方入城！\n\n王翼安全后，白方准备e4推进\n就位完毕，战略展开！",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "a5",
+      "popup": "a5！黑方继续扩张！\na5进一步加强后翼展开\n黑方准备Ba6活跃象",
+      "highlights": [
+        {
+          "squares": [
+            "a5",
+            "b5"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "e4",
+      "popup": "e4！！白方中心推进！\n\n⭐ 时机到了！\nNe5+f4已经就位，现在推e4！\n尾堂兑换将开放e列和c列",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "cxd4",
+      "popup": "cxd4！黑兵兑换！\nc5吃d4，黑方消除白方d4兵\n开放了c列的兑换渡道",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d4"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "cxd4",
+      "popup": "cxd4！白方还吃！\n\nc3吃回 d4，中心已经d4稳固\n白方保留强大的d4中心兵",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Qb6",
+      "popup": "Qb6！黑后施压！\n\n黑后Qb6沿对角线攻凼d4兵\n• b6到d4对角线通畅\n• 同时威胁b2\n白方必须小心防守d4",
+      "highlights": [
+        {
+          "squares": [
+            "b6",
+            "d4"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Bf2",
+      "popup": "Bf2！象退守护！\n\nBg3退回 f2，保护d4兵\n• Bf2守护d4对角思路\n• 同时象练f2压制黑方后翼",
+      "highlights": [
+        {
+          "squares": [
+            "f2",
+            "d4"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Ba6",
+      "popup": "Ba6！黑象出动！\n\nc8象展开到a6\n• 审视a6-d3对角线，目标Bd3白象\n• 支援黑方后翼活动（b5+a5+Ba6）",
+      "highlights": [
+        {
+          "squares": [
+            "a6",
+            "d3"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "move": "exd5",
+      "popup": "exd5！白方兑换！\n\ne4兑d5，白方开放e列\n• 兑换后开放c列和e列\n• 白方车将进入开放列",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "exd5",
+      "popup": "exd5！黑兵回吃！\ne6兑d5，黑方保持d5兵\n兑换后黑方d5兵守着中心",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "move": "Rc1",
+      "popup": "Rc1！！白车进入开放列！\n\n⭐ 白方计划完整展开：\n车占据c列，施压黑方后翼\n• c列开放，白车占据c1-c7\n• 黑方后翼 Ba6+Qb6 受到压制\n\n这就是兑换时机的艺术：\nNe5强格→f4+e4中心→兑换链→开放c列！",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "c7"
+          ],
+          "color": "#E5393577"
+        }
+      ]
+    }
+  ]
+}

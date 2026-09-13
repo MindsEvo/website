@@ -1,0 +1,279 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_007",
+  "description": "西西里大奖赛进攻 B23 — 练习：白方及时Bxc6兑马！",
+  "intro": {
+    "flash_squares": [
+      "b5",
+      "c6"
+    ],
+    "popup": "及时兑子 练习 7\n\n西西里防御——白方大奖赛进攻！\nNc3+f4——白方准备王翼进攻！\n\n白方已走Bb5，黑方Nc6尚在c6！\n如果白方犹豫——黑方会走Nd4\n那时Bxc6就只能吃空格！\n\n⭐ 问题：\n白方应该在哪步走Bxc6？\n现在就是最佳时机！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "Bxc6兑換评估总结\n\n⭐ 及时兑子的进攻面：\n\n白方Bxc6的时机选择：\n• 太早：象还没到位，兑不到Nc6\n• 太晚：黑方走了Nd4，就庻xc6吃空格！\n• 恰到好处：就在黑方准备Nd4前就兑换！\n\n兑换判断：\n① Nc6是黑方中心守卫，价值高\n② 白方用象兑马——黑方形成双叠兵（c5+c6）\n③ 进攻性兑换开启结构优势\n\n教训：及时兑子要把握最乳时机！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "c6"
+    ],
+    "color": "#8E24AA22"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 中心"
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5！西西里防御"
+    },
+    {
+      "index": 2,
+      "move": "Nc3",
+      "popup": "Nc3！大奖赛进攻！\n\n白方不走Nf3/d4，而是Nc3\n准备f4-f5-g4-g5的王翼进攻！",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "f4"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6 黑方发展，中心对抗"
+    },
+    {
+      "index": 4,
+      "move": "f4",
+      "popup": "f4！！大奖赛进攻的核心！\n白方准备f5攻击黑方王翼\n\n⭐ 该轮白方发展Bb5——\n黑方Nc6尚在c6，及时兑换的时机到了！",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "c6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "g6",
+      "popup": "g6 黑方准备飞象\n防守王翼"
+    },
+    {
+      "index": 6,
+      "move": "Bb5",
+      "popup": "Bb5！！白象进攻！\n\n爱就Bb5正对Nc6！\n⭐ 现在就是兑换的门片充脱先机！\n如果白方移开象或先走其他步\n黑方会走Nd4逃距！",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Bg7",
+      "popup": "Bg7！国王印度飞象\n黑方防守王翼"
+    },
+    {
+      "index": 8,
+      "move": "Bxc6",
+      "popup": "Bxc6！！！及时兑子！\n\n白象立刻兑马！不等Nc6跳到d4！\n\n为什么现在？\n• Nc6仍在c6——还没逃距！\n• 如果白方犹豫，5...Nd4黑马跳走！\n• 那时Bxc6就只能吃空格！\n\n战略效果：\n① 消灭黑方中心守卫 Nc6\n② dxc6形成双叠兵（c5+c6双重弱点）\n③ 白方f4兵控制e5，进攻更顺界",
+      "highlights": [
+        {
+          "squares": [
+            "b5",
+            "c6"
+          ],
+          "color": "#8E24AA77"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "dxc6",
+      "popup": "dxc6 黑方回吃\n\n⭐ 兑换结果：\n黑方形成双叠兵：c5+c6两个影子兵！\nc5干扰b4和d4；c6危害d5和b5\n白方得到玩子结构上的长期优势！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "c6"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "d3",
+      "popup": "d3 白方巩固中心\n封闭 e4的封锁，准备Be3"
+    },
+    {
+      "index": 11,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展\n马入场优化位置"
+    },
+    {
+      "index": 12,
+      "move": "Nf3",
+      "popup": "Nf3！白马展开\n\n白方完成小兵阵开局\n准备入城",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5"
+          ],
+          "color": "#00BCD433"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O 黑方入城\n就位守王"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O 白方入城！\n就位完成\n\n白方开局完成：\n• 双叠兵优势已充分展现\n• f4兑升象，白方可准备fxe5等进一步兑换",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Nd7",
+      "popup": "Nd7 黑马重组\n\nNf6转到d7，清空f6路线\n准备Nxe5活跃",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "e5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Be3",
+      "popup": "Be3 白象开展\n守护d4格，敎攻就绪"
+    },
+    {
+      "index": 17,
+      "move": "e5",
+      "popup": "e5！ 黑方反击中心！\n\n黑方推进中心，发起兑换系列\n进攻开始！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f4"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "fxe5",
+      "popup": "fxe5！ 白方接受兑换！\n\nf4尠1兑换e5小兵\n开启互兑局面",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5"
+          ],
+          "color": "#FF8F0044"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nxe5",
+      "popup": "Nxe5！ 黑马占据强格！\n\nNd7跳入e5，吃白小兵\n黑马进入中心强格！",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Nxe5",
+      "popup": "Nxe5！ 白马吃回！\n\nNf3弹到e5，将黑马吃掉\n元基因兑换链：小兑小，小兑小",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f3"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Bxe5",
+      "popup": "Bxe5！ 黑象吃回！\n\nBg7沿对角线到e5（g7-f6-e5）\n⭐ 关键：f6已空！（Nf6在第8步走到了Nd7）\n所以Bg7现在可以顺利走到e5！",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "f6",
+            "e5"
+          ],
+          "color": "#8E24AA66"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Qf3",
+      "popup": "Qf3！ 白后进攻！\n\n白后攻击e5的黑象\n进攻到临时反制Be5！",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "f5",
+      "popup": "f5 黑方守护e5！\n\n⭐ 局面评估：\n白方：Bxc6兑换形成双叠兵优势\n黑方：Be5占据强格，f5守护\n\n这就是及时兑子的能量：\n在做可以兑的那一刻就兑！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f5"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    }
+  ]
+}

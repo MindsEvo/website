@@ -1,0 +1,208 @@
+{
+  "game_id": "C10_WeakSquares_Practice_006",
+  "description": "后翼印度 E15 — Ba6远射象瞄准弱格",
+  "intro": {
+    "flash_squares": [
+      "a6",
+      "c4",
+      "f1",
+      "b5"
+    ],
+    "popup": "Ba6远射象瞄准弱格 练习6\n\nBa6是远射象的典型示范\n象沿a6-f1对角线直瞄c4弱格\n不需要靠近，长期施压！\n\n找出对方的弱格，让象来控制它",
+    "voice": true
+  },
+  "outro": {
+    "popup": "远射象练习小结\n✅ Ba6沿对角线控制c4弱格\n✅ b6+Ba6+c6组成完整攻击体系\n✅ O-O后象继续长期守住对角线\n\n练习要点：\n推b6时想想Ba6能否攻击弱格",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "c4",
+      "a6"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧！\n注意：c4本身现在是弱格",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固"
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "Nf3发展马"
+    },
+    {
+      "index": 5,
+      "move": "b6",
+      "popup": "b6！为Ba6或Bb7做准备\n黑方展示翼侧象计划"
+    },
+    {
+      "index": 6,
+      "move": "g3",
+      "popup": "g3纤维局"
+    },
+    {
+      "index": 7,
+      "move": "Ba6",
+      "popup": "Ba6！远射象出击\n沿a6-f1对角线瞄准c4\n这是弱格攻击的远程策略！",
+      "highlights": [
+        {
+          "squares": [
+            "a6",
+            "b5",
+            "c4",
+            "d3",
+            "e2",
+            "f1"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "b3",
+      "popup": "b3守护c4\n防止Ba6的持续威胁"
+    },
+    {
+      "index": 9,
+      "move": "Bb4+",
+      "popup": "Bb4+将军！\n试探白方应对",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "d2",
+            "f2"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Bd2",
+      "popup": "Bd2用象阻截\n不用Nd2暴露c3格"
+    },
+    {
+      "index": 11,
+      "move": "Be7",
+      "popup": "Be7收象回安全位"
+    },
+    {
+      "index": 12,
+      "move": "Bg2",
+      "popup": "Bg2建立纤维局象"
+    },
+    {
+      "index": 13,
+      "move": "c6",
+      "popup": "c6加强！\n黑方进一步控制d5弱格",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bc3",
+      "popup": "Bc3！强化守护c4\n白方调整象到c3位",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "c4"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "d5",
+      "popup": "d5反击中心！\n黑方占领中心"
+    },
+    {
+      "index": 16,
+      "move": "Ne5",
+      "popup": "Ne5中心马！\n占据强力位置"
+    },
+    {
+      "index": 17,
+      "move": "Nfd7",
+      "popup": "Nfd7主动兑换"
+    },
+    {
+      "index": 18,
+      "move": "Nxd7",
+      "popup": "Nxd7兑换\n清除守护马"
+    },
+    {
+      "index": 19,
+      "move": "Nxd7",
+      "popup": "Nxd7重建"
+    },
+    {
+      "index": 20,
+      "move": "Nd2",
+      "popup": "Nd2重组\n马准备跳到更好位置"
+    },
+    {
+      "index": 21,
+      "move": "O-O",
+      "popup": "O-O入城\n黑方Ba6象继续施压c4！",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "O-O",
+      "popup": "O-O双方完成布局\n结构清晰：黑象Ba6长期控制c4弱格\n这就是远射象策略的威力！",
+      "highlights": [
+        {
+          "squares": [
+            "a6",
+            "c4"
+          ],
+          "color": "#C6D50088"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "game_id": "A4_Lines_Demo_010",
+  "description": "西班牙封闭 C84 — Re1+Bc2纵线与斜线联合控制网",
+  "intro": {
+    "flash_squares": ["e1", "c2", "e5", "h7"],
+    "popup": "线路控制第10课\nRe1车，Bc2象——纵线与斜线联合！\n车控e线，象控c2-h7斜线\n两条线交织成一张控制网\n双重压力下，黑方e5必须时刻防守",
+    "voice": true
+  },
+  "outro": {
+    "popup": "联合总结\nRe1车，Bc2象的协同威力\n1. Re1——e线纵向压制e5黑兵\n2. Bc2——c2-h7斜线，瞄准f5/g6/h7\n3. 两线交织：黑方e5受双重攻击\n4. 白方可随时d4×e5打开局面\n纵线与斜线联合——这是高效的线路控制！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局\n占据中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5对称应对\n封闭e线"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3发展\n攻击e5"
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "Nc6保护e5\n标准西班牙应对"
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "highlights": [{"squares": ["b5", "c6"], "color": "#FF8F0044"}],
+      "popup": "Bb5！西班牙开局！\n钉住Nc6，间接攻击e5\n这是白方最锐利的开局之一"
+    },
+    {
+      "index": 5,
+      "move": "a6",
+      "popup": "a6驱逐象\n标准封闭体系应对"
+    },
+    {
+      "index": 6,
+      "move": "Ba4",
+      "popup": "Ba4象后撤\n维持对Nc6的牵制"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6发展\n出子争中心"
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "highlights": [{"squares": ["g1", "f1", "e1"], "color": "#C6D50033"}],
+      "popup": "O-O王车易位\nf1车激活\n白方准备立刻部署Re1！"
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "Be7准备易位\n黑方稳健发展"
+    },
+    {
+      "index": 10,
+      "move": "Re1",
+      "highlights": [{"squares": ["f1", "e1", "e5"], "color": "#C6D50066"}],
+      "concept_arrows": [{"from": "e1", "to": "e5", "color": "#C6D500AA"}],
+      "popup": "Re1！第一步——占领e线！\n车到e1，施压e5中心兵\n这是西班牙封闭的核心布局手段\n车在e线等待d4推进后的开放"
+    },
+    {
+      "index": 11,
+      "move": "b5",
+      "popup": "b5驱逐象\n黑方争夺空间\n逼迫白象后撤"
+    },
+    {
+      "index": 12,
+      "move": "Bb3",
+      "highlights": [{"squares": ["a4", "b3"], "color": "#FF8F0033"}],
+      "popup": "Bb3象撤退\n但注意：Bb3仍然瞄准f7！\n象在b3位置很稳固"
+    },
+    {
+      "index": 13,
+      "move": "d6",
+      "popup": "d6稳固\n黑方巩固中心"
+    },
+    {
+      "index": 14,
+      "move": "c3",
+      "popup": "c3为d4做准备\n同时为象后撤到c2创造条件"
+    },
+    {
+      "index": 15,
+      "move": "O-O",
+      "popup": "O-O黑方易位\n黑方完成发展"
+    },
+    {
+      "index": 16,
+      "move": "h3",
+      "popup": "h3防止Bg4\n细节手段，消除后顾之忧"
+    },
+    {
+      "index": 17,
+      "move": "Nb8",
+      "popup": "Nb8马撤回\n黑方调整，准备Nbd7重新部署"
+    },
+    {
+      "index": 18,
+      "move": "d4",
+      "highlights": [{"squares": ["d2", "d4", "e5"], "color": "#C6D50044"}],
+      "popup": "d4！中心推进\nd4进逼e5，开始给黑方施压\nRe1的价值进一步显现"
+    },
+    {
+      "index": 19,
+      "move": "Nbd7",
+      "popup": "Nbd7重新发展\n马到d7，准备Nb6/c5"
+    },
+    {
+      "index": 20,
+      "move": "Nbd2",
+      "popup": "Nbd2发展\n马到d2，支援c4或f1"
+    },
+    {
+      "index": 21,
+      "move": "Bb7",
+      "highlights": [{"squares": ["b7", "e4"], "color": "#00BCD433"}],
+      "popup": "Bb7发展\n黑象到b7，瞄准e4\n黑方阵型趋于完整"
+    },
+    {
+      "index": 22,
+      "move": "Bc2",
+      "highlights": [
+        {"squares": ["b3", "c2", "h7", "e4", "e1"], "color": "#FF8F0066"},
+        {"squares": ["e1", "e5"], "color": "#C6D50066"}
+      ],
+      "concept_arrows": [
+        {"from": "c2", "to": "h7", "color": "#FF8F00AA"},
+        {"from": "c2", "to": "e4", "color": "#FF8F00AA"},
+        {"from": "e1", "to": "e5", "color": "#C6D500AA"}
+      ],
+      "popup": "Bc2！第二步——斜线加入！\n象从b3到c2，形成c2-h7斜线\nRe1车已控e线（纵向）\nBc2象控c2-h7（斜向）\n两线交织：e5黑兵同时受到纵线和斜线双重控制！\n纵线+斜线联合控制网——完成！"
+    }
+  ]
+}

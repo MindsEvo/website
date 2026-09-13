@@ -1,0 +1,159 @@
+{
+  "game_id": "D15_CounterAttack_Practice_010",
+  "description": "西西里坎变例 B41 — 侧翼配合中心反制练习：b5翼攻配合c5",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心练习10\n\n西西里坎变例！\n\na6+b5侧翼反制\n配合中心反击\n\n练习目标：\n判断b5的最佳时机\n侧翼与中心如何配合？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "坎变例总结\n\n关键策略要点：\n① a6铺路，Qc7后配合中心\n② Bg5施压后Kh1解除钉制\n③ h6/g5赶走象，夺空间\n④ Bg3保持压力 + e5中心反击\n\nRad1车进中心巩固优势！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4"
+    },
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5 西西里！"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6"
+    },
+    {
+      "index": 4,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "cxd4"
+    },
+    {
+      "index": 6,
+      "move": "Nxd4",
+      "popup": "Nxd4"
+    },
+    {
+      "index": 7,
+      "move": "a6",
+      "popup": "a6！坎变例！\n为b5铺路"
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3"
+    },
+    {
+      "index": 9,
+      "move": "Qc7",
+      "popup": "Qc7 后激活"
+    },
+    {
+      "index": 10,
+      "move": "Bd3",
+      "popup": "Bd3"
+    },
+    {
+      "index": 11,
+      "move": "Nf6",
+      "popup": "Nf6"
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "O-O"
+    },
+    {
+      "index": 13,
+      "move": "Bc5",
+      "popup": "Bc5 象激活"
+    },
+    {
+      "index": 14,
+      "move": "Nb3",
+      "popup": "Nb3 赶走象"
+    },
+    {
+      "index": 15,
+      "move": "Ba7",
+      "popup": "Ba7 象后退"
+    },
+    {
+      "index": 16,
+      "move": "Bg5",
+      "popup": "Bg5 施压"
+    },
+    {
+      "index": 17,
+      "move": "d6",
+      "popup": "d6"
+    },
+    {
+      "index": 18,
+      "move": "Qe2",
+      "popup": "Qe2"
+    },
+    {
+      "index": 19,
+      "move": "Nbd7",
+      "popup": "Nbd7"
+    },
+    {
+      "index": 20,
+      "move": "Kh1",
+      "popup": "Kh1！王避开钉制\n为Bg5腾位"
+    },
+    {
+      "index": 21,
+      "move": "h6",
+      "popup": "h6 赶走象"
+    },
+    {
+      "index": 22,
+      "move": "Bh4",
+      "popup": "Bh4 象继续施压"
+    },
+    {
+      "index": 23,
+      "move": "g5",
+      "popup": "g5！强迫象撤退\n夺取空间"
+    },
+    {
+      "index": 24,
+      "move": "Bg3",
+      "popup": "Bg3 象后退保持压力"
+    },
+    {
+      "index": 25,
+      "move": "e5",
+      "popup": "e5！黑方中心反击！\n打开局面"
+    },
+    {
+      "index": 26,
+      "move": "Rad1",
+      "popup": "Rad1！车进中心\n控制d文件"
+    }
+  ]
+}

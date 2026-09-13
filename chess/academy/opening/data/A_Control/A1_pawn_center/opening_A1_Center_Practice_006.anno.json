@@ -1,0 +1,682 @@
+{
+  "game_id": "A1_Center_Practice_006",
+  "description": "西班牙开局——中心优势耐心积累转化王翼进攻 第6局，27步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "西班牙开局练习：观察白方如何花10步慢慢积累中心优势，再转化为进攻！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "中心优势是进攻的基础——先稳住中心，再在翼翼发力，这是最可靠的胜利路径。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 西班牙开局启幕！</b><br>白方占领 e4，中心争夺开始。西班牙开局是最深入的开局之一，白方的目标是耐心建立 d4，最终用中心优势压垮黑方。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "e4",
+          "to": "f5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方对称回应！</b><br>黑方也占 e5，双方中心对峙，张力立刻形成。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 出马攻击 e5！</b><br>f3 马直接威胁 e5，迫使黑方应对。同时马为 d4 推进做铺垫。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 黑马保护 e5！</b><br>c6 马守住 e5，同时出子。出子与防守一步完成——效率最优。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "popup": "⬆️ <b>3.Bb5 — 西班牙象！间接压 e5！</b><br>象来到 b5，瞄准 c6 马——c6 马是 e5 的守护者。若马被攻击或消灭，e5 就失去保护。<br>这是西班牙开局的核心逻辑：<b>不直接攻击 e5，而是攻击它的守护者。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "c6",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "a6",
+      "popup": "⬇️ <b>3...a6 — 赶走白象！</b><br>a6 直接赶走 b5 象，解除对 c6 马的威胁。这是西班牙最常见的变例——黑方明确表态不让象长期压迫。",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Ba4",
+      "popup": "⬆️ <b>4.Ba4 — 象后退保持压力！</b><br>象退到 a4，依然保持对 c6 马的间接压力。白方不放弃这条线的威胁，等待时机重新进攻。",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "c6",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑方出第二匹马，反过来攻击白方的 e4 兵。双方都在用子力争夺中心控制权。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "⬆️ <b>5.O-O — 白方易位，设下陷阱！</b><br>表面上e4兵无保护，黑方能吃吗？若 5...Nxe4，白方立刻 6.Re1！车攻马，黑马被迫退，白方再Nxe5反吃e5并威胁黑王。<br><b>所以e4是「虚假空城」，黑方不敢吃——这就是西班牙开局的精妙之处！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h1",
+          "to": "f1",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "⬇️ <b>5...Be7 — 黑方出象，准备易位！</b><br>黑象出动到 e7，为王翼易位清路。双方都在有条不紊地完成开局发展。",
+      "highlights": [
+        {
+          "squares": [
+            "g8"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Re1",
+      "popup": "⬆️ <b>6.Re1 — 车占 e1，支援中心！</b><br>f1 车转移到 e1，支撑 e4 兵，为后续 d4 的推进做准备。<br>这是西班牙开局「马罗奇变例」的标志：<b>每步都在为建立 d4 积累条件。</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e2",
+            "e3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "e4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "b5",
+      "popup": "⬇️ <b>6...b5 — 黑方赶走 a4 象！</b><br>b5 兵继续驱逐白象，打破白方对 c6 马的长期压力。黑方在后翼积极争取空间。",
+      "highlights": [
+        {
+          "squares": [
+            "a4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "a4",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bb3",
+      "popup": "⬆️ <b>7.Bb3 — 象退 b3，控制 d5！</b><br>白象退到 b3，依然对准 d5 格，同时盯住 f7。象在 b3 比 a4 更活跃，同时为 c3 和 d4 的推进让路。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f7"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "d5",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "b3",
+          "to": "f7",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "d6",
+      "popup": "⬇️ <b>7...d6 — 黑方巩固 e5！</b><br>d6 支撑 e5 兵，让黑方中心更稳固，是稳健的防守选择。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "e5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "c3",
+      "popup": "⬆️ <b>8.c3 — 西班牙核心！为 d4 铺路！</b><br>c3 为 d4 推进做最后准备，白方已经默默准备了8步，现在 d4 即将到来！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "O-O",
+      "popup": "⬇️ <b>8...O-O — 黑方完成易位！</b><br>黑方国王安全转移。至此双方基础发展完毕，接下来是中局的中心争夺——白方即将推出 d4！",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "h8",
+          "to": "f8",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "h3",
+      "popup": "⬆️ <b>9.h3 — 防止 Bg4！</b><br>h3 阻止黑方 Bg4 骚扰 f3 马。<br>这一步体现了<b>建立中心前必须先排除干扰</b>的精细思路。",
+      "highlights": [
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h3",
+          "to": "g4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Na5",
+      "popup": "⬇️ <b>9...Na5 — 黑马跳出，攻击 Bb3！</b><br>黑马跳到 a5，直接攻击 b3 象。若象被交换，白方 d4 的推进受阻。黑方在白方完成中心前寻找反击机会！",
+      "highlights": [
+        {
+          "squares": [
+            "b3"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a5",
+          "to": "b3",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Bc2",
+      "popup": "⬆️ <b>10.Bc2 — 象退 c2，为 d4 完全让路！</b><br>象主动退回 c2，看似后退实则关键：c2 象支撑 e4，且 d4 线路彻底清空，下一步就是决定性的 d4！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c2",
+          "to": "e4",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "d1",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "c5",
+      "popup": "⬇️ <b>10...c5 — 黑方侧翼反击！</b><br>黑方推 c5 在后翼争取空间，试图在白方建立 d4 之前制造威胁。这是西西里思路的延伸——侧翼兵攻击中心格。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "b4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "d4",
+      "popup": "⬆️ <b>11.d4 — 时机成熟，中心建立！</b><br>白方终于推出 d4！经过10步的精心准备，完整的双兵中心（e4+d4）终于建成。<br>整个棋盘的重心立刻转移——白方掌握中心，黑方必须应对！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50099",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c5",
+            "e5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Qc7",
+      "popup": "⬇️ <b>11...Qc7 — 黑后出动防守！</b><br>黑后来到 c7，同时防守 c5 和 e5，应对白方双兵中心的压力。黑方局面趋于被动。",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c7",
+          "to": "c5",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "c7",
+          "to": "e5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Nbd2",
+      "popup": "⬆️ <b>12.Nbd2 — 马出动，巩固中心！</b><br>d2 马支援中心，为 d4 提供额外保护，同时准备跳向 f1-e3 或 f3-e5。白方中心越来越坚固。",
+      "highlights": [
+        {
+          "squares": [
+            "f1",
+            "e3",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "f1",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "f1",
+          "to": "e3",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "cxd4",
+      "popup": "⬇️ <b>12...cxd4 — 黑方兑换 d4！</b><br>黑方用 c5 吃掉 d4，试图消除白方中心兵。但白方可以用 c3 兵吃回，保持中心！",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#FF8F0044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c5",
+          "to": "d4",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "cxd4",
+      "popup": "⬆️ <b>13.cxd4 — 白方夺回 d4！</b><br>c3 兵吃 d4，中心保持完整。现在白方的 d4 兵由 e4 兵保护，稳如磐石！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50077",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Nc6",
+      "popup": "⬇️ <b>13...Nc6 — 黑马回位施压！</b><br>黑马回到 c6，重新攻击 d4，给白方施加压力。黑方试图阻止白方进一步推进。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d4",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "d5",
+      "popup": "⬆️ <b>14.d5 — 中心推进！空间优势确立！</b><br>白方果断推 d5，锁定中心，将 c6 马和黑方后翼子力切断联系。<br>🏆 <b>第6局总结：</b><br>西班牙开局展示了中心优势的<b>耐心积累</b>：10步铺垫后推出 d4，再用 d5 锁定空间。白方在王翼拥有广阔进攻空间，中心优势彻底转化为局面优势！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D500AA",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "c6",
+            "e6"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e4",
+            "d4",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c6",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d5",
+          "to": "e6",
+          "color": "#00BCD4BB"
+        }
+      ]
+    }
+  ]
+}

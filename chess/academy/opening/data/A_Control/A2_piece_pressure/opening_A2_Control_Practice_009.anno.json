@@ -1,0 +1,345 @@
+{
+  "game_id": "A2_Control_Practice_009",
+  "description": "卡塔兰开局——兵的占领与子的控制完美融合，18步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "大象斜线加 c4——兵的占领与子的控制完美结合！卡塔兰是 A1 占领中心与 A2 控制中心知识的综合应用，观察 Bg2 如何与 d4+c4 协同工作",
+    "voice": true
+  },
+  "outro": {
+    "popup": "占领与控制相辅相成，是最强大的中心策略。d4 占领 + c4 侧翼控制 + Bg2 远程覆盖——三重叠加让对手的任何反制都变得极为困难。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "⬆️ <b>1.d4 — A1技能：兵占中心！</b><br>d4 兵直接占领中心格，控制 c5 和 e5。这是我们在 A1「占领中心」学过的基本技能。",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "⬇️ <b>1...Nf6 — 黑马控制 e4 和 d5！</b><br>黑马出动，控制 e4 和 d5，直接挑战白方中心计划。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "⬆️ <b>2.c4 — A2技能：侧翼兵控制 d5！</b><br>c4 不在中心，却控制 d5（超现代思想）。现在 d5 受 d4 和 c4 双重控制！这是 A2「控制中心」的典型应用。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "⬇️ <b>2...e6 — 黑方稳固，建立基础。</b><br>e6 支撑 d5，为 d5 的推进做准备，同时开放黑格象的道路。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "g3",
+      "popup": "⬆️ <b>3.g3 — 卡塔兰的特征！准备 Bg2！</b><br>g3 是卡塔兰开局的标志性步骤，为象发展到 g2 铺路，将开启覆盖 d5 的长斜线控制。",
+      "highlights": [
+        {
+          "squares": [
+            "g2"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "d5",
+      "popup": "⬇️ <b>3...d5 — 黑方占领 d5，建立中心！</b><br>黑方推 d5，形成 d5+e6 稳固的中心结构，直接挑战白方的 c4 控制。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "c4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Bg2",
+      "popup": "⬆️ <b>4.Bg2 — A2核心！象入长斜线！</b><br>白象进入 g2，沿 h1-a8 对角线延伸——这条斜线直接覆盖 <b>d5</b>！<br>现在 d5 格受到：d4（占领）+ c4（侧控）+ Bg2（斜线）<b>三重控制</b>！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c6",
+            "b7",
+            "a8"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "⬇️ <b>4...Be7 — 黑方出象，准备易位。</b><br>黑方标准发展，准备易位。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "⬆️ <b>5.Nf3 — 马加入中心控制网！</b><br>Nf3 控制 e5 和 d4，与 Bg2+c4+d4 共同形成完整的控制体系。发展完成，准备易位。",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "⬇️ <b>5...O-O — 黑方易位完成。</b><br>黑方易位，王的安全得到保障。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "⬆️ <b>6.O-O — 白方易位，阵型完整！</b><br>白方易位，Bg2 的长斜线控制完全激活。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "dxc4",
+      "popup": "⬇️ <b>6...dxc4 — 黑方吃掉 c4！</b><br>黑方用 d5 兵吃掉 c4 兵，中心发生变化！c4 控制 d5 的使命已经完成（通过兑换打开局面），但 Bg2 的斜线现在更加开放了！",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g2",
+          "to": "a8",
+          "color": "#00BCD4AA"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Qc2",
+      "popup": "⬆️ <b>7.Qc2 — 后出动，准备夺回 c4！</b><br>白后到 c2，同时为夺回 c4 兵做准备，保持 c4 方向的控制。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "a6",
+      "popup": "⬇️ <b>7...a6 — 黑方稳固翼路。</b><br>a6 防止白方象跳 Nb5 等，稳固后翼阵型。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "Qxc4",
+      "popup": "⬆️ <b>8.Qxc4 — 后夺回 c4 兵！</b><br>白后夺回 c4，重新控制 d5 方向。现在 Qc4+Bg2 双重控制 d5 区域。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "d3",
+            "e6",
+            "f7"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c4",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "b5",
+      "popup": "⬇️ <b>8...b5 — 黑方驱逐白后！</b><br>b5 攻击白后，迫使其后退。",
+      "highlights": [
+        {
+          "squares": [
+            "c4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "c4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Qc2",
+      "popup": "⬆️ <b>9.Qc2 — 白后退守！</b><br>白后退到 c2，避免被攻击，但仍在 c 线上保持影响力。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 17,
+      "move": "Bb7",
+      "popup": "⬇️ <b>9...Bb7 — 黑象进入长斜线！</b><br>黑象 Bb7 也占据长对角线，与 Bg2 正面对峙！<br><span style='color:#88CCFF;'>★ 总结：Bg2 vs Bb7 的斜线对抗是卡塔兰的核心——白方占领d4，侧控c4， 斜线Bg2，这是<b>占领与控制最完美的结合</b>！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "g2",
+            "b7"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b7",
+          "to": "d5",
+          "color": "#FF5722AA"
+        },
+        {
+          "from": "g2",
+          "to": "d5",
+          "color": "#00BCD488"
+        }
+      ]
+    }
+  ]
+}

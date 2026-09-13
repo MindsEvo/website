@@ -659,6 +659,7 @@
           var rest = m ? m[1] : line.replace(/^\.+\s*/, '');
           rest.split(/\s+/).forEach(function (tok) {
             tok = tok.replace(/,$/, ''); // some source files use "Qxd5+, Kxd5" with a stray comma
+            tok = tok.replace(/[!?]+$/, ''); // strip move-quality marks like "Nxb5!"/"e4?!"
             if (tok && SAN_TOKEN_RE.test(tok)) moves.push(tok);
           });
         });

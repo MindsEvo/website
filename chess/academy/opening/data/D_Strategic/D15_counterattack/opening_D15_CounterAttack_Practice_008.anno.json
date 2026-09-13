@@ -1,0 +1,144 @@
+{
+  "game_id": "D15_CounterAttack_Practice_008",
+  "description": "现代防御150攻击 B06 — 反制练习：在激烈攻击下寻找e5爆破时机",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心练习8\n\n现代防御150攻击！\n\n白方直接翼翼攻!\n黑方只防会输\n\n练习目标：\n在防守的同时寻找反击\ne5爆破的时机在哪？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "现代防御总结\n\n被攻击时的反制策略：\n① 不能只防守\n② Qa5！后反击白方\n③ e5！中心爆破分散攻势\n\n关键决策：\n何时从防守转为反击？",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4"
+    },
+    {
+      "index": 1,
+      "move": "d6",
+      "popup": "d6 现代防御"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "g6 超现代"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "Bg7！超现代象"
+    },
+    {
+      "index": 6,
+      "move": "Be3",
+      "popup": "Be3 150攻击开始"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6"
+    },
+    {
+      "index": 8,
+      "move": "Qd2",
+      "popup": "Qd2 攻击准备"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O"
+    },
+    {
+      "index": 10,
+      "move": "O-O-O",
+      "popup": "O-O-O！后翼易位\n准备h4-h5翼攻"
+    },
+    {
+      "index": 11,
+      "move": "c6",
+      "popup": "c6 稳固"
+    },
+    {
+      "index": 12,
+      "move": "h4",
+      "popup": "h4！翼攻开始"
+    },
+    {
+      "index": 13,
+      "move": "h5",
+      "popup": "h5 封锁"
+    },
+    {
+      "index": 14,
+      "move": "Bh6",
+      "popup": "Bh6！攻击象"
+    },
+    {
+      "index": 15,
+      "move": "Bxh6",
+      "popup": "Bxh6 接受兑换"
+    },
+    {
+      "index": 16,
+      "move": "Qxh6",
+      "popup": "Qxh6 后激活"
+    },
+    {
+      "index": 17,
+      "move": "Qa5",
+      "popup": "Qa5！反击！\n黑后活跃，攻击白方后翼"
+    },
+    {
+      "index": 18,
+      "move": "Kb1",
+      "popup": "Kb1 王更安全"
+    },
+    {
+      "index": 19,
+      "move": "e5",
+      "popup": "e5！中心爆破！\n关键时机！"
+    },
+    {
+      "index": 20,
+      "move": "dxe5",
+      "popup": "dxe5"
+    },
+    {
+      "index": 21,
+      "move": "dxe5",
+      "popup": "dxe5 中心开放"
+    },
+    {
+      "index": 22,
+      "move": "Nd5",
+      "popup": "Nd5！白马占中心要点"
+    },
+    {
+      "index": 23,
+      "move": "Nfd7",
+      "popup": "Nfd7 防守马"
+    }
+  ]
+}

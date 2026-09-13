@@ -1,0 +1,43 @@
+{
+  "game_id": "D16_KeyTiming_Practice_007",
+  "description": "西西里飞龙B70 — 关键时机：换象消灭防守子后赢马",
+  "intro": {
+    "flash_squares": ["d5", "g7"],
+    "popup": "关键时机练习7\n\n西西里飞龙！\n\nBg7是强力对角线象\nNa5逼马后Bc4如何赢子？\n\n练习目标：\n识别Bc4→Bxd3→Nxb3的时机链",
+    "voice": true
+  },
+  "outro": {
+    "popup": "飞龙时机总结\n\n四步赢马链：\n① Na5：逼白方Nb3退\n② Bc4！：攻击d3迫换象\n③ Bxd3：消灭Be3保护者\n④ Nxb3！：赢得白方马！\n\n换象是为了清除防守子！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["g7", "d5"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c5", "popup": "c5 西西里"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3"},
+    {"index": 3, "move": "d6", "popup": "d6"},
+    {"index": 4, "move": "d4", "popup": "d4"},
+    {"index": 5, "move": "cxd4", "popup": "cxd4"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3"},
+    {"index": 9, "move": "g6", "popup": "g6 飞龙"},
+    {"index": 10, "move": "Be2", "popup": "Be2"},
+    {"index": 11, "move": "Bg7", "popup": "Bg7 飞象"},
+    {"index": 12, "move": "O-O", "popup": "O-O"},
+    {"index": 13, "move": "O-O", "popup": "O-O"},
+    {"index": 14, "move": "Be3", "popup": "Be3"},
+    {"index": 15, "move": "Nc6", "popup": "Nc6"},
+    {"index": 16, "move": "Nb3", "popup": "Nb3"},
+    {"index": 17, "move": "Be6", "popup": "Be6！象机动铺路"},
+    {"index": 18, "move": "f4", "popup": "f4"},
+    {"index": 19, "move": "Na5", "popup": "Na5！逼退白方b3马"},
+    {"index": 20, "move": "f5", "popup": "f5 白方翼攻"},
+    {"index": 21, "move": "Bc4", "popup": "Bc4！时机！\n攻击d3格，迫使白方换象"},
+    {"index": 22, "move": "Bd3", "popup": "Bd3 白方被迫保护"},
+    {"index": 23, "move": "Bxd3", "popup": "Bxd3！\nBe3消失——Nb3失去保护者"},
+    {"index": 24, "move": "cxd3", "popup": "cxd3"},
+    {"index": 25, "move": "Nxb3", "popup": "Nxb3！赢得白方马！\n时机连锁完成"},
+    {"index": 26, "move": "axb3", "popup": "axb3 黑方已获材料优势"}
+  ]
+}

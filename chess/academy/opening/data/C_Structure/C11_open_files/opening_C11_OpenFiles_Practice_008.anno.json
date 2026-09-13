@@ -1,0 +1,96 @@
+{
+  "game_id": "C11_OpenFiles_Practice_008",
+  "description": "彼得罗夫防御 C42 — e线开放后的战术得子",
+  "intro": {
+    "flash_squares": ["e1", "e4", "e5", "e8"],
+    "popup": "e线开放战术 练习8\n\n彼得罗夫中心兑换后\ne线完全打开！\n\nRe1先手占据！\n配合钉制战术\n对方疏忽就能得子！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "e线战术小结\n✅ Nxe5/Nxe4：e线打通\n✅ Re1先手占e线\n✅ Bg4反钉Nf3互动\n\n关键技术：\ne线开放→Re1→配合钉制战术\n开放线+钉制=强力组合！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["e1", "e8"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "e5", "popup": "e5！开放e线的序曲"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6！彼得罗夫！\n黑方反击e4而不守e5"
+    },
+    {
+      "index": 4,
+      "move": "Nxe5",
+      "popup": "Nxe5白马吃e5！\ne线兑换序列开始",
+      "highlights": [{"squares": ["e5", "e4"], "color": "#FF8F0055"}]
+    },
+    {"index": 5, "move": "d6", "popup": "d6驱马"},
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3撤退\n白马回来"
+    },
+    {
+      "index": 7,
+      "move": "Nxe4",
+      "popup": "Nxe4！黑马吃e4！\ne线上的马已消失\ne线打开！",
+      "highlights": [{"squares": ["e4", "e1", "e8"], "color": "#C6D50066"}]
+    },
+    {"index": 8, "move": "d4", "popup": "d4占中心"},
+    {"index": 9, "move": "d5", "popup": "d5黑方反中心"},
+    {"index": 10, "move": "Bd3", "popup": "Bd3发展象\n瞄准h7"},
+    {"index": 11, "move": "Nc6", "popup": "Nc6发展马"},
+    {"index": 12, "move": "O-O", "popup": "O-O入城"},
+    {"index": 13, "move": "Be7", "popup": "Be7发展"},
+    {
+      "index": 14,
+      "move": "Re1",
+      "popup": "Re1！先手占e线！\n车来e1，e列全在白方控制！\n下步威胁Rxe4等",
+      "highlights": [{"squares": ["e1", "e4", "e7"], "color": "#00BCD488"}]
+    },
+    {
+      "index": 15,
+      "move": "Bg4",
+      "popup": "Bg4！黑方反制！\n象到g4钉住Nf3\n威胁Bxf3兑换马",
+      "highlights": [{"squares": ["g4", "f3", "d1"], "color": "#E5393566"}]
+    },
+    {"index": 16, "move": "c3", "popup": "c3稳固阵型"},
+    {"index": 17, "move": "O-O", "popup": "O-O入城"},
+    {
+      "index": 18,
+      "move": "Nbd2",
+      "popup": "Nbd2！避开钉制！\n马到d2，不被g4象钉住\n同时支援e4格",
+      "highlights": [{"squares": ["d2", "g4"], "color": "#FF8F0044"}]
+    },
+    {
+      "index": 19,
+      "move": "Nxd2",
+      "popup": "Nxd2！黑马兑换\n试图消灭白方中心马"
+    },
+    {
+      "index": 20,
+      "move": "Bxd2",
+      "popup": "Bxd2重建\n象来d2，中心控制稳固"
+    },
+    {
+      "index": 21,
+      "move": "f5",
+      "popup": "f5！黑方推进！\n争夺e4格\n试图建立e4据点抗衡e线",
+      "highlights": [{"squares": ["f5", "e4"], "color": "#E5393555"}]
+    },
+    {
+      "index": 22,
+      "move": "Rc1",
+      "popup": "Rc1！白方布置c线！\nRe1守e线，Rc1控c线\n双车分工，两线施压！\n\nRe1在e线的威胁：\n→ Bxf6 gxf6 Rxe7！得质！\n→ 开放线上的车配合战术威力巨大！",
+      "highlights": [
+        {"squares": ["e1", "e7"], "color": "#E53935aa"},
+        {"squares": ["c1", "c7"], "color": "#00BCD455"}
+      ]
+    }
+  ]
+}

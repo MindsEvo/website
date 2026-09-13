@@ -1,0 +1,194 @@
+{
+  "game_id": "B6_DevSpeed_Practice_007",
+  "description": "D02 — 封闭局面的轻子最优布置",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第7局\n在封闭局面中，轻子要找到最佳格子，然后再激活重子",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：每种体系都有自己的轻子最优布置",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4！皇后兵开局\n伦敦体系开始"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5对称\n封闭局面"
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "Nf3！第1个轻子\n马到最佳位置（f3是马最强格之一）",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6出动\n黑方第1个轻子"
+    },
+    {
+      "index": 4,
+      "move": "Bf4",
+      "popup": "Bf4！伦敦象\n象到f4——伦敦体系特征格\n控制e5，难以被驱赶",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "e6",
+      "popup": "e6黑方稳固"
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3支撑\n为Bd3做准备\n封闭体系，稳步推进"
+    },
+    {
+      "index": 7,
+      "move": "Bd6",
+      "popup": "Bd6黑方象出动"
+    },
+    {
+      "index": 8,
+      "move": "Bxd6",
+      "popup": "Bxd6！主动简化\n防止黑方象活跃\n伦敦体系的战略简化"
+    },
+    {
+      "index": 9,
+      "move": "Qxd6",
+      "popup": "Qxd6后接回\n黑方后过早激活"
+    },
+    {
+      "index": 10,
+      "move": "Nbd2",
+      "popup": "Nbd2！第3个轻子（第2匹马）出动\n注意：伦敦体系的马到d2而非c3\n这是最优格，保持弹性",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "e4",
+            "c4"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "O-O",
+      "popup": "O-O黑方易位"
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "Bd3！象出动到最佳格\n白方4个轻子全部出动！\n现在可以易位了",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "b6",
+      "popup": "b6黑方让象出动"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O！白方易位\n4个轻子全出后立即易位",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1",
+            "e1"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Bb7",
+      "popup": "Bb7黑方象激活\n占据长对角线"
+    },
+    {
+      "index": 16,
+      "move": "c4",
+      "popup": "c4推进\n伦敦体系标准计划\n打击黑方中心"
+    },
+    {
+      "index": 17,
+      "move": "c5",
+      "popup": "c5反推\n黑方争中心"
+    },
+    {
+      "index": 18,
+      "move": "cxd5",
+      "popup": "cxd5简化"
+    },
+    {
+      "index": 19,
+      "move": "exd5",
+      "popup": "exd5接回"
+    },
+    {
+      "index": 20,
+      "move": "dxc5",
+      "popup": "dxc5兑换"
+    },
+    {
+      "index": 21,
+      "move": "bxc5",
+      "popup": "bxc5接回"
+    },
+    {
+      "index": 22,
+      "move": "Rc1",
+      "popup": "Rc1！车激活！\n车到c1占开放线\n轻子全出→易位→现在重子激活\n这是正确的出子顺序完整展示",
+      "highlights": [
+        {
+          "squares": [
+            "c1"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    }
+  ]
+}

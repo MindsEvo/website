@@ -1,0 +1,260 @@
+{
+  "game_id": "D14_UsefulExchange_Demo_010",
+  "description": "国王印度进攻 A48 — 综合练习：在进攻与简化之间选择兑换时机",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "d5",
+      "f5"
+    ],
+    "popup": "及时兑子 综合练习10\n\n国王印度进攻——白方灵活体系\n\n本局是D14模块的综合练习！\n\n你需要综合运用前9课的知识：\n① 兑换前问：为什么要兑，得到什么？\n② 分析对方的最佳回吃\n③ 判断：进攻还是简化？\n\n⭐ 本节核心：\n每次兑换机会，主动分析得失！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "D14 及时兑子——模块总结\n\n🎓 你已完成10局及时兑子的学习！\n\n5种核心兑换模式：\n① 制造叠兵（C68, B30）\n② 中心兑换开放列（D35）\n③ 好马换坏象（E60，KID）\n④ 对称兑换保均衡（C42，彼得罗夫）\n⑤ 防守性兑换打断进攻（B23）\n\n3个核心问题（每次兑换前问）：\n❓ 这次兑换我得到什么结构好处？\n❓ 对方最好怎么回吃？\n❓ 现在是最佳时机吗？\n\n记住：及时兑子不是贪小便宜\n而是为了更大的战略目标！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d5"
+    ],
+    "color": "#C6D50022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "Nf3 国王印度进攻开始！"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5 黑方中心"
+    },
+    {
+      "index": 2,
+      "move": "g3",
+      "popup": "g3！飞象格准备！\n准备Bg2+O-O",
+      "highlights": [
+        {
+          "squares": [
+            "g3",
+            "f1"
+          ],
+          "color": "#00BCD433"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nf6",
+      "popup": "Nf6 黑方发展"
+    },
+    {
+      "index": 4,
+      "move": "Bg2",
+      "popup": "Bg2 飞象！龙象对角线！",
+      "highlights": [
+        {
+          "squares": [
+            "g2",
+            "a8"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "g6",
+      "popup": "g6 黑方也飞象！对称体系"
+    },
+    {
+      "index": 6,
+      "move": "O-O",
+      "popup": "O-O 白方入城"
+    },
+    {
+      "index": 7,
+      "move": "Bg7",
+      "popup": "Bg7 黑方龙象！",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "a1"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "d3",
+      "popup": "d3 巩固，准备e4"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O 黑方入城"
+    },
+    {
+      "index": 10,
+      "move": "Nbd2",
+      "popup": "Nbd2 马来支持e4"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5！黑方中心反击"
+    },
+    {
+      "index": 12,
+      "move": "e4",
+      "popup": "e4！！白方打开局面！\n\n⭐ 兑换机会来临：\n现在有多个兑换选项，怎么选？",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "dxe4",
+      "popup": "dxe4 黑方吃中心兵"
+    },
+    {
+      "index": 14,
+      "move": "dxe4",
+      "popup": "dxe4 白方回吃\n\n⭐ 第一个兑换：双方各吃一个兵！\n局面开放，双方龙象活跃！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d3"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ng4",
+      "popup": "Ng4！黑马进攻！\n攻击e4兵+Be3的可能",
+      "highlights": [
+        {
+          "squares": [
+            "g4",
+            "e3"
+          ],
+          "color": "#C6D50055"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Nb3",
+      "popup": "Nb3！白马跳出！\n攻击c5，针对弱点",
+      "highlights": [
+        {
+          "squares": [
+            "b3",
+            "c5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nc6",
+      "popup": "Nc6！黑方发展马\n加强中心和c5守护"
+    },
+    {
+      "index": 18,
+      "move": "h3",
+      "popup": "h3！白方驱马！\n迫使Ng4离开",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g4"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nf6",
+      "popup": "Nf6 黑马撤回防守格"
+    },
+    {
+      "index": 20,
+      "move": "Re1",
+      "popup": "Re1！车到e列！\n守护e4，增加压力",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e4"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nd4",
+      "popup": "Nd4！黑马跳d4！\n进入强格，攻击c2+b3！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "b3",
+            "c2"
+          ],
+          "color": "#C6D50077"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Nxd4",
+      "popup": "Nxd4！白方马换马！\n\n⭐ 综合练习中的兑换时机：\n白方为什么现在Nxd4？\n① 消灭d4强马（防守性！）\n② cxd4后d列开放\n③ 黑方打破了自己的兵链结构\n\n及时消灭对方的强格马！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f3"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "cxd4",
+      "popup": "cxd4 黑兵回吃\n\n⭐ 结果：d列开放！\n黑方d4强兵出现——但是孤立兵！\n白方可以攻击这个孤立兵"
+    },
+    {
+      "index": 24,
+      "move": "Nxd4",
+      "popup": "Nxd4！白马再吃！\n\n⭐ 连环兑换分析：\n白方连续兑换两次！\n每次都有明确目的：\n① 第一次：消灭强格马\n② 第二次：吃掉孤立兵，获得材料\n\n这是D14综合练习的精华：\n步步有目的，换换有收益！\n这就是真正的及时兑子！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f3"
+          ],
+          "color": "#E5393588"
+        }
+      ]
+    }
+  ]
+}

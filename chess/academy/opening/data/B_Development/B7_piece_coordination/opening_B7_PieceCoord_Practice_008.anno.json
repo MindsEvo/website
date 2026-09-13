@@ -1,0 +1,42 @@
+{
+  "game_id": "B7_PieceCoord_Practice_008",
+  "description": "C65 — 柏林残局：协调决定马对象优劣",
+  "intro": {
+    "flash_squares": ["b2", "d1", "c3", "e7", "f3"],
+    "popup": "子力协调第8局\n柏林残局是无后对局\n双方子力相同，协调决定胜负！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Nc3+Bb2+双车协调vs黑方被动\n子力数量相等时，协调质量决定胜负",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4开局"},
+    {"index": 1, "move": "e5", "popup": "e5对称"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3出马\n控制e5"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6保护e5"},
+    {"index": 4, "move": "Bb5", "popup": "Bb5西班牙！\n激活：象牵制Nc6\n计划：西班牙开局，准备进入残局"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6！柏林防御！\n这一步直接反打e4，不管Nc6被牵制"},
+    {"index": 6, "move": "O-O", "popup": "O-O白方易位\n激活：Rf1进入游戏\n计划：准备d4打开中心"},
+    {"index": 7, "move": "Nxe4", "popup": "Nxe4！黑方吃兵！\n柏林防御的核心：无惧失子，抓e4兵"},
+    {"index": 8, "move": "d4", "popup": "d4打开中心！\n激活：打开中心，威胁黑马\n计划：白方打算通过d4+dxe5后进入柏林残局"},
+    {"index": 9, "move": "Nd6", "popup": "Nd6黑马撤退归位\n黑马从e4退到d6，守备"},
+    {"index": 10, "move": "Bxc6", "popup": "Bxc6！换掉Nc6！\n激活：消除c6马，准备换后\n计划：Bxc6后dxc6，牺牲象换马，进入双兵对双兵残局"},
+    {"index": 11, "move": "dxc6", "popup": "dxc6黑方重新夺回\n黑方双兵结构受损（c/c双兵）"},
+    {"index": 12, "move": "dxe5", "popup": "dxe5白方吃兵\n中心打开，d列开放"},
+    {"index": 13, "move": "Nf5", "popup": "Nf5黑马反扑\n黑马占领f5强格"},
+    {"index": 14, "move": "Qxd8+", "popup": "Qxd8+！换后进残局！\n这是柏林残局的标志性一步\n双方进入无后残局——协调完全决定结果！", "highlights": [{"squares": ["d8", "d1"], "color": "#FF8F0033"}]},
+    {"index": 15, "move": "Kxd8", "popup": "Kxd8黑王吃后\n黑王被迫进入中心，丧失易位权\n协调问题开始：黑王阻碍黑方双车连接！", "highlights": [{"squares": ["d8"], "color": "#E5393533"}]},
+    {"index": 16, "move": "Nc3", "popup": "Nc3白马出动\n激活：第2马进入游戏\n协调：Nf3+Nc3联合控d5/e4\n注意：白方马在残局中非常协调！", "highlights": [{"squares": ["c3", "d5", "e4", "f3"], "color": "#C6D50033"}]},
+    {"index": 17, "move": "h6", "popup": "h6黑方防守h4\n黑方被动防守"},
+    {"index": 18, "move": "b3", "popup": "b3准备Bb2\n激活：为激活象做准备\n计划：Bb2象将到达最佳斜线"},
+    {"index": 19, "move": "Ke8", "popup": "Ke8黑王移到e8\n黑王准备连接双车"},
+    {"index": 20, "move": "Bb2", "popup": "Bb2！象到达大斜线！\n激活：象在b2控制a1-h8大斜线\n协调：Bb2（象控a1-h8）+ Nc3（控d5）联合\n计划：双车+马+象协调控制局面", "highlights": [{"squares": ["b2", "c3", "d4", "e5", "f6"], "color": "#FF8F0033"}]},
+    {"index": 21, "move": "Be7", "popup": "Be7黑方象出动\n黑方象守备，但被动"},
+    {"index": 22, "move": "Rad1", "popup": "Rad1！车进d列！\n激活：最后一子入场\n协调最终形态：\n🐴 Nc3（控d5，压制黑方双兵）\n🏹 Bb2（控大斜线）\n♖ Rad1（控d列）\n♖ Rfe1（控e列）\n四子完美协调 vs 黑方被动防守！\n✅ 相同材料，协调优势决定胜负", "highlights": [{"squares": ["d1", "d8", "c3", "b2"], "color": "#8E24AA66"}]}
+  ]
+}

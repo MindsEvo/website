@@ -1,0 +1,322 @@
+{
+  "game_id": "C9_PawnChain_Practice_010",
+  "description": "A25 — 英国开局封闭西西里，非对称双兵链综合练习",
+  "intro": {
+    "flash_squares": [
+      "c4",
+      "d3",
+      "e5",
+      "d6",
+      "f5"
+    ],
+    "popup": "兵链方向练习10\n综合总结！\n非对称双兵链：\n白链c4-d3→指向黑方后翼\n黑链e5-d6-f5→指向白方王翼\n两个兵链方向交叉！\n最复杂的兵链形式！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：b3后翼布局 → Nd5占中心要点 → f3驱象+e4推进\nd4扩展中心 → Nf4！白方位置优势完美体现！\n10课兵链方向学习完成！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "c4",
+      "d3"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "c4",
+      "popup": "c4英国开局"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5！黑方e5占中心"
+    },
+    {
+      "index": 2,
+      "move": "Nc3"
+    },
+    {
+      "index": 3,
+      "move": "Nc6"
+    },
+    {
+      "index": 4,
+      "move": "g3"
+    },
+    {
+      "index": 5,
+      "move": "g6"
+    },
+    {
+      "index": 6,
+      "move": "Bg2"
+    },
+    {
+      "index": 7,
+      "move": "Bg7"
+    },
+    {
+      "index": 8,
+      "move": "e3",
+      "popup": "e3！白方兵链c4-d3-e3形成\n指向黑方中心——英国开局兵链！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d3",
+            "e3"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "d6"
+    },
+    {
+      "index": 10,
+      "move": "Nge2"
+    },
+    {
+      "index": 11,
+      "move": "Nge7"
+    },
+    {
+      "index": 12,
+      "move": "O-O"
+    },
+    {
+      "index": 13,
+      "move": "O-O"
+    },
+    {
+      "index": 14,
+      "move": "d3"
+    },
+    {
+      "index": 15,
+      "move": "Be6"
+    },
+    {
+      "index": 16,
+      "move": "b3",
+      "popup": "b3！白方后翼扩展，准备Ba3开发，强化兵链方向",
+      "highlights": [
+        {
+          "squares": [
+            "b3",
+            "a3",
+            "b2"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Qc8",
+      "popup": "Qc8！黑后撤至c8，防守后翼并准备Bg4换马"
+    },
+    {
+      "index": 18,
+      "move": "Nd5",
+      "popup": "Nd5！白马抢占d5中心要点！\n兵链方向上的战略要格",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c7",
+            "e7",
+            "b6",
+            "f6"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Bg4",
+      "popup": "Bg4！黑方象出钉住白马Nge2，施压中心"
+    },
+    {
+      "index": 20,
+      "move": "Ba3",
+      "popup": "Ba3！白方象活跃a3！\n对角线施压e7，协助Nd5",
+      "highlights": [
+        {
+          "squares": [
+            "a3",
+            "e7"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nxd5",
+      "popup": "Nxd5！黑马强夺d5，打破白马据点"
+    },
+    {
+      "index": 22,
+      "move": "cxd5",
+      "popup": "cxd5！白方兵链推进！\nc4-d5形成強力过路兵",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "Ne7",
+      "popup": "Ne7！黑马撤守，避开c6格被压"
+    },
+    {
+      "index": 24,
+      "move": "Rc1",
+      "popup": "Rc1！白车占据c线，与Ba3形成纵横控制"
+    },
+    {
+      "index": 25,
+      "move": "Qd7",
+      "popup": "Qd7！黑后转移，监视d5兵和白方计划"
+    },
+    {
+      "index": 26,
+      "move": "f3",
+      "popup": "f3！驱逐Bg4！\n为e4推进清路，中心扩张准备完成",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "g4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Bh3",
+      "popup": "Bh3！黑方象换到h3，对白方象施压"
+    },
+    {
+      "index": 28,
+      "move": "Bxh3",
+      "popup": "Bxh3！白方换象，消除对角线威胁"
+    },
+    {
+      "index": 29,
+      "move": "Qxh3",
+      "popup": "Qxh3！黑后夺回，后处于活跃位置"
+    },
+    {
+      "index": 30,
+      "move": "e4",
+      "popup": "e4！！白方e4中心推进！\n兵链扩展到c4-d3-e4，中心控制达到顶峰",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d3",
+            "c4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Qd7",
+      "popup": "Qd7！黑后被动撤回，白方主导局面"
+    },
+    {
+      "index": 32,
+      "move": "d4",
+      "popup": "d4！白方再推d4！\n中心扩张到最大，双方决战开始",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4",
+            "c4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "exd4",
+      "popup": "exd4！黑方不得不吃兵，中心打开"
+    },
+    {
+      "index": 34,
+      "move": "Nxd4",
+      "popup": "Nxd4！白马占据d4中心，控制全局",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c6",
+            "e6",
+            "f5",
+            "b5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "c6",
+      "popup": "c6！黑方反击，挑战白方d5过路兵"
+    },
+    {
+      "index": 36,
+      "move": "dxc6",
+      "popup": "dxc6！白方吃掉c6兵"
+    },
+    {
+      "index": 37,
+      "move": "bxc6",
+      "popup": "bxc6！黑方兵夺回，但黑阵出现c6孤兵"
+    },
+    {
+      "index": 38,
+      "move": "Ne2",
+      "popup": "Ne2！白马战略调整，准备Nf4跳入关键格"
+    },
+    {
+      "index": 39,
+      "move": "Rad8",
+      "popup": "Rad8！黑方车占d线，反压d4方向"
+    },
+    {
+      "index": 40,
+      "move": "Nf4",
+      "popup": "Nf4！白马跳入f4！\n控制e6/g6/d5/h5，白方位置优势不可撼动！\n10课兵链方向学习完美收官！",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e6",
+            "g6",
+            "d5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    }
+  ]
+}

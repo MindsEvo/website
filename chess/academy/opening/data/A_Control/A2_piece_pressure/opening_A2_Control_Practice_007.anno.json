@@ -1,0 +1,362 @@
+{
+  "game_id": "A2_Control_Practice_007",
+  "description": "西班牙开局——Bb5间接控制e5，攻击守护者是最深逻辑，17步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "追踪 Bb5 与 Nc6 之间的关系——攻击守护者就是间接控制，这是西班牙开局的战略逻辑",
+    "voice": true
+  },
+  "outro": {
+    "popup": "攻击守护者就是间接控制——西班牙开局的战略逻辑。白方不直接攻击 e5，而是瞄准守护 e5 的 Nc6。这条逻辑链贯穿整个西班牙开局，是高级的子力控制形式。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 占领中心！</b><br>白方直接占领 e4，控制 d5 和 f5。西班牙开局从传统的中心占领开始。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "f5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方对称占领！</b><br>黑方也占 e5，中心直接对峙。e5 兵控制 d4 和 f4。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "f4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 马攻击 e5！</b><br>f3 马直接攻击黑方 e5 兵，迫使黑方守护。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 关键！马守护 e5。</b><br>c6 马是 e5 兵的守护者！这匹马的存在，让 e5 格非常稳固。<br><span style='color:#FF5722;'>★ 记住这匹马：白方下一步就要直接瞄准它！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#FF572266",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Bb5",
+      "popup": "⬆️ <b>3.Bb5 — 西班牙的精髓！攻击守护者！</b><br>白象 b5 直接瞄准 <b>Nc6</b>！注意：白方没有攻击e5，但它威胁要吃掉 <b>e5 的守护者</b> Nc6！<br>逻辑链：Bb5→攻击 Nc6→Nc6 被威胁→e5 的守护动摇→<b>e5 格被间接控制！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FF572255",
+          "duration_ms": 0
+        },
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "c6",
+          "color": "#FF5722CC"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF572288"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "a6",
+      "popup": "⬇️ <b>3...a6 — 黑方追逐白象！</b><br>黑方用 a6 驱逐白象，说明 Bb5 的威胁是<b>真实的</b>——黑方必须花一步来应对！",
+      "highlights": [
+        {
+          "squares": [
+            "b5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a6",
+          "to": "b5",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Ba4",
+      "popup": "⬆️ <b>4.Ba4 — 白象退后，威胁依然！</b><br>白象退到 a4，继续盯着 c6 马。白方花了一步退象，但换来了黑方花一步追象——<b>等价的步数交换</b>，而 Bb5-Ba4 的威胁链仍然存在！",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "c6",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马出击！</b><br>黑马出动，攻击 e4，反制白方中心。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#FF5722BB"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "⬆️ <b>5.O-O — 白方易位，稳固基础。</b><br>白方王翼易位，将王安全，继续执行长期计划。Ba4 对 Nc6 的威胁依然存在。",
+      "highlights": [],
+      "concept_arrows": [
+        {
+          "from": "a4",
+          "to": "c6",
+          "color": "#FF572255"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Be7",
+      "popup": "⬇️ <b>5...Be7 — 黑方出象，准备易位。</b><br>黑方发展主教，为易位做准备。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Re1",
+      "popup": "⬆️ <b>6.Re1 — 车支撑 e4！</b><br>车移到 e1，支撑 e4 兵。如果黑方 Nxe4，Re1 可以立即夺回。中心控制得到车的加强。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "e4",
+          "color": "#C6D500AA"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "b5",
+      "popup": "⬇️ <b>6...b5 — 黑方继续追象！</b><br>黑方用 b5 驱逐 a4 的白象，这是第二次逼迫白象后退。",
+      "highlights": [
+        {
+          "squares": [
+            "a4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "a4",
+          "color": "#FF5722AA"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bb3",
+      "popup": "⬆️ <b>7.Bb3 — 白象再退，仍在控制！</b><br>白象退到 b3，依然控制 e6 区域，间接维持对黑方阵型的压力。白象已经移动了三次，但每次都保持了控制价值。",
+      "highlights": [
+        {
+          "squares": [
+            "e6",
+            "d5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "e6",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "b3",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "d6",
+      "popup": "⬇️ <b>7...d6 — 黑方稳固阵型。</b><br>d6 支撑 e5，加固中心。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "c3",
+      "popup": "⬆️ <b>8.c3 — 准备 d4，中心推进！</b><br>c3 支撑，准备下一步推 d4，在中心建立更大的兵优势。白方的长期计划是 d4+e4 双兵中心。",
+      "highlights": [
+        {
+          "squares": [
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "O-O",
+      "popup": "⬇️ <b>8...O-O — 黑方易位完成！</b><br>双方易位完成，进入西班牙开局中局的复杂战斗。",
+      "highlights": [],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "h3",
+      "popup": "⬆️ <b>9.h3 — 防止 Bg4 干扰！</b><br>h3 防止黑方 Bg4 钉制 Nf3，保持白方的阵型完整。<br><span style='color:#88CCFF;'>★ 总结：Bb5 → Ba4 → Bb3，白象三步移动，始终通过威胁 Nc6 来<b>间接控制 e5</b>——这就是西班牙开局的战略逻辑！</span>",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b3",
+          "to": "c6",
+          "color": "#FF572266"
+        },
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#FF572266"
+        }
+      ]
+    }
+  ]
+}

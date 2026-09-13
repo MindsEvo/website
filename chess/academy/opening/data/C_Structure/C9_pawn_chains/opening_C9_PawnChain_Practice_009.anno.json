@@ -1,0 +1,276 @@
+{
+  "game_id": "C9_PawnChain_Practice_009",
+  "description": "D55 — QGD大中心变例，兵链结构决定残局计划",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "d5",
+      "e4"
+    ],
+    "popup": "兵链方向练习9\n兵链与残局！\ne4推进 → IQP孤立兵结构\n孤立兵优点：控制c5/e5要点\n孤立兵缺点：残局中是长期弱点\n兵链结构决定全局战略！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Nfe4跳入e4 → Bxe7换象 → Nd4中心化\nf4推进 + Bd3重新部署 → Qxd3位置优势明显！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "d5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4"
+    },
+    {
+      "index": 1,
+      "move": "d5"
+    },
+    {
+      "index": 2,
+      "move": "c4"
+    },
+    {
+      "index": 3,
+      "move": "e6"
+    },
+    {
+      "index": 4,
+      "move": "Nc3"
+    },
+    {
+      "index": 5,
+      "move": "Nf6"
+    },
+    {
+      "index": 6,
+      "move": "Bg5"
+    },
+    {
+      "index": 7,
+      "move": "Be7"
+    },
+    {
+      "index": 8,
+      "move": "e3"
+    },
+    {
+      "index": 9,
+      "move": "O-O"
+    },
+    {
+      "index": 10,
+      "move": "Nf3"
+    },
+    {
+      "index": 11,
+      "move": "h6"
+    },
+    {
+      "index": 12,
+      "move": "Bh4"
+    },
+    {
+      "index": 13,
+      "move": "b6"
+    },
+    {
+      "index": 14,
+      "move": "cxd5",
+      "popup": "cxd5！兑换！形成孤立兵结构IQP\n兵链课题从中局转入残局！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "exd5"
+    },
+    {
+      "index": 16,
+      "move": "Bd3"
+    },
+    {
+      "index": 17,
+      "move": "Bb7"
+    },
+    {
+      "index": 18,
+      "move": "O-O"
+    },
+    {
+      "index": 19,
+      "move": "Nbd7"
+    },
+    {
+      "index": 20,
+      "move": "Re1"
+    },
+    {
+      "index": 21,
+      "move": "c5",
+      "popup": "c5！黑方攻击d4根部"
+    },
+    {
+      "index": 22,
+      "move": "dxc5"
+    },
+    {
+      "index": 23,
+      "move": "Nxc5"
+    },
+    {
+      "index": 24,
+      "move": "h3",
+      "popup": "h3！白方防止黑马Ng4跳入",
+      "highlights": [
+        {
+          "squares": [
+            "h3",
+            "g4"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Nfe4",
+      "popup": "Nfe4！f6马跳入e4！\n直接攻击白方Bd3，争夺中心",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d3"
+          ],
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Bxe7",
+      "popup": "Bxe7！白方主动换象，消除黑方主动性"
+    },
+    {
+      "index": 27,
+      "move": "Qxe7",
+      "popup": "Qxe7！后夺回，保持活跃"
+    },
+    {
+      "index": 28,
+      "move": "Rc1",
+      "popup": "Rc1！白车占c线，争夺c线控制权",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "c8"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Rac8",
+      "popup": "Rac8！黑方a8车占c线，c线争夺激烈"
+    },
+    {
+      "index": 30,
+      "move": "Nd4",
+      "popup": "Nd4！白马强占d4中心要点！\nIQP前沿格变为白方马的据点",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c6",
+            "e6",
+            "f5",
+            "b5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "g6",
+      "popup": "g6！黑方巩固王翼，防止白方攻击"
+    },
+    {
+      "index": 32,
+      "move": "Be2",
+      "popup": "Be2！白象撤守，为f4推进让路"
+    },
+    {
+      "index": 33,
+      "move": "h5",
+      "popup": "h5！黑方王翼扩张，试图争夺空间"
+    },
+    {
+      "index": 34,
+      "move": "f4",
+      "popup": "f4！白方王翼推进！\n与Nd4形成强大压制，兵链威力再现",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "move": "Nf6",
+      "popup": "Nf6！黑马撤回f6，兼顾防守与反击"
+    },
+    {
+      "index": 36,
+      "move": "Bd3",
+      "popup": "Bd3！白象再部署，对角线指向h7",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "move": "Nxd3",
+      "popup": "Nxd3！黑方换掉白象，避免对角线压力"
+    },
+    {
+      "index": 38,
+      "move": "Qxd3",
+      "popup": "Qxd3！白后中心化！\n控制d3-h7对角线，配合Nd4\n白方位置优势明显！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "d4",
+            "f5"
+          ],
+          "color": "#FF572299"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "game_id": "D13_GambitSacrifice_Practice_006",
+  "description": "法尔克贝尔反弃兵 C31 — 练习：面对弃兵，黑方反弃兵能成立吗？",
+  "intro": {
+    "flash_squares": ["f4", "d5", "e5"],
+    "popup": "弃兵争先 练习6\n\n白方第2手走f4（国王弃兵）\n你是黑方——\n\n你会接受这个弃兵（exf4）吗？\n还是大胆走d5反弃兵？\n\n法尔克贝尔反弃兵：\n黑方不接受，转而主动反弃兵！\n\n练习目标：判断这个反弃兵是否成立\n用前5课学到的标准来分析！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "答案：法尔克贝尔反弃兵评估\n\n黑方d5反弃兵的三个检验：\n① 开放线路？——d线开放，黑方半开放\n② 发展领先？——基本相等，无明显优势\n③ 进攻目标？——e5弱点，但白方可守住\n\n结论：反弃兵勉强成立，但白方略优\n\n规律：面对弃兵，最强应对通常是接受！\n（接受兵，然后正确防守）\n反弃兵是次优但可行的替代方案",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["f4", "d5"],
+    "color": "#8E24AA22"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4 中心"
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "e5 对称"
+    },
+    {
+      "index": 2,
+      "move": "f4",
+      "popup": "f4！国王弃兵！\n\n⭐ 你是黑方：选哪个？\nA. exf4（接受弃兵，第1课学过）\nB. d5！（法尔克贝尔反弃兵）\n\n本局我们看B的结果……",
+      "highlights": [
+        {"squares": ["f4", "e5"], "color": "#E5393555"}
+      ]
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5！法尔克贝尔反弃兵！\n\n黑方不接受f4，反而送出d5！\n\n⭐ 用弃兵三要素检验黑方的反弃兵：\n① 开放的线路？d线将开放！\n② 发展领先？我们来数……\n③ 进攻目标？e4兵！\n\n白方要吃吗？",
+      "highlights": [
+        {"squares": ["d5", "e4"], "color": "#8E24AA66"}
+      ]
+    },
+    {
+      "index": 4,
+      "move": "exd5",
+      "popup": "exd5 白方吃掉d5\n\n白方接受反弃兵\n黑方送了一个d5兵……换什么？"
+    },
+    {
+      "index": 5,
+      "move": "exf4",
+      "popup": "exf4！黑方再吃f4！\n\n⭐ 聪明的反向操作！\n黑方送出d5，然后吃了f4\n净结果：黑方多了一个f4兵\n\n而且现在d线和f线都有半开放！",
+      "highlights": [
+        {"squares": ["f4", "d5"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3 白方守护d5，发展马\n\n白方有d5强兵！\n但结构上：e文件开放，f文件半开放"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6！黑方第一枚子发展\n攻击d5+e4（已吃），施压中心\n\n⭐ 节拍对比：\n白方：f4+e4+Nf3（3步）\n黑方：e5+d5+exf4+Nf6（4步，但2步是走兵）\n实际发展马：平手",
+      "highlights": [
+        {"squares": ["f6", "d5"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bc4",
+      "popup": "Bc4！白方发展！\n象瞄准强兵d5后方，稳固控制"
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "Nc6！黑方第二枚子发展\n攻击d5强兵！\n\n⭐ 黑方的主题：夺回d5！",
+      "highlights": [
+        {"squares": ["c6", "d5"], "color": "#8E24AA66"}
+      ]
+    },
+    {
+      "index": 10,
+      "move": "O-O",
+      "popup": "O-O 白方入城！\n王安全，车对准f线\n\n⭐ 白方的f4兵已经消失（黑方吃了）\n但Rf1可以攻击黑方f4兵！",
+      "highlights": [
+        {"squares": ["f1", "f4"], "color": "#E5393544"}
+      ]
+    },
+    {
+      "index": 11,
+      "move": "Nxd5",
+      "popup": "Nxd5！黑方夺回d5！\n\n黑方的目标达成了\n但黑方多了f4兵——能守住吗？",
+      "highlights": [
+        {"squares": ["d5", "c6"], "color": "#8E24AA77"}
+      ]
+    },
+    {
+      "index": 12,
+      "move": "Bxd5",
+      "popup": "Bxd5 白方象吃掉黑马\n强制兑换d5马"
+    },
+    {
+      "index": 13,
+      "move": "Qxd5",
+      "popup": "Qxd5 黑方后吃回\n\n⭐ 局面评估练习：\n现在黑方有：f4额外兵\n白方有：Bc4活跃象，入城，半开放f线\n\n问：白方下一步 Nc3 发展后\n黑方如何处理f4兵？\n守?推?送?",
+      "highlights": [
+        {"squares": ["d5", "f4", "c4"], "color": "#8E24AA55"}
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Nc3",
+      "popup": "Nc3！发展马！\n\n⭐ 白方攻击黑方后d5！\n黑方必须移动后……\n而白方可以Nd5或Rxf4下一步！\n\n结论：\n反弃兵让黑方多了一个兵\n但白方的子力活跃度略优\n白方有微小但实际的优势\n\n这就是法尔克贝尔反弃兵的真相：\n可行，但不如正面接受弃兵后正确防守！",
+      "highlights": [
+        {"squares": ["c3", "d5", "f4"], "color": "#00BCD455"}
+      ]
+    }
+  ]
+}

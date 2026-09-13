@@ -1,0 +1,73 @@
+{
+  "game_id": "C12_SpaceCramp_Practice_007",
+  "description": "后翼弃兵 D20 — 练习：吃到了兵，空间换出去了吗？",
+  "intro": {
+    "flash_squares": ["d4", "e4", "c4"],
+    "popup": "空间挤压 练习7\n\n黑方第2手吃了白方的兵！\n赢得了物质……但代价是什么？\n\n跟踪白方d4+e4中心的建立\n判断：黑方的便宜值得吗？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "物质 vs 空间\n\n白方有d4+e4强中心\n黑方有多一个兵但中心虚弱\n\n黑方应该：\nNbd7→Nc5攻击d3象\nBe7→O-O快速稳固\n\n不能让白方建立d5跳入！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["d4"],
+    "color": "#00BCD422"
+  },
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "d5", "popup": "d5 占中心"},
+    {"index": 2, "move": "c4", "popup": "c4！后翼弃兵！白方邀请黑方吃兵"},
+    {
+      "index": 3,
+      "move": "dxc4",
+      "popup": "dxc4！黑方吃兵！\n赢得一个兵，但d5变空了……\n这就是后翼弃兵接受变（QGA）"
+    },
+    {"index": 4, "move": "Nf3", "popup": "Nf3 发展马，准备收回c4"},
+    {"index": 5, "move": "Nf6", "popup": "Nf6 发展马，控制中心"},
+    {"index": 6, "move": "e3", "popup": "e3 稳固，准备Bxc4"},
+    {"index": 7, "move": "e6", "popup": "e6 黑方稳固"},
+    {
+      "index": 8,
+      "move": "Bxc4",
+      "popup": "Bxc4！象发展到绝佳格！\n对角线控制b3-f7"
+    },
+    {"index": 9, "move": "c5", "popup": "c5！黑方攻击d4！反挑衅"},
+    {"index": 10, "move": "O-O", "popup": "O-O 白方入城"},
+    {"index": 11, "move": "a6", "popup": "a6 阻止Nb5，准备b5"},
+    {"index": 12, "move": "Nc3", "popup": "Nc3 发展马"},
+    {
+      "index": 13,
+      "move": "b5",
+      "popup": "b5！黑方反击！驱赶Bc4\n翼翼扩张争夺空间"
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "Bd3！象撤退到d3\n准备推e4！"
+    },
+    {
+      "index": 15,
+      "move": "cxd4",
+      "popup": "cxd4 黑方兑换\n白方d4孤兵——但e4马上来了！"
+    },
+    {
+      "index": 16,
+      "move": "exd4",
+      "popup": "exd4 白方重新占中心\n现在d4+e4=白方的强中心雏形！"
+    },
+    {
+      "index": 17,
+      "move": "Bb7",
+      "popup": "Bb7 象发展到对角线\n准备O-O后活动Rc8或Ne7"
+    },
+    {
+      "index": 18,
+      "move": "Qe2",
+      "popup": "Qe2！准备e4推进！\n\n⭐ 练习问题：\n白方e4推进后，黑方哪些子力会受限？\n黑方该如何快速活动子力抢在e4之前？\n\nd5是白方的目标格——黑方如何防守？",
+      "highlights": [
+        {"squares": ["d5", "e4", "d4"], "color": "#00BCD455"}
+      ]
+    }
+  ]
+}

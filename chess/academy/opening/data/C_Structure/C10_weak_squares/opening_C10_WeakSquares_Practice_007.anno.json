@@ -1,0 +1,198 @@
+{
+  "game_id": "C10_WeakSquares_Practice_007",
+  "description": "英国开局 A13 — 孤立兵制造弱格",
+  "intro": {
+    "flash_squares": [
+      "d5",
+      "c5",
+      "e5",
+      "d4"
+    ],
+    "popup": "孤立兵制造弱格 练习7\n\ncxd5后黑方d5成孤立兵\n孤立兵两侧格（c5+e5）失去守护\n\n对手的孤立兵 = 你的弱格宝地\nRd1车压d列，配合马占d4！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "孤立兵练习小结\n✅ cxd5接受孤立兵\n✅ Ne5消灭守护马，Nxc6打叠兵\n✅ Rd1车压d列孤兵\n\n练习要点：\n接受孤立兵前先想好弱格在哪",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n英国开局"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5占中心\n坚固防守"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧\n准备挑战d5"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固d5"
+    },
+    {
+      "index": 4,
+      "move": "g3",
+      "popup": "g3纤维局"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 6,
+      "move": "Bg2",
+      "popup": "Bg2飞象\n建立纤维局"
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7稳健发展"
+    },
+    {
+      "index": 8,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O双方入城"
+    },
+    {
+      "index": 10,
+      "move": "d4",
+      "popup": "d4建立中心\n争夺中心控制"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5反击！\n黑方挑战d4"
+    },
+    {
+      "index": 12,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "Nc6守护d5"
+    },
+    {
+      "index": 14,
+      "move": "cxd5",
+      "popup": "cxd5！接受孤立兵\n此后d5成孤立兵",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c5",
+            "e5"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "exd5",
+      "popup": "exd5接受孤立兵\nd5孤兵无旁兵支援！",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c5",
+            "e5"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Ne5",
+      "popup": "Ne5！攻击弱格\n马跳c6消灭守护者",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "c6"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "cxd4",
+      "popup": "cxd4打开中心\n黑方反击"
+    },
+    {
+      "index": 18,
+      "move": "Nxc6",
+      "popup": "Nxc6！消灭d5守护马\n无马守护后d5更弱",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d5"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "bxc6",
+      "popup": "bxc6被迫\n叠兵产生，c5格也弱"
+    },
+    {
+      "index": 20,
+      "move": "Qxd4",
+      "popup": "Qxd4夺中心控制\n后占d4格",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Bb7",
+      "popup": "Bb7象发展\n准备守护"
+    },
+    {
+      "index": 22,
+      "move": "Rd1",
+      "popup": "Rd1！车压d列\n对准d5孤兵施加压力\n后+车双重压制孤兵！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d4",
+            "d5"
+          ],
+          "color": "#00BCD488"
+        }
+      ]
+    }
+  ]
+}

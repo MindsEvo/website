@@ -1,0 +1,526 @@
+{
+  "game_id": "A1_Center_Practice_007",
+  "description": "国王弃兵——弃兵换中心控制权，23步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "国王弃兵练习：白方献出一兵——力图争取速度和中心控制权！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "物质可以弥补，但中心失控的代价往往更大——速度有时比一兵更值钱。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 中心争夺开始！</b><br>白方占据 e4，为即将到来的弃兵策略做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 对称占中心！</b><br>黑方也占据 e5，双方平衡对峙。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "f4",
+      "popup": "⬆️ <b>2.f4 — 国王弃兵！主动献子！</b><br>白方推 f4，直接攻击 e5！这是一种思路，白方愿意让黑方用 exf4 吃掉这个兵，换取中心控制权和发展速度。<br>🎯 <b>核心思想：物质不是最重要的，速度和主动权才是！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "e5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f4",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "exf4",
+      "popup": "⬇️ <b>2...exf4 — 黑方吃兵！中心让开！</b><br>黑方接受弃兵，吃掉 f4。但代价是：e5 中心消失，e 线打开，白方即将建立强大的 d4 中心！",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "f4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "f4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "⬆️ <b>3.Nf3 — 马出动，准备 d4！</b><br>白马跳出攻击 e5 线，同时为 d4 的推进做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "d5",
+      "popup": "⬇️ <b>3...d5 — 黑方最强反击！立即反攻中心！</b><br>黑方推 d5，反攻 e4！这是理论上的最强应对——不能让白方免费建立双兵中心，必须立即争夺！",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "exd5",
+      "popup": "⬆️ <b>4.exd5 — 白兵推进，占领中心！</b><br>",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "⬇️ <b>4...Nf6 — 黑马攻击 d5！</b><br>黑马跳出，直接攻击 d5的兵，试图收回中心。双方中心争夺进入白热化！",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD4BB"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Bb5+",
+      "popup": "⬆️ <b>5.Bb5+ — 将军！赢得时间！</b><br>白象将军，迫使黑方应对，白方赢得一步时间。",
+      "highlights": [
+        {
+          "squares": [
+            "e8",
+            "c6",
+            "d7"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b5",
+          "to": "e8",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "c6",
+      "popup": "⬇️ <b>5...c6 — 挡将！同时反击 d5！</b><br>c6 阻止将军，但同时向 d5 施压。现在白方可以进 c6 或退，选择如何处理被攻击的 d5 兵。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "d5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "dxc6",
+      "popup": "⬆️ <b>6.dxc6 — 吃入 c6！白方策略性决定！</b><br>白方用 d5 吃 c6，进入更复杂的局面。黑方的王翼防守出现缺口。",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "Nxc6",
+      "popup": "⬇️ <b>6...Nxc6 — 黑马吃 c6，出子！</b><br>黑马发展到 c6，同时清除白方的侵入兵。黑方出子并巩固阵地。",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "d4",
+      "popup": "⬆️ <b>7.d4 — 中心建立！仅用7步！</b><br>白方推出d4， <b>弃兵的真实收益：加速建立中心！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50099",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4AA"
+        },
+        {
+          "from": "d4",
+          "to": "c5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Bd6",
+      "popup": "⬇️ <b>7...Bd6 — 黑象出动防守！</b><br>黑象发展到 d6，限制白方中心兵，同时为易位做准备。黑方也在快速完成开局发展。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d6",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "⬆️ <b>8.O-O — 白方易位，王安全！</b><br>白方易位，王安全后可以全力发动中心和王翼攻击。车在 f1 也支撑了已经让 f4 的区域。",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "O-O",
+      "popup": "⬇️ <b>8...O-O — 黑方也易位！</b><br>双方完成易位，进入中局。白方手握 e4+d4 双兵中心，局面白方主动。",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Nc3",
+      "popup": "⬆️ <b>9.Nc3 — 马出动，增援中心！</b><br>c3 马支撑 d4，整合白方力量。现在白方三个主力（马f3、马c3、d4兵）形成强大的中心体系。",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Bg4",
+      "popup": "⬇️ <b>9...Bg4 — 黑象骚扰！钉住 f3 马！</b><br>黑象钉住 f3 马，若白方走 f3 马，d4 失去保护。这是黑方对抗中心的常见手段——攻击中心的守护者！",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "d4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g4",
+          "to": "f3",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Qd3",
+      "popup": "⬆️ <b>10.Qd3 — 后出动，解除牵制！</b><br>白后从 d1 移到 d3，一举解除 Bg4 的牵制——黑象沿 g4-f3-d1 斜线牵制 f3 马，目标正是 d1 白后。后到 d3 后牵制自动消失，f3 马重获自由。后同时直接支撑 d4 中心兵，并瞄准 h7 斜线。",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "d4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d1",
+          "to": "d3",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Rc8",
+      "popup": "⬇️ <b>10...Rc8 — 黑车抢占 c 线！</b><br>黑方车到 c8，为将来的 c 线反击做准备。",
+      "highlights": [
+        {
+          "squares": [
+            "c8",
+            "c6"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c8",
+          "to": "c6",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Ne2",
+      "popup": "⬆️ <b>11.Ne2 — 马回调，灵活部署！</b><br>c3 马撤回 e2 重新部署。e2 是中转站：下一步可以跳 f4 争夺关键格，或跳 d4 强化中心。阵型更加灵活，随时可以根据黑方的应对选择最佳方向。",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "f4",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "f4",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "e2",
+          "to": "d4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nh5",
+      "popup": "⬇️ <b>11...Nh5 — 黑马调位，谋求反击！</b><br>f6 马跳到 h5，h5 是跳 f4 的中转站，可与 g4 象配合在王翼形成攻势。",
+      "highlights": [
+        {
+          "squares": [
+            "h5",
+            "f4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "h5",
+          "to": "f4",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Bd2",
+      "popup": "⬆️ <b>12.Bd2 — 补全发展，阵型稳固！</b><br>c1 象出动到 d2，白方完成全部子力出动。Bd2 控制 f4 格，抑制黑马跳 f4 的威胁。 <b>白方用一个 f4 兵换取了持续的主动权和更快的发展速度， 速度 = 主动权 = 攻击机会， 这是一种思路！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "e4",
+            "d4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d2",
+          "to": "f4",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "d2",
+          "to": "e3",
+          "color": "#00BCD466"
+        }
+      ]
+    }
+  ]
+}

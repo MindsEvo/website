@@ -1,0 +1,192 @@
+{
+  "game_id": "C10_WeakSquares_Practice_009",
+  "description": "尼姆佐-印度 E47 — 黑格弱点链",
+  "intro": {
+    "flash_squares": [
+      "d4",
+      "f4",
+      "h4",
+      "g5",
+      "c3"
+    ],
+    "popup": "黑格弱点链 练习9\n\nBxc3后白方失去白格象\nd4+f4+h4构成白格弱点链\n\n用存活的象攻对应颜色弱格—\nBg5！黑格象沿弱点链施压",
+    "voice": true
+  },
+  "outro": {
+    "popup": "弱点链练习小结\n✅ Bxc3让白格弱点链产生\n✅ exd4后白中心变叠兵\n✅ Bg5象沿黑格斜线施压白格弱点\n\n练习要点：\n失去某颜色象→立刻检查对应弱格",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d4",
+      "f4"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6准备Nimzo"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！Nimzo钉马",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "c3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3保留双象\n塞米什变例"
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 8,
+      "move": "Bd3",
+      "popup": "Bd3发展象"
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "popup": "d5反击中心！"
+    },
+    {
+      "index": 10,
+      "move": "Ne2",
+      "popup": "Ne2！绕开叠兵路线\n为cxd5后Nec3铺路"
+    },
+    {
+      "index": 11,
+      "move": "c5",
+      "popup": "c5冲击！"
+    },
+    {
+      "index": 12,
+      "move": "cxd5",
+      "popup": "cxd5换兵"
+    },
+    {
+      "index": 13,
+      "move": "exd5",
+      "popup": "exd5接受"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 15,
+      "move": "Nc6",
+      "popup": "Nc6守护d5"
+    },
+    {
+      "index": 16,
+      "move": "a3",
+      "popup": "a3逼迫黑象表态"
+    },
+    {
+      "index": 17,
+      "move": "Bxc3",
+      "popup": "Bxc3！兑换！\n白格象消失\n白格弱点链产生：d4+f4+h4",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4",
+            "f4",
+            "h4"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nxc3",
+      "popup": "Nxc3马吃回\nc3叠兵但控制中心"
+    },
+    {
+      "index": 19,
+      "move": "cxd4",
+      "popup": "cxd4打开中心！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c3"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "exd4",
+      "popup": "exd4重建\n白叠兵e3+d4，d4格又弱！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e3"
+          ],
+          "color": "#FF8F00aa"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Re8",
+      "popup": "Re8守护e列"
+    },
+    {
+      "index": 22,
+      "move": "Bg5",
+      "popup": "Bg5！黑格象出击\n沿h6-c1斜线控制弱格链\nd4+f4全都在这条斜线上！\n这就是弱点链的威力",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f4",
+            "e3",
+            "d4"
+          ],
+          "color": "#C6D50088"
+        }
+      ]
+    }
+  ]
+}

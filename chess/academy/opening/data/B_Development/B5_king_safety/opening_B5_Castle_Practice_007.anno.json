@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Practice_007",
+  "description": "后翼弃兵交换变 D35 — 稳健局面的易位时机",
+  "intro": {
+    "flash_squares": ["g8", "d5", "e3", "f1"],
+    "popup": "练习第7局\n后翼弃兵——交换变\n稳健局面里的易位时机\n黑方第5步就O-O\n白方等到第23步才O-O\n注意观察：什么时候是最合适的易位时机？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "稳健局面的易位判断\n① 封闭局面中易位时机更灵活\n② 黑方早早O-O提高王的安全\n③ 白方完成子力调配后再O-O\n④ O-O之前：Bd3象主动，c5打压\n节奏：不急不慢，等子力准备好！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "d4", "popup": "d4"},
+    {"index": 1, "move": "Nf6", "popup": "Nf6"},
+    {"index": 2, "move": "c4", "popup": "c4后翼弃兵"},
+    {"index": 3, "move": "e6", "popup": "e6"},
+    {"index": 4, "move": "Nf3", "popup": "Nf3"},
+    {"index": 5, "move": "d5", "popup": "d5"},
+    {"index": 6, "move": "Nc3", "popup": "Nc3"},
+    {"index": 7, "move": "Be7", "popup": "Be7准备短易位"},
+    {"index": 8, "move": "Bg5", "popup": "Bg5象钉住马"},
+    {"index": 9, "move": "O-O", "highlights": [{"squares": ["g8","g7","h7","f8"], "color": "#C6D50066"}], "popup": "O-O！黑方早早易位\n第5步就完成易位\n稳健开局中及时易位是标准做法"},
+    {"index": 10, "move": "e3", "popup": "e3稳固中心"},
+    {"index": 11, "move": "h6", "popup": "h6逼象"},
+    {"index": 12, "move": "Bh4", "popup": "Bh4象侧闪"},
+    {"index": 13, "move": "b6", "popup": "b6准备Bb7"},
+    {"index": 14, "move": "cxd5", "popup": "cxd5交换变！\n这就是交换变体"},
+    {"index": 15, "move": "Nxd5", "popup": "Nxd5马吃"},
+    {"index": 16, "move": "Bxe7", "popup": "Bxe7交换"},
+    {"index": 17, "move": "Qxe7", "popup": "Qxe7后吃"},
+    {"index": 18, "move": "Nxd5", "popup": "Nxd5马兑换"},
+    {"index": 19, "move": "exd5", "popup": "exd5"},
+    {"index": 20, "move": "Bd3", "highlights": [{"squares": ["d3","h7"], "color": "#00BCD433"}], "popup": "Bd3！白象主动进驻\n朝向h7，将来可能进攻\n白方还没有易位，在等待最佳时机"},
+    {"index": 21, "move": "c5", "popup": "c5黑方打压中心"},
+    {"index": 22, "move": "O-O", "highlights": [{"squares": ["g1","e1","h1","f1"], "color": "#C6D50066"}], "popup": "O-O！白方终于易位！\n等到第12步（双方第23步）才易位\n此时Bd3已经主动，c5结构已出现\n这就是稳健局面——等待最合适的时机！"}
+  ]
+}

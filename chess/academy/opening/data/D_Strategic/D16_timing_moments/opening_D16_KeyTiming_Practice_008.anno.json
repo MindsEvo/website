@@ -1,0 +1,45 @@
+{
+  "game_id": "D16_KeyTiming_Practice_008",
+  "description": "法式温纳瓦C19 — 关键时机：压力下c4锁定与Ng5进攻时机",
+  "intro": {
+    "flash_squares": ["e5", "c4"],
+    "popup": "关键时机练习8\n\n法式温纳瓦进攻！\n\n白方Qg4/Qh5形成王侧威胁\n黑方如何在压力下找到时机？\n\n练习目标：\n识别c4和f5的最佳时机",
+    "voice": true
+  },
+  "outro": {
+    "popup": "温纳瓦时机总结\n\n时机节点：\n① O-O：王侧易位消除威胁\n② c4！：锁定白方象\n③ f5！：启动翼攻反击\n④ Ng5！：白方抓住时机\n\n防守中寻找时机！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": ["e5", "d4"], "color": "#E5393522"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "e6", "popup": "e6"},
+    {"index": 2, "move": "d4", "popup": "d4"},
+    {"index": 3, "move": "d5", "popup": "d5"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3"},
+    {"index": 5, "move": "Bb4", "popup": "Bb4 温纳瓦"},
+    {"index": 6, "move": "e5", "popup": "e5 进攻"},
+    {"index": 7, "move": "c5", "popup": "c5 反制中心"},
+    {"index": 8, "move": "a3", "popup": "a3 催促"},
+    {"index": 9, "move": "Bxc3+", "popup": "Bxc3+ 弃象"},
+    {"index": 10, "move": "bxc3", "popup": "bxc3"},
+    {"index": 11, "move": "Ne7", "popup": "Ne7"},
+    {"index": 12, "move": "Qg4", "popup": "Qg4！威胁g7"},
+    {"index": 13, "move": "O-O", "popup": "O-O！时机！\n易位消除威胁"},
+    {"index": 14, "move": "Bd3", "popup": "Bd3"},
+    {"index": 15, "move": "Nbc6", "popup": "Nbc6"},
+    {"index": 16, "move": "Qh5", "popup": "Qh5 继续施压"},
+    {"index": 17, "move": "Ng6", "popup": "Ng6"},
+    {"index": 18, "move": "Nf3", "popup": "Nf3"},
+    {"index": 19, "move": "Qc7", "popup": "Qc7"},
+    {"index": 20, "move": "O-O", "popup": "O-O"},
+    {"index": 21, "move": "c4", "popup": "c4！时机！\n锁定白方Be2"},
+    {"index": 22, "move": "Be2", "popup": "Be2 象被封锁"},
+    {"index": 23, "move": "f5", "popup": "f5！翼攻！\nc4锁定后启动"},
+    {"index": 24, "move": "exf6", "popup": "exf6"},
+    {"index": 25, "move": "Rxf6", "popup": "Rxf6"},
+    {"index": 26, "move": "Re1", "popup": "Re1"},
+    {"index": 27, "move": "Rf8", "popup": "Rf8 车回防"},
+    {"index": 28, "move": "Ng5", "popup": "Ng5！时机！\n黑方f8车回防后白方反击"}
+  ]
+}

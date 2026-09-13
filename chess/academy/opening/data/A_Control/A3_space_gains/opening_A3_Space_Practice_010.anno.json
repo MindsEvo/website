@@ -1,0 +1,447 @@
+{
+  "game_id": "A3_Space_Practice_010",
+  "description": "国王印度防御 E94 — 综合判断：f5是安全扩展还是冒进？",
+  "intro": {
+    "flash_squares": [
+      "d5",
+      "e4",
+      "f5",
+      "e5"
+    ],
+    "popup": "黑方已被d5封锁，第10步走f5。\n这是安全扩展还是冒进？检查子力是否支撑这步棋。",
+    "voice": true
+  },
+  "outro": {
+    "popup": "f5之前黑方已有Ne7重新部署，支撑了这步扩展。\n时机判断正确的扩展才是安全扩展。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "d5",
+      "e4",
+      "f5",
+      "e5"
+    ],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "▶️ <b>d4</b><br>白方开局，争夺中心",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "e5",
+            "c5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "▶️ <b>Nf6</b><br>国王印度！黑方先出马，暂不争中心<br>等待时机",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "d5",
+            "e4"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "▶️ <b>c4</b><br>白方建立大型兵中心的第二步",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 3,
+      "move": "g6",
+      "popup": "▶️ <b>g6</b><br>准备飞象！龙式布局开始",
+      "highlights": [
+        {
+          "squares": [
+            "g6",
+            "g7"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "▶️ <b>Nc3</b><br>白方出马，支援中心",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 5,
+      "move": "Bg7",
+      "popup": "▶️ <b>Bg7</b><br>飞象！Bg7射击d4，这是国王印度的核心",
+      "highlights": [
+        {
+          "squares": [
+            "g7",
+            "d4",
+            "e5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g7",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "e4",
+      "popup": "🚀 <b>e4 — 白方建立大中心！</b><br>c4+d4+e4，白方的空间优势达到顶峰<br>但黑方有反击计划！",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "d4",
+            "e4"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 7,
+      "move": "d6",
+      "popup": "▶️ <b>d6</b><br>黑方稳固阵型，为e5做准备<br>d6支撑e5，是黑方阵型的支柱",
+      "highlights": [
+        {
+          "squares": [
+            "d6",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "▶️ <b>Nf3</b><br>白方出马，完善阵型",
+      "highlights": [
+        {
+          "squares": [
+            "f3",
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "▶️ <b>O-O</b><br>黑方易位！王安全<br>现在黑方可以展开反击了",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "g1",
+            "h8",
+            "h1"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 10,
+      "move": "Be2",
+      "popup": "▶️ <b>Be2</b><br>白方象出动，准备易位",
+      "highlights": [
+        {
+          "squares": [
+            "e2",
+            "d3"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 11,
+      "move": "e5",
+      "popup": "⚡ <b>e5！黑方的中心反击！</b><br>黑方推e5，争夺中心！<br>白方有三个选择：cxd6、d5、dxe5<br>哪个是最好的？",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4",
+            "d5"
+          ],
+          "color": "#E5393555",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#E53935CC"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "move": "O-O",
+      "popup": "▶️ <b>O-O</b><br>白方易位！<br>双方王都安全，准备好中盘较量",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "h1"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "▶️ <b>Nc6</b><br>黑方出马，增援e5<br>黑方阵型开始协调",
+      "highlights": [
+        {
+          "squares": [
+            "c6",
+            "d4",
+            "e5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1000
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 14,
+      "move": "d5",
+      "popup": "🔑 <b>d5！白方关闭中心！</b><br>白方推d5，棋盘被一分为二！<br>这与Demo 003同样的策略<br>• 白方将在后翼或c5方向突破<br>• 黑方将在王翼（f5）扩展",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4",
+            "e4",
+            "f4"
+          ],
+          "color": "#FF8F0066",
+          "duration_ms": 1800
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "d5",
+          "color": "#FF5722CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "Ne7",
+      "popup": "▶️ <b>Ne7</b><br>黑方马退到e7，准备重新安置<br>目标：Nd7-f5，或者Nf5直接占据关键格",
+      "highlights": [
+        {
+          "squares": [
+            "e7",
+            "c6",
+            "f5",
+            "d7"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e7",
+          "to": "d7",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "d7",
+          "to": "f5",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "Ne1",
+      "popup": "▶️ <b>Ne1</b><br>白方马后撤，为推f3-f4做准备<br>白方也在计划王翼扩展",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "f3",
+            "f4"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "f3",
+          "color": "#C6D50099"
+        },
+        {
+          "from": "f3",
+          "to": "f4",
+          "color": "#00BCD499"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Nd7",
+      "popup": "🔑 <b>Nd7 — 为f5做准备！</b><br>黑方马走到d7，目的是：<br>① 支撑f5推进<br>② 为Nf8-Ng6路线做准备<br>③ 释放e7格给Bg7以外的棋子使用<br>注意：Nd7才到位，f5还没推，这就是「步步为营」",
+      "highlights": [
+        {
+          "squares": [
+            "d7",
+            "f6",
+            "f5"
+          ],
+          "color": "#00BCD455",
+          "duration_ms": 1500
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "f6",
+          "color": "#00BCD499"
+        },
+        {
+          "from": "d7",
+          "to": "f5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Nd3",
+      "popup": "▶️ <b>Nd3</b><br>白方马到d3，控制c5和f4<br>双方都在为最终的攻势做准备",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "c5",
+            "f4"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 1200
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "c5",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "d3",
+          "to": "f4",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "f5",
+      "popup": "🎓 <b>f5！综合判断时刻！</b><br>用三个维度验证 f5 是否安全：<br><br> 维度一：中心结构<br>d5已关闭，中心稳定 ✓ 黑方可以安全扩展<br><br> 维度二：王的安全<br>O-O已完成，Bg7守护王翼 ✓<br><br> 维度三：子力支撑<br>Nd7在d7，随时支援f6-f5 ✓<br><br>结论：f5是安全扩展！三个条件全部满足！",
+      "highlights": [
+        {
+          "squares": [
+            "f5",
+            "d7",
+            "g7",
+            "d5",
+            "g8"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 3000
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d7",
+          "to": "f5",
+          "color": "#C6D500CC"
+        },
+        {
+          "from": "g7",
+          "to": "h6",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f5",
+          "to": "f4",
+          "color": "#FF5722CC"
+        }
+      ]
+    }
+  ]
+}

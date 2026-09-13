@@ -1,0 +1,281 @@
+{
+  "game_id": "C10_WeakSquares_Practice_010",
+  "description": "英国开局 A17 — 马跳弱格强制简化",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "c3",
+      "e2"
+    ],
+    "popup": "Ne4弱格占据+c3通路兵 练习10\n\nbxc3后e4格无兵守护\n黑Ne4强占弱格\n然后c3!!通路兵推进\nBxc3 Nxc3 Rxe2!!\n\n弱格马=战术组合的引爆点！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "弱格练习10小结\n✅ Ne4占据e4弱格——战术基础\n✅ c3!!通路兵强推——战术导火索\n✅ Bxc3 Nxc3 Qxc3 Rxe2得子\n\n弱格策略：\n占据弱格→创造通路兵→强制得子！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "c3"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "Nf3",
+      "popup": "Nf3发展马\n英国开局"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固"
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Bb4",
+      "popup": "Bb4！Nimzo式钉马",
+      "highlights": [
+        {
+          "squares": [
+            "b4",
+            "c3"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "g3",
+      "popup": "g3纤维局"
+    },
+    {
+      "index": 7,
+      "move": "O-O",
+      "popup": "O-O率先入城"
+    },
+    {
+      "index": 8,
+      "move": "Bg2",
+      "popup": "Bg2飞象"
+    },
+    {
+      "index": 9,
+      "move": "d5",
+      "popup": "d5占中心"
+    },
+    {
+      "index": 10,
+      "move": "cxd5",
+      "popup": "cxd5换兵\nd5孤立兵产生"
+    },
+    {
+      "index": 11,
+      "move": "exd5",
+      "popup": "exd5接受孤立兵"
+    },
+    {
+      "index": 12,
+      "move": "d4",
+      "popup": "d4反中心！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "d5"
+          ],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Re8",
+      "popup": "Re8守护e列"
+    },
+    {
+      "index": 14,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 15,
+      "move": "Bxc3",
+      "popup": "Bxc3！兑换\n白格象消失",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "e4"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "move": "bxc3",
+      "popup": "bxc3叠兵\n重要！e4格现在无白兵守护\ne4成为弱格！",
+      "highlights": [
+        {
+          "squares": [
+            "c2",
+            "c3",
+            "e4"
+          ],
+          "color": "#FF8F00aa"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "Ne4",
+      "popup": "Ne4！黑马率先占弱格\n注意：白方能用兵赶吗？d3/f3都没走→不能赶！",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#E5393588"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Bb2",
+      "popup": "Bb2发展象\n不攻Ne4，选择缓发展\n但e4马依然稳稳驻扎！",
+      "highlights": [
+        {
+          "squares": ["b2", "e4"],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Nd7",
+      "popup": "Nd7！黑马b8→d7\n巩固e4马，阵型稳固\n准备后续战术反击"
+    },
+    {
+      "index": 20,
+      "move": "c4",
+      "popup": "c4！白方兵突破\nc3→c4，挑战黑d5\n试图打乱黑方阵型",
+      "highlights": [
+        {
+          "squares": ["c4", "d5"],
+          "color": "#FF8F0066"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "dxc4",
+      "popup": "dxc4！黑方吃兵\n黑方多兵\n且c4格为c3通路兵留好落点！",
+      "highlights": [
+        {
+          "squares": ["c4"],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "Qc2",
+      "popup": "Qc2白后进攻\n攻击e4马并眼看c4兵\n白方试图夺回主动",
+      "highlights": [
+        {
+          "squares": ["c2", "e4", "c4"],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "move": "c3",
+      "popup": "c3!!通路兵强推！\n黑方神来之笔！\nc4→c3，白方c格已空\n白必须应对这个通路兵！",
+      "highlights": [
+        {
+          "squares": ["c3"],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "move": "Bxc3",
+      "popup": "Bxc3！被迫吃兵\nBb2→c3，白象吃去通路兵\n但这只是战术序列的开始！",
+      "highlights": [
+        {
+          "squares": ["c3", "b2"],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "move": "Nxc3",
+      "popup": "Nxc3！战术得子！\nNe4→c3，黑马吃白象！\n马换象，黑方获益！",
+      "highlights": [
+        {
+          "squares": ["c3", "e4"],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Qxc3",
+      "popup": "Qxc3白后回补\n白失去了象，局面被动\n但还有一着！"
+    },
+    {
+      "index": 27,
+      "move": "Rxe2",
+      "popup": "Rxe2!!黑车强入e2！\nRe8→e2，吃掉e2兵\n得子完成！黑方物质优势！",
+      "highlights": [
+        {
+          "squares": ["e2", "e8"],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "move": "Rc1",
+      "popup": "Rc1白方防线\n车来c1稳固阵型\n但黑方物质优势已建立",
+      "highlights": [
+        {
+          "squares": ["c1"],
+          "color": "#00BCD444"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "c6",
+      "popup": "c6黑方巩固！\n防止白d5推进\n黑方多子，优势明显",
+      "highlights": [
+        {
+          "squares": ["c6", "d5"],
+          "color": "#C6D50055"
+        }
+      ]
+    }
+  ]
+}

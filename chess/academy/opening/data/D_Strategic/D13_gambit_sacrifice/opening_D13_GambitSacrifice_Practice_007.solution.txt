@@ -1,0 +1,9 @@
+﻿1. e4 e5
+2. Nf3 Nc6
+3. Bc4 Bc5
+4. b4 Bb6
+5. a4 a5
+6. Ba2 d6
+7. d4 Nxd4
+8. Nxd4 Bxd4 
+9. c3 Bb6 

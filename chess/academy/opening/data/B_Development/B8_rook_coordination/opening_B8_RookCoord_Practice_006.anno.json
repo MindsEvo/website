@@ -1,0 +1,161 @@
+{
+  "game_id": "B8_RookCoord_Practice_006",
+  "description": "C65 — 链接双车 - 第6局：逐步清空底线（鲁伊·洛佩兹C65变例）",
+  "intro": {
+    "flash_squares": [
+      "a1",
+      "f1",
+      "b1",
+      "c1",
+      "d1"
+    ],
+    "popup": "链接双车练习6\n问：底线有几个障碍阻挡双车连接？\n跟随每一步，看子力协调快速发展，双车自然连接！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：快速发展子力同时联通双车\nRfe1！Ra1与Re1真正连通！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 6,
+      "move": "O-O",
+      "popup": "O-O易位！\n但底线还有3个障碍：\n①马在b1  ②象在c1  ③后在d1\n双车尚未连接！",
+      "highlights": [
+        {
+          "squares": [
+            "b1",
+            "c1",
+            "d1"
+          ],
+          "color": "#E5393566"
+        },
+        {
+          "squares": [
+            "a1",
+            "f1"
+          ],
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nc3",
+      "popup": "Nc3！Nb1→c3\nb1已空，还剩c1(象)和d1(后)",
+      "highlights": [
+        {
+          "squares": [
+            "c3"
+          ],
+          "color": "#C6D50066"
+        },
+        {
+          "squares": [
+            "b1"
+          ],
+          "color": "#C6D50033"
+        },
+        {
+          "squares": [
+            "c1",
+            "d1"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "黑方也完成易位！双方棋王都安全"
+    },
+    {
+      "index": 14,
+      "move": "Bg5",
+      "popup": "Bg5！Bc1→g5\nc1已空，还剩d1(后)",
+      "highlights": [
+        {
+          "squares": [
+            "g5"
+          ],
+          "color": "#C6D50066"
+        },
+        {
+          "squares": [
+            "c1"
+          ],
+          "color": "#C6D50033"
+        },
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Qd3",
+      "popup": "Qd3！后离开d1\nb1✓ c1✓ d1✓\n 出子的同时， 车自然连接！",
+      "highlights": [
+        {
+          "squares": [
+            "d3"
+          ],
+          "color": "#C6D50066"
+        },
+        {
+          "squares": [
+            "d1"
+          ],
+          "color": "#C6D50033"
+        },
+        {
+          "squares": [
+            "a1",
+            "f1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Qe2",
+      "popup": "Qe2！后继续调整\nd1依然空着，连接条件成熟"
+    },
+    {
+      "index": 23,
+      "move": "Re8",
+      "popup": "Re8！黑方车也激活，进占e列！"
+    },
+    {
+      "index": 24,
+      "move": "Rfe1",
+      "popup": "Rfe1！双车连接完成！\nRa1——b1空——c1空——d1空——Re1\n双车自然连通！",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

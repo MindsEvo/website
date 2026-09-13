@@ -1,0 +1,93 @@
+{
+  "game_id": "C11_OpenFiles_Practice_006",
+  "description": "西西里四马变 B45 — 抢占c线主动权",
+  "intro": {
+    "flash_squares": ["c8", "c3", "c1", "c5"],
+    "popup": "抢占c线主动权 练习6\n\n白方Rc1已占c线！\n黑方必须立刻Rc8反压\n\n开放线上的争夺：\n谁先占谁主动！\n黑方能否在c线上反制？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "c线争夺小结\n✅ Bxc3+：黑方主动造c叠兵\n✅ exd5 exd5：c线完全打通\n✅ Rc1先手：白方抢c线\n\n关键要点：\n开放线上谁慢谁被动\n黑方需Rc8立刻反压！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": ["c1", "c8"],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {
+      "index": 1,
+      "move": "c5",
+      "popup": "c5！西西里\nc线半开放线诞生",
+      "highlights": [{"squares": ["c5"], "color": "#C6D50055"}]
+    },
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
+    {"index": 3, "move": "Nc6", "popup": "Nc6发展"},
+    {"index": 4, "move": "d4", "popup": "d4反攻"},
+    {
+      "index": 5,
+      "move": "cxd4",
+      "popup": "cxd4兑换\nc线打通！",
+      "highlights": [{"squares": ["c8", "c7", "c6", "c4", "c3", "c2", "c1"], "color": "#C6D50055"}]
+    },
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4占中心"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6发展"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3发展"},
+    {"index": 9, "move": "e6", "popup": "e6稳固\n四马变开始"},
+    {"index": 10, "move": "Ndb5", "popup": "Ndb5机动\n威胁d6"},
+    {
+      "index": 11,
+      "move": "Bb4",
+      "popup": "Bb4！钉马！\n准备兑换c3马"
+    },
+    {
+      "index": 12,
+      "move": "a3",
+      "popup": "a3逼象\n白方试图保住c3马"
+    },
+    {
+      "index": 13,
+      "move": "Bxc3+",
+      "popup": "Bxc3+！黑方主动兑换！\n消灭c3马\n白方c列将出现叠兵！",
+      "highlights": [{"squares": ["c3", "b4"], "color": "#E53935aa"}]
+    },
+    {
+      "index": 14,
+      "move": "Nxc3",
+      "popup": "Nxc3马重建\n但c3叠兵后c线更容易被利用",
+      "highlights": [{"squares": ["c2", "c3"], "color": "#FF8F0055"}]
+    },
+    {
+      "index": 15,
+      "move": "d5",
+      "popup": "d5！中心反击！\n黑方争夺中心主动"
+    },
+    {"index": 16, "move": "exd5", "popup": "exd5兑换"},
+    {
+      "index": 17,
+      "move": "exd5",
+      "popup": "exd5黑方回吃\nd线和c线进一步打开！",
+      "highlights": [{"squares": ["c8", "d8"], "color": "#C6D50055"}]
+    },
+    {"index": 18, "move": "Bd3", "popup": "Bd3发展象"},
+    {"index": 19, "move": "O-O", "popup": "O-O入城"},
+    {"index": 20, "move": "O-O", "popup": "O-O入城"},
+    {
+      "index": 21,
+      "move": "Re8",
+      "popup": "Re8！黑车占e线\n守护e列，灵活机动"
+    },
+    {"index": 22, "move": "Bg5", "popup": "Bg5发展象\n施压Nf6"},
+    {"index": 23, "move": "Be6", "popup": "Be6发展象\n守护d5"},
+    {
+      "index": 24,
+      "move": "Rc1",
+      "popup": "Rc1！白方抢占c线！\n先手！车来c1\n下一步Rc3或Rc5威胁黑方\n\n黑方必须立刻Rc8反压！\n否则白方c线优势将扩大！",
+      "highlights": [
+        {"squares": ["c1", "c3", "c5", "c7"], "color": "#E53935aa"},
+        {"squares": ["c8"], "color": "#C6D50088"}
+      ]
+    }
+  ]
+}

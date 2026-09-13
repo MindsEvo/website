@@ -1,0 +1,151 @@
+{
+  "game_id": "A4_Lines_Demo_007",
+  "description": "卡洛卡恩兑换变体 B13 — 主动Bxd6兑换打开e线，Rfe1占领",
+  "intro": {
+    "flash_squares": ["d6", "e6", "e1", "e8"],
+    "popup": "线路控制第7课\n主动兑换，制造开放线路！\n白方用Bxd6兑换\n打开e线，然后立刻占领",
+    "voice": true
+  },
+  "outro": {
+    "popup": "兑换开线总结\nBxd6兑换不是随意的\n目的就是打开e线！\n兑换→开线→占领，一套连贯动作",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局\n占中心，开斜线"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6卡洛卡恩\n黑方稳健防御体系"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4占领中心\n双兵中心"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5对抗中心\n卡洛卡恩的标志"
+    },
+    {
+      "index": 4,
+      "move": "exd5",
+      "highlights": [{"squares": ["e4", "d5", "e1"], "color": "#C6D50044"}],
+      "popup": "exd5兑换！\ne线立刻半开放\n白方e线将成为战场"
+    },
+    {
+      "index": 5,
+      "move": "cxd5",
+      "highlights": [{"squares": ["c6", "d5"], "color": "#00BCD444"}],
+      "popup": "cxd5黑方重提\nd线也半开放了\n双方都有线路可用"
+    },
+    {
+      "index": 6,
+      "move": "Bd3",
+      "highlights": [{"squares": ["d3", "h7"], "color": "#FF8F0044"}],
+      "popup": "Bd3发展\n象站d3，为Bf4准备\n同时瞄准h7"
+    },
+    {
+      "index": 7,
+      "move": "Nc6",
+      "popup": "Nc6发展\n黑方出子"
+    },
+    {
+      "index": 8,
+      "move": "c3",
+      "popup": "c3支撑d4\n巩固中心"
+    },
+    {
+      "index": 9,
+      "move": "Nf6",
+      "popup": "Nf6发展\n黑方马出动"
+    },
+    {
+      "index": 10,
+      "move": "Bf4",
+      "highlights": [{"squares": ["f4", "d6"], "color": "#FF8F0055"}],
+      "popup": "Bf4！白格象出动\n压制d6，为Bxd6做准备\n一旦兑换，e线将完全打开"
+    },
+    {
+      "index": 11,
+      "move": "Bg4",
+      "popup": "Bg4牵制Nf3\n黑方反制"
+    },
+    {
+      "index": 12,
+      "move": "Qb3",
+      "highlights": [{"squares": ["b3", "d5", "b7"], "color": "#FF8F0044"}],
+      "popup": "Qb3！后出动\n攻击b7，施压d5\n黑方要应付多个威胁"
+    },
+    {
+      "index": 13,
+      "move": "Qd7",
+      "popup": "Qd7防守\n黑方后护b7"
+    },
+    {
+      "index": 14,
+      "move": "Nd2",
+      "popup": "Nd2出马\n避开Bg4牵制\n准备Ngf3"
+    },
+    {
+      "index": 15,
+      "move": "e6",
+      "highlights": [{"squares": ["e6", "d6", "e1"], "color": "#00BCD444"}],
+      "popup": "e6稳固\n黑方准备发展Bd6\n注意：Bd6一旦出现，白方Bxd6的时机就到了"
+    },
+    {
+      "index": 16,
+      "move": "Ngf3",
+      "popup": "Ngf3发展完成\n白方轻子全部出动\n准备王车易位"
+    },
+    {
+      "index": 17,
+      "move": "Bd6",
+      "highlights": [{"squares": ["d6", "f4", "e1"], "color": "#FF8F0055"}],
+      "popup": "Bd6！黑方象到d6\n积极发展\n但白方Bxd6的时机来了！\nBxd6之后，e线将完全打开"
+    },
+    {
+      "index": 18,
+      "move": "Bxd6",
+      "highlights": [{"squares": ["d6", "f4", "e1", "e6"], "color": "#C6D50055"}],
+      "concept_arrows": [{"from": "f4", "to": "d6", "color": "#C6D500CC"}],
+      "popup": "Bxd6！主动兑换！\n白方象吃黑象\n这不是随意兑换——目的是打开e线！\ne6格现在处于e线上，e线即将完全开放"
+    },
+    {
+      "index": 19,
+      "move": "Qxd6",
+      "highlights": [{"squares": ["d6", "e6", "e1"], "color": "#00BCD455"}],
+      "popup": "Qxd6黑后重提\ne线现在完全开放！\n白方下一步王车易位，然后立刻Rfe1\n兑换的目的已达到"
+    },
+    {
+      "index": 20,
+      "move": "O-O",
+      "highlights": [{"squares": ["g1", "f1", "e1"], "color": "#C6D50033"}],
+      "popup": "O-O王车易位\nf1车激活\n下一步Rfe1将直接占领e线\n连贯动作：兑换→易位→占线"
+    },
+    {
+      "index": 21,
+      "move": "O-O",
+      "highlights": [{"squares": ["g8", "f8", "e8"], "color": "#E5393533"}],
+      "popup": "黑方王车易位\nf8车到e8\n注意黑车也在e线上！\n黑方也争e线——白方必须抢先"
+    },
+    {
+      "index": 22,
+      "move": "Rfe1",
+      "highlights": [{"squares": ["f1", "e1", "e6", "e8"], "color": "#C6D50066"}],
+      "concept_arrows": [
+        {"from": "f1", "to": "e1", "color": "#C6D500CC"},
+        {"from": "e1", "to": "e8", "color": "#C6D50088"}
+      ],
+      "popup": "Rfe1！占领e线！\n兑换→开线→占线，一气呵成\n白车在e1，直接对准e8黑车\n整条e线在白方控制下\n这就是主动制造线路的完整链条！"
+    }
+  ]
+}

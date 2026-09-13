@@ -1,0 +1,159 @@
+{
+  "game_id": "D15_CounterAttack_Practice_007",
+  "description": "卡罗-坎恩推进变例 B12 — c5反制练习：选择正确的反击方向",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "e5"
+    ],
+    "popup": "反制中心练习7\n\n卡罗-坎恩推进变例！\n\ne5关链中心后\n黑方有多条反制路线\n\n练习目标：\n选择正确的反制方向\nc5还是e5？为什么？",
+    "voice": true
+  },
+  "outro": {
+    "popup": "推进变例总结\n\n关键策略要点：\n① c5爆破d4：打开中心\n② Bb4/Ba5象机动：增加复杂性\n③ Bd4象占中心 + Nc5马关键格\n\n判断依据：\n棋子协调性 + 中心控制",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4"
+    ],
+    "color": "#E5393522"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4"
+    },
+    {
+      "index": 1,
+      "move": "c6",
+      "popup": "c6 卡罗-坎恩"
+    },
+    {
+      "index": 2,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 3,
+      "move": "d5",
+      "popup": "d5"
+    },
+    {
+      "index": 4,
+      "move": "e5",
+      "popup": "e5！推进变例\n关链中心"
+    },
+    {
+      "index": 5,
+      "move": "Bf5",
+      "popup": "Bf5 象出动！"
+    },
+    {
+      "index": 6,
+      "move": "Nf3",
+      "popup": "Nf3"
+    },
+    {
+      "index": 7,
+      "move": "e6",
+      "popup": "e6 稳固"
+    },
+    {
+      "index": 8,
+      "move": "Be2",
+      "popup": "Be2"
+    },
+    {
+      "index": 9,
+      "move": "c5",
+      "popup": "c5！c5反击！\n爆破d4"
+    },
+    {
+      "index": 10,
+      "move": "Be3",
+      "popup": "Be3"
+    },
+    {
+      "index": 11,
+      "move": "cxd4",
+      "popup": "cxd4 兑换"
+    },
+    {
+      "index": 12,
+      "move": "Nxd4",
+      "popup": "Nxd4"
+    },
+    {
+      "index": 13,
+      "move": "Nc6",
+      "popup": "Nc6"
+    },
+    {
+      "index": 14,
+      "move": "Nxc6",
+      "popup": "Nxc6 简化"
+    },
+    {
+      "index": 15,
+      "move": "bxc6",
+      "popup": "bxc6"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O"
+    },
+    {
+      "index": 17,
+      "move": "Bb4",
+      "popup": "Bb4！象出击\n增加复杂性"
+    },
+    {
+      "index": 18,
+      "move": "Nd2",
+      "popup": "Nd2 马机动\n准备支援b3或c4"
+    },
+    {
+      "index": 19,
+      "move": "Ba5",
+      "popup": "Ba5 象撤退\n保持压力"
+    },
+    {
+      "index": 20,
+      "move": "Nb3",
+      "popup": "Nb3 进攻a5"
+    },
+    {
+      "index": 21,
+      "move": "Bc7",
+      "popup": "Bc7 象回防\n守住要点"
+    },
+    {
+      "index": 22,
+      "move": "Bd4",
+      "popup": "Bd4！象占中心格"
+    },
+    {
+      "index": 23,
+      "move": "a5",
+      "popup": "a5 阻止Nb5\n翼兵扩展"
+    },
+    {
+      "index": 24,
+      "move": "Nc5",
+      "popup": "Nc5！白马跳关键格\n威胁b7/d7"
+    },
+    {
+      "index": 25,
+      "move": "Ne7",
+      "popup": "Ne7 马发展\n应对Nc5威胁"
+    },
+    {
+      "index": 26,
+      "move": "c3",
+      "popup": "c3！巩固中心\n限制黑方d5/c6"
+    }
+  ]
+}

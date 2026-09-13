@@ -1,0 +1,199 @@
+{
+  "game_id": "C10_WeakSquares_Practice_008",
+  "description": "后翼弃兵 D30 — 兑换后的e5弱格",
+  "intro": {
+    "flash_squares": [
+      "e5",
+      "c5",
+      "c1",
+      "e1"
+    ],
+    "popup": "兑换后的e5弱格 练习8\n\ncxd5后黑方e5格失去守护\nRc1+Re1双车控制关键列\n\n弱格不只是马据点—\n也是车入侵的通道！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "車控弱格练习小结\n✅ cxd5后e5格失去e6兵守护\n✅ Rc1控c列+Re1控e列\n✅ dxc5简化后d5也暴露\n\n练习要点：\n兑换后立刻看哪些格没有兵守了",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e5",
+      "d5"
+    ],
+    "color": "#FFD70022"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4控制中心"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5对称\n后翼弃兵防御"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4翼侧"
+    },
+    {
+      "index": 3,
+      "move": "e6",
+      "popup": "e6稳固d5"
+    },
+    {
+      "index": 4,
+      "move": "Nf3",
+      "popup": "Nf3发展马"
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "Nf6发展马"
+    },
+    {
+      "index": 6,
+      "move": "Bg5",
+      "popup": "Bg5！后翼弃兵象\n牵制Nf6"
+    },
+    {
+      "index": 7,
+      "move": "Be7",
+      "popup": "Be7稳健"
+    },
+    {
+      "index": 8,
+      "move": "e3",
+      "popup": "e3加强中心"
+    },
+    {
+      "index": 9,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 10,
+      "move": "Nc3",
+      "popup": "Nc3发展马"
+    },
+    {
+      "index": 11,
+      "move": "b6",
+      "popup": "b6准备Bb7"
+    },
+    {
+      "index": 12,
+      "move": "cxd5",
+      "popup": "cxd5！关键兑换\n此后e5失去e6兵守护",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e5",
+            "e6"
+          ],
+          "color": "#FF8F0055"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "exd5",
+      "popup": "exd5接受\ne6兵消失！\ne5格现在无黑兵守护",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Bd3",
+      "popup": "Bd3发展象"
+    },
+    {
+      "index": 15,
+      "move": "Bb7",
+      "popup": "Bb7建立长斜线"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O入城"
+    },
+    {
+      "index": 17,
+      "move": "Nbd7",
+      "popup": "Nbd7准备c5冲击"
+    },
+    {
+      "index": 18,
+      "move": "Rc1",
+      "popup": "Rc1！车到c列\n控制半开c列",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "c5",
+            "c7"
+          ],
+          "color": "#00BCD455"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Re8",
+      "popup": "Re8守护e列\n防止Ne5"
+    },
+    {
+      "index": 20,
+      "move": "Re1",
+      "popup": "Re1！车到e列\n瞄准e5弱格\n双车Rc1+Re1控制双列！",
+      "highlights": [
+        {
+          "squares": [
+            "e1",
+            "e5",
+            "c1"
+          ],
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "c5",
+      "popup": "c5冲击！\n黑方争夺c列",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d5"
+          ],
+          "color": "#E5393555"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "move": "dxc5",
+      "popup": "dxc5打开c列\nd5也暴露了！\n双车将沿c+e列压制黑方两个弱格",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d5",
+            "e5"
+          ],
+          "color": "#E53935aa"
+        }
+      ]
+    }
+  ]
+}

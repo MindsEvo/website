@@ -1,0 +1,50 @@
+﻿{
+  "label": "发展类",
+  "color": "#16A085",
+  "categories": [
+    {
+      "key": "B5_king_safety",
+      "label": "B5 王车易位",
+      "items": [
+        { "id": "opening_B5_Castle_Practice_006", "label": "6. 短易位连接双车（西班牙封闭C84）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Practice_007", "label": "7. 稳健局面的易位时机（后翼弃兵兑换变例D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Practice_008", "label": "8. 长易位后车占开放线（西西里纳伊多夫B90）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Practice_009", "label": "9. 异侧易位的攻防节奏（西西里龙变B78）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Practice_010", "label": "10. 不需要易位的特例！（国王弃兵接受变例C33）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B6_rapid_development",
+      "label": "B6 快速出子",
+      "items": [
+        { "id": "opening_B6_DevSpeed_Practice_006", "label": "6. 标准出子秩序的完整展示（费隆佐尼变体）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Practice_007", "label": "7. 封闭局面的轻子布置——伦敦体系标准出子（伦敦体系）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Practice_008", "label": "8. 后被追着跑——发展落后的代价（斯堪纳维亚防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Practice_009", "label": "9. 弃子换节奏——国王弃兵的出子爆发力（国王弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Practice_010", "label": "10. 非主流开局也需出子完整——特罗姆普开局（特罗姆普）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B7_piece_coordination",
+      "label": "B7 子力协调",
+      "items": [
+        { "id": "opening_B7_PieceCoord_Practice_006", "label": "6. 每个白棋子都有任务（后翼弃兵防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Practice_007", "label": "7. 用钉子破坏协调——1个象换1个马的奥秘（尼姆佐印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Practice_008", "label": "8. 马对象的协调优势——柏林残局（西班牙柏林变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Practice_009", "label": "9. 双方协调竞速——谁先协调完谁占优（焦科钢琴主线）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Practice_010", "label": "10. 极限协调施压——对攻中的子力分工（西西里纳伊多夫）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    },
+    {
+      "key": "B8_rook_coordination",
+      "label": "B8 连接双车",
+      "items": [
+        { "id": "opening_B8_RookCoord_Practice_006", "label": "6. 逐步清空底线（鲁伊·洛佩兹C65变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Practice_007", "label": "7. 争夺开放列（尼姆佐-印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Practice_008", "label": "8. 叠车接力突破（意大利开局C54）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Practice_009", "label": "9. 叠车压制（后翼弃兵接受变例D20，Nbd7改良）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Practice_010", "label": "10. 从连接到支配的完整流程（斯拉夫防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+      ]
+    }
+  ]
+}

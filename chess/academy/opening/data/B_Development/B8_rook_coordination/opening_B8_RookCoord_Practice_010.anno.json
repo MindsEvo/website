@@ -1,0 +1,194 @@
+{
+  "game_id": "B8_RookCoord_Practice_010",
+  "description": "D10 — 链接双车 - 第10局：从连接到支配的完整流程（斯拉夫防御）",
+  "intro": {
+    "flash_squares": [
+      "d1",
+      "e1",
+      "c1",
+      "e3"
+    ],
+    "popup": "链接双车第10局：综合总结\n这是B8课程综合演示！\n跟随白方完成连接→分工→叠车→支配的完整流程！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：Rfd1→Rac1→Re1→Re3→Rcd1\n连接→d列→c列→e列→叠车！",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5"
+    },
+    {
+      "index": 2,
+      "move": "c4",
+      "popup": "c4后翼弃兵"
+    },
+    {
+      "index": 3,
+      "move": "c6",
+      "popup": "c6斯拉夫防御"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3！底线轻子出动",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#8E24AA33"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "O-O",
+      "popup": "O-O黑方易位"
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "O-O！三步曲完成！双车连接！\n发展 易位 底线清空，全部完成！",
+      "highlights": [
+        {
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "e5",
+      "popup": "e5黑方反击"
+    },
+    {
+      "index": 20,
+      "move": "cxd5",
+      "popup": "cxd5"
+    },
+    {
+      "index": 21,
+      "move": "cxd5",
+      "popup": "cxd5，c+d列开放！",
+      "highlights": [
+        {
+          "squares": [
+            "c5",
+            "d5"
+          ],
+          "color": "#FF572233"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "move": "Rfd1",
+      "popup": "Rfd1！Rf1→d列！\n第一步：占领d列！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "d5",
+            "d8"
+          ],
+          "color": "#C6D50066"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "move": "Re8",
+      "popup": "Re8黑方车激活"
+    },
+    {
+      "index": 28,
+      "move": "Rac1",
+      "popup": "Rac1！Ra1→c列！\n分工完成：Rfd1（d列）+ Rac1（c列）",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "d1"
+          ],
+          "color": "#FF572266"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "move": "Qe7",
+      "popup": "Qe7黑后联结"
+    },
+    {
+      "index": 30,
+      "move": "Re1",
+      "popup": "Re1！Rd1→e列！\n三列控制完成！",
+      "highlights": [
+        {
+          "squares": [
+            "c1",
+            "d1",
+            "e1"
+          ],
+          "color": "#8E24AA66"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "move": "Bg4",
+      "popup": "Bg4黑象施压"
+    },
+    {
+      "index": 32,
+      "move": "Bxg4",
+      "popup": "Bxg4！白象消灭黑象！",
+      "highlights": [
+        {
+          "squares": [
+            "g4"
+          ],
+          "color": "#E5393566"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "move": "Nxg4",
+      "popup": "Nxg4黑马吃回"
+    },
+    {
+      "index": 34,
+      "move": "Rcd1",
+      "popup": "Rcd1！叠车d列！\nRc1→d1，双车叠d列！\n终极形态：Re1+Rd1 = e+d双列控制！",
+      "highlights": [
+        {
+          "squares": [
+            "d1",
+            "e1"
+          ],
+          "color": "#C6D50099"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "game_id": "B6_DevSpeed_Practice_008",
+  "description": "B01 — 后被追着跑，发展落后",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第8局\n黑方后过早出动并被白方轻子追逐，导致发展严重落后",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：后被追着跑就是发展落后的具体表现",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "e4开局"
+    },
+    {
+      "index": 1,
+      "move": "d5",
+      "popup": "d5！斯堪纳维亚防御\n黑方立刻在中心反击"
+    },
+    {
+      "index": 2,
+      "move": "exd5",
+      "popup": "exd5白方吃兵"
+    },
+    {
+      "index": 3,
+      "move": "Qxd5",
+      "popup": "Qxd5！⚠️ 黑方后第2步就出动\n吃回兵是必须的，但代价是后过早出动\n白方将用轻子追击",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "Nc3！追击黑后\n白方出动第1个轻子同时追后\n一步棋两个目的：发展+追后",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Qa5",
+      "popup": "Qa5后撤退\n黑方后走第2步（d5→a5）\n白方已出动1个轻子，黑方后走了2步"
+    },
+    {
+      "index": 6,
+      "move": "d4",
+      "popup": "d4！占中心\n白方占领中心，继续主动"
+    },
+    {
+      "index": 7,
+      "move": "Nf6",
+      "popup": "Nf6黑方第1个轻子（终于！）\n注意：这是黑方在第4步才出第1个轻子"
+    },
+    {
+      "index": 8,
+      "move": "Nf3",
+      "popup": "Nf3！白方第2个轻子出动",
+      "highlights": [
+        {
+          "squares": [
+            "f3"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bf5",
+      "popup": "Bf5黑方象出动\n黑方第2个轻子出动"
+    },
+    {
+      "index": 10,
+      "move": "Bc4",
+      "popup": "Bc4！白方第3个轻子出动\n同时威胁Bd2-Bb3追后",
+      "highlights": [
+        {
+          "squares": [
+            "c4",
+            "a6"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "e6",
+      "popup": "e6黑方防守"
+    },
+    {
+      "index": 12,
+      "move": "Bd2",
+      "popup": "Bd2接下来准备追后",
+      "highlights": [
+        {
+          "squares": [
+            "d2",
+            "a5"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "Qb6",
+      "popup": "Qb6后再移动\n黑方后走第3步（a5→b6）\n白方：3个轻子出动\n黑方：2个轻子+后走3步",
+      "highlights": [
+        {
+          "squares": [
+            "b6"
+          ],
+          "color": "#E5393544"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "Qe2",
+      "popup": "Qe2白后出动\n白方准备O-O-O，利用优势"
+    },
+    {
+      "index": 15,
+      "move": "Bb4",
+      "popup": "Bb4黑方象牵制\n黑方尝试反制"
+    },
+    {
+      "index": 16,
+      "move": "a3",
+      "popup": "a3追象\n白方逼迫黑方继续走步"
+    },
+    {
+      "index": 17,
+      "move": "Bxc3",
+      "popup": "Bxc3兑换\n黑方被迫兑换"
+    },
+    {
+      "index": 18,
+      "move": "Bxc3",
+      "popup": "Bxc3接回\n白方双象并掌握主动"
+    },
+    {
+      "index": 19,
+      "move": "Ne4",
+      "popup": "Ne4黑马跳入\n黑方尝试反击"
+    },
+    {
+      "index": 20,
+      "move": "Bb3",
+      "popup": "Bb3象撤退\n白方稳固",
+      "highlights": [
+        {
+          "squares": [
+            "b3",
+            "e6"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Nxc3",
+      "popup": "Nxc3兑换\n黑方吃马"
+    },
+    {
+      "index": 22,
+      "move": "bxc3",
+      "popup": "bxc3\n总结：黑方Qxd5后走了3步\n等于白方多出了3个先手发展子力\n这就是发展落后的具体后果",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4",
+            "c4"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    }
+  ]
+}

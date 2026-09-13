@@ -1,0 +1,501 @@
+{
+  "game_id": "A1_Center_Practice_009",
+  "description": "四马开局——中心压制速胜，21步练习注释",
+  "intro": {
+    "flash_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "popup": "四马开局练习：双方快速出子争夺中心，第4步就爆发正面冲突！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "快速发展子力并建立中心，是最直接有效的制胜思路。",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [
+      "e4",
+      "d4",
+      "e5",
+      "d5"
+    ],
+    "color": "#9B59B670"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "e4",
+      "popup": "⬆️ <b>1.e4 — 中心争夺开始！</b><br>白方占 e4，四马开局的起点。",
+      "highlights": [
+        {
+          "squares": [
+            "e4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 1,
+      "move": "e5",
+      "popup": "⬇️ <b>1...e5 — 黑方对称占中心！</b><br>双方对称，中心张力建立。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 2,
+      "move": "Nf3",
+      "popup": "⬆️ <b>2.Nf3 — 白马出动！</b><br>攻击 e5，发展子力。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f3",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Nc6",
+      "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>发展并防守，一步完成。",
+      "highlights": [
+        {
+          "squares": [
+            "e5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c6",
+          "to": "e5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "move": "Nc3",
+      "popup": "⬆️ <b>3.Nc3 — 第二匹马出动！</b><br>四马开局成型，双方各两匹马争夺中心格。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50033",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "c3",
+          "to": "d5",
+          "color": "#00BCD477"
+        },
+        {
+          "from": "c3",
+          "to": "e4",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "Nf6",
+      "popup": "⬇️ <b>3...Nf6 — 四马格局形成！</b><br>黑方第二匹马出动，四马开局完整出现。双方各有两马控制中心，局面对称。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "f6",
+          "to": "e4",
+          "color": "#00BCD488"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD466"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "move": "d4",
+      "popup": "⬆️ <b>4.d4 — 白方立即冲中心！</b><br>只用4步就推出 d4！白方选择最直接的中心冲突，不等待，立即摊牌。这与西班牙的「耐心积累」形成鲜明对比。<br>⚡ <b>效率最高：4步就发动中心冲突！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "e5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "move": "exd4",
+      "popup": "⬇️ <b>4...exd4 — 黑方吃兵！中心打开！</b><br>黑方吃掉 d4，e 线打开。现在白方如何夺回？",
+      "highlights": [
+        {
+          "squares": [
+            "e5",
+            "d4"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e5",
+          "to": "d4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "move": "Nxd4",
+      "popup": "⬆️ <b>5.Nxd4 — 马吃 d4，控制中心！</b><br>f3 马跳到 d4，夺回中心，同时从 d4 攻击 c6 马和 f5 格。白方的 d4 马是强力中心子！",
+      "highlights": [
+        {
+          "squares": [
+            "d4",
+            "c6",
+            "f5",
+            "b5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c6",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d4",
+          "to": "f5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Bb4",
+      "popup": "⬇️ <b>5...Bb4 — 黑象钉住 c3 马！</b><br>黑象来到 b4，钉住 c3 马——c3 马是 d4 马的支撑。若 c3 马不能动，d4 马就失去后援，双方局面趋于动态平衡。",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "b4",
+          "to": "c3",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "c3",
+          "to": "d4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "move": "Nxc6",
+      "popup": "⬆️ <b>6.Nxc6 — 白方主动兑换！破坏黑方兵形！</b><br>白方 d4 马吃 c6 马，迫使黑方用兵吃回，损坏黑方的兵形结构。<br>🎯 <b>这是以位置优势换取物质平衡的典型手法！</b>",
+      "highlights": [
+        {
+          "squares": [
+            "c6"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d4",
+          "to": "c6",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "move": "bxc6",
+      "popup": "⬇️ <b>6...bxc6 — 黑方兵形受损！出现双兵岛！</b><br>黑方用 b 兵吃 c6，产生「双兵岛」。这是明显的兵形弱点，白方在长期中会利用这个弱点。",
+      "highlights": [
+        {
+          "squares": [
+            "a7",
+            "c6",
+            "c7"
+          ],
+          "color": "#FF572244",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 12,
+      "move": "Bd3",
+      "popup": "⬆️ <b>7.Bd3 — 象占 d3，中心控制强格！</b><br>白象发展到 d3，支撑 e4，同时瞄准黑方王翼（h7 方向）。象在 d3 是非常活跃的位置，与 e4 兵形成完美配合。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "h7"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d3",
+          "to": "h7",
+          "color": "#00BCD4BB"
+        },
+        {
+          "from": "d3",
+          "to": "e4",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "move": "d5",
+      "popup": "⬇️ <b>7...d5 — 黑方反攻中心！</b><br>黑方推 d5，反攻 e4，试图打乱白方阵型。若白方不正确应对，局面会变复杂。",
+      "highlights": [
+        {
+          "squares": [
+            "e4",
+            "d5"
+          ],
+          "color": "#00BCD444",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "d5",
+          "to": "e4",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "move": "exd5",
+      "popup": "⬆️ <b>8.exd5 — 吃 d5，打开中心！</b><br>白方吃 d5，中心线打开。白方现在在 d5 有一个强大的过路兵，黑方必须立即应对。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#C6D50066",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e4",
+          "to": "d5",
+          "color": "#00BCD4CC"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "move": "cxd5",
+      "popup": "⬇️ <b>8...cxd5 — 黑兵吃 d5，损失孤兵！</b><br>黑方用 c 兵吃 d5，清除过路兵，但 d5 兵孤立无援——它没有其他兵的保护，成为弱点。",
+      "highlights": [
+        {
+          "squares": [
+            "d5",
+            "c4",
+            "e4"
+          ],
+          "color": "#FF572233",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": []
+    },
+    {
+      "index": 16,
+      "move": "O-O",
+      "popup": "⬆️ <b>9.O-O — 白方易位！</b><br>白方王安全，车激活。所有棋子将协调配合攻击黑方的孤兵 d5。",
+      "highlights": [
+        {
+          "squares": [
+            "g1",
+            "f1"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e1",
+          "to": "g1",
+          "color": "#C6D500CC"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "move": "O-O",
+      "popup": "⬇️ <b>9...O-O — 黑方易位！</b><br>双方完成易位，进入中局。白方拥有主动权：子力更活跃，黑方有孤兵弱点。",
+      "highlights": [
+        {
+          "squares": [
+            "g8",
+            "f8"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e8",
+          "to": "g8",
+          "color": "#C6D50099"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "move": "Bg5",
+      "popup": "⬆️ <b>10.Bg5 — 象发展，钉住黑马！</b><br>象跳到 g5，钉住 f6 马——f6 马是保护 d5 孤兵的重要子力。攻击守护者，间接压迫弱点！",
+      "highlights": [
+        {
+          "squares": [
+            "f6",
+            "d5"
+          ],
+          "color": "#C6D50044",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "g5",
+          "to": "f6",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f6",
+          "to": "d5",
+          "color": "#00BCD477"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Be6",
+      "popup": "⬇️ <b>10...Be6 — 黑象出动防守！</b><br>黑象来到 e6，支援 d5 孤兵，同时阻止白方象的进一步渗透。黑方在努力维持平衡。",
+      "highlights": [
+        {
+          "squares": [
+            "d5"
+          ],
+          "color": "#00BCD433",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e6",
+          "to": "d5",
+          "color": "#00BCD488"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "move": "Ne2",
+      "popup": "⬆️ <b>11.Ne2 — 马重新部署！准备攻击 d5！</b><br>c3 马通过 e2 重新调整位置，准备跳向 f4 或 d4，直接攻击 d5 孤兵。<br><br>四马开局展示了高效的开局思路：4步就发动中心冲突，通过精确的子力兑换损坏黑方兵形，建立孤兵弱点。白方每步都在围绕攻击弱点积累优势——这就是「中心压制速胜」的核心逻辑！",
+      "highlights": [
+        {
+          "squares": [
+            "f4",
+            "d4",
+            "d5"
+          ],
+          "color": "#C6D50055",
+          "duration_ms": 0
+        }
+      ],
+      "concept_arrows": [
+        {
+          "from": "e2",
+          "to": "f4",
+          "color": "#00BCD4CC"
+        },
+        {
+          "from": "f4",
+          "to": "d5",
+          "color": "#00BCD4AA"
+        }
+      ]
+    }
+  ]
+}

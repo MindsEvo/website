@@ -1,0 +1,194 @@
+{
+  "game_id": "B6_DevSpeed_Practice_010",
+  "description": "A45 — 非主流也需出子完整",
+  "intro": {
+    "flash_squares": [
+      "e2",
+      "d2",
+      "f2",
+      "g1",
+      "f1"
+    ],
+    "popup": "快速出子第10局\n无论走什么开局，快速出子的原则都适用",
+    "voice": true
+  },
+  "outro": {
+    "popup": "总结：快速出子是开局通则，适用于所有体系",
+    "voice": true
+  },
+  "board_always": {
+    "highlight_squares": [],
+    "color": "#FFD70020"
+  },
+  "moves": [
+    {
+      "index": 0,
+      "move": "d4",
+      "popup": "d4开局\n皇后兵，控制中心"
+    },
+    {
+      "index": 1,
+      "move": "Nf6",
+      "popup": "Nf6！黑方立即出动马\n进攻d4，控制e4格"
+    },
+    {
+      "index": 2,
+      "move": "Bg5",
+      "popup": "Bg5！特罗姆普开局！\n象到g5，牵制黑马\n非主流但有效",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f6"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "move": "Ne4",
+      "popup": "Ne4！黑马进攻！\n逼退白象\n特罗姆普的典型应对"
+    },
+    {
+      "index": 4,
+      "move": "Bf4",
+      "popup": "Bf4！象撤退到f4\n⚠️ 注意：象走了2步（g5→f4）\n但这是体系要求，不是随意重复",
+      "highlights": [
+        {
+          "squares": [
+            "g5",
+            "f4"
+          ],
+          "color": "#FF8F0033"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "move": "d5",
+      "popup": "d5推进\n黑方争中心"
+    },
+    {
+      "index": 6,
+      "move": "e3",
+      "popup": "e3支撑\n稳固d4兵"
+    },
+    {
+      "index": 7,
+      "move": "c5",
+      "popup": "c5！黑方攻击白方中心\n主动争夺"
+    },
+    {
+      "index": 8,
+      "move": "Bd3",
+      "popup": "Bd3！象到最佳格\n象走了3步（g5→f4→d3）\n但d3是最终最佳位置，值得！",
+      "highlights": [
+        {
+          "squares": [
+            "d3",
+            "h7"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "move": "Nc6",
+      "popup": "Nc6黑方马出动\n黑方第1个大马出动"
+    },
+    {
+      "index": 10,
+      "move": "c3",
+      "popup": "c3支撑\n稳固中心，阻止...cxd4"
+    },
+    {
+      "index": 11,
+      "move": "Qb6",
+      "popup": "Qb6！黑方后出动\n⚠️ 黑方后过早出动，威胁d4和b2"
+    },
+    {
+      "index": 12,
+      "move": "Qb3",
+      "popup": "Qb3！白方后出动\n对战对方的后\n主动要求兑后，消除威胁"
+    },
+    {
+      "index": 13,
+      "move": "Qxb3",
+      "popup": "Qxb3黑方兑后\n双方后兑换，局面简化"
+    },
+    {
+      "index": 14,
+      "move": "axb3",
+      "popup": "axb3接回\n白方棋形略好（半开a线）"
+    },
+    {
+      "index": 15,
+      "move": "cxd4",
+      "popup": "cxd4兑换\n黑方打击d4"
+    },
+    {
+      "index": 16,
+      "move": "cxd4",
+      "popup": "cxd4接回\n白方保持中心"
+    },
+    {
+      "index": 17,
+      "move": "e6",
+      "popup": "e6黑方稳固"
+    },
+    {
+      "index": 18,
+      "move": "Nc3",
+      "popup": "Nc3！白方马终于出动！\n第1个马出动，控制d5和e4",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5",
+            "e4"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "move": "Bb4",
+      "popup": "Bb4黑方象牵制\n牵制白马"
+    },
+    {
+      "index": 20,
+      "move": "Nge2",
+      "popup": "Nge2！第2个马出动\n白方双马出动完毕\n虽然开局较慢，但出子完整",
+      "highlights": [
+        {
+          "squares": [
+            "e2"
+          ],
+          "color": "#C6D50033"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "move": "Bxc3",
+      "popup": "Bxc3黑方兑换\n消除一匹马"
+    },
+    {
+      "index": 22,
+      "move": "Nxc3",
+      "popup": "Nxc3接回\n总结：特罗姆普非主流开局\n象走多步是体系要求，但核心不变：\n最终所有轻子必须完整出动！\n快速出子原则适用于所有开局体系",
+      "highlights": [
+        {
+          "squares": [
+            "c3",
+            "d5"
+          ],
+          "color": "#C6D50044"
+        }
+      ]
+    }
+  ]
+}

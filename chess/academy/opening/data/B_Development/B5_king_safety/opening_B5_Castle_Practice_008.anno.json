@@ -1,0 +1,39 @@
+{
+  "game_id": "B5_Castle_Practice_008",
+  "description": "西西里纳道夫 B90 — 长易位激活a1/d1车",
+  "intro": {
+    "flash_squares": ["c1", "a1", "d1", "h4"],
+    "popup": "练习第8局\n西西里纳道夫\n长易位之后……\n白方O-O-O激活两条线：\n① a1车占a列\n② d1车守d4\nh4冲兵，向黑王翼发起进攻！",
+    "voice": true
+  },
+  "outro": {
+    "popup": "长易位激活车\n① O-O-O长易位\n② a1车可沿a列推进\n③ d1车巩固中心控制\n④ g4/h4冲兵攻击黑王翼\n长易位 = 进攻位置 + 防御基础！",
+    "voice": true
+  },
+  "board_always": {"highlight_squares": [], "color": "#FFD70020"},
+  "moves": [
+    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 1, "move": "c5", "popup": "c5"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3"},
+    {"index": 3, "move": "d6", "popup": "d6"},
+    {"index": 4, "move": "d4", "popup": "d4"},
+    {"index": 5, "move": "cxd4", "popup": "cxd4"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4"},
+    {"index": 7, "move": "Nf6", "popup": "Nf6"},
+    {"index": 8, "move": "Nc3", "popup": "Nc3"},
+    {"index": 9, "move": "a6", "popup": "a6纳道夫标志手"},
+    {"index": 10, "move": "Be3", "popup": "Be3英吉利进攻体系"},
+    {"index": 11, "move": "e5", "popup": "e5黑方中心反击"},
+    {"index": 12, "move": "Nb3", "popup": "Nb3马后撤避免被兑换"},
+    {"index": 13, "move": "Be6", "popup": "Be6象发展"},
+    {"index": 14, "move": "f3", "popup": "f3稳固中心"},
+    {"index": 15, "move": "Nbd7", "popup": "Nbd7马发展"},
+    {"index": 16, "move": "Qd2", "popup": "Qd2准备长易位"},
+    {"index": 17, "move": "b5", "popup": "b5黑方冲兵反攻"},
+    {"index": 18, "move": "O-O-O", "highlights": [{"squares": ["c1","d1","a1","b1"], "color": "#FF8F0066"}], "popup": "O-O-O！白方长易位！\n王去c1，车到d1\n现在a1车可以沿a列活动\nd1车支撑中心d4"},
+    {"index": 19, "move": "Nb6", "popup": "Nb6马争夺控制"},
+    {"index": 20, "move": "g4", "highlights": [{"squares": ["g4","g8"], "color": "#E5393544"}], "popup": "g4！白方开始冲兵！\n向黑王翼发动进攻"},
+    {"index": 21, "move": "Rb8", "highlights": [{"squares": ["a8","b8","b1"], "color": "#00BCD433"}], "popup": "Rb8！黑方也开始反冲\n车移到b8，准备b4攻击白王"},
+    {"index": 22, "move": "h4", "highlights": [{"squares": ["h4","h7","g7"], "color": "#E5393566"}], "popup": "h4！白方h兵继续推进\n与g4配合，形成双兵进攻\n长易位后：a1/d1双车激活\ng4/h4冲兵攻击黑王——这就是长易位的力量！"}
+  ]
+}
