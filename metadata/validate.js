@@ -465,14 +465,21 @@
       return k + "→" + levelGrade[k];
     }).join(" · "));
 
-    // code side: every key must be a gradeCode that metadata declares live
+    // code side: every key must resolve to a row metadata declares live. A
+    // module may key LEVEL_GRADE by gradeCode (identity map, when its own
+    // level ids already are canonical grade codes, e.g. difference-scout's
+    // K1/K2/G1/G2) or by levelId (a real translation table, when levels are
+    // named independently of their grade, e.g. spatial-pattern's L1/L2/L3).
+    // Try both so S2 verifies whichever convention a module actually uses.
     var metaByGrade = {};
     live.forEach(function (r) { metaByGrade[r.gradeCode] = r; });
+    var metaByLevel = {};
+    live.forEach(function (r) { metaByLevel[r.levelId] = r; });
 
     codeLevels.forEach(function (key) {
-      var row = metaByGrade[key];
+      var row = metaByLevel[key] || metaByGrade[key];
       if (!row) {
-        var anyRow = rows.filter(function (r) { return r.gradeCode === key; })[0];
+        var anyRow = rows.filter(function (r) { return r.gradeCode === key || r.levelId === key; })[0];
         if (anyRow) {
           s.fail("代码上线了 " + key + "，但 levelMap " + anyRow.levelId + " 的 status=" + anyRow.status,
             "把 status 改成 implemented/partial，或从代码里撤掉这一级");
@@ -489,7 +496,9 @@
       }
     });
 
-    var missingInCode = live.filter(function (r) { return codeLevels.indexOf(r.gradeCode) < 0; });
+    var missingInCode = live.filter(function (r) {
+      return codeLevels.indexOf(r.gradeCode) < 0 && codeLevels.indexOf(r.levelId) < 0;
+    });
     if (missingInCode.length) {
       s.fail("levelMap 声明已上线、但代码 LEVEL_GRADE 里没有的等级", missingInCode.map(function (r) {
         return r.levelId + "/" + r.gradeCode + "(" + r.status + ")";

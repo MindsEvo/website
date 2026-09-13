@@ -106,6 +106,53 @@ function levelFromUnit(unit) {
   return match ? match[0] : 'L0';
 }
 
+var MODULE_ID      = 'spatial-pattern';
+var MODULE_TYPE    = 'mindseeds';
+var SOURCE_GAME_ID = 'spatial-pattern-hunter';
+
+// levelId → gradeCode. L1-L3 are route-planning difficulty steps (grid size,
+// route length, distractor routes — see data.js), grounded against
+// metadata/mindseeds/spatial-pattern.json's levelMap: L1=G1 (3x3, direct),
+// L2=G2 (4x4, chain lookahead), L3=G3 (5x5, must reject a plausible-looking
+// unreachable "fake corridor"). Overlapping G2 with difference-scout is fine —
+// they measure different abilities (sequence planning vs. visual search).
+var LEVEL_GRADE = { L1: 'G1', L2: 'G2', L3: 'G3' };
+
+/**
+ * The difficultyAxes of metadata/mindseeds/spatial-pattern.json, per level.
+ * Literal object so metadata/validate.js (S3, regex text-extraction) can read
+ * it directly. Values mirror what data.js already carries per unit; this is
+ * now the validator-visible source of truth for them.
+ */
+function difficultyAxisFor(levelId) {
+  var base = {
+    L1: { object_complexity: 'concrete', dimension_complexity: 'single',
+          relation_complexity: 'direct',      language_complexity: 'question',
+          transfer_complexity: 'within-domain' },
+    L2: { object_complexity: 'concrete', dimension_complexity: 'single',
+          relation_complexity: 'chain',       language_complexity: 'question',
+          transfer_complexity: 'within-domain' },
+    L3: { object_complexity: 'concrete', dimension_complexity: 'single',
+          relation_complexity: 'constrained', language_complexity: 'question',
+          transfer_complexity: 'strategy' }
+  }[levelId];
+  return base || null;
+}
+
+/** The record's `context`. One shape, one place, so the radar never guesses. */
+function buildRadarContext(levelId, comparisonType, extra) {
+  var ctx = {
+    moduleId:        MODULE_ID,
+    moduleType:      MODULE_TYPE,
+    levelId:         levelId,
+    gradeCode:       LEVEL_GRADE[levelId] || null,
+    comparisonType:  comparisonType,
+    difficultyAxis:  difficultyAxisFor(levelId),
+    sourceGameId:    SOURCE_GAME_ID
+  };
+  return extra ? Object.assign(ctx, extra) : ctx;
+}
+
 shell.createGame({
   id: 'spatial-pattern-hunter',
   theme: { primary: '#0ea5e9', primary2: '#0284c7', bg: '#f0f9ff' },
@@ -175,30 +222,9 @@ shell.createGame({
     var levelId = levelFromUnit(unit);
     var comparisonType = unit.spatialType || 'route_planning';
 
-    var axis = unit.difficultyAxis || {
-      object_complexity: 'concrete',
-      dimension_complexity: 'single',
-      relation_complexity: levelId === 'L1' ? 'direct' : (levelId === 'L2' ? 'chain' : 'constrained'),
-      language_complexity: 'question',
-      transfer_complexity: levelId === 'L3' ? 'strategy' : 'within-domain'
-    };
-
-    return {
-      moduleId: 'spatial-pattern',
-      moduleType: 'metathinking',
-      levelId: levelId,
-      // BACKLOG: this module has no declared level → grade band yet. Its L1-L3
-      // are difficulty steps inside route planning, not school grades, so
-      // asserting a gradeCode here would fabricate an age claim the content
-      // does not support. Reporting null keeps the session on the coverage axis
-      // (which ability) while leaving it off the depth axis until
-      // metadata/metathinking/ gains a spatial-pattern module with a levelMap.
-      gradeCode: null,
-      comparisonType: comparisonType,
-      difficultyAxis: axis,
-      sourceGameId: 'spatial-pattern-hunter',
+    return buildRadarContext(levelId, comparisonType, {
       sampleMode: 'route-scout'
-    };
+    });
   },
 
   onCorrect: function (q, acts) {
