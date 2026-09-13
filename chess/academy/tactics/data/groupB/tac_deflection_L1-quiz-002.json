@@ -1,0 +1,31 @@
+{
+  "id": "tac_deflection_L1-quiz-002",
+  "tactic_id": "deflection",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_deflection_L1-002",
+  "fen": "3R4/2p2pkp/1p2p1p1/p2n4/3Q2P1/5P1P/r1q2PK1/8 w - - 0 1",
+  "concept": "识别引离目标",
+  "question_cn": "在局面中寻找引离机会时，最关键的信号是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "对方有一个棋子同时承担两项或以上防守任务（过载棋子）"
+    },
+    {
+      "key": "B",
+      "text_cn": "对方王的旁边有空格"
+    },
+    {
+      "key": "C",
+      "text_cn": "己方棋子数量多于对方"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方有孤立兵"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "寻找引离机会的核心方法：扫描对方每个棋子的防守职责，找出同时守住多个要点的棋子（过载棋子）。典型场景：一个车既守着底线防止将杀、又保护着一个后；一个后既防着叉击又守住关键格。这类棋子就是引离的理想目标。",
+  "created_at": "2026-05-10"
+}

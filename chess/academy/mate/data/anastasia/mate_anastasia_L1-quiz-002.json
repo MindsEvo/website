@@ -1,0 +1,29 @@
+{
+  "id": "mate_anastasia_L1-quiz-002",
+  "mate_id": "anastasia",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "马在安娜斯塔西亚杀中的作用",
+  "question_cn": "在安娜斯塔西亚杀中，马的主要作用是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "直接将死对方的王"
+    },
+    {
+      "key": "B",
+      "text_cn": "封住王逃往棋盘中心的逃格，配合车完成将死"
+    },
+    {
+      "key": "C",
+      "text_cn": "保护己方的车不被吃掉"
+    },
+    {
+      "key": "D",
+      "text_cn": "引诱对方的王离开安全位置"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "马在安娜斯塔西亚杀中负责封住王从边线向中心逃脱的路线。车负责沿边线将军，而马（以及己方兵或棋子）封死内侧逃格，两者缺一不可。",
+  "created_at": "2026-06-02"
+}

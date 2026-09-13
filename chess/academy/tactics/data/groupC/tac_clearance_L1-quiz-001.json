@@ -1,0 +1,31 @@
+{
+  "id": "tac_clearance_L1-quiz-001",
+  "tactic_id": "clearance",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_clearance_L1-001",
+  "fen": "1kb1q2r/1p2p3/p7/1NB5/3QP4/8/PP6/K7 w - - 0 1",
+  "concept": "腾挪战术的本质",
+  "question_cn": "腾挪（Clearance）战术的核心机制是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "把己方棋子插入对方两子之间，切断它们的协同联系"
+    },
+    {
+      "key": "B",
+      "text_cn": "主动移走己方占据某格或某条线的棋子，为另一个己方棋子清出攻击路径"
+    },
+    {
+      "key": "C",
+      "text_cn": "牺牲子力引诱对方棋子走到不利位置，再实施叉击"
+    },
+    {
+      "key": "D",
+      "text_cn": "移走己方棋子，暴露其身后棋子的攻击线（闪击）"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "腾挪的本质是「清路」：己方某个棋子占着一格或一条线，挡住了另一个己方棋子的最佳路径，通过主动移走（甚至牺牲）这个棋子，让后方棋子畅通无阻地发挥威力。本题Bd6+象腾挪离开c5，清开d4-a7斜线，Qa7#将杀。",
+  "created_at": "2026-05-20"
+}

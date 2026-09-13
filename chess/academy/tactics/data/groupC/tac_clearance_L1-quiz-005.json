@@ -1,0 +1,31 @@
+{
+  "id": "tac_clearance_L1-quiz-005",
+  "tactic_id": "clearance",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_clearance_L1-004",
+  "fen": "r3k2r/pp2bppp/1np5/q4P1b/3P4/1QPB4/P2N2PP/R1B2RK1 w kq - 0 1",
+  "concept": "识别腾挪机会的思路",
+  "question_cn": "实战中发现腾挪机会，最关键的第一个问题是？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "己方哪个棋子当前正在被对方攻击？"
+    },
+    {
+      "key": "B",
+      "text_cn": "己方哪个强力棋子（后/车/马）被己方另一个棋子「挡住了」，如果挡路子移走，它能做什么？"
+    },
+    {
+      "key": "C",
+      "text_cn": "对方哪个棋子价值最高、防护最弱？"
+    },
+    {
+      "key": "D",
+      "text_cn": "己方有没有可以直接将军的棋步？"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "腾挪的识别从「被堵住的棋子」出发：先找己方某个棋子「如果没有挡路子会发挥什么威力」——将杀、捉双、升变或占据关键格——再看挡路子能否以将军、捉子等强制手段移走。本题白兵f5挡着白车进f5攻击黑象h5，推f6腾挪后Rf5→Rxh5赢象。",
+  "created_at": "2026-05-20"
+}

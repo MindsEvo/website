@@ -1,0 +1,19 @@
+{
+  "id": "tac_doubleCheck_L1-quiz-004",
+  "tactic_id": "doubleCheck",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_doubleCheck_L1-001",
+  "fen": "rn1q1r2/pp3pk1/5n1p/3P4/2P3b1/1P1B1R2/PB3PPP/R2Q2K1 w - - 0 1",
+  "concept": "双将的战术价值",
+  "question_cn": "双将为什么在战术上特别有价值？",
+  "options": [
+    {"key": "A", "text_cn": "双将必然直接导致将死"},
+    {"key": "B", "text_cn": "防方只能逃王，无法同时防守其他棋子，攻方完全掌握主动"},
+    {"key": "C", "text_cn": "双将可以一次移动两个棋子"},
+    {"key": "D", "text_cn": "双将之后对方必须认输"}
+  ],
+  "correct": "B",
+  "explanation_cn": "双将的价值在于：防方被迫逃王，失去一切防守选择。攻方可以选择最强的落点，不受干扰。这往往让攻方获得决定性优势或直接强制将死。",
+  "created_at": "2026-05-26"
+}

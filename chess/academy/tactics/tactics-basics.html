@@ -332,12 +332,45 @@
       margin-top: 8px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 34px 10px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
+      padding: 10px;
       background: #fafbfd;
     }
+
+    .quiz-question {
+      background: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    .quiz-question.empty {
+      text-align: center;
+      color: #94a3b8;
+      font-weight: 400;
+      padding: 24px 10px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .quiz-option-btn {
+      text-align: left;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #2c3e50;
+      background: #ecf0f1;
+      border: 2px solid #bdc3c7;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .quiz-option-btn:hover:not(:disabled) { background: #d5dbdb; border-color: #85929e; }
+    .quiz-option-btn:disabled { cursor: default; }
+    .quiz-option-btn.correct { background: #d5f4e6; border-color: #27ae60; color: #27ae60; font-weight: 700; }
+    .quiz-option-btn.wrong { background: #fadbd8; border-color: #e74c3c; color: #e74c3c; font-weight: 700; }
 
     .solution-box h4, .explanation-box h4 {
       font-size: 14px;
@@ -490,24 +523,27 @@
         <div class="panel panel-placeholder">
           <h3>问答练习</h3>
           <div class="group-chips">
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#c0392b">战术A组</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="A">
+              <button class="group-chip" id="quizA" data-quiz-group="A" style="background:#c0392b">战术A组</button>
+              <div class="dropdown-menu" id="menuQuizA"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#1a5276">战术B组</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="B">
+              <button class="group-chip" id="quizB" data-quiz-group="B" style="background:#1a5276">战术B组</button>
+              <div class="dropdown-menu" id="menuQuizB"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#117a65">战术C组</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="C">
+              <button class="group-chip" id="quizC" data-quiz-group="C" style="background:#117a65">战术C组</button>
+              <div class="dropdown-menu" id="menuQuizC"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#6e2fa0">战术D组</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="D">
+              <button class="group-chip" id="quizD" data-quiz-group="D" style="background:#6e2fa0">战术D组</button>
+              <div class="dropdown-menu" id="menuQuizD"></div>
             </div>
           </div>
-          <div class="quiz-placeholder">请选择问题开始答题</div>
+          <div class="quiz-placeholder">
+            <div class="quiz-question empty" id="quizQuestion">请选择问题开始答题</div>
+            <div class="quiz-options" id="quizOptions"></div>
+          </div>
         </div>
       </div>
 
@@ -551,6 +587,14 @@
         { key: 'D', label: '战术D组', folder: 'groupD', enabled: true }
       ];
 
+      // 问答练习: group → tactic → quiz item (self-contained json, fen included).
+      var QUIZ_GROUP_DEFS = [
+        { key: 'A', label: '战术A组', folder: 'groupA', enabled: true },
+        { key: 'B', label: '战术B组', folder: 'groupB', enabled: true },
+        { key: 'C', label: '战术C组', folder: 'groupC', enabled: true },
+        { key: 'D', label: '战术D组', folder: 'groupD', enabled: true }
+      ];
+
       // ── DOM refs ──────────────────────────────────────
       var boardEl = document.getElementById('board');
       var arrowsEl = document.getElementById('boardArrows');
@@ -558,6 +602,8 @@
       var fileBottom = document.getElementById('fileBottom');
       var popupBox = document.getElementById('popupBox');
       var playStatus = document.getElementById('playStatus');
+      var quizQuestion = document.getElementById('quizQuestion');
+      var quizOptions = document.getElementById('quizOptions');
       var solutionLines = document.getElementById('solutionLines');
       var explanationText = document.getElementById('explanationText');
       var btnExplainVoice = document.getElementById('btnExplainVoice');
@@ -1274,6 +1320,159 @@
         });
       }
 
+      // ── 问答练习 (Q&A quiz) ─────────────────────────────
+      // Source: tactics_page.py `_on_quiz_selected`/`_on_qa_answer` — loads the item's FEN to the
+      // board (static position, no move timeline/popup/solution-lines), retry-until-correct answer
+      // mechanic (wrong pick only disables/reddens itself, others stay clickable; correct pick greens
+      // + disables everything). UNLIKE endgame's quiz: the explanation_cn IS spoken aloud on a correct
+      // answer (endgame never uses it at all) — voice text differs too ("再想想，重新选择一下。" vs
+      // endgame's "再试一下。"). Each quiz json is self-contained (fen/question/options/correct/explanation).
+      var quizManifestCache = {};
+      var currentQuizAnswer = null;
+      var currentQuizExplanation = '';
+
+      function findQuizItem(manifest, itemId) {
+        for (var i = 0; i < manifest.categories.length; i++) {
+          var cat = manifest.categories[i];
+          for (var j = 0; j < cat.items.length; j++) {
+            if (cat.items[j].id === itemId) return cat.items[j];
+          }
+        }
+        return null;
+      }
+
+      function renderQuizDropdownMenu(groupDef, manifest, menuEl) {
+        var html = '';
+        manifest.categories.forEach(function (cat) {
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          html += '<div class="submenu">';
+          if (cat.items.length) {
+            cat.items.forEach(function (item) {
+              html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            });
+          } else {
+            html += '<div class="submenu-item disabled">暂无题目</div>';
+          }
+          html += '</div></div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item[data-item]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadQuizItem(groupDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+        menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            if (e.target.closest('.submenu-item')) return;
+            e.stopPropagation();
+            var wasOpen = row.classList.contains('open');
+            menuEl.querySelectorAll('.menu-row').forEach(function (r) { r.classList.remove('open'); });
+            if (!wasOpen) row.classList.add('open');
+          });
+        });
+      }
+
+      function selectQuizGroup(groupDef) {
+        var menuEl = document.getElementById('menuQuiz' + groupDef.key);
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (!groupDef.enabled) {
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + groupDef.label + '"暂未上线，敬请期待</div>';
+          menuEl.classList.add('open');
+          return;
+        }
+        if (quizManifestCache[groupDef.key]) {
+          renderQuizDropdownMenu(groupDef, quizManifestCache[groupDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + groupDef.folder + '/quiz-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            quizManifestCache[groupDef.key] = manifest;
+            renderQuizDropdownMenu(groupDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadQuizItem(groupDef, manifest, itemId) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var item = findQuizItem(manifest, itemId);
+        if (!item) return;
+        fetch('./data/' + groupDef.folder + '/' + itemId + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (qdata) {
+            popupBox.classList.add('hidden');
+            state.anno = null;
+            state.moveMetas = [];
+            state.states = [];
+            solutionLines.innerHTML = '请选择棋局以显示棋谱';
+            explanationText.textContent = '请选择棋局以显示解说内容';
+            if (qdata.fen) {
+              renderBoardMatrix(parseFen(qdata.fen));
+              clearOverlays();
+            }
+            playStatus.textContent = '问答练习：' + (qdata.concept || item.label);
+            showQuizQuestion(qdata);
+          })
+          .catch(function (e) {
+            quizQuestion.textContent = '题目加载失败: ' + e.message;
+            quizQuestion.classList.add('empty');
+            quizOptions.innerHTML = '';
+          });
+      }
+
+      function showQuizQuestion(qdata) {
+        currentQuizAnswer = qdata.correct;
+        currentQuizExplanation = qdata.explanation_cn || '';
+        quizQuestion.classList.remove('empty');
+        quizQuestion.textContent = qdata.question_cn || '';
+        var html = '';
+        (qdata.options || []).forEach(function (opt) {
+          html += '<button type="button" class="quiz-option-btn" data-key="' + opt.key + '">' +
+            opt.key + '. ' + opt.text_cn + '</button>';
+        });
+        quizOptions.innerHTML = html;
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () { handleQuizAnswer(btn); });
+        });
+        if (window.speechSynthesis && qdata.question_cn) {
+          var u = new SpeechSynthesisUtterance(qdata.question_cn);
+          u.lang = 'zh-CN';
+          window.speechSynthesis.speak(u);
+        }
+      }
+
+      function handleQuizAnswer(btn) {
+        var selectedKey = btn.dataset.key;
+        if (selectedKey === currentQuizAnswer) {
+          quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (b) { b.disabled = true; });
+          btn.classList.add('correct');
+          if (window.speechSynthesis) {
+            var u = new SpeechSynthesisUtterance('答对了！' + currentQuizExplanation);
+            u.lang = 'zh-CN';
+            window.speechSynthesis.speak(u);
+          }
+        } else {
+          btn.disabled = true;
+          btn.classList.add('wrong');
+          if (window.speechSynthesis) {
+            var u2 = new SpeechSynthesisUtterance('再想想，重新选择一下。');
+            u2.lang = 'zh-CN';
+            window.speechSynthesis.speak(u2);
+          }
+        }
+      }
+
       // ── Controls ──────────────────────────────────────
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
@@ -1285,19 +1484,9 @@
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticeGroup(groupDef); });
       });
 
-      // 问答练习 is not implemented yet — its buttons just show a "敬请期待"
-      // placeholder in the same dropdown style used for locked groups.
-      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap:not([data-practice-group])').forEach(function (wrap) {
-        var btn = wrap.querySelector('.group-chip');
-        var menuEl = wrap.querySelector('.dropdown-menu');
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var wasOpen = menuEl.classList.contains('open');
-          closeAllMenus();
-          if (wasOpen) return;
-          menuEl.innerHTML = '<div class="menu-row disabled">"' + btn.textContent + '"功能开发中，敬请期待</div>';
-          menuEl.classList.add('open');
-        });
+      QUIZ_GROUP_DEFS.forEach(function (groupDef) {
+        var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });

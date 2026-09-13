@@ -1,0 +1,31 @@
+{
+  "id": "tac_interference_L1-quiz-001",
+  "tactic_id": "interference",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_interference_L1-001",
+  "fen": "2k1r3/pp2q3/3Q1p2/4n1p1/2p2p2/P4P2/1PP3PP/2KR1N2 b - - 0 1",
+  "concept": "拦截战术的本质",
+  "question_cn": "拦截（Interference）战术的核心机制是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "移走己方棋子，暴露其身后另一个棋子的攻击线"
+    },
+    {
+      "key": "B",
+      "text_cn": "将己方一个棋子插入对方两子之间的联系线上，破坏它们的协同防守"
+    },
+    {
+      "key": "C",
+      "text_cn": "牺牲棋子把对方强力子引到不利位置，再实施叉击或将杀"
+    },
+    {
+      "key": "D",
+      "text_cn": "攻击对方的保护者，使目标棋子失去防护后直接吃掉"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "拦截的本质是「断联」：把己方棋子强行插入对方两个协作子之间的横线、纵线或斜线，让它们无法相互支援。本题黑马Nd3+插入d列，精确切断Qd6与Rd1的联系，强迫Rxd3，白车离开d列，黑方得势。",
+  "created_at": "2026-05-18"
+}

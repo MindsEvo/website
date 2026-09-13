@@ -1,0 +1,108 @@
+{
+    "categories":  [
+                       {
+                           "label":  "透视攻击",
+                           "key":  "xRayAttack",
+                           "items":  [
+                                         {
+                                             "id":  "tac_xRayAttack_L1-quiz-001",
+                                             "label":  "透视攻击的定义"
+                                         },
+                                         {
+                                             "id":  "tac_xRayAttack_L1-quiz-002",
+                                             "label":  "透视攻击的适用棋子"
+                                         },
+                                         {
+                                             "id":  "tac_xRayAttack_L1-quiz-003",
+                                             "label":  "透视攻击与牵制的区别"
+                                         },
+                                         {
+                                             "id":  "tac_xRayAttack_L1-quiz-004",
+                                             "label":  "透视攻击的常见用途"
+                                         },
+                                         {
+                                             "id":  "tac_xRayAttack_L1-quiz-005",
+                                             "label":  "透视攻击的防御方法"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "拦截",
+                           "key":  "interference",
+                           "items":  [
+                                         {
+                                             "id":  "tac_interference_L1-quiz-001",
+                                             "label":  "拦截战术的本质"
+                                         },
+                                         {
+                                             "id":  "tac_interference_L1-quiz-002",
+                                             "label":  "拦截的攻击对象"
+                                         },
+                                         {
+                                             "id":  "tac_interference_L1-quiz-003",
+                                             "label":  "拦截成立的关键条件"
+                                         },
+                                         {
+                                             "id":  "tac_interference_L1-quiz-004",
+                                             "label":  "拦截 vs 引离的本质区别"
+                                         },
+                                         {
+                                             "id":  "tac_interference_L1-quiz-005",
+                                             "label":  "识别拦截机会的思路"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "中间招",
+                           "key":  "intermezzo",
+                           "items":  [
+                                         {
+                                             "id":  "tac_intermezzo_L1-quiz-001",
+                                             "label":  "中间招的本质"
+                                         },
+                                         {
+                                             "id":  "tac_intermezzo_L1-quiz-002",
+                                             "label":  "挂子与中间招的关系"
+                                         },
+                                         {
+                                             "id":  "tac_intermezzo_L1-quiz-003",
+                                             "label":  "中间招的触发条件"
+                                         },
+                                         {
+                                             "id":  "tac_intermezzo_L1-quiz-004",
+                                             "label":  "中间招 vs 直接换子"
+                                         },
+                                         {
+                                             "id":  "tac_intermezzo_L1-quiz-005",
+                                             "label":  "识别中间招的三步思路"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "腾挪",
+                           "key":  "clearance",
+                           "items":  [
+                                         {
+                                             "id":  "tac_clearance_L1-quiz-001",
+                                             "label":  "腾挪战术的本质"
+                                         },
+                                         {
+                                             "id":  "tac_clearance_L1-quiz-002",
+                                             "label":  "腾挪 vs 闪击的区别"
+                                         },
+                                         {
+                                             "id":  "tac_clearance_L1-quiz-003",
+                                             "label":  "腾挪的强制性——牺牲腾挪"
+                                         },
+                                         {
+                                             "id":  "tac_clearance_L1-quiz-004",
+                                             "label":  "兵升变腾挪"
+                                         },
+                                         {
+                                             "id":  "tac_clearance_L1-quiz-005",
+                                             "label":  "识别腾挪机会的思路"
+                                         }
+                                     ]
+                       }
+                   ]
+}

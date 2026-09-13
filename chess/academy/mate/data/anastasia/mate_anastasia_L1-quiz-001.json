@@ -1,0 +1,29 @@
+{
+  "id": "mate_anastasia_L1-quiz-001",
+  "mate_id": "anastasia",
+  "difficulty": "L1",
+  "sequence": 1,
+  "concept": "安娜斯塔西亚杀的定义",
+  "question_cn": "什么是安娜斯塔西亚杀（Anastasia's Mate）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "两个象从对角线交叉将死角落的王"
+    },
+    {
+      "key": "B",
+      "text_cn": "双车并列将死底线的王"
+    },
+    {
+      "key": "C",
+      "text_cn": "车和马配合，将王困在边线，马封住内侧逃格，车沿边线将死"
+    },
+    {
+      "key": "D",
+      "text_cn": "后在对角线将死被己方棋子封住的王"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "安娜斯塔西亚杀的核心特征：王被困在边线（h线或a线），马封住王的内侧逃格，车沿边线发动将死。兵或己方棋子通常协助封住其余逃格。",
+  "created_at": "2026-06-02"
+}

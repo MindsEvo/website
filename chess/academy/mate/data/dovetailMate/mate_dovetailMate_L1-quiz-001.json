@@ -1,0 +1,29 @@
+{
+  "id": "mate_dovetailMate_L1-quiz-001",
+  "mate_id": "dovetailMate",
+  "difficulty": "L1",
+  "sequence": 1,
+  "concept": "燕尾杀的定义",
+  "question_cn": "什么是燕尾杀（Dovetail Mate）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "车沿底线将死被兵封住的王"
+    },
+    {
+      "key": "B",
+      "text_cn": "后在对角线将死王，王的两个斜向逃格被己方棋子封住"
+    },
+    {
+      "key": "C",
+      "text_cn": "马将军，王被己方棋子堵死所有逃格"
+    },
+    {
+      "key": "D",
+      "text_cn": "双后联合将死对方王"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "燕尾杀的特征是后在对角线给王将军，而王斜向的两个逃格被己方棋子封住，形状像燕子的尾巴。王通常夹在己方两个棋子之间，无路可逃。",
+  "created_at": "2026-06-01"
+}

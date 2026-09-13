@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-001",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_discoveredAttack_L1-001",
+  "fen": "4q2k/6p1/8/4B3/4R3/8/5K2/8 w - - 0 1",
+  "concept": "闪击的本质",
+  "question_cn": "闪击战术的核心机制是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "一步棋同时攻击对方的两个棋子"
+    },
+    {
+      "key": "B",
+      "text_cn": "移走己方一个棋子，暴露其身后另一个棋子的攻击线，使被遮挡的棋子突然威胁对方目标"
+    },
+    {
+      "key": "C",
+      "text_cn": "用一个棋子吃掉对方的保护者，让目标棋子失去防护"
+    },
+    {
+      "key": "D",
+      "text_cn": "牺牲棋子引诱对方棋子走到危险格，再利用叉将或将杀收割"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "闪击：前面的棋子一动，后方棋子的攻击线豁然贯通。本题Bxg7+象走开，车e4立即对准e8黑后——这就是闪击的全部逻辑。",
+  "created_at": "2026-05-17"
+}

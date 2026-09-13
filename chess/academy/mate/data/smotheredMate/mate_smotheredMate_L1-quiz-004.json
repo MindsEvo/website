@@ -1,0 +1,29 @@
+{
+  "id": "mate_smotheredMate_L1-quiz-004",
+  "mate_id": "smotheredMate",
+  "difficulty": "L1",
+  "sequence": 4,
+  "concept": "安德森闷杀的特点",
+  "question_cn": "安德森闷杀（Anderssen's Mate）与菲利道尔闷杀最大的不同是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "安德森闷杀由马单独完成，不需要配合其他棋子"
+    },
+    {
+      "key": "B",
+      "text_cn": "安德森闷杀使用象和车的配合，而非马踏f7"
+    },
+    {
+      "key": "C",
+      "text_cn": "安德森闷杀只能在残局中出现"
+    },
+    {
+      "key": "D",
+      "text_cn": "安德森闷杀需要双车同时进攻"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "安德森闷杀是象后（或象车）配合的闷杀：通过弃后、弃象等手段把王引到角落，再用车沿h线或底线将死。与菲利道尔闷杀的马踏f7不同，安德森闷杀的终结棋子是车或后。",
+  "created_at": "2026-05-30"
+}

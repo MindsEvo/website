@@ -1,0 +1,25 @@
+{
+    "items":  [
+                  {
+                      "id":  "mate_dovetailMate_L1-quiz-001",
+                      "label":  "燕尾杀的定义"
+                  },
+                  {
+                      "id":  "mate_dovetailMate_L1-quiz-002",
+                      "label":  "燕尾杀成立的关键条件"
+                  },
+                  {
+                      "id":  "mate_dovetailMate_L1-quiz-003",
+                      "label":  "白方第一步的作用"
+                  },
+                  {
+                      "id":  "mate_dovetailMate_L1-quiz-004",
+                      "label":  "燕尾杀与闷杀的区别"
+                  },
+                  {
+                      "id":  "mate_dovetailMate_L1-quiz-005",
+                      "label":  "如何防范燕尾杀"
+                  }
+              ],
+    "label":  "燕尾杀"
+}

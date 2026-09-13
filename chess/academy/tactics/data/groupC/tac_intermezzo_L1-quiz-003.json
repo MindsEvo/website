@@ -1,0 +1,31 @@
+{
+  "id": "tac_intermezzo_L1-quiz-003",
+  "tactic_id": "intermezzo",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_intermezzo_L1-004",
+  "fen": "4r1k1/2q2pp1/pp3r2/2pbN2p/3p4/P2P1PQ1/1PP3PP/1K1R3R w",
+  "concept": "中间招的触发条件",
+  "question_cn": "下列哪种情况最适合考虑走中间招？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "己方刚刚吃掉对方一子，对方按顺序打算吃回——此时寻找插入一步将军或捉挂子的机会"
+    },
+    {
+      "key": "B",
+      "text_cn": "双方子力均已离开开放线，局面完全封闭"
+    },
+    {
+      "key": "C",
+      "text_cn": "己方子力全部有保护，对方无挂子，无将军机会"
+    },
+    {
+      "key": "D",
+      "text_cn": "己方王已解将，对方无任何弱点"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "中间招最佳触发条件：换子序列「该对方吃回」的那一拍——此时对方预期自己会安全吃回，警惕性最低。此时若有将军、捉挂子（对方有无根子）、捉悬空子等强迫步可走，就可以插入中间招，打乱对方节奏，净多赚先手收益。",
+  "created_at": "2026-05-21"
+}

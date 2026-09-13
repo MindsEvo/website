@@ -1,0 +1,19 @@
+{
+  "id": "tac_trappedPiece_L1-quiz-003",
+  "tactic_id": "trappedPiece",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_trappedPiece_L1-004",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "如何识别困子",
+  "question_cn": "判断一个棋子是否是困子，最关键的检查方法是什么？",
+  "options": [
+    {"key": "A", "text_cn": "看它是否在棋盘边缘"},
+    {"key": "B", "text_cn": "逐一检查它所有的合法移动目标格，看是否全部被对方控制或封死"},
+    {"key": "C", "text_cn": "看它的价值是否比攻击它的棋子低"},
+    {"key": "D", "text_cn": "看它是否被将军"}
+  ],
+  "correct": "B",
+  "explanation_cn": "识别困子的方法：逐一列出该棋子可以走到的所有格子，检查每个格子是否被对方攻击、被己方棋子占据或被兵封堵。如果所有目标格都不安全，这个棋子就是困子。角落和棋盘边缘会减少棋子的活动空间，是困子的高发地带。",
+  "created_at": "2026-05-27"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tac_doubleCheck_L1-quiz-002",
+  "tactic_id": "doubleCheck",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_doubleCheck_L1-005",
+  "fen": "2b1k2r/2rp2pp/p4p2/1p1n4/3bN2B/8/PP3PPP/4R1K1 w k - 0 1",
+  "concept": "双将的唯一应对",
+  "question_cn": "遭遇双将时，被将方唯一合法的应对方式是什么？",
+  "options": [
+    {"key": "A", "text_cn": "用棋子挡住其中一个将军"},
+    {"key": "B", "text_cn": "吃掉其中一个将军子"},
+    {"key": "C", "text_cn": "移动王，只能逃王"},
+    {"key": "D", "text_cn": "挡将或吃将军子均可"}
+  ],
+  "correct": "C",
+  "explanation_cn": "双将时只能逃王！一步棋无法同时阻挡两路将军，也无法同时吃掉两个攻击子。因此移王是唯一出路——这正是双将威力强大的核心原因。",
+  "created_at": "2026-05-26"
+}

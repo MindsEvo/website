@@ -1,0 +1,29 @@
+{
+  "id": "mate_anastasia_L1-quiz-004",
+  "mate_id": "anastasia",
+  "difficulty": "L1",
+  "sequence": 4,
+  "concept": "安娜斯塔西亚杀成立的条件",
+  "question_cn": "安娜斯塔西亚杀成立，以下哪个条件最关键？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王必须在棋盘角落（a1、a8、h1或h8）"
+    },
+    {
+      "key": "B",
+      "text_cn": "王在边线，马封住内侧逃格，边线上无其他逃路"
+    },
+    {
+      "key": "C",
+      "text_cn": "攻方必须有两个车"
+    },
+    {
+      "key": "D",
+      "text_cn": "王的两侧都有己方棋子保护"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "安娜斯塔西亚杀不要求王在角落，只要王在边线（h线或a线）即可。关键是：马封住王逃向中心的路（如g8、g6），边线上其余格子被车或兵封死，王无处可去。",
+  "created_at": "2026-06-02"
+}

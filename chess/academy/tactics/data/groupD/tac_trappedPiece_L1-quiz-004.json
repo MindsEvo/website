@@ -1,0 +1,19 @@
+{
+  "id": "tac_trappedPiece_L1-quiz-004",
+  "tactic_id": "trappedPiece",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_trappedPiece_L1-008",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "利用困子的方法",
+  "question_cn": "发现对方有困子时，最有效的进攻策略是什么？",
+  "options": [
+    {"key": "A", "text_cn": "立刻将军，迫使对方认输"},
+    {"key": "B", "text_cn": "用低价值棋子（兵或小子）向困子发起攻击，以小换大"},
+    {"key": "C", "text_cn": "把自己所有棋子都移向困子"},
+    {"key": "D", "text_cn": "等待对方自己移走困子"}
+  ],
+  "correct": "B",
+  "explanation_cn": "利用困子的核心思路：用比困子价值更低的棋子（通常是兵）去攻击它，迫使对方要么丢子、要么以大换小。例如用兵攻击被困的象，迫使象吃兵或被吃——无论哪种结果白方都赚了。动作要快，在对方找到逃路之前兑现优势。",
+  "created_at": "2026-05-27"
+}

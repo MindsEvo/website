@@ -1,0 +1,19 @@
+{
+  "id": "tac_fork_L1-quiz-005",
+  "tactic_id": "fork",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_fork_L1-006",
+  "fen": "R7/3p4/p1p4b/kp6/4n1r1/PP1NP1P1/2B2K1P/8 w - - 0 1",
+  "concept": "王叉的条件",
+  "question_cn": "王也可以实施捉双（王叉）。王叉成立的前提条件是什么？",
+  "options": [
+    {"key": "A", "text_cn": "王走到目标格时，目标格本身必须是安全的（不受对方攻击）"},
+    {"key": "B", "text_cn": "王可以走到任意格子实施攻击"},
+    {"key": "C", "text_cn": "王叉只能在残局使用"},
+    {"key": "D", "text_cn": "王叉需要配合车才能生效"}
+  ],
+  "correct": "A",
+  "explanation_cn": "王是最重要的棋子，绝不能走到被对方攻击的格子。王叉的前提是：目标格（王要走到的格子）必须安全，且该格同时攻击到两个对方棋子。王在残局中活跃起来后，王叉是重要的得子手段。",
+  "created_at": "2026-05-05"
+}

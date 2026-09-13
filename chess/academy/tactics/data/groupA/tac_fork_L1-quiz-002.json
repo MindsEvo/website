@@ -1,0 +1,19 @@
+{
+  "id": "tac_fork_L1-quiz-002",
+  "tactic_id": "fork",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_fork_L1-001",
+  "fen": "r4rk1/ppp2ppp/8/4Q3/4n3/8/PPP2PPP/RNB2RK1 w - - 0 1",
+  "concept": "捉双的最佳棋子",
+  "question_cn": "哪种棋子最擅长实施捉双，因为它的攻击路线特殊且难以预判？",
+  "options": [
+    {"key": "A", "text_cn": "后——因为走位最多"},
+    {"key": "B", "text_cn": "车——因为可以横竖攻击"},
+    {"key": "C", "text_cn": "马——因为跳跃式攻击难以预判"},
+    {"key": "D", "text_cn": "兵——因为数量多"}
+  ],
+  "correct": "C",
+  "explanation_cn": "马的L形跳法独特，攻击到的格子无法用直线或斜线提前封锁。马叉是最常见、最难防的捉双战术，在所有级别的对局中频繁出现。",
+  "created_at": "2026-05-05"
+}

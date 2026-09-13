@@ -1,0 +1,19 @@
+{
+  "id": "tac_doubleCheck_L1-quiz-001",
+  "tactic_id": "doubleCheck",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_doubleCheck_L1-003",
+  "fen": "1r3rk1/p1N2p2/1p2p1P1/8/8/2Q5/PP3q2/2K3Rb w - - 0 1",
+  "concept": "双将的定义",
+  "question_cn": "什么是双将（Double Check）？",
+  "options": [
+    {"key": "A", "text_cn": "一个棋子连续将军两次"},
+    {"key": "B", "text_cn": "两个棋子同时将军，被将方只能逃王"},
+    {"key": "C", "text_cn": "将军的同时攻击对方两个棋子"},
+    {"key": "D", "text_cn": "两步棋先后形成的将军"}
+  ],
+  "correct": "B",
+  "explanation_cn": "双将是两个棋子同时将军的战术。被将方不可能用一步棋同时阻挡两路攻击，因此只能逃王。这使双将成为极难防守的战术手段。",
+  "created_at": "2026-05-26"
+}

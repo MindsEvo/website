@@ -1,0 +1,31 @@
+{
+  "id": "tac_zugzwang_L1-quiz-004",
+  "tactic_id": "zugzwang",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_zugzwang_L1-004",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "制造逼着的方法",
+  "question_cn": "制造逼着最常用的技术手段是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "尽快换掉对方所有棋子，只剩下王"
+    },
+    {
+      "key": "B",
+      "text_cn": "通过等招（Triangulation）或走消耗步，把走棋权转移给对方"
+    },
+    {
+      "key": "C",
+      "text_cn": "把己方王移到棋盘中心，控制尽量多的格子"
+    },
+    {
+      "key": "D",
+      "text_cn": "用兵堵死对方所有兵，形成完全封锁"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "制造逼着的关键是传递走棋权——让对方而非自己面临被迫走棋的局面。等招（三角机动）是最常见手段：王走三步绕个三角形回到原格，相当于消耗一步，把走棋权交给对方，对方随即陷入逼着。",
+  "created_at": "2026-05-29"
+}

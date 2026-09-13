@@ -1,0 +1,31 @@
+{
+  "id": "tac_removalOfTheDefender_L1-quiz-005",
+  "tactic_id": "removalOfTheDefender",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_removalOfTheDefender_L1-007",
+  "fen": "r3k1nr/p5b1/2qpp2p/1Q2n1p1/3N1p2/2P5/PP4PP/RNB2RK1 b kq - 0 1",
+  "concept": "消除保护与其他战术的区别",
+  "question_cn": "以下关于消除保护战术的说法，哪一条是错误的？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "消除保护与引离都是「先攻防守者「的思路，但目的不同：消除保护是为了吃掉被保护的目标，引离是利用防守者离开后的漏洞"
+    },
+    {
+      "key": "B",
+      "text_cn": "消除保护后，目标棋子必须立刻被吃掉，否则战术就失败了"
+    },
+    {
+      "key": "C",
+      "text_cn": "消除保护可以和将杀组合：先消除守王的棋子，再实施将杀"
+    },
+    {
+      "key": "D",
+      "text_cn": "防范消除保护的方法之一，是用多个棋子共同保护重要目标，避免单点防守"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "B是错误说法。消除保护之后，目标不一定必须「立刻「被吃——有时消除保护创造的是威胁（Threat），对方必须应对这个威胁，否则下一步才被吃。这属于「含威胁的消除保护「，同样有效。重要的是：目标棋子在战略上已失去保护，己方可以在最有利的时机兑现这个优势。",
+  "created_at": "2026-05-11"
+}

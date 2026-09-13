@@ -1,0 +1,29 @@
+{
+  "id": "mate_dovetailMate_L1-quiz-005",
+  "mate_id": "dovetailMate",
+  "difficulty": "L1",
+  "sequence": 5,
+  "concept": "如何防范燕尾杀",
+  "question_cn": "为避免被燕尾杀，以下哪种做法最有效？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "把王推进到棋盘中心"
+    },
+    {
+      "key": "B",
+      "text_cn": "在王的斜向逃格旁放置己方棋子，增加保护"
+    },
+    {
+      "key": "C",
+      "text_cn": "确保王的斜向逃格不被己方棋子占据，保留对角线逃路"
+    },
+    {
+      "key": "D",
+      "text_cn": "换掉对方的后，消除威胁"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "燕尾杀依赖己方棋子封死王的斜向逃格。只要保证王的斜向逃格不被己方棋子堵住，黑后就无法完成燕尾杀。将己方棋子放在逃格旁保护反而可能堵死逃路，要注意区分。",
+  "created_at": "2026-06-01"
+}

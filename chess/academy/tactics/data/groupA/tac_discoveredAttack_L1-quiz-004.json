@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-004",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_discoveredAttack_L1-008",
+  "fen": "r1b1qrk1/1p3ppp/p1p5/3Nb3/5N2/P7/1P4PQ/K1R1R3 w - - 0 1",
+  "concept": "闪击将军与普通闪击的区别",
+  "question_cn": "「闪击将军」比「普通闪击」威力更大的原因是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "闪击将军只能由马来执行，马的灵活性更高"
+    },
+    {
+      "key": "B",
+      "text_cn": "闪击将军时，对方必须先应将，无暇顾及被后方子攻击的目标，因此往往必失子甚至被杀"
+    },
+    {
+      "key": "C",
+      "text_cn": "普通闪击只能赢一个子，闪击将军可以赢两个子"
+    },
+    {
+      "key": "D",
+      "text_cn": "闪击将军需要两步才能完成，所以比普通闪击更安全"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "闪击将军的威力在于「强制性」：对方被将军，必须在当下回合应将，完全无暇顾及后方子对其他目标的攻击。本题Ng6攻后兼威胁Ne7将杀，对方无法两全，这是普通闪击（仅攻击一个无将军威胁的目标）所不具备的强制性。",
+  "created_at": "2026-05-17"
+}

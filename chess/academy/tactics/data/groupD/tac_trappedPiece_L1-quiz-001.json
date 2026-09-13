@@ -1,0 +1,19 @@
+{
+  "id": "tac_trappedPiece_L1-quiz-001",
+  "tactic_id": "trappedPiece",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_trappedPiece_L1-001",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "困子的定义",
+  "question_cn": "什么是困子（Trapped Piece）战术？",
+  "options": [
+    {"key": "A", "text_cn": "一个棋子被对方棋子包围，无论移到哪里都会被吃掉或损失重大"},
+    {"key": "B", "text_cn": "一个棋子同时攻击对方两个目标"},
+    {"key": "C", "text_cn": "一个棋子无法移动，但还没有被攻击"},
+    {"key": "D", "text_cn": "一个棋子穿越对方棋子攻击后方目标"}
+  ],
+  "correct": "A",
+  "explanation_cn": "困子是指某个棋子活动空间极度受限，无论走到哪里都难逃被吃的命运，或只能以高换低蒙受损失。困子的本质是：棋子的所有逃跑路线都被对方封堵。",
+  "created_at": "2026-05-27"
+}

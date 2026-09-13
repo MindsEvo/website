@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-002",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_discoveredAttack_L1-002",
+  "fen": "7k/7p/4qp2/4N3/3PR3/8/8/6K1 w - - 0 1",
+  "concept": "闪击的两个角色",
+  "question_cn": "闪击中两个己方棋子各扮演什么角色？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "前面的棋子负责将杀，后面的棋子负责守护"
+    },
+    {
+      "key": "B",
+      "text_cn": "前面的棋子移动（通常兼做别的威胁），后面的棋子趁机发起被解放的攻击"
+    },
+    {
+      "key": "C",
+      "text_cn": "两个棋子同时移动，形成双将"
+    },
+    {
+      "key": "D",
+      "text_cn": "前面的棋子牵制对方，后面的棋子换子得利"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "闪击有两个角色：移动子（本题马Ng6+，走开的同时将军）和后方子（车e4，马走后立即攻击e6黑后）。移动子越有威胁，对方越难兼顾后方子的攻击。",
+  "created_at": "2026-05-17"
+}

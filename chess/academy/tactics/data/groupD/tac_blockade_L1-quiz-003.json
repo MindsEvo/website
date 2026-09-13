@@ -1,0 +1,31 @@
+{
+  "id": "tac_blockade_L1-quiz-003",
+  "tactic_id": "blockade",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_blockade_L1-005",
+  "fen": "2b2k1p/1P1n1B2/7P/pp1r1R2/p1P5/6PK/p4P2/7N w KQkq - 0 1",
+  "concept": "阻塞的主要目标",
+  "question_cn": "阻塞战术最常见的战略目标是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "阻止对方国王进入中心，防止其参与残局"
+    },
+    {
+      "key": "B",
+      "text_cn": "阻止对方通路兵升变，或封锁对方重子的开放列/行"
+    },
+    {
+      "key": "C",
+      "text_cn": "阻止对方象展开到长斜线"
+    },
+    {
+      "key": "D",
+      "text_cn": "阻止对方马跳入己方阵地"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "阻塞最核心的两类目标：①阻止通路兵（passed pawn）推进升变——这是残局中最常见的阻塞；②封锁对方车/后的开放列或第七/八横线，压制其活动能力。本题白兵b7已到第七行，黑方阻塞b8格正是为了防止白兵升变。",
+  "created_at": "2026-05-18"
+}

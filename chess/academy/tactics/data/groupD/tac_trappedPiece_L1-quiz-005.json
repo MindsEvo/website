@@ -1,0 +1,19 @@
+{
+  "id": "tac_trappedPiece_L1-quiz-005",
+  "tactic_id": "trappedPiece",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_trappedPiece_L1-006",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "避免困子的原则",
+  "question_cn": "为了避免己方棋子被困，最重要的原则是什么？",
+  "options": [
+    {"key": "A", "text_cn": "永远不把棋子走到对方阵地"},
+    {"key": "B", "text_cn": "每走一步棋，确保该棋子有至少一条安全的退路"},
+    {"key": "C", "text_cn": "只用兵开局，不动大子"},
+    {"key": "D", "text_cn": "把所有棋子集中在棋盘中心"}
+  ],
+  "correct": "B",
+  "explanation_cn": "避免困子的核心原则：每次移动棋子前，先检查目标格的棋子是否有安全退路。特别是后、象这类强子，深入对方阵地时要确保至少有一条逃跑路线。一旦发现棋子退路受限，应立刻主动撤退，不要等到完全被围才行动。",
+  "created_at": "2026-05-27"
+}

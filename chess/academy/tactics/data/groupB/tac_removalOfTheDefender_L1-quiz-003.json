@@ -1,0 +1,31 @@
+{
+  "id": "tac_removalOfTheDefender_L1-quiz-003",
+  "tactic_id": "removalOfTheDefender",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_removalOfTheDefender_L1-006",
+  "fen": "r3k1r1/pp3p1p/4p3/4n3/b1qNP3/4B2P/P4PP1/R1Q3KR b q - 0 1",
+  "concept": "消除保护的三种手段",
+  "question_cn": "消除保护战术可以通过哪三种方式对付保护者？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "换子、串击、捉双"
+    },
+    {
+      "key": "B",
+      "text_cn": "吃掉保护者、驱走保护者（献子强制移位）、牵制保护者（令其无法动弹）"
+    },
+    {
+      "key": "C",
+      "text_cn": "将军、双将、发现将"
+    },
+    {
+      "key": "D",
+      "text_cn": "封锁、阻截、牵制"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "消除保护有三条路径：①直接吃掉——即便亏换（如以后换马）也可能值得，因为随后得到的目标价值更高；②驱走（献子引离）——向保护者发动进攻，迫使它移开，例如献车逼对方车吃，原来守住的目标立即暴露；③牵制——用车、象、后沿线牵制保护者，使其虽在原位却无法再起到保护作用。三种手段视局面选用，有时还会组合使用。",
+  "created_at": "2026-05-11"
+}

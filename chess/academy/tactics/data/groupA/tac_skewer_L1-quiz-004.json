@@ -1,0 +1,19 @@
+{
+  "id": "tac_skewer_L1-quiz-004",
+  "tactic_id": "skewer",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_skewer_L1-004",
+  "fen": "2Q5/1p4q1/p4k2/6p1/4b3/6BP/P4PP1/6K1 w - - 0 1",
+  "concept": "串击成立的条件",
+  "question_cn": "串击成立需要哪个关键条件？",
+  "options": [
+    {"key": "A", "text_cn": "对方两个棋子恰好在同一直线或对角线上，且前方子价值高于后方子"},
+    {"key": "B", "text_cn": "只需攻击对方的王"},
+    {"key": "C", "text_cn": "对方两子必须紧挨在一起"},
+    {"key": "D", "text_cn": "必须有车配合才能实施串击"}
+  ],
+  "correct": "A",
+  "explanation_cn": "串击的必要条件：①对方两子在同一横线、竖线或斜线上；②攻击的是价值更高的前方子（如王、后、车），迫使其移走；③后方子价值更低，移走后被白方吃掉。缺少任何一条，串击就不成立。",
+  "created_at": "2026-05-25"
+}

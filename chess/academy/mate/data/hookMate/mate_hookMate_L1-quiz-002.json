@@ -1,0 +1,29 @@
+{
+  "id": "mate_hookMate_L1-quiz-002",
+  "mate_id": "hookMate",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "钩杀的典型棋子配置",
+  "question_cn": "钩杀中最常见的棋子组合是哪三种？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "后、象、兵"
+    },
+    {
+      "key": "B",
+      "text_cn": "车、马、兵"
+    },
+    {
+      "key": "C",
+      "text_cn": "双车、马"
+    },
+    {
+      "key": "D",
+      "text_cn": "后、马、象"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "钩杀最经典的组合是车、马、兵。车负责封锁一侧，马控制斜前方逃格，兵挡住另一侧，三者形状如钩子，合力将死王。",
+  "created_at": "2026-05-31"
+}

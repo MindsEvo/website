@@ -1,0 +1,29 @@
+{
+  "id": "mate_backRankMate_L1-quiz-001",
+  "mate_id": "backRankMate",
+  "difficulty": "L1",
+  "sequence": 1,
+  "concept": "底线杀的定义",
+  "question_cn": "什么是底线杀（Back Rank Mate）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王在棋盘中心被多个棋子围住将死"
+    },
+    {
+      "key": "B",
+      "text_cn": "王在底线（第1或第8横线）被车或后将死，且无法逃跑"
+    },
+    {
+      "key": "C",
+      "text_cn": "兵走到底线升变后立刻将死对方王"
+    },
+    {
+      "key": "D",
+      "text_cn": "双车并列在底线同时将死对方王"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "底线杀指对方的王被困在底线（第1或第8横线），无法向前逃跑，被车或后沿底线将死。王通常被己方的兵封死，成为「杀王」的关键条件。",
+  "created_at": "2026-05-29"
+}

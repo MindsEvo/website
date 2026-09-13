@@ -1,0 +1,19 @@
+{
+  "id": "tac_skewer_L1-quiz-001",
+  "tactic_id": "skewer",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_skewer_L1-001",
+  "fen": "8/1r3k2/2q1ppp1/8/5PB1/4P3/4QK2/5R2 w - - 0 1",
+  "concept": "串击的定义",
+  "question_cn": "什么是串击（Skewer）战术？",
+  "options": [
+    {"key": "A", "text_cn": "一个棋子同时攻击对方两个目标"},
+    {"key": "B", "text_cn": "沿直线或斜线攻击强子，强子被迫移走后，吃掉其后方的弱子"},
+    {"key": "C", "text_cn": "将对方棋子钉在原地，使其无法移动"},
+    {"key": "D", "text_cn": "牺牲子力换取更大利益"}
+  ],
+  "correct": "B",
+  "explanation_cn": "串击：用象、车或后沿直线攻击对方强子（如王或后），强子被迫移走，从而吃掉其后方的弱子。串击和牵制方向相反——串击是前强后弱，前子必须动。",
+  "created_at": "2026-05-25"
+}

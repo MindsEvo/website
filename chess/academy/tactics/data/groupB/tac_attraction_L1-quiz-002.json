@@ -1,0 +1,31 @@
+{
+  "id": "tac_attraction_L1-quiz-002",
+  "tactic_id": "attraction",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_attraction_L1-004",
+  "fen": "r4r1k/6pp/2b4N/8/1q6/6P1/Q1P2P1P/6K1 w - - 0 1",
+  "concept": "引入的典型目标",
+  "question_cn": "引入战术最常被用来引诱哪种棋子？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "兵，因为兵走错位置会破坏王的防线"
+    },
+    {
+      "key": "B",
+      "text_cn": "国王，因为王被引到开阔格或危险格后，往往直接面对叉将或将杀"
+    },
+    {
+      "key": "C",
+      "text_cn": "马，因为马的走法固定，最容易被引离"
+    },
+    {
+      "key": "D",
+      "text_cn": "象，因为象只走斜线，引到对角格后无法退回"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "引入最常针对国王。王一旦被吃子引入开放的格子，就可能遭到叉将（如马同时攻击王和后）、将杀（如本题Qg8+引车到g8堵路再Nf7将杀），或至少失去王翼安全。当然，引入也可以针对后、车等重子，但最高价值的引入目标永远是王。",
+  "created_at": "2026-05-15"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tac_trappedPiece_L1-quiz-002",
+  "tactic_id": "trappedPiece",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_trappedPiece_L1-007",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "最容易被困的棋子",
+  "question_cn": "哪种棋子在实战中最容易孤军深入后被困死？",
+  "options": [
+    {"key": "A", "text_cn": "兵——因为数量最多"},
+    {"key": "B", "text_cn": "王——因为最重要"},
+    {"key": "C", "text_cn": "后和象——贪吃子力或位置冒进，进入对方阵地后退路被封"},
+    {"key": "D", "text_cn": "车——因为只能走直线"}
+  ],
+  "correct": "C",
+  "explanation_cn": "后和象在实战中最容易被困。后因为价值最高，对方会不惜代价围追堵截；象则容易走进被己方或对方兵封死的死角。开局时后和象不应过早深入对方阵地，要时刻保证有退路。",
+  "created_at": "2026-05-27"
+}

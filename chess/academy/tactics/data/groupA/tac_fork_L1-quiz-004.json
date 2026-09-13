@@ -1,0 +1,19 @@
+{
+  "id": "tac_fork_L1-quiz-004",
+  "tactic_id": "fork",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_fork_L1-005",
+  "fen": "8/7R/1pr2k2/p2p3B/2p2P2/P1P1b1NP/3n2P1/7K w - - 0 1",
+  "concept": "将军捉双",
+  "question_cn": "为什么将军加捉双特别有威力？",
+  "options": [
+    {"key": "A", "text_cn": "因为将军可以立刻赢棋"},
+    {"key": "B", "text_cn": "对手必须先应将，无暇顾及另一个被攻击的目标"},
+    {"key": "C", "text_cn": "将军会让对手时间暂停"},
+    {"key": "D", "text_cn": "将军后可以悔棋"}
+  ],
+  "correct": "B",
+  "explanation_cn": "将军时对手必须立即解将（移王、吃掉攻击子或阻挡），没有时间顾及其他被攻击的棋子。因此将军配合捉双是最强力的组合——对手在应将的同时，另一个目标就丢失了。",
+  "created_at": "2026-05-05"
+}

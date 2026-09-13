@@ -1,0 +1,29 @@
+{
+  "id": "mate_arabianMate_L1-quiz-004",
+  "mate_id": "arabianMate",
+  "difficulty": "L1",
+  "sequence": 4,
+  "concept": "引离等子的注意事项",
+  "question_cn": "当黑方有两个车守护王的角落时（如g7和g8各有一车），为何不能直接弃后？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "直接弃后子力损失太大"
+    },
+    {
+      "key": "B",
+      "text_cn": "弃后后对方仍有棋子保护将杀格，直接弃后无效"
+    },
+    {
+      "key": "C",
+      "text_cn": "弃后会让王逃跑到中心"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方的马会吃掉白方的车"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "当两个黑车都守护将杀格时，直接弃后后对方还有一个车保护，白方无法将死。必须先用引离手法（如Rg4引走一个车），再弃后才能成功。",
+  "created_at": "2026-06-01"
+}

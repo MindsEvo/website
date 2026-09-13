@@ -1,0 +1,31 @@
+{
+  "id": "tac_intermezzo_L1-quiz-001",
+  "tactic_id": "intermezzo",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_intermezzo_L1-001",
+  "fen": "5k2/1p1q2p1/p2p2p1/n2Nb2p/8/1PB4P/P5P1/Q5K1 w - - 0 1",
+  "concept": "中间招的本质",
+  "question_cn": "中间招（Intermezzo / Zwischenzug / 「过渡」）的核心机制是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "在换子或吃子序列中，插入一步更强迫性的棋（如将军、捉挂子），迫使对方先应对，再回来完成换子"
+    },
+    {
+      "key": "B",
+      "text_cn": "主动移走己方棋子，为另一个己方棋子清出攻击路径"
+    },
+    {
+      "key": "C",
+      "text_cn": "牺牲子力将对方棋子引诱到不利位置，再实施叉击"
+    },
+    {
+      "key": "D",
+      "text_cn": "移走己方棋子，暴露其身后棋子的攻击线（闪击）"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "中间招的本质是「先插一刀」：当双方换子序列进行到一半时，不急着按顺序吃回，而是先走一步更强迫的棋（将军、捉挂子等），迫使对方先应对，然后再回来完成换子——净多赚一步先手收益。叶江川教材称之为「过渡」，与德语 Zwischenzug（中间棋）同义。",
+  "created_at": "2026-05-21"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tac_xRayAttack_L1-quiz-001",
+  "tactic_id": "xRayAttack",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_xRayAttack_L1-001",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "透视攻击的定义",
+  "question_cn": "什么是透视攻击（X-Ray Attack）？",
+  "options": [
+    {"key": "A", "text_cn": "一个棋子穿越对方棋子，攻击到该棋子背后的目标"},
+    {"key": "B", "text_cn": "一个棋子同时攻击对方两个目标"},
+    {"key": "C", "text_cn": "牺牲一个棋子换取更大利益"},
+    {"key": "D", "text_cn": "移走己方棋子，暴露后方棋子的攻击线"}
+  ],
+  "correct": "A",
+  "explanation_cn": "透视攻击是指己方棋子穿透对方棋子，攻击其身后的目标。对方棋子虽然挡在中间，但透视棋子实际上已经盯住了更深处的目标，一旦中间棋子离开，威胁立即爆发。",
+  "created_at": "2026-05-27"
+}

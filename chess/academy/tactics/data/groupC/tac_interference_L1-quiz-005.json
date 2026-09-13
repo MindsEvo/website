@@ -1,0 +1,31 @@
+{
+  "id": "tac_interference_L1-quiz-005",
+  "tactic_id": "interference",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_interference_L1-007",
+  "fen": "1r4r1/p2kb2p/bq2p3/3p1p2/5P2/2BB3Q/PP4PP/3RKR2 b - - 0 1",
+  "concept": "识别拦截机会的思路",
+  "question_cn": "实战中快速发现拦截机会，最有效的第一步是？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "先数对方每个棋子的保护者数量，找到保护最少的棋子"
+    },
+    {
+      "key": "B",
+      "text_cn": "先看对方国王周围是否有空格可将军"
+    },
+    {
+      "key": "C",
+      "text_cn": "寻找对方两个棋子共用的「联系线」，再看该线上是否有己方棋子可以强行插入"
+    },
+    {
+      "key": "D",
+      "text_cn": "先找所有己方可以将军的棋步，再逐一分析"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "拦截的三步识别法：①找对方两子共享的同一条横/纵/斜线；②找该线上可插入的格子（对方暂时无法轻易吃掉，或插入即将军）；③确认插入后联系被断且有战术利益。本题Rg3插入第三横线，切断Qh3与Bd3的协同，强迫Qxg3，为后续Bh4→Qxe2#铺路。",
+  "created_at": "2026-05-18"
+}

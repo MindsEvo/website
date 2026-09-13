@@ -1,0 +1,31 @@
+{
+  "id": "tac_intermezzo_L1-quiz-004",
+  "tactic_id": "intermezzo",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_intermezzo_L1-002",
+  "fen": "3r1rk1/p3bpp1/1q1p3p/8/4P3/1QN2P2/P5PP/3R1R1K w",
+  "concept": "中间招 vs 直接换子",
+  "question_cn": "本题中白马Nd5攻击黑后b6，黑方若按计划Qxb3吃后，白方为何不应该立刻axb3吃回，而是先走Nxe7+？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "axb3吃回是亏子的——先Nxe7+再axb3可以净多一象"
+    },
+    {
+      "key": "B",
+      "text_cn": "axb3无法走——兵被别住了"
+    },
+    {
+      "key": "C",
+      "text_cn": "Nxe7+是将军，可以逃离被攻击的格子"
+    },
+    {
+      "key": "D",
+      "text_cn": "axb3会让白方王翼防守变弱"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "黑方Qxb3吃后后，白方若立刻axb3吃回，只是等价换子（后换后）。但Nxe7+是中间招——先将军赢掉黑象Be7（挂子，无充分保护），黑王应将后，白方再axb3吃回黑后。结果：白方净多一象！这正是中间招的价值：不「急着」按顺序吃回，先插入更有利的强迫步。",
+  "created_at": "2026-05-21"
+}

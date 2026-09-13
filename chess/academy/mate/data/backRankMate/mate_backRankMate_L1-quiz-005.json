@@ -1,0 +1,29 @@
+{
+  "id": "mate_backRankMate_L1-quiz-005",
+  "mate_id": "backRankMate",
+  "difficulty": "L1",
+  "sequence": 5,
+  "concept": "弃后引车的底线杀手法",
+  "question_cn": "白方走Qf8+（弃后将军），这步棋的目的是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用后换掉对方的车，降低对方子力"
+    },
+    {
+      "key": "B",
+      "text_cn": "引诱黑车到f8，使白车Rxf8#将死"
+    },
+    {
+      "key": "C",
+      "text_cn": "为己方车腾出f1格子"
+    },
+    {
+      "key": "D",
+      "text_cn": "威胁黑方g7或h7兵"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "弃后是底线杀中的经典战术：Qf8+迫使黑车到f8应将，此时f1的白车Rxf8#完成将杀——车在后的掩护下穿透底线。这就是「弃后透视底线杀」：利用后的牺牲打开通路，让车完成最后一击。",
+  "created_at": "2026-05-29"
+}

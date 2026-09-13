@@ -1,0 +1,19 @@
+{
+  "id": "tac_sacrifice_L1-quiz-004",
+  "tactic_id": "sacrifice",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_sacrifice_L1-007",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "识别弃子时机",
+  "question_cn": "以下哪种局面最适合考虑弃子战术？",
+  "options": [
+    {"key": "A", "text_cn": "双方兵结构对称，棋子都在安全位置"},
+    {"key": "B", "text_cn": "己方子力分散，无法形成合力"},
+    {"key": "C", "text_cn": "对方王附近防守兵被弃掉后将出现将杀，且己方有足够多的攻击子力"},
+    {"key": "D", "text_cn": "己方处于材料劣势，急需找回损失"}
+  ],
+  "correct": "C",
+  "explanation_cn": "弃子成立的关键条件：①对方王的防线存在薄弱点（如H线兵或G线兵可被引走）；②己方有足够的进攻子力可以接力将杀；③能在算清之后确认有将杀或决定性优势。满足这些条件时，弃子往往是正确的战术选择。",
+  "created_at": "2026-05-28"
+}

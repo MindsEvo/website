@@ -1,0 +1,31 @@
+{
+  "id": "tac_blockade_L1-quiz-004",
+  "tactic_id": "blockade",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_blockade_L1-008",
+  "fen": "7k/7p/p3b3/2p1b3/2P4q/1PB5/P4Q1P/7K w - - 0 1",
+  "concept": "阻塞 vs 拦截的区别",
+  "question_cn": "阻塞（Blockade）和拦截（Interference）有何本质区别？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "阻塞用于中局，拦截用于残局"
+    },
+    {
+      "key": "B",
+      "text_cn": "阻塞是封堵对方棋子（尤其是兵）的前进路线；拦截是切断对方两个棋子之间的协同联系"
+    },
+    {
+      "key": "C",
+      "text_cn": "阻塞需要牺牲子力，拦截不需要"
+    },
+    {
+      "key": "D",
+      "text_cn": "两者相同，区别只在于是否将军"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "阻塞针对单个棋子的「前进路线」，目的是让它动不了；拦截针对两个棋子之间的「联系线」，目的是让它们无法相互支援。两者都是「占格断路」，但攻击对象不同：阻塞堵的是一条前进路，拦截断的是一条协同线。",
+  "created_at": "2026-05-18"
+}

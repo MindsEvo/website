@@ -1,0 +1,29 @@
+{
+  "id": "mate_smotheredMate_L1-quiz-002",
+  "mate_id": "smotheredMate",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "闷杀成立的关键条件",
+  "question_cn": "闷杀能够成立，最关键的条件是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "己方有两个马可以同时将军"
+    },
+    {
+      "key": "B",
+      "text_cn": "对方子力全部撤回底线"
+    },
+    {
+      "key": "C",
+      "text_cn": "王困在角落或边线，被己方棋子封住所有逃格"
+    },
+    {
+      "key": "D",
+      "text_cn": "己方有后和车同时控制整条横线"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "闷杀的核心是王被自己的棋子困死。王通常躲在角落（如h8），旁边的车、兵、马封住了所有逃格，己方的马才能一步完成将杀。",
+  "created_at": "2026-05-30"
+}

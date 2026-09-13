@@ -1,0 +1,19 @@
+{
+  "id": "tac_pin_L1-quiz-003",
+  "tactic_id": "pin",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_pin_L1-002",
+  "fen": "8/7k/8/5r2/8/8/6P1/3BK3 w - - 0 1",
+  "concept": "哪些棋子能实施牵制",
+  "question_cn": "哪些棋子可以实施牵制战术？",
+  "options": [
+    {"key": "A", "text_cn": "只有车和象，因为它们走直线和斜线"},
+    {"key": "B", "text_cn": "只有后，因为后最强"},
+    {"key": "C", "text_cn": "车、象、后——所有走直线或斜线的棋子"},
+    {"key": "D", "text_cn": "所有棋子，包括马和兵"}
+  ],
+  "correct": "C",
+  "explanation_cn": "能实施牵制的棋子必须走直线（横/竖/斜），所以是车（横线和纵线）、象（斜线）、后（横线、纵线和斜线）。马和兵因走法特殊无法形成三点一线的牵制。",
+  "created_at": "2026-05-06"
+}

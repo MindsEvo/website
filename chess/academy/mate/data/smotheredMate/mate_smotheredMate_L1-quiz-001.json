@@ -1,0 +1,29 @@
+{
+  "id": "mate_smotheredMate_L1-quiz-001",
+  "mate_id": "smotheredMate",
+  "difficulty": "L1",
+  "sequence": 1,
+  "concept": "闷杀的定义",
+  "question_cn": "什么是闷杀（Smothered Mate）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王在棋盘中心被多个棋子包围将死"
+    },
+    {
+      "key": "B",
+      "text_cn": "马将军，且王的所有逃格都被己方棋子堵死"
+    },
+    {
+      "key": "C",
+      "text_cn": "双车并列将死对方王"
+    },
+    {
+      "key": "D",
+      "text_cn": "王在底线被车沿横线将死"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "闷杀指马给王将军，而王的所有逃格都被自己的棋子堵住，无路可逃。王通常躲在角落，被己方的车、兵封死，马从侧面一跳致命。",
+  "created_at": "2026-05-30"
+}

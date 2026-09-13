@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-006",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 6,
+  "ref_id": "tac_discoveredAttack_L1-009",
+  "fen": "5rk1/1p4pp/n1p2b2/Q3p2q/2P5/PP2P1P1/1BN3KP/5R2 b - - 0 1",
+  "concept": "闪将：带将军的闪击",
+  "question_cn": "闪将（Discovered Check）和普通闪击（Discovered Attack）的关键区别是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "闪将只能用象来执行，普通闪击可以用任何棋子"
+    },
+    {
+      "key": "B",
+      "text_cn": "闪将是指前子移走后，被揭露的后方子恰好将军；普通闪击只是攻击普通目标——闪将因强制应将而威力更大"
+    },
+    {
+      "key": "C",
+      "text_cn": "闪将需要移动的前子也同时将军，否则就是普通闪击"
+    },
+    {
+      "key": "D",
+      "text_cn": "闪将和普通闪击没有区别，只是叫法不同"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "闪将 = 闪击 + 将军。本题Bd8+：象走开f列（前子移动），车f8沿f列将军Kf2（后方子将军）——这就是闪将。与普通闪击相比，闪将强制对方应将，对方完全无法顾及象同时威胁的白后a5，必失后。注意：前子移动时不一定将军（与双将的区别），是后方子将军。",
+  "created_at": "2026-05-17"
+}

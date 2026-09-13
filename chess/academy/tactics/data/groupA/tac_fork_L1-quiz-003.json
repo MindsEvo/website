@@ -1,0 +1,19 @@
+{
+  "id": "tac_fork_L1-quiz-003",
+  "tactic_id": "fork",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_fork_L1-002",
+  "fen": "1k6/ppp1r3/7p/8/P2b4/1Pn3NP/2B2PP1/5R1K w - - 0 1",
+  "concept": "捉双的应对方法",
+  "question_cn": "当对方对你实施捉双时，最聪明的应对策略是什么？",
+  "options": [
+    {"key": "A", "text_cn": "立即认输，捉双无法应对"},
+    {"key": "B", "text_cn": "优先保住价值更高的棋子，或走出同时解救两个目标的着法"},
+    {"key": "C", "text_cn": "随机选一个棋子移走即可"},
+    {"key": "D", "text_cn": "攻击对方的王，完全不理会被攻击的棋子"}
+  ],
+  "correct": "B",
+  "explanation_cn": "面对捉双，首先判断哪个目标价值更高（如后＞车＞象/马＞兵），优先撤走或保护价值高的子。最理想的应对是找出一步能同时解决两个威胁的着法——例如反将军或反攻。",
+  "created_at": "2026-05-05"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tac_interference_L1-quiz-002",
+  "tactic_id": "interference",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_interference_L1-002",
+  "fen": "r4rk1/1b2bp1p/p1q1p1pQ/1p6/8/1BN1B1R1/PPP3PP/R5K1 w - - 0 1",
+  "concept": "拦截的攻击对象",
+  "question_cn": "拦截战术真正攻击的是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "对方防守最薄弱的一个棋子"
+    },
+    {
+      "key": "B",
+      "text_cn": "对方两个棋子之间的「联系线」——横线、纵线或斜线上的协同关系"
+    },
+    {
+      "key": "C",
+      "text_cn": "对方国王的逃跑路线"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方的双车炮台或后车组合"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "拦截不直接攻击棋子，而是切断棋子之间的「看不见的联系」。本题白象Bd5插入长斜线，切断Bb7支援Qc6的路线——黑后c6因此失去象的保护，孤立无援，直接被白象吃掉。找拦截机会，先找「对方两个子共用一条线」的位置。",
+  "created_at": "2026-05-18"
+}

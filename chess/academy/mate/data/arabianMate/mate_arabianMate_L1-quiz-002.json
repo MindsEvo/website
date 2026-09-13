@@ -1,0 +1,29 @@
+{
+  "id": "mate_arabianMate_L1-quiz-002",
+  "mate_id": "arabianMate",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "车和马各自的作用",
+  "question_cn": "在阿拉伯杀中，车和马分别起什么作用？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "车将军，马保护车"
+    },
+    {
+      "key": "B",
+      "text_cn": "车控制一条横线或竖线，马封住王的斜向逃格"
+    },
+    {
+      "key": "C",
+      "text_cn": "马将军，车封住逃跑路线"
+    },
+    {
+      "key": "D",
+      "text_cn": "车和马同时将军，形成双将"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "阿拉伯杀中分工明确：车沿横线或竖线直接将军，封锁王所在的那一列或行；马控制王的斜向逃格，使王彻底无路可走。两者缺一不可。",
+  "created_at": "2026-06-01"
+}

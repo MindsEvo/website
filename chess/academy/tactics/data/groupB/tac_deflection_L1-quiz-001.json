@@ -1,0 +1,31 @@
+{
+  "id": "tac_deflection_L1-quiz-001",
+  "tactic_id": "deflection",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_deflection_L1-001",
+  "fen": "1kb1Bn2/3p3r/7p/3p2Rp/6P1/4p2B/1P2q3/P1P1Q2K w KQkq - 0 1",
+  "concept": "引离的本质",
+  "question_cn": "引离战术的核心逻辑是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "吃掉对方价值最低的棋子换取子力优势"
+    },
+    {
+      "key": "B",
+      "text_cn": "强迫对方\"过载\"的防守棋子离开岗位，使其无法同时完成两项防守任务"
+    },
+    {
+      "key": "C",
+      "text_cn": "将王驱赶到角落后再实施将杀"
+    },
+    {
+      "key": "D",
+      "text_cn": "用兵链封锁对方所有出路"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "引离的核心是利用对方的\"过载\"（Overloading）弱点：某个棋子同时守护两个或多个关键点，我方献子或进攻迫使它二选一——无论它选哪个方向移动，另一个防守任务必然落空，己方随即利用这个漏洞得子或将杀。",
+  "created_at": "2026-05-10"
+}

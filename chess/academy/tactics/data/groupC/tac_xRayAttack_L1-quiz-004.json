@@ -1,0 +1,19 @@
+{
+  "id": "tac_xRayAttack_L1-quiz-004",
+  "tactic_id": "xRayAttack",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_xRayAttack_L1-007",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "透视攻击的常见用途",
+  "question_cn": "透视攻击在实战中最常见的应用场景是哪些？",
+  "options": [
+    {"key": "A", "text_cn": "只用于将死对方"},
+    {"key": "B", "text_cn": "弃子让路后透视将死、透视穿越赢取子力、配合其他战术形成组合拳"},
+    {"key": "C", "text_cn": "只用于开局阶段发展棋子"},
+    {"key": "D", "text_cn": "只在残局中起作用"}
+  ],
+  "correct": "B",
+  "explanation_cn": "透视攻击用途广泛：①弃子（弃车或弃后）移走中间棋子，让透视棋子完成将死；②直接透视穿越对方棋子赢取后方的重子；③与引入、堵塞等战术配合，形成多步组合拳。",
+  "created_at": "2026-05-27"
+}

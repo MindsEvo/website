@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-005",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_discoveredAttack_L1-003",
+  "fen": "3r3k/6pn/4Q3/5RP1/6qP/8/8/7K w - - 0 1",
+  "concept": "闪击与捉双的区别",
+  "question_cn": "闪击（Discovered Attack）和捉双（Fork）的本质区别是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "闪击只能用车或象执行，捉双只能用马执行"
+    },
+    {
+      "key": "B",
+      "text_cn": "闪击是靠「移走前面的棋子」解放后方棋子的攻击线；捉双是「一个棋子」本身同时攻击两个目标——两者产生威胁的方式根本不同"
+    },
+    {
+      "key": "C",
+      "text_cn": "闪击必须将军，捉双不需要将军"
+    },
+    {
+      "key": "D",
+      "text_cn": "闪击只能赢子，捉双可以直接将杀"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "捉双：一枚棋子自身攻击两个目标（马e5同时打f7和d7）。闪击：一枚棋子移走，解放身后棋子（车f5走到f8将军，后e6的斜线对g4通了）。闪击产生的双重威胁来自「两枚」棋子的配合，捉双来自「一枚」棋子的几何位置。",
+  "created_at": "2026-05-17"
+}

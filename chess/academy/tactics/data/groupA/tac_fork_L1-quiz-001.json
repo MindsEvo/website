@@ -1,0 +1,19 @@
+{
+  "id": "tac_fork_L1-quiz-001",
+  "tactic_id": "fork",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_fork_L1-001",
+  "fen": "r4rk1/ppp2ppp/8/4Q3/4n3/8/PPP2PPP/RNB2RK1 w - - 0 1",
+  "concept": "捉双的定义",
+  "question_cn": "什么是捉双（Fork）战术？",
+  "options": [
+    {"key": "A", "text_cn": "一个棋子同时攻击对方两个或更多目标"},
+    {"key": "B", "text_cn": "一个棋子跳过对方棋子进行攻击"},
+    {"key": "C", "text_cn": "将对方棋子限制在原地无法移动"},
+    {"key": "D", "text_cn": "牺牲棋子换取更大利益"}
+  ],
+  "correct": "A",
+  "explanation_cn": "捉双是指一个棋子同时攻击对方两个或更多目标。对手只能应对其中一个，白方因此赢得另一个目标。所有棋子都可以实施捉双：马、兵、象、车、后、王均可。",
+  "created_at": "2026-05-05"
+}

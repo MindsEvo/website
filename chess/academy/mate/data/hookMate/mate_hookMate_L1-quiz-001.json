@@ -1,0 +1,29 @@
+{
+  "id": "mate_hookMate_L1-quiz-001",
+  "mate_id": "hookMate",
+  "difficulty": "L1",
+  "sequence": 1,
+  "concept": "钩杀的定义",
+  "question_cn": "什么是钩杀（Hook Mate）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "双马从两侧同时将死对方王"
+    },
+    {
+      "key": "B",
+      "text_cn": "车沿底线将死被兵封死的王"
+    },
+    {
+      "key": "C",
+      "text_cn": "车、马、兵共同构成钩形包围，将死困在边路或角落的王"
+    },
+    {
+      "key": "D",
+      "text_cn": "马跳到中心将死四面无逃的王"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "钩杀的典型特征是车、马、兵排列成钩形，共同封锁王的逃格。王通常被逼到边路或角落，棋子的钩形阵势令其无处可逃。",
+  "created_at": "2026-05-31"
+}

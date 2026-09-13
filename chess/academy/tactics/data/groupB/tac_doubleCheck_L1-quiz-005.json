@@ -1,0 +1,19 @@
+{
+  "id": "tac_doubleCheck_L1-quiz-005",
+  "tactic_id": "doubleCheck",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_doubleCheck_L1-002",
+  "fen": "5r1k/p4ppp/1p6/6N1/2Q5/1Pb4P/P2q1PP1/5RK1 w - - 0 1",
+  "concept": "双将与困毙组合",
+  "question_cn": "双将经常与哪种将死手段结合，形成《马双将→弃后→困毙》的经典组合？",
+  "options": [
+    {"key": "A", "text_cn": "回兵将死（Back Rank Mate）"},
+    {"key": "B", "text_cn": "闷杀（Smothered Mate）"},
+    {"key": "C", "text_cn": "主教将死（Bishop Mate）"},
+    {"key": "D", "text_cn": "两车将死（Ladder Mate）"}
+  ],
+  "correct": "B",
+  "explanation_cn": "双将的经典组合之一是闷杀：马双将驱逐黑王进角，弃后逼黑车自堵逃路，最后马f7/h7将死被自己棋子围困的黑王。这是中级战术中最精彩的组合之一，需要精确计算。",
+  "created_at": "2026-05-26"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tac_clearance_L1-quiz-002",
+  "tactic_id": "clearance",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_clearance_L1-009",
+  "fen": "6k1/R5p1/1p5p/8/3rN3/5PPb/PPr4P/4R1K1 w - - 0 1",
+  "concept": "腾挪 vs 闪击的区别",
+  "question_cn": "腾挪（Clearance）和闪击（Discovered Attack）都涉及移走己方棋子，它们的根本区别是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "腾挪只能由兵执行，闪击只能由轻子执行"
+    },
+    {
+      "key": "B",
+      "text_cn": "腾挪是为己方另一个棋子清出路径；闪击是移走己方棋子后，被遮挡的己方棋子突然威胁对方"
+    },
+    {
+      "key": "C",
+      "text_cn": "腾挪必须牺牲棋子，闪击不需要牺牲"
+    },
+    {
+      "key": "D",
+      "text_cn": "两者相同，区别只在于是否将军"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "腾挪关注的是「为谁让路」：移走的棋子让出路径，受益者是另一个己方子（如象走开，后冲入）。闪击关注的是「暴露谁」：移走的棋子让开，后方被遮挡的己方子突然亮出攻击线。本题Nf6+马腾挪清e列，受益者是Re1冲入Re8#——典型腾挪。",
+  "created_at": "2026-05-20"
+}

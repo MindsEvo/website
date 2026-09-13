@@ -1,0 +1,31 @@
+{
+  "id": "tac_zugzwang_L1-quiz-001",
+  "tactic_id": "zugzwang",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_zugzwang_L1-001",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "逼着的定义",
+  "question_cn": "什么是逼着（Zugzwang）？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "己方走任何棋都会立即被将杀"
+    },
+    {
+      "key": "B",
+      "text_cn": "一方被迫走棋，但任何走法都会使自身局面变差"
+    },
+    {
+      "key": "C",
+      "text_cn": "双方都无棋可走，局面形成和棋"
+    },
+    {
+      "key": "D",
+      "text_cn": "己方棋子数量太少，只能被动应对"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "逼着是指一方面临走棋反而更坏但又必须走棋的困境。由于国际象棋规定每步必须走棋，这一义务本身就成为了一种负担。局面越微妙，逼着的杀伤力越大。",
+  "created_at": "2026-05-29"
+}

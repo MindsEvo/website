@@ -332,12 +332,58 @@
       margin-top: 8px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 34px 10px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
+      padding: 10px;
       background: #fafbfd;
     }
+
+    .quiz-question {
+      background: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      white-space: pre-line;
+    }
+    .quiz-question.empty {
+      text-align: center;
+      color: #94a3b8;
+      font-weight: 400;
+      padding: 24px 10px;
+      white-space: normal;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .quiz-option-btn {
+      text-align: left;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #2c3e50;
+      background: #fafafa;
+      border: 1px solid #d7bde2;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .quiz-option-btn:hover:not(:disabled) { background: #ede7f6; border-color: #9b59b6; }
+    .quiz-option-btn:disabled { cursor: default; }
+    .quiz-option-btn.correct { background: #d5f5e3; border: 2px solid #27ae60; color: #1d6a3a; font-weight: 700; }
+    .quiz-option-btn.wrong { background: #fdedec; border: 2px solid #e74c3c; color: #922b21; font-weight: 700; }
+
+    .quiz-explanation {
+      font-size: 12px;
+      color: #555;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 6px 8px;
+      margin-top: 4px;
+    }
+    .quiz-explanation.hidden { display: none; }
 
     .solution-box h4, .explanation-box h4 {
       font-size: 14px;
@@ -514,36 +560,40 @@
         <div class="panel panel-placeholder">
           <h3>问答练习</h3>
           <div class="group-chips">
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#c0392b">底线杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="backRankMate">
+              <button class="group-chip" id="quizBackRankMate" data-quiz-group="backRankMate" style="background:#c0392b">底线杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#922b21">闷杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="smotheredMate">
+              <button class="group-chip" id="quizSmotheredMate" data-quiz-group="smotheredMate" style="background:#922b21">闷杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#a04000">钩杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="hookMate">
+              <button class="group-chip" id="quizHookMate" data-quiz-group="hookMate" style="background:#a04000">钩杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#b7950b">阿拉伯杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="arabianMate">
+              <button class="group-chip" id="quizArabianMate" data-quiz-group="arabianMate" style="background:#b7950b">阿拉伯杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#117a65">燕尾杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="dovetailMate">
+              <button class="group-chip" id="quizDovetailMate" data-quiz-group="dovetailMate" style="background:#117a65">燕尾杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#1a5276">博登杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="bodenMate">
+              <button class="group-chip" id="quizBodenMate" data-quiz-group="bodenMate" style="background:#1a5276">博登杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#6e2fa0">安娜斯塔西亚杀</button>
+            <div class="group-dropdown-wrap" data-quiz-group="anastasia">
+              <button class="group-chip" id="quizAnastasia" data-quiz-group="anastasia" style="background:#6e2fa0">安娜斯塔西亚杀</button>
               <div class="dropdown-menu"></div>
             </div>
           </div>
-          <div class="quiz-placeholder">请选择问题开始答题</div>
+          <div class="quiz-placeholder">
+            <div class="quiz-question empty" id="quizQuestion">请选择问题开始答题</div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-explanation hidden" id="quizExplanation"></div>
+          </div>
         </div>
       </div>
 
@@ -594,6 +644,18 @@
         { key: 'anastasia', label: '安娜斯塔西亚杀', folder: 'anastasia', enabled: true }
       ];
 
+      // 问答练习: flat list per mate type (L1 quiz only), no board/FEN interaction at all
+      // (source's `_on_quiz_selected` never touches the chess board — pure text quiz).
+      var QUIZ_GROUP_DEFS = [
+        { key: 'backRankMate', label: '底线杀', folder: 'backRankMate', enabled: true },
+        { key: 'smotheredMate', label: '闷杀', folder: 'smotheredMate', enabled: true },
+        { key: 'hookMate', label: '钩杀', folder: 'hookMate', enabled: true },
+        { key: 'arabianMate', label: '阿拉伯杀', folder: 'arabianMate', enabled: true },
+        { key: 'dovetailMate', label: '燕尾杀', folder: 'dovetailMate', enabled: true },
+        { key: 'bodenMate', label: '博登杀', folder: 'bodenMate', enabled: true },
+        { key: 'anastasia', label: '安娜斯塔西亚杀', folder: 'anastasia', enabled: true }
+      ];
+
       // ── DOM refs ──────────────────────────────────────
       var boardEl = document.getElementById('board');
       var arrowsEl = document.getElementById('boardArrows');
@@ -603,6 +665,9 @@
       var playStatus = document.getElementById('playStatus');
       var solutionLines = document.getElementById('solutionLines');
       var explanationText = document.getElementById('explanationText');
+      var quizQuestion = document.getElementById('quizQuestion');
+      var quizOptions = document.getElementById('quizOptions');
+      var quizExplanation = document.getElementById('quizExplanation');
       var btnExplainVoice = document.getElementById('btnExplainVoice');
       var btnReset = document.getElementById('btnReset');
       var btnPrev = document.getElementById('btnPrev');
@@ -1280,6 +1345,136 @@
         });
       }
 
+      // ── 问答练习 (Q&A quiz) ─────────────────────────────
+      // Source: mate_basics_page.py `_on_quiz_selected`/`_show_quiz_question`/`_on_quiz_option_selected`.
+      // UNLIKE endgame/tactics: quiz items here have NO `fen` field at all and never touch the chess
+      // board (pure text quiz, closer to 开局元思维's design in that regard). BUT unlike 开局元思维
+      // (which reveals the answer after ANY pick), this course uses the retry-until-correct mechanic
+      // (wrong pick disables/reddens only itself, others stay clickable; correct pick greens + disables
+      // all) — same mechanic as endgame/tactics. Explanation IS shown visually (a box below the options,
+      // "✅ " prefixed) AND spoken aloud, but ONLY after a CORRECT answer (never shown/spoken on a wrong
+      // pick) — a 3rd distinct combination of quiz behaviors, confirmed by reading the source fresh.
+      var quizManifestCache = {};
+      var currentQuizAnswer = null;
+      var currentQuizExplanation = '';
+
+      function findQuizItem(manifest, itemId) {
+        for (var i = 0; i < manifest.items.length; i++) {
+          if (manifest.items[i].id === itemId) return manifest.items[i];
+        }
+        return null;
+      }
+
+      function renderQuizDropdownMenu(groupDef, manifest, menuEl) {
+        var html = '';
+        if (manifest.items.length) {
+          manifest.items.forEach(function (item) {
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          });
+        } else {
+          html += '<div class="submenu-item disabled">暂无题目</div>';
+        }
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item[data-item]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadQuizItem(groupDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+      }
+
+      function selectQuizGroup(groupDef) {
+        var menuEl = document.querySelector('.group-dropdown-wrap[data-quiz-group="' + groupDef.key + '"] .dropdown-menu');
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (!groupDef.enabled) {
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + groupDef.label + '"暂未上线，敬请期待</div>';
+          menuEl.classList.add('open');
+          return;
+        }
+        if (quizManifestCache[groupDef.key]) {
+          renderQuizDropdownMenu(groupDef, quizManifestCache[groupDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + groupDef.folder + '/quiz-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            quizManifestCache[groupDef.key] = manifest;
+            renderQuizDropdownMenu(groupDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadQuizItem(groupDef, manifest, itemId) {
+        var item = findQuizItem(manifest, itemId);
+        if (!item) return;
+        fetch('./data/' + groupDef.folder + '/' + itemId + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (qdata) { showQuizQuestion(qdata); })
+          .catch(function (e) {
+            quizQuestion.textContent = '题目加载失败: ' + e.message;
+            quizQuestion.classList.add('empty');
+            quizOptions.innerHTML = '';
+            quizExplanation.classList.add('hidden');
+          });
+      }
+
+      function showQuizQuestion(qdata) {
+        currentQuizAnswer = qdata.correct;
+        currentQuizExplanation = qdata.explanation_cn || '';
+        quizQuestion.classList.remove('empty');
+        quizQuestion.textContent = qdata.concept ? '【' + qdata.concept + '】\n' + (qdata.question_cn || '') : (qdata.question_cn || '');
+        quizExplanation.classList.add('hidden');
+        quizExplanation.textContent = '';
+        var html = '';
+        (qdata.options || []).forEach(function (opt) {
+          html += '<button type="button" class="quiz-option-btn" data-key="' + opt.key + '">' +
+            opt.key + '. ' + opt.text_cn + '</button>';
+        });
+        quizOptions.innerHTML = html;
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () { handleQuizAnswer(btn); });
+        });
+        if (window.speechSynthesis && qdata.question_cn) {
+          var u = new SpeechSynthesisUtterance(qdata.question_cn);
+          u.lang = 'zh-CN';
+          window.speechSynthesis.speak(u);
+        }
+      }
+
+      function handleQuizAnswer(btn) {
+        var selectedKey = btn.dataset.key;
+        if (selectedKey === currentQuizAnswer) {
+          quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (b) { b.disabled = true; });
+          btn.classList.add('correct');
+          if (currentQuizExplanation) {
+            quizExplanation.textContent = '✅ ' + currentQuizExplanation;
+            quizExplanation.classList.remove('hidden');
+          }
+          if (window.speechSynthesis) {
+            var u = new SpeechSynthesisUtterance('答对了！' + currentQuizExplanation);
+            u.lang = 'zh-CN';
+            window.speechSynthesis.speak(u);
+          }
+        } else {
+          btn.disabled = true;
+          btn.classList.add('wrong');
+          if (window.speechSynthesis) {
+            var u2 = new SpeechSynthesisUtterance('再想想，重新选择一下。');
+            u2.lang = 'zh-CN';
+            window.speechSynthesis.speak(u2);
+          }
+        }
+      }
+
       // ── Controls ──────────────────────────────────────
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
@@ -1291,19 +1486,9 @@
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticeGroup(groupDef); });
       });
 
-      // 问答练习 is not implemented yet — its buttons just show a "敬请期待"
-      // placeholder in the same dropdown style used for locked groups.
-      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap:not([data-practice-group])').forEach(function (wrap) {
-        var btn = wrap.querySelector('.group-chip');
-        var menuEl = wrap.querySelector('.dropdown-menu');
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var wasOpen = menuEl.classList.contains('open');
-          closeAllMenus();
-          if (wasOpen) return;
-          menuEl.innerHTML = '<div class="menu-row disabled">"' + btn.textContent + '"功能开发中，敬请期待</div>';
-          menuEl.classList.add('open');
-        });
+      QUIZ_GROUP_DEFS.forEach(function (groupDef) {
+        var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });

@@ -1,0 +1,29 @@
+{
+  "id": "mate_smotheredMate_L1-quiz-005",
+  "mate_id": "smotheredMate",
+  "difficulty": "L1",
+  "sequence": 5,
+  "concept": "如何预防被闷杀",
+  "question_cn": "为了预防被闷杀，最有效的方法是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "把所有兵都推到对方阵营"
+    },
+    {
+      "key": "B",
+      "text_cn": "把王走到棋盘中心"
+    },
+    {
+      "key": "C",
+      "text_cn": "不要把自己的车放在王旁边"
+    },
+    {
+      "key": "D",
+      "text_cn": "避免王困在角落，为王保留逃格，不要用己方棋子堵死王"
+    }
+  ],
+  "correct": "D",
+  "explanation_cn": "防止闷杀的关键是不要让王的逃格被己方棋子完全封死。若王躲在角落，要确保旁边至少有一个逃格；若车守在王身边，注意不要成为帮对方闷杀自己王的帮凶。",
+  "created_at": "2026-05-30"
+}

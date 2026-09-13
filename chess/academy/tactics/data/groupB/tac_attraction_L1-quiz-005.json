@@ -1,0 +1,31 @@
+{
+  "id": "tac_attraction_L1-quiz-005",
+  "tactic_id": "attraction",
+  "difficulty": "L1",
+  "sequence": 5,
+  "ref_id": "tac_attraction_L1-006",
+  "fen": "6k1/p2r2p1/2q2p1p/2P1p1n1/4P2P/6P1/PBQ4K/2R5 b - - 0 1",
+  "concept": "引入与引离的区别",
+  "question_cn": "引入（Attraction）和引离（Deflection）的核心区别是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "引入只用于将杀，引离只用于赢子，两者目的不同"
+    },
+    {
+      "key": "B",
+      "text_cn": "引入是把对方棋子诱到对我有利的格子（通常是危险格），引离是把对方棋子赶离它正在守护的位置（脱离职责）"
+    },
+    {
+      "key": "C",
+      "text_cn": "引入需要牺牲子力，引离不需要牺牲"
+    },
+    {
+      "key": "D",
+      "text_cn": "引入针对王，引离针对后——两者目标不同"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "引入（Attraction）：主动方用牺牲把对方棋子「吸引到」某个对自己有利的格子——那个格子就是致命点，王去了被叉将，车去了被叉吃。引离（Deflection）：主动方迫使对方棋子「离开」它的守护职位，目标是让某个防守关键点失去保护。两者都可能需要牺牲，都可能针对各种子，区别在于：引入关注的是目标落点（落哪里），引离关注的是目标的原职（守着什么）。",
+  "created_at": "2026-05-15"
+}

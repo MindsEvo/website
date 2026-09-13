@@ -1,0 +1,29 @@
+{
+  "id": "mate_dovetailMate_L1-quiz-002",
+  "mate_id": "dovetailMate",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "燕尾杀成立的关键条件",
+  "question_cn": "燕尾杀能够成立，最关键的条件是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王在棋盘中心，四面无子保护"
+    },
+    {
+      "key": "B",
+      "text_cn": "后站在王斜向相邻的格子将军"
+    },
+    {
+      "key": "C",
+      "text_cn": "王的两个斜向逃格恰好被己方棋子占据"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方没有后可以应将"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "燕尾杀成立的核心条件是王的两个斜向逃格被己方棋子封死。这两个棋子可以是车、象、兵等任意棋子。正是这两个己方棋子构成了燕尾的形状。",
+  "created_at": "2026-06-01"
+}

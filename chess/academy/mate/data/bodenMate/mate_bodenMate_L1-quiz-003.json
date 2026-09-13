@@ -1,0 +1,29 @@
+{
+  "id": "mate_bodenMate_L1-quiz-003",
+  "mate_id": "bodenMate",
+  "difficulty": "L1",
+  "sequence": 3,
+  "concept": "博登杀的棋子要求",
+  "question_cn": "博登杀中将死对方的棋子是哪两种？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "车和马"
+    },
+    {
+      "key": "B",
+      "text_cn": "后和象"
+    },
+    {
+      "key": "C",
+      "text_cn": "两个象（走在不同颜色格子上）"
+    },
+    {
+      "key": "D",
+      "text_cn": "两个车"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "博登杀必须由两个象完成——一个走在浅色格，一个走在深色格，两者分别沿着不同对角线交叉攻击王。单靠一个象无法形成博登杀。",
+  "created_at": "2026-06-02"
+}

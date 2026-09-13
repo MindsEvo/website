@@ -1,0 +1,31 @@
+{
+  "id": "tac_deflection_L1-quiz-004",
+  "tactic_id": "deflection",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_deflection_L1-005",
+  "fen": "pb1R1k1R/1PNp4/2r1p3/1p6/P1K3p1/2PBq2P/2p2b2/2P2Q2 w KQkq - 0 1",
+  "concept": "多步引离组合",
+  "question_cn": "在复杂局面（L2/L3级别）中，引离往往需要多步才能完成。以下哪个思路最准确描述了多步引离组合的逻辑？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "第一步随便走，等对方出错再抓住机会"
+    },
+    {
+      "key": "B",
+      "text_cn": "先走中间步（Zwischenzug）打乱对方节奏，再在下一步实施引离"
+    },
+    {
+      "key": "C",
+      "text_cn": "每步都用将军或赢子威胁剥离一层防守，直到最终目标完全暴露"
+    },
+    {
+      "key": "D",
+      "text_cn": "兑换所有棋子进入简化残局"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "多步引离（连续引离）是高阶应用：如果一个目标有多层保护，则逐步剥离——第一手引离外层守卫，第二手引离内层守卫，直到目标彻底暴露。每一步都必须是强制性的（将军或明确赢子威胁），不给对方重新布防的机会。这是L2/L3局面中最常见的引离组合形式。",
+  "created_at": "2026-05-10"
+}

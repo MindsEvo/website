@@ -1,0 +1,31 @@
+{
+  "id": "tac_interference_L1-quiz-004",
+  "tactic_id": "interference",
+  "difficulty": "L1",
+  "sequence": 4,
+  "ref_id": "tac_interference_L1-005",
+  "fen": "8/5pk1/p3p3/3n4/r5P1/3N2Pp/PRK1PP2/8 b - - 0 1",
+  "concept": "拦截 vs 引离的本质区别",
+  "question_cn": "拦截（Interference）和引离（Deflection）有何本质区别？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "拦截只能在横线上实施，引离只能在纵线上实施"
+    },
+    {
+      "key": "B",
+      "text_cn": "拦截需要牺牲子力，引离不需要牺牲"
+    },
+    {
+      "key": "C",
+      "text_cn": "拦截是将己方棋子插入对方联系线间；引离是迫使对方的守护子离开防守位置"
+    },
+    {
+      "key": "D",
+      "text_cn": "两者本质相同，区别仅在于谁先动"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "关键区别在于主动方向：拦截是「己方棋子插进去」切断联系；引离是「迫使对方棋子出来」离开防守。本题Rc4+→Rc1是拦截：己方车插入c4、c1两个关键格，卡住白王回路；而引离是用棋子攻击或诱敌，让对方的守护者不得不离开。",
+  "created_at": "2026-05-18"
+}

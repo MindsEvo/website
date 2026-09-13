@@ -1,0 +1,29 @@
+{
+  "id": "mate_backRankMate_L1-quiz-002",
+  "mate_id": "backRankMate",
+  "difficulty": "L1",
+  "sequence": 2,
+  "concept": "底线杀的关键条件",
+  "question_cn": "底线杀能够成立，最关键的条件是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "对方子力数量少于己方"
+    },
+    {
+      "key": "B",
+      "text_cn": "己方拥有后和两个车"
+    },
+    {
+      "key": "C",
+      "text_cn": "对方王在底线，且前方兵封死了王的逃路"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方底线没有任何棋子保护"
+    }
+  ],
+  "correct": "C",
+  "explanation_cn": "底线杀成立的核心条件是：王被本方的兵（g、f、h等兵未动）封死，无法向前逃跑。这正是为什么推兵开路（如推g3）是重要的防守手段。",
+  "created_at": "2026-05-29"
+}

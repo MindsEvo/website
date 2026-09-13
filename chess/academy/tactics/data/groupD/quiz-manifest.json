@@ -1,0 +1,120 @@
+{
+    "categories":  [
+                       {
+                           "label":  "困子",
+                           "key":  "trappedPiece",
+                           "items":  [
+                                         {
+                                             "id":  "tac_trappedPiece_L1-quiz-001",
+                                             "label":  "困子的定义"
+                                         },
+                                         {
+                                             "id":  "tac_trappedPiece_L1-quiz-002",
+                                             "label":  "最容易被困的棋子"
+                                         },
+                                         {
+                                             "id":  "tac_trappedPiece_L1-quiz-003",
+                                             "label":  "如何识别困子"
+                                         },
+                                         {
+                                             "id":  "tac_trappedPiece_L1-quiz-004",
+                                             "label":  "利用困子的方法"
+                                         },
+                                         {
+                                             "id":  "tac_trappedPiece_L1-quiz-005",
+                                             "label":  "避免困子的原则"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "阻塞",
+                           "key":  "blockade",
+                           "items":  [
+                                         {
+                                             "id":  "tac_blockade_L1-quiz-001",
+                                             "label":  "阻塞战术的本质"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L1-quiz-002",
+                                             "label":  "阻塞的最佳执行子"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L1-quiz-003",
+                                             "label":  "阻塞的主要目标"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L1-quiz-004",
+                                             "label":  "阻塞 vs 拦截的区别"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L1-quiz-005",
+                                             "label":  "识别阻塞机会的思路"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L2-quiz-001",
+                                             "label":  "主动阻塞：阻塞子带将军或捉子"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L2-quiz-002",
+                                             "label":  "封锁国王逃跑格的阻塞"
+                                         },
+                                         {
+                                             "id":  "tac_blockade_L2-quiz-003",
+                                             "label":  "阻塞与其他战术的组合"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "逼着",
+                           "key":  "zugzwang",
+                           "items":  [
+                                         {
+                                             "id":  "tac_zugzwang_L1-quiz-001",
+                                             "label":  "逼着的定义"
+                                         },
+                                         {
+                                             "id":  "tac_zugzwang_L1-quiz-002",
+                                             "label":  "逼着的常见阶段"
+                                         },
+                                         {
+                                             "id":  "tac_zugzwang_L1-quiz-003",
+                                             "label":  "王的逼着"
+                                         },
+                                         {
+                                             "id":  "tac_zugzwang_L1-quiz-004",
+                                             "label":  "制造逼着的方法"
+                                         },
+                                         {
+                                             "id":  "tac_zugzwang_L1-quiz-005",
+                                             "label":  "应对逼着"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "弃子",
+                           "key":  "sacrifice",
+                           "items":  [
+                                         {
+                                             "id":  "tac_sacrifice_L1-quiz-001",
+                                             "label":  "弃子的定义"
+                                         },
+                                         {
+                                             "id":  "tac_sacrifice_L1-quiz-002",
+                                             "label":  "弃子的常见目的"
+                                         },
+                                         {
+                                             "id":  "tac_sacrifice_L1-quiz-003",
+                                             "label":  "弃后战术"
+                                         },
+                                         {
+                                             "id":  "tac_sacrifice_L1-quiz-004",
+                                             "label":  "识别弃子时机"
+                                         },
+                                         {
+                                             "id":  "tac_sacrifice_L1-quiz-005",
+                                             "label":  "应对弃子进攻"
+                                         }
+                                     ]
+                       }
+                   ]
+}

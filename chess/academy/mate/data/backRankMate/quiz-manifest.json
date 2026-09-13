@@ -1,0 +1,25 @@
+{
+    "items":  [
+                  {
+                      "id":  "mate_backRankMate_L1-quiz-001",
+                      "label":  "底线杀的定义"
+                  },
+                  {
+                      "id":  "mate_backRankMate_L1-quiz-002",
+                      "label":  "底线杀的关键条件"
+                  },
+                  {
+                      "id":  "mate_backRankMate_L1-quiz-003",
+                      "label":  "执行底线杀的常用棋子"
+                  },
+                  {
+                      "id":  "mate_backRankMate_L1-quiz-004",
+                      "label":  "防守底线杀的方法"
+                  },
+                  {
+                      "id":  "mate_backRankMate_L1-quiz-005",
+                      "label":  "弃后引车的底线杀手法"
+                  }
+              ],
+    "label":  "底线杀"
+}

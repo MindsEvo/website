@@ -1,0 +1,19 @@
+{
+  "id": "tac_sacrifice_L1-quiz-003",
+  "tactic_id": "sacrifice",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_sacrifice_L1-005",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "弃后战术",
+  "question_cn": "弃后（Queen Sacrifice）通常发生在什么情况下？",
+  "options": [
+    {"key": "A", "text_cn": "己方后走投无路，只能送给对方"},
+    {"key": "B", "text_cn": "己方后没有价值，弃掉无所谓"},
+    {"key": "C", "text_cn": "弃后之后能立即将杀，或能获得足够的连续将军完成致命攻击"},
+    {"key": "D", "text_cn": "对方王已经逃脱，只好弃后换取平局"}
+  ],
+  "correct": "C",
+  "explanation_cn": "弃后是最大胆的弃子。由于后价值最高，弃后必须有非常明确的回报——通常是弃后后能立即将杀，或通过连续将军把对方王逐步驱离安全地带最终将杀。没有确定杀棋就弃后，往往会输棋。",
+  "created_at": "2026-05-28"
+}

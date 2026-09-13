@@ -1,0 +1,19 @@
+{
+  "id": "tac_sacrifice_L1-quiz-001",
+  "tactic_id": "sacrifice",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "tac_sacrifice_L1-001",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "弃子的定义",
+  "question_cn": "什么是弃子（Sacrifice）？",
+  "options": [
+    {"key": "A", "text_cn": "用等价子力换取对方的等价子力，保持材料平衡"},
+    {"key": "B", "text_cn": "主动放弃子力，换取将杀机会或持续的决定性进攻优势"},
+    {"key": "C", "text_cn": "移走己方棋子，暴露后方棋子的攻击线"},
+    {"key": "D", "text_cn": "故意送子让对方吃，然后立即赢回同等子力"}
+  ],
+  "correct": "B",
+  "explanation_cn": "弃子是主动放弃子力而不要求换回等价子力。目的不是换子，而是换取将杀或压倒性的进攻优势。弃子的价值在于换取的战略利益大于被弃子力的物质价值。",
+  "created_at": "2026-05-28"
+}

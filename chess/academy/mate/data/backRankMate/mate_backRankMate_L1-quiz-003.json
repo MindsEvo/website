@@ -1,0 +1,29 @@
+{
+  "id": "mate_backRankMate_L1-quiz-003",
+  "mate_id": "backRankMate",
+  "difficulty": "L1",
+  "sequence": 3,
+  "concept": "执行底线杀的常用棋子",
+  "question_cn": "哪种棋子最常用于执行底线杀？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "马，因为可以越过棋子攻击"
+    },
+    {
+      "key": "B",
+      "text_cn": "象，因为可以斜线攻击底角"
+    },
+    {
+      "key": "C",
+      "text_cn": "兵，因为可以升变"
+    },
+    {
+      "key": "D",
+      "text_cn": "车或后，因为可以沿横线控制整条底线"
+    }
+  ],
+  "correct": "D",
+  "explanation_cn": "车和后都能沿横线控制整条底线，是执行底线杀最常用的棋子。车尤为高效——单车即可封锁整条横线；后则因机动性强，常先用来引诱对方子力，再配合车完成将杀。",
+  "created_at": "2026-05-29"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tac_discoveredAttack_L1-quiz-003",
+  "tactic_id": "discoveredAttack",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_discoveredAttack_L1-005",
+  "fen": "8/2q2kbp/6pB/4P3/8/4N1Q1/5P2/6K1 w - - 0 1",
+  "concept": "如何识别闪击机会",
+  "question_cn": "在实战中，如何快速判断是否存在闪击机会？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "找己方子力最多的列或斜线，优先沿该方向攻击"
+    },
+    {
+      "key": "B",
+      "text_cn": "寻找己方被「遮挡」的远射程棋子（车/象/后），看它身前有没有可以移走的己方棋子，移走后是否攻击到对方要害"
+    },
+    {
+      "key": "C",
+      "text_cn": "检查对方国王的逃格数量，逃格越少越容易闪击"
+    },
+    {
+      "key": "D",
+      "text_cn": "先数双方子力差，物质均等时才值得寻找闪击"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "识别闪击的三步：①找被挡住的后方子（本题后g3被兵e5挡住）；②看前面那个子能走到哪里，走后是否有额外威胁（e6+将军）；③确认后方子攻击线对准对方要害（后g3→c7黑后）。三步都满足才是真正的闪击机会。",
+  "created_at": "2026-05-17"
+}

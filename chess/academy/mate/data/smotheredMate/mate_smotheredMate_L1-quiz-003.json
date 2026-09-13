@@ -1,0 +1,29 @@
+{
+  "id": "mate_smotheredMate_L1-quiz-003",
+  "mate_id": "smotheredMate",
+  "difficulty": "L1",
+  "sequence": 3,
+  "concept": "菲利道尔闷杀中弃后的作用",
+  "question_cn": "菲利道尔闷杀（Philidor's Legacy）中，Qg8+弃后的目的是什么？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用后换掉对方的后，简化局面"
+    },
+    {
+      "key": "B",
+      "text_cn": "引诱对方的车到g8，堵死王的逃格，让马踏f7完成闷杀"
+    },
+    {
+      "key": "C",
+      "text_cn": "为己方的车腾出空间进攻"
+    },
+    {
+      "key": "D",
+      "text_cn": "威胁升变，迫使对方应对"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "Qg8+是菲利道尔闷杀的关键一步：弃后迫使黑车到g8吃后，车反而堵死了王的唯一逃格，随后Nf7#马踏将杀。牺牲后是为了让对方自堵退路。",
+  "created_at": "2026-05-30"
+}

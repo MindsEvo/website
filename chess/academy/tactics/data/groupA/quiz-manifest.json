@@ -1,0 +1,112 @@
+{
+    "categories":  [
+                       {
+                           "label":  "捉双",
+                           "key":  "fork",
+                           "items":  [
+                                         {
+                                             "id":  "tac_fork_L1-quiz-001",
+                                             "label":  "捉双的定义"
+                                         },
+                                         {
+                                             "id":  "tac_fork_L1-quiz-002",
+                                             "label":  "捉双的最佳棋子"
+                                         },
+                                         {
+                                             "id":  "tac_fork_L1-quiz-003",
+                                             "label":  "捉双的应对方法"
+                                         },
+                                         {
+                                             "id":  "tac_fork_L1-quiz-004",
+                                             "label":  "将军捉双"
+                                         },
+                                         {
+                                             "id":  "tac_fork_L1-quiz-005",
+                                             "label":  "王叉的条件"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "牵制",
+                           "key":  "pin",
+                           "items":  [
+                                         {
+                                             "id":  "tac_pin_L1-quiz-001",
+                                             "label":  "牵制的定义"
+                                         },
+                                         {
+                                             "id":  "tac_pin_L1-quiz-002",
+                                             "label":  "全牵制与半牵制"
+                                         },
+                                         {
+                                             "id":  "tac_pin_L1-quiz-003",
+                                             "label":  "哪些棋子能实施牵制"
+                                         },
+                                         {
+                                             "id":  "tac_pin_L1-quiz-004",
+                                             "label":  "如何解除牵制"
+                                         },
+                                         {
+                                             "id":  "tac_pin_L1-quiz-005",
+                                             "label":  "牵制的战略价值"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "串击",
+                           "key":  "skewer",
+                           "items":  [
+                                         {
+                                             "id":  "tac_skewer_L1-quiz-001",
+                                             "label":  "串击的定义"
+                                         },
+                                         {
+                                             "id":  "tac_skewer_L1-quiz-002",
+                                             "label":  "串击与牵制的区别"
+                                         },
+                                         {
+                                             "id":  "tac_skewer_L1-quiz-003",
+                                             "label":  "能实施串击的棋子"
+                                         },
+                                         {
+                                             "id":  "tac_skewer_L1-quiz-004",
+                                             "label":  "串击成立的条件"
+                                         },
+                                         {
+                                             "id":  "tac_skewer_L1-quiz-005",
+                                             "label":  "应对串击的方法"
+                                         }
+                                     ]
+                       },
+                       {
+                           "label":  "闪击",
+                           "key":  "discoveredAttack",
+                           "items":  [
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-001",
+                                             "label":  "闪击的本质"
+                                         },
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-002",
+                                             "label":  "闪击的两个角色"
+                                         },
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-003",
+                                             "label":  "如何识别闪击机会"
+                                         },
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-004",
+                                             "label":  "闪击将军与普通闪击的区别"
+                                         },
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-005",
+                                             "label":  "闪击与捉双的区别"
+                                         },
+                                         {
+                                             "id":  "tac_discoveredAttack_L1-quiz-006",
+                                             "label":  "闪将：带将军的闪击"
+                                         }
+                                     ]
+                       }
+                   ]
+}

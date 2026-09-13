@@ -1,0 +1,25 @@
+{
+    "items":  [
+                  {
+                      "id":  "mate_anastasia_L1-quiz-001",
+                      "label":  "安娜斯塔西亚杀的定义"
+                  },
+                  {
+                      "id":  "mate_anastasia_L1-quiz-002",
+                      "label":  "马在安娜斯塔西亚杀中的作用"
+                  },
+                  {
+                      "id":  "mate_anastasia_L1-quiz-003",
+                      "label":  "弃后在安娜斯塔西亚杀中的作用"
+                  },
+                  {
+                      "id":  "mate_anastasia_L1-quiz-004",
+                      "label":  "安娜斯塔西亚杀成立的条件"
+                  },
+                  {
+                      "id":  "mate_anastasia_L1-quiz-005",
+                      "label":  "如何防范安娜斯塔西亚杀"
+                  }
+              ],
+    "label":  "安娜斯塔西亚杀"
+}

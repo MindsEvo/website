@@ -1,0 +1,19 @@
+{
+  "id": "tac_sacrifice_L1-quiz-002",
+  "tactic_id": "sacrifice",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "tac_sacrifice_L1-003",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "弃子的常见目的",
+  "question_cn": "弃子战术最常见的直接目的是什么？",
+  "options": [
+    {"key": "A", "text_cn": "减少棋盘上的棋子，进入残局"},
+    {"key": "B", "text_cn": "引开对方防守棋子，打开将死通道"},
+    {"key": "C", "text_cn": "换回等价子力，维持材料优势"},
+    {"key": "D", "text_cn": "拖延时间，等待对手犯错"}
+  ],
+  "correct": "B",
+  "explanation_cn": "弃子最核心的目的是引离——迫使对方某个关键防守棋子离开要害位置，从而打开杀棋通道。例如弃车引开对方一个兵，后就可以占据将死位置。这种以小换大的算法是弃子战术的精髓。",
+  "created_at": "2026-05-28"
+}

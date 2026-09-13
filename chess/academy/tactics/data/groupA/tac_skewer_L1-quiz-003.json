@@ -1,0 +1,19 @@
+{
+  "id": "tac_skewer_L1-quiz-003",
+  "tactic_id": "skewer",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_skewer_L1-007",
+  "fen": "6q1/6pp/2k1p3/R6B/p7/8/2P3P1/2K5 w - - 0 1",
+  "concept": "能实施串击的棋子",
+  "question_cn": "哪些棋子能实施串击？",
+  "options": [
+    {"key": "A", "text_cn": "所有棋子都可以"},
+    {"key": "B", "text_cn": "只有马，因为跳法难以预判"},
+    {"key": "C", "text_cn": "象、车、后——只有能沿直线或斜线\"穿透\"攻击的棋子"},
+    {"key": "D", "text_cn": "只有后，因为走法最多"}
+  ],
+  "correct": "C",
+  "explanation_cn": "串击需要\"穿线\"攻击：象走斜线，车走横竖，后兼而有之。马跳L形、兵只能斜吃一格，无法形成串击。王虽然能走一格，但通常不会主动串击。",
+  "created_at": "2026-05-25"
+}

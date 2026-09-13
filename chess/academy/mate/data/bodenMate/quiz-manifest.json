@@ -1,0 +1,25 @@
+{
+    "items":  [
+                  {
+                      "id":  "mate_bodenMate_L1-quiz-001",
+                      "label":  "博登杀的定义"
+                  },
+                  {
+                      "id":  "mate_bodenMate_L1-quiz-002",
+                      "label":  "博登杀中弃后的作用"
+                  },
+                  {
+                      "id":  "mate_bodenMate_L1-quiz-003",
+                      "label":  "博登杀的棋子要求"
+                  },
+                  {
+                      "id":  "mate_bodenMate_L1-quiz-004",
+                      "label":  "博登杀的突然性"
+                  },
+                  {
+                      "id":  "mate_bodenMate_L1-quiz-005",
+                      "label":  "如何防范博登杀"
+                  }
+              ],
+    "label":  "博登杀"
+}

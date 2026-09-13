@@ -1,0 +1,29 @@
+{
+  "id": "mate_hookMate_L1-quiz-003",
+  "mate_id": "hookMate",
+  "difficulty": "L1",
+  "sequence": 3,
+  "concept": "引离手法在钩杀中的作用",
+  "question_cn": "钩杀前为何常用将军或吃子来引离对方王？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "为了获得物质优势，多吃一个子"
+    },
+    {
+      "key": "B",
+      "text_cn": "把王驱赶到特定格子，使其暴露在钩杀阵型的攻击范围内"
+    },
+    {
+      "key": "C",
+      "text_cn": "逼迫对方王进入己方领地"
+    },
+    {
+      "key": "D",
+      "text_cn": "清除本方棋子的前进道路"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "引离手法（通常是将军或强吃）的目的是强迫王走到特定格子，进入钩杀阵型的覆盖范围。王别无选择，只能就范，最终被封死将死。",
+  "created_at": "2026-05-31"
+}

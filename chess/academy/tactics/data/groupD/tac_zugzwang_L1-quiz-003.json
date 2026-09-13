@@ -1,0 +1,31 @@
+{
+  "id": "tac_zugzwang_L1-quiz-003",
+  "tactic_id": "zugzwang",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "tac_zugzwang_L1-003",
+  "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
+  "concept": "王的逼着",
+  "question_cn": "在王兵残局中，进攻方如何利用逼着推进兵升变？",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "让王远离兵，用兵单独冲刺升变"
+    },
+    {
+      "key": "B",
+      "text_cn": "用王直接逼退对方王，占据关键格子后推兵"
+    },
+    {
+      "key": "C",
+      "text_cn": "把兵推到第7行，等对方王主动离开"
+    },
+    {
+      "key": "D",
+      "text_cn": "王站在兵的斜后方，随时换掉对方王"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "王兵残局的核心是王的对立（opposition）。进攻方王逼退对方王，占领兵前方的关键格（如兵在e5则控制d6、e6、f6），形成逼着迫使对方王让步，再推兵升变。",
+  "created_at": "2026-05-29"
+}

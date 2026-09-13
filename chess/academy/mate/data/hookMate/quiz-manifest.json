@@ -1,0 +1,25 @@
+{
+    "items":  [
+                  {
+                      "id":  "mate_hookMate_L1-quiz-001",
+                      "label":  "钩杀的定义"
+                  },
+                  {
+                      "id":  "mate_hookMate_L1-quiz-002",
+                      "label":  "钩杀的典型棋子配置"
+                  },
+                  {
+                      "id":  "mate_hookMate_L1-quiz-003",
+                      "label":  "引离手法在钩杀中的作用"
+                  },
+                  {
+                      "id":  "mate_hookMate_L1-quiz-004",
+                      "label":  "升变马与钩杀"
+                  },
+                  {
+                      "id":  "mate_hookMate_L1-quiz-005",
+                      "label":  "如何防范钩杀"
+                  }
+              ],
+    "label":  "钩杀"
+}
