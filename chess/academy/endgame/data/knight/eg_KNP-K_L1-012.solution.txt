@@ -1,0 +1,16 @@
+1. Kc4 Kd6
+2. Nd4 Kd7
+3. Kc5 Kc7
+4. d6+ Kd7
+5. Kd5 Kd8
+6. Ke6 Kc8
+7. Ke7 Kb7
+8. d7 Kb6
+9. Kd6 Ka5
+10. d8=Q+ Kb4
+11. Qc7 Ka3
+12. Qc3+ Ka2
+13. Qb3+ Ka1
+14. Nc2#
+# END
+# 解法 1

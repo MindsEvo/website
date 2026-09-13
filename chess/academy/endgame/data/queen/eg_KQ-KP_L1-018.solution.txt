@@ -1,0 +1,5 @@
+1. Kd5+ Kd2
+2. Kc4 e1=Q
+3. Qxe1+ Kxe1
+# END
+# 解法 1

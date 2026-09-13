@@ -1,0 +1,12 @@
+1. Qg2+ Kb1
+2. Qg1+ Kb2
+3. Qg2+ Kb1
+4. Qe4+ Kb2
+5. Qd4+ Kb1
+6. Qb4+ Kc2
+7. Qc5+ Kb1
+8. Qg1+ Kb2
+9. Qd4+ Kb1
+10. Qg1+
+# END
+# 解法 1

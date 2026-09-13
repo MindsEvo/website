@@ -1,0 +1,11 @@
+1. Kg3 Kg1
+2. Bc4 Kh1
+3. Ne8 Kg1
+4. Be2 Kh1
+5. Nf6 Kg1
+6. Ng4 Kh1
+7. Nf2+ Kg1
+8. Nh3+ Kh1
+9. Bf3#
+# END
+# 解法 1

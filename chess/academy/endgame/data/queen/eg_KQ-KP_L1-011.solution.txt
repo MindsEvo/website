@@ -1,0 +1,15 @@
+1. Qh2+ Kc1
+2. Qf4+ Kd1
+3. Qa4+ Kc1
+4. Qc4+ Kd2
+5. Qb3 Kc1
+6. Qc3+ Kb1
+7. Kd7 Ka2
+8. Qc2 Ka1
+9. Qa4+ Kb1
+10. Kc6 Kc1
+11. Qc4+ Kd2
+12. Qb3 b1=Q
+13. Qxb1 Ke3
+# END
+# 解法 1

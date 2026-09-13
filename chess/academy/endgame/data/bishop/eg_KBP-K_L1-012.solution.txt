@@ -1,0 +1,13 @@
+1. Kg5 Kf7
+2. h5 Ke7
+3. h6 Kf7
+4. Be3 Kf8
+5. Kf6 Ke8
+6. h7 Kd8
+7. Ke6 Kc7
+8. h8=Q Kc6
+9. Qb2 Kc7
+10. Ba7 Kc8
+11. Qb8#
+# END
+# 解法 1

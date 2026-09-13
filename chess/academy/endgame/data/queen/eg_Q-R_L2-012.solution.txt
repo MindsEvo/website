@@ -1,0 +1,25 @@
+1. Qc5+ Kb7
+2. Qd5+ Ka7
+3. Kb3 Rb8+
+4. Kc4 Ka6
+5. Qc6+ Ka7
+6. Qc7+ Rb7
+7. Qa5+ Kb8
+8. Qd8+ Ka7
+9. Kc5 Rb2
+10. Qd4 Rb6
+11. Qe3 Ka6
+12. Qd3+ Ka7
+13. Qd4 Rb7
+14. Kc6+ Kb8
+15. Qh8+ Ka7
+16. Qd8 Rh7
+17. Qd4+ Kb8
+18. Qe5+ Ka7
+19. Qa1+ Kb8
+20. Qb1+ Ka7
+21. Qxh7+ Ka6
+22. Qb7+ Ka5
+23. Qb5#
+# END
+# 解法 1

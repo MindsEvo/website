@@ -1,0 +1,7 @@
+1. c8=R Kb7
+2. Rc6 Ka8
+3. Kb6 Kb8
+4. Rh6 Ka8
+5. Rh8#
+# END
+# 解法 1

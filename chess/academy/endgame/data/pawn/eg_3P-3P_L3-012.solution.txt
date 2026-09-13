@@ -1,0 +1,13 @@
+1. Kf2 Kd6
+2. Kf3 Ke5
+3. d3 Kd5
+4. Kf4 d6
+5. Kf3 Ke5
+6. Ke3 Kd5
+7. Kd2 Ke6
+8. Ke2 Kd5
+9. Kf3 Ke5
+10. Ke3 Kd5
+11. Kf3
+# END
+# 解法 1

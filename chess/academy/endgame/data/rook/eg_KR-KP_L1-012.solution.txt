@@ -1,0 +1,10 @@
+1. Rd1+ Ke4
+2. Kf7 c4
+3. Ke6 c3
+4. Kd6 c2
+5. Rh1 Kd3
+6. Ke7 Kd2
+7. Ke8 c1=Q
+8. Rxc1 Kxc1
+# END
+# 解法 1

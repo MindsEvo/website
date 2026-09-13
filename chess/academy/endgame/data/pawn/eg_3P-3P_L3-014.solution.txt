@@ -1,0 +1,15 @@
+1. Kc3 Kf8
+2. Kc4 Kf7
+3. Kxc5 Kf8
+4. Kb6 Ke7
+5. Kxa6 Kf7
+6. g5 Kg6
+7. gxf6 Kf7
+8. b4 Kxf6
+9. b5 Kf5
+10. b6 Ke4
+11. b7 Kxf4
+12. b8=Q+ Ke3
+13. Qg3+
+# END
+# 解法 1

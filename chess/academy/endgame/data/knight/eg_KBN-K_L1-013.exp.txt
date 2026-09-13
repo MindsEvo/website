@@ -1,0 +1,29 @@
+白方必胜。
+
+# END
+# 解法 1
+
+## 详细信息
+- **ID**: eg_KBN-K_L1-006
+- **主题**: piece_coordination, endgame, bishopEndgame, basic_checkmate, knightEndgame, crushing
+- **FEN**: `8/8/8/8/8/5K2/B7/2N3k1 w - - 0 1`
+- **轮到走棋**: 白方
+
+### Syzygy残局库数据（可用于验证）
+- **WDL**: 2 (2=当前方必赢, 0=和棋, -2=当前方必输)
+- **DTZ**: 12 (Distance To Zero: 12半步)
+- **验证方法**: 用上述FEN在Syzygy残局库中查询，应得到相同的WDL/DTZ值
+
+- **评分**: 200
+- **评估**: 白方必胜（残局库确认）
+
+## 关键提示
+- 保持子力协同配合
+- 逐步限制黑王活动空间
+- 注意避免逼和局面
+
+---
+*本题目由Syzygy残局库生成*
+
+# END
+# 解法 1

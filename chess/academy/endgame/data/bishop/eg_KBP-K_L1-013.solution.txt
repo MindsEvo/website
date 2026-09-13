@@ -1,0 +1,14 @@
+1. Bf5 Kh8
+2. h6 Kg8
+3. Bd3 Kh8
+4. Bc2 Kg8
+5. Kf6 Kh8
+6. Kg6 Kg8
+7. Kh5 Kh8
+8. Kh4 Kg8
+9. Bf5 Kh8
+10. Bd3 Kg8
+11. Kg3 Kh8
+12. Bc2 Kg8
+# END
+# 解法 1

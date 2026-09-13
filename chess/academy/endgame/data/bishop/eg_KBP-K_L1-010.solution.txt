@@ -1,0 +1,13 @@
+1. Kc5 Kc8
+2. a5 Kb7
+3. Kd6 Kb8
+4. a6 Kc8
+5. Bd7+ Kb8
+6. Kc6 Ka7
+7. Kb5 Kb8
+8. Kb6 Ka8
+9. Bc6+ Kb8
+10. a7+ Kc8
+11. a8=Q#
+# END
+# 解法 1

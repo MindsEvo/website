@@ -1,0 +1,22 @@
+1. Nh6 Nd5+
+2. Kc5 Ne7
+3. Kd6 Ng6
+4. Nf7 Nh4
+5. Ke7 Nf5+
+6. Kf6 Ne3
+7. Ke5 Nc4+
+8. Kf5 Ne3+
+9. Ke4 Nf5
+10. Kxf5 Kb2
+11. e7 Kc3
+12. e8=Q Kd4
+13. Nd6 Kd5
+14. Qh8 Kxd6
+15. Qe5+ Kc6
+16. Ke6 Kb7
+17. Kd6 Kb8
+18. Kc6+ Ka8
+19. Kc7 Ka7
+20. Qa5#
+# END
+# 解法 1

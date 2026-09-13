@@ -1,0 +1,19 @@
+1. f4 Rc5
+2. Ra1 Rc2
+3. f3 Rf2
+4. Ra6 Rf1
+5. f5 Rg1+
+6. Kf4 Kf7
+7. Rb6 Ra1
+8. Rb7+ Kf6
+9. Rb6+ Kg7
+10. Kg5 Rg1+
+11. Kf4 Ra1
+12. Kg5 Rg1+
+13. Kf4 Kf7
+14. Rb7+ Kf6
+15. Rb6+ Kf7
+16. Rb7+ Kf6
+17. Rb6+ Kf7
+# END
+# 解法 1

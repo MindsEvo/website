@@ -1,0 +1,22 @@
+1. Kf4 d5
+2. Kg5 d4
+3. e4 Kd6
+4. Kxg6 Ke6
+5. Kg5 Ke5
+6. Kg4 Ke6
+7. Kf4 Kd6
+8. e5+ Ke7
+9. Ke4 Kd7
+10. Kxd4 Ke6
+11. Ke4 Ke7
+12. Kd5 Kd7
+13. d4 Ke7
+14. e6 Ke8
+15. Kd6 Kd8
+16. e7+ Ke8
+17. d5 Kf7
+18. Kd7 Kf6
+19. e8=Q Kf5
+20. Qe3
+# END
+# 解法 1

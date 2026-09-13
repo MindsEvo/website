@@ -1,0 +1,12 @@
+1. Qb8 Nd3+
+2. Kd2 Nb4
+3. Kc3 Nd5+
+4. Kd4 Ne7
+5. Qf8 Kb4
+6. Qxe7+ Kb3
+7. Qe2 Kb4
+8. Qb2+ Ka5
+9. Kc5 Ka6
+10. Qb6#
+# END
+# è§£æ³ 1

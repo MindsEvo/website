@@ -1,0 +1,7 @@
+1. Kg5 e1=Q
+2. Qf8+ Kg2
+3. Qd6 Qe3+
+4. Kg6 Qg3+
+5. Qxg3+ Kxg3
+# END
+# 解法 1

@@ -1,0 +1,11 @@
+1. Qd4+ Kb1
+2. Qd8 Qg6
+3. Qd1+ Kb2
+4. Qe2+ Ka3
+5. Qe3+ Kb4
+6. e8=Q Qb1+
+7. Ke2 Qb2+
+8. Qd2+ Qxd2+
+9. Kxd2 Kc5
+# END
+# 解法 1

@@ -1,0 +1,39 @@
+﻿{
+  "categories": [
+    {
+      "key": "K2B_vs_K",
+      "label": "双象对王-L1",
+      "items": [
+        { "id": "eg_K2B-K_L1-010", "label": "练习1", "fen": "1B6/7K/8/8/8/8/4k3/7B w - - 0 1" },
+        { "id": "eg_K2B-K_L1-011", "label": "练习2", "fen": "8/8/B7/8/1k6/6K1/5B2/8 w - - 0 1" }
+      ]
+    },
+    {
+      "key": "KBP_vs_K",
+      "label": "象兵对王-L1",
+      "items": [
+        { "id": "eg_KBP-K_L1-010", "label": "练习1", "fen": "1k6/8/8/1B6/P2K4/8/8/8 w - - 0 1" },
+        { "id": "eg_KBP-K_L1-011", "label": "练习2", "fen": "8/8/8/4k3/4P3/4B3/4K3/8 w - - 0 1" },
+        { "id": "eg_KBP-K_L1-012", "label": "练习3", "fen": "8/6k1/8/8/6KP/8/8/6B1 w - - 0 1" },
+        { "id": "eg_KBP-K_L1-013", "label": "练习4", "fen": "8/6k1/8/6KP/8/7B/8/8 w - - 0 1" },
+        { "id": "eg_KBP-K_L1-014", "label": "练习5", "fen": "4k3/8/8/2BP4/8/3K4/8/8 w - - 0 1" },
+        { "id": "eg_KBP-K_L1-015", "label": "练习6", "fen": "8/8/5k2/P2K2b1/8/8/8/8 w - - 0 1" }
+      ]
+    },
+    {
+      "key": "B2P_vs_B",
+      "label": "象双兵对象-L2",
+      "items": [
+        { "id": "eg_B2P-B_L2-002", "label": "练习1", "fen": "6k1/8/6PP/6K1/3b4/5B2/8/8 w - - 0 1" }
+      ]
+    },
+    {
+      "key": "BP_vs_B",
+      "label": "象兵对象-L2",
+      "items": [
+        { "id": "eg_BP-B_L2-002", "label": "练习1", "fen": "5k2/3b4/3P1K2/8/8/8/8/3B4 w - - 0 1" },
+        { "id": "eg_BP-B_L2-003", "label": "练习2", "fen": "6k1/3BK3/5P2/8/8/5b2/8/8 b - - 0 1" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+1. Rf6 Ke7
+2. Ra6 Kd7
+3. Kh2 Kc7
+4. Kg3 Kb7
+5. Re6 Kc8
+6. Kg4 Kb7
+7. Kf5 Kc7
+8. Kf6 Kd8
+9. Re7 Kc8
+10. Ke6 Kd8
+11. Kd6 Kc8
+12. Kc6 Kb8
+13. Re6 Ka7
+14. Kc7 Ka8
+15. Ra6#
+# END
+# 解法 1

@@ -1,0 +1,23 @@
+1. Qc8+ Kb2
+2. Qg4 Kc2
+3. Qc4+ Kb2
+4. Qd3 Kc1
+5. Qc3+ Kd1
+6. Kf6 Ke2
+7. Qc2 Ke1
+8. Qe4+ Kf2
+9. Qd3 Ke1
+10. Qe3+ Kd1
+11. Ke5 Kc2
+12. Qe2 Kc1
+13. Qc4+ Kb2
+14. Qd3 Kc1
+15. Qc3+ Kd1
+16. Kd4 Ke2
+17. Qe3+ Kf1
+18. Qxd2 Kg1
+19. Ke3 Kh1
+20. Kf3 Kg1
+21. Qg2#
+# END
+# 解法 1

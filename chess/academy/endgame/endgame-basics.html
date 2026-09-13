@@ -472,25 +472,25 @@
         <div class="panel panel-placeholder">
           <h3>操作练习</h3>
           <div class="piece-chips">
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#7d3c98">后</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-practice-piece="q">
+              <button class="piece-chip" id="practiceQ" data-practice-piece="q" style="background:#7d3c98">后</button>
+              <div class="dropdown-menu" id="menuPracticeQ"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#c0392b">车</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-practice-piece="r">
+              <button class="piece-chip" id="practiceR" data-practice-piece="r" style="background:#c0392b">车</button>
+              <div class="dropdown-menu" id="menuPracticeR"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#2471a3">象</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-practice-piece="b">
+              <button class="piece-chip" id="practiceB" data-practice-piece="b" style="background:#2471a3">象</button>
+              <div class="dropdown-menu" id="menuPracticeB"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#1e8449">马</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-practice-piece="n">
+              <button class="piece-chip" id="practiceN" data-practice-piece="n" style="background:#1e8449">马</button>
+              <div class="dropdown-menu" id="menuPracticeN"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#d68910">兵</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-practice-piece="p">
+              <button class="piece-chip" id="practiceP" data-practice-piece="p" style="background:#d68910">兵</button>
+              <div class="dropdown-menu" id="menuPracticeP"></div>
             </div>
           </div>
         </div>
@@ -548,6 +548,18 @@
       // Only 后(Queen) is populated so far; the other 4 piece types share this same
       // engine/UI but their data manifests haven't been built yet.
       var PIECE_DEFS = [
+        { key: 'q', label: '后', folder: 'queen', enabled: true },
+        { key: 'r', label: '车', folder: 'rook', enabled: true },
+        { key: 'b', label: '象', folder: 'bishop', enabled: true },
+        { key: 'n', label: '马', folder: 'knight', enabled: true },
+        { key: 'p', label: '兵', folder: 'pawn', enabled: true }
+      ];
+
+      // 操作练习: all 5 piece types populated now, reusing the SAME piece folders
+      // as 动态观察 (practice puzzles live alongside observation puzzles in
+      // data/{folder}/, distinguished by a separate practice-manifest.json and
+      // distinct source puzzle numbers — no filename collisions).
+      var PRACTICE_PIECE_DEFS = [
         { key: 'q', label: '后', folder: 'queen', enabled: true },
         { key: 'r', label: '车', folder: 'rook', enabled: true },
         { key: 'b', label: '象', folder: 'bishop', enabled: true },
@@ -1178,15 +1190,126 @@
         });
       }
 
+      // ── 操作练习 (hands-on practice) data loading ──────
+      // Same engine as 动态观察 (parseFen/parseSolutionMoves/buildTimelineFromFen/
+      // goToPly all reused verbatim) but WITHOUT anno.json: practice puzzles have no
+      // per-move popup/highlight/arrow annotations in the source data. Setting
+      // `state.anno = {}` (instead of a real anno.json payload) makes every existing
+      // anno-driven code path in goToPly degrade gracefully on its own — intro/outro
+      // popups stay hidden (`intro`/`outro` are undefined), `state.annoByIndex` stays
+      // empty so no per-move popup/highlights/arrows render — while solution-line
+      // highlighting, voice narration, and move/capture/check sounds all keep working
+      // exactly as before, since none of those depend on anno.
+      var practiceManifestCache = {};
+
+      function findPracticeItem(manifest, itemId) {
+        for (var i = 0; i < manifest.categories.length; i++) {
+          var cat = manifest.categories[i];
+          for (var j = 0; j < cat.items.length; j++) {
+            if (cat.items[j].id === itemId) return cat.items[j];
+          }
+        }
+        return null;
+      }
+
+      function renderPracticeDropdownMenu(pieceDef, manifest, menuEl) {
+        var html = '';
+        manifest.categories.forEach(function (cat) {
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          html += '<div class="submenu">';
+          cat.items.forEach(function (item) {
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          });
+          html += '</div></div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadPracticeItem(pieceDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+        menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            if (e.target.closest('.submenu-item')) return;
+            e.stopPropagation();
+            var wasOpen = row.classList.contains('open');
+            menuEl.querySelectorAll('.menu-row').forEach(function (r) { r.classList.remove('open'); });
+            if (!wasOpen) row.classList.add('open');
+          });
+        });
+      }
+
+      function selectPracticePiece(pieceDef) {
+        var menuEl = document.getElementById('menuPractice' + pieceDef.key.toUpperCase());
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (!pieceDef.enabled) {
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + pieceDef.label + '"类练习暂未上线，敬请期待</div>';
+          menuEl.classList.add('open');
+          return;
+        }
+        if (practiceManifestCache[pieceDef.key]) {
+          renderPracticeDropdownMenu(pieceDef, practiceManifestCache[pieceDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + pieceDef.folder + '/practice-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            practiceManifestCache[pieceDef.key] = manifest;
+            renderPracticeDropdownMenu(pieceDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadPracticeItem(pieceDef, manifest, itemId) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var item = findPracticeItem(manifest, itemId);
+        if (!item) return;
+        playStatus.textContent = '正在加载练习题...';
+        var base = './data/' + pieceDef.folder + '/';
+        Promise.all([
+          fetch(base + itemId + '.solution.txt').then(function (r) { return r.text(); }),
+          fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
+        ]).then(function (res) {
+          state.anno = {};
+          var moveList = parseSolutionMoves(res[0]);
+          var timeline = buildTimelineFromFen(item.fen, moveList);
+          state.states = timeline.states;
+          state.moveMetas = timeline.moveMetas;
+          state.annoByIndex = {};
+          explanationText.textContent = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          renderSolutionLines();
+          goToPly(-1);
+        }).catch(function (e) {
+          playStatus.textContent = '练习题加载失败: ' + e.message;
+        });
+      }
+
       // ── Controls ──────────────────────────────────────
       PIECE_DEFS.forEach(function (pieceDef) {
         var el = document.querySelector('.piece-chip[data-piece="' + pieceDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPiece(pieceDef); });
       });
 
-      // 操作练习/问答练习 are not implemented yet — their piece buttons just show a
-      // "敬请期待" placeholder in the same dropdown style used for locked pieces.
-      document.querySelectorAll('.panel-placeholder .piece-dropdown-wrap').forEach(function (wrap) {
+      PRACTICE_PIECE_DEFS.forEach(function (pieceDef) {
+        var el = document.querySelector('.piece-chip[data-practice-piece="' + pieceDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticePiece(pieceDef); });
+      });
+
+      // 问答练习 is not implemented yet (and 操作练习's remaining 4 piece
+      // types) — their buttons just show a "敬请期待" placeholder in the same
+      // dropdown style used for locked pieces.
+      document.querySelectorAll('.panel-placeholder .piece-dropdown-wrap:not([data-practice-piece])').forEach(function (wrap) {
         var btn = wrap.querySelector('.piece-chip');
         var menuEl = wrap.querySelector('.dropdown-menu');
         btn.addEventListener('click', function (e) {

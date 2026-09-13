@@ -1,0 +1,9 @@
+1. Kf3 Kf7
+2. Ke3 Ke6
+3. Ke4 Kf6
+4. Kf4 Ke6
+5. Ke4 Kf6
+6. Kf4 Ke6
+7. Ke4
+# END
+# 解法 1

@@ -1,0 +1,14 @@
+1. f4 Kb4
+2. h4 d5
+3. f5 Kc5
+4. h5 d4
+5. f6 Kd6
+6. h6 Ke6
+7. h7 d3
+8. h8=Q d2
+9. Qd8 d1=Q+
+10. Qxd1 Kxf6
+11. Qd5 a5
+12. Qxa5
+# END
+# 解法 1

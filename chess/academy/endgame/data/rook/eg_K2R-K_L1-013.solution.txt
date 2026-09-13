@@ -1,0 +1,7 @@
+1. Kh4 Kd2
+2. Kg5 Ke2
+3. Rc2+ Kd1
+4. Ra2 Kc1
+5. Rh1#
+# END
+# 解法 1

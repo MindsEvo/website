@@ -1,0 +1,21 @@
+1. d8=N+ Kg6
+2. Nxb7 Kf6
+3. Kc6 Kf7
+4. Kb6 Kg8
+5. Kxa6 Kg7
+6. Kxb5 Kf6
+7. Kc5 Ke5
+8. Nd6 Kf6
+9. b5 Ke6
+10. b6 Kd7
+11. Nb5 Ke7
+12. b7 Ke6
+13. b8=Q Kf7
+14. Kd5 Kg6
+15. Ke5 Kg7
+16. Kf5 Kf7
+17. Qb7+ Kf8
+18. Kf6 Kg8
+19. Qg7#
+# END
+# 解法 1

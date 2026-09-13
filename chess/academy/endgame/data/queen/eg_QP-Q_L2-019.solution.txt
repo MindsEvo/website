@@ -1,0 +1,8 @@
+1. Qg2 Qe6
+2. g8=Q Qb6+
+3. Kh1 Qh6+
+4. Qh2 Qxh2+
+5. Kxh2 Kb2
+6. Qc4
+# END
+# 解法 1

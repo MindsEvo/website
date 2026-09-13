@@ -1,0 +1,22 @@
+1. Kb7 Bf7
+2. Kc8 Be6+
+3. Kd8 Bf7
+4. Ke7 Bh5
+5. Qg3+ Bg4
+6. Kf7 f4
+7. Qg2 f3
+8. Qg3 Kf5
+9. Qh4 Kf4
+10. Kg6 Ke5
+11. Qxg4 f2
+12. Qf5+ Kd6
+13. Qxf2 Kc7
+14. Kf7 Kb8
+15. Ke8 Kc7
+16. Qf6 Kc8
+17. Qg7 Kb8
+18. Kd8 Ka8
+19. Kc7 Ka7
+20. Qa1#
+# END
+# è§£æ³ 1

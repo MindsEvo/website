@@ -1,0 +1,22 @@
+1. Kg6 Kd2
+2. Kf5 Kd3
+3. Bg2 Ke3
+4. Ba7+ Kd2
+5. Ke4 Kc2
+6. Kd4 Kb3
+7. Bb6 Kb4
+8. Bf1 Kb3
+9. Ba5 Ka4
+10. Bc3 Ka3
+11. Kc4 Ka4
+12. Be2 Ka3
+13. Bd1 Ka2
+14. Kb4 Kb1
+15. Kb3 Kc1
+16. Bf3 Kb1
+17. Bf6 Kc1
+18. Bg5+ Kb1
+19. Be4+ Ka1
+20. Bf6#
+# END
+# 解法 1

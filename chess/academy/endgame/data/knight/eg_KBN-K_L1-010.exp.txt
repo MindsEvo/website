@@ -1,0 +1,30 @@
+白方必胜， 避免和棋。
+
+# END
+# 解法 1
+
+## 详细信息
+- **ID**: eg_KBN-K_L1-003
+- **主题**: king_activity, piece_coordination, endgame, bishopEndgame, basic_checkmate, knightEndgame, crushing
+- **FEN**: `1k6/8/4B3/8/3K4/2N5/8/8 w - - 0 1`
+- **轮到走棋**: 白方
+- **最佳着法**: `c3d5`
+
+### Syzygy残局库数据（可用于验证）
+- **WDL**: 2 (2=当前方必赢, 0=和棋, -2=当前方必输)
+- **DTZ**: 18 (Distance To Zero: 18半步)
+- **验证方法**: 用上述FEN在Syzygy残局库中查询，应得到相同的WDL/DTZ值
+
+- **评分**: 200
+- **评估**: 白方必胜（残局库确认）
+
+## 关键提示
+- 保持子力协同配合
+- 逐步限制黑王活动空间
+- 注意避免逼和局面
+
+---
+*本题目由Syzygy残局库生成*
+
+# END
+# 解法 1

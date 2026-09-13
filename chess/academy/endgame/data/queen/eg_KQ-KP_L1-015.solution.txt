@@ -1,0 +1,9 @@
+1. Kc4+ Kc1
+2. Qf4+ Kb1
+3. Kb3 a1=N+
+4. Kc3 Nc2
+5. Qf1+ Ne1
+6. Kb3 Kc1
+7. Qxe1#
+# END
+# 解法 1

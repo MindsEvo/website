@@ -1,0 +1,16 @@
+... Kd7
+2. Rc7+ Kd8
+3. Rc6 Kd7
+4. Rd6+ Ke7
+5. Kc7 Rc2+
+6. Rc6 Rd2
+7. b8=Q Rd7+
+8. Kc8 Rd8+
+9. Kb7 Rxb8+
+10. Kxb8 Kd7
+11. Kb7 Ke7
+12. Kc7 Ke8
+13. b7 Ke7
+14. b8=Q
+# END
+# 解法 1

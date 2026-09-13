@@ -1,0 +1,29 @@
+1. Kf4 Rf1+
+2. Kg4 Rf6
+3. Qb2 Rg6+
+4. Kf4 Rf6+
+5. Ke4 Ke7
+6. Qb7+ Kd8
+7. Kd5 Rg6
+8. Qf7 Rb6
+9. Qf4 Kd7
+10. Qa4+ Kc7
+11. Qa7+ Rb7
+12. Qc5+ Kb8
+13. Kd6 Rg7
+14. Qe5 Rc7
+15. Qf4 Kc8
+16. Qf5+ Kb8
+17. Qe5 Rb7
+18. Kc6+ Ka7
+19. Qa1+ Kb8
+20. Qa5 Rb1
+21. Qd8+ Ka7
+22. Qd4+ Ka8
+23. Qh8+ Ka7
+24. Qh7+ Kb8
+25. Qxb1+ Kc8
+26. Qh7 Kd8
+27. Qd7#
+# END
+# 解法 1

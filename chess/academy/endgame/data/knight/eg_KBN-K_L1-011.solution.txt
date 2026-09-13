@@ -1,0 +1,12 @@
+1. Nd5 Kb7
+2. Kc5 Ka6
+3. Kb4 Kb7
+4. Kb5 Ka7
+5. Bc8 Kb8
+6. Ba6 Ka8
+7. Kb6 Kb8
+8. Nb4 Ka8
+9. Bb7+ Kb8
+10. Na6#
+# END
+# 解法 1

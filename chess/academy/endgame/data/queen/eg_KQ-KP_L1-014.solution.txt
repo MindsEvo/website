@@ -1,0 +1,7 @@
+1. Qc3+ Kb1
+2. Qb3+ Ka1
+3. Qc3+ Kb1
+4. Qb3+ Ka1
+5. Qc3+ Kb1
+# END
+# 解法 1

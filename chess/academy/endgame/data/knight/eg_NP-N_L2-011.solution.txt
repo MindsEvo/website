@@ -1,0 +1,21 @@
+1. Kc6 Ne5+
+2. Kd6 Nc4+
+3. Kd5 Na5
+4. Ng6 Kh3
+5. Ne5 Kh4
+6. Nc4 Nb7
+7. c6 Nd8
+8. c7 Nf7
+9. c8=Q Nh6
+10. Ne5 Kh5
+11. Qh8 Kg5
+12. Nf7+ Nxf7
+13. Qg7+ Kh5
+14. Qxf7+ Kg4
+15. Ke4 Kg3
+16. Qf3+ Kh4
+17. Qg2 Kh5
+18. Kf5 Kh6
+19. Qg6#
+# END
+# 解法 1

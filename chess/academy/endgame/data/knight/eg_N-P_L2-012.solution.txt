@@ -1,0 +1,11 @@
+1. Ke5 Ne8
+2. Ke6 Kc2
+3. Kf7 Nc7
+4. Kf8 Kd2
+5. Kg7 Kd3
+6. Kh6 Kd4
+7. Kg6 Ke5
+8. Kf7 Kf5
+9. e8=Q Nxe8
+# END
+# 解法 1

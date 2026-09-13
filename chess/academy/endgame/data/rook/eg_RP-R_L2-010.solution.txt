@@ -1,0 +1,12 @@
+1. Ke6 Re2+
+2. Kd7 Re7+
+3. Kc6 Re4
+4. d6 Re2
+5. Kc7 Kf7
+6. Rc1 Kf6
+7. d7 Rd2
+8. d8=Q+ Rxd8
+9. Kxd8 Ke5
+10. Ke7
+# END
+# 解法 1

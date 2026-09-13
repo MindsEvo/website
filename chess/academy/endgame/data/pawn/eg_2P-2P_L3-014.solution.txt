@@ -1,0 +1,10 @@
+1. Kf4 Kc6
+2. Kg5 Kb5
+3. Kf6 Kb4
+4. Kxg6 Kxb3
+5. Kf5 Kc4
+6. Kf6 Kd3
+7. Ke6 Kxe3
+8. Kxd6
+# END
+# 解法 1

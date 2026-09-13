@@ -1,0 +1,11 @@
+1. Rc7+ Kd3
+2. Kd7 d4
+3. Kd6 Ke2
+4. Kc5 d3
+5. Re7+ Kf1
+6. Rd7 Ke2
+7. Re7+ Kf2
+8. Rd7 Ke2
+9. Re7+
+# END
+# 解法 1

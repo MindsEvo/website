@@ -1,0 +1,18 @@
+1. h5 Kg7
+2. Ne3 Kf6
+3. Kg4 Kg7
+4. Nf5+ Kh7
+5. Kf4 Kg8
+6. Nxh6+ Kf8
+7. Nf5 Kf7
+8. Kg5 Kg8
+9. h6 Kh7
+10. Nd6 Kg8
+11. Kf6 Kf8
+12. Nf7 Kg8
+13. Kg6 Kf8
+14. h7 Ke7
+15. h8=Q Kd7
+16. Qc3
+# END
+# 解法 1

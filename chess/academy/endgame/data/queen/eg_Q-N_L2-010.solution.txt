@@ -1,0 +1,9 @@
+1. Qa7 Kh8
+2. Qf7 Ng5
+3. Qe8+ Kh7
+4. Kxg5 Kg7
+5. Qe7+ Kh8
+6. Kh6 Kg8
+7. Qe8#
+# END
+# è§£æ³ 1

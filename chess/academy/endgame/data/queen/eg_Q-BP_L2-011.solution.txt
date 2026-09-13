@@ -1,0 +1,13 @@
+1. Kg4 Be5
+2. Qd8+ Kc5
+3. Kf5 Bd6
+4. Ke6 Bf8
+5. Qxf8+ Kc6
+6. Qxf4 Kb6
+7. Kd6 Kb5
+8. Kd5 Kb6
+9. Qb8+ Ka6
+10. Kc6 Ka5
+11. Qb5#
+# END
+# è§£æ³ 1

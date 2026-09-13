@@ -1,0 +1,7 @@
+1. g8=B Kg1
+2. Kg3 Kh1
+3. Bc4 Kg1
+4. Bd4+ Kh1
+5. Bd5#
+# END
+# 解法 1
