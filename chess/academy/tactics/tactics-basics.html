@@ -57,12 +57,13 @@
 
     .layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr));
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(240px, 300px);
       gap: 12px;
       min-height: calc(100vh - 52px);
     }
 
     .left,
+    .middle,
     .right {
       background: var(--card-bg);
       border: 1px solid var(--line);
@@ -73,6 +74,7 @@
       padding: 4px;
       display: flex;
       flex-direction: column;
+      container-type: inline-size;
     }
 
     .popup-box {
@@ -96,7 +98,7 @@
     }
 
     .board-shell {
-      --board-size: min(78vw, 610px);
+      --board-size: min(calc(100cqw - 56px), 560px);
       width: calc(var(--board-size) + 24px);
       margin: 0 auto;
       display: grid;
@@ -198,6 +200,7 @@
 
     .meta input[type="range"] { width: 70px; }
 
+    .middle,
     .right {
       padding: 8px;
       display: flex;
@@ -314,14 +317,6 @@
     }
     .submenu-item:hover { background: #3498db; color: #fff; }
 
-    .solution-flex {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      flex: 1;
-      min-height: 0;
-    }
-
     .solution-box, .explanation-box {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -329,8 +324,19 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      min-height: 180px;
-      max-height: 40vh;
+      flex: 1;
+      min-height: 200px;
+    }
+
+    .quiz-placeholder {
+      margin-top: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 34px 10px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      background: #fafbfd;
     }
 
     .solution-box h4, .explanation-box h4 {
@@ -398,14 +404,14 @@
     }
 
     @media (max-width: 1200px) {
-      .layout { min-height: auto; }
+      .layout { grid-template-columns: 1fr; min-height: auto; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <header class="topbar">
-      <a class="top-btn btn-back" href="./index.html" id="btnBackIntro">返回战术运用</a>
+      <a class="top-btn btn-back" href="../index.html" id="btnBackIntro">返回智慧元中心</a>
     </header>
 
     <section class="layout">
@@ -432,7 +438,7 @@
         <div class="status-box" id="playStatus">请选择右侧的战术组开始动态观察</div>
       </div>
 
-      <div class="right">
+      <div class="middle">
         <div class="title-card">
           <h2>战术运用</h2>
         </div>
@@ -459,15 +465,60 @@
           </div>
         </div>
 
-        <div class="panel solution-flex">
-          <div class="solution-box">
-            <h4>棋谱解法</h4>
-            <div class="solution-lines" id="solutionLines">请选择棋局以显示棋谱</div>
+        <div class="panel panel-placeholder">
+          <h3>操作练习</h3>
+          <div class="group-chips">
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#c0392b">战术A组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#1a5276">战术B组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#117a65">战术C组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#6e2fa0">战术D组</button>
+              <div class="dropdown-menu"></div>
+            </div>
           </div>
-          <div class="explanation-box">
-            <h4>解说内容 <button class="explain-btn" id="btnExplainVoice">🔊 解说</button></h4>
-            <div class="explanation-text" id="explanationText">请选择棋局以显示解说内容</div>
+        </div>
+
+        <div class="panel panel-placeholder">
+          <h3>问答练习</h3>
+          <div class="group-chips">
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#c0392b">战术A组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#1a5276">战术B组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#117a65">战术C组</button>
+              <div class="dropdown-menu"></div>
+            </div>
+            <div class="group-dropdown-wrap">
+              <button class="group-chip" style="background:#6e2fa0">战术D组</button>
+              <div class="dropdown-menu"></div>
+            </div>
           </div>
+          <div class="quiz-placeholder">请选择问题开始答题</div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="solution-box">
+          <h4>棋谱解法</h4>
+          <div class="solution-lines" id="solutionLines">请选择棋局以显示棋谱</div>
+        </div>
+        <div class="explanation-box">
+          <h4>解说内容 <button class="explain-btn" id="btnExplainVoice">🔊 解说</button></h4>
+          <div class="explanation-text" id="explanationText">请选择棋局以显示解说内容</div>
         </div>
       </div>
     </section>
@@ -1118,6 +1169,21 @@
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectGroup(groupDef); });
+      });
+
+      // 操作练习/问答练习 are not implemented yet — their buttons just show a
+      // "敬请期待" placeholder in the same dropdown style used for locked groups.
+      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap').forEach(function (wrap) {
+        var btn = wrap.querySelector('.group-chip');
+        var menuEl = wrap.querySelector('.dropdown-menu');
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var wasOpen = menuEl.classList.contains('open');
+          closeAllMenus();
+          if (wasOpen) return;
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + btn.textContent + '"功能开发中，敬请期待</div>';
+          menuEl.classList.add('open');
+        });
       });
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
