@@ -5,31 +5,1194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>6. 总结与回顾 | 入门启航</title>
   <style>
-    :root { --bg:#f3f5f9; --card:#fff; --line:#e8edf5; --ink:#1f2a3a; --muted:#6f7f94; --blue:#2d77e8; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--bg); color:var(--ink); font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif; }
-    .page { width:min(1180px,100%); margin:0 auto; padding:20px; }
-    .top { margin-bottom:16px; }
-    .back { min-width:126px; height:34px; border-radius:8px; background:var(--blue); color:#fff; font-size:14px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
-    .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px; }
-    h1 { font-size:28px; margin-bottom:8px; }
-    .sub { color:var(--muted); font-size:16px; margin-bottom:12px; }
-    .checklist { color:#556980; line-height:1.9; font-size:15px; padding-left:20px; }
+    :root {
+      --page-bg: #f3f5f9;
+      --card-bg: #ffffff;
+      --line: #e6ebf3;
+      --ink: #1a2433;
+      --muted: #6f7f94;
+      --blue: #3f74ae;
+      --green: #2eb25b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 8px 4px 4px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0 8px;
+      margin-bottom: 6px;
+    }
+
+    .top-btn {
+      min-width: 102px;
+      height: 30px;
+      border-radius: 6px;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-back { background: var(--blue); }
+    .btn-tip { background: var(--green); }
+
+    /* Board layout — copied from piece-moves.html so the 8 real 走法/王车易位/吃过路兵 demos
+       (which manipulate #board/#knightLines directly) can be reused verbatim on this page. */
+    .layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr));
+      gap: 12px;
+      min-height: calc(100vh - 52px);
+    }
+
+    .left, .right {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .left {
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .board-wrap {
+      background: #6f8f4d;
+      border: 1px solid #6f8f4d;
+      padding: 10px;
+      margin-top: 4px;
+    }
+
+    .board-shell {
+      --board-size: min(78vw, 610px);
+      width: calc(var(--board-size) + 24px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 24px var(--board-size);
+      grid-template-rows: var(--board-size) 24px;
+    }
+
+    .board {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      width: var(--board-size);
+      height: var(--board-size);
+      border: 2px solid rgba(92, 111, 71, 0.9);
+      position: relative;
+    }
+
+    .knight-lines {
+      grid-column: 2;
+      grid-row: 1;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .square {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      user-select: none;
+      position: relative;
+    }
+
+    .piece-svg {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .files, .ranks {
+      display: grid;
+      color: #17212f;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .file-bottom { grid-template-columns: repeat(8, 1fr); grid-column: 2; grid-row: 2; }
+    .rank-left { grid-template-rows: repeat(8, 1fr); grid-column: 1; grid-row: 1; }
+    .files span, .ranks span { display: flex; align-items: center; justify-content: center; }
+
+    .control-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 2px 4px;
+    }
+    .stop-demo-btn {
+      min-width: 120px;
+      height: 30px;
+      border: 1px solid #d7deea;
+      border-radius: 6px;
+      background: #fff;
+      color: #1f2d40;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .stop-demo-btn:hover { border-color: #a9c3e8; }
+
+    /* box-shadow-only pulse — pieces never fade, copied verbatim from piece-moves.html */
+    @keyframes hlOriginPulse {
+      0%, 100% { box-shadow: inset 0 0 0 4px rgba(245, 158, 11, 0.95); }
+      50%       { box-shadow: inset 0 0 0 6px rgba(245, 158, 11, 0.70), 0 0 10px rgba(245, 158, 11, 0.4); }
+    }
+    @keyframes hlTargetPulse {
+      0%, 100% { box-shadow: inset 0 0 0 4px rgba(30, 64, 175, 0.88); }
+      50%       { box-shadow: inset 0 0 0 6px rgba(30, 64, 175, 0.60), 0 0 8px rgba(30, 64, 175, 0.3); }
+    }
+    .hl-origin { animation: hlOriginPulse 0.9s ease-in-out infinite; }
+    .hl-target { animation: hlTargetPulse 0.9s ease-in-out infinite; }
+    .hl-block  { box-shadow: inset 0 0 0 4px rgba(220,38,38,0.90) !important; animation: none !important; }
+    .hl-danger { box-shadow: inset 0 0 0 4px rgba(234,88,12,0.90) !important; animation: none !important; }
+    .hl-castle { box-shadow: inset 0 0 0 4px rgba(6,182,212,0.88) !important; animation: none !important; }
+    .hl-done   { box-shadow: inset 0 0 0 4px rgba(245,158,11,0.95) !important; animation: none !important; }
+    /* extra static highlight colors, ported from 困毙/将军应将 demos' arbitrary hex highlight_square calls */
+    .hl-orange { box-shadow: inset 0 0 0 4px rgba(255,140,0,0.90) !important; animation: none !important; }
+    .hl-red2   { box-shadow: inset 0 0 0 4px rgba(255,68,68,0.90) !important; animation: none !important; }
+    .hl-green  { box-shadow: inset 0 0 0 4px rgba(0,204,85,0.90) !important; animation: none !important; }
+    .hl-gold   { box-shadow: inset 0 0 0 4px rgba(255,215,0,0.90) !important; animation: none !important; }
+    .hl-blue2  { box-shadow: inset 0 0 0 4px rgba(68,170,255,0.90) !important; animation: none !important; }
+
+    .right {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .title-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .title-card h2 { font-size: 24px; font-weight: 900; }
+
+    .mode-actions { display: flex; gap: 8px; }
+
+    .small-pill {
+      min-width: 64px;
+      height: 32px;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0 12px;
+    }
+    .small-pill.blue { background: #007bff; }
+    .small-pill.green { background: #28a745; }
+    .small-pill:hover { filter: brightness(0.92); }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      flex: 1;
+    }
+
+    .panel-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #2c2c2c;
+      margin-bottom: 10px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 7px 10px 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+    .summary-card:hover { background: #f0f7ff; border-color: #90caf9; }
+    .summary-card.selected { background: #e3f2fd; border-color: #1976d2; }
+    .summary-card.playing { background: #fff8e1; border-color: #f5b400; }
+
+    .summary-card .head {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1565c0;
+      margin-bottom: 2px;
+    }
+    .summary-card .desc {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    .card-status {
+      margin-top: 8px;
+      min-height: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .summary-footer {
+      margin-top: 10px;
+      text-align: center;
+      color: #1976d2;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px;
+      background: #e3f2fd;
+      border-radius: 6px;
+      text-decoration: none;
+      display: block;
+    }
+    .summary-footer:hover { background: #d5eaff; }
+
+    /* Tips modal, matches the other 入门启航 lesson pages exactly. */
+    .tips-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .tips-modal.hidden { display: none; }
+    .tips-dialog {
+      width: min(480px, 92vw);
+      background: #fff;
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+    .tips-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tips-head h4 { font-size: 16px; }
+    .tips-close {
+      border: none;
+      background: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 1;
+    }
+    .tips-body { padding: 14px 18px; }
+    .tips-body h5 { font-size: 14px; margin-bottom: 8px; }
+    .tips-body ol { padding-left: 20px; color: #556980; line-height: 1.8; font-size: 13px; }
+    .tips-foot { padding: 10px 18px 16px; text-align: right; }
+    .tips-ok {
+      border: none;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="top"><a class="back" href="./index.html" id="btnBackIntro">返回入门启航</a></div>
-    <section class="card">
-      <h1>6. 总结与回顾</h1>
-      <p class="sub">回顾学过的知识，巩固学习成果</p>
-      <ol class="checklist">
-        <li>我能说出棋盘坐标系统（a-h、1-8）</li>
-        <li>我能区分六种棋子并描述其特点</li>
-        <li>我能理解基本走法与简单规则</li>
-      </ol>
+    <header class="topbar">
+      <a class="top-btn btn-back" href="./index.html" id="btnBackIntro">返回入门启航</a>
+      <button class="top-btn btn-tip" type="button" id="btnKeyTips">要点提示</button>
+    </header>
+
+    <section class="layout">
+      <section class="left">
+        <div class="board-wrap" id="boardWrap">
+          <div class="board-shell">
+            <div class="ranks rank-left" id="rankLeft"></div>
+            <div class="board" id="board"></div>
+            <svg class="knight-lines" id="knightLines" width="100%" height="100%"></svg>
+            <div class="files file-bottom" id="fileBottom"></div>
+          </div>
+        </div>
+        <div class="control-strip">
+          <button class="stop-demo-btn" type="button" id="btnStopDemo">⏹ 停止演示</button>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="title-card">
+          <h2>6. 总结与回顾</h2>
+          <div class="mode-actions">
+            <button class="small-pill blue" id="btnStudentVoice" type="button">致学生</button>
+            <button class="small-pill green" id="btnParentVoice" type="button">致家长</button>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="panel-title">📋 棋子走法 · 要点总结</div>
+          <div class="cards-grid" id="cardsGrid"></div>
+          <div class="card-status" id="cardStatus">点击任意卡片，棋盘会自动演示对应的走法或规则要点</div>
+          <a class="summary-footer" href="../endgame/endgame-basics.html">🎉 恭喜你掌握了全部棋子走法！ ⭐ 下一步：进入「残局入门」继续学习</a>
+        </section>
+      </section>
     </section>
+
+    <div class="tips-modal hidden" id="tipsModal" aria-hidden="true">
+      <div class="tips-dialog" role="dialog" aria-modal="true" aria-labelledby="tipsTitle">
+        <div class="tips-head">
+          <h4 id="tipsTitle">要点提示</h4>
+          <button class="tips-close" type="button" id="btnTipsClose" aria-label="关闭">×</button>
+        </div>
+        <div class="tips-body">
+          <h5>📌 本单元学习要点</h5>
+          <ol>
+            <li>本单元是国际象棋基本知识的总结与回顾</li>
+            <li>每张卡片列出了一种棋子的核心走法要点，点击有自动演示和文字说明</li>
+          </ol>
+        </div>
+        <div class="tips-foot">
+          <button class="tips-ok" type="button" id="btnTipsOk">我知道了</button>
+        </div>
+      </div>
+    </div>
   </main>
-  <script>(function(){var b=document.getElementById('btnBackIntro');if(b){b.addEventListener('click',function(e){if(window.history.length>1){e.preventDefault();window.history.back();}});}}());</script>
+
+  <script>
+    (function () {
+      // ── Shared board-demo engine, ported verbatim from piece-moves.html's 动态观察 section ──
+      // (per explicit user verification: the source app reuses this SAME demo_king_move/... engine
+      // for both piece_moves' 动态观察 buttons AND summary's piece cards — not a new design).
+      var PIECE_ASSET = {
+        wk: 'wK.svg', wq: 'wQ.svg', wr: 'wR.svg', wb: 'wB.svg', wn: 'wN.svg', wp: 'wP.svg',
+        bk: 'bK.svg', bq: 'bQ.svg', br: 'bR.svg', bb: 'bB.svg', bn: 'bN.svg', bp: 'bP.svg'
+      };
+      var boardMatrix = [
+        ['br', 'bn', 'bb', 'bq', 'bk', 'bb', 'bn', 'br'],
+        ['bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp', 'bp'],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp', 'wp'],
+        ['wr', 'wn', 'wb', 'wq', 'wk', 'wb', 'wn', 'wr']
+      ];
+
+      var boardEl = document.getElementById('board');
+      var rankLeft = document.getElementById('rankLeft');
+      var fileBottom = document.getElementById('fileBottom');
+      var knightLinesSvg = document.getElementById('knightLines');
+
+      function speak(text) {
+        if (!window.speechSynthesis || !text) return;
+        try {
+          window.speechSynthesis.cancel();
+          var ut = new SpeechSynthesisUtterance(text);
+          ut.lang = 'zh-CN';
+          ut.rate = 0.92;
+          window.speechSynthesis.speak(ut);
+        } catch (e) {}
+      }
+
+      function renderCoords() {
+        var files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        var ranks = [8, 7, 6, 5, 4, 3, 2, 1];
+        fileBottom.innerHTML = files.map(function (f) { return '<span>' + f + '</span>'; }).join('');
+        rankLeft.innerHTML = ranks.map(function (r) { return '<span>' + r + '</span>'; }).join('');
+      }
+
+      function pieceNode(piece) {
+        if (!piece) return '';
+        var kindClass = 'kind-' + piece.charAt(1);
+        return '<span class="piece-node ' + kindClass + '"><img class="piece-svg" alt="' + piece + '" src="../../play/assets/pieces/' + PIECE_ASSET[piece] + '"></span>';
+      }
+
+      function renderBoard() {
+        var html = '';
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var cls = ((r + c) % 2 === 0) ? 'square square-light' : 'square square-dark';
+            var bg = ((r + c) % 2 === 0) ? '#f1f1cf' : '#769656';
+            html += '<div class="' + cls + '" data-row="' + r + '" data-col="' + c + '" style="background:' + bg + '">' + pieceNode(boardMatrix[r][c]) + '</div>';
+          }
+        }
+        boardEl.innerHTML = html;
+      }
+
+      function getSquare(row, col) {
+        return boardEl.querySelector('.square[data-row="' + row + '"][data-col="' + col + '"]');
+      }
+
+      function cancelPractice() {} // no-op: this page has no interactive practice state
+
+      var demoState = { active: false, timers: [] };
+      var savedBoard = null;
+
+      function cancelDemo() {
+        demoState.active = false;
+        demoState.timers.forEach(window.clearTimeout);
+        demoState.timers = [];
+        boardEl.querySelectorAll('.hl-origin,.hl-target,.hl-piece,.hl-block,.hl-danger,.hl-castle,.hl-done').forEach(function (el) {
+          el.classList.remove('hl-origin', 'hl-target', 'hl-piece', 'hl-block', 'hl-danger', 'hl-castle', 'hl-done');
+        });
+        clearKnightLines();
+        if (savedBoard) {
+          boardMatrix = savedBoard;
+          savedBoard = null;
+          renderBoard();
+        }
+        cancelPractice();
+      }
+
+      function demoSchedule(fn, delay) {
+        if (!demoState.active) return;
+        var t = window.setTimeout(function () {
+          if (!demoState.active) return;
+          fn();
+        }, delay);
+        demoState.timers.push(t);
+      }
+
+      function emptyBoard() {
+        return Array(8).fill(null).map(function () { return Array(8).fill(''); });
+      }
+
+      function clearDemoHL() {
+        boardEl.querySelectorAll('.hl-origin,.hl-target,.hl-block,.hl-danger,.hl-castle,.hl-done').forEach(function (el) {
+          el.classList.remove('hl-origin', 'hl-target', 'hl-block', 'hl-danger', 'hl-castle', 'hl-done');
+        });
+      }
+
+      function clearKnightLines() {
+        if (knightLinesSvg) knightLinesSvg.innerHTML = '';
+      }
+
+      function squareCenterPx(r, c) {
+        var sq = getSquare(r, c);
+        if (!sq || !boardEl) return null;
+        var boardRect = boardEl.getBoundingClientRect();
+        var sqRect = sq.getBoundingClientRect();
+        return { x: sqRect.left - boardRect.left + sqRect.width / 2, y: sqRect.top - boardRect.top + sqRect.height / 2 };
+      }
+
+      function drawKnightLLine(fromRC, toRC, color) {
+        if (!knightLinesSvg) return null;
+        var from = squareCenterPx(fromRC[0], fromRC[1]);
+        var to = squareCenterPx(toRC[0], toRC[1]);
+        if (!from || !to) return null;
+        var dr = toRC[0] - fromRC[0], dc = toRC[1] - fromRC[1];
+        var knee = Math.abs(dr) === 2 ? [fromRC[0] + dr, fromRC[1]] : [fromRC[0], fromRC[1] + dc];
+        var kneeCenter = squareCenterPx(knee[0], knee[1]);
+        if (!kneeCenter) return null;
+        var poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        poly.setAttribute('points', from.x + ',' + from.y + ' ' + kneeCenter.x + ',' + kneeCenter.y + ' ' + to.x + ',' + to.y);
+        poly.setAttribute('fill', 'none');
+        poly.setAttribute('stroke', color || '#f5b400');
+        poly.setAttribute('stroke-width', '4');
+        poly.setAttribute('stroke-linecap', 'round');
+        poly.setAttribute('stroke-linejoin', 'round');
+        knightLinesSvg.appendChild(poly);
+        return poly;
+      }
+
+      function knightLegalMovesFn(r, c) {
+        return [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]]
+          .map(function (d) { return [r + d[0], c + d[1]]; })
+          .filter(function (p) { return p[0] >= 0 && p[0] < 8 && p[1] >= 0 && p[1] < 8; });
+      }
+
+      function drawKnightAllLShapes(r, c) {
+        clearKnightLines();
+        knightLegalMovesFn(r, c).forEach(function (t) { drawKnightLLine([r, c], t, '#f5b400'); });
+      }
+
+      // --- King 走法演示 ---
+      function kingReachable(row, col) {
+        var out = [];
+        for (var dr = -1; dr <= 1; dr++) {
+          for (var dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue;
+            var r = row + dr, c = col + dc;
+            if (r >= 0 && r < 8 && c >= 0 && c < 8) out.push([r, c]);
+          }
+        }
+        return out;
+      }
+
+      function showDemoHighlights(fromRow, fromCol) {
+        boardEl.querySelectorAll('.hl-origin, .hl-target').forEach(function (el) { el.classList.remove('hl-origin', 'hl-target'); });
+        var sq = getSquare(fromRow, fromCol);
+        if (sq) sq.classList.add('hl-origin');
+        kingReachable(fromRow, fromCol).forEach(function (rc) {
+          var s = getSquare(rc[0], rc[1]);
+          if (s) s.classList.add('hl-target');
+        });
+      }
+
+      function doKingStep(pieceCode, r, c, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var moves = kingReachable(r, c);
+        var pref = moves.filter(function (m) { return !visited.some(function (v) { return v[0] === m[0] && v[1] === m[1]; }); });
+        var pool = pref.length > 0 ? pref : moves;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        boardMatrix[r][c] = '';
+        boardMatrix[next[0]][next[1]] = pieceCode;
+        renderBoard();
+        showDemoHighlights(next[0], next[1]);
+        visited.push(next);
+        if (visited.length > 4) visited.shift();
+        demoSchedule(function () { doKingStep(pieceCode, next[0], next[1], visited, step + 1, maxSteps, onDone); }, 1600);
+      }
+
+      function runKingObserveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (row) { return row.slice(); });
+
+        var wr = 4, wc = 4;
+        boardMatrix = emptyBoard();
+        boardMatrix[wr][wc] = 'wk';
+        renderBoard();
+        speak('这是白王');
+
+        demoSchedule(function () {
+          showDemoHighlights(wr, wc);
+          speak('王可以向任意方向走一格，共有8个方向');
+        }, 2500);
+
+        demoSchedule(function () {
+          doKingStep('wk', wr, wc, [[wr, wc]], 1, 8, function () {
+            demoSchedule(function () {
+              boardMatrix = emptyBoard();
+              var br = 3, bc = 3;
+              boardMatrix[br][bc] = 'bk';
+              renderBoard();
+              speak('这是黑王，走法相同');
+              demoSchedule(function () { showDemoHighlights(br, bc); }, 1200);
+              demoSchedule(function () {
+                doKingStep('bk', br, bc, [[br, bc]], 1, 6, function () {
+                  demoSchedule(function () {
+                    boardMatrix = savedBoard;
+                    savedBoard = null;
+                    renderBoard();
+                    boardEl.querySelectorAll('.hl-origin, .hl-target').forEach(function (el) { el.classList.remove('hl-origin', 'hl-target'); });
+                    demoState.active = false;
+                  }, 1500);
+                });
+              }, 4200);
+            }, 2000);
+          });
+        }, 8200);
+      }
+
+      // --- 王车易位演示 ---
+      function setupCastlingBoard() {
+        boardMatrix = emptyBoard();
+        boardMatrix[7][4] = 'wk';
+        boardMatrix[7][0] = 'wr';
+        boardMatrix[7][7] = 'wr';
+        renderBoard();
+      }
+
+      function runKingCastlingDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        setupCastlingBoard();
+        speak('王车易位演示');
+
+        demoSchedule(function () { speak('短易位：王向王翼走两格'); }, 3500);
+        demoSchedule(function () {
+          var k = getSquare(7, 4); if (k) k.classList.add('hl-origin');
+          var g1 = getSquare(7, 6); if (g1) g1.classList.add('hl-target');
+          var h1 = getSquare(7, 7); if (h1) h1.classList.add('hl-castle');
+          var f1 = getSquare(7, 5); if (f1) f1.classList.add('hl-castle');
+          speak('王走到g1，h1的车跳到f1');
+        }, 8000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][4] = ''; boardMatrix[7][7] = '';
+          boardMatrix[7][6] = 'wk'; boardMatrix[7][5] = 'wr';
+          renderBoard();
+          var g = getSquare(7, 6); if (g) g.classList.add('hl-done');
+          var f = getSquare(7, 5); if (f) f.classList.add('hl-done');
+          speak('短易位完成，王更加安全');
+        }, 13500);
+        demoSchedule(function () {
+          clearDemoHL(); setupCastlingBoard();
+          speak('长易位：王向后翼走两格');
+        }, 18500);
+        demoSchedule(function () {
+          var k = getSquare(7, 4); if (k) k.classList.add('hl-origin');
+          var c1 = getSquare(7, 2); if (c1) c1.classList.add('hl-target');
+          var a1 = getSquare(7, 0); if (a1) a1.classList.add('hl-castle');
+          var d1 = getSquare(7, 3); if (d1) d1.classList.add('hl-castle');
+          speak('王走到c1，a1的车跳到d1');
+        }, 23000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][4] = ''; boardMatrix[7][0] = '';
+          boardMatrix[7][2] = 'wk'; boardMatrix[7][3] = 'wr';
+          renderBoard();
+          var c = getSquare(7, 2); if (c) c.classList.add('hl-done');
+          var d = getSquare(7, 3); if (d) d.classList.add('hl-done');
+          speak('长易位完成');
+        }, 28500);
+        demoSchedule(function () {
+          clearDemoHL(); setupCastlingBoard();
+          speak('重要规则：易位路径上的格子不能被对方控制');
+        }, 32500);
+        demoSchedule(function () {
+          boardMatrix[3][5] = 'br'; renderBoard();
+          var f5 = getSquare(3, 5); if (f5) f5.classList.add('hl-danger');
+          var f1 = getSquare(7, 5); if (f1) f1.classList.add('hl-block');
+          speak('黑车在f5控制f1，短易位被阻止');
+        }, 39000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[3][5] = ''; boardMatrix[3][6] = 'bb'; renderBoard();
+          var g5 = getSquare(3, 6); if (g5) g5.classList.add('hl-danger');
+          var c1 = getSquare(7, 2); if (c1) c1.classList.add('hl-block');
+          speak('黑象在g5控制c1，长易位也被阻止');
+        }, 45500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          speak('易位前需确保王和车未移动，路径无子且不被对方控制');
+          demoSchedule(function () { demoState.active = false; }, 2000);
+        }, 52000);
+      }
+
+      // --- 后/车/象 走法演示（同一个滑动棋子引擎）---
+      var DIRS_Q = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]];
+      var DIRS_R = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+      var DIRS_B = [[-1, -1], [-1, 1], [1, -1], [1, 1]];
+
+      function sliderLegalMoves(r, c, dirs) {
+        var out = [];
+        dirs.forEach(function (d) {
+          for (var i = 1; i < 8; i++) {
+            var nr = r + d[0] * i, nc = c + d[1] * i;
+            if (nr < 0 || nr > 7 || nc < 0 || nc > 7) break;
+            out.push([nr, nc]);
+          }
+        });
+        return out;
+      }
+
+      function showPieceMoves(r, c, getTargets) {
+        clearDemoHL();
+        var o = getSquare(r, c); if (o) o.classList.add('hl-origin');
+        getTargets(r, c).forEach(function (p) {
+          var s = getSquare(p[0], p[1]); if (s) s.classList.add('hl-target');
+        });
+      }
+
+      function doSliderStep(code, r, c, dirs, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var all = sliderLegalMoves(r, c, dirs);
+        var pref = all.filter(function (m) { return !visited.some(function (v) { return Math.abs(m[0] - v[0]) + Math.abs(m[1] - v[1]) < 2; }); });
+        var pool = pref.length > 0 ? pref : all;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+        boardMatrix[r][c] = '';
+        boardMatrix[next[0]][next[1]] = code;
+        renderBoard();
+        showPieceMoves(next[0], next[1], function (nr, nc) { return sliderLegalMoves(nr, nc, dirs); });
+        visited.push(next);
+        if (visited.length > 3) visited.shift();
+        demoSchedule(function () { doSliderStep(code, next[0], next[1], dirs, visited, step + 1, maxSteps, onDone); }, 2200);
+      }
+
+      function runSliderMoveDemo(code, dirs, nameZh, moveDesc) {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4] = code;
+        renderBoard();
+        speak('这是' + nameZh);
+        demoSchedule(function () {
+          showPieceMoves(4, 4, function (r, c) { return sliderLegalMoves(r, c, dirs); });
+          speak(moveDesc);
+        }, 2500);
+        demoSchedule(function () {
+          doSliderStep(code, 4, 4, dirs, [[4, 4]], 1, 6, function () {
+            demoSchedule(function () {
+              clearDemoHL();
+              boardMatrix = savedBoard; savedBoard = null; renderBoard();
+              demoState.active = false;
+            }, 1500);
+          });
+        }, 8000);
+      }
+
+      function runQueenMoveDemo() { runSliderMoveDemo('wq', DIRS_Q, '白后', '后可以横、竖、斜任意方向走任意格'); }
+      function runRookMoveDemo() { runSliderMoveDemo('wr', DIRS_R, '白车', '车可以横线和竖线走任意格'); }
+      function runBishopMoveDemo() { runSliderMoveDemo('wb', DIRS_B, '白象', '象只能走斜线，格子颜色始终不变'); }
+
+      // --- 马 走法演示 ---
+      function doKnightStepFn(code, r, c, visited, step, maxSteps, onDone) {
+        if (!demoState.active) return;
+        if (step > maxSteps) { if (onDone) onDone(); return; }
+        var moves = knightLegalMovesFn(r, c);
+        var pref = moves.filter(function (m) { return !visited.some(function (v) { return v[0] === m[0] && v[1] === m[1]; }); });
+        var pool = pref.length > 0 ? pref : moves;
+        var next = pool[Math.floor(Math.random() * pool.length)];
+
+        clearKnightLines();
+        drawKnightLLine([r, c], next, '#f5b400');
+        showPieceMoves(r, c, function () { return [next]; });
+        visited.push(next);
+        if (visited.length > 4) visited.shift();
+
+        demoSchedule(function () {
+          clearKnightLines();
+          boardMatrix[r][c] = '';
+          boardMatrix[next[0]][next[1]] = code;
+          renderBoard();
+          showPieceMoves(next[0], next[1], function (nr, nc) { return knightLegalMovesFn(nr, nc); });
+          demoSchedule(function () { doKnightStepFn(code, next[0], next[1], visited, step + 1, maxSteps, onDone); }, 1200);
+        }, 1000);
+      }
+
+      function runKnightMoveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[4][4] = 'wn';
+        renderBoard();
+        speak('这是白马');
+        demoSchedule(function () {
+          showPieceMoves(4, 4, function (r, c) { return knightLegalMovesFn(r, c); });
+          drawKnightAllLShapes(4, 4);
+          speak('马走日字，可以跳过其他棋子');
+        }, 2500);
+        demoSchedule(function () {
+          clearKnightLines();
+          doKnightStepFn('wn', 4, 4, [[4, 4]], 1, 8, function () {
+            demoSchedule(function () {
+              clearDemoHL();
+              clearKnightLines();
+              boardMatrix = savedBoard; savedBoard = null; renderBoard();
+              demoState.active = false;
+            }, 1500);
+          });
+        }, 8000);
+      }
+
+      // --- 兵 走法演示 ---
+      function runPawnMoveDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (row) { return row.slice(); });
+        boardMatrix = emptyBoard();
+        boardMatrix[6][4] = 'wp';
+        renderBoard();
+        speak('这是白兵');
+        demoSchedule(function () {
+          var o = getSquare(6, 4); if (o) o.classList.add('hl-origin');
+          var t1 = getSquare(5, 4); if (t1) t1.classList.add('hl-target');
+          var t2 = getSquare(4, 4); if (t2) t2.classList.add('hl-target');
+          speak('白兵从第2行出发，第一步可走一格或两格');
+        }, 2500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[6][4] = ''; boardMatrix[4][4] = 'wp'; renderBoard();
+          var o = getSquare(4, 4); if (o) o.classList.add('hl-origin');
+          var t = getSquare(3, 4); if (t) t.classList.add('hl-target');
+          speak('兵走两格');
+        }, 8000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[4][4] = ''; boardMatrix[3][4] = 'wp'; renderBoard();
+          var o = getSquare(3, 4); if (o) o.classList.add('hl-origin');
+          var t = getSquare(2, 4); if (t) t.classList.add('hl-target');
+          speak('之后每次只能走一格');
+        }, 13000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[3][4] = ''; boardMatrix[2][4] = 'wp'; renderBoard();
+          var o = getSquare(2, 4); if (o) o.classList.add('hl-origin');
+          getSquare(1, 4) && getSquare(1, 4).classList.add('hl-target');
+        }, 18000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[2][4] = ''; boardMatrix[1][4] = 'wp'; renderBoard();
+          var o = getSquare(1, 4); if (o) o.classList.add('hl-origin');
+          getSquare(0, 4) && getSquare(0, 4).classList.add('hl-target');
+          speak('抵达对方底线后可升变为后、车、象或马');
+        }, 22500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          demoState.active = false;
+        }, 29000);
+      }
+
+      // --- 吃过路兵演示 ---
+      function runPawnEnPassantDemo() {
+        cancelDemo(); demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        function resetEpBoard() {
+          boardMatrix = emptyBoard();
+          boardMatrix[3][4] = 'wp'; boardMatrix[1][5] = 'bp';
+          renderBoard();
+        }
+
+        resetEpBoard();
+        speak('吃过路兵演示');
+
+        demoSchedule(function () { speak('当对方兵走两格经过旁边时，可以立即斜吃'); }, 3000);
+
+        demoSchedule(function () {
+          getSquare(1, 5) && getSquare(1, 5).classList.add('hl-origin');
+          getSquare(3, 5) && getSquare(3, 5).classList.add('hl-target');
+          speak('黑兵从起始位置走两格');
+        }, 9500);
+        demoSchedule(function () {
+          clearDemoHL(); boardMatrix[1][5] = ''; boardMatrix[3][5] = 'bp'; renderBoard();
+        }, 13000);
+        demoSchedule(function () {
+          getSquare(3, 4) && getSquare(3, 4).classList.add('hl-origin');
+          getSquare(2, 5) && getSquare(2, 5).classList.add('hl-target');
+          getSquare(3, 5) && getSquare(3, 5).classList.add('hl-done');
+          speak('白兵可以斜吃过路兵');
+        }, 16500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[3][4] = ''; boardMatrix[3][5] = ''; boardMatrix[2][5] = 'wp'; renderBoard();
+          getSquare(2, 5) && getSquare(2, 5).classList.add('hl-done');
+          speak('白兵斜吃，黑兵被吃掉');
+        }, 22000);
+
+        demoSchedule(function () {
+          clearDemoHL(); resetEpBoard();
+          speak('注意：吃过路兵的机会只有一次，错过就永久消失');
+        }, 29000);
+        demoSchedule(function () {
+          getSquare(1, 5) && getSquare(1, 5).classList.add('hl-origin');
+          getSquare(3, 5) && getSquare(3, 5).classList.add('hl-target');
+          speak('黑兵再次走两格');
+        }, 36500);
+        demoSchedule(function () {
+          clearDemoHL(); boardMatrix[1][5] = ''; boardMatrix[3][5] = 'bp'; renderBoard();
+        }, 40000);
+        demoSchedule(function () {
+          getSquare(3, 4) && getSquare(3, 4).classList.add('hl-origin');
+          getSquare(2, 5) && getSquare(2, 5).classList.add('hl-target');
+        }, 43500);
+        demoSchedule(function () {
+          clearDemoHL(); boardMatrix[3][4] = ''; boardMatrix[2][4] = 'wp'; renderBoard();
+          speak('白兵选择直走，放弃了吃过路兵的机会');
+        }, 45000);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(2, 5) && getSquare(2, 5).classList.add('hl-block');
+          speak('机会已过，吃过路兵只能在对方走完后立即执行');
+        }, 51500);
+        demoSchedule(function () {
+          clearDemoHL(); boardMatrix = savedBoard; savedBoard = null; renderBoard(); demoState.active = false;
+        }, 58000);
+      }
+
+      // --- 和棋演示（困毙 vs 将死对比），源自 start_stalemate_demo/_demo_stalemate ---
+      function setupStalemateBoard() {
+        boardMatrix = emptyBoard();
+        boardMatrix[2][6] = 'wk'; // g6
+        boardMatrix[5][5] = 'wq'; // f3
+        boardMatrix[0][7] = 'bk'; // h8
+        renderBoard();
+      }
+
+      function runStalemateDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        setupStalemateBoard();
+        speak('困毙陷阱！白王在g6，黑王被逼到角落h8。看看错误走法会发生什么');
+
+        // --- Round 1: wrong move → stalemate/draw ---
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(1, 5) && getSquare(1, 5).classList.add('hl-orange');
+          speak('白后走f7……');
+        }, 9500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[5][5] = ''; boardMatrix[1][5] = 'wq'; renderBoard();
+        }, 12000);
+        demoSchedule(function () {
+          speak('困毙！黑王无处可走，但没有被将军——和棋！赢棋瞬间变和棋了！');
+        }, 13500);
+        demoSchedule(function () {
+          getSquare(0, 7) && getSquare(0, 7).classList.add('hl-red2');
+        }, 14000);
+
+        // --- Round 2: correct move → checkmate ---
+        demoSchedule(function () {
+          speak('正确下法：白后走f8，沿第8排将军，同时白王封锁g7和h7！');
+        }, 20000);
+        demoSchedule(function () {
+          clearDemoHL(); setupStalemateBoard();
+        }, 21000);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(0, 5) && getSquare(0, 5).classList.add('hl-green');
+        }, 25500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[5][5] = ''; boardMatrix[0][5] = 'wq'; renderBoard();
+        }, 27000);
+        demoSchedule(function () {
+          speak('将死！黑王被将军，g8、g7、h7全部封锁，无路可逃——胜利！');
+        }, 28500);
+        demoSchedule(function () {
+          getSquare(0, 7) && getSquare(0, 7).classList.add('hl-green');
+        }, 30000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          demoState.active = false;
+        }, 36000);
+      }
+
+      // --- 将军与应将三法演示，源自 start_check_response_demo/_demo_check_response ---
+      function setupCheckResponseBoard() {
+        boardMatrix = emptyBoard();
+        boardMatrix[7][6] = 'wk'; // g1
+        boardMatrix[6][0] = 'wb'; // a2
+        boardMatrix[6][4] = 'wn'; // e2
+        boardMatrix[6][5] = 'wp'; // f2
+        boardMatrix[6][7] = 'wp'; // h2
+        boardMatrix[0][0] = 'bk'; // a8
+        boardMatrix[0][6] = 'br'; // g8 — checking the white king along the g-file
+        renderBoard();
+      }
+
+      function highlightCheckResponseCheck() {
+        clearDemoHL();
+        getSquare(7, 6) && getSquare(7, 6).classList.add('hl-red2');
+        for (var r = 1; r <= 6; r++) {
+          getSquare(r, 6) && getSquare(r, 6).classList.add('hl-orange');
+        }
+      }
+
+      function runCheckResponseDemo() {
+        cancelDemo();
+        demoState.active = true;
+        savedBoard = boardMatrix.map(function (r) { return r.slice(); });
+
+        setupCheckResponseBoard();
+        demoSchedule(function () { highlightCheckResponseCheck(); }, 1500);
+        demoSchedule(function () { speak('将军！黑车在g8沿g列将军白王。应将有三种方法：移王、遮挡、吃掉攻击子'); }, 2000);
+
+        // --- 第一法：移王 g1→f1→g1 ---
+        demoSchedule(function () { speak('第一种：移王——王走到f1，脱离g列控制'); }, 9500);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(7, 6) && getSquare(7, 6).classList.add('hl-origin');
+          getSquare(7, 5) && getSquare(7, 5).classList.add('hl-target');
+        }, 13500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][6] = ''; boardMatrix[7][5] = 'wk'; renderBoard();
+        }, 15000);
+        demoSchedule(function () { speak('王走到f1，将军解除'); }, 15500);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(7, 5) && getSquare(7, 5).classList.add('hl-origin');
+          getSquare(7, 6) && getSquare(7, 6).classList.add('hl-target');
+        }, 18500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[7][5] = ''; boardMatrix[7][6] = 'wk'; renderBoard();
+        }, 20000);
+        demoSchedule(function () { highlightCheckResponseCheck(); }, 21000);
+
+        // --- 第二法：马遮挡 e2→g3→e2 ---
+        demoSchedule(function () { speak('第二种：遮挡——马从e2跳到g3，挡住黑车攻击路线'); }, 22500);
+        demoSchedule(function () {
+          clearDemoHL(); clearKnightLines();
+          drawKnightLLine([6, 4], [5, 6], '#FFD700');
+          getSquare(6, 4) && getSquare(6, 4).classList.add('hl-origin');
+          getSquare(5, 6) && getSquare(5, 6).classList.add('hl-target');
+        }, 27500);
+        demoSchedule(function () {
+          clearDemoHL(); clearKnightLines();
+          boardMatrix[6][4] = ''; boardMatrix[5][6] = 'wn'; renderBoard();
+          getSquare(5, 6) && getSquare(5, 6).classList.add('hl-blue2');
+        }, 29000);
+        demoSchedule(function () { speak('马挡在g3，g列被封锁，将军解除'); }, 30000);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(5, 6) && getSquare(5, 6).classList.add('hl-origin');
+          getSquare(6, 4) && getSquare(6, 4).classList.add('hl-target');
+        }, 33500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[5][6] = ''; boardMatrix[6][4] = 'wn'; renderBoard();
+        }, 35000);
+        demoSchedule(function () { highlightCheckResponseCheck(); }, 36000);
+
+        // --- 第三法：象吃子 a2×g8 ---
+        demoSchedule(function () { speak('第三种：吃掉攻击子——象从a2沿斜线吃掉g8的黑车'); }, 37500);
+        demoSchedule(function () {
+          clearDemoHL();
+          getSquare(6, 0) && getSquare(6, 0).classList.add('hl-origin');
+          getSquare(0, 6) && getSquare(0, 6).classList.add('hl-target');
+        }, 43000);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix[6][0] = ''; boardMatrix[0][6] = 'wb'; renderBoard();
+          getSquare(0, 6) && getSquare(0, 6).classList.add('hl-gold');
+        }, 44500);
+        demoSchedule(function () { speak('象吃掉黑车，将军威胁彻底消除'); }, 45500);
+        demoSchedule(function () {
+          clearDemoHL(); setupCheckResponseBoard();
+        }, 49000);
+        demoSchedule(function () { highlightCheckResponseCheck(); }, 50000);
+        demoSchedule(function () { speak('三种应将方法灵活运用，遇到将军不慌张'); }, 50500);
+        demoSchedule(function () {
+          clearDemoHL();
+          boardMatrix = savedBoard; savedBoard = null; renderBoard();
+          demoState.active = false;
+        }, 56000);
+      }
+
+      // ── 总结与回顾 页面自身逻辑 ──────────────────────────────────
+      var CARDS = [
+        { icon: '🤴', name: '王', desc: '向8个方向各走1格\n不能走入被对方控制的格子', demo: runKingObserveDemo },
+        { icon: '🏰', name: '车', desc: '沿横线或竖线走任意格\n控制整行整列，直线上无死角', demo: runRookMoveDemo },
+        { icon: '🐴', name: '马', desc: '走L形（2+1格）\n唯一能跳过棋子的棋子', demo: runKnightMoveDemo },
+        { icon: '🎭', name: '象', desc: '沿斜线走任意格\n永远只走同色格，异色象互不干扰', demo: runBishopMoveDemo },
+        { icon: '👑', name: '后', desc: '任意方向走任意格\n车与象的合体，全场最强棋子', demo: runQueenMoveDemo },
+        { icon: '♟', name: '兵', desc: '向前走1格（起步可走2格），斜前方吃子\n到达底线升变，最强可升为后', demo: runPawnMoveDemo },
+        { icon: '⚡', name: '王车易位', desc: '王向车的方向移动两格，车跳到王的另一侧\n短易位（王翼）和长易位（后翼）', demo: runKingCastlingDemo },
+        { icon: '🚩', name: '吃过路兵', desc: '对方兵走两格后可立即斜吃\n机会只有一步，错过永久消失！', demo: runPawnEnPassantDemo },
+        { icon: '🤝', name: '和棋', desc: '困毙：无处可走且未被将军 = 和棋\n子力不足 / 50回合无进展 / 三次重复局面 = 和棋', demo: runStalemateDemo },
+        { icon: '⚔️', name: '将军与应将', desc: '将军：直接攻击对方的王\n应将三法：移王 / 遮挡 / 吃掉攻击子', demo: runCheckResponseDemo }
+      ];
+
+      var lessonVoices = {
+        explanation: '祝贺你学习完了国际象棋的基本知识！',
+        student: '致学生：恭喜你完成了国际象棋入门学习，继续练习会更棒',
+        parent: '致家长：孩子已经掌握了国际象棋基础，请继续鼓励练习'
+      };
+
+      var backBtn = document.getElementById('btnBackIntro');
+      var btnKeyTips = document.getElementById('btnKeyTips');
+      var btnStudentVoice = document.getElementById('btnStudentVoice');
+      var btnParentVoice = document.getElementById('btnParentVoice');
+      var btnStopDemo = document.getElementById('btnStopDemo');
+      var tipsModal = document.getElementById('tipsModal');
+      var btnTipsClose = document.getElementById('btnTipsClose');
+      var btnTipsOk = document.getElementById('btnTipsOk');
+      var cardsGrid = document.getElementById('cardsGrid');
+      var cardStatus = document.getElementById('cardStatus');
+
+      renderCoords();
+      renderBoard();
+
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          if (window.history.length > 1) { e.preventDefault(); window.history.back(); }
+        });
+      }
+
+      function openTipsModal() {
+        if (!tipsModal) return;
+        tipsModal.classList.remove('hidden');
+        tipsModal.setAttribute('aria-hidden', 'false');
+      }
+      function closeTipsModal() {
+        if (!tipsModal) return;
+        tipsModal.classList.add('hidden');
+        tipsModal.setAttribute('aria-hidden', 'true');
+      }
+      if (btnKeyTips) btnKeyTips.addEventListener('click', openTipsModal);
+      if (btnTipsClose) btnTipsClose.addEventListener('click', closeTipsModal);
+      if (btnTipsOk) btnTipsOk.addEventListener('click', closeTipsModal);
+      if (tipsModal) tipsModal.addEventListener('click', function (e) { if (e.target === tipsModal) closeTipsModal(); });
+
+      if (btnStudentVoice) btnStudentVoice.addEventListener('click', function () { speak(lessonVoices.student); });
+      if (btnParentVoice) btnParentVoice.addEventListener('click', function () { speak(lessonVoices.parent); });
+      if (btnStopDemo) btnStopDemo.addEventListener('click', function () {
+        cancelDemo();
+        cardEls.forEach(function (c) { c.classList.remove('playing'); });
+        cardStatus.textContent = '演示已停止';
+      });
+
+      var cardEls = [];
+      CARDS.forEach(function (card) {
+        var el = document.createElement('div');
+        el.className = 'summary-card';
+        el.innerHTML = '<div class="head">' + card.icon + '&nbsp;&nbsp;' + card.name + '</div>' +
+          '<div class="desc">' + card.desc.replace(/\n/g, '<br>') + '</div>';
+        el.addEventListener('click', function () {
+          cardEls.forEach(function (c) { c.classList.remove('selected', 'playing'); });
+          if (card.demo) {
+            el.classList.add('playing');
+            cardStatus.textContent = '正在棋盘上演示：' + card.name + ' — ' + card.desc.replace(/\n/g, ' ');
+            card.demo();
+          } else {
+            el.classList.add('selected');
+            cardStatus.textContent = '已选择：' + card.name + ' — ' + card.desc.replace(/\n/g, ' ');
+            speak(card.name + '。' + card.desc.replace(/\n/g, '，'));
+          }
+        });
+        cardsGrid.appendChild(el);
+        cardEls.push(el);
+      });
+
+      speak(lessonVoices.explanation);
+    }());
+  </script>
 </body>
 </html>
