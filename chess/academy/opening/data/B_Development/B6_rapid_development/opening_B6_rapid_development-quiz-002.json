@@ -1,0 +1,16 @@
+{
+    "id": "opening_B6_rapid_development-quiz-002",
+    "gene_id": "B6_rapid_development",
+    "sequence": 2,
+    "concept": "重复走子的代价",
+    "question_cn": "开局中为什么要避免重复移动同一个棋子？",
+    "options": [
+        {"key": "A", "text_cn": "重复移动会让棋子位置变差"},
+        {"key": "B", "text_cn": "每次重复走同一棋子，等于让对方免费多出一个新棋子，对方积累发展优势"},
+        {"key": "C", "text_cn": "规则不允许连续两步走同一棋子"},
+        {"key": "D", "text_cn": "重复走子会让王暴露在危险中"}
+    ],
+    "correct": "B",
+    "explanation_cn": "开局的核心原则是「每步出一个新棋子」。若你走了马到f3，下一步再把马从f3挪走，等于这两步只出了一个棋子，而对方两步可以出两个棋子——对方在发展上领先一子。这种「节奏损失」（tempo loss）会在开局中积累，让对方获得主动权。",
+    "created_at": "2026-06-12"
+}

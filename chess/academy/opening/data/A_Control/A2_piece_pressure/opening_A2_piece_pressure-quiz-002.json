@@ -1,0 +1,16 @@
+{
+    "id": "opening_A2_piece_pressure-quiz-002",
+    "gene_id": "A2_piece_pressure",
+    "sequence": 2,
+    "concept": "马的最佳位置",
+    "question_cn": "开局中马站在哪个位置控制的中心格最多？",
+    "options": [
+        {"key": "A", "text_cn": "h3 或 a3（角落边路）"},
+        {"key": "B", "text_cn": "f3 或 c3（中心周围一格）"},
+        {"key": "C", "text_cn": "h1 或 a1（角格）"},
+        {"key": "D", "text_cn": "g5 或 b5（斜前边路）"}
+    ],
+    "correct": "B",
+    "explanation_cn": "马在 f3 可控制 e5、d4、g5、h4、d2、e1 共6个格，其中 e5 和 d4 都是中心格。马在 c3 可控制 d5、e4、b5、a4、a2、b1、d1、e2，其中 d5 和 e4 也是中心格。相比之下，h3 的马只控制 f2、g5、f4，对中心没有贡献——「边路的马不如中心的马」正是这个道理。",
+    "created_at": "2026-06-07"
+}

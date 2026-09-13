@@ -1,0 +1,16 @@
+{
+    "id": "opening_C9_pawn_chains-quiz-001",
+    "gene_id": "C9_pawn_chains",
+    "sequence": 1,
+    "concept": "兵链的定义",
+    "question_cn": "以下哪种描述符合「兵链」的定义？",
+    "options": [
+        {"key": "A", "text_cn": "同一方两个兵并排（如e4和d4）"},
+        {"key": "B", "text_cn": "同一方的兵斜向相连、互相支撑，形如e5-d4-c3"},
+        {"key": "C", "text_cn": "两个兵纵向叠加（如d4和d5叠兵）"},
+        {"key": "D", "text_cn": "任意相邻的两个兵，无论方向"}
+    ],
+    "correct": "B",
+    "explanation_cn": "兵链是同一方的兵沿斜线相连、每个兵都由后面一个兵支撑，形如e5-d4-c3的锯齿斜线。并列兵（d4-e4）和叠兵（d4-d5）都不是兵链。兵链的关键是：每个兵都有斜后方的兵保护，整体结构坚固。",
+    "created_at": "2026-06-13"
+}

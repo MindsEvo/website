@@ -1,0 +1,16 @@
+{
+    "id": "opening_A3_space_gains-quiz-003",
+    "gene_id": "A3_space_gains",
+    "sequence": 3,
+    "concept": "c5反击的时机",
+    "question_cn": "在法国防御或卡罗坎中，白方推进 e5 后黑方走 c5 的主要目的是什么？",
+    "options": [
+        {"key": "A", "text_cn": "让 c8 的象出来"},
+        {"key": "B", "text_cn": "直接攻击 d4，打断白方兵链的根部，瓦解 d4+e5 整条兵链的支撑"},
+        {"key": "C", "text_cn": "为王车易位创造条件"},
+        {"key": "D", "text_cn": "保护 d5 兵不被吃掉"}
+    ],
+    "correct": "B",
+    "explanation_cn": "白方的 e5 兵需要 d4 来支撑——d4 是整条兵链的「根」。c5 直接攻击 d4，一旦 d4 被吃或被迫移走，e5 就失去根基，整体空间优势随之减弱。这是被压制一方打破对方兵链、重获活动空间的经典手段。",
+    "created_at": "2026-06-07"
+}

@@ -1,0 +1,16 @@
+{
+    "id": "opening_C10_weak_squares-quiz-004",
+    "gene_id": "C10_weak_squares",
+    "sequence": 4,
+    "concept": "象压制同色弱格",
+    "question_cn": "对方在黑色格子上形成了弱格群（multiple weak dark squares）。你手中有黑格象，对方没有黑格象。最好的战略是什么？",
+    "options": [
+        {"key": "A", "text_cn": "尽快兑换掉这个黑格象，换取其他子力优势"},
+        {"key": "B", "text_cn": "保留黑格象，让它沿对角线长期压制对方所有黑色弱格"},
+        {"key": "C", "text_cn": "用兵占领弱格，不需要象"},
+        {"key": "D", "text_cn": "黑格弱格只要用马占就够了，象没有特别价值"}
+    ],
+    "correct": "B",
+    "explanation_cn": "当对方形成某颜色的弱格群，而你恰好有该颜色的象、对方没有时，这个象就升值为「好象」（Good Bishop）。它沿对角线可以同时控制多个弱格，对方无象反制。最优策略是坚决保留该象，绝不轻易兑换，让它长期统治这些弱格。这是后翼弃兵（QGD）中白方白格象压制黑方白色弱格的经典模式。",
+    "created_at": "2026-06-13"
+}

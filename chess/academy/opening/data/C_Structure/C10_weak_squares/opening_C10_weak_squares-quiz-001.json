@@ -1,0 +1,16 @@
+{
+    "id": "opening_C10_weak_squares-quiz-001",
+    "gene_id": "C10_weak_squares",
+    "sequence": 1,
+    "concept": "弱格的定义",
+    "question_cn": "国际象棋中「弱格」的准确定义是什么？",
+    "options": [
+        {"key": "A", "text_cn": "当前没有己方棋子站在上面的格子"},
+        {"key": "B", "text_cn": "无法再被己方兵保护、且对方可以永久占据的格子"},
+        {"key": "C", "text_cn": "位于棋盘边缘、不重要的格子"},
+        {"key": "D", "text_cn": "被对方兵直接攻击的格子"}
+    ],
+    "correct": "B",
+    "explanation_cn": "弱格（Weak Square）指己方永远无法用兵来守护的格子。关键词是「永久性」——暂时没有棋子站着不叫弱格，但若周围的兵已经前进过去或者控制该格的象已消失，该格就成了对方可以永久驻扎的据点。弱格越靠近对方王或中心，价值越高。",
+    "created_at": "2026-06-13"
+}

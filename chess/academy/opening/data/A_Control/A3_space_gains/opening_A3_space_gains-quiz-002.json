@@ -1,0 +1,16 @@
+{
+    "id": "opening_A3_space_gains-quiz-002",
+    "gene_id": "A3_space_gains",
+    "sequence": 2,
+    "concept": "e5推进的空间效果",
+    "question_cn": "白方推进 e5 之后，对黑方阵型的主要影响是什么？",
+    "options": [
+        {"key": "A", "text_cn": "黑方 f6 的马被驱走，黑方阵地前沿的格子都在白方控制之下，黑方棋子活动空间被压缩"},
+        {"key": "B", "text_cn": "白方失去了对 e4 格的控制"},
+        {"key": "C", "text_cn": "黑方可以立即用 dxe5 吃掉这个兵"},
+        {"key": "D", "text_cn": "对双方局面没有实质影响"}
+    ],
+    "correct": "A",
+    "explanation_cn": "e5 推进后，黑方 f6 的马被迫离开最佳位置，d6、f6 等前沿格子都受到白方 e5 兵的控制，黑方棋子的活动范围明显压缩。这就是「空间优势」的直接体现：白方控制更多格子，黑方棋子被迫退缩。",
+    "created_at": "2026-06-07"
+}

@@ -332,12 +332,62 @@
       margin-top: 8px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 34px 10px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
+      padding: 10px;
       background: #fafbfd;
     }
+
+    .quiz-question {
+      color: #2c3e50;
+      font-size: 13px;
+      line-height: 1.6;
+      background: #fff;
+      border: 1px solid #d7deea;
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 20px;
+    }
+
+    .quiz-question.empty {
+      text-align: center;
+      color: #94a3b8;
+      padding: 24px 10px;
+    }
+
+    .quiz-options {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .quiz-option-btn {
+      text-align: left;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid #d7deea;
+      background: #fff;
+      color: #2c3e50;
+      cursor: pointer;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) { background: #ede7f6; border-color: #9c27b0; }
+    .quiz-option-btn:disabled { cursor: default; }
+    .quiz-option-btn.correct { background: #e8f5e9; color: #2e7d32; border-color: #4caf50; font-weight: 700; }
+    .quiz-option-btn.wrong { background: #ffebee; color: #c62828; border-color: #f44336; }
+    .quiz-option-btn.reveal { background: #e3f2fd; color: #1565c0; border-color: #42a5f5; font-weight: 700; }
+
+    .quiz-feedback {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    .quiz-feedback.hidden { display: none; }
+    .quiz-feedback.correct { background: #e8f5e9; border: 1px solid #4caf50; color: #2e7d32; }
+    .quiz-feedback.wrong { background: #ffebee; border: 1px solid #f44336; color: #c62828; }
 
     .solution-box h4, .explanation-box h4 {
       font-size: 14px;
@@ -487,27 +537,31 @@
           </div>
         </div>
 
-        <div class="panel panel-placeholder">
+        <div class="panel">
           <h3>问答练习</h3>
           <div class="group-chips">
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#8E44AD">控制类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="A_Control">
+              <button class="group-chip" id="quizA_Control" data-quiz-group="A_Control" style="background:#8E44AD">控制类</button>
+              <div class="dropdown-menu" id="menuQuizA_Control"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#16A085">发展类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="B_Development">
+              <button class="group-chip" id="quizB_Development" data-quiz-group="B_Development" style="background:#16A085">发展类</button>
+              <div class="dropdown-menu" id="menuQuizB_Development"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#2980B9">结构类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="C_Structure">
+              <button class="group-chip" id="quizC_Structure" data-quiz-group="C_Structure" style="background:#2980B9">结构类</button>
+              <div class="dropdown-menu" id="menuQuizC_Structure"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#27AE60">战略类</button>
-              <div class="dropdown-menu"></div>
+            <div class="group-dropdown-wrap" data-quiz-group="D_Strategic">
+              <button class="group-chip" id="quizD_Strategic" data-quiz-group="D_Strategic" style="background:#27AE60">战略类</button>
+              <div class="dropdown-menu" id="menuQuizD_Strategic"></div>
             </div>
           </div>
-          <div class="quiz-placeholder">请选择问题开始答题</div>
+          <div class="quiz-placeholder">
+            <div class="quiz-question empty" id="quizQuestion">请选择问题开始答题</div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-feedback hidden" id="quizFeedback"></div>
+          </div>
         </div>
       </div>
 
@@ -556,6 +610,16 @@
         { key: 'D_Strategic', label: '战略类', folder: 'D_Strategic', enabled: true }
       ];
 
+      // 问答练习: pure text multiple-choice quiz, no FEN/board involved at all (source
+      // quiz JSON has no fen field) — independent of the board/solution/explanation
+      // panels, which stay untouched while answering a quiz.
+      var QUIZ_GROUP_DEFS = [
+        { key: 'A_Control', label: '控制类', folder: 'A_Control', enabled: true },
+        { key: 'B_Development', label: '发展类', folder: 'B_Development', enabled: true },
+        { key: 'C_Structure', label: '结构类', folder: 'C_Structure', enabled: true },
+        { key: 'D_Strategic', label: '战略类', folder: 'D_Strategic', enabled: true }
+      ];
+
       // ── DOM refs ──────────────────────────────────────
       var boardEl = document.getElementById('board');
       var arrowsEl = document.getElementById('boardArrows');
@@ -576,6 +640,9 @@
       var volumeValue = document.getElementById('volumeValue');
       var speedRange = document.getElementById('speedRange');
       var speedValue = document.getElementById('speedValue');
+      var quizQuestion = document.getElementById('quizQuestion');
+      var quizOptions = document.getElementById('quizOptions');
+      var quizFeedback = document.getElementById('quizFeedback');
 
       var files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
       var ranks = [8, 7, 6, 5, 4, 3, 2, 1];
@@ -1290,6 +1357,134 @@
         });
       }
 
+      // ── 问答练习 (quiz) — pure text multiple-choice, no board/anno involved ──
+      var quizManifestCache = {};
+      var currentQuiz = null;
+
+      function renderQuizDropdownMenu(groupDef, manifest, menuEl) {
+        var html = '';
+        manifest.categories.forEach(function (cat) {
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          html += '<div class="submenu">';
+          cat.items.forEach(function (item) {
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          });
+          html += '</div></div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var subKey = el.closest('.menu-row').dataset.cat;
+            loadQuizItem(groupDef, subKey, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+        menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            if (e.target.closest('.submenu-item')) return;
+            e.stopPropagation();
+            var wasOpen = row.classList.contains('open');
+            menuEl.querySelectorAll('.menu-row').forEach(function (r) { r.classList.remove('open'); });
+            if (!wasOpen) row.classList.add('open');
+          });
+        });
+      }
+
+      function selectQuizGroup(groupDef) {
+        var menuEl = document.getElementById('menuQuiz' + groupDef.key);
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (quizManifestCache[groupDef.key]) {
+          renderQuizDropdownMenu(groupDef, quizManifestCache[groupDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + groupDef.folder + '/quiz-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            quizManifestCache[groupDef.key] = manifest;
+            renderQuizDropdownMenu(groupDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadQuizItem(groupDef, subKey, itemId) {
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        quizQuestion.textContent = '正在加载题目...';
+        quizQuestion.classList.remove('empty');
+        quizOptions.innerHTML = '';
+        quizFeedback.classList.add('hidden');
+        var base = './data/' + groupDef.folder + '/' + subKey + '/';
+        fetch(base + itemId + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (qdata) {
+            showQuizQuestion(qdata);
+          })
+          .catch(function (e) {
+            quizQuestion.textContent = '题目加载失败: ' + e.message;
+          });
+      }
+
+      function showQuizQuestion(qdata) {
+        currentQuiz = qdata;
+        var seq = qdata.sequence || '';
+        var concept = qdata.concept || '';
+        var header = concept ? ('Q' + seq + '【' + concept + '】 ') : ('Q' + seq + ' ');
+        quizQuestion.textContent = header + (qdata.question_cn || '');
+        quizQuestion.classList.remove('empty');
+        quizFeedback.classList.add('hidden');
+        quizFeedback.textContent = '';
+
+        var optionsHtml = '';
+        (qdata.options || []).forEach(function (opt) {
+          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + opt.text_cn + '</button>';
+        });
+        quizOptions.innerHTML = optionsHtml;
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () { handleQuizOptionClick(btn.dataset.key); });
+        });
+
+        if (window.speechSynthesis && qdata.question_cn) {
+          var ut = new SpeechSynthesisUtterance(qdata.question_cn);
+          ut.lang = 'zh-CN';
+          window.speechSynthesis.speak(ut);
+        }
+      }
+
+      function handleQuizOptionClick(selectedKey) {
+        if (!currentQuiz) return;
+        var correct = currentQuiz.correct;
+        var explanation = currentQuiz.explanation_cn || '';
+
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
+          var key = btn.dataset.key;
+          btn.disabled = true;
+          if (key === correct && key === selectedKey) btn.classList.add('correct');
+          else if (key === selectedKey) btn.classList.add('wrong');
+          else if (key === correct) btn.classList.add('reveal');
+        });
+
+        var isCorrect = selectedKey === correct;
+        quizFeedback.classList.remove('hidden', 'correct', 'wrong');
+        quizFeedback.classList.add(isCorrect ? 'correct' : 'wrong');
+        var feedbackText = isCorrect ? ('✓ 正确！ ' + explanation) : ('✗ 答案是 ' + correct + '。 ' + explanation);
+        quizFeedback.textContent = feedbackText;
+
+        if (window.speechSynthesis) {
+          var speakText = isCorrect ? ('正确！' + explanation) : ('答案是' + correct + '。' + explanation);
+          var ut = new SpeechSynthesisUtterance(speakText);
+          ut.lang = 'zh-CN';
+          window.speechSynthesis.speak(ut);
+        }
+      }
+
       // ── Controls ──────────────────────────────────────
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
@@ -1301,19 +1496,9 @@
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticeGroup(groupDef); });
       });
 
-      // 问答练习 is not implemented yet — its buttons just show a "敬请期待"
-      // placeholder in the same dropdown style used for locked groups.
-      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap:not([data-practice-group])').forEach(function (wrap) {
-        var btn = wrap.querySelector('.group-chip');
-        var menuEl = wrap.querySelector('.dropdown-menu');
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var wasOpen = menuEl.classList.contains('open');
-          closeAllMenus();
-          if (wasOpen) return;
-          menuEl.innerHTML = '<div class="menu-row disabled">"' + btn.textContent + '"功能开发中，敬请期待</div>';
-          menuEl.classList.add('open');
-        });
+      QUIZ_GROUP_DEFS.forEach(function (groupDef) {
+        var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });

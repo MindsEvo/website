@@ -1,0 +1,50 @@
+﻿{
+  "label": "控制类",
+  "color": "#8E44AD",
+  "categories": [
+    {
+      "key": "A1_pawn_center",
+      "label": "A1 占领中心",
+      "items": [
+        { "id": "opening_A1_pawn_center-quiz-001", "label": "1. 中心格定义" },
+        { "id": "opening_A1_pawn_center-quiz-002", "label": "2. 控制中心的好处" },
+        { "id": "opening_A1_pawn_center-quiz-003", "label": "3. 兵控制格子" },
+        { "id": "opening_A1_pawn_center-quiz-004", "label": "4. 占领与控制中心" },
+        { "id": "opening_A1_pawn_center-quiz-005", "label": "5. 过早出后的风险" }
+      ]
+    },
+    {
+      "key": "A2_piece_pressure",
+      "label": "A2 控制中心",
+      "items": [
+        { "id": "opening_A2_piece_pressure-quiz-001", "label": "1. 子力控制中心" },
+        { "id": "opening_A2_piece_pressure-quiz-002", "label": "2. 马的最佳位置" },
+        { "id": "opening_A2_piece_pressure-quiz-003", "label": "3. 象的远程控制" },
+        { "id": "opening_A2_piece_pressure-quiz-004", "label": "4. 多子协调控制中心" },
+        { "id": "opening_A2_piece_pressure-quiz-005", "label": "5. 边路轻子的代价" }
+      ]
+    },
+    {
+      "key": "A3_space_gains",
+      "label": "A3 空间控制",
+      "items": [
+        { "id": "opening_A3_space_gains-quiz-001", "label": "1. 空间优势的定义" },
+        { "id": "opening_A3_space_gains-quiz-002", "label": "2. e5推进的空间效果" },
+        { "id": "opening_A3_space_gains-quiz-003", "label": "3. c5反击的时机" },
+        { "id": "opening_A3_space_gains-quiz-004", "label": "4. 兵的安全推进原则" },
+        { "id": "opening_A3_space_gains-quiz-005", "label": "5. 空间优势的代价与风险" }
+      ]
+    },
+    {
+      "key": "A4_opening_lines",
+      "label": "A4 线路控制",
+      "items": [
+        { "id": "opening_A4_opening_lines-quiz-001", "label": "1. 线路控制的定义" },
+        { "id": "opening_A4_opening_lines-quiz-002", "label": "2. 打开线路的时机" },
+        { "id": "opening_A4_opening_lines-quiz-003", "label": "3. 半开放线路的价值" },
+        { "id": "opening_A4_opening_lines-quiz-004", "label": "4. 封闭线路的战略" },
+        { "id": "opening_A4_opening_lines-quiz-005", "label": "5. 纵线与斜线的联合控制" }
+      ]
+    }
+  ]
+}

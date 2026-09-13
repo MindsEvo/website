@@ -1,0 +1,50 @@
+﻿{
+  "label": "发展类",
+  "color": "#16A085",
+  "categories": [
+    {
+      "key": "B5_king_safety",
+      "label": "B5 王车易位",
+      "items": [
+        { "id": "opening_B5_king_safety-quiz-001", "label": "1. 易位的最佳时机" },
+        { "id": "opening_B5_king_safety-quiz-002", "label": "2. 王翼短易位的防线" },
+        { "id": "opening_B5_king_safety-quiz-003", "label": "3. 长易位的特点" },
+        { "id": "opening_B5_king_safety-quiz-004", "label": "4. 异侧易位的节奏" },
+        { "id": "opening_B5_king_safety-quiz-005", "label": "5. 不易位的后果" }
+      ]
+    },
+    {
+      "key": "B6_rapid_development",
+      "label": "B6 快速出子",
+      "items": [
+        { "id": "opening_B6_rapid_development-quiz-001", "label": "1. 轻子优先出子原则" },
+        { "id": "opening_B6_rapid_development-quiz-002", "label": "2. 重复走子的代价" },
+        { "id": "opening_B6_rapid_development-quiz-003", "label": "3. 后早出的风险" },
+        { "id": "opening_B6_rapid_development-quiz-004", "label": "4. 弃兵换出子速度" },
+        { "id": "opening_B6_rapid_development-quiz-005", "label": "5. 发展完成的标志" }
+      ]
+    },
+    {
+      "key": "B7_piece_coordination",
+      "label": "B7 子力协调",
+      "items": [
+        { "id": "opening_B7_piece_coordination-quiz-001", "label": "1. 子力协调的定义" },
+        { "id": "opening_B7_piece_coordination-quiz-002", "label": "2. 马与象的分工互补" },
+        { "id": "opening_B7_piece_coordination-quiz-003", "label": "3. 后的正确角色" },
+        { "id": "opening_B7_piece_coordination-quiz-004", "label": "4. 破坏协调——钉子战术" },
+        { "id": "opening_B7_piece_coordination-quiz-005", "label": "5. 协调优势的转化" }
+      ]
+    },
+    {
+      "key": "B8_rook_coordination",
+      "label": "B8 连接双车",
+      "items": [
+        { "id": "opening_B8_rook_coordination-quiz-001", "label": "1. 连接双车的条件" },
+        { "id": "opening_B8_rook_coordination-quiz-002", "label": "2. 连接双车的三步曲" },
+        { "id": "opening_B8_rook_coordination-quiz-003", "label": "3. 开放线路与车的价值" },
+        { "id": "opening_B8_rook_coordination-quiz-004", "label": "4. 叠车的战略意义" },
+        { "id": "opening_B8_rook_coordination-quiz-005", "label": "5. 后+双车的协调" }
+      ]
+    }
+  ]
+}

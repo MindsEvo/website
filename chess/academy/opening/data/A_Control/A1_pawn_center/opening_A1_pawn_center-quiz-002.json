@@ -1,0 +1,16 @@
+{
+    "id": "opening_A1_pawn_center-quiz-002",
+    "gene_id": "A1_pawn_center",
+    "sequence": 2,
+    "concept": "控制中心的好处",
+    "question_cn": "为什么在开局阶段要优先控制中心？",
+    "options": [
+        {"key": "A", "text_cn": "可以更快完成王车易位"},
+        {"key": "B", "text_cn": "占据中心的棋子活动空间更大，可控制棋盘更多区域"},
+        {"key": "C", "text_cn": "可以防止对方走弃兵开局"},
+        {"key": "D", "text_cn": "中心格的兵不容易被吃掉"}
+    ],
+    "correct": "B",
+    "explanation_cn": "站在中心的棋子（尤其是马）能到达的格子数量远多于边路棋子。控制中心意味着你的棋子有更多活动空间，可以灵活调度到棋盘任何位置发动进攻或防守。",
+    "created_at": "2026-06-03"
+}

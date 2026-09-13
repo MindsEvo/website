@@ -1,0 +1,50 @@
+﻿{
+  "label": "结构类",
+  "color": "#2980B9",
+  "categories": [
+    {
+      "key": "C9_pawn_chains",
+      "label": "C9  兵链方向",
+      "items": [
+        { "id": "opening_C9_pawn_chains-quiz-001", "label": "1. 兵链的定义" },
+        { "id": "opening_C9_pawn_chains-quiz-002", "label": "2. 兵链的进攻方向" },
+        { "id": "opening_C9_pawn_chains-quiz-003", "label": "3. 根部原则" },
+        { "id": "opening_C9_pawn_chains-quiz-004", "label": "4. 双兵链对攻" },
+        { "id": "opening_C9_pawn_chains-quiz-005", "label": "5. 少数兵突破" }
+      ]
+    },
+    {
+      "key": "C10_weak_squares",
+      "label": "C10 弱格利用",
+      "items": [
+        { "id": "opening_C10_weak_squares-quiz-001", "label": "1. 弱格的定义" },
+        { "id": "opening_C10_weak_squares-quiz-002", "label": "2. 失去象造成弱格" },
+        { "id": "opening_C10_weak_squares-quiz-003", "label": "3. 兵前进留下弱格" },
+        { "id": "opening_C10_weak_squares-quiz-004", "label": "4. 象压制同色弱格" },
+        { "id": "opening_C10_weak_squares-quiz-005", "label": "5. 马占据弱格据点" }
+      ]
+    },
+    {
+      "key": "C11_open_files",
+      "label": "C11 开放线",
+      "items": [
+        { "id": "opening_C11_open_files-quiz-001", "label": "1. 开放线与半开放线" },
+        { "id": "opening_C11_open_files-quiz-002", "label": "2. 抢占开放线的主动权" },
+        { "id": "opening_C11_open_files-quiz-003", "label": "3. 双车叠压开放线" },
+        { "id": "opening_C11_open_files-quiz-004", "label": "4. 借开放线占据中心格" },
+        { "id": "opening_C11_open_files-quiz-005", "label": "5. 多线协同作战" }
+      ]
+    },
+    {
+      "key": "C12_space_cramp",
+      "label": "C12 空间挤压",
+      "items": [
+        { "id": "opening_C12_space_cramp-quiz-001", "label": "1. 识别空间挤压的信号" },
+        { "id": "opening_C12_space_cramp-quiz-002", "label": "2. 被压方的反击点" },
+        { "id": "opening_C12_space_cramp-quiz-003", "label": "3. 空间优势必须跟进" },
+        { "id": "opening_C12_space_cramp-quiz-004", "label": "4. 子力拥挤可视化" },
+        { "id": "opening_C12_space_cramp-quiz-005", "label": "5. 弹簧效应" }
+      ]
+    }
+  ]
+}

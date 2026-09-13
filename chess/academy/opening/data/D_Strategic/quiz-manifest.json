@@ -1,0 +1,50 @@
+﻿{
+  "label": "战略类",
+  "color": "#27AE60",
+  "categories": [
+    {
+      "key": "D13_gambit_sacrifice",
+      "label": "D13 弃兵争先",
+      "items": [
+        { "id": "opening_D13_gambit_sacrifice-quiz-001", "label": "1. 弃兵争先三要素" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-002", "label": "2. 节拍差可视化" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-003", "label": "3. 连续弃兵的极限速度" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-004", "label": "4. 速度优势的时限" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-005", "label": "5. 黑方也能弃兵" }
+      ]
+    },
+    {
+      "key": "D14_useful_exchanges",
+      "label": "D14 及时兑子",
+      "items": [
+        { "id": "opening_D14_useful_exchanges-quiz-001", "label": "1. 兑换的战略目的" },
+        { "id": "opening_D14_useful_exchanges-quiz-002", "label": "2. 兑换制造结构弱点" },
+        { "id": "opening_D14_useful_exchanges-quiz-003", "label": "3. 好马换坏象" },
+        { "id": "opening_D14_useful_exchanges-quiz-004", "label": "4. 换后简化的战略" },
+        { "id": "opening_D14_useful_exchanges-quiz-005", "label": "5. 兑换顺序的重要性" }
+      ]
+    },
+    {
+      "key": "D15_counterattack",
+      "label": "D15 反制中心",
+      "items": [
+        { "id": "opening_D15_counterattack-quiz-001", "label": "1. 即时反制中心" },
+        { "id": "opening_D15_counterattack-quiz-002", "label": "2. 延迟反击的时机" },
+        { "id": "opening_D15_counterattack-quiz-003", "label": "3. 利用孤兵弱点反制" },
+        { "id": "opening_D15_counterattack-quiz-004", "label": "4. 侧翼反制中心" },
+        { "id": "opening_D15_counterattack-quiz-005", "label": "5. 超现代内爆反制" }
+      ]
+    },
+    {
+      "key": "D16_timing_moments",
+      "label": "D16 关键时机",
+      "items": [
+        { "id": "opening_D16_timing_moments-quiz-001", "label": "1. 时机判断的本质" },
+        { "id": "opening_D16_timing_moments-quiz-002", "label": "2. 突破时机的准备" },
+        { "id": "opening_D16_timing_moments-quiz-003", "label": "3. 兑换时机的判断" },
+        { "id": "opening_D16_timing_moments-quiz-004", "label": "4. 先吃后反击的节奏" },
+        { "id": "opening_D16_timing_moments-quiz-005", "label": "5. 翼兵进攻的节奏链" }
+      ]
+    }
+  ]
+}

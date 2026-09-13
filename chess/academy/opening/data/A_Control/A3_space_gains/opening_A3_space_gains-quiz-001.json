@@ -1,0 +1,16 @@
+{
+    "id": "opening_A3_space_gains-quiz-001",
+    "gene_id": "A3_space_gains",
+    "sequence": 1,
+    "concept": "空间优势的定义",
+    "question_cn": "「空间优势」在开局中最准确的含义是什么？",
+    "options": [
+        {"key": "A", "text_cn": "拥有更多的棋子"},
+        {"key": "B", "text_cn": "己方棋子可以自由活动的格子比对方多，子力调度更灵活"},
+        {"key": "C", "text_cn": "王翼的兵比对方多"},
+        {"key": "D", "text_cn": "中心格都被己方兵占领"}
+    ],
+    "correct": "B",
+    "explanation_cn": "空间优势指己方棋子可以使用的格子数量更多、活动范围更广。拥有空间优势的一方子力调度更自由，可以灵活集中力量攻击任意翼；而空间受限的一方棋子拥挤、互相妨碍，很难找到好的格子。",
+    "created_at": "2026-06-07"
+}

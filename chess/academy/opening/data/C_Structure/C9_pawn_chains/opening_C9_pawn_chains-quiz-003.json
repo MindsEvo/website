@@ -1,0 +1,16 @@
+{
+    "id": "opening_C9_pawn_chains-quiz-003",
+    "gene_id": "C9_pawn_chains",
+    "sequence": 3,
+    "concept": "根部原则",
+    "question_cn": "法国推进变例中白方兵链为e5-d4-c3（c3是实兵）。按Nimzowitsch的根部原则，黑方应优先攻击哪里？",
+    "options": [
+        {"key": "A", "text_cn": "e5（链头）——最突出的兵，先把它踢开"},
+        {"key": "B", "text_cn": "d4（链中）——攻打中间最容易"},
+        {"key": "C", "text_cn": "c3（链根）——整条链最底部的支撑兵"},
+        {"key": "D", "text_cn": "不攻击兵链，直接在王翼反攻"}
+    ],
+    "correct": "C",
+    "explanation_cn": "Nimzowitsch的根部原则：攻击兵链应从「根部」入手，即整条链最底部的支撑兵。在e5-d4-c3中，c3是根部。攻击e5（链头）会让对方满意，因为推进正是白方的意图；攻击d4有一定作用但c3仍支撑着。只有攻击c3（黑方用b5-b4）才能从根本上动摇整条链——根部动摇，上面的兵都失去依托。",
+    "created_at": "2026-06-13"
+}
