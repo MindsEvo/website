@@ -1,0 +1,40 @@
+{
+  "id": "eg_3P-3P_L3-quiz-001",
+  "gene_ids": [
+    "EG_3P_3P_L3"
+  ],
+  "gene_theme": "三兵对峙",
+  "difficulty": "L3",
+  "sequence": 1,
+  "ref_id": "eg_3P-3P_L3-001",
+  "fen": "7p/8/3p4/1p6/1K4P1/7k/8/4P2P w KQkq - 0 1",
+  "concept": "侧翼突破",
+  "question_cn": "三兵对三兵，侧翼突破成功的条件是：",
+  "question_en": "Three vs. three pawns — conditions for a successful wing breakthrough are:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王的位置优势 + 兵形的牺牲突破机会同时具备",
+      "text_en": "King positional advantage + pawn sacrifice breakthrough opportunity both present"
+    },
+    {
+      "key": "B",
+      "text_cn": "只要有多余的一步就能突破",
+      "text_en": "Any single extra tempo is enough to break through"
+    },
+    {
+      "key": "C",
+      "text_cn": "兵数量相等时不能突破",
+      "text_en": "When pawn numbers are equal, breakthrough is impossible"
+    },
+    {
+      "key": "D",
+      "text_cn": "先将军对方再突破",
+      "text_en": "Give check first, then breakthrough"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "侧翼突破的元思维：不是靠蛮力，而是靠时机——王占优势位置（中心或关键格）+ 特定兵形（可以牺牲换通路）同时出现时才是突破时机。两个条件缺一不可。",
+  "explanation_en": "Meta-concept: breakthrough requires two conditions simultaneously — king on a superior square AND a pawn sacrifice opportunity. Neither condition alone is sufficient.",
+  "created_at": "2026-04-26"
+}

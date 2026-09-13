@@ -1,0 +1,40 @@
+{
+  "id": "eg_KNP-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KNP"
+  ],
+  "gene_theme": "马兵对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KNP-K_L1-001",
+  "fen": "1K6/7N/8/8/8/8/2P2k2/8 w KQkq - 0 1",
+  "concept": "王兵协同",
+  "question_cn": "马兵对王中，白王的最重要职责是：",
+  "question_en": "In knight and pawn vs. king, what is White king's most important duty?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "远离战场，让马和兵独立行动",
+      "text_en": "Stay away and let knight and pawn act independently"
+    },
+    {
+      "key": "B",
+      "text_cn": "走在兵的前面，为兵开路",
+      "text_en": "Walk ahead of the pawn to clear the path"
+    },
+    {
+      "key": "C",
+      "text_cn": "保护马，防止被对方王攻击",
+      "text_en": "Protect the knight from the enemy king"
+    },
+    {
+      "key": "D",
+      "text_cn": "追逐对方王",
+      "text_en": "Chase the enemy king"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "马兵残局和其他兵残局一样，王必须积极参与——走在兵前面排除障碍，马负责控制对方王的干扰路线。王被动则往往导致和局。",
+  "explanation_en": "As in all pawn endgames, the king must be active — walk ahead of the pawn to open the way, while the knight controls the enemy king's interference routes.",
+  "created_at": "2026-04-26"
+}

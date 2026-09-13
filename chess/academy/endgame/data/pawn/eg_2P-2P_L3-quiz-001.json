@@ -1,0 +1,40 @@
+{
+  "id": "eg_2P-2P_L3-quiz-001",
+  "gene_ids": [
+    "EG_2P_2P_L3"
+  ],
+  "gene_theme": "双兵对峙",
+  "difficulty": "L3",
+  "sequence": 1,
+  "ref_id": "eg_2P-2P_L3-001",
+  "fen": "8/3p4/3P2p1/3P4/1k6/8/8/4K3 w KQkq - 0 1",
+  "concept": "连通兵的优势",
+  "question_cn": "连通兵（两个兵相邻，互相保护）比孤立兵的优势是：",
+  "question_en": "Connected pawns (adjacent, mutually protected) vs. isolated pawns — the advantage is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "连通兵可以互相保护推进，对方王无法单独吃掉其中一个",
+      "text_en": "Connected pawns advance while protecting each other; enemy king can't capture one without the other threatening to promote"
+    },
+    {
+      "key": "B",
+      "text_cn": "连通兵移动更快",
+      "text_en": "Connected pawns move faster"
+    },
+    {
+      "key": "C",
+      "text_cn": "连通兵不需要王的保护",
+      "text_en": "Connected pawns don't need king protection"
+    },
+    {
+      "key": "D",
+      "text_cn": "连通兵可以直接将死对方王",
+      "text_en": "Connected pawns can directly checkmate the enemy king"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "连通兵的元思维：互相保护创造的是\"对方王无法兼顾\"的局面。吃一个兵，另一个就升变——这种牵制是双兵对双兵残局最重要的战略资源。",
+  "explanation_en": "Meta-concept: mutual protection creates 'can't take one without the other promoting.' This zugzwang-like dilemma is the most powerful strategic resource in two-pawn endgames.",
+  "created_at": "2026-04-26"
+}

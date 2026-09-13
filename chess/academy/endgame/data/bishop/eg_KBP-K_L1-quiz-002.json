@@ -1,0 +1,40 @@
+{
+  "id": "eg_KBP-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KBP"
+  ],
+  "gene_theme": "象兵对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KBP-K_L1-005",
+  "fen": "4k3/8/4B3/7P/8/8/5K2/8 w - - 0 1",
+  "concept": "错色象和局识别",
+  "question_cn": "a兵（或h兵）配上错色象（升变格颜色与象不同），黑王能守住角格，结果是：",
+  "question_en": "Rook pawn (a or h) with wrong-colored bishop (bishop doesn't control promotion square color), Black king holds the corner:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "白方必胜，只要王配合就行",
+      "text_en": "White wins with king cooperation"
+    },
+    {
+      "key": "B",
+      "text_cn": "和局，象无法将死守角的黑王",
+      "text_en": "Draw — bishop cannot checkmate the king in the corner"
+    },
+    {
+      "key": "C",
+      "text_cn": "黑王必须离开角格",
+      "text_en": "Black king must leave the corner"
+    },
+    {
+      "key": "D",
+      "text_cn": "取决于兵的位置",
+      "text_en": "Depends on pawn position"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "这是象兵残局最重要的和局识别：错色象 + 边路兵 → 和局。升变格颜色 ≠ 象的颜色，守住角格的黑王永远不会被将死。学会识别这个模式能避免大量误判。",
+  "explanation_en": "Most important draw pattern in bishop-pawn endgames: wrong-colored bishop + rook pawn = draw. The bishop can never checkmate the king sheltered in the promotion corner.",
+  "created_at": "2026-04-26"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eg_KP-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KP"
+  ],
+  "gene_theme": "兵对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KP-K_L1-003",
+  "fen": "8/8/8/5k2/8/6K1/8/1P6 w KQkq - 0 1",
+  "concept": "对立法则（先手对王）",
+  "question_cn": "两王直接面对面、中间隔一格，称为\"对立\"。谁先走谁就失去对立。白方要推兵升变，应该：",
+  "question_en": "Opposition means kings face each other with one square between them, and the side to move loses it. To promote the pawn, White should:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "先用王占据对立位，再推兵",
+      "text_en": "First gain the opposition with the king, then advance the pawn"
+    },
+    {
+      "key": "B",
+      "text_cn": "直接推兵，不管对立",
+      "text_en": "Just push the pawn and ignore opposition"
+    },
+    {
+      "key": "C",
+      "text_cn": "用后来帮助升变",
+      "text_en": "Bring the queen to help promote"
+    },
+    {
+      "key": "D",
+      "text_cn": "兵先到升变格再说",
+      "text_en": "Get the pawn to the promotion square first"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "先手对王是兵残局的核心元思维：王占对立 → 黑王被迫让路 → 白兵顺利推进。没有王的配合，多数情况下白方无法赢棋。",
+  "explanation_en": "Gaining opposition is the core meta-concept in pawn endgames: king takes opposition → Black king forced to yield → pawn advances freely.",
+  "created_at": "2026-04-26"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eg_KQ-KP_L1-quiz-001",
+  "gene_ids": [
+    "EG_KQ_KP"
+  ],
+  "gene_theme": "后对升变兵",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KQ-KP_L1-001",
+  "fen": "2KQ4/8/8/8/8/8/3pk3/8 w - - 0 1",
+  "concept": "后对升变兵——基本判断",
+  "question_cn": "后对快要升变的兵（如兵在第7排），白方（有后一方）的主要手段是：",
+  "question_en": "Queen vs. pawn about to promote (pawn on 7th rank) — White's (the queen side's) main approach is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用后将军迫使对方王走开（通常需要几方王的协助），再将兵吃掉或阻止升变",
+      "text_en": "Check the king repeatedly to prevent promotion or win the pawn"
+    },
+    {
+      "key": "B",
+      "text_cn": "后直接吃兵",
+      "text_en": "Queen just captures the pawn directly"
+    },
+    {
+      "key": "C",
+      "text_cn": "等己方王靠近再行动",
+      "text_en": "Wait for own king to approach before acting"
+    },
+    {
+      "key": "D",
+      "text_cn": "后无法应对快要升变的兵",
+      "text_en": "The queen cannot handle a pawn about to promote"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "后对升变兵的核心元思维：后通过连续将军迫使对方王暴露，同时己方王快速靠近。这需要精确计算，因为c兵、f兵的升变格特殊（后可能遭遇逼和陷阱）。",
+  "explanation_en": "Core meta-concept: queen gives perpetual checks forcing the enemy king to expose itself while own king rushes in. Beware of c-pawn and f-pawn stalemate traps.",
+  "created_at": "2026-04-26"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eg_RP-R_L2-quiz-001",
+  "gene_ids": [
+    "EG_RP_R_L2"
+  ],
+  "gene_theme": "车兵对车",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_RP-R_L2-001",
+  "fen": "8/8/8/2P5/2r5/4kR2/3K4/8 w KQkq - 0 1",
+  "concept": "车兵对车——Philidor/Lucena",
+  "question_cn": "车兵对车，进攻方（有兵一方）的制胜方法是：",
+  "question_en": "Rook and pawn vs. lone rook — the attacker's winning method is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "兵直接推到底线升变",
+      "text_en": "Push the pawn directly to the back rank to promote"
+    },
+    {
+      "key": "B",
+      "text_cn": "用Lucena阵型——王越过兵，车架桥保护升变",
+      "text_en": "Use the Lucena position: king in front of pawn, rook builds a bridge to shield promotion"
+    },
+    {
+      "key": "C",
+      "text_cn": "车和兵分开行动各自为战",
+      "text_en": "Rook and pawn act independently"
+    },
+    {
+      "key": "D",
+      "text_cn": "先用车将军消耗对方",
+      "text_en": "Give checks to wear down the opponent first"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "Lucena阵型是车兵残局最重要的制胜方法：王走到兵前方（挡住对方王），己方车\"架桥\"（rook lift）给王遮挡对方车的将军，让兵顺利升变。这是车残局必须掌握的核心技法。",
+  "explanation_en": "The Lucena position is the most important winning technique: king in front of pawn, rook builds a bridge to shield the king from checks, allowing the pawn to promote.",
+  "created_at": "2026-04-26"
+}

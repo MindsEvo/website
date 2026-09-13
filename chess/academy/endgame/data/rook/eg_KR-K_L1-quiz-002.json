@@ -1,0 +1,40 @@
+{
+  "id": "eg_KR-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KR"
+  ],
+  "gene_theme": "车对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KR-K_L1-001",
+  "fen": "2k5/8/8/3K4/8/8/3R4/8 w KQkq - 0 1",
+  "concept": "将死在边线",
+  "question_cn": "车对王将死必须发生在：",
+  "question_en": "In rook vs. king, checkmate must happen on:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "棋盘中心",
+      "text_en": "The center of the board"
+    },
+    {
+      "key": "B",
+      "text_cn": "边线或角落",
+      "text_en": "The edge or corner of the board"
+    },
+    {
+      "key": "C",
+      "text_cn": "任何格子都可以",
+      "text_en": "Any square on the board"
+    },
+    {
+      "key": "D",
+      "text_cn": "车所在的列",
+      "text_en": "The file where the rook stands"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "边线/角落是将死的必要条件。中心的王有四个方向可逃，边线的王只有两个方向，角落的王只有一个方向——这就是为什么要把对方王往边上逼。",
+  "explanation_en": "Edge/corner is required for mate. A central king has 4 escape directions; an edge king has 2; a cornered king has 1.",
+  "created_at": "2026-04-26"
+}

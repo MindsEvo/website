@@ -1,0 +1,40 @@
+{
+  "id": "eg_KBN-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KBN"
+  ],
+  "gene_theme": "象马对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KBN-K_L1-002",
+  "fen": "6B1/8/3N4/8/7K/8/8/7k w - - 0 1",
+  "concept": "象马难度",
+  "question_cn": "象马对王被认为是最难的基本残局，主要原因是：",
+  "question_en": "Bishop and knight vs. king is considered the hardest basic endgame. The main reason is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "象马不能配合，无法将死",
+      "text_en": "Bishop and knight can't cooperate and can't checkmate"
+    },
+    {
+      "key": "B",
+      "text_cn": "需要把对方王赶到特定颜色的角落，步骤复杂",
+      "text_en": "Must drive the enemy king to a specific corner color — the procedure is complex"
+    },
+    {
+      "key": "C",
+      "text_cn": "象马会被对方王吃掉",
+      "text_en": "The bishop or knight will be captured"
+    },
+    {
+      "key": "D",
+      "text_cn": "只有50步规则限制，时间不够",
+      "text_en": "Only the 50-move rule is the issue, not enough time"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "象马残局难在路径：必须用马引导，把对方王赶离异色角、逼向同色角，再精确配合将杀。这需要完整的象马Malketu技法，步骤多、容易出错。",
+  "explanation_en": "The difficulty: you must guide the enemy king from the wrong-color corner to the right-color corner using precise knight maneuvers, then deliver checkmate.",
+  "created_at": "2026-04-26"
+}

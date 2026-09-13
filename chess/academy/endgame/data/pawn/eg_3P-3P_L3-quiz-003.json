@@ -1,0 +1,40 @@
+{
+  "id": "eg_3P-3P_L3-quiz-003",
+  "gene_ids": [
+    "EG_3P_3P_L3"
+  ],
+  "gene_theme": "三兵对峙",
+  "difficulty": "L3",
+  "sequence": 3,
+  "ref_id": "eg_3P-3P_L3-005",
+  "fen": "8/8/1p4K1/p1p5/P1P5/1P4k1/8/8 w - - 0 1",
+  "concept": "王的位置与通路兵",
+  "question_cn": "通路兵的最终价值取决于：",
+  "question_en": "The ultimate value of a passed pawn depends on:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "通路兵本身的位置（高级通路兵更强）",
+      "text_en": "The passed pawn's rank (advanced passer is stronger)"
+    },
+    {
+      "key": "B",
+      "text_cn": "王能否支援通路兵推进，且对方王无法及时拦截",
+      "text_en": "Whether own king can support it while enemy king can't intercept in time"
+    },
+    {
+      "key": "C",
+      "text_cn": "通路兵旁边有没有兵保护",
+      "text_en": "Whether the passed pawn has a neighboring pawn for protection"
+    },
+    {
+      "key": "D",
+      "text_cn": "通路兵是a兵还是中心兵",
+      "text_en": "Whether the passed pawn is an a-pawn or a center pawn"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "通路兵价值的元思维：通路兵的威力在于\"兑现\"——王能护送且对方王追不上时，通路兵才是决定性的。只有通路兵而王位不佳，对方王及时拦截，通路兵可以毫无价值。",
+  "explanation_en": "Meta-concept: a passed pawn's power lies in converting — it's decisive only when own king can escort it and enemy king can't intercept. A passed pawn with a passive king can be worthless.",
+  "created_at": "2026-04-26"
+}

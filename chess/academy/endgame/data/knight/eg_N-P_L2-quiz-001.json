@@ -1,0 +1,40 @@
+{
+  "id": "eg_N-P_L2-quiz-001",
+  "gene_ids": [
+    "EG_N_P_L2"
+  ],
+  "gene_theme": "马对兵",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_N-P_L2-001",
+  "fen": "1n6/5K2/8/8/4k3/8/1P6/8 w KQkq - 0 1",
+  "concept": "马对兵的元思维",
+  "question_cn": "马对通路兵，马能否阻止兵升变主要取决于：",
+  "question_en": "Knight vs. passed pawn — whether the knight can stop promotion mainly depends on:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "马能否在兵升变前赶到阻挡位置",
+      "text_en": "Whether the knight can reach a blocking square before the pawn promotes"
+    },
+    {
+      "key": "B",
+      "text_cn": "马比兵快，所以总能阻止",
+      "text_en": "Knight is faster than a pawn so it always stops it"
+    },
+    {
+      "key": "C",
+      "text_cn": "马比兵慢，所以总是阻止不了",
+      "text_en": "Knight is slower so it can never stop it"
+    },
+    {
+      "key": "D",
+      "text_cn": "取决于对方王的位置",
+      "text_en": "Depends only on the enemy king position"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "马对通路兵的元思维：马的路径是L形的，有时捷径很长。需要计算马能否在N步内到达阻挡格，而不是凭感觉判断。这是马残局精确计算的训练重点。",
+  "explanation_en": "Meta-concept: knight moves in L-shapes, so distances can be deceptive. Always calculate whether the knight can reach the blocking square in time — don't rely on intuition.",
+  "created_at": "2026-04-26"
+}

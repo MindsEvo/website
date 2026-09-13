@@ -1,0 +1,40 @@
+{
+  "id": "eg_3P-2P_L3-quiz-001",
+  "gene_ids": [
+    "EG_3P_2P_L3"
+  ],
+  "gene_theme": "三兵对双兵",
+  "difficulty": "L3",
+  "sequence": 1,
+  "ref_id": "eg_3P-2P_L3-001",
+  "fen": "8/2kp4/2P4p/1P6/1P6/8/8/5K2 w KQkq - 0 1",
+  "concept": "多兵压制",
+  "question_cn": "三兵对双兵，多出一个兵的战略价值是：",
+  "question_en": "Three pawns vs. two pawns — the strategic value of the extra pawn is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "创造通路兵，或通过突破制造通路兵",
+      "text_en": "Create a passed pawn directly or via breakthrough"
+    },
+    {
+      "key": "B",
+      "text_cn": "多的兵用来换掉对方的兵",
+      "text_en": "Use the extra pawn to trade off enemy pawns"
+    },
+    {
+      "key": "C",
+      "text_cn": "三个兵保持在一条线上同步推进",
+      "text_en": "Keep all three pawns on the same rank advancing together"
+    },
+    {
+      "key": "D",
+      "text_cn": "多的兵保护王，不用于进攻",
+      "text_en": "Extra pawn protects king, not used for attack"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "三兵对双兵的元思维：优势不在于兵的数量本身，而在于多出的兵能创造通路兵——要么直接形成，要么通过牺牲突破形成。通路兵才是最终制胜的武器。",
+  "explanation_en": "Meta-concept: the extra pawn's value is in creating a passed pawn — either directly or via sacrifice breakthrough. The passed pawn is the ultimate winning weapon.",
+  "created_at": "2026-04-26"
+}

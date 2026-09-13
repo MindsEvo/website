@@ -1,0 +1,40 @@
+{
+  "id": "eg_2P-P_L2-quiz-001",
+  "gene_ids": [
+    "EG_2P_P_L2"
+  ],
+  "gene_theme": "双兵对单兵",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_2P-P_L2-001",
+  "fen": "5p2/8/8/8/1P5k/7P/K7/8 w KQkq - 0 1",
+  "concept": "多兵优势的利用",
+  "question_cn": "双兵对单兵，多出一个兵的价值主要体现在：",
+  "question_en": "Two pawns vs. one pawn — the extra pawn's value mainly shows as:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "牵制对方王，让己方另一个兵顺利升变",
+      "text_en": "Tying down the enemy king so the other pawn promotes freely"
+    },
+    {
+      "key": "B",
+      "text_cn": "两个兵同时升变",
+      "text_en": "Both pawns promote simultaneously"
+    },
+    {
+      "key": "C",
+      "text_cn": "直接用多的兵换掉对方兵",
+      "text_en": "Directly exchange the extra pawn for the enemy pawn"
+    },
+    {
+      "key": "D",
+      "text_cn": "多出的兵只用于保护另一个兵",
+      "text_en": "Extra pawn only serves to protect the other pawn"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "双兵对单兵的元思维：牵制（Zugzwang）是核心武器。一个兵牵制对方王，另一个兵在对方王照顾不到的地方升变。多兵的价值不在换子，而在牵制分权。",
+  "explanation_en": "Meta-concept: the extra pawn's power is in tying down the enemy king (zugzwang-like), creating a passed pawn that promotes while the king is occupied elsewhere.",
+  "created_at": "2026-04-26"
+}

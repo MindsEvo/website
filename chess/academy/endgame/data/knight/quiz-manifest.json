@@ -1,0 +1,34 @@
+﻿{
+  "categories": [
+    {
+      "key": "KBN_vs_K",
+      "label": "象马对王-L1",
+      "items": [
+        { "id": "eg_KBN-K_L1-quiz-001", "label": "1. 象马配合——颜色匹配" },
+        { "id": "eg_KBN-K_L1-quiz-002", "label": "2. 象马难度" }
+      ]
+    },
+    {
+      "key": "KNP_vs_K",
+      "label": "马兵对王-L1",
+      "items": [
+        { "id": "eg_KNP-K_L1-quiz-001", "label": "1. 马兵残局特点" },
+        { "id": "eg_KNP-K_L1-quiz-002", "label": "2. 王兵协同" }
+      ]
+    },
+    {
+      "key": "NP_vs_N",
+      "label": "马兵对马-L2",
+      "items": [
+        { "id": "eg_NP-N_L2-quiz-001", "label": "1. 马兵对马的核心思维" }
+      ]
+    },
+    {
+      "key": "N_vs_P",
+      "label": "马对兵-L2",
+      "items": [
+        { "id": "eg_N-P_L2-quiz-001", "label": "1. 马对兵的元思维" }
+      ]
+    }
+  ]
+}

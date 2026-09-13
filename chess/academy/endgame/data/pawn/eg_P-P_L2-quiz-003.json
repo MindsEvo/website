@@ -1,0 +1,40 @@
+{
+  "id": "eg_P-P_L2-quiz-003",
+  "gene_ids": [
+    "EG_P_P_L2"
+  ],
+  "gene_theme": "兵对兵",
+  "difficulty": "L2",
+  "sequence": 3,
+  "ref_id": "eg_P-P_L2-004",
+  "fen": "1k6/8/4p3/4P3/8/5K2/8/8 w - - 0 1",
+  "concept": "主动突破",
+  "question_cn": "兵残局中，\"主动突破\"的时机是：",
+  "question_en": "In a pawn endgame, the right moment to 'break through' is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "己方王占到对方兵的前方关键格，对方王被牵制无法兼顾",
+      "text_en": "Own king reaches the key square in front of enemy pawn while enemy king is tied down"
+    },
+    {
+      "key": "B",
+      "text_cn": "有多余的兵时随时突破",
+      "text_en": "Break through any time you have an extra pawn"
+    },
+    {
+      "key": "C",
+      "text_cn": "等对方先动",
+      "text_en": "Wait for the opponent to move first"
+    },
+    {
+      "key": "D",
+      "text_cn": "突破前先把所有兵换掉",
+      "text_en": "Exchange all pawns before breaking through"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "主动突破的元思维：不是力量强就突破，而是时机对——王到达关键格、对方王被牵制（两线作战）时才是最佳突破时机。",
+  "explanation_en": "Meta-concept for breakthrough: it's not about having more force, it's about timing — break when your king reaches the key square and the enemy king is overloaded.",
+  "created_at": "2026-04-26"
+}

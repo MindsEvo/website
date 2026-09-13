@@ -1,0 +1,33 @@
+﻿{
+  "categories": [
+    {
+      "key": "K2B_vs_K",
+      "label": "双象对王-L1",
+      "items": [
+        { "id": "eg_K2B-K_L1-quiz-001", "label": "1. 双象逼角" }
+      ]
+    },
+    {
+      "key": "KBP_vs_K",
+      "label": "象兵对王-L1",
+      "items": [
+        { "id": "eg_KBP-K_L1-quiz-001", "label": "1. 王兵配合推进" },
+        { "id": "eg_KBP-K_L1-quiz-002", "label": "2. 错色象和局识别" }
+      ]
+    },
+    {
+      "key": "B2P_vs_B",
+      "label": "象双兵对象-L2",
+      "items": [
+        { "id": "eg_B2P-B_L2-quiz-001", "label": "1. 多象兵的优势转化" }
+      ]
+    },
+    {
+      "key": "BP_vs_B",
+      "label": "象兵对象-L2",
+      "items": [
+        { "id": "eg_BP-B_L2-quiz-001", "label": "1. 异色象兵的和局识别" }
+      ]
+    }
+  ]
+}

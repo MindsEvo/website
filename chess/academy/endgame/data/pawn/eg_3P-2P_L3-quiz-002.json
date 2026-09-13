@@ -1,0 +1,40 @@
+{
+  "id": "eg_3P-2P_L3-quiz-002",
+  "gene_ids": [
+    "EG_3P_2P_L3"
+  ],
+  "gene_theme": "三兵对双兵",
+  "difficulty": "L3",
+  "sequence": 2,
+  "ref_id": "eg_3P-2P_L3-003",
+  "fen": "6k1/6pp/8/8/8/8/5PPP/6K1 w - - 0 1",
+  "concept": "外通路兵",
+  "question_cn": "外通路兵（远离对方兵群的通路兵）的战略价值是：",
+  "question_en": "Outside passed pawn (passed pawn far from the enemy pawn cluster) — its strategic value is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "迫使对方王长途跋涉去拦截，己方王趁机吃掉对方兵群",
+      "text_en": "Force enemy king on a long march to intercept it, own king captures the enemy pawn cluster"
+    },
+    {
+      "key": "B",
+      "text_cn": "外通路兵比内通路兵更弱，不重要",
+      "text_en": "Outside passed pawn is weaker than inside, not important"
+    },
+    {
+      "key": "C",
+      "text_cn": "外通路兵需要己方王护送才有价值",
+      "text_en": "Outside passed pawn only has value with king escort"
+    },
+    {
+      "key": "D",
+      "text_cn": "把外通路兵推到第7排再说",
+      "text_en": "Push the outside passer to the 7th rank and then decide"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "外通路兵是兵残局最强的战略武器：对方王必须去追，己方王就能横扫另一侧的兵群。这是\"牵制 + 突破\"组合的最高形式，兵残局教学中的重要里程碑。",
+  "explanation_en": "Outside passed pawn is the most powerful strategic weapon: enemy king must chase it, freeing own king to devour the pawn cluster. The 'tying down + breakthrough' combination at its best.",
+  "created_at": "2026-04-26"
+}

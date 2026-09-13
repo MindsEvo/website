@@ -1,0 +1,40 @@
+{
+  "id": "eg_KBN-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KBN"
+  ],
+  "gene_theme": "象马对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KBN-K_L1-001",
+  "fen": "8/8/8/2N3K1/8/5B2/8/5k2 w - - 0 1",
+  "concept": "象马配合——颜色匹配",
+  "question_cn": "象马对光杆王，将死只能发生在哪种角落？",
+  "question_en": "Bishop and knight vs. lone king — checkmate can only happen in which type of corner?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "任何角落都可以将死",
+      "text_en": "Any corner works for checkmate"
+    },
+    {
+      "key": "B",
+      "text_cn": "只能在与象同色的角落将死",
+      "text_en": "Only in a corner of the same color as the bishop"
+    },
+    {
+      "key": "C",
+      "text_cn": "只能在与象异色的角落将死",
+      "text_en": "Only in a corner of opposite color to the bishop"
+    },
+    {
+      "key": "D",
+      "text_cn": "不能将死，只能逼和",
+      "text_en": "Cannot checkmate, can only stalemate"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "颜色匹配是象马残局的核心元思维。象控制同色格，将死必须发生在象能覆盖的角格。如果对方王跑到异色角，必须先把王赶到同色角，再完成将杀。",
+  "explanation_en": "Color matching is the key meta-concept: the bishop controls squares of one color, so checkmate must happen in a corner of the same color as the bishop.",
+  "created_at": "2026-04-26"
+}

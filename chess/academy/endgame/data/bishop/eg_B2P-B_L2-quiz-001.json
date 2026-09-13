@@ -1,0 +1,40 @@
+{
+  "id": "eg_B2P-B_L2-quiz-001",
+  "gene_ids": [
+    "EG_B2P_B_L2"
+  ],
+  "gene_theme": "象双兵对象",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_B2P-B_L2-001",
+  "fen": "3k3B/8/8/4b1P1/8/6K1/6P1/8 w KQkq - 0 1",
+  "concept": "多象兵的优势转化",
+  "question_cn": "象加双兵对单象，进攻方转化优势的关键是：",
+  "question_en": "Bishop + two pawns vs. lone bishop — the attacker's key to converting the advantage is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用两个兵同时推进，让对方无法兼顾",
+      "text_en": "Advance both pawns simultaneously so the defender can't handle both"
+    },
+    {
+      "key": "B",
+      "text_cn": "先换掉一个兵简化局面",
+      "text_en": "Trade one pawn first to simplify"
+    },
+    {
+      "key": "C",
+      "text_cn": "等象被吃掉再行动",
+      "text_en": "Wait until the bishop is captured before acting"
+    },
+    {
+      "key": "D",
+      "text_cn": "两个兵保持在同一排不分开",
+      "text_en": "Keep both pawns on the same rank without separating"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "双兵优势的元思维：分散对方防守力量是胜利的核心。两个兵分开推进 → 对方象顾此失彼 → 至少一个兵升变。这和多子对单子残局的普遍原则一致。",
+  "explanation_en": "Meta-concept: separate the pawns to overload the defender. Two pawns advancing on different wings → opponent's bishop can't cover both → at least one pawn promotes.",
+  "created_at": "2026-04-26"
+}

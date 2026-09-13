@@ -1,0 +1,40 @@
+{
+  "id": "eg_P-P_L2-quiz-002",
+  "gene_ids": [
+    "EG_P_P_L2"
+  ],
+  "gene_theme": "兵对兵",
+  "difficulty": "L2",
+  "sequence": 2,
+  "ref_id": "eg_P-P_L2-003",
+  "fen": "8/8/8/3p1k2/1K1P4/8/8/8 w - - 0 1",
+  "concept": "王的活跃性",
+  "question_cn": "兵残局中王的活跃性指的是：",
+  "question_en": "In a pawn endgame, king 'activity' refers to:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "王快速移动消耗对方时间",
+      "text_en": "King moves quickly to waste opponent's time"
+    },
+    {
+      "key": "B",
+      "text_cn": "王积极参与护送己方兵、阻挡对方兵、争夺关键格",
+      "text_en": "King actively escorts own pawn, blocks enemy pawn, fights for key squares"
+    },
+    {
+      "key": "C",
+      "text_cn": "王保持在棋盘边缘",
+      "text_en": "King stays on the board edge"
+    },
+    {
+      "key": "D",
+      "text_cn": "王保护后方不受对方王攻击",
+      "text_en": "King protects the rear from enemy king attacks"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "兵残局的关键元思维：王不是被动防守的棋子，而是最强的进攻工具。王越活跃（参与争夺），胜率越高。懒王是兵残局失败的最常见原因。",
+  "explanation_en": "Key meta-concept: the king is not passive — it's the most powerful attacking piece in pawn endgames. Lazy king is the most common cause of defeat.",
+  "created_at": "2026-04-26"
+}

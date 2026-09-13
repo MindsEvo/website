@@ -1,0 +1,40 @@
+﻿{
+  "categories": [
+    {
+      "key": "K2R_vs_K",
+      "label": "双车对王-L1",
+      "items": [
+        { "id": "eg_K2R-K_L1-quiz-001", "label": "1. 双车割草" }
+      ]
+    },
+    {
+      "key": "KR_vs_K",
+      "label": "车对王-L1",
+      "items": [
+        { "id": "eg_KR-K_L1-quiz-001", "label": "1. 梳子将杀（车对王基本杀法）" },
+        { "id": "eg_KR-K_L1-quiz-002", "label": "2. 将死在边线" }
+      ]
+    },
+    {
+      "key": "KR_vs_KP",
+      "label": "车对升变兵-L1",
+      "items": [
+        { "id": "eg_KR-KP_L1-quiz-001", "label": "1. 车王配合——分离对方王兵吃掉兵" },
+        { "id": "eg_KR-KP_L1-quiz-002", "label": "2. 车正面阻击——王紧跟支援" }
+      ]
+    },
+    {
+      "key": "RP_vs_R",
+      "label": "车兵对车-L2",
+      "items": [
+        { "id": "eg_RP-R_L2-quiz-001", "label": "1. 车兵对车——Philidor/Lucena" },
+        { "id": "eg_RP-R_L2-quiz-002", "label": "2. Philidor阵型防守" }
+      ]
+    },
+    {
+      "key": "R2P_vs_R",
+      "label": "车双兵对车-L3",
+      "items": []
+    }
+  ]
+}

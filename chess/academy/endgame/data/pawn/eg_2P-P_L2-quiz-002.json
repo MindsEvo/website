@@ -1,0 +1,40 @@
+{
+  "id": "eg_2P-P_L2-quiz-002",
+  "gene_ids": [
+    "EG_2P_P_L2"
+  ],
+  "gene_theme": "双兵对单兵",
+  "difficulty": "L2",
+  "sequence": 2,
+  "ref_id": "eg_2P-P_L2-003",
+  "fen": "5k2/5P1p/4K3/8/8/8/7P/8 w - - 0 1",
+  "concept": "七线兵的威胁",
+  "question_cn": "己方兵推进到第7排（升变前一格）的主要价值是：",
+  "question_en": "Advancing a pawn to the 7th rank (one step from promotion) creates immediate value because:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "立即形成升变威胁，迫使对方王必须去处理，无法兼顾其他",
+      "text_en": "Creates immediate promotion threat, forcing enemy king to deal with it and leaving other pawns unguarded"
+    },
+    {
+      "key": "B",
+      "text_cn": "兵在第7排更难被吃掉",
+      "text_en": "The pawn is harder to capture on the 7th rank"
+    },
+    {
+      "key": "C",
+      "text_cn": "第7排的兵自动升变",
+      "text_en": "A pawn on the 7th rank promotes automatically"
+    },
+    {
+      "key": "D",
+      "text_cn": "第7排的兵能保护更多格子",
+      "text_en": "A 7th rank pawn protects more squares"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "七线兵是兵残局最强的牵制武器：迫使对方王必须去拦截，制造其他地方的突破机会。'威胁即力量'——这是多兵优势转化为胜势的关键手段。",
+  "explanation_en": "7th rank pawn is the ultimate diversion: forces the enemy king to deal with it, opening breakthrough opportunities elsewhere — 'the threat is stronger than its execution'.",
+  "created_at": "2026-04-26"
+}

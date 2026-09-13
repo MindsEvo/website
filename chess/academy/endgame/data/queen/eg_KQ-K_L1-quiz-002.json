@@ -1,0 +1,40 @@
+{
+  "id": "eg_KQ-K_L1-quiz-002",
+  "gene_ids": [
+    "EG_KQ"
+  ],
+  "gene_theme": "后对王",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KQ-K_L1-001",
+  "fen": "8/5K2/1k6/8/8/8/Q7/8 w - - 0 1",
+  "concept": "避免逼和（stalemate）",
+  "question_cn": "后对王时，白方最需要警惕的陷阱是：",
+  "question_en": "In queen vs. king, the trap White must always watch for is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "对方王跑到棋盘中心",
+      "text_en": "Enemy king running to the center"
+    },
+    {
+      "key": "B",
+      "text_cn": "不小心把对方王逼入无路可走的局面（逼和）",
+      "text_en": "Accidentally stalemating the enemy king (stalemate)"
+    },
+    {
+      "key": "C",
+      "text_cn": "己方后被对方王攻击",
+      "text_en": "Own queen being attacked by the enemy king"
+    },
+    {
+      "key": "D",
+      "text_cn": "对方兵快速升变",
+      "text_en": "Enemy pawn promoting quickly"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "逼和是后残局的最大陷阱：对方王虽处于被动，但若轮到它走且无合法步，即为和局。每步都要检查对方是否还有合法走棋。",
+  "explanation_en": "Stalemate is the biggest trap: if the enemy king has no legal move (but is not in check), it's a draw. Always check if the opponent has a legal move.",
+  "created_at": "2026-04-26"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eg_NP-N_L2-quiz-001",
+  "gene_ids": [
+    "EG_NP_N_L2"
+  ],
+  "gene_theme": "马兵对马",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_NP-N_L2-001",
+  "fen": "1N1k4/8/3P4/4K3/8/8/n7/8 w - - 0 1",
+  "concept": "马兵对马的核心思维",
+  "question_cn": "马兵对马，弱方（单马一方）最有效的防守策略是：",
+  "question_en": "Knight and pawn vs. knight — the defending side's most effective strategy is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用马不断攻击对方兵迫使其停步",
+      "text_en": "Constantly attack the pawn with the knight to stop its advance"
+    },
+    {
+      "key": "B",
+      "text_cn": "用马阻挡在兵的升变路线上，王配合纠缠",
+      "text_en": "Block the pawn's advance with the knight while king creates counterplay"
+    },
+    {
+      "key": "C",
+      "text_cn": "马直接吃掉对方马换子",
+      "text_en": "Capture the enemy knight to simplify"
+    },
+    {
+      "key": "D",
+      "text_cn": "弃马换兵形成光杆王残局",
+      "text_en": "Sacrifice the knight for the pawn to reach a bare king endgame"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "马兵对马的防守元思维：马阻挡兵的推进路线（尤其是边路兵），同时己方王积极靠近。马残局中\"骑士叉\"（knight fork）威胁是双方都要时刻注意的。",
+  "explanation_en": "Defensive meta-concept: use knight to blockade the pawn's advance, especially for rook pawns, while king rushes in. Always watch for knight fork opportunities.",
+  "created_at": "2026-04-26"
+}

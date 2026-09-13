@@ -1,0 +1,40 @@
+{
+  "id": "eg_Q-B_L2-quiz-001",
+  "gene_ids": [
+    "EG_Q_B_L2"
+  ],
+  "gene_theme": "后对象",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_Q-B_L2-001",
+  "fen": "8/K2b4/8/8/8/2k5/2Q5/8 w KQkq - 0 1",
+  "concept": "后对象——走到异色格制胜",
+  "question_cn": "后对单象，有后一方的王走到与对方象颜色不同的格子上，有什么特别的意义？",
+  "question_en": "Queen vs. lone bishop — what is special about the king stepping onto a square opposite in color to the enemy bishop?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "没有意义，王的格子颜色对后没有影响",
+      "text_en": "No meaning — the king's square color doesn't affect the queen"
+    },
+    {
+      "key": "B",
+      "text_cn": "象无法攻击异色格，王站在异色格上绝对安全，与后配合逼近将杀",
+      "text_en": "The bishop can't attack opposite-color squares, so the king is completely safe there and the queen can close in freely"
+    },
+    {
+      "key": "C",
+      "text_cn": "王在异色格上反而被困住，不能自由移动",
+      "text_en": "The king gets stuck on an opposite-color square and can't move freely"
+    },
+    {
+      "key": "D",
+      "text_cn": "象会立刻换方向保护同色格，让后无从下手",
+      "text_en": "The bishop immediately switches direction to protect its color squares"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "后对象的制胜元思维：象只能控制一种颜色的格子。王主动走到象的异色格，象就完全威胁不到王，后可以放心逼近。王站在异色格 + 后配合压缩 = 必胜。",
+  "explanation_en": "Winning meta-concept: the bishop controls only one color. Step the king onto the opposite-color squares — the bishop is completely harmless there. King on opposite-color square + queen closing in = winning.",
+  "created_at": "2026-04-26"
+}

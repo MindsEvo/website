@@ -1,0 +1,40 @@
+{
+  "id": "eg_2P-2P_L3-quiz-003",
+  "gene_ids": [
+    "EG_2P_2P_L3"
+  ],
+  "gene_theme": "双兵对峙",
+  "difficulty": "L3",
+  "sequence": 3,
+  "ref_id": "eg_2P-2P_L3-004",
+  "fen": "8/8/7p/p7/k1P2K2/8/P7/8 w - - 0 1",
+  "concept": "分翼竞赛",
+  "question_cn": "双兵各在两翼（王翼和后翼）的竞赛，决定胜负的关键因素是：",
+  "question_en": "Two pawns racing on opposite wings — the key deciding factor is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "哪个兵离升变格更近",
+      "text_en": "Which pawn is closer to promotion"
+    },
+    {
+      "key": "B",
+      "text_cn": "哪方的王更靠近中心，能同时支援两翼",
+      "text_en": "Whose king is more centrally placed to support both wings"
+    },
+    {
+      "key": "C",
+      "text_cn": "哪个兵级别更高（a兵比b兵强）",
+      "text_en": "Which pawn is ranked higher (a-pawn beats b-pawn)"
+    },
+    {
+      "key": "D",
+      "text_cn": "先手方必胜",
+      "text_en": "The side to move always wins"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "分翼竞赛的元思维：王在中心是最大优势，因为能灵活支援任意一翼。反应时间（\"距离差\"）决定胜负——这是王活跃性原则在多兵残局中的最高体现。",
+  "explanation_en": "Meta-concept: centralized king is the biggest advantage in wing races — it can respond to either wing. The 'distance differential' determines the winner. This is king activity at its highest level.",
+  "created_at": "2026-04-26"
+}

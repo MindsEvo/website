@@ -1,0 +1,40 @@
+{
+  "id": "eg_KR-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KR"
+  ],
+  "gene_theme": "车对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KR-K_L1-001",
+  "fen": "2k5/8/8/3K4/8/8/3R4/8 w KQkq - 0 1",
+  "concept": "梳子将杀（车对王基本杀法）",
+  "question_cn": "车对光杆王，将死的基本方法是：",
+  "question_en": "In a rook vs. lone king endgame, the basic mating method is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用车封住一排（列），己方王配合，逐步把对方王逼到边线将死",
+      "text_en": "Cut off the king with the rook, then drive it to the edge with king cooperation"
+    },
+    {
+      "key": "B",
+      "text_cn": "车和王分开行动，各自追逐对方王",
+      "text_en": "King and rook act independently to chase the enemy king"
+    },
+    {
+      "key": "C",
+      "text_cn": "车直接追杀，不需要己方王",
+      "text_en": "Rook chases alone, no need for own king"
+    },
+    {
+      "key": "D",
+      "text_cn": "把对方王逼到棋盘中心将死",
+      "text_en": "Drive the enemy king to the center to checkmate"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "车对王的元思维：车负责切断，王负责逼近。二者分工协作，把对方王步步压缩到边线，最终在角落或边线将死。",
+  "explanation_en": "Meta-concept: rook cuts off, king advances. Together they compress the enemy king to the edge for checkmate.",
+  "created_at": "2026-04-26"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eg_KBP-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KBP"
+  ],
+  "gene_theme": "象兵对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KBP-K_L1-001",
+  "fen": "8/8/8/8/3K4/3P4/3B4/2k5 b KQkq - 0 1",
+  "concept": "王兵配合推进",
+  "question_cn": "象兵对王，白方胜利的关键条件是：",
+  "question_en": "Bishop and pawn vs. king — White's key winning condition is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "象先到达升变格，兵随后跟上",
+      "text_en": "Bishop reaches promotion square first, pawn follows"
+    },
+    {
+      "key": "B",
+      "text_cn": "白王走在兵的前面开路，象控制关键斜线",
+      "text_en": "White king leads the pawn, bishop controls key diagonals"
+    },
+    {
+      "key": "C",
+      "text_cn": "兵独自推进，象只保护",
+      "text_en": "Pawn advances alone, bishop only protects"
+    },
+    {
+      "key": "D",
+      "text_cn": "先将死对方王再推兵",
+      "text_en": "Checkmate the enemy king before advancing the pawn"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "象兵对王的胜利路线：王在前开路排除对方王干扰，象在后控制斜线防止对方王切入。两者配合是胜利的元思维框架。",
+  "explanation_en": "Meta-framework: king leads to clear the way, bishop controls diagonals to prevent the enemy king from interfering.",
+  "created_at": "2026-04-26"
+}

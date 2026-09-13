@@ -1,0 +1,40 @@
+{
+  "id": "eg_KP-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KP"
+  ],
+  "gene_theme": "兵对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KP-K_L1-001",
+  "fen": "8/8/3P4/7k/8/1K6/8/8 w KQkq - 0 1",
+  "concept": "正方形法则",
+  "question_cn": "以兵所在格到升变格连线为边，画出正方形。黑王在正方形外，意味着：",
+  "question_en": "The square rule: if the Black king is outside the pawn's square, it means:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "白兵可以独立升变，无需白王帮助",
+      "text_en": "White pawn can promote without the king's help"
+    },
+    {
+      "key": "B",
+      "text_cn": "黑王能追上白兵",
+      "text_en": "The Black king can catch the pawn"
+    },
+    {
+      "key": "C",
+      "text_cn": "局面是和局",
+      "text_en": "The position is a draw"
+    },
+    {
+      "key": "D",
+      "text_cn": "需要白王保护才能升变",
+      "text_en": "White king must escort the pawn"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "正方形法则是兵残局最基础的元思维工具。黑王在正方形外 → 追不上 → 白兵独立升变。这省去了逐步计算每步棋的需要。",
+  "explanation_en": "The square rule is the most fundamental meta-tool in pawn endgames. King outside the square → can't catch → pawn promotes independently.",
+  "created_at": "2026-04-26"
+}

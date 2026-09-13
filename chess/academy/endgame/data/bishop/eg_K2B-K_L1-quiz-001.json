@@ -1,0 +1,40 @@
+{
+  "id": "eg_K2B-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_K2B"
+  ],
+  "gene_theme": "双象对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_K2B-K_L1-001",
+  "fen": "6KB/5B2/1k6/8/8/8/8/8 w - - 0 1",
+  "concept": "双象逼角",
+  "question_cn": "双象对光杆王，将死的核心思路是：",
+  "question_en": "Two bishops vs. lone king — the core idea for checkmate is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "两象控制两条斜线，配合王把对方王逼到角落将死",
+      "text_en": "Bishops control two diagonals, cooperate with king to drive enemy king to corner"
+    },
+    {
+      "key": "B",
+      "text_cn": "两象互相保护，等对方王走近",
+      "text_en": "Bishops protect each other and wait for the enemy king"
+    },
+    {
+      "key": "C",
+      "text_cn": "双象可以单独将死，不需要王",
+      "text_en": "Two bishops can checkmate alone without the king"
+    },
+    {
+      "key": "D",
+      "text_cn": "把对方王逼到棋盘中心将死",
+      "text_en": "Drive the enemy king to the center for checkmate"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "双象的元思维：两象分工，分别控制两组斜线，形成交叉控制网；己方王配合压缩，最终在角落完成将杀。比单车更简单，但需要王的积极配合。",
+  "explanation_en": "Two bishops cover both diagonal colors, forming a crossing net. Own king cooperates to compress the enemy king into a corner for mate.",
+  "created_at": "2026-04-26"
+}

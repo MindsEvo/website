@@ -1,0 +1,40 @@
+{
+  "id": "eg_BP-B_L2-quiz-001",
+  "gene_ids": [
+    "EG_BP_B_L2"
+  ],
+  "gene_theme": "象兵对象",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_BP-B_L2-001",
+  "fen": "8/2B5/2P5/8/b7/8/7k/2K5 w KQkq - 0 1",
+  "concept": "异色象兵的和局识别",
+  "question_cn": "象兵对象，双方象颜色不同（异色象），弱方防守的核心思路是：",
+  "question_en": "Bishop and pawn vs. bishop with opposite-colored bishops — the defending side's core idea is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "象站在兵的前进路线上阻挡",
+      "text_en": "Put the bishop directly in the pawn's path"
+    },
+    {
+      "key": "B",
+      "text_cn": "用王阻挡兵的推进，异色象无法互相攻击",
+      "text_en": "Use king to blockade, since opposite-colored bishops can't attack each other"
+    },
+    {
+      "key": "C",
+      "text_cn": "异色象必输，直接认负",
+      "text_en": "Opposite-colored bishops always lose, resign immediately"
+    },
+    {
+      "key": "D",
+      "text_cn": "象控制升变格，阻止升变",
+      "text_en": "Bishop controls the promotion square to prevent promotion"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "异色象兵的核心元思维：双方象在不同颜色格活动，互不干扰。弱方用王阻挡兵，己方象只负责防守本色格即可。这类残局和局机会远多于同色象残局。",
+  "explanation_en": "Core meta-concept: opposite-colored bishops operate on different squares and can't attack each other. Defending king blockades the pawn; own bishop holds its color. Draw chances are high.",
+  "created_at": "2026-04-26"
+}

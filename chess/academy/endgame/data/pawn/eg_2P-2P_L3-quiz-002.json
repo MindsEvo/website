@@ -1,0 +1,40 @@
+{
+  "id": "eg_2P-2P_L3-quiz-002",
+  "gene_ids": [
+    "EG_2P_2P_L3"
+  ],
+  "gene_theme": "双兵对峙",
+  "difficulty": "L3",
+  "sequence": 2,
+  "ref_id": "eg_2P-2P_L3-003",
+  "fen": "8/6p1/7p/8/5K2/3k4/6PP/8 w - - 0 1",
+  "concept": "联兵突破",
+  "question_cn": "双兵突破（兵的牺牲换取通路）的核心逻辑是：",
+  "question_en": "Pawn breakthrough (sacrifice one pawn to create a passer) — the core logic is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "牺牲一个兵，迫使对方王或兵暴露，让另一个兵成为通路兵",
+      "text_en": "Sacrifice one pawn to force enemy king or pawn to expose, creating a passed pawn"
+    },
+    {
+      "key": "B",
+      "text_cn": "同时推进两个兵，让对方无法阻挡",
+      "text_en": "Push both pawns at the same time so opponent can't block"
+    },
+    {
+      "key": "C",
+      "text_cn": "先吃掉对方所有兵再推进",
+      "text_en": "Capture all enemy pawns first, then advance"
+    },
+    {
+      "key": "D",
+      "text_cn": "牺牲兵换取对立位",
+      "text_en": "Sacrifice pawn to gain opposition"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "联兵突破是兵残局高级技巧：一个兵牺牲充当诱饵，迫使对方兵或王去吃，另一个兵变成自由通路兵。这是以\"兵换通路\"的战略交换思维。",
+  "explanation_en": "Advanced technique: one pawn sacrifices as a decoy, forcing the enemy pawn or king to capture, turning the other pawn into a free passer — trading material for a passed pawn.",
+  "created_at": "2026-04-26"
+}

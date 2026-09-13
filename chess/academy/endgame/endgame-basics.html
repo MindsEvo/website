@@ -316,6 +316,8 @@
       line-height: 1.4;
     }
     .submenu-item:hover { background: #3498db; color: #fff; }
+    .submenu-item.disabled { color: #94a3b8; cursor: default; }
+    .submenu-item.disabled:hover { background: none; color: #94a3b8; }
 
     .solution-box, .explanation-box {
       border: 1px solid var(--line);
@@ -332,12 +334,52 @@
       margin-top: 8px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 34px 10px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
+      padding: 10px;
       background: #fafbfd;
     }
+
+    .quiz-question {
+      color: #2c3e50;
+      font-size: 13px;
+      line-height: 1.6;
+      background: #fff;
+      border: 1px solid #d7deea;
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 20px;
+    }
+
+    .quiz-question.empty {
+      text-align: center;
+      color: #94a3b8;
+      padding: 24px 10px;
+    }
+
+    .quiz-options {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Colors match the source app's on_qa_answer_selected QSS exactly (#D5F4E6/
+       #27AE60 correct, #FADBD8/#E74C3C wrong) — no explanation text is ever shown,
+       matching the source's actual behavior (explanation_cn is loaded but unused). */
+    .quiz-option-btn {
+      text-align: left;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 2px solid #bdc3c7;
+      background: #ecf0f1;
+      color: #2c3e50;
+      cursor: pointer;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) { background: #d5dbdb; border-color: #85929e; }
+    .quiz-option-btn:disabled { cursor: default; }
+    .quiz-option-btn.correct { background: #d5f4e6; border-color: #27ae60; color: #27ae60; font-weight: 700; }
+    .quiz-option-btn.wrong { background: #fadbd8; border-color: #e74c3c; color: #e74c3c; font-weight: 700; }
 
     .solution-box h4, .explanation-box h4 {
       font-size: 14px;
@@ -495,31 +537,34 @@
           </div>
         </div>
 
-        <div class="panel panel-placeholder">
+        <div class="panel">
           <h3>问答练习</h3>
           <div class="piece-chips">
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#7d3c98">后</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-quiz-piece="q">
+              <button class="piece-chip" id="quizQ" data-quiz-piece="q" style="background:#7d3c98">后</button>
+              <div class="dropdown-menu" id="menuQuizQ"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#c0392b">车</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-quiz-piece="r">
+              <button class="piece-chip" id="quizR" data-quiz-piece="r" style="background:#c0392b">车</button>
+              <div class="dropdown-menu" id="menuQuizR"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#2471a3">象</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-quiz-piece="b">
+              <button class="piece-chip" id="quizB" data-quiz-piece="b" style="background:#2471a3">象</button>
+              <div class="dropdown-menu" id="menuQuizB"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#1e8449">马</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-quiz-piece="n">
+              <button class="piece-chip" id="quizN" data-quiz-piece="n" style="background:#1e8449">马</button>
+              <div class="dropdown-menu" id="menuQuizN"></div>
             </div>
-            <div class="piece-dropdown-wrap">
-              <button class="piece-chip" style="background:#d68910">兵</button>
-              <div class="dropdown-menu"></div>
+            <div class="piece-dropdown-wrap" data-quiz-piece="p">
+              <button class="piece-chip" id="quizP" data-quiz-piece="p" style="background:#d68910">兵</button>
+              <div class="dropdown-menu" id="menuQuizP"></div>
             </div>
           </div>
-          <div class="quiz-placeholder">请选择问题开始答题</div>
+          <div class="quiz-placeholder">
+            <div class="quiz-question empty" id="quizQuestion">请选择问题开始答题</div>
+            <div class="quiz-options" id="quizOptions"></div>
+          </div>
         </div>
       </div>
 
@@ -567,6 +612,17 @@
         { key: 'p', label: '兵', folder: 'pawn', enabled: true }
       ];
 
+      // 问答练习: pure multiple-choice quiz, no anno/solution playback at all —
+      // just loads a static FEN to the board plus a question+4 options. Reuses the SAME
+      // piece folders (quiz files are named distinctly, e.g. "...quiz-001", no collisions).
+      var QUIZ_PIECE_DEFS = [
+        { key: 'q', label: '后', folder: 'queen', enabled: true },
+        { key: 'r', label: '车', folder: 'rook', enabled: true },
+        { key: 'b', label: '象', folder: 'bishop', enabled: true },
+        { key: 'n', label: '马', folder: 'knight', enabled: true },
+        { key: 'p', label: '兵', folder: 'pawn', enabled: true }
+      ];
+
       // ── DOM refs ──────────────────────────────────────
       var boardEl = document.getElementById('board');
       var arrowsEl = document.getElementById('boardArrows');
@@ -587,6 +643,8 @@
       var volumeValue = document.getElementById('volumeValue');
       var speedRange = document.getElementById('speedRange');
       var speedValue = document.getElementById('speedValue');
+      var quizQuestion = document.getElementById('quizQuestion');
+      var quizOptions = document.getElementById('quizOptions');
 
       var files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
       var ranks = [8, 7, 6, 5, 4, 3, 2, 1];
@@ -1296,6 +1354,157 @@
         });
       }
 
+      // ── 问答练习 (quiz) data loading ────────────────────
+      // Unlike 操作练习, this DOES load a FEN to the board (matches source's
+      // on_quiz_item_selected firing FEN_LOAD_REQUESTED) but has NO move timeline/
+      // solution list/popup at all — just a static position + a 4-option question.
+      // Answer handling faithfully replicates the source's on_qa_answer_selected:
+      // correct → green, all options disabled, done; wrong → red on that ONE button,
+      // that button disabled but the OTHERS stay clickable (retry-until-correct),
+      // and — matching the source exactly — explanation_cn is NEVER shown to the
+      // user even though it's present in the data (dead field in the original app).
+      var quizManifestCache = {};
+      var currentQuizAnswer = null;
+
+      function findQuizItem(manifest, itemId) {
+        for (var i = 0; i < manifest.categories.length; i++) {
+          var cat = manifest.categories[i];
+          for (var j = 0; j < cat.items.length; j++) {
+            if (cat.items[j].id === itemId) return cat.items[j];
+          }
+        }
+        return null;
+      }
+
+      function renderQuizDropdownMenu(pieceDef, manifest, menuEl) {
+        var html = '';
+        manifest.categories.forEach(function (cat) {
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          html += '<div class="submenu">';
+          if (cat.items.length) {
+            cat.items.forEach(function (item) {
+              html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            });
+          } else {
+            html += '<div class="submenu-item disabled">暂无问答题</div>';
+          }
+          html += '</div></div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item[data-item]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadQuizItem(pieceDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+        menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            if (e.target.closest('.submenu-item')) return;
+            e.stopPropagation();
+            var wasOpen = row.classList.contains('open');
+            menuEl.querySelectorAll('.menu-row').forEach(function (r) { r.classList.remove('open'); });
+            if (!wasOpen) row.classList.add('open');
+          });
+        });
+      }
+
+      function selectQuizPiece(pieceDef) {
+        var menuEl = document.getElementById('menuQuiz' + pieceDef.key.toUpperCase());
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (quizManifestCache[pieceDef.key]) {
+          renderQuizDropdownMenu(pieceDef, quizManifestCache[pieceDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + pieceDef.folder + '/quiz-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            quizManifestCache[pieceDef.key] = manifest;
+            renderQuizDropdownMenu(pieceDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadQuizItem(pieceDef, manifest, itemId) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var item = findQuizItem(manifest, itemId);
+        if (!item) return;
+        quizQuestion.textContent = '正在加载题目...';
+        quizQuestion.classList.remove('empty');
+        quizOptions.innerHTML = '';
+        var base = './data/' + pieceDef.folder + '/';
+        fetch(base + itemId + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (qdata) {
+            // The FEN is loaded to the SAME shared board as 动态观察/操作练习 —
+            // a static position only, no move list/popup/solution lines.
+            state.anno = null;
+            state.moveMetas = [];
+            state.states = [];
+            popupBox.classList.add('hidden');
+            solutionLines.innerHTML = '请选择残局以显示棋谱';
+            explanationText.textContent = '请选择残局以显示解说内容';
+            if (qdata.fen) {
+              renderBoardMatrix(parseFen(qdata.fen));
+              clearOverlays();
+            }
+            playStatus.textContent = '问答练习：' + (qdata.concept || '');
+            showQuizQuestion(qdata);
+          })
+          .catch(function (e) {
+            quizQuestion.textContent = '题目加载失败: ' + e.message;
+          });
+      }
+
+      function showQuizQuestion(qdata) {
+        currentQuizAnswer = qdata.correct;
+        var seq = qdata.sequence || '';
+        var concept = qdata.concept || '';
+        var header = concept ? ('Q' + seq + '【' + concept + '】 ') : ('Q' + seq + ' ');
+        quizQuestion.textContent = header + (qdata.question_cn || '');
+        quizQuestion.classList.remove('empty');
+
+        var optionsHtml = '';
+        (qdata.options || []).forEach(function (opt) {
+          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + opt.text_cn + '</button>';
+        });
+        quizOptions.innerHTML = optionsHtml;
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () { handleQuizAnswer(btn); });
+        });
+
+        if (window.speechSynthesis && qdata.question_cn) {
+          var ut = new SpeechSynthesisUtterance(qdata.question_cn);
+          ut.lang = 'zh-CN';
+          window.speechSynthesis.speak(ut);
+        }
+      }
+
+      // Matches the source's retry-until-correct behaviour: a wrong pick only disables
+      // ITSELF (others remain clickable), a correct pick disables everything.
+      function handleQuizAnswer(btn) {
+        if (!currentQuizAnswer) return;
+        var selectedKey = btn.dataset.key;
+        if (selectedKey === currentQuizAnswer) {
+          quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (b) { b.disabled = true; });
+          btn.classList.add('correct');
+          speak('答对了！');
+        } else {
+          btn.disabled = true;
+          btn.classList.add('wrong');
+          speak('再试一下。');
+        }
+      }
+
       // ── Controls ──────────────────────────────────────
       PIECE_DEFS.forEach(function (pieceDef) {
         var el = document.querySelector('.piece-chip[data-piece="' + pieceDef.key + '"]');
@@ -1307,20 +1516,9 @@
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticePiece(pieceDef); });
       });
 
-      // 问答练习 is not implemented yet (and 操作练习's remaining 4 piece
-      // types) — their buttons just show a "敬请期待" placeholder in the same
-      // dropdown style used for locked pieces.
-      document.querySelectorAll('.panel-placeholder .piece-dropdown-wrap:not([data-practice-piece])').forEach(function (wrap) {
-        var btn = wrap.querySelector('.piece-chip');
-        var menuEl = wrap.querySelector('.dropdown-menu');
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var wasOpen = menuEl.classList.contains('open');
-          closeAllMenus();
-          if (wasOpen) return;
-          menuEl.innerHTML = '<div class="menu-row disabled">"' + btn.textContent + '"功能开发中，敬请期待</div>';
-          menuEl.classList.add('open');
-        });
+      QUIZ_PIECE_DEFS.forEach(function (pieceDef) {
+        var el = document.querySelector('.piece-chip[data-quiz-piece="' + pieceDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizPiece(pieceDef); });
       });
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });

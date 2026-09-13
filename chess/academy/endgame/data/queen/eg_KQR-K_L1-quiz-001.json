@@ -1,0 +1,41 @@
+{
+  "id": "eg_KQR-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KQ",
+    "EG_KR"
+  ],
+  "gene_theme": "后车对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KQR-K_L1-001",
+  "fen": "8/8/2k5/8/8/2K5/8/3QR3 w - - 0 1",
+  "concept": "后车组合威力——多路将杀",
+  "question_cn": "后和车是残局中超强的组合，再加上己方王的配合，通常会出现什么情况？",
+  "question_en": "Queen and rook together form a super-powerful endgame combination. With the king joining in, what typically happens?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "变成了规定死的套路，必须严格按固定步骤才能赢",
+      "text_en": "It becomes a rigid formula — you must follow fixed steps to win"
+    },
+    {
+      "key": "B",
+      "text_cn": "几乎每个局面都有多种将杀路线，可以按自己的思路赢",
+      "text_en": "Almost every position has multiple mating paths — you can win your own way"
+    },
+    {
+      "key": "C",
+      "text_cn": "王加入反而帮倒忙，后车自己行动更快",
+      "text_en": "The king gets in the way — queen and rook are faster without it"
+    },
+    {
+      "key": "D",
+      "text_cn": "后和车会互相挡路，三子反而难以配合",
+      "text_en": "Queen and rook block each other, making three-piece coordination harder"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "后车王三子合力是残局中最强大的组合之一。正因为力量碾压性地强，大多数局面下走法众多都能赢——这就是探索多解的最佳入口。享受「随手一动就是将杀」的快感，体会组合威力！",
+  "explanation_en": "Queen + rook + king is one of the most powerful endgame combinations. The overwhelming force means almost any reasonable move wins, giving you many mating paths to explore — enjoy discovering them all!",
+  "created_at": "2026-04-26"
+}

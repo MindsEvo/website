@@ -1,0 +1,40 @@
+{
+  "id": "eg_K2R-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_K2R"
+  ],
+  "gene_theme": "双车对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_K2R-K_L1-001",
+  "fen": "8/7k/3K4/R7/8/8/8/4R3 w - - 0 1",
+  "concept": "双车割草",
+  "question_cn": "双车配合对光杆王，最高效的将杀方式称为\"割草\"。其原理是：",
+  "question_en": "Two rooks vs. lone king — the most efficient mating method is called 'lawnmower'. The principle is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "两车轮流切割，每次把对方王压缩一行，直到边线将死",
+      "text_en": "Rooks alternate cutting, compressing the king one rank at a time until mated on the edge"
+    },
+    {
+      "key": "B",
+      "text_cn": "两车同时追杀，不需要有规律",
+      "text_en": "Both rooks chase randomly without a pattern"
+    },
+    {
+      "key": "C",
+      "text_cn": "一车保护另一车，等待时机",
+      "text_en": "One rook protects the other while waiting for opportunity"
+    },
+    {
+      "key": "D",
+      "text_cn": "用王驱赶，两车只是辅助",
+      "text_en": "Use the king to drive, rooks only assist"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "双车割草是最简单高效的残局杀法之一。两车轮流占据不同横排，像割草机一样把对方王压缩到边线，无需己方王参与也能完成将杀。",
+  "explanation_en": "The lawnmower is one of the most efficient endgame techniques: rooks alternately cut off ranks, mowing the king to the edge without needing the own king.",
+  "created_at": "2026-04-26"
+}

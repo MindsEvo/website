@@ -1,0 +1,40 @@
+{
+  "id": "eg_QP-Q_L2-quiz-001",
+  "gene_ids": [
+    "EG_QP_Q_L2"
+  ],
+  "gene_theme": "后兵对后",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_QP-Q_L2-001",
+  "fen": "4q3/4P3/5K2/8/8/4Q3/8/k7 w - - 0 1",
+  "concept": "后兵对后的防守——永将",
+  "question_cn": "后兵对后，弱方（单后一方）最常用的和局手段是：",
+  "question_en": "Queen and pawn vs. lone queen — the defending side's most common drawing method is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用后吃掉对方兵换成后对后",
+      "text_en": "Capture the pawn to reach queen vs. queen"
+    },
+    {
+      "key": "B",
+      "text_cn": "用后不断将军（永将），让对方无法推兵升变",
+      "text_en": "Give perpetual check to prevent the pawn from promoting"
+    },
+    {
+      "key": "C",
+      "text_cn": "王逃跑到远端",
+      "text_en": "King escapes to the far end"
+    },
+    {
+      "key": "D",
+      "text_cn": "后保护己方王，被动防守",
+      "text_en": "Queen protects own king passively"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "永将（perpetual check）是后残局弱方最重要的和局资源。只要后能不断将军且对方无法躲避，就能强制和局。这也是后残局中强方必须时刻防范的。",
+  "explanation_en": "Perpetual check is the defending queen's most important drawing resource. As long as checks continue and the opponent can't escape, it's a draw — the stronger side must always watch for this.",
+  "created_at": "2026-04-26"
+}

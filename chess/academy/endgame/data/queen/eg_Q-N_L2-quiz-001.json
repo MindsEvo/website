@@ -1,0 +1,40 @@
+{
+  "id": "eg_Q-N_L2-quiz-001",
+  "gene_ids": [
+    "EG_Q_N_L2"
+  ],
+  "gene_theme": "后对马",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_Q-N_L2-001",
+  "fen": "1k6/5n2/8/8/1Q6/8/3K4/8 w KQkq - 0 1",
+  "concept": "后对马的战略",
+  "question_cn": "后对单马，后方的制胜策略主要是：",
+  "question_en": "Queen vs. lone knight — the queen side's winning strategy is mainly:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "马在角落或边线时活动力极弱，用后和王把王逼到角落， 同时寻机吃马完成将杀",
+      "text_en": "Knight is weak in corners/edges, drive it there with queen and king, then win it"
+    },
+    {
+      "key": "B",
+      "text_cn": "后直接将军，马无法保护自己",
+      "text_en": "Queen gives direct checks, knight can't protect itself"
+    },
+    {
+      "key": "C",
+      "text_cn": "后对马是和局",
+      "text_en": "Queen vs. knight is a draw"
+    },
+    {
+      "key": "D",
+      "text_cn": "用后换马简化",
+      "text_en": "Trade queen for knight to simplify"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "后对马的元思维：马在中心强，在角落/边线弱（活动格减少）。战略是把马驱赶到边线，利用王和后的合力使马无路可逃，最终吃马完成将杀。",
+  "explanation_en": "Meta-concept: knight is strong centrally but weak on edge/corner (fewer jumps available). Drive it to the edge with queen+king coordination, then trap and win it.",
+  "created_at": "2026-04-26"
+}

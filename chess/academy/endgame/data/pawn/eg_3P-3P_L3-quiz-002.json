@@ -1,0 +1,40 @@
+{
+  "id": "eg_3P-3P_L3-quiz-002",
+  "gene_ids": [
+    "EG_3P_3P_L3"
+  ],
+  "gene_theme": "三兵对峙",
+  "difficulty": "L3",
+  "sequence": 2,
+  "ref_id": "eg_3P-3P_L3-002",
+  "fen": "6k1/ppp5/8/PPP5/8/5K2/8/8 w - - 0 1",
+  "concept": "王位优势",
+  "question_cn": "三兵对三兵，双方兵形相同时，决定胜负的最重要因素是：",
+  "question_en": "Three vs. three pawns with equal pawn structure — the most important deciding factor is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "谁的王先走（先手优势）",
+      "text_en": "Who moves the king first (tempo advantage)"
+    },
+    {
+      "key": "B",
+      "text_cn": "王的位置——谁的王更靠近中心或关键格",
+      "text_en": "King position — whose king is closer to the center or key squares"
+    },
+    {
+      "key": "C",
+      "text_cn": "兵的颜色分布",
+      "text_en": "The color distribution of pawns"
+    },
+    {
+      "key": "D",
+      "text_cn": "时间控制（步数限制）",
+      "text_en": "Time control (move limit)"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "三兵对三兵的终极元思维：兵形相同时王的位置就是全部。王靠近中心 → 能支援任意方向 → 掌握主动权。这是整个兵残局系列中\"王活跃性\"原则的最直接体现。",
+  "explanation_en": "Ultimate meta-concept in 3v3 pawn endings: with equal pawn structure, king position is everything. Centralized king → can support any direction → controls the initiative.",
+  "created_at": "2026-04-26"
+}

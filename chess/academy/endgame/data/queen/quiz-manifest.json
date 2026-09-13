@@ -1,0 +1,62 @@
+﻿{
+  "categories": [
+    {
+      "key": "KQR_vs_K",
+      "label": "后车对王-L1",
+      "items": [
+        { "id": "eg_KQR-K_L1-quiz-001", "label": "1. 后车组合威力——多路将杀" }
+      ]
+    },
+    {
+      "key": "KQ_vs_K",
+      "label": "后对王-L1",
+      "items": [
+        { "id": "eg_KQ-K_L1-quiz-001", "label": "1. 后对王基本原理" },
+        { "id": "eg_KQ-K_L1-quiz-002", "label": "2. 避免逼和（stalemate）" }
+      ]
+    },
+    {
+      "key": "KQ_vs_KP",
+      "label": "后对升变兵-L1",
+      "items": [
+        { "id": "eg_KQ-KP_L1-quiz-001", "label": "1. 后对升变兵——基本判断" },
+        { "id": "eg_KQ-KP_L1-quiz-002", "label": "2. 后对升变兵——王必须跟进" }
+      ]
+    },
+    {
+      "key": "QP_vs_Q",
+      "label": "后兵对后-L2",
+      "items": [
+        { "id": "eg_QP-Q_L2-quiz-001", "label": "1. 后兵对后的防守——永将" }
+      ]
+    },
+    {
+      "key": "Q_vs_B",
+      "label": "后对象-L2",
+      "items": [
+        { "id": "eg_Q-B_L2-quiz-001", "label": "1. 后对象——走到异色格制胜" }
+      ]
+    },
+    {
+      "key": "Q_vs_BP",
+      "label": "后对象兵-L2",
+      "items": [
+        { "id": "eg_Q-BP_L2-quiz-001", "label": "1. 后对象兵" }
+      ]
+    },
+    {
+      "key": "Q_vs_N",
+      "label": "后对马-L2",
+      "items": [
+        { "id": "eg_Q-N_L2-quiz-001", "label": "1. 后对马的战略" }
+      ]
+    },
+    {
+      "key": "Q_vs_R",
+      "label": "后对车-L2",
+      "items": [
+        { "id": "eg_Q-R_L2-quiz-001", "label": "1. 后对车——优势转化" }
+      ]
+    }
+  ]
+}

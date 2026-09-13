@@ -1,0 +1,40 @@
+{
+  "id": "eg_KQ-KP_L1-quiz-002",
+  "gene_ids": [
+    "EG_KQ_KP"
+  ],
+  "gene_theme": "后对升变兵",
+  "difficulty": "L1",
+  "sequence": 2,
+  "ref_id": "eg_KQ-KP_L1-003",
+  "fen": "6Q1/8/2K5/8/8/8/6p1/6k1 w - - 0 1",
+  "concept": "后对升变兵——王必须跟进",
+  "question_cn": "后对即将升变的兵，光靠后将军能解决问题吗？",
+  "question_en": "Queen vs. a pawn about to promote — can the queen solve it alone with checks?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "能，后将军足够强，不需要王参与",
+      "text_en": "Yes, the queen is strong enough to handle it alone"
+    },
+    {
+      "key": "B",
+      "text_cn": "不能，后可以用将军拖延时间，但最终需要王跟进支援才能赢",
+      "text_en": "No, the queen can delay with checks but the king must advance to win"
+    },
+    {
+      "key": "C",
+      "text_cn": "不需要后，王直接追上去吃兵就行",
+      "text_en": "No queen needed — just march the king to capture the pawn"
+    },
+    {
+      "key": "D",
+      "text_cn": "王不能参与，否则会挡住后的攻击路线",
+      "text_en": "The king must stay back or it blocks the queen's attacking lines"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "后对升变兵的基本思路：后用将军逼对方王移动、阻止兵升变，同时己方王快步跟进。单靠后将军只能拖延，王跟进之后才能最终消灭兵或完成将杀。王和后的配合是这类残局的核心。",
+  "explanation_en": "Core idea: the queen uses checks to harass the enemy king and delay promotion while your own king advances quickly. Checks alone only delay — the king must join to win the pawn or deliver checkmate.",
+  "created_at": "2026-04-26"
+}

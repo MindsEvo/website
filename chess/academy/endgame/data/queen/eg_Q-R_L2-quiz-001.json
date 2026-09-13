@@ -1,0 +1,40 @@
+{
+  "id": "eg_Q-R_L2-quiz-001",
+  "gene_ids": [
+    "EG_Q_R_L2"
+  ],
+  "gene_theme": "后对车",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_Q-R_L2-001",
+  "fen": "8/4k3/8/8/8/2Q1K3/8/4r3 w KQkq - 0 1",
+  "concept": "后对车——优势转化",
+  "question_cn": "后对单车（没有兵），后方要将死需要：",
+  "question_en": "Queen vs. lone rook (no pawns) — to checkmate, the queen side needs to:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "用王和后配合，逼破对方王车分离，后通过灵活的将军， 吃掉车完成将杀",
+      "text_en": "Cooperate with king and queen to trap and win the rook"
+    },
+    {
+      "key": "B",
+      "text_cn": "后单独追杀车，不需要王",
+      "text_en": "Queen chases the rook alone without the king"
+    },
+    {
+      "key": "C",
+      "text_cn": "直接用后换车，进入光杆王残局",
+      "text_en": "Trade queen for rook directly to reach bare king endgame"
+    },
+    {
+      "key": "D",
+      "text_cn": "后对车是和局，无法将死",
+      "text_en": "Queen vs. rook is a draw, cannot checkmate"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "后对车是后残局的典型难题：车可以借助将军（\"永将\"）或紧缩防守拖延。需要王和后精确配合，把车逼入绝境后捉死，再完成将杀。步骤繁琐，需要耐心。",
+  "explanation_en": "Classic difficult endgame: the rook can defend with perpetual checks or tight defense. Precise king+queen coordination is needed to trap and win the rook before checkmating.",
+  "created_at": "2026-04-26"
+}

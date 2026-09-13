@@ -1,0 +1,40 @@
+{
+  "id": "eg_KR-KP_L1-quiz-001",
+  "gene_ids": [
+    "EG_KR_KP"
+  ],
+  "gene_theme": "车对升变兵",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KR-KP_L1-001",
+  "fen": "6K1/8/2k5/1p5R/8/8/8/8 w - - 0 1",
+  "concept": "车王配合——分离对方王兵吃掉兵",
+  "question_cn": "车王配合对付王兵，横向的攻击策略之一是？",
+  "question_en": "Rook and king cooperating against a passer — what is the correct strategy?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "车切断对方王与兵的联系，寻机将兵吃掉",
+      "text_en": "Rook cuts the enemy king from the pawn; own king races around to capture the pawn"
+    },
+    {
+      "key": "B",
+      "text_cn": "车直接跟着兵走，不断将军",
+      "text_en": "Rook follows the pawn and gives checks continuously"
+    },
+    {
+      "key": "C",
+      "text_cn": "己方王直接冲向对方王，车留守原地",
+      "text_en": "Own king charges at the enemy king while the rook stays put"
+    },
+    {
+      "key": "D",
+      "text_cn": "等对方兵升变后再用车将军换子",
+      "text_en": "Wait for the pawn to promote, then trade the rook for the queen"
+    }
+  ],
+  "correct": "A",
+  "explanation_cn": "制胜关键在于「分离」：车占据对方王与兵之间的路线，切断两者联系；己方王随即绕路抢占兵的前进路径，将兵吃掉。王兵一旦分离，对方王来不及救援，兵必丢。",
+  "explanation_en": "The key is separation: rook cuts the enemy king off from the pawn; own king then races to the pawn's path and captures it. Once king and pawn are separated, the pawn falls.",
+  "created_at": "2026-04-26"
+}

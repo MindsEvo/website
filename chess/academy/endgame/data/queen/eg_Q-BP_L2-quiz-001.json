@@ -1,0 +1,40 @@
+{
+  "id": "eg_Q-BP_L2-quiz-001",
+  "gene_ids": [
+    "EG_Q_BP_L2"
+  ],
+  "gene_theme": "后对象兵",
+  "difficulty": "L2",
+  "sequence": 1,
+  "ref_id": "eg_Q-BP_L2-001",
+  "fen": "8/5b2/6k1/2K5/8/2Q5/p7/8 w - - 0 1",
+  "concept": "后对象兵",
+  "question_cn": "后对象兵，象为兵护航时，后方的进攻重点是：",
+  "question_en": "Queen vs. bishop and pawn — when bishop escorts the pawn, the queen side focuses on:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "先吃象再追兵",
+      "text_en": "Capture the bishop first, then chase the pawn"
+    },
+    {
+      "key": "B",
+      "text_cn": "用将军和威胁拆散象兵配合，趁机吃掉其中一个",
+      "text_en": "Use checks and threats to break up bishop-pawn coordination and win one"
+    },
+    {
+      "key": "C",
+      "text_cn": "后换象简化",
+      "text_en": "Trade queen for bishop to simplify"
+    },
+    {
+      "key": "D",
+      "text_cn": "防守己方王，等对方出错",
+      "text_en": "Defend own king and wait for opponent's mistake"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "后对象兵的元思维：象兵配合是防守核心，打破配合是进攻核心。将军迫使王移动 → 象脱离护兵位置 → 趁机吃兵或吃象。精确的叉击（fork）和将军顺序是关键。",
+  "explanation_en": "Meta-concept: the bishop-pawn duo is the defense; breaking it up is the attack. Check forces king movement → bishop leaves pawn unguarded → win material. Fork threats and check order are key.",
+  "created_at": "2026-04-26"
+}

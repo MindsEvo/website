@@ -1,0 +1,40 @@
+{
+  "id": "eg_KQ-K_L1-quiz-001",
+  "gene_ids": [
+    "EG_KQ"
+  ],
+  "gene_theme": "后对王",
+  "difficulty": "L1",
+  "sequence": 1,
+  "ref_id": "eg_KQ-K_L1-001",
+  "fen": "8/5K2/1k6/8/8/8/Q7/8 w - - 0 1",
+  "concept": "后对王基本原理",
+  "question_cn": "后对光杆王，为什么还需要己方王的配合？",
+  "question_en": "In queen vs. lone king, why is your own king still needed?",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "后太强，不需要王，可以单独将死",
+      "text_en": "The queen is too strong and can checkmate alone"
+    },
+    {
+      "key": "B",
+      "text_cn": "王负责封堵逃跑路线，与后配合完成将死",
+      "text_en": "The king cuts off escape routes and cooperates with the queen for checkmate"
+    },
+    {
+      "key": "C",
+      "text_cn": "王只需要站在中心保护后",
+      "text_en": "The king just stays in the center to protect the queen"
+    },
+    {
+      "key": "D",
+      "text_cn": "防止对方王攻击后",
+      "text_en": "To prevent the enemy king from attacking the queen"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "后虽然强大，但将死需要己方王封堵。『后打、王封』是后对王的基本元思维。单后将死容易陷入逼和（stalemate）陷阱，王的配合是关键。",
+  "explanation_en": "Queen gives check, king cuts off escape: this is the meta-pattern. Queen alone risks stalemate — king cooperation is essential.",
+  "created_at": "2026-04-26"
+}

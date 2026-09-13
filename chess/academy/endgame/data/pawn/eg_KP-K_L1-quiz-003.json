@@ -1,0 +1,40 @@
+{
+  "id": "eg_KP-K_L1-quiz-003",
+  "gene_ids": [
+    "EG_KP"
+  ],
+  "gene_theme": "兵对王",
+  "difficulty": "L1",
+  "sequence": 3,
+  "ref_id": "eg_KP-K_L1-007",
+  "fen": "8/8/6P1/8/8/8/5k2/2K5 w KQkq - 0 1",
+  "concept": "a兵（边路兵）和局",
+  "question_cn": "白方有a兵，象却是h1格的白格象。黑王能守住a8角。这个局面的结果是：",
+  "question_en": "White has an a-pawn and a light-squared bishop. Black king holds the a8 corner. The result is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "白方必胜，兵一定能升变",
+      "text_en": "White wins, the pawn will promote"
+    },
+    {
+      "key": "B",
+      "text_cn": "和局，黑王守住角格即可",
+      "text_en": "Draw, Black king holds the corner"
+    },
+    {
+      "key": "C",
+      "text_cn": "取决于哪方先走",
+      "text_en": "Depends on who moves first"
+    },
+    {
+      "key": "D",
+      "text_cn": "白方只要王靠近就能赢",
+      "text_en": "White wins by bringing the king close"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "错色象 + 边路兵 = 和局。升变格(a8)是黑格，白格象无法将死躲在角格的黑王。这是残局中最重要的和局识别模式之一。",
+  "explanation_en": "Wrong-colored bishop + rook pawn = draw. The promotion square (a8) is dark, so the light-squared bishop can't mate the king in the corner.",
+  "created_at": "2026-04-26"
+}

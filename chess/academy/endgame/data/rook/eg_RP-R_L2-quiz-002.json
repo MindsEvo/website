@@ -1,0 +1,40 @@
+{
+  "id": "eg_RP-R_L2-quiz-002",
+  "gene_ids": [
+    "EG_RP_R_L2"
+  ],
+  "gene_theme": "车兵对车",
+  "difficulty": "L2",
+  "sequence": 2,
+  "ref_id": "eg_RP-R_L2-001",
+  "fen": "8/8/8/2P5/2r5/4kR2/3K4/8 w KQkq - 0 1",
+  "concept": "Philidor阵型防守",
+  "question_cn": "车兵对车，弱方（单车一方）用Philidor防守的要点是：",
+  "question_en": "In rook vs. rook+pawn, using the Philidor defense, the key point is:",
+  "options": [
+    {
+      "key": "A",
+      "text_cn": "车在兵的前面直接阻挡",
+      "text_en": "Rook directly in front of the pawn to block"
+    },
+    {
+      "key": "B",
+      "text_cn": "车在第6排截断对方王，兵过第6排后立即改用背后将军",
+      "text_en": "Rook on 6th rank to cut off the king, then switch to back-rank checks when pawn passes"
+    },
+    {
+      "key": "C",
+      "text_cn": "王主动进攻，车被动防守",
+      "text_en": "King attacks actively while rook defends passively"
+    },
+    {
+      "key": "D",
+      "text_cn": "车不断将军直到50步规则触发",
+      "text_en": "Give endless checks until the 50-move rule triggers"
+    }
+  ],
+  "correct": "B",
+  "explanation_cn": "Philidor防守是车兵对车的核心和局技法：车在第6排截断 → 兵推过第6排时车立刻切到第1排背后将军 → 利用\"将军距离\"让对方王无法靠近 → 强制和局。",
+  "explanation_en": "Philidor defense: rook on 6th rank cuts off the king → when pawn passes 6th rank, immediately switch to back-rank checks → checking distance prevents king approach → forced draw.",
+  "created_at": "2026-04-26"
+}
