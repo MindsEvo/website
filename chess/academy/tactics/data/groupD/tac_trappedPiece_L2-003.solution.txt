@@ -1,0 +1,6 @@
+... Rh8
+2. Qxh8 Qxh8
+3. Nf3
+# END
+# tac_trappedPiece_L2-003（困子）
+# 解法 1

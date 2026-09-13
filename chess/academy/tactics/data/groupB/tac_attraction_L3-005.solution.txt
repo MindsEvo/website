@@ -1,0 +1,7 @@
+... Qh1+
+2. Kxh1 Bf3+
+3. Kg1 Rd1+
+4. Re1 Rxe1#
+# END
+# tac_attraction_L3-005（引入）
+# 解法 1

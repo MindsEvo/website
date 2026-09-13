@@ -1,0 +1,5 @@
+两种闪击， 要小心核实。
+
+# END
+# tac_discoveredAttack_L2-004（闪击）
+# 解法 1

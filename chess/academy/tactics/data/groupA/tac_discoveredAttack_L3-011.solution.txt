@@ -1,0 +1,4 @@
+1. Qb3 Qxb3
+2. Rxb3 Bxc1
+# END
+# 闪击 011

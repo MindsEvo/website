@@ -1,0 +1,6 @@
+... Qe4+
+2. Bxe4 Bxe4+
+3. Qf3 Bxf3#
+# END
+# tac_xRayAttack_L2-001（透视攻击）
+# 解法 1

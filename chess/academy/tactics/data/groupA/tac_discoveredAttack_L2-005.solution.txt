@@ -1,0 +1,7 @@
+1. Rd4 Qxg5+
+2. hxg5 cxd4
+3. gxh6 gxh6
+4. Qxd4+ Kg8
+# END
+# tac_discoveredAttack_L2-005（闪击）
+# 解法 1

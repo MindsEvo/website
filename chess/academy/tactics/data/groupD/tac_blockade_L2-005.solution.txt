@@ -1,0 +1,10 @@
+1. Qf6 Qe8
+2. g4 h5
+3. Rxe8+ Kxe8
+4. gxh5 gxh5
+5. Qe5+ Kf8
+6. h4 Rb7
+7. Qxh5 a5
+# END
+# tac_blockade_L2-005（阻塞）
+# 解法 1

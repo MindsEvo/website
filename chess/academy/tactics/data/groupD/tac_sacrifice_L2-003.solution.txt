@@ -1,0 +1,6 @@
+1. Qxf5 gxf5
+2. Ne6+ Kf6
+3. Nxd4 Bc5
+# END
+# tac_sacrifice_L2-003（弃子）
+# 解法 1

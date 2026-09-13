@@ -1,0 +1,4 @@
+1. Bxe4 Qxc2
+2. Bxc2 Bxc2
+# END
+# 透视攻击 010

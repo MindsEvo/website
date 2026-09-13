@@ -1,0 +1,8 @@
+... Ng4
+2. f5 gxf5
+3. exf5 Bxc3
+4. bxc3 f6
+5. Kh1
+# END
+# tac_attraction_L3-004（引入）
+# 解法 1

@@ -1,0 +1,13 @@
+1. Nxb7 Nxc4
+2. Rd4 Nb6
+3. Bxc6+ Ke7
+4. Na5 e5
+5. Rd2 Rc7
+6. Kg4 f5+
+7. Kh4 Bg8
+8. e4 Be6
+9. exf5 Bxf5
+10. f3 Nc8
+# END
+# tac_removalOfTheDefender_L2-012（消除保护）
+# 解法 1

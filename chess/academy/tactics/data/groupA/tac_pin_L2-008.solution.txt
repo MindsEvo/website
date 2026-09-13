@@ -1,0 +1,10 @@
+1. e6 Bxe6
+2. Bd4 Bg4
+3. h3 c5
+4. Be5 h5
+5. hxg4 Qxg4
+6. Qxg4 hxg4
+7. Bd5
+# END
+# tac_pin_L2-008（牵制）
+# 解法 1

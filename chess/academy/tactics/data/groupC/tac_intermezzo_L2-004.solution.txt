@@ -1,0 +1,6 @@
+1. Qc3 Qxc3
+2. Rxh5+ Kg7
+3. Nxc3 f5
+# END
+# tac_intermezzo_L2-004（中间招）
+# 解法 1

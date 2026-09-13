@@ -1,0 +1,5 @@
+1. Bc5 Bxh2+
+2. Kxh2 Rxd5
+3. Rxd5 Qxd5
+# END
+# 闪击 001

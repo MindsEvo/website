@@ -1,0 +1,9 @@
+1. Rh8+ Kxh8
+2. Rh1+ Kg8
+3. Rh8+ Kxh8
+4. Qh1+ Qh2
+5. Qxh2+ Kg8
+6. Qh7#
+# END
+# tac_clearance_L2-006（腾挪）
+# 解法 1

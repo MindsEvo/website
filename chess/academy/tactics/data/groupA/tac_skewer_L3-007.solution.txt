@@ -1,0 +1,5 @@
+﻿1. Rg2 Rxd4+
+2. cxd4 Rc2+
+3. Kd3 Rxg2
+# END
+# 串击 007

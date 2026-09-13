@@ -1,0 +1,5 @@
+1. Ra3 Qxa3
+2. Qxa3 h6
+# END
+# tac_trappedPiece_L2-002（困子）
+# 解法 1

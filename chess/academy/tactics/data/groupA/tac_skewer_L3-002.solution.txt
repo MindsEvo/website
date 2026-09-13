@@ -1,0 +1,5 @@
+﻿1. Bxf5 Qxf5
+2. Nxf5 Rxh1+
+3. Ke2 Rxa1
+# END
+# 串击 002

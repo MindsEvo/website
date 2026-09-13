@@ -1,0 +1,5 @@
+1. Ke2 Nxe3
+2. Kxd3 Nd5
+# END
+# tac_trappedPiece_L2-009（困子）
+# 解法 1

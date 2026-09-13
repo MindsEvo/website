@@ -1,0 +1,4 @@
+1. Nxe4 dxe4
+2. Qd1 exf3
+# END
+# 捉双 006

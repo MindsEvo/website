@@ -1,0 +1,5 @@
+1. Ne6+ Kf7
+2. Rxh4
+# END
+# tac_discoveredAttack_L2-001（闪击）
+# 解法 1

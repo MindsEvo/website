@@ -1,0 +1,8 @@
+1. Rxe5 Qxe5
+2. Qxb7+ Kxb7
+3. Nc4+ Qb5
+4. Rxb5+ Kc6
+5. Ra5 Nd5
+# END
+# tac_discoveredAttack_L2-012（闪击）
+# 解法 1

@@ -1,0 +1,9 @@
+1. Rxd8+ Kxd8
+2. Qb8+ Qc8
+3. Qxc8+ Kxc8
+4. Bxe6+ Kd8
+5. Bxf7 Nxf6
+6. Bxg6 Nd5
+# END
+# tac_deflection_L3-006（引离）
+# 解法 1

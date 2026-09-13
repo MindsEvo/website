@@ -1,0 +1,8 @@
+1. Bh6 g6
+2. Qd4 f6
+3. Qa7 Rf7
+4. Qa8+ Rf8
+5. Qxf8#
+# END
+# tac_pin_L2-001（牵制）
+# 解法 1

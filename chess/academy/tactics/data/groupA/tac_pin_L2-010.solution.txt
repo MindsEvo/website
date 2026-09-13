@@ -1,0 +1,11 @@
+... Qg6+
+2. Ng3 Rd3
+3. Re1 Rxg3+
+4. fxg3 Qxg3+
+5. Kf1 Qf3+
+6. Kg1 Qg3+
+7. Kf1 Qf3+
+8. Kg1 Qg3+
+# END
+# tac_pin_L2-010（牵制）
+# 解法 1

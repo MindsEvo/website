@@ -1,0 +1,5 @@
+1. Bxh7+ Kxh7
+2. Rxd8 Kg6
+# END
+# tac_discoveredAttack_L2-003（闪击）
+# 解法 1

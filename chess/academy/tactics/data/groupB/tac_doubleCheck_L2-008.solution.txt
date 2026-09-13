@@ -1,0 +1,10 @@
+1. Nf6+ Kf7
+2. Nxh5 Kg6
+3. g4 fxg3
+4. Nxg3 Kf7
+5. Kg2 Qc6+
+6. Kh2 a4
+7. bxa4
+# END
+# tac_doubleCheck_L2-008（双将）
+# 解法 1

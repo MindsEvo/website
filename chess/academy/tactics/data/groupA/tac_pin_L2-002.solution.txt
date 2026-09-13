@@ -1,0 +1,10 @@
+1. Nh6+ Kh8
+2. Nxf7+ Kg8
+3. Nh6+ Kh8
+4. Nf5 Rg8
+5. Qg4 h6
+6. Qg6 h5
+7. Qxh5#
+# END
+# tac_pin_L2-002（牵制）
+# 解法 1

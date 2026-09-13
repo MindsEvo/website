@@ -1,0 +1,5 @@
+1. Nxc4 Bxc4
+2. Bxc4 Qb4+
+3. Kf1 Qxc4+
+# END
+# 腾挪 007

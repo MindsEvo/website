@@ -1,0 +1,12 @@
+... Qd1+
+2. Kf2 Re2+
+3. Kg3 Rxg2+
+4. Kxg2 Qh5
+5. Rf3 Qxg5+
+6. Rg3 Qd2+
+7. Kh3 Qh6+
+8. Kg2 f6
+9. Bd4
+# END
+# tac_skewer_L2-009（串击）
+# 解法 1

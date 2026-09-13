@@ -1,0 +1,5 @@
+1. Nxc6 Rxe2
+2. Qxe2 Nf4+
+3. Kf1 Nxe2
+# END
+# 捉双 004

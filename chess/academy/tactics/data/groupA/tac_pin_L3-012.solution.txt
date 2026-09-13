@@ -1,0 +1,4 @@
+1. Rxg2 Qxf3
+2. Qxf3 Bxf3
+# END
+# 牵制 012

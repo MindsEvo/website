@@ -1,0 +1,6 @@
+﻿1. Qf5 Rd1+
+2. Kf2 Rxh2+
+3. Ke3 Re1+
+4. Kd3 Rxe7
+# END
+# 串击 001

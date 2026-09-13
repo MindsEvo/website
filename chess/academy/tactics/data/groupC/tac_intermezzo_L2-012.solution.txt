@@ -1,0 +1,7 @@
+... e3+
+2. Kxe3 Rxb3+
+3. Kf2 exd6
+4. Ra2 Rxb5
+# END
+# tac_intermezzo_L2-012（中间招）
+# 解法 1

@@ -1,0 +1,6 @@
+... Bb7
+2. Qxf8+ Kxf8
+3. Nd2 Bb6
+# END
+# tac_trappedPiece_L2-008（困子）
+# 解法 1

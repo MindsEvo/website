@@ -1,0 +1,12 @@
+1. f4+ gxf3
+2. Kxf3 d4
+3. cxd4+ Kxd4
+4. Ke2 Ke4
+5. h3 Kd4
+6. Kd2 Ke4
+7. Ke2 Kd4
+8. Kd2 Ke4
+9. Ke2
+# END
+# tac_zugzwang_L2-003（逼着）
+# 解法 1

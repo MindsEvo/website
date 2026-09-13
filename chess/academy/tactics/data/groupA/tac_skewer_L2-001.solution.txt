@@ -1,0 +1,18 @@
+... Bd5+
+2. Ke3 Bxf3
+3. Kxf3 Qd3+
+4. Be3 Kd7
+5. Kf4 Qe2
+6. Ke4 Kc6
+7. Kf4 Kd5
+8. Ba7 Qe4+
+9. Kg3 Qf5
+10. Bf2 Ke4
+11. Kg2 Qg4+
+12. Kf1 Qh3+
+13. Ke1 Qd3
+14. Bb6 Kf3
+15. Bc7 Qe2#
+# END
+# tac_skewer_L2-001（串击）
+# 解法 1

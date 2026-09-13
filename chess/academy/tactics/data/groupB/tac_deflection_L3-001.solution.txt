@@ -1,0 +1,5 @@
+... Bd5+
+2. Nc6 Bxc6#
+# END
+# tac_deflection_L3-001（引离）
+# 解法 1

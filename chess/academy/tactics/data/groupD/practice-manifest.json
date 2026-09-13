@@ -1,0 +1,102 @@
+﻿{
+  "categories": [
+    {
+      "key": "trappedPiece",
+      "label": "困子",
+      "items": [
+        { "id": "tac_trappedPiece_L2-001", "label": "例1", "fen": "r3r1k1/pp1qn1pp/2p2pn1/3p3Q/3P4/6Pb/PPP1NPNP/R3RBK1 b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-002", "label": "例2", "fen": "r5k1/p5pp/5p2/1p6/2prPB2/2R5/q5PP/2Q1R1K1 w - - 0 1" },
+        { "id": "tac_trappedPiece_L2-003", "label": "例3", "fen": "2r5/3k1p1Q/p2bpqp1/1p1p4/3N1P2/P3P1P1/1P1N2P1/1K2R3 b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-004", "label": "例4", "fen": "r2qk2r/bpp2p2/p2p1n1p/3Pp1pb/4P3/1BP1B1QP/PP3PPN/R3R1K1 b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-005", "label": "例5", "fen": "r2q2rk/1pp4p/p1b1pp2/3pP1bQ/3P2PP/2N2N2/PP3P2/R5RK b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-006", "label": "例6", "fen": "2r2rk1/p4ppb/3Qpn1p/2pp4/B7/P2P4/1qP1NPPP/R3R1K1 w - - 0 1" },
+        { "id": "tac_trappedPiece_L2-007", "label": "例7", "fen": "3r3r/2p1k3/Qb1n2p1/1p2p3/1P1p2Bq/P2P3P/1B3PP1/R4RK1 b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-008", "label": "例8", "fen": "Q1b2rk1/p4pp1/3q1n1p/npb1N3/3P4/2P5/PP3PPP/RNB2RK1 b - - 0 1" },
+        { "id": "tac_trappedPiece_L2-009", "label": "例9", "fen": "6k1/pp4pp/2p1p3/2Pn4/8/3rB3/PP3PPP/R4K2 w - - 0 1" },
+        { "id": "tac_trappedPiece_L2-010", "label": "例10", "fen": "5rk1/pp3pp1/4pn2/2P4p/P2qn2Q/1P5P/5PB1/R3R1K1 b - - 0 1" },
+        { "id": "tac_trappedPiece_L3-001", "label": "例11", "fen": "r2qk2r/1p2bppp/p1n1pn2/1Q1p2B1/3P4/P1N2N2/1PP2PPP/R4RK1 w kq - 0 13" },
+        { "id": "tac_trappedPiece_L3-002", "label": "例12", "fen": "r6r/pp1kqQ2/2b1p1p1/3p4/3P3p/2PB1P2/PP4PP/2KR3R w - - 1 22" },
+        { "id": "tac_trappedPiece_L3-003", "label": "例13", "fen": "r4rk1/p2qbpp1/1p2b2p/3pB2Q/2pP4/4P3/PP3PPP/1BR2RK1 w - - 0 16" },
+        { "id": "tac_trappedPiece_L3-004", "label": "例14", "fen": "r2qr2k/p6p/5bpQ/1p1p4/2p1p1bP/2P1P3/PPBN1B2/R3K2R w KQ - 1 24" },
+        { "id": "tac_trappedPiece_L3-005", "label": "例15", "fen": "q4k1r/5pp1/4pb1p/2pp4/8/2NQP3/2PP1PPP/5RK1 w - - 0 21" },
+        { "id": "tac_trappedPiece_L3-006", "label": "例16", "fen": "r1b1kr2/ppp2p1Q/3p1q2/4p3/2P1P3/2P2N2/P1P2PPP/R4RK1 w q - 0 14" },
+        { "id": "tac_trappedPiece_L3-007", "label": "例17", "fen": "r5kr/1b3pq1/2pp1n1p/pp1pn3/7Q/4B1PP/PPPNPPB1/2KR3R w - - 2 21" },
+        { "id": "tac_trappedPiece_L3-008", "label": "例18", "fen": "8/ppkn4/2pbppr1/3p4/3P2P1/2N3Q1/PPP2P2/2K5 w - - 2 22" },
+        { "id": "tac_trappedPiece_L3-009", "label": "例19", "fen": "r1q2r2/pb4k1/5p2/1p1p1Q2/2pP1PN1/PP2PB1P/6P1/5RK1 w - - 3 32" },
+        { "id": "tac_trappedPiece_L3-010", "label": "例20", "fen": "r1bqk2r/pp3ppp/2np4/8/4n3/4P3/PPP1BPPP/RN1QK1NR w KQkq - 3 8" },
+        { "id": "tac_trappedPiece_L3-011", "label": "例21", "fen": "r4rk1/ppp5/2n1p1qp/6p1/1P1pP1Q1/P2PbNPP/3N2P1/3RR2K w - - 0 25" },
+        { "id": "tac_trappedPiece_L3-012", "label": "例22", "fen": "r4rk1/pp2ppbp/2np1np1/2p5/2P2PqQ/1P1BPR2/PB1P2PP/RN4K1 w - - 1 12" }
+      ]
+    },
+    {
+      "key": "blockade",
+      "label": "阻塞",
+      "items": [
+        { "id": "tac_blockade_L2-001", "label": "例1", "fen": "7k/p4q1p/1pb5/2p5/2P1B2Q/P3B3/7P/7K b - - 0 1" },
+        { "id": "tac_blockade_L2-002", "label": "例2", "fen": "rnb2b2/ppp2Q2/3k4/3pN3/3Pp3/8/PP2KP1P/RNq5 w - - 0 1" },
+        { "id": "tac_blockade_L2-003", "label": "例3", "fen": "r6k/1ppnNr1p/p4p1Q/2q2N2/2n2P2/4R3/PPP3PP/6K1 w - - 0 1" },
+        { "id": "tac_blockade_L2-004", "label": "例4", "fen": "r3r3/p1p2p1k/3p2pp/2p5/2P2n2/2N2B2/PPR1PP1q/3RQK2 b - - 0 1" },
+        { "id": "tac_blockade_L2-005", "label": "例5", "fen": "3q1k2/p2rRp1p/1p4p1/2p1Q3/3p4/1P1P3P/P1P2PP1/6K1 w - - 0 1" },
+        { "id": "tac_blockade_L2-006", "label": "例6", "fen": "3r2k1/1p4pp/2p5/pnP2b2/2K2N1P/P4P2/5BP1/7R b - - 0 1" },
+        { "id": "tac_blockade_L2-007", "label": "例7", "fen": "8/2p2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1" },
+        { "id": "tac_blockade_L2-008", "label": "例8", "fen": "3B2k1/5p1p/p4P1b/2p5/4r3/1P1p2PP/P7/1R4K1 b - - 0 1" }
+      ]
+    },
+    {
+      "key": "zugzwang",
+      "label": "逼着",
+      "items": [
+        { "id": "tac_zugzwang_L2-001", "label": "例1", "fen": "8/8/5kp1/7p/4KP1P/8/8/8 w - - 4 40" },
+        { "id": "tac_zugzwang_L2-002", "label": "例2", "fen": "8/8/8/2k2p1p/6pP/5PP1/6K1/8 w - - 1 53" },
+        { "id": "tac_zugzwang_L2-003", "label": "例3", "fen": "8/8/8/1p1pkp1p/pP4p1/P1P1K1P1/5P1P/8 w - - 0 35" },
+        { "id": "tac_zugzwang_L2-004", "label": "例4", "fen": "8/3k1p2/6p1/3KP1P1/8/8/8/8 w - - 5 51" },
+        { "id": "tac_zugzwang_L2-005", "label": "例5", "fen": "3k4/8/8/3PK3/8/8/8/8 w - - 0 1" },
+        { "id": "tac_zugzwang_L2-006", "label": "例6", "fen": "2n5/1p2n3/1p4k1/3p3p/P2P1B1P/2K2B2/8/8 w - - 0 1" },
+        { "id": "tac_zugzwang_L2-007", "label": "例7", "fen": "8/8/8/2k1p1p1/1p2P1Pp/1PpP1P1P/r7/2RK4 b - - 0 1" },
+        { "id": "tac_zugzwang_L2-008", "label": "例8", "fen": "6k1/3q2pp/p2bp3/3p1r2/1p1Pp3/3bQ1PP/PP1B1rB1/1N2R1RK b - - 0 1" },
+        { "id": "tac_zugzwang_L2-009", "label": "例9", "fen": "4r3/1kp5/1pb5/p2q1PB1/P1pP3p/2P4P/3Q3K/5R2 b - - 0 1" },
+        { "id": "tac_zugzwang_L2-010", "label": "例10", "fen": "8/8/5k2/5p1p/5K1P/5P2/8/8 w - - 1 63" },
+        { "id": "tac_zugzwang_L3-001", "label": "例11", "fen": "8/p7/3k4/3p2p1/2pK2P1/2P5/PP6/8 w - - 2 33" },
+        { "id": "tac_zugzwang_L3-002", "label": "例12", "fen": "8/8/4k3/5pp1/3P4/6K1/5P2/8 w - - 0 39" },
+        { "id": "tac_zugzwang_L3-003", "label": "例13", "fen": "8/8/5p1p/4p1p1/2k1P1P1/4K2P/5P2/8 w - - 1 44" },
+        { "id": "tac_zugzwang_L3-004", "label": "例14", "fen": "8/5p2/6p1/4p1P1/1k2P3/4P3/3K4/8 w - - 4 44" },
+        { "id": "tac_zugzwang_L3-005", "label": "例15", "fen": "8/3k1p2/1p2pPp1/1Pp4p/2P2P1P/3K1P2/8/8 w - - 1 43" },
+        { "id": "tac_zugzwang_L3-006", "label": "例16", "fen": "8/8/4p3/5p2/4kPpK/6P1/7P/8 w - - 4 69" },
+        { "id": "tac_zugzwang_L3-007", "label": "例17", "fen": "8/8/p4k2/1p1p2p1/1Pp3P1/2P1KP2/P7/8 w - - 6 38" },
+        { "id": "tac_zugzwang_L3-008", "label": "例18", "fen": "8/6p1/5p1p/5P1P/3k1KP1/3P1R2/8/3r4 w - - 1 54" },
+        { "id": "tac_zugzwang_L3-009", "label": "例19", "fen": "8/5p2/5kp1/7p/4KP1P/8/5P2/8 w - - 4 44" },
+        { "id": "tac_zugzwang_L3-010", "label": "例20", "fen": "4r3/5p2/p4pk1/Pp1p4/1PpP2P1/2P1r1K1/5P2/4R3 w - - 0 33" },
+        { "id": "tac_zugzwang_L3-011", "label": "例21", "fen": "8/5p2/4p1p1/1kP4p/3K3P/6P1/5P2/8 w - - 0 48" },
+        { "id": "tac_zugzwang_L3-012", "label": "例22", "fen": "8/8/6p1/5bR1/4k3/8/4K3/8 w - - 4 73" }
+      ]
+    },
+    {
+      "key": "sacrifice",
+      "label": "弃子",
+      "items": [
+        { "id": "tac_sacrifice_L2-001", "label": "例1", "fen": "6rk/6p1/3Q2Rp/8/2b5/1pq2P1P/6P1/7K w - - 0 1" },
+        { "id": "tac_sacrifice_L2-002", "label": "例2", "fen": "6k1/5p1p/3p2p1/p2Pn3/4P3/P3Q1PP/2qN1P2/6K1 b - - 0 1" },
+        { "id": "tac_sacrifice_L2-003", "label": "例3", "fen": "2r2b2/1p4k1/1p4pp/5bN1/3q4/1B6/P1P3PP/1R3Q1K w - - 0 1" },
+        { "id": "tac_sacrifice_L2-004", "label": "例4", "fen": "7k/p4rp1/2p2NRp/1p3p2/5B1P/3P2RK/Pq2r2P/8 w - - 0 1" },
+        { "id": "tac_sacrifice_L2-005", "label": "例5", "fen": "2R2bk1/1p3p2/p3rPp1/q6p/3B4/4P3/2Q5/1K6 w - - 0 1" },
+        { "id": "tac_sacrifice_L2-006", "label": "例6", "fen": "3r1knr/p2Qb1qp/1p1N2p1/8/3p1p2/P7/1P3PPP/R1B1R1K1 w - - 0 1" },
+        { "id": "tac_sacrifice_L2-007", "label": "例7", "fen": "r4rk1/pp4p1/3p2P1/2p1p3/8/PPPP4/2K1QPq1/7R w - - 0 1" },
+        { "id": "tac_sacrifice_L2-008", "label": "例8", "fen": "5r2/1r3pk1/4p1pp/4q3/6RP/2PQ2R1/5PPK/8 w - - 0 1" },
+        { "id": "tac_sacrifice_L2-009", "label": "例9", "fen": "7k/p5p1/7p/1Q2P3/7r/P1N5/5qPP/6RK b - - 0 1" },
+        { "id": "tac_sacrifice_L2-010", "label": "例10", "fen": "5N1k/ppb2Bpp/2p5/8/6Q1/P1q4P/6K1/8 w - - 0 1" },
+        { "id": "tac_sacrifice_L3-001", "label": "例11", "fen": "6k1/p4pp1/2p3p1/3p4/3Pn3/1P1Q3P/P4PPK/4r3 w - - 2 30" },
+        { "id": "tac_sacrifice_L3-002", "label": "例12", "fen": "8/1q3pkp/4p1p1/3p4/2nP4/2P4P/5PP1/R1Q2K2 w - - 10 35" },
+        { "id": "tac_sacrifice_L3-003", "label": "例13", "fen": "3r2kr/6pp/p1B1p3/4P3/6n1/2p2NPq/PP2Q2P/R1B3K1 w - - 2 30" },
+        { "id": "tac_sacrifice_L3-004", "label": "例14", "fen": "1r4k1/6pp/1nP5/p2p1pPb/3P3P/1q3P2/N2QB3/K6R w - - 1 29" },
+        { "id": "tac_sacrifice_L3-005", "label": "例15", "fen": "6k1/5pp1/7p/2p5/q7/4P3/1pQP1PPP/rR4K1 w - - 2 31" },
+        { "id": "tac_sacrifice_L3-006", "label": "例16", "fen": "5rk1/pb2q2p/1p2p1p1/3rP3/3N1n2/P4P2/1PBQ2P1/2KR3R w - - 3 23" },
+        { "id": "tac_sacrifice_L3-007", "label": "例17", "fen": "r4k2/pp3pp1/8/3Q4/4nq2/7R/PPP1n1PP/R4K2 w - - 0 24" },
+        { "id": "tac_sacrifice_L3-008", "label": "例18", "fen": "rr4k1/5pPp/p7/6P1/3RPQ2/KN6/2q5/7R w - - 1 31" },
+        { "id": "tac_sacrifice_L3-009", "label": "例19", "fen": "5r1k/1p4p1/p6p/3Q4/8/2q5/P4rPP/3RR2K w - - 0 26" },
+        { "id": "tac_sacrifice_L3-010", "label": "例20", "fen": "r5k1/B4ppp/2p1p3/4P1b1/1P6/P7/2P3PP/3R2K1 w - - 1 27" },
+        { "id": "tac_sacrifice_L3-011", "label": "例21", "fen": "1n3rk1/1R5p/1B1p2pb/1B1Pp1qn/NP2P3/1Q6/2r1N1PP/6K1 w - - 0 25" },
+        { "id": "tac_sacrifice_L3-012", "label": "例22", "fen": "5rk1/pp3Np1/7p/8/4Q3/3p4/Pq4PP/4R1K1 w - - 4 33" }
+      ]
+    }
+  ]
+}

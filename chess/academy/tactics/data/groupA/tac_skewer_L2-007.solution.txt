@@ -1,0 +1,8 @@
+... Bf3+
+2. Kf1 Rxh8
+3. Ke1 Rh1+
+4. Kd2 Rxa1
+5. Bd3
+# END
+# tac_skewer_L2-007（串击）
+# 解法 1

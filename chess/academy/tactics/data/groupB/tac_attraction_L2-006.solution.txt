@@ -1,0 +1,17 @@
+... Rf1+
+2. Rxf1 Qh2+
+3. Kxh2 gxf1=N+
+4. Kg1 Nxd2
+5. c8=N Kxc8
+6. Kf2 Nb3
+7. Ke3 Kb7
+8. Kd3 Kc6
+9. Kc4 Na5+
+10. Kd4 Kd6
+11. Ke3 Kc5
+12. Ke2 Kb4
+13. Kd2 Kxa4
+14. Kc3 a6
+# END
+# tac_attraction_L2-006（引入）
+# 解法 1

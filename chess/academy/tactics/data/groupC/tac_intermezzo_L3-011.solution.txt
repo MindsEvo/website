@@ -1,0 +1,4 @@
+1. Bxh6 Nxf3+
+2. Qxf3 gxh6
+# END
+# 中间招 011

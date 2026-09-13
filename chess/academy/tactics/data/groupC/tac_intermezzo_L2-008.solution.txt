@@ -1,0 +1,5 @@
+1. Qc4 Rxa7
+2. Qxd5 Kh7
+# END
+# tac_intermezzo_L2-008（中间招）
+# 解法 1

@@ -1,0 +1,8 @@
+1. Rxd7 Qxc1
+2. Rd8+ Kh7
+3. Nxc1 Rc7
+4. Rd1 Be8
+5. Bd3
+# END
+# tac_intermezzo_L2-011（中间招）
+# 解法 1

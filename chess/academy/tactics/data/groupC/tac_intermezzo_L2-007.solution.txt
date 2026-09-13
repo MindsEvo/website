@@ -1,0 +1,6 @@
+1. Rd1 Qxb3
+2. Rxd8+ Kf7
+3. axb3 f5
+# END
+# tac_intermezzo_L2-007（中间招）
+# 解法 1

@@ -1,0 +1,5 @@
+1. Rxe4 Qxg5+
+2. Qxg5 Nh3+
+3. Kg2 Nxg5
+# END
+# 捉双 008

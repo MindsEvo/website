@@ -1,0 +1,5 @@
+经典的拦截战术。
+
+# END
+# tac_interference_L2-002（拦截）
+# 解法 1

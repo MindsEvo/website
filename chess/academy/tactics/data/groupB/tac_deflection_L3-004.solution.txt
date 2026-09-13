@@ -1,0 +1,13 @@
+... Rc6
+2. bxc6 g5
+3. Ka7 Kc7
+4. Ka8 h5
+5. Ka7 h4
+6. Ka8 f5
+7. Ka7 f4
+8. Ka8 g4
+9. Ka7 gxf3
+10. Ka8
+# END
+# tac_deflection_L3-004（引离）
+# 解法 1

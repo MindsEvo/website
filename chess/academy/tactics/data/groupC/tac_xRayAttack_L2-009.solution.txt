@@ -1,0 +1,5 @@
+... Rh2+
+2. Kg3 Qc7#
+# END
+# tac_xRayAttack_L2-009（透视攻击）
+# 解法 1

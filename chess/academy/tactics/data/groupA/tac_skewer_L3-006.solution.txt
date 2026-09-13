@@ -1,0 +1,6 @@
+﻿1. Rfd1 Qxd1+
+2. Rxd1 Rxd1+
+3. Kf2 Rd2+
+4. Kf1 Rxg2
+# END
+# 串击 006

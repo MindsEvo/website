@@ -1,0 +1,5 @@
+1. Kf2 Rxc5
+2. Rxc5 Ne4+
+3. Ke3 Nxc5
+# END
+# 引入 009

@@ -1,0 +1,5 @@
+1. Qb2 Rc2+
+2. Qxc2 Nd4+
+3. Kd3 Nxc2
+# END
+# 引入 008

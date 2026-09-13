@@ -1,0 +1,5 @@
+1. Ba5+ Kc8
+2. Bxd8 Kxd8
+# END
+# tac_skewer_L2-004（串击）
+# 解法 1

@@ -1,0 +1,5 @@
+1. Rg3 Rf1+
+2. Rf3 Rxf3+
+3. Kxf3 Kxd3
+# END
+# 逼着 008

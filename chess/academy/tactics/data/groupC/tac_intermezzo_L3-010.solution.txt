@@ -1,0 +1,5 @@
+1. Nxd6 Rxe1+
+2. Kh2 Qxd6+
+3. Qxd6 cxd6
+# END
+# 中间招 010

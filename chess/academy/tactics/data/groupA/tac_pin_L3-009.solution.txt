@@ -1,0 +1,5 @@
+1. Qf3 Nh4+
+2. gxh4 Rg7+
+3. Kh2 Qxf3
+# END
+# 牵制 009

@@ -1,0 +1,7 @@
+... Nxf3+
+2. gxf3 Rd4
+3. Qc3 Rxb4
+4. Ra1 Bf8
+# END
+# tac_skewer_L2-012（串击）
+# 解法 1

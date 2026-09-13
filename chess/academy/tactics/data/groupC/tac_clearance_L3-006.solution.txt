@@ -1,0 +1,5 @@
+1. Rce6 Rxb2
+2. Rxb2 Qa1+
+3. Qf1 Qxb2
+# END
+# 腾挪 006

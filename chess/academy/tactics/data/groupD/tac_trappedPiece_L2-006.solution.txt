@@ -1,0 +1,5 @@
+1. Rb1 Qxb1+
+2. Rxb1 c4
+# END
+# tac_trappedPiece_L2-006（困子）
+# 解法 1

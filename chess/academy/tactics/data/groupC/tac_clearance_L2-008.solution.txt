@@ -1,0 +1,9 @@
+1. Ba6 Bxa6
+2. Nxg5 Bd3
+3. Qxd3 Rfe8
+4. Rh8+ Bxh8
+5. Qh7+ Kf8
+6. Qxh8#
+# END
+# tac_clearance_L2-008（腾挪）
+# 解法 1

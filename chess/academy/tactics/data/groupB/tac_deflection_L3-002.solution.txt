@@ -1,0 +1,9 @@
+... Rh1
+2. Rxh1 g2
+3. Rg1 Qh4+
+4. Kd1 Qh1
+5. Rxh1 gxh1=Q+
+6. Bf1 Qxf1#
+# END
+# tac_deflection_L3-002（引离）
+# 解法 1

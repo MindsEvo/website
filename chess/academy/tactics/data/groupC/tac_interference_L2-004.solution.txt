@@ -1,0 +1,19 @@
+1. Be6 Rxe6
+2. dxe6 Qxe6
+3. Qa8 g6
+4. Rb1 c6
+5. Re1 h5
+6. Qxa7 h4
+7. Qd4 h3
+8. e5 Qa2
+9. Qf2 Qe6
+10. Qf3 c5
+11. g4 c4
+12. Kf2 Nc7
+13. Kg3 Nd5
+14. Qd1 Nxc3
+15. Qd6 Qd5
+16. Qxd5 Nxd5
+# END
+# tac_interference_L2-004（拦截）
+# 解法 1

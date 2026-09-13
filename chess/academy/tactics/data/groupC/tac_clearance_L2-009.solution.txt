@@ -1,0 +1,13 @@
+1. Rxb5 cxb5
+2. Rc8 Qd5
+3. Qa1+ e5
+4. Bxe5+ Qxe5
+5. Rxf8+ Kg7
+6. Rf7+ Kxf7
+7. Nxe5+ Rxe5
+8. Qxa8 Re7
+9. Qh8 Ke6
+10. g4 Rd7
+# END
+# tac_clearance_L2-009（腾挪）
+# 解法 1

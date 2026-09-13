@@ -1,0 +1,11 @@
+... Qe4+
+2. Qe3 Rc2+
+3. Kd1 Qxh1+
+4. Kxc2 Qxa1
+5. Qc3 Qxa4+
+6. Kd2 Qxb5
+7. Qc7+ Kg8
+8. Qg3 Qb4+
+# END
+# tac_skewer_L2-008（串击）
+# 解法 1

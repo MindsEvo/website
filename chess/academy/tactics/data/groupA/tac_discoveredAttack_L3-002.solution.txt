@@ -1,0 +1,4 @@
+1. Ne5 Bxe5
+2. fxe5 Qxd4
+# END
+# 闪击 002

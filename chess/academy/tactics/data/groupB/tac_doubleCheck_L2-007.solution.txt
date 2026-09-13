@@ -1,0 +1,5 @@
+1. Nf5+ Kh8
+2. Qg7#
+# END
+# tac_doubleCheck_L2-007（双将）
+# 解法 1

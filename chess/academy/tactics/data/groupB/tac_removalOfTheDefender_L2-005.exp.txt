@@ -1,0 +1,5 @@
+有意思的例子。
+
+# END
+# tac_removalOfTheDefender_L2-005（消除保护）
+# 解法 1

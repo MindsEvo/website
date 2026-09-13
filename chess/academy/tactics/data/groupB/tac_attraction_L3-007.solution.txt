@@ -1,0 +1,5 @@
+1. dxe5 Rxf1+
+2. Rxf1 Rxf1+
+3. Kxf1 Qd1#
+# END
+# 引入 007

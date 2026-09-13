@@ -1,0 +1,7 @@
+1. Qg7+ Bxg7
+2. hxg7+ Bh3
+3. g8=B+ Rxg8
+4. Rxh3#
+# END
+# tac_clearance_L2-004（腾挪）
+# 解法 1

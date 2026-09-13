@@ -1,0 +1,5 @@
+精彩的拦截！
+
+# END
+# tac_interference_L2-005（拦截）
+# 解法 1

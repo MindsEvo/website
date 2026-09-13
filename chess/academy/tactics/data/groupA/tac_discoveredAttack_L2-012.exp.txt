@@ -1,0 +1,5 @@
+精彩的引入闪将战术运用。
+
+# END
+# tac_discoveredAttack_L2-012（闪击）
+# 解法 1

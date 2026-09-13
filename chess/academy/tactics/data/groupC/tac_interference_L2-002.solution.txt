@@ -1,0 +1,6 @@
+1. Bb5+ Bd7
+2. Qxc5 Nc6
+3. Bf3
+# END
+# tac_interference_L2-002（拦截）
+# 解法 1

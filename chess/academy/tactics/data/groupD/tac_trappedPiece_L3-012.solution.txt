@@ -1,0 +1,5 @@
+1. Qf2 Ne4
+2. Bxe4 Bxb2
+3. Nc3 Bxa1
+# END
+# 困子 012

@@ -1,0 +1,5 @@
+﻿1. dxe4 Qxd2
+2. Nxd2 Nxc2
+3. Rac1 Nxe1
+# END
+# 消除保护 008

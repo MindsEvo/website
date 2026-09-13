@@ -1,0 +1,5 @@
+... Rh1+
+2. Kxh1 Qh2#
+# END
+# tac_attraction_L2-004（引入）
+# 解法 1

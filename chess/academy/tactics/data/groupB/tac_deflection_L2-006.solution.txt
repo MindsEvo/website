@@ -1,0 +1,6 @@
+1. Qxf6+ Qg6
+2. Bxg6 gxf6
+3. Bf7 Kg7
+# END
+# tac_deflection_L2-006（引离）
+# 解法 1

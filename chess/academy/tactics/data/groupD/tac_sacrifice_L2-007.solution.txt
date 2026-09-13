@@ -1,0 +1,6 @@
+1. Rh8+ Kxh8
+2. Qh5+ Kg8
+3. Qh7#
+# END
+# tac_sacrifice_L2-007（弃子）
+# 解法 1

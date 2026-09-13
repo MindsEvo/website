@@ -1,0 +1,5 @@
+1. Rxh6+ gxh6
+2. Qxh6#
+# END
+# tac_sacrifice_L2-001（弃子）
+# 解法 1

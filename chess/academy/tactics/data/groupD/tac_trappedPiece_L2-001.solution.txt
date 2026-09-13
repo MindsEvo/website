@@ -1,0 +1,5 @@
+... Bg4
+2. Qxg4 Qxg4
+# END
+# tac_trappedPiece_L2-001（困子）
+# 解法 1

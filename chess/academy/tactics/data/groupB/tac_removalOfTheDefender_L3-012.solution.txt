@@ -1,0 +1,5 @@
+﻿1. Qe3 d4
+2. Qxd4 Qxd4
+3. Rxd4 Rxc3
+# END
+# 消除保护 012

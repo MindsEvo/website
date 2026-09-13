@@ -1,0 +1,7 @@
+... Qxd2
+2. Qxd2 Nf3+
+3. Kf1 Nxd2+
+4. Ke2 Nc4
+# END
+# tac_sacrifice_L2-002（弃子）
+# 解法 1

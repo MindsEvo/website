@@ -1,0 +1,6 @@
+1. h3 Kf3
+2. hxg4 fxg4
+3. Kh5 Kxg3
+4. f5 exf5
+# END
+# 逼着 006

@@ -1,0 +1,13 @@
+1. g3 Bxf1
+2. Kxf1 Rc8
+3. Qxe7 Rxc7
+4. Qxc7 Qh3+
+5. Kg1 Rc8
+6. Bf1 Rxc7
+7. Bxh3 Rc1+
+8. Bf1 Bf6
+9. g4 Nc3
+10. d6
+# END
+# tac_pin_L2-006（牵制）
+# 解法 1

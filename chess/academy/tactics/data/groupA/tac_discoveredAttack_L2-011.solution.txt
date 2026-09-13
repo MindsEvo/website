@@ -1,0 +1,7 @@
+... Bxh2+
+2. Kh1 Bg3+
+3. Kg1 Qh2+
+4. Kf1 Qxf2#
+# END
+# tac_discoveredAttack_L2-011（闪击）
+# 解法 1

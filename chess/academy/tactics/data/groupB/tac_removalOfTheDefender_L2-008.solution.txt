@@ -1,0 +1,9 @@
+... Nxd4
+2. cxd4 Rxc5
+3. dxc5 Qxc5+
+4. Kh1 Rxc1
+5. Qxc1 Qxc1+
+6. Re1 Qxe1#
+# END
+# tac_removalOfTheDefender_L2-008（消除保护）
+# 解法 1

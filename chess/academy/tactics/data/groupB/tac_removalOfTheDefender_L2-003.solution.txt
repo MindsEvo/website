@@ -1,0 +1,8 @@
+... Rxb2
+2. Kxb2 Qb7+
+3. Kc1 f5
+4. Qxg6 Ne2+
+5. Nxe2 Qb2#
+# END
+# tac_removalOfTheDefender_L2-003（消除保护）
+# 解法 1

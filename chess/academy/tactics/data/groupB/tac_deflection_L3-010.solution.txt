@@ -1,0 +1,9 @@
+... Qe7+
+2. Kc3 Qc7+
+3. Kb3 Qxd8
+4. Rh3 Qd5+
+5. Kc3 Qxg2
+6. Re3
+# END
+# tac_deflection_L3-010（引离）
+# 解法 1

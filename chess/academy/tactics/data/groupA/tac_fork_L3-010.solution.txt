@@ -1,0 +1,5 @@
+1. Qe4 Nxf2+
+2. Rxf2 Ng3+
+3. Kg1 Nxe4
+# END
+# 捉双 010

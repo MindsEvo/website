@@ -1,0 +1,5 @@
+象将军闪击。
+
+# END
+# tac_discoveredAttack_L2-003（闪击）
+# 解法 1

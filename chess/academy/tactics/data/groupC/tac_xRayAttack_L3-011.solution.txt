@@ -1,0 +1,5 @@
+1. Nxc8 Qxd1+
+2. Rxd1 Rxd1+
+3. Qe1 Rxe1+
+# END
+# 透视攻击 011

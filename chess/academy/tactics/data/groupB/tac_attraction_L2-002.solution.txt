@@ -1,0 +1,6 @@
+1. Bg4 Qxg4
+2. Nh6+ Kg7
+3. Nxg4
+# END
+# tac_attraction_L2-002（引入）
+# 解法 1

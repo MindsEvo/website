@@ -1,0 +1,11 @@
+1. Be3 Qxe4
+2. Qxd3 Rxe5
+3. Qb3 Re7
+4. Re1 Qd5
+5. Qxd5 Nxd5
+6. Bc1 Rxe2
+7. Rxe2 f5
+8. Kf2
+# END
+# tac_removalOfTheDefender_L2-002（消除保护）
+# 解法 1

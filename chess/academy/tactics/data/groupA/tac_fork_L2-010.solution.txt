@@ -1,0 +1,7 @@
+1. Bb5 Qxb5
+2. Nc7+ Kd7
+3. Nxb5 Kc6
+4. Nd4+
+# END
+# tac_fork_L2-010（捉双）
+# 解法 1

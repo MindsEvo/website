@@ -1,0 +1,14 @@
+1. Qg4 Qb5
+2. Qc4 Qd7
+3. Qc7 Qb5
+4. Qc4 Qd7
+5. Qc7 Qb5
+6. a4 Qxa4
+7. Re4 Bxb2
+8. Qxc8 Rxc8
+9. Rxa4 b5
+10. Rxa5 b4
+11. Ra2
+# END
+# tac_deflection_L2-004（引离）
+# 解法 1

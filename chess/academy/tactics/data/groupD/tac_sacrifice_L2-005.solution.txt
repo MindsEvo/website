@@ -1,0 +1,7 @@
+1. Rxf8+ Kh7
+2. Rxf7+ Kh6
+3. Rxb7 Qd5
+4. Qc7
+# END
+# tac_sacrifice_L2-005（弃子）
+# 解法 1

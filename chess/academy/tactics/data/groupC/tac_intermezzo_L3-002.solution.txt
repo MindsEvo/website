@@ -1,0 +1,4 @@
+1. Nxc5 Qxb5
+2. cxb5 Nxc5
+# END
+# 中间招 002

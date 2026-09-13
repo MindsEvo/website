@@ -1,0 +1,6 @@
+1. Bxc7+ Qxc7
+2. Rxd8+ Ka7
+3. Qxc7
+# END
+# tac_pin_L1-004（牵制）
+# 解法 1

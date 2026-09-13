@@ -1,0 +1,7 @@
+1. Rc2 Rxf3
+2. Rxf3 Rd1+
+3. Kg2 Rg1+
+4. Kh3 g4+
+5. Kh4 gxf3
+# END
+# 腾挪 001

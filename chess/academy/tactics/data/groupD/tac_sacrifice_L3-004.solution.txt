@@ -1,0 +1,5 @@
+﻿1. Rb1 Qxb1+
+2. Kxb1 Nc4+
+3. Kc1 Nxd2
+# END
+# 弃子 004

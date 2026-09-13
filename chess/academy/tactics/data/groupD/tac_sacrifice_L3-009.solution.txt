@@ -1,0 +1,5 @@
+﻿1. Qxb7 Qxe1+
+2. Rxe1 Rf1+
+3. Rxf1 Rxf1#
+# END
+# 弃子 009

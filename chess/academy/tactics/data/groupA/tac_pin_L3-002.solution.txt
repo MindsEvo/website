@@ -1,0 +1,5 @@
+1. Rxf7 exd3
+2. Rxe8+ Rxe8
+3. Rf8+ Rxf8
+# END
+# 牵制 002

@@ -1,0 +1,5 @@
+﻿1. Rb1 Qxb1
+2. Qxb1 Nd2+
+3. Ke2 Nxb1
+# END
+# 弃子 002

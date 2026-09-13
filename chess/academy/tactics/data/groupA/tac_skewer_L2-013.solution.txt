@@ -1,0 +1,9 @@
+... Re3+
+2. Kc4 Rxb3
+3. Rxa5 Rc3+
+4. Kxd4 Bf2+
+5. Kd5 Bb6
+6. Rb5
+# END
+# tac_skewer_L2-013（串击）
+# 解法 1

@@ -1,0 +1,6 @@
+1. Qf4+ Qxf4
+2. Rxe8+ Kc7
+3. gxf4
+# END
+# tac_intermezzo_L2-003（中间招）
+# 解法 1

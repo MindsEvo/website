@@ -1,0 +1,15 @@
+... e3
+2. fxe3 Bxd2+
+3. Nxd2 Qxg5
+4. O-O Nf6
+5. Ne4 Nxe4
+6. dxe4 d6
+7. Qxd6 Nd7
+8. Rd1 Qe5
+9. Qd4 Rf8
+10. Rxf8+ Kxf8
+11. c5 Qxd4
+12. exd4 Nf6
+# END
+# tac_interference_L2-006（拦截）
+# 解法 1

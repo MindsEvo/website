@@ -1,0 +1,6 @@
+... Qh1+
+2. Kf2 Qxb1
+3. e4
+# END
+# tac_skewer_L2-005（串击）
+# 解法 1

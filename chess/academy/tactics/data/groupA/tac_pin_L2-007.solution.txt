@@ -1,0 +1,8 @@
+1. Ne5 Rd8
+2. Kh2 Qh4
+3. Rxd7 Rxd7
+4. Nxd7 Qe4
+5. Ne5 Qh4
+# END
+# tac_pin_L2-007（牵制）
+# 解法 1

@@ -1,0 +1,5 @@
+1. Qxd5 Re1+
+2. Kg2 Qxd5+
+3. Rxd5 Rxc1
+# END
+# 中间招 006

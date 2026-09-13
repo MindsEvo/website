@@ -1,0 +1,5 @@
+1. Nc3 Bxc3+
+2. bxc3 Qxc3+
+3. Bd2 Qxd3
+# END
+# 拦截 002

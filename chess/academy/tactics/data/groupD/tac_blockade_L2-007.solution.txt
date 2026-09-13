@@ -1,0 +1,6 @@
+... h4+
+2. Kg4 f5+
+3. Rxf5 Rg2#
+# END
+# tac_blockade_L2-007（阻塞）
+# 解法 1

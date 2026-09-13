@@ -1,0 +1,7 @@
+1. Rf8+ Bxf8
+2. d6+ Qd5
+3. Bxd5+ Be6
+4. Bxe6#
+# END
+# tac_deflection_L2-007（引离）
+# 解法 1

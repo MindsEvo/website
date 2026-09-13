@@ -1,0 +1,5 @@
+1. Rcxe2 Qxe1+
+2. Rxe1 Rxe1+
+3. Qg1 Rxg1+
+# END
+# 透视攻击 008

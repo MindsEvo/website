@@ -1,0 +1,7 @@
+... Bd5
+2. Rd3 Bxb7
+3. f3 Kf8
+4. Rd1
+# END
+# tac_fork_L2-007（捉双）
+# 解法 1

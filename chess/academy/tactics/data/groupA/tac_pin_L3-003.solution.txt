@@ -1,0 +1,5 @@
+1. Rf4 Nxh3
+2. Rxe4 Nxf2+
+3. Rxf2 Rxe4
+# END
+# 牵制 003

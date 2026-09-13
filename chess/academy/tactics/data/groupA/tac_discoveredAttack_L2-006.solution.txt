@@ -1,0 +1,7 @@
+... Nf2+
+2. Bxf2 Bxf2
+3. Qxh5 Re1+
+4. Rg1 Rxg1#
+# END
+# tac_discoveredAttack_L2-006（闪击）
+# 解法 1

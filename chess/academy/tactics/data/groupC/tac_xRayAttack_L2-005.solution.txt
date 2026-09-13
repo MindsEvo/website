@@ -1,0 +1,5 @@
+1. Rxd8+ Bxd8
+2. Bxd8 f6
+# END
+# tac_xRayAttack_L2-005（透视攻击）
+# 解法 1

@@ -1,0 +1,8 @@
+1. Rf2 Rxf2
+2. Nc6+ Kb5
+3. Nd4+ Kc5
+4. Nf3 Kb4
+5. f8=Q+ Nc5
+# END
+# tac_interference_L2-011（拦截）
+# 解法 1

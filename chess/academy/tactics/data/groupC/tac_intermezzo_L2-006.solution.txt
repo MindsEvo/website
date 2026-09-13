@@ -1,0 +1,6 @@
+1. Ne4 Qxe1
+2. Nxf6+ Kh8
+3. Rxe1
+# END
+# tac_intermezzo_L2-006（中间招）
+# 解法 1

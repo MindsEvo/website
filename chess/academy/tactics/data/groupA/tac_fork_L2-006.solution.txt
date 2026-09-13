@@ -1,0 +1,6 @@
+1. Bxg4 Nxg4
+2. Kh3 Kf4
+3. Kxh4
+# END
+# tac_fork_L2-006（捉双）
+# 解法 1

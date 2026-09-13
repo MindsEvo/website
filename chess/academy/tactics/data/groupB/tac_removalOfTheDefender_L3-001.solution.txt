@@ -1,0 +1,5 @@
+﻿1. exf4 Rxd2
+2. Kxd2 Bxf4+
+3. Kd1 Bxc1
+# END
+# 消除保护 001

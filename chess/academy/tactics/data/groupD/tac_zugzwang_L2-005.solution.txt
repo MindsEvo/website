@@ -1,0 +1,8 @@
+1. Ke6 Kc7
+2. d6+ Kc6
+3. d7 Kc7
+4. Ke7 Kc6
+5. d8=Q Kc5
+# END
+# tac_zugzwang_L2-005（逼着）
+# 解法 1

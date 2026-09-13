@@ -1,0 +1,8 @@
+1. a4 a5
+2. Ke3 Ke5
+3. Kf3 d4
+4. cxd4+ Kxd4
+5. Ke2 c3
+6. bxc3+ Kxc3
+# END
+# 逼着 001

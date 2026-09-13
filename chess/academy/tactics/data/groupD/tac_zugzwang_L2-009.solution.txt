@@ -1,0 +1,9 @@
+... Rg8
+2. Re1 Qxf5
+3. Re5 Qf3
+4. d5 Qg3+
+5. Kh1 Qxe5
+6. dxc6+ Kxc6
+# END
+# tac_zugzwang_L2-009（逼着）
+# 解法 1

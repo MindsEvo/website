@@ -1,0 +1,5 @@
+... Nf3+
+2. gxf3 Rd1#
+# END
+# tac_clearance_L2-002（腾挪）
+# 解法 1

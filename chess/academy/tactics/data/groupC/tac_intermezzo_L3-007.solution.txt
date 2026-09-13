@@ -1,0 +1,5 @@
+1. Nxe6 Rxg7
+2. Rxg7 Rxe6+
+3. Kxe6 Kxg7
+# END
+# 中间招 007

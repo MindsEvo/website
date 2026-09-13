@@ -1,0 +1,5 @@
+﻿1. Rd7 Rxa7
+2. Rxa7 Be3+
+3. Kf1 Bxa7
+# END
+# 弃子 010

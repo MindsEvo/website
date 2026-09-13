@@ -1,0 +1,10 @@
+... Qb7
+2. Bxd5 Qxd5
+3. Ne3 Qb5
+4. Rb1 Qb3
+5. Nd1 Qc2
+6. Ra1 Kh7
+7. Kf1
+# END
+# tac_pin_L2-011（牵制）
+# 解法 1

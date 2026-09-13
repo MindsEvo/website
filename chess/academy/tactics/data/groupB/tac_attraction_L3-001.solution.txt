@@ -1,0 +1,10 @@
+1. h6+ Kxh6
+2. Qh1 Kg7
+3. Qxh3 b5
+4. axb5 Re4
+5. Qg2 Re8
+6. Qf3 h5
+7. d6 f5
+# END
+# tac_attraction_L3-001（引入）
+# 解法 1

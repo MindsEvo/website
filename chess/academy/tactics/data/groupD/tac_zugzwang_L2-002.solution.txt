@@ -1,0 +1,19 @@
+1. Kf2 Kc4
+2. fxg4 fxg4
+3. Ke3 Kc3
+4. Kf4 Kd2
+5. Kg5 Ke2
+6. Kxh5 Kf3
+7. Kg6 Kxg3
+8. h5 Kf4
+9. h6 g3
+10. h7 g2
+11. Kf7 g1=Q
+12. h8=Q Qa7+
+13. Kg6 Qg1+
+14. Kf7 Qa7+
+15. Kg6 Qg1+
+16. Kf7
+# END
+# tac_zugzwang_L2-002（逼着）
+# 解法 1

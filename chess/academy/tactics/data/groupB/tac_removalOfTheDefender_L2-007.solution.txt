@@ -1,0 +1,8 @@
+1. Nxa5 bxa5
+2. Nf6+ Ke7
+3. Rb7+ Rc7
+4. Rxc7+ Rd7
+5. Rxd7#
+# END
+# tac_removalOfTheDefender_L2-007（消除保护）
+# 解法 1

@@ -1,0 +1,12 @@
+... Rh2
+2. d4+ Kxd4
+3. Rc2 Rxc2
+4. Kxc2 Ke3
+5. Kc1 Kd3
+6. f4 exf4
+7. Kd1 c2+
+8. Ke1 c1=Q+
+9. Kf2
+# END
+# tac_zugzwang_L2-007（逼着）
+# 解法 1

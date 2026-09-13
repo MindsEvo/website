@@ -1,0 +1,7 @@
+1. Rxg6+ fxg6
+2. Qxg6+ Kh8
+3. Qxh6+ Rh7
+4. Qxf8#
+# END
+# tac_sacrifice_L2-008（弃子）
+# 解法 1

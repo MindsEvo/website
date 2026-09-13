@@ -1,0 +1,15 @@
+1. Rb8 Qe8
+2. Rxe8 Bxe8
+3. Bxd4 Nxd4
+4. Ne7+ Rxe7
+5. Qxh4 Bxg6
+6. Qxe7 Bf7
+7. Qxd6 Be6
+8. Qxc5 Nc2
+9. Qxf8+ Kxf8
+10. Bxc2 Ke7
+11. exf5 Bf7
+12. Kg3 Kf6
+# END
+# tac_deflection_L2-003（引离）
+# 解法 1

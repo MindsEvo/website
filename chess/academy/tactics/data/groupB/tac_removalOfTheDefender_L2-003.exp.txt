@@ -1,0 +1,5 @@
+非常精彩漂亮的多消除保护攻击。
+
+# END
+# tac_removalOfTheDefender_L2-003（消除保护）
+# 解法 1

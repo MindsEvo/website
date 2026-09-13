@@ -1,0 +1,5 @@
+﻿1. Ke2 Bxf3+
+2. Kxf3 Qh5+
+3. Ke3 Qxd1
+# END
+# 串击 009

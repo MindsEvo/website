@@ -1,0 +1,5 @@
+马闪击的例子。
+
+# END
+# tac_discoveredAttack_L2-001（闪击）
+# 解法 1

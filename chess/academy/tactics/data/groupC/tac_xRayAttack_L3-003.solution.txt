@@ -1,0 +1,5 @@
+1. Rxb1 Rxb1+
+2. Rd1 Qe1+
+3. Rxe1 Rxe1#
+# END
+# 透视攻击 003

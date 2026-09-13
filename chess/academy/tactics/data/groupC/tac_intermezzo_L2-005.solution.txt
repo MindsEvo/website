@@ -1,0 +1,6 @@
+... Re1+
+2. Kc2 Bxc3
+3. Rxe1 Bxe1
+# END
+# tac_intermezzo_L2-005（中间招）
+# 解法 1

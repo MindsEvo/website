@@ -1,0 +1,5 @@
+1. Ng6+ hxg6
+2. Qh4#
+# END
+# tac_sacrifice_L2-010（弃子）
+# 解法 1

@@ -1,0 +1,6 @@
+1. Rd1 Qxb3
+2. Rxd8+ Kf7
+3. axb3
+# END
+# tac_skewer_L2-003（串击）
+# 解法 1

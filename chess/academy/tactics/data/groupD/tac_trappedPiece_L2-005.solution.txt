@@ -1,0 +1,7 @@
+... Be8
+2. hxg5 Bxh5
+3. exf6 Rxg5
+4. Nxg5 Bg6
+# END
+# tac_trappedPiece_L2-005（困子）
+# 解法 1

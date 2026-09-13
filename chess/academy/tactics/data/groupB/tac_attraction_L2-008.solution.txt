@@ -1,0 +1,7 @@
+... Qc7+
+2. Qg3 Rh1+
+3. Kxh1 Qxg3
+4. Kg1
+# END
+# tac_attraction_L2-008（引入）
+# 解法 1

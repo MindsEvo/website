@@ -1,0 +1,5 @@
+... Ra8
+2. Qxa8 Rxa8
+# END
+# tac_trappedPiece_L2-007（困子）
+# 解法 1

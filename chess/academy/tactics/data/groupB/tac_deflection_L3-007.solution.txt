@@ -1,0 +1,12 @@
+1. Be2 Qf5
+2. Bg4 Qxg4
+3. Qc8+ Kd5
+4. Qxg4 a2
+5. Qf3+ Ke5
+6. Qe3+ Kf5
+7. Qd4 Ke6
+8. f3 Kd7
+9. f4
+# END
+# tac_deflection_L3-007（引离）
+# 解法 1

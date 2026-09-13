@@ -1,0 +1,6 @@
+1. Ke4 Kd6
+2. Ke3 e5
+3. Ke4 exf4
+4. Kxf4 Ke6
+# END
+# 逼着 005

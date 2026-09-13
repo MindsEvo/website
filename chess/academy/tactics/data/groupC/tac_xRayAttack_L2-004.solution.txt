@@ -1,0 +1,5 @@
+1. Bxd7 Qd6
+2. Bg4 g6
+# END
+# tac_xRayAttack_L2-004（透视攻击）
+# 解法 1

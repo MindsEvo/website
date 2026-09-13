@@ -1,0 +1,5 @@
+非常精彩的棋局， 多拆解练习。
+
+# END
+# tac_removalOfTheDefender_L2-009（消除保护）
+# 解法 1

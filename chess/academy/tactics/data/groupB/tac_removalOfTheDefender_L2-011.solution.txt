@@ -1,0 +1,6 @@
+1. Rxf8+ Qxf8
+2. Qa4+ b5
+3. Qxe4
+# END
+# tac_removalOfTheDefender_L2-011（消除保护）
+# 解法 1

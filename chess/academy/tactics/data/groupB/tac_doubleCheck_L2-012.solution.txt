@@ -1,0 +1,6 @@
+... Qg2+
+2. Kxg2 Nf4+
+3. Kg1 Nh3#
+# END
+# tac_doubleCheck_L2-012（双将）
+# 解法 1

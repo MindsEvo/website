@@ -1,0 +1,4 @@
+1. Rde2 Bxf3+
+2. Rxf3 Rxe2+
+# END
+# 引离 010

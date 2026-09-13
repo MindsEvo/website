@@ -1,0 +1,5 @@
+﻿1. g3 Rxd4
+2. Qxd4 Ne2+
+3. Kb1 Nxd4
+# END
+# 弃子 006

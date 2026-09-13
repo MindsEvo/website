@@ -1,0 +1,5 @@
+1. Qc5+ Qxc5+
+2. Rxc5 Bd4+
+3. Kf1 Bxc5
+# END
+# 捉双 009

@@ -1,0 +1,5 @@
+﻿1. Rc5 Bxe2
+2. Qxe2 Nxd4
+3. Nxd4 Qxc5
+# END
+# 消除保护 010

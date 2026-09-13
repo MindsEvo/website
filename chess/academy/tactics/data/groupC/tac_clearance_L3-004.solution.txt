@@ -1,0 +1,5 @@
+1. Be4 Rxe4
+2. Qxe4 Re8
+3. Qxe8+ Qxe8+
+# END
+# 腾挪 004

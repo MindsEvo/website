@@ -1,0 +1,16 @@
+1. Rg7+ Kxg7
+2. Qxe7+ Kg8
+3. Kh2 Re4
+4. Qxf6 Re6
+5. Qg5+ Kf7
+6. b4 Nd7
+7. Qh5+ Ke7
+8. b5+ Kd8
+9. Qd5 Rg6
+10. Bd6 Rxd6
+11. Qxd6 Kc8
+12. h4 Kd8
+13. h5
+# END
+# tac_deflection_L2-002（引离）
+# 解法 1

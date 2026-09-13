@@ -1,0 +1,13 @@
+1. Ke3 Ke5
+2. f4+ Ke6
+3. Ke2 Ke7
+4. Ke3 Ke6
+5. Ke2 Kd6
+6. Kd2 Kc6
+7. Kc2 Kd6
+8. Kd2 Kc6
+9. Kc2 Kd6
+10. Kd2
+# END
+# tac_zugzwang_L2-010（逼着）
+# 解法 1

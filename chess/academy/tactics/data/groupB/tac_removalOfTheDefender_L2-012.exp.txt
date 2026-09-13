@@ -1,0 +1,5 @@
+自学多尝试各种变化。
+
+# END
+# tac_removalOfTheDefender_L2-012（消除保护）
+# 解法 1

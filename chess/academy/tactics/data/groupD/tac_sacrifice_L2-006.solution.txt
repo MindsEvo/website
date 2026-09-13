@@ -1,0 +1,5 @@
+1. Qxd8+ Bxd8
+2. Re8#
+# END
+# tac_sacrifice_L2-006（弃子）
+# 解法 1

@@ -1,0 +1,7 @@
+1. Qxe4 Qd1+
+2. Qe1 Qxe1+
+3. Rxe1 Kh7
+4. Bc3
+# END
+# tac_xRayAttack_L2-007（透视攻击）
+# 解法 1

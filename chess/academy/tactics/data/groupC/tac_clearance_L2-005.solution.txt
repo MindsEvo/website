@@ -1,0 +1,8 @@
+1. Ng8+ Rxg8
+2. Rxf7+ Ke8
+3. Rc7+ Kf8
+4. Rd8+ Qe8
+5. Rxe8#
+# END
+# tac_clearance_L2-005（腾挪）
+# 解法 1

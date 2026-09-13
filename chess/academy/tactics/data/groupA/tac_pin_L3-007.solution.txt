@@ -1,0 +1,5 @@
+1. Rxf5 Rxe7+
+2. Qxe7 Re8
+3. Qxe8+ Qxe8+
+# END
+# 牵制 007

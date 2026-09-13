@@ -1,0 +1,4 @@
+1. Qxb7 Na5
+2. Qxa8 Qxa8
+# END
+# 困子 001

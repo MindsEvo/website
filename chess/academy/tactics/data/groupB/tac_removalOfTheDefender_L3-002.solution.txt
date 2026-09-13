@@ -1,0 +1,5 @@
+﻿1. Nxf6+ Bxf6
+2. Qb4 Qxb4
+3. axb4 Bxb2
+# END
+# 消除保护 002

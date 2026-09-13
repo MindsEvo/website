@@ -1,0 +1,6 @@
+1. Rf8+ Rxf8
+2. Qg8+ Rxg8
+3. Nf7#
+# END
+# tac_clearance_L2-001（腾挪）
+# 解法 1

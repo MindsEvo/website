@@ -1,0 +1,6 @@
+﻿1. Qxc2 Qe3+
+2. Bxe3 Bxe3+
+3. Kh1 Rf1+
+4. Ng1 Rxg1#
+# END
+# 弃子 011

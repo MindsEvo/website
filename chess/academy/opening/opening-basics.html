@@ -640,7 +640,7 @@
       // the position's side to move is Black, matching standard PGN black-to-move
       // notation. Tokens are validated against a SAN shape so an unfilled placeholder
       // solution file is skipped instead of mis-parsed as garbage moves.
-      var SAN_TOKEN_RE = /^(O-O-O|O-O|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](=[QRBN])?[+#]?)$/;
+      var SAN_TOKEN_RE = /^(O-O-O[+#]?|O-O[+#]?|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](=[QRBN])?[+#]?)$/;
       function parseSolutionMoves(text) {
         var moves = [];
         text.split(/\r?\n/).forEach(function (rawLine) {

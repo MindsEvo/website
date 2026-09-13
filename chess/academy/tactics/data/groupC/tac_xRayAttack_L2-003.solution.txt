@@ -1,0 +1,7 @@
+... Rxd4
+2. Qxd4 Be3+
+3. Kf1 Bxd4
+4. Rd2 Qa1+
+# END
+# tac_xRayAttack_L2-003（透视攻击）
+# 解法 1

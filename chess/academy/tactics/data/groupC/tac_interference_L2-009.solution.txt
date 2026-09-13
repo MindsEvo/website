@@ -1,0 +1,9 @@
+1. Qg4 Qc1+
+2. Re1 Qg5
+3. Qxg5 hxg5
+4. Re2 Re8
+5. Rxf2 Rxe5
+6. axb5
+# END
+# tac_interference_L2-009（拦截）
+# 解法 1

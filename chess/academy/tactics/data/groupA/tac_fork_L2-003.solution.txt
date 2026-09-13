@@ -1,0 +1,13 @@
+1. Rh2+ Kc1
+2. Rc8+ Kd1
+3. Rh3 Qd6+
+4. Kb2 Qb4+
+5. Ka2 Qd4
+6. Rc3 Kd2
+7. Rd3+ Qxd3
+8. Rxd3+ Kxd3
+9. Ka3 Kc3
+10. Kxa4
+# END
+# tac_fork_L2-003（捉双）
+# 解法 1

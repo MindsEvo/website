@@ -1,0 +1,5 @@
+1. Rxc2 Qc1+
+2. Rxc1 Rxc1+
+3. Qd1 Rxd1#
+# END
+# 透视攻击 001

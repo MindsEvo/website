@@ -1,0 +1,5 @@
+黑后是困子。
+
+# END
+# tac_trappedPiece_L2-002（困子）
+# 解法 1

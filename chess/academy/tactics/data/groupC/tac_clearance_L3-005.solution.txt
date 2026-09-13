@@ -1,0 +1,5 @@
+1. hxg4 Bxg4
+2. Qe1 Rxf1+
+3. Qxf1 Rf8
+# END
+# 腾挪 005

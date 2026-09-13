@@ -1,0 +1,6 @@
+1. Ng6+ Kg8
+2. Qg7+ Rxg7
+3. Nh6#
+# END
+# tac_blockade_L2-003（阻塞）
+# 解法 1

@@ -1,0 +1,8 @@
+1. Ba7 g1=R
+2. b8=R+ Rg2
+3. Rb6 Kg1
+4. Rd6+ Kf1
+5. Rd1#
+# END
+# tac_clearance_L2-012（腾挪）
+# 解法 1

@@ -1,0 +1,8 @@
+1. Rh8 Rc2+
+2. Kd3 Rxc7
+3. Rh7+ Ke6
+4. Rxc7 Kd6
+5. Rc4 Kd5
+# END
+# tac_fork_L2-004（捉双）
+# 解法 1

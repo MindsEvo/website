@@ -1,0 +1,19 @@
+... Bxe4
+2. Qxe4 Nf3+
+3. Kxg2 Nd2
+4. Qe1 Nxb1
+5. Rxa6 Qh6
+6. Ne4 Rg6+
+7. Ng3 Nd2
+8. Qe3 Qxe3
+9. fxe3 Nxc4
+10. e4 Ne3+
+11. Kh1 Rf6
+12. h4 c4
+13. Rb6 c3
+14. Rc6 c2
+15. Rxc2 Nxc2
+16. Nf5
+# END
+# tac_removalOfTheDefender_L2-010（消除保护）
+# 解法 1

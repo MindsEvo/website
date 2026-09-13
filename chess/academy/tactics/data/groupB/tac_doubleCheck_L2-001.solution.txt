@@ -1,0 +1,4 @@
+1. axb7#
+# END
+# tac_doubleCheck_L2-001（双将）
+# 解法 1

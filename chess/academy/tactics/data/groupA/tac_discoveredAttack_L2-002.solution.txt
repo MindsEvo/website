@@ -1,0 +1,7 @@
+1. Nc7 Kg8
+2. Nxe6 Kf7
+3. Nxg7 Kg6
+4. a4 Kf6
+# END
+# tac_discoveredAttack_L2-002（闪击）
+# 解法 1

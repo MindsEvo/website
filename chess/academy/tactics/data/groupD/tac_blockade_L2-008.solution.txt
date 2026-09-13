@@ -1,0 +1,11 @@
+... Bc1
+2. Ba5 d2
+3. Bxd2 Bxd2
+4. Kg2 Re2+
+5. Kf1 Re6
+6. Rd1 Rxf6+
+7. Ke2 Bb4
+8. Rd5
+# END
+# tac_blockade_L2-008（阻塞）
+# 解法 1

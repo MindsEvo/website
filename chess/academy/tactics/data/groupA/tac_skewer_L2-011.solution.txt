@@ -1,0 +1,7 @@
+... Rh7+
+2. Kg2 Rxh2+
+3. Kf1 Rxd2
+4. Rxg5 Bxc3
+# END
+# tac_skewer_L2-011（串击）
+# 解法 1

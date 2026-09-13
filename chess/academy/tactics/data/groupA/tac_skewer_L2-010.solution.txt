@@ -1,0 +1,6 @@
+... Bc5+
+2. Kf3 Bxg1
+3. h5 Rc8
+# END
+# tac_skewer_L2-010（串击）
+# 解法 1

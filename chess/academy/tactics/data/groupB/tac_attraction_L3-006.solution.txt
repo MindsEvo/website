@@ -1,0 +1,8 @@
+1. Qxd8+ Kxd8
+2. O-O-O+ Ke8
+3. Kxb2 Ng6
+4. Ka1 Kf7
+5. Rb1 Nf4
+# END
+# tac_attraction_L3-006（引入）
+# 解法 1

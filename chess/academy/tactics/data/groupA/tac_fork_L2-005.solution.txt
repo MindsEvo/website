@@ -1,0 +1,6 @@
+1. Rxh2 Rxh2
+2. Bxe5+ Kg6
+3. Bxh2
+# END
+# tac_fork_L2-005（捉双）
+# 解法 1

@@ -1,0 +1,6 @@
+1. Re7 Qxe7
+2. Ba6 Kxa6
+3. Qa8#
+# END
+# tac_deflection_L3-003（引离）
+# 解法 1

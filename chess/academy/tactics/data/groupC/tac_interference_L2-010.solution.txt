@@ -1,0 +1,10 @@
+1. e6 Rxb4
+2. e7 Rb1+
+3. Kg2 Re1
+4. Be5 Qa8
+5. Bxg7 Rxe7
+6. Bc3 Re6
+7. Qd4 f6
+# END
+# tac_interference_L2-010（拦截）
+# 解法 1

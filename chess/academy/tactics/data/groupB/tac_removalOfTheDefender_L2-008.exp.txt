@@ -1,0 +1,5 @@
+非常精彩的攻杀， 多尝试一下。
+
+# END
+# tac_removalOfTheDefender_L2-008（消除保护）
+# 解法 1

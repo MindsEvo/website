@@ -1,0 +1,5 @@
+... Qxh3+
+2. gxh3 Bf3#
+# END
+# tac_attraction_L2-010（引入）
+# 解法 1

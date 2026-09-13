@@ -1,0 +1,9 @@
+... Rb1+
+2. Kxb1 Qxg5
+3. Kc2 Qxg2+
+4. Kd3 f5
+5. Nf6+ gxf6
+6. Kc4
+# END
+# tac_pin_L2-005（牵制）
+# 解法 1

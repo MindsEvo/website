@@ -1,0 +1,9 @@
+1. Rd7 Qxd7
+2. Nxd7 Bxb2
+3. Nxf8 g6
+4. Qxc5 Ra6
+5. Rb1 Bc3
+6. Nxh7 Kxh7
+# END
+# tac_interference_L2-007（拦截）
+# 解法 1

@@ -1,0 +1,6 @@
+... Qf1+
+2. Bg1 Qf3+
+3. Bxf3 Bxf3#
+# END
+# tac_blockade_L2-001（阻塞）
+# 解法 1

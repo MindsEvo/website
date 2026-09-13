@@ -1,0 +1,6 @@
+1. Rxf5 Rh1
+2. Rxf8+ Kg7
+3. Rf3
+# END
+# tac_intermezzo_L2-010（中间招）
+# 解法 1

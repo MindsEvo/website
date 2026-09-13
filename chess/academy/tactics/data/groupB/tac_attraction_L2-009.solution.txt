@@ -1,0 +1,16 @@
+... Bxf2+
+2. Kxf2 Ne4+
+3. Ke1 Nxc3
+4. dxc3 a6
+5. Nd4 c5
+6. Nf3 Nd7
+7. Bd3 Qb6
+8. h3 Bh5
+9. Bg5 f6
+10. Bf4 Ne5
+11. b3 Bg6
+12. Bxg6+ Nxg6
+13. Ne2
+# END
+# tac_attraction_L2-009（引入）
+# 解法 1

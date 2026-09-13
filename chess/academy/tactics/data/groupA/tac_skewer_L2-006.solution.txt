@@ -1,0 +1,8 @@
+... Re1+
+2. Kd2 Re2+
+3. Kxd3 Rd1+
+4. Kxe2 Rxd7
+5. g5
+# END
+# tac_skewer_L2-006（串击）
+# 解法 1

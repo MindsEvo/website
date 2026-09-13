@@ -1,0 +1,7 @@
+... g5
+2. Rd1 Qxc5
+3. Qxe4 Nxe4
+4. Rxe4
+# END
+# tac_trappedPiece_L2-010（困子）
+# 解法 1

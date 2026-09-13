@@ -1,0 +1,5 @@
+巧妙的闷杀威胁闪击。
+
+# END
+# tac_discoveredAttack_L2-002（闪击）
+# 解法 1

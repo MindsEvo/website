@@ -1,0 +1,5 @@
+1. Rxf7 Qxf7
+2. Bxf7 Nf2+
+3. Kh2 Nxd1
+# END
+# 捉双 007

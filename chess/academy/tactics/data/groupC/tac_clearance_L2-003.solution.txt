@@ -1,0 +1,7 @@
+1. Qxe5 dxe5
+2. Nf6+ Kf8
+3. Nxd7+ Ke7
+4. Nxe5 Kd6
+# END
+# tac_clearance_L2-003（腾挪）
+# 解法 1

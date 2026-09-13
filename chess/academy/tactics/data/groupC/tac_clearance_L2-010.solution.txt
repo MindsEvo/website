@@ -1,0 +1,26 @@
+1. e4 fxe5
+2. Bxd8 Rxd8
+3. exf5 exf5
+4. dxe5 d4
+5. Rg3+ Kf7
+6. e6+ Kxe6
+7. Re1+ Kd7
+8. Rg7+ Kc8
+9. Qf3 Bc6
+10. Qf4 Rd7
+11. Rxd7 Bxd7
+12. Qxd4 Nc6
+13. Qg7 Rd8
+14. h4 h5
+15. b4 a6
+16. Rc1 Re8
+17. Qg6 Kc7
+18. Qxh5 Re4
+19. Qf7 b5
+20. h5 Rc4
+21. Rxc4 bxc4
+22. Qxc4 Kb7
+23. h6 a5
+# END
+# tac_clearance_L2-010（腾挪）
+# 解法 1

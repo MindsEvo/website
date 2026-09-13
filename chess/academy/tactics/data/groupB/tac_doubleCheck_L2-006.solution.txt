@@ -1,0 +1,6 @@
+... gxh3+
+2. Kxh3 Rh8+
+3. Bh5 Rxh5#
+# END
+# tac_doubleCheck_L2-006（双将）
+# 解法 1

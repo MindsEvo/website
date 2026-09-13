@@ -1,0 +1,9 @@
+... Rb6+
+2. Bb4 Rxb4+
+3. Kxb4 Qxb2+
+4. Kc4 Qb6
+5. Rxg8+ Kxg8
+6. Rh3
+# END
+# tac_attraction_L2-007（引入）
+# 解法 1

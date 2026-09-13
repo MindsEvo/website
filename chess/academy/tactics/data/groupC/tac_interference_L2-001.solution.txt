@@ -1,0 +1,9 @@
+1. Bd6 h5
+2. Qxe6+ Kh7
+3. Qxe4+ Kh6
+4. Rf6+ gxf6
+5. Bf8+ Kg5
+6. h4#
+# END
+# tac_interference_L2-001（拦截）
+# 解法 1

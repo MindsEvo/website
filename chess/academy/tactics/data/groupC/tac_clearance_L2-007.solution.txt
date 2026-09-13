@@ -1,0 +1,8 @@
+1. Ne7+ Qxe7
+2. Rh8+ Kxh8
+3. Qh5+ Kg8
+4. Qh7+ Kf7
+5. Bg6#
+# END
+# tac_clearance_L2-007（腾挪）
+# 解法 1

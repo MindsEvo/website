@@ -1,0 +1,11 @@
+... Ne3
+2. Rc1 Rxd3
+3. Rxc2 Rxa3
+4. Rc8+ Kg7
+5. bxa3 Ng4
+6. Rc2 Qf4
+7. g3 Qd4
+8. Re2
+# END
+# tac_removalOfTheDefender_L2-001（消除保护）
+# 解法 1

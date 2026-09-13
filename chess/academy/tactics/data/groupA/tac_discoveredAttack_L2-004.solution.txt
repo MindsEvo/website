@@ -1,0 +1,5 @@
+1. Bh6+ Ke7
+2. Rxd4
+# END
+# tac_discoveredAttack_L2-004（闪击）
+# 解法 1

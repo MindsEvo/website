@@ -1,0 +1,8 @@
+﻿1. Kf4 Bd2+
+2. Kf5 Bxg5
+3. Kxg5 Kg3
+4. f4 h3
+5. f5 h2
+6. f6 h1=Q
+# END
+# 串击 008

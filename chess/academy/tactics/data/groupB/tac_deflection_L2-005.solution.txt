@@ -1,0 +1,9 @@
+1. Rxg7+ Kxg7
+2. Qxe7+ Kg6
+3. Qe4+ Kh6
+4. Qh4+ Kg7
+5. Qg4+ Kf8
+6. Qxc8+ Ke7
+# END
+# tac_deflection_L2-005（引离）
+# 解法 1

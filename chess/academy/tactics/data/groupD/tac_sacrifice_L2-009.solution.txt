@@ -1,0 +1,5 @@
+... Rxh2+
+2. Kxh2 Qh4#
+# END
+# tac_sacrifice_L2-009（弃子）
+# 解法 1

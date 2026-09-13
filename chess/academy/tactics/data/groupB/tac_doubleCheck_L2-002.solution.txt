@@ -1,0 +1,11 @@
+... hxg3+
+2. Kg2 Qh2+
+3. Kf3 Qh5+
+4. Kg2 Qe2+
+5. Rf2 Qxf2+
+6. Kh3 Qf3
+7. Bg5 fxg5
+8. Rf1 Rh8#
+# END
+# tac_doubleCheck_L2-002（双将）
+# 解法 1

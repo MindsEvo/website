@@ -1,0 +1,10 @@
+1. Re5 Rf4
+2. Qg5 Qxf2+
+3. Kh2 Rh4+
+4. Qxh4 Rd1
+5. Rg8+ Kxg8
+6. Qxf2 Rd5
+7. Rxd5 exd5
+# END
+# tac_interference_L2-005（拦截）
+# 解法 1

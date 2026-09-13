@@ -1,0 +1,6 @@
+1. Ne6 f5
+2. Qg6 Rf6
+3. Qxg7+ Qxg7
+4. Nxg7 Kxg7
+# END
+# 腾挪 012

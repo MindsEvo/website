@@ -1,0 +1,5 @@
+1. Rh8+ Kxh8
+2. Qh7#
+# END
+# tac_attraction_L2-005（引入）
+# 解法 1

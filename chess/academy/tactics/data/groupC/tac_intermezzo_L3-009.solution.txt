@@ -1,0 +1,5 @@
+1. Qd4 Rd8
+2. Qxb6 Rxd1+
+3. Kf2 axb6
+# END
+# 中间招 009

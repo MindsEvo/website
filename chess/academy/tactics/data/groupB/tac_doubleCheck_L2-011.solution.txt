@@ -1,0 +1,6 @@
+... Qd1+
+2. Kxd1 Nc3+
+3. Ke1 Rd1#
+# END
+# tac_doubleCheck_L2-011（双将）
+# 解法 1

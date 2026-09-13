@@ -1,0 +1,5 @@
+1. Qf3 Qb1+
+2. Qf1 Rd1
+3. Qxd1 Qxd1+
+# END
+# 牵制 010

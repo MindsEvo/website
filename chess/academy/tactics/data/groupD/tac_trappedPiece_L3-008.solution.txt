@@ -1,0 +1,5 @@
+1. Qh4 Bf4+
+2. Kd1 Rh6
+3. Qxh6 Bxh6
+# END
+# 困子 008

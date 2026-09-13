@@ -1,0 +1,5 @@
+1. Qxg4 Qe5+
+2. Qg3 Rh1+
+3. Kxh1 Qxg3
+# END
+# 引离 012

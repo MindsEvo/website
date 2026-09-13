@@ -1,0 +1,7 @@
+... Qf1+
+2. Kc2 Qxa6
+3. Rxe7+ Kh6
+4. Re1
+# END
+# tac_skewer_L2-002（串击）
+# 解法 1

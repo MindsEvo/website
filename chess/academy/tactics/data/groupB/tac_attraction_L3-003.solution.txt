@@ -1,0 +1,8 @@
+... Bxh6
+2. Qg3 Nh5
+3. Qxb8 Rxb8
+4. Bc4 Qxc3
+5. Bb3 Qb4
+# END
+# tac_attraction_L3-003（引入）
+# 解法 1

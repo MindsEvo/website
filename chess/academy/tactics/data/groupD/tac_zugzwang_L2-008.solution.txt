@@ -1,0 +1,28 @@
+... h6
+2. Bc1 Bxb1
+3. Rgf1 Qf7
+4. Rxf2 Rxf2
+5. Kg1 Rc2
+6. a3 bxa3
+7. bxa3 Ra2
+8. Re2 Rxe2
+9. Qxe2 Bxg3
+10. Bxh6 Bd3
+11. Qe3 Bd6
+12. Bg5 Bxa3
+13. Qg3 a5
+14. h4 Kh7
+15. Bh3 Bf8
+16. Qe5 e3
+17. Qxe3 Bf5
+18. Bxf5+ Qxf5
+19. Qc3 a4
+20. Bc1 Be7
+21. Bg5 Qb1+
+22. Kf2 a3
+23. Bxe7 Qb2+
+24. Qxb2 axb2
+25. Ke1 b1=Q+
+# END
+# tac_zugzwang_L2-008（逼着）
+# 解法 1

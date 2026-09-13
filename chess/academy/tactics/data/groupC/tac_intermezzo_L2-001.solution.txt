@@ -1,0 +1,7 @@
+1. Qb3 Nd5
+2. Qxd5 Qxd5
+3. Ne7+ Kh7
+4. Nxd5 c6
+# END
+# tac_intermezzo_L2-001（中间招）
+# 解法 1

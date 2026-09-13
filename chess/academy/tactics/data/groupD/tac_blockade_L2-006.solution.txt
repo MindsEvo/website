@@ -1,0 +1,5 @@
+... Rd3
+2. Nxd3 Be6#
+# END
+# tac_blockade_L2-006（阻塞）
+# 解法 1

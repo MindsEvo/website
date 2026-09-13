@@ -1,0 +1,5 @@
+白后走成了困子。
+
+# END
+# tac_trappedPiece_L2-006（困子）
+# 解法 1

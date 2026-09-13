@@ -1,0 +1,15 @@
+... Bg6+
+2. d3 Qxb3
+3. Rc1 Rc4
+4. Qd2 Ra4
+5. Rc7 Qa2+
+6. Kc2 Bb4
+7. Ra1 Bxd2
+8. Rxa2 Rxa2
+9. Kxd2 Rxb2+
+10. Ke3 e5
+11. Bd1 exd4+
+12. Kxd4 Rd2
+# END
+# tac_pin_L2-009（牵制）
+# 解法 1

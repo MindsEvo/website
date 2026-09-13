@@ -1,0 +1,5 @@
+﻿1. Rh3 Rxb3+
+2. Rxb3 Qc5+
+3. Ka2 Qxd4
+# END
+# 弃子 008

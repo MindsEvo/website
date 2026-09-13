@@ -1,0 +1,5 @@
+1. Qf6+ Be6
+2. Qxf8#
+# END
+# tac_blockade_L2-002（阻塞）
+# 解法 1

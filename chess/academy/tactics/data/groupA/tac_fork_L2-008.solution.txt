@@ -1,0 +1,6 @@
+1. Rxh3 Rxh3
+2. Bxe6+ Kg7
+3. Bxh3
+# END
+# tac_fork_L2-008（捉双）
+# 解法 1
