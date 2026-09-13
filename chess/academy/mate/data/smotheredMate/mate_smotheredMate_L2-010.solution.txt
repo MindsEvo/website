@@ -1,0 +1,12 @@
+1. Qxh5+ Kg8
+2. Raxg6+ Kf8
+3. Bh6+ Ke7
+4. Qxd5 Rxb3
+5. Rxb3 fxg6
+6. Re3+ Qe5
+7. Rxe5+ Kf6
+8. Rxe8 a5
+9. Qf3#
+# END
+# mate_smotheredMate_L2-010（闷杀）
+# 解法 1

@@ -1,0 +1,7 @@
+1. Qxh7+ Kxh7
+2. Rh5+ Kg8
+3. Rh8+ Nxh8
+4. gxh8=Q#
+# END
+# mate_smotheredMate_L2-005（闷杀）
+# 解法 1

@@ -1,0 +1,6 @@
+1. Ne7+ Kh8
+2. Qxh7+ Kxh7
+3. Rh4#
+# END
+# mate_anastasia_L2-002（安娜斯塔西亚杀）
+# 解法 1

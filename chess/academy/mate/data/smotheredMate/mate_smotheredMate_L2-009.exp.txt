@@ -1,0 +1,5 @@
+精彩的弃后双将绝杀。
+
+# END
+# mate_smotheredMate_L2-009（闷杀）
+# 解法 1

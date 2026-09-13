@@ -1,0 +1,4 @@
+... Bb4#
+# END
+# mate_bodenMate_L2-006（博登杀）
+# 解法 1

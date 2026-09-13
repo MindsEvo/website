@@ -1,0 +1,5 @@
+... Rxc3+
+2. bxc3 Ba3#
+# END
+# mate_bodenMate_L2-004（博登杀）
+# 解法 1

@@ -1,0 +1,6 @@
+... Qxc2+
+2. Ka1 Qc1+
+3. Rxc1 Rxc1#
+# END
+# mate_backRankMate_L2-005（底线杀）
+# 解法 1

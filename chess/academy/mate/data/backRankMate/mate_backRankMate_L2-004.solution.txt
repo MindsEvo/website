@@ -1,0 +1,6 @@
+... Qe2+
+2. Kg1 Qe1+
+3. Rxe1 Rxe1#
+# END
+# mate_backRankMate_L2-004（底线杀）
+# 解法 1

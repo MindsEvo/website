@@ -1,0 +1,5 @@
+1. Qxe5 Qd2+
+2. Kb1 Qd1+
+3. Nxd1 Rxd1#
+# END
+# 底线杀 005

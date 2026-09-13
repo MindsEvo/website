@@ -1,0 +1,5 @@
+经典的燕尾杀局面。
+
+# END
+# mate_dovetailMate_L2-007（燕尾杀）
+# 解法 1

@@ -1,0 +1,7 @@
+... Bxg4+
+2. Rxg4 Qf2+
+3. Ke4 Qf5+
+4. Kxd4 Qe5#
+# END
+# mate_dovetailMate_L2-005（燕尾杀）
+# 解法 1

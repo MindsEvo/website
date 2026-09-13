@@ -1,0 +1,20 @@
+﻿{
+  "label": "底线杀",
+  "items": [
+    { "id": "mate_backRankMate_L2-002", "label": "例1", "fen": "1r4k1/p1Q2ppp/2n5/8/2P3b1/2q2N2/P4PPP/4R1K1 w - - 0 1" },
+    { "id": "mate_backRankMate_L2-003", "label": "例2", "fen": "4r1k1/pp4pp/8/2p1q2Q/8/1Pbp3P/P5PN/5RK1 w - - 0 1" },
+    { "id": "mate_backRankMate_L2-004", "label": "例3", "fen": "4rb2/pp1k1p1Q/8/3P4/8/1P1P4/P1q2PPP/R4K1R b - - 0 1" },
+    { "id": "mate_backRankMate_L2-005", "label": "例4", "fen": "2r3k1/pp4b1/4npRQ/3p4/q4N2/8/PPP5/1K5R b - - 0 1" },
+    { "id": "mate_backRankMate_L2-006", "label": "例5", "fen": "kn2R3/ppp2p2/5p1q/P7/Q7/1NPB4/1PKb2rr/3R4 w - - 0 1" },
+    { "id": "mate_backRankMate_L2-007", "label": "例6", "fen": "2rr1k2/1bq1bppQ/p2p2n1/1p1p4/3NPP2/P6R/2PB2B1/3n2K1 w - - 0 1" },
+    { "id": "mate_backRankMate_L2-008", "label": "例7", "fen": "2kr3r/pp2np2/3q1Q2/2p1P2p/B7/4R3/PPP2P2/2K4R b - - 0 1" },
+    { "id": "mate_backRankMate_L3-001", "label": "例8", "fen": "r4rk1/pp2n1pp/4R3/2qp4/2N3Q1/8/PP3PPP/4R1K1 w - - 2 21" },
+    { "id": "mate_backRankMate_L3-002", "label": "例9", "fen": "r2r2k1/2b2pp1/4p2p/p1p1P3/PpP1p1q1/1P2P3/1Q1R1PPP/B1R3K1 w - - 0 24" },
+    { "id": "mate_backRankMate_L3-003", "label": "例10", "fen": "1r3rk1/2p3p1/p2b1q1p/3Pn3/P1N1Q3/8/1P3PPP/R1B1R1K1 w - - 3 25" },
+    { "id": "mate_backRankMate_L3-004", "label": "例11", "fen": "3r4/2R2pkp/p3p1p1/1p6/1PbNqP1Q/P3P3/6PP/6K1 w - - 5 32" },
+    { "id": "mate_backRankMate_L3-005", "label": "例12", "fen": "3r1rk1/3q1p1p/4p3/p3b2R/8/1BN5/PPP1Q3/2K5 w - - 0 28" },
+    { "id": "mate_backRankMate_L3-006", "label": "例13", "fen": "4rbk1/pb3ppp/2p2n1B/5N2/8/2N3Q1/P1q2PPP/3R2K1 w - - 2 21" },
+    { "id": "mate_backRankMate_L3-007", "label": "例14", "fen": "4rr1k/5p1p/8/p7/4n1Q1/4R3/P2q2PP/4R2K w - - 2 36" },
+    { "id": "mate_backRankMate_L3-008", "label": "例15", "fen": "4q1k1/1Q4p1/1pp2p2/3b3p/1B1P4/P4P2/6PP/6K1 w - - 0 37" }
+  ]
+}

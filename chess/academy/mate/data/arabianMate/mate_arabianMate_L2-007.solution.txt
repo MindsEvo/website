@@ -1,0 +1,5 @@
+... Nf3+
+2. Bg1 Rxg1#
+# END
+# mate_arabianMate_L2-007（阿拉伯杀）
+# 解法 1

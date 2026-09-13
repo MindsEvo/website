@@ -1,0 +1,5 @@
+经典的弃后底线闷杀。
+
+# END
+# mate_backRankMate_L2-008（底线杀）
+# 解法 1

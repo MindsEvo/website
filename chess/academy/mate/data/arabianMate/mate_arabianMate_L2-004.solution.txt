@@ -1,0 +1,5 @@
+1. Qxh7+ Bxh7
+2. Rxh7#
+# END
+# mate_arabianMate_L2-004（阿拉伯杀）
+# 解法 1

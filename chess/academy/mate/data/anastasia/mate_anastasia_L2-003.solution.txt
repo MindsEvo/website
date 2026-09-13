@@ -1,0 +1,5 @@
+1. Rh1+ Rh3
+2. Rxh3#
+# END
+# mate_anastasia_L2-003（安娜斯塔西亚杀）
+# 解法 1

@@ -480,32 +480,32 @@
         <div class="panel panel-placeholder">
           <h3>操作练习</h3>
           <div class="group-chips">
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#c0392b">底线杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="backRankMate">
+              <button class="group-chip" id="practiceBackRankMate" data-practice-group="backRankMate" style="background:#c0392b">底线杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#922b21">闷杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="smotheredMate">
+              <button class="group-chip" id="practiceSmotheredMate" data-practice-group="smotheredMate" style="background:#922b21">闷杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#a04000">钩杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="hookMate">
+              <button class="group-chip" id="practiceHookMate" data-practice-group="hookMate" style="background:#a04000">钩杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#b7950b">阿拉伯杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="arabianMate">
+              <button class="group-chip" id="practiceArabianMate" data-practice-group="arabianMate" style="background:#b7950b">阿拉伯杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#117a65">燕尾杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="dovetailMate">
+              <button class="group-chip" id="practiceDovetailMate" data-practice-group="dovetailMate" style="background:#117a65">燕尾杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#1a5276">博登杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="bodenMate">
+              <button class="group-chip" id="practiceBodenMate" data-practice-group="bodenMate" style="background:#1a5276">博登杀</button>
               <div class="dropdown-menu"></div>
             </div>
-            <div class="group-dropdown-wrap">
-              <button class="group-chip" style="background:#6e2fa0">安娜斯塔西亚杀</button>
+            <div class="group-dropdown-wrap" data-practice-group="anastasia">
+              <button class="group-chip" id="practiceAnastasia" data-practice-group="anastasia" style="background:#6e2fa0">安娜斯塔西亚杀</button>
               <div class="dropdown-menu"></div>
             </div>
           </div>
@@ -573,6 +573,18 @@
       // puzzle), 攻杀技巧 has no group layer in the original app — each mate-type
       // button opens a single flat list of puzzles directly.
       var GROUP_DEFS = [
+        { key: 'backRankMate', label: '底线杀', folder: 'backRankMate', enabled: true },
+        { key: 'smotheredMate', label: '闷杀', folder: 'smotheredMate', enabled: true },
+        { key: 'hookMate', label: '钩杀', folder: 'hookMate', enabled: true },
+        { key: 'arabianMate', label: '阿拉伯杀', folder: 'arabianMate', enabled: true },
+        { key: 'dovetailMate', label: '燕尾杀', folder: 'dovetailMate', enabled: true },
+        { key: 'bodenMate', label: '博登杀', folder: 'bodenMate', enabled: true },
+        { key: 'anastasia', label: '安娜斯塔西亚杀', folder: 'anastasia', enabled: true }
+      ];
+
+      // 操作练习: reuses each mate type's L2/L3 puzzles (a separate difficulty tier
+      // from 动态观察's L1 puzzles, same folder — no filename collisions).
+      var PRACTICE_GROUP_DEFS = [
         { key: 'backRankMate', label: '底线杀', folder: 'backRankMate', enabled: true },
         { key: 'smotheredMate', label: '闷杀', folder: 'smotheredMate', enabled: true },
         { key: 'hookMate', label: '钩杀', folder: 'hookMate', enabled: true },
@@ -1182,15 +1194,105 @@
         });
       }
 
+      // ── 操作练习 (hands-on practice) data loading ──────
+      // Same engine as 动态观察, but WITHOUT anno.json (no popup box/highlights/arrows) since
+      // L2/L3 practice puzzles have no annotations in the source data either. `state.anno = {}` makes
+      // every anno-driven branch in goToPly degrade gracefully on its own (see endgame course notes).
+      // Uses the SAME scoped `.group-dropdown-wrap[data-practice-group="key"] .dropdown-menu` lookup
+      // as `selectGroup` (not getElementById) since mate keys are camelCase and don't concatenate into
+      // predictable element IDs.
+      var practiceManifestCache = {};
+
+      function findPracticeItem(manifest, itemId) {
+        for (var i = 0; i < manifest.items.length; i++) {
+          if (manifest.items[i].id === itemId) return manifest.items[i];
+        }
+        return null;
+      }
+
+      function renderPracticeDropdownMenu(groupDef, manifest, menuEl) {
+        var html = '';
+        manifest.items.forEach(function (item) {
+          html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+        });
+        menuEl.innerHTML = html;
+        menuEl.querySelectorAll('.submenu-item').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loadPracticeItem(groupDef, manifest, el.dataset.item);
+            closeAllMenus();
+          });
+        });
+      }
+
+      function selectPracticeGroup(groupDef) {
+        var menuEl = document.querySelector('.group-dropdown-wrap[data-practice-group="' + groupDef.key + '"] .dropdown-menu');
+        var wasOpen = menuEl.classList.contains('open');
+        closeAllMenus();
+        if (wasOpen) return;
+
+        if (!groupDef.enabled) {
+          menuEl.innerHTML = '<div class="menu-row disabled">"' + groupDef.label + '"暂未上线，敬请期待</div>';
+          menuEl.classList.add('open');
+          return;
+        }
+        if (practiceManifestCache[groupDef.key]) {
+          renderPracticeDropdownMenu(groupDef, practiceManifestCache[groupDef.key], menuEl);
+          menuEl.classList.add('open');
+          return;
+        }
+        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.classList.add('open');
+        fetch('./data/' + groupDef.folder + '/practice-manifest.json')
+          .then(function (r) { return r.json(); })
+          .then(function (manifest) {
+            practiceManifestCache[groupDef.key] = manifest;
+            renderPracticeDropdownMenu(groupDef, manifest, menuEl);
+          })
+          .catch(function (e) {
+            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+          });
+      }
+
+      function loadPracticeItem(groupDef, manifest, itemId) {
+        stopAutoplay();
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var item = findPracticeItem(manifest, itemId);
+        if (!item) return;
+        playStatus.textContent = '正在加载练习题...';
+        var base = './data/' + groupDef.folder + '/';
+        Promise.all([
+          fetch(base + itemId + '.solution.txt').then(function (r) { return r.text(); }),
+          fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
+        ]).then(function (res) {
+          state.anno = {};
+          var moveList = parseSolutionMoves(res[0]);
+          var timeline = buildTimelineFromFen(item.fen, moveList);
+          state.states = timeline.states;
+          state.moveMetas = timeline.moveMetas;
+          state.annoByIndex = {};
+          explanationText.textContent = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          renderSolutionLines();
+          goToPly(-1);
+        }).catch(function (e) {
+          playStatus.textContent = '练习题加载失败: ' + e.message;
+        });
+      }
+
       // ── Controls ──────────────────────────────────────
       GROUP_DEFS.forEach(function (groupDef) {
         var el = document.querySelector('.group-chip[data-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectGroup(groupDef); });
       });
 
-      // 操作练习/问答练习 are not implemented yet — their buttons just show a
-      // "敬请期待" placeholder in the same dropdown style used for locked groups.
-      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap').forEach(function (wrap) {
+      PRACTICE_GROUP_DEFS.forEach(function (groupDef) {
+        var el = document.querySelector('.group-chip[data-practice-group="' + groupDef.key + '"]');
+        if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectPracticeGroup(groupDef); });
+      });
+
+      // 问答练习 is not implemented yet — its buttons just show a "敬请期待"
+      // placeholder in the same dropdown style used for locked groups.
+      document.querySelectorAll('.panel-placeholder .group-dropdown-wrap:not([data-practice-group])').forEach(function (wrap) {
         var btn = wrap.querySelector('.group-chip');
         var menuEl = wrap.querySelector('.dropdown-menu');
         btn.addEventListener('click', function (e) {

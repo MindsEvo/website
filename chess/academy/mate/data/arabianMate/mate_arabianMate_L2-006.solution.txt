@@ -1,0 +1,7 @@
+1. Nxf6+ Kh8
+2. Bxg7+ Rxg7
+3. Qg8+ Rxg8
+4. Rxg8#
+# END
+# mate_arabianMate_L2-006（阿拉伯杀）
+# 解法 1

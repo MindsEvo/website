@@ -1,0 +1,21 @@
+﻿{
+  "label": "博登杀",
+  "items": [
+    { "id": "mate_bodenMate_L2-001", "label": "例1", "fen": "r6r/2p1k1pp/4pq2/p1bp1b2/Q7/2P1P1P1/PP1NBPP1/2KR3R w - - 0 17" },
+    { "id": "mate_bodenMate_L2-002", "label": "例2", "fen": "rnr5/1p2kp1b/3bpp2/1p1p3p/3P3N/P1P3PP/1P1N1PB1/2KRR3 b - - 2 18" },
+    { "id": "mate_bodenMate_L2-003", "label": "例3", "fen": "r3kbn1/1p6/1Bn1pp2/p2p1b2/3P4/1PP2Q2/P2N1PP1/R3KB1r w Qq - 0 16" },
+    { "id": "mate_bodenMate_L2-004", "label": "例4", "fen": "r5k1/ppp1bppp/5n2/5b2/8/2PrB3/PP1N1PPP/2KR2NR b - - 2 14" },
+    { "id": "mate_bodenMate_L2-005", "label": "例5", "fen": "3q2k1/1p3ppp/2rb2b1/3Q2P1/5p1P/2P2P2/PP1N4/R3K2R w KQ - 0 22" },
+    { "id": "mate_bodenMate_L2-006", "label": "例6", "fen": "r3kb1r/pp3p1p/2n2p2/4p3/3P1Bb1/1P2P3/1P3PPP/R3KBNR b KQkq - 0 11" },
+    { "id": "mate_bodenMate_L2-007", "label": "例7", "fen": "2r4r/p2k1p2/1p1bp3/3p1bp1/3P2p1/2P2P2/PP1NB1P1/2KR3R b - - 0 22" },
+    { "id": "mate_bodenMate_L2-008", "label": "例8", "fen": "2r3k1/2Bnbppp/4p3/3p4/3P2P1/2PbP2P/PP1N1P2/2KR3R w - - 3 20" },
+    { "id": "mate_bodenMate_L3-001", "label": "例9", "fen": "r5k1/p1B2ppp/2p2n2/2b2b2/8/2P1rP1N/PP1N2PP/2KR3R w - - 5 15" },
+    { "id": "mate_bodenMate_L3-002", "label": "例10", "fen": "2kr1b1r/ppp2ppp/2n2nb1/3p4/3P2P1/q1P1BN1P/PP1NQP2/2KR1B1R w - - 1 14" },
+    { "id": "mate_bodenMate_L3-003", "label": "例11", "fen": "rnb2rk1/1p3p1p/p2p1qp1/2pP3n/P2bP3/2NB1P2/1P1B2PP/R3QKNR w - - 9 14" },
+    { "id": "mate_bodenMate_L3-004", "label": "例12", "fen": "2r3nr/1p3kp1/pB1bpp2/5b1p/5P2/2P3PP/PP1N2B1/R3K2R w KQ - 11 19" },
+    { "id": "mate_bodenMate_L3-005", "label": "例13", "fen": "2r1r1k1/pp3pp1/3bp2p/3p4/3PbPP1/P1P1B2P/1P6/1NKRR3 w - - 5 24" },
+    { "id": "mate_bodenMate_L3-006", "label": "例14", "fen": "2r1kb1r/pp3ppp/5n2/3p1b2/8/2P1B1P1/PP1N1P1P/2KR2NR w k - 5 14" },
+    { "id": "mate_bodenMate_L3-007", "label": "例15", "fen": "r1bqk2r/p1p2ppp/1pn1p3/2Pp4/3P1P2/4PNb1/PP1BK3/RN1Q1B1R w kq - 0 11" },
+    { "id": "mate_bodenMate_L3-008", "label": "例16", "fen": "8/6pp/1b1kbp2/1n2p3/1Pp1P3/5PP1/4B2P/R3BK2 w - - 10 29" }
+  ]
+}

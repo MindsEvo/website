@@ -1,0 +1,20 @@
+﻿{
+  "label": "安娜斯塔西亚杀",
+  "items": [
+    { "id": "mate_anastasia_L2-001", "label": "例1", "fen": "r4rk1/ppp2pp1/3pn3/3N4/3BPR2/1P5b/1PP5/R5K1 w - - 0 1" },
+    { "id": "mate_anastasia_L2-002", "label": "例2", "fen": "2r2rk1/ppp2ppp/3n4/3N4/2R5/3Q3P/PqP2PP1/R5K1 w - - 0 1" },
+    { "id": "mate_anastasia_L2-003", "label": "例3", "fen": "8/pp6/3pN1pk/2p2p2/2P5/P2nr3/1PK5/3R4 w - - 0 1" },
+    { "id": "mate_anastasia_L2-004", "label": "例4", "fen": "1k6/1p6/1N2p1p1/2R5/Pp2Pn2/5r2/2P5/2K5 w - - 0 1" },
+    { "id": "mate_anastasia_L2-005", "label": "例5", "fen": "r4r1k/4Nppp/8/p1q1P3/Pp2R2R/5KP1/7P/8 w - - 0 1" },
+    { "id": "mate_anastasia_L2-006", "label": "例6", "fen": "3r1rk1/p4pp1/2p3n1/2p2NQp/2P1P2P/1P3P2/P4q2/6RK w - - 0 1" },
+    { "id": "mate_anastasia_L2-007", "label": "例7", "fen": "r1b2r2/p3N1pk/5p2/1pR3p1/5R2/1P6/6PP/7K w - - 0 1" },
+    { "id": "mate_anastasia_L3-001", "label": "例8", "fen": "r6r/1p1Q4/p3p3/3p1p2/3nk3/8/2P2PPP/R4RK1 w - - 1 23" },
+    { "id": "mate_anastasia_L3-002", "label": "例9", "fen": "r2q2nr/ppp3Q1/3k4/3N4/4P3/8/PPPPn1PP/R1B2RK1 w - - 1 15" },
+    { "id": "mate_anastasia_L3-003", "label": "例10", "fen": "8/kpp3p1/p6p/3Qrr2/5q2/2P2N2/PP2nPPP/R3R2K w - - 0 27" },
+    { "id": "mate_anastasia_L3-004", "label": "例11", "fen": "8/6pk/5r2/R2Bp3/pP1pP1n1/P2P2P1/6KP/8 w - - 7 37" },
+    { "id": "mate_anastasia_L3-005", "label": "例12", "fen": "5q1k/1Q5p/2N1p1p1/1p1nP3/p5B1/6P1/PP4KP/8 w - - 0 32" },
+    { "id": "mate_anastasia_L3-006", "label": "例13", "fen": "r3k2r/1p1q4/p2p1Rp1/2pNp1Q1/4P3/3P4/PP2n1PP/1R4K1 w kq - 1 24" },
+    { "id": "mate_anastasia_L3-007", "label": "例14", "fen": "2r4r/pp4k1/3p4/2p1p1b1/4P3/2PP2B1/PP2nPPq/R2Q1R1K w - - 0 27" },
+    { "id": "mate_anastasia_L3-008", "label": "例15", "fen": "8/2p3pk/p6p/1p1Q1r2/3P4/P5n1/1PPB2P1/R5K1 w - - 3 22" }
+  ]
+}

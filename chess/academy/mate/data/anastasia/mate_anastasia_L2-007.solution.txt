@@ -1,0 +1,5 @@
+1. Rh4+ gxh4
+2. Rh5#
+# END
+# mate_anastasia_L2-007（安娜斯塔西亚杀）
+# 解法 1

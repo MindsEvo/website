@@ -1,0 +1,8 @@
+... Bxf2+
+2. Rxf2 Rh1+
+3. Kxh1 Qd1+
+4. Qe1 Qxe1+
+5. Rf1 Qxf1#
+# END
+# mate_smotheredMate_L2-008（闷杀）
+# 解法 1

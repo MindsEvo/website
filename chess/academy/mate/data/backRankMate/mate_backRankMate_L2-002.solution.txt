@@ -1,0 +1,5 @@
+1. Qxb8+ Nxb8
+2. Re8#
+# END
+# mate_backRankMate_L2-002（底线杀）
+# 解法 1

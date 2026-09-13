@@ -1,0 +1,5 @@
+1. Qxh7+ Kxh7
+2. hxg6#
+# END
+# mate_smotheredMate_L2-009（闷杀）
+# 解法 1

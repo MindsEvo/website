@@ -1,0 +1,5 @@
+1. Ne7+ Nxe7
+2. Qxg7#
+# END
+# mate_anastasia_L2-006（安娜斯塔西亚杀）
+# 解法 1

@@ -1,0 +1,4 @@
+... Rd2#
+# END
+# mate_hookMate_L2-001（钩杀）
+# 解法 1

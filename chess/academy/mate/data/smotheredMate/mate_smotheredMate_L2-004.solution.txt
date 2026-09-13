@@ -1,0 +1,5 @@
+... Qg1+
+2. Rxg1 Nf2#
+# END
+# mate_smotheredMate_L2-004（闷杀）
+# 解法 1

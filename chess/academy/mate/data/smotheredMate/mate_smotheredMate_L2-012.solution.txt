@@ -1,0 +1,7 @@
+... Bxf2
+2. Rxf2 Ng3+
+3. Kh2 Nf1+
+4. Kh1 Qh2#
+# END
+# mate_smotheredMate_L2-012（闷杀）
+# 解法 1

@@ -1,0 +1,5 @@
+1. Qh6+ Kg3
+2. Qh2#
+# END
+# mate_dovetailMate_L2-006（燕尾杀）
+# 解法 1

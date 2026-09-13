@@ -1,0 +1,5 @@
+1. Nd7+ Ka7
+2. Ra5#
+# END
+# mate_anastasia_L2-004（安娜斯塔西亚杀）
+# 解法 1

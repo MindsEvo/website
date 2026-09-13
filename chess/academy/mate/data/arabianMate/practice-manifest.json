@@ -1,0 +1,21 @@
+﻿{
+  "label": "阿拉伯杀",
+  "items": [
+    { "id": "mate_arabianMate_L2-001", "label": "例1", "fen": "7r/pNk1bp2/4p1p1/1Q1pP1P1/3P4/P4n1r/7P/2B3RK w - - 2 27" },
+    { "id": "mate_arabianMate_L2-002", "label": "例2", "fen": "4br1k/pp5p/2n2Np1/6P1/1nP5/3B2K1/PP4P1/7R w - - 0 1" },
+    { "id": "mate_arabianMate_L2-003", "label": "例3", "fen": "5bk1/5pp1/4b2p/p2pPp1N/1p3P1Q/2r3R1/Pr1q1BPP/5RK1 w - - 0 1" },
+    { "id": "mate_arabianMate_L2-004", "label": "例4", "fen": "r2r2nk/1pq2p1p/p1n2NbQ/4p3/8/P2B4/1PP1NPP1/R3K2R w - - 0 1" },
+    { "id": "mate_arabianMate_L2-005", "label": "例5", "fen": "1k5r/ppp1p3/8/8/P5p1/3P1nBq/1P2QP1P/R4R1K w - - 4 26" },
+    { "id": "mate_arabianMate_L2-006", "label": "例6", "fen": "r4nk1/1q3rpp/pp2Qb1B/2pN4/2Pp4/P7/1P3P2/R3K1R1 w - - 0 1" },
+    { "id": "mate_arabianMate_L2-007", "label": "例7", "fen": "1k6/pp4p1/1Bn2p1p/4p2Q/2P1N3/1P6/P5PP/3rn2K b - - 0 1" },
+    { "id": "mate_arabianMate_L2-008", "label": "例8", "fen": "1k1r2r1/4bp2/p1qp3p/4p3/1P2Pp1n/P1Q2P1P/5P1K/R2R1B2 w - - 0 27" },
+    { "id": "mate_arabianMate_L3-001", "label": "例9", "fen": "6k1/1p4pp/1b6/3PN3/1P2P3/4P1P1/1r1n3P/4RBK1 w - - 1 30" },
+    { "id": "mate_arabianMate_L3-002", "label": "例10", "fen": "8/6pk/1p5p/1P6/3R4/3NPn1P/3r4/7K w - - 4 45" },
+    { "id": "mate_arabianMate_L3-003", "label": "例11", "fen": "6k1/b5pp/N2p3q/1p6/4P3/P4nP1/1P3rPP/2RQ1R1K w - - 3 26" },
+    { "id": "mate_arabianMate_L3-004", "label": "例12", "fen": "1r2k3/p3bp2/3p4/3PnN1p/5Br1/P2PP3/1P3PP1/1R3RK1 w - - 1 29" },
+    { "id": "mate_arabianMate_L3-005", "label": "例13", "fen": "6rk/p1p5/6r1/1b2np2/2p1N1B1/2P1P2P/2Q4K/6R1 w - - 0 35" },
+    { "id": "mate_arabianMate_L3-006", "label": "例14", "fen": "1r4k1/p2b1pBp/6p1/q2p4/3Q2PP/P1n2P2/1PP5/1K3B1R w - - 3 22" },
+    { "id": "mate_arabianMate_L3-007", "label": "例15", "fen": "1QR1N3/5p1k/p1q1p2p/2p3rP/2Pn4/1P6/P4PP1/5BK1 w - - 1 36" },
+    { "id": "mate_arabianMate_L3-008", "label": "例16", "fen": "6rk/p5qp/4R3/3p1p1N/Pp3P2/1P1P1n1P/2Q4K/4R3 w - - 1 37" }
+  ]
+}
