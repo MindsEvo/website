@@ -3,6 +3,8 @@ const cors = require("cors");
 
 const { getDb, DB_PATH } = require("./db");
 const { normalizeAttempt, normalizeGeneIds, computeReport, validatePayload } = require("./reportService");
+const { validateRadarBatch, recordToRow } = require("./radarService");
+const RadarReader = require("./radarReaderHost");
 const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
 const { analyzePosition, getEnginePath } = require("./stockfishService");
 const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("./stockfishDuelService");
@@ -763,6 +765,81 @@ app.get("/api/v1/history/recommend", (req, res) => {
     sampledSessions: sessions.length,
     strategy: "rank_by_low_accuracy_then_frequency",
   });
+});
+
+const radarUpsertStmt = db.prepare(`
+  INSERT INTO radar_records (
+    profile_id, client_key, game_id, ts, grade_code, gene_ids,
+    activity_runtime, activity_mode, score, total, result,
+    lang, ver, context_json, record_json, received_at
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ON CONFLICT(profile_id, client_key) DO UPDATE SET
+    game_id = excluded.game_id,
+    ts = excluded.ts,
+    grade_code = excluded.grade_code,
+    gene_ids = excluded.gene_ids,
+    activity_runtime = excluded.activity_runtime,
+    activity_mode = excluded.activity_mode,
+    score = excluded.score,
+    total = excluded.total,
+    result = excluded.result,
+    lang = excluded.lang,
+    ver = excluded.ver,
+    context_json = excluded.context_json,
+    record_json = excluded.record_json
+`);
+
+app.post("/api/v1/radar/records", (req, res) => {
+  const error = validateRadarBatch(req.body);
+  if (error) {
+    return res.status(400).json({ ok: false, error });
+  }
+
+  const receivedAtIso = new Date().toISOString();
+  const accepted = [];
+  const rejected = [];
+
+  for (const item of req.body.records) {
+    try {
+      const row = recordToRow(item.key, item.record, receivedAtIso);
+      radarUpsertStmt.run(
+        row.profile_id,
+        row.client_key,
+        row.game_id,
+        row.ts,
+        row.grade_code,
+        row.gene_ids,
+        row.activity_runtime,
+        row.activity_mode,
+        row.score,
+        row.total,
+        row.result,
+        row.lang,
+        row.ver,
+        row.context_json,
+        row.record_json,
+        row.received_at
+      );
+      accepted.push(item.key);
+    } catch (e) {
+      rejected.push({ key: item.key, error: String(e && e.message ? e.message : e) });
+    }
+  }
+
+  return res.json({ ok: true, accepted, rejected });
+});
+
+app.get("/api/v1/radar/matrix", (req, res) => {
+  const profileId = typeof req.query.profileId === "string" ? req.query.profileId.trim() : "";
+  if (!profileId) {
+    return res.status(400).json({ ok: false, error: "profileId is required." });
+  }
+
+  const rows = db.prepare("SELECT record_json FROM radar_records WHERE profile_id = ?").all(profileId);
+  const records = rows.map((row) => JSON.parse(row.record_json));
+
+  const matrix = RadarReader.read({ records, profileId });
+  return res.json({ ok: true, ...matrix });
 });
 
 app.use((err, req, res, next) => {

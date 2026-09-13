@@ -76,6 +76,32 @@ function initSchema(conn) {
   ensureSessionColumn(conn, "level_id", "TEXT");
   ensureSessionColumn(conn, "comparison_type", "TEXT");
   ensureSessionColumn(conn, "difficulty_axis", "TEXT");
+
+  conn.exec(`
+    CREATE TABLE IF NOT EXISTS radar_records (
+      id               INTEGER PRIMARY KEY AUTOINCREMENT,
+      profile_id       TEXT NOT NULL,
+      client_key       TEXT NOT NULL,
+      game_id          TEXT NOT NULL,
+      ts               INTEGER NOT NULL,
+      grade_code       TEXT,
+      gene_ids         TEXT NOT NULL,
+      activity_runtime TEXT,
+      activity_mode    TEXT,
+      score            REAL,
+      total            REAL,
+      result           TEXT,
+      lang             TEXT,
+      ver              TEXT,
+      context_json     TEXT,
+      record_json      TEXT NOT NULL,
+      received_at      TEXT NOT NULL,
+      UNIQUE(profile_id, client_key)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_radar_profile ON radar_records(profile_id);
+    CREATE INDEX IF NOT EXISTS idx_radar_gene_grade ON radar_records(profile_id, grade_code);
+  `);
 }
 
 function ensureSessionColumn(conn, name, type) {

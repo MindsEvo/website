@@ -14,6 +14,8 @@ This is a local-only server used to collect raw game attempts and verify report 
 - History filter options endpoint: `GET /api/v1/history/catalog/options`
 - History overview endpoint: `GET /api/v1/history/statistics/overview`
 - History recommendation endpoint: `GET /api/v1/history/recommend`
+- Radar record ingest endpoint: `POST /api/v1/radar/records`
+- Radar matrix read endpoint: `GET /api/v1/radar/matrix`
 - Health endpoint: `GET /health`
 
 ## Run locally
@@ -105,6 +107,44 @@ Overview output now includes daily trend:
 
 History Lab page:
 
-- `web/history/index.html`
+- `history/index.html`
 - Supports server URL, `gameKey`, and `geneId` filter inputs
 - Autocomplete options come from `GET /api/v1/history/catalog/options`
+
+## Radar API quick usage
+
+Records are stored verbatim (no field renaming), keyed by `(profileId, key)` for
+idempotent re-posting. `key` is the same history key the client already computes
+in `report()` (`{gameId}:history:{ts}` with a `-N` suffix on collision).
+
+1. Post a batch of records:
+
+  `POST /api/v1/radar/records`
+
+  ```json
+  {
+    "records": [
+      {
+        "key": "find-it:history:1700000000000",
+        "record": {
+          "profileId": "p1",
+          "gameId": "find-it",
+          "ts": 1700000000000,
+          "gradeCode": "K1",
+          "geneIds": ["RG.ATTENTION.SEARCH.VISUAL"],
+          "score": 8,
+          "total": 10
+        }
+      }
+    ]
+  }
+  ```
+
+  Response: `{ "ok": true, "accepted": ["find-it:history:1700000000000"], "rejected": [] }`
+
+2. Read the aggregated (gene × grade) matrix for a profile:
+
+  `GET /api/v1/radar/matrix?profileId=p1`
+
+  Response is the verbatim output of `radar-reader.js`'s `RadarReader.read()`
+  (the server does not reimplement aggregation), wrapped in `{ "ok": true, ... }`.
