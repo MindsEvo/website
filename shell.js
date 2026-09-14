@@ -19,6 +19,7 @@
  *   shell.user.profileId()           anonymous device-local profile id
  *   shell.grade.CODES/normalize()    canonical level vocabulary (radar axis 2)
  *   shell.report(payload)            game session reporting
+ *   shell.sync.setEndpoint(url)      opt in to server upload (default: off)
  *   shell.registerStrings(obj)       register translation strings
  *
  * Storage key convention:
@@ -222,12 +223,25 @@
     profileId: function () {
       var p = storage.get('sys:profile', null);
       if (!p || !p.id) {
-        p = { id: 'p1', createdAt: Date.now(), label: null };
+        p = { id: _mintProfileId(), createdAt: Date.now(), label: null };
         storage.set('sys:profile', p);
       }
       return p.id;
     }
   };
+
+  /**
+   * Anonymous device id for brand-new installs only. Existing devices already
+   * hold a stamped `sys:profile.id` (historically 'p1') and never pass through
+   * here again — this only decides what a device that has never reported
+   * anything gets stamped with.
+   */
+  function _mintProfileId() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return 'p-' + crypto.randomUUID();
+    }
+    return 'p-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  }
 
   // ── Canonical Level Vocabulary (thinking-radar axis 2) ───────
   /**
@@ -368,7 +382,7 @@
     _pruneHistory(payload.gameId);
 
     // 2. Queue for background server sync
-    _queueSync(record);
+    _queueSync(record, key);
   }
 
   // ── History retention ────────────────────────────────────────
@@ -420,24 +434,82 @@
   }
 
   // ── Background sync queue ────────────────────────────────────
-  function _queueSync(record) {
-    var pending = storage.get('sys:syncPending', []);
-    pending.push(record);
-    storage.set('sys:syncPending', pending);
+  /**
+   * No endpoint is configured by default — this device stays fully offline
+   * and 'not connected, not uploading' (see profile/index.html's footer)
+   * remains true until a host explicitly opts in:
+   *   shell.sync.setEndpoint('http://localhost:8787/api/v1/radar/records')
+   */
+  var _syncEndpoint = null;
 
-    // Attempt upload if online (non-blocking, fails silently)
-    if (navigator.onLine) {
-      _flushSync();
-    }
+  // Same cap/shift shape as CmpEngine's upload_queue (learning/math/comparison
+  // /engine.js): unbounded growth while offline would eventually blow the
+  // storage quota, and the oldest queued record is the least useful one to
+  // keep once the queue is this long — _pruneHistory already treats it as
+  // stale.
+  var SYNC_QUEUE_MAX = 200;
+
+  function _queueSync(record, key) {
+    var pending = storage.get('sys:syncPending', []);
+    pending.push({ key: key, record: record });
+    if (pending.length > SYNC_QUEUE_MAX) pending.shift();
+    storage.set('sys:syncPending', pending);
+    _flushSync();
+  }
+
+  /**
+   * Legacy queue items (queued before this shape existed) are bare records
+   * with no `.key`. Reconstruct the same key report() would have computed —
+   * without the collision suffix, since that information was never kept —
+   * and let the server's UNIQUE(profile_id, client_key) upsert de-duplicate
+   * it against whatever this item's `-N` sibling already landed as.
+   */
+  function _normalizeSyncItem(item) {
+    if (item && item.key && item.record) return item;
+    var record = item;
+    return { key: record.gameId + ':history:' + record.ts, record: record };
+  }
+
+  function setSyncEndpoint(url) {
+    _syncEndpoint = url || null;
+    if (_syncEndpoint) _flushSync();
   }
 
   function _flushSync() {
-    // TODO: replace stub with real POST to server API when backend is ready.
-    // var pending = storage.get('sys:syncPending', []);
-    // if (!pending.length) return;
-    // fetch('/api/sync', { method:'POST', body: JSON.stringify(pending) })
-    //   .then(function(r){ if(r.ok) storage.set('sys:syncPending', []); });
+    if (!_syncEndpoint) return;          // no endpoint configured: stay queued, stay offline
+    if (!navigator.onLine) return;
+
+    var pending = storage.get('sys:syncPending', []);
+    if (!pending.length) return;
+
+    var items = pending.map(_normalizeSyncItem);
+
+    fetch(_syncEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ records: items })
+    }).then(function (res) {
+      return res.ok ? res.json() : null;
+    }).then(function (body) {
+      if (!body || !Array.isArray(body.accepted) || !body.accepted.length) return;
+
+      // Only drop what the server actually confirmed. Re-read the queue
+      // (rather than reusing `pending`) because new sessions may have been
+      // queued while this request was in flight — those must survive.
+      var confirmed = Object.create(null);
+      body.accepted.forEach(function (k) { confirmed[k] = true; });
+      var remaining = storage.get('sys:syncPending', []).filter(function (item) {
+        return !confirmed[_normalizeSyncItem(item).key];
+      });
+      storage.set('sys:syncPending', remaining);
+    }).catch(function () {
+      // Offline or server unreachable: leave the queue intact, retry next time.
+    });
   }
+
+  var sync = {
+    setEndpoint: setSyncEndpoint
+  };
 
   // ── Layout diagnostics ───────────────────────────────────────
   // Why this exists: a display bug that depends on devicePixelRatio cannot be
@@ -2280,6 +2352,7 @@
     user:            user,
     grade:           grade,
     report:          report,
+    sync:            sync,
     diag:            createDiagnostics()
   };
 

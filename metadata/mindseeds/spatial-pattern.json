@@ -1,0 +1,154 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-13",
+  "moduleType": "mindseeds",
+  "id": "spatial-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/spatial-pattern.json",
+  "title": { "zh": "空间关系", "en": "Spatial Pattern" },
+  "description": {
+    "zh": "在一张带墙的小地图上，从起点出发选出唯一能到达终点的路线。训练的是多步路线的工作记忆与前瞻规划：先在头脑里试走候选路径、遇墙就判定该路径不可行，而不是凭直觉挑一条看起来对的箭头序列。难度由三件事决定——网格有多大、路线要走几步、以及候选选项里是否混入看起来可行但实际走不通的路线。",
+    "en": "On a small walled grid, pick the one route from start that actually reaches the goal. What it trains is working memory and forward planning over a multi-step route: mentally walking a candidate path and rejecting it the moment it hits a wall, rather than picking whichever arrow sequence looks right at a glance. Difficulty comes from three things: how big the grid is, how many steps the route takes, and whether the candidate options include a route that looks plausible but is not actually reachable."
+  },
+  "designModel": {
+    "zh": "一个主轴（关系复杂度：direct → chain → constrained）配合网格规模与路线长度同步放大。direct 是单步就能判断该往哪走；chain 需要连续两步的预判才能避开死路；constrained 在此基础上加入至少一条『伪通道』——候选路线本身自洽、只是终点不可达，必须真的在头脑里走完才能排除，而不能靠形状相似度筛选。",
+    "en": "One primary axis (relation complexity: direct → chain → constrained), amplified in lockstep by grid size and route length. direct means a single step decides the way; chain requires two-step lookahead to dodge a dead end; constrained adds at least one 'fake corridor' — a candidate route that is internally consistent but simply does not reach the goal, which can only be ruled out by actually walking it mentally, not by matching its shape."
+  },
+  "ageRange": {
+    "min": 6,
+    "max": 8,
+    "noteZh": "比 difference-scout 的 3-8 岁窄，且刻意不覆盖学前：路线规划要求执行多步序列并做前瞻判断，这比持续视觉搜索/同异判断的认知负荷更重一档，3-5 岁的孩子在这个任务形态下还不具备稳定的序列工作记忆，勉强下探年龄段等于制造一个内容不支持的年龄声明。",
+    "noteEn": "Narrower than difference-scout's 3-8 and deliberately excludes pre-school ages: route planning requires executing a multi-step sequence with lookahead, one notch heavier than sustained visual search/same-different judgement. Children aged 3-5 do not yet have stable sequential working memory for this task shape, so stretching the band down would be an age claim the content does not support."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列（高趣味、快反馈、可反复训练）。它与 learning/math/pattern 共用 RG.PATTERN.SPATIAL.RELATION，但分工明确：pattern 教『空间关系是什么、怎么描述』（左右、上下、旋转、对称），题量少而讲解重；本模块不教空间关系的概念，它训练在一张具体地图上把这些关系连续应用成一条可执行的路径，题量大而讲解轻。它也与 studio-comparison-lab、learning/math/strategy 共用 RG.STRATEGY.DECISION.PLANNING：strategy 教抽象的决策方法论（如何建立、比较、权衡方案），本模块不教方法论，它只要求在给定约束（墙、伪通道）下选出唯一可执行的具体路径。",
+    "policyEn": "This module belongs to MindSeeds (high engagement, fast feedback, made to be replayed). It shares RG.PATTERN.SPATIAL.RELATION with learning/math/pattern, but the split is clear: pattern teaches what spatial relations are and how to describe them (left/right, up/down, rotation, symmetry) — few items, heavy explanation. This module teaches no concept; it trains applying those relations continuously on a concrete map into one executable path — many items, light explanation. It also shares RG.STRATEGY.DECISION.PLANNING with studio-comparison-lab and learning/math/strategy: strategy teaches abstract decision methodology (how to form, compare, and weigh options), while this module teaches no methodology — it only requires picking the single executable path under given constraints (walls, fake corridors)."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 都上报两个基因，不按等级或题目变化：RG.PATTERN.SPATIAL.RELATION（在地图上连续应用空间关系）与 RG.STRATEGY.DECISION.PLANNING（把这些关系串成一条可执行路径需要的前瞻决策）。只报其中一个都是半个事实——去掉空间基因，记录就读作『做了一次决策』而丢掉了这个决策建立在空间关系判断上；去掉策略基因，就读作『理解了地图』而丢掉了还要规划出一条完整可执行路径这一步。",
+    "ruleEn": "Every attempt reports both genes, regardless of grade or item: RG.PATTERN.SPATIAL.RELATION (applying spatial relations continuously across the map) and RG.STRATEGY.DECISION.PLANNING (the forward-looking decision needed to chain those relations into one executable path). Reporting only one would be a half-truth either way — drop the spatial gene and the record reads as 'made a decision' with its spatial basis lost; drop the strategy gene and it reads as 'understood the map' with the planning of a complete executable path lost.",
+    "geneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"]
+  },
+  "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"],
+  "rootGeneScopeNote": {
+    "zh": "本模块的课程范围与当前上报集合恰好相同（两个基因，每次都报），所以这份清单与 metadata/game.json 里 spatial-pattern-hunter 条目的 rootGeneIds 应当逐项一致，由校验器 S1 与代码对撞。",
+    "en": "This module's curriculum scope and what it actually reports are the same set (two genes, both every time), so this list should match the spatial-pattern-hunter entry's rootGeneIds in metadata/game.json item for item, which S1 collides against the code."
+  },
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete"],
+      "noteZh": "所有等级都是具体的地图格子（起点/终点/墙），没有抽象化的对象表示。这根轴目前不分级，写出来是为了与 learning 系列的同名轴保持词表一致，供校验器 S3 统一核对。",
+      "noteEn": "All grades use a concrete map of cells (start/goal/wall) with no abstracted object representation. This axis does not yet vary by grade; it is declared so its vocabulary stays aligned with the same-named axis in the Learning series for S3 to check uniformly."
+    },
+    {
+      "id": "dimension_complexity",
+      "zh": "维度复杂度",
+      "en": "Dimension Complexity",
+      "progression": ["single"],
+      "noteZh": "只有一个需要规划的维度——从起点到终点的路径本身。不像 difference-scout 的 G2 会同时加入大小通道，本模块目前没有第二个独立维度；再往上加深应当先考虑双维度（例如同时限制步数或引入方向代价），而不是单纯扩大网格。",
+      "noteEn": "Only one dimension to plan over — the path from start to goal itself. Unlike difference-scout's G2, which adds a size channel, this module has no second independent dimension yet; going deeper should add a second dimension (e.g. a step budget or directional cost) rather than simply enlarging the grid."
+    },
+    {
+      "id": "relation_complexity",
+      "zh": "关系复杂度",
+      "en": "Relation Complexity",
+      "progression": ["direct", "chain", "constrained"],
+      "noteZh": "该等级需要多深的前瞻：direct 每一步都可以就地判断，不需要预判后续；chain 需要连续两步的预判才能避开死路；constrained 在 chain 之上再加至少一条『伪通道』候选路线——它本身自洽、只是不可达，必须真的走完全程才能排除，不能靠形状或长度筛掉。",
+      "noteEn": "How much lookahead the grade demands: direct means every step can be judged on the spot with no lookahead; chain requires two consecutive steps of lookahead to dodge a dead end; constrained adds at least one 'fake corridor' candidate on top of chain — internally consistent but unreachable, ruled out only by walking it fully, not by shape or length."
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["question"],
+      "noteZh": "题干始终是一句直接问句（哪条路线能到达终点），没有更简的指令式或更复杂的条件式表述。与 object_complexity 一样，这根轴目前不分级，只是为了与其他模块的词表对齐。",
+      "noteEn": "The prompt is always a single direct question ('which route reaches the goal'), with no simpler imperative or more complex conditional phrasing. Like object_complexity, this axis does not yet vary by grade — it is declared purely to keep vocabulary aligned with other modules."
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "strategy"],
+      "noteZh": "within-domain：规划本身就是任务，做完即验证。strategy：候选路线里混入诱导性的伪通道后，任务不再只是『找一条路』，还要求在有干扰的情况下坚持完整验证而不被表面相似度带偏——这是从『执行规划』到『在压力下守住规划』的迁移，只在 L3/G3 出现。",
+      "noteEn": "within-domain: planning is the task itself, verified by completion. strategy: once a candidate route includes a distracting fake corridor, the task is no longer just 'find a route' but also requires holding a complete verification under distraction instead of being misled by surface similarity — a shift from 'executing a plan' to 'holding the plan under pressure', appearing only at L3/G3."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 4,
+    "passRatio": 0.75,
+    "noteZh": "一次 4 题，通过线 75%（3/4）。代码侧对应 games/spatial-pattern-hunter/game.js 的 passScore。与 difference-scout 不同，本模块目前是静态题库：SPATIAL_DATA.units[*].questions 在 data.js 里手写好，运行时不现生成——这是诚实反映现状，不是本轮要改的东西。",
+    "noteEn": "Four items per run, passing at 75% (3/4). The code-side counterpart is passScore in games/spatial-pattern-hunter/game.js. Unlike difference-scout, this module currently uses a static bank: SPATIAL_DATA.units[*].questions is hand-authored in data.js and nothing is generated at runtime — an honest reflection of the current state, not something this round changes."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "在 3×3 网格里从起点走 3-4 步到终点，每一步都能就地判断该往哪走。",
+      "objectiveEn": "Walk 3-4 steps from start to goal on a 3x3 grid, where every step can be judged on the spot.",
+      "axisValues": {
+        "object_complexity": "concrete",
+        "dimension_complexity": "single",
+        "relation_complexity": "direct",
+        "language_complexity": "question",
+        "transfer_complexity": "within-domain"
+      },
+      "status": "implemented",
+      "implementedBy": ["spatial-pattern-hunter"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "在 4×4 网格里走 6-7 步，需要连续两步的预判才能避开死路。",
+      "objectiveEn": "Walk 6-7 steps on a 4x4 grid, requiring two-step lookahead to avoid dead ends.",
+      "axisValues": {
+        "object_complexity": "concrete",
+        "dimension_complexity": "single",
+        "relation_complexity": "chain",
+        "language_complexity": "question",
+        "transfer_complexity": "within-domain"
+      },
+      "status": "implemented",
+      "implementedBy": ["spatial-pattern-hunter"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "8",
+      "gradeCode": "G3",
+      "objectiveZh": "在 5×5 网格里走 8-10 步，候选路线中至少有一条看起来可行但实际不可达的伪通道，必须完整验证才能排除。",
+      "objectiveEn": "Walk 8-10 steps on a 5x5 grid, where at least one candidate route is a plausible-looking but unreachable fake corridor that can only be ruled out by full verification.",
+      "axisValues": {
+        "object_complexity": "concrete",
+        "dimension_complexity": "single",
+        "relation_complexity": "constrained",
+        "language_complexity": "question",
+        "transfer_complexity": "strategy"
+      },
+      "status": "implemented",
+      "implementedBy": ["spatial-pattern-hunter"],
+      "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "comparisonType", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "meanTimePerItem 对 L3 比准确率更有诊断价值：被伪通道带偏的失败模式通常表现为『选得很快但选错』，而完整验证的孩子即使选对也会明显更慢。activityRuntime 恒为 puzzle，score/total 的单位是题数。",
+    "noteEn": "meanTimePerItem is more diagnostic than accuracy at L3: being misled by the fake corridor typically shows up as 'fast but wrong', while a child who verifies fully will be noticeably slower even when correct. activityRuntime is always puzzle, so score/total are counted in items."
+  },
+  "aiQueryHints": {
+    "supportedFilters": ["age", "levelId", "gradeCode", "difficultyAxis", "status"],
+    "exampleQueries": [
+      "6岁能玩哪个空间关系等级？",
+      "哪些练习训练前瞻规划而不是一眼判断？",
+      "空间关系和 learning 里的数学规律有什么区别？"
+    ]
+  },
+  "tags": ["spatial-pattern", "mindseeds", "spatial-relation", "route-planning", "ai-readable"]
+}

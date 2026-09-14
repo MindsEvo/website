@@ -3,6 +3,41 @@
 
   var DATA = window.CLIO_FIND_IT_DATA;
 
+  var MODULE_ID      = 'find-it';
+  var MODULE_TYPE    = 'clio';
+  var SOURCE_GAME_ID = 'clio-find-it-workshop';
+
+  // gradeCode → gradeCode. Identity, same reasoning as ufo-math-workshop/game.js:
+  // shell's grade normalizer can't guess across modules, and validate.js's S2
+  // looks up metadata levelMap rows BY gradeCode.
+  var LEVEL_GRADE = { K1: 'K1', K2: 'K2' };
+
+  var GENES = ['RG.ATTENTION.SEARCH.VISUAL', 'RG.LOGIC.COMPARISON.BASIC'];
+
+  var PASS_THRESHOLD = 0.6;
+
+  // The one difficulty axis of find-it.json: how big/dense the search board is.
+  // K1/K2 differ ONLY here — same open-scene search mechanic, wider board.
+  // Mirrors DATA.GRADE_CONFIG in data.js.
+  function difficultyAxisFor(gradeCode) {
+    var base = {
+      K1: { boardSize: 'small' },
+      K2: { boardSize: 'large' }
+    }[gradeCode];
+    return base ? Object.assign({}, base) : null;
+  }
+
+  // Exposed for studio/Clio/games/find-it-workshop/test.html — mirrors
+  // window.UFO_MATH_CONTRACT / window.DS_CONTRACT.
+  window.FIND_IT_CONTRACT = {
+    MODULE_ID:      MODULE_ID,
+    MODULE_TYPE:    MODULE_TYPE,
+    SOURCE_GAME_ID: SOURCE_GAME_ID,
+    LEVEL_GRADE:    LEVEL_GRADE,
+    GENES:          GENES,
+    difficultyAxisFor: difficultyAxisFor
+  };
+
   var TEXT = {
     zh: {
       title: "寻找游戏 Find It",
@@ -56,6 +91,8 @@
 
   var state = {
     lang: "zh",
+    grade: "K1",
+    locked: false,
     items: [],
     targets: [],
     missCount: 0,
@@ -64,7 +101,8 @@
     musicEnabled: true,
     audioCtx: null,
     musicTimer: null,
-    musicNodes: []
+    musicNodes: [],
+    runStartAt: 0
   };
 
   var runtimeCtrl = window.ClioRuntimeBridge
@@ -76,6 +114,7 @@
     subtitleText: document.getElementById("subtitleText"),
     backLink: document.getElementById("backLink"),
     langBtn: document.getElementById("langBtn"),
+    gradeBtn: document.getElementById("gradeBtn"),
     speakBtn: document.getElementById("speakBtn"),
     musicBtn: document.getElementById("musicBtn"),
     sfxBtn: document.getElementById("sfxBtn"),
@@ -250,14 +289,15 @@
   }
 
   function buildRound() {
+    var cfg = DATA.GRADE_CONFIG[state.grade];
     var pool = DATA.object_pool;
-    var targets = sample(pool, DATA.target_type_count);
+    var targets = sample(pool, cfg.target_type_count);
     var targetMap = Object.create(null);
     targets.forEach(function (item) { targetMap[item.id] = true; });
 
     var targetInstances = [];
     targets.forEach(function (item) {
-      var repeatCount = randInt(DATA.target_repeat_min, DATA.target_repeat_max);
+      var repeatCount = randInt(cfg.target_repeat_min, cfg.target_repeat_max);
       var i;
       for (i = 0; i < repeatCount; i += 1) {
         targetInstances.push(item);
@@ -266,7 +306,7 @@
 
     var nonTargets = sample(pool.filter(function (item) {
       return !targetMap[item.id];
-    }), Math.max(0, DATA.total_count - targetInstances.length));
+    }), Math.max(0, cfg.total_count - targetInstances.length));
 
     state.targets = targets;
     state.items = shuffle(targetInstances.concat(nonTargets)).map(function (item, index) {
@@ -283,6 +323,8 @@
       };
     });
     state.missCount = 0;
+    state.locked = true;
+    state.runStartAt = Date.now();
   }
 
   function placeItems() {
@@ -294,10 +336,11 @@
     var pad = 14;
     var maxX = Math.max(pad, w - size - pad);
     var maxY = Math.max(pad, h - size - pad);
+    var baseMinDist = DATA.GRADE_CONFIG[state.grade].min_distance;
 
     state.items.forEach(function (item) {
       var tries;
-      var minDist = DATA.min_distance;
+      var minDist = baseMinDist;
       var done = false;
       for (tries = 0; tries < 140; tries += 1) {
         var x = pad + Math.random() * Math.max(1, maxX - pad);
@@ -388,7 +431,9 @@
 
   function showDone() {
     state.completedCount += 1;
+    state.locked = false;
     saveCompletionStatus();
+    _reportRun();
     refreshHud();
     els.doneLayer.classList.add("show");
     els.doneLayer.setAttribute("aria-hidden", "false");
@@ -396,6 +441,48 @@
     playTone(523, 0.1, 0.16, "sine");
     playTone(659, 0.12, 0.16, "sine");
     playTone(784, 0.16, 0.16, "sine");
+  }
+
+  // Mirrors ufo-math-workshop/game.js's _reportRun(). The game itself has no
+  // fail state (wrong taps just shake, round always completes), so score/total
+  // here is tap accuracy — correct target taps vs. every tap attempted — not
+  // "found vs total targets", which would always be 100%.
+  function _reportRun() {
+    if (!window.shell || typeof window.shell.report !== 'function') {
+      return;
+    }
+    var gradeCode = state.grade;
+    var correctTaps = state.items.filter(function (it) { return it.target && it.found; }).length;
+    var wrongTaps = state.missCount;
+    var total = correctTaps + wrongTaps;
+    var accuracy = total > 0 ? correctTaps / total : 1;
+    var context = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        gradeCode,
+      gradeCode:      LEVEL_GRADE[gradeCode] || null,
+      boardSize:      difficultyAxisFor(gradeCode).boardSize,
+      difficultyAxis: difficultyAxisFor(gradeCode),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    window.shell.report({
+      gameId:          SOURCE_GAME_ID,
+      unitId:          'find-it-run',
+      templateId:      gradeCode,
+      variantId:       null,
+      score:           correctTaps,
+      total:           total,
+      timeMs:          state.runStartAt ? (Date.now() - state.runStartAt) : 0,
+      hintsUsed:       0,
+      geneIds:         GENES.slice(),
+      shell:           'shell-1',
+      activityRuntime: 'puzzle',
+      activityMode:    'search',
+      result:          accuracy >= PASS_THRESHOLD ? 'pass' : 'fail',
+      levelId:         gradeCode,
+      gradeCode:       LEVEL_GRADE[gradeCode] || null,
+      context:         context
+    });
   }
 
   function onItemTap(item, node) {
@@ -443,6 +530,14 @@
     setFeedback(t("firstHint"), "");
   }
 
+  function toggleGrade() {
+    if (state.locked) {
+      return;
+    }
+    state.grade = state.grade === "K1" ? "K2" : "K1";
+    els.gradeBtn.textContent = state.grade;
+  }
+
   function exportSummary() {
     var payload = {
       game_id: "clio-find-it-workshop",
@@ -480,6 +575,7 @@
     els.resetBtn.textContent = t("reset");
     els.dumpBtn.textContent = t("dump");
     els.langBtn.textContent = state.lang === "zh" ? "CN / EN" : "EN / CN";
+    els.gradeBtn.textContent = state.grade;
     renderTargets();
     renderBoard();
   }
@@ -541,6 +637,7 @@
 
     if (runtimeCtrl) {
       runtimeCtrl.bindTap(els.langBtn, onLangTap);
+      runtimeCtrl.bindTap(els.gradeBtn, toggleGrade);
       runtimeCtrl.bindTap(els.speakBtn, onSpeakTap);
       runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
       runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
@@ -554,6 +651,7 @@
       });
     } else {
       els.langBtn.addEventListener("click", onLangTap);
+      els.gradeBtn.addEventListener("click", toggleGrade);
       els.speakBtn.addEventListener("click", onSpeakTap);
       els.musicBtn.addEventListener("click", onMusicTap);
       els.sfxBtn.addEventListener("click", onSfxTap);

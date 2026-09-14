@@ -39,11 +39,22 @@
  *
  * v1.2.0 adds S7: the structure × task allowlist matrix (pattern's three-
  * dimension model). See suiteMatrix for why a matrix exists at all.
+ *
+ * v1.3.0 opens S2/S3 to a second series. MindSeeds modules that declare a
+ * levelMap and difficulty axes (metadata/mindseeds/*.json) are now collided the
+ * same way the metathinking modules are — `loadModules` takes the directory and
+ * the owning series as parameters instead of hard-coding "metathinking" and
+ * "learning". No MindSeeds-specific suite was added: suiteLevels and suiteAxes
+ * only ever touched mod.json.levelMap / mod.json.difficultyAxes / mod.source, so
+ * they were already series-agnostic. S4/S5/S7 are NOT run for MindSeeds —
+ * difference-scout has no typeTree, templates.json or task matrix, and inventing
+ * them to satisfy a suite is exactly the kind of status-lying this page exists
+ * to catch.
  */
 (function (global) {
   "use strict";
 
-  var VERSION = "1.2.0";
+  var VERSION = "1.3.0";
   var BASE = "../";
 
   // Mode vocabularies overlap but are NOT the same list:
@@ -454,14 +465,21 @@
       return k + "→" + levelGrade[k];
     }).join(" · "));
 
-    // code side: every key must be a gradeCode that metadata declares live
+    // code side: every key must resolve to a row metadata declares live. A
+    // module may key LEVEL_GRADE by gradeCode (identity map, when its own
+    // level ids already are canonical grade codes, e.g. difference-scout's
+    // K1/K2/G1/G2) or by levelId (a real translation table, when levels are
+    // named independently of their grade, e.g. spatial-pattern's L1/L2/L3).
+    // Try both so S2 verifies whichever convention a module actually uses.
     var metaByGrade = {};
     live.forEach(function (r) { metaByGrade[r.gradeCode] = r; });
+    var metaByLevel = {};
+    live.forEach(function (r) { metaByLevel[r.levelId] = r; });
 
     codeLevels.forEach(function (key) {
-      var row = metaByGrade[key];
+      var row = metaByLevel[key] || metaByGrade[key];
       if (!row) {
-        var anyRow = rows.filter(function (r) { return r.gradeCode === key; })[0];
+        var anyRow = rows.filter(function (r) { return r.gradeCode === key || r.levelId === key; })[0];
         if (anyRow) {
           s.fail("代码上线了 " + key + "，但 levelMap " + anyRow.levelId + " 的 status=" + anyRow.status,
             "把 status 改成 implemented/partial，或从代码里撤掉这一级");
@@ -478,7 +496,9 @@
       }
     });
 
-    var missingInCode = live.filter(function (r) { return codeLevels.indexOf(r.gradeCode) < 0; });
+    var missingInCode = live.filter(function (r) {
+      return codeLevels.indexOf(r.gradeCode) < 0 && codeLevels.indexOf(r.levelId) < 0;
+    });
     if (missingInCode.length) {
       s.fail("levelMap 声明已上线、但代码 LEVEL_GRADE 里没有的等级", missingInCode.map(function (r) {
         return r.levelId + "/" + r.gradeCode + "(" + r.status + ")";
@@ -1113,17 +1133,24 @@
     return String(id).toUpperCase().replace(/-/g, "_") + "_TYPE_OF";
   }
 
-  function loadModules(catalog, games) {
-    var mods = arr(catalog.modules).filter(function (m) {
+  /**
+   * Load one series' module files and pair each with its game's source text.
+   *
+   * `spec` names the two things that used to be hard-coded here:
+   *   dir     where the module json lives, e.g. "metadata/metathinking/"
+   *   series  which game.json series owns these modules — a module id equals the
+   *           `module` field of its game within that series.
+   */
+  function loadModules(catalog, games, spec) {
+    var mods = arr(catalog && catalog.modules).filter(function (m) {
       return m.status !== "retired";
     });
     return Promise.all(mods.map(function (m) {
-      // A metathinking module id equals the `module` field of its learning game.
       var game = games.filter(function (g) {
-        return g.series === "learning" && g.module === m.id;
+        return g.series === spec.series && g.module === m.id;
       })[0];
       var path = game && game.path;
-      return fetchJson("metadata/metathinking/" + m.id + ".json").then(function (json) {
+      return fetchJson(spec.dir + m.id + ".json").then(function (json) {
         var jobs = [
           path ? fetchTextOrNull(path + "game.js") : Promise.resolve(null),
           path ? fetchTextOrNull(path + "templates.json") : Promise.resolve(null)
@@ -1160,11 +1187,13 @@
       fetchJson("metadata/lesson.json"),
       fetchJson("metadata/video.json"),
       fetchJson("metadata/rootgene.json"),
-      fetchJson("metadata/metathinking/index.json")
+      fetchJson("metadata/metathinking/index.json"),
+      fetchJson("metadata/mindseeds/index.json"),
+      fetchJson("metadata/clio/index.json")
     ]).then(function (out) {
       var data = {
         game: out[0], lesson: out[1], video: out[2],
-        rootgene: out[3], catalog: out[4],
+        rootgene: out[3], catalog: out[4], seedCatalog: out[5], studioCatalog: out[6],
         code: {}, pathOk: {}
       };
       var games = arr(data.game.games);
@@ -1184,8 +1213,18 @@
       });
 
       return Promise.all(jobs)
-        .then(function () { return loadModules(data.catalog, games); })
-        .then(function (mods) {
+        .then(function () {
+          return Promise.all([
+            loadModules(data.catalog, games,
+              { dir: "metadata/metathinking/", series: "learning" }),
+            loadModules(data.seedCatalog, games,
+              { dir: "metadata/mindseeds/", series: "mindseeds" }),
+            loadModules(data.studioCatalog, games,
+              { dir: "metadata/clio/", series: "studio" })
+          ]);
+        })
+        .then(function (loaded) {
+          var mods = loaded[0], seedMods = loaded[1], studioMods = loaded[2];
           suiteGenes(data);
           mods.forEach(function (mod) {
             suiteLevels(data, mod);
@@ -1193,6 +1232,22 @@
             suiteTypes(data, mod);
             suiteModes(data, mod);
             suiteMatrix(data, mod);
+          });
+          // MindSeeds modules take S2 + S3 only. They carry a levelMap and
+          // difficulty axes, which is what earns them a place on the radar's
+          // depth axis; they carry no typeTree / templates.json / task matrix,
+          // and declaring empty ones just to light up S4/S5/S7 would be the
+          // status-lying §1.7 fixed rather than an honest gap.
+          seedMods.forEach(function (mod) {
+            suiteLevels(data, mod);
+            suiteAxes(data, mod);
+          });
+          // Clio modules take the same S2 + S3-only treatment as MindSeeds:
+          // a levelMap and difficulty axes, no typeTree / templates.json /
+          // task matrix yet.
+          studioMods.forEach(function (mod) {
+            suiteLevels(data, mod);
+            suiteAxes(data, mod);
           });
           suiteRefs(data);
           renderSummary();

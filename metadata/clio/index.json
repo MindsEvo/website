@@ -1,0 +1,41 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-11",
+  "series": "studio",
+  "notes": {
+    "purposeZh": "Clio 系列的模块目录。与 metadata/metathinking/index.json、metadata/mindseeds/index.json 同结构、同 status 口径，因此 metadata/validate.js 可以用同一批 suite（S2 levelMap、S3 difficultyAxes）对撞三个系列，不必为 Clio 另写校验逻辑。",
+    "purposeEn": "The Clio module catalog. Same structure and same status vocabulary as metadata/metathinking/index.json and metadata/mindseeds/index.json, so metadata/validate.js can collide all three series with the same suites (S2 levelMap, S3 difficultyAxes) instead of growing Clio-specific validation logic.",
+    "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
+    "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded.",
+    "scopeZh": "只登记已经有 levelMap 与难度轴声明的 Clio 模块。studio/Clio/games/ 下的其他工坊（egg-catcher-workshop、bunny-maze-workshop 等）在 metadata/game.json 里有目录条目，但还没有各自的模块文件，因此不参与 S2/S3。",
+    "scopeEn": "Only Clio modules that already declare a levelMap and difficulty axes are listed. The other workshops under studio/Clio/games/ (egg-catcher-workshop, bunny-maze-workshop, etc.) have catalog entries in metadata/game.json but no module file yet, so they do not take part in S2/S3."
+  },
+  "modules": [
+    {
+      "id": "ufo-math",
+      "moduleType": "clio",
+      "titleZh": "飞盘登月",
+      "titleEn": "UFO Moon Adventure",
+      "ageRange": { "min": 4, "max": 6 },
+      "levels": 2,
+      "canonicalUrl": "/metadata/clio/ufo-math.json",
+      "tags": ["ufo-math", "clio", "math", "number-sense", "ai-readable"],
+      "status": "active",
+      "statusNoteZh": "两个等级 K1/K2 全部上线并上报雷达，是 Clio 系列第一个接入基因/雷达系统的模块。内容无静态题库，由 data.js 按等级现生成，逐项由 studio/Clio/games/ufo-math-workshop/test.html 审计。仍缺：更深的等级阶梯（G1 以上）、puzzle 以外的运行时。",
+      "statusNoteEn": "Both grades K1/K2 are shipped and reporting to the radar — the first Clio module wired into the gene/radar system. There is no static bank: data.js builds content per grade and studio/Clio/games/ufo-math-workshop/test.html audits it item by item. Still missing: a deeper grade ladder (G1 and above), and any runtime other than puzzle."
+    },
+    {
+      "id": "find-it",
+      "moduleType": "clio",
+      "titleZh": "寻找游戏",
+      "titleEn": "Find It",
+      "ageRange": { "min": 4, "max": 6 },
+      "levels": 2,
+      "canonicalUrl": "/metadata/clio/find-it.json",
+      "tags": ["find-it", "clio", "attention", "visual-search", "ai-readable"],
+      "status": "active",
+      "statusNoteZh": "两个等级 K1/K2 全部上线并上报雷达，是 Clio 系列第一个真实运行并上报 RG.ATTENTION.SEARCH.VISUAL 的模块。等级只改变搜索板大小与密度（data.js 的 GRADE_CONFIG），逐项由 studio/Clio/games/find-it-workshop/test.html 审计。仍缺：更深的等级阶梯（G1 以上）、puzzle 以外的运行时。",
+      "statusNoteEn": "Both grades K1/K2 are shipped and reporting to the radar — the first Clio module that actually runs and reports RG.ATTENTION.SEARCH.VISUAL. Grades only change board size and density (data.js's GRADE_CONFIG), audited item by item by studio/Clio/games/find-it-workshop/test.html. Still missing: a deeper grade ladder (G1 and above), and any runtime other than puzzle."
+    }
+  ]
+}

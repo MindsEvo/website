@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Difference Scout — Automated Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #c4b5fd; margin-bottom: 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin-bottom: 24px; }
+    .suite  { margin-bottom: 32px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #a78bfa; }
+    .tpl    { margin-bottom: 12px; padding: 10px 14px; background: #1e293b;
+              border-radius: 8px; border: 1px solid #334155; }
+    .tpl-id { font-size: 12px; color: #ddd6fe; margin-bottom: 4px; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .stat   { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    .sum-row { font-size: 14px; }
+    .badge { display:inline-block; border-radius:4px; padding:2px 8px; font-size:12px;
+             font-weight:700; margin-right:6px; }
+    .badge-ok   { background:#166534; color:#4ade80; }
+    .badge-fail { background:#7f1d1d; color:#f87171; }
+    .badge-warn { background:#78350f; color:#fbbf24; }
+    pre { margin:0; font-size:11px; line-height:1.5; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>🕵️ Difference Scout — Validation Suite</h1>
+  <h2>This module has NO static bank — generator.js builds every item — so this
+      page audits the generator by sampling it, the way comparison's test.html
+      audits its generators rather than the way pattern's audits a fixed bank.
+      Checked: the radar contract, strip integrity, option construction,
+      positional bias, whether each grade's declared distractor similarity is
+      actually what it draws, the two mismatch channels, replay variety, and the
+      vocabulary in data.js. No fetch — this page opens over file:// too.</h2>
+  <div id="sum-out" class="sum-row">Loading…</div>
+</div>
+
+<div id="results"></div>
+
+<!-- Stub the shell so game.js can register without a real DOM game. The config
+     it passes to createGame is captured verbatim: that config is what the
+     browser really runs, so asserting against it is asserting against shipping
+     behaviour rather than against a copy of it. -->
+<script>
+  var CAPTURED = null;
+  var shell = {
+    lang: 'zh',
+    getVolume: function () { return 80; },
+    speak: function () {},
+    storage: { get: function (k, d) { return d; }, set: function () {} },
+    createGame: function (cfg) { CAPTURED = cfg; }
+  };
+</script>
+<script src="../../radar-reader.js"></script>
+<script src="./data.js"></script>
+<script src="./generator.js"></script>
+<script src="./game.js"></script>
+<script>
+(function () {
+  var C = window.DS_CONTRACT || {};
+  var GRADES = C.GRADE_ORDER || ['K1', 'K2', 'G1', 'G2'];
+
+  // Sample size for the distribution checks. 1000 keeps the tolerances below at
+  // roughly 4 sigma, so a FAIL here means a real bias rather than the sampling
+  // noise comparison's test.html warns about (its LOW VAR lines drift run to
+  // run; nothing on this page should).
+  var DRAWS     = 1000;
+  var SLOT_TOL  = 5;    // percentage points off uniform, answer slot
+  var RANK_TOL  = 5;    // percentage points off uniform, answer's rank in options
+
+  var results = [];
+  function rec(suite, level, name, detail) {
+    results.push({ suite: suite, level: level, name: name, detail: detail || '' });
+  }
+  function check(suite, name, ok, detail, warnOnly) {
+    rec(suite, ok ? 'pass' : (warnOnly ? 'warn' : 'fail'), name, detail);
+    return ok;
+  }
+
+  function familyOf(icon) {
+    var hit = null;
+    DS_DATA.families.forEach(function (f) {
+      if (f.icons.indexOf(icon) >= 0) { hit = f; }
+    });
+    return hit;
+  }
+  function iconsOf(strip) { return strip.map(function (c) { return c.icon; }); }
+  function diffSlots(q) {
+    var out = [];
+    for (var i = 0; i < q.left.length; i++) {
+      if (!DS_GEN.sameCell(q.left[i], q.right[i])) { out.push(i); }
+    }
+    return out;
+  }
+  function uniq(a) { return a.filter(function (v, i, s) { return s.indexOf(v) === i; }); }
+  function maxDeviation(counts, expectedPct, total) {
+    var worst = 0;
+    Object.keys(counts).forEach(function (k) {
+      var pct = counts[k] / total * 100;
+      worst = Math.max(worst, Math.abs(pct - expectedPct));
+    });
+    return worst;
+  }
+
+  // Draw once, reuse everywhere: the distribution suites need the same corpus.
+  var corpus = {};
+  GRADES.forEach(function (g) {
+    var items = [];
+    for (var i = 0; i < DRAWS; i++) { items.push(DS_GEN.buildQuestion(g, Math.random, null)); }
+    corpus[g] = items;
+  });
+
+  // ── S1 · radar contract ────────────────────────────────────────────────────
+  (function () {
+    var S = 'S1 · 雷达契约 Radar contract';
+    var codes = (window.RadarReader && RadarReader.GRADE_CODES) || [];
+
+    check(S, 'RadarReader 已加载（gradeCode 词表可核对）', codes.length > 0, 'GRADE_CODES = ' + codes.join(','));
+
+    var lg = C.LEVEL_GRADE || {};
+    var identity = Object.keys(lg).every(function (k) { return lg[k] === k; });
+    check(S, 'LEVEL_GRADE 是恒等映射（validate.js S2 按 gradeCode 查 levelMap）',
+      identity, JSON.stringify(lg));
+    check(S, 'LEVEL_GRADE 的键与 GRADE_ORDER 一致',
+      Object.keys(lg).sort().join(',') === GRADES.slice().sort().join(','),
+      Object.keys(lg).join(',') + ' vs ' + GRADES.join(','));
+    check(S, 'LEVEL_GRADE 每个键都是合法 gradeCode',
+      Object.keys(lg).every(function (k) { return codes.indexOf(k) >= 0; }));
+
+    check(S, '两个基因都上报且不重复',
+      (C.GENES || []).length === 2 &&
+      C.GENES.indexOf('RG.ATTENTION.SEARCH.VISUAL') >= 0 &&
+      C.GENES.indexOf('RG.LOGIC.COMPARISON.BASIC') >= 0 &&
+      uniq(C.GENES).length === 2, (C.GENES || []).join(' + '));
+
+    check(S, 'gradeConfig 恰好覆盖四个等级',
+      Object.keys(DS_DATA.gradeConfig).sort().join(',') === GRADES.slice().sort().join(','));
+
+    // Scan length must strictly rise: it is the axis every grade shares, so a
+    // flat or falling step would make two grades indistinguishable on it.
+    var lens = GRADES.map(function (g) { return DS_DATA.gradeConfig[g].length; });
+    var rising = lens.every(function (n, i) { return i === 0 || n > lens[i - 1]; });
+    check(S, '扫描长度严格递增', rising, lens.join(' → '));
+
+    // The claim that earns this module a gradeCode at all: no two adjacent
+    // grades are the same content with a different label.
+    var AXIS_KEYS = ['scanLoad', 'similarity', 'attributes', 'optionSpan'];
+    var allDiffer = true, steps = [];
+    for (var i = 1; i < GRADES.length; i++) {
+      var a = DS_DATA.gradeConfig[GRADES[i - 1]], b = DS_DATA.gradeConfig[GRADES[i]];
+      var moved = AXIS_KEYS.filter(function (k) { return a[k] !== b[k]; });
+      steps.push(GRADES[i - 1] + '→' + GRADES[i] + ': ' + (moved.join(', ') || 'NOTHING'));
+      if (!moved.length) { allDiffer = false; }
+    }
+    check(S, '相邻等级至少有一根声明轴发生变化', allDiffer, steps.join('\n'));
+
+    // Internal consistency between an axis value and the mechanic producing it.
+    var consistent = true, notes = [];
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g];
+      var spanOk = (cfg.optionSpan === 'all-slots') === (cfg.optionCount >= cfg.length);
+      var chOk = cfg.attributes === 'single'
+        ? (cfg.channels.length === 1 && cfg.channels[0] === 'identity')
+        : cfg.channels.indexOf('size') >= 0;
+      if (!spanOk || !chOk) { consistent = false; }
+      notes.push(g + ': optionSpan ' + (spanOk ? 'ok' : 'MISMATCH') + ' · channels ' + (chOk ? 'ok' : 'MISMATCH'));
+    });
+    check(S, 'optionSpan / channels 与机制自洽', consistent, notes.join('\n'));
+
+    var axisNames = ['scan_load', 'distractor_similarity', 'attribute_count', 'option_span', 'mismatch_channel'];
+    var axesOk = true, axisNotes = [];
+    GRADES.forEach(function (g) {
+      var ax = C.difficultyAxisFor(g, 'identity');
+      var keys = Object.keys(ax || {}).sort();
+      if (keys.join(',') !== axisNames.slice().sort().join(',')) { axesOk = false; }
+      if (ax.mismatch_channel !== 'identity') { axesOk = false; }
+      axisNotes.push(g + ': ' + keys.join(','));
+    });
+    check(S, 'difficultyAxisFor 五根轴齐全，base 行的 mismatch_channel 都是 identity',
+      axesOk, axisNotes.join('\n'));
+    check(S, 'channel=size 时 mismatch_channel 被精调为 size',
+      C.difficultyAxisFor('G2', 'size').mismatch_channel === 'size');
+    check(S, '未知等级返回 null（不猜）', C.difficultyAxisFor('G7', 'identity') === null);
+
+    var ctx = C.buildRadarContext('G1', 'identity');
+    check(S, 'buildRadarContext 带 gradeCode / moduleType / sourceGameId',
+      ctx.gradeCode === 'G1' && ctx.moduleType === 'mindseeds' &&
+      ctx.moduleId === 'difference-scout' && ctx.sourceGameId === 'difference-scout',
+      JSON.stringify({ gradeCode: ctx.gradeCode, moduleType: ctx.moduleType, levelId: ctx.levelId }));
+
+    // ── the captured shell config ──
+    var cfg = CAPTURED || {};
+    check(S, 'shell.createGame 被调用一次并捕获到 config', !!CAPTURED);
+    check(S, '四个单元，id 就是 gradeCode',
+      (cfg.units || []).map(function (u) { return u.id; }).join(',') === GRADES.join(','),
+      (cfg.units || []).map(function (u) { return u.id; }).join(','));
+    check(S, '每个单元都带 gradeCode（shell 才会画等级徽章）',
+      (cfg.units || []).every(function (u) { return u.gradeCode === u.id; }));
+    check(S, '每个单元一次出 SESSION_SIZE 题',
+      (cfg.units || []).every(function (u) { return u.questions.length === C.SESSION_SIZE; }),
+      'SESSION_SIZE = ' + C.SESSION_SIZE);
+    check(S, 'passScore = ceil(SESSION_SIZE × 0.75)，与 sessionPolicy 一致',
+      cfg.passScore === Math.ceil(C.SESSION_SIZE * 0.75), 'passScore = ' + cfg.passScore);
+    check(S, 'parallelUnits 为 true（四个等级可直接选）', cfg.parallelUnits === true);
+    check(S, 'registerRootGenes 返回两个基因',
+      uniq(cfg.registerRootGenes()).length === 2);
+    check(S, 'checkAnswer 认答案、拒错答案',
+      cfg.checkAnswer(3, { answer: 3 }) === true && cfg.checkAnswer('3', { answer: 3 }) === true &&
+      cfg.checkAnswer(2, { answer: 3 }) === false);
+
+    // getReportContext is what actually lands on the radar.
+    var rc = cfg.getReportContext({ unit: cfg.units[3] });
+    check(S, 'getReportContext 给出 G2 的 gradeCode / 通道 / puzzle runtime',
+      rc.gradeCode === 'G2' && rc.activityRuntime === 'puzzle' &&
+      rc.mismatchChannels.length >= 1 && rc.difficultyAxis !== null &&
+      rc.geneIds.length === 2,
+      JSON.stringify({ gradeCode: rc.gradeCode, dominant: rc.mismatchChannel,
+                       channels: rc.mismatchChannels, axis: rc.difficultyAxis }));
+    check(S, '主导通道确实是这批题里出现最多的那个',
+      (function () {
+        var q = cfg.units[3].questions, tally = {};
+        q.forEach(function (x) { tally[x.channel] = (tally[x.channel] || 0) + 1; });
+        var best = null;
+        Object.keys(tally).forEach(function (k) { if (!best || tally[k] > tally[best]) { best = k; } });
+        return rc.mismatchChannel === best;
+      })());
+  }());
+
+  // ── S2 · strip integrity ───────────────────────────────────────────────────
+  (function () {
+    var S = 'S2 · 条带完整性 Strip integrity';
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g], items = corpus[g];
+      var badLen = 0, badCount = 0, badIndex = 0, badSize = 0, dupIcons = 0, sizesSeen = {};
+
+      items.forEach(function (q) {
+        if (q.left.length !== cfg.length || q.right.length !== cfg.length) { badLen++; }
+        var d = diffSlots(q);
+        if (d.length !== 1) { badCount++; }
+        else if (d[0] + 1 !== q.answer) { badIndex++; }
+        if (uniq(iconsOf(q.left)).length !== q.left.length) { dupIcons++; }
+        q.left.concat(q.right).forEach(function (c) {
+          if (DS_DATA.sizes.indexOf(c.size) < 0) { badSize++; }
+          sizesSeen[c.size] = true;
+        });
+      });
+
+      check(S, g + ' · 两列长度都等于 gradeConfig.length', badLen === 0,
+        'length = ' + cfg.length + ' · 违例 ' + badLen + '/' + DRAWS);
+      check(S, g + ' · 恰好一格不同', badCount === 0, '违例 ' + badCount + '/' + DRAWS);
+      check(S, g + ' · 不同的那一格就是 answer（1-based）', badIndex === 0, '违例 ' + badIndex + '/' + DRAWS);
+      check(S, g + ' · 左列图案互不重复（重复会造出第二处“看起来一样”）',
+        dupIcons === 0, '违例 ' + dupIcons + '/' + DRAWS);
+      check(S, g + ' · 所有 size 取值都在 DS_DATA.sizes 里', badSize === 0);
+
+      // A single-attribute grade must not vary size at all: if it did, its
+      // attribute_count: 'single' claim would be false and it would silently be
+      // as hard as G2.
+      var seen = Object.keys(sizesSeen).sort().join(',');
+      if (cfg.attributes === 'single') {
+        check(S, g + ' · single 等级的大小恒定（只有 m）', seen === 'm', 'sizes seen: ' + seen);
+      } else {
+        check(S, g + ' · dual 等级三档大小都真的出现', seen === DS_DATA.sizes.slice().sort().join(','),
+          'sizes seen: ' + seen);
+      }
+    });
+  }());
+
+  // ── S3 · options ───────────────────────────────────────────────────────────
+  (function () {
+    var S = 'S3 · 候选序号 Options';
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g], items = corpus[g];
+      var missing = 0, dup = 0, unsorted = 0, outOfRange = 0, wrongCount = 0;
+      var expect = Math.min(cfg.optionCount, cfg.length);
+
+      items.forEach(function (q) {
+        if (q.options.indexOf(q.answer) < 0) { missing++; }
+        if (uniq(q.options).length !== q.options.length) { dup++; }
+        for (var i = 1; i < q.options.length; i++) {
+          if (q.options[i] <= q.options[i - 1]) { unsorted++; break; }
+        }
+        if (q.options.some(function (o) { return o < 1 || o > cfg.length; })) { outOfRange++; }
+        if (q.options.length !== expect) { wrongCount++; }
+      });
+
+      check(S, g + ' · 答案一定在候选里', missing === 0, '违例 ' + missing + '/' + DRAWS);
+      check(S, g + ' · 候选不重复', dup === 0, '违例 ' + dup);
+      check(S, g + ' · 候选升序（序号是位置，乱序会考读题而不是观察）', unsorted === 0, '违例 ' + unsorted);
+      check(S, g + ' · 候选都在 1..length 内', outOfRange === 0, '违例 ' + outOfRange);
+      check(S, g + ' · 候选个数 = ' + expect, wrongCount === 0, '违例 ' + wrongCount);
+    });
+  }());
+
+  // ── S4 · positional bias ───────────────────────────────────────────────────
+  (function () {
+    var S = 'S4 · 位置无捷径 No positional shortcut';
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g], items = corpus[g];
+      var slots = {}, ranks = {};
+      for (var i = 1; i <= cfg.length; i++) { slots[i] = 0; }
+      for (var r = 0; r < Math.min(cfg.optionCount, cfg.length); r++) { ranks[r] = 0; }
+
+      items.forEach(function (q) {
+        slots[q.answer]++;
+        ranks[q.options.indexOf(q.answer)]++;
+      });
+
+      var slotDev = maxDeviation(slots, 100 / cfg.length, DRAWS);
+      var rankDev = maxDeviation(ranks, 100 / Math.min(cfg.optionCount, cfg.length), DRAWS);
+
+      check(S, g + ' · 答案格位置均匀（偏差 ≤ ' + SLOT_TOL + 'pp）', slotDev <= SLOT_TOL,
+        '最大偏差 ' + slotDev.toFixed(2) + 'pp · ' +
+        Object.keys(slots).map(function (k) { return k + ':' + slots[k]; }).join(' '));
+      check(S, g + ' · 答案在候选中的次序均匀（偏差 ≤ ' + RANK_TOL + 'pp）', rankDev <= RANK_TOL,
+        '最大偏差 ' + rankDev.toFixed(2) + 'pp · ' +
+        Object.keys(ranks).map(function (k) { return '#' + (Number(k) + 1) + ':' + ranks[k]; }).join(' '));
+    });
+  }());
+
+  // ── S5 · declared similarity is what gets drawn ────────────────────────────
+  (function () {
+    var S = 'S5 · 相似度诚实性 Similarity honesty';
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g], items = corpus[g];
+      var wrong = 0, leaked = 0, samples = [];
+
+      items.forEach(function (q) {
+        var i = q.answer - 1;
+        var a = q.left[i].icon, b = q.right[i].icon;
+        var fam = familyOf(a);
+        var strip = iconsOf(q.left);
+
+        if (q.channel === 'size') {
+          // The strip itself must carry a declared pair — that is what makes a
+          // size-channel item still a 'near-pair' item and not just "one cell
+          // is a bit bigger".
+          var hasPair = (fam.nearPairs || []).some(function (p) {
+            return strip.indexOf(p[0]) >= 0 && strip.indexOf(p[1]) >= 0;
+          });
+          if (a !== b || !hasPair) { wrong++; }
+          return;
+        }
+
+        if (cfg.similarity === 'cross-family') {
+          var famB = familyOf(b);
+          if (!famB || famB.id === fam.id) { wrong++; }
+        } else if (cfg.similarity === 'same-family') {
+          if (fam.icons.indexOf(b) < 0 || DS_GEN.isNearPair(fam, a, b)) { wrong++; }
+        } else { // near-pair
+          if (!DS_GEN.isNearPair(fam, a, b)) { wrong++; }
+        }
+        // The swapped-in icon must not already be in the left strip, or the
+        // right strip shows it twice and points at the answer.
+        if (strip.indexOf(b) >= 0) { leaked++; }
+        if (samples.length < 3) { samples.push(a + '→' + b + ' (' + fam.id + ')'); }
+      });
+
+      check(S, g + ' · 抽到的差异符合声明的 ' + cfg.similarity, wrong === 0,
+        '违例 ' + wrong + '/' + DRAWS + (samples.length ? ' · 例：' + samples.join(' · ') : ''));
+      check(S, g + ' · 替换项不会在左列里已经出现（否则右列重复图案泄题）', leaked === 0,
+        '违例 ' + leaked + '/' + DRAWS);
+    });
+  }());
+
+  // ── S6 · mismatch channels ─────────────────────────────────────────────────
+  (function () {
+    var S = 'S6 · 差异通道 Mismatch channel';
+    GRADES.forEach(function (g) {
+      var cfg = DS_DATA.gradeConfig[g], items = corpus[g];
+      var tally = {}, badStep = 0, sizeKept = 0;
+
+      items.forEach(function (q) {
+        tally[q.channel] = (tally[q.channel] || 0) + 1;
+        var i = q.answer - 1;
+        var l = q.left[i], r = q.right[i];
+        if (q.channel === 'size') {
+          var d = Math.abs(DS_DATA.sizes.indexOf(l.size) - DS_DATA.sizes.indexOf(r.size));
+          if (d !== 1) { badStep++; }
+        } else if (l.size !== r.size) {
+          sizeKept++;
+        }
+      });
+
+      var drawn = Object.keys(tally).sort();
+      check(S, g + ' · 只抽 gradeConfig.channels 声明的通道',
+        drawn.every(function (c) { return cfg.channels.indexOf(c) >= 0; }),
+        drawn.map(function (c) { return c + ':' + tally[c]; }).join(' '));
+
+      if (cfg.channels.length === 1) {
+        check(S, g + ' · 单通道等级只有 identity', drawn.join(',') === 'identity');
+      } else {
+        var both = cfg.channels.every(function (c) { return (tally[c] || 0) >= DRAWS * 0.2; });
+        check(S, g + ' · 两个通道都以可观比例出现（各 ≥20%）', both,
+          cfg.channels.map(function (c) { return c + ':' + (tally[c] || 0); }).join(' '));
+      }
+      check(S, g + ' · size 差异永远只差一档', badStep === 0, '违例 ' + badStep);
+      check(S, g + ' · identity 差异不改大小（否则一题两处线索）', sizeKept === 0, '违例 ' + sizeKept);
+    });
+  }());
+
+  // ── S7 · variety and replay ────────────────────────────────────────────────
+  (function () {
+    var S = 'S7 · 可反复训练 Variety and replay';
+    GRADES.forEach(function (g) {
+      var fams = uniq(corpus[g].map(function (q) { return q.familyId; }));
+      check(S, g + ' · ' + DRAWS + ' 次抽样用到全部 6 个图案族',
+        fams.length === DS_DATA.families.length, fams.sort().join(','));
+    });
+
+    // A run of 8 should not read as one long fruit salad.
+    var adjacent = 0, runs = 200;
+    for (var i = 0; i < runs; i++) {
+      var sess = DS_GEN.generate('G2', C.SESSION_SIZE);
+      for (var j = 1; j < sess.length; j++) {
+        if (sess[j].familyId === sess[j - 1].familyId) { adjacent++; }
+      }
+    }
+    check(S, '一次会话内相邻两题不用同一个图案族', adjacent === 0,
+      runs + ' 次会话 · 违例 ' + adjacent);
+
+    // The repeatability claim, made checkable: this is why data.js stopped
+    // holding finished questions.
+    var a = JSON.stringify(DS_GEN.generate('K2', C.SESSION_SIZE));
+    var b = JSON.stringify(DS_GEN.generate('K2', C.SESSION_SIZE));
+    check(S, '连续两次会话内容不同（无静态题库）', a !== b);
+
+    var s1 = JSON.stringify(DS_GEN.generate('G1', 8, 12345));
+    var s2 = JSON.stringify(DS_GEN.generate('G1', 8, 12345));
+    var s3 = JSON.stringify(DS_GEN.generate('G1', 8, 999));
+    check(S, '同一 seed 完全复现（审计可重放）', s1 === s2);
+    check(S, '不同 seed 给出不同抽样', s1 !== s3);
+  }());
+
+  // ── S8 · vocabulary integrity ──────────────────────────────────────────────
+  (function () {
+    var S = 'S8 · 词表完整性 Vocabulary integrity';
+    var fams = DS_DATA.families;
+    var maxLen = Math.max.apply(null, GRADES.map(function (g) { return DS_DATA.gradeConfig[g].length; }));
+
+    check(S, '六个图案族', fams.length === 6, fams.map(function (f) { return f.id; }).join(','));
+
+    // Why +1: on the identity channel the near-pair partner is held OUT of the
+    // strip, so the strip needs one spare icon beyond the longest grade.
+    var tooSmall = fams.filter(function (f) { return f.icons.length < maxLen + 1; });
+    check(S, '每族图案数 ≥ 最长等级 + 1（近似对伙伴要留在条带外）',
+      tooSmall.length === 0,
+      'max length ' + maxLen + ' · ' + fams.map(function (f) { return f.id + ':' + f.icons.length; }).join(' '));
+
+    var dupWithin = fams.filter(function (f) { return uniq(f.icons).length !== f.icons.length; });
+    check(S, '族内图案不重复', dupWithin.length === 0,
+      dupWithin.map(function (f) { return f.id; }).join(','));
+
+    // Disjointness is load-bearing: 'cross-family' is DEFINED as "the
+    // replacement comes from another family".
+    var seen = {}, shared = [];
+    fams.forEach(function (f) {
+      f.icons.forEach(function (ic) {
+        if (seen[ic]) { shared.push(ic + ' (' + seen[ic] + ' & ' + f.id + ')'); }
+        seen[ic] = f.id;
+      });
+    });
+    check(S, '各族互不相交', shared.length === 0, shared.join(' · '));
+
+    var badPair = [], multiPair = [];
+    fams.forEach(function (f) {
+      var appearances = {};
+      (f.nearPairs || []).forEach(function (p) {
+        p.forEach(function (ic) {
+          if (f.icons.indexOf(ic) < 0) { badPair.push(f.id + ':' + ic); }
+          appearances[ic] = (appearances[ic] || 0) + 1;
+          if (appearances[ic] > 1) { multiPair.push(f.id + ':' + ic); }
+        });
+      });
+      check(S, f.id + ' · 声明了 ' + (f.nearPairs || []).length + ' 对近似对',
+        (f.nearPairs || []).length >= 3,
+        (f.nearPairs || []).map(function (p) { return p.join('/'); }).join(' '));
+    });
+    check(S, '近似对的成员都在本族图案里', badPair.length === 0, badPair.join(','));
+    // same-family excludes a target's declared partners from the candidate pool;
+    // an icon in two pairs would shrink that pool unpredictably.
+    check(S, '同一图案最多出现在一对近似对里', multiPair.length === 0, multiPair.join(','));
+
+    check(S, '四个等级都有单元卡文案',
+      GRADES.every(function (g) {
+        var u = DS_DATA.units[g];
+        return u && u.nameZh && u.nameEn && u.descZh && u.descEn && u.icon;
+      }));
+    check(S, '三种相似度都有提示文案',
+      ['cross-family', 'same-family', 'near-pair'].every(function (k) {
+        var h = DS_DATA.similarityHints[k];
+        return h && h.zh && h.en;
+      }));
+    check(S, '每题都带中英提示',
+      GRADES.every(function (g) {
+        return corpus[g].every(function (q) { return !!q.hintZh && !!q.hintEn; });
+      }));
+  }());
+
+  // ── render ────────────────────────────────────────────────────────────────
+
+  var bySuite = {}, order = [];
+  results.forEach(function (r) {
+    if (!bySuite[r.suite]) { bySuite[r.suite] = []; order.push(r.suite); }
+    bySuite[r.suite].push(r);
+  });
+
+  var nOk = 0, nWarn = 0, nFail = 0;
+  results.forEach(function (r) {
+    if (r.level === 'fail') { nFail++; } else if (r.level === 'warn') { nWarn++; } else { nOk++; }
+  });
+
+  var html = '';
+  order.forEach(function (suite) {
+    html += '<div class="suite"><div class="suite-title">' + suite + '</div>';
+    bySuite[suite].forEach(function (r) {
+      var badge = r.level === 'fail' ? '<span class="badge badge-fail">FAIL</span>'
+                : r.level === 'warn' ? '<span class="badge badge-warn">WARN</span>'
+                                     : '<span class="badge badge-ok">PASS</span>';
+      html += '<div class="tpl"><div class="tpl-id">' + badge + ' ' + r.name + '</div>' +
+              (r.detail ? '<pre class="stat ' + (r.level === 'fail' ? 'fail' : '') + '">' +
+                          String(r.detail).replace(/</g, '&lt;') + '</pre>' : '') +
+              '</div>';
+    });
+    html += '</div>';
+  });
+
+  // One reproducible session per grade, so a human can eyeball what the
+  // generator actually produces rather than trusting the counters above.
+  html += '<div class="suite"><div class="suite-title">抽样明细 Sample session (seed 4242)</div>';
+  GRADES.forEach(function (g) {
+    var rows = DS_GEN.generate(g, C.SESSION_SIZE, 4242).map(function (q, i) {
+      var l = q.left.map(function (c) { return c.icon + c.size; }).join(' ');
+      var r = q.right.map(function (c) { return c.icon + c.size; }).join(' ');
+      return String(i + 1) + '. [' + q.familyId + ' · ' + q.channel + '] ans=' + q.answer +
+             ' opts=' + q.options.join(',') + '\n    L: ' + l + '\n    R: ' + r;
+    });
+    html += '<div class="tpl"><div class="tpl-id">' + g + ' · ' + DS_DATA.units[g].nameEn +
+            ' · ' + DS_DATA.gradeConfig[g].length + ' slots · ' +
+            DS_DATA.gradeConfig[g].similarity + '</div>' +
+            '<pre class="stat">' + rows.join('\n') + '</pre></div>';
+  });
+  html += '</div>';
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('sum-out').innerHTML =
+    '<span class="badge badge-ok">PASS ' + nOk + '</span>' +
+    '<span class="badge badge-warn">WARN ' + nWarn + '</span>' +
+    '<span class="badge badge-fail">FAIL ' + nFail + '</span>' +
+    ' — ' + GRADES.length + ' grades × ' + DRAWS + ' sampled items';
+}());
+</script>
+</body>
+</html>

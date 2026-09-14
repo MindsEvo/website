@@ -1,0 +1,78 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-11",
+  "moduleType": "clio",
+  "id": "find-it",
+  "series": "studio",
+  "canonicalUrl": "/metadata/clio/find-it.json",
+  "title": { "zh": "寻找游戏", "en": "Find It" },
+  "description": {
+    "zh": "在一块散布着各种物品的画面里持续点击目标物品，目标可重复出现且不给出具体数量，直到全部找完为止。K1/K2 两个等级只改变搜索板的大小与密度，玩法本身不变。",
+    "en": "Tap target items scattered across a scene, over and over, until every instance is found — targets may repeat and no exact count is ever shown. K1/K2 only change how big and dense the search board is; the mechanic itself never changes."
+  },
+  "designModel": {
+    "zh": "单一难度轴模型：K1/K2 之间没有新机制、没有新场景，只有 data.js 的 GRADE_CONFIG 从更少更稀疏的板面变成更多更密的板面。镜像 ufo-math-workshop 的最小等级阶梯做法。",
+    "en": "Single-axis design: K1 and K2 add no new mechanic and no new scene — only data.js's GRADE_CONFIG moves from a sparser, smaller board to a denser, larger one. Mirrors ufo-math-workshop's minimal grade-ladder approach."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 6,
+    "noteZh": "对应幼儿园 K1/K2 两个年龄段，与 data.js 的 GRADE_CONFIG 键一一对应。",
+    "noteEn": "Maps to kindergarten grades K1/K2, matching data.js's GRADE_CONFIG keys one-to-one."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属 Clio 叙事驱动小游戏工坊，与小精灵系列的找不同侦探共用 RG.ATTENTION.SEARCH.VISUAL，但分工明确：找不同侦探在成对条带里找恰好一个不同之处（位置未知，题量大而讲解轻，高频快循环）；本模块在一块开放场景里找若干个目标物品（数量未知，一次完整搜索是一整个叙事回合）。",
+    "policyEn": "This module belongs to Clio, the narrative-driven game workshop series. It shares RG.ATTENTION.SEARCH.VISUAL with MindSeeds's difference-scout, but the split is clear: difference-scout searches paired strips for exactly one difference at an unknown position — many items, light explanation, fast repeatable cycles. This module searches one open scene for an unknown number of target instances — a full search is one narrative round, not a drilled item."
+  },
+  "geneReporting": {
+    "ruleZh": "每次完整的一轮搜索结束（全部目标找齐）都会上报两个基因各一次：RG.ATTENTION.SEARCH.VISUAL（在干扰项中持续寻找并确认目标）与 RG.LOGIC.COMPARISON.BASIC（每次点击都是把当前物品与目标清单做比对判断）。不按每次点击上报，按整轮上报。",
+    "ruleEn": "Every finished search round (every target instance found) reports both genes exactly once: RG.ATTENTION.SEARCH.VISUAL (sustained search for and confirmation of targets among distractors) and RG.LOGIC.COMPARISON.BASIC (each tap is a same/different judgement against the target list). Reported per finished round, not per tap.",
+    "geneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"]
+  },
+  "rootGeneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"],
+  "rootGeneScopeNote": {
+    "zh": "这是仓库里第一个真实运行并上报 RG.ATTENTION.SEARCH.VISUAL 的 Clio 模块，与小精灵系列的找不同侦探共同为 ATTENTION 这一支雷达辐条提供数据。",
+    "en": "This is the first Clio module that actually runs and reports RG.ATTENTION.SEARCH.VISUAL, feeding the ATTENTION radar spoke alongside MindSeeds's difference-scout."
+  },
+  "difficultyAxes": [
+    {
+      "id": "boardSize",
+      "zh": "搜索板大小",
+      "en": "Board Size",
+      "progression": ["small", "large"],
+      "noteZh": "唯一的难度轴。K1 目标种类更少、总物品数更少、间距更大；K2 目标种类更多、总物品数更多、间距更小；镜像 data.js 的 GRADE_CONFIG 与 game.js 的 difficultyAxisFor()。",
+      "noteEn": "The only difficulty axis. K1 has fewer target types, fewer total items, and more spacing; K2 has more of each and tighter spacing; mirrors data.js's GRADE_CONFIG and game.js's difficultyAxisFor()."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.6,
+    "noteZh": "一次会话的物品总数随等级变化（K1 8 个、K2 12 个），这里给出 K2 的上限作为会话规模的参考。游戏本身没有失败状态，通过率 0.6 只用于上报时把点击准确率折算为 pass/fail，不影响回合本身的完成。",
+    "noteEn": "The total items per session varies by grade (8 at K1, 12 at K2); this records K2's ceiling as the session-scale reference. The game itself has no fail state — the 0.6 pass ratio only converts tap accuracy into a pass/fail result for reporting, and never blocks a round from completing."
+  },
+  "levelMap": [
+    {
+      "levelId": "K1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "在较小的搜索板上找出 2 类目标物品的全部实例。",
+      "objectiveEn": "Find every instance of 2 target item types on a smaller search board.",
+      "axisValues": { "boardSize": "small" },
+      "status": "implemented",
+      "implementedBy": ["clio-find-it-workshop"],
+      "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "K2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "在较大更密的搜索板上找出 3 类目标物品的全部实例。",
+      "objectiveEn": "Find every instance of 3 target item types on a larger, denser search board.",
+      "axisValues": { "boardSize": "large" },
+      "status": "implemented",
+      "implementedBy": ["clio-find-it-workshop"],
+      "implementedModes": ["puzzle"]
+    }
+  ],
+  "tags": ["find-it", "clio", "attention", "visual-search", "ai-readable"]
+}

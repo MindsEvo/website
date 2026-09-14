@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>UFO Moon Adventure — Automated Validation</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    h1   { font-size: 18px; color: #c4b5fd; margin-bottom: 4px; }
+    h2   { font-size: 13px; color: #94a3b8; font-weight: 400; margin-bottom: 24px; }
+    .suite  { margin-bottom: 32px; }
+    .suite-title { font-size: 15px; font-weight: 700; color: #f1f5f9; background: #1e293b;
+                   padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;
+                   border-left: 3px solid #a78bfa; }
+    .tpl    { margin-bottom: 12px; padding: 10px 14px; background: #1e293b;
+              border-radius: 8px; border: 1px solid #334155; }
+    .tpl-id { font-size: 12px; color: #ddd6fe; margin-bottom: 4px; }
+    .pass   { color: #4ade80; }
+    .fail   { color: #f87171; }
+    .warn   { color: #fbbf24; }
+    .stat   { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    #summary { position: sticky; top: 0; background: #0f172a; padding: 12px 0;
+               border-bottom: 1px solid #1e293b; margin-bottom: 20px; z-index: 10; }
+    .sum-row { font-size: 14px; }
+    .badge { display:inline-block; border-radius:4px; padding:2px 8px; font-size:12px;
+             font-weight:700; margin-right:6px; }
+    .badge-ok   { background:#166534; color:#4ade80; }
+    .badge-fail { background:#7f1d1d; color:#f87171; }
+    .badge-warn { background:#78350f; color:#fbbf24; }
+    pre { margin:0; font-size:11px; line-height:1.5; white-space:pre-wrap; }
+    #stubDom { display: none; }
+  </style>
+</head>
+<body>
+
+<div id="summary">
+  <h1>🛸 UFO Moon Adventure — Validation Suite</h1>
+  <h2>This module has one difficulty axis (numberRange) and no static bank — data.js's
+      _oneQ/_opts generate every question — so this page samples the generator the way
+      difference-scout's test.html samples generator.js. Checked: the radar contract
+      exposed as window.UFO_MATH_CONTRACT, GRADE_CONFIG's K1/K2 shape, in-range
+      operand/answer generation, and option-pool construction. Smaller than
+      difference-scout's suite — this module has one axis, not five.</h2>
+  <div id="sum-out" class="sum-row">Loading…</div>
+</div>
+
+<div id="results"></div>
+
+<!-- game.js's init() runs unconditionally and touches every element by id, plus
+     ClioAudio — stub both so the module can load headless, the way difference-scout's
+     page stubs `shell` to capture createGame's config without a real DOM game. -->
+<div id="stubDom">
+  <span id="titleText"></span><span id="subtitleText"></span>
+  <button id="langBtn"></button><button id="gradeBtn"></button>
+  <button id="musicBtn"></button><button id="sfxBtn"></button><button id="voiceBtn"></button>
+  <button id="resetBtn"></button>
+  <span id="attemptLabel"></span><span id="attemptCount"></span>
+  <span id="bestLabel"></span><span id="bestScore"></span>
+  <div id="sceneSky"></div><div id="sceneMath"></div><div id="sceneMoon"></div><div id="sceneFail"></div>
+  <div id="starsLayer"></div>
+  <div id="ufoArea" tabindex="0"></div><div id="ufoDisc"></div><div id="charBubble"></div>
+  <p id="skyHint"></p>
+  <span id="mathCharBadge"></span><div id="progStrip"></div><span id="qCounter"></span>
+  <div id="qEquation"></div><div id="optsGrid"></div><p id="mathMsg"></p>
+  <div id="moonStars"></div><div id="moonChar"></div><div id="moonItems"></div>
+  <p id="moonTitle"></p><p id="moonSub"></p><button id="playAgainBtn"></button>
+  <div id="failChar"></div><p id="failScore"></p><p id="failSub"></p><button id="retryBtn"></button>
+</div>
+
+<script>
+  window.ClioAudio = {
+    init: function () {}, setLang: function () {}, speak: function () {}, sfx: function () {},
+    startBgm: function () {}, stopBgm: function () {},
+    bindMusicBtn: function () {}, bindSfxBtn: function () {}, bindVoiceBtn: function () {}
+  };
+</script>
+<script src="./data.js"></script>
+<script src="./game.js"></script>
+<script>
+(function () {
+  var C    = window.UFO_MATH_CONTRACT || {};
+  var DATA = window.CLIO_UFO_MATH_DATA;
+  var GRADES = ['K1', 'K2'];
+
+  // Sample size for the range checks — enough to make an off-by-one in the
+  // K1/K2 boundary show up reliably without difference-scout's variance
+  // suites (S4-S6 there): this module has no positional or similarity claims
+  // to audit, just "stay in range."
+  var DRAWS = 500;
+
+  var results = [];
+  function rec(suite, level, name, detail) {
+    results.push({ suite: suite, level: level, name: name, detail: detail || '' });
+  }
+  function check(suite, name, ok, detail) {
+    rec(suite, ok ? 'pass' : 'fail', name, detail);
+    return ok;
+  }
+  function uniq(a) { return a.filter(function (v, i, s) { return s.indexOf(v) === i; }); }
+
+  // ── S1 · radar contract ────────────────────────────────────────────────────
+  (function () {
+    var S = 'S1 · 雷达契约 Radar contract';
+
+    check(S, 'window.UFO_MATH_CONTRACT 已暴露', !!window.UFO_MATH_CONTRACT);
+    check(S, 'MODULE_ID / MODULE_TYPE / SOURCE_GAME_ID 齐全',
+      C.MODULE_ID === 'ufo-math' && C.MODULE_TYPE === 'clio' &&
+      C.SOURCE_GAME_ID === 'clio-ufo-math-workshop',
+      JSON.stringify({ MODULE_ID: C.MODULE_ID, MODULE_TYPE: C.MODULE_TYPE, SOURCE_GAME_ID: C.SOURCE_GAME_ID }));
+
+    var lg = C.LEVEL_GRADE || {};
+    var identity = Object.keys(lg).every(function (k) { return lg[k] === k; });
+    check(S, 'LEVEL_GRADE 是恒等映射（validate.js S2 按 gradeCode 查 levelMap）',
+      identity, JSON.stringify(lg));
+    check(S, 'LEVEL_GRADE 的键恰好是 K1/K2',
+      Object.keys(lg).sort().join(',') === GRADES.slice().sort().join(','),
+      Object.keys(lg).join(','));
+
+    check(S, '恰好一个基因，且是 RG.MATH.NUMBER_SENSE.BASIC',
+      (C.GENES || []).length === 1 && C.GENES[0] === 'RG.MATH.NUMBER_SENSE.BASIC',
+      JSON.stringify(C.GENES));
+
+    var axesOk = true, axisNotes = [];
+    GRADES.forEach(function (g) {
+      var ax = C.difficultyAxisFor(g);
+      var keys = Object.keys(ax || {});
+      if (keys.join(',') !== 'numberRange') { axesOk = false; }
+      axisNotes.push(g + ': ' + JSON.stringify(ax));
+    });
+    check(S, 'difficultyAxisFor 每个等级只有 numberRange 一根轴', axesOk, axisNotes.join(' · '));
+    check(S, 'K1 → within-5，K2 → within-10（与 metadata/clio/ufo-math.json 的 progression 一致）',
+      C.difficultyAxisFor('K1').numberRange === 'within-5' &&
+      C.difficultyAxisFor('K2').numberRange === 'within-10');
+    check(S, '未知等级返回 null（不猜）', C.difficultyAxisFor('G1') === null);
+  }());
+
+  // ── S2 · GRADE_CONFIG shape ─────────────────────────────────────────────────
+  (function () {
+    var S = 'S2 · 等级配置 GRADE_CONFIG';
+    var cfg = DATA.GRADE_CONFIG || {};
+
+    check(S, 'GRADE_CONFIG 恰好覆盖 K1/K2',
+      Object.keys(cfg).sort().join(',') === GRADES.slice().sort().join(','),
+      Object.keys(cfg).join(','));
+    check(S, 'K1.max < K2.max（唯一难度轴必须真的变难）',
+      cfg.K1 && cfg.K2 && cfg.K1.max < cfg.K2.max,
+      'K1.max=' + (cfg.K1 && cfg.K1.max) + ' K2.max=' + (cfg.K2 && cfg.K2.max));
+    check(S, 'K1.max = 5，K2.max = 10（与 difficultyAxisFor 的 within-5/within-10 对应）',
+      cfg.K1.max === 5 && cfg.K2.max === 10);
+    check(S, 'TOTAL_QUESTIONS = 5，PASS_THRESHOLD = 3（与 metadata sessionPolicy 的 0.6 通过率一致）',
+      DATA.TOTAL_QUESTIONS === 5 && DATA.PASS_THRESHOLD === 3);
+  }());
+
+  // ── S3 · question generation (_oneQ) ────────────────────────────────────────
+  (function () {
+    var S = 'S3 · 出题范围 Question range';
+    GRADES.forEach(function (g) {
+      var max = DATA.GRADE_CONFIG[g].max;
+      var badOperand = 0, badAns = 0, badOp = 0, negAns = 0;
+
+      for (var i = 0; i < DRAWS; i++) {
+        var q = DATA._oneQ(max);
+        if (q.a < 0 || q.a > max || q.b < 0 || q.b > max) { badOperand++; }
+        if (q.op !== '+' && q.op !== '−') { badOp++; }
+        if (q.ans < 0 || q.ans > max) { badAns++; }
+        if (q.op === '−' && q.ans < 0) { negAns++; }
+        var computed = q.op === '+' ? q.a + q.b : q.a - q.b;
+        if (computed !== q.ans) { badAns++; }
+      }
+
+      check(S, g + ' (max=' + max + ') · 运算数都在 0..max 内', badOperand === 0,
+        '违例 ' + badOperand + '/' + DRAWS);
+      check(S, g + ' · 运算符只有 + 或 −', badOp === 0, '违例 ' + badOp + '/' + DRAWS);
+      check(S, g + ' · 答案在 0..max 内且等于 a ' + '(+/−)' + ' b', badAns === 0,
+        '违例 ' + badAns + '/' + DRAWS);
+      check(S, g + ' · 减法不产生负数答案', negAns === 0, '违例 ' + negAns + '/' + DRAWS);
+    });
+  }());
+
+  // ── S4 · options (_opts) ────────────────────────────────────────────────────
+  (function () {
+    var S = 'S4 · 候选项 Options';
+    GRADES.forEach(function (g) {
+      var max = DATA.GRADE_CONFIG[g].max;
+      var missing = 0, dup = 0, outOfRange = 0, wrongCount = 0;
+
+      for (var i = 0; i < DRAWS; i++) {
+        var ans = Math.floor(Math.random() * (max + 1));
+        var opts = DATA._opts(ans, max);
+        if (opts.indexOf(ans) < 0) { missing++; }
+        if (uniq(opts).length !== opts.length) { dup++; }
+        if (opts.some(function (o) { return o < 0 || o > max; })) { outOfRange++; }
+        if (opts.length !== 4) { wrongCount++; }
+      }
+
+      check(S, g + ' · 候选恰好 4 个', wrongCount === 0, '违例 ' + wrongCount + '/' + DRAWS);
+      check(S, g + ' · 候选都不重复', dup === 0, '违例 ' + dup + '/' + DRAWS);
+      check(S, g + ' · 正确答案一定在候选里', missing === 0, '违例 ' + missing + '/' + DRAWS);
+      check(S, g + ' · 候选都在 0..max 内', outOfRange === 0, '违例 ' + outOfRange + '/' + DRAWS);
+    });
+  }());
+
+  // ── S5 · makeQuestions / unknown grade fallback ─────────────────────────────
+  (function () {
+    var S = 'S5 · 出题批次 makeQuestions';
+    GRADES.forEach(function (g) {
+      var qs = DATA.makeQuestions(DATA.TOTAL_QUESTIONS, g);
+      check(S, g + ' · 一次出 TOTAL_QUESTIONS 道题', qs.length === DATA.TOTAL_QUESTIONS,
+        'got ' + qs.length);
+      check(S, g + ' · 每题都带 4 个候选与正确答案', qs.every(function (q) {
+        return q.opts.length === 4 && q.opts.indexOf(q.ans) >= 0;
+      }));
+    });
+    check(S, '未知等级回退到 K2 的数字范围（不崩溃）',
+      DATA.makeQuestions(1, 'G7')[0].ans <= DATA.GRADE_CONFIG.K2.max);
+  }());
+
+  // ── render ────────────────────────────────────────────────────────────────
+
+  var bySuite = {}, order = [];
+  results.forEach(function (r) {
+    if (!bySuite[r.suite]) { bySuite[r.suite] = []; order.push(r.suite); }
+    bySuite[r.suite].push(r);
+  });
+
+  var nOk = 0, nWarn = 0, nFail = 0;
+  results.forEach(function (r) {
+    if (r.level === 'fail') { nFail++; } else if (r.level === 'warn') { nWarn++; } else { nOk++; }
+  });
+
+  var html = '';
+  order.forEach(function (suite) {
+    html += '<div class="suite"><div class="suite-title">' + suite + '</div>';
+    bySuite[suite].forEach(function (r) {
+      var badge = r.level === 'fail' ? '<span class="badge badge-fail">FAIL</span>'
+                : r.level === 'warn' ? '<span class="badge badge-warn">WARN</span>'
+                                     : '<span class="badge badge-ok">PASS</span>';
+      html += '<div class="tpl"><div class="tpl-id">' + badge + ' ' + r.name + '</div>' +
+              (r.detail ? '<pre class="stat ' + (r.level === 'fail' ? 'fail' : '') + '">' +
+                          String(r.detail).replace(/</g, '&lt;') + '</pre>' : '') +
+              '</div>';
+    });
+    html += '</div>';
+  });
+
+  // One reproducible batch per grade, so a human can eyeball what the
+  // generator actually produces rather than trusting the counters above.
+  html += '<div class="suite"><div class="suite-title">抽样明细 Sample run</div>';
+  GRADES.forEach(function (g) {
+    var rows = DATA.makeQuestions(DATA.TOTAL_QUESTIONS, g).map(function (q, i) {
+      return String(i + 1) + '. ' + q.a + ' ' + q.op + ' ' + q.b + ' = ' + q.ans +
+             '  opts=' + q.opts.join(',');
+    });
+    html += '<div class="tpl"><div class="tpl-id">' + g + ' · max=' + DATA.GRADE_CONFIG[g].max + '</div>' +
+            '<pre class="stat">' + rows.join('\n') + '</pre></div>';
+  });
+  html += '</div>';
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('sum-out').innerHTML =
+    '<span class="badge badge-ok">PASS ' + nOk + '</span>' +
+    '<span class="badge badge-warn">WARN ' + nWarn + '</span>' +
+    '<span class="badge badge-fail">FAIL ' + nFail + '</span>' +
+    ' — ' + GRADES.length + ' grades × ' + DRAWS + ' sampled items';
+}());
+</script>
+</body>
+</html>
