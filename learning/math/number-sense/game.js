@@ -50,6 +50,8 @@
       '.ns-flash-pair{display:flex;gap:28px;align-items:center;justify-content:center;}',
       '.ns-dot-group{padding:8px;border-radius:12px;background:#fffbeb;border:1px dashed #fcd34d;}',
       '.ns-dots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:190px;}',
+      '.ns-dot-rows{display:flex;flex-direction:column;gap:6px;align-items:center;}',
+      '.ns-dot-rows .ns-dots{flex-wrap:nowrap;max-width:none;}',
       '.ns-dot{width:16px;height:16px;border-radius:50%;background:#d97706;}',
       '.ns-opt{display:grid;gap:8px;justify-items:center;align-content:center;min-height:68px;}',
       '.ns-opt-val{font-size:28px;font-weight:900;color:#0f172a;line-height:1;}',
@@ -157,10 +159,37 @@
     });
   }
 
-  function _dotsHtml(n) {
+  // Beyond ~6, a single glance can no longer size a dot cluster reliably, so
+  // quantities above that are laid out as regular rows instead of a scatter:
+  // two equal rows (+ a lone tail dot if n is odd) while that row size stays
+  // <=6, then three equal(-ish) rows once a two-row split would need a row
+  // bigger than 6. n<=6 is untouched — subitizing range needs no structure.
+  function _rowCounts(n) {
+    if (n <= 6) return [n];
+    var half = Math.floor(n / 2);
+    if (half <= 6) {
+      var rows = [half, half];
+      var tail = n - half * 2;
+      if (tail > 0) rows.push(tail);
+      return rows;
+    }
+    var base = Math.floor(n / 3);
+    var rem = n - base * 3;
+    var rows3 = [base, base, base];
+    for (var i = 0; i < rem; i++) rows3[rows3.length - 1 - i] += 1;
+    return rows3;
+  }
+
+  function _dotRow(count) {
     var out = '';
-    for (var i = 0; i < n; i++) out += '<span class="ns-dot"></span>';
+    for (var i = 0; i < count; i++) out += '<span class="ns-dot"></span>';
     return '<div class="ns-dots">' + out + '</div>';
+  }
+
+  function _dotsHtml(n) {
+    var rows = _rowCounts(n);
+    if (rows.length === 1) return _dotRow(n);
+    return '<div class="ns-dot-rows">' + rows.map(_dotRow).join('') + '</div>';
   }
 
   function _renderQuantity(q, container) {
