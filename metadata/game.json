@@ -184,7 +184,7 @@
       "path": "learning/math/number-sense/",
       "titleZh": "数学数感",
       "titleEn": "Math Number Sense",
-      "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
+      "rootGeneIds": ["RG.MATH.NUMBER_SENSE.QUANTITY", "RG.MATH.NUMBER_SENSE.PART_WHOLE", "RG.MATH.NUMBER_SENSE.COMPOSITION"],
       "lessonIds": ["learning-math-number-sense-l1"],
       "videoIds": ["learning-math-comparison-intro-001"]
     },

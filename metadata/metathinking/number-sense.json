@@ -1,0 +1,223 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-14",
+  "moduleType": "metathinking",
+  "id": "number-sense",
+  "canonicalUrl": "/metadata/metathinking/number-sense.json",
+  "title": {
+    "zh": "数感",
+    "en": "Number Sense"
+  },
+  "description": {
+    "zh": "数感是对数量、大小、距离与组合关系的直觉，而不是对算术步骤的熟练。它让孩子在没有列式之前就能感觉到答案的合理范围、一个整体大致由哪些部分构成、一个数可以怎样被拆开又拼回去。",
+    "en": "Number sense is felt intuition for quantity, magnitude, distance and composition — not fluency with arithmetic steps. It lets a child sense a plausible range for an answer before writing anything down, feel how a whole is roughly made of its parts, and see the different ways a number can be split apart and put back together."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "覆盖 4-5 岁到小学二年级。阶段一只做 8 个候选元类型中的 3 个（NS01/NS04/NS05），范围比 Comparison/Pattern 的 4-12 岁窄，等这 3 个跑通再横向扩到 K3-G6 的其余候选元类型。",
+    "noteEn": "Covers ages 4-5 through grade 2. Stage one implements only 3 of 8 candidate meta-types (NS01/NS04/NS05), a narrower range than Comparison/Pattern's 4-12; the remaining candidate meta-types through G6 are deferred until these three are proven end to end."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。数感训练刻意区别于传统算术练习册：题目不考察计算步骤的熟练度，考察的是对数量关系的直觉判断。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training. Number sense training is deliberately distinct from a traditional arithmetic drill book: items do not assess fluency with calculation steps, they assess intuitive judgment of quantity relations."
+  },
+  "seriesBoundary": {
+    "zh": "与 Comparison 的边界：Comparison 训练两个已知量之间的关系判断；Number Sense 训练对量本身的内部感觉（不数数感知多少、看出整体由哪些部分构成、主动列举一个数的拆法），量往往还没有被摆成一组清楚的两项。",
+    "en": "Boundary with Comparison: Comparison trains judging the relation between two already-given quantities; Number Sense trains the felt sense of a quantity itself (sensing how many without counting, seeing what parts make up a whole, actively generating ways to split a number) — the quantities are often not yet framed as a clean pair to compare."
+  },
+  "rootGeneIds": [
+    "RG.MATH.NUMBER_SENSE.QUANTITY",
+    "RG.MATH.NUMBER_SENSE.PART_WHOLE",
+    "RG.MATH.NUMBER_SENSE.COMPOSITION"
+  ],
+  "rootGeneScopeNote": {
+    "zh": "本模块从 v0.1.0 起改用三个细粒度基因，不再使用扁平的 RG.MATH.NUMBER_SENSE.BASIC。BASIC 基因保持不动，仍被 clio-egg-catcher-workshop（planned）与 clio-ufo-math-workshop（active）认领，两者与本轮重做无关；comparison.json 里对 BASIC 的历史交叉引用也不动——粗粒度共享基因与本模块的细粒度基因并存，不冲突。",
+    "en": "As of v0.1.0 this module reports three fine-grained genes instead of the flat RG.MATH.NUMBER_SENSE.BASIC. BASIC itself is left untouched — it is still claimed by clio-egg-catcher-workshop (planned) and clio-ufo-math-workshop (active), unrelated to this rewrite — and comparison.json's historical cross-reference to BASIC also stays as is. The coarse shared gene and this module's fine-grained genes coexist without conflict."
+  },
+  "geneReporting": {
+    "zh": "上报以单元（一次训练）为单位：每题只对应单一基因（quantity→QUANTITY，part_whole→PART_WHOLE，composition→COMPOSITION），单元结束时按该单元实际出现过的题型去重上报，不固定上报三个基因。三个元类型是彼此独立的能力坐标，不是同一任务的两个侧面。",
+    "en": "Reporting happens per finished unit: each question maps to exactly one gene (quantity to QUANTITY, part_whole to PART_WHOLE, composition to COMPOSITION), and at unit end the deduped set of genes for the types actually present in that unit is reported — never a fixed all-three. The three meta-types are independent ability axes, not two facets of one task."
+  },
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete", "pictorial", "symbolic"]
+    },
+    {
+      "id": "dimension_complexity",
+      "zh": "维度复杂度",
+      "en": "Dimension Complexity",
+      "progression": ["single", "dual"]
+    },
+    {
+      "id": "relation_complexity",
+      "zh": "关系复杂度",
+      "en": "Relation Complexity",
+      "progression": ["direct", "indirect"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["question"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "strategy"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "quantity",
+      "nameZh": "数量感知",
+      "nameEn": "Quantity Sense",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.QUANTITY",
+      "status": "implemented",
+      "examples": [
+        "subitizing a dot pattern flashed briefly",
+        "judging which group has more without counting"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-number-sense"],
+        "lessonIds": ["learning-math-number-sense-l1"],
+        "videoIds": ["learning-math-comparison-intro-001"]
+      }
+    },
+    {
+      "id": "part_whole",
+      "nameZh": "部分与整体",
+      "nameEn": "Part-Whole Sense",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.PART_WHOLE",
+      "status": "implemented",
+      "examples": [
+        "which pair of parts makes this whole",
+        "spotting the part that does not belong to the given whole"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-number-sense"],
+        "lessonIds": ["learning-math-number-sense-l1"],
+        "videoIds": ["learning-math-comparison-intro-001"]
+      }
+    },
+    {
+      "id": "composition",
+      "nameZh": "数的组合与拆分",
+      "nameEn": "Composition & Decomposition",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.COMPOSITION",
+      "status": "implemented",
+      "examples": [
+        "listing the ways to split a number into two parts",
+        "checking whether a proposed split is valid"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-number-sense"],
+        "lessonIds": ["learning-math-number-sense-l1"],
+        "videoIds": ["learning-math-comparison-intro-001"]
+      }
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "在 5 以内一眼感知数量，初步识别整体由两小份构成。",
+      "objectiveEn": "Subitize quantities within 5 at a glance and begin to see a whole as two small parts.",
+      "primaryTypes": ["quantity", "part_whole"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-number-sense"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["L1"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "在 10 以内粗略估计数量，练习part-whole 判断，接触简单的拆分。",
+      "objectiveEn": "Estimate quantities within 10, practice part-whole judgment, and begin simple splits.",
+      "primaryTypes": ["quantity", "part_whole", "composition"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-number-sense"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["L2"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "在 20 以内比较数量估计的粗细，系统列举一个数的多种拆法。",
+      "objectiveEn": "Refine quantity estimation within 20 and systematically enumerate a number's splits.",
+      "primaryTypes": ["part_whole", "composition"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-number-sense"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["L3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "以数的组合与拆分为主，验证多种拆法是否成立，数量感知退化为粗略估算。",
+      "objectiveEn": "Focus on composition and decomposition, verify whether multiple splits are valid, with quantity sense reduced to rough estimation.",
+      "primaryTypes": ["composition", "part_whole"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-number-sense"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["L4"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "numberSenseType",
+      "difficultyAxis",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate"
+    ],
+    "note": "Phase one uploads only the summary Attempt; no round-level telemetry is declared yet since the puzzle mode has no sub-round structure."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "numberSenseType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "5岁适合哪些 Number Sense 训练？",
+      "G2 的数感训练重点是什么？",
+      "哪些 number-sense 练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "number-sense",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

@@ -211,6 +211,45 @@
       "descEn": "Build intuition for magnitude, quantity and relative position of numbers.",
       "claimedBy": ["clio-egg-catcher-workshop", "clio-ufo-math-workshop"]
     },
+    "RG.MATH.NUMBER_SENSE.QUANTITY": {
+      "category": "MATH",
+      "zh": "数量感知",
+      "en": "Quantity Sense",
+      "short": {
+        "zh": "数量",
+        "en": "Quantity"
+      },
+      "descZh": "不数数就能感知一堆物体大约有多少，并粗略判断哪边更多。",
+      "descEn": "Sense roughly how many objects are in a group without counting, and judge which side has more.",
+      "boundaryZh": "与 RG.LOGIC.COMPARISON.BASIC 的界限：Comparison 训练的是比较判断本身（在已知两个量的前提下如何判断关系），本基因训练的是对量本身的内部感觉（一眼估出大约几个），不要求先有清楚的两个数才能比。",
+      "boundaryEn": "Boundary with RG.LOGIC.COMPARISON.BASIC: Comparison trains the act of judging a relation once two quantities are already known; this gene trains the felt sense of a quantity itself (glancing at a group and sensing roughly how many), and does not require two clean numbers to already be in hand."
+    },
+    "RG.MATH.NUMBER_SENSE.PART_WHOLE": {
+      "category": "MATH",
+      "zh": "部分与整体",
+      "en": "Part-Whole Sense",
+      "short": {
+        "zh": "部分整体",
+        "en": "Part-whole"
+      },
+      "descZh": "看出一个整体是由哪些部分组成的，以及部分之间如何拼回整体。",
+      "descEn": "See which parts make up a whole, and how those parts fit back together into it.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.COMPOSITION 的界限：本基因训练的是识别一份已给出的整体-部分关系是否成立，COMPOSITION 训练的是主动列举一个数有哪些不同的拆分方式。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.COMPOSITION: this gene trains recognising whether a given whole-part relation holds; COMPOSITION trains actively generating the different ways a number can be split."
+    },
+    "RG.MATH.NUMBER_SENSE.COMPOSITION": {
+      "category": "MATH",
+      "zh": "数的组合与拆分",
+      "en": "Composition & Decomposition",
+      "short": {
+        "zh": "组合拆分",
+        "en": "Compose"
+      },
+      "descZh": "主动列举一个数可以拆成哪些不同的两份或多份，并判断拆法是否成立。",
+      "descEn": "Actively generate the different ways a number can be split into two or more parts, and judge whether a proposed split is valid.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.PART_WHOLE 的界限见该条目。",
+      "boundaryEn": "See RG.MATH.NUMBER_SENSE.PART_WHOLE for the boundary between the two."
+    },
     "RG.STRATEGY.DECISION.PLANNING": {
       "category": "STRATEGY",
       "zh": "决策规划",

@@ -1,181 +1,109 @@
-'use strict';
-/**
- * Number Sense Module — Math Thinking — Learning Foundation
- *
- * RootGene tags: Comparison, Multi-dimensional Thinking
- * Meta-thinking operations:
- *   split     → Decompose: see one number as many compositions  (多维看待同一个数)
- *   proximity → Number line intuition: estimate closeness       (数轴直觉)
- *   complete  → Reverse-solve: find the missing part            (逆向求解)
- *
- * Knowledge background ref (design only, not curriculum coverage):
- *   L1 → G1 Sem1 (10以内)
- *   L2 → G1 Sem2 (20以内)
- *   L3 → G2     (100以内)
- */
+﻿'use strict';
 
-var LEVELS = [
-  {
-    id: 'L1',
-    nameZh: 'L1 · 10以内数感',
-    nameEn: 'L1 · Number Sense within 10',
-    refZh: '参考背景：一年级上学期',
-    refEn: 'Ref: Grade 1 Sem 1',
-    rounds: 8,
-    splitMax: 9,       // target range for split questions
-    proxMin: 1, proxMax: 9,
-    completeMax: 9,
-    types: ['split', 'split', 'proximity'], // 2:1 ratio
-  },
-  {
-    id: 'L2',
-    nameZh: 'L2 · 20以内数感',
-    nameEn: 'L2 · Number Sense within 20',
-    refZh: '参考背景：一年级下学期',
-    refEn: 'Ref: Grade 1 Sem 2',
-    rounds: 8,
-    splitMax: 15,
-    proxMin: 1, proxMax: 20,
-    completeMax: 15,
-    types: ['split', 'proximity', 'complete'],
-  },
-  {
-    id: 'L3',
-    nameZh: 'L3 · 100以内数感',
-    nameEn: 'L3 · Number Sense within 100',
-    refZh: '参考背景：二年级',
-    refEn: 'Ref: Grade 2',
-    rounds: 10,
-    splitMax: 20,
-    proxMin: 10, proxMax: 99,
-    completeMax: 30,
-    types: ['split', 'proximity', 'complete'],
-  },
-];
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-function randInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function shuffle(arr) {
-  var a = arr.slice();
-  for (var i = a.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-  return a;
-}
-
-// Normalized pair key to avoid "3+4" and "4+3" being treated as different
-function normKey(a, b) {
-  return String(Math.min(a, b)) + '+' + String(Math.max(a, b));
-}
-
-// ── Question generators ───────────────────────────────────────────────────────
-
-/**
- * Split: given target N, which option sums to N?
- * 4 options: 1 correct pair expression, 3 wrong ones.
- */
-function makeSplitQ(level) {
-  var target = randInt(4, level.splitMax);
-  var a = randInt(1, target - 1);
-  var b = target - a;
-
-  var seen = {};
-  seen[normKey(a, b)] = true;
-  var distractors = [];
-  var attempts = 0;
-  while (distractors.length < 3 && attempts < 300) {
-    attempts++;
-    var wa = randInt(1, level.splitMax);
-    var wb = randInt(1, level.splitMax);
-    if (wa + wb === target) continue;       // accidentally correct → skip
-    var key = normKey(wa, wb);
-    if (seen[key]) continue;
-    seen[key] = true;
-    distractors.push(String(wa) + '+' + String(wb));
-  }
-
-  var correctExpr = String(a) + '+' + String(b);
-  return {
-    type: 'split',
-    target: target,
-    correctExpr: correctExpr,
-    options: shuffle([correctExpr].concat(distractors)),
-  };
-}
-
-/**
- * Proximity: which of two numbers is closer to the target?
- */
-function makeProximityQ(level) {
-  var target, a, b;
-  var attempts = 0;
-  do {
-    target = randInt(level.proxMin + 1, level.proxMax - 1);
-    a = randInt(level.proxMin, level.proxMax);
-    b = randInt(level.proxMin, level.proxMax);
-    attempts++;
-  } while (
-    attempts < 300 && (
-      a === b || a === target || b === target ||
-      Math.abs(a - target) === Math.abs(b - target)
-    )
-  );
-
-  var aCloser = Math.abs(a - target) < Math.abs(b - target);
-  return {
-    type: 'proximity',
-    target: target,
-    a: a,
-    b: b,
-    correctSide: aCloser ? 'left' : 'right',
-  };
-}
-
-/**
- * Complete: known + ? = sum  (or  ? + known = sum)
- * 4 number options; pick the missing addend.
- */
-function makeCompleteQ(level) {
-  var sum = randInt(4, level.completeMax);
-  var known = randInt(1, sum - 1);
-  var missing = sum - known;
-
-  var wrongMap = {};
-  var wrongArr = [];
-  var attempts = 0;
-  while (wrongArr.length < 3 && attempts < 200) {
-    attempts++;
-    var w = randInt(1, level.completeMax);
-    if (w !== missing && !wrongMap[w]) {
-      wrongMap[w] = true;
-      wrongArr.push(w);
+// Static question bank. Every meta-type (quantity / part_whole / composition)
+// trains felt intuition, not calculation fluency — see
+// metadata/metathinking/number-sense.json for the ability boundaries.
+var NS_DATA = {
+  units: [
+    {
+      id: 'L1',
+      icon: '🔢',
+      nameZh: 'K1 · 一眼看出多少',
+      nameEn: 'K1 · Sensing Quantity at a Glance',
+      descZh: '5 以内的一眼数量感知，初识整体与部分。',
+      descEn: 'Subitizing within 5, first look at whole-and-parts.',
+      questions: [
+        { type: 'quantity', mode: 'estimate', dots: 3, options: [2, 3, 4], answer: 1, flashMs: 900,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'quantity', mode: 'estimate', dots: 4, options: [3, 4, 5], answer: 1, flashMs: 900,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'quantity', mode: 'compare', leftDots: 2, rightDots: 4, options: ['left', 'right'], answer: 1, flashMs: 900,
+          hintZh: '哪边看起来更多？', hintEn: 'Which side looks like more?' },
+        { type: 'quantity', mode: 'compare', leftDots: 5, rightDots: 3, options: ['left', 'right'], answer: 0, flashMs: 900,
+          hintZh: '哪边看起来更多？', hintEn: 'Which side looks like more?' },
+        { type: 'part_whole', mode: 'find_pair', whole: 4, options: [[1, 3], [2, 1], [3, 3]], answer: 0,
+          hintZh: '哪一对加起来正好是整体？', hintEn: 'Which pair adds up to the whole?' },
+        { type: 'part_whole', mode: 'find_pair', whole: 5, options: [[2, 2], [2, 3], [4, 2]], answer: 1,
+          hintZh: '哪一对加起来正好是整体？', hintEn: 'Which pair adds up to the whole?' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 3, partA: 1, options: [1, 2, 3], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' }
+      ]
+    },
+    {
+      id: 'L2',
+      icon: '🔢',
+      nameZh: 'K2 · 估一估、拆一拆',
+      nameEn: 'K2 · Estimating and Splitting',
+      descZh: '10 以内的数量估计、整体与部分判断，接触拆分。',
+      descEn: 'Estimating within 10, whole-part judgment, first splits.',
+      questions: [
+        { type: 'quantity', mode: 'estimate', dots: 6, options: [5, 6, 7], answer: 1, flashMs: 800,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'quantity', mode: 'estimate', dots: 8, options: [7, 8, 9], answer: 1, flashMs: 800,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'quantity', mode: 'compare', leftDots: 7, rightDots: 9, options: ['left', 'right'], answer: 1, flashMs: 800,
+          hintZh: '哪边看起来更多？', hintEn: 'Which side looks like more?' },
+        { type: 'part_whole', mode: 'find_pair', whole: 7, options: [[3, 4], [2, 4], [5, 1]], answer: 0,
+          hintZh: '哪一对加起来正好是整体？', hintEn: 'Which pair adds up to the whole?' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 9, partA: 4, options: [4, 5, 6], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 10, partA: 6, options: [3, 4, 5], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'composition', mode: 'count_ways', number: 6, options: [2, 3, 4], answer: 1,
+          hintZh: '把 6 拆成两份，能有几种不同的拆法？', hintEn: 'Split 6 into two parts — how many different ways are there?' },
+        { type: 'composition', mode: 'valid_check', number: 8, options: [[3, 5], [2, 6], [4, 5]], answer: 2,
+          hintZh: '哪一对加起来不等于 8？', hintEn: 'Which pair does not add up to 8?' }
+      ]
+    },
+    {
+      id: 'L3',
+      icon: '🔢',
+      nameZh: 'G1 · 系统列举拆法',
+      nameEn: 'G1 · Enumerating Splits Systematically',
+      descZh: '20 以内的数量估计，系统列举一个数的多种拆法。',
+      descEn: 'Estimating within 20, systematically enumerating a number’s splits.',
+      questions: [
+        { type: 'quantity', mode: 'estimate', dots: 12, options: [10, 12, 14], answer: 1, flashMs: 700,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'quantity', mode: 'compare', leftDots: 13, rightDots: 15, options: ['left', 'right'], answer: 1, flashMs: 700,
+          hintZh: '哪边看起来更多？', hintEn: 'Which side looks like more?' },
+        { type: 'part_whole', mode: 'find_pair', whole: 14, options: [[6, 8], [7, 8], [5, 10]], answer: 0,
+          hintZh: '哪一对加起来正好是整体？', hintEn: 'Which pair adds up to the whole?' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 16, partA: 9, options: [6, 7, 8], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 18, partA: 11, options: [6, 7, 8], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'composition', mode: 'count_ways', number: 10, options: [4, 5, 6], answer: 1,
+          hintZh: '把 10 拆成两份，能有几种不同的拆法？', hintEn: 'Split 10 into two parts — how many different ways are there?' },
+        { type: 'composition', mode: 'count_ways', number: 12, options: [5, 6, 7], answer: 1,
+          hintZh: '把 12 拆成两份，能有几种不同的拆法？', hintEn: 'Split 12 into two parts — how many different ways are there?' },
+        { type: 'composition', mode: 'valid_check', number: 15, options: [[7, 8], [6, 9], [5, 11]], answer: 2,
+          hintZh: '哪一对加起来不等于 15？', hintEn: 'Which pair does not add up to 15?' }
+      ]
+    },
+    {
+      id: 'L4',
+      icon: '🔢',
+      nameZh: 'G2 · 验证多种拆法',
+      nameEn: 'G2 · Verifying Multiple Splits',
+      descZh: '以数的组合与拆分为主，验证拆法是否成立，数量感知退化为粗略估算。',
+      descEn: 'Focused on composition, verifying whether splits are valid, quantity sense reduced to rough estimation.',
+      questions: [
+        { type: 'quantity', mode: 'estimate', dots: 18, options: [16, 18, 20], answer: 1, flashMs: 600,
+          hintZh: '不用数，先感觉大概几个。', hintEn: 'Do not count — sense roughly how many.' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 17, partA: 9, options: [7, 8, 9], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'part_whole', mode: 'find_missing_part', whole: 19, partA: 12, options: [6, 7, 8], answer: 1,
+          hintZh: '整体减去已知的一份，剩下的就是另一份。', hintEn: 'The whole minus the known part leaves the other part.' },
+        { type: 'composition', mode: 'count_ways', number: 14, options: [6, 7, 8], answer: 1,
+          hintZh: '把 14 拆成两份，能有几种不同的拆法？', hintEn: 'Split 14 into two parts — how many different ways are there?' },
+        { type: 'composition', mode: 'count_ways', number: 16, options: [7, 8, 9], answer: 1,
+          hintZh: '把 16 拆成两份，能有几种不同的拆法？', hintEn: 'Split 16 into two parts — how many different ways are there?' },
+        { type: 'composition', mode: 'valid_check', number: 20, options: [[9, 11], [8, 12], [7, 14]], answer: 2,
+          hintZh: '哪一对加起来不等于 20？', hintEn: 'Which pair does not add up to 20?' },
+        { type: 'composition', mode: 'valid_check', number: 18, options: [[7, 11], [8, 10], [5, 14]], answer: 2,
+          hintZh: '哪一对加起来不等于 18？', hintEn: 'Which pair does not add up to 18?' }
+      ]
     }
-  }
-
-  return {
-    type: 'complete',
-    sum: sum,
-    known: known,
-    missing: missing,
-    flipped: Math.random() < 0.5,          // "? + known" vs "known + ?"
-    options: shuffle([missing].concat(wrongArr)),
-  };
-}
-
-/**
- * Entry point: generate one question for the given level.
- */
-function makeQuestion(level) {
-  var types = level.types;
-  var type  = types[Math.floor(Math.random() * types.length)];
-  if (type === 'split')     return makeSplitQ(level);
-  if (type === 'proximity') return makeProximityQ(level);
-  if (type === 'complete')  return makeCompleteQ(level);
-  return makeSplitQ(level);
-}
+  ]
+};

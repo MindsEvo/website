@@ -45,6 +45,27 @@
       "status": "in-progress",
       "statusNoteZh": "元数据已升到 v0.2.0：三维模型（结构 × 载体 × 任务）定稿，7 类结构、6 种任务、15 种载体、38 允许 + 4 排除的白名单矩阵，难度轴六根（新增 task_complexity，repair 从 inference_direction 移出），基因上报规则为「结构基因 + 规则真正变化的载体基因」。架构见 docs/patterns/PATTERN-MODULE-ARCHITECTURE.md。运行时侧：puzzle 已接线并上报雷达，一次出 8 题（sessionPolicy），题库为 6 单元 60 题的静态题库，由 learning/math/pattern/test.html 逐题校验。仍缺：sequence-engine / 结构签名验证器 / generator / templates.json、sort·match·group·fit·mini 运行时、K1-K2 的非数字重复规律内容，以及 spatial·transformation·relational·growth 四类结构的全部内容。",
       "statusNoteEn": "Metadata is at v0.2.0: the three-dimension model (structure x carrier x task) is settled — 7 structures, 6 tasks, 15 carriers, an allowlist matrix of 38 allowed plus 4 excluded cells, six difficulty axes (task_complexity added, repair moved off inference_direction), and a gene rule of \"structure gene plus the carrier gene of the attribute the rule varies\". See docs/patterns/PATTERN-MODULE-ARCHITECTURE.md. Runtime side: the puzzle is wired and reports to the radar, a session shows 8 items (sessionPolicy), over a static bank of 6 units / 60 items audited item-by-item by learning/math/pattern/test.html. Still missing: sequence-engine / the structure-signature validator / generator / templates.json, the sort-match-group-fit-mini runtimes, non-numeric K1-K2 repetition content, and all content for the spatial, transformation, relational and growth structures."
+    },
+    {
+      "id": "number-sense",
+      "moduleType": "metathinking",
+      "titleZh": "数感",
+      "titleEn": "Number Sense",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/metathinking/number-sense.json",
+      "tags": [
+        "number-sense",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "阶段一只实现了 8 个候选元类型中的 3 个：NS01 数量感知（quantity）、NS04 部分与整体（part_whole）、NS05 数的组合与拆分（composition），覆盖 K1-G2 四级。NS02/03/06/07/08（数轴、估算策略、多步运算感、比例感等）尚未开始设计。运行时为静态题库（learning/math/number-sense/data.js），无 generator/engine，puzzle 已接线并按题型单基因上报雷达。",
+      "statusNoteEn": "Stage one implements only 3 of 8 candidate meta-types: NS01 Quantity Sense (quantity), NS04 Part-Whole Sense (part_whole), NS05 Composition & Decomposition (composition), covering grades K1-G2. NS02/03/06/07/08 (number line, estimation strategy, multi-step operation sense, ratio sense, etc.) have not been designed yet. The runtime is a static bank (learning/math/number-sense/data.js) with no generator/engine; the puzzle is wired and reports a single gene per question type to the radar."
     }
   ]
 }
