@@ -626,10 +626,13 @@
   }
 
   function _init() {
-    fetch('./templates.json')
-      .then(function(r){return r.json();})
-      .then(function(data){_showLevelSelector(data.templates||[]);})
-      .catch(function(err){console.error('[comparison] failed to load templates.json',err);});
+    // Loaded from templates-data.js (a plain global, like every other module's
+    // data.js) rather than fetch('./templates.json'): fetch() of a same-folder
+    // file is blocked when this page is opened via file://, which left the
+    // page permanently blank. templates-data.js must stay content-identical to
+    // templates.json — metadata/validate.js still fetches templates.json
+    // directly and does not read this file.
+    _showLevelSelector((window.CMP_TEMPLATES_DATA && window.CMP_TEMPLATES_DATA.templates) || []);
   }
 
   function _showLevelSelector(templates) {
