@@ -1,0 +1,234 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-15",
+  "moduleType": "metathinking",
+  "id": "modeling",
+  "canonicalUrl": "/metadata/metathinking/modeling.json",
+  "title": {
+    "zh": "建模",
+    "en": "Modeling"
+  },
+  "description": {
+    "zh": "建模是把一个具体情境转换成一个更简单、可操作的结构——用符号代表事物、按目的把物体分组、把空间关系画成示意图、把数量关系写成等式——再用这个结构去回答问题。它训练的不是某个学科知识，而是「先抽象、再使用」这一步思维动作本身。",
+    "en": "Modeling turns a concrete situation into a simpler, workable structure — a symbol standing for a thing, objects grouped by a stated purpose, spatial relations drawn as a diagram, a quantity relation written as an equation — and then uses that structure to answer a question. It trains not a subject skill but the thinking move of abstracting first and then using the abstraction."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "覆盖 4-5 岁到小学二年级。阶段一只做用户设想的 7 个候选元类型中的 4 个（对应/分类/空间/数量关系），关系、流程、规则三类留待阶段二横向扩展。",
+    "noteEn": "Covers ages 4-5 through grade 2. Stage one implements 4 of 7 candidate meta-types (mapping, purpose-based grouping, spatial, quantitative relation); relationship, process and rule are deferred to a later stage."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。建模训练刻意区别于单纯的知识记忆：题目考察的是能否把一个具体情境转成正确的结构（符号对应、分组标准、示意图、等式），而不是背诵结论。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training. Modeling training is deliberately distinct from rote recall: items assess whether a concrete situation can be turned into the right structure (a symbol correspondence, a grouping criterion, a diagram, an equation), not whether a fact is memorized."
+  },
+  "seriesBoundary": {
+    "zh": "与 Comparison/Pattern/Number Sense 的边界：Comparison 训练两个已知量之间的关系判断，Pattern 训练「下一个是什么」的续写预测，Number Sense 训练对数量本身的直觉感觉；本模块训练的是把情境转换成一个结构（对应、分组、示意图、等式）再拿这个结构去用，转换本身是核心，不是比较、续写或数量直觉。数量关系元类型（quantitative）复用了本模块此前已经存在、独立实现的等式填空/天平题库，未做内容改写。",
+    "en": "Boundary with Comparison/Pattern/Number Sense: Comparison trains judging a relation between two known quantities, Pattern trains continuing/predicting what comes next, Number Sense trains felt intuition for a quantity itself; this module trains turning a situation into a structure (a correspondence, a grouping, a diagram, an equation) and then using that structure — the conversion itself is the core skill, not comparison, continuation or number intuition. The quantitative meta-type reuses this module's pre-existing, independently authored equation/balance-scale question bank without rewriting its content."
+  },
+  "rootGeneIds": [
+    "RG.MODELING.MAPPING.BASIC",
+    "RG.MODELING.GROUPING.PURPOSE",
+    "RG.MODELING.SPATIAL.BASIC",
+    "RG.MODELING.EQUATION.RELATION"
+  ],
+  "rootGeneScopeNote": {
+    "zh": "四条基因是四个独立的能力坐标，不是同一任务的四个侧面：MAPPING/GROUPING/SPATIAL 是本轮新增的细粒度基因，EQUATION.RELATION 是本模块此前已经在用、保持不动的既有基因（同时被 game.json/lesson.json 与 pattern.json 里对它的 planned 交叉引用继续引用）。",
+    "en": "The four genes are four independent ability axes, not four facets of one task: MAPPING/GROUPING/SPATIAL are newly added fine-grained genes for this stage, while EQUATION.RELATION is the module's pre-existing gene, left unchanged (and still referenced by game.json/lesson.json and by pattern.json's planned cross-reference to it)."
+  },
+  "geneReporting": {
+    "zh": "上报以单元（一次训练）为单位：每题只对应单一基因（mapping→MAPPING.BASIC，grouping→GROUPING.PURPOSE，spatial→SPATIAL.BASIC，quantitative→EQUATION.RELATION），单元结束时按该单元实际出现过的题型去重上报，不固定上报四个基因。",
+    "en": "Reporting happens per finished unit: each question maps to exactly one gene (mapping to MAPPING.BASIC, grouping to GROUPING.PURPOSE, spatial to SPATIAL.BASIC, quantitative to EQUATION.RELATION), and at unit end the deduped set of genes for the types actually present in that unit is reported — never a fixed all-four."
+  },
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete", "pictorial", "symbolic"]
+    },
+    {
+      "id": "dimension_complexity",
+      "zh": "维度复杂度",
+      "en": "Dimension Complexity",
+      "progression": ["single", "dual"]
+    },
+    {
+      "id": "relation_complexity",
+      "zh": "关系复杂度",
+      "en": "Relation Complexity",
+      "progression": ["direct", "indirect"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["question"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "strategy"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "mapping",
+      "nameZh": "对应模型",
+      "nameEn": "Correspondence Modeling",
+      "structureGeneId": "RG.MODELING.MAPPING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "picking the symbol that stands for a concrete thing",
+        "reading back what a symbol or label refers to"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-modeling"]
+      }
+    },
+    {
+      "id": "grouping",
+      "nameZh": "分类模型",
+      "nameEn": "Purpose-based Grouping",
+      "structureGeneId": "RG.MODELING.GROUPING.PURPOSE",
+      "status": "implemented",
+      "examples": [
+        "given a stated purpose, picking which item belongs with the example",
+        "given a different purpose for the same objects, picking the item that no longer belongs"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-modeling"]
+      }
+    },
+    {
+      "id": "spatial",
+      "nameZh": "空间模型",
+      "nameEn": "Spatial Modeling",
+      "structureGeneId": "RG.MODELING.SPATIAL.BASIC",
+      "status": "implemented",
+      "examples": [
+        "reading a simplified position diagram to answer where something is",
+        "following a described path on a simplified map"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-modeling"]
+      }
+    },
+    {
+      "id": "quantitative",
+      "nameZh": "数量关系建模",
+      "nameEn": "Quantitative Relation Modeling",
+      "structureGeneId": "RG.MODELING.EQUATION.RELATION",
+      "status": "implemented",
+      "examples": [
+        "finding the missing addend or subtrahend in an equation",
+        "balancing both sides of a scale"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-modeling"],
+        "lessonIds": ["learning-math-modeling-l1"],
+        "videoIds": ["learning-math-modeling-intro-001"]
+      }
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 10,
+    "passRatio": 0.7
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "用一个符号或图标代表具体事物，并能从符号认出所指的对象；读一张简单的方位示意图。",
+      "objectiveEn": "Use a symbol or icon to stand for a concrete thing and recognise what a symbol refers to; read a simple position diagram.",
+      "primaryTypes": ["mapping", "spatial"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-modeling"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["new"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "巩固符号对应，加入按目的分组的判断，读稍复杂的方位示意图。",
+      "objectiveEn": "Reinforce symbol correspondence, add purpose-based grouping judgment, and read a slightly richer position diagram.",
+      "primaryTypes": ["mapping", "grouping", "spatial"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-modeling"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["new"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "分组标准在同一组物体间随目的切换，读路径类示意图，用加减法等式填空建立数量关系模型。",
+      "objectiveEn": "Switch grouping criteria for the same objects as the stated purpose changes, read a path-style diagram, and model quantity relations with addition/subtraction equation fill-ins.",
+      "primaryTypes": ["grouping", "spatial", "quantitative"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-modeling"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["Unit1", "Unit2", "Unit3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "以天平平衡、乘法缺数与情境建模为主深化数量关系模型，分类模型练习更复杂的目的切换。",
+      "objectiveEn": "Deepen quantitative relation modeling through balance-scale, multiplication and real-world word problems, with grouping practicing more complex purpose switches.",
+      "primaryTypes": ["quantitative", "grouping"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-modeling"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["Unit4", "Unit5", "Unit6"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "modelingType",
+      "difficultyAxis",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate"
+    ],
+    "note": "Phase one uploads only the summary Attempt; no round-level telemetry is declared yet since the puzzle mode has no sub-round structure."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "modelingType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "5岁适合哪些 Modeling 训练？",
+      "G1 的建模训练重点是什么？",
+      "哪些 modeling 练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "modeling",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

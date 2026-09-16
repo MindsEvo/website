@@ -272,6 +272,45 @@
       "descZh": "把一个具体情境写成可计算的关系式。",
       "descEn": "Turn a concrete situation into a relation that can be computed."
     },
+    "RG.MODELING.MAPPING.BASIC": {
+      "category": "MODELING",
+      "zh": "对应模型",
+      "en": "Correspondence Modeling",
+      "short": {
+        "zh": "对应",
+        "en": "Map"
+      },
+      "descZh": "用一个简化的符号、图形或标签代表一个具体事物或角色，并能从符号还原出所指的对象。",
+      "descEn": "Use a simplified symbol, picture or label to stand for a concrete thing or role, and read back what a symbol stands for.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 等规律基因的界限：那些基因训练「下一个是什么」的续写与预测，本基因训练「这个符号代表谁」的双向对应，不涉及续写或规律预测。",
+      "boundaryEn": "Boundary with pattern genes such as RG.PATTERN.SEQUENCE.BASIC: those train continuing/predicting a sequence, while this gene trains bidirectional correspondence between a symbol and what it stands for, with no continuation involved."
+    },
+    "RG.MODELING.GROUPING.PURPOSE": {
+      "category": "MODELING",
+      "zh": "分类模型",
+      "en": "Purpose-based Grouping",
+      "short": {
+        "zh": "分组",
+        "en": "Group"
+      },
+      "descZh": "同一组对象按不同目的可以有不同的合理分组，练习为给定目的选出正确的分组标准并归类。",
+      "descEn": "The same set of objects can be grouped differently depending on purpose; practice choosing the grouping criterion that fits a stated purpose and sorting accordingly.",
+      "boundaryZh": "与 RG.LOGIC.CLASSIFICATION.BASIC 的界限：Classification 训练按物体固有属性归入唯一正确的组别；本基因训练同一组对象在不同目的下可以有不同的、都合理的分组标准，模型本身随目的变化，不存在单一「正确答案」的属性归类。",
+      "boundaryEn": "Boundary with RG.LOGIC.CLASSIFICATION.BASIC: Classification trains sorting objects into a single correct group by an inherent attribute; this gene trains that the same objects can have different, equally valid groupings depending on stated purpose — the model itself shifts with purpose, not a fixed-attribute sort."
+    },
+    "RG.MODELING.SPATIAL.BASIC": {
+      "category": "MODELING",
+      "zh": "空间模型",
+      "en": "Spatial Modeling",
+      "short": {
+        "zh": "空间",
+        "en": "Spatial"
+      },
+      "descZh": "把真实的空间关系（位置、路径、方位）转换成简化的示意图或地图来阅读和使用。",
+      "descEn": "Turn real spatial relations (position, path, direction) into a simplified diagram or map, and read or use that diagram.",
+      "boundaryZh": "与 RG.PATTERN.SPATIAL.RELATION 的界限：那条基因训练直接判断上下左右等位置关系本身；本基因训练把这些关系抽象成一张简化示意图/地图，并能反过来用这张图回答问题——多一层「建模」的转换，不是位置关系判断本身。",
+      "boundaryEn": "Boundary with RG.PATTERN.SPATIAL.RELATION: that gene trains directly judging positional relations themselves; this gene trains abstracting those relations into a simplified diagram/map and using it to answer questions — an added layer of modeling, not the raw relational judgment."
+    },
     "RG.LOGIC.CLASSIFICATION.BASIC": {
       "category": "LOGIC",
       "zh": "分类归组",

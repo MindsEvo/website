@@ -1,6 +1,6 @@
 {
-  "version": "v0.3.0",
-  "updatedAt": "2026-09-04",
+  "version": "v0.4.0",
+  "updatedAt": "2026-09-15",
   "notes": {
     "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
     "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded."
@@ -66,6 +66,27 @@
       "status": "in-progress",
       "statusNoteZh": "阶段一只实现了 8 个候选元类型中的 3 个：NS01 数量感知（quantity）、NS04 部分与整体（part_whole）、NS05 数的组合与拆分（composition），覆盖 K1-G2 四级。NS02/03/06/07/08（数轴、估算策略、多步运算感、比例感等）尚未开始设计。运行时为静态题库（learning/math/number-sense/data.js），无 generator/engine，puzzle 已接线并按题型单基因上报雷达。",
       "statusNoteEn": "Stage one implements only 3 of 8 candidate meta-types: NS01 Quantity Sense (quantity), NS04 Part-Whole Sense (part_whole), NS05 Composition & Decomposition (composition), covering grades K1-G2. NS02/03/06/07/08 (number line, estimation strategy, multi-step operation sense, ratio sense, etc.) have not been designed yet. The runtime is a static bank (learning/math/number-sense/data.js) with no generator/engine; the puzzle is wired and reports a single gene per question type to the radar."
+    },
+    {
+      "id": "modeling",
+      "moduleType": "metathinking",
+      "titleZh": "建模",
+      "titleEn": "Modeling",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/metathinking/modeling.json",
+      "tags": [
+        "modeling",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "阶段一只实现了 7 个候选元类型中的 4 个：对应（mapping）、按目的分组（grouping）、空间示意图（spatial）、数量关系建模（quantitative，复用本模块此前已独立实现的等式填空/天平题库），覆盖 K1-G2 四级。关系、流程、规则三类尚未开始设计。运行时为静态题库（learning/math/modeling/data.js），无 generator/engine，puzzle 已接线并按题型单基因上报雷达。",
+      "statusNoteEn": "Stage one implements only 4 of 7 candidate meta-types: correspondence (mapping), purpose-based grouping (grouping), spatial diagrams (spatial), and quantitative relation modeling (quantitative, reusing the module's pre-existing equation/balance-scale bank), covering grades K1-G2. Relationship, process and rule have not been designed yet. The runtime is a static bank (learning/math/modeling/data.js) with no generator/engine; the puzzle is wired and reports a single gene per question type to the radar."
     }
   ]
 }

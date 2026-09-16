@@ -208,7 +208,7 @@
       "path": "learning/math/modeling/",
       "titleZh": "建立模型",
       "titleEn": "Modeling",
-      "rootGeneIds": ["RG.MODELING.EQUATION.RELATION"],
+      "rootGeneIds": ["RG.MODELING.MAPPING.BASIC", "RG.MODELING.GROUPING.PURPOSE", "RG.MODELING.SPATIAL.BASIC", "RG.MODELING.EQUATION.RELATION"],
       "lessonIds": ["learning-math-modeling-l1"],
       "videoIds": ["learning-math-modeling-intro-001"]
     },
