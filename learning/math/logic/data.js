@@ -24,6 +24,122 @@
 var ML_DATA = {
   units: [
 
+    // ── Unit classify-1 (K1): 分类推断-图形版  (which one doesn't belong) ──
+    {
+      id: 'classify-1', icon: '🔍', isPicture: true,
+      nameZh: '分类推断-图形版', nameEn: 'Category Reasoning (Picture)',
+      descZh: '看看哪一个和其他不是一类', descEn: 'Spot the one that is not like the others',
+      questions: [
+        { premiseZh:'🍎 🍌 🍊 🚗',  premiseEn:'🍎 🍌 🍊 🚗',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🍎','🍌','🍊','🚗'],    optionsEn:['🍎','🍌','🍊','🚗'],
+          answer:'🚗', hintZh:'🚗是车，其他都是水果', hintEn:'🚗 is a vehicle; the rest are fruit' },
+
+        { premiseZh:'🐶 🐱 🐰 🌳',  premiseEn:'🐶 🐱 🐰 🌳',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🐶','🐱','🐰','🌳'],    optionsEn:['🐶','🐱','🐰','🌳'],
+          answer:'🌳', hintZh:'🌳是植物，其他都是动物', hintEn:'🌳 is a plant; the rest are animals' },
+
+        { premiseZh:'☀️ ⭐ 🌙 🐟',  premiseEn:'☀️ ⭐ 🌙 🐟',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['☀️','⭐','🌙','🐟'],    optionsEn:['☀️','⭐','🌙','🐟'],
+          answer:'🐟', hintZh:'🐟是鱼，其他都在天上', hintEn:'🐟 is a fish; the rest are in the sky' },
+
+        { premiseZh:'👕 👗 🧦 🍕',  premiseEn:'👕 👗 🧦 🍕',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['👕','👗','🧦','🍕'],    optionsEn:['👕','👗','🧦','🍕'],
+          answer:'🍕', hintZh:'🍕是食物，其他都是衣服', hintEn:'🍕 is food; the rest are clothes' },
+
+        { premiseZh:'🚗 🚕 🚌 🐘',  premiseEn:'🚗 🚕 🚌 🐘',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🚗','🚕','🚌','🐘'],    optionsEn:['🚗','🚕','🚌','🐘'],
+          answer:'🐘', hintZh:'🐘是动物，其他都是车', hintEn:'🐘 is an animal; the rest are vehicles' },
+
+        { premiseZh:'🎈 🎁 🎂 📚',  premiseEn:'🎈 🎁 🎂 📚',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🎈','🎁','🎂','📚'],    optionsEn:['🎈','🎁','🎂','📚'],
+          answer:'📚', hintZh:'📚是书，其他都是过生日用的', hintEn:'📚 is a book; the rest are for a birthday party' },
+
+        { premiseZh:'🌸 🌷 🌻 🪑',  premiseEn:'🌸 🌷 🌻 🪑',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🌸','🌷','🌻','🪑'],    optionsEn:['🌸','🌷','🌻','🪑'],
+          answer:'🪑', hintZh:'🪑是家具，其他都是花', hintEn:'🪑 is furniture; the rest are flowers' },
+
+        { premiseZh:'🥕 🥦 🌽 🎸',  premiseEn:'🥕 🥦 🌽 🎸',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🥕','🥦','🌽','🎸'],    optionsEn:['🥕','🥦','🌽','🎸'],
+          answer:'🎸', hintZh:'🎸是乐器，其他都是蔬菜', hintEn:'🎸 is an instrument; the rest are vegetables' },
+
+        { premiseZh:'✏️ 📏 📒 🍦',  premiseEn:'✏️ 📏 📒 🍦',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['✏️','📏','📒','🍦'],    optionsEn:['✏️','📏','📒','🍦'],
+          answer:'🍦', hintZh:'🍦是食物，其他都是文具', hintEn:'🍦 is food; the rest are school supplies' },
+
+        { premiseZh:'🐦 🦆 🦉 ⚽',  premiseEn:'🐦 🦆 🦉 ⚽',
+          questionZh:'哪个和其他不是一类？',  questionEn:'Which one does not belong?',
+          options:['🐦','🦆','🦉','⚽'],    optionsEn:['🐦','🦆','🦉','⚽'],
+          answer:'⚽', hintZh:'⚽是球，其他都是鸟', hintEn:'⚽ is a ball; the rest are birds' }
+      ]
+    },
+
+    // ── Unit order-1 (K2): 顺序推断-图形版  (2 clues, emoji subjects) ──────
+    {
+      id: 'order-1', icon: '📏', isPicture: true,
+      nameZh: '顺序推断-图形版', nameEn: 'Ordering Reasoning (Picture)',
+      descZh: '从两条图形线索推断出最大或最小', descEn: 'Use two picture clues to find the biggest or smallest',
+      questions: [
+        { premiseZh:'🐘比🐻大，🐻比🐭大。',      premiseEn:'🐘 is bigger than 🐻; 🐻 is bigger than 🐭.',
+          questionZh:'谁最小？',                 questionEn:'Who is smallest?',
+          options:['🐘','🐻','🐭','一样大'],     optionsEn:['🐘','🐻','🐭','Same size'],
+          answer:'🐭', hintZh:'从小到大：🐭→🐻→🐘', hintEn:'Smallest to biggest: 🐭→🐻→🐘' },
+
+        { premiseZh:'🚗比🚲快，🚲比🚶快。',      premiseEn:'🚗 is faster than 🚲; 🚲 is faster than 🚶.',
+          questionZh:'谁最慢？',                 questionEn:'Who is slowest?',
+          options:['🚗','🚲','🚶','一样快'],     optionsEn:['🚗','🚲','🚶','Same speed'],
+          answer:'🚶', hintZh:'从慢到快：🚶→🚲→🚗', hintEn:'Slowest to fastest: 🚶→🚲→🚗' },
+
+        { premiseZh:'🍉比🍊大，🍊比🍇大。',      premiseEn:'🍉 is bigger than 🍊; 🍊 is bigger than 🍇.',
+          questionZh:'哪个最小？',               questionEn:'Which is smallest?',
+          options:['🍉','🍊','🍇','一样大'],     optionsEn:['🍉','🍊','🍇','Same size'],
+          answer:'🍇', hintZh:'从小到大：🍇→🍊→🍉', hintEn:'Smallest to biggest: 🍇→🍊→🍉' },
+
+        { premiseZh:'🦒比🐴高，🐴比🐕高。',      premiseEn:'🦒 is taller than 🐴; 🐴 is taller than 🐕.',
+          questionZh:'谁最高？',                 questionEn:'Who is tallest?',
+          options:['🦒','🐴','🐕','一样高'],     optionsEn:['🦒','🐴','🐕','Same height'],
+          answer:'🦒', hintZh:'从矮到高：🐕→🐴→🦒', hintEn:'Shortest to tallest: 🐕→🐴→🦒' },
+
+        { premiseZh:'🐇比🐢快，🐢比🐌快。',      premiseEn:'🐇 is faster than 🐢; 🐢 is faster than 🐌.',
+          questionZh:'谁最慢？',                 questionEn:'Who is slowest?',
+          options:['🐇','🐢','🐌','一样快'],     optionsEn:['🐇','🐢','🐌','Same speed'],
+          answer:'🐌', hintZh:'从慢到快：🐌→🐢→🐇', hintEn:'Slowest to fastest: 🐌→🐢→🐇' },
+
+        { premiseZh:'🏋️比🏀重，🏀比🎈重。',      premiseEn:'🏋️ is heavier than 🏀; 🏀 is heavier than 🎈.',
+          questionZh:'谁最重？',                 questionEn:'Who is heaviest?',
+          options:['🏋️','🏀','🎈','一样重'],     optionsEn:['🏋️','🏀','🎈','Same weight'],
+          answer:'🏋️', hintZh:'从轻到重：🎈→🏀→🏋️', hintEn:'Lightest to heaviest: 🎈→🏀→🏋️' },
+
+        { premiseZh:'🌞比🌙亮，🌙比⭐亮。',      premiseEn:'🌞 is brighter than 🌙; 🌙 is brighter than ⭐.',
+          questionZh:'谁最暗？',                 questionEn:'Which is dimmest?',
+          options:['🌞','🌙','⭐','一样亮'],     optionsEn:['🌞','🌙','⭐','Same brightness'],
+          answer:'⭐', hintZh:'从暗到亮：⭐→🌙→🌞', hintEn:'Dimmest to brightest: ⭐→🌙→🌞' },
+
+        { premiseZh:'🐳比🐬大，🐬比🐠大。',      premiseEn:'🐳 is bigger than 🐬; 🐬 is bigger than 🐠.',
+          questionZh:'谁最小？',                 questionEn:'Who is smallest?',
+          options:['🐳','🐬','🐠','一样大'],     optionsEn:['🐳','🐬','🐠','Same size'],
+          answer:'🐠', hintZh:'从小到大：🐠→🐬→🐳', hintEn:'Smallest to biggest: 🐠→🐬→🐳' },
+
+        { premiseZh:'🏠比🚗大，🚗比🚲大。',      premiseEn:'🏠 is bigger than 🚗; 🚗 is bigger than 🚲.',
+          questionZh:'哪个最小？',               questionEn:'Which is smallest?',
+          options:['🏠','🚗','🚲','一样大'],     optionsEn:['🏠','🚗','🚲','Same size'],
+          answer:'🚲', hintZh:'从小到大：🚲→🚗→🏠', hintEn:'Smallest to biggest: 🚲→🚗→🏠' },
+
+        { premiseZh:'🦁比🐱大，🐱比🐭大。',      premiseEn:'🦁 is bigger than 🐱; 🐱 is bigger than 🐭.',
+          questionZh:'谁最大？',                 questionEn:'Who is biggest?',
+          options:['🦁','🐱','🐭','一样大'],     optionsEn:['🦁','🐱','🐭','Same size'],
+          answer:'🦁', hintZh:'从小到大：🐭→🐱→🦁', hintEn:'Smallest to biggest: 🐭→🐱→🦁' }
+      ]
+    },
+
     // ── Unit 1: 顺序推断  (A > B > C, find min/max) ────────────────────────
     {
       id: '1', icon: '📏',

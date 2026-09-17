@@ -87,6 +87,27 @@
       "status": "in-progress",
       "statusNoteZh": "阶段一只实现了 7 个候选元类型中的 4 个：对应（mapping）、按目的分组（grouping）、空间示意图（spatial）、数量关系建模（quantitative，复用本模块此前已独立实现的等式填空/天平题库），覆盖 K1-G2 四级。关系、流程、规则三类尚未开始设计。运行时为静态题库（learning/math/modeling/data.js），无 generator/engine，puzzle 已接线并按题型单基因上报雷达。",
       "statusNoteEn": "Stage one implements only 4 of 7 candidate meta-types: correspondence (mapping), purpose-based grouping (grouping), spatial diagrams (spatial), and quantitative relation modeling (quantitative, reusing the module's pre-existing equation/balance-scale bank), covering grades K1-G2. Relationship, process and rule have not been designed yet. The runtime is a static bank (learning/math/modeling/data.js) with no generator/engine; the puzzle is wired and reports a single gene per question type to the radar."
+    },
+    {
+      "id": "logic",
+      "moduleType": "metathinking",
+      "titleZh": "逻辑",
+      "titleEn": "Logic",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/metathinking/logic.json",
+      "tags": [
+        "logic",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "阶段一沿用已有 6 个文字单元（覆盖 G1-G2 的顺序/分类/排除/条件/验证/多步综合）并新增 2 个 K1/K2 图形单元（分类推断-图形版、顺序推断-图形版），覆盖 K1-G2 四级。沿用单一既有基因 RG.LOGIC.REASONING.BASIC，未按题型拆分成细粒度基因（唯一候选的分类基因已被另一个不相关的规划中游戏占用）。Logic-Grid（网格约束）、条件引擎等更复杂题型留待后续阶段。运行时为静态题库（learning/math/logic/data.js），无 generator/engine，puzzle 已接线。",
+      "statusNoteEn": "Stage one reuses the 6 existing text units (covering G1-G2 ordering/classification/elimination/condition/verification/multi-step synthesis) and adds 2 new K1/K2 picture units (picture classification, picture ordering), covering grades K1-G2. It reuses the single pre-existing gene RG.LOGIC.REASONING.BASIC without splitting into fine-grained per-type genes (the only candidate classification gene is already claimed by an unrelated planned game). Logic-Grid (constraint-grid), condition-engine and other more complex item types are deferred to a later stage. The runtime is a static bank (learning/math/logic/data.js) with no generator/engine; the puzzle is wired."
     }
   ]
 }

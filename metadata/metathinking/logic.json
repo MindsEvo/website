@@ -1,0 +1,251 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-16",
+  "moduleType": "metathinking",
+  "id": "logic",
+  "canonicalUrl": "/metadata/metathinking/logic.json",
+  "title": {
+    "zh": "逻辑",
+    "en": "Logic"
+  },
+  "description": {
+    "zh": "逻辑训练的是从已知的条件或规则出发，推出唯一正确结论的思维动作——排序、分类、条件推理、排除、验证真假、多步综合。它不考察某个学科知识，考察的是「给定前提，能不能一步步推出结论，并排除与前提冲突的选项」。",
+    "en": "Logic trains the move of starting from given conditions or rules and deriving the one correct conclusion — ordering, classification, conditional reasoning, elimination, truth verification, multi-step synthesis. It does not assess subject knowledge; it assesses whether a conclusion can be derived step by step from stated premises, ruling out options that conflict with them."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "覆盖 4-5 岁到小学二年级。阶段一沿用已有 6 个文字单元（G1-G2）并新增 2 个 K1/K2 图形单元；更复杂的 Logic-Grid（网格约束）和条件引擎类题型留待阶段二。",
+    "noteEn": "Covers ages 4-5 through grade 2. Stage one reuses the 6 existing text units (G1-G2) and adds 2 new K1/K2 picture units; Logic-Grid (constraint-grid) and condition-engine item types are deferred to a later stage."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。逻辑训练刻意区别于单纯的知识记忆：题目考察的是能否从给定前提推出结论，而不是背诵结论。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training. Logic training is deliberately distinct from rote recall: items assess whether a conclusion can be derived from given premises, not whether a fact is memorized."
+  },
+  "seriesBoundary": {
+    "zh": "与 Comparison/Pattern/Modeling 的边界：Comparison 训练在已知两个量的前提下如何判断关系，Pattern 训练「下一个是什么」的续写预测，Modeling 训练把情境转换成结构（对应/分组/示意图/等式）；本模块训练的是从已知条件或规则出发、经过一步或多步推理得到结论，推理步数和条件组合本身是核心，不是直接的两量比较、续写或情境转换。K2 的图形排序题刻意设计为两条线索的传递推理（A>B、B>C→求最值），而不是单一的两项直接比较，以避免与 Comparison 的边界重叠。",
+    "en": "Boundary with Comparison/Pattern/Modeling: Comparison trains judging a relation given two already-known quantities, Pattern trains continuing/predicting what comes next, Modeling trains turning a situation into a structure (mapping/grouping/diagram/equation); this module trains deriving a conclusion from given conditions or rules through one or more reasoning steps — the number of steps and the combination of conditions is the core skill, not a direct two-quantity comparison, continuation, or situational conversion. The K2 picture-ordering items are deliberately designed as two-clue transitive reasoning (A>B, B>C -> find the extreme) rather than a single direct two-item comparison, to avoid overlapping with Comparison's boundary."
+  },
+  "rootGeneIds": [
+    "RG.LOGIC.REASONING.BASIC"
+  ],
+  "rootGeneScopeNote": {
+    "zh": "本模块沿用单一既有基因 RG.LOGIC.REASONING.BASIC，不按题型拆分成细粒度基因。原因：唯一可能对应「分类」的候选基因 RG.LOGIC.CLASSIFICATION.BASIC 在 rootgene.json 中状态为 planned 且已被另一个不相关的规划中游戏 claimedBy，本轮不争用；排序/条件/排除/验证/多步等题型暂时都归入同一条推理基因下，待后续阶段再评估是否拆分。",
+    "en": "This module reuses the single pre-existing gene RG.LOGIC.REASONING.BASIC rather than splitting into fine-grained per-type genes. Reason: the only candidate gene that could map to \"classification\", RG.LOGIC.CLASSIFICATION.BASIC, is status=planned in rootgene.json and already claimedBy an unrelated planned game, so this round does not contest it; ordering/condition/elimination/verification/multistep items all report under the one reasoning gene for now, pending a later decision on whether to split it."
+  },
+  "geneReporting": {
+    "zh": "上报以单元（一次训练）为单位：无论单元内出现哪种推理类型，都上报同一条 RG.LOGIC.REASONING.BASIC，不做题型区分。",
+    "en": "Reporting happens per finished unit: regardless of which reasoning type appears in the unit, the same RG.LOGIC.REASONING.BASIC gene is reported, with no per-type distinction."
+  },
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["pictorial", "symbolic"]
+    },
+    {
+      "id": "condition_count",
+      "zh": "条件数量",
+      "en": "Condition Count",
+      "progression": ["single", "double", "multi"]
+    },
+    {
+      "id": "relation_complexity",
+      "zh": "关系复杂度",
+      "en": "Relation Complexity",
+      "progression": ["direct", "transitive", "conditional"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["picture", "sentence"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "strategy"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "classification",
+      "nameZh": "分类推断",
+      "nameEn": "Classification Reasoning",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "spotting the one item in a group that does not belong"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    },
+    {
+      "id": "ordering",
+      "nameZh": "顺序推断",
+      "nameEn": "Ordering Reasoning",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "using two transitive clues (A>B, B>C) to find the extreme"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    },
+    {
+      "id": "elimination",
+      "nameZh": "排除推断",
+      "nameEn": "Elimination Reasoning",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "ruling out options that conflict with a stated condition"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    },
+    {
+      "id": "condition",
+      "nameZh": "条件推断",
+      "nameEn": "Conditional Reasoning",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "applying an if-then rule to a specific case"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    },
+    {
+      "id": "verification",
+      "nameZh": "真假验证",
+      "nameEn": "Truth Verification",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "deciding who among several speakers is telling the truth"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    },
+    {
+      "id": "multistep",
+      "nameZh": "综合推理",
+      "nameEn": "Multi-step Synthesis",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "combining several conditions across more than one inference step"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-logic"]
+      }
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 10,
+    "passRatio": 0.7
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "在一组图形/表情符号中找出与其他不是一类的那一个。",
+      "objectiveEn": "Spot the one picture/emoji in a group that does not belong with the rest.",
+      "primaryTypes": ["classification"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-logic"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["classify-1"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "从两条图形线索（A比B大、B比C大）推断出最大或最小的一个。",
+      "objectiveEn": "Use two picture clues (A is bigger than B, B is bigger than C) to find the biggest or smallest one.",
+      "primaryTypes": ["ordering"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-logic"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["order-1"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "用文字前提做单步推理：排序、分类、排除与前提冲突的选项。",
+      "objectiveEn": "Single-step reasoning from a text premise: ordering, classification, and eliminating options that conflict with it.",
+      "primaryTypes": ["ordering", "classification", "elimination"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-logic"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["1", "2", "3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "用文字前提做条件推理、真假验证与多步综合推理。",
+      "objectiveEn": "Conditional reasoning, truth verification, and multi-step synthesis from a text premise.",
+      "primaryTypes": ["condition", "verification", "multistep"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-logic"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["4", "5", "6"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "logicType",
+      "difficultyAxis",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate"
+    ],
+    "note": "Phase one uploads only the summary Attempt; no round-level telemetry is declared yet since the puzzle mode has no sub-round structure."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "logicType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "5岁适合哪些 Logic 训练？",
+      "G1 的逻辑训练重点是什么？",
+      "哪些 logic 练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "logic",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}
