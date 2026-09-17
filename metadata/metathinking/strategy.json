@@ -1,0 +1,279 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-16",
+  "moduleType": "metathinking",
+  "id": "strategy",
+  "canonicalUrl": "/metadata/metathinking/strategy.json",
+  "title": {
+    "zh": "策略",
+    "en": "Strategy"
+  },
+  "description": {
+    "zh": "策略训练的是面对一个目标和若干可选行动时，如何权衡收益与代价、规划步骤顺序、分配有限资源、预测对方或环境的反应并据此调整选择的思维动作。它不考察某个学科知识，考察的是「给定目标和可选行动，能不能选出让结果更好的那一个，并在多步/多方博弈中持续调整」。",
+    "en": "Strategy trains the move of weighing benefit against cost, planning a step order, allocating limited resources, and predicting an opponent's or environment's reaction in order to adjust a choice — given a goal and a set of available actions. It does not assess subject knowledge; it assesses whether the better option can be chosen given a goal and available actions, and whether the choice can be adjusted across multiple steps or an interactive game."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "覆盖 4-5 岁到小学二年级。阶段一沿用已有 6 个文字单元（G1-G2）并新增 2 个 K1/K2 图形单元；更丰富的交互式策略题型（真正的拖拽排序、资源分配、多方博弈模拟）留待阶段二，详见下方 deferredRoadmap。",
+    "noteEn": "Covers ages 4-5 through grade 2. Stage one reuses the 6 existing text units (G1-G2) and adds 2 new K1/K2 picture units; richer interactive strategy item types (true drag-to-sequence, resource allocation, multi-party game simulation) are deferred to a later stage — see deferredRoadmap below."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。策略训练刻意区别于单纯的知识记忆：题目考察的是能否从目标出发选出更优行动，而不是背诵结论。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training. Strategy training is deliberately distinct from rote recall: items assess whether a better action can be chosen given a goal, not whether a fact is memorized."
+  },
+  "seriesBoundary": {
+    "zh": "与 Logic/Comparison/Pattern/Modeling 的边界：Logic 训练「条件→推理→结论」，判断什么是真的；Comparison 训练在已知两个量的前提下判断关系；Pattern 训练「下一个是什么」的续写预测；Modeling 训练把情境转换成结构。本模块训练的是「目标→当前状态→可选行动→选择→结果→调整」，核心是收益/代价的权衡和多步/多方情境下的持续调整，不是单纯判断真假或续写规律。",
+    "en": "Boundary with Logic/Comparison/Pattern/Modeling: Logic trains \"condition -> inference -> conclusion\", judging what is true; Comparison trains judging a relation given two already-known quantities; Pattern trains continuing/predicting what comes next; Modeling trains turning a situation into a structure. This module trains \"goal -> current state -> available actions -> choice -> outcome -> adjustment\" — the core skill is weighing benefit against cost and adjusting across multiple steps or parties, not judging truth or continuing a pattern."
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.DECISION.PLANNING"
+  ],
+  "rootGeneScopeNote": {
+    "zh": "本模块沿用单一既有基因 RG.STRATEGY.DECISION.PLANNING，不按候选类型拆分成 8 条细粒度基因。原因：rootgene.json 中 STRATEGY 分类目前只有这一条基因，且已被 learning-math-strategy 使用；拆分新基因是需要谨慎处理边界文本的架构决策，属于本轮范围外，留待后续阶段评估。",
+    "en": "This module reuses the single pre-existing gene RG.STRATEGY.DECISION.PLANNING rather than splitting into 8 fine-grained per-type genes. Reason: the STRATEGY category in rootgene.json currently has only this one gene, already used by learning-math-strategy; splitting genes is an architectural decision requiring careful boundary-text work, out of scope for this round, deferred to a later stage."
+  },
+  "geneReporting": {
+    "zh": "上报以单元（一次训练）为单位：无论单元内出现哪种策略类型，都上报同一条 RG.STRATEGY.DECISION.PLANNING，不做题型区分。",
+    "en": "Reporting happens per finished unit: regardless of which strategy type appears in the unit, the same RG.STRATEGY.DECISION.PLANNING gene is reported, with no per-type distinction."
+  },
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["pictorial", "symbolic"]
+    },
+    {
+      "id": "action_count",
+      "zh": "可选行动数量",
+      "en": "Action Count",
+      "progression": ["single", "double", "multi"]
+    },
+    {
+      "id": "step_complexity",
+      "zh": "步骤复杂度",
+      "en": "Step Complexity",
+      "progression": ["one-shot", "sequential", "multi-step"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["picture", "sentence"]
+    },
+    {
+      "id": "opponent_complexity",
+      "zh": "对手/环境复杂度",
+      "en": "Opponent/Environment Complexity",
+      "progression": ["none", "fixed-rule", "reactive"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "goal_choice",
+      "nameZh": "目标选择",
+      "nameEn": "Goal Choice",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "picking the option that best reaches a stated goal (most candy, driest walk)"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "sequencing",
+      "nameZh": "行动顺序",
+      "nameEn": "Action Sequencing",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "given a goal and shuffled steps, picking the order that reaches it"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "resource_allocation",
+      "nameZh": "资源分配",
+      "nameEn": "Resource Allocation",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "choosing how to split a limited resource across needs so the outcome is best"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "look_ahead",
+      "nameZh": "多步预测",
+      "nameEn": "Look-Ahead Prediction",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "predicting the outcome two or more steps ahead before choosing"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "action_choice",
+      "nameZh": "简单博弈",
+      "nameEn": "Simple Game Strategy",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "choosing the action that wins against a simple fixed-rule opponent"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "adaptation_optimization",
+      "nameZh": "综合策略",
+      "nameEn": "Adaptation & Optimization",
+      "structureGeneId": "RG.STRATEGY.DECISION.PLANNING",
+      "status": "implemented",
+      "examples": [
+        "combining several strategy considerations (cost, goal, order) into one choice"
+      ],
+      "implementedBy": {
+        "gameIds": ["learning-math-strategy"]
+      }
+    },
+    {
+      "id": "path_planning",
+      "nameZh": "路径规划",
+      "nameEn": "Path Planning",
+      "structureGeneId": null,
+      "status": "planned",
+      "examples": [
+        "navigating a grid/maze from start to goal under movement constraints"
+      ],
+      "notesZh": "需要网格/地图状态和逐步移动判定，依赖 deferredRoadmap 中提出的新 Runtime（Plan/Simulate）和状态机接口，本轮不实现。",
+      "notesEn": "Requires grid/map state and step-by-step move validation, depending on the new Runtimes (Plan/Simulate) and state-machine interface proposed in deferredRoadmap; not implemented this round."
+    },
+    {
+      "id": "constraint_strategy",
+      "nameZh": "约束策略",
+      "nameEn": "Constraint Strategy",
+      "structureGeneId": null,
+      "status": "planned",
+      "examples": [
+        "satisfying multiple simultaneous constraints while optimizing an outcome"
+      ],
+      "notesZh": "真正的约束求解版本需要 deferredRoadmap 中的扩展 Template schema（constraints/scoreRule/optimalSolution），本轮以 resource_allocation/adaptation_optimization 的简化选择题形式承载，不做真正的约束求解。",
+      "notesEn": "A true constraint-solving version needs the extended Template schema (constraints/scoreRule/optimalSolution) in deferredRoadmap; this round carries a simplified multiple-choice form of it under resource_allocation/adaptation_optimization instead of real constraint solving."
+    }
+  ],
+  "deferredRoadmap": {
+    "zh": "以下架构在本轮之前作为完整蓝图被提出，均已记录为该模块的目标架构，但本轮 MVP 未实现，留待后续阶段（本轮保持与现有 shell.createGame/checkAnswer 契约一致，不引入新基建）：(1) 5 种新交互 Runtime——Choose、Sequence 拖拽排序、Plan、Allocate、Simulate，取代以 4 选 1 为主的现有交互；(2) strategy-runtime.js 状态机接口：getState/getAvailableActions/applyAction/evaluateState/isGoalReached/reset，取代单一 checkAnswer 判分；(3) 5 档反馈量表：Failed/Valid/Good/Better/Best，取代对/错二元判分；(4) 扩展 Template schema：goal/initialState/actions/transitionRules/constraints/cost/successCondition/scoreRule/optimalSolution，取代现有 premise/question/options/answer 结构；(5) 8 候选策略基因的完整拆分（目标选择/行动选择/行动排序/路径规划/资源分配/约束策略/多步预测/适应优化），本轮沿用单一 RG.STRATEGY.DECISION.PLANNING。",
+    "en": "The following architecture was proposed as a complete blueprint prior to this round and is recorded here as the module's target architecture, but is not implemented in this round's MVP and is deferred to a later stage (this round keeps the existing shell.createGame/checkAnswer contract and introduces no new infrastructure): (1) 5 new interaction Runtimes — Choose, Sequence drag-to-order, Plan, Allocate, Simulate — replacing the mostly-4-choice interaction used today; (2) a strategy-runtime.js state-machine interface: getState/getAvailableActions/applyAction/evaluateState/isGoalReached/reset, replacing the single checkAnswer scoring function; (3) a 5-tier feedback scale: Failed/Valid/Good/Better/Best, replacing binary right/wrong scoring; (4) an extended Template schema: goal/initialState/actions/transitionRules/constraints/cost/successCondition/scoreRule/optimalSolution, replacing the current premise/question/options/answer structure; (5) the full split of the 8 candidate Strategy Genes (goal choice, action choice, action sequencing, path planning, resource allocation, constraint strategy, look-ahead, adaptation & optimization), for which this round reuses the single RG.STRATEGY.DECISION.PLANNING gene instead."
+  },
+  "sessionPolicy": {
+    "maxItemsPerSession": 10,
+    "passRatio": 0.7
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4-5",
+      "gradeCode": "K1",
+      "objectiveZh": "看图选择，找出哪一个能让你得到最多或最好的结果。",
+      "objectiveEn": "Look at the pictures and pick the choice that gives the most or the best result.",
+      "primaryTypes": ["goal_choice"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-strategy"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["best-1"]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5-6",
+      "gradeCode": "K2",
+      "objectiveZh": "给定一个图形目标和三个打乱的步骤，选出能达成目标的正确顺序。",
+      "objectiveEn": "Given a picture goal and three shuffled steps, pick the order that reaches the goal.",
+      "primaryTypes": ["sequencing"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-strategy"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["sequence-1"]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "用文字前提做单步策略判断：步骤规划、最优选择、合理分配。",
+      "objectiveEn": "Single-step strategy judgment from a text premise: step planning, best choice, and sensible allocation.",
+      "primaryTypes": ["sequencing", "goal_choice", "resource_allocation"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-strategy"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["1", "2", "3"]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "用文字前提做多步预测、简单博弈与综合策略判断。",
+      "objectiveEn": "Multi-step prediction, simple game strategy, and mixed-strategy judgment from a text premise.",
+      "primaryTypes": ["look_ahead", "action_choice", "adaptation_optimization"],
+      "status": "implemented",
+      "implementedBy": ["learning-math-strategy"],
+      "implementedModes": ["puzzle"],
+      "sourceLevels": ["4", "5", "6"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "strategyType",
+      "difficultyAxis",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate"
+    ],
+    "note": "Phase one uploads only the summary Attempt; no round-level telemetry is declared yet since the puzzle mode has no sub-round structure."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "strategyType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "5岁适合哪些 Strategy 训练？",
+      "G2 的策略训练重点是什么？",
+      "哪些 strategy 练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "strategy",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

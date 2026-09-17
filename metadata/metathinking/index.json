@@ -108,6 +108,27 @@
       "status": "in-progress",
       "statusNoteZh": "阶段一沿用已有 6 个文字单元（覆盖 G1-G2 的顺序/分类/排除/条件/验证/多步综合）并新增 2 个 K1/K2 图形单元（分类推断-图形版、顺序推断-图形版），覆盖 K1-G2 四级。沿用单一既有基因 RG.LOGIC.REASONING.BASIC，未按题型拆分成细粒度基因（唯一候选的分类基因已被另一个不相关的规划中游戏占用）。Logic-Grid（网格约束）、条件引擎等更复杂题型留待后续阶段。运行时为静态题库（learning/math/logic/data.js），无 generator/engine，puzzle 已接线。",
       "statusNoteEn": "Stage one reuses the 6 existing text units (covering G1-G2 ordering/classification/elimination/condition/verification/multi-step synthesis) and adds 2 new K1/K2 picture units (picture classification, picture ordering), covering grades K1-G2. It reuses the single pre-existing gene RG.LOGIC.REASONING.BASIC without splitting into fine-grained per-type genes (the only candidate classification gene is already claimed by an unrelated planned game). Logic-Grid (constraint-grid), condition-engine and other more complex item types are deferred to a later stage. The runtime is a static bank (learning/math/logic/data.js) with no generator/engine; the puzzle is wired."
+    },
+    {
+      "id": "strategy",
+      "moduleType": "metathinking",
+      "titleZh": "策略",
+      "titleEn": "Strategy",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/metathinking/strategy.json",
+      "tags": [
+        "strategy",
+        "metathinking",
+        "learning-foundation",
+        "ai-readable"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "阶段一沿用已有 6 个文字单元（覆盖 G1-G2 的步骤规划/最优选择/合理分配/多步预测/简单博弈/综合策略）并新增 2 个 K1/K2 图形单元（目标选择-图形版、行动顺序-图形版），覆盖 K1-G2 四级。沿用单一既有基因 RG.STRATEGY.DECISION.PLANNING，未按候选类型拆分成细粒度基因。此前提出的 5 种新 Runtime 交互类型（Choose/Sequence/Plan/Allocate/Simulate）、strategy-runtime.js 状态机接口、5 档反馈量表、扩展 Template schema、路径规划/约束策略等题型均已记录为 strategy.json 里的 deferredRoadmap，留待后续阶段。运行时为静态题库（learning/math/strategy/data.js），无 generator/engine，puzzle 已接线并按单元上报雷达。",
+      "statusNoteEn": "Stage one reuses the 6 existing text units (covering G1-G2 step planning/best choice/smart allocation/multi-step prediction/simple game strategy/mixed strategy) and adds 2 new K1/K2 picture units (picture goal choice, picture action sequencing), covering grades K1-G2. It reuses the single pre-existing gene RG.STRATEGY.DECISION.PLANNING without splitting into fine-grained per-type genes. The previously proposed 5 new interaction Runtimes (Choose/Sequence/Plan/Allocate/Simulate), the strategy-runtime.js state-machine interface, the 5-tier feedback scale, the extended Template schema, and path-planning/constraint-strategy item types are all recorded as the deferredRoadmap in strategy.json, pending a later stage. The runtime is a static bank (learning/math/strategy/data.js) with no generator/engine; the puzzle is wired and reports to the radar per unit."
     }
   ]
 }

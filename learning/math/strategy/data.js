@@ -23,6 +23,102 @@
 var MS_DATA = {
   units: [
 
+    // ── Unit best-1: 目标选择-图形版  (K1 picture goal choice) ─────────────
+    {
+      id: 'best-1', icon: '🎯', isPicture: true,
+      nameZh: '目标选择', nameEn: 'Best Choice',
+      descZh: '看图选择，哪一个能让你得到最多或最好的结果？', descEn: 'Look at the pictures — which choice gives the best result?',
+      questions: [
+        { premiseZh:'🎯 吃到最多糖果', premiseEn:'🎯 Eat the most candy',
+          questionZh:'哪一堆糖果最多？', questionEn:'Which pile has the most candy?',
+          options:['🍬🍬','🍬🍬🍬🍬','🍬'], optionsEn:['🍬🍬','🍬🍬🍬🍬','🍬'],
+          answer:'🍬🍬🍬🍬', hintZh:'数一数，哪堆糖果数量最多', hintEn:'Count each pile — pick the one with the most' },
+
+        { premiseZh:'🎯 喝到最多果汁', premiseEn:'🎯 Drink the most juice',
+          questionZh:'哪一杯果汁最多？', questionEn:'Which cup has the most juice?',
+          options:['🧃🧃🧃','🧃','🧃🧃'], optionsEn:['🧃🧃🧃','🧃','🧃🧃'],
+          answer:'🧃🧃🧃', hintZh:'数一数，哪杯果汁最多', hintEn:'Count each cup — pick the one with the most' },
+
+        { premiseZh:'🎯 摘到最多的花', premiseEn:'🎯 Pick the most flowers',
+          questionZh:'哪一片花园花最多？', questionEn:'Which garden has the most flowers?',
+          options:['🌸🌸','🌸🌸🌸🌸🌸','🌸🌸🌸'], optionsEn:['🌸🌸','🌸🌸🌸🌸🌸','🌸🌸🌸'],
+          answer:'🌸🌸🌸🌸🌸', hintZh:'数一数，哪片花园花最多', hintEn:'Count each garden — pick the one with the most' },
+
+        { premiseZh:'🎯 抓到最多的鱼', premiseEn:'🎯 Catch the most fish',
+          questionZh:'哪一网鱼最多？', questionEn:'Which net has the most fish?',
+          options:['🐟','🐟🐟🐟','🐟🐟'], optionsEn:['🐟','🐟🐟🐟','🐟🐟'],
+          answer:'🐟🐟🐟', hintZh:'数一数，哪网鱼最多', hintEn:'Count each net — pick the one with the most' },
+
+        { premiseZh:'🎯 下雨天☔', premiseEn:'🎯 Rainy day ☔',
+          questionZh:'出门该带哪一样？', questionEn:'What should you bring when going out?',
+          options:['☂️雨伞','🕶️墨镜','🧢帽子'], optionsEn:['☂️ Umbrella','🕶️ Sunglasses','🧢 Hat'],
+          answer:'☂️雨伞', hintZh:'雨伞能让你不被淋湿', hintEn:'An umbrella keeps you dry' },
+
+        { premiseZh:'🎯 天黑了🌙', premiseEn:'🎯 It is dark 🌙',
+          questionZh:'走夜路该带哪一样？', questionEn:'What should you bring for a night walk?',
+          options:['🔦手电筒','🎈气球','📖书'], optionsEn:['🔦 Flashlight','🎈 Balloon','📖 Book'],
+          answer:'🔦手电筒', hintZh:'手电筒能帮你看清黑暗的路', hintEn:'A flashlight helps you see in the dark' },
+
+        { premiseZh:'🎯 又饿又渴', premiseEn:'🎯 Hungry and thirsty',
+          questionZh:'先做哪一样最好？', questionEn:'Which should you do first?',
+          options:['🍔吃东西','🎮玩游戏','😴睡觉'], optionsEn:['🍔 Eat food','🎮 Play games','😴 Sleep'],
+          answer:'🍔吃东西', hintZh:'饿了先吃东西，身体才有力气', hintEn:'Eat first when hungry so your body has energy' },
+
+        { premiseZh:'🎯 想要跳得最高', premiseEn:'🎯 Want to jump the highest',
+          questionZh:'哪个球最适合用来跳？', questionEn:'Which ball is best for jumping?',
+          options:['⚽足球','🏀篮球','🩰弹力球'], optionsEn:['⚽ Soccer ball','🏀 Basketball','🩰 Bouncy ball'],
+          answer:'🩰弹力球', hintZh:'弹力球最有弹性，能跳得最高', hintEn:'A bouncy ball has the most bounce' }
+      ]
+    },
+
+    // ── Unit sequence-1: 行动顺序-图形版  (K2 picture 3-step sequencing) ────
+    {
+      id: 'sequence-1', icon: '🧩', isPicture: true,
+      nameZh: '行动顺序', nameEn: 'Action Sequence',
+      descZh: '给定一个目标和三个打乱的步骤，选出能达成目标的正确顺序。', descEn: 'Given a goal and three shuffled steps, pick the order that reaches the goal.',
+      questions: [
+        { premiseZh:'🎯 种一朵花', premiseEn:'🎯 Grow a flower',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🌱→💧→🌸','💧→🌱→🌸','🌸→🌱→💧'], optionsEn:['🌱→💧→🌸','💧→🌱→🌸','🌸→🌱→💧'],
+          answer:'🌱→💧→🌸', hintZh:'先种种子，再浇水，最后开花', hintEn:'Plant the seed, water it, then it blooms' },
+
+        { premiseZh:'🎯 早上准备上学', premiseEn:'🎯 Get ready for school',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['⏰→🧼→👕','🧼→⏰→👕','👕→⏰→🧼'], optionsEn:['⏰→🧼→👕','🧼→⏰→👕','👕→⏰→🧼'],
+          answer:'⏰→🧼→👕', hintZh:'先起床，再洗漱，最后穿衣服', hintEn:'Wake up, wash up, then get dressed' },
+
+        { premiseZh:'🎯 准备睡觉', premiseEn:'🎯 Get ready for bed',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🛁→👕→😴','😴→🛁→👕','👕→😴→🛁'], optionsEn:['🛁→👕→😴','😴→🛁→👕','👕→😴→🛁'],
+          answer:'🛁→👕→😴', hintZh:'先洗澡，再穿睡衣，最后睡觉', hintEn:'Bathe, put on pajamas, then sleep' },
+
+        { premiseZh:'🎯 堆一座沙堡', premiseEn:'🎯 Build a sandcastle',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🏖️→💧→🏰','💧→🏰→🏖️','🏰→🏖️→💧'], optionsEn:['🏖️→💧→🏰','💧→🏰→🏖️','🏰→🏖️→💧'],
+          answer:'🏖️→💧→🏰', hintZh:'先挖沙，再加水，最后堆城堡', hintEn:'Dig sand, add water, then build the castle' },
+
+        { premiseZh:'🎯 做一个蛋糕', premiseEn:'🎯 Bake a cake',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🥣→🔥→🎂','🔥→🎂→🥣','🎂→🥣→🔥'], optionsEn:['🥣→🔥→🎂','🔥→🎂→🥣','🎂→🥣→🔥'],
+          answer:'🥣→🔥→🎂', hintZh:'先混合材料，再烘烤，最后吃蛋糕', hintEn:'Mix ingredients, bake, then eat the cake' },
+
+        { premiseZh:'🎯 种一棵树', premiseEn:'🎯 Plant a tree',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🕳️→🌳→💧','🌳→💧→🕳️','💧→🕳️→🌳'], optionsEn:['🕳️→🌳→💧','🌳→💧→🕳️','💧→🕳️→🌳'],
+          answer:'🕳️→🌳→💧', hintZh:'先挖坑，再种树苗，最后浇水', hintEn:'Dig a hole, plant the sapling, then water it' },
+
+        { premiseZh:'🎯 洗一辆车', premiseEn:'🎯 Wash a car',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['🧽→💧→🧻','💧→🧻→🧽','🧻→🧽→💧'], optionsEn:['🧽→💧→🧻','💧→🧻→🧽','🧻→🧽→💧'],
+          answer:'🧽→💧→🧻', hintZh:'先打泡沫，再冲水，最后擦干', hintEn:'Scrub with soap, rinse, then dry' },
+
+        { premiseZh:'🎯 出门上学', premiseEn:'🎯 Leave for school',
+          questionZh:'哪个顺序对？', questionEn:'Which order is correct?',
+          options:['👕→👟→🚪','👟→🚪→👕','🚪→👕→👟'], optionsEn:['👕→👟→🚪','👟→🚪→👕','🚪→👕→👟'],
+          answer:'👕→👟→🚪', hintZh:'先穿衣服，再穿鞋子，最后出门', hintEn:'Get dressed, put on shoes, then leave' }
+      ]
+    },
+
     // ── Unit 1: 做事顺序  (What to do first to reach the goal) ────────────
     {
       id: '1', icon: '📋',
