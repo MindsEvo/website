@@ -1,0 +1,367 @@
+/**
+ * metadata/rootgene.js — script-tag-loadable mirror of rootgene.json.
+ *
+ * Exists because profile.js's registry load used to be a fetch() of the
+ * sibling JSON file, which Chrome refuses under file:// (treated as a
+ * cross-origin request). Every other module in this codebase already loads
+ * its static content via <script src="./data.js"> setting a global variable
+ * instead of fetch — this file applies the same pattern to the rootGene
+ * registry. Content below must stay byte-identical (structurally) to
+ * rootgene.json; that file remains the source of truth for
+ * metadata/validate.js and the <link rel="alternate"> reference.
+ */
+window.ROOTGENE_REGISTRY = {
+  "version": "v0.2.3",
+  "updatedAt": "2026-09-11",
+  "canonicalUrl": "/metadata/rootgene.json",
+  "title": {
+    "zh": "根基因登记表",
+    "en": "RootGene Registry"
+  },
+  "purpose": {
+    "zh": "根基因 ID 到中英文名称的唯一登记表。思维雷达的第一根轴用它显示名称，元数据校验器用它检查游戏声明的 ID 是否存在。ID 只描述能力，位置信息一律走 moduleId / unitId / levelId。",
+    "en": "The single registry mapping rootGene ids to bilingual names. Axis 1 of the thinking radar uses it for labels, and the metadata validator uses it to check that ids declared by games actually exist. An id describes ABILITY only; location always travels in moduleId / unitId / levelId."
+  },
+  "notes": {
+    "namingZh": "格式 RG.SCOPE.CATEGORY.NODE，全大写，段内用下划线。",
+    "namingEn": "Format RG.SCOPE.CATEGORY.NODE, upper case, underscores inside a segment.",
+    "unknownZh": "未登记的 ID 不是错误：radar-reader.js 会从 ID 本身推导出显示名，图表当天就能显示；登记只是为了给它一个人话名字。",
+    "unknownEn": "An unregistered id is not an error: radar-reader.js derives a label from the id itself, so a brand-new gene charts the day it is first reported. Registering it only gives it a human name.",
+    "mnZh": "根基因与模块是 M:N 关系。同一个基因可以被多个模块训练，同一个模块也可以声明多个基因。",
+    "statusZh": "status 缺省为 active。planned 表示这个基因已经被 metadata/game.json 认领，但还没有任何代码上报过它，校验器把它报成 INFO 而不是「死条目」警告。",
+    "statusEn": "status defaults to active. planned means the gene is already claimed by metadata/game.json but no code reports it yet, so the validator lists it as INFO instead of warning about a dead entry."
+  },
+  "categories": [
+    {
+      "id": "LOGIC",
+      "zh": "逻辑",
+      "en": "Logic",
+      "color": "#0d9488"
+    },
+    {
+      "id": "PATTERN",
+      "zh": "规律",
+      "en": "Pattern",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "MATH",
+      "zh": "数感",
+      "en": "Number Sense",
+      "color": "#ea580c"
+    },
+    {
+      "id": "STRATEGY",
+      "zh": "策略",
+      "en": "Strategy",
+      "color": "#2563eb"
+    },
+    {
+      "id": "MODELING",
+      "zh": "建模",
+      "en": "Modeling",
+      "color": "#be185d"
+    },
+    {
+      "id": "ATTENTION",
+      "zh": "注意",
+      "en": "Attention",
+      "color": "#ca8a04"
+    },
+    {
+      "id": "LANGUAGE",
+      "zh": "语言",
+      "en": "Language",
+      "color": "#4d7c0f"
+    }
+  ],
+  "genes": {
+    "RG.LOGIC.COMPARISON.BASIC": {
+      "category": "LOGIC",
+      "zh": "比较判断",
+      "en": "Comparison",
+      "short": {
+        "zh": "比较",
+        "en": "Compare"
+      },
+      "descZh": "在共同维度上判断两个或多个对象的大小、多少、顺序与等同。",
+      "descEn": "Judge relation, order and equivalence among objects on a shared dimension."
+    },
+    "RG.LOGIC.REASONING.BASIC": {
+      "category": "LOGIC",
+      "zh": "推理",
+      "en": "Reasoning",
+      "short": {
+        "zh": "推理",
+        "en": "Reason"
+      },
+      "descZh": "由已知条件推出未知结论，包括传递关系与排除法。",
+      "descEn": "Derive an unknown conclusion from given facts, including transitivity and elimination."
+    },
+    "RG.PATTERN.SEQUENCE.BASIC": {
+      "category": "PATTERN",
+      "zh": "序列规律",
+      "en": "Sequence Pattern",
+      "short": {
+        "zh": "序列",
+        "en": "Sequence"
+      },
+      "descZh": "发现一串元素的重复或递进规则，并据此续写。",
+      "descEn": "Find the repeating or progressing rule in a run of elements and continue it."
+    },
+    "RG.PATTERN.VISUAL.SIZE": {
+      "category": "PATTERN",
+      "zh": "大小规律",
+      "en": "Size Pattern",
+      "short": {
+        "zh": "大小",
+        "en": "Size"
+      },
+      "descZh": "以尺寸为线索识别视觉规律。",
+      "descEn": "Read a visual pattern whose cue is size."
+    },
+    "RG.PATTERN.VISUAL.COLOR": {
+      "category": "PATTERN",
+      "zh": "颜色规律",
+      "en": "Color Pattern",
+      "short": {
+        "zh": "颜色",
+        "en": "Color"
+      },
+      "descZh": "以颜色为线索识别视觉规律。",
+      "descEn": "Read a visual pattern whose cue is color."
+    },
+    "RG.PATTERN.VISUAL.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "图形序列",
+      "en": "Visual Sequence",
+      "short": {
+        "zh": "图序",
+        "en": "Visual seq"
+      },
+      "descZh": "在图形排列中识别顺序规律。",
+      "descEn": "Identify order in an arrangement of shapes."
+    },
+    "RG.PATTERN.SPATIAL.RELATION": {
+      "category": "PATTERN",
+      "zh": "空间关系",
+      "en": "Spatial Relation",
+      "short": {
+        "zh": "空间",
+        "en": "Spatial"
+      },
+      "descZh": "判断上下、左右、内外、相邻等位置关系。",
+      "descEn": "Judge above/below, left/right, inside/outside and adjacency."
+    },
+    "RG.PATTERN.TEMPORAL.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "时间顺序",
+      "en": "Temporal Sequence",
+      "short": {
+        "zh": "时序",
+        "en": "Time seq"
+      },
+      "descZh": "判断事件的先后顺序与因果链条。",
+      "descEn": "Order events in time and follow a chain of causes."
+    },
+    "RG.PATTERN.MOTION.SEQUENCE": {
+      "category": "PATTERN",
+      "zh": "运动规律",
+      "en": "Motion Pattern",
+      "short": {
+        "zh": "运动",
+        "en": "Motion"
+      },
+      "descZh": "从移动、旋转、翻转中提取变化规则。",
+      "descEn": "Extract the rule behind movement, rotation or flipping."
+    },
+    "RG.PATTERN.QUANTITY.RELATION": {
+      "category": "PATTERN",
+      "zh": "数量关系",
+      "en": "Quantity Relation",
+      "short": {
+        "zh": "数量",
+        "en": "Quantity"
+      },
+      "descZh": "识别数量之间的增减、倍数与对应关系。",
+      "descEn": "Recognise increase, multiple and correspondence between quantities."
+    },
+    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION": {
+      "category": "PATTERN",
+      "zh": "多维整合",
+      "en": "Multi-dimension Integration",
+      "short": {
+        "zh": "多维",
+        "en": "Multi-dim"
+      },
+      "descZh": "同时跟踪两条以上线索，并把它们合起来判断。",
+      "descEn": "Track two or more cues at once and combine them into one judgement."
+    },
+    "RG.PATTERN.TRANSFORMATION.RULE": {
+      "category": "PATTERN",
+      "zh": "变换规则",
+      "en": "Transformation Rule",
+      "short": {
+        "zh": "变换",
+        "en": "Transform"
+      },
+      "status": "planned",
+      "descZh": "看出前一个对象是怎么变成后一个的，并把这条变换用下去：部件增减、组合拆分、属性逐步改变。",
+      "descEn": "See how each object becomes the next one and apply that transformation onward: parts added or removed, assembly and splitting, an attribute changing step by step.",
+      "boundaryZh": "单符号的朝向旋转（↑→↓←）归小精灵 Visual Pattern，方向加步长的连续移动归 Motion Pattern；本基因只管可数的部件与属性变化。",
+      "boundaryEn": "Rotating a single symbol's heading is MindSeeds Visual Pattern and direction-plus-step movement is Motion Pattern; this gene covers only countable part and attribute changes."
+    },
+    "RG.MATH.NUMBER_SENSE.BASIC": {
+      "category": "MATH",
+      "zh": "数感",
+      "en": "Number Sense",
+      "short": {
+        "zh": "数感",
+        "en": "Number"
+      },
+      "descZh": "对数的大小、多少与相对位置形成直觉。",
+      "descEn": "Build intuition for magnitude, quantity and relative position of numbers.",
+      "claimedBy": ["clio-egg-catcher-workshop", "clio-ufo-math-workshop"]
+    },
+    "RG.MATH.NUMBER_SENSE.QUANTITY": {
+      "category": "MATH",
+      "zh": "数量感知",
+      "en": "Quantity Sense",
+      "short": {
+        "zh": "数量",
+        "en": "Quantity"
+      },
+      "descZh": "不数数就能感知一堆物体大约有多少，并粗略判断哪边更多。",
+      "descEn": "Sense roughly how many objects are in a group without counting, and judge which side has more.",
+      "boundaryZh": "与 RG.LOGIC.COMPARISON.BASIC 的界限：Comparison 训练的是比较判断本身（在已知两个量的前提下如何判断关系），本基因训练的是对量本身的内部感觉（一眼估出大约几个），不要求先有清楚的两个数才能比。",
+      "boundaryEn": "Boundary with RG.LOGIC.COMPARISON.BASIC: Comparison trains the act of judging a relation once two quantities are already known; this gene trains the felt sense of a quantity itself (glancing at a group and sensing roughly how many), and does not require two clean numbers to already be in hand."
+    },
+    "RG.MATH.NUMBER_SENSE.PART_WHOLE": {
+      "category": "MATH",
+      "zh": "部分与整体",
+      "en": "Part-Whole Sense",
+      "short": {
+        "zh": "部分整体",
+        "en": "Part-whole"
+      },
+      "descZh": "看出一个整体是由哪些部分组成的，以及部分之间如何拼回整体。",
+      "descEn": "See which parts make up a whole, and how those parts fit back together into it.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.COMPOSITION 的界限：本基因训练的是识别一份已给出的整体-部分关系是否成立，COMPOSITION 训练的是主动列举一个数有哪些不同的拆分方式。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.COMPOSITION: this gene trains recognising whether a given whole-part relation holds; COMPOSITION trains actively generating the different ways a number can be split."
+    },
+    "RG.MATH.NUMBER_SENSE.COMPOSITION": {
+      "category": "MATH",
+      "zh": "数的组合与拆分",
+      "en": "Composition & Decomposition",
+      "short": {
+        "zh": "组合拆分",
+        "en": "Compose"
+      },
+      "descZh": "主动列举一个数可以拆成哪些不同的两份或多份，并判断拆法是否成立。",
+      "descEn": "Actively generate the different ways a number can be split into two or more parts, and judge whether a proposed split is valid.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.PART_WHOLE 的界限见该条目。",
+      "boundaryEn": "See RG.MATH.NUMBER_SENSE.PART_WHOLE for the boundary between the two."
+    },
+    "RG.STRATEGY.DECISION.PLANNING": {
+      "category": "STRATEGY",
+      "zh": "决策规划",
+      "en": "Decision Planning",
+      "short": {
+        "zh": "决策",
+        "en": "Decide"
+      },
+      "descZh": "在多个可行方案中权衡取舍，并安排先后步骤。",
+      "descEn": "Weigh several workable options and order the steps between them."
+    },
+    "RG.MODELING.EQUATION.RELATION": {
+      "category": "MODELING",
+      "zh": "关系建模",
+      "en": "Relation Modeling",
+      "short": {
+        "zh": "建模",
+        "en": "Model"
+      },
+      "descZh": "把一个具体情境写成可计算的关系式。",
+      "descEn": "Turn a concrete situation into a relation that can be computed."
+    },
+    "RG.MODELING.MAPPING.BASIC": {
+      "category": "MODELING",
+      "zh": "对应模型",
+      "en": "Correspondence Modeling",
+      "short": {
+        "zh": "对应",
+        "en": "Map"
+      },
+      "descZh": "用一个简化的符号、图形或标签代表一个具体事物或角色，并能从符号还原出所指的对象。",
+      "descEn": "Use a simplified symbol, picture or label to stand for a concrete thing or role, and read back what a symbol stands for.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 等规律基因的界限：那些基因训练「下一个是什么」的续写与预测，本基因训练「这个符号代表谁」的双向对应，不涉及续写或规律预测。",
+      "boundaryEn": "Boundary with pattern genes such as RG.PATTERN.SEQUENCE.BASIC: those train continuing/predicting a sequence, while this gene trains bidirectional correspondence between a symbol and what it stands for, with no continuation involved."
+    },
+    "RG.MODELING.GROUPING.PURPOSE": {
+      "category": "MODELING",
+      "zh": "分类模型",
+      "en": "Purpose-based Grouping",
+      "short": {
+        "zh": "分组",
+        "en": "Group"
+      },
+      "descZh": "同一组对象按不同目的可以有不同的合理分组，练习为给定目的选出正确的分组标准并归类。",
+      "descEn": "The same set of objects can be grouped differently depending on purpose; practice choosing the grouping criterion that fits a stated purpose and sorting accordingly.",
+      "boundaryZh": "与 RG.LOGIC.CLASSIFICATION.BASIC 的界限：Classification 训练按物体固有属性归入唯一正确的组别；本基因训练同一组对象在不同目的下可以有不同的、都合理的分组标准，模型本身随目的变化，不存在单一「正确答案」的属性归类。",
+      "boundaryEn": "Boundary with RG.LOGIC.CLASSIFICATION.BASIC: Classification trains sorting objects into a single correct group by an inherent attribute; this gene trains that the same objects can have different, equally valid groupings depending on stated purpose — the model itself shifts with purpose, not a fixed-attribute sort."
+    },
+    "RG.MODELING.SPATIAL.BASIC": {
+      "category": "MODELING",
+      "zh": "空间模型",
+      "en": "Spatial Modeling",
+      "short": {
+        "zh": "空间",
+        "en": "Spatial"
+      },
+      "descZh": "把真实的空间关系（位置、路径、方位）转换成简化的示意图或地图来阅读和使用。",
+      "descEn": "Turn real spatial relations (position, path, direction) into a simplified diagram or map, and read or use that diagram.",
+      "boundaryZh": "与 RG.PATTERN.SPATIAL.RELATION 的界限：那条基因训练直接判断上下左右等位置关系本身；本基因训练把这些关系抽象成一张简化示意图/地图，并能反过来用这张图回答问题——多一层「建模」的转换，不是位置关系判断本身。",
+      "boundaryEn": "Boundary with RG.PATTERN.SPATIAL.RELATION: that gene trains directly judging positional relations themselves; this gene trains abstracting those relations into a simplified diagram/map and using it to answer questions — an added layer of modeling, not the raw relational judgment."
+    },
+    "RG.LOGIC.CLASSIFICATION.BASIC": {
+      "category": "LOGIC",
+      "zh": "分类归组",
+      "en": "Classification",
+      "short": {
+        "zh": "分类",
+        "en": "Classify"
+      },
+      "descZh": "按一条或多条属性把对象归入正确的组别。",
+      "descEn": "Put objects into the right group by one or more attributes.",
+      "status": "planned",
+      "claimedBy": ["clio-sorting-workshop"]
+    },
+    "RG.ATTENTION.SEARCH.VISUAL": {
+      "category": "ATTENTION",
+      "zh": "视觉搜索",
+      "en": "Visual Search",
+      "short": {
+        "zh": "搜索",
+        "en": "Search"
+      },
+      "descZh": "在干扰项中持续寻找并确认目标，数量未知时也不放弃。",
+      "descEn": "Keep locating and confirming targets among distractors, even when the count is unknown.",
+      "boundaryZh": "两个认领者分工不同，不是重复建设：find-it 在开放场景里找若干个目标（数量未知），difference-scout 在成对条带里找恰好一个（位置未知）。",
+      "boundaryEn": "The two claimants split the work rather than duplicating it: find-it searches an open scene for an unknown number of targets, while difference-scout searches paired strips for exactly one, at an unknown position.",
+      "claimedBy": ["difference-scout", "clio-find-it-workshop"]
+    },
+    "RG.LANGUAGE.SEMANTIC.RELATION": {
+      "category": "LANGUAGE",
+      "zh": "词义关系",
+      "en": "Semantic Relation",
+      "short": {
+        "zh": "词义",
+        "en": "Semantic"
+      },
+      "descZh": "判断词与词之间的相同、同义与反义关系。",
+      "descEn": "Judge sameness, synonymy and antonymy between words.",
+      "status": "planned",
+      "claimedBy": ["clio-word-connections-workshop"]
+    }
+  }
+};

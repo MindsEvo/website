@@ -25,10 +25,17 @@
  *      puts every grade back, with the per-cell accuracy and session count the
  *      spoke had to average away.
  *
- * The registry is a nicety, not a dependency: if the fetch fails (file://, or
- * the file is not deployed yet) every gene still charts, labelled from its own
- * id by RadarReader.deriveLabel. That is said out loud in the footer rather
- * than hidden.
+ * The registry loads from window.ROOTGENE_REGISTRY first (set by the
+ * <script src="../metadata/rootgene.js"> tag loaded before this file — the
+ * same global-variable pattern every other module uses for its data.js,
+ * chosen because file:// commonly refuses fetch() of a sibling JSON file).
+ * Only if that global is absent does loadRegistry() fall back to
+ * fetch(REGISTRY_URL), for deployments that have not picked up rootgene.js.
+ *
+ * The registry is a nicety, not a dependency either way: if neither path
+ * produces it, every gene still charts, labelled from its own id by
+ * RadarReader.deriveLabel. That is said out loud in the footer rather than
+ * hidden.
  */
 (function (global) {
 
@@ -77,6 +84,17 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Axis labels are tuned to fit short category names ("策略" / "Strategy").
+  // A gene without a registry entry falls back to RadarReader.deriveLabel's
+  // always-English "Category · Subtype · Basic" — long enough to run past
+  // the card edge at this font size. Truncating here is a backstop, not the
+  // fix: with the registry loading reliably (see loadRegistry), registered
+  // genes and categories already have short labels and never hit this path.
+  function truncateLabel(s, maxLen) {
+    s = String(s === null || s === undefined ? '' : s);
+    return s.length > maxLen ? s.slice(0, maxLen - 1) + '…' : s;
+  }
+
   function pct(x) {
     return (x === null || x === undefined || !isFinite(x))
       ? '—' : Math.round(x * 100) + '%';
@@ -106,7 +124,18 @@
 
   // ── registry ────────────────────────────────────────────────
 
+  function applyRegistry(json) {
+    state.labels = (json && json.genes) || null;
+    state.categories = (json && json.categories) || null;
+    state.registryVersion = (json && json.version) || null;
+    if (!state.labels) state.registryError = 'no-genes';
+  }
+
   function loadRegistry() {
+    if (global.ROOTGENE_REGISTRY) {
+      applyRegistry(global.ROOTGENE_REGISTRY);
+      return Promise.resolve();
+    }
     if (typeof global.fetch !== 'function') {
       state.registryError = 'no-fetch';
       return Promise.resolve();
@@ -116,12 +145,7 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
-      .then(function (json) {
-        state.labels = (json && json.genes) || null;
-        state.categories = (json && json.categories) || null;
-        state.registryVersion = (json && json.version) || null;
-        if (!state.labels) state.registryError = 'no-genes';
-      })
+      .then(applyRegistry)
       .catch(function (err) {
         // A missing registry costs readable names, nothing else.
         state.registryError = String((err && err.message) || err);
@@ -216,7 +240,7 @@
       var dy = Math.sin(a) > 0.6 ? 12 : (Math.sin(a) < -0.6 ? -4 : 4);
       svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy).toFixed(1) +
                '" text-anchor="' + anchor + '" font-size="13" font-weight="700" ' +
-               'fill="#1e293b">' + esc(genes[j].labelShort) + '</text>');
+               'fill="#1e293b">' + esc(truncateLabel(genes[j].labelShort, 16)) + '</text>');
       svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy + 14).toFixed(1) +
                '" text-anchor="' + anchor + '" font-size="11" fill="#64748b">' +
                esc(genes[j].reachedCode || '—') + '</text>');
@@ -308,7 +332,7 @@
                '" width="92" height="30" fill="transparent" />');
       svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy).toFixed(1) +
                '" text-anchor="' + anchor + '" font-size="13" font-weight="700" ' +
-               'fill="' + esc(cat.color || '#1e293b') + '">' + esc(name) + '</text>');
+               'fill="' + esc(cat.color || '#1e293b') + '">' + esc(truncateLabel(name, 16)) + '</text>');
       svg.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + dy + 14).toFixed(1) +
                '" text-anchor="' + anchor + '" font-size="11" fill="#64748b">' +
                esc(cat.reachedCode || '—') + '</text>');
