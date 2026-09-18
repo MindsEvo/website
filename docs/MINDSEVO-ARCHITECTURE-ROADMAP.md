@@ -36,9 +36,13 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 5. Logic（逻辑）
 6. Strategy（策略）
 
-建议命名：Six Core Cognitive Modules（六大核心认知模块）。
+以上六个模块共同构成数学思维（Math Thinking）子产品线。
+
+建议命名：Six Core Cognitive Modules（六大核心认知模块，特指上述数学思维六模块，不含下述其他 Learning 子模块）。
 
 纵向进阶：幼儿园 -> 小学毕业，按抽象程度递进。
+
+Science（科学）现处于架构脚手架（architecture-scaffold）阶段：已按 Comparison 的 Template -> Variant -> Attempt 内容管线搭建 `learning/science/`，并新增一条非解题类的 Explore 活动路径（观察 -> 预测 -> 实验 -> 证据 -> 解释），与 Comparison 的拖拽类交互（sort/match/group/fit/mini）并列，但目前只有 1 个 Puzzle 模板与 1 个 Explore 模板（K1 · 浮与沉），用于验证架构，尚不构成完整题库。
 
 ### 2.2 MindSeeds（小精灵系列）
 

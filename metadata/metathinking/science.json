@@ -1,0 +1,337 @@
+{
+  "version": "v0.1.0-scaffold",
+  "updatedAt": "2026-09-17",
+  "moduleType": "metathinking",
+  "id": "science",
+  "canonicalUrl": "/metadata/metathinking/science.json",
+  "title": {
+    "zh": "科学",
+    "en": "Science"
+  },
+  "description": {
+    "zh": "科学是一种通过观察、提问、预测、实验、证据与解释，对自然现象形成可检验理解的元思维操作。",
+    "en": "Science is a meta-thinking operation that builds testable understanding of natural phenomena through observation, questioning, prediction, experimentation, evidence, and explanation."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 4,
+    "noteZh": "架构脚手架阶段：仅覆盖 K1（3-4岁）一个年级，验证 Puzzle 与 Explore 两条内容管线。",
+    "noteEn": "Architecture-scaffold stage: covers only K1 (age 3-4) to validate the Puzzle and Explore content pipelines."
+  },
+  "educationReference": {
+    "scope": "global-k12-foundation",
+    "policyZh": "以全球基础教育大纲和教材为知识背景，不增加额外知识负担，以知识内容承载思维训练。",
+    "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training."
+  },
+  "rootGeneIds": [
+    "RG.SCIENCE.OBSERVATION.BASIC",
+    "RG.SCIENCE.QUESTIONING.BASIC",
+    "RG.SCIENCE.PREDICTION.BASIC",
+    "RG.SCIENCE.EXPERIMENTATION.BASIC",
+    "RG.SCIENCE.EVIDENCE.BASIC",
+    "RG.SCIENCE.EXPLANATION.BASIC"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "object_complexity",
+      "zh": "对象复杂度",
+      "en": "Object Complexity",
+      "progression": ["concrete", "symbolic", "abstract"]
+    },
+    {
+      "id": "variable_complexity",
+      "zh": "变量复杂度",
+      "en": "Variable Complexity",
+      "progression": ["single", "dual", "multi"]
+    },
+    {
+      "id": "inference_complexity",
+      "zh": "推理复杂度",
+      "en": "Inference Complexity",
+      "progression": ["direct", "indirect", "chain", "constrained"]
+    },
+    {
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": ["action", "question", "compound", "explain"]
+    },
+    {
+      "id": "transfer_complexity",
+      "zh": "迁移复杂度",
+      "en": "Transfer Complexity",
+      "progression": ["within-domain", "cross-domain", "strategy", "evidence"]
+    }
+  ],
+  "typeTree": [
+    {
+      "id": "life",
+      "nameZh": "生命",
+      "nameEn": "Life",
+      "status": "planned",
+      "examples": [
+        "plant growth observation",
+        "animal habitat classification"
+      ]
+    },
+    {
+      "id": "matter",
+      "nameZh": "物质",
+      "nameEn": "Matter",
+      "status": "partial",
+      "examples": [
+        "float/sink prediction and testing"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-science"
+        ],
+        "lessonIds": [],
+        "videoIds": []
+      }
+    },
+    {
+      "id": "motion",
+      "nameZh": "运动",
+      "nameEn": "Motion",
+      "status": "planned",
+      "examples": [
+        "speed and distance comparison",
+        "path prediction"
+      ]
+    },
+    {
+      "id": "energy",
+      "nameZh": "能量",
+      "nameEn": "Energy",
+      "status": "planned",
+      "examples": [
+        "push/pull and simple machines",
+        "light and heat sources"
+      ]
+    },
+    {
+      "id": "earth",
+      "nameZh": "地球",
+      "nameEn": "Earth",
+      "status": "planned",
+      "examples": [
+        "weather and season observation",
+        "rock and soil classification"
+      ]
+    },
+    {
+      "id": "space",
+      "nameZh": "太空",
+      "nameEn": "Space",
+      "status": "planned",
+      "examples": [
+        "day/night cycle",
+        "sun/moon/star observation"
+      ]
+    },
+    {
+      "id": "engineering",
+      "nameZh": "工程",
+      "nameEn": "Engineering",
+      "status": "planned",
+      "examples": [
+        "simple structure testing",
+        "design-build-test iteration"
+      ]
+    }
+  ],
+  "levelMap": [
+    {
+      "levelId": "K1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "留意（Notice）：在单一变量下对熟悉物品的浮沉进行预测、测试与初步解释。",
+      "objectiveEn": "Notice: predict, test, and give an early explanation for float/sink outcomes of familiar objects under a single variable.",
+      "primaryTypes": ["matter"],
+      "status": "implemented",
+      "implementedBy": ["learning-science"],
+      "implementedModes": ["puzzle", "explore"],
+      "sourceLevels": ["K1"]
+    },
+    {
+      "levelId": "K2",
+      "ageHint": "4-5",
+      "gradeCode": "K2",
+      "objectiveZh": "描述（Describe）：用完整的语言描述观察到的现象特征，而不只是指出结果。",
+      "objectiveEn": "Describe: put observed phenomena into words, beyond just naming the outcome.",
+      "primaryTypes": ["matter", "life"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["K2"]
+    },
+    {
+      "levelId": "G1",
+      "ageHint": "5-6",
+      "gradeCode": "G1",
+      "objectiveZh": "预测（Predict）：基于已观察到的规律，对新情境做出有依据的预测。",
+      "objectiveEn": "Predict: use an observed pattern to make a grounded prediction about a new situation.",
+      "primaryTypes": ["motion", "life"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G1"]
+    },
+    {
+      "levelId": "G2",
+      "ageHint": "6-7",
+      "gradeCode": "G2",
+      "objectiveZh": "提问（Question）：把好奇心转化为一个可检验的具体问题。",
+      "objectiveEn": "Question: turn curiosity into a specific, testable question.",
+      "primaryTypes": ["earth", "energy"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G2"]
+    },
+    {
+      "levelId": "G3",
+      "ageHint": "7-8",
+      "gradeCode": "G3",
+      "objectiveZh": "实验（Experiment）：设计控制单一变量的简单实验来检验假设。",
+      "objectiveEn": "Experiment: design a simple single-variable-controlled test to check a hypothesis.",
+      "primaryTypes": ["energy", "engineering"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G3"]
+    },
+    {
+      "levelId": "G4",
+      "ageHint": "8-9",
+      "gradeCode": "G4",
+      "objectiveZh": "证据（Evidence）：判断一份证据是否足以支持某个结论。",
+      "objectiveEn": "Evidence: judge whether a given piece of evidence is sufficient to support a conclusion.",
+      "primaryTypes": ["space", "earth"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G4"]
+    },
+    {
+      "levelId": "G5",
+      "ageHint": "9-10",
+      "gradeCode": "G5",
+      "objectiveZh": "解释（Explain）：把观察、证据与规律串成一条完整的因果解释。",
+      "objectiveEn": "Explain: connect observations, evidence, and patterns into a complete causal explanation.",
+      "primaryTypes": ["engineering", "motion"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G5"]
+    },
+    {
+      "levelId": "G6",
+      "ageHint": "10-12",
+      "gradeCode": "G6",
+      "objectiveZh": "修正（Revise）：在新证据出现时修正原有解释，而不是固守初始答案。",
+      "objectiveEn": "Revise: update an existing explanation when new evidence appears, instead of defending the first answer.",
+      "primaryTypes": ["life", "space", "engineering"],
+      "status": "planned",
+      "implementedBy": [],
+      "implementedModes": [],
+      "sourceLevels": ["G6"]
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "attention-and-classification",
+      "titleZh": "基础观察与分类",
+      "titleEn": "Basic Observation and Classification"
+    }
+  ],
+  "videos": [],
+  "exercises": [
+    {
+      "id": "sci-matter-float-sink",
+      "type": "matter",
+      "levelRange": ["K1", "K1"],
+      "descriptionZh": "浮与沉的预测、测试与解释。",
+      "descriptionEn": "Float and sink prediction, testing, and explanation.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-science"],
+      "sourceLessonIds": [],
+      "sourceLevelIds": ["K1"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish",
+      "observation",
+      "prediction",
+      "action",
+      "variable_changed",
+      "result",
+      "evidence_selected",
+      "explanation",
+      "revision"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "comparisonType",
+      "interactionMode",
+      "gameEngine",
+      "endReason",
+      "difficultyAxis",
+      "errorType",
+      "ageBucket"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "avgTimeMs",
+      "hintRate",
+      "retryRate",
+      "avgCorrections",
+      "optimalChoiceRate",
+      "bestStreak",
+      "avgRoundMs"
+    ],
+    "aggregationRules": [
+      {
+        "id": "time-by-game-mode",
+        "appliesTo": ["avgTimeMs"],
+        "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，explore 是整段探索活动的净时长，两者不可混算。",
+        "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, explore is the whole exploration activity's net time. They are not comparable."
+      },
+      {
+        "id": "one-template-one-attempt",
+        "appliesTo": ["completionRate", "accuracy"],
+        "ruleZh": "一个 explore 模板只产生一个 Attempt，权重与一道 puzzle 相同；探索过程中的每一步事件只存在于 trace/process 中，不得计为独立 Attempt。",
+        "ruleEn": "An explore template yields exactly one Attempt, weighted like a single puzzle question. Step-level events inside an exploration live only in trace/process and must not be counted as separate attempts."
+      }
+    ],
+    "note": "eventKeys observation/prediction/action/variable_changed/result/evidence_selected/explanation/revision are the Exploration runtime's process vocabulary; 'result' is reserved for future templates — the current K1 float/sink explore template folds its outcome into the observation event's `actual` field instead of emitting it separately. Phase 1 uploads only the summary Attempt."
+  },
+  "aiQueryHints": {
+    "supportedFilters": [
+      "age",
+      "levelId",
+      "comparisonType",
+      "difficultyAxis",
+      "tag",
+      "status"
+    ],
+    "exampleQueries": [
+      "3岁适合哪些科学训练？",
+      "K1 的科学训练重点是什么？",
+      "哪些科学练习已经实现并可上线？"
+    ]
+  },
+  "tags": [
+    "science",
+    "metathinking",
+    "ai-readable",
+    "global-k12-reference"
+  ]
+}

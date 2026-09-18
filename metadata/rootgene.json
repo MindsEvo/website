@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.3",
-  "updatedAt": "2026-09-11",
+  "version": "v0.3.0",
+  "updatedAt": "2026-09-17",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -61,6 +61,12 @@
       "zh": "语言",
       "en": "Language",
       "color": "#4d7c0f"
+    },
+    {
+      "id": "SCIENCE",
+      "zh": "科学",
+      "en": "Science",
+      "color": "#0891b2"
     }
   ],
   "genes": {
@@ -350,6 +356,84 @@
       "descEn": "Judge sameness, synonymy and antonymy between words.",
       "status": "planned",
       "claimedBy": ["clio-word-connections-workshop"]
+    },
+    "RG.SCIENCE.OBSERVATION.BASIC": {
+      "category": "SCIENCE",
+      "zh": "观察",
+      "en": "Observation",
+      "short": {
+        "zh": "观察",
+        "en": "Observe"
+      },
+      "descZh": "有系统地记录一个现象的特征与细节，为后续推理提供依据，而不只是「看一看」。",
+      "descEn": "Systematically record the features and details of a phenomenon to support later reasoning, rather than merely looking.",
+      "boundaryZh": "与 RG.ATTENTION.SEARCH.VISUAL 的界限：视觉搜索训练的是在干扰项中找到并确认一个目标；本基因训练的是记录一个现象本身有哪些特征细节以供推理，不是「找目标」。",
+      "boundaryEn": "Boundary with RG.ATTENTION.SEARCH.VISUAL: visual search trains finding and confirming a target among distractors; this gene trains recording the features and details of a phenomenon itself for later reasoning, not locating a target."
+    },
+    "RG.SCIENCE.QUESTIONING.BASIC": {
+      "category": "SCIENCE",
+      "zh": "提问",
+      "en": "Questioning",
+      "short": {
+        "zh": "提问",
+        "en": "Question"
+      },
+      "descZh": "从观察到的现象中提出一个可以被检验的问题：找出尚不清楚的地方，并把它表述成可以去调查的形式。",
+      "descEn": "Form a testable question from an observed phenomenon: identify what is not yet known and frame it as something that can be investigated.",
+      "boundaryZh": "与 RG.SCIENCE.OBSERVATION.BASIC 的界限：观察记录的是现象「是什么」，本基因训练的是找出现象里「还不知道什么」，并把它转成一个可检验的问题，二者方向相反、缺一不可。",
+      "boundaryEn": "Boundary with RG.SCIENCE.OBSERVATION.BASIC: observation records what a phenomenon IS, while this gene trains identifying what is NOT yet known about it and turning that gap into a testable question — the two point in opposite but complementary directions."
+    },
+    "RG.SCIENCE.PREDICTION.BASIC": {
+      "category": "SCIENCE",
+      "zh": "预测",
+      "en": "Prediction",
+      "short": {
+        "zh": "预测",
+        "en": "Predict"
+      },
+      "descZh": "在实验或行动发生之前，依据一个假设说出预期会发生的结果，以便日后与实际结果对照检验。",
+      "descEn": "State an expected outcome before an experiment or action takes place, based on a hypothesis, so it can later be checked against the actual result.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 的界限：序列规律训练的是延续一条已经看得见的重复或递进规则；本基因训练的是在行动或实验发生之前，依据因果假设说出预期结果，续写的对象是不可见的未来结果，不是一条已展示的序列。",
+      "boundaryEn": "Boundary with RG.PATTERN.SEQUENCE.BASIC: pattern sequence trains continuing an already-visible repeating or progressing rule; this gene trains stating an expected outcome of an action or experiment before it happens, based on a hypothesis about cause and effect — not extending a rule that is already on display."
+    },
+    "RG.SCIENCE.EXPERIMENTATION.BASIC": {
+      "category": "SCIENCE",
+      "zh": "实验设计",
+      "en": "Experimentation",
+      "short": {
+        "zh": "实验",
+        "en": "Experiment"
+      },
+      "descZh": "设计一个公平的检验：决定要改变哪一个变量、保持哪些条件不变，以此来检验一个假设。",
+      "descEn": "Design a fair test by deciding which variable to change and which conditions to keep the same, in order to check a hypothesis.",
+      "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划训练的是在多个可行方案中权衡取舍并安排先后步骤以达成目标；本基因训练的是为了检验一个因果假设而专门分离并控制变量，这里的目标特指因果检验，不是一般性的方案规划。",
+      "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning trains weighing options and ordering steps to reach a goal; this gene trains isolating and controlling variables specifically to test a hypothesis — the goal here is causal testing, not general planning."
+    },
+    "RG.SCIENCE.EVIDENCE.BASIC": {
+      "category": "SCIENCE",
+      "zh": "证据评估",
+      "en": "Evidence Evaluation",
+      "short": {
+        "zh": "证据",
+        "en": "Evidence"
+      },
+      "descZh": "判断观察到的数据是否足够、是否相关，能否支持或推翻一个结论。",
+      "descEn": "Judge whether observed data is sufficient and relevant enough to support or refute a conclusion.",
+      "boundaryZh": "与 RG.LOGIC.COMPARISON.BASIC 的界限：比较判断的是两个已知对象或数量之间的关系；本基因判断的是一整批数据是否足够有力去支持某个给定的结论，是对「支持力度是否充分」的判断，不是对数值关系的判断。",
+      "boundaryEn": "Boundary with RG.LOGIC.COMPARISON.BASIC: comparison judges the relation between two known objects or quantities; this gene judges whether a body of data is strong or sufficient enough to support a given conclusion — a different kind of judgment about sufficiency of support, not about the relation between values."
+    },
+    "RG.SCIENCE.EXPLANATION.BASIC": {
+      "category": "SCIENCE",
+      "zh": "解释",
+      "en": "Explanation",
+      "short": {
+        "zh": "解释",
+        "en": "Explain"
+      },
+      "descZh": "构建一条把证据与结论连接起来的因果说明（为什么会发生），并在出现新证据时可以修正。",
+      "descEn": "Construct a causal account that connects evidence to a conclusion (why something happened), revisable when new evidence appears.",
+      "boundaryZh": "与 RG.LANGUAGE.SEMANTIC.RELATION 的界限：语言/词义基因关心的是词义本身的机制与词与词之间的关系；本基因关心的是连接证据与结论的因果链条是否成立，语言只是承载因果说明的载体，不是被训练的对象。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.SEMANTIC.RELATION: language/semantic genes are about the mechanics of word meaning and relations between words; this gene is about whether the causal chain linking evidence to a conclusion actually holds together — language is only the carrier of the explanation, not what is being trained."
     }
   }
 }
