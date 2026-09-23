@@ -94,8 +94,17 @@
 
   function checkAnswer(selected, q) { return selected === q.answer; }
 
+  // Comparison's getVoiceText (game.js:421) returns one plain-language string
+  // picked by shell.lang — never raw HTML, never both languages concatenated.
+  // This used to return the full '<span class="zh">...</span><span
+  // class="en">...</span>' markup verbatim, which speechSynthesis read aloud
+  // literally (tags, then the Chinese question, then the English question
+  // back to back) — garbled, language-mismatched audio that didn't match
+  // what was on screen.
   function getVoiceText(q) {
-    return '<span class="zh">哪一个会浮起来？</span><span class="en">Which one will float?</span>';
+    var zh = '哪一个会浮起来？';
+    var en = 'Which one will float?';
+    return shell.lang === 'zh' ? zh : en;
   }
 
   // ── Radar / RootGene plumbing ────────────────────────────────────────────────
