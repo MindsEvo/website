@@ -204,6 +204,17 @@
       return q;
     }).filter(Boolean);
     var n = questions.length;
+    // Unlike Comparison (one gene for the whole module, so a hardcoded id
+    // loses nothing), Science's six meta-thinking genes are meant to differ
+    // per template — union the selected templates' own rootGeneIds so a
+    // puzzle session reports the gene(s) it actually exercised.
+    var geneIds = [];
+    selected.forEach(function (tpl) {
+      (tpl.rootGeneIds || []).forEach(function (g) {
+        if (geneIds.indexOf(g) === -1) geneIds.push(g);
+      });
+    });
+    if (!geneIds.length) geneIds.push('RG.SCIENCE.OBSERVATION.BASIC');
     return [{
       id: levelId + '-session',
       nameZh: levelId + ' · 科学挑战',
@@ -211,9 +222,7 @@
       icon: '🔬',
       descZh: n + '题 · 观察与预测',
       descEn: n + ' questions · Observe & Predict',
-      // Ability gene only. Where this session sits in the content tree travels
-      // in moduleId / unitId / levelId — see buildRadarContext().
-      rootGeneIds: ['RG.SCIENCE.OBSERVATION.BASIC'],
+      rootGeneIds: geneIds,
       questions: questions
     }];
   }
