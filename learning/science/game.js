@@ -30,12 +30,15 @@
     '.cq{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}',
     '.cq-q{font-size:22px;font-weight:900;color:#065f46;line-height:1.3;text-align:center;}',
     '.cq-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:400px;}',
+    '.cq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:340px;}',
     '.cq-cell{display:flex;flex-direction:column;align-items:center;gap:4px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:14px;padding:14px 10px;}',
     '.cq-emoji{font-size:44px;line-height:1;text-align:center;}',
     '.cq-label{font-size:12px;font-weight:700;color:#166534;}',
     '.cq-opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:88px;padding:8px 4px;}',
     '.cq-opt-emoji{font-size:34px;line-height:1;}',
     '.cq-opt-label{font-size:12px;font-weight:800;color:#166534;}',
+    '.cq-opt-text{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:64px;padding:10px 12px;text-align:center;}',
+    '.cq-opt-text-line{font-size:13px;font-weight:700;color:#166534;line-height:1.35;}',
     '.sci-lvl-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}',
     '.sci-lvl-title-bar{display:flex;align-items:center;width:100%;max-width:520px;gap:8px;}',
     '.sci-lvl-title{font-size:20px;font-weight:900;color:#065f46;text-align:center;flex:1;}',
@@ -72,26 +75,58 @@
   // comparison/game.js).
 
   var PROMPT_TEXT = {
-    float_puzzle:  { zh: '哪一个会<b>浮起来</b>？', en: 'Which one will <b>float</b>?' },
-    magnet_puzzle: { zh: '哪一个会被<b>磁铁吸住</b>？', en: 'Which one will the magnet <b>attract</b>?' }
+    float_puzzle:       { zh: '哪一个会<b>浮起来</b>？', en: 'Which one will <b>float</b>?' },
+    magnet_puzzle:       { zh: '哪一个会被<b>磁铁吸住</b>？', en: 'Which one will the magnet <b>attract</b>?' },
+    observe_odd_puzzle:  { zh: '哪一个和其他<b>不一样</b>？', en: 'Which one is <b>different</b> from the others?' },
+    motion_roll_puzzle:  { zh: '哪一个<b>滚得更远</b>？', en: 'Which one will <b>roll farther</b>?' },
+    life_fly_puzzle:     { zh: '哪一个<b>会飞</b>？', en: 'Which one <b>can fly</b>?' },
+    matter_describe_puzzle: { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
+    life_describe_puzzle:   { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
+    earth_question_puzzle:  { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' },
+    energy_question_puzzle: { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' }
   };
 
   function renderSequence(q, container) {
-    var prompt = PROMPT_TEXT[q.type] || PROMPT_TEXT.float_puzzle;
+    var prompt = q.promptZh && q.promptEn ? q : (PROMPT_TEXT[q.type] || PROMPT_TEXT.float_puzzle);
+    var promptZh = q.promptZh || prompt.zh;
+    var promptEn = q.promptEn || prompt.en;
+    var bodyHtml;
+    if (q.items) {
+      bodyHtml = '<div class="cq-grid">' + q.items.map(function (item) {
+        return '<div class="cq-cell"><div class="cq-emoji">' + item.emoji + '</div>' +
+          '<div class="cq-label"><span class="zh">' + item.nameZh + '</span><span class="en">' + item.nameEn + '</span></div></div>';
+      }).join('') + '</div>';
+    } else if (q.left && q.right) {
+      bodyHtml =
+        '<div class="cq-pair">' +
+          '<div class="cq-cell"><div class="cq-emoji">' + q.left.emoji + '</div>' +
+            '<div class="cq-label"><span class="zh">' + q.left.nameZh + '</span><span class="en">' + q.left.nameEn + '</span></div></div>' +
+          '<div class="cq-cell"><div class="cq-emoji">' + q.right.emoji + '</div>' +
+            '<div class="cq-label"><span class="zh">' + q.right.nameZh + '</span><span class="en">' + q.right.nameEn + '</span></div></div>' +
+        '</div>';
+    } else if (q.stimulus) {
+      bodyHtml = '<div class="cq-grid" style="max-width:180px;"><div class="cq-cell"><div class="cq-emoji">' + q.stimulus.emoji + '</div>' +
+        '<div class="cq-label"><span class="zh">' + q.stimulus.nameZh + '</span><span class="en">' + q.stimulus.nameEn + '</span></div></div></div>';
+    } else {
+      bodyHtml = '';
+    }
     container.innerHTML =
       '<div class="cq"><div class="cq-q">' +
-        '<span class="zh">' + prompt.zh + '</span>' +
-        '<span class="en">' + prompt.en + '</span>' +
-      '</div>' +
-      '<div class="cq-pair">' +
-        '<div class="cq-cell"><div class="cq-emoji">' + q.left.emoji + '</div>' +
-          '<div class="cq-label"><span class="zh">' + q.left.nameZh + '</span><span class="en">' + q.left.nameEn + '</span></div></div>' +
-        '<div class="cq-cell"><div class="cq-emoji">' + q.right.emoji + '</div>' +
-          '<div class="cq-label"><span class="zh">' + q.right.nameZh + '</span><span class="en">' + q.right.nameEn + '</span></div></div>' +
-      '</div></div>';
+        '<span class="zh">' + promptZh + '</span>' +
+        '<span class="en">' + promptEn + '</span>' +
+      '</div>' + bodyHtml + '</div>';
   }
 
   function renderOption(opt, q) {
+    if (q.textOptions) {
+      var textOpt = q.textOptions[opt];
+      return '<div class="cq-opt cq-opt-text"><div class="cq-opt-text-line"><span class="zh">' + textOpt.zh + '</span><span class="en">' + textOpt.en + '</span></div></div>';
+    }
+    if (q.items) {
+      var gridItem = q.items[opt];
+      return '<div class="cq-opt"><div class="cq-opt-emoji">' + gridItem.emoji + '</div>' +
+        '<div class="cq-opt-label"><span class="zh">' + gridItem.nameZh + '</span><span class="en">' + gridItem.nameEn + '</span></div></div>';
+    }
     var item = opt === 'left' ? q.left : q.right;
     var lbl = opt === 'left' ? { zh: '选 A', en: 'A' } : { zh: '选 B', en: 'B' };
     return '<div class="cq-opt"><div class="cq-opt-emoji">' + item.emoji + '</div>' +
@@ -106,11 +141,19 @@
   // Dispatch by q.type mirrors PROMPT_TEXT above, just as plain text instead
   // of HTML (speechSynthesis would read markup literally).
   var VOICE_TEXT = {
-    float_puzzle:  { zh: '哪一个会浮起来？', en: 'Which one will float?' },
-    magnet_puzzle: { zh: '哪一个会被磁铁吸住？', en: 'Which one will the magnet attract?' }
+    float_puzzle:       { zh: '哪一个会浮起来？', en: 'Which one will float?' },
+    magnet_puzzle:       { zh: '哪一个会被磁铁吸住？', en: 'Which one will the magnet attract?' },
+    observe_odd_puzzle:  { zh: '哪一个和其他不一样？', en: 'Which one is different from the others?' },
+    motion_roll_puzzle:  { zh: '哪一个滚得更远？', en: 'Which one will roll farther?' },
+    life_fly_puzzle:     { zh: '哪一个会飞？', en: 'Which one can fly?' },
+    matter_describe_puzzle: { zh: '描述一下它。', en: 'Describe it.' },
+    life_describe_puzzle:   { zh: '描述一下它。', en: 'Describe it.' },
+    earth_question_puzzle:  { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' },
+    energy_question_puzzle: { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' }
   };
 
   function getVoiceText(q) {
+    if (q.voiceZh && q.voiceEn) return shell.lang === 'zh' ? q.voiceZh : q.voiceEn;
     var t = VOICE_TEXT[q.type] || VOICE_TEXT.float_puzzle;
     return shell.lang === 'zh' ? t.zh : t.en;
   }
@@ -126,21 +169,29 @@
    * same reason comparison/game.js does: shell.grade.normalize() refuses to
    * guess, and every module has to declare its own mapping.
    */
-  var LEVEL_GRADE = { K1: 'K1' };
+  var LEVEL_GRADE = { K1: 'K1', K2: 'K2', G1: 'G1', G2: 'G2' };
 
   /**
-   * Template `type` (Context Domain) -> typeTree id in science.json. Only
-   * "matter" exists in this scaffold; the map is kept (rather than assumed
-   * identity) so a second domain can be added without touching the radar
-   * plumbing.
+   * Template `type` (Context Domain) -> typeTree id in science.json. Kept as
+   * an explicit (rather than assumed identity) map so new domains can be
+   * added without touching the radar plumbing.
    */
-  var CONTEXT_DOMAIN_OF = { matter: 'matter' };
+  var CONTEXT_DOMAIN_OF = { matter: 'matter', life: 'life', motion: 'motion', earth: 'earth', energy: 'energy' };
 
   function difficultyAxisFor(levelId) {
     var base = {
       K1: { object_complexity: 'concrete', variable_complexity: 'single',
             inference_complexity: 'direct', language_complexity: 'action',
-            transfer_complexity: 'within-domain' }
+            transfer_complexity: 'within-domain' },
+      K2: { object_complexity: 'concrete', variable_complexity: 'single',
+            inference_complexity: 'direct', language_complexity: 'question',
+            transfer_complexity: 'within-domain' },
+      G1: { object_complexity: 'concrete', variable_complexity: 'single',
+            inference_complexity: 'indirect', language_complexity: 'question',
+            transfer_complexity: 'within-domain' },
+      G2: { object_complexity: 'symbolic', variable_complexity: 'single',
+            inference_complexity: 'chain', language_complexity: 'compound',
+            transfer_complexity: 'cross-domain' }
     }[levelId];
     return base ? Object.assign({}, base) : null;
   }
@@ -196,11 +247,12 @@
   }
 
   // ── Grade level selector ───────────────────────────────────────────────────
-  // K1-only in this scaffold: no locked G-level placeholders, since the module
-  // has no content beyond K1 yet and should not claim scope it doesn't have.
 
   var GRADE_LEVELS = [
-    { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K', descZh: '3–4岁 · 浮与沉', descEn: 'Age 3-4 · Float & Sink', free: true }
+    { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K', descZh: '3–4岁 · 浮与沉', descEn: 'Age 3-4 · Float & Sink', free: true },
+    { id: 'K2', badge: 'K2', nameZh: '幼儿园大班', nameEn: 'Kindergarten', descZh: '4–5岁 · 描述现象', descEn: 'Age 4-5 · Describe', free: true },
+    { id: 'G1', badge: 'G1', nameZh: '小学一年级', nameEn: 'Grade 1', descZh: '5–6岁 · 预测新情境', descEn: 'Age 5-6 · Predict', free: true },
+    { id: 'G2', badge: 'G2', nameZh: '小学二年级', nameEn: 'Grade 2', descZh: '6–7岁 · 提出问题', descEn: 'Age 6-7 · Question', free: true }
   ];
 
   // ── Bootstrap ──────────────────────────────────────────────────────────────
@@ -310,10 +362,9 @@
     if (overlay) overlay.remove();
   }
 
-  // Single-entry on purpose: this scaffold only covers K1. The "upgrade to
-  // next level" branches below degrade safely to a no-op (nextLevel is always
-  // null) rather than needing to be special-cased out.
-  var LEVEL_ORDER = ['K1'];
+  // Gates the "upgrade to next level" branches in _showExplorationResult and
+  // _watchForResultAndInjectNextLevel (both index into this array).
+  var LEVEL_ORDER = ['K1', 'K2', 'G1', 'G2'];
 
   function _launchGame(levelId, templates) {
     var selected = SciEngine.getSessionTemplates(levelId, templates);

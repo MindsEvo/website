@@ -14,9 +14,9 @@
   },
   "ageRange": {
     "min": 3,
-    "max": 4,
-    "noteZh": "架构脚手架阶段：仅覆盖 K1（3-4岁）一个年级，验证 Puzzle 与 Explore 两条内容管线。",
-    "noteEn": "Architecture-scaffold stage: covers only K1 (age 3-4) to validate the Puzzle and Explore content pipelines."
+    "max": 7,
+    "noteZh": "覆盖 K1-G2（3-7岁）四个年级，验证 Puzzle 与 Explore 两条内容管线。",
+    "noteEn": "Covers grades K1-G2 (age 3-7) to validate the Puzzle and Explore content pipelines."
   },
   "educationReference": {
     "scope": "global-k12-foundation",
@@ -68,11 +68,18 @@
       "id": "life",
       "nameZh": "生命",
       "nameEn": "Life",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "plant growth observation",
         "animal habitat classification"
-      ]
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-science"
+        ],
+        "lessonIds": [],
+        "videoIds": []
+      }
     },
     {
       "id": "matter",
@@ -94,31 +101,52 @@
       "id": "motion",
       "nameZh": "运动",
       "nameEn": "Motion",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "speed and distance comparison",
         "path prediction"
-      ]
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-science"
+        ],
+        "lessonIds": [],
+        "videoIds": []
+      }
     },
     {
       "id": "energy",
       "nameZh": "能量",
       "nameEn": "Energy",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "push/pull and simple machines",
         "light and heat sources"
-      ]
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-science"
+        ],
+        "lessonIds": [],
+        "videoIds": []
+      }
     },
     {
       "id": "earth",
       "nameZh": "地球",
       "nameEn": "Earth",
-      "status": "planned",
+      "status": "partial",
       "examples": [
         "weather and season observation",
         "rock and soil classification"
-      ]
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-science"
+        ],
+        "lessonIds": [],
+        "videoIds": []
+      }
     },
     {
       "id": "space",
@@ -161,9 +189,9 @@
       "objectiveZh": "描述（Describe）：用完整的语言描述观察到的现象特征，而不只是指出结果。",
       "objectiveEn": "Describe: put observed phenomena into words, beyond just naming the outcome.",
       "primaryTypes": ["matter", "life"],
-      "status": "planned",
-      "implementedBy": [],
-      "implementedModes": [],
+      "status": "implemented",
+      "implementedBy": ["learning-science"],
+      "implementedModes": ["puzzle"],
       "sourceLevels": ["K2"]
     },
     {
@@ -173,9 +201,9 @@
       "objectiveZh": "预测（Predict）：基于已观察到的规律，对新情境做出有依据的预测。",
       "objectiveEn": "Predict: use an observed pattern to make a grounded prediction about a new situation.",
       "primaryTypes": ["motion", "life"],
-      "status": "planned",
-      "implementedBy": [],
-      "implementedModes": [],
+      "status": "implemented",
+      "implementedBy": ["learning-science"],
+      "implementedModes": ["puzzle"],
       "sourceLevels": ["G1"]
     },
     {
@@ -185,9 +213,9 @@
       "objectiveZh": "提问（Question）：把好奇心转化为一个可检验的具体问题。",
       "objectiveEn": "Question: turn curiosity into a specific, testable question.",
       "primaryTypes": ["earth", "energy"],
-      "status": "planned",
-      "implementedBy": [],
-      "implementedModes": [],
+      "status": "implemented",
+      "implementedBy": ["learning-science"],
+      "implementedModes": ["puzzle"],
       "sourceLevels": ["G2"]
     },
     {
@@ -258,6 +286,39 @@
       "sourceGameIds": ["learning-science"],
       "sourceLessonIds": [],
       "sourceLevelIds": ["K1"]
+    },
+    {
+      "id": "sci-k2-describe",
+      "type": "matter",
+      "levelRange": ["K2", "K2"],
+      "descriptionZh": "用完整语言描述物品的质感与生物的体表特征。",
+      "descriptionEn": "Describe an object's texture and an animal's body covering in complete language.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-science"],
+      "sourceLessonIds": [],
+      "sourceLevelIds": ["K2"]
+    },
+    {
+      "id": "sci-g1-predict",
+      "type": "motion",
+      "levelRange": ["G1", "G1"],
+      "descriptionZh": "依据物体形状预测滚动，依据身体特征预测飞行能力。",
+      "descriptionEn": "Predict rolling from an object's shape, and flight ability from an animal's body features.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-science"],
+      "sourceLessonIds": [],
+      "sourceLevelIds": ["G1"]
+    },
+    {
+      "id": "sci-g2-question",
+      "type": "earth",
+      "levelRange": ["G2", "G2"],
+      "descriptionZh": "从地球与能量情境中，把好奇心转化为一个可检验的具体问题。",
+      "descriptionEn": "Turn curiosity from earth and energy scenarios into a specific, testable question.",
+      "status": "implemented",
+      "sourceGameIds": ["learning-science"],
+      "sourceLessonIds": [],
+      "sourceLevelIds": ["G2"]
     }
   ],
   "statistics": {
