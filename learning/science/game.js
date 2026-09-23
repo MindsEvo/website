@@ -65,16 +65,23 @@
   ].join('');
   document.head.appendChild(styleEl);
 
-  // ── Question renderers (float_puzzle) ───────────────────────────────────────
-  // This scaffold has exactly one puzzle question shape, so there is no
-  // per-type dispatch (unlike comparison's many attribute types) — just the
-  // one float/sink pair.
+  // ── Question renderers (puzzle) ──────────────────────────────────────────────
+  // The pair/option layout (cq-pair/cq-cell/cq-opt) is shared across every
+  // puzzle phenomenon — only the prompt text is type-specific, so dispatch is
+  // just a text lookup by q.type (no per-type scene functions needed, unlike
+  // comparison/game.js).
+
+  var PROMPT_TEXT = {
+    float_puzzle:  { zh: '哪一个会<b>浮起来</b>？', en: 'Which one will <b>float</b>?' },
+    magnet_puzzle: { zh: '哪一个会被<b>磁铁吸住</b>？', en: 'Which one will the magnet <b>attract</b>?' }
+  };
 
   function renderSequence(q, container) {
+    var prompt = PROMPT_TEXT[q.type] || PROMPT_TEXT.float_puzzle;
     container.innerHTML =
       '<div class="cq"><div class="cq-q">' +
-        '<span class="zh">哪一个会<b>浮起来</b>？</span>' +
-        '<span class="en">Which one will <b>float</b>?</span>' +
+        '<span class="zh">' + prompt.zh + '</span>' +
+        '<span class="en">' + prompt.en + '</span>' +
       '</div>' +
       '<div class="cq-pair">' +
         '<div class="cq-cell"><div class="cq-emoji">' + q.left.emoji + '</div>' +
@@ -96,15 +103,16 @@
 
   // Comparison's getVoiceText (game.js:421) returns one plain-language string
   // picked by shell.lang — never raw HTML, never both languages concatenated.
-  // This used to return the full '<span class="zh">...</span><span
-  // class="en">...</span>' markup verbatim, which speechSynthesis read aloud
-  // literally (tags, then the Chinese question, then the English question
-  // back to back) — garbled, language-mismatched audio that didn't match
-  // what was on screen.
+  // Dispatch by q.type mirrors PROMPT_TEXT above, just as plain text instead
+  // of HTML (speechSynthesis would read markup literally).
+  var VOICE_TEXT = {
+    float_puzzle:  { zh: '哪一个会浮起来？', en: 'Which one will float?' },
+    magnet_puzzle: { zh: '哪一个会被磁铁吸住？', en: 'Which one will the magnet attract?' }
+  };
+
   function getVoiceText(q) {
-    var zh = '哪一个会浮起来？';
-    var en = 'Which one will float?';
-    return shell.lang === 'zh' ? zh : en;
+    var t = VOICE_TEXT[q.type] || VOICE_TEXT.float_puzzle;
+    return shell.lang === 'zh' ? t.zh : t.en;
   }
 
   // ── Radar / RootGene plumbing ────────────────────────────────────────────────

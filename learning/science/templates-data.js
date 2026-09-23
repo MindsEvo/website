@@ -27,6 +27,18 @@ window.SCI_TEMPLATES_DATA = {
       params: {}
     },
     {
+      id: 'sci-k1-puzzle-magnet-001',
+      level: 'K1',
+      type: 'matter',
+      mode: 'puzzle',
+      difficulty: 1,
+      generator: 'magnetPuzzle',
+      rootGeneIds: ['RG.SCIENCE.PREDICTION.BASIC'],
+      mastery: { requiredCorrect: 3, window: 5 },
+      cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
       id: 'sci-k1-explore-float-001',
       level: 'K1',
       type: 'matter',

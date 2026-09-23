@@ -19,6 +19,17 @@ var SciGenerators = (function () {
     { id: 'spoon',  emoji: '🥄', nameZh: '勺子', nameEn: 'Spoon',  floats: false }
   ];
 
+  // Second matter-domain phenomenon (magnetism) — same "known, stable fact
+  // per item" shape as MATERIALS, just keyed by `magnetic` instead of `floats`.
+  var MAGNET_MATERIALS = [
+    { id: 'paperclip', emoji: '🖇️', nameZh: '回形针', nameEn: 'Paperclip', magnetic: true  },
+    { id: 'nail',      emoji: '🔩', nameZh: '钉子',   nameEn: 'Nail',      magnetic: true  },
+    { id: 'scissors',  emoji: '✂️', nameZh: '剪刀',   nameEn: 'Scissors',  magnetic: true  },
+    { id: 'leaf',      emoji: '🍃', nameZh: '叶子',   nameEn: 'Leaf',      magnetic: false },
+    { id: 'eraser',    emoji: '🧽', nameZh: '橡皮',   nameEn: 'Eraser',    magnetic: false },
+    { id: 'cup',       emoji: '🥤', nameZh: '塑料杯', nameEn: 'Plastic cup', magnetic: false }
+  ];
+
   function _pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
   function _pickPair() {
@@ -26,6 +37,14 @@ var SciGenerators = (function () {
     var sinkers  = MATERIALS.filter(function (m) { return !m.floats; });
     var a = _pick(floaters);
     var b = _pick(sinkers);
+    return Math.random() < 0.5 ? [a, b] : [b, a];
+  }
+
+  function _pickMagnetPair() {
+    var magnetic    = MAGNET_MATERIALS.filter(function (m) { return m.magnetic; });
+    var nonMagnetic = MAGNET_MATERIALS.filter(function (m) { return !m.magnetic; });
+    var a = _pick(magnetic);
+    var b = _pick(nonMagnetic);
     return Math.random() < 0.5 ? [a, b] : [b, a];
   }
 
@@ -84,9 +103,28 @@ var SciGenerators = (function () {
     };
   }
 
+  // Puzzle: two-choice "which one will the magnet attract?" — second
+  // matter-domain phenomenon, same shape as floatSinkPuzzle.
+  function magnetPuzzle(template) {
+    var pair = _pickMagnetPair();
+    var left = pair[0], right = pair[1];
+    var answer = left.magnetic ? 'left' : 'right';
+    return {
+      type: 'magnet_puzzle',
+      templateId: template.id,
+      left: left,
+      right: right,
+      options: ['left', 'right'],
+      answer: answer,
+      hintZh: '想想哪个是金属做的。',
+      hintEn: 'Think about which one is made of metal.'
+    };
+  }
+
   var Generators = {
     floatSinkPuzzle:  floatSinkPuzzle,
-    floatSinkExplore: floatSinkExplore
+    floatSinkExplore: floatSinkExplore,
+    magnetPuzzle:     magnetPuzzle
   };
 
   // Same shape as comparison/generator.js: generateQuestion(template) looks
