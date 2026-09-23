@@ -42,6 +42,10 @@ var ExploreRuntime = (function () {
       '.exr-btn.exr-wrong{background:#fca5a5;border-color:#ef4444;color:#7f1d1d;}',
       '.exr-feedback{font-size:14px;color:#047857;min-height:20px;}',
       '.exr-progress{font-size:12px;color:#059669;font-weight:700;}',
+      '@keyframes exr-sink-kf{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(46px) rotate(12deg);opacity:.55;}}',
+      '@keyframes exr-float-kf{0%{transform:translateY(0);}30%{transform:translateY(-14px);}60%{transform:translateY(-4px);}100%{transform:translateY(-10px);}}',
+      '.exr-emoji.exr-emoji-sink{animation:exr-sink-kf .9s cubic-bezier(.55,0,.85,.35) forwards;}',
+      '.exr-emoji.exr-emoji-float{animation:exr-float-kf 1.1s ease-out forwards;}',
       '[data-lang="zh"] .en{display:none;}',
       '[data-lang="en"] .zh{display:none;}'
     ].join('');
@@ -171,6 +175,8 @@ var ExploreRuntime = (function () {
         _st.observations += 1;
         _log('observation', { itemId: item.id, actual: actual });
         if (guess === actual) _st.correctPredictions += 1;
+        var emojiEl = bodyEl.querySelector('.exr-emoji');
+        if (emojiEl) emojiEl.classList.add(item.floats ? 'exr-emoji-float' : 'exr-emoji-sink');
         fb.innerHTML =
           '<span class="zh">结果：它' + (item.floats ? '浮起来了！' : '沉下去了！') + '</span>' +
           '<span class="en">Result: it ' + (item.floats ? 'floated!' : 'sank!') + '</span>' +
