@@ -135,20 +135,59 @@ var ExploreRuntime = (function () {
       else if (step.kind === 'explain') _renderExplain(step);
     }
 
+    // Per-type predict/test config — mirrors game.js's PROMPT_TEXT/VOICE_TEXT
+    // dispatch pattern. Float and magnet share the same runtime steps, only
+    // the wording, guess values, and observed-outcome rule differ.
+    var PREDICT_CONFIG = {
+      float_explore: {
+        prompt: { zh: '你觉得它会浮起来还是沉下去？', en: 'Do you think it will float or sink?' },
+        choices: [
+          { value: 'float', zh: '浮起来', en: 'Float' },
+          { value: 'sink',  zh: '沉下去', en: 'Sink' }
+        ],
+        testBtn: { zh: '放入水中测试', en: 'Test it in water' },
+        actualOf: function (item) { return item.floats ? 'float' : 'sink'; },
+        resultText: function (actual) {
+          return actual === 'float'
+            ? { zh: '它浮起来了！', en: 'it floated!' }
+            : { zh: '它沉下去了！', en: 'it sank!' };
+        },
+        animClass: function (actual) { return actual === 'float' ? 'exr-emoji-float' : 'exr-emoji-sink'; }
+      },
+      magnet_explore: {
+        prompt: { zh: '你觉得磁铁会吸住它吗？', en: 'Do you think the magnet will attract it?' },
+        choices: [
+          { value: 'attract',    zh: '会被吸住',  en: 'Attracted' },
+          { value: 'no_attract', zh: '不会被吸住', en: 'Not attracted' }
+        ],
+        testBtn: { zh: '用磁铁测试', en: 'Test it with a magnet' },
+        actualOf: function (item) { return item.magnetic ? 'attract' : 'no_attract'; },
+        resultText: function (actual) {
+          return actual === 'attract'
+            ? { zh: '它被磁铁吸住了！', en: 'it got attracted!' }
+            : { zh: '它没有被吸住。', en: 'it was not attracted.' };
+        },
+        animClass: function (actual) { return actual === 'attract' ? 'exr-emoji-float' : 'exr-emoji-sink'; }
+      }
+    };
+
+    function _predictConfig() { return PREDICT_CONFIG[variant.type] || PREDICT_CONFIG.float_explore; }
+
     function _renderPredictTest(step) {
       var item = step.item;
+      var cfg = _predictConfig();
+      var choicesHtml = cfg.choices.map(function (c) {
+        return '<button class="exr-btn" data-guess="' + c.value + '"><span class="zh">' + c.zh + '</span><span class="en">' + c.en + '</span></button>';
+      }).join('');
       bodyEl.innerHTML =
         '<div class="exr-prompt">' +
-          '<span class="zh">你觉得它会浮起来还是沉下去？</span>' +
-          '<span class="en">Do you think it will float or sink?</span>' +
+          '<span class="zh">' + cfg.prompt.zh + '</span>' +
+          '<span class="en">' + cfg.prompt.en + '</span>' +
         '</div>' +
         '<div class="exr-items"><div class="exr-item"><div class="exr-emoji">' + item.emoji + '</div>' +
           '<div class="exr-label"><span class="zh">' + item.nameZh + '</span><span class="en">' + item.nameEn + '</span></div>' +
         '</div></div>' +
-        '<div class="exr-choices">' +
-          '<button class="exr-btn" data-guess="float"><span class="zh">浮起来</span><span class="en">Float</span></button>' +
-          '<button class="exr-btn" data-guess="sink"><span class="zh">沉下去</span><span class="en">Sink</span></button>' +
-        '</div>' +
+        '<div class="exr-choices">' + choicesHtml + '</div>' +
         '<div class="exr-feedback" id="exr-feedback"></div>';
 
       var guessBtns = bodyEl.querySelectorAll('[data-guess]');
@@ -159,37 +198,44 @@ var ExploreRuntime = (function () {
           _log('prediction', { itemId: item.id, guess: guess });
           for (var j = 0; j < guessBtns.length; j++) { guessBtns[j].disabled = true; }
           e.currentTarget.classList.add('exr-chosen');
-          _showTestButton(item, guess);
+          _showTestButton(item, guess, cfg);
         });
       }
     }
 
-    function _showTestButton(item, guess) {
+    function _showTestButton(item, guess, cfg) {
       var fb = bodyEl.querySelector('#exr-feedback');
       fb.innerHTML = '<button class="exr-btn" id="exr-test-btn">' +
-        '<span class="zh">放入水中测试</span><span class="en">Test it in water</span></button>';
+        '<span class="zh">' + cfg.testBtn.zh + '</span><span class="en">' + cfg.testBtn.en + '</span></button>';
       document.getElementById('exr-test-btn').addEventListener('click', function () {
         _st.actions += 1;
         _log('action', { itemId: item.id, action: 'test' });
-        var actual = item.floats ? 'float' : 'sink';
+        var actual = cfg.actualOf(item);
         _st.observations += 1;
         _log('observation', { itemId: item.id, actual: actual });
         if (guess === actual) _st.correctPredictions += 1;
         var emojiEl = bodyEl.querySelector('.exr-emoji');
-        if (emojiEl) emojiEl.classList.add(item.floats ? 'exr-emoji-float' : 'exr-emoji-sink');
+        if (emojiEl) emojiEl.classList.add(cfg.animClass(actual));
+        var res = cfg.resultText(actual);
         fb.innerHTML =
-          '<span class="zh">结果：它' + (item.floats ? '浮起来了！' : '沉下去了！') + '</span>' +
-          '<span class="en">Result: it ' + (item.floats ? 'floated!' : 'sank!') + '</span>' +
+          '<span class="zh">结果：' + res.zh + '</span>' +
+          '<span class="en">Result: ' + res.en + '</span>' +
           '<div><button class="exr-btn" id="exr-next-btn"><span class="zh">下一步</span><span class="en">Next</span></button></div>';
         document.getElementById('exr-next-btn').addEventListener('click', _next);
       });
     }
 
+    var VARIABLE_PROMPT = {
+      float_explore:  { zh: '试试换一种水，会有什么不同？', en: 'Try a different kind of water — what changes?' },
+      magnet_explore: { zh: '试试改变磁铁的距离，会有什么不同？', en: 'Try changing the magnet\'s distance — what changes?' }
+    };
+
     function _renderVariable(step) {
       var v = step.variable;
+      var prompt = VARIABLE_PROMPT[variant.type] || VARIABLE_PROMPT.float_explore;
       bodyEl.innerHTML =
-        '<div class="exr-prompt"><span class="zh">试试换一种水，会有什么不同？</span>' +
-          '<span class="en">Try a different kind of water — what changes?</span></div>' +
+        '<div class="exr-prompt"><span class="zh">' + prompt.zh + '</span>' +
+          '<span class="en">' + prompt.en + '</span></div>' +
         '<div class="exr-choices" id="exr-var-choices"></div>' +
         '<div class="exr-feedback" id="exr-feedback"></div>';
       var choiceWrap = bodyEl.querySelector('#exr-var-choices');
@@ -234,10 +280,16 @@ var ExploreRuntime = (function () {
       });
     }
 
+    var EXPLAIN_PROMPT = {
+      float_explore:  { zh: '为什么有的东西会浮，有的会沉？', en: 'Why do some things float and others sink?' },
+      magnet_explore: { zh: '为什么有的东西会被磁铁吸住，有的不会？', en: 'Why are some things attracted by magnets and others not?' }
+    };
+
     function _renderExplain(step) {
+      var prompt = EXPLAIN_PROMPT[variant.type] || EXPLAIN_PROMPT.float_explore;
       bodyEl.innerHTML =
-        '<div class="exr-prompt"><span class="zh">为什么有的东西会浮，有的会沉？</span>' +
-          '<span class="en">Why do some things float and others sink?</span></div>' +
+        '<div class="exr-prompt"><span class="zh">' + prompt.zh + '</span>' +
+          '<span class="en">' + prompt.en + '</span></div>' +
         '<div class="exr-choices" id="exr-exp-choices"></div>' +
         '<div class="exr-feedback" id="exr-feedback"></div>';
       var wrap = bodyEl.querySelector('#exr-exp-choices');

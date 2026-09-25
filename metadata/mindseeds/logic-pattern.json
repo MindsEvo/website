@@ -1,0 +1,111 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "logic-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/logic-pattern.json",
+  "title": { "zh": "逻辑推理", "en": "Logic Pattern" },
+  "description": {
+    "zh": "根据『谁比谁高 / 跑得快 / 年纪大』的线索回答问题。训练的是传递性比较推理：从一条线索的直接读取，到反向提问，再到把两三条线索串成一个完整的顺序。角色都是小朋友，不用动物或物体，避免孩子凭常识（猎豹比马快）而不看线索就答对。",
+    "en": "Answer questions from clues like 'who is taller / faster / older than whom'. What it trains is transitive comparison reasoning: from reading one clue directly, to answering it backwards, to linking two or three clues into one complete order. The characters are always children, never animals or objects, so the answer cannot come from world knowledge (a cheetah is faster than a horse) without reading the clues."
+  },
+  "designModel": {
+    "zh": "主轴是线索数（一条 → 两条 → 三条）配合提问形式（同词 → 反义词 → 最…→ 第几）。G2 的三条线索顺序被打乱，孩子必须自己把它们连成链，而不是按出现顺序读下去。",
+    "en": "The primary axis is clue count (one, two, three) paired with question form (same word, opposite word, most/least, n-th). At G2 the three clues are shuffled, so the child has to link them into a chain rather than read them in the order they appear."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "K1 从 4 岁起：即使是一条线索，也需要听懂『比』字句；K1-K2 可以依赖语音朗读。",
+    "noteEn": "K1 starts at 4: even a single clue requires understanding a comparative sentence; K1-K2 can rely on the spoken prompt."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 learning/math/logic 共用 RG.LOGIC.REASONING.BASIC，但 logic 讲解推理方法；本模块只做大量快速的比较链练习。中英文版本的角色名各自取本语言的常用名（小明、小红 / Tom、Amy），不是互相翻译。",
+    "policyEn": "This module belongs to MindSeeds. It shares RG.LOGIC.REASONING.BASIC with learning/math/logic, but logic teaches reasoning methods; this module is high-volume, fast comparison-chain practice. The Chinese and English versions each use common native names (小明, 小红 / Tom, Amy) rather than translating one another."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.LOGIC.REASONING.BASIC，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.LOGIC.REASONING.BASIC, regardless of grade.",
+    "geneIds": ["RG.LOGIC.REASONING.BASIC"]
+  },
+  "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],
+  "difficultyAxes": [
+    {
+      "id": "premise_count",
+      "zh": "线索数",
+      "en": "Premise Count",
+      "progression": ["one", "two", "three"],
+      "noteZh": "一条线索比两人；两条连三人；三条连四人。线索永远是相邻两人的比较，所以链条总能唯一确定顺序。",
+      "noteEn": "One clue compares two children; two clues link three; three clues link four. Clues always compare neighbours in the order, so the chain always fixes a unique order."
+    },
+    {
+      "id": "question_form",
+      "zh": "提问形式",
+      "en": "Question Form",
+      "progression": ["same-word", "opposite-word", "extreme", "rank"],
+      "noteZh": "same-word 线索说『高』，问『谁更高』；opposite-word 线索说『高』，问『谁更矮』；extreme 问最高或最矮；rank 问第二或第三（从高数或从矮数）。",
+      "noteEn": "same-word: the clue says taller and the question asks who is taller; opposite-word: the clue says taller and the question asks who is shorter; extreme asks for the tallest or shortest; rank asks for second or third (counted from either end)."
+    },
+    {
+      "id": "premise_order",
+      "zh": "线索顺序",
+      "en": "Premise Order",
+      "progression": ["chained", "shuffled"],
+      "noteZh": "chained 线索按链条顺序出现（A>B，B>C）；shuffled 顺序被打乱，且保证不会碰巧仍是链条顺序。",
+      "noteEn": "chained presents clues in chain order (A>B, then B>C); shuffled mixes them up and guarantees they do not happen to stay in chain order."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["two", "three", "four"],
+      "noteZh": "选项就是题目里出现的所有小朋友，所以选项数等于人数；选错时一定对应一个读错的名次。",
+      "noteEn": "The options are exactly the children in the item, so the option count equals the number of people, and a wrong pick always corresponds to a misread rank."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 5,
+    "passRatio": 0.75,
+    "noteZh": "一次 5 题，通过线 75%（4/5）。推理题读题较慢，所以比其他规律猎手少 1 题。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Five items per run, passing at 75% (4/5) — one fewer than the other pattern hunters because reasoning items take longer to read. No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "4", "gradeCode": "K1",
+      "objectiveZh": "一条线索比较两个小朋友，按线索里的同一个词回答『谁更…』。",
+      "objectiveEn": "One clue compares two children; answer 'who is more…' using the same word as the clue.",
+      "axisValues": { "premise_count": "one", "question_form": "same-word", "premise_order": "chained", "option_count": "two" },
+      "status": "implemented", "implementedBy": ["logic-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "线索说『A 比 B 高』，回答『谁更矮』——把关系反过来理解。",
+      "objectiveEn": "The clue says 'A is taller than B'; answer 'who is shorter' by reversing the relation.",
+      "axisValues": { "premise_count": "one", "question_form": "opposite-word", "premise_order": "chained", "option_count": "two" },
+      "status": "implemented", "implementedBy": ["logic-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "把两条线索连起来排出三个人的顺序，找出最…或最不…的那个。",
+      "objectiveEn": "Link two clues into an order of three and find the most or the least.",
+      "axisValues": { "premise_count": "two", "question_form": "extreme", "premise_order": "chained", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["logic-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "三条被打乱的线索排出四个人的顺序，回答第二或第三名。",
+      "objectiveEn": "Order four children from three shuffled clues and name who is second or third.",
+      "axisValues": { "premise_count": "three", "question_form": "rank", "premise_order": "shuffled", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["logic-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "relations", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "optionTypes 中 wrong_end（选了另一头）通常是没注意到反义词，adjacent_rank（差一名）通常是链条排对了但数错了名次。",
+    "noteEn": "In optionTypes, wrong_end (the opposite end) usually means the opposite word was missed, while adjacent_rank (off by one place) usually means the chain was right but the rank was miscounted."
+  },
+  "tags": ["logic-pattern", "mindseeds", "logic", "reasoning", "ai-readable"]
+}

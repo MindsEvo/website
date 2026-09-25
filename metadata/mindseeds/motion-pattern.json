@@ -1,0 +1,103 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "motion-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/motion-pattern.json",
+  "title": { "zh": "动作规律", "en": "Motion Pattern" },
+  "description": {
+    "zh": "预测一串运动的下一步：先是方向与动作的重复序列，再是小人在格子轨道上的跳跃位置。训练的是把运动看成有规律的序列，并从已经发生的几步推出下一步。",
+    "en": "Predict the next step of a motion sequence: first repeating directions and actions, then where a hopper lands on a numbered track. What it trains is seeing motion as a rule-governed sequence and inferring the next step from the ones already taken."
+  },
+  "designModel": {
+    "zh": "两段式：K1-K2 在符号通道（方向 → 动作）上识别重复单元（2 拍 → 3 拍）；G1-G2 转到位置通道，从固定步长的跳跃推进到步长每次加 1 的跳跃——后者要求先读出『步长在变』这一层二阶规律。",
+    "en": "Two stages: K1-K2 recognise repeating units (2 beats, then 3) on symbol channels (direction, then action); G1-G2 move to the position channel, from fixed-length hops to hops that grow by one each time — the latter requires reading the second-order rule that the step itself changes."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "方向交替 3-4 岁即可；步长递增的跳跃约 7 岁。",
+    "noteEn": "Direction alternation suits ages 3-4; growing hops suit about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 temporal-pattern 的区别：后者是时间与事件的先后，本模块是空间中的运动。与 number-pattern 的区别：跳格子虽然对应加法，但孩子看到的是轨道上的位置而不是算式。",
+    "policyEn": "This module belongs to MindSeeds. Unlike temporal-pattern, which covers time and the order of events, this module covers motion in space. Unlike number-pattern, the track hops correspond to addition but the child sees positions on a track, not arithmetic."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.MOTION.SEQUENCE，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.MOTION.SEQUENCE, regardless of grade.",
+    "geneIds": ["RG.PATTERN.MOTION.SEQUENCE"]
+  },
+  "rootGeneIds": ["RG.PATTERN.MOTION.SEQUENCE"],
+  "difficultyAxes": [
+    {
+      "id": "motion_channel",
+      "zh": "运动通道",
+      "en": "Motion Channel",
+      "progression": ["direction", "action", "position"],
+      "noteZh": "direction 是箭头方向；action 是跳/蹲/转/跑等动作卡片；position 是在编号轨道上的落点。",
+      "noteEn": "direction is arrow direction; action is cards for jump/squat/turn/run; position is the landing cell on a numbered track."
+    },
+    {
+      "id": "change_rule",
+      "zh": "变化规则",
+      "en": "Change Rule",
+      "progression": ["alternate", "three-beat", "fixed-step", "growing-step"],
+      "noteZh": "alternate 两个方向轮流；three-beat 是 AAB/ABB/ABC 三拍单元；fixed-step 每跳 2 或 3 格；growing-step 每跳比上一跳多 1 格（1、2、3 → 下一跳 4）。",
+      "noteEn": "alternate takes turns between two directions; three-beat is an AAB/ABB/ABC unit; fixed-step hops 2 or 3 cells each time; growing-step hops one cell further each time (1, 2, 3, then 4)."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项，之后都是 4 个。",
+      "noteEn": "K1 offers three options; later grades offer four."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75,
+    "noteZh": "一次 6 题，通过线 75%（5/6）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Six items per run, passing at 75% (5/6). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "两个方向轮流出现，判断下一步朝哪。",
+      "objectiveEn": "Two directions take turns; judge which way comes next.",
+      "axisValues": { "motion_channel": "direction", "change_rule": "alternate", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["motion-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "识别三个动作一组的重复（AAB/ABB/ABC），说出下一个动作。",
+      "objectiveEn": "Recognise a three-action repeating set (AAB/ABB/ABC) and name the next action.",
+      "axisValues": { "motion_channel": "action", "change_rule": "three-beat", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["motion-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "在 10 格轨道上每次跳 2 或 3 格，预测下一跳落在哪一格。",
+      "objectiveEn": "Hopping 2 or 3 cells at a time on a 10-cell track, predict where the next hop lands.",
+      "axisValues": { "motion_channel": "position", "change_rule": "fixed-step", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["motion-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "在 12 格轨道上每一跳比上一跳多 1 格，预测下一跳落点，排除『按上一跳长度再跳一次』的干扰。",
+      "objectiveEn": "On a 12-cell track each hop is one cell longer than the last; predict the next landing and reject 'repeat the last hop length'.",
+      "axisValues": { "motion_channel": "position", "change_rule": "growing-step", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["motion-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "shapes", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "G2 的 unchanged_step 干扰项专门捕捉『只读出一阶规律』：孩子看到了在跳，但没注意到步长在变。",
+    "noteEn": "G2's unchanged_step distractor specifically catches reading only the first-order rule: the child sees the hopping but misses that the hop length is changing."
+  },
+  "tags": ["motion-pattern", "mindseeds", "pattern", "motion", "ai-readable"]
+}

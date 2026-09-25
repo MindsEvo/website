@@ -1,0 +1,111 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "color-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/color-pattern.json",
+  "title": { "zh": "颜色规律", "en": "Color Pattern" },
+  "description": {
+    "zh": "在一串按单元重复的颜色中补出空缺的那一个。训练的是识别离散颜色序列的重复单元：先找出『哪一段在重复』，再用它推出空格的颜色，而不是只看空格旁边的颜色。难度由重复单元的长度、空格的位置、以及一个元素是单色还是颜色对决定。",
+    "en": "Fill the one missing color in a strip that repeats a unit. What it trains is finding the repeating unit in a discrete color sequence: first working out which run repeats, then using it to infer the gap, rather than copying the neighbouring color. Difficulty comes from the unit length, where the gap sits, and whether an element is a single color or a color pair."
+  },
+  "designModel": {
+    "zh": "主轴是重复单元长度（2 → 3 → 4），配合空格位置（末尾 → 任意）；G2 换一个维度：单元长度回到 3，但每个元素变成有顺序的颜色对，工作记忆负荷由『记更多拍』转为『每拍记两个且不能颠倒』。",
+    "en": "The primary axis is unit length (2, then 3, then 4), paired with gap position (end, then anywhere). G2 switches dimension: unit length drops back to 3, but each element becomes an ordered color pair, so the working-memory load shifts from more beats to two colors per beat that must not be reversed."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 的 AB 两色交替 3-4 岁即可完成；G2 的有序颜色对约 7 岁。",
+    "noteEn": "K1's two-color AB alternation suits ages 3-4; G2's ordered color pairs suit about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列（高趣味、快反馈、可反复训练）。它与 learning/math/pattern 共用重复规律这一能力，但 pattern 讲解『什么是重复单元』，题量少而讲解重；本模块不讲概念，只用颜色这一通道把找单元的动作重复练熟。",
+    "policyEn": "This module belongs to MindSeeds (high engagement, fast feedback, made to be replayed). It shares the repeating-pattern ability with learning/math/pattern, but pattern explains what a repeating unit is — few items, heavy explanation; this module teaches no concept and only drills finding the unit through the color channel."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.VISUAL.COLOR，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.VISUAL.COLOR, regardless of grade.",
+    "geneIds": ["RG.PATTERN.VISUAL.COLOR"]
+  },
+  "rootGeneIds": ["RG.PATTERN.VISUAL.COLOR"],
+  "difficultyAxes": [
+    {
+      "id": "unit_length",
+      "zh": "单元长度",
+      "en": "Unit Length",
+      "progression": ["two", "three", "four"],
+      "noteZh": "重复单元有几拍：two 是 AB；three 是 AAB/ABB/ABC；four 是 AABB/ABCC/AABC/ABCD。每个形状的最小周期就是它自己的长度，不会退化成更短的单元。",
+      "noteEn": "Beats per repeating unit: two is AB; three is AAB/ABB/ABC; four is AABB/ABCC/AABC/ABCD. Each shape's minimal period is its own length, so none collapses to a shorter unit."
+    },
+    {
+      "id": "blank_position",
+      "zh": "空格位置",
+      "en": "Blank Position",
+      "progression": ["end", "any"],
+      "noteZh": "end 是『下一个是什么』，可以顺着往后接；any 空格可能在中间，需要从两侧同时对齐单元。",
+      "noteEn": "end means 'what comes next', solvable by continuing forward; any may put the gap mid-strip, requiring the unit to be aligned from both sides."
+    },
+    {
+      "id": "element_type",
+      "zh": "元素类型",
+      "en": "Element Type",
+      "progression": ["single", "pair"],
+      "noteZh": "single 每个元素一个颜色；pair 每个元素是有顺序的两个颜色，干扰项包含顺序颠倒和一半错误的颜色对。",
+      "noteEn": "single is one color per element; pair is an ordered two-color element, with distractors including the reversed pair and a half-wrong pair."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项（两个单元内颜色 + 一个单元外颜色），之后都是 4 个。",
+      "noteEn": "K1 offers three options (both in-unit colors plus one off-unit color); later grades offer four."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75,
+    "noteZh": "一次 6 题，通过线 75%（5/6）。没有静态题库：generator.js 每次进入单元现生成，玩完立即换一批（game.js 的 refillUnit）。",
+    "noteEn": "Six items per run, passing at 75% (5/6). No static bank: generator.js builds a fresh set on entering a unit and swaps in a new one when the run ends (refillUnit in game.js)."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "两种颜色轮流出现（AB），补出末尾的下一个颜色。",
+      "objectiveEn": "Two colors alternate (AB); fill in the next color at the end.",
+      "axisValues": { "unit_length": "two", "blank_position": "end", "element_type": "single", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["color-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "识别 3 拍的重复单元（AAB/ABB/ABC），补出末尾的颜色。",
+      "objectiveEn": "Recognise a 3-beat unit (AAB/ABB/ABC) and fill in the color at the end.",
+      "axisValues": { "unit_length": "three", "blank_position": "end", "element_type": "single", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["color-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "识别 4 拍的重复单元，空格可能在序列中间，需要从两侧对齐。",
+      "objectiveEn": "Recognise a 4-beat unit where the gap may be mid-strip, aligning the unit from both sides.",
+      "axisValues": { "unit_length": "four", "blank_position": "any", "element_type": "single", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["color-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "把有序的颜色对当作一个元素，识别 3 拍单元（AAB/ABB），排除顺序颠倒与一半错误的干扰项。",
+      "objectiveEn": "Treat an ordered color pair as one element, recognise a 3-beat unit (AAB/ABB), and reject reversed and half-wrong pairs.",
+      "axisValues": { "unit_length": "three", "blank_position": "any", "element_type": "pair", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["color-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "shapes", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "optionTypes 区分 in_pattern（选了单元内另一个颜色，通常是错位）与 off_pattern（选了单元外颜色，通常是没找到单元）；G2 另有 order_reversed 与 half_wrong。",
+    "noteEn": "optionTypes separates in_pattern (another in-unit color, usually a phase slip) from off_pattern (a color outside the unit, usually no unit found); G2 adds order_reversed and half_wrong."
+  },
+  "tags": ["color-pattern", "mindseeds", "pattern", "color", "ai-readable"]
+}

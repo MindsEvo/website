@@ -1,0 +1,111 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "size-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/size-pattern.json",
+  "title": { "zh": "大小规律", "en": "Size Pattern" },
+  "description": {
+    "zh": "在一串只有大小变化的圆点中补出空缺的那一个。训练的是对离散大小等级的感知与变化规则的识别：交替、逐级变大/变小、以及小→中→大→中的波浪循环。不使用数字、刻度或比例，只靠视觉比较。",
+    "en": "Fill the one missing dot in a strip where only size changes. What it trains is perceiving discrete size bands and recognising the change rule: alternation, one-step growth or shrinkage, and a small-medium-large-medium wave. No numbers, scales or ratios — visual comparison only."
+  },
+  "designModel": {
+    "zh": "主轴是变化规则（alternate → monotonic → cycle），配合大小反差（相差很大的两档 → 相邻档）与空格位置（末尾 → 任意）。",
+    "en": "The primary axis is the change rule (alternate, then monotonic, then cycle), paired with size contrast (two far-apart bands, then adjacent bands) and gap position (end, then anywhere)."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 的最大/最小交替 3-4 岁即可分辨；G2 的相邻档波浪循环约 7 岁。",
+    "noteEn": "K1's largest/smallest alternation suits ages 3-4; G2's adjacent-band wave suits about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 learning/math/comparison 的大小比较共享对大小的判断，但 comparison 教『比较哪个维度、得出什么关系』；本模块不教比较本身，只练在大小通道上识别变化规则。",
+    "policyEn": "This module belongs to MindSeeds. It shares size judgement with the size comparisons in learning/math/comparison, but comparison teaches which dimension to compare and what relation results; this module does not teach comparison itself, it drills recognising change rules on the size channel."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.VISUAL.SIZE，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.VISUAL.SIZE, regardless of grade.",
+    "geneIds": ["RG.PATTERN.VISUAL.SIZE"]
+  },
+  "rootGeneIds": ["RG.PATTERN.VISUAL.SIZE"],
+  "difficultyAxes": [
+    {
+      "id": "change_rule",
+      "zh": "变化规则",
+      "en": "Change Rule",
+      "progression": ["alternate", "monotonic", "cycle"],
+      "noteZh": "alternate 最大/最小两档轮流；monotonic 每步只变一档，方向可能向上或向下；cycle 是 a、a+1、a+2、a+1 的四拍波浪。",
+      "noteEn": "alternate takes turns between the largest and smallest bands; monotonic moves exactly one band per step, up or down; cycle is a four-beat wave a, a+1, a+2, a+1."
+    },
+    {
+      "id": "size_contrast",
+      "zh": "大小反差",
+      "en": "Size Contrast",
+      "progression": ["coarse", "fine"],
+      "noteZh": "coarse 只用 s1 与 s5 两档（差别一眼可见）；fine 相邻两档只差一级，需要仔细比较。",
+      "noteEn": "coarse uses only bands s1 and s5 (unmistakable); fine has neighbouring items one band apart, which needs careful comparison."
+    },
+    {
+      "id": "blank_position",
+      "zh": "空格位置",
+      "en": "Blank Position",
+      "progression": ["end", "any"],
+      "noteZh": "end 是『下一个是多大』；any 空格可能在开头或中间，需要从两侧推断。",
+      "noteEn": "end asks what size comes next; any may put the gap at the start or middle, requiring inference from both sides."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项（正确档、另一极端档、中间档）；之后给 4 个，优先放入相邻档作为干扰。",
+      "noteEn": "K1 offers three options (the answer, the other extreme, the middle band); later grades offer four, with neighbouring bands as the preferred distractors."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75,
+    "noteZh": "一次 6 题，通过线 75%（5/6）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Six items per run, passing at 75% (5/6). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "最大和最小的圆点轮流出现，补出末尾的下一个。",
+      "objectiveEn": "The largest and smallest dots take turns; fill in the next one at the end.",
+      "axisValues": { "change_rule": "alternate", "size_contrast": "coarse", "blank_position": "end", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["size-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "每步变大或变小一档，补出末尾的大小，排除相邻档的干扰。",
+      "objectiveEn": "Sizes grow or shrink one band per step; fill in the end size and reject neighbouring-band distractors.",
+      "axisValues": { "change_rule": "monotonic", "size_contrast": "fine", "blank_position": "end", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["size-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "逐级变化的序列里空格可能在开头或中间，从两侧推断缺失的大小。",
+      "objectiveEn": "In a one-step sequence the gap may be at the start or middle; infer the missing size from both sides.",
+      "axisValues": { "change_rule": "monotonic", "size_contrast": "fine", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["size-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "识别小→中→大→中的四拍波浪循环，在任意位置补出缺失的大小。",
+      "objectiveEn": "Recognise a small-medium-large-medium four-beat wave and fill a gap anywhere in it.",
+      "axisValues": { "change_rule": "cycle", "size_contrast": "fine", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["size-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "directions", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "optionTypes 区分 adjacent_item（选了相邻档，通常是大小分辨不准）与 pattern_misread（选了远档，通常是规则没读出来）。",
+    "noteEn": "optionTypes separates adjacent_item (a neighbouring band, usually imprecise size discrimination) from pattern_misread (a distant band, usually the rule was not read)."
+  },
+  "tags": ["size-pattern", "mindseeds", "pattern", "size", "ai-readable"]
+}

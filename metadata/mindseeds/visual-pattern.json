@@ -1,0 +1,111 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "visual-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/visual-pattern.json",
+  "title": { "zh": "视觉规律", "en": "Visual Pattern" },
+  "description": {
+    "zh": "在一串图形中补出空缺的那一个：学前阶段是形状的重复单元，小学阶段是箭头按固定角度旋转。训练的是在形状与朝向两个视觉通道上识别序列规律。",
+    "en": "Fill the one missing figure in a strip: in pre-school grades a repeating unit of shapes, in primary grades an arrow turning by a fixed angle. What it trains is recognising sequence rules on two visual channels — shape and orientation."
+  },
+  "designModel": {
+    "zh": "K1-K2 是形状重复（单元 2 → 3 拍）；G1 换成旋转通道，箭头每次转 90 度（4 个朝向一轮）；G2 细化为 45 度（8 个朝向一轮），空格可能在中间。",
+    "en": "K1-K2 repeat shapes (unit of 2, then 3 beats); G1 switches to the rotation channel with 90° turns (4 orientations per cycle); G2 refines to 45° turns (8 orientations per cycle) with the gap possibly mid-strip."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "形状交替 3-4 岁即可；45 度的细角度旋转约 7 岁。",
+    "noteEn": "Shape alternation suits ages 3-4; fine 45° rotation suits about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 learning/math/pattern 共用视觉序列规律能力，但 pattern 讲解规律结构；本模块不讲概念，只在形状与朝向通道上反复练习。与 spatial-pattern 的区别：后者是在地图上连续规划路径，本模块只判断单个图形的朝向变化。",
+    "policyEn": "This module belongs to MindSeeds. It shares the visual-sequence ability with learning/math/pattern, but pattern explains rule structure; this module teaches no concept and drills the shape and orientation channels. Unlike spatial-pattern, which plans a continuous route on a map, this module only judges how a single figure's orientation changes."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.VISUAL.SEQUENCE，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.VISUAL.SEQUENCE, regardless of grade.",
+    "geneIds": ["RG.PATTERN.VISUAL.SEQUENCE"]
+  },
+  "rootGeneIds": ["RG.PATTERN.VISUAL.SEQUENCE"],
+  "difficultyAxes": [
+    {
+      "id": "change_type",
+      "zh": "变化通道",
+      "en": "Change Type",
+      "progression": ["shape", "rotation"],
+      "noteZh": "shape 是不同形状按单元重复；rotation 是同一箭头按固定角度与方向旋转，干扰项包括转反、没转、翻转与多转一步。",
+      "noteEn": "shape repeats distinct shapes in a unit; rotation turns one arrow by a fixed angle and direction, with distractors for turning the wrong way, not turning, flipping, and over-turning."
+    },
+    {
+      "id": "unit_length",
+      "zh": "周期长度",
+      "en": "Unit Length",
+      "progression": ["two", "three", "four", "eight"],
+      "noteZh": "一轮有几项：two 是 AB；three 是 AAB/ABB/ABC；four 是 90 度旋转的 4 个朝向；eight 是 45 度旋转的 8 个朝向。",
+      "noteEn": "Items per cycle: two is AB; three is AAB/ABB/ABC; four is the four orientations of 90° turns; eight is the eight orientations of 45° turns."
+    },
+    {
+      "id": "blank_position",
+      "zh": "空格位置",
+      "en": "Blank Position",
+      "progression": ["end", "any"],
+      "noteZh": "end 是『下一个是什么』；any 空格可能在中间，需要从两侧推断。",
+      "noteEn": "end asks what comes next; any may put the gap mid-strip, requiring inference from both sides."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项，之后都是 4 个。",
+      "noteEn": "K1 offers three options; later grades offer four."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75,
+    "noteZh": "一次 6 题，通过线 75%（5/6）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Six items per run, passing at 75% (5/6). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "两种形状轮流出现（AB），补出下一个形状。",
+      "objectiveEn": "Two shapes alternate (AB); fill in the next shape.",
+      "axisValues": { "change_type": "shape", "unit_length": "two", "blank_position": "end", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["visual-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "识别 3 拍的形状重复单元（AAB/ABB/ABC），补出下一个形状。",
+      "objectiveEn": "Recognise a 3-beat shape unit (AAB/ABB/ABC) and fill in the next shape.",
+      "axisValues": { "change_type": "shape", "unit_length": "three", "blank_position": "end", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["visual-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "箭头每次顺时针或逆时针转 90 度，判断下一个朝向。",
+      "objectiveEn": "An arrow turns 90° clockwise or counterclockwise each time; judge the next orientation.",
+      "axisValues": { "change_type": "rotation", "unit_length": "four", "blank_position": "end", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["visual-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "箭头每次转 45 度，空格可能在中间，从两侧推断缺失的朝向。",
+      "objectiveEn": "An arrow turns 45° each time and the gap may be mid-strip; infer the missing orientation from both sides.",
+      "axisValues": { "change_type": "rotation", "unit_length": "eight", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["visual-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "shapes", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "旋转题的 optionTypes（direction_reversed / no_turn / flipped / over_turned）能区分方向判断错与角度判断错。",
+    "noteEn": "Rotation optionTypes (direction_reversed / no_turn / flipped / over_turned) distinguish a wrong direction from a wrong angle."
+  },
+  "tags": ["visual-pattern", "mindseeds", "pattern", "shape", "rotation", "ai-readable"]
+}

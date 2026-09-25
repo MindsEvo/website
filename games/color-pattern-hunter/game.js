@@ -1,144 +1,165 @@
-﻿/**
- * Color Pattern Hunter — Game Logic  v1.0.0  (Shell-1)
- * ─────────────────────────────────────────────────────────
- * Depends on: shell.js, data.js
- * Ability tags: discrete-color-sequence, working-memory-compound
- * ─────────────────────────────────────────────────────────
+'use strict';
+
+/**
+ * Color Pattern Hunter — Game Config + RADAR CONTRACT  (Shell-1, MindSeeds)
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Modelled on games/difference-scout/game.js. LEVEL_GRADE, GENES, SESSION_SIZE
+ * and the `base` table in difficultyAxisFor() are cross-checked against
+ * metadata/mindseeds/color-pattern.json by metadata/validate.html (S2 / S3) —
+ * keep them literal `var X = {` declarations, the validator reads this as text.
+ *
+ * Metadata:  /metadata/mindseeds/color-pattern.json
+ * RootGene:  RG.PATTERN.VISUAL.COLOR
  */
+(function () {
 
-// ── Color palette (discrete, high-contrast, color-blind safe) ──
-var CPH_COLORS = {
-  red:    '#ef4444',
-  blue:   '#3b82f6',
-  yellow: '#eab308',
-  green:  '#22c55e',
-  purple: '#a855f7',
-  orange: '#f97316'
-};
+  var MODULE_ID      = 'color-pattern';
+  var MODULE_TYPE    = 'mindseeds';
+  var SOURCE_GAME_ID = 'color-pattern-hunter';
 
-// ── Rendering helpers ─────────────────────────────────────────
-function cDot(color, size) {
-  size = size || 46;
-  var hex = CPH_COLORS[color] || '#94a3b8';
-  return '<span class="s1-cdot" style="background:' + hex + ';width:' + size + 'px;height:' + size + 'px"></span>';
-}
+  var LEVEL_GRADE = { K1: 'K1', K2: 'K2', G1: 'G1', G2: 'G2' };
+  var GRADE_ORDER = ['K1', 'K2', 'G1', 'G2'];
+  var GENES = ['RG.PATTERN.VISUAL.COLOR'];
 
-function cCapsule(pair) {
-  return '<span class="s1-ccapsule">' + cDot(pair[0], 34) + cDot(pair[1], 34) + '</span>';
-}
+  // Mirrors color-pattern.json → sessionPolicy.maxItemsPerSession.
+  var SESSION_SIZE = 6;
 
-// ── Error type tracking (per session) ─────────────────────────
-var _errorTypes = {};  // { unitId: { correct:n, adjacent_error:n, rule_error:n, ... } }
-
-function recordError(unitId, type) {
-  if (!_errorTypes[unitId]) _errorTypes[unitId] = {};
-  _errorTypes[unitId][type] = (_errorTypes[unitId][type] || 0) + 1;
-}
-
-// ── Shell-1 game config ───────────────────────────────────────
-shell.createGame({
-  id:            'color-pattern-hunter',
-  parallelUnits: true,   // all 3 units unlocked from start (different abilities)
-  theme:         { primary: '#f97316', primary2: '#dc2626', bg: '#fff7ed' },
-  gui: {
-    header: { show: true, showBack: true },
-    language: { enabled: true, default: 'en' },
-    audio: {
-      music: { enabled: true, defaultOn: false },
-      sound: { enabled: true, defaultOn: true }
-    },
-    history: { enabled: true },
-    help: {
-      enabled: true,
-      contentZh: '先观察颜色变化节奏，再判断问号位置应该出现的颜色。',
-      contentEn: 'Observe the color change rhythm first, then infer the missing color.'
-    },
-    video: {
-      enabled: true,
-      videoId: 'mindseeds-color-pattern-intro-001'
-    }
-  },
-  title:         { zh: '🎨 颜色规律',          en: '🎨 Color Pattern' },
-  subtitle:      { zh: '发现颜色变化的规律',    en: 'Discover the color pattern' },
-  passScore:     5,
-  units:         CPH_DATA.units,
-
-  // ── Render the question sequence ──────────────────────────────
-  renderSequence: function (q, container, unit) {
-    if (q.layout === 'grid') {
-      // L2: matrix with row separators
-      var html = '<div class="s1-cgrid" style="grid-template-columns: repeat(' + q.cols + ', auto);">';
-      q.cells.forEach(function (cell, i) {
-        // Insert row separator (except before first row)
-        if (i > 0 && i % q.cols === 0) {
-          html += '<div class="s1-cgrid-sep"></div>';
-        }
-        html += (cell === '?')
-          ? '<span class="mystery" style="font-size:24px;padding:6px 14px;">?</span>'
-          : cDot(cell, 46);
-      });
-      html += '</div>';
-      container.innerHTML = html;
-
-    } else if (q.layout === 'pair') {
-      // L4: capsule pairs
-      container.innerHTML = q.cells.map(function (cell) {
-        return (cell === null)
-          ? '<span class="mystery">?</span>'
-          : cCapsule(cell);
-      }).join(' ');
-
-    } else {
-      // L1: linear dots
-      container.innerHTML = q.cells.map(function (cell) {
-        return (cell === '?')
-          ? '<span class="mystery">?</span>'
-          : cDot(cell, 50);
-      }).join(' ');
-    }
-  },
-
-  // ── Render each option button ─────────────────────────────────
-  renderOption: function (opt, q, unit) {
-    if (Array.isArray(opt)) return cCapsule(opt);
-    return cDot(opt, 52);
-  },
-
-  // ── Answer checking ───────────────────────────────────────────
-  checkAnswer: function (selected, q) {
-    if (Array.isArray(selected) && Array.isArray(q.answer)) {
-      return selected.join(',') === q.answer.join(',');
-    }
-    return selected === q.answer;
-  },
-
-  // ── Error type analytics (called by Shell-1 after each answer) ─
-  onAnswer: function (selected, q, isCorrect) {
-    var key = Array.isArray(selected) ? selected.join(',') : selected;
-    var type = (q.optionTypes && q.optionTypes[key]) || (isCorrect ? 'correct' : 'unknown');
-    // Find current unit id from the question (stored in data.js per unit)
-    // We use the unit.id from the closure via VPH_DATA
-    CPH_DATA.units.forEach(function (unit) {
-      if (unit.questions.indexOf(q) !== -1) {
-        recordError(unit.id, type);
-      }
-    });
-  },
-
-  // ── Voice prompt ──────────────────────────────────────────────
-  getVoiceText: function (q, idx) {
-    return shell.lang === 'zh'
-      ? '第' + (idx + 1) + '题，下一个是什么颜色？'
-      : 'Question ' + (idx + 1) + ', what color comes next?';
-  },
-
-  registerRootGenes: function () {
-    // Ability genes only. The unit location used to be appended here as a
-    // third gene; it now travels as unitId in the report, so the same ability
-    // trained in different units lands on one radar axis instead of many.
-    // See docs/rootgene/ROOTGENE-FRAMEWORK.md §5.
-    return [
-      'RG.PATTERN.VISUAL.COLOR'
-    ];
+  function difficultyAxisFor(gradeCode) {
+    var base = {
+      K1: { unit_length: 'two',   blank_position: 'end',
+            element_type: 'single', option_count: 'three' },
+      K2: { unit_length: 'three', blank_position: 'end',
+            element_type: 'single', option_count: 'four' },
+      G1: { unit_length: 'four',  blank_position: 'any',
+            element_type: 'single', option_count: 'four' },
+      G2: { unit_length: 'three', blank_position: 'any',
+            element_type: 'pair',   option_count: 'four' }
+    }[gradeCode];
+    return base ? Object.assign({}, base) : null;
   }
-});
+
+  function _unique(values) {
+    return (values || []).filter(Boolean).filter(function (v, i, a) {
+      return a.indexOf(v) === i;
+    });
+  }
+
+  function buildRadarContext(gradeCode, extra) {
+    var ctx = {
+      moduleId:       MODULE_ID,
+      moduleType:     MODULE_TYPE,
+      levelId:        gradeCode,
+      gradeCode:      LEVEL_GRADE[gradeCode] || null,
+      difficultyAxis: difficultyAxisFor(gradeCode),
+      sourceGameId:   SOURCE_GAME_ID
+    };
+    return extra ? Object.assign(ctx, extra) : ctx;
+  }
+
+  function buildUnits() {
+    return GRADE_ORDER.map(function (g) {
+      var meta = CPH_DATA.units[g] || {};
+      return {
+        id:        g,
+        gradeCode: LEVEL_GRADE[g] || null,
+        icon:      meta.icon,
+        nameZh:    meta.nameZh, nameEn: meta.nameEn,
+        descZh:    meta.descZh, descEn: meta.descEn,
+        questions: CPH_GEN.generate(g, SESSION_SIZE)
+      };
+    });
+  }
+
+  var UNITS = buildUnits();
+
+  window.CPH_CONTRACT = {
+    MODULE_ID: MODULE_ID, SESSION_SIZE: SESSION_SIZE, GRADE_ORDER: GRADE_ORDER,
+    GENES: GENES, LEVEL_GRADE: LEVEL_GRADE,
+    difficultyAxisFor: difficultyAxisFor, buildRadarContext: buildRadarContext
+  };
+
+  // Deferred: shell calls onResult before getReportContext in the same pass,
+  // so a synchronous refill would make the report describe unseen items.
+  function refillUnit(unitId) {
+    setTimeout(function () {
+      UNITS.forEach(function (u) {
+        if (u.id === unitId) { u.questions = CPH_GEN.generate(unitId, SESSION_SIZE); }
+      });
+    }, 0);
+  }
+
+  // ── Presentation ───────────────────────────────────────────────────────────
+
+  function cDot(color, size) {
+    var hex = (CPH_DATA.palette[color] || {}).hex || '#94a3b8';
+    return '<span class="s1-cdot" style="background:' + hex + ';width:' + size + 'px;height:' + size + 'px"></span>';
+  }
+
+  function cCapsule(pair) {
+    return '<span class="s1-ccapsule">' + cDot(pair[0], 30) + cDot(pair[1], 30) + '</span>';
+  }
+
+  shell.createGame({
+    id:            SOURCE_GAME_ID,
+    parallelUnits: true,
+    theme:         { primary: '#f97316', primary2: '#dc2626', bg: '#fff7ed' },
+    gui: {
+      header: { show: true, showBack: true },
+      language: { enabled: true, default: 'en' },
+      audio: {
+        music: { enabled: true, defaultOn: false },
+        sound: { enabled: true, defaultOn: true }
+      },
+      history: { enabled: true },
+      help: {
+        enabled: true,
+        contentZh: '先找出重复的那一段颜色，再判断问号位置应该是什么。越往后重复段越长，空格也可能在中间；G2 要把两个颜色看成一组。',
+        contentEn: 'Find the repeating run of colors first, then infer the missing one. Later grades use longer runs and the gap may be in the middle; at G2 two colors form one unit.'
+      },
+      video: {
+        enabled: true,
+        videoId: 'mindseeds-color-pattern-intro-001'
+      }
+    },
+    title:     { zh: '🎨 颜色规律',       en: '🎨 Color Pattern' },
+    subtitle:  { zh: '发现颜色变化的规律', en: 'Discover the color pattern' },
+    passScore: Math.ceil(SESSION_SIZE * 0.75),
+    units:     UNITS,
+
+    renderSequence: function (q, container) {
+      var mystery = '<span class="mystery">?</span>';
+      var size = q.cells.length > 6 ? 40 : 48;
+      container.innerHTML = q.cells.map(function (cell) {
+        if (cell === null) { return mystery; }
+        return q.layout === 'pair' ? cCapsule(cell) : cDot(cell, size);
+      }).join(' ');
+    },
+
+    renderOption: function (opt) {
+      return Array.isArray(opt) ? cCapsule(opt) : cDot(opt, 52);
+    },
+
+    checkAnswer: function (selected, q) {
+      return CPH_GEN.keyOf(selected) === CPH_GEN.keyOf(q.answer);
+    },
+
+    getVoiceText: function (q, idx) {
+      return shell.lang === 'zh'
+        ? '第' + (idx + 1) + '题，问号的位置是什么颜色？'
+        : 'Question ' + (idx + 1) + ', what color goes in the gap?';
+    },
+
+    registerRootGenes: function () { return GENES.slice(); },
+
+    getReportContext: function (ctx) {
+      var unit = (ctx && ctx.unit) || {};
+      var questions = unit.questions || [];
+      refillUnit(unit.id);
+      return buildRadarContext(unit.id, {
+        shapes:          _unique(questions.map(function (q) { return q.shape; })),
+        geneIds:         GENES.slice(),
+        activityRuntime: 'puzzle'
+      });
+    }
+  });
+}());

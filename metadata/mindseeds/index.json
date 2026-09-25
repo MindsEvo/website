@@ -7,8 +7,8 @@
     "purposeEn": "The MindSeeds module catalog. Same structure and same status vocabulary as metadata/metathinking/index.json, so metadata/validate.js can collide both series with the same suites (S2 levelMap, S3 difficultyAxes) instead of growing MindSeeds-specific validation logic.",
     "statusZh": "status 取值：active 已上线并接线，校验器按最严口径对撞；in-progress 元数据已定稿但运行时还没接上，校验器把「找不到声明」降级为 INFO；retired 不再加载。",
     "statusEn": "status values: active — shipped and wired, validated at full strictness; in-progress — metadata is finalised but the runtime is not wired yet, so the validator downgrades cannot-verify lines to INFO; retired — not loaded.",
-    "scopeZh": "只登记已经有 levelMap 与难度轴声明的小精灵模块。games/ 下另外 10 个游戏还没有各自的模块文件，它们在 metadata/game.json 里有目录条目，但不参与 S2/S3——直到它们各自补上一份 levelMap 之前，代码侧应继续诚实地上报 gradeCode: null，而不是借用某个已上线模块的年级码。",
-    "scopeEn": "Only MindSeeds modules that already declare a levelMap and difficulty axes are listed. The other 10 games under games/ have catalog entries in metadata/game.json but do not take part in S2/S3 — until each gains its own levelMap, the code side should keep honestly reporting gradeCode: null rather than borrowing another shipped module's grade codes."
+    "scopeZh": "只登记已经有 levelMap 与难度轴声明的小精灵模块。games/ 下另外 1 个游戏还没有各自的模块文件，它们在 metadata/game.json 里有目录条目，但不参与 S2/S3——直到它们各自补上一份 levelMap 之前，代码侧应继续诚实地上报 gradeCode: null，而不是借用某个已上线模块的年级码。",
+    "scopeEn": "Only MindSeeds modules that already declare a levelMap and difficulty axes are listed. The other 1 games under games/ have catalog entries in metadata/game.json but do not take part in S2/S3 — until each gains its own levelMap, the code side should keep honestly reporting gradeCode: null rather than borrowing another shipped module's grade codes."
   },
   "modules": [
     {
@@ -16,10 +16,19 @@
       "moduleType": "mindseeds",
       "titleZh": "找不同侦探",
       "titleEn": "Difference Scout",
-      "ageRange": { "min": 3, "max": 8 },
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
       "levels": 4,
       "canonicalUrl": "/metadata/mindseeds/difference-scout.json",
-      "tags": ["difference-scout", "mindseeds", "attention", "visual-search", "ai-readable"],
+      "tags": [
+        "difference-scout",
+        "mindseeds",
+        "attention",
+        "visual-search",
+        "ai-readable"
+      ],
       "status": "active",
       "statusNoteZh": "四个等级 K1-G2 全部上线并上报雷达（gradeCode 非 null，是小精灵系列第一个）。内容无静态题库，由 generator.js 按等级现生成，逐项由 games/difference-scout/test.html 审计。仍缺：G3 以上（应当靠增加属性通道或引入变换，而不是继续加格子）、puzzle 以外的运行时。",
       "statusNoteEn": "All four grades K1-G2 are shipped and reporting to the radar with a non-null gradeCode, the first MindSeeds module to do so. There is no static bank: generator.js builds content per grade and games/difference-scout/test.html audits it item by item. Still missing: anything above G2 (which should come from more attribute channels or transformations rather than more slots), and any runtime other than puzzle."
@@ -29,13 +38,221 @@
       "moduleType": "mindseeds",
       "titleZh": "空间关系",
       "titleEn": "Spatial Pattern",
-      "ageRange": { "min": 6, "max": 8 },
+      "ageRange": {
+        "min": 6,
+        "max": 8
+      },
       "levels": 3,
       "canonicalUrl": "/metadata/mindseeds/spatial-pattern.json",
-      "tags": ["spatial-pattern", "mindseeds", "spatial-relation", "route-planning", "ai-readable"],
+      "tags": [
+        "spatial-pattern",
+        "mindseeds",
+        "spatial-relation",
+        "route-planning",
+        "ai-readable"
+      ],
       "status": "active",
       "statusNoteZh": "三个等级 G1-G3 全部上线并上报雷达，是小精灵系列第二个接上深度轴的模块。内容是静态题库（data.js 手写），不像 difference-scout 有 generator.js 现生成，也没有对应的 test.html 审计。仍缺：puzzle 以外的运行时、静态题库的可重复训练性（题量小，重复几次就会被记住）。",
       "statusNoteEn": "All three grades G1-G3 are shipped and reporting to the radar, the second MindSeeds module to wire up the depth axis. Content is a static bank hand-authored in data.js, unlike difference-scout's generator.js, and has no corresponding test.html audit. Still missing: any runtime other than puzzle, and repeatability for a static bank this small (a few replays and it is memorised)."
+    },
+    {
+      "id": "color-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "颜色规律",
+      "titleEn": "Color Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/color-pattern.json",
+      "tags": [
+        "color-pattern",
+        "mindseeds",
+        "pattern",
+        "color",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先 3 个主题单元的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank of three themed units is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "size-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "大小规律",
+      "titleEn": "Size Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/size-pattern.json",
+      "tags": [
+        "size-pattern",
+        "mindseeds",
+        "pattern",
+        "size",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先 4 个主题单元的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank of four themed units is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "visual-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "视觉规律",
+      "titleEn": "Visual Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/visual-pattern.json",
+      "tags": [
+        "visual-pattern",
+        "mindseeds",
+        "pattern",
+        "shape",
+        "rotation",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先 2 个主题单元（形状交替、方向旋转）的 9 题静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former 9-item static bank of two themed units (shape alternation, rotation) is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "quantity-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "数量规律",
+      "titleEn": "Quantity Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/quantity-pattern.json",
+      "tags": [
+        "quantity-pattern",
+        "mindseeds",
+        "pattern",
+        "quantity",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先 3 个主题单元的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank of three themed units is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "number-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "数字规律",
+      "titleEn": "Number Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/number-pattern.json",
+      "tags": [
+        "number-pattern",
+        "mindseeds",
+        "pattern",
+        "number",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级（等差数列）上线并上报雷达，由 generator.js 现生成。原先的乘法、差值递增、斐波那契题高于 G2，已从 K1-G2 中移出，留作 G3（levelMap 中为 planned）。",
+      "statusNoteEn": "K1-G2 (constant-step sequences) shipped and reporting to the radar, generated by generator.js. The earlier multiplicative, growing-gap and Fibonacci items sit above G2 and were moved out of K1-G2, reserved for G3 (planned in the levelMap)."
+    },
+    {
+      "id": "motion-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "动作规律",
+      "titleEn": "Motion Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/motion-pattern.json",
+      "tags": [
+        "motion-pattern",
+        "mindseeds",
+        "pattern",
+        "motion",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先按主题划分的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank organised by theme is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "temporal-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "时间规律",
+      "titleEn": "Temporal Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/temporal-pattern.json",
+      "tags": [
+        "temporal-pattern",
+        "mindseeds",
+        "pattern",
+        "time",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先按主题划分的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank organised by theme is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "logic-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "逻辑推理",
+      "titleEn": "Logic Pattern",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/logic-pattern.json",
+      "tags": [
+        "logic-pattern",
+        "mindseeds",
+        "logic",
+        "reasoning",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先按主题划分的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank organised by theme is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "mixed-pattern",
+      "moduleType": "mindseeds",
+      "titleZh": "综合规律",
+      "titleEn": "Mixed Pattern",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/mixed-pattern.json",
+      "tags": [
+        "mixed-pattern",
+        "mindseeds",
+        "pattern",
+        "integration",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "K1-G2 四级上线并上报雷达。原先按主题划分的静态题库改为按年级由 generator.js 现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "K1-G2 shipped and reporting to the radar. The former static bank organised by theme is replaced by per-grade generation in generator.js. Still missing: G3 and above, and any runtime other than puzzle."
     }
   ]
 }

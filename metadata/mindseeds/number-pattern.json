@@ -1,0 +1,118 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "number-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/number-pattern.json",
+  "title": { "zh": "数字规律", "en": "Number Pattern" },
+  "description": {
+    "zh": "在一串数字中补出空缺的那一个。K1-G2 只用等差数列：从一个一个往后数，到倒着数、跳着数，再到自己算出任意步长。训练的是从相邻两项读出变化量并把它推广到整个序列。",
+    "en": "Fill the one missing number in a sequence. K1-G2 use constant-step sequences only: from counting on by one, to counting back, skip counting, and finally working out an arbitrary step. What it trains is reading the change between neighbours and extending it across the whole sequence."
+  },
+  "designModel": {
+    "zh": "主轴是步长类型（count-on → count-both → skip-count → any-step），配合数的范围（10 → 20 → 100）。乘法增长、差值递增、斐波那契等原有内容高于 G2，留作 G3 以上的素材。",
+    "en": "The primary axis is step type (count-on, count-both, skip-count, any-step), paired with number range (10, 20, 100). The earlier multiplicative growth, growing-gap and Fibonacci material sits above G2 and is kept as the basis for G3+."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 10 以内往后数适合 3-4 岁；G2 100 以内任意步长的加减约 7 岁。",
+    "noteEn": "K1's counting on within 10 suits ages 3-4; G2's arbitrary steps within 100 suit about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 learning/math/pattern 的数列单元共享序列规律能力，但 pattern 讲解规律结构，题量少而讲解重；本模块只做大量快速练习。与 quantity-pattern 的区别：后者只用实物、不出现数字。",
+    "policyEn": "This module belongs to MindSeeds. It shares sequence-rule ability with learning/math/pattern's number-sequence units, but pattern explains rule structure with few items and heavy explanation; this module is fast, high-volume practice. Unlike quantity-pattern, which uses objects only, this module uses numerals."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.SEQUENCE.BASIC，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.SEQUENCE.BASIC, regardless of grade.",
+    "geneIds": ["RG.PATTERN.SEQUENCE.BASIC"]
+  },
+  "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC"],
+  "difficultyAxes": [
+    {
+      "id": "step_type",
+      "zh": "步长类型",
+      "en": "Step Type",
+      "progression": ["count-on", "count-both", "skip-count", "any-step"],
+      "noteZh": "count-on 每次加 1；count-both 每次加 1 或减 1；skip-count 按 2、5、10 跳（5 与 10 从其倍数起步）；any-step 步长为 3、4、6、7、8、9 之一，可加可减。",
+      "noteEn": "count-on adds 1 each step; count-both adds or subtracts 1; skip-count jumps by 2, 5 or 10 (5s and 10s start on a multiple); any-step uses a step of 3, 4, 6, 7, 8 or 9, up or down."
+    },
+    {
+      "id": "number_range",
+      "zh": "数的范围",
+      "en": "Number Range",
+      "progression": ["ten", "twenty", "hundred"],
+      "noteZh": "题目与选项中出现的最大数：ten ≤10，twenty ≤20，hundred ≤100。",
+      "noteEn": "The largest number shown in the item or options: ten up to 10, twenty up to 20, hundred up to 100."
+    },
+    {
+      "id": "blank_position",
+      "zh": "空格位置",
+      "en": "Blank Position",
+      "progression": ["end", "any"],
+      "noteZh": "end 是『下一个是几』；any 空格可能在开头或中间，需要反推。",
+      "noteEn": "end asks what comes next; any may put the gap at the start or middle, requiring working backwards."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项，之后都是 4 个。",
+      "noteEn": "K1 offers three options; later grades offer four."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，通过线 75%（6/8）。数字题读题快，所以比其他规律猎手多 2 题。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8) — two more than the other pattern hunters because numeric items read quickly. No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "10 以内一个一个往后数，补出下一个数。",
+      "objectiveEn": "Count on by one within 10 and fill in the next number.",
+      "axisValues": { "step_type": "count-on", "number_range": "ten", "blank_position": "end", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["number-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "20 以内往后数或倒着数，空格可能在任意位置。",
+      "objectiveEn": "Count on or back within 20, with the gap anywhere.",
+      "axisValues": { "step_type": "count-both", "number_range": "twenty", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["number-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "100 以内按 2、5、10 跳着数，可往上也可往下。",
+      "objectiveEn": "Skip count by 2s, 5s or 10s within 100, up or down.",
+      "axisValues": { "step_type": "skip-count", "number_range": "hundred", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["number-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "100 以内先从相邻两项算出步长（3-9），再补出缺失的数。",
+      "objectiveEn": "Work out the step (3-9) from two neighbouring terms within 100, then fill in the missing number.",
+      "axisValues": { "step_type": "any-step", "number_range": "hundred", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["number-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L5", "ageHint": "8", "gradeCode": "G3",
+      "objectiveZh": "乘法增长、差值递增、前两项相加等非等差规律。",
+      "objectiveEn": "Non-constant rules: multiplicative growth, growing gaps, adding the previous two terms.",
+      "axisValues": {},
+      "status": "planned", "implementedBy": [], "implementedModes": []
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "steps", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "optionTypes 区分 too_far（多走一步）、unchanged_step（照抄相邻项）与 off_by_one（按 1 计错），能看出是位置、步长还是计算出了问题。",
+    "noteEn": "optionTypes separate too_far (one step past), unchanged_step (copied a neighbour) and off_by_one (a counting slip), showing whether position, step or arithmetic went wrong."
+  },
+  "tags": ["number-pattern", "mindseeds", "pattern", "number", "ai-readable"]
+}

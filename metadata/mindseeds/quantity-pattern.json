@@ -1,0 +1,119 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-24",
+  "moduleType": "mindseeds",
+  "id": "quantity-pattern",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/quantity-pattern.json",
+  "title": { "zh": "数量规律", "en": "Quantity Pattern" },
+  "description": {
+    "zh": "在一串实物组中补出空缺那一组应有的数量。训练的是具体数量关系的规律识别：多少交替、每次多/少同样的数量、以及三种数量的循环。界面不出现阿拉伯数字，数量只以实物呈现。",
+    "en": "Fill in how many objects belong in the missing group of a strip. What it trains is recognising rules over concrete quantities: more/fewer alternation, adding or removing the same amount each step, and a three-amount cycle. No numerals appear on screen; quantities are shown only as objects."
+  },
+  "designModel": {
+    "zh": "主轴是变化规则（alternate → monotonic → cycle），monotonic 内部再按步长（一个 → 两个）与数量范围（≤5 → ≤9）加深，空格位置从末尾放开到任意。",
+    "en": "The primary axis is the change rule (alternate, then monotonic, then cycle); within monotonic, depth comes from step size (one, then two) and count range (up to 5, then up to 9), and the gap moves from the end to anywhere."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 只用 1-3 个物体的交替，适合 3-4 岁；G1 两个两个变、最多 9 个物体，约 6 岁。",
+    "noteEn": "K1 uses only 1-3 objects in alternation, suited to ages 3-4; G1's steps of two with up to 9 objects suit about age 6."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列。与 learning/math/number-sense 共享数量感，但 number-sense 教数与量的对应；本模块不教数数，只练在数量通道上识别变化规则。与 number-pattern 的区别：后者用阿拉伯数字做运算规律，本模块只用实物。",
+    "policyEn": "This module belongs to MindSeeds. It shares quantity sense with learning/math/number-sense, but number-sense teaches the number-quantity correspondence; this module does not teach counting, it drills change rules on the quantity channel. Unlike number-pattern, which works with numerals and arithmetic rules, this module uses objects only."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.PATTERN.QUANTITY.RELATION，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.PATTERN.QUANTITY.RELATION, regardless of grade.",
+    "geneIds": ["RG.PATTERN.QUANTITY.RELATION"]
+  },
+  "rootGeneIds": ["RG.PATTERN.QUANTITY.RELATION"],
+  "difficultyAxes": [
+    {
+      "id": "change_rule",
+      "zh": "变化规则",
+      "en": "Change Rule",
+      "progression": ["alternate", "monotonic", "cycle"],
+      "noteZh": "alternate 两种数量轮流；monotonic 每步多或少同样的数量；cycle 三种不同数量按顺序循环。",
+      "noteEn": "alternate takes turns between two amounts; monotonic adds or removes the same amount each step; cycle repeats three distinct amounts in order."
+    },
+    {
+      "id": "step_size",
+      "zh": "步长",
+      "en": "Step Size",
+      "progression": ["none", "one", "two"],
+      "noteZh": "只对 monotonic 有意义：one 每次变一个，two 每次变两个；alternate 与 cycle 记为 none。",
+      "noteEn": "Only meaningful for monotonic: one changes by one each step, two by two; alternate and cycle are recorded as none."
+    },
+    {
+      "id": "count_range",
+      "zh": "数量范围",
+      "en": "Count Range",
+      "progression": ["small", "medium", "large"],
+      "noteZh": "题目中（含选项）出现的最大数量：small ≤3，medium ≤5 或 ≤6，large ≤9。物体按每行 3 个排列，便于一眼看出数量。",
+      "noteEn": "The largest count shown in the item, options included: small up to 3, medium up to 5 or 6, large up to 9. Objects are laid out three per row so a count can be seen at a glance."
+    },
+    {
+      "id": "blank_position",
+      "zh": "空格位置",
+      "en": "Blank Position",
+      "progression": ["end", "any"],
+      "noteZh": "end 是『下一组有多少』；any 空格可能在开头或中间。",
+      "noteEn": "end asks how many come next; any may put the gap at the start or middle."
+    },
+    {
+      "id": "option_count",
+      "zh": "选项数",
+      "en": "Option Count",
+      "progression": ["three", "four"],
+      "noteZh": "K1 给 3 个选项，之后都是 4 个。",
+      "noteEn": "K1 offers three options; later grades offer four."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 6,
+    "passRatio": 0.75,
+    "noteZh": "一次 6 题，通过线 75%（5/6）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Six items per run, passing at 75% (5/6). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "1-3 个物体的两种数量轮流出现，补出下一组。",
+      "objectiveEn": "Two amounts of 1-3 objects take turns; fill in the next group.",
+      "axisValues": { "change_rule": "alternate", "step_size": "none", "count_range": "small", "blank_position": "end", "option_count": "three" },
+      "status": "implemented", "implementedBy": ["quantity-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "每次多一个或少一个（最多 5 个），补出下一组。",
+      "objectiveEn": "One more or one fewer each time (up to 5); fill in the next group.",
+      "axisValues": { "change_rule": "monotonic", "step_size": "one", "count_range": "medium", "blank_position": "end", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["quantity-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "每次多两个或少两个（最多 9 个），空格可能在中间，排除『只变一个』的干扰。",
+      "objectiveEn": "Two more or two fewer each time (up to 9), with the gap possibly mid-strip; reject the 'changed by one' distractor.",
+      "axisValues": { "change_rule": "monotonic", "step_size": "two", "count_range": "large", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["quantity-pattern-hunter"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "三种数量按顺序循环（最多 6 个），在任意位置补出缺失的一组。",
+      "objectiveEn": "Three amounts repeat in order (up to 6); fill a missing group anywhere in the strip.",
+      "axisValues": { "change_rule": "cycle", "step_size": "none", "count_range": "medium", "blank_position": "any", "option_count": "four" },
+      "status": "implemented", "implementedBy": ["quantity-pattern-hunter"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "directions", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "monotonic 的 optionTypes 区分 unchanged_step（照抄前一组）、too_far（多走一步）与 step_misread（按 1 而不是按步长变化），能看出是方向、步数还是步长没读对。",
+    "noteEn": "For monotonic items, optionTypes separate unchanged_step (copied the previous group), too_far (one step too many) and step_misread (changed by one instead of by the step), showing whether direction, position or step size was misread."
+  },
+  "tags": ["quantity-pattern", "mindseeds", "pattern", "quantity", "ai-readable"]
+}
