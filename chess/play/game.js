@@ -9,8 +9,169 @@
   var FILES = ["a", "b", "c", "d", "e", "f", "g", "h"];
   var RANKS = [8, 7, 6, 5, 4, 3, 2, 1];
   var SPLIT_STORAGE_KEY = "mindsevo:chess:play:left-pane";
-  var ENGINE_API_BASE = "http://localhost:8787";
   var DISPLAY_SETTINGS_KEY = "cognichess:display-settings";
+
+  // ── Local in-browser chess engine (Stockfish 19 lite, single-threaded WASM) ──
+  // Runs entirely client-side via a Web Worker, so AI play works identically on
+  // localhost and on static hosts like GitHub Pages (no web/server backend needed).
+  var ENGINE_WORKER_PATH = "./assets/engine/stockfish-19-lite-single.js";
+  var engineWorker = null;
+  var engineReadyPromise = null;
+  var engineAppliedConfig = { skillLevel: null, multiPv: null, wdl: false };
+  var engineQueue = Promise.resolve();
+
+  function clampEngineNumber(value, min, max, fallback) {
+    var n = Number(value);
+    if (!isFinite(n)) return fallback;
+    return Math.max(min, Math.min(max, n));
+  }
+
+  function parseEngineInfoLine(line) {
+    var parts = String(line || "").trim().split(/\s+/);
+    var info = { raw: line };
+    for (var i = 0; i < parts.length; i += 1) {
+      var token = parts[i];
+      if (token === "depth" && parts[i + 1]) { info.depth = Number(parts[i + 1]); i += 1; continue; }
+      if (token === "nodes" && parts[i + 1]) { info.nodes = Number(parts[i + 1]); i += 1; continue; }
+      if (token === "time" && parts[i + 1]) { info.time = Number(parts[i + 1]); i += 1; continue; }
+      if (token === "score" && parts[i + 2]) {
+        var scoreType = parts[i + 1];
+        var scoreValue = parts[i + 2];
+        info.score = { type: scoreType, value: scoreType === "mate" ? Number(scoreValue) : Number(scoreValue) / 100 };
+        i += 2;
+        continue;
+      }
+      if (token === "pv") { info.pv = parts.slice(i + 1); break; }
+    }
+    return info;
+  }
+
+  function getEngineWorker() {
+    if (!engineWorker) {
+      engineWorker = new Worker(ENGINE_WORKER_PATH);
+    }
+    return engineWorker;
+  }
+
+  function sendEngineCommand(command) {
+    getEngineWorker().postMessage(command);
+  }
+
+  function waitForEngineLine(predicate, timeoutMs) {
+    return new Promise(function (resolve, reject) {
+      var worker = getEngineWorker();
+      var timer = window.setTimeout(function () {
+        worker.removeEventListener("message", onMessage);
+        reject(new Error("engine wait timeout"));
+      }, timeoutMs);
+      function onMessage(e) {
+        var line = typeof e.data === "string" ? e.data : "";
+        if (predicate(line)) {
+          window.clearTimeout(timer);
+          worker.removeEventListener("message", onMessage);
+          resolve(line);
+        }
+      }
+      worker.addEventListener("message", onMessage);
+    });
+  }
+
+  function ensureEngineReady() {
+    if (!engineReadyPromise) {
+      engineReadyPromise = new Promise(function (resolve, reject) {
+        var worker;
+        try {
+          worker = getEngineWorker();
+        } catch (error) {
+          reject(error);
+          return;
+        }
+        worker.onerror = function (err) {
+          reject(new Error("engine worker failed to load: " + (err && err.message ? err.message : err)));
+        };
+        sendEngineCommand("uci");
+        waitForEngineLine(function (l) { return l === "uciok"; }, 10000)
+          .then(function () {
+            sendEngineCommand("isready");
+            return waitForEngineLine(function (l) { return l === "readyok"; }, 10000);
+          })
+          .then(resolve, reject);
+      }).catch(function (error) {
+        engineReadyPromise = null; // allow retrying on the next call
+        throw error;
+      });
+    }
+    return engineReadyPromise;
+  }
+
+  async function configureEngine(settings) {
+    await ensureEngineReady();
+    var skillLevel = clampEngineNumber(settings.skillLevel, 0, 20, 10);
+    var multiPv = clampEngineNumber(settings.multiPv, 1, 5, 1);
+    if (skillLevel !== engineAppliedConfig.skillLevel) {
+      sendEngineCommand("setoption name Skill Level value " + skillLevel);
+      engineAppliedConfig.skillLevel = skillLevel;
+    }
+    if (multiPv !== engineAppliedConfig.multiPv) {
+      sendEngineCommand("setoption name MultiPV value " + multiPv);
+      engineAppliedConfig.multiPv = multiPv;
+    }
+    if (!engineAppliedConfig.wdl) {
+      sendEngineCommand("setoption name UCI_ShowWDL value true");
+      engineAppliedConfig.wdl = true;
+    }
+    sendEngineCommand("isready");
+    await waitForEngineLine(function (l) { return l === "readyok"; }, 10000);
+    return multiPv;
+  }
+
+  function analyzeOnce(options) {
+    var fen = options.fen;
+    var movetime = clampEngineNumber(options.movetime, 100, 10000, 1200);
+    var depth = clampEngineNumber(options.depth, 1, 30, null);
+
+    return configureEngine(options).then(function (multiPv) {
+      var worker = getEngineWorker();
+      return new Promise(function (resolve, reject) {
+        var infoLines = [];
+        var timeoutMs = Math.max(6000, movetime + 6000);
+        var timer = window.setTimeout(function () {
+          worker.removeEventListener("message", onMessage);
+          reject(new Error("engine analyze timeout"));
+        }, timeoutMs);
+
+        function onMessage(e) {
+          var line = typeof e.data === "string" ? e.data : "";
+          if (line.indexOf("info ") === 0 && line.indexOf(" pv ") !== -1) {
+            infoLines.push(parseEngineInfoLine(line));
+          } else if (line.indexOf("bestmove") === 0) {
+            window.clearTimeout(timer);
+            worker.removeEventListener("message", onMessage);
+            var bestMove = line.split(/\s+/)[1] || null;
+            resolve({
+              ok: true,
+              fen: fen,
+              bestMove: bestMove === "(none)" ? null : bestMove,
+              info: infoLines.length ? infoLines[infoLines.length - 1] : {},
+              multipv: infoLines.slice(-multiPv)
+            });
+          }
+        }
+        worker.addEventListener("message", onMessage);
+
+        sendEngineCommand("position fen " + fen);
+        sendEngineCommand("go movetime " + movetime + (depth ? " depth " + depth : ""));
+      });
+    });
+  }
+
+  // Serialize all engine calls (human-ai / ai-vs-ai never run concurrently, but this
+  // also protects against overlapping calls from rapid mode switches or retries).
+  function analyzeWithLocalEngine(options) {
+    var result = engineQueue.then(function () { return analyzeOnce(options); });
+    engineQueue = result.catch(function () {}); // keep the queue alive even after a failure
+    return result;
+  }
 
   var PIECE_UNICODE = {
     wk: "♔", wq: "♕", wr: "♖", wb: "♗", wn: "♘", wp: "♙",
@@ -781,21 +942,15 @@
     renderHumanAiPanel();
 
     try {
-      var response = await fetch(ENGINE_API_BASE + "/api/v1/chess/engine/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fen: toFen(),
-          movetime: engineSettings.movetime,
-          depth: engineSettings.depth,
-          skillLevel: engineSettings.skillLevel,
-          multiPv: engineSettings.multiPv
-        })
+      var payload = await analyzeWithLocalEngine({
+        fen: toFen(),
+        movetime: engineSettings.movetime,
+        depth: engineSettings.depth,
+        skillLevel: engineSettings.skillLevel,
+        multiPv: engineSettings.multiPv
       });
-
-      var payload = await response.json();
-      if (!response.ok || !payload.ok) {
-        throw new Error(payload.detail || payload.error || "Stockfish analyze failed");
+      if (!payload.ok) {
+        throw new Error("Stockfish analyze failed");
       }
 
       updateHumanAiFromResponse(payload);
@@ -833,7 +988,7 @@
         return;
       }
 
-      state.humanAi.eval = "引擎调用失败：" + detail + "。请先启动 web/server 下的 node src/server.js";
+      state.humanAi.eval = "引擎调用失败：" + detail;
       renderHumanAiPanel();
       logger.error("human-ai.request.failed", { detail: detail });
     }
@@ -861,24 +1016,15 @@
     renderAiVsAiPanel();
 
     try {
-      var response = await fetch(ENGINE_API_BASE + "/api/v1/chess/engine/duel/move", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fen: toFen(),
-          side: side === "w" ? "white" : "black",
-          settings: {
-            movetime: settings.movetime,
-            depth: settings.depth,
-            skillLevel: settings.skillLevel,
-            multiPv: settings.multiPv
-          }
-        })
+      var payload = await analyzeWithLocalEngine({
+        fen: toFen(),
+        movetime: settings.movetime,
+        depth: settings.depth,
+        skillLevel: settings.skillLevel,
+        multiPv: settings.multiPv
       });
-
-      var payload = await response.json();
-      if (!response.ok || !payload.ok) {
-        throw new Error(payload.detail || payload.error || "Stockfish analyze failed");
+      if (!payload.ok) {
+        throw new Error("Stockfish analyze failed");
       }
 
       updateAiVsAiFromResponse(side, payload, settings);
