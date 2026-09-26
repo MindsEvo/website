@@ -129,6 +129,28 @@
       "status": "in-progress",
       "statusNoteZh": "阶段一沿用已有 6 个文字单元（覆盖 G1-G2 的步骤规划/最优选择/合理分配/多步预测/简单博弈/综合策略）并新增 2 个 K1/K2 图形单元（目标选择-图形版、行动顺序-图形版），覆盖 K1-G2 四级。沿用单一既有基因 RG.STRATEGY.DECISION.PLANNING，未按候选类型拆分成细粒度基因。此前提出的 5 种新 Runtime 交互类型（Choose/Sequence/Plan/Allocate/Simulate）、strategy-runtime.js 状态机接口、5 档反馈量表、扩展 Template schema、路径规划/约束策略等题型均已记录为 strategy.json 里的 deferredRoadmap，留待后续阶段。运行时为静态题库（learning/math/strategy/data.js），无 generator/engine，puzzle 已接线并按单元上报雷达。",
       "statusNoteEn": "Stage one reuses the 6 existing text units (covering G1-G2 step planning/best choice/smart allocation/multi-step prediction/simple game strategy/mixed strategy) and adds 2 new K1/K2 picture units (picture goal choice, picture action sequencing), covering grades K1-G2. It reuses the single pre-existing gene RG.STRATEGY.DECISION.PLANNING without splitting into fine-grained per-type genes. The previously proposed 5 new interaction Runtimes (Choose/Sequence/Plan/Allocate/Simulate), the strategy-runtime.js state-machine interface, the 5-tier feedback scale, the extended Template schema, and path-planning/constraint-strategy item types are all recorded as the deferredRoadmap in strategy.json, pending a later stage. The runtime is a static bank (learning/math/strategy/data.js) with no generator/engine; the puzzle is wired and reports to the radar per unit."
+    },
+    {
+      "id": "language",
+      "moduleType": "metathinking",
+      "titleZh": "语文素养",
+      "titleEn": "Language & Literacy",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/metathinking/language.json",
+      "tags": [
+        "language",
+        "metathinking",
+        "ai-readable",
+        "benchmarked-curriculum",
+        "critical-reading"
+      ],
+      "status": "in-progress",
+      "statusNoteZh": "G1–G2：中文、英文各自原创素材池（不互译），难度对标统编版一二年级 / 2022 课标第一学段与 CCSS ELA G1–G2。每段素材一套 L1→L4 题梯，覆盖观察、理解、推理、结构、语言选择 5 个单元，外加结尾一个不计分的 Create→Compare→Reflect。交互：原文找证据（evidence-tap）、句卡排序。目前是 4 段样板素材（每个年级每种语言 1 段），审定题目质量后扩到 16 段。K1–K2（学前）已用 CSS 场景（背景色块 + 定位 emoji，复用 learning/math/comparison 的场景拼图手法）+ 自动语音落地，不识字也能玩：点物体（hotspot-tap）覆盖观察/推理，K2 额外加小场景卡排序覆盖结构；不做 CCR。架构见 docs/language/LANGUAGE-MODULE-ARCHITECTURE.md。",
+      "statusNoteEn": "G1-G2: separately authored (never translated) zh and en passage pools benchmarked to the Tongbian G1-G2 textbooks / 2022 Chinese curriculum standard stage 1 and CCSS ELA G1-G2. Each passage carries an L1-to-L4 question ladder across 5 units (observe, comprehend, infer, structure, word choice), plus one unscored Create-Compare-Reflect at the end. Interactions: evidence-tap and card ordering. Currently 4 sample passages (one per grade per language), to grow to 16 once item quality is reviewed. K1-K2 (pre-reading) are now implemented with CSS scenes (background gradient + positioned emoji, reusing the scene technique from learning/math/comparison) plus auto-narration, playable without reading: tapping objects (hotspot-tap) covers observe/infer, and K2 adds ordering small scene cards for structure; no CCR. See docs/language/LANGUAGE-MODULE-ARCHITECTURE.md."
     }
   ]
 }

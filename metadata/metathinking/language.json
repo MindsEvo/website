@@ -1,0 +1,169 @@
+{
+  "version": "v0.2.0",
+  "updatedAt": "2026-09-25",
+
+  "moduleType": "metathinking",
+  "id": "language",
+  "canonicalUrl": "/metadata/metathinking/language.json",
+  "specDoc": "docs/language/LANGUAGE-MODULE-ARCHITECTURE.md",
+  "title": {
+    "zh": "语文素养",
+    "en": "Language & Literacy"
+  },
+  "description": {
+    "zh": "语文素养是借助语言观察、理解、关联、推理、组织、表达与创造的元思维操作。内容难度对标同级中英文教材，问法和编排从思维角度设计：知识是载体，思维才是目标。",
+    "en": "Language & Literacy is the meta-thinking operation of using language to observe, understand, connect, infer, organise, express and create. Content difficulty is benchmarked to same-grade Chinese and English curricula; the questions and sequencing are designed around thinking: knowledge is the carrier, thinking is the goal."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1–K2 用 CSS 场景（背景色块 + 定位 emoji）+ 自动语音落地，不识字也能玩；G1–G2 能独立读短文。G3–G6 仍未实现。",
+    "noteEn": "K1-K2 use CSS scenes (background gradient + positioned emoji) plus auto-narration, playable without reading; G1-G2 read a short text independently. G3-G6 are not yet implemented."
+  },
+  "educationReference": {
+    "scope": "benchmark-not-copy",
+    "policyZh": "对标，不复制；换角度，不换难度。素材原创（公有领域作品除外），体裁、主题、字词量与句长对标同级教材；每道题带课标/教材锚点和思维层级两个标签。",
+    "policyEn": "Benchmark, never copy; change the angle, not the difficulty. Passages are original (public-domain works excepted), with genre, theme, vocabulary load and sentence length benchmarked to same-grade curricula; every item carries a curriculum anchor and a thinking-level tag.",
+    "zh": [
+      { "id": "cn-standard-2022", "titleZh": "义务教育语文课程标准（2022 年版）· 第一学段", "role": "primary", "noteZh": "主锚点；学习任务群「思辨性阅读与表达」是本模块的定位依据" },
+      { "id": "cn-tongbian-g1-g2", "titleZh": "统编版语文 一上 / 一下 / 二上 / 二下", "role": "difficulty", "noteZh": "体裁、字词量与栏目（课文单元、口语交际、语文园地）" }
+    ],
+    "en": [
+      { "id": "ccss-ela-g1-g2", "titleEn": "Common Core ELA, Grades 1-2 (RL / RI / L / SL / W)", "role": "primary", "noteEn": "Every item is tagged to a specific standard" },
+      { "id": "uk-nc-ks1", "titleEn": "UK National Curriculum English, KS1 (Year 1-2)", "role": "secondary", "noteEn": "Inference from characters' words and actions; prediction" },
+      { "id": "leveled-reading", "titleEn": "Fountas & Pinnell / Lexile / Oxford Reading Tree", "role": "difficulty", "noteEn": "Exact band per grade to be confirmed by the content team" }
+    ],
+    "thinkingFrameworks": [
+      { "id": "pirls", "titleEn": "PIRLS comprehension processes", "levels": ["L1 retrieve", "L2 straightforward inference", "L3 interpret & integrate", "L4 evaluate & critique"] },
+      { "id": "qar", "titleEn": "Question-Answer Relationships (Raphael)" },
+      { "id": "visible-thinking", "titleEn": "Project Zero Visible Thinking routines", "noteEn": "What makes you say that? -> evidence-tap" }
+    ]
+  },
+  "rootGeneIds": [
+    "RG.LANGUAGE.OBSERVATION.DESCRIBE",
+    "RG.LANGUAGE.COMPREHENSION.INFO",
+    "RG.LANGUAGE.INFERENCE.EVIDENCE",
+    "RG.LANGUAGE.STRUCTURE.SEQUENCE",
+    "RG.LANGUAGE.CHOICE.CONTEXT",
+    "RG.LANGUAGE.EXPRESSION.GUIDED"
+  ],
+  "thinkingLevels": [
+    { "id": "L1", "zh": "提取明确信息", "en": "Retrieve stated information" },
+    { "id": "L2", "zh": "直接推论", "en": "Straightforward inference" },
+    { "id": "L3", "zh": "解释与整合", "en": "Interpret and integrate" },
+    { "id": "L4", "zh": "评价语言与内容", "en": "Evaluate language and content" }
+  ],
+  "difficultyAxes": [
+    { "id": "text_length", "zh": "篇幅", "en": "Text Length", "progression": ["short", "medium", "long"] },
+    { "id": "explicitness", "zh": "信息明示度", "en": "Explicitness", "progression": ["stated", "one-step", "multi-source"] },
+    { "id": "distractor_closeness", "zh": "干扰项接近度", "en": "Distractor Closeness", "progression": ["far", "near"] },
+    { "id": "evidence_span", "zh": "证据跨度", "en": "Evidence Span", "progression": ["single", "cross-sentence"] },
+    { "id": "response_type", "zh": "作答方式", "en": "Response Type", "progression": ["select", "select+evidence", "select+evidence+order"] }
+  ],
+  "interactions": [
+    { "id": "select", "status": "implemented" },
+    { "id": "evidence-tap", "status": "implemented", "noteEn": "Sentence-level and phrase-level" },
+    { "id": "hotspot-tap", "status": "implemented", "noteEn": "Tap an object in a small CSS scene (K1-K2); reuses the select tap-button mechanism, positioned over the scene" },
+    { "id": "order", "status": "implemented", "noteEn": "Tap cards into numbered slots; tap a placed card to return it" },
+    { "id": "slot-build", "status": "implemented" },
+    { "id": "compare-reflect", "status": "implemented" }
+  ],
+  "typeTree": [
+    { "id": "observe", "nameZh": "观察与发现", "nameEn": "Observe & Notice", "geneId": "RG.LANGUAGE.OBSERVATION.DESCRIBE", "status": "partial",
+      "templates": ["detail-find", "detail-key"],
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "comprehend", "nameZh": "信息理解", "nameEn": "Understand Information", "geneId": "RG.LANGUAGE.COMPREHENSION.INFO", "status": "partial",
+      "templates": ["detail-find", "main-point"],
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "infer", "nameZh": "关联与推理", "nameEn": "Connect & Infer", "geneId": "RG.LANGUAGE.INFERENCE.EVIDENCE", "status": "partial",
+      "templates": ["feeling-evidence", "cause-hidden", "claim-check", "predict"],
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "structure", "nameZh": "顺序与结构", "nameEn": "Sequence & Structure", "geneId": "RG.LANGUAGE.STRUCTURE.SEQUENCE", "status": "partial",
+      "templates": ["order-cards", "signal-word"],
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "choose", "nameZh": "语言选择", "nameEn": "Word Choice", "geneId": "RG.LANGUAGE.CHOICE.CONTEXT", "status": "partial",
+      "templates": ["word-fit", "tone-fit"],
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "express", "nameZh": "组织与表达", "nameEn": "Organise & Express", "geneId": "RG.LANGUAGE.EXPRESSION.GUIDED", "status": "partial",
+      "templates": ["ending-ccr"], "scored": false,
+      "implementedBy": { "gameIds": ["learning-language"], "lessonIds": [], "videoIds": [] } },
+    { "id": "create", "nameZh": "想象与创造", "nameEn": "Imagine & Create", "status": "planned",
+      "examples": ["rewrite an ending", "retell from another character's view", "open story building"] }
+  ],
+  "levelMap": [
+    { "levelId": "K1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "听故事、看图：找画面细节，说出人物的心情。", "objectiveEn": "Listen and look: find picture details, name a character's feeling.",
+      "primaryTypes": ["observe", "infer"], "status": "implemented", "implementedBy": ["learning-language"], "implementedModes": ["puzzle"], "sourceLevels": ["K1"] },
+    { "levelId": "K2", "ageHint": "4-5", "gradeCode": "K2",
+      "objectiveZh": "看连环画：排顺序，猜接下来会发生什么。", "objectiveEn": "Picture strips: order the frames, predict what comes next.",
+      "primaryTypes": ["observe", "infer", "structure"], "status": "implemented", "implementedBy": ["learning-language"], "implementedModes": ["puzzle"], "sourceLevels": ["K2"] },
+    { "levelId": "G1", "ageHint": "6-7", "gradeCode": "G1",
+      "objectiveZh": "读短故事：找关键细节，从动作神态推断心情并找证据，靠顺序词理清先后，比较词语的效果。",
+      "objectiveEn": "Short stories: find key details, infer feelings from actions and point to evidence, order events by signal words, compare word effects.",
+      "primaryTypes": ["observe", "comprehend", "infer", "structure", "choose"], "status": "implemented",
+      "implementedBy": ["learning-language"], "implementedModes": ["puzzle"], "sourceLevels": ["G1-zh", "G1-en"] },
+    { "levelId": "G2", "ageHint": "7-8", "gradeCode": "G2",
+      "objectiveZh": "读较长的故事：整合多处线索，检验人物的观点，分清“写的顺序”和“发生的顺序”，换角色思考。",
+      "objectiveEn": "Longer stories: combine several clues, check a character's claim, separate the order of telling from the order of events, think as another character.",
+      "primaryTypes": ["observe", "comprehend", "infer", "structure", "choose"], "status": "implemented",
+      "implementedBy": ["learning-language"], "implementedModes": ["puzzle"], "sourceLevels": ["G2-zh", "G2-en"] },
+    { "levelId": "G3", "ageHint": "8-9", "gradeCode": "G3",
+      "objectiveZh": "说明性短文与寓言：提取要点，理解寓意。", "objectiveEn": "Short informational texts and fables: key points and the moral.",
+      "primaryTypes": ["comprehend", "infer"], "status": "planned", "implementedBy": [], "implementedModes": [], "sourceLevels": ["G3"] },
+    { "levelId": "G4", "ageHint": "9-10", "gradeCode": "G4",
+      "objectiveZh": "根据对象和场合选择语气与用词。", "objectiveEn": "Choose tone and wording for an audience and occasion.",
+      "primaryTypes": ["choose", "express"], "status": "planned", "implementedBy": [], "implementedModes": [], "sourceLevels": ["G4"] },
+    { "levelId": "G5", "ageHint": "10-11", "gradeCode": "G5",
+      "objectiveZh": "比较两篇文本的观点，评价作者的写法。", "objectiveEn": "Compare viewpoints across two texts, evaluate the author's craft.",
+      "primaryTypes": ["infer", "choose"], "status": "planned", "implementedBy": [], "implementedModes": [], "sourceLevels": ["G5"] },
+    { "levelId": "G6", "ageHint": "11-12", "gradeCode": "G6",
+      "objectiveZh": "综合观察、结构与表达完成创作，并对照他人想法修改。", "objectiveEn": "Combine observation, structure and expression into a piece, then revise it against others' ideas.",
+      "primaryTypes": ["express", "create"], "status": "planned", "implementedBy": [], "implementedModes": [], "sourceLevels": ["G6"] }
+  ],
+  "prerequisites": [],
+  "videos": [],
+  "exercises": [
+    { "id": "zh-g1-borrow-umbrella", "lang": "zh", "type": "passage", "levelRange": ["G1", "G1"],
+      "descriptionZh": "《借伞》：细节、心情与证据、隐含原因、事件排序、“撑着/拿着”，结尾续编。", "descriptionEn": "Chinese G1 story: details, feeling + evidence, hidden cause, event order, word choice, continuation.",
+      "status": "implemented", "sourceGameIds": ["learning-language"], "sourceLessonIds": [], "sourceLevelIds": ["G1-zh"] },
+    { "id": "zh-g2-snow-footprints", "lang": "zh", "type": "passage", "levelRange": ["G2", "G2"],
+      "descriptionZh": "《雪地上的脚印》：线索甄别、推断与证据、倒叙时间词、写的顺序 vs 发生的顺序，换角色想。", "descriptionEn": "Chinese G2 story: weighing clues, inference + evidence, flashback time words, telling order vs. event order, another character's view.",
+      "status": "implemented", "sourceGameIds": ["learning-language"], "sourceLessonIds": [], "sourceLevelIds": ["G2-zh"] },
+    { "id": "en-g1-max-kite", "lang": "en", "type": "passage", "levelRange": ["G1", "G1"],
+      "descriptionZh": "Max and the Kite：原因、证据、顺序词 Soon、“up, up, up”的效果，续编。", "descriptionEn": "Cause, evidence, the signal word 'Soon', the effect of 'up, up, up', continuation.",
+      "status": "implemented", "sourceGameIds": ["learning-language"], "sourceLessonIds": [], "sourceLevelIds": ["G1-en"] },
+    { "id": "en-g2-class-garden", "lang": "en", "type": "passage", "levelRange": ["G2", "G2"],
+      "descriptionZh": "The Class Garden：线索甄别、检验人物观点、开头-经过-结尾、munching 的效果，换角色想。", "descriptionEn": "Weighing clues, checking a character's claim, beginning-middle-end, the effect of 'munching', another character's view.",
+      "status": "implemented", "sourceGameIds": ["learning-language"], "sourceLessonIds": [], "sourceLevelIds": ["G2-en"] }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish", "guided_create_pick", "guided_reflect"],
+    "dimensions": ["levelId", "gradeCode", "contentLang", "passageId", "typeId", "thinkingLevel", "interactionMode", "gameEngine", "endReason", "difficultyAxis", "errorType", "ageBucket"],
+    "kpis": ["completionRate", "accuracy", "firstTryRate", "evidenceAccuracy", "avgTimeMs", "hintRate", "retryRate"],
+    "errorTypes": ["misattribution", "fabrication", "overgeneralization", "detail_as_main", "irrelevant_detail", "literal_only", "contradicts_text", "sequence_confusion", "evidence_mismatch", "wrong_object"],
+    "aggregationRules": [
+      {
+        "id": "ccr-not-scored",
+        "appliesTo": ["accuracy", "firstTryRate"],
+        "ruleZh": "ccr_slot / ccr_reflect 不计分：checkAnswer 恒为真，文案不出现“对/错”；孩子的选择只进入报告 context 的 guidedCreate 字段。",
+        "ruleEn": "ccr_slot / ccr_reflect are never scored: checkAnswer is always true and no right/wrong wording is shown; the child's picks go only into the report context's guidedCreate field."
+      },
+      {
+        "id": "per-item-first-try",
+        "appliesTo": ["firstTryRate", "errorType"],
+        "ruleZh": "每题记录首次作答是否正确与 errorType（items / byUnit / errorTypes 字段），用于区分“结论错”和“证据错”。",
+        "ruleEn": "Each item records first-try correctness and errorType (items / byUnit / errorTypes fields), to tell a wrong answer apart from right-answer-wrong-evidence."
+      }
+    ],
+    "note": "shell.report() fires once per unit, so per-item data is folded into that report's context payload."
+  },
+  "aiQueryHints": {
+    "supportedFilters": ["age", "levelId", "typeId", "thinkingLevel", "contentLang", "difficultyAxis", "tag", "status"],
+    "exampleQueries": [
+      "一年级适合哪些语文思维训练？",
+      "哪些题目训练“从文本找证据”？",
+      "G2 英文阅读对标哪些 CCSS 条目？"
+    ]
+  },
+  "tags": ["language", "metathinking", "ai-readable", "benchmarked-curriculum", "critical-reading"]
+}

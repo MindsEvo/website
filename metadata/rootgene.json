@@ -357,6 +357,85 @@
       "status": "planned",
       "claimedBy": ["clio-word-connections-workshop"]
     },
+    "RG.LANGUAGE.OBSERVATION.DESCRIBE": {
+      "category": "LANGUAGE",
+      "zh": "观察发现",
+      "en": "Observe & Notice",
+      "short": {
+        "zh": "观察",
+        "en": "Notice"
+      },
+      "descZh": "在一段具体的文本或画面里发现细节，并判断哪个细节对理解最重要、暗示了什么。",
+      "descEn": "Notice details in a specific text or picture, and judge which detail matters most for understanding and what it suggests.",
+      "boundaryZh": "与 RG.SCIENCE.OBSERVATION.BASIC 的界限：科学观察记录真实现象，为因果推理服务；本基因的细节只存在于这一段素材里，不读素材答不出来。",
+      "boundaryEn": "Boundary with RG.SCIENCE.OBSERVATION.BASIC: science observation records real phenomena to support causal reasoning; here the details exist only in this passage, so the question cannot be answered without reading it."
+    },
+    "RG.LANGUAGE.COMPREHENSION.INFO": {
+      "category": "LANGUAGE",
+      "zh": "信息理解",
+      "en": "Understand Information",
+      "short": {
+        "zh": "理解",
+        "en": "Understand"
+      },
+      "descZh": "理解文本明确说了什么，并区分主要内容和次要细节。",
+      "descEn": "Understand what a text states, and tell the main point apart from minor details.",
+      "boundaryZh": "与 RG.LANGUAGE.INFERENCE.EVIDENCE 的界限：信息理解的答案在原文里可以直接找到或直接概括出来；推理的答案原文没有直说。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.INFERENCE.EVIDENCE: in comprehension the answer is stated or can be summarised directly from the text; in inference the text never says it outright."
+    },
+    "RG.LANGUAGE.INFERENCE.EVIDENCE": {
+      "category": "LANGUAGE",
+      "zh": "推理与证据",
+      "en": "Infer from Evidence",
+      "short": {
+        "zh": "推理",
+        "en": "Infer"
+      },
+      "descZh": "从文本线索推出没有直接说出的信息（心情、原因、接下来会发生什么），并能回到原文指出依据。",
+      "descEn": "Work out what the text does not state (feelings, causes, what happens next) from its clues, and point back to the evidence in the text.",
+      "boundaryZh": "与 RG.LOGIC.REASONING.BASIC 的界限：逻辑推理的前提是抽象给定的规则；本基因的前提是叙事语言本身（动作、神态、用词），并且必须回到文本找证据。",
+      "boundaryEn": "Boundary with RG.LOGIC.REASONING.BASIC: logic reasoning starts from abstract given rules; this gene starts from narrative language itself (actions, expressions, wording) and must point back to evidence in the text."
+    },
+    "RG.LANGUAGE.STRUCTURE.SEQUENCE": {
+      "category": "LANGUAGE",
+      "zh": "顺序与结构",
+      "en": "Sequence & Structure",
+      "short": {
+        "zh": "结构",
+        "en": "Structure"
+      },
+      "descZh": "依据文本里的顺序信号（时间词、因果连接）重建事件的先后，认识开头、经过、结尾，并区分“写的顺序”和“发生的顺序”。",
+      "descEn": "Rebuild the order of events from the text's own signals (time words, cause-and-effect links), recognise beginning, middle and end, and tell the order of telling apart from the order of events.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 的界限：规律序列延续一条可见的规则；本基因的顺序只能从这篇文本的语言信号里得出，不能只靠生活常识。",
+      "boundaryEn": "Boundary with RG.PATTERN.SEQUENCE.BASIC: a pattern sequence extends a visible rule; here the order can only come from this text's language signals, not from general common sense."
+    },
+    "RG.LANGUAGE.CHOICE.CONTEXT": {
+      "category": "LANGUAGE",
+      "zh": "语言选择",
+      "en": "Word Choice in Context",
+      "short": {
+        "zh": "用词",
+        "en": "Word Choice"
+      },
+      "descZh": "比较不同的词语或说法放在具体语境里的效果，判断哪个更准确、更生动、更适合场合，并说出理由。",
+      "descEn": "Compare how different words or phrasings work in a specific context, judge which is more precise, vivid or appropriate, and say why.",
+      "boundaryZh": "与 RG.LANGUAGE.SEMANTIC.RELATION 的界限：词义关系判断词与词之间的关系；本基因判断词与语境是否相配。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.SEMANTIC.RELATION: semantic relation judges how two words relate to each other; this gene judges how well a word fits its context."
+    },
+    "RG.LANGUAGE.EXPRESSION.GUIDED": {
+      "category": "LANGUAGE",
+      "zh": "引导表达",
+      "en": "Guided Expression",
+      "short": {
+        "zh": "表达",
+        "en": "Express"
+      },
+      "descZh": "在读过的故事基础上，用给定的表达要素组织自己的想法（续编、换角色想），再对照他人的不同角度进行反思，没有唯一正确答案。",
+      "descEn": "Building on a story just read, organise one's own idea from given building blocks (continue it, or think as another character), then reflect on it against others' different viewpoints; there is no single right answer.",
+      "boundaryZh": "与 RG.LANGUAGE.SEMANTIC.RELATION 的界限：词义关系有对错判定；本基因不判对错，训练的是组织表达并从他人视角反思。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.SEMANTIC.RELATION: semantic relation is judged right or wrong; this gene is never judged, and trains organising an idea and reflecting from others' viewpoints.",
+      "status": "active"
+    },
     "RG.SCIENCE.OBSERVATION.BASIC": {
       "category": "SCIENCE",
       "zh": "观察",

@@ -225,6 +225,18 @@
       "videoIds": ["learning-math-strategy-intro-001"]
     },
     {
+      "id": "learning-language",
+      "series": "learning",
+      "module": "language",
+      "shell": "shell-1",
+      "path": "learning/language/",
+      "titleZh": "语文素养",
+      "titleEn": "Language & Literacy",
+      "rootGeneIds": ["RG.LANGUAGE.OBSERVATION.DESCRIBE", "RG.LANGUAGE.COMPREHENSION.INFO", "RG.LANGUAGE.INFERENCE.EVIDENCE", "RG.LANGUAGE.STRUCTURE.SEQUENCE", "RG.LANGUAGE.CHOICE.CONTEXT", "RG.LANGUAGE.EXPRESSION.GUIDED"],
+      "lessonIds": [],
+      "videoIds": []
+    },
+    {
       "id": "clio-bunny-maze-workshop",
       "series": "studio",
       "module": "bunny-maze",
