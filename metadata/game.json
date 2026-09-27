@@ -313,6 +313,30 @@
       "videoIds": []
     },
     {
+      "id": "flash-cards",
+      "series": "mindseeds",
+      "module": "flash-cards",
+      "shell": "shell-1",
+      "path": "games/flash-cards/",
+      "titleZh": "闪现卡片",
+      "titleEn": "Flash Cards",
+      "rootGeneIds": ["RG.MEMORY.VISUAL.RECOGNITION"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-flash-cards-intro-001"]
+    },
+    {
+      "id": "treasure-grid",
+      "series": "mindseeds",
+      "module": "treasure-grid",
+      "shell": "shell-1",
+      "path": "games/treasure-grid/",
+      "titleZh": "宝藏格",
+      "titleEn": "Treasure Grid",
+      "rootGeneIds": ["RG.MEMORY.SPATIAL.BASIC"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-treasure-grid-intro-001"]
+    },
+    {
       "id": "clio-word-connections-workshop",
       "series": "studio",
       "module": "word-connections",

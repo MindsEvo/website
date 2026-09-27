@@ -1,0 +1,103 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-09-27",
+  "moduleType": "mindseeds",
+  "id": "treasure-grid",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/treasure-grid.json",
+  "title": { "zh": "宝藏格", "en": "Treasure Grid" },
+  "description": {
+    "zh": "一个编号的格子网格中，1-2 格短暂出现宝藏标记后藏起来，孩子要选出宝藏所在格子的编号。K1-G2 从 2×2、无停顿逐步过渡到 3×3、两处宝藏、藏起来后还要等一等才能作答。训练的是对空间位置的短时记忆与延迟保持。",
+    "en": "A treasure marker briefly appears in 1-2 cells of a numbered grid, then hides; the child picks the number of the cell that held it. K1-G2 goes from a 2x2 grid with no pause up to a 3x3 grid with two treasures and a pause before answering is allowed. What it trains is short-term spatial memory and holding a location through a delay."
+  },
+  "designModel": {
+    "zh": "主轴是格子规模（grid_size）与宝藏数量（treasure_count），配合藏起来到能作答之间的停顿（delay_ms，越长越考验保持能力）。格子编号全程可见，只有宝藏标记闪现，避免把『找编号』和『记位置』混在一起。",
+    "en": "The primary axes are grid size (grid_size) and treasure count (treasure_count), paired with the pause between hiding and being allowed to answer (delay_ms — longer pauses test retention harder). Cell numbers stay visible throughout; only the treasure marker flashes, so the task isolates 'remember the position' from 'read the label'."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 2×2 格、无停顿适合 3-4 岁；G2 3×3 格、两处宝藏、停顿 1.5 秒约 7 岁。",
+    "noteEn": "K1's 2x2 grid with no pause suits ages 3-4; G2's 3x3 grid with two treasures and a 1.5s pause suits about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 记忆守护者。训练的是『藏起来后凭记忆定位』，答题前宝藏标记已经消失，且高等级还需再等一下；与 difference-scout（找不同侦探）和 spatial-pattern（空间规律）不同，那两者作答时图形/规律全程可见，训练的是当下的空间比较或推理，不涉及延迟回忆。",
+    "policyEn": "This module belongs to MindSeeds · Memory Guardian. It trains locating something from memory after it disappears — the marker is gone before answering, and higher grades add a further pause. This differs from difference-scout and spatial-pattern, whose figures/patterns stay visible while answering; those train ongoing spatial comparison or reasoning, not delayed recall."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.MEMORY.SPATIAL.BASIC，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.MEMORY.SPATIAL.BASIC, regardless of grade.",
+    "geneIds": ["RG.MEMORY.SPATIAL.BASIC"]
+  },
+  "rootGeneIds": ["RG.MEMORY.SPATIAL.BASIC"],
+  "difficultyAxes": [
+    {
+      "id": "grid_size",
+      "zh": "格子规模",
+      "en": "Grid Size",
+      "progression": ["two_by_two", "three_by_three"],
+      "noteZh": "网格边长：K1-K2 为 2×2（4 格），G1-G2 为 3×3（9 格）。",
+      "noteEn": "The grid's side length: K1-K2 use 2x2 (4 cells), G1-G2 use 3x3 (9 cells)."
+    },
+    {
+      "id": "treasure_count",
+      "zh": "宝藏数量",
+      "en": "Treasure Count",
+      "progression": ["one", "two"],
+      "noteZh": "同时藏起的宝藏格数，G2 起为两处，记住其中一处即可答对。",
+      "noteEn": "How many cells hide a treasure at once; from G2 there are two, and remembering either is enough to answer."
+    },
+    {
+      "id": "delay_ms",
+      "zh": "作答停顿",
+      "en": "Answer Delay",
+      "progression": ["short", "medium", "long", "longest"],
+      "noteZh": "宝藏藏起来之后、选项能点之前的等待时间，越长越考验记忆保持而非瞬时印象。",
+      "noteEn": "The wait between the treasure hiding and the options becoming clickable; a longer wait tests sustained retention rather than an instant impression."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，通过线 75%（6/8）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "objectiveZh": "2×2 格子里记住一处宝藏，藏起来后立刻能选。",
+      "objectiveEn": "Remember one treasure in a 2x2 grid; answer as soon as it hides.",
+      "axisValues": { "grid_size": "two_by_two", "treasure_count": "one", "delay_ms": "short" },
+      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "objectiveZh": "2×2 格子，藏起来后要等一下才能选。",
+      "objectiveEn": "A 2x2 grid, with a short wait before answering is allowed.",
+      "axisValues": { "grid_size": "two_by_two", "treasure_count": "one", "delay_ms": "medium" },
+      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "objectiveZh": "3×3 更大的格子，选项更多，等待更久。",
+      "objectiveEn": "A bigger 3x3 grid with more options and a longer wait.",
+      "axisValues": { "grid_size": "three_by_three", "treasure_count": "one", "delay_ms": "long" },
+      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+    },
+    {
+      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "objectiveZh": "3×3 格子藏两处宝藏，记住其中一处，等待最久后再选。",
+      "objectiveEn": "Two treasures in a 3x3 grid; remember either one, then answer after the longest wait.",
+      "axisValues": { "grid_size": "three_by_three", "treasure_count": "two", "delay_ms": "longest" },
+      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+    }
+  ],
+  "statistics": {
+    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
+    "dimensions": ["levelId", "gradeCode", "gridSizes", "difficultyAxis"],
+    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "noteZh": "optionTypes 区分 treasure（正确格）与 empty_cell（空格干扰），能看出是记错了位置还是随手乱选。",
+    "noteEn": "optionTypes separate treasure and empty_cell, showing whether an error was a wrong-position memory or a random guess."
+  },
+  "tags": ["treasure-grid", "mindseeds", "memory", "spatial-memory", "ai-readable"]
+}
