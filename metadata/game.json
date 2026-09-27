@@ -337,6 +337,30 @@
       "videoIds": ["mindseeds-treasure-grid-intro-001"]
     },
     {
+      "id": "energy-planner",
+      "series": "mindseeds",
+      "module": "energy-planner",
+      "shell": "shell-1",
+      "path": "games/energy-planner/",
+      "titleZh": "能量分配",
+      "titleEn": "Energy Planner",
+      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-energy-planner-intro-001"]
+    },
+    {
+      "id": "whats-next",
+      "series": "mindseeds",
+      "module": "whats-next",
+      "shell": "shell-1",
+      "path": "games/whats-next/",
+      "titleZh": "下一步会怎样",
+      "titleEn": "What's Next",
+      "rootGeneIds": ["RG.STRATEGY.PREDICT.CONSEQUENCE"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-whats-next-intro-001"]
+    },
+    {
       "id": "clio-word-connections-workshop",
       "series": "studio",
       "module": "word-connections",

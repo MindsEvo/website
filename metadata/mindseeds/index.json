@@ -297,6 +297,50 @@
       "status": "active",
       "statusNoteZh": "记忆守护者系列首批模块之一，K1-G2 四级上线并上报雷达。内容由 generator.js 按年级现生成，无静态题库。仍缺：G3 以上、puzzle 以外的运行时。",
       "statusNoteEn": "One of the first two MindSeeds · Memory Guardian modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "energy-planner",
+      "moduleType": "mindseeds",
+      "titleZh": "能量分配",
+      "titleEn": "Energy Planner",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/energy-planner.json",
+      "tags": [
+        "energy-planner",
+        "mindseeds",
+        "strategy",
+        "trade-off",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "策略大师系列首批模块之一，K1-G2 四级上线并上报雷达。内容由 generator.js 按年级现生成，无静态题库。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "One of the first two MindSeeds · Strategy Master modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "whats-next",
+      "moduleType": "mindseeds",
+      "titleZh": "下一步会怎样",
+      "titleEn": "What's Next",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/whats-next.json",
+      "tags": [
+        "whats-next",
+        "mindseeds",
+        "strategy",
+        "prediction",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "策略大师系列首批模块之一，K1-G2 四级上线并上报雷达。内容由 generator.js 按年级现生成，无静态题库。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "One of the first two MindSeeds · Strategy Master modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
     }
   ]
 }

@@ -267,6 +267,34 @@
       "descZh": "在多个可行方案中权衡取舍，并安排先后步骤。",
       "descEn": "Weigh several workable options and order the steps between them."
     },
+    "RG.STRATEGY.RESOURCE.TRADEOFF": {
+      "category": "STRATEGY",
+      "zh": "资源权衡",
+      "en": "Resource Trade-off",
+      "short": {
+        "zh": "权衡",
+        "en": "Trade-off"
+      },
+      "descZh": "在固定的资源上限下，从多个方案中选出符合约束、或收益最高的那一个。",
+      "descEn": "Under a fixed resource limit, pick the option among several that satisfies the constraint, or the one with the highest payoff.",
+      "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划是通用的「权衡+排序」，训练在多个方案间取舍并安排先后步骤；本基因特指在一个固定的数值上限（如预算）之下，判断哪些方案可行、哪个可行方案收益最高，核心是资源约束下的取舍计算，不涉及步骤先后顺序。",
+      "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning is the general skill of weighing options and ordering steps; this gene specifically trains judging which options fit under a fixed numeric limit (like a budget) and which feasible option pays off the most — the core skill is constrained trade-off arithmetic, not step ordering.",
+      "claimedBy": ["energy-planner"]
+    },
+    "RG.STRATEGY.PREDICT.CONSEQUENCE": {
+      "category": "STRATEGY",
+      "zh": "后果预测",
+      "en": "Predict Consequence",
+      "short": {
+        "zh": "预测",
+        "en": "Predict"
+      },
+      "descZh": "依据给定的「动作→效果」规则预测会发生什么，或反过来推出要达成某个效果该采取哪个动作。",
+      "descEn": "Apply a given action-to-effect rule to predict what happens next, or work backwards from a wanted effect to the action that causes it.",
+      "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划训练在多个可行方案间取舍并排序；本基因训练的是应用一条已给定的因果规则去正向预测结果或反向推出动作，不涉及在多个方案之间比较取舍，核心是规则的正向/反向应用与多步因果链的顺推。",
+      "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning trains weighing and ordering among multiple workable options; this gene trains applying one given causal rule forward to predict an effect, or backward to find the action that causes a wanted effect, and chaining that rule across multiple hops — it does not involve comparing multiple options against each other.",
+      "claimedBy": ["whats-next"]
+    },
     "RG.MODELING.EQUATION.RELATION": {
       "category": "MODELING",
       "zh": "关系建模",

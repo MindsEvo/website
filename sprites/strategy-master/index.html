@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -49,12 +49,95 @@
       padding: 7px 11px;
       cursor: pointer;
     }
-    .page { max-width: 980px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 80px; }
-    .panel { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: clamp(22px, 4vw, 36px); }
+    .page { max-width: 1180px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 80px; }
+    .panel { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: clamp(22px, 4vw, 36px); margin-bottom: 24px; }
     .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
     h1 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
-    p { max-width: 760px; color: var(--muted); font-size: clamp(15px, 1.8vw, 18px); }
-    .status { margin-top: 18px; display: inline-block; border-radius: 10px; font-size: 13px; font-weight: 800; padding: 9px 12px; background: #e2e8f0; color: #64748b; }
+    p { max-width: 860px; color: var(--muted); font-size: clamp(15px, 1.8vw, 18px); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-link {
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      cursor: pointer;
+    }
+    .card-link:hover {
+      transform: translateY(-2px);
+      border-color: #bfd2f7;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+    }
+    .card-link:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      color: #071225;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 7px 16px rgba(14, 165, 233, 0.18);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card-link:hover .card-icon {
+      transform: translateY(-1px) scale(1.06);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.24);
+    }
+    .card-icon.ep { background: linear-gradient(135deg, #fde68a, #f59e0b); }
+    .card-icon.wn { background: linear-gradient(135deg, #7dd3fc, #0ea5e9); }
+    .card h3 {
+      font-size: 18px;
+      font-weight: 850;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .note {
+      background: #fff;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .back-link { display: none; }
+    }
+
     body[data-lang="zh"] .en { display: none; }
     body[data-lang="en"] .zh { display: none; }
   </style>
@@ -75,9 +158,24 @@
     <section class="panel">
       <div class="eyebrow"><span class="zh">小精灵系列</span><span class="en">MindSeeds</span></div>
       <h1><span class="zh">策略大师</span><span class="en">Strategy Master</span></h1>
-      <p><span class="zh">这是策略大师子系列预备页，后续将接入博弈、规划与决策类训练模块。</span><span class="en">This is the preparatory page for Strategy Master. Game-theory, planning, and decision training modules will be added later.</span></p>
-      <div class="status"><span class="zh">即将上线</span><span class="en">Coming Soon</span></div>
+      <p><span class="zh">策略大师训练的是「决定下一步怎么办」，而不是当下观察或事后回忆。当前开放两个维度：资源权衡与后果预测，更多维度将持续加入。</span><span class="en">Strategy Master trains deciding what to do next, not ongoing observation or after-the-fact recall. Two dimensions are open now — resource trade-off and consequence prediction — with more to come.</span></p>
     </section>
+
+    <section class="grid">
+      <a class="card card-link" href="../../games/energy-planner/index.html" aria-label="Energy Planner">
+        <div class="card-head"><span class="card-icon ep">⚡</span><h3><span class="zh">能量分配</span><span class="en">Energy Planner</span></h3></div>
+        <p><span class="zh">几件任务各有能量花费，还有一个预算，从三个候选方案里选出符合要求的那个。K1 到 G2 四个等级：任务从两件到四件，预算越来越紧，目标从「别超支」升级到「选收益最高的」。</span><span class="en">A few tasks each cost energy against a fixed budget; pick the right plan out of three candidates. Four grades from K1 to G2: two to four tasks, a tighter budget each time, the goal moving from "stay in budget" to "pick the highest reward."</span></p>
+      </a>
+      <a class="card card-link" href="../../games/whats-next/index.html" aria-label="What's Next">
+        <div class="card-head"><span class="card-icon wn">🔗</span><h3><span class="zh">下一步会怎样</span><span class="en">What's Next</span></h3></div>
+        <p><span class="zh">几张规则卡写着「动作→效果」，据此回答问题。K1 到 G2 四个等级：先是正向预测按下会怎样，再反过来想该按哪个才能达成目标，最后把两条规则串起来推两步。</span><span class="en">A few rule cards show "action leads to effect" — answer based on them. Four grades from K1 to G2: predict forward what pressing something does, then work backwards to find the right action, then chain two rules together across two steps.</span></p>
+      </a>
+    </section>
+
+    <div class="note">
+      <span class="zh">说明：更多策略维度（如顺序规划、风险权衡）即将上线。</span>
+      <span class="en">Note: more strategy dimensions (sequencing, risk trade-off) are coming soon.</span>
+    </div>
   </main>
 
   <script>
