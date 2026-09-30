@@ -104,14 +104,19 @@ learning/math/comparison/
 ### 4.2 类型均衡乱序（_typeBalancedShuffle）
 
 每轮生成 `plan`（模板 ID 数组）时：
-1. 按 `type` 分组，组内随机打乱
-2. 轮转取值（round-robin），确保每4题内类型尽量不重复
+1. 按 `carrier`（载体）分组，组内随机打乱
+2. 轮转取值（round-robin），相邻模板尽量不同载体
 
-### 4.3 Session 参数
+### 4.3 Session 参数（v0.6.0 起，见 comparison.json → sessionPolicy）
 
 ```javascript
-SESSION_QUESTIONS = 4   // 每组题目数（设计成4的倍数利于末组整除）
+SESSION_SIZE = 8                 // game.js；经 CmpEngine.setSessionPolicy() 传给引擎
+MAX_ACTIVITIES_PER_SESSION = 2   // 交互题 + 限时小游戏合计上限，且永远排在单选题之后
 ```
+
+`_composeSession()` 从本轮剩余模板里组卷：活动最多 2 个、同一载体最多 2 题；
+本轮剩余不足 8 题时，用本轮已做过、最久没出现的模板补足。
+每个模板记住最近 5 次的题面签名（`variantSignature`），重复就重抽。
 
 ### 4.4 断点续传
 

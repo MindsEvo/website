@@ -22,31 +22,63 @@
 
 var GEN_DATA = {
 
+  // Real-world size rank (1–10), used only by Z3 (size_real, the interference
+  // exception in §1.1). Z1/Z2 pick icons from these same pools but ignore
+  // `.size` entirely — they invent their own on-screen size independent of the
+  // real object, which is exactly what makes them identity-neutral.
   animals: [
     { emoji: '🐘', nameZh: '大象', nameEn: 'Elephant', size: 10 },
     { emoji: '🦒', nameZh: '长颈鹿', nameEn: 'Giraffe', size: 9 },
     { emoji: '🦛', nameZh: '河马', nameEn: 'Hippo', size: 8 },
     { emoji: '🐄', nameZh: '奶牛', nameEn: 'Cow', size: 7 },
+    { emoji: '🐻', nameZh: '熊', nameEn: 'Bear', size: 6 },
     { emoji: '🐑', nameZh: '绵羊', nameEn: 'Sheep', size: 5 },
+    { emoji: '🐕', nameZh: '狗', nameEn: 'Dog', size: 4 },
     { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit', size: 3 },
+    { emoji: '🦆', nameZh: '鸭子', nameEn: 'Duck', size: 2 },
     { emoji: '🐿', nameZh: '松鼠', nameEn: 'Squirrel', size: 2 },
+    { emoji: '🐹', nameZh: '小仓鼠', nameEn: 'Hamster', size: 1 },
     { emoji: '🐭', nameZh: '小老鼠', nameEn: 'Mouse', size: 1 }
   ],
 
   objects: [
+    { emoji: '🚚', nameZh: '卡车', nameEn: 'Truck', size: 9 },
     { emoji: '🚗', nameZh: '汽车', nameEn: 'Car', size: 8 },
+    { emoji: '🛋', nameZh: '沙发', nameEn: 'Sofa', size: 7 },
+    { emoji: '🎸', nameZh: '吉他', nameEn: 'Guitar', size: 6 },
     { emoji: '🚲', nameZh: '自行车', nameEn: 'Bicycle', size: 5 },
     { emoji: '🎒', nameZh: '书包', nameEn: 'Backpack', size: 4 },
+    { emoji: '☂️', nameZh: '雨伞', nameEn: 'Umbrella', size: 4 },
     { emoji: '⚽', nameZh: '足球', nameEn: 'Ball', size: 3 },
+    { emoji: '👟', nameZh: '鞋子', nameEn: 'Shoe', size: 3 },
     { emoji: '🍎', nameZh: '苹果', nameEn: 'Apple', size: 2 },
+    { emoji: '🔑', nameZh: '钥匙', nameEn: 'Key', size: 1 },
     { emoji: '🍓', nameZh: '草莓', nameEn: 'Strawberry', size: 1 }
   ],
 
-  furniture: [
-    { emoji: '🛋', nameZh: '沙发', nameEn: 'Sofa', size: 9 },
-    { emoji: '🪑', nameZh: '椅子', nameEn: 'Chair', size: 5 },
-    { emoji: '🪣', nameZh: '水桶', nameEn: 'Bucket', size: 3 },
-    { emoji: '📦', nameZh: '小箱子', nameEn: 'Box', size: 2 }
+  // W1–W4: one mystery-object icon per question, identical on both trays —
+  // only the slot letter tells the boxes apart (§1.2).
+  mysteryBoxes: [
+    { emoji: '📦', nameZh: '箱子', nameEn: 'Box' },
+    { emoji: '🎁', nameZh: '礼物', nameEn: 'Gift' },
+    { emoji: '🧺', nameZh: '篮子', nameEn: 'Basket' },
+    { emoji: '🪣', nameZh: '桶', nameEn: 'Bucket' },
+    { emoji: '🥫', nameZh: '罐头', nameEn: 'Can' },
+    { emoji: '🫙', nameZh: '罐子', nameEn: 'Jar' },
+    { emoji: '🧳', nameZh: '手提箱', nameEn: 'Suitcase' },
+    { emoji: '🗃️', nameZh: '文件盒', nameEn: 'File Box' }
+  ],
+
+  // S1–S3: one racer icon per question, identical in every lane.
+  racers: [
+    { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' },
+    { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' },
+    { emoji: '🐌', nameZh: '蜗牛', nameEn: 'Snail' },
+    { emoji: '🦔', nameZh: '刺猬', nameEn: 'Hedgehog' },
+    { emoji: '🐿️', nameZh: '松鼠', nameEn: 'Squirrel' },
+    { emoji: '🐤', nameZh: '小鸡', nameEn: 'Chick' },
+    { emoji: '🐶', nameZh: '小狗', nameEn: 'Dog' },
+    { emoji: '🐱', nameZh: '小猫', nameEn: 'Cat' }
   ],
 
   ribbonSets: {
@@ -68,28 +100,6 @@ var GEN_DATA = {
     { emoji: '🏢', nameZh: '高楼', nameEn: 'Building' },
     { emoji: '🏠', nameZh: '小房子', nameEn: 'House' },
     { emoji: '⛺', nameZh: '帐篷', nameEn: 'Tent' }
-  ],
-
-  weightPairs: [
-    { heavy: { emoji: '🐘', nameZh: '大象', nameEn: 'Elephant' }, light: { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' } },
-    { heavy: { emoji: '🪨', nameZh: '大石头', nameEn: 'Big Rock' }, light: { emoji: '🍃', nameZh: '树叶', nameEn: 'Leaf' } },
-    { heavy: { emoji: '📚', nameZh: '书', nameEn: 'Books' }, light: { emoji: '🪶', nameZh: '羽毛', nameEn: 'Feather' } },
-    { heavy: { emoji: '🛒', nameZh: '购物车', nameEn: 'Cart' }, light: { emoji: '🎈', nameZh: '气球', nameEn: 'Balloon' } },
-    { heavy: { emoji: '🦛', nameZh: '河马', nameEn: 'Hippo' }, light: { emoji: '🐦', nameZh: '小鸟', nameEn: 'Bird' } },
-    { heavy: { emoji: '🚗', nameZh: '汽车', nameEn: 'Car' }, light: { emoji: '🍂', nameZh: '落叶', nameEn: 'Leaf' } },
-    { heavy: { emoji: '🏋️', nameZh: '哑铃', nameEn: 'Dumbbell' }, light: { emoji: '🍬', nameZh: '糖果', nameEn: 'Candy' } },
-    { heavy: { emoji: '🪵', nameZh: '木头', nameEn: 'Log' }, light: { emoji: '🧸', nameZh: '玩具熊', nameEn: 'Teddy Bear' } }
-  ],
-
-  speedPairs: [
-    { fast: { emoji: '🐆', nameZh: '猎豹', nameEn: 'Cheetah' }, slow: { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' } },
-    { fast: { emoji: '✈️', nameZh: '飞机', nameEn: 'Plane' }, slow: { emoji: '🐌', nameZh: '蜗牛', nameEn: 'Snail' } },
-    { fast: { emoji: '🚀', nameZh: '火箭', nameEn: 'Rocket' }, slow: { emoji: '🚶', nameZh: '走路', nameEn: 'Walking' } },
-    { fast: { emoji: '🐇', nameZh: '兔子', nameEn: 'Rabbit' }, slow: { emoji: '🐢', nameZh: '乌龟', nameEn: 'Turtle' } },
-    { fast: { emoji: '🏎️', nameZh: '赛车', nameEn: 'Race Car' }, slow: { emoji: '🐛', nameZh: '毛毛虫', nameEn: 'Caterpillar' } },
-    { fast: { emoji: '🦅', nameZh: '老鹰', nameEn: 'Eagle' }, slow: { emoji: '🐜', nameZh: '蚂蚁', nameEn: 'Ant' } },
-    { fast: { emoji: '🐎', nameZh: '马', nameEn: 'Horse' }, slow: { emoji: '🦥', nameZh: '树懒', nameEn: 'Sloth' } },
-    { fast: { emoji: '🚄', nameZh: '高铁', nameEn: 'Train' }, slow: { emoji: '🚲', nameZh: '自行车', nameEn: 'Bicycle' } }
   ],
 
   nearFarSubjects: [
@@ -252,40 +262,159 @@ function _askMode(paramAskMode) {
 var Generators = {};
 
 /**
- * sizeCompare: two emoji objects at different visual sizes.
- * K1: clear size difference (no numbers).
+ * sizeCompare (Z1): the SAME icon drawn twice at different sizes. The only
+ * variable is size — no second species, no real-world knowledge involved
+ * (§1.1/§1.2). `leftSizeRank`/`rightSizeRank` are absolute px (36–88), kept
+ * under that name because minigame-quick-compare.js reads it directly and
+ * only cares about the ratio between the two, never its scale (see its own
+ * comment on `_sideHtml`).
  */
 Generators.sizeCompare = function (params) {
   var set = GEN_DATA[params.set] || GEN_DATA.animals;
-  // Ensure the two picked items have a meaningful size gap (≥ 3 units)
-  var attempts = 0;
-  var left, right;
-  do {
-    var pair = _pick2(set);
-    left = pair[0]; right = pair[1];
-    attempts++;
-  } while (Math.abs(left.size - right.size) < 3 && attempts < 50);
+  var item = _pick(set);
 
-  // askBigger: true = "哪个更大"
+  var bigPx = _ri(62, 88);
+  var ratio = 0.45 + Math.random() * 0.20;   // 0.45–0.65, safely under the 0.70 cap
+  var smallPx = Math.max(36, Math.round(bigPx * ratio));
+
   var askBigger = _askMode(params.askMode);
-  var biggerSide = left.size > right.size ? 'left' : 'right';
+  var bigOnLeft = Math.random() < 0.5;
+  var leftPx = bigOnLeft ? bigPx : smallPx;
+  var rightPx = bigOnLeft ? smallPx : bigPx;
+  var biggerSide = bigOnLeft ? 'left' : 'right';
   var answer = askBigger ? biggerSide : (biggerSide === 'left' ? 'right' : 'left');
+  var otherSide = answer === 'left' ? 'right' : 'left';
+
+  var optionTypes = {};
+  optionTypes[answer] = 'none';
+  optionTypes[otherSide] = 'polarity_confusion';
 
   return {
     type: 'size',
     options: ['left', 'right'],
     answer: answer,
+    optionTypes: optionTypes,
     askBigger: askBigger,
-    leftEmoji: left.emoji,
-    rightEmoji: right.emoji,
-    leftSizeRank: left.size,
-    rightSizeRank: right.size,
-    leftNameZh: left.nameZh,
-    rightNameZh: right.nameZh,
-    leftNameEn: left.nameEn,
-    rightNameEn: right.nameEn,
+    leftEmoji: item.emoji,
+    rightEmoji: item.emoji,
+    leftSizeRank: leftPx,
+    rightSizeRank: rightPx,
+    leftNameZh: item.nameZh,
+    rightNameZh: item.nameZh,
+    leftNameEn: item.nameEn,
+    rightNameEn: item.nameEn,
     hintZh: '仔细看哪个更' + (askBigger ? '大' : '小') + '。',
     hintEn: 'Look carefully at which is ' + (askBigger ? 'bigger' : 'smaller') + '.'
+  };
+};
+
+/**
+ * sizePick3 (Z2): the same icon drawn three times at fixed ratios
+ * 1 : 0.78 : 0.6 (adjacent ratio ≤ 0.8), slots A/B/C shuffled so the biggest
+ * is not pinned to any position. Select task — no "same" option (§1.3).
+ */
+Generators.sizePick3 = function (params) {
+  var set = GEN_DATA[params.set] || GEN_DATA.animals;
+  var item = _pick(set);
+
+  var basePx = _ri(76, 88);
+  var sizes = [basePx, Math.round(basePx * 0.78), Math.round(basePx * 0.6)];
+
+  var slots = _shuffle(['A', 'B', 'C']);
+  var sizeBySlot = {};
+  sizeBySlot[slots[0]] = sizes[0];
+  sizeBySlot[slots[1]] = sizes[1];
+  sizeBySlot[slots[2]] = sizes[2];
+
+  var askBigger = _askMode(params.askMode);
+  var answer = askBigger ? slots[0] : slots[2];
+  var middleSlot = slots[1];
+  var otherExtreme = askBigger ? slots[2] : slots[0];
+
+  var optionTypes = {};
+  optionTypes[answer] = 'none';
+  optionTypes[otherExtreme] = 'polarity_confusion';
+  optionTypes[middleSlot] = 'middle_item';
+
+  return {
+    type: 'size_pick',
+    options: ['A', 'B', 'C'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askBigger: askBigger,
+    emoji: item.emoji,
+    nameZh: item.nameZh,
+    nameEn: item.nameEn,
+    sizeBySlot: sizeBySlot,
+    hintZh: '比一比三个' + item.nameZh + '，找出' + (askBigger ? '最大' : '最小') + '的。',
+    hintEn: 'Compare all three and find the ' + (askBigger ? 'biggest' : 'smallest') + ' one.'
+  };
+};
+
+/**
+ * sizeReal (Z3): the §1.1 exception. Two DIFFERENT real objects (rank gap
+ * ≥ 4 out of 10) drawn at a visual ratio ≥ 1.8, 60% of the time with the
+ * on-screen size contradicting the real-world size. Two question framings —
+ * "which is really bigger" (70%) vs "which is drawn bigger" (30%) — share the
+ * same scene.
+ */
+Generators.sizeReal = function (params) {
+  var pool = GEN_DATA.animals.concat(GEN_DATA.objects);
+  var a, b, attempts = 0;
+  do {
+    var pair = _pick2(pool);
+    a = pair[0]; b = pair[1];
+    attempts++;
+  } while (Math.abs(a.size - b.size) < 4 && attempts < 50);
+
+  var aOnLeft = Math.random() < 0.5;
+  var leftItem = aOnLeft ? a : b;
+  var rightItem = aOnLeft ? b : a;
+  var realBiggerSide = leftItem.size > rightItem.size ? 'left' : 'right';
+  var realSmallerSide = realBiggerSide === 'left' ? 'right' : 'left';
+
+  // Conflict (60%): the really-bigger one is drawn smaller. Consistent (40%):
+  // drawn size matches real size — without these, the child would learn to
+  // always pick "drawn smaller" and never have to check.
+  var conflict = Math.random() < 0.6;
+  var drawnBiggerSide = conflict ? realSmallerSide : realBiggerSide;
+  var drawnSmallerSide = conflict ? realBiggerSide : realSmallerSide;
+
+  var smallPx = _ri(36, 48);
+  var drawRatio = 1.85 + Math.random() * 0.35;   // ceil below keeps the realised ratio >= 1.8 even after rounding
+  var bigPx = Math.ceil(smallPx * drawRatio);
+  var leftPx = drawnBiggerSide === 'left' ? bigPx : smallPx;
+  var rightPx = drawnBiggerSide === 'right' ? bigPx : smallPx;
+
+  var askReal = Math.random() < 0.7;
+  var askBigger = _askMode(params.askMode);
+  var targetSide = askReal
+    ? (askBigger ? realBiggerSide : realSmallerSide)
+    : (askBigger ? drawnBiggerSide : drawnSmallerSide);
+  var otherSide = targetSide === 'left' ? 'right' : 'left';
+
+  var optionTypes = {};
+  optionTypes[targetSide] = 'none';
+  optionTypes[otherSide] = conflict ? 'perception' : 'polarity_confusion';
+
+  return {
+    type: 'size_real',
+    options: ['left', 'right'],
+    answer: targetSide,
+    optionTypes: optionTypes,
+    askReal: askReal,
+    askBigger: askBigger,
+    conflict: conflict,
+    leftEmoji: leftItem.emoji,
+    rightEmoji: rightItem.emoji,
+    leftNameZh: leftItem.nameZh,
+    rightNameZh: rightItem.nameZh,
+    leftNameEn: leftItem.nameEn,
+    rightNameEn: rightItem.nameEn,
+    leftSizeRank: leftPx,
+    rightSizeRank: rightPx,
+    hintZh: askReal ? '想一想哪个真的更' + (askBigger ? '大' : '小') + '，别被画面骗了。' : '看图上画得更' + (askBigger ? '大' : '小') + '的是哪个。',
+    hintEn: askReal ? 'Think about which is really ' + (askBigger ? 'bigger' : 'smaller') + ' — do not be fooled by the picture.' : 'Look at which is drawn ' + (askBigger ? 'bigger' : 'smaller') + '.'
   };
 };
 
@@ -579,59 +708,376 @@ Generators.fullEmpty = function (params) {
 };
 
 /**
- * weightCompare: visual intuitive weight comparison.
+ * balanceJudge (W1): one balance, same mystery-object icon on both trays.
+ * rel ∈ {left,right,same} — same 25%, left/right 37.5% each. Tilt is fixed at
+ * ±14° (0° when equal) so the angle itself never becomes a magnitude cue.
+ * `tiltDeg` is a CSS rotate() degree: positive tips the RIGHT tray down
+ * (clockwise), negative tips the LEFT tray down.
  */
-Generators.weightCompare = function (params) {
-  var pair = _pick(GEN_DATA.weightPairs);
-  var askHeavier = params.askMode === 'heavier' || (params.askMode === 'random' && Math.random() < 0.5);
-  var heavyOnLeft = Math.random() < 0.5;
-  var answer = askHeavier
-    ? (heavyOnLeft ? 'left' : 'right')
-    : (heavyOnLeft ? 'right' : 'left');
+Generators.balanceJudge = function (params) {
+  var item = _pick(GEN_DATA.mysteryBoxes);
+  var r = Math.random();
+  var rel = r < 0.25 ? 'same' : (r < 0.625 ? 'left' : 'right');
+  var askHeavier = _askMode(params.askMode);
+
+  var answer, tiltDeg;
+  if (rel === 'same') {
+    answer = 'same';
+    tiltDeg = 0;
+  } else {
+    var lightSide = rel === 'left' ? 'right' : 'left';
+    answer = askHeavier ? rel : lightSide;
+    tiltDeg = rel === 'left' ? -14 : 14;
+  }
+
+  var optionTypes = {};
+  if (rel === 'same') {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[answer] = 'none';
+    optionTypes[answer === 'left' ? 'right' : 'left'] = 'polarity_confusion';
+    optionTypes.same = 'false_equal';
+  }
 
   return {
-    type: 'weight',
-    options: ['left', 'right'],
+    type: 'balance_judge',
+    options: ['left', 'right', 'same'],
     answer: answer,
+    optionTypes: optionTypes,
     askHeavier: askHeavier,
-    useScale: !!params.useScale,
-    leftEmoji: heavyOnLeft ? pair.heavy.emoji : pair.light.emoji,
-    rightEmoji: heavyOnLeft ? pair.light.emoji : pair.heavy.emoji,
-    leftNameZh: heavyOnLeft ? pair.heavy.nameZh : pair.light.nameZh,
-    rightNameZh: heavyOnLeft ? pair.light.nameZh : pair.heavy.nameZh,
-    leftNameEn: heavyOnLeft ? pair.heavy.nameEn : pair.light.nameEn,
-    rightNameEn: heavyOnLeft ? pair.light.nameEn : pair.heavy.nameEn,
-    leftIsHeavy: heavyOnLeft,
-    hintZh: '想一想哪个更' + (askHeavier ? '重' : '轻') + '。',
-    hintEn: 'Think about which one is ' + (askHeavier ? 'heavier' : 'lighter') + '.'
+    rel: rel,
+    tiltDeg: tiltDeg,
+    emoji: item.emoji,
+    hintZh: '看天平倾向哪边，判断哪个' + (askHeavier ? '更重' : '更轻') + '。',
+    hintEn: 'Look at which side the scale tips to, then find which is ' + (askHeavier ? 'heavier' : 'lighter') + '.'
   };
 };
 
 /**
- * speedCompare: intuitive speed comparison.
+ * balanceSelect3 (W2): three balances (A–B, A–C, B–C) giving every pairwise
+ * result directly — no transitive reasoning required, unlike W3. Each box
+ * appears on exactly two balances by construction, so appearance count can
+ * never leak the answer.
  */
-Generators.speedCompare = function (params) {
-  var pair = _pick(GEN_DATA.speedPairs);
-  var askFaster = params.askMode === 'faster' || (params.askMode === 'random' && Math.random() < 0.5);
-  var fastOnLeft = Math.random() < 0.5;
-  var answer = askFaster
-    ? (fastOnLeft ? 'left' : 'right')
-    : (fastOnLeft ? 'right' : 'left');
+Generators.balanceSelect3 = function (params) {
+  var weights = _shuffle([1, 2, 3]);
+  var letters = ['A', 'B', 'C'];
+  var wOf = {};
+  letters.forEach(function (l, i) { wOf[l] = weights[i]; });
+
+  var pairsOrder = _shuffle([['A', 'B'], ['A', 'C'], ['B', 'C']]);
+  var balances = pairsOrder.map(function (pair) {
+    var swap = Math.random() < 0.5;
+    var left = swap ? pair[1] : pair[0], right = swap ? pair[0] : pair[1];
+    return { left: left, right: right, tiltDeg: wOf[left] > wOf[right] ? -14 : 14 };
+  });
+
+  var askHeaviest = params.askMode === 'lightest' ? false : (params.askMode === 'heaviest' ? true : Math.random() < 0.5);
+  var order = letters.slice().sort(function (x, y) { return wOf[y] - wOf[x]; });
+  var answer = askHeaviest ? order[0] : order[2];
+  var middle = order[1];
+  var otherExtreme = askHeaviest ? order[2] : order[0];
+
+  var optionTypes = {};
+  optionTypes[answer] = 'none';
+  optionTypes[otherExtreme] = 'polarity_confusion';
+  optionTypes[middle] = 'middle_item';
 
   return {
-    type: 'speed',
-    options: ['left', 'right'],
+    type: 'balance_select',
+    options: ['A', 'B', 'C'],
     answer: answer,
-    askFaster: askFaster,
-    leftEmoji: fastOnLeft ? pair.fast.emoji : pair.slow.emoji,
-    rightEmoji: fastOnLeft ? pair.slow.emoji : pair.fast.emoji,
-    leftNameZh: fastOnLeft ? pair.fast.nameZh : pair.slow.nameZh,
-    rightNameZh: fastOnLeft ? pair.slow.nameZh : pair.fast.nameZh,
-    leftNameEn: fastOnLeft ? pair.fast.nameEn : pair.slow.nameEn,
-    rightNameEn: fastOnLeft ? pair.slow.nameEn : pair.fast.nameEn,
-    hintZh: '哪个' + (askFaster ? '更快' : '更慢') + '？',
-    hintEn: 'Which one is ' + (askFaster ? 'faster' : 'slower') + '?'
+    optionTypes: optionTypes,
+    askHeaviest: askHeaviest,
+    balances: balances,
+    emoji: _pick(GEN_DATA.mysteryBoxes).emoji,
+    hintZh: '看三架天平的结果，找出' + (askHeaviest ? '最重' : '最轻') + '的盒子。',
+    hintEn: 'Use all three scales to find the ' + (askHeaviest ? 'heaviest' : 'lightest') + ' box.'
   };
+};
+
+/**
+ * balanceChain (W3): only two balances, X–M and M–Y, so the heaviest and
+ * lightest never share a balance — the answer can only come from the chain.
+ * M is forced to the MEDIAN weight of the three, which guarantees the chain
+ * condition (heavy on one balance, light on the other) on every draw, no
+ * rejection sampling needed.
+ */
+Generators.balanceChain = function (params) {
+  var letters = _shuffle(['A', 'B', 'C']);
+  var M = letters[0], X = letters[1], Y = letters[2];
+
+  var xHeavier = Math.random() < 0.5;
+  var wOf = {};
+  wOf[M] = 2;
+  wOf[X] = xHeavier ? 3 : 1;
+  wOf[Y] = xHeavier ? 1 : 3;
+
+  function makeBalance(a, b) {
+    var swap = Math.random() < 0.5;
+    var left = swap ? b : a, right = swap ? a : b;
+    return { left: left, right: right, tiltDeg: wOf[left] > wOf[right] ? -14 : 14 };
+  }
+  var balances = Math.random() < 0.5
+    ? [makeBalance(X, M), makeBalance(M, Y)]
+    : [makeBalance(M, Y), makeBalance(X, M)];
+
+  var heaviest = wOf[X] === 3 ? X : Y;
+  var lightest = wOf[X] === 1 ? X : Y;
+  var askHeaviest = Math.random() < 0.5;
+  var answer = askHeaviest ? heaviest : lightest;
+  var otherExtreme = askHeaviest ? lightest : heaviest;
+
+  var optionTypes = {};
+  optionTypes[answer] = 'none';
+  optionTypes[otherExtreme] = 'polarity_confusion';
+  optionTypes[M] = 'middle_item';
+
+  return {
+    type: 'balance_chain',
+    options: ['A', 'B', 'C'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askHeaviest: askHeaviest,
+    balances: balances,
+    emoji: _pick(GEN_DATA.mysteryBoxes).emoji,
+    hintZh: '两架天平里都出现的那个是关键，顺着它推出' + (askHeaviest ? '最重' : '最轻') + '的是谁。',
+    hintEn: 'The box on both scales is the key — use it to find the ' + (askHeaviest ? 'heaviest' : 'lightest') + ' one.'
+  };
+};
+
+/**
+ * balanceSwap (W4): a top balance establishes "k balls = 1 block" with SVG
+ * shapes (no real objects, so common sense cannot help), then the child must
+ * convert m blocks / n balls before comparing — no beam is drawn on the
+ * bottom pair on purpose (§ W4 画面 note).
+ */
+Generators.balanceSwap = function (params) {
+  var k = Math.random() < 0.5 ? 2 : 3;
+  var m = Math.random() < 0.5 ? 1 : 2;
+  var blockValue = m * k;
+  var equal = Math.random() < 0.25;
+  var n, conflict = false;
+
+  if (equal) {
+    n = blockValue;
+  } else {
+    var wantConflict = Math.random() < 0.5;
+    if (wantConflict && m + 1 <= blockValue - 1) {
+      n = _ri(m + 1, blockValue - 1);
+      conflict = true;
+    } else {
+      do { n = _ri(1, 7); } while (n === m || n === blockValue);
+      conflict = n > m && n < blockValue;
+    }
+  }
+
+  var blockSide = Math.random() < 0.5 ? 'left' : 'right';
+  var ballSide = blockSide === 'left' ? 'right' : 'left';
+  var answer = blockValue === n ? 'same' : (blockValue > n ? blockSide : ballSide);
+
+  var optionTypes = {};
+  if (answer === 'same') {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[answer] = 'none';
+    optionTypes[answer === 'left' ? 'right' : 'left'] = 'perception';
+    optionTypes.same = 'false_equal';
+  }
+
+  return {
+    type: 'balance_swap',
+    options: ['left', 'right', 'same'],
+    answer: answer,
+    optionTypes: optionTypes,
+    k: k, m: m, n: n, blockValue: blockValue,
+    blockSide: blockSide,
+    conflict: conflict,
+    hintZh: '记住 ' + k + ' 个小球等于 1 个方块，再比一比两边。',
+    hintEn: k + ' balls equal 1 block — work out both sides before you compare.'
+  };
+};
+
+// ── Speed (S1–S3): 2–3 lanes, one racer icon per question ──────────────────
+
+function _minGapOk(arr, minGapPct) {
+  var sorted = arr.slice().sort(function (a, b) { return a - b; });
+  for (var i = 1; i < sorted.length; i++) {
+    if (sorted[i] - sorted[i - 1] < minGapPct) return false;
+  }
+  return true;
+}
+
+/**
+ * raceJudge (S1): two lanes, identical stopwatch seconds — the racer that
+ * went farther in the same time is faster.
+ */
+Generators.raceJudge = function (params) {
+  var item = _pick(GEN_DATA.racers);
+  var seconds = _ri(3, 9);
+  var same = Math.random() < 0.20;
+
+  var leftPos, rightPos;
+  if (same) {
+    leftPos = rightPos = _ri(30, 70);
+  } else {
+    do {
+      leftPos = _ri(15, 90);
+      rightPos = _ri(15, 90);
+    } while (Math.abs(leftPos - rightPos) < 25);
+  }
+
+  var askFaster = _askMode(params.askMode);
+  var answer;
+  if (same) {
+    answer = 'same';
+  } else {
+    var fartherSide = leftPos > rightPos ? 'left' : 'right';
+    answer = askFaster ? fartherSide : (fartherSide === 'left' ? 'right' : 'left');
+  }
+
+  var optionTypes = {};
+  if (same) {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[answer] = 'none';
+    optionTypes[answer === 'left' ? 'right' : 'left'] = 'polarity_confusion';
+    optionTypes.same = 'false_equal';
+  }
+
+  return {
+    type: 'race_judge',
+    options: ['left', 'right', 'same'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askFaster: askFaster,
+    emoji: item.emoji,
+    leftSeconds: seconds, rightSeconds: seconds,
+    leftPct: leftPos, rightPct: rightPos,
+    hintZh: '两个都跑了 ' + seconds + ' 秒，看谁跑得更远，那个就' + (askFaster ? '更快' : '更慢') + '。',
+    hintEn: 'Both ran for ' + seconds + ' seconds — the one that went farther is ' + (askFaster ? 'faster' : 'slower') + '.'
+  };
+};
+
+/**
+ * raceSelect3 (S2): three lanes, identical stopwatch seconds, adjacent
+ * position gap ≥ 18% so "farthest / nearest" is never a close call.
+ */
+Generators.raceSelect3 = function (params) {
+  var item = _pick(GEN_DATA.racers);
+  var seconds = _ri(3, 9);
+
+  var positions, attempts = 0;
+  do {
+    positions = [_ri(12, 92), _ri(12, 92), _ri(12, 92)];
+    attempts++;
+  } while (!_minGapOk(positions, 18) && attempts < 100);
+
+  var letters = _shuffle(['A', 'B', 'C']);
+  var posBySlot = {};
+  letters.forEach(function (l, i) { posBySlot[l] = positions[i]; });
+
+  var order = letters.slice().sort(function (a, b) { return posBySlot[b] - posBySlot[a]; });
+  var askFastest = Math.random() < 0.5;
+  var answer = askFastest ? order[0] : order[2];
+  var middle = order[1];
+  var otherExtreme = askFastest ? order[2] : order[0];
+
+  var optionTypes = {};
+  optionTypes[answer] = 'none';
+  optionTypes[otherExtreme] = 'polarity_confusion';
+  optionTypes[middle] = 'middle_item';
+
+  return {
+    type: 'race_select',
+    options: ['A', 'B', 'C'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askFastest: askFastest,
+    emoji: item.emoji,
+    seconds: seconds,
+    posBySlot: posBySlot,
+    hintZh: '三个都跑了同样的时间，比一比谁跑得' + (askFastest ? '最远' : '最近') + '。',
+    hintEn: 'All three ran the same time — find who went the ' + (askFastest ? 'farthest' : 'least far') + '.'
+  };
+};
+
+/**
+ * raceVariant (S3): two variants sharing one question ("谁跑得更快/慢？").
+ * Variant A: same time, different distance — farther is faster. Variant B:
+ * both racers already at the finish line, different stopwatch seconds — less
+ * time is faster. The child must notice WHICH quantity is shared before
+ * picking a rule; that is the entire training point.
+ */
+Generators.raceVariant = function (params) {
+  var item = _pick(GEN_DATA.racers);
+  var variant = Math.random() < 0.5 ? 'A' : 'B';
+  var same = Math.random() < 0.15;
+  var askFaster = _askMode(params.askMode);
+
+  var q = {
+    type: 'race_variant',
+    options: ['left', 'right', 'same'],
+    variant: variant,
+    askFaster: askFaster,
+    emoji: item.emoji
+  };
+
+  if (variant === 'A') {
+    var seconds = _ri(3, 9);
+    var leftPos, rightPos;
+    if (same) {
+      leftPos = rightPos = _ri(30, 70);
+    } else {
+      do {
+        leftPos = _ri(15, 90);
+        rightPos = _ri(15, 90);
+      } while (Math.abs(leftPos - rightPos) < 25);
+    }
+    q.leftSeconds = seconds; q.rightSeconds = seconds;
+    q.leftPct = leftPos; q.rightPct = rightPos;
+    q.answer = same ? 'same' : (askFaster
+      ? (leftPos > rightPos ? 'left' : 'right')
+      : (leftPos > rightPos ? 'right' : 'left'));
+  } else {
+    var lo = 5, hi = 60, leftSec, rightSec;
+    if (same) {
+      leftSec = rightSec = _ri(lo, hi);
+    } else {
+      do {
+        leftSec = _ri(lo, hi);
+        rightSec = _ri(lo, hi);
+      } while (Math.max(leftSec, rightSec) / Math.min(leftSec, rightSec) < 1.25);
+    }
+    q.leftSeconds = leftSec; q.rightSeconds = rightSec;
+    q.leftPct = 92; q.rightPct = 92;   // both already at the finish line
+    q.answer = same ? 'same' : (askFaster
+      ? (leftSec < rightSec ? 'left' : 'right')
+      : (leftSec < rightSec ? 'right' : 'left'));
+  }
+
+  var optionTypes = {};
+  if (q.answer === 'same') {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[q.answer] = 'none';
+    optionTypes[q.answer === 'left' ? 'right' : 'left'] = variant === 'B' ? 'inverse_relation' : 'polarity_confusion';
+    optionTypes.same = 'false_equal';
+  }
+  q.optionTypes = optionTypes;
+
+  q.hintZh = variant === 'A' ? '时间一样长，跑得远的更快。' : '路程一样，用时少的更快。';
+  q.hintEn = variant === 'A' ? 'Same time — the one who went farther is faster.' : 'Same distance — less time means faster.';
+
+  return q;
 };
 
 /**
@@ -900,6 +1346,272 @@ Generators.fitBridge = function (params) {
     options: [], answer: correctId,
     hintZh: '找一块能搭上对岸的木板，帮' + scene.leftEmoji + '过河吧！',
     hintEn: 'Find a plank long enough to reach the other side!'
+  };
+};
+
+// ── Area (Z4/Z5): polyomino cell-counting and grid rectangles ──────────────
+
+// Compact growth: pick a random existing cell, step to a random free neighbour.
+// Used for the "more cells" shape in an anti-cue draw (small bounding box).
+function _growBlob(n, boxW, boxH) {
+  var cx = Math.floor(boxW / 2), cy = Math.floor(boxH / 2);
+  var cells = [{ x: cx, y: cy }];
+  var used = {}; used[cx + ',' + cy] = true;
+  var attempts = 0;
+  while (cells.length < n && attempts < n * 60) {
+    attempts++;
+    var base = cells[_ri(0, cells.length - 1)];
+    var dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    var d = dirs[_ri(0, 3)];
+    var nx = base.x + d[0], ny = base.y + d[1];
+    if (nx < 0 || nx >= boxW || ny < 0 || ny >= boxH) continue;
+    var key = nx + ',' + ny;
+    if (used[key]) continue;
+    used[key] = true;
+    cells.push({ x: nx, y: ny });
+  }
+  return cells;
+}
+
+function _normalizeCells(cells) {
+  var minX = Math.min.apply(null, cells.map(function (c) { return c.x; }));
+  var minY = Math.min.apply(null, cells.map(function (c) { return c.y; }));
+  return cells.map(function (c) { return { x: c.x - minX, y: c.y - minY }; });
+}
+
+function _polyBBox(cells) {
+  var xs = cells.map(function (c) { return c.x; }), ys = cells.map(function (c) { return c.y; });
+  var w = Math.max.apply(null, xs) + 1, h = Math.max.apply(null, ys) + 1;
+  return { w: w, h: h, area: w * h };
+}
+
+function _cellKey(cells) {
+  return cells.map(function (c) { return c.x + ',' + c.y; }).sort().join('|');
+}
+
+// Deterministic compact fill (boustrophedon: right along a row, left along the
+// next), used for the "more cells" shape on an anti-cue draw — its bbox is
+// exactly boxW × ceil(n/boxW), never left to growth-algorithm luck.
+function _compactFill(n, boxW) {
+  var cells = [{ x: 0, y: 0 }];
+  var x = 0, y = 0, dir = 1;
+  for (var i = 1; i < n; i++) {
+    if (dir === 1) {
+      if (x + 1 < boxW) x++; else { y++; dir = -1; }
+    } else {
+      if (x - 1 >= 0) x--; else { y++; dir = 1; }
+    }
+    cells.push({ x: x, y: y });
+  }
+  return cells;
+}
+
+// Deterministic maximal-spread staircase (alternating right/down), used for
+// the "fewer cells" shape on an anti-cue draw so its bbox is the largest a
+// connected shape of n cells can reach inside boxW × boxH, not left to chance.
+function _staircase(n, boxW, boxH) {
+  var cells = [{ x: 0, y: 0 }];
+  var x = 0, y = 0, horiz = true;
+  while (cells.length < n) {
+    var moved = false;
+    if (horiz && x + 1 < boxW) { x++; moved = true; }
+    else if (!horiz && y + 1 < boxH) { y++; moved = true; }
+    else if (x + 1 < boxW) { x++; moved = true; }
+    else if (y + 1 < boxH) { y++; moved = true; }
+    if (moved) { cells.push({ x: x, y: y }); horiz = !horiz; continue; }
+    break;   // box fully spanned; pad below
+  }
+  if (cells.length < n) {
+    var used = {}; cells.forEach(function (c) { used[c.x + ',' + c.y] = true; });
+    var attempts = 0;
+    while (cells.length < n && attempts < n * 40) {
+      attempts++;
+      var base = cells[_ri(0, cells.length - 1)];
+      var dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+      var d = dirs[_ri(0, 3)];
+      var nx = base.x + d[0], ny = base.y + d[1];
+      if (nx < 0 || nx >= boxW || ny < 0 || ny >= boxH) continue;
+      var key = nx + ',' + ny;
+      if (used[key]) continue;
+      used[key] = true;
+      cells.push({ x: nx, y: ny });
+    }
+  }
+  return cells;
+}
+
+/**
+ * areaGrid (Z4): two polyominoes, bounding box ≤ 5×4, 4–12 cells each. On at
+ * least half of the unequal draws the shape with MORE cells gets the
+ * SMALLER-or-equal bounding box (§ Z4 反线索条件), so "looks bigger" can
+ * never be a shortcut for "has more squares".
+ */
+Generators.areaGrid = function (params) {
+  var n1, n2, cellsA, cellsB, antiCue = false;
+  var equal = Math.random() < 0.20;
+
+  if (equal) {
+    n1 = n2 = _ri(4, 12);
+    var side = Math.max(2, Math.ceil(Math.sqrt(n1)));
+    var keyA, tries = 0;
+    do {
+      cellsA = _normalizeCells(_growBlob(n1, Math.min(5, side + 1), Math.min(4, side + 1)));
+      keyA = _cellKey(cellsA);
+      cellsB = _normalizeCells(_growBlob(n2, Math.min(5, side + 1), Math.min(4, side + 1)));
+      tries++;
+    } while (_cellKey(cellsB) === keyA && tries < 10);
+  } else {
+    n1 = _ri(4, 12);
+    var diff = _ri(1, 3);
+    n2 = Math.random() < 0.5 ? n1 + diff : n1 - diff;
+    if (n2 < 4) n2 = n1 + diff;
+    if (n2 > 12) n2 = n1 - diff;
+
+    antiCue = false;
+    var moreIsA = n1 > n2;
+    var moreN = moreIsA ? n1 : n2;
+    var fewN = moreIsA ? n2 : n1;
+    var moreCells, fewCells;
+
+    var cside = Math.max(2, Math.ceil(Math.sqrt(moreN)));
+    var compactArea = cside * Math.ceil(moreN / cside);
+    var staircaseArea = _polyBBox(_staircase(fewN, 5, 4)).area;
+    var feasible = staircaseArea >= compactArea;
+
+    if (feasible && Math.random() < 0.75) {
+      antiCue = true;
+      moreCells = _normalizeCells(_compactFill(moreN, cside));
+      fewCells = _normalizeCells(_staircase(fewN, 5, 4));
+    } else {
+      var sideA = Math.max(2, Math.ceil(Math.sqrt(moreN)));
+      var sideB = Math.max(2, Math.ceil(Math.sqrt(fewN)));
+      moreCells = _normalizeCells(_growBlob(moreN, Math.min(5, sideA + 1), Math.min(4, sideA + 1)));
+      fewCells = _normalizeCells(_growBlob(fewN, Math.min(5, sideB + 1), Math.min(4, sideB + 1)));
+      antiCue = _polyBBox(moreCells).area <= _polyBBox(fewCells).area;
+    }
+    cellsA = moreIsA ? moreCells : fewCells;
+    cellsB = moreIsA ? fewCells : moreCells;
+  }
+
+  var bboxA = _polyBBox(cellsA), bboxB = _polyBBox(cellsB);
+  var askBigger = _askMode(params.askMode);
+  var answer;
+  if (n1 === n2) {
+    answer = 'same';
+  } else {
+    var moreSide = n1 > n2 ? 'left' : 'right';
+    answer = askBigger ? moreSide : (moreSide === 'left' ? 'right' : 'left');
+  }
+
+  var optionTypes = {};
+  if (answer === 'same') {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[answer] = 'none';
+    optionTypes[answer === 'left' ? 'right' : 'left'] = antiCue ? 'perception' : 'polarity_confusion';
+    optionTypes.same = 'false_equal';
+  }
+
+  return {
+    type: 'area_grid',
+    options: ['left', 'right', 'same'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askBigger: askBigger,
+    leftCells: cellsA, rightCells: cellsB,
+    leftCount: n1, rightCount: n2,
+    leftBBox: bboxA, rightBBox: bboxB,
+    hintZh: '数一数方格，哪个图形' + (askBigger ? '更大' : '更小') + '？',
+    hintEn: 'Count the squares. Which shape is ' + (askBigger ? 'bigger' : 'smaller') + '?'
+  };
+};
+
+var AREA_RECT_EQUAL_PAIRS = [
+  [[2, 6], [3, 4]], [[1, 9], [3, 3]], [[2, 8], [4, 4]], [[3, 8], [4, 6]], [[4, 9], [6, 6]]
+];
+
+function _rectMaxSide(a, b) { return Math.max(a, b); }
+function _isRotation(a, b, c, d) { return (a === c && b === d) || (a === d && b === c); }
+
+/**
+ * areaRect (Z5): a×b vs c×d rectangles, area ≤ 36. On ≥60% of unequal draws
+ * the rectangle with the LONGER max side has the SMALLER area (e.g. 1×9=9 vs
+ * 3×4=12), so "longer edge ⇒ bigger" cannot be used as a shortcut.
+ */
+Generators.areaRect = function (params) {
+  var maxSide = params.maxSide || 9;
+  var maxArea = params.maxArea || 36;
+  var equal = Math.random() < 0.25;
+  var rectA, rectB;
+
+  if (equal) {
+    var pair = _pick(AREA_RECT_EQUAL_PAIRS);
+    var order = Math.random() < 0.5 ? [pair[0], pair[1]] : [pair[1], pair[0]];
+    rectA = order[0]; rectB = order[1];
+  } else {
+    var conflict = Math.random() < 0.6;
+    var attempts = 0;
+    do {
+      attempts++;
+      var a = _ri(1, maxSide), b = _ri(1, maxSide);
+      var c = _ri(1, maxSide), d = _ri(1, maxSide);
+      var areaA = a * b, areaB = c * d;
+      if (areaA === areaB) continue;
+      if (areaA > maxArea || areaB > maxArea) continue;
+      if (_isRotation(a, b, c, d)) continue;
+      var biggerIsA = areaA > areaB;
+      var longerIsA = _rectMaxSide(a, b) > _rectMaxSide(c, d);
+      var longerIsB = _rectMaxSide(c, d) > _rectMaxSide(a, b);
+      var thisIsConflict = biggerIsA ? longerIsB : longerIsA;
+      if (conflict && !thisIsConflict) continue;
+      if (!conflict && thisIsConflict) continue;
+      rectA = [a, b]; rectB = [c, d];
+      break;
+    } while (attempts < 200);
+    if (!rectA) { rectA = [3, 4]; rectB = [2, 6]; }   // exhausted retries: fall back to a known-valid pair
+  }
+
+  var aOnLeft = Math.random() < 0.5;
+  var leftRect = aOnLeft ? rectA : rectB;
+  var rightRect = aOnLeft ? rectB : rectA;
+  var leftArea = leftRect[0] * leftRect[1], rightArea = rightRect[0] * rightRect[1];
+
+  var askBigger = _askMode(params.askMode);
+  var answer;
+  if (leftArea === rightArea) {
+    answer = 'same';
+  } else {
+    var biggerSide = leftArea > rightArea ? 'left' : 'right';
+    answer = askBigger ? biggerSide : (biggerSide === 'left' ? 'right' : 'left');
+  }
+
+  var thisConflict = leftArea !== rightArea && (leftArea > rightArea
+    ? _rectMaxSide(leftRect[0], leftRect[1]) < _rectMaxSide(rightRect[0], rightRect[1])
+    : _rectMaxSide(rightRect[0], rightRect[1]) < _rectMaxSide(leftRect[0], leftRect[1]));
+
+  var optionTypes = {};
+  if (answer === 'same') {
+    optionTypes.same = 'none';
+    optionTypes.left = 'missed_equal';
+    optionTypes.right = 'missed_equal';
+  } else {
+    optionTypes[answer] = 'none';
+    optionTypes[answer === 'left' ? 'right' : 'left'] = thisConflict ? 'perception' : 'polarity_confusion';
+    optionTypes.same = 'false_equal';
+  }
+
+  return {
+    type: 'area_rect',
+    options: ['left', 'right', 'same'],
+    answer: answer,
+    optionTypes: optionTypes,
+    askBigger: askBigger,
+    leftA: leftRect[0], leftB: leftRect[1],
+    rightA: rightRect[0], rightB: rightRect[1],
+    hintZh: '数一数格子，或者用乘法算面积，看看哪个' + (askBigger ? '更大' : '更小') + '。',
+    hintEn: 'Count the squares or multiply the sides to see which is ' + (askBigger ? 'bigger' : 'smaller') + '.'
   };
 };
 

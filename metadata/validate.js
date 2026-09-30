@@ -40,6 +40,12 @@
  * v1.2.0 adds S7: the structure × task allowlist matrix (pattern's three-
  * dimension model). See suiteMatrix for why a matrix exists at all.
  *
+ * v1.4.0 lets a module's templates declare `structure` / `carrier` / `task`
+ * themselves (comparison v0.6.0). When every template does, S4/S5 read the
+ * structure off the template instead of a `<MODULE>_TYPE_OF` map, S7 accepts a
+ * matrix cell's `runtimes` list, and the new S8 checks every template against
+ * the matrix (allowed cell, level floor, carrier, runtime, genes).
+ *
  * v1.3.0 opens S2/S3 to a second series. MindSeeds modules that declare a
  * levelMap and difficulty axes (metadata/mindseeds/*.json) are now collided the
  * same way the metathinking modules are — `loadModules` takes the directory and
@@ -54,7 +60,7 @@
 (function (global) {
   "use strict";
 
-  var VERSION = "1.3.0";
+  var VERSION = "1.4.0";
   var BASE = "../";
 
   // Mode vocabularies overlap but are NOT the same list:
@@ -598,16 +604,28 @@
       return t.id + "(" + t.status + ")";
     }).join(" · "));
 
-    if (!mod.source) {
-      s.cv(mod, mod.id + "：读不到 game.js，分类映射无法核对（cannot verify）");
-      return;
+    var tplList = mod.templates ? arr(mod.templates.templates) : [];
+    var selfDeclared = tplList.length > 0 && tplList.every(function (t) { return !!t.structure; });
+    var typeOf;
+    if (selfDeclared) {
+      // Templates carry their own structure (v1.4.0); the attribute → structure
+      // map is then per template, not a code-side table.
+      typeOf = {};
+      tplList.forEach(function (t) { typeOf[t.type] = t.structure; });
+      s.stat("题库每条模板自己声明 structure，不需要 " + mod.typeMapName);
+    } else {
+      if (!mod.source) {
+        s.cv(mod, mod.id + "：读不到 game.js，分类映射无法核对（cannot verify）");
+        return;
+      }
+      var block = declBlock(mod.source, mod.typeMapName);
+      if (!block) {
+        s.cv(mod, "找不到 " + mod.typeMapName + "，无法核对（cannot verify）", "extractor: /var " + mod.typeMapName + " = {…}/");
+        return;
+      }
+      typeOf = flatStringMap(block.body);
     }
-    var block = declBlock(mod.source, mod.typeMapName);
-    if (!block) {
-      s.cv(mod, "找不到 " + mod.typeMapName + "，无法核对（cannot verify）", "extractor: /var " + mod.typeMapName + " = {…}/");
-      return;
-    }
-    var typeOf = flatStringMap(block.body);
+    mod.structureOf = function (t) { return t.structure || typeOf[t.type]; };
     var attrs = Object.keys(typeOf);
     s.stat("代码把 " + attrs.length + " 个属性映射到 " + unique(attrs.map(function (a) {
       return typeOf[a];
@@ -627,7 +645,7 @@
     }
     var shipped = {};   // typeId → { levels:{}, count:n, attrs:{} }
     arr(mod.templates.templates).forEach(function (t) {
-      var typeId = typeOf[t.type];
+      var typeId = mod.structureOf(t);
       if (!typeId) {
         s.fail("题库里的 type '" + t.type + "' 在 " + mod.typeMapName + " 里没有映射", t.id);
         return;
@@ -674,7 +692,8 @@
     arr(mod.templates.templates).forEach(function (t) {
       var slot = byLevel[t.level] || (byLevel[t.level] = { modes: {}, types: {} });
       slot.modes[normMode(t.mode)] = 1;
-      if (mod.typeOf && mod.typeOf[t.type]) { slot.types[mod.typeOf[t.type]] = 1; }
+      var st = mod.structureOf ? mod.structureOf(t) : null;
+      if (st) { slot.types[st] = 1; }
     });
     s.stat("题库 " + arr(mod.templates.templates).length + " 条，覆盖 " + join(Object.keys(byLevel)));
 
@@ -921,18 +940,19 @@
       }
     }
 
+    function rtList(x) { return x ? (x.runtimes ? arr(x.runtimes) : (x.runtime ? [x.runtime] : [])) : []; }
     var badRt = rows.filter(function (r) {
       var t = taskById[r.task];
-      return t && t.runtime && r.runtime !== t.runtime;
+      var allowed = rtList(t);
+      var mine = rtList(r);
+      return !mine.length || (allowed.length && diff(mine, allowed).length > 0);
     });
     if (badRt.length) {
-      s.fail("矩阵的 runtime 与 taskTypes 声明的 runtime 不一致", badRt.map(function (r) {
-        return r.structure + "×" + r.task + " " + r.runtime + " ≠ " + taskById[r.task].runtime;
+      s.fail("矩阵的 runtime 缺失或不在 taskTypes 声明的 runtime 之内", badRt.map(function (r) {
+        return r.structure + "×" + r.task + " " + join(rtList(r)) + " ⊄ " + join(rtList(taskById[r.task]));
       }).join(" · "));
     } else {
-      s.pass("矩阵 runtime 与 taskTypes 一致（" + join(unique(rows.map(function (r) {
-        return r.task + "→" + r.runtime;
-      }).map(function (x) { return x.split("→")[1]; }))) + "）");
+      s.pass("矩阵 runtime 与 taskTypes 一致（" + join(unique([].concat.apply([], rows.map(rtList)))) + "）");
     }
 
     // ── 4. no orphan structure or task ───────────────────────────────────────
@@ -1018,13 +1038,13 @@
 
       var homeless = structures.filter(function (st) {
         return !arr(json.levelMap).some(function (row) {
-          return arr(row.primaryTypes).indexOf(st) >= 0;
+          return arr(row.primaryTypes).concat(arr(row.plannedTypes)).indexOf(st) >= 0;
         });
       });
       if (homeless.length) {
         s.fail("有结构在 levelMap 里没有任何归属等级", join(homeless));
       } else {
-        s.pass("7 类结构在 levelMap 里都有归属等级");
+        s.pass(structures.length + " 类结构在 levelMap 里都有归属等级");
       }
 
       var badTask = [];
@@ -1057,8 +1077,11 @@
       s.pass("SESSION_SIZE 与 sessionPolicy.maxItemsPerSession 一致（" + m[1] + " 题）");
     }
 
-    var taskBlock = declBlock(mod.source, "TASK_OF");
-    if (!taskBlock) {
+    var hasDirAxis = arr(json.difficultyAxes).some(function (a) { return a.id === "inference_direction"; });
+    var taskBlock = hasDirAxis ? declBlock(mod.source, "TASK_OF") : null;
+    if (!hasDirAxis) {
+      s.stat("模块没有 inference_direction 轴，任务由模板自己声明，不需要 TASK_OF");
+    } else if (!taskBlock) {
       s.cv(mod, "在 game.js 里找不到 TASK_OF，任务取值无法核对（cannot verify）",
         "extractor: /var TASK_OF = {…}/");
     } else {
@@ -1109,6 +1132,124 @@
         s.fail("STRUCTURE_GENES 的键不是 typeTree 里的结构 id", join(unknownStruct));
       } else if (keys.length) {
         s.pass("STRUCTURE_GENES 的键全部是已声明结构（" + join(keys) + "）");
+      }
+    }
+  }
+
+  // ── S8 · every template ↔ matrix / carriers / genes ───────────────────────
+
+  /**
+   * Only for modules whose templates declare structure / carrier / task
+   * themselves. S7 proves the matrix is well formed; S8 proves the bank
+   * actually lives inside it — otherwise a template could quietly sit in an
+   * excluded cell or below its level floor and every suite above would pass.
+   */
+  function suiteTemplateCells(data, mod) {
+    var json = mod.json || {};
+    var tpls = mod.templates ? arr(mod.templates.templates) : [];
+    if (!json.taskMatrix || !tpls.length || !tpls.every(function (t) { return t.structure; })) { return; }
+
+    var s = new Suite("S8", mod.id + " · 模板 ↔ 矩阵 / 载体 / 基因", "template cells, carriers and genes");
+    var grades = (global.RadarReader && global.RadarReader.GRADE_CODES) || null;
+    var cells = {};
+    arr(json.taskMatrix).forEach(function (r) { cells[r.structure + "×" + r.task] = r; });
+    var excluded = {};
+    arr(json.taskMatrixExclusions).forEach(function (r) { excluded[r.structure + "×" + r.task] = 1; });
+    var carriers = {};
+    arr(json.carriers).forEach(function (c) { carriers[c.id] = c; });
+    var structGenes = {};
+    arr(json.typeTree).forEach(function (t) {
+      structGenes[t.id] = unique([t.structureGeneId].concat(arr(t.extraGeneIds))).sort();
+    });
+    function rank(g) { return grades ? grades.indexOf(g) : -1; }
+    function rt(t) { var m = t.runtime || t.mode; return MODE_ALIAS[m] || m; }
+
+    var problems = { missing: [], unknown: [], excluded: [], floor: [], carrier: [], carrierFloor: [], carrierStatus: [], runtime: [], genes: [] };
+    var byCell = {};
+    tpls.forEach(function (t) {
+      if (!t.structure || !t.carrier || !t.task) { problems.missing.push(t.id); return; }
+      var key = t.structure + "×" + t.task;
+      byCell[key] = (byCell[key] || 0) + 1;
+      var cell = cells[key];
+      if (!cell) {
+        (excluded[key] ? problems.excluded : problems.unknown).push(t.id + "→" + key);
+      } else {
+        if (grades && rank(t.level) < rank(cell.levelFloor)) { problems.floor.push(t.id + "(" + t.level + " < " + cell.levelFloor + ")"); }
+        var runtimes = cell.runtimes ? arr(cell.runtimes) : [cell.runtime];
+        if (runtimes.indexOf(rt(t)) < 0) { problems.runtime.push(t.id + "(" + rt(t) + " ∉ " + join(runtimes) + ")"); }
+      }
+      var c = carriers[t.carrier];
+      if (!c) { problems.carrier.push(t.id + "→" + t.carrier); }
+      else {
+        if (grades && c.levelFloor && rank(t.level) < rank(c.levelFloor)) { problems.carrierFloor.push(t.id + "(" + t.carrier + "≥" + c.levelFloor + ")"); }
+        if (c.status !== "active") { problems.carrierStatus.push(t.id + "(" + t.carrier + " " + c.status + ")"); }
+      }
+      var want = structGenes[t.structure];
+      var have = unique(arr(t.rootGeneIds)).sort();
+      if (want && want.join() !== have.join()) { problems.genes.push(t.id + "(" + join(have) + " ≠ " + join(want) + ")"); }
+    });
+
+    function report(list, bad, good) {
+      if (list.length) { s.fail(bad + "（" + list.length + "）", list.slice(0, 12).join(" · ") + (list.length > 12 ? " …" : "")); }
+      else { s.pass(good); }
+    }
+    report(problems.missing, "有模板没有声明 structure / carrier / task", "每条模板都声明了 structure / carrier / task（" + tpls.length + " 条）");
+    report(problems.excluded, "有模板落在排除格里", "没有模板落在排除格里");
+    report(problems.unknown, "有模板落在矩阵没有的格子里", "每条模板都落在允许的格子里");
+    report(problems.floor, "有模板低于所在格的 levelFloor", "每条模板都不低于所在格的 levelFloor");
+    report(problems.runtime, "有模板的 runtime 不在所在格允许的 runtimes 里", "每条模板的 runtime 都在所在格允许的 runtimes 里");
+    report(problems.carrier, "有模板声明了 carriers 里没有的载体", "每条模板的载体都已声明");
+    report(problems.carrierFloor, "有模板低于载体的 levelFloor", "每条模板都不低于载体的 levelFloor");
+    report(problems.carrierStatus, "有模板用了非 active 的载体", "模板只用 active 载体");
+    report(problems.genes, "有模板的 rootGeneIds 与所属结构的基因集合不一致", "每条模板的 rootGeneIds 等于所属结构的基因集合");
+
+    // status honesty per cell: implemented/partial iff the bank has it
+    var lying = [];
+    arr(json.taskMatrix).forEach(function (r) {
+      var key = r.structure + "×" + r.task;
+      var live = r.status === "implemented" || r.status === "partial";
+      if (live && !byCell[key]) { lying.push(key + " 声明 " + r.status + " 但题库为空"); }
+      if (!live && byCell[key]) { lying.push(key + " 声明 " + r.status + " 但题库有 " + byCell[key] + " 条"); }
+    });
+    report(lying, "矩阵格子的 status 与题库不一致", "矩阵每一格的 status 与题库一致");
+    s.stat("题库分布：" + Object.keys(byCell).sort().map(function (k) { return k + " " + byCell[k]; }).join(" · "));
+
+    // carriers used vs declared active
+    var usedCarriers = unique(tpls.map(function (t) { return t.carrier; }));
+    var idle = arr(json.carriers).filter(function (c) { return c.status === "active" && usedCarriers.indexOf(c.id) < 0; });
+    if (idle.length) { s.fail("有载体声明 active 但题库一条也没用", join(idle.map(function (c) { return c.id; }))); }
+    else { s.pass("声明 active 的载体题库里都用到了（" + usedCarriers.length + " 种）"); }
+
+    // per-level number / numeral policy
+    arr(json.levelMap).forEach(function (row) {
+      if (row.numerals !== false) { return; }
+      var bad = tpls.filter(function (t) {
+        return t.level === row.gradeCode && (t.carrier === "numeral" || (t.params && t.params.showNumbers));
+      }).map(function (t) { return t.id; });
+      report(bad, row.gradeCode + " 声明不使用数字，题库却出现了数字", row.gradeCode + " 题库没有出现数字");
+    });
+    arr(json.levelMap).forEach(function (row) {
+      var nr = row.numberRange;
+      if (!nr) { return; }
+      var bad = tpls.filter(function (t) {
+        var p = t.params || {}, rp = p.roundParams || {};
+        var hi = Math.max(p.max || 0, p.maxCount || 0, rp.max || 0, rp.maxCount || 0);
+        var lo = Math.min(p.min || Infinity, p.minCount || Infinity, rp.min || Infinity, rp.minCount || Infinity);
+        return t.level === row.gradeCode && (hi > nr.max || lo < nr.min);
+      }).map(function (t) { return t.id; });
+      report(bad, row.gradeCode + " 题库的数范围超出 numberRange " + nr.min + "–" + nr.max,
+        row.gradeCode + " 题库的数范围在 numberRange " + nr.min + "–" + nr.max + " 之内");
+    });
+
+    // code side: activity cap
+    var policy = json.sessionPolicy || {};
+    if (typeof policy.maxActivitiesPerSession === "number") {
+      var m = mod.source && /MAX_ACTIVITIES_PER_SESSION\s*=\s*(\d+)/.exec(mod.source);
+      if (!m) { s.cv(mod, "在 game.js 里找不到 MAX_ACTIVITIES_PER_SESSION，无法核对（cannot verify）"); }
+      else if (Number(m[1]) !== policy.maxActivitiesPerSession) {
+        s.fail("MAX_ACTIVITIES_PER_SESSION = " + m[1] + " 与 sessionPolicy.maxActivitiesPerSession = " + policy.maxActivitiesPerSession + " 不一致");
+      } else {
+        s.pass("MAX_ACTIVITIES_PER_SESSION 与 sessionPolicy 一致（" + m[1] + "）");
       }
     }
   }
@@ -1232,6 +1373,7 @@
             suiteTypes(data, mod);
             suiteModes(data, mod);
             suiteMatrix(data, mod);
+            suiteTemplateCells(data, mod);
           });
           // MindSeeds modules take S2 + S3 only. They carry a levelMap and
           // difficulty axes, which is what earns them a place on the radar's
