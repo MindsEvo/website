@@ -1,6 +1,6 @@
 {
-  "version": "v0.7.0",
-  "updatedAt": "2026-09-29",
+  "version": "v0.8.0",
+  "updatedAt": "2026-09-30",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -51,7 +51,11 @@
       "id": "object_complexity",
       "zh": "对象复杂度",
       "en": "Object Complexity",
-      "progression": ["concrete", "symbolic", "abstract"],
+      "progression": [
+        "concrete",
+        "symbolic",
+        "abstract"
+      ],
       "noteZh": "由载体维度决定：每个载体声明自己的 objectComplexity，选载体就是在选难度。",
       "noteEn": "Set by the carrier dimension: each carrier declares its objectComplexity, so picking a carrier is picking a difficulty."
     },
@@ -59,7 +63,11 @@
       "id": "dimension_complexity",
       "zh": "维度复杂度",
       "en": "Dimension Complexity",
-      "progression": ["single", "dual", "multi"],
+      "progression": [
+        "single",
+        "dual",
+        "multi"
+      ],
       "noteZh": "同时变化、需要孩子分辨的属性有几个。",
       "noteEn": "How many attributes vary at once and must be told apart."
     },
@@ -67,7 +75,12 @@
       "id": "relation_complexity",
       "zh": "关系复杂度",
       "en": "Relation Complexity",
-      "progression": ["direct", "indirect", "chain", "constrained"],
+      "progression": [
+        "direct",
+        "indirect",
+        "chain",
+        "constrained"
+      ],
       "noteZh": "由结构维度决定：direct/equivalence → direct；interference/difference/mediated → indirect；transitive → chain；multi_criteria → constrained。",
       "noteEn": "Set by the structure dimension: direct/equivalence → direct; interference/difference/mediated → indirect; transitive → chain; multi_criteria → constrained."
     },
@@ -75,7 +88,16 @@
       "id": "task_complexity",
       "zh": "任务复杂度",
       "en": "Task Complexity",
-      "progression": ["judge", "select", "order", "classify", "fit", "adjust", "repair", "explain"],
+      "progression": [
+        "judge",
+        "select",
+        "order",
+        "classify",
+        "fit",
+        "adjust",
+        "repair",
+        "explain"
+      ],
       "noteZh": "第三维「思维任务」的难度化：二元判断 → 从一组中选出 → 排序 → 归类 → 对照参照物适配 → 调整使之成立 → 找出并改正错误的比较 → 说明理由。",
       "noteEn": "The task dimension expressed as difficulty: judge a pair, select from a set, order, classify, fit against a reference, adjust until it holds, find and fix a wrong comparison, explain why."
     },
@@ -83,13 +105,23 @@
       "id": "language_complexity",
       "zh": "语言复杂度",
       "en": "Language Complexity",
-      "progression": ["action", "question", "compound", "explain"]
+      "progression": [
+        "action",
+        "question",
+        "compound",
+        "explain"
+      ]
     },
     {
       "id": "transfer_complexity",
       "zh": "迁移复杂度",
       "en": "Transfer Complexity",
-      "progression": ["within-domain", "cross-domain", "strategy", "evidence"]
+      "progression": [
+        "within-domain",
+        "cross-domain",
+        "strategy",
+        "evidence"
+      ]
     }
   ],
   "typeTree": [
@@ -101,11 +133,22 @@
       "status": "partial",
       "descZh": "两个或多个对象在同一维度上可以直接看出、数出或读出大小先后。",
       "descEn": "Objects can be compared on one shared dimension by looking, counting or reading directly.",
-      "examples": ["which ribbon is longer", "which group has more dots", "which number is bigger", "sort four ribbons by length"],
+      "examples": [
+        "which ribbon is longer",
+        "which group has more dots",
+        "which number is bigger",
+        "sort four ribbons by length"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "judge / order / classify / fit / select 已上线；repair 待做。",
       "coverageGapEn": "judge / order / classify / fit / select ship; repair is still to do."
@@ -118,11 +161,20 @@
       "status": "partial",
       "descZh": "判断是否一样，或找出不一样的那个；结果可以是「相等」，打破「总有一个更大」的默认假设。",
       "descEn": "Judge whether things are the same, or find the one that differs; equality is a legal answer, breaking the default that one side must be bigger.",
-      "examples": ["find the shape that differs from the other two", "are these two groups the same amount"],
+      "examples": [
+        "find the shape that differs from the other two",
+        "are these two groups the same amount"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "形状、颜色的找不同（select）已上线；带「一样」选项的判断、配对归类、等长适配与调整至相等待做。",
       "coverageGapEn": "Odd-one-out on shape and colour (select) ships; judging with a \"same\" option, pairing, exact-fit and adjust-until-equal are still to do."
@@ -135,11 +187,21 @@
       "status": "partial",
       "descZh": "感知线索与真实关系冲突，必须抑制表面线索：点铺得散不等于多；弯的绳子和直的绳子；画得大的蚂蚁不比大象大。",
       "descEn": "A perceptual cue conflicts with the real relation and must be inhibited: spread-out dots are not more; a bent rope vs a straight one; an ant drawn large is not bigger than an elephant.",
-      "examples": ["5 spread dots vs 7 packed dots", "coiled vs straight rope of the same length", "tall thin glass vs short wide glass"],
+      "examples": [
+        "5 spread dots vs 7 packed dots",
+        "coiled vs straight rope of the same length",
+        "tall thin glass vs short wide glass"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "judge 已上线：画得大不等于真的大（size_real，等级差 ≥4 才出真假冲突题）、长边不等于面积大（area_rect，冲突题占比 ≥60%）。select / order / classify / repair / explain 待做，例如散开的点、弯绳直绳这类数量与长度守恒题。",
       "coverageGapEn": "judge ships: drawn-bigger is not really-bigger (size_real, real-size gap >= 4 ranks before a conflict is drawn) and a longer edge is not a bigger area (area_rect, >=60% conflict rate). select / order / classify / repair / explain are still to do, e.g. conservation of number (spread dots) and length (coiled vs straight rope)."
@@ -149,10 +211,26 @@
       "nameZh": "差量比较",
       "nameEn": "Difference",
       "structureGeneId": "RG.LOGIC.COMPARISON.BASIC",
-      "status": "planned",
+      "status": "partial",
       "descZh": "不只问谁多，而是问多多少、还差几个才一样多。",
       "descEn": "Not only which is more, but by how much, and how many are missing to make them equal.",
-      "examples": ["how many more apples does the left plate have", "how many more to make them equal"]
+      "examples": [
+        "how many more apples does the left plate have",
+        "how many more to make them equal"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      },
+      "coverageGapZh": "judge 已上线：数一数两组相差几个（quantity）、两个图形相差几格（area）、两位选手相差几秒（speed，均已到终点）、两个盒子相差几个重量单位（weight，电子秤读数）。select / adjust / repair / explain 待做。",
+      "coverageGapEn": "judge ships: how many more between two counted groups (quantity), how many squares two shapes differ by (area), how many seconds two already-finished racers differ by (speed), and how many units two boxes differ by on a scale readout (weight). select / adjust / repair / explain are still to do."
     },
     {
       "id": "mediated",
@@ -162,11 +240,21 @@
       "status": "partial",
       "descZh": "两个对象不能直接比，要借助天平、单位、数轴或测量结果这类中介作为证据。",
       "descEn": "The objects cannot be compared directly; a balance, a unit, a number line or a measurement serves as the evidence.",
-      "examples": ["identical boxes on a balance", "measure two pencils in paper clips", "which is closer to 15 on a number line"],
+      "examples": [
+        "identical boxes on a balance",
+        "measure two pencils in paper clips",
+        "which is closer to 15 on a number line"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "judge / select 已上线：外观相同的神秘盒子只能看天平判断轻重（balance_judge/balance_select）、同样时间比路程或同样路程比用时的赛跑证据题（race_judge/race_select/race_variant）、数方格比面积（area_grid）。order / classify / fit / adjust / repair / explain 待做。",
       "coverageGapEn": "judge / select ship: identical-looking mystery boxes judged only from a balance (balance_judge/balance_select), race-evidence items comparing distance at equal time or time at equal distance (race_judge/race_select/race_variant), and counting grid squares to compare area (area_grid). order / classify / fit / adjust / repair / explain are still to do."
@@ -176,15 +264,26 @@
       "nameZh": "传递与链式比较",
       "nameEn": "Transitive Comparison",
       "structureGeneId": "RG.LOGIC.COMPARISON.BASIC",
-      "extraGeneIds": ["RG.LOGIC.REASONING.BASIC"],
+      "extraGeneIds": [
+        "RG.LOGIC.REASONING.BASIC"
+      ],
       "status": "partial",
       "descZh": "由 A>B、B>C 推出 A>C；对象从不同时出现，只能通过关系链推理。",
       "descEn": "From A>B and B>C infer A>C; the objects never appear together, so only the chain of relations can decide.",
-      "examples": ["Tom is taller than Amy, Amy is taller than Ben: who is tallest", "balance substitution: 2 apples = 1 pear"],
+      "examples": [
+        "Tom is taller than Amy, Amy is taller than Ben: who is tallest",
+        "balance substitution: 2 apples = 1 pear"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "judge / select 已上线：链式天平（balance_chain，最重与最轻从不同时出现在一架天平上，只能靠中间盒子传递）、天平替换（balance_swap，k 个小球 = 1 个方块，据此换算比较）。order / repair / explain 待做。",
       "coverageGapEn": "judge / select ship: a chain of two balances where the heaviest and lightest never share a scale (balance_chain, only the pivot box carries the transitive link), and balance substitution (balance_swap, k balls = 1 block, converted before comparing). order / repair / explain are still to do."
@@ -197,139 +296,779 @@
       "status": "partial",
       "descZh": "按指定标准比较并忽略无关属性，或找出同时满足几个条件的那一个。",
       "descEn": "Compare on a named criterion while ignoring irrelevant attributes, or find the one that meets several conditions at once.",
-      "examples": ["pick the bigger one, colour does not matter", "longer and lighter"],
+      "examples": [
+        "pick the bigger one, colour does not matter",
+        "longer and lighter"
+      ],
       "implementedBy": {
-        "gameIds": ["learning-math-comparison"],
-        "lessonIds": ["learning-math-comparison-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-comparison"
+        ],
+        "lessonIds": [
+          "learning-math-comparison-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       },
       "coverageGapZh": "G1/G2 的二元判断（按大小比、忽略颜色与形状）已上线；多项选择、排序、归类与同时满足多个条件的题待做。",
       "coverageGapEn": "G1/G2 pairwise judging (compare size, ignore colour and shape) ships; selecting, ordering, classifying and satisfying several conditions at once are still to do."
     }
   ],
   "taskTypes": [
-    { "id": "judge",    "nameZh": "判断", "nameEn": "Judge",    "runtimes": ["puzzle", "mini"],  "descZh": "比较一对对象，说出关系（哪个更 X、是否一样、多多少）。", "descEn": "Compare a pair and state the relation (which is more, whether equal, by how much)." },
-    { "id": "select",   "nameZh": "选出", "nameEn": "Select",   "runtimes": ["puzzle"],          "descZh": "从三个及以上对象中选出满足关系的那一个（最大、最小、不一样的）。", "descEn": "From three or more objects, pick the one that satisfies the relation (largest, smallest, the odd one)." },
-    { "id": "order",    "nameZh": "排序", "nameEn": "Order",    "runtimes": ["sort", "mini"],    "descZh": "把一组对象按关系排出完整顺序。", "descEn": "Arrange a set into its full order." },
-    { "id": "classify", "nameZh": "归类", "nameEn": "Classify", "runtimes": ["match", "group"],  "descZh": "按比较关系把对象配对或分组。", "descEn": "Pair or group objects by a comparison relation." },
-    { "id": "fit",      "nameZh": "适配", "nameEn": "Fit",      "runtimes": ["fit"],             "descZh": "对照一个参照物（缺口、容器）选出正好合适的那个。", "descEn": "Pick the one that fits a reference (a gap, a container)." },
-    { "id": "adjust",   "nameZh": "调整", "nameEn": "Adjust",   "runtimes": ["puzzle"],          "descZh": "改变一侧使关系成立：添几个、拿走几个、加什么砝码。", "descEn": "Change one side until the relation holds: add, remove, or put on a weight." },
-    { "id": "repair",   "nameZh": "纠错", "nameEn": "Repair",   "runtimes": ["puzzle"],          "descZh": "找出写错或摆错的比较并改正。", "descEn": "Find the comparison that is stated or placed wrongly and fix it." },
-    { "id": "explain",  "nameZh": "说理", "nameEn": "Explain",  "runtimes": ["puzzle"],          "descZh": "从几个理由中选出真正支持结论的那一个。", "descEn": "Pick the reason that actually supports the conclusion." }
+    {
+      "id": "judge",
+      "nameZh": "判断",
+      "nameEn": "Judge",
+      "runtimes": [
+        "puzzle",
+        "mini"
+      ],
+      "descZh": "比较一对对象，说出关系（哪个更 X、是否一样、多多少）。",
+      "descEn": "Compare a pair and state the relation (which is more, whether equal, by how much)."
+    },
+    {
+      "id": "select",
+      "nameZh": "选出",
+      "nameEn": "Select",
+      "runtimes": [
+        "puzzle"
+      ],
+      "descZh": "从三个及以上对象中选出满足关系的那一个（最大、最小、不一样的）。",
+      "descEn": "From three or more objects, pick the one that satisfies the relation (largest, smallest, the odd one)."
+    },
+    {
+      "id": "order",
+      "nameZh": "排序",
+      "nameEn": "Order",
+      "runtimes": [
+        "sort",
+        "mini"
+      ],
+      "descZh": "把一组对象按关系排出完整顺序。",
+      "descEn": "Arrange a set into its full order."
+    },
+    {
+      "id": "classify",
+      "nameZh": "归类",
+      "nameEn": "Classify",
+      "runtimes": [
+        "match",
+        "group"
+      ],
+      "descZh": "按比较关系把对象配对或分组。",
+      "descEn": "Pair or group objects by a comparison relation."
+    },
+    {
+      "id": "fit",
+      "nameZh": "适配",
+      "nameEn": "Fit",
+      "runtimes": [
+        "fit"
+      ],
+      "descZh": "对照一个参照物（缺口、容器）选出正好合适的那个。",
+      "descEn": "Pick the one that fits a reference (a gap, a container)."
+    },
+    {
+      "id": "adjust",
+      "nameZh": "调整",
+      "nameEn": "Adjust",
+      "runtimes": [
+        "puzzle"
+      ],
+      "descZh": "改变一侧使关系成立：添几个、拿走几个、加什么砝码。",
+      "descEn": "Change one side until the relation holds: add, remove, or put on a weight."
+    },
+    {
+      "id": "repair",
+      "nameZh": "纠错",
+      "nameEn": "Repair",
+      "runtimes": [
+        "puzzle"
+      ],
+      "descZh": "找出写错或摆错的比较并改正。",
+      "descEn": "Find the comparison that is stated or placed wrongly and fix it."
+    },
+    {
+      "id": "explain",
+      "nameZh": "说理",
+      "nameEn": "Explain",
+      "runtimes": [
+        "puzzle"
+      ],
+      "descZh": "从几个理由中选出真正支持结论的那一个。",
+      "descEn": "Pick the reason that actually supports the conclusion."
+    }
   ],
   "carriers": [
-    { "id": "quantity",   "zh": "数量（点阵）", "en": "Quantity (dots)", "domain": "quantity",       "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "比多少、10 以内的数", "curriculumRefEn": "More or fewer; numbers within 10" },
-    { "id": "numeral",    "zh": "数字",         "en": "Numeral",         "domain": "quantity",       "objectComplexity": "symbolic", "levelFloor": "K2", "status": "active",  "curriculumRefZh": "数的认识与大小比较（10、20、100 以内）", "curriculumRefEn": "Number recognition and ordering (within 10, 20, 100)" },
-    { "id": "expression", "zh": "算式",         "en": "Expression",      "domain": "quantity",       "objectComplexity": "symbolic", "levelFloor": "G1", "status": "planned", "curriculumRefZh": "加减法；> < = 符号", "curriculumRefEn": "Addition and subtraction; the > < = signs" },
-    { "id": "size",       "zh": "大小",         "en": "Size",            "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "比大小", "curriculumRefEn": "Bigger and smaller" },
-    { "id": "length",     "zh": "长度",         "en": "Length",          "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "比长短；认识厘米和米", "curriculumRefEn": "Longer and shorter; centimetres and metres" },
-    { "id": "height",     "zh": "高度",         "en": "Height",          "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "比高矮", "curriculumRefEn": "Taller and shorter" },
-    { "id": "area",       "zh": "面积",         "en": "Area",            "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "G1", "status": "active",  "curriculumRefZh": "图形的认识；数方格", "curriculumRefEn": "Shapes; counting squares" },
-    { "id": "distance",   "zh": "远近",         "en": "Distance",        "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "位置与方向", "curriculumRefEn": "Position and direction" },
-    { "id": "capacity",   "zh": "容量（满空）", "en": "Capacity",        "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "比多少；容量的初步感知", "curriculumRefEn": "More or less; a first sense of capacity" },
-    { "id": "weight",     "zh": "轻重",         "en": "Weight",          "domain": "measure",        "objectComplexity": "concrete", "levelFloor": "K2", "status": "active",  "curriculumRefZh": "比轻重；认识天平、克与千克", "curriculumRefEn": "Heavier and lighter; the balance, grams and kilograms" },
-    { "id": "speed",      "zh": "快慢",         "en": "Speed",           "domain": "temporal",       "objectComplexity": "concrete", "levelFloor": "K2", "status": "active",  "curriculumRefZh": "时间的初步认识；路程与时间", "curriculumRefEn": "Early sense of time; distance and time" },
-    { "id": "time_order", "zh": "先后顺序",     "en": "Order in Time",   "domain": "temporal",       "objectComplexity": "concrete", "levelFloor": "G1", "status": "active",  "curriculumRefZh": "一天的时间；季节；生长过程", "curriculumRefEn": "The day; seasons; growth processes" },
-    { "id": "duration",   "zh": "时长",         "en": "Duration",        "domain": "temporal",       "objectComplexity": "symbolic", "levelFloor": "G2", "status": "active",  "curriculumRefZh": "时、分、天、周、月", "curriculumRefEn": "Hours, minutes, days, weeks, months" },
-    { "id": "clock",      "zh": "钟面时刻",     "en": "Clock Time",      "domain": "temporal",       "objectComplexity": "symbolic", "levelFloor": "G1", "status": "planned", "curriculumRefZh": "认识钟表", "curriculumRefEn": "Telling time" },
-    { "id": "money",      "zh": "钱币",         "en": "Money",           "domain": "quantity",       "objectComplexity": "symbolic", "levelFloor": "G1", "status": "planned", "curriculumRefZh": "认识人民币 / 硬币", "curriculumRefEn": "Coins and notes" },
-    { "id": "shape",      "zh": "形状",         "en": "Shape",           "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "认识图形", "curriculumRefEn": "Recognising shapes" },
-    { "id": "color",      "zh": "颜色",         "en": "Colour",          "domain": "spatial_visual", "objectComplexity": "concrete", "levelFloor": "K1", "status": "active",  "curriculumRefZh": "分类与颜色", "curriculumRefEn": "Sorting and colours" },
-    { "id": "evidence",   "zh": "信息与证据",   "en": "Information and Evidence", "domain": "information", "objectComplexity": "abstract", "levelFloor": "G5", "status": "reserved", "curriculumRefZh": "统计与数据；阅读中的证据", "curriculumRefEn": "Statistics and data; evidence in reading" }
+    {
+      "id": "quantity",
+      "zh": "数量（点阵）",
+      "en": "Quantity (dots)",
+      "domain": "quantity",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "比多少、10 以内的数",
+      "curriculumRefEn": "More or fewer; numbers within 10"
+    },
+    {
+      "id": "numeral",
+      "zh": "数字",
+      "en": "Numeral",
+      "domain": "quantity",
+      "objectComplexity": "symbolic",
+      "levelFloor": "K2",
+      "status": "active",
+      "curriculumRefZh": "数的认识与大小比较（10、20、100 以内）",
+      "curriculumRefEn": "Number recognition and ordering (within 10, 20, 100)"
+    },
+    {
+      "id": "expression",
+      "zh": "算式",
+      "en": "Expression",
+      "domain": "quantity",
+      "objectComplexity": "symbolic",
+      "levelFloor": "G1",
+      "status": "planned",
+      "curriculumRefZh": "加减法；> < = 符号",
+      "curriculumRefEn": "Addition and subtraction; the > < = signs"
+    },
+    {
+      "id": "size",
+      "zh": "大小",
+      "en": "Size",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "比大小",
+      "curriculumRefEn": "Bigger and smaller"
+    },
+    {
+      "id": "length",
+      "zh": "长度",
+      "en": "Length",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "比长短；认识厘米和米",
+      "curriculumRefEn": "Longer and shorter; centimetres and metres"
+    },
+    {
+      "id": "height",
+      "zh": "高度",
+      "en": "Height",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "比高矮",
+      "curriculumRefEn": "Taller and shorter"
+    },
+    {
+      "id": "area",
+      "zh": "面积",
+      "en": "Area",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "G1",
+      "status": "active",
+      "curriculumRefZh": "图形的认识；数方格",
+      "curriculumRefEn": "Shapes; counting squares"
+    },
+    {
+      "id": "distance",
+      "zh": "远近",
+      "en": "Distance",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "位置与方向",
+      "curriculumRefEn": "Position and direction"
+    },
+    {
+      "id": "capacity",
+      "zh": "容量（满空）",
+      "en": "Capacity",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "比多少；容量的初步感知",
+      "curriculumRefEn": "More or less; a first sense of capacity"
+    },
+    {
+      "id": "weight",
+      "zh": "轻重",
+      "en": "Weight",
+      "domain": "measure",
+      "objectComplexity": "concrete",
+      "levelFloor": "K2",
+      "status": "active",
+      "curriculumRefZh": "比轻重；认识天平、克与千克",
+      "curriculumRefEn": "Heavier and lighter; the balance, grams and kilograms"
+    },
+    {
+      "id": "speed",
+      "zh": "快慢",
+      "en": "Speed",
+      "domain": "temporal",
+      "objectComplexity": "concrete",
+      "levelFloor": "K2",
+      "status": "active",
+      "curriculumRefZh": "时间的初步认识；路程与时间",
+      "curriculumRefEn": "Early sense of time; distance and time"
+    },
+    {
+      "id": "time_order",
+      "zh": "先后顺序",
+      "en": "Order in Time",
+      "domain": "temporal",
+      "objectComplexity": "concrete",
+      "levelFloor": "G1",
+      "status": "active",
+      "curriculumRefZh": "一天的时间；季节；生长过程",
+      "curriculumRefEn": "The day; seasons; growth processes"
+    },
+    {
+      "id": "duration",
+      "zh": "时长",
+      "en": "Duration",
+      "domain": "temporal",
+      "objectComplexity": "symbolic",
+      "levelFloor": "G2",
+      "status": "active",
+      "curriculumRefZh": "时、分、天、周、月",
+      "curriculumRefEn": "Hours, minutes, days, weeks, months"
+    },
+    {
+      "id": "clock",
+      "zh": "钟面时刻",
+      "en": "Clock Time",
+      "domain": "temporal",
+      "objectComplexity": "symbolic",
+      "levelFloor": "G1",
+      "status": "planned",
+      "curriculumRefZh": "认识钟表",
+      "curriculumRefEn": "Telling time"
+    },
+    {
+      "id": "money",
+      "zh": "钱币",
+      "en": "Money",
+      "domain": "quantity",
+      "objectComplexity": "symbolic",
+      "levelFloor": "G1",
+      "status": "planned",
+      "curriculumRefZh": "认识人民币 / 硬币",
+      "curriculumRefEn": "Coins and notes"
+    },
+    {
+      "id": "shape",
+      "zh": "形状",
+      "en": "Shape",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "认识图形",
+      "curriculumRefEn": "Recognising shapes"
+    },
+    {
+      "id": "color",
+      "zh": "颜色",
+      "en": "Colour",
+      "domain": "spatial_visual",
+      "objectComplexity": "concrete",
+      "levelFloor": "K1",
+      "status": "active",
+      "curriculumRefZh": "分类与颜色",
+      "curriculumRefEn": "Sorting and colours"
+    },
+    {
+      "id": "evidence",
+      "zh": "信息与证据",
+      "en": "Information and Evidence",
+      "domain": "information",
+      "objectComplexity": "abstract",
+      "levelFloor": "G5",
+      "status": "reserved",
+      "curriculumRefZh": "统计与数据；阅读中的证据",
+      "curriculumRefEn": "Statistics and data; evidence in reading"
+    }
   ],
   "taskMatrix": [
-    { "structure": "direct",         "task": "judge",    "levelFloor": "K1", "runtimes": ["puzzle", "mini"], "status": "implemented" },
-    { "structure": "direct",         "task": "select",   "levelFloor": "K1", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "direct",         "task": "order",    "levelFloor": "K1", "runtimes": ["sort", "mini"],   "status": "implemented" },
-    { "structure": "direct",         "task": "classify", "levelFloor": "K1", "runtimes": ["match", "group"], "status": "implemented" },
-    { "structure": "direct",         "task": "fit",      "levelFloor": "K1", "runtimes": ["fit"],            "status": "implemented" },
-    { "structure": "direct",         "task": "repair",   "levelFloor": "K2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "equivalence",    "task": "judge",    "levelFloor": "K1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "equivalence",    "task": "select",   "levelFloor": "K1", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "equivalence",    "task": "classify", "levelFloor": "K1", "runtimes": ["match", "group"], "status": "planned" },
-    { "structure": "equivalence",    "task": "fit",      "levelFloor": "K2", "runtimes": ["fit"],            "status": "planned" },
-    { "structure": "equivalence",    "task": "adjust",   "levelFloor": "K2", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "equivalence",    "task": "repair",   "levelFloor": "K2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "interference",   "task": "judge",    "levelFloor": "K2", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "interference",   "task": "select",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "interference",   "task": "order",    "levelFloor": "G1", "runtimes": ["sort"],           "status": "planned" },
-    { "structure": "interference",   "task": "classify", "levelFloor": "G1", "runtimes": ["group"],          "status": "planned" },
-    { "structure": "interference",   "task": "repair",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "interference",   "task": "explain",  "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "difference",     "task": "judge",    "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "difference",     "task": "select",   "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "difference",     "task": "adjust",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "difference",     "task": "repair",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "difference",     "task": "explain",  "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "mediated",       "task": "judge",    "levelFloor": "K2", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "mediated",       "task": "select",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "mediated",       "task": "order",    "levelFloor": "G1", "runtimes": ["sort"],           "status": "planned" },
-    { "structure": "mediated",       "task": "classify", "levelFloor": "G1", "runtimes": ["group"],          "status": "planned" },
-    { "structure": "mediated",       "task": "fit",      "levelFloor": "G1", "runtimes": ["fit"],            "status": "planned" },
-    { "structure": "mediated",       "task": "adjust",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "mediated",       "task": "repair",   "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "mediated",       "task": "explain",  "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "transitive",     "task": "judge",    "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "transitive",     "task": "select",   "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "transitive",     "task": "order",    "levelFloor": "G2", "runtimes": ["sort"],           "status": "planned" },
-    { "structure": "transitive",     "task": "repair",   "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "transitive",     "task": "explain",  "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-
-    { "structure": "multi_criteria", "task": "judge",    "levelFloor": "G1", "runtimes": ["puzzle"],         "status": "implemented" },
-    { "structure": "multi_criteria", "task": "select",   "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "multi_criteria", "task": "order",    "levelFloor": "G2", "runtimes": ["sort"],           "status": "planned" },
-    { "structure": "multi_criteria", "task": "classify", "levelFloor": "G1", "runtimes": ["group"],          "status": "planned" },
-    { "structure": "multi_criteria", "task": "repair",   "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" },
-    { "structure": "multi_criteria", "task": "explain",  "levelFloor": "G2", "runtimes": ["puzzle"],         "status": "planned" }
+    {
+      "structure": "direct",
+      "task": "judge",
+      "levelFloor": "K1",
+      "runtimes": [
+        "puzzle",
+        "mini"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "direct",
+      "task": "select",
+      "levelFloor": "K1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "direct",
+      "task": "order",
+      "levelFloor": "K1",
+      "runtimes": [
+        "sort",
+        "mini"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "direct",
+      "task": "classify",
+      "levelFloor": "K1",
+      "runtimes": [
+        "match",
+        "group"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "direct",
+      "task": "fit",
+      "levelFloor": "K1",
+      "runtimes": [
+        "fit"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "direct",
+      "task": "repair",
+      "levelFloor": "K2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "equivalence",
+      "task": "judge",
+      "levelFloor": "K1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "equivalence",
+      "task": "select",
+      "levelFloor": "K1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "equivalence",
+      "task": "classify",
+      "levelFloor": "K1",
+      "runtimes": [
+        "match",
+        "group"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "equivalence",
+      "task": "fit",
+      "levelFloor": "K2",
+      "runtimes": [
+        "fit"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "equivalence",
+      "task": "adjust",
+      "levelFloor": "K2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "equivalence",
+      "task": "repair",
+      "levelFloor": "K2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "interference",
+      "task": "judge",
+      "levelFloor": "K2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "interference",
+      "task": "select",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "interference",
+      "task": "order",
+      "levelFloor": "G1",
+      "runtimes": [
+        "sort"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "interference",
+      "task": "classify",
+      "levelFloor": "G1",
+      "runtimes": [
+        "group"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "interference",
+      "task": "repair",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "interference",
+      "task": "explain",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "difference",
+      "task": "judge",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "difference",
+      "task": "select",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "difference",
+      "task": "adjust",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "difference",
+      "task": "repair",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "difference",
+      "task": "explain",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "judge",
+      "levelFloor": "K2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "mediated",
+      "task": "select",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "mediated",
+      "task": "order",
+      "levelFloor": "G1",
+      "runtimes": [
+        "sort"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "classify",
+      "levelFloor": "G1",
+      "runtimes": [
+        "group"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "fit",
+      "levelFloor": "G1",
+      "runtimes": [
+        "fit"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "adjust",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "repair",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "mediated",
+      "task": "explain",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "transitive",
+      "task": "judge",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "transitive",
+      "task": "select",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "transitive",
+      "task": "order",
+      "levelFloor": "G2",
+      "runtimes": [
+        "sort"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "transitive",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "transitive",
+      "task": "explain",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "judge",
+      "levelFloor": "G1",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "implemented"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "select",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "order",
+      "levelFloor": "G2",
+      "runtimes": [
+        "sort"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "classify",
+      "levelFloor": "G1",
+      "runtimes": [
+        "group"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "repair",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "explain",
+      "levelFloor": "G2",
+      "runtimes": [
+        "puzzle"
+      ],
+      "status": "planned"
+    }
   ],
   "taskMatrixExclusions": [
-    { "structure": "direct", "task": "adjust",
+    {
+      "structure": "direct",
+      "task": "adjust",
       "reasonZh": "「改变一侧使关系成立」必须先量出差距才知道改多少，那是 difference × adjust；只要求「变得更长」的调整没有唯一正确的判定。",
-      "reasonEn": "Changing one side until the relation holds needs the gap quantified first, which is difference x adjust; an adjustment that only asks for \"longer\" has no single correct outcome to judge." },
-    { "structure": "direct", "task": "explain",
+      "reasonEn": "Changing one side until the relation holds needs the gap quantified first, which is difference x adjust; an adjustment that only asks for \"longer\" has no single correct outcome to judge."
+    },
+    {
+      "structure": "direct",
+      "task": "explain",
       "reasonZh": "直接比较的理由就是结论本身（「因为它更长」），说理退化成复述判断，训练不到新东西。",
-      "reasonEn": "The reason for a direct comparison is the conclusion itself (\"because it is longer\"); explaining degenerates into restating the judgment." },
-    { "structure": "equivalence", "task": "order",
+      "reasonEn": "The reason for a direct comparison is the conclusion itself (\"because it is longer\"); explaining degenerates into restating the judgment."
+    },
+    {
+      "structure": "equivalence",
+      "task": "order",
       "reasonZh": "相等的对象之间没有先后，排序退化；含并列的排序属于 direct × order。",
-      "reasonEn": "Equal objects have no order, so ordering degenerates; ordering with ties belongs to direct x order." },
-    { "structure": "equivalence", "task": "explain",
+      "reasonEn": "Equal objects have no order, so ordering degenerates; ordering with ties belongs to direct x order."
+    },
+    {
+      "structure": "equivalence",
+      "task": "explain",
       "reasonZh": "「为什么一样多」有意义的回答来自守恒（没有添也没有拿走），那是 interference × explain；表面相同的说理只是复述。",
-      "reasonEn": "A meaningful answer to \"why are they the same\" comes from conservation (nothing added or taken away), which is interference x explain; explaining a surface sameness only restates it." },
-    { "structure": "interference", "task": "fit",
+      "reasonEn": "A meaningful answer to \"why are they the same\" comes from conservation (nothing added or taken away), which is interference x explain; explaining a surface sameness only restates it."
+    },
+    {
+      "structure": "interference",
+      "task": "fit",
       "reasonZh": "适配场景只画直的木板，弯曲或卷起的载体画不进桥面；而且适配靠目测对齐，恰好会奖励孩子相信表面线索。重做 fit 渲染后再评估。",
-      "reasonEn": "The fit scene draws only straight planks, so a bent or coiled carrier cannot be shown, and fitting by eye rewards trusting the surface cue this structure exists to inhibit. Re-evaluate after a fit renderer rework." },
-    { "structure": "interference", "task": "adjust",
+      "reasonEn": "The fit scene draws only straight planks, so a bent or coiled carrier cannot be shown, and fitting by eye rewards trusting the surface cue this structure exists to inhibit. Re-evaluate after a fit renderer rework."
+    },
+    {
+      "structure": "interference",
+      "task": "adjust",
       "reasonZh": "调整会真的改变数量，而干扰题的要点恰恰是布局改变不改变数量；两者混在一题里，分不清孩子是在抗干扰还是在计数。",
-      "reasonEn": "Adjusting really changes the quantity, while the point of an interference item is that a layout change does not; mixing the two in one item hides whether the child resisted the cue or simply counted." },
-    { "structure": "difference", "task": "order",
+      "reasonEn": "Adjusting really changes the quantity, while the point of an interference item is that a layout change does not; mixing the two in one item hides whether the child resisted the cue or simply counted."
+    },
+    {
+      "structure": "difference",
+      "task": "order",
       "reasonZh": "按「差多少」排序是比较差值的二阶比较，超出 K1-G2 范围，G3 以后再评估。",
-      "reasonEn": "Ordering pairs by how much they differ is a second-order comparison of differences, beyond K1-G2; re-evaluate from G3." },
-    { "structure": "difference", "task": "classify",
+      "reasonEn": "Ordering pairs by how much they differ is a second-order comparison of differences, beyond K1-G2; re-evaluate from G3."
+    },
+    {
+      "structure": "difference",
+      "task": "classify",
       "reasonZh": "按差值分组同样是二阶比较，超出 K1-G2 范围，G3 以后再评估。",
-      "reasonEn": "Grouping by the size of a difference is likewise second-order, beyond K1-G2; re-evaluate from G3." },
-    { "structure": "difference", "task": "fit",
+      "reasonEn": "Grouping by the size of a difference is likewise second-order, beyond K1-G2; re-evaluate from G3."
+    },
+    {
+      "structure": "difference",
+      "task": "fit",
       "reasonZh": "适配靠目测对齐缺口，一旦要求说出差多少就变成了 adjust；两者合在适配场景里会让目测替代了量化。",
-      "reasonEn": "Fitting is judged by eye against the gap; once the child must say by how much, it becomes adjust, and inside the fit scene eyeballing would stand in for quantifying." },
-    { "structure": "transitive", "task": "classify",
+      "reasonEn": "Fitting is judged by eye against the gap; once the child must say by how much, it becomes adjust, and inside the fit scene eyeballing would stand in for quantifying."
+    },
+    {
+      "structure": "transitive",
+      "task": "classify",
       "reasonZh": "传递线索定义的是一条完整顺序，分组会丢掉顺序信息，本质是 order。",
-      "reasonEn": "Transitive clues define a full order; grouping throws the order away, so the real task is order." },
-    { "structure": "transitive", "task": "fit",
+      "reasonEn": "Transitive clues define a full order; grouping throws the order away, so the real task is order."
+    },
+    {
+      "structure": "transitive",
+      "task": "fit",
       "reasonZh": "传递题的对象从不同时出现，没有可以对照的参照物，适配无从成立。",
-      "reasonEn": "The objects of a transitive item never appear together, so there is no reference to fit against." },
-    { "structure": "transitive", "task": "adjust",
+      "reasonEn": "The objects of a transitive item never appear together, so there is no reference to fit against."
+    },
+    {
+      "structure": "transitive",
+      "task": "adjust",
       "reasonZh": "传递题是从给定关系推出结论，没有可以改动的量；改动条件等于换了一道题。",
-      "reasonEn": "A transitive item infers a conclusion from given relations; there is no quantity to change, and changing a premise is simply a different item." },
-    { "structure": "multi_criteria", "task": "fit",
+      "reasonEn": "A transitive item infers a conclusion from given relations; there is no quantity to change, and changing a premise is simply a different item."
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "fit",
       "reasonZh": "适配场景只有一个参照维度（缺口长度），第二个标准画不进去。",
-      "reasonEn": "The fit scene has a single reference dimension (gap length); a second criterion cannot be shown." },
-    { "structure": "multi_criteria", "task": "adjust",
+      "reasonEn": "The fit scene has a single reference dimension (gap length); a second criterion cannot be shown."
+    },
+    {
+      "structure": "multi_criteria",
+      "task": "adjust",
       "reasonZh": "改一个属性去同时满足几条标准，是约束式创造，需要属性编辑器才能自动判定，超出 K1-G2 范围。",
-      "reasonEn": "Changing one attribute to satisfy several criteria at once is constrained creation, which needs an attribute editor to judge automatically; beyond K1-G2." }
+      "reasonEn": "Changing one attribute to satisfy several criteria at once is constrained creation, which needs an attribute editor to judge automatically; beyond K1-G2."
+    }
   ],
   "sessionPolicy": {
     "maxItemsPerSession": 8,
@@ -352,18 +1091,50 @@
       "objectiveEn": "Compare directly on one perceptual dimension and judge same or different, without numerals.",
       "curriculumAnchorsZh": "幼儿园数学：比多少、比长短、比高矮、比大小；认识图形与颜色。",
       "curriculumAnchorsEn": "Pre-K math: more or fewer, longer or shorter, taller or shorter, bigger or smaller; shapes and colours.",
-      "numberRange": { "min": 1, "max": 10 },
+      "numberRange": {
+        "min": 1,
+        "max": 10
+      },
       "numerals": false,
-      "primaryTypes": ["direct", "equivalence"],
-      "primaryTasks": ["judge", "select", "order", "classify", "fit"],
-      "plannedTypes": ["direct", "equivalence"],
-      "plannedTasks": ["judge", "select", "order", "classify", "fit"],
+      "primaryTypes": [
+        "direct",
+        "equivalence"
+      ],
+      "primaryTasks": [
+        "judge",
+        "select",
+        "order",
+        "classify",
+        "fit"
+      ],
+      "plannedTypes": [
+        "direct",
+        "equivalence"
+      ],
+      "plannedTasks": [
+        "judge",
+        "select",
+        "order",
+        "classify",
+        "fit"
+      ],
       "status": "partial",
-      "implementedBy": ["learning-math-comparison"],
-      "implementedModes": ["puzzle", "sort", "match", "group", "fit", "mini"],
+      "implementedBy": [
+        "learning-math-comparison"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "sort",
+        "match",
+        "group",
+        "fit",
+        "mini"
+      ],
       "coverageGapZh": "已上线：直接比较的判断、排序、归类、适配，形状颜色找不同，三个中找最大最小（direct × select）。待做：带「一样」选项的等同判断。",
       "coverageGapEn": "Shipped: direct judge, order, classify and fit, shape/colour odd-one-out, and finding the extreme among three (direct x select). To do: equivalence judging with a \"same\" option.",
-      "sourceLevels": ["L1"]
+      "sourceLevels": [
+        "L1"
+      ]
     },
     {
       "levelId": "L2",
@@ -373,18 +1144,54 @@
       "objectiveEn": "Compare quantities and numerals within 10; begin resisting perceptual interference (conservation) and judging through a medium such as a balance.",
       "curriculumAnchorsZh": "幼儿园大班：10 以内的数与数量对应；比轻重。",
       "curriculumAnchorsEn": "Kindergarten: numbers within 10 and one-to-one correspondence; heavier and lighter.",
-      "numberRange": { "min": 1, "max": 10 },
+      "numberRange": {
+        "min": 1,
+        "max": 10
+      },
       "numerals": true,
-      "primaryTypes": ["direct", "equivalence", "interference", "mediated"],
-      "primaryTasks": ["judge", "select", "classify", "fit"],
-      "plannedTypes": ["direct", "equivalence", "interference", "mediated"],
-      "plannedTasks": ["judge", "select", "classify", "fit", "adjust", "repair"],
+      "primaryTypes": [
+        "direct",
+        "equivalence",
+        "interference",
+        "mediated"
+      ],
+      "primaryTasks": [
+        "judge",
+        "select",
+        "classify",
+        "fit"
+      ],
+      "plannedTypes": [
+        "direct",
+        "equivalence",
+        "interference",
+        "mediated"
+      ],
+      "plannedTasks": [
+        "judge",
+        "select",
+        "classify",
+        "fit",
+        "adjust",
+        "repair"
+      ],
       "status": "partial",
-      "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
-      "implementedModes": ["puzzle", "match", "group", "fit", "mini"],
+      "implementedBy": [
+        "learning-math-comparison",
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "match",
+        "group",
+        "fit",
+        "mini"
+      ],
       "coverageGapZh": "已上线：直接比较与找不同、天平神秘盒子判轻重（mediated × judge，替换了原来考常识的轻重题）、同样时间比路程的赛跑证据题（替换了原来考常识的快慢题）、画得大不等于真的大（interference × judge）。待做：守恒题（散开的点、弯绳直绳）、调整至相等、纠错。",
       "coverageGapEn": "Shipped: direct comparison and odd-one-out, balance mystery boxes for weight (mediated x judge, replacing the old common-sense weight items), race-evidence items comparing distance at equal time (replacing the old common-sense speed items), and drawn-bigger-is-not-really-bigger (interference x judge). To do: conservation items (spread dots, bent vs straight rope), adjust-until-equal, and repair.",
-      "sourceLevels": ["L2"]
+      "sourceLevels": [
+        "L2"
+      ]
     },
     {
       "levelId": "L3",
@@ -394,18 +1201,52 @@
       "objectiveEn": "Move from comparing to quantifying within 20: how many more or fewer, which is closer; compare through units and the number line; compare on a named criterion.",
       "curriculumAnchorsZh": "一年级：20 以内的数、加减法、> < = 符号；认识钟表；认识人民币；认识图形。",
       "curriculumAnchorsEn": "Grade 1: numbers within 20, addition and subtraction, the > < = signs; telling time; money; shapes.",
-      "numberRange": { "min": 1, "max": 20 },
+      "numberRange": {
+        "min": 1,
+        "max": 20
+      },
       "numerals": true,
-      "primaryTypes": ["direct", "equivalence", "mediated", "multi_criteria"],
-      "primaryTasks": ["judge", "select", "fit"],
-      "plannedTypes": ["direct", "equivalence", "interference", "difference", "mediated", "multi_criteria"],
-      "plannedTasks": ["judge", "select", "order", "adjust", "repair"],
+      "primaryTypes": [
+        "direct",
+        "equivalence",
+        "mediated",
+        "multi_criteria",
+        "difference"
+      ],
+      "primaryTasks": [
+        "judge",
+        "select",
+        "fit"
+      ],
+      "plannedTypes": [
+        "direct",
+        "equivalence",
+        "interference",
+        "mediated",
+        "multi_criteria"
+      ],
+      "plannedTasks": [
+        "judge",
+        "select",
+        "order",
+        "adjust",
+        "repair"
+      ],
       "status": "partial",
-      "implementedBy": ["learning-math-comparison", "learning-math-number-sense"],
-      "implementedModes": ["puzzle", "fit", "mini"],
-      "coverageGapZh": "已上线：20 以内直接比较、多属性判断、三架天平综合找最重最轻（mediated × select，不需要传递推理）、三个选手同样时间找最快（mediated × select）、数方格比面积（area 载体）。待做：差量（多几个、还差几个）、数轴上的接近判断、算式比较（3+4 ○ 8）、非标准单位测量、事件先后排序与找放错的一个、钟面与钱币。",
-      "coverageGapEn": "Shipped: direct comparison within 20, multi-attribute judging, finding the heaviest/lightest from three balances (mediated x select, no transitive reasoning needed), finding the fastest of three racers in equal time (mediated x select), and counting grid squares to compare area (the area carrier). To do: difference (how many more, how many missing), closeness on a number line, comparing expressions (3+4 ○ 8), non-standard units, ordering events and finding the misplaced one, clocks and money.",
-      "sourceLevels": ["L3"]
+      "implementedBy": [
+        "learning-math-comparison",
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "fit",
+        "mini"
+      ],
+      "coverageGapZh": "已上线：20 以内直接比较、多属性判断、三架天平综合找最重最轻（mediated × select，不需要传递推理）、三个选手同样时间找最快（mediated × select）、数方格比面积（area 载体）、差量判断——数量/面积/用时/重量相差几个（difference × judge）。待做：数轴上的接近判断、算式比较（3+4 ○ 8）、非标准单位测量、事件先后排序与找放错的一个、钟面与钱币。",
+      "coverageGapEn": "Shipped: direct comparison within 20, multi-attribute judging, finding the heaviest/lightest from three balances (mediated x select, no transitive reasoning needed), finding the fastest of three racers in equal time (mediated x select), counting grid squares to compare area (the area carrier), and the difference amount itself — how many more/fewer in count, squares, seconds or weight units (difference x judge). To do: closeness on a number line, comparing expressions (3+4 ○ 8), non-standard units, ordering events and finding the misplaced one, clocks and money.",
+      "sourceLevels": [
+        "L3"
+      ]
     },
     {
       "levelId": "L4",
@@ -415,18 +1256,51 @@
       "objectiveEn": "Move from direct comparison to reasoning within 100: place value, transitive relations, balance substitution, weighing several criteria and explaining why.",
       "curriculumAnchorsZh": "二年级：100 以内的数与位值、两位数加减；长度单位厘米与米；时、分。",
       "curriculumAnchorsEn": "Grade 2: numbers within 100 and place value, two-digit addition and subtraction; centimetres and metres; hours and minutes.",
-      "numberRange": { "min": 1, "max": 100 },
+      "numberRange": {
+        "min": 1,
+        "max": 100
+      },
       "numerals": true,
-      "primaryTypes": ["direct", "interference", "mediated", "transitive", "multi_criteria"],
-      "primaryTasks": ["judge", "select", "order"],
-      "plannedTypes": ["direct", "interference", "difference", "mediated", "transitive", "multi_criteria"],
-      "plannedTasks": ["judge", "select", "order", "repair", "explain"],
+      "primaryTypes": [
+        "direct",
+        "interference",
+        "mediated",
+        "transitive",
+        "multi_criteria"
+      ],
+      "primaryTasks": [
+        "judge",
+        "select",
+        "order"
+      ],
+      "plannedTypes": [
+        "direct",
+        "interference",
+        "difference",
+        "mediated",
+        "transitive",
+        "multi_criteria"
+      ],
+      "plannedTasks": [
+        "judge",
+        "select",
+        "order",
+        "repair",
+        "explain"
+      ],
       "status": "partial",
-      "implementedBy": ["learning-math-comparison"],
-      "implementedModes": ["puzzle", "mini"],
+      "implementedBy": [
+        "learning-math-comparison"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "mini"
+      ],
       "coverageGapZh": "已上线：100 以内数字比较、多属性判断、时长比较、限时小游戏、链式天平找最重最轻（transitive × select）、天平替换推理（transitive × judge，k 个小球=1 个方块）、赛跑中先分清哪个量一样再判断快慢（mediated × judge）、细长的不一定大（interference × judge，面积载体）。待做：位值（47 vs 74）、两个算式比较、单位换算后比较、容量守恒说理、钟面时刻早晚。",
       "coverageGapEn": "Shipped: numerals within 100, multi-attribute judging, durations, timed mini-games, finding the heaviest/lightest via a chain of two balances (transitive x select), balance substitution reasoning (transitive x judge, k balls = 1 block), races where the child must first spot which quantity is shared (mediated x judge), and \"longer is not always bigger\" (interference x judge, the area carrier). To do: place value (47 vs 74), comparing two expressions, comparing after unit conversion, explaining capacity conservation, earlier or later on a clock.",
-      "sourceLevels": ["L4"]
+      "sourceLevels": [
+        "L4"
+      ]
     },
     {
       "levelId": "L5",
@@ -434,8 +1308,15 @@
       "gradeCode": "G3",
       "objectiveZh": "进行间接与链式比较（A>B, B>C 推导 A>C），链条更长、条件更隐蔽。",
       "objectiveEn": "Perform indirect and chain comparison with longer chains and less explicit premises.",
-      "primaryTypes": ["transitive", "mediated"],
-      "primaryTasks": ["judge", "order", "explain"],
+      "primaryTypes": [
+        "transitive",
+        "mediated"
+      ],
+      "primaryTasks": [
+        "judge",
+        "order",
+        "explain"
+      ],
       "status": "planned"
     },
     {
@@ -444,8 +1325,14 @@
       "gradeCode": "G4",
       "objectiveZh": "在多维标准下比较并说明取舍理由。",
       "objectiveEn": "Compare under multi-criteria and explain trade-offs.",
-      "primaryTypes": ["multi_criteria"],
-      "primaryTasks": ["select", "order", "explain"],
+      "primaryTypes": [
+        "multi_criteria"
+      ],
+      "primaryTasks": [
+        "select",
+        "order",
+        "explain"
+      ],
       "status": "planned"
     },
     {
@@ -454,8 +1341,14 @@
       "gradeCode": "G5",
       "objectiveZh": "比较策略效率与条件充分性，形成可解释判断。",
       "objectiveEn": "Compare strategy efficiency and condition sufficiency with explanations.",
-      "primaryTypes": ["multi_criteria", "difference"],
-      "primaryTasks": ["judge", "explain"],
+      "primaryTypes": [
+        "multi_criteria",
+        "difference"
+      ],
+      "primaryTasks": [
+        "judge",
+        "explain"
+      ],
       "status": "planned"
     },
     {
@@ -464,8 +1357,14 @@
       "gradeCode": "G6",
       "objectiveZh": "比较证据强弱与信息可信度，完成综合判断（evidence 载体）。",
       "objectiveEn": "Compare evidence strength and information reliability for integrated judgment (evidence carrier).",
-      "primaryTypes": ["multi_criteria", "mediated"],
-      "primaryTasks": ["select", "explain"],
+      "primaryTypes": [
+        "multi_criteria",
+        "mediated"
+      ],
+      "primaryTasks": [
+        "select",
+        "explain"
+      ],
       "status": "planned"
     }
   ],
@@ -482,37 +1381,72 @@
       "titleZh": "数学比较与数感训练介绍",
       "titleEn": "Math Comparison and Number Sense Intro",
       "status": "implemented",
-      "linkedGameIds": ["learning-math-comparison", "learning-math-number-sense"],
-      "linkedLessonIds": ["learning-math-comparison-l1", "learning-math-number-sense-l1"]
+      "linkedGameIds": [
+        "learning-math-comparison",
+        "learning-math-number-sense"
+      ],
+      "linkedLessonIds": [
+        "learning-math-comparison-l1",
+        "learning-math-number-sense-l1"
+      ]
     }
   ],
   "exercises": [
     {
       "id": "cmp-quantity-direct",
       "type": "direct",
-      "levelRange": ["L1", "L4"],
+      "levelRange": [
+        "L1",
+        "L4"
+      ],
       "descriptionZh": "数量与数字的直接比较。",
       "descriptionEn": "Direct comparison of quantities and numerals.",
       "status": "implemented",
-      "sourceGameIds": ["learning-math-comparison", "learning-math-number-sense"],
-      "sourceLessonIds": ["learning-math-comparison-l1", "learning-math-number-sense-l1"],
-      "sourceLevelIds": ["L1", "L2", "L3", "L4"]
+      "sourceGameIds": [
+        "learning-math-comparison",
+        "learning-math-number-sense"
+      ],
+      "sourceLessonIds": [
+        "learning-math-comparison-l1",
+        "learning-math-number-sense-l1"
+      ],
+      "sourceLevelIds": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ]
     },
     {
       "id": "cmp-length-direct",
       "type": "direct",
-      "levelRange": ["L1", "L4"],
+      "levelRange": [
+        "L1",
+        "L4"
+      ],
       "descriptionZh": "通过直观线段长短进行直接比较与排序。",
       "descriptionEn": "Direct comparison and ordering by visual bar length.",
       "status": "implemented",
-      "sourceGameIds": ["learning-math-comparison"],
-      "sourceLessonIds": ["learning-math-comparison-l1"],
-      "sourceLevelIds": ["L1", "L2", "L3", "L4"]
+      "sourceGameIds": [
+        "learning-math-comparison"
+      ],
+      "sourceLessonIds": [
+        "learning-math-comparison-l1"
+      ],
+      "sourceLevelIds": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ]
     },
     {
       "id": "cmp-conservation",
       "type": "interference",
-      "levelRange": ["L2", "L4"],
+      "levelRange": [
+        "L2",
+        "L4"
+      ],
       "descriptionZh": "数量、长度与容量守恒：布局改变不改变多少。",
       "descriptionEn": "Conservation of number, length and capacity: a layout change does not change the amount.",
       "status": "planned"
@@ -520,7 +1454,10 @@
     {
       "id": "cmp-difference",
       "type": "difference",
-      "levelRange": ["L3", "L4"],
+      "levelRange": [
+        "L3",
+        "L4"
+      ],
       "descriptionZh": "多几个、少几个、还差几个。",
       "descriptionEn": "How many more, how many fewer, how many missing.",
       "status": "planned"
@@ -528,7 +1465,10 @@
     {
       "id": "cmp-balance",
       "type": "mediated",
-      "levelRange": ["L2", "L4"],
+      "levelRange": [
+        "L2",
+        "L4"
+      ],
       "descriptionZh": "外观相同的物体只能看天平判断轻重；替换推理。",
       "descriptionEn": "Identical-looking objects judged only from a balance; substitution reasoning.",
       "status": "planned"
@@ -536,7 +1476,10 @@
     {
       "id": "cmp-chain-relation",
       "type": "transitive",
-      "levelRange": ["L4", "L7"],
+      "levelRange": [
+        "L4",
+        "L7"
+      ],
       "descriptionZh": "链式关系推导比较。",
       "descriptionEn": "Chain relation inference comparison.",
       "status": "planned"
@@ -544,7 +1487,10 @@
     {
       "id": "cmp-evidence-quality",
       "type": "multi_criteria",
-      "levelRange": ["L7", "L8"],
+      "levelRange": [
+        "L7",
+        "L8"
+      ],
       "descriptionZh": "证据充分性与可信度比较。",
       "descriptionEn": "Evidence sufficiency and credibility comparison.",
       "status": "planned"
@@ -596,19 +1542,29 @@
     "aggregationRules": [
       {
         "id": "time-by-game-mode",
-        "appliesTo": ["avgTimeMs"],
+        "appliesTo": [
+          "avgTimeMs"
+        ],
         "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，interaction 是单个活动时长，mini 是整局（12-18 个 round）净时长，三者不可混算。mini 的可比时间指标是 avgRoundMs。",
         "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, interaction is per-activity time, mini is the whole run (12-18 rounds). They are not comparable; for mini use avgRoundMs instead."
       },
       {
         "id": "one-template-one-attempt",
-        "appliesTo": ["completionRate", "accuracy"],
+        "appliesTo": [
+          "completionRate",
+          "accuracy"
+        ],
         "ruleZh": "一个 mini 模板只产生一个 Attempt，权重与一道 puzzle 相同；round 数只存在于 process 中，round 级事件属遥测，不得计为 Attempt。",
         "ruleEn": "A mini template yields exactly one Attempt, weighted like a single puzzle question. Round counts live only in process; round-level events are telemetry and must not be counted as attempts."
       },
       {
         "id": "engine-not-poolable",
-        "appliesTo": ["accuracy", "avgRoundMs", "bestStreak", "errorType"],
+        "appliesTo": [
+          "accuracy",
+          "avgRoundMs",
+          "bestStreak",
+          "errorType"
+        ],
         "ruleZh": "gameEngine 已实现两个取值：quick_compare（左右二选一，一轮一次判断）与 build_time（从递减的一堆里取最长/最短，一轮一次放置）。两者的一轮不是同一件事；errorType 取值相同（perception / polarity_confusion），但同一个标签在两个引擎里指的是不同的失误（前者是「问更少却选了更多」，后者是抓了堆里的另一个极端）。因此 mini 内部仍必须按 gameEngine 分桶，不可只按 game_mode 汇总。",
         "ruleEn": "gameEngine currently has two implemented values: quick_compare (a two-way choice per round) and build_time (taking the longest/shortest from a shrinking pile, one placement per round). A round is different work in each, and although both report the same errorType values (perception / polarity_confusion), the same label denotes a different slip per engine. Metrics inside mini MUST therefore still be bucketed by gameEngine, not pooled by game_mode alone."
       }

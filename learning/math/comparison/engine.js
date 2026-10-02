@@ -616,6 +616,17 @@ var CmpEngine = (function () {
     var state = _getCycleState(level);
     if (!state || !state.plan || state.plan.length === 0) {
       state = _initNewCycle(level, templates);
+    } else {
+      // The template pool for a level can grow (new content ships) or shrink
+      // between visits. A plan built from the old pool would never surface an
+      // id it didn't know about until doneInCycle happens to exhaust it,
+      // which can take a very long time — so replan immediately on mismatch
+      // instead of waiting. completedCycles/unlocked still carry over via
+      // _initNewCycle reading the previous state.
+      var poolIds = pool.map(function(t) { return t.id; });
+      var stale = poolIds.length !== state.plan.length ||
+        poolIds.some(function(id) { return state.plan.indexOf(id) === -1; });
+      if (stale) state = _initNewCycle(level, templates);
     }
 
     // Resume: active session with unanswered questions remaining

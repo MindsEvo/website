@@ -143,6 +143,11 @@
     '.cq-race-fill{position:absolute;right:0;top:0;bottom:0;background:#3b82f6;border-radius:999px;}',
     '.cq-race-runner{position:absolute;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;box-sizing:border-box;border-radius:50%;background:#fff;border:2px solid #3b82f6;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.25);}',
     '.cq-race-timer{font-size:12px;font-weight:800;color:#475569;white-space:nowrap;}',
+    // Difference evidence rows (quantity_diff reuses .cq-dots-pair; race_diff/weight_diff share these)
+    '.cq-evid{display:flex;flex-direction:column;gap:12px;}',
+    '.cq-evid-row{display:flex;align-items:center;gap:12px;}',
+    '.cq-evid-emoji{font-size:30px;line-height:1;}',
+    '.cq-evid-readout{font-size:16px;font-weight:900;color:#1e293b;background:#f1f5f9;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px 14px;}',
     // Area (Z4/Z5)
     '.cq-grid-pair{display:flex;gap:20px;justify-content:center;align-items:flex-end;width:100%;flex-wrap:wrap;}',
     '.cq-grid-cell-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}',
@@ -242,6 +247,10 @@
       case 'race_variant':  zh=q.askFaster?'谁跑得<b>更快</b>？':'谁跑得<b>更慢</b>？'; en=q.askFaster?'Who ran <b>faster</b>?':'Who ran <b>slower</b>?'; break;
       case 'area_grid':
       case 'area_rect':     zh=q.askBigger?'哪个图形<b>更大</b>？':'哪个图形<b>更小</b>？'; en=q.askBigger?'Which shape is <b>bigger</b>?':'Which shape is <b>smaller</b>?'; break;
+      case 'quantity_diff': zh='两边<b>相差几个</b>？'; en='<b>By how many</b> do the two sides differ?'; break;
+      case 'area_diff':     zh='两个图形<b>相差几格</b>？'; en='<b>By how many squares</b> do the two shapes differ?'; break;
+      case 'race_diff':     zh='两位选手<b>相差几秒</b>？'; en='<b>By how many seconds</b> do the two racers differ?'; break;
+      case 'weight_diff':   zh='两个盒子<b>相差几个</b>重量单位？'; en='<b>By how many units</b> do the two boxes differ?'; break;
       default: zh='选出正确答案。'; en='Choose the correct answer.';
     }
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
@@ -261,6 +270,9 @@
   var SLOT_COLORS  = ['#0ea5e9', '#10b981', '#f59e0b'];
   var SLOT_NEUTRAL = '#64748b';
   var SLOT_COLORED = { length: 1, height: 1 };
+  // `difference` judge types: options are numeric gap values, not slot
+  // pointers (see renderOption / _optBody).
+  var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1 };
   var H_BAR_MAX    = 80;   // px; must match .cq-h-track height minus the emoji
   var MA_BOX       = 96;   // px; the biggest object in a multi_attribute pair
                            // (must stay <= the .cq-ma-box height)
@@ -297,7 +309,9 @@
            type === 'balance_judge' || type === 'balance_select' ||
            type === 'balance_chain' || type === 'balance_swap' ||
            type === 'race_judge' || type === 'race_select' || type === 'race_variant' ||
-           type === 'area_grid' || type === 'area_rect';
+           type === 'area_grid' || type === 'area_rect' ||
+           type === 'quantity_diff' || type === 'area_diff' ||
+           type === 'race_diff' || type === 'weight_diff';
   }
 
   function _sceneHtml(q) {
@@ -322,6 +336,10 @@
       case 'race_select':    return _raceSelectScene(q);
       case 'area_grid':      return _areaGridScene(q);
       case 'area_rect':      return _areaRectScene(q);
+      case 'quantity_diff':  return _quantityScene(q);
+      case 'area_diff':      return _areaGridScene(q);
+      case 'race_diff':      return _raceDiffScene(q);
+      case 'weight_diff':    return _weightDiffScene(q);
       default: return '';
     }
   }
@@ -547,6 +565,31 @@
     return h + '</div>';
   }
 
+  // ── Difference evidence scenes ──────────────────────────────────────────────
+  // Both carriers reduce to the same shape: a slot badge, the (shared, identity-
+  // neutral) icon, and an instrument readout — no position/tilt to read, since
+  // the whole point of these two is that only the number differs.
+  function _evidenceRowHtml(badge, emoji, readout) {
+    return '<div class="cq-evid-row">' + badge +
+      '<div class="cq-evid-emoji">' + emoji + '</div>' +
+      '<div class="cq-evid-readout">' + readout + '</div>' +
+    '</div>';
+  }
+
+  function _raceDiffScene(q) {
+    return '<div class="cq-evid">' +
+      _evidenceRowHtml(_slotBadge(0, q.type), q.emoji, '⏱ ' + q.leftSeconds + '秒') +
+      _evidenceRowHtml(_slotBadge(1, q.type), q.emoji, '⏱ ' + q.rightSeconds + '秒') +
+    '</div>';
+  }
+
+  function _weightDiffScene(q) {
+    return '<div class="cq-evid">' +
+      _evidenceRowHtml(_slotBadge(0, q.type), q.emoji, '⚖️ ' + q.leftWeight) +
+      _evidenceRowHtml(_slotBadge(1, q.type), q.emoji, '⚖️ ' + q.rightWeight) +
+    '</div>';
+  }
+
   // ── Area scenes (Z4/Z5) ────────────────────────────────────────────────────
 
   var GRID_CELL = 20;
@@ -598,6 +641,12 @@
     // offers it (§1.3). Checked first so it short-circuits the scene branch
     // below, which would otherwise try to treat it as slot index 0.
     if (opt === 'same') return '<div class="cq-opt">' + _optSameCard(q) + '</div>';
+
+    // `difference` judge types: the options are candidate gap NUMBERS, not
+    // slot pointers — the scene still renders the evidence, but the option
+    // itself IS the answer, so it skips _optPointer entirely (checked before
+    // the _hasScene branch for the same reason "same" is checked first).
+    if (DIFF_VALUE_TYPES[q.type]) return '<div class="cq-opt">' + _optBody(opt, q) + '</div>';
 
     // Scene-backed type → pointer only. See the slot-marker contract above.
     if (_hasScene(q.type)) return '<div class="cq-opt">'+_optPointer(opt,q)+'</div>';
@@ -670,6 +719,8 @@
         var tev=opt==='left'?{zh:q.leftEventZh,en:q.leftEventEn}:{zh:q.rightEventZh,en:q.rightEventEn};
         return '<div class="cq-opt-label" style="font-size:15px;font-weight:900;color:#1e293b;"><span class="zh">'+tev.zh+'</span><span class="en">'+tev.en+'</span></div>';
       }
+      case 'quantity_diff': case 'area_diff': case 'race_diff': case 'weight_diff':
+        return '<div class="cq-opt-num">'+opt+'</div>';
       default: return '<div class="cq-opt-label">'+opt+'</div>';
     }
   }
@@ -709,6 +760,10 @@
       case 'race_variant':  zh=q.askFaster?'谁跑得更快？':'谁跑得更慢？'; en=q.askFaster?'Who ran faster?':'Who ran slower?'; break;
       case 'area_grid':
       case 'area_rect':     zh=q.askBigger?'哪个图形更大？':'哪个图形更小？'; en=q.askBigger?'Which shape is bigger?':'Which shape is smaller?'; break;
+      case 'quantity_diff': zh='两边相差几个？'; en='By how many do the two sides differ?'; break;
+      case 'area_diff':     zh='两个图形相差几格？'; en='By how many squares do the two shapes differ?'; break;
+      case 'race_diff':     zh='两位选手相差几秒？'; en='By how many seconds do the two racers differ?'; break;
+      case 'weight_diff':   zh='两个盒子相差几个重量单位？'; en='By how many units do the two boxes differ?'; break;
       default:        zh='请选择答案。'; en='Choose an answer.';
     }
     return shell.lang==='zh'?zh:en;
@@ -1344,7 +1399,7 @@
         });
       }
 
-      _injectCycleProgress(levelId, sr, acts);
+      _injectCycleProgress(levelId, sr, acts, nextLevel);
 
       if (sr.cycleComplete) {
         // Cycle done — show upgrade or retry-cycle; no auto-advance
@@ -1373,7 +1428,7 @@
     observer.observe(resultEl, { attributes: true, attributeFilter: ['class'] });
   }
 
-  function _injectCycleProgress(levelId, sr, acts) {
+  function _injectCycleProgress(levelId, sr, acts, nextLevel) {
     var cycleComplete = sr.cycleComplete;
     var doneCount  = sr.doneCount || 0;
     var totalCount = sr.totalCount || 1;
@@ -1385,8 +1440,16 @@
       barPct  = accuracyPct;
       color   = sr.unlocked ? '#22c55e' : '#f59e0b';
       labelZh = levelId + ' 准确率'; labelEn = levelId + ' Accuracy';
-      msgZh   = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
-      msgEn   = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
+      if (sr.unlocked && !nextLevel) {
+        // Terminal level (G2) mastered: there is nowhere left to "upgrade"
+        // to, so say so explicitly instead of just falling silent — the
+        // retry button still works, this only adds the missing acknowledgment.
+        msgZh = '🏆 K1-G2 全部内容已完成！' + levelId + ' 准确率 ' + accuracyPct + '%，可以继续练习巩固。';
+        msgEn = '🏆 All of K1-G2 complete! ' + levelId + ' accuracy ' + accuracyPct + '% — keep practicing if you like.';
+      } else {
+        msgZh = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
+        msgEn = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
+      }
     } else {
       barPct  = pct;
       color   = '#3b82f6';

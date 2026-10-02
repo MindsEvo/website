@@ -3,7 +3,7 @@
 var CMP_TEMPLATES_DATA = {
   "version": "1.0",
   "module": "comparison",
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-09-30",
   "templates": [
     {
       "id": "cmp-k1-sort-length-001",
@@ -18,9 +18,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sortLength4",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "items": 4, "minGapPct": 18, "theme": "ribbon" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4,
+        "minGapPct": 18,
+        "theme": "ribbon"
+      }
     },
     {
       "id": "cmp-k1-match-size-001",
@@ -35,8 +47,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -52,8 +72,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -69,9 +97,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "groupSize",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "itemsPerBin": 3 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
     },
     {
       "id": "cmp-k1-fit-bridge-001",
@@ -86,9 +124,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 12 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 12
+      }
     },
     {
       "id": "cmp-k1-fit-bridge-002",
@@ -103,9 +151,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 8 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 8
+      }
     },
     {
       "id": "cmp-k2-match-size-001",
@@ -120,8 +178,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -137,9 +203,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "groupSize",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "itemsPerBin": 3 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
     },
     {
       "id": "cmp-k2-fit-bridge-001",
@@ -154,9 +230,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 8 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 8
+      }
     },
     {
       "id": "cmp-g1-fit-bridge-001",
@@ -171,9 +257,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 6 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 6
+      }
     },
     {
       "id": "cmp-k1-mini-quick-001",
@@ -189,8 +285,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "size",
         "durationSec": 30,
@@ -198,7 +302,9 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.6,
         "timerStyle": "collect",
         "askMode": "bigger",
-        "roundParams": { "set": "animals" }
+        "roundParams": {
+          "set": "animals"
+        }
       }
     },
     {
@@ -215,8 +321,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "quantity",
         "durationSec": 40,
@@ -224,7 +338,11 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.7,
         "timerStyle": "countdown",
         "askMode": "fewer",
-        "roundParams": { "minCount": 3, "maxCount": 12, "minGap": 2 }
+        "roundParams": {
+          "minCount": 3,
+          "maxCount": 12,
+          "minGap": 2
+        }
       }
     },
     {
@@ -241,8 +359,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "number",
         "durationSec": 40,
@@ -250,7 +376,11 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.7,
         "timerStyle": "countdown",
         "askMode": "bigger",
-        "roundParams": { "min": 10, "max": 99, "minGap": 2 }
+        "roundParams": {
+          "min": 10,
+          "max": 99,
+          "minGap": 2
+        }
       }
     },
     {
@@ -267,8 +397,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniBuild",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "size",
         "durationSec": 45,
@@ -294,8 +432,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniBuild",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "length",
         "durationSec": 60,
@@ -319,9 +465,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sizeCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "animals", "askMode": "bigger" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "animals",
+        "askMode": "bigger"
+      }
     },
     {
       "id": "cmp-k1-size-002",
@@ -335,9 +492,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sizeCompare",
       "promptType": "which_smaller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "objects", "askMode": "smaller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "objects",
+        "askMode": "smaller"
+      }
     },
     {
       "id": "cmp-k1-size-pick-001",
@@ -351,9 +519,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sizePick3",
       "promptType": "pick_biggest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "animals", "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "animals",
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-length-001",
@@ -367,9 +546,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "ribbons", "gapPct": 40, "askMode": "longer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "ribbons",
+        "gapPct": 40,
+        "askMode": "longer"
+      }
     },
     {
       "id": "cmp-k1-length-002",
@@ -383,9 +574,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "sticks", "gapPct": 40, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "sticks",
+        "gapPct": 40,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k1-length-003",
@@ -399,9 +602,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "paths", "gapPct": 30, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "paths",
+        "gapPct": 30,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-height-001",
@@ -415,9 +630,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "trees", "gapPct": 40, "askMode": "taller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "trees",
+        "gapPct": 40,
+        "askMode": "taller"
+      }
     },
     {
       "id": "cmp-k1-height-002",
@@ -431,9 +658,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 40, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 40,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k1-quantity-001",
@@ -447,9 +686,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "more" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 1,
+        "maxCount": 6,
+        "minGap": 2,
+        "showNumbers": false,
+        "askMode": "more"
+      }
     },
     {
       "id": "cmp-k1-quantity-002",
@@ -463,9 +716,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_fewer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "fewer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 1,
+        "maxCount": 6,
+        "minGap": 2,
+        "showNumbers": false,
+        "askMode": "fewer"
+      }
     },
     {
       "id": "cmp-k1-quantity-003",
@@ -479,9 +746,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 3, "maxCount": 9, "minGap": 1, "showNumbers": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 3,
+        "maxCount": 9,
+        "minGap": 1,
+        "showNumbers": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-shape-001",
@@ -495,9 +776,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k1-shape-002",
@@ -511,9 +804,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "color"
+      }
     },
     {
       "id": "cmp-k1-color-001",
@@ -527,9 +832,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color"
+      }
     },
     {
       "id": "cmp-k1-color-002",
@@ -543,9 +860,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k1-nearfar-001",
@@ -559,9 +888,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "nearFar",
       "promptType": "which_nearer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "nearer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "nearer"
+      }
     },
     {
       "id": "cmp-k1-nearfar-002",
@@ -575,9 +914,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "nearFar",
       "promptType": "which_farther",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "farther" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "farther"
+      }
     },
     {
       "id": "cmp-k1-fullempty-001",
@@ -591,9 +940,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fullEmpty",
       "promptType": "which_fuller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "fuller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "fuller"
+      }
     },
     {
       "id": "cmp-k1-fullempty-002",
@@ -607,9 +966,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fullEmpty",
       "promptType": "which_emptier",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "emptier" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "emptier"
+      }
     },
     {
       "id": "cmp-k2-size-real-001",
@@ -623,9 +992,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sizeReal",
       "promptType": "which_really_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-length-001",
@@ -639,9 +1018,22 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "ropes", "gapPct": 25, "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "ropes",
+        "gapPct": 25,
+        "askMode": "random",
+        "distractors": true
+      }
     },
     {
       "id": "cmp-k2-quantity-001",
@@ -655,9 +1047,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 4, "maxCount": 10, "minGap": 1, "showNumbers": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 4,
+        "maxCount": 10,
+        "minGap": 1,
+        "showNumbers": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-number-001",
@@ -671,9 +1077,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 10, "minGap": 1, "showDots": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 10,
+        "minGap": 1,
+        "showDots": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-number-002",
@@ -687,9 +1107,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 10, "minGap": 1, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 10,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-balance-001",
@@ -703,9 +1137,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "balanceJudge",
       "promptType": "which_heavier",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-race-001",
@@ -719,9 +1163,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "raceJudge",
       "promptType": "which_faster",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-shape-001",
@@ -735,9 +1189,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
       "id": "cmp-k2-height-001",
@@ -751,9 +1217,22 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "trees", "gapPct": 30, "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "trees",
+        "gapPct": 30,
+        "askMode": "random",
+        "distractors": true
+      }
     },
     {
       "id": "cmp-k2-height-002",
@@ -767,9 +1246,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 30, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 30,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k2-nearfar-001",
@@ -783,9 +1274,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "nearFar",
       "promptType": "which_nearer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-fullempty-001",
@@ -799,9 +1300,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fullEmpty",
       "promptType": "which_fuller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-color-001",
@@ -815,9 +1326,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k2-color-002",
@@ -831,9 +1354,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
       "id": "cmp-g1-number-001",
@@ -847,9 +1382,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 20,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-number-002",
@@ -863,9 +1412,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 10, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 10,
+        "max": 20,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-length-001",
@@ -879,9 +1442,22 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "rulers", "gapPct": 20, "visual": "segments", "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "rulers",
+        "gapPct": 20,
+        "visual": "segments",
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-quantity-001",
@@ -895,9 +1471,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 8, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 8,
+        "maxCount": 20,
+        "minGap": 1,
+        "showNumbers": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-time-001",
@@ -911,9 +1501,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "timeOrder",
       "promptType": "which_first",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "daily_events", "askMode": "first" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "daily_events",
+        "askMode": "first"
+      }
     },
     {
       "id": "cmp-g1-balance-001",
@@ -927,9 +1528,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "balanceSelect3",
       "promptType": "which_heaviest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-multiattr-001",
@@ -943,9 +1554,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "multiAttribute",
       "promptType": "which_matches",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size", "color"], "distractors": 1 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color"],
+        "distractors": 1
+      }
     },
     {
       "id": "cmp-g1-area-001",
@@ -959,9 +1581,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "areaGrid",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-color-001",
@@ -975,9 +1607,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
       "id": "cmp-g1-nearfar-001",
@@ -991,9 +1635,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "nearFar",
       "promptType": "which_nearer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-fullempty-001",
@@ -1007,9 +1661,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "fullEmpty",
       "promptType": "which_fuller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-race-001",
@@ -1023,8 +1687,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "raceSelect3",
       "promptType": "which_fastest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -1039,9 +1711,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 25, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 25,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-number-001",
@@ -1055,9 +1739,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 10, "max": 99, "minGap": 3, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 10,
+        "max": 99,
+        "minGap": 3,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-number-002",
@@ -1071,9 +1769,24 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 50, "max": 99, "minGap": 2, "showDots": false, "askMode": "random", "nearEqual": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 50,
+        "max": 99,
+        "minGap": 2,
+        "showDots": false,
+        "askMode": "random",
+        "nearEqual": true
+      }
     },
     {
       "id": "cmp-g2-length-001",
@@ -1087,9 +1800,22 @@ var CMP_TEMPLATES_DATA = {
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "measurements", "gapPct": 15, "visual": "number_with_unit", "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "measurements",
+        "gapPct": 15,
+        "visual": "number_with_unit",
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-multiattr-001",
@@ -1103,9 +1829,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "multiAttribute",
       "promptType": "which_matches",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size", "color", "shape"], "distractors": 2 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color", "shape"],
+        "distractors": 2
+      }
     },
     {
       "id": "cmp-g2-multiattr-002",
@@ -1119,9 +1856,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "multiAttribute",
       "promptType": "ignore_distractor",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size"], "distractors": 2, "ignoreAttribute": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size"],
+        "distractors": 2,
+        "ignoreAttribute": "color"
+      }
     },
     {
       "id": "cmp-g2-time-001",
@@ -1135,9 +1884,20 @@ var CMP_TEMPLATES_DATA = {
       "generator": "timeOrder",
       "promptType": "which_longer_duration",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "durations", "askMode": "longer_duration" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "durations",
+        "askMode": "longer_duration"
+      }
     },
     {
       "id": "cmp-g2-race-001",
@@ -1151,9 +1911,19 @@ var CMP_TEMPLATES_DATA = {
       "generator": "raceVariant",
       "promptType": "which_faster",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-area-001",
@@ -1167,9 +1937,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "areaRect",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "maxSide": 9, "maxArea": 36, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "maxSide": 9,
+        "maxArea": 36,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-height-001",
@@ -1183,9 +1965,21 @@ var CMP_TEMPLATES_DATA = {
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 20, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 20,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-quantity-001",
@@ -1199,9 +1993,23 @@ var CMP_TEMPLATES_DATA = {
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 10, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 10,
+        "maxCount": 20,
+        "minGap": 1,
+        "showNumbers": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-balance-chain-001",
@@ -1215,8 +2023,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "balanceChain",
       "promptType": "which_heaviest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -1231,8 +2047,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "balanceSwap",
       "promptType": "which_heavier",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
@@ -1247,10 +2071,134 @@ var CMP_TEMPLATES_DATA = {
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 20, "max": 99, "minGap": 5, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 20,
+        "max": 99,
+        "minGap": 5,
+        "showDots": false,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g1-diff-quantity-001",
+      "level": "G1",
+      "type": "quantity_diff",
+      "structure": "difference",
+      "carrier": "quantity",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "quantityDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 3,
+        "maxCount": 12,
+        "minGap": 1,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g1-diff-area-001",
+      "level": "G1",
+      "type": "area_diff",
+      "structure": "difference",
+      "carrier": "area",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "areaDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
+    },
+    {
+      "id": "cmp-g1-diff-race-001",
+      "level": "G1",
+      "type": "race_diff",
+      "structure": "difference",
+      "carrier": "speed",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "raceDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minSec": 3,
+        "maxSec": 12,
+        "minGap": 1,
+        "maxGap": 4
+      }
+    },
+    {
+      "id": "cmp-g1-diff-weight-001",
+      "level": "G1",
+      "type": "weight_diff",
+      "structure": "difference",
+      "carrier": "weight",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "weightDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 3,
+        "max": 15,
+        "minGap": 1,
+        "maxGap": 5
+      }
     }
   ]
-}
-;
+};

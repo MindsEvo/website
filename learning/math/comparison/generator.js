@@ -257,6 +257,24 @@ function _askMode(paramAskMode) {
          paramAskMode === 'first';
 }
 
+/**
+ * Shared by the `difference` structure's judge generators (quantityDiff,
+ * areaDiff, raceDiff, weightDiff): given the true gap d (>=1), builds three
+ * distinct non-negative numeric options — d itself, an off-by-one miscount,
+ * and a third value spaced further out — plus the matching optionTypes.
+ */
+function _diffOptionSet(d) {
+  var near = d > 1 ? d - 1 : d + 1;
+  var far = d + 2;
+  var options = _shuffle([d, near, far].map(String));
+  var optionTypes = {};
+  options.forEach(function (v) {
+    var n = Number(v);
+    optionTypes[v] = n === d ? 'none' : 'perception';
+  });
+  return { options: options, answer: String(d), optionTypes: optionTypes };
+}
+
 // ── Generator functions ───────────────────────────────────────────────────────
 
 var Generators = {};
@@ -1612,6 +1630,148 @@ Generators.areaRect = function (params) {
     rightA: rightRect[0], rightB: rightRect[1],
     hintZh: '数一数格子，或者用乘法算面积，看看哪个' + (askBigger ? '更大' : '更小') + '。',
     hintEn: 'Count the squares or multiply the sides to see which is ' + (askBigger ? 'bigger' : 'smaller') + '.'
+  };
+};
+
+// ── Difference (judge): "not just which is more, but by how much" ─────────────
+// All four reuse Phase 2's evidence carriers (quantity dots, area grid shapes,
+// race stopwatch, balance-box readout) but ask for the numeric gap itself, so
+// the three options are candidate numbers, not left/right/same pointers.
+
+/**
+ * quantityDiff: two counted dot groups, same icon — "how many more" as a
+ * number, not "which side has more".
+ */
+Generators.quantityDiff = function (params) {
+  var min = params.minCount || 3;
+  var max = params.maxCount || 12;
+  var minGap = params.minGap || 1;
+  var maxGap = params.maxGap || 5;
+  var obj = _pick(GEN_DATA.quantityObjects);
+
+  var a, b, d, attempts = 0;
+  do {
+    a = _ri(min, max);
+    b = _ri(min, max);
+    d = Math.abs(a - b);
+    attempts++;
+  } while ((d < minGap || d > maxGap) && attempts < 100);
+
+  var opts = _diffOptionSet(d);
+
+  return {
+    type: 'quantity_diff',
+    options: opts.options,
+    answer: opts.answer,
+    optionTypes: opts.optionTypes,
+    leftCount: a, rightCount: b,
+    showNumbers: true,
+    objEmoji: obj.emoji, objNameZh: obj.nameZh, objNameEn: obj.nameEn,
+    hintZh: '数一数两边各有几个' + obj.nameZh + '，再算一算相差几个。',
+    hintEn: 'Count both sides, then work out how many ' + obj.nameEn.toLowerCase() + ' they differ by.'
+  };
+};
+
+/**
+ * areaDiff: two polyomino shapes (same construction as areaGrid's unequal
+ * branch), asking for the cell-count gap instead of which is bigger.
+ */
+Generators.areaDiff = function (params) {
+  var n1 = _ri(4, 12);
+  var diff = _ri(1, 3);
+  var n2 = Math.random() < 0.5 ? n1 + diff : n1 - diff;
+  if (n2 < 4) n2 = n1 + diff;
+  if (n2 > 12) n2 = n1 - diff;
+
+  var moreIsA = n1 > n2;
+  var moreN = moreIsA ? n1 : n2;
+  var fewN = moreIsA ? n2 : n1;
+  var moreCells, fewCells;
+
+  var cside = Math.max(2, Math.ceil(Math.sqrt(moreN)));
+  var compactArea = cside * Math.ceil(moreN / cside);
+  var staircaseArea = _polyBBox(_staircase(fewN, 5, 4)).area;
+  var feasible = staircaseArea >= compactArea;
+
+  if (feasible && Math.random() < 0.75) {
+    moreCells = _normalizeCells(_compactFill(moreN, cside));
+    fewCells = _normalizeCells(_staircase(fewN, 5, 4));
+  } else {
+    var sideA = Math.max(2, Math.ceil(Math.sqrt(moreN)));
+    var sideB = Math.max(2, Math.ceil(Math.sqrt(fewN)));
+    moreCells = _normalizeCells(_growBlob(moreN, Math.min(5, sideA + 1), Math.min(4, sideA + 1)));
+    fewCells = _normalizeCells(_growBlob(fewN, Math.min(5, sideB + 1), Math.min(4, sideB + 1)));
+  }
+  var cellsA = moreIsA ? moreCells : fewCells;
+  var cellsB = moreIsA ? fewCells : moreCells;
+  var bboxA = _polyBBox(cellsA), bboxB = _polyBBox(cellsB);
+
+  var d = Math.abs(n1 - n2);
+  var opts = _diffOptionSet(d);
+
+  return {
+    type: 'area_diff',
+    options: opts.options,
+    answer: opts.answer,
+    optionTypes: opts.optionTypes,
+    leftCells: cellsA, rightCells: cellsB,
+    leftCount: n1, rightCount: n2,
+    leftBBox: bboxA, rightBBox: bboxB,
+    hintZh: '数一数两个图形各占几个方格，再算一算相差几格。',
+    hintEn: 'Count the squares in each shape, then work out the difference.'
+  };
+};
+
+/**
+ * raceDiff: both racers already finished — only the stopwatch seconds
+ * differ, so the question is purely "by how many seconds".
+ */
+Generators.raceDiff = function (params) {
+  var item = _pick(GEN_DATA.racers);
+  var a = _ri(params.minSec || 3, params.maxSec || 12);
+  var gap = _ri(params.minGap || 1, params.maxGap || 4);
+  var b = Math.random() < 0.5 ? a + gap : a - gap;
+  if (b < 2) b = a + gap;
+
+  var d = Math.abs(a - b);
+  var opts = _diffOptionSet(d);
+
+  return {
+    type: 'race_diff',
+    options: opts.options,
+    answer: opts.answer,
+    optionTypes: opts.optionTypes,
+    emoji: item.emoji,
+    leftSeconds: a, rightSeconds: b,
+    hintZh: '两位选手都到了终点，比一比用的时间相差几秒。',
+    hintEn: 'Both racers finished — work out how many seconds their times differ by.'
+  };
+};
+
+/**
+ * weightDiff: same identical-looking mystery box both sides (§1.2); the
+ * evidence is a scale readout (a number), same device as the race stopwatch,
+ * not an eyeballed size cue.
+ */
+Generators.weightDiff = function (params) {
+  var item = _pick(GEN_DATA.mysteryBoxes);
+  var a = _ri(params.min || 3, params.max || 15);
+  var gap = _ri(params.minGap || 1, params.maxGap || 5);
+  var b = Math.random() < 0.5 ? a + gap : a - gap;
+  if (b < 1) b = a + gap;
+
+  var d = Math.abs(a - b);
+  var opts = _diffOptionSet(d);
+
+  return {
+    type: 'weight_diff',
+    options: opts.options,
+    answer: opts.answer,
+    optionTypes: opts.optionTypes,
+    emoji: item.emoji,
+    leftWeight: a, rightWeight: b,
+    hintZh: '看电子秤读数，算一算两个盒子相差几个重量单位。',
+    hintEn: 'Read the scale numbers and work out how many units the two boxes differ by.'
   };
 };
 

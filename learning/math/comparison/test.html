@@ -83,6 +83,10 @@
       return q.leftCount+'|'+q.rightCount+'|'+JSON.stringify(q.leftBBox)+'|'+JSON.stringify(q.rightBBox)+'|'+(q.askBigger?'B':'S');
     if (q.type === 'area_rect')
       return q.leftA+'x'+q.leftB+'|'+q.rightA+'x'+q.rightB+'|'+(q.askBigger?'B':'S');
+    if (q.type === 'quantity_diff') return q.leftCount+'|'+q.rightCount+'|'+q.answer;
+    if (q.type === 'area_diff')     return q.leftCount+'|'+q.rightCount+'|'+JSON.stringify(q.leftBBox)+'|'+JSON.stringify(q.rightBBox)+'|'+q.answer;
+    if (q.type === 'race_diff')     return q.emoji+'|'+q.leftSeconds+'|'+q.rightSeconds+'|'+q.answer;
+    if (q.type === 'weight_diff')   return q.emoji+'|'+q.leftWeight+'|'+q.rightWeight+'|'+q.answer;
     if (q.type === 'number')   return q.leftNum + '|' + q.rightNum + '|' + q.askBigger;
     if (q.type === 'quantity') return q.leftCount + '|' + q.rightCount + '|' + q.askMore;
     if (q.type === 'length')   return Math.round(q.leftPct) + '|' + Math.round(q.rightPct) + '|' + q.askLonger;
@@ -502,9 +506,17 @@
     // separately with 300-draw Node samples, where n=20 would be too noisy to
     // hold to that precision without frequent false positives.
     // Interaction activities have no options — their gate is the structural check above.
+    // `difference` judge types (quantity_diff/area_diff/race_diff/weight_diff)
+    // have no FIXED option set at all — every draw computes its own 3 gap
+    // numbers, so "did option X from draw 0 ever recur" is meaningless noise,
+    // not a balance signal. Their answer/option invariants were already
+    // checked with a 1200-draw Node script when they were built; skip here.
+    var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1 };
     var opts = (isPuzzle && results[0] && results[0].options) || [];
     var balanced = true;
-    if (opts.length === 2) {
+    if (DIFF_VALUE_TYPES[tpl.type]) {
+      // no-op: balanced stays true, see note above.
+    } else if (opts.length === 2) {
       opts.forEach(function(o) {
         var pct = (answerCounts[o] || 0) / RUNS;
         if (pct < 0.2 || pct > 0.8) balanced = false;
@@ -578,6 +590,10 @@
       case 'race_variant':   return 'variant '+q.variant+' L@'+q.leftPct+'%/'+q.leftSeconds+'s R@'+q.rightPct+'%/'+q.rightSeconds+'s → '+q.answer+' (ask '+(q.askFaster?'faster':'slower')+')';
       case 'area_grid':      return q.leftCount+'cells('+q.leftBBox.w+'x'+q.leftBBox.h+') vs '+q.rightCount+'cells('+q.rightBBox.w+'x'+q.rightBBox.h+') → '+q.answer;
       case 'area_rect':      return q.leftA+'x'+q.leftB+' vs '+q.rightA+'x'+q.rightB+' → '+q.answer;
+      case 'quantity_diff':  return q.leftCount+' vs '+q.rightCount+' → diff '+q.answer;
+      case 'area_diff':      return q.leftCount+'cells vs '+q.rightCount+'cells → diff '+q.answer;
+      case 'race_diff':      return q.emoji+' '+q.leftSeconds+'s vs '+q.rightSeconds+'s → diff '+q.answer;
+      case 'weight_diff':    return q.emoji+' ⚖'+q.leftWeight+' vs ⚖'+q.rightWeight+' → diff '+q.answer;
       case 'multi_attribute': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' → '+q.answer;
       case 'sort':    return (q.items||[]).map(function(i){ return i.id+':'+i.lengthPct+'%'; }).join(' ')+' → '+(q.targetOrder||[]).join(',');
       case 'match':   return (q.leftItems||[]).map(function(l){
