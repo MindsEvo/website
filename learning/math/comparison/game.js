@@ -127,6 +127,12 @@
     '.cq-balance-emoji{font-size:26px;line-height:1;}',
     '.cq-balance-pivot{position:absolute;left:50%;top:40px;width:0;height:0;border-left:13px solid transparent;' +
       'border-right:13px solid transparent;border-bottom:22px solid #64748b;transform:translateX(-50%);}',
+    '.cq-expr{font-size:24px;font-weight:900;color:#1e293b;background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:14px 8px;text-align:center;min-width:110px;}',
+    '.cq-money-side{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:8px 6px;min-width:130px;}',
+    '.cq-money-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;}',
+    '.cq-coin{font-size:13px;font-weight:900;color:#334155;background:#fff;border:1.5px solid #cbd5e1;border-radius:999px;padding:3px 8px;white-space:nowrap;}',
+    '.cq-claim{margin-top:4px;padding:10px 14px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;' +
+      'font-size:15px;font-weight:800;color:#9a3412;text-align:center;}',
     '.cq-swap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;}',
     '.cq-swap-ref{display:flex;align-items:center;gap:10px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:10px 16px;}',
     '.cq-swap-side{display:flex;align-items:center;gap:4px;}',
@@ -251,6 +257,23 @@
       case 'area_diff':     zh='两个图形<b>相差几格</b>？'; en='<b>By how many squares</b> do the two shapes differ?'; break;
       case 'race_diff':     zh='两位选手<b>相差几秒</b>？'; en='<b>By how many seconds</b> do the two racers differ?'; break;
       case 'weight_diff':   zh='两个盒子<b>相差几个</b>重量单位？'; en='<b>By how many units</b> do the two boxes differ?'; break;
+      case 'weight_adjust': zh='轻的一边要<b>加几个</b>重量单位才一样重？'; en='<b>How many units</b> should be added to the lighter side to make them equal?'; break;
+      case 'balance_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'size_real_select': zh=q.askBiggest?'三个里<b>真的最大</b>的是哪个？':'三个里<b>真的最小</b>的是哪个？'; en=q.askBiggest?'Which of the three is <b>really the biggest</b>?':'Which of the three is <b>really the smallest</b>?'; break;
+      case 'size_real_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'multi_attribute_select': zh=q.askBiggest?'三个里<b>最大</b>的是哪个？':'三个里<b>最小</b>的是哪个？'; en=q.askBiggest?'Which of the three is the <b>biggest</b>?':'Which of the three is the <b>smallest</b>?'; break;
+      case 'multi_attribute_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'quantity_adjust': zh='少的一边要<b>再加几个</b>，两边才一样多？'; en='How many must the smaller side <b>add</b> to make them equal?'; break;
+      case 'diff_select': zh=q.askBiggest?'哪一行的两个数<b>相差最多</b>？':'哪一行的两个数<b>相差最少</b>？'; en=q.askBiggest?'Which row has the <b>biggest difference</b>?':'Which row has the <b>smallest difference</b>?'; break;
+      case 'equal_judge': zh='左右两边<b>一样多</b>吗？'; en='Are the two sides <b>the same amount</b>?'; break;
+      case 'equal_adjust': zh=q.mode==='add'?'哪一边<b>加上 '+q.gap+' 个</b>，两边就一样多？':'哪一边<b>拿走 '+q.gap+' 个</b>，两边就一样多？'; en=q.mode==='add'?'Which side should <b>add '+q.gap+'</b> to make them equal?':'Which side should <b>remove '+q.gap+'</b> to make them equal?'; break;
+      case 'quantity_repair': case 'transitive_repair': case 'length_repair': case 'equal_repair':
+        zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'expression': zh=q.askBigger?'哪个算式的结果<b>更大</b>？':'哪个算式的结果<b>更小</b>？'; en=q.askBigger?'Which expression has the <b>bigger</b> result?':'Which expression has the <b>smaller</b> result?'; break;
+      case 'clock': zh=q.askEarlier?'同一个上午，哪个时间<b>更早</b>？':'同一个上午，哪个时间<b>更晚</b>？'; en=q.askEarlier?'The same morning — which time is <b>earlier</b>?':'The same morning — which time is <b>later</b>?'; break;
+      case 'money': zh=q.askMore?'哪边的钱<b>更多</b>？':'哪边的钱<b>更少</b>？'; en=q.askMore?'Which side has <b>more</b> money?':'Which side has <b>less</b> money?'; break;
+      case 'unit_compare': zh=q.askLonger?'哪个<b>更长</b>？':'哪个<b>更短</b>？'; en=q.askLonger?'Which is <b>longer</b>?':'Which is <b>shorter</b>?'; break;
+      case 'explain': zh='<b>为什么</b>？哪个理由真正支持这个结论？'; en='<b>Why</b>? Which reason really supports the conclusion?'; break;
       default: zh='选出正确答案。'; en='Choose the correct answer.';
     }
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
@@ -269,10 +292,15 @@
   var SLOT_LETTERS = ['A', 'B', 'C'];
   var SLOT_COLORS  = ['#0ea5e9', '#10b981', '#f59e0b'];
   var SLOT_NEUTRAL = '#64748b';
-  var SLOT_COLORED = { length: 1, height: 1 };
-  // `difference` judge types: options are numeric gap values, not slot
-  // pointers (see renderOption / _optBody).
-  var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1 };
+  var SLOT_COLORED = { length: 1, height: 1, length_repair: 1 };
+  // Types whose options are NOT slot pointers (numeric gap values, a panel
+  // index, or a claim-correction choice) — rendered via _optBody directly,
+  // bypassing _optPointer (see renderOption).
+  var CUSTOM_OPTION_TYPES = {
+    quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1,
+    weight_adjust: 1, balance_repair: 1, size_real_repair: 1, multi_attribute_repair: 1,
+    quantity_adjust: 1, quantity_repair: 1, transitive_repair: 1, length_repair: 1, equal_judge: 1, equal_repair: 1, explain: 1
+  };
   var H_BAR_MAX    = 80;   // px; must match .cq-h-track height minus the emoji
   var MA_BOX       = 96;   // px; the biggest object in a multi_attribute pair
                            // (must stay <= the .cq-ma-box height)
@@ -311,7 +339,15 @@
            type === 'race_judge' || type === 'race_select' || type === 'race_variant' ||
            type === 'area_grid' || type === 'area_rect' ||
            type === 'quantity_diff' || type === 'area_diff' ||
-           type === 'race_diff' || type === 'weight_diff';
+           type === 'race_diff' || type === 'weight_diff' ||
+           type === 'weight_adjust' || type === 'balance_repair' ||
+           type === 'size_real_select' || type === 'size_real_repair' ||
+           type === 'multi_attribute_select' || type === 'multi_attribute_repair' ||
+           type === 'quantity_adjust' || type === 'quantity_repair' || type === 'diff_select' ||
+           type === 'transitive_repair' || type === 'length_repair' ||
+           type === 'equal_judge' || type === 'equal_adjust' || type === 'equal_repair' ||
+           type === 'expression' || type === 'clock' || type === 'money' || type === 'unit_compare' ||
+           type === 'explain';
   }
 
   function _sceneHtml(q) {
@@ -340,6 +376,22 @@
       case 'area_diff':      return _areaGridScene(q);
       case 'race_diff':      return _raceDiffScene(q);
       case 'weight_diff':    return _weightDiffScene(q);
+      case 'weight_adjust':  return _weightDiffScene(q);
+      case 'balance_repair': return _balanceRepairScene(q);
+      case 'size_real_select':   return _sizeRealSelect3Scene(q);
+      case 'size_real_repair':   return _sizeRealRepairScene(q);
+      case 'multi_attribute_select': return _multiAttrSelect3Scene(q);
+      case 'multi_attribute_repair': return _multiAttrRepairScene(q);
+      case 'quantity_adjust': case 'equal_judge': case 'equal_adjust': return _quantityScene(q);
+      case 'quantity_repair': case 'equal_repair': return _quantityScene(q) + _claimBubble(q);
+      case 'diff_select': return _diffSelectScene(q);
+      case 'transitive_repair': return _balanceMultiScene(q) + _claimBubble(q);
+      case 'length_repair': return _lengthScene(q) + _claimBubble(q);
+      case 'expression': case 'unit_compare': return _textPairScene(q);
+      case 'clock': return _clockScene(q);
+      case 'money': return _moneyScene(q);
+      case 'explain': return _sceneHtml(Object.assign({}, q, { type: q.sceneType })) +
+        '<div class="cq-claim"><span class="zh">结论：' + q.conclusionZh + '</span><span class="en">Conclusion: ' + q.conclusionEn + '</span></div>';
       default: return '';
     }
   }
@@ -370,6 +422,33 @@
     }
     return '<div class="cq-pair">' + cell(0, q.leftSizeRank, q.leftEmoji, q.leftNameZh, q.leftNameEn) +
       cell(1, q.rightSizeRank, q.rightEmoji, q.rightNameZh, q.rightNameEn) + '</div>';
+  }
+
+  // interference×select: three items, named slot (A/B/C comes from data —
+  // same convention as sizePick3/Z2), real name shown since the name IS the
+  // real-world-size evidence this task tests.
+  function _sizeRealSelect3Scene(q) {
+    var h = '<div class="cq-triple">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      var item = q.itemsBySlot[l];
+      h += '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + item.px + 'px">' + item.emoji + '</div></div>' +
+        '<div class="cq-label"><span class="zh">' + item.nameZh + '</span><span class="en">' + item.nameEn + '</span></div>' + _letterBadge(l) + '</div>';
+    });
+    return h + '</div>';
+  }
+
+  // interference×repair: same two-item conflict scene as sizeReal, but
+  // without the name label (the claim bubble below uses slot letters, not
+  // names, so the names would be an unused extra cue) plus a claim bubble.
+  function _sizeRealRepairScene(q) {
+    function cell(idx, px, emoji) {
+      return '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + px + 'px">' + emoji + '</div></div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-pair">' + cell(0, q.leftSizeRank, q.leftEmoji) + cell(1, q.rightSizeRank, q.rightEmoji) + '</div>' +
+      '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 真的比 ' + otherLetter + ' 大。"</span>' +
+      '<span class="en">Someone says: "' + claimLetter + ' is really bigger than ' + otherLetter + '."</span></div>';
   }
 
   function _lengthScene(q) {
@@ -429,6 +508,34 @@
         _slotBadge(idx, q.type) + '</div>';
     }
     return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>';
+  }
+
+  // multi_criteria×select: three items, named slot (letter comes from data).
+  function _multiAttrSelect3Scene(q) {
+    var max = Math.max(q.itemsBySlot.A.size, q.itemsBySlot.B.size, q.itemsBySlot.C.size);
+    var h = '<div class="cq-triple">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      var item = q.itemsBySlot[l];
+      var px = Math.max(26, Math.round(MA_BOX * item.size / max));
+      h += '<div class="cq-ma-cell"><div class="cq-ma-box">' + _shapeSvg(item.shape, item.color, px) + '</div>' + _letterBadge(l) + '</div>';
+    });
+    return h + '</div>';
+  }
+
+  // multi_criteria×repair: same two-item scene as multiAttribute, plus a claim bubble.
+  function _multiAttrRepairScene(q) {
+    var max = Math.max(q.left.size, q.right.size);
+    function cell(idx, item) {
+      var px = Math.max(30, Math.round(MA_BOX * item.size / max));
+      return '<div class="cq-ma-cell">' +
+        '<div class="cq-ma-box">' + _shapeSvg(item.shape, item.color, px) + '</div>' +
+        _slotBadge(idx, q.type) + '</div>';
+    }
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>' +
+      '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 比 ' + otherLetter + ' 大。"</span>' +
+      '<span class="en">Someone says: "' + claimLetter + ' is bigger than ' + otherLetter + '."</span></div>';
   }
 
   // position: distance from the reference is the compared attribute, so it has to
@@ -501,6 +608,20 @@
       h += _balanceOneHtml(b.tiltDeg, q.emoji, _letterBadge(b.left), _letterBadge(b.right));
     });
     return h + '</div>';
+  }
+
+  // mediated×repair: a single balance (same as balanceJudge/W1) plus a
+  // claim bubble — the balance itself unambiguously settles the claim,
+  // unlike an earlier three-balance version that turned out to have no
+  // unique answer (see the comment on Generators.balanceRepair).
+  function _balanceRepairScene(q) {
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-balance-wrap">' +
+      _balanceOneHtml(q.tiltDeg, q.emoji, _slotBadge(0, q.type), _slotBadge(1, q.type)) +
+    '</div>' +
+    '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 比 ' + otherLetter + ' 重。"</span>' +
+    '<span class="en">Someone says: "' + claimLetter + ' is heavier than ' + otherLetter + '."</span></div>';
   }
 
   // W4: a flat reference balance (k balls = 1 block, drawn as SVG shapes so no
@@ -590,6 +711,72 @@
     '</div>';
   }
 
+  // expression / unit_compare: two text cards with the usual A/B slot badges.
+  function _textPairScene(q) {
+    function cell(idx, txt) { return '<div class="cq-cell"><div class="cq-expr">' + txt + '</div>' + _slotBadge(idx, q.type) + '</div>'; }
+    return '<div class="cq-pair">' + cell(0, q.leftText) + cell(1, q.rightText) + '</div>';
+  }
+
+  function _clockSvg(h, m) {
+    var ha = ((h % 12) + m / 60) * 30, ma = m * 6, t = '';
+    for (var i = 0; i < 12; i++) t += '<line x1="50" y1="8" x2="50" y2="13" stroke="#64748b" stroke-width="2" transform="rotate(' + (i * 30) + ' 50 50)"/>';
+    return '<svg viewBox="0 0 100 100" width="96" height="96"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#475569" stroke-width="3"/>' + t +
+      '<text x="50" y="25" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">12</text>' +
+      '<text x="82" y="54" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">3</text>' +
+      '<text x="50" y="86" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">6</text>' +
+      '<text x="18" y="54" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">9</text>' +
+      '<line x1="50" y1="50" x2="50" y2="29" stroke="#1e293b" stroke-width="5" stroke-linecap="round" transform="rotate(' + ha + ' 50 50)"/>' +
+      '<line x1="50" y1="50" x2="50" y2="14" stroke="#2563eb" stroke-width="3" stroke-linecap="round" transform="rotate(' + ma + ' 50 50)"/>' +
+      '<circle cx="50" cy="50" r="3.5" fill="#1e293b"/></svg>';
+  }
+
+  function _clockScene(q) {
+    function cell(idx, h, m) { return '<div class="cq-cell">' + _clockSvg(h, m) + _slotBadge(idx, q.type) + '</div>'; }
+    return '<div class="cq-pair">' + cell(0, q.leftH, q.leftM) + cell(1, q.rightH, q.rightM) + '</div>';
+  }
+
+  function _moneyChip(v) {
+    var txt = v >= 10 ? (v / 10) + ' 元' : v + ' 角';
+    return '<span class="cq-coin">' + (v >= 50 ? '💴 ' : '🪙 ') + txt + '</span>';
+  }
+  function _moneyScene(q) {
+    function cell(idx, items) {
+      return '<div class="cq-money-side"><div class="cq-money-chips">' + items.map(_moneyChip).join('') + '</div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    return '<div class="cq-grid-pair">' + cell(0, q.leftItems) + cell(1, q.rightItems) + '</div>';
+  }
+
+  // Claim text shared by the scene bubble and the voice prompt.
+  function _claimTextOf(q) {
+    var cl = q.claimLetter || (q.claimSide === 'left' ? 'A' : 'B');
+    var ol = q.fixLetter;
+    switch (q.type) {
+      case 'balance_repair': case 'transitive_repair': return { zh: cl + ' 比 ' + ol + ' 重', en: cl + ' is heavier than ' + ol };
+      case 'length_repair': return { zh: cl + ' 比 ' + ol + ' 长', en: cl + ' is longer than ' + ol };
+      case 'size_real_repair': return { zh: cl + ' 真的比 ' + ol + ' 大', en: cl + ' is really bigger than ' + ol };
+      case 'multi_attribute_repair': return { zh: cl + ' 比 ' + ol + ' 大', en: cl + ' is bigger than ' + ol };
+      case 'quantity_repair': return { zh: '左右两边相差 ' + q.claimN + ' 个', en: 'the two sides differ by ' + q.claimN };
+      case 'equal_repair': return { zh: '左右两边一样多', en: 'the two sides are the same amount' };
+    }
+    return null;
+  }
+
+  function _claimBubble(q) {
+    var c = _claimTextOf(q);
+    return '<div class="cq-claim"><span class="zh">有人说："' + c.zh + '。"</span>' +
+      '<span class="en">Someone says: "' + c.en + '."</span></div>';
+  }
+
+  // difference x select: three rows of number pairs; find the biggest/smallest gap.
+  function _diffSelectScene(q) {
+    var h = '<div class="cq-evid">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      h += '<div class="cq-evid-row">' + _letterBadge(l) +
+        '<div class="cq-evid-readout">' + q.pairs[l][0] + ' 和 ' + q.pairs[l][1] + '</div></div>';
+    });
+    return h + '</div>';
+  }
+
   // ── Area scenes (Z4/Z5) ────────────────────────────────────────────────────
 
   var GRID_CELL = 20;
@@ -642,11 +829,11 @@
     // below, which would otherwise try to treat it as slot index 0.
     if (opt === 'same') return '<div class="cq-opt">' + _optSameCard(q) + '</div>';
 
-    // `difference` judge types: the options are candidate gap NUMBERS, not
-    // slot pointers — the scene still renders the evidence, but the option
-    // itself IS the answer, so it skips _optPointer entirely (checked before
-    // the _hasScene branch for the same reason "same" is checked first).
-    if (DIFF_VALUE_TYPES[q.type]) return '<div class="cq-opt">' + _optBody(opt, q) + '</div>';
+    // Custom-option types: the option itself IS the answer (a number, a
+    // panel index, a claim correction) — the scene still renders the
+    // evidence, but this skips _optPointer entirely (checked before the
+    // _hasScene branch for the same reason "same" is checked first).
+    if (CUSTOM_OPTION_TYPES[q.type]) return '<div class="cq-opt">' + _optBody(opt, q) + '</div>';
 
     // Scene-backed type → pointer only. See the slot-marker contract above.
     if (_hasScene(q.type)) return '<div class="cq-opt">'+_optPointer(opt,q)+'</div>';
@@ -665,7 +852,15 @@
     race_judge:    { zh: '一样快', en: 'Same speed' },
     race_variant:  { zh: '一样快', en: 'Same speed' },
     area_grid:     { zh: '一样大', en: 'Same size' },
-    area_rect:     { zh: '一样大', en: 'Same size' }
+    area_rect:     { zh: '一样大', en: 'Same size' },
+    balance_repair:         { zh: '⚖️ 一样重', en: '⚖️ Same weight' },
+    size_real_repair:       { zh: '⚖️ 一样大', en: '⚖️ Same size' },
+    multi_attribute_repair: { zh: '⚖️ 一样大', en: '⚖️ Same size' },
+    transitive_repair:      { zh: '⚖️ 一样重', en: '⚖️ Same weight' },
+    length_repair:          { zh: '⚖️ 一样长', en: '⚖️ Same length' },
+    expression:             { zh: '一样大', en: 'Same' },
+    money:                  { zh: '一样多', en: 'Same amount' },
+    unit_compare:           { zh: '一样长', en: 'Same length' }
   };
 
   function _optSameCard(q) {
@@ -695,6 +890,13 @@
         if (nz) h+='<div class="cq-opt-label"><span class="zh">'+nz+'</span><span class="en">'+ne+'</span></div>';
         return h;
       }
+      // size_real_select (interference×select): same reasoning as size_real,
+      // just a named slot (A/B/C from data) instead of left/right.
+      case 'size_real_select': {
+        var item = q.itemsBySlot[opt];
+        return '<div class="cq-opt-emoji" style="font-size:24px">'+item.emoji+'</div>' +
+          '<div class="cq-opt-label"><span class="zh">'+item.nameZh+'</span><span class="en">'+item.nameEn+'</span></div>';
+      }
       // length / height / quantity: anonymous items — the letter is the identity.
       // shape / color: the identity IS the answer, so showing it would give it away.
       // multi_attribute: shape and colour are the distractors, so repeating them
@@ -719,8 +921,39 @@
         var tev=opt==='left'?{zh:q.leftEventZh,en:q.leftEventEn}:{zh:q.rightEventZh,en:q.rightEventEn};
         return '<div class="cq-opt-label" style="font-size:15px;font-weight:900;color:#1e293b;"><span class="zh">'+tev.zh+'</span><span class="en">'+tev.en+'</span></div>';
       }
-      case 'quantity_diff': case 'area_diff': case 'race_diff': case 'weight_diff':
+      case 'quantity_diff': case 'area_diff': case 'race_diff': case 'weight_diff': case 'weight_adjust': case 'quantity_adjust':
         return '<div class="cq-opt-num">'+opt+'</div>';
+      case 'explain': {
+        var rs = q.reasonBySlot[opt], num = ['①', '②', '③'][Number(opt) - 1];
+        return '<div class="cq-opt-label" style="font-size:13px;font-weight:800;line-height:1.35;"><span class="zh">'+num+' '+rs.zh+'</span><span class="en">'+num+' '+rs.en+'</span></div>';
+      }
+      case 'equal_judge': {
+        var yn = { yes: { zh: '✅ 一样多', en: '✅ The same' }, no: { zh: '❌ 不一样多', en: '❌ Not the same' } }[opt];
+        return '<div class="cq-opt-label" style="font-size:15px;font-weight:800;"><span class="zh">'+yn.zh+'</span><span class="en">'+yn.en+'</span></div>';
+      }
+      case 'quantity_repair': {
+        var ql = { agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix_x: { zh: '❌ 不对，相差 ' + q.fixX + ' 个', en: '❌ No — they differ by ' + q.fixX },
+          fix_y: { zh: '❌ 不对，相差 ' + q.fixY + ' 个', en: '❌ No — they differ by ' + q.fixY } }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+ql.zh+'</span><span class="en">'+ql.en+'</span></div>';
+      }
+      case 'equal_repair': {
+        var el = { agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix_a: { zh: '❌ 不对，A 更多', en: '❌ No — A has more' },
+          fix_b: { zh: '❌ 不对，B 更多', en: '❌ No — B has more' } }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+el.zh+'</span><span class="en">'+el.en+'</span></div>';
+      }
+      case 'balance_repair': case 'size_real_repair': case 'multi_attribute_repair':
+      case 'transitive_repair': case 'length_repair': {
+        // 'same' never reaches here (renderOption short-circuits it to the
+        // shared "equal" card); only agree / fix do.
+        var moreWord = ({ balance_repair: { zh: '重', en: 'heavier' }, transitive_repair: { zh: '重', en: 'heavier' }, length_repair: { zh: '长', en: 'longer' } })[q.type] || { zh: '大', en: 'bigger' };
+        var claimLbl = {
+          agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix:   { zh: '❌ 不对，' + q.fixLetter + ' 更' + moreWord.zh, en: '❌ No — ' + q.fixLetter + ' is ' + moreWord.en }
+        }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+claimLbl.zh+'</span><span class="en">'+claimLbl.en+'</span></div>';
+      }
       default: return '<div class="cq-opt-label">'+opt+'</div>';
     }
   }
@@ -764,8 +997,27 @@
       case 'area_diff':     zh='两个图形相差几格？'; en='By how many squares do the two shapes differ?'; break;
       case 'race_diff':     zh='两位选手相差几秒？'; en='By how many seconds do the two racers differ?'; break;
       case 'weight_diff':   zh='两个盒子相差几个重量单位？'; en='By how many units do the two boxes differ?'; break;
+      case 'weight_adjust': zh='轻的一边要加几个重量单位才一样重？'; en='How many units should be added to the lighter side to make them equal?'; break;
+      case 'balance_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'size_real_select': zh=q.askBiggest?'三个里真的最大的是哪个？':'三个里真的最小的是哪个？'; en=q.askBiggest?'Which of the three is really the biggest?':'Which of the three is really the smallest?'; break;
+      case 'size_real_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'multi_attribute_select': zh=q.askBiggest?'三个里最大的是哪个？':'三个里最小的是哪个？'; en=q.askBiggest?'Which of the three is the biggest?':'Which of the three is the smallest?'; break;
+      case 'multi_attribute_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'quantity_adjust': zh='少的一边要再加几个，两边才一样多？'; en='How many must the smaller side add to make them equal?'; break;
+      case 'diff_select': zh=q.askBiggest?'哪一行的两个数相差最多？':'哪一行的两个数相差最少？'; en=q.askBiggest?'Which row has the biggest difference?':'Which row has the smallest difference?'; break;
+      case 'equal_judge': zh='左右两边一样多吗？'; en='Are the two sides the same amount?'; break;
+      case 'equal_adjust': zh=q.mode==='add'?'哪一边加上'+q.gap+'个，两边就一样多？':'哪一边拿走'+q.gap+'个，两边就一样多？'; en=q.mode==='add'?'Which side should add '+q.gap+' to make them equal?':'Which side should remove '+q.gap+' to make them equal?'; break;
+      case 'quantity_repair': case 'transitive_repair': case 'length_repair': case 'equal_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'expression': zh=(q.askBigger?'哪个算式的结果更大？':'哪个算式的结果更小？')+'A：'+q.leftSpoken+'，B：'+q.rightSpoken+'。'; en=(q.askBigger?'Which result is bigger?':'Which result is smaller?')+' A: '+q.leftText+', B: '+q.rightText+'.'; break;
+      case 'clock': zh=q.askEarlier?'同一个上午，哪个时间更早？':'同一个上午，哪个时间更晚？'; en=q.askEarlier?'The same morning — which time is earlier?':'The same morning — which time is later?'; break;
+      case 'money': zh=q.askMore?'哪边的钱更多？':'哪边的钱更少？'; en=q.askMore?'Which side has more money?':'Which side has less money?'; break;
+      case 'unit_compare': zh=(q.askLonger?'哪个更长？':'哪个更短？')+'A：'+q.leftText+'，B：'+q.rightText+'。'; en=(q.askLonger?'Which is longer?':'Which is shorter?')+' A: '+q.leftText+', B: '+q.rightText+'.'; break;
+      case 'explain': zh='结论：'+q.conclusionZh+'。为什么？'+['1','2','3'].map(function(k){return '理由'+k+'：'+q.reasonBySlot[k].zh;}).join('。')+'。哪个理由真正支持这个结论？';
+        en='Conclusion: '+q.conclusionEn+'. Why? '+['1','2','3'].map(function(k){return 'Reason '+k+': '+q.reasonBySlot[k].en;}).join('. ')+'. Which reason really supports it?'; break;
       default:        zh='请选择答案。'; en='Choose an answer.';
     }
+    var claim = _claimTextOf(q);
+    if (claim) { zh = '有人说：' + claim.zh + '。' + zh; en = 'Someone says: ' + claim.en + '. ' + en; }
     return shell.lang==='zh'?zh:en;
   }
 

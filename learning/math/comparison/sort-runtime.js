@@ -121,10 +121,10 @@ var SortRuntime = (function () {
     // Short\u2192Long arrow row, which only makes sense for a magnitude sort.
     var modeZh    = s.template.modeLabelZh    || '\u6392\u5e8f';
     var modeEn    = s.template.modeLabelEn    || 'Sort';
-    var instrZh   = s.template.instrZh        || '\u628a\u5f69\u5e26\u4ece\u6700\u77ed\u5230\u6700\u957f\u6392\u597d \u2193';
-    var instrEn   = s.template.instrEn        || 'Sort ribbons shortest \u2192 longest \u2193';
-    var holdingZh = s.template.holdingLabelZh || '\u62d6\u52a8\u5f69\u5e26';
-    var holdingEn = s.template.holdingLabelEn || 'Drag ribbons';
+    var instrZh   = s.variant.instrZh || s.template.instrZh        || '\u628a\u5f69\u5e26\u4ece\u6700\u77ed\u5230\u6700\u957f\u6392\u597d \u2193';
+    var instrEn   = s.variant.instrEn || s.template.instrEn        || 'Sort ribbons shortest \u2192 longest \u2193';
+    var holdingZh = s.variant.holdingLabelZh || s.template.holdingLabelZh || '\u62d6\u52a8\u5f69\u5e26';
+    var holdingEn = s.variant.holdingLabelEn || s.template.holdingLabelEn || 'Drag ribbons';
     var sigMode   = !!s.variant.targetSignature;
 
     var root = document.createElement('div');
@@ -153,9 +153,9 @@ var SortRuntime = (function () {
         '<div class="sr-slots-wrap">' +
           (sigMode ? '' :
           '<div class="sr-slots-arrow">' +
-            '<span class="zh">\u77ed</span><span class="en">Short</span>' +
+            '<span class="zh">' + (s.variant.lowZh || '\u77ed') + '</span><span class="en">' + (s.variant.lowEn || 'Short') + '</span>' +
             '<div class="sr-line"></div>' +
-            '<span class="zh">\u957f</span><span class="en">Long</span>' +
+            '<span class="zh">' + (s.variant.highZh || '\u957f') + '</span><span class="en">' + (s.variant.highEn || 'Long') + '</span>' +
           '</div>') +
           '<div class="sr-slots" id="sr-slots"></div>' +
         '</div>' +

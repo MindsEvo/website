@@ -87,6 +87,16 @@
     if (q.type === 'area_diff')     return q.leftCount+'|'+q.rightCount+'|'+JSON.stringify(q.leftBBox)+'|'+JSON.stringify(q.rightBBox)+'|'+q.answer;
     if (q.type === 'race_diff')     return q.emoji+'|'+q.leftSeconds+'|'+q.rightSeconds+'|'+q.answer;
     if (q.type === 'weight_diff')   return q.emoji+'|'+q.leftWeight+'|'+q.rightWeight+'|'+q.answer;
+    if (q.type === 'weight_adjust') return q.emoji+'|'+q.leftWeight+'|'+q.rightWeight+'|'+q.answer;
+    if (q.type === 'balance_repair') return q.emoji+'|'+q.tiltDeg+'|'+q.claimSide+'|'+q.answer;
+    if (q.type === 'size_real_select')
+      return ['A','B','C'].map(function(l){ var i=q.itemsBySlot[l]; return i.emoji+i.px; }).join(',')+'|'+(q.askBiggest?'B':'S');
+    if (q.type === 'size_real_repair')
+      return q.leftEmoji+q.rightEmoji+'|'+q.leftSizeRank+'|'+q.rightSizeRank+'|'+q.claimSide;
+    if (q.type === 'multi_attribute_select')
+      return JSON.stringify(q.itemsBySlot)+'|'+(q.askBiggest?'B':'S');
+    if (q.type === 'multi_attribute_repair')
+      return JSON.stringify(q.left)+JSON.stringify(q.right)+'|'+q.claimSide;
     if (q.type === 'number')   return q.leftNum + '|' + q.rightNum + '|' + q.askBigger;
     if (q.type === 'quantity') return q.leftCount + '|' + q.rightCount + '|' + q.askMore;
     if (q.type === 'length')   return Math.round(q.leftPct) + '|' + Math.round(q.rightPct) + '|' + q.askLonger;
@@ -98,7 +108,7 @@
     if (q.type === 'time')     return q.leftEventZh + '|' + q.rightEventZh + '|' + q.answer;
     if (q.type === 'multi_attribute') return JSON.stringify(q.left) + JSON.stringify(q.right);
     // Interaction activities: fingerprint the generated layout
-    if (q.type === 'sort')  return (q.items || []).map(function(i){ return i.id+':'+i.lengthPct; }).join('|');
+    if (q.type === 'sort')  return (q.items || []).map(function(i){ return i.id+':'+(i.lengthPct !== undefined ? i.lengthPct : i.emoji); }).join('|') + '|' + (q.instrZh || '');
     if (q.type === 'match') return (q.leftItems || []).map(function(i){ return i.emoji+i.size; }).join('|') +
                                    '/' + (q.rightSlots || []).map(function(r){ return r.emoji; }).join('|');
     if (q.type === 'group') return (q.items || []).map(function(i){ return i.emoji+i.bin; }).join('|');
@@ -210,6 +220,7 @@
       if (items.length < 2) { bad.push('sort: needs >=2 items'); return bad; }
       items.forEach(function(it, i) {
         if (!it.id)                          bad.push('sort: item['+i+'] missing id');
+        if (it.emoji) return;   // text/emoji items carry no bar geometry
         if (typeof it.lengthPct !== 'number' || it.lengthPct <= 0 || it.lengthPct > 100)
           bad.push('sort: item['+i+'] lengthPct out of range ('+it.lengthPct+')');
         if (!it.color)                       bad.push('sort: item['+i+'] missing color');
@@ -225,7 +236,7 @@
       var minGap = (p.minGapPct || 18) - 1;   // -1 tolerance: generator rounds lengths
       var lenOf = {};
       items.forEach(function(it) { lenOf[it.id] = it.lengthPct; });
-      for (var k = 1; k < order.length; k++) {
+      for (var k = 1; k < order.length && !items[0].emoji; k++) {
         var gap = lenOf[order[k]] - lenOf[order[k-1]];
         if (!(gap > 0))       bad.push('sort: targetOrder not ascending at '+k+' ('+order[k-1]+'→'+order[k]+')');
         else if (gap < minGap) bad.push('sort: gap '+Math.round(gap)+'% < minGapPct '+(p.minGapPct||18)+' at '+k);
@@ -511,7 +522,7 @@
     // numbers, so "did option X from draw 0 ever recur" is meaningless noise,
     // not a balance signal. Their answer/option invariants were already
     // checked with a 1200-draw Node script when they were built; skip here.
-    var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1 };
+    var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1, weight_adjust: 1, quantity_adjust: 1 };
     var opts = (isPuzzle && results[0] && results[0].options) || [];
     var balanced = true;
     if (DIFF_VALUE_TYPES[tpl.type]) {
@@ -594,6 +605,12 @@
       case 'area_diff':      return q.leftCount+'cells vs '+q.rightCount+'cells → diff '+q.answer;
       case 'race_diff':      return q.emoji+' '+q.leftSeconds+'s vs '+q.rightSeconds+'s → diff '+q.answer;
       case 'weight_diff':    return q.emoji+' ⚖'+q.leftWeight+' vs ⚖'+q.rightWeight+' → diff '+q.answer;
+      case 'weight_adjust':  return q.emoji+' ⚖'+q.leftWeight+' vs ⚖'+q.rightWeight+' → add '+q.answer;
+      case 'balance_repair': return q.emoji+' tilt='+q.tiltDeg+'° claim='+q.claimSide+' → '+q.answer;
+      case 'size_real_select': return ['A','B','C'].map(function(l){ var i=q.itemsBySlot[l]; return l+':'+i.nameZh+'('+i.px+'px)'; }).join(' ')+' → '+q.answer+' (ask '+(q.askBiggest?'biggest':'smallest')+', conflict='+q.conflict+')';
+      case 'size_real_repair': return q.leftEmoji+' '+q.leftSizeRank+'px vs '+q.rightEmoji+' '+q.rightSizeRank+'px claim='+q.claimSide+' → '+q.answer;
+      case 'multi_attribute_select': return JSON.stringify(q.itemsBySlot)+' → '+q.answer;
+      case 'multi_attribute_repair': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' claim='+q.claimSide+' → '+q.answer;
       case 'multi_attribute': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' → '+q.answer;
       case 'sort':    return (q.items||[]).map(function(i){ return i.id+':'+i.lengthPct+'%'; }).join(' ')+' → '+(q.targetOrder||[]).join(',');
       case 'match':   return (q.leftItems||[]).map(function(l){

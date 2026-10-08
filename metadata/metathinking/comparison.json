@@ -1,6 +1,6 @@
 {
-  "version": "v0.8.0",
-  "updatedAt": "2026-09-30",
+  "version": "v0.13.0",
+  "updatedAt": "2026-10-07",
   "moduleType": "metathinking",
   "id": "comparison",
   "canonicalUrl": "/metadata/metathinking/comparison.json",
@@ -150,8 +150,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "judge / order / classify / fit / select 已上线；repair 待做。",
-      "coverageGapEn": "judge / order / classify / fit / select ship; repair is still to do."
+      "coverageGapZh": "judge / order / classify / fit / select / repair 已上线（repair：判断「A 比 B 长」对不对，含一样长）。",
+      "coverageGapEn": "judge / order / classify / fit / select / repair ship (repair: is \"A is longer than B\" right, including equal)."
     },
     {
       "id": "equivalence",
@@ -176,8 +176,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "形状、颜色的找不同（select）已上线；带「一样」选项的判断、配对归类、等长适配与调整至相等待做。",
-      "coverageGapEn": "Odd-one-out on shape and colour (select) ships; judging with a \"same\" option, pairing, exact-fit and adjust-until-equal are still to do."
+      "coverageGapZh": "select / judge / adjust / repair 已上线：找不同、两边一样多吗、哪边加/拿几个才一样多、判断「一样多」对不对。classify / fit 待做。 classify / fit 已上线（和 N 个一样多分组、搭刚好一样长的木板）。",
+      "coverageGapEn": "select / judge / adjust / repair ship: odd one out, are the sides the same, which side adds/removes N to match, and whether \"the same amount\" is right. classify / fit are still to do. classify / fit ship (group \"same as N\", plank exactly as long as the gap)."
     },
     {
       "id": "interference",
@@ -203,8 +203,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "judge 已上线：画得大不等于真的大（size_real，等级差 ≥4 才出真假冲突题）、长边不等于面积大（area_rect，冲突题占比 ≥60%）。select / order / classify / repair / explain 待做，例如散开的点、弯绳直绳这类数量与长度守恒题。",
-      "coverageGapEn": "judge ships: drawn-bigger is not really-bigger (size_real, real-size gap >= 4 ranks before a conflict is drawn) and a longer edge is not a bigger area (area_rect, >=60% conflict rate). select / order / classify / repair / explain are still to do, e.g. conservation of number (spread dots) and length (coiled vs straight rope)."
+      "coverageGapZh": "judge / select / repair 已上线：画得大不等于真的大（size_real，等级差 ≥4 才出真假冲突题）、长边不等于面积大（area_rect，冲突题占比 ≥60%）、三个里选真的最大/最小（size_real_select）、判断关于真实大小的一句话对不对（size_real_repair）。order / classify / explain 待做，例如散开的点、弯绳直绳这类数量与长度守恒题。 explain 已上线（真实大小）。 order / classify 已上线（按个数排序、比 N 个多/少分组，排得开不代表多）。",
+      "coverageGapEn": "judge / select / repair ship: drawn-bigger is not really-bigger (size_real, real-size gap >= 4 ranks before a conflict is drawn), a longer edge is not a bigger area (area_rect, >=60% conflict rate), picking the really-biggest/smallest of three (size_real_select), and judging whether a claim about real size is right (size_real_repair). order / classify / explain are still to do, e.g. conservation of number (spread dots) and length (coiled vs straight rope). explain ships (real size). order / classify ship (order by count, group by more/fewer than N; spread out does not mean more)."
     },
     {
       "id": "difference",
@@ -229,8 +229,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "judge 已上线：数一数两组相差几个（quantity）、两个图形相差几格（area）、两位选手相差几秒（speed，均已到终点）、两个盒子相差几个重量单位（weight，电子秤读数）。select / adjust / repair / explain 待做。",
-      "coverageGapEn": "judge ships: how many more between two counted groups (quantity), how many squares two shapes differ by (area), how many seconds two already-finished racers differ by (speed), and how many units two boxes differ by on a scale readout (weight). select / adjust / repair / explain are still to do."
+      "coverageGapZh": "judge / select / adjust / repair 已上线：数量、面积、用时、重量相差几个，加几个才一样多，判断「相差 N 个」对不对，三行数里找相差最多/最少。explain 待做。 explain 已上线（差量）。",
+      "coverageGapEn": "judge / select / adjust / repair ship: gaps in count, area, time and weight; how many to add to match; whether \"differ by N\" is right; and which of three number rows differs most/least. explain is still to do. explain ships (difference)."
     },
     {
       "id": "mediated",
@@ -256,8 +256,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "judge / select 已上线：外观相同的神秘盒子只能看天平判断轻重（balance_judge/balance_select）、同样时间比路程或同样路程比用时的赛跑证据题（race_judge/race_select/race_variant）、数方格比面积（area_grid）。order / classify / fit / adjust / repair / explain 待做。",
-      "coverageGapEn": "judge / select ship: identical-looking mystery boxes judged only from a balance (balance_judge/balance_select), race-evidence items comparing distance at equal time or time at equal distance (race_judge/race_select/race_variant), and counting grid squares to compare area (area_grid). order / classify / fit / adjust / repair / explain are still to do."
+      "coverageGapZh": "judge / select / adjust / repair 已上线：外观相同的神秘盒子只能看天平判断轻重（balance_judge/balance_select）、同样时间比路程或同样路程比用时的赛跑证据题（race_judge/race_select/race_variant）、数方格比面积（area_grid）、看电子秤读数算该加几个才一样重（weight_adjust）、判断关于天平的一句话对不对（balance_repair）。order / classify / fit / explain 待做。 explain 已上线（天平、赛跑）。 order / classify / fit 已上线（按用时排快慢、按参照时间分快慢、先算再选木板）。",
+      "coverageGapEn": "judge / select / adjust / repair ship: identical mystery boxes judged only from a balance (balance_judge/balance_select), races where equal time or equal distance settles speed (race_judge/race_select/race_variant), counting grid squares for area (area_grid), reading scale numbers to work out how many to add to make them equal (weight_adjust), and judging whether a claim about a balance is right (balance_repair). order / classify / fit / explain are still to do. explain ships (balance, race). order / classify / fit ship (order by time, group faster/slower than a reference, compute before choosing the plank)."
     },
     {
       "id": "transitive",
@@ -285,8 +285,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "judge / select 已上线：链式天平（balance_chain，最重与最轻从不同时出现在一架天平上，只能靠中间盒子传递）、天平替换（balance_swap，k 个小球 = 1 个方块，据此换算比较）。order / repair / explain 待做。",
-      "coverageGapEn": "judge / select ship: a chain of two balances where the heaviest and lightest never share a scale (balance_chain, only the pivot box carries the transitive link), and balance substitution (balance_swap, k balls = 1 block, converted before comparing). order / repair / explain are still to do."
+      "coverageGapZh": "judge / select / repair 已上线：链式天平找最重最轻、天平替换，以及用中间盒子判断「X 比 Y 重」对不对（含两架都水平的一样重）。order / explain 待做。 explain 已上线（链式天平）。 order 已上线（由「A 比 B 重」的链条排出全序）。",
+      "coverageGapEn": "judge / select / repair ship: chained balances for heaviest/lightest, balance substitution, and judging \"X is heavier than Y\" through the middle box (including both-level = equal). order / explain are still to do. explain ships (chained balances). order ships (a full order from \"A is heavier than B\" links)."
     },
     {
       "id": "multi_criteria",
@@ -311,8 +311,8 @@
           "learning-math-comparison-intro-001"
         ]
       },
-      "coverageGapZh": "G1/G2 的二元判断（按大小比、忽略颜色与形状）已上线；多项选择、排序、归类与同时满足多个条件的题待做。",
-      "coverageGapEn": "G1/G2 pairwise judging (compare size, ignore colour and shape) ships; selecting, ordering, classifying and satisfying several conditions at once are still to do."
+      "coverageGapZh": "judge / select / repair 已上线：G1/G2 的二元判断（按大小比、忽略颜色与形状）、三个里选最大/最小（multi_attribute_select）、判断关于大小的一句话对不对（multi_attribute_repair）。排序、归类与同时满足多个条件的题待做。 explain 已上线（多属性）。 order / classify 已上线（只数个数、不管颜色）。",
+      "coverageGapEn": "judge / select / repair ship: the binary size-only judge for G1/G2 (ignore colour and shape), picking the biggest/smallest of three (multi_attribute_select), and judging whether a size claim is right (multi_attribute_repair). order, classify and multi-condition items are still to do. explain ships (multi-attribute). order / classify ship (count only, ignore colour)."
     }
   ],
   "taskTypes": [
@@ -430,7 +430,7 @@
       "domain": "quantity",
       "objectComplexity": "symbolic",
       "levelFloor": "G1",
-      "status": "planned",
+      "status": "active",
       "curriculumRefZh": "加减法；> < = 符号",
       "curriculumRefEn": "Addition and subtraction; the > < = signs"
     },
@@ -551,7 +551,7 @@
       "domain": "temporal",
       "objectComplexity": "symbolic",
       "levelFloor": "G1",
-      "status": "planned",
+      "status": "active",
       "curriculumRefZh": "认识钟表",
       "curriculumRefEn": "Telling time"
     },
@@ -562,7 +562,7 @@
       "domain": "quantity",
       "objectComplexity": "symbolic",
       "levelFloor": "G1",
-      "status": "planned",
+      "status": "active",
       "curriculumRefZh": "认识人民币 / 硬币",
       "curriculumRefEn": "Coins and notes"
     },
@@ -656,7 +656,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "equivalence",
@@ -665,7 +665,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "equivalence",
@@ -684,7 +684,7 @@
         "match",
         "group"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "equivalence",
@@ -693,7 +693,7 @@
       "runtimes": [
         "fit"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "equivalence",
@@ -702,7 +702,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "equivalence",
@@ -711,7 +711,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "interference",
@@ -729,7 +729,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "interference",
@@ -738,7 +738,7 @@
       "runtimes": [
         "sort"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "interference",
@@ -747,7 +747,7 @@
       "runtimes": [
         "group"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "interference",
@@ -756,7 +756,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "interference",
@@ -765,7 +765,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "difference",
@@ -783,7 +783,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "difference",
@@ -792,7 +792,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "difference",
@@ -801,7 +801,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "difference",
@@ -810,7 +810,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -837,7 +837,7 @@
       "runtimes": [
         "sort"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -846,7 +846,7 @@
       "runtimes": [
         "group"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -855,7 +855,7 @@
       "runtimes": [
         "fit"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -864,7 +864,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -873,7 +873,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "mediated",
@@ -882,7 +882,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transitive",
@@ -909,7 +909,7 @@
       "runtimes": [
         "sort"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transitive",
@@ -918,7 +918,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transitive",
@@ -927,7 +927,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "multi_criteria",
@@ -945,7 +945,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "multi_criteria",
@@ -954,7 +954,7 @@
       "runtimes": [
         "sort"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "multi_criteria",
@@ -963,7 +963,7 @@
       "runtimes": [
         "group"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "multi_criteria",
@@ -972,7 +972,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "multi_criteria",
@@ -981,7 +981,7 @@
       "runtimes": [
         "puzzle"
       ],
-      "status": "planned"
+      "status": "implemented"
     }
   ],
   "taskMatrixExclusions": [
@@ -1112,10 +1112,8 @@
         "equivalence"
       ],
       "plannedTasks": [
-        "judge",
         "select",
         "order",
-        "classify",
         "fit"
       ],
       "status": "partial",
@@ -1159,7 +1157,9 @@
         "judge",
         "select",
         "classify",
-        "fit"
+        "fit",
+        "repair",
+        "adjust"
       ],
       "plannedTypes": [
         "direct",
@@ -1170,10 +1170,7 @@
       "plannedTasks": [
         "judge",
         "select",
-        "classify",
-        "fit",
-        "adjust",
-        "repair"
+        "classify"
       ],
       "status": "partial",
       "implementedBy": [
@@ -1211,26 +1208,27 @@
         "equivalence",
         "mediated",
         "multi_criteria",
-        "difference"
+        "difference",
+        "interference"
       ],
       "primaryTasks": [
         "judge",
         "select",
-        "fit"
+        "fit",
+        "adjust",
+        "repair",
+        "order",
+        "classify"
       ],
       "plannedTypes": [
         "direct",
         "equivalence",
-        "interference",
         "mediated",
         "multi_criteria"
       ],
       "plannedTasks": [
         "judge",
-        "select",
-        "order",
-        "adjust",
-        "repair"
+        "select"
       ],
       "status": "partial",
       "implementedBy": [
@@ -1239,11 +1237,13 @@
       ],
       "implementedModes": [
         "puzzle",
+        "sort",
+        "group",
         "fit",
         "mini"
       ],
-      "coverageGapZh": "已上线：20 以内直接比较、多属性判断、三架天平综合找最重最轻（mediated × select，不需要传递推理）、三个选手同样时间找最快（mediated × select）、数方格比面积（area 载体）、差量判断——数量/面积/用时/重量相差几个（difference × judge）。待做：数轴上的接近判断、算式比较（3+4 ○ 8）、非标准单位测量、事件先后排序与找放错的一个、钟面与钱币。",
-      "coverageGapEn": "Shipped: direct comparison within 20, multi-attribute judging, finding the heaviest/lightest from three balances (mediated x select, no transitive reasoning needed), finding the fastest of three racers in equal time (mediated x select), counting grid squares to compare area (the area carrier), and the difference amount itself — how many more/fewer in count, squares, seconds or weight units (difference x judge). To do: closeness on a number line, comparing expressions (3+4 ○ 8), non-standard units, ordering events and finding the misplaced one, clocks and money.",
+      "coverageGapZh": "已上线：20 以内直接比较、多属性判断、三架天平综合找最重最轻（mediated × select，不需要传递推理）、三个选手同样时间找最快（mediated × select）、数方格比面积（area 载体）、差量判断——数量/面积/用时/重量相差几个（difference × judge）、天平读数算该加几个（mediated × adjust）、判断一句话对不对（mediated/interference × repair）、三个里找真的最大（interference × select）。教材载体已上线：算式比较（3+4 ○ 8）、钟面时刻早晚、人民币比多少。待做：数轴上的接近判断、非标准单位测量、事件先后排序与找放错的一个。",
+      "coverageGapEn": "Shipped: direct comparison within 20, multi-attribute judging, finding the heaviest/lightest from three balances (mediated x select, no transitive reasoning needed), finding the fastest of three racers in equal time (mediated x select), counting grid squares to compare area (the area carrier), and the difference amount itself — how many more/fewer in count, squares, seconds or weight units (difference x judge), how many to add to balance (mediated x adjust), judging whether a claim is right (mediated/interference x repair), and finding the really-biggest of three (interference x select). Textbook carriers shipped: comparing expressions (3+4 ○ 8), earlier/later on a clock, and which side has more money. To do: closeness on a number line, non-standard units, ordering events and finding the misplaced one.",
       "sourceLevels": [
         "L3"
       ]
@@ -1266,12 +1266,15 @@
         "interference",
         "mediated",
         "transitive",
-        "multi_criteria"
+        "multi_criteria",
+        "difference"
       ],
       "primaryTasks": [
         "judge",
         "select",
-        "order"
+        "order",
+        "repair",
+        "explain"
       ],
       "plannedTypes": [
         "direct",
@@ -1282,11 +1285,7 @@
         "multi_criteria"
       ],
       "plannedTasks": [
-        "judge",
-        "select",
-        "order",
-        "repair",
-        "explain"
+        "judge"
       ],
       "status": "partial",
       "implementedBy": [
@@ -1294,10 +1293,11 @@
       ],
       "implementedModes": [
         "puzzle",
+        "sort",
         "mini"
       ],
-      "coverageGapZh": "已上线：100 以内数字比较、多属性判断、时长比较、限时小游戏、链式天平找最重最轻（transitive × select）、天平替换推理（transitive × judge，k 个小球=1 个方块）、赛跑中先分清哪个量一样再判断快慢（mediated × judge）、细长的不一定大（interference × judge，面积载体）。待做：位值（47 vs 74）、两个算式比较、单位换算后比较、容量守恒说理、钟面时刻早晚。",
-      "coverageGapEn": "Shipped: numerals within 100, multi-attribute judging, durations, timed mini-games, finding the heaviest/lightest via a chain of two balances (transitive x select), balance substitution reasoning (transitive x judge, k balls = 1 block), races where the child must first spot which quantity is shared (mediated x judge), and \"longer is not always bigger\" (interference x judge, the area carrier). To do: place value (47 vs 74), comparing two expressions, comparing after unit conversion, explaining capacity conservation, earlier or later on a clock.",
+      "coverageGapZh": "已上线：100 以内数字比较、多属性判断、时长比较、限时小游戏、链式天平找最重最轻（transitive × select）、天平替换推理（transitive × judge，k 个小球=1 个方块）、赛跑中先分清哪个量一样再判断快慢（mediated × judge）、细长的不一定大（interference × judge，面积载体）、三个里选最大/最小（multi_criteria × select）、判断一句话对不对（multi_criteria × repair）。教材载体已上线：位值（47 vs 74）、100 以内算式比较、单位换算后比较（1 米 5 厘米 vs 95 厘米）、钟面时刻早晚（5/15 分钟）、人民币比多少。说理题（explain）已上线：天平、赛跑、真实大小、链式天平、多属性、差量各一道，从三个理由里选真正支持结论的那个。待做：容量守恒说理（需要新的容量载体）。",
+      "coverageGapEn": "Shipped: numerals within 100, multi-attribute judging, durations, timed mini-games, finding the heaviest/lightest via a chain of two balances (transitive x select), balance substitution reasoning (transitive x judge, k balls = 1 block), races where the child must first spot which quantity is shared (mediated x judge), and \"longer is not always bigger\" (interference x judge, the area carrier), picking the biggest of three (multi_criteria x select), and judging whether a claim is right (multi_criteria x repair). Textbook carriers shipped: place value (47 vs 74), expressions within 100, comparing after unit conversion (1 m 5 cm vs 95 cm), clock times, and money. Explain questions shipped: balance, race, real size, chained balances, multi-attribute and difference — pick the reason that truly supports the conclusion. To do: explaining capacity conservation (needs a new capacity carrier).",
       "sourceLevels": [
         "L4"
       ]
