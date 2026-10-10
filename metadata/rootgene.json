@@ -215,7 +215,10 @@
       },
       "descZh": "对数的大小、多少与相对位置形成直觉。",
       "descEn": "Build intuition for magnitude, quantity and relative position of numbers.",
-      "claimedBy": ["clio-egg-catcher-workshop", "clio-ufo-math-workshop"]
+      "claimedBy": [
+        "clio-egg-catcher-workshop",
+        "clio-ufo-math-workshop"
+      ]
     },
     "RG.MATH.NUMBER_SENSE.QUANTITY": {
       "category": "MATH",
@@ -279,7 +282,9 @@
       "descEn": "Under a fixed resource limit, pick the option among several that satisfies the constraint, or the one with the highest payoff.",
       "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划是通用的「权衡+排序」，训练在多个方案间取舍并安排先后步骤；本基因特指在一个固定的数值上限（如预算）之下，判断哪些方案可行、哪个可行方案收益最高，核心是资源约束下的取舍计算，不涉及步骤先后顺序。",
       "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning is the general skill of weighing options and ordering steps; this gene specifically trains judging which options fit under a fixed numeric limit (like a budget) and which feasible option pays off the most — the core skill is constrained trade-off arithmetic, not step ordering.",
-      "claimedBy": ["energy-planner"]
+      "claimedBy": [
+        "energy-planner"
+      ]
     },
     "RG.STRATEGY.PREDICT.CONSEQUENCE": {
       "category": "STRATEGY",
@@ -293,7 +298,9 @@
       "descEn": "Apply a given action-to-effect rule to predict what happens next, or work backwards from a wanted effect to the action that causes it.",
       "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划训练在多个可行方案间取舍并排序；本基因训练的是应用一条已给定的因果规则去正向预测结果或反向推出动作，不涉及在多个方案之间比较取舍，核心是规则的正向/反向应用与多步因果链的顺推。",
       "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning trains weighing and ordering among multiple workable options; this gene trains applying one given causal rule forward to predict an effect, or backward to find the action that causes a wanted effect, and chaining that rule across multiple hops — it does not involve comparing multiple options against each other.",
-      "claimedBy": ["whats-next"]
+      "claimedBy": [
+        "whats-next"
+      ]
     },
     "RG.MODELING.EQUATION.RELATION": {
       "category": "MODELING",
@@ -356,7 +363,9 @@
       "descZh": "按一条或多条属性把对象归入正确的组别。",
       "descEn": "Put objects into the right group by one or more attributes.",
       "status": "planned",
-      "claimedBy": ["clio-sorting-workshop"]
+      "claimedBy": [
+        "clio-sorting-workshop"
+      ]
     },
     "RG.ATTENTION.SEARCH.VISUAL": {
       "category": "ATTENTION",
@@ -370,7 +379,10 @@
       "descEn": "Keep locating and confirming targets among distractors, even when the count is unknown.",
       "boundaryZh": "两个认领者分工不同，不是重复建设：find-it 在开放场景里找若干个目标（数量未知），difference-scout 在成对条带里找恰好一个（位置未知）。",
       "boundaryEn": "The two claimants split the work rather than duplicating it: find-it searches an open scene for an unknown number of targets, while difference-scout searches paired strips for exactly one, at an unknown position.",
-      "claimedBy": ["difference-scout", "clio-find-it-workshop"]
+      "claimedBy": [
+        "difference-scout",
+        "clio-find-it-workshop"
+      ]
     },
     "RG.LANGUAGE.SEMANTIC.RELATION": {
       "category": "LANGUAGE",
@@ -383,7 +395,9 @@
       "descZh": "判断词与词之间的相同、同义与反义关系。",
       "descEn": "Judge sameness, synonymy and antonymy between words.",
       "status": "planned",
-      "claimedBy": ["clio-word-connections-workshop"]
+      "claimedBy": [
+        "clio-word-connections-workshop"
+      ]
     },
     "RG.LANGUAGE.OBSERVATION.DESCRIBE": {
       "category": "LANGUAGE",
@@ -554,7 +568,9 @@
       "descEn": "After a brief look at a set of images, recognize the one just seen from a list of options once it is gone.",
       "boundaryZh": "与 RG.ATTENTION.SEARCH.VISUAL 的界限：视觉搜索是在目标始终可见的场景里持续寻找并确认；本基因作答时目标已经消失，考验的是看过之后的记忆再认，不是当下的搜索。",
       "boundaryEn": "Boundary with RG.ATTENTION.SEARCH.VISUAL: visual search keeps locating and confirming a target that stays visible throughout; this gene answers after the target is gone, testing recognition from memory rather than ongoing search.",
-      "claimedBy": ["flash-cards"]
+      "claimedBy": [
+        "flash-cards"
+      ]
     },
     "RG.MEMORY.SPATIAL.BASIC": {
       "category": "MEMORY",
@@ -568,7 +584,74 @@
       "descEn": "Hold onto a location after it briefly appears and hides, then point to it from memory rather than from what is currently visible.",
       "boundaryZh": "与 RG.SCIENCE 或 pattern 系基因的界限：本基因作答时位置标记已经消失，且可能还要再等一段延迟，考验的是延迟后的空间位置保持，不是当下可见图形之间的比较或推理。",
       "boundaryEn": "Boundary with the pattern-family genes: this gene answers after the position marker is gone, sometimes after an added delay, testing retention of a location across time rather than comparison or reasoning over figures that remain visible.",
-      "claimedBy": ["treasure-grid"]
+      "claimedBy": [
+        "treasure-grid"
+      ]
+    },
+    "RG.MATH.NUMBER_SENSE.REPRESENTATION": {
+      "category": "MATH",
+      "zh": "数的表示",
+      "en": "Number Representation",
+      "short": {
+        "zh": "表示",
+        "en": "Represent"
+      },
+      "descZh": "认出同一个数量的不同表示：数字、点、手指、骰子、两堆拼成、十格阵、几个十几个一。",
+      "descEn": "Recognise one quantity in different faces: numeral, dots, fingers, dice, two groups, ten-frame, tens and ones.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数的表示本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains number representation itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.ORDER": {
+      "category": "MATH",
+      "zh": "数序与距离",
+      "en": "Number Order & Distance",
+      "short": {
+        "zh": "数序",
+        "en": "Order"
+      },
+      "descZh": "在心理数轴上定位数：缺哪个、离谁更近、落在哪个整十附近。",
+      "descEn": "Place numbers on a mental number line: which is missing, which is closer, which ten is nearby.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数序与距离本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains number order & distance itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.ESTIMATION": {
+      "category": "MATH",
+      "zh": "估计",
+      "en": "Estimation",
+      "short": {
+        "zh": "估计",
+        "en": "Estimate"
+      },
+      "descZh": "不精确计数，凭数量级判断大约是多少，并判断一个答案是否合理。",
+      "descEn": "Judge roughly how many without exact counting, and judge whether an answer is reasonable.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是估计本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains estimation itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.OPERATION": {
+      "category": "MATH",
+      "zh": "运算直觉",
+      "en": "Operational Sense",
+      "short": {
+        "zh": "运算直觉",
+        "en": "Operate"
+      },
+      "descZh": "感知加入、拿走会让数量怎样变化，并判断结果是否合理，而不是做精确计算。",
+      "descEn": "Sense how adding or taking away changes a quantity, and judge whether a result is reasonable — not exact calculation.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是运算直觉本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains operational sense itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.MAGNITUDE": {
+      "category": "MATH",
+      "zh": "数量级与尺度",
+      "en": "Magnitude & Scale",
+      "short": {
+        "zh": "数量级",
+        "en": "Scale"
+      },
+      "descZh": "感受 1、10、100 之间差多少，几倍大，十个十是一百。",
+      "descEn": "Feel how far 1, 10 and 100 are apart, how many times bigger, and that ten tens make a hundred.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数量级与尺度本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains magnitude & scale itself — not the act of comparing, and not exact calculation."
     }
   }
 }

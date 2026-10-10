@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-14",
+  "version": "v0.2.0",
+  "updatedAt": "2026-10-10",
   "moduleType": "metathinking",
   "id": "number-sense",
   "canonicalUrl": "/metadata/metathinking/number-sense.json",
@@ -30,46 +30,66 @@
   "rootGeneIds": [
     "RG.MATH.NUMBER_SENSE.QUANTITY",
     "RG.MATH.NUMBER_SENSE.PART_WHOLE",
-    "RG.MATH.NUMBER_SENSE.COMPOSITION"
+    "RG.MATH.NUMBER_SENSE.COMPOSITION",
+    "RG.MATH.NUMBER_SENSE.REPRESENTATION",
+    "RG.MATH.NUMBER_SENSE.ORDER",
+    "RG.MATH.NUMBER_SENSE.ESTIMATION",
+    "RG.MATH.NUMBER_SENSE.OPERATION",
+    "RG.MATH.NUMBER_SENSE.MAGNITUDE"
   ],
   "rootGeneScopeNote": {
     "zh": "本模块从 v0.1.0 起改用三个细粒度基因，不再使用扁平的 RG.MATH.NUMBER_SENSE.BASIC。BASIC 基因保持不动，仍被 clio-egg-catcher-workshop（planned）与 clio-ufo-math-workshop（active）认领，两者与本轮重做无关；comparison.json 里对 BASIC 的历史交叉引用也不动——粗粒度共享基因与本模块的细粒度基因并存，不冲突。",
     "en": "As of v0.1.0 this module reports three fine-grained genes instead of the flat RG.MATH.NUMBER_SENSE.BASIC. BASIC itself is left untouched — it is still claimed by clio-egg-catcher-workshop (planned) and clio-ufo-math-workshop (active), unrelated to this rewrite — and comparison.json's historical cross-reference to BASIC also stays as is. The coarse shared gene and this module's fine-grained genes coexist without conflict."
   },
   "geneReporting": {
-    "zh": "上报以单元（一次训练）为单位：每题只对应单一基因（quantity→QUANTITY，part_whole→PART_WHOLE，composition→COMPOSITION），单元结束时按该单元实际出现过的题型去重上报，不固定上报三个基因。三个元类型是彼此独立的能力坐标，不是同一任务的两个侧面。",
-    "en": "Reporting happens per finished unit: each question maps to exactly one gene (quantity to QUANTITY, part_whole to PART_WHOLE, composition to COMPOSITION), and at unit end the deduped set of genes for the types actually present in that unit is reported — never a fixed all-three. The three meta-types are independent ability axes, not two facets of one task."
+    "zh": "上报以单元（一次训练）为单位：每题只对应单一基因（题型→同名基因，共 8 个），单元结束时按该单元实际出现过的题型去重上报，不固定上报全部。8 个元类型是彼此独立的能力坐标。",
+    "en": "Reporting happens per finished unit: each question maps to exactly one gene (8 types to 8 genes), and at unit end the deduped set of genes for the types actually present is reported — never a fixed all-eight. The 8 meta-types are independent ability axes."
   },
   "difficultyAxes": [
     {
       "id": "object_complexity",
       "zh": "对象复杂度",
       "en": "Object Complexity",
-      "progression": ["concrete", "pictorial", "symbolic"]
+      "progression": [
+        "concrete",
+        "pictorial",
+        "symbolic"
+      ]
     },
     {
       "id": "dimension_complexity",
       "zh": "维度复杂度",
       "en": "Dimension Complexity",
-      "progression": ["single", "dual"]
+      "progression": [
+        "single",
+        "dual"
+      ]
     },
     {
       "id": "relation_complexity",
       "zh": "关系复杂度",
       "en": "Relation Complexity",
-      "progression": ["direct", "indirect"]
+      "progression": [
+        "direct",
+        "indirect"
+      ]
     },
     {
       "id": "language_complexity",
       "zh": "语言复杂度",
       "en": "Language Complexity",
-      "progression": ["question"]
+      "progression": [
+        "question"
+      ]
     },
     {
       "id": "transfer_complexity",
       "zh": "迁移复杂度",
       "en": "Transfer Complexity",
-      "progression": ["within-domain", "strategy"]
+      "progression": [
+        "within-domain",
+        "strategy"
+      ]
     }
   ],
   "typeTree": [
@@ -84,9 +104,15 @@
         "judging which group has more without counting"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-number-sense"],
-        "lessonIds": ["learning-math-number-sense-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       }
     },
     {
@@ -100,9 +126,15 @@
         "spotting the part that does not belong to the given whole"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-number-sense"],
-        "lessonIds": ["learning-math-number-sense-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       }
     },
     {
@@ -116,9 +148,120 @@
         "checking whether a proposed split is valid"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-number-sense"],
-        "lessonIds": ["learning-math-number-sense-l1"],
-        "videoIds": ["learning-math-comparison-intro-001"]
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "representation",
+      "nameZh": "数的表示",
+      "nameEn": "Representation",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.REPRESENTATION",
+      "status": "implemented",
+      "examples": [
+        "representation questions generated per grade"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "order",
+      "nameZh": "数序与距离",
+      "nameEn": "Order & Distance",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.ORDER",
+      "status": "implemented",
+      "examples": [
+        "order questions generated per grade"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "estimation",
+      "nameZh": "估计",
+      "nameEn": "Estimation",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.ESTIMATION",
+      "status": "implemented",
+      "examples": [
+        "estimation questions generated per grade"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "operation",
+      "nameZh": "运算直觉",
+      "nameEn": "Operational Sense",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.OPERATION",
+      "status": "implemented",
+      "examples": [
+        "operation questions generated per grade"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
+      }
+    },
+    {
+      "id": "magnitude",
+      "nameZh": "数量级与尺度",
+      "nameEn": "Magnitude & Scale",
+      "structureGeneId": "RG.MATH.NUMBER_SENSE.MAGNITUDE",
+      "status": "implemented",
+      "examples": [
+        "magnitude questions generated per grade"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-number-sense"
+        ],
+        "lessonIds": [
+          "learning-math-number-sense-l1"
+        ],
+        "videoIds": [
+          "learning-math-comparison-intro-001"
+        ]
       }
     }
   ],
@@ -131,49 +274,120 @@
       "levelId": "L1",
       "ageHint": "4-5",
       "gradeCode": "K1",
-      "objectiveZh": "在 5 以内一眼感知数量，初步识别整体由两小份构成。",
+      "objectiveZh": "在 5 以内一眼感知数量，认识同一个数的不同表示，初步看到整体由两份构成。",
       "objectiveEn": "Subitize quantities within 5 at a glance and begin to see a whole as two small parts.",
-      "primaryTypes": ["quantity", "part_whole"],
+      "primaryTypes": [
+        "quantity",
+        "representation",
+        "order",
+        "part_whole",
+        "composition"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-number-sense"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["L1"]
+      "implementedBy": [
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "L1"
+      ],
+      "numberRange": {
+        "min": 1,
+        "max": 5
+      }
     },
     {
       "levelId": "L2",
       "ageHint": "5-6",
       "gradeCode": "K2",
-      "objectiveZh": "在 10 以内粗略估计数量，练习part-whole 判断，接触简单的拆分。",
+      "objectiveZh": "在 10 以内认出数的多种表示，判断离谁更近，粗略估计，感知增减变化。",
       "objectiveEn": "Estimate quantities within 10, practice part-whole judgment, and begin simple splits.",
-      "primaryTypes": ["quantity", "part_whole", "composition"],
+      "primaryTypes": [
+        "quantity",
+        "representation",
+        "order",
+        "part_whole",
+        "composition",
+        "estimation",
+        "operation",
+        "magnitude"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-number-sense"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["L2"]
+      "implementedBy": [
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "L2"
+      ],
+      "numberRange": {
+        "min": 1,
+        "max": 10
+      }
     },
     {
       "levelId": "L3",
       "ageHint": "6-7",
       "gradeCode": "G1",
-      "objectiveZh": "在 20 以内比较数量估计的粗细，系统列举一个数的多种拆法。",
+      "objectiveZh": "在 20 以内用十格阵看数是怎样搭起来的：凑十、规律数列、估计、运算变化。",
       "objectiveEn": "Refine quantity estimation within 20 and systematically enumerate a number's splits.",
-      "primaryTypes": ["part_whole", "composition"],
+      "primaryTypes": [
+        "quantity",
+        "representation",
+        "order",
+        "part_whole",
+        "composition",
+        "estimation",
+        "operation"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-number-sense"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["L3"]
+      "implementedBy": [
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "L3"
+      ],
+      "numberRange": {
+        "min": 1,
+        "max": 20
+      }
     },
     {
       "levelId": "L4",
       "ageHint": "7-8",
       "gradeCode": "G2",
-      "objectiveZh": "以数的组合与拆分为主，验证多种拆法是否成立，数量感知退化为粗略估算。",
+      "objectiveZh": "在 100 以内灵活地用数：几十几、数轴定位、拆成整十、合理估算、数量级。",
       "objectiveEn": "Focus on composition and decomposition, verify whether multiple splits are valid, with quantity sense reduced to rough estimation.",
-      "primaryTypes": ["composition", "part_whole"],
+      "primaryTypes": [
+        "representation",
+        "order",
+        "part_whole",
+        "composition",
+        "estimation",
+        "operation",
+        "magnitude"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-number-sense"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["L4"]
+      "implementedBy": [
+        "learning-math-number-sense"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "L4"
+      ],
+      "numberRange": {
+        "min": 1,
+        "max": 100
+      }
     }
   ],
   "statistics": {
