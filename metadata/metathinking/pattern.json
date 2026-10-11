@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.1",
-  "updatedAt": "2026-09-05",
+  "version": "v0.7.0",
+  "updatedAt": "2026-10-11",
   "moduleType": "metathinking",
   "id": "pattern",
   "canonicalUrl": "/metadata/metathinking/pattern.json",
@@ -165,15 +165,15 @@
       "implementedBy": [
         "learning-math-pattern"
       ],
-      "coverageGapZh": "K1 的颜色载体 AB 循环续写、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；K2 的纠错（repair，先点出打乱循环的那一项再修好它）、配对（match，颜色规律与图形规律的同构配对）与创造（create，把珠子拖放成 AABB 结构）均已实现。repetition 结构在本模块内的任务矩阵已全部实现。",
-      "coverageGapEn": "K1's color-carrier AB cycle continue, complete and discover (picking the one run that actually follows a rule) are implemented, as are K2's repair (tap the item that breaks the cycle, then fix it), match (isomorphism pairing between a color pattern and a shape pattern) and create (drag beads into an AABB structure). The repetition structure's full task matrix in this module is now implemented."
+      "coverageGapZh": "K1 的颜色载体 AB 循环续写、补全（complete）与发现（discover，挑出真正有规律的一组）已实现；K2 的纠错（repair，先点出打乱循环的那一项再修好它）、配对（match，颜色规律与图形规律的同构配对）与创造（create，把珠子拖放成 AABB 结构）均已实现。repetition 结构在本模块内的任务矩阵已全部实现。 动作（兔子跳停跳）与时间（昼夜、四季、一天的作息）载体也已作为重复规律的载体上线。",
+      "coverageGapEn": "K1's color-carrier AB cycle continue, complete and discover (picking the one run that actually follows a rule) are implemented, as are K2's repair (tap the item that breaks the cycle, then fix it), match (isomorphism pairing between a color pattern and a shape pattern) and create (drag beads into an AABB structure). The repetition structure's full task matrix in this module is now implemented. Action (hop-stop-hop) and time (day/night, seasons, a day routine) carriers also ship as repetition carriers."
     },
     {
       "id": "growth",
       "nameZh": "增长与缩减规律",
       "nameEn": "Growing and Shrinking Pattern",
       "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
         "one circle, two circles, three circles",
         "small, medium, large",
@@ -181,7 +181,12 @@
         "moving one slot forward each step"
       ],
       "noteZh": "与 numerical 的分界：变化落在载体的可数量上（几个、多大、多长）算 growth；变化落在数值本身算 numerical。",
-      "noteEn": "Boundary with numerical: if the change is in a countable property of the carrier (how many, how big) it is growth; if it is in the numeral itself it is numerical."
+      "noteEn": "Boundary with numerical: if the change is in a countable property of the carrier (how many, how big) it is growth; if it is in the numeral itself it is numerical.",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "coverageGapZh": "K2 的数量/大小递增，G1 的递减、发现、纠错、match（图形增长配数字增长）与 create（排成一个比一个多），G2 的「个数增长 + 颜色轮换」复合续写/补全均已上线；growth 任务矩阵已全部实现。",
+      "coverageGapEn": "K2 count/size growth, G1 shrinking, discover, repair, match (picture growth to number growth) and create (order into one-more-each-time), and G2 compound (count grows while colour cycles) ship; the growth task matrix is fully implemented."
     },
     {
       "id": "alternating",
@@ -206,7 +211,7 @@
       "nameZh": "空间规律",
       "nameEn": "Spatial Pattern",
       "structureGeneId": "RG.PATTERN.SPATIAL.RELATION",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
         "left right left right on a 1xN position strip",
         "top middle bottom repeating on a 2xN strip",
@@ -214,14 +219,19 @@
         "the missing cell of a position strip"
       ],
       "carrierBoundaryZh": "载体只用 1xN / 2xN 位置条带与数表，不使用 3x3 图形阵列（那是小精灵 Spatial Pattern 的专属视觉锚点，见 seriesBoundary.gridAnchorZh）。",
-      "carrierBoundaryEn": "Carriers are 1xN / 2xN position strips and number tables only, never the 3x3 shape grid, which is the exclusive visual anchor of MindSeeds Spatial Pattern (see seriesBoundary.gridAnchorZh)."
+      "carrierBoundaryEn": "Carriers are 1xN / 2xN position strips and number tables only, never the 3x3 shape grid, which is the exclusive visual anchor of MindSeeds Spatial Pattern (see seriesBoundary.gridAnchorZh).",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "coverageGapZh": "G1 的 1xN 位置条带续写、补全、发现，G2 的纠错、match（走法配对）与 create（上中下 ABCABC）均已上线；spatial 任务矩阵已全部实现。 数表与日历载体（二维，横竖两个方向）也已作为 spatial 的载体上线，不使用 3x3 图形阵列。",
+      "coverageGapEn": "G1 1xN position-strip continue, complete and discover, and G2 repair, match (moves) and create (top-mid-bottom ABCABC) ship; the spatial task matrix is fully implemented. The number-table and calendar carrier (two-dimensional, across and down) also ships under spatial, never using the 3x3 shape grid."
     },
     {
       "id": "transformation",
       "nameZh": "变换规律",
       "nameEn": "Transformation Pattern",
       "structureGeneId": "RG.PATTERN.TRANSFORMATION.RULE",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
         "one more dot each step",
         "one part removed each step",
@@ -229,14 +239,19 @@
         "one attribute changing by a fixed rule each step"
       ],
       "carrierBoundaryZh": "只做可数的部件与属性变化。单符号朝向旋转（↑→↓←）归小精灵 Visual Pattern，方向加步长的连续移动归 Motion Pattern，见 docs/patterns/SPATIAL-PATTERN-MODULE.md §2。",
-      "carrierBoundaryEn": "Countable part and attribute changes only. Rotating a single symbol's heading belongs to MindSeeds Visual Pattern and direction-plus-step movement to Motion Pattern; see docs/patterns/SPATIAL-PATTERN-MODULE.md section 2."
+      "carrierBoundaryEn": "Countable part and attribute changes only. Rotating a single symbol's heading belongs to MindSeeds Visual Pattern and direction-plus-step movement to Motion Pattern; see docs/patterns/SPATIAL-PATTERN-MODULE.md section 2.",
+      "coverageGapZh": "G1 的方块堆「每次加一块/拿走一块」续写与发现，G2 的「颜色轮流加一块 / 每次加两块」补全与纠错、变换 match 已上线（只做可数的部件变化，不含旋转）；transformation 任务矩阵已全部实现（create 按设计排除）。",
+      "coverageGapEn": "G1 block stacks gaining/losing one block (continue, discover) and G2 add-alternating-colour / add-two (complete, repair) plus a transformation match ship, countable part changes only, no rotation; the transformation task matrix is fully implemented (create is excluded by design).",
+      "implementedBy": [
+        "learning-math-pattern"
+      ]
     },
     {
       "id": "relational",
       "nameZh": "关系规律",
       "nameEn": "Relational Pattern",
       "structureGeneId": "RG.MODELING.EQUATION.RELATION",
-      "status": "planned",
+      "status": "implemented",
       "examples": [
         "every big shape has a small one beside it",
         "each animal maps to one food",
@@ -244,14 +259,19 @@
         "input a shape, output the transformed shape"
       ],
       "noteZh": "关注的是对象之间的对应关系，不是一条序列，所以它没有「下一个」——推进方式是再给一组输入，那属于 complete 任务。",
-      "noteEn": "It is about the correspondence between objects rather than a run, so it has no next item: advancing means supplying another input pair, which is the complete task."
+      "noteEn": "It is about the correspondence between objects rather than a run, so it has no next item: advancing means supplying another input pair, which is the complete task.",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "coverageGapZh": "G2 的「输入→输出」补全、发现（哪一组的每一行按同一规则）、纠错（哪一行没按规则）与规则配对均已上线；relational 任务矩阵已全部实现（continue、create 按设计排除）。",
+      "coverageGapEn": "G2 input-to-output complete, discover (which group follows one rule), repair (which row breaks it) and rule match ship; the relational task matrix is fully implemented (continue and create are excluded by design)."
     },
     {
       "id": "numerical",
       "nameZh": "数量与数据规律",
       "nameEn": "Numerical and Data Pattern",
       "structureGeneId": "RG.PATTERN.SEQUENCE.BASIC",
-      "status": "partial",
+      "status": "implemented",
       "examples": [
         "counting and skip counting within 20 (+1 / +2 / +3)",
         "fives and tens (+5 / +10)",
@@ -260,8 +280,8 @@
         "story situations carrying a progression",
         "row and column rules in a number table, addition table or calendar"
       ],
-      "coverageGapZh": "只有 puzzle 一种模式，且题库未接入掌握度与循环调度；缺少拖放排序与限时玩法。数表行列规律尚未实现。",
-      "coverageGapEn": "Single-choice puzzle only, with the bank not yet wired to mastery and cycle scheduling; drag-to-sort and timed play are missing, and number-table row/column rules are not implemented.",
+      "coverageGapZh": "G1 的数列续写、补全、发现，G2 的续写、补全（含递减、倍增、空格在开头）、纠错与拖放创造均已上线，数值范围按 G1≤20、G2≤100 限制；numerical 任务矩阵已全部实现（match 按设计排除）。",
+      "coverageGapEn": "G1 numeric continue, complete, discover and G2 continue, complete (incl. decreasing, doubling, blank at start), repair and drag-to-build create ship, range-capped at G1<=20, G2<=100; the numerical task matrix is fully implemented (match is excluded by design).",
       "renamedFrom": [
         "progression",
         "structure"
@@ -384,7 +404,7 @@
       "zh": "位置",
       "en": "Position",
       "objectComplexity": "concrete",
-      "status": "planned",
+      "status": "active",
       "carrierGeneId": "RG.PATTERN.SPATIAL.RELATION"
     },
     {
@@ -408,7 +428,7 @@
       "zh": "日常物品",
       "en": "Everyday Object",
       "objectComplexity": "concrete",
-      "status": "planned",
+      "status": "active",
       "noteZh": "物品只是外观，规律通常落在它的形状或数量上，所以不单独报载体基因。",
       "noteEn": "An object is only the skin; the rule usually lives in its shape or count, so no separate carrier gene is reported."
     },
@@ -417,7 +437,7 @@
       "zh": "动作",
       "en": "Action",
       "objectComplexity": "concrete",
-      "status": "planned",
+      "status": "active",
       "carrierGeneId": "RG.PATTERN.MOTION.SEQUENCE"
     },
     {
@@ -425,7 +445,7 @@
       "zh": "时间",
       "en": "Time",
       "objectComplexity": "concrete",
-      "status": "planned",
+      "status": "active",
       "carrierGeneId": "RG.PATTERN.TEMPORAL.SEQUENCE"
     },
     {
@@ -451,14 +471,15 @@
       "zh": "字母与符号",
       "en": "Letter and Symbol",
       "objectComplexity": "symbolic",
-      "status": "planned"
+      "status": "active",
+      "carrierGeneId": "RG.PATTERN.VISUAL.SEQUENCE"
     },
     {
       "id": "table",
       "zh": "数表与日历",
       "en": "Number Table and Calendar",
       "objectComplexity": "symbolic",
-      "status": "planned",
+      "status": "active",
       "carrierGeneId": "RG.PATTERN.QUANTITY.RELATION"
     },
     {
@@ -517,42 +538,42 @@
       "task": "discover",
       "levelFloor": "K2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "growth",
       "task": "continue",
       "levelFloor": "K2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "growth",
       "task": "complete",
       "levelFloor": "K2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "growth",
       "task": "repair",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "growth",
       "task": "match",
       "levelFloor": "G1",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "growth",
       "task": "create",
       "levelFloor": "G1",
       "runtime": "sort",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "alternating",
@@ -601,112 +622,112 @@
       "task": "discover",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "spatial",
       "task": "continue",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "spatial",
       "task": "complete",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "spatial",
       "task": "repair",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "spatial",
       "task": "match",
       "levelFloor": "G2",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "spatial",
       "task": "create",
       "levelFloor": "G2",
       "runtime": "sort",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transformation",
       "task": "discover",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transformation",
       "task": "continue",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transformation",
       "task": "complete",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transformation",
       "task": "repair",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "transformation",
       "task": "match",
       "levelFloor": "G2",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "relational",
       "task": "discover",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "relational",
       "task": "complete",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "relational",
       "task": "repair",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "relational",
       "task": "match",
       "levelFloor": "G2",
       "runtime": "match",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "numerical",
       "task": "discover",
       "levelFloor": "G1",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "numerical",
@@ -727,14 +748,14 @@
       "task": "repair",
       "levelFloor": "G2",
       "runtime": "puzzle",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "structure": "numerical",
       "task": "create",
       "levelFloor": "G2",
       "runtime": "sort",
-      "status": "planned"
+      "status": "implemented"
     }
   ],
   "taskMatrixExclusions": [
@@ -774,8 +795,8 @@
       "levelId": "L1",
       "ageHint": "4-5",
       "gradeCode": "K1",
-      "objectiveZh": "在颜色或形状载体上认出 AB 重复规律并续写下一个（不使用数字）。",
-      "objectiveEn": "Recognise an AB repetition on a color or shape carrier and continue it (no numerals).",
+      "objectiveZh": "单一特征、短序列、不用数字：认出 AB / AAB / ABB 重复规律并续写、补全。",
+      "objectiveEn": "One feature, short runs, no numerals: recognise AB / AAB / ABB repetition and continue or complete it.",
       "primaryTypes": [
         "repetition"
       ],
@@ -790,18 +811,19 @@
       ],
       "implementedModes": [
         "puzzle"
-      ]
+      ],
+      "coverageGapZh": "颜色/图形/图案/大小载体的 AB、AAB、ABB 续写、补全与发现已上线（无数字）。 动作、时间（昼夜）载体已上线。",
+      "coverageGapEn": "AB, AAB, ABB continue, complete and discover on colour/shape/picture/size carriers ship (no numerals). Action and time (day/night) carriers ship."
     },
     {
       "levelId": "L2",
       "ageHint": "5-6",
       "gradeCode": "K2",
-      "objectiveZh": "处理 AABB / ABC 重复规律，并在 10 以内把数量递增规律与图示对应起来。",
-      "objectiveEn": "Handle AABB / ABC repetition and match a quantity progression within 10 to its visual form.",
+      "objectiveZh": "识别完整规律单元（ABC / AABB / AABC），并认出越来越多、越来越大的增长规律。",
+      "objectiveEn": "Recognise the whole repeating unit (ABC / AABB / AABC) and growing count / size patterns.",
       "primaryTypes": [
         "repetition",
-        "growth",
-        "numerical"
+        "growth"
       ],
       "primaryTasks": [
         "continue",
@@ -809,63 +831,42 @@
         "repair",
         "match",
         "create"
-      ],
-      "status": "partial",
-      "implementedBy": [
-        "learning-math-pattern"
-      ],
-      "implementedModes": [
-        "puzzle",
-        "match",
-        "sort"
-      ],
-      "coverageGapZh": "重复规律的纠错（repair，先点出打乱循环的那一项再修好它）、配对（match，颜色规律与图形规律的同构配对）与创造（create，把珠子拖放成 AABB 结构）均已实现；growth、numerical 载体尚未实现。",
-      "coverageGapEn": "Repetition's repair (tap the item that breaks the cycle, then fix it), match (isomorphism pairing between a color pattern and a shape pattern) and create (drag beads into an AABB structure) are all implemented; the growth and numerical carriers are not implemented yet."
-    },
-    {
-      "levelId": "L3",
-      "ageHint": "6-7",
-      "gradeCode": "G1",
-      "objectiveZh": "在 20 以内认出 +1 / +2 / +3 / +5 / +10 的递进规律并补全空缺；在方向/昼夜载体上认出两两交替的振荡规律，续写或补全序列。",
-      "objectiveEn": "Recognise +1 / +2 / +3 / +5 / +10 progressions within 20 and fill the gap in a run; recognise a two-state oscillation on a direction/day-night carrier and continue or complete it.",
-      "primaryTypes": [
-        "numerical",
-        "alternating"
-      ],
-      "primaryTasks": [
-        "discover",
-        "continue",
-        "complete",
-        "repair"
       ],
       "status": "implemented",
       "implementedBy": [
         "learning-math-pattern"
       ],
       "implementedModes": [
-        "puzzle"
+        "puzzle",
+        "match",
+        "sort"
       ],
-      "sourceLevels": [
-        "L3"
-      ]
+      "coverageGapZh": "ABC / AABB / AABC 整组重复、数量与大小的增长、纠错已上线；match、create 小游戏保留。 字母与符号的重复规律（A B A B、+ − + −）已上线。",
+      "coverageGapEn": "ABC / AABB / AABC whole-unit repetition, count and size growth and repair ship; the match and create activities remain. Letter and symbol repetition (A B A B, + - + -) ships."
     },
     {
-      "levelId": "L4",
-      "ageHint": "7-8",
-      "gradeCode": "G2",
-      "objectiveZh": "处理递减与倍增规律，并在生活情境中把规律迁移使用。",
-      "objectiveEn": "Handle decreasing and multiplying progressions and transfer a pattern into everyday situations.",
+      "levelId": "L3",
+      "ageHint": "6-7",
+      "gradeCode": "G1",
+      "objectiveZh": "两件事一起看：双特征循环、交替状态、位置移动、递减，数在 20 以内。",
+      "objectiveEn": "Watch two things at once: two-feature cycles, alternating states, position movement, shrinking counts, numbers within 20.",
       "primaryTypes": [
-        "numerical",
-        "alternating"
+        "repetition",
+        "alternating",
+        "spatial",
+        "growth",
+        "transformation",
+        "numerical"
       ],
       "primaryTasks": [
+        "discover",
+        "continue",
         "complete",
         "repair",
         "match",
         "create"
       ],
-      "status": "partial",
+      "status": "implemented",
       "implementedBy": [
         "learning-math-pattern"
       ],
@@ -874,8 +875,45 @@
         "match",
         "sort"
       ],
-      "coverageGapZh": "递减、倍增与情境迁移都已有单选题；交替规律的 match（颜色规律与图形规律的同构配对）与 create（把箭头拖放成 ABAB 结构）均已实现；仍缺少限时玩法。",
-      "coverageGapEn": "Decreasing, multiplying and story transfer all ship as single-choice questions; alternating's match (isomorphism pairing between a color pattern and a shape pattern) and create (drag arrows into an ABAB structure) are both implemented; timed play is still missing.",
+      "sourceLevels": [
+        "L3"
+      ],
+      "coverageGapZh": "双特征（颜色+形状）循环、两状态交替（发现/补全/纠错）、位置条带、递减、20 以内数列已上线。 方块堆变换（加/拿走一块）、growth 纠错、位置条带发现、增长 match/create 已上线。 growth 发现、数列发现也已上线。 20 以内的数表（横竖两个方向）补全与纠错、字母表里的数列已上线。",
+      "coverageGapEn": "Two-feature cycles (colour + shape), two-state alternation (discover/complete/repair), position strips, shrinking counts and numeric runs within 20 ship. Block-stack transformation, growth repair, position-strip discover and growth match/create ship. Growth discover and numeric discover also ship. Number tables within 20 (two directions) with complete and repair, and runs along the alphabet, ship."
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7-8",
+      "gradeCode": "G2",
+      "objectiveZh": "同时保持两个变化条件：复合规律、输入→输出关系、100 以内数列。",
+      "objectiveEn": "Hold two changing conditions at once: compound rules, input-to-output relations, runs within 100.",
+      "primaryTypes": [
+        "alternating",
+        "growth",
+        "relational",
+        "numerical",
+        "spatial",
+        "transformation"
+      ],
+      "primaryTasks": [
+        "continue",
+        "complete",
+        "repair",
+        "discover",
+        "match",
+        "create"
+      ],
+      "status": "implemented",
+      "implementedBy": [
+        "learning-math-pattern"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "match",
+        "sort"
+      ],
+      "coverageGapZh": "先加后减的交替、个数增长加颜色轮换的复合、输入→输出、100 以内数列（含起点留空）已上线；match、create 小游戏保留。 变换（颜色轮流加块 / 每次加两块）、位置条带纠错、位置 match/create 已上线。 输入→输出的发现、纠错与规则配对、变换 match、数列拖放创造也已上线。 「说出规律」单元（language_complexity=explain）已上线：看一排，从四句话里选出说对规律的那句（重复单元、先加后减、增长、数列、方块变换、输入→输出）。 加法表、100 以内数表、日历（往右 +1、往下 +7）的补全与纠错已上线。",
+      "coverageGapEn": "Add-then-subtract alternation, count growth combined with colour cycling, input-to-output and runs within 100 (blank may sit at the start) ship; the match and create activities remain. Transformation (alternating-colour / add-two), position-strip repair and position match/create ship. Input-output discover, repair and rule match, transformation match and numeric create also ship. A \"say the rule\" unit (language_complexity=explain) ships: look at a row and pick the sentence that states its rule (repeating unit, add-then-subtract, growth, number run, block change, input-output). Addition tables, number tables within 100 and calendars (+1 across, +7 down), complete and repair, ship.",
       "sourceLevels": [
         "L4"
       ]

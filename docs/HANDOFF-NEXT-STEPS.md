@@ -265,6 +265,10 @@ metadata 已统一按 `clio-*-workshop` 登记，接线时改代码去对齐 met
 
 ### 1.8 阶段 3 的第一步（2026-09-03，`learning-math-pattern` 接线 + 题库审计）
 
+> **2026-10-11 更新：** 本节描述的是当时的静态题库（`data.js` 60 道、`UNIT_RULE`、PASS 34 基线）。
+> 规律模块现已改成生成器（`pattern/generator.js` 的 `PT_GEN`），`data.js` 与 `UNIT_RULE` 已删除，
+> `test.html` 重写为生成器审计页，`pattern.json` 为 v0.7.0（7 类结构 × 6 种任务全部上线）。以下内容保留作历史记录。
+
 **做完的事**：规律单元第一次真的可玩、可上报雷达，并且有了自己的题库审计页。
 这也是第二个元思维模块，用来验证「比较单元当模板」这件事是否成立——结论是成立的：
 `shell.js` / `shell-1.css` / `radar-reader.js` / profile 雷达页**一行都没改**。
@@ -323,6 +327,8 @@ mini 适配器；以及 **K1/K2 的非数字重复规律内容**（AB / AABB / A
 > 代码现在上报 2 个，声明与代码对得上了。
 
 ### 1.9 阶段 3 第一步的架构补课（2026-09-04，规律模块三维模型 v0.2.0）
+
+> **2026-10-11 更新：** 本节里的 PASS 34 基线、`data.js` 与 `UNIT_RULE` 描述已过期，见 §1.8 开头的更新说明。
 
 §1.8 让规律单元跑起来了，但它只是「数列题」——七类结构里只有一类，
 六种任务里只有两种。用户复核后给出了完整的模块定义，本节是它的落地。
@@ -551,9 +557,9 @@ result 词表改造、服务器 schema、推荐机制。
   会随机偶发。同一份代码连跑三次实测为 OK 73 / 73 / 71。
   所以判据是 **FAIL 必须为 0**；只出 `LOW VAR` / `SKEWED` 类 WARN 时**重跑两次**，
   若时好时坏就是随机噪声，不是回归。真回归会稳定复现。
-- 每次改完 pattern 相关代码，跑 `learning/math/pattern/test.html`，
-  对基线 **PASS 34 · WARN 2 · FAIL 0**（两条 WARN 是设计意图，见 §1.8）。
-  这一页不需要 fetch，`file://` 下也能开。
+- 每次改完 pattern 相关代码，打开 `learning/math/pattern/test.html`（2026-10-11 起是
+  **生成器审计页**，不再有 PASS 34 · WARN 2 的旧基线）：它对 4 个年级的每个单元各抽 300 轮，
+  判据是**每个年级都显示 PASS、没有 FAIL**。这一页不需要 fetch，`file://` 下也能开。
 - 改完 metadata 或任何 `LEVEL_GRADE` / `difficultyAxisFor` / `*_TYPE_OF` /
   `TASK_OF` / `STRUCTURE_GENES` / `SESSION_SIZE` 声明，
   跑 `metadata/validate.html`（**需 HTTP**），对基线
