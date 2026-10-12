@@ -516,46 +516,32 @@
     });
   }
 
-  function _openGamesMenu(levelId) {
-    var old = document.getElementById('mp-games-menu'); if (old) old.remove();
-    var zh = shell.lang !== 'en';
-    var box = document.createElement('div');
-    box.id = 'mp-games-menu';
-    box.innerHTML = '<div class="mp-gm-card"><div class="mp-gm-title">' + (zh ? '🎮 小游戏' : '🎮 Mini games') + '</div>' +
-      ACTIVITIES[levelId].map(function (a, i) {
-        return '<button class="mp-gm-item" data-i="' + i + '"><span class="mp-gm-ic">' + a.icon + '</span>' +
-          '<span class="mp-gm-name">' + (zh ? a.zh : a.en) + '</span>' +
-          '<span class="mp-gm-tag">' + (a.mode === 'match' ? (zh ? '配对' : 'Match') : (zh ? '创造' : 'Create')) + '</span></button>';
-      }).join('') + '<button class="mp-gm-close">' + (zh ? '关闭' : 'Close') + '</button></div>';
-    document.body.appendChild(box);
-    box.addEventListener('click', function (e) {
-      var item = e.target.closest('.mp-gm-item');
-      if (item) { box.remove(); _launchActivity(levelId, ACTIVITIES[levelId][Number(item.getAttribute('data-i'))]); return; }
-      if (e.target === box || e.target.classList.contains('mp-gm-close')) box.remove();
-    });
-  }
-
-  function _injectGamesButton(levelId) {
-    var hdr = document.querySelector('#s1-home .s1-hdr');
-    if (!hdr || document.getElementById('mp-games-btn') || !ACTIVITIES[levelId]) return;
-    var btn = document.createElement('button');
-    btn.id = 'mp-games-btn'; btn.innerHTML = '🎮'; btn.title = '小游戏 / Mini games';
-    btn.addEventListener('click', function () { _openGamesMenu(levelId); });
-    hdr.insertBefore(btn, hdr.firstChild);
+  // Mini games are listed on the grade home, after the unit cards (shell.homeExtras).
+  function _homeExtras(levelId) {
+    return function (list) {
+      if (!ACTIVITIES[levelId]) return;
+      var head = document.createElement('div');
+      head.className = 'mp-gm-head';
+      head.innerHTML = '<span class="zh">🎮 小游戏</span><span class="en">🎮 Mini games</span>';
+      list.appendChild(head);
+      ACTIVITIES[levelId].forEach(function (a) {
+        var card = document.createElement('div');
+        card.className = 's1-card';
+        card.innerHTML = '<div class="s1-cicon">' + a.icon + '</div><div class="s1-cinfo"><div class="s1-cname"><span class="zh">' + a.zh + '</span><span class="en">' + a.en +
+          '</span></div></div><div class="s1-cstat"><span class="zh">' + (a.mode === 'match' ? '配对' : '创造') + '</span><span class="en">' + (a.mode === 'match' ? 'Match' : 'Create') + '</span></div>';
+        card.addEventListener('click', function () { _launchActivity(levelId, a); });
+        list.appendChild(card);
+      });
+    };
   }
 
   (function () {
     var st = document.createElement('style');
     st.textContent = [
-      '#mp-games-btn{background:none;border:none;cursor:pointer;font-size:22px;padding:4px 8px;line-height:1;}',
-      '#mp-games-menu{position:fixed;inset:0;background:rgba(15,23,42,.45);display:flex;align-items:center;justify-content:center;z-index:99999;}',
-      '.mp-gm-card{background:#fff;border-radius:18px;padding:16px;width:min(92vw,360px);display:flex;flex-direction:column;gap:8px;}',
-      '.mp-gm-title{font-size:18px;font-weight:900;color:#92400e;text-align:center;margin-bottom:4px;}',
-      '.mp-gm-item{display:flex;align-items:center;gap:10px;border:2px solid #fde68a;background:#fffbeb;border-radius:12px;padding:10px 12px;cursor:pointer;font-size:15px;font-weight:700;color:#334155;}',
-      '.mp-gm-item:hover{border-color:#d97706;}',
-      '.mp-gm-ic{font-size:22px;}.mp-gm-name{flex:1;text-align:left;}',
-      '.mp-gm-tag{font-size:11px;font-weight:800;background:#fef3c7;color:#b45309;border-radius:999px;padding:2px 8px;}',
-      '.mp-gm-close{border:none;background:none;color:#64748b;font-size:13px;cursor:pointer;padding:6px;}'
+      '.mp-gm-head{font-size:15px;font-weight:900;color:#92400e;margin:14px 2px 2px;}',
+      // header: back button + title stay on one line
+      '#s1-home .s1-hdr{flex-wrap:nowrap;gap:8px;}',
+      '#s1-home .s1-title{white-space:nowrap;font-size:clamp(20px,5.5vw,32px);min-width:0;}'
     ].join('');
     document.head.appendChild(st);
   })();
@@ -759,6 +745,7 @@
     // reasoning for this flag.
     parallelUnits: true,
     units: buildUnits(levelId),
+    homeExtras: _homeExtras(levelId),
 
     renderSequence: function (q, container) {
       container.classList.remove('mp-discover', 'mp-repair', 'mp-rows', 'mp-explain');
@@ -869,7 +856,6 @@
     });
 
     _injectHomeBackButton();
-    _injectGamesButton(levelId);
   }
 
   /**
@@ -880,7 +866,7 @@
    */
   function _injectDiscoverStyles() {
     var hb = document.createElement('style');
-    hb.textContent = '#mp-home-back{margin-right:auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;line-height:1;}';
+    hb.textContent = '#mp-home-back{flex:0 0 auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;line-height:1;}';
     document.head.appendChild(hb);
     if (document.getElementById('mp-discover-style')) return;
     var s = document.createElement('style');

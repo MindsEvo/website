@@ -652,6 +652,45 @@
       "descEn": "Feel how far 1, 10 and 100 are apart, how many times bigger, and that ten tens make a hundred.",
       "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数量级与尺度本身，不是比较判断，也不是精确计算。",
       "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains magnitude & scale itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MODELING.RELATIONSHIP.BASIC": {
+      "category": "MODELING",
+      "zh": "关系模型",
+      "en": "Relationship Modeling",
+      "short": {
+        "zh": "关系",
+        "en": "Relate"
+      },
+      "descZh": "不只看对象本身，而是把对象之间的关系（谁在谁旁边、谁和谁相连）表示出来并读出来。",
+      "descEn": "Represent and read the relations between objects (who is next to whom, who is linked to whom), not just the objects themselves.",
+      "boundaryZh": "与 RG.COMPARISON 系列的界限：比较训练两个量之间的大小或异同判断；本基因训练把多个对象之间的关系整理成一个结构（顺序、连线）再从中读信息。",
+      "boundaryEn": "Boundary with the comparison genes: those judge size or difference between two quantities; this gene organises relations among several objects into a structure (an order, links) and reads information off it."
+    },
+    "RG.MODELING.PROCESS.SEQUENCE": {
+      "category": "MODELING",
+      "zh": "过程模型",
+      "en": "Process Modeling",
+      "short": {
+        "zh": "过程",
+        "en": "Process"
+      },
+      "descZh": "把一个随时间发生的变化过程表示成一串步骤，并能补缺失的步骤、找放错的步骤。",
+      "descEn": "Represent a change over time as a chain of steps, fill a missing step, and spot a misplaced one.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 的界限：规律基因训练「重复或递变的下一个是什么」；本基因训练「这个过程应该怎样表示成步骤」，顺序来自事情本身而不是重复结构。",
+      "boundaryEn": "Boundary with RG.PATTERN.SEQUENCE.BASIC: pattern genes train what comes next in a repeating or changing run; this gene trains how a process should be written as steps, where the order comes from the event itself, not a repeating structure."
+    },
+    "RG.MODELING.RULE.SYSTEM": {
+      "category": "MODELING",
+      "zh": "规则模型",
+      "en": "Rule Modeling",
+      "short": {
+        "zh": "规则",
+        "en": "Rule"
+      },
+      "descZh": "用几条简单规则描述一个小世界，并用它判断哪些可以通过、怎样才能走到目标。",
+      "descEn": "Describe a small world with a few simple rules and use them to decide what may pass and how to reach a goal.",
+      "boundaryZh": "与 RG.LOGIC 系列的界限：逻辑基因训练在已有前提中做可靠推理；本基因训练把一个系统的规矩本身建成模型并运用，是后面推理与策略的底座。",
+      "boundaryEn": "Boundary with the RG.LOGIC genes: those train reliable reasoning from given premises; this gene trains building and applying a model of a system's rules, the base that later reasoning and strategy stand on."
     }
   }
 }

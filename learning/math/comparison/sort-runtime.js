@@ -59,6 +59,7 @@ var SortRuntime = (function () {
       '.sr-item-bar{height:26px;border-radius:999px;flex-shrink:0;}',
       '.sr-item-emoji{width:100%;text-align:center;font-size:26px;line-height:1;padding:2px 4px;}',
       '.sr-slot-inner .sr-item-emoji{font-size:22px;}',
+      '.sr-item-cap{font-size:11px;font-weight:800;color:#475569;margin-top:2px;}',
       '.sr-slots-wrap{width:min(680px,100%);flex-shrink:0;display:flex;flex-direction:column;gap:6px;}',
       '.sr-slots-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#64748b;flex-shrink:0;}',
       '.sr-slots-arrow .sr-line{flex:1;height:2px;background:#cbd5e1;border-radius:1px;}',
@@ -234,6 +235,16 @@ var SortRuntime = (function () {
       var glyph = document.createElement('div');
       glyph.className = 'sr-item-emoji';
       glyph.textContent = item.emoji;
+      if (item.captionZh) {
+        // optional caption (modeling): the word for the picture, shown always
+        var cap = document.createElement('div');
+        cap.className = 'sr-item-cap';
+        cap.innerHTML = '<span class="zh">' + item.captionZh + '</span><span class="en">' + (item.captionEn || '') + '</span>';
+        glyph.appendChild(cap);
+        var lang = shell.lang || 'zh';
+        cap.querySelector('.zh').style.display = lang === 'zh' ? '' : 'none';
+        cap.querySelector('.en').style.display = lang === 'en' ? '' : 'none';
+      }
       el.appendChild(glyph);
     } else {
       var bar = document.createElement('div');

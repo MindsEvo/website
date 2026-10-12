@@ -1483,6 +1483,7 @@
    *
    *   // Optional:
    *   getVoiceText(q, qIndex) → string  // voice prompt text for each question
+   *   homeExtras(listEl)                // append extra entries after the unit cards on every home render
    * }
    *
    * Shell-1 standard Unit format:
@@ -1815,6 +1816,10 @@
         }
         list.appendChild(card);
       });
+
+      // Optional: let the game append its own entries (e.g. mini games) after the
+      // unit cards. Called on every home render, so it survives language switches.
+      if (typeof cfg.homeExtras === 'function') cfg.homeExtras(list);
 
       // Re-render open summary panels (handles lang switch)
       var sessBody = document.getElementById('s1-sum-sess-body');
