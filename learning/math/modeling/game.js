@@ -449,9 +449,6 @@
     var st = document.createElement('style');
     st.textContent = [
       '.mm-gm-head{font-size:15px;font-weight:900;color:#065f46;margin:14px 2px 2px;}',
-      // header: back button + title stay on one line
-      '#s1-home .s1-hdr{flex-wrap:nowrap;gap:8px;}',
-      '#s1-home .s1-title{white-space:nowrap;font-size:clamp(20px,5.5vw,32px);min-width:0;}',
       '#mm-home-back{flex:0 0 auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 6px;line-height:1;}'
     ].join('');
     document.head.appendChild(st);
@@ -561,16 +558,8 @@
       homeHdr.insertBefore(btn, homeHdr.firstChild);
     }
 
-    // #s1-back only exists in the in-game header; addEventListener stacks
-    // on top of shell's own _goHome listener rather than replacing it, so
-    // both fire (harmless — ours runs the actual navigation regardless).
-    var gameBack = document.getElementById('s1-back');
-    if (gameBack) {
-      gameBack.addEventListener('click', function () {
-        _tearDownShell();
-        _showLevelSelector();
-      });
-    }
+    // The in-game back button (#s1-back) is left to shell: it returns to the unit list;
+    // the unit list's own back button (above) then returns to the grade chooser.
   }
 
   function _launchGrade(levelId) {

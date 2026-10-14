@@ -538,10 +538,7 @@
   (function () {
     var st = document.createElement('style');
     st.textContent = [
-      '.mp-gm-head{font-size:15px;font-weight:900;color:#92400e;margin:14px 2px 2px;}',
-      // header: back button + title stay on one line
-      '#s1-home .s1-hdr{flex-wrap:nowrap;gap:8px;}',
-      '#s1-home .s1-title{white-space:nowrap;font-size:clamp(20px,5.5vw,32px);min-width:0;}'
+      '.mp-gm-head{font-size:15px;font-weight:900;color:#92400e;margin:14px 2px 2px;}'
     ].join('');
     document.head.appendChild(st);
   })();

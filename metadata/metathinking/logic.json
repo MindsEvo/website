@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-16",
+  "version": "v0.3.1",
+  "updatedAt": "2026-10-13",
   "moduleType": "metathinking",
   "id": "logic",
   "canonicalUrl": "/metadata/metathinking/logic.json",
@@ -24,130 +24,209 @@
     "policyEn": "Uses global K-12 foundational curricula as background knowledge without adding extra knowledge burden; domain content is used as a carrier for thinking training. Logic training is deliberately distinct from rote recall: items assess whether a conclusion can be derived from given premises, not whether a fact is memorized."
   },
   "seriesBoundary": {
-    "zh": "与 Comparison/Pattern/Modeling 的边界：Comparison 训练在已知两个量的前提下如何判断关系，Pattern 训练「下一个是什么」的续写预测，Modeling 训练把情境转换成结构（对应/分组/示意图/等式）；本模块训练的是从已知条件或规则出发、经过一步或多步推理得到结论，推理步数和条件组合本身是核心，不是直接的两量比较、续写或情境转换。K2 的图形排序题刻意设计为两条线索的传递推理（A>B、B>C→求最值），而不是单一的两项直接比较，以避免与 Comparison 的边界重叠。",
-    "en": "Boundary with Comparison/Pattern/Modeling: Comparison trains judging a relation given two already-known quantities, Pattern trains continuing/predicting what comes next, Modeling trains turning a situation into a structure (mapping/grouping/diagram/equation); this module trains deriving a conclusion from given conditions or rules through one or more reasoning steps — the number of steps and the combination of conditions is the core skill, not a direct two-quantity comparison, continuation, or situational conversion. The K2 picture-ordering items are deliberately designed as two-clue transitive reasoning (A>B, B>C -> find the extreme) rather than a single direct two-item comparison, to avoid overlapping with Comparison's boundary."
+    "zh": "与 Comparison/Pattern/Modeling 的边界：Comparison 训练在已知两个量的前提下如何判断关系，Pattern 训练「下一个是什么」的续写预测，Modeling 训练把情境转换成结构（对应/分组/示意图/等式）；本模块训练的是从已知条件或规则出发、经过一步或多步推理得到结论，推理步数和条件组合本身是核心，不是直接的两量比较、续写或情境转换。顺序题刻意设计为多条线索的传递推理（A>B、B>C→求最值），而不是单一的两项直接比较，以避免与 Comparison 的边界重叠。",
+    "en": "Boundary with Comparison/Pattern/Modeling: Comparison trains judging a relation given two already-known quantities, Pattern trains continuing/predicting what comes next, Modeling trains turning a situation into a structure (mapping/grouping/diagram/equation); this module trains deriving a conclusion from given conditions or rules through one or more reasoning steps — the number of steps and the combination of conditions is the core skill, not a direct two-quantity comparison, continuation, or situational conversion. Ordering items are deliberately built from several clues of transitive reasoning (A>B, B>C -> find the extreme) rather than one direct two-item comparison, to avoid overlapping with Comparison's boundary."
   },
   "rootGeneIds": [
     "RG.LOGIC.REASONING.BASIC"
   ],
   "rootGeneScopeNote": {
-    "zh": "本模块沿用单一既有基因 RG.LOGIC.REASONING.BASIC，不按题型拆分成细粒度基因。原因：唯一可能对应「分类」的候选基因 RG.LOGIC.CLASSIFICATION.BASIC 在 rootgene.json 中状态为 planned 且已被另一个不相关的规划中游戏 claimedBy，本轮不争用；排序/条件/排除/验证/多步等题型暂时都归入同一条推理基因下，待后续阶段再评估是否拆分。",
-    "en": "This module reuses the single pre-existing gene RG.LOGIC.REASONING.BASIC rather than splitting into fine-grained per-type genes. Reason: the only candidate gene that could map to \"classification\", RG.LOGIC.CLASSIFICATION.BASIC, is status=planned in rootgene.json and already claimedBy an unrelated planned game, so this round does not contest it; ordering/condition/elimination/verification/multistep items all report under the one reasoning gene for now, pending a later decision on whether to split it."
+    "zh": "本模块沿用单一既有基因 RG.LOGIC.REASONING.BASIC，七类共用；类型信息通过上报的 logicType / logicTypes 与 unitId 体现。是否拆成细粒度基因，等所有元思维模块做完后再评估。",
+    "en": "This module keeps the single pre-existing gene RG.LOGIC.REASONING.BASIC for all seven types; the type travels in the report as logicType / logicTypes and unitId. Whether to split it into finer genes is decided after all meta-thinking modules are done."
   },
   "geneReporting": {
-    "zh": "上报以单元（一次训练）为单位：无论单元内出现哪种推理类型，都上报同一条 RG.LOGIC.REASONING.BASIC，不做题型区分。",
-    "en": "Reporting happens per finished unit: regardless of which reasoning type appears in the unit, the same RG.LOGIC.REASONING.BASIC gene is reported, with no per-type distinction."
+    "zh": "上报以单元（一次训练）为单位：七类共用 RG.LOGIC.REASONING.BASIC，类型和难度维度（条件数、对象数、推理深度、条件类型、信息状态）放在上报的 context 里。",
+    "en": "Reporting is per finished unit: all seven types share RG.LOGIC.REASONING.BASIC; the type and the difficulty dimensions (conditions, objects, inference depth, condition type, information state) travel in the report context."
   },
   "difficultyAxes": [
     {
-      "id": "object_complexity",
-      "zh": "对象复杂度",
-      "en": "Object Complexity",
-      "progression": ["pictorial", "symbolic"]
+      "id": "language_complexity",
+      "zh": "语言复杂度",
+      "en": "Language Complexity",
+      "progression": [
+        "picture",
+        "sentence"
+      ]
+    },
+    {
+      "id": "object_count",
+      "zh": "对象数量",
+      "en": "Object Count",
+      "progression": [
+        "two",
+        "three",
+        "four"
+      ]
     },
     {
       "id": "condition_count",
       "zh": "条件数量",
       "en": "Condition Count",
-      "progression": ["single", "double", "multi"]
+      "progression": [
+        "single",
+        "double",
+        "multi"
+      ]
     },
     {
-      "id": "relation_complexity",
-      "zh": "关系复杂度",
-      "en": "Relation Complexity",
-      "progression": ["direct", "transitive", "conditional"]
+      "id": "inference_depth",
+      "zh": "推理深度",
+      "en": "Inference Depth",
+      "progression": [
+        "direct",
+        "one_step",
+        "two_step",
+        "multi_step"
+      ]
     },
     {
-      "id": "language_complexity",
-      "zh": "语言复杂度",
-      "en": "Language Complexity",
-      "progression": ["picture", "sentence"]
+      "id": "condition_type",
+      "zh": "条件类型",
+      "en": "Condition Type",
+      "progression": [
+        "positive",
+        "negation",
+        "and_or",
+        "mixed"
+      ]
     },
     {
-      "id": "transfer_complexity",
-      "zh": "迁移复杂度",
-      "en": "Transfer Complexity",
-      "progression": ["within-domain", "strategy"]
+      "id": "information_state",
+      "zh": "信息状态",
+      "en": "Information State",
+      "progression": [
+        "complete",
+        "redundant",
+        "missing",
+        "distractor"
+      ]
     }
   ],
   "typeTree": [
     {
       "id": "classification",
-      "nameZh": "分类推断",
-      "nameEn": "Classification Reasoning",
+      "nameZh": "分类逻辑",
+      "nameEn": "Classification",
       "structureGeneId": "RG.LOGIC.REASONING.BASIC",
       "status": "implemented",
       "examples": [
-        "spotting the one item in a group that does not belong"
+        "spotting the one that does not belong"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
-    },
-    {
-      "id": "ordering",
-      "nameZh": "顺序推断",
-      "nameEn": "Ordering Reasoning",
-      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
-      "status": "implemented",
-      "examples": [
-        "using two transitive clues (A>B, B>C) to find the extreme"
-      ],
-      "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
-    },
-    {
-      "id": "elimination",
-      "nameZh": "排除推断",
-      "nameEn": "Elimination Reasoning",
-      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
-      "status": "implemented",
-      "examples": [
-        "ruling out options that conflict with a stated condition"
-      ],
-      "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K1 找不同类（水果、车、动物、玩具）。",
+      "coverageGapEn": "K1 odd one out across fruit, vehicles, animals and toys."
     },
     {
       "id": "condition",
-      "nameZh": "条件推断",
-      "nameEn": "Conditional Reasoning",
+      "nameZh": "条件逻辑",
+      "nameEn": "Condition",
       "structureGeneId": "RG.LOGIC.REASONING.BASIC",
       "status": "implemented",
       "examples": [
-        "applying an if-then rule to a specific case"
+        "red AND a circle; a square that is not blue; red OR blue",
+        "if it rains, take an umbrella"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K1 照规则放盒子；K2 两个条件（并且、不是）与「如果是水果放篮子」；G1 如果…那么、或者、既不是…也不是；G2 三个条件。",
+      "coverageGapEn": "K1 rule-following; K2 AND / NOT and if-fruit-then-basket; G1 if-then, OR, neither-nor; G2 three conditions."
     },
     {
-      "id": "verification",
-      "nameZh": "真假验证",
-      "nameEn": "Truth Verification",
+      "id": "elimination",
+      "nameZh": "排除逻辑",
+      "nameEn": "Elimination",
       "structureGeneId": "RG.LOGIC.REASONING.BASIC",
       "status": "implemented",
       "examples": [
-        "deciding who among several speakers is telling the truth"
+        "the rabbit is not behind the red door or the green door",
+        "who lives in which house, from not-clues"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K1 三个门排除两个；K2/G1 三个对象；G2 四个对象。线索由约束求解器保证答案唯一。",
+      "coverageGapEn": "K1 rule out two of three doors; K2/G1 three objects; G2 four objects. A constraint solver guarantees a unique answer."
     },
     {
-      "id": "multistep",
-      "nameZh": "综合推理",
-      "nameEn": "Multi-step Synthesis",
+      "id": "ordering",
+      "nameZh": "顺序逻辑",
+      "nameEn": "Ordering",
       "structureGeneId": "RG.LOGIC.REASONING.BASIC",
       "status": "implemented",
       "examples": [
-        "combining several conditions across more than one inference step"
+        "A is taller than B, B is taller than C: who is tallest",
+        "the dog is left of the cat, the cat is not first"
       ],
       "implementedBy": {
-        "gameIds": ["learning-math-logic"]
-      }
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K2 三个图形角色比大小；G1 三人排队、比高矮、比快慢；G2 四人长链与「线索不够，无法确定」；G2 四个格子的约束排列。",
+      "coverageGapEn": "K2 three pictured animals by size; G1 three people by height, queue or speed; G2 chains of four, \"cannot tell\" items, and four-square constraint puzzles."
+    },
+    {
+      "id": "matching",
+      "nameZh": "对应逻辑",
+      "nameEn": "Matching",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "from two example rows, find what the pairs share (same colour, same number, same kind) and apply it to a new row",
+        "three people, three fruits, from clues"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K1 「找出规则」：两行例子（颜色相同、数量相同、同类）决定答案，常识帮不上忙；K2/G1 三对象线索对应；G2 四对象逻辑表。",
+      "coverageGapEn": "K1 \"find the rule\": two example rows (same colour, same number, same kind) fix the answer and common sense cannot help; K2/G1 three-object matching from clues; G2 four-object logic grid."
+    },
+    {
+      "id": "inference",
+      "nameZh": "推断逻辑",
+      "nameEn": "Inference",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "all red balls are in the red box",
+        "what happens next",
+        "certain / possible / impossible"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "G1 「所有…」规则、原因与结果、一定·可能·不可能；G2 逆命题陷阱「不一定」、连续拿两次。",
+      "coverageGapEn": "G1 \"all\" rules, cause and result, certain / possible / impossible; G2 the converse trap and two draws."
+    },
+    {
+      "id": "truth",
+      "nameZh": "真伪逻辑",
+      "nameEn": "True / False",
+      "structureGeneId": "RG.LOGIC.REASONING.BASIC",
+      "status": "implemented",
+      "examples": [
+        "is the sentence supported by the picture"
+      ],
+      "implementedBy": {
+        "gameIds": [
+          "learning-math-logic"
+        ]
+      },
+      "coverageGapZh": "K1 数一数判断对错；K2 看图判断「所有、有的、没有」。",
+      "coverageGapEn": "K1 count and judge; K2 judge \"every / some / none\" against a picture."
     }
   ],
   "sessionPolicy": {
@@ -159,49 +238,109 @@
       "levelId": "L1",
       "ageHint": "4-5",
       "gradeCode": "K1",
-      "objectiveZh": "在一组图形/表情符号中找出与其他不是一类的那一个。",
-      "objectiveEn": "Spot the one picture/emoji in a group that does not belong with the rest.",
-      "primaryTypes": ["classification"],
+      "objectiveZh": "看得见的逻辑：一条规则一个动作。找不同类、谁配谁、照规则放盒子、三个门排除两个、数一数判断对错。",
+      "objectiveEn": "Logic you can see: one rule, one action. Odd one out, who goes with what, follow a box rule, rule out two of three doors, count and judge.",
+      "primaryTypes": [
+        "classification",
+        "matching",
+        "condition",
+        "elimination",
+        "truth"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-logic"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["classify-1"]
+      "implementedBy": [
+        "learning-math-logic"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "group",
+        "match",
+        "sort",
+        "grid"
+      ],
+      "coverageGapZh": "小游戏：照颜色规则放盒子、颜色一样配一对、同类配一对。",
+      "coverageGapEn": "Mini games: boxes by a colour rule, match the same colour, match the same kind."
     },
     {
       "levelId": "L2",
       "ageHint": "5-6",
       "gradeCode": "K2",
-      "objectiveZh": "从两条图形线索（A比B大、B比C大）推断出最大或最小的一个。",
-      "objectiveEn": "Use two picture clues (A is bigger than B, B is bigger than C) to find the biggest or smallest one.",
-      "primaryTypes": ["ordering"],
+      "objectiveZh": "两个条件一个结论：并且、不是，三对象排除，三个图形角色比大小，如果是水果放篮子，看图判断所有/有的/没有。",
+      "objectiveEn": "Two conditions, one conclusion: AND, NOT, three-object elimination, three animals by size, if-fruit-then-basket, and judging every / some / none against a picture.",
+      "primaryTypes": [
+        "condition",
+        "elimination",
+        "ordering",
+        "matching",
+        "truth"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-logic"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["order-1"]
+      "implementedBy": [
+        "learning-math-logic"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "group",
+        "match",
+        "sort",
+        "grid"
+      ],
+      "coverageGapZh": "小游戏：如果…就放…、照线索排大小、3×3 逻辑表。",
+      "coverageGapEn": "Mini games: if-then sorting, order by size from clues, a 3x3 logic grid."
     },
     {
       "levelId": "L3",
       "ageHint": "6-7",
       "gradeCode": "G1",
-      "objectiveZh": "用文字前提做单步推理：排序、分类、排除与前提冲突的选项。",
-      "objectiveEn": "Single-step reasoning from a text premise: ordering, classification, and eliminating options that conflict with it.",
-      "primaryTypes": ["ordering", "classification", "elimination"],
+      "objectiveZh": "正式进入推理：如果…那么、或者、既不是…也不是，原因与结果，三人排序，三对象三线索谜题，一定·可能·不可能。",
+      "objectiveEn": "Reasoning proper: if-then, OR, neither-nor, cause and result, ordering three people, three-object puzzles, certain / possible / impossible.",
+      "primaryTypes": [
+        "condition",
+        "inference",
+        "ordering",
+        "elimination",
+        "matching"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-logic"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["1", "2", "3"]
+      "implementedBy": [
+        "learning-math-logic"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "group",
+        "match",
+        "sort",
+        "grid"
+      ],
+      "coverageGapZh": "小游戏：照线索排队、3×3 逻辑表、如果…就放…。 线索小谜题里混入一句不相干的话，要求找出或忽略它（信息状态：干扰）。",
+      "coverageGapEn": "Mini games: line up from clues, a 3x3 logic grid, if-then sorting. Clue puzzles mix in an unrelated sentence to find or ignore (information state: distractor)."
     },
     {
       "levelId": "L4",
       "ageHint": "7-8",
       "gradeCode": "G2",
-      "objectiveZh": "用文字前提做条件推理、真假验证与多步综合推理。",
-      "objectiveEn": "Conditional reasoning, truth verification, and multi-step synthesis from a text premise.",
-      "primaryTypes": ["condition", "verification", "multistep"],
+      "objectiveZh": "逻辑网络：四人长链、四对象逻辑表、三个条件、四格约束排列、信息不够时说「无法确定」、逆命题陷阱、连续拿两次。",
+      "objectiveEn": "Logic networks: chains of four, four-object logic grids, three conditions, four-square constraints, \"cannot tell\" when information is missing, the converse trap, and two draws.",
+      "primaryTypes": [
+        "ordering",
+        "matching",
+        "condition",
+        "elimination",
+        "inference"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-math-logic"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["4", "5", "6"]
+      "implementedBy": [
+        "learning-math-logic"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "group",
+        "match",
+        "sort",
+        "grid"
+      ],
+      "coverageGapZh": "小游戏：四个排队、4×4 逻辑表（点格子排除）、格子约束排列。 「多余的线索」单元：不相干的话（干扰）与可以不要的重复线索（冗余）。",
+      "coverageGapEn": "Mini games: line up four, a 4x4 tap-to-eliminate logic grid, squares with constraints. An \"extra clues\" unit: unrelated remarks (distractor) and a repeated clue that is not needed (redundant)."
     }
   ],
   "statistics": {
@@ -247,5 +386,15 @@
     "metathinking",
     "ai-readable",
     "global-k12-reference"
-  ]
+  ],
+  "designModel": {
+    "summaryZh": "逻辑 = 根据已知条件，排除不可能，发现关系，并得到合理结论：条件 → 关系 → 推断 → 结论。七类（分类、条件、排除、顺序、对应、推断、真伪）按推理结构升级，而不是按「题看起来多难」：条件数、对象数、推理深度、条件类型、信息状态。K1 一条规则一个动作；K2 两个条件、三对象排除；G1 如果…那么、或者、必然可能不可能；G2 四对象逻辑表、约束排列、信息不足时不猜。",
+    "summaryEn": "Logic = from the given conditions, rule out the impossible, find the relations, and reach a sound conclusion: condition, relation, inference, conclusion. Seven types (classification, condition, elimination, ordering, matching, inference, truth) climb by reasoning structure, not by how hard an item looks: number of conditions, objects, inference depth, condition type and information state. K1 one rule one action; K2 two conditions and three-object elimination; G1 if-then, OR, certain / possible / impossible; G2 four-object logic grids, constraint puzzles, and not guessing when information is missing.",
+    "engineNoteZh": "排除、对应、顺序、约束排列共用同一个内部约束求解器：先随机定一个解，再加真线索直到解唯一，最后删掉多余线索，所以每道线索题的答案都唯一。",
+    "engineNoteEn": "Elimination, matching, ordering and constraint puzzles share one internal constraint solver: pick a hidden solution, add true clues until it is unique, then drop redundant clues, so every clue puzzle has exactly one answer.",
+    "answerFromConditionsZh": "原则：每道题的答案必须能从题面给出的条件推出来，不依赖孩子的常识。例外是「原因与结果」，它允许常识，但干扰项取自互不相容的情形，保证只有一个合理答案。",
+    "answerFromConditionsEn": "Principle: every answer must follow from the conditions shown, never from outside common sense. The one exception is \"cause and result\", which allows common sense but draws distractors from incompatible situations so only one answer is reasonable.",
+    "interactionNoteZh": "交互版：拖放排序、配对、分类复用比较模块的运行时；逻辑表是本模块自己的 GridRuntime（点一下 ❌、再点 ✅、再点清除；✅ 会让同行同列变灰）。",
+    "interactionNoteEn": "Interactive versions: drag ordering, matching and sorting reuse the comparison runtimes; the logic grid is this module's own GridRuntime (tap for ❌, again for ✅, again to clear; a ✅ greys out its row and column)."
+  }
 }

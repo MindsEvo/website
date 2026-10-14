@@ -180,16 +180,8 @@ function _injectShellBackButtons() {
     homeHdr.insertBefore(btn, homeHdr.firstChild);
   }
 
-  // #s1-back only exists in the in-game header; addEventListener stacks
-  // on top of shell's own _goHome listener rather than replacing it, so
-  // both fire (harmless — ours runs the actual navigation regardless).
-  var gameBack = document.getElementById('s1-back');
-  if (gameBack) {
-    gameBack.addEventListener('click', function () {
-      _tearDownShell();
-      _showLevelSelector();
-    });
-  }
+  // The in-game back button (#s1-back) is left to shell: it returns to the unit list;
+  // the unit list's own back button (above) then returns to the grade chooser.
 }
 
 function _launchGrade(levelId) {

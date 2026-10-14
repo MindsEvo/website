@@ -66,6 +66,11 @@ body {
   margin-bottom: 6px;
 }
 .s1-title    { font-size: 36px; color: var(--s1-primary); font-weight: 900; }
+/* Home header: a module may inject a back button in front of the title; keep the
+   title on one line and let it shrink instead of wrapping word by word. */
+#s1-home .s1-hdr   { flex-wrap: nowrap; gap: 8px; }
+#s1-home .s1-hdr > button:not(.s1-btn) { flex: 0 0 auto; }
+#s1-home .s1-title { white-space: nowrap; min-width: 0; font-size: clamp(20px, 5.5vw, 36px); }
 .s1-sub      { font-size: 15px; color: var(--s1-muted); margin-bottom: 32px; }
 .s1-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 
