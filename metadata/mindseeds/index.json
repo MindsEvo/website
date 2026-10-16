@@ -321,6 +321,72 @@
       "statusNoteEn": "One of the first two MindSeeds · Strategy Master modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
     },
     {
+      "id": "route-choice",
+      "moduleType": "mindseeds",
+      "titleZh": "近路还是远路",
+      "titleEn": "Near or Far",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/route-choice.json",
+      "tags": [
+        "route-choice",
+        "mindseeds",
+        "strategy",
+        "planning",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "策略大师新模块，K1-G2 四级上线并上报雷达。孩子先选路线、看走过去的结果、再决定是否换路；由 generator.js 按年级现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "A new Strategy Master module, K1-G2 shipped and reporting to the radar. The child picks a route, sees the walk result and may change; generated per grade by generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "backpack",
+      "moduleType": "mindseeds",
+      "titleZh": "背包装什么",
+      "titleEn": "Backpack",
+      "ageRange": {
+        "min": 4,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/backpack.json",
+      "tags": [
+        "backpack",
+        "mindseeds",
+        "strategy",
+        "trade-off",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "策略大师新模块，K1-G2 四级上线并上报雷达。孩子装背包、点出发看结果、再决定是否重装；由 generator.js 按年级现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "A new Strategy Master module, K1-G2 shipped and reporting to the radar. The child packs, presses Go, sees the result and may repack; generated per grade by generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
+      "id": "rule-change",
+      "moduleType": "mindseeds",
+      "titleZh": "规则变了",
+      "titleEn": "Rule Change",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/rule-change.json",
+      "tags": [
+        "rule-change",
+        "mindseeds",
+        "strategy",
+        "adaptation",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "策略大师新模块，K1-G2 四级上线并上报雷达。先有原计划，到路口宣布变化，孩子判断坚持还是改变；约一半的题不需要改。由 generator.js 按年级现生成。仍缺：G3 以上、puzzle 以外的运行时。",
+      "statusNoteEn": "A new Strategy Master module, K1-G2 shipped and reporting to the radar. A plan comes first, a change is announced at the junction, and the child decides whether to keep or change; about half need no change. Generated per grade by generator.js. Still missing: G3 and above, and any runtime other than puzzle."
+    },
+    {
       "id": "whats-next",
       "moduleType": "mindseeds",
       "titleZh": "下一步会怎样",
@@ -339,8 +405,8 @@
         "ai-readable"
       ],
       "status": "active",
-      "statusNoteZh": "策略大师系列首批模块之一，K1-G2 四级上线并上报雷达。内容由 generator.js 按年级现生成，无静态题库。仍缺：G3 以上、puzzle 以外的运行时。",
-      "statusNoteEn": "One of the first two MindSeeds · Strategy Master modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
+      "statusNoteZh": "四个等级 K1-G2 上线并上报雷达。规则每题现编（数字按钮加带名称的效果），选错演示实际结果再重试；由 generator.js 按年级现生成。仍缺：G3 以上、puzzle 以外的运行时、规则中途改变的题型。",
+      "statusNoteEn": "All four grades K1-G2 are shipped and reporting to the radar. Rules are drawn per question (numbered buttons, named effects); a wrong choice shows the real outcome and the child retries; generated per grade by generator.js. Still missing: G3 and above, runtimes other than puzzle, and rules that change mid-question."
     }
   ]
 }

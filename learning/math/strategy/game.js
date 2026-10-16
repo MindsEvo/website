@@ -61,7 +61,8 @@ function difficultyAxisFor(levelId) {
   return base[levelId] || null;
 }
 
-function bi(zh, en) { return '<span class="zh">' + zh + '</span><span class="en">' + en + '</span>'; }
+function bolt(s) { return String(s).replace(/⚡/g, '<span class="bolt"></span>'); }
+function bi(zh, en) { return '<span class="zh">' + bolt(zh) + '</span><span class="en">' + bolt(en) + '</span>'; }
 
 // Option buttons: text/emoji strings from generator.js, left-aligned and compact.
 (function () {
@@ -130,6 +131,7 @@ var ROUTE_COLOR = ['#2563eb', '#16a34a', '#7c3aed'];
     '.st-tap i{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;background:#ea580c;color:#fff;font-size:12px;font-style:normal;line-height:22px;}',
     '.st-key b{font-size:22px;}',
     '.st-msg{min-height:22px;font-size:14px;font-weight:800;color:#9a3412;text-align:center;}',
+    '.bolt{display:inline-block;width:1em;height:1em;vertical-align:-0.14em;background:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M13.5 1 4 13.5h6.2L8.8 23 20 9.6h-6.6z\' fill=\'%23dc2626\' stroke=\'%23991b1b\' stroke-width=\'1\' stroke-linejoin=\'round\'/%3E%3C/svg%3E") center/contain no-repeat;}',
     '.st-opt{font-size:19px;font-weight:900;text-align:center;display:block;}'
   ].join('');
   document.head.appendChild(s);

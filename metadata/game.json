@@ -349,6 +349,42 @@
       "videoIds": ["mindseeds-energy-planner-intro-001"]
     },
     {
+      "id": "route-choice",
+      "series": "mindseeds",
+      "module": "route-choice",
+      "shell": "shell-1",
+      "path": "games/route-choice/",
+      "titleZh": "近路还是远路",
+      "titleEn": "Near or Far",
+      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-route-choice-intro-001"]
+    },
+    {
+      "id": "backpack",
+      "series": "mindseeds",
+      "module": "backpack",
+      "shell": "shell-1",
+      "path": "games/backpack/",
+      "titleZh": "背包装什么",
+      "titleEn": "Backpack",
+      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-backpack-intro-001"]
+    },
+    {
+      "id": "rule-change",
+      "series": "mindseeds",
+      "module": "rule-change",
+      "shell": "shell-1",
+      "path": "games/rule-change/",
+      "titleZh": "规则变了",
+      "titleEn": "Rule Change",
+      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-rule-change-intro-001"]
+    },
+    {
       "id": "whats-next",
       "series": "mindseeds",
       "module": "whats-next",

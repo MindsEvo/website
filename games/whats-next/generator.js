@@ -1,155 +1,104 @@
 'use strict';
 
 /**
- * What's Next — Generator
- * Picks rule chains and builds forward-prediction / goal-directed /
- * two-hop-chain questions for MindSeeds · Strategy Master.
- *   - forward_predict (one_hop): "press action X, what happens?" -> effect.
- *   - goal_directed   (one_hop): "you want effect Y, which action?" -> action.
- *   - forward_predict (two_hop): "press action X, what happens in the end?"
- *     -> chases action -> mid -> final across two rule cards.
- * Options are the underlying node objects (not strings) — shell.js passes
- * the exact q.options entry by reference into checkAnswer.
+ * What's Next — Generator  (MindSeeds · Strategy Master)
+ * A magic machine has numbered buttons; each rule card says "button N -> effect".
+ * The rules are drawn fresh per question, so they have to be read.
+ *   K1  forward, 2 rules          K2  forward, 3 rules (options are all card effects)
+ *   G1  backward, 4 rules; one wanted effect, or two at once (pairs of buttons)
+ *   G2  3 button rules + 2 chain cards ("effect -> then effect"); forward or backward over two hops
+ * A question is `interactive`: the board lets the child try an option, shows what
+ * that choice really does, and lets them choose again. `outcome(q, b)` is shared
+ * by the generator (to build distractors) and the game (to show consequences).
  */
 var WN_GEN = (function () {
 
-  function rngFor(seed) {
-    if (seed === undefined || seed === null) { return Math.random; }
-    var s = (Number(seed) >>> 0) || 1;
-    return function () {
-      s = (s * 1664525 + 1013904223) >>> 0;
-      return s / 4294967296;
-    };
-  }
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function pick(a) { return a[rnd(a.length)]; }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
 
-  function shuffled(list, rnd) {
-    var a = list.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(rnd() * (i + 1));
-      var t = a[i]; a[i] = a[j]; a[j] = t;
-    }
-    return a;
-  }
-
-  function dedupeByIcon(nodes) {
-    var seen = {}, out = [];
-    nodes.forEach(function (n) {
-      if (!seen[n.icon]) { seen[n.icon] = true; out.push(n); }
-    });
-    return out;
-  }
-
-  // Tops up a wrong-answer pool with nodes plucked from chains outside the
-  // ones already on screen, so K1's 2-rule board still finds 2 distractors.
-  function topUpFromUnusedChains(wrongPool, usedChains, pickField, rnd, needed) {
-    var unused = shuffled(WN_DATA.chains.filter(function (c) { return usedChains.indexOf(c) === -1; }), rnd);
-    var i = 0;
-    while (dedupeByIcon(wrongPool).length < needed && i < unused.length) {
-      wrongPool.push(unused[i][pickField]);
-      i++;
-    }
-    return wrongPool;
-  }
-
-  function buildOneHop(cfg, rnd) {
-    var chains = shuffled(WN_DATA.chains, rnd).slice(0, cfg.ruleCount);
-    if (chains.length < cfg.ruleCount) { return null; }
-
-    var rules = chains.map(function (c) { return { action: c.action, effect: c.mid }; });
-    var targetIdx = Math.floor(rnd() * chains.length);
-    var target = chains[targetIdx];
-
-    var pickField = cfg.direction === 'goal_directed' ? 'action' : 'mid';
-    var correct = target[pickField];
-    var wrongPool = chains.filter(function (_, i) { return i !== targetIdx; }).map(function (c) { return c[pickField]; });
-    wrongPool = topUpFromUnusedChains(wrongPool, chains, pickField, rnd, 2);
-    wrongPool = dedupeByIcon(wrongPool);
-    if (wrongPool.length < 2) { return null; }
-    var wrongs = shuffled(wrongPool, rnd).slice(0, 2);
-
-    return {
-      direction:  cfg.direction,
-      chainDepth: 'one_hop',
-      rules:      rules,
-      promptNode: cfg.direction === 'goal_directed' ? target.mid : target.action,
-      answer:     correct,
-      options:    shuffled([correct, wrongs[0], wrongs[1]], rnd)
-    };
-  }
-
-  function buildTwoHop(cfg, rnd) {
-    var extraCount = Math.max(0, cfg.ruleCount - 2);
-    var chains = shuffled(WN_DATA.chains, rnd).slice(0, 1 + extraCount);
-    if (chains.length < 1 + extraCount) { return null; }
-    var target = chains[0];
-    var extras = chains.slice(1);
-
-    var rules = [
-      { action: target.action, effect: target.mid },
-      { action: target.mid,    effect: target.final }
-    ].concat(extras.map(function (c) { return { action: c.action, effect: c.mid }; }));
-
-    var wrongPool = [target.mid].concat(
-      extras.map(function (c) { return c.mid; }),
-      extras.map(function (c) { return c.final; })
-    );
-    wrongPool = topUpFromUnusedChains(wrongPool, chains, 'final', rnd, 2);
-    wrongPool = dedupeByIcon(wrongPool);
-    if (wrongPool.length < 2) { return null; }
-    var wrongs = shuffled(wrongPool, rnd).slice(0, 2);
-
-    return {
-      direction:  'forward_predict',
-      chainDepth: 'two_hop',
-      rules:      rules,
-      promptNode: target.action,
-      answer:     target.final,
-      options:    shuffled([target.final, wrongs[0], wrongs[1]], rnd)
-    };
-  }
-
-  function buildQuestion(gradeCode, rnd) {
-    var cfg = WN_DATA.gradeConfig[gradeCode];
-    if (!cfg) { return null; }
-
-    for (var attempt = 0; attempt < 50; attempt++) {
-      var built = cfg.chainDepth === 'two_hop' ? buildTwoHop(cfg, rnd) : buildOneHop(cfg, rnd);
-      if (!built) { continue; }
-
-      var optionTypes = {};
-      built.options.forEach(function (o) {
-        optionTypes[o.icon] = (o === built.answer) ? 'correct' : 'wrong';
-      });
-
-      return Object.assign({
-        gradeCode: gradeCode,
-        optionTypes: optionTypes,
-        hintZh: built.direction === 'goal_directed'
-          ? '看看每条规则的结果，找到能达成目标的那个动作。'
-          : (built.chainDepth === 'two_hop' ? '顺着规则一步一步推到最后。' : '找到这个动作对应的规则卡。'),
-        hintEn: built.direction === 'goal_directed'
-          ? 'Check what each rule leads to, then pick the action that reaches the goal.'
-          : (built.chainDepth === 'two_hop' ? 'Follow the rules step by step to the final result.' : 'Find the rule card that matches this action.')
-      }, built);
-    }
-    return null;
-  }
-
-  function generate(gradeCode, count, seed) {
-    var rnd = rngFor(seed);
-    var out = [], last = null;
-    for (var i = 0; i < count; i++) {
-      var q = buildQuestion(gradeCode, rnd);
-      if (!q) { break; }
-      if (last && q.answer.icon === last.answer.icon &&
-          q.rules.map(function (r) { return r.action.icon; }).join() === last.rules.map(function (r) { return r.action.icon; }).join()) {
-        q = buildQuestion(gradeCode, rnd) || q;
-      }
-      out.push(q);
-      last = q;
+  // Effects (indices into WN_DATA.effects) that really happen when button b is pressed.
+  function outcome(q, b) {
+    var out = [];
+    q.rules.forEach(function (r) { if (r.b === b) out.push(r.e); });
+    for (var i = 0; i < out.length; i++) {
+      (q.chains || []).forEach(function (c) { if (c.from === out[i] && out.indexOf(c.to) < 0) out.push(c.to); });
     }
     return out;
   }
 
-  return { generate: generate, buildQuestion: buildQuestion, rngFor: rngFor };
+  function base(grade, kind, rules, chains, ask, options, answer, hints) {
+    var types = {};
+    options.forEach(function (o) { types[o] = o === answer ? 'correct' : 'wrong'; });
+    return { gradeCode: grade, kind: kind, interactive: true, mode: 'predict', rules: rules, chains: chains || [], ask: ask,
+      options: options.length ? ['done'] : ['done'], choices: options, answer: 'done', correct: answer, optionTypes: { done: 'predict' },
+      hintZh: hints[0], hintEn: hints[1], key: JSON.stringify([rules, chains, ask, answer]) };
+  }
+
+  function draw(n, nEff) {                      // n distinct buttons and n distinct effects
+    return { btns: shuffle([1, 2, 3, 4, 5]).slice(0, n).sort(function (a, b) { return a - b; }), effs: shuffle(WN_DATA.effects.map(function (e, i) { return i; })).slice(0, nEff || n) };
+  }
+
+  function forward(grade, n) {
+    var d = draw(n), rules = d.btns.map(function (b, i) { return { b: b, e: d.effs[i] }; });
+    var target = rules[rnd(n)], opts;
+    if (n === 2) {                               // the other card's effect + one effect that is on no card
+      var other = rules.filter(function (r) { return r !== target; })[0];
+      var absent = shuffle(WN_DATA.effects.map(function (e, i) { return i; }).filter(function (i) { return d.effs.indexOf(i) < 0; }))[0];
+      opts = [target.e, other.e, absent];
+    } else opts = rules.map(function (r) { return r.e; });
+    return base(grade, 'forward', rules, [], { b: target.b }, shuffle(opts).map(function (e) { return 'e:' + e; }), 'e:' + target.e,
+      [['先想一想：我想知道什么？', '再看规则卡：哪一张写着这个数字？', '找到那一行，它指向的就是答案。'],
+       ['First: what do I want to know?', 'Now the cards: which one shows this number?', 'Find that row — the effect it points to is the answer.']]);
+  }
+
+  function backward(grade) {
+    var d = draw(4), rules = d.btns.map(function (b, i) { return { b: b, e: d.effs[i] }; });
+    if (rnd(2) === 0) {                          // one wanted effect
+      var t = rules[rnd(4)], bs = shuffle(rules.filter(function (r) { return r !== t; })).slice(0, 2).concat(t);
+      return base(grade, 'backward', rules, [], { want: [t.e] }, shuffle(bs.map(function (r) { return 'b:' + r.b; })), 'b:' + t.b,
+        [['先想一想：我想让什么发生？', '再看规则卡：哪个数字会让它发生？', '试一试，机器会告诉你实际发生了什么。'],
+         ['First: what do I want to happen?', 'Now the cards: which number makes it happen?', 'Try it — the machine will show what really happens.']]);
+    }
+    var ts = shuffle(rules).slice(0, 2), good = ts.map(function (r) { return r.b; }).sort();
+    var rest = rules.filter(function (r) { return ts.indexOf(r) < 0; }).map(function (r) { return r.b; });
+    var half = [good[rnd(2)], rest[0]].sort(), none = rest.slice(0, 2).sort();
+    function tok(p) { return 'p:' + p.join(','); }
+    return base(grade, 'backward2', rules, [], { want: ts.map(function (r) { return r.e; }) }, shuffle([tok(good), tok(half), tok(none)]), tok(good),
+      [['先想一想：我要让哪两件事一起发生？', '再看规则卡：哪两个数字各负责一件？', '试一试，机器会告诉你实际发生了什么。'],
+       ['First: which two things must happen together?', 'Now the cards: which two numbers each do one of them?', 'Try it — the machine will show what really happens.']]);
+  }
+
+  function chain(grade) {
+    var d = draw(3, 5), rules = d.btns.map(function (b, i) { return { b: b, e: d.effs[i] }; });
+    var chains = [{ from: d.effs[0], to: d.effs[3] }, { from: d.effs[1], to: d.effs[4] }];
+    var target = rules[0];                       // button -> e0 -> e3
+    if (rnd(2) === 0) {
+      return base(grade, 'forward2', rules, chains, { b: target.b }, shuffle(['e:' + d.effs[3], 'e:' + d.effs[0], 'e:' + d.effs[4]]), 'e:' + d.effs[3],
+        [['先想一想：按下去先发生什么？它还会引起别的事吗？', '先在按钮卡找，再在连锁卡接着找。', '要的是最后发生的那一件，不是中间那一件。'],
+         ['First: what happens first? Does it cause anything else?', 'Find it on a button card, then keep going on the chain cards.', 'You want the LAST thing that happens, not the one in the middle.']]);
+    }
+    return base(grade, 'backward3', rules, chains, { want: [d.effs[3]] }, shuffle(rules.map(function (r) { return 'b:' + r.b; })), 'b:' + target.b,
+      [['先想一想：我要让什么最后发生？', '先在连锁卡找：什么会引起它？再在按钮卡找：谁会引起那件事？', '试一试，机器会告诉你一路发生了什么。'],
+       ['First: what must happen in the end?', 'On the chain cards find what causes it, then on the button cards find who causes that.', 'Try it — the machine will show everything that happens.']]);
+  }
+
+  var MAKERS = {
+    K1: function () { return forward('K1', 2); },
+    K2: function () { return forward('K2', 3); },
+    G1: function () { return backward('G1'); },
+    G2: function () { return chain('G2'); }
+  };
+
+  function generate(grade, count) {
+    var mk = MAKERS[grade]; if (!mk) return [];
+    var out = [], seen = {}, guard = 0;
+    while (out.length < count && guard++ < count * 40) {
+      var q = mk(); if (seen[q.key]) continue;
+      seen[q.key] = 1; out.push(q);
+    }
+    return out;
+  }
+
+  return { generate: generate, outcome: outcome };
 }());

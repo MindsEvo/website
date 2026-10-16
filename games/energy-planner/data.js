@@ -2,42 +2,44 @@
 
 /**
  * Energy Planner — Data
- * Task pool + per-grade config for MindSeeds · Strategy Master.
+ * Task names + per-grade config (cost/reward are drawn per question) for MindSeeds · Strategy Master.
  * Metadata: /metadata/mindseeds/energy-planner.json
  * RootGene: RG.STRATEGY.RESOURCE.TRADEOFF
  */
 var EP_DATA = {
+  // fit_only: do as many tasks as the energy allows (K2 has one must-do task);
+  // maximize_reward: pick the tasks that earn the most stars within the energy.
   gradeConfig: {
-    K1: { taskCount: 2, goalType: 'fit_only' },
-    K2: { taskCount: 3, goalType: 'fit_only' },
-    G1: { taskCount: 3, budgetRatio: 0.6,  goalType: 'maximize_reward' },
-    G2: { taskCount: 4, budgetRatio: 0.55, goalType: 'maximize_reward' }
+    K1: { taskCount: 3, goalType: 'fit_only',        costMax: 3, budgetRange: [3, 4] },
+    K2: { taskCount: 4, goalType: 'fit_only',        costMax: 4, budgetRange: [5, 7], mustDo: true },
+    G1: { taskCount: 4, goalType: 'maximize_reward', costMax: 4, rewardMax: 6, budgetRatio: 0.55 },
+    G2: { taskCount: 5, goalType: 'maximize_reward', costMax: 5, rewardMax: 8, budgetRatio: 0.5 }
   },
 
   taskPool: [
-    { icon: '🐶', cost: 2, reward: 3, nameZh: '遛狗',   nameEn: 'Walk the dog' },
-    { icon: '🧹', cost: 1, reward: 1, nameZh: '扫地',   nameEn: 'Sweep the floor' },
-    { icon: '📚', cost: 3, reward: 4, nameZh: '读书',   nameEn: 'Read a book' },
-    { icon: '🛒', cost: 2, reward: 2, nameZh: '买菜',   nameEn: 'Grocery shopping' },
-    { icon: '🎨', cost: 2, reward: 3, nameZh: '画画',   nameEn: 'Draw a picture' },
-    { icon: '🧺', cost: 1, reward: 1, nameZh: '洗衣服', nameEn: 'Do the laundry' },
-    { icon: '🍳', cost: 2, reward: 2, nameZh: '做饭',   nameEn: 'Cook a meal' },
-    { icon: '🌱', cost: 1, reward: 2, nameZh: '浇花',   nameEn: 'Water the plants' },
-    { icon: '🧸', cost: 3, reward: 3, nameZh: '整理玩具', nameEn: 'Tidy the toys' },
-    { icon: '🚲', cost: 2, reward: 3, nameZh: '骑车',   nameEn: 'Go for a bike ride' }
+    { icon: '🐶', nameZh: '遛狗',   nameEn: 'Walk the dog' },
+    { icon: '🧹', nameZh: '扫地',   nameEn: 'Sweep the floor' },
+    { icon: '📚', nameZh: '读书',   nameEn: 'Read a book' },
+    { icon: '🛒', nameZh: '买菜',   nameEn: 'Grocery shopping' },
+    { icon: '🎨', nameZh: '画画',   nameEn: 'Draw a picture' },
+    { icon: '🧺', nameZh: '洗衣服', nameEn: 'Do the laundry' },
+    { icon: '🍳', nameZh: '做饭',   nameEn: 'Cook a meal' },
+    { icon: '🌱', nameZh: '浇花',   nameEn: 'Water the plants' },
+    { icon: '🧸', nameZh: '整理玩具', nameEn: 'Tidy the toys' },
+    { icon: '🚲', nameZh: '骑车',   nameEn: 'Go for a bike ride' }
   ],
 
-  energyIcon: '⚡',
+  energyIcon: '<span class="bolt"></span>',
   rewardIcon: '⭐',
 
   units: {
-    K1: { icon: '🔋', nameZh: 'K1 · 别超支',   nameEn: 'K1 · Stay in Budget',
-      descZh: '两件任务，选出能量不超预算的方案。', descEn: 'Two tasks — pick the plan that stays within budget.' },
-    K2: { icon: '🎯', nameZh: 'K2 · 精打细算', nameEn: 'K2 · Tighter Budget',
-      descZh: '三件任务，预算更紧，仔细算一算。', descEn: 'Three tasks, a tighter budget — add carefully.' },
-    G1: { icon: '🏆', nameZh: 'G1 · 收益最大化', nameEn: 'G1 · Best Value',
-      descZh: '在预算内，选出收益最高的方案。', descEn: 'Within budget, pick the plan with the highest reward.' },
+    K1: { icon: '🔋', nameZh: 'K1 · 能量够用就好', nameEn: 'K1 · Enough Energy',
+      descZh: '三件事，能量有限，试着多做几件。', descEn: 'Three tasks, limited energy — try to do as many as you can.' },
+    K2: { icon: '🎯', nameZh: 'K2 · 必做的事', nameEn: 'K2 · The Must-Do',
+      descZh: '有一件事必须做，其余的再尽量多做。', descEn: 'One task must be done; then fit in as many others as possible.' },
+    G1: { icon: '🏆', nameZh: 'G1 · 划算的选择', nameEn: 'G1 · Best Value',
+      descZh: '能量有限，选出得到星星最多的几件事。', descEn: 'Limited energy — choose the tasks that earn the most stars.' },
     G2: { icon: '👑', nameZh: 'G2 · 权衡取舍', nameEn: 'G2 · Trade-offs',
-      descZh: '四件任务，预算最紧，权衡出收益最高的方案。', descEn: 'Four tasks, the tightest budget — weigh trade-offs for the best reward.' }
+      descZh: '五件事，预算最紧，看起来最划算的不一定最好。', descEn: 'Five tasks, the tightest budget — the best-looking deal is not always the best.' }
   }
 };

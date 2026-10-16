@@ -1,0 +1,189 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-10-15",
+  "moduleType": "mindseeds",
+  "id": "backpack",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/backpack.json",
+  "title": {
+    "zh": "背包装什么",
+    "en": "Backpack"
+  },
+  "description": {
+    "zh": "出行前装背包：每类必带的东西（吃的、喝的、遮挡）选一样，每样有自己的重量，背包有重量上限；高年级还有想带的东西，带得多、星星多。装好后点“出发”，马上看到结果（有没有超重、还剩多少、带了几样、得到几颗星），不满意可以重装。K1 只要装得下；K2 选轻的必带品，才能多带几样；G1 带的星星最多；G2 三类必带，最划算的不一定最好。完成即通过，一次装对最优多一个 ⭐，重装和提示次数记入报告。",
+    "en": "Packing for a trip: pick one item from each must-bring group (food, drink, cover), each with its own weight, under a weight limit; older grades add extras worth bringing or earning stars. After pressing Go the result shows at once (overweight or not, room left, extras brought, stars earned) and the child may repack. K1 just has to fit; K2 chooses light must-haves to bring more extras; G1 earns the most stars; in G2 three must-bring groups make the best-looking deal not the best. Finishing passes, an optimal first try earns a star, and repacks and hints go into the report."
+  },
+  "designModel": {
+    "zh": "主轴是必带类别数（group_count）与可选物品数量（extras），配合目标类型（goal_type：装得下/带得最多/星星最多）。必带品的选择会影响剩余重量，所以要先想清楚再装。",
+    "en": "The primary axes are the number of must-bring groups (group_count) and the amount of extras, paired with the goal type (fit_musts / most_extras / most_stars). The choice of must-have changes the room left, so the child has to think before packing."
+  },
+  "ageRange": {
+    "min": 4,
+    "max": 8,
+    "noteZh": "K1 两类必带、不超重约 4 岁；G2 三类必带加星星权衡约 7 岁。",
+    "noteEn": "K1 with two groups and just fitting suits about 4; G2 with three groups and star trade-offs suits about 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 策略大师。训练的是『在重量上限下，先满足必带、再用剩余空间取舍』；与 energy-planner 的区别是这里有必须满足的类别（每类选一样），选择会改变剩余空间；与学习系列 math/strategy 的区别是每次只练这一种情境。",
+    "policyEn": "This module belongs to MindSeeds · Strategy Master. It trains meeting the must-bring needs first and then trading off with the room left, under a weight limit. Unlike energy-planner there are required groups (one item each) whose choice changes the room left, and unlike learning math/strategy it practises this single situation per game."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.STRATEGY.RESOURCE.TRADEOFF，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.STRATEGY.RESOURCE.TRADEOFF, regardless of grade.",
+    "geneIds": [
+      "RG.STRATEGY.RESOURCE.TRADEOFF"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.RESOURCE.TRADEOFF"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "group_count",
+      "zh": "必带类别数",
+      "en": "Group Count",
+      "progression": [
+        "two",
+        "three"
+      ],
+      "noteZh": "需要各选一样的必带类别数量。",
+      "noteEn": "How many must-bring groups need one pick each."
+    },
+    {
+      "id": "extras",
+      "zh": "可选物品",
+      "en": "Extras",
+      "progression": [
+        "none",
+        "few",
+        "many"
+      ],
+      "noteZh": "除必带外可选带的东西数量。",
+      "noteEn": "How many optional items may be brought on top of the musts."
+    },
+    {
+      "id": "goal_type",
+      "zh": "目标类型",
+      "en": "Goal Type",
+      "progression": [
+        "fit_musts",
+        "most_extras",
+        "most_stars"
+      ],
+      "noteZh": "fit_musts 装得下；most_extras 多带几样；most_stars 星星最多。",
+      "noteEn": "fit_musts just fits; most_extras brings as many extras as possible; most_stars earns the most stars."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，完成即通过（通过线 75%）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4",
+      "gradeCode": "K1",
+      "objectiveZh": "两类必带的东西各选一样，背包别超重。",
+      "objectiveEn": "Pick one item from each of two must-bring groups without overloading the bag.",
+      "axisValues": {
+        "group_count": "two",
+        "extras": "none",
+        "goal_type": "fit_musts"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "backpack"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "必带品选轻一点，才能多带几样喜欢的。",
+      "objectiveEn": "Choose lighter must-haves to fit more of what you like.",
+      "axisValues": {
+        "group_count": "two",
+        "extras": "few",
+        "goal_type": "most_extras"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "backpack"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "重量有限，带哪几样得到的星星最多。",
+      "objectiveEn": "The weight is limited — which things earn the most stars?",
+      "axisValues": {
+        "group_count": "two",
+        "extras": "few",
+        "goal_type": "most_stars"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "backpack"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "三类必带、五样可选，最划算的不一定最好。",
+      "objectiveEn": "Three must-bring groups and five extras; the best-looking deal is not always the best.",
+      "axisValues": {
+        "group_count": "three",
+        "extras": "many",
+        "goal_type": "most_stars"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "backpack"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "goalType",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "报告 process 带 tiers、retries（重装次数）、hints。",
+    "noteEn": "The report process carries tiers, retries (repacks) and hints."
+  },
+  "tags": [
+    "backpack",
+    "mindseeds",
+    "strategy",
+    "trade-off",
+    "ai-readable"
+  ]
+}

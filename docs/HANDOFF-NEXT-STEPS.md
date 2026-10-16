@@ -1,9 +1,10 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.4 (2026-09-02)
+- 版本：v1.5 (2026-10-14)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
 
+> v1.5 变更：数感、规律、建模、逻辑、策略全部改成生成式题库，旧 `data.js` 删除；shell 新增可选钩子 `homeExtras`。见 §1.10。
 > v1.4 变更：**阶段 2 完成**（P3 + P4）。新增校验页 `metadata/validate.html` +
 > `metadata/validate.js`，把 metadata 词表与代码取值对撞一次（当前
 > **OK 49 · INFO 13 · WARN 0 · FAIL 0**）；`metadata/game.json` → v0.2.0，
@@ -408,6 +409,48 @@ mini 适配器；以及 **K1/K2 的非数字重复规律内容**（AB / AABB / A
 抽到共享目录（前缀参数化，默认 `cmp`）；第 4 步才是
 `sequence-engine.js` + 结构签名验证器 + generator + templates.json。
 第 1–3 步期间现有规律单元原样在线，没有回归风险。
+
+---
+
+### 1.10 数感 / 规律 / 建模 / 逻辑 / 策略：全部改成生成式题库（2026-10-14）
+
+> 六个数学思维模块里，除比较（模板制）外，其余五个现在都是**生成器驱动**：
+> `类型 × 年级 → 主题单元`，每次 8–10 题，答完一轮后在 `getReportContext` 之后用 `setTimeout` 重新出题。
+> 旧的静态 `data.js` 全部删除。`shell.js` / `profile/` 没有因此改动，只新增了一个可选钩子 `homeExtras`（见下）。
+
+| 模块 | 文件 | metadata | 单元（K1 / K2 / G1 / G2） |
+|---|---|---|---|
+| 数感 | `number-sense/{game,generator}.js` | `number-sense.json` v0.2.0 | 每年级一个单元，按数范围递进（K1≤5，K2≤10，G1≤20，G2≤100） |
+| 规律 | `pattern/{game,generator}.js`、`test.html` | `pattern.json` v0.7.0 | 见 `docs/patterns/PATTERN-MODULE-ARCHITECTURE.md` |
+| 建模 | `modeling/{game,generator}.js` | `modeling.json` v0.4.0 | 用符号代表 / 分组 / 位置示意图 → 表示与分组 / 位置与关系 / 一步接一步 / 规则小世界 → 情境到点图到算式 / 路线图 / 关系与流程 / 规则与换目的 → 算式与天平 / 选模型评模型 / 坐标与地图 / 关系网与流程 / 规则系统 |
+| 逻辑 | `logic/{game,generator,grid-runtime}.js` | `logic.json` v0.3.1 | 找不同类 / 找出规则 / 照规则做 / 对不对 → 两个条件 / 谁住哪里 / 比大小排队 / 如果…就… → 如果…那么… / 并且·或者·不是 / 排队与比较 / 线索小谜题 / 一定·可能·不可能 → 长一点的顺序 / 逻辑表 / 多个条件 / 格子里的约束 / 多余的线索 / 信息够不够 / 一定·可能·不可能 |
+| 策略 | `strategy/{game,generator}.js` | `strategy.json` v0.6.0 | 见下 |
+
+**共同约定**
+- 单元 id 为 `'<levelId>-<key>'`（如 `L4-nim`），`game.js` 里的 `UNIT_LEVEL` 按它映射年级。
+- 雷达契约：`LEVEL_GRADE`、`*_TYPE_OF`、`difficultyAxisFor` 里的 `base` 表必须保持**平铺字面量**，`metadata/validate.js` 把 `game.js` 当文本读。
+- 设计原则：**答案必须能从题面条件推出，不靠常识**；不要求孩子读纯 emoji 的颜色/身份；黄/橙 emoji 不放在黄/橙底上。
+- 句子里的 emoji 写成「名称（图标）」，语音走 `_speakable()` 去掉括号里的图标。
+- 返回键：单元列表页的头部各模块自行注入 `*-home-back`，拆掉 shell DOM 后回年级选择页；题目页的 `#s1-back` 交给 shell，回单元列表。
+- 小游戏（建模/规律/逻辑）通过 shell 的 `homeExtras(listEl)` 钩子，作为单元列表末尾的卡片出现。该钩子在 `shell.js` 每次渲染首页单元卡片之后调用。
+- 标题栏不换行：`shell-1.css` 中 `#s1-home .s1-title{white-space:nowrap;...}`。
+
+**策略模块（`strategy/`）**
+- `generator.js` 内含 `ST_ENGINE`：小型状态/动作引擎（`getState / getAvailableActions / applyAction / isGoalReached / reset`，外加 BFS 最优解 `solve`），只给本模块用，**没有做成共享库**。棋类各自独立，不在本模块。
+- K1：三条路线图（数垫脚石，有陷阱的路不能走）——三条路选最近 / 有陷阱的路 / 短路长路和陷阱。
+- K2：照规则排顺序 / 顺路拿东西（路线加权重，比总步数）/ 限步拿到 / 点一点排顺序（互动）。
+- G1：金币买东西 / 能量不能没 / 钥匙和门 / 自己选着买（互动）/ 他买得对吗。
+- G2：取饼干比赛（逆推）/ 按钮变数（最少按键）/ 两种都要买 / 能量有上限 / 自己按按钮（互动）/ 和电脑比赛（互动，可选先后手加提示）/ 他说得对吗。
+- 互动题：完成即通过（1 分）；隐藏的「确定」按钮由棋盘在完成时自动点击，接上 shell 的答题流程。
+- 反馈分档（不改 shell）：`best / better / good / valid`，按完成效率分级；`best` 在「答对了」下多显示 ⭐，各档次数与重来次数写进 `getReportContext` 的 `process`。
+- 基因：`RG.STRATEGY.DECISION.PLANNING` 为主；资源/约束类加 `RESOURCE.TRADEOFF`，预测/博弈/优化类加 `PREDICT.CONSEQUENCE`。
+
+**还没做（刻意推迟）**
+- 各模块 JSON 里的「思维标签（Thinking Tag）」字段：等六个模块稳定后统一加。
+- `metadata/validate.js`：未对这几个模块重新跑过，由人工在浏览器里验证。
+- 策略：拖拽排序 Runtime、统一的 Template schema（goal/initialState/actions/transitionRules…，目前每种题型自带生成器）、开放式说理题。
+- 建模 / 逻辑：`test.html` 生成器审计页（规律已有）；逻辑里英文句子的语法复查。
+- 未提交：这几个模块的改动都没有 commit。
 
 ---
 

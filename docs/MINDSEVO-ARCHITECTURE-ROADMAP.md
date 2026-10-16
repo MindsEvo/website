@@ -38,6 +38,8 @@ MindsEvo 的目标不是知识灌输，而是可持续的思维训练平台。
 
 以上六个模块共同构成数学思维（Math Thinking）子产品线。
 
+实现状态（2026-10-14）：比较为模板制（Template -> Variant -> Attempt）；其余五个（数感、规律、建模、逻辑、策略）均为生成器驱动，K1–G2 全覆盖。详见 `docs/HANDOFF-NEXT-STEPS.md` §1.10。
+
 建议命名：Six Core Cognitive Modules（六大核心认知模块，特指上述数学思维六模块，不含下述其他 Learning 子模块）。
 
 纵向进阶：幼儿园 -> 小学毕业，按抽象程度递进。

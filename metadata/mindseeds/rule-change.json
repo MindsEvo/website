@@ -1,0 +1,203 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-10-15",
+  "moduleType": "mindseeds",
+  "id": "rule-change",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/rule-change.json",
+  "title": {
+    "zh": "规则变了",
+    "en": "Rule Change"
+  },
+  "description": {
+    "zh": "小动物有一个原计划（最好的那条路）。走到路口时宣布一个变化：某条路被堵、变难走或变好走，或者能量突然减少。孩子要判断原来的路现在还行不行：行就坚持，不行就换。大约一半的题变化与原计划无关，坚持才是对的，所以“一变就换”和“从不换”都不是策略。选错不判红叉，走过去看结果再调整。K1 路被堵；K2 路变难走或变好走；G1 能量突然减少；G2 两件事同时变。完成即通过，一次想对且没用提示多一个 ⭐，重试、提示和坚持/换路的次数记入报告。",
+    "en": "The animal has a plan (the best road). At the junction a change is announced: a road is blocked, gets harder or easier, or the energy suddenly drops. The child decides whether the old road still works - keep it if so, switch if not. About half of the questions are changes that do not touch the plan, so \"always switch\" and \"never switch\" are both bad strategies. A wrong pick is not marked red: walk it, see the result and adjust. K1 a blocked road; K2 a road gets harder or easier; G1 energy drops; G2 two changes at once. Finishing passes, right first with no hints earns a star, and retries, hints and keep/change counts go into the report."
+  },
+  "designModel": {
+    "zh": "主轴是变化的数量（change_count）与类型（change_type：路障、能耗变化、能量减少、组合），配合目标类型（goal_type）和原计划是否仍然有效（plan_status：mixed 表示有的题坚持、有的题要换）。",
+    "en": "The primary axes are the number of changes (change_count) and their type (change_type: barrier, cost shift, energy cut, combined), paired with the goal type and whether the plan still holds (plan_status: mixed means some questions need keeping, some changing)."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 两条路的简单取舍约 3-4 岁；G2 含隐藏信息与星星权衡约 7 岁。",
+    "noteEn": "K1 two-route choices suit about 3-4; G2 with hidden information and star trade-offs suits about 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 策略大师。训练的是『情况变了，原计划还有效吗，要不要调整』；与 route-choice 的区别是这里先有一个已知的最好计划，重点是判断变化是否影响它，而不是从零选路。",
+    "policyEn": "This module belongs to MindSeeds · Strategy Master. It trains asking whether the old plan still works when things change, and adjusting only if needed. Unlike route-choice, a best plan is already known and the point is judging whether the change affects it, not choosing a route from scratch."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.STRATEGY.DECISION.PLANNING，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.STRATEGY.DECISION.PLANNING, regardless of grade.",
+    "geneIds": [
+      "RG.STRATEGY.DECISION.PLANNING"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.DECISION.PLANNING"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "change_count",
+      "zh": "变化数量",
+      "en": "Change Count",
+      "progression": [
+        "one",
+        "two"
+      ],
+      "noteZh": "路口宣布的变化数量。",
+      "noteEn": "How many changes are announced at the junction."
+    },
+    {
+      "id": "change_type",
+      "zh": "变化类型",
+      "en": "Change Type",
+      "progression": [
+        "block",
+        "cost_shift",
+        "energy_cut",
+        "combined"
+      ],
+      "noteZh": "block 路被堵；cost_shift 某条路变难走或变好走；energy_cut 能量突然减少；combined 两种变化同时发生。",
+      "noteEn": "block - a road is blocked; cost_shift - a road gets harder or easier; energy_cut - energy drops; combined - two changes together."
+    },
+    {
+      "id": "goal_type",
+      "zh": "目标类型",
+      "en": "Goal Type",
+      "progression": [
+        "least_energy",
+        "most_stars"
+      ],
+      "noteZh": "least_energy 选最省力；most_stars 在能量内星星最多。",
+      "noteEn": "least_energy picks the easiest road; most_stars earns the most stars within the energy."
+    },
+    {
+      "id": "plan_status",
+      "zh": "原计划状态",
+      "en": "Plan Status",
+      "progression": [
+        "mixed"
+      ],
+      "noteZh": "mixed：约一半的题变化不影响原计划（该坚持），其余原计划失效（该换）。",
+      "noteEn": "mixed: about half of the questions leave the plan intact (keep it) and the rest break it (change it)."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，完成即通过（通过线 75%）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "4",
+      "gradeCode": "K1",
+      "objectiveZh": "两条路，一条被堵或变难走：原计划还行吗？",
+      "objectiveEn": "Two roads, one blocked or harder: does the plan still work?",
+      "axisValues": {
+        "change_count": "one",
+        "change_type": "block",
+        "goal_type": "least_energy",
+        "plan_status": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "rule-change"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "三条路，有的变难走或变好走：原来最省力的还是它吗？",
+      "objectiveEn": "Three roads, one gets harder or easier: is the plan still the easiest?",
+      "axisValues": {
+        "change_count": "one",
+        "change_type": "cost_shift",
+        "goal_type": "least_energy",
+        "plan_status": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "rule-change"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "能量突然少了或有路被堵：还拿得到那么多星星吗？",
+      "objectiveEn": "Energy drops or a road is blocked: can you still earn that many stars?",
+      "axisValues": {
+        "change_count": "one",
+        "change_type": "energy_cut",
+        "goal_type": "most_stars",
+        "plan_status": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "rule-change"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "四条路，两件事同时变了，重新想最好的路。",
+      "objectiveEn": "Four roads and two things change at once: think again about the best road.",
+      "axisValues": {
+        "change_count": "two",
+        "change_type": "combined",
+        "goal_type": "most_stars",
+        "plan_status": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "rule-change"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "goalType",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "报告 process 带 tiers、retries、hints，以及 keptPlan / changedPlan（本轮需要坚持与需要换路的题数）。",
+    "noteEn": "The report process carries tiers, retries, hints, and keptPlan / changedPlan (how many questions needed keeping versus changing)."
+  },
+  "tags": [
+    "rule-change",
+    "mindseeds",
+    "strategy",
+    "adaptation",
+    "ai-readable"
+  ]
+}

@@ -2,14 +2,13 @@
 
 /**
  * Energy Planner — Generator
- * Builds a budget + a task list, then 3 candidate plans (subsets of the
- * task list) where exactly one satisfies the question's goal:
- *   - fit_only:        exactly 1 of 3 candidates has cost <= budget.
- *   - maximize_reward: all 3 candidates fit the budget but have 3 distinct
- *                       reward totals, so the highest is unambiguous.
- * Options are kept as full plan objects (not primitives) — shell.js passes
- * the exact q.options entry by reference into checkAnswer, so identity
- * comparison against q.answer is safe and avoids re-serializing plans.
+ * Each question is a small planning problem the child solves by acting:
+ * tap tasks into the plan, submit, see the outcome, and try again if wished.
+ *   - fit_only (K1-K2): do as many tasks as the energy allows (K2: one task is a must-do).
+ *   - maximize_reward (G1-G2): earn the most stars within the energy. In G2 the
+ *     best-value-per-energy greedy choice is NOT optimal, so it has to be weighed.
+ * `best` is the optimal value (task count or stars); it is computed by brute
+ * force over every subset (<= 5 tasks), so it is always exact.
  */
 var EP_GEN = (function () {
 
@@ -31,108 +30,82 @@ var EP_GEN = (function () {
     return a;
   }
 
-  function pick(list, rnd) { return list[Math.floor(rnd() * list.length)]; }
+  function int(lo, hi, rnd) { return lo + Math.floor(rnd() * (hi - lo + 1)); }
 
-  function subsetsOf(tasks) {
-    var n = tasks.length;
+  // Every subset that fits the budget (and holds the must-do task, if any).
+  function feasible(tasks, budget, valueOf) {
     var out = [];
-    for (var mask = 1; mask < (1 << n); mask++) {
-      var cost = 0, reward = 0, items = [];
-      for (var i = 0; i < n; i++) {
-        if (mask & (1 << i)) { cost += tasks[i].cost; reward += tasks[i].reward; items.push(tasks[i]); }
+    for (var mask = 1; mask < (1 << tasks.length); mask++) {
+      var cost = 0, value = 0, ok = true, count = 0;
+      for (var i = 0; i < tasks.length; i++) {
+        if (mask & (1 << i)) { cost += tasks[i].cost; value += valueOf(tasks[i]); count++; }
+        else if (tasks[i].must) { ok = false; }
       }
-      out.push({ mask: mask, items: items, cost: cost, reward: reward });
+      if (ok && cost <= budget) { out.push({ mask: mask, cost: cost, value: value, count: count }); }
     }
     return out;
   }
 
-  // Picks a subset whose cost is the unique cheapest among all subsets (no
-  // ties) and sets the budget to exactly that cost, so it is the only
-  // feasible plan. Ratio-based budgets are too unreliable when there are
-  // only a handful of subsets (e.g. taskCount=2 -> 3 subsets total).
-  function buildFitOnly(subsets, rnd) {
-    var candidates = subsets.filter(function (s) {
-      var sameCost   = subsets.filter(function (x) { return x.cost === s.cost; }).length;
-      var higherCost = subsets.filter(function (x) { return x.cost > s.cost; }).length;
-      return sameCost === 1 && higherCost >= 2;
+  function greedyValue(tasks, budget) {          // best stars-per-energy first
+    var left = budget, total = 0;
+    tasks.slice().sort(function (a, b) { return b.reward / b.cost - a.reward / a.cost; }).forEach(function (t) {
+      if (t.cost <= left) { left -= t.cost; total += t.reward; }
     });
-    if (!candidates.length) { return null; }
-    var correct = pick(candidates, rnd);
-    var budget  = correct.cost;
-    var infeasible = subsets.filter(function (s) { return s.cost > budget; });
-    var wrongs = shuffled(infeasible, rnd).slice(0, 2);
-    if (wrongs.length < 2) { return null; }
-    return { correct: correct, budget: budget, candidates: [correct, wrongs[0], wrongs[1]] };
-  }
-
-  function buildMaximizeReward(subsets, budget, rnd) {
-    var feasible = subsets.filter(function (s) { return s.cost <= budget; });
-    var byReward = {};
-    feasible.forEach(function (s) {
-      if (!byReward[s.reward]) { byReward[s.reward] = s; }
-    });
-    var rewards = Object.keys(byReward).map(Number).sort(function (a, b) { return b - a; });
-    if (rewards.length < 3) { return null; }
-    var top = rewards.slice(0, 3).map(function (r) { return byReward[r]; });
-    return { correct: top[0], candidates: top };
+    return total;
   }
 
   function buildQuestion(gradeCode, rnd) {
     var cfg = EP_DATA.gradeConfig[gradeCode];
     if (!cfg) { return null; }
+    var maxi = cfg.goalType === 'maximize_reward';
+    var valueOf = maxi ? function (t) { return t.reward; } : function () { return 1; };
 
-    for (var attempt = 0; attempt < 50; attempt++) {
-      var tasks = shuffled(EP_DATA.taskPool, rnd).slice(0, cfg.taskCount);
-      var subsets = subsetsOf(tasks);
-
-      var built, budget;
-      if (cfg.goalType === 'maximize_reward') {
-        var sumCost = tasks.reduce(function (s, t) { return s + t.cost; }, 0);
-        budget = Math.max(1, Math.round(sumCost * cfg.budgetRatio));
-        built = buildMaximizeReward(subsets, budget, rnd);
-      } else {
-        built = buildFitOnly(subsets, rnd);
-        budget = built && built.budget;
-      }
-      if (!built) { continue; }
-
-      var options = shuffled(built.candidates, rnd);
-      var optionTypes = {};
-      options.forEach(function (o) {
-        optionTypes[o.mask] = (o === built.correct) ? 'correct_plan' : 'wrong_plan';
+    for (var attempt = 0; attempt < 400; attempt++) {
+      var tasks = shuffled(EP_DATA.taskPool, rnd).slice(0, cfg.taskCount).map(function (t) {
+        return { icon: t.icon, nameZh: t.nameZh, nameEn: t.nameEn,
+          cost: int(1, cfg.costMax, rnd), reward: maxi ? int(1, cfg.rewardMax, rnd) : 0, must: false };
       });
-
+      var total = tasks.reduce(function (s, t) { return s + t.cost; }, 0);
+      var budget = maxi ? Math.max(3, Math.round(total * cfg.budgetRatio)) : int(cfg.budgetRange[0], cfg.budgetRange[1], rnd);
+      if (cfg.mustDo) {
+        var big = tasks.filter(function (t) { return t.cost >= 2; });
+        if (!big.length) { continue; }
+        big[Math.floor(rnd() * big.length)].must = true;
+      }
+      if (total <= budget) { continue; }
+      var plans = feasible(tasks, budget, valueOf);
+      if (!plans.length) { continue; }
+      var best = Math.max.apply(null, plans.map(function (p) { return p.value; }));
+      var tops = plans.filter(function (p) { return p.value === best; });
+      var n = tasks.length;
+      if (best <= 1 || tops.some(function (p) { return p.count === n || p.count === 1 && maxi; })) { continue; }
+      if (maxi) {
+        if (tops.length !== 1) { continue; }
+        if (gradeCode === 'G2' && greedyValue(tasks, budget) >= best) { continue; }
+      } else if (cfg.mustDo) {
+        // the must-do task has to matter: ignoring it would allow more tasks
+        var free = feasible(tasks.map(function (t) { return Object.assign({}, t, { must: false }); }), budget, valueOf);
+        if (Math.max.apply(null, free.map(function (p) { return p.value; })) <= best) { continue; }
+      }
       return {
-        gradeCode:   gradeCode,
-        goalType:    cfg.goalType,
-        tasks:       tasks,
-        budget:      budget,
-        options:     options,
-        answer:      built.correct,
-        optionTypes: optionTypes,
-        hintZh: cfg.goalType === 'maximize_reward'
-          ? '算一算每个方案的总收益，别超过预算。'
-          : '算一算每个方案要花多少能量，别超过预算。',
-        hintEn: cfg.goalType === 'maximize_reward'
-          ? "Add up each plan's total reward without going over budget."
-          : "Add up each plan's energy cost and stay within budget."
+        gradeCode: gradeCode, goalType: cfg.goalType, interactive: true, mode: 'plan',
+        tasks: tasks, budget: budget, best: best,
+        options: ['done'], answer: 'done', optionTypes: { done: 'plan' },
+        hintZh: ['先想一想：我想达到什么？', '再想一想：每件事花多少能量，换来什么？', '试试看，提交后看看剩多少，还能更好吗？'],
+        hintEn: ['First: what do I want to achieve?', 'Next: what does each task cost, and what does it give?', 'Try it, submit, and see — can it be better?']
       };
     }
     return null;
   }
 
   function generate(gradeCode, count, seed) {
-    var rnd = rngFor(seed);
-    var out = [], last = null;
-    for (var i = 0; i < count; i++) {
+    var rnd = rngFor(seed), out = [], seen = {}, guard = 0;
+    while (out.length < count && guard++ < count * 30) {
       var q = buildQuestion(gradeCode, rnd);
       if (!q) { break; }
-      if (last && q.answer.mask === last.answer.mask &&
-          q.tasks.map(function (t) { return t.icon; }).join() === last.tasks.map(function (t) { return t.icon; }).join()) {
-        q = buildQuestion(gradeCode, rnd) || q;
-      }
-      out.push(q);
-      last = q;
+      var key = q.budget + ':' + q.tasks.map(function (t) { return t.icon + t.cost + t.reward + (t.must ? 'M' : ''); }).join();
+      if (seen[key]) { continue; }
+      seen[key] = 1; out.push(q);
     }
     return out;
   }
