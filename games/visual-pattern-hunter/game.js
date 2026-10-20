@@ -65,10 +65,24 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: VPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(VPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    resolve: function (q) {
+      return q.change === 'rotation'
+        ? { kind: 'num', mod: 360, stepUnit: function () { return VPH_DATA.gradeConfig[q.gradeCode].step; } }
+        : { kind: 'sym' };
+    },
+    full: function (q) { return q.sequence.map(function (t, i) { return i === q.blankIndex ? q.answer : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t, s, q) { return figure(t, q, s); },
+    noun: function (q) { return q.change === 'rotation' ? { zh: '箭头', en: 'arrows' } : { zh: '图形', en: 'shapes' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +97,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = VPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(VPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -136,26 +150,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      container.innerHTML = q.sequence.map(function (item) {
-        return item === '?' ? '<span class="mystery">?</span>' : figure(item, q, 44);
-      }).join(' ');
-    },
-
-    renderOption: function (opt, q) { return figure(opt, q, 50); },
-
-    checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
-
-    getVoiceText: function (q, idx) {
-      if (q.change === 'rotation') {
-        return shell.lang === 'zh'
-          ? '第' + (idx + 1) + '题，问号处的箭头朝哪边？'
-          : 'Question ' + (idx + 1) + ', which way does the missing arrow point?';
-      }
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，下一个是什么形状？'
-        : 'Question ' + (idx + 1) + ', what shape comes next?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -163,11 +162,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         shapes:          _unique(questions.map(function (q) { return q.shape; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

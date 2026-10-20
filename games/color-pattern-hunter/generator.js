@@ -4,7 +4,10 @@
  * Color Pattern Hunter — session GENERATOR (MindSeeds)
  * ─────────────────────────────────────────────────────────────────────────────
  * One item: a strip that repeats a unit (shape template filled with distinct
- * colors, or distinct color PAIRS at G2) with exactly one element blanked.
+ * colors, or distinct color PAIRS at G2). Three task forms share that strip:
+ *   fill     one element is blanked and the child fills it (补全)
+ *   predict  the strip is complete and the child continues it (预测)
+ *   spot     one element was swapped and the child finds it (识别)
  *
  * The answer is unambiguous by construction: the strip is long enough that the
  * blank's phase inside the unit is visible elsewhere — ≥ 2 full units before an
@@ -88,22 +91,33 @@ var CPH_GEN = (function () {
     return { options: shuffled([answer, reversed, other, halfWrong], rnd), optionTypes: types };
   }
 
-  function buildQuestion(gradeCode, rnd) {
-    var cfg = CPH_DATA.gradeConfig[gradeCode];
-    if (!cfg) { return null; }
+  // Every question is played on a board (interactive): the child tries, the board
+  // shows what the try leads to, and the child may try again. `answer`/`options`
+  // only feed the shell; the real target lives in `target`/`full`.
+  function wrap(q) {
+    q.interactive = true;
+    q.options = ['done'];
+    q.answer = 'done';
+    q.optionTypes = { done: 'color_pattern' };
+    return q;
+  }
 
+  function lengthFor(cfg, u, rnd) {
+    var len = cfg.length[0] + Math.floor(rnd() * (cfg.length[1] - cfg.length[0] + 1));
+    return Math.max(len, cfg.blank === 'end' ? 2 * u + 1 : 2 * u);
+  }
+
+  function buildFill(gradeCode, rnd) {
+    var cfg = CPH_DATA.gradeConfig[gradeCode];
     var shape = pick(cfg.shapes, rnd);
     var u = shape.length;
     var fill = fillShape(shape, cfg.element, rnd);
-
-    var len = cfg.length[0] + Math.floor(rnd() * (cfg.length[1] - cfg.length[0] + 1));
-    len = Math.max(len, cfg.blank === 'end' ? 2 * u + 1 : 2 * u);
+    var len = lengthFor(cfg, u, rnd);
 
     var seq = [];
     for (var i = 0; i < len; i++) { seq.push(fill.unit[i % u]); }
     var blankIdx = cfg.blank === 'end' ? len - 1 : Math.floor(rnd() * len);
     var answer = seq[blankIdx];
-
     var cells = seq.slice();
     cells[blankIdx] = null;
 
@@ -111,36 +125,82 @@ var CPH_GEN = (function () {
       ? pairOptions(answer, fill, rnd)
       : singleOptions(answer, fill, cfg.optionCount, rnd);
 
-    var unitZh = fill.unit.map(function (e) { return nameOf(e, 'zh'); }).join('');
-    var unitEn = fill.unit.map(function (e) { return nameOf(e, 'en'); }).join('-');
+    return wrap({
+      gradeCode: gradeCode, form: 'fill', shape: shape, layout: cfg.element === 'pair' ? 'pair' : 'linear',
+      unit: fill.unit, cells: cells, full: seq, blankIndex: blankIdx, target: answer,
+      choices: opt.options, choiceTypes: opt.optionTypes
+    });
+  }
 
-    return {
-      gradeCode:   gradeCode,
-      shape:       shape,
-      layout:      cfg.element === 'pair' ? 'pair' : 'linear',
-      cells:       cells,
-      blankIndex:  blankIdx,
-      answer:      answer,
-      options:     opt.options,
-      optionTypes: opt.optionTypes,
-      hintZh:      '重复单元是：' + unitZh,
-      hintEn:      'Repeating unit: ' + unitEn
-    };
+  function buildPredict(gradeCode, rnd) {
+    var cfg = CPH_DATA.gradeConfig[gradeCode];
+    var shape = pick(cfg.shapes, rnd);
+    var u = shape.length;
+    var fill = fillShape(shape, cfg.element, rnd);
+    var shownLen = Math.max(cfg.length[0] + Math.floor(rnd() * (cfg.length[1] - cfg.length[0] + 1)), 2 * u + (cfg.element === 'pair' ? 0 : 1));
+    var m = gradeCode === 'K1' || cfg.element === 'pair' ? 2 : 3;
+    var full = [];
+    for (var i = 0; i < shownLen + m; i++) { full.push(fill.unit[i % u]); }
+
+    var choices;
+    if (cfg.element === 'pair') {
+      var ps = [], seen = {};
+      fill.unit.forEach(function (p) { if (!seen[keyOf(p)]) { seen[keyOf(p)] = 1; ps.push(p); } });
+      choices = ps.concat([[ps[0][1], ps[0][0]], [ps[0][0], fill.spare[0]]]).slice(0, 4);
+    } else {
+      choices = fill.used.concat(fill.spare).slice(0, Math.max(fill.used.length, cfg.optionCount));
+    }
+    return wrap({
+      gradeCode: gradeCode, form: 'predict', shape: shape, layout: cfg.element === 'pair' ? 'pair' : 'linear',
+      unit: fill.unit, cells: full.slice(0, shownLen), full: full, need: m, target: full.slice(shownLen),
+      choices: shuffled(choices, rnd)
+    });
+  }
+
+  // Three full repeats with exactly one element swapped: the other two repeats show the unit.
+  function buildSpot(gradeCode, rnd) {
+    var cfg = CPH_DATA.gradeConfig[gradeCode];
+    var shape = pick(cfg.spotShapes, rnd);
+    var u = shape.length;
+    var fill = fillShape(shape, 'single', rnd);
+    var full = [];
+    for (var i = 0; i < 3 * u; i++) { full.push(fill.unit[i % u]); }
+    var bad = Math.floor(rnd() * full.length);
+    var pool = fill.used.concat(fill.spare.slice(0, 1)).filter(function (c) { return c !== full[bad]; });
+    var cells = full.slice();
+    cells[bad] = pick(pool, rnd);
+    return wrap({
+      gradeCode: gradeCode, form: 'spot', shape: shape, layout: 'linear',
+      unit: fill.unit, cells: cells, full: full, badIndex: bad
+    });
+  }
+
+  var MAKE = { fill: buildFill, predict: buildPredict, spot: buildSpot };
+
+  function buildQuestion(gradeCode, rnd, form) {
+    var cfg = CPH_DATA.gradeConfig[gradeCode];
+    if (!cfg) { return null; }
+    return MAKE[form || 'fill'](gradeCode, rnd);
   }
 
   function generate(gradeCode, count, seed) {
     var rnd = rngFor(seed);
-    var out = [], lastShape = null;
-    for (var i = 0; i < count; i++) {
-      var q = buildQuestion(gradeCode, rnd);
-      // Re-draw once to avoid the same shape twice in a row when alternatives exist.
-      if (q && q.shape === lastShape && CPH_DATA.gradeConfig[gradeCode].shapes.length > 1) {
-        q = buildQuestion(gradeCode, rnd);
+    var cfg = CPH_DATA.gradeConfig[gradeCode];
+    if (!cfg) { return []; }
+    var forms = [];
+    Object.keys(cfg.forms).forEach(function (f) { for (var i = 0; i < cfg.forms[f]; i++) { forms.push(f); } });
+    forms = shuffled(forms, rnd).slice(0, count);
+    while (forms.length < count) { forms.push('fill'); }
+    var out = [], seen = {};
+    forms.forEach(function (f) {
+      var q = null;
+      for (var t = 0; t < 12; t++) {                       // avoid an identical strip twice in a session
+        q = buildQuestion(gradeCode, rnd, f);
+        var key = f + JSON.stringify(q.cells);
+        if (!seen[key]) { seen[key] = 1; break; }
       }
-      if (!q) { return out; }
       out.push(q);
-      lastShape = q.shape;
-    }
+    });
     return out;
   }
 

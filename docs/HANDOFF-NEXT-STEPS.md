@@ -1,9 +1,10 @@
 # 交接说明：思维雷达架构落地状态与下一步
 
-- 版本：v1.5 (2026-10-14)
+- 版本：v1.6 (2026-10-16)
 - 适用：接手 comparison 单元之后工作的人 / 模型（本轮为 Opus → Sonnet 交接）
 - 前置阅读顺序：`docs/rootgene/ROOTGENE-FRAMEWORK.md` → 本文 → `docs/patterns/COMPARISON-*.md`
 
+> v1.6 变更：小精灵策略大师重做为 5 个“动手 → 看后果 → 再调整”的游戏；规律猎手出架构文档，颜色规律为样板。见 §1.11。
 > v1.5 变更：数感、规律、建模、逻辑、策略全部改成生成式题库，旧 `data.js` 删除；shell 新增可选钩子 `homeExtras`。见 §1.10。
 > v1.4 变更：**阶段 2 完成**（P3 + P4）。新增校验页 `metadata/validate.html` +
 > `metadata/validate.js`，把 metadata 词表与代码取值对撞一次（当前
@@ -451,6 +452,28 @@ mini 适配器；以及 **K1/K2 的非数字重复规律内容**（AB / AABB / A
 - 策略：拖拽排序 Runtime、统一的 Template schema（goal/initialState/actions/transitionRules…，目前每种题型自带生成器）、开放式说理题。
 - 建模 / 逻辑：`test.html` 生成器审计页（规律已有）；逻辑里英文句子的语法复查。
 - 未提交：这几个模块的改动都没有 commit。
+
+---
+
+### 1.11 小精灵：策略大师重做 + 规律猎手架构（2026-10-15 ~ 16）
+
+**策略大师**（`sprites/strategy-master/`）现有 5 个游戏，统一体验：先动手选 → 看后果 → 再调整；选错不判红叉；完成即通过，首次无提示最优多 ⭐；`process` 记 tiers / retries / hints。不改 shell。
+
+| 游戏 | 路径 | 基因 | 要点 |
+|---|---|---|---|
+| 能量分配 | `games/energy-planner/` | RESOURCE.TRADEOFF | 点选任务搭计划；G2 里“性价比最高”不是最优 |
+| 近路还是远路 | `games/route-choice/` | DECISION.PLANNING | 选路 → 小动物走过去；路障、水坑、❓隐藏石头 |
+| 背包装什么 | `games/backpack/` | RESOURCE.TRADEOFF | 每类必带选一样 + 想带的；重量上限 |
+| 下一步会怎样 | `games/whats-next/` | PREDICT.CONSEQUENCE | 规则每题现编，数字按钮 + 带名称的效果；错了演示实际结果 |
+| 规则变了 | `games/rule-change/` | DECISION.PLANNING | 原计划 + 路口变化；约一半的题不用改计划 |
+
+约定：能量图标用内联红色闪电（`.bolt`），不用 ⚡ emoji（字体里固定是黄色）；终点/小动物放在有色圆底上，避免白/黄图标看不清。
+
+**规律猎手**（`sprites/pattern-hunter/`）：架构见 `docs/mindseeds/PATTERN-HUNTER-ARCHITECTURE.md`。入口页文案已换，10 个 `metadata/mindseeds/*-pattern.json` 和 `difference-scout.json` 已加 `cognitiveChain`。
+- 样板：`games/color-pattern-hunter/` 已升级为动手玩法（补全 / 预测 / 识别），v0.2.0。
+- 已迁移：数字 / 视觉 / 动作 / 时间 / 大小 / 数量 / 综合 7 个入口共用 `games/pattern-board.js`（`PatternBoard.decorate` + 每个游戏一个小适配器 `PB_AD`），综合规律（两个维度各有自己的规则）由板子逐维度检测，也支持预测和识别；三种形式补全 / 预测 / 识别按年级出现（K1 只补全，K2 起加预测，G1 起加识别）；某条规律出不了预测或识别时（如大小只有 5 档、轨道走出格子）自动退回补全。
+- 空间关系：第一步已完成，生成式位置规律 K1–G2（荷叶跳 / 格子脚印 / 楼梯步 / 碰边反弹），点格子预测、补全、识别；旧的“带墙找路线”静态题已删。第二步待做：转换规律（旋转/翻转）、格阵规律、解释规则。
+- 待处理：逻辑推理（与数学逻辑重叠，改拖拽排队）、数字规律（互动化）单独处理。
 
 ---
 

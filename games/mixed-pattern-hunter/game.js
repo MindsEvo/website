@@ -65,10 +65,29 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: MXP_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(MXP_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    kind: 'sym',
+    dims: function (q) { return q.dimensions; },
+    values: function (d) { return MXP_DATA.values[d]; },
+    ordered: function (d) { return d !== 'color'; },
+    cyclic: function (d) { return d === 'direction'; },
+    full: function (q) { return q.cells.map(function (t) { return t === '?' ? q.optionDefs[q.answer] : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.optionDefs[q.answer]; },
+    options: function (q) { return q.options.map(function (id) { return q.optionDefs[id]; }); },
+    render: function (t) { return renderCard(t); },
+    reveal: function (q) {
+      return { zh: '发现的规律：' + q.dim1Name.zh + '：' + q.dim1Rule.zh + '；' + q.dim2Name.zh + '：' + q.dim2Rule.zh + '。',
+               en: 'Patterns found - ' + q.dim1Name.en + ': ' + q.dim1Rule.en + '; ' + q.dim2Name.en + ': ' + q.dim2Rule.en + '.' };
+    },
+    noun: function () { return { zh: '卡片', en: 'cards' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +102,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = MXP_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(MXP_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -197,49 +216,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      if (_run.finished) { _run = { qs: [], res: [], finished: false }; }
-      container.innerHTML = q.cells.map(renderCard).join(' ');
-    },
-
-    renderOption: function (opt, q) { return renderCard(q.optionDefs[opt]); },
-
-    checkAnswer: function (selected, q) { return selected === q.answer; },
-
-    onAnswer: function (selected, q) { track(selected, q); },
-
-    onCorrect: function (q, actsEl) {
-      var zh = shell.lang === 'zh';
-      var reveal = document.createElement('div');
-      reveal.className = 'mx-reveal';
-      reveal.innerHTML =
-        '<div class="mx-reveal-title"><span class="zh">🔍 发现的规律</span><span class="en">🔍 Patterns Detected</span></div>' +
-        '<div class="mx-reveal-dim"><span class="mx-check">✓</span><span>' + (zh ? q.dim1Name.zh : q.dim1Name.en) +
-          ' — <em>' + (zh ? q.dim1Rule.zh : q.dim1Rule.en) + '</em></span></div>' +
-        '<div class="mx-reveal-dim"><span class="mx-check">✓</span><span>' + (zh ? q.dim2Name.zh : q.dim2Name.en) +
-          ' — <em>' + (zh ? q.dim2Rule.zh : q.dim2Rule.en) + '</em></span></div>';
-      actsEl.appendChild(reveal);
-    },
-
-    onResult: function (stats, rmsgEl) {
-      // The shell redraws the result screen (e.g. on language switch), so replace, never append.
-      var old = rmsgEl.parentNode.querySelector('.mx-thinking');
-      if (old) { old.parentNode.removeChild(old); }
-      var s = scores();
-      var zh = shell.lang === 'zh';
-      var card = document.createElement('div');
-      card.className = 'mx-thinking';
-      card.innerHTML = '<div class="mx-thinking-title">' + (zh ? '🧠 思维评分' : '🧠 Thinking Score') + '</div>' +
-        bar(zh ? '观察力' : 'Observation', s.obs) + bar(zh ? '综合力' : 'Integration', s.int);
-      rmsgEl.insertAdjacentElement('afterend', card);
-      _run.finished = true;
-    },
-
-    getVoiceText: function (q, idx) {
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，' + q.dim1Name.zh + '和' + q.dim2Name.zh + '各有什么规律？'
-        : 'Question ' + (idx + 1) + '. What is the rule for ' + q.dim1Name.en.toLowerCase() + ' and for ' + q.dim2Name.en.toLowerCase() + '?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -247,11 +228,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         dimensionPairs:  _unique(questions.map(function (q) { return q.dimKey; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

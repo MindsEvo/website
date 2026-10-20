@@ -65,10 +65,21 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: QPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(QPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    kind: 'num',
+    valid: function (t, q) { return t >= 1 && t <= QPH_DATA.gradeConfig[q.gradeCode].max; },
+    full: function (q) { return q.sequence.map(function (t, i) { return i === q.blankIndex ? q.answer : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t, s, q) { return renderQuantity(t, q.asset); },
+    noun: function (q) { var a = QPH_DATA.assets[q.asset] || {}; return { zh: a.zh || '物品', en: a.en || 'items' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +94,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = QPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(QPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -144,25 +155,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      container.innerHTML = '<div class="qph-row">' + q.sequence.map(function (item) {
-        return item === '?' ? '<span class="mystery">?</span>' : renderQuantity(item, q.asset);
-      }).join('') + '</div>';
-    },
-
-    renderOption: function (count, q) {
-      var asset = QPH_DATA.assets[q.asset] || QPH_DATA.assets.apple;
-      return '<span class="qph-opt-wrap">' + renderQuantity(count, q.asset) +
-        '<span class="qph-label"><span class="zh">' + asset.zh + '</span><span class="en">' + asset.en + '</span></span></span>';
-    },
-
-    checkAnswer: function (selected, q) { return Number(selected) === Number(q.answer); },
-
-    getVoiceText: function (q, idx) {
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，问号处应该有多少个？'
-        : 'Question ' + (idx + 1) + ', how many go in the gap?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -170,11 +167,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         directions:      _unique(questions.map(function (q) { return q.direction; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

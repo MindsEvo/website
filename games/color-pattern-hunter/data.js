@@ -12,6 +12,8 @@
  *   K1→K2  unit_length (2→3), option_count (three→four)
  *   K2→G1  unit_length (3→4), blank_position (end→any)
  *   G1→G2  element_type (single→pair)
+ * `forms` is how many questions of each task form a session of 6 holds:
+ *   fill (补全) · predict (预测下一段) · spot (找出破坏规律的那个).
  */
 
 var CPH_DATA = {
@@ -35,13 +37,14 @@ var CPH_DATA = {
    */
   gradeConfig: {
     K1: { shapes: ['AB'],                           length: [5, 6], optionCount: 3,
-          blank: 'end', element: 'single' },
+          blank: 'end', element: 'single', forms: { fill: 6 } },
     K2: { shapes: ['AAB', 'ABB', 'ABC'],            length: [7, 8], optionCount: 4,
-          blank: 'end', element: 'single' },
+          blank: 'end', element: 'single', forms: { fill: 3, predict: 3 } },
     G1: { shapes: ['AABB', 'ABCC', 'AABC', 'ABCD'], length: [8, 8], optionCount: 4,
-          blank: 'any', element: 'single' },
+          blank: 'any', element: 'single', forms: { fill: 2, predict: 2, spot: 2 },
+          spotShapes: ['AAB', 'ABB', 'ABC'] },
     G2: { shapes: ['AAB', 'ABB'],                   length: [6, 6], optionCount: 4,
-          blank: 'any', element: 'pair' }
+          blank: 'any', element: 'pair', forms: { fill: 3, predict: 3 } }
   },
 
   units: {

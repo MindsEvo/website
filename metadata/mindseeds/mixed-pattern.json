@@ -1,11 +1,14 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-24",
+  "version": "0.2.0",
+  "updatedAt": "2026-10-16",
   "moduleType": "mindseeds",
   "id": "mixed-pattern",
   "series": "mindseeds",
   "canonicalUrl": "/metadata/mindseeds/mixed-pattern.json",
-  "title": { "zh": "综合规律", "en": "Mixed Pattern" },
+  "title": {
+    "zh": "综合规律",
+    "en": "Mixed Pattern"
+  },
   "description": {
     "zh": "每张卡片同时带有两个维度（颜色、大小、数量、方向中的任意两个），每个维度各有自己的规律。补出空缺那张卡片，需要分别读出两个规律再把它们合在一起。选项是 2×2 诊断矩阵：两个都对、只错第一维、只错第二维、两个都错，因此错在哪一维一目了然。",
     "en": "Every card carries two dimensions at once (any two of color, size, quantity, direction), each with its own rule. Filling the missing card means reading both rules separately and then combining them. The options form a 2×2 diagnostic matrix — both right, only the first wrong, only the second wrong, both wrong — so it is clear which dimension slipped."
@@ -27,15 +30,22 @@
   "geneReporting": {
     "ruleZh": "每次 Attempt 上报 RG.PATTERN.INTEGRATION.MULTI_DIMENSION，不随等级变化。",
     "ruleEn": "Every attempt reports RG.PATTERN.INTEGRATION.MULTI_DIMENSION, regardless of grade.",
-    "geneIds": ["RG.PATTERN.INTEGRATION.MULTI_DIMENSION"]
+    "geneIds": [
+      "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
+    ]
   },
-  "rootGeneIds": ["RG.PATTERN.INTEGRATION.MULTI_DIMENSION"],
+  "rootGeneIds": [
+    "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
+  ],
   "difficultyAxes": [
     {
       "id": "changing_dimensions",
       "zh": "变化维度数",
       "en": "Changing Dimensions",
-      "progression": ["one", "two"],
+      "progression": [
+        "one",
+        "two"
+      ],
       "noteZh": "one：只有一个维度在变，另一个恒定（但选项中恒定维度也可能被改错）；two：两个维度都在变。",
       "noteEn": "one: only one dimension changes and the other is constant (though options may still get the constant one wrong); two: both dimensions change."
     },
@@ -43,7 +53,12 @@
       "id": "rule_relation",
       "zh": "规律关系",
       "en": "Rule Relation",
-      "progression": ["single", "synced", "independent", "offset-period"],
+      "progression": [
+        "single",
+        "synced",
+        "independent",
+        "offset-period"
+      ],
       "noteZh": "single 只有一条规律；synced 两个维度都是两拍交替；independent 一个交替、另一个是持续变化（大小/数量逐级、方向每次转 90 度）；offset-period 一个三拍循环、一个两拍交替，同一位置的两个值要分别对齐各自的节奏。",
       "noteEn": "single has one rule; synced has both dimensions alternating on two beats; independent pairs an alternation with a progressive change (size or quantity one step at a time, direction a quarter turn); offset-period pairs a 3-beat cycle with a 2-beat alternation, so each value at a position must be aligned to its own rhythm."
     },
@@ -51,7 +66,10 @@
       "id": "blank_position",
       "zh": "空格位置",
       "en": "Blank Position",
-      "progression": ["end", "any"],
+      "progression": [
+        "end",
+        "any"
+      ],
       "noteZh": "end 是『下一张是什么』；any 空格可能在中间。",
       "noteEn": "end asks what comes next; any may put the gap mid-strip."
     }
@@ -64,40 +82,127 @@
   },
   "levelMap": [
     {
-      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
       "objectiveZh": "一个维度交替、另一个一直不变，选出两样都对的下一张。",
       "objectiveEn": "One dimension alternates and the other stays the same; pick the next card with both right.",
-      "axisValues": { "changing_dimensions": "one", "rule_relation": "single", "blank_position": "end" },
-      "status": "implemented", "implementedBy": ["mixed-pattern-hunter"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "changing_dimensions": "one",
+        "rule_relation": "single",
+        "blank_position": "end"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "mixed-pattern-hunter"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
       "objectiveZh": "两个维度都在交替，同时跟住两个维度的节奏。",
       "objectiveEn": "Both dimensions alternate; follow both rhythms at once.",
-      "axisValues": { "changing_dimensions": "two", "rule_relation": "synced", "blank_position": "end" },
-      "status": "implemented", "implementedBy": ["mixed-pattern-hunter"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "changing_dimensions": "two",
+        "rule_relation": "synced",
+        "blank_position": "end"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "mixed-pattern-hunter"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
       "objectiveZh": "一个维度交替，另一个维度持续变大、变多或转动，分别读出两种不同类型的规律。",
       "objectiveEn": "One dimension alternates while the other keeps growing, increasing or turning; read two different kinds of rule.",
-      "axisValues": { "changing_dimensions": "two", "rule_relation": "independent", "blank_position": "end" },
-      "status": "implemented", "implementedBy": ["mixed-pattern-hunter"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "changing_dimensions": "two",
+        "rule_relation": "independent",
+        "blank_position": "end"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "mixed-pattern-hunter"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
       "objectiveZh": "一个维度三拍循环、另一个两拍交替，空格可能在中间，分别对齐两个节奏。",
       "objectiveEn": "One dimension cycles every 3 and the other alternates every 2, with the gap possibly mid-strip; align each rhythm separately.",
-      "axisValues": { "changing_dimensions": "two", "rule_relation": "offset-period", "blank_position": "any" },
-      "status": "implemented", "implementedBy": ["mixed-pattern-hunter"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "changing_dimensions": "two",
+        "rule_relation": "offset-period",
+        "blank_position": "any"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "mixed-pattern-hunter"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     }
   ],
   "statistics": {
-    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
-    "dimensions": ["levelId", "gradeCode", "dimensionPairs", "difficultyAxis"],
-    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
-    "noteZh": "optionTypes（both_correct / dim1_wrong / dim2_wrong / both_wrong）直接给出错在哪一维；配合 dimensionPairs 可以看出某个孩子是否总在某一个维度上掉链子。",
-    "noteEn": "optionTypes (both_correct / dim1_wrong / dim2_wrong / both_wrong) say directly which dimension went wrong; combined with dimensionPairs this shows whether a child consistently slips on one particular dimension."
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "dimensionPairs",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "optionTypes（both_correct / dim1_wrong / dim2_wrong / both_wrong）直接给出错在哪一维；配合 dimensionPairs 可以看出某个孩子是否总在某一个维度上掉链子。 玩法已升级为动手板（games/pattern-board.js）：补全、预测（K2 起）、识别放错的一个（G1 起，能出的题型因规律而异）；选错展示按所选排出的整串并标出对不上的地方，再重试。报告 process 带 tiers / retries / hints，forms 记录本轮任务形式。",
+    "noteEn": "optionTypes (both_correct / dim1_wrong / dim2_wrong / both_wrong) say directly which dimension went wrong; combined with dimensionPairs this shows whether a child consistently slips on one particular dimension. Play is now hands-on (games/pattern-board.js): fill, predict (from K2) and spot the odd one out (from G1, depending on the rule). A wrong try shows the row that follows from the choice with the mismatch outlined, then the child retries. The report process carries tiers / retries / hints, and forms lists the task forms in the session."
   },
-  "tags": ["mixed-pattern", "mindseeds", "pattern", "integration", "ai-readable"]
+  "tags": [
+    "mixed-pattern",
+    "mindseeds",
+    "pattern",
+    "integration",
+    "ai-readable"
+  ],
+  "cognitiveChain": {
+    "primary": [
+      "integrated",
+      "pattern",
+      "reasoning"
+    ],
+    "secondary": [
+      "observation",
+      "comparison",
+      "change",
+      "relation",
+      "prediction"
+    ],
+    "dimensions": [
+      "multi_attribute"
+    ],
+    "refZh": "见 docs/mindseeds/PATTERN-HUNTER-ARCHITECTURE.md §2、§6",
+    "refEn": "See docs/mindseeds/PATTERN-HUNTER-ARCHITECTURE.md sections 2 and 6"
+  }
 }
