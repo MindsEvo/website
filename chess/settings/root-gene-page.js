@@ -181,6 +181,24 @@
     } catch (error) { setMessage('载入失败：' + error.message, 'error'); }
   }
 
+  function loadQuestionById(questionId) {
+    for (let rootIndex = 1; rootIndex < bank.tree.length; rootIndex += 1) {
+      $('bankCategory').value = String(rootIndex);
+      updateBankGroups();
+      for (const group of state.groups) {
+        const questionIndex = group.items.findIndex(item => item.id === questionId);
+        if (questionIndex < 0) continue;
+        $('bankGroup').value = group.id;
+        updateBankQuestions();
+        $('bankQuestion').value = String(questionIndex);
+        loadBankQuestion();
+        return true;
+      }
+    }
+    setMessage('参考题目不在当前题库中，无法载入。', 'error');
+    return false;
+  }
+
   function inferLevel(path) { const match = path.join(' ').match(/\bL([123])\b/); return match ? 'L' + match[1] : 'L1'; }
 
   function applyFen(fen) {
@@ -277,14 +295,26 @@
   function init() {
     $('rankLabels').replaceChildren(...'87654321'.split('').map(value => { const span = document.createElement('span'); span.textContent = value; return span; }));
     $('fileLabels').replaceChildren(...'abcdefgh'.split('').map(value => { const span = document.createElement('span'); span.textContent = value; return span; }));
-    initializeFenControls(); setGeneOptions('endgame');
-    if (bank?.tree) populateBank(); else { $('bankQuestionCount').textContent = '题库未加载'; $('loadBankQuestion').disabled = true; }
+    initializeFenControls();
+    const requestedCategory = new URLSearchParams(window.location.search).get('category');
+    const initialCategory = categoryType.includes(requestedCategory) ? requestedCategory : 'endgame';
+    $('geneType').value = initialCategory;
+    setGeneOptions(initialCategory);
+    if (bank?.tree) {
+      populateBank();
+      if (initialCategory === 'opening') {
+        $('bankCategory').value = String(categoryType.indexOf(initialCategory) + 1);
+        updateBankGroups();
+      }
+    } else { $('bankQuestionCount').textContent = '题库未加载'; $('loadBankQuestion').disabled = true; }
     try {
       const initial = core.parseFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
       state.board = initial.board; state.turn = initial.turn; state.castling = initial.castling; state.enPassant = initial.enPassant;
       $('sideToMove').value = state.turn; $('castlingRights').value = state.castling; $('enPassantTarget').value = state.enPassant;
     } catch (_) {}
     bindEvents(); syncFen(); renderBoard(); renderPalette(); renderSaved();
+    const requestedQuestion = new URLSearchParams(window.location.search).get('question');
+    if (requestedQuestion) loadQuestionById(requestedQuestion);
   }
 
   init();

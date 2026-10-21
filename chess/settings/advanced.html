@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高级工具 | 国际象棋</title>
+  <link rel="stylesheet" href="./advanced.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="back-link" href="./index.html">← 系统设置</a>
+      <div class="title-block"><span class="eyebrow">ADMINISTRATOR TOOLS</span><h1>高级设置</h1><p>生成工具与题库维护</p></div>
+      <span class="access-mark"><i></i>管理工具</span>
+    </header>
+
+    <section class="tool-grid" aria-label="高级工具">
+      <a class="tool-card available" href="./root-gene.html">
+        <div class="card-top"><span class="tool-icon">♟</span><span class="status live">可用</span></div>
+        <p class="tool-kind">题库维护</p><h2>手工局面设计</h2>
+        <p class="description">浏览现有分类与题目，手动修改局面、答案和说明，或补充新题草案。</p>
+        <span class="card-action">打开设计工作台 <b>→</b></span>
+      </a>
+
+      <a class="tool-card featured" href="./root-gene.html?category=opening">
+        <div class="card-top"><span class="tool-icon">♜</span><span class="status ready">精选题库已载入</span></div>
+        <p class="tool-kind">ECO 开局</p><h2>开局题库维护</h2>
+        <p class="description">载入现有 16 个开局元基因的精选演示与练习局面，继续手工修订或补充。</p>
+        <span class="card-action">浏览精选开局 <b>→</b></span>
+      </a>
+
+      <a class="tool-card available" href="./reference-generator.html?source=endgame">
+        <div class="card-top"><span class="tool-icon">♔</span><span class="status live">参考池可用</span></div>
+        <p class="tool-kind">残局 · Syzygy</p><h2>残局参考生成器</h2>
+        <p class="description">从已移植残局题库按主题和 L1–L3 抽取参考题目，载入后手工修改。原始 Syzygy 新局面生成尚未接入。</p>
+        <span class="card-action">抽取残局参考题 <b>→</b></span>
+      </a>
+
+      <a class="tool-card available" href="./reference-generator.html?source=lichess">
+        <div class="card-top"><span class="tool-icon">⚔</span><span class="status live">参考池可用</span></div>
+        <p class="tool-kind">攻杀 · 战术</p><h2>Lichess 参考生成器</h2>
+        <p class="description">从已移植的 Lichess 来源题目按类型、主题和 L1–L3 抽样，作为手工修订的参考。</p>
+        <span class="card-action">抽取战术 / 攻杀参考 <b>→</b></span>
+      </a>
+
+      <article class="tool-card unavailable">
+        <div class="card-top"><span class="tool-icon">▤</span><span class="status planned">开发中</span></div>
+        <p class="tool-kind">数据维护</p><h2>数据库管理</h2>
+        <p class="description">数据库备份、导入导出和题库版本管理尚未实现。</p>
+        <span class="card-note">原桌面端也标记为未来功能</span>
+      </article>
+
+      <article class="tool-card unavailable">
+        <div class="card-top"><span class="tool-icon">⌕</span><span class="status planned">开发中</span></div>
+        <p class="tool-kind">系统诊断</p><h2>日志查看器</h2>
+        <p class="description">浏览器日志采集、筛选与诊断界面尚未实现。</p>
+        <span class="card-note">原桌面端也标记为未来功能</span>
+      </article>
+
+      <article class="tool-card unavailable">
+        <div class="card-top"><span class="tool-icon">⚙</span><span class="status planned">开发中</span></div>
+        <p class="tool-kind">系统维护</p><h2>缓存与性能</h2>
+        <p class="description">缓存清理、性能优化和系统诊断工具尚未实现。</p>
+        <span class="card-note">原桌面端也标记为未来功能</span>
+      </article>
+    </section>
+
+    <footer class="page-footer"><span>生成器仅处理已有题库与明确的数据源。</span><span>题库原件不会被浏览器草稿直接覆盖。</span></footer>
+  </main>
+</body>
+</html>

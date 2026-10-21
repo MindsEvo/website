@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>题目参考生成器 | 国际象棋</title>
+  <link rel="stylesheet" href="./reference-generator.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="back-link" href="./advanced.html">← 高级设置</a>
+      <div class="title-block"><span class="eyebrow">REFERENCE PUZZLE BUILDER</span><h1 id="pageTitle">题目参考生成器</h1><p id="pageSubtitle">从已移植题库抽取参考题目，用于人工修改与补充。</p></div>
+      <a class="manual-link" href="./root-gene.html">手工设计台 ↗</a>
+    </header>
+
+    <section class="filter-panel" aria-label="参考题目筛选条件">
+      <div class="filter-heading"><div><span class="section-number">01</span><h2>参考范围</h2></div><span id="sourceCount" class="source-count">载入题库中…</span></div>
+      <div class="filter-grid">
+        <label id="typeField" class="filter-field" hidden><span>题目类型</span><select id="puzzleType"><option value="tactics">战术题</option><option value="mate">攻杀题</option></select></label>
+        <label class="filter-field"><span>难度</span><select id="difficulty"><option value="all">全部难度</option><option value="L1">L1</option><option value="L2">L2</option><option value="L3">L3</option></select></label>
+        <label class="filter-field theme-field"><span id="themeLabel">残局主题</span><select id="theme"><option value="all">全部主题</option></select></label>
+        <label class="filter-field count-field"><span>抽取数量</span><input id="sampleCount" type="number" min="1" max="100" value="6" /></label>
+        <button class="generate-button" id="sampleButton" type="button">抽取参考题</button>
+      </div>
+      <p class="source-note" id="sourceNote"></p>
+    </section>
+
+    <section class="results-section">
+      <div class="results-heading"><div><span class="section-number">02</span><h2>参考题目</h2></div><span id="resultSummary">调整条件后抽取题目</span></div>
+      <div id="results" class="results-list"><div class="empty-state">选择筛选条件并抽取，结果将显示在这里。</div></div>
+    </section>
+    <footer class="page-footer"><span>抽样来源：已移植的本地题库。</span><span>抽样只提供参考，不会运行 Syzygy 或 Lichess 原始生成脚本，也不会修改源题目。</span></footer>
+  </main>
+  <script src="../play/assets/question-bank.js"></script>
+  <script src="./reference-generator-core.js"></script>
+  <script src="./reference-generator-page.js"></script>
+</body>
+</html>
