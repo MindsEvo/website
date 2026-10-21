@@ -65,10 +65,24 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: TPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(TPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    resolve: function (q) {
+      if (q.layout === 'clock') { return { kind: 'num', mod: 12, num: function (t) { return t % 12; }, tok: function (n) { return n === 0 ? 12 : n; } }; }
+      if (TPH_DATA.cycles[q.family]) { return { kind: 'sym', cycle: function (qq) { return TPH_DATA.cycles[qq.family]; } }; }
+      return { kind: 'sym' };
+    },
+    full: function (q) { return q.cells.map(function (t, i) { return i === q.blankIndex ? q.answer : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t, s, q) { return q.layout === 'clock' ? clockCard(t) : card(t); },
+    noun: function (q) { return q.layout === 'clock' ? { zh: '钟点', en: 'hours' } : { zh: '事情', en: 'events' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +97,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = TPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(TPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -134,25 +148,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      container.parentElement.classList.remove('s1-seq--track');
-      container.innerHTML = q.cells.map(function (cell) { return render(cell, q); }).join(' ');
-    },
-
-    renderOption: function (opt, q) { return render(opt, q); },
-
-    checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
-
-    getVoiceText: function (q, idx) {
-      if (q.layout === 'clock') {
-        return shell.lang === 'zh'
-          ? '第' + (idx + 1) + '题，问号处是几点？'
-          : 'Question ' + (idx + 1) + ', what time goes in the gap?';
-      }
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，问号处是什么？'
-        : 'Question ' + (idx + 1) + ', what goes in the gap?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -160,11 +160,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         families:        _unique(questions.map(function (q) { return q.family; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

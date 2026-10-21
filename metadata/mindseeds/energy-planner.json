@@ -1,0 +1,190 @@
+{
+  "version": "0.2.0",
+  "updatedAt": "2026-09-27",
+  "moduleType": "mindseeds",
+  "id": "energy-planner",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/energy-planner.json",
+  "title": {
+    "zh": "能量分配",
+    "en": "Energy Planner"
+  },
+  "description": {
+    "zh": "孩子自己点选任务搭一个计划：每件事花能量，能量有限。提交后立刻看到后果（剩多少能量、得到几颗星），不满意可以再想一次。K1–K2 目标是在能量内多做几件事（K2 有一件必做的）；G1–G2 目标是得到的星星最多，G2 里“看起来最划算”的选法不是最优，需要真正权衡。完成即通过，一次想好最优多一个 ⭐，重试和提示次数记入报告。",
+    "en": "The child builds a plan by tapping tasks; each costs energy and the energy is limited. After submitting, the outcome shows at once (energy left, stars earned) and the child may rethink. K1-K2: do as many tasks as the energy allows (K2 has one must-do). G1-G2: earn the most stars; in G2 the best-looking deal per energy is not optimal, so real weighing is needed. Finishing passes, an optimal first try earns a star, and retries and hints go into the report."
+  },
+  "designModel": {
+    "zh": "主轴是任务数量（task_count）与预算紧张度（budget_tightness），配合目标类型（goal_type：fit_only 只需不超支，maximize_reward 要在可行方案里选收益最高的）。三轴共同决定权衡计算的负荷。",
+    "en": "The primary axes are task count (task_count) and how tight the budget is (budget_tightness), paired with the goal type (goal_type: fit_only just needs to stay within budget, maximize_reward needs the highest-reward option among the feasible ones). The three axes together set the trade-off load."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 两件任务、预算宽松适合 3-4 岁；G2 四件任务、预算最紧且要最大化收益约 7 岁。",
+    "noteEn": "K1's two tasks with a loose budget suit ages 3-4; G2's four tasks with the tightest budget and a maximize-reward goal suit about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 策略大师。训练的是『在固定资源上限下，从多个方案中选出满足约束或收益最高的那个』；与 RG.STRATEGY.DECISION.PLANNING 所训练的通用『多方案权衡+步骤排序』不同，本模块不涉及步骤先后顺序，只涉及资源约束下的取舍计算，也不涉及 spatial-pattern-hunter 等空间路径规划。",
+    "policyEn": "This module belongs to MindSeeds · Strategy Master. It trains picking, under a fixed resource limit, the one plan among several that meets the constraint or pays the most. This differs from the general 'weigh options and order steps' skill behind RG.STRATEGY.DECISION.PLANNING — this module has no step ordering, only constrained trade-off arithmetic — and it does not involve spatial route planning as in spatial-pattern-hunter."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.STRATEGY.RESOURCE.TRADEOFF，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.STRATEGY.RESOURCE.TRADEOFF, regardless of grade.",
+    "geneIds": [
+      "RG.STRATEGY.RESOURCE.TRADEOFF"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.RESOURCE.TRADEOFF"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "task_count",
+      "zh": "任务数量",
+      "en": "Task Count",
+      "progression": [
+        "three",
+        "four",
+        "five"
+      ],
+      "noteZh": "计划里可选的任务数量，从三件到五件。",
+      "noteEn": "How many tasks the plan can pick from, three up to five."
+    },
+    {
+      "id": "budget_tightness",
+      "zh": "预算紧张度",
+      "en": "Budget Tightness",
+      "progression": [
+        "loose",
+        "medium",
+        "tight",
+        "tightest"
+      ],
+      "noteZh": "预算相对任务总花费的宽松程度：loose 一眼能排除超支方案，tightest 需要仔细计算才能分辨。",
+      "noteEn": "How tight the budget is relative to total task cost: loose plans can be ruled out at a glance, tightest ones need careful arithmetic to tell apart."
+    },
+    {
+      "id": "goal_type",
+      "zh": "目标类型",
+      "en": "Goal Type",
+      "progression": [
+        "fit_only",
+        "maximize_reward"
+      ],
+      "noteZh": "fit_only 只需选出不超预算的方案；maximize_reward 要在所有可行方案里选收益最高的，真正的权衡取舍。",
+      "noteEn": "fit_only only needs a plan that stays within budget; maximize_reward needs the highest-reward plan among all the feasible ones — a genuine trade-off."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，完成即通过（通过线 75%）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "三件事、能量够用，尽量多做几件。",
+      "objectiveEn": "Three tasks, enough energy — do as many as you can.",
+      "axisValues": {
+        "task_count": "three",
+        "budget_tightness": "loose",
+        "goal_type": "fit_only"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "energy-planner"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "四件事，其中一件必做，其余尽量多做。",
+      "objectiveEn": "Four tasks, one is a must-do; fit in as many others as possible.",
+      "axisValues": {
+        "task_count": "four",
+        "budget_tightness": "medium",
+        "goal_type": "fit_only"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "energy-planner"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "四件事，能量有限，选出得到星星最多的组合。",
+      "objectiveEn": "Four tasks, limited energy — choose the combination that earns the most stars.",
+      "axisValues": {
+        "task_count": "four",
+        "budget_tightness": "tight",
+        "goal_type": "maximize_reward"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "energy-planner"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "五件事，能量最紧，看起来最划算的不一定最好。",
+      "objectiveEn": "Five tasks, the tightest energy — the best-looking deal is not always the best.",
+      "axisValues": {
+        "task_count": "five",
+        "budget_tightness": "tightest",
+        "goal_type": "maximize_reward"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "energy-planner"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "goalType",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "报告 process 带 tiers（best/better/good/valid）、retries（重想次数）、hints（提示次数），可区分“一次想好”“试了几次才好”“接受了不是最好的方案”。",
+    "noteEn": "The report process carries tiers (best/better/good/valid), retries and hints, telling apart \"planned it in one go\", \"needed a few tries\" and \"accepted a non-optimal plan\"."
+  },
+  "tags": [
+    "energy-planner",
+    "mindseeds",
+    "strategy",
+    "trade-off",
+    "ai-readable"
+  ]
+}

@@ -65,10 +65,22 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: SPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(SPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    kind: 'num',
+    num: function (t) { return parseInt(String(t).slice(1), 10); }, tok: function (n) { return 's' + n; },
+    valid: function (t) { return /^s[1-5]$/.test(String(t)); },
+    full: function (q) { return q.sequence.map(function (t, i) { return i === q.blankIndex ? q.answer : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t) { return sizeToken(t); },
+    noun: function () { return { zh: '圆点', en: 'dots' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +95,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = SPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(SPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -153,23 +165,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      container.innerHTML = '<div class="sp-seq">' + q.sequence.map(function (item) {
-        return item === '?'
-          ? '<span class="sp-item"><span class="sp-mystery">?</span></span>'
-          : sizeToken(item);
-      }).join('') + '</div>';
-    },
-
-    renderOption: function (opt) { return sizeToken(opt); },
-
-    checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
-
-    getVoiceText: function (q, idx) {
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，问号的位置应该是多大？'
-        : 'Question ' + (idx + 1) + ', what size goes in the gap?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -177,11 +177,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         directions:      _unique(questions.map(function (q) { return q.direction; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

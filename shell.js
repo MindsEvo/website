@@ -1468,7 +1468,9 @@
    *   title:          { zh, en },       // game title
    *   subtitle:       { zh, en },       // game subtitle
    *   theme:          { primary, primary2, bg? },  // optional color override
-   *   passScore:      number,           // score needed to unlock next unit (default 8)
+   *   passScore:      number|function(unit,total), // score needed to unlock next
+   *                                     // unit (default 8); a function is called
+   *                                     // per finished unit for a relative threshold
    *   debug:          boolean,          // unlock all units (default true;
    *                                     // set false for real progression, or
    *                                     // append ?debug=1 to the URL instead)
@@ -1481,6 +1483,7 @@
    *
    *   // Optional:
    *   getVoiceText(q, qIndex) → string  // voice prompt text for each question
+   *   homeExtras(listEl)                // append extra entries after the unit cards on every home render
    * }
    *
    * Shell-1 standard Unit format:
@@ -1638,7 +1641,7 @@
 
   function _runGame(cfg, guiCfg) {
     var GAME_ID    = cfg.id;
-    var PASS_SCORE = cfg.passScore || 8;
+    var PASS_SCORE = typeof cfg.passScore === 'function' ? null : (cfg.passScore || 8);
     // debug: unlock every unit. ?debug=1 in the URL turns it on for a game that
     // ships with debug:false, so testing never needs a source edit.
     var DEBUG      = cfg.debug !== false ||
@@ -1814,6 +1817,10 @@
         list.appendChild(card);
       });
 
+      // Optional: let the game append its own entries (e.g. mini games) after the
+      // unit cards. Called on every home render, so it survives language switches.
+      if (typeof cfg.homeExtras === 'function') cfg.homeExtras(list);
+
       // Re-render open summary panels (handles lang switch)
       var sessBody = document.getElementById('s1-sum-sess-body');
       var histBody = document.getElementById('s1-sum-hist-body');
@@ -1972,7 +1979,8 @@
       var unit   = cfg.units[state.unitIdx];
       var total  = unit.questions.length;
       var elapsed = Date.now() - state.startTime;
-      var passed  = state.score >= PASS_SCORE;
+      var passThreshold = typeof cfg.passScore === 'function' ? cfg.passScore(unit, total) : PASS_SCORE;
+      var passed  = state.score >= passThreshold;
       var isLast  = state.unitIdx === cfg.units.length - 1;
 
       // Session stats (in-memory)

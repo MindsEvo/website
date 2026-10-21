@@ -6,11 +6,13 @@
  * Communicates with shell.createGame via standard unit/question API.
  *
  * Session flow:
- *   1. Load templates.json
+ *   1. Load templates-data.js (mirror of templates.json)
  *   2. User selects grade level (K1/K2/G1/G2)
- *   3. CmpEngine.selectSessionTemplates() picks 8 templates
- *   4. generateQuestion() builds each question
- *   5. shell.createGame runs the session
+ *   3. CmpEngine.getSessionTemplates() composes SESSION_SIZE templates
+ *      (sessionPolicy: at most MAX_ACTIVITIES_PER_SESSION activities, last)
+ *   4. _freshQuestion() builds each item, redrawing recently seen variants
+ *   5. shell.createGame runs the single-choice batch, then ActivityRunner
+ *      runs the activities one by one
  *   6. On each answer, CmpEngine.recordAttempt() updates state
  */
 
@@ -110,7 +112,57 @@
     '.cq-prog-pct{font-size:15px;font-weight:900;}',
     '.cq-prog-track{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-bottom:6px;}',
     '.cq-prog-fill{height:100%;border-radius:999px;transition:width .5s ease;}',
-    '.cq-prog-msg{font-size:12px;color:#64748b;text-align:center;}'
+    '.cq-prog-msg{font-size:12px;color:#64748b;text-align:center;}',
+    // Z1/Z2/Z3: a fixed-height box so differently-sized emoji share one
+    // baseline — same trick as .cq-h-track / .cq-ma-box.
+    '.cq-size-box{height:96px;display:flex;align-items:flex-end;justify-content:center;}',
+    '.cq-triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;max-width:440px;align-items:end;}',
+    // Balance (W1–W4)
+    '.cq-balance-wrap,.cq-balance-stack{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;}',
+    '.cq-balance{position:relative;width:220px;height:110px;margin:0 auto;}',
+    '.cq-balance-beam{position:absolute;top:36px;left:6px;width:208px;height:8px;background:#94a3b8;border-radius:4px;' +
+      'transform-origin:center center;display:flex;justify-content:space-between;align-items:flex-start;transition:transform .3s;}',
+    '.cq-balance-tray{display:flex;flex-direction:column;align-items:center;gap:4px;width:60px;background:#f8fafc;' +
+      'border:2px solid #cbd5e1;border-radius:10px;padding:6px 4px;margin-top:18px;}',
+    '.cq-balance-emoji{font-size:26px;line-height:1;}',
+    '.cq-balance-pivot{position:absolute;left:50%;top:40px;width:0;height:0;border-left:13px solid transparent;' +
+      'border-right:13px solid transparent;border-bottom:22px solid #64748b;transform:translateX(-50%);}',
+    '.cq-expr{font-size:24px;font-weight:900;color:#1e293b;background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:14px 8px;text-align:center;min-width:110px;}',
+    '.cq-money-side{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:8px 6px;min-width:130px;}',
+    '.cq-money-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;}',
+    '.cq-coin{font-size:13px;font-weight:900;color:#334155;background:#fff;border:1.5px solid #cbd5e1;border-radius:999px;padding:3px 8px;white-space:nowrap;}',
+    '.cq-claim{margin-top:4px;padding:10px 14px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;' +
+      'font-size:15px;font-weight:800;color:#9a3412;text-align:center;}',
+    '.cq-swap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;}',
+    '.cq-swap-ref{display:flex;align-items:center;gap:10px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:10px 16px;}',
+    '.cq-swap-side{display:flex;align-items:center;gap:4px;}',
+    '.cq-swap-units{display:flex;flex-wrap:wrap;gap:3px;max-width:120px;}',
+    '.cq-swap-eq{font-size:20px;font-weight:900;color:#64748b;}',
+    '.cq-swap-pair{display:flex;align-items:center;gap:14px;}',
+    '.cq-swap-cell{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:10px 12px;min-width:70px;}',
+    '.cq-swap-q{font-size:26px;font-weight:900;color:#94a3b8;}',
+    // Race (S1–S3)
+    '.cq-race{display:flex;flex-direction:column;gap:14px;}',
+    '.cq-race-legend{display:flex;justify-content:space-between;align-items:center;width:230px;margin-left:34px;font-size:12px;color:#64748b;font-weight:800;}',
+    '.cq-race-lane{display:flex;align-items:center;gap:10px;}',
+    '.cq-race-track{position:relative;width:230px;flex-shrink:0;height:36px;background:#eef2f7;border-radius:999px;border:1.5px solid #cbd5e1;}',
+    '.cq-race-fill{position:absolute;right:0;top:0;bottom:0;background:#3b82f6;border-radius:999px;}',
+    '.cq-race-runner{position:absolute;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;box-sizing:border-box;border-radius:50%;background:#fff;border:2px solid #3b82f6;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.25);}',
+    '.cq-race-timer{font-size:12px;font-weight:800;color:#475569;white-space:nowrap;}',
+    // Difference evidence rows (quantity_diff reuses .cq-dots-pair; race_diff/weight_diff share these)
+    '.cq-evid{display:flex;flex-direction:column;gap:12px;}',
+    '.cq-evid-row{display:flex;align-items:center;gap:12px;}',
+    '.cq-evid-emoji{font-size:30px;line-height:1;}',
+    '.cq-evid-readout{font-size:16px;font-weight:900;color:#1e293b;background:#f1f5f9;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px 14px;}',
+    // Area (Z4/Z5)
+    '.cq-grid-pair{display:flex;gap:20px;justify-content:center;align-items:flex-end;width:100%;flex-wrap:wrap;}',
+    '.cq-grid-cell-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}',
+    '.cq-grid{position:relative;background:#f1f5f9;border:1.5px solid #94a3b8;}',
+    '.cq-grid-cell{position:absolute;width:20px;height:20px;border:1px solid #e2e8f0;box-sizing:border-box;}',
+    '.cq-rect-vline{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.65);}',
+    '.cq-rect-hline{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.65);}',
+    // "same" option: a fixed text card, never a slot pointer (§1.3).
+    '.cq-opt-same{font-size:15px;font-weight:900;color:#1e293b;text-align:center;padding:6px 4px;}'
   ].join('');
   document.head.appendChild(styleEl);
 
@@ -178,13 +230,50 @@
       case 'color':        zh='哪个颜色<b>不一样</b>？'; en='Which color is <b>different</b>?'; break;
       case 'position':     zh=q.askNearer?'哪个离'+q.refNameZh+'<b>更近</b>？':'哪个离'+q.refNameZh+'<b>更远</b>？'; en=q.askNearer?'Which is <b>closer</b> to the '+q.refNameEn+'?':'Which is <b>farther</b> from the '+q.refNameEn+'?'; break;
       case 'fullness':     zh=q.askFuller?'哪个装得<b>更满</b>？':'哪个装得<b>更少</b>？'; en=q.askFuller?'Which is <b>fuller</b>?':'Which is <b>more empty</b>?'; break;
-      case 'weight':       zh=q.askHeavier?'哪个<b>更重</b>？':'哪个<b>更轻</b>？'; en=q.askHeavier?'Which is <b>heavier</b>?':'Which is <b>lighter</b>?'; break;
-      case 'speed':        zh=q.askFaster?'哪个<b>更快</b>？':'哪个<b>更慢</b>？'; en=q.askFaster?'Which is <b>faster</b>?':'Which is <b>slower</b>?'; break;
       case 'time':         zh=q.askLongerDuration?'哪个时间<b>更长</b>？':'哪件事<b>先</b>发生？'; en=q.askLongerDuration?'Which duration is <b>longer</b>?':'Which happens <b>first</b>?'; break;
       case 'multi_attribute':
         zh='哪个<b>更大</b>？'+(q.ignoreZh?'（不用管'+q.ignoreZh+'）':'');
         en='Which is <b>bigger</b>?'+(q.ignoreEn?' (ignore the '+q.ignoreEn+')':'');
         break;
+      case 'size_pick':   zh=q.askBigger?'哪个<b>最大</b>？':'哪个<b>最小</b>？'; en=q.askBigger?'Which is the <b>biggest</b>?':'Which is the <b>smallest</b>?'; break;
+      case 'size_real':
+        zh = q.askReal
+          ? (q.askBigger ? '哪个<b>真的</b>更大？' : '哪个<b>真的</b>更小？')
+          : (q.askBigger ? '图上哪个<b>画得</b>更大？' : '图上哪个<b>画得</b>更小？');
+        en = q.askReal
+          ? (q.askBigger ? 'Which is <b>really</b> bigger?' : 'Which is <b>really</b> smaller?')
+          : (q.askBigger ? 'Which is <b>drawn</b> bigger?' : 'Which is <b>drawn</b> smaller?');
+        break;
+      case 'balance_judge': zh=q.askHeavier?'哪个<b>更重</b>？':'哪个<b>更轻</b>？'; en=q.askHeavier?'Which is <b>heavier</b>?':'Which is <b>lighter</b>?'; break;
+      case 'balance_select':
+      case 'balance_chain': zh=q.askHeaviest?'哪个<b>最重</b>？':'哪个<b>最轻</b>？'; en=q.askHeaviest?'Which is the <b>heaviest</b>?':'Which is the <b>lightest</b>?'; break;
+      case 'balance_swap':  zh='哪边<b>更重</b>？'; en='Which side is <b>heavier</b>?'; break;
+      case 'race_judge':    zh=q.askFaster?'哪个<b>更快</b>？':'哪个<b>更慢</b>？'; en=q.askFaster?'Which is <b>faster</b>?':'Which is <b>slower</b>?'; break;
+      case 'race_select':   zh=q.askFastest?'谁跑得<b>最快</b>？':'谁跑得<b>最慢</b>？'; en=q.askFastest?'Who is the <b>fastest</b>?':'Who is the <b>slowest</b>?'; break;
+      case 'race_variant':  zh=q.askFaster?'谁跑得<b>更快</b>？':'谁跑得<b>更慢</b>？'; en=q.askFaster?'Who ran <b>faster</b>?':'Who ran <b>slower</b>?'; break;
+      case 'area_grid':
+      case 'area_rect':     zh=q.askBigger?'哪个图形<b>更大</b>？':'哪个图形<b>更小</b>？'; en=q.askBigger?'Which shape is <b>bigger</b>?':'Which shape is <b>smaller</b>?'; break;
+      case 'quantity_diff': zh='两边<b>相差几个</b>？'; en='<b>By how many</b> do the two sides differ?'; break;
+      case 'area_diff':     zh='两个图形<b>相差几格</b>？'; en='<b>By how many squares</b> do the two shapes differ?'; break;
+      case 'race_diff':     zh='两位选手<b>相差几秒</b>？'; en='<b>By how many seconds</b> do the two racers differ?'; break;
+      case 'weight_diff':   zh='两个盒子<b>相差几个</b>重量单位？'; en='<b>By how many units</b> do the two boxes differ?'; break;
+      case 'weight_adjust': zh='轻的一边要<b>加几个</b>重量单位才一样重？'; en='<b>How many units</b> should be added to the lighter side to make them equal?'; break;
+      case 'balance_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'size_real_select': zh=q.askBiggest?'三个里<b>真的最大</b>的是哪个？':'三个里<b>真的最小</b>的是哪个？'; en=q.askBiggest?'Which of the three is <b>really the biggest</b>?':'Which of the three is <b>really the smallest</b>?'; break;
+      case 'size_real_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'multi_attribute_select': zh=q.askBiggest?'三个里<b>最大</b>的是哪个？':'三个里<b>最小</b>的是哪个？'; en=q.askBiggest?'Which of the three is the <b>biggest</b>?':'Which of the three is the <b>smallest</b>?'; break;
+      case 'multi_attribute_repair': zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'quantity_adjust': zh='少的一边要<b>再加几个</b>，两边才一样多？'; en='How many must the smaller side <b>add</b> to make them equal?'; break;
+      case 'diff_select': zh=q.askBiggest?'哪一行的两个数<b>相差最多</b>？':'哪一行的两个数<b>相差最少</b>？'; en=q.askBiggest?'Which row has the <b>biggest difference</b>?':'Which row has the <b>smallest difference</b>?'; break;
+      case 'equal_judge': zh='左右两边<b>一样多</b>吗？'; en='Are the two sides <b>the same amount</b>?'; break;
+      case 'equal_adjust': zh=q.mode==='add'?'哪一边<b>加上 '+q.gap+' 个</b>，两边就一样多？':'哪一边<b>拿走 '+q.gap+' 个</b>，两边就一样多？'; en=q.mode==='add'?'Which side should <b>add '+q.gap+'</b> to make them equal?':'Which side should <b>remove '+q.gap+'</b> to make them equal?'; break;
+      case 'quantity_repair': case 'transitive_repair': case 'length_repair': case 'equal_repair':
+        zh='这句话说得<b>对不对</b>？'; en='<b>Is the claim right</b>?'; break;
+      case 'expression': zh=q.askBigger?'哪个算式的结果<b>更大</b>？':'哪个算式的结果<b>更小</b>？'; en=q.askBigger?'Which expression has the <b>bigger</b> result?':'Which expression has the <b>smaller</b> result?'; break;
+      case 'clock': zh=q.askEarlier?'同一个上午，哪个时间<b>更早</b>？':'同一个上午，哪个时间<b>更晚</b>？'; en=q.askEarlier?'The same morning — which time is <b>earlier</b>?':'The same morning — which time is <b>later</b>?'; break;
+      case 'money': zh=q.askMore?'哪边的钱<b>更多</b>？':'哪边的钱<b>更少</b>？'; en=q.askMore?'Which side has <b>more</b> money?':'Which side has <b>less</b> money?'; break;
+      case 'unit_compare': zh=q.askLonger?'哪个<b>更长</b>？':'哪个<b>更短</b>？'; en=q.askLonger?'Which is <b>longer</b>?':'Which is <b>shorter</b>?'; break;
+      case 'explain': zh='<b>为什么</b>？哪个理由真正支持这个结论？'; en='<b>Why</b>? Which reason really supports the conclusion?'; break;
       default: zh='选出正确答案。'; en='Choose the correct answer.';
     }
     return '<span class="zh">'+zh+'</span><span class="en">'+en+'</span>';
@@ -203,7 +292,15 @@
   var SLOT_LETTERS = ['A', 'B', 'C'];
   var SLOT_COLORS  = ['#0ea5e9', '#10b981', '#f59e0b'];
   var SLOT_NEUTRAL = '#64748b';
-  var SLOT_COLORED = { length: 1, height: 1 };
+  var SLOT_COLORED = { length: 1, height: 1, length_repair: 1 };
+  // Types whose options are NOT slot pointers (numeric gap values, a panel
+  // index, or a claim-correction choice) — rendered via _optBody directly,
+  // bypassing _optPointer (see renderOption).
+  var CUSTOM_OPTION_TYPES = {
+    quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1,
+    weight_adjust: 1, balance_repair: 1, size_real_repair: 1, multi_attribute_repair: 1,
+    quantity_adjust: 1, quantity_repair: 1, transitive_repair: 1, length_repair: 1, equal_judge: 1, equal_repair: 1, explain: 1
+  };
   var H_BAR_MAX    = 80;   // px; must match .cq-h-track height minus the emoji
   var MA_BOX       = 96;   // px; the biggest object in a multi_attribute pair
                            // (must stay <= the .cq-ma-box height)
@@ -225,10 +322,32 @@
       (SLOT_LETTERS[idx] || '?') + '</div>';
   }
 
+  // A badge for a NAMED slot (a specific box/racer letter carried in the data,
+  // e.g. which box sits on a balance) rather than a positional index — always
+  // neutral, since colour must never become an extra identity cue (§1.2).
+  function _letterBadge(letter) {
+    return '<div class="cq-slot" style="background:' + SLOT_NEUTRAL + '">' + letter + '</div>';
+  }
+
   function _hasScene(type) {
     return type === 'size' || type === 'length' || type === 'height' ||
            type === 'quantity' || type === 'position' || type === 'fullness' ||
-           type === 'shape' || type === 'color' || type === 'multi_attribute';
+           type === 'shape' || type === 'color' || type === 'multi_attribute' ||
+           type === 'size_pick' || type === 'size_real' ||
+           type === 'balance_judge' || type === 'balance_select' ||
+           type === 'balance_chain' || type === 'balance_swap' ||
+           type === 'race_judge' || type === 'race_select' || type === 'race_variant' ||
+           type === 'area_grid' || type === 'area_rect' ||
+           type === 'quantity_diff' || type === 'area_diff' ||
+           type === 'race_diff' || type === 'weight_diff' ||
+           type === 'weight_adjust' || type === 'balance_repair' ||
+           type === 'size_real_select' || type === 'size_real_repair' ||
+           type === 'multi_attribute_select' || type === 'multi_attribute_repair' ||
+           type === 'quantity_adjust' || type === 'quantity_repair' || type === 'diff_select' ||
+           type === 'transitive_repair' || type === 'length_repair' ||
+           type === 'equal_judge' || type === 'equal_adjust' || type === 'equal_repair' ||
+           type === 'expression' || type === 'clock' || type === 'money' || type === 'unit_compare' ||
+           type === 'explain';
   }
 
   function _sceneHtml(q) {
@@ -242,17 +361,94 @@
       case 'shape':
       case 'color':    return _sameDiffScene(q);
       case 'multi_attribute': return _multiAttrScene(q);
+      case 'size_pick': return _sizePickScene(q);
+      case 'size_real': return _sizeRealScene(q);
+      case 'balance_judge': return _balanceScene(q);
+      case 'balance_select':
+      case 'balance_chain':  return _balanceMultiScene(q);
+      case 'balance_swap':   return _balanceSwapScene(q);
+      case 'race_judge':
+      case 'race_variant':   return _raceScene(q);
+      case 'race_select':    return _raceSelectScene(q);
+      case 'area_grid':      return _areaGridScene(q);
+      case 'area_rect':      return _areaRectScene(q);
+      case 'quantity_diff':  return _quantityScene(q);
+      case 'area_diff':      return _areaGridScene(q);
+      case 'race_diff':      return _raceDiffScene(q);
+      case 'weight_diff':    return _weightDiffScene(q);
+      case 'weight_adjust':  return _weightDiffScene(q);
+      case 'balance_repair': return _balanceRepairScene(q);
+      case 'size_real_select':   return _sizeRealSelect3Scene(q);
+      case 'size_real_repair':   return _sizeRealRepairScene(q);
+      case 'multi_attribute_select': return _multiAttrSelect3Scene(q);
+      case 'multi_attribute_repair': return _multiAttrRepairScene(q);
+      case 'quantity_adjust': case 'equal_judge': case 'equal_adjust': return _quantityScene(q);
+      case 'quantity_repair': case 'equal_repair': return _quantityScene(q) + _claimBubble(q);
+      case 'diff_select': return _diffSelectScene(q);
+      case 'transitive_repair': return _balanceMultiScene(q) + _claimBubble(q);
+      case 'length_repair': return _lengthScene(q) + _claimBubble(q);
+      case 'expression': case 'unit_compare': return _textPairScene(q);
+      case 'clock': return _clockScene(q);
+      case 'money': return _moneyScene(q);
+      case 'explain': return _sceneHtml(Object.assign({}, q, { type: q.sceneType })) +
+        '<div class="cq-claim"><span class="zh">结论：' + q.conclusionZh + '</span><span class="en">Conclusion: ' + q.conclusionEn + '</span></div>';
       default: return '';
     }
   }
 
   function _sizeScene(q) {
-    var max=Math.max(q.leftSizeRank,q.rightSizeRank);
-    var lSz=Math.round(36+(q.leftSizeRank/max)*44), rSz=Math.round(36+(q.rightSizeRank/max)*44);
-    return '<div class="cq-pair">'+
-      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+lSz+'px">'+q.leftEmoji+'</div><div class="cq-label"><span class="zh">'+q.leftNameZh+'</span><span class="en">'+q.leftNameEn+'</span></div>'+_slotBadge(0,q.type)+'</div>'+
-      '<div class="cq-cell"><div class="cq-emoji" style="font-size:'+rSz+'px">'+q.rightEmoji+'</div><div class="cq-label"><span class="zh">'+q.rightNameZh+'</span><span class="en">'+q.rightNameEn+'</span></div>'+_slotBadge(1,q.type)+'</div>'+
-    '</div>';
+    function cell(idx, px, emoji) {
+      return '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + px + 'px">' + emoji + '</div></div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    return '<div class="cq-pair">' + cell(0, q.leftSizeRank, q.leftEmoji) + cell(1, q.rightSizeRank, q.rightEmoji) + '</div>';
+  }
+
+  // Z2: same icon three times at fixed ratios 1 : 0.78 : 0.6, slots A/B/C.
+  function _sizePickScene(q) {
+    var h = '<div class="cq-triple">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      h += '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + q.sizeBySlot[l] + 'px">' + q.emoji + '</div></div>' + _letterBadge(l) + '</div>';
+    });
+    return h + '</div>';
+  }
+
+  // Z3: two DIFFERENT real objects — the only type allowed to show names in
+  // its scene, because the name is exactly what conveys real-world size
+  // (§1.1 exception).
+  function _sizeRealScene(q) {
+    function cell(idx, px, emoji, nz, ne) {
+      return '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + px + 'px">' + emoji + '</div></div>' +
+        '<div class="cq-label"><span class="zh">' + nz + '</span><span class="en">' + ne + '</span></div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    return '<div class="cq-pair">' + cell(0, q.leftSizeRank, q.leftEmoji, q.leftNameZh, q.leftNameEn) +
+      cell(1, q.rightSizeRank, q.rightEmoji, q.rightNameZh, q.rightNameEn) + '</div>';
+  }
+
+  // interference×select: three items, named slot (A/B/C comes from data —
+  // same convention as sizePick3/Z2), real name shown since the name IS the
+  // real-world-size evidence this task tests.
+  function _sizeRealSelect3Scene(q) {
+    var h = '<div class="cq-triple">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      var item = q.itemsBySlot[l];
+      h += '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + item.px + 'px">' + item.emoji + '</div></div>' +
+        '<div class="cq-label"><span class="zh">' + item.nameZh + '</span><span class="en">' + item.nameEn + '</span></div>' + _letterBadge(l) + '</div>';
+    });
+    return h + '</div>';
+  }
+
+  // interference×repair: same two-item conflict scene as sizeReal, but
+  // without the name label (the claim bubble below uses slot letters, not
+  // names, so the names would be an unused extra cue) plus a claim bubble.
+  function _sizeRealRepairScene(q) {
+    function cell(idx, px, emoji) {
+      return '<div class="cq-cell"><div class="cq-size-box"><div class="cq-emoji" style="font-size:' + px + 'px">' + emoji + '</div></div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-pair">' + cell(0, q.leftSizeRank, q.leftEmoji) + cell(1, q.rightSizeRank, q.rightEmoji) + '</div>' +
+      '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 真的比 ' + otherLetter + ' 大。"</span>' +
+      '<span class="en">Someone says: "' + claimLetter + ' is really bigger than ' + otherLetter + '."</span></div>';
   }
 
   function _lengthScene(q) {
@@ -314,6 +510,34 @@
     return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>';
   }
 
+  // multi_criteria×select: three items, named slot (letter comes from data).
+  function _multiAttrSelect3Scene(q) {
+    var max = Math.max(q.itemsBySlot.A.size, q.itemsBySlot.B.size, q.itemsBySlot.C.size);
+    var h = '<div class="cq-triple">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      var item = q.itemsBySlot[l];
+      var px = Math.max(26, Math.round(MA_BOX * item.size / max));
+      h += '<div class="cq-ma-cell"><div class="cq-ma-box">' + _shapeSvg(item.shape, item.color, px) + '</div>' + _letterBadge(l) + '</div>';
+    });
+    return h + '</div>';
+  }
+
+  // multi_criteria×repair: same two-item scene as multiAttribute, plus a claim bubble.
+  function _multiAttrRepairScene(q) {
+    var max = Math.max(q.left.size, q.right.size);
+    function cell(idx, item) {
+      var px = Math.max(30, Math.round(MA_BOX * item.size / max));
+      return '<div class="cq-ma-cell">' +
+        '<div class="cq-ma-box">' + _shapeSvg(item.shape, item.color, px) + '</div>' +
+        _slotBadge(idx, q.type) + '</div>';
+    }
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-ma-pair">' + cell(0, q.left) + cell(1, q.right) + '</div>' +
+      '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 比 ' + otherLetter + ' 大。"</span>' +
+      '<span class="en">Someone says: "' + claimLetter + ' is bigger than ' + otherLetter + '."</span></div>';
+  }
+
   // position: distance from the reference is the compared attribute, so it has to
   // BE a distance on screen. The old layout pinned the reference at 50% and put
   // each object at `50 ± (dist − 50) × 0.45`, which made the drawn gap
@@ -351,18 +575,297 @@
       con(1,q.rightFillPct,q.rightEmoji,q.rightNameZh,q.rightNameEn)+'</div>';
   }
 
+  // ── Balance scenes (W1–W4) ─────────────────────────────────────────────────
+  // tiltDeg is a CSS rotate() degree (positive = clockwise = right tray down),
+  // fixed at ±14° regardless of the real weight gap (§2 shared rule) — the
+  // generator already picked the sign, so the beam is the only thing that
+  // moves; both trays always carry the SAME icon (identity-neutral, §1.2).
+
+  function _balanceOneHtml(tiltDeg, emoji, leftLabel, rightLabel) {
+    return '<div class="cq-balance">' +
+      '<div class="cq-balance-beam" style="transform:rotate(' + tiltDeg + 'deg)">' +
+        '<div class="cq-balance-tray"><div class="cq-balance-emoji">' + emoji + '</div>' + leftLabel + '</div>' +
+        '<div class="cq-balance-tray"><div class="cq-balance-emoji">' + emoji + '</div>' + rightLabel + '</div>' +
+      '</div>' +
+      '<div class="cq-balance-pivot"></div>' +
+    '</div>';
+  }
+
+  // W1: a single balance, options are left/right/same — slot badges are the
+  // usual positional A/B pointers.
+  function _balanceScene(q) {
+    return '<div class="cq-balance-wrap">' +
+      _balanceOneHtml(q.tiltDeg, q.emoji, _slotBadge(0, q.type), _slotBadge(1, q.type)) +
+    '</div>';
+  }
+
+  // W2/W3: two or three balances stacked; each tray is labelled with the
+  // actual box letter it holds (not a positional index), since the options
+  // (A/B/C) name specific boxes, not "left" or "right".
+  function _balanceMultiScene(q) {
+    var h = '<div class="cq-balance-stack">';
+    q.balances.forEach(function (b) {
+      h += _balanceOneHtml(b.tiltDeg, q.emoji, _letterBadge(b.left), _letterBadge(b.right));
+    });
+    return h + '</div>';
+  }
+
+  // mediated×repair: a single balance (same as balanceJudge/W1) plus a
+  // claim bubble — the balance itself unambiguously settles the claim,
+  // unlike an earlier three-balance version that turned out to have no
+  // unique answer (see the comment on Generators.balanceRepair).
+  function _balanceRepairScene(q) {
+    var claimLetter = q.claimSide === 'left' ? 'A' : 'B';
+    var otherLetter = q.claimSide === 'left' ? 'B' : 'A';
+    return '<div class="cq-balance-wrap">' +
+      _balanceOneHtml(q.tiltDeg, q.emoji, _slotBadge(0, q.type), _slotBadge(1, q.type)) +
+    '</div>' +
+    '<div class="cq-claim"><span class="zh">有人说："' + claimLetter + ' 比 ' + otherLetter + ' 重。"</span>' +
+    '<span class="en">Someone says: "' + claimLetter + ' is heavier than ' + otherLetter + '."</span></div>';
+  }
+
+  // W4: a flat reference balance (k balls = 1 block, drawn as SVG shapes so no
+  // real object can smuggle in common sense) above a beam-less pair of trays —
+  // no beam on the bottom pair on purpose, or its tilt/levelness would give the
+  // answer away before the child converts units (§ W4 画面 note).
+  function _swapUnits(shape, count, color) {
+    var h = '<div class="cq-swap-units">';
+    for (var i = 0; i < count; i++) h += _shapeSvg(shape, color, 26);
+    return h + '</div>';
+  }
+
+  function _balanceSwapScene(q) {
+    var top = '<div class="cq-swap-ref">' +
+      '<div class="cq-swap-side">' + _swapUnits('circle', q.k, 'red') + '</div>' +
+      '<div class="cq-swap-eq">=</div>' +
+      '<div class="cq-swap-side">' + _swapUnits('square', 1, 'blue') + '</div>' +
+    '</div>';
+
+    var blockCell = '<div class="cq-swap-cell">' + _swapUnits('square', q.m, 'blue') + _slotBadge(q.blockSide === 'left' ? 0 : 1, q.type) + '</div>';
+    var ballCell  = '<div class="cq-swap-cell">' + _swapUnits('circle', q.n, 'red') + _slotBadge(q.blockSide === 'left' ? 1 : 0, q.type) + '</div>';
+    var bottom = '<div class="cq-swap-pair">' +
+      (q.blockSide === 'left' ? blockCell + '<div class="cq-swap-q">?</div>' + ballCell
+                               : ballCell + '<div class="cq-swap-q">?</div>' + blockCell) +
+    '</div>';
+
+    return '<div class="cq-swap">' + top + bottom + '</div>';
+  }
+
+  // ── Race scenes (S1–S3) ────────────────────────────────────────────────────
+  // Every lane shows the same racer icon and a stopwatch reading; no speed-hint
+  // decoration (dust, motion lines) is ever drawn (§3 shared rule).
+
+  function _raceLaneHtml(badge, pct, seconds, emoji) {
+    return '<div class="cq-race-lane">' + badge +
+      '<div class="cq-race-track">' +
+        '<div class="cq-race-fill" style="width:' + pct + '%"></div>' +
+        '<div class="cq-race-runner" style="left:' + (100 - pct) + '%">' + emoji + '</div>' +
+      '</div>' +
+      '<div class="cq-race-timer">⏱ ' + seconds + '秒</div>' +
+    '</div>';
+  }
+
+  var RACE_LEGEND = '<div class="cq-race-legend"><span>🏁</span><span>← 起点</span></div>';
+
+  // S1 (race_judge) and S3 (race_variant) share this: both carry
+  // leftPct/rightPct + leftSeconds/rightSeconds, so one renderer covers the
+  // "same time" and "same distance" framings without branching on variant.
+  function _raceScene(q) {
+    return '<div class="cq-race">' + RACE_LEGEND +
+      _raceLaneHtml(_slotBadge(0, q.type), q.leftPct, q.leftSeconds, q.emoji) +
+      _raceLaneHtml(_slotBadge(1, q.type), q.rightPct, q.rightSeconds, q.emoji) +
+    '</div>';
+  }
+
+  // S2: three lanes, same stopwatch reading throughout, positions keyed by slot letter.
+  function _raceSelectScene(q) {
+    var h = '<div class="cq-race">' + RACE_LEGEND;
+    ['A', 'B', 'C'].forEach(function (l) {
+      h += _raceLaneHtml(_letterBadge(l), q.posBySlot[l], q.seconds, q.emoji);
+    });
+    return h + '</div>';
+  }
+
+  // ── Difference evidence scenes ──────────────────────────────────────────────
+  // Both carriers reduce to the same shape: a slot badge, the (shared, identity-
+  // neutral) icon, and an instrument readout — no position/tilt to read, since
+  // the whole point of these two is that only the number differs.
+  function _evidenceRowHtml(badge, emoji, readout) {
+    return '<div class="cq-evid-row">' + badge +
+      '<div class="cq-evid-emoji">' + emoji + '</div>' +
+      '<div class="cq-evid-readout">' + readout + '</div>' +
+    '</div>';
+  }
+
+  function _raceDiffScene(q) {
+    return '<div class="cq-evid">' +
+      _evidenceRowHtml(_slotBadge(0, q.type), q.emoji, '⏱ ' + q.leftSeconds + '秒') +
+      _evidenceRowHtml(_slotBadge(1, q.type), q.emoji, '⏱ ' + q.rightSeconds + '秒') +
+    '</div>';
+  }
+
+  function _weightDiffScene(q) {
+    return '<div class="cq-evid">' +
+      _evidenceRowHtml(_slotBadge(0, q.type), q.emoji, '⚖️ ' + q.leftWeight) +
+      _evidenceRowHtml(_slotBadge(1, q.type), q.emoji, '⚖️ ' + q.rightWeight) +
+    '</div>';
+  }
+
+  // expression / unit_compare: two text cards with the usual A/B slot badges.
+  function _textPairScene(q) {
+    function cell(idx, txt) { return '<div class="cq-cell"><div class="cq-expr">' + txt + '</div>' + _slotBadge(idx, q.type) + '</div>'; }
+    return '<div class="cq-pair">' + cell(0, q.leftText) + cell(1, q.rightText) + '</div>';
+  }
+
+  function _clockSvg(h, m) {
+    var ha = ((h % 12) + m / 60) * 30, ma = m * 6, t = '';
+    for (var i = 0; i < 12; i++) t += '<line x1="50" y1="8" x2="50" y2="13" stroke="#64748b" stroke-width="2" transform="rotate(' + (i * 30) + ' 50 50)"/>';
+    return '<svg viewBox="0 0 100 100" width="96" height="96"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#475569" stroke-width="3"/>' + t +
+      '<text x="50" y="25" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">12</text>' +
+      '<text x="82" y="54" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">3</text>' +
+      '<text x="50" y="86" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">6</text>' +
+      '<text x="18" y="54" font-size="11" font-weight="900" text-anchor="middle" fill="#334155">9</text>' +
+      '<line x1="50" y1="50" x2="50" y2="29" stroke="#1e293b" stroke-width="5" stroke-linecap="round" transform="rotate(' + ha + ' 50 50)"/>' +
+      '<line x1="50" y1="50" x2="50" y2="14" stroke="#2563eb" stroke-width="3" stroke-linecap="round" transform="rotate(' + ma + ' 50 50)"/>' +
+      '<circle cx="50" cy="50" r="3.5" fill="#1e293b"/></svg>';
+  }
+
+  function _clockScene(q) {
+    function cell(idx, h, m) { return '<div class="cq-cell">' + _clockSvg(h, m) + _slotBadge(idx, q.type) + '</div>'; }
+    return '<div class="cq-pair">' + cell(0, q.leftH, q.leftM) + cell(1, q.rightH, q.rightM) + '</div>';
+  }
+
+  function _moneyChip(v) {
+    var txt = v >= 10 ? (v / 10) + ' 元' : v + ' 角';
+    return '<span class="cq-coin">' + (v >= 50 ? '💴 ' : '🪙 ') + txt + '</span>';
+  }
+  function _moneyScene(q) {
+    function cell(idx, items) {
+      return '<div class="cq-money-side"><div class="cq-money-chips">' + items.map(_moneyChip).join('') + '</div>' + _slotBadge(idx, q.type) + '</div>';
+    }
+    return '<div class="cq-grid-pair">' + cell(0, q.leftItems) + cell(1, q.rightItems) + '</div>';
+  }
+
+  // Claim text shared by the scene bubble and the voice prompt.
+  function _claimTextOf(q) {
+    var cl = q.claimLetter || (q.claimSide === 'left' ? 'A' : 'B');
+    var ol = q.fixLetter;
+    switch (q.type) {
+      case 'balance_repair': case 'transitive_repair': return { zh: cl + ' 比 ' + ol + ' 重', en: cl + ' is heavier than ' + ol };
+      case 'length_repair': return { zh: cl + ' 比 ' + ol + ' 长', en: cl + ' is longer than ' + ol };
+      case 'size_real_repair': return { zh: cl + ' 真的比 ' + ol + ' 大', en: cl + ' is really bigger than ' + ol };
+      case 'multi_attribute_repair': return { zh: cl + ' 比 ' + ol + ' 大', en: cl + ' is bigger than ' + ol };
+      case 'quantity_repair': return { zh: '左右两边相差 ' + q.claimN + ' 个', en: 'the two sides differ by ' + q.claimN };
+      case 'equal_repair': return { zh: '左右两边一样多', en: 'the two sides are the same amount' };
+    }
+    return null;
+  }
+
+  function _claimBubble(q) {
+    var c = _claimTextOf(q);
+    return '<div class="cq-claim"><span class="zh">有人说："' + c.zh + '。"</span>' +
+      '<span class="en">Someone says: "' + c.en + '."</span></div>';
+  }
+
+  // difference x select: three rows of number pairs; find the biggest/smallest gap.
+  function _diffSelectScene(q) {
+    var h = '<div class="cq-evid">';
+    ['A', 'B', 'C'].forEach(function (l) {
+      h += '<div class="cq-evid-row">' + _letterBadge(l) +
+        '<div class="cq-evid-readout">' + q.pairs[l][0] + ' 和 ' + q.pairs[l][1] + '</div></div>';
+    });
+    return h + '</div>';
+  }
+
+  // ── Area scenes (Z4/Z5) ────────────────────────────────────────────────────
+
+  var GRID_CELL = 20;
+
+  function _gridPolyHtml(cells, bbox, color) {
+    var occupied = {};
+    cells.forEach(function (c) { occupied[c.x + ',' + c.y] = true; });
+    var h = '<div class="cq-grid" style="width:' + (bbox.w * GRID_CELL) + 'px;height:' + (bbox.h * GRID_CELL) + 'px;">';
+    for (var y = 0; y < bbox.h; y++) {
+      for (var x = 0; x < bbox.w; x++) {
+        var on = occupied[x + ',' + y];
+        h += '<div class="cq-grid-cell" style="left:' + (x * GRID_CELL) + 'px;top:' + (y * GRID_CELL) + 'px;' +
+          (on ? 'background:' + color + ';' : '') + '"></div>';
+      }
+    }
+    return h + '</div>';
+  }
+
+  // Z4: two polyominoes, each on its own light grid so every cell is countable.
+  function _areaGridScene(q) {
+    return '<div class="cq-grid-pair">' +
+      '<div class="cq-grid-cell-wrap">' + _gridPolyHtml(q.leftCells, q.leftBBox, '#60a5fa') + _slotBadge(0, q.type) + '</div>' +
+      '<div class="cq-grid-cell-wrap">' + _gridPolyHtml(q.rightCells, q.rightBBox, '#34d399') + _slotBadge(1, q.type) + '</div>' +
+    '</div>';
+  }
+
+  var RECT_CELL = 16;
+
+  function _rectGridHtml(a, b, color) {
+    var h = '<div class="cq-grid" style="width:' + (a * RECT_CELL) + 'px;height:' + (b * RECT_CELL) + 'px;background:' + color + ';">';
+    for (var x = 1; x < a; x++) h += '<div class="cq-rect-vline" style="left:' + (x * RECT_CELL) + 'px;"></div>';
+    for (var y = 1; y < b; y++) h += '<div class="cq-rect-hline" style="top:' + (y * RECT_CELL) + 'px;"></div>';
+    return h + '</div>';
+  }
+
+  // Z5: a×b vs c×d grid rectangles — the longer-edge one is smaller-area on
+  // most unequal draws, so the grid lines are what settle it, not the outline.
+  function _areaRectScene(q) {
+    return '<div class="cq-grid-pair">' +
+      '<div class="cq-grid-cell-wrap">' + _rectGridHtml(q.leftA, q.leftB, '#93c5fd') + _slotBadge(0, q.type) + '</div>' +
+      '<div class="cq-grid-cell-wrap">' + _rectGridHtml(q.rightA, q.rightB, '#6ee7b7') + _slotBadge(1, q.type) + '</div>' +
+    '</div>';
+  }
+
   // ── Option renderer ────────────────────────────────────────────────────────
 
   function renderOption(opt, q) {
+    // "same" is never a slot — it is a fixed text card, for every type that
+    // offers it (§1.3). Checked first so it short-circuits the scene branch
+    // below, which would otherwise try to treat it as slot index 0.
+    if (opt === 'same') return '<div class="cq-opt">' + _optSameCard(q) + '</div>';
+
+    // Custom-option types: the option itself IS the answer (a number, a
+    // panel index, a claim correction) — the scene still renders the
+    // evidence, but this skips _optPointer entirely (checked before the
+    // _hasScene branch for the same reason "same" is checked first).
+    if (CUSTOM_OPTION_TYPES[q.type]) return '<div class="cq-opt">' + _optBody(opt, q) + '</div>';
+
     // Scene-backed type → pointer only. See the slot-marker contract above.
     if (_hasScene(q.type)) return '<div class="cq-opt">'+_optPointer(opt,q)+'</div>';
 
-    // No scene (number / weight / speed / time): the options ARE the question
+    // No scene (number / time): the options ARE the question
     // content, so they keep carrying it — plus a letter label.
     var lbl={left:{zh:'选 A',en:'A'},right:{zh:'选 B',en:'B'},A:{zh:'A',en:'A'},B:{zh:'B',en:'B'},C:{zh:'C',en:'C'}};
     var l=lbl[opt]||lbl.left;
     return '<div class="cq-opt">'+_optBody(opt,q)+
       '<div class="cq-opt-label"><span class="zh">'+l.zh+'</span><span class="en">'+l.en+'</span></div></div>';
+  }
+
+  var SAME_LABELS = {
+    balance_judge: { zh: '一样重', en: 'Same weight' },
+    balance_swap:  { zh: '一样重', en: 'Same weight' },
+    race_judge:    { zh: '一样快', en: 'Same speed' },
+    race_variant:  { zh: '一样快', en: 'Same speed' },
+    area_grid:     { zh: '一样大', en: 'Same size' },
+    area_rect:     { zh: '一样大', en: 'Same size' },
+    balance_repair:         { zh: '⚖️ 一样重', en: '⚖️ Same weight' },
+    size_real_repair:       { zh: '⚖️ 一样大', en: '⚖️ Same size' },
+    multi_attribute_repair: { zh: '⚖️ 一样大', en: '⚖️ Same size' },
+    transitive_repair:      { zh: '⚖️ 一样重', en: '⚖️ Same weight' },
+    length_repair:          { zh: '⚖️ 一样长', en: '⚖️ Same length' },
+    expression:             { zh: '一样大', en: 'Same' },
+    money:                  { zh: '一样多', en: 'Same amount' },
+    unit_compare:           { zh: '一样长', en: 'Same length' }
+  };
+
+  function _optSameCard(q) {
+    var l = SAME_LABELS[q.type] || { zh: '一样', en: 'Same' };
+    return '<div class="cq-opt-same"><span class="zh">' + l.zh + '</span><span class="en">' + l.en + '</span></div>';
   }
 
   // A pointer = the slot letter (in the slot colour) plus, when the two items
@@ -378,17 +881,29 @@
   function _optIdentity(opt, q) {
     switch (q.type) {
       // Two distinct objects: the emoji/name identifies them without hinting.
-      case 'size': case 'position': case 'fullness': {
+      // size_real (Z3) belongs here too — the name is what conveys real-world
+      // size, which is exactly what the question asks about (§1.1 exception).
+      case 'position': case 'fullness': case 'size_real': {
         var left=opt==='left';
         var em=left?q.leftEmoji:q.rightEmoji, nz=left?q.leftNameZh:q.rightNameZh, ne=left?q.leftNameEn:q.rightNameEn;
         var h='<div class="cq-opt-emoji" style="font-size:24px">'+em+'</div>';
         if (nz) h+='<div class="cq-opt-label"><span class="zh">'+nz+'</span><span class="en">'+ne+'</span></div>';
         return h;
       }
+      // size_real_select (interference×select): same reasoning as size_real,
+      // just a named slot (A/B/C from data) instead of left/right.
+      case 'size_real_select': {
+        var item = q.itemsBySlot[opt];
+        return '<div class="cq-opt-emoji" style="font-size:24px">'+item.emoji+'</div>' +
+          '<div class="cq-opt-label"><span class="zh">'+item.nameZh+'</span><span class="en">'+item.nameEn+'</span></div>';
+      }
       // length / height / quantity: anonymous items — the letter is the identity.
       // shape / color: the identity IS the answer, so showing it would give it away.
       // multi_attribute: shape and colour are the distractors, so repeating them
       // in the card would put the noise back where the answer is chosen.
+      // size / size_pick (Z1/Z2) and every balance/race/area type: the compared
+      // objects are IDENTICAL on purpose (§1.2) — a name or emoji here would
+      // add nothing, so the slot letter is the only pointer.
       default: return '';
     }
   }
@@ -397,10 +912,6 @@
   // _optPointer instead, so nothing here may re-draw a compared attribute.
   function _optBody(opt, q) {
     switch (q.type) {
-      case 'weight': case 'speed': {
-        var em=opt==='left'?q.leftEmoji:q.rightEmoji, nmz=opt==='left'?q.leftNameZh:q.rightNameZh, nme=opt==='left'?q.leftNameEn:q.rightNameEn;
-        return '<div class="cq-opt-emoji">'+em+'</div><div class="cq-opt-label"><span class="zh">'+nmz+'</span><span class="en">'+nme+'</span></div>';
-      }
       case 'number': {
         var num=opt==='left'?q.leftNum:q.rightNum, dotH='';
         if(q.showDots){dotH='<div class="cq-opt-dots">';for(var d=0;d<num;d++) dotH+='<div class="cq-opt-dot" style="background:#93c5fd;border-radius:50%;width:14px;height:14px;"></div>';dotH+='</div>';}
@@ -409,6 +920,39 @@
       case 'time': {
         var tev=opt==='left'?{zh:q.leftEventZh,en:q.leftEventEn}:{zh:q.rightEventZh,en:q.rightEventEn};
         return '<div class="cq-opt-label" style="font-size:15px;font-weight:900;color:#1e293b;"><span class="zh">'+tev.zh+'</span><span class="en">'+tev.en+'</span></div>';
+      }
+      case 'quantity_diff': case 'area_diff': case 'race_diff': case 'weight_diff': case 'weight_adjust': case 'quantity_adjust':
+        return '<div class="cq-opt-num">'+opt+'</div>';
+      case 'explain': {
+        var rs = q.reasonBySlot[opt], num = ['①', '②', '③'][Number(opt) - 1];
+        return '<div class="cq-opt-label" style="font-size:13px;font-weight:800;line-height:1.35;"><span class="zh">'+num+' '+rs.zh+'</span><span class="en">'+num+' '+rs.en+'</span></div>';
+      }
+      case 'equal_judge': {
+        var yn = { yes: { zh: '✅ 一样多', en: '✅ The same' }, no: { zh: '❌ 不一样多', en: '❌ Not the same' } }[opt];
+        return '<div class="cq-opt-label" style="font-size:15px;font-weight:800;"><span class="zh">'+yn.zh+'</span><span class="en">'+yn.en+'</span></div>';
+      }
+      case 'quantity_repair': {
+        var ql = { agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix_x: { zh: '❌ 不对，相差 ' + q.fixX + ' 个', en: '❌ No — they differ by ' + q.fixX },
+          fix_y: { zh: '❌ 不对，相差 ' + q.fixY + ' 个', en: '❌ No — they differ by ' + q.fixY } }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+ql.zh+'</span><span class="en">'+ql.en+'</span></div>';
+      }
+      case 'equal_repair': {
+        var el = { agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix_a: { zh: '❌ 不对，A 更多', en: '❌ No — A has more' },
+          fix_b: { zh: '❌ 不对，B 更多', en: '❌ No — B has more' } }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+el.zh+'</span><span class="en">'+el.en+'</span></div>';
+      }
+      case 'balance_repair': case 'size_real_repair': case 'multi_attribute_repair':
+      case 'transitive_repair': case 'length_repair': {
+        // 'same' never reaches here (renderOption short-circuits it to the
+        // shared "equal" card); only agree / fix do.
+        var moreWord = ({ balance_repair: { zh: '重', en: 'heavier' }, transitive_repair: { zh: '重', en: 'heavier' }, length_repair: { zh: '长', en: 'longer' } })[q.type] || { zh: '大', en: 'bigger' };
+        var claimLbl = {
+          agree: { zh: '✅ 这句话是对的', en: '✅ The claim is right' },
+          fix:   { zh: '❌ 不对，' + q.fixLetter + ' 更' + moreWord.zh, en: '❌ No — ' + q.fixLetter + ' is ' + moreWord.en }
+        }[opt];
+        return '<div class="cq-opt-label" style="font-size:14px;font-weight:800;"><span class="zh">'+claimLbl.zh+'</span><span class="en">'+claimLbl.en+'</span></div>';
       }
       default: return '<div class="cq-opt-label">'+opt+'</div>';
     }
@@ -421,7 +965,7 @@
   function getVoiceText(q) {
     var zh='', en='';
     switch(q.type){
-      case 'size':    zh=q.askBigger?'哪个更大，'+q.leftNameZh+'还是'+q.rightNameZh+'？':'哪个更小？'; en=q.askBigger?'Which is bigger, '+q.leftNameEn+' or '+q.rightNameEn+'?':'Which is smaller?'; break;
+      case 'size':    zh=q.askBigger?'哪个更大？':'哪个更小？'; en=q.askBigger?'Which is bigger?':'Which is smaller?'; break;
       case 'length':  zh=q.askLonger?'哪根更长？':'哪根更短？'; en=q.askLonger?'Which is longer?':'Which is shorter?'; break;
       case 'height':  zh=q.askTaller?'哪个更高？':'哪个更矮？'; en=q.askTaller?'Which is taller?':'Which is shorter?'; break;
       case 'quantity':zh=q.askMore?'哪边更多？':'哪边更少？'; en=q.askMore?'Which side has more?':'Which side has fewer?'; break;
@@ -430,15 +974,50 @@
       case 'color':   zh='哪个颜色不一样？'; en='Which color is different?'; break;
       case 'position':zh='哪个离'+q.refNameZh+(q.askNearer?'更近？':'更远？'); en=(q.askNearer?'Which is closer to the ':'Which is farther from the ')+q.refNameEn.toLowerCase()+'?'; break;
       case 'fullness':zh=q.askFuller?'哪个更满？':'哪个更空？'; en=q.askFuller?'Which is fuller?':'Which is more empty?'; break;
-      case 'weight':  zh=q.askHeavier?'哪个更重？':'哪个更轻？'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
-      case 'speed':   zh=q.askFaster?'哪个更快？':'哪个更慢？'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;
       case 'time':    zh=q.askLongerDuration?'哪个时间更长？':'哪件事先发生？'; en=q.askLongerDuration?'Which duration is longer?':'Which happens first?'; break;
       case 'multi_attribute':
         zh='哪个更大？'+(q.ignoreZh?'不用管'+q.ignoreZh+'。':'');
         en='Which is bigger?'+(q.ignoreEn?' Ignore the '+q.ignoreEn+'.':'');
         break;
+      case 'size_pick':   zh=q.askBigger?'哪个最大？':'哪个最小？'; en=q.askBigger?'Which is the biggest?':'Which is the smallest?'; break;
+      case 'size_real':
+        zh = q.askReal ? (q.askBigger?'哪个真的更大？':'哪个真的更小？') : (q.askBigger?'图上哪个画得更大？':'图上哪个画得更小？');
+        en = q.askReal ? (q.askBigger?'Which is really bigger?':'Which is really smaller?') : (q.askBigger?'Which is drawn bigger?':'Which is drawn smaller?');
+        break;
+      case 'balance_judge': zh=q.askHeavier?'哪个更重？':'哪个更轻？'; en=q.askHeavier?'Which is heavier?':'Which is lighter?'; break;
+      case 'balance_select':
+      case 'balance_chain': zh=q.askHeaviest?'哪个最重？':'哪个最轻？'; en=q.askHeaviest?'Which is the heaviest?':'Which is the lightest?'; break;
+      case 'balance_swap':  zh='哪边更重？'; en='Which side is heavier?'; break;
+      case 'race_judge':    zh=q.askFaster?'哪个更快？':'哪个更慢？'; en=q.askFaster?'Which is faster?':'Which is slower?'; break;
+      case 'race_select':   zh=q.askFastest?'谁跑得最快？':'谁跑得最慢？'; en=q.askFastest?'Who is the fastest?':'Who is the slowest?'; break;
+      case 'race_variant':  zh=q.askFaster?'谁跑得更快？':'谁跑得更慢？'; en=q.askFaster?'Who ran faster?':'Who ran slower?'; break;
+      case 'area_grid':
+      case 'area_rect':     zh=q.askBigger?'哪个图形更大？':'哪个图形更小？'; en=q.askBigger?'Which shape is bigger?':'Which shape is smaller?'; break;
+      case 'quantity_diff': zh='两边相差几个？'; en='By how many do the two sides differ?'; break;
+      case 'area_diff':     zh='两个图形相差几格？'; en='By how many squares do the two shapes differ?'; break;
+      case 'race_diff':     zh='两位选手相差几秒？'; en='By how many seconds do the two racers differ?'; break;
+      case 'weight_diff':   zh='两个盒子相差几个重量单位？'; en='By how many units do the two boxes differ?'; break;
+      case 'weight_adjust': zh='轻的一边要加几个重量单位才一样重？'; en='How many units should be added to the lighter side to make them equal?'; break;
+      case 'balance_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'size_real_select': zh=q.askBiggest?'三个里真的最大的是哪个？':'三个里真的最小的是哪个？'; en=q.askBiggest?'Which of the three is really the biggest?':'Which of the three is really the smallest?'; break;
+      case 'size_real_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'multi_attribute_select': zh=q.askBiggest?'三个里最大的是哪个？':'三个里最小的是哪个？'; en=q.askBiggest?'Which of the three is the biggest?':'Which of the three is the smallest?'; break;
+      case 'multi_attribute_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'quantity_adjust': zh='少的一边要再加几个，两边才一样多？'; en='How many must the smaller side add to make them equal?'; break;
+      case 'diff_select': zh=q.askBiggest?'哪一行的两个数相差最多？':'哪一行的两个数相差最少？'; en=q.askBiggest?'Which row has the biggest difference?':'Which row has the smallest difference?'; break;
+      case 'equal_judge': zh='左右两边一样多吗？'; en='Are the two sides the same amount?'; break;
+      case 'equal_adjust': zh=q.mode==='add'?'哪一边加上'+q.gap+'个，两边就一样多？':'哪一边拿走'+q.gap+'个，两边就一样多？'; en=q.mode==='add'?'Which side should add '+q.gap+' to make them equal?':'Which side should remove '+q.gap+' to make them equal?'; break;
+      case 'quantity_repair': case 'transitive_repair': case 'length_repair': case 'equal_repair': zh='这句话说得对不对？'; en='Is the claim right?'; break;
+      case 'expression': zh=(q.askBigger?'哪个算式的结果更大？':'哪个算式的结果更小？')+'A：'+q.leftSpoken+'，B：'+q.rightSpoken+'。'; en=(q.askBigger?'Which result is bigger?':'Which result is smaller?')+' A: '+q.leftText+', B: '+q.rightText+'.'; break;
+      case 'clock': zh=q.askEarlier?'同一个上午，哪个时间更早？':'同一个上午，哪个时间更晚？'; en=q.askEarlier?'The same morning — which time is earlier?':'The same morning — which time is later?'; break;
+      case 'money': zh=q.askMore?'哪边的钱更多？':'哪边的钱更少？'; en=q.askMore?'Which side has more money?':'Which side has less money?'; break;
+      case 'unit_compare': zh=(q.askLonger?'哪个更长？':'哪个更短？')+'A：'+q.leftText+'，B：'+q.rightText+'。'; en=(q.askLonger?'Which is longer?':'Which is shorter?')+' A: '+q.leftText+', B: '+q.rightText+'.'; break;
+      case 'explain': zh='结论：'+q.conclusionZh+'。为什么？'+['1','2','3'].map(function(k){return '理由'+k+'：'+q.reasonBySlot[k].zh;}).join('。')+'。哪个理由真正支持这个结论？';
+        en='Conclusion: '+q.conclusionEn+'. Why? '+['1','2','3'].map(function(k){return 'Reason '+k+': '+q.reasonBySlot[k].en;}).join('. ')+'. Which reason really supports it?'; break;
       default:        zh='请选择答案。'; en='Choose an answer.';
     }
+    var claim = _claimTextOf(q);
+    if (claim) { zh = '有人说：' + claim.zh + '。' + zh; en = 'Someone says: ' + claim.en + '. ' + en; }
     return shell.lang==='zh'?zh:en;
   }
 
@@ -466,59 +1045,62 @@
   var LEVEL_GRADE = { K1:'K1', K2:'K2', G1:'G1', G2:'G2' };
 
   /**
-   * Position on the five difficulty axes declared in
-   * metadata/metathinking/comparison.json → difficultyAxes.
-   *
-   * The base position comes from the level (that is what the levelMap
-   * objectives describe); `type` then refines the two axes that genuinely move
-   * within a level:
-   *   - multi_attribute compares along more than one dimension at once
-   *   - weight / speed / time cannot be read off the picture directly, so the
-   *     relation has to be inferred rather than seen
+   * Three-dimension model (comparison.json → designModel): every template
+   * declares structure × carrier × task itself, so the radar reads them off the
+   * template instead of guessing from the attribute being compared.
    */
-  var INDIRECT_TYPES = { weight:1, speed:1, time:1, fullness:1 };
 
-  /**
-   * Template `type` → typeTree id in comparison.json. The template field names
-   * the attribute being compared (size, weight, time…); the typeTree names the
-   * kind of comparison it trains, which is what rolls up on the radar.
-   *
-   * multi_attribute lands in logic_strategy on purpose: comparing two objects
-   * on several criteria at once is the entry point to trade-off reasoning
-   * (levelMap L6), not another perceptual judgment.
-   */
-  var COMPARISON_TYPE_OF = {
-    quantity:'quantity', number:'quantity',
-    size:'spatial_visual', length:'spatial_visual', height:'spatial_visual',
-    position:'spatial_visual', shape:'spatial_visual', color:'spatial_visual',
-    fullness:'spatial_visual', weight:'spatial_visual',
-    time:'temporal', speed:'temporal',
-    multi_attribute:'logic_strategy'
+  // Mirrors comparison.json → sessionPolicy. Collided by validator S7 / S8.
+  var SESSION_SIZE = 8;
+  var MAX_ACTIVITIES_PER_SESSION = 2;
+
+  // Structure id → genes an item of that structure reports
+  // (comparison.json → geneReporting).
+  var STRUCTURE_GENES = {
+    direct:         ['RG.LOGIC.COMPARISON.BASIC'],
+    equivalence:    ['RG.LOGIC.COMPARISON.BASIC'],
+    interference:   ['RG.LOGIC.COMPARISON.BASIC'],
+    difference:     ['RG.LOGIC.COMPARISON.BASIC'],
+    mediated:       ['RG.LOGIC.COMPARISON.BASIC'],
+    transitive:     ['RG.LOGIC.COMPARISON.BASIC', 'RG.LOGIC.REASONING.BASIC'],
+    multi_criteria: ['RG.LOGIC.COMPARISON.BASIC']
   };
 
-  function difficultyAxisFor(levelId, type) {
+  // comparison.json → difficultyAxes.relation_complexity note.
+  var RELATION_OF = {
+    direct:'direct', equivalence:'direct',
+    interference:'indirect', difference:'indirect', mediated:'indirect',
+    transitive:'chain', multi_criteria:'constrained'
+  };
+
+  /**
+   * Position on the difficulty axes declared in comparison.json. The level sets
+   * the base; the template's own structure and task then set relation and task
+   * complexity, and multi_criteria widens the dimension axis.
+   */
+  function difficultyAxisFor(levelId, tpl) {
     var base = {
       K1: { object_complexity:'concrete', dimension_complexity:'single',
-            relation_complexity:'direct', language_complexity:'action',
+            relation_complexity:'direct', task_complexity:'judge', language_complexity:'action',
             transfer_complexity:'within-domain' },
       K2: { object_complexity:'concrete', dimension_complexity:'single',
-            relation_complexity:'direct', language_complexity:'question',
+            relation_complexity:'direct', task_complexity:'judge', language_complexity:'question',
             transfer_complexity:'within-domain' },
       G1: { object_complexity:'symbolic', dimension_complexity:'single',
-            relation_complexity:'direct', language_complexity:'question',
+            relation_complexity:'direct', task_complexity:'judge', language_complexity:'question',
             transfer_complexity:'within-domain' },
       G2: { object_complexity:'symbolic', dimension_complexity:'dual',
-            relation_complexity:'indirect', language_complexity:'compound',
+            relation_complexity:'indirect', task_complexity:'judge', language_complexity:'compound',
             transfer_complexity:'cross-domain' }
     }[levelId];
     if (!base) return null;
 
     var axis = Object.assign({}, base);
-    if (type === 'multi_attribute') {
+    if (!tpl) return axis;
+    if (RELATION_OF[tpl.structure]) axis.relation_complexity = RELATION_OF[tpl.structure];
+    if (tpl.task) axis.task_complexity = tpl.task;
+    if (tpl.structure === 'multi_criteria') {
       axis.dimension_complexity = (levelId === 'G2') ? 'multi' : 'dual';
-    }
-    if (INDIRECT_TYPES[type] && axis.relation_complexity === 'direct') {
-      axis.relation_complexity = 'indirect';
     }
     return axis;
   }
@@ -526,25 +1108,28 @@
   /**
    * The single place that builds the radar payload. Both activity paths call
    * this, so a change to the contract cannot land on one path and miss the
-   * other.
-   *
-   * `attrType` is the template's own `type` field (size / weight / time …).
-   * `comparisonType` is the typeTree id from comparison.json — the two are not
-   * the same vocabulary, so the raw attribute is kept alongside instead of
-   * being overwritten by its category.
+   * other. `comparisonType` equals `structure` (same convention as pattern's
+   * patternType); `attributeType` keeps the template's raw `type` field.
    */
-  function buildRadarContext(levelId, attrType, extra) {
+  function buildRadarContext(levelId, tpl, extra) {
     var ctx = {
       moduleId:       MODULE_ID,
       moduleType:     MODULE_TYPE,
       levelId:        levelId || null,
       gradeCode:      LEVEL_GRADE[levelId] || null,
-      comparisonType: attrType ? (COMPARISON_TYPE_OF[attrType] || 'quantity') : null,
-      attributeType:  attrType || null,
-      difficultyAxis: difficultyAxisFor(levelId, attrType),
+      comparisonType: tpl ? (tpl.structure || null) : null,
+      structure:      tpl ? (tpl.structure || null) : null,
+      carrier:        tpl ? (tpl.carrier || null) : null,
+      taskType:       tpl ? (tpl.task || null) : null,
+      attributeType:  tpl ? (tpl.type || null) : null,
+      difficultyAxis: difficultyAxisFor(levelId, tpl),
       sourceGameId:   SOURCE_GAME_ID
     };
     return extra ? Object.assign(ctx, extra) : ctx;
+  }
+
+  function genesFor(tpl) {
+    return ((tpl && STRUCTURE_GENES[tpl.structure]) || ['RG.LOGIC.COMPARISON.BASIC']).slice();
   }
 
   /** Most frequent value in an array, or null. Used to label a mixed batch. */
@@ -570,18 +1155,38 @@
     var tpl=_sessionTemplateMap[q.templateId];
     if(!tpl) return;
     CmpEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
-    CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl, {
+    var meta = {
       mode:   'puzzle',
       result: correct ? 'correct' : 'incorrect',
-      radar:  buildRadarContext(tpl.level, tpl.type)
-    });
+      radar:  buildRadarContext(tpl.level, tpl)
+    };
+    // optionTypes is only present on Phase-2-onward templates (§1.6); older
+    // templates simply omit process, exactly as before this field existed.
+    if (q.optionTypes && q.optionTypes[selected]) meta.process = { errorType: q.optionTypes[selected] };
+    CmpEngine.recordAttempt(q.templateId, q.variantId||CmpEngine.makeVariantId(q.templateId), correct, elapsedMs||0, false, tpl, meta);
+  }
+
+  /**
+   * Generate an item for tpl, redrawing (a few times) when it matches one of
+   * the template's recently shown variants, then remember the one shown.
+   */
+  function _freshQuestion(tpl) {
+    var q = null, sig = null;
+    for (var i = 0; i < 6; i++) {
+      q = generateQuestion(tpl);
+      if (!q) return null;
+      sig = CmpEngine.variantSignature(q);
+      if (!CmpEngine.isRecentVariant(tpl.id, sig)) break;
+    }
+    CmpEngine.rememberVariant(tpl.id, sig);
+    return q;
   }
 
   // ── Grade level selector ───────────────────────────────────────────────────
 
   var GRADE_LEVELS=[
     {id:'K1',badge:'K1',nameZh:'幼儿园小/中班',nameEn:'Pre-K',descZh:'3–4岁 · 无需数字',descEn:'Age 3–4 · No numbers',free:true},
-    {id:'K2',badge:'K2',nameZh:'幼儿园大班',nameEn:'Kindergarten',descZh:'5岁 · 数字入门',descEn:'Age 5 · Intro numbers',free:true},
+    {id:'K2',badge:'K2',nameZh:'幼儿园大班',nameEn:'Kindergarten',descZh:'5岁 · 10以内',descEn:'Age 5 · Within 10',free:true},
     {id:'G1',badge:'G1',nameZh:'小学一年级',nameEn:'Grade 1',descZh:'6岁 · 20以内',descEn:'Age 6 · Within 20',free:true},
     {id:'G2',badge:'G2',nameZh:'小学二年级',nameEn:'Grade 2',descZh:'7岁 · 100以内',descEn:'Age 7 · Within 100',free:true},
     {id:'G3',badge:'G3',nameZh:'三年级',nameEn:'Grade 3',descZh:'即将推出',descEn:'Coming Soon',free:false},
@@ -594,9 +1199,12 @@
 
   function _buildUnitsForLevel(levelId, templates) {
     _sessionTemplateMap={};
-    var selected=CmpEngine.getSessionTemplates(levelId, templates);
+    var selected=CmpEngine.getSessionTemplates(levelId, templates).filter(function(tpl){
+      return !CmpEngine.isActivity(tpl);
+    });
+    var genes=[];
     var questions=selected.map(function(tpl){
-      var q=generateQuestion(tpl);
+      var q=_freshQuestion(tpl);
       if(!q){
         // Same guard as the interaction path: a template whose generator fails
         // must leave the cycle, or getSessionTemplates() keeps handing it back.
@@ -606,6 +1214,7 @@
       }
       q.variantId=CmpEngine.makeVariantId(tpl.id);
       _sessionTemplateMap[tpl.id]=tpl;
+      genesFor(tpl).forEach(function(g){ if(genes.indexOf(g)===-1) genes.push(g); });
       return q;
     }).filter(Boolean);
     var n = questions.length;
@@ -620,7 +1229,7 @@
       descEn:n+' questions · Cycle',
       // Ability genes only. Where this session sits in the content tree travels
       // in moduleId / unitId / levelId — see buildRadarContext().
-      rootGeneIds:['RG.LOGIC.COMPARISON.BASIC'],
+      rootGeneIds:genes,
       questions:questions
     }];
   }
@@ -632,6 +1241,7 @@
     // page permanently blank. templates-data.js must stay content-identical to
     // templates.json — metadata/validate.js still fetches templates.json
     // directly and does not read this file.
+    CmpEngine.setSessionPolicy({ size: SESSION_SIZE, maxActivities: MAX_ACTIVITIES_PER_SESSION });
     _showLevelSelector((window.CMP_TEMPLATES_DATA && window.CMP_TEMPLATES_DATA.templates) || []);
   }
 
@@ -699,19 +1309,18 @@
   function _launchGame(levelId, templates) {
     var selected = CmpEngine.getSessionTemplates(levelId, templates);
 
-    // Interaction templates run one at a time through ActivityRunner; puzzle
-    // templates run as a batch through shell.createGame. We only need to find
-    // the first interaction here: getSessionTemplates() resumes from whatever is
-    // still unanswered, so draining the interactions one by one and re-entering
-    // this function is enough — the puzzle list never has to be carried across.
-    var firstInteraction = selected.filter(function (tpl) {
-      return tpl.runtime && tpl.runtime !== 'puzzle';
-    })[0];
+    // Single-choice items run first as one batch through shell.createGame;
+    // activities (at most MAX_ACTIVITIES_PER_SESSION) follow one at a time
+    // through ActivityRunner, so an activity is never the first item.
+    // getSessionTemplates() resumes from whatever is still unanswered, so
+    // re-entering this function after each step is enough.
+    var hasPuzzle = selected.some(function (tpl) { return !CmpEngine.isActivity(tpl); });
+    var firstActivity = selected.filter(CmpEngine.isActivity)[0];
 
-    if (firstInteraction) {
-      _launchInteraction(firstInteraction, levelId, templates);
-    } else {
+    if (hasPuzzle) {
       _launchPuzzleSession(levelId, templates);
+    } else if (firstActivity) {
+      _launchInteraction(firstActivity, levelId, templates);
     }
   }
 
@@ -738,7 +1347,7 @@
     // A run that produced no rounds carries no evidence about the child; report
     // one unit of work rather than a zero that the reader would discard.
     var rounds = isMini ? (p.rounds || 0) : 0;
-    var radar = buildRadarContext(tpl.level || levelId, tpl.type);
+    var radar = buildRadarContext(tpl.level || levelId, tpl);
 
     shell.report({
       gameId:    SOURCE_GAME_ID,
@@ -753,7 +1362,7 @@
       // No interaction runtime has a hint affordance today (the templates carry
       // hint text, nothing counts its use), so 0 is a fact, not a placeholder.
       hintsUsed: 0,
-      geneIds:   registerRootGenes({ unit: tpl }),
+      geneIds:   genesFor(tpl),
       shell:     'shell-1',
       activityRuntime: isMini ? 'mini' : 'interaction',
       activityMode:    attempt.mode || tpl.runtime || tpl.mode || null,
@@ -772,7 +1381,7 @@
 
   // Run a single long-form template (sort / match / group / fit / mini) via ActivityRunner
   function _launchInteraction(tpl, levelId, templates) {
-    var variant = generateQuestion(tpl);
+    var variant = _freshQuestion(tpl);
     if (!variant) {
       // Broken template definition. Drop it out of the cycle instead of
       // re-entering _launchGame with the same unanswered template forever.
@@ -807,7 +1416,7 @@
             // Interaction and mini activities never pass through
             // getReportContext(), so the radar coordinates have to be attached
             // here or these attempts land on the radar with no depth at all.
-            radar:   buildRadarContext(tpl.level || levelId, tpl.type)
+            radar:   buildRadarContext(tpl.level || levelId, tpl)
           });
 
         _reportInteraction(tpl, levelId, attempt, correct);
@@ -948,22 +1557,28 @@
       subtitle:{zh:'观察、判断、比较',en:'Observe, Judge, Compare'},
       // debug:false → real progression (unit 1 open, the rest unlock on pass).
       // Append ?debug=1 to the URL when testing later units.
-      passScore:3, debug:false, units:units,
+      passScore:Math.max(1, Math.ceil(units[0].questions.length * 0.75)), debug:false, units:units,
       renderSequence:renderSequence, renderOption:renderOption,
       checkAnswer:checkAnswer, getVoiceText:getVoiceText,
       registerRootGenes:registerRootGenes, onAnswer:onAnswer,
       getReportContext:function(ctx){
         // A puzzle session is a mixed batch, so the batch is labelled with its
-        // dominant comparison type and the level's own axis position (no
+        // dominant structure and the level's own axis position (no
         // per-template refinement — that only makes sense per attempt).
-        var types = Object.keys(_sessionTemplateMap).map(function (id) {
-          return COMPARISON_TYPE_OF[_sessionTemplateMap[id].type] || null;
-        });
+        var tpls = Object.keys(_sessionTemplateMap).map(function (id) { return _sessionTemplateMap[id]; });
+        function uniq(key) {
+          return tpls.map(function (t) { return t[key]; }).filter(function (v, i, a) {
+            return v && a.indexOf(v) === i;
+          });
+        }
+        var dominant = _dominant(tpls.map(function (t) { return t.structure; }));
         return buildRadarContext(levelId, null, {
-          comparisonType: _dominant(types),
-          comparisonTypes: types.filter(Boolean).filter(function (v, i, a) {
-            return a.indexOf(v) === i;
-          }),
+          comparisonType:  dominant,
+          structure:       dominant,
+          comparisonTypes: uniq('structure'),
+          structures:      uniq('structure'),
+          carriers:        uniq('carrier'),
+          taskTypes:       uniq('task'),
           activityRuntime: 'puzzle'
         });
       }
@@ -1002,10 +1617,27 @@
       injected = true;
       observer.disconnect();
 
+      var acts = document.getElementById('s1-racts');
+
+      // Activities still pending in this session: carry on instead of closing it.
+      if (CmpEngine.getSessionRemaining(levelId) > 0) {
+        if (!acts) return;
+        while (acts.firstElementChild !== acts.lastElementChild) acts.removeChild(acts.firstElementChild);
+        var goBtn = document.createElement('button');
+        goBtn.className = 's1-abtn s1-primary';
+        goBtn.innerHTML = '<span class="zh">继续：动手活动 →</span><span class="en">Continue: activities →</span>';
+        _applyLangVisibility(goBtn);
+        goBtn.addEventListener('click', function() {
+          _tearDownShell();
+          _launchGame(levelId, templates);
+        });
+        acts.insertBefore(goBtn, acts.lastElementChild);
+        return;
+      }
+
       // Finalise session and get cycle status
       var sr = CmpEngine.completeSession(levelId);
 
-      var acts = document.getElementById('s1-racts');
       if (!acts) return;
 
       // Rewrite retry button — it will relaunch with fresh questions
@@ -1019,7 +1651,7 @@
         });
       }
 
-      _injectCycleProgress(levelId, sr, acts);
+      _injectCycleProgress(levelId, sr, acts, nextLevel);
 
       if (sr.cycleComplete) {
         // Cycle done — show upgrade or retry-cycle; no auto-advance
@@ -1048,7 +1680,7 @@
     observer.observe(resultEl, { attributes: true, attributeFilter: ['class'] });
   }
 
-  function _injectCycleProgress(levelId, sr, acts) {
+  function _injectCycleProgress(levelId, sr, acts, nextLevel) {
     var cycleComplete = sr.cycleComplete;
     var doneCount  = sr.doneCount || 0;
     var totalCount = sr.totalCount || 1;
@@ -1060,8 +1692,16 @@
       barPct  = accuracyPct;
       color   = sr.unlocked ? '#22c55e' : '#f59e0b';
       labelZh = levelId + ' 准确率'; labelEn = levelId + ' Accuracy';
-      msgZh   = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
-      msgEn   = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
+      if (sr.unlocked && !nextLevel) {
+        // Terminal level (G2) mastered: there is nowhere left to "upgrade"
+        // to, so say so explicitly instead of just falling silent — the
+        // retry button still works, this only adds the missing acknowledgment.
+        msgZh = '🏆 K1-G2 全部内容已完成！' + levelId + ' 准确率 ' + accuracyPct + '%，可以继续练习巩固。';
+        msgEn = '🏆 All of K1-G2 complete! ' + levelId + ' accuracy ' + accuracyPct + '% — keep practicing if you like.';
+      } else {
+        msgZh = sr.unlocked ? levelId + ' 已掌握！准确率 ' + accuracyPct + '% 🎉' : '准确率 ' + accuracyPct + '%，建议再来一轮（需要 ≥80%）';
+        msgEn = sr.unlocked ? levelId + ' mastered! ' + accuracyPct + '% 🎉' : 'Accuracy ' + accuracyPct + '%, try again (need ≥80%)';
+      }
     } else {
       barPct  = pct;
       color   = '#3b82f6';

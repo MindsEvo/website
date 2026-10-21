@@ -64,6 +64,13 @@ For `comparison.json`, the first release baseline is:
 3. An 8-level map from age 4-5 to primary graduation.
 4. A small number of representative implemented examples mapped to existing games.
 
+Since comparison.json v0.6.0 the type tree above is superseded by the
+three-dimension model (structure × carrier × task, `designModel` /
+`typeTree` / `carriers` / `taskTypes` / `taskMatrix`): the typeTree now lists
+seven relation structures (direct, equivalence, interference, difference,
+mediated, transitive, multi_criteria), and quantity / spatial_visual /
+temporal survive only as a carrier's `domain`.
+
 ## 5a. levelMap Implementation Cross-Reference (v0.2.0)
 
 `levelMap` uses the curriculum ladder `L1`–`L8` (keyed by age). Games use their own

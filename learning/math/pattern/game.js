@@ -33,50 +33,32 @@
   // levelMap gradeCodes (L3→G1, L4→G2).
   var LEVEL_GRADE = { K1: 'K1', K2: 'K2', G1: 'G1', G2: 'G2' };
 
-  // Unit id → levelId. Follows data.js's own header:
-  //   units 1-3 = counting / skip-counting / fives-and-tens  → G1
-  //   units 4-6 = decreasing / multiplying / story transfer   → G2
-  //   unit 7    = AB color repetition (no numerals)           → K1
-  //   unit 8    = up/down direction oscillation (alternating) → G1
-  //   unit 9    = repetition × discover (candidate groups)    → K1
-  //   unit 10   = alternating × discover (candidate groups)   → G1
-  //   unit 11   = repetition × repair (locate + fix)          → K2
-  //   unit 12   = alternating × repair (locate + fix)         → G1
-  var UNIT_LEVEL = { '1': 'G1', '2': 'G1', '3': 'G1',
-                     '4': 'G2', '5': 'G2', '6': 'G2',
-                     '7': 'K1', '8': 'G1',
-                     '9': 'K1', '10': 'G1',
-                     '11': 'K2', '12': 'G1' };
+  // One generated unit per grade (unit id === levelId). Content comes from
+  // PT_GEN (generator.js): structure x carrier x task per grade slot.
+  var UNIT_LEVEL = { 'K1-repeat': 'K1', 'K1-find': 'K1', 'K1-carrier': 'K1',
+                     'K2-unit': 'K2', 'K2-grow': 'K2', 'K2-letter': 'K2', 'K2-fix': 'K2',
+                     'G1-two': 'G1', 'G1-space': 'G1', 'G1-change': 'G1', 'G1-table': 'G1', 'G1-num': 'G1',
+                     'G2-compound': 'G2', 'G2-change': 'G2', 'G2-io': 'G2', 'G2-table': 'G2', 'G2-explain': 'G2', 'G2-num': 'G2' };
 
-  // Unit id → the rule the unit trains. Finer grained than the typeTree on
-  // purpose: the radar needs the typeTree id, a teacher reading the record
-  // wants to know it was ×2 rather than +5.
-  var UNIT_RULE = { '1': 'count_up',   '2': 'skip_count', '3': 'fives_tens',
-                    '4': 'count_down', '5': 'doubling',   '6': 'story',
-                    '7': 'ab_repeat',  '8': 'updown_alternate',
-                    '9': 'ab_repeat_discover', '10': 'updown_alternate_discover',
-                    '11': 'ab_repeat_repair', '12': 'updown_alternate_repair' };
-
-  // Rule type → pattern.json typeTree id (the STRUCTURE dimension). Every rule
-  // shipped today lands in `numerical`, `repetition` or `alternating` —
-  // spatial, transformation, relational and growth get entries here when
-  // content for them actually ships.
-  //
-  // v0.2.0 renamed `progression` → `numerical` and folded the old `structure`
-  // (number tables) into it; both were "the change lives in the numeral".
+  // Rule type (what a generated question declares as ruleType) → pattern.json
+  // typeTree id (the STRUCTURE dimension). The older activity samples (match /
+  // create) report their structure directly.
   var PATTERN_TYPE_OF = {
-    count_up:   'numerical',
-    skip_count: 'numerical',
-    fives_tens: 'numerical',
-    count_down: 'numerical',
-    doubling:   'numerical',
-    story:      'numerical',
-    ab_repeat:  'repetition',
-    updown_alternate: 'alternating',
-    ab_repeat_discover:        'repetition',
-    updown_alternate_discover: 'alternating',
-    ab_repeat_repair:          'repetition',
-    updown_alternate_repair:   'alternating'
+    cycle:           'repetition',
+    dual_attr:       'repetition',
+    state_alternate: 'alternating',
+    alt_diff:        'alternating',
+    growth_count:    'growth',
+    growth_size:     'growth',
+    growth_cycle:    'growth',
+    spatial_strip:   'spatial',
+    table_rc:        'spatial',
+    table_add:       'spatial',
+    calendar:        'spatial',
+    transform_parts:    'transformation',
+    transform_compound: 'transformation',
+    num_progress:    'numerical',
+    io_rule:         'relational'
   };
 
   // Structure id → the rootGenes an item of that structure reports.
@@ -92,8 +74,12 @@
   // RG.PATTERN.SPATIAL.RELATION — omitted until now, which this fixes.
   var STRUCTURE_GENES = {
     numerical:   ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION'],
-    repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE'],
-    alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE', 'RG.PATTERN.SPATIAL.RELATION']
+    repetition:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE', 'RG.PATTERN.MOTION.SEQUENCE', 'RG.PATTERN.TEMPORAL.SEQUENCE'],
+    alternating: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.VISUAL.COLOR', 'RG.PATTERN.VISUAL.SEQUENCE', 'RG.PATTERN.SPATIAL.RELATION'],
+    growth:      ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION', 'RG.PATTERN.VISUAL.SIZE'],
+    spatial:     ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.SPATIAL.RELATION', 'RG.PATTERN.QUANTITY.RELATION'],
+    transformation: ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.TRANSFORMATION.RULE'],
+    relational:  ['RG.PATTERN.SEQUENCE.BASIC', 'RG.PATTERN.QUANTITY.RELATION', 'RG.MODELING.EQUATION.RELATION']
   };
 
   // Structure id → the carrier every item of that structure uses
@@ -102,7 +88,7 @@
   // context builder instead of this single-carrier map; its puzzle content
   // (Unit 8, SPEC-alternating-continue-g1 / -complete-g1) is single-carrier
   // (direction arrows / day-night state) and goes through this map normally.
-  var CARRIER_OF = { numerical: 'numeral', repetition: 'color', alternating: 'direction' };
+  var CARRIER_OF = { numerical: 'numeral', repetition: 'color', alternating: 'direction', growth: 'count', spatial: 'position', transformation: 'object', relational: 'numeral' };
 
   // Items shown in one run. The bank is bigger than a session on purpose: 8
   // keeps a sitting short for a 6-8 year old and keeps testing fast. Mirrors
@@ -144,7 +130,7 @@
    * radar that no content backs. What does move is set per ITEM below, from the
    * item itself.
    */
-  function difficultyAxisFor(levelId, ruleType, direction) {
+  function difficultyAxisFor(levelId, ruleType, direction, carrier, explain) {
     var base = {
       K1: { object_complexity: 'concrete', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
@@ -152,10 +138,10 @@
       K2: { object_complexity: 'concrete', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'action', transfer_complexity: 'within-domain' },
-      G1: { object_complexity: 'symbolic', rule_complexity: 'single',
+      G1: { object_complexity: 'concrete', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'question', transfer_complexity: 'within-domain' },
-      G2: { object_complexity: 'symbolic', rule_complexity: 'single',
+      G2: { object_complexity: 'concrete', rule_complexity: 'single',
             inference_direction: 'forward', task_complexity: 'continue',
             language_complexity: 'question', transfer_complexity: 'within-domain' }
     }[levelId];
@@ -163,12 +149,15 @@
 
     var axis = Object.assign({}, base);
 
-    // A story item wraps the same rule in a life situation: that is a carrier
-    // change (cross-domain) stated in a full sentence (compound).
-    if (ruleType === 'story') {
-      axis.transfer_complexity = 'cross-domain';
-      axis.language_complexity = 'compound';
-    }
+    // Rule complexity follows the rule the question declares; numerals are the
+    // only symbolic carrier here.
+    if (ruleType === 'dual_attr' || ruleType === 'growth_cycle') { axis.rule_complexity = 'compound'; }
+    else if (ruleType === 'state_alternate' || ruleType === 'alt_diff') { axis.rule_complexity = 'alternating'; }
+    else if (ruleType === 'io_rule' || ruleType === 'transform_compound') { axis.rule_complexity = 'two_step'; }
+    if (carrier === 'numeral' || carrier === 'letter' || carrier === 'table') { axis.object_complexity = 'symbolic'; }
+    if (ruleType === 'table_rc' || ruleType === 'calendar') { axis.rule_complexity = 'two_step'; }
+    else if (ruleType === 'table_add') { axis.rule_complexity = 'compound'; }
+    if (explain) { axis.language_complexity = 'explain'; }
 
     // Direction comes from the data, not from the grade. Written as explicit
     // branches so the value is visible to validate.js as a literal.
@@ -248,10 +237,10 @@
   }
 
   /** The record's `context`. One shape, one place, so the radar never guesses. */
-  function buildRadarContext(unitId, direction, extra) {
-    var levelId  = UNIT_LEVEL[unitId] || null;
-    var ruleType = UNIT_RULE[unitId]  || null;
-    var structure = ruleType ? (PATTERN_TYPE_OF[ruleType] || null) : null;
+  function buildRadarContext(levelId, rep, direction, extra) {
+    var ruleType  = (rep && rep.ruleType) || null;
+    var structure = (rep && rep.structure) || (ruleType ? (PATTERN_TYPE_OF[ruleType] || null) : null);
+    var carrier   = (rep && rep.carrier) || CARRIER_OF[structure] || null;
     var ctx = {
       moduleId:    MODULE_ID,
       moduleType:  MODULE_TYPE,
@@ -259,10 +248,10 @@
       gradeCode:   LEVEL_GRADE[levelId] || null,
       patternType: structure,
       structure:   structure,
-      carrier:     CARRIER_OF[structure] || null,
+      carrier:     carrier,
       taskType:    direction === 'discover' ? 'discover' : (direction === 'repair' ? 'repair' : (direction ? (TASK_OF[direction] || null) : null)),
       ruleType:    ruleType,
-      difficultyAxis: difficultyAxisFor(levelId, ruleType, direction),
+      difficultyAxis: difficultyAxisFor(levelId, ruleType, direction, carrier, rep && rep.explain),
       sourceGameId: SOURCE_GAME_ID
     };
     return extra ? Object.assign(ctx, extra) : ctx;
@@ -273,12 +262,7 @@
     return (STRUCTURE_GENES[structure] || []).slice();
   }
 
-  /**
-   * Options render in declared order (shell.js does not shuffle), and in the
-   * static bank the correct answer sits third in 42 of 60 items. A child who
-   * notices that stops reading the sequence. So shuffle a COPY per session —
-   * MP_DATA itself stays pristine, which is what test.html audits.
-   */
+  /** Shuffle a copy (used by the match activities). */
   function _shuffled(list) {
     var a = list.slice();
     for (var i = a.length - 1; i > 0; i--) {
@@ -305,17 +289,25 @@
     return keep.map(function (i) { return questions[i]; });
   }
 
-  function buildUnits(source) {
-    return (source || []).map(function (unit) {
-      var copy = Object.assign({}, unit);
-      copy.gradeCode = LEVEL_GRADE[UNIT_LEVEL[String(unit.id)]] || null;
-      copy.questions = _pickSession(unit.questions).map(function (q) {
-        var qc = Object.assign({}, q);
-        qc.options = _shuffled(q.options);
-        return qc;
-      });
-      return copy;
+  var _units = {};
+
+  function buildUnits(levelId) {
+    return PT_GEN.GRADE_UNITS[levelId].map(function (d) {
+      var id = levelId + '-' + d.key;
+      var u = { id: id, icon: d.icon, gradeCode: LEVEL_GRADE[levelId],
+        nameZh: d.zh, nameEn: d.en, descZh: d.dzh, descEn: d.den,
+        questions: PT_GEN.generate(levelId, SESSION_SIZE, d.key) };
+      _units[id] = u;
+      return u;
     });
+  }
+  // getReportContext runs right after the result screen is built, so refill on
+  // the next tick — the report must describe the questions just seen.
+  function refillUnit(unitId) {
+    setTimeout(function () {
+      var u = _units[unitId];
+      if (u) u.questions = PT_GEN.generate(UNIT_LEVEL[unitId], SESSION_SIZE, unitId.split('-')[1]);
+    }, 0);
   }
 
   // Exposed for test.html (and for the future window.*_CONTRACT migration in
@@ -328,7 +320,6 @@
     CARRIER_OF: CARRIER_OF,
     LEVEL_GRADE: LEVEL_GRADE,
     UNIT_LEVEL: UNIT_LEVEL,
-    UNIT_RULE: UNIT_RULE,
     PATTERN_TYPE_OF: PATTERN_TYPE_OF,
     TASK_OF: TASK_OF,
     STRUCTURE_GENES: STRUCTURE_GENES,
@@ -342,419 +333,281 @@
     // Exposed so test.html can drive the grade-selector's shell.createGame
     // call directly (per grade) instead of clicking through #mp-lvl-selector.
     _launchGrade: _launchGrade,
-    // Exposed so test.html can audit the match sample's structural legitimacy
-    // (§8.1) without driving ActivityRunner/MatchRuntime through a real DOM.
-    matchTemplate: function () { return _matchTemplate(); },
-    matchVariant: function () { return _matchVariant(); },
-    repMatchTemplate: function () { return _repMatchTemplate(); },
-    repMatchVariant: function () { return _repMatchVariant(); },
-    repCreateTemplate: function () { return _repCreateTemplate(); },
-    repCreateVariant: function () { return _repCreateVariant(); },
-    altCreateTemplate: function () { return _altCreateTemplate(); },
-    altCreateVariant: function () { return _altCreateVariant(); }
+    activities: ACTIVITIES
   };
 
-  /**
-   * alternating × match (G2) — the one non-puzzle sample in this module.
-   * shell.createGame() has no hook for launching a non-puzzle activity, so
-   * this bypasses it: comparison's ActivityRunner + MatchRuntime are reused
-   * as-is (see match-runtime.js's compareKey/seqMode generalization), driven
-   * from a button injected into the shell-rendered home header. Hand-authored
-   * here rather than pooled in data.js/templates.json — it is a single fixed
-   * activity, not a session drawn from a bank.
-   */
-  function _matchTemplate() {
-    return {
-      id:         'pat-g2-match-altsig-001',
-      level:      'G2',
-      type:       'alternating',
-      mode:       'match',
-      runtime:    'match',
-      compareKey: 'signature',
-      instrZh:    '把颜色规律拖到结构相同的图形规律上 →',
-      instrEn:    'Drag each color pattern onto the shape pattern with the same structure →'
-    };
-  }
+  // ── Drag activities (match / create) ─────────────────────────────────────
+  // shell.createGame() has no hook for non-puzzle activities, so these launch
+  // comparison's ActivityRunner (MatchRuntime / SortRuntime) from ONE "🎮"
+  // button in the grade page header, which opens a small menu. Every variant
+  // is generated fresh at launch (random tokens, shapes, rules).
 
-  // 3 left (color) × 3 right (shape) items, each pair sharing a structural
-  // signature (ABAB / AABAAB / ABBABB) and no emoji vocabulary in common —
-  // per SPEC-alternating-match-g2.md, the child must compare structure, not
-  // literal glyphs.
-  function _matchVariant() {
-    var leftItems = [
-      { id: 'L0', emoji: '🔴🔵🔴🔵',     signature: 'ABAB',    nameZh: '颜色规律', nameEn: 'Color pattern' },
-      { id: 'L1', emoji: '🔴🔴🔵🔴🔴🔵', signature: 'AABAAB', nameZh: '颜色规律', nameEn: 'Color pattern' },
-      { id: 'L2', emoji: '🔴🔵🔵🔴🔵🔵', signature: 'ABBABB', nameZh: '颜色规律', nameEn: 'Color pattern' }
-    ];
-    var rightSlots = [
-      { id: 'R0', emoji: '⚪🔷⚪🔷',     signature: 'ABAB',    nameZh: '形状规律', nameEn: 'Shape pattern' },
-      { id: 'R1', emoji: '⚪⚪🔷⚪⚪🔷', signature: 'AABAAB', nameZh: '形状规律', nameEn: 'Shape pattern' },
-      { id: 'R2', emoji: '⚪🔷🔷⚪🔷🔷', signature: 'ABBABB', nameZh: '形状规律', nameEn: 'Shape pattern' }
-    ];
-    return {
-      seqMode:    true,
-      compareKey: 'signature',
-      leftItems:  _shuffled(leftItems),
-      rightSlots: _shuffled(rightSlots),
-      variantId:  'pat-g2-match-altsig-001-v1'
-    };
-  }
+  function pick1(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function _tile(unit, n) { var o = []; for (var i = 0; i < n; i++) o.push(unit[i % unit.length]); return o; }
+  function _vid(id) { return id + '-' + Math.floor(Math.random() * 1e6); }
 
-  function _launchMatchActivity() {
-    ActivityRunner.launch(_matchTemplate(), _matchVariant(), {
-      levelId:    'G2',
-      onComplete: _reportMatchActivity,
-      onBack:     function () {}
+  var AC_COLOR = ['🔴', '🔵', '🟢', '🟣'];
+  var AC_OBJ   = ['🍀', '🦋', '🐳', '🍇'];
+
+  // match two vocabularies by structure: left colour runs, right picture runs
+  function _sigMatch(shapes) {
+    var chosen = [], seen = {};
+    _shuffled(shapes).forEach(function (sh) {
+      var n = sh.length * 2, sig = structureSignature(sh.split('').concat(sh.split('')));
+      if (!seen[sig] && chosen.length < 3) { seen[sig] = 1; chosen.push({ sh: sh, n: n, sig: sig }); }
     });
-  }
-
-  /**
-   * One Attempt, reported the same way comparison's _reportInteraction
-   * flattens an interaction result — this activity never passes through
-   * shell.createGame()/getReportContext(), so the radar coordinates have to
-   * be attached here or the attempt is invisible to it.
-   */
-  function _reportMatchActivity(attempt) {
-    if (!shell || typeof shell.report !== 'function') return;
-    var context = {
-      moduleId:       MODULE_ID,
-      moduleType:     MODULE_TYPE,
-      levelId:        'G2',
-      gradeCode:      'G2',
-      patternType:    'alternating',
-      structure:      'alternating',
-      carrier:        null,
-      carriers:       ['color', 'shape'],
-      taskType:       'match',
-      ruleType:       null,
-      difficultyAxis: difficultyAxisFor('G2', null, 'forward'),
-      sourceGameId:   SOURCE_GAME_ID
-    };
-    shell.report({
-      gameId:     SOURCE_GAME_ID,
-      unitId:     'alt-match',
-      templateId: attempt.templateId,
-      variantId:  attempt.variantId || null,
-      score:      attempt.result === 'correct' ? 1 : 0,
-      total:      1,
-      timeMs:     attempt.responseMs || 0,
-      hintsUsed:  0,
-      geneIds:    genesFor('alternating'),
-      shell:      'shell-1',
-      activityRuntime: 'interaction',
-      activityMode:    'match',
-      result:     attempt.result || null,
-      levelId:    'G2',
-      gradeCode:  'G2',
-      context:    context
-    });
-  }
-
-  // Add the match-activity trigger to the shell home header. #s1-home .s1-hdr
-  // is synchronously present once shell.createGame() returns (no
-  // MutationObserver needed — same idiom as comparison's
-  // _injectShellHomeBackButton).
-  function _injectMatchTrigger() {
-    var hdr = document.querySelector('#s1-home .s1-hdr');
-    if (!hdr || document.getElementById('mp-match-trigger')) return;
-    var btn = document.createElement('button');
-    btn.id = 'mp-match-trigger';
-    btn.innerHTML = '🧩';
-    btn.title = '交替规律配对 / Alternating pattern match';
-    btn.addEventListener('click', _launchMatchActivity);
-    hdr.insertBefore(btn, hdr.firstChild);
-  }
-
-  /**
-   * repetition × match (K2) — second non-puzzle sample, same runtime as
-   * alternating's G2 match activity (no runtime code changes: MatchRuntime's
-   * compareKey/seqMode generalization already covers this). Per
-   * SPEC-repetition-match-k2.md: signatures are AABB/ABC/AABBCC — the L2
-   * objective's repetition vocabulary — deliberately disjoint from
-   * alternating's ABAB/AABAAB/ABBABB set, and each taken to 2 full periods so
-   * isPeriodicSignature() holds (period strictly shorter than total length).
-   */
-  function _repMatchTemplate() {
+    function render(c, pool) {
+      var letters = [], m = _shuffled(pool);
+      c.sh.split('').forEach(function (l) { if (letters.indexOf(l) < 0) letters.push(l); });
+      return _tile(c.sh.split('').map(function (l) { return m[letters.indexOf(l)]; }), c.n).join('');
+    }
     return {
-      id:         'pat-k2-match-repsig-001',
-      level:      'K2',
-      type:       'repetition',
-      mode:       'match',
-      runtime:    'match',
-      compareKey: 'signature',
-      instrZh:    '把颜色规律拖到结构相同的图形规律上 →',
-      instrEn:    'Drag each color pattern onto the shape pattern with the same structure →'
+      seqMode: true, compareKey: 'signature',
+      leftItems:  _shuffled(chosen.map(function (c, i) { return { id: 'L' + i, emoji: render(c, AC_COLOR), signature: c.sig, nameZh: '颜色规律', nameEn: 'Colour pattern' }; })),
+      rightSlots: _shuffled(chosen.map(function (c, i) { return { id: 'R' + i, emoji: render(c, AC_OBJ), signature: c.sig, nameZh: '图案规律', nameEn: 'Picture pattern' }; }))
     };
   }
-
-  // 3 left (color) × 3 right (shape) items, each pair sharing a structural
-  // signature (AABB / ABC / AABBCC) and no emoji vocabulary in common —
-  // per SPEC-repetition-match-k2.md, the child must compare structure, not
-  // literal glyphs.
-  function _repMatchVariant() {
-    var leftItems = [
-      { id: 'L0', emoji: '🔴🔴🔵🔵🔴🔴🔵🔵',         signature: 'AABBAABB',       nameZh: '颜色规律', nameEn: 'Color pattern' },
-      { id: 'L1', emoji: '🔴🔵🟡🔴🔵🟡',             signature: 'ABCABC',         nameZh: '颜色规律', nameEn: 'Color pattern' },
-      { id: 'L2', emoji: '🔴🔴🔵🔵🟡🟡🔴🔴🔵🔵🟡🟡', signature: 'AABBCCAABBCC',   nameZh: '颜色规律', nameEn: 'Color pattern' }
-    ];
-    var rightSlots = [
-      { id: 'R0', emoji: '⚪⚪🔷🔷⚪⚪🔷🔷',         signature: 'AABBAABB',       nameZh: '形状规律', nameEn: 'Shape pattern' },
-      { id: 'R1', emoji: '⚪🔷🔺⚪🔷🔺',             signature: 'ABCABC',         nameZh: '形状规律', nameEn: 'Shape pattern' },
-      { id: 'R2', emoji: '⚪⚪🔷🔷🔺🔺⚪⚪🔷🔷🔺🔺', signature: 'AABBCCAABBCC',   nameZh: '形状规律', nameEn: 'Shape pattern' }
+  function _growMatch() {
+    var g = pick1(['🔵', '🟢', '🟣']), rules = _shuffled([['up1', 1, 1], ['down1', 5, -1], ['up2', 1, 2]]);
+    var ct = function (n) { var o = ''; for (var i = 0; i < n; i++) o += g; return o; };
+    var runs = rules.map(function (r, i) {
+      var v = [0, 1, 2].map(function (k) { return r[1] + r[2] * k; });
+      if (r[0] === 'down1') v = [v[0], v[1], v[2]].map(function (x, k) { return 3 - k + (Math.random() < 0.5 ? 0 : 1); });
+      return { id: i, sig: r[0], v: v };
+    });
+    return {
+      seqMode: true, compareKey: 'signature',
+      leftItems:  _shuffled(runs.map(function (r) { return { id: 'L' + r.id, emoji: r.v.map(ct).join(' '), signature: r.sig, nameZh: '图形规律', nameEn: 'Picture pattern' }; })),
+      rightSlots: _shuffled(runs.map(function (r) { return { id: 'R' + r.id, emoji: r.v.join('  '), signature: r.sig, nameZh: '数字规律', nameEn: 'Number pattern' }; }))
+    };
+  }
+  function _transMatch() {
+    var c = _shuffled(['🟥', '🟦', '🟩', '🟪']), a = c[0], b = c[1];
+    var runs = [
+      { sig: 'add',    left: a + ' ' + a + b + ' ' + a + b + b,       right: '➕ ➕ ➕', zh: '每次加一块',   en: 'Add one each time' },
+      { sig: 'remove', left: a + a + a + ' ' + a + a + ' ' + a,       right: '➖ ➖ ➖', zh: '每次拿走一块', en: 'Take one each time' },
+      { sig: 'alt',    left: a + ' ' + a + b + ' ' + a + b + a,       right: b + ' ' + a + ' ' + b, zh: '加的颜色轮流', en: 'Added colour takes turns' }
     ];
     return {
-      seqMode:    true,
-      compareKey: 'signature',
-      leftItems:  _shuffled(leftItems),
-      rightSlots: _shuffled(rightSlots),
-      variantId:  'pat-k2-match-repsig-001-v1'
+      seqMode: true, compareKey: 'signature',
+      leftItems:  _shuffled(runs.map(function (r, i) { return { id: 'L' + i, emoji: r.left, signature: r.sig, nameZh: '方块变化', nameEn: 'Block change' }; })),
+      rightSlots: _shuffled(runs.map(function (r, i) { return { id: 'R' + i, emoji: r.right, signature: r.sig, nameZh: r.zh, nameEn: r.en }; }))
     };
   }
-
-  function _launchRepMatchActivity() {
-    ActivityRunner.launch(_repMatchTemplate(), _repMatchVariant(), {
-      levelId:    'K2',
-      onComplete: _reportRepMatchActivity,
-      onBack:     function () {}
+  function _relMatch() {
+    var ks = { mul: pick1([2, 3, 5]), add: 2 + Math.floor(Math.random() * 8), sub: 2 + Math.floor(Math.random() * 6) };
+    var fn = { mul: function (x) { return x * ks.mul; }, add: function (x) { return x + ks.add; }, sub: function (x) { return x - ks.sub; } };
+    var txt = { mul: '× ' + ks.mul, add: '+ ' + ks.add, sub: '− ' + ks.sub };
+    var kinds = ['mul', 'add', 'sub'];
+    var items = kinds.map(function (k, i) {
+      var xs = _shuffled([3, 4, 5, 6, 7, 8, 9, 10, 12]).filter(function (x) { return k !== 'sub' || x > ks.sub; }).slice(0, 3);
+      return { id: i, k: k, ex: xs.map(function (x) { return x + '→' + fn[k](x); }).join('  ') };
     });
-  }
-
-  function _reportRepMatchActivity(attempt) {
-    if (!shell || typeof shell.report !== 'function') return;
-    var context = {
-      moduleId:       MODULE_ID,
-      moduleType:     MODULE_TYPE,
-      levelId:        'K2',
-      gradeCode:      'K2',
-      patternType:    'repetition',
-      structure:      'repetition',
-      carrier:        null,
-      carriers:       ['color', 'shape'],
-      taskType:       'match',
-      ruleType:       null,
-      difficultyAxis: difficultyAxisFor('K2', null, 'forward'),
-      sourceGameId:   SOURCE_GAME_ID
-    };
-    shell.report({
-      gameId:     SOURCE_GAME_ID,
-      unitId:     'rep-match',
-      templateId: attempt.templateId,
-      variantId:  attempt.variantId || null,
-      score:      attempt.result === 'correct' ? 1 : 0,
-      total:      1,
-      timeMs:     attempt.responseMs || 0,
-      hintsUsed:  0,
-      geneIds:    genesFor('repetition'),
-      shell:      'shell-1',
-      activityRuntime: 'interaction',
-      activityMode:    'match',
-      result:     attempt.result || null,
-      levelId:    'K2',
-      gradeCode:  'K2',
-      context:    context
-    });
-  }
-
-  // Second match trigger, same idiom as _injectMatchTrigger — a distinct
-  // button id/icon so both can coexist in the shell home header.
-  function _injectRepMatchTrigger() {
-    var hdr = document.querySelector('#s1-home .s1-hdr');
-    if (!hdr || document.getElementById('mp-rep-match-trigger')) return;
-    var btn = document.createElement('button');
-    btn.id = 'mp-rep-match-trigger';
-    btn.innerHTML = '🧷';
-    btn.title = '重复规律配对 / Repetition pattern match';
-    btn.addEventListener('click', _launchRepMatchActivity);
-    hdr.insertBefore(btn, hdr.firstChild);
-  }
-
-  /**
-   * repetition × create (K2) — third non-puzzle sample, reusing comparison's
-   * SortRuntime (see sort-runtime.js's targetOrder/targetSignature
-   * generalization: no runtime fork). Per SPEC-repetition-create-k2.md: the
-   * child drags 2 red + 2 blue beads into 4 slots so the RESULT's structure
-   * signature is "AABB" — same-color beads grouped in twos, in either order
-   * (RRBB or BBRR both satisfy it; RBRB/RBBR/BRRB/BRBR do not) — a genuine
-   * construction task, not "sort into one fixed order" like comparison's own
-   * ribbon sort.
-   */
-  function _repCreateTemplate() {
     return {
-      id:             'pat-k2-create-repsig-001',
-      level:          'K2',
-      type:           'repetition',
-      mode:           'create',
-      runtime:        'sort',
-      modeLabelZh:    '创造',
-      modeLabelEn:    'Create',
-      instrZh:        '把珠子排成"两个一样紧挨着"的规律 (AABB) →',
-      instrEn:        'Arrange the beads so each color makes a pair (AABB) →',
-      holdingLabelZh: '拖动珠子',
-      holdingLabelEn: 'Drag beads'
+      seqMode: true, compareKey: 'signature',
+      leftItems:  _shuffled(items.map(function (r) { return { id: 'L' + r.id, emoji: r.ex, signature: r.k, nameZh: '例子', nameEn: 'Examples' }; })),
+      rightSlots: _shuffled(items.map(function (r) { return { id: 'R' + r.id, emoji: txt[r.k], signature: r.k, nameZh: '规则', nameEn: 'Rule' }; }))
     };
   }
-
-  function _repCreateVariant() {
+  function _spatialMatch() {
+    var f = pick1(['🐸', '🔵', '🟢', '🟣']), e = '⬜';
+    var cell = function (k, n) { var o = ''; for (var i = 0; i < n; i++) o += (i === k ? f : e); return o; };
+    var runs = [
+      { sig: 'step',  left: [0, 1, 2].map(function (k) { return cell(k, 3); }).join(' '),       right: '➡️ ➡️',     zh: '一直向右', en: 'Keep going right' },
+      { sig: 'swing', left: [0, 1, 0, 1].map(function (k) { return cell(k, 2); }).join(' '),    right: '➡️ ⬅️ ➡️', zh: '左右来回', en: 'Back and forth' },
+      { sig: 'loop',  left: [0, 1, 2, 0].map(function (k) { return cell(k, 3); }).join(' '),    right: '➡️ ➡️ ⏮️', zh: '走一圈回起点', en: 'Round and back to start' }
+    ];
     return {
-      targetSignature: 'AABB',
-      items: [
-        { id: 'C0', token: 'red',  emoji: '🔴' },
-        { id: 'C1', token: 'red',  emoji: '🔴' },
-        { id: 'C2', token: 'blue', emoji: '🔵' },
-        { id: 'C3', token: 'blue', emoji: '🔵' }
-      ],
-      variantId: 'pat-k2-create-repsig-001-v1'
+      seqMode: true, compareKey: 'signature',
+      leftItems:  _shuffled(runs.map(function (r, i) { return { id: 'L' + i, emoji: r.left, signature: r.sig, nameZh: '位置规律', nameEn: 'Position pattern' }; })),
+      rightSlots: _shuffled(runs.map(function (r, i) { return { id: 'R' + i, emoji: r.right, signature: r.sig, nameZh: r.zh, nameEn: r.en }; }))
     };
   }
 
-  function _launchRepCreateActivity() {
-    ActivityRunner.launch(_repCreateTemplate(), _repCreateVariant(), {
-      levelId:    'K2',
-      onComplete: _reportRepCreateActivity,
-      onBack:     function () {}
+  // create: arrange tokens so the RESULT has the target structure (any relabelling counts)
+  function _sigCreate(target, tokens, instrZh, instrEn) {
+    var counts = {}, items = [], n = 0;
+    target.split('').forEach(function (l) { counts[l] = (counts[l] || 0) + 1; });
+    Object.keys(counts).forEach(function (l, li) {
+      for (var i = 0; i < counts[l]; i++) items.push({ id: 'C' + (n++), token: 't' + li, emoji: tokens[li] });
+    });
+    return { targetSignature: target, items: _shuffled(items), instrZh: instrZh, instrEn: instrEn };
+  }
+  function _repCreateK1() {
+    var c = _shuffled(AC_COLOR);
+    return _sigCreate('ABAB', [c[0], c[1]], '把珠子排成"一个换一个"的规律 (ABAB) →', 'Arrange the beads so the colours take turns (ABAB) →');
+  }
+  function _repCreateK2() {
+    var c = _shuffled(AC_COLOR);
+    return Math.random() < 0.5
+      ? _sigCreate('AABB', [c[0], c[1]], '把珠子排成"两个一样紧挨着"的规律 (AABB) →', 'Arrange the beads so each colour makes a pair (AABB) →')
+      : _sigCreate('AABBCC', [c[0], c[1], c[2]], '把珠子排成"每种颜色两个紧挨着"的规律 (AABBCC) →', 'Arrange the beads so each colour comes as a pair (AABBCC) →');
+  }
+  function _altCreateG2() {
+    var pair = pick1([['⬆️', '⬇️'], ['⬅️', '➡️'], ['☀️', '🌙'], ['🔴', '🔵']]);
+    return pick1([0, 1]) === 0
+      ? _sigCreate('ABABAB', pair, '把它们排成"一个换一个"的交替规律 (ABABAB) →', 'Arrange them so they alternate (ABABAB) →')
+      : _sigCreate('AABAAB', pair, '把它们排成"两个同样、一个不同"的规律 (AABAAB) →', 'Arrange them as two the same, one different, repeating (AABAAB) →');
+  }
+  function _spatialCreateG2() {
+    var set = pick1([['⬆️', '⏺️', '⬇️'], ['⬅️', '⏺️', '➡️']]);
+    return _sigCreate('ABCABC', set, '把它们排成"一轮一轮重复"的规律 (ABCABC) →', 'Arrange them as a three-step round that repeats (ABCABC) →');
+  }
+  function _growCreate() {
+    var g = pick1(['🔵', '🟢', '🟣']), down = Math.random() < 0.4, s = 1 + Math.floor(Math.random() * 2);
+    var mk = function (n) { var o = ''; for (var i = 0; i < n; i++) o += g; return o; };
+    var vals = [s, s + 1, s + 2, s + 3];
+    var items = _shuffled(vals.map(function (v) { return { id: 'V' + v, emoji: mk(v) }; }));
+    var order = vals.map(function (v) { return 'V' + v; }); if (down) order.reverse();
+    return { targetOrder: order, lowZh: down ? '多' : '少', lowEn: down ? 'Many' : 'Few', highZh: down ? '少' : '多', highEn: down ? 'Few' : 'Many',
+      items: items,
+      instrZh: down ? '把它们排成"一个比一个少"的规律 →' : '把它们排成"一个比一个多"的规律 →',
+      instrEn: down ? 'Arrange them so each has one fewer →' : 'Arrange them so each has one more →' };
+  }
+  function _numCreate() {
+    var step = pick1([5, 10, 20]), start = pick1([5, 10, 15]);
+    var vals = [0, 1, 2, 3].map(function (i) { return start + step * i; });
+    return { targetOrder: vals.map(function (v) { return 'N' + v; }), lowZh: '小', lowEn: 'Small', highZh: '大', highEn: 'Large',
+      items: _shuffled(vals.map(function (v) { return { id: 'N' + v, emoji: String(v) }; })),
+      instrZh: '把数字排成"每次加得一样多"的数列 →', instrEn: 'Arrange the numbers so each step adds the same amount →' };
+  }
+
+  var ACTIVITIES = {
+    K1: [{ id: 'k1-create-ab', mode: 'create', structure: 'repetition', carrier: 'color', icon: '📿', zh: '串珠子', en: 'String the beads', make: _repCreateK1 }],
+    K2: [{ id: 'k2-match-rep', mode: 'match', structure: 'repetition', carrier: 'color', icon: '🧷', zh: '颜色配图案', en: 'Colour to picture', make: function () { return _sigMatch(['AABB', 'ABC', 'AAB', 'ABB', 'AABC']); } },
+         { id: 'k2-create-rep', mode: 'create', structure: 'repetition', carrier: 'color', icon: '🎨', zh: '串珠子 (两个一组)', en: 'Beads in pairs', make: _repCreateK2 }],
+    G1: [{ id: 'g1-match-grow', mode: 'match', structure: 'growth', carrier: 'count', icon: '📈', zh: '图形配数字', en: 'Pictures to numbers', make: _growMatch },
+         { id: 'g1-create-grow', mode: 'create', structure: 'growth', carrier: 'count', icon: '🧱', zh: '排出增减', en: 'Order the growth', make: _growCreate }],
+    G2: [{ id: 'g2-match-alt', mode: 'match', structure: 'alternating', carrier: 'color', icon: '🧩', zh: '颜色配图案 (交替)', en: 'Colour to picture (turns)', make: function () { return _sigMatch(['ABAC', 'AABC', 'ABCB', 'AAB', 'ABB']); } },
+         { id: 'g2-create-alt', mode: 'create', structure: 'alternating', carrier: 'direction', icon: '↔️', zh: '排出交替', en: 'Build the turns', make: _altCreateG2 },
+         { id: 'g2-match-trans', mode: 'match', structure: 'transformation', carrier: 'object', icon: '🏗️', zh: '方块变化配说明', en: 'Block changes', make: _transMatch },
+         { id: 'g2-match-rel', mode: 'match', structure: 'relational', carrier: 'numeral', icon: '🔀', zh: '例子配规则', en: 'Examples to rule', make: _relMatch },
+         { id: 'g2-match-spatial', mode: 'match', structure: 'spatial', carrier: 'position', icon: '🗺️', zh: '位置配走法', en: 'Position to moves', make: _spatialMatch },
+         { id: 'g2-create-spatial', mode: 'create', structure: 'spatial', carrier: 'position', icon: '🧭', zh: '排出一轮一轮', en: 'Build the round', make: _spatialCreateG2 },
+         { id: 'g2-create-num', mode: 'create', structure: 'numerical', carrier: 'numeral', icon: '🔢', zh: '排出数列', en: 'Build the run', make: _numCreate }]
+  };
+
+  function _launchActivity(levelId, act) {
+    var v = act.make(), isMatch = act.mode === 'match';
+    var tpl = { id: 'pat-' + act.id, level: levelId, type: act.structure, mode: act.mode, runtime: isMatch ? 'match' : 'sort',
+      compareKey: isMatch ? 'signature' : undefined,
+      modeLabelZh: isMatch ? undefined : '创造', modeLabelEn: isMatch ? undefined : 'Create',
+      instrZh: v.instrZh || '把左边的拖到结构相同的一项上 →', instrEn: v.instrEn || 'Drag each one onto the item with the same structure →',
+      holdingLabelZh: '拖动', holdingLabelEn: 'Drag' };
+    if (isMatch && !v.instrZh) {
+      tpl.instrZh = '把左边的拖到变化方式相同的一项上 →';
+      tpl.instrEn = 'Drag each one onto the item that changes the same way →';
+    }
+    v.variantId = _vid(tpl.id);
+    ActivityRunner.launch(tpl, v, {
+      levelId: levelId, onBack: function () {},
+      onComplete: function (attempt) {
+        if (!shell || typeof shell.report !== 'function') return;
+        shell.report({
+          gameId: SOURCE_GAME_ID, unitId: act.id, templateId: attempt.templateId, variantId: attempt.variantId || null,
+          score: attempt.result === 'correct' ? 1 : 0, total: 1, timeMs: attempt.responseMs || 0, hintsUsed: 0,
+          geneIds: genesFor(act.structure), shell: 'shell-1', activityRuntime: 'interaction', activityMode: act.mode,
+          result: attempt.result || null, levelId: levelId, gradeCode: levelId,
+          context: { moduleId: MODULE_ID, moduleType: MODULE_TYPE, levelId: levelId, gradeCode: levelId,
+            patternType: act.structure, structure: act.structure, carrier: act.carrier, taskType: act.mode,
+            ruleType: null, difficultyAxis: difficultyAxisFor(levelId, null, 'forward', act.carrier), sourceGameId: SOURCE_GAME_ID }
+        });
+      }
     });
   }
 
-  function _reportRepCreateActivity(attempt) {
-    if (!shell || typeof shell.report !== 'function') return;
-    var context = {
-      moduleId:       MODULE_ID,
-      moduleType:     MODULE_TYPE,
-      levelId:        'K2',
-      gradeCode:      'K2',
-      patternType:    'repetition',
-      structure:      'repetition',
-      carrier:        'color',
-      taskType:       'create',
-      ruleType:       null,
-      difficultyAxis: difficultyAxisFor('K2', null, 'forward'),
-      sourceGameId:   SOURCE_GAME_ID
-    };
-    shell.report({
-      gameId:     SOURCE_GAME_ID,
-      unitId:     'rep-create',
-      templateId: attempt.templateId,
-      variantId:  attempt.variantId || null,
-      score:      attempt.result === 'correct' ? 1 : 0,
-      total:      1,
-      timeMs:     attempt.responseMs || 0,
-      hintsUsed:  0,
-      geneIds:    genesFor('repetition'),
-      shell:      'shell-1',
-      activityRuntime: 'interaction',
-      activityMode:    'create',
-      result:     attempt.result || null,
-      levelId:    'K2',
-      gradeCode:  'K2',
-      context:    context
-    });
-  }
-
-  function _injectRepCreateTrigger() {
-    var hdr = document.querySelector('#s1-home .s1-hdr');
-    if (!hdr || document.getElementById('mp-rep-create-trigger')) return;
-    var btn = document.createElement('button');
-    btn.id = 'mp-rep-create-trigger';
-    btn.innerHTML = '🎨';
-    btn.title = '重复规律创造 / Repetition pattern create';
-    btn.addEventListener('click', _launchRepCreateActivity);
-    hdr.insertBefore(btn, hdr.firstChild);
-  }
-
-  /**
-   * alternating × create (G2) — fourth non-puzzle sample, same SortRuntime
-   * signature-mode idiom as repetition's K2 create. Per
-   * SPEC-alternating-create-g2.md: the child drags 2 up + 2 down arrows into
-   * 4 slots so the result's signature is "ABAB" — true alternation (UDUD or
-   * DUDU), not two grouped runs (UUDD/DDUU) or any other arrangement.
-   */
-  function _altCreateTemplate() {
-    return {
-      id:             'pat-g2-create-altsig-001',
-      level:          'G2',
-      type:           'alternating',
-      mode:           'create',
-      runtime:        'sort',
-      modeLabelZh:    '创造',
-      modeLabelEn:    'Create',
-      instrZh:        '把箭头排成"一上一下交替"的规律 (ABAB) →',
-      instrEn:        'Arrange the arrows so they alternate up and down (ABAB) →',
-      holdingLabelZh: '拖动箭头',
-      holdingLabelEn: 'Drag arrows'
+  // Mini games are listed on the grade home, after the unit cards (shell.homeExtras).
+  function _homeExtras(levelId) {
+    return function (list) {
+      if (!ACTIVITIES[levelId]) return;
+      var head = document.createElement('div');
+      head.className = 'mp-gm-head';
+      head.innerHTML = '<span class="zh">🎮 小游戏</span><span class="en">🎮 Mini games</span>';
+      list.appendChild(head);
+      ACTIVITIES[levelId].forEach(function (a) {
+        var card = document.createElement('div');
+        card.className = 's1-card';
+        card.innerHTML = '<div class="s1-cicon">' + a.icon + '</div><div class="s1-cinfo"><div class="s1-cname"><span class="zh">' + a.zh + '</span><span class="en">' + a.en +
+          '</span></div></div><div class="s1-cstat"><span class="zh">' + (a.mode === 'match' ? '配对' : '创造') + '</span><span class="en">' + (a.mode === 'match' ? 'Match' : 'Create') + '</span></div>';
+        card.addEventListener('click', function () { _launchActivity(levelId, a); });
+        list.appendChild(card);
+      });
     };
   }
 
-  function _altCreateVariant() {
-    return {
-      targetSignature: 'ABAB',
-      items: [
-        { id: 'D0', token: 'up',   emoji: '⬆️' },
-        { id: 'D1', token: 'up',   emoji: '⬆️' },
-        { id: 'D2', token: 'down', emoji: '⬇️' },
-        { id: 'D3', token: 'down', emoji: '⬇️' }
-      ],
-      variantId: 'pat-g2-create-altsig-001-v1'
-    };
-  }
-
-  function _launchAltCreateActivity() {
-    ActivityRunner.launch(_altCreateTemplate(), _altCreateVariant(), {
-      levelId:    'G2',
-      onComplete: _reportAltCreateActivity,
-      onBack:     function () {}
-    });
-  }
-
-  function _reportAltCreateActivity(attempt) {
-    if (!shell || typeof shell.report !== 'function') return;
-    var context = {
-      moduleId:       MODULE_ID,
-      moduleType:     MODULE_TYPE,
-      levelId:        'G2',
-      gradeCode:      'G2',
-      patternType:    'alternating',
-      structure:      'alternating',
-      carrier:        'direction',
-      taskType:       'create',
-      ruleType:       null,
-      difficultyAxis: difficultyAxisFor('G2', null, 'forward'),
-      sourceGameId:   SOURCE_GAME_ID
-    };
-    shell.report({
-      gameId:     SOURCE_GAME_ID,
-      unitId:     'alt-create',
-      templateId: attempt.templateId,
-      variantId:  attempt.variantId || null,
-      score:      attempt.result === 'correct' ? 1 : 0,
-      total:      1,
-      timeMs:     attempt.responseMs || 0,
-      hintsUsed:  0,
-      geneIds:    genesFor('alternating'),
-      shell:      'shell-1',
-      activityRuntime: 'interaction',
-      activityMode:    'create',
-      result:     attempt.result || null,
-      levelId:    'G2',
-      gradeCode:  'G2',
-      context:    context
-    });
-  }
-
-  function _injectAltCreateTrigger() {
-    var hdr = document.querySelector('#s1-home .s1-hdr');
-    if (!hdr || document.getElementById('mp-alt-create-trigger')) return;
-    var btn = document.createElement('button');
-    btn.id = 'mp-alt-create-trigger';
-    btn.innerHTML = '🖍️';
-    btn.title = '交替规律创造 / Alternating pattern create';
-    btn.addEventListener('click', _launchAltCreateActivity);
-    hdr.insertBefore(btn, hdr.firstChild);
-  }
+  (function () {
+    var st = document.createElement('style');
+    st.textContent = [
+      '.mp-gm-head{font-size:15px;font-weight:900;color:#92400e;margin:14px 2px 2px;}'
+    ].join('');
+    document.head.appendChild(st);
+  })();
 
   // ── Grade level selector ───────────────────────────────────────────────────
   // Mirrors comparison's own K/G grade chooser (comparison/game.js
   // GRADE_LEVELS + _showLevelSelector): the child picks a grade card before
   // ever seeing a unit, instead of one flat list spanning K1 through G2.
+
+  // ── token rendering (generator.js token grammar) ──────────────────────────
+  function tokHtml(tok) {
+    if (tok === '?') return '<span class="mystery">?</span>';
+    var t = String(tok);
+    var m;
+    if ((m = /^sz:(.+):(\d)$/.exec(t))) return '<span class="mp-sz" style="font-size:' + (14 + Number(m[2]) * 9) + 'px">' + m[1] + '</span>';
+    if ((m = /^ct:(.+):(\d+)$/.exec(t))) {
+      var o = ''; for (var i = 0; i < Number(m[2]); i++) o += m[1];
+      return '<span class="mp-ct">' + o + '</span>';
+    }
+    if ((m = /^ps:(\d+):(\d+):(.+)$/.exec(t))) {
+      var cells = '';
+      for (var c = 0; c < Number(m[2]); c++) cells += '<i' + (c === Number(m[1]) ? ' class="on">' + m[3] : '>') + '</i>';
+      return '<span class="mp-ps">' + cells + '</span>';
+    }
+    if ((m = /^st:([A-Z]+)$/.exec(t))) {
+      var b = ''; for (var k = 0; k < m[1].length; k++) b += '<i class="b' + m[1].charAt(k) + '"></i>';
+      return '<span class="mp-st">' + b + '</span>';
+    }
+    if ((m = /^lt:(.+)$/.exec(t))) return '<span class="mp-lt">' + m[1] + '</span>';
+    if ((m = /^hd:(.+)$/.exec(t))) return '<span class="mp-hd">' + m[1] + '</span>';
+    if ((m = /^wd:(\d)$/.exec(t))) {
+      var D = [['日', 'Su'], ['一', 'Mo'], ['二', 'Tu'], ['三', 'We'], ['四', 'Th'], ['五', 'Fr'], ['六', 'Sa']][Number(m[1])];
+      return '<span class="mp-hd"><span class="zh">' + D[0] + '</span><span class="en">' + D[1] + '</span></span>';
+    }
+    return '<span>' + t + '</span>';
+  }
+  function gridHtml(q, tappable) {
+    return '<div class="mp-grid" style="grid-template-columns:repeat(' + q.grid.cols + ',minmax(34px,1fr))">' +
+      q.seq.map(function (tok, i) {
+        var head = /^(hd|wd):/.test(String(tok));
+        return '<div class="mp-gcell' + (head ? ' head' : '') + (tappable && !head ? ' mp-repair-item' : '') + '" data-i="' + i + '">' + tokHtml(tok) + '</div>';
+      }).join('') + '</div>';
+  }
+  (function () {
+    var st = document.createElement('style');
+    st.textContent = [
+      '.s1-seq,.mp-discover-group{background:#fff !important;}',
+      '.mp-sz{display:inline-block;line-height:1;vertical-align:middle;}',
+      '.mp-ct{display:inline-block;max-width:92px;font-size:18px;line-height:1.1;letter-spacing:0;word-break:break-all;vertical-align:middle;}',
+      '.mp-lt{display:inline-block;min-width:34px;padding:4px 8px;border-radius:10px;background:#fff;border:2px solid #3b82f6;color:#1d4ed8;font-weight:900;text-align:center;}',
+      '.mp-hd{font-weight:900;color:#7c3aed;}',
+      '.mp-grid{display:grid;gap:4px;width:100%;max-width:420px;}',
+      '.mp-gcell{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;background:#f1f5f9;font-size:22px;font-weight:800;letter-spacing:0;}',
+      '.mp-gcell.head{background:#ede9fe;font-size:16px;}',
+      '.mp-gcell.mp-repair-item{padding:0;}',
+      '.mp-ps{display:inline-flex;gap:2px;padding:3px;background:rgba(0,0,0,.08);border-radius:8px;vertical-align:middle;}',
+      '.mp-ps i{display:block;width:26px;height:26px;border-radius:5px;background:#fff;font-style:normal;font-size:20px;line-height:26px;text-align:center;}',
+      '.mp-ps i.on{background:#fef3c7;}',
+      '.mp-st{display:inline-flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;width:36px;min-height:96px;padding:3px;border-bottom:3px solid #92400e;vertical-align:bottom;}',
+      '.mp-st i{display:block;width:30px;height:13px;margin-top:1px;border-radius:3px;}',
+      '.mp-st i.bR{background:#ef4444;}.mp-st i.bB{background:#3b82f6;}.mp-st i.bG{background:#22c55e;}.mp-st i.bP{background:#8b5cf6;}',
+      '.s1-seq.mp-rows,.s1-seq.mp-explain{flex-direction:column;gap:8px;}',
+      '.mp-exrow{display:flex;align-items:flex-end;justify-content:center;gap:8px;flex-wrap:wrap;}',
+      '.mp-ask{font-size:15px;font-weight:800;color:#92400e;letter-spacing:0;text-align:center;}',
+      '.mp-row{display:flex;align-items:center;justify-content:center;gap:10px;font-size:26px;font-weight:800;}',
+      '.mp-arrow{color:#b45309;}'
+    ].join('');
+    document.head.appendChild(st);
+  })();
 
   var GRADE_LEVELS = [
     { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K',        descZh: '3–4岁 · 无需数字',  descEn: 'Age 3–4 · No numbers',  free: true  },
@@ -766,10 +619,6 @@
     { id: 'G5', badge: 'G5', nameZh: '五年级',        nameEn: 'Grade 5',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false },
     { id: 'G6', badge: 'G6', nameZh: '六年级',        nameEn: 'Grade 6',      descZh: '即将推出',          descEn: 'Coming Soon',           free: false }
   ];
-
-  function _unitsForLevel(levelId) {
-    return MP_DATA.units.filter(function (u) { return UNIT_LEVEL[String(u.id)] === levelId; });
-  }
 
   /**
    * Same idiom as _injectDiscoverStyles/_injectRepairStyles below: a small
@@ -844,7 +693,26 @@
     });
   }
 
+  // "⬅️" in the shell home header: tear the grade's shell down and return to
+  // the grade chooser (same idiom as comparison's _injectShellHomeBackButton).
+  function _injectHomeBackButton() {
+    var hdr = document.querySelector('#s1-home .s1-hdr');
+    if (!hdr || document.getElementById('mp-home-back')) return;
+    var btn = document.createElement('button');
+    btn.id = 'mp-home-back';
+    btn.innerHTML = '⬅️';
+    btn.title = '返回选级 / Back to grades';
+    btn.addEventListener('click', function () {
+      ['.s1-wrap', '#s1-transcript', '#s1-overlay'].forEach(function (sel) {
+        var el = document.querySelector(sel); if (el) el.remove();
+      });
+      _showLevelSelector();
+    });
+    hdr.insertBefore(btn, hdr.firstChild);
+  }
+
   function _launchGrade(levelId) {
+    var levelIdOfSession = levelId;
     shell.createGame({
     id:       SOURCE_GAME_ID,
     theme:    { primary: '#d97706', primary2: '#92400e' },   // amber
@@ -873,50 +741,59 @@
     // the selected grade is open from the start, same as comparison's own
     // reasoning for this flag.
     parallelUnits: true,
-    units: buildUnits(_unitsForLevel(levelId)),
+    units: buildUnits(levelId),
+    homeExtras: _homeExtras(levelId),
 
     renderSequence: function (q, container) {
+      container.classList.remove('mp-discover', 'mp-repair', 'mp-rows', 'mp-explain');
+      if (q.explain) {
+        container.classList.add('mp-explain');
+        var body = q.rows ? q.rows.map(function (r) { return '<div class="mp-row">' + tokHtml(r[0]) + ' <span class="mp-arrow">→</span> ' + tokHtml(r[1]) + '</div>'; }).join('')
+                          : '<div class="mp-exrow">' + q.seq.map(tokHtml).join(' ') + '</div>';
+        container.innerHTML = body + '<div class="mp-ask"><span class="zh">以下哪一个符合规律？</span><span class="en">Which one fits the pattern?</span></div>';
+        return;
+      }
       if (q.task === 'discover') {
-        container.classList.remove('mp-repair');
         container.classList.add('mp-discover');
         container.innerHTML = q.groups.map(function (g, i) {
-          var body = g.seq.map(function (tok) { return '<span>' + tok + '</span>'; }).join(' ');
-          return '<div class="mp-discover-group"><span class="mp-discover-num">' + (i + 1) + '</span>' + body + '</div>';
+          return '<div class="mp-discover-group"><span class="mp-discover-num">' + (i + 1) + '</span>' +
+            g.seq.map(tokHtml).join(' ') + '</div>';
+        }).join('');
+        return;
+      }
+      if (q.rows) {
+        container.classList.add('mp-rows');
+        container.innerHTML = q.rows.map(function (r) {
+          return '<div class="mp-row">' + tokHtml(r[0]) + ' <span class="mp-arrow">→</span> ' + tokHtml(r[1]) + '</div>';
         }).join('');
         return;
       }
       if (q.task === 'repair') {
-        container.classList.remove('mp-discover');
         container.classList.add('mp-repair');
-        container.innerHTML = q.seq.map(function (tok, i) {
-          return '<span class="mp-repair-item" data-i="' + i + '">' + tok + '</span>';
+        container.innerHTML = q.grid ? gridHtml(q, true) : q.seq.map(function (tok, i) {
+          return '<span class="mp-repair-item" data-i="' + i + '">' + tokHtml(tok) + '</span>';
         }).join(' ');
         Array.prototype.forEach.call(container.querySelectorAll('.mp-repair-item'), function (el) {
           if (Number(el.getAttribute('data-i')) === q._repairIndex) el.classList.add('mp-repair-selected');
           el.addEventListener('click', function () {
             q._repairIndex = Number(el.getAttribute('data-i'));
-            Array.prototype.forEach.call(container.querySelectorAll('.mp-repair-item'), function (s) {
-              s.classList.remove('mp-repair-selected');
+            Array.prototype.forEach.call(container.querySelectorAll('.mp-repair-item'), function (x) {
+              x.classList.remove('mp-repair-selected');
             });
             el.classList.add('mp-repair-selected');
           });
         });
         return;
       }
-      container.classList.remove('mp-discover');
-      container.classList.remove('mp-repair');
-      container.innerHTML = q.seq.map(function (n) {
-        return n === '?' ? '<span class="mystery">?</span>' : '<span>' + n + '</span>';
-      }).join(' ');
+      container.innerHTML = q.grid ? gridHtml(q, false) : q.seq.map(tokHtml).join(' ');
     },
     renderOption: function (opt, q) {
+      if (q && q.optText) return '<span class="zh">' + q.optText[opt][0] + '</span><span class="en">' + q.optText[opt][1] + '</span>';
       if (q && q.task === 'discover') {
         return shell.lang === 'zh' ? '第 ' + opt + ' 组' : 'Group ' + opt;
       }
-      return String(opt);
+      return tokHtml(opt);
     },
-    // Relaxed from Number(selected) === q.answer: the K1 repetition unit's
-    // answers are emoji strings, not numerals.
     checkAnswer: function (selected, q) {
       if (q.task === 'repair') {
         return q._repairIndex === q.brokenIndex && String(selected) === String(q.answer);
@@ -925,78 +802,57 @@
     },
 
     getVoiceText: function (q) {
-      if (q.task === 'discover') {
-        return shell.lang === 'zh' ? '看看这几组，哪一组是真的规律？'
-                                   : 'Look at each group — which one is a real pattern?';
+      var zh = shell.lang === 'zh';
+      if (q.explain) return zh ? '看这一排，以下哪一个符合规律？' : 'Look at this row — which one fits the pattern?';
+      if (q.task === 'discover') return zh ? '看看这几组，哪一组是真的规律？' : 'Look at each group — which one is a real pattern?';
+      if (q.task === 'repair') return zh ? '这排里有一个错了，先点出错的那个，再选出正确的。' : 'One item in this row is wrong — tap it, then pick the right one.';
+      if (q.grid) return zh ? (q.task === 'repair' ? '这张表里有一格错了，先点出来，再选出正确的。' : '横着看、竖着看，问号是几？') : (q.task === 'repair' ? 'One cell is wrong — tap it, then pick the right one.' : 'Read across and down — what is the missing number?');
+      if (q.rows) return zh ? '看每一行，左边怎样变成右边？问号是几？' : 'Look at each row — how does the left become the right? What is the missing number?';
+      if (q.seq.every(function (n) { return n === '?' || !isNaN(n); })) {
+        var items = q.seq.map(function (n) { return n === '?' ? (zh ? '问号' : 'blank') : String(n); });
+        return zh ? items.join('，') + '。问号是几？' : items.join(', ') + '. What is the missing number?';
       }
-      if (q.task === 'repair') {
-        return shell.lang === 'zh' ? '这排里有一个错了，先点出错的那个，再选出正确的。'
-                                   : 'One item in this row is wrong — tap it, then pick the right one.';
-      }
-      var numeric = q.seq.every(function (n) { return n === '?' || !isNaN(n); });
-      if (!numeric) {
-        return shell.lang === 'zh' ? '看规律，问号是什么？'
-                                   : 'Look at the pattern — what comes next?';
-      }
-      var items = q.seq.map(function (n) {
-        return n === '?' ? (shell.lang === 'zh' ? '问号' : 'blank') : String(n);
-      });
-      return shell.lang === 'zh' ? items.join('，') + '。问号是几？'
-                                 : items.join(', ') + '. What is the missing number?';
+      return zh ? '看规律，问号是什么？' : 'Look at the pattern — what goes in the blank?';
     },
 
-    /**
-     * Structure gene + the carrier gene of the attribute the rule varies.
-     * Reports the deduped union across every structure this module ships,
-     * not just the unit in play — registerRootGenes fires once per game,
-     * before any unit is picked (see pattern.json → geneReporting).
-     */
     registerRootGenes: function () {
-      return _unique(genesFor('numerical').concat(genesFor('repetition'), genesFor('alternating')));
+      var all = [];
+      Object.keys(STRUCTURE_GENES).forEach(function (k) { all = all.concat(genesFor(k)); });
+      return _unique(all);
     },
 
     /**
-     * One Attempt per unit run. The batch is labelled with the direction the
-     * child actually met most often, plus the full de-duplicated list, because
-     * pattern.json's `direction-not-poolable` rule forbids merging forward and
-     * backward accuracy — "can extend a run but cannot invert it" is the
-     * profile this module exists to surface.
+     * One Attempt per session. The batch is labelled with the structure,
+     * carrier and direction the child met most often; the full lists travel
+     * alongside because forward and backward accuracy must not be pooled
+     * (pattern.json `direction-not-poolable`).
      */
     getReportContext: function (ctx) {
       var unit = (ctx && ctx.unit) || {};
-      var questions = unit.questions || [];
-      if (questions.length && questions[0].task === 'discover') {
-        return buildRadarContext(unit.id, 'discover', {
-          taskTypes:       ['discover'],
-          activityRuntime: 'puzzle'
-        });
-      }
-      if (questions.length && questions[0].task === 'repair') {
-        return buildRadarContext(unit.id, 'repair', {
-          taskTypes:       ['repair'],
-          activityRuntime: 'puzzle'
-        });
-      }
-      var dirs = questions.map(function (q) {
-        return inferenceDirectionOf(q.seq);
+      var unitId = String(unit.id);
+      var levelId = UNIT_LEVEL[unitId] || levelIdOfSession;
+      var qs = unit.questions || [];
+      var dirs = qs.map(function (q) {
+        return q.task === 'discover' || q.task === 'repair' ? q.task : (q.rows ? 'forward' : (q.grid ? 'interior' : inferenceDirectionOf(q.seq)));
       });
       var dominant = _dominant(dirs);
-      return buildRadarContext(unit.id, dominant, {
-        inferenceDirection:  dominant,
+      var structure = _dominant(qs.map(function (q) { return q.structure; }));
+      var rep = qs.filter(function (q) { return q.structure === structure; })[0] || qs[0] || null;
+      var out = buildRadarContext(levelId, rep, dominant, {
+        unitId:              unitId,
+        inferenceDirection:  dominant === 'discover' || dominant === 'repair' ? null : dominant,
         inferenceDirections: _unique(dirs),
-        taskTypes:           _unique(dirs.map(function (d) { return TASK_OF[d] || null; })),
+        structures:          _unique(qs.map(function (q) { return q.structure; })),
+        carriers:            _unique(qs.map(function (q) { return q.carrier; })),
+        taskTypes:           _unique(qs.map(function (q) { return q.task; })),
         activityRuntime:     'puzzle'
       });
+      refillUnit(unitId);
+      return out;
     }
     });
 
-    if (levelId === 'K2') {
-      _injectRepMatchTrigger();
-      _injectRepCreateTrigger();
-    } else if (levelId === 'G2') {
-      _injectMatchTrigger();
-      _injectAltCreateTrigger();
-    }
+    _injectHomeBackButton();
   }
 
   /**
@@ -1006,6 +862,9 @@
    * cross-module shell-1.css because only this module's discover items use it.
    */
   function _injectDiscoverStyles() {
+    var hb = document.createElement('style');
+    hb.textContent = '#mp-home-back{flex:0 0 auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;line-height:1;}';
+    document.head.appendChild(hb);
     if (document.getElementById('mp-discover-style')) return;
     var s = document.createElement('style');
     s.id = 'mp-discover-style';

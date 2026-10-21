@@ -1,0 +1,203 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-10-15",
+  "moduleType": "mindseeds",
+  "id": "route-choice",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/route-choice.json",
+  "title": {
+    "zh": "近路还是远路",
+    "en": "Near or Far"
+  },
+  "description": {
+    "zh": "小动物要走到终点，有两三条路可选：近路短但可能有路障，远路长但更安全；有的路有水坑要多花能量；高年级还有看不清的石头，走到才知道是路障。孩子先选一条路，看小动物走过去的结果（被挡住、能量用完、到达），再决定要不要换一条。K1 比近路与远路，K2 比谁更省力，G1 在能量有限时拿到最多的星星，G2 里星星最多的路藏着陷阱。完成即通过，一次选对最优多一个 ⭐，换路和提示次数记入报告。",
+    "en": "A little animal must reach the goal by one of two or three routes: the near one is short but may be blocked, the far one is long but safer; some have puddles that cost extra energy; older grades add hidden stones that turn out to be barriers. The child picks a route, watches the result (blocked, out of energy, arrived) and decides whether to choose again. K1 compares near and far, K2 the easiest route, G1 the most stars on limited energy, and in G2 the route with the most stars hides a trap. Finishing passes, an optimal first try earns a star, and route changes and hints go into the report."
+  },
+  "designModel": {
+    "zh": "主轴是路线数量（route_count）与障碍类型（hazard_type：路障/多花能量/混合且隐藏），配合目标类型（goal_type：最省能量/星星最多）和信息状态（information_state：完整/隐藏）。",
+    "en": "The primary axes are route count (route_count) and hazard type (hazard_type: barrier / costly / mixed and hidden), paired with goal type (goal_type: least energy / most stars) and information state (information_state: complete / hidden)."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 两条路的简单取舍约 3-4 岁；G2 含隐藏信息与星星权衡约 7 岁。",
+    "noteEn": "K1 two-route choices suit about 3-4; G2 with hidden information and star trade-offs suits about 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 策略大师。训练的是『选一条路、看到结果、再调整』：在近与远、快与稳、星星多与风险大之间取舍；与 energy-planner 的区别是这里选的是一整条路线，而不是任务组合；与学习系列 math/strategy 的区别是每次只练这一种情境，不带算式推导。",
+    "policyEn": "This module belongs to MindSeeds · Strategy Master. It trains choosing a route, seeing the result and adjusting: trading near against far, fast against safe, many stars against risk. Unlike energy-planner the choice is one whole route rather than a set of tasks, and unlike learning math/strategy it practises this single situation per game without derivation arithmetic."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.STRATEGY.DECISION.PLANNING，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.STRATEGY.DECISION.PLANNING, regardless of grade.",
+    "geneIds": [
+      "RG.STRATEGY.DECISION.PLANNING"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.DECISION.PLANNING"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "route_count",
+      "zh": "路线数量",
+      "en": "Route Count",
+      "progression": [
+        "two",
+        "three"
+      ],
+      "noteZh": "可选的路线条数。",
+      "noteEn": "How many routes are on offer."
+    },
+    {
+      "id": "hazard_type",
+      "zh": "障碍类型",
+      "en": "Hazard Type",
+      "progression": [
+        "block",
+        "costly",
+        "mixed_hidden"
+      ],
+      "noteZh": "block 路障过不去；costly 水坑多花能量；mixed_hidden 两者都有且有看不清的石头。",
+      "noteEn": "block cannot be passed; costly puddles cost extra energy; mixed_hidden has both plus hidden stones."
+    },
+    {
+      "id": "goal_type",
+      "zh": "目标类型",
+      "en": "Goal Type",
+      "progression": [
+        "least_energy",
+        "most_stars"
+      ],
+      "noteZh": "least_energy 选最省力的路；most_stars 在能量内得到最多星星。",
+      "noteEn": "least_energy picks the easiest route; most_stars earns the most stars within the energy."
+    },
+    {
+      "id": "information_state",
+      "zh": "信息状态",
+      "en": "Information State",
+      "progression": [
+        "complete",
+        "hidden"
+      ],
+      "noteZh": "complete 路上的情况都看得见；hidden 有看不清的石头，走到才知道。",
+      "noteEn": "complete shows everything on the routes; hidden has stones you only learn about by reaching them."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，完成即通过（通过线 75%）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "两条路：近路有路障，远路更安全，走走看。",
+      "objectiveEn": "Two routes: the near one is blocked, the far one is safe — try it.",
+      "axisValues": {
+        "route_count": "two",
+        "hazard_type": "block",
+        "goal_type": "least_energy",
+        "information_state": "complete"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "route-choice"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "三条路，水坑多花能量，能量有限，选最省力的。",
+      "objectiveEn": "Three routes, puddles cost extra and energy is limited — pick the easiest.",
+      "axisValues": {
+        "route_count": "three",
+        "hazard_type": "costly",
+        "goal_type": "least_energy",
+        "information_state": "complete"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "route-choice"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "三条路，能量有限，走哪条路得到的星星最多。",
+      "objectiveEn": "Three routes, limited energy — which route earns the most stars?",
+      "axisValues": {
+        "route_count": "three",
+        "hazard_type": "block",
+        "goal_type": "most_stars",
+        "information_state": "complete"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "route-choice"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "星星最多的路藏着看不清的石头，走过一次后要记住再调整。",
+      "objectiveEn": "The route with the most stars hides a stone — remember what you learned and adjust.",
+      "axisValues": {
+        "route_count": "three",
+        "hazard_type": "mixed_hidden",
+        "goal_type": "most_stars",
+        "information_state": "hidden"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "route-choice"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "goalType",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "报告 process 带 tiers、retries（换路次数）、hints，可区分“一次选对”“试了几次”“接受了不是最好的路”。",
+    "noteEn": "The report process carries tiers, retries (route changes) and hints."
+  },
+  "tags": [
+    "route-choice",
+    "mindseeds",
+    "strategy",
+    "planning",
+    "ai-readable"
+  ]
+}

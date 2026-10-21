@@ -65,10 +65,25 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: MPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(MPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    resolve: function (q) {
+      return q.layout === 'track'
+        ? { kind: 'num', valid: function (t) { return t >= 1 && t <= q.trackSize; } }
+        : { kind: 'sym' };
+    },
+    full: function (q) { return q.layout === 'track' ? q.positions.concat([q.answer]) : q.cells.map(function (t) { return t === '?' ? q.answer : t; }); },
+    blank: function (q) { return q.layout === 'track' ? q.positions.length : q.cells.indexOf('?'); },
+    answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t, s, q) { return q.layout === 'track' ? '<span class="s1-pos-badge">' + t + '</span>' : q.layout === 'direction' ? dirCard(t) : actCard(t); },
+    noun: function (q) { return q.layout === 'track' ? { zh: '格子', en: 'cells' } : q.layout === 'direction' ? { zh: '方向', en: 'directions' } : { zh: '动作', en: 'moves' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -83,7 +98,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = MPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(MPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -154,35 +169,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      if (q.layout === 'track') { renderTrack(q, container); return; }
-      container.parentElement.classList.remove('s1-seq--track');
-      container.innerHTML = q.cells.map(function (cell) {
-        if (cell === '?') { return '<span class="mystery">?</span>'; }
-        return q.layout === 'direction' ? dirCard(cell) : actCard(cell);
-      }).join(' ');
-    },
-
-    renderOption: function (opt, q) {
-      if (q.layout === 'track')     { return '<span class="s1-pos-badge">' + opt + '</span>'; }
-      if (q.layout === 'direction') { return dirCard(opt); }
-      return actCard(opt);
-    },
-
-    checkAnswer: function (selected, q) {
-      return q.layout === 'track' ? Number(selected) === Number(q.answer) : selected === q.answer;
-    },
-
-    getVoiceText: function (q, idx) {
-      if (q.layout === 'track') {
-        return shell.lang === 'zh'
-          ? '第' + (idx + 1) + '题，下一步跳到哪个格子？'
-          : 'Question ' + (idx + 1) + ', which cell comes next?';
-      }
-      return shell.lang === 'zh'
-        ? '第' + (idx + 1) + '题，下一个是什么？'
-        : 'Question ' + (idx + 1) + ', what comes next?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -190,11 +181,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         shapes:          _unique(questions.map(function (q) { return q.shape; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

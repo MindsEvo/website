@@ -10,6 +10,7 @@
 3. `shell/GAME-SHELL-CONVENTION.md`（游戏如何接入统一 Shell）
 4. `shell/SHELL-FEATURE-GATE.md`（哪些能力可以上升为公共层）
 5. `patterns/PATTERN-QUALITY-GATE.md`（Pattern 模块质量门禁）
+5a. `mindseeds/PATTERN-HUNTER-ARCHITECTURE.md`（小精灵 · 规律猎手的认知链与 11 个入口映射）
 6. `metadata/AI-METADATA-STANDARD.md`（阶段 5：标准元数据）
 7. `metadata/METATHINKING-MODULE-STANDARD.md`（元思维模块机器可读标准）
 8. `rootgene/ROOTGENE-FRAMEWORK.md`（**思维雷达坐标系 —— 双轴定稿**）

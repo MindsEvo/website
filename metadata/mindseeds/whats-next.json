@@ -1,0 +1,190 @@
+{
+  "version": "0.2.0",
+  "updatedAt": "2026-10-15",
+  "moduleType": "mindseeds",
+  "id": "whats-next",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/whats-next.json",
+  "title": {
+    "zh": "下一步会怎样",
+    "en": "What's Next"
+  },
+  "description": {
+    "zh": "魔法机器有几个数字按钮，规则卡写着「按几号 → 发生什么」，规则每一题都重新编，所以必须读卡，不能靠常识或记忆。孩子选了以后，选错不判红叉，机器会演示这样按实际发生了什么，再换一个试。K1–K2 是正向预测：按下几号会发生什么（K2 的选项都来自规则卡，必须看对那一行）；G1 反过来想：想让某件事发生该按几号，有时要两件事同时发生，选哪两个按钮；G2 加上「接着」连锁卡：一件事会引起下一件事，既要顺着推最后发生什么，也要倒着找该按哪个。完成即通过，一次想对且没用提示多一个 ⭐，重试和提示次数记入报告。",
+    "en": "A magic machine has numbered buttons and rule cards saying \"press this number → this happens\". The rules are drawn fresh every question, so they must be read - they cannot be guessed from common sense or memory. A wrong choice is not marked red: the machine shows what that press really does, and the child tries again. K1-K2 predict forward: what happens when this number is pressed (K2 options all come from the cards, so the right row must be found). G1 works backwards: which number makes it happen, sometimes two things at once with two buttons. G2 adds \"then\" chain cards: one thing triggers the next, so the child follows a chain forward to the last effect and works backward to the right button. Finishing passes, right first with no hints earns a star, and retries and hints go into the report."
+  },
+  "designModel": {
+    "zh": "主轴是规则卡数量（rule_count 两到五张）与提问方向（direction：正向预测、反向推按钮、两者都有），配合链深（chain_depth：单步、两步连锁）。规则每题现编，按钮用数字，效果带名称，不靠颜色或常识。",
+    "en": "The primary axes are rule card count (rule_count, two to five) and question direction (direction: forward, backward, both), paired with chain depth (chain_depth: single step or two-hop chain). Rules are drawn per question, buttons are numbers and effects carry names, so nothing relies on colour or common sense."
+  },
+  "ageRange": {
+    "min": 3,
+    "max": 8,
+    "noteZh": "K1 两张规则卡、单步正向预测适合 3-4 岁；G2 三张规则卡、两步链式推理约 7 岁。",
+    "noteEn": "K1's two rule cards with a single forward-predict step suit ages 3-4; G2's three rule cards with a two-hop chain suit about age 7."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属小精灵系列 · 策略大师。训练的是『读懂一套现编的因果规则，正向预测结果或反向推出该做什么，并能顺着连锁推两步』；错了不判红叉，而是演示实际发生了什么再让孩子调整。与 DECISION.PLANNING 的区别是本模块不在多个方案间比较取舍，也不涉及 energy-planner 的资源约束计算。",
+    "policyEn": "This module belongs to MindSeeds · Strategy Master. It trains applying a given causal rule forward to predict an effect, backward to find the action that causes a wanted effect, and chaining that rule across two steps. This differs from the general 'weigh options and order steps' skill behind RG.STRATEGY.DECISION.PLANNING — this module never compares multiple options against each other, and it does not involve the resource-constraint arithmetic in energy-planner."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.STRATEGY.PREDICT.CONSEQUENCE，不随等级变化。",
+    "ruleEn": "Every attempt reports RG.STRATEGY.PREDICT.CONSEQUENCE, regardless of grade.",
+    "geneIds": [
+      "RG.STRATEGY.PREDICT.CONSEQUENCE"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.STRATEGY.PREDICT.CONSEQUENCE"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "rule_count",
+      "zh": "规则卡数量",
+      "en": "Rule Count",
+      "progression": [
+        "two",
+        "three",
+        "four",
+        "five"
+      ],
+      "noteZh": "题面上规则卡（按钮卡加连锁卡）的数量，从两张到五张。",
+      "noteEn": "How many rule cards (button cards plus chain cards) are on screen, from two up to five."
+    },
+    {
+      "id": "direction",
+      "zh": "提问方向",
+      "en": "Direction",
+      "progression": [
+        "forward_predict",
+        "goal_directed",
+        "both"
+      ],
+      "noteZh": "forward_predict 给按钮找效果；goal_directed 给效果找按钮（可能要同时满足两个）；both 在连锁里两种问法都会出现。",
+      "noteEn": "forward_predict gives the button and asks for the effect; goal_directed gives the wanted effect (sometimes two) and asks for the button; both mixes the two inside chains."
+    },
+    {
+      "id": "chain_depth",
+      "zh": "链深",
+      "en": "Chain Depth",
+      "progression": [
+        "one_hop",
+        "two_hop"
+      ],
+      "noteZh": "one_hop 只用一张规则卡；two_hop 把一张卡的效果当成下一张卡的动作，顺着推两步才能到最终结果。",
+      "noteEn": "one_hop uses a single rule card; two_hop treats one card's effect as the next card's trigger, so the child must follow two steps to reach the final result."
+    }
+  ],
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "一次 8 题，通过线 75%（6/8）。没有静态题库：generator.js 现生成，玩完立即换一批。",
+    "noteEn": "Eight items per run, passing at 75% (6/8). No static bank: generator.js builds each set and a new one is swapped in when the run ends."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "两张规则卡，正向预测按下几号会发生什么。",
+      "objectiveEn": "Two rule cards - predict what happens when a number is pressed.",
+      "axisValues": {
+        "rule_count": "two",
+        "direction": "forward_predict",
+        "chain_depth": "one_hop"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "whats-next"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "三张规则卡，选项都来自规则卡，要看对那一行。",
+      "objectiveEn": "Three rule cards; every option comes from the cards, so the right row must be found.",
+      "axisValues": {
+        "rule_count": "three",
+        "direction": "forward_predict",
+        "chain_depth": "one_hop"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "whats-next"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "四张规则卡，反过来想：想让某件事发生该按几号，有时要两件事同时发生。",
+      "objectiveEn": "Four rule cards, worked backwards: which number makes it happen, sometimes two things at once.",
+      "axisValues": {
+        "rule_count": "four",
+        "direction": "goal_directed",
+        "chain_depth": "one_hop"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "whats-next"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "三张按钮卡加两张连锁卡：顺着推最后发生什么，或倒着找该按哪个。",
+      "objectiveEn": "Three button cards and two chain cards: follow the chain to the last effect, or work back to the right button.",
+      "axisValues": {
+        "rule_count": "five",
+        "direction": "both",
+        "chain_depth": "two_hop"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "whats-next"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "direction",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
+    "noteZh": "报告 process 带 tiers、retries（重试次数）、hints；directions 区分正向预测与反向推。",
+    "noteEn": "The report process carries tiers, retries and hints; directions separate forward prediction from backward reasoning."
+  },
+  "tags": [
+    "whats-next",
+    "mindseeds",
+    "strategy",
+    "prediction",
+    "ai-readable"
+  ]
+}

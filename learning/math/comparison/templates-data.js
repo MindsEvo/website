@@ -3,152 +3,281 @@
 var CMP_TEMPLATES_DATA = {
   "version": "1.0",
   "module": "comparison",
-  "updatedAt": "2026-08-10",
+  "updatedAt": "2026-10-07",
   "templates": [
     {
       "id": "cmp-k1-sort-length-001",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "order",
       "mode": "sort",
       "runtime": "sort",
       "difficulty": 1,
       "generator": "sortLength4",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "items": 4, "minGapPct": 18, "theme": "ribbon" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4,
+        "minGapPct": 18,
+        "theme": "ribbon"
+      }
     },
     {
       "id": "cmp-k1-match-size-001",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "classify",
       "mode": "match",
       "runtime": "match",
       "difficulty": 1,
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
       "id": "cmp-k1-match-size-002",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "classify",
       "mode": "match",
       "runtime": "match",
       "difficulty": 1,
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
       "id": "cmp-k1-group-size-001",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "classify",
       "mode": "group",
       "runtime": "group",
       "difficulty": 1,
       "generator": "groupSize",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "itemsPerBin": 3 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
     },
     {
       "id": "cmp-k1-fit-bridge-001",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "fit",
       "mode": "fit",
       "runtime": "fit",
       "difficulty": 1,
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 12 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 12
+      }
     },
     {
       "id": "cmp-k1-fit-bridge-002",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "fit",
       "mode": "fit",
       "runtime": "fit",
       "difficulty": 2,
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 8 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 8
+      }
     },
     {
       "id": "cmp-k2-match-size-001",
       "level": "K2",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "classify",
       "mode": "match",
       "runtime": "match",
       "difficulty": 2,
       "generator": "matchSize3",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {}
     },
     {
       "id": "cmp-k2-group-size-001",
       "level": "K2",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "classify",
       "mode": "group",
       "runtime": "group",
       "difficulty": 2,
       "generator": "groupSize",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "itemsPerBin": 3 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
     },
     {
       "id": "cmp-k2-fit-bridge-001",
       "level": "K2",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "fit",
       "mode": "fit",
       "runtime": "fit",
       "difficulty": 2,
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 8 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 8
+      }
     },
     {
       "id": "cmp-g1-fit-bridge-001",
       "level": "G1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "fit",
       "mode": "fit",
       "runtime": "fit",
       "difficulty": 3,
       "generator": "fitBridge",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "margin": 6 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 6
+      }
     },
     {
       "id": "cmp-k1-mini-quick-001",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "judge",
       "mode": "mini_game",
       "runtime": "mini",
       "engine": "quick_compare",
@@ -156,8 +285,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "size",
         "durationSec": 30,
@@ -165,13 +302,18 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.6,
         "timerStyle": "collect",
         "askMode": "bigger",
-        "roundParams": { "set": "animals" }
+        "roundParams": {
+          "set": "animals"
+        }
       }
     },
     {
       "id": "cmp-g1-mini-quick-001",
       "level": "G1",
       "type": "quantity",
+      "structure": "direct",
+      "carrier": "quantity",
+      "task": "judge",
       "mode": "mini_game",
       "runtime": "mini",
       "engine": "quick_compare",
@@ -179,8 +321,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "quantity",
         "durationSec": 40,
@@ -188,13 +338,20 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.7,
         "timerStyle": "countdown",
         "askMode": "fewer",
-        "roundParams": { "minCount": 3, "maxCount": 12, "minGap": 2 }
+        "roundParams": {
+          "minCount": 3,
+          "maxCount": 12,
+          "minGap": 2
+        }
       }
     },
     {
       "id": "cmp-g2-mini-quick-001",
       "level": "G2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "mini_game",
       "runtime": "mini",
       "engine": "quick_compare",
@@ -202,8 +359,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniRound",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "number",
         "durationSec": 40,
@@ -211,13 +376,20 @@ var CMP_TEMPLATES_DATA = {
         "passThreshold": 0.7,
         "timerStyle": "countdown",
         "askMode": "bigger",
-        "roundParams": { "min": 10, "max": 99, "minGap": 2 }
+        "roundParams": {
+          "min": 10,
+          "max": 99,
+          "minGap": 2
+        }
       }
     },
     {
       "id": "cmp-k2-mini-build-001",
       "level": "K2",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "order",
       "mode": "mini_game",
       "runtime": "mini",
       "engine": "build_time",
@@ -225,8 +397,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniBuild",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "size",
         "durationSec": 45,
@@ -242,6 +422,9 @@ var CMP_TEMPLATES_DATA = {
       "id": "cmp-g2-mini-build-001",
       "level": "G2",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "order",
       "mode": "mini_game",
       "runtime": "mini",
       "engine": "build_time",
@@ -249,8 +432,16 @@ var CMP_TEMPLATES_DATA = {
       "generator": "miniBuild",
       "access": "free",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
       "params": {
         "dimension": "length",
         "durationSec": 60,
@@ -266,756 +457,2527 @@ var CMP_TEMPLATES_DATA = {
       "id": "cmp-k1-size-001",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "sizeCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "animals", "askMode": "bigger" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "animals",
+        "askMode": "bigger"
+      }
     },
     {
       "id": "cmp-k1-size-002",
       "level": "K1",
       "type": "size",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "sizeCompare",
       "promptType": "which_smaller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "objects", "askMode": "smaller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "objects",
+        "askMode": "smaller"
+      }
     },
     {
-      "id": "cmp-k1-size-003",
+      "id": "cmp-k1-size-pick-001",
       "level": "K1",
-      "type": "size",
+      "type": "size_pick",
+      "structure": "direct",
+      "carrier": "size",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 2,
-      "generator": "sizeCompare",
-      "promptType": "which_bigger",
+      "generator": "sizePick3",
+      "promptType": "pick_biggest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "furniture", "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "animals",
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-length-001",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "ribbons", "gapPct": 40, "askMode": "longer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "ribbons",
+        "gapPct": 40,
+        "askMode": "longer"
+      }
     },
     {
       "id": "cmp-k1-length-002",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "lengthCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "sticks", "gapPct": 40, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "sticks",
+        "gapPct": 40,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k1-length-003",
       "level": "K1",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "paths", "gapPct": 30, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "paths",
+        "gapPct": 30,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-height-001",
       "level": "K1",
       "type": "height",
+      "structure": "direct",
+      "carrier": "height",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "trees", "gapPct": 40, "askMode": "taller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "trees",
+        "gapPct": 40,
+        "askMode": "taller"
+      }
     },
     {
       "id": "cmp-k1-height-002",
       "level": "K1",
       "type": "height",
+      "structure": "direct",
+      "carrier": "height",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "heightCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 40, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 40,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k1-quantity-001",
       "level": "K1",
       "type": "quantity",
+      "structure": "direct",
+      "carrier": "quantity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "more" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 1,
+        "maxCount": 6,
+        "minGap": 2,
+        "showNumbers": false,
+        "askMode": "more"
+      }
     },
     {
       "id": "cmp-k1-quantity-002",
       "level": "K1",
       "type": "quantity",
+      "structure": "direct",
+      "carrier": "quantity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "quantityVisual",
       "promptType": "which_fewer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 1, "maxCount": 6, "minGap": 2, "showNumbers": false, "askMode": "fewer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 1,
+        "maxCount": 6,
+        "minGap": 2,
+        "showNumbers": false,
+        "askMode": "fewer"
+      }
     },
     {
       "id": "cmp-k1-quantity-003",
       "level": "K1",
       "type": "quantity",
+      "structure": "direct",
+      "carrier": "quantity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 3, "maxCount": 9, "minGap": 1, "showNumbers": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 3,
+        "maxCount": 9,
+        "minGap": 1,
+        "showNumbers": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k1-shape-001",
       "level": "K1",
       "type": "shape",
+      "structure": "equivalence",
+      "carrier": "shape",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k1-shape-002",
       "level": "K1",
       "type": "shape",
+      "structure": "equivalence",
+      "carrier": "shape",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "color"
+      }
     },
     {
       "id": "cmp-k1-color-001",
       "level": "K1",
       "type": "color",
+      "structure": "equivalence",
+      "carrier": "color",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color"
+      }
     },
     {
       "id": "cmp-k1-color-002",
       "level": "K1",
       "type": "color",
+      "structure": "equivalence",
+      "carrier": "color",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k1-nearfar-001",
       "level": "K1",
       "type": "position",
+      "structure": "direct",
+      "carrier": "distance",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "nearFar",
       "promptType": "which_nearer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "nearer" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "nearer"
+      }
     },
     {
       "id": "cmp-k1-nearfar-002",
       "level": "K1",
       "type": "position",
+      "structure": "direct",
+      "carrier": "distance",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "nearFar",
       "promptType": "which_farther",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "farther" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "farther"
+      }
     },
     {
       "id": "cmp-k1-fullempty-001",
       "level": "K1",
       "type": "fullness",
+      "structure": "direct",
+      "carrier": "capacity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "fullEmpty",
       "promptType": "which_fuller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "fuller" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "fuller"
+      }
     },
     {
       "id": "cmp-k1-fullempty-002",
       "level": "K1",
       "type": "fullness",
+      "structure": "direct",
+      "carrier": "capacity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 1,
       "generator": "fullEmpty",
       "promptType": "which_emptier",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "emptier" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "emptier"
+      }
     },
     {
-      "id": "cmp-k2-size-001",
+      "id": "cmp-k2-size-real-001",
       "level": "K2",
-      "type": "size",
+      "type": "size_real",
+      "structure": "interference",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
-      "generator": "sizeCompare",
-      "promptType": "which_bigger",
+      "generator": "sizeReal",
+      "promptType": "which_really_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "animals", "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-length-001",
       "level": "K2",
       "type": "length",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "lengthCompare",
       "promptType": "which_longer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "ropes", "gapPct": 25, "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "ropes",
+        "gapPct": 25,
+        "askMode": "random",
+        "distractors": true
+      }
     },
     {
       "id": "cmp-k2-quantity-001",
       "level": "K2",
       "type": "quantity",
+      "structure": "direct",
+      "carrier": "quantity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "quantityVisual",
       "promptType": "which_more",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 4, "maxCount": 10, "minGap": 1, "showNumbers": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 4,
+        "maxCount": 10,
+        "minGap": 1,
+        "showNumbers": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-number-001",
       "level": "K2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 10, "minGap": 1, "showDots": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 10,
+        "minGap": 1,
+        "showDots": true,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-number-002",
       "level": "K2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 10, "minGap": 1, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 10,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
-      "id": "cmp-k2-weight-001",
+      "id": "cmp-k2-balance-001",
       "level": "K2",
-      "type": "weight",
+      "type": "balance_judge",
+      "structure": "mediated",
+      "carrier": "weight",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
-      "generator": "weightCompare",
+      "generator": "balanceJudge",
       "promptType": "which_heavier",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "heavier" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
-      "id": "cmp-k2-speed-001",
+      "id": "cmp-k2-race-001",
       "level": "K2",
-      "type": "speed",
+      "type": "race_judge",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
-      "generator": "speedCompare",
+      "generator": "raceJudge",
       "promptType": "which_faster",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "faster" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-shape-001",
       "level": "K2",
       "type": "shape",
+      "structure": "equivalence",
+      "carrier": "shape",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "shape", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "shape",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
       "id": "cmp-k2-height-001",
       "level": "K2",
       "type": "height",
+      "structure": "direct",
+      "carrier": "height",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "heightCompare",
       "promptType": "which_taller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "trees", "gapPct": 30, "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "trees",
+        "gapPct": 30,
+        "askMode": "random",
+        "distractors": true
+      }
     },
     {
       "id": "cmp-k2-height-002",
       "level": "K2",
       "type": "height",
+      "structure": "direct",
+      "carrier": "height",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "heightCompare",
       "promptType": "which_shorter",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 30, "askMode": "shorter" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "buildings",
+        "gapPct": 30,
+        "askMode": "shorter"
+      }
     },
     {
       "id": "cmp-k2-nearfar-001",
       "level": "K2",
       "type": "position",
+      "structure": "direct",
+      "carrier": "distance",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "nearFar",
       "promptType": "which_nearer",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-fullempty-001",
       "level": "K2",
       "type": "fullness",
+      "structure": "direct",
+      "carrier": "capacity",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "fullEmpty",
       "promptType": "which_fuller",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-k2-color-001",
       "level": "K2",
       "type": "color",
+      "structure": "equivalence",
+      "carrier": "color",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 2,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "shape" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "shape"
+      }
     },
     {
       "id": "cmp-k2-color-002",
       "level": "K2",
       "type": "color",
+      "structure": "equivalence",
+      "carrier": "color",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
       "id": "cmp-g1-number-001",
       "level": "G1",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 1, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 1,
+        "max": 20,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-number-002",
       "level": "G1",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 10, "max": 20, "minGap": 1, "showDots": false, "askMode": "random" }
-    },
-    {
-      "id": "cmp-g1-length-001",
-      "level": "G1",
-      "type": "length",
-      "mode": "puzzle",
-      "difficulty": 3,
-      "generator": "lengthCompare",
-      "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "rulers", "gapPct": 20, "visual": "segments", "askMode": "random" }
-    },
-    {
-      "id": "cmp-g1-quantity-001",
-      "level": "G1",
-      "type": "quantity",
-      "mode": "puzzle",
-      "difficulty": 3,
-      "generator": "quantityVisual",
-      "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 8, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 10,
+        "max": 20,
+        "minGap": 1,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-time-001",
       "level": "G1",
       "type": "time",
+      "structure": "direct",
+      "carrier": "time_order",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "timeOrder",
       "promptType": "which_first",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "daily_events", "askMode": "first" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "daily_events",
+        "askMode": "first"
+      }
     },
     {
-      "id": "cmp-g1-weight-001",
+      "id": "cmp-g1-balance-001",
       "level": "G1",
-      "type": "weight",
+      "type": "balance_select",
+      "structure": "mediated",
+      "carrier": "weight",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 3,
-      "generator": "weightCompare",
-      "promptType": "which_heavier",
+      "generator": "balanceSelect3",
+      "promptType": "which_heaviest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random", "useScale": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-multiattr-001",
       "level": "G1",
       "type": "multi_attribute",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 4,
       "generator": "multiAttribute",
       "promptType": "which_matches",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size", "color"], "distractors": 1 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color"],
+        "distractors": 1
+      }
     },
     {
-      "id": "cmp-g1-size-001",
+      "id": "cmp-g1-area-001",
       "level": "G1",
-      "type": "size",
+      "type": "area_grid",
+      "structure": "mediated",
+      "carrier": "area",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 3,
-      "generator": "sizeCompare",
+      "generator": "areaGrid",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "animals", "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g1-color-001",
       "level": "G1",
       "type": "color",
+      "structure": "equivalence",
+      "carrier": "color",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 3,
       "generator": "sameDifferent",
       "promptType": "odd_one_out",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attribute": "color", "optionCount": 3, "distractor": "color_and_size" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attribute": "color",
+        "optionCount": 3,
+        "distractor": "color_and_size"
+      }
     },
     {
-      "id": "cmp-g1-nearfar-001",
+      "id": "cmp-g1-race-001",
       "level": "G1",
-      "type": "position",
+      "type": "race_select",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 3,
-      "generator": "nearFar",
-      "promptType": "which_nearer",
+      "generator": "raceSelect3",
+      "promptType": "which_fastest",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
-    },
-    {
-      "id": "cmp-g1-fullempty-001",
-      "level": "G1",
-      "type": "fullness",
-      "mode": "puzzle",
-      "difficulty": 3,
-      "generator": "fullEmpty",
-      "promptType": "which_fuller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
-    },
-    {
-      "id": "cmp-g1-speed-001",
-      "level": "G1",
-      "type": "speed",
-      "mode": "puzzle",
-      "difficulty": 3,
-      "generator": "speedCompare",
-      "promptType": "which_faster",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random" }
-    },
-    {
-      "id": "cmp-g1-height-001",
-      "level": "G1",
-      "type": "height",
-      "mode": "puzzle",
-      "difficulty": 3,
-      "generator": "heightCompare",
-      "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 25, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
     },
     {
       "id": "cmp-g2-number-001",
       "level": "G2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 10, "max": 99, "minGap": 3, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 10,
+        "max": 99,
+        "minGap": 3,
+        "showDots": false,
+        "askMode": "random"
+      }
     },
     {
       "id": "cmp-g2-number-002",
       "level": "G2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 5,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 50, "max": 99, "minGap": 2, "showDots": false, "askMode": "random", "nearEqual": true }
-    },
-    {
-      "id": "cmp-g2-length-001",
-      "level": "G2",
-      "type": "length",
-      "mode": "puzzle",
-      "difficulty": 4,
-      "generator": "lengthCompare",
-      "promptType": "which_longer",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "measurements", "gapPct": 15, "visual": "number_with_unit", "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 50,
+        "max": 99,
+        "minGap": 2,
+        "showDots": false,
+        "askMode": "random",
+        "nearEqual": true
+      }
     },
     {
       "id": "cmp-g2-multiattr-001",
       "level": "G2",
       "type": "multi_attribute",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 5,
       "generator": "multiAttribute",
       "promptType": "which_matches",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size", "color", "shape"], "distractors": 2 }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color", "shape"],
+        "distractors": 2
+      }
     },
     {
       "id": "cmp-g2-multiattr-002",
       "level": "G2",
       "type": "multi_attribute",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 5,
       "generator": "multiAttribute",
       "promptType": "ignore_distractor",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "attributes": ["size"], "distractors": 2, "ignoreAttribute": "color" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size"],
+        "distractors": 2,
+        "ignoreAttribute": "color"
+      }
     },
     {
       "id": "cmp-g2-time-001",
       "level": "G2",
       "type": "time",
+      "structure": "direct",
+      "carrier": "duration",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 4,
       "generator": "timeOrder",
       "promptType": "which_longer_duration",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "durations", "askMode": "longer_duration" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "set": "durations",
+        "askMode": "longer_duration"
+      }
     },
     {
-      "id": "cmp-g2-speed-001",
+      "id": "cmp-g2-race-001",
       "level": "G2",
-      "type": "speed",
+      "type": "race_variant",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "judge",
       "mode": "puzzle",
-      "difficulty": 4,
-      "generator": "speedCompare",
+      "difficulty": 5,
+      "generator": "raceVariant",
       "promptType": "which_faster",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random", "useContext": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "askMode": "random"
+      }
     },
     {
-      "id": "cmp-g2-size-001",
+      "id": "cmp-g2-area-001",
       "level": "G2",
-      "type": "size",
+      "type": "area_rect",
+      "structure": "interference",
+      "carrier": "area",
+      "task": "judge",
       "mode": "puzzle",
-      "difficulty": 4,
-      "generator": "sizeCompare",
+      "difficulty": 5,
+      "generator": "areaRect",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "objects", "askMode": "random", "distractors": true }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "maxSide": 9,
+        "maxArea": 36,
+        "askMode": "random"
+      }
     },
     {
-      "id": "cmp-g2-height-001",
+      "id": "cmp-g2-balance-chain-001",
       "level": "G2",
-      "type": "height",
+      "type": "balance_chain",
+      "structure": "transitive",
+      "carrier": "weight",
+      "task": "select",
       "mode": "puzzle",
       "difficulty": 4,
-      "generator": "heightCompare",
-      "promptType": "which_taller",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "set": "buildings", "gapPct": 20, "askMode": "random" }
+      "generator": "balanceChain",
+      "promptType": "which_heaviest",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
     },
     {
-      "id": "cmp-g2-quantity-001",
+      "id": "cmp-g2-balance-swap-001",
       "level": "G2",
-      "type": "quantity",
+      "type": "balance_swap",
+      "structure": "transitive",
+      "carrier": "weight",
+      "task": "judge",
       "mode": "puzzle",
-      "difficulty": 4,
-      "generator": "quantityVisual",
-      "promptType": "which_more",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "minCount": 10, "maxCount": 20, "minGap": 1, "showNumbers": true, "askMode": "random" }
-    },
-    {
-      "id": "cmp-g2-weight-001",
-      "level": "G2",
-      "type": "weight",
-      "mode": "puzzle",
-      "difficulty": 4,
-      "generator": "weightCompare",
+      "difficulty": 5,
+      "generator": "balanceSwap",
       "promptType": "which_heavier",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "askMode": "random", "useScale": true }
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
     },
     {
       "id": "cmp-g2-number-003",
       "level": "G2",
       "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
       "mode": "puzzle",
       "difficulty": 4,
       "generator": "numberCompare",
       "promptType": "which_bigger",
       "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
-      "mastery": { "requiredCorrect": 3, "window": 5 },
-      "cooldown": { "correct": 5, "familiar": 8, "mastered": 20, "wrong": 2 },
-      "params": { "min": 20, "max": 99, "minGap": 5, "showDots": false, "askMode": "random" }
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 20,
+        "max": 99,
+        "minGap": 5,
+        "showDots": false,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g1-diff-quantity-001",
+      "level": "G1",
+      "type": "quantity_diff",
+      "structure": "difference",
+      "carrier": "quantity",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "quantityDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minCount": 3,
+        "maxCount": 12,
+        "minGap": 1,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g1-diff-area-001",
+      "level": "G1",
+      "type": "area_diff",
+      "structure": "difference",
+      "carrier": "area",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "areaDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
+    },
+    {
+      "id": "cmp-g1-diff-race-001",
+      "level": "G1",
+      "type": "race_diff",
+      "structure": "difference",
+      "carrier": "speed",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "raceDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "minSec": 3,
+        "maxSec": 12,
+        "minGap": 1,
+        "maxGap": 4
+      }
+    },
+    {
+      "id": "cmp-g1-diff-weight-001",
+      "level": "G1",
+      "type": "weight_diff",
+      "structure": "difference",
+      "carrier": "weight",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "weightDiff",
+      "promptType": "how_much_diff",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 3,
+        "max": 15,
+        "minGap": 1,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g1-balance-adjust-001",
+      "level": "G1",
+      "type": "weight_adjust",
+      "structure": "mediated",
+      "carrier": "weight",
+      "task": "adjust",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "balanceAdjust",
+      "promptType": "how_much_to_add",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "min": 3,
+        "max": 15,
+        "minGap": 1,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g1-balance-repair-001",
+      "level": "G1",
+      "type": "balance_repair",
+      "structure": "mediated",
+      "carrier": "weight",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "balanceRepair",
+      "promptType": "is_claim_right",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
+    },
+    {
+      "id": "cmp-g1-size-real-select-001",
+      "level": "G1",
+      "type": "size_real_select",
+      "structure": "interference",
+      "carrier": "size",
+      "task": "select",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "sizeRealSelect3",
+      "promptType": "which_really_extreme",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
+    },
+    {
+      "id": "cmp-g1-size-real-repair-001",
+      "level": "G1",
+      "type": "size_real_repair",
+      "structure": "interference",
+      "carrier": "size",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "sizeRealRepair",
+      "promptType": "is_claim_right",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-multiattr-select-001",
+      "level": "G2",
+      "type": "multi_attribute_select",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "select",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "multiAttributeSelect3",
+      "promptType": "which_matches_extreme",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color"],
+        "distractors": 1
+      }
+    },
+    {
+      "id": "cmp-g2-multiattr-repair-001",
+      "level": "G2",
+      "type": "multi_attribute_repair",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "multiAttributeRepair",
+      "promptType": "is_claim_right",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "attributes": ["size", "color"],
+        "distractors": 1
+      }
+    },
+    {
+      "id": "cmp-g1-diff-adjust-001",
+      "level": "G1",
+      "type": "quantity_adjust",
+      "structure": "difference",
+      "carrier": "quantity",
+      "task": "adjust",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "quantityAdjust",
+      "promptType": "how_much_to_add",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "minCount": 3,
+        "maxCount": 12,
+        "minGap": 1,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g1-diff-repair-001",
+      "level": "G1",
+      "type": "quantity_repair",
+      "structure": "difference",
+      "carrier": "quantity",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "quantityRepair",
+      "promptType": "is_claim_right",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "minCount": 3,
+        "maxCount": 12,
+        "maxGap": 5
+      }
+    },
+    {
+      "id": "cmp-g2-diff-select-001",
+      "level": "G2",
+      "type": "diff_select",
+      "structure": "difference",
+      "carrier": "numeral",
+      "task": "select",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "diffSelect3",
+      "promptType": "which_gap_extreme",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-balance-repair-001",
+      "level": "G2",
+      "type": "transitive_repair",
+      "structure": "transitive",
+      "carrier": "weight",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 5,
+      "generator": "transitiveRepair",
+      "promptType": "is_claim_right",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-k2-length-repair-001",
+      "level": "K2",
+      "type": "length_repair",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 2,
+      "generator": "lengthRepair",
+      "promptType": "is_claim_right",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-k1-equal-judge-001",
+      "level": "K1",
+      "type": "equal_judge",
+      "structure": "equivalence",
+      "carrier": "quantity",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 1,
+      "generator": "equalJudge",
+      "promptType": "are_they_equal",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "minCount": 1,
+        "maxCount": 6
+      }
+    },
+    {
+      "id": "cmp-k2-equal-adjust-001",
+      "level": "K2",
+      "type": "equal_adjust",
+      "structure": "equivalence",
+      "carrier": "quantity",
+      "task": "adjust",
+      "mode": "puzzle",
+      "difficulty": 2,
+      "generator": "equalAdjust",
+      "promptType": "which_side_changes",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "minCount": 2,
+        "maxCount": 8
+      }
+    },
+    {
+      "id": "cmp-k2-equal-repair-001",
+      "level": "K2",
+      "type": "equal_repair",
+      "structure": "equivalence",
+      "carrier": "quantity",
+      "task": "repair",
+      "mode": "puzzle",
+      "difficulty": 2,
+      "generator": "equalRepair",
+      "promptType": "is_claim_right",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "minCount": 2,
+        "maxCount": 8
+      }
+    },
+    {
+      "id": "cmp-g1-expression-001",
+      "level": "G1",
+      "type": "expression",
+      "structure": "direct",
+      "carrier": "expression",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "expressionCompare",
+      "promptType": "which_result_bigger",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "max": 20,
+        "minValue": 2,
+        "minGap": 1,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-expression-001",
+      "level": "G2",
+      "type": "expression",
+      "structure": "direct",
+      "carrier": "expression",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "expressionCompare",
+      "promptType": "which_result_bigger",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "max": 99,
+        "minValue": 10,
+        "minGap": 2,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-placevalue-001",
+      "level": "G2",
+      "type": "number",
+      "structure": "direct",
+      "carrier": "numeral",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "placeValue",
+      "promptType": "which_bigger",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g1-clock-001",
+      "level": "G1",
+      "type": "clock",
+      "structure": "direct",
+      "carrier": "clock",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "clockCompare",
+      "promptType": "which_earlier",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "step": 30,
+        "minDiff": 60,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-clock-001",
+      "level": "G2",
+      "type": "clock",
+      "structure": "direct",
+      "carrier": "clock",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "clockCompare",
+      "promptType": "which_earlier",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "step": 15,
+        "minDiff": 30,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g1-money-001",
+      "level": "G1",
+      "type": "money",
+      "structure": "direct",
+      "carrier": "money",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 3,
+      "generator": "moneyCompare",
+      "promptType": "which_more_money",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "denoms": [10, 20, 50],
+        "minItems": 2,
+        "maxItems": 3,
+        "cap": 100,
+        "minGap": 10,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-money-001",
+      "level": "G2",
+      "type": "money",
+      "structure": "direct",
+      "carrier": "money",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "moneyCompare",
+      "promptType": "which_more_money",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "denoms": [5, 10, 20, 50, 100],
+        "minItems": 2,
+        "maxItems": 4,
+        "cap": 300,
+        "minGap": 5,
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-unit-001",
+      "level": "G2",
+      "type": "unit_compare",
+      "structure": "direct",
+      "carrier": "length",
+      "task": "judge",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "unitCompare",
+      "promptType": "which_longer_units",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {
+        "askMode": "random"
+      }
+    },
+    {
+      "id": "cmp-g2-explain-balance-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "mediated",
+      "carrier": "weight",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "explainBalance",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-explain-race-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 5,
+      "generator": "explainRace",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-explain-sizereal-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "interference",
+      "carrier": "size",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "explainSizeReal",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-explain-chain-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "transitive",
+      "carrier": "weight",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 5,
+      "generator": "explainChain",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-explain-multiattr-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "multi_criteria",
+      "carrier": "size",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "explainMultiAttr",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g2-explain-diff-001",
+      "level": "G2",
+      "type": "explain",
+      "structure": "difference",
+      "carrier": "quantity",
+      "task": "explain",
+      "mode": "puzzle",
+      "difficulty": 4,
+      "generator": "explainDiff",
+      "promptType": "which_reason",
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "params": {}
+    },
+    {
+      "id": "cmp-g1-sort-dots-001",
+      "level": "G1",
+      "type": "quantity",
+      "structure": "interference",
+      "carrier": "quantity",
+      "task": "order",
+      "mode": "sort",
+      "runtime": "sort",
+      "difficulty": 3,
+      "generator": "sortDots",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4
+      }
+    },
+    {
+      "id": "cmp-g1-sort-race-001",
+      "level": "G1",
+      "type": "speed",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "order",
+      "mode": "sort",
+      "runtime": "sort",
+      "difficulty": 3,
+      "generator": "sortRace",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4
+      }
+    },
+    {
+      "id": "cmp-g2-sort-chain-001",
+      "level": "G2",
+      "type": "weight",
+      "structure": "transitive",
+      "carrier": "weight",
+      "task": "order",
+      "mode": "sort",
+      "runtime": "sort",
+      "difficulty": 5,
+      "generator": "sortChain",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4
+      }
+    },
+    {
+      "id": "cmp-g2-sort-count-001",
+      "level": "G2",
+      "type": "quantity",
+      "structure": "multi_criteria",
+      "carrier": "quantity",
+      "task": "order",
+      "mode": "sort",
+      "runtime": "sort",
+      "difficulty": 4,
+      "generator": "sortCount",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "items": 4
+      }
+    },
+    {
+      "id": "cmp-k1-group-equal-001",
+      "level": "K1",
+      "type": "quantity",
+      "structure": "equivalence",
+      "carrier": "quantity",
+      "task": "classify",
+      "mode": "group",
+      "runtime": "group",
+      "difficulty": 1,
+      "generator": "groupEqual",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
+    },
+    {
+      "id": "cmp-g1-group-spread-001",
+      "level": "G1",
+      "type": "quantity",
+      "structure": "interference",
+      "carrier": "quantity",
+      "task": "classify",
+      "mode": "group",
+      "runtime": "group",
+      "difficulty": 3,
+      "generator": "groupSpread",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
+    },
+    {
+      "id": "cmp-g1-group-race-001",
+      "level": "G1",
+      "type": "speed",
+      "structure": "mediated",
+      "carrier": "speed",
+      "task": "classify",
+      "mode": "group",
+      "runtime": "group",
+      "difficulty": 3,
+      "generator": "groupRace",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
+    },
+    {
+      "id": "cmp-g1-group-count-001",
+      "level": "G1",
+      "type": "quantity",
+      "structure": "multi_criteria",
+      "carrier": "quantity",
+      "task": "classify",
+      "mode": "group",
+      "runtime": "group",
+      "difficulty": 3,
+      "generator": "groupCount",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "itemsPerBin": 3
+      }
+    },
+    {
+      "id": "cmp-k2-fit-equal-001",
+      "level": "K2",
+      "type": "length",
+      "structure": "equivalence",
+      "carrier": "length",
+      "task": "fit",
+      "mode": "fit",
+      "runtime": "fit",
+      "difficulty": 2,
+      "generator": "fitEqual",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {
+        "margin": 10
+      }
+    },
+    {
+      "id": "cmp-g1-fit-expr-001",
+      "level": "G1",
+      "type": "length",
+      "structure": "mediated",
+      "carrier": "length",
+      "task": "fit",
+      "mode": "fit",
+      "runtime": "fit",
+      "difficulty": 4,
+      "generator": "fitExpr",
+      "access": "free",
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "mastery": {
+        "requiredCorrect": 3,
+        "window": 5
+      },
+      "cooldown": {
+        "correct": 5,
+        "familiar": 8,
+        "mastered": 20,
+        "wrong": 2
+      },
+      "params": {}
     }
   ]
-}
-;
+};

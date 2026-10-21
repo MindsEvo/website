@@ -63,10 +63,21 @@
         icon:      meta.icon,
         nameZh:    meta.nameZh, nameEn: meta.nameEn,
         descZh:    meta.descZh, descEn: meta.descEn,
-        questions: NPH_GEN.generate(g, SESSION_SIZE)
+        questions: PatternBoard.decorate(NPH_GEN.generate(g, SESSION_SIZE), PB_AD)
       };
     });
   }
+
+
+  var PB_AD = {
+    kind: 'num',
+    full: function (q) { return q.seq.map(function (t, i) { return i === q.blankIndex ? q.answer : t; }); },
+    blank: function (q) { return q.blankIndex; }, answer: function (q) { return q.answer; }, options: function (q) { return q.options; },
+    render: function (t) { return '<span>' + t + '</span>'; },
+    valid: function (t, q) { return t >= 0 && t <= NPH_DATA.gradeConfig[q.gradeCode].max; },
+    noun: function () { return { zh: '数', en: 'numbers' }; }
+  };
+  var PB_HOOKS = PatternBoard.hooks();
 
   var UNITS = buildUnits();
 
@@ -81,7 +92,7 @@
   function refillUnit(unitId) {
     setTimeout(function () {
       UNITS.forEach(function (u) {
-        if (u.id === unitId) { u.questions = NPH_GEN.generate(unitId, SESSION_SIZE); }
+        if (u.id === unitId) { u.questions = PatternBoard.decorate(NPH_GEN.generate(unitId, SESSION_SIZE), PB_AD); }
       });
     }, 0);
   }
@@ -113,24 +124,11 @@
     passScore: Math.ceil(SESSION_SIZE * 0.75),
     units:     UNITS,
 
-    renderSequence: function (q, container) {
-      container.innerHTML = q.seq.map(function (n) {
-        return n === '?' ? '<span class="mystery">?</span>' : '<span>' + n + '</span>';
-      }).join(' ');
-    },
-
-    renderOption: function (opt) { return String(opt); },
-
-    checkAnswer: function (selected, q) { return Number(selected) === q.answer; },
-
-    getVoiceText: function (q) {
-      var items = q.seq.map(function (n) {
-        return n === '?' ? (shell.lang === 'zh' ? '问号' : 'blank') : String(n);
-      });
-      return shell.lang === 'zh'
-        ? items.join('，') + '，问号是几？'
-        : items.join(', ') + '. What is the blank?';
-    },
+    renderSequence: PB_HOOKS.renderSequence,
+    renderOption:   PB_HOOKS.renderOption,
+    checkAnswer:    PB_HOOKS.checkAnswer,
+    onAnswer:       PB_HOOKS.onAnswer,
+    getVoiceText:   PB_HOOKS.getVoiceText,
 
     registerRootGenes: function () { return GENES.slice(); },
 
@@ -138,11 +136,11 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
+      return buildRadarContext(unit.id, PatternBoard.addProcess(questions, {
         steps:           _unique(questions.map(function (q) { return q.step; })),
         geneIds:         GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      }));
     }
   });
 }());

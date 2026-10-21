@@ -37,7 +37,12 @@ var CmpEngine = (function () {
   };
 
   var COVERAGE_WINDOW    = 20;
-  var SESSION_QUESTIONS  = 4;
+  // Defaults mirror comparison.json → sessionPolicy; game.js sets the real
+  // values through setSessionPolicy() so the validator can collide one place.
+  var SESSION_QUESTIONS  = 8;
+  var MAX_ACTIVITIES     = 2;
+  var MAX_PER_CARRIER    = 2;
+  var RECENT_VARIANT_WINDOW = 5;
   var SCHEDULER_TOP_N    = 5;
   var MASTERED_COOLDOWN_DAYS = 7;
 
@@ -562,11 +567,12 @@ var CmpEngine = (function () {
     return arr;
   }
 
-  // Round-robin interleave across types so no type clusters within a session
+  // Round-robin interleave across carriers so no carrier clusters within a session
   function _typeBalancedShuffle(templates) {
     var byType = Object.create(null);
     templates.forEach(function(t) {
-      (byType[t.type] = byType[t.type] || []).push(t);
+      var k = t.carrier || t.type;
+      (byType[k] = byType[k] || []).push(t);
     });
     var types = _shuffleInPlace(Object.keys(byType));
     types.forEach(function(type) { _shuffleInPlace(byType[type]); });
@@ -610,6 +616,17 @@ var CmpEngine = (function () {
     var state = _getCycleState(level);
     if (!state || !state.plan || state.plan.length === 0) {
       state = _initNewCycle(level, templates);
+    } else {
+      // The template pool for a level can grow (new content ships) or shrink
+      // between visits. A plan built from the old pool would never surface an
+      // id it didn't know about until doneInCycle happens to exhaust it,
+      // which can take a very long time — so replan immediately on mismatch
+      // instead of waiting. completedCycles/unlocked still carry over via
+      // _initNewCycle reading the previous state.
+      var poolIds = pool.map(function(t) { return t.id; });
+      var stale = poolIds.length !== state.plan.length ||
+        poolIds.some(function(id) { return state.plan.indexOf(id) === -1; });
+      if (stale) state = _initNewCycle(level, templates);
     }
 
     // Resume: active session with unanswered questions remaining
@@ -631,12 +648,96 @@ var CmpEngine = (function () {
       next = state.plan.slice();
     }
 
-    var sessionIds = next.slice(0, SESSION_QUESTIONS);
+    var sessionIds = _composeSession(next, done, tplMap);
     state.sessionPlan = sessionIds;
     state.sessionAnswered = {};
     state.sessionActive = true;
     _saveCycleState(level, state);
     return sessionIds.map(function(id) { return tplMap[id]; }).filter(Boolean);
+  }
+
+  function _isActivity(tpl) { return !!(tpl && tpl.runtime && tpl.runtime !== 'puzzle'); }
+
+  /**
+   * Pick this session's templates from the rest of the cycle (plan order),
+   * honouring sessionPolicy: at most MAX_ACTIVITIES activities, at most
+   * MAX_PER_CARRIER items per carrier. When the cycle has fewer than a full
+   * session left, top up with this cycle's least recently done templates.
+   * Single-choice items come first, ordered so adjacent items change carrier;
+   * activities always come last and are never the first item.
+   */
+  function _composeSession(nextIds, doneIds, tplMap) {
+    var picked = [], perCarrier = Object.create(null), activities = 0;
+
+    function tryAdd(id, strict) {
+      var t = tplMap[id];
+      if (!t || picked.indexOf(id) !== -1 || picked.length >= SESSION_QUESTIONS) return;
+      var act = _isActivity(t);
+      if (act && activities >= MAX_ACTIVITIES) return;
+      var c = t.carrier || t.type;
+      if (strict && (perCarrier[c] || 0) >= MAX_PER_CARRIER) return;
+      picked.push(id);
+      perCarrier[c] = (perCarrier[c] || 0) + 1;
+      if (act) activities++;
+    }
+
+    // Activities are capped per session, so they are drawn first or a cycle
+    // could end with a pile of them and no puzzles left to pair them with.
+    nextIds.forEach(function (id) { if (_isActivity(tplMap[id])) tryAdd(id, true); });
+    nextIds.forEach(function (id) { tryAdd(id, true); });
+    doneIds.forEach(function (id) { tryAdd(id, true); });
+    nextIds.forEach(function (id) { tryAdd(id, false); });
+    doneIds.forEach(function (id) { tryAdd(id, false); });
+
+    var puzzles = _shuffleInPlace(picked.filter(function (id) { return !_isActivity(tplMap[id]); }));
+    var acts    = _shuffleInPlace(picked.filter(function (id) { return _isActivity(tplMap[id]); }));
+    var ordered = [], last = null;
+    while (puzzles.length) {
+      var i = 0;
+      while (i < puzzles.length && last !== null &&
+             (tplMap[puzzles[i]].carrier || tplMap[puzzles[i]].type) === last) i++;
+      if (i === puzzles.length) i = 0;
+      var id = puzzles.splice(i, 1)[0];
+      last = tplMap[id].carrier || tplMap[id].type;
+      ordered.push(id);
+    }
+    return ordered.concat(acts);
+  }
+
+  function setSessionPolicy(policy) {
+    policy = policy || {};
+    if (policy.size > 0)          SESSION_QUESTIONS = policy.size;
+    if (policy.maxActivities >= 0) MAX_ACTIVITIES   = policy.maxActivities;
+    if (policy.maxPerCarrier > 0)  MAX_PER_CARRIER  = policy.maxPerCarrier;
+    if (policy.recentWindow > 0)   RECENT_VARIANT_WINDOW = policy.recentWindow;
+  }
+
+  // ── Recent variants ───────────────────────────────────────────────────────
+  // Each template remembers the fingerprints of its last few generated items,
+  // so a replay redraws instead of showing the child the same item again.
+
+  var SIGNATURE_SKIP = { templateId:1, level:1, rootGeneIds:1, variantId:1, hintZh:1, hintEn:1 };
+
+  function variantSignature(q) {
+    function canon(v) {
+      if (Array.isArray(v)) return '[' + v.map(canon).join(',') + ']';
+      if (v && typeof v === 'object') {
+        return '{' + Object.keys(v).sort().filter(function (k) { return !SIGNATURE_SKIP[k]; })
+          .map(function (k) { return k + ':' + canon(v[k]); }).join(',') + '}';
+      }
+      return JSON.stringify(v);
+    }
+    return canon(q);
+  }
+
+  function isRecentVariant(templateId, sig) {
+    return _get('recent:' + templateId, []).indexOf(sig) !== -1;
+  }
+
+  function rememberVariant(templateId, sig) {
+    var list = _get('recent:' + templateId, []).filter(function (s) { return s !== sig; });
+    list.push(sig);
+    _set('recent:' + templateId, list.slice(-RECENT_VARIANT_WINDOW));
   }
 
   function recordSessionAnswer(level, templateId, correct) {
@@ -737,6 +838,12 @@ var CmpEngine = (function () {
     completeSession:        completeSession,
     getSessionRemaining:    getSessionRemaining,
     getCycleStatus:         getCycleStatus,
+    setSessionPolicy:       setSessionPolicy,
+    isActivity:             _isActivity,
+    // Recent-variant memory (replay variety)
+    variantSignature:       variantSignature,
+    isRecentVariant:        isRecentVariant,
+    rememberVariant:        rememberVariant,
     // Analytics — recorded, never used to pick questions
     recordAttempt:          recordAttempt,
     incrementLevelSession:  incrementLevelSession,

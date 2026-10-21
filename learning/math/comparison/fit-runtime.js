@@ -122,7 +122,7 @@ var FitRuntime = (function () {
             '<div class="ft-water" id="ft-water">' +
               '<div class="ft-river" style="background:' + scene.riverColor + ';">' +
                 '<span class="ft-water-ripple">🌊🌊</span>' +
-                (s.showNumbers ? '<span class="ft-gap-num">' + scene.gapPct + '</span>' : '') +
+                (s.showNumbers ? '<span class="ft-gap-num">' + (scene.gapLabel != null ? scene.gapLabel : scene.gapPct) + '</span>' : '') +
               '</div>' +
               '<div class="ft-bridge" id="ft-bridge"></div>' +
               '<div class="ft-drop-zone" id="ft-drop-zone"></div>' +
@@ -207,7 +207,7 @@ var FitRuntime = (function () {
       el.dataset.boardId = board.id;
       el.innerHTML =
         '<div class="ft-board-bar" style="width:' + _boardPx(board) + 'px;background:' + board.color + ';"></div>' +
-        (s.showNumbers ? '<div class="ft-board-lbl">' + board.lengthPct + '</div>' : '');
+        (s.showNumbers ? '<div class="ft-board-lbl">' + (board.label != null ? board.label : board.lengthPct) + '</div>' : '');
 
       if (!used) {
         PointerDrag.makeDraggable(el, {

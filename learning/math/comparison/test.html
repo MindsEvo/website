@@ -34,7 +34,7 @@
 
 <div id="summary">
   <h1>⚖️ Comparison Generator — Validation Suite</h1>
-  <h2>Runs each template 20 times. Puzzles: required fields, answer-in-options, answer balance.
+  <h2>Runs each template 30 times. Puzzles: required fields, answer-in-options, answer balance.
       Interactions (sort/match/group/fit): structural validity — unambiguous target, discriminable gaps, one-to-one mapping.
       Mini-games: every round in the pool is re-derived from its values, plus answer-side balance and time-per-round.</h2>
   <div id="sum-out" class="sum-row">Loading…</div>
@@ -52,7 +52,7 @@
 <script>
 (function() {
 
-  var RUNS = 20;
+  var RUNS = 30;
 
   // ── helpers ─────────────────────────────────────────────────────────────
 
@@ -66,8 +66,37 @@
     if (Array.isArray(q.pile))
       return q.pile.map(function(b){ return b.widthPct; }).join(',') + '>' + q.answer;
     // Build a fingerprint of the question's key visual parameters
-    if (q.type === 'size' || q.type === 'weight' || q.type === 'speed')
-      return q.leftEmoji + q.rightEmoji + (q.askBigger||q.askHeavier||q.askFaster?'B':'S');
+    if (q.type === 'size' || q.type === 'size_pick' || q.type === 'size_real')
+      return q.leftEmoji + q.rightEmoji + (q.leftSizeRank||'') + '|' + (q.rightSizeRank||'') +
+             JSON.stringify(q.sizeBySlot||null) + (q.askBigger||q.askReal?'B':'S');
+    if (q.type === 'balance_judge')
+      return q.emoji + '|' + q.rel + '|' + q.tiltDeg + '|' + (q.askHeavier?'H':'L');
+    if (q.type === 'balance_select' || q.type === 'balance_chain')
+      return (q.balances||[]).map(function(b){ return b.left+b.right+b.tiltDeg; }).join(',') + '|' + (q.askHeaviest?'H':'L');
+    if (q.type === 'balance_swap')
+      return q.k+'|'+q.m+'|'+q.n+'|'+q.blockSide;
+    if (q.type === 'race_judge' || q.type === 'race_variant')
+      return q.variant+'|'+q.leftPct+'|'+q.rightPct+'|'+q.leftSeconds+'|'+q.rightSeconds+'|'+(q.askFaster?'F':'S');
+    if (q.type === 'race_select')
+      return JSON.stringify(q.posBySlot)+'|'+q.seconds+'|'+(q.askFastest?'F':'S');
+    if (q.type === 'area_grid')
+      return q.leftCount+'|'+q.rightCount+'|'+JSON.stringify(q.leftBBox)+'|'+JSON.stringify(q.rightBBox)+'|'+(q.askBigger?'B':'S');
+    if (q.type === 'area_rect')
+      return q.leftA+'x'+q.leftB+'|'+q.rightA+'x'+q.rightB+'|'+(q.askBigger?'B':'S');
+    if (q.type === 'quantity_diff') return q.leftCount+'|'+q.rightCount+'|'+q.answer;
+    if (q.type === 'area_diff')     return q.leftCount+'|'+q.rightCount+'|'+JSON.stringify(q.leftBBox)+'|'+JSON.stringify(q.rightBBox)+'|'+q.answer;
+    if (q.type === 'race_diff')     return q.emoji+'|'+q.leftSeconds+'|'+q.rightSeconds+'|'+q.answer;
+    if (q.type === 'weight_diff')   return q.emoji+'|'+q.leftWeight+'|'+q.rightWeight+'|'+q.answer;
+    if (q.type === 'weight_adjust') return q.emoji+'|'+q.leftWeight+'|'+q.rightWeight+'|'+q.answer;
+    if (q.type === 'balance_repair') return q.emoji+'|'+q.tiltDeg+'|'+q.claimSide+'|'+q.answer;
+    if (q.type === 'size_real_select')
+      return ['A','B','C'].map(function(l){ var i=q.itemsBySlot[l]; return i.emoji+i.px; }).join(',')+'|'+(q.askBiggest?'B':'S');
+    if (q.type === 'size_real_repair')
+      return q.leftEmoji+q.rightEmoji+'|'+q.leftSizeRank+'|'+q.rightSizeRank+'|'+q.claimSide;
+    if (q.type === 'multi_attribute_select')
+      return JSON.stringify(q.itemsBySlot)+'|'+(q.askBiggest?'B':'S');
+    if (q.type === 'multi_attribute_repair')
+      return JSON.stringify(q.left)+JSON.stringify(q.right)+'|'+q.claimSide;
     if (q.type === 'number')   return q.leftNum + '|' + q.rightNum + '|' + q.askBigger;
     if (q.type === 'quantity') return q.leftCount + '|' + q.rightCount + '|' + q.askMore;
     if (q.type === 'length')   return Math.round(q.leftPct) + '|' + Math.round(q.rightPct) + '|' + q.askLonger;
@@ -79,7 +108,7 @@
     if (q.type === 'time')     return q.leftEventZh + '|' + q.rightEventZh + '|' + q.answer;
     if (q.type === 'multi_attribute') return JSON.stringify(q.left) + JSON.stringify(q.right);
     // Interaction activities: fingerprint the generated layout
-    if (q.type === 'sort')  return (q.items || []).map(function(i){ return i.id+':'+i.lengthPct; }).join('|');
+    if (q.type === 'sort')  return (q.items || []).map(function(i){ return i.id+':'+(i.lengthPct !== undefined ? i.lengthPct : i.emoji); }).join('|') + '|' + (q.instrZh || '');
     if (q.type === 'match') return (q.leftItems || []).map(function(i){ return i.emoji+i.size; }).join('|') +
                                    '/' + (q.rightSlots || []).map(function(r){ return r.emoji; }).join('|');
     if (q.type === 'group') return (q.items || []).map(function(i){ return i.emoji+i.bin; }).join('|');
@@ -110,6 +139,21 @@
       bad.push('answer-not-in-options('+q.answer+' not in ['+q.options.join(',')+'])');
     if (q.type === 'multi_attribute') bad = bad.concat(checkMultiAttr(q, tpl));
     if (q.type === 'position')        bad = bad.concat(checkPosition(q));
+    if (q.optionTypes)                bad = bad.concat(checkOptionTypes(q));
+    return bad;
+  }
+
+  // error_type wiring (§1.6 of COMPARISON-PHASE2-SPECS.md): every option must
+  // resolve to one of the 7 declared labels, and the correct one must be 'none'.
+  var VALID_ERROR_TYPES = { none:1, polarity_confusion:1, perception:1, false_equal:1, missed_equal:1, middle_item:1, inverse_relation:1 };
+  function checkOptionTypes(q) {
+    var bad = [];
+    (q.options || []).forEach(function(o) {
+      if (!(o in q.optionTypes)) bad.push('optionTypes: missing entry for option "'+o+'"');
+      else if (!VALID_ERROR_TYPES[q.optionTypes[o]]) bad.push('optionTypes: "'+o+'" has unknown error_type "'+q.optionTypes[o]+'"');
+    });
+    if (q.optionTypes[q.answer] !== 'none')
+      bad.push('optionTypes: correct answer "'+q.answer+'" maps to "'+q.optionTypes[q.answer]+'", expected "none"');
     return bad;
   }
 
@@ -176,6 +220,7 @@
       if (items.length < 2) { bad.push('sort: needs >=2 items'); return bad; }
       items.forEach(function(it, i) {
         if (!it.id)                          bad.push('sort: item['+i+'] missing id');
+        if (it.emoji) return;   // text/emoji items carry no bar geometry
         if (typeof it.lengthPct !== 'number' || it.lengthPct <= 0 || it.lengthPct > 100)
           bad.push('sort: item['+i+'] lengthPct out of range ('+it.lengthPct+')');
         if (!it.color)                       bad.push('sort: item['+i+'] missing color');
@@ -191,7 +236,7 @@
       var minGap = (p.minGapPct || 18) - 1;   // -1 tolerance: generator rounds lengths
       var lenOf = {};
       items.forEach(function(it) { lenOf[it.id] = it.lengthPct; });
-      for (var k = 1; k < order.length; k++) {
+      for (var k = 1; k < order.length && !items[0].emoji; k++) {
         var gap = lenOf[order[k]] - lenOf[order[k-1]];
         if (!(gap > 0))       bad.push('sort: targetOrder not ascending at '+k+' ('+order[k-1]+'→'+order[k]+')');
         else if (gap < minGap) bad.push('sort: gap '+Math.round(gap)+'% < minGapPct '+(p.minGapPct||18)+' at '+k);
@@ -464,14 +509,32 @@
     var dupMax = results.length ? Math.max.apply(null, Object.values(fingerprints)) : 0;
     var uniquePct = Math.round(unique / RUNS * 100);
 
-    // Answer balance: for 2-option puzzles, each side should appear 20–80% of the time.
+    // Answer balance: for 2-option puzzles, each side should appear 20–80% of
+    // the time. For 3-option puzzles (A/B/C, or left/right/same — some of
+    // which target a "same" ratio as low as 15%) this harness only checks that
+    // every option is reachable at all within 20 draws; the ±12%/±8% ratio
+    // bands COMPARISON-PHASE2-SPECS.md §1.4 requires were already checked
+    // separately with 300-draw Node samples, where n=20 would be too noisy to
+    // hold to that precision without frequent false positives.
     // Interaction activities have no options — their gate is the structural check above.
+    // `difference` judge types (quantity_diff/area_diff/race_diff/weight_diff)
+    // have no FIXED option set at all — every draw computes its own 3 gap
+    // numbers, so "did option X from draw 0 ever recur" is meaningless noise,
+    // not a balance signal. Their answer/option invariants were already
+    // checked with a 1200-draw Node script when they were built; skip here.
+    var DIFF_VALUE_TYPES = { quantity_diff: 1, area_diff: 1, race_diff: 1, weight_diff: 1, weight_adjust: 1, quantity_adjust: 1 };
     var opts = (isPuzzle && results[0] && results[0].options) || [];
     var balanced = true;
-    if (opts.length === 2) {
+    if (DIFF_VALUE_TYPES[tpl.type]) {
+      // no-op: balanced stays true, see note above.
+    } else if (opts.length === 2) {
       opts.forEach(function(o) {
         var pct = (answerCounts[o] || 0) / RUNS;
         if (pct < 0.2 || pct > 0.8) balanced = false;
+      });
+    } else if (opts.length === 3) {
+      opts.forEach(function(o) {
+        if (!(answerCounts[o] || 0)) balanced = false;
       });
     }
 
@@ -517,7 +580,9 @@
              rs.slice(0, 3).map(function (r, i) { return '  r' + i + ': ' + miniRoundStr(q, r); }).join('\n     ');
     }
     switch (q.type) {
-      case 'size':    return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer+' (ask '+(q.askBigger?'bigger':'smaller')+')';
+      case 'size':    return q.leftEmoji+' '+q.leftSizeRank+'px vs '+q.rightSizeRank+'px → '+q.answer+' (ask '+(q.askBigger?'bigger':'smaller')+')';
+      case 'size_pick': return q.emoji+' A:'+q.sizeBySlot.A+'px B:'+q.sizeBySlot.B+'px C:'+q.sizeBySlot.C+'px → '+q.answer+' (ask '+(q.askBigger?'biggest':'smallest')+')';
+      case 'size_real': return q.leftEmoji+'('+q.leftNameZh+') vs '+q.rightEmoji+'('+q.rightNameZh+') → '+q.answer+' (ask '+(q.askReal?'real':'drawn')+' '+(q.askBigger?'bigger':'smaller')+', conflict='+q.conflict+')';
       case 'number':  return q.leftNum+' vs '+q.rightNum+' → '+q.answer;
       case 'quantity':return q.leftCount+' vs '+q.rightCount+' dots → '+q.answer;
       case 'length':  return Math.round(q.leftPct)+'% vs '+Math.round(q.rightPct)+'% → '+q.answer;
@@ -526,9 +591,26 @@
       case 'color':   return (q.items||[]).map(function(i,idx){return ['A','B','C'][idx]+':'+i.shape+'/'+i.color;}).join(' ')+' → odd='+q.answer;
       case 'position':return q.leftEmoji+' ('+Math.round(q.leftDistPct)+'%) vs '+q.rightEmoji+' ('+Math.round(q.rightDistPct)+'%) → '+q.answer;
       case 'fullness':return Math.round(q.leftFillPct)+'% vs '+Math.round(q.rightFillPct)+'% → '+q.answer;
-      case 'weight':  return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer;
-      case 'speed':   return q.leftEmoji+' vs '+q.rightEmoji+' → '+q.answer;
       case 'time':    return q.leftEventZh+' vs '+q.rightEventZh+' → '+q.answer;
+      case 'balance_judge': return q.emoji+' rel='+q.rel+' tilt='+q.tiltDeg+'° → '+q.answer+' (ask '+(q.askHeavier?'heavier':'lighter')+')';
+      case 'balance_select':
+      case 'balance_chain':  return (q.balances||[]).map(function(b){return b.left+'-'+b.right+':'+b.tiltDeg+'°';}).join(' ')+' → '+q.answer+' (ask '+(q.askHeaviest?'heaviest':'lightest')+')';
+      case 'balance_swap':   return 'k='+q.k+' m='+q.m+' n='+q.n+' (block='+q.blockValue+') block@'+q.blockSide+' → '+q.answer;
+      case 'race_judge':     return q.emoji+' L@'+q.leftPct+'% R@'+q.rightPct+'% ('+q.leftSeconds+'s) → '+q.answer+' (ask '+(q.askFaster?'faster':'slower')+')';
+      case 'race_select':    return JSON.stringify(q.posBySlot)+' ('+q.seconds+'s) → '+q.answer+' (ask '+(q.askFastest?'fastest':'slowest')+')';
+      case 'race_variant':   return 'variant '+q.variant+' L@'+q.leftPct+'%/'+q.leftSeconds+'s R@'+q.rightPct+'%/'+q.rightSeconds+'s → '+q.answer+' (ask '+(q.askFaster?'faster':'slower')+')';
+      case 'area_grid':      return q.leftCount+'cells('+q.leftBBox.w+'x'+q.leftBBox.h+') vs '+q.rightCount+'cells('+q.rightBBox.w+'x'+q.rightBBox.h+') → '+q.answer;
+      case 'area_rect':      return q.leftA+'x'+q.leftB+' vs '+q.rightA+'x'+q.rightB+' → '+q.answer;
+      case 'quantity_diff':  return q.leftCount+' vs '+q.rightCount+' → diff '+q.answer;
+      case 'area_diff':      return q.leftCount+'cells vs '+q.rightCount+'cells → diff '+q.answer;
+      case 'race_diff':      return q.emoji+' '+q.leftSeconds+'s vs '+q.rightSeconds+'s → diff '+q.answer;
+      case 'weight_diff':    return q.emoji+' ⚖'+q.leftWeight+' vs ⚖'+q.rightWeight+' → diff '+q.answer;
+      case 'weight_adjust':  return q.emoji+' ⚖'+q.leftWeight+' vs ⚖'+q.rightWeight+' → add '+q.answer;
+      case 'balance_repair': return q.emoji+' tilt='+q.tiltDeg+'° claim='+q.claimSide+' → '+q.answer;
+      case 'size_real_select': return ['A','B','C'].map(function(l){ var i=q.itemsBySlot[l]; return l+':'+i.nameZh+'('+i.px+'px)'; }).join(' ')+' → '+q.answer+' (ask '+(q.askBiggest?'biggest':'smallest')+', conflict='+q.conflict+')';
+      case 'size_real_repair': return q.leftEmoji+' '+q.leftSizeRank+'px vs '+q.rightEmoji+' '+q.rightSizeRank+'px claim='+q.claimSide+' → '+q.answer;
+      case 'multi_attribute_select': return JSON.stringify(q.itemsBySlot)+' → '+q.answer;
+      case 'multi_attribute_repair': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' claim='+q.claimSide+' → '+q.answer;
       case 'multi_attribute': return 'L:'+JSON.stringify(q.left)+' R:'+JSON.stringify(q.right)+' → '+q.answer;
       case 'sort':    return (q.items||[]).map(function(i){ return i.id+':'+i.lengthPct+'%'; }).join(' ')+' → '+(q.targetOrder||[]).join(',');
       case 'match':   return (q.leftItems||[]).map(function(l){

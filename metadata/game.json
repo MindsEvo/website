@@ -172,7 +172,7 @@
       "path": "learning/math/comparison/",
       "titleZh": "数学比较",
       "titleEn": "Math Comparison",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC"],
+      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
       "lessonIds": ["learning-math-comparison-l1"],
       "videoIds": ["learning-math-comparison-intro-001"]
     },
@@ -223,6 +223,18 @@
       "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
       "lessonIds": ["learning-math-strategy-l1"],
       "videoIds": ["learning-math-strategy-intro-001"]
+    },
+    {
+      "id": "learning-language",
+      "series": "learning",
+      "module": "language",
+      "shell": "shell-1",
+      "path": "learning/language/",
+      "titleZh": "语文素养",
+      "titleEn": "Language & Literacy",
+      "rootGeneIds": ["RG.LANGUAGE.OBSERVATION.DESCRIBE", "RG.LANGUAGE.COMPREHENSION.INFO", "RG.LANGUAGE.INFERENCE.EVIDENCE", "RG.LANGUAGE.STRUCTURE.SEQUENCE", "RG.LANGUAGE.CHOICE.CONTEXT", "RG.LANGUAGE.EXPRESSION.GUIDED"],
+      "lessonIds": [],
+      "videoIds": []
     },
     {
       "id": "clio-bunny-maze-workshop",
@@ -299,6 +311,90 @@
       "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
       "lessonIds": [],
       "videoIds": []
+    },
+    {
+      "id": "flash-cards",
+      "series": "mindseeds",
+      "module": "flash-cards",
+      "shell": "shell-1",
+      "path": "games/flash-cards/",
+      "titleZh": "闪现卡片",
+      "titleEn": "Flash Cards",
+      "rootGeneIds": ["RG.MEMORY.VISUAL.RECOGNITION"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-flash-cards-intro-001"]
+    },
+    {
+      "id": "treasure-grid",
+      "series": "mindseeds",
+      "module": "treasure-grid",
+      "shell": "shell-1",
+      "path": "games/treasure-grid/",
+      "titleZh": "宝藏格",
+      "titleEn": "Treasure Grid",
+      "rootGeneIds": ["RG.MEMORY.SPATIAL.BASIC"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-treasure-grid-intro-001"]
+    },
+    {
+      "id": "energy-planner",
+      "series": "mindseeds",
+      "module": "energy-planner",
+      "shell": "shell-1",
+      "path": "games/energy-planner/",
+      "titleZh": "能量分配",
+      "titleEn": "Energy Planner",
+      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-energy-planner-intro-001"]
+    },
+    {
+      "id": "route-choice",
+      "series": "mindseeds",
+      "module": "route-choice",
+      "shell": "shell-1",
+      "path": "games/route-choice/",
+      "titleZh": "近路还是远路",
+      "titleEn": "Near or Far",
+      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-route-choice-intro-001"]
+    },
+    {
+      "id": "backpack",
+      "series": "mindseeds",
+      "module": "backpack",
+      "shell": "shell-1",
+      "path": "games/backpack/",
+      "titleZh": "背包装什么",
+      "titleEn": "Backpack",
+      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-backpack-intro-001"]
+    },
+    {
+      "id": "rule-change",
+      "series": "mindseeds",
+      "module": "rule-change",
+      "shell": "shell-1",
+      "path": "games/rule-change/",
+      "titleZh": "规则变了",
+      "titleEn": "Rule Change",
+      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-rule-change-intro-001"]
+    },
+    {
+      "id": "whats-next",
+      "series": "mindseeds",
+      "module": "whats-next",
+      "shell": "shell-1",
+      "path": "games/whats-next/",
+      "titleZh": "下一步会怎样",
+      "titleEn": "What's Next",
+      "rootGeneIds": ["RG.STRATEGY.PREDICT.CONSEQUENCE"],
+      "lessonIds": [],
+      "videoIds": ["mindseeds-whats-next-intro-001"]
     },
     {
       "id": "clio-word-connections-workshop",
