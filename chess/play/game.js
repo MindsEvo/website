@@ -34,6 +34,7 @@
       if (token === "depth" && parts[i + 1]) { info.depth = Number(parts[i + 1]); i += 1; continue; }
       if (token === "nodes" && parts[i + 1]) { info.nodes = Number(parts[i + 1]); i += 1; continue; }
       if (token === "time" && parts[i + 1]) { info.time = Number(parts[i + 1]); i += 1; continue; }
+      if (token === "wdl" && parts[i + 3]) { info.wdl = parts.slice(i + 1, i + 4).map(Number); i += 3; continue; }
       if (token === "score" && parts[i + 2]) {
         var scoreType = parts[i + 1];
         var scoreValue = parts[i + 2];
@@ -106,6 +107,19 @@
 
   async function configureEngine(settings) {
     await ensureEngineReady();
+    if (window.ChessEngineSettings) {
+      window.ChessEngineSettings.commands(settings).forEach(function (command) {
+        var option = command.split(' value ')[0];
+        if (engineAppliedConfig[option] !== command) {
+          sendEngineCommand(command);
+          engineAppliedConfig[option] = command;
+        }
+      });
+      var pendingReady = waitForEngineLine(function (line) { return line === 'readyok'; }, 10000);
+      sendEngineCommand('isready');
+      await pendingReady;
+      return settings.multiPv;
+    }
     var skillLevel = clampEngineNumber(settings.skillLevel, 0, 20, 10);
     var multiPv = clampEngineNumber(settings.multiPv, 1, 5, 1);
     if (skillLevel !== engineAppliedConfig.skillLevel) {
@@ -556,18 +570,103 @@
     return toFen().split(" ").slice(0, 4).join(" ");
   }
 
+  var selectedBankPosition = null;
+  var selectedBankQuestionId = null;
+  var practiceActivityId = null;
+  var practiceStartedAt = Date.now();
+
+  window.addEventListener('chess-records-session', function (event) {
+    practiceActivityId = event.detail.id;
+    practiceStartedAt = Date.now();
+    if (event.detail.switchUser) {
+      stopAiVsAiPlayback();
+      setMode('manual');
+      resetGame();
+    }
+  });
+
+  function saveLearningSession(saved, explanation, initialFen) {
+    if (!window.ChessRecords) return;
+    try {
+      var recordsData = window.ChessRecords.read();
+      var existingActivity = recordsData.activities.find(function (activity) { return activity.id === practiceActivityId; });
+      if (existingActivity && existingActivity.userId !== recordsData.activeUser) practiceActivityId = null;
+      if (!practiceActivityId) {
+        practiceActivityId = window.ChessRecords.begin(selectedBankQuestionId, initialFen || toFen());
+        practiceStartedAt = Date.now();
+      }
+      var patch = {
+        completed: state.gameOver,
+        timeSpent: Math.max(0, Math.floor((Date.now() - practiceStartedAt) / 1000)),
+        moves: state.moveHistory.map(function (entry) { return { notation: entry.notation, move: entry.move }; })
+      };
+      if (saved) patch.saved = true;
+      if (explanation != null) patch.explanation = explanation;
+      window.ChessRecords.update(practiceActivityId, patch);
+      if (saved) document.getElementById('bankStatus').textContent = '练习记录已保存';
+    } catch (error) {
+      document.getElementById('bankStatus').textContent = '记录保存失败：' + error.message;
+    }
+  }
+
+  function parseBankFen(fen) {
+    var fields = String(fen || "").trim().split(/\s+/);
+    var ranks = fields[0].split("/");
+    if (ranks.length !== 8 || !/^[wb]$/.test(fields[1])) throw new Error("FEN 格式不正确");
+    var board = ranks.map(function (rank) {
+      var squares = [];
+      rank.split("").forEach(function (symbol) {
+        if (/^[1-8]$/.test(symbol)) {
+          for (var count = 0; count < Number(symbol); count++) squares.push("");
+        } else if (/^[kqrbnpKQRBNP]$/.test(symbol)) {
+          squares.push((symbol === symbol.toUpperCase() ? "w" : "b") + symbol.toLowerCase());
+        } else throw new Error("FEN 包含无效棋子");
+      });
+      if (squares.length !== 8) throw new Error("FEN 每行必须有八格");
+      return squares;
+    });
+    var rights = fields[2] || "-";
+    var ep = fields[3] || "-";
+    if (!/^(?:-|K?Q?k?q?)$/.test(rights) || !/^(?:-|[a-h][36])$/.test(ep)) throw new Error("FEN 特殊走法字段不正确");
+    return {
+      board: board, turn: fields[1],
+      castlingRights: {
+        w: { kingside: rights.includes("K"), queenside: rights.includes("Q") },
+        b: { kingside: rights.includes("k"), queenside: rights.includes("q") }
+      },
+      enPassantTarget: ep === "-" ? null : { row: 8 - Number(ep[1]), col: FILES.indexOf(ep[0]) },
+      halfmoveClock: Number(fields[4]) || 0
+    };
+  }
+
+  window.addEventListener("chess-bank-select", function (event) {
+    var question = event.detail;
+    try {
+      var position = parseBankFen(question.fen);
+      stopAiVsAiPlayback();
+      practiceActivityId = null;
+      selectedBankPosition = position;
+      selectedBankQuestionId = question.questionId || null;
+      setMode("manual");
+      resetGame();
+      question.loaded = true;
+    } catch (error) {
+      question.error = error.message;
+    }
+  });
+
   function resetEngineState() {
-    state.board = createInitialBoard();
-    state.turn = "w";
+    state.board = selectedBankPosition ? selectedBankPosition.board.map(function (rank) { return rank.slice(); }) : createInitialBoard();
+    state.turn = selectedBankPosition ? selectedBankPosition.turn : "w";
     state.selected = null;
     state.moveHistory = [];
-    state.castlingRights = createCastlingRights();
-    state.enPassantTarget = null;
+    state.castlingRights = selectedBankPosition ? JSON.parse(JSON.stringify(selectedBankPosition.castlingRights)) : createCastlingRights();
+    state.enPassantTarget = selectedBankPosition && selectedBankPosition.enPassantTarget ? Object.assign({}, selectedBankPosition.enPassantTarget) : null;
     state.lastMove = null;
     state.checkSquare = null;
     state.gameOver = false;
     state.gameResultText = "";
-    state.halfmoveClock = 0;
+    state.halfmoveClock = selectedBankPosition ? selectedBankPosition.halfmoveClock : 0;
     state.positionCounts = {};
     state.positionCounts[reducedPositionKey()] = 1;
   }
@@ -665,6 +764,7 @@
     ensureAiMockData();
     var panel = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
     var preset = panel.preset || "master";
+    if (window.ChessEngineSettings) return window.ChessEngineSettings.resolve(side === 'w' ? 'white' : 'black', preset);
     var config = getAiPresetConfig(preset);
     return {
       skillLevel: config.skillLevel,
@@ -764,6 +864,7 @@
     panelState.eval = payload && payload.bestMove
       ? ((side === "w" ? "白方" : "黑方") + "建议: " + payload.bestMove)
       : "等待分析...";
+    if (settings.showWdl && info.wdl) panelState.eval += '；胜/和/负：' + info.wdl.map(function (value) { return (value / 10).toFixed(1) + '%'; }).join(' / ');
     renderAiVsAiPanel();
   }
 
@@ -819,6 +920,7 @@
   function getHumanAiEngineSettings() {
     ensureAiMockData();
     var preset = state.humanAi.preset || "master";
+    if (window.ChessEngineSettings) return window.ChessEngineSettings.resolve('human', preset);
     var config = getAiPresetConfig(preset);
     return {
       skillLevel: config.skillLevel,
@@ -925,6 +1027,7 @@
     state.humanAi.eval = payload && payload.bestMove
       ? "AI 建议走法: " + payload.bestMove + "。当前评估已同步到面板。"
       : "等待分析...";
+    if (engineSettings.showWdl && info.wdl) state.humanAi.eval += ' 胜/和/负：' + info.wdl.map(function (value) { return (value / 10).toFixed(1) + '%'; }).join(' / ');
     renderHumanAiPanel();
   }
 
@@ -942,13 +1045,13 @@
     renderHumanAiPanel();
 
     try {
-      var payload = await analyzeWithLocalEngine({
+      var payload = await analyzeWithLocalEngine(Object.assign({}, engineSettings, {
         fen: toFen(),
         movetime: engineSettings.movetime,
         depth: engineSettings.depth,
         skillLevel: engineSettings.skillLevel,
         multiPv: engineSettings.multiPv
-      });
+      }));
       if (!payload.ok) {
         throw new Error("Stockfish analyze failed");
       }
@@ -1016,13 +1119,13 @@
     renderAiVsAiPanel();
 
     try {
-      var payload = await analyzeWithLocalEngine({
+      var payload = await analyzeWithLocalEngine(Object.assign({}, settings, {
         fen: toFen(),
         movetime: settings.movetime,
         depth: settings.depth,
         skillLevel: settings.skillLevel,
         multiPv: settings.multiPv
-      });
+      }));
       if (!payload.ok) {
         throw new Error("Stockfish analyze failed");
       }
@@ -1630,6 +1733,7 @@
     }
 
     var snapshotBefore = snapshotState();
+    var sessionInitialFen = !practiceActivityId ? toFen() : null;
     var piece = getPiece(move.fromRow, move.fromCol);
     if (move.isPromotion && !move.promotionKind) {
       move.promotionKind = promptPromotionChoice();
@@ -1701,6 +1805,8 @@
       move: Object.assign({}, state.lastMove)
     });
     pushNotation(notation);
+
+    saveLearningSession(false, null, sessionInitialFen);
 
     renderBoard();
     soundManager.playMove(state.lastMove);
@@ -1813,6 +1919,8 @@
       }
     }
     voiceManager.onReset();
+    if (practiceActivityId && selectedBankPosition) saveLearningSession(false);
+    if (!selectedBankPosition) practiceActivityId = null;
     logger.info("game", "game.reset", {});
   }
 
@@ -1828,6 +1936,7 @@
     }
     renderBoard();
     voiceManager.onUndo();
+    if (practiceActivityId) saveLearningSession(false);
     logger.info("game", "undo.done", { notation: last.notation });
   }
 
@@ -2035,15 +2144,21 @@
       logger.info("mode", "player-color.changed", { color: state.playerColor });
     });
     bindIf(btnExplain, "click", function () {
+      if (selectedBankPosition) {
+        window.dispatchEvent(new Event("chess-bank-explain"));
+        return;
+      }
       if (expandPanel) {
         expandPanel.innerHTML = "<div class='expand-placeholder'>解说区：后续接入教程与题库解释输出。</div>";
       }
       logger.info("panel", "explain.clicked", {});
     });
     bindIf(btnSaveExplain, "click", function () {
+      saveLearningSession(true, expandPanel ? expandPanel.textContent : '');
       logger.info("panel", "explain.saved", {});
     });
     bindIf(btnSaveNote, "click", function () {
+      saveLearningSession(true);
       logger.info("panel", "note.saved", { moveCount: state.moveHistory.length });
     });
     bindIf(volumeRange, "input", function () {
@@ -2084,6 +2199,18 @@
   }
 
   function init() {
+    if (window.ChessEngineSettings) {
+      document.querySelectorAll('[data-role="preset"]').forEach(function (select) {
+        var option = document.createElement('option'); option.value = 'settings'; option.textContent = '使用引擎设置';
+        select.prepend(option); select.value = 'settings';
+      });
+      ensureAiMockData();
+      state.humanAi.preset = 'settings'; state.aiVsAi.black.preset = 'settings'; state.aiVsAi.white.preset = 'settings';
+      document.querySelectorAll('[data-role="settings"]').forEach(function (container) {
+        container.replaceChildren();
+        var link = document.createElement('a'); link.href = '../settings/engine.html'; link.textContent = 'AI引擎设置'; container.appendChild(link);
+      });
+    }
     loadDisplaySettings();
     applyBoardThemeVariables();
     restoreDividerSplit();

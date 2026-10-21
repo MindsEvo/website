@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>系统分析 | 国际象棋</title>
+  <link rel="stylesheet" href="../play/style.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="analysis-page">
+    <header class="analysis-header"><a class="back-link" href="../index.html">返回主页</a><h1>📊 系统分析</h1></header>
+    <div class="analysis-layout">
+      <div class="analysis-main">
+        <section class="analysis-section" aria-labelledby="overviewTitle">
+          <h2 id="overviewTitle">题库概览</h2><dl class="overview-grid" id="overview"></dl>
+        </section>
+        <section class="analysis-section" aria-labelledby="distributionTitle">
+          <h2 id="distributionTitle">分布图表</h2><div class="distribution" id="distribution"></div>
+        </section>
+        <section class="analysis-section" aria-labelledby="statisticsTitle">
+          <h2 id="statisticsTitle">详细统计</h2>
+          <div class="table-scroll"><table><thead><tr><th scope="col">类型</th><th scope="col">子分类</th><th scope="col">难度</th><th scope="col">数量</th></tr></thead><tbody id="statistics"></tbody></table></div>
+        </section>
+        <section class="analysis-section recommendation-section" aria-labelledby="recommendationTitle">
+          <h2 id="recommendationTitle">🤖 专家推荐</h2>
+          <form id="recommendForm">
+            <div class="filter-grid">
+              <label>题目类型<select id="category"><option value="endgame">残局基因</option><option value="mate">攻杀基因</option><option value="tactics">战术基因</option><option value="opening">开局基因</option><option value="comprehensive">综合基因</option></select></label>
+              <label>难度级别<select id="difficulty"><option>L1</option><option>L2</option><option>L3</option></select></label>
+              <label>推荐数量<input id="count" type="number" min="1" max="10" step="1" value="3" required /></label>
+              <label>子分类<select id="subcategory"></select></label>
+            </div>
+            <button class="generate-button" type="submit">生成推荐</button>
+            <button class="clear-button" type="button" id="clearRecommendations">清空推荐</button>
+            <p id="recommendationStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+      <aside class="analysis-directory">
+        <h2>📁 题库目录</h2>
+        <div class="bank-tree" id="bankTree" data-mode="analysis" aria-label="题库目录"></div>
+        <div id="bankStatus" class="bank-status" role="status"></div>
+      </aside>
+    </div>
+  </main>
+  <script src="../play/assets/question-bank.js"></script>
+  <script src="../play/bank-store.js"></script>
+  <script src="../play/bank.js"></script>
+  <script src="./analysis.js"></script>
+</body>
+</html>

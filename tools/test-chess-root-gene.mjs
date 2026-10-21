@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+
+const context = { window: {} };
+vm.runInNewContext(fs.readFileSync(new URL('../chess/settings/root-gene-core.js', import.meta.url), 'utf8'), context);
+const core = context.window.ChessRootGeneCore;
+const fen = 'r3k2r/pp3ppp/8/3pP3/8/8/PP3PPP/R3K2R w KQkq d6 0 1';
+const parsed = core.parseFen(fen);
+assert.equal(parsed.turn, 'w');
+assert.equal(parsed.castling, 'KQkq');
+assert.equal(parsed.enPassant, 'd6');
+assert.equal(parsed.board.flat().filter(piece => piece === 'K').length, 1);
+assert.equal(parsed.board.flat().filter(piece => piece === 'k').length, 1);
+assert.equal(core.boardToFen(parsed.board, parsed.turn, parsed.castling, parsed.enPassant), fen.replace(' 0 1', ' 0 1'));
+assert.throws(() => core.parseFen('8/8/8/8/8/8/8/8 w - - 0 1'), /白王和黑王/);
+assert.throws(() => core.parseFen('8/8/8/8/8/8/8/4Kk2 w - - 0 1'), /不能相邻/);
+assert.throws(() => core.parseFen('P7/8/8/8/8/8/8/4K2k w - - 0 1'), /底线/);
+assert.throws(() => core.parseFen('8/8/8/8/8/8/8/4K2k w KX - 0 1'), /易位权或吃过路兵格无效/);
+assert.throws(() => core.parseFen('44/8/8/8/8/8/8/4K2k w - - 0 1'), /连续出现多个空格数字/);
+console.log('PASS: FEN round-trip with castling/en-passant metadata and invalid-position guards.');

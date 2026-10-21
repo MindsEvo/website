@@ -69,19 +69,13 @@
         </div>
 
         <div class="panel active" id="panel-notations">
-          <div class="placeholder">点击答案按钮加载答案内容...</div>
+          <div class="placeholder" id="bankSelection">点击答案按钮加载答案内容...</div>
           <h3>走子记录</h3>
           <ol id="notationList" class="notation-list"></ol>
         </div>
 
         <div class="panel" id="panel-actions">
-          <div class="placeholder">请选择解说目录或题库题目...</div>
-          <h3>基础功能说明</h3>
-          <ul>
-            <li>当前阶段：手动对弈（选子/走子/吃子/悔棋/重置）</li>
-            <li>规则：基础走法已实现</li>
-            <li>后续移植：将军判定、易位、吃过路兵、升变面板、AI模式</li>
-          </ul>
+          <div id="bankAnswers" class="bank-content">请从题库选择题目...</div>
         </div>
 
         <div class="panel" id="panel-logs">
@@ -102,14 +96,9 @@
 
       <div class="bank-panel">
         <h3>题库练习</h3>
-        <ul class="bank-tree">
-          <li>👑 专家推荐</li>
-          <li>残局基因 (endgame)</li>
-          <li>战术基因 (tactics)</li>
-          <li>攻杀基因 (mate)</li>
-          <li>开局基因 (opening)</li>
-          <li>综合基因 (comprehensive)</li>
-        </ul>
+        <label class="bank-user">当前用户<select id="bankUser" aria-label="当前练习用户"></select></label>
+        <div class="bank-tree" id="bankTree" aria-label="题库目录"></div>
+        <div class="bank-status" id="bankStatus" role="status"></div>
       </div>
 
       <div class="human-ai-panel hidden" id="humanAiPanel">
@@ -297,6 +286,11 @@
   </main>
 
   <script src="./logger.js"></script>
+  <script src="../settings/engine-settings.js"></script>
+  <script src="./assets/question-bank.js"></script>
+  <script src="./bank-store.js"></script>
+  <script src="../records/store.js"></script>
   <script src="./game.js"></script>
+  <script src="./bank.js"></script>
 </body>
 </html>
