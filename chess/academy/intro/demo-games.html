@@ -401,6 +401,7 @@
     </section>
   </main>
 
+  <script src="./data/classic-games/games-data.js"></script>
   <script>
     (function () {
       var PIECE_ASSET = {
@@ -896,23 +897,21 @@
         window.speechSynthesis && window.speechSynthesis.cancel();
         document.querySelectorAll('.game-chip').forEach(function (b) { b.classList.toggle('active', b.dataset.game === key); });
         playStatus.textContent = '正在加载棋局...';
-        Promise.all([
-          fetch('./data/classic-games/' + key + '.meta.json').then(function (r) { return r.json(); }),
-          fetch('./data/classic-games/' + key + '.anno.json').then(function (r) { return r.json(); }),
-          fetch('./data/classic-games/' + key + '.exp.txt').then(function (r) { return r.text(); })
-        ]).then(function (res) {
+        try {
+          var gameData = window.ChessClassicGames && window.ChessClassicGames[key];
+          if (!gameData) throw new Error('未找到棋局数据，请检查 games-data.js 是否完整');
           state.game = key;
-          state.meta = res[0];
-          state.anno = res[1];
+          state.meta = gameData.meta;
+          state.anno = gameData.anno;
           var timeline = buildTimeline(state.meta.move_sequence);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
-          explanationText.textContent = res[2].replace(/\s*#\s*END\s*$/, '').trim();
+          explanationText.textContent = gameData.explanation.replace(/\s*#\s*END\s*$/, '').trim();
           renderSolutionLines();
           goToPly(-1);
-        }).catch(function (e) {
+        } catch (e) {
           playStatus.textContent = '棋局加载失败: ' + e.message;
-        });
+        }
       }
 
       // ── Controls ──────────────────────────────────────
