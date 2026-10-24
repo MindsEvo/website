@@ -131,6 +131,7 @@
         videoId: 'mindseeds-treasure-grid-intro-001'
       }
     },
+    assistance: { replay: { enabled: true } },
     title:     { zh: '🗺️ 宝藏格',          en: '🗺️ Treasure Grid' },
     subtitle:  { zh: '记住位置，找到宝藏',   en: 'Remember the spot, find the treasure' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),
@@ -152,6 +153,23 @@
       }, q.exposureMs);
     },
 
+    replaySequence: function (q, container, unit, done) {
+    if (exposeTimer) { clearTimeout(exposeTimer); exposeTimer = null; }
+    if (delayTimer) { clearTimeout(delayTimer); delayTimer = null; }
+    if (!q.result) { q.result = { tries: 0, replays: 0, tier: null }; }
+      q.result.replays++;
+
+      container.innerHTML = renderGrid(q, true);
+      exposeTimer = setTimeout(function () {
+      container.innerHTML = renderGrid(q, false);
+      exposeTimer = null;
+      delayTimer = setTimeout(function () {
+        delayTimer = null;
+        done();
+      }, q.delayMs);
+    }, q.exposureMs);
+    },
+
     renderOption: function (opt) { return '<span class="tg-opt">' + opt + '</span>'; },
 
     checkAnswer: function (selected, q) {
@@ -160,10 +178,13 @@
     },
 
     onAnswer: function (selected, q, correct) {
-      if (!q.result) { q.result = { tries: 0, tier: null }; }
+      if (!q.result) { q.result = { tries: 0, replays: 0, tier: null }; }
       q.result.tries++;
       if (correct) {
-        q.result.tier = q.result.tries === 1 ? 'best' : q.result.tries === 2 ? 'good' : 'valid';
+        q.result.tier =
+        q.result.tries === 1 && q.result.replays === 0 ? 'best' :
+        q.result.tries <= 2 ? 'good' :
+        'valid';
       }
     },
 

@@ -1039,6 +1039,8 @@
     var history = gui.history || {};
     var help = gui.help || {};
     var video = gui.video || {};
+    var assistance = cfg && cfg.assistance ? cfg.assistance : {};
+    var replay = assistance.replay || {};
     return {
       header: {
         show: header.show !== false,
@@ -1070,6 +1072,11 @@
         enabled: video.enabled === true,
         videoId: video.videoId || '',
         url: video.url || ''
+      },
+      assistance: {
+        replay: {
+          enabled: replay.enabled === true
+        }
       }
     };
   }
@@ -1602,6 +1609,12 @@
           '<button class="s1-replay" id="s1-replay">🔊</button>',
           '<div id="s1-seqin"></div>',
         '</div>',
+        '<div class="s1-assistance" id="s1-assistance">',
+          '<button class="s1-show-again s1-hidden" id="s1-show-again" type="button">',
+            '<span class="zh">↻ 重新演示</span>',
+            '<span class="en">↻ Show Again</span>',
+          '</button>',
+        '</div>',
         '<div class="s1-opts" id="s1-opts"></div>',
         '<div class="s1-fb" id="s1-fb"></div>',
         '<div class="s1-hint s1-hidden" id="s1-hint"></div>',
@@ -1649,7 +1662,8 @@
 
     var state = {
       unitIdx: 0, qIdx: 0, score: 0,
-      hints: 0, startTime: 0, firstWrong: false, hintShown: false
+      hints: 0, replays: 0, questionReplays: 0, replayActive: false,
+      startTime: 0, firstWrong: false, hintShown: false
     };
     var sessionStats = {};
 
@@ -1681,6 +1695,7 @@
     _bindClick('s1-overlay-close', _closeOverlay);
     _bindClick('s1-back', _goHome);
     _bindClick('s1-replay', _replay);
+    _bindClick('s1-show-again', _showAgain);
     _bindClick('s1-sum-sess-hdr', function () { _toggleSum('sess'); });
     _bindClick('s1-sum-hist-hdr', function () { _toggleSum('hist'); });
 
@@ -1834,6 +1849,9 @@
       state.qIdx     = 0;
       state.score    = 0;
       state.hints    = 0;
+      state.replays  = 0;
+      state.questionReplays = 0;
+      state.replayActive = false;
       state.startTime = Date.now();
       _show($game); _hide($home); _hide($result);
       _renderQ();
@@ -1843,6 +1861,9 @@
       var unit  = cfg.units[state.unitIdx];
       var q     = unit.questions[state.qIdx];
       var total = unit.questions.length;
+
+      state.questionReplays = 0;
+      state.replayActive = false;
 
       document.getElementById('s1-utitle').innerHTML = _bispan(unit.nameZh, unit.nameEn);
 
@@ -1893,6 +1914,7 @@
       hint.classList.add('s1-hidden'); hint.innerHTML = '';
       document.getElementById('s1-acts').innerHTML = '';
       state.firstWrong = false; state.hintShown = false;
+      _syncReplayButton(false);
 
       // Voice
       if (cfg.getVoiceText) shell.speak(cfg.getVoiceText(q, state.qIdx));
@@ -1919,10 +1941,13 @@
         audio.sfx('correct');
         shell.speak(shell.lang === 'zh' ? '答对了！' : 'Correct!');
 
-        if (!state.firstWrong && !state.hintShown) {
+        if (!state.firstWrong &&
+          !state.hintShown &&
+          state.questionReplays === 0) {
           state.score++;
           _updScore();
         }
+        _syncReplayButton(true);
 
         var isLast = state.qIdx >= cfg.units[state.unitIdx].questions.length - 1;
         var nxtBtn = document.createElement('button');
@@ -1986,7 +2011,7 @@
       // Session stats (in-memory)
       sessionStats[unit.id] = {
         score: state.score, wrong: total - state.score,
-        hints: state.hints, timeMs: elapsed
+        hints: state.hints, replays: state.replays, timeMs: elapsed
       };
 
       // Persist unit progress
@@ -2012,6 +2037,7 @@
           score: state.score,
           total: total,
           hints: state.hints,
+          replays: state.replays,
           passed: passed,
           elapsedMs: elapsed
         }
@@ -2027,6 +2053,7 @@
               score: state.score,
               total: total,
               hints: state.hints,
+              replays: state.replays,
               passed: passed,
               elapsedMs: elapsed
             }
@@ -2290,6 +2317,73 @@
 
     // ── Helpers ─────────────────────────────────────────────────
     function _goHome() { _show($home); _hide($game); _hide($result); _renderHome(); }
+
+    function _syncReplayButton(completed) {
+      var button = document.getElementById('s1-show-again');
+      var replayCfg = guiCfg.assistance.replay;
+      if (!button) return;
+
+      var enabled =
+        replayCfg.enabled &&
+        typeof cfg.replaySequence === 'function';
+
+      var available =
+        enabled &&
+        !completed &&
+        !state.replayActive;
+
+      button.classList.toggle('s1-hidden', !enabled);
+      button.disabled = !available;
+      button.classList.toggle('s1-busy', state.replayActive);
+      button.setAttribute('aria-busy', state.replayActive ? 'true' : 'false');
+    }
+
+    function _showAgain() {
+      var replayCfg = guiCfg.assistance.replay;
+      if (!replayCfg.enabled ||
+          typeof cfg.replaySequence !== 'function' ||
+          state.replayActive) {
+        return;
+      }
+
+      var unit = cfg.units[state.unitIdx];
+      var q = unit.questions[state.qIdx];
+      var container = document.getElementById('s1-seqin');
+      var options = document.querySelectorAll('.s1-opt');
+
+      state.replayActive = true;
+      state.questionReplays++;
+      state.replays++;
+
+      options.forEach(function (button) {
+        button.disabled = true;
+      });
+      _syncReplayButton(false);
+
+      var finished = false;
+      function done() {
+        if (finished) return;
+        finished = true;
+        state.replayActive = false;
+        options.forEach(function (button) {
+          if (!button.classList.contains('s1-wrong') &&
+              !button.classList.contains('s1-correct')) {
+            button.disabled = false;
+          }
+        });
+        _syncReplayButton(false);
+      }
+
+      try {
+        cfg.replaySequence(q, container, unit, done, {
+          count: state.questionReplays
+        });
+      } catch (err) {
+        console.warn('[shell] replaySequence failed:', err);
+        done();
+      }
+    }
+
     function _replay()  {
       if (cfg.getVoiceText) {
         var q = cfg.units[state.unitIdx].questions[state.qIdx];

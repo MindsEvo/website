@@ -200,6 +200,7 @@
     var selected = [];
     var tries = 0;
     var hints = 0;
+    var replays = 0;
     var done = false;
     var timers = [];
     var intro = instructionText(question);
@@ -236,6 +237,7 @@
         tier: tier,
         tries: tries,
         hints: hints,
+        replays: replays,
         zh: zh,
         en: en
       };
@@ -339,9 +341,9 @@
           '🎉 Complete! The order is ' + expectedIcons() + '.'
         );
         finish(
-          first && hints === 0 ? 'best' : first ? 'better' : tries <= 2 ? 'good' : 'valid',
-          (first && hints === 0 ? '⭐ ' : '') + (first ? '一次完成' : '调整后完成'),
-          (first && hints === 0 ? '⭐ ' : '') +
+          first && hints === 0 && replays === 0 ? 'best' : first ? 'better' : tries <= 2 ? 'good' : 'valid',
+          (first && hints === 0 && replays === 0 ? '⭐ ' : '') + (first ? '一次完成' : '调整后完成'),
+          (first && hints === 0 && replays === 0 ? '⭐ ' : '') +
             (first ? 'Completed first try' : 'Completed after adjusting')
         );
         return;
@@ -358,14 +360,17 @@
       );
     }
 
-    function showItem(index) {
+    function showItem(index, onReady) {
       if (index >= question.shown.length) {
         host.innerHTML =
           '<div class="ms-instruction">' + bi('请继续记住完整顺序。', 'Keep the complete order in mind.') + '</div>' +
           '<div class="ms-stage"><div class="ms-stage-count">' +
             bi('准备作答…', 'Get ready…') + '</div></div><div class="ms-msg"></div>';
         applyLang(host);
-        schedule(drawAnswer, question.retentionMs);
+        schedule(function () {
+          drawAnswer('');
+          if (onReady) { onReady(); }
+        }, question.retentionMs);
         return;
       }
 
@@ -383,12 +388,20 @@
           '<div class="ms-stage"><div class="ms-stage-count">…</div></div><div class="ms-msg"></div>';
         applyLang(host);
         schedule(function () {
-          showItem(index + 1);
+          showItem(index + 1, onReady);
         }, question.gapMs);
       }, question.exposureMs);
     }
 
-    showItem(0);
+    question.replayOriginal = function (onReady) {
+      if (done) { onReady(); return; }
+      clearTimers();
+      selected = [];
+      replays++;
+      showItem(0, onReady);
+    };
+
+    showItem(0, null);
   }
 
   shell.createGame({
@@ -409,6 +422,7 @@
         contentEn: 'Symbols appear one at a time and disappear. Remember their order, then rebuild the complete sequence from left to right. Higher grades also apply one replacement.'
       }
     },
+    assistance: { replay: { enabled: true } },
     title: { zh: '🪄 魔法顺序', en: '🪄 Magic Sequence' },
     subtitle: { zh: '一个接一个出现，藏起来后还原', en: 'Watch one by one, then rebuild' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),
@@ -422,6 +436,14 @@
         var button = document.querySelector('.s1-opt');
         if (button) { button.style.display = 'none'; }
       }, 0);
+    },
+
+    replaySequence: function (question, container, unit, done) {
+      if (typeof question.replayOriginal === 'function') {
+        question.replayOriginal(done);
+      } else {
+        done();
+      }
     },
 
     renderOption: function () {
@@ -481,6 +503,9 @@
           }, 0),
           hints: played.reduce(function (total, question) {
             return total + question.result.hints;
+          }, 0),
+          replays: played.reduce(function (total, question) {
+            return total + (question.result.replays || 0);
           }, 0)
         };
       }

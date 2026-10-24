@@ -120,6 +120,7 @@
         videoId: 'mindseeds-flash-cards-intro-001'
       }
     },
+    assistance: { replay: { enabled: true } },
     title:     { zh: '🃏 闪现卡片',        en: '🃏 Flash Cards' },
     subtitle:  { zh: '看一眼，记住它',      en: 'Look once, remember it' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),
@@ -141,15 +142,36 @@
       }, q.exposureMs);
     },
 
+    replaySequence: function (q, container, unit, done) {
+    if (flashTimer) { clearTimeout(flashTimer); flashTimer = null; }
+    if (!q.result) { q.result = { tries: 0, replays: 0, tier: null }; }
+      q.result.replays++;
+
+      container.innerHTML = '<div class="fc-scene">' +
+      q.shown.map(function (e) { return '<div class="fc-card">' + e + '</div>'; }).join('') +
+      '</div>';
+
+      flashTimer = setTimeout(function () {
+      container.innerHTML = '<div class="fc-scene fc-hidden">' +
+        q.shown.map(function () { return '<div class="fc-card fc-back">❓</div>'; }).join('') +
+        '</div>';
+      flashTimer = null;
+      done();
+    }, q.exposureMs);
+    },
+
     renderOption: function (opt) { return '<span class="fc-opt">' + opt + '</span>'; },
 
     checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
 
     onAnswer: function (selected, q, correct) {
-      if (!q.result) { q.result = { tries: 0, tier: null }; }
+      if (!q.result) { q.result = { tries: 0, replays: 0, tier: null }; }
       q.result.tries++;
       if (correct) {
-        q.result.tier = q.result.tries === 1 ? 'best' : q.result.tries === 2 ? 'good' : 'valid';
+        q.result.tier =
+        q.result.tries === 1 && q.result.replays === 0 ? 'best' :
+        q.result.tries <= 2 ? 'good' :
+        'valid';
       }
     },
 

@@ -168,7 +168,7 @@
   }
 
   function playBoard(q, host) {
-    var selected = [], tries = 0, hints = 0, done = false;
+    var selected = [], tries = 0, hints = 0, replays = 0, done = false;
     var intro = instructionText(q);
     var exposureTimer = null;
 
@@ -182,7 +182,7 @@
 
     function finish(tier, zh, en) {
       done = true;
-      q.result = { tier: tier, tries: tries, hints: hints, zh: zh, en: en };
+      q.result = { tier: tier, tries: tries, hints: hints, replays: replays, zh: zh, en: en };
       setTimeout(function () {
         var b = document.querySelector('.s1-opt');
         if (b) { b.click(); }
@@ -193,14 +193,26 @@
       return q.expected.map(function (id) { return actionOf(q, id).icon; }).join(' ');
     }
 
-    function drawExposure() {
+    function drawExposure(onReady) {
       host.innerHTML = '<div class="ra-instruction">' + bi(intro.zh, intro.en) + '</div>' +
         '<div class="ra-cards">' + q.shown.map(function (a) {
           return actionCard(a, 'ra-card');
         }).join('') + '</div><div class="ra-msg"></div>';
       applyLang(host);
-      exposureTimer = setTimeout(drawAction, q.exposureMs);
+      exposureTimer = setTimeout(function () {
+        exposureTimer = null;
+        drawAction('');
+        if (onReady) { onReady(); }
+      }, q.exposureMs);
     }
+
+    q.replayOriginal = function (onReady) {
+      if (done) { onReady(); return; }
+      if (exposureTimer) { clearTimeout(exposureTimer); exposureTimer = null; }
+      selected = [];
+      replays++;
+      drawExposure(onReady);
+    };
 
     function updateText() {
       if (!q.update) { return ''; }
@@ -287,9 +299,9 @@
       if (correct) {
         var first = tries === 1;
         say('🎉 完成！正确顺序是 ' + expectedIcons() + '。', '🎉 Complete! The order is ' + expectedIcons() + '.');
-        return finish(first && hints === 0 ? 'best' : first ? 'better' : tries <= 2 ? 'good' : 'valid',
-          (first && hints === 0 ? '⭐ ' : '') + (first ? '一次完成' : '调整后完成'),
-          (first && hints === 0 ? '⭐ ' : '') + (first ? 'Completed first try' : 'Completed after adjusting'));
+        return finish(first && hints === 0 && replays === 0 ? 'best' : first ? 'better' : tries <= 2 ? 'good' : 'valid',
+          (first && hints === 0 && replays === 0 ? '⭐ ' : '') + (first ? '一次完成' : '调整后完成'),
+          (first && hints === 0 && replays === 0 ? '⭐ ' : '') + (first ? 'Completed first try' : 'Completed after adjusting'));
       }
       var chosen = selected.map(function (id) { return actionOf(q, id).icon; }).join(' ');
       selected = [];
@@ -320,6 +332,7 @@
       },
       video: { enabled: false }
     },
+    assistance: { replay: { enabled: true } },
     title: { zh: '🎬 记住再行动', en: '🎬 Remember & Act' },
     subtitle: { zh: '记在脑中，再动手完成', en: 'Hold it in mind, then act' },
     passScore: Math.ceil(SESSION_SIZE * 0.75),
@@ -333,6 +346,14 @@
         var b = document.querySelector('.s1-opt');
         if (b) { b.style.display = 'none'; }
       }, 0);
+    },
+
+    replaySequence: function (q, container, unit, done) {
+      if (typeof q.replayOriginal === 'function') {
+        q.replayOriginal(done);
+      } else {
+        done();
+      }
     },
 
     renderOption: function () { return '<span class="ra-opt">✔</span>'; },
@@ -376,7 +397,8 @@
           tiers: tiers,
           optimalCount: tiers.best,
           retries: played.reduce(function (n, q) { return n + Math.max(0, q.result.tries - 1); }, 0),
-          hints: played.reduce(function (n, q) { return n + q.result.hints; }, 0)
+          hints: played.reduce(function (n, q) { return n + q.result.hints; }, 0),
+          replays: played.reduce(function (n, q) { return n + (q.result.replays || 0); }, 0)
         };
       }
 
