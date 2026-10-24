@@ -16,9 +16,15 @@
       "path": "games/number-pattern-hunter/",
       "titleZh": "找规律",
       "titleEn": "Pattern Hunter",
-      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC"],
-      "lessonIds": ["mindseeds-number-pattern-l1"],
-      "videoIds": ["mindseeds-number-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.SEQUENCE.BASIC"
+      ],
+      "lessonIds": [
+        "mindseeds-number-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-number-pattern-intro-001"
+      ]
     },
     {
       "id": "color-pattern-hunter",
@@ -28,9 +34,15 @@
       "path": "games/color-pattern-hunter/",
       "titleZh": "颜色规律",
       "titleEn": "Color Pattern",
-      "rootGeneIds": ["RG.PATTERN.VISUAL.COLOR"],
-      "lessonIds": ["mindseeds-color-pattern-l1"],
-      "videoIds": ["mindseeds-color-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.VISUAL.COLOR"
+      ],
+      "lessonIds": [
+        "mindseeds-color-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-color-pattern-intro-001"
+      ]
     },
     {
       "id": "visual-pattern-hunter",
@@ -40,9 +52,15 @@
       "path": "games/visual-pattern-hunter/",
       "titleZh": "视觉规律",
       "titleEn": "Visual Pattern",
-      "rootGeneIds": ["RG.PATTERN.VISUAL.SEQUENCE"],
-      "lessonIds": ["mindseeds-visual-pattern-l1"],
-      "videoIds": ["mindseeds-visual-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.VISUAL.SEQUENCE"
+      ],
+      "lessonIds": [
+        "mindseeds-visual-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-visual-pattern-intro-001"
+      ]
     },
     {
       "id": "motion-pattern-hunter",
@@ -52,9 +70,15 @@
       "path": "games/motion-pattern-hunter/",
       "titleZh": "动作规律",
       "titleEn": "Motion Pattern",
-      "rootGeneIds": ["RG.PATTERN.MOTION.SEQUENCE"],
-      "lessonIds": ["mindseeds-motion-pattern-l1"],
-      "videoIds": ["mindseeds-motion-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.MOTION.SEQUENCE"
+      ],
+      "lessonIds": [
+        "mindseeds-motion-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-motion-pattern-intro-001"
+      ]
     },
     {
       "id": "temporal-pattern-hunter",
@@ -64,9 +88,15 @@
       "path": "games/temporal-pattern-hunter/",
       "titleZh": "时间规律",
       "titleEn": "Temporal Pattern",
-      "rootGeneIds": ["RG.PATTERN.TEMPORAL.SEQUENCE"],
-      "lessonIds": ["mindseeds-temporal-pattern-l1"],
-      "videoIds": ["mindseeds-temporal-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.TEMPORAL.SEQUENCE"
+      ],
+      "lessonIds": [
+        "mindseeds-temporal-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-temporal-pattern-intro-001"
+      ]
     },
     {
       "id": "size-pattern-hunter",
@@ -76,9 +106,15 @@
       "path": "games/size-pattern-hunter/",
       "titleZh": "大小规律",
       "titleEn": "Size Pattern",
-      "rootGeneIds": ["RG.PATTERN.VISUAL.SIZE"],
-      "lessonIds": ["mindseeds-size-pattern-l1"],
-      "videoIds": ["mindseeds-size-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.VISUAL.SIZE"
+      ],
+      "lessonIds": [
+        "mindseeds-size-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-size-pattern-intro-001"
+      ]
     },
     {
       "id": "spatial-pattern-hunter",
@@ -88,9 +124,16 @@
       "path": "games/spatial-pattern-hunter/",
       "titleZh": "空间关系",
       "titleEn": "Spatial Pattern",
-      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"],
-      "lessonIds": ["mindseeds-spatial-pattern-l1"],
-      "videoIds": ["mindseeds-spatial-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.SPATIAL.RELATION",
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
+      "lessonIds": [
+        "mindseeds-spatial-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-spatial-pattern-intro-001"
+      ]
     },
     {
       "id": "quantity-pattern-hunter",
@@ -100,9 +143,15 @@
       "path": "games/quantity-pattern-hunter/",
       "titleZh": "数量规律",
       "titleEn": "Quantity Pattern",
-      "rootGeneIds": ["RG.PATTERN.QUANTITY.RELATION"],
-      "lessonIds": ["mindseeds-quantity-pattern-l1"],
-      "videoIds": ["mindseeds-quantity-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.QUANTITY.RELATION"
+      ],
+      "lessonIds": [
+        "mindseeds-quantity-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-quantity-pattern-intro-001"
+      ]
     },
     {
       "id": "logic-pattern-hunter",
@@ -112,9 +161,15 @@
       "path": "games/logic-pattern-hunter/",
       "titleZh": "逻辑推理",
       "titleEn": "Logic Pattern",
-      "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],
-      "lessonIds": ["mindseeds-logic-pattern-l1"],
-      "videoIds": ["mindseeds-logic-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.LOGIC.REASONING.BASIC"
+      ],
+      "lessonIds": [
+        "mindseeds-logic-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-logic-pattern-intro-001"
+      ]
     },
     {
       "id": "mixed-pattern-hunter",
@@ -124,9 +179,15 @@
       "path": "games/mixed-pattern-hunter/",
       "titleZh": "综合规律",
       "titleEn": "Mixed Pattern",
-      "rootGeneIds": ["RG.PATTERN.INTEGRATION.MULTI_DIMENSION"],
-      "lessonIds": ["mindseeds-mixed-pattern-l1"],
-      "videoIds": ["mindseeds-mixed-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.INTEGRATION.MULTI_DIMENSION"
+      ],
+      "lessonIds": [
+        "mindseeds-mixed-pattern-l1"
+      ],
+      "videoIds": [
+        "mindseeds-mixed-pattern-intro-001"
+      ]
     },
     {
       "id": "difference-scout",
@@ -136,9 +197,16 @@
       "path": "games/difference-scout/",
       "titleZh": "找不同侦探",
       "titleEn": "Difference Scout",
-      "rootGeneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"],
-      "lessonIds": ["mindseeds-difference-scout-l1"],
-      "videoIds": ["mindseeds-difference-scout-intro-001"]
+      "rootGeneIds": [
+        "RG.ATTENTION.SEARCH.VISUAL",
+        "RG.LOGIC.COMPARISON.BASIC"
+      ],
+      "lessonIds": [
+        "mindseeds-difference-scout-l1"
+      ],
+      "videoIds": [
+        "mindseeds-difference-scout-intro-001"
+      ]
     },
     {
       "id": "studio-comparison-lab",
@@ -148,9 +216,16 @@
       "path": "games/studio-comparison-lab/",
       "titleZh": "创作器比较样板",
       "titleEn": "Creator Comparison Lab",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.STRATEGY.DECISION.PLANNING"],
-      "lessonIds": ["studio-comparison-lab-l1"],
-      "videoIds": ["studio-comparison-lab-intro-001"]
+      "rootGeneIds": [
+        "RG.LOGIC.COMPARISON.BASIC",
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
+      "lessonIds": [
+        "studio-comparison-lab-l1"
+      ],
+      "videoIds": [
+        "studio-comparison-lab-intro-001"
+      ]
     },
     {
       "id": "learning-math-pattern",
@@ -160,9 +235,19 @@
       "path": "learning/math/pattern/",
       "titleZh": "数学规律",
       "titleEn": "Math Patterns",
-      "rootGeneIds": ["RG.PATTERN.SEQUENCE.BASIC", "RG.PATTERN.QUANTITY.RELATION", "RG.PATTERN.VISUAL.COLOR", "RG.PATTERN.VISUAL.SEQUENCE", "RG.PATTERN.SPATIAL.RELATION"],
-      "lessonIds": ["learning-math-pattern-l1"],
-      "videoIds": ["learning-math-pattern-intro-001"]
+      "rootGeneIds": [
+        "RG.PATTERN.SEQUENCE.BASIC",
+        "RG.PATTERN.QUANTITY.RELATION",
+        "RG.PATTERN.VISUAL.COLOR",
+        "RG.PATTERN.VISUAL.SEQUENCE",
+        "RG.PATTERN.SPATIAL.RELATION"
+      ],
+      "lessonIds": [
+        "learning-math-pattern-l1"
+      ],
+      "videoIds": [
+        "learning-math-pattern-intro-001"
+      ]
     },
     {
       "id": "learning-math-comparison",
@@ -172,9 +257,16 @@
       "path": "learning/math/comparison/",
       "titleZh": "数学比较",
       "titleEn": "Math Comparison",
-      "rootGeneIds": ["RG.LOGIC.COMPARISON.BASIC", "RG.LOGIC.REASONING.BASIC"],
-      "lessonIds": ["learning-math-comparison-l1"],
-      "videoIds": ["learning-math-comparison-intro-001"]
+      "rootGeneIds": [
+        "RG.LOGIC.COMPARISON.BASIC",
+        "RG.LOGIC.REASONING.BASIC"
+      ],
+      "lessonIds": [
+        "learning-math-comparison-l1"
+      ],
+      "videoIds": [
+        "learning-math-comparison-intro-001"
+      ]
     },
     {
       "id": "learning-math-number-sense",
@@ -184,9 +276,17 @@
       "path": "learning/math/number-sense/",
       "titleZh": "数学数感",
       "titleEn": "Math Number Sense",
-      "rootGeneIds": ["RG.MATH.NUMBER_SENSE.QUANTITY", "RG.MATH.NUMBER_SENSE.PART_WHOLE", "RG.MATH.NUMBER_SENSE.COMPOSITION"],
-      "lessonIds": ["learning-math-number-sense-l1"],
-      "videoIds": ["learning-math-comparison-intro-001"]
+      "rootGeneIds": [
+        "RG.MATH.NUMBER_SENSE.QUANTITY",
+        "RG.MATH.NUMBER_SENSE.PART_WHOLE",
+        "RG.MATH.NUMBER_SENSE.COMPOSITION"
+      ],
+      "lessonIds": [
+        "learning-math-number-sense-l1"
+      ],
+      "videoIds": [
+        "learning-math-comparison-intro-001"
+      ]
     },
     {
       "id": "learning-math-logic",
@@ -196,9 +296,15 @@
       "path": "learning/math/logic/",
       "titleZh": "逻辑推理",
       "titleEn": "Logic Reasoning",
-      "rootGeneIds": ["RG.LOGIC.REASONING.BASIC"],
-      "lessonIds": ["learning-math-logic-l1"],
-      "videoIds": ["learning-math-logic-intro-001"]
+      "rootGeneIds": [
+        "RG.LOGIC.REASONING.BASIC"
+      ],
+      "lessonIds": [
+        "learning-math-logic-l1"
+      ],
+      "videoIds": [
+        "learning-math-logic-intro-001"
+      ]
     },
     {
       "id": "learning-math-modeling",
@@ -208,9 +314,18 @@
       "path": "learning/math/modeling/",
       "titleZh": "建立模型",
       "titleEn": "Modeling",
-      "rootGeneIds": ["RG.MODELING.MAPPING.BASIC", "RG.MODELING.GROUPING.PURPOSE", "RG.MODELING.SPATIAL.BASIC", "RG.MODELING.EQUATION.RELATION"],
-      "lessonIds": ["learning-math-modeling-l1"],
-      "videoIds": ["learning-math-modeling-intro-001"]
+      "rootGeneIds": [
+        "RG.MODELING.MAPPING.BASIC",
+        "RG.MODELING.GROUPING.PURPOSE",
+        "RG.MODELING.SPATIAL.BASIC",
+        "RG.MODELING.EQUATION.RELATION"
+      ],
+      "lessonIds": [
+        "learning-math-modeling-l1"
+      ],
+      "videoIds": [
+        "learning-math-modeling-intro-001"
+      ]
     },
     {
       "id": "learning-math-strategy",
@@ -220,9 +335,15 @@
       "path": "learning/math/strategy/",
       "titleZh": "策略思维",
       "titleEn": "Strategic Thinking",
-      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
-      "lessonIds": ["learning-math-strategy-l1"],
-      "videoIds": ["learning-math-strategy-intro-001"]
+      "rootGeneIds": [
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
+      "lessonIds": [
+        "learning-math-strategy-l1"
+      ],
+      "videoIds": [
+        "learning-math-strategy-intro-001"
+      ]
     },
     {
       "id": "learning-language",
@@ -232,7 +353,14 @@
       "path": "learning/language/",
       "titleZh": "语文素养",
       "titleEn": "Language & Literacy",
-      "rootGeneIds": ["RG.LANGUAGE.OBSERVATION.DESCRIBE", "RG.LANGUAGE.COMPREHENSION.INFO", "RG.LANGUAGE.INFERENCE.EVIDENCE", "RG.LANGUAGE.STRUCTURE.SEQUENCE", "RG.LANGUAGE.CHOICE.CONTEXT", "RG.LANGUAGE.EXPRESSION.GUIDED"],
+      "rootGeneIds": [
+        "RG.LANGUAGE.OBSERVATION.DESCRIBE",
+        "RG.LANGUAGE.COMPREHENSION.INFO",
+        "RG.LANGUAGE.INFERENCE.EVIDENCE",
+        "RG.LANGUAGE.STRUCTURE.SEQUENCE",
+        "RG.LANGUAGE.CHOICE.CONTEXT",
+        "RG.LANGUAGE.EXPRESSION.GUIDED"
+      ],
       "lessonIds": [],
       "videoIds": []
     },
@@ -244,7 +372,10 @@
       "path": "studio/Clio/games/bunny-maze-workshop/",
       "titleZh": "兔兔方向迷宫",
       "titleEn": "Bunny Direction Maze",
-      "rootGeneIds": ["RG.PATTERN.SPATIAL.RELATION", "RG.STRATEGY.DECISION.PLANNING"],
+      "rootGeneIds": [
+        "RG.PATTERN.SPATIAL.RELATION",
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
       "lessonIds": [],
       "videoIds": [],
       "status": "planned"
@@ -257,7 +388,10 @@
       "path": "studio/Clio/games/egg-catcher-workshop/",
       "titleZh": "接蛋数学",
       "titleEn": "Egg Catcher Math",
-      "rootGeneIds": ["RG.PATTERN.MOTION.SEQUENCE", "RG.MATH.NUMBER_SENSE.BASIC"],
+      "rootGeneIds": [
+        "RG.PATTERN.MOTION.SEQUENCE",
+        "RG.MATH.NUMBER_SENSE.BASIC"
+      ],
       "lessonIds": [],
       "videoIds": [],
       "status": "planned"
@@ -270,7 +404,10 @@
       "path": "studio/Clio/games/find-it-workshop/",
       "titleZh": "寻找游戏",
       "titleEn": "Find It",
-      "rootGeneIds": ["RG.ATTENTION.SEARCH.VISUAL", "RG.LOGIC.COMPARISON.BASIC"],
+      "rootGeneIds": [
+        "RG.ATTENTION.SEARCH.VISUAL",
+        "RG.LOGIC.COMPARISON.BASIC"
+      ],
       "lessonIds": [],
       "videoIds": []
     },
@@ -282,7 +419,10 @@
       "path": "studio/Clio/games/prediction-workshop/",
       "titleZh": "预测工坊",
       "titleEn": "Prediction Workshop",
-      "rootGeneIds": ["RG.LOGIC.REASONING.BASIC", "RG.PATTERN.VISUAL.COLOR"],
+      "rootGeneIds": [
+        "RG.LOGIC.REASONING.BASIC",
+        "RG.PATTERN.VISUAL.COLOR"
+      ],
       "lessonIds": [],
       "videoIds": [],
       "status": "planned"
@@ -295,7 +435,10 @@
       "path": "studio/Clio/games/sorting-workshop/",
       "titleZh": "分拣工坊",
       "titleEn": "Sorting Workshop",
-      "rootGeneIds": ["RG.LOGIC.CLASSIFICATION.BASIC", "RG.PATTERN.VISUAL.COLOR"],
+      "rootGeneIds": [
+        "RG.LOGIC.CLASSIFICATION.BASIC",
+        "RG.PATTERN.VISUAL.COLOR"
+      ],
       "lessonIds": [],
       "videoIds": [],
       "status": "planned"
@@ -308,7 +451,9 @@
       "path": "studio/Clio/games/ufo-math-workshop/",
       "titleZh": "飞盘登月",
       "titleEn": "UFO Moon Adventure",
-      "rootGeneIds": ["RG.MATH.NUMBER_SENSE.BASIC"],
+      "rootGeneIds": [
+        "RG.MATH.NUMBER_SENSE.BASIC"
+      ],
       "lessonIds": [],
       "videoIds": []
     },
@@ -320,9 +465,13 @@
       "path": "games/flash-cards/",
       "titleZh": "闪现卡片",
       "titleEn": "Flash Cards",
-      "rootGeneIds": ["RG.MEMORY.VISUAL.RECOGNITION"],
+      "rootGeneIds": [
+        "RG.MEMORY.VISUAL.RECOGNITION"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-flash-cards-intro-001"]
+      "videoIds": [
+        "mindseeds-flash-cards-intro-001"
+      ]
     },
     {
       "id": "treasure-grid",
@@ -332,9 +481,41 @@
       "path": "games/treasure-grid/",
       "titleZh": "宝藏格",
       "titleEn": "Treasure Grid",
-      "rootGeneIds": ["RG.MEMORY.SPATIAL.BASIC"],
+      "rootGeneIds": [
+        "RG.MEMORY.SPATIAL.BASIC"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-treasure-grid-intro-001"]
+      "videoIds": [
+        "mindseeds-treasure-grid-intro-001"
+      ]
+    },
+    {
+      "id": "remember-and-act",
+      "series": "mindseeds",
+      "module": "remember-and-act",
+      "shell": "shell-1",
+      "path": "games/remember-and-act/",
+      "titleZh": "记住再行动",
+      "titleEn": "Remember & Act",
+      "rootGeneIds": [
+        "RG.MEMORY.WORKING.MANIPULATION"
+      ],
+      "lessonIds": [],
+      "videoIds": []
+    },
+    {
+      "id": "magic-sequence",
+      "series": "mindseeds",
+      "module": "magic-sequence",
+      "shell": "shell-1",
+      "path": "games/magic-sequence/",
+      "titleZh": "魔法顺序",
+      "titleEn": "Magic Sequence",
+      "rootGeneIds": [
+        "RG.MEMORY.SEQUENTIAL.RECALL"
+      ],
+      "lessonIds": [],
+      "videoIds": []
     },
     {
       "id": "energy-planner",
@@ -344,9 +525,13 @@
       "path": "games/energy-planner/",
       "titleZh": "能量分配",
       "titleEn": "Energy Planner",
-      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "rootGeneIds": [
+        "RG.STRATEGY.RESOURCE.TRADEOFF"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-energy-planner-intro-001"]
+      "videoIds": [
+        "mindseeds-energy-planner-intro-001"
+      ]
     },
     {
       "id": "route-choice",
@@ -356,9 +541,13 @@
       "path": "games/route-choice/",
       "titleZh": "近路还是远路",
       "titleEn": "Near or Far",
-      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "rootGeneIds": [
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-route-choice-intro-001"]
+      "videoIds": [
+        "mindseeds-route-choice-intro-001"
+      ]
     },
     {
       "id": "backpack",
@@ -368,9 +557,13 @@
       "path": "games/backpack/",
       "titleZh": "背包装什么",
       "titleEn": "Backpack",
-      "rootGeneIds": ["RG.STRATEGY.RESOURCE.TRADEOFF"],
+      "rootGeneIds": [
+        "RG.STRATEGY.RESOURCE.TRADEOFF"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-backpack-intro-001"]
+      "videoIds": [
+        "mindseeds-backpack-intro-001"
+      ]
     },
     {
       "id": "rule-change",
@@ -380,9 +573,13 @@
       "path": "games/rule-change/",
       "titleZh": "规则变了",
       "titleEn": "Rule Change",
-      "rootGeneIds": ["RG.STRATEGY.DECISION.PLANNING"],
+      "rootGeneIds": [
+        "RG.STRATEGY.DECISION.PLANNING"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-rule-change-intro-001"]
+      "videoIds": [
+        "mindseeds-rule-change-intro-001"
+      ]
     },
     {
       "id": "whats-next",
@@ -392,9 +589,13 @@
       "path": "games/whats-next/",
       "titleZh": "下一步会怎样",
       "titleEn": "What's Next",
-      "rootGeneIds": ["RG.STRATEGY.PREDICT.CONSEQUENCE"],
+      "rootGeneIds": [
+        "RG.STRATEGY.PREDICT.CONSEQUENCE"
+      ],
       "lessonIds": [],
-      "videoIds": ["mindseeds-whats-next-intro-001"]
+      "videoIds": [
+        "mindseeds-whats-next-intro-001"
+      ]
     },
     {
       "id": "clio-word-connections-workshop",
@@ -404,7 +605,10 @@
       "path": "studio/Clio/games/word-connections-workshop/",
       "titleZh": "连线组词",
       "titleEn": "Word Match",
-      "rootGeneIds": ["RG.LANGUAGE.SEMANTIC.RELATION", "RG.LOGIC.COMPARISON.BASIC"],
+      "rootGeneIds": [
+        "RG.LANGUAGE.SEMANTIC.RELATION",
+        "RG.LOGIC.COMPARISON.BASIC"
+      ],
       "lessonIds": [],
       "videoIds": [],
       "status": "planned"

@@ -6,8 +6,8 @@
  * One item: a gridSize x gridSize grid, its cells numbered 1..N in row-major
  * order (the numbers stay visible the whole time — only the treasure marker on
  * top of 1-2 cells flashes and hides). The child is asked which numbered cell
- * held a treasure; with two treasures, either being remembered is enough to
- * answer, but the question only grades against one fixed target.
+ * held a treasure. When multiple treasures are shown, every treasure cell is
+ * accepted as correct and the option set includes each valid treasure cell.
  *
  * Pass a `seed` for a reproducible draw; the game does not pass one.
  */
@@ -32,8 +32,6 @@ var TG_GEN = (function () {
     return a;
   }
 
-  function pick(list, rnd) { return list[Math.floor(rnd() * list.length)]; }
-
   function buildQuestion(gradeCode, rnd) {
     var cfg = TG_DATA.gradeConfig[gradeCode];
     if (!cfg) { return null; }
@@ -42,25 +40,25 @@ var TG_GEN = (function () {
     for (var i = 1; i <= total; i++) { cellNums.push(i); }
 
     var treasurePositions = shuffled(cellNums, rnd).slice(0, cfg.treasureCount);
-    var target = pick(treasurePositions, rnd);
     var nonTreasure = cellNums.filter(function (n) { return treasurePositions.indexOf(n) < 0; });
-    var distractors = shuffled(nonTreasure, rnd).slice(0, cfg.optionCount - 1);
+    var distractors = shuffled(nonTreasure, rnd).slice(0, cfg.optionCount - treasurePositions.length);
 
     var types = {};
-    types[target] = 'treasure';
+    treasurePositions.forEach(function (n) { types[n] = 'treasure'; });
     distractors.forEach(function (n) { types[n] = 'empty_cell'; });
-    var options = shuffled([target].concat(distractors), rnd);
+    var options = shuffled(treasurePositions.concat(distractors), rnd);
 
     return {
       gradeCode:         gradeCode,
       gridSize:          cfg.gridSize,
       total:             total,
       treasurePositions: treasurePositions,
-      target:            target,
+      target:            treasurePositions[0],
       exposureMs:        cfg.exposureMs,
       delayMs:           cfg.delayMs,
       options:           options,
-      answer:            target,
+      answer:            treasurePositions[0],
+      answers:           treasurePositions.slice(),
       optionTypes:       types,
       hintZh:            '记住宝藏出现的格子编号',
       hintEn:            'Remember the number of the cell that held the treasure'
@@ -72,7 +70,7 @@ var TG_GEN = (function () {
     var out = [], last = null;
     for (var i = 0; i < count; i++) {
       var q = buildQuestion(gradeCode, rnd);
-      if (q && last && q.treasurePositions.join() === last.treasurePositions.join() && q.target === last.target) {
+      if (q && last && q.treasurePositions.join() === last.treasurePositions.join()) {
         q = buildQuestion(gradeCode, rnd);
       }
       if (!q) { return out; }

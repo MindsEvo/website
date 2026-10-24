@@ -5,7 +5,10 @@
   "id": "treasure-grid",
   "series": "mindseeds",
   "canonicalUrl": "/metadata/mindseeds/treasure-grid.json",
-  "title": { "zh": "宝藏格", "en": "Treasure Grid" },
+  "title": {
+    "zh": "宝藏格",
+    "en": "Treasure Grid"
+  },
   "description": {
     "zh": "一个编号的格子网格中，1-2 格短暂出现宝藏标记后藏起来，孩子要选出宝藏所在格子的编号。K1-G2 从 2×2、无停顿逐步过渡到 3×3、两处宝藏、藏起来后还要等一等才能作答。训练的是对空间位置的短时记忆与延迟保持。",
     "en": "A treasure marker briefly appears in 1-2 cells of a numbered grid, then hides; the child picks the number of the cell that held it. K1-G2 goes from a 2x2 grid with no pause up to a 3x3 grid with two treasures and a pause before answering is allowed. What it trains is short-term spatial memory and holding a location through a delay."
@@ -13,6 +16,38 @@
   "designModel": {
     "zh": "主轴是格子规模（grid_size）与宝藏数量（treasure_count），配合藏起来到能作答之间的停顿（delay_ms，越长越考验保持能力）。格子编号全程可见，只有宝藏标记闪现，避免把『找编号』和『记位置』混在一起。",
     "en": "The primary axes are grid size (grid_size) and treasure count (treasure_count), paired with the pause between hiding and being allowed to answer (delay_ms — longer pauses test retention harder). Cell numbers stay visible throughout; only the treasure marker flashes, so the task isolates 'remember the position' from 'read the label'."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "observation",
+        "retention",
+        "retrieval"
+      ],
+      "secondary": [
+        "encoding"
+      ],
+      "noteZh": "当前玩法主要覆盖位置观察、延迟保持与空间定位提取；编号提供位置编码支架，但尚未要求路径重建、空间更新或记忆指导下的行动。",
+      "noteEn": "The current play mainly covers observing a location, retaining it through a delay and retrieving it by spatial localization. Cell numbers provide an encoding scaffold, but the task does not yet require path reconstruction, spatial updating or memory-guided action."
+    },
+    "carrier": [
+      "spatial"
+    ],
+    "taskMechanism": [
+      "location_recall"
+    ],
+    "workingMemory": false
+  },
+  "sharedDifficultyMap": {
+    "information_load": "treasure_count",
+    "exposure_time": "exposure_ms_runtime",
+    "retention_delay": "delay_ms",
+    "similarity": "uniform_grid_cells",
+    "interference": "none",
+    "processing_complexity": "location_recall_only",
+    "organization_support": "numbered_grid",
+    "retrieval_demand": "spatial_localization",
+    "specialized_axis": "grid_size"
   },
   "ageRange": {
     "min": 3,
@@ -27,15 +62,22 @@
   "geneReporting": {
     "ruleZh": "每次 Attempt 上报 RG.MEMORY.SPATIAL.BASIC，不随等级变化。",
     "ruleEn": "Every attempt reports RG.MEMORY.SPATIAL.BASIC, regardless of grade.",
-    "geneIds": ["RG.MEMORY.SPATIAL.BASIC"]
+    "geneIds": [
+      "RG.MEMORY.SPATIAL.BASIC"
+    ]
   },
-  "rootGeneIds": ["RG.MEMORY.SPATIAL.BASIC"],
+  "rootGeneIds": [
+    "RG.MEMORY.SPATIAL.BASIC"
+  ],
   "difficultyAxes": [
     {
       "id": "grid_size",
       "zh": "格子规模",
       "en": "Grid Size",
-      "progression": ["two_by_two", "three_by_three"],
+      "progression": [
+        "two_by_two",
+        "three_by_three"
+      ],
       "noteZh": "网格边长：K1-K2 为 2×2（4 格），G1-G2 为 3×3（9 格）。",
       "noteEn": "The grid's side length: K1-K2 use 2x2 (4 cells), G1-G2 use 3x3 (9 cells)."
     },
@@ -43,7 +85,10 @@
       "id": "treasure_count",
       "zh": "宝藏数量",
       "en": "Treasure Count",
-      "progression": ["one", "two"],
+      "progression": [
+        "one",
+        "two"
+      ],
       "noteZh": "同时藏起的宝藏格数，G2 起为两处，记住其中一处即可答对。",
       "noteEn": "How many cells hide a treasure at once; from G2 there are two, and remembering either is enough to answer."
     },
@@ -51,7 +96,12 @@
       "id": "delay_ms",
       "zh": "作答停顿",
       "en": "Answer Delay",
-      "progression": ["short", "medium", "long", "longest"],
+      "progression": [
+        "short",
+        "medium",
+        "long",
+        "longest"
+      ],
       "noteZh": "宝藏藏起来之后、选项能点之前的等待时间，越长越考验记忆保持而非瞬时印象。",
       "noteEn": "The wait between the treasure hiding and the options becoming clickable; a longer wait tests sustained retention rather than an instant impression."
     }
@@ -64,40 +114,108 @@
   },
   "levelMap": [
     {
-      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
       "objectiveZh": "2×2 格子里记住一处宝藏，藏起来后立刻能选。",
       "objectiveEn": "Remember one treasure in a 2x2 grid; answer as soon as it hides.",
-      "axisValues": { "grid_size": "two_by_two", "treasure_count": "one", "delay_ms": "short" },
-      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "grid_size": "two_by_two",
+        "treasure_count": "one",
+        "delay_ms": "short"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "treasure-grid"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
       "objectiveZh": "2×2 格子，藏起来后要等一下才能选。",
       "objectiveEn": "A 2x2 grid, with a short wait before answering is allowed.",
-      "axisValues": { "grid_size": "two_by_two", "treasure_count": "one", "delay_ms": "medium" },
-      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "grid_size": "two_by_two",
+        "treasure_count": "one",
+        "delay_ms": "medium"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "treasure-grid"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
       "objectiveZh": "3×3 更大的格子，选项更多，等待更久。",
       "objectiveEn": "A bigger 3x3 grid with more options and a longer wait.",
-      "axisValues": { "grid_size": "three_by_three", "treasure_count": "one", "delay_ms": "long" },
-      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "grid_size": "three_by_three",
+        "treasure_count": "one",
+        "delay_ms": "long"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "treasure-grid"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
       "objectiveZh": "3×3 格子藏两处宝藏，记住其中一处，等待最久后再选。",
       "objectiveEn": "Two treasures in a 3x3 grid; remember either one, then answer after the longest wait.",
-      "axisValues": { "grid_size": "three_by_three", "treasure_count": "two", "delay_ms": "longest" },
-      "status": "implemented", "implementedBy": ["treasure-grid"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "grid_size": "three_by_three",
+        "treasure_count": "two",
+        "delay_ms": "longest"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "treasure-grid"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     }
   ],
   "statistics": {
-    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
-    "dimensions": ["levelId", "gradeCode", "gridSizes", "difficultyAxis"],
-    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "gridSizes",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
     "noteZh": "optionTypes 区分 treasure（正确格）与 empty_cell（空格干扰），能看出是记错了位置还是随手乱选。",
     "noteEn": "optionTypes separate treasure and empty_cell, showing whether an error was a wrong-position memory or a random guess."
   },
-  "tags": ["treasure-grid", "mindseeds", "memory", "spatial-memory", "ai-readable"]
+  "tags": [
+    "treasure-grid",
+    "mindseeds",
+    "memory",
+    "spatial-memory",
+    "ai-readable"
+  ]
 }

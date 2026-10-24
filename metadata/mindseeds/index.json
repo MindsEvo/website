@@ -299,6 +299,52 @@
       "statusNoteEn": "One of the first two MindSeeds · Memory Guardian modules, K1-G2 shipped and reporting to the radar. Content is generated per grade by generator.js with no static bank. Still missing: G3 and above, and any runtime other than puzzle."
     },
     {
+      "id": "remember-and-act",
+      "moduleType": "mindseeds",
+      "titleZh": "记住再行动",
+      "titleEn": "Remember & Act",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/remember-and-act.json",
+      "tags": [
+        "remember-and-act",
+        "mindseeds",
+        "memory",
+        "working-memory",
+        "sequential-memory",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "记忆守护者首个“保持 + 加工”模块。K1-G2 四级上线并上报雷达，覆盖直接执行、顺序重建、反向重组和更新后执行；内容由 generator.js 动态生成。",
+      "statusNoteEn": "Memory Guardian's first retention-plus-processing module. K1-G2 are implemented and report to the radar, covering direct execution, ordered reconstruction, reversal and updating; content is generated dynamically."
+    },
+    {
+      "id": "magic-sequence",
+      "moduleType": "mindseeds",
+      "titleZh": "魔法顺序",
+      "titleEn": "Magic Sequence",
+      "ageRange": {
+        "min": 3,
+        "max": 8
+      },
+      "levels": 4,
+      "canonicalUrl": "/metadata/mindseeds/magic-sequence.json",
+      "tags": [
+        "magic-sequence",
+        "mindseeds",
+        "memory",
+        "sequential-memory",
+        "working-memory",
+        "ai-readable"
+      ],
+      "status": "active",
+      "statusNoteZh": "记忆守护者的顺序记忆模块。K1-G2 四级上线并上报雷达，覆盖逐项编码、顺序重建、延迟保持和局部更新；内容由 generator.js 动态生成。",
+      "statusNoteEn": "Memory Guardian sequential-memory module. K1-G2 are implemented and report to the radar, covering item-by-item encoding, ordered reconstruction, delayed retention and local updating; content is generated dynamically."
+    },
+    {
       "id": "energy-planner",
       "moduleType": "mindseeds",
       "titleZh": "能量分配",

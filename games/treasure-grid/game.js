@@ -154,7 +154,18 @@
 
     renderOption: function (opt) { return '<span class="tg-opt">' + opt + '</span>'; },
 
-    checkAnswer: function (selected, q) { return Number(selected) === q.answer; },
+    checkAnswer: function (selected, q) {
+      var answers = q.answers || [q.answer];
+      return answers.indexOf(Number(selected)) >= 0;
+    },
+
+    onAnswer: function (selected, q, correct) {
+      if (!q.result) { q.result = { tries: 0, tier: null }; }
+      q.result.tries++;
+      if (correct) {
+        q.result.tier = q.result.tries === 1 ? 'best' : q.result.tries === 2 ? 'good' : 'valid';
+      }
+    },
 
     getVoiceText: function (q) {
       return shell.lang === 'zh'
@@ -168,11 +179,27 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
-        gridSizes:       _unique(questions.map(function (q) { return q.gridSize; })),
-        geneIds:         GENES.slice(),
+      var played = questions.filter(function (q) { return q.result && q.result.tier; });
+      var extra = {
+        gridSizes: _unique(questions.map(function (q) { return q.gridSize; })),
+        cognitiveChain: ['observation', 'retention', 'retrieval'],
+        carrier: ['spatial'],
+        taskMechanisms: ['location_recall'],
+        workingMemory: false,
+        geneIds: GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      };
+      if (played.length) {
+        var tiers = { best: 0, good: 0, valid: 0 };
+        played.forEach(function (q) { tiers[q.result.tier]++; });
+        extra.process = {
+          tiers: tiers,
+          optimalCount: tiers.best,
+          retries: played.reduce(function (n, q) { return n + Math.max(0, q.result.tries - 1); }, 0),
+          hints: 0
+        };
+      }
+      return buildRadarContext(unit.id, extra);
     }
   });
 }());

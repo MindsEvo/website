@@ -5,7 +5,10 @@
   "id": "flash-cards",
   "series": "mindseeds",
   "canonicalUrl": "/metadata/mindseeds/flash-cards.json",
-  "title": { "zh": "闪现卡片", "en": "Flash Cards" },
+  "title": {
+    "zh": "闪现卡片",
+    "en": "Flash Cards"
+  },
   "description": {
     "zh": "一组表情符号卡片短暂闪现后藏起来，孩子从选项里找出刚才看到的那一张。K1-G2 从两张、干扰项来自完全不同类别，逐步过渡到五张、干扰项来自同一类别。训练的是短时间接触后的视觉再认，而不是持续观察。",
     "en": "A handful of emoji cards flash briefly, then hide; the child picks the one they saw from the options. K1-G2 goes from two cards with distractors from an unrelated category, up to five cards with lookalike distractors from the same category. What it trains is visual recognition after a brief exposure, not ongoing observation."
@@ -13,6 +16,37 @@
   "designModel": {
     "zh": "主轴是展示卡数（item_count）与展示时长（exposure_ms），配合选项相似度（option_similarity：跨类别更容易，同类别更容易混淆）。三轴共同决定记忆负荷。",
     "en": "The primary axes are card count (item_count) and exposure time (exposure_ms), paired with option similarity (option_similarity: cross-category is easier, same-category is more confusable). The three axes together set the memory load."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "observation",
+        "retention",
+        "retrieval"
+      ],
+      "secondary": [
+        "encoding"
+      ],
+      "noteZh": "当前玩法主要覆盖观察、短时保持与再认提取；编码只来自同类别卡片带来的自然分组，尚未要求儿童主动组织信息。",
+      "noteEn": "The current play mainly covers observation, short-term retention and recognition retrieval. Encoding is only implicit in the natural category grouping; the child is not yet asked to organize the information actively."
+    },
+    "carrier": [
+      "visual"
+    ],
+    "taskMechanism": [
+      "recognition"
+    ],
+    "workingMemory": false
+  },
+  "sharedDifficultyMap": {
+    "information_load": "item_count",
+    "exposure_time": "exposure_ms",
+    "similarity": "option_similarity",
+    "retention_delay": "none",
+    "interference": "option_similarity",
+    "processing_complexity": "recognition_only",
+    "organization_support": "same_category_grouping",
+    "retrieval_demand": "recognition"
   },
   "ageRange": {
     "min": 3,
@@ -27,15 +61,24 @@
   "geneReporting": {
     "ruleZh": "每次 Attempt 上报 RG.MEMORY.VISUAL.RECOGNITION，不随等级变化。",
     "ruleEn": "Every attempt reports RG.MEMORY.VISUAL.RECOGNITION, regardless of grade.",
-    "geneIds": ["RG.MEMORY.VISUAL.RECOGNITION"]
+    "geneIds": [
+      "RG.MEMORY.VISUAL.RECOGNITION"
+    ]
   },
-  "rootGeneIds": ["RG.MEMORY.VISUAL.RECOGNITION"],
+  "rootGeneIds": [
+    "RG.MEMORY.VISUAL.RECOGNITION"
+  ],
   "difficultyAxes": [
     {
       "id": "item_count",
       "zh": "展示卡数",
       "en": "Item Count",
-      "progression": ["two", "three", "four", "five"],
+      "progression": [
+        "two",
+        "three",
+        "four",
+        "five"
+      ],
       "noteZh": "每次闪现的卡片数量，从两张到五张。",
       "noteEn": "The number of cards that flash at once, from two up to five."
     },
@@ -43,7 +86,12 @@
       "id": "exposure_ms",
       "zh": "展示时长",
       "en": "Exposure Time",
-      "progression": ["long", "medium", "short", "shortest"],
+      "progression": [
+        "long",
+        "medium",
+        "short",
+        "shortest"
+      ],
       "noteZh": "卡片可见的时间：K1 约 3 秒，G2 约 1.6 秒。",
       "noteEn": "How long the cards stay visible: about 3s at K1, about 1.6s at G2."
     },
@@ -51,7 +99,11 @@
       "id": "option_similarity",
       "zh": "选项相似度",
       "en": "Option Similarity",
-      "progression": ["low", "mixed", "high"],
+      "progression": [
+        "low",
+        "mixed",
+        "high"
+      ],
       "noteZh": "low 干扰项来自不同类别（一眼可排除）；mixed 混合来自同类或跨类；high 干扰项全部来自同一类别，需要真的记住细节。",
       "noteEn": "low draws distractors from an unrelated category (easy to rule out at a glance); mixed draws from either; high draws all distractors from the same category, requiring the child to actually recall the specific card."
     }
@@ -64,40 +116,108 @@
   },
   "levelMap": [
     {
-      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
       "objectiveZh": "两张卡片闪现 3 秒，从跨类别的选项里找出看到的那张。",
       "objectiveEn": "Two cards flash for 3s; find the one you saw among cross-category options.",
-      "axisValues": { "item_count": "two", "exposure_ms": "long", "option_similarity": "low" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "item_count": "two",
+        "exposure_ms": "long",
+        "option_similarity": "low"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
       "objectiveZh": "三张卡片闪现 2.5 秒，选项仍来自不同类别。",
       "objectiveEn": "Three cards flash for 2.5s; options still come from an unrelated category.",
-      "axisValues": { "item_count": "three", "exposure_ms": "medium", "option_similarity": "low" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "item_count": "three",
+        "exposure_ms": "medium",
+        "option_similarity": "low"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
       "objectiveZh": "四张卡片闪现 2 秒，干扰项可能来自同类别或不同类别。",
       "objectiveEn": "Four cards flash for 2s; distractors may come from either the same or a different category.",
-      "axisValues": { "item_count": "four", "exposure_ms": "short", "option_similarity": "mixed" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "item_count": "four",
+        "exposure_ms": "short",
+        "option_similarity": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
       "objectiveZh": "五张卡片闪现 1.6 秒，干扰项全部来自同一类别，最容易混淆。",
       "objectiveEn": "Five cards flash for 1.6s; distractors all come from the same category, the most confusable.",
-      "axisValues": { "item_count": "five", "exposure_ms": "shortest", "option_similarity": "high" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "axisValues": {
+        "item_count": "five",
+        "exposure_ms": "shortest",
+        "option_similarity": "high"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     }
   ],
   "statistics": {
-    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
-    "dimensions": ["levelId", "gradeCode", "categories", "difficultyAxis"],
-    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "categories",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem"
+    ],
     "noteZh": "optionTypes 区分 seen（看过）、same_category（同类干扰）与 other_category（跨类干扰），能看出错误是猜测还是被相似项混淆。",
     "noteEn": "optionTypes separate seen, same_category and other_category, showing whether an error was a guess or confusion with a lookalike."
   },
-  "tags": ["flash-cards", "mindseeds", "memory", "visual-memory", "ai-readable"]
+  "tags": [
+    "flash-cards",
+    "mindseeds",
+    "memory",
+    "visual-memory",
+    "ai-readable"
+  ]
 }

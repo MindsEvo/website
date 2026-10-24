@@ -1,0 +1,239 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-10-24",
+  "moduleType": "mindseeds",
+  "id": "remember-and-act",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/remember-and-act.json",
+  "title": {
+    "zh": "记住再行动",
+    "en": "Remember & Act"
+  },
+  "description": {
+    "zh": "动作指令短暂出现后消失，孩子凭记忆按原顺序、反向顺序或更新后的顺序完成。它不是单纯再认，而是在保持信息的同时执行、重组或更新。",
+    "en": "Action instructions appear briefly and disappear. The child rebuilds them in the original, reversed or updated order. This is not recognition alone: information must be retained while it is executed, reorganized or updated."
+  },
+  "designModel": {
+    "zh": "K1 从一个动作的保持与执行开始，K2 重建两步顺序，G1 对三步顺序进行反向重组，G2 在原序列消失后替换其中一步并执行更新后的序列。",
+    "en": "K1 retains and executes one action, K2 reconstructs a two-step sequence, G1 reverses three steps, and G2 replaces one hidden step and executes the updated sequence."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "retention",
+        "retrieval",
+        "reorganization",
+        "application"
+      ],
+      "secondary": [
+        "observation",
+        "encoding"
+      ]
+    },
+    "carrier": [
+      "sequential",
+      "visual_action"
+    ],
+    "taskMechanism": [
+      "execute",
+      "ordered_execution",
+      "reverse",
+      "update"
+    ],
+    "workingMemory": true
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块属于记忆守护者。动作序列在操作前已经消失，主要要求保持并加工信息。若信息始终可见并主要寻找规律，归规律猎手；若重点是在多个方案间权衡，归策略大师。",
+    "policyEn": "This module belongs to Memory Guardian. The sequence is gone before interaction, and the main demand is retaining and manipulating information. Tasks with visible information and pattern discovery belong to Pattern Hunter; tasks centered on weighing alternatives belong to Strategy Master."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.MEMORY.WORKING.MANIPULATION。",
+    "ruleEn": "Every attempt reports RG.MEMORY.WORKING.MANIPULATION.",
+    "geneIds": [
+      "RG.MEMORY.WORKING.MANIPULATION"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.MEMORY.WORKING.MANIPULATION"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "information_load",
+      "zh": "信息负荷",
+      "en": "Information Load",
+      "progression": [
+        "one",
+        "two",
+        "three"
+      ],
+      "noteZh": "需要保持和操作的动作数量。",
+      "noteEn": "The number of actions that must be retained and operated on."
+    },
+    {
+      "id": "processing_complexity",
+      "zh": "加工复杂度",
+      "en": "Processing Complexity",
+      "progression": [
+        "execute",
+        "ordered_execution",
+        "reverse",
+        "update"
+      ],
+      "noteZh": "从直接执行到顺序重建、反向重组和局部更新。",
+      "noteEn": "From direct execution to ordered reconstruction, reversal and local updating."
+    },
+    {
+      "id": "retrieval_demand",
+      "zh": "提取要求",
+      "en": "Retrieval Demand",
+      "progression": [
+        "single_action",
+        "sequence_reconstruction",
+        "sequence_reorganization",
+        "updated_sequence"
+      ],
+      "noteZh": "从提取单个动作逐步发展到重建并应用更新后的序列。",
+      "noteEn": "From retrieving one action to reconstructing and applying an updated sequence."
+    },
+    {
+      "id": "interference",
+      "zh": "干扰",
+      "en": "Interference",
+      "progression": [
+        "none",
+        "rule",
+        "replacement"
+      ],
+      "noteZh": "高等级加入反向规则或替换信息。",
+      "noteEn": "Higher grades introduce a reversal rule or replacement information."
+    }
+  ],
+  "sharedDifficultyMap": {
+    "information_load": "information_load",
+    "exposure_time": "exposureMs_runtime",
+    "retention_delay": "instruction_disappears_before_action",
+    "similarity": "action_choice_similarity",
+    "interference": "interference",
+    "processing_complexity": "processing_complexity",
+    "organization_support": "ordered_slots",
+    "retrieval_demand": "retrieval_demand"
+  },
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "每次 8 题，通过线为 6/8；完成即可通过单题，首次且未用提示完成记为最优。",
+    "noteEn": "Eight items per run with a passing line of 6/8. Completing an item passes it; a first-try completion without hints is optimal."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "记住一个动作，动作消失后执行。",
+      "objectiveEn": "Remember one action and execute it after it disappears.",
+      "axisValues": {
+        "information_load": "one",
+        "processing_complexity": "execute",
+        "retrieval_demand": "single_action",
+        "interference": "none"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "remember-and-act"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "记住两个动作并按原顺序重建。",
+      "objectiveEn": "Remember two actions and reconstruct their original order.",
+      "axisValues": {
+        "information_load": "two",
+        "processing_complexity": "ordered_execution",
+        "retrieval_demand": "sequence_reconstruction",
+        "interference": "none"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "remember-and-act"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "记住三个动作，消失后反向重建。",
+      "objectiveEn": "Remember three actions and reconstruct them in reverse.",
+      "axisValues": {
+        "information_load": "three",
+        "processing_complexity": "reverse",
+        "retrieval_demand": "sequence_reorganization",
+        "interference": "rule"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "remember-and-act"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "保持三步动作，在其中一步改变后执行更新序列。",
+      "objectiveEn": "Retain three actions, replace one hidden step and execute the updated sequence.",
+      "axisValues": {
+        "information_load": "three",
+        "processing_complexity": "update",
+        "retrieval_demand": "updated_sequence",
+        "interference": "replacement"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "remember-and-act"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "taskMechanisms",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem",
+      "retries",
+      "hints",
+      "optimalCount"
+    ]
+  },
+  "tags": [
+    "remember-and-act",
+    "mindseeds",
+    "memory",
+    "working-memory",
+    "sequential-memory",
+    "ai-readable"
+  ]
+}

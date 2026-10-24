@@ -145,6 +145,14 @@
 
     checkAnswer: function (selected, q) { return String(selected) === String(q.answer); },
 
+    onAnswer: function (selected, q, correct) {
+      if (!q.result) { q.result = { tries: 0, tier: null }; }
+      q.result.tries++;
+      if (correct) {
+        q.result.tier = q.result.tries === 1 ? 'best' : q.result.tries === 2 ? 'good' : 'valid';
+      }
+    },
+
     getVoiceText: function (q) {
       return shell.lang === 'zh'
         ? '记住刚才看到的卡片，等它们藏起来后，找出你看到的那一张。'
@@ -157,11 +165,27 @@
       var unit = (ctx && ctx.unit) || {};
       var questions = unit.questions || [];
       refillUnit(unit.id);
-      return buildRadarContext(unit.id, {
-        categories:      _unique(questions.map(function (q) { return q.category; })),
-        geneIds:         GENES.slice(),
+      var played = questions.filter(function (q) { return q.result && q.result.tier; });
+      var extra = {
+        categories: _unique(questions.map(function (q) { return q.category; })),
+        cognitiveChain: ['observation', 'retention', 'retrieval'],
+        carrier: ['visual'],
+        taskMechanisms: ['recognition'],
+        workingMemory: false,
+        geneIds: GENES.slice(),
         activityRuntime: 'puzzle'
-      });
+      };
+      if (played.length) {
+        var tiers = { best: 0, good: 0, valid: 0 };
+        played.forEach(function (q) { tiers[q.result.tier]++; });
+        extra.process = {
+          tiers: tiers,
+          optimalCount: tiers.best,
+          retries: played.reduce(function (n, q) { return n + Math.max(0, q.result.tries - 1); }, 0),
+          hints: 0
+        };
+      }
+      return buildRadarContext(unit.id, extra);
     }
   });
 }());

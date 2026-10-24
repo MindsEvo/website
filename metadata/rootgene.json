@@ -67,6 +67,12 @@
       "zh": "科学",
       "en": "Science",
       "color": "#0891b2"
+    },
+    {
+      "id": "MEMORY",
+      "zh": "记忆",
+      "en": "Memory",
+      "color": "#9333ea"
     }
   ],
   "genes": {
@@ -696,6 +702,38 @@
       "descEn": "Describe a small world with a few simple rules and use them to decide what may pass and how to reach a goal.",
       "boundaryZh": "与 RG.LOGIC 系列的界限：逻辑基因训练在已有前提中做可靠推理；本基因训练把一个系统的规矩本身建成模型并运用，是后面推理与策略的底座。",
       "boundaryEn": "Boundary with the RG.LOGIC genes: those train reliable reasoning from given premises; this gene trains building and applying a model of a system's rules, the base that later reasoning and strategy stand on."
+    },
+    "RG.MEMORY.WORKING.MANIPULATION": {
+      "category": "MEMORY",
+      "zh": "工作记忆加工",
+      "en": "Working Memory Manipulation",
+      "short": {
+        "zh": "保持加工",
+        "en": "Hold & work"
+      },
+      "descZh": "在信息已经不可见时继续保持它，同时执行顺序重建、反向、替换或规则应用。",
+      "descEn": "Keep information active after it is no longer visible while reconstructing, reversing, replacing or applying a rule.",
+      "boundaryZh": "与视觉再认和空间记忆的界限：单纯认出看过的对象或指出隐藏位置只要求保持与提取；本基因要求保持信息的同时对它进行加工。与策略基因的界限：这里的主要困难是维持并变换不可见信息，不是在多个可行方案间权衡。",
+      "boundaryEn": "Boundary with visual recognition and spatial memory: recognizing a seen item or locating a hidden position only requires retention and retrieval; this gene additionally manipulates retained information. Boundary with strategy genes: the main demand is maintaining and transforming information that is no longer visible, not weighing multiple viable plans.",
+      "claimedBy": [
+        "remember-and-act"
+      ]
+    },
+    "RG.MEMORY.SEQUENTIAL.RECALL": {
+      "category": "MEMORY",
+      "zh": "顺序记忆",
+      "en": "Sequential Recall",
+      "short": {
+        "zh": "顺序记忆",
+        "en": "Sequence"
+      },
+      "descZh": "在一串信息逐项出现并消失后，保持每一项及其先后位置，再按原顺序重建。",
+      "descEn": "After items appear one by one and disappear, retain both the items and their positions, then reconstruct the original order.",
+      "boundaryZh": "与规律序列的界限：本基因重建的是刚才实际展示过的顺序，不需要发现或预测重复规律。与工作记忆加工的界限：基础任务只要求保持并重建顺序；发生替换或规则转换时才同时涉及加工。",
+      "boundaryEn": "Boundary with pattern sequences: this gene reconstructs the order that was actually presented and does not require discovering or predicting a repeating rule. Basic tasks retain and rebuild order; replacement or rule transformation additionally involves manipulation.",
+      "claimedBy": [
+        "magic-sequence"
+      ]
     }
   }
 }
