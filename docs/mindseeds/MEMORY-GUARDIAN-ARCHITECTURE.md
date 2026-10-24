@@ -132,17 +132,14 @@ Memory Guardian 的共享难度词汇包括：
 
 架构映射：
 
-- 主要认知过程：Observation → Retention → Retrieval；
+- 主要认知过程：Observation → Retention → Retrieval；G1-G2 分类题进一步覆盖 Encoding → Reorganization；
 - 主要载体：Visual；
-- 主要任务：Recognition；
-- 当前尚未明确训练 Encoding、Reorganization 或 Application。
-
-后续扩展方向：
-
-- 加入有结构与无结构的卡片组；
-- 让儿童先主动分组或发现类别；
-- 把 “Who’s Missing?” 作为同一家族中的回忆/变化任务评估，而不是立即建立独立一级入口；
-- 记录提示、重试、结构利用和干扰类型。
+- 主要任务：Recognition、Grouped Encoding、Missing-item Recall；
+- K1-K2 保持基础视觉再认；
+- G1-G2 每次 8 题中混合 4 道按两个类别组展示的 “Who’s Missing?”；
+- 原始卡组先真实展示并隐藏，随后出现少一张的同组卡片，答案来自对原集合的记忆，不依赖类别常识；
+- “Who’s Missing?” 已纳入 Flash Cards 家族，没有建立重复的一级入口；
+- 报告记录组织支架、分类题数量、找回的缺失项、重试和 Replay。
 
 ### 6.2 Treasure Grid / 宝藏格
 
@@ -156,25 +153,12 @@ Memory Guardian 的共享难度词汇包括：
 
 架构映射：
 
-- 主要认知过程：Observation → Retention → Retrieval；
+- 主要认知过程：Observation → Retention → Retrieval；G1-G2 路径题进一步覆盖 Reorganization → Application；
 - 主要载体：Spatial；
-- 主要任务：Location Recall；
-- 当前尚未覆盖路径重建、空间更新或记忆指导下的行动。
-
-当前 G2 存在语义不一致：
-
-- 题面展示两处宝藏；
-- 文案说记住任意一处即可；
-- generator 却固定选取其中一处作为唯一答案。
-
-该问题必须在改造 Treasure Grid 时解决。可以选择“所有宝藏格都算正确”，或明确指定要记住哪一处，但不能继续让题意和判分标准不一致。
-
-后续扩展方向：
-
-- 路径或连续位置记忆；
-- 某一步变化后的空间更新；
-- 让儿童根据记忆执行移动；
-- 将 “Find the Way Home” 先作为空间记忆机制评估，同时保持与 Strategy Master 路线规划的边界。
+- 主要任务：Location Recall、Path Reconstruction、Memory-guided Action；
+- G1 混合 3 步路线重建，G2 混合 4 步路线与一步空间更新；
+- G2 两处宝藏均可作为正确答案，题意与判分已经一致；
+- 路线由题目实际展示后隐藏，儿童按记忆重建，不寻找最短或最佳路线，因此仍属于 Memory Guardian，而不是 Strategy Master 的路线规划。
 
 ## 7. 候选机制与入口准入
 
@@ -300,4 +284,12 @@ Memory Guardian 记录成长轨迹，不生成“记忆力排名”或“智力�
 4. 修正 Treasure Grid G2 的题意与判分不一致。
 5. 在不破坏现有可玩版本的前提下，为 Flash Cards 和 Treasure Grid 增加过程上报和结构化难度信息。
 6. 以 Remember & Act 实现第一个“保持 + 加工”代表机制。（首版已实现）
-7. 架构和代表机制稳定后，再决定其余候选是进入现有家族还是成为新的一级入口。
+7. 实现 Magic Sequence，覆盖逐项编码、顺序保持、重建与 G2 局部更新。（首版已实现）
+8. 实现 Memory Pairs+，覆盖对象与位置配对、完整布局提取，以及 G2 隐藏位置更新。（首版已实现）
+
+9. 实现 What Happened?，覆盖对象消失、出现、移动、替换及情境变化提取。（首版已实现）
+
+10. 实现 Memory Detective，覆盖隐藏线索保持、多属性整合与 G2 线索更新。（首版已实现）
+11. Replay、Hint、Retry 保持独立语义：Replay 重新提供原始观察素材，Hint 提供策略或局部线索，Retry 是失败后的再次作答。
+12. Replay 作为 Shell-1 公共能力不限次数；记录使用次数，使用后仍可完成题目，但不计 `best`。
+13. 架构和代表机制稳定后，再决定其余候选是进入现有家族还是成为新的一级入口。

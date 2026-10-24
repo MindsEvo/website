@@ -1,0 +1,261 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-10-24",
+  "moduleType": "mindseeds",
+  "id": "what-happened",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/what-happened.json",
+  "title": {
+    "zh": "发生了什么",
+    "en": "What Happened?"
+  },
+  "description": {
+    "zh": "场景短暂展示后隐藏，再带着一个变化返回。孩子凭记忆判断对象消失、出现、移动或被替换。",
+    "en": "A scene appears briefly, hides, and returns with one change. The child uses memory to identify an object disappearing, appearing, moving or being replaced."
+  },
+  "designModel": {
+    "zh": "K1 识别消失对象，K2 加入对象出现，G1 同时保持对象和位置并识别移动，G2 在更长延迟后区分移动与替换。",
+    "en": "K1 identifies a missing object, K2 adds object appearance, G1 retains objects and locations to identify movement, and G2 distinguishes movement from replacement after a longer delay."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "encoding",
+        "retention",
+        "retrieval"
+      ],
+      "secondary": [
+        "observation",
+        "reorganization"
+      ]
+    },
+    "carrier": [
+      "visual",
+      "spatial",
+      "contextual_scene"
+    ],
+    "taskMechanism": [
+      "missing_object",
+      "added_object",
+      "location_change",
+      "identity_replacement"
+    ],
+    "workingMemory": true,
+    "workingMemoryNoteZh": "K1-G1 主要保持和提取场景信息；G2 需要在场景不可见时维持对象与位置关系并判断情境更新。",
+    "workingMemoryNoteEn": "K1-G1 primarily retain and retrieve scene information. G2 maintains object-location relations while hidden and identifies a contextual update."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块判断的是刚才实际展示场景中发生的变化。原场景在作答时不可见，不要求发现重复或递变规律，因此属于记忆守护者而不是规律猎手或持续可见的找不同任务。",
+    "policyEn": "This module identifies a change to an actually presented scene. The original scene is hidden during answering and no repeating or progressive rule must be discovered, so it belongs to Memory Guardian rather than Pattern Hunter or a continuously visible difference task."
+  },
+  "geneReporting": {
+    "ruleZh": "K1-G1 上报视觉再认与空间记忆；G2 的隐藏情境更新额外上报工作记忆加工。",
+    "ruleEn": "K1-G1 report visual recognition and spatial memory. G2 additionally reports working-memory manipulation for the hidden contextual update.",
+    "baseGeneIds": [
+      "RG.MEMORY.VISUAL.RECOGNITION",
+      "RG.MEMORY.SPATIAL.BASIC"
+    ],
+    "g2AdditionalGeneIds": [
+      "RG.MEMORY.WORKING.MANIPULATION"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.MEMORY.VISUAL.RECOGNITION",
+    "RG.MEMORY.SPATIAL.BASIC",
+    "RG.MEMORY.WORKING.MANIPULATION"
+  ],
+  "ageRange": {
+    "min": 3,
+    "max": 8
+  },
+  "difficultyAxes": [
+    {
+      "id": "information_load",
+      "zh": "信息负荷",
+      "en": "Information Load",
+      "progression": [
+        "three_objects",
+        "four_objects",
+        "five_objects"
+      ]
+    },
+    {
+      "id": "exposure_time",
+      "zh": "展示时间",
+      "en": "Exposure Time",
+      "progression": [
+        "long",
+        "medium",
+        "short",
+        "shortest"
+      ]
+    },
+    {
+      "id": "retention_delay",
+      "zh": "保持延迟",
+      "en": "Retention Delay",
+      "progression": [
+        "short",
+        "medium",
+        "long",
+        "longest"
+      ]
+    },
+    {
+      "id": "interference",
+      "zh": "变化干扰",
+      "en": "Change Interference",
+      "progression": [
+        "single_missing",
+        "object_presence_change",
+        "object_or_location_change",
+        "location_or_identity_update"
+      ]
+    },
+    {
+      "id": "processing_complexity",
+      "zh": "加工复杂度",
+      "en": "Processing Complexity",
+      "progression": [
+        "single_change",
+        "relation_change",
+        "context_update"
+      ]
+    }
+  ],
+  "sharedDifficultyMap": {
+    "information_load": "information_load",
+    "exposure_time": "exposure_time",
+    "retention_delay": "retention_delay",
+    "similarity": "object_identity_options",
+    "interference": "change_type_competition",
+    "processing_complexity": "processing_complexity",
+    "organization_support": "fixed_scene_slots",
+    "retrieval_demand": "change_identification"
+  },
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "replayPolicyZh": "重新演示不限次数，每次只重放原始场景，再返回变化后的场景。使用重新演示后仍可完成，但不计最优。",
+    "replayPolicyEn": "Show Again is unlimited. Each replay presents only the original scene before returning to the changed scene. Replay use still permits completion but prevents an optimal result."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "记住三个对象并识别消失的一个。",
+      "objectiveEn": "Remember three objects and identify the one that disappeared.",
+      "axisValues": {
+        "information_load": "three_objects",
+        "exposure_time": "long",
+        "retention_delay": "short",
+        "interference": "single_missing",
+        "processing_complexity": "single_change"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "what-happened"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "记住四个对象并判断对象消失或出现。",
+      "objectiveEn": "Remember four objects and determine whether one disappeared or appeared.",
+      "axisValues": {
+        "information_load": "four_objects",
+        "exposure_time": "medium",
+        "retention_delay": "medium",
+        "interference": "object_presence_change",
+        "processing_complexity": "single_change"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "what-happened"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "保持五个对象及位置，识别对象或位置变化。",
+      "objectiveEn": "Retain five objects and their locations, then identify an object or location change.",
+      "axisValues": {
+        "information_load": "five_objects",
+        "exposure_time": "short",
+        "retention_delay": "long",
+        "interference": "object_or_location_change",
+        "processing_complexity": "relation_change"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "what-happened"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "在更长延迟后判断对象移动或被替换。",
+      "objectiveEn": "After a longer delay, determine whether an object moved or was replaced.",
+      "axisValues": {
+        "information_load": "five_objects",
+        "exposure_time": "shortest",
+        "retention_delay": "longest",
+        "interference": "location_or_identity_update",
+        "processing_complexity": "context_update"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "what-happened"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "taskMechanisms",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "retries",
+      "hints",
+      "replays",
+      "optimalCount",
+      "changeTypes",
+      "contextUpdates"
+    ]
+  },
+  "tags": [
+    "what-happened",
+    "mindseeds",
+    "memory",
+    "contextual-memory",
+    "visual-memory",
+    "spatial-memory",
+    "working-memory",
+    "ai-readable"
+  ]
+}

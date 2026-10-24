@@ -518,6 +518,53 @@
       "videoIds": []
     },
     {
+      "id": "memory-pairs",
+      "series": "mindseeds",
+      "module": "memory-pairs",
+      "shell": "shell-1",
+      "path": "games/memory-pairs/",
+      "titleZh": "记忆配对",
+      "titleEn": "Memory Pairs+",
+      "rootGeneIds": [
+        "RG.MEMORY.VISUAL.RECOGNITION",
+        "RG.MEMORY.SPATIAL.BASIC",
+        "RG.MEMORY.WORKING.MANIPULATION"
+      ],
+      "lessonIds": [],
+      "videoIds": []
+    },
+    {
+      "id": "what-happened",
+      "series": "mindseeds",
+      "module": "what-happened",
+      "shell": "shell-1",
+      "path": "games/what-happened/",
+      "titleZh": "发生了什么",
+      "titleEn": "What Happened?",
+      "rootGeneIds": [
+        "RG.MEMORY.VISUAL.RECOGNITION",
+        "RG.MEMORY.SPATIAL.BASIC",
+        "RG.MEMORY.WORKING.MANIPULATION"
+      ],
+      "lessonIds": [],
+      "videoIds": []
+    },
+    {
+      "id": "memory-detective",
+      "series": "mindseeds",
+      "module": "memory-detective",
+      "shell": "shell-1",
+      "path": "games/memory-detective/",
+      "titleZh": "记忆侦探",
+      "titleEn": "Memory Detective",
+      "rootGeneIds": [
+        "RG.MEMORY.VISUAL.RECOGNITION",
+        "RG.MEMORY.WORKING.MANIPULATION"
+      ],
+      "lessonIds": [],
+      "videoIds": []
+    },
+    {
       "id": "energy-planner",
       "series": "mindseeds",
       "module": "energy-planner",

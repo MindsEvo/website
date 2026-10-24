@@ -1,0 +1,256 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-10-24",
+  "moduleType": "mindseeds",
+  "id": "memory-pairs",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/memory-pairs.json",
+  "title": {
+    "zh": "记忆配对",
+    "en": "Memory Pairs+"
+  },
+  "description": {
+    "zh": "卡片短暂展示后全部隐藏，孩子凭记忆翻开卡片并完成所有相同配对。高等级增加更多配对、相似信息干扰和隐藏位置更新。",
+    "en": "Cards appear briefly and then hide. The child turns them over from memory and completes every matching pair, with more pairs, greater similarity and a hidden position update at higher grades."
+  },
+  "designModel": {
+    "zh": "K1 从两对卡片开始，K2 增加到三对，G1 使用四对卡片并缩短展示、延长保持，G2 在卡片隐藏后交换两个不同配对的位置，要求先更新内部布局再完成配对。",
+    "en": "K1 starts with two pairs, K2 increases to three, G1 uses four pairs with shorter exposure and longer retention, and G2 swaps two positions from different pairs after hiding so the internal layout must be updated before matching."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "encoding",
+        "retention",
+        "retrieval"
+      ],
+      "secondary": [
+        "observation",
+        "reorganization"
+      ]
+    },
+    "carrier": [
+      "visual",
+      "spatial",
+      "paired_objects"
+    ],
+    "taskMechanism": [
+      "complete_pair_matching",
+      "hidden_position_update"
+    ],
+    "workingMemory": true,
+    "workingMemoryNoteZh": "K1-G1 主要保持并提取对象及位置；G2 在布局不可见时执行位置交换更新，才同时涉及工作记忆加工。",
+    "workingMemoryNoteEn": "K1-G1 primarily retain and retrieve objects and locations. G2 additionally manipulates working memory by updating swapped positions while the layout is hidden."
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块配对的是刚才实际展示但已经隐藏的对象位置，主要困难是保持和提取布局，不是从持续可见对象中发现规律，因此属于记忆守护者而不是规律猎手。",
+    "policyEn": "This module matches objects and locations that were actually shown and then hidden. Its main demand is retaining and retrieving the layout, not discovering a rule among continuously visible objects, so it belongs to Memory Guardian rather than Pattern Hunter."
+  },
+  "geneReporting": {
+    "ruleZh": "K1-G1 上报视觉再认与空间记忆；G2 的隐藏位置交换还上报工作记忆加工。",
+    "ruleEn": "K1-G1 report visual recognition and spatial memory. G2 additionally reports working-memory manipulation for the hidden position swap.",
+    "baseGeneIds": [
+      "RG.MEMORY.VISUAL.RECOGNITION",
+      "RG.MEMORY.SPATIAL.BASIC"
+    ],
+    "g2AdditionalGeneIds": [
+      "RG.MEMORY.WORKING.MANIPULATION"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.MEMORY.VISUAL.RECOGNITION",
+    "RG.MEMORY.SPATIAL.BASIC",
+    "RG.MEMORY.WORKING.MANIPULATION"
+  ],
+  "ageRange": {
+    "min": 3,
+    "max": 8
+  },
+  "difficultyAxes": [
+    {
+      "id": "pair_count",
+      "zh": "配对数量",
+      "en": "Pair Count",
+      "progression": [
+        "two_pairs",
+        "three_pairs",
+        "four_pairs"
+      ]
+    },
+    {
+      "id": "exposure_time",
+      "zh": "展示时间",
+      "en": "Exposure Time",
+      "progression": [
+        "long",
+        "medium",
+        "short",
+        "shortest"
+      ]
+    },
+    {
+      "id": "retention_delay",
+      "zh": "保持延迟",
+      "en": "Retention Delay",
+      "progression": [
+        "short",
+        "medium",
+        "long",
+        "longest"
+      ]
+    },
+    {
+      "id": "similarity",
+      "zh": "信息相似度",
+      "en": "Information Similarity",
+      "progression": [
+        "low",
+        "high"
+      ]
+    },
+    {
+      "id": "processing_complexity",
+      "zh": "加工复杂度",
+      "en": "Processing Complexity",
+      "progression": [
+        "pair_retrieval",
+        "hidden_position_update"
+      ]
+    }
+  ],
+  "sharedDifficultyMap": {
+    "information_load": "pair_count",
+    "exposure_time": "exposure_time",
+    "retention_delay": "retention_delay",
+    "similarity": "similarity",
+    "interference": "position_swap_at_G2",
+    "processing_complexity": "processing_complexity",
+    "organization_support": "fixed_grid_positions",
+    "retrieval_demand": "complete_pair_matching"
+  },
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "replayPolicyZh": "重新演示不限次数；每次重新展示完整原始布局并清除当前题的临时翻牌和已完成配对。使用重新演示后仍可完成，但不计最优。",
+    "replayPolicyEn": "Show Again is unlimited. Each replay presents the complete original layout and clears temporary flips and completed pairs for the current item. The item remains completable, but replay use prevents an optimal result."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "短暂观察两对卡片，隐藏后完成所有配对。",
+      "objectiveEn": "Briefly observe two pairs and complete every match after they hide.",
+      "axisValues": {
+        "pair_count": "two_pairs",
+        "exposure_time": "long",
+        "retention_delay": "short",
+        "similarity": "low",
+        "processing_complexity": "pair_retrieval"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "memory-pairs"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "保持三对卡片的位置并完成全部配对。",
+      "objectiveEn": "Retain the locations of three pairs and complete every match.",
+      "axisValues": {
+        "pair_count": "three_pairs",
+        "exposure_time": "medium",
+        "retention_delay": "medium",
+        "similarity": "low",
+        "processing_complexity": "pair_retrieval"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "memory-pairs"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "在更短展示和更长延迟下保持四对卡片的位置。",
+      "objectiveEn": "Retain four pairs across shorter exposure and a longer delay.",
+      "axisValues": {
+        "pair_count": "four_pairs",
+        "exposure_time": "short",
+        "retention_delay": "long",
+        "similarity": "high",
+        "processing_complexity": "pair_retrieval"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "memory-pairs"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "卡片隐藏后更新两个交换位置，再完成四对配对。",
+      "objectiveEn": "Update two swapped positions after hiding, then complete four pairs.",
+      "axisValues": {
+        "pair_count": "four_pairs",
+        "exposure_time": "shortest",
+        "retention_delay": "longest",
+        "similarity": "high",
+        "processing_complexity": "hidden_position_update"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "memory-pairs"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "taskMechanisms",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "attempts",
+      "mismatches",
+      "hints",
+      "replays",
+      "optimalCount",
+      "pairsCompleted",
+      "positionUpdates"
+    ]
+  },
+  "tags": [
+    "memory-pairs",
+    "mindseeds",
+    "memory",
+    "visual-memory",
+    "spatial-memory",
+    "working-memory",
+    "ai-readable"
+  ]
+}

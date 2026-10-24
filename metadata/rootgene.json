@@ -580,7 +580,10 @@
       "boundaryZh": "与 RG.ATTENTION.SEARCH.VISUAL 的界限：视觉搜索是在目标始终可见的场景里持续寻找并确认；本基因作答时目标已经消失，考验的是看过之后的记忆再认，不是当下的搜索。",
       "boundaryEn": "Boundary with RG.ATTENTION.SEARCH.VISUAL: visual search keeps locating and confirming a target that stays visible throughout; this gene answers after the target is gone, testing recognition from memory rather than ongoing search.",
       "claimedBy": [
-        "flash-cards"
+        "flash-cards",
+        "memory-pairs",
+        "what-happened",
+        "memory-detective"
       ]
     },
     "RG.MEMORY.SPATIAL.BASIC": {
@@ -596,7 +599,9 @@
       "boundaryZh": "与 RG.SCIENCE 或 pattern 系基因的界限：本基因作答时位置标记已经消失，且可能还要再等一段延迟，考验的是延迟后的空间位置保持，不是当下可见图形之间的比较或推理。",
       "boundaryEn": "Boundary with the pattern-family genes: this gene answers after the position marker is gone, sometimes after an added delay, testing retention of a location across time rather than comparison or reasoning over figures that remain visible.",
       "claimedBy": [
-        "treasure-grid"
+        "treasure-grid",
+        "memory-pairs",
+        "what-happened"
       ]
     },
     "RG.MATH.NUMBER_SENSE.REPRESENTATION": {
@@ -716,7 +721,11 @@
       "boundaryZh": "与视觉再认和空间记忆的界限：单纯认出看过的对象或指出隐藏位置只要求保持与提取；本基因要求保持信息的同时对它进行加工。与策略基因的界限：这里的主要困难是维持并变换不可见信息，不是在多个可行方案间权衡。",
       "boundaryEn": "Boundary with visual recognition and spatial memory: recognizing a seen item or locating a hidden position only requires retention and retrieval; this gene additionally manipulates retained information. Boundary with strategy genes: the main demand is maintaining and transforming information that is no longer visible, not weighing multiple viable plans.",
       "claimedBy": [
-        "remember-and-act"
+        "remember-and-act",
+        "memory-pairs",
+        "what-happened",
+        "memory-detective",
+        "treasure-grid"
       ]
     },
     "RG.MEMORY.SEQUENTIAL.RECALL": {

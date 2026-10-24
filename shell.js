@@ -2071,6 +2071,7 @@
         total:     total,
         timeMs:    elapsed,
         hintsUsed: state.hints,
+        replaysUsed: state.replays,
         geneIds:   geneIds,
         shell:     'shell-1',
         levelId:   reportContext.levelId || null,
