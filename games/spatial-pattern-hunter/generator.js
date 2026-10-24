@@ -91,7 +91,8 @@ var SP_GEN = (function () {
       if (form === 'predict' && cfg.kind === 'stair') { n = shown + need; }
       if (form !== 'predict' && n < 4) { continue; }
       var m = makeSeq(cfg, n); if (!m) { continue; }
-      var seq = m.seq, q = { gradeCode: grade, kind: cfg.kind, form: form, R: R, C: C, rule: m.rule, seq: seq, mover: cfg.mover, cellPx: cfg.cell, pads: !!cfg.pads };
+      var seq = m.seq, q = { gradeCode: grade, family: 'movement', kind: cfg.kind, form: form, taskForm: form,
+      explanationUsed: false, R: R, C: C, rule: m.rule, seq: seq, mover: cfg.mover, cellPx: cfg.cell, pads: !!cfg.pads };
 
       if (cfg.kind === 'bounce') {
         var b = bounces(seq);
@@ -130,6 +131,52 @@ var SP_GEN = (function () {
     return null;
   }
 
+
+  function transformGlyph(base, turn, reflect) {
+    return { base: base, turn: ((turn % 4) + 4) % 4, reflect: !!reflect };
+  }
+  function glyphKey(g) { return g.base.id + ':' + g.turn + ':' + (g.reflect ? 1 : 0); }
+  function transformed(base, op, i) {
+    if (op === 'rotate90') { return transformGlyph(base, i, false); }
+    if (op === 'reflectX') { return transformGlyph(base, 0, i % 2 === 1); }
+    if (op === 'alternate-rotate-reflect') { return transformGlyph(base, Math.ceil(i / 2), i % 2 === 1); }
+    return transformGlyph(base, i, i > 0 && i % 2 === 0);
+  }
+  function uniqueOptionAnswer(options, answer) {
+    return options.filter(function (x) { return glyphKey(x) === glyphKey(answer); }).length === 1;
+  }
+  function buildTransform(grade) {
+    var cfg = SP_DATA.config[grade], base = pick(SP_DATA.symbols), op = pick(cfg.transforms), len = grade === 'K1' ? 4 : grade === 'K2' ? 5 : 6;
+    var seq = []; for (var i = 0; i < len; i++) { seq.push(transformed(base, op, i)); }
+    var answer = seq[len - 1], options = [answer];
+    for (var t = 0; options.length < 4 && t < 30; t++) {
+      var x = transformGlyph(base, rnd(4), rnd(2));
+      if (!options.some(function (o) { return glyphKey(o) === glyphKey(x); })) { options.push(x); }
+    }
+    if (options.length !== 4 || !uniqueOptionAnswer(options, answer)) { return null; }
+    return { gradeCode: grade, family: grade === 'G1' ? 'alternating-transform' : grade === 'G2' ? 'combined-transform' : op === 'reflectX' ? 'reflection' : 'rotation',
+      kind: 'transform', form: 'transform', taskForm: 'complete-sequence', sequence: seq.slice(0, -1), targetGlyph: answer,
+      glyphOptions: shuffle(options), transformRule: op, explanationUsed: !!cfg.explain, mover: cfg.mover,
+      key: 'transform:' + grade + ':' + base.id + ':' + op + ':' + seq.map(glyphKey).join('|'), interactive: true,
+      options: ['done'], answer: 'done', optionTypes: { done: 'spatial_board' } };
+  }
+  function buildGrid(grade) {
+    var base = pick(SP_DATA.symbols), combined = grade === 'G2', cells = [], r, c;
+    for (r = 0; r < 3; r++) { cells[r] = []; for (c = 0; c < 3; c++) { cells[r][c] = transformGlyph(base, c + (combined ? r : 0), combined && r % 2 === 1); } }
+    var target = cells[2][2], options = [target];
+    for (var t = 0; options.length < 4 && t < 30; t++) {
+      var x = transformGlyph(base, rnd(4), rnd(2));
+      if (!options.some(function (o) { return glyphKey(o) === glyphKey(x); })) { options.push(x); }
+    }
+    if (options.length !== 4 || !uniqueOptionAnswer(options, target)) { return null; }
+    cells[2][2] = null;
+    return { gradeCode: grade, family: 'row-column-grid', kind: 'grid', form: 'grid', taskForm: 'complete-grid',
+      grid: cells, targetGlyph: target, glyphOptions: shuffle(options), gridRule: combined ? 'row-rotate-column-reflect' : 'column-rotate',
+      explanationUsed: true, mover: SP_DATA.config[grade].mover,
+      key: 'grid:' + grade + ':' + base.id + ':' + (combined ? 'combined' : 'intro'), interactive: true,
+      options: ['done'], answer: 'done', optionTypes: { done: 'spatial_board' } };
+  }
+
   function generate(grade, count) {
     var cfg = SP_DATA.config[grade]; if (!cfg) { return []; }
     var forms = [];
@@ -138,12 +185,13 @@ var SP_GEN = (function () {
     var out = [], seen = {};
     forms.forEach(function (f) {
       for (var t = 0; t < 12; t++) {
-        var q = build(grade, f) || build(grade, 'fill');
+        var q = f === 'transform' ? buildTransform(grade) : f === 'grid' ? buildGrid(grade) : build(grade, f);
+        q = q || build(grade, 'fill');
         if (q && !seen[q.key]) { seen[q.key] = 1; out.push(q); return; }
       }
     });
     return out;
   }
 
-  return { generate: generate, fits: fits, diff: diff, bounceSeq: bounceSeq };
+  return { generate: generate, fits: fits, diff: diff, bounceSeq: bounceSeq, glyphKey: glyphKey };
 }());

@@ -3,12 +3,12 @@
 /**
  * Logic Pattern Hunter — session GENERATOR (MindSeeds)
  * ─────────────────────────────────────────────────────────────────────────────
- * One item: n children in a hidden total order, n-1 premises "order[i] > order[i+1]"
- * (always in the relation's positive word), and one question. A chain of
- * adjacent pairs fixes the whole order, so every question has exactly one answer.
+ * One item: n children in a hidden total order and n-1 premises
+ * "order[i] > order[i+1]" (always in the relation's positive word). A chain of
+ * adjacent pairs fixes the whole order, which the child builds on the board.
  *
- * `order[0]` is the most (tallest / fastest / oldest). Options are all n
- * children, so a wrong pick always names a real rank the child misread.
+ * `order[0]` is the most (tallest / fastest / oldest). The legacy answer and
+ * option diagnostic metadata remain available alongside the full expected order.
  *
  * Pass a `seed` for a reproducible draw; the game does not pass one.
  */
@@ -103,12 +103,24 @@ var LP_GEN = (function () {
       premises:    premises,
       questionZh:  text.zh,
       questionEn:  text.en,
-      answer:      'p' + idx[rank],
-      options:     shuffled(options, rnd),
-      optionDefs:  optionDefs,
-      optionTypes: optionTypes,
-      hintZh:      rel.orderZh + '：' + order.map(function (p) { return p.zh; }).join(' → '),
-      hintEn:      rel.orderEn + ': ' + order.map(function (p) { return p.en; }).join(' → ')
+      answer:        'p' + idx[rank],
+      options:       shuffled(options, rnd),
+      expectedOrder: order.map(function (_, r) { return 'p' + idx[r]; }),
+      optionDefs:    optionDefs,
+      optionTypes:   optionTypes,
+      hintZh: [
+        '先找出排在最前面的小朋友。',
+        '逐条检查：前一个小朋友应该比后一个更' +
+          (relId === 'tall' ? '高' : relId === 'fast' ? '快' : '大') + '。',
+        rel.orderZh + '：' + order.map(function (p) { return p.zh; }).join(' → ')
+      ],
+      hintEn: [
+        'First find the child who belongs at the front.',
+        'Check each pair: the child on the left should be ' +
+          (relId === 'tall' ? 'taller' : relId === 'fast' ? 'faster' : 'older') +
+          ' than the child on the right.',
+        rel.orderEn + ': ' + order.map(function (p) { return p.en; }).join(' → ')
+      ]
     };
   }
 

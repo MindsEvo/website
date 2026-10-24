@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-24",
+  "version": "v0.2.0",
+  "updatedAt": "2026-10-23",
   "moduleType": "mindseeds",
   "id": "logic-pattern",
   "series": "mindseeds",
@@ -10,12 +10,12 @@
     "en": "Logic Pattern"
   },
   "description": {
-    "zh": "根据『谁比谁高 / 跑得快 / 年纪大』的线索回答问题。训练的是传递性比较推理：从一条线索的直接读取，到反向提问，再到把两三条线索串成一个完整的顺序。角色都是小朋友，不用动物或物体，避免孩子凭常识（猎豹比马快）而不看线索就答对。",
-    "en": "Answer questions from clues like 'who is taller / faster / older than whom'. What it trains is transitive comparison reasoning: from reading one clue directly, to answering it backwards, to linking two or three clues into one complete order. The characters are always children, never animals or objects, so the answer cannot come from world knowledge (a cheetah is faster than a horse) without reading the clues."
+    "zh": "根据『谁比谁高 / 跑得快 / 年纪大』的线索，把所有小朋友排成完整顺序。训练的是传递性比较推理：从一条线索排两人，到连接两三条线索排出三四人的关系链。角色都是小朋友，不用动物或物体，避免孩子凭常识（猎豹比马快）而不看线索就答对。",
+    "en": "Build a complete ordering of the children from clues like 'who is taller / faster / older than whom'. This trains transitive comparison reasoning: from ordering two children using one clue to linking two or three clues into a chain of three or four. The characters are always children, never animals or objects, so the answer cannot come from world knowledge (a cheetah is faster than a horse) without reading the clues."
   },
   "designModel": {
-    "zh": "主轴是线索数（一条 → 两条 → 三条）配合提问形式（同词 → 反义词 → 最…→ 第几）。G2 的三条线索顺序被打乱，孩子必须自己把它们连成链，而不是按出现顺序读下去。",
-    "en": "The primary axis is clue count (one, two, three) paired with question form (same word, opposite word, most/least, n-th). At G2 the three clues are shuffled, so the child has to link them into a chain rather than read them in the order they appear."
+    "zh": "主轴是线索数（一条 → 两条 → 三条）配合关系理解形式（同词 → 反义词 → 最…→ 第几）。每一级都要求动手排出完整顺序；G2 的三条线索顺序被打乱，孩子必须自己把它们连成链，而不是按出现顺序读下去。",
+    "en": "The primary axis is clue count (one, two, three) paired with relation form (same word, opposite word, most/least, n-th). Every level requires building the complete order. At G2 the three clues are shuffled, so the child has to link them into a chain rather than read them in the order they appear."
   },
   "ageRange": {
     "min": 4,
@@ -83,8 +83,8 @@
         "three",
         "four"
       ],
-      "noteZh": "选项就是题目里出现的所有小朋友，所以选项数等于人数；选错时一定对应一个读错的名次。",
-      "noteEn": "The options are exactly the children in the item, so the option count equals the number of people, and a wrong pick always corresponds to a misread rank."
+      "noteZh": "排序板包含题目里出现的所有小朋友，所以人数等于可排序卡片数；保留原有 answer、options 和 optionTypes 作为诊断元数据。",
+      "noteEn": "The ordering board contains every child in the item, so the number of people equals the number of movable cards. The existing answer, options, and optionTypes fields remain as diagnostic metadata."
     }
   ],
   "sessionPolicy": {
@@ -98,8 +98,8 @@
       "levelId": "L1",
       "ageHint": "4",
       "gradeCode": "K1",
-      "objectiveZh": "一条线索比较两个小朋友，按线索里的同一个词回答『谁更…』。",
-      "objectiveEn": "One clue compares two children; answer 'who is more…' using the same word as the clue.",
+      "objectiveZh": "读一条同词关系线索，把两个小朋友排成完整顺序。",
+      "objectiveEn": "Read one same-word relation clue and put both children into the complete order.",
       "axisValues": {
         "premise_count": "one",
         "question_form": "same-word",
@@ -118,8 +118,8 @@
       "levelId": "L2",
       "ageHint": "5",
       "gradeCode": "K2",
-      "objectiveZh": "线索说『A 比 B 高』，回答『谁更矮』——把关系反过来理解。",
-      "objectiveEn": "The clue says 'A is taller than B'; answer 'who is shorter' by reversing the relation.",
+      "objectiveZh": "理解『A 比 B 高』的相反方向，再把两个小朋友排成完整顺序。",
+      "objectiveEn": "Interpret the reverse direction of a clue such as 'A is taller than B', then put both children into the complete order.",
       "axisValues": {
         "premise_count": "one",
         "question_form": "opposite-word",
@@ -138,8 +138,8 @@
       "levelId": "L3",
       "ageHint": "6",
       "gradeCode": "G1",
-      "objectiveZh": "把两条线索连起来排出三个人的顺序，找出最…或最不…的那个。",
-      "objectiveEn": "Link two clues into an order of three and find the most or the least.",
+      "objectiveZh": "把两条线索连起来，在排序板上排出三个人的完整顺序。",
+      "objectiveEn": "Link two clues and build the complete order of three children on the board.",
       "axisValues": {
         "premise_count": "two",
         "question_form": "extreme",
@@ -158,8 +158,8 @@
       "levelId": "L4",
       "ageHint": "7",
       "gradeCode": "G2",
-      "objectiveZh": "三条被打乱的线索排出四个人的顺序，回答第二或第三名。",
-      "objectiveEn": "Order four children from three shuffled clues and name who is second or third.",
+      "objectiveZh": "连接三条被打乱的线索，在排序板上排出四个人的完整顺序。",
+      "objectiveEn": "Link three shuffled clues and build the complete order of four children on the board.",
       "axisValues": {
         "premise_count": "three",
         "question_form": "rank",
@@ -193,8 +193,8 @@
       "accuracy",
       "meanTimePerItem"
     ],
-    "noteZh": "optionTypes 中 wrong_end（选了另一头）通常是没注意到反义词，adjacent_rank（差一名）通常是链条排对了但数错了名次。",
-    "noteEn": "In optionTypes, wrong_end (the opposite end) usually means the opposite word was missed, while adjacent_rank (off by one place) usually means the chain was right but the rank was miscounted."
+    "noteZh": "保留 optionTypes 中 wrong_end、adjacent_rank 和 middle_item 作为原有诊断答案元数据；实际交互记录完整排序的结果等级、重试次数和提示次数。",
+    "noteEn": "The existing wrong_end, adjacent_rank, and middle_item optionTypes remain as diagnostic answer metadata. The interaction reports the full-order result tier, retries, and hints."
   },
   "tags": [
     "logic-pattern",
