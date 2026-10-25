@@ -1,6 +1,6 @@
 {
   "version": "v0.2.0",
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-25",
   "moduleType": "metathinking",
   "id": "science",
   "canonicalUrl": "/metadata/metathinking/science.json",
@@ -15,8 +15,8 @@
   "ageRange": {
     "min": 3,
     "max": 7,
-    "noteZh": "覆盖 K1-G2（3-7岁）四个年级，验证 Puzzle 与 Explore 两条内容管线。",
-    "noteEn": "Covers grades K1-G2 (age 3-7) to validate the Puzzle and Explore content pipelines."
+    "noteZh": "覆盖 K1-G2（3-7岁）四个年级，已建立 Puzzle、Activity 与 Exploration 三种 Runtime 的 Science MVP。",
+    "noteEn": "Covers grades K1-G2 (ages 3-7) with a Science MVP spanning Puzzle, Activity, and Exploration runtimes."
   },
   "educationReference": {
     "scope": "global-k12-foundation",
@@ -599,7 +599,7 @@
         "ruleEn": "An explore template yields exactly one Attempt, weighted like a single puzzle question. Step-level events inside an exploration live only in trace/process and must not be counted as separate attempts."
       }
     ],
-    "note": "eventKeys observation/prediction/action/variable_changed/result/evidence_selected/explanation/revision are the Exploration runtime's process vocabulary; 'result' is reserved for future templates — the current K1 float/sink explore template folds its outcome into the observation event's `actual` field instead of emitting it separately. Phase 1 uploads only the summary Attempt.",
+    "note": "The Science process vocabulary includes observation, question, prediction, action, variable_changed, result, evidence_selected, explanation, reflection, comparison, experiment_setup, variable_selected, and revision. Runtime results are emitted separately from observations. Full events remain in trace while bounded process summaries support mastery and analytics; one template run produces one Attempt.",
     "growthIndicators": [
       "observation_completeness",
       "testable_question_recognition",
@@ -642,7 +642,7 @@
   ],
   "architecture": {
     "document": "/docs/metathinking/SCIENCE-EXPLORATION-ARCHITECTURE.md",
-    "version": "v0.1",
+    "version": "v0.2",
     "principleZh": "科学，不只是知道答案，而是学习如何寻找答案。",
     "principleEn": "Science is not only knowing answers. It is learning how to find them."
   },
@@ -768,5 +768,40 @@
       "which_result_is_evidence",
       "build_an_explanation"
     ]
+  },
+  "mvpStatus": {
+    "status": "implemented",
+    "scope": "K1-G2",
+    "templateCount": 72,
+    "minimumTemplatesPerThinkingUnitLevel": 3,
+    "thinkingUnits": [
+      "observation",
+      "questioning",
+      "prediction",
+      "experimentation",
+      "evidence",
+      "explanation"
+    ],
+    "runtimeModes": [
+      "puzzle",
+      "activity",
+      "exploration"
+    ],
+    "priorityContexts": [
+      "matter",
+      "motion",
+      "life",
+      "energy"
+    ],
+    "nextLevels": {
+      "levels": [
+        "G3",
+        "G4",
+        "G5",
+        "G6"
+      ],
+      "status": "planned",
+      "policy": "Expand only after later child-experience and content review; do not mechanically extend the current matrix."
+    }
   }
 }

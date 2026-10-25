@@ -1733,6 +1733,38 @@ var SciGenerators = (function () {
     };
   }
 
+  // Reusable content-expansion generator. Each template supplies one or more
+  // scenario variants, while the generator preserves shuffled answer positions and
+  // the template's stable scientific-thinking action.
+  function scenarioReasoningPuzzle(template) {
+    var scenarios = (template.params && template.params.scenarios) || [];
+    if (!scenarios.length) {
+      throw new Error('[SciGenerators] scenarioReasoningPuzzle requires scenarios: ' + template.id);
+    }
+    var scenario = _pick(scenarios);
+    var order = _shuffle([0, 1, 2, 3]);
+    return {
+      type: scenario.type,
+      templateId: template.id,
+      promptZh: scenario.promptZh,
+      promptEn: scenario.promptEn,
+      voiceZh: scenario.voiceZh || scenario.promptZh,
+      voiceEn: scenario.voiceEn || scenario.promptEn,
+      textOptions: order.map(function (index) {
+        var option = scenario.options[index];
+        return {
+          zh: option.zh,
+          en: option.en,
+          reasoningRole: option.role
+        };
+      }),
+      options: [0, 1, 2, 3],
+      answer: order.indexOf(scenario.answer || 0),
+      hintZh: scenario.hintZh,
+      hintEn: scenario.hintEn
+    };
+  }
+
   // G2 earth-domain "question" puzzle — text-choice shape: a scenario
   // (promptZh/En) plus 4 candidate questions, one testable, three not.
   function earthQuestionPuzzle(template) {
@@ -1955,7 +1987,8 @@ var SciGenerators = (function () {
     k2ObservableChangeQuestionPuzzle: k2ObservableChangeQuestionPuzzle,
     g1FairComparisonQuestionPuzzle: g1FairComparisonQuestionPuzzle,
     earthQuestionPuzzle:  earthQuestionPuzzle,
-    energyQuestionPuzzle: energyQuestionPuzzle
+    energyQuestionPuzzle: energyQuestionPuzzle,
+    scenarioReasoningPuzzle: scenarioReasoningPuzzle
   };
 
   // Same shape as comparison/generator.js: generateQuestion(template) looks

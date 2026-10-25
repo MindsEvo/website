@@ -1,4 +1,4 @@
-# MindsEvo Learning — Science Exploration Architecture v0.1
+# MindsEvo Learning — Science Exploration Architecture v0.2
 
 ## 1. 板块定位
 
@@ -670,38 +670,33 @@ Runtime：Puzzle / Activity
 
 ---
 
-## 13. 当前实现评估
+## 13. 当前实现状态与 MVP 结论
 
-当前 `learning/science` 已经具备有价值的基础：
+当前 `learning/science` 已完成 K1-G2 Science Exploration MVP：
 
-- Puzzle 管线；
-- Explore Runtime；
-- Template → Variant → Attempt；
-- K1-G2 入口；
-- 六个 Science RootGene；
-- `observation`、`prediction`、`action`、`variable_changed`、`evidence_selected`、`explanation` 和 `revision` 事件；
-- 完整 trace 与扁平 process summary 分离；
-- 一个 Explore 模板只产生一个 Attempt。
+- 一级导航按六个 Scientific Thinking Unit 组织，再进入 K1、K2、G1、G2；
+- Puzzle、Activity、Exploration 三种 Runtime 语义分离；
+- Explore Runtime 按阶段驱动 Prediction、Test、Result、Observation、Evidence、Reflection、Explanation 与 Revision；
+- Activity Runtime 支持选择目标变量、保持控制条件、运行测试、比较结果和修正实验设置；
+- 变量变化会触发实际测试和可比较结果，而不只是记录点击；
+- 预测与实际观察显式对照，错误预测不会直接判定科学思维失败；
+- Evidence 必须来自题目展示的观察、测试或数据，并独立记录 groundedness 与 quality；
+- 科学过程完成、实验质量、证据质量和解释质量分别记录；
+- 完整事件保存在 trace，有限且扁平的指标保存在 process；
+- 一个 Exploration 或 Activity 模板运行只产生一个 Attempt；
+- RootGene 按模板实际支持的科学认知动作精确归因；
+- K1-G2 的 24 个 `thinkingUnit × level` 格子均达到至少 3 个高质量模板；
+- 当前共有 72 个模板，优先覆盖 Matter、Motion & Force、Life 与 Energy。
 
-但当前实现仍属于 architecture-scaffold MVP，主要问题包括：
+已实现的参考链路包括 Float or Sink、Magnet、Ramp Lab、Shadow Changes、可检验问题、变量控制、证据评价和基于证据的解释与修正。
 
-- 许多 Puzzle 直接依赖儿童已有常识；
-- 部分预测没有后续测试；
-- `variable_changed` 目前可能只记录选择，而没有重新运行并产生可比较结果；
-- Evidence 选择与实际观察的绑定仍弱；
-- Explore 的最终完成状态过度依赖选中预设解释；
-- 预测正确率仍容易被当成成功标准；
-- K1 Explore 模板同时认领全部六个 RootGene，尚未根据实际阶段精确归因；
-- Activity 尚未形成独立公共 Runtime；
-- 现有 K1-G2 模板数量和认知形态不足以验证完整架构。
-
-因此下一轮开发应优先增强公共 Runtime 和模板认知深度，而不是继续增加类似的二选一常识题。
+因此 Science Exploration 已从 architecture scaffold 进入可扩展 MVP。现阶段暂不机械增加题量，也不提前扩展 G3-G6。后续扩展应继续遵守准入规则，并以真实儿童体验、内容审查和认知结构差异为前提。
 
 ---
 
 ## 14. 实施路线
 
-### Phase 1：架构与合同
+### Phase 1：架构与合同（已完成）
 
 1. 以本文档固定 Science Exploration 定位、六个元思维、八级成长、七个 Context 和三种 Runtime。
 2. 更新 `metadata/metathinking/science.json`，使其引用并遵循本文档。
@@ -709,7 +704,7 @@ Runtime：Puzzle / Activity
 4. 为 Template 增加 thinking unit、stages、variables、evidence 和 revision 等结构。
 5. 固化 Science Attempt、trace 和 process summary 合同。
 
-### Phase 2：公共 Runtime
+### Phase 2：公共 Runtime（已完成）
 
 6. 将 Explore Runtime 从现象专用分支改为阶段驱动：
    `predict → test → observe/result → evidence → reflect/explain/revise`。
@@ -719,7 +714,7 @@ Runtime：Puzzle / Activity
 10. 将 Explore 成功标准从“最后选中预设答案”改成“完成必要科学过程”，同时独立记录解释质量。
 11. 建立 Activity Runtime，用于有明确任务的可操作实验。
 
-### Phase 3：参考模板
+### Phase 3：参考模板（已完成）
 
 12. 重构 Float or Sink，作为公共 Scientific Thinking Loop 的参考实现。
 13. 实现 Ramp Lab，验证变量操作、重复测试和结果比较。
@@ -728,13 +723,13 @@ Runtime：Puzzle / Activity
 16. 实现 What Should We Change，验证变量控制。
 17. 实现 Evidence 和 Explanation 标杆模板。
 
-### Phase 4：K1-G2 模板矩阵
+### Phase 4：K1-G2 模板矩阵（MVP 已完成）
 
 18. 每个核心元思维先建立 3-5 个高质量模板。
 19. 优先覆盖 Matter、Motion & Force、Life、Energy。
 20. 检查每个模板是否依赖题目中提供的现象、测试或证据。
 21. 检查所有 runtime 是否记录实际思维过程。
-22. 完成 K1-G2 手工体验与内容审查后，再扩展 G3-G6。
+22. K1-G2 MVP 已完成实现与运行验证；G3-G6 保持 planned，待后续真实体验和内容审查后再扩展。
 
 ---
 
@@ -755,4 +750,4 @@ Science Exploration 第一阶段不能只按题目数量验收。至少应满足
 - Science Attempt 可以形成过程型 Thinking Growth Profile；
 - 不依赖科学百科式题库来制造难度。
 
-当这些标准稳定以后，Science Exploration 才从 scaffold 进入可扩展的 MVP。
+上述标准已在 K1-G2 MVP 中落地。Science Exploration 当前进入可扩展但暂时冻结内容扩张的 MVP 状态。
