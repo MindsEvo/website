@@ -65,8 +65,15 @@ var ExploreRuntime = (function () {
       correctPredictions: 0,
       actions: 0,
       observations: 0,
+      reflections: 0,
+      recognizedReflections: 0,
       variableChanges: 0,
+      comparisons: 0,
       evidenceCount: 0,
+      relevantEvidence: 0,
+      irrelevantEvidence: 0,
+      relevantEvidenceTotal: 0,
+      evidenceGrounded: false,
       explanationAttempts: 0,
       explanationCorrect: false,
       revisions: 0
@@ -168,6 +175,36 @@ var ExploreRuntime = (function () {
             : { zh: '它没有被吸住。', en: 'it was not attracted.' };
         },
         animClass: function (actual) { return actual === 'attract' ? 'exr-emoji-float' : 'exr-emoji-sink'; }
+      },
+      ramp_explore: {
+        prompt: { zh: '你觉得小球会滚得较近还是较远？', en: 'Do you think the ball will roll a shorter or farther distance?' },
+        choices: [
+          { value: 'short', zh: '较近', en: 'Shorter' },
+          { value: 'far', zh: '较远', en: 'Farther' }
+        ],
+        testBtn: { zh: '让小球滚下斜坡', en: 'Roll the ball down the ramp' },
+        actualOf: function (item) { return item.actual; },
+        resultText: function (actual) {
+          return actual === 'far'
+            ? { zh: '小球滚到了较远的位置！', en: 'the ball rolled to a farther position!' }
+            : { zh: '小球停在了较近的位置。', en: 'the ball stopped at a nearer position.' };
+        },
+        animClass: function (actual) { return actual === 'far' ? 'exr-emoji-float' : 'exr-emoji-sink'; }
+      },
+      shadow_explore: {
+        prompt: { zh: '你觉得影子会较小还是较大？', en: 'Do you think the shadow will be smaller or larger?' },
+        choices: [
+          { value: 'small', zh: '较小', en: 'Smaller' },
+          { value: 'large', zh: '较大', en: 'Larger' }
+        ],
+        testBtn: { zh: '打开手电筒观察影子', en: 'Turn on the flashlight and observe the shadow' },
+        actualOf: function (item) { return item.actual; },
+        resultText: function (actual) {
+          return actual === 'large'
+            ? { zh: '影子变大了！', en: 'the shadow became larger!' }
+            : { zh: '影子比较小。', en: 'the shadow was smaller.' };
+        },
+        animClass: function (actual) { return actual === 'large' ? 'exr-emoji-float' : 'exr-emoji-sink'; }
       }
     };
 
@@ -207,82 +244,263 @@ var ExploreRuntime = (function () {
       var fb = bodyEl.querySelector('#exr-feedback');
       fb.innerHTML = '<button class="exr-btn" id="exr-test-btn">' +
         '<span class="zh">' + cfg.testBtn.zh + '</span><span class="en">' + cfg.testBtn.en + '</span></button>';
+
       document.getElementById('exr-test-btn').addEventListener('click', function () {
         _st.actions += 1;
         _log('action', { itemId: item.id, action: 'test' });
+
         var actual = cfg.actualOf(item);
+        var matched = guess === actual;
+
         _st.observations += 1;
-        _log('observation', { itemId: item.id, actual: actual });
-        if (guess === actual) _st.correctPredictions += 1;
+        _log('result', { itemId: item.id, actual: actual });
+        _log('observation', {
+          itemId: item.id,
+          actual: actual,
+          prediction: guess,
+          predictionMatched: matched
+        });
+
+        if (matched) _st.correctPredictions += 1;
+
         var emojiEl = bodyEl.querySelector('.exr-emoji');
         if (emojiEl) emojiEl.classList.add(cfg.animClass(actual));
+
         var res = cfg.resultText(actual);
         fb.innerHTML =
           '<span class="zh">结果：' + res.zh + '</span>' +
           '<span class="en">Result: ' + res.en + '</span>' +
-          '<div><button class="exr-btn" id="exr-next-btn"><span class="zh">下一步</span><span class="en">Next</span></button></div>';
-        document.getElementById('exr-next-btn').addEventListener('click', _next);
+          '<div class="exr-prompt" style="margin-top:14px">' +
+            '<span class="zh">结果和你的预测一样吗？</span>' +
+            '<span class="en">Did the result match your prediction?</span>' +
+          '</div>' +
+          '<div class="exr-choices">' +
+            '<button class="exr-btn" data-reflect="same"><span class="zh">一样</span><span class="en">Yes</span></button>' +
+            '<button class="exr-btn" data-reflect="different"><span class="zh">不一样</span><span class="en">No</span></button>' +
+          '</div>';
+
+        var reflectionButtons = fb.querySelectorAll('[data-reflect]');
+        for (var i = 0; i < reflectionButtons.length; i++) {
+          reflectionButtons[i].addEventListener('click', function (event) {
+            var response = event.currentTarget.getAttribute('data-reflect');
+            var recognizedMatch = response === (matched ? 'same' : 'different');
+
+            _st.reflections += 1;
+            if (recognizedMatch) _st.recognizedReflections += 1;
+            _log('reflection', {
+              itemId: item.id,
+              prediction: guess,
+              actual: actual,
+              response: response,
+              recognizedMatch: recognizedMatch
+            });
+
+            if (!matched && response === 'different') {
+              _st.revisions += 1;
+              _log('revision', {
+                itemId: item.id,
+                from: guess,
+                to: actual,
+                evidence: 'observed_result'
+              });
+            }
+
+            for (var j = 0; j < reflectionButtons.length; j++) {
+              reflectionButtons[j].disabled = true;
+            }
+            event.currentTarget.classList.add('exr-chosen');
+
+            fb.insertAdjacentHTML(
+              'beforeend',
+              '<div><button class="exr-btn" id="exr-next-btn">' +
+                '<span class="zh">下一步</span><span class="en">Next</span>' +
+              '</button></div>'
+            );
+            document.getElementById('exr-next-btn').addEventListener('click', _next);
+          });
+        }
       });
     }
 
     var VARIABLE_PROMPT = {
       float_explore:  { zh: '试试换一种水，会有什么不同？', en: 'Try a different kind of water — what changes?' },
-      magnet_explore: { zh: '试试改变磁铁的距离，会有什么不同？', en: 'Try changing the magnet\'s distance — what changes?' }
+      magnet_explore: { zh: '试试改变磁铁的距离，会有什么不同？', en: 'Try changing the magnet\'s distance — what changes?' },
+      ramp_explore: { zh: '保持小球和地面不变，改变斜坡高度并比较结果。', en: 'Keep the ball and surface the same, change the ramp height, and compare the results.' },
+      shadow_explore: { zh: '保持物体和屏幕不变，改变光源距离并比较影子大小。', en: 'Keep the object and screen fixed, change the light distance, and compare shadow size.' }
     };
 
     function _renderVariable(step) {
-      var v = step.variable;
-      var prompt = VARIABLE_PROMPT[variant.type] || VARIABLE_PROMPT.float_explore;
-      bodyEl.innerHTML =
-        '<div class="exr-prompt"><span class="zh">' + prompt.zh + '</span>' +
-          '<span class="en">' + prompt.en + '</span></div>' +
-        '<div class="exr-choices" id="exr-var-choices"></div>' +
-        '<div class="exr-feedback" id="exr-feedback"></div>';
-      var choiceWrap = bodyEl.querySelector('#exr-var-choices');
-      (v.options || []).forEach(function (opt) {
-        var btn = document.createElement('button');
-        btn.className = 'exr-btn';
-        btn.innerHTML = '<span class="zh">' + opt.nameZh + '</span><span class="en">' + opt.nameEn + '</span>';
-        btn.addEventListener('click', function () {
-          _st.variableChanges += 1;
-          _log('variable_changed', { variableId: v.id, value: opt.id });
-          var fb = bodyEl.querySelector('#exr-feedback');
-          fb.innerHTML = '<div><button class="exr-btn" id="exr-next-btn"><span class="zh">下一步</span><span class="en">Next</span></button></div>';
-          document.getElementById('exr-next-btn').addEventListener('click', _next);
+    var v = step.variable;
+    var prompt = VARIABLE_PROMPT[variant.type] || VARIABLE_PROMPT.float_explore;
+    var testItem = v.testItem || {};
+    var results = [];
+
+    bodyEl.innerHTML =
+      '<div class="exr-prompt"><span class="zh">' + prompt.zh + '</span>' +
+        '<span class="en">' + prompt.en + '</span></div>' +
+      '<div class="exr-items"><div class="exr-item">' +
+        '<div class="exr-emoji">' + (testItem.emoji || '🔬') + '</div>' +
+        '<div class="exr-label"><span class="zh">' + (testItem.nameZh || '') + '</span>' +
+          '<span class="en">' + (testItem.nameEn || '') + '</span></div>' +
+      '</div></div>' +
+      '<div class="exr-choices" id="exr-var-choices"></div>' +
+      '<div class="exr-feedback" id="exr-feedback"></div>';
+
+    var choiceWrap = bodyEl.querySelector('#exr-var-choices');
+    var feedback = bodyEl.querySelector('#exr-feedback');
+
+    (v.options || []).forEach(function (opt) {
+      var btn = document.createElement('button');
+      btn.className = 'exr-btn';
+      btn.innerHTML = '<span class="zh">' + opt.nameZh + '</span><span class="en">' + opt.nameEn + '</span>';
+
+      btn.addEventListener('click', function () {
+        if (results.some(function (result) { return result.value === opt.id; })) return;
+
+        _st.variableChanges += 1;
+        _st.actions += 1;
+        _st.observations += 1;
+
+        _log('variable_changed', {
+          variableId: v.id,
+          value: opt.id,
+          controlledItemId: testItem.id || null
         });
-        choiceWrap.appendChild(btn);
+        _log('action', {
+          itemId: testItem.id || null,
+          action: 'retest',
+          variableId: v.id,
+          value: opt.id
+        });
+        _log('result', {
+          itemId: testItem.id || null,
+          variableId: v.id,
+          value: opt.id,
+          actual: opt.actual
+        });
+        _log('observation', {
+          itemId: testItem.id || null,
+          variableId: v.id,
+          value: opt.id,
+          actual: opt.actual
+        });
+
+        results.push({ value: opt.id, actual: opt.actual });
+        btn.disabled = true;
+        btn.classList.add('exr-chosen');
+
+        feedback.innerHTML +=
+          '<div><span class="zh">' + opt.resultZh + '</span>' +
+          '<span class="en">' + opt.resultEn + '</span></div>';
+
+        if (results.length === (v.options || []).length) {
+          _st.comparisons += 1;
+          _log('comparison', {
+            variableId: v.id,
+            testItemId: testItem.id || null,
+            resultCount: results.length,
+            results: results.map(function (result) {
+              return result.value + ':' + result.actual;
+            }).join(',')
+          });
+
+          feedback.insertAdjacentHTML(
+            'beforeend',
+            '<div><button class="exr-btn" id="exr-next-btn">' +
+              '<span class="zh">比较完成，下一步</span>' +
+              '<span class="en">Compared, next</span>' +
+            '</button></div>'
+          );
+          document.getElementById('exr-next-btn').addEventListener('click', _next);
+        }
       });
-    }
+
+      choiceWrap.appendChild(btn);
+    });
+  }
 
     function _renderEvidence(step) {
-      var selected = {};
-      bodyEl.innerHTML =
-        '<div class="exr-prompt"><span class="zh">哪些线索可以帮助我们解释结果？（可多选）</span>' +
-          '<span class="en">Which clues help explain the result? (pick any)</span></div>' +
-        '<div class="exr-choices" id="exr-ev-choices"></div>' +
-        '<div class="exr-feedback"><button class="exr-btn" id="exr-confirm-btn"><span class="zh">确认</span><span class="en">Confirm</span></button></div>';
-      var wrap = bodyEl.querySelector('#exr-ev-choices');
-      (step.options || []).forEach(function (opt) {
-        var btn = document.createElement('button');
-        btn.className = 'exr-btn';
-        btn.innerHTML = '<span class="zh">' + opt.nameZh + '</span><span class="en">' + opt.nameEn + '</span>';
-        btn.addEventListener('click', function () {
-          selected[opt.id] = !selected[opt.id];
-          btn.classList.toggle('exr-chosen', !!selected[opt.id]);
+    var selected = {};
+    var options = step.options || [];
+
+    bodyEl.innerHTML =
+      '<div class="exr-prompt"><span class="zh">哪些刚才看到的结果可以作为证据？（可多选）</span>' +
+        '<span class="en">Which results you just observed can be used as evidence? (pick any)</span></div>' +
+      '<div class="exr-choices" id="exr-ev-choices"></div>' +
+      '<div class="exr-feedback" id="exr-evidence-feedback">' +
+        '<button class="exr-btn" id="exr-confirm-btn">' +
+          '<span class="zh">确认</span><span class="en">Confirm</span>' +
+        '</button>' +
+      '</div>';
+
+    var wrap = bodyEl.querySelector('#exr-ev-choices');
+
+    options.forEach(function (opt) {
+      var btn = document.createElement('button');
+      btn.className = 'exr-btn';
+      btn.innerHTML = '<span class="zh">' + opt.nameZh + '</span><span class="en">' + opt.nameEn + '</span>';
+      btn.addEventListener('click', function () {
+        selected[opt.id] = !selected[opt.id];
+        btn.classList.toggle('exr-chosen', !!selected[opt.id]);
+      });
+      wrap.appendChild(btn);
+    });
+
+    document.getElementById('exr-confirm-btn').addEventListener('click', function () {
+      var ids = Object.keys(selected).filter(function (id) { return selected[id]; });
+      var selectedOptions = options.filter(function (opt) {
+        return ids.indexOf(opt.id) >= 0;
+      });
+      var relevantSelected = selectedOptions.filter(function (opt) {
+        return !!opt.relevant;
+      }).length;
+      var irrelevantSelected = selectedOptions.length - relevantSelected;
+      var relevantTotal = options.filter(function (opt) {
+        return !!opt.relevant;
+      }).length;
+
+      var groundedInObservedResults = selectedOptions.length > 0 &&
+        selectedOptions.every(function (opt) {
+          return opt.source === 'observation' || opt.source === 'variable_test';
         });
-        wrap.appendChild(btn);
+
+      _st.evidenceCount = ids.length;
+      _st.relevantEvidence = relevantSelected;
+      _st.irrelevantEvidence = irrelevantSelected;
+      _st.relevantEvidenceTotal = relevantTotal;
+      _st.evidenceGrounded = groundedInObservedResults;
+      _log('evidence_selected', {
+        evidenceIds: ids.join(','),
+        relevantSelected: relevantSelected,
+        irrelevantSelected: irrelevantSelected,
+        relevantTotal: relevantTotal,
+        groundedInObservedResults: groundedInObservedResults
       });
-      document.getElementById('exr-confirm-btn').addEventListener('click', function () {
-        var ids = Object.keys(selected).filter(function (k) { return selected[k]; });
-        _st.evidenceCount = ids.length;
-        _log('evidence_selected', { evidenceIds: ids.join(',') });
-        _next();
-      });
-    }
+
+      var feedback = document.getElementById('exr-evidence-feedback');
+      feedback.innerHTML =
+        '<div><span class="zh">' +
+          (relevantSelected === relevantTotal && irrelevantSelected === 0
+            ? '这些证据都来自刚才的测试结果。'
+            : '再看看：证据应该来自刚才实际观察到的结果，而不是外观猜测。') +
+        '</span><span class="en">' +
+          (relevantSelected === relevantTotal && irrelevantSelected === 0
+            ? 'These evidence choices all come from the tests you just observed.'
+            : 'Look again: evidence should come from observed test results, not an appearance guess.') +
+        '</span></div>' +
+        '<div><button class="exr-btn" id="exr-next-btn">' +
+          '<span class="zh">下一步</span><span class="en">Next</span>' +
+        '</button></div>';
+
+      document.getElementById('exr-next-btn').addEventListener('click', _next);
+    });
+  }
 
     var EXPLAIN_PROMPT = {
       float_explore:  { zh: '为什么有的东西会浮，有的会沉？', en: 'Why do some things float and others sink?' },
-      magnet_explore: { zh: '为什么有的东西会被磁铁吸住，有的不会？', en: 'Why are some things attracted by magnets and others not?' }
+      magnet_explore: { zh: '为什么有的东西会被磁铁吸住，有的不会？', en: 'Why are some things attracted by magnets and others not?' },
+      ramp_explore: { zh: '根据刚才的测试，斜坡高度怎样影响小球滚动的距离？', en: 'Based on the tests, how did ramp height affect the distance the ball rolled?' },
+      shadow_explore: { zh: '根据刚才的测试，光源距离怎样影响影子的大小？', en: 'Based on the tests, how did light-source distance affect shadow size?' }
     };
 
     function _renderExplain(step) {
@@ -327,15 +545,24 @@ var ExploreRuntime = (function () {
     // Flat, <=24-key summary for the mastery/analytics engine — no nesting,
     // no raw arrays, matches engine.js's _summarizeProcess() contract.
     function _buildProcessSummary() {
+      var processCompleted = _st.stepIndex >= steps.length;
       return {
         stepsTotal: steps.length,
         stepsCompleted: Math.min(_st.stepIndex, steps.length),
+        processCompleted: processCompleted,
         predictions: _st.predictions,
         correctPredictions: _st.correctPredictions,
         actions: _st.actions,
         observations: _st.observations,
+        reflections: _st.reflections,
+        recognizedReflections: _st.recognizedReflections,
         variableChanges: _st.variableChanges,
+        comparisons: _st.comparisons,
         evidenceCount: _st.evidenceCount,
+        relevantEvidence: _st.relevantEvidence,
+        irrelevantEvidence: _st.irrelevantEvidence,
+        relevantEvidenceTotal: _st.relevantEvidenceTotal,
+        evidenceGrounded: _st.evidenceGrounded,
         explanationAttempts: _st.explanationAttempts,
         explanationCorrect: _st.explanationCorrect,
         revisions: _st.revisions,
@@ -349,12 +576,9 @@ var ExploreRuntime = (function () {
         templateId: template.id,
         variantId: variant.variantId,
         mode: template.runtime || template.mode || 'explore',
-        result: _st.explanationCorrect ? 'correct' : 'incomplete',
+        result: process.processCompleted ? 'passed' : 'incomplete',
         responseMs: Date.now() - _st.startTs,
         process: process,
-        // Full raw untouched event trace — kept separate from `process` and
-        // consumed by shell.report()'s record/context columns, never by the
-        // mastery engine (which only ever sees the flat summary above).
         trace: _st.events.slice()
       };
       bodyEl.innerHTML =

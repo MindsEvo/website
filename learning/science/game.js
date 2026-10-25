@@ -1,19 +1,18 @@
 'use strict';
 /**
- * Science Game  v0.1.0  (Architecture-scaffold MVP)
+ * Science Game v0.2.0
  *
- * Mirrors learning/math/comparison/game.js's structure exactly: this file is
- * the only piece that knows both "puzzle" (shell.createGame / checkAnswer)
- * and "explore" (ActivityRunner / ExploreRuntime) exist, and it is the only
- * place that builds the shell.report() radar payload for either path.
+ * Coordinates the architecture-native K1-G2 Science module across Puzzle,
+ * guided Activity, and Exploration runtimes. It also builds the shared
+ * shell.report() radar payload for every path.
  *
  * Session flow:
  *   1. Load templates-data.js (window.SCI_TEMPLATES_DATA)
- *   2. User selects grade level (K1 only, in this scaffold)
- *   3. SciEngine.getSessionTemplates() picks templates for the level
- *   4. Puzzle templates run through shell.createGame (checkAnswer path);
- *      Explore templates run through ActivityRunner -> ExploreRuntime
- *   5. Either path ends in SciEngine.recordAttempt() + shell.report()
+ *   2. User selects a K1-G2 grade level
+ *   3. SciEngine.getSessionTemplates() selects the level templates
+ *   4. Puzzle templates use shell.createGame; Activity and Exploration
+ *      templates use ActivityRunner and their dedicated runtimes
+ *   5. Every completed template records one Attempt and one report entry
  */
 
 (function () {
@@ -77,13 +76,23 @@
   var PROMPT_TEXT = {
     float_puzzle:       { zh: '哪一个会<b>浮起来</b>？', en: 'Which one will <b>float</b>?' },
     magnet_puzzle:       { zh: '哪一个会被<b>磁铁吸住</b>？', en: 'Which one will the magnet <b>attract</b>?' },
+    float_observation_puzzle: { zh: '哪一句准确记录了<b>观察结果</b>？', en: 'Which sentence accurately records the <b>observation</b>?' },
+    magnet_observation_puzzle: { zh: '哪一句准确记录了<b>观察结果</b>？', en: 'Which sentence accurately records the <b>observation</b>?' },
     observe_odd_puzzle:  { zh: '哪一个和其他<b>不一样</b>？', en: 'Which one is <b>different</b> from the others?' },
+    texture_result_observation_puzzle: { zh: '哪一句准确比较了<b>测试结果</b>？', en: 'Which sentence accurately compares the <b>test results</b>?' },
+    matter_change_observation_puzzle: { zh: '哪一句准确描述了<b>观察变化</b>？', en: 'Which sentence accurately describes the <b>observed change</b>?' },
+    life_growth_observation_puzzle: { zh: '哪一句准确描述了<b>生长记录</b>？', en: 'Which sentence accurately describes the <b>growth record</b>?' },
     motion_roll_puzzle:  { zh: '哪一个<b>滚得更远</b>？', en: 'Which one will <b>roll farther</b>?' },
     life_fly_puzzle:     { zh: '哪一个<b>会飞</b>？', en: 'Which one <b>can fly</b>?' },
+    motion_evidence_prediction_puzzle: { zh: '根据测试结果作出<b>预测</b>。', en: 'Make a <b>prediction</b> from the test results.' },
+    life_evidence_prediction_puzzle: { zh: '根据测试结果作出<b>预测</b>。', en: 'Make a <b>prediction</b> from the test results.' },
     matter_describe_puzzle: { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
     life_describe_puzzle:   { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
     earth_question_puzzle:  { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' },
-    energy_question_puzzle: { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' }
+    energy_question_puzzle: { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' },
+    shadow_variable_control_puzzle: { zh: '哪一种是公平的<b>变量控制</b>方法？', en: 'Which is the fair <b>variable-control</b> method?' },
+    ramp_evidence_puzzle:  { zh: '哪一条是最有力的<b>证据</b>？', en: 'Which result is the strongest <b>evidence</b>?' },
+    ramp_explanation_puzzle: { zh: '哪一个是完整的<b>解释</b>？', en: 'Which is the complete <b>explanation</b>?' }
   };
 
   function renderSequence(q, container) {
@@ -143,13 +152,23 @@
   var VOICE_TEXT = {
     float_puzzle:       { zh: '哪一个会浮起来？', en: 'Which one will float?' },
     magnet_puzzle:       { zh: '哪一个会被磁铁吸住？', en: 'Which one will the magnet attract?' },
+    float_observation_puzzle: { zh: '哪一句准确记录了观察结果？', en: 'Which sentence accurately records the observation?' },
+    magnet_observation_puzzle: { zh: '哪一句准确记录了观察结果？', en: 'Which sentence accurately records the observation?' },
     observe_odd_puzzle:  { zh: '哪一个和其他不一样？', en: 'Which one is different from the others?' },
+    texture_result_observation_puzzle: { zh: '哪一句准确比较了测试结果？', en: 'Which sentence accurately compares the test results?' },
+    matter_change_observation_puzzle: { zh: '哪一句准确描述了观察变化？', en: 'Which sentence accurately describes the observed change?' },
+    life_growth_observation_puzzle: { zh: '哪一句准确描述了生长记录？', en: 'Which sentence accurately describes the growth record?' },
     motion_roll_puzzle:  { zh: '哪一个滚得更远？', en: 'Which one will roll farther?' },
     life_fly_puzzle:     { zh: '哪一个会飞？', en: 'Which one can fly?' },
+    motion_evidence_prediction_puzzle: { zh: '根据测试结果作出预测。', en: 'Make a prediction from the test results.' },
+    life_evidence_prediction_puzzle: { zh: '根据测试结果作出预测。', en: 'Make a prediction from the test results.' },
     matter_describe_puzzle: { zh: '描述一下它。', en: 'Describe it.' },
     life_describe_puzzle:   { zh: '描述一下它。', en: 'Describe it.' },
     earth_question_puzzle:  { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' },
-    energy_question_puzzle: { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' }
+    energy_question_puzzle: { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' },
+    shadow_variable_control_puzzle: { zh: '哪一种是公平的变量控制方法？', en: 'Which is the fair variable-control method?' },
+    ramp_evidence_puzzle:  { zh: '哪一条是最有力的证据？', en: 'Which result is the strongest evidence?' },
+    ramp_explanation_puzzle: { zh: '哪一个是完整的解释？', en: 'Which is the complete explanation?' }
   };
 
   function getVoiceText(q) {

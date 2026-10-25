@@ -9,8 +9,9 @@ var ActivityRunner = {
   launch: function (template, variant, ctx) {
     var rt = template.runtime || template.mode;
     switch (rt) {
-      case 'explore': ExploreRuntime.run(template, variant, ctx); break;
-      default:        if (ctx.onPuzzle) ctx.onPuzzle();           break;
+      case 'explore': ExploreRuntime.run(template, variant, ctx);             break;
+      case 'activity': ControlActivityRuntime.run(template, variant, ctx);    break;
+      default:         if (ctx.onPuzzle) ctx.onPuzzle();                      break;
     }
   }
 };

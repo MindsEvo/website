@@ -4,14 +4,13 @@
  * blocked by browsers with no local server running — same reason
  * comparison/templates-data.js uses this pattern instead of templates.json.
  *
- * Architecture-scaffold MVP: exactly one Puzzle template and one Explore
- * template, both under the "matter" Context Domain at K1. This proves the
- * two pipelines (Puzzle -> checkAnswer -> recordAttempt, and
- * Explore -> ActivityRunner -> ExploreRuntime -> recordAttempt) without a
- * real question bank.
+ * Architecture-native K1-G2 template bank. It includes Puzzle, guided
+ * Activity, and Exploration templates across Matter, Life, Motion, Energy,
+ * and Earth contexts. Templates exercise observation, questioning,
+ * evidence-based prediction, experimentation, evidence, and explanation.
  */
 window.SCI_TEMPLATES_DATA = {
-  version: 'v0.1.0-scaffold',
+  version: 'v0.2.0',
   module: 'science',
   templates: [
     {
@@ -21,7 +20,10 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'floatSinkPuzzle',
-      rootGeneIds: ['RG.SCIENCE.PREDICTION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
       params: {}
@@ -33,7 +35,10 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'magnetPuzzle',
-      rootGeneIds: ['RG.SCIENCE.PREDICTION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
       params: {}
@@ -45,7 +50,10 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'observeOddOnePuzzle',
-      rootGeneIds: ['RG.SCIENCE.OBSERVATION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
       params: {}
@@ -95,7 +103,10 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'matterDescribePuzzle',
-      rootGeneIds: ['RG.SCIENCE.OBSERVATION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
       params: {}
@@ -107,9 +118,46 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'lifeDescribePuzzle',
-      rootGeneIds: ['RG.SCIENCE.OBSERVATION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g1-activity-ramp-control-001',
+      level: 'G1',
+      type: 'motion',
+      runtime: 'activity',
+      difficulty: 2,
+      generator: 'rampControlActivity',
+      rootGeneIds: [
+        'RG.SCIENCE.EXPERIMENTATION.BASIC',
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
+      mastery: { requiredCorrect: 1, window: 1 },
+      cooldown: { correct: 20, familiar: 20, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g1-explore-ramp-001',
+      level: 'G1',
+      type: 'motion',
+      runtime: 'explore',
+      difficulty: 2,
+      generator: 'rampLabExplore',
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.PREDICTION.BASIC',
+        'RG.SCIENCE.EXPERIMENTATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC',
+        'RG.SCIENCE.EXPLANATION.BASIC'
+      ],
+      mastery: { requiredCorrect: 1, window: 1 },
+      cooldown: { correct: 20, familiar: 20, mastered: 20, wrong: 2 },
       params: {}
     },
     {
@@ -119,7 +167,11 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'motionRollPuzzle',
-      rootGeneIds: ['RG.SCIENCE.PREDICTION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.PREDICTION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
       params: {}
@@ -131,9 +183,61 @@ window.SCI_TEMPLATES_DATA = {
       mode: 'puzzle',
       difficulty: 1,
       generator: 'lifeFlyPuzzle',
-      rootGeneIds: ['RG.SCIENCE.PREDICTION.BASIC'],
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.PREDICTION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g2-puzzle-shadow-variable-control-001',
+      level: 'G2',
+      type: 'energy',
+      mode: 'puzzle',
+      difficulty: 2,
+      generator: 'shadowVariableControlPuzzle',
+      rootGeneIds: [
+        'RG.SCIENCE.EXPERIMENTATION.BASIC',
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC'
+      ],
+      mastery: { requiredCorrect: 3, window: 5 },
+      cooldown: { correct: 8, familiar: 12, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g2-puzzle-ramp-explanation-001',
+      level: 'G2',
+      type: 'motion',
+      mode: 'puzzle',
+      difficulty: 2,
+      generator: 'rampExplanationPuzzle',
+      rootGeneIds: [
+        'RG.SCIENCE.EXPLANATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC',
+        'RG.SCIENCE.EXPERIMENTATION.BASIC'
+      ],
+      mastery: { requiredCorrect: 3, window: 5 },
+      cooldown: { correct: 8, familiar: 12, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g2-puzzle-ramp-evidence-001',
+      level: 'G2',
+      type: 'motion',
+      mode: 'puzzle',
+      difficulty: 2,
+      generator: 'rampEvidencePuzzle',
+      rootGeneIds: [
+        'RG.SCIENCE.EVIDENCE.BASIC',
+        'RG.SCIENCE.EXPERIMENTATION.BASIC',
+        'RG.SCIENCE.EXPLANATION.BASIC'
+      ],
+      mastery: { requiredCorrect: 3, window: 5 },
+      cooldown: { correct: 8, familiar: 12, mastered: 20, wrong: 2 },
       params: {}
     },
     {
@@ -146,6 +250,24 @@ window.SCI_TEMPLATES_DATA = {
       rootGeneIds: ['RG.SCIENCE.QUESTIONING.BASIC'],
       mastery: { requiredCorrect: 3, window: 5 },
       cooldown: { correct: 5, familiar: 8, mastered: 20, wrong: 2 },
+      params: {}
+    },
+    {
+      id: 'sci-g2-explore-shadow-001',
+      level: 'G2',
+      type: 'energy',
+      runtime: 'explore',
+      difficulty: 2,
+      generator: 'shadowChangesExplore',
+      rootGeneIds: [
+        'RG.SCIENCE.OBSERVATION.BASIC',
+        'RG.SCIENCE.PREDICTION.BASIC',
+        'RG.SCIENCE.EXPERIMENTATION.BASIC',
+        'RG.SCIENCE.EVIDENCE.BASIC',
+        'RG.SCIENCE.EXPLANATION.BASIC'
+      ],
+      mastery: { requiredCorrect: 1, window: 1 },
+      cooldown: { correct: 20, familiar: 20, mastered: 20, wrong: 2 },
       params: {}
     },
     {
