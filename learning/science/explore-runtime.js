@@ -524,19 +524,29 @@ var ExploreRuntime = (function () {
             _st.revisions += 1;
             _log('revision', { optionId: opt.id, correct: !!opt.correct, attemptNumber: attemptNumber });
           }
-          if (opt.correct) {
-            _st.explanationCorrect = true;
-            btn.classList.add('exr-correct');
-            var fb = bodyEl.querySelector('#exr-feedback');
-            fb.innerHTML = '<div><button class="exr-btn" id="exr-next-btn"><span class="zh">完成</span><span class="en">Finish</span></button></div>';
-            document.getElementById('exr-next-btn').addEventListener('click', _next);
-            var allBtns = wrap.querySelectorAll('.exr-btn');
-            for (var i = 0; i < allBtns.length; i++) { allBtns[i].disabled = true; }
-          } else {
-            btn.classList.add('exr-wrong');
-            var fb2 = bodyEl.querySelector('#exr-feedback');
-            fb2.innerHTML = '<span class="zh">再想想看？</span><span class="en">Not quite — try again?</span>';
-          }
+          _st.explanationCorrect = !!opt.correct;
+          btn.classList.add(opt.correct ? 'exr-correct' : 'exr-chosen');
+
+          var feedbackText = opt.correct
+            ? {
+                zh: '这个解释和刚才的测试结果一致。',
+                en: 'This explanation matches the test results you observed.'
+              }
+            : {
+                zh: '这个解释还没有得到刚才测试结果的支持。探索仍然完成，下一次可以根据证据修正想法。',
+                en: 'This explanation is not yet supported by the test results. The exploration is still complete, and you can revise the idea from evidence next time.'
+              };
+          var fb = bodyEl.querySelector('#exr-feedback');
+          fb.innerHTML =
+            '<span class="zh">' + feedbackText.zh + '</span>' +
+            '<span class="en">' + feedbackText.en + '</span>' +
+            '<div><button class="exr-btn" id="exr-next-btn">' +
+              '<span class="zh">完成</span><span class="en">Finish</span>' +
+            '</button></div>';
+          document.getElementById('exr-next-btn').addEventListener('click', _next);
+
+          var allBtns = wrap.querySelectorAll('.exr-btn');
+          for (var i = 0; i < allBtns.length; i++) { allBtns[i].disabled = true; }
         });
         wrap.appendChild(btn);
       });
@@ -563,6 +573,10 @@ var ExploreRuntime = (function () {
         irrelevantEvidence: _st.irrelevantEvidence,
         relevantEvidenceTotal: _st.relevantEvidenceTotal,
         evidenceGrounded: _st.evidenceGrounded,
+        evidenceQualityMet: _st.evidenceGrounded &&
+          _st.relevantEvidenceTotal > 0 &&
+          _st.relevantEvidence === _st.relevantEvidenceTotal &&
+          _st.irrelevantEvidence === 0,
         explanationAttempts: _st.explanationAttempts,
         explanationCorrect: _st.explanationCorrect,
         revisions: _st.revisions,

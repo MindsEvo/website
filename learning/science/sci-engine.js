@@ -583,13 +583,26 @@ var SciEngine = (function () {
     return result;
   }
 
-  function _getCycleState(level) { return _get('cycle:' + level, null); }
-  function _saveCycleState(level, state) { _set('cycle:' + level, state); }
+  function _cycleScope(level, thinkingUnit) {
+    return thinkingUnit ? level + ':' + thinkingUnit : level;
+  }
 
-  function _initNewCycle(level, templates) {
-    var pool = templates.filter(function(t) { return t.level === level; });
+  function _getCycleState(level, thinkingUnit) {
+    return _get('cycle:' + _cycleScope(level, thinkingUnit), null);
+  }
+
+  function _saveCycleState(level, thinkingUnit, state) {
+    _set('cycle:' + _cycleScope(level, thinkingUnit), state);
+  }
+
+  function _initNewCycle(level, templates, thinkingUnit) {
+    var pool = templates.filter(function(t) {
+      return t.level === level &&
+        (!thinkingUnit || t.thinkingUnit === thinkingUnit);
+    });
     var plan = _typeBalancedShuffle(pool).map(function(t) { return t.id; });
-    var prev = _getCycleState(level) || { completedCycles: [], unlocked: false };
+    var prev = _getCycleState(level, thinkingUnit) ||
+      { completedCycles: [], unlocked: false };
     var state = {
       plan: plan, doneInCycle: [],
       cycleCorrect: 0, cycleAttempts: 0,
@@ -597,19 +610,22 @@ var SciEngine = (function () {
       completedCycles: prev.completedCycles || [],
       unlocked: prev.unlocked || false
     };
-    _saveCycleState(level, state);
+    _saveCycleState(level, thinkingUnit, state);
     return state;
   }
 
   // Returns template objects for the current session (handles mid-session resume)
-  function getSessionTemplates(level, templates) {
-    var pool = templates.filter(function(t) { return t.level === level; });
+  function getSessionTemplates(level, templates, thinkingUnit) {
+    var pool = templates.filter(function(t) {
+      return t.level === level &&
+        (!thinkingUnit || t.thinkingUnit === thinkingUnit);
+    });
     var tplMap = Object.create(null);
     pool.forEach(function(t) { tplMap[t.id] = t; });
 
-    var state = _getCycleState(level);
+    var state = _getCycleState(level, thinkingUnit);
     if (!state || !state.plan || state.plan.length === 0) {
-      state = _initNewCycle(level, templates);
+      state = _initNewCycle(level, templates, thinkingUnit);
     }
 
     // Resume: active session with unanswered questions remaining
@@ -627,7 +643,7 @@ var SciEngine = (function () {
     var done = state.doneInCycle || [];
     var next = state.plan.filter(function(id) { return done.indexOf(id) === -1; });
     if (next.length === 0) {
-      state = _initNewCycle(level, templates);
+      state = _initNewCycle(level, templates, thinkingUnit);
       next = state.plan.slice();
     }
 
@@ -635,37 +651,37 @@ var SciEngine = (function () {
     state.sessionPlan = sessionIds;
     state.sessionAnswered = {};
     state.sessionActive = true;
-    _saveCycleState(level, state);
+    _saveCycleState(level, thinkingUnit, state);
     return sessionIds.map(function(id) { return tplMap[id]; }).filter(Boolean);
   }
 
-  function recordSessionAnswer(level, templateId, correct) {
-    var state = _getCycleState(level);
+  function recordSessionAnswer(level, templateId, correct, thinkingUnit) {
+    var state = _getCycleState(level, thinkingUnit);
     if (!state) return;
     if (!state.sessionAnswered) state.sessionAnswered = {};
     state.sessionAnswered[templateId] = { correct: !!correct, ts: Date.now() };
     state.cycleCorrect  = (state.cycleCorrect  || 0) + (correct ? 1 : 0);
     state.cycleAttempts = (state.cycleAttempts || 0) + 1;
-    _saveCycleState(level, state);
+    _saveCycleState(level, thinkingUnit, state);
   }
 
   // Drop a template out of the current cycle WITHOUT recording an attempt.
   // Used when a generator cannot produce a variant: the template is a content
   // bug, so it must neither block the cycle nor count against the child.
-  function skipTemplate(level, templateId) {
-    var state = _getCycleState(level);
+  function skipTemplate(level, templateId, thinkingUnit) {
+    var state = _getCycleState(level, thinkingUnit);
     if (!state) return;
     var done = state.doneInCycle || [];
     if (done.indexOf(templateId) === -1) done.push(templateId);
     state.doneInCycle = done;
     state.sessionPlan = (state.sessionPlan || []).filter(function (id) { return id !== templateId; });
     if (state.sessionAnswered) delete state.sessionAnswered[templateId];
-    _saveCycleState(level, state);
+    _saveCycleState(level, thinkingUnit, state);
   }
 
   // Finalize current session and return cycle status for result page display
-  function completeSession(level) {
-    var state = _getCycleState(level);
+  function completeSession(level, thinkingUnit) {
+    var state = _getCycleState(level, thinkingUnit);
     if (!state) return { cycleComplete: false, doneCount: 0, totalCount: 0, unlocked: false };
 
     var answered = Object.keys(state.sessionAnswered || {});
@@ -685,7 +701,7 @@ var SciEngine = (function () {
       }]);
       if (accuracy >= 0.80) state.unlocked = true;
     }
-    _saveCycleState(level, state);
+    _saveCycleState(level, thinkingUnit, state);
 
     return {
       cycleComplete:   cycleComplete,
@@ -699,8 +715,8 @@ var SciEngine = (function () {
   }
 
   // Returns how many templates in the current session are still unanswered
-  function getSessionRemaining(level) {
-    var state = _getCycleState(level);
+  function getSessionRemaining(level, thinkingUnit) {
+    var state = _getCycleState(level, thinkingUnit);
     if (!state || !state.sessionActive) return 0;
     var answered = Object.keys(state.sessionAnswered || {});
     return (state.sessionPlan || []).filter(function (id) {
@@ -708,8 +724,8 @@ var SciEngine = (function () {
     }).length;
   }
 
-  function getCycleStatus(level) {
-    var state = _getCycleState(level);
+  function getCycleStatus(level, thinkingUnit) {
+    var state = _getCycleState(level, thinkingUnit);
     if (!state || !state.plan || state.plan.length === 0) {
       return { started: false, doneCount: 0, totalCount: 0, unlocked: false, completedCycles: 0 };
     }

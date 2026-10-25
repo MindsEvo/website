@@ -8,8 +8,8 @@
  *
  * Session flow:
  *   1. Load templates-data.js (window.SCI_TEMPLATES_DATA)
- *   2. User selects a K1-G2 grade level
- *   3. SciEngine.getSessionTemplates() selects the level templates
+ *   2. User selects a scientific-thinking type, then a K1-G2 grade
+ *   3. SciEngine.getSessionTemplates() selects templates in that scope
  *   4. Puzzle templates use shell.createGame; Activity and Exploration
  *      templates use ActivityRunner and their dedicated runtimes
  *   5. Every completed template records one Attempt and one report entry
@@ -55,6 +55,14 @@
     '.sci-lvl-tag.locked-tag{background:#f1f5f9;color:#94a3b8;}',
     '.sci-lvl-cycle{font-size:11px;font-weight:700;color:#059669;margin-top:5px;}',
     '.sci-lvl-cycle.done{color:#16a34a;}',
+    '.sci-type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:560px;}',
+    '.sci-type-card{border:2px solid #a7f3d0;border-radius:16px;padding:18px 14px;cursor:pointer;text-align:center;background:#fff;transition:transform .16s,border-color .16s,box-shadow .16s;}',
+    '.sci-type-card:hover{transform:translateY(-2px);border-color:#34d399;box-shadow:0 8px 20px rgba(5,150,105,0.12);}',
+    '.sci-type-icon{font-size:34px;line-height:1;margin-bottom:8px;}',
+    '.sci-type-name{font-size:17px;font-weight:900;color:#047857;}',
+    '.sci-type-desc{font-size:12px;color:#64748b;line-height:1.45;margin-top:5px;}',
+    '.sci-type-levels{font-size:11px;font-weight:700;color:#059669;margin-top:8px;}',
+    '@media(max-width:560px){.sci-type-grid,.sci-lvl-grid{grid-template-columns:1fr;}}',
     '#s1-replay{display:none!important;}',
     '#sci-home-back{margin-right:auto;background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;color:#047857;line-height:1;}',
     '.sci-prog{padding:12px 16px;background:#f0fdf4;border-radius:12px;margin-bottom:10px;width:100%;max-width:360px;}',
@@ -82,17 +90,32 @@
     texture_result_observation_puzzle: { zh: '哪一句准确比较了<b>测试结果</b>？', en: 'Which sentence accurately compares the <b>test results</b>?' },
     matter_change_observation_puzzle: { zh: '哪一句准确描述了<b>观察变化</b>？', en: 'Which sentence accurately describes the <b>observed change</b>?' },
     life_growth_observation_puzzle: { zh: '哪一句准确描述了<b>生长记录</b>？', en: 'Which sentence accurately describes the <b>growth record</b>?' },
+    measurement_pattern_observation_puzzle: { zh: '哪一句准确描述了<b>测量变化</b>？', en: 'Which sentence accurately describes the <b>measurement pattern</b>?' },
+    data_relationship_observation_puzzle: { zh: '哪一句准确概括了<b>数据关系</b>？', en: 'Which sentence accurately summarizes the <b>data relationship</b>?' },
     motion_roll_puzzle:  { zh: '哪一个<b>滚得更远</b>？', en: 'Which one will <b>roll farther</b>?' },
     life_fly_puzzle:     { zh: '哪一个<b>会飞</b>？', en: 'Which one <b>can fly</b>?' },
+    repeat_observation_prediction_puzzle: { zh: '根据已有观察作出<b>重复测试预测</b>。', en: 'Predict a <b>repeated test</b> from an observation.' },
+    data_trend_prediction_puzzle: { zh: '根据<b>数据趋势</b>预测新结果。', en: 'Predict a new result from the <b>data trend</b>.' },
     motion_evidence_prediction_puzzle: { zh: '根据测试结果作出<b>预测</b>。', en: 'Make a <b>prediction</b> from the test results.' },
     life_evidence_prediction_puzzle: { zh: '根据测试结果作出<b>预测</b>。', en: 'Make a <b>prediction</b> from the test results.' },
     matter_describe_puzzle: { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
     life_describe_puzzle:   { zh: '<b>描述</b>一下它。', en: '<b>Describe</b> it.' },
+    try_to_find_out_question_puzzle: { zh: '哪一个问题可以<b>动手验证</b>？', en: 'Which question could you answer by <b>trying it</b>?' },
+    observable_change_question_puzzle: { zh: '哪一个问题可以通过<b>观察变化</b>回答？', en: 'Which question could be answered by <b>observing a change</b>?' },
+    fair_comparison_question_puzzle: { zh: '哪一个问题适合做<b>公平比较</b>？', en: 'Which question supports a <b>fair comparison</b>?' },
     earth_question_puzzle:  { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' },
     energy_question_puzzle: { zh: '哪个<b>问题</b>可以研究？', en: 'Which <b>question</b> could you investigate?' },
+    choose_test_action_puzzle: { zh: '应该怎样<b>动手测试</b>？', en: 'How should you <b>test it</b>?' },
+    same_object_comparison_puzzle: { zh: '哪一种是合适的<b>比较测试</b>？', en: 'Which is a suitable <b>comparison test</b>?' },
     shadow_variable_control_puzzle: { zh: '哪一种是公平的<b>变量控制</b>方法？', en: 'Which is the fair <b>variable-control</b> method?' },
     ramp_evidence_puzzle:  { zh: '哪一条是最有力的<b>证据</b>？', en: 'Which result is the strongest <b>evidence</b>?' },
-    ramp_explanation_puzzle: { zh: '哪一个是完整的<b>解释</b>？', en: 'Which is the complete <b>explanation</b>?' }
+    ramp_explanation_puzzle: { zh: '哪一个是完整的<b>解释</b>？', en: 'Which is the complete <b>explanation</b>?' },
+    observed_result_evidence_puzzle: { zh: '哪一句是刚才看到的<b>证据</b>？', en: 'Which sentence is <b>evidence</b> from the test?' },
+    supporting_evidence_puzzle: { zh: '哪一条结果最能<b>支持</b>这个想法？', en: 'Which result best <b>supports</b> the claim?' },
+    result_explanation_puzzle: { zh: '哪一句最符合刚才的<b>结果</b>？', en: 'Which sentence best matches the <b>result</b>?' },
+    evidence_explanation_puzzle: { zh: '哪一个解释同时使用了<b>结果和理由</b>？', en: 'Which explanation uses the <b>result and a reason</b>?' },
+    repeated_evidence_puzzle: { zh: '哪一条是最有力的<b>重复证据</b>？', en: 'Which is the strongest <b>repeated evidence</b>?' },
+    pattern_explanation_puzzle: { zh: '哪一个解释最符合<b>重复结果</b>？', en: 'Which explanation best matches the <b>repeated results</b>?' }
   };
 
   function renderSequence(q, container) {
@@ -158,17 +181,32 @@
     texture_result_observation_puzzle: { zh: '哪一句准确比较了测试结果？', en: 'Which sentence accurately compares the test results?' },
     matter_change_observation_puzzle: { zh: '哪一句准确描述了观察变化？', en: 'Which sentence accurately describes the observed change?' },
     life_growth_observation_puzzle: { zh: '哪一句准确描述了生长记录？', en: 'Which sentence accurately describes the growth record?' },
+    measurement_pattern_observation_puzzle: { zh: '哪一句准确描述了测量变化？', en: 'Which sentence accurately describes the measurement pattern?' },
+    data_relationship_observation_puzzle: { zh: '哪一句准确概括了数据关系？', en: 'Which sentence accurately summarizes the data relationship?' },
     motion_roll_puzzle:  { zh: '哪一个滚得更远？', en: 'Which one will roll farther?' },
     life_fly_puzzle:     { zh: '哪一个会飞？', en: 'Which one can fly?' },
+    repeat_observation_prediction_puzzle: { zh: '根据已有观察预测重复测试的结果。', en: 'Predict the repeated-test result from the observation.' },
+    data_trend_prediction_puzzle: { zh: '根据数据趋势预测新结果。', en: 'Predict a new result from the data trend.' },
     motion_evidence_prediction_puzzle: { zh: '根据测试结果作出预测。', en: 'Make a prediction from the test results.' },
     life_evidence_prediction_puzzle: { zh: '根据测试结果作出预测。', en: 'Make a prediction from the test results.' },
     matter_describe_puzzle: { zh: '描述一下它。', en: 'Describe it.' },
     life_describe_puzzle:   { zh: '描述一下它。', en: 'Describe it.' },
+    try_to_find_out_question_puzzle: { zh: '哪一个问题可以动手验证？', en: 'Which question could you answer by trying it?' },
+    observable_change_question_puzzle: { zh: '哪一个问题可以通过观察变化回答？', en: 'Which question could be answered by observing a change?' },
+    fair_comparison_question_puzzle: { zh: '哪一个问题适合做公平比较？', en: 'Which question supports a fair comparison?' },
     earth_question_puzzle:  { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' },
     energy_question_puzzle: { zh: '哪个问题可以研究？', en: 'Which question could you investigate?' },
+    choose_test_action_puzzle: { zh: '应该怎样动手测试？', en: 'How should you test it?' },
+    same_object_comparison_puzzle: { zh: '哪一种是合适的比较测试？', en: 'Which is a suitable comparison test?' },
     shadow_variable_control_puzzle: { zh: '哪一种是公平的变量控制方法？', en: 'Which is the fair variable-control method?' },
     ramp_evidence_puzzle:  { zh: '哪一条是最有力的证据？', en: 'Which result is the strongest evidence?' },
-    ramp_explanation_puzzle: { zh: '哪一个是完整的解释？', en: 'Which is the complete explanation?' }
+    ramp_explanation_puzzle: { zh: '哪一个是完整的解释？', en: 'Which is the complete explanation?' },
+    observed_result_evidence_puzzle: { zh: '哪一句是刚才看到的证据？', en: 'Which sentence is evidence from the test?' },
+    supporting_evidence_puzzle: { zh: '哪一条结果最能支持这个想法？', en: 'Which result best supports the claim?' },
+    result_explanation_puzzle: { zh: '哪一句最符合刚才的结果？', en: 'Which sentence best matches the result?' },
+    evidence_explanation_puzzle: { zh: '哪一个解释同时使用了结果和理由？', en: 'Which explanation uses the result and a reason?' },
+    repeated_evidence_puzzle: { zh: '哪一条是最有力的重复证据？', en: 'Which is the strongest repeated evidence?' },
+    pattern_explanation_puzzle: { zh: '哪一个解释最符合重复结果？', en: 'Which explanation best matches the repeated results?' }
   };
 
   function getVoiceText(q) {
@@ -221,7 +259,7 @@
    * this, so a change to the contract cannot land on one path and miss the
    * other.
    */
-  function buildRadarContext(levelId, domainType, extra) {
+  function buildRadarContext(levelId, domainType, thinkingUnit, extra) {
     var ctx = {
       moduleId:       MODULE_ID,
       moduleType:     MODULE_TYPE,
@@ -229,6 +267,7 @@
       gradeCode:      LEVEL_GRADE[levelId] || null,
       comparisonType: domainType ? (CONTEXT_DOMAIN_OF[domainType] || 'matter') : null,
       contextDomain:  domainType || null,
+      thinkingUnit:  thinkingUnit || null,
       difficultyAxis: difficultyAxisFor(levelId),
       sourceGameId:   SOURCE_GAME_ID
     };
@@ -257,45 +296,79 @@
   function onAnswer(selected, q, correct, elapsedMs) {
     var tpl = _sessionTemplateMap[q.templateId];
     if (!tpl) return;
-    SciEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
+    SciEngine.recordSessionAnswer(tpl.level, tpl.id, correct, tpl.thinkingUnit);
     SciEngine.recordAttempt(q.templateId, q.variantId || SciEngine.makeVariantId(q.templateId), correct, elapsedMs || 0, false, tpl, {
       mode:   'puzzle',
       result: correct ? 'correct' : 'incorrect',
-      radar:  buildRadarContext(tpl.level, tpl.type)
+      radar:  buildRadarContext(tpl.level, tpl.type, tpl.thinkingUnit)
     });
   }
 
-  // ── Grade level selector ───────────────────────────────────────────────────
+  // ── Scientific-thinking type and grade selectors ───────────────────────────
+
+  var THINKING_TYPES = [
+    { id: 'observation', icon: '🔎', nameZh: '观察', nameEn: 'Observation',
+      descZh: '准确发现、比较和描述现象。', descEn: 'Notice, compare, and describe phenomena accurately.' },
+    { id: 'questioning', icon: '❓', nameZh: '提问', nameEn: 'Questioning',
+      descZh: '识别可以通过观察或实验回答的问题。', descEn: 'Identify questions that observation or testing can answer.' },
+    { id: 'prediction', icon: '🔮', nameZh: '预测', nameEn: 'Prediction',
+      descZh: '根据已有观察，在结果出现前作出判断。', descEn: 'Predict before the result using prior observations.' },
+    { id: 'experimentation', icon: '🧪', nameZh: '实验', nameEn: 'Experimentation',
+      descZh: '改变目标变量，控制条件并比较结果。', descEn: 'Change a target variable, control conditions, and compare results.' },
+    { id: 'evidence', icon: '📊', nameZh: '证据', nameEn: 'Evidence',
+      descZh: '从实际观察和测试中选择相关证据。', descEn: 'Select relevant evidence from observations and tests.' },
+    { id: 'explanation', icon: '💡', nameZh: '解释', nameEn: 'Explanation',
+      descZh: '用现象和证据建立有依据的解释。', descEn: 'Build explanations supported by phenomena and evidence.' }
+  ];
 
   var GRADE_LEVELS = [
-    { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K', descZh: '3–4岁 · 浮与沉', descEn: 'Age 3-4 · Float & Sink', free: true },
-    { id: 'K2', badge: 'K2', nameZh: '幼儿园大班', nameEn: 'Kindergarten', descZh: '4–5岁 · 描述现象', descEn: 'Age 4-5 · Describe', free: true },
-    { id: 'G1', badge: 'G1', nameZh: '小学一年级', nameEn: 'Grade 1', descZh: '5–6岁 · 预测新情境', descEn: 'Age 5-6 · Predict', free: true },
-    { id: 'G2', badge: 'G2', nameZh: '小学二年级', nameEn: 'Grade 2', descZh: '6–7岁 · 提出问题', descEn: 'Age 6-7 · Question', free: true }
+    { id: 'K1', badge: 'K1', nameZh: '幼儿园小/中班', nameEn: 'Pre-K', descZh: '3–4岁', descEn: 'Age 3-4' },
+    { id: 'K2', badge: 'K2', nameZh: '幼儿园大班', nameEn: 'Kindergarten', descZh: '4–5岁', descEn: 'Age 4-5' },
+    { id: 'G1', badge: 'G1', nameZh: '小学一年级', nameEn: 'Grade 1', descZh: '5–6岁', descEn: 'Age 5-6' },
+    { id: 'G2', badge: 'G2', nameZh: '小学二年级', nameEn: 'Grade 2', descZh: '6–7岁', descEn: 'Age 6-7' }
   ];
+
+  function _thinkingType(id) {
+    return THINKING_TYPES.filter(function (type) { return type.id === id; })[0] || THINKING_TYPES[0];
+  }
+
+  function _availableLevels(templates, thinkingUnit) {
+    return GRADE_LEVELS.filter(function (level) {
+      return templates.some(function (tpl) {
+        return tpl.level === level.id && tpl.thinkingUnit === thinkingUnit;
+      });
+    }).map(function (level) { return level.id; });
+  }
+
+  function _nextAvailableLevel(levelId, templates, thinkingUnit) {
+    var start = LEVEL_ORDER.indexOf(levelId) + 1;
+    for (var i = start; i < LEVEL_ORDER.length; i++) {
+      if (templates.some(function (tpl) {
+        return tpl.level === LEVEL_ORDER[i] && tpl.thinkingUnit === thinkingUnit;
+      })) return LEVEL_ORDER[i];
+    }
+    return null;
+  }
 
   // ── Bootstrap ──────────────────────────────────────────────────────────────
 
-  function _buildUnitsForLevel(levelId, templates) {
+  function _buildUnitsForLevel(levelId, templates, thinkingUnit) {
     _sessionTemplateMap = {};
-    var selected = SciEngine.getSessionTemplates(levelId, templates).filter(function (tpl) {
+    var selected = SciEngine.getSessionTemplates(levelId, templates, thinkingUnit).filter(function (tpl) {
       return !tpl.runtime || tpl.runtime === 'puzzle';
     });
     var questions = selected.map(function (tpl) {
       var q = SciGenerators.generateQuestion(tpl);
       if (!q) {
         console.warn('[science] generator produced no question for', tpl.id, '— skipping template');
-        SciEngine.skipTemplate(levelId, tpl.id);
+        SciEngine.skipTemplate(levelId, tpl.id, thinkingUnit);
         return null;
       }
       _sessionTemplateMap[tpl.id] = tpl;
       return q;
     }).filter(Boolean);
     var n = questions.length;
-    // Unlike Comparison (one gene for the whole module, so a hardcoded id
-    // loses nothing), Science's six meta-thinking genes are meant to differ
-    // per template — union the selected templates' own rootGeneIds so a
-    // puzzle session reports the gene(s) it actually exercised.
+    var typeMeta = _thinkingType(thinkingUnit);
     var geneIds = [];
     selected.forEach(function (tpl) {
       (tpl.rootGeneIds || []).forEach(function (g) {
@@ -304,71 +377,104 @@
     });
     if (!geneIds.length) geneIds.push('RG.SCIENCE.OBSERVATION.BASIC');
     return [{
-      id: levelId + '-session',
-      nameZh: levelId + ' · 科学挑战',
-      nameEn: levelId + ' · Science Challenge',
-      icon: '🔬',
-      descZh: n + '题 · 观察与预测',
-      descEn: n + ' questions · Observe & Predict',
+      id: thinkingUnit + '-' + levelId + '-session',
+      nameZh: levelId + ' · ' + typeMeta.nameZh,
+      nameEn: levelId + ' · ' + typeMeta.nameEn,
+      icon: typeMeta.icon,
+      descZh: n + '题 · ' + typeMeta.nameZh + '训练',
+      descEn: n + ' questions · ' + typeMeta.nameEn,
       rootGeneIds: geneIds,
       questions: questions
     }];
   }
 
   function _init() {
-    // Loaded from templates-data.js (a plain global) rather than
-    // fetch('./templates.json') — fetch() of a same-folder file is blocked
-    // when this page is opened via file://, same reason comparison/game.js
-    // uses this pattern.
-    _showLevelSelector((window.SCI_TEMPLATES_DATA && window.SCI_TEMPLATES_DATA.templates) || []);
+    var templates = (window.SCI_TEMPLATES_DATA && window.SCI_TEMPLATES_DATA.templates) || [];
+    _showThinkingTypeSelector(templates);
   }
 
-  function _showLevelSelector(templates) {
-    var lang = shell.lang || 'zh';
+  function _showThinkingTypeSelector(templates) {
+    var old = document.getElementById('sci-type-selector');
+    if (old) old.remove();
+    var wrap = document.createElement('div');
+    wrap.id = 'sci-type-selector';
+    wrap.innerHTML = '<div class="sci-lvl-wrap">' +
+      '<div class="sci-lvl-title-bar">' +
+        '<button class="sci-lvl-back" id="sci-type-back">⬅️ <span class="zh">学习中心</span><span class="en">Learning</span></button>' +
+        '<div class="sci-lvl-title"><span class="zh">科学 · 选择训练类型</span><span class="en">Science · Thinking Type</span></div>' +
+        IH.controlsHtml('stype') +
+      '</div>' +
+      '<div class="sci-type-grid">' +
+      THINKING_TYPES.map(function (type) {
+        var levels = _availableLevels(templates, type.id);
+        return '<div class="sci-type-card" data-thinking-unit="' + type.id + '">' +
+          '<div class="sci-type-icon">' + type.icon + '</div>' +
+          '<div class="sci-type-name"><span class="zh">' + type.nameZh + '</span><span class="en">' + type.nameEn + '</span></div>' +
+          '<div class="sci-type-desc"><span class="zh">' + type.descZh + '</span><span class="en">' + type.descEn + '</span></div>' +
+          '<div class="sci-type-levels">' + levels.join(' · ') + '</div>' +
+        '</div>';
+      }).join('') +
+      '</div></div>';
+    document.body.appendChild(wrap);
+    _applyLangVisibility(wrap);
+    IH.wire('stype');
+
+    document.getElementById('sci-type-back').addEventListener('click', function () {
+      window.location.href = '../index.html';
+    });
+    wrap.addEventListener('click', function (event) {
+      var card = event.target.closest('.sci-type-card');
+      if (!card) return;
+      var thinkingUnit = card.getAttribute('data-thinking-unit');
+      wrap.remove();
+      _showLevelSelector(templates, thinkingUnit);
+    });
+  }
+
+  function _showLevelSelector(templates, thinkingUnit) {
+    var old = document.getElementById('sci-level-selector');
+    if (old) old.remove();
+    var typeMeta = _thinkingType(thinkingUnit);
+    var available = _availableLevels(templates, thinkingUnit);
     var wrap = document.createElement('div');
     wrap.id = 'sci-level-selector';
     wrap.innerHTML = '<div class="sci-lvl-wrap">' +
       '<div class="sci-lvl-title-bar">' +
-        '<button class="sci-lvl-back" id="sci-sel-back">⬅️ <span class="zh">学习中心</span><span class="en">Learning</span></button>' +
-        '<div class="sci-lvl-title"><span class="zh">科学 · 选择年级</span><span class="en">Science · Grade</span></div>' +
+        '<button class="sci-lvl-back" id="sci-sel-back">⬅️ <span class="zh">训练类型</span><span class="en">Types</span></button>' +
+        '<div class="sci-lvl-title"><span class="zh">' + typeMeta.nameZh + ' · 选择年级</span><span class="en">' + typeMeta.nameEn + ' · Grade</span></div>' +
         IH.controlsHtml('lvl') +
       '</div>' +
       '<div class="sci-lvl-grid">' +
       GRADE_LEVELS.map(function (lvl) {
-        var lk = !lvl.free;
-        return '<div class="sci-lvl-card' + (lk ? ' locked' : '') + '" data-level="' + lvl.id + '">' +
+        var locked = available.indexOf(lvl.id) === -1;
+        return '<div class="sci-lvl-card' + (locked ? ' locked' : '') + '" data-level="' + lvl.id + '">' +
           '<div class="sci-lvl-badge">' + lvl.badge + '</div>' +
           '<div class="sci-lvl-name"><span class="zh">' + lvl.nameZh + '</span><span class="en">' + lvl.nameEn + '</span></div>' +
           '<div class="sci-lvl-desc"><span class="zh">' + lvl.descZh + '</span><span class="en">' + lvl.descEn + '</span></div>' +
-          '<div class="sci-lvl-tag ' + (lk ? 'locked-tag' : 'free') + '"><span class="zh">' + (lk ? '即将推出' : '免费') + '</span><span class="en">' + (lk ? 'Soon' : 'Free') + '</span></div>' +
+          '<div class="sci-lvl-tag ' + (locked ? 'locked-tag' : 'free') + '"><span class="zh">' + (locked ? '尚未开放' : '进入训练') + '</span><span class="en">' + (locked ? 'Not available yet' : 'Start') + '</span></div>' +
           (function () {
-            if (lk) return '';
-            var cs = SciEngine.getCycleStatus(lvl.id);
-            if (cs.unlocked) return '<div class="sci-lvl-cycle done"><span class="zh">✓ 已解锁</span><span class="en">✓ Unlocked</span></div>';
-            if (cs.started)  return '<div class="sci-lvl-cycle"><span class="zh">进度 ' + cs.doneCount + '/' + cs.totalCount + '</span><span class="en">' + cs.doneCount + '/' + cs.totalCount + ' done</span></div>';
+            if (locked) return '';
+            var cs = SciEngine.getCycleStatus(lvl.id, thinkingUnit);
+            if (cs.unlocked) return '<div class="sci-lvl-cycle done"><span class="zh">✓ 已完成</span><span class="en">✓ Completed</span></div>';
+            if (cs.started) return '<div class="sci-lvl-cycle"><span class="zh">进度 ' + cs.doneCount + '/' + cs.totalCount + '</span><span class="en">' + cs.doneCount + '/' + cs.totalCount + ' done</span></div>';
             return '';
           })() +
         '</div>';
       }).join('') +
       '</div></div>';
-
-    function applyLang(l) {
-      wrap.querySelectorAll('.zh').forEach(function (el) { el.style.display = l === 'zh' ? '' : 'none'; });
-      wrap.querySelectorAll('.en').forEach(function (el) { el.style.display = l === 'en' ? '' : 'none'; });
-    }
-    applyLang(lang);
-    document.addEventListener('shell:langchange', function (e) { applyLang(e.detail && e.detail.lang); });
     document.body.appendChild(wrap);
+    _applyLangVisibility(wrap);
     IH.wire('lvl');
 
-    var backBtn = document.getElementById('sci-sel-back');
-    if (backBtn) backBtn.addEventListener('click', function () { window.location.href = '../index.html'; });
-
-    wrap.addEventListener('click', function (e) {
-      var card = e.target.closest('.sci-lvl-card:not(.locked)');
+    document.getElementById('sci-sel-back').addEventListener('click', function () {
+      wrap.remove();
+      _showThinkingTypeSelector(templates);
+    });
+    wrap.addEventListener('click', function (event) {
+      var card = event.target.closest('.sci-lvl-card:not(.locked)');
       if (!card) return;
       wrap.remove();
-      _launchGame(card.getAttribute('data-level'), templates);
+      _launchGame(card.getAttribute('data-level'), templates, thinkingUnit);
     });
   }
 
@@ -385,8 +491,8 @@
   // _watchForResultAndInjectNextLevel (both index into this array).
   var LEVEL_ORDER = ['K1', 'K2', 'G1', 'G2'];
 
-  function _launchGame(levelId, templates) {
-    var selected = SciEngine.getSessionTemplates(levelId, templates);
+  function _launchGame(levelId, templates, thinkingUnit) {
+    var selected = SciEngine.getSessionTemplates(levelId, templates, thinkingUnit);
 
     // Explore templates run one at a time through ActivityRunner; puzzle
     // templates run as a batch through shell.createGame — same split as
@@ -396,9 +502,9 @@
     })[0];
 
     if (firstExploration) {
-      _launchExploration(firstExploration, levelId, templates);
+      _launchExploration(firstExploration, levelId, templates, thinkingUnit);
     } else {
-      _launchPuzzleSession(levelId, templates);
+      _launchPuzzleSession(levelId, templates, thinkingUnit);
     }
   }
 
@@ -410,13 +516,13 @@
    * ever sees the flat `process` summary), so this is the one place it can
    * reach shell.report()'s untouched, persisted `context` column.
    */
-  function _reportExploration(tpl, levelId, attempt, correct) {
+  function _reportExploration(tpl, levelId, attempt, correct, thinkingUnit) {
     if (!shell || typeof shell.report !== 'function') return;
-    var radar = buildRadarContext(tpl.level || levelId, tpl.type);
+    var radar = buildRadarContext(tpl.level || levelId, tpl.type, thinkingUnit);
 
     shell.report({
       gameId:     SOURCE_GAME_ID,
-      unitId:     levelId + '-session',
+      unitId:     thinkingUnit + '-' + levelId + '-session',
       templateId: tpl.id,
       variantId:  attempt.variantId || null,
       score:      correct ? 1 : 0,
@@ -442,12 +548,12 @@
   }
 
   // Run a single Explore template via ActivityRunner -> ExploreRuntime.
-  function _launchExploration(tpl, levelId, templates) {
+  function _launchExploration(tpl, levelId, templates, thinkingUnit) {
     var variant = SciGenerators.generateQuestion(tpl);
     if (!variant) {
       console.warn('[science] generator produced no variant for', tpl.id, '— skipping template');
-      SciEngine.skipTemplate(levelId, tpl.id);
-      _launchGame(levelId, templates);
+      SciEngine.skipTemplate(levelId, tpl.id, thinkingUnit);
+      _launchGame(levelId, templates, thinkingUnit);
       return;
     }
 
@@ -455,12 +561,25 @@
       levelId: levelId,
       onComplete: function (attempt) {
         if (attempt.result === 'aborted') {
-          _showLevelSelector(templates);
+          _showLevelSelector(templates, thinkingUnit);
           return;
         }
-        var correct = attempt.result === 'correct' || attempt.result === 'passed';
+        var process = attempt.process || {};
+        var processCompleted =
+          attempt.result === 'correct' ||
+          attempt.result === 'passed' ||
+          process.processCompleted === true;
 
-        SciEngine.recordSessionAnswer(tpl.level, tpl.id, correct);
+        // Completing the scientific process and demonstrating the target
+        // reasoning quality are separate. A wrong prediction is never a
+        // failure, but unsupported evidence or explanation is not mastery.
+        var correct = processCompleted &&
+          process.experimentQualityMet !== false &&
+          process.evidenceGrounded !== false &&
+          process.evidenceQualityMet !== false &&
+          process.explanationCorrect !== false;
+
+        SciEngine.recordSessionAnswer(tpl.level, tpl.id, correct, thinkingUnit);
         SciEngine.recordAttempt(tpl.id, attempt.variantId, correct,
           attempt.responseMs, false, tpl, {
             mode:    attempt.mode || tpl.runtime || tpl.mode,
@@ -468,21 +587,21 @@
             // Flat summary only — the raw trace goes to _reportExploration()'s
             // shell.report() context instead, never to the mastery engine.
             process: attempt.process,
-            radar:   buildRadarContext(tpl.level || levelId, tpl.type)
+            radar:   buildRadarContext(tpl.level || levelId, tpl.type, thinkingUnit)
           });
 
-        _reportExploration(tpl, levelId, attempt, correct);
+        _reportExploration(tpl, levelId, attempt, correct, thinkingUnit);
 
-        var remaining = SciEngine.getSessionRemaining(levelId);
+        var remaining = SciEngine.getSessionRemaining(levelId, thinkingUnit);
         if (remaining > 0) {
-          _launchGame(levelId, templates);
+          _launchGame(levelId, templates, thinkingUnit);
         } else {
-          var sr = SciEngine.completeSession(levelId);
-          _showExplorationResult(attempt, sr, levelId, templates);
+          var sr = SciEngine.completeSession(levelId, thinkingUnit);
+          _showExplorationResult(attempt, sr, levelId, templates, thinkingUnit);
         }
       },
       onBack: function () {
-        _showLevelSelector(templates);
+        _showLevelSelector(templates, thinkingUnit);
       }
     });
   }
@@ -493,9 +612,8 @@
   // Brief result overlay after a solo Explore activity. Mirrors
   // comparison/game.js's _showInteractionResult(), minus the mini-game stats
   // block (Science has no mini-game runtime in this scaffold).
-  function _showExplorationResult(attempt, sr, levelId, templates) {
-    var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
-    var nextLevel = nextIdx < LEVEL_ORDER.length ? LEVEL_ORDER[nextIdx] : null;
+  function _showExplorationResult(attempt, sr, levelId, templates, thinkingUnit) {
+    var nextLevel = _nextAvailableLevel(levelId, templates, thinkingUnit);
 
     var overlay = document.createElement('div');
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.94);z-index:600;' +
@@ -523,7 +641,7 @@
     _applyLangVisibility(nextBtn);
     nextBtn.addEventListener('click', function () {
       overlay.remove();
-      _launchGame(levelId, templates);
+      _launchGame(levelId, templates, thinkingUnit);
     });
     acts.appendChild(nextBtn);
 
@@ -533,7 +651,7 @@
       upBtn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
       upBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
       _applyLangVisibility(upBtn);
-      upBtn.addEventListener('click', function () { overlay.remove(); _launchGame(nextLevel, templates); });
+      upBtn.addEventListener('click', function () { overlay.remove(); _launchGame(nextLevel, templates, thinkingUnit); });
       acts.appendChild(upBtn);
     }
 
@@ -541,13 +659,13 @@
     homeBtn.className = 's1-abtn s1-outline';
     homeBtn.innerHTML = '<span class="zh">返回主页</span><span class="en">Home</span>';
     _applyLangVisibility(homeBtn);
-    homeBtn.addEventListener('click', function () { overlay.remove(); _showLevelSelector(templates); });
+    homeBtn.addEventListener('click', function () { overlay.remove(); _showThinkingTypeSelector(templates); });
     acts.appendChild(homeBtn);
   }
 
   // Puzzle flow — units run through shell.createGame's own screens.
-  function _launchPuzzleSession(levelId, templates) {
-    var units = _buildUnitsForLevel(levelId, templates);
+  function _launchPuzzleSession(levelId, templates, thinkingUnit) {
+    var units = _buildUnitsForLevel(levelId, templates, thinkingUnit);
     shell.createGame({
       id: 'learning-science',
       theme: { primary: '#059669', primary2: '#047857', bg: '#ecfdf5' },
@@ -560,8 +678,9 @@
           contentZh: '仔细观察题目，选出你觉得会浮起来的那一个。',
           contentEn: 'Observe the items and pick the one you think will float.' }
       },
-      title: { zh: '🔬 科学 · ' + levelId, en: '🔬 Science · ' + levelId },
-      subtitle: { zh: '观察、预测、验证', en: 'Observe, Predict, Verify' },
+      title: { zh: _thinkingType(thinkingUnit).icon + ' ' + _thinkingType(thinkingUnit).nameZh + ' · ' + levelId,
+        en: _thinkingType(thinkingUnit).icon + ' ' + _thinkingType(thinkingUnit).nameEn + ' · ' + levelId },
+      subtitle: { zh: '科学思维训练', en: 'Scientific Thinking Practice' },
       // debug:false → real progression. Append ?debug=1 to the URL to test.
       passScore: 1, debug: false, units: units,
       renderSequence: renderSequence, renderOption: renderOption,
@@ -571,7 +690,7 @@
         var types = Object.keys(_sessionTemplateMap).map(function (id) {
           return CONTEXT_DOMAIN_OF[_sessionTemplateMap[id].type] || null;
         });
-        return buildRadarContext(levelId, null, {
+        return buildRadarContext(levelId, null, thinkingUnit, {
           comparisonType: _dominant(types),
           contextDomains: types.filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; }),
           activityRuntime: 'puzzle'
@@ -579,12 +698,12 @@
       }
     });
 
-    _injectShellHomeBackButton(templates);
-    _watchForResultAndInjectNextLevel(levelId, templates);
+    _injectShellHomeBackButton(templates, thinkingUnit);
+    _watchForResultAndInjectNextLevel(levelId, templates, thinkingUnit);
   }
 
   // Add "← 返回选级" button to shell home header so user can go back to grade chooser.
-  function _injectShellHomeBackButton(templates) {
+  function _injectShellHomeBackButton(templates, thinkingUnit) {
     var homeHdr = document.querySelector('#s1-home .s1-hdr');
     if (!homeHdr || document.getElementById('sci-home-back')) return;
     var btn = document.createElement('button');
@@ -593,15 +712,14 @@
     btn.title = '返回选级 / Back to levels';
     btn.addEventListener('click', function () {
       _tearDownShell();
-      _showLevelSelector(templates);
+      _showLevelSelector(templates, thinkingUnit);
     });
     homeHdr.insertBefore(btn, homeHdr.firstChild);
   }
 
   // Show progress + conditionally show upgrade button on result screen.
-  function _watchForResultAndInjectNextLevel(levelId, templates) {
-    var nextIdx   = LEVEL_ORDER.indexOf(levelId) + 1;
-    var nextLevel = nextIdx < LEVEL_ORDER.length ? LEVEL_ORDER[nextIdx] : null;
+  function _watchForResultAndInjectNextLevel(levelId, templates, thinkingUnit) {
+    var nextLevel = _nextAvailableLevel(levelId, templates, thinkingUnit);
 
     var resultEl = document.getElementById('s1-result');
     if (!resultEl) return;
@@ -612,7 +730,7 @@
       injected = true;
       observer.disconnect();
 
-      var sr = SciEngine.completeSession(levelId);
+      var sr = SciEngine.completeSession(levelId, thinkingUnit);
 
       var acts = document.getElementById('s1-racts');
       if (!acts) return;
@@ -623,7 +741,7 @@
         retryBtn.parentNode.replaceChild(freshRetry, retryBtn);
         freshRetry.addEventListener('click', function () {
           _tearDownShell();
-          _launchGame(levelId, templates);
+          _launchGame(levelId, templates, thinkingUnit);
         });
       }
 
@@ -635,7 +753,7 @@
           upgradeBtn.className = 's1-abtn s1-primary';
           upgradeBtn.innerHTML = '<span class="zh">升级到 ' + nextLevel + ' →</span><span class="en">Next: ' + nextLevel + ' →</span>';
           _applyLangVisibility(upgradeBtn);
-          upgradeBtn.addEventListener('click', function () { _tearDownShell(); _launchGame(nextLevel, templates); });
+          upgradeBtn.addEventListener('click', function () { _tearDownShell(); _launchGame(nextLevel, templates, thinkingUnit); });
           acts.insertBefore(upgradeBtn, acts.lastElementChild);
         }
       } else {
@@ -645,7 +763,7 @@
         _applyLangVisibility(nextBtn);
         nextBtn.addEventListener('click', function () {
           _tearDownShell();
-          _launchGame(levelId, templates);
+          _launchGame(levelId, templates, thinkingUnit);
         });
         acts.insertBefore(nextBtn, acts.lastElementChild);
       }

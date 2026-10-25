@@ -220,6 +220,9 @@ var ControlActivityRuntime = (function () {
     function finish() {
       var process = {
         processCompleted: true,
+        experimentQualityMet: true,
+        targetVariableIsolated: true,
+        controlledConditionsConsistent: true,
         setupAttempts: setupAttempts,
         variableSelections: setupAttempts,
         controlledVariables: variant.correctControlIds.length,
