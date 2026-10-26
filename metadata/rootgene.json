@@ -1,6 +1,6 @@
 {
   "version": "v0.3.0",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-10-25",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -743,6 +743,20 @@
       "claimedBy": [
         "magic-sequence"
       ]
+    },
+    "RG.LANGUAGE.CREATION.IMAGINATIVE": {
+      "category": "LANGUAGE",
+      "zh": "想象与创造",
+      "en": "Imagine & Create",
+      "short": {
+        "zh": "创造",
+        "en": "Create"
+      },
+      "descZh": "基于当前语言素材续编、改编、换角色或换视角，用限定元素形成新的表达，再与其他想法比较和反思；没有唯一正确答案。",
+      "descEn": "Continue, adapt, change character or viewpoint, and build a new expression from given elements, then compare and reflect against other ideas; there is no single correct answer.",
+      "boundaryZh": "与 RG.LANGUAGE.EXPRESSION.GUIDED 的界限：引导表达主要训练把已有想法组织清楚；本基因要求在素材基础上产生新的情节、视角或表达方向。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.EXPRESSION.GUIDED: guided expression mainly organises an existing idea clearly; this gene creates a new plot direction, viewpoint, or expression from the source material.",
+      "status": "active"
     }
   }
 }
