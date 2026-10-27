@@ -15,7 +15,8 @@ var LANG_GEN = (function () {
     infer:      'RG.LANGUAGE.INFERENCE.EVIDENCE',
     structure:  'RG.LANGUAGE.STRUCTURE.SEQUENCE',
     choose:     'RG.LANGUAGE.CHOICE.CONTEXT',
-    express:    'RG.LANGUAGE.EXPRESSION.GUIDED'
+    express:    'RG.LANGUAGE.EXPRESSION.GUIDED',
+    create:     'RG.LANGUAGE.CREATION.IMAGINATIVE'
   };
 
   function rngFor(seed) {
@@ -80,7 +81,10 @@ var LANG_GEN = (function () {
       prompt: item.prompt,
       // Hints follow the passage language, not the UI language.
       hintZh: item.hint, hintEn: item.hint,
-      scored: true
+      scored: true,
+      pairId: item.pairId || null,
+      claimItemId: item.claimItemId || null,
+      evidenceFor: item.evidenceFor || null
     };
   }
 
@@ -120,11 +124,12 @@ var LANG_GEN = (function () {
     throw new Error('[LANG_GEN] unknown interaction: ' + item.interaction + ' in ' + p.id + '/' + item.id);
   }
 
-  function buildCcr(p) {
-    var c = p.ccr;
+  function buildCcr(p, ability) {
+    var c = ccrFor(p, ability);
+    var ccrUnit = ability === 'create' ? 'create' : 'express';
     var common = {
       lang: p.lang, passageId: p.id, title: p.title, sentences: p.sentences,
-      unit: 'express', geneId: UNIT_GENE.express, template: 'ending-ccr', level: null,
+      unit: ccrUnit, geneId: UNIT_GENE[ccrUnit], template: 'ending-ccr', level: null,
       anchors: p.anchors.curriculum, scored: false, ccr: c, hintZh: '', hintEn: ''
     };
     var qs = c.slots.map(function (slot, i) {
@@ -191,29 +196,137 @@ var LANG_GEN = (function () {
     throw new Error('[LANG_GEN] unknown scene interaction: ' + item.interaction + ' in ' + scene.id + '/' + item.id);
   }
 
-  function generateScene(lang, grade, seed) {
-    var rnd = rngFor(seed);
-    var pool = scenePoolFor(lang, grade);
-    if (!pool.length) { return []; }
-    var scene = pool[Math.floor(rnd() * pool.length)];
-    var qs = scene.items.map(function (item) { return buildSceneItem(scene, item, rnd); });
-    qs.forEach(function (q, i) { q.seq = i; });
+  function buildSceneCcr(scene, ability) {
+    var c = ccrFor(scene, ability);
+    var localizedCcr = {
+      prompt: scene.lang === 'zh' ? c.promptZh : c.promptEn,
+      template: c.template,
+      otherIdeas: c.otherIdeas.map(function (idea) {
+        return {
+          viewpoint: scene.lang === 'zh' ? idea.viewpointZh : idea.viewpointEn,
+          text: scene.lang === 'zh' ? idea.textZh : idea.textEn
+        };
+      }),
+      reflectPrompt: scene.lang === 'zh' ? c.reflectPromptZh : c.reflectPromptEn
+    };
+    var common = {
+      lang: scene.lang,
+      passageId: scene.id,
+      title: SCENE_TITLE[scene.grade][scene.lang],
+      sentences: [],
+      unit: ability,
+      geneId: UNIT_GENE[ability],
+      template: 'ending-ccr',
+      level: null,
+      scored: false,
+      ccr: localizedCcr,
+      hintZh: '',
+      hintEn: ''
+    };
+    var qs = c.slots.map(function (slot, i) {
+      return Object.assign({}, common, {
+        kind: 'ccr_slot',
+        itemId: 'ccr-' + slot.key,
+        slotKey: slot.key,
+        slotIndex: i,
+        slotName: scene.lang === 'zh' ? slot.nameZh : slot.nameEn,
+        prompt: localizedCcr.prompt,
+        choices: (scene.lang === 'zh' ? slot.optionsZh : slot.optionsEn).map(function (text) {
+          return { text: text };
+        }),
+        options: (scene.lang === 'zh' ? slot.optionsZh : slot.optionsEn).map(function (_, j) { return j; }),
+        answer: null
+      });
+    });
+    qs.push(Object.assign({}, common, {
+      kind: 'ccr_reflect',
+      itemId: 'ccr-reflect',
+      prompt: localizedCcr.reflectPrompt,
+      choices: localizedCcr.otherIdeas.map(function (idea) {
+        return { text: idea.viewpoint };
+      }),
+      options: localizedCcr.otherIdeas.map(function (_, j) { return j; }),
+      answer: null
+    }));
     return qs;
   }
 
-  function generate(lang, grade, seed) {
+  function ccrFor(entry, ability) {
+    if (ability === 'express') { return entry.expressCcr || entry.ccr; }
+    if (ability === 'create') { return entry.createCcr || entry.ccr; }
+    return null;
+  }
+
+  function sceneSupports(scene, ability) {
+    if (ability === 'express' || ability === 'create') { return !!ccrFor(scene, ability); }
+    return scene.items.some(function (item) { return item.unit === ability; });
+  }
+
+  function passageSupports(passage, ability) {
+    if (ability === 'express' || ability === 'create') { return !!ccrFor(passage, ability); }
+    return passage.items.some(function (item) { return item.unit === ability; });
+  }
+
+  function hasContent(lang, grade, ability) {
+    var isScene = grade === 'K1' || grade === 'K2';
+    var pool = isScene ? scenePoolFor(lang, grade) : poolFor(lang, grade);
+    return pool.some(function (entry) {
+      return isScene ? sceneSupports(entry, ability) : passageSupports(entry, ability);
+    });
+  }
+
+  function generateScene(lang, grade, ability, seed) {
     var rnd = rngFor(seed);
-    var pool = poolFor(lang, grade);
+    var pool = scenePoolFor(lang, grade).filter(function (scene) {
+      return sceneSupports(scene, ability);
+    });
+    if (!pool.length) { return []; }
+    var scene = pool[Math.floor(rnd() * pool.length)];
+    var qs;
+    if (ability === 'express' || ability === 'create') {
+      qs = buildSceneCcr(scene, ability);
+    } else {
+      qs = scene.items.filter(function (item) {
+        return item.unit === ability;
+      }).map(function (item) {
+        return buildSceneItem(scene, item, rnd);
+      });
+    }
+    qs.forEach(function (q, i) {
+      q.seq = i;
+      q.primaryAbility = ability;
+    });
+    return qs;
+  }
+
+  function generate(lang, grade, ability, seed) {
+    var rnd = rngFor(seed);
+    var pool = poolFor(lang, grade).filter(function (passage) {
+      return passageSupports(passage, ability);
+    });
     if (!pool.length) { return []; }
     var p = pool[Math.floor(rnd() * pool.length)];
-    var qs = p.items.map(function (item) { return buildItem(p, item, rnd); });
-    if (p.ccr) { qs = qs.concat(buildCcr(p)); }
-    qs.forEach(function (q, i) { q.seq = i; });
+    var qs;
+
+    if (ability === 'express' || ability === 'create') {
+      qs = buildCcr(p, ability);
+    } else {
+      qs = p.items.filter(function (item) {
+        return item.unit === ability;
+      }).map(function (item) {
+        return buildItem(p, item, rnd);
+      });
+    }
+
+    qs.forEach(function (q, i) {
+      q.seq = i;
+      q.primaryAbility = ability;
+    });
     return qs;
   }
 
   return {
     generate: generate, rngFor: rngFor, poolFor: poolFor, UNIT_GENE: UNIT_GENE,
-    generateScene: generateScene, scenePoolFor: scenePoolFor
+    generateScene: generateScene, scenePoolFor: scenePoolFor, hasContent: hasContent
   };
 }());

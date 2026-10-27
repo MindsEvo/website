@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Language & Literacy — Game Config + RADAR CONTRACT (Learning series, G1–G2)
+ * Language & Literacy — Game Config + RADAR CONTRACT (Learning series, K1–G2)
  * Spec: docs/language/LANGUAGE-MODULE-ARCHITECTURE.md
  *
  * Units are language-specific (zh / en pools are authored separately), so
@@ -24,32 +24,31 @@
   var MODULE_TYPE    = 'metathinking';
   var SOURCE_GAME_ID = 'learning-language';
 
-  var UNIT_DEFS = [
-    { id: 'G1-zh', grade: 'G1', lang: 'zh', icon: '🌂',
-      nameZh: 'G1 · 中文阅读', nameEn: 'G1 · Chinese Reading',
-      descZh: '读短小的故事，找线索、找证据、排顺序。', descEn: 'Short Chinese stories: find clues, evidence and order.' },
-    { id: 'G2-zh', grade: 'G2', lang: 'zh', icon: '🐾',
-      nameZh: 'G2 · 中文阅读', nameEn: 'G2 · Chinese Reading',
-      descZh: '更长的故事：整合线索，分清“写的顺序”和“发生的顺序”。', descEn: 'Longer Chinese stories: combine clues, story order vs. real order.' },
-    { id: 'G1-en', grade: 'G1', lang: 'en', icon: '🪁',
-      nameZh: 'G1 · 英文阅读', nameEn: 'G1 · English Reading',
-      descZh: '英文短故事：关键细节、线索推断、故事顺序。', descEn: 'Short stories: key details, clues, and story order.' },
-    { id: 'G2-en', grade: 'G2', lang: 'en', icon: '🥬',
-      nameZh: 'G2 · 英文阅读', nameEn: 'G2 · English Reading',
-      descZh: '英文故事：检验观点、开头-经过-结尾、词语的力量。', descEn: 'Stories: check a claim, beginning-middle-end, word power.' },
-    { id: 'K1-zh', grade: 'K1', lang: 'zh', icon: '🐰', scene: true,
-      nameZh: 'K1 · 看图说话', nameEn: 'K1 · Picture Talk',
-      descZh: '看一看图里的小场景，点一点、猜一猜。', descEn: 'Look at the little scene and tap what you find.' },
-    { id: 'K1-en', grade: 'K1', lang: 'en', icon: '🐶', scene: true,
-      nameZh: 'K1 · 英文看图', nameEn: 'K1 · Picture Talk (EN)',
-      descZh: '英文版：看一看图里的小场景，点一点、猜一猜。', descEn: 'Look at the little scene and tap what you find.' },
-    { id: 'K2-zh', grade: 'K2', lang: 'zh', icon: '🐱', scene: true,
-      nameZh: 'K2 · 看图讲故事', nameEn: 'K2 · Picture Story',
-      descZh: '看图找线索、猜心情，还要把故事排对顺序。', descEn: 'Find clues, guess feelings, and put the story in order.' },
-    { id: 'K2-en', grade: 'K2', lang: 'en', icon: '🪁', scene: true,
-      nameZh: 'K2 · 英文看图讲故事', nameEn: 'K2 · Picture Story (EN)',
-      descZh: '英文版：看图找线索、猜心情，还要把故事排对顺序。', descEn: 'Find clues, guess feelings, and put the story in order.' }
-  ];
+  var ABILITIES = [
+  { id: 'observe', icon: '🔎', nameZh: '观察与描述', nameEn: 'Observe & Describe',
+    descZh: '从当前素材中发现细节并准确描述。', descEn: 'Notice and describe details in the current material.' },
+  { id: 'comprehend', icon: '📖', nameZh: '信息理解', nameEn: 'Understand',
+    descZh: '理解素材明确表达的信息。', descEn: 'Understand information stated in the material.' },
+  { id: 'infer', icon: '🧩', nameZh: '关联与推理', nameEn: 'Connect & Infer',
+    descZh: '结合线索作出有证据的推断。', descEn: 'Connect clues and make evidence-based inferences.' },
+  { id: 'structure', icon: '🧱', nameZh: '顺序与结构', nameEn: 'Sequence & Structure',
+    descZh: '识别事件顺序和语言结构。', descEn: 'Recognize sequence and language structure.' },
+  { id: 'choose', icon: '🎯', nameZh: '语言选择', nameEn: 'Language Choice',
+    descZh: '比较词语和表达在语境中的作用。', descEn: 'Compare how language choices work in context.' },
+  { id: 'express', icon: '💬', nameZh: '表达', nameEn: 'Express',
+    descZh: '基于素材组织并表达自己的想法。', descEn: 'Organize and express an idea from the material.' },
+  { id: 'create', icon: '🌱', nameZh: '想象与创造', nameEn: 'Imagine & Create',
+    descZh: '续编、改编或换视角，再比较和反思。', descEn: 'Continue, adapt, or change viewpoint, then compare and reflect.' }
+];
+
+var GRADE_LEVELS = [
+  { id: 'K1', nameZh: 'K1 · 幼儿', nameEn: 'K1 · Early Years' },
+  { id: 'K2', nameZh: 'K2 · 幼儿园', nameEn: 'K2 · Kindergarten' },
+  { id: 'G1', nameZh: 'G1 · 一年级', nameEn: 'G1 · Grade 1' },
+  { id: 'G2', nameZh: 'G2 · 二年级', nameEn: 'G2 · Grade 2' }
+];
+
+var _scope = null;
 
   var DIFFICULTY = {
     G1: { text_length: 'short', explicitness: 'one-step', evidence_span: 'single', response_type: 'select+evidence+order' },
@@ -65,7 +64,7 @@
       nice: '👍 好想法！', noted: '🌱 记下了！',
       revealTitle: '🌱 原来，同一件事还可以这样想',
       revealBody: '没有分数，也没有唯一的答案。现在，你有没有新的想法？',
-      units: { observe: '观察', comprehend: '理解', infer: '推理', structure: '结构', choose: '语言选择', express: '表达与创造' }
+      units: { observe: '观察', comprehend: '理解', infer: '推理', structure: '结构', choose: '语言选择', express: '表达', create: '创造' }
     },
     en: {
       read: '🔊 Read aloud', check: '✅ Check my order', slotsHint: 'Tap the cards in order. Tap a placed card to send it back.',
@@ -73,7 +72,7 @@
       nice: '👍 Nice idea!', noted: '🌱 Got it!',
       revealTitle: '🌱 The same story can be seen in many ways',
       revealBody: 'No score and no single answer. Do you have a new idea now?',
-      units: { observe: 'Observe', comprehend: 'Understand', infer: 'Infer', structure: 'Structure', choose: 'Word Choice', express: 'Express & Create' }
+      units: { observe: 'Observe', comprehend: 'Understand', infer: 'Infer', structure: 'Structure', choose: 'Word Choice', express: 'Express', create: 'Create' }
     }
   };
 
@@ -81,32 +80,19 @@
     return (values || []).filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; });
   }
 
-  function defFor(unitId) {
-    for (var i = 0; i < UNIT_DEFS.length; i++) { if (UNIT_DEFS[i].id === unitId) { return UNIT_DEFS[i]; } }
-    return null;
-  }
+  function abilityFor(id) {
+  return ABILITIES.filter(function (a) { return a.id === id; })[0] || ABILITIES[0];
+}
 
-  function buildUnits() {
-    return UNIT_DEFS.map(function (d) {
-      return {
-        id: d.id, gradeCode: d.grade, icon: d.icon,
-        nameZh: d.nameZh, nameEn: d.nameEn, descZh: d.descZh, descEn: d.descEn,
-        questions: d.scene ? LANG_GEN.generateScene(d.lang, d.grade) : LANG_GEN.generate(d.lang, d.grade)
-      };
-    });
-  }
+function questionsFor(lang, ability, grade) {
+  return (grade === 'K1' || grade === 'K2')
+    ? LANG_GEN.generateScene(lang, grade, ability)
+    : LANG_GEN.generate(lang, grade, ability);
+}
 
-  var UNITS = buildUnits();
-
-  // Deferred: the shell reads unit.questions in the same pass after getReportContext.
-  function refillUnit(unitId) {
-    setTimeout(function () {
-      var d = defFor(unitId);
-      UNITS.forEach(function (u) {
-        if (d && u.id === unitId) { u.questions = d.scene ? LANG_GEN.generateScene(d.lang, d.grade) : LANG_GEN.generate(d.lang, d.grade); }
-      });
-    }, 0);
-  }
+function hasContent(lang, ability, grade) {
+  return LANG_GEN.hasContent(lang, grade, ability);
+}
 
   // ── Presentation ───────────────────────────────────────────────────────────
 
@@ -114,6 +100,23 @@
     if (document.getElementById('lang-style')) { return; }
     var css = '' +
       '.s1-replay{display:none!important;}' +
+      '#lang-selector[data-content-lang="zh"] .en{display:none!important;}' +
+      '#lang-selector[data-content-lang="zh"] .zh{display:initial!important;}' +
+      '#lang-selector[data-content-lang="en"] .zh{display:none!important;}' +
+      '#lang-selector[data-content-lang="en"] .en{display:initial!important;}' +
+      '.lang-nav-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}' +
+    '.lang-nav-head{display:flex;align-items:center;gap:8px;width:100%;max-width:560px;}' +
+    '.lang-nav-title{flex:1;text-align:center;font-size:20px;font-weight:900;color:#3f6212;}' +
+    '.lang-nav-back,#lang-home-back{border:0;background:none;color:#4d7c0f;font-weight:800;cursor:pointer;padding:6px;}' +
+    '.lang-nav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:560px;}' +
+    '.lang-nav-card{border:2px solid #d9f99d;background:#fff;border-radius:16px;padding:18px 14px;text-align:center;cursor:pointer;transition:transform .15s,border-color .15s;}' +
+    '.lang-nav-card:hover{border-color:#84cc16;transform:translateY(-2px);}' +
+    '.lang-nav-card.locked{opacity:.42;pointer-events:none;}' +
+    '.lang-nav-icon{font-size:34px;line-height:1;margin-bottom:8px;}' +
+    '.lang-nav-name{font-size:17px;font-weight:900;color:#3f6212;}' +
+    '.lang-nav-desc{font-size:12px;color:#64748b;line-height:1.45;margin-top:5px;}' +
+    '.lang-nav-levels{font-size:11px;font-weight:800;color:#65a30d;margin-top:8px;}' +
+    '@media(max-width:560px){.lang-nav-grid{grid-template-columns:1fr;}}' +
       '.s1-seq.lang-seq{display:block;text-align:left;font-size:16px;font-weight:500;letter-spacing:0;padding:14px 16px;min-height:0;background:#fefce8;}' +
       '.lang-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;}' +
       '.lang-title{font-size:17px;font-weight:900;color:#3f6212;}' +
@@ -362,6 +365,8 @@
     if (!_log[q.itemId]) {
       _log[q.itemId] = {
         itemId: q.itemId, unit: q.unit, level: q.level, template: q.template,
+        pairId: q.pairId || null, claimItemId: q.claimItemId || null,
+        evidenceFor: q.evidenceFor || null,
         firstTryCorrect: !!correct, errorType: correct ? null : errorTypeFor(selected, q)
       };
     }
@@ -399,7 +404,12 @@
 
   function summarize(questions) {
     var items = questions.filter(function (q) { return q.scored; }).map(function (q) {
-      return _log[q.itemId] || { itemId: q.itemId, unit: q.unit, level: q.level, template: q.template, firstTryCorrect: null, errorType: null };
+      return _log[q.itemId] || {
+        itemId: q.itemId, unit: q.unit, level: q.level, template: q.template,
+        pairId: q.pairId || null, claimItemId: q.claimItemId || null,
+        evidenceFor: q.evidenceFor || null,
+        firstTryCorrect: null, errorType: null
+      };
     });
     var byUnit = {}, errorTypes = {}, firstTry = 0;
     items.forEach(function (it) {
@@ -408,16 +418,162 @@
       if (it.firstTryCorrect) { u.firstTry++; firstTry++; }
       if (it.errorType) { errorTypes[it.errorType] = (errorTypes[it.errorType] || 0) + 1; }
     });
-    return { items: items, byUnit: byUnit, errorTypes: errorTypes, scoredTotal: items.length, scoredFirstTry: firstTry };
+    var claimEvidence = [];
+    items.forEach(function (claim) {
+      if (!claim.pairId || claim.evidenceFor) { return; }
+      var evidence = items.filter(function (item) {
+        return item.pairId === claim.pairId && item.evidenceFor === claim.itemId;
+      })[0];
+      if (!evidence) { return; }
+      claimEvidence.push({
+        pairId: claim.pairId,
+        claimItemId: claim.itemId,
+        evidenceItemId: evidence.itemId,
+        claimCorrect: claim.firstTryCorrect,
+        evidenceCorrect: evidence.firstTryCorrect,
+        fullyGrounded: claim.firstTryCorrect === true && evidence.firstTryCorrect === true
+      });
+    });
+    return {
+      items: items, byUnit: byUnit, errorTypes: errorTypes,
+      scoredTotal: items.length, scoredFirstTry: firstTry,
+      claimEvidence: claimEvidence
+    };
   }
 
-  shell.createGame({
+  function tearDownShell() {
+  ['.s1-wrap', '#s1-transcript', '#s1-overlay'].forEach(function (selector) {
+    var el = document.querySelector(selector);
+    if (el) { el.remove(); }
+  });
+}
+
+function selectorCard(meta, attrs, disabled, extra) {
+  return '<div class="lang-nav-card' + (disabled ? ' locked' : '') + '" ' + attrs + '>' +
+    '<div class="lang-nav-icon">' + meta.icon + '</div>' +
+    '<div class="lang-nav-name"><span class="zh">' + meta.nameZh + '</span><span class="en">' + meta.nameEn + '</span></div>' +
+    (extra || '') +
+  '</div>';
+}
+
+function selectorWrap(titleZh, titleEn, backId, backZh, backEn, body) {
+  var wrap = document.createElement('div');
+  wrap.id = 'lang-selector';
+  wrap.innerHTML = '<div class="lang-nav-wrap"><div class="lang-nav-head">' +
+    '<button class="lang-nav-back" id="' + backId + '">⬅️ <span class="zh">' + backZh + '</span><span class="en">' + backEn + '</span></button>' +
+    '<div class="lang-nav-title"><span class="zh">' + titleZh + '</span><span class="en">' + titleEn + '</span></div>' +
+    '</div><div class="lang-nav-grid">' + body + '</div></div>';
+  document.body.appendChild(wrap);
+  return wrap;
+}
+
+function showLanguageSelector() {
+  var old = document.getElementById('lang-selector');
+  if (old) { old.remove(); }
+  var languages = [
+    { id: 'zh', icon: '📜', nameZh: '中文', nameEn: '中文' },
+    { id: 'en', icon: '📚', nameZh: 'English', nameEn: 'English' }
+  ];
+  var wrap = selectorWrap(
+    '语文素养 · 选择语言', 'Language & Literacy · Choose Language',
+    'lang-learning-back', '学习中心', 'Learning',
+    languages.map(function (lang) {
+      return selectorCard(lang, 'data-content-lang="' + lang.id + '"', false, '');
+    }).join('')
+  );
+  document.getElementById('lang-learning-back').addEventListener('click', function () {
+    window.location.href = '../index.html';
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-content-lang]');
+    if (!card) { return; }
+    wrap.remove();
+    showAbilitySelector(card.getAttribute('data-content-lang'));
+  });
+}
+
+function showAbilitySelector(lang) {
+  var wrap = selectorWrap(
+    lang === 'zh' ? '中文 · 选择能力' : 'English · 选择能力',
+    (lang === 'zh' ? 'Chinese' : 'English') + ' · Choose Ability',
+    'lang-ability-back', '语言', 'Language',
+    ABILITIES.map(function (ability) {
+      var levels = GRADE_LEVELS.filter(function (grade) {
+        return hasContent(lang, ability.id, grade.id);
+      }).map(function (grade) { return grade.id; });
+      return selectorCard(
+        ability,
+        'data-ability="' + ability.id + '"',
+        !levels.length,
+        '<div class="lang-nav-desc"><span class="zh">' + ability.descZh + '</span><span class="en">' + ability.descEn + '</span></div>' +
+        '<div class="lang-nav-levels">' + levels.join(' · ') + '</div>'
+      );
+    }).join('')
+  );
+  wrap.setAttribute('data-content-lang', lang);
+  document.getElementById('lang-ability-back').addEventListener('click', function () {
+    wrap.remove();
+    showLanguageSelector();
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-ability]:not(.locked)');
+    if (!card) { return; }
+    wrap.remove();
+    showLevelSelector(lang, card.getAttribute('data-ability'));
+  });
+}
+
+function showLevelSelector(lang, ability) {
+  var meta = abilityFor(ability);
+  var body = GRADE_LEVELS.map(function (grade) {
+    var available = hasContent(lang, ability, grade.id);
+    return selectorCard(
+      { icon: grade.id, nameZh: grade.nameZh, nameEn: grade.nameEn },
+      'data-grade="' + grade.id + '"',
+      !available,
+      '<div class="lang-nav-levels"><span class="zh">' +
+        (available ? '进入训练' : '内容待补充') +
+        '</span><span class="en">' +
+        (available ? 'Start' : 'Content pending') +
+        '</span></div>'
+    );
+  }).join('');
+  var wrap = selectorWrap(
+    meta.nameZh + ' · 选择年级', meta.nameEn + ' · Grade',
+    'lang-level-back', '能力', 'Abilities', body
+  );
+  wrap.setAttribute('data-content-lang', lang);
+  document.getElementById('lang-level-back').addEventListener('click', function () {
+    wrap.remove();
+    showAbilitySelector(lang);
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-grade]:not(.locked)');
+    if (!card) { return; }
+    wrap.remove();
+    launchGame(lang, ability, card.getAttribute('data-grade'));
+  });
+}
+
+function launchGame(lang, ability, grade) {
+  // Language & Literacy is different from the rest of MindsEvo: Chinese and
+  // English are independent content domains, not two translations of one UI.
+  // Lock Shell's presentation language to the selected content domain before
+  // createGame renders any bilingual Shell title/unit/chrome fields. The
+  // language toggle is disabled below, so it cannot drift during the session.
+  shell.setLang(lang);
+  var questions = questionsFor(lang, ability, grade);
+  _scope = { lang: lang, ability: ability, grade: grade };
+    shell.createGame({
     id:            SOURCE_GAME_ID,
     parallelUnits: true,
     theme:         { primary: '#4d7c0f', primary2: '#3f6212', bg: '#f7fee7' },
     gui: {
       header: { show: true, showBack: true },
-      language: { enabled: true, default: 'zh' },
+      // Language & Literacy content domains are independent. Once a child
+      // enters Chinese or English, the session is locked to that content
+      // language instead of using Shell's global translation toggle.
+      language: { enabled: false, default: lang },
       audio: {
         music: { enabled: true, defaultOn: false },
         sound: { enabled: true, defaultOn: true }
@@ -429,12 +585,16 @@
         contentEn: 'Read the story first (tap "Read aloud" to listen), then answer. Some questions ask you to find evidence in the story. The last part has no single right answer: share your idea, then see what others thought.'
       }
     },
-    title:    { zh: '📚 语文素养', en: '📚 Language & Literacy' },
-    subtitle: { zh: '观察 · 理解 · 推理 · 结构 · 表达', en: 'Observe · Understand · Infer · Structure · Express' },
-    // G1/G2 sessions always total >6 items, so this resolves to the old constant 8 unchanged;
-    // K1/K2 scene sessions (2-3 items, no CCR) get a relative bar instead.
-    passScore: function (unit, total) { return total <= 6 ? Math.max(1, total - 1) : 8; },
-    units:     UNITS,
+    title:    { zh: abilityFor(ability).icon + ' ' + abilityFor(ability).nameZh + ' · ' + grade, en: abilityFor(ability).icon + ' ' + abilityFor(ability).nameEn + ' · ' + grade },
+    subtitle: { zh: lang === 'zh' ? '中文 · 语文素养' : 'English · 语文素养', en: lang === 'zh' ? 'Chinese · Language & Literacy' : 'English · Language & Literacy' },
+    // Ability-scoped sessions may contain one objective item or an unscored
+    // Create-Compare-Reflect sequence. Require all objective items; an
+    // unscored sequence only needs completion.
+    passScore: function (unit) {
+      var scored = unit.questions.filter(function (q) { return q.scored; }).length;
+      return scored || unit.questions.length;
+    },
+    units:     [{ id: lang + '-' + ability + '-' + grade, gradeCode: grade, icon: abilityFor(ability).icon, nameZh: grade + ' · ' + abilityFor(ability).nameZh, nameEn: grade + ' · ' + abilityFor(ability).nameEn, questions: questions }],
 
     renderSequence: renderSequence,
     renderOption:   renderOption,
@@ -450,7 +610,7 @@
     getReportContext: function (ctx) {
       var unit = (ctx && ctx.unit) || {};
       var qs = unit.questions || [];
-      var d = defFor(unit.id) || {};
+      var d = _scope || {};
       var sum = summarize(qs);
       var extra = {
         moduleId:        MODULE_ID,
@@ -460,14 +620,16 @@
         difficultyAxis:  DIFFICULTY[d.grade] ? Object.assign({}, DIFFICULTY[d.grade]) : null,
         sourceGameId:    SOURCE_GAME_ID,
         contentLang:     d.lang || null,
+        primaryAbility: d.ability || null,
         passageId:       qs.length ? qs[0].passageId : null,
         types:           _unique(qs.map(function (q) { return q.kind; })),
         geneIds:         _unique(qs.map(function (q) { return q.geneId; })),
-        activityRuntime: 'puzzle',
+        activityRuntime: sum.scoredTotal ? 'puzzle' : 'interaction',
         scoredTotal:     sum.scoredTotal,
         scoredFirstTry:  sum.scoredFirstTry,
         byUnit:          sum.byUnit,
         errorTypes:      sum.errorTypes,
+        claimEvidence:   sum.claimEvidence,
         items:           sum.items
       };
       var ccrQ = qs.filter(function (q) { return q.kind === 'ccr_reflect'; })[0];
@@ -480,8 +642,23 @@
           notThoughtOf: _ccr._reflect || null
         };
       }
-      refillUnit(unit.id);
       return extra;
     }
   });
+  var homeHdr = document.querySelector('#s1-home .s1-hdr');
+  if (homeHdr) {
+    var back = document.createElement('button');
+    back.id = 'lang-home-back';
+    back.textContent = '⬅️';
+    back.title = '返回选级 / Back to levels';
+    back.addEventListener('click', function () {
+      tearDownShell();
+      showLevelSelector(lang, ability);
+    });
+    homeHdr.insertBefore(back, homeHdr.firstChild);
+  }
+}
+
+showLanguageSelector();
+
 }());

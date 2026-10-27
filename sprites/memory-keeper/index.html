@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>记忆守护者 Memory Keeper | MindsEvo</title>
+  <title>记忆守护者 Memory Guardian | MindsEvo</title>
   <style>
     :root {
       --blue: #2563eb;
@@ -110,6 +110,11 @@
     }
     .card-icon.fc { background: linear-gradient(135deg, #fde68a, #f59e0b); }
     .card-icon.tg { background: linear-gradient(135deg, #67e8f9, #2dd4bf); }
+    .card-icon.ra { background: linear-gradient(135deg, #c4b5fd, #8b5cf6); }
+    .card-icon.ms { background: linear-gradient(135deg, #ddd6fe, #7c3aed); }
+.card-icon.mp { background: linear-gradient(135deg, #fbcfe8, #a855f7); }
+    .card-icon.wh { background: linear-gradient(135deg, #bfdbfe, #2563eb); }
+    .card-icon.md { background: linear-gradient(135deg, #fde68a, #7c3aed); }
     .card h3 {
       font-size: 18px;
       font-weight: 850;
@@ -157,8 +162,8 @@
   <main class="page">
     <section class="panel">
       <div class="eyebrow"><span class="zh">小精灵系列</span><span class="en">MindSeeds</span></div>
-      <h1><span class="zh">记忆守护者</span><span class="en">Memory Keeper</span></h1>
-      <p><span class="zh">记忆守护者训练的是「看过/见过之后凭记忆回答」，而不是当下持续观察或比较。当前开放两个维度：视觉再认与空间记忆，更多维度将持续加入。</span><span class="en">Memory Keeper trains recall after something is gone, not ongoing observation or comparison. Two dimensions are open now — visual recognition and spatial memory — with more to come.</span></p>
+      <h1><span class="zh">记忆守护者</span><span class="en">Memory Guardian</span></h1>
+      <p><span class="zh">记忆守护者训练的是「看过/见过之后凭记忆回答」，而不是当下持续观察或比较。当前开放视觉再认、空间记忆、顺序记忆与工作记忆加工，更多机制将持续加入。</span><span class="en">Memory Guardian trains recall after something is gone, not ongoing observation or comparison. Visual recognition, spatial memory, sequential memory and working-memory manipulation are open now, with more mechanisms to come.</span></p>
     </section>
 
     <section class="grid">
@@ -170,11 +175,31 @@
         <div class="card-head"><span class="card-icon tg">🗺️</span><h3><span class="zh">宝藏格</span><span class="en">Treasure Grid</span></h3></div>
         <p><span class="zh">宝藏在格子里短暂出现后藏起来，记住编号再作答。K1 到 G2 四个等级：格子从 2×2 到 3×3，宝藏从一处到两处，藏起来后的等待也越来越久。</span><span class="en">A treasure flashes in a grid cell then hides; remember its number. Four grades from K1 to G2: grid grows from 2x2 to 3x3, treasures from one to two, with a longer wait before you can answer.</span></p>
       </a>
+      <a class="card card-link" href="../../games/remember-and-act/index.html" aria-label="Remember and Act">
+        <div class="card-head"><span class="card-icon ra">🎬</span><h3><span class="zh">记住再行动</span><span class="en">Remember &amp; Act</span></h3></div>
+        <p><span class="zh">动作藏起来后再完成。K1 记住一个动作，K2 按顺序重建，G1 反过来做，G2 根据新变化更新原来的动作序列。</span><span class="en">Complete actions after they hide. K1 remembers one action, K2 rebuilds the order, G1 reverses it, and G2 updates the hidden sequence after a change.</span></p>
+      </a>
+      <a class="card card-link" href="../../games/magic-sequence/index.html" aria-label="Magic Sequence">
+        <div class="card-head"><span class="card-icon ms">🪄</span><h3><span class="zh">魔法顺序</span><span class="en">Magic Sequence</span></h3></div>
+        <p><span class="zh">符号一个接一个出现并消失，再按原顺序重建。K1 从两个符号开始，G2 还要完成一次指定替换。</span><span class="en">Symbols appear one at a time and disappear, then rebuild their order. K1 starts with two symbols, while G2 also applies one replacement.</span></p>
+      </a>
+      <a class="card card-link" href="../../games/memory-pairs/index.html" aria-label="Memory Pairs Plus">
+        <div class="card-head"><span class="card-icon mp">🧩</span><h3><span class="zh">记忆配对</span><span class="en">Memory Pairs+</span></h3></div>
+        <p><span class="zh">先观察全部卡片，藏起来后凭位置记忆完成所有配对。K1 从两对开始，G2 还要更新两张交换位置的卡片。</span><span class="en">Preview every card, then complete all matches from location memory after they hide. K1 starts with two pairs, while G2 also updates two swapped positions.</span></p>
+      </a>
+      <a class="card card-link" href="../../games/what-happened/index.html" aria-label="What Happened">
+      <div class="card-head"><span class="card-icon wh">🖼️</span><h3><span class="zh">发生了什么</span><span class="en">What Happened?</span></h3></div>
+      <p><span class="zh">先记住原来的小场景，场景隐藏后会带着一个变化回来。K1 找消失的对象，G2 判断对象移动或替换。</span><span class="en">Remember the original scene, then identify the change when it returns. K1 finds a missing object, while G2 distinguishes movement from replacement.</span></p>
+    </a>
+      <a class="card card-link" href="../../games/memory-detective/index.html" aria-label="Memory Detective">
+      <div class="card-head"><span class="card-icon md">🔎</span><h3><span class="zh">记忆侦探</span><span class="en">Memory Detective</span></h3></div>
+      <p><span class="zh">线索短暂出现后藏起来，保持并合并动物、颜色和随身物品线索，锁定唯一角色。G2 还会更新一条隐藏线索。</span><span class="en">Clues appear briefly and hide. Retain and combine animal, color and accessory clues to identify the unique suspect. G2 also updates one hidden clue.</span></p>
+    </a>
     </section>
 
     <div class="note">
-      <span class="zh">说明：更多记忆维度（如顺序记忆、工作记忆、联想记忆）即将上线。</span>
-      <span class="en">Note: more memory dimensions (sequential, working, associative memory) are coming soon.</span>
+      <span class="zh">说明：对象配对、情境变化与记忆侦探机制已加入，Memory Guardian 第一批与第二批代表机制均已形成可玩的 K1-G2 MVP。</span>
+      <span class="en">Note: Object pairing, contextual change and Memory Detective are now included. The first and second groups of representative Memory Guardian mechanisms now have playable K1-G2 MVPs.</span>
     </div>
   </main>
 

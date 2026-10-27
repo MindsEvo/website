@@ -160,6 +160,35 @@ body {
 }
 .s1-replay:hover { transform: scale(1.12); }
 
+.s1-assistance {
+  display: flex;
+  justify-content: center;
+  margin: -10px 0 18px;
+}
+.s1-show-again {
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 2px solid var(--s1-primary);
+  border-radius: 999px;
+  background: white;
+  color: var(--s1-primary);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+.s1-show-again:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+}
+.s1-show-again:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.s1-show-again.s1-busy {
+  animation: s1-pulse 0.8s ease-in-out infinite;
+}
+
 /* Mystery token (shared by all games) */
 .mystery {
   display: inline-block; background: var(--s1-red); color: white;

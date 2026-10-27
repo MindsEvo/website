@@ -74,27 +74,27 @@ var LP_DATA = {
   units: {
     K1: {
       icon: '🔍',
-      nameZh: 'K1 · 谁更…', nameEn: 'K1 · Who Is More?',
-      descZh: '一条线索，两个小朋友比一比。',
-      descEn: 'One clue, two children to compare.'
+      nameZh: 'K1 · 两人排队', nameEn: 'K1 · Order Two',
+      descZh: '读一条线索，把两个小朋友排成完整顺序。',
+      descEn: 'Read one clue and put both children in order.'
     },
     K2: {
       icon: '🔄',
-      nameZh: 'K2 · 反过来问', nameEn: 'K2 · Ask It Backwards',
-      descZh: '线索说谁更高，问的却是谁更矮。',
-      descEn: 'The clue says who is taller, but the question asks who is shorter.'
+      nameZh: 'K2 · 反向思考', nameEn: 'K2 · Think Backwards',
+      descZh: '理解相反方向，再把两个小朋友排好。',
+      descEn: 'Understand the opposite direction, then order both children.'
     },
     G1: {
       icon: '🔗',
-      nameZh: 'G1 · 两条线索', nameEn: 'G1 · Two Clues',
-      descZh: '把两条线索连起来，找出最…的那个。',
-      descEn: 'Link two clues together and find the most or least.'
+      nameZh: 'G1 · 连成一队', nameEn: 'G1 · Build the Chain',
+      descZh: '连接两条线索，把三个人排成完整顺序。',
+      descEn: 'Link two clues and order all three children.'
     },
     G2: {
       icon: '🧠',
-      nameZh: 'G2 · 排排队', nameEn: 'G2 · Line Them Up',
-      descZh: '三条打乱的线索，排出第二、第三名。',
-      descEn: 'Three shuffled clues — work out who is second or third.'
+      nameZh: 'G2 · 线索排队', nameEn: 'G2 · Clue Line-Up',
+      descZh: '连接三条打乱的线索，把四个人排成完整顺序。',
+      descEn: 'Link three shuffled clues and order all four children.'
     }
   }
 };

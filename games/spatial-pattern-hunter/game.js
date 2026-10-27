@@ -32,10 +32,10 @@
 
   function difficultyAxisFor(gradeCode) {
     var base = {
-      K1: { space_dimension: 'line', motion_rule: 'hop',    path_length: 'short' },
-      K2: { space_dimension: 'grid', motion_rule: 'hop',    path_length: 'medium' },
-      G1: { space_dimension: 'grid', motion_rule: 'stair',  path_length: 'medium' },
-      G2: { space_dimension: 'grid', motion_rule: 'bounce', path_length: 'long' }
+      K1: { space_dimension: 'line', motion_rule: 'hop',    path_length: 'short', transformation: 'single-rotation', grid_reasoning: 'none' },
+      K2: { space_dimension: 'grid', motion_rule: 'hop',    path_length: 'medium', transformation: 'rotation-reflection', grid_reasoning: 'none' },
+      G1: { space_dimension: 'grid', motion_rule: 'stair',  path_length: 'medium', transformation: 'alternating', grid_reasoning: 'introductory' },
+      G2: { space_dimension: 'grid', motion_rule: 'bounce', path_length: 'long', transformation: 'combined', grid_reasoning: 'row-column' }
     }[gradeCode];
     return base ? Object.assign({}, base) : null;
   }
@@ -94,7 +94,17 @@
       '.sp-chips{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-top:6px;}',
       '.sp-chip{font-size:14px;font-weight:900;color:#0c4a6e;background:#e0f2fe;border-radius:8px;padding:2px 8px;}',
       '.sp-chip.x{color:#b91c1c;background:#fee2e2;}',
-      '.sp-opt{font-size:20px;font-weight:900;}'
+      '.sp-opt{font-size:20px;font-weight:900;}',
+      '.sp-pattern{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:14px 0;}',
+      '.sp-glyph{width:58px;height:58px;display:flex;align-items:center;justify-content:center;border:2px solid #bae6fd;border-radius:12px;background:#f0f9ff;font-size:34px;font-weight:900;}',
+      '.sp-glyph.missing{border-style:dashed;color:#64748b;}',
+      '.sp-glyph-choice{cursor:pointer;}',
+      '.sp-glyph-choice.sel{border-color:#4f46e5;box-shadow:0 0 0 3px #c7d2fe;}',
+      '.sp-symbol{display:inline-block;line-height:1;transform-origin:center;}',
+      '.sp-matrix{display:grid;grid-template-columns:repeat(3,58px);gap:8px;justify-content:center;margin:14px 0;}',
+      '.sp-explain{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px;}',
+      '.sp-explain button{border:2px solid #bae6fd;border-radius:10px;background:#fff;padding:7px 10px;font-weight:800;cursor:pointer;}',
+      '.sp-explain button.sel{border-color:#4f46e5;background:#e0e7ff;}'
     ].join('');
     document.head.appendChild(s);
   }());
@@ -134,6 +144,96 @@
       zh = '有一个脚印放错了位置，找出来，点它的数字。'; en = 'One footprint is in the wrong place. Find it and tap its number.';
     }
     return { zh: r.zh + ' 每个数字是第几步到的地方。' + zh, en: r.en + ' Each number is the step that landed there. ' + en };
+  }
+
+
+  function glyphHtml(g) {
+    if (!g) { return '<span class="sp-glyph missing">?</span>'; }
+    var scale = g.reflect ? -1 : 1;
+    return '<span class="sp-symbol" style="transform:rotate(' + (g.turn * 90) + 'deg) scaleX(' + scale + ')">' + g.base.glyph + '</span>';
+  }
+
+  function playSymbolBoard(q, host) {
+    var tries = 0, hints = 0, done = false, selected = null, explanation = null;
+    var explainChoices = q.kind === 'grid'
+      ? [{ id: q.gridRule, zh: '行和列一起决定变化', en: 'Rows and columns determine the change' },
+         { id: 'repeat', zh: '每格完全重复', en: 'Every cell repeats' },
+         { id: 'size', zh: '图形只改变大小', en: 'Only the size changes' }]
+      : [{ id: q.transformRule, zh: '按顺序旋转或镜像', en: 'Rotate or reflect in sequence' },
+         { id: 'move', zh: '图形只移动位置', en: 'The shape only moves' },
+         { id: 'repeat', zh: '所有图形都一样', en: 'All shapes stay the same' }];
+
+    function say(zh, en) {
+      var m = host.querySelector('.pb-msg');
+      if (m) { m.innerHTML = bi(zh, en); applyLang(m); }
+    }
+    function finish(first) {
+      done = true;
+      q.result = {
+        tier: first && hints === 0 ? 'best' : first ? 'better' : tries <= 2 ? 'good' : 'valid',
+        tries: tries, hints: hints,
+        zh: first ? '一次就发现规律了' : '试了 ' + tries + ' 次',
+        en: first ? 'Found the pattern in one go' : 'Took ' + tries + ' tries'
+      };
+      setTimeout(function () { var b = document.querySelector('.s1-opt'); if (b) { b.click(); } }, 700);
+    }
+    function sequenceHtml() {
+      if (q.kind === 'grid') {
+        var h = '<div class="sp-matrix">';
+        q.grid.forEach(function (row) { row.forEach(function (g) { h += '<span class="sp-glyph' + (!g ? ' missing' : '') + '">' + (g ? glyphHtml(g) : '?') + '</span>'; }); });
+        return h + '</div>';
+      }
+      var out = '<div class="sp-pattern">';
+      q.sequence.forEach(function (g) { out += '<span class="sp-glyph">' + glyphHtml(g) + '</span>'; });
+      return out + '<span class="sp-glyph missing">?</span></div>';
+    }
+    function draw(message) {
+      var ask = q.kind === 'grid'
+        ? bi('看每一行和每一列，缺少哪一个图形？', 'Look across each row and column. Which shape is missing?')
+        : bi('图形按规律变化，下一个是什么？', 'The shape changes by a rule. What comes next?');
+      var options = '<div class="sp-pattern">';
+      q.glyphOptions.forEach(function (g, i) {
+        options += '<button class="sp-glyph sp-glyph-choice' + (selected === i ? ' sel' : '') + '" data-i="' + i + '">' + glyphHtml(g) + '</button>';
+      });
+      options += '</div>';
+      var explain = '';
+      if (q.explanationUsed) {
+        explain = '<div class="sp-explain">';
+        explainChoices.forEach(function (x) { explain += '<button data-rule="' + x.id + '" class="' + (explanation === x.id ? 'sel' : '') + '">' + bi(x.zh, x.en) + '</button>'; });
+        explain += '</div>';
+      }
+      host.innerHTML = '<div class="pb-ask">' + ask + '</div>' + sequenceHtml() + options + explain +
+        '<div class="pb-acts"><button class="pb-btn" id="sp-go">' + bi('就是它', 'This is it') + '</button>' +
+        '<button class="pb-btn hint" id="sp-hint">' + bi('提示', 'Hint') + '</button></div><div class="pb-msg">' + (message || '') + '</div>';
+      host.querySelectorAll('.sp-glyph-choice').forEach(function (b) { b.onclick = function () { if (!done) { selected = +b.getAttribute('data-i'); draw(); } }; });
+      host.querySelectorAll('.sp-explain button').forEach(function (b) { b.onclick = function () { if (!done) { explanation = b.getAttribute('data-rule'); draw(); } }; });
+      host.querySelector('#sp-go').onclick = submit;
+      host.querySelector('#sp-hint').onclick = function () {
+        if (done) { return; }
+        hints++;
+        if (hints === 1) { say('先只看图形朝向怎样变化。', 'First, watch how the shape orientation changes.'); }
+        else if (hints === 2) { say(q.kind === 'grid' ? '分别比较同一行，再比较同一列。' : '比较相邻两个图形：旋转了，还是镜像了？',
+          q.kind === 'grid' ? 'Compare one row, then one column.' : 'Compare neighbors: did it rotate or reflect?'); }
+        else { say(q.kind === 'grid' ? '答案必须同时符合最后一行和最后一列。' : '把同一个变化继续做一次。',
+          q.kind === 'grid' ? 'The answer must fit both the last row and last column.' : 'Apply the same next change once more.'); }
+      };
+      applyLang(host);
+    }
+    function submit() {
+      if (done) { return; }
+      if (selected === null) { return say('先选一个图形。', 'Choose a shape first.'); }
+      if (q.explanationUsed && explanation === null) { return say('再选一句最符合的规则说明。', 'Also choose the rule explanation that fits best.'); }
+      tries++;
+      var shapeOK = SP_GEN.glyphKey(q.glyphOptions[selected]) === SP_GEN.glyphKey(q.targetGlyph);
+      var ruleOK = !q.explanationUsed || explanation === (q.kind === 'grid' ? q.gridRule : q.transformRule);
+      if (shapeOK && ruleOK) {
+        draw(); say('正确。这个选择符合完整规律。', 'Correct. This choice fits the complete rule.');
+        return finish(tries === 1);
+      }
+      if (!shapeOK) { say('这个图形会打断变化规律。再比较前后朝向。', 'This shape breaks the transformation. Compare the orientations again.'); }
+      else { say('图形选对了，再看看哪句规则能解释全部变化。', 'The shape is right. Choose the explanation that covers every change.'); }
+    }
+    draw('');
   }
 
   // ── The board ─────────────────────────────────────────────────────────────
@@ -297,7 +397,8 @@
       container.classList.add('pb-seq');
       container.innerHTML = '<div class="pb-scene" id="sp-host"></div>';
       q.result = null;
-      playBoard(q, container.querySelector('#sp-host'));
+      if (q.kind === 'transform' || q.kind === 'grid') { playSymbolBoard(q, container.querySelector('#sp-host')); }
+      else { playBoard(q, container.querySelector('#sp-host')); }
       setTimeout(function () { var b = document.querySelector('.s1-opt'); if (b) { b.style.display = 'none'; } }, 0);
     },
 
@@ -314,6 +415,8 @@
     },
 
     getVoiceText: function (q) {
+      if (q.kind === 'transform') { return shell.lang === 'zh' ? '观察图形方向的变化，选择下一个图形。' : 'Observe how the shape orientation changes and choose the next shape.'; }
+      if (q.kind === 'grid') { return shell.lang === 'zh' ? '比较每一行和每一列，选择缺少的图形。' : 'Compare every row and column and choose the missing shape.'; }
       var t = askText(q);
       return (shell.lang === 'zh' ? t.zh : t.en).replace(/（[^）]*）/g, '').replace(/ \([^)]*\)/g, '');
     },
@@ -322,7 +425,13 @@
 
     getReportContext: function (ctx) {
       var unit = (ctx && ctx.unit) || {}, questions = unit.questions || [];
-      var extra = { rules: _unique(questions.map(function (q) { return q.kind; })), geneIds: GENES.slice(), activityRuntime: 'puzzle' };
+      var extra = {
+        rules: _unique(questions.map(function (q) { return q.kind; })),
+        contentFamilies: _unique(questions.map(function (q) { return q.family; })),
+        taskForms: _unique(questions.map(function (q) { return q.taskForm || q.form; })),
+        explanationUsage: questions.map(function (q) { return !!q.explanationUsed; }),
+        geneIds: GENES.slice(), activityRuntime: 'puzzle'
+      };
       PatternBoard.addProcess(questions, extra);
       refillUnit(unit.id);
       return buildRadarContext(unit.id, extra);

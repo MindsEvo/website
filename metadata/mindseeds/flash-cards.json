@@ -1,41 +1,87 @@
 {
-  "version": "v0.1.0",
-  "updatedAt": "2026-09-27",
+  "version": "v0.2.0",
+  "updatedAt": "2026-10-24",
   "moduleType": "mindseeds",
   "id": "flash-cards",
   "series": "mindseeds",
   "canonicalUrl": "/metadata/mindseeds/flash-cards.json",
-  "title": { "zh": "闪现卡片", "en": "Flash Cards" },
+  "title": {
+    "zh": "闪现卡片",
+    "en": "Flash Cards"
+  },
   "description": {
-    "zh": "一组表情符号卡片短暂闪现后藏起来，孩子从选项里找出刚才看到的那一张。K1-G2 从两张、干扰项来自完全不同类别，逐步过渡到五张、干扰项来自同一类别。训练的是短时间接触后的视觉再认，而不是持续观察。",
-    "en": "A handful of emoji cards flash briefly, then hide; the child picks the one they saw from the options. K1-G2 goes from two cards with distractors from an unrelated category, up to five cards with lookalike distractors from the same category. What it trains is visual recognition after a brief exposure, not ongoing observation."
+    "zh": "卡片短暂展示后藏起，孩子凭记忆完成视觉再认。G1-G2 还混合“谁不见了”题：两类卡片按类别分组展示，原卡组隐藏后再显示少一张的分组，孩子找出消失的卡片。",
+    "en": "Cards appear briefly and then hide for visual recognition from memory. G1-G2 also mix in Who Is Missing items: two category groups are shown, the original set hides, and the grouped display returns with one card removed for the child to identify."
   },
   "designModel": {
-    "zh": "主轴是展示卡数（item_count）与展示时长（exposure_ms），配合选项相似度（option_similarity：跨类别更容易，同类别更容易混淆）。三轴共同决定记忆负荷。",
-    "en": "The primary axes are card count (item_count) and exposure time (exposure_ms), paired with option similarity (option_similarity: cross-category is easier, same-category is more confusable). The three axes together set the memory load."
+    "zh": "K1-K2 聚焦隐藏后的视觉再认。G1-G2 在同一 Flash Cards 家族中混合再认题与分类编码题。分类题明确把卡片分成两类，帮助儿童按组编码；随后从真实展示过的原集合中移除一张，答案只能来自对原卡组的记忆。",
+    "en": "K1-K2 focus on visual recognition after hiding. G1-G2 mix recognition with grouped-encoding items in the same Flash Cards family. Cards are explicitly divided into two categories as an encoding scaffold; one card is then removed from the actually presented set, so the answer must come from memory of that original display."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "observation",
+        "retention",
+        "retrieval"
+      ],
+      "secondary": [
+        "encoding",
+        "reorganization"
+      ],
+      "noteZh": "再认题覆盖观察、短时保持与再认提取；G1-G2 的分类题提供明确的类别组织支架，并要求比较记忆中的原集合与缺失后的集合，从而加入编码和重组。",
+      "noteEn": "Recognition items cover observation, short-term retention and recognition retrieval. G1-G2 grouped items provide an explicit category scaffold and compare the remembered original set with the later incomplete set, adding encoding and reorganization."
+    },
+    "carrier": [
+      "visual"
+    ],
+    "taskMechanism": [
+      "recognition",
+      "grouped_encoding",
+      "missing_item_recall"
+    ],
+    "workingMemory": false
+  },
+  "sharedDifficultyMap": {
+    "information_load": "item_count",
+    "exposure_time": "exposure_ms_runtime",
+    "similarity": "option_similarity",
+    "retention_delay": "none",
+    "interference": "option_similarity",
+    "processing_complexity": "recognition_to_grouped_missing_recall",
+    "organization_support": "natural_category_to_explicit_category_groups",
+    "retrieval_demand": "recognition_and_missing_item_recall"
   },
   "ageRange": {
     "min": 3,
     "max": 8,
-    "noteZh": "K1 两张卡、展示 3 秒适合 3-4 岁；G2 五张卡、同类别干扰、展示 1.6 秒约 7 岁。",
-    "noteEn": "K1's two cards shown for 3s suit ages 3-4; G2's five cards with same-category distractors shown for 1.6s suit about age 7."
+    "noteZh": "K1-K2 使用较少卡片进行视觉再认；G1 加入四张卡片的分类缺失回忆；G2 同时保持两类共六张卡片，并在高相似干扰下找出缺失项。",
+    "noteEn": "K1-K2 use fewer cards for visual recognition; G1 adds grouped missing-item recall with four cards; G2 retains six cards across two categories and identifies the missing item amid high-similarity distractors."
   },
   "seriesBoundary": {
-    "policyZh": "本模块属小精灵系列 · 记忆守护者。训练的是『看过之后凭记忆回答』，卡片消失后才能作答；与 difference-scout（找不同侦探）不同，后者两侧图列全程可见，训练的是当下持续比较，不涉及延迟回忆。",
-    "policyEn": "This module belongs to MindSeeds · Memory Guardian. It trains recall after the cards are gone — answering is only possible once they hide. This differs from difference-scout, whose two strips stay visible throughout; that module trains ongoing comparison, not delayed recall."
+    "policyZh": "本模块训练卡片消失后的视觉记忆。谁不见了题中的原卡组会先真实展示，答案来自保持和提取这组信息，而不是依靠类别常识；与持续可见的找不同任务保持边界。",
+    "policyEn": "This module trains visual memory after cards disappear. In Who Is Missing items, the original set is actually shown and the answer comes from retaining and retrieving that set rather than category knowledge, preserving the boundary from continuously visible difference tasks."
   },
   "geneReporting": {
     "ruleZh": "每次 Attempt 上报 RG.MEMORY.VISUAL.RECOGNITION，不随等级变化。",
     "ruleEn": "Every attempt reports RG.MEMORY.VISUAL.RECOGNITION, regardless of grade.",
-    "geneIds": ["RG.MEMORY.VISUAL.RECOGNITION"]
+    "geneIds": [
+      "RG.MEMORY.VISUAL.RECOGNITION"
+    ]
   },
-  "rootGeneIds": ["RG.MEMORY.VISUAL.RECOGNITION"],
+  "rootGeneIds": [
+    "RG.MEMORY.VISUAL.RECOGNITION"
+  ],
   "difficultyAxes": [
     {
       "id": "item_count",
       "zh": "展示卡数",
       "en": "Item Count",
-      "progression": ["two", "three", "four", "five"],
+      "progression": [
+        "two",
+        "three",
+        "four",
+        "five"
+      ],
       "noteZh": "每次闪现的卡片数量，从两张到五张。",
       "noteEn": "The number of cards that flash at once, from two up to five."
     },
@@ -43,7 +89,12 @@
       "id": "exposure_ms",
       "zh": "展示时长",
       "en": "Exposure Time",
-      "progression": ["long", "medium", "short", "shortest"],
+      "progression": [
+        "long",
+        "medium",
+        "short",
+        "shortest"
+      ],
       "noteZh": "卡片可见的时间：K1 约 3 秒，G2 约 1.6 秒。",
       "noteEn": "How long the cards stay visible: about 3s at K1, about 1.6s at G2."
     },
@@ -51,9 +102,35 @@
       "id": "option_similarity",
       "zh": "选项相似度",
       "en": "Option Similarity",
-      "progression": ["low", "mixed", "high"],
+      "progression": [
+        "low",
+        "mixed",
+        "high"
+      ],
       "noteZh": "low 干扰项来自不同类别（一眼可排除）；mixed 混合来自同类或跨类；high 干扰项全部来自同一类别，需要真的记住细节。",
       "noteEn": "low draws distractors from an unrelated category (easy to rule out at a glance); mixed draws from either; high draws all distractors from the same category, requiring the child to actually recall the specific card."
+    },
+    {
+      "id": "organization_support",
+      "zh": "组织支架",
+      "en": "Organization Support",
+      "progression": [
+        "natural_category",
+        "category_groups"
+      ],
+      "noteZh": "K1-K2 使用单一类别的自然关联；G1-G2 明确分成两个类别组，支持主动按组编码。",
+      "noteEn": "K1-K2 use the natural relation within one category; G1-G2 explicitly separate two category groups to support grouped encoding."
+    },
+    {
+      "id": "missing_recall",
+      "zh": "缺失项回忆",
+      "en": "Missing-item Recall",
+      "progression": [
+        "none",
+        "mixed"
+      ],
+      "noteZh": "K1-K2 只有再认题；G1-G2 每次 8 题中混合 4 道谁不见了题。",
+      "noteEn": "K1-K2 use recognition only; G1-G2 mix four Who Is Missing items into each eight-item session."
     }
   ],
   "sessionPolicy": {
@@ -64,40 +141,124 @@
   },
   "levelMap": [
     {
-      "levelId": "L1", "ageHint": "3-4", "gradeCode": "K1",
-      "objectiveZh": "两张卡片闪现 3 秒，从跨类别的选项里找出看到的那张。",
-      "objectiveEn": "Two cards flash for 3s; find the one you saw among cross-category options.",
-      "axisValues": { "item_count": "two", "exposure_ms": "long", "option_similarity": "low" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "两张卡片展示后藏起，从跨类别选项中找出看过的卡片。",
+      "objectiveEn": "Two cards appear and hide; recognize one among cross-category options.",
+      "axisValues": {
+        "item_count": "two",
+        "exposure_ms": "long",
+        "option_similarity": "low",
+        "organization_support": "natural_category",
+        "missing_recall": "none"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L2", "ageHint": "5", "gradeCode": "K2",
-      "objectiveZh": "三张卡片闪现 2.5 秒，选项仍来自不同类别。",
-      "objectiveEn": "Three cards flash for 2.5s; options still come from an unrelated category.",
-      "axisValues": { "item_count": "three", "exposure_ms": "medium", "option_similarity": "low" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "记住三张卡片，藏起后完成视觉再认。",
+      "objectiveEn": "Remember three cards and recognize one after they hide.",
+      "axisValues": {
+        "item_count": "three",
+        "exposure_ms": "medium",
+        "option_similarity": "low",
+        "organization_support": "natural_category",
+        "missing_recall": "none"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L3", "ageHint": "6", "gradeCode": "G1",
-      "objectiveZh": "四张卡片闪现 2 秒，干扰项可能来自同类别或不同类别。",
-      "objectiveEn": "Four cards flash for 2s; distractors may come from either the same or a different category.",
-      "axisValues": { "item_count": "four", "exposure_ms": "short", "option_similarity": "mixed" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "记住四张卡片，并在部分题目中利用两个类别组找出消失的卡片。",
+      "objectiveEn": "Remember four cards and, in some items, use two category groups to identify the missing card.",
+      "axisValues": {
+        "item_count": "four",
+        "exposure_ms": "short",
+        "option_similarity": "mixed",
+        "organization_support": "category_groups",
+        "missing_recall": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     },
     {
-      "levelId": "L4", "ageHint": "7", "gradeCode": "G2",
-      "objectiveZh": "五张卡片闪现 1.6 秒，干扰项全部来自同一类别，最容易混淆。",
-      "objectiveEn": "Five cards flash for 1.6s; distractors all come from the same category, the most confusable.",
-      "axisValues": { "item_count": "five", "exposure_ms": "shortest", "option_similarity": "high" },
-      "status": "implemented", "implementedBy": ["flash-cards"], "implementedModes": ["puzzle"]
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "同时记住两个类别组共六张卡片，在同类干扰中找出消失项。",
+      "objectiveEn": "Remember six cards across two category groups and identify the missing item amid same-category distractors.",
+      "axisValues": {
+        "item_count": "six",
+        "exposure_ms": "shortest",
+        "option_similarity": "high",
+        "organization_support": "category_groups",
+        "missing_recall": "mixed"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "flash-cards"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
     }
   ],
   "statistics": {
-    "eventKeys": ["session_start", "answer_submit", "hint_open", "session_finish"],
-    "dimensions": ["levelId", "gradeCode", "categories", "difficultyAxis"],
-    "kpis": ["completionRate", "accuracy", "meanTimePerItem"],
-    "noteZh": "optionTypes 区分 seen（看过）、same_category（同类干扰）与 other_category（跨类干扰），能看出错误是猜测还是被相似项混淆。",
-    "noteEn": "optionTypes separate seen, same_category and other_category, showing whether an error was a guess or confusion with a lookalike."
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "categories",
+      "difficultyAxis",
+      "modes",
+      "organizationSupport"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem",
+      "groupedItems",
+      "missingItemsRecovered",
+      "replays"
+    ],
+    "noteZh": "再认题区分 seen、same_category 与 other_category；缺失题区分 missing_card、same_category_unseen 与 other_unseen，并记录分类题、成功找回的缺失项及 Replay。",
+    "noteEn": "Recognition items distinguish seen, same_category and other_category; missing items distinguish missing_card, same_category_unseen and other_unseen, while grouped items, recovered missing items and Replay use are recorded."
   },
-  "tags": ["flash-cards", "mindseeds", "memory", "visual-memory", "ai-readable"]
+  "tags": [
+    "flash-cards",
+    "mindseeds",
+    "memory",
+    "visual-memory",
+    "ai-readable",
+    "grouped-encoding",
+    "missing-item-recall",
+    "who-is-missing"
+  ]
 }

@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "updatedAt": "2026-10-16",
+  "version": "0.3.0",
+  "updatedAt": "2026-10-23",
   "moduleType": "mindseeds",
   "id": "spatial-pattern",
   "series": "mindseeds",
@@ -10,12 +10,12 @@
     "en": "Spatial Pattern"
   },
   "description": {
-    "zh": "一串带编号的脚印按位置规律在格子上移动：K1 是一排荷叶上每次跳一样远；K2 在格子里横着、竖着或斜着走一样的一步；G1 是“楼梯步”，两种走法轮流来；G2 是小球斜着走、碰到边就反弹。孩子点格子完成三种任务：预测下一步（或下两步）落在哪、补出不见了的那个脚印、找出放错位置的脚印。选错不判红叉，展示按所选排出的整串脚印和每一步的走法，对不上的标红，再重试。完成即通过，一次发现规律且没用提示多一个 ⭐，重试和提示次数记入报告。",
-    "en": "A trail of numbered footprints moves across a grid by a positional rule: K1 hops the same distance along a row of lily pads; K2 repeats the same sideways, vertical or diagonal step on a grid; G1 climbs a staircase where two moves take turns; G2 is a ball that moves diagonally and bounces off the edges. The child taps cells for three tasks: predict where the next one or two steps land, fill the missing footprint, or spot the misplaced one. A wrong try is not marked red: the trail that follows from the choice is shown with each step's move, the steps that break the rule outlined, and the child retries. Finishing passes, finding the rule in one go with no hints earns a star, and retries and hints go into the report."
+    "zh": "在保留脚印移动、预测、补全和找错活动的基础上，加入从简单旋转与镜像到交替或组合变换的图形序列，以及需要同时比较行列关系的格子题。G1/G2 用选择式规则说明，不使用自由文本评分；错误后可重试并获得分级提示。",
+    "en": "The existing footprint movement, prediction, fill, and spot activities are extended with shape sequences progressing from simple rotation and reflection to alternating or combined transformations, plus grids requiring row-and-column reasoning. G1/G2 use structured rule choices rather than free-text grading, with retries and staged hints."
   },
   "designModel": {
-    "zh": "主轴是空间维度（space_dimension：一排 / 格子）、运动规则（motion_rule：一样的步 hop / 两种步轮流 stair / 碰边反弹 bounce）和路径长度（path_length）。每道题由穷举验证：预测的后续、补全的格子、识别的错位脚印都恰好只有一个答案。",
-    "en": "The primary axes are space dimension (space_dimension: a line or a grid), motion rule (motion_rule: hop - the same step, stair - two steps in turns, bounce - reflecting off edges) and path length (path_length). Every question is verified by brute force so that the continuation, the missing cell and the misplaced footprint each have exactly one answer."
+    "zh": "难度同时沿空间维度、运动规则、路径长度、图形变换和行列推理递进。移动题继续穷举验证唯一位置；变换和格子题生成互异选项，并验证正确图形只出现一次。",
+    "en": "Difficulty progresses across space dimension, motion rule, path length, transformation, and row-column reasoning. Movement tasks retain exhaustive unique-position checks; transformation and grid tasks generate distinct options and verify that the correct completion appears exactly once."
   },
   "ageRange": {
     "min": 4,
@@ -76,6 +76,31 @@
       ],
       "noteZh": "轨迹上的脚印个数（含需要预测的）。",
       "noteEn": "How many footprints the trail has, including those to predict."
+    },
+    {
+      "id": "transformation",
+      "zh": "图形变换",
+      "en": "Transformation",
+      "progression": [
+        "single-rotation",
+        "rotation-reflection",
+        "alternating",
+        "combined"
+      ],
+      "noteZh": "从单步旋转到区分镜像，再到交替与组合变化。",
+      "noteEn": "From one-step rotation through reflection discrimination to alternating and combined changes."
+    },
+    {
+      "id": "grid_reasoning",
+      "zh": "行列推理",
+      "en": "Grid Reasoning",
+      "progression": [
+        "none",
+        "introductory",
+        "row-column"
+      ],
+      "noteZh": "从无需矩阵，到按列变化，再到同时满足行列关系。",
+      "noteEn": "From no matrix reasoning, to introductory column patterns, to relations that satisfy rows and columns."
     }
   ],
   "sessionPolicy": {
@@ -89,12 +114,14 @@
       "levelId": "K1",
       "ageHint": "4",
       "gradeCode": "K1",
-      "objectiveZh": "一排荷叶上，小青蛙每次跳一样远：下一步落在哪，不见的那一步在哪。",
-      "objectiveEn": "On a row of lily pads the frog hops the same way each time: where it lands next, and which hop is missing.",
+      "objectiveZh": "在荷叶上按相同步移动，并从不对称图形中完成简单单步旋转。",
+      "objectiveEn": "Follow equal hops on lily pads and complete a simple one-step rotation with an asymmetric shape.",
       "axisValues": {
         "space_dimension": "line",
         "motion_rule": "hop",
-        "path_length": "short"
+        "path_length": "short",
+        "transformation": "single-rotation",
+        "grid_reasoning": "none"
       },
       "status": "implemented",
       "implementedBy": [
@@ -108,12 +135,14 @@
       "levelId": "K2",
       "ageHint": "5",
       "gradeCode": "K2",
-      "objectiveZh": "格子里横着、竖着或斜着走一样的一步，补出下一步或不见的脚印。",
-      "objectiveEn": "Sideways, vertical or diagonal, the same step on a grid: predict the next step or fill the missing footprint.",
+      "objectiveZh": "在格子中按相同步移动，并区分简单旋转与镜像。",
+      "objectiveEn": "Follow equal grid moves and distinguish simple rotation from reflection.",
       "axisValues": {
         "space_dimension": "grid",
         "motion_rule": "hop",
-        "path_length": "medium"
+        "path_length": "medium",
+        "transformation": "rotation-reflection",
+        "grid_reasoning": "none"
       },
       "status": "implemented",
       "implementedBy": [
@@ -127,12 +156,14 @@
       "levelId": "G1",
       "ageHint": "6",
       "gradeCode": "G1",
-      "objectiveZh": "楼梯步：两种走法轮流来，预测、补全，还要找出放错的脚印。",
-      "objectiveEn": "Staircase steps: two moves in turns - predict, fill, and spot the misplaced footprint.",
+      "objectiveZh": "保留楼梯步任务，完成交替变换和入门行列格子，并选择规则说明。",
+      "objectiveEn": "Keep staircase tasks, complete alternating transformations and introductory row-column grids, and choose a rule explanation.",
       "axisValues": {
         "space_dimension": "grid",
         "motion_rule": "stair",
-        "path_length": "medium"
+        "path_length": "medium",
+        "transformation": "alternating",
+        "grid_reasoning": "introductory"
       },
       "status": "implemented",
       "implementedBy": [
@@ -146,12 +177,14 @@
       "levelId": "G2",
       "ageHint": "7",
       "gradeCode": "G2",
-      "objectiveZh": "小球斜着走、碰到边就反弹，预测、补全、找出放错的位置。",
-      "objectiveEn": "A ball moves diagonally and bounces off the edges - predict, fill, spot.",
+      "objectiveZh": "保留反弹任务，完成组合变换与行列关系格子，并选择能解释全部变化的规则。",
+      "objectiveEn": "Keep bounce tasks, complete combined transformations and row-column grids, and choose the rule explaining all changes.",
       "axisValues": {
         "space_dimension": "grid",
         "motion_rule": "bounce",
-        "path_length": "long"
+        "path_length": "long",
+        "transformation": "combined",
+        "grid_reasoning": "row-column"
       },
       "status": "implemented",
       "implementedBy": [
@@ -179,8 +212,8 @@
       "accuracy",
       "meanTimePerItem"
     ],
-    "noteZh": "报告 process 带 tiers、retries、hints；rules 记录本轮出现的运动规则（hop / stair / bounce）。",
-    "noteEn": "The report process carries tiers, retries and hints; rules lists the motion rules in the session (hop / stair / bounce)."
+    "noteZh": "报告 process 保留 tiers、retries、hints，并记录本轮 rules、contentFamilies、taskForms 和 explanationUsage。",
+    "noteEn": "The report process retains tiers, retries, and hints, and records rules, contentFamilies, taskForms, and explanationUsage."
   },
   "aiQueryHints": {
     "supportedFilters": [

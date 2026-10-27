@@ -12,7 +12,7 @@
  */
 window.ROOTGENE_REGISTRY = {
   "version": "v0.3.0",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-10-25",
   "canonicalUrl": "/metadata/rootgene.json",
   "title": {
     "zh": "根基因登记表",
@@ -79,6 +79,12 @@ window.ROOTGENE_REGISTRY = {
       "zh": "科学",
       "en": "Science",
       "color": "#0891b2"
+    },
+    {
+      "id": "MEMORY",
+      "zh": "记忆",
+      "en": "Memory",
+      "color": "#9333ea"
     }
   ],
   "genes": {
@@ -227,7 +233,10 @@ window.ROOTGENE_REGISTRY = {
       },
       "descZh": "对数的大小、多少与相对位置形成直觉。",
       "descEn": "Build intuition for magnitude, quantity and relative position of numbers.",
-      "claimedBy": ["clio-egg-catcher-workshop", "clio-ufo-math-workshop"]
+      "claimedBy": [
+        "clio-egg-catcher-workshop",
+        "clio-ufo-math-workshop"
+      ]
     },
     "RG.MATH.NUMBER_SENSE.QUANTITY": {
       "category": "MATH",
@@ -277,7 +286,44 @@ window.ROOTGENE_REGISTRY = {
         "en": "Decide"
       },
       "descZh": "在多个可行方案中权衡取舍，并安排先后步骤。",
-      "descEn": "Weigh several workable options and order the steps between them."
+      "descEn": "Weigh several workable options and order the steps between them.",
+      "claimedBy": [
+        "route-choice",
+        "rule-change"
+      ]
+    },
+    "RG.STRATEGY.RESOURCE.TRADEOFF": {
+      "category": "STRATEGY",
+      "zh": "资源权衡",
+      "en": "Resource Trade-off",
+      "short": {
+        "zh": "权衡",
+        "en": "Trade-off"
+      },
+      "descZh": "在固定的资源上限下，从多个方案中选出符合约束、或收益最高的那一个。",
+      "descEn": "Under a fixed resource limit, pick the option among several that satisfies the constraint, or the one with the highest payoff.",
+      "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划是通用的「权衡+排序」，训练在多个方案间取舍并安排先后步骤；本基因特指在一个固定的数值上限（如预算）之下，判断哪些方案可行、哪个可行方案收益最高，核心是资源约束下的取舍计算，不涉及步骤先后顺序。",
+      "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning is the general skill of weighing options and ordering steps; this gene specifically trains judging which options fit under a fixed numeric limit (like a budget) and which feasible option pays off the most — the core skill is constrained trade-off arithmetic, not step ordering.",
+      "claimedBy": [
+        "energy-planner",
+        "backpack"
+      ]
+    },
+    "RG.STRATEGY.PREDICT.CONSEQUENCE": {
+      "category": "STRATEGY",
+      "zh": "后果预测",
+      "en": "Predict Consequence",
+      "short": {
+        "zh": "预测",
+        "en": "Predict"
+      },
+      "descZh": "依据给定的「动作→效果」规则预测会发生什么，或反过来推出要达成某个效果该采取哪个动作。",
+      "descEn": "Apply a given action-to-effect rule to predict what happens next, or work backwards from a wanted effect to the action that causes it.",
+      "boundaryZh": "与 RG.STRATEGY.DECISION.PLANNING 的界限：决策规划训练在多个可行方案间取舍并排序；本基因训练的是应用一条已给定的因果规则去正向预测结果或反向推出动作，不涉及在多个方案之间比较取舍，核心是规则的正向/反向应用与多步因果链的顺推。",
+      "boundaryEn": "Boundary with RG.STRATEGY.DECISION.PLANNING: decision planning trains weighing and ordering among multiple workable options; this gene trains applying one given causal rule forward to predict an effect, or backward to find the action that causes a wanted effect, and chaining that rule across multiple hops — it does not involve comparing multiple options against each other.",
+      "claimedBy": [
+        "whats-next"
+      ]
     },
     "RG.MODELING.EQUATION.RELATION": {
       "category": "MODELING",
@@ -340,7 +386,9 @@ window.ROOTGENE_REGISTRY = {
       "descZh": "按一条或多条属性把对象归入正确的组别。",
       "descEn": "Put objects into the right group by one or more attributes.",
       "status": "planned",
-      "claimedBy": ["clio-sorting-workshop"]
+      "claimedBy": [
+        "clio-sorting-workshop"
+      ]
     },
     "RG.ATTENTION.SEARCH.VISUAL": {
       "category": "ATTENTION",
@@ -354,7 +402,10 @@ window.ROOTGENE_REGISTRY = {
       "descEn": "Keep locating and confirming targets among distractors, even when the count is unknown.",
       "boundaryZh": "两个认领者分工不同，不是重复建设：find-it 在开放场景里找若干个目标（数量未知），difference-scout 在成对条带里找恰好一个（位置未知）。",
       "boundaryEn": "The two claimants split the work rather than duplicating it: find-it searches an open scene for an unknown number of targets, while difference-scout searches paired strips for exactly one, at an unknown position.",
-      "claimedBy": ["difference-scout", "clio-find-it-workshop"]
+      "claimedBy": [
+        "difference-scout",
+        "clio-find-it-workshop"
+      ]
     },
     "RG.LANGUAGE.SEMANTIC.RELATION": {
       "category": "LANGUAGE",
@@ -367,7 +418,9 @@ window.ROOTGENE_REGISTRY = {
       "descZh": "判断词与词之间的相同、同义与反义关系。",
       "descEn": "Judge sameness, synonymy and antonymy between words.",
       "status": "planned",
-      "claimedBy": ["clio-word-connections-workshop"]
+      "claimedBy": [
+        "clio-word-connections-workshop"
+      ]
     },
     "RG.LANGUAGE.OBSERVATION.DESCRIBE": {
       "category": "LANGUAGE",
@@ -525,6 +578,197 @@ window.ROOTGENE_REGISTRY = {
       "descEn": "Construct a causal account that connects evidence to a conclusion (why something happened), revisable when new evidence appears.",
       "boundaryZh": "与 RG.LANGUAGE.SEMANTIC.RELATION 的界限：语言/词义基因关心的是词义本身的机制与词与词之间的关系；本基因关心的是连接证据与结论的因果链条是否成立，语言只是承载因果说明的载体，不是被训练的对象。",
       "boundaryEn": "Boundary with RG.LANGUAGE.SEMANTIC.RELATION: language/semantic genes are about the mechanics of word meaning and relations between words; this gene is about whether the causal chain linking evidence to a conclusion actually holds together — language is only the carrier of the explanation, not what is being trained."
+    },
+    "RG.MEMORY.VISUAL.RECOGNITION": {
+      "category": "MEMORY",
+      "zh": "视觉再认",
+      "en": "Visual Recognition",
+      "short": {
+        "zh": "再认",
+        "en": "Recognize"
+      },
+      "descZh": "短暂看过一组图形后，在它们消失后从选项里认出刚才见过的那一个。",
+      "descEn": "After a brief look at a set of images, recognize the one just seen from a list of options once it is gone.",
+      "boundaryZh": "与 RG.ATTENTION.SEARCH.VISUAL 的界限：视觉搜索是在目标始终可见的场景里持续寻找并确认；本基因作答时目标已经消失，考验的是看过之后的记忆再认，不是当下的搜索。",
+      "boundaryEn": "Boundary with RG.ATTENTION.SEARCH.VISUAL: visual search keeps locating and confirming a target that stays visible throughout; this gene answers after the target is gone, testing recognition from memory rather than ongoing search.",
+      "claimedBy": [
+        "flash-cards",
+        "memory-pairs",
+        "what-happened",
+        "memory-detective"
+      ]
+    },
+    "RG.MEMORY.SPATIAL.BASIC": {
+      "category": "MEMORY",
+      "zh": "空间记忆",
+      "en": "Spatial Memory",
+      "short": {
+        "zh": "空间记忆",
+        "en": "Spatial"
+      },
+      "descZh": "记住一个位置在短暂出现又藏起来之后，凭记忆而非当下所见指出它的位置。",
+      "descEn": "Hold onto a location after it briefly appears and hides, then point to it from memory rather than from what is currently visible.",
+      "boundaryZh": "与 RG.SCIENCE 或 pattern 系基因的界限：本基因作答时位置标记已经消失，且可能还要再等一段延迟，考验的是延迟后的空间位置保持，不是当下可见图形之间的比较或推理。",
+      "boundaryEn": "Boundary with the pattern-family genes: this gene answers after the position marker is gone, sometimes after an added delay, testing retention of a location across time rather than comparison or reasoning over figures that remain visible.",
+      "claimedBy": [
+        "treasure-grid",
+        "memory-pairs",
+        "what-happened"
+      ]
+    },
+    "RG.MATH.NUMBER_SENSE.REPRESENTATION": {
+      "category": "MATH",
+      "zh": "数的表示",
+      "en": "Number Representation",
+      "short": {
+        "zh": "表示",
+        "en": "Represent"
+      },
+      "descZh": "认出同一个数量的不同表示：数字、点、手指、骰子、两堆拼成、十格阵、几个十几个一。",
+      "descEn": "Recognise one quantity in different faces: numeral, dots, fingers, dice, two groups, ten-frame, tens and ones.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数的表示本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains number representation itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.ORDER": {
+      "category": "MATH",
+      "zh": "数序与距离",
+      "en": "Number Order & Distance",
+      "short": {
+        "zh": "数序",
+        "en": "Order"
+      },
+      "descZh": "在心理数轴上定位数：缺哪个、离谁更近、落在哪个整十附近。",
+      "descEn": "Place numbers on a mental number line: which is missing, which is closer, which ten is nearby.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数序与距离本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains number order & distance itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.ESTIMATION": {
+      "category": "MATH",
+      "zh": "估计",
+      "en": "Estimation",
+      "short": {
+        "zh": "估计",
+        "en": "Estimate"
+      },
+      "descZh": "不精确计数，凭数量级判断大约是多少，并判断一个答案是否合理。",
+      "descEn": "Judge roughly how many without exact counting, and judge whether an answer is reasonable.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是估计本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains estimation itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.OPERATION": {
+      "category": "MATH",
+      "zh": "运算直觉",
+      "en": "Operational Sense",
+      "short": {
+        "zh": "运算直觉",
+        "en": "Operate"
+      },
+      "descZh": "感知加入、拿走会让数量怎样变化，并判断结果是否合理，而不是做精确计算。",
+      "descEn": "Sense how adding or taking away changes a quantity, and judge whether a result is reasonable — not exact calculation.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是运算直觉本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains operational sense itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MATH.NUMBER_SENSE.MAGNITUDE": {
+      "category": "MATH",
+      "zh": "数量级与尺度",
+      "en": "Magnitude & Scale",
+      "short": {
+        "zh": "数量级",
+        "en": "Scale"
+      },
+      "descZh": "感受 1、10、100 之间差多少，几倍大，十个十是一百。",
+      "descEn": "Feel how far 1, 10 and 100 are apart, how many times bigger, and that ten tens make a hundred.",
+      "boundaryZh": "与 RG.MATH.NUMBER_SENSE.QUANTITY / RG.LOGIC.COMPARISON.BASIC 的界限：本基因训练的是数量级与尺度本身，不是比较判断，也不是精确计算。",
+      "boundaryEn": "Boundary with RG.MATH.NUMBER_SENSE.QUANTITY and RG.LOGIC.COMPARISON.BASIC: this gene trains magnitude & scale itself — not the act of comparing, and not exact calculation."
+    },
+    "RG.MODELING.RELATIONSHIP.BASIC": {
+      "category": "MODELING",
+      "zh": "关系模型",
+      "en": "Relationship Modeling",
+      "short": {
+        "zh": "关系",
+        "en": "Relate"
+      },
+      "descZh": "不只看对象本身，而是把对象之间的关系（谁在谁旁边、谁和谁相连）表示出来并读出来。",
+      "descEn": "Represent and read the relations between objects (who is next to whom, who is linked to whom), not just the objects themselves.",
+      "boundaryZh": "与 RG.COMPARISON 系列的界限：比较训练两个量之间的大小或异同判断；本基因训练把多个对象之间的关系整理成一个结构（顺序、连线）再从中读信息。",
+      "boundaryEn": "Boundary with the comparison genes: those judge size or difference between two quantities; this gene organises relations among several objects into a structure (an order, links) and reads information off it."
+    },
+    "RG.MODELING.PROCESS.SEQUENCE": {
+      "category": "MODELING",
+      "zh": "过程模型",
+      "en": "Process Modeling",
+      "short": {
+        "zh": "过程",
+        "en": "Process"
+      },
+      "descZh": "把一个随时间发生的变化过程表示成一串步骤，并能补缺失的步骤、找放错的步骤。",
+      "descEn": "Represent a change over time as a chain of steps, fill a missing step, and spot a misplaced one.",
+      "boundaryZh": "与 RG.PATTERN.SEQUENCE.BASIC 的界限：规律基因训练「重复或递变的下一个是什么」；本基因训练「这个过程应该怎样表示成步骤」，顺序来自事情本身而不是重复结构。",
+      "boundaryEn": "Boundary with RG.PATTERN.SEQUENCE.BASIC: pattern genes train what comes next in a repeating or changing run; this gene trains how a process should be written as steps, where the order comes from the event itself, not a repeating structure."
+    },
+    "RG.MODELING.RULE.SYSTEM": {
+      "category": "MODELING",
+      "zh": "规则模型",
+      "en": "Rule Modeling",
+      "short": {
+        "zh": "规则",
+        "en": "Rule"
+      },
+      "descZh": "用几条简单规则描述一个小世界，并用它判断哪些可以通过、怎样才能走到目标。",
+      "descEn": "Describe a small world with a few simple rules and use them to decide what may pass and how to reach a goal.",
+      "boundaryZh": "与 RG.LOGIC 系列的界限：逻辑基因训练在已有前提中做可靠推理；本基因训练把一个系统的规矩本身建成模型并运用，是后面推理与策略的底座。",
+      "boundaryEn": "Boundary with the RG.LOGIC genes: those train reliable reasoning from given premises; this gene trains building and applying a model of a system's rules, the base that later reasoning and strategy stand on."
+    },
+    "RG.MEMORY.WORKING.MANIPULATION": {
+      "category": "MEMORY",
+      "zh": "工作记忆加工",
+      "en": "Working Memory Manipulation",
+      "short": {
+        "zh": "保持加工",
+        "en": "Hold & work"
+      },
+      "descZh": "在信息已经不可见时继续保持它，同时执行顺序重建、反向、替换或规则应用。",
+      "descEn": "Keep information active after it is no longer visible while reconstructing, reversing, replacing or applying a rule.",
+      "boundaryZh": "与视觉再认和空间记忆的界限：单纯认出看过的对象或指出隐藏位置只要求保持与提取；本基因要求保持信息的同时对它进行加工。与策略基因的界限：这里的主要困难是维持并变换不可见信息，不是在多个可行方案间权衡。",
+      "boundaryEn": "Boundary with visual recognition and spatial memory: recognizing a seen item or locating a hidden position only requires retention and retrieval; this gene additionally manipulates retained information. Boundary with strategy genes: the main demand is maintaining and transforming information that is no longer visible, not weighing multiple viable plans.",
+      "claimedBy": [
+        "remember-and-act",
+        "memory-pairs",
+        "what-happened",
+        "memory-detective",
+        "treasure-grid"
+      ]
+    },
+    "RG.MEMORY.SEQUENTIAL.RECALL": {
+      "category": "MEMORY",
+      "zh": "顺序记忆",
+      "en": "Sequential Recall",
+      "short": {
+        "zh": "顺序记忆",
+        "en": "Sequence"
+      },
+      "descZh": "在一串信息逐项出现并消失后，保持每一项及其先后位置，再按原顺序重建。",
+      "descEn": "After items appear one by one and disappear, retain both the items and their positions, then reconstruct the original order.",
+      "boundaryZh": "与规律序列的界限：本基因重建的是刚才实际展示过的顺序，不需要发现或预测重复规律。与工作记忆加工的界限：基础任务只要求保持并重建顺序；发生替换或规则转换时才同时涉及加工。",
+      "boundaryEn": "Boundary with pattern sequences: this gene reconstructs the order that was actually presented and does not require discovering or predicting a repeating rule. Basic tasks retain and rebuild order; replacement or rule transformation additionally involves manipulation.",
+      "claimedBy": [
+        "magic-sequence"
+      ]
+    },
+    "RG.LANGUAGE.CREATION.IMAGINATIVE": {
+      "category": "LANGUAGE",
+      "zh": "想象与创造",
+      "en": "Imagine & Create",
+      "short": {
+        "zh": "创造",
+        "en": "Create"
+      },
+      "descZh": "基于当前语言素材续编、改编、换角色或换视角，用限定元素形成新的表达，再与其他想法比较和反思；没有唯一正确答案。",
+      "descEn": "Continue, adapt, change character or viewpoint, and build a new expression from given elements, then compare and reflect against other ideas; there is no single correct answer.",
+      "boundaryZh": "与 RG.LANGUAGE.EXPRESSION.GUIDED 的界限：引导表达主要训练把已有想法组织清楚；本基因要求在素材基础上产生新的情节、视角或表达方向。",
+      "boundaryEn": "Boundary with RG.LANGUAGE.EXPRESSION.GUIDED: guided expression mainly organises an existing idea clearly; this gene creates a new plot direction, viewpoint, or expression from the source material.",
+      "status": "active"
     }
   }
 };

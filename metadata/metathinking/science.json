@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.0-scaffold",
-  "updatedAt": "2026-09-17",
+  "version": "v0.2.0",
+  "updatedAt": "2026-10-25",
   "moduleType": "metathinking",
   "id": "science",
   "canonicalUrl": "/metadata/metathinking/science.json",
@@ -9,14 +9,14 @@
     "en": "Science"
   },
   "description": {
-    "zh": "科学是一种通过观察、提问、预测、实验、证据与解释，对自然现象形成可检验理解的元思维操作。",
-    "en": "Science is a meta-thinking operation that builds testable understanding of natural phenomena through observation, questioning, prediction, experimentation, evidence, and explanation."
+    "zh": "科学探索以真实世界的现象、变化、关系和问题为载体，训练观察、提问、预测、实验、证据与解释。科学知识是载体，科学思维才是目标。",
+    "en": "Science Exploration uses real-world phenomena, changes, relationships, and questions to train observation, questioning, prediction, experimentation, evidence, and explanation. Scientific knowledge is the medium; scientific thinking is the goal."
   },
   "ageRange": {
     "min": 3,
     "max": 7,
-    "noteZh": "覆盖 K1-G2（3-7岁）四个年级，验证 Puzzle 与 Explore 两条内容管线。",
-    "noteEn": "Covers grades K1-G2 (age 3-7) to validate the Puzzle and Explore content pipelines."
+    "noteZh": "覆盖 K1-G2（3-7岁）四个年级，已建立 Puzzle、Activity 与 Exploration 三种 Runtime 的 Science MVP。",
+    "noteEn": "Covers grades K1-G2 (ages 3-7) with a Science MVP spanning Puzzle, Activity, and Exploration runtimes."
   },
   "educationReference": {
     "scope": "global-k12-foundation",
@@ -36,31 +36,89 @@
       "id": "object_complexity",
       "zh": "对象复杂度",
       "en": "Object Complexity",
-      "progression": ["concrete", "symbolic", "abstract"]
+      "progression": [
+        "concrete",
+        "represented",
+        "symbolic",
+        "abstract"
+      ]
     },
     {
       "id": "variable_complexity",
       "zh": "变量复杂度",
       "en": "Variable Complexity",
-      "progression": ["single", "dual", "multi"]
+      "progression": [
+        "single_observed",
+        "single_changed",
+        "controlled_single",
+        "interacting_variables"
+      ]
     },
     {
       "id": "inference_complexity",
       "zh": "推理复杂度",
       "en": "Inference Complexity",
-      "progression": ["direct", "indirect", "chain", "constrained"]
+      "progression": [
+        "direct",
+        "relational",
+        "causal",
+        "model_based"
+      ]
     },
     {
       "id": "language_complexity",
       "zh": "语言复杂度",
       "en": "Language Complexity",
-      "progression": ["action", "question", "compound", "explain"]
+      "progression": [
+        "action",
+        "description",
+        "question",
+        "claim_evidence_reason"
+      ]
     },
     {
       "id": "transfer_complexity",
       "zh": "迁移复杂度",
       "en": "Transfer Complexity",
-      "progression": ["within-domain", "cross-domain", "strategy", "evidence"]
+      "progression": [
+        "within_context",
+        "new_variant",
+        "cross_context",
+        "model_transfer"
+      ]
+    },
+    {
+      "id": "evidence_complexity",
+      "zh": "证据复杂度",
+      "en": "Evidence Complexity",
+      "progression": [
+        "single_result",
+        "repeated_results",
+        "mixed_results",
+        "conflicting_evidence"
+      ]
+    },
+    {
+      "id": "control_complexity",
+      "zh": "变量控制复杂度",
+      "en": "Control Complexity",
+      "progression": [
+        "none",
+        "identify_changed_variable",
+        "hold_conditions_constant",
+        "design_fair_test"
+      ]
+    },
+    {
+      "id": "revision_demand",
+      "zh": "认知修正要求",
+      "en": "Revision Demand",
+      "progression": [
+        "none",
+        "compare_prediction",
+        "revise_claim",
+        "compare_models"
+      ]
     }
   ],
   "typeTree": [
@@ -79,7 +137,9 @@
         ],
         "lessonIds": [],
         "videoIds": []
-      }
+      },
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "matter",
@@ -95,12 +155,14 @@
         ],
         "lessonIds": [],
         "videoIds": []
-      }
+      },
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "motion",
-      "nameZh": "运动",
-      "nameEn": "Motion",
+      "nameZh": "运动与力",
+      "nameEn": "Motion & Force",
       "status": "partial",
       "examples": [
         "speed and distance comparison",
@@ -112,7 +174,9 @@
         ],
         "lessonIds": [],
         "videoIds": []
-      }
+      },
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "energy",
@@ -129,7 +193,9 @@
         ],
         "lessonIds": [],
         "videoIds": []
-      }
+      },
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "earth",
@@ -146,27 +212,33 @@
         ],
         "lessonIds": [],
         "videoIds": []
-      }
+      },
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "space",
-      "nameZh": "太空",
+      "nameZh": "宇宙",
       "nameEn": "Space",
       "status": "planned",
       "examples": [
         "day/night cycle",
         "sun/moon/star observation"
-      ]
+      ],
+      "role": "context",
+      "architectureLevel": "content_carrier"
     },
     {
       "id": "engineering",
-      "nameZh": "工程",
+      "nameZh": "工程与设计",
       "nameEn": "Engineering",
       "status": "planned",
       "examples": [
         "simple structure testing",
         "design-build-test iteration"
-      ]
+      ],
+      "role": "context",
+      "architectureLevel": "content_carrier"
     }
   ],
   "levelMap": [
@@ -176,11 +248,28 @@
       "gradeCode": "K1",
       "objectiveZh": "留意（Notice）：在单一变量下对熟悉物品的浮沉进行预测、测试与初步解释。",
       "objectiveEn": "Notice: predict, test, and give an early explanation for float/sink outcomes of familiar objects under a single variable.",
-      "primaryTypes": ["matter"],
+      "primaryTypes": [
+        "matter"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-science"],
-      "implementedModes": ["puzzle", "explore"],
-      "sourceLevels": ["K1"]
+      "implementedBy": [
+        "learning-science"
+      ],
+      "implementedModes": [
+        "puzzle",
+        "explore"
+      ],
+      "sourceLevels": [
+        "K1"
+      ],
+      "growthFocus": {
+        "zh": "看见",
+        "en": "Notice"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "K2",
@@ -188,11 +277,28 @@
       "gradeCode": "K2",
       "objectiveZh": "描述（Describe）：用完整的语言描述观察到的现象特征，而不只是指出结果。",
       "objectiveEn": "Describe: put observed phenomena into words, beyond just naming the outcome.",
-      "primaryTypes": ["matter", "life"],
+      "primaryTypes": [
+        "matter",
+        "life"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-science"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["K2"]
+      "implementedBy": [
+        "learning-science"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "K2"
+      ],
+      "growthFocus": {
+        "zh": "描述",
+        "en": "Describe"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G1",
@@ -200,11 +306,28 @@
       "gradeCode": "G1",
       "objectiveZh": "预测（Predict）：基于已观察到的规律，对新情境做出有依据的预测。",
       "objectiveEn": "Predict: use an observed pattern to make a grounded prediction about a new situation.",
-      "primaryTypes": ["motion", "life"],
+      "primaryTypes": [
+        "motion",
+        "life"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-science"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["G1"]
+      "implementedBy": [
+        "learning-science"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "G1"
+      ],
+      "growthFocus": {
+        "zh": "猜想",
+        "en": "Predict"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G2",
@@ -212,11 +335,28 @@
       "gradeCode": "G2",
       "objectiveZh": "提问（Question）：把好奇心转化为一个可检验的具体问题。",
       "objectiveEn": "Question: turn curiosity into a specific, testable question.",
-      "primaryTypes": ["earth", "energy"],
+      "primaryTypes": [
+        "earth",
+        "energy"
+      ],
       "status": "implemented",
-      "implementedBy": ["learning-science"],
-      "implementedModes": ["puzzle"],
-      "sourceLevels": ["G2"]
+      "implementedBy": [
+        "learning-science"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ],
+      "sourceLevels": [
+        "G2"
+      ],
+      "growthFocus": {
+        "zh": "联系",
+        "en": "Relate"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G3",
@@ -224,11 +364,24 @@
       "gradeCode": "G3",
       "objectiveZh": "实验（Experiment）：设计控制单一变量的简单实验来检验假设。",
       "objectiveEn": "Experiment: design a simple single-variable-controlled test to check a hypothesis.",
-      "primaryTypes": ["energy", "engineering"],
+      "primaryTypes": [
+        "energy",
+        "engineering"
+      ],
       "status": "planned",
       "implementedBy": [],
       "implementedModes": [],
-      "sourceLevels": ["G3"]
+      "sourceLevels": [
+        "G3"
+      ],
+      "growthFocus": {
+        "zh": "验证",
+        "en": "Test"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G4",
@@ -236,11 +389,24 @@
       "gradeCode": "G4",
       "objectiveZh": "证据（Evidence）：判断一份证据是否足以支持某个结论。",
       "objectiveEn": "Evidence: judge whether a given piece of evidence is sufficient to support a conclusion.",
-      "primaryTypes": ["space", "earth"],
+      "primaryTypes": [
+        "space",
+        "earth"
+      ],
       "status": "planned",
       "implementedBy": [],
       "implementedModes": [],
-      "sourceLevels": ["G4"]
+      "sourceLevels": [
+        "G4"
+      ],
+      "growthFocus": {
+        "zh": "证据",
+        "en": "Evidence"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G5",
@@ -248,11 +414,24 @@
       "gradeCode": "G5",
       "objectiveZh": "解释（Explain）：把观察、证据与规律串成一条完整的因果解释。",
       "objectiveEn": "Explain: connect observations, evidence, and patterns into a complete causal explanation.",
-      "primaryTypes": ["engineering", "motion"],
+      "primaryTypes": [
+        "engineering",
+        "motion"
+      ],
       "status": "planned",
       "implementedBy": [],
       "implementedModes": [],
-      "sourceLevels": ["G5"]
+      "sourceLevels": [
+        "G5"
+      ],
+      "growthFocus": {
+        "zh": "解释",
+        "en": "Explain"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     },
     {
       "levelId": "G6",
@@ -260,11 +439,25 @@
       "gradeCode": "G6",
       "objectiveZh": "修正（Revise）：在新证据出现时修正原有解释，而不是固守初始答案。",
       "objectiveEn": "Revise: update an existing explanation when new evidence appears, instead of defending the first answer.",
-      "primaryTypes": ["life", "space", "engineering"],
+      "primaryTypes": [
+        "life",
+        "space",
+        "engineering"
+      ],
       "status": "planned",
       "implementedBy": [],
       "implementedModes": [],
-      "sourceLevels": ["G6"]
+      "sourceLevels": [
+        "G6"
+      ],
+      "growthFocus": {
+        "zh": "修正",
+        "en": "Revise"
+      },
+      "capabilityPolicy": {
+        "zh": "这是该等级的成长重点，不表示其他科学元思维在本等级不可出现。",
+        "en": "This is the grade's growth emphasis; it does not exclude other scientific-thinking units from the grade."
+      }
     }
   ],
   "prerequisites": [
@@ -279,46 +472,74 @@
     {
       "id": "sci-matter-float-sink",
       "type": "matter",
-      "levelRange": ["K1", "K1"],
+      "levelRange": [
+        "K1",
+        "K1"
+      ],
       "descriptionZh": "浮与沉的预测、测试与解释。",
       "descriptionEn": "Float and sink prediction, testing, and explanation.",
       "status": "implemented",
-      "sourceGameIds": ["learning-science"],
+      "sourceGameIds": [
+        "learning-science"
+      ],
       "sourceLessonIds": [],
-      "sourceLevelIds": ["K1"]
+      "sourceLevelIds": [
+        "K1"
+      ]
     },
     {
       "id": "sci-k2-describe",
       "type": "matter",
-      "levelRange": ["K2", "K2"],
+      "levelRange": [
+        "K2",
+        "K2"
+      ],
       "descriptionZh": "用完整语言描述物品的质感与生物的体表特征。",
       "descriptionEn": "Describe an object's texture and an animal's body covering in complete language.",
       "status": "implemented",
-      "sourceGameIds": ["learning-science"],
+      "sourceGameIds": [
+        "learning-science"
+      ],
       "sourceLessonIds": [],
-      "sourceLevelIds": ["K2"]
+      "sourceLevelIds": [
+        "K2"
+      ]
     },
     {
       "id": "sci-g1-predict",
       "type": "motion",
-      "levelRange": ["G1", "G1"],
+      "levelRange": [
+        "G1",
+        "G1"
+      ],
       "descriptionZh": "依据物体形状预测滚动，依据身体特征预测飞行能力。",
       "descriptionEn": "Predict rolling from an object's shape, and flight ability from an animal's body features.",
       "status": "implemented",
-      "sourceGameIds": ["learning-science"],
+      "sourceGameIds": [
+        "learning-science"
+      ],
       "sourceLessonIds": [],
-      "sourceLevelIds": ["G1"]
+      "sourceLevelIds": [
+        "G1"
+      ]
     },
     {
       "id": "sci-g2-question",
       "type": "earth",
-      "levelRange": ["G2", "G2"],
+      "levelRange": [
+        "G2",
+        "G2"
+      ],
       "descriptionZh": "从地球与能量情境中，把好奇心转化为一个可检验的具体问题。",
       "descriptionEn": "Turn curiosity from earth and energy scenarios into a specific, testable question.",
       "status": "implemented",
-      "sourceGameIds": ["learning-science"],
+      "sourceGameIds": [
+        "learning-science"
+      ],
       "sourceLessonIds": [],
-      "sourceLevelIds": ["G2"]
+      "sourceLevelIds": [
+        "G2"
+      ]
     }
   ],
   "statistics": {
@@ -328,6 +549,7 @@
       "hint_open",
       "session_finish",
       "observation",
+      "question",
       "prediction",
       "action",
       "variable_changed",
@@ -361,18 +583,41 @@
     "aggregationRules": [
       {
         "id": "time-by-game-mode",
-        "appliesTo": ["avgTimeMs"],
+        "appliesTo": [
+          "avgTimeMs"
+        ],
         "ruleZh": "avgTimeMs 必须按 game_mode 分桶：puzzle 是单题时长，explore 是整段探索活动的净时长，两者不可混算。",
         "ruleEn": "avgTimeMs MUST be bucketed by game_mode: puzzle is per-question time, explore is the whole exploration activity's net time. They are not comparable."
       },
       {
         "id": "one-template-one-attempt",
-        "appliesTo": ["completionRate", "accuracy"],
+        "appliesTo": [
+          "completionRate",
+          "accuracy"
+        ],
         "ruleZh": "一个 explore 模板只产生一个 Attempt，权重与一道 puzzle 相同；探索过程中的每一步事件只存在于 trace/process 中，不得计为独立 Attempt。",
         "ruleEn": "An explore template yields exactly one Attempt, weighted like a single puzzle question. Step-level events inside an exploration live only in trace/process and must not be counted as separate attempts."
       }
     ],
-    "note": "eventKeys observation/prediction/action/variable_changed/result/evidence_selected/explanation/revision are the Exploration runtime's process vocabulary; 'result' is reserved for future templates — the current K1 float/sink explore template folds its outcome into the observation event's `actual` field instead of emitting it separately. Phase 1 uploads only the summary Attempt."
+    "note": "The Science process vocabulary includes observation, question, prediction, action, variable_changed, result, evidence_selected, explanation, reflection, comparison, experiment_setup, variable_selected, and revision. Runtime results are emitted separately from observations. Full events remain in trace while bounded process summaries support mastery and analytics; one template run produces one Attempt.",
+    "growthIndicators": [
+      "observation_completeness",
+      "testable_question_recognition",
+      "prediction_completion",
+      "prediction_basis_use",
+      "experiment_completion",
+      "target_variable_isolation",
+      "controlled_condition_consistency",
+      "repeated_test_behavior",
+      "evidence_relevance",
+      "evidence_sufficiency_awareness",
+      "explanation_quality",
+      "revision_after_conflicting_evidence"
+    ],
+    "scienceScoringPolicy": {
+      "zh": "预测错误不等于科学思维失败。过程完成、变量控制、相关证据、解释质量和依据新证据修正认识必须与预测准确率分开记录。",
+      "en": "An incorrect prediction is not a scientific-thinking failure. Process completion, variable control, relevant evidence, explanation quality, and revision from new evidence must be recorded separately from prediction accuracy."
+    }
   },
   "aiQueryHints": {
     "supportedFilters": [
@@ -394,5 +639,169 @@
     "metathinking",
     "ai-readable",
     "global-k12-reference"
-  ]
+  ],
+  "architecture": {
+    "document": "/docs/metathinking/SCIENCE-EXPLORATION-ARCHITECTURE.md",
+    "version": "v0.2",
+    "principleZh": "科学，不只是知道答案，而是学习如何寻找答案。",
+    "principleEn": "Science is not only knowing answers. It is learning how to find them."
+  },
+  "admissionPolicy": {
+    "zh": "科学题材本身不能使任务成为科学探索。任务必须要求儿童系统观察、提出可探索问题、在结果出现前预测、改变或控制条件、判断相关证据，或用证据建立和修正解释。主要依赖既有事实记忆的任务属于知识学习或百科测验。",
+    "en": "Scientific subject matter alone does not make a task Science Exploration. The task must require systematic observation, a testable question, a prediction before the result, changing or controlling conditions, judging relevant evidence, or constructing and revising an explanation from evidence. Tasks that mainly depend on recalled facts belong to knowledge learning or trivia."
+  },
+  "scientificThinkingLoop": {
+    "units": [
+      "observation",
+      "questioning",
+      "prediction",
+      "experimentation",
+      "evidence",
+      "explanation"
+    ],
+    "cycle": [
+      "observation",
+      "questioning",
+      "prediction",
+      "experimentation",
+      "evidence",
+      "explanation",
+      "revision_or_new_question"
+    ],
+    "noteZh": "六个单元既可独立训练，也构成循环。成长主轴不等于能力独占；每个年级都可以运行完整或部分科学思维闭环。",
+    "noteEn": "The six units can be trained independently and also form a cycle. A grade's growth emphasis does not make that capability exclusive to the grade; every grade may run a complete or partial scientific-thinking loop."
+  },
+  "runtimeModel": {
+    "modes": {
+      "puzzle": {
+        "zh": "给出信息，思考并回答。适合观察判断、可检验问题、基于证据的预测、变量控制、证据判断和解释构建。",
+        "en": "Given information, think and answer. Suitable for observation judgments, testable questions, evidence-grounded prediction, variable control, evidence evaluation, and explanation building."
+      },
+      "activity": {
+        "zh": "有明确科学任务，儿童操作对象并完成目标；记录操作过程，而不只记录最终答案。",
+        "en": "A defined scientific task in which the child manipulates objects to reach a goal; the process is recorded, not only the final answer."
+      },
+      "exploration": {
+        "zh": "儿童自由改变变量、反复观察并寻找关系；一个模板运行只产生一个 Attempt，内部步骤保存在 trace/process。",
+        "en": "The child freely changes variables, observes repeatedly, and looks for relationships. One template run produces one Attempt, with internal steps stored in trace/process."
+      }
+    },
+    "commonStages": [
+      "observe_or_question",
+      "predict",
+      "test",
+      "result",
+      "evidence",
+      "reflect_explain_or_revise"
+    ]
+  },
+  "taskForms": [
+    {
+      "id": "observe",
+      "questionZh": "我发现了什么？",
+      "questionEn": "What do you notice?"
+    },
+    {
+      "id": "predict",
+      "questionZh": "我觉得会发生什么？",
+      "questionEn": "What do you think will happen?"
+    },
+    {
+      "id": "experiment",
+      "questionZh": "怎样才能知道？",
+      "questionEn": "How can we find out?"
+    },
+    {
+      "id": "explain",
+      "questionZh": "证据说明了什么？",
+      "questionEn": "What does the evidence tell us?"
+    }
+  ],
+  "attemptContract": {
+    "fields": [
+      "templateId",
+      "variantId",
+      "levelId",
+      "contextDomain",
+      "runtimeMode",
+      "observation",
+      "question",
+      "prediction",
+      "predictionBasis",
+      "actions",
+      "variablesChanged",
+      "controlledVariables",
+      "results",
+      "evidenceSelected",
+      "explanation",
+      "revision",
+      "process",
+      "trace"
+    ],
+    "rules": {
+      "oneExplorationOneAttempt": true,
+      "fullEventsInTrace": true,
+      "flatBoundedProcessSummary": true,
+      "predictionAccuracyIsNotScientificQuality": true,
+      "puzzleAndExplorationTimeMustBeSeparated": true
+    }
+  },
+  "phase1Scope": {
+    "levels": [
+      "K1",
+      "K2",
+      "G1",
+      "G2"
+    ],
+    "priorityContexts": [
+      "matter",
+      "motion",
+      "life",
+      "energy"
+    ],
+    "referenceTemplates": [
+      "float_or_sink",
+      "ramp_lab",
+      "shadow_changes",
+      "which_question_can_we_test",
+      "what_should_we_change",
+      "which_result_is_evidence",
+      "build_an_explanation"
+    ]
+  },
+  "mvpStatus": {
+    "status": "implemented",
+    "scope": "K1-G2",
+    "templateCount": 72,
+    "minimumTemplatesPerThinkingUnitLevel": 3,
+    "thinkingUnits": [
+      "observation",
+      "questioning",
+      "prediction",
+      "experimentation",
+      "evidence",
+      "explanation"
+    ],
+    "runtimeModes": [
+      "puzzle",
+      "activity",
+      "exploration"
+    ],
+    "priorityContexts": [
+      "matter",
+      "motion",
+      "life",
+      "energy"
+    ],
+    "nextLevels": {
+      "levels": [
+        "G3",
+        "G4",
+        "G5",
+        "G6"
+      ],
+      "status": "planned",
+      "policy": "Expand only after later child-experience and content review; do not mechanically extend the current matrix."
+    }
+  }
 }

@@ -1,0 +1,227 @@
+{
+  "version": "v0.1.0",
+  "updatedAt": "2026-10-24",
+  "moduleType": "mindseeds",
+  "id": "magic-sequence",
+  "series": "mindseeds",
+  "canonicalUrl": "/metadata/mindseeds/magic-sequence.json",
+  "title": {
+    "zh": "魔法顺序",
+    "en": "Magic Sequence"
+  },
+  "description": {
+    "zh": "符号依次出现后消失，孩子凭记忆重建完整顺序。高等级增加更长序列、保持延迟和局部更新。",
+    "en": "Symbols appear one at a time and disappear. The child reconstructs the complete order from memory, with longer sequences, retention delays and local updating at higher grades."
+  },
+  "designModel": {
+    "zh": "K1 从两个符号的顺序保持开始，K2 增加到三个，G1 保持四个符号并延长等待，G2 在原序列消失后替换一个位置再重建。",
+    "en": "K1 retains two symbols in order, K2 increases to three, G1 retains four across a longer delay, and G2 replaces one hidden position before reconstruction."
+  },
+  "memoryArchitecture": {
+    "cognitiveChain": {
+      "primary": [
+        "encoding",
+        "retention",
+        "retrieval",
+        "reorganization"
+      ],
+      "secondary": [
+        "observation"
+      ]
+    },
+    "carrier": [
+      "sequential",
+      "visual_symbol"
+    ],
+    "taskMechanism": [
+      "sequence_reconstruction",
+      "sequence_update"
+    ],
+    "workingMemory": true
+  },
+  "seriesBoundary": {
+    "policyZh": "本模块要求符号逐个消失后重建实际展示顺序，不要求发现重复规律，因此属于记忆守护者而不是规律猎手。",
+    "policyEn": "This module reconstructs the actual presented order after symbols disappear. It does not ask the child to discover a repeating rule, so it belongs to Memory Guardian rather than Pattern Hunter."
+  },
+  "geneReporting": {
+    "ruleZh": "每次 Attempt 上报 RG.MEMORY.SEQUENTIAL.RECALL。",
+    "ruleEn": "Every attempt reports RG.MEMORY.SEQUENTIAL.RECALL.",
+    "geneIds": [
+      "RG.MEMORY.SEQUENTIAL.RECALL"
+    ]
+  },
+  "rootGeneIds": [
+    "RG.MEMORY.SEQUENTIAL.RECALL"
+  ],
+  "difficultyAxes": [
+    {
+      "id": "information_load",
+      "zh": "信息负荷",
+      "en": "Information Load",
+      "progression": [
+        "two",
+        "three",
+        "four"
+      ]
+    },
+    {
+      "id": "exposure_time",
+      "zh": "展示时间",
+      "en": "Exposure Time",
+      "progression": [
+        "long",
+        "medium",
+        "short",
+        "shortest"
+      ]
+    },
+    {
+      "id": "retention_delay",
+      "zh": "保持延迟",
+      "en": "Retention Delay",
+      "progression": [
+        "short",
+        "medium",
+        "long",
+        "longest"
+      ]
+    },
+    {
+      "id": "processing_complexity",
+      "zh": "加工复杂度",
+      "en": "Processing Complexity",
+      "progression": [
+        "rebuild",
+        "update"
+      ]
+    }
+  ],
+  "sharedDifficultyMap": {
+    "information_load": "information_load",
+    "exposure_time": "exposure_time",
+    "retention_delay": "retention_delay",
+    "similarity": "symbol_choice_similarity",
+    "interference": "replacement_at_G2",
+    "processing_complexity": "processing_complexity",
+    "organization_support": "ordered_slots",
+    "retrieval_demand": "sequence_reconstruction"
+  },
+  "sessionPolicy": {
+    "maxItemsPerSession": 8,
+    "passRatio": 0.75,
+    "noteZh": "每次 8 题，通过线为 6/8；首次且未使用提示完成记为最优。",
+    "noteEn": "Eight items per run with a passing line of 6/8. A first-try completion without hints is optimal."
+  },
+  "levelMap": [
+    {
+      "levelId": "L1",
+      "ageHint": "3-4",
+      "gradeCode": "K1",
+      "objectiveZh": "记住两个依次出现的符号并按原顺序重建。",
+      "objectiveEn": "Remember two sequential symbols and rebuild their original order.",
+      "axisValues": {
+        "information_load": "two",
+        "exposure_time": "long",
+        "retention_delay": "short",
+        "processing_complexity": "rebuild"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "magic-sequence"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L2",
+      "ageHint": "5",
+      "gradeCode": "K2",
+      "objectiveZh": "记住三个依次出现的符号并重建顺序。",
+      "objectiveEn": "Remember three sequential symbols and rebuild their order.",
+      "axisValues": {
+        "information_load": "three",
+        "exposure_time": "medium",
+        "retention_delay": "medium",
+        "processing_complexity": "rebuild"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "magic-sequence"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L3",
+      "ageHint": "6",
+      "gradeCode": "G1",
+      "objectiveZh": "保持四个符号，并在较长延迟后重建。",
+      "objectiveEn": "Retain four symbols and rebuild them after a longer delay.",
+      "axisValues": {
+        "information_load": "four",
+        "exposure_time": "short",
+        "retention_delay": "long",
+        "processing_complexity": "rebuild"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "magic-sequence"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    },
+    {
+      "levelId": "L4",
+      "ageHint": "7",
+      "gradeCode": "G2",
+      "objectiveZh": "保持四个符号，替换指定位置后重建更新序列。",
+      "objectiveEn": "Retain four symbols, replace one position and rebuild the updated sequence.",
+      "axisValues": {
+        "information_load": "four",
+        "exposure_time": "shortest",
+        "retention_delay": "longest",
+        "processing_complexity": "update"
+      },
+      "status": "implemented",
+      "implementedBy": [
+        "magic-sequence"
+      ],
+      "implementedModes": [
+        "puzzle"
+      ]
+    }
+  ],
+  "statistics": {
+    "eventKeys": [
+      "session_start",
+      "answer_submit",
+      "hint_open",
+      "session_finish"
+    ],
+    "dimensions": [
+      "levelId",
+      "gradeCode",
+      "taskMechanisms",
+      "difficultyAxis"
+    ],
+    "kpis": [
+      "completionRate",
+      "accuracy",
+      "meanTimePerItem",
+      "retries",
+      "hints",
+      "optimalCount"
+    ]
+  },
+  "tags": [
+    "magic-sequence",
+    "mindseeds",
+    "memory",
+    "sequential-memory",
+    "working-memory",
+    "ai-readable"
+  ]
+}
