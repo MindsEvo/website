@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>4. 棋子走法 | 入门启航</title>
   <style>
     :root {
@@ -729,8 +731,8 @@
           <button class="ctrl-btn" id="btnModeHumanAi" title="人机模式：你执白，AI执黑自动应对">👤</button>
           <button class="ctrl-btn" id="btnModeAiAi" title="AI对弈：双方由AI自动对局，可暂停/继续">🤖</button>
           <button class="ctrl-btn">◔</button>
-          <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
-          <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span class="meta-box" id="volumeValue">80</span></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span class="meta-box" id="speedValue">5</span></span>
           <span class="meta">AI预设:<select class="ai-preset-select" id="aiPresetSelect" title="仅在对弈练习中生效">
             <option value="beginner">初学</option>
             <option value="intermediate">中级</option>
@@ -910,7 +912,7 @@
                   <div class="group-label">3. 对弈</div>
                   <button data-prac-action="n-game-1">3.1 小兵变马</button>
                   <button data-prac-action="n-game-2">3.2 马捉双</button>
-                  <button data-prac-action="n-game-3">3.3 角牵制</button>
+                  <button data-prac-action="n-game-3">3.3 牵制的例子</button>
                 </div>
               </div>
               <div class="chip-wrap">
@@ -919,8 +921,8 @@
                   <div class="group-label">1. 走法</div>
                   <button data-prac-action="p-move-1">1.1 练习走法</button>
                   <div class="group-label">2. 吃子</div>
-                  <button data-prac-action="p-capture-1">2.1 斜吃不直走</button>
-                  <button data-prac-action="p-capture-2">2.2 边线一侧吃</button>
+                  <button data-prac-action="p-capture-1">2.1 斜吃</button>
+                  <button data-prac-action="p-capture-2">2.2 边线斜吃</button>
                   <button data-prac-action="p-capture-3">2.3 蛇行连续吃</button>
                   <button data-prac-action="p-capture-4">2.4 Z形连吃</button>
                   <button data-prac-action="p-capture-5">2.5 价值有讲究</button>
@@ -984,10 +986,16 @@
         <div class="tips-body">
           <h5>📌 本单元学习要点</h5>
           <ol>
-            <li>掌握王、后、车、象、马、兵的基础走法</li>
             <li>通过动态观察理解每种棋子的移动规律</li>
-            <li>通过操作练习强化棋子识别和选取</li>
+            <li>通过操作练习学习棋子的走法
+              <ol type="a">
+                <li>走法不分次序</li>
+                <li>吃子只是单方直接连吃的练习，不涉及对方应对和规则</li>
+                <li>对弈双方轮流走棋，支持手动、人机和AI自动模式， 可随时切换</li>
+              </ol>
+            </li>
             <li>完成问答练习巩固特殊规则与和棋概念</li>
+            <li>系统支持手动、人机和AI自动模式</li>
           </ol>
         </div>
         <div class="tips-foot">
@@ -2194,6 +2202,51 @@
         }
       }
 
+      function drawKingThreatArrows(kingRow, kingCol, attackerColor) {
+        clearKnightLines();
+        var targets = kingReachable(kingRow, kingCol);
+        var drawnRays = {};
+        var drawnDirect = {};
+
+        targets.forEach(function (target) {
+          findAttackers(boardMatrix, target[0], target[1], attackerColor).forEach(function (attacker) {
+            var piece = boardMatrix[attacker[0]][attacker[1]];
+            var kind = piece && piece.charAt(1);
+            var dr = target[0] - attacker[0];
+            var dc = target[1] - attacker[1];
+            var absR = Math.abs(dr);
+            var absC = Math.abs(dc);
+            var isRookRay = (kind === 'r' || kind === 'q') && (dr === 0 || dc === 0);
+            var isBishopRay = (kind === 'b' || kind === 'q') && absR === absC;
+
+            if (isRookRay || isBishopRay) {
+              var stepR = dr === 0 ? 0 : (dr > 0 ? 1 : -1);
+              var stepC = dc === 0 ? 0 : (dc > 0 ? 1 : -1);
+              var rayKey = attacker[0] + ':' + attacker[1] + ':' + stepR + ':' + stepC;
+              if (drawnRays[rayKey]) return;
+              drawnRays[rayKey] = true;
+
+              var from = [attacker[0], attacker[1]];
+              var row = from[0] + stepR;
+              var col = from[1] + stepC;
+              while (row >= 0 && row < 8 && col >= 0 && col < 8) {
+                drawArrow(from, [row, col], '#dc2626');
+                if (boardMatrix[row][col]) break;
+                from = [row, col];
+                row += stepR;
+                col += stepC;
+              }
+              return;
+            }
+
+            var directKey = attacker[0] + ':' + attacker[1] + ':' + target[0] + ':' + target[1];
+            if (drawnDirect[directKey]) return;
+            drawnDirect[directKey] = true;
+            drawArrow(attacker, target, '#dc2626');
+          });
+        });
+      }
+
       function boardHasAnyBlackPiece() {
         for (var r = 0; r < 8; r++) {
           for (var c = 0; c < 8; c++) {
@@ -2318,11 +2371,11 @@
           voice:'通道被堵！f1有象，b1有马——两边均无法易位。易位条件之一：王和车之间不能有任何棋子。试试将中间的象和马移到别处，再完成易位！',
           setup:[[7,4,'wk'],[7,0,'wr'],[7,7,'wr'],[7,5,'wb'],[7,1,'wn'],[0,4,'bk']] },
         'k-game-3': { label:'3.3 易位路线受攻',
-          voice:'路线受攻！黑车和黑象在分别攻击白方的易位路线——两边均无法易位。白棋阻挡黑方的攻击！',
+          voice:'路线受攻！黑车和黑象在分别攻击白方的易位路线——两边均无法易位。白棋需要先阻挡黑方的攻击！',
           setup:[[7,4,'wk'],[7,0,'wr'],[7,7,'wr'],[5,4,'wb'],[6,0,'wp'],[6,1,'wp'],[6,7,'wp'],[5,6,'wp'],[5,2,'wp'],[6,4,'wp'],
             [0,7,'bk'],[0,5,'br'],[0,3,'br'],[4,0,'bb'],[2,3,'bp'],[3,2,'bp'],[1,0,'bp'],[1,1,'bp'],[1,6,'bp'],[1,7,'bp']] },
         'k-game-4': { label:'3.4 王的激活',
-          voice:'残局王的激活！白王在角落——这是残局最大的忌讳！黑王已中心化正面封锁白兵，黑兵也在反击。白王必须立刻走向中央参战，否则必败！本例只经典的和棋！',
+          voice:'残局王的激活！白王在角落——这是残局最大的忌讳！黑王已正面封锁白兵，白王必须立刻走向中央参战，否则必败！本例是经典的和棋, 可以用AI模式观摩学习！',
           setup:[[7,0,'wk'],[3,4,'wp'],[1,4,'bk'],[3,2,'bp']] },
         'k-game-5': { label:'3.5 王的对立',
           voice:'王的对立！白王踏上e6——这是e4兵的关键格！两王这样的相对俗称对王，占领关键格先手对王是王兵残局必胜技术，要多加练习体会！',
@@ -2368,7 +2421,7 @@
           voice:'捉双！白后可以一步同时威胁两个子，这就是捉双战术！看看后如何通过将军吃黑车',
           setup:[[6,5,'wk'],[6,6,'wq'],[0,4,'bk'],[4,0,'br']] },
         'q-game-4': { label:'3.4 串击',
-          voice:'串击！白后通过将军，可以吃掉车！通过将军吃黑王，吃掉黑王后边的子叫串击！本局面可以串击，也可以做双！',
+          voice:'串击！白后通过将军，可以吃掉车！通过将军吃黑王，吃掉黑王后边的子叫串击！本局面可以串击，也可以捉双！',
           setup:[[6,6,'wk'],[0,2,'wq'],[3,4,'bk'],[7,4,'br']] },
         'q-game-5': { label:'3.5 后车配合',
           voice:'后车配合！车控直线，后扫斜线——威力巨大，本局两步即可取胜！',
@@ -2414,7 +2467,7 @@
           voice:'底线将死！黑王三兵保护看似安全——其实挡住了王的出路！白车d1直接将军，黑王无路可逃——底线将死！',
           setup:[[6,6,'wk'],[7,3,'wr'],[0,6,'bk'],[1,5,'bp'],[1,6,'bp'],[1,7,'bp']] },
         'r-game-6': { label:'3.6 小兵变车',
-          voice:'陷升变阱！白兵g7即将升变——但升后立刻困毙和棋，升象或升马子力不足也是和棋！只有升车才能赢！试试每种升变，亲身感受为什么只能升车！',
+          voice:'升变陷阱！白兵g7即将升变——但升后立刻困毙和棋，升象或升马子力不足也是和棋！只有升车才能赢！试试每种升变，亲身感受为什么只能升车！',
           setup:[[4,6,'wk'],[1,6,'wp'],[2,7,'bk']] },
         // ── BISHOP 象 ────────────────────────────────────
         'b-move-1': { label:'1.1 练习走法', freeColor:true,
@@ -2424,7 +2477,7 @@
           voice:'这是异色象演示：白象在浅色格，黑象在深色格。无论走多少步，两只象的领地永远没有交集——这就是国际象棋中异色象的特点！',
           setup:[[6,2,'wb'],[1,6,'bb']] },
         'b-move-3': { label:'1.3 单象子力不足', freeColor:true,
-          voice:'单象子力不足演示：白方有王和象，黑方只有孤王。请尽情走棋，你会发现单张象同样无法将死孤王——子力不足，同样判和！',
+          voice:'单象子力不足：白方有王和象，黑方只有孤王。请尽情走棋，你会发现单象将死孤王——子力不足，同样判和！',
           setup:[[7,4,'wk'],[5,3,'wb'],[0,4,'bk']] },
         'b-capture-1': { label:'2.1 斜线四向',
           voice:'斜线四向！白象e4，四条斜线各有一颗黑子——象只走斜线，永远只停浅色格！',
@@ -2439,10 +2492,10 @@
           voice:'双对角路障！白象右上方和左下方都有兵挡住黑车——全部清除！',
           setup:[[4,4,'wb'],[3,5,'bp'],[2,6,'br'],[5,3,'bp'],[6,2,'br']] },
         'b-capture-5': { label:'2.5 异色格陷阱',
-          voice:'异色格陷阱！白象e4只走浅色格——d4、e5、f4紧挨着象，却是深色格，象永远到不了！只有浅色格的3颗黑子才是猎物，找出来吃掉！',
+          voice:'异色格陷阱！白象e4只能走浅色格——三个黑兵挨着象，是深色格，象永远到不了！只有浅色格的3颗黑子才是猎物，找出来吃掉！',
           setup:[[4,4,'wb'],[2,6,'br'],[6,6,'br'],[2,2,'br'],[4,3,'bp'],[3,4,'bp'],[4,5,'bp']] },
         'b-game-1': { label:'3.1 双象对孤王',
-          voice:'双象对孤王：两象合力可以将死孤王，有一定难度！',
+          voice:'双象对孤王：两象合力可以将死孤王，有一定难度！可用AI模式辅助练习',
           setup:[[7,4,'wk'],[6,2,'wb'],[6,5,'wb'],[0,4,'bk']] },
         'b-game-2': { label:'3.2 象的捉双',
           voice:'象的捉双！尝试用象做双！',
@@ -2476,16 +2529,16 @@
           voice:'角落困境！白马困在a1角，只有2个L形落点——b3和c2。感受马在角落的局限性！',
           setup:[[7,0,'wn'],[5,1,'br'],[6,2,'br']] },
         'n-capture-3': { label:'2.3 近在咫尺',
-          voice:'近在咫尺却够不到！白马d4四周全是黑子——但马不能直走！只有L形跳出去的才能吃到。先判断哪些能吃，再动手！',
+          voice:'近在咫尺却够不到！白马d4四周全是黑子——但马不能直走！吃掉所有黑子。',
           setup:[[4,3,'wn'],[3,3,'bp'],[5,3,'bp'],[4,2,'bp'],[4,4,'bp'],[2,2,'br'],[2,4,'br'],[3,1,'br'],[3,5,'br']] },
         'n-capture-4': { label:'2.4 跳越包围',
-          voice:'跳越包围！白马e4被己方白兵团团围住——但马可以无视障碍跳出去！吃掉4颗黑车目标！',
+          voice:'跳越包围！白马e4被己方白兵团团围住——但马可以无视障碍跳出去！吃掉4颗黑车！',
           setup:[[4,4,'wn'],[3,3,'wp'],[3,4,'wp'],[3,5,'wp'],[4,3,'wp'],[4,5,'wp'],[5,3,'wp'],[5,4,'wp'],[5,5,'wp'],[2,3,'br'],[2,5,'br'],[6,3,'br'],[6,5,'br']] },
         'n-capture-5': { label:'2.5 踏点前进',
-          voice:'踏点前征！白马从a1出发，沿L形跳点一路向前——a1→b3→c5→d7→f6→h5，感受马的之字形远征！',
+          voice:'踏点前征！白马从a1出发，沿L形跳点一路向前，感受马的之字形远征！',
           setup:[[7,0,'wn'],[5,1,'bp'],[3,2,'bp'],[1,3,'bp'],[2,5,'br'],[3,7,'br']] },
         'n-capture-6': { label:'2.6 马的远征',
-          voice:'马的远征！白马b1出发，棋盘上散落6颗黑子——沿 b1→d2→f3→h4→f5→d6→b7 这条完美路线全部吃掉！',
+          voice:'马的远征！白马b1出发，棋盘上散落6颗黑子——沿这条完美路线全部吃掉！',
           setup:[[7,1,'wn'],[6,3,'bp'],[5,5,'bp'],[4,7,'bp'],[3,5,'br'],[2,3,'br'],[1,1,'br']] },
         'n-game-1': { label:'3.1 小兵变马',
           voice:'升变为马！白兵d7即将升变——此时升变为马是最好的选择，马将军吃后！这是升马的经典局面！',
@@ -2493,39 +2546,39 @@
         'n-game-2': { label:'3.2 马捉双',
           voice:'马捉双！白马跳一步同时威胁两个黑子——黑方必丢其一！仔细看看马应该跳到哪里，同时捉住两个黑子！',
           setup:[[7,4,'wk'],[4,4,'wn'],[0,4,'bk'],[1,3,'br']] },
-        'n-game-3': { label:'3.3 角牵制',
-          voice:'角牵制！白象b5沿对角线钉住黑马c6——黑马动弹不得，否则黑王被将军！白方如何进一步扩大利用？',
+        'n-game-3': { label:'3.3 牵制的例子',
+          voice:'白象沿对角线钉住黑马——黑马动弹不得，否则黑王被将军！用AI模式学习感受此残局的对弈',
           setup:[[7,4,'wk'],[3,1,'wb'],[6,2,'wn'],[0,4,'bk'],[2,2,'bn'],[2,3,'bp'],[3,4,'bp']] },
         // ── PAWN 兵 ──────────────────────────────────────
         'p-move-1': { label:'1.1 练习走法', freeColor:true,
-          voice:'双兵相对，感受兵的走法、吃法，以及升变时机！',
+          voice:'双兵相对，感受兵的走法、吃法，以及升变！',
           setup:[[6,4,'wp'],[1,3,'bp']] },
-        'p-capture-1': { label:'2.1 斜吃不直走',
-          voice:'斜吃不直走！白兵e4，正前方e5是黑兵，高亮里没有它——兵不能直走吃子！看两侧d5和f5，那才是兵的攻击格。直走推进，斜吃歼敌！',
+        'p-capture-1': { label:'2.1 斜吃',
+          voice:'斜吃！白兵e4，正前方e5是黑兵，兵不能直走吃子！两侧d5和f5，是兵的攻击格，可斜吃任何一方！',
           setup:[[4,4,'wp'],[3,4,'bp'],[3,3,'bp'],[3,5,'bp']] },
-        'p-capture-2': { label:'2.2 边线一侧吃',
-          voice:'边线只剩一侧！白兵在a4，黑兵a5堵死前进路，右斜b5是唯一出路。换到h线试试——规律一样！',
+        'p-capture-2': { label:'2.2 边线斜吃',
+          voice:'边线只剩一侧！白兵在a4，黑兵a5堵死前进路，可斜吃右斜b5的黑兵。右边的h线——规律一样！',
           setup:[[4,0,'wp'],[3,0,'bp'],[3,1,'bp']] },
         'p-capture-3': { label:'2.3 蛇行连续吃',
           voice:'蛇行连吃！白兵a3，黑兵沿斜线排开：每次斜吃，可以一直吃下去！',
           setup:[[5,0,'wp'],[4,1,'bp'],[3,2,'bp'],[2,3,'bp']] },
         'p-capture-4': { label:'2.4 Z形连吃',
-          voice:'Z形连吃！右斜吃f3，左斜吃e4，再左斜吃d5，然后右斜连吃e6、f7——五步走出一条S形之路！兵的吃法能绕出所有人想不到的路线！',
+          voice:'Z形连吃！右斜吃f3，左斜吃e4，再左斜吃d5，然后右斜连吃e6、f7——五步走出一条S形之路！体验熟悉兵的斜吃',
           setup:[[6,4,'wp'],[5,5,'bp'],[4,4,'bp'],[3,3,'bp'],[2,4,'bp'],[1,5,'bp']] },
         'p-capture-5': { label:'2.5 价值有讲究',
-          voice:'价值有讲究！白兵e2，每步左右都有两个目标——分值不同！第一步：f3黑马(3分) vs d3黑兵(1分)；第二步：e4黑车(5分) vs g4黑兵(1分)；第三步：f5黑后(9分) vs d5黑象(3分)。每次都选较大的！',
+          voice:'价值有讲究！白兵e2，每步左右都有两个目标——分值不同！第一步：f3黑马(3分)， d3黑兵(1分)；第二步：e4黑车(5分)， g4黑兵(1分)；第三步：f5黑后(9分)， d5黑象(3分)。每次都选较大的！',
           setup:[[6,4,'wp'],[5,3,'bp'],[5,5,'bn'],[4,6,'bp'],[4,4,'br'],[3,3,'bb'],[3,5,'bq']] },
         'p-capture-6': { label:'2.6 看远一步',
-          voice:'看远一步！白兵e3，左边d4和右边f4都是黑马，分值相同！但吃d4后，c5有黑后(9分)可继续吃；吃f4后，g5只有黑兵(1分)。分值相同时，看看下一步能吃到什么！',
+          voice:'看远一步！白兵e3，左边d4和右边f4都是黑马，分值相同！但吃d4后，c5有黑后(9分)可继续吃；吃f4后，g5只有黑兵(1分)，应该吃哪一边？',
           setup:[[5,4,'wp'],[4,3,'bn'],[4,5,'bn'],[3,2,'bq'],[3,6,'bp']] },
         'p-capture-7': { label:'2.7 吃子兼升变',
-          voice:'吃子兼升变！白兵c7，正前c8被黑象堵死，只能斜吃d8黑马——落子底线立刻升变！一步棋同时完成吃子和升变！',
+          voice:'吃子兼升变！白兵正前被黑象堵死，能斜吃黑马——落子底线立刻升变！一步棋同时完成吃子和升变！',
           setup:[[1,2,'wp'],[0,2,'bb'],[0,3,'bn']] },
         'p-game-1': { label:'3.1 小兵变后',
           voice:'小兵变后！e7兵一步升变为后——感受小兵升变的神奇时刻，升变后立刻用新后配合王将死黑王！',
           setup:[[7,4,'wk'],[1,4,'wp'],[0,0,'bk']] },
         'p-game-2': { label:'3.2 小兵变车',
-          voice:'陷升变阱！白兵g7即将升变——但升后立刻困毙和棋，升象或升马子力不足也是和棋！只有升车才能赢！试试每种升变，亲身感受为什么只能升车！',
+          voice:'升变陷阱！白兵g7即将升变——但升后立刻困毙和棋，升象或升马子力不足也是和棋！只有升车才能赢！试试每种升变，亲身感受为什么只能升车！',
           setup:[[4,6,'wk'],[1,6,'wp'],[2,7,'bk']] },
         'p-game-3': { label:'3.3 小兵变象',
           voice:'升变为象！白兵c7即将升变——升后或升车立刻困毙和棋，升马子力不足也是和棋！只有升象才能赢！',
@@ -2543,7 +2596,7 @@
           voice:'兵链对峙！黑白双方兵阵对峙，白方虽然只多一个兵，却优势巨大，黑方无法招架！',
           setup:[[6,4,'wk'],[4,3,'wp'],[3,4,'wp'],[3,2,'wp'],[3,6,'wp'],[1,4,'bk'],[2,3,'bp'],[3,3,'bp'],[2,5,'bp']] },
         'p-game-8': { label:'3.8 兵的多数',
-          voice:'兵的多数！白方三兵，黑方两兵——多出一兵！白兵相互保护支持，准备升变，最后需要王的支持！',
+          voice:'兵的多数！白方三兵，黑方两兵——多出一兵！白兵相互保护支持，准备升变，需要王的支持！',
           setup:[[7,1,'wk'],[3,4,'wp'],[3,5,'wp'],[3,6,'wp'],[0,6,'bk'],[3,3,'bp'],[3,2,'bp']] },
         'p-game-9': { label:'3.9 通路兵护送',
           voice:'通路兵护送！白兵前方没有任何阻拦——这就是通路兵！此例白兵升变成功获胜，看似简单，但实际操作中需要精确计算！',
@@ -3167,6 +3220,7 @@
         practiceState.positionCounts[posKey] = (practiceState.positionCounts[posKey] || 0) + 1;
         var isThreefold = practiceState.positionCounts[posKey] >= 3;
         var isFiftyMove = practiceState.halfmoveClock >= 100;
+        var isMaterialDraw = isInsufficientMaterialPosition(boardMatrix);
         if (oppoInCheck && !oppoHasMoves) {
           if (practiceStatus) practiceStatus.textContent = castlePrefix + '🏁 将杀！' + colorName(movingColor) + '获胜！';
           speak('将杀，' + colorName(movingColor) + '获胜');
@@ -3177,6 +3231,11 @@
           speak('和棋，' + colorName(oppoColor) + '无子可动');
           practiceState.armed = false;
           if (oppoKingPos) showGameEndVisuals(false, oppoKingPos[0], oppoKingPos[1], null);
+        } else if (isMaterialDraw) {
+          if (practiceStatus) practiceStatus.textContent = '🤝 子力不足，和棋！';
+          speak('子力不足，和棋');
+          practiceState.armed = false;
+          playGameEndSound();
         } else if (isThreefold) {
           if (practiceStatus) practiceStatus.textContent = '🤝 三次重复局面，和棋！';
           speak('三次重复局面，和棋');
@@ -3295,6 +3354,21 @@
         return null;
       }
 
+      function isInsufficientMaterialPosition(board) {
+        var minors = [];
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            var piece = board[r][c];
+            if (!piece || piece.charAt(1) === 'k') continue;
+            var kind = piece.charAt(1);
+            if (kind !== 'b' && kind !== 'n') return false;
+            minors.push({ kind: kind, squareColor: (r + c) % 2 });
+          }
+        }
+        if (minors.length < 2) return true;
+        return minors.every(function (minor) { return minor.kind === 'b' && minor.squareColor === minors[0].squareColor; });
+      }
+
       function sideHasAnyLegalMove(color) {
         for (var r = 0; r < 8; r++) {
           for (var c = 0; c < 8; c++) {
@@ -3344,7 +3418,8 @@
         if (key.indexOf('-game-') !== -1) practiceState.positionCounts[buildFen()] = 1;
         updateGameModeButtons();
         if (practiceStatus) practiceStatus.textContent = sc.voice;
-        speak(sc.voice.substring(0, 45));
+        var fullVoiceScenarios = ['k-game-1', 'k-game-2', 'k-game-4', 'k-check-4', 'r-game-6', 'p-game-2', 'b-capture-5', 'b-game-5', 'n-move-2', 'n-move-3', 'p-capture-1', 'p-capture-4', 'p-capture-5', 'p-capture-6', 'p-game-6', 'p-game-9'];
+        speak(fullVoiceScenarios.indexOf(key) !== -1 ? sc.voice : sc.voice.substring(0, 45));
       }
 
       function cancelPractice() {
@@ -3448,6 +3523,11 @@
           practiceState.selectedPiece = { row: row, col: col };
           practiceState.legalTargets = targets;
           updatePracticeHL();
+          if (piece.charAt(1) === 'k') {
+            drawKingThreatArrows(row, col, piece.charAt(0) === 'w' ? 'b' : 'w');
+          } else {
+            clearKnightLines();
+          }
           return;
         }
 

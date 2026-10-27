@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>3. 认识棋子 | 入门启航</title>
   <style>
     :root {
@@ -331,6 +333,50 @@
       background: #ff6568;
     }
 
+    .practice-pawn-wrap {
+      position: relative;
+      min-width: 0;
+    }
+
+    .practice-pawn-wrap > .chip {
+      width: 100%;
+    }
+
+    .practice-pawn-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 5px);
+      right: 0;
+      z-index: 30;
+      width: 190px;
+      padding: 5px;
+      border: 1px solid #d5dce8;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+    }
+
+    .practice-pawn-menu.open {
+      display: grid;
+      gap: 3px;
+    }
+
+    .practice-pawn-menu button {
+      min-height: 32px;
+      padding: 5px 9px;
+      border: 0;
+      border-radius: 4px;
+      background: #f3f6fa;
+      color: #1f2937;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .practice-pawn-menu button:hover {
+      background: #e5edf7;
+    }
+
     .observe-active {
       box-shadow: 0 0 0 2px #fef3c7, 0 0 0 4px #f59e0b;
     }
@@ -652,8 +698,8 @@
           <button class="ctrl-btn">👤</button>
           <button class="ctrl-btn">🤖</button>
           <button class="ctrl-btn">◔</button>
-          <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
-          <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span class="meta-box" id="volumeValue">80</span></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span class="meta-box" id="speedValue">5</span></span>
         </div>
       </section>
 
@@ -689,7 +735,15 @@
                 <button class="chip" data-practice-piece="b" data-practice-side="b">象</button>
                 <button class="chip" data-practice-piece="n" data-practice-side="b">马</button>
                 <button class="chip" data-practice-piece="r" data-practice-side="b">车</button>
-                <button class="chip" data-practice-piece="p" data-practice-side="b">兵</button>
+                <div class="practice-pawn-wrap">
+                  <button class="chip" data-practice-piece="p" data-practice-side="b" aria-haspopup="true" aria-expanded="false">兵 ▼</button>
+                  <div class="practice-pawn-menu" data-practice-pawn-menu="b">
+                    <button type="button" data-practice-pawn-group="rook">车前兵</button>
+                    <button type="button" data-practice-pawn-group="knight">马前兵</button>
+                    <button type="button" data-practice-pawn-group="bishop">象前兵</button>
+                    <button type="button" data-practice-pawn-group="center">中间兵</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="practice-row white">
@@ -700,7 +754,15 @@
                 <button class="chip" data-practice-piece="b" data-practice-side="w">象</button>
                 <button class="chip" data-practice-piece="n" data-practice-side="w">马</button>
                 <button class="chip" data-practice-piece="r" data-practice-side="w">车</button>
-                <button class="chip" data-practice-piece="p" data-practice-side="w">兵</button>
+                <div class="practice-pawn-wrap">
+                  <button class="chip" data-practice-piece="p" data-practice-side="w" aria-haspopup="true" aria-expanded="false">兵 ▼</button>
+                  <div class="practice-pawn-menu" data-practice-pawn-menu="w">
+                    <button type="button" data-practice-pawn-group="rook">车前兵</button>
+                    <button type="button" data-practice-pawn-group="knight">马前兵</button>
+                    <button type="button" data-practice-pawn-group="bishop">象前兵</button>
+                    <button type="button" data-practice-pawn-group="center">中间兵</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="status-box" id="practiceStatus">点击上方棋子按钮开始练习</div>
@@ -1094,13 +1156,28 @@
         }
       }
 
-      function armPractice(btn) {
+      var pawnPracticeGroups = {
+        rook: { label: '车前兵', cols: [0, 7] },
+        knight: { label: '马前兵', cols: [1, 6] },
+        bishop: { label: '象前兵', cols: [2, 5] },
+        center: { label: '中间兵', cols: [3, 4] }
+      };
+
+      function closePawnPracticeMenus() {
+        document.querySelectorAll('.practice-pawn-menu.open').forEach(function (menu) {
+          menu.classList.remove('open');
+          var trigger = menu.parentElement && menu.parentElement.querySelector('[data-practice-piece="p"]');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      function armPractice(btn, pawnGroupKey) {
         var kind = btn.getAttribute('data-practice-piece');
         var side = btn.getAttribute('data-practice-side');
         if (!kind || !side) return;
 
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
-        currentPractice = { kind: kind, side: side };
+        currentPractice = { kind: kind, side: side, pawnGroup: pawnPracticeGroups[pawnGroupKey] || null };
         currentPracticeBtn = btn;
         practiceArmed = true;
         btn.classList.add('practice-current');
@@ -1108,10 +1185,11 @@
         var prompt = practicePrompts[kind] || { display: '请点击棋子', voice: '现在请你点击棋盘上的棋子' };
         var sideColorWord = side === 'w' ? '白色' : '黑色';
         var pieceLabel = pieceMeta[kind] ? pieceMeta[kind].label : '棋子';
+        var targetLabel = currentPractice.pawnGroup ? currentPractice.pawnGroup.label : pieceLabel;
         if (practiceStatus) {
-          practiceStatus.textContent = (side === 'w' ? '白方：' : '黑方：') + prompt.display;
+          practiceStatus.textContent = (side === 'w' ? '白方：' : '黑方：') + (currentPractice.pawnGroup ? '请点击' + targetLabel : prompt.display);
         }
-        speak('现在请你点击' + sideColorWord + '的' + pieceLabel);
+        speak(currentPractice.pawnGroup ? '现在请你点击' + sideColorWord + '的' + targetLabel : '现在请你点击' + sideColorWord + '的' + pieceLabel);
       }
 
       function showPracticeMark(square, isCorrect) {
@@ -1134,7 +1212,8 @@
           var kindOk = node.classList.contains('kind-' + currentPractice.kind);
           var sideOk = (currentPractice.side === 'w' && node.classList.contains('white-piece')) ||
                        (currentPractice.side === 'b' && node.classList.contains('black-piece'));
-          ok = kindOk && sideOk;
+          var fileOk = !currentPractice.pawnGroup || currentPractice.pawnGroup.cols.indexOf(Number(square.dataset.col)) !== -1;
+          ok = kindOk && sideOk && fileOk;
         }
 
         practiceButtons.forEach(function (b) { b.classList.remove('practice-current', 'practice-correct', 'practice-wrong'); });
@@ -1145,18 +1224,19 @@
 
         var sideColorWord = currentPractice.side === 'w' ? '白色' : '黑色';
         var pieceLabel = pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子';
+        var targetLabel = currentPractice.pawnGroup ? currentPractice.pawnGroup.label : pieceLabel;
 
         if (ok) {
           if (practiceStatus) {
-            practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + pieceLabel;
+            practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + targetLabel;
           }
           speak('回答正确');
           practiceArmed = false;
         } else {
           if (practiceStatus) {
-            practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + pieceLabel;
+            practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + targetLabel;
           }
-          speak('回答错误，请点击' + sideColorWord + '的' + pieceLabel);
+          speak('回答错误，请点击' + sideColorWord + '的' + targetLabel);
         }
       }
 
@@ -1275,8 +1355,33 @@
 
       practiceButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
+          if (btn.getAttribute('data-practice-piece') === 'p') {
+            var side = btn.getAttribute('data-practice-side');
+            var menu = document.querySelector('[data-practice-pawn-menu="' + side + '"]');
+            var shouldOpen = menu && !menu.classList.contains('open');
+            closePawnPracticeMenus();
+            if (menu && shouldOpen) {
+              menu.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+            return;
+          }
           armPractice(btn);
         });
+      });
+
+      document.querySelectorAll('[data-practice-pawn-menu]').forEach(function (menu) {
+        menu.addEventListener('click', function (e) {
+          var choice = e.target.closest('[data-practice-pawn-group]');
+          if (!choice) return;
+          var trigger = menu.parentElement.querySelector('[data-practice-piece="p"]');
+          closePawnPracticeMenus();
+          if (trigger) armPractice(trigger, choice.getAttribute('data-practice-pawn-group'));
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.practice-pawn-wrap')) closePawnPracticeMenus();
       });
 
       boardEl.addEventListener('click', function (e) {

@@ -333,7 +333,7 @@
         if (!move) {
           return;
         }
-        if (move.isCheckmate || move.isThreefold || move.isFiftyMove) {
+        if (move.isCheckmate || move.isThreefold || move.isFiftyMove || move.isInsufficientMaterial) {
           cloneAndPlay(assets.gameEnd);
           return;
         }
@@ -397,6 +397,13 @@
   function createVoiceManager() {
     var lastSpeakAt = 0;
 
+    // speed=5 is native rate (1.0); 1..5 ramps down to 0.55, 5..10 ramps up to 1.6 — matches academy lesson pages.
+    function speedToRate(speed) {
+      var s = Math.min(10, Math.max(1, Number(speed) || 5));
+      if (s <= 5) return 0.55 + (s - 1) * (1.0 - 0.55) / 4;
+      return 1.0 + (s - 5) * (1.6 - 1.0) / 5;
+    }
+
     function stop() {
       if (window.speechSynthesis) {
         window.speechSynthesis.cancel();
@@ -418,7 +425,7 @@
         stop();
         var utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "zh-CN";
-        utterance.rate = 0.78 + (Number(speedRange ? speedRange.value : 5) - 5) * 0.04;
+        utterance.rate = speedToRate(speedRange ? speedRange.value : 5);
         utterance.pitch = 1;
         utterance.volume = Number(volumeRange ? volumeRange.value : 80) / 100;
 
@@ -1400,6 +1407,21 @@
     return isSquareAttacked(board, king.row, king.col, opposite(color));
   }
 
+  function isInsufficientMaterialPosition(board) {
+    var minors = [];
+    for (var row = 0; row < 8; row++) {
+      for (var col = 0; col < 8; col++) {
+        var piece = getPiece(row, col, board);
+        if (!piece || getKind(piece) === 'k') continue;
+        var kind = getKind(piece);
+        if (kind !== 'b' && kind !== 'n') return false;
+        minors.push({ kind: kind, squareColor: (row + col) % 2 });
+      }
+    }
+    if (minors.length < 2) return true;
+    return minors.every(function (minor) { return minor.kind === 'b' && minor.squareColor === minors[0].squareColor; });
+  }
+
   function createMove(fromRow, fromCol, toRow, toCol, extras) {
     var move = {
       fromRow: fromRow,
@@ -1762,6 +1784,7 @@
     state.positionCounts[posKey] = (state.positionCounts[posKey] || 0) + 1;
     var isThreefold = state.positionCounts[posKey] >= 3;
     var isFiftyMove = state.halfmoveClock >= 100;
+    var isMaterialDraw = isInsufficientMaterialPosition(state.board);
 
     if (isCheckmate) {
       state.gameOver = true;
@@ -1769,6 +1792,9 @@
     } else if (isStalemate) {
       state.gameOver = true;
       state.gameResultText = "逼和";
+    } else if (isMaterialDraw) {
+      state.gameOver = true;
+      state.gameResultText = "子力不足，和棋";
     } else if (isThreefold) {
       state.gameOver = true;
       state.gameResultText = "三次重复局面，和棋";
@@ -1793,6 +1819,7 @@
       isCheck: opponentInCheck,
       isCheckmate: isCheckmate,
       isStalemate: isStalemate,
+      isInsufficientMaterial: isMaterialDraw,
       isThreefold: isThreefold,
       isFiftyMove: isFiftyMove,
       promotionKind: move.promotionKind || null

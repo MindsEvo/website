@@ -585,7 +585,7 @@ window.ChessClassicGames = {
         {
           "index": 16,
           "move": "Nf5",
-          "popup": "⬆️ <b>9.Nf5 — 马跳f5！</b><br>白马来到极佳的攻击位置，威胁黑后！",
+          "popup": "⬆️ <b>9.Nf5 — 马跳f5！</b><br>白马来到极佳的攻击位置！",
           "highlights": [
             {
               "squares": [

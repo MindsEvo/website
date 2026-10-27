@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>6. 总结与回顾 | 入门启航</title>
   <style>
     :root {
@@ -144,6 +146,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
       padding: 8px 2px 4px;
     }
     .stop-demo-btn {
@@ -358,6 +362,8 @@
         </div>
         <div class="control-strip">
           <button class="stop-demo-btn" type="button" id="btnStopDemo">⏹ 停止演示</button>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><output id="volumeValue">80</output></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><output id="speedValue">5</output></span>
         </div>
       </section>
 

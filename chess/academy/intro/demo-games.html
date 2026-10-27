@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>5. 棋局演示 | 入门启航</title>
   <style>
     :root {
@@ -138,6 +140,17 @@
       pointer-events: none;
       z-index: 2;
     }
+
+    .move-square-hl {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: inset 0 0 0 4px rgba(15, 23, 42, 0.72);
+    }
+
+    .move-square-from,
+    .move-square-to { background: rgba(245, 214, 75, 0.48); }
 
     .piece-svg {
       width: 88%;
@@ -462,11 +475,17 @@
         } catch (e) {}
       }
 
+      function cleanSpeechText(text) {
+        return String(text || '').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, '').replace(/\s+/g, ' ').trim();
+      }
+
       function speak(text) {
         if (!state.voiceOn || !text || !window.speechSynthesis) return;
         try {
           window.speechSynthesis.cancel();
-          var ut = new SpeechSynthesisUtterance(text);
+          var spokenText = cleanSpeechText(text);
+          if (!spokenText) return;
+          var ut = new SpeechSynthesisUtterance(spokenText);
           ut.lang = 'zh-CN';
           ut.rate = 0.85 + (Number(speedRange.value) - 5) * 0.03;
           ut.volume = Number(volumeRange.value) / 100;
@@ -736,6 +755,15 @@
         el.appendChild(hl);
       }
 
+      function addMoveSquareHighlight(rc, kind) {
+        if (!rc) return;
+        var el = getSquareEl(rc[0], rc[1]);
+        if (!el) return;
+        var highlight = document.createElement('div');
+        highlight.className = 'move-square-hl move-square-' + kind;
+        el.appendChild(highlight);
+      }
+
       function drawArrow(fromSq, toSq, color) {
         var fromRC = squareToRC(fromSq), toRC = squareToRC(toSq);
         var p1 = squareCenterPx(fromRC[0], fromRC[1]);
@@ -750,7 +778,8 @@
         line.setAttribute('x1', p1.x); line.setAttribute('y1', p1.y);
         line.setAttribute('x2', ex); line.setAttribute('y2', ey);
         line.setAttribute('stroke', color);
-        line.setAttribute('stroke-width', 4);
+        line.setAttribute('stroke-width', 3);
+        line.setAttribute('stroke-dasharray', '8 5');
         line.setAttribute('stroke-linecap', 'round');
         arrowsEl.appendChild(line);
         var ah = 9;
@@ -850,6 +879,16 @@
         } else {
           var mv = state.moveMetas[n];
           var annoMove = state.anno.moves && state.anno.moves[n];
+          if (mv.from && mv.to) {
+            addMoveSquareHighlight(mv.from, 'from');
+            addMoveSquareHighlight(mv.to, 'to');
+            if (mv.isCastle) {
+              var rookFromCol = mv.to[1] > mv.from[1] ? 7 : 0;
+              var rookToCol = mv.to[1] > mv.from[1] ? 5 : 3;
+              addMoveSquareHighlight([mv.from[0], rookFromCol], 'from');
+              addMoveSquareHighlight([mv.from[0], rookToCol], 'to');
+            }
+          }
           if (annoMove) {
             showPopup(annoMove.popup);
             (annoMove.highlights || []).forEach(function (h) {
@@ -945,7 +984,7 @@
           btnExplainVoice.classList.remove('speaking');
           return;
         }
-        var text = explanationText.textContent.trim();
+        var text = cleanSpeechText(explanationText.textContent);
         if (!text) return;
         window.speechSynthesis.cancel();
         var ut = new SpeechSynthesisUtterance(text);

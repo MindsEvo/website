@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>1. 初步观察 | 入门启航</title>
   <style>
     :root {
@@ -648,8 +650,8 @@
           <button class="ctrl-btn">👤</button>
           <button class="ctrl-btn">🤖</button>
           <button class="ctrl-btn">◔</button>
-          <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
-          <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span class="meta-box" id="volumeValue">80</span></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span class="meta-box" id="speedValue">5</span></span>
         </div>
       </section>
 

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../audio-settings.css" />
+  <script src="../audio-settings.js"></script>
   <title>2. 认识棋盘 | 入门启航</title>
   <style>
     :root {
@@ -404,7 +406,7 @@
     .board.hl-border-overlay {
       outline: 4px solid #28a745;
       outline-offset: 0;
-      animation: borderPulse 0.5s ease-in-out 3;
+      animation: borderPulse 1.0s ease-in-out 6;
     }
 
     .square.hl-light-overlay::after   { background: rgba(255, 87, 34, 0.78); opacity: 1; }
@@ -414,6 +416,8 @@
     .square.hl-diag-dark-overlay::after  { background: rgba(220, 20, 60, 0.75); opacity: 1; }
     .square.hl-diag-light-overlay::after { background: rgba(34, 139, 34, 0.75); opacity: 1; }
     .square.hl-coord-overlay::after   { background: rgba(245, 158, 11, 0.65); opacity: 1; }
+    .square.practice-blink.hl-file-overlay::after { background: rgba(220, 38, 38, 0.78); }
+    .square.practice-blink.hl-diag-light-overlay::after { background: rgba(244, 63, 94, 0.78); }
 
     /* first point picked for a 横/竖/斜 two-click line practice, waiting on the second click */
     .square.practice-point::after {
@@ -625,8 +629,8 @@
           <button class="ctrl-btn">👤</button>
           <button class="ctrl-btn">🤖</button>
           <button class="ctrl-btn">◔</button>
-          <span class="meta">音量:<span class="bar"></span><span class="meta-box">80</span></span>
-          <span class="meta">速度:<span class="bar speed"></span><span class="meta-box">5</span></span>
+          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span class="meta-box" id="volumeValue">80</span></span>
+          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span class="meta-box" id="speedValue">5</span></span>
         </div>
       </section>
 
@@ -788,8 +792,8 @@
         'dark-squares': { voice: '请观察深色格子，它们与浅色格子交替排列形成棋盘' },
         'ranks': { voice: '请观察横格，棋盘从下到上有8行横格，称为第1行到第8行' },
         'files': { voice: '请观察竖格，棋盘从左到右有8列竖格，称为a列到h列' },
-        'dark-diagonals': { voice: '请观察深色对角线，这些深色格子连成的斜线在国际象棋中很重要' },
-        'light-diagonals': { voice: '请观察浅色对角线，这些浅色格子连成的斜线同样很关键' },
+        'dark-diagonals': { voice: '请观察深色对角线' },
+        'light-diagonals': { voice: '请观察浅色对角线' },
         'coordinates': { voice: '现在来认识棋盘坐标，每个格子都有唯一的坐标名称' }
       };
 
@@ -797,8 +801,8 @@
         'board-border': { prompt: '现在请你点击棋盘边界' },
         'light-squares': { prompt: '现在请你点击浅色格子区域' },
         'dark-squares': { prompt: '现在请你点击深色格子区域' },
-        'ranks': { prompt: '现在请你点击同一横格的任意两个格子' },
-        'files': { prompt: '现在请你点击同一竖格的任意两个格子' },
+        'ranks': { prompt: '现在请你点击同一横行的任意两个格子' },
+        'files': { prompt: '现在请你点击同一竖列的任意两个格子' },
         'dark-diagonals': { prompt: '现在请你点击同一条深色对角线上的任意两个格子' },
         'light-diagonals': { prompt: '现在请你点击同一条浅色对角线上的任意两个格子' },
         'coordinates': { prompt: '现在请你点击任意格子并说出它的坐标' }
@@ -1050,7 +1054,7 @@
           activeIntervals[scope] = window.setTimeout(function () {
             boardEl.classList.remove(blinkClass, 'hl-border-overlay');
             activeIntervals[scope] = null;
-          }, 1500);
+          }, 6000);
           return;
         }
 
