@@ -3500,6 +3500,958 @@ var LANG_DATA = {
 
 
 
+  ,
+    {
+      "id": "zh-g1-rainy-day-window",
+      "lang": "zh",
+      "grade": "G1",
+      "title": "雨停以后",
+      "genre": "story",
+      "source": {
+        "type": "original",
+        "author": "MindsEvo",
+        "note": "Original Chinese literacy passage"
+      },
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "午后，雨点轻轻敲着教室的窗。"
+        },
+        {
+          "id": "s2",
+          "text": "雨停后，小满看见花坛里留着一小片水。"
+        },
+        {
+          "id": "s3",
+          "text": "一只麻雀落在水边，低头喝了几口水。"
+        },
+        {
+          "id": "s4",
+          "text": "风吹过树叶，几滴水珠又落进花坛。"
+        },
+        {
+          "id": "s5",
+          "text": "小满说：“雨停了，花坛里还藏着雨的声音。”"
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-rainy-day-window",
+          "unit": "observe",
+          "template": "text-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "雨停后，什么动物落在花坛的水边？",
+          "options": [
+            {
+              "text": "一只麻雀"
+            },
+            {
+              "text": "一只蝴蝶",
+              "errorType": "fabrication"
+            },
+            {
+              "text": "一只小猫",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-comprehend-rainy-day-window",
+          "unit": "comprehend",
+          "template": "text-cause-result",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "麻雀为什么能在花坛边喝到水？",
+          "options": [
+            {
+              "text": "雨后花坛里留下了一小片水"
+            },
+            {
+              "text": "小满端来了一碗水",
+              "errorType": "fabrication"
+            },
+            {
+              "text": "树叶变成了水杯",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-rainy-day-window",
+          "unit": "infer",
+          "template": "claim",
+          "level": "L2",
+          "interaction": "select",
+          "pairId": "rain-sound-after-storm",
+          "prompt": "小满说花坛里还藏着雨的声音，最可能指什么？",
+          "options": [
+            {
+              "text": "树叶上的水滴落进花坛，声音像雨点还在轻轻落下"
+            },
+            {
+              "text": "大雨马上又开始了",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "麻雀在模仿雷声",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-rainy-day-window-evidence",
+          "unit": "infer",
+          "template": "claim-evidence",
+          "level": "L2",
+          "interaction": "evidence",
+          "pairId": "rain-sound-after-storm",
+          "claimItemId": "q-infer-rainy-day-window",
+          "evidenceFor": "q-infer-rainy-day-window",
+          "target": "sentence",
+          "answer": [
+            "s4",
+            "s5"
+          ]
+        },
+        {
+          "id": "q-structure-rainy-day-window",
+          "unit": "structure",
+          "template": "text-sequence",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "按故事顺序排列。",
+          "cards": [
+            {
+              "id": "o1",
+              "text": "雨点敲着教室的窗"
+            },
+            {
+              "id": "o2",
+              "text": "麻雀在水边喝水"
+            },
+            {
+              "id": "o3",
+              "text": "树叶上的水珠落进花坛"
+            }
+          ],
+          "answer": [
+            "o1",
+            "o2",
+            "o3"
+          ]
+        },
+        {
+          "id": "q-choose-rainy-day-window",
+          "unit": "choose",
+          "template": "word-choice",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "第一句用哪个词写出了雨点碰到窗户的样子？",
+          "options": [
+            {
+              "text": "敲"
+            },
+            {
+              "text": "抱",
+              "errorType": "context_mismatch"
+            },
+            {
+              "text": "藏",
+              "errorType": "context_mismatch"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "根据短文，说明雨停以后花坛里还留下了哪些雨的痕迹。",
+        "slots": [
+          {
+            "key": "sight",
+            "name": "看见的痕迹",
+            "options": [
+              "花坛里留下的水",
+              "树叶上的水珠",
+              "麻雀在水边喝水"
+            ]
+          },
+          {
+            "key": "sound",
+            "name": "听到或想到的声音",
+            "options": [
+              "水珠落进花坛的声音",
+              "像雨点轻轻落下的声音",
+              "雨后细小的水声"
+            ]
+          }
+        ],
+        "template": "雨停以后，我从{sight}看见雨留下的痕迹，也从{sound}感到雨的声音还没有完全消失。",
+        "otherIdeas": [
+          {
+            "viewpoint": "观察景物",
+            "text": "积水和水珠让雨后的花坛显得湿润。"
+          },
+          {
+            "viewpoint": "联系动作",
+            "text": "麻雀来喝水，说明雨水还留在花坛里。"
+          },
+          {
+            "viewpoint": "解释句子",
+            "text": "水珠落下的声音让小满觉得雨声还藏在那里。"
+          }
+        ],
+        "reflectPrompt": "哪一种表达同时使用了短文中的景物和声音？"
+      },
+      "createCcr": {
+        "prompt": "想象第二天小满再次来到窗边，创造一个新的发现。",
+        "slots": [
+          {
+            "key": "discovery",
+            "name": "新的发现",
+            "options": [
+              "水边长出一颗小芽",
+              "麻雀留下了一根羽毛",
+              "阳光照出一小道彩虹"
+            ]
+          },
+          {
+            "key": "action",
+            "name": "小满的行动",
+            "options": [
+              "把它画进观察本",
+              "请同学一起来看",
+              "写下一句新的比喻"
+            ]
+          }
+        ],
+        "template": "第二天，小满发现{discovery}，于是他{action}。",
+        "otherIdeas": [
+          {
+            "viewpoint": "自然变化",
+            "text": "积水变少了，泥土却仍然湿润。"
+          },
+          {
+            "viewpoint": "动物来访",
+            "text": "另一只小鸟也来到花坛寻找水。"
+          },
+          {
+            "viewpoint": "新的表达",
+            "text": "小满把阳光下的水珠比作亮晶晶的小灯。"
+          }
+        ],
+        "reflectPrompt": "哪一个新发现既接着原来的场景，又带来了新的内容？"
+      }
+    },
+    {
+      "id": "en-g1-lost-mitten",
+      "lang": "en",
+      "grade": "G1",
+      "title": "The Mitten on the Fence",
+      "genre": "story",
+      "source": {
+        "type": "original",
+        "author": "MindsEvo",
+        "note": "Original English literacy passage"
+      },
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Nora found a blue mitten beside the snowy path."
+        },
+        {
+          "id": "s2",
+          "text": "It was too large for her hand and had a silver star near the thumb."
+        },
+        {
+          "id": "s3",
+          "text": "She placed it on the low fence where someone could see it."
+        },
+        {
+          "id": "s4",
+          "text": "After lunch, Mr. Lee hurried back along the path."
+        },
+        {
+          "id": "s5",
+          "text": "He saw the silver star and smiled because it matched the mitten in his pocket."
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-lost-mitten",
+          "unit": "observe",
+          "template": "text-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "What color was the mitten Nora found?",
+          "options": [
+            {
+              "text": "Blue"
+            },
+            {
+              "text": "Red",
+              "errorType": "fabrication"
+            },
+            {
+              "text": "Green",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-comprehend-lost-mitten",
+          "unit": "comprehend",
+          "template": "text-action-purpose",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "Why did Nora place the mitten on the fence?",
+          "options": [
+            {
+              "text": "So its owner could see and find it"
+            },
+            {
+              "text": "So snow would cover it",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "So she could take it home later",
+              "errorType": "unsupported"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-lost-mitten",
+          "unit": "infer",
+          "template": "claim",
+          "level": "L2",
+          "interaction": "select",
+          "pairId": "mitten-owner-clue",
+          "prompt": "How did Mr. Lee know the mitten was probably his?",
+          "options": [
+            {
+              "text": "Its silver star matched the mitten in his pocket"
+            },
+            {
+              "text": "Nora had written his name on it",
+              "errorType": "fabrication"
+            },
+            {
+              "text": "Every mitten on the path belonged to him",
+              "errorType": "unsupported"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-lost-mitten-evidence",
+          "unit": "infer",
+          "template": "claim-evidence",
+          "level": "L2",
+          "interaction": "evidence",
+          "pairId": "mitten-owner-clue",
+          "claimItemId": "q-infer-lost-mitten",
+          "evidenceFor": "q-infer-lost-mitten",
+          "target": "sentence",
+          "answer": [
+            "s2",
+            "s5"
+          ]
+        },
+        {
+          "id": "q-structure-lost-mitten",
+          "unit": "structure",
+          "template": "text-sequence",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "Put the events in story order.",
+          "cards": [
+            {
+              "id": "o1",
+              "text": "Nora finds the mitten"
+            },
+            {
+              "id": "o2",
+              "text": "Nora places it on the fence"
+            },
+            {
+              "id": "o3",
+              "text": "Mr. Lee recognizes the silver star"
+            }
+          ],
+          "answer": [
+            "o1",
+            "o2",
+            "o3"
+          ]
+        },
+        {
+          "id": "q-choose-lost-mitten",
+          "unit": "choose",
+          "template": "context-word",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "Which word tells how Mr. Lee moved when he returned?",
+          "options": [
+            {
+              "text": "Hurried"
+            },
+            {
+              "text": "Floated",
+              "errorType": "context_mismatch"
+            },
+            {
+              "text": "Crawled",
+              "errorType": "context_mismatch"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "Use story details to explain how Nora helped the mitten return to its owner.",
+        "slots": [
+          {
+            "key": "detail",
+            "name": "A detail Nora noticed",
+            "options": [
+              "the mitten was too large for her",
+              "it had a silver star",
+              "it was beside the snowy path"
+            ]
+          },
+          {
+            "key": "action",
+            "name": "What Nora did",
+            "options": [
+              "placed it where people could see it",
+              "left it on the low fence",
+              "made the mitten easy to notice"
+            ]
+          },
+          {
+            "key": "result",
+            "name": "What happened",
+            "options": [
+              "Mr. Lee recognized the matching star",
+              "the owner found the missing mitten",
+              "the pair of mittens could be together again"
+            ]
+          }
+        ],
+        "template": "Nora noticed {detail}. She {action}, so {result}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Use the clue",
+            "text": "The silver star connected the found mitten to the one in Mr. Lee's pocket."
+          },
+          {
+            "viewpoint": "Explain the action",
+            "text": "The fence made the mitten visible without Nora taking it away."
+          },
+          {
+            "viewpoint": "Explain the result",
+            "text": "Mr. Lee identified the mitten from a detail stated in the story."
+          }
+        ],
+        "reflectPrompt": "Which explanation connects Nora's observation, action, and the result?"
+      },
+      "createCcr": {
+        "prompt": "Create a different safe way Nora could help return the mitten.",
+        "slots": [
+          {
+            "key": "newAction",
+            "name": "A new action",
+            "options": [
+              "take it to the school office",
+              "make a small lost-item sign",
+              "ask a nearby adult for help"
+            ]
+          },
+          {
+            "key": "newResult",
+            "name": "A possible result",
+            "options": [
+              "the owner knows where to look",
+              "more people can help identify it",
+              "the mitten stays safe until it is claimed"
+            ]
+          }
+        ],
+        "template": "Nora could {newAction}. Then {newResult}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "School solution",
+            "text": "She could place it in the school's lost-and-found box."
+          },
+          {
+            "viewpoint": "Message solution",
+            "text": "She could draw the mitten without showing every identifying detail."
+          },
+          {
+            "viewpoint": "Adult help",
+            "text": "She could ask a crossing guard to keep it safe."
+          }
+        ],
+        "reflectPrompt": "Which new solution is safe, practical, and different from the story's solution?"
+      }
+    }
+  ,
+    {
+      "id": "zh-g2-shadow-riddle",
+      "lang": "zh",
+      "grade": "G2",
+      "title": "会变长短的朋友",
+      "genre": "riddle-wordplay",
+      "source": {
+        "type": "original",
+        "author": "MindsEvo",
+        "note": "Original Chinese riddle and wordplay material"
+      },
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "我总跟着你，却从来不拉你的手。"
+        },
+        {
+          "id": "s2",
+          "text": "太阳低低的时候，我会变得很长。"
+        },
+        {
+          "id": "s3",
+          "text": "太阳升高以后，我又慢慢变短。"
+        },
+        {
+          "id": "s4",
+          "text": "走进没有灯的屋子，你就很难找到我。"
+        },
+        {
+          "id": "s5",
+          "text": "我不是另一个人，也不是地上的黑布。猜猜我是谁？"
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-shadow-riddle",
+          "unit": "observe",
+          "template": "riddle-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "谜面说，这个“朋友”在什么时候会变得很长？",
+          "options": [
+            {
+              "text": "太阳低低的时候"
+            },
+            {
+              "text": "太阳升得很高的时候",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "没有灯的屋子里",
+              "errorType": "contradicts_text"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-comprehend-shadow-riddle",
+          "unit": "comprehend",
+          "template": "clue-combination",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "哪两个线索合在一起，最能排除“地上的黑布”？",
+          "options": [
+            {
+              "text": "它会跟着人，而且会随着太阳高低改变长短"
+            },
+            {
+              "text": "它看起来是黑的，而且在地面上",
+              "errorType": "incomplete_evidence"
+            },
+            {
+              "text": "它不会拉手，而且不是另一个人",
+              "errorType": "weak_evidence"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-shadow-riddle",
+          "unit": "infer",
+          "template": "claim",
+          "level": "L3",
+          "interaction": "select",
+          "pairId": "shadow-riddle-answer",
+          "prompt": "综合全部线索，谜底最可能是什么？",
+          "options": [
+            {
+              "text": "影子"
+            },
+            {
+              "text": "黑布",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "朋友",
+              "errorType": "literal_trap"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-shadow-riddle-evidence",
+          "unit": "infer",
+          "template": "claim-evidence",
+          "level": "L3",
+          "interaction": "evidence",
+          "pairId": "shadow-riddle-answer",
+          "claimItemId": "q-infer-shadow-riddle",
+          "evidenceFor": "q-infer-shadow-riddle",
+          "target": "sentence",
+          "answer": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "q-choose-shadow-riddle",
+          "unit": "choose",
+          "template": "word-meaning",
+          "level": "L3",
+          "interaction": "select",
+          "prompt": "第一句中的“朋友”为什么加引号最合适？",
+          "options": [
+            {
+              "text": "它把影子当作朋友来写，并不是真的指一个人"
+            },
+            {
+              "text": "它表示说话的人忘了朋友的名字",
+              "errorType": "fabrication"
+            },
+            {
+              "text": "它说明谜底一定是另一个孩子",
+              "errorType": "literal_trap"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "根据谜面，解释几个线索怎样共同指向“影子”。",
+        "slots": [
+          {
+            "key": "movement",
+            "name": "跟随线索",
+            "options": [
+              "影子会随着人一起移动",
+              "“总跟着你”说明它和人的位置有关",
+              "它不像真正的朋友那样拉手"
+            ]
+          },
+          {
+            "key": "light",
+            "name": "光线线索",
+            "options": [
+              "太阳高低会改变影子的长短",
+              "没有光时影子很难出现",
+              "长短变化排除了不会变化的黑布"
+            ]
+          }
+        ],
+        "template": "“{movement}”说明谜底会跟随人；“{light}”进一步说明它和光有关，所以谜底是影子。",
+        "otherIdeas": [
+          {
+            "viewpoint": "组合线索",
+            "text": "跟随、变长变短和黑暗中难以找到，三个线索要合起来判断。"
+          },
+          {
+            "viewpoint": "排除错误答案",
+            "text": "黑布不会随着太阳高低改变长短，因此不符合全部线索。"
+          },
+          {
+            "viewpoint": "理解拟人",
+            "text": "谜面把影子叫作朋友，让线索更生动，也制造了文字上的迷惑。"
+          }
+        ],
+        "reflectPrompt": "哪一种解释既使用了多个线索，又说明了为什么其他答案不合适？"
+      },
+      "createCcr": {
+        "prompt": "保留谜底“影子”，改变观察角度，创作一组新的谜面线索。",
+        "slots": [
+          {
+            "key": "newClue",
+            "name": "新线索",
+            "options": [
+              "路灯亮起时，我又出现在脚边",
+              "你跳起来，我也跟着跳",
+              "阴天时，我常常变得很淡"
+            ]
+          },
+          {
+            "key": "misdirection",
+            "name": "迷惑性表达",
+            "options": [
+              "我像一个不会说话的伙伴",
+              "我会变形，却不是橡皮泥",
+              "我躺在地上，却不是一张纸"
+            ]
+          }
+        ],
+        "template": "{misdirection}。{newClue}。猜猜我是谁？",
+        "otherIdeas": [
+          {
+            "viewpoint": "动作",
+            "text": "用跑、跳、转身时影子同步变化来设计线索。"
+          },
+          {
+            "viewpoint": "不同光源",
+            "text": "把太阳换成路灯或手电筒，产生新的影子变化。"
+          },
+          {
+            "viewpoint": "排除",
+            "text": "加入一句说明它不是人、动物或物品，增加推理过程。"
+          }
+        ],
+        "reflectPrompt": "哪组新线索既没有直接说出答案，又能让读者通过组合信息猜到影子？"
+      }
+    },
+    {
+      "id": "en-g2-library-mixup-dialogue",
+      "lang": "en",
+      "grade": "G2",
+      "title": "The Book on the Return Cart",
+      "genre": "situational-dialogue",
+      "source": {
+        "type": "original",
+        "author": "MindsEvo",
+        "note": "Original English situational dialogue"
+      },
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Mia: Excuse me, I think someone took the animal book I left on this table."
+        },
+        {
+          "id": "s2",
+          "text": "Jon: I moved a book with a fox on the cover, but I did not check it out."
+        },
+        {
+          "id": "s3",
+          "text": "Mia: Oh, I thought you meant you took it home."
+        },
+        {
+          "id": "s4",
+          "text": "Jon: Sorry, I meant that I put it on the return cart because I thought someone had finished with it."
+        },
+        {
+          "id": "s5",
+          "text": "Librarian: The book is still here. Next time, please leave a note if you are coming back for a book."
+        },
+        {
+          "id": "s6",
+          "text": "Mia: Thank you for explaining. I should have asked what you meant before I worried."
+        },
+        {
+          "id": "s7",
+          "text": "Jon: And I can ask before moving a book that is sitting at someone’s place."
+        }
+      ],
+      "items": [
+        {
+          "id": "q-comprehend-library-mixup",
+          "unit": "comprehend",
+          "template": "dialogue-misunderstanding",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "What did Jon actually do with the animal book?",
+          "options": [
+            {
+              "text": "He placed it on the return cart."
+            },
+            {
+              "text": "He checked it out and took it home.",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "He hid it behind another book.",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-library-mixup",
+          "unit": "infer",
+          "template": "claim",
+          "level": "L3",
+          "interaction": "select",
+          "pairId": "jon-intention-library",
+          "prompt": "What was Jon most likely trying to do when he moved the book?",
+          "options": [
+            {
+              "text": "Help return a book he believed someone had finished using."
+            },
+            {
+              "text": "Keep Mia from reading the book.",
+              "errorType": "contradicts_text"
+            },
+            {
+              "text": "Take the book without checking it out.",
+              "errorType": "contradicts_text"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-library-mixup-evidence",
+          "unit": "infer",
+          "template": "claim-evidence",
+          "level": "L3",
+          "interaction": "evidence",
+          "pairId": "jon-intention-library",
+          "claimItemId": "q-infer-library-mixup",
+          "evidenceFor": "q-infer-library-mixup",
+          "target": "sentence",
+          "answer": [
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "id": "q-structure-library-mixup",
+          "unit": "structure",
+          "template": "dialogue-sequence",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "Put the parts of the conversation in order.",
+          "cards": [
+            {
+              "id": "o1",
+              "text": "Mia believes the book was taken."
+            },
+            {
+              "id": "o2",
+              "text": "Jon explains that he moved it to the return cart."
+            },
+            {
+              "id": "o3",
+              "text": "Mia and Jon suggest what they can do differently next time."
+            }
+          ],
+          "answer": [
+            "o1",
+            "o2",
+            "o3"
+          ]
+        },
+        {
+          "id": "q-choose-library-mixup",
+          "unit": "choose",
+          "template": "polite-wording",
+          "level": "L3",
+          "interaction": "select",
+          "prompt": "Which line most clearly shows Mia checking the meaning politely instead of making an accusation?",
+          "options": [
+            {
+              "text": "“Could you explain what you mean by ‘moved’?”"
+            },
+            {
+              "text": "“You took my book, and I know it.”",
+              "errorType": "tone_mismatch"
+            },
+            {
+              "text": "“Give it back right now.”",
+              "errorType": "tone_mismatch"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "Use the dialogue to explain how the misunderstanding began and how the speakers cleared it up.",
+        "slots": [
+          {
+            "key": "misunderstanding",
+            "name": "What Mia first believed",
+            "options": [
+              "Mia thought Jon had taken the book home",
+              "Mia understood “moved” to mean that the book was gone",
+              "Mia worried before asking Jon what he meant"
+            ]
+          },
+          {
+            "key": "clarification",
+            "name": "What clarified the situation",
+            "options": [
+              "Jon explained that he had put the book on the return cart",
+              "the librarian confirmed that the book was still in the library",
+              "the speakers explained their meanings instead of continuing to assume"
+            ]
+          }
+        ],
+        "template": "{misunderstanding}. The situation became clear when {clarification}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Word meaning",
+            "text": "The misunderstanding centered on what Jon meant by the word “moved.”"
+          },
+          {
+            "viewpoint": "Speaker intention",
+            "text": "Jon intended to help, even though moving the book caused confusion."
+          },
+          {
+            "viewpoint": "Resolution",
+            "text": "The speakers listened to one another and agreed on clearer actions for next time."
+          }
+        ],
+        "reflectPrompt": "Which explanation distinguishes Mia’s first assumption from Jon’s actual intention?"
+      },
+      "createCcr": {
+        "prompt": "Create a new polite exchange that could prevent the same misunderstanding before the book is moved.",
+        "slots": [
+          {
+            "key": "question",
+            "name": "Jon’s new question",
+            "options": [
+              "Is someone still using this book?",
+              "May I move this book to the return cart?",
+              "Does this book belong at this seat?"
+            ]
+          },
+          {
+            "key": "reply",
+            "name": "Mia’s clear reply",
+            "options": [
+              "I am still using it, and I will be back soon.",
+              "Please leave it here; I have not finished yet.",
+              "Yes, I am coming back for it after I find another book."
+            ]
+          }
+        ],
+        "template": "Jon asks, “{question}” Mia replies, “{reply}”",
+        "otherIdeas": [
+          {
+            "viewpoint": "Use a note",
+            "text": "Mia could leave a short note saying that she is still using the book."
+          },
+          {
+            "viewpoint": "Ask the librarian",
+            "text": "Jon could ask the librarian before placing the book on the return cart."
+          },
+          {
+            "viewpoint": "Clarify a word",
+            "text": "Mia could ask what “moved” means before deciding that the book was taken away."
+          }
+        ],
+        "reflectPrompt": "Which new exchange is polite, clear, and prevents the confusion before it starts?"
+      }
+    }
   ],
 
   // K1–K2 (pre-reading): small emoji scenes, no sentences. `objects` are
@@ -5452,5 +6404,933 @@ var LANG_DATA = {
       "reflectPrompt": "Which idea creates a genuinely new action, design, or story direction after the repair?"
     }
   }
+  ,
+    {
+      "id": "zh-k1-rhyme-rain-boots",
+      "lang": "zh",
+      "grade": "K1",
+      "title": "小雨靴踩水花",
+      "genre": "nursery-rhyme-scene",
+      "background": "雨后的小路上有三个浅水洼，孩子穿着黄色雨靴。",
+      "objects": [
+        {
+          "id": "child",
+          "emoji": "🧒",
+          "label": "穿黄色雨靴的孩子"
+        },
+        {
+          "id": "boots",
+          "emoji": "🥾",
+          "label": "黄色雨靴"
+        },
+        {
+          "id": "puddle-small",
+          "emoji": "💧",
+          "label": "小水洼"
+        },
+        {
+          "id": "puddle-big",
+          "emoji": "💦",
+          "label": "大水洼"
+        }
+      ],
+      "narration": "小雨靴，走一走，啪嗒啪嗒踩小沟。小水花，跳一跳，啪嗒啪嗒又来到。",
+      "frames": [
+        {
+          "id": "rain-boots-f1",
+          "narration": "孩子穿着黄色雨靴走到第一个小水洼前。",
+          "objects": [
+            "child",
+            "boots",
+            "puddle-small"
+          ]
+        },
+        {
+          "id": "rain-boots-f2",
+          "narration": "左脚踩下去，水花“啪嗒”跳起来。",
+          "objects": [
+            "child",
+            "boots",
+            "puddle-small"
+          ]
+        },
+        {
+          "id": "rain-boots-f3",
+          "narration": "孩子走到大水洼前，准备再踩一下。",
+          "objects": [
+            "child",
+            "boots",
+            "puddle-big"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-rain-boots",
+          "unit": "observe",
+          "template": "scene-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "画面里的孩子脚上穿着什么？",
+          "options": [
+            {
+              "text": "黄色雨靴"
+            },
+            {
+              "text": "红色拖鞋",
+              "errorType": "scene_mismatch"
+            },
+            {
+              "text": "蓝色袜子",
+              "errorType": "scene_mismatch"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-choose-rain-boots",
+          "unit": "choose",
+          "template": "sound-word",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "童谣里用哪个声音词写雨靴踩水？",
+          "options": [
+            {
+              "text": "啪嗒啪嗒"
+            },
+            {
+              "text": "呼噜呼噜",
+              "errorType": "narration_mismatch"
+            },
+            {
+              "text": "叮铃叮铃",
+              "errorType": "narration_mismatch"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-structure-rain-boots",
+          "unit": "structure",
+          "template": "scene-order",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "按画面顺序排列。",
+          "cards": [
+            {
+              "id": "rain-boots-o1",
+              "text": "走到小水洼前"
+            },
+            {
+              "id": "rain-boots-o2",
+              "text": "左脚踩出水花"
+            },
+            {
+              "id": "rain-boots-o3",
+              "text": "走向大水洼"
+            }
+          ],
+          "answer": [
+            "rain-boots-o1",
+            "rain-boots-o2",
+            "rain-boots-o3"
+          ]
+        }
+      ],
+      "expressCcr": {
+        "prompt": "根据童谣和画面，说说雨靴怎样让小水花跳起来。",
+        "slots": [
+          {
+            "key": "action",
+            "name": "孩子的动作",
+            "options": [
+              "穿着雨靴踩进水洼",
+              "走到水洼前再抬起脚",
+              "左脚踩进浅浅的水里"
+            ]
+          },
+          {
+            "key": "sound",
+            "name": "听到的声音",
+            "options": [
+              "啪嗒啪嗒",
+              "童谣重复的踩水声",
+              "雨靴碰到水的声音"
+            ]
+          }
+        ],
+        "template": "孩子{action}，水花跳起来，听起来像{sound}。",
+        "otherIdeas": [
+          {
+            "viewpoint": "看动作",
+            "text": "孩子先走到水洼前，再抬脚踩下去。"
+          },
+          {
+            "viewpoint": "听节奏",
+            "text": "“啪嗒啪嗒”重复出现，让踩水有节奏。"
+          },
+          {
+            "viewpoint": "看水花",
+            "text": "雨靴踩进水里以后，小水花向上跳。"
+          }
+        ],
+        "reflectPrompt": "哪种说法同时用了画面中的动作和童谣里的声音？"
+      },
+      "createCcr": {
+        "prompt": "为下一次踩水创造一句新的、有节奏的童谣。",
+        "slots": [
+          {
+            "key": "newAction",
+            "name": "新的动作",
+            "options": [
+              "轻轻踩一踩",
+              "两脚跳一跳",
+              "绕过水洼再回来"
+            ]
+          },
+          {
+            "key": "newSound",
+            "name": "新的声音",
+            "options": [
+              "扑通扑通",
+              "滴答滴答",
+              "哗啦哗啦"
+            ]
+          }
+        ],
+        "template": "小雨靴，{newAction}，{newSound}水花笑。",
+        "otherIdeas": [
+          {
+            "viewpoint": "改变动作",
+            "text": "让孩子从走路变成双脚一起跳。"
+          },
+          {
+            "viewpoint": "改变声音",
+            "text": "大水洼可以配上更响的拟声词。"
+          },
+          {
+            "viewpoint": "改变节奏",
+            "text": "把重复两次的声音改成三次。"
+          }
+        ],
+        "reflectPrompt": "哪一句既有新动作，又保持了童谣的节奏？"
+      }
+    },
+    {
+      "id": "en-k1-riddle-red-ball",
+      "lang": "en",
+      "grade": "K1",
+      "title": "Where Is the Red Ball?",
+      "genre": "riddle-scene",
+      "background": "A playground with a bench, a blue slide, and a red ball partly visible behind a yellow bucket.",
+      "objects": [
+        {
+          "id": "red-ball",
+          "emoji": "🔴",
+          "label": "red ball"
+        },
+        {
+          "id": "yellow-bucket",
+          "emoji": "🪣",
+          "label": "yellow bucket"
+        },
+        {
+          "id": "blue-slide",
+          "emoji": "🛝",
+          "label": "blue slide"
+        },
+        {
+          "id": "bench",
+          "emoji": "🪑",
+          "label": "bench"
+        }
+      ],
+      "narration": "I am round. I am red. Part of me peeks out behind the yellow bucket. I am not under the bench. What am I?",
+      "frames": [
+        {
+          "id": "red-ball-f1",
+          "narration": "The playground has a blue slide, a bench, and a yellow bucket.",
+          "objects": [
+            "blue-slide",
+            "bench",
+            "yellow-bucket"
+          ]
+        },
+        {
+          "id": "red-ball-f2",
+          "narration": "A small red curve can be seen behind the yellow bucket.",
+          "objects": [
+            "red-ball",
+            "yellow-bucket",
+            "blue-slide",
+            "bench"
+          ]
+        },
+        {
+          "id": "red-ball-f3",
+          "narration": "The round red ball rolls out from behind the bucket.",
+          "objects": [
+            "red-ball",
+            "yellow-bucket"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-red-ball",
+          "unit": "observe",
+          "template": "scene-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "What color is the curved part peeking behind the bucket?",
+          "options": [
+            {
+              "text": "Red"
+            },
+            {
+              "text": "Blue",
+              "errorType": "scene_mismatch"
+            },
+            {
+              "text": "Green",
+              "errorType": "scene_mismatch"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-comprehend-red-ball",
+          "unit": "comprehend",
+          "template": "riddle-clue",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "Where does the riddle say the hidden object is?",
+          "options": [
+            {
+              "text": "Behind the yellow bucket"
+            },
+            {
+              "text": "Under the bench",
+              "errorType": "contradicts_narration"
+            },
+            {
+              "text": "At the top of the slide",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-red-ball",
+          "unit": "infer",
+          "template": "clue-combination",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "Use the picture and all the clues. What is hiding?",
+          "options": [
+            {
+              "text": "The red ball"
+            },
+            {
+              "text": "The blue slide",
+              "errorType": "clue_mismatch"
+            },
+            {
+              "text": "The bench",
+              "errorType": "clue_mismatch"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "Use the visible clues to explain how you found the red ball.",
+        "slots": [
+          {
+            "key": "look",
+            "name": "What it looks like",
+            "options": [
+              "round and red",
+              "a red curve peeking out",
+              "the same color as the hidden ball"
+            ]
+          },
+          {
+            "key": "place",
+            "name": "Where it is",
+            "options": [
+              "behind the yellow bucket",
+              "near the slide but not under the bench",
+              "partly covered by the bucket"
+            ]
+          }
+        ],
+        "template": "I think it is the ball because it looks {look} and is {place}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Use color",
+            "text": "The visible part is red, just like the clue says."
+          },
+          {
+            "viewpoint": "Use shape",
+            "text": "The curved edge suggests a round object."
+          },
+          {
+            "viewpoint": "Use location",
+            "text": "The picture places it behind the yellow bucket, not under the bench."
+          }
+        ],
+        "reflectPrompt": "Which explanation uses both a picture clue and a location clue?"
+      },
+      "createCcr": {
+        "prompt": "Create one new clue for the same hidden red ball.",
+        "slots": [
+          {
+            "key": "newClue",
+            "name": "A new clue",
+            "options": [
+              "I can roll across the playground",
+              "I can bounce when a child drops me",
+              "I fit in two small hands"
+            ]
+          },
+          {
+            "key": "hidePlace",
+            "name": "A new hiding place",
+            "options": [
+              "beside the slide",
+              "under the bench",
+              "inside the open toy box"
+            ]
+          }
+        ],
+        "template": "New clue: {newClue}. Look for me {hidePlace}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Movement clue",
+            "text": "Describe how the ball rolls or bounces."
+          },
+          {
+            "viewpoint": "Size clue",
+            "text": "Describe how the ball fits in a child’s hands."
+          },
+          {
+            "viewpoint": "Place clue",
+            "text": "Hide it somewhere different in the playground."
+          }
+        ],
+        "reflectPrompt": "Which new clue helps a child search without saying the answer?"
+      }
+    }
+  ,
+    {
+      "id": "zh-k2-market-dialogue",
+      "lang": "zh",
+      "grade": "K2",
+      "title": "小市场里的误会",
+      "genre": "situational-dialogue-scene",
+      "background": "小市场的蔬菜摊上摆着胡萝卜、玉米和苹果，乐乐拿着小篮子。",
+      "objects": [
+        {
+          "id": "market-child",
+          "emoji": "🧒",
+          "label": "拿篮子的乐乐"
+        },
+        {
+          "id": "market-seller",
+          "emoji": "🧑",
+          "label": "摊主"
+        },
+        {
+          "id": "market-carrots",
+          "emoji": "🥕",
+          "label": "胡萝卜"
+        },
+        {
+          "id": "market-corn",
+          "emoji": "🌽",
+          "label": "玉米"
+        },
+        {
+          "id": "market-apples",
+          "emoji": "🍎",
+          "label": "苹果"
+        },
+        {
+          "id": "market-basket",
+          "emoji": "🧺",
+          "label": "小篮子"
+        }
+      ],
+      "narration": "乐乐指着胡萝卜说：“您好，我想要两根。”摊主听成了两个苹果，把苹果放进篮子。乐乐看了看篮子，礼貌地说：“谢谢，不过我说的是两根胡萝卜。”摊主点点头，把苹果换成了胡萝卜。",
+      "frames": [
+        {
+          "id": "market-dialogue-f1",
+          "narration": "乐乐指着胡萝卜，礼貌地说想要两根。",
+          "objects": [
+            "market-child",
+            "market-seller",
+            "market-carrots",
+            "market-corn",
+            "market-apples",
+            "market-basket"
+          ]
+        },
+        {
+          "id": "market-dialogue-f2",
+          "narration": "摊主误以为乐乐要两个苹果，把苹果放进篮子。",
+          "objects": [
+            "market-child",
+            "market-seller",
+            "market-apples",
+            "market-basket"
+          ]
+        },
+        {
+          "id": "market-dialogue-f3",
+          "narration": "乐乐看着篮子，礼貌说明自己要的是两根胡萝卜。",
+          "objects": [
+            "market-child",
+            "market-seller",
+            "market-carrots",
+            "market-apples",
+            "market-basket"
+          ]
+        },
+        {
+          "id": "market-dialogue-f4",
+          "narration": "摊主听明白了，把苹果换成两根胡萝卜。",
+          "objects": [
+            "market-child",
+            "market-seller",
+            "market-carrots",
+            "market-basket"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "q-comprehend-market-dialogue",
+          "unit": "comprehend",
+          "template": "scene-misunderstanding",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "乐乐原来想买什么？",
+          "options": [
+            {
+              "text": "两根胡萝卜"
+            },
+            {
+              "text": "两个苹果",
+              "errorType": "frame_mismatch"
+            },
+            {
+              "text": "两根玉米",
+              "errorType": "object_mismatch"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-market-dialogue",
+          "unit": "infer",
+          "template": "speaker-intention",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "乐乐为什么看了篮子以后又解释一次？",
+          "options": [
+            {
+              "text": "篮子里是苹果，不是他刚才指着的胡萝卜"
+            },
+            {
+              "text": "他决定什么也不买了",
+              "errorType": "contradicts_scene"
+            },
+            {
+              "text": "市场马上要关门了",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-structure-market-dialogue",
+          "unit": "structure",
+          "template": "scene-order",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "按场景顺序排列。",
+          "cards": [
+            {
+              "id": "market-dialogue-o1",
+              "text": "乐乐指着胡萝卜说要两根"
+            },
+            {
+              "id": "market-dialogue-o2",
+              "text": "摊主把苹果放进篮子"
+            },
+            {
+              "id": "market-dialogue-o3",
+              "text": "乐乐礼貌地说明误会"
+            },
+            {
+              "id": "market-dialogue-o4",
+              "text": "摊主换成胡萝卜"
+            }
+          ],
+          "answer": [
+            "market-dialogue-o1",
+            "market-dialogue-o2",
+            "market-dialogue-o3",
+            "market-dialogue-o4"
+          ]
+        },
+        {
+          "id": "q-choose-market-dialogue",
+          "unit": "choose",
+          "template": "polite-wording",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "哪句话既能纠正画面中的误会，又比较有礼貌？",
+          "options": [
+            {
+              "text": "谢谢，不过我说的是两根胡萝卜。"
+            },
+            {
+              "text": "你完全听错了！",
+              "errorType": "tone_mismatch"
+            },
+            {
+              "text": "快把苹果拿走！",
+              "errorType": "tone_mismatch"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "expressCcr": {
+        "prompt": "根据连续画面，说明误会怎样发生，又怎样解决。",
+        "slots": [
+          {
+            "key": "mixup",
+            "name": "误会怎样发生",
+            "options": [
+              "乐乐指着胡萝卜说要两根，摊主却拿了苹果",
+              "摊主把“两根”听成了“两个苹果”",
+              "篮子里的物品和乐乐指的物品不同"
+            ]
+          },
+          {
+            "key": "solution",
+            "name": "怎样解决",
+            "options": [
+              "乐乐礼貌地重新说明",
+              "乐乐把数量和物品名称一起说清楚",
+              "摊主听完解释后换成胡萝卜"
+            ]
+          }
+        ],
+        "template": "开始时，{mixup}。后来，{solution}，误会就解决了。",
+        "otherIdeas": [
+          {
+            "viewpoint": "看手势",
+            "text": "乐乐指着胡萝卜，画面说明了他真正想买什么。"
+          },
+          {
+            "viewpoint": "听说法",
+            "text": "重新说出“两根胡萝卜”比只说“两根”更清楚。"
+          },
+          {
+            "viewpoint": "看结果",
+            "text": "最后篮子里换成胡萝卜，说明双方已经听明白。"
+          }
+        ],
+        "reflectPrompt": "哪种表达同时说清了误会和解决方法？"
+      },
+      "createCcr": {
+        "prompt": "创造一种新的礼貌说法或确认方法，让摊主一开始就听清楚。",
+        "slots": [
+          {
+            "key": "request",
+            "name": "清楚的请求",
+            "options": [
+              "您好，请给我两根胡萝卜",
+              "我想买这边的两根胡萝卜",
+              "请把两根胡萝卜放进篮子"
+            ]
+          },
+          {
+            "key": "check",
+            "name": "新的确认方法",
+            "options": [
+              "同时指一指胡萝卜",
+              "请摊主重复一次物品和数量",
+              "拿起一根胡萝卜再说明数量"
+            ]
+          }
+        ],
+        "template": "乐乐可以说：“{request}”，还可以{check}。",
+        "otherIdeas": [
+          {
+            "viewpoint": "说完整",
+            "text": "把数量和物品名称放在同一句话里。"
+          },
+          {
+            "viewpoint": "用手势",
+            "text": "说话时指向自己想买的蔬菜。"
+          },
+          {
+            "viewpoint": "再确认",
+            "text": "请对方重复一次，可以及时发现误会。"
+          }
+        ],
+        "reflectPrompt": "哪种新方法既清楚、礼貌，又最容易避免误会？"
+      }
+    },
+    {
+      "id": "en-k2-folktale-lantern",
+      "lang": "en",
+      "grade": "K2",
+      "title": "The Lantern Trail",
+      "genre": "cultural-folktale-style-scene",
+      "background": "A community evening with paper lanterns, a music table, a welcome table, and a small embroidered pouch.",
+      "objects": [
+        {
+          "id": "lantern-ami",
+          "emoji": "🧒",
+          "label": "Ami"
+        },
+        {
+          "id": "lantern-red",
+          "emoji": "🏮",
+          "label": "red lantern"
+        },
+        {
+          "id": "lantern-gold",
+          "emoji": "🟡",
+          "label": "gold lantern"
+        },
+        {
+          "id": "lantern-music-table",
+          "emoji": "🥁",
+          "label": "music table"
+        },
+        {
+          "id": "lantern-welcome-table",
+          "emoji": "🎟️",
+          "label": "welcome table"
+        },
+        {
+          "id": "lantern-pouch",
+          "emoji": "👝",
+          "label": "embroidered pouch"
+        },
+        {
+          "id": "lantern-owner",
+          "emoji": "🧓",
+          "label": "elder looking for a pouch"
+        }
+      ],
+      "narration": "During the community lantern evening, Ami found a small embroidered pouch beside the music table. A red ribbon tied to it matched the ribbons on a trail of lanterns leading to the welcome table. There, an elder was asking about a pouch with a stitched moon. Ami showed the pouch, and the elder recognized the moon.",
+      "frames": [
+        {
+          "id": "folktale-lantern-f1",
+          "narration": "Ami sees an embroidered pouch beside the music table under a red lantern.",
+          "objects": [
+            "lantern-ami",
+            "lantern-pouch",
+            "lantern-music-table",
+            "lantern-red"
+          ]
+        },
+        {
+          "id": "folktale-lantern-f2",
+          "narration": "The pouch has a red ribbon like the ribbons along the lantern trail.",
+          "objects": [
+            "lantern-ami",
+            "lantern-pouch",
+            "lantern-red",
+            "lantern-gold",
+            "lantern-welcome-table"
+          ]
+        },
+        {
+          "id": "folktale-lantern-f3",
+          "narration": "At the welcome table, an elder asks about a missing pouch with a stitched moon.",
+          "objects": [
+            "lantern-ami",
+            "lantern-owner",
+            "lantern-welcome-table",
+            "lantern-pouch"
+          ]
+        },
+        {
+          "id": "folktale-lantern-f4",
+          "narration": "Ami shows the pouch, and the elder recognizes the stitched moon.",
+          "objects": [
+            "lantern-ami",
+            "lantern-owner",
+            "lantern-pouch",
+            "lantern-gold"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "q-observe-folktale-lantern",
+          "unit": "observe",
+          "template": "scene-detail",
+          "level": "L1",
+          "interaction": "select",
+          "prompt": "Where did Ami first see the embroidered pouch?",
+          "options": [
+            {
+              "text": "Beside the music table"
+            },
+            {
+              "text": "Inside a tea cup",
+              "errorType": "scene_mismatch"
+            },
+            {
+              "text": "On top of the welcome sign",
+              "errorType": "scene_mismatch"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-infer-folktale-lantern",
+          "unit": "infer",
+          "template": "scene-clue-inference",
+          "level": "L2",
+          "interaction": "select",
+          "prompt": "Why did Ami take the pouch toward the welcome table?",
+          "options": [
+            {
+              "text": "The matching lantern ribbons led there, and someone there was asking about a missing pouch."
+            },
+            {
+              "text": "Ami wanted to hide the pouch under the table.",
+              "errorType": "contradicts_scene"
+            },
+            {
+              "text": "The music table had disappeared.",
+              "errorType": "fabrication"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q-structure-folktale-lantern",
+          "unit": "structure",
+          "template": "scene-order",
+          "level": "L2",
+          "interaction": "order",
+          "prompt": "Put the lantern-evening events in order.",
+          "cards": [
+            {
+              "id": "folktale-lantern-o1",
+              "text": "Ami finds the pouch"
+            },
+            {
+              "id": "folktale-lantern-o2",
+              "text": "Ami follows the matching lantern ribbons"
+            },
+            {
+              "id": "folktale-lantern-o3",
+              "text": "The elder describes the missing pouch"
+            },
+            {
+              "id": "folktale-lantern-o4",
+              "text": "The elder recognizes the stitched moon"
+            }
+          ],
+          "answer": [
+            "folktale-lantern-o1",
+            "folktale-lantern-o2",
+            "folktale-lantern-o3",
+            "folktale-lantern-o4"
+          ]
+        }
+      ],
+      "expressCcr": {
+        "prompt": "Use clues from the frames to explain how Ami found the pouch's owner.",
+        "slots": [
+          {
+            "key": "pathClue",
+            "name": "The path clue",
+            "options": [
+              "the pouch ribbon matched the ribbons along the lantern trail",
+              "the lantern trail led from the music table to the welcome table",
+              "the matching red ribbons showed where Ami should ask for help"
+            ]
+          },
+          {
+            "key": "ownerClue",
+            "name": "The owner clue",
+            "options": [
+              "the elder asked about an embroidered pouch",
+              "the elder described the stitched moon",
+              "the moon on the pouch matched the elder's description"
+            ]
+          }
+        ],
+        "template": "Ami followed {pathClue}. At the welcome table, {ownerClue}, so Ami could return the pouch.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Follow the path",
+            "text": "The matching ribbons connected the place where the pouch was found to the welcome table."
+          },
+          {
+            "viewpoint": "Match details",
+            "text": "The stitched moon matched the detail given by the elder."
+          },
+          {
+            "viewpoint": "Use two frames",
+            "text": "Ami used both a location clue and an object clue before returning the pouch."
+          }
+        ],
+        "reflectPrompt": "Which explanation uses clues from more than one frame?"
+      },
+      "createCcr": {
+        "prompt": "Create one new clue or a different safe action Ami could use to return the pouch.",
+        "slots": [
+          {
+            "key": "newClue",
+            "name": "A new clue",
+            "options": [
+              "a matching moon pattern on the elder's bag",
+              "a name card tucked inside the pouch",
+              "a musician who remembers who sat nearby"
+            ]
+          },
+          {
+            "key": "newAction",
+            "name": "A different helpful action",
+            "options": [
+              "ask the event guide for help",
+              "make a clear lost-item announcement",
+              "leave the pouch safely at the welcome table"
+            ]
+          }
+        ],
+        "template": "Ami could notice {newClue} and then {newAction}.",
+        "otherIdeas": [
+          {
+            "viewpoint": "Visual clue",
+            "text": "Add a matching stitched symbol without naming the owner immediately."
+          },
+          {
+            "viewpoint": "Ask for help",
+            "text": "Ami could involve a trusted event helper."
+          },
+          {
+            "viewpoint": "Safe return place",
+            "text": "Ami could bring the pouch to the welcome table."
+          }
+        ],
+        "reflectPrompt": "Which new idea is safe, useful, and different from following the lantern trail?"
+      }
+    }
   ]
 };
