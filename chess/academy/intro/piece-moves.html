@@ -997,6 +997,7 @@
     </div>
   </main>
 
+  <script src="../../settings/engine-settings.js"></script>
   <script>
     (function () {
       var DISPLAY_SETTINGS_KEY = 'cognichess:display-settings';
@@ -2909,6 +2910,19 @@
 
       async function configureEngine(settings) {
         await ensureEngineReady();
+        if (window.ChessEngineSettings) {
+          window.ChessEngineSettings.commands(settings).forEach(function (command) {
+            var option = command.split(' value ')[0];
+            if (engineAppliedConfig[option] !== command) {
+              sendEngineCommand(command);
+              engineAppliedConfig[option] = command;
+            }
+          });
+          var pendingReady = waitForEngineLine(function (line) { return line === 'readyok'; }, 10000);
+          sendEngineCommand('isready');
+          await pendingReady;
+          return settings.multiPv;
+        }
         var skillLevel = clampEngineNumber(settings.skillLevel, 0, 20, 10);
         var multiPv = clampEngineNumber(settings.multiPv, 1, 5, 1);
         if (skillLevel !== engineAppliedConfig.skillLevel) {
@@ -3025,14 +3039,15 @@
       }
 
       async function requestStockfishMove() {
-        var config = getAiPresetConfig(practiceState.aiPreset);
-        var payload = await analyzeWithLocalEngine({
+        var role = practiceState.gameMode === 'human_ai' ? 'human' : (practiceState.turn === 'w' ? 'white' : 'black');
+        var config = window.ChessEngineSettings ? window.ChessEngineSettings.resolve(role, practiceState.aiPreset) : getAiPresetConfig(practiceState.aiPreset);
+        var payload = await analyzeWithLocalEngine(Object.assign({}, config, {
           fen: buildFen(),
           movetime: config.movetime,
           depth: config.depth,
           skillLevel: config.skillLevel,
           multiPv: config.multiPv
-        });
+        }));
         if (!payload.ok || !payload.bestMove) {
           throw new Error('Stockfish request failed');
         }
@@ -3048,7 +3063,7 @@
         if (!practiceState.armed) return;
         var color = practiceState.turn;
         var runId = ++practiceState.aiRequestId;
-        if (practiceStatus) practiceStatus.textContent = '🤔 AI（Stockfish 最高难度）正在思考最佳走法…';
+        if (practiceStatus) practiceStatus.textContent = 'AI（Stockfish）正在思考最佳走法…';
 
         var mv = null;
         try {
@@ -3127,6 +3142,11 @@
       if (btnModeManual) btnModeManual.addEventListener('click', function () { setGameMode('manual'); });
       if (btnModeHumanAi) btnModeHumanAi.addEventListener('click', function () { setGameMode('human_ai'); });
       if (btnModeAiAi) btnModeAiAi.addEventListener('click', function () { setGameMode('ai_ai'); });
+      if (aiPresetSelect && window.ChessEngineSettings) {
+        var engineSettingsOption = document.createElement('option');
+        engineSettingsOption.value = 'settings'; engineSettingsOption.textContent = '使用引擎设置';
+        aiPresetSelect.prepend(engineSettingsOption); aiPresetSelect.value = 'settings'; practiceState.aiPreset = 'settings';
+      }
       if (aiPresetSelect) aiPresetSelect.addEventListener('change', function () {
         practiceState.aiPreset = aiPresetSelect.value || 'master';
       });

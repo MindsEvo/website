@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>根基因库 | 国际象棋</title>
+  <link rel="stylesheet" href="./root-gene.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <a class="back-link" href="./index.html">← 系统设置</a>
+      <div class="heading"><span class="eyebrow">CHESS POSITION WORKSHOP</span><h1>根基因库 <span>局面设计</span></h1></div>
+      <div class="header-state"><i></i><span id="pageStatus">编辑中</span></div>
+    </header>
+    <section class="workbench" aria-label="根基因局面编辑工作台">
+      <aside class="tool-panel">
+        <div class="section-heading"><span>01</span><h2>基因与棋子</h2></div>
+        <label class="field-label" for="geneType">基因类型</label>
+        <select id="geneType"><option value="endgame">残局基因</option><option value="tactics">战术基因</option><option value="mate">攻杀基因</option><option value="opening">开局基因</option><option value="comprehensive">综合基因</option></select>
+        <label class="field-label" for="geneLevel">难度级别</label>
+        <select id="geneLevel"><option value="L1">L1 基础</option><option value="L2">L2 组合</option><option value="L3">L3 复杂</option></select>
+        <label class="field-label" for="rootGene">根基因 / 主题</label><select id="rootGene"></select>
+        <p class="gene-description" id="geneDescription">从已有题库选题载入，再手动修改或补充。</p>
+        <div class="library-browser">
+          <div class="library-heading"><strong>载入已有题目</strong><span id="bankQuestionCount"></span></div>
+          <label class="field-label" for="bankCategory">题库分类</label><select id="bankCategory"></select>
+          <label class="field-label" for="bankGroup">题目分组</label><select id="bankGroup"></select>
+          <label class="field-label" for="bankQuestion">现有题目</label><select id="bankQuestion"></select>
+          <button class="tool-button reference-button" id="loadBankQuestion" type="button">载入并编辑</button>
+        </div>
+        <div class="thin-rule"></div>
+        <div class="tool-head"><strong>摆放棋子</strong><span id="pieceCount">32 / 32</span></div>
+        <div class="color-switch" role="group" aria-label="棋子颜色"><button type="button" class="color-choice active" data-color="white">白方</button><button type="button" class="color-choice" data-color="black">黑方</button></div>
+        <div class="piece-palette" id="piecePalette" aria-label="选择棋子"></div>
+        <button class="tool-button erase-button" id="eraseTool" type="button" title="选择后点击棋盘移除棋子">⌫ <span>移除棋子</span></button>
+        <div class="tool-actions"><button class="tool-button" id="clearBoard" type="button">清空棋盘</button><span class="tool-hint">新题从空局面手动摆放</span></div>
+        <label class="field-label" for="importFile">导入题目或 FEN</label><input id="importFile" class="file-input" type="file" accept=".json,.fen,.txt,application/json,text/plain" />
+      </aside>
+      <section class="board-panel">
+        <div class="board-panel-head"><div class="section-heading"><span>02</span><h2>局面预览</h2></div><div class="fen-state-controls"><label class="turn-toggle">行棋方 <select id="sideToMove"><option value="w">白方</option><option value="b">黑方</option></select></label><label class="turn-toggle">易位权 <select id="castlingRights"></select></label><label class="turn-toggle">过路兵格 <select id="enPassantTarget"></select></label></div></div>
+        <div class="board-frame"><div class="rank-labels" id="rankLabels" aria-hidden="true"></div><div class="chessboard" id="chessboard" role="grid" aria-label="可编辑国际象棋棋盘"></div><div class="file-labels" id="fileLabels" aria-hidden="true"></div></div>
+        <div class="board-caption"><span id="boardMessage">选择棋子，再点击棋盘格进行摆放。</span><span id="materialCount"></span></div>
+        <div class="fen-tools"><label for="fenText">FEN</label><textarea id="fenText" rows="2" spellcheck="false" aria-label="FEN局面文本"></textarea><div class="fen-actions"><button class="secondary-button" id="loadFen" type="button">载入 FEN</button><button class="secondary-button" id="validateFen" type="button">校验局面</button></div><p class="validation-message" id="validationMessage" role="status"></p></div>
+      </section>
+      <aside class="details-panel">
+        <div class="section-heading"><span>03</span><h2>题目内容</h2></div>
+        <label class="field-label" for="puzzleTitle">题目名称</label><input id="puzzleTitle" maxlength="100" placeholder="为这道题命名" />
+        <label class="field-label" for="difficulty">难度级别</label><select id="difficulty"><option value="L1">L1 · 基础</option><option value="L2">L2 · 组合</option><option value="L3">L3 · 复杂</option></select>
+        <label class="field-label" for="puzzleSolution">参考解答</label><textarea id="puzzleSolution" class="description-input" rows="3" placeholder="手动记录候选着法或解题思路"></textarea>
+        <label class="field-label" for="puzzleDescription">设计说明</label><textarea id="puzzleDescription" class="description-input" rows="4" placeholder="记录教学目标、关键思路或设计备注"></textarea>
+        <div class="analysis-box"><div class="analysis-heading"><strong>引擎分析</strong><span id="engineBadge">Stockfish</span></div><p id="analysisResult">分析当前局面，作为人工复核参考。</p><button class="secondary-button" id="analyzePosition" type="button">分析局面</button></div>
+        <div class="save-actions"><button class="primary-button" id="saveDesign" type="button">保存设计</button><button class="secondary-button" id="exportJson" type="button">导出 JSON</button><button class="secondary-button" id="exportFen" type="button">导出 FEN</button></div>
+        <div class="saved-section"><div class="saved-heading"><strong>本机设计</strong><button id="clearSaved" type="button">清空列表</button></div><div id="savedDesigns" class="saved-list"><p class="empty-list">还没有保存的设计</p></div></div>
+      </aside>
+    </section>
+    <footer class="page-footer">题库原件保持不变。本机保存与导出均为修改草案；确认后再合并进正式题库。</footer>
+  </main>
+  <script src="../play/assets/question-bank.js"></script>
+  <script src="./root-gene-core.js"></script>
+  <script src="./root-gene-page.js"></script>
+</body>
+</html>

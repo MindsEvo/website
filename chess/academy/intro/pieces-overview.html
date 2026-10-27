@@ -816,12 +816,12 @@
       };
 
       var pieceMeta = {
-        k: { label: '王', voice: '王是整盘棋的心脏！一旦被将死，游戏马上结束，你就输了。所以其他棋子都是保护王的卫士，王是无价之宝，没有分数可以衡量它。' },
+        k: { label: '王', voice: '王是整盘棋的心脏！一旦被将死，你就输了， 游戏马上结束。所以其他棋子都是保护王的卫士，王是无价之宝，没有分数可以衡量它。' },
         q: { label: '后', voice: '后是棋盘上最强的超级英雄！她的价值是9到10分，比车还厉害，比象和马厉害好多。' },
         b: { label: '象', voice: '象是走斜线的忍者，价值3分，速度快，但只能在同一种颜色的格子里穿梭。' },
         n: { label: '马', voice: '马是调皮的小马驹，价值3分，走法很特别，我们以后再学。' },
         r: { label: '车', voice: '车是强壮的战车，直冲直撞，价值5分，力量仅次于后。' },
-        p: { label: '兵', voice: '兵是最勇敢的小兵，价值1分，单个最弱，但人数最多，每方有8个，将来还有机会升级变成超级英雄！' }
+        p: { label: '兵', voice: '兵是最勇敢的战士，价值1分，单个最弱，但人数最多，每方有8个，将来还有机会升级变成超级英雄！' }
       };
 
       // badge text + halo strength for the 动态观察 value demo (A: pop-up badge, C: 3D-ish halo tied to value)
@@ -1106,10 +1106,12 @@
         btn.classList.add('practice-current');
 
         var prompt = practicePrompts[kind] || { display: '请点击棋子', voice: '现在请你点击棋盘上的棋子' };
+        var sideColorWord = side === 'w' ? '白色' : '黑色';
+        var pieceLabel = pieceMeta[kind] ? pieceMeta[kind].label : '棋子';
         if (practiceStatus) {
           practiceStatus.textContent = (side === 'w' ? '白方：' : '黑方：') + prompt.display;
         }
-        speak(prompt.voice);
+        speak('现在请你点击' + sideColorWord + '的' + pieceLabel);
       }
 
       function showPracticeMark(square, isCorrect) {
@@ -1141,17 +1143,20 @@
         }
         showPracticeMark(square, ok);
 
+        var sideColorWord = currentPractice.side === 'w' ? '白色' : '黑色';
+        var pieceLabel = pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子';
+
         if (ok) {
           if (practiceStatus) {
-            practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
+            practiceStatus.textContent = '✅ 回答正确：' + (currentPractice.side === 'w' ? '白方' : '黑方') + pieceLabel;
           }
           speak('回答正确');
           practiceArmed = false;
         } else {
           if (practiceStatus) {
-            practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + (pieceMeta[currentPractice.kind] ? pieceMeta[currentPractice.kind].label : '棋子');
+            practiceStatus.textContent = '❌ 回答错误，请点击' + (currentPractice.side === 'w' ? '白方' : '黑方') + pieceLabel;
           }
-          speak('回答错误，请再试一次');
+          speak('回答错误，请点击' + sideColorWord + '的' + pieceLabel);
         }
       }
 

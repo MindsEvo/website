@@ -401,9 +401,9 @@
       100% { outline-color: #28a745; outline-width: 4px; }
     }
 
-    .board-wrap.hl-border-overlay {
+    .board.hl-border-overlay {
       outline: 4px solid #28a745;
-      outline-offset: -4px;
+      outline-offset: 0;
       animation: borderPulse 0.5s ease-in-out 3;
     }
 
@@ -797,10 +797,10 @@
         'board-border': { prompt: '现在请你点击棋盘边界' },
         'light-squares': { prompt: '现在请你点击浅色格子区域' },
         'dark-squares': { prompt: '现在请你点击深色格子区域' },
-        'ranks': { prompt: '现在请你点击一个横格上的任意位置' },
-        'files': { prompt: '现在请你点击一个竖格上的任意位置' },
-        'dark-diagonals': { prompt: '现在请你点击深色对角线上的任意格子' },
-        'light-diagonals': { prompt: '现在请你点击浅色对角线上的任意格子' },
+        'ranks': { prompt: '现在请你点击同一横格的任意两个格子' },
+        'files': { prompt: '现在请你点击同一竖格的任意两个格子' },
+        'dark-diagonals': { prompt: '现在请你点击同一条深色对角线上的任意两个格子' },
+        'light-diagonals': { prompt: '现在请你点击同一条浅色对角线上的任意两个格子' },
         'coordinates': { prompt: '现在请你点击任意格子并说出它的坐标' }
       };
 
@@ -960,9 +960,9 @@
           el.classList.remove(blinkClass, 'hl-light-overlay', 'hl-dark-overlay', 'hl-rank-overlay', 'hl-file-overlay', 'hl-diag-dark-overlay', 'hl-diag-light-overlay', 'hl-coord-overlay', 'coord-active');
         });
         document.querySelectorAll('.coord-label').forEach(function (el) { el.remove(); });
-        if (scope === 'observe') boardWrap.classList.remove('observe-blink', 'hl-border-overlay');
-        if (scope === 'practice') boardWrap.classList.remove('practice-blink', 'hl-border-overlay');
-        if (scope === 'quiz') boardWrap.classList.remove('quiz-blink', 'hl-border-overlay');
+        if (scope === 'observe') boardEl.classList.remove('observe-blink', 'hl-border-overlay');
+        if (scope === 'practice') boardEl.classList.remove('practice-blink', 'hl-border-overlay');
+        if (scope === 'quiz') boardEl.classList.remove('quiz-blink', 'hl-border-overlay');
       }
 
       function flashElements(scope, selector, className, cycles, onMs, offMs) {
@@ -1046,9 +1046,9 @@
         var i;
 
         if (mode === 'board-border') {
-          boardWrap.classList.add(blinkClass, 'hl-border-overlay');
+          boardEl.classList.add(blinkClass, 'hl-border-overlay');
           activeIntervals[scope] = window.setTimeout(function () {
-            boardWrap.classList.remove(blinkClass, 'hl-border-overlay');
+            boardEl.classList.remove(blinkClass, 'hl-border-overlay');
             activeIntervals[scope] = null;
           }, 1500);
           return;
@@ -1279,27 +1279,17 @@
 
       function handleLinePracticeClick(target, row, col, square, isLight, isDark) {
         var isDiagonal = target === 'dark-diagonals' || target === 'light-diagonals';
-        var colorOk = target === 'dark-diagonals' ? isDark : target === 'light-diagonals' ? isLight : true;
 
         if (!linePracticeFirst) {
-          if (isDiagonal && !colorOk) {
-            practiceButtons.forEach(function (b) { b.classList.remove('practice-correct', 'practice-wrong', 'practice-current'); });
-            if (currentPracticeButton) currentPracticeButton.classList.add('practice-wrong');
-            showPracticeMark(square, false);
-            if (practiceStatus) practiceStatus.textContent = '❌ 回答错误：' + practiceConfig[target].prompt;
-            speak('回答错误，请再试一次');
-            return;
-          }
-          linePracticeFirst = { row: row, col: col, square: square };
+          linePracticeFirst = { row: row, col: col, square: square, isLight: isLight, isDark: isDark };
           square.classList.add('practice-point');
-          if (practiceStatus) practiceStatus.textContent = '操作练习：已选第一个点，请再点击同一条线上的第二个点';
-          speak('请再点击这条线上的第二个点');
           return;
         }
 
         var first = linePracticeFirst;
         resetLinePracticePoint();
 
+        var colorOk = target === 'dark-diagonals' ? first.isDark : target === 'light-diagonals' ? first.isLight : true;
         var line = (first.row === row && first.col === col) ? null : lineSquaresBetween(target, first.row, first.col, row, col);
         var ok = !!line && (!isDiagonal || colorOk);
 

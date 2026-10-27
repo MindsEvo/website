@@ -538,18 +538,29 @@
       animation: observeSquareDarkPulse 1.3s ease-in-out infinite;
     }
 
-    .observe-border {
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.85) inset;
-    }
-
-    /* higher specificity than .observe-blink/.quiz-blink: overrides their opacity animation so only the border pulses */
+    /* 动态观察's persistent board-border highlight: recolors the chessboard's OWN border (not the
+       outer green wrap) and adds an outward (non-inset) glow, since an inset box-shadow here would be
+       hidden behind the opaque .square children. */
     @keyframes observeBorderPulse {
-      0%, 100% { box-shadow: 0 0 0 6px rgba(134, 239, 172, 1) inset, 0 0 32px 8px rgba(34, 197, 94, 0.95); }
-      50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.7) inset, 0 0 0 0 rgba(34, 197, 94, 0); }
+      0%, 100% { border-color: #86efac; box-shadow: 0 0 30px 8px rgba(34, 197, 94, 0.95); }
+      50%       { border-color: #22c55e; box-shadow: 0 0 6px 2px rgba(34, 197, 94, 0.45); }
     }
 
-    .board-wrap.observe-border {
+    .board.observe-border {
       animation: observeBorderPulse 2.6s ease-in-out infinite;
+    }
+
+    /* practice feedback for the board-border target: flash the chessboard's OWN border (not the
+       outer green wrap) — recolors the real border and adds an outward (non-inset) glow, since an
+       inset box-shadow here would be hidden behind the opaque .square children. */
+    @keyframes practiceBorderCorrectPop {
+      0%   { border-color: rgba(92, 111, 71, 0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+      18%  { border-color: #22c55e; box-shadow: 0 0 22px 7px rgba(34, 197, 94, 0.9); }
+      100% { border-color: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5); }
+    }
+
+    .board.practice-border-correct {
+      animation: practiceBorderCorrectPop 0.9s ease-out forwards;
     }
 
     /* practice feedback: a check/cross mark pops up at the clicked spot instead of blinking every matching element */
@@ -895,8 +906,8 @@
         document.querySelectorAll('.observe-blink').forEach(function (el) {
           el.classList.remove('observe-blink', 'observe-piece-white', 'observe-piece-black', 'observe-square-light', 'observe-square-dark');
         });
-        if (boardWrap) {
-          boardWrap.classList.remove('observe-blink', 'observe-border');
+        if (boardEl) {
+          boardEl.classList.remove('observe-blink', 'observe-border');
         }
         if (removeActiveState) {
           observeButtons.forEach(function (btn) { btn.classList.remove('observe-active'); });
@@ -912,8 +923,8 @@
         document.querySelectorAll('.quiz-blink').forEach(function (el) {
           el.classList.remove('quiz-blink', 'observe-piece-white', 'observe-piece-black', 'observe-square-light', 'observe-square-dark', 'observe-border');
         });
-        if (boardWrap) {
-          boardWrap.classList.remove('quiz-blink', 'observe-border');
+        if (boardEl) {
+          boardEl.classList.remove('quiz-blink', 'observe-border');
         }
         if (quizStopTimer) {
           window.clearTimeout(quizStopTimer);
@@ -967,8 +978,8 @@
         }
 
         if (action === 'board-border') {
-          if (boardWrap) {
-            boardWrap.classList.add('observe-blink', 'observe-border');
+          if (boardEl) {
+            boardEl.classList.add('observe-blink', 'observe-border');
           }
           if (!opts.silent) {
             speak('棋盘边框高亮显示。边框用于界定棋盘活动区域。');
@@ -1030,8 +1041,8 @@
           return;
         }
         if (action === 'board-border') {
-          if (boardWrap) {
-            boardWrap.classList.add('quiz-blink', 'observe-border');
+          if (boardEl) {
+            boardEl.classList.add('quiz-blink', 'observe-border');
           }
           scheduleQuizAutoStop();
         }
@@ -1071,6 +1082,18 @@
         speak(practicePrompts[target].speak);
       }
 
+      function flashBorderCorrect() {
+        if (!boardEl) {
+          return;
+        }
+        boardEl.classList.remove('practice-border-correct');
+        void boardEl.offsetWidth; // restart the animation if it's already mid-flash
+        boardEl.classList.add('practice-border-correct');
+        window.setTimeout(function () {
+          boardEl.classList.remove('practice-border-correct');
+        }, 900);
+      }
+
       function showPracticeMark(container, isCorrect, clickEvent) {
         if (!container) {
           return;
@@ -1102,7 +1125,11 @@
         }
 
         var isCorrect = selection === currentPracticeTarget;
-        showPracticeMark(markContainer || boardWrap, isCorrect, clickEvent);
+        if (isCorrect && currentPracticeTarget === 'board-border') {
+          flashBorderCorrect();
+        } else {
+          showPracticeMark(markContainer || boardWrap, isCorrect, clickEvent);
+        }
 
         if (isCorrect) {
           if (currentPracticeButton) {
