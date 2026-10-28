@@ -9,10 +9,12 @@
       "g1",
       "f1"
     ],
+    "popup_en": "Rapid Development, Lesson 2: Develop the minor pieces before activating the major pieces, queen and rooks. A rook is worth about five points and a queen about nine, but bringing them out too early can lose time.",
     "popup": "快速出子第2课\n必须先出动所有轻子，然后再激活后和车等重子， 车价值5分， 后价值9分",
     "voice": true
   },
   "outro": {
+    "popup_en": "Developing the minor pieces first is a fundamental rule of opening move order.",
     "popup": "总结：轻子先行是出子顺序的铁律",
     "voice": true
   },
@@ -24,46 +26,55 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game and controls the center.",
       "popup": "e4开局\n控制中心"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's move and creates a symmetrical position.",
       "popup": "e5对称\n对称局面"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the first minor piece and attacks e5, beginning the Scotch Game.",
       "popup": "Nf3！轻子第1步\n马出动，攻击e5\n苏格兰开局前奏"
     },
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's first minor piece and protects e5.",
       "popup": "Nc6保护e5\n黑方第1个轻子"
     },
     {
       "index": 4,
       "move": "d4",
+      "popup_en": "d4! White challenges the center directly in the Scotch Game, choosing a more active approach than quieter e4-e5 systems.",
       "popup": "d4！苏格兰弃兵\n直接争夺中心\n比e4/e5保守体系更积极"
     },
     {
       "index": 5,
       "move": "exd4",
+      "popup_en": "...exd4 accepts the central pawn and captures it.",
       "popup": "exd4接受\n黑方吃兵"
     },
     {
       "index": 6,
       "move": "Nxd4",
+      "popup_en": "Nxd4! White develops the knight to a central square, a characteristic Scotch Game position.",
       "popup": "Nxd4！马再发展\n马在d4控制中心\n苏格兰开局"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's second minor piece and attacks e4.",
       "popup": "Nf6出动\n黑方第2个轻子\n攻击e4"
     },
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the second knight. Both knights control the center; this is White's second minor-piece development move.",
       "popup": "Nc3！白方第2个马出动\n两匹马控制中心\n轻子第2步",
       "highlights": [
         {
@@ -79,21 +90,25 @@
     {
       "index": 9,
       "move": "Bb4",
+      "popup_en": "...Bb4 develops the bishop and pins White's knight, applying pressure.",
       "popup": "Bb4出动\n黑方象牵制白马\n给白方施压"
     },
     {
       "index": 10,
       "move": "Nxc6",
+      "popup_en": "Nxc6 exchanges knights and simplifies the central position.",
       "popup": "Nxc6兑换\n简化中心局面"
     },
     {
       "index": 11,
       "move": "bxc6",
+      "popup_en": "...bxc6 recaptures but damages Black's pawn structure.",
       "popup": "bxc6接回\n黑方棋形损坏"
     },
     {
       "index": 12,
       "move": "Bd3",
+      "popup_en": "Bd3! White develops the bishop and completes the minor-piece development. White is ready to castle.",
       "popup": "Bd3！白方象出动\n白方轻子全部出动完毕！\n此刻可以易位了",
       "highlights": [
         {
@@ -108,21 +123,25 @@
     {
       "index": 13,
       "move": "d5",
+      "popup_en": "...d5 advances and challenges the center.",
       "popup": "d5推进\n黑方争夺中心"
     },
     {
       "index": 14,
       "move": "exd5",
+      "popup_en": "exd5 exchanges pawns and opens the position.",
       "popup": "exd5兑换\n开放局面"
     },
     {
       "index": 15,
       "move": "cxd5",
+      "popup_en": "...cxd5 recaptures and leaves Black with a strong pawn on d5.",
       "popup": "cxd5接回\n黑方d5强兵"
     },
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "O-O! White castles as soon as the minor pieces are developed. The king is safe and the rooks are connected.",
       "popup": "O-O！白方易位\n轻子全出后立即易位\n王安全，车连通",
       "highlights": [
         {
@@ -138,6 +157,7 @@
     {
       "index": 17,
       "move": "O-O",
+      "popup_en": "...O-O! Black also castles and secures the king.",
       "popup": "O-O！黑方也易位\n双方王安全",
       "highlights": [
         {
@@ -153,26 +173,31 @@
     {
       "index": 18,
       "move": "Bg5",
+      "popup_en": "Bg5! White develops the final bishop and pins Black's knight on f6. Only the major pieces remain to be activated.",
       "popup": "Bg5！白方最后一个象出动\n牵制黑方f6马\n只剩重子待激活"
     },
     {
       "index": 19,
       "move": "c6",
+      "popup_en": "...c6 reinforces Black's position.",
       "popup": "c6防守\n黑方巩固"
     },
     {
       "index": 20,
       "move": "Qf3",
+      "popup_en": "Qf3 develops the queen and coordinates with White's bishops.",
       "popup": "Qf3后出动\n白方后和主教协调"
     },
     {
       "index": 21,
       "move": "Be7",
+      "popup_en": "...Be7 develops Black's bishop and completes Black's minor-piece development.",
       "popup": "Be7黑方象出动\n黑方轻子发展完毕"
     },
     {
       "index": 22,
       "move": "Rfe1",
+      "popup_en": "Rfe1! Now the major pieces join the game. The sequence is complete: develop the minor pieces, castle, then activate the rook on the open e-file. This is a model of good opening move order.",
       "popup": "Rfe1！重子激活！\n这是关键时刻：\n轻子全出→易位→现在激活车！\n车到e1占据开放线，是出子顺序的完美典范",
       "highlights": [
         {

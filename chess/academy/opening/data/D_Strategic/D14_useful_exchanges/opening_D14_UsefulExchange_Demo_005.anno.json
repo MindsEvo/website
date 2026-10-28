@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Demo_005",
   "description": "彼得罗夫防御 C42 — 对称兑换：黑方及时兑换获得结构均衡",
   "intro": {
+    "popup_en": "Timely Exchanges, Lesson 5: The Petrov Defense, one of Black's most solid symmetrical defenses. With 2...Nf6, Black counterattacks e4 instead of defending e5. White can capture on e5 or continue developing. How can timely exchanges maintain equality?",
     "flash_squares": [
       "e5",
       "e4",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The fifth pattern is the symmetrical exchange: each side captures a central pawn, and Black uses the timely ...Nxe5 to avoid falling behind in development. The key ...d5! counterattack must come immediately, not after a quiet developing move. Exchanges can be defensive: accurate, symmetrical trades can turn a difficult position into a fully equal one.",
     "popup": "彼得罗夫防御总结\n\n及时兑子的第五模式：\n\n① 对称兑换：双方各吃一兵，保持均衡\n② 黑方及时Nxe5，避免落后发展\n③ 关键步d5！！——必须立刻反击，不能先发展\n\n重要教训：\n兑子的时机可以是防御性的——\n通过正确的对称兑换，\n黑方从不利局面变成完全均衡！\n\n及时兑子：不只是进攻，也是防守！",
     "voice": true
   },
@@ -25,21 +27,25 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 claims the center.",
       "popup": "e4 中心"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's central occupation.",
       "popup": "e5 对称"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and attacks the e5-pawn.",
       "popup": "Nf3 攻击e5"
     },
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6!! The Petrov Defense. Rather than defend e5, Black counterattacks e4. This is one of the most solid defenses, combining symmetry with active counterplay.",
       "popup": "Nf6！！彼得罗夫防御！\n\n黑方不守e5，反攻e4！\n这是最坚固的防御之一\n对称+主动反击！",
       "highlights": [
         {
@@ -54,6 +60,7 @@
     {
       "index": 4,
       "move": "Nxe5",
+      "popup_en": "Nxe5! White captures the e5-pawn and appears to win a pawn, but Black has a strong counterattack. What should Black do now?",
       "popup": "Nxe5！白方吃e5兵！\n\n⭐ 白方选择吃兵——似乎多了一个兵\n但黑方有精彩的反击！\n黑方现在应该……",
       "highlights": [
         {
@@ -68,6 +75,7 @@
     {
       "index": 5,
       "move": "d6",
+      "popup_en": "...d6! Black first drives the knight away. Playing ...Nxe4 immediately allows Qe2, pinning the knight and winning material. The correct timing is to play ...d6 before capturing on e4; move order matters.",
       "popup": "d6！黑方先驱逐白马！\n\n⭐ 关键顺序！！\n黑方不能立刻Nxe4——\n因为白方Qe2！钉住黑马，得子！\n\n必须先d6驱马，再Nxe4！\n这就是及时性的关键：顺序很重要！",
       "highlights": [
         {
@@ -82,11 +90,13 @@
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 retreats. White's apparent extra pawn will soon disappear when Black captures on e4.",
       "popup": "Nf3 白马被迫退回\n\n⭐ 白方的兵优势已消失：\n黑方将在下一步夺回e4兵！"
     },
     {
       "index": 7,
       "move": "Nxe4",
+      "popup_en": "...Nxe4!! Black wins back the central pawn. Each side has captured one e-pawn, restoring material equality. This is the essence of the Petrov: precise, timely exchanges achieve a balanced position.",
       "popup": "Nxe4！！黑方夺回中心兵！\n\n⭐ 对称完成！\n双方各吃一个e列中心兵\n局面完全均衡！\n\n这就是彼得罗夫的精华：\n通过正确的及时兑换，实现完美均衡",
       "highlights": [
         {
@@ -101,11 +111,13 @@
     {
       "index": 8,
       "move": "d4",
+      "popup_en": "d4! White seeks an advantage by occupying the center and challenging the knight on e4.",
       "popup": "d4！白方后手争优势\n占据中心，打压黑方Ne4"
     },
     {
       "index": 9,
       "move": "d5",
+      "popup_en": "...d5! Black counterattacks at the right moment. If Black retreats with ...Nf6 first, e5 will chase the knight and give White a strong center. The immediate ...d5 gains space with tempo.",
       "popup": "d5！黑方反击！\n\n⭐ 又一次关键的及时兑子时机：\n黑方现在必须d5！\n如果先Nf6退，白方e5！Ne4被追，白方建立中心优势\n\nd5先手争取空间！",
       "highlights": [
         {
@@ -120,11 +132,13 @@
     {
       "index": 10,
       "move": "Bd3",
+      "popup_en": "Bd3! White develops the bishop and attacks the knight on e4.",
       "popup": "Bd3！白象发展\n攻击Ne4"
     },
     {
       "index": 11,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops and supports the knight on e4.",
       "popup": "Nc6！黑方发展马\n支撑Ne4的位置",
       "highlights": [
         {
@@ -139,16 +153,19 @@
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O 白方入城"
     },
     {
       "index": 13,
       "move": "Be7",
+      "popup_en": "...Be7 prepares Black to castle.",
       "popup": "Be7 黑方准备入城"
     },
     {
       "index": 14,
       "move": "c4",
+      "popup_en": "c4! White attacks the d5-pawn and increases pressure on the center.",
       "popup": "c4！白方进攻d5兵！\n向中心施压",
       "highlights": [
         {
@@ -163,6 +180,7 @@
     {
       "index": 15,
       "move": "Nb4",
+      "popup_en": "...Nb4! The knight attacks Bd3 and seeks an exchange.",
       "popup": "Nb4！黑马跳b4！\n攻击Bd3，寻求兑换",
       "highlights": [
         {
@@ -177,16 +195,19 @@
     {
       "index": 16,
       "move": "Be2",
+      "popup_en": "Be2 retreats the bishop. White avoids the exchange.",
       "popup": "Be2 象让步\n白方避免兑换"
     },
     {
       "index": 17,
       "move": "O-O",
+      "popup_en": "...O-O completes Black's king safety as the position becomes balanced.",
       "popup": "O-O 黑方入城\n双方局面趋于均衡"
     },
     {
       "index": 18,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the knight and increases pressure on d5.",
       "popup": "Nc3！白马发展\n向d5施压",
       "highlights": [
         {
@@ -201,6 +222,7 @@
     {
       "index": 19,
       "move": "Bf5",
+      "popup_en": "...Bf5! Black's bishop becomes active and seeks an exchange to reduce the pressure.",
       "popup": "Bf5！黑象主动！\n寻求兑换减轻压力",
       "highlights": [
         {
@@ -214,16 +236,19 @@
     {
       "index": 20,
       "move": "a3",
+      "popup_en": "a3! White drives the knight away from b4, where it was creating threats.",
       "popup": "a3！白方驱马！\n迫使Nb4离开威胁格"
     },
     {
       "index": 21,
       "move": "Nc6",
+      "popup_en": "...Nc6 retreats the knight to a better square.",
       "popup": "Nc6 马撤回改位置"
     },
     {
       "index": 22,
       "move": "Nxe4",
+      "popup_en": "Nxe4! White chooses a favorable exchange, removing Black's strong knight and simplifying the position. White's c4-d4 pawn center will then carry more weight.",
       "popup": "Nxe4！白方主动兑换！\n\n⭐ 白方判断：\n现在兑换Ne4有利！\n消灭黑方强马，简化局面\n白方d4+c4的兵优势更明显",
       "highlights": [
         {
@@ -238,11 +263,13 @@
     {
       "index": 23,
       "move": "Bxe4",
+      "popup_en": "...Bxe4 recaptures, and the position continues to simplify toward equality.",
       "popup": "Bxe4 黑象回吃\n局面继续均衡化"
     },
     {
       "index": 24,
       "move": "cxd5",
+      "popup_en": "cxd5! White exchanges in the center. The game has seen several timely, balanced trades; the Petrov's key lesson is that precise exchange timing lets Black maintain equality. Timely exchanges are also a defensive art.",
       "popup": "cxd5！白方中心兑换！\n\n⭐ 全局总结：\n双方进行了多次及时且均衡的兑换\n彼得罗夫防御的核心就是：\n通过精确的兑换顺序，\n黑方维持了完全均衡的局面！\n\n及时兑子：防守中的艺术！",
       "highlights": [
         {

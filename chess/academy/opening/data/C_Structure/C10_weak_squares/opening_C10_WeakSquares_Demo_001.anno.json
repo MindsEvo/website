@@ -8,10 +8,12 @@
       "c3",
       "b4"
     ],
+    "popup_en": "How Weak Squares Are Created, Lesson 1: Black exchanges the dark-squared bishop for White's knight. Black loses the bishop of one color, while White loses a knight. Losing a bishop can leave the squares of that color weak.",
     "popup": "弱格是怎么产生的 第1课\n\n黑方的黑格象兑换白马后：\n→ 黑方失去黑格象\n→ 白方失去一马\n失去某色象→己方该色格趋弱",
     "voice": true
   },
   "outro": {
+    "popup_en": "Black gave up its dark-squared bishop for White's knight. After Qxc3, White avoids doubled pawns and retains both bishops. Losing a bishop tends to weaken the squares of that color.",
     "popup": "弱格产生小结\n✅ 黑失黑格象，白失马\n✅ Qxc3：白方无叠兵，双象完好\n✅ 失去某颜色象 → 己方该色格趋向弱化",
     "voice": true
   },
@@ -26,26 +28,31 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 occupies the center and controls e5 and c5.",
       "popup": "d4占领中心\n控制e5和c5"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and prepares the Nimzo-Indian setup.",
       "popup": "Nf6发展马\n准备Nimzo体系"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4 expands on the queenside in a classical English or Indian setup.",
       "popup": "c4翼侧扩张\n经典英国/印度开局"
     },
     {
       "index": 3,
       "move": "e6",
+      "popup_en": "...e6 prepares the fianchetto structure and leaves room for ...Bb4.",
       "popup": "e6准备纤维局\n为Bb4留空间"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and controls the central square d5.",
       "popup": "Nc3发展马\n控制d5中心格",
       "highlights": [
         {
@@ -60,6 +67,7 @@
     {
       "index": 5,
       "move": "Bb4",
+      "popup_en": "...Bb4! The Nimzo-Indian signature move pins Nc3 and threatens to exchange it. If Black gives up this dark-squared bishop, dark squares may become weak.",
       "popup": "Bb4！尼姆佐招牌\n钉住c3马，威胁兑换\n若兑换→黑方黑格弱化\n（Bb4是黑格象，b4=黑格）",
       "highlights": [
         {
@@ -74,16 +82,19 @@
     {
       "index": 6,
       "move": "Qc2",
+      "popup_en": "Qc2 prevents doubled pawns if the bishop captures on c3 and keeps the knight stable.",
       "popup": "Qc2防止兑换后叠兵\n稳定c3马"
     },
     {
       "index": 7,
       "move": "O-O",
+      "popup_en": "...O-O castles first and secures Black's king.",
       "popup": "O-O黑方率先入城\n王安全"
     },
     {
       "index": 8,
       "move": "a3",
+      "popup_en": "a3 challenges the bishop and asks Black to choose between exchanging and retreating.",
       "popup": "a3逼迫黑象表态\n现在—兑换还是撤？",
       "highlights": [
         {
@@ -98,6 +109,7 @@
     {
       "index": 9,
       "move": "Bxc3+",
+      "popup_en": "...Bxc3+ exchanges. Black gives up the dark-squared bishop on b4, while White loses the knight on c3, not a bishop. White retains both bishops.",
       "popup": "Bxc3+兑换！\n关键事实：\n黑方失去黑格象（Bb4在黑格b4）\n白方失去的是马Nc3（非象！）\n白方双象均仍完好在棋盘",
       "highlights": [
         {
@@ -112,6 +124,7 @@
     {
       "index": 10,
       "move": "Qxc3",
+      "popup_en": "Qxc3! The queen recaptures without creating doubled pawns. White keeps a sound structure and the bishop pair, though control of d5 and e4 is reduced. The e3-pawn and Nf3 still defend d4.",
       "popup": "Qxc3以后吃回！无叠兵！\n白方兵型完整，且有双象优势\n代价：失去马，d5/e4控制略松\nd4仍由e3兵和Nf3守护",
       "highlights": [
         {
@@ -127,11 +140,13 @@
     {
       "index": 11,
       "move": "b6",
+      "popup_en": "...b6 prepares ...Bb7 and develops Black's remaining light-squared bishop on its long diagonal.",
       "popup": "b6准备Bb7\n黑方建立白格象对角线\n（Bb7在白格b7，走白格长斜线）"
     },
     {
       "index": 12,
       "move": "Bg5",
+      "popup_en": "Bg5 pins Nf6 and makes it harder for Black to advance ...e5, helping White contest the center.",
       "popup": "Bg5牵制Nf6（钉住马不能轻动）\n限制黑方e5推进，争中心主导权",
       "highlights": [
         {
@@ -147,6 +162,7 @@
     {
       "index": 13,
       "move": "Bb7",
+      "popup_en": "...Bb7 develops the light-squared bishop along the a8-h1 diagonal, pressuring g2. Black has lost the dark-squared bishop but retained the light-squared one.",
       "popup": "Bb7建立长斜线\n白格象（Bb4已换，留下的是白格象）\n沿a8-h1白格长对角线施压g2",
       "highlights": [
         {
@@ -161,41 +177,49 @@
     {
       "index": 14,
       "move": "e3",
+      "popup_en": "e3 reinforces the center and stabilizes d4.",
       "popup": "e3加强中心\n稳固d4"
     },
     {
       "index": 15,
       "move": "d6",
+      "popup_en": "...d6 solidifies Black's position and prepares knight outposts on c5 or e5.",
       "popup": "d6稳固防守\n为黑方马留c5/e5跳点"
     },
     {
       "index": 16,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and controls e5 and d4.",
       "popup": "Nf3发展马\n控制e5和d4"
     },
     {
       "index": 17,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops the other knight and prepares the ...c5 challenge to the center.",
       "popup": "Nbd7重马发展\n准备c5冲击中心"
     },
     {
       "index": 18,
       "move": "Be2",
+      "popup_en": "Be2 retreats the bishop and prepares White to castle.",
       "popup": "Be2象退守\n为王车易位做准备"
     },
     {
       "index": 19,
       "move": "Re8",
+      "popup_en": "...Re8 reinforces the e-file and prepares ...e5.",
       "popup": "Re8增援e列\n准备e5反击"
     },
     {
       "index": 20,
       "move": "O-O",
+      "popup_en": "O-O secures White's king, making it safer to play actively.",
       "popup": "O-O白方入城\n王安全后才能放心行棋"
     },
     {
       "index": 21,
       "move": "e5",
+      "popup_en": "...e5! Black counterattacks and challenges White's center on d4.",
       "popup": "e5！黑方发动反击\n挑战白方d4中心",
       "highlights": [
         {
@@ -210,6 +234,7 @@
     {
       "index": 22,
       "move": "dxe5",
+      "popup_en": "dxe5 opens the position. The dark square d4 is now empty and becomes an important point of contention. Black's knight may occupy it; this illustrates the lasting effect of exchanging the dark-squared bishop. White must remain alert to the weakened dark squares around d4.",
       "popup": "dxe5打开局面！\nd4（黑格）随之空出，成争夺要点\n黑马可占d4——黑格象换马的长期影响\n白方须警惕d4的黑格弱化",
       "highlights": [
         {

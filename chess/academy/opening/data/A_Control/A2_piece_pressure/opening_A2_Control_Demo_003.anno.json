@@ -2,6 +2,7 @@
   "game_id": "A2_Control_Demo_003",
   "description": "英格兰开局——翼路兵加子力控住中心，15步完整注释",
   "intro": {
+    "popup_en": "A flank pawn, supported by knights and a bishop, can quietly control all four central squares. The English Opening demonstrates the hypermodern idea of influencing the center without playing e4.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White can control the center without playing e4. The c4-pawn influences d5 from the flank, while Bg2 and both knights form a subtle but powerful central network.",
     "popup": "不走 e4 也能控制中心——超现代核心逻辑。c4 兵在侧翼却控制 d5，配合 Bg2 和双马，形成无形但强大的中心控制网络。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "c4",
+      "popup_en": "1.c4! This flank pawn influences the central square d5. Hypermodern play begins with a pawn on the wing whose aim is still the center.",
       "popup": "⬆️ <b>1.c4 — 翼路兵，却控制中心！</b><br>c4 兵不在中心，却通过控制 <b>d5</b> 格来影响中心争夺。这就是超现代主义的起点——兵的位置在翼路，但眼光在中心！",
       "highlights": [
         {
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "1...e5 occupies the center directly, controlling d4 and f4.",
       "popup": "⬇️ <b>1...e5 — 黑方占领中心！</b><br>黑方直接用兵占 e5，传统回应。e5 兵控制 d4 和 f4。",
       "highlights": [
         {
@@ -71,6 +75,7 @@
     {
       "index": 2,
       "move": "Nc3",
+      "popup_en": "2.Nc3 controls d5 and e4. Along with the c4-pawn, the knight doubles White's control of d5.",
       "popup": "⬆️ <b>2.Nc3 — 马加入控制！</b><br>c3 马直接控制 <b>d5</b> 和 <b>e4</b> 两个中心格。与 c4 兵配合，d5 格受到双重控制！",
       "highlights": [
         {
@@ -103,6 +108,7 @@
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "2...Nf6 controls e4 and d5. Black also uses a knight to influence the center, not only the e5-pawn.",
       "popup": "⬇️ <b>2...Nf6 — 黑马控制 e4！</b><br>黑马在 f6，控制 e4 和 d5。黑方也在用子力控制中心，而非只靠 e5 兵。",
       "highlights": [
         {
@@ -130,6 +136,7 @@
     {
       "index": 4,
       "move": "g3",
+      "popup_en": "3.g3 prepares to fianchetto the bishop on g2, where it will influence the center along the long diagonal.",
       "popup": "⬆️ <b>3.g3 — 为长斜线象铺路！</b><br>白方准备将象发展到 g2，沿 h1-a8 斜线覆盖中心区域。",
       "highlights": [
         {
@@ -145,6 +152,7 @@
     {
       "index": 5,
       "move": "d5",
+      "popup_en": "3...d5! Black directly tests White's control of d5 by challenging the c4-pawn.",
       "popup": "⬇️ <b>3...d5 — 黑方挑战 c4！</b><br>黑方推 d5，直接测试白方 c4 兵对 d5 的控制。这是对「翼路控制」的直接挑战！",
       "highlights": [
         {
@@ -166,6 +174,7 @@
     {
       "index": 6,
       "move": "cxd5",
+      "popup_en": "4.cxd5! White's control of d5 becomes concrete: the c4-pawn captures the pawn that entered the square. The flank pawn was creating a real threat, not merely an idea.",
       "popup": "⬆️ <b>4.cxd5 — 白方吃掉 d5！</b><br>白方 c4 兵对 d5 的控制变成了现实！c4 不是虚张声势，而是真正的威胁。翼路控制就这样兑现了价值。",
       "highlights": [
         {
@@ -187,6 +196,7 @@
     {
       "index": 7,
       "move": "Nxd5",
+      "popup_en": "4...Nxd5 recaptures and occupies d5 with a knight. Unlike a pawn, the knight on d5 may be driven away.",
       "popup": "⬇️ <b>4...Nxd5 — 黑马重夺 d5！</b><br>黑马吃回 d5，重新占领该格。但马占 d5 与兵占 d5 不同——马更容易被驱逐。",
       "highlights": [
         {
@@ -202,6 +212,7 @@
     {
       "index": 8,
       "move": "Bg2",
+      "popup_en": "5.Bg2! The bishop enters the long diagonal and exerts distant pressure on d5. Even with Black's knight there, Bg2 keeps the central outpost under observation.",
       "popup": "⬆️ <b>5.Bg2 — 象入长斜线！</b><br>白象进入 g2，沿 h1-a8 斜线遥控 <b>d5</b>！即使黑马在 d5，Bg2 也在施加远程压力。<br><span style='color:#44CCFF;'>★ Bg2 是超现代控制的核心棋子——从后方远程「监视」中心！</span>",
       "highlights": [
         {
@@ -231,6 +242,7 @@
     {
       "index": 9,
       "move": "Nb6",
+      "popup_en": "5...Nb6 retreats from d5 under the pressure of Bg2. Control of the square shifts again, showing the effect of White's flank setup.",
       "popup": "⬇️ <b>5...Nb6 — 黑马撤离 d5。</b><br>在 Bg2 的压力下，黑马退到 b6。d5 的控制权再次移位——翼路控制的效果已经显现！",
       "highlights": [
         {
@@ -252,6 +264,7 @@
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "6.Nf3 develops White's second knight and attacks e5. Together with Nc3, the knights influence key central squares.",
       "popup": "⬆️ <b>6.Nf3 — 第二马出动！</b><br>f3 马攻击 e5，与 Nc3 配合，双马共同控制中心区域。",
       "highlights": [
         {
@@ -279,6 +292,7 @@
     {
       "index": 11,
       "move": "Nc6",
+      "popup_en": "6...Nc6 develops Black's second knight and adds influence over the center.",
       "popup": "⬇️ <b>6...Nc6 — 黑方出马。</b><br>黑方第二马出动，加强对中心的影响。",
       "highlights": [],
       "concept_arrows": []
@@ -286,6 +300,7 @@
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "7.O-O secures White's king after the pieces are developed.",
       "popup": "⬆️ <b>7.O-O — 白方易位！</b><br>子力发展就绪，白方易位安全。",
       "highlights": [],
       "concept_arrows": []
@@ -293,6 +308,7 @@
     {
       "index": 13,
       "move": "Be7",
+      "popup_en": "7...Be7 develops and prepares Black to castle.",
       "popup": "⬇️ <b>7...Be7 — 黑方出象。</b><br>黑方准备易位。",
       "highlights": [],
       "concept_arrows": []
@@ -300,6 +316,7 @@
     {
       "index": 14,
       "move": "d3",
+      "popup_en": "8.d3 stabilizes White's position and keeps a central advance in reserve. The c4-pawn, Nc3, Bg2, and Nf3 coordinate to control the center without e4.",
       "popup": "⬆️ <b>8.d3 — 稳固阵型，等待时机。</b><br>白方 d3 稳固，为未来的中心推进做准备。<br><span style='color:#88CCFF;'>★ 总结：c4,Nc3,Bg2,Nf3 四子协调控制中心，不走 e4 也做到了！</span>",
       "highlights": [
         {

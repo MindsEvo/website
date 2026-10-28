@@ -2,11 +2,13 @@
   "game_id": "A3_Space_Demo_004",
   "description": "阿列欣防御反例 B03 — 用兵追杀子力，后防空虚，e5无人守护被黑方直接吃掉",
   "intro": {
+    "popup_en": "This game shows the danger of overexpansion. White repeatedly uses pawns to chase Black's pieces, but after eight pawn moves no piece has developed. The back rank is undefended, and the e5-pawn becomes free material.",
     "flash_squares": ["e5", "c4", "g4", "h4"],
     "popup": "本局演示过度扩张的问题：白方每步都在用兵追打黑方棋子，看起来很威风。\n但8步兵推完，0个棋子出动——后防完全空虚，e5白送！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Eight pawn moves, no developed pieces, poor coordination, and an exposed back rank. Chasing pieces with pawns is a trap: advanced pawns cannot return, weaknesses accumulate, and e5 is eventually left undefended.",
     "popup": "8步推兵、0个棋子出动、子力不协调、后防全空。\n用兵追子是陷阱：兵走了不回来，漏洞越积越大，e5就这样白送了。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 is a normal opening move.",
       "popup": "▶️ <b>e4</b><br>白方开局，正常第一步",
       "highlights": [{"squares": ["e4"], "color": "#C6D50044", "duration_ms": 1000}],
       "concept_arrows": []
@@ -25,6 +28,7 @@
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6! The Alekhine Defense attacks e4 and invites White to chase the knight. The deeper White advances, the more it may cost to maintain the pawn chain.",
       "popup": "▶️ <b>Nf6！阿列欣防御！</b><br>黑方马来攻击e4——故意让白方追！<br>这是个「诱敌深入」的策略：越追越深，代价越大",
       "highlights": [{"squares": ["f6", "e4"], "color": "#00BCD455", "duration_ms": 1200}],
       "concept_arrows": [{"from": "f6", "to": "e4", "color": "#00BCD4CC"}]
@@ -32,6 +36,7 @@
     {
       "index": 2,
       "move": "e5",
+      "popup_en": "e5 chases Nf6 for the first time. The pawn gains space, but every advance is permanent: the pawn cannot retreat to help defend the rear.",
       "popup": "⚠️ <b>e5 — 追击！（第1次用兵追子）</b><br>e5兵攻击Nf6，马被赶走！<br>这步推兵看起来合理，但要注意：兵走了就不回来了",
       "highlights": [{"squares": ["e5", "f6"], "color": "#FF8F0066", "duration_ms": 1500}],
       "concept_arrows": [{"from": "e4", "to": "e5", "color": "#FF5722CC"}, {"from": "e5", "to": "f6", "color": "#FF572299"}]
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Nd5",
+      "popup_en": "...Nd5! The knight retreats to a strong central square. Black has given ground, but the knight is well placed.",
       "popup": "▶️ <b>Nd5</b><br>马退到d5——稳稳站好！<br>注意：黑方退了一步，但站到了一个很好的中心格",
       "highlights": [{"squares": ["d5", "f6"], "color": "#00BCD444", "duration_ms": 1200}],
       "concept_arrows": []
@@ -46,6 +52,7 @@
     {
       "index": 4,
       "move": "d4",
+      "popup_en": "d4 supports e5 and gives White two advanced central pawns. The center looks strong, but White's back rank is still undeveloped.",
       "popup": "▶️ <b>d4</b><br>白方建立中心，支援e5<br>现在白方有e5+d4两个兵，看起来很强大——但后排还是空的",
       "highlights": [{"squares": ["d4", "e5", "b1", "c1"], "color": "#FF8F0033", "duration_ms": 1500}],
       "concept_arrows": []
@@ -53,6 +60,7 @@
     {
       "index": 5,
       "move": "d6",
+      "popup_en": "...d6 challenges e5 and asks White to clarify the center. Black's moves have a clear purpose.",
       "popup": "▶️ <b>d6</b><br>黑方挑战e5！要求白方表态<br>黑方每步棋都很有目的性",
       "highlights": [{"squares": ["d6", "e5"], "color": "#00BCD444", "duration_ms": 1200}],
       "concept_arrows": [{"from": "d6", "to": "e5", "color": "#00BCD4CC"}]
@@ -60,6 +68,7 @@
     {
       "index": 6,
       "move": "c4",
+      "popup_en": "c4 chases Nd5 for the second time. White has spent three moves on pawns, e5, d4, and c4, without developing a piece.",
       "popup": "⚠️ <b>c4 — 追击！（第2次用兵追子）</b><br>c4攻击Nd5，马又被追走！<br>白方已推：e5、d4、c4 = 3步全是兵，一个子力都没出！",
       "highlights": [{"squares": ["c4", "d5", "b1", "c1", "f1", "g1"], "color": "#E5393555", "duration_ms": 2000}],
       "concept_arrows": [{"from": "c4", "to": "d5", "color": "#FF5722CC"}]
@@ -67,6 +76,7 @@
     {
       "index": 7,
       "move": "Nb6",
+      "popup_en": "...Nb6 retreats again, from f6 to d5 to b6. Meanwhile, White's knights and bishops remain on their starting squares.",
       "popup": "▶️ <b>Nb6</b><br>马又退了！已经退了2次（f6→d5→b6）<br>但看看白方后排：Nb1、Bc1、Bf1全没动！",
       "highlights": [{"squares": ["b1", "c1", "f1", "g1", "h1"], "color": "#E5393533", "duration_ms": 2000}],
       "concept_arrows": []
@@ -74,6 +84,7 @@
     {
       "index": 8,
       "move": "f4",
+      "popup_en": "f4 supports e5 and expands further. White has now spent four moves on pawns, with no piece developed.",
       "popup": "⚠️ <b>f4 — 第4步兵！</b><br>f4支援e5，继续扩张<br>现在数一数：e5+d4+c4+f4 = 4步兵，棋子出动：0个！",
       "highlights": [{"squares": ["f4", "e5", "d4", "c4"], "color": "#FF8F0055", "duration_ms": 1500}],
       "concept_arrows": []
@@ -81,6 +92,7 @@
     {
       "index": 9,
       "move": "Bf5",
+      "popup_en": "...Bf5! Black develops the bishop to an active square and begins to play actively rather than simply retreat.",
       "popup": "▶️ <b>Bf5！黑方象主动出来！</b><br>黑方象站到f5，非常活跃的格子<br>黑方不光是被动退，现在主动出击了！",
       "highlights": [{"squares": ["f5", "e4", "b1"], "color": "#00BCD455", "duration_ms": 1500}],
       "concept_arrows": []
@@ -88,6 +100,7 @@
     {
       "index": 10,
       "move": "g4",
+      "popup_en": "g4 chases the bishop on f5 for the third time. White has pushed five pawns and still has not developed a single piece.",
       "popup": "⚠️ <b>g4 — 追击！（第3次用兵追子）</b><br>g4攻击Bf5！（g4兵攻击f5格）象又被追走！<br>白方推了5步兵：e5+d4+c4+f4+g4，子力还是0！",
       "highlights": [{"squares": ["g4", "f5"], "color": "#FF8F0066", "duration_ms": 1500}],
       "concept_arrows": [{"from": "g4", "to": "f5", "color": "#FF5722CC"}]
@@ -95,6 +108,7 @@
     {
       "index": 11,
       "move": "Bg6",
+      "popup_en": "...Bg6 retreats once more, but Black continues to build the position and wait for the right moment.",
       "popup": "▶️ <b>Bg6</b><br>象退到g6——又一次被兵赶走<br>但黑方还是在积累，等待时机！",
       "highlights": [{"squares": ["g6", "f5"], "color": "#00BCD444", "duration_ms": 1200}],
       "concept_arrows": []
@@ -102,6 +116,7 @@
     {
       "index": 12,
       "move": "h4",
+      "popup_en": "h4 is White's sixth pawn move and threatens h5 to chase the bishop again. White has developed no pieces and has not castled.",
       "popup": "⚠️ <b>h4 — 第6步兵！还在追！</b><br>h4威胁h5继续追象<br>看看白方：6步推兵，0个子力出动，王没有易位！",
       "highlights": [{"squares": ["h4", "g6", "b1", "c1", "d1", "f1", "g1", "h1"], "color": "#E5393555", "duration_ms": 2000}],
       "concept_arrows": [{"from": "h4", "to": "h5", "color": "#FF572299"}]
@@ -109,6 +124,7 @@
     {
       "index": 13,
       "move": "h5",
+      "popup_en": "...h5! Black blocks White's pawn chase and locks the kingside. Black has recognized White's weaknesses and prepares to counterattack.",
       "popup": "▶️ <b>h5！黑方开始反击！</b><br>h5顶住白方的追击，锁住王翼<br>黑方感觉到了白方的弱点，准备反击！",
       "highlights": [{"squares": ["h5", "h4", "g5"], "color": "#00BCD455", "duration_ms": 1200}],
       "concept_arrows": []
@@ -116,6 +132,7 @@
     {
       "index": 14,
       "move": "g5",
+      "popup_en": "g5 is White's seventh pawn move. White keeps advancing, but every major piece remains on its starting square and the back rank is completely undeveloped.",
       "popup": "⚠️ <b>g5 — 第7步兵！</b><br>白方继续往前冲，但看看后排：完全空虚！<br>Ra1、Nb1、Bc1、Qd1、Ke1、Bf1——全在原位！",
       "highlights": [{"squares": ["a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"], "color": "#E5393566", "duration_ms": 2500}],
       "concept_arrows": []
@@ -123,6 +140,7 @@
     {
       "index": 15,
       "move": "dxe5",
+      "popup_en": "...dxe5! Black opens the center by capturing on e5. White has no developed pieces ready to respond to the change in the position.",
       "popup": "💥 <b>dxe5！黑方打开中心！</b><br>黑方d6吃e5，中心打开了！<br>白方没有子力来应对这个局面变化！",
       "highlights": [{"squares": ["e5", "d6", "d4", "c4"], "color": "#E5393566", "duration_ms": 1500}],
       "concept_arrows": [{"from": "d6", "to": "e5", "color": "#E53935CC"}]
@@ -130,6 +148,7 @@
     {
       "index": 16,
       "move": "fxe5",
+      "popup_en": "fxe5 recaptures with the f-pawn, but d4 is now weak and Black's counterattack is coming.",
       "popup": "▶️ <b>fxe5</b><br>白方只能回吃，f4兵到e5<br>但现在d4已经很薄弱，黑方的反击要来了！",
       "highlights": [{"squares": ["e5", "d4", "c4"], "color": "#FF8F0055", "duration_ms": 1200}],
       "concept_arrows": []
@@ -137,6 +156,7 @@
     {
       "index": 17,
       "move": "Nc6",
+      "popup_en": "...Nc6! Black develops the second knight and attacks d4 and e5. Both black knights are active while White's pieces remain undeveloped.",
       "popup": "▶️ <b>Nc6！黑方第二匹马出动！</b><br>黑方b8的马来到c6，攻击d4和e5<br>黑方两匹马都活跃了，白方呢？",
       "highlights": [{"squares": ["c6", "d4", "e5"], "color": "#00BCD455", "duration_ms": 1500}],
       "concept_arrows": [{"from": "c6", "to": "d4", "color": "#00BCD4CC"}, {"from": "c6", "to": "e5", "color": "#00BCD4CC"}]
@@ -144,6 +164,7 @@
     {
       "index": 18,
       "move": "d5",
+      "popup_en": "d5 chases Nc6 for the fourth time, bringing White's pawn advances to eight. But e5 is completely undefended; no piece has been developed to protect it.",
       "popup": "⚠️ <b>d5 — 追击！（第4次用兵追子）</b><br>d5继续追Nc6，白方已推8步兵！<br>但e5完全无人守护——谁来守？没有一个棋子出动过！",
       "highlights": [{"squares": ["d5", "c6", "e5", "b1", "c1", "f1", "g1"], "color": "#E5393555", "duration_ms": 2000}],
       "concept_arrows": [{"from": "d5", "to": "c6", "color": "#FF5722CC"}]
@@ -151,6 +172,7 @@
     {
       "index": 19,
       "move": "Nxe5",
+      "popup_en": "...Nxe5! Black stops retreating and captures the undefended pawn. White cannot protect it because no piece has developed: there is no Nf3 or Nc3, and no bishop on c4. Eight pawn moves bought space at the cost of coordination, king safety, and the e5-pawn.",
       "popup": "❌ <b>Nxe5！e5白送！</b><br>黑方不再退——直接吃掉无人守护的e5兵！<br>为什么白方守不住？因为0个棋子出动：<br>• 没有Nf3守e5<br>• 没有Nc3、Bc4任何一个子力<br>结算：8步推兵、0个棋子出动、子力不协调、后防全空<br>这就是过度扩张的代价！",
       "highlights": [{"squares": ["e5", "c6", "b1", "c1", "d1", "f1", "g1", "h1"], "color": "#E5393577", "duration_ms": 3000}],
       "concept_arrows": [{"from": "c6", "to": "e5", "color": "#E53935CC"}]

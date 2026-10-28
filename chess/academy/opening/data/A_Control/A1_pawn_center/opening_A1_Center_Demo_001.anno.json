@@ -2,6 +2,7 @@
   "game_id": "A1_Center_Demo_001",
   "description": "中心控制基础演示第1局 — 9步，完整注释",
   "intro": {
+    "popup_en": "The four squares in the middle of the board are called the central squares. Both sides compete to control them. This game gives a simple, visual demonstration.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "This game shows why occupying the center matters, one of chess's most important principles. However, major pieces such as the queen and rooks should not occupy the center too early: they can be attacked, lose tempi, and fall behind in development.",
     "popup": "本局只是直观的演示了占领中心的重要性，这是国际象棋最重要的原则之一。但是重子如后车不适宜过早占领中心，否则容易被攻击浪费步数陷入被动而失先。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4! White occupies the center. The e-pawn lands on a central square and controls d5 and f5 from the first move.",
       "popup": "⬆️ <b>1.e4 — 白方占领中心！</b><br>e4兵直接踏上中心格，同时控制 d5 和 f5 两个要点。开局第一步就争夺中心。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "1...e5! Black also occupies the center, controlling d4 and f4. Each side holds one central square, keeping the balance.",
       "popup": "⬇️ <b>1...e5 — 黑方同样抢占中心！</b><br>黑方立刻跟进，e5兵也踏上中心格，控制 d4 和 f4。双方各占中心一格，势均力敌。",
       "highlights": [
         {
@@ -82,6 +86,7 @@
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "2.d4! White expands with a second central pawn. Together, e4 and d4 pressure the center, and d4 challenges Black's e5-pawn.",
       "popup": "⬆️ <b>2.d4 — 白方扩大中心！</b><br>白方再上一兵，现在 e4+d4 两兵共同压制中心。d4兵威胁黑方的 e5 兵，主动挑战！",
       "highlights": [
         {
@@ -109,6 +114,7 @@
     {
       "index": 3,
       "move": "exd4",
+      "popup_en": "2...exd4 captures the d4-pawn. Black prevents White's two-pawn center from taking over; the black pawn now occupies d4 and the position becomes more complex.",
       "popup": "⬇️ <b>2...exd4 — 黑方吃掉 d4 兵！</b><br>黑方不让白方双兵盘踞中心，主动拆掉白兵。中心格 d4 现在由黑兵占领，局面更加复杂。",
       "highlights": [
         {
@@ -124,6 +130,7 @@
     {
       "index": 4,
       "move": "Qxd4",
+      "popup_en": "3.Qxd4 recaptures in the center. The queen has great range and controls lines and diagonals, but bringing it out so early can make it a target.",
       "popup": "⬆️ <b>3.Qxd4 — 白后重夺中心！</b><br>白方用后吃回 d4，后的控制范围极大，整条对角线和直线都受威胁。但后出动太早，容易被攻击……",
       "highlights": [
         {
@@ -159,6 +166,7 @@
     {
       "index": 5,
       "move": "Nc6",
+      "popup_en": "3...Nc6 develops with tempo by attacking the queen on d4, forcing it to move. This shows the risk of placing the queen in the center too early: minor pieces can gain time by attacking it.",
       "popup": "⬇️ <b>3...Nc6 — 黑马攻击白后！</b><br>黑方出马直接威胁 d4 的白后，白后必须移动。这说明后过早进中心是有风险的——容易被子力攻击。",
       "highlights": [
         {
@@ -185,6 +193,7 @@
     {
       "index": 6,
       "move": "Qe3",
+      "popup_en": "4.Qe3 retreats from the central square d4. This illustrates a key opening principle: do not bring the queen into the center too early, where it can be attacked and cost tempi.",
       "popup": "⬆️ <b>4.Qe3 — 白后退出中心！</b><br>白后被迫离开中心格 d4，退到 e3。这印证了开局原则：<b>后不宜过早进中心</b>，因为太容易被攻击而失先。",
       "highlights": [
         {
@@ -207,6 +216,7 @@
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "4...Nf6 develops Black's second knight and attacks e4. The f6-knight is ideally placed, controlling the central squares e4 and d5.",
       "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑方出第二匹马，直接威胁 e4 兵。f6 是开局最重要的马的位置之一，控制 e4、d5 两个中心格。",
       "highlights": [
         {
@@ -243,6 +253,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "5.Nc3 develops and defends the e4-pawn while controlling d5. Remember: develop minor pieces, knights and bishops, before bringing out the queen and rooks.",
       "popup": "⬆️ <b>5.Nc3 — 白马保护 e4！</b><br>白方出马守护 e4 兵，同时 c3 也是马的最佳格之一，控制d5要点。<br><span style='color:#88CCFF;'>★ 记住：开局要<b>先出小子（马、象）</b>，再考虑后和车！</span>",
       "highlights": [
         {

@@ -7,10 +7,12 @@
       "d4",
       "c3"
     ],
+    "popup_en": "Pawn-Chain Direction, Lesson 2: In the Advance Variation, White plays e5 on move three to lock the structure immediately. Black should attack the base on d4 with ...c5, while White can prepare b4-b5 on the queenside. The two sides race on opposite wings.",
     "popup": "兵链方向第2课\ne5推进变例！\n白方第3步直接e5\n立刻锁定兵链，结构第一！\nc5要攻根部d4\nb4→b5要推后翼\n双翼竞速！",
     "voice": true
   },
   "outro": {
+    "popup_en": "This game demonstrates how a pawn-chain advance shapes both sides' plans and directs the attack toward opposite wings.",
     "popup": "本局演示了兵链推进的例子！",
     "voice": true
   },
@@ -29,6 +31,7 @@
     {
       "index": 1,
       "move": "e6",
+      "popup_en": "...e6 begins the French Defense.",
       "popup": "e6法国防御"
     },
     {
@@ -42,6 +45,7 @@
     {
       "index": 4,
       "move": "e5",
+      "popup_en": "e5!! The Advance Variation locks the pawn chain e5-d4 in place, defining the structure immediately.",
       "popup": "e5！！推进变例！一步锁定兵链e5-d4\n结构立刻确立！",
       "highlights": [
         {
@@ -56,6 +60,7 @@
     {
       "index": 5,
       "move": "c5",
+      "popup_en": "...c5! Black correctly attacks the base of White's chain on d4, the key counterattack in the Advance Variation.",
       "popup": "c5！正确！攻击兵链根部d4\n——推进变例黑方核心反击！",
       "highlights": [
         {
@@ -70,81 +75,97 @@
     {
       "index": 6,
       "move": "c3",
+      "popup_en": "c3! White reinforces the base on d4 and holds the pawn chain together.",
       "popup": "c3！支撑兵链根部d4，坚守链根"
     },
     {
       "index": 7,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops a knight.",
       "popup": "Nc6发展马"
     },
     {
       "index": 8,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and prepares White's kingside setup.",
       "popup": "Nf3出马，王翼准备"
     },
     {
       "index": 9,
       "move": "Qb6",
+      "popup_en": "...Qb6! Black develops the queen and creates double pressure against b2.",
       "popup": "Qb6！后出动攻击b2，双重压力"
     },
     {
       "index": 10,
       "move": "Bd3",
+      "popup_en": "Bd3 develops and supports the pawn on e5.",
       "popup": "Bd3发展，支撑e5"
     },
     {
       "index": 11,
       "move": "Bd7",
+      "popup_en": "...Bd7 develops Black's bishop.",
       "popup": "Bd7），象出发展"
     },
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O易位"
     },
     {
       "index": 13,
       "move": "cxd4",
+      "popup_en": "...cxd4! Black finally strikes at the base of the chain on d4.",
       "popup": "cxd4！黑方终于打击d4根部！"
     },
     {
       "index": 14,
       "move": "cxd4",
+      "popup_en": "cxd4 recaptures and rebuilds White's pawn chain.",
       "popup": "cxd4白方回兵重建链"
     },
     {
       "index": 15,
       "move": "Nge7",
+      "popup_en": "...Nge7 develops Black's knight.",
       "popup": "Nge7马出动"
     },
     {
       "index": 16,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and brings another piece toward the kingside.",
       "popup": "Nc3马向王翼集结"
     },
     {
       "index": 17,
       "move": "Nf5",
+      "popup_en": "...Nf5 places Black's knight on an active square.",
       "popup": "Nf5马占据好位"
     },
     {
       "index": 18,
       "move": "Na4",
+      "popup_en": "Na4! White drives away Black's queen.",
       "popup": "Na4！驱逐黑后"
     },
     {
       "index": 19,
       "move": "Qa5",
+      "popup_en": "...Qa5 retreats the queen.",
       "popup": "Qa5后撤"
     },
     {
       "index": 20,
       "move": "Bd2",
+      "popup_en": "Bd2 develops the bishop.",
       "popup": "Bd2发展"
     },
     {
       "index": 21,
       "move": "Bb4+",
+      "popup_en": "...Bb4+ gives check with the bishop.",
       "popup": "Bb4+象将军"
     },
     {
@@ -158,26 +179,31 @@
     {
       "index": 24,
       "move": "Bb1",
+      "popup_en": "Bb1! The bishop retreats to protect White's queenside.",
       "popup": "Bb1！象后撤保护后翼"
     },
     {
       "index": 25,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O黑易位"
     },
     {
       "index": 26,
       "move": "a3",
+      "popup_en": "a3! White drives Black's knight away.",
       "popup": "a3！驱逐黑马"
     },
     {
       "index": 27,
       "move": "Nc6",
+      "popup_en": "...Nc6 retreats the knight.",
       "popup": "Nc6马回撤"
     },
     {
       "index": 28,
       "move": "b4",
+      "popup_en": "b4!! White begins the queenside pawn race. The chain's direction clearly guides the plan.",
       "popup": "b4！！双翼竞速！b4后翼推进\n兵链方向清晰指引行动！",
       "highlights": [
         {
@@ -192,21 +218,25 @@
     {
       "index": 29,
       "move": "Qd8",
+      "popup_en": "...Qd8 retreats the queen.",
       "popup": "Qd8后撤"
     },
     {
       "index": 30,
       "move": "b5",
+      "popup_en": "b5!! White launches a minority attack and advances along the queenside.",
       "popup": "b5！！少数兵突破！沿后翼推进"
     },
     {
       "index": 31,
       "move": "Na5",
+      "popup_en": "...Na5 reroutes the knight.",
       "popup": "Na5马转移"
     },
     {
       "index": 32,
       "move": "Ne1",
+      "popup_en": "Ne1!! White reorganizes the knight, preparing Nf3-g5 or f5 and a later f4 break on the kingside.",
       "popup": "Ne1！！战略重组\n调马去f3→g5/f5，准备f4王翼突破",
       "highlights": [
         {
@@ -221,16 +251,19 @@
     {
       "index": 33,
       "move": "f6",
+      "popup_en": "...f6! Black attacks the head of White's pawn chain on e5.",
       "popup": "f6！黑方攻击链头e5"
     },
     {
       "index": 34,
       "move": "exf6",
+      "popup_en": "exf6! White captures and exchanges pawns.",
       "popup": "exf6！白吃，兑换"
     },
     {
       "index": 35,
       "move": "Rxf6",
+      "popup_en": "...Rxf6! Black's rook recaptures and becomes active.",
       "popup": "Rxf6！车进攻"
     }
   ]

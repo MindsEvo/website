@@ -2,11 +2,13 @@
   "game_id": "A4_Lines_Demo_005",
   "description": "苏格兰开局 C45 — 综合演示：多线同时打开，Bg2象控长对角线",
   "intro": {
+    "popup_en": "Line Control, Lesson 5: A complete example of several lines opening together. The bishop on g2 will control a long diagonal while the rook occupies the d-file, creating coordinated pressure.",
     "flash_squares": ["d4", "e4", "g2", "b7"],
     "popup": "线路控制第5课\n综合演示：多线同时打开\nBg2控长对角线\nd线+斜线立体配合",
     "voice": true
   },
   "outro": {
+    "popup_en": "The d-file and the bishop's long diagonal work together: Bg2 targets b7 while the rook on d1 controls the d-file. Coordinating several open lines is an advanced form of line control.",
     "popup": "综合总结\nd线和g2斜线同时打开\nBg2直指b7，d1车控d线\n多线协同，这是高级复杂的线路控制",
     "voice": true
   },
@@ -18,117 +20,138 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center and begins the Scotch Game.",
       "popup": "e4占中心\n苏格兰开局序列开始"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 replies symmetrically and occupies the center.",
       "popup": "e5对称应对\n黑方占据中心"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and attacks e5.",
       "popup": "Nf3发展马\n攻击e5"
     },
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops and protects e5.",
       "popup": "Nc6保护e5\n黑方发展"
     },
     {
       "index": 4,
       "move": "d4",
+      "popup_en": "d4! The key move of the Scotch Game immediately challenges the center.",
       "highlights": [{"squares": ["d4", "e5"], "color": "#FF8F0055"}],
       "popup": "d4！苏格兰核心\n立刻挑战中心\n这是苏格兰开局的关键步骤"
     },
     {
       "index": 5,
       "move": "exd4",
+      "popup_en": "...exd4 exchanges in the center and opens the e-file. The d4-square becomes a new point of contention.",
       "highlights": [{"squares": ["e5", "d4"], "color": "#C6D50044"}],
       "popup": "exd4兑换\ne线打开！\n同时d4格成为争夺目标"
     },
     {
       "index": 6,
       "move": "Nxd4",
+      "popup_en": "Nxd4 occupies the center with a knight. The knight on d4 gives White strong central control.",
       "highlights": [{"squares": ["f3", "d4"], "color": "#C6D50044"}],
       "popup": "Nxd4马占中心\nd4格强马\n白方中心控制"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks e4, creating counterpressure.",
       "popup": "Nf6出马\n攻击e4\n黑方反压"
     },
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3 supports e4 and strengthens White's central setup. White's minor-piece development is nearly complete.",
       "popup": "Nc3发展\n支持e4，加强中心\n白方轻子发展完成"
     },
     {
       "index": 9,
       "move": "Bc5",
+      "popup_en": "...Bc5 develops to an active diagonal, a typical response in the Scotch Game.",
       "popup": "Bc5发展象\n黑方主动斜线\n苏格兰中的典型应对"
     },
     {
       "index": 10,
       "move": "Be3",
+      "popup_en": "Be3! White challenges the bishop on c5 and develops toward a setup with queenside castling and a kingside attack. The move also prepares the bishop's fianchetto route.",
       "highlights": [{"squares": ["e3", "c5", "b6"], "color": "#FF8F0044"}],
       "popup": "Be3！挑战c5象\n同时开放g2的斜线方向\n白方布局指向长易位+王翼进攻"
     },
     {
       "index": 11,
       "move": "Bb6",
+      "popup_en": "...Bb6 retreats and avoids the exchange, preserving the bishop's activity.",
       "highlights": [{"squares": ["b6", "a5"], "color": "#00BCD444"}],
       "popup": "Bb6撤退\n黑方避免兑换\n保留象的活动性"
     },
     {
       "index": 12,
       "move": "Qd2",
+      "popup_en": "Qd2! Be3 and Qd2 coordinate to prepare queenside castling. White's king will move away from the kingside before the attack begins.",
       "highlights": [{"squares": ["d2", "a5", "h6"], "color": "#FF8F0044"}],
       "popup": "Qd2！苏格兰攻击布阵\nBe3+Qd2是配对——\n下一步O-O-O长易位\n王翼攻击即将开始"
     },
     {
       "index": 13,
       "move": "O-O",
+      "popup_en": "Black castles kingside. White is preparing to castle long, after which Black will face a kingside attack.",
       "popup": "黑方王车易位\n王躲王翼\n黑方面临白方长易位后的王翼攻击"
     },
     {
       "index": 14,
       "move": "O-O-O",
+      "popup_en": "O-O-O! White castles long and activates the rook on d1. The d-file is semi-open, and White can immediately use it while preparing a kingside pawn advance with f3 and g4.",
       "highlights": [{"squares": ["c1", "d1", "e1"], "color": "#C6D50044"}],
       "popup": "O-O-O！白方长易位\n王躲后翼，车到d1！\nd线半开放，Rd1立刻有活力\n同时白方准备f3-g4王翼进攻"
     },
     {
       "index": 15,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's center and prepares defense.",
       "popup": "d6稳固中心\n黑方防守"
     },
     {
       "index": 16,
       "move": "f3",
+      "popup_en": "f3 supports e4 and prepares g4, advancing White's kingside attack.",
       "highlights": [{"squares": ["f3", "g4"], "color": "#C6D50033"}],
       "popup": "f3巩固e4\n同时为g4做准备\n白方王翼推进计划中"
     },
     {
       "index": 17,
       "move": "Be6",
+      "popup_en": "...Be6 challenges the knight on d4 and prepares an exchange to simplify the position. Black also seeks active play.",
       "highlights": [{"squares": ["e6", "d4"], "color": "#00BCD444"}],
       "popup": "Be6挑战d4马\n黑方准备兑换以简化\n黑方开始争取主动"
     },
     {
       "index": 18,
       "move": "g4",
+      "popup_en": "g4! White pushes the kingside attack forward. Black's central counterattack is approaching.",
       "highlights": [{"squares": ["g4", "g5", "h5"], "color": "#FF8F0055"}],
       "popup": "g4！王翼推进\n白方加速攻击\n黑方中心反击即将到来"
     },
     {
       "index": 19,
       "move": "d5",
+      "popup_en": "...d5! Black counterattacks in the center, attacking e4 and challenging White's kingside advance. The position is about to open several lines at once.",
       "highlights": [{"squares": ["d5", "e4", "c4"], "color": "#E5393555"}],
       "popup": "d5！黑方反击中心！\n攻击e4，反制白方王翼推进\n局面进入爆炸阶段——多线即将同时打开"
     },
     {
       "index": 20,
       "move": "exd5",
+      "popup_en": "exd5! The position opens explosively. The d-file points toward d5 and d8 for White's rook, the g2-b7 diagonal can open for the bishop, and the e-file is partly open as well. Several lines are becoming active at once.",
       "highlights": [{"squares": ["e4", "d5", "d1"], "color": "#C6D50055"}, {"squares": ["g1", "b6"], "color": "#C6D50033"}],
       "concept_arrows": [
         {"from": "d1", "to": "d8", "color": "#C6D500CC"},
@@ -139,24 +162,28 @@
     {
       "index": 21,
       "move": "Nxd5",
+      "popup_en": "...Nxd5 recaptures and places a knight on the strong central square. The fight for central control continues.",
       "highlights": [{"squares": ["f6", "d5", "d4"], "color": "#00BCD444"}],
       "popup": "Nxd5黑方重提\n马占d5强格\n中心控制权争夺激烈"
     },
     {
       "index": 22,
       "move": "Nxd5",
+      "popup_en": "Nxd5! White's knight from c3 removes the strong knight on d5. The exchange clears more lines for White's pieces.",
       "highlights": [{"squares": ["c3", "d5"], "color": "#FF8F0055"}],
       "popup": "白方马Nc3xd5！\n清除d5强马\n斜线进一步打开"
     },
     {
       "index": 23,
       "move": "Bxd5",
+      "popup_en": "...Bxd5 recaptures and completes the exchange on d5. The resulting position defines the diagonal from g2 toward b7, which White's bishop can soon occupy.",
       "highlights": [{"squares": ["b6", "d5", "g2"], "color": "#C6D50044"}],
       "popup": "Bxd5黑方象重提\nd5格换子完成\ng2-b7斜线的格局已确定\n白方Bg2将控制整条对角线"
     },
     {
       "index": 24,
       "move": "Bg2",
+      "popup_en": "Bg2! White's bishop controls the long diagonal and directly targets b7, while the rook on d1 controls the d-file. This is the culmination of A4: multiple lines open and several pieces join them at once.",
       "highlights": [{"squares": ["g2", "b7", "a8", "d5"], "color": "#C6D50066"}],
       "concept_arrows": [
         {"from": "g2", "to": "b7", "color": "#C6D500CC"},

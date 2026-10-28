@@ -5,45 +5,49 @@
     {
       "key": "A1_pawn_center",
       "label": "A1 占领中心",
+      "label_en": "A1 Occupying the Center",
       "items": [
-        { "id": "opening_A1_Center_Demo_001", "label": "1. 什么是中心？", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A1_Center_Demo_002", "label": "2. 中心优势对比", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A1_Center_Demo_003", "label": "3. 建立巩固双兵中心（伦敦体系）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A1_Center_Demo_004", "label": "4. 中心的争夺与反制（西西里防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A1_Center_Demo_005", "label": "5. 意大利开局：焦科钢琴变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_A1_Center_Demo_001", "label": "1. 什么是中心？", "label_en": "1. What Is the Center?", "explanation_en": "The four central squares are key areas both sides seek to control. White and Black occupy the center with pawns, then use minor pieces to contest it. The example also shows why the queen should not enter the center too early: developing pieces can attack it and gain time.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_002", "label": "2. 中心优势对比", "label_en": "2. Comparing Central Control", "explanation_en": "White builds a two-pawn center and develops pieces while Black spends several tempi on flank pawns. White gains space, piece activity, and a lead in development. The game makes the cost of ignoring the center easy to see.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_003", "label": "3. 建立巩固双兵中心（伦敦体系）", "label_en": "3. Building a Stable Center in the London System", "explanation_en": "White uses d4, e3, and c3 to build a durable pawn chain, then develops and castles before occupying the e5 outpost. Black can challenge with ...c5, but White's center is well supported. The lesson is to favor a stable center over premature expansion.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_004", "label": "4. 中心的争夺与反制（西西里防御）", "label_en": "4. Contesting and Counterattacking the Center: Sicilian Defense", "explanation_en": "Black uses ...c5 to challenge d4 from the flank instead of mirroring White with ...e5. After White establishes central pawns and pieces, Black's pawn breaks create counterplay. White can use the resulting central control to support a kingside attack, especially in opposite-side castling positions.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A1_Center_Demo_005", "label": "5. 意大利开局：焦科钢琴变例", "label_en": "5. Italian Game: Giuoco Piano", "explanation_en": "White develops calmly before playing d4, then rebuilds the center after exchanges. The central contest develops into piece activity, control of open files, and a strong knight outpost. The example shows why a well-prepared central break is more effective than a premature one.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "A2_piece_pressure",
       "label": "A2 控制中心",
+      "label_en": "A2 Piece Control of the Center",
       "items": [
-        { "id": "opening_A2_Control_Demo_001", "label": "1. 马不占中心，却控制中心（雷帝开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A2_Control_Demo_002", "label": "2. 三个轻子协调瞄准要害格（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A2_Control_Demo_003", "label": "3. 翼路兵加马象悄悄控住中心四格（英格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A2_Control_Demo_004", "label": "4. 用象钉住马，阻止中心也是控制（尼姆佐印度）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A2_Control_Demo_005", "label": "5. 黑象斜跨棋盘远程狙击d4（国王印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_A2_Control_Demo_001", "label": "1. 马不占中心，却控制中心（雷帝开局）", "label_en": "1. A Knight Controls the Center from the Flank", "explanation_en": "White develops Nf3 and fianchettoes the bishop to g2, influencing central squares from a distance without immediately occupying them with pawns. After preparing and securing the position, White advances e4. This demonstrates the hypermodern principle: control the center first, then occupy it at the right moment.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_002", "label": "2. 三个轻子协调瞄准要害格（意大利开局）", "label_en": "2. Coordinated Minor Pieces in the Italian Game", "explanation_en": "White combines the e4-pawn with Nf3, Bc4, and Nc3 to control key central squares. Black also uses pieces to influence the center, so the contest is about coordination rather than pawn occupation alone. A stable setup and active pieces make the central network difficult to undermine.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_003", "label": "3. 翼路兵加马象悄悄控住中心四格（英格兰开局）", "label_en": "3. Quiet Central Control in the English Opening", "explanation_en": "White's c4-pawn influences d5 from the flank, while Nc3, Nf3, and a fianchettoed bishop coordinate around the center. Black can challenge with ...d5, but White's setup makes that square tactically sensitive. The example shows how central control can be achieved without playing e4.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_004", "label": "4. 用象钉住马，阻止中心也是控制（尼姆佐印度）", "label_en": "4. The Pin as Indirect Central Control: Nimzo-Indian", "explanation_en": "Black's ...Bb4 pins Nc3, one of White's key supports for e4, and combines that pressure with ...c5 against d4. Black influences the center by restricting the pieces that would support White's plan. A pin can therefore control the center indirectly by limiting the opponent's options.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A2_Control_Demo_005", "label": "5. 黑象斜跨棋盘远程狙击d4（国王印度防御）", "label_en": "5. The King's Indian Bishop Targets d4", "explanation_en": "Black fianchettoes the bishop to g7 and allows White to build a broad center. Once prepared, Black strikes with ...e5, coordinating the pawn break with pressure along the long diagonal toward d4. The bishop's influence can persist even after the center closes, illustrating the power of long-range control.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "A3_space_gains",
       "label": "A3 空间控制",
+      "label_en": "A3 Gaining Space",
       "items": [
-        { "id": "opening_A3_Space_Demo_001", "label": "1. 一步e5，黑方棋子挤成一团（法国推进）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A3_Space_Demo_002", "label": "2. 有保护的安全扩展，每步兵推进都有子力支撑（意大利）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A3_Space_Demo_003", "label": "3. d5关闭中心，空间分割双方各守一翼（国王印度四兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A3_Space_Demo_004", "label": "4. 反例——用兵追杀子力，后防空虚，e5无人守护被白送（阿列欣防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A3_Space_Demo_005", "label": "5. 诱敌深入，c5精准反击冒进兵链（法国防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_A3_Space_Demo_001", "label": "1. 一步e5，黑方棋子挤成一团（法国推进）", "label_en": "1. The Space-Cramping Advance in the French", "explanation_en": "White's e5-pawn restricts Black's pieces and takes away the natural f6-square. White gains room to maneuver while Black's pieces are crowded behind the pawn chain. The example shows how one well-timed advance can create a lasting space advantage.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_002", "label": "2. 有保护的安全扩展，每步兵推进都有子力支撑（意大利）", "label_en": "2. Safe Expansion with Piece Support: Italian Game", "explanation_en": "Both sides expand carefully in a nearly symmetrical Italian position. Each pawn move is supported by pieces, and preventive moves limit pins and other threats. The game demonstrates how to gain space without creating weaknesses or neglecting king safety.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_003", "label": "3. d5关闭中心，空间分割双方各守一翼（国王印度四兵）", "label_en": "3. Closing the Center and Attacking on Opposite Wings", "explanation_en": "White builds a four-pawn center in the King's Indian and closes it with d5 after Black's ...c5 challenge. The blocked center separates the wings: White can attack on the kingside, while Black seeks queenside counterplay. The pawn structure determines each side's space and plan.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_004", "label": "4. 反例——用兵追杀子力，后防空虚，e5无人守护被白送（阿列欣防御）", "label_en": "4. The Cost of Chasing Pieces with Pawns: Alekhine Defense", "explanation_en": "White repeatedly advances pawns to chase Black's knights and bishop, but develops no pieces and leaves the king in the center. Black eventually opens the position and captures the undefended e5-pawn. Space gained without development, coordination, or king safety can become a liability.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A3_Space_Demo_005", "label": "5. 诱敌深入，c5精准反击冒进兵链（法国防御）", "label_en": "5. Luring an Overextended Pawn Chain: French Defense", "explanation_en": "Black invites White to advance the e- and f-pawns, then strikes at the base of the chain with ...c5. The exchange on d4 opens lines and activates Black's pieces, allowing pressure against queenside weaknesses. The lesson is to challenge an overextended center at its base rather than defend passively.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "A4_opening_lines",
       "label": "A4 线路控制",
+      "label_en": "A4 Controlling Open Lines",
       "items": [
-        { "id": "opening_A4_Lines_Demo_001", "label": "1. 打开e线，车立刻参战（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A4_Lines_Demo_002", "label": "2. 预判c线，提前布车等待（后翼弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A4_Lines_Demo_003", "label": "3. 打开斜线，象参战（埃文斯弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A4_Lines_Demo_004", "label": "4. 反例——c线打开了，车放错位置（斯拉夫防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_A4_Lines_Demo_005", "label": "5. 同时打开多条线路，多子参战（苏格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_A4_Lines_Demo_001", "label": "1. 打开e线，车立刻参战（意大利开局）", "label_en": "1. Occupying the Open e-File: Italian Game", "explanation_en": "Central exchanges open the e-file, and White immediately places a rook there with Rfe1. The game demonstrates a basic rule of rook activity: occupy an open file as soon as it appears, then use it to maintain pressure.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_002", "label": "2. 预判c线，提前布车等待（后翼弃兵）", "label_en": "2. Anticipating the c-File: Queen's Gambit", "explanation_en": "White predicts that Black's ...c5 break will open the c-file and places a rook on c1 before the file is fully open. Once the pawns exchange, the rook immediately pressures the exposed pawn. Anticipating the future structure lets a rook control the file from the moment it opens.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_003", "label": "3. 打开斜线，象参战（埃文斯弃兵）", "label_en": "3. Opening a Diagonal for the Bishop: Evans Gambit", "explanation_en": "White uses the Evans Gambit to gain time and open the center, then clears the a3-f8 diagonal for a bishop. After Ba3, the bishop attacks the knight on e7; moving the knight can expose Black's rook on f8. An open diagonal can create multiple threats with one piece.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_004", "label": "4. 反例——c线打开了，车放错位置（斯拉夫防御）", "label_en": "4. Wrong-Rook Placement: Slav Defense", "explanation_en": "After the c-file opens, White incorrectly plays Rab1 instead of contesting the file with Rac1. Black takes the opportunity to occupy c8 first. White can later bring a rook to the c-file, but has lost a tempo and must react rather than dictate the contest.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_A4_Lines_Demo_005", "label": "5. 同时打开多条线路，多子参战（苏格兰开局）", "label_en": "5. Coordinating Multiple Open Lines: Scotch Game", "explanation_en": "Central exchanges open the d-file and create access for the bishop's long diagonal. White places a rook on d1 and fianchettoes the bishop to g2, coordinating pressure toward d5 and b7. The example shows how several pieces can work together across multiple open lines.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     }
   ]

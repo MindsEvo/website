@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Demo_002",
   "description": "法式防御古典变例 C11 — 延迟c5爆破：先稳固后反击",
   "intro": {
+    "popup_en": "Counterattack the Center, Lesson 2\nIn the French Defense, Black does not counterattack immediately. First play ...e6 to stabilize the structure and wait for the right moment. When should Black strike with ...c5: too early or too late?",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Delayed counterattack: develop and stabilize first, prepare with flank moves such as ...a6 and ...b5, then play ...c5 decisively when the moment comes. Before breaking, ask whether the flank is ready, the bishop's diagonal is clear, and the opponent has overextended.",
     "popup": "法式防御总结\n\n延迟反制的模式：\n① 先发展，稳固结构\n② 用翼兵（b5/a6）准备\n③ c5时机到来时果断反击\n\n反制时机三问：\n① 翼兵准备好了吗？\n② 象的对角线是否畅通？\n③ 对方是否已经过度进取？",
     "voice": true
   },
@@ -23,146 +25,175 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4 占中心"
     },
     {
       "index": 1,
       "move": "e6",
+      "popup_en": "...e6 begins the French Defense: Black stabilizes first rather than counterattacking immediately.",
       "popup": "e6 法式！\n先稳固，不立刻反击\n等待时机"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 reinforces White's center.",
       "popup": "d4 巩固中心"
     },
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5 challenges the center; Black chooses the moment to counter.",
       "popup": "d5 现在反制！"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 supports White's center.",
       "popup": "Nc3 支援中心"
     },
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a knight.",
       "popup": "Nf6 发展马"
     },
     {
       "index": 6,
       "move": "Bg5",
+      "popup_en": "Bg5 puts pressure on Nf6.",
       "popup": "Bg5 施压Nf6"
     },
     {
       "index": 7,
       "move": "dxe4",
+      "popup_en": "...dxe4! Black simplifies actively and opens the diagonal for the c8-bishop.",
       "popup": "dxe4！主动简化\n释放c8象"
     },
     {
       "index": 8,
       "move": "Nxe4",
+      "popup_en": "Nxe4 rebuilds White's central presence.",
       "popup": "Nxe4 重建中心"
     },
     {
       "index": 9,
       "move": "Be7",
+      "popup_en": "...Be7 develops the bishop.",
       "popup": "Be7 发展象"
     },
     {
       "index": 10,
       "move": "Bxf6",
+      "popup_en": "Bxf6 exchanges bishops and creates a weakness on c6.",
       "popup": "Bxf6 兑换，制造c6弱点"
     },
     {
       "index": 11,
       "move": "gxf6",
+      "popup_en": "...gxf6 accepts doubled f-pawns in return for the bishop pair.",
       "popup": "gxf6 接受双象"
     },
     {
       "index": 12,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3 发展"
     },
     {
       "index": 13,
       "move": "a6",
+      "popup_en": "...a6 prepares ...b5.",
       "popup": "a6！为b5准备"
     },
     {
       "index": 14,
       "move": "g3",
+      "popup_en": "g3 adopts a fianchetto setup.",
       "popup": "g3 超现代布局"
     },
     {
       "index": 15,
       "move": "b5",
+      "popup_en": "...b5! Black expands on the queenside.",
       "popup": "b5！翼兵推进"
     },
     {
       "index": 16,
       "move": "Bg2",
+      "popup_en": "Bg2 places White's bishop on its long diagonal.",
       "popup": "Bg2 象就位"
     },
     {
       "index": 17,
       "move": "Bb7",
+      "popup_en": "...Bb7! Black activates the bishop on the long diagonal and increases pressure.",
       "popup": "Bb7！象激活\n长对角线施压"
     },
     {
       "index": 18,
       "move": "Qe2",
+      "popup_en": "Qe2 activates White's queen on the e-file and supports the knight's activity.",
       "popup": "Qe2 后激活\n控制e列，为马的活跃造势"
     },
     {
       "index": 19,
       "move": "f5",
+      "popup_en": "...f5! Black advances on the flank to gain space and use the bishop pair.",
       "popup": "f5！黑方f5！\n翼兵推进，争夺空间\n法式双象的优势体现"
     },
     {
       "index": 20,
       "move": "Nc5",
+      "popup_en": "Nc5! White's knight occupies a key square and targets Black's queenside.",
       "popup": "Nc5！白马跳c5！\n占据要地，威胁黑方内活"
     },
     {
       "index": 21,
       "move": "Bxc5",
+      "popup_en": "...Bxc5 exchanges the bishop for the knight, contesting control of the central squares.",
       "popup": "Bxc5 黑象吃马\n换取中心格位控制"
     },
     {
       "index": 22,
       "move": "dxc5",
+      "popup_en": "dxc5 recaptures and creates a passed pawn on c5.",
       "popup": "dxc5 兵吃回\n形成c5通路兵优势"
     },
     {
       "index": 23,
       "move": "Be4",
+      "popup_en": "...Be4! Black's bishop occupies a strong square and threatens the c2-pawn.",
       "popup": "Be4！黑象占e4！\n执掉c2兵的威胁\n控制关键中心格"
     },
     {
       "index": 24,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O 白方安全易位"
     },
     {
       "index": 25,
       "move": "Nc6",
+      "popup_en": "...Nc6 supports the bishop on e4 and increases pressure against White's position.",
       "popup": "Nc6 黑马发展\n支援Be4，施压夺子"
     },
     {
       "index": 26,
       "move": "Rfd1",
+      "popup_en": "Rfd1 places a rook on the d-file, challenges the bishop, and asks Black to respond.",
       "popup": "Rfd1 车占d列\n威胁黑象\uff0c追问黑方下步"
     },
     {
       "index": 27,
       "move": "Qf6",
+      "popup_en": "...Qf6 activates Black's queen.",
       "popup": "Qf6 黑后活跃\n占据f6，准备反击"
     },
     {
       "index": 28,
       "move": "c3",
+      "popup_en": "c3 challenges the bishop and drives it away. The position is now roughly balanced, with Black's counterattack fully established.",
       "popup": "c3 逼走黑象\n此时局面势均力敌\n反制主题已展开"
     }
   ]

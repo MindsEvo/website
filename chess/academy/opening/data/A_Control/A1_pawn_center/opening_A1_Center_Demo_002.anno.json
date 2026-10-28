@@ -2,6 +2,7 @@
   "game_id": "A1_Center_Demo_002",
   "description": "中心优势对比演示第2局 — 15步，完整注释（中心 vs 边路）",
   "intro": {
+    "popup_en": "This game compares occupying the center with playing on the edge. One side claims the center while the other spends moves on flank pawns; the difference quickly becomes clear.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The side that occupies the center gains more room for its pieces to maneuver. That extra activity is the practical advantage of central control.",
     "popup": "由本局可以看到占领中心的一方活动空间更大，这就是中心优势的直观体现。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4! White occupies the center, controlling d5 and f5 from the first move.",
       "popup": "⬆️ <b>1.e4 — 白方占中心！</b><br>e4兵踏上中心格，控制 d5 和 f5。开局第一步就争中心。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "a6",
+      "popup_en": "1...a6?! Black spends a tempo on a flank pawn far from the center. White has a pawn on e4 while Black's pawn is on the edge; the difference is already visible.",
       "popup": "⬇️ ❌ <b>1...a6 — 黑方走边兵，浪费先手！</b><br>a6兵远离中心，对棋局几乎没有贡献。<br>对比白方：白兵在中心 e4，黑兵在边路 a6——差距已经开始了。",
       "highlights": [
         {
@@ -91,6 +95,7 @@
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "2.d4! White establishes a powerful e4-d4 pawn center, controlling key squares such as c5, e5, and f6 and giving White's pieces room to move.",
       "popup": "⬆️ <b>2.d4 — 白方建立双兵中心！</b><br>e4+d4 两兵并肩，完全控制中心。这是开局最强的兵形——控制 c5、e5、f6 等大片格子，白方子力活动空间极大。",
       "highlights": [
         {
@@ -137,6 +142,7 @@
     {
       "index": 3,
       "move": "h6",
+      "popup_en": "2...h6?! Black spends a second move on a flank pawn with no effect on the center. White has a two-pawn center while Black has used both tempi on the edges; Black is already behind in the opening.",
       "popup": "⬇️ ❌ <b>2...h6 — 黑方再走边兵！</b><br>第二步又是边兵！h6兵对中心没有任何影响。<br>白方已有双兵中心，黑方两步都花在边路，<b>开局节奏已经落后</b>。",
       "highlights": [
         {
@@ -159,6 +165,7 @@
     {
       "index": 4,
       "move": "Nf3",
+      "popup_en": "3.Nf3 develops a knight and controls central squares. White develops while fighting for the center; Black still has no central control.",
       "popup": "⬆️ <b>3.Nf3 — 白马出子，控制中心！</b><br>f3 是开局最好的马位之一，控制前方4个要点。<br>白方：出子 + 争中心，黑方对中心没有任何控制！",
       "highlights": [
         {
@@ -193,6 +200,7 @@
     {
       "index": 5,
       "move": "a5",
+      "popup_en": "3...a5?! Black's third move is still a flank pawn, with no piece developed. White has a knight on f3 and two central pawns. Ignoring the center wastes tempi.",
       "popup": "⬇️ ❌❌ <b>3...a5 — 黑方第三步还在走边兵！</b><br>一个子都没出！<br>对比白方：白马已在 f3，双兵控中心。<b>这就是「忽视中心」的代价——完全浪费先手。</b>",
       "highlights": [
         {
@@ -216,6 +224,7 @@
     {
       "index": 6,
       "move": "Bc4",
+      "popup_en": "4.Bc4 develops the bishop toward the weakness on f7. White has developed the knight and bishop behind a two-pawn center, while Black has spent all three moves on flank pawns.",
       "popup": "⬆️ <b>4.Bc4 — 白象出动，瞄准 f7！</b><br>c4 象锁定最弱的格子 f7，隐含威胁。<br>白方现已出 4 枚棋子（e4、d4、Nf3、Bc4），全部指向中心和攻击方向。<b>出子速度领先整整 4 步！</b>",
       "highlights": [
         {
@@ -250,6 +259,7 @@
     {
       "index": 7,
       "move": "h5",
+      "popup_en": "4...h5?! Black spends a fourth move on a flank pawn without developing a piece. This extreme example highlights the value of central control and development speed.",
       "popup": "⬇️ ❌❌❌ <b>4...h5 — 黑方第四步仍是边兵！</b><br>四步全部走边兵。<br>这个极端例子揭示展示了占领中心和出子速度的重要性。</b>",
       "highlights": [
         {
@@ -268,6 +278,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "5.Nc3 develops White's second knight and reinforces the center. White's two pawns, two knights, and bishop are active, while Black has still developed no piece.",
       "popup": "⬆️ <b>5.Nc3 — 白方第二匹马出动！</b><br>c3 继续美支援中心。<br>白方：双兵 + 双马 + 象，<b>5 枚棋子全部积极参战</b>，控制棋盘中央大片区域。黑方：仍无任何子出动！",
       "highlights": [
         {
@@ -306,6 +317,7 @@
     {
       "index": 9,
       "move": "Nc6",
+      "popup_en": "5...Nc6 finally develops Black's first piece, four tempi behind White. The knight is well placed, but White already controls the center and Black will struggle to catch up.",
       "popup": "⬇️ <b>5...Nc6 — 黑马终于出来了！</b><br>黑方第五步才出第一个子！比白方<b>整整晚了 4 步</b>。<br>虽然 c6 马占据不错的位置，但白方已完全控制中心，黑方要追赶非常困难。",
       "highlights": [
         {
@@ -344,6 +356,7 @@
     {
       "index": 10,
       "move": "O-O",
+      "popup_en": "6.O-O secures White's king and activates the rook on f1. The path is clear, the king is not in check, and neither king nor rook has moved, so castling is legal.",
       "popup": "⬆️ <b>6.O-O — 白方易位，王安全！</b><br>白方提前完成王翼易位：国王安全转移到 g1，车激活到 f1。<br>易位的条件是：王路上无子、无将军，且王和车均未动。白方具备一切条件，顺利完成！",
       "highlights": [
         {
@@ -379,6 +392,7 @@
     {
       "index": 11,
       "move": "d6",
+      "popup_en": "6...d6 reinforces Black's cramped position. Black remains far behind in development and must play defensively.",
       "popup": "⬇️ <b>6...d6 — 黑方被迫保守防守！</b><br>黑方空间极度受限，走d6加强防守。<br> 黑方发展步数严重落后。",
       "highlights": [
         {
@@ -412,6 +426,7 @@
     {
       "index": 12,
       "move": "Be3",
+      "popup_en": "7.Be3 supports d4 and controls the diagonal toward a7. White's central pawns, knights, bishops, and active rook form a coordinated position.",
       "popup": "⬆️ <b>7.Be3 — 白象占据好位，协调子力！</b><br>e3 象支援 d4 兵，同时控制 d4-a7 对角线，整个白方棋子形成完整的网络。<br>白方现在：双兵中心 + 双马 + 双象 + 车已激活，全军备战！",
       "highlights": [
         {
@@ -455,6 +470,7 @@
     {
       "index": 13,
       "move": "Nf6",
+      "popup_en": "7...Nf6 develops Black's second knight and controls e4 and d5. Black's bishops, queen, and rooks remain undeveloped, leaving Black on the defensive.",
       "popup": "⬇️ <b>7...Nf6 — 黑方第二匹马出动！</b><br>f6 马是黑方最好的出子，控制 e4 和 d5。但黑方仍有象、后、车无法出动——<b>发展度严重不足</b>。<br>白方已完全掌控局面，黑方处于被动防守。",
       "highlights": [
         {
@@ -484,6 +500,7 @@
     {
       "index": 14,
       "move": "Qd2",
+      "popup_en": "8.Qd2 completes White's central setup. White has the pawn duo, both knights and bishops developed, and a castled king; Black has developed only two knights while the flank-pawn moves contributed little. Central control has turned into a lasting positional advantage.",
       "popup": "⬆️ <b>8.Qd2 — 白方完全占领中心！</b><br>最终对比：</b><br>白方：双兵中心,双马,双象,后,车已易位，全军出动、协调一致。<br>黑方：只有双马出动，2个边兵毫无贡献，处于严重劣势！<br><b>这就是「占领中心」的价值——一步步积累优势，让对手无法呼吸。</b>",
       "highlights": [
         {

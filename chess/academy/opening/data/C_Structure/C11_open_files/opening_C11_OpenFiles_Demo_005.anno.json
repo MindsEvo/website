@@ -3,10 +3,12 @@
   "description": "西西里斯维什尼科夫 B33 — 多线协同作战",
   "intro": {
     "flash_squares": ["c8", "d8", "c3", "d4"],
+    "popup_en": "Coordinating Multiple Files, Lesson 5: In the Sicilian, Black begins with a semi-open c-file. The Sveshnikov can also create activity on the g- and d-files. Assign a rook to each open file to create pressure from several directions.",
     "popup": "多线协同作战 第5课\n\n西西里中黑方有c线半开放线\n斯维什尼科夫变例还将产生\ng线和d线！\n\n多条开放线→双车分工\n每条线分一辆车→全场压制！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Black uses the semi-open c-file with ...Rc8, contests the open d-file with a rook, and can use the semi-open g-file with ...Rg8. Assigning rooks to different files creates pressure across the board from multiple directions.",
     "popup": "多线协同小结\n✅ c线半开放→Rc8施压\n✅ d线打通→Rd8或Rd1\n✅ g线半开放→Rg8威胁\n\n最终目标：\n每条开放线放一辆车\n形成全场多方向压力！",
     "voice": true
   },
@@ -15,39 +17,42 @@
     "color": "#FFD70022"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4占中心"},
+    {"index": 0, "move": "e4", "popup_en": "e4 occupies the center.", "popup": "e4占中心"},
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "...c5! Black creates a semi-open c-file, a natural route for a rook.",
       "popup": "c5！半开放c线！\n黑方c线从此是天然车通道",
       "highlights": [
         {"squares": ["c5", "c4", "c3", "c2", "c1"], "color": "#C6D50044"}
       ]
     },
-    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
-    {"index": 3, "move": "Nc6", "popup": "Nc6发展马"},
-    {"index": 4, "move": "d4", "popup": "d4反攻"},
+    {"index": 2, "move": "Nf3", "popup_en": "Nf3 develops a knight.", "popup": "Nf3发展"},
+    {"index": 3, "move": "Nc6", "popup_en": "...Nc6 develops a knight.", "popup": "Nc6发展马"},
+    {"index": 4, "move": "d4", "popup_en": "d4 counterattacks in the center.", "popup": "d4反攻"},
     {
       "index": 5,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges and fully opens the c-file.",
       "popup": "cxd4兑换\nc线完全打通！",
       "highlights": [
         {"squares": ["c8", "c7", "c6", "c5", "c4", "c3", "c2", "c1"], "color": "#C6D50066"}
       ]
     },
-    {"index": 6, "move": "Nxd4", "popup": "Nxd4白马占中心"},
-    {"index": 7, "move": "Nf6", "popup": "Nf6发展"},
-    {"index": 8, "move": "Nc3", "popup": "Nc3发展"},
-    {"index": 9, "move": "e5", "popup": "e5！斯维什尼科夫！\n黑方中心反击\n形成d6弱格但获得动态机会"},
-    {"index": 10, "move": "Ndb5", "popup": "Ndb5白马机动\n威胁d6"},
-    {"index": 11, "move": "d6", "popup": "d6防守\n稳固中心"},
-    {"index": 12, "move": "Bg5", "popup": "Bg5钉住Nf6"},
-    {"index": 13, "move": "a6", "popup": "a6逼马\n黑方争夺空间"},
-    {"index": 14, "move": "Na3", "popup": "Na3撤退\n准备Nc4或Nd5"},
-    {"index": 15, "move": "b5", "popup": "b5！黑方翼翼推进\n争夺c4格"},
+    {"index": 6, "move": "Nxd4", "popup_en": "Nxd4 recaptures and places White's knight in the center.", "popup": "Nxd4白马占中心"},
+    {"index": 7, "move": "Nf6", "popup_en": "...Nf6 develops.", "popup": "Nf6发展"},
+    {"index": 8, "move": "Nc3", "popup_en": "Nc3 develops a knight.", "popup": "Nc3发展"},
+    {"index": 9, "move": "e5", "popup_en": "...e5! The Sveshnikov counterattacks in the center. Black accepts a weakness on d6 in exchange for dynamic play.", "popup": "e5！斯维什尼科夫！\n黑方中心反击\n形成d6弱格但获得动态机会"},
+    {"index": 10, "move": "Ndb5", "popup_en": "Ndb5 reroutes White's knight and threatens d6.", "popup": "Ndb5白马机动\n威胁d6"},
+    {"index": 11, "move": "d6", "popup_en": "...d6 defends and stabilizes Black's center.", "popup": "d6防守\n稳固中心"},
+    {"index": 12, "move": "Bg5", "popup_en": "Bg5 pins Nf6.", "popup": "Bg5钉住Nf6"},
+    {"index": 13, "move": "a6", "popup_en": "...a6 drives the knight away and gains queenside space.", "popup": "a6逼马\n黑方争夺空间"},
+    {"index": 14, "move": "Na3", "popup_en": "Na3 retreats, with Nc4 or Nd5 in mind.", "popup": "Na3撤退\n准备Nc4或Nd5"},
+    {"index": 15, "move": "b5", "popup_en": "...b5! Black expands on the queenside and contests c4.", "popup": "b5！黑方翼翼推进\n争夺c4格"},
     {
       "index": 16,
       "move": "Bxf6",
+      "popup_en": "Bxf6! White exchanges and removes the defender on f6.",
       "popup": "Bxf6兑换！\n消灭Nf6守护者",
       "highlights": [
         {"squares": ["f6", "g6", "h6"], "color": "#E5393544"}
@@ -56,26 +61,29 @@
     {
       "index": 17,
       "move": "gxf6",
+      "popup_en": "...gxf6! Black recaptures with doubled pawns, but the g-file opens, creating a third semi-open file.",
       "popup": "gxf6回吃！\n黑方叠兵但g线打开！\ng线=第三条半开放线！",
       "highlights": [
         {"squares": ["g8", "g7", "g6", "g5", "g4", "g3", "g2"], "color": "#C6D50066"}
       ]
     },
-    {"index": 18, "move": "Nd5", "popup": "Nd5！白马强占d5\n关键据点"},
-    {"index": 19, "move": "f5", "popup": "f5！黑方反击\n激进的翼翼推进"},
-    {"index": 20, "move": "Bd3", "popup": "Bd3发展象"},
+    {"index": 18, "move": "Nd5", "popup_en": "Nd5! White's knight occupies the key central outpost.", "popup": "Nd5！白马强占d5\n关键据点"},
+    {"index": 19, "move": "f5", "popup_en": "...f5! Black counterattacks with an aggressive flank advance.", "popup": "f5！黑方反击\n激进的翼翼推进"},
+    {"index": 20, "move": "Bd3", "popup_en": "Bd3 develops White's bishop.", "popup": "Bd3发展象"},
     {
       "index": 21,
       "move": "Be6",
+      "popup_en": "...Be6 develops the bishop and prepares to exchange the knight on d5, opening the d-file.",
       "popup": "Be6发展象\n准备兑换d5马\n打通d线！",
       "highlights": [
         {"squares": ["e6", "d5", "d8"], "color": "#E5393555"}
       ]
     },
-    {"index": 22, "move": "O-O", "popup": "O-O入城"},
+    {"index": 22, "move": "O-O", "popup_en": "O-O secures White's king.", "popup": "O-O入城"},
     {
       "index": 23,
       "move": "Bxd5",
+      "popup_en": "Bxd5! Black exchanges and prepares to open the d-file.",
       "popup": "Bxd5！兑换！\nd线即将打通！",
       "highlights": [
         {"squares": ["d5", "e6"], "color": "#FF8F0066"}
@@ -84,6 +92,7 @@
     {
       "index": 24,
       "move": "exd5",
+      "popup_en": "exd5 recaptures and advances the d5 wedge. Black now has three files to use: the semi-open c-file, the semi-open g-file, and the contested d-file. Assign the rooks to different routes and create pressure from several directions.",
       "popup": "exd5兑回\nd5楔子前进！\n\n现在黑方有三条开放线：\n• c线半开放→Rc8！\n• g线半开放→Rg8！\n• d线共争→Rd8！\n\n双车分工，三路夹击！",
       "highlights": [
         {"squares": ["c8", "g8", "d8"], "color": "#C6D500aa"}

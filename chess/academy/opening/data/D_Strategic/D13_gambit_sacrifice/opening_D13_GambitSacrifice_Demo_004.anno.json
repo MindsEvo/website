@@ -2,11 +2,13 @@
   "game_id": "D13_GambitSacrifice_Demo_004",
   "description": "布达佩斯弃兵 A52 — 黑方也能弃兵！主动弃兵争反击权",
   "intro": {
+    "popup_en": "Gambit Initiative, Lesson 4: The Budapest Gambit shows that Black can offer a pawn too. Black gives up a pawn on move two to challenge White's expanding center and gain counterattacking speed and initiative.",
     "flash_squares": ["e5", "d4", "g4"],
     "popup": "弃兵争先 第4课\n\n前3课都是白方弃兵——\n弃兵永远是白方的特权吗？\n\n不！\n\n布达佩斯弃兵：\n黑方第2手就主动送出一个兵！\n\n目的是什么？\n和白方一样：\n用一个兵换取反击的速度和主动权！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Black's gambit aims to prevent White from building an overwhelming center, develop quickly, and create complications before White consolidates. Either side can offer a pawn; what matters is whether the compensation is sufficient. The side that develops first can seize the initiative, while the side that falls behind may come under pressure.",
     "popup": "布达佩斯弃兵总结\n\n黑方弃兵的三个目标：\n① 阻止白方建立巨大中心\n② 快速出子，争夺发展\n③ 在白方稳固之前制造混乱\n\n弃兵争先的普遍原理：\n不分颜色——谁都可以弃兵\n关键是：弃兵后的补偿够不够？\n\n口诀：先弃先出，后出被压！",
     "voice": true
   },
@@ -18,21 +20,25 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4! White opens with the queen's pawn and prepares a broad center.",
       "popup": "d4！白方d4首开，准备建立大中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a knight first, following a hypermodern approach.",
       "popup": "Nf6 超现代！黑方先发展马"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4! White expands again. The d4-c4 pawns are building a large center.",
       "popup": "c4！白方继续扩张！\nd4+c4，白方正在建立巨大中心"
     },
     {
       "index": 3,
       "move": "e5",
+      "popup_en": "...e5!! The Budapest Gambit. Black offers the e5-pawn to disrupt White's central plan. This is a strategic sacrifice, not a blunder: should White accept it?",
       "popup": "e5！！布达佩斯弃兵！\n\n黑方主动送出e5兵！\n\n这不是失误——这是战略：\n用一个兵破坏白方的中心计划！\n白方到底要不要吃？",
       "highlights": [
         {"squares": ["e5", "d4", "c4"], "color": "#8E24AA66"}
@@ -41,11 +47,13 @@
     {
       "index": 4,
       "move": "dxe5",
+      "popup_en": "dxe5 accepts the gambit. White wins the e5-pawn, but it is now exposed and may be difficult to defend.",
       "popup": "dxe5 白方接受弃兵\n\n白方吃掉了黑方的e5兵\n但现在e5是个\"孤悬\"的兵——\n怎么守？"
     },
     {
       "index": 5,
       "move": "Ng4",
+      "popup_en": "...Ng4! The knight immediately attacks e5. Black's gambit idea is to develop while attacking the pawn: develop first, then apply pressure.",
       "popup": "Ng4！马立刻攻击e5！\n\n⭐ 黑方弃兵的逻辑：\n白方吃了e5，马上就会被攻击！\n黑方的每一步都在发展+攻击\n\n这就是弃兵争先：先出，后攻！",
       "highlights": [
         {"squares": ["g4", "e5"], "color": "#8E24AA88"}
@@ -54,11 +62,13 @@
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 defends the e5-pawn. White has spent a move protecting it while Black continues to develop. White's pawn moves have not brought out as many pieces as Black's developing moves.",
       "popup": "Nf3 白方守护e5兵\n\n白方必须花一步棋守住这个兵\n而黑方却在发展！\n\n⭐ 已出子对比：\n白方：d4+c4+Nf3（其中两步是走兵）\n黑方：Nf6+Ng4（纯发展！）\n黑方发展效率更高！"
     },
     {
       "index": 7,
       "move": "Bc5",
+      "popup_en": "...Bc5! Black develops a second piece and targets f2, bringing more pressure toward White's king.",
       "popup": "Bc5！黑方第二枚子发展！\n\n象瞄准f2，施压白方王翼\n黑方的子力已经向中心汇集",
       "highlights": [
         {"squares": ["c5", "f2"], "color": "#8E24AA55"}
@@ -67,11 +77,13 @@
     {
       "index": 8,
       "move": "Bf4",
+      "popup_en": "Bf4! White develops the bishop and protects e5. The move order matters: White should play Bf4 before e3, which would block the bishop's route to f4. One move both develops and defends.",
       "popup": "Bf4！白方象发展，同时守住e5！\n\n⭐ 注意顺序：\n必须先走Bf4，再走e3\n因为e3兵会挡住象回到f4的路！\n\n白方一步棋：发展+防守，效率极高"
     },
     {
       "index": 9,
       "move": "Nc6",
+      "popup_en": "...Nc6! Black develops another piece and increases the attack on e5. The knights on c6 and g4 coordinate, leaving White's pawn under serious pressure.",
       "popup": "Nc6！黑方第三枚子！\n\n现在黑方：Nf6+Ng4+Bc5+Nc6\n四枚子都在攻击e5！\n\n⭐ 关键配合：\nNc6+Ng4协作，e5岌岌可危！",
       "highlights": [
         {"squares": ["c6", "e5", "g4"], "color": "#8E24AA77"}
@@ -80,11 +92,13 @@
     {
       "index": 10,
       "move": "e3",
+      "popup_en": "e3 reinforces the center and supports c4. Now it no longer blocks the bishop's route to f4.",
       "popup": "e3 白方稳固中心\n守住c4，但注意——此时e3不再挡住象"
     },
     {
       "index": 11,
       "move": "Ngxe5",
+      "popup_en": "...Ngxe5! Black recovers the pawn with the knight from g4. In exchange for one pawn, Black developed four pieces, disrupted White's center, and seized the initiative.",
       "popup": "Ngxe5！黑方夺回材料！\n\nNg4终于吃掉了e5兵！\n黑方送出去的兵回来了……\n\n⭐ 总结时刻：\n黑方用一个兵，换取了：\n① 快速发展4枚子\n② 白方中心被破坏\n③ 黑方主动，子力活跃",
       "highlights": [
         {"squares": ["e5", "g4"], "color": "#8E24AA88"}
@@ -93,16 +107,19 @@
     {
       "index": 12,
       "move": "Nxe5",
+      "popup_en": "Nxe5 captures Black's knight, exchanging a pair of knights.",
       "popup": "Nxe5 白方马吃掉黑马\n兑换一对马"
     },
     {
       "index": 13,
       "move": "Nxe5",
+      "popup_en": "...Nxe5 recaptures on e5. The knights have been exchanged and Black has recovered the gambit pawn. White's central expansion has been stopped; the d- and e-pawns are gone and c4 has also been exchanged.",
       "popup": "Nxe5 黑方重新夺回e5\n\n双方已经兑换了马\n黑方的弃兵已经\"回本\"！\n\n⭐ 棋局如今：\n白方中心兵d4，c4已不在\ne4、d4全部消失！\n黑方成功阻止了白方的中心扩张"
     },
     {
       "index": 14,
       "move": "Qd5",
+      "popup_en": "Qd5! White's queen attacks the knight on e5.",
       "popup": "Qd5！白方后攻击e5马！",
       "highlights": [
         {"squares": ["d5", "e5"], "color": "#00BCD455"}
@@ -111,6 +128,7 @@
     {
       "index": 15,
       "move": "Qe7",
+      "popup_en": "...Qe7 defends the knight. The position is balanced, and Black's gambit has achieved its aims: limit White's large center, develop actively, and gain control of the counterattack. A gambit is not only a White weapon.",
       "popup": "Qe7 黑方后出来保护马\n\n局面均衡！黑方的弃兵战术成功：\n① 阻止了d4体系的大中心\n② 子力活跃、协调\n③ 用一个兵赢取了反击控制权\n\n⭐ 弃兵不是白方专利！",
       "highlights": [
         {"squares": ["e7", "e5"], "color": "#8E24AA55"}

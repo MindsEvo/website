@@ -1187,11 +1187,14 @@
 
       function renderDropdownMenu(groupDef, manifest, menuEl) {
         var html = '';
+        var english = quizIsEnglish();
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = english ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           cat.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            var itemLabel = english ? (item.label_en || item.label) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
           });
           html += '</div></div>';
         });
@@ -1245,6 +1248,21 @@
           });
       }
 
+      function updateObservationLanguage() {
+        GROUP_DEFS.forEach(function (groupDef) {
+          var menuEl = document.getElementById('menu' + groupDef.key);
+          var manifest = manifestCache[groupDef.key];
+          if (!menuEl || !manifest || !menuEl.classList.contains('open')) return;
+          var openCategory = menuEl.querySelector('.menu-row.open');
+          var openCategoryKey = openCategory ? openCategory.dataset.cat : null;
+          renderDropdownMenu(groupDef, manifest, menuEl);
+          if (openCategoryKey) {
+            var restoredCategory = menuEl.querySelector('.menu-row[data-cat="' + openCategoryKey + '"]');
+            if (restoredCategory) restoredCategory.classList.add('open');
+          }
+        });
+      }
+
       document.addEventListener('click', closeAllMenus);
 
       // ── Data loading ──────────────────────────────────
@@ -1264,7 +1282,7 @@
           state.anno = res[0];
           state.currentPopup = null;
           state.explanationCn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
-          state.explanationEn = state.anno.explanation_en || '';
+          state.explanationEn = item.explanation_en || state.anno.explanation_en || '';
           var moveList = parseSolutionMoves(res[1]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
@@ -1596,6 +1614,7 @@
         var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
+      window.addEventListener('chesslanguagechange', updateObservationLanguage);
       window.addEventListener('chesslanguagechange', updateQuizLanguage);
       window.addEventListener('chesslanguagechange', updatePracticeLanguage);
       window.addEventListener('chesslanguagechange', refreshAnnotationLanguage);

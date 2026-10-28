@@ -8,10 +8,12 @@
       "e2",
       "d4"
     ],
+    "popup_en": "Connecting the Rooks, Lesson 5: The queen and two rooks are a powerful major-piece team. Qe2 controls the center, Re1 the e-file, and Rd1 the d-file; together their pressure multiplies.",
     "popup": "链接双车第5课\n双车+后 = 重子协调的威力极强\nQe2控制中心，Re1控e列，Rd1控d列\n三子配合，威力倍加！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Qe2, Re1, and Rd1 form a triangle of control. Each major piece has a distinct role, creating a powerful coordinated setup.",
     "popup": "总结：Qe2，R1，Rd1 = 后+双车三角控制\n三个重子各司其职，这是很强的协调形态！",
     "voice": true
   },
@@ -23,21 +25,25 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 controls the center.",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's knight.",
       "popup": "Nf6黑马"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O黑方易位"
     },
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the knight from the back rank.",
       "popup": "Nf3！底线马出动",
       "highlights": [
         {
@@ -51,6 +57,7 @@
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "O-O! White completes the three-step process and connects the rooks. The plan is Qe2 to coordinate them, then assign one rook to each central file.",
       "popup": "O-O！三步曲完成！双车连接！\n计划：Qe2联结双车，Rd1+Re1分控两列",
       "highlights": [
         {
@@ -68,11 +75,13 @@
     {
       "index": 19,
       "move": "Nb6",
+      "popup_en": "...Nb6 moves Black's knight to an active square.",
       "popup": "Nb6黑马跳强格"
     },
     {
       "index": 22,
       "move": "Qe2",
+      "popup_en": "Qe2! The queen coordinates the rooks and becomes the command center of White's major-piece setup.",
       "popup": "Qe2！后联结双车\n计划：Qe2是后+双车协调的指挥中心",
       "highlights": [
         {
@@ -88,11 +97,13 @@
     {
       "index": 23,
       "move": "Nbd5",
+      "popup_en": "...Nbd5 develops Black's knight to another strong central square.",
       "popup": "Nbd5黑马再跳强格"
     },
     {
       "index": 24,
       "move": "Rfe1",
+      "popup_en": "Rfe1! The rook from f1 occupies the e-file, which White now controls.",
       "popup": "Rfe1！车进e列！\n激活：Rf1→e1——e列由白方掌控！",
       "highlights": [
         {
@@ -107,11 +118,13 @@
     {
       "index": 25,
       "move": "Rfe8",
+      "popup_en": "...Rfe8 connects Black's rooks.",
       "popup": "Rfe8黑方车联结"
     },
     {
       "index": 26,
       "move": "Rad1",
+      "popup_en": "Rad1!! White completes the final formation: Qe2 coordinates Re1 on the e-file and Rd1 on the d-file. The queen and two rooks now control the center together.",
       "popup": "Rad1！！最终形态！\n三角阵型完成：\n后Qe2＋Re1（e列）＋Rd1（d列）\n= 后+双车最强协调！",
       "highlights": [
         {

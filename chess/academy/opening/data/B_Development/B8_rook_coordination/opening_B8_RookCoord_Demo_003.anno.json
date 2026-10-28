@@ -8,10 +8,12 @@
       "f1",
       "g1"
     ],
+    "popup_en": "Connecting the Rooks, Lesson 3: After connecting the rooks, go one step further and double them on the same file. Two rooks on one file create powerful combined pressure. White completes the e-file doubling in three moves.",
     "popup": "链接双车第3课\n连接之后，更进一步——叠车！\n两辆车叠在同一列，火力翻倍！\n看白方三步完成e列双车叠压！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Rfe1 connects the rooks, Re2 advances the front rook, and Rde1 doubles the second rook behind it. Re2 and Re1 create concentrated pressure on the e-file, a classic way to amplify rook power.",
     "popup": "总结：Rfe1连接 → Re2前进 → Rde1叠车！\nRe2+Re1 = e列叠车，双重压制！\n叠车是双车加大威力的经典手段！",
     "voice": true
   },
@@ -23,26 +25,31 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 controls the center in this Queen's Pawn opening.",
       "popup": "d4控制中心\n后翼开局"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks d5.",
       "popup": "Nf6黑马出动\n攻击d5"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4! The Queen's Gambit challenges d5.",
       "popup": "c4！后翼弃兵\n争夺d5"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the second minor piece and supports d4.",
       "popup": "Nc3！轻子出动第2步\n支援d4"
     },
     {
       "index": 5,
       "move": "Bb4",
+      "popup_en": "...Bb4! The Nimzo-Indian bishop pins Nc3 and adds pressure to White's center.",
       "popup": "Bb4！尼姆佐-印度防御！\n钉住Nc3",
       "highlights": [
         {
@@ -57,11 +64,13 @@
     {
       "index": 7,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O黑方易位"
     },
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O! White castles, completing the second step. The rooks are nearly connected.",
       "popup": "O-O！易位完成！三步曲第二步！\n白方双车连接即将完成！",
       "highlights": [
         {
@@ -76,11 +85,13 @@
     {
       "index": 13,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges pawns and begins to open the e-file.",
       "popup": "cxd4黑方兑换\ne列逐渐开放"
     },
     {
       "index": 14,
       "move": "exd4",
+      "popup_en": "exd4! The e-file is now semi-open and becomes White's main attacking route.",
       "popup": "exd4！e列半开放！\ne列成为白方的主攻方向！",
       "highlights": [
         {
@@ -95,11 +106,13 @@
     {
       "index": 15,
       "move": "dxc4",
+      "popup_en": "...dxc4 exchanges pawns and reactivates White's bishop.",
       "popup": "dxc4黑方兑换\n白方象重新激活"
     },
     {
       "index": 22,
       "move": "Rfe1",
+      "popup_en": "Rfe1!! The third step is complete: the rook from f1 enters the e-file, connecting White's rooks along the back rank.",
       "popup": "Rfe1！！三步曲第三步——双车连接！\nRf1→e1，进入e列！\n连接完成：Ra1——Rd1——Re1",
       "highlights": [
         {
@@ -117,11 +130,13 @@
     {
       "index": 23,
       "move": "Bb7",
+      "popup_en": "...Bb7 develops Black's bishop and controls the g2-a8 diagonal.",
       "popup": "Bb7黑象出动\n控制g2-a8斜线"
     },
     {
       "index": 24,
       "move": "Rad1",
+      "popup_en": "Rad1! The rook from a1 moves to the d-file. White now assigns one rook to e-file and the other to d-file.",
       "popup": "Rad1！Ra1→d列！\n双车分控：Re1（e列）+ Rd1（d列）",
       "highlights": [
         {
@@ -136,11 +151,13 @@
     {
       "index": 25,
       "move": "Re8",
+      "popup_en": "...Re8! Black also occupies the e-file and contests it.",
       "popup": "Re8！黑方车也进e列！\n争夺e列"
     },
     {
       "index": 26,
       "move": "Re2",
+      "popup_en": "Re2!! The front rook advances toward the seventh rank, clearing e1 so the rook from d1 can join it.",
       "popup": "Re2！！第一辆车前进！\nRe1→e2，向第7排推进！\n同时为Rd1→e1腾出位置！",
       "highlights": [
         {
@@ -155,11 +172,13 @@
     {
       "index": 27,
       "move": "Qe7",
+      "popup_en": "...Qe7 connects Black's rooks.",
       "popup": "Qe7黑后联结双车"
     },
     {
       "index": 28,
       "move": "Rde1",
+      "popup_en": "Rde1!! The doubling is complete: the rook from d1 joins the rook on e2. With Re2 in front and Re1 behind, White doubles on the e-file and targets the seventh rank.",
       "popup": "Rde1！！叠车完成！\nRd1→e1，双车全部进入e列！\nRe2（前）+ Re1（后）= e列叠车！\n火力翻倍，直指黑方第7排！",
       "highlights": [
         {

@@ -2,6 +2,7 @@
   "game_id": "A1_Center_Demo_003",
   "description": "伦敦体系——建立巩固双兵中心 第3局，19步完整注释",
   "intro": {
+    "popup_en": "The London System builds a stable center with a pawn chain. Rather than expand quickly, White aims for reliable central control.",
     "flash_squares": [
       "d4",
       "e3",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "A stable center is harder to undermine than an aggressive one. That is the central insight of the London System.",
     "popup": "稳固的中心比激进的中心更难被破坏——这是伦敦体系的核心智慧。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "1.d4! White occupies the center, controlling c5 and e5. The London System begins by establishing a central foothold before developing in an orderly way.",
       "popup": "⬆️ <b>1.d4 — 白方占领中心！</b><br>d4兵踏上中心，控制 c5 和 e5。伦敦体系从这一步开始——先建立中心支点，再有序出子。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "d5",
+      "popup_en": "1...d5! Black meets White's pawn directly. Each side occupies a central square, creating a symmetrical balance and immediate tension.",
       "popup": "⬇️ <b>1...d5 — 黑方中心对抗！</b><br>黑方也在 d5 落子，与白方 d4 正面对峙，中心张力立刻形成。双方各占一格，局面对称均衡。",
       "highlights": [
         {
@@ -82,6 +86,7 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "2.Nf3 develops toward e5 and clears the way for kingside castling. The London idea is to develop first, then support d4 with e3 rather than push pawns too quickly.",
       "popup": "⬆️ <b>2.Nf3 — 白马出动，控制 e5！</b><br>f3 是开局最重要的马位，同时完成两件事：控制 e5 格、为王翼易位清路。<br>伦敦体系核心思路：<b>先出子，再用 e3 支撑 d4</b>，不急于推兵。",
       "highlights": [
         {
@@ -111,6 +116,7 @@
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "2...Nf6 develops symmetrically and controls e4 and d5. Both knights occupy natural squares.",
       "popup": "⬇️ <b>2...Nf6 — 黑马对称出动！</b><br>f6 马控制 e4 和 d5。双方马均在最佳位置，发展均衡。",
       "highlights": [
         {
@@ -140,6 +146,7 @@
     {
       "index": 4,
       "move": "Bf4",
+      "popup_en": "3.Bf4! The signature London System move. The bishop controls e5 and c7, and White develops smoothly while improving piece activity with each move.",
       "popup": "⬆️ <b>3.Bf4 — 伦敦体系标志性一步！</b><br>象出动到 f4，控制 e5 和 c7，是伦敦体系的招牌走法。<br>白方出子顺畅，每步都在争取子力活动空间，没有浪费任何步骤。",
       "highlights": [
         {
@@ -168,6 +175,7 @@
     {
       "index": 5,
       "move": "e6",
+      "popup_en": "3...e6 reinforces d5 and creates a solid center, but blocks Black's bishop on c8. Black's structure is sturdy and has no immediate weaknesses.",
       "popup": "⬇️ <b>3...e6 — 黑方支撑 d5，阵型稳固！</b><br>e6 兵支援 d5，让黑方中心更加稳固。代价是封锁了 c8 象——但黑方整体阵型坚实，没有明显弱点。",
       "highlights": [
         {
@@ -196,6 +204,7 @@
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "4.e3! White supports d4 before considering e4. The pawn chain stabilizes the center and opens a diagonal for the bishop on f1, preparing kingside castling. Solidity can be a long-term strength.",
       "popup": "⬆️ <b>4.e3 — 关键！用 e3 巩固 d4！</b><br>这是伦敦体系的核心思路：<b>不急于推 e4，先用 e3 稳固 d4</b>。<br>e3 兵支撑 d4，同时为 f1 象让路，让白方可以完成王翼易位。<br>稳固 > 激进，中心坚如磐石才是长远优势。",
       "highlights": [
         {
@@ -225,6 +234,7 @@
     {
       "index": 7,
       "move": "Bd6",
+      "popup_en": "4...Bd6 develops the bishop and directly challenges White's bishop on f4.",
       "popup": "⬇️ <b>4...Bd6 — 黑象出动，攻击 Bf4！</b><br>黑象来到 d6，直接瞄准白方的 f4 象，形成威胁。黑方积极出子，同时向白方施压。",
       "highlights": [
         {
@@ -253,6 +263,7 @@
     {
       "index": 8,
       "move": "Bg3",
+      "popup_en": "5.Bg3! White retreats to a useful square and avoids the unfavorable Bxd6 Qxd6, which would give Black's queen an active post. If ...Bxg3, hxg3 opens the h-file for White's rook; the doubled pawns are not necessarily a weakness in this structure.",
       "popup": "⬆️ <b>5.Bg3 — 象后退到好位！</b><br>白象从 f4 退到 g3， 选择有利的兑换位置。若改走 Bxd6，黑方 Qxd6 后黑后站上强格，白方反而吃亏。<br>若黑方 Bxg3 吃象，白方 hxg3 叠兵——但 h 线同时打开，白车可利用，叠兵不是弱点，是伦敦体系的标准变化！",
       "highlights": [
         {
@@ -282,6 +293,7 @@
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "5...O-O secures Black's king and activates the rook. Both sides have developed smoothly, but White's center is more stable and may offer a long-term edge.",
       "popup": "⬇️ <b>5...O-O — 黑方完成王翼易位！</b><br>黑方国王安全转移，车激活。至此双方出子都较为顺畅，但白方中心更稳固，有长期优势。",
       "highlights": [
         {
@@ -309,6 +321,7 @@
     {
       "index": 10,
       "move": "Bd3",
+      "popup_en": "6.Bd3 controls e4 and clears f1 for castling. White's d4-e3 center is supported by a coordinated group of knights and bishops.",
       "popup": "⬆️ <b>6.Bd3 — 白象出动，控制 e4！</b><br>d3 象控制 e4 格，同时清空 f1，为白方王翼易位做好准备。<br>白方现在：d4+e3 稳固中心、Nf3+Bg3+Bd3 三子协调，发展完美！",
       "highlights": [
         {
@@ -337,6 +350,7 @@
     {
       "index": 11,
       "move": "c5",
+      "popup_en": "6...c5! Black correctly challenges d4. Against a stable center, a flank pawn break is a powerful way to undermine it.",
       "popup": "⬇️ <b>6...c5 — 黑方反击中心！</b><br>黑方推 c5 挑战白方的 d4，这是正确的中心反制策略。<br>面对稳固中心，最有力的应对就是用侧翼兵打破它——c5 是经典的黑方反击手段。",
       "highlights": [
         {
@@ -365,6 +379,7 @@
     {
       "index": 12,
       "move": "c3",
+      "popup_en": "7.c3! White reinforces d4, now supported by both e3 and c3. Black's ...c5 pressure is contained. This is the London System's strength: a stable center leaves the opponent few targets.",
       "popup": "⬆️ <b>7.c3 — 白方再次巩固 d4，稳如磐石！</b><br>c3 兵支撑 d4，黑方的 c5 攻击被化解。现在 d4 有 e3 和 c3 双重保护，无懈可击。<br>这就是伦敦体系的精髓：<b>中心稳固，让对手无处下手。</b>",
       "highlights": [
         {
@@ -399,6 +414,7 @@
     {
       "index": 13,
       "move": "Nc6",
+      "popup_en": "7...Nc6 develops and supports ...c5 while adding pressure to d4. Black seeks counterplay, but White's center remains solid.",
       "popup": "⬇️ <b>7...Nc6 — 黑马出动，控制e5！</b><br>c6 马支持 c5 兵，同时给 d4 施加更多压力。黑方在侧翼积极寻找反击机会，但白方中心已固若金汤。",
       "highlights": [
         {
@@ -427,6 +443,7 @@
     {
       "index": 14,
       "move": "Nbd2",
+      "popup_en": "8.Nbd2 develops the second knight and prepares Ne5, while keeping options to reroute toward c4 or f1. White's pieces are ready to support an attack.",
       "popup": "⬆️ <b>8.Nbd2 — 白方第二匹马出动！</b><br>d2 马为 Ne5 进军中心做准备，同时支援 c4 或 f1 的跳转。<br>白方子力已全面展开：双象、双马、中心稳固，随时可以发动进攻！",
       "highlights": [
         {
@@ -467,6 +484,7 @@
     {
       "index": 15,
       "move": "Qe7",
+      "popup_en": "8...Qe7 supports a possible ...e5 advance and defends the bishop on d6. Black looks for a way to break White's center.",
       "popup": "⬇️ <b>8...Qe7 — 黑后出动，准备推进！</b><br>黑后来到 e7，一方面支援 e6-e5 的推进，另一方面保护 d6 象。黑方正在积极寻找机会打破白方中心。",
       "highlights": [
         {
@@ -489,6 +507,7 @@
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "9.O-O completes White's kingside development. The center is stable, the pieces are coordinated, and the king is safe, so White can consider a broader plan.",
       "popup": "⬆️ <b>9.O-O — 白方完成王翼易位！</b><br>国王安全转移到 g1，车激活到 f1。白方所有准备工作就绪：中心稳固、子力发展完毕、王位安全——随时可以展开全面进攻！",
       "highlights": [
         {
@@ -516,6 +535,7 @@
     {
       "index": 17,
       "move": "b6",
+      "popup_en": "9...b6 prepares to develop the bishop from c8 via b7. Black must spend time freeing the bishop that was restricted by ...e6.",
       "popup": "⬇️ <b>9...b6 — 黑方准备出象！</b><br>b6 为 c8 象（经由 b7）开路，黑方试图激活被困在 c8 的象。这说明黑方之前第3步走 e6 的代价——封住了 c8 象，现在必须花步骤来弥补。",
       "highlights": [
         {
@@ -543,6 +563,7 @@
     {
       "index": 18,
       "move": "Ne5",
+      "popup_en": "10.Ne5! The knight occupies a powerful central outpost. White's stable d4-e3-c3 center supports this square. London System summary: build a secure center, develop, then use the resulting support to establish a knight on e5.",
       "popup": "⬆️ <b>10.Ne5 — 马占中心最强格，伦敦体系巅峰！</b><br>白马跳到 e5，占据棋盘中央最强的格子！这正是 d4+e3 稳固中心带来的最大红利——e5 永远是白马的绝佳据点。<br>🏆 <b>伦敦体系总结：</b><br>先稳固中心（d4+e3+c3），再出子发展，最终马占 e5，全局优势！<br>这就是「先建中心、再借力发挥」的元思维。",
       "highlights": [
         {

@@ -2,6 +2,7 @@
   "game_id": "opening_A1_Center_Demo_005",
   "description": "意大利开局·慢棋——双兵中心的建立与中心争夺 第5局，29步完整注释",
   "intro": {
+    "popup_en": "The Italian Game: develop the pieces first, then prepare the d4 center. Patience is key.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Pushing in the center after the pieces are well developed is far more effective than advancing prematurely.",
     "popup": "子力充分发展后再推中心，效果远胜于仓促冒进。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4! The Italian Game begins with a central pawn. It controls d5 and f5 and opens lines for the bishop and queen.",
       "popup": "⬆️ <b>1.e4 — 白方占领中心！</b><br>意大利开局从 e4 开始。e4 兵控制 d5 和 f5，同时为象和后打开通道。这是国际象棋史上最古老也最有力的第一步。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "1...e5! Black replies symmetrically. Each side occupies a central square and contests the middle of the board.",
       "popup": "⬇️ <b>1...e5 — 黑方对称占领中心！</b><br>黑方以 e5 回应，双方各占一个中心格，势均力敌。这是最经典的对称开局——双方都在争夺棋盘中央！",
       "highlights": [
         {
@@ -90,6 +94,7 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "2.Nf3 develops and attacks e5. The knight also controls d4 and g5, supporting White's plan to build a two-pawn center.",
       "popup": "⬆️ <b>2.Nf3 — 白马出动，攻击 e5！</b><br>f3 马直接攻击黑方的 e5 兵，迫使黑方防守。同时马控制 d4 和 g5，为白方推 d4 建立双兵中心做准备。",
       "highlights": [
         {
@@ -119,6 +124,7 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "2...Nc6 develops and defends e5 while controlling d4 and b4. Black develops and defends in one efficient move.",
       "popup": "⬇️ <b>2...Nc6 — 黑马保护 e5！</b><br>c6 马防守 e5 兵，同时控制 d4 和 b4。黑方选择用马而不是兵防守——出子和防守一步完成，非常高效！",
       "highlights": [
         {
@@ -147,6 +153,7 @@
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "3.Bc4! The Italian bishop controls d5 and targets Black's weakness on f7. White plans c3 and d4 to build a central pawn duo while keeping the bishop active.",
       "popup": "⬆️ <b>3.Bc4 — 意大利象！瞄准 f7 和 d5！</b><br>c4 象是意大利开局的灵魂：控制 d5 格，同时沿对角线直指最弱的 f7 格。<br>白方的计划已经清晰：c3+d4 建立双兵中心，同时保持象的压力。",
       "highlights": [
         {
@@ -175,6 +182,7 @@
     {
       "index": 5,
       "move": "Bc5",
+      "popup_en": "3...Bc5! Black develops symmetrically, controls d4, and prevents White from immediately building a two-pawn center. This quiet Giuoco Piano position is about steady development and central control.",
       "popup": "⬇️ <b>3...Bc5 — 意大利慢棋！黑象对称出动！</b><br>黑象也来到 c5，对称控制 d4 格，阻止白方建立双兵中心。这就是「Giuoco Piano（慢棋）」——双方都以稳健的出子争夺中心，没有立即的战术冲突。",
       "highlights": [
         {
@@ -203,6 +211,7 @@
     {
       "index": 6,
       "move": "c3",
+      "popup_en": "4.c3! White prepares d4 and supports the advance so Black's bishop cannot simply capture the pawn. This is the key step toward claiming the center.",
       "popup": "⬆️ <b>4.c3 — 白方准备推 d4！</b><br>c3 兵为 d4 推进铺路，同时支撑 d4 不被黑象打掉。这是意大利开局建立双兵中心的关键步骤，目标是下一步推 d4，彻底占领中心。",
       "highlights": [
         {
@@ -224,6 +233,7 @@
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "4...Nf6! Black develops and attacks e4 before White can play d4. The f6-knight controls d5 and g4 and puts immediate pressure on White's center.",
       "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑方趁白方还没推 d4，先出马攻击 e4 兵施压。f6 马控制 d5 和 g4，是黑方最好的出子位置。黑方在白方完成中心之前抢先施压！",
       "highlights": [
         {
@@ -252,6 +262,7 @@
     {
       "index": 8,
       "move": "d4",
+      "popup_en": "5.d4! White establishes the e4-d4 pawn duo, taking space and attacking both e5 and c5. Black must respond to the central challenge.",
       "popup": "⬆️ <b>5.d4 — 白方建立双兵中心！</b><br>白方果断推 d4，e4+d4 双兵并立，完全控制中心。同时攻击黑方 e5 和 c5 两处！黑方现在必须应对双重威胁，情况变得复杂。",
       "highlights": [
         {
@@ -287,6 +298,7 @@
     {
       "index": 9,
       "move": "exd4",
+      "popup_en": "5...exd4 captures the d4-pawn and breaks up White's pawn duo. The d4-square is open; the fight to occupy it is just beginning.",
       "popup": "⬇️ <b>5...exd4 — 黑方吃兵，打破中心！</b><br>黑方用 e5 吃掉 d4，消灭白方的双兵中心之一。现在 d4 是空的，争夺才刚刚开始——谁来占领 d4？",
       "highlights": [
         {
@@ -308,6 +320,7 @@
     {
       "index": 10,
       "move": "cxd4",
+      "popup_en": "6.cxd4! White recaptures and rebuilds the center. The e4-d4 pawns return, and Black's bishop on c5 is now attacked by the d4-pawn.",
       "popup": "⬆️ <b>6.cxd4 — 白方夺回 d4，中心重建！</b><br>c3 兵吃回 d4，白方重新建立中心。现在白方有 e4+d4 双兵中心，<b>黑方的 c5 象却直接面对 d4 兵的攻击</b>——黑象必须应对！",
       "highlights": [
         {
@@ -337,6 +350,7 @@
     {
       "index": 11,
       "move": "Bb4+",
+      "popup_en": "6...Bb4+! Instead of retreating, Black gives check. The bishop also pressures Nc3, using the tempo to disrupt White's coordination.",
       "popup": "⬇️ <b>6...Bb4+ — 黑象将军，制造战术！</b><br>黑象不逃跑，反而将军！这是一步战术手段：将军迫使白方应对，同时黑象在 b4 对 c3 马施压，打乱白方的子力协调。",
       "highlights": [
         {
@@ -371,6 +385,7 @@
     {
       "index": 12,
       "move": "Bd2",
+      "popup_en": "7.Bd2 blocks the check and invites an exchange. If Black captures on d2, White can recapture with a knight and develop smoothly; the center remains intact and the c-file may open for a rook.",
       "popup": "⬆️ <b>7.Bd2 — 白方挡将，邀请兑换！</b><br>白方用象挡将，同时邀请黑方兑换——如果黑象吃 d2，白方用马吃回，子力发展更加顺畅。<br>白方接受兑换后，中心依然稳固，且开放的 c 线对白车有利。",
       "highlights": [
         {
@@ -392,6 +407,7 @@
     {
       "index": 13,
       "move": "Bxd2+",
+      "popup_en": "7...Bxd2+ exchanges bishops with check. Black removes a bishop, but White can recapture with a knight and develop a piece.",
       "popup": "⬇️ <b>7...Bxd2+ — 黑方兑换，再次将军！</b><br>黑方吃掉 d2 象并将军，强迫白方应对。这次兑换对双方都有得失：黑方消灭一个白象，但白方用马吃回可以发展子力。",
       "highlights": [
         {
@@ -414,6 +430,7 @@
     {
       "index": 14,
       "move": "Nbxd2",
+      "popup_en": "8.Nbxd2! White recaptures with the knight, blocks the check, and develops the b1-knight. The e4-d4 center stays intact and the pieces coordinate well.",
       "popup": "⬆️ <b>8.Nbxd2 — 白方马吃回，出子顺畅！</b><br>白方用马吃 d2，既解将又发展子力。b1 马终于出动！白方中心依然完整（e4+d4），而且 d2 马准备下一步跳向更好的位置，白方全局协调。",
       "highlights": [
         {
@@ -451,6 +468,7 @@
     {
       "index": 15,
       "move": "d5",
+      "popup_en": "8...d5! Black challenges the center directly, attacking e4 and c4. A pawn break into the center is the right way to counter White's central advantage.",
       "popup": "⬇️ <b>8...d5 — 黑方挑战中心！</b><br>黑方推 d5，直接攻击白方的 e4 和 c4。这是正确的反制手段——用侧翼兵打入中心，挑战白方的中心优势！",
       "highlights": [
         {
@@ -485,6 +503,7 @@
     {
       "index": 16,
       "move": "exd5",
+      "popup_en": "9.exd5 opens the center. The e-file becomes more active for the major pieces, and piece activity and control of the open lines now matter greatly.",
       "popup": "⬆️ <b>9.exd5 — 白方吃兵，开放中心！</b><br>白方用 e4 吃掉 d5，中心被彻底打开。开放的 e 线让双方的车和后变得极为活跃。<br>中心兑换后，子力活跃度和棋盘控制成为决定胜负的关键！",
       "highlights": [
         {
@@ -514,6 +533,7 @@
     {
       "index": 17,
       "move": "Nxd5",
+      "popup_en": "9...Nxd5! The f6-knight occupies a powerful central outpost. From d5 it controls eight important squares and is strongly placed in the middle of the board.",
       "popup": "⬇️ <b>9...Nxd5 — 黑马占领 d5！</b><br>f6 马跳到 d5，占据中心最强格。d5 马居中而立，控制 b4、c3、e3、f4、f6、c7、b6、e7 八个格子，是绝佳的中心马位！",
       "highlights": [
         {
@@ -564,6 +584,7 @@
     {
       "index": 18,
       "move": "Qb3",
+      "popup_en": "10.Qb3! White's queen creates a double attack against f7 and d5. With the center open, the queen's long-range power becomes a direct reward for central control.",
       "popup": "⬆️ <b>10.Qb3 — 白后出动，双重施压！</b><br>白后跳到 b3，同时攻击 f7 和 d5！黑方必须找到一步解决两个威胁的应对。<br>中心打开后，后的威力被完全释放——这就是中心控制的回报：开放局面让强子大显身手！",
       "highlights": [
         {
@@ -591,6 +612,7 @@
     {
       "index": 19,
       "move": "Nce7",
+      "popup_en": "10...Nce7 moves the c6-knight to defend the d5-knight and sidestep the queen's double attack. Black solves the immediate problem, though the pieces become somewhat crowded.",
       "popup": "⬇️ <b>10...Nce7 — 黑马后撤，保护 d5！</b><br>c6 马退回 e7，保护 d5 马，同时避开白后的双重攻击。黑方化解了危机，但子力稍显拥挤——精确应对需要一定计算能力。",
       "highlights": [
         {
@@ -613,6 +635,7 @@
     {
       "index": 20,
       "move": "O-O",
+      "popup_en": "11.O-O secures White's king and activates the rook on f1, which can later use the open e-file or d-file. White has central control, developed pieces, and a safe king.",
       "popup": "⬆️ <b>11.O-O — 白方易位，王安全！</b><br>白方完成王翼易位，国王安全。车激活到 f1，随时可以转移到开放的 e 线或 d 线。白方已万事俱备：中心控制、子力发展、王安全，全面优势！",
       "highlights": [
         {
@@ -640,6 +663,7 @@
     {
       "index": 21,
       "move": "O-O",
+      "popup_en": "11...O-O also secures Black's king. Both kings are safe, and the game enters the middlegame with White retaining a slight edge in central control and activity.",
       "popup": "⬇️ <b>11...O-O — 黑方也易位，王安全！</b><br>黑方完成王翼易位。双方国王均已安全，对局进入中局争夺阶段。白方在中心和子力活跃度上略占优势。",
       "highlights": [
         {
@@ -667,6 +691,7 @@
     {
       "index": 22,
       "move": "Rfe1",
+      "popup_en": "12.Rfe1! White places the f1-rook on the semi-open e-file to pressure the center. Central control also means controlling the central files, where rooks can become active.",
       "popup": "⬆️ <b>12.Rfe1 — 白车占领 e 线！</b><br>f1 车转移到 e1，占领半开放的 e 线，向中心施压。<br>这是中心控制的另一层含义：<b>开放或半开放的中心线，是车发挥威力的舞台。</b>中心控制 = 线的控制 = 车的活跃！",
       "highlights": [
         {
@@ -694,6 +719,7 @@
     {
       "index": 23,
       "move": "c6",
+      "popup_en": "12...c6 reinforces the knight on d5 and strengthens Black's central setup.",
       "popup": "⬇️ <b>12...c6 — 黑方加固 d5！</b><br>c6 兵支援d5马，加强建立防线。",
       "highlights": [
         {
@@ -715,6 +741,7 @@
     {
       "index": 24,
       "move": "a4",
+      "popup_en": "13.a4! White prevents ...b5 and limits Black's queenside space. With an edge in the center, White can also restrict Black's counterplay on the flank.",
       "popup": "⬆️ <b>13.a4 — 白方拓展空间，限制 b5！</b><br>a4 阻止黑方推 b5，防止黑方在后翼获得空间。白方已在中心占优，现在开始限制黑方的反击空间，把优势一步步扩大。",
       "highlights": [
         {
@@ -736,6 +763,7 @@
     {
       "index": 25,
       "move": "Ng6",
+      "popup_en": "13...Ng6 reroutes the knight from d5 toward the kingside in search of activity. The knight is farther from the center, so the maneuver has limited efficiency.",
       "popup": "⬇️ <b>13...Ng6 — 黑马寻找活路！</b><br>d5 马跳向 g6，试图在王翼找到更活跃的位置。黑方意识到中心防守被动，开始寻求主动。但 g6 马离中心较远，效率有限。",
       "highlights": [
         {
@@ -765,6 +793,7 @@
     {
       "index": 26,
       "move": "Ne4",
+      "popup_en": "14.Ne4! White's d2-knight occupies a powerful central square and targets f6, d6, and c5. Together, the knights on f3 and e4 and the d4-pawn dominate the center.",
       "popup": "⬆️ <b>14.Ne4 — 白马跃入中心！</b><br>d2 马跳到 e4，占据中心最强格，直接威胁黑方 f6、d6、c5 等要点。<br>白方中心控制到达顶峰——两匹马（f3+e4）与 d4 兵共同统治整个中心区域！",
       "highlights": [
         {
@@ -806,6 +835,7 @@
     {
       "index": 27,
       "move": "Ngf4",
+      "popup_en": "14...Ngf4! Black's knight jumps to f4, attacking d3 and controlling e2 and h3. Black finds an active square and increases the contest between the knights.",
       "popup": "⬇️ <b>14...Ngf4 — 黑马挤入 f4！</b><br>g6 马跳到 f4，威胁 d3，同时控制 e2 和 h3。黑方找到了一个进取的马位，对白方施加压力。双方马的争夺进入白热化！",
       "highlights": [
         {
@@ -840,6 +870,7 @@
     {
       "index": 28,
       "move": "Ng3",
+      "popup_en": "15.Ng3! White's knight seeks a better square. This Italian Game illustrates the full process: build a c3-d4 center, exchange when challenged, use pieces and rooks to control the central files, and convert the central edge into lasting initiative.",
       "popup": "⬆️ <b>15.Ng3 — 白马寻求更好的位置！</b><br>意大利慢棋完美展示了「占领中心」的完整过程：c3+d4 建立双兵中心 → 中心被挑战后兑换开放 → 用子力（马、后、车）持续控制中心线 → 争取将中心优势转化为全局主动。",
       "highlights": [
         {

@@ -3,10 +3,12 @@
   "description": "卡罗-卡恩推进变 B12 — 识别反击点：被压方的自救",
   "intro": {
     "flash_squares": ["e5", "f7", "f6"],
+    "popup_en": "Space Cramping, Lesson 2: Being cramped does not mean you must lose. White's e5 wedge restricts Black, but Black has a key counterattacking point. Can you find it?",
     "popup": "空间挤压 第2课\n\n被挤压不等于必输！\n\n白方e5楔子压制了黑方空间\n但黑方有一个关键反击点——\n\n你能找到这个格子吗？",
     "voice": true
   },
   "outro": {
+    "popup_en": "Black's routes out of a cramped position include ...f6 to strike the e5 wedge, ...c4 to stabilize queenside space, and a knight maneuver via Ng6 toward h4. Recognize the space problem, then find a counterattack.",
     "popup": "反击点总结\n\n被压方的三条出路：\n① ...f6：直接打击e5楔子\n② ...c4：稳固翼侧空间\n③ Ng6→Nh4：骑士渗入\n\n识别挤压 → 找反击点！",
     "voice": true
   },
@@ -18,26 +20,31 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4 占中心"
     },
     {
       "index": 1,
       "move": "c6",
+      "popup_en": "...c6 begins the Caro-Kann, preparing ...d5 while keeping the bishop's development route open.",
       "popup": "c6！卡罗-卡恩防御\n准备d5，同时为象留好发展路线"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 expands White's center.",
       "popup": "d4 扩大中心"
     },
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5 counterattacks in the center.",
       "popup": "d5 反击中心！"
     },
     {
       "index": 4,
       "move": "e5",
+      "popup_en": "e5! White advances a wedge. Unlike in the French Defense, Black's bishop has not been trapped on c8.",
       "popup": "e5！白方楔子推进！\n对比法国防御：黑方象还没被关住！",
       "highlights": [
         {"squares": ["e5", "d5", "f6"], "color": "#00BCD455"}
@@ -46,6 +53,7 @@
     {
       "index": 5,
       "move": "Bf5",
+      "popup_en": "...Bf5! This is a key Caro-Kann advantage: Black develops the bishop before the structure closes. Unlike in the French, the bishop is already active outside the pawn chain.",
       "popup": "Bf5！卡罗-卡恩的精华！\n\ne5推进之前/同时，象已经溜出来！\n对比法国：象被关在c8\n卡罗：象在f5，自由活跃！",
       "highlights": [
         {"squares": ["f5", "c8"], "color": "#C6D50055"}
@@ -54,21 +62,25 @@
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and defends d4.",
       "popup": "Nf3 发展马，守护d4"
     },
     {
       "index": 7,
       "move": "e6",
+      "popup_en": "...e6 reinforces d5. Here it does not trap the bishop, which has already developed to f5.",
       "popup": "e6 稳固d5\n这次e6封的不是象，象已经在f5外面了！"
     },
     {
       "index": 8,
       "move": "Be2",
+      "popup_en": "Be2 develops solidly.",
       "popup": "Be2 稳固发展"
     },
     {
       "index": 9,
       "move": "c5",
+      "popup_en": "...c5! Black attacks d4, a key counterattacking resource for the cramped side.",
       "popup": "c5！攻击d4！\n这是被压方的核心反击手段",
       "highlights": [
         {"squares": ["c5", "d4"], "color": "#E5393555"}
@@ -77,11 +89,13 @@
     {
       "index": 10,
       "move": "Be3",
+      "popup_en": "Be3 defends d4 and reinforces White's center.",
       "popup": "Be3 守护d4，稳固中心"
     },
     {
       "index": 11,
       "move": "Nd7",
+      "popup_en": "...Nd7! The knight prepares to reroute via e7 to g6, beginning a useful counterplay route.",
       "popup": "Nd7！\n马到d7，为下一步Nge7→Ng6做准备\n马的路线开始展开……",
       "highlights": [
         {"squares": ["d7", "e7", "g6"], "color": "#FF8F0044"}
@@ -90,11 +104,13 @@
     {
       "index": 12,
       "move": "c3",
+      "popup_en": "c3 supports d4 and keeps White's position stable.",
       "popup": "c3 支援d4，白方稳固"
     },
     {
       "index": 13,
       "move": "Nge7",
+      "popup_en": "...Nge7! Black's g8-knight moves out and aims for g6.",
       "popup": "Nge7！g8马出来，下一步瞄准g6！",
       "highlights": [
         {"squares": ["e7", "g6"], "color": "#FF8F0055"}
@@ -103,11 +119,13 @@
     {
       "index": 14,
       "move": "Nbd2",
+      "popup_en": "Nbd2 develops and supports the center.",
       "popup": "Nbd2 发展马，支援中心"
     },
     {
       "index": 15,
       "move": "Ng6",
+      "popup_en": "...Ng6! The knight reaches its target. It attacks the side of the e5 wedge and prepares ...f5 or ...Nh4, increasing the pressure on White.",
       "popup": "Ng6！马到达目标格！\n\nNg6的威力：\n① 正对e5楔子侧面\n② 准备...f5或...Nh4\n③ 紧逼白方！",
       "highlights": [
         {"squares": ["g6", "e5", "f4"], "color": "#E5393555"}
@@ -116,11 +134,13 @@
     {
       "index": 16,
       "move": "h4",
+      "popup_en": "h4! White threatens h5 and hxg6 to drive away the knight. The counterplay begins: who will seize the initiative?",
       "popup": "h4！白方威胁h5-hxg6赶走Ng6！\n反制来了——谁能主动？"
     },
     {
       "index": 17,
       "move": "h5",
+      "popup_en": "h5! Black locks the kingside and keeps the knight on g6 stable. White's h4-h5 plan has failed, and Black has seized the initiative.",
       "popup": "h5！封锁！\n黑方主动！h5稳固了Ng6\n白方h4-h5计划失败！",
       "highlights": [
         {"squares": ["h5", "h4", "g6"], "color": "#8E24AA55"}
@@ -129,6 +149,7 @@
     {
       "index": 18,
       "move": "Nb3",
+      "popup_en": "Nb3 attacks c5, trying to undermine the base of Black's counterattack. Black can stabilize with ...cxd4 or ...c4; the key question is when to strike with ...f6 against the head of White's chain.",
       "popup": "Nb3 攻击c5\n白方试图动摇黑方反击基础\n\n黑方下一步：...cxd4或...c4稳固\n\n关键问题：黑方的...f6何时打出？\n那是最终的爆破点！",
       "highlights": [
         {"squares": ["f6", "e5"], "color": "#E5393544"}

@@ -2,6 +2,7 @@
   "game_id": "A3_Space_Demo_003",
   "description": "KID四兵攻击 E76 — 关闭中心，双翼竞赛",
   "intro": {
+    "popup_en": "On move seven, d5 closes the center and divides the board. White attacks on the kingside, Black on the queenside: each side fights on its own wing.",
     "flash_squares": [
       "d5",
       "e4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "After d5 closes the center, the two sides' space becomes separated. Closing the center is one of the most common ways to divide the board and define opposite-wing plans.",
     "popup": "d5关门后双方空间各自独立。\n关闭中心是空间分割最常见的方式。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 occupies the center and prepares a broad pawn formation.",
       "popup": "▶️ <b>d4</b><br>白方先占中心，准备建立强大的兵中心",
       "highlights": [
         {
@@ -51,6 +54,7 @@
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 begins the King's Indian Defense. Black develops a knight without contesting the center immediately, waiting for White to advance before counterattacking.",
       "popup": "▶️ <b>Nf6</b><br>国王印度防御！黑方先出马，暂时不争中心<br>等白方充分推进后再反击",
       "highlights": [
         {
@@ -68,6 +72,7 @@
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4 adds the second pawn to White's broad center. Together, c4 and d4 control many central squares.",
       "popup": "▶️ <b>c4</b><br>白方建立大型兵中心的第二步<br>c4+d4控制了大量中心格子",
       "highlights": [
         {
@@ -92,6 +97,7 @@
     {
       "index": 3,
       "move": "g6",
+      "popup_en": "...g6 prepares ...Bg7, where the bishop will target White's large pawn center indirectly rather than challenge it head-on.",
       "popup": "▶️ <b>g6</b><br>黑方准备用飞象（Bg7）来攻击白方大型兵中心<br>间接地反击，不是正面冲突",
       "highlights": [
         {
@@ -109,6 +115,7 @@
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and supports d4 and e4, preparing White's next central advance.",
       "popup": "▶️ <b>Nc3</b><br>白方出马，支援d4和e4<br>为接下来的e4推进做准备",
       "highlights": [
         {
@@ -132,6 +139,7 @@
     {
       "index": 5,
       "move": "Bg7",
+      "popup_en": "...Bg7 fianchettoes the bishop, which targets d4 along the long diagonal. White's center is under pressure and must be handled carefully.",
       "popup": "▶️ <b>Bg7</b><br>黑方飞象！象在g7对角线上射击d4<br>白方的中心在压力下，必须提高警惕",
       "highlights": [
         {
@@ -155,6 +163,7 @@
     {
       "index": 6,
       "move": "e4",
+      "popup_en": "e4! White builds a huge center with c4, d4, and e4, reaching maximum space. This is the striking four-pawn setup.",
       "popup": "🚀 <b>e4 — 白方建立超大中心！</b><br>c4+d4+e4，白方控制的空间达到顶峰<br>这是「四兵攻击」中最壮观的局面",
       "highlights": [
         {
@@ -178,6 +187,7 @@
     {
       "index": 7,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's position, supports e5, and prevents White from advancing further without preparation.",
       "popup": "▶️ <b>d6</b><br>黑方稳固阵型，准备反击<br>d6支撑e5，防止白方进一步推进",
       "highlights": [
         {
@@ -194,6 +204,7 @@
     {
       "index": 8,
       "move": "f4",
+      "popup_en": "f4! White completes the four-pawn attack with c4, d4, e4, and f4. The space is impressive, but Black is under considerable pressure to strike back.",
       "popup": "🚀 <b>f4 — 四兵攻击成型！</b><br>c4+d4+e4+f4，白方建立了4个连锁中心兵<br>黑方的压力极大！",
       "highlights": [
         {
@@ -212,6 +223,7 @@
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king and prepares a counterattack against White's broad center.",
       "popup": "▶️ <b>O-O</b><br>黑方易位！王安全后可以展开反击<br>黑方准备打击白方的大中心",
       "highlights": [
         {
@@ -228,6 +240,7 @@
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and coordinates White's position, supporting the central formation.",
       "popup": "▶️ <b>Nf3</b><br>白方出马，进一步协调阵型<br>整个阵型开始配合推进",
       "highlights": [
         {
@@ -245,6 +258,7 @@
     {
       "index": 11,
       "move": "c5",
+      "popup_en": "...c5! Black attacks d4 and forces White to make a decision. If White advances d5, the center will close and the race on opposite wings begins.",
       "popup": "⚡ <b>c5 — 黑方的反击！</b><br>攻击白方d4，迫使白方做出选择<br>若白方d5：中心关闭，双翼竞赛开始",
       "highlights": [
         {
@@ -267,6 +281,7 @@
     {
       "index": 12,
       "move": "d5",
+      "popup_en": "d5! White closes the center instead of exchanging. The board is divided: White can expand on the kingside with f4-f5, while Black seeks queenside play.",
       "popup": "🔑 <b>d5！关闭中心！</b><br>白方不交换，推进d5！<br>棋盘被一分为二：<br>• 白方在王翼扩展（f4-f5）<br>• 黑方在后翼扩展（e6-c4-b5）",
       "highlights": [
         {
@@ -291,6 +306,7 @@
     {
       "index": 13,
       "move": "e6",
+      "popup_en": "...e6 immediately counterattacks the d5-pawn, aiming to open the center or gain space.",
       "popup": "▶️ <b>e6</b><br>黑方立刻发动反击！<br>攻击d5兵，尝试打开中心或获得空间",
       "highlights": [
         {
@@ -313,6 +329,7 @@
     {
       "index": 14,
       "move": "Be2",
+      "popup_en": "Be2 develops and prepares castling. White continues calmly without being distracted by Black's pressure.",
       "popup": "▶️ <b>Be2</b><br>白方出象，为易位做准备<br>稳步发展，不为黑方的牵制所动",
       "highlights": [
         {
@@ -330,6 +347,7 @@
     {
       "index": 15,
       "move": "exd5",
+      "popup_en": "...exd5 exchanges White's d5-pawn and opens the e-file. The space contest becomes more dynamic.",
       "popup": "▶️ <b>exd5</b><br>黑方换掉d5兵，打开e列<br>双方的空间竞赛变得更加紧张",
       "highlights": [
         {
@@ -346,6 +364,7 @@
     {
       "index": 16,
       "move": "cxd5",
+      "popup_en": "cxd5 recaptures and leaves White with a strong pawn on d5, supporting a kingside advance. Black seeks counterplay on the queenside while White plans on the kingside: the race is on, and the side that acts first may gain the edge.",
       "popup": "✅ <b>cxd5 — 最终局面！</b><br>c兵来吃回d5，白方保持d5强兵！<br>• 白方d5是后续王翼推进的支柱<br>• 黑方在后翼（c4-b5）和王翼（f5）展开竞赛<br>双翼竞赛正式开始，谁先动手谁占优！",
       "highlights": [
         {

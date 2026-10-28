@@ -2,6 +2,7 @@
   "game_id": "A2_Control_Demo_004",
   "description": "尼姆佐印度防御——用象钉住马，阻止中心也是控制，14步完整注释",
   "intro": {
+    "popup_en": "Black pins White's knight to interfere with the plan to build a center. The Nimzo-Indian shows two sides of central control: create pressure, or undermine the pieces that support the opponent's center.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Central control has two sides: build pressure or remove its source. The pin with ...Bb4 does not occupy the center directly; it undermines a key support of White's plan, an indirect form of strategic control.",
     "popup": "控制中心有两面：建立压力，或摧毁压力来源。Bb4 的钉制不是直接控制，而是通过瓦解对方的控制支柱来间接掌控局面——这是更高级的战略控制。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "1.d4 occupies the center and controls c5 and e5. White plans to support it with c4 and Nc3 before advancing e4.",
       "popup": "⬆️ <b>1.d4 — 白方占领 d4！</b><br>d4 兵直接控制 c5 和 e5。白方计划建立强大中心，后续 c4+Nc3 将支撑 e4 推进。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "1...Nf6 develops and controls e4 and d5, challenging White's central plan.",
       "popup": "⬇️ <b>1...Nf6 — 黑马出动，攻击 e4/d5！</b><br>黑方马在 f6 控制 e4 和 d5，直接挑战白方的中心计划。同时为后续发展做准备。",
       "highlights": [
         {
@@ -82,6 +86,7 @@
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "2.c4 adds flank control of d5. White aims for c4, d4, and Nc3 to support a broad center with e4 to follow.",
       "popup": "⬆️ <b>2.c4 — 翼路兵加入控制！</b><br>c4 兵从侧面控制 d5。白方的计划是 c4+d4+Nc3，为推 e4 做准备，建立庞大中心。",
       "highlights": [
         {
@@ -103,6 +108,7 @@
     {
       "index": 3,
       "move": "e6",
+      "popup_en": "2...e6 supports the center and opens a diagonal for Black's dark-squared bishop, preparing the key idea.",
       "popup": "⬇️ <b>2...e6 — 黑方稳固，为象开路。</b><br>e6 兵支撑中心，同时为黑格象（c8 象）开路，准备下一步的关键棋。",
       "highlights": [],
       "concept_arrows": []
@@ -110,6 +116,7 @@
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "3.Nc3! The knight is a key support for e4 and would help White establish a d4-e4 pawn center. Black's next move targets this support.",
       "popup": "⬆️ <b>3.Nc3 — 关键一步！支撑 e4 的推进。</b><br>Nc3 是白方计划的核心——这匹马将支撑 e4 推进，让白方建立 d4+e4 双兵中心。<br>但是……黑方下一步就是要破坏这个支柱！",
       "highlights": [
         {
@@ -137,6 +144,7 @@
     {
       "index": 5,
       "move": "Bb4",
+      "popup_en": "3...Bb4! The Nimzo-Indian idea: Black pins Nc3. If White plays e4, ...Bxc3 can damage the pawn structure and undermine the center. Rather than occupy a central square, Black attacks one of the supports of White's plan.",
       "popup": "⬇️ <b>3...Bb4 — 尼姆佐的精髓！</b><br>黑象钉住 c3 的白马！马被钉制后，如果白方推 e4，黑方 Bxc3 破坏双兵，白方中心遭到破坏。<br><span style='color:#FF5722;'>★ Bb4 不直接占中心，而是<b>摧毁白方的中心支柱</b>——这是控制中心的第二种方式！</span>",
       "highlights": [
         {
@@ -163,6 +171,7 @@
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "4.e3 blocks the pin's direct pressure and opens a diagonal for White's bishop. If the knight is exchanged, the e3-pawn helps preserve the central structure; Black's pin has made White adjust the plan.",
       "popup": "⬆️ <b>4.e3 — 白方用小兵「遮挡」钉制。</b><br>e3 兵打开 f1 象的道路，同时让马不那么怕被交换（马被吃后 e3 保持双兵结构）。Bb4 的威胁迫使白方调整！",
       "highlights": [
         {
@@ -178,6 +187,7 @@
     {
       "index": 7,
       "move": "c5",
+      "popup_en": "4...c5! Black attacks d4. With Nc3 pinned by Bb4, White's central pawn faces additional pressure.",
       "popup": "⬇️ <b>4...c5 — 黑方挑战 d4！</b><br>黑方推 c5，直接攻击 d4 兵。在 Bb4 钉制 Nc3 的背景下，白方 d4 面临双重压力！",
       "highlights": [
         {
@@ -199,6 +209,7 @@
     {
       "index": 8,
       "move": "Nf3",
+      "popup_en": "5.Nf3 develops and increases White's control of e5 and d4, while preparing Bd3.",
       "popup": "⬆️ <b>5.Nf3 — 白方继续发展。</b><br>Nf3 出动，加强对 e5 和 d4 的控制，同时为后续 Bd3 开路。",
       "highlights": [
         {
@@ -226,6 +237,7 @@
     {
       "index": 9,
       "move": "Nc6",
+      "popup_en": "5...Nc6 develops and adds pressure to d4 and e5.",
       "popup": "⬇️ <b>5...Nc6 — 黑方加强中心压力。</b><br>黑马出动，控制 d4 和 e5，进一步向白方中心施压。",
       "highlights": [
         {
@@ -253,6 +265,7 @@
     {
       "index": 10,
       "move": "Bd3",
+      "popup_en": "6.Bd3 develops and supports the planned e4 advance, despite the pin on Nc3.",
       "popup": "⬆️ <b>6.Bd3 — 白象出动，准备 e4！</b><br>白象在 d3，支撑 e4 推进。即便面对 Bb4 的钉制，白方仍在为 e4 做准备。",
       "highlights": [
         {
@@ -274,6 +287,7 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "6...O-O secures Black's king.",
       "popup": "⬇️ <b>6...O-O — 黑方易位！</b><br>黑方王翼易位完成，王的安全得到保障。",
       "highlights": [],
       "concept_arrows": []
@@ -281,6 +295,7 @@
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "7.O-O completes White's castling. The game enters a complex middlegame, with the Bb4-Nc3 pin remaining a key strategic tension.",
       "popup": "⬆️ <b>7.O-O — 白方易位。</b><br>双方易位完成，进入复杂中局。Bb4 vs Nc3 的钉制关系仍是局面的核心矛盾。",
       "highlights": [],
       "concept_arrows": []
@@ -288,6 +303,7 @@
     {
       "index": 13,
       "move": "d5",
+      "popup_en": "7...d5! Black challenges the center while the pin still restricts Nc3. The bishop's pressure has limited White's central options throughout the opening: preventing a plan can itself be a form of control.",
       "popup": "⬇️ <b>7...d5 — 黑方打开中心！</b><br>黑方推 d5，在 Bb4 钉制仍然有效的背景下挑战白方。白方 Nc3 依然受到钉制，无法自由移动。<br><span style='color:#88CCFF;'>★ 总结：Bb4 的钉制贯穿整个开局，持续限制白方的中心计划——<b>阻止=控制！</b></span>",
       "highlights": [
         {

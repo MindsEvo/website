@@ -9,10 +9,12 @@
       "g1",
       "f1"
     ],
+    "popup_en": "Rapid Development, Lesson 4: Make each move efficient. Moving the same piece repeatedly before developing others wastes tempi.",
     "popup": "快速出子第4课\n每步棋都要稳妥高效，重复走同一个子等于浪费先手",
     "voice": true
   },
   "outro": {
+    "popup_en": "Avoiding unnecessary repeated moves is central to rapid development.",
     "popup": "总结：不重复走子是快速出子的核心原则",
     "voice": true
   },
@@ -24,16 +26,19 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game.",
       "popup": "e4开局"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's move.",
       "popup": "e5对称"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the knight for the first time and attacks e5, a sound opening move.",
       "popup": "Nf3！马第1次出动\n正确发展，攻击e5",
       "highlights": [
         {
@@ -47,21 +52,25 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's first minor piece.",
       "popup": "Nc6发展\n黑方第1个轻子"
     },
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "Bc4 develops White's second minor piece in the Italian Game.",
       "popup": "Bc4象出动\n白方第2个轻子，意大利开局"
     },
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's second minor piece and attacks e4.",
       "popup": "Nf6发展\n黑方第2个轻子，攻击e4"
     },
     {
       "index": 6,
       "move": "Ng5",
+      "popup_en": "Ng5?! White moves the same knight a second time, from f3 to g5, threatening f7. Developing a new piece with Nc3 would be more efficient.",
       "popup": "Ng5！⚠️ 白马第2次移动（f3→g5）\n马跳向g5，威胁f7\n但这是同一匹马！\n正确应走Nc3发展新子",
       "highlights": [
         {
@@ -76,41 +85,49 @@
     {
       "index": 7,
       "move": "d5",
+      "popup_en": "...d5! Black counterattacks in the center. When a knight jumps forward, challenge it with a pawn and open the position.",
       "popup": "d5！黑方反击！\n每次有马跳入，就用兵反击\n打开中心，赶走威胁"
     },
     {
       "index": 8,
       "move": "exd5",
+      "popup_en": "exd5 captures the pawn.",
       "popup": "exd5吃兵"
     },
     {
       "index": 9,
       "move": "Na5",
+      "popup_en": "...Na5! Black develops while attacking White's bishop.",
       "popup": "Na5！追击象\n黑方继续发展，追击白方象"
     },
     {
       "index": 10,
       "move": "Bb5+",
+      "popup_en": "Bb5+ gives check, moving White's bishop for a second time from c4 to b5.",
       "popup": "Bb5+将军\n白象走第2次（c4→b5）"
     },
     {
       "index": 11,
       "move": "c6",
+      "popup_en": "...c6 blocks the check and continues Black's active play.",
       "popup": "c6挡将\n黑方步步有力"
     },
     {
       "index": 12,
       "move": "dxc6",
+      "popup_en": "dxc6 captures the pawn.",
       "popup": "dxc6吃兵"
     },
     {
       "index": 13,
       "move": "bxc6",
+      "popup_en": "...bxc6 recaptures.",
       "popup": "bxc6接回"
     },
     {
       "index": 14,
       "move": "Be2",
+      "popup_en": "Be2 retreats the bishop for its third move: c4-b5-e2. The bishop has also lost tempi instead of allowing new pieces to develop.",
       "popup": "Be2象退回\n白象走了3次（c4→b5→e2）\n象也在浪费先手！",
       "highlights": [
         {
@@ -126,11 +143,13 @@
     {
       "index": 15,
       "move": "h6",
+      "popup_en": "...h6 attacks the knight on g5 and forces it to decide where to go.",
       "popup": "h6！追马\n黑方逼退g5的马！"
     },
     {
       "index": 16,
       "move": "Nf3",
+      "popup_en": "Nf3 is White's third move with the knight: f3-g5-f3. It returns to its starting square after spending three tempi, while Black used the time to develop.",
       "popup": "Nf3！⚠️ 白马第3次移动！（f3→g5→f3）\n马走了圈，回到原地！\n这3步几乎等于白走\n黑方利用这时间完成了更多发展",
       "highlights": [
         {
@@ -145,31 +164,37 @@
     {
       "index": 17,
       "move": "e4",
+      "popup_en": "...e4 advances and gains space, using Black's lead in tempi.",
       "popup": "e4推兵\n黑方推兵争夺空间，利用节奏优势"
     },
     {
       "index": 18,
       "move": "Ne5",
+      "popup_en": "Ne5 centralizes White's knight in an attempt to become active.",
       "popup": "Ne5马跳中心\n白方尝试激活"
     },
     {
       "index": 19,
       "move": "Bd6",
+      "popup_en": "...Bd6 develops Black's bishop.",
       "popup": "Bd6发展\n黑方继续出子"
     },
     {
       "index": 20,
       "move": "d4",
+      "popup_en": "d4 advances in the center.",
       "popup": "d4推进"
     },
     {
       "index": 21,
       "move": "exd3",
+      "popup_en": "...exd3 exchanges pawns.",
       "popup": "exd3兑换"
     },
     {
       "index": 22,
       "move": "Nxd3",
+      "popup_en": "Nxd3 recaptures. The route Nf3-g5-f3 used three moves to return the knight to its original square, effectively wasting two tempi. Black's development lead shows the cost of repeated moves.",
       "popup": "Nxd3\n总结：Nf3→Ng5→Nf3 = 马走3步回原地\n等于浪费2个先手\n黑方发展领先，这就是节奏损失的代价！",
       "highlights": [
         {

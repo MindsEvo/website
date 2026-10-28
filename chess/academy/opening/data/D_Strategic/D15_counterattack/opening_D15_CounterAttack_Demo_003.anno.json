@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Demo_003",
   "description": "卡罗-坎恩古典变例 B17 — 兑换后反制：c5爆破制造孤兵弱点",
   "intro": {
+    "popup_en": "Counterattack the Center, Lesson 3: Caro-Kann\nBlack uses ...c6 to build a solid structure and does not rush to counterattack. When is ...c5 most effective, and how can exchanges turn White's space advantage into an isolated-pawn target?",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "After exchanges, ...c5 can leave White with an isolated pawn. Black's bishop is active outside the pawn chain, and a knight on e5 can control the center. Evaluate whether White's initial space advantage has faded, whether the isolated pawn is a lasting weakness, and how well Black's pieces coordinate.",
     "popup": "卡罗-坎恩总结\n\n兑换后反制模式：\n① c5制造孤兵弱点\n② 黑象比法式更好\n③ 马占e5控制中心\n\n反制成功标志：\n① 白方原有优势削弱？\n② 孤兵成为长期弱点？\n③ 黑方棋子协调性如何？",
     "voice": true
   },
@@ -22,122 +24,146 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "e4 occupies the center.",
       "move": "e4",
       "popup": "e4 占中心"
     },
     {
       "index": 1,
+      "popup_en": "...c6 begins the Caro-Kann Defense and builds a solid structure.",
       "move": "c6",
       "popup": "c6 卡罗-坎恩！\n稳固结构"
     },
     {
       "index": 2,
+      "popup_en": "d4 reinforces White's center.",
       "move": "d4",
       "popup": "d4 巩固中心"
     },
     {
       "index": 3,
+      "popup_en": "...d5 challenges the center.",
       "move": "d5",
       "popup": "d5 反制中心"
     },
     {
       "index": 4,
+      "popup_en": "Nc3 supports White's center.",
       "move": "Nc3",
       "popup": "Nc3 支援中心"
     },
     {
       "index": 5,
+      "popup_en": "...dxe4 simplifies the center.",
       "move": "dxe4",
       "popup": "dxe4 简化局面"
     },
     {
       "index": 6,
+      "popup_en": "Nxe4 recaptures and restores White's central presence.",
       "move": "Nxe4",
       "popup": "Nxe4 马重建中心"
     },
     {
       "index": 7,
+      "popup_en": "...Nd7 develops the knight.",
       "move": "Nd7",
       "popup": "Nd7 马发展"
     },
     {
       "index": 8,
+      "popup_en": "Bc4 activates White's bishop.",
       "move": "Bc4",
       "popup": "Bc4 象激活"
     },
     {
       "index": 9,
+      "popup_en": "...Ngf6 develops Black's knight.",
       "move": "Ngf6",
       "popup": "Ngf6 马发展"
     },
     {
       "index": 10,
+      "popup_en": "Ng5 sends the knight forward to attack.",
       "move": "Ng5",
       "popup": "Ng5 马进攻"
     },
     {
       "index": 11,
+      "popup_en": "...e6 defends Black's position.",
       "move": "e6",
       "popup": "e6 防御"
     },
     {
       "index": 12,
+      "popup_en": "Qe2 activates White's queen.",
       "move": "Qe2",
       "popup": "Qe2 后激活"
     },
     {
       "index": 13,
+      "popup_en": "...Nb6 counterattacks with the knight.",
       "move": "Nb6",
       "popup": "Nb6 马反击"
     },
     {
       "index": 14,
+      "popup_en": "Bd3 places White's bishop on an active diagonal.",
       "move": "Bd3",
       "popup": "Bd3 象就位"
     },
     {
       "index": 15,
+      "popup_en": "...h6 challenges the knight and asks it to move.",
       "move": "h6",
       "popup": "h6 赶走马"
     },
     {
       "index": 16,
+      "popup_en": "N5f3 retreats the knight.",
       "move": "N5f3",
       "popup": "N5f3 马后退"
     },
     {
       "index": 17,
+      "popup_en": "...c5! Black chooses the moment to counterattack and break open White's center.",
       "move": "c5",
       "popup": "c5！反击！\n爆破白方中心"
     },
     {
       "index": 18,
+      "popup_en": "dxc5 accepts Black's challenge.",
       "move": "dxc5",
       "popup": "dxc5 接受挑战"
     },
     {
       "index": 19,
+      "popup_en": "...Bxc5 activates Black's bishop.",
       "move": "Bxc5",
       "popup": "Bxc5 象激活！"
     },
     {
       "index": 20,
       "move": "Ne5",
+      "popup_en": "Ne5! White's knight occupies an important central square.",
       "popup": "Ne5！白马占要点"
     },
     {
       "index": 21,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops the knight and supports Black's position.",
       "popup": "Nbd7 马发展"
     },
     {
       "index": 22,
       "move": "Nc4",
+      "popup_en": "Nc4 continues the pressure on Black's position.",
       "popup": "Nc4 继续施压"
     },
     {
       "index": 23,
       "move": "O-O",
+      "popup_en": "...O-O completes Black's development and secures the king.",
       "popup": "O-O 黑方易位完成"
     }
   ]

@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Demo_005",
   "description": "皮克防御 B07 — 超现代内爆：诱导白方扩张，e5反制",
   "intro": {
+    "popup_en": "Counterattack the Center, Lesson 5: Pirc Defense\nThe hypermodern plan is to let White build a large center, then undermine it. When should Black strike with ...e5, and how can the position turn from passive defense into active counterplay?",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The Pirc counterattack pattern: allow the opponent to expand, choose the right moment to break, then shift from defense to attack. Evaluate whether ...e5 opens the position, activates the bishop on g7, and improves the knights.",
     "popup": "皮克防御总结\n\n超现代反制模式：\n① 让对方中心扩张\n② 找准时机爆破\n③ 由守转攻\n\n反制成功标志：\n① e5爆破后局面开放？\n② 象g7活跃度提升？\n③ 马的活跃性如何？",
     "voice": true
   },
@@ -23,121 +25,145 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4 占中心"
     },
     {
       "index": 1,
       "move": "d6",
+      "popup_en": "...d6 begins the Pirc Defense and its hypermodern setup.",
       "popup": "d6 皮克！\n超现代体系"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 gives White a strong central presence.",
       "popup": "d4 白方建立强大中心"
     },
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a knight.",
       "popup": "Nf6 马发展"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 supports White's center.",
       "popup": "Nc3 支援中心"
     },
     {
       "index": 5,
       "move": "g6",
+      "popup_en": "...g6! Black follows the hypermodern principle and lets White expand first.",
       "popup": "g6 超现代！\n让白方先扩张"
     },
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3 发展"
     },
     {
       "index": 7,
       "move": "Bg7",
+      "popup_en": "...Bg7! Black's fianchettoed bishop keeps the center under observation.",
       "popup": "Bg7！超现代象\n虎视中心"
     },
     {
       "index": 8,
       "move": "Be2",
+      "popup_en": "Be2 reinforces White's setup.",
       "popup": "Be2 稳固"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O 易位"
     },
     {
       "index": 10,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O 易位"
     },
     {
       "index": 11,
       "move": "c6",
+      "popup_en": "...c6 stabilizes Black's structure and prepares a later central break.",
       "popup": "c6 稳固结构"
     },
     {
       "index": 12,
       "move": "a4",
+      "popup_en": "a4 prevents Black's ...b5 expansion.",
       "popup": "a4 防止b5"
     },
     {
       "index": 13,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops a knight.",
       "popup": "Nbd7 马发展"
     },
     {
       "index": 14,
       "move": "h3",
+      "popup_en": "h3 prevents ...Bg4.",
       "popup": "h3 预防Bg4"
     },
     {
       "index": 15,
       "move": "e5",
+      "popup_en": "...e5! The central break arrives at the right moment, undermining White's center.",
       "popup": "e5！爆破时刻！\n内爆白方中心"
     },
     {
       "index": 16,
       "move": "dxe5",
+      "popup_en": "dxe5 accepts the central challenge.",
       "popup": "dxe5 接受挑战"
     },
     {
       "index": 17,
       "move": "dxe5",
+      "popup_en": "...dxe5 recaptures and opens the position.",
       "popup": "dxe5 局面开放"
     },
     {
       "index": 18,
       "move": "Bg5",
+      "popup_en": "Bg5 puts pressure on Black's position.",
       "popup": "Bg5 施压"
     },
     {
       "index": 19,
       "move": "Qc7",
+      "popup_en": "...Qc7 activates Black's queen.",
       "popup": "Qc7 后激活"
     },
     {
       "index": 20,
       "move": "Nd2",
+      "popup_en": "Nd2 reorganizes White's knight.",
       "popup": "Nd2 调整"
     },
     {
       "index": 21,
       "move": "Nc5",
+      "popup_en": "...Nc5! Black's knight becomes active and contests key squares.",
       "popup": "Nc5！马激活\n争夺关键格"
     },
     {
       "index": 22,
       "move": "Nc4",
+      "popup_en": "Nc4 contests space and important squares.",
       "popup": "Nc4 寸土必争"
     },
     {
       "index": 23,
       "move": "Ne6",
+      "popup_en": "...Ne6! Black's knight occupies an important outpost.",
       "popup": "Ne6 马占要点！"
     }
   ]

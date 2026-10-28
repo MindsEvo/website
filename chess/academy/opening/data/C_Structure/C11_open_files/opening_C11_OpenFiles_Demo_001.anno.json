@@ -3,10 +3,12 @@
   "description": "西西里防御 B20 — 什么是半开放线",
   "intro": {
     "flash_squares": ["c5", "c4", "c3", "c2", "c1"],
+    "popup_en": "Open Files, Lesson 1: Black's first move ...c5 leaves the c-file without black pawns. A semi-open file has pawns for only one side; for Black, the c-file becomes a natural route for a rook. Place a rook on c8 to control it.",
     "popup": "什么是半开放线 第1课\n\n黑方第一手c5！\nc列从此无黑兵\n\n半开放线=只有一方无兵的列\n黑方c线是天然的车通道！\n\n把车放到c8，控制c线！",
     "voice": true
   },
   "outro": {
+    "popup_en": "After ...c5 and ...cxd4, the c-file is open for Black. With no black pawns on the file, a rook on c8 controls this strategic route and applies pressure. When a semi-open file appears, place a rook on it and use it to attack.",
     "popup": "半开放线小结\n✅ c5→cxd4：c线完全打通\n✅ 黑方c列无兵=半开放线\n✅ 车放c8 = 控制战略通道\n\n核心公式：\n有半开放线→车放上去→施压对方！",
     "voice": true
   },
@@ -18,11 +20,13 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center, one of White's most common opening moves.",
       "popup": "e4占中心\n这是白方最常见的第一手"
     },
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "...c5! A semi-open file is created: Black has no pawns on the c-file, giving the rook a natural route.",
       "popup": "c5！半开放线诞生！\n从此c列再无黑兵\n黑方c线=半开放线！",
       "highlights": [
         {"squares": ["c5", "c4", "c3", "c2", "c1"], "color": "#C6D50055"}
@@ -31,21 +35,25 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and controls d4 and e5.",
       "popup": "Nf3发展马\n控制d4和e5"
     },
     {
       "index": 3,
       "move": "d6",
+      "popup_en": "...d6 stabilizes the center and prepares ...Nf6.",
       "popup": "d6稳固中心\n为Nf6做准备"
     },
     {
       "index": 4,
       "move": "d4",
+      "popup_en": "d4! White challenges the center and attacks the c5-pawn, aiming to open the position.",
       "popup": "d4！白方反中心\n挑战c5，试图打开中心"
     },
     {
       "index": 5,
       "move": "cxd4",
+      "popup_en": "...cxd4! Black exchanges and fully opens the c-file. There are no black pawns from c8 to c1, creating a clear rook highway.",
       "popup": "cxd4！黑方兑换！\nc线完全打通！\n从c8到c1没有任何黑兵！",
       "highlights": [
         {"squares": ["c8", "c7", "c6", "c5", "c4", "c3", "c2", "c1"], "color": "#C6D50088"}
@@ -54,51 +62,61 @@
     {
       "index": 6,
       "move": "Nxd4",
+      "popup_en": "Nxd4 places White's knight in the center. White has central control, while Black has the open c-file.",
       "popup": "Nxd4白马占中心\n白方有中心控制优势"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks e4, adding pressure.",
       "popup": "Nf6发展马\n攻击e4，施加压力"
     },
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and supports the center.",
       "popup": "Nc3发展马\n支援中心"
     },
     {
       "index": 9,
       "move": "a6",
+      "popup_en": "...a6! Black prevents White's knight from jumping to b5, a typical Sicilian precaution.",
       "popup": "a6防守！\n防止白马跳b5\n西西里经典小手段"
     },
     {
       "index": 10,
       "move": "Be2",
+      "popup_en": "Be2 develops safely and prepares castling.",
       "popup": "Be2稳固发展\n准备入城"
     },
     {
       "index": 11,
       "move": "e6",
+      "popup_en": "...e6 reinforces the center and prepares to develop the bishop.",
       "popup": "e6稳固中心\n为象发展做准备"
     },
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O secures White's king and prepares a kingside plan.",
       "popup": "O-O白方入城\n王安全，准备翼翼进攻"
     },
     {
       "index": 13,
       "move": "Be7",
+      "popup_en": "...Be7 develops and prepares Black to castle.",
       "popup": "Be7发展象\n准备入城"
     },
     {
       "index": 14,
       "move": "Be3",
+      "popup_en": "Be3 develops and supports the knight on d4.",
       "popup": "Be3发展象\n守护d4马"
     },
     {
       "index": 15,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king. Black can now bring a rook to e8 or c8.",
       "popup": "O-O黑方入城！\n王安全，Re8或Rc8即将部署",
       "highlights": [
         {"squares": ["c8", "f8"], "color": "#00BCD455"}
@@ -107,11 +125,13 @@
     {
       "index": 16,
       "move": "f4",
+      "popup_en": "f4! White begins a kingside advance and prepares f5.",
       "popup": "f4！白方翼翼进攻\n准备f5推进"
     },
     {
       "index": 17,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops, attacks White's knight on d4, and contests the center. Black is also ready to occupy the c-file with ...Rc8.",
       "popup": "Nc6发展马\n攻击d4马，争夺中心\n同时Rc8即将占领c线！",
       "highlights": [
         {"squares": ["c6", "c8"], "color": "#C6D50055"}
@@ -120,6 +140,7 @@
     {
       "index": 18,
       "move": "Nb3",
+      "popup_en": "Nb3 retreats the knight from d4. Black can now play ...Rc8 and fully control the semi-open c-file.",
       "popup": "Nb3撤退\n白马离开d4\n黑方现在可以Rc8！\n完全控制c线半开放线！",
       "highlights": [
         {"squares": ["c8", "c7", "c6", "c5"], "color": "#C6D50088"}

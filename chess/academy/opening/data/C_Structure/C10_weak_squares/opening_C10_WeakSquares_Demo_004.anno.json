@@ -8,10 +8,12 @@
       "c3",
       "b3"
     ],
+    "popup_en": "Weak Squares from Pawn Advances, Lesson 4: Every pawn move can leave a weak square behind. After bxc3, d4 loses a defender; after f4, the f4-square itself can become weak. Pawns only move forward and cannot return to cover the squares they leave.",
     "popup": "兵前进留下弱格 第4课\n\n每步兵的推进都会留下身后的弱格\nbxc3叠兵后 → d4格失去守护\nf4推进后 → f4格本身变弱\n\n兵只能向前，后退不了！",
     "voice": true
   },
   "outro": {
+    "popup_en": "After bxc3, dark squares such as d4 and b4 become weaker; advancing f4 can weaken f4 itself. Qd3 helps defend d4 while targeting h7. A pawn advance may create a weakness behind it.",
     "popup": "兵形弱格小结\n✅ bxc3叠兵→d4/b4黑格弱\n✅ f4推进→f4格本身成弱格\n✅ Qd3多用途：守d4+瞄准h7\n\n核心原则：\n兵推一步，身后弱一格！",
     "voice": true
   },
@@ -26,31 +28,37 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center and begins the French Defense structure.",
       "popup": "e4占中心\n法国防御开始"
     },
     {
       "index": 1,
       "move": "e6",
+      "popup_en": "...e6 begins the French Defense and prepares the ...d5 counterattack.",
       "popup": "e6法国防御\n准备d5反击"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 establishes White's center.",
       "popup": "d4建立中心"
     },
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5! Black challenges the center, a defining French Defense idea.",
       "popup": "d5挑战中心！\n法国防御特征"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops a knight in the Winawer-Averbakh variation.",
       "popup": "Nc3发展马\n温纳-阿维尔巴赫变例"
     },
     {
       "index": 5,
       "move": "Bb4",
+      "popup_en": "...Bb4 pins the knight, using a Nimzo-style idea in the French Defense.",
       "popup": "Bb4钉马！\n法国防御中的Nimzo式思路",
       "highlights": [
         {
@@ -65,21 +73,25 @@
     {
       "index": 6,
       "move": "e5",
+      "popup_en": "e5 closes the center with the classic French wedge. The f4-square is no longer protected by a pawn.",
       "popup": "e5封锁！\n经典法国e5楔子\n注意：f4格此后无兵守护"
     },
     {
       "index": 7,
       "move": "c5",
+      "popup_en": "...c5! Black immediately counterattacks against d4.",
       "popup": "c5反击！\n黑方立刻挑战d4"
     },
     {
       "index": 8,
       "move": "a3",
+      "popup_en": "a3 challenges Black's bishop in the Averbakh variation.",
       "popup": "a3逼迫黑象\n法国防御阿维尔巴赫变例"
     },
     {
       "index": 9,
       "move": "Bxc3+",
+      "popup_en": "...Bxc3+ exchanges. Black's bishop disappears, leaving weaknesses on light squares.",
       "popup": "Bxc3+兑换！\n黑象消失→白格弱格产生",
       "highlights": [
         {
@@ -95,6 +107,7 @@
     {
       "index": 10,
       "move": "bxc3",
+      "popup_en": "bxc3 rebuilds the structure but creates doubled c-pawns. The light-squared bishop is gone, so d4 no longer has that bishop's protection.",
       "popup": "bxc3重建！\n注意c3叠兵产生\nd4格现在无白格象守护！",
       "highlights": [
         {
@@ -111,21 +124,25 @@
     {
       "index": 11,
       "move": "Ne7",
+      "popup_en": "...Ne7 develops and supports the ...c5 challenge to the center.",
       "popup": "Ne7发展马\n为c5冲击中心支撑"
     },
     {
       "index": 12,
       "move": "Qg4",
+      "popup_en": "Qg4 attacks g7 and threatens Qxg7.",
       "popup": "Qg4进攻！\n攻击g7，威胁Qxg7"
     },
     {
       "index": 13,
       "move": "Qc7",
+      "popup_en": "...Qc7 defends g7.",
       "popup": "Qc7防守g7"
     },
     {
       "index": 14,
       "move": "Qxg7",
+      "popup_en": "Qxg7! White wins the pawn and chooses an attacking initiative.",
       "popup": "Qxg7！吃兵\n白方主动换取进攻先手",
       "highlights": [
         {
@@ -140,11 +157,13 @@
     {
       "index": 15,
       "move": "Rg8",
+      "popup_en": "...Rg8! The rook defends h7 and attacks White's queen.",
       "popup": "Rg8！\n车出来守h7，攻击白后"
     },
     {
       "index": 16,
       "move": "Qxh7",
+      "popup_en": "Qxh7 continues the pawn grab, bringing White's queen deep into Black's position.",
       "popup": "Qxh7继续吃兵\n白后深入黑方阵地",
       "highlights": [
         {
@@ -158,21 +177,25 @@
     {
       "index": 17,
       "move": "cxd4",
+      "popup_en": "...cxd4 opens the center and counterattacks.",
       "popup": "cxd4打开中心\n黑方反击"
     },
     {
       "index": 18,
       "move": "Ne2",
+      "popup_en": "Ne2 develops flexibly and avoids the doubled pawns.",
       "popup": "Ne2发展马\n绕开叠兵，灵活机动"
     },
     {
       "index": 19,
       "move": "Nbc6",
+      "popup_en": "...Nbc6 develops and protects d4.",
       "popup": "Nbc6发展马\n守护d4"
     },
     {
       "index": 20,
       "move": "f4",
+      "popup_en": "f4 advances and reinforces the e5 wedge, but also makes f4 itself a potential weak square.",
       "popup": "f4推进！\n加强e5楔子\n但请注意：f4格本身变弱了！",
       "highlights": [
         {
@@ -186,11 +209,13 @@
     {
       "index": 21,
       "move": "Bd7",
+      "popup_en": "...Bd7 defends and prepares castling.",
       "popup": "Bd7防守\n准备入城"
     },
     {
       "index": 22,
       "move": "Qd3",
+      "popup_en": "Qd3! The queen has several jobs: defend the weak square d4, control e4, and keep targeting h7. One piece can cover multiple weaknesses.",
       "popup": "Qd3多用途！\n✅ 守护d4弱格\n✅ 控制e4格\n✅ 继续瞄准h7\n一个子同时守多个弱格",
       "highlights": [
         {

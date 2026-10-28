@@ -9,10 +9,12 @@
       "g1",
       "f1"
     ],
+    "popup_en": "Rapid Development, Lesson 1: Knights and bishops are minor pieces, each worth about three points. Develop them early, bringing out a new piece with each move and avoiding unnecessary repetition.",
     "popup": "快速出子第1课\n马象是轻子都是价值3分， 应在开局优先出动，每步走一个新子，尽量不要重复",
     "voice": true
   },
   "outro": {
+    "popup_en": "Recognizing minor pieces and developing them first is a basic opening principle.",
     "popup": "总结：认识轻子，优先发展，是开局基本原则",
     "voice": true
   },
@@ -24,46 +26,55 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center, controlling d5 and f5 from the first move.",
       "popup": "e4占领中心\n开局第一步：占中心格\n控制d5和f5"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's central occupation, creating a symmetrical position.",
       "popup": "e5对称\n黑方也占中心\n对称局面"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the first minor piece. The knight attacks e5 and controls d4.",
       "popup": "Nf3！第1个轻子出动\n马是轻子之一\n攻击e5兵，同时控制d4"
     },
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's first minor piece and protects e5.",
       "popup": "Nc6出动\n黑方第1个轻子\n保护e5兵"
     },
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "Bc4! White develops the second minor piece. The Italian bishop targets f7.",
       "popup": "Bc4！第2个轻子出动\n象是轻子之一\n意大利开局，瞄准f7"
     },
     {
       "index": 5,
       "move": "Bc5",
+      "popup_en": "...Bc5 develops Black's second minor piece symmetrically.",
       "popup": "Bc5出动\n黑方第2个轻子\n对称发展"
     },
     {
       "index": 6,
       "move": "d3",
+      "popup_en": "d3 stabilizes the center and leaves room for Nc3 in the closed Italian setup.",
       "popup": "d3稳固中心\n为Nc3让路\n意大利封闭体系"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's third minor piece, attacks e4, and prepares castling.",
       "popup": "Nf6出动\n黑方第3个轻子\n攻击e4，准备易位"
     },
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the third minor piece. All three of White's minor pieces are active, so castling can now be considered.",
       "popup": "Nc3！第3个轻子出动\n白方3个轻子全部出动\n现在可以考虑易位了！",
       "highlights": [
         {
@@ -79,11 +90,13 @@
     {
       "index": 9,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's position; Black's remaining minor piece is ready to develop.",
       "popup": "d6稳固\n黑方第4个轻子待出"
     },
     {
       "index": 10,
       "move": "O-O",
+      "popup_en": "O-O! White castles as soon as the minor pieces are developed. The king is safe and the rooks are connected.",
       "popup": "O-O！白方易位\n轻子出动后立即易位\n王安全，车连通",
       "highlights": [
         {
@@ -99,6 +112,7 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "...O-O! Black also castles. Both kings are safe and the middlegame begins.",
       "popup": "O-O！黑方也易位\n双方王都安全了\n进入中局阶段",
       "highlights": [
         {
@@ -114,56 +128,67 @@
     {
       "index": 12,
       "move": "h3",
+      "popup_en": "h3 prevents a possible ...Be6 and ...Bg4 pin against White's knight.",
       "popup": "h3防护\n防止Be6-Bg4牵制\n细节处理"
     },
     {
       "index": 13,
       "move": "Be6",
+      "popup_en": "...Be6 develops Black's fourth minor piece.",
       "popup": "Be6出动\n黑方第4个轻子出动"
     },
     {
       "index": 14,
       "move": "Bb3",
+      "popup_en": "Bb3 retreats the bishop to avoid an unfavorable exchange.",
       "popup": "Bb3象撤退\n避免被兑换亏损"
     },
     {
       "index": 15,
       "move": "Bxb3",
+      "popup_en": "...Bxb3 exchanges bishops and simplifies the position.",
       "popup": "Bxb3兑换\n黑方简化局面"
     },
     {
       "index": 16,
       "move": "axb3",
+      "popup_en": "axb3 recaptures and opens the a-file for White.",
       "popup": "axb3接回\n白方开放a线"
     },
     {
       "index": 17,
       "move": "a6",
+      "popup_en": "...a6 prevents White from using Nb5.",
       "popup": "a6防护\n阻止白棋Nb5"
     },
     {
       "index": 18,
       "move": "Bg5",
+      "popup_en": "Bg5 develops the bishop actively and pins Black's knight on f6.",
       "popup": "Bg5出动\n白方再激活象\n牵制f6马"
     },
     {
       "index": 19,
       "move": "h6",
+      "popup_en": "...h6 challenges the bishop and asks it to move.",
       "popup": "h6逼象\n黑方追击"
     },
     {
       "index": 20,
       "move": "Bxf6",
+      "popup_en": "Bxf6 exchanges bishops and simplifies the position.",
       "popup": "Bxf6兑换\n简化局面"
     },
     {
       "index": 21,
       "move": "Qxf6",
+      "popup_en": "...Qxf6 recaptures and activates Black's queen.",
       "popup": "Qxf6接回\n黑方后活跃"
     },
     {
       "index": 22,
       "move": "d4",
+      "popup_en": "d4! Both sides have developed their minor pieces and castled, so White is ready to advance in the center. Before completing development, d4 could have become a weakness.",
       "popup": "d4！推进中心\n双方轻子全出，易位完毕\n现在是推进中心的时候了！\n此前若无发展，d4就是弱点",
       "highlights": [
         {

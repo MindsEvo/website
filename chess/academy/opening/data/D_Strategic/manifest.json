@@ -5,45 +5,49 @@
     {
       "key": "D13_gambit_sacrifice",
       "label": "D13 弃兵争先",
+      "label_en": "D13 Gambit Initiative",
       "items": [
-        { "id": "opening_D13_GambitSacrifice_Demo_001", "label": "1. 国王弃兵接受变（费舍尔防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Demo_002", "label": "2. 埃文斯弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Demo_003", "label": "3. 丹麦弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Demo_004", "label": "4. 布达佩斯弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Demo_005", "label": "5. 苏格兰弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D13_GambitSacrifice_Demo_001", "label": "1. 国王弃兵接受变（费舍尔防御）", "label_en": "1. King's Gambit Accepted: Fischer Defense", "explanation_en": "White offers the f-pawn for an open f-file, rapid development, and central control. Rather than recover it immediately, White develops all the pieces, castles, and only then wins the pawn back. The resulting outpost on d5 and space advantage show how a gambit can yield lasting compensation.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_002", "label": "2. 埃文斯弃兵", "label_en": "2. Evans Gambit", "explanation_en": "White gives up the b-pawn to drive Black's developed bishop away from c5. While the bishop spends several tempi retreating, White builds a strong c3-d4 center, castles, and develops rapidly. The temporary pawn deficit is compensated by a lead in development and a timely central attack.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_003", "label": "3. 丹麦弃兵", "label_en": "3. Danish Gambit", "explanation_en": "White offers two pawns to open lines for both bishops and gain a large lead in development. The active bishops and coordinated pieces can create dangerous attacking chances, but Black's extra material matters if White fails to act in time. The more material a gambit offers, the more concrete compensation is required.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_004", "label": "4. 布达佩斯弃兵", "label_en": "4. Budapest Gambit", "explanation_en": "Black offers a pawn to disrupt White's expanding center and gain time through active development and attacks on the advanced pawn. White must spend tempi defending it while Black brings out the pieces. The gambit succeeds when Black prevents a stable central buildup and keeps the initiative.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D13_GambitSacrifice_Demo_005", "label": "5. 苏格兰弃兵", "label_en": "5. Scotch Gambit", "explanation_en": "White offers the d-pawn for rapid development, but Black responds accurately and gradually consolidates. White must use the temporary initiative before it expires, eventually converting it into pressure and structural targets through a timely exchange. A gambit's value depends on acting before the opponent becomes secure.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "D14_useful_exchanges",
       "label": "D14 及时兑子",
+      "label_en": "D14 Timely Exchanges",
       "items": [
-        { "id": "opening_D14_UsefulExchange_Demo_001", "label": "1. 西班牙开局兑换变（C68）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Demo_002", "label": "2. 后翼弃兵兑换变（D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Demo_003", "label": "3. 后翼弃兵兑换变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Demo_004", "label": "4. 国王印度正统变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Demo_005", "label": "5. 彼得罗夫防御古典进攻（C42）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D14_UsefulExchange_Demo_001", "label": "1. 西班牙开局兑换变（C68）", "label_en": "1. Exchange Variation of the Ruy Lopez (C68)", "explanation_en": "White exchanges the bishop for Black's knight on c6 to create doubled c-pawns, then uses the open d-file and the d5 outpost to pressure them. Trading queens is favorable because the structural weaknesses are harder to defend in the endgame; White then simplifies further while retaining the advantage.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_002", "label": "2. 后翼弃兵兑换变（D35）", "label_en": "2. Exchange Variation of the Queen's Gambit (D35)", "explanation_en": "White exchanges in the center to open the c-file, then uses the d5 outpost and pressure against Black's isolated d-pawn. The rooks occupy the c-file while the pieces coordinate against structural weaknesses. A later exchange of Black's defender can increase the pressure without rushing the attack.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_003", "label": "3. 后翼弃兵兑换变例", "label_en": "3. Queen's Gambit Exchange Variation: Targeting d5", "explanation_en": "The early cxd5 exchange creates a semi-open c-file and leaves Black with a pawn on d5 that may become isolated. White develops the bishops, queen, and rooks toward that target, coordinating pressure rather than chasing immediate material. The exchange is valuable because it creates a durable structural weakness.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_004", "label": "4. 国王印度正统变例", "label_en": "4. Classical King's Indian: Exchanges in a Closed Center", "explanation_en": "Once White locks the center with d5, Black's fianchettoed bishop becomes restricted while White reroutes a knight toward d3 and useful outposts. In a closed position, knights often maneuver more effectively than bishops; exchange only when removing the opponent's restricted piece creates a concrete advantage.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D14_UsefulExchange_Demo_005", "label": "5. 彼得罗夫防御古典进攻（C42）", "label_en": "5. Classical Attack in the Petrov Defense (C42)", "explanation_en": "The Petrov uses a precise symmetrical exchange sequence to maintain equality. Black first plays ...d6 to drive away the knight, then safely recaptures on e4. Later ...d5 is timely: playing it before retreating the knight prevents White from establishing a strong e5 center. Exchanges here serve a defensive purpose by preserving balance.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "D15_counterattack",
       "label": "D15 反制中心",
+      "label_en": "D15 Counterattack the Center",
       "items": [
-        { "id": "opening_D15_CounterAttack_Demo_001", "label": "1. 斯堪的纳维亚防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Demo_002", "label": "2. 法式防御古典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Demo_003", "label": "3. 卡罗-坎恩古典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Demo_004", "label": "4. 西西里那科多夫变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Demo_005", "label": "5. 皮克防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D15_CounterAttack_Demo_001", "label": "1. 斯堪的纳维亚防御", "label_en": "1. Scandinavian Defense", "explanation_en": "Black immediately challenges White's center with 1...d5. After the queen recaptures on d5, Black uses ...Qa5 to stay active while White develops with tempo. The example shows how an early counterattack can compensate for the queen's exposure through activity and pressure.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_002", "label": "2. 法式防御古典变例", "label_en": "2. French Defense, Classical Variation", "explanation_en": "Black first builds a solid French structure, then prepares ...c5 with supporting queenside moves. The delayed break challenges White's center when Black's pieces and pawn structure are ready. The lesson is to prepare a counterattack rather than rush it.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_003", "label": "3. 卡罗-坎恩古典变例", "label_en": "3. Caro-Kann, Classical Variation", "explanation_en": "Black uses ...c5 to challenge White's center and create an isolated pawn target after exchanges. The bishop remains active outside the pawn chain, while a knight on e5 can help control the center. Evaluate whether White's initial space advantage has become a long-term weakness for Black to attack.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_004", "label": "4. 西西里那科多夫变例", "label_en": "4. Sicilian Najdorf: Preparing ...b5", "explanation_en": "The Najdorf move ...a6 prepares ...b5, a queenside counterattack that complements Black's central play with ...e5. White and Black race on opposite wings; the timing of the pawn break determines whether Black gains space or falls behind in the attack.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D15_CounterAttack_Demo_005", "label": "5. 皮克防御", "label_en": "5. Pirc Defense: The ...e5 Break", "explanation_en": "Black allows White to build a broad center, then prepares ...e5 to undermine it. The fianchettoed bishop on g7 and a rook on the e-file support the central break. The hypermodern strategy is to yield space temporarily, then strike when the pieces are ready.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "D16_timing_moments",
       "label": "D16 关键时机",
+      "label_en": "D16 Key Timing",
       "items": [
-        { "id": "opening_D16_KeyTiming_Demo_001", "label": "1. 彼特罗夫防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Demo_002", "label": "2. 西班牙开局开放系统", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Demo_003", "label": "3. 尼姆佐印度经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Demo_004", "label": "4. 卡特兰开局封闭变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Demo_005", "label": "5. 国王印度防御经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D16_KeyTiming_Demo_001", "label": "1. 彼特罗夫防御", "label_en": "1. Petrov Defense", "explanation_en": "The Petrov Defense demonstrates precise move order. Black counterattacks e4 instead of defending e5, but must first play ...d6 to drive away the knight. Only then is ...Nxe4 safe; taking immediately allows Qe2 and loses a piece. The position remains balanced when Black waits for the right moment.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_002", "label": "2. 西班牙开局开放系统", "label_en": "2. Open Variation of the Ruy Lopez", "explanation_en": "Black should not rush the ...d5 break in the Open Ruy Lopez. First prepare with ...c5 and wait for White's c3-d4 setup to be complete. After ...cxd4 and cxd4, the position opens and White may advance d5 while the timing window is available. The lesson is to build up patiently, then act decisively.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_003", "label": "3. 尼姆佐印度经典变例", "label_en": "3. Classical Nimzo-Indian", "explanation_en": "In the Nimzo-Indian, ...Bxc3+ is most effective after White plays a3: the queen must recapture, leaving doubled c-pawns. Black then attacks the weakened center with ...c5. Later, once the pieces are coordinated, ...e5 and White's d5 advance create a new central confrontation. The same exchange can have very different value depending on its timing.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_004", "label": "4. 卡特兰开局封闭变例", "label_en": "4. Closed Catalan", "explanation_en": "Black accepts the Catalan pawn only after White castles, then uses ...a6 and ...b5 to prevent an immediate queen recapture. Black waits until White's bishop is established on e4 before playing ...c5. The sequence illustrates how accepting material, preventing its recovery, and striking back must be timed as one plan.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_D16_KeyTiming_Demo_005", "label": "5. 国王印度防御经典变例", "label_en": "5. Classical King's Indian Defense", "explanation_en": "The King's Indian timing plan begins with ...e5 before White consolidates. After the center locks, Black reroutes the knights with ...Ne7 and ...Nd7, preparing ...f5. The flank attack should begin only after the knight reaches d3 and the pieces are ready; ...f4 and ...g5 then continue the advance. Preparation makes the break effective.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     }
   ]

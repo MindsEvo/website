@@ -5,45 +5,49 @@
     {
       "key": "B5_king_safety",
       "label": "B5 王车易位",
+      "label_en": "B5 King Safety and Castling",
       "items": [
-        { "id": "opening_B5_Castle_Demo_001", "label": "1. 易位的时机——轻子出完立即易位（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Demo_002", "label": "2. 易位后王的安全——防线具体分析（维也纳对局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Demo_003", "label": "3. 长易位主动进攻——长易位不只是防御（皮尔斯防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Demo_004", "label": "4. 异侧易位对攻——速度决定一切（西西里防御B57）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Demo_005", "label": "5. 迟迟不易位的代价——Bg5钉马、叠兵、g线开放（意大利慢棋）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B5_Castle_Demo_001", "label": "1. 易位的时机——轻子出完立即易位（意大利开局）", "label_en": "1. When to Castle: Castle After Developing (Italian Game)", "explanation_en": "Once the minor pieces are developed, both sides castle promptly. Castling shelters the king, connects the rooks, and lets them contest the e-file. The game also shows why it is safer to open the center only after both kings have reached safety.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_002", "label": "2. 易位后王的安全——防线具体分析（维也纳对局）", "label_en": "2. The King's Shelter After Castling (Vienna Game)", "explanation_en": "The king's safety depends on its pawn shield and nearby defenders. After castling, the f-, g-, and h-pawns protect the king while a minor piece covers adjacent squares. The example also shows why a central opening after exchanges makes timely castling important.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_003", "label": "3. 长易位主动进攻——长易位不只是防御（皮尔斯防御）", "label_en": "3. Queenside Castling for Attack (Pirc Defense)", "explanation_en": "White castles queenside to secure the king and activate the rook on d1, then immediately advances the g-pawn. Black counterattacks on the queenside, creating an opposite-side race. Queenside castling can support an attack as well as protect the king.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_004", "label": "4. 异侧易位对攻——速度决定一切（西西里防御B57）", "label_en": "4. Opposite-Side Castling: Speed Matters (Sicilian Defense)", "explanation_en": "Black castles kingside while White castles queenside. Each side launches a pawn storm toward the opposing king: White advances on the kingside, and Black attacks on the queenside. The first side to break through may gain a decisive advantage, so tempi matter.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B5_Castle_Demo_005", "label": "5. 迟迟不易位的代价——Bg5钉马、叠兵、g线开放（意大利慢棋）", "label_en": "5. The Cost of Delayed Castling (Italian Pianissimo)", "explanation_en": "White castles promptly while Black delays with ...Qd7. White uses Bg5 to pin Nf6 and provoke ...Ne7, then exchanges with Bxf6 to create doubled f-pawns and open the g-file beside Black's king. Delaying king safety can give the opponent time to create lasting structural weaknesses.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "B6_rapid_development",
       "label": "B6 快速出子",
+      "label_en": "B6 Rapid Development",
       "items": [
-        { "id": "opening_B6_DevSpeed_Demo_001", "label": "1. 什么是轻子？每步出一个新的（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Demo_002", "label": "2. 轻子先行，重子随后（苏格兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Demo_003", "label": "3. 后早出被轻子追着跑——每次被追就是失去先手（帕勒姆进攻）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Demo_004", "label": "4. 重复走子等于放弃先手——马走两次节奏损失（双骑士）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Demo_005", "label": "5. 弃兵换出子速度——丹麦弃兵的爆发力（丹麦弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B6_DevSpeed_Demo_001", "label": "1. 什么是轻子？每步出一个新的（意大利开局）", "label_en": "1. Developing the Minor Pieces (Italian Game)", "explanation_en": "White develops a new minor piece with each move, completes development, and castles before advancing in the center. The example introduces knights and bishops as minor pieces and contrasts their development with premature queen or rook moves.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_002", "label": "2. 轻子先行，重子随后（苏格兰开局）", "label_en": "2. Minor Pieces First, Major Pieces Later (Scotch Game)", "explanation_en": "White develops both knights and bishops before castling, then activates the queen and rook. The sequence illustrates an efficient move order: complete minor-piece development, secure the king, and only then bring the major pieces onto open lines.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_003", "label": "3. 后早出被轻子追着跑——每次被追就是失去先手（帕勒姆进攻）", "label_en": "3. The Cost of an Early Queen: Wayward Queen Attack", "explanation_en": "White brings the queen out early and spends several tempi moving it as Black develops minor pieces with tempo. The queen also occupies a natural square for a knight. The example shows how an early queen sortie can become a liability and leave White behind in development.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_004", "label": "4. 重复走子等于放弃先手——马走两次节奏损失（双骑士）", "label_en": "4. Repeated Moves Lose Tempi (Two Knights Defense)", "explanation_en": "White moves the same knight repeatedly and later retreats it to its original square, while the bishop also loses time. Black uses the tempi to develop and challenge the center. The game demonstrates why developing new pieces is usually more effective than repeating moves without a concrete reason.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B6_DevSpeed_Demo_005", "label": "5. 弃兵换出子速度——丹麦弃兵的爆发力（丹麦弃兵）", "label_en": "5. Gambiting Material for Development (Danish Gambit)", "explanation_en": "White offers two pawns to open lines and develop both bishops rapidly. White completes minor-piece development and castles while Black is still catching up. The resulting activity and central attack show how material can be converted into development and initiative when the compensation is sufficient.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "B7_piece_coordination",
       "label": "B7 子力协调",
+      "label_en": "B7 Piece Coordination",
       "items": [
-        { "id": "opening_B7_PieceCoord_Demo_001", "label": "1. 每个棋子都有任务吗？（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Demo_002", "label": "2. 马象互补，分工覆盖（西班牙开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Demo_003", "label": "3. 双象体系的覆盖威力（卡塔兰开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Demo_004", "label": "4. 后是后盾，不是独行侠（维也纳开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Demo_005", "label": "5. 完美协调模型——每子角色清晰（四马开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B7_PieceCoord_Demo_001", "label": "1. 每个棋子都有任务吗？（意大利开局）", "label_en": "1. Does Every Piece Have a Job? (Italian Game)", "explanation_en": "White develops the knights and bishops with clear roles: pressure f7, control the center, and later occupy the e-file. The queen connects the rooks rather than acting alone. The game demonstrates that development is only the first step; every piece should contribute to a shared plan.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_002", "label": "2. 马象互补，分工覆盖（西班牙开局）", "label_en": "2. Complementary Roles for Knights and Bishops", "explanation_en": "The knight controls key squares while the bishop exerts pressure along open diagonals. White's Nf3 and bishop maneuver coordinate without duplicating their roles, and the queen and rooks support the setup. The position illustrates how knights and bishops complement one another in controlling the center.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_003", "label": "3. 双象体系的覆盖威力（卡塔兰开局）", "label_en": "3. The Coverage of the Bishop Pair (Catalan)", "explanation_en": "White fianchettoes the light-squared bishop to g2, then develops the dark-squared bishop to d2. Together the bishops cover both colors of diagonals, while the knights control central squares and the rooks occupy open files. The game shows how the bishop pair can coordinate with the rest of the army.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_004", "label": "4. 后是后盾，不是独行侠（维也纳开局）", "label_en": "4. The Queen as Support, Not a Soloist (Vienna Game)", "explanation_en": "White develops all four minor pieces, castles, and activates a rook before bringing the queen to e2. From there, the queen supports the e-file, connects the rooks, and helps defend the center. The example emphasizes that the queen coordinates best after the minor pieces are in place.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B7_PieceCoord_Demo_005", "label": "5. 完美协调模型——每子角色清晰（四马开局）", "label_en": "5. A Model of Coordination: The Four Knights Game", "explanation_en": "White uses a knight maneuver from c3 to e2 and g3, combines it with a bishop pin and a kingside pawn advance, and finally establishes a knight on f5. The bishop, rook, pawn chain, and knight all serve one attacking plan against Black's king.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     },
     {
       "key": "B8_rook_coordination",
       "label": "B8 连接双车",
+      "label_en": "B8 Rook Coordination",
       "items": [
-        { "id": "opening_B8_RookCoord_Demo_001", "label": "1. 连接双车的三步曲（意大利开局）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Demo_002", "label": "2. 双车分驻两条开放列（后翼弃兵防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Demo_003", "label": "3. 叠车压制——双车叠在e列（尼姆佐-印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Demo_004", "label": "4. 后翼易位与占据通道（卡罗-卡恩古典变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Demo_005", "label": "5. 后+双车三子协调——最强阵型", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B8_RookCoord_Demo_001", "label": "1. 连接双车的三步曲（意大利开局）", "label_en": "1. The Three Steps to Connect the Rooks (Italian Game)", "explanation_en": "White develops the minor pieces, castles, and clears the back rank with Be3, Nbd2, and Qe2. Rfe1 then connects the rooks. The game demonstrates a natural sequence that makes each move useful while preparing the rooks for action.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_002", "label": "2. 双车分驻两条开放列（后翼弃兵防御）", "label_en": "2. Assigning the Rooks to Two Open Files (Queen's Gambit)", "explanation_en": "After central exchanges open the d- and e-files, White connects the rooks and assigns one to each file with Rfe1 and Rad1. The queen supports the center, while each rook has a distinct target and route into the position.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_003", "label": "3. 叠车压制——双车叠在e列（尼姆佐-印度防御）", "label_en": "3. Doubling the Rooks on the e-File (Nimzo-Indian)", "explanation_en": "White connects the rooks, advances one rook to e2, then brings the second rook to e1. The doubled rooks create concentrated pressure on the e-file and target Black's seventh rank, showing how to amplify rook activity after connection.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_004", "label": "4. 后翼易位与占据通道（卡罗-卡恩古典变例）", "label_en": "4. Queenside Castling and Claiming the e-File (Caro-Kann)", "explanation_en": "Queenside castling connects White's rooks. White then plays Rhe1 to claim the e-file as a route for future penetration. The lesson is to establish control of the open file before attempting to invade.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
+        { "id": "opening_B8_RookCoord_Demo_005", "label": "5. 后+双车三子协调——最强阵型", "label_en": "5. Coordinating the Queen and Two Rooks", "explanation_en": "White places the queen on e2, a rook on e1, and the other rook on d1. Each major piece controls a distinct central route, while the queen coordinates the rooks. The resulting triangle creates powerful pressure across both central files.", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
       ]
     }
   ]

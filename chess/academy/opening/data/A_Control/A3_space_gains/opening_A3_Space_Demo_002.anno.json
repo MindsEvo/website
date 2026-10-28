@@ -2,6 +2,7 @@
   "game_id": "A3_Space_Demo_002",
   "description": "意大利开局慢棋体系（Giuoco Pianissimo）— 子子有根，稳步扩展，平分秋色",
   "intro": {
+    "popup_en": "Observe this nearly symmetrical Italian Game. Each side supports its pieces and pawn advances, expanding carefully. This is the balance between space and safety: neither side overextends, and both aim for coordination.",
     "flash_squares": [
       "e4",
       "e5",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "After ten moves, the position remains almost completely symmetrical. Every piece has support and every pawn advance is prepared: this is steady, secure expansion.",
     "popup": "10回合后局面几乎完全对称，平分秋色。\n每一个子都有根，每一步推兵都有支撑——这就是「子子有根，稳步扩展」的精髓。",
     "voice": true
   },
@@ -26,6 +28,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4 occupies the center safely; there is no immediate threat to the pawn.",
       "popup": "⬆️ <b>1.e4 — 白方占领中心!</b><br>开局e4是安全的，目前没有任何威胁。</b>",
       "highlights": [
         {
@@ -50,6 +53,7 @@
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "1...e5 mirrors White's move. The central pawns are balanced, and both sides aim to keep them while developing steadily.",
       "popup": "⬇️ <b>1...e5 — 黑方对称占中心！</b><br>黑方用同一步棋回应，e4 对 e5，双方平等。从这一刻起，双方的战略目标是一致的：保持 e 线中心兵，稳步发展子力。",
       "highlights": [
         {
@@ -66,6 +70,7 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "2.Nf3 develops with support: the knight attacks e5 while helping control d4 and e5.",
       "popup": "⬆️ <b>2.Nf3 — 白马出动！马有根：兵保护马。</b><br>Nf3 的马攻击 e5，同时支撑 d4 和 e5 格的控制。</b>",
       "highlights": [
         {
@@ -94,6 +99,7 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "2...Nc6 protects the central pawn on e5 and controls d4. The pawn is securely defended, so White cannot capture it without consequences.",
       "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>黑马跳出，直接保护 e5 中心兵。e5 兵现在有根：Nc6 是它的守护者，白方若吃 e5，将面临反击。<br>",
       "highlights": [
         {
@@ -116,6 +122,7 @@
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "3.Bc4! The Italian bishop targets f7 and controls d5 along its diagonal.",
       "popup": "⬆️ <b>3.Bc4 — 意大利象！远程控制对角线。</b><br>白象来到 c4，瞄准 f7 要害格，同时控制 d5。这是意大利开局的标志性步骤。<b>",
       "highlights": [
         {
@@ -144,6 +151,7 @@
     {
       "index": 5,
       "move": "Bc5",
+      "popup_en": "3...Bc5 mirrors White's setup, targeting f2 and controlling d4. In the Giuoco Piano, both sides develop steadily with no immediate tactical clash; the position is nearly symmetrical.",
       "popup": "⬇️ <b>3...Bc5 — 黑象完全对称！</b><br>黑象来到 c5，同样瞄准 f2 要害，控制 d4。这就是焦科钢琴变例（Giuoco Piano）——双方阵型几乎镜像。<br>💡 <b>此刻棋盘：两双马、两双象全部出动，完全对称——谁也不占便宜，谁也没有漏洞。</b>",
       "highlights": [
         {
@@ -172,6 +180,7 @@
     {
       "index": 6,
       "move": "d3",
+      "popup_en": "4.d3! White chooses the quiet Italian Pianissimo setup instead of preparing d4 immediately. d3 supports e4 and opens the c1-h6 diagonal; White completes development before breaking the center. The pawn is protected by e4.",
       "popup": "⬆️ <b>4.d3 — 慢棋体系的关键！不急于推 d4。</b><br>这里白方选择 d3 而非 c3 准备 d4，这是意大利慢棋（Pianissimo）路线的核心选择：<br>• d3 巩固 e4，给象打开 c1-h6 对角线<br>• 不急于打破中心，先完成全部子力发展<br>🔑 <b>d3 兵有根：e4 兵从侧面支撑，d3 不会轻易被攻击。</b>",
       "highlights": [
         {
@@ -195,6 +204,7 @@
     {
       "index": 7,
       "move": "d6",
+      "popup_en": "4...d6 mirrors White's solid setup, supports e5, and opens a diagonal for Black's bishop. The e5-pawn also protects d6, creating a sound pawn chain.",
       "popup": "⬇️ <b>4...d6 — 黑方对称！同样稳健。</b><br>黑方用 d6 回应，巩固 e5 兵，同时给 c8 象开路。d3 对 d6，双方的慢棋意图一致——各自先把家里收拾好。<br>💡 <b>d6 兵有根：e5 兵守护着 d6，形成坚固的兵链。</b>",
       "highlights": [
         {
@@ -217,6 +227,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "5.Nc3 develops the second knight and supports key central squares. Together, Nf3, Bc4, and Nc3 point toward the center. The queen on d1 also supports the knight along the d-file, while the knight helps defend e4.",
       "popup": "⬆️ <b>5.Nc3 — 白方第二马出动！</b><br>c3 马支撑 d5 和 e4，与 Nf3 形成双马协防体系。此时白方三个子力（Nf3、Bc4、Nc3）全部指向中心，互相支撑。<br>🔑 <b>Nc3 马有根：d1 后通过 d 线给予侧面支撑，且马本身也支撑着 e4 中心兵。</b>",
       "highlights": [
         {
@@ -245,6 +256,7 @@
     {
       "index": 9,
       "move": "Nf6",
+      "popup_en": "5...Nf6! Black's second knight mirrors White's development, controlling e4 and d5 alongside Nc6. Both sides have developed their four minor pieces and the position remains balanced.",
       "popup": "⬇️ <b>5...Nf6 — 黑方第二马！完全对称！</b><br>f6 马控制 e4 和 d5，与 Nc6 形成双马协防。黑方四个子力（Nc6、Bc5、Nf6）全部出动，与白方完全镜像。<br>💡 <b>5步之后：双方均完成「四子出动」，阵型几乎完全对称——平分秋色！</b>",
       "highlights": [
         {
@@ -273,6 +285,7 @@
     {
       "index": 10,
       "move": "O-O",
+      "popup_en": "6.O-O secures White's king and brings the rook to f1 to support the f-file. The king is sheltered by the f2, g2, and h2 pawns, with the rook ready to help.",
       "popup": "⬆️ <b>6.O-O — 白方易位，王安全！</b><br>子力发展完成，王立刻入城。易位后车到 f1，支撑 f 线，王翼防线完整。<br>🔑 <b>易位也是「有根」的体现：王在 g1 有 h2/f2/g2 三兵守护，f1 车随时支援。</b>",
       "highlights": [
         {
@@ -295,6 +308,7 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "6...O-O mirrors White's castling. From the first move through move six, the game has remained strikingly symmetrical; both sides are coordinated and secure.",
       "popup": "⬇️ <b>6...O-O — 黑方也易位！完全对称！</b><br>黑王同样入城，双方在第6步同时完成易位。这是本局对称性的高潮体现：从第1步到第6步，双方几乎每一步都是镜像。<br>💡 <b>6步后：双方易位完成，子力协调，兵形稳固——真正的「平分秋色」！</b>",
       "highlights": [
         {
@@ -317,6 +331,7 @@
     {
       "index": 12,
       "move": "a3",
+      "popup_en": "7.a3 prevents ...Bb4 from pinning Nc3, which helps defend d5 and e4. This small preventive move removes a potential weakness before it can be exploited.",
       "popup": "⬆️ <b>7.a3 — 防止 Bb4 钉马！预防性扩展。</b><br>a3 看似微小，却有明确目的：防止黑方 Bb4 钉住 c3 马（若 c3 马被钉，d5 和 e4 失去一个守护者）。<br>🔑 <b>预防性扩展：在威胁到来前先堵住漏洞，这也是「有根」思维的延伸——主动为子力创造安全环境。</b>",
       "highlights": [
         {
@@ -340,6 +355,7 @@
     {
       "index": 13,
       "move": "a6",
+      "popup_en": "7...a6 mirrors White's prevention and discourages Bb5 from pinning Nc6. Both sides anticipate the opponent's ideas rather than overextend.",
       "popup": "⬇️ <b>7...a6 — 黑方对称！同样预防 Bb5。</b><br>a6 防止白方 Bb5 钉住 c6 马。双方都在同一步做出预防性保护，保持完全均等的态势。<br>💡 <b>「互不侵犯」的体现：双方都知道对方的威胁所在，都选择预先防范而非冒进——这就是稳健开局的精髓。</b>",
       "highlights": [
         {
@@ -363,6 +379,7 @@
     {
       "index": 14,
       "move": "Bd2",
+      "popup_en": "8.Bd2 develops the c1-bishop and supports Nc3, strengthening the network of mutually supporting pieces.",
       "popup": "⬆️ <b>8.Bd2 — 暗格象激活，阵型更加协调。</b><br>c1 象发展到 d2，与 Bc4 形成双象阵型，覆盖两条对角线。同时 Bd2 保护了 c3 马，强化了阵型的互相支撑结构。<br>🔑 <b>Bd2 有根：d3 兵从前方支撑，c1 原格也有联系——每个子都嵌入整体结构中。</b>",
       "highlights": [
         {
@@ -386,6 +403,7 @@
     {
       "index": 15,
       "move": "Bd7",
+      "popup_en": "8...Bd7 mirrors White's bishop development and protects Nc6. Both sides have two knights and two bishops developed, castled kings, and stable pawn chains.",
       "popup": "⬇️ <b>8...Bd7 — 黑方暗格象出动！完全对称！</b><br>黑方 Bd7 与白方 Bd2 完全对称。Bd7 保护了 c6 马，加强了黑方整体结构的互相支撑。<br>💡 <b>8步后阵型总览：双方各有2马+2象+1王已易位+兵链稳固，每个子都有根，完美均衡！</b>",
       "highlights": [
         {
@@ -409,6 +427,7 @@
     {
       "index": 16,
       "move": "h3",
+      "popup_en": "9.h3 prevents ...Bg4 from pinning Nf3 and discourages ...Ng4. It is both a useful precaution and a small gain of kingside space.",
       "popup": "⬆️ <b>9.h3 — 防止 Bg4/Ng4！空间性小步。</b><br>h3 推进一格，阻止黑方 Bg4 钉住 Nf3（若 Nf3 被钉，d4 推进的时机会受影响），也防止 Ng4 跳入。<br>🔑 <b>空间性扩展：h3 既是预防步，也在王翼获得一格空间——每一步小小的扩展都在积累优势。</b>",
       "highlights": [
         {
@@ -432,6 +451,7 @@
     {
       "index": 17,
       "move": "h6",
+      "popup_en": "9...h6 mirrors White's move and prevents Bg5 from pinning Nf6, which helps protect e4. The position remains symmetrical, with no clear weakness or advantage for either side.",
       "popup": "⬇️ <b>9...h6 — 黑方对称！防止 Bg5。</b><br>h6 阻止白方 Bg5 钉住 Nf6（若 Nf6 被钉，e4 的防守减弱）。h3 对 h6，双方都在王翼稳步推进一格，维持完全均等。<br>💡 <b>9步后局面：两边阵型几乎完全镜像，没有任何一方存在明显的弱点或优势。</b>",
       "highlights": [
         {
@@ -455,6 +475,7 @@
     {
       "index": 18,
       "move": "Re1",
+      "popup_en": "10.Re1 activates the rook on the semi-open e-file and supports e4 while applying indirect pressure to e5. The rook directly protects the e4-pawn, completing White's coordinated setup.",
       "popup": "⬆️ <b>10.Re1 — 白车激活 e 线！</b><br>f1 车移到 e1，进入半开放的 e 线，支撑 e4 中心兵，同时对 e5 施加间接压力。车有根：e1 车直接护住 e4 兵，e4 兵也是整个中心体系的基石。<br>🔑 <b>发展的最后一步：车进入主要线路，白方所有子力全部处于最优位置，「子子有根」已经完全实现！</b>",
       "highlights": [
         {
@@ -483,6 +504,7 @@
     {
       "index": 19,
       "move": "Re8",
+      "popup_en": "10...Re8 mirrors White's rook and protects e5. After ten moves, every piece is supported, the pawn advances have been measured, and the rooks occupy the central file. Both sides are secure and the position is equal.",
       "popup": "⬇️ <b>10...Re8 — 黑车对称，平分秋色！</b><br>黑车同样进入 e 线，护住 e5 兵。Re8 对 Re1，完美对称。<br>🏁 <b>10回合总结——「子子有根，稳步扩展」：</b><br>• 每个子都有至少一个其他子保护<br>• d3/d6 稳健扩展，不冒进<br>• a3/a6 预防钉马<br>• h3/h6 王翼空间小步积累<br>• Re1/Re8 车进主线路<br><b>这是空间与安全的平衡：互不侵犯，局面均等，等待时机！</b>",
       "highlights": [
         {

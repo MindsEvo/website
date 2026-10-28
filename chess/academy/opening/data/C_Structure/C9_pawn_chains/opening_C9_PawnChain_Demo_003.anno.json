@@ -7,10 +7,12 @@
       "d4",
       "f4"
     ],
+    "popup_en": "Pawn-Chain Direction, Lesson 3: The e5-pawn has two supports, d4 and f4. Black's ...c5 attacks only the d4 side, so it is not enough to break the chain. White's kingside breakthrough is the highlight.",
     "popup": "兵链方向第3课\n\ne5有d4和f4两个根部支撑\n黑方c5仅攻d4一侧，效果有限\n本局真正亮点：白方王翼突破！",
     "voice": true
   },
   "outro": {
+    "popup_en": "The e5-pawn is supported by both d4 and f4, so ...c5 attacks only one base and has limited effect. White breaks through with g4-g5-gxh6, opens the g-file, and exposes Black's king.",
     "popup": "总结：e5有d4和f4双根部，c5仅攻d4一侧效果有限\n白方g4-g5-gxh6王翼强力突破\n打开g线，黑王岌岌可危！",
     "voice": true
   },
@@ -57,6 +59,7 @@
     {
       "index": 8,
       "move": "e5",
+      "popup_en": "e5! White establishes the e5-d4 pawn chain. After f4, the pawn on e5 will have two supports, d4 and f4.",
       "popup": "e5！兵链形成！e5-d4\n后续f4加入后，e5将有d4和f4两个根部支撑",
       "highlights": [
         {
@@ -83,6 +86,7 @@
     {
       "index": 12,
       "move": "f4",
+      "popup_en": "f4! This pawn also supports e5. With both d4 and f4 defending it, Black must attack both bases to break the chain completely.",
       "popup": "f4！f4也是e5的根部\ne5现在有d4和f4两个根部支撑\n攻击根部需同时威胁两侧才彻底",
       "highlights": [
         {
@@ -98,16 +102,19 @@
     {
       "index": 13,
       "move": "a6",
+      "popup_en": "...a6 is a defensive move.",
       "popup": "a6防守"
     },
     {
       "index": 14,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3发展"
     },
     {
       "index": 15,
       "move": "c5",
+      "popup_en": "...c5 attacks the base on d4, but e5 is also supported by f4. Black attacks only one base, so the challenge is not decisive.",
       "popup": "c5攻击根部d4\n但注意：e5还有f4这个根部未受攻击\nc5仅攻单根，效果不够彻底",
       "highlights": [
         {
@@ -122,31 +129,37 @@
     {
       "index": 16,
       "move": "dxc5",
+      "popup_en": "dxc5 accepts the exchange. The d4-pawn disappears, but f4 still supports e5, so the pawn chain survives.",
       "popup": "dxc5白轻松接受\nd4消失，但e5仍由f4支撑，兵链未破"
     },
     {
       "index": 17,
       "move": "Nxc5",
+      "popup_en": "...Nxc5 places Black's knight on the important square c5.",
       "popup": "Nxc5黑马占c5要点"
     },
     {
       "index": 18,
       "move": "Qd2",
+      "popup_en": "Qd2 prepares queenside castling.",
       "popup": "Qd2准备长易位"
     },
     {
       "index": 19,
       "move": "Nc6",
+      "popup_en": "...Nc6 brings in a reinforcement.",
       "popup": "Nc6增援"
     },
     {
       "index": 20,
       "move": "O-O-O",
+      "popup_en": "O-O-O castles queenside and sets up the opposite-wing race.",
       "popup": "O-O-O长易位"
     },
     {
       "index": 21,
       "move": "b5",
+      "popup_en": "...b5!! Black attacks on the queenside, following the direction of its own pawn chain. The race on opposite wings begins in earnest.",
       "popup": "b5！！黑方沿兵链方向后翼进攻\n双翼竞速真正开始！",
       "highlights": [
         {
@@ -161,56 +174,67 @@
     {
       "index": 22,
       "move": "Kb1",
+      "popup_en": "Kb1 moves the king away from the diagonal.",
       "popup": "Kb1王躲开对角线"
     },
     {
       "index": 23,
       "move": "Bd7",
+      "popup_en": "...Bd7 develops Black's bishop.",
       "popup": "Bd7象出发展"
     },
     {
       "index": 24,
       "move": "Ne2",
+      "popup_en": "Ne2 reroutes a piece for the coming play.",
       "popup": "Ne2调兵"
     },
     {
       "index": 25,
       "move": "b4",
+      "popup_en": "...b4! Black continues advancing on the queenside.",
       "popup": "b4！黑方继续推进"
     },
     {
       "index": 26,
       "move": "Ned4",
+      "popup_en": "Ned4! White's knight occupies d4 forcefully.",
       "popup": "Ned4！马强占d4！"
     },
     {
       "index": 27,
       "move": "Nxd4",
+      "popup_en": "...Nxd4 exchanges knights.",
       "popup": "Nxd4兑换"
     },
     {
       "index": 28,
       "move": "Nxd4",
+      "popup_en": "Nxd4 recaptures with White's knight.",
       "popup": "Nxd4白马重占"
     },
     {
       "index": 29,
       "move": "O-O",
+      "popup_en": "...O-O castles kingside.",
       "popup": "O-O黑易位"
     },
     {
       "index": 30,
       "move": "g4",
+      "popup_en": "g4!! White attacks on the kingside. This is the game's central idea: break through at the head of the pawn chain.",
       "popup": "g4！！白方王翼进攻！\n这才是本局真正主题：沿兵链头部方向发动突破！"
     },
     {
       "index": 31,
       "move": "Rfc8",
+      "popup_en": "...Rfc8 prepares Black's counterplay.",
       "popup": "Rfc8车准备"
     },
     {
       "index": 32,
       "move": "g5",
+      "popup_en": "g5!! White continues the kingside attack. The g4-g5 advance drives toward Black's king.",
       "popup": "g5！！白方王翼总攻！\ng4-g5连续推进，直逼黑王阵地！",
       "highlights": [
         {
@@ -226,11 +250,13 @@
     {
       "index": 33,
       "move": "h6",
+      "popup_en": "...h6! Black must respond and challenges whether White's g5-pawn has advanced too far.",
       "popup": "h6！黑方被迫应对\n挑战白g5是否过伸"
     },
     {
       "index": 34,
       "move": "gxh6",
+      "popup_en": "gxh6! White opens the g-file with the g4-g5-gxh6 breakthrough. Black's king is now exposed along the file.",
       "popup": "gxh6！g线打开！\ng4-g5-gxh6王翼突破成功\n黑王g线门户洞开！",
       "highlights": [
         {
@@ -245,6 +271,7 @@
     {
       "index": 35,
       "move": "gxh6",
+      "popup_en": "...gxh6 recaptures, but the g-file is completely open and Black's king is in danger. This is a classic kingside breakthrough.",
       "popup": "gxh6黑回吃\ng线彻底打开，黑王危在旦夕！\n——王翼突破的经典范例！"
     }
   ]

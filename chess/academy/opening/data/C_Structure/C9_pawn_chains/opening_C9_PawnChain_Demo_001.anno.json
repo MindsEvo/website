@@ -7,10 +7,12 @@
       "d4",
       "f4"
     ],
+    "popup_en": "Pawn-Chain Direction, Lesson 1: The direction of a pawn chain points toward the side where you should attack. The e5-d4 chain points toward White's kingside, so White should advance there with f4 and g4.",
     "popup": "兵链方向第1课\n核心法则：\n兵链的倾斜方向=进攻方向！\ne5-d4链向右上方倾斜\n→白方必须向王翼（f4→g4）进攻！",
     "voice": true
   },
   "outro": {
+    "popup_en": "White establishes the chain with e5, supports it with f4, then launches the attack with h4 and g4. Each pawn advance follows the direction of the chain.",
     "popup": "总结：e5确立兵链 → f4支撑 → h4-g4总攻\n每步都沿兵链方向前进！",
     "voice": true
   },
@@ -25,46 +27,55 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 controls the center and prepares a later e5 advance.",
       "popup": "e4控制中心，准备e5推进"
     },
     {
       "index": 1,
       "move": "e6",
+      "popup_en": "...e6 begins the French Defense, preparing the e6-d5 structure to challenge White's center.",
       "popup": "法国防御！e6-d5对抗白方中心"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 establishes the base of White's pawn chain. The e5-d4 chain is beginning to take shape.",
       "popup": "d4建立兵链根部！e5-d4链开始成形"
     },
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5! Black responds symmetrically and builds a matching central structure.",
       "popup": "d5！黑方针锋相对建立对称"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 supports e4 and prepares White's e5 advance.",
       "popup": "Nc3支援e4，准备e5推进"
     },
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6! The knight challenges White's center.",
       "popup": "Nf6！马对抗白方中心"
     },
     {
       "index": 6,
       "move": "Bg5",
+      "popup_en": "Bg5 pins Black's knight and prepares e5.",
       "popup": "Bg5钉住黑马，准备e5"
     },
     {
       "index": 7,
       "move": "Be7",
+      "popup_en": "...Be7 breaks the pin and develops safely.",
       "popup": "Be7解钉，稳固发展"
     },
     {
       "index": 8,
       "move": "e5",
+      "popup_en": "e5!! White establishes the pawn chain e5-d4-c3. The direction of the chain points White toward a kingside attack.",
       "popup": "e5！！兵链形成！e5-d4-c3链确立\n白方王翼进攻方向已定！",
       "highlights": [
         {
@@ -79,21 +90,25 @@
     {
       "index": 9,
       "move": "Nfd7",
+      "popup_en": "...Nfd7 retreats the knight as the pawn chain restricts its natural squares.",
       "popup": "Nfd7！马被迫后撤，兵链威力显现"
     },
     {
       "index": 10,
       "move": "Bxe7",
+      "popup_en": "Bxe7 simplifies the position and prevents Black's knight from returning to the pinning square.",
       "popup": "Bxe7简化，避免黑马重返"
     },
     {
       "index": 11,
       "move": "Qxe7",
+      "popup_en": "...Qxe7 recaptures the bishop with the queen.",
       "popup": "Qxe7！后取象"
     },
     {
       "index": 12,
       "move": "f4",
+      "popup_en": "f4!! White advances in the direction of the chain. The pawn supports e5 and prepares f5 against Black's kingside.",
       "popup": "f4！！沿兵链方向推进！\nf4支撑e5，准备f5向黑王翼冲锋",
       "highlights": [
         {
@@ -108,21 +123,25 @@
     {
       "index": 13,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king on the kingside.",
       "popup": "O-O易位，王翼安全"
     },
     {
       "index": 14,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and coordinates White's pieces around the center.",
       "popup": "Nf3发展，棋子协调"
     },
     {
       "index": 15,
       "move": "c5",
+      "popup_en": "...c5! Black correctly attacks the base of White's pawn chain on d4.",
       "popup": "c5！黑方攻击兵链根部d4——正确反击！"
     },
     {
       "index": 16,
       "move": "Qd2",
+      "popup_en": "Qd2! White prepares queenside castling. With the king heading to the queenside, White can attack on the kingside while Black seeks counterplay there.",
       "popup": "Qd2❗长易位准备！白王去后翼\n王翼全力进攻，双翼竞速开始",
       "highlights": [
         {
@@ -137,21 +156,25 @@
     {
       "index": 17,
       "move": "Nc6",
+      "popup_en": "...Nc6 reinforces Black's position and prepares queenside play.",
       "popup": "Nc6增援，黑方准备后翼进攻"
     },
     {
       "index": 18,
       "move": "dxc5",
+      "popup_en": "dxc5! White accepts the exchange and simplifies the pawn structure.",
       "popup": "dxc5！白方接受交换，简化结构"
     },
     {
       "index": 19,
       "move": "Nxc5",
+      "popup_en": "...Nxc5! Black's knight occupies the important square c5.",
       "popup": "Nxc5！黑马占据c5要点"
     },
     {
       "index": 20,
       "move": "O-O-O",
+      "popup_en": "O-O-O!! The opposite-wing race begins. White's king is safe on the queenside, freeing the kingside pieces and pawns to attack.",
       "popup": "O-O-O！！双翼竞速开始！\n白王安全在后翼，王翼全力攻击",
       "highlights": [
         {
@@ -166,11 +189,13 @@
     {
       "index": 21,
       "move": "a6",
+      "popup_en": "...a6! Black defends and prepares a queenside counterattack with ...b5.",
       "popup": "a6！黑方防守，准备b5反攻"
     },
     {
       "index": 22,
       "move": "h4",
+      "popup_en": "h4!! White launches the kingside attack. The h4-g4 advance follows the direction of the pawn-chain head.",
       "popup": "h4！！王翼总攻！\nh4-g4将沿兵链头部方向全力冲锋！",
       "highlights": [
         {
@@ -186,31 +211,37 @@
     {
       "index": 23,
       "move": "b5",
+      "popup_en": "...b5! Black counterattacks on the queenside, following the direction of Black's own pawn chain.",
       "popup": "b5！黑方沿后翼方向反攻"
     },
     {
       "index": 24,
       "move": "Kb1",
+      "popup_en": "Kb1! The king steps away from the diagonal and becomes safer.",
       "popup": "Kb1！王躲开对角线，更安全"
     },
     {
       "index": 25,
       "move": "b4",
+      "popup_en": "...b4! Black continues the queenside pawn advance.",
       "popup": "b4！黑方继续后翼推进"
     },
     {
       "index": 26,
       "move": "Ne2",
+      "popup_en": "Ne2 reroutes the knight, preparing to support White's kingside attack.",
       "popup": "Ne2调整，准备支援王翼"
     },
     {
       "index": 27,
       "move": "a5",
+      "popup_en": "...a5! Black's queenside pawn chain continues to advance.",
       "popup": "a5！黑方后翼兵链继续前进"
     },
     {
       "index": 28,
       "move": "g4",
+      "popup_en": "g4!! White reaches the climax of the kingside attack. The pawn advances along the direction of the chain as both sides race on opposite wings.",
       "popup": "g4！！王翼总攻高潮！\ng4沿兵链方向前进——双翼竞速！",
       "highlights": [
         {

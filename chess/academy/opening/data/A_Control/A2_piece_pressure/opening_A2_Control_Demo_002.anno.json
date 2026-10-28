@@ -2,6 +2,7 @@
   "game_id": "A2_Control_Demo_002",
   "description": "意大利开局——三个轻子协调瞄准中心，13步完整注释",
   "intro": {
+    "popup_en": "Three minor pieces coordinate to target key squares. The Italian Game combines direct central occupation with piece control.",
     "flash_squares": [
       "e4",
       "d4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Coordinated piece control is harder to undermine than a lone pawn. The e4-pawn, Nf3, Bc4, and Nc3 form a three-dimensional network, helping explain why the Italian Game has remained a classic for centuries.",
     "popup": "子力协调控制，比单独一兵更难被破坏。e4，Nf3， Bc4，Nc3 四子形成立体控制网，这就是为什么意大利开局历经几百年仍是经典。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4 occupies a central square and controls d5 and f5. Pawn occupation is the most direct form of central control.",
       "popup": "⬆️ <b>1.e4 — 占领中心格！</b><br>e4 兵直接踏上中心，控制 d5 和 f5 两格。占领是最直接的控制方式。",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "1...e5 also occupies the center, controlling d4 and f4. The central pawns face each other directly.",
       "popup": "⬇️ <b>1...e5 — 黑方对称占领！</b><br>黑方也占 e5，e5 兵控制 d4 和 f4。双方中心兵直接对峙。",
       "highlights": [
         {
@@ -82,6 +86,7 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "2.Nf3 adds piece control: the knight attacks e5 and controls d4, forcing Black to defend the e5-pawn.",
       "popup": "⬆️ <b>2.Nf3 — 子力控制加入！</b><br>马从 f3 直接攻击黑方的 <b>e5</b> 兵，同时控制 d4。第一个子力的控制：迫使黑方守护 e5！",
       "highlights": [
         {
@@ -109,6 +114,7 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "2...Nc6 develops and defends e5 while controlling d4. Developing and defending in one move is efficient.",
       "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>c6 马出动，守住 e5，同时控制 d4 和 e5。出子防守，一举两得——效率最优。",
       "highlights": [
         {
@@ -136,6 +142,7 @@
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "3.Bc4! The bishop joins the network, targeting d5 and Black's weakness on f7. A second minor piece now contributes to central control.",
       "popup": "⬆️ <b>3.Bc4 — 白象加入控制！</b><br>白象在 c4，斜线瞄准 <b>d5</b> 和黑方的 f7 要点。这是意大利开局的关键步——第二个轻子加入中心控制！",
       "highlights": [
         {
@@ -158,6 +165,7 @@
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "3...Nf6 controls e4 and d5. Black also uses pieces to control the center; this idea is available to both sides.",
       "popup": "⬇️ <b>3...Nf6 — 黑马出击攻击 e4！</b><br>黑马在 f6 控制 e4 和 d5。注意黑方也在用子力控制中心格——这不是特权，双方都能这样做！",
       "highlights": [
         {
@@ -185,6 +193,7 @@
     {
       "index": 6,
       "move": "d3",
+      "popup_en": "4.d3 securely supports e4 instead of advancing d4 too quickly. White prioritizes a stable structure while the pieces are still developing.",
       "popup": "⬆️ <b>4.d3 — 稳固 e4，不急冒进。</b><br>白方 d3 支撑 e4 兵，而不是激进的 d4 推进。稳固阵型优先——子力未就位时不急于中心推进。",
       "highlights": [
         {
@@ -206,6 +215,7 @@
     {
       "index": 7,
       "move": "Bc5",
+      "popup_en": "4...Bc5! Black's bishop also controls a central diagonal, targeting d4. Both sides use their bishops to influence the center.",
       "popup": "⬇️ <b>4...Bc5 — 黑象也加入控制！</b><br>黑方象在 c5，斜线瞄准 <b>d4</b> 格。双方都在用象进行斜线控制——这就是「控制中心」的双向博弈！",
       "highlights": [
         {
@@ -232,6 +242,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "5.Nc3! White's third minor piece joins the network, controlling d5 and e4. Together, the e4-pawn, Nf3, Bc4, and Nc3 all point toward the center; coordinated control is difficult to break.",
       "popup": "⬆️ <b>5.Nc3 — 第三个轻子加入控制网！</b><br>白马在 c3，控制 <b>d5</b> 和 e4。现在 <b>e4（兵）+ Nf3 + Bc4 + Nc3</b>，四子全部指向中心！<br><span style='color:#FFD700;'>★ 这就是子力协调控制的力量：多子叠加，难以被单一手段破坏！</span>",
       "highlights": [
         {
@@ -269,6 +280,7 @@
     {
       "index": 9,
       "move": "d6",
+      "popup_en": "5...d6 reinforces Black's structure and supports e5.",
       "popup": "⬇️ <b>5...d6 — 黑方稳固阵型。</b><br>黑方 d6 支撑 e5。",
       "highlights": [
         {
@@ -284,6 +296,7 @@
     {
       "index": 10,
       "move": "O-O",
+      "popup_en": "6.O-O completes White's basic development and secures the king. White can now begin a longer-term plan.",
       "popup": "⬆️ <b>6.O-O — 白方易位！</b><br>子力发展完成，白方易位完成基础阵型。现在可以安心执行中长期计划。",
       "highlights": [],
       "concept_arrows": []
@@ -291,6 +304,7 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "6...O-O also secures Black's king. Both sides have completed their opening development and enter the middlegame.",
       "popup": "⬇️ <b>6...O-O — 黑方易位！</b><br>双方易位完成，进入中局。双方都已完成开局发展。",
       "highlights": [],
       "concept_arrows": []
@@ -298,6 +312,7 @@
     {
       "index": 12,
       "move": "Be3",
+      "popup_en": "7.Be3 adds another coordinated piece and supports a possible d4 advance. White's four pieces now work together toward the center, demonstrating the strength of coordinated control.",
       "popup": "⬆️ <b>7.Be3 — 第四子加入协调！</b><br>Be3 白象支撑 d4 推进，同时与 Bc4 形成完整的象的配置。<br><span style='color:#88CCFF;'>★ 现在白方有 <b>4 个子力</b>全部协调指向中心，这就是「子力协调控制」的最高表现！</span>",
       "highlights": [
         {

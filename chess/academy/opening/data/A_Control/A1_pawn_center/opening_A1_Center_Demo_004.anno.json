@@ -2,6 +2,7 @@
   "game_id": "A1_Center_Demo_004",
   "description": "西西里防御——中心的争夺与反制 第4局，23步完整注释",
   "intro": {
+    "popup_en": "The Sicilian Defense challenges the center from the flank. Instead of matching White with ...e5, Black uses ...c5 to put pressure on d4.",
     "flash_squares": [
       "d4",
       "e4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The center does not have to be contested head-on. A flank counterattack can also be an effective way to fight for central control.",
     "popup": "中心不一定要正面争夺，侧翼反制同样是控制中心的有效手段。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "1.e4! White occupies the center and controls d5 and f5. White invites a central contest, but Black chooses a different approach.",
       "popup": "⬆️ <b>1.e4 — 白方占领中心！</b><br>经典第一步，e4 兵踏上中心，控制 d5 和 f5。白方邀请黑方进行中心争夺——但黑方这一次不按套路出牌！",
       "highlights": [
         {
@@ -55,6 +58,7 @@
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "1...c5! The Sicilian Defense attacks the center from the flank. By controlling d4, Black makes it harder for White to establish a two-pawn center; this is an active, asymmetrical counterattack.",
       "popup": "⬇️ <b>1...c5 — 西西里防御！侧翼反制中心！</b><br>黑方不走 e5 对称，而是走 c5——这就是西西里防御的核心思路：<b>侧翼攻击 d4 格</b>，不让白方建立双兵中心。<br>c5 离中心不远，却把 d4 格纳入攻击范围，是聪明的不对称反制！",
       "highlights": [
         {
@@ -88,6 +92,7 @@
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "2.Nf3 controls e5 and d4 and prepares White's central advance. White plans d4, then to recapture on d4 with a knight if Black exchanges.",
       "popup": "⬆️ <b>2.Nf3 — 白马出动，准备 d4！</b><br>f3 马控制 e5 和 d4，为白方下一步推 d4 建立中心做好准备。<br>白方的计划：Nf3 → d4 → 建立双兵中心，然后用马重夺 d4。",
       "highlights": [
         {
@@ -117,6 +122,7 @@
     {
       "index": 3,
       "move": "d6",
+      "popup_en": "2...d6 prepares ...e5 and limits White's control of that square. Black first builds a solid structure before developing further.",
       "popup": "⬇️ <b>2...d6 — 黑方准备 e5！</b><br>d6 为 e5 推进做铺垫，同时限制白方 e5 的格子。黑方不急于出子，先筑好阵型基础。",
       "highlights": [
         {
@@ -138,6 +144,7 @@
     {
       "index": 4,
       "move": "d4",
+      "popup_en": "3.d4! White establishes a two-pawn center with e4 and d4. The move also challenges Black's c5-pawn, forcing Black to decide how to respond.",
       "popup": "⬆️ <b>3.d4 — 白方建立双兵中心！</b><br>白方果断推 d4，现在 e4+d4 双兵并立，完全掌控中心。<br>同时这也是对黑方 c5 的直接挑战——黑方必须做出选择！",
       "highlights": [
         {
@@ -172,6 +179,7 @@
     {
       "index": 5,
       "move": "cxd4",
+      "popup_en": "3...cxd4 removes one of White's central pawns. This is the Sicilian approach: allow White to build a center, then challenge and exchange it.",
       "popup": "⬇️ <b>3...cxd4 — 黑方消灭中心兵！</b><br>黑方用 c5 吃掉 d4，打破了白方的双兵中心——开始争夺中心！<br>这就是西西里的策略：<b>不怕你建中心，吃掉就好。</b>",
       "highlights": [
         {
@@ -193,6 +201,7 @@
     {
       "index": 6,
       "move": "Nxd4",
+      "popup_en": "4.Nxd4! White's knight replaces the pawn on d4. The center is now controlled by a piece, whose mobility and reach differ from a pawn's fixed influence.",
       "popup": "⬆️ <b>4.Nxd4 — 白马重占 d4！子力控制中心！</b><br>白马跳回 d4，中心从「兵控制」变为「马控制」。<br>d4 马威胁四面八方，子力控制的灵活性远超兵。这是一种更高级的中心控制形式！",
       "highlights": [
         {
@@ -243,6 +252,7 @@
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "4...Nf6 attacks e4 and controls d5. Both sides now use their pieces to contest the central squares.",
       "popup": "⬇️ <b>4...Nf6 — 黑马攻击 e4！</b><br>黑马来到 f6，直接威胁白方的 e4 兵，同时控制 d5 格。中心争夺进入白热化——<b>双方都在用子力争夺中心格。</b>",
       "highlights": [
         {
@@ -270,6 +280,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "5.Nc3 supports e4 and controls d5. White's two knights on d4 and c3 form a strong network around the center.",
       "popup": "⬆️ <b>5.Nc3 — 白马保护 e4！</b><br>c3 马支援 e4 兵，同时控制 d5。白方双马（d4+c3）构成强大的中心子力网络，共同掌控棋盘中央。",
       "highlights": [
         {
@@ -298,6 +309,7 @@
     {
       "index": 9,
       "move": "a6",
+      "popup_en": "5...a6! The Najdorf move prevents Nb5 and limits White's queenside piece entry. It looks quiet, but prepares Black's central and queenside plans.",
       "popup": "⬇️ <b>5...a6 — 纳杰多夫变例！防止 Nb5！</b><br>a6 阻止白马跳到 b5，是西西里「纳杰多夫变例」的标志性一步。黑方在争夺中心的同时，防止白方用马插入腹地。这一步看似平淡，实则极有远见！",
       "highlights": [
         {
@@ -326,6 +338,7 @@
     {
       "index": 10,
       "move": "Be3",
+      "popup_en": "6.Be3 supports d4 and controls useful diagonals, helping build a central network based on both pawns and coordinated pieces.",
       "popup": "⬆️ <b>6.Be3 — 白象控制中心颜色格！</b><br>e3 象支援 d4，同时控制 d4-a7、f4-h6 等对角线，占据中心。<br>白方正在构建全面的中心控制网络——不只靠兵，还靠子力协作。",
       "highlights": [
         {
@@ -354,6 +367,7 @@
     {
       "index": 11,
       "move": "e5",
+      "popup_en": "6...e5! Black challenges the knight on d4 and establishes a central foothold. The pawn controls d4 and f4, creating a direct central confrontation.",
       "popup": "⬇️ <b>6...e5 — 黑方反击 d4！</b><br>黑方推 e5 直接挑战 d4 马，迫使白马后退。黑方终于在中心落子，双方的中心张力达到顶点。<br>e5 控制了 d4 和 f4，黑方也建立了中心支点！",
       "highlights": [
         {
@@ -388,6 +402,7 @@
     {
       "index": 12,
       "move": "Nb3",
+      "popup_en": "7.Nb3! The knight retreats from d4 after being challenged by ...e5. White yields the square for now but can later target Black's advanced e5-pawn.",
       "popup": "⬆️ <b>7.Nb3 — 白马主动后退！以退为进！</b><br>d4 马被 e5 赶走，退到 b3。暂时让出中心，但为后续反击做好准备：<br>黑方 e5 兵长期来看是弱点。白方以退为进，等待机会收割！",
       "highlights": [
         {
@@ -423,6 +438,7 @@
     {
       "index": 13,
       "move": "Be6",
+      "popup_en": "7...Be6 develops the bishop and reinforces e5 while increasing Black's control of the center.",
       "popup": "⬇️ <b>7...Be6 — 黑象守护 e5！</b><br>黑象出动到 e6，加大控制范围。",
       "highlights": [
         {
@@ -450,6 +466,7 @@
     {
       "index": 14,
       "move": "f3",
+      "popup_en": "8.f3 supports e4 and prepares a kingside advance with g4-g5. White uses a stable center as the foundation for a flank attack, turning central control into attacking chances.",
       "popup": "⬆️ <b>8.f3 — 白方构建进攻基础！</b><br>f3 兵支撑 e4，准备 g4-g5 的王翼进攻。白方利用中心优势，开始酝酿侧翼进攻。<br>中心稳固是发动侧翼进攻的前提——这就是「中心控制转化进攻」的典型示范！",
       "highlights": [
         {
@@ -477,6 +494,7 @@
     {
       "index": 15,
       "move": "Be7",
+      "popup_en": "8...Be7 prepares kingside castling. Black prioritizes king safety, while White has more central space and attacking prospects.",
       "popup": "⬇️ <b>8...Be7 — 黑象防守，准备易位！</b><br>黑象退回 e7，为王翼易位清路，黑方优先保证国王安全。局面至此，白方在中心和进攻积极性上均占优，黑方以防守为主。",
       "highlights": [
         {
@@ -499,6 +517,7 @@
     {
       "index": 16,
       "move": "Qd2",
+      "popup_en": "9.Qd2 prepares queenside castling. White plans to place the king on c1 and attack on the kingside, a typical opposite-side castling setup.",
       "popup": "⬆️ <b>9.Qd2 — 白后出动，准备异翼易位！</b><br>d2 准备长易位（0-0-0，王去 c1）。白方即将把国王放在后翼，在王翼展开全面进攻。<br>后来 d2 是「异翼易位进攻」的标配——准备猛攻！",
       "highlights": [
         {
@@ -526,6 +545,7 @@
     {
       "index": 17,
       "move": "O-O",
+      "popup_en": "9...O-O secures Black's king on the kingside. White is preparing to castle in the opposite direction, setting up a sharp race between attacks on the two kings.",
       "popup": "⬇️ <b>9...O-O — 黑方王翼易位，王安全！</b><br>黑方国王转移到 g8，完成王翼易位。但此刻白方也要去后翼易位——双方国王在<b>不同方向</b>，这预示着一场激烈的异翼对攻即将爆发！",
       "highlights": [
         {
@@ -553,6 +573,7 @@
     {
       "index": 18,
       "move": "O-O-O",
+      "popup_en": "10.O-O-O! White castles long, moving the king to c1 and activating the rook on d1. With the kings on opposite wings, both sides can attack freely. A stable center gives White the security to launch a flank attack.",
       "popup": "⬆️ <b>10.O-O-O — 白方长易位，异翼对攻开始！</b><br>白方国王去后翼（c1），车激活到 d1。双方国王分处两翼，现在是速度竞赛——谁先攻破对方的王！<br>这是中心控制优势的终极转化：中心在手，才有资本放心进行侧翼进攻。",
       "highlights": [
         {
@@ -587,6 +608,7 @@
     {
       "index": 19,
       "move": "Nbd7",
+      "popup_en": "10...Nbd7 develops Black's second knight and reinforces the center and queenside. Black's position is compact, but White's attack is about to begin.",
       "popup": "⬇️ <b>10...Nbd7 — 黑马出动，加固阵型！</b><br>黑方第二匹马出动，支援中心和后翼防线。黑方阵型紧密，没有明显弱点——但白方的进攻浪潮即将到来！",
       "highlights": [
         {
@@ -616,6 +638,7 @@
     {
       "index": 20,
       "move": "g4",
+      "popup_en": "11.g4! White launches the kingside pawn storm, with g5-g6 in mind to open lines near Black's king. White has a stable center, developed pieces, and has castled long; now the attack begins.",
       "popup": "⬆️ <b>11.g4 — 王翼进攻正式启动！</b><br>g4 兵开始向黑方国王所在的王翼挺进，目标是 g5→g6 打开黑王前的防线。<br>白方已万事俱备：中心稳固、子力发展完毕、异翼易位完成——现在是进攻时间！",
       "highlights": [
         {
@@ -644,6 +667,7 @@
     {
       "index": 21,
       "move": "b5",
+      "popup_en": "11...b5! Black counterattacks on the queenside, where White's king is located. In opposite-side castling, both sides race toward the enemy king; speed matters.",
       "popup": "⬇️ <b>11...b5 — 黑方后翼反击！</b><br>黑方用 b5 在后翼发动反攻，目标是白方国王所在的 c1 方向！这是异翼对攻的精髓：<b>双方同时向对方国王冲锋，谁快谁赢！</b>",
       "highlights": [
         {
@@ -672,6 +696,7 @@
     {
       "index": 22,
       "move": "g5",
+      "popup_en": "12.g5! White accelerates the kingside attack and drives away the knight on f6. The Sicilian illustrates the full idea: Black challenges the center from the flank, and White uses central control to support a faster attack on the wing.",
       "popup": "⬆️ <b>12.g5 — 王翼攻势加速！</b><br>g5 兵继续推进，黑马 f6 被赶走，王翼防线动摇。白方的进攻比黑方更快更猛烈。<br>西西里防御展示了「侧翼反制中心」的精髓：c5攻击d4，打破白方双兵中心；双方都用子力争夺中心；中心争夺结束后，白方利用中心优势发动侧翼猛攻——<b>控制中心是进攻的基础！</b>",
       "highlights": [
         {

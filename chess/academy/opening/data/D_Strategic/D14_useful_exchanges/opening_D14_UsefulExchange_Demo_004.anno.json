@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Demo_004",
   "description": "国王印度防御 E94 — 马的重组路线：Ne1-Nd3占强格，坏象与好马的战略判断",
   "intro": {
+    "popup_en": "Timely Exchanges, Lesson 4: King's Indian Classical Variation. After White closes the center with d5, Black's fianchetto bishop on g7 is restricted. White reroutes the knight from e1 toward d3 or f2 to find an outpost. In a closed position, which is stronger: a knight or a bishop, and when should you exchange?",
     "flash_squares": [
       "e1",
       "d3",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The fourth pattern is strategic rerouting. Once d5 closes the center, Black's bishop on g7 becomes bad, while White's knight reroutes via e1 toward d3. Knights often outperform bishops in closed positions because they can jump over blocked pawns; bishops tend to thrive in open positions with long diagonals. Before exchanging, assess whether your bishop or knight is good or bad.",
     "popup": "国王印度正统变例总结\n\n及时兑子的第四模式——重组型策略：\n\n① d5封闭中心后，龙象Bg7变坏象（对角线被封）\n② 白方Ne1重组到d3，寻找强格前哨站\n③ 双方都在封闭局面中重组子力\n\n兑换时机的判断：\n• 封闭局面：马优于象（可以跳格）\n• 开放局面：象优于马（长斜线活跃）\n• 兑换前问：我的象/马现在是好的还是坏的？",
     "voice": true
   },
@@ -24,31 +26,37 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 occupies the center.",
       "popup": "d4 占领中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 begins the King's Indian Defense. Black develops a knight before occupying d5.",
       "popup": "Nf6 国王印度防御开始！\n黑方不立刻占d5，而是发展马"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4! White adopts the Queen's Gambit setup and adds pressure to the center.",
       "popup": "c4！后翼弃兵体系\n再一次向中心施压"
     },
     {
       "index": 3,
       "move": "g6",
+      "popup_en": "...g6 prepares the fianchetto with ...Bg7, the King's Indian bishop setup.",
       "popup": "g6！\n准备Bg7飞象——国王印度龙象体系"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 controls d5 and e4.",
       "popup": "Nc3 马控制d5和e4"
     },
     {
       "index": 5,
       "move": "Bg7",
+      "popup_en": "...Bg7! The fianchetto bishop becomes active on the long diagonal toward b2 and a1, with considerable potential.",
       "popup": "Bg7！龙象！\n沿g7-b2-a1大对角线活跃\n潜力巨大！",
       "highlights": [
         {
@@ -64,6 +72,7 @@
     {
       "index": 6,
       "move": "e4",
+      "popup_en": "e4!! White builds a broad center with pawns on d4 and e4, supported by c4, controlling the central squares.",
       "popup": "e4！！白方大中心！\nd4+e4+c4控制四中心格",
       "highlights": [
         {
@@ -79,26 +88,31 @@
     {
       "index": 7,
       "move": "d6",
+      "popup_en": "...d6 securely supports the center and prepares the ...e5 counterbreak.",
       "popup": "d6 黑方稳健守住\n准备e5反击"
     },
     {
       "index": 8,
       "move": "Be2",
+      "popup_en": "Be2 develops safely and prepares White to castle.",
       "popup": "Be2 白方保守发展\n准备入城"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O 黑方入城"
     },
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "Nf3 controls e5 and d4.",
       "popup": "Nf3 马控制e5和d4"
     },
     {
       "index": 11,
       "move": "e5",
+      "popup_en": "...e5! Black counterattacks, challenges d4, and blocks e5. If White plays dxe5, ...Nxe5 gives Black a strong knight outpost.",
       "popup": "e5！黑方反击！\n攻击d4，并封锁e5格\n如dxe5则Nxe5马占强格！",
       "highlights": [
         {
@@ -113,16 +127,19 @@
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O secures White's king while White waits to see how Black proceeds.",
       "popup": "O-O 白方入城\n等待黑方动向再决定计划"
     },
     {
       "index": 13,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops, supports e5, and controls d4.",
       "popup": "Nc6 黑马发展\n支撑e5，控制d4"
     },
     {
       "index": 14,
       "move": "d5",
+      "popup_en": "d5! White closes the center and gains space. The position becomes closed, and Black's bishop on g7 is restricted by the pawn chain on d6, e5, and f6: the fianchetto bishop has become a bad bishop.",
       "popup": "d5！白方封锁中心！\n\n⭐ 关键时刻！中心封锁！\n阵型变封闭，白方优势在空间\n\n⭐ 坏象出现！\n黑方Bg7的对角线被d6+e5+f6封堵\n龙象变成坏象！！",
       "highlights": [
         {
@@ -138,6 +155,7 @@
     {
       "index": 15,
       "move": "Ne7",
+      "popup_en": "...Ne7 moves the knight away from c6, yields d5 to White's pawn, and prepares a rerouting maneuver.",
       "popup": "Ne7 Nc6必须退开\n让出d5给白方兵，准备重组",
       "highlights": [
         {
@@ -152,6 +170,7 @@
     {
       "index": 16,
       "move": "Ne1",
+      "popup_en": "Ne1!! White begins a knight reroute: Nf3-e1, followed by Nd3 or Nf2, searching for an ideal outpost. Knights can jump over blocked pawns, so they often excel in closed positions.",
       "popup": "Ne1！！白马重组开始！\n\n⭐ 战略重组：\nNf3-e1，准备走Nd3或Nf2\n在封闭局面中寻找理想前哨站！\n\n马可以跳格，不受兵阻挡——封闭局面中马比象强！",
       "highlights": [
         {
@@ -167,11 +186,13 @@
     {
       "index": 17,
       "move": "Nd7",
+      "popup_en": "...Nd7 reroutes the knight, with a possible route via f6 and e8 toward the d6 outpost.",
       "popup": "Nd7 黑马重组\n准备Nf6-e8-d6前哨站路线"
     },
     {
       "index": 18,
       "move": "f3",
+      "popup_en": "f3! White reinforces the center, protects e4, and prepares a kingside advance with g4-g5. White's knight can also reach d3 and support a later f4 push.",
       "popup": "f3！巩固中心！\n\n⭐ f3的双重目的：\n① 巩固e4兵（防止黑方exf？或Nf4跳入）\n② 为g4-g5王翼进攻预备\n③ 白方Ne1可走Nd3然后f4继续推进！",
       "highlights": [
         {
@@ -186,6 +207,7 @@
     {
       "index": 19,
       "move": "f5",
+      "popup_en": "...f5! Black counterattacks on the kingside. White plans g4-g5, while Black may push ...f5-f4 and ...g5. With a closed center, both sides attack on their respective wings, a classic King's Indian battle.",
       "popup": "f5！黑方反击王翼！\n\n⭐ 双方各有计划：\n白方：g4-g5王翼扩张\n黑方：f5-f4-g5-h5王翼冲击\n\n封闭中心后双方各自一翼进攻——\n这是国王印度最经典的双翼博弈！",
       "highlights": [
         {
@@ -201,6 +223,7 @@
     {
       "index": 20,
       "move": "Be3",
+      "popup_en": "Be3! White brings the bishop into play. White plans Be3, Nd3, and g4; Black aims for ...f4 and ...g5 against White's king. In a closed center, consider exchanging the opponent's bad bishop when doing so directly improves your position.",
       "popup": "Be3！白象进入战场！\n\n⭐ 局面总结：\n白方计划：Be3+Nd3+g4推进\n黑方计划：f4+g5冲击白王翼\n\n封闭中心后的兑换判断：\n什么时候Ne1-d3应该换掉黑方的坏象？\n当换掉对方弱子能直接赢得优势时！",
       "highlights": [
         {

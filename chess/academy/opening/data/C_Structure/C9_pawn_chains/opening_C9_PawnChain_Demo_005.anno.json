@@ -7,10 +7,12 @@
       "d4",
       "c6"
     ],
+    "popup_en": "Pawn-Chain Direction, Lesson 5: Compare the Caro-Kann and French chains. The French e6-d5 chain can leave e6 weak; the Caro-Kann c6-d5 chain avoids that weakness and is sturdier. Yet the counterattack principle is the same: ...c5 attacks the base on d4.",
     "popup": "兵链方向第5课\n卡罗兵链 vs 法国兵链：\n• 法国：e6-d5链，有e6弱点\n• 卡罗：c6-d5链，无e6弱点！\n结构更坚固，但反击方法相同：\nc5攻根部d4！",
     "voice": true
   },
   "outro": {
+    "popup_en": "The Caro-Kann chain is sturdier, but the ...c5 break against d4 still applies. White can use the resulting tension to establish Ne4. The direction of a pawn chain gives general guidance for both attack and defense.",
     "popup": "总结：卡罗兵链更坚固 → 但c5攻根部原则不变 → Ne4利用反弹\n兵链方向的普遍原则！",
     "voice": true
   },
@@ -29,6 +31,7 @@
     {
       "index": 1,
       "move": "c6",
+      "popup_en": "...c6 begins the Caro-Kann and prepares ...d5 without blocking Black's dark-squared bishop.",
       "popup": "c6卡罗坎！准备d5但不封闭暗格象"
     },
     {
@@ -38,11 +41,13 @@
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5! Black establishes the c6-d5 pawn chain, which does not create the same e6 weakness as the French structure.",
       "popup": "d5！c6-d5链，无e6弱点"
     },
     {
       "index": 4,
       "move": "e5",
+      "popup_en": "e5! White advances, but unlike the French chain, Black's c6-d5 structure has no e6 weakness and is more solid.",
       "popup": "e5！推进！但与法国不同：c6-d5链无e6弱点\n黑方结构更坚固！",
       "highlights": [
         {
@@ -57,6 +62,7 @@
     {
       "index": 5,
       "move": "Bf5",
+      "popup_en": "...Bf5!! Black's bishop develops freely, a major advantage of the Caro-Kann structure compared with the French.",
       "popup": "Bf5！！象出！\n卡罗的最大优势：暗格象已经通畅出动\n法国做不到这一点！",
       "highlights": [
         {
@@ -75,6 +81,7 @@
     {
       "index": 7,
       "move": "e6",
+      "popup_en": "...e6 is an active choice here, not a structural necessity imposed by the French pawn chain.",
       "popup": "e6黑主动e6：此时是主动选择，非被动结构"
     },
     {
@@ -92,6 +99,7 @@
     {
       "index": 11,
       "move": "c5",
+      "popup_en": "...c5! Black attacks the base of White's chain on d4, applying the same Nimzo-style principle in the Caro-Kann.",
       "popup": "c5！c5攻根部！黑攻击白d4根部\n——卡罗版Nimzo原则！",
       "highlights": [
         {
@@ -106,6 +114,7 @@
     {
       "index": 12,
       "move": "c3",
+      "popup_en": "c3 supports the pawn on d4.",
       "popup": "c3支撑d4"
     },
     {
@@ -127,21 +136,25 @@
     {
       "index": 17,
       "move": "cxd4",
+      "popup_en": "...cxd4! Black exchanges against the base of White's pawn chain.",
       "popup": "cxd4！黑方兑换根部"
     },
     {
       "index": 18,
       "move": "cxd4",
+      "popup_en": "cxd4 rebuilds White's central structure.",
       "popup": "cxd4白重建"
     },
     {
       "index": 19,
       "move": "Bb4",
+      "popup_en": "Bb4! White develops the bishop and prepares queenside castling.",
       "popup": "Bb4！象出发展，准备长易位"
     },
     {
       "index": 20,
       "move": "Bd2",
+      "popup_en": "Bd2 blocks the check.",
       "popup": "Bd2挡将"
     },
     {
@@ -163,6 +176,7 @@
     {
       "index": 25,
       "move": "f6",
+      "popup_en": "...f6! Black attacks the head of White's chain on e5. The drawback is that the f-file opens, but Black gains counterplay.",
       "popup": "f6！f6攻链头e5！\n代价：黑方f线开放，但获得反击机会",
       "highlights": [
         {
@@ -181,21 +195,25 @@
     {
       "index": 27,
       "move": "Rxf6",
+      "popup_en": "Rxf6 activates the rook by recapturing on f6.",
       "popup": "Rxf6车进攻"
     },
     {
       "index": 28,
       "move": "Rae1",
+      "popup_en": "Rae1 connects White's rooks.",
       "popup": "Rae1双车连接"
     },
     {
       "index": 29,
       "move": "Qc7",
+      "popup_en": "...Qc7 develops the queen.",
       "popup": "Qc7后出动"
     },
     {
       "index": 30,
       "move": "Nh4",
+      "popup_en": "Nh4! The knight leaves f3 and prepares to support f4.",
       "popup": "Nh4！马让出f3，准备f4"
     },
     {
@@ -205,6 +223,7 @@
     {
       "index": 32,
       "move": "f4",
+      "popup_en": "f4!! White launches the attack in the direction of the pawn chain.",
       "popup": "f4！！白方沿兵链方向总攻"
     },
     {
@@ -222,6 +241,7 @@
     {
       "index": 36,
       "move": "Na4",
+      "popup_en": "Na4! The knight reroutes via a4, preparing to occupy the important queenside square c5.",
       "popup": "Na4！白马绕道a4，准备Nc5占后翼要点",
       "highlights": [
         {
@@ -236,21 +256,25 @@
     {
       "index": 37,
       "move": "Qd6",
+      "popup_en": "...Qd6! Black's queen becomes active, pressures the weak pawn on d4, and adds pressure to White's position.",
       "popup": "Qd6！黑后活跃，盯住d4弱兵并施压白阵"
     },
     {
       "index": 38,
       "move": "a3",
+      "popup_en": "a3! White reinforces the queenside and prevents Black from occupying b4.",
       "popup": "a3！白方巩固后翼，防止黑方潜入b4"
     },
     {
       "index": 39,
       "move": "Rc8",
+      "popup_en": "...Rc8! Black occupies the c-file and prepares queenside counterpressure.",
       "popup": "Rc8！黑车占c线，准备后翼反压"
     },
     {
       "index": 40,
       "move": "g3",
+      "popup_en": "g3! White reinforces the kingside structure and prevents the black queen from entering.",
       "popup": "g3！白方巩固王翼结构，防止黑后进入",
       "highlights": [
         {
@@ -265,11 +289,13 @@
     {
       "index": 41,
       "move": "Ne7",
+      "popup_en": "...Ne7! Black reroutes the knight, with options for Ng6 or Nf5.",
       "popup": "Ne7！马重新调整，准备Ng6或Nf5"
     },
     {
       "index": 42,
       "move": "Bd3",
+      "popup_en": "Bd3! White places the bishop on the d3-h7 diagonal and targets the weak pawn on g6.",
       "popup": "Bd3！白象主动占据d3-h7对角线，瞄准g6弱兵",
       "highlights": [
         {
@@ -284,11 +310,13 @@
     {
       "index": 43,
       "move": "Rf7",
+      "popup_en": "...Rf7! Black's rook retreats to defend the f-file and support counterplay.",
       "popup": "Rf7！黑车撤回f7，守护f线并支持反击"
     },
     {
       "index": 44,
       "move": "Qe3",
+      "popup_en": "Qe3! White's queen occupies an active square, eyeing the isolated pawn on a7 and a possible kingside attack with g5. White has a clear positional edge.",
       "popup": "Qe3！白后强占e3！\n同时盯住a7孤兵和g5进攻可能\n白方位置优势明显！",
       "highlights": [
         {

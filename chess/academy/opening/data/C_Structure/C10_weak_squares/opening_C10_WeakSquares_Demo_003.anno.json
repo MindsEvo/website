@@ -8,10 +8,12 @@
       "g5",
       "g3"
     ],
+    "popup_en": "Knights and Weak Squares, Lesson 3: After White's d5 wedge, a knight occupies d5 as an outpost. Black counters with ...g5, creating tactical complications and exchanges, but the knight on d5 remains firmly established.",
     "popup": "马占据弱格据点 第3课\n\nd5楔子后白马强占Nd5\n黑方g5反击造成战术风暴\n\nNxe4/Nxg3等交换后\nNd5据点始终屹立！",
     "voice": true
   },
   "outro": {
+      "popup_en": "White's d5 wedge creates the weak square for Nxd5. Black's ...g5 and ...Nxe4 tactics do not dislodge the knight; after Nd2 and hxg3, the outpost remains. A true weak-square outpost can survive a tactical storm.",
       "popup": "马据点战术小结\n✅ d5楔子后Nxd5建立据点\n✅ 黑g5+Nxe4战术未能动摇Nd5\n✅ Nd2反击，hxg3后据点屹立\n\n核心原则：\n真正的弱格据点，战术风暴中也稳固！",
     "voice": true
   },
@@ -27,31 +29,37 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 controls the center.",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a knight and begins the King's Indian Defense.",
       "popup": "Nf6发展马\n国王印度防御开始"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4 expands White's center.",
       "popup": "c4扩张"
     },
     {
       "index": 3,
       "move": "g6",
+      "popup_en": "...g6 prepares the King's Indian fianchetto.",
       "popup": "g6飞象布局\n国王印度特征"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops a knight.",
       "popup": "Nc3发展马"
     },
     {
       "index": 5,
       "move": "Bg7",
+      "popup_en": "...Bg7! Black's King's Indian bishop watches the center along the long diagonal from h8 to a1.",
       "popup": "Bg7国王印度象\n沿h8-a1对角线虎视眈眈",
       "highlights": [
         {
@@ -67,6 +75,7 @@
     {
       "index": 6,
       "move": "e4",
+      "popup_en": "e4 occupies the center and gives White a space advantage.",
       "popup": "e4占领中心\n白方中心优势",
       "highlights": [
         {
@@ -82,31 +91,37 @@
     {
       "index": 7,
       "move": "d6",
+      "popup_en": "...d6 prevents White from establishing an e5 wedge.",
       "popup": "d6防守\n防止e5楔子"
     },
     {
       "index": 8,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3发展马"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O castles.",
       "popup": "O-O入城"
     },
     {
       "index": 10,
       "move": "Be2",
+      "popup_en": "Be2 is a solid developing move.",
       "popup": "Be2稳健发展"
     },
     {
       "index": 11,
       "move": "c5",
+      "popup_en": "...c5! Black challenges the center and seeks counterplay.",
       "popup": "c5挑战中心！\n黑方寻求反击"
     },
     {
       "index": 12,
       "move": "d5",
+      "popup_en": "d5! The wedge is a key move. It blocks Black's c- and d-files and leaves e6 and f5 as potential weak squares.",
       "popup": "d5楔子！关键一步\n封锁黑方c+d列交流\n此后e6和f5成为弱格",
       "highlights": [
         {
@@ -123,31 +138,37 @@
     {
       "index": 13,
       "move": "e6",
+      "popup_en": "...e6 counterattacks and tries to open the wedge.",
       "popup": "e6反击！\n黑方试图打开楔子"
     },
     {
       "index": 14,
       "move": "Bg5",
+      "popup_en": "Bg5 applies pressure and eyes the kingside near h7.",
       "popup": "Bg5施压\n攻击h7方向"
     },
     {
       "index": 15,
       "move": "h6",
+      "popup_en": "...h6 challenges the bishop.",
       "popup": "h6赶象"
     },
     {
       "index": 16,
       "move": "Bh4",
+      "popup_en": "Bh4 preserves the bishop and maintains pressure.",
       "popup": "Bh4保留\n继续施压"
     },
     {
       "index": 17,
       "move": "exd5",
+      "popup_en": "exd5 opens the center. White accepts an isolated pawn, but the contest for d5 begins.",
       "popup": "exd5打开中路\n接受孤立兵，但...\nd5格的争夺开始！"
     },
     {
       "index": 18,
       "move": "Nxd5",
+      "popup_en": "Nxd5! White's knight occupies the weak square as a strong outpost. Can any black pawn drive it away?",
       "popup": "Nxd5！白马飞入d5\n强占弱格据点\n看这匹马：有任何黑兵能赶走它吗？",
       "highlights": [
         {
@@ -165,6 +186,7 @@
     {
       "index": 19,
       "move": "g5",
+      "popup_en": "...g5! Black counterattacks aggressively, challenging Bh4 and hoping to recover the e4-pawn amid the complications.",
       "popup": "g5！黑方激进反击\n进攻Bh4，试图逼退白象\n并趁乱夺回e4兵！",
       "highlights": [
         {
@@ -176,6 +198,7 @@
     {
       "index": 20,
       "move": "Bg3",
+      "popup_en": "Bg3! The bishop retreats without meeting ...g4 directly, but the e4-pawn loses an important defender.",
       "popup": "Bg3！象撤退g3\n不与g4对碰\n但此时e4兵失去强力守护",
       "highlights": [
         {
@@ -187,6 +210,7 @@
     {
       "index": 21,
       "move": "Nxe4",
+      "popup_en": "...Nxe4! Black wins a pawn tactically. The knight from f6 jumps in and attacks White's knight; this was the point of ...g5.",
       "popup": "Nxe4！战术得兵！\nNf6跳入e4，白马被打\n这就是g5的目的！",
       "highlights": [
         {
@@ -198,6 +222,7 @@
     {
       "index": 22,
       "move": "Nd2",
+      "popup_en": "Nd2! White counterattacks the knight on e4 and refuses to let Black win material without a fight.",
       "popup": "Nd2！反击！\nNf3跳到d2攻击e4马\n白方不让黑方白赚",
       "highlights": [
         {
@@ -209,6 +234,7 @@
     {
       "index": 23,
       "move": "Nxg3",
+      "popup_en": "...Nxg3! Black is forced to exchange, taking the bishop on g3 with the knight from e4. White accepts doubled pawns as a manageable cost.",
       "popup": "Nxg3被迫兑换！\ne4马打g3象，取象撤退\n白方叠兵但局面可以接受",
       "highlights": [
         {
@@ -220,6 +246,7 @@
     {
       "index": 24,
       "move": "hxg3",
+      "popup_en": "hxg3 rebuilds the pawn structure. White has doubled h-pawns, but the key point is that the knight on d5 remains untouched.",
       "popup": "hxg3重建\n白方h列叠兵\n但关键是——Nd5还在d5！",
       "highlights": [
         {
@@ -231,6 +258,7 @@
     {
       "index": 25,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops. After the tactical storm, White's knight still stands on d5, demonstrating the lasting value of a secure weak-square outpost.",
       "popup": "Nc6黑方发展\n经历战术风暴后\nNd5据点依然屹立不倒！\n弱格马的价值在战术中得到验证",
       "highlights": [
         {

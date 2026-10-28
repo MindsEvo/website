@@ -6,10 +6,12 @@
       "e1",
       "e7"
     ],
+    "popup_en": "Connecting the Rooks, Lesson 4: After queenside castling, how should the rooks connect, and why should Rhe1 occupy the e-file first?",
     "popup": "链接双车第4课\n后翼易位后，双车如何联通，\n以及为什么要先用Rhe1占据e列通道。",
     "voice": true
   },
   "outro": {
+    "popup_en": "Queenside castling connects the rooks; Rhe1 then occupies the e-file. Establish control of the route before looking for a way to penetrate.",
     "popup": "总结：O-O-O联通双车 → Rhe1占据e列。\n先建立通道，准备寻找攻击机会！",
     "voice": true
   },
@@ -21,26 +23,31 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 controls the center and opens lines for White's pieces.",
       "popup": "e4控制中心\n开放子力"
     },
     {
       "index": 1,
       "move": "c6",
+      "popup_en": "...c6 begins the Caro-Kann Defense.",
       "popup": "c6！卡罗-卡恩防御"
     },
     {
       "index": 6,
       "move": "Nxe4",
+      "popup_en": "Nxe4! White recaptures the central pawn.",
       "popup": "Nxe4！白方吃回中心兵"
     },
     {
       "index": 7,
       "move": "Bf5",
+      "popup_en": "...Bf5! Black develops the bishop actively in the Classical Variation.",
       "popup": "Bf5！黑象主动出动\n古典变例结构"
     },
     {
       "index": 14,
       "move": "Bd3",
+      "popup_en": "Bd3! White actively offers an exchange of Black's strong bishop.",
       "popup": "Bd3！主动交换黑方好象",
       "highlights": [
         {
@@ -55,11 +62,13 @@
     {
       "index": 16,
       "move": "Qxd3",
+      "popup_en": "Qxd3! The queen recaptures toward the center while keeping the pieces coordinated around the king.",
       "popup": "Qxd3！后回到中心\n同时保持王车协调"
     },
     {
       "index": 22,
       "move": "O-O-O",
+      "popup_en": "O-O-O! Queenside castling naturally connects White's rooks.",
       "popup": "O-O-O！后翼易位完成！\n双车自然联通！",
       "highlights": [
         {
@@ -77,6 +86,7 @@
     {
       "index": 24,
       "move": "Rhe1",
+      "popup_en": "Rhe1! The rook from h1 takes the e-file, a highway for future penetration. First occupy the route; there is no need to invade immediately.",
       "popup": "Rhe1！Rh1→e1！\ne列就是未来渗透的高速路！\n本课先学会占据通道，不急着直接入侵。",
       "highlights": [
         {

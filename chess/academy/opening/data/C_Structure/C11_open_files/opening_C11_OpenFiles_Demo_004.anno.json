@@ -3,10 +3,12 @@
   "description": "国王印度 E61 — d线争夺与车占中心格",
   "intro": {
     "flash_squares": ["d4", "d1", "d7", "d8"],
+    "popup_en": "Contesting the d-File, Lesson 4: Once the d-file opens, both sides fight for it. Black uses the file to establish a knight on d4, then brings a rook through the file to occupy the same central square. Every square on an open file can become valuable.",
     "popup": "d线争夺与车占中心 第4课\n\nd线开放后，双方争夺d线！\n\n黑方利用开放线：\nNd4强力外站！\n车借d线进入d4中心！\n\n开放线上的每个格子都是宝地！",
     "voice": true
   },
   "outro": {
+    "popup_en": "When the d-file opens, both sides contest it. Black first establishes a knight on d4, then uses Rxd4 to bring a rook onto the fourth rank. The pattern is knight to the outpost, rook behind it: coordinate the pieces to exploit the open file.",
     "popup": "d线争夺小结\n✅ d线开放→双方争夺\n✅ Nd4外站：开放线中心格\n✅ Rxd4：车借d线进入第4行\n\n核心公式：\n开放线→马占强格→车跟进\n马前车后，协同利用开放线！",
     "voice": true
   },
@@ -15,27 +17,29 @@
     "color": "#FFD70022"
   },
   "moves": [
-    {"index": 0, "move": "d4", "popup": "d4占中心"},
-    {"index": 1, "move": "Nf6", "popup": "Nf6国王印度开始"},
-    {"index": 2, "move": "c4", "popup": "c4扩张"},
-    {"index": 3, "move": "g6", "popup": "g6飞象布局"},
-    {"index": 4, "move": "Nc3", "popup": "Nc3发展马"},
-    {"index": 5, "move": "Bg7", "popup": "Bg7纤维象\n国王印度特征"},
-    {"index": 6, "move": "Nf3", "popup": "Nf3发展马"},
-    {"index": 7, "move": "O-O", "popup": "O-O率先入城"},
-    {"index": 8, "move": "e3", "popup": "e3稳固"},
-    {"index": 9, "move": "d6", "popup": "d6准备e5"},
-    {"index": 10, "move": "Be2", "popup": "Be2发展象"},
-    {"index": 11, "move": "Nbd7", "popup": "Nbd7发展马"},
-    {"index": 12, "move": "O-O", "popup": "O-O入城"},
+    {"index": 0, "move": "d4", "popup_en": "d4 occupies the center.", "popup": "d4占中心"},
+    {"index": 1, "move": "Nf6", "popup_en": "...Nf6 begins the King's Indian Defense.", "popup": "Nf6国王印度开始"},
+    {"index": 2, "move": "c4", "popup_en": "c4 expands White's center.", "popup": "c4扩张"},
+    {"index": 3, "move": "g6", "popup_en": "...g6 prepares the fianchetto.", "popup": "g6飞象布局"},
+    {"index": 4, "move": "Nc3", "popup_en": "Nc3 develops a knight.", "popup": "Nc3发展马"},
+    {"index": 5, "move": "Bg7", "popup_en": "...Bg7 fianchettoes Black's bishop, a defining King's Indian idea.", "popup": "Bg7纤维象\n国王印度特征"},
+    {"index": 6, "move": "Nf3", "popup_en": "Nf3 develops a knight.", "popup": "Nf3发展马"},
+    {"index": 7, "move": "O-O", "popup_en": "...O-O castles first.", "popup": "O-O率先入城"},
+    {"index": 8, "move": "e3", "popup_en": "e3 stabilizes White's center.", "popup": "e3稳固"},
+    {"index": 9, "move": "d6", "popup_en": "...d6 prepares ...e5.", "popup": "d6准备e5"},
+    {"index": 10, "move": "Be2", "popup_en": "Be2 develops White's bishop.", "popup": "Be2发展象"},
+    {"index": 11, "move": "Nbd7", "popup_en": "...Nbd7 develops the knight.", "popup": "Nbd7发展马"},
+    {"index": 12, "move": "O-O", "popup_en": "O-O secures White's king.", "popup": "O-O入城"},
     {
       "index": 13,
       "move": "e5",
+      "popup_en": "...e5! Black strikes at the center, the core King's Indian counterattack.",
       "popup": "e5！反中心！\n国王印度黑方的核心思路"
     },
     {
       "index": 14,
       "move": "dxe5",
+      "popup_en": "dxe5 exchanges pawns and begins to open the d-file.",
       "popup": "dxe5白方兑换\nd线开始打开！",
       "highlights": [
         {"squares": ["d4", "e5"], "color": "#FF8F0055"}
@@ -44,6 +48,7 @@
     {
       "index": 15,
       "move": "dxe5",
+      "popup_en": "...dxe5 recaptures and opens the d-file further. Watch how the file changes after the exchanges.",
       "popup": "dxe5黑方回吃\nd线进一步打开\n注意d列的变化！",
       "highlights": [
         {"squares": ["d1", "d8"], "color": "#C6D50044"}
@@ -52,52 +57,60 @@
     {
       "index": 16,
       "move": "Nxe5",
+      "popup_en": "Nxe5! White's knight captures on e5 and simplifies further.",
       "popup": "Nxe5！白马吃e5！\n进一步简化",
       "highlights": [{"squares": ["e5"], "color": "#FF8F0055"}]
     },
     {
       "index": 17,
       "move": "Nxe5",
+      "popup_en": "...Nxe5 recaptures; both sides have exchanged a knight.",
       "popup": "Nxe5黑马回吃\n双方各少一马",
       "highlights": [{"squares": ["e5"], "color": "#E5393555"}]
     },
     {
       "index": 18,
       "move": "Qxd8",
+      "popup_en": "Qxd8! The queens are exchanged and the d-file opens completely.",
       "popup": "Qxd8！后翼大兑换！\nd线完全打开！",
       "highlights": [{"squares": ["d1", "d8"], "color": "#00BCD488"}]
     },
     {
       "index": 19,
       "move": "Rxd8",
+      "popup_en": "...Rxd8 places Black's rook on the d-file to defend it.",
       "popup": "Rxd8黑车占d8\n守d线防御",
       "highlights": [{"squares": ["d8", "d1"], "color": "#E5393544"}]
     },
-    {"index": 20, "move": "e4", "popup": "e4巩固中心\n加强d4格控制"},
-    {"index": 21, "move": "Nc6", "popup": "Nc6发展马，指向d4"},
+    {"index": 20, "move": "e4", "popup_en": "e4 reinforces the center and increases control of d4.", "popup": "e4巩固中心\n加强d4格控制"},
+    {"index": 21, "move": "Nc6", "popup_en": "...Nc6 develops and eyes d4.", "popup": "Nc6发展马，指向d4"},
     {
       "index": 22,
       "move": "Bg5",
+      "popup_en": "Bg5 pins the knight and applies pressure.",
       "popup": "Bg5钉住马\n施加压力",
       "highlights": [{"squares": ["g5", "f6"], "color": "#E5393555"}]
     },
-    {"index": 23, "move": "h6", "popup": "h6筝象\n少许暴露王翼"},
-    {"index": 24, "move": "Be3", "popup": "Be3发展象\n防守d4格"},
+    {"index": 23, "move": "h6", "popup_en": "...h6 challenges the bishop but slightly exposes Black's kingside.", "popup": "h6筝象\n少许暴露王翼"},
+    {"index": 24, "move": "Be3", "popup_en": "Be3 develops and defends d4.", "popup": "Be3发展象\n防守d4格"},
     {
       "index": 25,
       "move": "Nd4",
+      "popup_en": "...Nd4! Black's knight occupies a golden outpost on the open file. The square is both central and difficult to challenge.",
       "popup": "Nd4！黑马跳入d4！\nd4是开放线上的\n黄金外站！",
       "highlights": [{"squares": ["d4", "c6", "e6", "b3", "f3", "b5", "f5", "e2", "c2"], "color": "#FF8F0066"}]
     },
     {
       "index": 26,
       "move": "Bxd4",
+      "popup_en": "Bxd4 exchanges the knight because White cannot allow it to remain on d4 indefinitely. Black's rook is ready to exploit the file.",
       "popup": "Bxd4白方兑换\n无法让马久守d4\n黑方杀机将现身！",
       "highlights": [{"squares": ["d4"], "color": "#E5393555"}]
     },
     {
       "index": 27,
       "move": "Rxd4",
+      "popup_en": "...Rxd4! Black's rook enters the center through the open d-file. This is the power of the file: after the exchange, the rook immediately occupies a strong fourth-rank square.",
       "popup": "Rxd4！黑车进入d4！\n车借开放线占领d4中心！\n\n这就是d线的力量：\n兑换后车立即进入强格！",
       "highlights": [
         {"squares": ["d4"], "color": "#C6D500aa"},
@@ -107,19 +120,22 @@
     {
       "index": 28,
       "move": "Rd1",
+      "popup_en": "Rd1! White also claims the d-file. Both sides now contest the file with their rooks.",
       "popup": "Rd1！白车抢d线！\n对应黑车Rxd4\n双方在d线展开争夺！",
       "highlights": [{"squares": ["d1", "d4"], "color": "#E5393588"}]
     },
-    {"index": 29, "move": "Ne8", "popup": "Ne8黑马后撤重组\n守护阵型"},
+    {"index": 29, "move": "Ne8", "popup_en": "...Ne8 reroutes the knight and protects Black's position.", "popup": "Ne8黑马后撤重组\n守护阵型"},
     {
       "index": 30,
       "move": "Nb5",
+      "popup_en": "Nb5! White's knight threatens d6 and c7, applying pressure.",
       "popup": "Nb5！白马威胁！\n指向d6/c7，施加压力",
       "highlights": [{"squares": ["b5", "d6", "c7"], "color": "#FF8F0077"}]
     },
     {
       "index": 31,
       "move": "Rd7",
+      "popup_en": "...Rd7 defends d7 and blocks the knight's entry routes. The open file has given both sides' rooks and knights maximum activity.",
       "popup": "Rd7黑车防守d7\n封堵白马入型路线\n\n局面总结：\n开放线让双方车马\n都获得最大活跃度！",
       "highlights": [{"squares": ["d7", "d4"], "color": "#00BCD455"}]
     }

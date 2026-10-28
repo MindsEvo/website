@@ -8,10 +8,12 @@
       "d4",
       "e4"
     ],
+    "popup_en": "Connecting the Rooks, Lesson 2: After connecting them, assign the rooks to the two most important open files. White will use Rfe1 on the e-file and Rad1 on the d-file.",
     "popup": "链接双车第2课\n连接之后，分驻两条最重要的开放列\n看白方如何让Rfe1控e列、Rad1控d列！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Rfe1 controls the e-file and Rad1 the d-file. White's rooks occupy the two central files, a classic example of bringing both rooks into the game quickly.",
     "popup": "总结：Rfe1（e列），Rad1（d列）\n白方双车分占中心两列\n这是双车快速加入战斗的一个经典范例！",
     "voice": true
   },
@@ -23,36 +25,43 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 controls the center. White plans to support it with c4 in the Queen's Gambit.",
       "popup": "d4控制中心\n计划：d4+c4后翼兵对"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks d5.",
       "popup": "Nf6黑方马出动\n攻击d5格"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4! The Queen's Gambit contests d5 and fights for the center.",
       "popup": "c4！后翼弃兵\n计划：控制d5，争夺中心"
     },
     {
       "index": 3,
       "move": "e6",
+      "popup_en": "...e6 supports Black's center and prepares either ...dxc4 or ...d5.",
       "popup": "e6黑方防御\n准备dxc4或d5"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops, supports d4, and controls d5.",
       "popup": "Nc3马出动\n协调：支援d4+控制d5"
     },
     {
       "index": 5,
       "move": "d5",
+      "popup_en": "...d5! Black challenges the center in the Queen's Gambit Declined.",
       "popup": "d5！黑方挑战中心\n后翼弃兵防御"
     },
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops and controls e5 and d4. The minor pieces are still being developed before the rooks are connected.",
       "popup": "Nf3！马出动\n激活：Nf3控e5和d4\n连接进度：轻子出动中…",
       "highlights": [
         {
@@ -67,31 +76,37 @@
     {
       "index": 7,
       "move": "Be7",
+      "popup_en": "...Be7 develops and prepares castling.",
       "popup": "Be7黑方象出动\n准备易位"
     },
     {
       "index": 8,
       "move": "Bf4",
+      "popup_en": "Bf4! White develops the c1-bishop along the c1-h6 diagonal. Together with Nf3, it reinforces control of e5.",
       "popup": "Bf4！象出动\n激活：c1象控c1-h6斜线\n协调：Bf4+Nf3联合控e5"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O黑方易位\n黑方王安全"
     },
     {
       "index": 10,
       "move": "e3",
+      "popup_en": "e3 stabilizes White's center and prepares Be2.",
       "popup": "e3稳固中心\n为Be2做准备"
     },
     {
       "index": 11,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops Black's second knight and prepares the ...c5 counterbreak.",
       "popup": "Nbd7黑方第2马出动\n准备c5反击"
     },
     {
       "index": 12,
       "move": "Be2",
+      "popup_en": "Be2! White develops the final minor piece. All minor pieces are ready; after castling, White can connect the rooks.",
       "popup": "Be2！象出动\n连接进度：轻子全部出动！\n计划：易位后连接双车",
       "highlights": [
         {
@@ -106,11 +121,13 @@
     {
       "index": 13,
       "move": "c5",
+      "popup_en": "...c5! Black counterattacks and challenges White's c4-pawn.",
       "popup": "c5！黑方反击\n挑战白方c4兵"
     },
     {
       "index": 14,
       "move": "O-O",
+      "popup_en": "O-O! White completes castling and activates the rook on f1. The second step is complete; next clear the back rank and assign the rooks.",
       "popup": "O-O！易位完成！\n激活：Rf1进入游戏\n连接进度：三步曲第二步✅\n计划：现在清空底线，然后分配双车！",
       "highlights": [
         {
@@ -125,11 +142,13 @@
     {
       "index": 15,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges pawns and opens the c-file.",
       "popup": "cxd4黑方兑换\n打开c列"
     },
     {
       "index": 16,
       "move": "exd4",
+      "popup_en": "exd4 recaptures. Both the e- and d-files are now semi-open, providing a natural file for each rook.",
       "popup": "exd4重吃\n激活：e列和d列同时半开放！\n关键：两列开放，正好给双车各一条列！",
       "highlights": [
         {
@@ -146,31 +165,37 @@
     {
       "index": 17,
       "move": "dxc4",
+      "popup_en": "...dxc4 captures the c4-pawn and opens both the c- and d-files further.",
       "popup": "dxc4黑方吃c4兵\nc列和d列全面开放"
     },
     {
       "index": 18,
       "move": "Bxc4",
+      "popup_en": "Bxc4 recaptures and reactivates the bishop.",
       "popup": "Bxc4象吃回\n激活：象重新激活"
     },
     {
       "index": 19,
       "move": "Nb6",
+      "popup_en": "...Nb6 develops to an active square and attacks the bishop on c4.",
       "popup": "Nb6黑马跳强格\n攻击c4象"
     },
     {
       "index": 20,
       "move": "Bb3",
+      "popup_en": "Bb3 retreats and preserves the bishop.",
       "popup": "Bb3象后退\n保存象的活力"
     },
     {
       "index": 21,
       "move": "Bd7",
+      "popup_en": "...Bd7 develops and prevents Bg5.",
       "popup": "Bd7黑方象出动\n防止Bg5"
     },
     {
       "index": 22,
       "move": "Qd3",
+      "popup_en": "Qd3! The queen supports d4 and coordinates the rooks. Queen and rooks work together to control the center.",
       "popup": "Qd3！后出动\n激活：后来到d3\n协调：Qd3支援d4，联结双车\n计划：后+双车三位一体控制中心",
       "highlights": [
         {
@@ -186,11 +211,13 @@
     {
       "index": 23,
       "move": "Nbd5",
+      "popup_en": "...Nbd5 occupies a strong central square and seeks queenside counterplay.",
       "popup": "Nbd5黑马占中心强格\n黑方后翼反击"
     },
     {
       "index": 24,
       "move": "Rfe1",
+      "popup_en": "Rfe1! The rook from f1 occupies the e-file and watches Black's rook on e8. The first assignment is clear: Re1 controls the e-file.",
       "popup": "Rfe1！车进e列！\n激活：Rf1移到e1\n协调：Re1控制e列，监视Re8\n双车分工开始：Re1负责e列！",
       "highlights": [
         {
@@ -206,11 +233,13 @@
     {
       "index": 25,
       "move": "Re8",
+      "popup_en": "...Re8 contests the e-file with Black's rook.",
       "popup": "Re8黑方车进e列\n争夺e列"
     },
     {
       "index": 26,
       "move": "Rad1",
+      "popup_en": "Rad1!! The rook from a1 takes the d-file. White's rooks now have distinct jobs: Rfe1 guards the e-file and Rad1 the d-file, coordinated with Qd3 to dominate the center.",
       "popup": "Rad1！！双车协调完成！\n激活：Ra1进入d列！\n✅ 双车分工完成：\n♖ Rfe1 = e列守护者\n♖ Rad1 = d列守护者\nQd3+Rad1+Rfe1 = 中心完全统治！\n这是双车协作的教科书形态！",
       "highlights": [
         {

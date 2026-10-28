@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Demo_004",
   "description": "西西里那科多夫变例 B90 — 侧翼引爆：a6为b5铺路的经典反制",
   "intro": {
+    "popup_en": "Counterattack the Center, Lesson 4: Sicilian Najdorf\nThe Najdorf move ...a6 may look modest, but it prepares ...b5. Black uses a queenside pawn break to create counterplay alongside the central fight. When is the best moment to advance ...b5?",
     "flash_squares": [
       "a6",
       "b5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "...a6 prevents Nb5 and prepares ...b5, turning the queenside into a source of counterplay. The Najdorf plan combines central pressure with a timely queenside break and an opposite-side attacking race.",
     "popup": "那科多夫总结\n\na6的战略价值：\n① 防Nb5\n② 为b5铺路\n③ 侧翼引爆策略\n\n那科多夫三大要素：\n① e5争夺中心\n② b5侧翼爆破\n③ 对攻节奏",
     "voice": true
   },
@@ -23,141 +25,169 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "e4 occupies the center.",
       "move": "e4",
       "popup": "e4"
     },
     {
       "index": 1,
+      "popup_en": "...c5 begins the Sicilian Defense.",
       "move": "c5",
       "popup": "c5 西西里！"
     },
     {
       "index": 2,
+      "popup_en": "Nf3 develops a knight.",
       "move": "Nf3",
       "popup": "Nf3"
     },
     {
       "index": 3,
+      "popup_en": "...d6 supports Black's center.",
       "move": "d6",
       "popup": "d6"
     },
     {
       "index": 4,
+      "popup_en": "d4 challenges Black's central pawn.",
       "move": "d4",
       "popup": "d4"
     },
     {
       "index": 5,
+      "popup_en": "...cxd4 exchanges pawns.",
       "move": "cxd4",
       "popup": "cxd4"
     },
     {
       "index": 6,
+      "popup_en": "Nxd4 recaptures and centralizes the knight.",
       "move": "Nxd4",
       "popup": "Nxd4"
     },
     {
       "index": 7,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6"
     },
     {
       "index": 8,
+      "popup_en": "Nc3 develops and supports the center.",
       "move": "Nc3",
       "popup": "Nc3"
     },
     {
       "index": 9,
+      "popup_en": "...a6! The characteristic Najdorf move. Though modest, it prevents Nb5 and prepares the ...b5 break.",
       "move": "a6",
       "popup": "a6！那科多夫！\n看似小棋，意义深远"
     },
     {
       "index": 10,
+      "popup_en": "Be3 develops the bishop and supports White's attacking setup.",
       "move": "Be3",
       "popup": "Be3"
     },
     {
       "index": 11,
+      "popup_en": "...e5! Black contests the center.",
       "move": "e5",
       "popup": "e5！争夺中心"
     },
     {
       "index": 12,
+      "popup_en": "Nb3 retreats the knight from the central challenge.",
       "move": "Nb3",
       "popup": "Nb3 马后退"
     },
     {
       "index": 13,
+      "popup_en": "...Be6 develops the bishop.",
       "move": "Be6",
       "popup": "Be6 象发展"
     },
     {
       "index": 14,
+      "popup_en": "f3 reinforces White's center.",
       "move": "f3",
       "popup": "f3 巩固"
     },
     {
       "index": 15,
+      "popup_en": "...Be7 develops the bishop and prepares to castle.",
       "move": "Be7",
       "popup": "Be7"
     },
     {
       "index": 16,
+      "popup_en": "Qd2 prepares White's queenside castling and kingside attack.",
       "move": "Qd2",
       "popup": "Qd2"
     },
     {
       "index": 17,
+      "popup_en": "...O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O"
     },
     {
       "index": 18,
+      "popup_en": "O-O-O! White castles long, beginning the opposite-wing attack.",
       "move": "O-O-O",
       "popup": "O-O-O！后翼易位"
     },
     {
       "index": 19,
+      "popup_en": "...Nbd7 develops the knight and supports Black's setup.",
       "move": "Nbd7",
       "popup": "Nbd7"
     },
     {
       "index": 20,
+      "popup_en": "g4! White begins the kingside pawn storm.",
       "move": "g4",
       "popup": "g4！翼攻开始"
     },
     {
       "index": 21,
+      "popup_en": "...b5! Black launches the queenside counterattack, using the preparation from ...a6.",
       "move": "b5",
       "popup": "b5！侧翼反击！\na6铺路后的爆发"
     },
     {
       "index": 22,
+      "popup_en": "g5! White continues the kingside attack.",
       "move": "g5",
       "popup": "g5！继续翼攻"
     },
     {
       "index": 23,
+      "popup_en": "...Nh5 retreats the knight.",
       "move": "Nh5",
       "popup": "Nh5 马撤退"
     },
     {
       "index": 24,
+      "popup_en": "Nd5! White's knight occupies a central outpost.",
       "move": "Nd5",
       "popup": "Nd5！白马占中心"
     },
     {
       "index": 25,
+      "popup_en": "Bxd5 exchanges the knight.",
       "move": "Bxd5",
       "popup": "Bxd5 兑换"
     },
     {
       "index": 26,
+      "popup_en": "exd5 recaptures and restores a pawn in the center.",
       "move": "exd5",
       "popup": "exd5"
     },
     {
       "index": 27,
+      "popup_en": "...Nb6 activates the knight and seeks new routes.",
       "move": "Nb6",
       "popup": "Nb6 马激活"
     }

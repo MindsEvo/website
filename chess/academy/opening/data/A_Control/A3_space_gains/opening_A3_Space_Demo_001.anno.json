@@ -2,6 +2,7 @@
   "game_id": "A3_Space_Demo_001",
   "description": "法国推进变 C02 — 空间压缩直观演示",
   "intro": {
+    "popup_en": "This game demonstrates spatial control. On move three, White advances e5 and confines Black's pieces to the back three ranks. Compare how much room each side has to maneuver.",
     "flash_squares": [
       "e5",
       "d5",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The pawn on e5 acts like a wall, leaving Black's pieces with only the back three ranks. A space advantage means having more room for your own pieces while restricting the opponent.",
     "popup": "e5兵像一堵墙，黑方活动区域只剩后三排。\n空间优势就是己方又更多的空间， 压迫对方的空间。",
     "voice": true
   },
@@ -28,6 +30,7 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center and prepares to gain space.",
       "popup": "▶️ <b>e4</b><br>白方占领中心，准备建立空间",
       "highlights": [
         {
@@ -52,6 +55,7 @@
     {
       "index": 1,
       "move": "e6",
+      "popup_en": "...e6 begins the French Defense and supports d5. The pawn also restricts Black's bishop on c8.",
       "popup": "▶️ <b>e6</b><br>法国防御——黑方用e6防守d5<br>注意：e6兵将来会限制黑方c8象的活动！",
       "highlights": [
         {
@@ -70,6 +74,7 @@
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4! White establishes the ideal two-pawn center with e4 and d4.",
       "popup": "▶️ <b>d4</b><br>白方建立双兵中心e4+d4<br>这是白方的理想阵型",
       "highlights": [
         {
@@ -92,6 +97,7 @@
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5 challenges the center and attacks e4. How should White respond?",
       "popup": "▶️ <b>d5</b><br>黑方争夺中心！<br>现在e4兵受到威胁，白方怎么应对？",
       "highlights": [
         {
@@ -114,6 +120,7 @@
     {
       "index": 4,
       "move": "e5",
+      "popup_en": "e5! White advances instead of exchanging. The pawn blocks Black's best square on f6 and cramps the pieces behind it.",
       "popup": "🚀 <b>e5！关键步骤！</b><br>白方不交换，直接推进！<br>观察：黑方原本最好的格子 f6 被封锁了<br>黑方所有棋子都要被挤到后面！",
       "highlights": [
         {
@@ -143,6 +150,7 @@
     {
       "index": 5,
       "move": "c5",
+      "popup_en": "...c5 seeks counterplay by attacking d4, a classic way for Black to challenge the French pawn chain.",
       "popup": "▶️ <b>c5</b><br>黑方寻找反击！攻击白方d4<br>这是法国防御中寻找出路的经典手段",
       "highlights": [
         {
@@ -165,6 +173,7 @@
     {
       "index": 6,
       "move": "c3",
+      "popup_en": "c3 reinforces d4 and avoids passivity. White's center is securely supported.",
       "popup": "▶️ <b>c3</b><br>白方巩固d4，拒绝被动<br>子力支撑！c3保护d4，白方阵型很稳固",
       "highlights": [
         {
@@ -187,6 +196,7 @@
     {
       "index": 7,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops the b8-knight. Notice that the g8-knight can no longer use its natural f6-square because White's e5-pawn controls it.",
       "popup": "▶️ <b>Nc6</b><br>黑方b8马走到c6<br>注意g8马：e5之前本可走Nf6，现在f6被封锁了！",
       "highlights": [
         {
@@ -210,6 +220,7 @@
     {
       "index": 8,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and supports e5. White has plenty of room on the fourth and fifth ranks for maneuvering.",
       "popup": "▶️ <b>Nf3</b><br>白方出动马，支援e5兵<br>白方第4-5排有很多空间可供棋子活动",
       "highlights": [
         {
@@ -233,6 +244,7 @@
     {
       "index": 9,
       "move": "Bd7",
+      "popup_en": "...Bd7 is a constrained developing move, with few attractive squares available. Compare it with the more active bishop on c5 in Demo 002.",
       "popup": "▶️ <b>Bd7</b><br>黑方被迫走Bd7——只有这里可去<br>对比Demo 002中的黑方象Bc5，Bd7的位置差多了！",
       "highlights": [
         {
@@ -251,6 +263,7 @@
     {
       "index": 10,
       "move": "Be2",
+      "popup_en": "Be2 develops calmly and coordinates with White's other pieces. None of White's pieces is isolated.",
       "popup": "▶️ <b>Be2</b><br>白方稳步发展，一切棋子配合到位<br>注意：白方没有一个棋子是孤立的",
       "highlights": [
         {
@@ -270,6 +283,7 @@
     {
       "index": 11,
       "move": "Nge7",
+      "popup_en": "...Nge7 is an awkward route for the g8-knight because f6 is blocked. Black's pieces are crowded on the back three ranks and have little room to maneuver.",
       "popup": "▶️ <b>Nge7</b><br>g8马只能委屈走到e7，f6去不了<br>现在黑方的棋子都挤在后三排，活动极其受限",
       "highlights": [
         {
@@ -293,6 +307,7 @@
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O completes the position. White's king is safe, the pieces are coordinated, and White has a clear space advantage: White controls ranks three through five, while Black's pieces are crowded on ranks six through eight. This is the space gained by e5.",
       "popup": "✅ <b>O-O — 总结局面</b><br>白方王安全，棋子协调，空间优势明显<br>• 白方控制第3-5排<br>• 黑方棋子全挤在第6-8排<br>• 这就是e5带来的空间压制！",
       "highlights": [
         {

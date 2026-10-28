@@ -8,10 +8,12 @@
       "f3",
       "e3"
     ],
+    "popup_en": "Rapid Development, Lesson 3: The queen is the most valuable major piece, worth about nine points. See the cost of bringing it out too early: White plays Qh5 on move two.",
     "popup": "快速出子第3课\n后是9分的最大重子\n今天看看，过早出动的代价！\n白方将走Qh5——仅第2步就出后！",
     "voice": true
   },
   "outro": {
+    "popup_en": "The early queen loses time: ...g6, a one-point pawn, drives the queen from h5, and ...Nd4, a three-point knight, drives it again from f3. The queen is powerful but becomes a burden when exposed. Develop minor pieces first and let the queen support them from behind.",
     "popup": "总结：后早出的代价\nQh5被g6（1分兵）追→浪费1步先手\nQf3被Nd4（3分马）追→浪费1步先手\n后是最强子，却成了最大的包袱\n正确做法：先出轻子，后在后方保护",
     "voice": true
   },
@@ -23,16 +25,19 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center on White's first move.",
       "popup": "e4占领中心\n开局第一步"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 also occupies the center.",
       "popup": "e5对称\n黑方也占中心"
     },
     {
       "index": 2,
       "move": "Qh5",
+      "popup_en": "Qh5?! White brings out the queen on move two. It attacks e5 and threatens Qxe5+ or Qxf7 mate, but the queen is exposed and can be chased by minor pieces.",
       "highlights": [
         {
           "squares": [
@@ -48,16 +53,19 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's first minor piece, protects e5, and prepares to meet the queen's threats.",
       "popup": "Nc6出动\n黑方第1个轻子\n保护e5兵，同时做好迎接后续的准备"
     },
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "Bc4 develops White's bishop.",
       "popup": "Bc4发展\n白方象出动"
     },
     {
       "index": 5,
       "move": "g6",
+      "popup_en": "...g6! A one-point pawn attacks the nine-point queen. White must move the queen, losing a tempo while Black gains development time.",
       "highlights": [
         {
           "squares": [
@@ -72,6 +80,7 @@
     {
       "index": 6,
       "move": "Qf3",
+      "popup_en": "Qf3 is the queen's second move. Instead, White could have developed Nf3. The queen has moved twice while White has developed no minor pieces, losing a tempo.",
       "highlights": [
         {
           "squares": [
@@ -86,36 +95,43 @@
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6! Black develops a second minor piece while attacking e4. White has spent two moves on the queen; Black has developed two pieces.",
       "popup": "Nf6！黑方第2个轻子出动\n发展出子，同时攻击e4\n对比白方：后用了2步，黑方出了2个轻子"
     },
     {
       "index": 8,
       "move": "d3",
+      "popup_en": "d3 stabilizes the center and prepares to develop the bishops and knights.",
       "popup": "d3稳固中心\n为象和马的发展做准备"
     },
     {
       "index": 9,
       "move": "Bg7",
+      "popup_en": "...Bg7! Black develops a third minor piece and controls the long diagonal. Black brings out a new piece with each move.",
       "popup": "Bg7！黑方第3个轻子出动\n象到g7，控制长对角线\n黑方每步都在出新子"
     },
     {
       "index": 10,
       "move": "Ne2",
+      "popup_en": "Ne2 finally develops White's first knight. Because the queen occupies f3, the knight cannot use its natural Nf3 square; the early queen move has obstructed development.",
       "popup": "Ne2出动\n白方终于出第1个马\n注意：因为后占着f3，马只能走Ne2而不是Nf3\n后的早出连马的发展位置都被占了！"
     },
     {
       "index": 11,
       "move": "d6",
+      "popup_en": "...d6 stabilizes the center and opens a diagonal for Black's bishop.",
       "popup": "d6稳固\n黑方第4步：巩固中心\n为象的出动打开通道"
     },
     {
       "index": 12,
       "move": "Nbc3",
+      "popup_en": "Nbc3 develops White's second knight.",
       "popup": "Nbc3出动\n白方第2个马出动"
     },
     {
       "index": 13,
       "move": "Be6",
+      "popup_en": "...Be6! Black develops the fourth minor piece and attacks White's bishop on c4. Black is ready to castle.",
       "highlights": [
         {
           "squares": [
@@ -130,11 +146,13 @@
     {
       "index": 14,
       "move": "Bg5",
+      "popup_en": "Bg5 develops White's bishop and pins Nf6.",
       "popup": "Bg5出动\n白方象出动，牵制Nf6"
     },
     {
       "index": 15,
       "move": "Nd4",
+      "popup_en": "...Nd4! The knight attacks White's queen again. First ...g6 drove it from h5 to f3; now ...Nd4 forces another retreat from f3. Do not trade a nine-point queen for a three-point knight.",
       "highlights": [
         {
           "squares": [
@@ -150,6 +168,7 @@
     {
       "index": 16,
       "move": "Qe3",
+      "popup_en": "Qe3 is the queen's third move: Qh5-f3-e3. Those three tempi could have developed three minor pieces. Worse, ...Nxe2 is also threatened, leaving White under pressure.",
       "highlights": [
         {
           "squares": [
@@ -164,6 +183,7 @@
     {
       "index": 17,
       "move": "Nxe2",
+      "popup_en": "...Nxe2! Black's knight captures White's knight on e2 and initiates an exchange.",
       "highlights": [
         {
           "squares": [
@@ -178,11 +198,13 @@
     {
       "index": 18,
       "move": "Nxe2",
+      "popup_en": "Nxe2 recaptures and completes the exchange.",
       "popup": "白方吃掉黑马， 交换"
     },
     {
       "index": 19,
       "move": "O-O",
+      "popup_en": "...O-O! Black castles with all four minor pieces developed and the king safe. White has spent three tempi moving the queen and is behind in development.",
       "highlights": [
         {
           "squares": [
@@ -198,16 +220,19 @@
     {
       "index": 20,
       "move": "O-O",
+      "popup_en": "O-O finally secures White's king, but the cost of the early queen sortie has already been paid.",
       "popup": "O-O白方也易位\n但代价已经付出了"
     },
     {
       "index": 21,
       "move": "c6",
+      "popup_en": "...c6 reinforces Black's position.",
       "popup": "c6巩固\n黑方稳固"
     },
     {
       "index": 22,
       "move": "d4",
+      "popup_en": "d4 advances in the center. Review the queen's route: Qh5-f3-e3 used three tempi. In the same time, Black developed Nf6, Bg7, and Be6. The queen is strongest when it supports developed pieces from the rear, not when it becomes an early target.",
       "highlights": [
         {
           "squares": [

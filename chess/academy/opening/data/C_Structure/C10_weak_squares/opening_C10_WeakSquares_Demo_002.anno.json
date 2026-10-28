@@ -8,10 +8,12 @@
       "h4",
       "b7"
     ],
+    "popup_en": "Bishops and Weak Squares, Lesson 2: A bishop is a long-range sniper, applying pressure along a diagonal without approaching the target. White's bishop on h4 controls light squares, while Black's bishop on b7 targets White's position. The better-placed bishop controls more weaknesses.",
     "popup": "象对弱色格的控制 第2课\n\n象是远程狙击手—\n不需要靠近，沿对角线长期施压\n\nBh4守护白格，Bb7射向白方阵地\n谁的象更好，谁控制更多弱格！",
     "voice": true
   },
   "outro": {
+    "popup_en": "White keeps the bishop on h4 to control light squares, while Black's bishop on b7 controls the long diagonal. After dxc5, the d5-square loses its black pawn defender. A bishop's color determines which color complex it can control.",
     "popup": "象的弱格控制小结\n✅ Bh4守护白格，不轻易兑换\n✅ Bb7黑格象控制长对角线\n✅ dxc5后d5格失去黑兵守护\n\n核心原则：\n象的颜色 = 它能控制的弱格颜色",
     "voice": true
   },
@@ -26,36 +28,43 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 controls the center.",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
       "move": "d5",
+      "popup_en": "...d5 mirrors White's move and creates a solid queenside pawn structure.",
       "popup": "d5对称防守\n坚固的后翼兵型"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4 expands on the queenside and begins the Queen's Gambit.",
       "popup": "c4翼侧扩张\n后翼弃兵变例开始"
     },
     {
       "index": 3,
       "move": "e6",
+      "popup_en": "...e6 reinforces d5 and prepares minor-piece development.",
       "popup": "e6稳固d5\n准备轻子发展"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops a knight.",
       "popup": "Nc3发展马"
     },
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and prepares castling.",
       "popup": "Nf6发展马\n准备入城"
     },
     {
       "index": 6,
       "move": "Bg5",
+      "popup_en": "Bg5! The key move of the D53 setup pins Nf6 and prepares to pressure d5 after cxd5.",
       "popup": "Bg5！D53变例核心\n牵制Nf6，准备cxd5后压d5",
       "highlights": [
         {
@@ -71,31 +80,37 @@
     {
       "index": 7,
       "move": "Be7",
+      "popup_en": "...Be7 remains flexible. Black does not chase the bishop with ...h6 yet.",
       "popup": "Be7灵活\n不用h6赶象，保留弹性"
     },
     {
       "index": 8,
       "move": "e3",
+      "popup_en": "e3 reinforces White's center.",
       "popup": "e3加强中心"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "...O-O castles first and secures Black's king.",
       "popup": "O-O率先入城\n王安全"
     },
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3发展马"
     },
     {
       "index": 11,
       "move": "h6",
+      "popup_en": "...h6 questions the bishop and asks White to clarify its intention.",
       "popup": "h6试探白象\n逼白象表态"
     },
     {
       "index": 12,
       "move": "Bh4",
+      "popup_en": "Bh4! White preserves the bishop instead of exchanging it for Nf6. The bishop continues to control the weak light squares along the d8-h4 diagonal.",
       "popup": "Bh4！保留象\n不与Nf6兑换\n这个象守护d8-h4对角线弱格",
       "highlights": [
         {
@@ -110,11 +125,13 @@
     {
       "index": 13,
       "move": "b6",
+      "popup_en": "...b6 prepares ...Bb7 and Black's dark-squared bishop plan.",
       "popup": "b6准备Bb7\n黑方建立黑格象计划"
     },
     {
       "index": 14,
       "move": "Bd3",
+      "popup_en": "Bd3 develops and targets h7.",
       "popup": "Bd3发展象\n瞄准h7",
       "highlights": [
         {
@@ -129,6 +146,7 @@
     {
       "index": 15,
       "move": "Bb7",
+      "popup_en": "...Bb7! Black's dark-squared bishop controls the long diagonal toward g2, demonstrating how a bishop can pressure weak squares from afar.",
       "popup": "Bb7建立长斜线！\n黑格象沿b7-g2方向施压\n这就是象控制弱格的威力",
       "highlights": [
         {
@@ -144,21 +162,25 @@
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O白方入城"
     },
     {
       "index": 17,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops the other knight and prepares ...c5.",
       "popup": "Nbd7发展重马\n准备c5冲击"
     },
     {
       "index": 18,
       "move": "Qe2",
+      "popup_en": "Qe2 coordinates the center and connects the rooks.",
       "popup": "Qe2中心协调\n连接双车"
     },
     {
       "index": 19,
       "move": "c5",
+      "popup_en": "...c5! Black challenges d4. If White captures with dxc5, the d5-square may become weak.",
       "popup": "c5冲击！\n黑方挑战d4中心\n若dxc5→d5弱格暴露",
       "highlights": [
         {
@@ -173,6 +195,7 @@
     {
       "index": 20,
       "move": "Rfd1",
+      "popup_en": "Rfd1! The rook supports d4 and prepares for Black's ...c4 push, which could disrupt White's center.",
       "popup": "Rfd1！关键一步\n车到d1守护d4\n预防黑方c4后扰乱中心",
       "highlights": [
         {
@@ -187,11 +210,13 @@
     {
       "index": 21,
       "move": "Rc8",
+      "popup_en": "...Rc8 places the rook on the c-file and prepares ...c4.",
       "popup": "Rc8车到c列\n准备c4冲击"
     },
     {
       "index": 22,
       "move": "dxc5",
+      "popup_en": "dxc5 opens the position. The d5-square no longer has a black pawn defending it and may become an ideal outpost for White's knight.",
       "popup": "dxc5打开局面\n此后d5格无黑兵守护\nd5成为白马的绝佳弱格",
       "highlights": [
         {
