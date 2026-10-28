@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 3,
   "concept": "弃后在安娜斯塔西亚杀中的作用",
+  "concept_en": "The Queen Sacrifice in Anastasia's Mate",
   "question_cn": "安娜斯塔西亚杀组合中常见弃后手法（如Qxh7+），目的是什么？",
+  "question_en": "In an Anastasia's-mate combination, what is the purpose of a queen sacrifice such as Qxh7+?",
   "options": [
     {
       "key": "A",
-      "text_cn": "换掉对方的后，获得兵力优势"
+      "text_cn": "换掉对方的后，获得兵力优势",
+      "text_en": "Trade queens to gain a pawn advantage"
     },
     {
       "key": "B",
-      "text_cn": "把王从角落逼出来，进行后续攻击"
+      "text_cn": "把王从角落逼出来，进行后续攻击",
+      "text_en": "Drive the king out of the corner for a follow-up attack"
     },
     {
       "key": "C",
-      "text_cn": "引诱王来吃后，把王拉到边格，再由车将死"
+      "text_cn": "引诱王来吃后，把王拉到边格，再由车将死",
+      "text_en": "Lure the king into capturing the queen and onto an edge square, where the rook can deliver mate"
     },
     {
       "key": "D",
-      "text_cn": "后的位置影响车的将死路线，需要先移走"
+      "text_cn": "后的位置影响车的将死路线，需要先移走",
+      "text_en": "The queen blocks the rook's mating route and must be moved first"
     }
   ],
   "correct": "C",
   "explanation_cn": "弃后是安娜斯塔西亚杀组合中的引离手法：用后将军，引诱对方王来吃，把王拉到边线指定格子（如h7），然后由车沿边线完成将死。弃后是为了给车创造将死条件。",
+  "explanation_en": "The queen sacrifice is a deflection: it checks and tempts the king to capture the queen, drawing it onto a chosen edge square such as h7. The rook then mates along the edge; the sacrifice creates the mating setup.",
   "created_at": "2026-06-02"
 }

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-004",
   "description": "马移位开列，车闪击得马",
+  "explanation_en": "Moving the knight uncovers the rook's attack down the d-file, winning the opposing knight.",
   "intro": {
     "flash_squares": ["d4", "f3", "d2", "d5"],
     "popup": "💡 <b>闪击</b>：白马在d4，白车在d2，黑马在d5。马走开，能让车闪击d5黑马吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's knight is on d4, rook on d2, and Black's knight on d5. Can the knight move to uncover the rook's attack on d5?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nf3！马离开d4，车d2对准d5黑马——闪击赢马！",
+    "popup_en": "✅ <b>Key idea</b>: Nf3 moves the knight away from d4, uncovering the rook's attack on Black's knight at d5.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nf3",
       "popup": "白马Nf3！马离开d4，d列打通：白车d2直接攻击d5黑马！",
+      "popup_en": "White moves the knight to f3, clearing the d-file so the rook on d2 attacks Black's knight on d5.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Re3",
       "popup": "黑车Re3试图反击，但黑马d5已无法兼顾。",
+      "popup_en": "Black's rook moves to e3 to counterattack, but the knight on d5 remains under threat.",
       "highlights": [
         {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rxd5",
       "popup": "白车Rxd5！闪击成功——马走开，车得马！",
+      "popup_en": "White's rook captures on d5. The discovered attack succeeds, and White wins the knight.",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
       ],

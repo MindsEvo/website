@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-007",
   "description": "白方利用底线杀威胁逼迫黑后疲于应付，车换后获优势",
+  "explanation_en": "White uses the back-rank threat to tie down Black's queen, then sacrifices a rook to win it.",
   "intro": {
     "flash_squares": ["g8", "c8", "e8", "d4", "e2", "e1"],
     "popup": "💡 <b>底线弱点</b>：黑王在g8，底线有双车（c8、e8），看似安全。但白方如何利用底线将杀的威胁，迫使黑方处处受制？",
+    "popup_en": "💡 <b>Back-rank weakness</b>: Black's king is on g8, apparently safe behind rooks on c8 and e8. How can White use the mating threat to tie Black down?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白方用Qg4、Qc4等反复调动，迫使黑后守底线。牺牲a兵诱后离位，Re4换掉黑后——底线威胁是整个策略的核心。",
+    "popup_en": "✅ <b>Key idea</b>: Moves such as Qg4 and Qc4 keep Black's queen tied to the back rank. The a-pawn sacrifice lures it away, allowing Re4 to win the queen; the back-rank threat drives the whole plan.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qg4",
       "popup": "白后Qg4！瞄准g7，同时威胁底线。黑方必须认真应对。",
+      "popup_en": "Qg4! White targets g7 and also threatens the back rank. Black must respond carefully.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 5,
       "move": "a4",
       "popup": "关键！白方推a4兵，引诱黑后离开守底线的位置。",
+      "popup_en": "A key move! White advances the a-pawn to lure the black queen away from its back-rank defense.",
       "highlights": [
         {"squares": ["a4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 6,
       "move": "Qxa4",
       "popup": "黑后吃兵！但这让黑方底线暂时无后防守。",
+      "popup_en": "The black queen captures the pawn, but the back rank is now temporarily without its defense.",
       "highlights": [
         {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e8", "c8"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 7,
       "move": "Re4",
       "popup": "白车Re4！攻击黑后，黑方只能用后吃车——这正是白方的目的！",
+      "popup_en": "Re4! White attacks the queen, which must capture the rook. That is exactly what White intended.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 8,
       "move": "Qxe4",
       "popup": "黑后吃车——但白方用车换后，获得巨大材料优势。",
+      "popup_en": "The queen captures the rook, but White has traded a rook for the queen and gained a large material advantage.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -80,6 +88,7 @@
       "index": 9,
       "move": "Rxe4",
       "popup": "Rxe4！白方用车换后，底线威胁始终是推动黑方失误的关键。",
+      "popup_en": "Rxe4! White completes the rook-for-queen exchange. The back-rank threat was the key to provoking Black's concession.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

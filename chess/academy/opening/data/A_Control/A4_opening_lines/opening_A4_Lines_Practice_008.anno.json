@@ -4,10 +4,12 @@
   "intro": {
     "flash_squares": ["d5", "d8", "d1", "e5"],
     "popup": "线路控制第8课\n封闭对方的线路！\n不只是占线——\n有时候封住对手的线路更有力",
+    "popup_en": "Line Control, Lesson 8\nClose the opponent's lines!\nControl is not only about occupying an open file; sometimes blocking the opponent's route is more powerful.",
     "voice": true
   },
   "outro": {
     "popup": "封线总结\nd5一推，d线被封死\n封线=剥夺对手的线路资源\n攻守兼备的线路控制！",
+    "popup_en": "Summary: d5 completely blocks the d-file. Closing a line denies the opponent access to its resources. Line control can serve both attack and defense.",
     "voice": true
   },
   "board_always": {
@@ -18,123 +20,146 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 opens with a queenside pawn and occupies the center.",
       "popup": "d4后翼开局\n占领中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks e4.",
       "popup": "Nf6发展\n攻击e4"
     },
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "c4 challenges d5 and fights for central space in the Queen's Gambit setup.",
       "popup": "c4后翼弃兵\n争夺d5"
     },
     {
       "index": 3,
       "move": "e6",
+      "popup_en": "...e6 reinforces Black's position and prepares ...Bb4, the Nimzo-Indian idea.",
       "popup": "e6稳固\n准备Bb4尼姆佐"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and increases White's control of d5.",
       "popup": "Nc3发展\n控制d5"
     },
     {
       "index": 5,
       "move": "Bb4",
+      "popup_en": "...Bb4! The Nimzo-Indian bishop pins the knight on c3, restricting White's control of the center.",
       "highlights": [{"squares": ["b4", "c3"], "color": "#E5393544"}],
       "popup": "Bb4！尼姆佐印度\n钉住c3马\n黑方牵制白方中心控制"
     },
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "e3 reinforces d4 and supports White's center.",
       "popup": "e3稳固\n支持d4"
     },
     {
       "index": 7,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king first.",
       "popup": "O-O王车易位\n黑方先安全"
     },
     {
       "index": 8,
       "move": "Bd3",
+      "popup_en": "Bd3 develops and prepares a central advance.",
       "popup": "Bd3发展\n准备中心推进"
     },
     {
       "index": 9,
       "move": "d5",
+      "popup_en": "...d5 challenges the center and gains space. The d-file may soon open.",
       "highlights": [{"squares": ["d5", "c4", "e4"], "color": "#00BCD444"}],
       "popup": "d5反击中心\n黑方争夺空间\n注意：d线即将打开"
     },
     {
       "index": 10,
       "move": "Nf3",
+      "popup_en": "Nf3 completes White's minor-piece development.",
       "popup": "Nf3发展\n白方出子完成"
     },
     {
       "index": 11,
       "move": "c5",
+      "popup_en": "...c5 counterattacks d4. Black actively challenges White's center.",
       "highlights": [{"squares": ["c5", "d4"], "color": "#E5393544"}],
       "popup": "c5反击d4\n黑方积极对抗\n白方中心受压"
     },
     {
       "index": 12,
       "move": "O-O",
+      "popup_en": "O-O secures White's king and prepares for central exchanges.",
       "popup": "O-O白方易位\n准备应对中心兑换"
     },
     {
       "index": 13,
       "move": "dxc4",
+      "popup_en": "...dxc4 exchanges pawns and leaves the d-file semi-open. Black may use ...Rd8, so White needs a plan.",
       "highlights": [{"squares": ["d5", "c4", "d1", "d8"], "color": "#C6D50044"}],
       "popup": "dxc4兑换\nd线半开放！\n黑方Rd8将可以利用d线\n白方必须做出反应"
     },
     {
       "index": 14,
       "move": "Bxc4",
+      "popup_en": "Bxc4 recaptures. The bishop occupies c4 and pressures d5.",
       "popup": "Bxc4重提\n白象占c4，压制d5"
     },
     {
       "index": 15,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops and reinforces central control.",
       "popup": "Nc6发展\n增援中心"
     },
     {
       "index": 16,
       "move": "a3",
+      "popup_en": "a3! White challenges the bishop on b4, removes the pin, and prepares bxc3 followed by cxd4.",
       "highlights": [{"squares": ["a3", "b4"], "color": "#FF8F0055"}],
       "popup": "a3！驱逐b4象\n白方消除牵制\n为下一步bxc3后cxd4做准备"
     },
     {
       "index": 17,
       "move": "Bxc3",
+      "popup_en": "...Bxc3 exchanges the bishop for the knight and changes the pawn structure.",
       "popup": "Bxc3兑换\n黑方拆掉c3马\n双兵换了马+象"
     },
     {
       "index": 18,
       "move": "bxc3",
+      "popup_en": "bxc3 recaptures. White has a semi-open c-file but also doubled c-pawns.",
       "popup": "bxc3重提\nc线半开放，但白方有双联兵"
     },
     {
       "index": 19,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges on d4 and fully opens the d-file, giving Black a route for ...Rd8.",
       "highlights": [{"squares": ["c5", "d4", "d1", "d8"], "color": "#C6D50055"}],
       "popup": "cxd4！黑方兑换d4\nd线完全开放\n黑方Rd8将是强力棋"
     },
     {
       "index": 20,
       "move": "cxd4",
+      "popup_en": "cxd4 recaptures and rebuilds a pawn on d4, but the d-file is now open and Black can contest it.",
       "popup": "cxd4白方重提\nd4兵重建\n但d线已开，黑方虎视眈眈"
     },
     {
       "index": 21,
       "move": "e5",
+      "popup_en": "...e5 advances and attacks d4, increasing pressure along the open d-file. How can White stop Black from taking control with ...Rd8?",
       "highlights": [{"squares": ["e5", "d4", "d8"], "color": "#E5393555"}],
       "popup": "e5！黑方推进\n攻击d4，开放d线\n黑方将用Rd8控制d线\n白方如何阻止？"
     },
     {
       "index": 22,
       "move": "d5",
+      "popup_en": "d5! The pawn blocks the d-file completely and restricts e6. One move both closes the line and cramps Black's position, showing the strategic value of blocking an opponent's route.",
       "highlights": [{"squares": ["d5", "d4", "d8", "e6"], "color": "#C6D50066"}],
       "concept_arrows": [
         {"from": "d4", "to": "d5", "color": "#C6D500CC"},

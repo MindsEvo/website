@@ -1,13 +1,16 @@
 {
   "game_id": "tac_removalOfTheDefender_L1-006",
   "description": "后牺牲消除白马，打通绝杀路线",
+  "explanation_en": "A queen sacrifice removes the white knight and clears the path to checkmate.",
   "intro": {
     "flash_squares": ["d4", "f3", "e5", "c4"],
     "popup": "💡 <b>消除保护</b>：白马Nd4守住了f3格（可回防），阻止黑马Nf3+。黑方如何消除它？",
+    "popup_en": "💡 <b>Removing the defender</b>: White's knight on d4 guards f3 and prevents ...Nf3+. How can Black remove this defender?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qxd4后牺牲消除白马！Nf3+→Kf1→Bb5+→Qc4→Bxc4#，绝杀！",
+    "popup_en": "✅ <b>Key idea</b>: Qxd4 sacrifices the queen to remove the white knight. After ...Nf3+, Kf1, ...Bb5+, Qc4, Black finishes with ...Bxc4#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxd4",
       "popup": "后牺牲！Qxd4消除白马Nd4，为Nf3+开路。",
+      "popup_en": "A queen sacrifice! Qxd4 removes the knight on d4 and clears the way for ...Nf3+.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#2196F355", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Bxd4",
       "popup": "白象被迫吃后，马路已通！",
+      "popup_en": "The bishop is forced to capture the queen, and the knight's route is clear!",
       "highlights": [
         {"squares": ["d4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nf3+",
       "popup": "马入f3将军！白马已消除，此着得以实现。",
+      "popup_en": "The knight lands on f3 with check. Removing White's knight made this move possible.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Kf1",
       "popup": "国王逃往f1。",
+      "popup_en": "The king moves to f1.",
       "highlights": [
         {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "Bb5+",
       "popup": "象Bb5+！沿对角线将军，白后必须挡。",
+      "popup_en": "Bb5+! The bishop checks along the diagonal, and White's queen must block.",
       "highlights": [
         {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Qc4",
       "popup": "白后被迫挡将c4。",
+      "popup_en": "The white queen is forced to block the check on c4.",
       "highlights": [
         {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Bxc4#",
       "popup": "象Bxc4将杀！吃掉白后，将死。",
+      "popup_en": "Bxc4 is checkmate! The bishop captures the queen and mates the king.",
       "highlights": [
         {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

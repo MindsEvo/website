@@ -2,6 +2,7 @@
   "game_id": "C9_PawnChain_Practice_006",
   "description": "C18 — 法国防御温洩变例，双翼竞速最激烈形式",
   "intro": {
+    "popup_en": "Pawn-Chain Direction, Practice 6\nThe French Winawer becomes a race on opposite wings. ...Bb4 pins Nc3 and can leave doubled c-pawns, but White's pawn chain remains intact. White attacks kingside while Black targets the queenside: whose attack arrives first?",
     "flash_squares": [
       "e5",
       "d4",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Bxg4 opens the position and intensifies the fight between Black's queenside attack and White's kingside defense. Nd8 reroutes the knight, Nf7 probes, and g3 blocks it, leaving White with the better position.",
     "popup": "总结：Bxg4开放局面 → 后翼进攻与王翼防守激烈对抗\nNd8调整マ！Nf7刺探！g3封锁 → 白方位置优势",
     "voice": true
   },
@@ -44,11 +46,13 @@
     },
     {
       "index": 5,
+      "popup_en": "...Bb4 is the Winawer Variation, pinning Nc3.",
       "move": "Bb4",
       "popup": "Bb4温洩变例！钉住Nc3"
     },
     {
       "index": 6,
+      "popup_en": "e5! White establishes the French pawn chain while Nc3 is pinned by ...Bb4.",
       "move": "e5",
       "popup": "e5！温洩兵链形成！Bb4钉住Nc3\n白e5推进建立兵链",
       "highlights": [
@@ -63,11 +67,13 @@
     },
     {
       "index": 7,
+      "popup_en": "...c5! Black immediately attacks the base of White's pawn chain.",
       "move": "c5",
       "popup": "c5！黑立刻攻击根部"
     },
     {
       "index": 8,
+      "popup_en": "a3! White challenges the bishop and accepts doubled pawns in exchange for preserving the pawn chain. This is a strategic trade-off.",
       "move": "a3",
       "popup": "a3！逼兑！白接受双叠兵\n换取兵链完整——战略交换！",
       "highlights": [
@@ -86,6 +92,7 @@
     },
     {
       "index": 10,
+      "popup_en": "bxc3 leaves White with doubled pawns, but the pawn chain remains intact.",
       "move": "bxc3",
       "popup": "bxc3！叠兵但兵链完整！"
     },
@@ -115,21 +122,25 @@
     },
     {
       "index": 17,
+      "popup_en": "...c4 expands on the queenside.",
       "move": "c4",
       "popup": "c4！黑方后翼扩张"
     },
     {
       "index": 18,
+      "popup_en": "Re1 activates White's rooks.",
       "move": "Re1",
       "popup": "Re1双车激活"
     },
     {
       "index": 19,
+      "popup_en": "...h5 begins Black's kingside counterplay.",
       "move": "h5",
       "popup": "h5！黑方h侧反攻"
     },
     {
       "index": 20,
+      "popup_en": "Nd2 reroutes the knight in preparation for the f5 advance.",
       "move": "Nd2",
       "popup": "Nd2！调兵准备f5推进"
     },
@@ -143,31 +154,37 @@
     },
     {
       "index": 23,
+      "popup_en": "...g5 expands on the kingside and starts a direct attack.",
       "move": "g5",
       "popup": "g5！黑方逼进，g侧扩张"
     },
     {
       "index": 24,
+      "popup_en": "Ne3 reroutes White's knight toward the kingside.",
       "move": "Ne3",
       "popup": "Ne3调兵"
     },
     {
       "index": 25,
+      "popup_en": "...O-O-O! Black castles long, beginning the queenside race.",
       "move": "O-O-O",
       "popup": "O-O-O！黑方长易位，后翼竞速"
     },
     {
       "index": 26,
+      "popup_en": "Bxh5 wins the pawn on h5.",
       "move": "Bxh5",
       "popup": "Bxh5！白取h5兵"
     },
     {
       "index": 27,
+      "popup_en": "...g4! Black pushes the g-pawn aggressively.",
       "move": "g4",
       "popup": "g4！黑方g4！强力推进"
     },
     {
       "index": 28,
+      "popup_en": "Bxg4! White's bishop captures the pawn and opens the position. The opposite-wing race now shifts into a phase of exchanges and defensive coordination.",
       "move": "Bxg4",
       "popup": "Bxg4！白象取g4，开放局面\n双翼竞速进入消耗阶段",
       "highlights": [
@@ -182,36 +199,43 @@
     },
     {
       "index": 29,
+      "popup_en": "...f5 advances another pawn to support Black's attack.",
       "move": "f5",
       "popup": "f5！黑方推进f兵\n进一步激活后翼进攻路线"
     },
     {
       "index": 30,
+      "popup_en": "Bh5 retreats while maintaining pressure on f7.",
       "move": "Bh5",
       "popup": "Bh5！白象退守h5，保持对f7压力"
     },
     {
       "index": 31,
+      "popup_en": "...Be8 retreats the bishop and prepares to simplify.",
       "move": "Be8",
       "popup": "Be8！黑方象撤退保护，准备简化"
     },
     {
       "index": 32,
+      "popup_en": "Bxe8 removes Black's bishop and simplifies the position.",
       "move": "Bxe8",
       "popup": "Bxe8！消除黑象，简化局面"
     },
     {
       "index": 33,
+      "popup_en": "...Rdxe8 recaptures with the rook and takes control of the e-file.",
       "move": "Rdxe8",
       "popup": "Rdxe8！车夺回主动，控制e线"
     },
     {
       "index": 34,
+      "popup_en": "Nf1 reroutes White's knight toward the kingside.",
       "move": "Nf1",
       "popup": "Nf1！白马重新调整，准备转向王翼"
     },
     {
       "index": 35,
+      "popup_en": "...Rhg8 places the rook on the g-file for counterplay.",
       "move": "Rhg8",
       "popup": "Rhg8！车占g线，准备g线反攻",
       "highlights": [
@@ -226,6 +250,7 @@
     },
     {
       "index": 36,
+      "popup_en": "f4 reinforces White's e5-pawn chain and blocks Black's attacking routes.",
       "move": "f4",
       "popup": "f4！白方巩固e5兵链，封锁黑方进攻通道",
       "highlights": [
@@ -241,31 +266,37 @@
     },
     {
       "index": 37,
+      "popup_en": "...Ng6 jumps to an active square and attacks f4.",
       "move": "Ng6",
       "popup": "Ng6！黑马跳入活跃格，威胁f4"
     },
     {
       "index": 38,
+      "popup_en": "Re2 coordinates the rooks defensively and prevents Black's invasion.",
       "move": "Re2",
       "popup": "Re2！车集中守备，防止黑车入侵"
     },
     {
       "index": 39,
+      "popup_en": "...Nd8 reroutes the knight and clears c6 for Black's rook.",
       "move": "Nd8",
       "popup": "Nd8！马撤退d8，准备重新调整路线\n为黑车让出c6格"
     },
     {
       "index": 40,
+      "popup_en": "Rf2 coordinates the rooks and increases pressure along the f-file.",
       "move": "Rf2",
       "popup": "Rf2！双车联动，加强f路线压力"
     },
     {
       "index": 41,
+      "popup_en": "...Qh7 places the queen on the kingside and applies pressure there.",
       "move": "Qh7",
       "popup": "Qh7！黑后进攻h7，施压王翼"
     },
     {
       "index": 42,
+      "popup_en": "a4 expands on the queenside and discourages Black's ...b5 break.",
       "move": "a4",
       "popup": "a4！白方后翼扩展\n封锁黑方b5反击可能",
       "highlights": [
@@ -280,21 +311,25 @@
     },
     {
       "index": 43,
+      "popup_en": "...Nf7 probes White's defenses and threatens e5.",
       "move": "Nf7",
       "popup": "Nf7！黑马刺探f7！\n威胁e5并试探白方防守"
     },
     {
       "index": 44,
+      "popup_en": "Qe2 activates the queen, controls the e-file, and supports the center.",
       "move": "Qe2",
       "popup": "Qe2！白后活跃，控制e线 同时支持中心防守"
     },
     {
       "index": 45,
+      "popup_en": "...Nh4 threatens g2 and f3.",
       "move": "Nh4",
       "popup": "Nh4！黑马跳h4，直接威胁g2和f3"
     },
     {
       "index": 46,
+      "popup_en": "g3! White blocks the knight on h4 and consolidates the kingside. White's position is now clearly more comfortable.",
       "move": "g3",
       "popup": "g3！白方封锁Nh4！\n兵形巩固，白方阵地优势明显\n双翼竞速下白方最终占据上风！",
       "highlights": [

@@ -3,14 +3,17 @@
     "gene_id": "A1_pawn_center",
     "sequence": 4,
     "concept": "占领与控制中心",
+    "concept_en": "Occupying vs. Controlling the Center",
     "question_cn": "「占领中心」和「控制中心」有什么区别？",
+    "question_en": "What is the difference between occupying the center and controlling it?",
     "options": [
-        {"key": "A", "text_cn": "两者完全相同，没有区别"},
-        {"key": "B", "text_cn": "占领中心指把兵走进中心格；控制中心指用棋子或兵的威胁来影响中心，不必实际踏入"},
-        {"key": "C", "text_cn": "占领中心指用后控制中心；控制中心指用兵控制中心"},
-        {"key": "D", "text_cn": "占领中心适合初学者；控制中心只有高手才能做到"}
+        {"key": "A", "text_cn": "两者完全相同，没有区别", "text_en": "They mean exactly the same thing."},
+        {"key": "B", "text_cn": "占领中心指把兵走进中心格；控制中心指用棋子或兵的威胁来影响中心，不必实际踏入", "text_en": "Occupying the center means placing a pawn on a central square; controlling it means influencing those squares with pieces or pawn threats without occupying them."},
+        {"key": "C", "text_cn": "占领中心指用后控制中心；控制中心指用兵控制中心", "text_en": "Occupying the center means controlling it with the queen; controlling it means using pawns."},
+        {"key": "D", "text_cn": "占领中心适合初学者；控制中心只有高手才能做到", "text_en": "Occupying the center is for beginners; only experts can control it."}
     ],
     "correct": "B",
     "explanation_cn": "占领中心是指把兵直接走到 e4/d4 等格子。控制中心更广泛，包括用远距离的主教、后或兵的侧翼压制来影响中心格，不一定要兵站在那里。现代开局理论更强调动态控制中心。",
+    "explanation_en": "Occupying the center means moving a pawn directly to squares such as e4 or d4. Controlling it is broader: bishops, the queen, or flank pawns can influence central squares from a distance without a pawn standing there. Modern opening theory emphasizes dynamic central control.",
     "created_at": "2026-06-03"
 }

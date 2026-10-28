@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../i18n.css" />
+  <script src="../../i18n.js"></script>
   <link rel="stylesheet" href="../audio-settings.css" />
   <script src="../audio-settings.js"></script>
   <title>残局基础 | 残局入门</title>
@@ -1367,6 +1369,11 @@
       // user even though it's present in the data (dead field in the original app).
       var quizManifestCache = {};
       var currentQuizAnswer = null;
+      var currentQuizData = null;
+
+      function isEnglish() {
+        return window.ChessI18n && window.ChessI18n.getLanguage() === 'en';
+      }
 
       function findQuizItem(manifest, itemId) {
         for (var i = 0; i < manifest.categories.length; i++) {
@@ -1381,11 +1388,13 @@
       function renderQuizDropdownMenu(pieceDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = isEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           if (cat.items.length) {
             cat.items.forEach(function (item) {
-              html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+              var itemLabel = isEnglish() ? (item.label_en || item.label) : item.label;
+              html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
             });
           } else {
             html += '<div class="submenu-item disabled">暂无问答题</div>';
@@ -1459,37 +1468,57 @@
               renderBoardMatrix(parseFen(qdata.fen));
               clearOverlays();
             }
-            playStatus.textContent = '问答练习：' + (qdata.concept || '');
-            showQuizQuestion(qdata);
+            qdata.concept_en = qdata.concept_en || (item.label_en || '').replace(/^\d+\.\s*/, '');
+            currentQuizData = qdata;
+            playStatus.textContent = (isEnglish() ? 'Quiz: ' + (qdata.concept_en || qdata.concept || '') : '问答练习：' + (qdata.concept || ''));
+            showQuizQuestion(qdata, true);
           })
           .catch(function (e) {
             quizQuestion.textContent = '题目加载失败: ' + e.message;
           });
       }
 
-      function showQuizQuestion(qdata) {
+      function showQuizQuestion(qdata, announce) {
         currentQuizAnswer = qdata.correct;
         var seq = qdata.sequence || '';
-        var concept = qdata.concept || '';
-        var header = concept ? ('Q' + seq + '【' + concept + '】 ') : ('Q' + seq + ' ');
-        quizQuestion.textContent = header + (qdata.question_cn || '');
+        var english = isEnglish();
+        var concept = english ? (qdata.concept_en || qdata.concept || '') : (qdata.concept || '');
+        var question = english ? (qdata.question_en || qdata.question_cn || '') : (qdata.question_cn || '');
+        var header = concept ? ('Q' + seq + ' [' + concept + '] ') : ('Q' + seq + ' ');
+        quizQuestion.textContent = header + question;
         quizQuestion.classList.remove('empty');
 
         var optionsHtml = '';
         (qdata.options || []).forEach(function (opt) {
-          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + opt.text_cn + '</button>';
+          var optionText = english ? (opt.text_en || opt.text_cn || '') : (opt.text_cn || '');
+          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + optionText + '</button>';
         });
         quizOptions.innerHTML = optionsHtml;
         quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
           btn.addEventListener('click', function () { handleQuizAnswer(btn); });
         });
 
-        if (window.speechSynthesis && qdata.question_cn) {
-          var ut = new SpeechSynthesisUtterance(qdata.question_cn);
-          ut.lang = 'zh-CN';
+        if (announce && window.speechSynthesis && question) {
+          var ut = new SpeechSynthesisUtterance(question);
+          ut.lang = english ? 'en-US' : 'zh-CN';
           window.speechSynthesis.speak(ut);
         }
       }
+
+      window.addEventListener('chesslanguagechange', function () {
+        if (currentQuizData) {
+          var concept = isEnglish() ? (currentQuizData.concept_en || currentQuizData.concept || '') : (currentQuizData.concept || '');
+          playStatus.textContent = isEnglish() ? 'Quiz: ' + concept : '问答练习：' + concept;
+          showQuizQuestion(currentQuizData, false);
+        }
+        QUIZ_PIECE_DEFS.forEach(function (pieceDef) {
+          var menuEl = document.getElementById('menuQuiz' + pieceDef.key.toUpperCase());
+          if (menuEl.classList.contains('open') && quizManifestCache[pieceDef.key]) {
+            renderQuizDropdownMenu(pieceDef, quizManifestCache[pieceDef.key], menuEl);
+            menuEl.classList.add('open');
+          }
+        });
+      });
 
       // Matches the source's retry-until-correct behaviour: a wrong pick only disables
       // ITSELF (others remain clickable), a correct pick disables everything.

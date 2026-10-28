@@ -2,105 +2,129 @@
     "categories":  [
                        {
                            "label":  "透视攻击",
+                        "label_en": "X-Ray Attack",
                            "key":  "xRayAttack",
                            "items":  [
                                          {
                                              "id":  "tac_xRayAttack_L1-quiz-001",
-                                             "label":  "透视攻击的定义"
+                                "label": "透视攻击的定义",
+                                "label_en": "Defining an X-Ray Attack"
                                          },
                                          {
                                              "id":  "tac_xRayAttack_L1-quiz-002",
-                                             "label":  "透视攻击的适用棋子"
+                                "label": "透视攻击的适用棋子",
+                                "label_en": "Pieces That Can Deliver an X-Ray Attack"
                                          },
                                          {
                                              "id":  "tac_xRayAttack_L1-quiz-003",
-                                             "label":  "透视攻击与牵制的区别"
+                                "label": "透视攻击与牵制的区别",
+                                "label_en": "X-Ray Attack vs. Pin"
                                          },
                                          {
                                              "id":  "tac_xRayAttack_L1-quiz-004",
-                                             "label":  "透视攻击的常见用途"
+                                "label": "透视攻击的常见用途",
+                                "label_en": "Common Uses of X-Ray Attacks"
                                          },
                                          {
                                              "id":  "tac_xRayAttack_L1-quiz-005",
-                                             "label":  "透视攻击的防御方法"
+                                "label": "透视攻击的防御方法",
+                                "label_en": "Defending Against an X-Ray Attack"
                                          }
                                      ]
                        },
                        {
                            "label":  "拦截",
+                           "label_en": "Interference",
                            "key":  "interference",
                            "items":  [
                                          {
                                              "id":  "tac_interference_L1-quiz-001",
-                                             "label":  "拦截战术的本质"
+                                              "label":  "拦截战术的本质",
+                                              "label_en": "The Core Idea of Interference"
                                          },
                                          {
                                              "id":  "tac_interference_L1-quiz-002",
-                                             "label":  "拦截的攻击对象"
+                                              "label":  "拦截的攻击对象",
+                                              "label_en": "What Does Interference Attack?"
                                          },
                                          {
                                              "id":  "tac_interference_L1-quiz-003",
-                                             "label":  "拦截成立的关键条件"
+                                              "label":  "拦截成立的关键条件",
+                                              "label_en": "The Key Requirement for Interference"
                                          },
                                          {
                                              "id":  "tac_interference_L1-quiz-004",
-                                             "label":  "拦截 vs 引离的本质区别"
+                                              "label":  "拦截 vs 引离的本质区别",
+                                              "label_en": "Interference vs. Deflection"
                                          },
                                          {
                                              "id":  "tac_interference_L1-quiz-005",
-                                             "label":  "识别拦截机会的思路"
+                                              "label":  "识别拦截机会的思路",
+                                              "label_en": "How to Spot an Interference Opportunity"
                                          }
                                      ]
                        },
                        {
                            "label":  "中间招",
+                           "label_en": "Intermezzo",
                            "key":  "intermezzo",
                            "items":  [
                                          {
                                              "id":  "tac_intermezzo_L1-quiz-001",
-                                             "label":  "中间招的本质"
+                                               "label":  "中间招的本质",
+                                               "label_en": "The Core Idea of an Intermezzo"
                                          },
                                          {
                                              "id":  "tac_intermezzo_L1-quiz-002",
-                                             "label":  "挂子与中间招的关系"
+                                               "label":  "挂子与中间招的关系",
+                                               "label_en": "Loose Pieces and the Intermezzo"
                                          },
                                          {
                                              "id":  "tac_intermezzo_L1-quiz-003",
-                                             "label":  "中间招的触发条件"
+                                               "label":  "中间招的触发条件",
+                                               "label_en": "When to Look for an Intermezzo"
                                          },
                                          {
                                              "id":  "tac_intermezzo_L1-quiz-004",
-                                             "label":  "中间招 vs 直接换子"
+                                               "label":  "中间招 vs 直接换子",
+                                               "label_en": "Intermezzo vs. Immediate Recapture"
                                          },
                                          {
                                              "id":  "tac_intermezzo_L1-quiz-005",
-                                             "label":  "识别中间招的三步思路"
+                                               "label":  "识别中间招的三步思路",
+                                               "label_en": "A Three-Step Method for Finding an Intermezzo"
                                          }
                                      ]
                        },
                        {
                            "label":  "腾挪",
+                           "label_en": "Clearance",
                            "key":  "clearance",
                            "items":  [
                                          {
                                              "id":  "tac_clearance_L1-quiz-001",
-                                             "label":  "腾挪战术的本质"
+                                             "label":  "腾挪战术的本质",
+                                             "label_en": "The Core Idea of Clearance"
                                          },
                                          {
                                              "id":  "tac_clearance_L1-quiz-002",
-                                             "label":  "腾挪 vs 闪击的区别"
+                                             "label":  "腾挪 vs 闪击的区别",
+                                             "label_en": "Clearance vs. Discovered Attack"
                                          },
                                          {
                                              "id":  "tac_clearance_L1-quiz-003",
-                                             "label":  "腾挪的强制性——牺牲腾挪"
+                                             "label":  "腾挪的强制性——牺牲腾挪",
+                                             "label_en": "Forcing Clearance with a Sacrifice"
                                          },
                                          {
                                              "id":  "tac_clearance_L1-quiz-004",
-                                             "label":  "兵升变腾挪"
+                                             "label":  "兵升变腾挪",
+                                             "label_en": "Promotion as a Clearance Tactic"
                                          },
                                          {
                                              "id":  "tac_clearance_L1-quiz-005",
-                                             "label":  "识别腾挪机会的思路"
+                                             "label":  "识别腾挪机会的思路",
+                                             "label_en": "How to Spot a Clearance Opportunity"
                                          }
                                      ]
                        }

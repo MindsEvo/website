@@ -9,10 +9,12 @@
       "e5"
     ],
     "popup": "黑方已被d5封锁，第10步走f5。\n这是安全扩展还是冒进？检查子力是否支撑这步棋。",
+    "popup_en": "Black's center has been locked by d5, and Black now plays ...f5. Is this a safe expansion or an overreach? Check whether the pieces support it.",
     "voice": true
   },
   "outro": {
     "popup": "f5之前黑方已有Ne7重新部署，支撑了这步扩展。\n时机判断正确的扩展才是安全扩展。",
+    "popup_en": "Before ...f5, Black rerouted the knight with ...Ne7 and prepared support. Expansion is safe when the timing and position are right.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "d4",
       "popup": "▶️ <b>d4</b><br>白方开局，争夺中心",
+      "popup_en": "▶️ <b>d4</b><br>White opens by contesting the center.",
       "highlights": [
         {
           "squares": [
@@ -46,6 +49,7 @@
       "index": 1,
       "move": "Nf6",
       "popup": "▶️ <b>Nf6</b><br>国王印度！黑方先出马，暂不争中心<br>等待时机",
+      "popup_en": "▶️ <b>Nf6</b><br>The King's Indian setup: Black develops a knight without occupying the center, waiting for the right moment.",
       "highlights": [
         {
           "squares": [
@@ -63,6 +67,7 @@
       "index": 2,
       "move": "c4",
       "popup": "▶️ <b>c4</b><br>白方建立大型兵中心的第二步",
+      "popup_en": "▶️ <b>c4</b><br>White continues building a broad pawn center.",
       "highlights": [
         {
           "squares": [
@@ -79,6 +84,7 @@
       "index": 3,
       "move": "g6",
       "popup": "▶️ <b>g6</b><br>准备飞象！龙式布局开始",
+      "popup_en": "▶️ <b>g6</b><br>Black prepares to fianchetto the bishop; the King's Indian setup takes shape.",
       "highlights": [
         {
           "squares": [
@@ -95,6 +101,7 @@
       "index": 4,
       "move": "Nc3",
       "popup": "▶️ <b>Nc3</b><br>白方出马，支援中心",
+      "popup_en": "▶️ <b>Nc3</b><br>White develops a knight to support the center.",
       "highlights": [
         {
           "squares": [
@@ -112,6 +119,7 @@
       "index": 5,
       "move": "Bg7",
       "popup": "▶️ <b>Bg7</b><br>飞象！Bg7射击d4，这是国王印度的核心",
+      "popup_en": "▶️ <b>Bg7</b><br>The fianchettoed bishop targets d4, a key feature of the King's Indian.",
       "highlights": [
         {
           "squares": [
@@ -135,6 +143,7 @@
       "index": 6,
       "move": "e4",
       "popup": "🚀 <b>e4 — 白方建立大中心！</b><br>c4+d4+e4，白方的空间优势达到顶峰<br>但黑方有反击计划！",
+      "popup_en": "🚀 <b>e4 - White builds a broad center!</b><br>With pawns on c4, d4, and e4, White reaches a space advantage.<br>Black is preparing counterplay.",
       "highlights": [
         {
           "squares": [
@@ -152,6 +161,7 @@
       "index": 7,
       "move": "d6",
       "popup": "▶️ <b>d6</b><br>黑方稳固阵型，为e5做准备<br>d6支撑e5，是黑方阵型的支柱",
+      "popup_en": "▶️ <b>d6</b><br>Black reinforces the position and prepares ...e5. The d6-pawn supports the key central break.",
       "highlights": [
         {
           "squares": [
@@ -168,6 +178,7 @@
       "index": 8,
       "move": "Nf3",
       "popup": "▶️ <b>Nf3</b><br>白方出马，完善阵型",
+      "popup_en": "▶️ <b>Nf3</b><br>White develops a knight and completes the basic setup.",
       "highlights": [
         {
           "squares": [
@@ -185,6 +196,7 @@
       "index": 9,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>黑方易位！王安全<br>现在黑方可以展开反击了",
+      "popup_en": "▶️ <b>O-O</b><br>Black castles and secures the king, preparing to launch counterplay.",
       "highlights": [
         {
           "squares": [
@@ -203,6 +215,7 @@
       "index": 10,
       "move": "Be2",
       "popup": "▶️ <b>Be2</b><br>白方象出动，准备易位",
+      "popup_en": "▶️ <b>Be2</b><br>White develops the bishop and prepares to castle.",
       "highlights": [
         {
           "squares": [
@@ -219,6 +232,7 @@
       "index": 11,
       "move": "e5",
       "popup": "⚡ <b>e5！黑方的中心反击！</b><br>黑方推e5，争夺中心！<br>白方有三个选择：cxd6、d5、dxe5<br>哪个是最好的？",
+      "popup_en": "⚡ <b>...e5 - Black counterattacks in the center!</b><br>Black challenges White's pawn center. White can capture on d6, advance d5, or capture on e5. Which choice best fits the position?",
       "highlights": [
         {
           "squares": [
@@ -242,6 +256,7 @@
       "index": 12,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>白方易位！<br>双方王都安全，准备好中盘较量",
+      "popup_en": "▶️ <b>O-O</b><br>White castles. Both kings are safe and the middlegame contest is ready to begin.",
       "highlights": [
         {
           "squares": [
@@ -258,6 +273,7 @@
       "index": 13,
       "move": "Nc6",
       "popup": "▶️ <b>Nc6</b><br>黑方出马，增援e5<br>黑方阵型开始协调",
+      "popup_en": "▶️ <b>Nc6</b><br>Black develops a knight to support e5 and coordinate the pieces.",
       "highlights": [
         {
           "squares": [
@@ -275,6 +291,7 @@
       "index": 14,
       "move": "d5",
       "popup": "🔑 <b>d5！白方关闭中心！</b><br>白方推d5，棋盘被一分为二！<br>这与Demo 003同样的策略<br>• 白方将在后翼或c5方向突破<br>• 黑方将在王翼（f5）扩展",
+      "popup_en": "🔑 <b>d5 - White closes the center!</b><br>The pawn chains lock the board, as in the earlier demonstration.<br>• White may seek a queenside break with c5.<br>• Black can expand on the kingside with ...f5.",
       "highlights": [
         {
           "squares": [
@@ -299,6 +316,7 @@
       "index": 15,
       "move": "Ne7",
       "popup": "▶️ <b>Ne7</b><br>黑方马退到e7，准备重新安置<br>目标：Nd7-f5，或者Nf5直接占据关键格",
+      "popup_en": "▶️ <b>Ne7</b><br>The knight reroutes through e7. Black may continue with ...Nd7 and ...f5, or head directly to a useful square such as f5.",
       "highlights": [
         {
           "squares": [
@@ -328,6 +346,7 @@
       "index": 16,
       "move": "Ne1",
       "popup": "▶️ <b>Ne1</b><br>白方马后撤，为推f3-f4做准备<br>白方也在计划王翼扩展",
+      "popup_en": "▶️ <b>Ne1</b><br>White reroutes the knight and prepares a kingside expansion with f3-f4.",
       "highlights": [
         {
           "squares": [
@@ -356,6 +375,7 @@
       "index": 17,
       "move": "Nd7",
       "popup": "🔑 <b>Nd7 — 为f5做准备！</b><br>黑方马走到d7，目的是：<br>① 支撑f5推进<br>② 为Nf8-Ng6路线做准备<br>③ 释放e7格给Bg7以外的棋子使用<br>注意：Nd7才到位，f5还没推，这就是「步步为营」",
+      "popup_en": "🔑 <b>Nd7 - Prepare ...f5!</b><br>The knight moves to d7 to:<br>① support the ...f5 advance;<br>② prepare a route via f8 and g6;<br>③ clear e7 for other pieces.<br>Notice that Black prepares first and has not rushed ...f5. This is expansion step by step.",
       "highlights": [
         {
           "squares": [
@@ -384,6 +404,7 @@
       "index": 18,
       "move": "Nd3",
       "popup": "▶️ <b>Nd3</b><br>白方马到d3，控制c5和f4<br>双方都在为最终的攻势做准备",
+      "popup_en": "▶️ <b>Nd3</b><br>The knight controls c5 and f4. Both sides continue preparing their plans.",
       "highlights": [
         {
           "squares": [
@@ -412,6 +433,7 @@
       "index": 19,
       "move": "f5",
       "popup": "🎓 <b>f5！综合判断时刻！</b><br>用三个维度验证 f5 是否安全：<br><br> 维度一：中心结构<br>d5已关闭，中心稳定 ✓ 黑方可以安全扩展<br><br> 维度二：王的安全<br>O-O已完成，Bg7守护王翼 ✓<br><br> 维度三：子力支撑<br>Nd7在d7，随时支援f6-f5 ✓<br><br>结论：f5是安全扩展！三个条件全部满足！",
+      "popup_en": "🎓 <b>...f5 - Apply the three-part test!</b><br>Is the advance safe?<br><br>1. <b>Central structure:</b> d5 has closed the center, so Black can expand on the wing. ✓<br><br>2. <b>King safety:</b> Black has castled and Bg7 guards the kingside. ✓<br><br>3. <b>Piece support:</b> the knight on d7 can support the f-pawn. ✓<br><br>Conclusion: ...f5 is a safe expansion because all three conditions are met.",
       "highlights": [
         {
           "squares": [

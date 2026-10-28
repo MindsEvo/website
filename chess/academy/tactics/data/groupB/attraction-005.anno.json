@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-005",
   "description": "双车连续牺牲引王，后将杀",
+  "explanation_en": "White sacrifices both rooks to lure the king first to g7 and then to h8, where the queen delivers checkmate.",
   "intro": {
     "flash_squares": ["g5", "g7", "f2", "h7"],
     "popup": "💡 <b>引入</b>：白车在g5和f2，白后在e4。能连续牺牲两车，把黑王引到h8再将杀吗？",
+    "popup_en": "💡 <b>Attraction</b>: White's rooks are on g5 and f2, with the queen on e4. Can White sacrifice both rooks to lure the king to h8 and deliver mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxg7+引王到g7，Rxf7+赶王到h8，Qh7将杀！连续引入绝杀！",
+    "popup_en": "✅ <b>Key idea</b>: Rxg7+ draws the king to g7; Rxf7+ drives it to h8; then Qh7# delivers mate. A sequence of attractions!",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxg7+",
       "popup": "白车Rxg7+！第一步引诱黑王到g7。",
+      "popup_en": "White sacrifices the rook with Rxg7+, luring the black king to g7.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kxg7",
       "popup": "黑王吃车——引入第一步成功！",
+      "popup_en": "The black king captures the rook. The first attraction succeeds.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rxf7+",
       "popup": "白车再牺牲Rxf7+！把黑王赶向角落。",
+      "popup_en": "White sacrifices the second rook with Rxf7+, driving the king toward the corner.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kh8",
       "popup": "黑王被迫退到h8——落入陷阱！",
+      "popup_en": "The king is forced to h8 and falls into the mating trap.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Qh7#",
       "popup": "白后Qh7将杀！连续引入绝杀，两车牺牲尽显引入之威！",
+      "popup_en": "Qh7# is checkmate! The consecutive attractions have worked, and both rook sacrifices pay off.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

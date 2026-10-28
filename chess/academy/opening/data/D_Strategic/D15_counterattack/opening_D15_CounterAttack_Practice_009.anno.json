@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Practice_009",
   "description": "老贝诺尼防御 A43 — 封闭局面反制练习：慢热型c列反击",
   "intro": {
+    "popup_en": "Counterattack the Center, Practice 9: Old Benoni\nThe position is closed, so Black cannot counterattack immediately. Accumulate energy, find useful squares, and choose the right moment for a flank counterattack.",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "In a closed position, patience is essential: build up, place a knight on the central outpost e5, then open the g-file and launch a flank attack. The counterattack must be prepared before it can succeed.",
     "popup": "老贝诺尼总结\n\n慢热型反制要素：\n① 封闭局面中积累能量\n② Ne5占据中心要点\n③ g线开放后翼攻爆发\n\n耐心是封闭局面的关键！",
     "voice": true
   },
@@ -23,121 +25,145 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 occupies the center.",
       "popup": "d4"
     },
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "...c5! The Benoni immediately counterattacks d4.",
       "popup": "c5！贝诺尼！\n主动反制d4"
     },
     {
       "index": 2,
       "move": "d5",
+      "popup_en": "d5 advances and locks the center.",
       "popup": "d5 白方推进，封锁"
     },
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a knight.",
       "popup": "Nf6"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops a knight.",
       "popup": "Nc3"
     },
     {
       "index": 5,
       "move": "g6",
+      "popup_en": "...g6 establishes the Benoni fianchetto setup.",
       "popup": "g6 贝诺尼体系"
     },
     {
       "index": 6,
       "move": "e4",
+      "popup_en": "e4 gives White a powerful space advantage.",
       "popup": "e4 白方强大空间"
     },
     {
       "index": 7,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's position.",
       "popup": "d6 稳固"
     },
     {
       "index": 8,
       "move": "f3",
+      "popup_en": "f3 supports the e4-pawn.",
       "popup": "f3 e4的后盾"
     },
     {
       "index": 9,
       "move": "Bg7",
+      "popup_en": "...Bg7 activates the bishop on the long diagonal.",
       "popup": "Bg7！象激活"
     },
     {
       "index": 10,
       "move": "Be3",
+      "popup_en": "Be3 develops the bishop.",
       "popup": "Be3"
     },
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O"
     },
     {
       "index": 12,
       "move": "Qd2",
+      "popup_en": "Qd2 develops White's queen and supports the kingside setup.",
       "popup": "Qd2"
     },
     {
       "index": 13,
       "move": "a6",
+      "popup_en": "...a6 prepares ...b5.",
       "popup": "a6 准备b5"
     },
     {
       "index": 14,
       "move": "a4",
+      "popup_en": "a4 prevents Black's ...b5 expansion.",
       "popup": "a4 阻止b5"
     },
     {
       "index": 15,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops the knight.",
       "popup": "Nbd7 马发展"
     },
     {
       "index": 16,
       "move": "Nge2",
+      "popup_en": "Nge2 develops and reorganizes White's knight.",
       "popup": "Nge2"
     },
     {
       "index": 17,
       "move": "Ne5",
+      "popup_en": "Ne5! White's knight occupies a key central outpost.",
       "popup": "Ne5！马占中心要点！"
     },
     {
       "index": 18,
       "move": "Ng3",
+      "popup_en": "Ng3 challenges the knight on e5.",
       "popup": "Ng3 抵制"
     },
     {
       "index": 19,
       "move": "Nh5",
+      "popup_en": "...Nh5! Black challenges White's knight and prepares a structural exchange.",
       "popup": "Nh5！挑战白马"
     },
     {
       "index": 20,
       "move": "Nxh5",
+      "popup_en": "Nxh5 accepts the knight exchange.",
       "popup": "Nxh5 接受兑换"
     },
     {
       "index": 21,
       "move": "gxh5",
+      "popup_en": "...gxh5! Black recaptures and opens the g-file for a future attack.",
       "popup": "gxh5！开放g线！"
     },
     {
       "index": 22,
       "move": "Be2",
+      "popup_en": "Be2 repositions White's bishop.",
       "popup": "Be2"
     },
     {
       "index": 23,
       "move": "h4",
+      "popup_en": "h4! White continues the kingside pawn advance.",
       "popup": "h4！翼兵继续推进"
     }
   ]

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_xRayAttack_L1-009",
   "description": "黑后引入堵塞，黑象透视将死",
+  "explanation_en": "The queen uses checks to block the white king's escape and deflect the bishop, revealing a bishop X-ray checkmate.",
   "intro": {
     "flash_squares": ["f7", "c6", "e4", "h1"],
     "popup": "💡 <b>透视攻击</b>：黑后在f7，黑象在c6，透视穿越白象e4，直指h1白王。黑方如何完成透视将死？",
+    "popup_en": "💡 <b>X-ray attack</b>: Black's queen is on f7 and bishop on c6, aiming through White's bishop on e4 toward the king on h1. How can Black deliver the X-ray mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf1+引入→Bg1堵塞→Qf3+强迫象让路→黑象透视c6-f3将死！",
+    "popup_en": "✅ <b>Key idea</b>: Qf1+ forces Bg1, blocking the king's escape. Qf3+ then deflects the bishop from e4, clearing the c6-f3 diagonal for the X-ray mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf1+",
       "popup": "黑后Qf1+！后沿第1横线将军白王h1，强迫白象到g1堵将，为后续透视攻击布局。",
+      "popup_en": "Qf1+! The queen checks the king on h1 along the first rank, forcing the bishop to block on g1 and setting up the X-ray attack.",
       "highlights": [
         {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Bg1",
       "popup": "白象被迫到g1堵将，堵死了白王的退路，透视攻击的关键棋子就位！",
+      "popup_en": "The bishop is forced to g1 to block the check, cutting off the king's escape. The key piece for the X-ray attack is now in place.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qf3+",
       "popup": "黑后Qf3+！后沿对角线将军h1，强迫白象e4必须吃后，为黑象c6的透视路线让路！",
+      "popup_en": "Qf3+! The queen checks along the diagonal, forcing the bishop on e4 to capture it and clear the X-ray line for Black's bishop on c6.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Bxf3",
       "popup": "白象被迫从e4吃后到f3，离开了黑象c6的透视对角线！",
+      "popup_en": "The bishop is forced from e4 to f3 to capture the queen, vacating the diagonal of Black's bishop on c6.",
       "highlights": [
         {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Bxf3#",
       "popup": "透视攻击将死！黑象c6早已透视白象e4盯住f3和h1，白象移走后黑象直取f3将死白王！白王被自己的象和兵困死，无路可逃。",
+      "popup_en": "X-ray checkmate! Black's bishop on c6 was aiming through the bishop on e4 toward f3 and h1. Once the white bishop moves, ...Bxf3# mates; White's own bishop and pawns trap the king.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},

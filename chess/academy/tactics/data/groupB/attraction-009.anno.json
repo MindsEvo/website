@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-009",
   "description": "双重引入：象引后，马将引后，赢车",
+  "explanation_en": "A two-stage attraction: the bishop lures the queen away from the rook, then a knight check draws the queen away again so White can capture the rook.",
   "intro": {
     "flash_squares": ["d5", "b7", "e7", "a8"],
     "popup": "💡 <b>引入</b>：白象在d5，白马在f5，黑后在d7，黑车在a8。能用双重引入先赢后再得车吗？",
+    "popup_en": "💡 <b>Attraction</b>: White's bishop is on d5, knight on f5, Black's queen on d7, and rook on a8. Can White use two attractions to win the queen and then the rook?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bxb7引后到b7，Qd5！再Nxe7+引后到e7远离a8，Qxa8赢车！",
+    "popup_en": "✅ <b>Key idea</b>: Bxb7 lures the queen to b7. After Qd5, Nxe7+ draws the queen to e7, away from the rook on a8, allowing Qxa8.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bxb7",
       "popup": "象牺牲Bxb7！引诱黑后到b7，远离d7防守位置。",
+      "popup_en": "White sacrifices the bishop with Bxb7, luring Black's queen away from d7 and its defensive post.",
       "highlights": [
         {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxb7",
       "popup": "黑后Qxb7——被引到b7！",
+      "popup_en": "Black's queen captures on b7 and is drawn away from d7.",
       "highlights": [
         {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qd5",
       "popup": "白后Qd5！占据中心强格，多路威胁。",
+      "popup_en": "White plays Qd5, taking a strong central square and creating several threats.",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Qd7",
       "popup": "黑后撤回d7，试图防守。",
+      "popup_en": "Black's queen returns to d7 to defend.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "Nxe7+",
       "popup": "马Nxe7+！将军！引诱黑后到e7，远离a8——第二次引入！",
+      "popup_en": "Nxe7+ checks and lures Black's queen to e7, drawing it away from the rook on a8. The second attraction!",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
@@ -83,6 +91,7 @@
       "index": 5,
       "move": "Qxe7",
       "popup": "黑后必须吃马——被引离a8！Ra8此刻失去保护。",
+      "popup_en": "Black's queen must capture the knight, leaving the rook on a8 undefended.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}
@@ -96,6 +105,7 @@
       "index": 6,
       "move": "Qxa8",
       "popup": "白后Qxa8！赢得黑车——双重引入战术大获全胜！",
+      "popup_en": "White captures the rook with Qxa8. The double-attraction combination wins material.",
       "highlights": [
         {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0}
       ],

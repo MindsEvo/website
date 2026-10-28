@@ -9,10 +9,12 @@
       "e5"
     ],
     "popup": "国王印度练习：中心被封锁后，双方的战场转移到两翼——观察侧翼突破的力量！",
+    "popup_en": "King's Indian practice: Once the center is locked, both sides shift their attention to the wings. Watch the power of a flank break!",
     "voice": true
   },
   "outro": {
     "popup": "中心封闭时，谁先在侧翼打开局面，谁就掌握主动权。",
+    "popup_en": "When the center is closed, the side that opens play on a wing first can seize the initiative.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "d4",
       "popup": "⬆️ <b>1.d4 — 白方先占 d4！</b><br>与 e4 开局不同，1.d4 建立 d 线中心。这是封闭性开局的起点，双方将争夺中心空间而非直接激战。",
+      "popup_en": "⬆️ <b>1.d4 - White occupies d4!</b><br>Unlike 1.e4, this establishes a center with the d-pawn and begins a more closed opening, where the sides contest space before direct clashes occur.",
       "highlights": [
         {
           "squares": [
@@ -55,6 +58,7 @@
       "index": 1,
       "move": "Nf6",
       "popup": "⬇️ <b>1...Nf6 — 黑马出动！不占中心！</b><br>黑方用马而非兵来应对，这是「超现代」开局思路：不直接占中心，而是用子力控制中心格。注意黑方此刻没有推兵占 d5！",
+      "popup_en": "⬇️ <b>1...Nf6 - Black develops without occupying the center!</b><br>This is a hypermodern approach: use pieces to control central squares instead of occupying them with pawns. Black has not played ...d5.",
       "highlights": [
         {
           "squares": [
@@ -82,6 +86,7 @@
       "index": 2,
       "move": "c4",
       "popup": "⬆️ <b>2.c4 — 白方再推 c4！空间扩张！</b><br>c4 与 d4 配合，白方现在控制了 d5 和 e5 两个关键格，黑方的兵很难进入这些格子。白方在建立广阔的中心控制区。",
+      "popup_en": "⬆️ <b>2.c4 - White expands with another pawn!</b><br>Together with d4, c4 controls the key squares d5 and e5, making it harder for Black's pawns to occupy them. White builds a broad central presence.",
       "highlights": [
         {
           "squares": [
@@ -109,6 +114,7 @@
       "index": 3,
       "move": "g6",
       "popup": "⬇️ <b>2...g6 — 黑方抢先部署象！</b><br>g6 准备把象发展到 g7——g7 的象将控制长对角线（a1-h8），对白方中心形成压力。这是印度防御的标志布局！",
+      "popup_en": "⬇️ <b>2...g6 - Black prepares to fianchetto the bishop!</b><br>The bishop on g7 will control the long a1-h8 diagonal and put pressure on White's center, a hallmark of the Indian defenses.",
       "highlights": [
         {
           "squares": [
@@ -132,6 +138,7 @@
       "index": 4,
       "move": "Nc3",
       "popup": "⬆️ <b>3.Nc3 — 白马出动占据中心！</b><br>c3 马支撑 d4 和 e4，准备 e4 的推进。白方正在建立一个由 d4+c4+e4 组成的「三兵中心」。",
+      "popup_en": "⬆️ <b>3.Nc3 - White develops a knight toward the center!</b><br>The knight supports d4 and e4, preparing the e-pawn advance. White aims for a three-pawn center with c4, d4, and e4.",
       "highlights": [
         {
           "squares": [
@@ -159,6 +166,7 @@
       "index": 5,
       "move": "Bg7",
       "popup": "⬇️ <b>3...Bg7 — 印度象登场！龙象！</b><br>黑象来到 g7，俗称「龙象」，控制长对角线。这个象虽然暂时被 d4 兵挡住，一旦中心格局变化，它将成为威力巨大的长程武器！",
+      "popup_en": "⬇️ <b>3...Bg7 - The fianchettoed bishop takes aim!</b><br>The bishop controls the long diagonal. Although White's d4-pawn currently blocks it, the bishop may become powerful if the central structure changes.",
       "highlights": [
         {
           "squares": [
@@ -190,6 +198,7 @@
       "index": 6,
       "move": "e4",
       "popup": "⬆️ <b>4.e4 — 白方建立三兵中心！</b><br>e4 加入，白方现在拥有 c4+d4+e4 的三兵中心，控制棋盘中心区域的所有关键格。这是理论上白方在国王印度防御中能达到的最强中心阵型！",
+      "popup_en": "⬆️ <b>4.e4 - White establishes the three-pawn center!</b><br>With pawns on c4, d4, and e4, White controls key central squares and claims a broad center against the King's Indian.",
       "highlights": [
         {
           "squares": [
@@ -227,6 +236,7 @@
       "index": 7,
       "move": "d6",
       "popup": "⬇️ <b>4...d6 — 黑方支撑未来的 e5！</b><br>d6 为 e5 的推进铺垫——这是国王印度防御的典型结构。黑方接受中心落后，但在等待反击的时机。",
+      "popup_en": "⬇️ <b>4...d6 - Black prepares ...e5!</b><br>This is a typical King's Indian structure. Black allows White to occupy more space while preparing a later counterattack.",
       "highlights": [
         {
           "squares": [
@@ -248,6 +258,7 @@
       "index": 8,
       "move": "Nf3",
       "popup": "⬆️ <b>5.Nf3 — 白方完成子力发展！</b><br>f3 马出动，支撑 d4，准备易位。白方子力发展完成，即将进入稳固的中局阵势。",
+      "popup_en": "⬆️ <b>5.Nf3 - White develops and supports d4!</b><br>The knight prepares to castle, and White is close to completing development before settling into a solid middlegame setup.",
       "highlights": [
         {
           "squares": [
@@ -274,6 +285,7 @@
       "index": 9,
       "move": "O-O",
       "popup": "⬇️ <b>5...O-O — 黑方王翼易位！</b><br>黑方先易位，王到 g8 处于看似安全的位置——但注意，接下来黑方要在王翼发动兵攻！这需要精确判断王安全与进攻之间的平衡。",
+      "popup_en": "⬇️ <b>5...O-O - Black castles kingside!</b><br>The king reaches apparent safety on g8, but Black plans a kingside pawn attack. Balancing king safety with attacking chances will be important.",
       "highlights": [
         {
           "squares": [
@@ -296,6 +308,7 @@
       "index": 10,
       "move": "Be2",
       "popup": "⬆️ <b>6.Be2 — 白方稳健发展！</b><br>象来到 e2，白方准备易位。与激进的 Bc4 不同，Be2 是古典变例，强调稳固而非速攻。",
+      "popup_en": "⬆️ <b>6.Be2 - White develops solidly!</b><br>The bishop moves to e2 and White prepares to castle. Unlike the more aggressive Bc4, this is a classical, steady setup.",
       "highlights": [
         {
           "squares": [
@@ -318,6 +331,7 @@
       "index": 11,
       "move": "e5",
       "popup": "⬇️ <b>6...e5 — 黑方宣布封锁中心！</b><br>黑方推 e5，挑战白方中心。现在关键时刻到来——白方如何应对？<br>❓ 白方如果 dxe5 打开中心，黑方 dxe5，双方对等。<br>✅ 白方如果 d5，中心封锁，双方各奔侧翼！",
+      "popup_en": "⬇️ <b>6...e5 - Black challenges and seeks to close the center!</b><br>White now faces a key choice:<br>❓ After dxe5 dxe5, the center opens and the position becomes balanced.<br>✅ After d5, the center locks and both sides can attack on the wings.",
       "highlights": [
         {
           "squares": [
@@ -340,6 +354,7 @@
       "index": 12,
       "move": "d5",
       "popup": "⬆️ <b>7.d5 — 白方封锁中心！战略决定！</b><br>白方推 d5，接受封闭中心！现在双方的中心兵链固定，不再有直接中心冲突。<br>📍 <b>从这一步开始，双方转向侧翼！</b><br>• 白方计划：后翼（c5 突破）<br>• 黑方计划：王翼（f5-g5 突破）",
+      "popup_en": "⬆️ <b>7.d5 - White locks the center!</b><br>The central pawn chains become fixed, ending the direct central clash.<br>📍 <b>Now both sides turn to the wings:</b><br>• White seeks a queenside break with c5.<br>• Black plans a kingside attack with ...f5 and ...g5.",
       "highlights": [
         {
           "squares": [
@@ -375,6 +390,7 @@
       "index": 13,
       "move": "Nbd7",
       "popup": "⬇️ <b>7...Nbd7 — 黑马发展，准备侧翼！</b><br>b8 马跳到 d7，为后续的 Nf8-Nh7-f5 做准备。黑方的所有棋子都在向王翼进攻路线集中！",
+      "popup_en": "⬇️ <b>7...Nbd7 - Black reroutes the knight for the flank attack!</b><br>The b8-knight heads to d7 and may continue via f8 and h7 toward f5. Black is gathering pieces for a kingside offensive.",
       "highlights": [
         {
           "squares": [
@@ -403,6 +419,7 @@
       "index": 14,
       "move": "Bg5",
       "popup": "⬆️ <b>8.Bg5 — 白象骚扰！</b><br>白象出动，钉住 f6 马或准备交换，削弱黑方的王翼防守力量。",
+      "popup_en": "⬆️ <b>8.Bg5 - White creates pressure!</b><br>The bishop pins the f6-knight or may exchange it, potentially weakening Black's kingside defenses.",
       "highlights": [
         {
           "squares": [
@@ -425,6 +442,7 @@
       "index": 15,
       "move": "h6",
       "popup": "⬇️ <b>8...h6 — 赶走白象！</b><br>h6 驱逐 g5 象，强迫白象表态。黑方不愿意让白象长期骚扰 f6 马。",
+      "popup_en": "⬇️ <b>8...h6 - Black challenges the bishop!</b><br>The pawn attacks the bishop and asks it to choose a square. Black does not want it to keep pressuring the f6-knight.",
       "highlights": [
         {
           "squares": [
@@ -446,6 +464,7 @@
       "index": 16,
       "move": "Bh4",
       "popup": "⬆️ <b>9.Bh4 — 象退 h4，持续施压！</b><br>象退到 h4，钉住 f6 马，等待黑方进一步暴露。",
+      "popup_en": "⬆️ <b>9.Bh4 - The bishop retreats while maintaining pressure!</b><br>It remains aimed at the f6-knight and waits for Black to commit further.",
       "highlights": [
         {
           "squares": [
@@ -468,6 +487,7 @@
       "index": 17,
       "move": "g5",
       "popup": "⬇️ <b>9...g5 — 王翼兵攻开始！</b><br>黑方推 g5，直接攻击 h4 象，同时开始王翼兵链推进！这正是国王印度防御的核心策略——封闭中心后的侧翼突破。<br>⚡ <b>注意：黑王就在 g8，这需要很大的勇气和精确计算！</b>",
+      "popup_en": "⬇️ <b>9...g5 - Black launches the kingside pawn attack!</b><br>The pawn attacks the bishop on h4 and begins a kingside advance, a core King's Indian plan after the center closes.<br>⚡ <b>Black's king is on g8, so this requires careful calculation.</b>",
       "highlights": [
         {
           "squares": [
@@ -497,6 +517,7 @@
       "index": 18,
       "move": "Bg3",
       "popup": "⬆️ <b>10.Bg3 — 象再退 g3，坚守阵地！</b><br>白象退 g3，保持对黑方王翼的压力，同时观察黑方下一步动作。",
+      "popup_en": "⬆️ <b>10.Bg3 - The bishop retreats again and holds its ground!</b><br>White keeps pressure on the kingside and waits to see how Black continues.",
       "highlights": [
         {
           "squares": [
@@ -519,6 +540,7 @@
       "index": 19,
       "move": "Nh5",
       "popup": "⬇️ <b>10...Nh5 — 黑马直扑 g3 象！</b><br>黑马跳到 h5，直接攻击 g3 象！若白象被迫离开，f4 格就成了黑方兵推进的跳板。<br>这是国王印度防御中「消灭对方象」再侧翼突破的经典手法！",
+      "popup_en": "⬇️ <b>10...Nh5 - Black attacks the bishop on g3!</b><br>If the bishop moves, f4 may become a useful launch square for Black's pawns.<br>This is a classic King's Indian idea: exchange a defender before breaking on the wing.",
       "highlights": [
         {
           "squares": [
@@ -546,6 +568,7 @@
       "index": 20,
       "move": "h4",
       "popup": "⬆️ <b>11.h4 — 白方在后翼反击！</b><br>白方推 h4，试图打乱黑方的王翼节奏，同时拆解黑方的兵链。",
+      "popup_en": "⬆️ <b>11.h4 - White counterattacks on the wing!</b><br>The pawn advance tries to disrupt Black's kingside rhythm and break up the pawn chain.",
       "highlights": [
         {
           "squares": [
@@ -568,6 +591,7 @@
       "index": 21,
       "move": "Nxg3",
       "popup": "⬇️ <b>11...Nxg3 — 黑马吃象！打开 f 线！</b><br>黑马吃掉 g3 象，打开了 f 线！白方必须用 f 兵吃回，f 线的结构将发生变化，黑方的 f 兵推进路线更加畅通。",
+      "popup_en": "⬇️ <b>11...Nxg3 - Black captures the bishop and opens the f-file!</b><br>White is likely to recapture with the f-pawn, changing the file structure and clearing a route for Black's f-pawn advance.",
       "highlights": [
         {
           "squares": [
@@ -595,6 +619,7 @@
       "index": 22,
       "move": "fxg3",
       "popup": "⬆️ <b>12.fxg3 — f 兵吃 g3，f 线打开！</b><br>白方 f2 兵吃 g3，f 线部分打开。<br><br>国王印度防御展示了深刻的棋理：<b>中心不是终点，而是侧翼突破的基础。</b> 白方建立了看似强大的三兵中心，却被黑方用王翼兵攻巧妙破解。封闭中心后，谁的侧翼突破更快，谁就握有主动权！",
+      "popup_en": "⬆️ <b>12.fxg3 - White recaptures and opens the f-file!</b><br>The f-pawn captures on g3, partly opening the file.<br><br>The King's Indian illustrates a key idea: <b>the center is not the final goal; it can be a platform for a flank break.</b> White built a large center, while Black seeks counterplay on the kingside. Once the center is closed, the faster flank attack may seize the initiative.",
       "highlights": [
         {
           "squares": [

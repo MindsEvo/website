@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-005",
   "description": "白方弃后引开黑王，车将死",
+  "explanation_en": "White sacrifices the queen with check to lure Black's king onto h6, where the rook delivers mate along the h-file.",
   "intro": {
     "flash_squares": ["h3", "g4", "g1", "h7"],
     "popup": "💡 <b>弃子</b>：白后在h3，双车在g4和g1，黑王在h7。如何弃后引王入陷阱？",
+    "popup_en": "💡 <b>Sacrifice</b>: White's queen is on h3, rooks on g4 and g1, and Black's king on h7. How can White sacrifice the queen to lure the king into a trap?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qxh6+弃后！黑王被迫吃后来到h6，然后Rh4#车将死。弃后两步将杀，干净利落。",
+    "popup_en": "✅ <b>Key idea</b>: Qxh6+ sacrifices the queen and forces the king to h6. Rh4# then mates along the h-file.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxh6+",
       "popup": "白后Qxh6+！弃掉后，将军——黑王只能吃后，走入白车的射程。",
+      "popup_en": "White sacrifices the queen with Qxh6+, forcing Black's king to capture and step into the rook's line.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kxh6",
       "popup": "黑王必须吃后——但这恰好踏入了白车的控制线。",
+      "popup_en": "The king must capture the queen, stepping directly into the rook's attack line.",
       "highlights": [
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rh4#",
       "popup": "白车Rh4#！车沿h线将死黑王，黑王无路可逃。弃后换来一步将杀！",
+      "popup_en": "Rh4# is checkmate! The rook mates along the h-file, leaving the king no escape. The queen sacrifice creates the mating net.",
       "highlights": [
         {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}

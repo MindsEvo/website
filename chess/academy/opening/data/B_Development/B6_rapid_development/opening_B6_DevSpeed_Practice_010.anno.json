@@ -2,6 +2,7 @@
   "game_id": "B6_DevSpeed_Practice_010",
   "description": "A45 — 非主流也需出子完整",
   "intro": {
+    "popup_en": "Rapid Development, Practice 10\nThe principles of rapid development apply regardless of the opening you choose.",
     "flash_squares": [
       "e2",
       "d2",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: rapid development is a general opening principle that applies to every system.",
     "popup": "总结：快速出子是开局通则，适用于所有体系",
     "voice": true
   },
@@ -24,16 +26,19 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 opens with a queen's pawn and controls the center.",
       "popup": "d4开局\n皇后兵，控制中心"
     },
     {
       "index": 1,
       "move": "Nf6",
+      "popup_en": "...Nf6! Black develops immediately, attacks d4, and controls e4.",
       "popup": "Nf6！黑方立即出动马\n进攻d4，控制e4格"
     },
     {
       "index": 2,
       "move": "Bg5",
+      "popup_en": "Bg5! The Trompowsky: White develops the bishop to pin the knight. An unusual opening, but an effective one.",
       "popup": "Bg5！特罗姆普开局！\n象到g5，牵制黑马\n非主流但有效",
       "highlights": [
         {
@@ -48,11 +53,13 @@
     {
       "index": 3,
       "move": "Ne4",
+      "popup_en": "...Ne4! Black's knight attacks the bishop and forces it to move, a typical Trompowsky response.",
       "popup": "Ne4！黑马进攻！\n逼退白象\n特罗姆普的典型应对"
     },
     {
       "index": 4,
       "move": "Bf4",
+      "popup_en": "Bf4 retreats. The bishop has moved twice, from g5 to f4, but this is part of the system rather than aimless repetition.",
       "popup": "Bf4！象撤退到f4\n⚠️ 注意：象走了2步（g5→f4）\n但这是体系要求，不是随意重复",
       "highlights": [
         {
@@ -67,21 +74,25 @@
     {
       "index": 5,
       "move": "d5",
+      "popup_en": "...d5 advances and contests the center.",
       "popup": "d5推进\n黑方争中心"
     },
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "e3 supports and stabilizes the d4-pawn.",
       "popup": "e3支撑\n稳固d4兵"
     },
     {
       "index": 7,
       "move": "c5",
+      "popup_en": "...c5! Black directly challenges White's center.",
       "popup": "c5！黑方攻击白方中心\n主动争夺"
     },
     {
       "index": 8,
       "move": "Bd3",
+      "popup_en": "Bd3! The bishop reaches its ideal square after moving three times (g5-f4-d3). The route is justified because d3 is its intended post.",
       "popup": "Bd3！象到最佳格\n象走了3步（g5→f4→d3）\n但d3是最终最佳位置，值得！",
       "highlights": [
         {
@@ -96,51 +107,61 @@
     {
       "index": 9,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's first knight.",
       "popup": "Nc6黑方马出动\n黑方第1个大马出动"
     },
     {
       "index": 10,
       "move": "c3",
+      "popup_en": "c3 reinforces the center and prevents ...cxd4.",
       "popup": "c3支撑\n稳固中心，阻止...cxd4"
     },
     {
       "index": 11,
       "move": "Qb6",
+      "popup_en": "...Qb6! Black brings the queen out early, attacking d4 and b2.",
       "popup": "Qb6！黑方后出动\n⚠️ 黑方后过早出动，威胁d4和b2"
     },
     {
       "index": 12,
       "move": "Qb3",
+      "popup_en": "Qb3! White meets the queen and offers an exchange to remove the threats.",
       "popup": "Qb3！白方后出动\n对战对方的后\n主动要求兑后，消除威胁"
     },
     {
       "index": 13,
       "move": "Qxb3",
+      "popup_en": "...Qxb3 exchanges queens and simplifies the position.",
       "popup": "Qxb3黑方兑后\n双方后兑换，局面简化"
     },
     {
       "index": 14,
       "move": "axb3",
+      "popup_en": "axb3 recaptures. White's pawn structure is slightly improved, with a semi-open a-file.",
       "popup": "axb3接回\n白方棋形略好（半开a线）"
     },
     {
       "index": 15,
       "move": "cxd4",
+      "popup_en": "...cxd4 challenges White's d4-pawn.",
       "popup": "cxd4兑换\n黑方打击d4"
     },
     {
       "index": 16,
       "move": "cxd4",
+      "popup_en": "cxd4 recaptures and maintains White's central presence.",
       "popup": "cxd4接回\n白方保持中心"
     },
     {
       "index": 17,
       "move": "e6",
+      "popup_en": "...e6 reinforces Black's position.",
       "popup": "e6黑方稳固"
     },
     {
       "index": 18,
       "move": "Nc3",
+      "popup_en": "Nc3! White finally develops the first knight, controlling d5 and e4.",
       "popup": "Nc3！白方马终于出动！\n第1个马出动，控制d5和e4",
       "highlights": [
         {
@@ -156,11 +177,13 @@
     {
       "index": 19,
       "move": "Bb4",
+      "popup_en": "...Bb4 pins the knight.",
       "popup": "Bb4黑方象牵制\n牵制白马"
     },
     {
       "index": 20,
       "move": "Nge2",
+      "popup_en": "Nge2! White develops the second knight. Although development was slower than usual, all minor pieces are now out.",
       "popup": "Nge2！第2个马出动\n白方双马出动完毕\n虽然开局较慢，但出子完整",
       "highlights": [
         {
@@ -174,11 +197,13 @@
     {
       "index": 21,
       "move": "Bxc3",
+      "popup_en": "...Bxc3 exchanges the bishop for a knight.",
       "popup": "Bxc3黑方兑换\n消除一匹马"
     },
     {
       "index": 22,
       "move": "Nxc3",
+      "popup_en": "Nxc3 recaptures. In the Trompowsky, the bishop's extra moves were required by the system, but the core principle remains: complete development of all minor pieces.",
       "popup": "Nxc3接回\n总结：特罗姆普非主流开局\n象走多步是体系要求，但核心不变：\n最终所有轻子必须完整出动！\n快速出子原则适用于所有开局体系",
       "highlights": [
         {

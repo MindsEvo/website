@@ -1,13 +1,16 @@
 {
   "game_id": "mate_anastasia_L1-005",
   "description": "安娜斯塔西亚杀：黑方弃后引离，车将死白王（黑先）",
+  "explanation_en": "Black sacrifices the queen to draw a white pawn onto h5, then the rook delivers Anastasia's mate along the h-file.",
   "intro": {
     "flash_squares": ["h1", "h5", "h4"],
     "popup": "💡 <b>安娜斯塔西亚杀</b>：黑方弃后引白兵，黑马封住g1，黑车沿h线将死白王。",
+    "popup_en": "💡 <b>Anastasia's mate</b>: Black sacrifices the queen to draw a white pawn away. The knight covers g1, and the rook delivers mate along the h-file.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qh5+弃后引白兵至h5，gxh5之后Rh4#——黑马在e2封住g1，白王被困h1无处可逃。",
+    "popup_en": "✅ <b>Key idea</b>: Qh5+ draws a white pawn to h5. After gxh5, Rh4# mates the king on h1; the knight on e2 covers g1 and leaves no escape.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qh5+",
       "popup": "黑后弃后Qh5+！沿h线将白王，引诱白兵来吃，打通黑车入局通道。",
+      "popup_en": "Qh5+! Black sacrifices the queen with check along the h-file, tempting a white pawn to capture and clearing the rook's route into the attack.",
       "highlights": [
         {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "gxh5",
       "popup": "白兵gxh5被迫吃后，g4格清空，但h线仍在黑车控制之中。",
+      "popup_en": "gxh5. The white pawn is forced to capture the queen, vacating g4, but Black's rook still controls the h-file.",
       "highlights": [
         {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Rh4#",
       "popup": "黑车Rh4#！安娜斯塔西亚杀！车从e4横向走到h4，沿h线将死白王。黑马在e2封住g1，白兵在g2堵死g2，白王在h1无路可逃。",
+      "popup_en": "Rh4# is Anastasia's mate! The rook moves across to h4 and mates along the h-file. The knight on e2 covers g1, White's pawn blocks g2, and the king on h1 has no escape.",
       "highlights": [
         {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},

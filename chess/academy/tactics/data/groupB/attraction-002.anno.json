@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-002",
   "description": "车牺牲引白王入角，马叉将后",
+  "explanation_en": "Black sacrifices a rook to lure White's king into the corner. A knight fork then attacks the king and queen, winning the queen.",
   "intro": {
     "flash_squares": ["c1", "h1", "h2", "h5"],
     "popup": "💡 <b>引入</b>：黑方行动！黑车在c1，白王在h2，白后在h5。能用车牺牲把白王引到h1角落，再用马叉将后吗？",
+    "popup_en": "💡 <b>Attraction</b>: Black to move. Black's rook is on c1, White's king on h2, and White's queen on h5. Can Black sacrifice the rook to lure the king into the h1 corner, then fork the queen with a knight?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rh1+！引王入角，Nxg3+叉将——引入战术赢得白后！",
+    "popup_en": "✅ <b>Key idea</b>: Rh1+ lures the king into the corner. Nxg3+ then forks the king and queen, winning White's queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rh1+",
       "popup": "黑车Rh1+！车牺牲引诱白王到h1角落。",
+      "popup_en": "Black sacrifices the rook with Rh1+, luring White's king into the h1 corner.",
       "highlights": [
         {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kxh1",
       "popup": "白王吃车——被引到h1角落！",
+      "popup_en": "White's king captures the rook and is drawn into the h1 corner.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nxg3+",
       "popup": "马Nxg3+！吃象同时将王，并威胁白后h5——引入大获全胜！",
+      "popup_en": "The knight captures the bishop on g3 with check, attacking the king and threatening White's queen on h5. The attraction tactic succeeds.",
       "highlights": [
         {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kg2",
       "popup": "白王逃到g2，但白后已无法守护。",
+      "popup_en": "The king moves to g2, but White's queen can no longer be defended.",
       "highlights": [
         {"squares": ["g2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Nxh5",
       "popup": "马吃后！引入战术完成。",
+      "popup_en": "The knight captures White's queen, completing the attraction tactic.",
       "highlights": [
         {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}
       ],

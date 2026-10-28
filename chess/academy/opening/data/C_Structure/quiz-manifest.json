@@ -5,45 +5,49 @@
     {
       "key": "C9_pawn_chains",
       "label": "C9  兵链方向",
+      "label_en": "C9 Pawn Chains and Their Direction",
       "items": [
-        { "id": "opening_C9_pawn_chains-quiz-001", "label": "1. 兵链的定义" },
-        { "id": "opening_C9_pawn_chains-quiz-002", "label": "2. 兵链的进攻方向" },
-        { "id": "opening_C9_pawn_chains-quiz-003", "label": "3. 根部原则" },
-        { "id": "opening_C9_pawn_chains-quiz-004", "label": "4. 双兵链对攻" },
-        { "id": "opening_C9_pawn_chains-quiz-005", "label": "5. 少数兵突破" }
+        { "id": "opening_C9_pawn_chains-quiz-001", "label": "1. 兵链的定义", "label_en": "1. Defining a Pawn Chain" },
+        { "id": "opening_C9_pawn_chains-quiz-002", "label": "2. 兵链的进攻方向", "label_en": "2. The Direction of a Pawn-Chain Attack" },
+        { "id": "opening_C9_pawn_chains-quiz-003", "label": "3. 根部原则", "label_en": "3. The Base Principle" },
+        { "id": "opening_C9_pawn_chains-quiz-004", "label": "4. 双兵链对攻", "label_en": "4. Attacking on Opposite Wings" },
+        { "id": "opening_C9_pawn_chains-quiz-005", "label": "5. 少数兵突破", "label_en": "5. The Minority Attack" }
       ]
     },
     {
       "key": "C10_weak_squares",
       "label": "C10 弱格利用",
+      "label_en": "C10 Exploiting Weak Squares",
       "items": [
-        { "id": "opening_C10_weak_squares-quiz-001", "label": "1. 弱格的定义" },
-        { "id": "opening_C10_weak_squares-quiz-002", "label": "2. 失去象造成弱格" },
-        { "id": "opening_C10_weak_squares-quiz-003", "label": "3. 兵前进留下弱格" },
-        { "id": "opening_C10_weak_squares-quiz-004", "label": "4. 象压制同色弱格" },
-        { "id": "opening_C10_weak_squares-quiz-005", "label": "5. 马占据弱格据点" }
+        { "id": "opening_C10_weak_squares-quiz-001", "label": "1. 弱格的定义", "label_en": "1. Defining a Weak Square" },
+        { "id": "opening_C10_weak_squares-quiz-002", "label": "2. 失去象造成弱格", "label_en": "2. Weak Squares After Losing a Bishop" },
+        { "id": "opening_C10_weak_squares-quiz-003", "label": "3. 兵前进留下弱格", "label_en": "3. Weak Squares Left by Pawn Advances" },
+        { "id": "opening_C10_weak_squares-quiz-004", "label": "4. 象压制同色弱格", "label_en": "4. Using a Bishop Against Weak Squares" },
+        { "id": "opening_C10_weak_squares-quiz-005", "label": "5. 马占据弱格据点", "label_en": "5. A Knight on a Weak-Square Outpost" }
       ]
     },
     {
       "key": "C11_open_files",
       "label": "C11 开放线",
+      "label_en": "C11 Open Files",
       "items": [
-        { "id": "opening_C11_open_files-quiz-001", "label": "1. 开放线与半开放线" },
-        { "id": "opening_C11_open_files-quiz-002", "label": "2. 抢占开放线的主动权" },
-        { "id": "opening_C11_open_files-quiz-003", "label": "3. 双车叠压开放线" },
-        { "id": "opening_C11_open_files-quiz-004", "label": "4. 借开放线占据中心格" },
-        { "id": "opening_C11_open_files-quiz-005", "label": "5. 多线协同作战" }
+        { "id": "opening_C11_open_files-quiz-001", "label": "1. 开放线与半开放线", "label_en": "1. Open and Half-Open Files" },
+        { "id": "opening_C11_open_files-quiz-002", "label": "2. 抢占开放线的主动权", "label_en": "2. Seizing the Initiative on an Open File" },
+        { "id": "opening_C11_open_files-quiz-003", "label": "3. 双车叠压开放线", "label_en": "3. Doubling Rooks on an Open File" },
+        { "id": "opening_C11_open_files-quiz-004", "label": "4. 借开放线占据中心格", "label_en": "4. Using an Open File to Support an Outpost" },
+        { "id": "opening_C11_open_files-quiz-005", "label": "5. 多线协同作战", "label_en": "5. Coordinating Pressure on Multiple Files" }
       ]
     },
     {
       "key": "C12_space_cramp",
       "label": "C12 空间挤压",
+      "label_en": "C12 Space Restriction",
       "items": [
-        { "id": "opening_C12_space_cramp-quiz-001", "label": "1. 识别空间挤压的信号" },
-        { "id": "opening_C12_space_cramp-quiz-002", "label": "2. 被压方的反击点" },
-        { "id": "opening_C12_space_cramp-quiz-003", "label": "3. 空间优势必须跟进" },
-        { "id": "opening_C12_space_cramp-quiz-004", "label": "4. 子力拥挤可视化" },
-        { "id": "opening_C12_space_cramp-quiz-005", "label": "5. 弹簧效应" }
+        { "id": "opening_C12_space_cramp-quiz-001", "label": "1. 识别空间挤压的信号", "label_en": "1. Recognizing Space Restriction" },
+        { "id": "opening_C12_space_cramp-quiz-002", "label": "2. 被压方的反击点", "label_en": "2. Finding Counterplay When Cramped" },
+        { "id": "opening_C12_space_cramp-quiz-003", "label": "3. 空间优势必须跟进", "label_en": "3. Following Up a Space Advantage" },
+        { "id": "opening_C12_space_cramp-quiz-004", "label": "4. 子力拥挤可视化", "label_en": "4. Measuring Piece Crowding" },
+        { "id": "opening_C12_space_cramp-quiz-005", "label": "5. 弹簧效应", "label_en": "5. The Spring Effect" }
       ]
     }
   ]

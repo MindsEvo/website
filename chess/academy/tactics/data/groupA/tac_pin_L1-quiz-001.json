@@ -7,13 +7,15 @@
   "fen": "8/8/4p3/8/3n2k1/8/4P3/1R2K3 w - - 0 1",
   "concept": "牵制的定义",
   "question_cn": "什么是牵制（Pin）战术？",
+  "question_en": "What is a pin in chess?",
   "options": [
-    {"key": "A", "text_cn": "一个棋子同时攻击对方两个目标"},
-    {"key": "B", "text_cn": "攻击一个棋子，使其移动后暴露后面更有价值的棋子"},
-    {"key": "C", "text_cn": "牺牲棋子引开对方防守"},
-    {"key": "D", "text_cn": "将对方棋子困在角落无法逃脱"}
+    {"key": "A", "text_cn": "一个棋子同时攻击对方两个目标", "text_en": "One piece attacks two enemy targets at the same time"},
+    {"key": "B", "text_cn": "攻击一个棋子，使其移动后暴露后面更有价值的棋子", "text_en": "Attacking a piece so that moving it exposes a more valuable piece behind it"},
+    {"key": "C", "text_cn": "牺牲棋子引开对方防守", "text_en": "Sacrificing a piece to draw away a defender"},
+    {"key": "D", "text_cn": "将对方棋子困在角落无法逃脱", "text_en": "Trapping an enemy piece in a corner with no escape"}
   ],
   "correct": "B",
   "explanation_cn": "牵制是指攻击一个棋子，使其无法或不敢移动，因为移动后会暴露后面更有价值的棋子（如王或后）。被牵制的棋子就像被钉住一样。",
+  "explanation_en": "A pin attacks a piece that cannot or should not move because doing so would expose a more valuable piece behind it, such as the king or queen. The pinned piece is effectively held in place.",
   "created_at": "2026-05-06"
 }

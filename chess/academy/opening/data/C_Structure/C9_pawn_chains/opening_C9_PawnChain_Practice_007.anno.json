@@ -2,6 +2,7 @@
   "game_id": "C9_PawnChain_Practice_007",
   "description": "E97 — 国王印度古典变例马德普拉塔，双兵链对攻教科书",
   "intro": {
+    "popup_en": "Pawn-Chain Direction, Practice 7\nA classic battle between two pawn chains: White's e4-d5 chain points toward Black's queenside, while Black's e5-d6 chain points toward White's king. Advance along the direction of your own chain.",
     "flash_squares": [
       "e4",
       "d5",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: d5 locks the chains, ...f5-f4 fixes the kingside, c5 breaks on the queenside, and ...g4 launches the final attack. A clear demonstration of a pawn-chain race.",
     "popup": "总结：d5锁定双链 → f5-f4锁死 → c5突破后翼 → g4总攻\n双兵链对攻最纯粹示范！",
     "voice": true
   },
@@ -37,6 +39,7 @@
     },
     {
       "index": 3,
+      "popup_en": "...g6 signals the King's Indian Defense.",
       "move": "g6",
       "popup": "g6国王印度"
     },
@@ -50,11 +53,13 @@
     },
     {
       "index": 6,
+      "popup_en": "e4! White establishes a broad central presence with pawns on e4 and d4.",
       "move": "e4",
       "popup": "e4！白方建立大中心e4-d4"
     },
     {
       "index": 7,
+      "popup_en": "...d6 sets up Black's strategy of attacking the center indirectly.",
       "move": "d6",
       "popup": "d6黑方策略：绕道进攻"
     },
@@ -72,6 +77,7 @@
     },
     {
       "index": 11,
+      "popup_en": "...e5!! Black advances and begins forming the e5-d6 pawn chain.",
       "move": "e5",
       "popup": "e5！！黑方推进！e5-d6链雏形出现"
     },
@@ -85,6 +91,7 @@
     },
     {
       "index": 14,
+      "popup_en": "d5!! The two pawn chains are now fixed: White's e4-d5 chain points toward the queenside, while Black's e5-d6 chain points toward White's kingside. This is the classic pawn-chain attacking structure.",
       "move": "d5",
       "popup": "d5！！双兵链形成！\n白e4-d5链→指向黑后翼\n黑e5-d6链→指向白王翼\n这是双兵链对攻最经典结构！",
       "highlights": [
@@ -101,11 +108,13 @@
     },
     {
       "index": 15,
+      "popup_en": "...Ne7 reroutes the knight in preparation for ...f5.",
       "move": "Ne7",
       "popup": "Ne7马转移，准备f5"
     },
     {
       "index": 16,
+      "popup_en": "Ne1 reorganizes White's knight.",
       "move": "Ne1",
       "popup": "Ne1马重组"
     },
@@ -119,6 +128,7 @@
     },
     {
       "index": 19,
+      "popup_en": "...f5!! Black advances along the direction of its pawn chain. The planned ...f4 will lock the position and prepare the kingside race.",
       "move": "f5",
       "popup": "f5！！黑f5！沿黑方兵链方向推进\nf4锁死局面，王翼竞速准备就绪",
       "highlights": [
@@ -142,16 +152,19 @@
     },
     {
       "index": 22,
+      "popup_en": "f3 prepares White's c5 break, targeting the base of Black's chain on d6.",
       "move": "f3",
       "popup": "f3！白f3准备c5，攻d6根部"
     },
     {
       "index": 23,
+      "popup_en": "f4!! White fixes the center. With the chains locked, the race on both wings begins.",
       "move": "f4",
       "popup": "f4！！f4锁定！兵链冻结，双翼竞速正式开始"
     },
     {
       "index": 24,
+      "popup_en": "c5!! White breaks on the queenside, advancing in the direction of its pawn chain and attacking the base on d6.",
       "move": "c5",
       "popup": "c5！！白方c5！沿兵链方向后翼突破\n攻击d6根部！",
       "highlights": [
@@ -167,11 +180,13 @@
     },
     {
       "index": 25,
+      "popup_en": "...g5 expands on the kingside, following the direction of Black's pawn chain.",
       "move": "g5",
       "popup": "g5！黑方g侧推进，沿黑方链方向"
     },
     {
       "index": 26,
+      "popup_en": "cxd6 exchanges pawns at the base of the chain.",
       "move": "cxd6",
       "popup": "cxd6兑换"
     },
@@ -181,6 +196,7 @@
     },
     {
       "index": 28,
+      "popup_en": "Nb5 occupies the strong b5-square.",
       "move": "Nb5",
       "popup": "Nb5马强占b5"
     },
@@ -210,6 +226,7 @@
     },
     {
       "index": 35,
+      "popup_en": "...g4!! Black launches the full kingside attack.",
       "move": "g4",
       "popup": "g4！！黑方王翼总攻！"
     },
@@ -219,6 +236,7 @@
     },
     {
       "index": 37,
+      "popup_en": "...hxg4! Black's pawn mass surges forward. The opposite-wing race is entering its decisive phase: which side will reach the opposing king first?",
       "move": "hxg4",
       "popup": "hxg4！黑方兵海总冲锋！\n双翼竞速进入最后阶段——谁先到达对方的王？",
       "highlights": [

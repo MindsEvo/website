@@ -2,11 +2,13 @@
   "game_id": "C11_OpenFiles_Practice_008",
   "description": "彼得罗夫防御 C42 — e线开放后的战术得子",
   "intro": {
+    "popup_en": "Open Files, Practice 8: Tactics on the Open e-File\nAfter the central exchanges in the Petrov Defense, the e-file is fully open. Re1 claims it with tempo and can combine with a pin to win material if Black is careless.",
     "flash_squares": ["e1", "e4", "e5", "e8"],
     "popup": "e线开放战术 练习8\n\n彼得罗夫中心兑换后\ne线完全打开！\n\nRe1先手占据！\n配合钉制战术\n对方疏忽就能得子！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Nxe5 and ...Nxe4 clear the e-file; Re1 occupies it first, and ...Bg4 pins Nf3 in reply. The key pattern is an open file combined with a pin: together they create powerful tactical threats.",
     "popup": "e线战术小结\n✅ Nxe5/Nxe4：e线打通\n✅ Re1先手占e线\n✅ Bg4反钉Nf3互动\n\n关键技术：\ne线开放→Re1→配合钉制战术\n开放线+钉制=强力组合！",
     "voice": true
   },
@@ -15,77 +17,88 @@
     "color": "#FFD70022"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4"},
-    {"index": 1, "move": "e5", "popup": "e5！开放e线的序曲"},
-    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
+    {"index": 0, "move": "e4", "popup": "e4", "popup_en": "e4 opens the game."},
+    {"index": 1, "move": "e5", "popup": "e5！开放e线的序曲", "popup_en": "...e5 begins the sequence that will eventually open the e-file."},
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展", "popup_en": "Nf3 develops."},
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6! The Petrov Defense counterattacks e4 instead of directly defending e5.",
       "popup": "Nf6！彼得罗夫！\n黑方反击e4而不守e5"
     },
     {
       "index": 4,
       "move": "Nxe5",
+      "popup_en": "Nxe5 captures the pawn on e5 and begins the exchange sequence on the e-file.",
       "popup": "Nxe5白马吃e5！\ne线兑换序列开始",
       "highlights": [{"squares": ["e5", "e4"], "color": "#FF8F0055"}]
     },
-    {"index": 5, "move": "d6", "popup": "d6驱马"},
+    {"index": 5, "move": "d6", "popup": "d6驱马", "popup_en": "...d6 attacks the knight and forces it to move."},
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 retreats; White brings the knight back to safety.",
       "popup": "Nf3撤退\n白马回来"
     },
     {
       "index": 7,
       "move": "Nxe4",
+      "popup_en": "...Nxe4! Black captures the knight on e4. The knights have cleared the e-file, which is now fully open.",
       "popup": "Nxe4！黑马吃e4！\ne线上的马已消失\ne线打开！",
       "highlights": [{"squares": ["e4", "e1", "e8"], "color": "#C6D50066"}]
     },
-    {"index": 8, "move": "d4", "popup": "d4占中心"},
-    {"index": 9, "move": "d5", "popup": "d5黑方反中心"},
-    {"index": 10, "move": "Bd3", "popup": "Bd3发展象\n瞄准h7"},
-    {"index": 11, "move": "Nc6", "popup": "Nc6发展马"},
-    {"index": 12, "move": "O-O", "popup": "O-O入城"},
-    {"index": 13, "move": "Be7", "popup": "Be7发展"},
+    {"index": 8, "move": "d4", "popup": "d4占中心", "popup_en": "d4 occupies the center."},
+    {"index": 9, "move": "d5", "popup": "d5黑方反中心", "popup_en": "...d5 counterattacks in the center."},
+    {"index": 10, "move": "Bd3", "popup": "Bd3发展象\n瞄准h7", "popup_en": "Bd3 develops and targets h7."},
+    {"index": 11, "move": "Nc6", "popup": "Nc6发展马", "popup_en": "...Nc6 develops a knight."},
+    {"index": 12, "move": "O-O", "popup": "O-O入城", "popup_en": "O-O secures White's king."},
+    {"index": 13, "move": "Be7", "popup": "Be7发展", "popup_en": "...Be7 develops the bishop."},
     {
       "index": 14,
       "move": "Re1",
+      "popup_en": "Re1! White claims the open e-file with tempo. The rook controls the file and threatens tactics such as Rxe4.",
       "popup": "Re1！先手占e线！\n车来e1，e列全在白方控制！\n下步威胁Rxe4等",
       "highlights": [{"squares": ["e1", "e4", "e7"], "color": "#00BCD488"}]
     },
     {
       "index": 15,
       "move": "Bg4",
+      "popup_en": "...Bg4! Black counters by pinning Nf3 and threatening to exchange it with ...Bxf3.",
       "popup": "Bg4！黑方反制！\n象到g4钉住Nf3\n威胁Bxf3兑换马",
       "highlights": [{"squares": ["g4", "f3", "d1"], "color": "#E5393566"}]
     },
-    {"index": 16, "move": "c3", "popup": "c3稳固阵型"},
-    {"index": 17, "move": "O-O", "popup": "O-O入城"},
+    {"index": 16, "move": "c3", "popup": "c3稳固阵型", "popup_en": "c3 reinforces White's position."},
+    {"index": 17, "move": "O-O", "popup": "O-O入城", "popup_en": "...O-O secures Black's king."},
     {
       "index": 18,
       "move": "Nbd2",
+      "popup_en": "Nbd2! White sidesteps the pin and supports e4. The knight is no longer exposed to the bishop on g4.",
       "popup": "Nbd2！避开钉制！\n马到d2，不被g4象钉住\n同时支援e4格",
       "highlights": [{"squares": ["d2", "g4"], "color": "#FF8F0044"}]
     },
     {
       "index": 19,
       "move": "Nxd2",
+      "popup_en": "...Nxd2 exchanges knights, trying to remove White's central piece.",
       "popup": "Nxd2！黑马兑换\n试图消灭白方中心马"
     },
     {
       "index": 20,
       "move": "Bxd2",
+      "popup_en": "Bxd2 recaptures and restores White's central control.",
       "popup": "Bxd2重建\n象来d2，中心控制稳固"
     },
     {
       "index": 21,
       "move": "f5",
+      "popup_en": "...f5! Black challenges e4 and tries to establish a knight outpost there to contest the e-file.",
       "popup": "f5！黑方推进！\n争夺e4格\n试图建立e4据点抗衡e线",
       "highlights": [{"squares": ["f5", "e4"], "color": "#E5393555"}]
     },
     {
       "index": 22,
       "move": "Rc1",
+      "popup_en": "Rc1! White assigns one rook to the e-file and the other to the c-file. The open-file coordination creates tactical threats: for example, Bxf6, gxf6, and Rxe7 can win material if Black is careless.",
       "popup": "Rc1！白方布置c线！\nRe1守e线，Rc1控c线\n双车分工，两线施压！\n\nRe1在e线的威胁：\n→ Bxf6 gxf6 Rxe7！得质！\n→ 开放线上的车配合战术威力巨大！",
       "highlights": [
         {"squares": ["e1", "e7"], "color": "#E53935aa"},

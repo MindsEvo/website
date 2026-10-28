@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-008",
   "description": "白后将军引象阻塞，再弃后用象将死",
+  "explanation_en": "White uses two queen checks to force Black's bishop to block the king's escape squares. The bishop is then forced to capture the queen, allowing White's bishop to deliver mate.",
   "intro": {
     "flash_squares": ["h8", "f8", "f6"],
     "popup": "💡 <b>连续阻塞</b>：黑王在角落，有象在旁边保护横向。白方如何用两步后，把黑象引到阻塞自己退路的位置，再用象将死？",
+    "popup_en": "💡 <b>Consecutive blockades</b>: Black's king is in the corner, with a bishop nearby. How can White use two queen checks to make the bishop block its own king, then mate with the bishop?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf8+引黑象到g8阻塞，Qf6+再弃后，黑象吃后后被白象将死！两步弃后的连续阻塞。",
+    "popup_en": "✅ <b>Key idea</b>: Qf8+ forces the bishop to g8, blocking the king. Qf6+ then sacrifices the queen; after the bishop captures it, White's bishop delivers mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf8+",
       "popup": "后进底线将军！黑只能用象垫在g8，阻塞了黑王横向出路。",
+      "popup_en": "The queen checks on the back rank, forcing Black's bishop to block on g8 and obstruct the king's escape route.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Bg8",
       "popup": "黑象垫将——阻塞了g8！黑王只剩f6方向，但白后马上来了。",
+      "popup_en": "The bishop blocks on g8, restricting the king to the f6 route, but White's queen checks again.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Qf6+",
       "popup": "白后再将军！这次黑象必须吃后，进一步阻塞黑王退路。",
+      "popup_en": "White checks again with Qf6+, forcing the bishop to capture the queen and block another escape square.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Bxf6",
       "popup": "黑象吃后——完全封死了黑王的所有出路！",
+      "popup_en": "The bishop captures the queen, completely blocking the black king's remaining escape routes.",
       "highlights": [
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0},
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Bxf6#",
       "popup": "白象将死！黑王在h8，g7被黑兵挡，g8被黑象封，f6再被白象将军——绝无逃路！",
+      "popup_en": "White's bishop delivers checkmate! The king on h8 is blocked by its own pawn on g7 and bishop on g8, with White's bishop giving check from f6.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},

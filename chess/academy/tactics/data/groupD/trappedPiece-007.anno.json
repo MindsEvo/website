@@ -1,13 +1,16 @@
 {
   "game_id": "tac_trappedPiece_L1-007",
   "description": "白后孤军深入b7成困子，被迫换车",
+  "explanation_en": "Black's knight attacks the deeply advanced queen, leaving it with only one escape: capture the rook on a8. Black's queen then recaptures, winning a rook for the queen.",
   "intro": {
     "flash_squares": ["b7", "a6", "a8"],
     "popup": "💡 <b>困子</b>：白后孤军深入到b7！黑方如何利用马和车配合，将白后困死并赢得子力？",
+    "popup_en": "💡 <b>Trapped piece</b>: White's queen has ventured alone to b7. How can Black coordinate the knight and rook to trap it and win material?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nc5攻后→Qxa8是唯一逃路→黑后Qxa8赢回！白后深入被困，以后换车损失惨重。开局切忌后孤军深入！",
+    "popup_en": "✅ <b>Key idea</b>: Nc5 attacks the queen. Its only escape is Qxa8, after which Black recaptures with Qxa8 and wins a rook. Avoid sending the queen deep into enemy territory without support.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nc5",
       "popup": "黑马Nc5！马从a6跳到c5，直接攻击白后b7。白后b7被马攻击，退路极为有限！",
+      "popup_en": "Black's knight jumps from a6 to c5, attacking White's queen on b7 and severely limiting its escape squares.",
       "highlights": [
         {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxa8",
       "popup": "白后被迫Qxa8！只能去吃黑车a8，别无出路（b8、c8、c7、b6等都被黑方棋子控制）。这是丢后的困境。",
+      "popup_en": "White's queen is forced to capture the rook on a8; its other escape squares are controlled by Black. The queen is trapped and lost.",
       "highlights": [
         {"squares": ["a8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b8", "c8", "c7", "b6"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Qxa8",
       "popup": "黑后Qxa8！黑后从d8取回白后，黑方以后换后+车，净赚一车。白方后深入代价惨重！",
+      "popup_en": "Black's queen recaptures on a8. Black has exchanged queens and won a rook; White's unsupported queen excursion has proved costly.",
       "highlights": [
         {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0}
       ],

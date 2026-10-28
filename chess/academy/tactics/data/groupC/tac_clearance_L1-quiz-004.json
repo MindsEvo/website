@@ -7,25 +7,31 @@
   "fen": "5r1k/pqnPb2p/1p1R2p1/2p5/2Q5/8/P4PPP/1R4K1 w - - 0 1",
   "concept": "兵升变腾挪",
   "question_cn": "兵升变也可以用作腾挪手段，其核心逻辑是什么？",
+  "question_en": "How can promoting a pawn serve as a clearance tactic?",
   "options": [
     {
       "key": "A",
-      "text_cn": "升变让兵变成强力子，直接参与攻击"
+      "text_cn": "升变让兵变成强力子，直接参与攻击",
+      "text_en": "The promotion turns the pawn into a powerful piece that joins the attack directly"
     },
     {
       "key": "B",
-      "text_cn": "兵从升变前的格离开，腾空该格让己方重子占据；升变子本身通常是用来强迫对方应对（如升后将军或捉子）"
+      "text_cn": "兵从升变前的格离开，腾空该格让己方重子占据；升变子本身通常是用来强迫对方应对（如升后将军或捉子）",
+      "text_en": "The pawn vacates its promotion square so a friendly major piece can occupy it; the promoted piece often creates a forcing threat, such as check or an attack"
     },
     {
       "key": "C",
-      "text_cn": "升变威胁可以吸引对方棋子过来守护，从而引离防守者"
+      "text_cn": "升变威胁可以吸引对方棋子过来守护，从而引离防守者",
+      "text_en": "The promotion threat can attract an enemy piece to defend, thereby deflecting a defender"
     },
     {
       "key": "D",
-      "text_cn": "升变是腾挪的变体，但只在残局有效"
+      "text_cn": "升变是腾挪的变体，但只在残局有效",
+      "text_en": "Promotion is a variation of clearance, but it works only in the endgame"
     }
   ],
   "correct": "B",
   "explanation_cn": "升变腾挪是腾挪中最特殊的形式：兵升变后，原来占据的格（如d7）腾空，己方重子（Rd6→d7）可以立即占据。升变子（新后）同时产生攻击威胁，强迫对方应对，让腾挪效果即时生效。本题d8=Q升变，Bxd8被迫，Rd7随即占第七横线——升变与腾挪合而为一。",
+  "explanation_en": "Promotion clearance combines two effects: the pawn leaves its square, opening it for a rook or queen to occupy, while the new queen itself creates a forcing threat. In this position, d8=Q forces Bxd8, after which Rd7 can take over the seventh rank. The promotion and the clearance work together.",
   "created_at": "2026-05-20"
 }

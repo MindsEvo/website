@@ -7,25 +7,31 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "王的逼着",
   "question_cn": "在王兵残局中，进攻方如何利用逼着推进兵升变？",
+  "question_en": "How can the attacking side use zugzwang to advance a pawn toward promotion in a king-and-pawn endgame?",
   "options": [
     {
       "key": "A",
-      "text_cn": "让王远离兵，用兵单独冲刺升变"
+      "text_cn": "让王远离兵，用兵单独冲刺升变",
+      "text_en": "Move the king away from the pawn and let the pawn race to promote alone"
     },
     {
       "key": "B",
-      "text_cn": "用王直接逼退对方王，占据关键格子后推兵"
+      "text_cn": "用王直接逼退对方王，占据关键格子后推兵",
+      "text_en": "Use your king to drive back the opposing king, occupy key squares, and then advance the pawn"
     },
     {
       "key": "C",
-      "text_cn": "把兵推到第7行，等对方王主动离开"
+      "text_cn": "把兵推到第7行，等对方王主动离开",
+      "text_en": "Advance the pawn to the seventh rank and wait for the opposing king to move away"
     },
     {
       "key": "D",
-      "text_cn": "王站在兵的斜后方，随时换掉对方王"
+      "text_cn": "王站在兵的斜后方，随时换掉对方王",
+      "text_en": "Place your king diagonally behind the pawn and exchange it for the opposing king when possible"
     }
   ],
   "correct": "B",
   "explanation_cn": "王兵残局的核心是王的对立（opposition）。进攻方王逼退对方王，占领兵前方的关键格（如兵在e5则控制d6、e6、f6），形成逼着迫使对方王让步，再推兵升变。",
+  "explanation_en": "King opposition is central to king-and-pawn endgames. The attacking king drives the opposing king away and occupies key squares in front of the pawn. This creates zugzwang, forcing the defender to yield ground so the pawn can advance and promote.",
   "created_at": "2026-05-29"
 }

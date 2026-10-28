@@ -3,14 +3,17 @@
     "gene_id": "C10_weak_squares",
     "sequence": 1,
     "concept": "弱格的定义",
+    "concept_en": "Defining a Weak Square",
     "question_cn": "国际象棋中「弱格」的准确定义是什么？",
+    "question_en": "What is the precise definition of a weak square in chess?",
     "options": [
-        {"key": "A", "text_cn": "当前没有己方棋子站在上面的格子"},
-        {"key": "B", "text_cn": "无法再被己方兵保护、且对方可以永久占据的格子"},
-        {"key": "C", "text_cn": "位于棋盘边缘、不重要的格子"},
-        {"key": "D", "text_cn": "被对方兵直接攻击的格子"}
+        {"key": "A", "text_cn": "当前没有己方棋子站在上面的格子", "text_en": "A square that no friendly piece currently occupies."},
+        {"key": "B", "text_cn": "无法再被己方兵保护、且对方可以永久占据的格子", "text_en": "A square that can no longer be protected by a friendly pawn and can be permanently occupied by the opponent."},
+        {"key": "C", "text_cn": "位于棋盘边缘、不重要的格子", "text_en": "An unimportant square on the edge of the board."},
+        {"key": "D", "text_cn": "被对方兵直接攻击的格子", "text_en": "A square directly attacked by an enemy pawn."}
     ],
     "correct": "B",
     "explanation_cn": "弱格（Weak Square）指己方永远无法用兵来守护的格子。关键词是「永久性」——暂时没有棋子站着不叫弱格，但若周围的兵已经前进过去或者控制该格的象已消失，该格就成了对方可以永久驻扎的据点。弱格越靠近对方王或中心，价值越高。",
+    "explanation_en": "A weak square is one that can no longer be protected by a friendly pawn. Permanence is key: a square is not weak just because it is temporarily unoccupied, but it can become a lasting outpost if the pawns have advanced past it or the bishop that controlled it has been exchanged. Weak squares near the king or center are especially valuable.",
     "created_at": "2026-06-13"
 }

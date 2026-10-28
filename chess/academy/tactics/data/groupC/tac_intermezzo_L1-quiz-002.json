@@ -7,25 +7,31 @@
   "fen": "5k2/1p1q2p1/p2p2p1/n2Nb2p/8/1PB4P/P5P1/Q5K1 w - - 0 1",
   "concept": "挂子与中间招的关系",
   "question_cn": "本题局面中，白方最好的中间招是什么？（黑马Na5无根）",
+  "question_en": "What is White's best intermezzo in this position? (Black's knight on a5 is loose.)",
   "options": [
     {
       "key": "A",
-      "text_cn": "直接Bxa5吃掉挂马"
+      "text_cn": "直接Bxa5吃掉挂马",
+      "text_en": "Capture the loose knight immediately with Bxa5"
     },
     {
       "key": "B",
-      "text_cn": "先Qf1+将军，黑王应将后再Bxa5吃马"
+      "text_cn": "先Qf1+将军，黑王应将后再Bxa5吃马",
+      "text_en": "Play Qf1+ first; after the black king responds to check, capture the knight with Bxa5"
     },
     {
       "key": "C",
-      "text_cn": "先Nd7+将军，再回来吃马"
+      "text_cn": "先Nd7+将军，再回来吃马",
+      "text_en": "Give check with Nd7+ first, then return to capture the knight"
     },
     {
       "key": "D",
-      "text_cn": "先Qxa5直接吃马，再后撤防守"
+      "text_cn": "先Qxa5直接吃马，再后撤防守",
+      "text_en": "Capture the knight immediately with Qxa5, then retreat to defend"
     }
   ],
   "correct": "B",
   "explanation_cn": "黑马Na5是无根子（挂子）。白方若直接Bxa5，只赚一马；但先Qf1+将军，黑王被迫应将，无法救马，再Bxa5——同样赢马，但还多了一步主动将军的先手！挂子是中间招奏效的常见前提：无根子无法逃跑，让插入的强迫步更有威力。",
+  "explanation_en": "Black's knight on a5 is loose. If White takes it with Bxa5 immediately, White wins the knight. But Qf1+ first forces the black king to answer the check and leaves no time to save the knight; White can then play Bxa5 and still win it, with an extra forcing move. A loose piece often makes an intermezzo especially effective because it cannot escape while the opponent responds.",
   "created_at": "2026-05-21"
 }

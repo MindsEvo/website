@@ -1,13 +1,16 @@
 {
   "game_id": "tac_pin_L1-001",
   "description": "车全牵制——马被钉死无法动弹",
+  "explanation_en": "This is an example of an absolute pin by a rook. A pin against the king is called an absolute pin; otherwise, it is a relative pin.",
   "intro": {
     "flash_squares": ["b1", "d4", "g4"],
     "popup": "💡 <b>全牵制</b>：白车b1、黑马d4、黑王g4在同一横线。白方如何利用这条线路牵制黑马？",
+    "popup_en": "💡 <b>Absolute pin</b>: White's rook is on b1, Black's knight on d4, and Black's king on g4, all on the same rank. How can White use this line to pin the knight?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rb4全牵制！黑马钉死在d4无法移动（动则丢王），白方从容吃马得子。牵制目标是王时称为全牵制。",
+    "popup_en": "✅ <b>Key idea</b>: Rb4 creates an absolute pin. The knight on d4 cannot move without exposing its king, allowing White to win it. A pin against the king is absolute.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rb4",
       "popup": "白车Rb4！沿第4横线牵制黑马——马在白车与黑王之间，动则丢王。",
+      "popup_en": "White plays Rb4, pinning the knight along the fourth rank. The knight is between the rook and king and cannot move without exposing the king.",
       "highlights": [
         {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "e5",
       "popup": "黑马被钉死，只能走兵e5。",
+      "popup_en": "The knight is pinned, so Black advances the e-pawn with e5 instead.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "e3",
       "popup": "白兵e3推进，威胁exd4直接吃掉被牵制的马！",
+      "popup_en": "White advances the pawn to e3, threatening exd4 to capture the pinned knight.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "e4",
       "popup": "黑兵继续推进，但马仍无法解套。",
+      "popup_en": "Black advances the pawn again, but the knight remains pinned.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "exd4",
       "popup": "白兵exd4！吃掉被牵制的马，白方得子！",
+      "popup_en": "White plays exd4 and captures the pinned knight, winning material.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

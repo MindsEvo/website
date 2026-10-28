@@ -4,10 +4,12 @@
   "intro": {
     "flash_squares": ["e1", "e5", "e4", "e8"],
     "popup": "线路控制第9课\nRe1——预先布控e线！\ne线还有兵，但车提前就位\n等待时机，施压黑方e5中心",
+    "popup_en": "Line Control, Lesson 9\nRe1 prepares to control the e-file in advance. The pawns still block it, but the rook is already in place, ready to pressure Black's e5 center when the time comes.",
     "voice": true
   },
   "outro": {
     "popup": "预控总结\nRe1在e线上的价值\n1. 施压黑方e5中心兵\n2. 为d4推进后的开放做准备\n3. 与Bc4形成纵线+斜线协同\n先布线，再等开放——黑方也在沉着应对！",
+    "popup_en": "Summary: Re1 pressures Black's e5 pawn, prepares for the file to open after d4, and works with Bc4 to coordinate a file and a diagonal. Place the rook first, then wait for the line to open; Black is also preparing to contest it.",
     "voice": true
   },
   "board_always": {
@@ -18,58 +20,69 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game and occupies the center.",
       "popup": "e4开局\n占中心"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's move, and both pawns block the e-file.",
       "popup": "e5对称\n双方封闭e线"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops and attacks e5.",
       "popup": "Nf3发展\n攻击e5"
     },
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops and defends e5, a standard reply.",
       "popup": "Nc6保护e5\n标准应对"
     },
     {
       "index": 4,
       "move": "Bc4",
+      "popup_en": "Bc4 develops the Italian bishop actively and targets f7.",
       "highlights": [{"squares": ["c4", "f7"], "color": "#FF8F0044"}],
       "popup": "Bc4意大利象\n瞄准f7，积极发展"
     },
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops a black piece.",
       "popup": "Nf6发展\n黑方出子"
     },
     {
       "index": 6,
       "move": "d3",
+      "popup_en": "d3 reinforces the center in the Giuoco Pianissimo setup. White does not rush d4 and first completes development.",
       "popup": "d3稳固中心\n意大利封闭体系\n不急于d4，先完成发展"
     },
     {
       "index": 7,
       "move": "Be7",
+      "popup_en": "...Be7 develops and prepares Black to castle.",
       "popup": "Be7发展\n准备王车易位"
     },
     {
       "index": 8,
       "move": "O-O",
+      "popup_en": "O-O activates the rook on f1. White can now play Rfe1 immediately.",
       "highlights": [{"squares": ["g1", "f1", "e1"], "color": "#C6D50033"}],
       "popup": "O-O王车易位\nf1车激活\n注意：王车易位后立刻就能Rfe1！"
     },
     {
       "index": 9,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's center.",
       "popup": "d6稳固\n黑方巩固中心"
     },
     {
       "index": 10,
       "move": "Re1",
+      "popup_en": "Re1! White places the rook on the e-file in advance. The pawns on e4 and e5 still block it, but once e5 is exchanged the file can open at once. This is the essence of preparing control before the line opens.",
       "highlights": [{"squares": ["f1", "e1", "e5", "e4"], "color": "#C6D50066"}],
       "concept_arrows": [{"from": "e1", "to": "e5", "color": "#C6D500AA"}],
       "popup": "Re1！提前布控e线！\ne线现在还有兵（e4和e5）\n但车在e1——等待时机\n一旦e5兵被兑换，e线立刻开放\nRe1预先就位，是预控e线的精华"
@@ -77,27 +90,32 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "...O-O activates Black's rook on f8. Black may challenge the e-file with ...Re8, but White's rook is already in position.",
       "highlights": [{"squares": ["g8", "f8", "e8"], "color": "#00BCD433"}],
       "popup": "黑方王车易位\nf8车激活\n黑方也可以Re8对抗e线\n但白方Re1已经先行就位"
     },
     {
       "index": 12,
       "move": "c3",
+      "popup_en": "c3 prepares d4. If White advances, the e-file may open and Re1 will be ready to exploit it.",
       "popup": "c3为d4做准备\n一旦d4推进，e线将开放\nRe1的价值立刻体现"
     },
     {
       "index": 13,
       "move": "h6",
+      "popup_en": "...h6 prevents Ng5 as Black continues steadily.",
       "popup": "h6防止Ng5\n黑方稳步推进"
     },
     {
       "index": 14,
       "move": "Nbd2",
+      "popup_en": "Nbd2 develops the knight to support the center.",
       "popup": "Nbd2发展\n马占d2，支援中心"
     },
     {
       "index": 15,
       "move": "Re8",
+      "popup_en": "...Re8! Black also contests the e-file. The rooks now face each other along the file.",
       "highlights": [{"squares": ["f8", "e8", "e1"], "color": "#E5393544"}],
       "concept_arrows": [{"from": "f8", "to": "e8", "color": "#E53935AA"}],
       "popup": "Re8！黑方也来争e线\n黑车到e8——双方在e线相遇\n"
@@ -105,37 +123,44 @@
     {
       "index": 16,
       "move": "Nf1",
+      "popup_en": "Nf1 reroutes the knight toward strong squares, preparing Ng3-f5.",
       "popup": "Nf1马重新部署\n准备Ng3-f5强占好格"
     },
     {
       "index": 17,
       "move": "Bf8",
+      "popup_en": "...Bf8 retreats the bishop as Black rearranges the position.",
       "popup": "Bf8象撤回\n黑方调整阵型"
     },
     {
       "index": 18,
       "move": "Ng3",
+      "popup_en": "Ng3 brings the knight to a useful post, controlling f5 and h5.",
       "popup": "Ng3马到好位\n控制f5和h5"
     },
     {
       "index": 19,
       "move": "g6",
+      "popup_en": "...g6 defends and discourages Nf5.",
       "popup": "g6防御\n阻止Nf5"
     },
     {
       "index": 20,
       "move": "h3",
+      "popup_en": "h3 is a useful precaution against ...Bg4 pinning Nf3.",
       "popup": "h3备手\n防止Bg4牵制Nf3"
     },
     {
       "index": 21,
       "move": "Bg7",
+      "popup_en": "...Bg7 develops the bishop, which pressures d4. Black's setup is taking shape.",
       "highlights": [{"squares": ["g7", "e5", "d4"], "color": "#00BCD433"}],
       "popup": "Bg7发展\n黑方象站g7，压d4\n黑方阵型趋于完整"
     },
     {
       "index": 22,
       "move": "d4",
+      "popup_en": "d4! White challenges the center. The exchange on e5 may open the e-file, where Re1 is already posted. Black is ready to contest the line as well.",
       "highlights": [{"squares": ["d3", "d4", "e5", "e1"], "color": "#C6D50066"}],
       "concept_arrows": [
         {"from": "d3", "to": "d4", "color": "#C6D500CC"},

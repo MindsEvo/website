@@ -1,13 +1,16 @@
 {
   "game_id": "mate_arabianMate_L1-006",
   "description": "阿拉伯杀：引离黑车，Qxh7#将死",
+  "explanation_en": "White first deflects the black rook from its defensive post with Rg4, then delivers Arabian mate with Qxh7#.",
   "intro": {
     "flash_squares": ["h8"],
     "popup": "💡 <b>阿拉伯杀</b>：有趣的引离等子手法！注意不可直接走Qxh7弃后，要先引离黑车。",
+    "popup_en": "💡 <b>Arabian mate</b>: A neat deflection. Do not sacrifice the queen with Qxh7 immediately; first draw the black rook away.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：有趣的引离等子，小心不可以直接弃后。Rg4引离黑车，再Qxh7#完成阿拉伯杀。",
+    "popup_en": "✅ <b>Key idea</b>: Deflect the rook first. Rg4 draws it away, allowing Qxh7# to deliver Arabian mate; the immediate queen sacrifice would not work.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rg4",
       "popup": "白车Rg4！引离黑车——若黑不吃，白车继续进攻。注意不能直接Qxh7弃后。",
+      "popup_en": "Rg4! The rook is offered to deflect Black's rook. If Black declines, White's rook remains active; Qxh7 cannot be played immediately.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Rxg4",
       "popup": "黑车Rxg4，被迫吃车，离开g7/g8。",
+      "popup_en": "Rxg4. The black rook captures and is drawn away from its defensive squares on g7 and g8.",
       "highlights": [
         {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Qxh7#",
       "popup": "白后Qxh7#，阿拉伯杀！黑车已被引离，h7无子保护，马封逃格，一击致命。",
+      "popup_en": "Qxh7# delivers Arabian mate! The black rook has been deflected, h7 is undefended, and the knight covers the king's escape squares.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-005",
   "description": "经典车马双将，两步将死",
+  "explanation_en": "A classic rook-and-knight double check. The knight checks while uncovering the rook's check, forcing the king to move before the knight delivers mate.",
   "intro": {
     "flash_squares": ["e4", "e1", "e8", "d6"],
     "popup": "💡 <b>双将</b>：白马在e4，白车在e1，黑王在e8。典型的车马配合——白方如何双将将死？",
+    "popup_en": "💡 <b>Double check</b>: White's knight is on e4, rook on e1, and Black's king on e8. How can the rook and knight coordinate for a double-check mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nd6+双将！马攻e8，车揭开e列将军，黑王只能逃至d8，然后Nf7#将死。",
+    "popup_en": "✅ <b>Key idea</b>: Nd6+ gives double check: the knight checks the king on e8 and uncovers the rook's check on the e-file. After Kd8, Nf7# is mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nd6+",
       "popup": "双将！白马跳d6，马攻e8，同时揭开白车e1沿e列直指e8！黑王无法同时应对马将和车将。",
+      "popup_en": "Double check! The knight moves to d6 and checks the king on e8 while uncovering the rook's check along the e-file. The king cannot answer both checks at once.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Kd8",
       "popup": "黑王逃至d8，唯一的逃脱方向。",
+      "popup_en": "The king moves to d8, its only escape square.",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Nf7#",
       "popup": "白马Nf7将死！马攻d8，黑王被周围棋子团团困住，无路可逃。车马双将完美配合！",
+      "popup_en": "Nf7# is checkmate! The knight attacks the king on d8, which is boxed in by its own pieces. The rook and knight have coordinated perfectly.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0}

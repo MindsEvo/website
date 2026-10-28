@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-001",
   "description": "象将军开线，车闪击得后",
+  "explanation_en": "A bishop discovered attack: the bishop moves with check, uncovering the rook's attack on the queen.",
   "intro": {
     "flash_squares": ["e5", "g7", "e4", "e8"],
     "popup": "💡 <b>闪击</b>：白象在e5，白车在e4，黑后在e8。象走开时能同时将军，并让车闪击黑后吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's bishop is on e5, rook on e4, and Black's queen on e8. Can the bishop move with check and uncover the rook's attack on the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bxg7+！象走开兼将军，白车e4的攻击线对准e8黑后——闪击得后！",
+    "popup_en": "✅ <b>Key idea</b>: Bxg7+ moves the bishop with check and uncovers the rook's attack on the queen at e8. White wins the queen with a discovered attack.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bxg7+",
       "popup": "象Bxg7+！一步走开将军：黑王必须应将，白车对e8黑后的攻击同时展开！",
+      "popup_en": "Bishop takes on g7 with check! Black must answer the check while White's rook attacks the queen on e8.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Kxg7",
       "popup": "黑王被迫吃象——应将之后，e8的黑后已无法同时防守。",
+      "popup_en": "The king is forced to capture the bishop. After answering check, Black cannot also save the queen on e8.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Rxe8",
       "popup": "白车Rxe8！闪击成功，得后！这就是闪击：移子将军，身后棋子趁机攻击！",
+      "popup_en": "White's rook captures on e8 and wins the queen. The bishop moved with check, allowing the rook behind it to attack.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}
       ],

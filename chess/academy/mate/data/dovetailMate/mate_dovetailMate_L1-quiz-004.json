@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 4,
   "concept": "燕尾杀与闷杀的区别",
+  "concept_en": "Dovetail Mate vs. Smothered Mate",
   "question_cn": "燕尾杀和闷杀（Smothered Mate）的主要区别是什么？",
+  "question_en": "What is the main difference between dovetail mate and smothered mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "燕尾杀用车将军，闷杀用马将军"
+      "text_cn": "燕尾杀用车将军，闷杀用马将军",
+      "text_en": "Dovetail mate uses a rook to check, while smothered mate uses a knight"
     },
     {
       "key": "B",
-      "text_cn": "燕尾杀由后在对角线将军，闷杀由马将军；封死逃格的棋子也不同"
+      "text_cn": "燕尾杀由后在对角线将军，闷杀由马将军；封死逃格的棋子也不同",
+      "text_en": "Dovetail mate is a queen check along a diagonal, while smothered mate is a knight check; the pieces blocking the escape squares also differ"
     },
     {
       "key": "C",
-      "text_cn": "燕尾杀只能在角落实现，闷杀可以在任意位置"
+      "text_cn": "燕尾杀只能在角落实现，闷杀可以在任意位置",
+      "text_en": "Dovetail mate can occur only in a corner, while smothered mate can occur anywhere"
     },
     {
       "key": "D",
-      "text_cn": "燕尾杀需要弃子，闷杀不需要"
+      "text_cn": "燕尾杀需要弃子，闷杀不需要",
+      "text_en": "Dovetail mate requires a sacrifice, while smothered mate does not"
     }
   ],
   "correct": "B",
   "explanation_cn": "燕尾杀是后在对角线将军，封死逃格的通常是己方任意棋子；闷杀则是马给王将军，而王所有逃格被己方棋子堵死。两者都利用己方棋子封锁王，但将军的棋子和形状不同。",
+  "explanation_en": "Dovetail mate uses a queen to check along a diagonal, with friendly pieces usually occupying the king's two diagonal escape squares. Smothered mate uses a knight to check while the king's escape squares are blocked by its own pieces. Both rely on self-blockade, but the checking piece and mating shape differ.",
   "created_at": "2026-06-01"
 }

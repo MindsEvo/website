@@ -2,6 +2,7 @@
   "game_id": "C10_WeakSquares_Practice_007",
   "description": "英国开局 A13 — 孤立兵制造弱格",
   "intro": {
+    "popup_en": "Weak Squares, Practice 7: An Isolated Pawn Creates Weak Squares\nAfter cxd5, Black is left with an isolated pawn on d5. The squares on either side, c5 and e5, lose pawn protection. An opponent's isolated pawn can make those squares valuable outposts: pressure d5 with a rook and occupy d4 with a knight.",
     "flash_squares": [
       "d5",
       "c5",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: White accepts the isolated-pawn structure, uses Ne5 to remove a defender, and exchanges on c6 to create doubled pawns. Rd1 then pressures the isolated pawn along the d-file. Before accepting an isolated pawn, identify the weak squares it may leave behind.",
     "popup": "孤立兵练习小结\n✅ cxd5接受孤立兵\n✅ Ne5消灭守护马，Nxc6打叠兵\n✅ Rd1车压d列孤兵\n\n练习要点：\n接受孤立兵前先想好弱格在哪",
     "voice": true
   },
@@ -24,76 +26,91 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "Nf3 develops in the English Opening.",
       "move": "Nf3",
       "popup": "Nf3发展马\n英国开局"
     },
     {
       "index": 1,
+      "popup_en": "...d5 occupies the center and establishes a solid setup.",
       "move": "d5",
       "popup": "d5占中心\n坚固防守"
     },
     {
       "index": 2,
+      "popup_en": "c4 expands on the flank and prepares to challenge d5.",
       "move": "c4",
       "popup": "c4翼侧\n准备挑战d5"
     },
     {
       "index": 3,
+      "popup_en": "...e6 reinforces d5.",
       "move": "e6",
       "popup": "e6稳固d5"
     },
     {
       "index": 4,
+      "popup_en": "g3 prepares a fianchetto.",
       "move": "g3",
       "popup": "g3纤维局"
     },
     {
       "index": 5,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6发展马"
     },
     {
       "index": 6,
+      "popup_en": "Bg2 completes White's fianchetto.",
       "move": "Bg2",
       "popup": "Bg2飞象\n建立纤维局"
     },
     {
       "index": 7,
+      "popup_en": "...Be7 develops solidly.",
       "move": "Be7",
       "popup": "Be7稳健发展"
     },
     {
       "index": 8,
+      "popup_en": "O-O secures White's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 9,
+      "popup_en": "...O-O completes castling for both sides.",
       "move": "O-O",
       "popup": "O-O双方入城"
     },
     {
       "index": 10,
+      "popup_en": "d4 establishes a central presence and contests control of the center.",
       "move": "d4",
       "popup": "d4建立中心\n争夺中心控制"
     },
     {
       "index": 11,
+      "popup_en": "...c5 counterattacks and challenges d4.",
       "move": "c5",
       "popup": "c5反击！\n黑方挑战d4"
     },
     {
       "index": 12,
+      "popup_en": "Nc3 develops a knight.",
       "move": "Nc3",
       "popup": "Nc3发展马"
     },
     {
       "index": 13,
+      "popup_en": "...Nc6 defends d5.",
       "move": "Nc6",
       "popup": "Nc6守护d5"
     },
     {
       "index": 14,
+      "popup_en": "cxd5! White accepts the isolated-pawn structure. Black's d5-pawn will now lack support from neighboring pawns.",
       "move": "cxd5",
       "popup": "cxd5！接受孤立兵\n此后d5成孤立兵",
       "highlights": [
@@ -109,6 +126,7 @@
     },
     {
       "index": 15,
+      "popup_en": "...exd5 accepts the exchange, leaving the d5-pawn isolated and without adjacent pawn support.",
       "move": "exd5",
       "popup": "exd5接受孤立兵\nd5孤兵无旁兵支援！",
       "highlights": [
@@ -124,6 +142,7 @@
     },
     {
       "index": 16,
+      "popup_en": "Ne5! White targets the weak squares and prepares to eliminate the knight defending them.",
       "move": "Ne5",
       "popup": "Ne5！攻击弱格\n马跳c6消灭守护者",
       "highlights": [
@@ -138,11 +157,13 @@
     },
     {
       "index": 17,
+      "popup_en": "...cxd4 opens the center and creates counterplay.",
       "move": "cxd4",
       "popup": "cxd4打开中心\n黑方反击"
     },
     {
       "index": 18,
+      "popup_en": "Nxc6! White removes the knight defending the isolated pawn on d5. Without that defender, d5 becomes weaker.",
       "move": "Nxc6",
       "popup": "Nxc6！消灭d5守护马\n无马守护后d5更弱",
       "highlights": [
@@ -157,11 +178,13 @@
     },
     {
       "index": 19,
+      "popup_en": "...bxc6 is forced, leaving Black with doubled pawns and another weakness on c5.",
       "move": "bxc6",
       "popup": "bxc6被迫\n叠兵产生，c5格也弱"
     },
     {
       "index": 20,
+      "popup_en": "Qxd4 takes control of the center and occupies d4.",
       "move": "Qxd4",
       "popup": "Qxd4夺中心控制\n后占d4格",
       "highlights": [
@@ -176,11 +199,13 @@
     },
     {
       "index": 21,
+      "popup_en": "...Bb7 develops the bishop and prepares to reinforce the position.",
       "move": "Bb7",
       "popup": "Bb7象发展\n准备守护"
     },
     {
       "index": 22,
+      "popup_en": "Rd1! The rook pressures Black's isolated pawn along the d-file. The queen and rook combine to attack the weakness.",
       "move": "Rd1",
       "popup": "Rd1！车压d列\n对准d5孤兵施加压力\n后+车双重压制孤兵！",
       "highlights": [

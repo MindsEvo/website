@@ -1,13 +1,16 @@
 {
   "game_id": "mate_dovetailMate_L1-006",
   "description": "燕尾杀：兵吃子开路，黑后对角线将死",
+  "explanation_en": "The pawn captures to clear the queen's diagonal, allowing Black to finish with dovetail mate.",
   "intro": {
     "flash_squares": ["g2"],
     "popup": "💡 <b>燕尾杀</b>：注意白王的位置。白兵吃子后，黑后将从对角线发动燕尾杀。",
+    "popup_en": "💡 <b>Dovetail mate</b>: Watch the white king's position. After the white pawn captures, the black queen will attack along the diagonal.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：fxe3吃子开路，Qf1#完成燕尾杀。兵的吃子为对角线将杀创造了条件。",
+    "popup_en": "✅ <b>Key idea</b>: fxe3 clears the way, and Qf1# delivers dovetail mate. The pawn capture creates the conditions for the diagonal attack.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "fxe3",
       "popup": "白兵fxe3，吃掉黑马，为将杀创造条件。",
+      "popup_en": "fxe3 captures the black knight and creates the conditions for checkmate.",
       "highlights": [
         {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Qf1#",
       "popup": "黑后Qf1#，燕尾杀！王被己方棋子封死，后沿对角线将死。",
+      "popup_en": "Qf1# is dovetail mate! The king is trapped by its own pieces as the queen delivers mate along the diagonal.",
       "highlights": [
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}

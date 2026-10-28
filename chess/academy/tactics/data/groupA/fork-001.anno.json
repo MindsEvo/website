@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-001",
   "description": "白后一步捉双，同时攻击两子",
+  "explanation_en": "A queen fork example.",
   "intro": {
     "flash_squares": ["f4", "e5", "h8", "e2"],
     "popup": "💡 <b>捉双</b>：白后现在在f4，试试白方如何能够捉双？",
+    "popup_en": "💡 <b>Fork</b>: White's queen is on f4. Find a move that forks two targets.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qe5捉双！白后同时攻击两个目标，对手无法同时保住两子。",
+    "popup_en": "✅ <b>Key idea</b>: Qe5 forks two targets. Black cannot save both pieces.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qe5",
       "popup": "白后Qe5！一步同时攻击两个目标——这就是捉双的威力！",
+      "popup_en": "White plays Qe5, attacking two targets at once. That is the power of a fork!",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Rc8",
       "popup": "黑车Rc8——被迫应对其中一个威胁，另一个目标无法顾及。",
+      "popup_en": "Black's rook moves to c8, forced to answer one threat and unable to defend the other target.",
       "highlights": [
         {"squares": ["c8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e2"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Qxe2",
       "popup": "白后吃掉另一个目标！捉双成功，白方赢得子力优势。",
+      "popup_en": "White's queen captures the other target. The fork succeeds, and White wins material.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "a6",
       "popup": "黑方应对，白方继续扩大优势。",
+      "popup_en": "Black responds, but White continues to increase the advantage.",
       "highlights": [
         {"squares": ["a6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "g4",
       "popup": "白兵推进，白方优势明显。",
+      "popup_en": "White advances the pawn and keeps a clear advantage.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

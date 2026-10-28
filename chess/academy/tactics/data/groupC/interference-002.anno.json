@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-002",
   "description": "白象插入长斜，切断黑方后象联系",
+  "explanation_en": "White's bishop interposes on the long diagonal, attacking the queen while cutting off the bishop that defended it. Black cannot save the queen.",
   "intro": {
     "flash_squares": ["b3", "d5", "c6", "b7"],
     "popup": "💡 <b>拦截</b>：黑后在c6，黑象在b7，都在a8-h1长斜上协同。白象能插入d5，切断它们的联系吗？",
+    "popup_en": "💡 <b>Interference</b>: Black's queen is on c6 and bishop on b7, connected along the a8-h1 diagonal. Can White's bishop interpose on d5 and break their connection?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bd5！象插入d5，直接威胁Qc6同时切断Bb7支援——黑方被迫失后！",
+    "popup_en": "✅ <b>Key idea</b>: Bd5 attacks the queen on c6 while cutting off its support from the bishop on b7. Black cannot save the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bd5",
       "popup": "白象Bd5！插入d5，直接攻击Qc6，同时切断Bb7通过长斜支援黑后的路线！",
+      "popup_en": "White plays Bd5, attacking the queen on c6 and interrupting the bishop's support along the long diagonal.",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Bg5",
       "popup": "黑方Be7→Bg5——象撤退，但Qc6已无法守护，黑后处境危险。",
+      "popup_en": "Black retreats the bishop to g5, but it can no longer defend the queen on c6, which is now lost.",
       "highlights": [
         {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Bxc6",
       "popup": "白象Bxc6！吃掉黑后——拦截战术成功，白方大获！",
+      "popup_en": "White's bishop captures the queen on c6. The interference succeeds, and White wins decisively.",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

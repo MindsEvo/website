@@ -7,25 +7,31 @@
   "fen": "2k1r3/pp2q3/3Q1p2/4n1p1/2p2p2/P4P2/1PP3PP/2KR1N2 b - - 0 1",
   "concept": "拦截战术的本质",
   "question_cn": "拦截（Interference）战术的核心机制是什么？",
+  "question_en": "What is the core mechanism of the interference tactic?",
   "options": [
     {
       "key": "A",
-      "text_cn": "移走己方棋子，暴露其身后另一个棋子的攻击线"
+      "text_cn": "移走己方棋子，暴露其身后另一个棋子的攻击线",
+      "text_en": "Move one of your own pieces to uncover an attack by a piece behind it"
     },
     {
       "key": "B",
-      "text_cn": "将己方一个棋子插入对方两子之间的联系线上，破坏它们的协同防守"
+      "text_cn": "将己方一个棋子插入对方两子之间的联系线上，破坏它们的协同防守",
+      "text_en": "Place one of your pieces on the line between two opposing pieces to disrupt their defensive coordination"
     },
     {
       "key": "C",
-      "text_cn": "牺牲棋子把对方强力子引到不利位置，再实施叉击或将杀"
+      "text_cn": "牺牲棋子把对方强力子引到不利位置，再实施叉击或将杀",
+      "text_en": "Sacrifice a piece to lure a powerful opposing piece to an unfavorable square, then fork or checkmate it"
     },
     {
       "key": "D",
-      "text_cn": "攻击对方的保护者，使目标棋子失去防护后直接吃掉"
+      "text_cn": "攻击对方的保护者，使目标棋子失去防护后直接吃掉",
+      "text_en": "Attack a defender so its target loses protection and can be captured"
     }
   ],
   "correct": "B",
   "explanation_cn": "拦截的本质是「断联」：把己方棋子强行插入对方两个协作子之间的横线、纵线或斜线，让它们无法相互支援。本题黑马Nd3+插入d列，精确切断Qd6与Rd1的联系，强迫Rxd3，白车离开d列，黑方得势。",
+  "explanation_en": "Interference breaks a connection: force one of your pieces onto a rank, file, or diagonal between two cooperating enemy pieces so they can no longer support each other. Here, Black's knight plays Nd3+, cutting the d-file connection between Qd6 and Rd1 and forcing Rxd3, which draws the white rook away from the file and gives Black the advantage.",
   "created_at": "2026-05-18"
 }

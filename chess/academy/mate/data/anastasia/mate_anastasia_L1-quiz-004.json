@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 4,
   "concept": "安娜斯塔西亚杀成立的条件",
+  "concept_en": "Conditions for Anastasia's Mate",
   "question_cn": "安娜斯塔西亚杀成立，以下哪个条件最关键？",
+  "question_en": "Which condition is most important for Anastasia's mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "王必须在棋盘角落（a1、a8、h1或h8）"
+      "text_cn": "王必须在棋盘角落（a1、a8、h1或h8）",
+      "text_en": "The king must be in a corner square (a1, a8, h1, or h8)"
     },
     {
       "key": "B",
-      "text_cn": "王在边线，马封住内侧逃格，边线上无其他逃路"
+      "text_cn": "王在边线，马封住内侧逃格，边线上无其他逃路",
+      "text_en": "The king is on an edge file, the knight covers its inward escape squares, and the edge offers no other escape"
     },
     {
       "key": "C",
-      "text_cn": "攻方必须有两个车"
+      "text_cn": "攻方必须有两个车",
+      "text_en": "The attacker must have two rooks"
     },
     {
       "key": "D",
-      "text_cn": "王的两侧都有己方棋子保护"
+      "text_cn": "王的两侧都有己方棋子保护",
+      "text_en": "Friendly pieces protect both sides of the king"
     }
   ],
   "correct": "B",
   "explanation_cn": "安娜斯塔西亚杀不要求王在角落，只要王在边线（h线或a线）即可。关键是：马封住王逃向中心的路（如g8、g6），边线上其余格子被车或兵封死，王无处可去。",
+  "explanation_en": "The king does not have to be in a corner; being on an edge file such as the a- or h-file is enough. The knight must cover the king's route toward the center, while the rook or pawns control the remaining squares along the edge.",
   "created_at": "2026-06-02"
 }

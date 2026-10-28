@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-008",
   "description": "黑象弃后双将，一步将死",
+  "explanation_en": "Black's bishop uncovers the queen's line for a double-check checkmate in one.",
   "intro": {
     "flash_squares": ["e7", "e8", "e1", "b4"],
     "popup": "💡 <b>双将</b>：黑方先走，黑象在e7，黑后在e8，白王在e1。一步双将将死白王！",
+    "popup_en": "💡 <b>Double check</b>: Black to move. The bishop is on e7, the queen on e8, and the white king on e1. Black can checkmate with a double check in one move!",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：...Bb4#双将！象攻e1对角线，揭开黑后e列将军，白王被自己的棋子困死！",
+    "popup_en": "✅ <b>Key idea</b>: ...Bb4# is a double check. The bishop attacks e1 along the diagonal and uncovers the queen's check down the e-file, while White's own pieces trap the king.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bb4#",
       "popup": "双将将死！黑象从e7跳至b4，象沿对角线攻e1，同时揭开黑后e8沿e列直指e1！白王被自己棋子团团围住，无路可逃。",
+      "popup_en": "Double-check checkmate! The bishop jumps from e7 to b4, attacking e1 along the diagonal and uncovering the queen's attack down the e-file. White's own pieces leave the king with no escape.",
       "highlights": [
         {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0},

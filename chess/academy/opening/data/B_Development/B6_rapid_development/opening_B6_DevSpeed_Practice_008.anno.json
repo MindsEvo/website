@@ -2,6 +2,7 @@
   "game_id": "B6_DevSpeed_Practice_008",
   "description": "B01 — 后被追着跑，发展落后",
   "intro": {
+    "popup_en": "Rapid Development, Practice 8\nBlack brings the queen out too early and lets White chase it, falling badly behind in development.",
     "flash_squares": [
       "e2",
       "d2",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: a queen being chased around is a concrete sign of lost development time.",
     "popup": "总结：后被追着跑就是发展落后的具体表现",
     "voice": true
   },
@@ -24,21 +26,25 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game and claims central space.",
       "popup": "e4开局"
     },
     {
       "index": 1,
       "move": "d5",
+      "popup_en": "...d5! The Scandinavian Defense immediately challenges the center.",
       "popup": "d5！斯堪纳维亚防御\n黑方立刻在中心反击"
     },
     {
       "index": 2,
       "move": "exd5",
+      "popup_en": "exd5 captures Black's central pawn.",
       "popup": "exd5白方吃兵"
     },
     {
       "index": 3,
       "move": "Qxd5",
+      "popup_en": "...Qxd5 wins back the pawn, but the queen has come out very early. White can gain time by developing with tempo.",
       "popup": "Qxd5！⚠️ 黑方后第2步就出动\n吃回兵是必须的，但代价是后过早出动\n白方将用轻子追击",
       "highlights": [
         {
@@ -52,6 +58,7 @@
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the first minor piece while attacking the queen, gaining a tempo as well as a piece move.",
       "popup": "Nc3！追击黑后\n白方出动第1个轻子同时追后\n一步棋两个目的：发展+追后",
       "highlights": [
         {
@@ -66,21 +73,25 @@
     {
       "index": 5,
       "move": "Qa5",
+      "popup_en": "...Qa5 retreats. Black has now spent two moves moving the queen, while White has developed a minor piece.",
       "popup": "Qa5后撤退\n黑方后走第2步（d5→a5）\n白方已出动1个轻子，黑方后走了2步"
     },
     {
       "index": 6,
       "move": "d4",
+      "popup_en": "d4! White occupies the center and keeps the initiative.",
       "popup": "d4！占中心\n白方占领中心，继续主动"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 finally develops Black's first minor piece, only on move four.",
       "popup": "Nf6黑方第1个轻子（终于！）\n注意：这是黑方在第4步才出第1个轻子"
     },
     {
       "index": 8,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the second minor piece.",
       "popup": "Nf3！白方第2个轻子出动",
       "highlights": [
         {
@@ -94,11 +105,13 @@
     {
       "index": 9,
       "move": "Bf5",
+      "popup_en": "...Bf5 develops Black's second minor piece.",
       "popup": "Bf5黑方象出动\n黑方第2个轻子出动"
     },
     {
       "index": 10,
       "move": "Bc4",
+      "popup_en": "Bc4! White develops the third minor piece and may follow with Bd2-Bb3 to chase the queen again.",
       "popup": "Bc4！白方第3个轻子出动\n同时威胁Bd2-Bb3追后",
       "highlights": [
         {
@@ -113,11 +126,13 @@
     {
       "index": 11,
       "move": "e6",
+      "popup_en": "...e6 supports Black's center.",
       "popup": "e6黑方防守"
     },
     {
       "index": 12,
       "move": "Bd2",
+      "popup_en": "Bd2 prepares to challenge the queen's position.",
       "popup": "Bd2接下来准备追后",
       "highlights": [
         {
@@ -132,6 +147,7 @@
     {
       "index": 13,
       "move": "Qb6",
+      "popup_en": "...Qb6 moves the queen for a third time. White has developed three minor pieces; Black has developed only two while spending three moves on the queen.",
       "popup": "Qb6后再移动\n黑方后走第3步（a5→b6）\n白方：3个轻子出动\n黑方：2个轻子+后走3步",
       "highlights": [
         {
@@ -145,36 +161,43 @@
     {
       "index": 14,
       "move": "Qe2",
+      "popup_en": "Qe2 develops White's queen and prepares queenside castling, making use of the development lead.",
       "popup": "Qe2白后出动\n白方准备O-O-O，利用优势"
     },
     {
       "index": 15,
       "move": "Bb4",
+      "popup_en": "...Bb4 pins a white piece as Black looks for counterplay.",
       "popup": "Bb4黑方象牵制\n黑方尝试反制"
     },
     {
       "index": 16,
       "move": "a3",
+      "popup_en": "a3 challenges the bishop and makes Black spend another tempo responding.",
       "popup": "a3追象\n白方逼迫黑方继续走步"
     },
     {
       "index": 17,
       "move": "Bxc3",
+      "popup_en": "...Bxc3 exchanges the bishop for the knight.",
       "popup": "Bxc3兑换\n黑方被迫兑换"
     },
     {
       "index": 18,
       "move": "Bxc3",
+      "popup_en": "Bxc3 recaptures, leaving White with the bishop pair and the initiative.",
       "popup": "Bxc3接回\n白方双象并掌握主动"
     },
     {
       "index": 19,
       "move": "Ne4",
+      "popup_en": "...Ne4 brings Black's knight forward to seek counterplay.",
       "popup": "Ne4黑马跳入\n黑方尝试反击"
     },
     {
       "index": 20,
       "move": "Bb3",
+      "popup_en": "Bb3 retreats the bishop to a stable square.",
       "popup": "Bb3象撤退\n白方稳固",
       "highlights": [
         {
@@ -189,11 +212,13 @@
     {
       "index": 21,
       "move": "Nxc3",
+      "popup_en": "...Nxc3 captures the knight.",
       "popup": "Nxc3兑换\n黑方吃马"
     },
     {
       "index": 22,
       "move": "bxc3",
+      "popup_en": "bxc3 recaptures. After ...Qxd5, Black spent three queen moves while White developed; that is the concrete cost of falling behind in development.",
       "popup": "bxc3\n总结：黑方Qxd5后走了3步\n等于白方多出了3个先手发展子力\n这就是发展落后的具体后果",
       "highlights": [
         {

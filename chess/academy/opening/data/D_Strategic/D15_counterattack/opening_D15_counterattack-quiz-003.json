@@ -3,14 +3,17 @@
     "gene_id": "D15_counterattack",
     "sequence": 3,
     "concept": "利用孤兵弱点反制",
+    "concept_en": "Counterplay Against an Isolated Pawn",
     "question_cn": "卡罗-坎恩中兑换后白方形成孤立d兵。黑方如何利用这个弱点展开反制？",
+    "question_en": "After exchanges in the Caro-Kann leave White with an isolated d-pawn, how should Black target it?",
     "options": [
-        {"key": "A", "text_cn": "立刻用兵攻打d兵，直接吃掉它"},
-        {"key": "B", "text_cn": "将棋子驻扎在d兵前方的强格（如e5/d5），用马和车长期围攻这个固定弱点"},
-        {"key": "C", "text_cn": "兑换掉所有棋子进入残局，孤兵自然会输"},
-        {"key": "D", "text_cn": "孤兵有前进的能力，黑方应回避而非攻击"}
+        {"key": "A", "text_cn": "立刻用兵攻打d兵，直接吃掉它", "text_en": "Attack the d-pawn with a pawn and capture it immediately."},
+        {"key": "B", "text_cn": "将棋子驻扎在d兵前方的强格（如e5/d5），用马和车长期围攻这个固定弱点", "text_en": "Occupy strong squares in front of it, such as e5 or d5, and pressure the fixed weakness with knights and rooks."},
+        {"key": "C", "text_cn": "兑换掉所有棋子进入残局，孤兵自然会输", "text_en": "Exchange all pieces; the isolated pawn will automatically lose in the endgame."},
+        {"key": "D", "text_cn": "孤兵有前进的能力，黑方应回避而非攻击", "text_en": "Avoid attacking it because an isolated pawn can advance."}
     ],
     "correct": "B",
     "explanation_cn": "孤兵（Isolated Pawn）的弱点在于：它无法被同色兵保护，是固定的攻击目标。正确反制方法：①将马占据孤兵正前方的强格（如Ne5/Nd5），这个格无法被兵攻击，马永久驻守；②用车控制d列，阻止孤兵前进；③避免兑换自己的强格棋子（好马不换坏象）。对付孤兵不用急于吃掉它，而是将它「冻结」成长期弱点，在残局中逐渐转化。",
+    "explanation_en": "An isolated pawn cannot be supported by another pawn and becomes a fixed target. Occupy a square in front of it with a knight, control the file with a rook to restrict its advance, and avoid exchanging your strong outpost pieces. Rather than rushing to capture the pawn, freeze it as a long-term weakness and increase the pressure, especially in the endgame.",
     "created_at": "2026-06-13"
 }

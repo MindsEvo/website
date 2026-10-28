@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-003",
   "description": "白象捉双——同时攻击车和马",
+  "explanation_en": "A bishop fork example.",
   "intro": {
     "flash_squares": ["h4", "h8", "c3"],
     "popup": "💡 <b>捉双</b>：白象在h4，如何一步同时攻击车和马？",
+    "popup_en": "💡 <b>Fork</b>: White's bishop is on h4. Find a move that attacks the rook and knight at once.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bf6捉双！象同时攻击h8车和c3马，对手无法两全。",
+    "popup_en": "✅ <b>Key idea</b>: Bf6 forks the rook on h8 and knight on c3. Black cannot save both.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bf6",
       "popup": "象跳f6！同时攻击h8车和c3马——捉双！",
+      "popup_en": "The bishop moves to f6, attacking the rook on h8 and knight on c3 at once. A fork!",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Re8",
       "popup": "黑车移动，但马仍然暴露。",
+      "popup_en": "The rook moves, but the knight remains exposed.",
       "highlights": [
         {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c3"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Bxc3",
       "popup": "象吃c3马，白方得子！",
+      "popup_en": "The bishop captures the knight on c3, winning material for White!",
       "highlights": [
         {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

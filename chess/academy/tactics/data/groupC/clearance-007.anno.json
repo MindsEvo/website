@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-007",
   "description": "象腾挪b7，威胁后的同时清开斜线",
+  "explanation_en": "The bishop moves to b7, attacks the queen, and clears its former diagonal.",
   "intro": {
     "flash_squares": ["e4", "b7", "a6"],
     "popup": "💡 <b>腾挪</b>：白象在e4。象跳到b7，能攻击黑后a6同时发挥更大价值吗？",
+    "popup_en": "💡 <b>Clearance</b>: White's bishop is on e4. Can it move to b7 to attack Black's queen on a6 and become more active?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bb7！象腾挪攻击Qa6——黑方Kxh6应对，Bxa6赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Bb7! The bishop clears its diagonal while attacking Qa6. After ...Kxh6, Bxa6 wins the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bb7",
       "popup": "白象Bb7！腾挪到b7，直接攻击黑后a6——后被迫应对或逃跑！",
+      "popup_en": "Bb7! The bishop clears its former diagonal and attacks Black's queen on a6, forcing it to respond or move.",
       "highlights": [
         {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a6"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Kxh6",
       "popup": "黑王Kxh6——吃白车，但黑后a6无法守！",
+      "popup_en": "The black king captures the rook on h6, but the queen on a6 cannot be saved.",
       "highlights": [
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a6"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Bxa6",
       "popup": "白象Bxa6！赢得黑后——腾挪战术完成！",
+      "popup_en": "Bxa6! White wins the black queen. The clearance tactic is complete.",
       "highlights": [
         {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-011",
   "description": "弃后引入，车象双将，连将将死",
+  "explanation_en": "A queen sacrifice lures the king into a rook-and-bishop double check and a forcing mating sequence.",
   "intro": {
     "flash_squares": ["g5", "f3", "d5", "g1", "g2"],
     "popup": "💡 <b>双将</b>：黑方先走，黑后在g5，黑车在f3，黑象在d5。弃后引入白王，车象双将将死！",
+    "popup_en": "💡 <b>Double check</b>: Black to move. The queen is on g5, the rook on f3, and the bishop on d5. Black can sacrifice the queen to draw out the white king, then mate with a rook-and-bishop double check!",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：弃后引入→Rg3+双将（车攻g2，象揭开对角线）→连将将死Rh1#。",
+    "popup_en": "✅ <b>Key idea</b>: Sacrifice the queen to draw out the king, then Rg3+ gives a double check (the rook attacks g2 as the bishop's diagonal opens), followed by a series of checks and Rh1#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxg2+",
       "popup": "黑后弃子！Qxg2+将军，强制白王吃后，将白王引至g2——车象双将陷阱已张开。",
+      "popup_en": "Black sacrifices the queen with Qxg2+, forcing the white king to capture it on g2 and enter the rook-and-bishop double-check trap.",
       "highlights": [
         {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Kxg2",
       "popup": "白王被迫吃后，落入陷阱。",
+      "popup_en": "The white king is forced to take the queen and falls into the trap.",
       "highlights": [
         {"squares": ["g2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Rg3+",
       "popup": "双将！黑车跳g3，车沿g列将军g2，同时揭开黑象d5沿对角线攻g2！白王无法同时挡车和挡象。",
+      "popup_en": "Double check! The rook moves to g3, checking the king on g2 and uncovering the bishop on d5 along the diagonal. The white king cannot answer both checks at once.",
       "highlights": [
         {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0},
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Kh2",
       "popup": "白王逃至h2，双将下只能逃王。",
+      "popup_en": "The white king moves to h2; against a double check, the king must move.",
       "highlights": [
         {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Rg2+",
       "popup": "黑车Rg2+！车沿第2横线将军h2，白王继续被追杀。",
+      "popup_en": "Rg2+! The rook checks the king on h2 along the second rank, continuing the pursuit.",
       "highlights": [
         {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
@@ -83,6 +91,7 @@
       "index": 5,
       "move": "Kh1",
       "popup": "白王逃至h1，退无可退。",
+      "popup_en": "The white king moves to h1, with no room to retreat.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Rh2+",
       "popup": "黑车Rh2+！车沿h列将军h1，同时揭开黑象d5沿对角线攻h1！再次双将，白王只能逃至g1。",
+      "popup_en": "Rh2+! The rook checks the king on h1 up the h-file and uncovers the bishop's diagonal attack on h1. Another double check forces the king to g1.",
       "highlights": [
         {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},
@@ -111,6 +121,7 @@
       "index": 7,
       "move": "Kg1",
       "popup": "白王逃至g1，这是最后的挣扎。",
+      "popup_en": "The white king moves to g1 in a final attempt to escape.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -123,6 +134,7 @@
       "index": 8,
       "move": "Rh1#",
       "popup": "黑车Rh1将死！白王在g1被车从h列攻击，象控制g2，自己的马和兵封死逃路，无路可逃。精彩的双将组合！",
+      "popup_en": "Rh1 is checkmate! The rook attacks the king on g1 along the h-file, the bishop controls g2, and White's own knight and pawns block the remaining escape squares. A brilliant double-check combination.",
       "highlights": [
         {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}

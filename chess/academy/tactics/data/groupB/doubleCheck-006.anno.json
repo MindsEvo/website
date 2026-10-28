@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-006",
   "description": "黑方马揭开后双将，两步将死",
+  "explanation_en": "Black uses a discovered double check to deliver mate in two.",
   "intro": {
     "flash_squares": ["g4", "g6", "g2", "e3"],
     "popup": "💡 <b>双将</b>：黑方先走，黑马在g4，黑后在g6，白王在g2。黑方如何利用双将将死白王？",
+    "popup_en": "💡 <b>Double check</b>: Black to move. The knight is on g4, the queen on g6, and the white king on g2. How can Black use a double check to mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：...Ne3+双将！马攻g2，揭开黑后g列将军，白王逃至h1，Qg2将死！",
+    "popup_en": "✅ <b>Key idea</b>: ...Ne3+ is a double check. The knight attacks g2 while uncovering the queen's check along the g-file. After the king goes to h1, Qg2 is mate!",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ne3+",
       "popup": "双将！黑马跳e3，马攻白王g2，同时揭开黑后g6沿g列直指g2！白王无法同时挡马和挡后。",
+      "popup_en": "Double check! The knight jumps to e3, attacking the white king on g2 and uncovering the queen's attack down the g-file. The king cannot escape both checks at once.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Kh1",
       "popup": "白王逃至h1，双将下只能逃王。",
+      "popup_en": "The white king moves to h1; against a double check, the king must move.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qg2#",
       "popup": "黑后Qg2将死！白王在h1被后从对角线攻击，自己的兵和车封死逃路，无路可逃。",
+      "popup_en": "The queen moves to g2 and checkmates! The queen attacks the king on h1 along the diagonal, while White's own pawns and rook block every escape square.",
       "highlights": [
         {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}

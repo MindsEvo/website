@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-008",
   "description": "白方连续弃子打通底线，后车将死——双车弃子组合",
+  "explanation_en": "White sacrifices a knight and bishops in succession to open lines and draw Black's defenders away. The rook sacrifice on d7 opens the file, and the final queen sacrifice clears d8 for mate.",
   "intro": {
     "flash_squares": ["c3", "b5", "c4", "e8"],
     "popup": "💡 <b>弃子</b>：白方马在c3，双象在b5格和c4格，黑王在e8。如何用连续弃子打开攻击通道？",
+    "popup_en": "💡 <b>Sacrifice</b>: White's knight is on c3, bishops on b5 and c4, and Black's king on e8. How can White use a series of sacrifices to open an attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nxb5弃马，Bxb5+弃象，连续弃子打开b线；Rxd7弃车引走黑方守将；最终Rd8#。弃子链条层层递进，每一步都有目的。",
+    "popup_en": "✅ <b>Key idea</b>: Nxb5 and Bxb5+ sacrifice the knight and bishop to open lines; Rxd7 removes a defender; then Qb8+ clears d8 for Rd8#. Each sacrifice serves a purpose.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nxb5",
       "popup": "白马Nxb5！弃马——吃掉c6兵虽得一兵，但更重要的是打开b线。",
+      "popup_en": "White sacrifices the knight with Nxb5. Capturing the c-pawn is useful, but the main point is to open the b-file.",
       "highlights": [
         {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "cxb5",
       "popup": "黑兵必须吃马——b线被打开，白象随即发力。",
+      "popup_en": "Black must recapture with the c-pawn, opening the b-file for White's bishop.",
       "highlights": [
         {"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Bxb5+",
       "popup": "白象Bxb5+将军！弃象，将黑王暴露在b线上——黑马必须来挡将。",
+      "popup_en": "White sacrifices the bishop with Bxb5+, exposing the king on the b-file and forcing Black's knight to block the check.",
       "highlights": [
         {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Nbd7",
       "popup": "黑马bd7挡将——但白方接下来长易位后继续施压。",
+      "popup_en": "Black blocks with Nbd7, but White will continue the attack after castling queenside.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "O-O-O",
       "popup": "白方长易位！车来到d1，直接对准d7封挡马，准备决定性的弃车。",
+      "popup_en": "White castles queenside, bringing the rook to d1 and targeting the knight on d7 in preparation for a decisive rook sacrifice.",
       "highlights": [
         {"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Rd8",
       "popup": "黑车Rd8——试图守住底线，但攻势已不可阻挡。",
+      "popup_en": "Black moves the rook to d8 to defend the back rank, but White's attack is unstoppable.",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Rxd7",
       "popup": "白车Rxd7！弃车吃掉d7封挡马——d线和底线同时洞开！",
+      "popup_en": "White sacrifices the rook with Rxd7, removing the blocking knight and opening both the d-file and back rank.",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -106,6 +116,7 @@
       "index": 7,
       "move": "Rxd7",
       "popup": "黑车吃回——但白方第二车随即占领d线。",
+      "popup_en": "Black's rook recaptures, but White's other rook is ready to take over the d-file.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -118,6 +129,7 @@
       "index": 8,
       "move": "Rd1",
       "popup": "白车Rd1！再次占领d线，盯住d7黑车——黑后被迫应对。",
+      "popup_en": "White's rook returns to d1, targeting the rook on d7 and forcing Black's queen to respond.",
       "highlights": [
         {"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}
@@ -132,6 +144,7 @@
       "index": 9,
       "move": "Qe6",
       "popup": "黑后Qe6——试图防守，但无济于事。",
+      "popup_en": "Black's queen moves to e6 to defend, but it is not enough.",
       "highlights": [
         {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -144,6 +157,7 @@
       "index": 10,
       "move": "Bxd7+",
       "popup": "白象Bxd7+将军！再次弃象，引走d7黑车，打开b8-h2对角线。",
+      "popup_en": "White sacrifices the bishop with Bxd7+, drawing Black's rook to d7 and opening the b8-h2 diagonal.",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -158,6 +172,7 @@
       "index": 11,
       "move": "Nxd7",
       "popup": "黑马吃象——底线d线完全暴露！",
+      "popup_en": "Black's knight captures the bishop, leaving the d-file completely open.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -170,6 +185,7 @@
       "index": 12,
       "move": "Qb8+",
       "popup": "白后Qb8+将军！弃后到b8——黑马必须吃后，d8格洞开给白车。",
+      "popup_en": "White sacrifices the queen with Qb8+, forcing the knight to capture and clearing d8 for the rook.",
       "highlights": [
         {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}
@@ -184,6 +200,7 @@
       "index": 13,
       "move": "Nxb8",
       "popup": "黑马必须吃后——d8格被让开。",
+      "popup_en": "Black's knight must capture the queen, vacating d8.",
       "highlights": [
         {"squares": ["b8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -196,6 +213,7 @@
       "index": 14,
       "move": "Rd8#",
       "popup": "白车Rd8#！底线将死！经过马、象、车、象、后的一系列弃子，白方完成底线将杀。",
+      "popup_en": "Rd8# is back-rank checkmate! After sacrificing a knight, bishops, rooks, and queen, White completes the attack.",
       "highlights": [
         {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}

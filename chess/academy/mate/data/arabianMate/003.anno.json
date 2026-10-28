@@ -1,13 +1,16 @@
 {
   "game_id": "mate_arabianMate_L1-003",
   "description": "阿拉伯杀：弃后引兵至h6，Rh7#将死",
+  "explanation_en": "White sacrifices the queen to draw a black pawn onto h6, blocking a flight square so the rook can deliver Arabian mate with Rh7#.",
   "intro": {
     "flash_squares": ["h8"],
     "popup": "💡 <b>阿拉伯杀</b>：和上一题类似的弃后手法！要对这种棋形保持敏感。",
+    "popup_en": "💡 <b>Arabian mate</b>: A queen sacrifice similar to the previous puzzle. Stay alert for this mating pattern.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：和上一局类似，弃后引兵至h6，再Rh7#完成阿拉伯杀。多熟悉这种棋形和思路。",
+    "popup_en": "✅ <b>Key idea</b>: As in the previous game, sacrifice the queen to draw a pawn to h6, then finish the Arabian mate with Rh7#. Learn to recognize this pattern.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxh6+",
       "popup": "白后弃后Qxh6+！将军，引诱黑兵来吃，封死王的逃格。",
+      "popup_en": "Qxh6+! White sacrifices the queen with check, tempting a black pawn to capture and blocking one of the king's escape squares.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "gxh6",
       "popup": "黑兵gxh6被迫吃后，走到h6后堵死了g7格。",
+      "popup_en": "gxh6. The pawn is drawn into capturing the queen and now occupies h6, blocking the g7 escape square.",
       "highlights": [
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Rh7#",
       "popup": "白车Rh7#，阿拉伯杀！黑兵堵住g7，马封逃格，王被将死。",
+      "popup_en": "Rh7# is Arabian mate! The black pawn blocks g7, while the knight covers the other escape squares.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

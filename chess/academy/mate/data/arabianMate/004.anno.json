@@ -1,13 +1,16 @@
 {
   "game_id": "mate_arabianMate_L1-004",
   "description": "阿拉伯杀：将军驱王，Rg8#将死",
+  "explanation_en": "A checking rook move drives the king from the corner, then the rook and knight coordinate for a mating pattern with Arabian and hook-mate features.",
   "intro": {
     "flash_squares": ["h8"],
     "popup": "💡 <b>阿拉伯杀</b>：用将军把王从角落驱赶到另一格，再完成将杀。解说提示：此局也具有钩杀特征，了解两者区别即可。",
+    "popup_en": "💡 <b>Arabian mate</b>: Use check to drive the king away from the corner, then deliver mate. This position also has hook-mate features; note the distinction between the patterns.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：本局兼具钩杀与阿拉伯杀特征，知道差别即可，关键是掌握这类车马封锁的棋形。",
+    "popup_en": "✅ <b>Key idea</b>: This position combines features of hook mate and Arabian mate. The key is to recognize how the rook and knight restrict the king; the two patterns can overlap.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rb8+",
       "popup": "白车Rb8+将军！驱逐黑王，为下一步做准备。",
+      "popup_en": "Rb8+! The rook checks and drives the black king away, preparing the next move.",
       "highlights": [
         {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Kg7",
       "popup": "黑王被迫走Kg7，离开角落。",
+      "popup_en": "The black king is forced to Kg7, leaving the corner.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Rg8#",
       "popup": "白车Rg8#，将杀！车控g线，马封逃格，黑王无处可逃。",
+      "popup_en": "Rg8# delivers checkmate! The rook controls the g-file, and the knight covers the escape squares, leaving the black king trapped.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}

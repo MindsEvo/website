@@ -3,14 +3,17 @@
     "gene_id": "B8_rook_coordination",
     "sequence": 2,
     "concept": "连接双车的三步曲",
+    "concept_en": "The Three Steps to Connect the Rooks",
     "question_cn": "开局实现「连接双车」的标准三步是什么？",
+    "question_en": "What are the standard three steps for connecting the rooks in the opening?",
     "options": [
-        {"key": "A", "text_cn": "推兵开线 → 双车移到中心 → 车保护王"},
-        {"key": "B", "text_cn": "出马象（轻子）→ 王车易位 → 后让开底线（让车连接）"},
-        {"key": "C", "text_cn": "先移动一个车 → 再移动另一个车 → 让它们相邻"},
-        {"key": "D", "text_cn": "直接将两个车叠在同一条线就完成了"}
+        {"key": "A", "text_cn": "推兵开线 → 双车移到中心 → 车保护王", "text_en": "Open a file with pawns, move both rooks to the center, then use a rook to protect the king."},
+        {"key": "B", "text_cn": "出马象（轻子）→ 王车易位 → 后让开底线（让车连接）", "text_en": "Develop the minor pieces, castle, then move the queen off the back rank so the rooks can connect."},
+        {"key": "C", "text_cn": "先移动一个车 → 再移动另一个车 → 让它们相邻", "text_en": "Move one rook, then the other, and place them next to each other."},
+        {"key": "D", "text_cn": "直接将两个车叠在同一条线就完成了", "text_en": "Simply stack both rooks on the same file."}
     ],
     "correct": "B",
     "explanation_cn": "连接双车的三步曲：① 出马和象（清空底线上马象的位置）→ ② 王车易位（王到角落，f1的车移到中间，同时连接两车之间的路径）→ ③ 后离开底线（或移到别处），让两个车在底线直接相邻连通。只有完成这三步，双车才能在底线真正连接并协作。",
+    "explanation_en": "The usual sequence is: develop the knights and bishops to clear their starting squares, castle to move the king and rook, then move the queen off the back rank. This clears the path between the rooks so they can support each other along the rank.",
     "created_at": "2026-06-13"
 }

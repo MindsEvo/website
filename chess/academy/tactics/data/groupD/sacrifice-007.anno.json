@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-007",
   "description": "黑方连续弃子驱逐白王，h兵将死——连环弃子组合",
+  "explanation_en": "Black repeatedly sacrifices pieces to drive White's king into a mating net. The sequence ends with the h-pawn delivering mate.",
   "intro": {
     "flash_squares": ["h2", "g4", "h5", "g2"],
     "popup": "💡 <b>弃子</b>：黑方象在h2，马在g4，后在h5，白王在g2处境危险。Bg1弃象是第一步——之后将掀起连环弃子风暴。",
+    "popup_en": "💡 <b>Sacrifice</b>: Black's bishop is on h2, knight on g4, and queen on h5; White's king on g2 is in danger. Bg1 is the first sacrifice in a long combination.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：连续弃子（象、马、马、象）不断攻击白王，最终h5#将死。弃子的目的是把白王驱赶到无路可逃的格子上。",
+    "popup_en": "✅ <b>Key idea</b>: A series of sacrifices—bishop, knights, and bishop—keeps driving the white king until h5# delivers mate. The sacrifices herd the king onto a square with no escape.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bg1",
       "popup": "黑象Bg1！弃象到g1——引开白马，为后从h5打入奠定基础。",
+      "popup_en": "Black sacrifices the bishop with Bg1, drawing away White's knight and preparing the queen's entry from h5.",
       "highlights": [
         {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Nxg1",
       "popup": "白马必须吃象——但e2马被牵离，后路打开。",
+      "popup_en": "White's knight must capture the bishop, leaving the knight on e2 displaced and opening the route for Black's queen.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Qh2+",
       "popup": "黑后Qh2+将军！白王被迫离开g2，进入黑子的围攻。",
+      "popup_en": "Black checks with Qh2+, forcing White's king away from g2 and into the attack.",
       "highlights": [
         {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Kf3",
       "popup": "白王Kf3——逃向中央，但黑方有更多弃子手段。",
+      "popup_en": "The king escapes toward the center, but Black has more sacrifices prepared.",
       "highlights": [
         {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "e5",
       "popup": "黑方e5！安静推进，为Ndxe5+做准备，同时打开e列通道。",
+      "popup_en": "Black advances e5, preparing Ndxe5+ and opening the e-file.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -79,6 +87,7 @@
       "index": 5,
       "move": "dxe5",
       "popup": "白兵吃e5——但黑方d7马随即跳出将军，又是弃子！",
+      "popup_en": "White's pawn captures on e5, but Black's knight from d7 immediately jumps out with check, another sacrifice.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -91,6 +100,7 @@
       "index": 6,
       "move": "Ndxe5+",
       "popup": "黑马Ndxe5+将军！弃第二个马——白王被迫继续逃跑。",
+      "popup_en": "Black sacrifices the second knight with Ndxe5+, forcing White's king to keep moving.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
@@ -105,6 +115,7 @@
       "index": 7,
       "move": "fxe5",
       "popup": "白兵吃马——但g4马立刻接上，连环弃子继续！",
+      "popup_en": "White's pawn captures the knight, but Black's knight on g4 continues the sacrificial attack.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -117,6 +128,7 @@
       "index": 8,
       "move": "Nxe5+",
       "popup": "黑马Nxe5+！g4马加入将军，白王再次被追。",
+      "popup_en": "The knight from g4 captures on e5 with check, driving White's king again.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
@@ -131,6 +143,7 @@
       "index": 9,
       "move": "Kf4",
       "popup": "白王Kf4——被迫离开f3，走向f4。",
+      "popup_en": "White's king is forced away from f3 to f4.",
       "highlights": [
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -143,6 +156,7 @@
       "index": 10,
       "move": "Ng6+",
       "popup": "黑马Ng6+！马从e5跳g6将军，封锁逃跑路线。",
+      "popup_en": "The knight checks from g6, blocking the king's escape route.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f4"], "color": "#FF000055", "duration_ms": 0}
@@ -157,6 +171,7 @@
       "index": 11,
       "move": "Kf3",
       "popup": "白王Kf3——只能原路返回。",
+      "popup_en": "The king can only return to f3.",
       "highlights": [
         {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -169,6 +184,7 @@
       "index": 12,
       "move": "f4",
       "popup": "黑兵f4！推进限制白王，为最终象将杀腾出路线。",
+      "popup_en": "Black advances f4, restricting the king and preparing the bishop's final attack.",
       "highlights": [
         {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -181,6 +197,7 @@
       "index": 13,
       "move": "exf4",
       "popup": "白兵吃掉f4——但对角线就此打开。",
+      "popup_en": "White's pawn captures on f4, opening the diagonal.",
       "highlights": [
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -193,6 +210,7 @@
       "index": 14,
       "move": "Bg4+",
       "popup": "黑象Bg4+将军！弃象到g4——白王只能吃象，走入致命格。",
+      "popup_en": "Black sacrifices the bishop with Bg4+, forcing White's king to capture it and step onto a fatal square.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}
@@ -207,6 +225,7 @@
       "index": 15,
       "move": "Kxg4",
       "popup": "白王吃象——走入g4，这是最后一步。",
+      "popup_en": "White's king captures the bishop on g4, entering the final trap.",
       "highlights": [
         {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -219,6 +238,7 @@
       "index": 16,
       "move": "Ne5+",
       "popup": "黑马Ne5+将军！白王只能走到有限格子。",
+      "popup_en": "Black checks with Ne5+, leaving White's king with only a few squares.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
@@ -233,6 +253,7 @@
       "index": 17,
       "move": "fxe5",
       "popup": "白兵吃马——白王获得片刻喘息，但h5兵已经在瞄准。",
+      "popup_en": "White's pawn captures the knight, but the h-pawn is ready to deliver the final blow.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -245,6 +266,7 @@
       "index": 18,
       "move": "h5#",
       "popup": "黑兵h5#！小兵将死白王！漫长的连环弃子组合终于以最朴实的兵将死收尾。",
+      "popup_en": "h5# is checkmate! After the long series of sacrifices, the humble pawn delivers the final mate.",
       "highlights": [
         {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}

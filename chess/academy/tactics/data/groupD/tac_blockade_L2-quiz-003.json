@@ -7,25 +7,31 @@
   "fen": "3q1k2/p2rRp1p/1p4p1/2p1Q3/3p4/1P1P3P/P1P2PP1/6K1 w - - 0 1",
   "concept": "阻塞与其他战术的组合",
   "question_cn": "阻塞战术最常与哪种战术组合使用，产生最大威力？",
+  "question_en": "Which tactic is most commonly combined with a blockade for maximum effect?",
   "options": [
     {
       "key": "A",
-      "text_cn": "阻塞 + 引入：先阻塞对方逃跑格，再引入对方棋子到阻塞格被吃"
+      "text_cn": "阻塞 + 引入：先阻塞对方逃跑格，再引入对方棋子到阻塞格被吃",
+      "text_en": "Blockade + attraction: block an enemy escape square, then lure an enemy piece onto the blocking square to be captured"
     },
     {
       "key": "B",
-      "text_cn": "阻塞 + 将杀：先封锁国王逃跑格或堵住对方防守子，再用将杀组合收尾"
+      "text_cn": "阻塞 + 将杀：先封锁国王逃跑格或堵住对方防守子，再用将杀组合收尾",
+      "text_en": "Blockade + checkmate: block the king's escape square or restrain a defender, then finish with a mating combination"
     },
     {
       "key": "C",
-      "text_cn": "阻塞 + 穿透攻击：先阻塞再用象/后的斜线穿透"
+      "text_cn": "阻塞 + 穿透攻击：先阻塞再用象/后的斜线穿透",
+      "text_en": "Blockade + X-ray attack: block first, then attack through the position with a bishop or queen"
     },
     {
       "key": "D",
-      "text_cn": "阻塞 + 升变：先阻塞对方兵，再推己方兵升变"
+      "text_cn": "阻塞 + 升变：先阻塞对方兵，再推己方兵升变",
+      "text_en": "Blockade + promotion: block an enemy pawn, then advance your own pawn to promote"
     }
   ],
   "correct": "B",
   "explanation_cn": "阻塞最强的组合是「阻塞铺路→将杀收尾」：先用阻塞子占住国王某个逃跑格（或堵住守护者不让其移动），再从另一方向实施将杀。本质上阻塞是「前置动作」，真正的战术收益来自后续的将杀或得子。识别组合时要同时看「阻塞之后白方/黑方能做什么」。",
+  "explanation_en": "A blockade is often the setup for checkmate: first occupy one of the king's escape squares or restrain a defender, then deliver mate from another direction. The blockade is the preparatory move; the decisive gain comes from the resulting checkmate or material win. When evaluating the combination, calculate what each side can do after the blocking move.",
   "created_at": "2026-05-18"
 }

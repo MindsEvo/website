@@ -3,14 +3,17 @@
     "gene_id": "C12_space_cramp",
     "sequence": 1,
     "concept": "识别空间挤压的信号",
+    "concept_en": "Recognizing Space Restriction",
     "question_cn": "以下哪些是「己方空间受到挤压」的典型视觉信号？",
+    "question_en": "Which are typical signs that your position is cramped for space?",
     "options": [
-        {"key": "A", "text_cn": "象被己方兵锁在原位无法移动；马被迫走迂回路线；棋子堆挤在一侧"},
-        {"key": "B", "text_cn": "己方棋子发展很快，所有棋子都出动了"},
-        {"key": "C", "text_cn": "对方有一个孤立兵，空间与此无关"},
-        {"key": "D", "text_cn": "己方吃掉了对方的一个兵，位置改善"}
+        {"key": "A", "text_cn": "象被己方兵锁在原位无法移动；马被迫走迂回路线；棋子堆挤在一侧", "text_en": "A bishop is blocked by its own pawns, a knight must take a roundabout route, and pieces are crowded on one side."},
+        {"key": "B", "text_cn": "己方棋子发展很快，所有棋子都出动了", "text_en": "Your pieces develop quickly and are all active."},
+        {"key": "C", "text_cn": "对方有一个孤立兵，空间与此无关", "text_en": "The opponent has an isolated pawn; this is unrelated to space."},
+        {"key": "D", "text_cn": "己方吃掉了对方的一个兵，位置改善", "text_en": "You captured an enemy pawn and improved your position."}
     ],
     "correct": "A",
     "explanation_cn": "空间挤压的三大视觉信号：①「坏象」——己方象被本方兵封住，无法沿对角线活动（法国防御中黑方c8象被e6+d5锁死是典型）；②马被迫绕路——正常发展格被对方兵占据，马只能走迂回路线（如原本走f6的马被迫改走e7）；③棋子拥挤——多个子力都想去中心却没有空间，互相碍事。出现这些信号，说明己方正承受空间压力。",
+    "explanation_en": "Three visual signs of a cramped position are: a bad bishop blocked by its own pawns; a knight forced onto a detour because its normal development squares are occupied; and pieces crowded together with too little room to maneuver. These signs indicate that your side is under spatial pressure.",
     "created_at": "2026-06-13"
 }

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-003",
   "description": "车将军开斜线，后闪击得后",
+  "explanation_en": "The rook gives check while moving away, uncovering the queen's diagonal attack on Black's queen.",
   "intro": {
     "flash_squares": ["f5", "f8", "e6", "g4"],
     "popup": "💡 <b>闪击</b>：白车在f5，白后在e6，黑后在g4。车走f8将军，能闪开后对g4的斜线攻击吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's rook is on f5, queen on e6, and Black's queen on g4. Can the rook move to f8 with check and uncover the queen's diagonal attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rf8+！车走开兼将军，后e6对g4的斜线展开——闪击赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Rf8+ moves the rook with check and uncovers the queen's diagonal attack on Black's queen. White wins the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rf8+",
       "popup": "白车Rf8+！将军兼闪击：车离开f5，白后e6→f5→g4的斜线攻击通了！",
+      "popup_en": "White plays Rf8+! The rook moves with check, clearing the diagonal from White's queen on e6 to Black's queen on g4.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Nxf8",
       "popup": "黑马吃车——被迫应将，白后立即发起闪击！",
+      "popup_en": "Black's knight captures the rook. Black had to answer the check, allowing White's queen to strike immediately.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g4"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qxg4",
       "popup": "白后Qxg4！车走开斜线通，闪击赢后成功！",
+      "popup_en": "White's queen captures on g4. The rook cleared the diagonal, and the discovered attack wins the queen.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

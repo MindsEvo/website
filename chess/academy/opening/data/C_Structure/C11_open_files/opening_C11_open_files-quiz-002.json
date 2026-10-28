@@ -3,14 +3,17 @@
     "gene_id": "C11_open_files",
     "sequence": 2,
     "concept": "抢占开放线的主动权",
+    "concept_en": "Seizing the Initiative on an Open File",
     "question_cn": "法国交换变中双方兑换后d线打开，双方都想占领d线。为什么「先占」如此重要？",
+    "question_en": "In the French Exchange, after exchanges open the d-file, why is it important to occupy it first?",
     "options": [
-        {"key": "A", "text_cn": "先占d线的车可以立刻将军，结束比赛"},
-        {"key": "B", "text_cn": "先占开放线的一方掌握主动——对方的车只能被动应对或被迫兑换，丧失行动自由"},
-        {"key": "C", "text_cn": "先占只是习惯，无实质战略意义"},
-        {"key": "D", "text_cn": "先占d线是为了保护己方d兵"}
+        {"key": "A", "text_cn": "先占d线的车可以立刻将军，结束比赛", "text_en": "A rook on the d-file can immediately give check and end the game."},
+        {"key": "B", "text_cn": "先占开放线的一方掌握主动——对方的车只能被动应对或被迫兑换，丧失行动自由", "text_en": "The first side to occupy the file takes the initiative, forcing the opponent to respond passively or exchange rooks."},
+        {"key": "C", "text_cn": "先占只是习惯，无实质战略意义", "text_en": "Taking the file first is just a convention with no strategic value."},
+        {"key": "D", "text_cn": "先占d线是为了保护己方d兵", "text_en": "The d-file is occupied first to protect your d-pawn."}
     ],
     "correct": "B",
     "explanation_cn": "开放线是车的天然通道，先占领的一方可以主动沿线入侵对方阵地（如占领d7、d8等格），或牵制对方棋子无法自由移动。对方的车若想使用同一线，要么被迫兑换（失去一对车的活跃性），要么另觅他路（浪费步数）。这就是「谁先占开放线谁主动」的原则。",
+    "explanation_en": "An open file is a natural route for rooks. The first side to occupy it can invade the opponent's position or restrict the movement of enemy pieces. The opponent's rook may have to exchange or find another route, losing activity or time. This is why the side that claims an open file first often gains the initiative.",
     "created_at": "2026-06-13"
 }

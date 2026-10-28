@@ -2,6 +2,7 @@
   "game_id": "C10_WeakSquares_Practice_010",
   "description": "英国开局 A17 — 马跳弱格强制简化",
   "intro": {
+    "popup_en": "Weak Squares, Practice 10: Ne4 and the Passed c-Pawn\nAfter bxc3, e4 is no longer protected by a white pawn. Black occupies it with Ne4, then advances the c-pawn. After Bxc3 and Nxc3, the rook wins material on e2. A knight on a weak square becomes the trigger for a tactical combination.",
     "flash_squares": [
       "e4",
       "c3",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Ne4 occupies the weak square; c3!! creates the passed-pawn threat; Bxc3 Nxc3 Qxc3 Rxe2 wins material. The pattern is: occupy a weak square, create a passed pawn, and use it to force a tactical gain.",
     "popup": "弱格练习10小结\n✅ Ne4占据e4弱格——战术基础\n✅ c3!!通路兵强推——战术导火索\n✅ Bxc3 Nxc3 Qxc3 Rxe2得子\n\n弱格策略：\n占据弱格→创造通路兵→强制得子！",
     "voice": true
   },
@@ -24,31 +26,37 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "Nf3 develops in the English Opening.",
       "move": "Nf3",
       "popup": "Nf3发展马\n英国开局"
     },
     {
       "index": 1,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6发展马"
     },
     {
       "index": 2,
+      "popup_en": "c4 expands on the flank.",
       "move": "c4",
       "popup": "c4翼侧"
     },
     {
       "index": 3,
+      "popup_en": "...e6 reinforces the center.",
       "move": "e6",
       "popup": "e6稳固"
     },
     {
       "index": 4,
+      "popup_en": "Nc3 develops a knight.",
       "move": "Nc3",
       "popup": "Nc3发展马"
     },
     {
       "index": 5,
+      "popup_en": "...Bb4 pins the knight in a Nimzo-style setup.",
       "move": "Bb4",
       "popup": "Bb4！Nimzo式钉马",
       "highlights": [
@@ -63,36 +71,43 @@
     },
     {
       "index": 6,
+      "popup_en": "g3 prepares a fianchetto.",
       "move": "g3",
       "popup": "g3纤维局"
     },
     {
       "index": 7,
+      "popup_en": "O-O secures White's king first.",
       "move": "O-O",
       "popup": "O-O率先入城"
     },
     {
       "index": 8,
+      "popup_en": "Bg2 completes White's fianchetto.",
       "move": "Bg2",
       "popup": "Bg2飞象"
     },
     {
       "index": 9,
+      "popup_en": "...d5 occupies the center.",
       "move": "d5",
       "popup": "d5占中心"
     },
     {
       "index": 10,
+      "popup_en": "cxd5 exchanges pawns, leaving Black with an isolated d-pawn.",
       "move": "cxd5",
       "popup": "cxd5换兵\nd5孤立兵产生"
     },
     {
       "index": 11,
+      "popup_en": "...exd5 accepts the isolated-pawn structure.",
       "move": "exd5",
       "popup": "exd5接受孤立兵"
     },
     {
       "index": 12,
+      "popup_en": "d4 challenges Black's central pawn.",
       "move": "d4",
       "popup": "d4反中心！",
       "highlights": [
@@ -107,16 +122,19 @@
     },
     {
       "index": 13,
+      "popup_en": "...Re8 places a rook on the e-file.",
       "move": "Re8",
       "popup": "Re8守护e列"
     },
     {
       "index": 14,
+      "popup_en": "O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 15,
+      "popup_en": "...Bxc3 exchanges Black's bishop for White's bishop.",
       "move": "Bxc3",
       "popup": "Bxc3！兑换\n白格象消失",
       "highlights": [
@@ -131,6 +149,7 @@
     },
     {
       "index": 16,
+      "popup_en": "bxc3 recaptures and leaves White with doubled pawns. Crucially, e4 is now unsupported by a white pawn and becomes a weak square.",
       "move": "bxc3",
       "popup": "bxc3叠兵\n重要！e4格现在无白兵守护\ne4成为弱格！",
       "highlights": [
@@ -146,6 +165,7 @@
     },
     {
       "index": 17,
+      "popup_en": "...Ne4! Black occupies the weak square before White can challenge it. White cannot drive the knight away with d3 or f3 because neither pawn has advanced.",
       "move": "Ne4",
       "popup": "Ne4！黑马率先占弱格\n注意：白方能用兵赶吗？d3/f3都没走→不能赶！",
       "highlights": [
@@ -159,6 +179,7 @@
     },
     {
       "index": 18,
+      "popup_en": "Bb2 develops the bishop but does not challenge the knight. Black's knight remains firmly established on e4.",
       "move": "Bb2",
       "popup": "Bb2发展象\n不攻Ne4，选择缓发展\n但e4马依然稳稳驻扎！",
       "highlights": [
@@ -170,11 +191,13 @@
     },
     {
       "index": 19,
+      "popup_en": "...Nd7! The knight from b8 reinforces the outpost on e4 and prepares a tactical idea.",
       "move": "Nd7",
       "popup": "Nd7！黑马b8→d7\n巩固e4马，阵型稳固\n准备后续战术反击"
     },
     {
       "index": 20,
+      "popup_en": "c4! White pushes a pawn break against Black's d5-pawn, trying to disrupt the setup.",
       "move": "c4",
       "popup": "c4！白方兵突破\nc3→c4，挑战黑d5\n试图打乱黑方阵型",
       "highlights": [
@@ -186,6 +209,7 @@
     },
     {
       "index": 21,
+      "popup_en": "...dxc4! Black captures. The pawn's advance has left a landing square for the c-pawn to become a passed pawn.",
       "move": "dxc4",
       "popup": "dxc4！黑方吃兵\n黑方多兵\n且c4格为c3通路兵留好落点！",
       "highlights": [
@@ -197,6 +221,7 @@
     },
     {
       "index": 22,
+      "popup_en": "Qc2 attacks the knight on e4 and eyes the pawn on c4, trying to regain the initiative.",
       "move": "Qc2",
       "popup": "Qc2白后进攻\n攻击e4马并眼看c4兵\n白方试图夺回主动",
       "highlights": [
@@ -208,6 +233,7 @@
     },
     {
       "index": 23,
+      "popup_en": "c3!! The passed pawn advances. With the c-file cleared, White must respond to its promotion threat. This is the tactical trigger.",
       "move": "c3",
       "popup": "c3!!通路兵强推！\n黑方神来之笔！\nc4→c3，白方c格已空\n白必须应对这个通路兵！",
       "highlights": [
@@ -219,6 +245,7 @@
     },
     {
       "index": 24,
+      "popup_en": "Bxc3 is forced: the bishop captures the passed pawn, but the combination is only beginning.",
       "move": "Bxc3",
       "popup": "Bxc3！被迫吃兵\nBb2→c3，白象吃去通路兵\n但这只是战术序列的开始！",
       "highlights": [
@@ -230,6 +257,7 @@
     },
     {
       "index": 25,
+      "popup_en": "...Nxc3! The knight from e4 captures the bishop. The weak-square outpost has become the source of a tactical gain.",
       "move": "Nxc3",
       "popup": "Nxc3！战术得子！\nNe4→c3，黑马吃白象！\n马换象，黑方获益！",
       "highlights": [
@@ -241,11 +269,13 @@
     },
     {
       "index": 26,
+      "popup_en": "Qxc3 recaptures the knight, but White has lost the bishop and is under pressure.",
       "move": "Qxc3",
       "popup": "Qxc3白后回补\n白失去了象，局面被动\n但还有一着！"
     },
     {
       "index": 27,
+      "popup_en": "...Rxe2!! The rook invades from e8 and captures the pawn on e2, completing the material-winning combination.",
       "move": "Rxe2",
       "popup": "Rxe2!!黑车强入e2！\nRe8→e2，吃掉e2兵\n得子完成！黑方物质优势！",
       "highlights": [
@@ -257,6 +287,7 @@
     },
     {
       "index": 28,
+      "popup_en": "Rc1 reinforces White's defense, but Black has already won material.",
       "move": "Rc1",
       "popup": "Rc1白方防线\n车来c1稳固阵型\n但黑方物质优势已建立",
       "highlights": [
@@ -268,6 +299,7 @@
     },
     {
       "index": 29,
+      "popup_en": "...c6 consolidates and prevents White's d5-pawn from advancing. Black is materially ahead and has the advantage.",
       "move": "c6",
       "popup": "c6黑方巩固！\n防止白d5推进\n黑方多子，优势明显",
       "highlights": [

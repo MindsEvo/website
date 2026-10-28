@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-003",
   "description": "弃后引车阻塞黑王，双变化均将死",
+  "explanation_en": "Qf8+ creates a two-way mating trap. If Black's rook captures the queen, it blocks h8 and allows Ne7#; if the king captures, White has a rook mate on h8.",
   "intro": {
     "flash_squares": ["g8", "f8", "e7"],
     "popup": "💡 <b>弃后阻塞</b>：黑王在g8，白后到哪里能引出一步精妙的阻塞将杀？注意这里有两条不同的将杀路线！",
+    "popup_en": "💡 <b>Blockade by queen sacrifice</b>: Black's king is on g8. Where can White move the queen to set up a clever blockade mate? There are two mating lines.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf8+是关键！黑车吃后阻塞h8，白马Ne7将死；若黑王吃后，白车Rh8将死——双变化！",
+    "popup_en": "✅ <b>Key idea</b>: Qf8+ is the key. If the rook captures, it blocks h8 and Ne7# follows; if the king captures, Rh8# mates. Both replies lose.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf8+",
       "popup": "白后将军！黑王只有两种应法，每种都是死路。",
+      "popup_en": "White checks with Qf8. Black has only two responses, and both lead to mate.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Rxf8",
       "popup": "黑车吃后——阻塞了h8出路！白马立即Ne7将死。",
+      "popup_en": "The rook captures the queen and blocks the king's escape on h8, allowing Ne7#.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF980055", "duration_ms": 0},
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Ne7#",
       "popup": "马将死！黑王被己方车封住h8，f8，白马Ne7封f8和h8，绝无逃路！",
+      "popup_en": "Ne7# is checkmate! Black's rook blocks h8 and White's knight controls f8 and h8, leaving no escape.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},

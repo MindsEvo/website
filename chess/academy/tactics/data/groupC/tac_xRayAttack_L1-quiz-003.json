@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "透视攻击与牵制的区别",
   "question_cn": "透视攻击与牵制（Pin）的关键区别是什么？",
+  "question_en": "What is the key difference between an X-ray attack and a pin?",
   "options": [
-    {"key": "A", "text_cn": "透视攻击和牵制完全一样，没有区别"},
-    {"key": "B", "text_cn": "牵制中中间棋子移走会暴露后方目标；透视攻击中进攻方已穿越过去直接盯住后方目标"},
-    {"key": "C", "text_cn": "牵制只能用马，透视攻击只能用象"},
-    {"key": "D", "text_cn": "透视攻击只在将军时有效"}
+    {"key": "A", "text_cn": "透视攻击和牵制完全一样，没有区别", "text_en": "X-ray attacks and pins are exactly the same"},
+    {"key": "B", "text_cn": "牵制中中间棋子移走会暴露后方目标；透视攻击中进攻方已穿越过去直接盯住后方目标", "text_en": "In a pin, moving the intervening piece exposes the target behind it; in an X-ray attack, the attacking piece already targets the piece beyond it"},
+    {"key": "C", "text_cn": "牵制只能用马，透视攻击只能用象", "text_en": "Only knights can create pins, while only bishops can make X-ray attacks"},
+    {"key": "D", "text_cn": "透视攻击只在将军时有效", "text_en": "X-ray attacks are effective only when they give check"}
   ],
   "correct": "B",
   "explanation_cn": "牵制：进攻方棋子盯住中间棋子，中间棋子移走则暴露后方的王或重子。透视攻击：进攻方棋子穿越中间棋子，直接威胁后方目标，中间棋子的移动会让威胁立即兑现。两者常配合使用。",
+  "explanation_en": "In a pin, the attacker targets the intervening piece because moving it would expose a more valuable piece behind it. In an X-ray attack, the attacker directly targets the deeper piece through the intervening piece. The two ideas can also work together.",
   "created_at": "2026-05-27"
 }

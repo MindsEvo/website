@@ -3,30 +3,34 @@
     {
       "key": "K2B_vs_K",
       "label": "双象对王-L1",
+      "label_en": "Two Bishops vs. King - L1",
       "items": [
-        { "id": "eg_K2B-K_L1-quiz-001", "label": "1. 双象逼角" }
+        { "id": "eg_K2B-K_L1-quiz-001", "label": "1. 双象逼角", "label_en": "1. Driving the King into the Corner" }
       ]
     },
     {
       "key": "KBP_vs_K",
       "label": "象兵对王-L1",
+      "label_en": "Bishop and Pawn vs. King - L1",
       "items": [
-        { "id": "eg_KBP-K_L1-quiz-001", "label": "1. 王兵配合推进" },
-        { "id": "eg_KBP-K_L1-quiz-002", "label": "2. 错色象和局识别" }
+        { "id": "eg_KBP-K_L1-quiz-001", "label": "1. 王兵配合推进", "label_en": "1. Advancing with King and Pawn Coordination" },
+        { "id": "eg_KBP-K_L1-quiz-002", "label": "2. 错色象和局识别", "label_en": "2. Recognizing the Wrong-Bishop Draw" }
       ]
     },
     {
       "key": "B2P_vs_B",
       "label": "象双兵对象-L2",
+      "label_en": "Bishop and Two Pawns vs. Bishop - L2",
       "items": [
-        { "id": "eg_B2P-B_L2-quiz-001", "label": "1. 多象兵的优势转化" }
+        { "id": "eg_B2P-B_L2-quiz-001", "label": "1. 多象兵的优势转化", "label_en": "1. Converting the Bishop-and-Pawn Advantage" }
       ]
     },
     {
       "key": "BP_vs_B",
       "label": "象兵对象-L2",
+      "label_en": "Bishop and Pawn vs. Bishop - L2",
       "items": [
-        { "id": "eg_BP-B_L2-quiz-001", "label": "1. 异色象兵的和局识别" }
+        { "id": "eg_BP-B_L2-quiz-001", "label": "1. 异色象兵的和局识别", "label_en": "1. Recognizing the Opposite-Colored Bishop Draw" }
       ]
     }
   ]

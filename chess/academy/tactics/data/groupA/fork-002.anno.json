@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-002",
   "description": "白马捉双——同时攻击车和象",
+  "explanation_en": "A knight fork example.",
   "intro": {
     "flash_squares": ["g3", "e7", "d4"],
     "popup": "💡 <b>捉双</b>：白马在g3，如何一步同时攻击两个黑子？",
+    "popup_en": "💡 <b>Fork</b>: White's knight is on g3. Find a move that attacks two black pieces at once.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nf5捉双！马同时攻击e7车和d4象，对手只能保住其一。",
+    "popup_en": "✅ <b>Key idea</b>: Nf5 forks the rook on e7 and bishop on d4. Black can save only one.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nf5",
       "popup": "马跳f5！同时攻击e7车和d4象——捉双！",
+      "popup_en": "The knight jumps to f5, attacking the rook on e7 and bishop on d4 at once. A fork!",
       "highlights": [
         {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Rd7",
       "popup": "黑车移开，但象仍暴露无援。",
+      "popup_en": "The rook moves away, but the bishop remains exposed.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Nxh6",
       "popup": "马吃h6兵，白方获利。",
+      "popup_en": "The knight captures the pawn on h6, and White comes out ahead.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

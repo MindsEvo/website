@@ -7,25 +7,31 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "制造逼着的方法",
   "question_cn": "制造逼着最常用的技术手段是什么？",
+  "question_en": "What is the most common technique for creating zugzwang?",
   "options": [
     {
       "key": "A",
-      "text_cn": "尽快换掉对方所有棋子，只剩下王"
+      "text_cn": "尽快换掉对方所有棋子，只剩下王",
+      "text_en": "Exchange all of the opponent's pieces as quickly as possible, leaving only the king"
     },
     {
       "key": "B",
-      "text_cn": "通过等招（Triangulation）或走消耗步，把走棋权转移给对方"
+      "text_cn": "通过等招（Triangulation）或走消耗步，把走棋权转移给对方",
+      "text_en": "Use triangulation or a tempo move to hand the move to the opponent"
     },
     {
       "key": "C",
-      "text_cn": "把己方王移到棋盘中心，控制尽量多的格子"
+      "text_cn": "把己方王移到棋盘中心，控制尽量多的格子",
+      "text_en": "Move your king to the center of the board and control as many squares as possible"
     },
     {
       "key": "D",
-      "text_cn": "用兵堵死对方所有兵，形成完全封锁"
+      "text_cn": "用兵堵死对方所有兵，形成完全封锁",
+      "text_en": "Use pawns to block all of the opponent's pawns and create a complete blockade"
     }
   ],
   "correct": "B",
   "explanation_cn": "制造逼着的关键是传递走棋权——让对方而非自己面临被迫走棋的局面。等招（三角机动）是最常见手段：王走三步绕个三角形回到原格，相当于消耗一步，把走棋权交给对方，对方随即陷入逼着。",
+  "explanation_en": "The key is to transfer the move to your opponent, so they—not you—must make a move that worsens their position. Triangulation is a common method: the king takes a three-move triangular route and returns to its starting square, spending a tempo and handing the move to the opponent.",
   "created_at": "2026-05-29"
 }

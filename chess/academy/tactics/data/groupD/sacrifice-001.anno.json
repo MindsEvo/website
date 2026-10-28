@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-001",
   "description": "黑方弃车引开白兵，后将死白王",
+  "explanation_en": "Black sacrifices the rook to deflect White's g-pawn and open the h-file, allowing the queen to deliver checkmate.",
   "intro": {
     "flash_squares": ["f3", "h5", "h3", "h1"],
     "popup": "💡 <b>弃子</b>：黑方车在f3，后在h5，白王在h1被堵死。如何用弃子完成将杀？",
+    "popup_en": "💡 <b>Sacrifice</b>: Black's rook is on f3, queen on h5, and White's king is trapped on h1. How can Black use a sacrifice to deliver mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxh3+！弃车引开h3白兵，后立刻从h5打到h3将死白王——弃子换取将杀路线的经典范例。",
+    "popup_en": "✅ <b>Key idea</b>: Rxh3+ deflects the g-pawn from h3, opening the route for Qxh3#. A classic sacrifice that creates a mating line.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxh3+",
       "popup": "黑车Rxh3+！将军同时弃掉整个车——目的是引开g2白兵，打开后通往h3的通道。",
+      "popup_en": "Black sacrifices the rook with Rxh3+, checking the king and luring White's g-pawn away to open the queen's route to h3.",
       "highlights": [
         {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "gxh3",
       "popup": "白方必须吃车——但这正是黑方的目的，h列现在为黑后让路！",
+      "popup_en": "White must capture the rook, exactly as Black intended. The h-file is now open for the queen.",
       "highlights": [
         {"squares": ["h3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qxh3#",
       "popup": "黑后Qxh3#！白王被困死在角落，将死！弃子换来直接将杀。",
+      "popup_en": "Qxh3# is checkmate! White's king is trapped in the corner. The sacrifice opened a direct mating route.",
       "highlights": [
         {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}

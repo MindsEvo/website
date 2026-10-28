@@ -3,14 +3,17 @@
     "gene_id": "B6_rapid_development",
     "sequence": 4,
     "concept": "弃兵换出子速度",
+    "concept_en": "Gambiting for Development",
     "question_cn": "「弃兵开局」（如丹麦弃兵、国王弃兵）的核心思想是什么？",
+    "question_en": "What is the core idea behind gambit openings such as the Danish Gambit or King's Gambit?",
     "options": [
-        {"key": "A", "text_cn": "故意送兵让对手吃，趁机设下陷阱吃回"},
-        {"key": "B", "text_cn": "主动献出一个或两个兵，换取明显超前的出子速度和主动权，用发展优势弥补物质损失"},
-        {"key": "C", "text_cn": "弃兵是错误的，送兵没有任何好处"},
-        {"key": "D", "text_cn": "弃兵的目的是打开王翼进行直接攻击"}
+        {"key": "A", "text_cn": "故意送兵让对手吃，趁机设下陷阱吃回", "text_en": "Offer a pawn only to set a trap and win it back."},
+        {"key": "B", "text_cn": "主动献出一个或两个兵，换取明显超前的出子速度和主动权，用发展优势弥补物质损失", "text_en": "Offer one or two pawns in exchange for faster development and the initiative, using the lead in development to compensate for the material."},
+        {"key": "C", "text_cn": "弃兵是错误的，送兵没有任何好处", "text_en": "Gambits are mistakes; giving up a pawn has no benefit."},
+        {"key": "D", "text_cn": "弃兵的目的是打开王翼进行直接攻击", "text_en": "The only purpose of a gambit is to open the kingside for a direct attack."}
     ],
     "correct": "B",
     "explanation_cn": "弃兵开局的逻辑是：一个兵的价值约为1分，但发展领先2-3步的价值在开局阶段可能超过这个兵。白方献出兵后，对方接受弃兵后需要时间保护这个兵，而白方可以趁机出完所有轻子并易位，形成强大的攻势。若对方应对不当，进攻利益远超失去的一兵。",
+    "explanation_en": "A pawn is worth about one point, but a lead of several tempi can be more valuable in the opening. After accepting a gambit, the opponent may spend time holding the extra pawn while the gambiteer develops the minor pieces and castles. If the defender mishandles the position, the attacking chances can outweigh the pawn.",
     "created_at": "2026-06-12"
 }

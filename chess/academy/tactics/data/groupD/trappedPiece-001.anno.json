@@ -1,13 +1,16 @@
 {
   "game_id": "tac_trappedPiece_L1-001",
   "description": "黑马困死白后，强迫换子得子",
+  "explanation_en": "White's queen has almost no safe squares and is trapped by Black's pieces. Black coordinates the knight and pawn to restrict every escape route.",
   "intro": {
     "flash_squares": ["h5", "g6", "g5"],
     "popup": "💡 <b>困子</b>：白后孤军深入到h5，黑方如何利用马和兵的配合将其困死？",
+    "popup_en": "💡 <b>Trapped piece</b>: White's queen has ventured to h5. How can Black coordinate the knight and pawns to trap it?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nf4攻后→后退f3→g4封死后→Qxf4解围→exf4赢后。白后深入反被围困！",
+    "popup_en": "✅ <b>Key idea</b>: Nf4 attacks the queen; after it retreats to f3, g4 traps it. Qxf4 is forced, and exf4 wins the queen. White's queen has ventured too far and is boxed in.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nf4",
       "popup": "黑马Nf4！马从g6跳到f4，直接攻击白后h5。白后被迫逃离。",
+      "popup_en": "Black's knight jumps from g6 to f4, directly attacking White's queen on h5 and forcing it to move.",
       "highlights": [
         {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qf3",
       "popup": "白后被迫退到f3，暂时逃开。但f3的退路已经陷阱重重——马在f4，兵在e4，g2。",
+      "popup_en": "The queen retreats to f3, but its escape squares are being restricted by the knight on f4 and pawns on e4 and g2.",
       "highlights": [
         {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "g4",
       "popup": "g4！黑方g5兵推进到g4，彻底封死白后f3！f4有马、e4有白兵、g4有黑兵、g2有白兵——白后无路可逃！",
+      "popup_en": "Black advances the g-pawn to g4, trapping the queen on f3. The knight on f4 and pawns on e4, g4, and g2 leave it with no safe escape.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0},
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Qxf4",
       "popup": "白后只能Qxf4吃马，做最后挣扎。",
+      "popup_en": "The queen has no choice but to capture the knight on f4.",
       "highlights": [
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "exf4",
       "popup": "黑方e5兵取f4！白后被完全消灭，黑方赢得白后，黑方大优！",
+      "popup_en": "Black's e-pawn recaptures on f4, winning White's queen and securing a large advantage.",
       "highlights": [
         {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

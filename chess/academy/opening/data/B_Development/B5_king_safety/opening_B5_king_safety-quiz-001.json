@@ -3,14 +3,17 @@
     "gene_id": "B5_king_safety",
     "sequence": 1,
     "concept": "易位的最佳时机",
+    "concept_en": "When to Castle",
     "question_cn": "开局中什么时候是王车易位的最佳时机？",
+    "question_en": "When is the best time to castle in the opening?",
     "options": [
-        {"key": "A", "text_cn": "越晚越好，先把所有计划都完成再易位"},
-        {"key": "B", "text_cn": "轻子（马和象）全部出动后立即易位，不要拖延"},
-        {"key": "C", "text_cn": "等对方先易位，再跟着易位"},
-        {"key": "D", "text_cn": "只要感觉危险了就易位，否则不需要"}
+        {"key": "A", "text_cn": "越晚越好，先把所有计划都完成再易位", "text_en": "As late as possible, after completing all your plans."},
+        {"key": "B", "text_cn": "轻子（马和象）全部出动后立即易位，不要拖延", "text_en": "Castle promptly once your knights and bishops are developed; do not delay."},
+        {"key": "C", "text_cn": "等对方先易位，再跟着易位", "text_en": "Wait for the opponent to castle, then follow suit."},
+        {"key": "D", "text_cn": "只要感觉危险了就易位，否则不需要", "text_en": "Castle only when you feel threatened; otherwise it is unnecessary."}
     ],
     "correct": "B",
     "explanation_cn": "轻子出完之后，f1/g1 格（或 f8/g8）已清空，应立即易位。拖延易位会给对方时间施加压力——对方可以在你还未易位时推进兵、钉住棋子或打开中心线，让你的王暴露在危险中。「发展完成→立刻易位」是开局的标准节奏。",
+    "explanation_en": "Once your minor pieces are developed and the squares between king and rook are clear, castle promptly. Delaying gives the opponent time to advance pawns, pin pieces, or open the center while your king remains exposed. A standard rhythm is: finish development, then castle.",
     "created_at": "2026-06-11"
 }

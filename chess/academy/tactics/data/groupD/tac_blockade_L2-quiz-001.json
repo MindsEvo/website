@@ -7,25 +7,31 @@
   "fen": "7k/p4q1p/1pb5/2p5/2P1B2Q/P3B3/7P/7K b - - 0 1",
   "concept": "主动阻塞：阻塞子带将军或捉子",
   "question_cn": "为什么「带威胁的阻塞」（如阻塞格同时将军）比「静态阻塞」更具战术价值？",
+  "question_en": "Why is a blockade that comes with a threat, such as check, more valuable than a static blockade?",
   "options": [
     {
       "key": "A",
-      "text_cn": "带威胁的阻塞子更难被吃掉，因为对方必须先应将"
+      "text_cn": "带威胁的阻塞子更难被吃掉，因为对方必须先应将",
+      "text_en": "The blocking piece is harder to capture because the opponent must answer the check first"
     },
     {
       "key": "B",
-      "text_cn": "带威胁的阻塞强迫对方立即应对，使阻塞效果在对方来不及反应前就已生效，同时赢得额外战术利益"
+      "text_cn": "带威胁的阻塞强迫对方立即应对，使阻塞效果在对方来不及反应前就已生效，同时赢得额外战术利益",
+      "text_en": "A threatening blockade forces an immediate response, making the block effective before the opponent can react while also gaining an extra tactical benefit"
     },
     {
       "key": "C",
-      "text_cn": "静态阻塞会让对方有时间绕路，带威胁才能让对方彻底无法移动"
+      "text_cn": "静态阻塞会让对方有时间绕路，带威胁才能让对方彻底无法移动",
+      "text_en": "A static blockade gives the opponent time to take a detour, while a threatening one prevents all movement"
     },
     {
       "key": "D",
-      "text_cn": "带威胁的阻塞可以节省子力，不需要额外的支援"
+      "text_cn": "带威胁的阻塞可以节省子力，不需要额外的支援",
+      "text_en": "A threatening blockade saves material and requires no additional support"
     }
   ],
   "correct": "B",
   "explanation_cn": "「强制性」是阻塞有效的前提。将军迫使对方当即应将，无法腾出手来消除阻塞子；捉子迫使对方救子。相比之下，静态阻塞（无威胁）可能被对方下一手吃掉或绕开，效果大打折扣。带威胁的阻塞=阻塞效果+战术威胁，是最高效的阻塞形式。",
+  "explanation_en": "A blockade is most effective when it is forcing. Check obliges the opponent to respond immediately, leaving no time to remove or bypass the blocking piece; an attack on a piece similarly demands attention. A static blockade may simply be captured or bypassed on the next move. A threatening blockade combines the restriction with an immediate tactical threat.",
   "created_at": "2026-05-18"
 }

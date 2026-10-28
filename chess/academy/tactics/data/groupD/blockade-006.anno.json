@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-006",
   "description": "车到e5阻塞黑象，f6兵路打开，后将死黑王",
+  "explanation_en": "Re5 blocks the bishop's control of g7. After the bishop captures the rook, f6 restricts the position and prepares Qg7#.",
   "intro": {
     "flash_squares": ["h8", "e5", "g7"],
     "popup": "💡 <b>精妙阻塞</b>：白后到g7可以将死黑王，但g7被黑象控制。直接走f6拦截象，黑后c5将军可以换后。白方的突破口在哪里？",
+    "popup_en": "💡 <b>Subtle blockade</b>: Qg7 would be mate, but Black's bishop controls g7. Playing f6 directly allows ...Qc5+ and a queen exchange. How can White break through?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Re5先阻塞黑象！黑象必须吃车离开斜线，f6随即封死，白后Qg7将死——三步精妙组合！",
+    "popup_en": "✅ <b>Key idea</b>: Re5 blocks the bishop first. The bishop captures the rook and leaves its diagonal; f6 then restricts the position, allowing Qg7#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Re5",
       "popup": "车到e5！目的不是吃子，而是阻断黑c3象的斜线控制——阻塞！",
+      "popup_en": "The rook moves to e5 not to capture, but to block the diagonal controlled by Black's bishop on c3.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c3"], "color": "#FF980055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Bxe5",
       "popup": "黑象吃车，离开了g7的控制——正中白方下怀！",
+      "popup_en": "Black's bishop captures the rook and leaves its control of g7, just as White intended.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "f6",
       "popup": "兵到f6！封锁局面，同时阻止黑方反击，为白后杀入g7做准备。",
+      "popup_en": "The pawn advances to f6, restricting the position and stopping counterplay while preparing the queen's entry on g7.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Rg8",
       "popup": "黑车撤防。",
+      "popup_en": "Black's rook retreats to g8 to defend.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Bg7+",
       "popup": "白象将军！引诱黑车吃象，h文件暴露。",
+      "popup_en": "White checks with Bg7+, tempting Black's rook to capture and opening the h-file.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -82,6 +90,7 @@
       "index": 5,
       "move": "Rxg7",
       "popup": "黑车吃象，黑王暴露在h8。",
+      "popup_en": "Black's rook captures the bishop, leaving the king exposed on h8.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0}
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Qxg7#",
       "popup": "后将死！白后吃车进g7，黑王被重重包围，无路可逃！",
+      "popup_en": "Qxg7# is checkmate! White's queen captures the rook on g7, and the black king has no escape.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

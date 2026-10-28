@@ -3,59 +3,67 @@
     {
       "key": "KQR_vs_K",
       "label": "后车对王-L1",
+      "label_en": "Queen and Rook vs. King - L1",
       "items": [
-        { "id": "eg_KQR-K_L1-quiz-001", "label": "1. 后车组合威力——多路将杀" }
+        { "id": "eg_KQR-K_L1-quiz-001", "label": "1. 后车组合威力——多路将杀", "label_en": "1. Queen and Rook: Multiple Mating Patterns" }
       ]
     },
     {
       "key": "KQ_vs_K",
       "label": "后对王-L1",
+      "label_en": "Queen vs. King - L1",
       "items": [
-        { "id": "eg_KQ-K_L1-quiz-001", "label": "1. 后对王基本原理" },
-        { "id": "eg_KQ-K_L1-quiz-002", "label": "2. 避免逼和（stalemate）" }
+        { "id": "eg_KQ-K_L1-quiz-001", "label": "1. 后对王基本原理", "label_en": "1. Basic Principles of Queen vs. King" },
+        { "id": "eg_KQ-K_L1-quiz-002", "label": "2. 避免逼和（stalemate）", "label_en": "2. Avoiding Stalemate" }
       ]
     },
     {
       "key": "KQ_vs_KP",
       "label": "后对升变兵-L1",
+      "label_en": "Queen vs. Passed Pawn - L1",
       "items": [
-        { "id": "eg_KQ-KP_L1-quiz-001", "label": "1. 后对升变兵——基本判断" },
-        { "id": "eg_KQ-KP_L1-quiz-002", "label": "2. 后对升变兵——王必须跟进" }
+        { "id": "eg_KQ-KP_L1-quiz-001", "label": "1. 后对升变兵——基本判断", "label_en": "1. Queen vs. Passed Pawn: Basic Assessment" },
+        { "id": "eg_KQ-KP_L1-quiz-002", "label": "2. 后对升变兵——王必须跟进", "label_en": "2. Queen vs. Passed Pawn: The King Must Join" }
       ]
     },
     {
       "key": "QP_vs_Q",
       "label": "后兵对后-L2",
+      "label_en": "Queen and Pawn vs. Queen - L2",
       "items": [
-        { "id": "eg_QP-Q_L2-quiz-001", "label": "1. 后兵对后的防守——永将" }
+        { "id": "eg_QP-Q_L2-quiz-001", "label": "1. 后兵对后的防守——永将", "label_en": "1. Defending Queen and Pawn vs. Queen: Perpetual Check" }
       ]
     },
     {
       "key": "Q_vs_B",
       "label": "后对象-L2",
+      "label_en": "Queen vs. Bishop - L2",
       "items": [
-        { "id": "eg_Q-B_L2-quiz-001", "label": "1. 后对象——走到异色格制胜" }
+        { "id": "eg_Q-B_L2-quiz-001", "label": "1. 后对象——走到异色格制胜", "label_en": "1. Winning on the Opposite-Colored Squares" }
       ]
     },
     {
       "key": "Q_vs_BP",
       "label": "后对象兵-L2",
+      "label_en": "Queen vs. Bishop and Pawn - L2",
       "items": [
-        { "id": "eg_Q-BP_L2-quiz-001", "label": "1. 后对象兵" }
+        { "id": "eg_Q-BP_L2-quiz-001", "label": "1. 后对象兵", "label_en": "1. Queen vs. Bishop and Pawn" }
       ]
     },
     {
       "key": "Q_vs_N",
       "label": "后对马-L2",
+      "label_en": "Queen vs. Knight - L2",
       "items": [
-        { "id": "eg_Q-N_L2-quiz-001", "label": "1. 后对马的战略" }
+        { "id": "eg_Q-N_L2-quiz-001", "label": "1. 后对马的战略", "label_en": "1. Strategy in Queen vs. Knight" }
       ]
     },
     {
       "key": "Q_vs_R",
       "label": "后对车-L2",
+      "label_en": "Queen vs. Rook - L2",
       "items": [
-        { "id": "eg_Q-R_L2-quiz-001", "label": "1. 后对车——优势转化" }
+        { "id": "eg_Q-R_L2-quiz-001", "label": "1. 后对车——优势转化", "label_en": "1. Converting the Advantage: Queen vs. Rook" }
       ]
     }
   ]

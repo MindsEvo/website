@@ -72,6 +72,17 @@
     field(debug, side, 'showWdl', '显示 WDL', 'checkbox');
     refresh(side);
   });
+  function updateLocalizedValues() {
+    var english = window.ChessI18n && window.ChessI18n.getLanguage() === 'en';
+    root.querySelectorAll('[data-field="evalFile"]').forEach(function (input) {
+      input.value = english ? 'Built-in nn-61e7af4bb97d' : '内置 nn-61e7af4bb97d';
+    });
+    root.querySelectorAll('[data-field="syzygy"]').forEach(function (input) {
+      input.value = english ? 'Not Set' : '未设置';
+    });
+  }
+  updateLocalizedValues();
+  window.addEventListener('chesslanguagechange', updateLocalizedValues);
   root.addEventListener('change', function (event) {
     var input = event.target;
     if (!input.dataset.field || input.disabled || input.readOnly) return;

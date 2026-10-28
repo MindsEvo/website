@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-005",
   "description": "中间象入场，驱后后吃挂马",
+  "explanation_en": "White develops the bishop with tempo, attacking Black's queen. Once the queen moves away, White captures the loose knight on f6.",
   "intro": {
     "flash_squares": ["c3", "b6", "f6"],
     "popup": "💡 <b>中间招</b>：黑马f6无根是挂子。白方先Bc3！中间象入场攻击Qb6——后被驱走，Bxf6吃挂马！",
+    "popup_en": "💡 <b>Intermezzo</b>: Black's knight on f6 is loose. White first plays Bc3, developing with an attack on the queen on b6; once it moves, Bxf6 wins the knight.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bc3中间入场！黑后被迫离开b6，Bxf6吃掉挂马——局面顿时大优！",
+    "popup_en": "✅ <b>Key idea</b>: Bc3 is the intermediate move, attacking Black's queen and forcing it away from b6. White then captures the loose knight with Bxf6.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bc3",
       "popup": "白象Bc3！中间入场攻击Qb6——黑后无根，是挂子，必须逃！",
+      "popup_en": "White develops the bishop to c3 with tempo, attacking the loose queen on b6 and forcing it to move.",
       "highlights": [
         {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Qb6",
       "popup": "黑后Qb6——退守b6，但f6马仍无根！",
+      "popup_en": "The queen retreats to b6, but the knight on f6 is still undefended.",
       "highlights": [
         {"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Bxf6",
       "popup": "白象Bxf6！吃掉无根的挂马——中间招完成，白方得子大优！",
+      "popup_en": "White's bishop captures the loose knight on f6. The intermezzo wins material and gives White a large advantage.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

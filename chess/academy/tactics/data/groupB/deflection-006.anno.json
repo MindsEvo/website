@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-006",
   "description": "双重引离——Rg3+引王，Re8引后，Qxg7绝杀",
+  "explanation_en": "A double deflection: Rg3+ draws out the king, Re8 deflects the queen, and Qxg7 delivers mate.",
   "intro": {
     "flash_squares": [
       "h3",
@@ -8,10 +9,12 @@
       "d8"
     ],
     "popup": "💡 白方如何先引离黑王，再引离黑后，最终Qxg7绝杀？",
+    "popup_en": "💡 How can White first deflect the black king, then the black queen, and finish with Qxg7#?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：双重引离！Rg3+引王到h8，Re8引后离开d8，最后Qf6+逼后挡，Qxg7绝杀！",
+    "popup_en": "✅ Key idea: Deflect the king with Rg3+ to h8, then draw the queen away from d8 with Re8. Qf6+ forces the queen to block, allowing Qxg7#.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Rg3+!",
       "popup": "白车Rg3+！将军，引离黑王——黑王必须逃离g8。",
+      "popup_en": "Rg3+! The rook checks and deflects the black king, forcing it to leave g8.",
       "highlights": [
         {
           "squares": [
@@ -49,6 +53,7 @@
       "index": 1,
       "move": "Kh8",
       "popup": "黑王Kh8，逃到角落。现在g8空了！",
+      "popup_en": "The black king moves to h8 in the corner. The g8-square is now clear!",
       "highlights": [
         {
           "squares": [
@@ -72,6 +77,7 @@
       "index": 2,
       "move": "Qh6",
       "popup": "白后Qh6！威胁Qxh7绝杀，黑方必须防守。",
+      "popup_en": "Qh6! White threatens Qxh7#; Black must defend.",
       "highlights": [
         {
           "squares": [
@@ -101,6 +107,7 @@
       "index": 3,
       "move": "Rg8",
       "popup": "黑车Rg8，占g8试图防守h7。",
+      "popup_en": "The rook moves to g8 to defend h7.",
       "highlights": [
         {
           "squares": [
@@ -117,6 +124,7 @@
       "index": 4,
       "move": "Re8",
       "popup": "白车Re8！引离黑后——黑后d8必须应对！",
+      "popup_en": "Re8! White deflects the black queen; the queen on d8 must respond.",
       "highlights": [
         {
           "squares": [
@@ -146,6 +154,7 @@
       "index": 5,
       "move": "Qg5",
       "popup": "黑后Qg5，顽抗，不吃车。",
+      "popup_en": "The black queen moves to g5 and resists instead of taking the rook.",
       "highlights": [
         {
           "squares": [
@@ -162,6 +171,7 @@
       "index": 6,
       "move": "Qf6+",
       "popup": "白后Qf6+！将军，逼黑后来挡！",
+      "popup_en": "Qf6+! White checks and forces the black queen to block.",
       "highlights": [
         {
           "squares": [
@@ -184,6 +194,7 @@
       "index": 7,
       "move": "Qg7",
       "popup": "黑后Qg7被迫挡将——现在Qxg7绝杀！",
+      "popup_en": "The queen is forced to block with Qg7. Now Qxg7 is checkmate!",
       "highlights": [
         {
           "squares": [
@@ -200,6 +211,7 @@
       "index": 8,
       "move": "Qxg7#",
       "popup": "白后Qxg7# 绝杀！黑王h8，h7有己方兵，g8有己方车——绝杀！",
+      "popup_en": "Qxg7#! The king on h8 is boxed in by its own pawn on h7 and rook on g8, so it is checkmate.",
       "highlights": [
         {
           "squares": [

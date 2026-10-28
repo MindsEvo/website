@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-007",
   "description": "弃后引入，两次双将，最终将杀",
+  "explanation_en": "A queen sacrifice lures the king into two successive double checks and a final mate.",
   "intro": {
     "flash_squares": ["e6", "g5", "d6", "g3", "g7"],
     "popup": "💡 <b>双将</b>：白方弃后起手，后续两次双将连环将杀。此局需严密计算，可多加研究。",
+    "popup_en": "💡 <b>Double check</b>: White begins with a queen sacrifice, then delivers two consecutive double checks and mate. Calculate carefully; this position rewards close study.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：弃后→Bf6+（象车双将）→Bg7+（象车双将）→Rh6#，连续双将强制将死黑王。",
+    "popup_en": "✅ <b>Key idea</b>: Sacrifice the queen, then play Bf6+ and Bg7+ for two bishop-and-rook double checks, followed by Rh6#. The sequence forces mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxe5+",
       "popup": "白后弃子！Qxe5+将军，逼黑马吃后，清除障碍准备连续双将。",
+      "popup_en": "White sacrifices the queen with Qxe5+, forcing Black's knight to take it and clearing the way for the double-check sequence.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Nxe5",
       "popup": "黑马被迫吃后。",
+      "popup_en": "Black's knight is forced to capture the queen.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Bf6+",
       "popup": "第一次双将！白象跳f6攻g7，同时揭开白车g3沿g列直指g7！黑王无法同时应对两将。",
+      "popup_en": "The first double check! The bishop moves to f6, attacking g7 and uncovering the rook on g3 along the g-file. The black king cannot answer both checks at once.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kh6",
       "popup": "黑王逃至h6，躲开双将。",
+      "popup_en": "The black king moves to h6, escaping the double check.",
       "highlights": [
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Bg7+",
       "popup": "第二次双将！白象到g7攻h6，同时揭开白车d6沿第6横线直指h6！黑王再次无路可逃。",
+      "popup_en": "The second double check! The bishop moves to g7, attacking h6 and uncovering the rook on d6 along the sixth rank. The black king is out of safe squares again.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0},
@@ -86,6 +94,7 @@
       "index": 5,
       "move": "Kh5",
       "popup": "黑王逃至h5，继续躲避。",
+      "popup_en": "The black king moves to h5, still trying to escape.",
       "highlights": [
         {"squares": ["h5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -98,6 +107,7 @@
       "index": 6,
       "move": "Rh6#",
       "popup": "白车Rh6将死！车d6平移到h6，黑王在h5被车从旁翼攻击，无路可逃。连续双将完美收官！",
+      "popup_en": "Rh6 is checkmate! The rook slides from d6 to h6 and attacks the king on h5 from the side. There is no escape; the double-check combination ends perfectly.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}

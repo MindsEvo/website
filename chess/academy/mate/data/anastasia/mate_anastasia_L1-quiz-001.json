@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 1,
   "concept": "安娜斯塔西亚杀的定义",
+  "concept_en": "Defining Anastasia's Mate",
   "question_cn": "什么是安娜斯塔西亚杀（Anastasia's Mate）？",
+  "question_en": "What is Anastasia's mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "两个象从对角线交叉将死角落的王"
+      "text_cn": "两个象从对角线交叉将死角落的王",
+      "text_en": "Two bishops checkmate a cornered king along crossing diagonals"
     },
     {
       "key": "B",
-      "text_cn": "双车并列将死底线的王"
+      "text_cn": "双车并列将死底线的王",
+      "text_en": "Two rooks line up to checkmate the king on the back rank"
     },
     {
       "key": "C",
-      "text_cn": "车和马配合，将王困在边线，马封住内侧逃格，车沿边线将死"
+      "text_cn": "车和马配合，将王困在边线，马封住内侧逃格，车沿边线将死",
+      "text_en": "A rook and knight trap the king on the edge: the knight covers the inward escape squares while the rook mates along the edge"
     },
     {
       "key": "D",
-      "text_cn": "后在对角线将死被己方棋子封住的王"
+      "text_cn": "后在对角线将死被己方棋子封住的王",
+      "text_en": "A queen checkmates a king trapped by its own pieces along a diagonal"
     }
   ],
   "correct": "C",
   "explanation_cn": "安娜斯塔西亚杀的核心特征：王被困在边线（h线或a线），马封住王的内侧逃格，车沿边线发动将死。兵或己方棋子通常协助封住其余逃格。",
+  "explanation_en": "Anastasia's mate traps the king on an edge file, usually the a- or h-file. The knight covers the king's inward escape squares while the rook delivers mate along the edge; pawns or other friendly pieces often block the remaining exits.",
   "created_at": "2026-06-02"
 }

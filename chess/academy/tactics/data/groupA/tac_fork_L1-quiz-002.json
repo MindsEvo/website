@@ -7,13 +7,15 @@
   "fen": "r4rk1/ppp2ppp/8/4Q3/4n3/8/PPP2PPP/RNB2RK1 w - - 0 1",
   "concept": "捉双的最佳棋子",
   "question_cn": "哪种棋子最擅长实施捉双，因为它的攻击路线特殊且难以预判？",
+  "question_en": "Which piece is best at forking because its unusual attacks are difficult to predict?",
   "options": [
-    {"key": "A", "text_cn": "后——因为走位最多"},
-    {"key": "B", "text_cn": "车——因为可以横竖攻击"},
-    {"key": "C", "text_cn": "马——因为跳跃式攻击难以预判"},
-    {"key": "D", "text_cn": "兵——因为数量多"}
+    {"key": "A", "text_cn": "后——因为走位最多", "text_en": "The queen, because it has the greatest range"},
+    {"key": "B", "text_cn": "车——因为可以横竖攻击", "text_en": "The rook, because it attacks along ranks and files"},
+    {"key": "C", "text_cn": "马——因为跳跃式攻击难以预判", "text_en": "The knight, because its jumping attacks are hard to anticipate"},
+    {"key": "D", "text_cn": "兵——因为数量多", "text_en": "The pawn, because there are many of them"}
   ],
   "correct": "C",
   "explanation_cn": "马的L形跳法独特，攻击到的格子无法用直线或斜线提前封锁。马叉是最常见、最难防的捉双战术，在所有级别的对局中频繁出现。",
+  "explanation_en": "The knight's distinctive L-shaped move attacks squares that cannot be blocked along a rank, file, or diagonal. Knight forks are among the most common and difficult forks to defend against at every level.",
   "created_at": "2026-05-05"
 }

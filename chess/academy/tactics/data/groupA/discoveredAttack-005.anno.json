@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-005",
   "description": "兵将军开斜线，后闪击得后",
+  "explanation_en": "The pawn advances with check and clears the diagonal for the queen to capture Black's queen.",
   "intro": {
     "flash_squares": ["e5", "e6", "g3", "c7"],
     "popup": "💡 <b>闪击</b>：白兵在e5，白后在g3，黑后在c7。兵冲e6将军，能让后g3闪击黑后吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's pawn is on e5, queen on g3, and Black's queen on c7. Can the pawn advance to e6 with check and uncover the queen's attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：e6+！兵走开，后g3沿对角线直击c7黑后——闪击赢后！",
+    "popup_en": "✅ <b>Key idea</b>: e6+ moves the pawn with check and clears the diagonal for White's queen to capture Black's queen on c7.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "e6+",
       "popup": "白兵e6+！兵走开斜线：白后g3→f4→e5→d6→c7，攻击黑后c7的路打通！",
+      "popup_en": "White advances the pawn to e6 with check, clearing the diagonal g3-f4-e5-d6-c7 for the queen to attack Black's queen.",
       "highlights": [
         {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f7"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Kxe6",
       "popup": "黑王吃兵——被迫应将，白后已锁定c7！",
+      "popup_en": "Black's king captures the pawn. While answering check, the king cannot prevent the queen from taking on c7.",
       "highlights": [
         {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qxc7",
       "popup": "白后Qxc7！兵走开对角线，白后闪击赢后！",
+      "popup_en": "White's queen captures on c7. The pawn cleared the diagonal, allowing the discovered attack to win Black's queen.",
       "highlights": [
         {"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-011",
   "description": "弃车造叠兵阻塞，后马配合将死",
+  "explanation_en": "White sacrifices the rook to induce doubled pawns that block the king's escape. The knight and queen then coordinate to deliver mate.",
   "intro": {
     "flash_squares": ["f8", "e6", "f6"],
     "popup": "💡 <b>弃车制造阻塞</b>：白车到e6弃掉，黑兵被迫吃车叠兵，彻底阻塞了黑王退路。你能看出后续的将杀吗？",
+    "popup_en": "💡 <b>Create a blockade with a rook sacrifice</b>: White offers the rook on e6. If Black captures, doubled pawns will block the king's escape. Can you find the follow-up mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Re6弃车！黑叠兵阻塞黑王，马再进，黑后Qf7只能硬撑，Qxf7将死——叠兵阻塞精彩例子！",
+    "popup_en": "✅ <b>Key idea</b>: Re6 sacrifices the rook. Black's doubled pawns block the king; after Nh6 and Qf7, Qxf7# delivers mate. A striking pawn-blockade example.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Re6",
       "popup": "车到e6，精妙弃车！黑兵若吃，叠兵阻塞黑王退路；若不吃，白方取得其他优势。",
+      "popup_en": "The rook moves to e6 as a clever sacrifice. If a pawn captures it, doubled pawns block the king; if not, White gains other advantages.",
       "highlights": [
         {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF980055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "fxe6",
       "popup": "黑兵吃车——叠兵！e6和f7双兵叠在一起，彻底封死了黑王所有退路！",
+      "popup_en": "The f-pawn captures the rook, creating doubled pawns on e6 and f7 that block the king's escape squares.",
       "highlights": [
         {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF980055", "duration_ms": 0},
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Nh6",
       "popup": "马到h6，进攻！封死g8，威胁和白后配合绝杀。",
+      "popup_en": "The knight moves to h6, controlling g8 and threatening to coordinate with White's queen for mate.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF980055", "duration_ms": 0}
@@ -60,6 +66,7 @@
       "index": 3,
       "move": "Qf7",
       "popup": "黑后拼死防守，唯一稍有抵抗的着法。",
+      "popup_en": "Black's queen makes a desperate defensive move, the only move offering some resistance.",
       "highlights": [
         {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -72,6 +79,7 @@
       "index": 4,
       "move": "Qxf7#",
       "popup": "后将死！白后吃黑后，黑王被叠兵和白马四面封死——无路可逃！",
+      "popup_en": "Qxf7# is checkmate! White's queen captures Black's queen, and the doubled pawns and white knight leave the king with no escape.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0},

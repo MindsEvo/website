@@ -1,13 +1,16 @@
 {
   "game_id": "tac_pin_L1-008",
   "description": "西班牙开局——Bb5经典牵制Nc6",
+  "explanation_en": "A standard Spanish (Ruy Lopez) opening idea: White's bishop pins the knight on c6 to the king on e8 along the b5-c6-e8 diagonal.",
   "intro": {
     "flash_squares": ["b1", "e8"],
     "popup": "💡 西班牙开局（鲁伊·洛佩兹）！白方用象牵制黑马与黑王的经典走法，观察b5→c6→e8斜线牵制。",
+    "popup_en": "💡 The Spanish Opening (Ruy Lopez)! White's classic bishop pin targets the knight and king along the b5-c6-e8 diagonal.",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Bb5沿b5-c6-e8斜线牵制黑马Nc6——黑马动则黑王被将。白方随后Bxc6换子，破坏黑方兵形，获得持续主动权。",
+    "popup_en": "✅ Key idea: Bb5 pins the knight on c6 to the king on e8 along the b5-c6-e8 diagonal. White can later exchange with Bxc6, damaging Black's pawn structure and keeping the initiative.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "e4",
       "popup": "白兵e4，开放游戏，占据中心。",
+      "popup_en": "White advances the e-pawn, opening the game and occupying the center.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "e5",
       "popup": "黑兵e5，对称应对，双方各占中心一格。",
+      "popup_en": "Black replies with e5. Both sides occupy central squares symmetrically.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Nf3",
       "popup": "白马Nf3，攻击e5，发展棋子。",
+      "popup_en": "White develops the knight to f3, attacking e5.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
@@ -49,6 +55,7 @@
       "index": 3,
       "move": "Nc6",
       "popup": "黑马Nc6，保护e5——注意这个马即将被白方牵制！",
+      "popup_en": "Black develops the knight to c6 to defend e5. This knight is about to be pinned.",
       "highlights": [
         {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
@@ -62,6 +69,7 @@
       "index": 4,
       "move": "Bb5!",
       "popup": "白象Bb5！西班牙开局的精髓——沿b5-c6-e8斜线牵制黑马！黑马若动，黑王直接被将。这是全牵制（目标是王）！",
+      "popup_en": "White plays Bb5! This is the heart of the Spanish Opening: the bishop pins the knight on c6 to the king on e8. If the knight moves, Black's king is in check. This is an absolute pin.",
       "highlights": [
         {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
@@ -78,6 +86,7 @@
       "index": 5,
       "move": "d6",
       "popup": "黑方d6，巩固e5，暂时不理会牵制。",
+      "popup_en": "Black plays d6 to reinforce e5, temporarily ignoring the pin.",
       "highlights": [
         {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -88,6 +97,7 @@
       "index": 6,
       "move": "d4",
       "popup": "白兵d4！白方打开中心，向e5施压，同时进一步激活Bb5的牵制。",
+      "popup_en": "White plays d4, opening the center and increasing pressure on e5 while reinforcing the bishop's pin.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
@@ -101,6 +111,7 @@
       "index": 7,
       "move": "Bd7",
       "popup": "黑象Bd7，挑战白象——若白象被换，Nc6就解除牵制。",
+      "popup_en": "Black plays Bd7 to challenge the bishop. If the bishops are exchanged, the pin on the c6-knight will be removed.",
       "highlights": [
         {"squares": ["d7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b5"], "color": "#FF000055", "duration_ms": 0}
@@ -114,6 +125,7 @@
       "index": 8,
       "move": "Bxc6!",
       "popup": "白象Bxc6！主动换子——消灭被牵制的黑马，让黑方兵形双叠。这是利用牵制的换子策略！",
+      "popup_en": "White plays Bxc6! White exchanges the bishop for the pinned knight, doubling Black's pawns. This is a strategic way to exploit the pin.",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -126,6 +138,7 @@
       "index": 9,
       "move": "Bxc6",
       "popup": "黑象Bxc6回吃——黑方兵形遭到破坏，c6和c7两个兵叠在一起，长期劣势。",
+      "popup_en": "Black's bishop recaptures on c6, leaving doubled pawns on c6 and c7 and a lasting structural weakness.",
       "highlights": [
         {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
@@ -139,6 +152,7 @@
       "index": 10,
       "move": "Nc3",
       "popup": "白马Nc3发展，白方完成出子，局面优势明显。西班牙开局的牵制策略取得成功！",
+      "popup_en": "White develops the knight to c3 and completes development with a clear advantage. The Spanish Opening pin strategy has succeeded!",
       "highlights": [
         {"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

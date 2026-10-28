@@ -2,6 +2,7 @@
   "game_id": "B6_DevSpeed_Practice_007",
   "description": "D02 — 封闭局面的轻子最优布置",
   "intro": {
+    "popup_en": "Rapid Development, Practice 7\nIn a closed position, place the minor pieces on their best squares before activating the heavy pieces.",
     "flash_squares": [
       "e2",
       "d2",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: each opening system has its own ideal setup for the minor pieces.",
     "popup": "总结：每种体系都有自己的轻子最优布置",
     "voice": true
   },
@@ -24,16 +26,19 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4! The Queen's Pawn Opening begins the London System.",
       "popup": "d4！皇后兵开局\n伦敦体系开始"
     },
     {
       "index": 1,
       "move": "d5",
+      "popup_en": "...d5 mirrors White's move and establishes a closed central structure.",
       "popup": "d5对称\n封闭局面"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3! White's first minor piece reaches one of its best squares.",
       "popup": "Nf3！第1个轻子\n马到最佳位置（f3是马最强格之一）",
       "highlights": [
         {
@@ -47,11 +52,13 @@
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's first minor piece.",
       "popup": "Nf6出动\n黑方第1个轻子"
     },
     {
       "index": 4,
       "move": "Bf4",
+      "popup_en": "Bf4! The London bishop reaches its characteristic square, controls e5, and is difficult to dislodge.",
       "popup": "Bf4！伦敦象\n象到f4——伦敦体系特征格\n控制e5，难以被驱赶",
       "highlights": [
         {
@@ -66,31 +73,37 @@
     {
       "index": 5,
       "move": "e6",
+      "popup_en": "...e6 reinforces Black's position.",
       "popup": "e6黑方稳固"
     },
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "e3 supports the center and prepares Bd3. White develops steadily in the closed setup.",
       "popup": "e3支撑\n为Bd3做准备\n封闭体系，稳步推进"
     },
     {
       "index": 7,
       "move": "Bd6",
+      "popup_en": "...Bd6 develops Black's bishop actively.",
       "popup": "Bd6黑方象出动"
     },
     {
       "index": 8,
       "move": "Bxd6",
+      "popup_en": "Bxd6! White chooses a useful exchange, preventing Black's bishop from becoming active. This is a strategic simplification typical of the London.",
       "popup": "Bxd6！主动简化\n防止黑方象活跃\n伦敦体系的战略简化"
     },
     {
       "index": 9,
       "move": "Qxd6",
+      "popup_en": "...Qxd6 recaptures, bringing Black's queen out early.",
       "popup": "Qxd6后接回\n黑方后过早激活"
     },
     {
       "index": 10,
       "move": "Nbd2",
+      "popup_en": "Nbd2! The second knight develops to d2, the London System's flexible square rather than c3.",
       "popup": "Nbd2！第3个轻子（第2匹马）出动\n注意：伦敦体系的马到d2而非c3\n这是最优格，保持弹性",
       "highlights": [
         {
@@ -106,11 +119,13 @@
     {
       "index": 11,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king.",
       "popup": "O-O黑方易位"
     },
     {
       "index": 12,
       "move": "Bd3",
+      "popup_en": "Bd3! White's bishop reaches its ideal square. All four minor pieces are now developed, so White can castle.",
       "popup": "Bd3！象出动到最佳格\n白方4个轻子全部出动！\n现在可以易位了",
       "highlights": [
         {
@@ -125,11 +140,13 @@
     {
       "index": 13,
       "move": "b6",
+      "popup_en": "...b6 prepares to develop the bishop.",
       "popup": "b6黑方让象出动"
     },
     {
       "index": 14,
       "move": "O-O",
+      "popup_en": "O-O! White castles as soon as all four minor pieces are developed.",
       "popup": "O-O！白方易位\n4个轻子全出后立即易位",
       "highlights": [
         {
@@ -145,41 +162,49 @@
     {
       "index": 15,
       "move": "Bb7",
+      "popup_en": "...Bb7 activates the bishop on the long diagonal.",
       "popup": "Bb7黑方象激活\n占据长对角线"
     },
     {
       "index": 16,
       "move": "c4",
+      "popup_en": "c4 is a standard London plan, challenging Black's center.",
       "popup": "c4推进\n伦敦体系标准计划\n打击黑方中心"
     },
     {
       "index": 17,
       "move": "c5",
+      "popup_en": "...c5 counterattacks in the center.",
       "popup": "c5反推\n黑方争中心"
     },
     {
       "index": 18,
       "move": "cxd5",
+      "popup_en": "cxd5 simplifies the central tension.",
       "popup": "cxd5简化"
     },
     {
       "index": 19,
       "move": "exd5",
+      "popup_en": "...exd5 recaptures the pawn.",
       "popup": "exd5接回"
     },
     {
       "index": 20,
       "move": "dxc5",
+      "popup_en": "dxc5 captures on c5.",
       "popup": "dxc5兑换"
     },
     {
       "index": 21,
       "move": "bxc5",
+      "popup_en": "...bxc5 recaptures and opens the b-file.",
       "popup": "bxc5接回"
     },
     {
       "index": 22,
       "move": "Rc1",
+      "popup_en": "Rc1! White activates the rook on the open file. Minor-piece development, castling, then rook activation: the correct development sequence is complete.",
       "popup": "Rc1！车激活！\n车到c1占开放线\n轻子全出→易位→现在重子激活\n这是正确的出子顺序完整展示",
       "highlights": [
         {

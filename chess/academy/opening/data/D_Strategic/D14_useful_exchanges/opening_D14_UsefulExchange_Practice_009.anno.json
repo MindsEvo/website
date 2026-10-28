@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Demo_009",
   "description": "马歇尔汇进攻 C84 — 练习：Rxe5兑马后如何应对黑方进攻反扑？",
   "intro": {
+    "popup_en": "Useful Exchanges, Practice 9\nThe Marshall Attack is a bold gambit. White has exchanged with Rxe5 and won material, but Black immediately counters with ...Bd6 against the rook. How can White defend accurately while keeping the extra pawns and eventually calming Black's attack?",
     "flash_squares": [
       "e5",
       "h4",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White's defensive sequence: Rxe5 wins a piece; retreat with Re1 rather than grabbing Bd6 too early; use g3 to blunt the queen's attack; defend g2 with Qe2; then play Qf1 to break the bishop's pin and reorganize with Nd2. A small exchange is useful only when the follow-up is calculated accurately; otherwise the initiative may outweigh the material gain.",
     "popup": "马歇尔汇应对总结\n\n⭐ 白方的关键应对步骤：\n\n① Rxe5小兑吃马，白方多先一步\n② Re1撤车，不贪吃Bd6（不当！）\n③ g3封锁后攻路线\n④ Qe2守地g2\n⑤ Qf1打破黑象钉马，Nd2重组\n\n关键教训：\n小兑（Rxe5）就要兑得寓心\n后续防守都要算准——\n不平白先兑后又喘宣失败！",
     "voice": true
   },
@@ -24,57 +26,68 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "e4 occupies the center.",
       "move": "e4",
       "popup": "e4 中心"
     },
     {
       "index": 1,
+      "popup_en": "...e5 mirrors White's advance.",
       "move": "e5",
       "popup": "e5 对称"
     },
     {
       "index": 2,
+      "popup_en": "Nf3 attacks e5.",
       "move": "Nf3",
       "popup": "Nf3 攻击e5"
     },
     {
       "index": 3,
+      "popup_en": "...Nc6 defends e5.",
       "move": "Nc6",
       "popup": "Nc6 保护e5"
     },
     {
       "index": 4,
+      "popup_en": "Bb5 begins the Ruy Lopez.",
       "move": "Bb5",
       "popup": "Bb5！西班牙开局"
     },
     {
       "index": 5,
+      "popup_en": "...a6 challenges the bishop.",
       "move": "a6",
       "popup": "a6 质问象"
     },
     {
       "index": 6,
+      "popup_en": "Ba4 retreats while maintaining the pin on Nc6.",
       "move": "Ba4",
       "popup": "Ba4 象撤退，维持钉住"
     },
     {
       "index": 7,
+      "popup_en": "...Nf6! The Berlin setup develops and attacks e4.",
       "move": "Nf6",
       "popup": "Nf6！柏林体系，攻击e4"
     },
     {
       "index": 8,
+      "popup_en": "O-O secures White's king.",
       "move": "O-O",
       "popup": "O-O 白方入城"
     },
     {
       "index": 9,
+      "popup_en": "...Be7 prepares Black to castle.",
       "move": "Be7",
       "popup": "Be7 黑方准备入城"
     },
     {
       "index": 10,
       "move": "Re1",
+      "popup_en": "Re1! White places the rook on the e-file, supports e4, and keeps Nf3-e5 in mind.",
       "popup": "Re1！车到e列！\n支持e4，准备Nf3-e5的可能",
       "highlights": [
         {
@@ -89,6 +102,7 @@
     {
       "index": 11,
       "move": "b5",
+      "popup_en": "...b5! Black challenges the bishop and forces it to choose a square.",
       "popup": "b5！黑方驱象！\n迫使象表态",
       "highlights": [
         {
@@ -102,22 +116,26 @@
     },
     {
       "index": 12,
+      "popup_en": "Bb3 retreats while continuing to target f7.",
       "move": "Bb3",
       "popup": "Bb3 象撤到b3\n仍然瞄准f7"
     },
     {
       "index": 13,
+      "popup_en": "...O-O! Black castles and prepares the Marshall Attack.",
       "move": "O-O",
       "popup": "O-O 黑方入城！\n现在准备马歇尔进攻"
     },
     {
       "index": 14,
+      "popup_en": "c3 reinforces White's center.",
       "move": "c3",
       "popup": "c3 白方巩固中心"
     },
     {
       "index": 15,
       "move": "d5",
+      "popup_en": "...d5!! The Marshall Attack gambit. Black offers the d-pawn and enters a complex attacking line; White accepts the challenge.",
       "popup": "d5！！马歇尔进攻！\n\n⭐ 经典弃兵进攻！\n黑方送出d5兵！\n白方应该接受，但进入复杂变化……",
       "highlights": [
         {
@@ -132,6 +150,7 @@
     {
       "index": 16,
       "move": "exd5",
+      "popup_en": "exd5 accepts the pawn. White is now a pawn ahead.",
       "popup": "exd5 白方吃d5兵\n多了一个兵！",
       "highlights": [
         {
@@ -146,6 +165,7 @@
     {
       "index": 17,
       "move": "Nxd5",
+      "popup_en": "...Nxd5! Black recaptures and attacks the rook on e1.",
       "popup": "Nxd5！黑马吃回！\n攻击e1车！",
       "highlights": [
         {
@@ -160,6 +180,7 @@
     {
       "index": 18,
       "move": "Nxe5",
+      "popup_en": "Nxe5! White captures on e5 and wins a second pawn.",
       "popup": "Nxe5！白方吃e5！\n多了第二个兵！",
       "highlights": [
         {
@@ -174,6 +195,7 @@
     {
       "index": 19,
       "move": "Nxe5",
+      "popup_en": "...Nxe5! Black's knight captures on e5 and attacks Bb3.",
       "popup": "Nxe5！黑马吃e5！\n攻击Bb3！",
       "highlights": [
         {
@@ -188,6 +210,7 @@
     {
       "index": 20,
       "move": "Rxe5",
+      "popup_en": "Rxe5! White captures the knight. This is the key decision: Rxe8 is premature because Black's queen would recapture actively. Rxe5 removes the dangerous knight first.",
       "popup": "Rxe5！白车吃马！\n\n⭐ 练习时刻！\n白方走Rxe5——不是Rxe8！\n为什么？\n因为Rxe8现在太早：\n黑方后回吃，反而活跃化！\n而Rxe5吃掉了危险的Ne5！",
       "highlights": [
         {
@@ -201,12 +224,14 @@
     },
     {
       "index": 21,
+      "popup_en": "...c6 reinforces the center and supports the knight on d5.",
       "move": "c6",
       "popup": "c6 黑方c6加强中心\n给d5马提供支援"
     },
     {
       "index": 22,
       "move": "d4",
+      "popup_en": "d4!! White advances the center and puts more pressure on Nd5.",
       "popup": "d4！！白方推进中心！\n进一步压迫Nd5！",
       "highlights": [
         {
@@ -221,6 +246,7 @@
     {
       "index": 23,
       "move": "Bd6",
+      "popup_en": "...Bd6!! The bishop attacks White's rook on e5. Black is down material but has launched a dangerous counterattack, so the rook must retreat accurately.",
       "popup": "Bd6！！黑象攻车！\n\n⭐ 黑方的马歇尔汇进攻反击！\n黑方将象Bd6攻击白方e5车\n黑方已少了多个兵，现在发起进攻\n\n白方车必须撤退，黑方获得进攻动力！",
       "highlights": [
         {
@@ -235,6 +261,7 @@
     {
       "index": 24,
       "move": "Re1",
+      "popup_en": "Re1! White retreats. The extra pawns remain, but White must defend carefully and meet Black's attack.",
       "popup": "Re1！白车撤退！\n\n白方不得不撤车\n• Re1车回到e1，兑换了两个兵的优势\n• 白方目前多兵，需要精确防守\n• 扭转点：黑方接下来怎麻攻击？",
       "highlights": [
         {
@@ -249,6 +276,7 @@
     {
       "index": 25,
       "move": "Qh4",
+      "popup_en": "...Qh4!! Black threatens Qxf2 mate. White must respond precisely; one careless move could allow checkmate.",
       "popup": "Qh4！！黑后攻王！\n\n⭐ 典型马歇尔汇气氛！\n黑后Qh4威胁Qxf2#！\n白方必须应小心——\n错一步就被设mate！",
       "highlights": [
         {
@@ -263,6 +291,7 @@
     {
       "index": 26,
       "move": "g3",
+      "popup_en": "g3! White blocks the queen's route to h3. This defensive move limits the attack, though f2 and h3 become weaker and White must remain alert.",
       "popup": "g3！阿塔车防守！\n\n白方g3封锁黑后到h3的路线\n• 阿塔车防守法：弹开后的进攻\n• 但g3前进前，f2和h3格弱化\n白方需要继续小心",
       "highlights": [
         {
@@ -277,6 +306,7 @@
     {
       "index": 27,
       "move": "Qh3",
+      "popup_en": "...Qh3! Black threatens Qxg2 mate, exploiting the weakened squares around White's king.",
       "popup": "Qh3！黑后进入h3！\n\n黑后Qh3威胁Qxg2#！\n⭐ 黑方利用g3的弱点继续施压\n白方必须拦战Qxg2的威胁",
       "highlights": [
         {
@@ -291,6 +321,7 @@
     {
       "index": 28,
       "move": "Qe2",
+      "popup_en": "Qe2! White defends g2 and e1, preventing Qxg2 and interrupting the rook's line. White is ready to consolidate.",
       "popup": "Qe2！白后防守！\n\n白后Qe2防守g2和e1\n• 后保护g2免被Qxg2\n• 后在e2，也切断e8的射线\n• 白方准备稳住局面",
       "highlights": [
         {
@@ -305,6 +336,7 @@
     {
       "index": 29,
       "move": "Bg4",
+      "popup_en": "...Bg4! Black pins Nf3 and adds another layer to the attack. The pinned knight cannot easily move without allowing pressure elsewhere.",
       "popup": "Bg4！黑象钉马！\n\n黑方Be8象经过g6还是直接上g4——\nBg4钉住白方Nf3马！\n• 马被钉，gxh4就失去马\n• 黑方层层天罗地网来增强攻势",
       "highlights": [
         {
@@ -319,6 +351,7 @@
     {
       "index": 30,
       "move": "Qf1",
+      "popup_en": "Qf1! A key defensive maneuver: the queen blocks the route to g2, breaks the pin on Nf3, and helps White reorganize the defense.",
       "popup": "Qf1！白后换位！\n\n⭐ 关键防守步！\nQf1同时做到：\n① 后回到f1，推开Qh3的越纬（后要丏至g2。Qf1就拦住）\n② 打破Bg4的钉马——Nf3现在可以自由移动\n③ 白方开始整理防线，准备发凄",
       "highlights": [
         {
@@ -333,6 +366,7 @@
     {
       "index": 31,
       "move": "Qh5",
+      "popup_en": "...Qh5 retreats but maintains kingside pressure. Black has missed the fastest attack, and the two-pawn material deficit remains difficult to overcome.",
       "popup": "Qh5 黑后退到h5\n\n黑后撤回到h5，保持对白方王翼的施压\n黑方已经失去了最快的进攻机会\n黑方先天的两个少兵让局面难平",
       "highlights": [
         {
@@ -346,6 +380,7 @@
     {
       "index": 32,
       "move": "Nd2",
+      "popup_en": "Nd2! White reorganizes the knight away from the bishop's pin, with Nf1-e3 available later. White has weathered the Marshall attack and remains two pawns ahead with a stable position. This is the payoff of exchanging on e5 and defending accurately afterward.",
       "popup": "Nd2！白马重组！\n\n⭐ 局面总结：\nNf3马转到d2：\n① 马离开g4象的靉制范围\n② d2准备将来Nf1-Ne3象巳重组\n③ 白方已成功应对马歇尔汇进攻！\n\n这就是及时兑子的巧妙：\nRxe5小兑，现在白方多两个兵且防线稳次！",
       "highlights": [
         {

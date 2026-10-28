@@ -9,10 +9,12 @@
       "f5"
     ],
     "popup": "白方在压迫黑方开局。\n黑方通过c5司机反击。",
+    "popup_en": "White is gaining space and restricting Black. Black seeks counterplay with ...c5.",
     "voice": true
   },
   "outro": {
     "popup": "被压制时要找打破兵链的关键步。\n卡罗坎的c5就是黑方的解脱手段。",
+    "popup_en": "When cramped, look for a pawn break against the chain. In the Caro-Kann, ...c5 is Black's key freeing move.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "e4",
       "popup": "▶️ <b>e4</b><br>白方占中心，开局",
+      "popup_en": "▶️ <b>e4</b><br>White occupies the center and begins the game.",
       "highlights": [
         {
           "squares": [
@@ -47,6 +50,7 @@
       "index": 1,
       "move": "c6",
       "popup": "▶️ <b>c6</b><br>卡罗坎！黑方用c6支持d5<br>这是一个更稳健的防守开局",
+      "popup_en": "▶️ <b>c6</b><br>The Caro-Kann: Black prepares to support ...d5 with ...c6.<br>This is a solid defensive opening.",
       "highlights": [
         {
           "squares": [
@@ -69,6 +73,7 @@
       "index": 2,
       "move": "d4",
       "popup": "▶️ <b>d4</b><br>白方建立双兵中心",
+      "popup_en": "▶️ <b>d4</b><br>White builds a two-pawn center.",
       "highlights": [
         {
           "squares": [
@@ -85,6 +90,7 @@
       "index": 3,
       "move": "d5",
       "popup": "▶️ <b>d5</b><br>黑方立刻用c6支撑的d5来争中心<br>与法国防御不同，黑方象不会被堵住！",
+      "popup_en": "▶️ <b>d5</b><br>Black immediately challenges the center with the pawn supported by c6.<br>Unlike the French Defense, Black's light-squared bishop is not locked in.",
       "highlights": [
         {
           "squares": [
@@ -107,6 +113,7 @@
       "index": 4,
       "move": "e5",
       "popup": "🚀 <b>e5！推进变！</b><br>白方不交换，直接推进<br>与法国防御类似，但卡罗坎黑方的象更活跃！",
+      "popup_en": "🚀 <b>e5 - The Advance Variation!</b><br>White advances instead of exchanging pawns.<br>As in the French Defense, White gains space, but Black's bishop is more active in the Caro-Kann.",
       "highlights": [
         {
           "squares": [
@@ -131,6 +138,7 @@
       "index": 5,
       "move": "Bf5",
       "popup": "🔑 <b>Bf5！卡罗坎的核心优势！</b><br>e5 推进前，黑方象已经走出来了！<br>⚡ <b>对比法国防御</b>：法国走 e6 把象锁死；卡罗坎走 c6+d5，象可以先出来再走 e6。<br>这一步棋的提前出动，是卡罗坎优于法国防御的最重要原因。",
+      "popup_en": "🔑 <b>Bf5 - A key Caro-Kann advantage!</b><br>Black develops the bishop before White advances e5.<br>⚡ <b>Compare with the French:</b> ...e6 can block the bishop in, while the Caro-Kann structure lets it develop before ...e6.<br>This early development is an important feature of the Caro-Kann.",
       "highlights": [
         {
           "squares": [
@@ -148,6 +156,7 @@
       "index": 6,
       "move": "Nf3",
       "popup": "▶️ <b>Nf3</b><br>白方出马，支援e5<br>白方继续稳健发展",
+      "popup_en": "▶️ <b>Nf3</b><br>White develops a knight to support e5 and continues solid development.",
       "highlights": [
         {
           "squares": [
@@ -171,6 +180,7 @@
       "index": 7,
       "move": "e6",
       "popup": "▶️ <b>e6</b><br>黑方巩固 d5，象已在 f5 安全就位。<br>此时白方的空间优势明显（e5 线以后全是白方地盘），但黑方阵型无漏洞——c5 的反击时机快到了。",
+      "popup_en": "▶️ <b>e6</b><br>Black reinforces d5, with the bishop already developed safely on f5.<br>White has more space beyond the e5-pawn, but Black's structure is sound and the ...c5 break is approaching.",
       "highlights": [
         {
           "squares": [
@@ -188,6 +198,7 @@
       "index": 8,
       "move": "Be2",
       "popup": "▶️ <b>Be2</b><br>白方发展象，准备易位<br>白方的棋子一个一个有序出动",
+      "popup_en": "▶️ <b>Be2</b><br>White develops the bishop and prepares to castle, bringing the pieces into play in order.",
       "highlights": [
         {
           "squares": [
@@ -204,6 +215,7 @@
       "index": 9,
       "move": "c5",
       "popup": "⚡ <b>c5！反击 d4！</b><br>黑方阵型就绪后立刻出手，直接攻击白方兵链的根 d4。<br>🎯 <b>时机选择：</b>先走 e6 稳固阵型，再走 Nc6 或直接 c5——确保反击时子力已经协调，不是冒进。",
+      "popup_en": "⚡ <b>...c5 - Counterattack against d4!</b><br>Once the position is ready, Black strikes at the base of White's pawn chain.<br>🎯 <b>Timing:</b> first stabilize with ...e6, then prepare ...Nc6 or play ...c5 when the pieces are coordinated, not prematurely.",
       "highlights": [
         {
           "squares": [
@@ -226,6 +238,7 @@
       "index": 10,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>白方先易位，王安全！<br>不急于回应c5，先完成发展",
+      "popup_en": "▶️ <b>O-O</b><br>White castles and secures the king before responding to ...c5, prioritizing development.",
       "highlights": [
         {
           "squares": [
@@ -244,6 +257,7 @@
       "index": 11,
       "move": "Nc6",
       "popup": "▶️ <b>Nc6</b><br>黑方出马，加强c5的攻击<br>黑方子力在协调地进行反击",
+      "popup_en": "▶️ <b>Nc6</b><br>Black develops a knight to increase pressure on d4 and support the ...c5 counterplay.",
       "highlights": [
         {
           "squares": [
@@ -267,6 +281,7 @@
       "index": 12,
       "move": "c3",
       "popup": "▶️ <b>c3</b><br>白方保护d4<br>这是必要的防守——白方不想失去中心",
+      "popup_en": "▶️ <b>c3</b><br>White reinforces d4. This is necessary to maintain the central foothold.",
       "highlights": [
         {
           "squares": [
@@ -290,6 +305,7 @@
       "index": 13,
       "move": "Nge7",
       "popup": "▶️ <b>Nge7</b><br>f6 被 e5 封锁，马只能走 e7。黑方的活动空间确实有限，但阵型稳固，c5 已经打开了局面。",
+      "popup_en": "▶️ <b>Nge7</b><br>The e5-pawn blocks f6, so the knight reroutes to e7. Black has less space, but the structure is sound and ...c5 has opened a path for counterplay.",
       "highlights": [
         {
           "squares": [
@@ -315,6 +331,7 @@
       "index": 14,
       "move": "Na3",
       "popup": "📊 <b>Na3 — 局面总结</b><br>白方 Na3 准备 Nc2-Ne3 路线，继续在白方宽广的空间内机动。<br>空间差一目了然：白方第3-5排可自由运作；黑方被压缩在第6-8排。<br>🏁 <b>本局两个核心：</b> ① Bf5 先出门（卡罗坎优势）；② c5 精准反击 d4（打断兵链根部）。",
+      "popup_en": "📊 <b>Na3 - Position summary</b><br>Na3 prepares the Nc2-e3 route, letting White maneuver in the extra space.<br>The space difference is visible: White can use ranks three through five, while Black is more restricted.<br>🏁 <b>Two key ideas:</b> ① Develop the bishop to f5 before ...e6, a Caro-Kann benefit. ② Use ...c5 to strike the base of White's pawn chain on d4.",
       "highlights": [
         {
           "squares": [

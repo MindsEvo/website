@@ -2,6 +2,7 @@
   "game_id": "B8_RookCoord_Practice_008",
   "description": "C54 — 链接双车 - 第8局：叠车接力突破（意大利开局C54）",
   "intro": {
+    "popup_en": "Rook Relay in Practice, Game 8\nA classic C54 Italian Game. Follow the journey of White's rooks: Re1, Rxe6, Red6, Rd7, and finally Rxd7.",
     "flash_squares": [
       "e1",
       "e6",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The complete rook relay: Re1 prepares the rooks; Rxe6 is the first rook's breakthrough; Red6 advances it; Rd7+ forces Black's rook to respond; then the second rook captures on d7. A full-game demonstration of the relay idea.",
     "popup": "总结：叠车接力全过程\n①第7步Re1：易位后立即激活，为双车连接做准备\n②第28步Rxe6：前车突破！\n③第31步Red6：前车继续推进\n④第32步Rd7+：前车将军，黑车被迫应接\n⑤第33步Rxd7+：后车接手！——这就是一局精彩的全局演示！",
     "voice": true
   },
@@ -22,31 +24,37 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "1.e4 begins the Italian Game, here in the C54 Giuoco Piano variation.",
       "move": "e4",
       "popup": "1.e4 意大利开局开始\nC54 吉奥科·钢琴变例"
     },
     {
       "index": 2,
+      "popup_en": "Nf3 develops and attacks e5.",
       "move": "Nf3",
       "popup": "Nf3！马出动，攻击e5"
     },
     {
       "index": 4,
+      "popup_en": "Bc4! The Italian bishop targets Black's weakness on f7.",
       "move": "Bc4",
       "popup": "Bc4！意大利象！\n直指黑方f7弱点"
     },
     {
       "index": 6,
+      "popup_en": "c3 is a characteristic Giuoco Piano move, preparing the central advance d4.",
       "move": "c3",
       "popup": "c3！吉奥科·钢琴特征步\n为d4中心推进做准备"
     },
     {
       "index": 8,
+      "popup_en": "d3 builds a steady center and prepares development and castling.",
       "move": "d3",
       "popup": "d3！稳健建立中心\n为轻子发展和易位铺路"
     },
     {
       "index": 10,
+      "popup_en": "O-O! White castles. The rook is now on f1 and ready to become active on the next move.",
       "move": "O-O",
       "popup": "O-O易位！\n注意底线：Rf1就位\n下一步白车将立即激活！",
       "highlights": [
@@ -61,6 +69,7 @@
     },
     {
       "index": 12,
+      "popup_en": "Re1! White activates the rook immediately after castling, placing it on the central e-file. This begins the rook-relay plan.",
       "move": "Re1",
       "popup": "Re1！易位后第一步就激活车！\nRf1→e1，占据e列中心通道\n这是整个叠车接力的起点！",
       "highlights": [
@@ -80,81 +89,97 @@
     },
     {
       "index": 16,
+      "popup_en": "Nbd2! The queenside knight moves out, clearing b1, c1, and d1 so the rooks can coordinate more easily.",
       "move": "Nbd2",
       "popup": "Nbd2！后翼马移位\nb1-c1-d1继续腾空，双车协调更顺畅"
     },
     {
       "index": 18,
+      "popup_en": "Bxe6! White initiates an exchange, opening the f-file and damaging Black's structure after ...fxe6.",
       "move": "Bxe6",
       "popup": "Bxe6！主动兑换！\n打开f列，黑方e6被fxe6破坏,\n白方获得结构优势"
     },
     {
       "index": 20,
+      "popup_en": "b4! White expands on the queenside and gains space.",
       "move": "b4",
       "popup": "b4！翼冲！\n抢占空间，后翼行动开始"
     },
     {
       "index": 24,
+      "popup_en": "Be3 develops the bishop actively and watches for the black knight's route toward g4.",
       "move": "Be3",
       "popup": "Be3！象发展到活跃位置\n同时看住黑马跑向g4"
     },
     {
       "index": 26,
+      "popup_en": "Bxa7 wins a pawn by exchanging bishops and forces Black's rook away from its favorable position.",
       "move": "Bxa7",
       "popup": "Bxa7！兑象得兵\n黑车被迫离开得利位置"
     },
     {
       "index": 30,
+      "popup_en": "d4! White launches the key central counterbreak.",
       "move": "d4",
       "popup": "d4！中心突破！\n白方启动关键的中心反击"
     },
     {
       "index": 32,
+      "popup_en": "Nxd4 places the knight on a strong central square.",
       "move": "Nxd4",
       "popup": "Nxd4！马占据d4强格"
     },
     {
       "index": 34,
+      "popup_en": "Nxc6 exchanges Black's knight and damages the queenside pawn structure.",
       "move": "Nxc6",
       "popup": "Nxc6！兑换黑马\n破坏黑方后翼兵型"
     },
     {
       "index": 36,
+      "popup_en": "e5! White advances the pawn chain and increases the central space advantage.",
       "move": "e5",
       "popup": "e5！兵链推进！\n白方中心优势扩大"
     },
     {
       "index": 40,
+      "popup_en": "exd6 exchanges pawns and opens the d-file for the rooks.",
       "move": "exd6",
       "popup": "exd6！兵兑换\n打开d列，双车准备发力"
     },
     {
       "index": 42,
+      "popup_en": "Nxd6! The knight occupies a powerful outpost. Now watch how Re1 breaks through.",
       "move": "Nxd6",
       "popup": "Nxd6！马进驻d6强格！\n现在注意观察：Re1如何突破"
     },
     {
       "index": 46,
+      "popup_en": "Qe4! The queens are about to be exchanged, bringing the rooks to the forefront.",
       "move": "Qe4",
       "popup": "Qe4！\n后马即将兑换，局面进入车的世界！"
     },
     {
       "index": 48,
+      "popup_en": "Kh2 steps away from check. Re1 has guarded the e-file for a long time and is about to become decisive.",
       "move": "Kh2",
       "popup": "Kh2！王躲避将军\n注意：此时Re1已经守了很久e列\n即将派上大用场！"
     },
     {
       "index": 50,
+      "popup_en": "Nxe4 exchanges the remaining queenside pieces. The position simplifies into a rook endgame, where White's rooks can begin their relay.",
       "move": "Nxe4",
       "popup": "Nxe4！后马相继兑换\n局势简化，进入车的端局\n白方双车将发动叠车接力！"
     },
     {
       "index": 52,
+      "popup_en": "Nxf2 captures the pawn on f2 as the position simplifies further.",
       "move": "Nxf2",
       "popup": "Nxf2！马吃掉f2兵\n局势继续简化"
     },
     {
       "index": 53,
+      "popup_en": "Rxf2 recaptures the knight. White now has two rooks, on f2 and e1; the relay is about to begin.",
       "move": "Rxf2",
       "popup": "Rxf2！车吃回马\n现在白方双车：Rxf2 + Re1\n接力序列即将开始！",
       "highlights": [
@@ -169,6 +194,7 @@
     },
     {
       "index": 54,
+      "popup_en": "Rxe6! The front rook breaks through, moving from e1 to e6 deep in Black's position. This is the first step of the relay.",
       "move": "Rxe6",
       "popup": "Rxe6！前车突破！\nRe1→e6，车深入敌阵\n叠车接力第一步：前车冲锋！",
       "highlights": [
@@ -182,11 +208,13 @@
     },
     {
       "index": 55,
+      "popup_en": "...Rc8 brings Black's rook back to defend.",
       "move": "Rc8",
       "popup": "Rc8！黑车回防"
     },
     {
       "index": 56,
+      "popup_en": "Rd1! The rear rook joins from a1, preparing to use the d-file. Re6 leads in front, with Rd1 following behind.",
       "move": "Rd1",
       "popup": "Rd1！后车进场！\nRa1→d1，准备沿d列接力\n注意：Re6在前，Rd1在后！",
       "highlights": [
@@ -201,11 +229,13 @@
     },
     {
       "index": 57,
+      "popup_en": "...Rc2 counterattacks on c2, but White is prepared.",
       "move": "Rc2",
       "popup": "Rc2！黑车反压c2\n但白方早有准备"
     },
     {
       "index": 58,
+      "popup_en": "Rd3! The rear rook takes its relay position. The path from d3 to d7 is clear, with the front rook on e6.",
       "move": "Rd3",
       "popup": "Rd3！后车就位！\nd3→d7通路清晰\n前车在e6，后车在d3——接力箭在弦上！",
       "highlights": [
@@ -221,11 +251,13 @@
     },
     {
       "index": 59,
+      "popup_en": "...Kf7 brings Black's king into the game.",
       "move": "Kf7",
       "popup": "Kf7！黑王出来走走"
     },
     {
       "index": 60,
+      "popup_en": "Red6! The front rook moves from e6 to d6, pressuring d7. Both white rooks are now on the d-file.",
       "move": "Red6",
       "popup": "Red6！前车继续推进！\nRe6→d6，紧逼d7\n现在双车都在d列！",
       "highlights": [
@@ -240,11 +272,13 @@
     },
     {
       "index": 61,
+      "popup_en": "...Rc7 defends the c7-square.",
       "move": "Rc7",
       "popup": "Rc7！黑车守住c7"
     },
     {
       "index": 62,
+      "popup_en": "Rd7+! The front rook invades with check. Black is forced to capture it, exactly as White intended.",
       "move": "Rd7+",
       "popup": "Rd7+！前车将军！\n前车突入d7，黑车被迫吃掉——\n这正是叠车接力的设计！",
       "highlights": [
@@ -264,11 +298,13 @@
     },
     {
       "index": 63,
+      "popup_en": "...Rxd7 Black's rook captures the invading front rook, just as White planned.",
       "move": "Rxd7",
       "popup": "Rxd7！黑车被迫吃前车\n——正中白方下怀！"
     },
     {
       "index": 64,
+      "popup_en": "Rxd7+! The relay is complete: the rook from d3 takes over on d7 after the first rook breaks through and draws Black's rook away.",
       "move": "Rxd7+",
       "popup": "Rxd7+！叠车接力完成！\nRd3接手d7！\n前车突破 → 黑车应接 → 后车接手\n这就是叠车接力的精髓！",
       "highlights": [
@@ -282,6 +318,7 @@
     },
     {
       "index": 65,
+      "popup_en": "...Kf6 escapes. White's two rooks can continue coordinating to exert pressure in the endgame.",
       "move": "Kf6",
       "popup": "Kf6！黑王逃跑\n接下来白方两车继续协同，发挥残局压制力"
     }

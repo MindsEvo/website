@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "如何防范博登杀",
+  "concept_en": "How to Prevent Boden's Mate",
   "question_cn": "为避免被博登杀，以下哪种做法最有效？",
+  "question_en": "What is the most effective way to prevent Boden's mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "换掉对方的一个象，破坏双象配合"
+      "text_cn": "换掉对方的一个象，破坏双象配合",
+      "text_en": "Trade off one of the opponent's bishops to break up the bishop pair"
     },
     {
       "key": "B",
-      "text_cn": "把王推进到棋盘中心"
+      "text_cn": "把王推进到棋盘中心",
+      "text_en": "Advance the king toward the center of the board"
     },
     {
       "key": "C",
-      "text_cn": "不要让己方棋子堵死王的逃格，同时避免随手走兵打开对角线"
+      "text_cn": "不要让己方棋子堵死王的逃格，同时避免随手走兵打开对角线",
+      "text_en": "Keep the king's escape squares open and avoid careless pawn moves that open a bishop's diagonal"
     },
     {
       "key": "D",
-      "text_cn": "多发展马，马可以跳过棋子保护王"
+      "text_cn": "多发展马，马可以跳过棋子保护王",
+      "text_en": "Develop more knights because they can jump over pieces to protect the king"
     }
   ],
   "correct": "C",
   "explanation_cn": "防范博登杀有两个要点：第一，不让己方棋子封死王的逃格；第二，走棋前检查对方的象是否对准己方王，避免随手走兵打开危险的对角线。换掉一个象也有效，但并非总能做到。",
+  "explanation_en": "There are two main defenses: keep the king's escape squares open, and check whether an enemy bishop is aimed at your king before making a pawn move that could open the diagonal. Trading off one bishop also helps, though it may not always be possible.",
   "created_at": "2026-06-02"
 }

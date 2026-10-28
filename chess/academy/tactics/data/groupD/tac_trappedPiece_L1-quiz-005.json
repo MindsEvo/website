@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "避免困子的原则",
   "question_cn": "为了避免己方棋子被困，最重要的原则是什么？",
+  "question_en": "What is the most important principle for preventing your own pieces from getting trapped?",
   "options": [
-    {"key": "A", "text_cn": "永远不把棋子走到对方阵地"},
-    {"key": "B", "text_cn": "每走一步棋，确保该棋子有至少一条安全的退路"},
-    {"key": "C", "text_cn": "只用兵开局，不动大子"},
-    {"key": "D", "text_cn": "把所有棋子集中在棋盘中心"}
+    {"key": "A", "text_cn": "永远不把棋子走到对方阵地", "text_en": "Never move a piece into the opponent's territory"},
+    {"key": "B", "text_cn": "每走一步棋，确保该棋子有至少一条安全的退路", "text_en": "Whenever you move a piece, make sure it has at least one safe route back"},
+    {"key": "C", "text_cn": "只用兵开局，不动大子", "text_en": "Open only with pawns and do not move your major pieces"},
+    {"key": "D", "text_cn": "把所有棋子集中在棋盘中心", "text_en": "Keep all your pieces concentrated in the center of the board"}
   ],
   "correct": "B",
   "explanation_cn": "避免困子的核心原则：每次移动棋子前，先检查目标格的棋子是否有安全退路。特别是后、象这类强子，深入对方阵地时要确保至少有一条逃跑路线。一旦发现棋子退路受限，应立刻主动撤退，不要等到完全被围才行动。",
+  "explanation_en": "Before moving a piece, check whether it will have a safe route back from its destination. This is especially important for powerful pieces such as queens and bishops when they venture into enemy territory. If their escape routes begin to narrow, retreat in time rather than waiting until they are completely boxed in.",
   "created_at": "2026-05-27"
 }

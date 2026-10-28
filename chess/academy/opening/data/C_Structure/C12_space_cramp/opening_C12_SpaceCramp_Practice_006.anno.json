@@ -2,11 +2,13 @@
   "game_id": "C12_SpaceCramp_Practice_006",
   "description": "卡罗-卡恩推进变 B12 — 练习：指出被压子力并找到反击点",
   "intro": {
+    "popup_en": "Space Cramp, Practice 6\nAfter watching the game, consider two questions: Which of Black's pieces are restricted, and why? Where is Black's strongest counterbreak? Hint: what is special about f6?",
     "flash_squares": ["e5", "g6", "f6"],
     "popup": "空间挤压 练习6\n\n看完这局棋，练习两件事：\n\n① 黑方哪些子力受到限制？为什么？\n② 黑方最有力的反击点在哪里？\n\n提示：f6格有什么特别意义？",
     "voice": true
   },
   "outro": {
+    "popup_en": "Answer: Ng6 is restricted, with only a few useful squares such as h4 and f4. Black's strongest counterbreak is ...f6, directly challenging White's e5 wedge. Timing matters: coordinate Ng6 and Qd7 first.",
     "popup": "答案：\n\n被压：Ng6活动有限\n（h4、f4仅2-3格）\n\n反击点：...f6！\n直接挑战e5楔子！\n\n时机：Ng6+Qd7协调好后",
     "voice": true
   },
@@ -15,38 +17,41 @@
     "color": "#00BCD422"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4"},
-    {"index": 1, "move": "c6", "popup": "c6 卡罗-卡恩防御"},
-    {"index": 2, "move": "d4", "popup": "d4"},
-    {"index": 3, "move": "d5", "popup": "d5 反中心"},
-    {"index": 4, "move": "e5", "popup": "e5！楔子推进！", "highlights": [{"squares": ["e5"], "color": "#00BCD466"}]},
-    {"index": 5, "move": "Bf5", "popup": "Bf5！象提前溜出来！\n卡罗-卡恩不会有坏象问题", "highlights": [{"squares": ["f5"], "color": "#C6D50055"}]},
-    {"index": 6, "move": "Nf3", "popup": "Nf3 守护d4"},
-    {"index": 7, "move": "e6", "popup": "e6 稳固d5"},
-    {"index": 8, "move": "Be2", "popup": "Be2 发展象"},
-    {"index": 9, "move": "c5", "popup": "c5！攻击d4，黑方的核心反击"},
-    {"index": 10, "move": "O-O", "popup": "O-O 白方入城"},
-    {"index": 11, "move": "Nc6", "popup": "Nc6 再攻d4！"},
-    {"index": 12, "move": "c3", "popup": "c3 守护d4"},
-    {"index": 13, "move": "Nge7", "popup": "Nge7 马出来，目标g6！", "highlights": [{"squares": ["e7", "g6"], "color": "#FF8F0044"}]},
-    {"index": 14, "move": "Be3", "popup": "Be3 守护d4，发展"},
+    {"index": 0, "move": "e4", "popup": "e4", "popup_en": "e4 occupies the center."},
+    {"index": 1, "move": "c6", "popup": "c6 卡罗-卡恩防御", "popup_en": "...c6 begins the Caro-Kann Defense."},
+    {"index": 2, "move": "d4", "popup": "d4", "popup_en": "d4 expands in the center."},
+    {"index": 3, "move": "d5", "popup": "d5 反中心", "popup_en": "...d5 challenges the center."},
+    {"index": 4, "move": "e5", "popup": "e5！楔子推进！", "popup_en": "e5! White advances the pawn wedge and closes the center.", "highlights": [{"squares": ["e5"], "color": "#00BCD466"}]},
+    {"index": 5, "move": "Bf5", "popup": "Bf5！象提前溜出来！\n卡罗-卡恩不会有坏象问题", "popup_en": "...Bf5 develops the bishop before the pawn chain closes its diagonal; Black avoids a bad bishop.", "highlights": [{"squares": ["f5"], "color": "#C6D50055"}]},
+    {"index": 6, "move": "Nf3", "popup": "Nf3 守护d4", "popup_en": "Nf3 supports d4."},
+    {"index": 7, "move": "e6", "popup": "e6 稳固d5", "popup_en": "...e6 reinforces d5."},
+    {"index": 8, "move": "Be2", "popup": "Be2 发展象", "popup_en": "Be2 develops the bishop."},
+    {"index": 9, "move": "c5", "popup": "c5！攻击d4，黑方的核心反击", "popup_en": "...c5! Black attacks d4, the key counterbreak against White's center."},
+    {"index": 10, "move": "O-O", "popup": "O-O 白方入城", "popup_en": "O-O secures White's king."},
+    {"index": 11, "move": "Nc6", "popup": "Nc6 再攻d4！", "popup_en": "...Nc6 adds pressure to d4."},
+    {"index": 12, "move": "c3", "popup": "c3 守护d4", "popup_en": "c3 reinforces d4."},
+    {"index": 13, "move": "Nge7", "popup": "Nge7 马出来，目标g6！", "popup_en": "...Nge7 develops the knight with g6 as its intended destination.", "highlights": [{"squares": ["e7", "g6"], "color": "#FF8F0044"}]},
+    {"index": 14, "move": "Be3", "popup": "Be3 守护d4，发展", "popup_en": "Be3 develops and supports d4."},
     {
       "index": 15,
       "move": "Ng6",
+      "popup_en": "...Ng6 reaches its intended square, but has few active options: h4, f4, and e7 are among the limited choices. This lack of mobility is a sign that Black is cramped.",
       "popup": "Ng6！马到达目标格！\n\n⚠ 现在数一数Ng6的活动格：\nh4、f4、e7……只有3个左右\n\n这就是被压信号！",
       "highlights": [
         {"squares": ["g6", "h4", "f4"], "color": "#E5393555"}
       ]
     },
-    {"index": 16, "move": "h3", "popup": "h3 防Ng4，也防止黑马太自由"},
+    {"index": 16, "move": "h3", "popup": "h3 防Ng4，也防止黑马太自由", "popup_en": "h3 prevents ...Ng4 and keeps Black's knight from becoming too active."},
     {
       "index": 17,
       "move": "cxd4",
+      "popup_en": "cxd4 exchanges pawns and removes the pressure from Black's ...c5 break, making White's e5 wedge more secure.",
       "popup": "cxd4 兑换！\nc5の反击压力消失了……\n白方e5变得更稳固"
     },
     {
       "index": 18,
       "move": "cxd4",
+      "popup_en": "cxd4 recaptures and restores White's central presence. White's e5 wedge is secure while Black's knight on g6 remains restricted. What is Black's strongest next counterbreak? Think about f6.",
       "popup": "cxd4 重新占中心\n\n现在白方e5稳固，黑方Ng6活动受限\n\n⭐ 练习问题：\n黑方下一步最有力的反击是什么？\n（提示：f6格……）",
       "highlights": [
         {"squares": ["f6", "e5"], "color": "#E5393555"}

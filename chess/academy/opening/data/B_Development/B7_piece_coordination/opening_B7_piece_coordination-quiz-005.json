@@ -3,14 +3,17 @@
     "gene_id": "B7_piece_coordination",
     "sequence": 5,
     "concept": "协调优势的转化",
+    "concept_en": "Converting Coordination into an Advantage",
     "question_cn": "子力协调好的一方最终如何将这种优势转化为胜利？",
+    "question_en": "How can the side with better piece coordination convert that advantage into a win?",
     "options": [
-        {"key": "A", "text_cn": "协调好只是看起来漂亮，对胜负没有直接影响"},
-        {"key": "B", "text_cn": "协调好的棋子可以集中力量攻击对方的薄弱点，把战术机会转化为物质或位置优势"},
-        {"key": "C", "text_cn": "协调好就能直接将死对方"},
-        {"key": "D", "text_cn": "只有在残局中协调才重要"}
+        {"key": "A", "text_cn": "协调好只是看起来漂亮，对胜负没有直接影响", "text_en": "Good coordination only looks attractive and has no effect on the result."},
+        {"key": "B", "text_cn": "协调好的棋子可以集中力量攻击对方的薄弱点，把战术机会转化为物质或位置优势", "text_en": "Coordinated pieces can combine against weaknesses and turn tactical chances into material or positional gains."},
+        {"key": "C", "text_cn": "协调好就能直接将死对方", "text_en": "Good coordination automatically checkmates the opponent."},
+        {"key": "D", "text_cn": "只有在残局中协调才重要", "text_en": "Coordination matters only in the endgame."}
     ],
     "correct": "B",
     "explanation_cn": "子力协调本身是战略优势，需要通过战术手段转化。协调好的棋子可以：① 集中多子攻击对方一个薄弱点（如叠车压线）；② 组合出战术机会（双攻、绝对钉子、牵制）；③ 在对方协调被打乱时找到决定性突破。西西里纳伊多夫中双方都在争取子力协调，谁先协调完谁就能发起有效进攻。",
+    "explanation_en": "Coordination is a strategic advantage that must be converted through concrete play. Well-coordinated pieces can concentrate on a weakness, create tactics such as forks or pins, and exploit the moment the opponent's coordination breaks down. In the Sicilian Najdorf, both sides seek to coordinate first and launch an effective attack.",
     "created_at": "2026-06-13"
 }

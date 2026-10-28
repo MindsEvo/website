@@ -3,37 +3,42 @@
     {
       "key": "K2R_vs_K",
       "label": "双车对王-L1",
+      "label_en": "Two Rooks vs. King - L1",
       "items": [
-        { "id": "eg_K2R-K_L1-quiz-001", "label": "1. 双车割草" }
+        { "id": "eg_K2R-K_L1-quiz-001", "label": "1. 双车割草", "label_en": "1. The Rook Sweep" }
       ]
     },
     {
       "key": "KR_vs_K",
       "label": "车对王-L1",
+      "label_en": "Rook vs. King - L1",
       "items": [
-        { "id": "eg_KR-K_L1-quiz-001", "label": "1. 梳子将杀（车对王基本杀法）" },
-        { "id": "eg_KR-K_L1-quiz-002", "label": "2. 将死在边线" }
+        { "id": "eg_KR-K_L1-quiz-001", "label": "1. 梳子将杀（车对王基本杀法）", "label_en": "1. The Ladder Mate: Basic Rook Checkmate" },
+        { "id": "eg_KR-K_L1-quiz-002", "label": "2. 将死在边线", "label_en": "2. Checkmate on the Edge" }
       ]
     },
     {
       "key": "KR_vs_KP",
       "label": "车对升变兵-L1",
+      "label_en": "Rook vs. Passed Pawn - L1",
       "items": [
-        { "id": "eg_KR-KP_L1-quiz-001", "label": "1. 车王配合——分离对方王兵吃掉兵" },
-        { "id": "eg_KR-KP_L1-quiz-002", "label": "2. 车正面阻击——王紧跟支援" }
+        { "id": "eg_KR-KP_L1-quiz-001", "label": "1. 车王配合——分离对方王兵吃掉兵", "label_en": "1. Rook and King Coordinate to Win the Pawn" },
+        { "id": "eg_KR-KP_L1-quiz-002", "label": "2. 车正面阻击——王紧跟支援", "label_en": "2. Front-Block with the Rook and Support with the King" }
       ]
     },
     {
       "key": "RP_vs_R",
       "label": "车兵对车-L2",
+      "label_en": "Rook and Pawn vs. Rook - L2",
       "items": [
-        { "id": "eg_RP-R_L2-quiz-001", "label": "1. 车兵对车——Philidor/Lucena" },
-        { "id": "eg_RP-R_L2-quiz-002", "label": "2. Philidor阵型防守" }
+        { "id": "eg_RP-R_L2-quiz-001", "label": "1. 车兵对车——Philidor/Lucena", "label_en": "1. Rook and Pawn vs. Rook: Philidor and Lucena" },
+        { "id": "eg_RP-R_L2-quiz-002", "label": "2. Philidor阵型防守", "label_en": "2. The Philidor Defense" }
       ]
     },
     {
       "key": "R2P_vs_R",
       "label": "车双兵对车-L3",
+      "label_en": "Rook and Two Pawns vs. Rook - L3",
       "items": []
     }
   ]

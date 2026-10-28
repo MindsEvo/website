@@ -1,13 +1,16 @@
 {
   "game_id": "tac_xRayAttack_L1-006",
   "description": "弃车过渡，后透视攻击，连续将军赢子",
+  "explanation_en": "A rook sacrifice and intermediate check draw the queen away, allowing an X-ray queen attack and a series of checks that win material.",
   "intro": {
     "flash_squares": ["f1", "f6", "e1", "e7", "h4", "g7"],
     "popup": "💡 <b>透视攻击</b>：白方双车和白后联手，通过弃车过渡和透视攻击，连续将军赢得大量子力。",
+    "popup_en": "💡 <b>X-ray attack</b>: White's two rooks and queen work together. A rook sacrifice and an intermediate check set up an X-ray attack and a series of checks to win material.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：弃Rxf6引入→Re7+过渡→后透视黑后将军，连续将军赢后赢子。",
+    "popup_en": "✅ <b>Key idea</b>: Sacrifice with Rxf6 to draw the queen, then play Re7+ as an intermediate check. The queen's X-ray attack is revealed, and the checking sequence wins the queen and more material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxf6",
       "popup": "白车Rxf6！弃车引入，强制黑后必须应对，为白车e1和白后的透视进攻打开通路。",
+      "popup_en": "Rxf6! White sacrifices the rook to force the black queen to respond, clearing the way for the rook on e1 and White's X-ray attack.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -28,6 +32,7 @@
       "index": 1,
       "move": "Qxf6",
       "popup": "黑后被迫吃车，来到f6。",
+      "popup_en": "The black queen is forced to capture the rook on f6.",
       "highlights": [
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -40,6 +45,7 @@
       "index": 2,
       "move": "Re7+",
       "popup": "白车Re7+过渡将军！车沿e列将军黑王g7，黑后被迫再次吃车来挡将。",
+      "popup_en": "Re7+! An intermediate check down the e-file attacks the black king on g7, forcing the queen to capture another rook to block the check.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Qxe7",
       "popup": "黑后从f6来到e7应将，离开了f列防线。",
+      "popup_en": "The queen moves from f6 to e7 to answer the check, leaving the f-file.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Qxe7+",
       "popup": "透视攻击！白后h4早已透视黑后f6（现e7）盯住e7，黑后移走后白后直取e7将军！",
+      "popup_en": "The X-ray attack is revealed! White's queen on h4 has been aiming through the black queen at e7. With the queen displaced, White captures on e7 with check.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Kh6",
       "popup": "黑王逃至h6。",
+      "popup_en": "The black king moves to h6.",
       "highlights": [
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Qxd6",
       "popup": "白后吃兵d6，继续扩大优势，局面对白方极为有利。",
+      "popup_en": "The queen captures the pawn on d6 and increases White's already substantial advantage.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

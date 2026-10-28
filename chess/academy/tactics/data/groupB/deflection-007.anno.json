@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-007",
   "description": "引离b7兵——后牺牲引兵，象a6绝杀",
+  "explanation_en": "A queen sacrifice deflects the b7-pawn, allowing the bishop to deliver mate on a6.",
   "intro": {
     "flash_squares": [
       "e4",
@@ -8,10 +9,12 @@
       "a6"
     ],
     "popup": "💡 白方如何牺牲后引离b7兵，让象走a6绝杀？",
+    "popup_en": "💡 How can White sacrifice the queen to deflect the b7-pawn and deliver mate with the bishop on a6?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Qxc6+！后牺牲引离b7兵——兵被迫bxc6，打通b7格，Ba6绝杀黑王c8！",
+    "popup_en": "✅ Key idea: Qxc6+! sacrifices the queen to deflect the b7-pawn. After ...bxc6, the b7-square is clear and Ba6# mates the king on c8.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Qxc6+!",
       "popup": "白后Qxc6+！后牺牲！引离b7兵——b7兵必须来吃后，同时打开b7格。",
+      "popup_en": "Qxc6+! White sacrifices the queen to deflect the b7-pawn, which must capture and vacate b7.",
       "highlights": [
         {
           "squares": [
@@ -49,6 +53,7 @@
       "index": 1,
       "move": "bxc6",
       "popup": "黑兵bxc6！引离成功——b7格打开，象可以到a6了！",
+      "popup_en": "...bxc6! The deflection succeeds: b7 is clear, so the bishop can move to a6.",
       "highlights": [
         {
           "squares": [
@@ -85,6 +90,7 @@
       "index": 2,
       "move": "Ba6#",
       "popup": "白象Ba6# 绝杀！象覆盖b7格，Bg3象封c8方向，黑王c8无处可逃！",
+      "popup_en": "Ba6#! The bishop controls b7, while the bishop on g3 covers the route from c8. The black king has no escape.",
       "highlights": [
         {
           "squares": [

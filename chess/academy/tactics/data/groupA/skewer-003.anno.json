@@ -1,13 +1,16 @@
 {
   "game_id": "tac_skewer_L1-003",
   "description": "先弃车引白后到e4，再黑象串击后和车",
+  "explanation_en": "A hidden skewer: Black sacrifices a rook to draw White's queen onto e4, then the bishop attacks the queen with a rook behind it and wins material.",
   "intro": {
     "flash_squares": ["e8", "e4", "d6", "h1"],
     "popup": "💡 <b>串击</b>：黑方先弃车把白后引到e4，再用象串击白后和h1的车——你看出来了吗？",
+    "popup_en": "💡 <b>Skewer</b>: Black first sacrifices a rook to lure White's queen to e4, then uses the bishop to skewer the queen and rook on h1. Can you see the idea?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：弃车引后，Bc6串击！象攻击e4的后，对角线后方还有h1的白车，白方两全不了。",
+    "popup_en": "✅ <b>Key idea</b>: The rook sacrifice lures the queen into place for Bc6. The bishop attacks the queen on e4 with the rook on h1 behind it, so White cannot save both.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxe4",
       "popup": "弃车！黑车吃e4的象，引白后来到e4。",
+      "popup_en": "Black sacrifices the rook with Rxe4, capturing the bishop and luring White's queen to e4.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -28,6 +32,7 @@
       "index": 1,
       "move": "Qxe4",
       "popup": "白后吃车，来到e4——正中黑方下怀。",
+      "popup_en": "White's queen captures the rook on e4, exactly where Black wanted it.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Bc6",
       "popup": "黑象到c6串击！沿对角线攻击e4的白后，后方h1还有白车——白后必须移开！",
+      "popup_en": "The bishop moves to c6 and skewers White's queen on e4, with the rook on h1 behind it. The queen must move!",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0},
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Qd3",
       "popup": "白后被迫撤退，h1的车已无法保住。",
+      "popup_en": "The queen is forced to retreat, and the rook on h1 cannot be saved.",
       "highlights": [
         {"squares": ["d3"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Bxh1",
       "popup": "黑象吃车！以弃车赢车，黑方净赚。",
+      "popup_en": "The bishop captures the rook on h1. Black sacrificed one rook to win another and comes out ahead.",
       "highlights": [
         {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_xRayAttack_L1-001",
   "description": "黑后透视攻击白后，引入后连续将军赢子",
+  "explanation_en": "A classic decoy followed by an X-ray attack. Re2+ forces White's queen away from d2, allowing Black's queen to capture it through the vacated square and continue checking the king.",
   "intro": {
     "flash_squares": ["e8", "b2", "d2", "h2"],
     "popup": "💡 <b>透视攻击</b>：黑车在e8，黑后在b2，白后在d2，白王在h2。黑方如何利用透视攻击？",
+    "popup_en": "💡 <b>X-ray attack</b>: Black's rook is on e8, queen on b2, White's queen on d2, and king on h2. How can Black use an X-ray attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Re2+引入——白后被迫离开d2，黑后透视白后直击e2，连续将军赢子！",
+    "popup_en": "✅ <b>Key idea</b>: Re2+ deflects White's queen from d2, allowing Black's queen to attack through the vacated square and launch a series of checks to win material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Re2+",
       "popup": "黑车弃子Re2+！车沿第2横线将军白王，强制白后离开d2，为黑后的透视攻击让路。",
+      "popup_en": "Black sacrifices the rook with Re2+, checking along the second rank and forcing White's queen away from d2, clearing the line for Black's queen.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxe2",
       "popup": "白后被迫吃车，离开d2。",
+      "popup_en": "White's queen is forced to capture the rook and leave d2.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qxe2+",
       "popup": "透视攻击！黑后b2透视穿越白后所在的d2，现在直接吃白后并将军白王！黑后得子且继续进攻。",
+      "popup_en": "X-ray attack! Black's queen on b2 now attacks through the vacated d2 square, captures White's queen on e2, and checks the king. Black wins material and keeps the attack.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0},
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Kg1",
       "popup": "白王逃至g1。",
+      "popup_en": "The white king moves to g1.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Qe3+",
       "popup": "黑后Qe3+，沿对角线将军g1，白王继续被追。",
+      "popup_en": "Black checks with Qe3+ along the diagonal, driving the king on g1 again.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -83,6 +91,7 @@
       "index": 5,
       "move": "Kf1",
       "popup": "白王逃至f1。",
+      "popup_en": "The white king moves to f1.",
       "highlights": [
         {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Qxf3+",
       "popup": "黑后吃白兵f3，沿f列将军f1，白王再次被逼。",
+      "popup_en": "Black's queen captures the pawn on f3 with check along the f-file, forcing the king to move again.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}
@@ -109,6 +119,7 @@
       "index": 7,
       "move": "Ke1",
       "popup": "白王逃至e1。",
+      "popup_en": "The white king moves to e1.",
       "highlights": [
         {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -121,6 +132,7 @@
       "index": 8,
       "move": "Qe3+",
       "popup": "黑后Qe3+沿e列将军，白王再逃。",
+      "popup_en": "Black checks along the e-file with Qe3+, forcing the king to flee once more.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0}
@@ -135,6 +147,7 @@
       "index": 9,
       "move": "Kd1",
       "popup": "白王逃至d1。",
+      "popup_en": "The white king moves to d1.",
       "highlights": [
         {"squares": ["d1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -147,6 +160,7 @@
       "index": 10,
       "move": "Qxd4+",
       "popup": "黑后吃白车d4将军！透视攻击引发连续将军，黑方赢得决定性物质优势。",
+      "popup_en": "Black's queen captures the rook on d4 with check. The X-ray attack has led to a series of checks and a decisive material advantage.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d1"], "color": "#FF000055", "duration_ms": 0}
@@ -161,6 +175,7 @@
       "index": 11,
       "move": "Ke2",
       "popup": "白王逃至e2，黑方已赢得车，优势在握。",
+      "popup_en": "The king moves to e2. Black has won a rook and holds a winning advantage.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
       ],

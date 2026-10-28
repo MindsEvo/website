@@ -5,45 +5,49 @@
     {
       "key": "B5_king_safety",
       "label": "B5 王车易位",
+      "label_en": "B5 King Safety and Castling",
       "items": [
-        { "id": "opening_B5_Castle_Practice_006", "label": "6. 短易位连接双车（西班牙封闭C84）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Practice_007", "label": "7. 稳健局面的易位时机（后翼弃兵兑换变例D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Practice_008", "label": "8. 长易位后车占开放线（西西里纳伊多夫B90）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Practice_009", "label": "9. 异侧易位的攻防节奏（西西里龙变B78）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B5_Castle_Practice_010", "label": "10. 不需要易位的特例！（国王弃兵接受变例C33）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B5_Castle_Practice_006", "label": "6. 短易位连接双车（西班牙封闭C84）", "label_en": "6. Connect the Rooks After Castling (Closed Ruy Lopez)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "In the Closed Ruy Lopez, White castles kingside early, places a rook on e1, and completes development with Nbd2. The sequence connects the rooks while keeping the king safe and supporting the center." },
+        { "id": "opening_B5_Castle_Practice_007", "label": "7. 稳健局面的易位时机（后翼弃兵兑换变例D35）", "label_en": "7. Choosing When to Castle in a Quiet Position (QGD Exchange)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black castles early in this quiet Queen's Gambit position, while White first coordinates the pieces and places the bishop actively on d3. White castles later, after the position has clarified, illustrating that castling timing depends on king safety, piece readiness, and the structure." },
+        { "id": "opening_B5_Castle_Practice_008", "label": "8. 长易位后车占开放线（西西里纳伊多夫B90）", "label_en": "8. Activate the Rooks with Queenside Castling (Najdorf)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "In the Najdorf English Attack, White castles queenside to activate the rooks on the a- and d-files. The king is placed away from the kingside, allowing the g- and h-pawns to advance against Black's king while the d1-rook supports the center." },
+        { "id": "opening_B5_Castle_Practice_009", "label": "9. 异侧易位的攻防节奏（西西里龙变B78）", "label_en": "9. Opposite-Side Castling: The Attack Race (Sicilian Dragon)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "With kings castled on opposite wings in the Sicilian Dragon, both players launch pawn attacks toward the opposing king. White advances on the kingside while Black seeks queenside counterplay; preparation and timing determine which attack arrives first." },
+        { "id": "opening_B5_Castle_Practice_010", "label": "10. 不需要易位的特例！（国王弃兵接受变例C33）", "label_en": "10. When Not to Castle: A Special Case (King's Gambit Accepted)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After accepting the King's Gambit, White plays Kf1 instead of castling. The king is safe in this specific position because White's pieces are active and Black's queen becomes misplaced. Treat this as a concrete exception, not a general reason to leave the king in the center." }
       ]
     },
     {
       "key": "B6_rapid_development",
       "label": "B6 快速出子",
+      "label_en": "B6 Rapid Development",
       "items": [
-        { "id": "opening_B6_DevSpeed_Practice_006", "label": "6. 标准出子秩序的完整展示（费隆佐尼变体）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Practice_007", "label": "7. 封闭局面的轻子布置——伦敦体系标准出子（伦敦体系）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Practice_008", "label": "8. 后被追着跑——发展落后的代价（斯堪纳维亚防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Practice_009", "label": "9. 弃子换节奏——国王弃兵的出子爆发力（国王弃兵）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B6_DevSpeed_Practice_010", "label": "10. 非主流开局也需出子完整——特罗姆普开局（特罗姆普）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B6_DevSpeed_Practice_006", "label": "6. 标准出子秩序的完整展示（费隆佐尼变体）", "label_en": "6. The Complete Development Order (From's Gambit)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black's early flank-pawn push and repeated queen moves give White time to develop the minor pieces, castle, and activate a rook. The line demonstrates the usual order: develop minor pieces, secure the king, then bring the rooks into play." },
+        { "id": "opening_B6_DevSpeed_Practice_007", "label": "7. 封闭局面的轻子布置——伦敦体系标准出子（伦敦体系）", "label_en": "7. Ideal Minor-Piece Placement in the London System", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The London System uses a reliable setup in a closed position: Nf3, Bf4, e3, Nbd2, and Bd3. Once the minor pieces reach their intended squares, White castles and activates the rook on the open c-file." },
+        { "id": "opening_B6_DevSpeed_Practice_008", "label": "8. 后被追着跑——发展落后的代价（斯堪纳维亚防御）", "label_en": "8. A Chased Queen and Lost Development (Scandinavian Defense)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After ...Qxd5, White develops with tempo by attacking the queen. As it moves repeatedly, White claims the center and develops more pieces. The queen's extra moves represent lost development time, leaving Black behind in coordination." },
+        { "id": "opening_B6_DevSpeed_Practice_009", "label": "9. 弃子换节奏——国王弃兵的出子爆发力（国王弃兵）", "label_en": "9. Sacrifice a Pawn for Development Tempo (King's Gambit)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White offers the f-pawn in the King's Gambit to gain time for rapid development and a strong center. White develops actively, castles after bringing out the minor pieces, and then completes the setup before attacking. The pawn is compensation for time and activity, not an end in itself." },
+        { "id": "opening_B6_DevSpeed_Practice_010", "label": "10. 非主流开局也需出子完整——特罗姆普开局（特罗姆普）", "label_en": "10. Complete Development in an Unusual Opening (Trompowsky)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The Trompowsky may require the bishop to move more than once, but the general principle still applies: develop all minor pieces, coordinate the position, and bring them into the game. A nonstandard opening does not remove the need for complete development." }
       ]
     },
     {
       "key": "B7_piece_coordination",
       "label": "B7 子力协调",
+      "label_en": "B7 Piece Coordination",
       "items": [
-        { "id": "opening_B7_PieceCoord_Practice_006", "label": "6. 每个白棋子都有任务（后翼弃兵防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Practice_007", "label": "7. 用钉子破坏协调——1个象换1个马的奥秘（尼姆佐印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Practice_008", "label": "8. 马对象的协调优势——柏林残局（西班牙柏林变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Practice_009", "label": "9. 双方协调竞速——谁先协调完谁占优（焦科钢琴主线）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B7_PieceCoord_Practice_010", "label": "10. 极限协调施压——对攻中的子力分工（西西里纳伊多夫）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B7_PieceCoord_Practice_006", "label": "6. 每个白棋子都有任务（后翼弃兵防御）", "label_en": "6. Every White Piece Has a Job (Queen's Gambit Declined)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White builds a coordinated plan around the c-file in the Queen's Gambit Declined. The knights and bishops control key central squares, Rc1 occupies the file, and the rooks later double there. Qc2 completes the setup by connecting the pieces." },
+        { "id": "opening_B7_PieceCoord_Practice_007", "label": "7. 用钉子破坏协调——1个象换1个马的奥秘（尼姆佐印度防御）", "label_en": "7. Disrupt Coordination with a Pin (Nimzo-Indian)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black's ...Bb4 pins White's coordination hub on c3. After the bishop exchanges itself for the knight, White must rebuild control of the center and loses time; Black uses that interval to prepare the ...e5 counterstrike." },
+        { "id": "opening_B7_PieceCoord_Practice_008", "label": "8. 马对象的协调优势——柏林残局（西班牙柏林变例）", "label_en": "8. Knight-Bishop Coordination in the Berlin Endgame", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The Berlin Endgame removes the queens and reaches an equal-material position. White coordinates the knights, places the bishop on the long diagonal, and brings both rooks to active files. The comparison shows how piece activity and coordination can matter more than material count." },
+        { "id": "opening_B7_PieceCoord_Practice_009", "label": "9. 双方协调竞速——谁先协调完谁占优（焦科钢琴主线）", "label_en": "9. A Coordination Race (Giuoco Pianissimo)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White develops patiently in the Giuoco Pianissimo, castles, places a rook on e1, and reroutes a knight from d2 through f1 to e3. Once the pieces are coordinated, d4 opens the center and Nxd4 establishes a strong outpost." },
+        { "id": "opening_B7_PieceCoord_Practice_010", "label": "10. 极限协调施压——对攻中的子力分工（西西里纳伊多夫）", "label_en": "10. Maximum Coordination in a Sharp Attack (Najdorf)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White coordinates a kingside attack with Bg5, f4, and Qf3, then castles long and adds g4. The bishop removes a key defender, the pawns open lines, and the knights occupy central outposts. Each piece contributes to the attack while the rooks support the center." }
       ]
     },
     {
       "key": "B8_rook_coordination",
       "label": "B8 连接双车",
+      "label_en": "B8 Connect the Rooks",
       "items": [
-        { "id": "opening_B8_RookCoord_Practice_006", "label": "6. 逐步清空底线（鲁伊·洛佩兹C65变例）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Practice_007", "label": "7. 争夺开放列（尼姆佐-印度防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Practice_008", "label": "8. 叠车接力突破（意大利开局C54）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Practice_009", "label": "9. 叠车压制（后翼弃兵接受变例D20，Nbd7改良）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_B8_RookCoord_Practice_010", "label": "10. 从连接到支配的完整流程（斯拉夫防御）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_B8_RookCoord_Practice_006", "label": "6. 逐步清空底线（鲁伊·洛佩兹C65变例）", "label_en": "6. Clear the Back Rank Step by Step (Ruy Lopez)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After castling, the knight, bishop, and queen still block the back rank. As White develops each piece away from b1, c1, and d1, the path between the rooks clears. Rfe1 then completes their connection naturally." },
+        { "id": "opening_B8_RookCoord_Practice_007", "label": "7. 争夺开放列（尼姆佐-印度防御）", "label_en": "7. Connect the Rooks and Contest Open Files (Nimzo-Indian)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White first completes development and castling to connect the rooks. After the d-file opens, Rfe1 and Rad1 place the rooks on the e- and d-files, contesting both central routes." },
+        { "id": "opening_B8_RookCoord_Practice_008", "label": "8. 叠车接力突破（意大利开局C54）", "label_en": "8. A Rook-Relay Breakthrough (Italian Game)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White activates a rook on e1 early, then brings the second rook to the d-file. In the rook endgame, the front rook penetrates first and forces Black's rook to capture; the rear rook then takes over on d7. This sequence demonstrates a coordinated rook relay." },
+        { "id": "opening_B8_RookCoord_Practice_009", "label": "9. 叠车压制（后翼弃兵接受变例D20，Nbd7改良）", "label_en": "9. Rook Pressure on the d-File (Queen's Gambit Accepted)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White clears the d-file with a central break, occupies the d5 outpost, and doubles the rooks on the d-file. When Black attacks the advanced rook, White retreats flexibly while maintaining pressure. The goal is sustained restriction and activity, not necessarily an immediate material win." },
+        { "id": "opening_B8_RookCoord_Practice_010", "label": "10. 从连接到支配的完整流程（斯拉夫防御）", "label_en": "10. From Connected Rooks to File Control (Slav Defense)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "This review follows White's rooks as they connect, take separate roles on the d- and c-files, shift to the e-file, and finally double on the d-file. It shows how connected rooks can be repositioned to control multiple open files." }
       ]
     }
   ]

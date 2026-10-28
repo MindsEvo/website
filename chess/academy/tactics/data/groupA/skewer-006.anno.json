@@ -1,13 +1,16 @@
 {
   "game_id": "tac_skewer_L1-006",
   "description": "连续将军逼王就范，后串击王和黑后",
+  "explanation_en": "A remarkable skewer built with a series of checks. White maneuvers the king onto d6, then uses the queen to attack the king with Black's queen on a3 behind it.",
   "intro": {
     "flash_squares": ["e3", "f8", "d6", "a3"],
     "popup": "💡 <b>串击</b>：白方连续将军把黑王逼到d6，再用后串击黑王和a3的后。",
+    "popup_en": "💡 <b>Skewer</b>: White uses a series of checks to drive the black king to d6, then skewers it and the queen on a3.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf8+串击！后攻击d6的王，对角线延伸到a3的后——王一动白后吃后。",
+    "popup_en": "✅ <b>Key idea</b>: Qf8+ skewers the king on d6, with the queen on a3 behind it along the diagonal. When the king moves, White captures the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qh6+",
       "popup": "后到h6将军，驱赶f8的王——连续将军布局的第一步。",
+      "popup_en": "The queen checks from h6, driving the king from f8. This is the first step in the checking sequence.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Ke7",
       "popup": "黑王被迫移到e7。",
+      "popup_en": "The king is forced to move to e7.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qg7+",
       "popup": "后到g7再将！引诱黑王吃d6的白马，走到串击位置。",
+      "popup_en": "The queen checks again from g7, luring the king to capture the knight on d6 and enter the skewer line.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Kxd6",
       "popup": "黑王吃马来到d6——落入陷阱！d6正好在f8到a3的对角线上。",
+      "popup_en": "The king captures the knight on d6 and falls into the trap: d6 lies on the diagonal from f8 to a3.",
       "highlights": [
         {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a3"], "color": "#FF000055", "duration_ms": 0}
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Qf8+",
       "popup": "后到f8串击！对角线直穿d6的王直到a3的后——这就是串击！",
+      "popup_en": "The queen checks from f8, skewering the king on d6 with the queen on a3 behind it. That is the skewer!",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0},
@@ -86,6 +94,7 @@
       "index": 5,
       "move": "Kxd5",
       "popup": "黑王逃离，a3的后已无处可逃。",
+      "popup_en": "The king escapes, leaving the queen on a3 unable to get away.",
       "highlights": [
         {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a3"], "color": "#FF000055", "duration_ms": 0}
@@ -99,6 +108,7 @@
       "index": 6,
       "move": "Qxa3",
       "popup": "后吃黑后！串击成功，白方赢得黑后。",
+      "popup_en": "White's queen captures Black's queen on a3. The skewer succeeds.",
       "highlights": [
         {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

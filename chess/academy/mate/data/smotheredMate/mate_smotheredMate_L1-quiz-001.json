@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 1,
   "concept": "闷杀的定义",
+  "concept_en": "Defining Smothered Mate",
   "question_cn": "什么是闷杀（Smothered Mate）？",
+  "question_en": "What is a smothered mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "王在棋盘中心被多个棋子包围将死"
+      "text_cn": "王在棋盘中心被多个棋子包围将死",
+      "text_en": "The king is checkmated in the center of the board by several pieces"
     },
     {
       "key": "B",
-      "text_cn": "马将军，且王的所有逃格都被己方棋子堵死"
+      "text_cn": "马将军，且王的所有逃格都被己方棋子堵死",
+      "text_en": "A knight gives check while the king's own pieces block every escape square"
     },
     {
       "key": "C",
-      "text_cn": "双车并列将死对方王"
+      "text_cn": "双车并列将死对方王",
+      "text_en": "Two rooks line up to checkmate the king"
     },
     {
       "key": "D",
-      "text_cn": "王在底线被车沿横线将死"
+      "text_cn": "王在底线被车沿横线将死",
+      "text_en": "The king is checkmated by a rook along the back rank"
     }
   ],
   "correct": "B",
   "explanation_cn": "闷杀指马给王将军，而王的所有逃格都被自己的棋子堵住，无路可逃。王通常躲在角落，被己方的车、兵封死，马从侧面一跳致命。",
+  "explanation_en": "A smothered mate is delivered by a knight when the king's own pieces block every escape square. The king is often trapped in a corner by its own rooks and pawns, allowing the knight to deliver the final check.",
   "created_at": "2026-05-30"
 }

@@ -1,13 +1,16 @@
 {
   "game_id": "mate_bodenMate_L1-005",
   "description": "博登杀：弃马引象，弃后引兵，双象交叉将死",
+  "explanation_en": "White first sacrifices a knight to deflect the bishop, then sacrifices the queen to draw a pawn away and open the diagonal for Boden's mate.",
   "intro": {
     "flash_squares": ["c8"],
     "popup": "💡 <b>博登杀</b>：精彩的多步组合！先弃马引离黑象，再弃后引离黑兵，最终形成博登杀。",
+    "popup_en": "💡 <b>Boden's mate</b>: A brilliant combination in several stages. First sacrifice the knight to deflect Black's bishop, then sacrifice the queen to draw away a pawn and set up the mate.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：精彩的弃马引离黑象，弃后引离黑兵，形成博登杀。每步弃子都是为最终的双象交叉服务。",
+    "popup_en": "✅ <b>Key idea</b>: The knight sacrifice deflects the black bishop, and the queen sacrifice draws away a pawn. Each sacrifice prepares the final bishop crossfire of Boden's mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nxa7+",
       "popup": "白马弃马Nxa7+！将军，引诱黑象来吃，清除a7格障碍。",
+      "popup_en": "Nxa7+! White sacrifices the knight with check, tempting Black's bishop to capture and clearing the obstruction on a7.",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Bxa7",
       "popup": "黑象Bxa7吃马，离开原位，b8-a7对角线被占据。",
+      "popup_en": "Bxa7. The black bishop captures the knight and leaves its original square, occupying the b8-a7 diagonal.",
       "highlights": [
         {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Qxc6+",
       "popup": "白后弃后Qxc6+！将军，引诱黑兵至c6，打开a6-c8对角线。",
+      "popup_en": "Qxc6+! White sacrifices the queen with check, drawing a black pawn to c6 and opening the a6-c8 diagonal.",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -46,6 +52,7 @@
       "index": 3,
       "move": "bxc6",
       "popup": "黑兵bxc6被迫吃后，b7格清空，对角线完全打开。",
+      "popup_en": "bxc6. The pawn is forced to capture the queen, vacating b7 and fully clearing the diagonal.",
       "highlights": [
         {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -56,6 +63,7 @@
       "index": 4,
       "move": "Ba6#",
       "popup": "白象Ba6#，博登杀！两步弃子铺垫，双象交叉将死，精彩！",
+      "popup_en": "Ba6# is Boden's mate! The two sacrifices have prepared a stunning crossfire checkmate with the bishops.",
       "highlights": [
         {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}

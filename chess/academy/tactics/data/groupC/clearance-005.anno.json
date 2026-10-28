@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-005",
   "description": "兵腾挪d5，清开d5让马跳入叉击",
+  "explanation_en": "The pawn advances to clear d5 for the knight. After the bishop captures the pawn, Nd5 forks Black's queen and knight.",
   "intro": {
     "flash_squares": ["d5", "b6", "e7"],
     "popup": "💡 <b>腾挪</b>：白兵在d5，挡住了白马Nc3/Nb3跳入d5的路线。如何腾空d5让马发动叉击？",
+    "popup_en": "💡 <b>Clearance</b>: White's pawn on d5 blocks a knight from landing there. How can White clear d5 so the knight can create a fork?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：d6！兵腾挪，强迫Bxd6——Nd5马叉Qb6和Re7/Nb6，赢得子力！",
+    "popup_en": "✅ <b>Key idea</b>: d6 clears d5 and forces Bxd6. Nd5 then forks Black's queen on b6 and knight, winning material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "d6",
       "popup": "白兵d6！从d5推进d6，腾空d5格，强迫黑象应对！",
+      "popup_en": "White advances the pawn from d5 to d6, clearing d5 and forcing Black's bishop to respond.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d5"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Bxd6",
       "popup": "黑象Bxd6——被迫吃兵，d5完全腾空！",
+      "popup_en": "Black's bishop captures the pawn on d6, leaving d5 completely clear.",
       "highlights": [
         {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Nd5",
       "popup": "白马Nd5！跳入腾空的d5，同时攻击Qb6和Nb6——捉双！",
+      "popup_en": "White's knight jumps to the cleared d5 square and attacks the queen on b6 and knight on b6 at once: a fork!",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0},
@@ -59,6 +65,7 @@
       "index": 3,
       "move": "Nxb6+",
       "popup": "白马Nxb6+！叉击得子，腾挪战术收益！",
+      "popup_en": "White captures on b6 with check, winning material as the payoff for the clearance and fork.",
       "highlights": [
         {"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

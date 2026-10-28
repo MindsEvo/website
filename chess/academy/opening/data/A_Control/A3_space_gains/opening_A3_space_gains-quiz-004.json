@@ -3,14 +3,17 @@
     "gene_id": "A3_space_gains",
     "sequence": 4,
     "concept": "兵的安全推进原则",
+    "concept_en": "Safe Pawn Advances",
     "question_cn": "以下哪种说法正确描述了「安全的空间扩展」原则？",
+    "question_en": "Which statement best describes the principle of safe space expansion?",
     "options": [
-        {"key": "A", "text_cn": "每步兵推进之前，先确保有子力（马、象或其他兵）保护该兵，推进才安全"},
-        {"key": "B", "text_cn": "兵推得越多越好，多占格子就是优势"},
-        {"key": "C", "text_cn": "只要是中心兵，随时都可以推进"},
-        {"key": "D", "text_cn": "兵链越长越强，应尽量向前推进"}
+        {"key": "A", "text_cn": "每步兵推进之前，先确保有子力（马、象或其他兵）保护该兵，推进才安全", "text_en": "Before advancing a pawn, make sure it is supported by pieces or other pawns."},
+        {"key": "B", "text_cn": "兵推得越多越好，多占格子就是优势", "text_en": "Advance as many pawns as possible; occupying more squares is always an advantage."},
+        {"key": "C", "text_cn": "只要是中心兵，随时都可以推进", "text_en": "A central pawn can always advance whenever you choose."},
+        {"key": "D", "text_cn": "兵链越长越强，应尽量向前推进", "text_en": "The longer the pawn chain, the stronger it is, so push it as far as possible."}
     ],
     "correct": "A",
     "explanation_cn": "「安全推进」要求每步兵推进之前，先有子力就位保护它。例如走 d4 前先用 c3+Nf3 做好支撑，走 e5 前先确保 d4 和 f4 的支援。没有保护的兵推进（冒进）会成为对方攻击的目标，兵链越长、保护越少，反被突破的风险就越大。",
+    "explanation_en": "A safe pawn advance should be supported by pieces already in position. For example, prepare d4 with c3 and Nf3, or make sure d4 and f4 support an e5 push. An unsupported pawn can become a target; the longer and less protected the chain, the easier it is to undermine.",
     "created_at": "2026-06-07"
 }

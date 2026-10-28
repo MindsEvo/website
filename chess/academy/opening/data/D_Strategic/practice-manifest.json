@@ -5,45 +5,49 @@
     {
       "key": "D13_gambit_sacrifice",
       "label": "D13 弃兵争先",
+      "label_en": "D13 Gambits for the Initiative",
       "items": [
-        { "id": "opening_D13_GambitSacrifice_Practice_006", "label": "6. 法尔克贝尔反弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Practice_007", "label": "7. 埃文斯弃兵拒绝变", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Practice_008", "label": "8. 布莱克马-迪默弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Practice_009", "label": "9. 格林弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D13_GambitSacrifice_Practice_010", "label": "10. 阿尔宾反弃兵", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D13_GambitSacrifice_Practice_006", "label": "6. 法尔克贝尔反弃兵", "label_en": "6. The Falkbeer Countergambit", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After the King's Gambit, Black can decline f4 and counter with ...d5. The line tests open files, development, and targets: Black wins a pawn but White gains active piece play. The countergambit is playable, though accepting the original gambit and defending accurately is usually preferable." },
+        { "id": "opening_D13_GambitSacrifice_Practice_007", "label": "7. 埃文斯弃兵拒绝变", "label_en": "7. Declining the Evans Gambit", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black declines the Evans Gambit with ...Bb6. White keeps the offered b-pawn and expands with a4, then builds a d4 center. Declining avoids the gambit's sharpest lines, but White retains space and the initiative." },
+        { "id": "opening_D13_GambitSacrifice_Practice_008", "label": "8. 布莱克马-迪默弃兵", "label_en": "8. The Blackmar-Diemer Gambit", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White offers the e-pawn in a 1.d4 opening to gain development time. After f3 and Nxf3, White develops rapidly and opens the f-file. The example shows that the principle of sacrificing material for initiative applies beyond 1.e4 openings." },
+        { "id": "opening_D13_GambitSacrifice_Practice_009", "label": "9. 格林弃兵", "label_en": "9. The Greco Gambit: Two Pawns for Development", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The Greco Gambit offers both the d- and c-pawns. Assess the compensation in three stages: what White gains in development and attacking lines, what happens if Black accepts one pawn, and how the position changes if Black takes both. The extra material demands accurate defense against White's lead in activity." },
+        { "id": "opening_D13_GambitSacrifice_Practice_010", "label": "10. 阿尔宾反弃兵", "label_en": "10. The Albin Countergambit", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black offers a pawn with ...e5 and follows with ...d4, creating a dangerous central wedge. White's accurate response is e3, directly challenging the wedge and preventing ...d3. The example concludes the gambit lessons: the giver needs sufficient compensation, while the accepter must defend precisely." }
       ]
     },
     {
       "key": "D14_useful_exchanges",
       "label": "D14 及时兑子",
+      "label_en": "D14 Timely Exchanges",
       "items": [
-        { "id": "opening_D14_UsefulExchange_Practice_006", "label": "6. 柏林防御温纳瓦变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Practice_007", "label": "7. 西西里大奖赛进攻（B23）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Practice_008", "label": "8. 伦敦体系兑换时机（D06）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Practice_009", "label": "9. 西班牙马歇尔进攻（C84）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D14_UsefulExchange_Practice_010", "label": "10. 国王印度进攻综合练习（A48）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D14_UsefulExchange_Practice_006", "label": "6. 柏林防御温纳瓦变例", "label_en": "6. The Berlin Endgame: Timely Exchanges", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White exchanges the bishop for Black's key knight, opens the d-file, then trades queens to enter a favorable Berlin Endgame with doubled c-pawns as targets. Further exchanges simplify while preserving the structural advantage." },
+        { "id": "opening_D14_UsefulExchange_Practice_007", "label": "7. 西西里大奖赛进攻（B23）", "label_en": "7. The Right Moment to Exchange (Sicilian Grand Prix)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White exchanges Bxc6 while Black's knight is still on c6, before it can escape with ...Nd4. The bishop removes a central defender and creates doubled c-pawns, combining a timely exchange with kingside attacking chances." },
+        { "id": "opening_D14_UsefulExchange_Practice_008", "label": "8. 伦敦体系兑换时机（D06）", "label_en": "8. Keep the Outpost, Choose the Exchange Timing (London System)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White establishes a knight on e5 and declines an early exchange. After securing the king and preparing f4, White advances e4, exchanges to open files, and places a rook on c1. The outpost is preserved until the position is ready for action." },
+        { "id": "opening_D14_UsefulExchange_Practice_009", "label": "9. 西班牙马歇尔进攻（C84）", "label_en": "9. Exchange and Defend Against the Marshall Attack", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White accepts the Marshall Gambit and uses Rxe5 to remove a dangerous knight and gain material. The key is not to grab more material prematurely: retreat the rook, blunt the queen attack with g3, defend g2, then use Qf1 to break the pin and regroup." },
+        { "id": "opening_D14_UsefulExchange_Practice_010", "label": "10. 国王印度进攻综合练习（A48）", "label_en": "10. Comprehensive Exchange Decisions (King's Indian Attack)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The King's Indian Attack position reviews several exchange decisions. White opens the position, exchanges a strong knight for structural and material gains, then captures an isolated pawn. The lesson is to give every exchange a concrete purpose and evaluate the resulting structure." }
       ]
     },
     {
       "key": "D15_counterattack",
       "label": "D15 反制中心",
+      "label_en": "D15 Counterattack the Center",
       "items": [
-        { "id": "opening_D15_CounterAttack_Practice_006", "label": "6. 法式温纳瓦变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Practice_007", "label": "7. 卡罗-坎恩推进变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Practice_008", "label": "8. 现代防御150攻击", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Practice_009", "label": "9. 老贝诺尼防御", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D15_CounterAttack_Practice_010", "label": "10. 西西里坎变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D15_CounterAttack_Practice_006", "label": "6. 法式温纳瓦变例", "label_en": "6. Timing the ...c5 Break (French Winawer)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "In the Winawer, Black's ...c5 challenges White's pawn chain. Timing depends on piece development, the opponent's flank attack, and whether the structure can be maintained after the break." },
+        { "id": "opening_D15_CounterAttack_Practice_007", "label": "7. 卡罗-坎恩推进变例", "label_en": "7. Choosing a Counterbreak (Caro-Kann Advance)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black challenges White's e5 wedge with ...c5, attacking the base on d4. Exchanges and piece maneuvers follow; coordinating the bishop and a knight on c5 helps contest the center." },
+        { "id": "opening_D15_CounterAttack_Practice_008", "label": "8. 现代防御150攻击", "label_en": "8. Counterattack Against the 150 Attack (Modern Defense)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Against White's kingside pawn storm, Black creates counterplay with ...Qa5 and then breaks in the center with ...e5. The central break diverts White's attack and opens the position; Black must choose the moment carefully rather than defend passively." },
+        { "id": "opening_D15_CounterAttack_Practice_009", "label": "9. 老贝诺尼防御", "label_en": "9. Build Up Before Counterattacking (Old Benoni)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "In the locked Old Benoni structure, Black cannot break out immediately. Black builds up, contests the center with a knight on e5, then exchanges to open the g-file for a flank attack. Patience and preparation are essential in a closed position." },
+        { "id": "opening_D15_CounterAttack_Practice_010", "label": "10. 西西里坎变例", "label_en": "10. Coordinate a Queenside Break with Central Counterplay (Sicilian Kan)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black prepares queenside expansion with ...a6, ...Qc7, and ...b5 while handling White's bishop pin. After ...h6 and ...g5 gain space, ...e5 breaks in the center. The flank and central counterattacks work together, and Rad1 helps White consolidate the d-file." }
       ]
     },
     {
       "key": "D16_timing_moments",
       "label": "D16 关键时机",
+      "label_en": "D16 Key Timing",
       "items": [
-        { "id": "opening_D16_KeyTiming_Practice_006", "label": "6. 后翼弃兵防御经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Practice_007", "label": "7. 西西里飞龙变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Practice_008", "label": "8. 法式温纳瓦进攻变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Practice_009", "label": "9. 卡罗-坎恩推进变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_D16_KeyTiming_Practice_010", "label": "10. 后翼弃兵接受经典变例", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_D16_KeyTiming_Practice_006", "label": "6. 后翼弃兵防御经典变例", "label_en": "6. Timing ...c5 and the Central Exchange (QGD)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Play ...c5 once White has committed the bishop to f4, then wait until White's knight occupies d4 before exchanging it. This sequence—setup, central break, and timely exchange—captures the strategic rhythm of the Queen's Gambit Declined." },
+        { "id": "opening_D16_KeyTiming_Practice_007", "label": "7. 西西里飞龙变例", "label_en": "7. A Timed Exchange Combination (Sicilian Dragon)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black uses ...Na5 to dislodge White's knight, then ...Bc4 attacks Bd3. After the bishop exchanges away Be3, the knight on b3 loses its defender and ...Nxb3 wins it. The sequence shows how a well-timed exchange can remove a key defender." },
+        { "id": "opening_D16_KeyTiming_Practice_008", "label": "8. 法式温纳瓦进攻变例", "label_en": "8. Find Counterplay Under Pressure (French Winawer)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Against White's queen-led kingside attack, Black first castles to remove immediate threats, then locks White's bishop with ...c4. Once the structure is fixed, ...f5 launches a flank counterattack. White must recognize the later moment to strike back with Ng5." },
+        { "id": "opening_D16_KeyTiming_Practice_009", "label": "9. 卡罗-坎恩推进变例", "label_en": "9. A Sequence of Timely Breaks and Exchanges (Caro-Kann)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black first challenges White's center with ...c5. Later, after White's knight occupies d4, ...Nxd4 removes the strong piece at the right moment. The knight then reroutes from b8 to c6 to renew pressure on d4. Good timing sets up the next strategic decision." },
+        { "id": "opening_D16_KeyTiming_Practice_010", "label": "10. 后翼弃兵接受经典变例", "label_en": "10. The Four-Move Timing Chain (Queen's Gambit Accepted)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black accepts the gambit immediately with ...dxc4, challenges d4 with ...c5 while White's bishop is on c4, uses ...b5 to gain a tempo against the bishop, and answers e4 with ...e5 at once. Each move is effective because it matches the position's specific timing." }
       ]
     }
   ]

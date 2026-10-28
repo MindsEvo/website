@@ -148,7 +148,9 @@
     } catch (error) { document.getElementById('recommendError').textContent = '推荐保存失败：' + error.message; }
   });
   document.getElementById('clearRecommendations').addEventListener('click', function () {
-    if (!window.confirm('确定清空当前模式的推荐吗？')) return;
+    var confirmText = '确定清空当前模式的推荐吗？';
+    if (window.ChessI18n) confirmText = window.ChessI18n.t(confirmText);
+    if (!window.confirm(confirmText)) return;
     try {
       var prior = store.recommendations(mode).slice(); store.saveRecommendations(mode, []);
       var published = bankStore.read();

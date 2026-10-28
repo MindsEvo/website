@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-003",
   "description": "引离d8黑车——Re8+引车，夺得黑后",
+  "explanation_en": "Re8+ forces the rook away from d8. Once it captures on e8, the queen on d5 loses its defender and White wins it.",
   "intro": {
     "flash_squares": [
       "e2",
@@ -8,10 +9,12 @@
       "d5"
     ],
     "popup": "💡 白方如何引离d8的黑车，从而得后？",
+    "popup_en": "💡 How can White deflect the rook from d8 and win the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Re8+！引离d8的黑车——黑车被迫吃到e8，d5黑后失去车的保护，Qxd5赢得黑后！",
+    "popup_en": "✅ Key idea: Re8+ deflects the rook from d8 and forces it to capture on e8. The queen on d5 loses its rook defender, allowing Qxd5.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Re8+!",
       "popup": "白车Re8+！将军——引离黑车d8！黑车必须回吃。",
+      "popup_en": "White checks with Re8+, deflecting the rook from d8 and forcing it to recapture.",
       "highlights": [
         {
           "squares": [
@@ -49,6 +53,7 @@
       "index": 1,
       "move": "Rxe8",
       "popup": "黑车被引离到e8！d5黑后失去d8车的保护。",
+      "popup_en": "The black rook is drawn to e8, leaving the queen on d5 without its defender.",
       "highlights": [
         {
           "squares": [
@@ -85,6 +90,7 @@
       "index": 2,
       "move": "Qxd5",
       "popup": "白后Qxd5！赢得黑后！黑车在e8，无法保护d5了。",
+      "popup_en": "White captures the queen with Qxd5. The rook on e8 can no longer protect d5.",
       "highlights": [
         {
           "squares": [
@@ -107,6 +113,7 @@
       "index": 3,
       "move": "Re7",
       "popup": "黑车Re7，最后挣扎，试图捣乱。",
+      "popup_en": "Black's rook moves to e7 in a final attempt to create counterplay.",
       "highlights": [
         {
           "squares": [
@@ -123,6 +130,7 @@
       "index": 4,
       "move": "Qc5",
       "popup": "白后Qc5，威胁推进兵和多子优势稳赢。",
+      "popup_en": "White plays Qc5, threatening to advance the pawn. With the extra material, White is winning.",
       "highlights": [
         {
           "squares": [

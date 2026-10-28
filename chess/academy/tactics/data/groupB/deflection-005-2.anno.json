@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-005",
   "description": "引离白后——解法2：Qxe1引后离d1，后Qh5绝杀",
+  "explanation_en": "If White's queen captures the rook instead, Black uses Qh5# to mate along the h-file. The queen cannot leave its defensive post without allowing mate.",
   "intro": {
     "flash_squares": [
       "e8",
@@ -8,10 +9,12 @@
       "h2"
     ],
     "popup": "💡 解法2：白后吃车（不是白车），黑后Qh5绝杀！",
+    "popup_en": "💡 Variation 2: If White's queen captures the rook instead of the rook, Black has Qh5#.",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：若白后来吃车（Qxe1），d1空虚无关，但黑后Qh5直接绝杀h2白王——后在h5通过h线控制王。",
+    "popup_en": "✅ Key idea: After Qxe1, Black plays Qh5# along the h-file. The queen sacrifice forces the defender to leave its post, allowing mate against the king on h2.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Re1!",
       "popup": "同样Re1，看白方如何回应。",
+      "popup_en": "Black again starts with Re1! and waits to see how White responds.",
       "highlights": [
         {
           "squares": [
@@ -42,6 +46,7 @@
       "index": 1,
       "move": "Qxe1",
       "popup": "白后Qxe1！白后来吃（而非白车），d1暂时空虚。",
+      "popup_en": "White's queen captures on e1 instead of the rook, leaving d1 temporarily empty.",
       "highlights": [
         {
           "squares": [
@@ -64,6 +69,7 @@
       "index": 2,
       "move": "Qh5#",
       "popup": "黑后Qh5# 绝杀！白王h2在h线上被后将死——h列全控制。",
+      "popup_en": "Qh5# is checkmate! The queen controls the h-file and mates the white king on h2.",
       "highlights": [
         {
           "squares": [

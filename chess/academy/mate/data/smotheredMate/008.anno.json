@@ -1,13 +1,16 @@
 {
   "game_id": "mate_smotheredMate_L1-008",
   "description": "黑先闷杀：马跳g4布局，弃后引白后，马踏f2",
+  "explanation_en": "The knight threatens mate from g4, then a queen sacrifice draws White's queen to h2 so Nxf2# can finish.",
   "intro": {
     "flash_squares": ["h6", "h4", "h1", "g1"],
     "popup": "💡 <b>黑先闷杀</b>：黑马在h6，黑后在h4，白王在h1，如何布局后弃后闷杀？",
+    "popup_en": "💡 <b>Black to move: smothered mate</b>: Black's knight is on h6, queen on h4, and White's king on h1. How can Black set up a queen sacrifice and smothered mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：先跳马g4威胁f2，弃后引白后到h2，马踏f2——白王被自己的车兵象团团困死！",
+    "popup_en": "✅ <b>Key idea</b>: Ng4 threatens Nxf2#. The queen sacrifice then lures White's queen to h2, allowing the knight to mate with Nxf2# behind White's own pieces.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng4",
       "popup": "黑马Ng4！马跳到g4，同时威胁Nxf2#和Nxh2，白方必须应对。",
+      "popup_en": "Ng4! The knight threatens both Nxf2# and Nxh2, so White must respond.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f2"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Qf4",
       "popup": "白后Qf4，白方希望防守h2的白象，为吃回黑后做准备。",
+      "popup_en": "Qf4 defends White's bishop on h2 and prepares to recapture Black's queen.",
       "highlights": [
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qxh2+",
       "popup": "黑后Qxh2+弃后将军！吃掉白象，将军白王h1，强迫白后吃回封锁h2。",
+      "popup_en": "Qxh2+! Black sacrifices the queen by capturing the bishop with check, forcing White's queen to recapture and block h2.",
       "highlights": [
         {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Qxh2",
       "popup": "白后被迫吃回——h2被白后堵死！白王h1：g1有白车，g2有白兵，h2有白后。",
+      "popup_en": "White's queen must recapture, occupying h2. The king on h1 is boxed in by its rook on g1, pawn on g2, and queen on h2.",
       "highlights": [
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Nxf2#",
       "popup": "黑马Nxf2#闷杀！马吃f2，攻击h1，白王被g1白车、g2白兵、h2白后团团围死——完美闷杀！",
+      "popup_en": "Nxf2# is smothered mate! The knight attacks h1, while White's rook on g1, pawn on g2, and queen on h2 trap the king.",
       "highlights": [
         {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}

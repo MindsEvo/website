@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 2,
   "concept": "闷杀成立的关键条件",
+  "concept_en": "Key Conditions for Smothered Mate",
   "question_cn": "闷杀能够成立，最关键的条件是什么？",
+  "question_en": "What is the key condition for a smothered mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "己方有两个马可以同时将军"
+      "text_cn": "己方有两个马可以同时将军",
+      "text_en": "You have two knights that can give check at the same time"
     },
     {
       "key": "B",
-      "text_cn": "对方子力全部撤回底线"
+      "text_cn": "对方子力全部撤回底线",
+      "text_en": "All of the opponent's pieces have retreated to the back rank"
     },
     {
       "key": "C",
-      "text_cn": "王困在角落或边线，被己方棋子封住所有逃格"
+      "text_cn": "王困在角落或边线，被己方棋子封住所有逃格",
+      "text_en": "The king is trapped on the edge or in a corner, with every escape square blocked by its own pieces"
     },
     {
       "key": "D",
-      "text_cn": "己方有后和车同时控制整条横线"
+      "text_cn": "己方有后和车同时控制整条横线",
+      "text_en": "You have a queen and rook controlling the entire rank"
     }
   ],
   "correct": "C",
   "explanation_cn": "闷杀的核心是王被自己的棋子困死。王通常躲在角落（如h8），旁边的车、兵、马封住了所有逃格，己方的马才能一步完成将杀。",
+  "explanation_en": "The key is that the king is trapped by its own pieces. It is often tucked into a corner, such as h8, with friendly rooks, pawns, or knights blocking every escape square so an enemy knight can deliver mate.",
   "created_at": "2026-05-30"
 }

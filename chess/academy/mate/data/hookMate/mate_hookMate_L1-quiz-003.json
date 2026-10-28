@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 3,
   "concept": "引离手法在钩杀中的作用",
+  "concept_en": "The Role of Deflection in Hook Mate",
   "question_cn": "钩杀前为何常用将军或吃子来引离对方王？",
+  "question_en": "Why use a check or capture to deflect the enemy king before a hook mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "为了获得物质优势，多吃一个子"
+      "text_cn": "为了获得物质优势，多吃一个子",
+      "text_en": "To gain a material advantage by winning an extra piece"
     },
     {
       "key": "B",
-      "text_cn": "把王驱赶到特定格子，使其暴露在钩杀阵型的攻击范围内"
+      "text_cn": "把王驱赶到特定格子，使其暴露在钩杀阵型的攻击范围内",
+      "text_en": "Drive the king to a specific square where it falls into the hook-mate net"
     },
     {
       "key": "C",
-      "text_cn": "逼迫对方王进入己方领地"
+      "text_cn": "逼迫对方王进入己方领地",
+      "text_en": "Force the enemy king into your territory"
     },
     {
       "key": "D",
-      "text_cn": "清除本方棋子的前进道路"
+      "text_cn": "清除本方棋子的前进道路",
+      "text_en": "Clear the path for one of your own pieces"
     }
   ],
   "correct": "B",
   "explanation_cn": "引离手法（通常是将军或强吃）的目的是强迫王走到特定格子，进入钩杀阵型的覆盖范围。王别无选择，只能就范，最终被封死将死。",
+  "explanation_en": "A deflection, usually delivered with check or a forcing capture, drives the king onto a specific square inside the hook-mate net. With no safe alternative, the king is forced into the mating position.",
   "created_at": "2026-05-31"
 }

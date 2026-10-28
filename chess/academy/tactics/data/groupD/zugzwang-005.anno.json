@@ -1,13 +1,16 @@
 {
   "game_id": "tac_zugzwang_L1-005",
   "description": "复杂残局，白方每步逼着黑方被动",
+  "explanation_en": "White's king takes an active position and uses waiting moves to keep Black under pressure. Black's pieces are repeatedly forced to move, allowing White to win a key pawn and maintain the advantage.",
   "intro": {
     "flash_squares": ["f5", "f8", "f7", "h5"],
     "popup": "💡 <b>逼着</b>：局面极为复杂，白方几乎每步都在逼着黑方处于被动。Ke6是关键第一步！",
+    "popup_en": "💡 <b>Zugzwang</b>: The position is complex, and White keeps forcing Black into passive moves. Ke6 is the key first step.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白方通过Ke6进入要冲，Bd1控制黑象，再Kxd6吃兵取得决定性优势，全程逼着黑方应对。",
+    "popup_en": "✅ <b>Key idea</b>: Ke6 takes an active position; Bd1 restrains the bishop; then Kxd6 wins a pawn. White keeps forcing Black to respond throughout.",
     "voice": true
   },
   "board_always": null,
@@ -15,6 +18,7 @@
     {
       "index": 0, "move": "Ke6",
       "popup": "白王Ke6，进入要冲！威胁Kxd6吃黑兵，同时向f7兵施压。",
+      "popup_en": "The white king moves to e6, threatening to capture on d6 and pressuring the pawn on f7.",
       "highlights": [
         {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d6", "f7"], "color": "#FF000055", "duration_ms": 0}
@@ -28,6 +32,7 @@
     {
       "index": 1, "move": "a5",
       "popup": "黑兵a5，黑方被迫寻找反攻——没有好的防守手段。",
+      "popup_en": "Black advances the a-pawn to seek counterplay, with no good defensive move available.",
       "highlights": [{"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "a6", "to": "a5", "color": "#E53935CC"}],
       "concept_lines": []
@@ -35,6 +40,7 @@
     {
       "index": 2, "move": "Bd1",
       "popup": "白象Bd1！等招，盯住黑象，逼着黑象走棋暴露弱点。",
+      "popup_en": "White plays Bd1 as a waiting move, restraining the black bishop and forcing it to reveal a weakness.",
       "highlights": [{"squares": ["d1"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "h5", "to": "d1", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -42,6 +48,7 @@
     {
       "index": 3, "move": "Bh4",
       "popup": "黑象Bh4，被迫走棋，离开了原来的位置。",
+      "popup_en": "The black bishop is forced to move to h4 and leave its original post.",
       "highlights": [{"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "h4", "color": "#E53935CC"}],
       "concept_lines": []
@@ -49,6 +56,7 @@
     {
       "index": 4, "move": "Kxd6",
       "popup": "白王吃d6！逼着奏效，白方获得关键兵的优势。",
+      "popup_en": "White's king captures on d6. The zugzwang has worked, and White wins a key pawn.",
       "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e6", "to": "d6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -56,6 +64,7 @@
     {
       "index": 5, "move": "Bf2",
       "popup": "黑象Bf2，试图牵制白方。",
+      "popup_en": "The black bishop moves to f2, trying to pin White's pieces.",
       "highlights": [{"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "h4", "to": "f2", "color": "#E53935CC"}],
       "concept_lines": []
@@ -63,6 +72,7 @@
     {
       "index": 6, "move": "Ke6",
       "popup": "白王Ke6，继续保持压力，威胁f7兵。",
+      "popup_en": "The white king returns to e6, maintaining pressure and threatening the pawn on f7.",
       "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "e6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -70,6 +80,7 @@
     {
       "index": 7, "move": "Bh4",
       "popup": "黑象Bh4，被迫退守。",
+      "popup_en": "The black bishop retreats to h4 under pressure.",
       "highlights": [{"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "f2", "to": "h4", "color": "#E53935CC"}],
       "concept_lines": []
@@ -77,6 +88,7 @@
     {
       "index": 8, "move": "d6",
       "popup": "d6！白兵前进，逼着黑方疲于应付多个威胁。",
+      "popup_en": "The pawn advances to d6, forcing Black to deal with multiple threats.",
       "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -84,6 +96,7 @@
     {
       "index": 9, "move": "Bg3",
       "popup": "黑象Bg3，继续试图阻拦。",
+      "popup_en": "The black bishop moves to g3, continuing its attempt to block the advance.",
       "highlights": [{"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "h4", "to": "g3", "color": "#E53935CC"}],
       "concept_lines": []
@@ -91,6 +104,7 @@
     {
       "index": 10, "move": "Kd5",
       "popup": "白王Kd5，进一步控制局面，后续推c兵或d兵升变。",
+      "popup_en": "The white king moves to d5 and tightens its control. White can continue with the c- or d-pawn toward promotion.",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e6", "to": "d5", "color": "#4CAF50CC"}],
       "concept_lines": []

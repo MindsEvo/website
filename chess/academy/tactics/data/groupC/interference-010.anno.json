@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-010",
   "description": "黑后牺牲拦截白兵，打开g路赢白后",
+  "explanation_en": "Black sacrifices the queen to block the white pawn, opening the g-file for a pawn to capture White's queen.",
   "intro": {
     "flash_squares": ["e2", "g4", "h3", "f6"],
     "popup": "💡 <b>拦截</b>：黑方行动！白后在f6，白兵在h3和g4。黑后跳g4，能牺牲拦截h3兵，让g7兵吃掉白后吗？",
+    "popup_en": "💡 <b>Interference</b>: Black to move. White's queen is on f6, with pawns on h3 and g4. Can Black sacrifice the queen on g4 to block the h3-pawn and let the g7-pawn capture White's queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qg4！后牺牲跳g4，hxg4被迫拦截黑后，g7兵gxf6吃掉白后——妙！",
+    "popup_en": "✅ <b>Key idea</b>: Qg4! sacrifices the queen and blocks the h-pawn. After hxg4, the g7-pawn captures White's queen with ...gxf6.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qg4",
       "popup": "黑后Qg4！后牺牲跳到g4——站在g4，引诱白h3兵来吃，同时g7兵将可gxf6！",
+      "popup_en": "Qg4! Black sacrifices the queen on g4, tempting White's h-pawn to capture it and allowing the g7-pawn to take White's queen with ...gxf6.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "hxg4",
       "popup": "白兵hxg4——吃掉黑后，但白兵现在站在g4，拦截了白后f6的g路逃跑！",
+      "popup_en": "hxg4 captures Black's queen, but the white pawn now blocks the g-file escape route for the queen on f6.",
       "highlights": [
         {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["f6"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "gxf6",
       "popup": "黑兵gxf6！g7兵吃掉白后——拦截战术完成，黑方大获！",
+      "popup_en": "...gxf6! The pawn from g7 captures White's queen. The interference tactic succeeds, and Black wins decisively.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

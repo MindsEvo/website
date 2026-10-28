@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 2,
   "concept": "博登杀中弃后的作用",
+  "concept_en": "The Queen Sacrifice in Boden's Mate",
   "question_cn": "博登杀组合中，白方常用弃后将军（如Qxc6+），目的是什么？",
+  "question_en": "In a Boden's-mate combination, why might White sacrifice the queen with check, such as Qxc6+?",
   "options": [
     {
       "key": "A",
-      "text_cn": "换掉对方的后，进入残局优势"
+      "text_cn": "换掉对方的后，进入残局优势",
+      "text_en": "Trade queens to reach a favorable endgame"
     },
     {
       "key": "B",
-      "text_cn": "引诱对方兵来吃，打开象的对角线，为双象交叉将死创造条件"
+      "text_cn": "引诱对方兵来吃，打开象的对角线，为双象交叉将死创造条件",
+      "text_en": "Lure a pawn into capturing the queen, opening a bishop's diagonal and setting up the double-bishop mate"
     },
     {
       "key": "C",
-      "text_cn": "用后直接将死对方王"
+      "text_cn": "用后直接将死对方王",
+      "text_en": "Use the queen to checkmate the king directly"
     },
     {
       "key": "D",
-      "text_cn": "把王从角落逼出来，方便进攻"
+      "text_cn": "把王从角落逼出来，方便进攻",
+      "text_en": "Drive the king out of the corner to make it easier to attack"
     }
   ],
   "correct": "B",
   "explanation_cn": "博登杀前的弃后是引离手法：引诱对方兵来吃，一方面清空了原来挡着象对角线的格子，另一方面引到的兵反而堵死了王的逃路。弃后是为双象交叉创造条件。",
+  "explanation_en": "The queen sacrifice is a deflection: it lures a pawn to capture, clearing a square that blocked a bishop's diagonal. The pawn then blocks the king's escape, setting up the crossing-bishop mating pattern.",
   "created_at": "2026-06-02"
 }

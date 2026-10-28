@@ -3,14 +3,17 @@
     "gene_id": "B5_king_safety",
     "sequence": 2,
     "concept": "王翼短易位的防线",
+    "concept_en": "The Kingside Castling Shield",
     "question_cn": "王翼短易位后（王在 g1），哪三个兵构成王的基本防线？",
+    "question_en": "After kingside castling, with the king on g1, which three pawns form its basic shield?",
     "options": [
-        {"key": "A", "text_cn": "f2、g2、h2 — 王前方的三个兵"},
-        {"key": "B", "text_cn": "e2、f2、g2 — 中心兵加王翼兵"},
-        {"key": "C", "text_cn": "g2、h2、h3 — 只要角落安全就够了"},
-        {"key": "D", "text_cn": "不需要兵，王在角落自然安全"}
+        {"key": "A", "text_cn": "f2、g2、h2 — 王前方的三个兵", "text_en": "f2, g2, and h2: the three pawns in front of the king."},
+        {"key": "B", "text_cn": "e2、f2、g2 — 中心兵加王翼兵", "text_en": "e2, f2, and g2: a central pawn and kingside pawns."},
+        {"key": "C", "text_cn": "g2、h2、h3 — 只要角落安全就够了", "text_en": "g2, h2, and h3: protecting the corner is enough."},
+        {"key": "D", "text_cn": "不需要兵，王在角落自然安全", "text_en": "No pawns are needed; a king in the corner is automatically safe."}
     ],
     "correct": "A",
     "explanation_cn": "王在 g1 时，f2、g2、h2 三个兵构成王的防护盾牌。这三个兵不应轻易推进或被兑换——任何一个消失都会打开攻击王的通道。尤其是 g2 兵，它是保护 h3-f1 对角线的关键；h2 兵不在，对方象或后可以沿对角线将王。",
+    "explanation_en": "With the king on g1, the pawns on f2, g2, and h2 form its shield. Avoid advancing or exchanging them without a good reason, since losing one can open an attacking route. The g2-pawn is especially important for covering the h3-f1 diagonal; without the h-pawn, an opposing bishop or queen may attack along it.",
     "created_at": "2026-06-11"
 }

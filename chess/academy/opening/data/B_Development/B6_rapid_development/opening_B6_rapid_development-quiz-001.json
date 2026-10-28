@@ -3,14 +3,17 @@
     "gene_id": "B6_rapid_development",
     "sequence": 1,
     "concept": "轻子优先出子原则",
+    "concept_en": "Develop Minor Pieces First",
     "question_cn": "开局出子的正确顺序是什么？",
+    "question_en": "What is the correct order for developing in the opening?",
     "options": [
-        {"key": "A", "text_cn": "先出后，再出马和象，最后易位"},
-        {"key": "B", "text_cn": "先出马和象（轻子），易位激活车，后在合适时机出动"},
-        {"key": "C", "text_cn": "先推兵把线路全部打开，再出所有棋子"},
-        {"key": "D", "text_cn": "顺序无所谓，只要棋子出来就行"}
+        {"key": "A", "text_cn": "先出后，再出马和象，最后易位", "text_en": "Develop the queen first, then knights and bishops, and castle last."},
+        {"key": "B", "text_cn": "先出马和象（轻子），易位激活车，后在合适时机出动", "text_en": "Develop knights and bishops, castle to activate a rook, then bring out the queen when appropriate."},
+        {"key": "C", "text_cn": "先推兵把线路全部打开，再出所有棋子", "text_en": "Advance pawns to open every line before developing any pieces."},
+        {"key": "D", "text_cn": "顺序无所谓，只要棋子出来就行", "text_en": "The order does not matter as long as the pieces are developed."}
     ],
     "correct": "B",
     "explanation_cn": "开局的标准出子顺序：① 推中心兵（开线路）→ ② 出马和象（轻子，快速出子）→ ③ 易位（王安全，激活车）→ ④ 后在合适时机出动。后过早出动会被对方轻子追着跑，每被追一次就损失一步先手。车需要通过易位才能进入主要线路。",
+    "explanation_en": "A standard sequence is: advance a central pawn to open lines, develop knights and bishops, castle to secure the king and activate a rook, then develop the queen when appropriate. Bringing the queen out too early lets minor pieces attack it and costs time. Castling helps connect the rooks and bring them into play.",
     "created_at": "2026-06-12"
 }

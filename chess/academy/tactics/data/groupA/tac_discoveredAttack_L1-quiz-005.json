@@ -7,25 +7,31 @@
   "fen": "3r3k/6pn/4Q3/5RP1/6qP/8/8/7K w - - 0 1",
   "concept": "闪击与捉双的区别",
   "question_cn": "闪击（Discovered Attack）和捉双（Fork）的本质区别是什么？",
+  "question_en": "What is the key difference between a discovered attack and a fork?",
   "options": [
     {
       "key": "A",
-      "text_cn": "闪击只能用车或象执行，捉双只能用马执行"
+      "text_cn": "闪击只能用车或象执行，捉双只能用马执行",
+      "text_en": "Only rooks and bishops can make discovered attacks, while only knights can fork"
     },
     {
       "key": "B",
-      "text_cn": "闪击是靠「移走前面的棋子」解放后方棋子的攻击线；捉双是「一个棋子」本身同时攻击两个目标——两者产生威胁的方式根本不同"
+      "text_cn": "闪击是靠「移走前面的棋子」解放后方棋子的攻击线；捉双是「一个棋子」本身同时攻击两个目标——两者产生威胁的方式根本不同",
+      "text_en": "A discovered attack moves a front piece to uncover an attack from behind; a fork is one piece directly attacking two targets. They create threats in fundamentally different ways"
     },
     {
       "key": "C",
-      "text_cn": "闪击必须将军，捉双不需要将军"
+      "text_cn": "闪击必须将军，捉双不需要将军",
+      "text_en": "A discovered attack must give check, but a fork does not"
     },
     {
       "key": "D",
-      "text_cn": "闪击只能赢子，捉双可以直接将杀"
+      "text_cn": "闪击只能赢子，捉双可以直接将杀",
+      "text_en": "A discovered attack can only win material, while a fork can deliver checkmate"
     }
   ],
   "correct": "B",
   "explanation_cn": "捉双：一枚棋子自身攻击两个目标（马e5同时打f7和d7）。闪击：一枚棋子移走，解放身后棋子（车f5走到f8将军，后e6的斜线对g4通了）。闪击产生的双重威胁来自「两枚」棋子的配合，捉双来自「一枚」棋子的几何位置。",
+  "explanation_en": "In a fork, one piece directly attacks two targets. In a discovered attack, one piece moves to uncover an attack from a second piece behind it. The double threat in a discovered attack comes from two coordinated pieces; a fork's threats come from one piece's position.",
   "created_at": "2026-05-17"
 }

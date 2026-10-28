@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_smotheredMate_L1-quiz-001",
-                      "label":  "闷杀的定义"
+                      "label":  "闷杀的定义",
+                      "label_en": "Defining Smothered Mate"
                   },
                   {
                       "id":  "mate_smotheredMate_L1-quiz-002",
-                      "label":  "闷杀成立的关键条件"
+                      "label":  "闷杀成立的关键条件",
+                      "label_en": "Key Conditions for Smothered Mate"
                   },
                   {
                       "id":  "mate_smotheredMate_L1-quiz-003",
-                      "label":  "菲利道尔闷杀中弃后的作用"
+                      "label":  "菲利道尔闷杀中弃后的作用",
+                      "label_en": "The Queen Sacrifice in Philidor's Legacy"
                   },
                   {
                       "id":  "mate_smotheredMate_L1-quiz-004",
-                      "label":  "安德森闷杀的特点"
+                      "label":  "安德森闷杀的特点",
+                      "label_en": "The Features of Anderssen's Mate"
                   },
                   {
                       "id":  "mate_smotheredMate_L1-quiz-005",
-                      "label":  "如何预防被闷杀"
+                      "label":  "如何预防被闷杀",
+                      "label_en": "How to Prevent Smothered Mate"
                   }
               ],
-    "label":  "闷杀"
+    "label":  "闷杀",
+    "label_en": "Smothered Mate"
 }

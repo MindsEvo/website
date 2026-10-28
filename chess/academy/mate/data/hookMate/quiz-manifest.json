@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_hookMate_L1-quiz-001",
-                      "label":  "钩杀的定义"
+                      "label":  "钩杀的定义",
+                      "label_en": "Defining Hook Mate"
                   },
                   {
                       "id":  "mate_hookMate_L1-quiz-002",
-                      "label":  "钩杀的典型棋子配置"
+                      "label":  "钩杀的典型棋子配置",
+                      "label_en": "Typical Piece Setup for Hook Mate"
                   },
                   {
                       "id":  "mate_hookMate_L1-quiz-003",
-                      "label":  "引离手法在钩杀中的作用"
+                      "label":  "引离手法在钩杀中的作用",
+                      "label_en": "The Role of Deflection in Hook Mate"
                   },
                   {
                       "id":  "mate_hookMate_L1-quiz-004",
-                      "label":  "升变马与钩杀"
+                      "label":  "升变马与钩杀",
+                      "label_en": "Knight Promotion and Hook Mate"
                   },
                   {
                       "id":  "mate_hookMate_L1-quiz-005",
-                      "label":  "如何防范钩杀"
+                      "label":  "如何防范钩杀",
+                      "label_en": "How to Prevent Hook Mate"
                   }
               ],
-    "label":  "钩杀"
+    "label":  "钩杀",
+    "label_en": "Hook Mate"
 }

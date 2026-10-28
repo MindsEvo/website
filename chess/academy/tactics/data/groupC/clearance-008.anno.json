@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-008",
   "description": "车腾挪c5，攻击黑后同时清开g列",
+  "explanation_en": "The rook clears the g-file while attacking the black queen on c4.",
   "intro": {
     "flash_squares": ["g5", "c5", "c4"],
     "popup": "💡 <b>腾挪</b>：白车在g5。车腾挪到c5，能攻击黑后c4同时清开g列吗？",
+    "popup_en": "💡 <b>Clearance</b>: White's rook is on g5. Can it move to c5 to attack Black's queen on c4 while clearing the g-file?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rc5！车腾挪攻击黑后——Ne8被迫，Rxc4换后，Ne3赢子！",
+    "popup_en": "✅ <b>Key idea</b>: Rc5! clears the g-file while attacking the queen. After ...Ne8, Rxc4 trades queens, and Ne3 wins material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rc5",
       "popup": "白车Rc5！从g5腾挪到c5，直接攻击黑后c4，同时清开g5！",
+      "popup_en": "Rc5! The rook moves from g5 to c5, attacking the queen on c4 and clearing the g-file.",
       "highlights": [
         {"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c4"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Ne8",
       "popup": "黑马Ne8——撤退，黑后c4暂时守住，但被动！",
+      "popup_en": "The knight retreats to e8. Black's queen on c4 is temporarily defended, but Black is passive.",
       "highlights": [
         {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rxc4",
       "popup": "白车Rxc4！吃掉黑后——腾挪获得重大收益！",
+      "popup_en": "Rxc4! White captures the black queen; the clearance has yielded a major gain.",
       "highlights": [
         {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Rxc4",
       "popup": "黑车Rxc4吃回——双方换子，但白方材料优势已确立。",
+      "popup_en": "The black rook recaptures on c4. The pieces are exchanged, but White has a material advantage.",
       "highlights": [
         {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "Ne3",
       "popup": "白马Ne3！跳入e3，攻击c4黑车——白方完全掌控！",
+      "popup_en": "Ne3! The knight jumps to e3 and attacks the rook on c4. White is firmly in control.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c4"], "color": "#FF000055", "duration_ms": 0}

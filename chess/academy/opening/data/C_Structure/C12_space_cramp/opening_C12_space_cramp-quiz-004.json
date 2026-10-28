@@ -3,14 +3,17 @@
     "gene_id": "C12_space_cramp",
     "sequence": 4,
     "concept": "子力拥挤可视化",
+    "concept_en": "Measuring Piece Crowding",
     "question_cn": "国王印度局中白方走d5推进后，黑方明显感到局促。如何「量化」感受拥挤的程度？",
+    "question_en": "After White advances d5 in the King's Indian, how can Black's cramped position be measured?",
     "options": [
-        {"key": "A", "text_cn": "数对方有多少个棋子"},
-        {"key": "B", "text_cn": "统计己方每个棋子可以合法移动的格子数——活动格越少，拥挤越严重"},
-        {"key": "C", "text_cn": "看己方是否多兵——多兵方一定不拥挤"},
-        {"key": "D", "text_cn": "拥挤无法量化，只能凭感觉判断"}
+        {"key": "A", "text_cn": "数对方有多少个棋子", "text_en": "Count how many pieces the opponent has."},
+        {"key": "B", "text_cn": "统计己方每个棋子可以合法移动的格子数——活动格越少，拥挤越严重", "text_en": "Count the legal moves available to your pieces; fewer available squares indicate greater crowding."},
+        {"key": "C", "text_cn": "看己方是否多兵——多兵方一定不拥挤", "text_en": "Check whether you have more pawns; the side with more pawns is never cramped."},
+        {"key": "D", "text_cn": "拥挤无法量化，只能凭感觉判断", "text_en": "Crowding cannot be measured and must be judged by feel."}
     ],
     "correct": "B",
     "explanation_cn": "活动格计数（Mobility Count）是感受拥挤程度的直观方法：统计己方每个棋子当前可合法移动的格子总数，与对方相比。白方d5推进后，黑方的马（原本走f6或d7）活动格大幅减少，被迫走迂回路线（如Nge7→Nc8再绕回d6）；黑格象也受兵的封锁。活动格越少，拥挤越严重，子力效率越低。这个方法帮助你客观判断局面优劣，而非凭主观感觉。",
+    "explanation_en": "A mobility count offers a practical measure: total the legal moves available to each side's pieces and compare them. After d5, Black's knights may have fewer useful squares and need a detour, while the dark-squared bishop can also be restricted by the pawn structure. Fewer available moves generally indicate a more cramped and less efficient position.",
     "created_at": "2026-06-13"
 }

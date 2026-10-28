@@ -2,11 +2,13 @@
   "game_id": "C11_OpenFiles_Practice_009",
   "description": "雷蒂开局 A07 — 开放线配合底行弱点",
   "intro": {
+    "popup_en": "Open Files and Back-Rank Weaknesses, Practice 9\nWhite places a rook on e1 before the file opens. After e5 changes the structure, the rook can invade while Qh5 and Ng5 attack the kingside. Three pieces coordinate against the king and the vulnerable back rank.",
     "flash_squares": ["e1", "e7", "e8", "h5"],
     "popup": "开放线+底行弱点 练习9\n\n白方Re1守e线\ne5推进后线路打通\n\nQh5+Ng5攻王翼\nRe1配合穿透底行！\n\n三子协同=最强攻势！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Re1 occupies the e-file in advance; after e5 opens the route, Re7 invades. Qh5, Ng5, and the rook work together. An active rook on an open file can exploit a back-rank weakness that the opponent cannot defend at the same time.",
     "popup": "底行弱点小结\n✅ Re1提前占e线\n✅ e5打通路线后Re7入侵\n✅ Qh5+Ng5+Re1三方联动\n\n顶级技巧：\n开放线车+底行弱点\n=对手无法同时防守！",
     "voice": true
   },
@@ -15,69 +17,77 @@
     "color": "#FFD70022"
   },
   "moves": [
-    {"index": 0, "move": "Nf3", "popup": "Nf3发展\n雷蒂开局特色"},
-    {"index": 1, "move": "d5", "popup": "d5占中心"},
-    {"index": 2, "move": "g3", "popup": "g3纤维结构"},
-    {"index": 3, "move": "Nf6", "popup": "Nf6发展"},
-    {"index": 4, "move": "Bg2", "popup": "Bg2纤维象"},
-    {"index": 5, "move": "e6", "popup": "e6稳固"},
-    {"index": 6, "move": "O-O", "popup": "O-O入城"},
-    {"index": 7, "move": "Be7", "popup": "Be7发展"},
-    {"index": 8, "move": "d3", "popup": "d3稳固"},
-    {"index": 9, "move": "O-O", "popup": "O-O入城"},
-    {"index": 10, "move": "Nbd2", "popup": "Nbd2发展"},
-    {"index": 11, "move": "c5", "popup": "c5翼翼反击"},
+    {"index": 0, "move": "Nf3", "popup": "Nf3发展\n雷蒂开局特色", "popup_en": "Nf3 develops in the characteristic Réti Opening setup."},
+    {"index": 1, "move": "d5", "popup": "d5占中心", "popup_en": "...d5 occupies the center."},
+    {"index": 2, "move": "g3", "popup": "g3纤维结构", "popup_en": "g3 prepares a fianchetto structure."},
+    {"index": 3, "move": "Nf6", "popup": "Nf6发展", "popup_en": "...Nf6 develops a knight."},
+    {"index": 4, "move": "Bg2", "popup": "Bg2纤维象", "popup_en": "Bg2 completes White's fianchetto."},
+    {"index": 5, "move": "e6", "popup": "e6稳固", "popup_en": "...e6 reinforces the center."},
+    {"index": 6, "move": "O-O", "popup": "O-O入城", "popup_en": "O-O secures White's king."},
+    {"index": 7, "move": "Be7", "popup": "Be7发展", "popup_en": "...Be7 develops the bishop."},
+    {"index": 8, "move": "d3", "popup": "d3稳固", "popup_en": "d3 stabilizes White's center."},
+    {"index": 9, "move": "O-O", "popup": "O-O入城", "popup_en": "...O-O secures Black's king."},
+    {"index": 10, "move": "Nbd2", "popup": "Nbd2发展", "popup_en": "Nbd2 develops a knight."},
+    {"index": 11, "move": "c5", "popup": "c5翼翼反击", "popup_en": "...c5 begins Black's queenside counterplay."},
     {
       "index": 12,
       "move": "e4",
+      "popup_en": "e4! A key advance that breaks the balance and prepares e5.",
       "popup": "e4！关键推进！\n打破平衡，准备e5",
       "highlights": [{"squares": ["e4", "e5"], "color": "#FF8F0055"}]
     },
-    {"index": 13, "move": "Nc6", "popup": "Nc6发展马"},
+    {"index": 13, "move": "Nc6", "popup": "Nc6发展马", "popup_en": "...Nc6 develops a knight."},
     {
       "index": 14,
       "move": "Re1",
+      "popup_en": "Re1! White anticipates the position: after e5 advances, the e-file may open, and the rook is already in place.",
       "popup": "Re1！战略预判！\ne5推进后e线将打开\n车已提前就位！",
       "highlights": [{"squares": ["e1", "e5", "e7"], "color": "#00BCD488"}]
     },
-    {"index": 15, "move": "b5", "popup": "b5！黑方翼翼推进"},
+    {"index": 15, "move": "b5", "popup": "b5！黑方翼翼推进", "popup_en": "...b5! Black expands on the queenside."},
     {
       "index": 16,
       "move": "e5",
+      "popup_en": "e5! White advances, changing the central structure and preparing to open the e-file. Re1 is already posted there.",
       "popup": "e5！推进！\ne线+d线结构大变！\nRe1已就位！",
       "highlights": [{"squares": ["e5", "e1", "e8"], "color": "#C6D50088"}]
     },
-    {"index": 17, "move": "Nd7", "popup": "Nd7撤退\n马被迫撤回"},
+    {"index": 17, "move": "Nd7", "popup": "Nd7撤退\n马被迫撤回", "popup_en": "...Nd7 retreats the knight."},
     {
       "index": 18,
       "move": "Nf1",
+      "popup_en": "Nf1! The knight maneuvers toward g3 and h5 to join the attack.",
       "popup": "Nf1！马机动！\n准备Ng3→h5攻击路线"
     },
-    {"index": 19, "move": "b4", "popup": "b4！黑方继续推进"},
+    {"index": 19, "move": "b4", "popup": "b4！黑方继续推进", "popup_en": "...b4! Black continues the queenside advance."},
     {
       "index": 20,
       "move": "h4",
+      "popup_en": "h4! White advances on the kingside and threatens h5, coordinating with the rook on e1.",
       "popup": "h4！王翼推进！\nh5威胁黑王阵营\n与Re1形成双线威胁",
       "highlights": [{"squares": ["h4", "h5", "h6", "h7"], "color": "#E5393555"}]
     },
-    {"index": 21, "move": "a5", "popup": "a5黑方翼翼反击"},
+    {"index": 21, "move": "a5", "popup": "a5黑方翼翼反击", "popup_en": "...a5 counterattacks on the queenside."},
     {
       "index": 22,
       "move": "N1h2",
+      "popup_en": "N1h2! The knight reroutes toward g4, with ideas such as Nf6 or Nxf7.",
       "popup": "N1h2！马转移！\n准备Ng4-Nf6或Nxf7攻击",
       "highlights": [{"squares": ["h2", "g4", "f6"], "color": "#FF8F0055"}]
     },
-    {"index": 23, "move": "Ba6", "popup": "Ba6！黑方争反击"},
+    {"index": 23, "move": "Ba6", "popup": "Ba6！黑方争反击", "popup_en": "...Ba6! Black seeks counterplay."},
     {
       "index": 24,
       "move": "Ng5",
+      "popup_en": "Ng5! The knight reaches g5 and directly threatens h7, coordinating with h4.",
       "popup": "Ng5！马踏g5！\n直接威胁h7\n与h4协同进攻！",
       "highlights": [{"squares": ["g5", "h7"], "color": "#E53935aa"}]
     },
-    {"index": 25, "move": "Nd4", "popup": "Nd4！黑马反击"},
+    {"index": 25, "move": "Nd4", "popup": "Nd4！黑马反击", "popup_en": "...Nd4 counterattacks with the knight."},
     {
       "index": 26,
       "move": "Qh5",
+      "popup_en": "Qh5! White's attack is fully coordinated. The queen threatens h7, Ng5 supports the kingside assault, and Re1 waits to invade on the e-file. Black's back rank is under severe pressure.",
       "popup": "Qh5！强力出击！\n三子联动完成！\n\nQh5威胁h7\nNg5协同\nRe1→Re7等待时机\n\n黑方底行极度虚弱！",
       "highlights": [
         {"squares": ["h5", "h7", "g5"], "color": "#E53935aa"},

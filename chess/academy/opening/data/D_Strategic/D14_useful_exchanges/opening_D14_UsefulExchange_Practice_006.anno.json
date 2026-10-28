@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Practice_006",
   "description": "柏林防御 C67 — 练习：白方及时换后进入柏林残局，获得结构优势",
   "intro": {
+    "popup_en": "Useful Exchanges, Practice 1\nThe Berlin Defense is the best-known queenless opening. Find the right timing and purpose for exchanges. White can trade queens on move 8 with Qxd8+: does that exchange help White, and how weak are Black's doubled c-pawns afterward?",
     "flash_squares": [
       "d1",
       "d8",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The exchange sequence: Bxc6 trades bishop for knight and creates doubled pawns; dxe5 opens the d-file; Qxd8+ enters a structurally favorable endgame; and Nxd4 simplifies further. Every exchange should serve a clear strategic purpose.",
     "popup": "柏林防御练习总结\n\n你完成了及时兑子的经典练习！\n\n这局的兑换链：\n① 6.Bxc6 象换马 → 制造叠兵\n② 7.dxe5 兵换兵 → 打开d列\n③ 8.Qxd8+ 换后！ → 进入结构优势残局\n④ 12.Nxd4 马换马 → 简化获利\n\n及时兑子的核心判断：\n每次兑换都有明确的战略目的！",
     "voice": true
   },
@@ -23,52 +25,62 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "e4 opens the game.",
       "move": "e4",
       "popup": "e4 开局"
     },
     {
       "index": 1,
+      "popup_en": "...e5 mirrors White's central advance.",
       "move": "e5",
       "popup": "e5 对称应对"
     },
     {
       "index": 2,
+      "popup_en": "Nf3 develops a knight.",
       "move": "Nf3",
       "popup": "Nf3 发展马"
     },
     {
       "index": 3,
+      "popup_en": "...Nc6 defends e5.",
       "move": "Nc6",
       "popup": "Nc6 守护e5"
     },
     {
       "index": 4,
+      "popup_en": "Bb5 begins the Berlin System, with the bishop targeting Nc6.",
       "move": "Bb5",
       "popup": "Bb5！柏林系统开始\n象对准Nc6"
     },
     {
       "index": 5,
+      "popup_en": "...Nf6! The Berlin Defense. Black develops and is willing to exchange on c6 if White chooses Bxc6.",
       "move": "Nf6",
       "popup": "Nf6！柏林防御！\n黑马发展，不怕白方4.Bxc6"
     },
     {
       "index": 6,
+      "popup_en": "O-O secures White's king and prepares the e4 plan.",
       "move": "O-O",
       "popup": "O-O 白方入城\n准备Pe4的后续"
     },
     {
       "index": 7,
+      "popup_en": "...Nxe4! Black captures the pawn in the main Berlin line.",
       "move": "Nxe4",
       "popup": "Nxe4！黑马吃兵！\n柏林的核心变化"
     },
     {
       "index": 8,
+      "popup_en": "d4! White attacks Nc6 and begins active central play.",
       "move": "d4",
       "popup": "d4！攻击Nc6！\n白方开启进攻"
     },
     {
       "index": 9,
       "move": "Nd6",
+      "popup_en": "...Nd6 retreats the knight from e4 and avoids the pressure from d4.",
       "popup": "Nd6 马退到d6\n避开白方d4的攻击",
       "highlights": [
         {
@@ -83,6 +95,7 @@
     {
       "index": 10,
       "move": "Bxc6",
+      "popup_en": "Bxc6!! White exchanges the bishop for Black's key defender on c6. This removes support for e5 and creates doubled c-pawns, at the cost of White's active light-squared bishop.",
       "popup": "Bxc6！！第一次兑换！\n\n⭐ 兑换决策：\n白象用Bb5换掉Nc6！\n① Nc6是黑方守护e5的主力\n② 换掉后黑方e5兵失去保护\n③ 制造c6+c7叠兵！\n\n代价：失去活跃的白格象",
       "highlights": [
         {
@@ -97,6 +110,7 @@
     {
       "index": 11,
       "move": "dxc6",
+      "popup_en": "...dxc6 recaptures and creates doubled pawns on c6 and c7. The d-file is semi-open, and Black's route from d6 to c7 is obstructed.",
       "popup": "dxc6 黑d兵回吃\n\n⭐ 结果：\n叠兵c6+c7出现！\nd列半开放，黑方d6→c7路线受阻",
       "highlights": [
         {
@@ -111,6 +125,7 @@
     {
       "index": 12,
       "move": "dxe5",
+      "popup_en": "dxe5! White makes a second useful exchange. Since Nc6 no longer defends e5, White captures at once, opens the d-file, and establishes control of e5.",
       "popup": "dxe5！第二次兑换！\n\n⭐ 白方利用叠兵：\n黑方e5兵已失去Nc6的保护\n白方立刻 d4吃e5！\n打开d列，e5强格属于白方！",
       "highlights": [
         {
@@ -124,12 +139,14 @@
     },
     {
       "index": 13,
+      "popup_en": "...Nf5 jumps to an active square and looks for counterplay against e3.",
       "move": "Nf5",
       "popup": "Nf5 黑马跳入f5\n攻击e3格，寻找反击机会"
     },
     {
       "index": 14,
       "move": "Qxd8+",
+      "popup_en": "Qxd8+!!! White chooses the critical queen trade. Black's doubled c-pawns are permanent weaknesses and harder to defend in an endgame, while White's structure is healthier. Simplifying is justified by the structural advantage: this is the essence of the Berlin Endgame.",
       "popup": "Qxd8+！！！换后！！\n\n⭐⭐ 关键兑换时机！\n白方主动兑换王后！为什么？\n\n① 黑方叠兵（c6/c5）已经是永久弱点\n② 换后进入残局，叠兵弱点更难防守\n③ 白方结构更好，残局优势明显！\n\n这正是柏林残局的精髓：\n为了结构优势，主动简化！",
       "highlights": [
         {
@@ -144,11 +161,13 @@
     {
       "index": 15,
       "move": "Kxd8",
+      "popup_en": "...Kxd8 is forced. Black loses the right to castle, and the king on d8 may be exposed in an open endgame.",
       "popup": "Kxd8 黑王必须回吃\n\n⭐ 代价：黑王失去入城权！\n残局中黑王在d8是一个问题——\n王在中心，开放局面中容易受到攻击"
     },
     {
       "index": 16,
       "move": "Rd1+",
+      "popup_en": "Rd1+! The rook checks before Nc3, forcing Black's king to e8. White confines the king on the e-file and can follow with Nc3 and Re1 to increase the pressure.",
       "popup": "Rd1+！车占d1将军！\n\n⭐ 这步比Nc3更强！\n白方先将军黑王，黑王必须移到e8\n白困黑王在e列，配合Nc3和Re1的后续压制",
       "highlights": [
         {
@@ -162,12 +181,14 @@
     },
     {
       "index": 17,
+      "popup_en": "...Ke8 leaves Black's king confined on the e-file and restricts its activity.",
       "move": "Ke8",
       "popup": "Ke8 黑王叨四e8\n黑王被困在e列，发展受阻"
     },
     {
       "index": 18,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops and prepares Nd5, where the knight can attack Black's doubled pawns.",
       "popup": "Nc3！白马发展！\n准备Nd5跳入强格，攻击叠兵",
       "highlights": [
         {
@@ -182,11 +203,13 @@
     {
       "index": 19,
       "move": "Be7",
+      "popup_en": "...Be7 develops, but Black's king is already on e8 and can no longer castle.",
       "popup": "Be7 黑象发展\n准备入城，但黑王已在e8无法入城"
     },
     {
       "index": 20,
       "move": "g4",
+      "popup_en": "g4! White attacks Nf5 with a pawn and gains kingside space, forcing the knight to move.",
       "popup": "g4！白方王翣进攻！\n\n⭐ 攻击Nf5！\n白兵g4直接攻击黑马f5\n黑马必须移开，白方王翣空间扩张",
       "highlights": [
         {
@@ -201,6 +224,7 @@
     {
       "index": 21,
       "move": "Nh4",
+      "popup_en": "...Nh4! Black reroutes the knight from f5 to a strong square, probing White's kingside weaknesses.",
       "popup": "Nh4！黑马跳入h4！\n\n⭐ 黑方的饭馈！\nNf5→h4，黑马着陆强格h4\n探索白方王翣的弱点",
       "highlights": [
         {
@@ -215,6 +239,7 @@
     {
       "index": 22,
       "move": "Nxh4",
+      "popup_en": "Nxh4! White's knight removes the invading piece. This is another useful exchange: Nf3 captures Nh4 and occupies the strong h4 outpost.",
       "popup": "Nxh4！白马吃掉入侵的马！\n\n⭐ 第四次兑换！\nNf3吃Nh4，清除入侵弱子\n白方马占据强h4前哨站",
       "highlights": [
         {
@@ -229,6 +254,7 @@
     {
       "index": 23,
       "move": "Bxh4",
+      "popup_en": "...Bxh4 recaptures and completes the exchanges. White retains the doubled-pawn targets, an open b-file, and pressure against Black's king stuck on the e-file. Each exchange served a clear strategic purpose.",
       "popup": "Bxh4！黑象回吃！\n\n⭐ 兑换结束！\n黑象Be7沿对角线吃採Nh4\n\n局面总结：\n白方：叠兵优势 + 黑王困在e列 + 敞开b列\n黑方：庄内兵结构叠加王位困境\n\n及时兑子的全套！\n每次兑换都有清晰的战略目的！",
       "highlights": [
         {

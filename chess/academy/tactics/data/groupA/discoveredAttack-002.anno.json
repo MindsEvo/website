@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-002",
   "description": "马将军开线，车闪击得后",
+  "explanation_en": "A knight discovered check opens the rook's attack on the queen. Black must answer the check, allowing White to win the queen.",
   "intro": {
     "flash_squares": ["e5", "g6", "e4", "e6"],
     "popup": "💡 <b>闪击</b>：白马在e5，白车在e4，黑后在e6。马走开时能将军，并让车闪击黑后吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's knight is on e5, rook on e4, and Black's queen on e6. Can the knight move with check and uncover the rook's attack on the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Ng6+！马将军开线，车e4对准e6黑后——闪击赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Ng6+ gives check and uncovers the rook's attack on the queen at e6. White wins the queen with a discovered attack.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng6+",
       "popup": "马Ng6+！将军兼闪击：马走开，车e4的攻击线直指e6黑后！",
+      "popup_en": "The knight checks from g6 and moves away, uncovering the rook's line toward Black's queen on e6.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "hxg6",
       "popup": "黑兵被迫吃马——应将，e6的黑后已无路可守。",
+      "popup_en": "Black's h-pawn is forced to capture the knight. While answering check, Black cannot save the queen on e6.",
       "highlights": [
         {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e6"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Rxe6",
       "popup": "白车Rxe6！闪击成功——马走开，车得后！",
+      "popup_en": "The rook captures the queen on e6. The knight moved away, allowing White to win the queen with a discovered attack.",
       "highlights": [
         {"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

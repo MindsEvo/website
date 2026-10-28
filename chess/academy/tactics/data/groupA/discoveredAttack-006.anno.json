@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-006",
   "description": "黑马走开，象闪击得象（黑方行动）",
+  "explanation_en": "A subtle discovered attack for Black: the knight moves away to uncover the bishop's long diagonal toward White's bishop.",
   "intro": {
     "flash_squares": ["f6", "g4", "g7", "b2"],
     "popup": "💡 <b>闪击</b>：黑方行动！黑马在f6，黑象在g7，白象在b2。马走开，象g7能闪击白象b2吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: Black to move. Black's knight is on f6, bishop on g7, and White's bishop on b2. Can the knight move to uncover the bishop's attack on b2?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Ng4！马走开，象g7沿长对角线直射b2——闪击赢象！",
+    "popup_en": "✅ <b>Key idea</b>: Ng4 moves the knight away and opens the bishop's long diagonal from g7 to b2, winning White's bishop.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng4",
       "popup": "黑马Ng4！马离开f6，象g7→f6→e5→d4→c3→b2的长对角线打通，直取白象！",
+      "popup_en": "Black plays Ng4, clearing f6 and opening the bishop's long diagonal g7-f6-e5-d4-c3-b2 to attack White's bishop.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "g3",
       "popup": "白方应对，但b2白象已受攻无法同时守护。",
+      "popup_en": "White responds, but cannot adequately defend the attacked bishop on b2.",
       "highlights": [
         {"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Bxb2",
       "popup": "黑象Bxb2！闪击成功——马走开，象沿长对角线赢象！",
+      "popup_en": "Black's bishop captures on b2. The discovered attack succeeds, and Black wins the bishop.",
       "highlights": [
         {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-009",
   "description": "马腾挪e4，清开e列让车将杀",
+  "explanation_en": "The knight clears the e-file with check, allowing the rook to deliver mate on e8.",
   "intro": {
     "flash_squares": ["e4", "f6", "e8"],
     "popup": "💡 <b>腾挪</b>：白马在e4，挡住了Re1→e8的e列通路。如何腾挪马，让车冲入e8将杀？",
+    "popup_en": "💡 <b>Clearance</b>: White's knight on e4 blocks the rook's route from e1 to e8. How can the knight move with check to clear the file for a rook mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nf6+！马腾挪离开e4，清开e列，Kf8被迫——Re8将杀！",
+    "popup_en": "✅ <b>Key idea</b>: Nf6+! The knight clears e4 with check. After ...Kf8, the e-file is open for Re8#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nf6+",
       "popup": "白马Nf6+！从e4腾挪到f6——清开整条e列（e4已空），同时将军！",
+      "popup_en": "Nf6+! The knight clears e4 as it moves from e4 to f6, opening the entire e-file with check.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Kf8",
       "popup": "黑王Kf8——被迫应将，e列彻底清空！",
+      "popup_en": "The black king is forced to f8, and the e-file is completely clear.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Re8#",
       "popup": "白车Re8将杀！e列清空后车冲入——腾挪一击制胜！",
+      "popup_en": "Re8 is checkmate! With the e-file clear, the rook invades and the clearance tactic wins.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}

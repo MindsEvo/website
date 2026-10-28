@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-003",
   "description": "黑方弃后引开白车，双车接力将死白王",
+  "explanation_en": "Black sacrifices the queen to draw White's rook away, then uses the two rooks in succession to force a back-rank mate.",
   "intro": {
     "flash_squares": ["f5", "e8", "f8", "g1"],
     "popup": "💡 <b>弃子</b>：黑方后在f5，双车在e8和f8，白王在g1。如何用弃后开启双车将杀？",
+    "popup_en": "💡 <b>Sacrifice</b>: Black's queen is on f5, rooks on e8 and f8, and White's king on g1. How can Black sacrifice the queen to set up a two-rook mating attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qxf2+弃后引开白车，Re1+逼白车退到f1，Rxf1#后车将死！这是\"弃后引车——接力将杀\"的典型链条。",
+    "popup_en": "✅ <b>Key idea</b>: Qxf2+ deflects White's rook; Re1+ forces the other rook to f1; then Rxf1# delivers mate. The queen sacrifice starts a relay attack by the rooks.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxf2+",
       "popup": "黑后Qxf2+！弃掉后，将军同时引开f1白车——为黑车占领e1让路。",
+      "popup_en": "Black sacrifices the queen with Qxf2+, checking the king and drawing White's rook away from f1 to clear the way for the rook on e8.",
       "highlights": [
         {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Rxf2",
       "popup": "白车必须吃后——f1车被引离，e1格门户洞开。",
+      "popup_en": "White's rook must capture the queen, leaving f1 and opening the e-file.",
       "highlights": [
         {"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Re1+",
       "popup": "黑车Re1+！占领底线，将军白王——白车只能后撤封挡。",
+      "popup_en": "Black's rook invades with Re1+, checking the king along the back rank and forcing White's rook to block.",
       "highlights": [
         {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Rf1",
       "popup": "白车Rf1封挡——但另一枚黑车早已虎视眈眈。",
+      "popup_en": "White blocks with Rf1, but Black's other rook is ready to recapture.",
       "highlights": [
         {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Rxf1#",
       "popup": "黑车Rxf1#！f8车吃掉封挡的白车，将死！弃后换来双车接力将杀。",
+      "popup_en": "Rxf1# is checkmate! The rook from f8 captures the blocking rook. The queen sacrifice enabled the two-rook mating sequence.",
       "highlights": [
         {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}

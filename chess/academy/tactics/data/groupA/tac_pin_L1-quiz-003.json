@@ -7,13 +7,15 @@
   "fen": "8/7k/8/5r2/8/8/6P1/3BK3 w - - 0 1",
   "concept": "哪些棋子能实施牵制",
   "question_cn": "哪些棋子可以实施牵制战术？",
+  "question_en": "Which pieces can create a pin?",
   "options": [
-    {"key": "A", "text_cn": "只有车和象，因为它们走直线和斜线"},
-    {"key": "B", "text_cn": "只有后，因为后最强"},
-    {"key": "C", "text_cn": "车、象、后——所有走直线或斜线的棋子"},
-    {"key": "D", "text_cn": "所有棋子，包括马和兵"}
+    {"key": "A", "text_cn": "只有车和象，因为它们走直线和斜线", "text_en": "Only rooks and bishops, because they move along ranks, files, and diagonals"},
+    {"key": "B", "text_cn": "只有后，因为后最强", "text_en": "Only queens, because the queen is the strongest piece"},
+    {"key": "C", "text_cn": "车、象、后——所有走直线或斜线的棋子", "text_en": "Rooks, bishops, and queens — all pieces that move along ranks, files, or diagonals"},
+    {"key": "D", "text_cn": "所有棋子，包括马和兵", "text_en": "All pieces, including knights and pawns"}
   ],
   "correct": "C",
   "explanation_cn": "能实施牵制的棋子必须走直线（横/竖/斜），所以是车（横线和纵线）、象（斜线）、后（横线、纵线和斜线）。马和兵因走法特殊无法形成三点一线的牵制。",
+  "explanation_en": "Pins require a line attack, so rooks (ranks and files), bishops (diagonals), and queens (both) can pin. Knights and pawns cannot create a pin because their attacks do not follow a line.",
   "created_at": "2026-05-06"
 }

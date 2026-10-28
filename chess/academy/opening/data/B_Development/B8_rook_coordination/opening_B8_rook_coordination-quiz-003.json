@@ -3,14 +3,17 @@
     "gene_id": "B8_rook_coordination",
     "sequence": 3,
     "concept": "开放线路与车的价值",
+    "concept_en": "Rooks and Open Files",
     "question_cn": "为什么车要尽量站在开放纵线上？",
+    "question_en": "Why should a rook aim to occupy an open file?",
     "options": [
-        {"key": "A", "text_cn": "开放线上的车价值翻倍"},
-        {"key": "B", "text_cn": "车在开放纵线（无兵阻挡的列）上可以直接贯通棋盘，威胁对方底线棋子，活动范围最大"},
-        {"key": "C", "text_cn": "开放线上的车不会被攻击"},
-        {"key": "D", "text_cn": "只有叠车时才需要开放线，单车不需要"}
+        {"key": "A", "text_cn": "开放线上的车价值翻倍", "text_en": "A rook on an open file is worth twice as much."},
+        {"key": "B", "text_cn": "车在开放纵线（无兵阻挡的列）上可以直接贯通棋盘，威胁对方底线棋子，活动范围最大", "text_en": "On an open file, a rook can cross the board, pressure the opponent's back rank, and use its full range."},
+        {"key": "C", "text_cn": "开放线上的车不会被攻击", "text_en": "A rook on an open file cannot be attacked."},
+        {"key": "D", "text_cn": "只有叠车时才需要开放线，单车不需要", "text_en": "Only doubled rooks need open files; a lone rook does not."}
     ],
     "correct": "B",
     "explanation_cn": "车是远程棋子，射程取决于线路是否畅通。在开放纵线（该列没有任何兵阻挡）上，车可以从第1排直接威胁到第8排，活动能力发挥到最大。半开放线（仅对方有兵）同样有价值——车可以直接向对方兵施压。车被关在封闭线后面（被自己的兵挡住）几乎毫无用处。",
+    "explanation_en": "A rook's range depends on whether its lines are clear. On an open file with no pawns, it can pressure squares from the first rank to the eighth and use its full mobility. A half-open file is also useful for attacking an enemy pawn. A rook trapped behind its own pawns has little activity.",
     "created_at": "2026-06-13"
 }

@@ -7,25 +7,31 @@
   "fen": "r3k2r/pp2bppp/1np5/q4P1b/3P4/1QPB4/P2N2PP/R1B2RK1 w kq - 0 1",
   "concept": "识别腾挪机会的思路",
   "question_cn": "实战中发现腾挪机会，最关键的第一个问题是？",
+  "question_en": "What is the most important first question when looking for a clearance opportunity?",
   "options": [
     {
       "key": "A",
-      "text_cn": "己方哪个棋子当前正在被对方攻击？"
+      "text_cn": "己方哪个棋子当前正在被对方攻击？",
+      "text_en": "Which of your pieces is currently under attack?"
     },
     {
       "key": "B",
-      "text_cn": "己方哪个强力棋子（后/车/马）被己方另一个棋子「挡住了」，如果挡路子移走，它能做什么？"
+      "text_cn": "己方哪个强力棋子（后/车/马）被己方另一个棋子「挡住了」，如果挡路子移走，它能做什么？",
+      "text_en": "Which of your powerful pieces, such as a queen, rook, or knight, is blocked by another friendly piece, and what could it do if that piece moved?"
     },
     {
       "key": "C",
-      "text_cn": "对方哪个棋子价值最高、防护最弱？"
+      "text_cn": "对方哪个棋子价值最高、防护最弱？",
+      "text_en": "Which opposing piece is the most valuable and least defended?"
     },
     {
       "key": "D",
-      "text_cn": "己方有没有可以直接将军的棋步？"
+      "text_cn": "己方有没有可以直接将军的棋步？",
+      "text_en": "Can you give check immediately?"
     }
   ],
   "correct": "B",
   "explanation_cn": "腾挪的识别从「被堵住的棋子」出发：先找己方某个棋子「如果没有挡路子会发挥什么威力」——将杀、捉双、升变或占据关键格——再看挡路子能否以将军、捉子等强制手段移走。本题白兵f5挡着白车进f5攻击黑象h5，推f6腾挪后Rf5→Rxh5赢象。",
+  "explanation_en": "Start by finding a friendly piece whose line or destination is blocked. Ask what it could do if the obstruction moved: deliver mate, create a fork, promote a pawn, or occupy a key square. Then check whether the blocking piece can move with a forcing threat, such as check or an attack. Here, White's pawn on f5 blocks the rook's route toward the bishop on h5; f6 clears the way for Rf5 and Rxh5.",
   "created_at": "2026-05-20"
 }

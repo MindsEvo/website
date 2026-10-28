@@ -7,25 +7,31 @@
   "fen": "2k3r1/pp3p1p/2p1pq2/3n2r1/4B2Q/2P5/PP3PP1/R3RK2 b",
   "concept": "识别中间招的三步思路",
   "question_cn": "发现中间招机会的正确思维步骤是哪个？",
+  "question_en": "Which sequence of steps is the right way to find an intermezzo?",
   "options": [
     {
       "key": "A",
-      "text_cn": "①确认对方有挂子或将军机会 → ②判断插入该步后对方是否被迫应对 → ③确认插入步后原来换子仍能完成"
+      "text_cn": "①确认对方有挂子或将军机会 → ②判断插入该步后对方是否被迫应对 → ③确认插入步后原来换子仍能完成",
+      "text_en": "1. Check for a loose piece or a chance to give check; 2. make sure the inserted move forces a response; 3. confirm that you can still complete the original exchange afterward"
     },
     {
       "key": "B",
-      "text_cn": "①计算最长变化 → ②选择吃最多子力的路线 → ③确认不被将死"
+      "text_cn": "①计算最长变化 → ②选择吃最多子力的路线 → ③确认不被将死",
+      "text_en": "1. Calculate the longest variation; 2. choose the line that captures the most material; 3. make sure you are not checkmated"
     },
     {
       "key": "C",
-      "text_cn": "①先完成换子 → ②再寻找追击机会 → ③若仍有挂子再考虑吃"
+      "text_cn": "①先完成换子 → ②再寻找追击机会 → ③若仍有挂子再考虑吃",
+      "text_en": "1. Complete the exchange first; 2. look for a follow-up attack; 3. capture a loose piece only if one remains"
     },
     {
       "key": "D",
-      "text_cn": "①寻找所有将军步 → ②看能否将死 → ③否则放弃"
+      "text_cn": "①寻找所有将军步 → ②看能否将死 → ③否则放弃",
+      "text_en": "1. Find every available check; 2. see whether any gives checkmate; 3. otherwise abandon the idea"
     }
   ],
   "correct": "A",
   "explanation_cn": "识别中间招的三步思路：①「停一下」——在换子序列中先不急着吃回，扫视棋盘是否有挂子（无根子/无充分保护子）或将军机会；②「强迫性」——插入的那步必须是将军、捉挂子等强迫步，让对方不得不先应对；③「收得回来」——应对后，原来的换子仍能完成，不亏子。三步都满足，就是可行的中间招。",
+  "explanation_en": "Use three checks to spot an intermezzo: pause before recapturing and look for a loose piece or a check; ensure the inserted move is forcing and the opponent must respond; then verify that you can still complete the original exchange without losing material. When all three conditions hold, the intermezzo works.",
   "created_at": "2026-05-21"
 }

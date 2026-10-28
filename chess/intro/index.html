@@ -3,98 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../i18n.css" />
+  <script src="../i18n.js"></script>
   <title>系统介绍 | 国际象棋</title>
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f7fb; color: #333; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
-    .page { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    .page-header { display: grid; grid-template-columns: 110px minmax(0, 1fr) 110px; align-items: center; gap: 15px; margin-bottom: 25px; }
-    h1 { font-size: 27px; text-align: center; margin: 0; }
-    .back { display: inline-flex; align-items: center; justify-content: center; width: 100px; padding: 8px 12px; border-radius: 4px; color: white; background: #4a76a8; text-decoration: none; font-size: 12px; font-weight: 700; }
-    .back:hover { background: #3a5b8c; }
-    .back:active { background: #2d4d73; }
-    .back:focus-visible { outline: 3px solid #1976d2; outline-offset: 3px; }
-    .content { padding: 10px; }
-    section { margin: 0 0 24px; }
-    h2 { font-size: 21px; color: #333; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px; margin: 0 0 15px; }
-    p, li { color: #555; font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
-    p { margin: 0; }
-    ul { padding-left: 26px; margin: 0; }
-    figure { margin: 20px 0 24px; text-align: center; }
-    .missing-image { color: #999; font-size: 16px; font-style: italic; }
-    figcaption { color: #666; font-style: italic; margin-top: 8px; font-size: 14px; }
-    .module-list { display: grid; gap: 12px; }
-    .module { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 20px 25px; }
-    .module:hover { background: #e9ecef; border-color: #dee2e6; }
-    h3 { margin: 0 0 5px; font-size: 19px; }
-    .plain-list { list-style: none; padding: 0; }
-    @media (max-width: 600px) {
-      .page { padding: 16px 12px; }
-      .page-header { grid-template-columns: 100px minmax(0, 1fr); gap: 12px; }
-      h1 { font-size: 24px; }
-      .content { padding: 10px 0; }
-      .module { padding: 14px 16px; }
-    }
+    body { margin: 0; background: #f3f5f7; color: #202a35; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .page { width: min(100% - 32px, 980px); margin: 0 auto; padding: 28px 0 56px; }
+    .back { display: inline-flex; align-items: center; min-height: 36px; color: #176b68; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    header { padding: 34px 0 28px; border-bottom: 1px solid #cbd5d9; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.15; }
+    .lead { max-width: 720px; margin: 16px 0 0; color: #52616a; font-size: 18px; line-height: 1.65; }
+    .content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
+    section { padding: 26px 0; border-bottom: 1px solid #d5dde0; }
+    section:first-child { grid-column: 1 / -1; }
+    h2 { margin: 0 0 12px; color: #176b68; font-size: 20px; }
+    p { margin: 0; color: #394750; font-size: 15px; line-height: 1.75; }
+    @media (max-width: 620px) { .page { width: min(100% - 24px, 980px); padding-top: 16px; } header { padding-top: 25px; } .content { grid-template-columns: 1fr; } section:first-child { grid-column: auto; } }
   </style>
 </head>
 <body>
   <main class="page">
-    <header class="page-header">
-      <a class="back" href="../index.html">返回主页</a>
-      <h1>系统介绍</h1>
+    <a class="back" href="../index.html">← 返回主页</a>
+    <header>
+      <h1>国际象棋智慧平台介绍</h1>
+      <p class="lead">面向国际象棋学习与练习的独立平台</p>
     </header>
     <div class="content">
-      <section aria-labelledby="overview">
-        <h2 id="overview">系统概览</h2>
-        <p>象棋智能学习系统是一个集教学、训练、对弈于一体的综合平台，旨在帮助用户快速掌握象棋基本规则，提高战术水平和战略思维。系统采用现代计算机图形技术和人工智能算法，为用户提供沉浸式的学习体验。</p>
-        <figure>
-          <div class="missing-image">[图片: 象棋棋盘]</div>
-          <figcaption>象棋棋盘</figcaption>
-        </figure>
+      <section>
+        <h2>平台简介</h2>
+        <p>从棋盘与棋子开始，逐步学习规则、战术、残局与开局原则。</p>
       </section>
-      <section aria-labelledby="features">
-        <h2 id="features">系统特点</h2>
-        <ul>
-          <li><strong>智能教学：</strong>根据用户水平动态调整教学内容和难度</li>
-          <li><strong>交互式学习：</strong>通过实际操作和反馈进行学习</li>
-          <li><strong>丰富的题库：</strong>包含各类残局、排局和实战案例</li>
-          <li><strong>多级对弈：</strong>从入门到高级，提供多种难度的电脑对手</li>
-          <li><strong>棋谱分析：</strong>详细解读每步走法的意图和效果</li>
-          <li><strong>个人成长记录：</strong>跟踪学习进度和技能提升</li>
-        </ul>
+      <section>
+        <h2>学习路径</h2>
+        <p>入门启航：认识棋盘、棋子走法，并通过经典棋局巩固基础。</p>
       </section>
-      <section aria-labelledby="audience">
-        <h2 id="audience">适用人群</h2>
-        <p>本系统适合：</p>
-        <ul class="plain-list">
-          <li>• 象棋初学者：快速掌握规则和基本走法</li>
-          <li>• 棋艺爱好者：提高战术水平和战略思维</li>
-          <li>• 教育工作者：辅助象棋教学和活动开展</li>
-          <li>• 专业棋手：提供训练和分析工具</li>
-        </ul>
+      <section>
+        <h2>智慧元中心</h2>
+        <p>系统学习残局、战术、攻杀和开局原则。</p>
       </section>
-      <section aria-labelledby="modules">
-        <h2 id="modules">功能模块介绍</h2>
-        <div class="module-list">
-          <article class="module"><h3>系统设置</h3><p>个性化设置语言、音效、界面风格等参数，优化您的使用体验。</p></article>
-          <article class="module"><h3>学习中心</h3><p>包含象棋规则、基本战术、常见布局等教学内容，从零基础到进阶全面覆盖。</p></article>
-          <article class="module"><h3>对弈模式</h3><p>支持人机对弈和棋谱演示，多种难度级别适合不同水平的用户。</p></article>
-          <article class="module"><h3>我的记录</h3><p>记录学习进度、训练成果和对弈历史，实时反映个人能力提升。</p></article>
-        </div>
+      <section>
+        <h2>对弈与复盘</h2>
+        <p>进行人机对弈，查看对局记录，并使用题库分析与推荐工具。</p>
       </section>
-      <section aria-labelledby="requirements">
-        <h2 id="requirements">系统要求</h2>
-        <ul class="plain-list">
-          <li>• 操作系统：Windows 10/11、macOS 10.14+、Linux</li>
-          <li>• 处理器：Intel Core i3 或同等性能</li>
-          <li>• 内存：4GB RAM</li>
-          <li>• 存储空间：500MB 可用空间</li>
-          <li>• 分辨率：1280×720 或更高</li>
-        </ul>
-      </section>
-      <section aria-labelledby="version">
-        <h2 id="version">版本信息</h2>
-        <p>当前版本：v1.0.0 (2025年5月)<br />开发团队：CogniChess 开发小组<br />技术支持：support@cognichess.com</p>
+      <section>
+        <h2>独立的国际象棋学习空间</h2>
+        <p>课程、对弈、记录、分析与设置均属于国际象棋模块。</p>
       </section>
     </div>
   </main>

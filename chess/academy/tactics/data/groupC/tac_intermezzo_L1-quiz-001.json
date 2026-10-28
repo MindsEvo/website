@@ -7,25 +7,31 @@
   "fen": "5k2/1p1q2p1/p2p2p1/n2Nb2p/8/1PB4P/P5P1/Q5K1 w - - 0 1",
   "concept": "中间招的本质",
   "question_cn": "中间招（Intermezzo / Zwischenzug / 「过渡」）的核心机制是什么？",
+  "question_en": "What is the core idea of an intermezzo (Zwischenzug)?",
   "options": [
     {
       "key": "A",
-      "text_cn": "在换子或吃子序列中，插入一步更强迫性的棋（如将军、捉挂子），迫使对方先应对，再回来完成换子"
+      "text_cn": "在换子或吃子序列中，插入一步更强迫性的棋（如将军、捉挂子），迫使对方先应对，再回来完成换子",
+      "text_en": "Insert a more forcing move, such as a check or an attack on a loose piece, during an exchange sequence; make the opponent respond first, then complete the exchange"
     },
     {
       "key": "B",
-      "text_cn": "主动移走己方棋子，为另一个己方棋子清出攻击路径"
+      "text_cn": "主动移走己方棋子，为另一个己方棋子清出攻击路径",
+      "text_en": "Move one of your own pieces to clear an attack line for another piece"
     },
     {
       "key": "C",
-      "text_cn": "牺牲子力将对方棋子引诱到不利位置，再实施叉击"
+      "text_cn": "牺牲子力将对方棋子引诱到不利位置，再实施叉击",
+      "text_en": "Sacrifice material to lure an opposing piece onto an unfavorable square, then fork it"
     },
     {
       "key": "D",
-      "text_cn": "移走己方棋子，暴露其身后棋子的攻击线（闪击）"
+      "text_cn": "移走己方棋子，暴露其身后棋子的攻击线（闪击）",
+      "text_en": "Move one of your own pieces to uncover an attack by a piece behind it (a discovered attack)"
     }
   ],
   "correct": "A",
   "explanation_cn": "中间招的本质是「先插一刀」：当双方换子序列进行到一半时，不急着按顺序吃回，而是先走一步更强迫的棋（将军、捉挂子等），迫使对方先应对，然后再回来完成换子——净多赚一步先手收益。叶江川教材称之为「过渡」，与德语 Zwischenzug（中间棋）同义。",
+  "explanation_en": "An intermezzo means inserting a forcing move into an exchange sequence instead of recapturing immediately. A check or an attack on a loose piece makes the opponent respond first; afterward, you return to the exchange and gain the benefit of that extra tempo. It is also known as a Zwischenzug.",
   "created_at": "2026-05-21"
 }

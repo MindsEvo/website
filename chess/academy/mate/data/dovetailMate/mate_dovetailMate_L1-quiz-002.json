@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 2,
   "concept": "燕尾杀成立的关键条件",
+  "concept_en": "Key Conditions for Dovetail Mate",
   "question_cn": "燕尾杀能够成立，最关键的条件是什么？",
+  "question_en": "What is the key condition for a dovetail mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "王在棋盘中心，四面无子保护"
+      "text_cn": "王在棋盘中心，四面无子保护",
+      "text_en": "The king is in the center of the board with no pieces nearby"
     },
     {
       "key": "B",
-      "text_cn": "后站在王斜向相邻的格子将军"
+      "text_cn": "后站在王斜向相邻的格子将军",
+      "text_en": "The queen gives check from a diagonally adjacent square"
     },
     {
       "key": "C",
-      "text_cn": "王的两个斜向逃格恰好被己方棋子占据"
+      "text_cn": "王的两个斜向逃格恰好被己方棋子占据",
+      "text_en": "The king's two diagonal escape squares are occupied by its own pieces"
     },
     {
       "key": "D",
-      "text_cn": "对方没有后可以应将"
+      "text_cn": "对方没有后可以应将",
+      "text_en": "The opponent has no queen available to block the check"
     }
   ],
   "correct": "C",
   "explanation_cn": "燕尾杀成立的核心条件是王的两个斜向逃格被己方棋子封死。这两个棋子可以是车、象、兵等任意棋子。正是这两个己方棋子构成了燕尾的形状。",
+  "explanation_en": "The essential condition is that the king's two diagonal escape squares are blocked by its own pieces. These can be rooks, bishops, pawns, or other pieces; together they form the dovetail shape.",
   "created_at": "2026-06-01"
 }

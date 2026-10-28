@@ -3,14 +3,17 @@
     "gene_id": "B6_rapid_development",
     "sequence": 3,
     "concept": "后早出的风险",
+    "concept_en": "The Risks of Early Queen Development",
     "question_cn": "开局过早把后出动（如第2步就出后）的主要风险是什么？",
+    "question_en": "What is the main risk of bringing the queen out too early, such as on move two?",
     "options": [
-        {"key": "A", "text_cn": "后太强，出来之后对手会立刻认输"},
-        {"key": "B", "text_cn": "后会被对方的马和象攻击，被迫不断逃跑，每跑一步就浪费一步先手，对方反而加速发展"},
-        {"key": "C", "text_cn": "后出来后会堵住己方其他棋子的出路"},
-        {"key": "D", "text_cn": "后出来之后无法再退回，容易被将军"}
+        {"key": "A", "text_cn": "后太强，出来之后对手会立刻认输", "text_en": "The queen is so powerful that the opponent will immediately resign."},
+        {"key": "B", "text_cn": "后会被对方的马和象攻击，被迫不断逃跑，每跑一步就浪费一步先手，对方反而加速发展", "text_en": "The opponent can attack the queen with knights and bishops, forcing it to retreat while developing their own pieces."},
+        {"key": "C", "text_cn": "后出来后会堵住己方其他棋子的出路", "text_en": "The queen blocks the development of your other pieces."},
+        {"key": "D", "text_cn": "后出来之后无法再退回，容易被将军", "text_en": "Once developed, the queen cannot retreat and is easily checked."}
     ],
     "correct": "B",
     "explanation_cn": "后是最强的棋子，但在开局时对方的马和象可以在正常发展的同时攻击后，迫使后不断撤退。每次后逃跑就等于浪费一步，对方的马和象趁机出动，发展领先。「每被追一次就是失去先手」——帕勒姆进攻就是利用这个原理。开局应先出轻子，后在大部分子力就位后再出动。",
+    "explanation_en": "The queen is powerful, but the opponent can develop knights and bishops while attacking it, forcing it to retreat. Each retreat costs a tempo while the opponent develops. The Wayward Queen Attack illustrates this idea: every queen chase can help the opponent gain time. Develop minor pieces first and bring out the queen after most of your army is ready.",
     "created_at": "2026-06-12"
 }

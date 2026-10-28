@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-001",
   "description": "车牺牲引王，马叉将后",
+  "explanation_en": "White sacrifices the rook to lure the king onto f8, then uses a knight fork to win Black's queen.",
   "intro": {
     "flash_squares": ["f1", "f8", "d7", "b6"],
     "popup": "💡 <b>引入</b>：白车在f1，黑后在b6，白马在c5。能用车牺牲把黑王引到f8，再用马叉将后吗？",
+    "popup_en": "💡 <b>Attraction</b>: White's rook is on f1, Black's queen on b6, and White's knight on c5. Can White sacrifice the rook to lure the king to f8, then fork the queen with the knight?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rf8+！引王到f8，Nd7+叉将——引入战术得后！",
+    "popup_en": "✅ <b>Key idea</b>: Rf8+ lures the king to f8, allowing Nd7+ to fork the king and queen. The attraction tactic wins the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rf8+",
       "popup": "白车Rf8+！车牺牲引诱黑王到f8，为马叉铺路。",
+      "popup_en": "White sacrifices the rook with Rf8+, luring the black king to f8 and setting up the knight fork.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kxf8",
       "popup": "黑王吃车——被引入网！",
+      "popup_en": "The black king captures the rook and is lured into the trap.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nd7+",
       "popup": "马Nd7+！同时攻击Kf8和Qb6——绝妙的叉将！",
+      "popup_en": "Nd7+ attacks the king on f8 and queen on b6 at once: a brilliant knight fork!",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kf7",
       "popup": "黑王逃到f7，但Qb6已无法守护。",
+      "popup_en": "The king moves to f7, but Black's queen on b6 is no longer protected.",
       "highlights": [
         {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Nxb6",
       "popup": "马吃后！引入战术完成，白方赢得黑后。",
+      "popup_en": "The knight captures Black's queen. The attraction tactic succeeds.",
       "highlights": [
         {"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

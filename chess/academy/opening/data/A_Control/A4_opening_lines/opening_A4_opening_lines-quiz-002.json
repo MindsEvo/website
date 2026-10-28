@@ -3,14 +3,17 @@
     "gene_id": "A4_opening_lines",
     "sequence": 2,
     "concept": "打开线路的时机",
+    "concept_en": "When to Open a Line",
     "question_cn": "兑换打开线路之后，最重要的下一步是什么？",
+    "question_en": "After an exchange opens a line, what is the most important next step?",
     "options": [
-        {"key": "A", "text_cn": "先完成易位，再考虑线路"},
-        {"key": "B", "text_cn": "立刻把重子（车或后）占领新打开的线路，否则对方会抢先占领"},
-        {"key": "C", "text_cn": "继续发展小子，线路以后再占"},
-        {"key": "D", "text_cn": "让对方先占领，再想办法夺回来"}
+        {"key": "A", "text_cn": "先完成易位，再考虑线路", "text_en": "Castle first and think about the line later."},
+        {"key": "B", "text_cn": "立刻把重子（车或后）占领新打开的线路，否则对方会抢先占领", "text_en": "Immediately occupy the newly opened line with a rook or queen before the opponent does."},
+        {"key": "C", "text_cn": "继续发展小子，线路以后再占", "text_en": "Keep developing minor pieces and claim the line later."},
+        {"key": "D", "text_cn": "让对方先占领，再想办法夺回来", "text_en": "Let the opponent take the line first, then try to win it back."}
     ],
     "correct": "B",
     "explanation_cn": "线路一旦打开，双方都有机会占领。「打开即占领」是线路控制的铁律——任何延误都可能让对方的车或后抢先进驻，把你辛苦打开的线路变成对方的攻击通道。这也是为什么重子要预先部署在即将打开的线路背后。",
+    "explanation_en": "Once a line opens, either side can occupy it. The rule is to claim the line as soon as it opens: delay may let the opponent's rook or queen take it and turn it into an attacking route. This is why heavy pieces should be placed behind a file that is about to open.",
     "created_at": "2026-06-07"
 }

@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-001",
   "description": "引离白后——解法1：象牺牲引后，黑后杀入f2",
+  "explanation_en": "Black's bishop sacrifice deflects the white queen from e2. Once the queen leaves its defensive post, Black's queen can deliver mate on f2.",
   "intro": {
     "flash_squares": [
       "c8",
@@ -8,10 +9,12 @@
       "f2"
     ],
     "popup": "💡 <b>引离</b>：黑方如何牺牲象，把白后引离e2，让黑后杀入f2绝杀？",
+    "popup_en": "💡 <b>Deflection</b>: How can Black sacrifice a bishop to draw White's queen away from e2 and allow a mating attack on f2?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Ba6！白方若Qxb5（被引离），白后离开e2保护，黑后Qxf2绝杀。引离的精华：让保护者离开关键防线。",
+    "popup_en": "✅ Key idea: Ba6! If White captures with Qxb5, the queen leaves its post on e2 and no longer guards f2, allowing Qxf2#.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Ba6!",
       "popup": "黑象Ba6！冷静的弃子——吸引白兵b5来吃，进而引离白后。",
+      "popup_en": "Black plays Ba6!, offering the bishop to draw the b-pawn forward and then deflect White's queen.",
       "highlights": [
         {
           "squares": [
@@ -49,6 +53,7 @@
       "index": 1,
       "move": "b5",
       "popup": "白兵b5攻象——白方上钩了！",
+      "popup_en": "White advances b5 to attack the bishop and takes the bait.",
       "highlights": [
         {
           "squares": [
@@ -65,6 +70,7 @@
       "index": 2,
       "move": "Bxb5",
       "popup": "黑象Bxb5，吃掉白兵，白后必须吃回。",
+      "popup_en": "Black's bishop captures the pawn on b5, forcing White's queen to recapture.",
       "highlights": [
         {
           "squares": [
@@ -87,6 +93,7 @@
       "index": 3,
       "move": "Qxb5",
       "popup": "白后被引离e2！后去了b5，f2的防守空虚了！",
+      "popup_en": "White's queen is drawn away from e2 to b5, leaving f2 undefended.",
       "highlights": [
         {
           "squares": [
@@ -123,6 +130,7 @@
       "index": 4,
       "move": "Qxf2#",
       "popup": "黑后Qxf2# 绝杀！白后已被引离，f2无人守卫，绝杀！",
+      "popup_en": "Qxf2# is checkmate! White's queen has been deflected, leaving f2 unprotected.",
       "highlights": [
         {
           "squares": [

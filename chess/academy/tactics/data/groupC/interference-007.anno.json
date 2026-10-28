@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-007",
   "description": "黑车牺牲插三线，强制白后离位后绝杀",
+  "explanation_en": "A rook sacrifice interferes on the third rank, forcing the white queen away and opening a mating attack.",
   "intro": {
     "flash_squares": ["g8", "g3", "h3", "d3"],
     "popup": "💡 <b>拦截</b>：黑方行动！白后在h3，白象在c3/d3，都在第三横线协同。黑车能牺牲插入g3，切断白方防线后绝杀吗？",
+    "popup_en": "💡 <b>Interference</b>: Black to move. White's queen on h3 and bishops on c3 and d3 coordinate along the third rank. Can Black sacrifice a rook on g3 to break the defense and mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rg3！车牺牲插入g3，白后必须吃，随后Bh4攻后，Qe3+将杀！",
+    "popup_en": "✅ <b>Key idea</b>: Rg3! sacrifices the rook to interfere on the third rank. After the queen captures, Bh4 attacks it, and Qe3+ leads to mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rg3",
       "popup": "黑车Rg3！车牺牲插入g3，精确切断白后h3与白象d3在第三横线的联系！",
+      "popup_en": "Rg3! Black sacrifices the rook on g3, precisely cutting the third-rank connection between White's queen on h3 and bishop on d3.",
       "highlights": [
         {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h3"], "color": "#FF000055", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Qxg3",
       "popup": "白后Qxg3——必须吃车，但白后移到g3，e3将军的路线通了！",
+      "popup_en": "Qxg3 is forced, but the queen leaves h3 and clears the line for ...Qe3+.",
       "highlights": [
         {"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Bh4",
       "popup": "黑象Bh4！攻击Qg3，逼白后再次移动——步步紧逼！",
+      "popup_en": "Bh4! The bishop attacks the queen on g3 and forces it to move again, keeping up the pressure.",
       "highlights": [
         {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g3"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Qxh4",
       "popup": "白后Qxh4——吃象逃跑，但e3-e2的将杀路线已开！",
+      "popup_en": "Qxh4 captures the bishop, but the mating route through e3 and e2 is now open.",
       "highlights": [
         {"squares": ["h4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Qe3+",
       "popup": "黑后Qe3+！将军！白象e2必须拦截——拦截换来绝杀路线！",
+      "popup_en": "Qe3+! White's bishop must block on e2, and that block opens the mating route.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0}
@@ -83,6 +91,7 @@
       "index": 5,
       "move": "Be2",
       "popup": "白象Be2拦截将军——但黑后紧随而至！",
+      "popup_en": "The bishop blocks the check on e2, but the black queen follows immediately.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Qxe2#",
       "popup": "黑后Qxe2将杀！车牺牲拦截引发的绝杀链——精彩！",
+      "popup_en": "Qxe2 is checkmate! The rook sacrifice and interference set off a brilliant forced mating sequence.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0}

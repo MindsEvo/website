@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-010",
   "description": "黑象捉双——同时攻击马和过路兵",
+  "explanation_en": "A bishop fork that creates a passed-pawn promotion threat.",
   "intro": {
     "flash_squares": ["b1", "f3", "c6"],
     "popup": "💡 <b>捉双</b>：黑象在b1，如何一步同时攻击白马和重要兵？",
+    "popup_en": "💡 <b>Fork</b>: Black's bishop is on b1. Find a move that attacks the white knight and an important pawn at once.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Be4捉双！象同时攻击f3马和c6兵，白方顾此失彼。",
+    "popup_en": "✅ <b>Key idea</b>: Be4 forks the knight on f3 and pawn on c6, forcing White to choose which target to save.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Be4",
       "popup": "象跳e4！同时攻击f3马和c6兵——捉双！",
+      "popup_en": "The bishop moves to e4, attacking the knight on f3 and pawn on c6 at once. A fork!",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Rxa7",
       "popup": "白车吃a7兵，白方反击。",
+      "popup_en": "White's rook captures the pawn on a7, counterattacking.",
       "highlights": [
         {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Rxa7",
       "popup": "黑车吃回，双方都在争夺子力。",
+      "popup_en": "Black's rook recaptures, and both sides continue fighting for material.",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "c7",
       "popup": "兵推c7！过路兵威胁升变。",
+      "popup_en": "The pawn advances to c7, threatening to promote as a passed pawn.",
       "highlights": [
         {"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Nd7",
       "popup": "黑马跳d7阻挡升变，局势复杂。",
+      "popup_en": "The knight moves to d7 to stop the promotion threat, and the position becomes complex.",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

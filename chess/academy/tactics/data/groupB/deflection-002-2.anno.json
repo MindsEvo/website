@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-002",
   "description": "引离黑后——解法2：黑方顽抗，白方连续引离得后",
+  "explanation_en": "Black avoids the first deflection, but White wins the queen directly and then uses successive checks to deflect the bishop and rook, finishing with Rxe7#.",
   "intro": {
     "flash_squares": [
       "f4",
@@ -8,10 +9,12 @@
       "e7"
     ],
     "popup": "💡 解法2：黑方不走Qd6而走Be6，白方如何继续获得优势？",
+    "popup_en": "💡 Variation 2: Black resists with Be6 instead of Qd6. How can White continue to build an advantage?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：黑后虽未直接被引离，但Qxb4直接赢后。黑方多次尝试牵制白方，但连续引离最终Re7绝杀。",
+    "popup_en": "✅ Key idea: Although the queen is not directly deflected, Qxb4 wins it. White then uses further forcing moves to deflect defenders and finish with Re7#.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Qd2!",
       "popup": "同样Qd2，威胁黑象和黑后。",
+      "popup_en": "White again plays Qd2, threatening both the bishop and queen.",
       "highlights": [
         {
           "squares": [
@@ -42,6 +46,7 @@
       "index": 1,
       "move": "Be6",
       "popup": "黑方走Be6，顽强抵抗，不上当！但白后已自由了。",
+      "popup_en": "Black resists with Be6 and avoids the trap, but White's queen is now free to act.",
       "highlights": [
         {
           "squares": [
@@ -58,6 +63,7 @@
       "index": 2,
       "move": "Qxb4!",
       "popup": "白后Qxb4！直接吃掉黑后，大优！",
+      "popup_en": "White captures Black's queen with Qxb4! White has a decisive advantage.",
       "highlights": [
         {
           "squares": [
@@ -80,6 +86,7 @@
       "index": 3,
       "move": "Nd6",
       "popup": "黑马Nd6，最后挣扎。",
+      "popup_en": "Black's knight moves to d6 in a last attempt to resist.",
       "highlights": [
         {
           "squares": [
@@ -96,6 +103,7 @@
       "index": 4,
       "move": "Qxd6",
       "popup": "白后吃马。",
+      "popup_en": "White's queen captures the knight.",
       "highlights": [
         {
           "squares": [
@@ -112,6 +120,7 @@
       "index": 5,
       "move": "Re8",
       "popup": "黑车Re8，占据e列阻止Re7。",
+      "popup_en": "Black's rook moves to e8 to stop Re7.",
       "highlights": [
         {
           "squares": [
@@ -128,6 +137,7 @@
       "index": 6,
       "move": "Qc7+",
       "popup": "白后Qc7+，将军！引离黑象离开e6。",
+      "popup_en": "White checks with Qc7+, deflecting the bishop from e6.",
       "highlights": [
         {
           "squares": [
@@ -157,6 +167,7 @@
       "index": 7,
       "move": "Bd7",
       "popup": "黑象Bd7，挡将——但被白后吃掉！",
+      "popup_en": "The bishop blocks on d7, where White's queen can capture it.",
       "highlights": [
         {
           "squares": [
@@ -173,6 +184,7 @@
       "index": 8,
       "move": "Qxd7+",
       "popup": "白后Qxd7+，再次将军，引离黑车！",
+      "popup_en": "White captures the bishop with check, forcing the black rook to block and leave its post.",
       "highlights": [
         {
           "squares": [
@@ -189,6 +201,7 @@
       "index": 9,
       "move": "Re7",
       "popup": "黑车Re7挡，被白车吃掉！",
+      "popup_en": "The rook blocks on e7 and is captured by White's rook.",
       "highlights": [
         {
           "squares": [
@@ -205,6 +218,7 @@
       "index": 10,
       "move": "Rxe7#",
       "popup": "白车Rxe7# 绝杀！多次引离，终于达成目标。",
+      "popup_en": "Rxe7# is checkmate! A series of deflections finally clears the way.",
       "highlights": [
         {
           "squares": [

@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "如何防范安娜斯塔西亚杀",
+  "concept_en": "How to Prevent Anastasia's Mate",
   "question_cn": "为避免被安娜斯塔西亚杀，以下哪种做法最有效？",
+  "question_en": "What is the most effective way to avoid Anastasia's mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "把王躲在兵后面，不要走出来"
+      "text_cn": "把王躲在兵后面，不要走出来",
+      "text_en": "Keep the king behind the pawns and never move it out"
     },
     {
       "key": "B",
-      "text_cn": "尽量保持王有向中心逃脱的路线，避免王被困在边线"
+      "text_cn": "尽量保持王有向中心逃脱的路线，避免王被困在边线",
+      "text_en": "Keep an escape route toward the center and avoid trapping the king on the edge"
     },
     {
       "key": "C",
-      "text_cn": "换掉对方的车，车是完成将死的关键棋子"
+      "text_cn": "换掉对方的车，车是完成将死的关键棋子",
+      "text_en": "Trade off the opponent's rook, the key piece in the mating pattern"
     },
     {
       "key": "D",
-      "text_cn": "多走兵，兵可以挡住对方马的跳入"
+      "text_cn": "多走兵，兵可以挡住对方马的跳入",
+      "text_en": "Advance more pawns to stop the opponent's knight from jumping in"
     }
   ],
   "correct": "B",
   "explanation_cn": "防范安娜斯塔西亚杀的核心是不让王被困在边线。保持王有向中心逃脱的路线，避免让对方马占据封锁内侧的关键格子。换掉对方的马也是有效手段，因为马是封锁逃格的关键。",
+  "explanation_en": "The key is to keep the king from becoming trapped on the edge. Preserve an escape route toward the center and prevent the enemy knight from occupying the key inward-blocking square. Trading off that knight can also remove a crucial part of the mating net.",
   "created_at": "2026-06-02"
 }

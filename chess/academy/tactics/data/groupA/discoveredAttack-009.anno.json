@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-009",
   "description": "后牺牲开列，象闪将赢后",
+  "explanation_en": "A brilliant sequence of forcing moves ending in a discovered double check. The queen sacrifice clears the f-file; when the bishop moves with check, the rook behind it checks the king while the bishop attacks White's queen.",
   "intro": {
     "flash_squares": ["h5", "f8", "f6", "a5"],
     "popup": "💡 <b>闪将</b>：黑方行动！黑后在h5，黑象在f6，黑车在f8，白后在a5。能用后牺牲开f列，再用象的闪将赢白后吗？",
+    "popup_en": "💡 <b>Discovered check</b>: Black to move. Black's queen is on h5, bishop on f6, and rook on f8; White's queen is on a5. Can Black sacrifice the queen to open the f-file, then use a discovered check to win White's queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qe2+→Qxf2+牺牲两步清开f列，Bd8+！象走开，车f8将军——闪将同时威胁白后a5，赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Qe2+ and Qxf2+ clear the f-file with a queen sacrifice. Bd8+ then moves the bishop with check, uncovering the rook's check while the bishop attacks White's queen on a5.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qe2+",
       "popup": "黑后Qe2+！将军，逼白车到f2封堵——为后续牺牲铺路。",
+      "popup_en": "Black's queen checks from e2, forcing White's rook to block on f2 and preparing the next sacrifice.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Rf2",
       "popup": "白车Rf2应将——f列被白车占住，但黑方准备了更深的组合。",
+      "popup_en": "White blocks with Rf2. The rook occupies the f-file, but Black has a deeper combination prepared.",
       "highlights": [
         {"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qxf2+",
       "popup": "黑后Qxf2+！后牺牲将军，强制白王吃后，f列完全打开！",
+      "popup_en": "Black sacrifices the queen with Qxf2+, forcing White's king to capture and completely opening the f-file.",
       "highlights": [
         {"squares": ["f2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kxf2",
       "popup": "白王Kxf2——王踏上f2，f列上车f8已虎视眈眈！",
+      "popup_en": "White's king captures on f2, stepping onto the file controlled by Black's rook on f8.",
       "highlights": [
         {"squares": ["f2"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Bd8+",
       "popup": "象Bd8+！闪将！象离开f6，车f8沿f列将军Kf2——同时象冲向d8，直接威胁白后a5！",
+      "popup_en": "Bd8+ is a discovered check! The bishop leaves f6, uncovering the rook's check down the f-file, while the bishop attacks White's queen on a5.",
       "highlights": [
         {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f2"], "color": "#FF000055", "duration_ms": 0},
@@ -86,6 +94,7 @@
       "index": 5,
       "move": "Ke2",
       "popup": "白王Ke2逃将——但白后a5已无处可救。",
+      "popup_en": "White's king escapes to e2, but the queen on a5 cannot be saved.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a5"], "color": "#FF000055", "duration_ms": 0}
@@ -99,6 +108,7 @@
       "index": 6,
       "move": "Bxa5",
       "popup": "象Bxa5！闪将成功，黑方赢得白后——后牺牲+闪将的精妙组合！",
+      "popup_en": "The bishop captures White's queen on a5. The discovered check wins the queen, completing the queen-sacrifice combination.",
       "highlights": [
         {"squares": ["a5"], "color": "#4CAF5055", "duration_ms": 0}
       ],

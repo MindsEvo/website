@@ -3,14 +3,17 @@
     "gene_id": "C12_space_cramp",
     "sequence": 2,
     "concept": "被压方的反击点",
+    "concept_en": "Finding Counterplay When Cramped",
     "question_cn": "白方e5楔子压缩了黑方空间。黑方最有效的反击方式是什么？",
+    "question_en": "White's e5 wedge restricts Black's space. What is Black's most effective counterplay?",
     "options": [
-        {"key": "A", "text_cn": "完全接受被压，专心防守，等待对方犯错"},
-        {"key": "B", "text_cn": "直接走…f6，正面打击白方e5楔子，争夺关键格"},
-        {"key": "C", "text_cn": "立刻在王翼进攻，与空间劣势无关"},
-        {"key": "D", "text_cn": "兑换掉所有棋子进入残局"}
+        {"key": "A", "text_cn": "完全接受被压，专心防守，等待对方犯错", "text_en": "Accept the cramped position, defend passively, and wait for White to err."},
+        {"key": "B", "text_cn": "直接走…f6，正面打击白方e5楔子，争夺关键格", "text_en": "Play ...f6 to challenge White's e5 wedge directly and contest the key squares."},
+        {"key": "C", "text_cn": "立刻在王翼进攻，与空间劣势无关", "text_en": "Launch a kingside attack immediately, regardless of the space disadvantage."},
+        {"key": "D", "text_cn": "兑换掉所有棋子进入残局", "text_en": "Exchange all the pieces and enter an endgame."}
     ],
     "correct": "B",
     "explanation_cn": "被压方的核心原则：找到「反击点」——打击给你造成空间压力的那个楔子兵。白方e5是空间武器，黑方…f6直接攻打它。若e5撤退，黑方空间立刻改善；若e5前进或兑换，f线或e线可能打开，黑方获得反击机会。挤压≠胜势，反击点始终存在，被压方不应被动等待，而应主动寻找打击楔子的时机。",
+    "explanation_en": "The cramped side should identify and attack the pawn wedge that restricts its space. Here, ...f6 challenges White's e5-pawn directly. If e5 retreats, Black gains room; if it advances or is exchanged, files may open and create counterplay. A space advantage is not automatically winning: the defender should look actively for a way to challenge the wedge.",
     "created_at": "2026-06-13"
 }

@@ -3,14 +3,17 @@
     "gene_id": "C11_open_files",
     "sequence": 4,
     "concept": "借开放线占据中心格",
+    "concept_en": "Using an Open File to Support an Outpost",
     "question_cn": "国王印度局中兑换打开d线后，白方马跳到d4强力据点。这与开放线有什么关系？",
+    "question_en": "In the King's Indian, after exchanges open the d-file, White places a knight on d4. How do the outpost and open file work together?",
     "options": [
-        {"key": "A", "text_cn": "没有关系，马占d4与开放线是完全独立的两件事"},
-        {"key": "B", "text_cn": "开放线让车可以沿d线支撑d4的马，若马被兑换，车立刻重占d线——开放线与据点马相互配合"},
-        {"key": "C", "text_cn": "马在d4只是临时的，开放线的真正价值是让车直接将军"},
-        {"key": "D", "text_cn": "开放线只对车有用，与马的位置无关"}
+        {"key": "A", "text_cn": "没有关系，马占d4与开放线是完全独立的两件事", "text_en": "They are unrelated; the knight on d4 and the open file are independent ideas."},
+        {"key": "B", "text_cn": "开放线让车可以沿d线支撑d4的马，若马被兑换，车立刻重占d线——开放线与据点马相互配合", "text_en": "A rook can support the knight along the d-file; if the knight is exchanged, the rook can recapture and keep control of the file."},
+        {"key": "C", "text_cn": "马在d4只是临时的，开放线的真正价值是让车直接将军", "text_en": "The knight on d4 is temporary; the open file matters only for giving check with the rook."},
+        {"key": "D", "text_cn": "开放线只对车有用，与马的位置无关", "text_en": "Open files help only rooks and have no connection to a knight's square."}
     ],
     "correct": "B",
     "explanation_cn": "开放线与据点马是协同关系：马站在d4据点，车沿d线支撑——若马被对方兑换，车立刻Rxd4重占d线，继续施压；若马不被兑换，d线上的车威胁深入侵入（Rd7等）。两者互相加强：马牵制对方，车虎视眈眈。这是「子力协同利用开放线」的核心思维。",
+    "explanation_en": "The outpost knight and open file support one another. A rook can back up the knight on d4; if the knight is exchanged, the rook can recapture on d4 and retain pressure on the file. If the knight remains, the rook may invade farther down the file. The knight restricts the opponent while the rook threatens penetration.",
     "created_at": "2026-06-13"
 }

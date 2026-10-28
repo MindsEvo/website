@@ -3,14 +3,17 @@
     "gene_id": "D16_timing_moments",
     "sequence": 5,
     "concept": "翼兵进攻的节奏链",
+    "concept_en": "The Sequence of a Pawn-Side Attack",
     "question_cn": "国王印度防御中黑方e5之后走f5-f4翼兵进攻。为什么f5必须在特定时机走，而不是立刻跟进？",
+    "question_en": "In the King's Indian, why should Black prepare ...f5 before launching the ...f5-f4 pawn attack after ...e5?",
     "options": [
-        {"key": "A", "text_cn": "f5越快越好，早一步推进早一步获得空间"},
-        {"key": "B", "text_cn": "f5推进前需要确认e5兵已稳固、g5无法被白方利用、且王翼子力（Nf6/Ng6）已配置好协同推进"},
-        {"key": "C", "text_cn": "f5只有在白方走了f3后才有意义"},
-        {"key": "D", "text_cn": "f5的时机与其他棋子无关，随时可以走"}
+        {"key": "A", "text_cn": "f5越快越好，早一步推进早一步获得空间", "text_en": "Play ...f5 as soon as possible to gain space earlier."},
+        {"key": "B", "text_cn": "f5推进前需要确认e5兵已稳固、g5无法被白方利用、且王翼子力（Nf6/Ng6）已配置好协同推进", "text_en": "Make sure the e5-pawn is secure, White cannot use g5, and Black's kingside pieces are ready to support the advance."},
+        {"key": "C", "text_cn": "f5只有在白方走了f3后才有意义", "text_en": "...f5 matters only after White has played f3."},
+        {"key": "D", "text_cn": "f5的时机与其他棋子无关，随时可以走", "text_en": "The timing of ...f5 is unrelated to the other pieces, so it can be played at any time."}
     ],
     "correct": "B",
     "explanation_cn": "翼兵进攻的节奏链：每步推进都依赖前一步的准备。f5前必须确认：①e5稳固（不会被白方dxe5后e4兵暴露）；②f5推进后g5格不被白方马（Ng5）利用；③己方Nf6/Rook已配置到位支撑f5-f4的后续推进。国王印度f5-f4是典型的「节奏链」——每步棋都为下一步铺路，若某步时机错误整条链都会断裂。正确节奏：e5锁定中心→Nd7重组→f5空间扩展→f4锁死白方→g5总攻。",
+    "explanation_en": "A wing attack is a sequence in which each pawn advance depends on prior preparation. Before ...f5, Black should secure the e5-pawn, ensure White cannot exploit g5, and place the kingside pieces to support ...f4. In the King's Indian, the plan ...e5, ...Nd7, ...f5, and ...f4 builds step by step; mistiming one move can break the entire sequence.",
     "created_at": "2026-06-13"
 }

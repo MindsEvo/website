@@ -1,13 +1,17 @@
 {
   "game_id": "tac_zugzwang_L1-001",
   "description": "白王步步逼迫黑王，推d兵升变",
+  "explanation_en": "White's king repeatedly takes key squares, forcing Black's king to give ground. This creates zugzwang and allows the d-pawn to advance and promote.",
   "intro": {
     "flash_squares": ["f4", "c4", "d4", "d5"],
     "popup": "💡 <b>逼着</b>：白方如何逼迫黑王让路，推d兵成功升变？",
+    "popup_en": "💡 <b>Zugzwang</b>: How can White force the black king to give ground and promote the d-pawn?",
+    "popup_en": "✅ <b>Key idea</b>: White's king repeatedly forces Black away from key squares. Ke7 is the decisive zugzwang: Black cannot guard d8, and the pawn promotes.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白王步步逼着黑王，黑方每步都被迫远离关键位置，Ke7是关键逼着，黑王无法守住d8，d兵顺利升变！",
+      "popup_en": "The white king moves to e5, taking an active position and pressuring the black king.",
     "voice": true
   },
   "board_always": null,
@@ -15,6 +19,7 @@
     {
       "index": 0, "move": "Ke5",
       "popup": "白王Ke5，进入要冲，直接向黑王施压。",
+      "popup_en": "The black king moves to b5, forced away from the d5 area.",
       "highlights": [{"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "f4", "to": "e5", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -22,6 +27,7 @@
     {
       "index": 1, "move": "Kb5",
       "popup": "黑王Kb5，被迫离开d5附近。",
+      "popup_en": "The black king moves to b5, forced away from the d5 area.",
       "highlights": [{"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c4", "to": "b5", "color": "#E53935CC"}],
       "concept_lines": []
@@ -29,6 +35,7 @@
     {
       "index": 2, "move": "Kxd5",
       "popup": "白王吃掉d5兵，白方获得决定性物质优势！",
+      "popup_en": "The white king captures the pawn on d5, gaining a decisive material advantage.",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e5", "to": "d5", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -36,6 +43,7 @@
     {
       "index": 3, "move": "Kb6",
       "popup": "黑王Kb6追击，试图干扰推兵。",
+      "popup_en": "The black king moves to b6, trying to interfere with the pawn advance.",
       "highlights": [{"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "b5", "to": "b6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -43,6 +51,7 @@
     {
       "index": 4, "move": "Kd6",
       "popup": "白王Kd6，护兵前进，封锁黑王。",
+      "popup_en": "The white king moves to d6 to support the pawn and restrict the black king.",
       "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -50,6 +59,7 @@
     {
       "index": 5, "move": "Kb7",
       "popup": "黑王Kb7，试图抢占升变格前方。",
+      "popup_en": "The black king moves to b7, trying to reach the square in front of the pawn's promotion square.",
       "highlights": [{"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "b6", "to": "b7", "color": "#E53935CC"}],
       "concept_lines": []
@@ -57,6 +67,7 @@
     {
       "index": 6, "move": "d5",
       "popup": "d5！兵大步前进。",
+      "popup_en": "The pawn advances with d5.",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d4", "to": "d5", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -64,6 +75,7 @@
     {
       "index": 7, "move": "Kb6",
       "popup": "黑王Kb6试图拦截。",
+      "popup_en": "The black king moves to b6 to try to stop the pawn.",
       "highlights": [{"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "b7", "to": "b6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -71,6 +83,7 @@
     {
       "index": 8, "move": "Ke6",
       "popup": "白王Ke6，迂回绕过，继续护兵。",
+      "popup_en": "The white king goes around to e6 and continues supporting the pawn.",
       "highlights": [{"squares": ["e6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "e6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -78,6 +91,7 @@
     {
       "index": 9, "move": "Kc5",
       "popup": "黑王Kc5追击。",
+      "popup_en": "The black king pursues with Kc5.",
       "highlights": [{"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "b6", "to": "c5", "color": "#E53935CC"}],
       "concept_lines": []
@@ -85,6 +99,7 @@
     {
       "index": 10, "move": "d6",
       "popup": "d6！兵再推进。",
+      "popup_en": "The pawn advances again with d6.",
       "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -92,6 +107,7 @@
     {
       "index": 11, "move": "Kc6",
       "popup": "黑王Kc6，死守d7升变格。",
+      "popup_en": "The black king moves to c6 to guard the d7 promotion square.",
       "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "c6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -99,6 +115,7 @@
     {
       "index": 12, "move": "d7",
       "popup": "d7！兵抵达第7排，升变在望。",
+      "popup_en": "The pawn reaches the seventh rank with d7, one step from promotion.",
       "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "d7", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -106,6 +123,7 @@
     {
       "index": 13, "move": "Kc7",
       "popup": "黑王Kc7，死守d8。",
+      "popup_en": "The black king moves to c7 to guard d8.",
       "highlights": [{"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c6", "to": "c7", "color": "#E53935CC"}],
       "concept_lines": []
@@ -113,6 +131,7 @@
     {
       "index": 14, "move": "Ke7",
       "popup": "白王Ke7！关键逼着——黑王无法继续守住c7，任何走法都无法阻止升变。",
+      "popup_en": "Ke7! The decisive zugzwang: Black cannot keep guarding c7, and no move can stop the pawn from promoting.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0}
@@ -126,6 +145,7 @@
     {
       "index": 15, "move": "Kc6",
       "popup": "黑王被迫让路。",
+      "popup_en": "The black king is forced to give way.",
       "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c7", "to": "c6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -133,6 +153,7 @@
     {
       "index": 16, "move": "d8=Q",
       "popup": "d8=Q！升变为后，白方获胜！",
+      "popup_en": "The pawn promotes to a queen on d8, and White wins.",
       "highlights": [{"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "d8", "color": "#4CAF50CC"}],
       "concept_lines": []

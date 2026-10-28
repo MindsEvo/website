@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-001",
   "description": "象腾挪c5，清开斜线让后将杀",
+  "explanation_en": "The bishop moves with check to clear c5 from the queen's diagonal, allowing Qa7#.",
   "intro": {
     "flash_squares": ["c5", "d4", "a7"],
     "popup": "💡 <b>腾挪</b>：白象在c5，挡住了白后d4→a7的斜线通路。如何让后走到a7将杀？",
+    "popup_en": "💡 <b>Clearance</b>: White's bishop on c5 blocks the queen's diagonal from d4 to a7. How can White clear the route for Qa7#?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bd6+！象腾挪离开c5，清开d4-a7斜线——Qa7#绝杀！",
+    "popup_en": "✅ <b>Key idea</b>: Bd6+ clears the bishop from c5 and opens the d4-a7 diagonal for Qa7#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bd6+",
       "popup": "白象Bd6+！腾挪离开c5，清开d4→c5→b6→a7斜线，同时将军！",
+      "popup_en": "White plays Bd6+, moving the bishop off c5 to clear the d4-c5-b6-a7 diagonal while giving check.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0},
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "exd6",
       "popup": "黑兵被迫exd6——c5已清空，斜线通了！",
+      "popup_en": "Black is forced to capture with exd6. The bishop has cleared c5 and opened the diagonal.",
       "highlights": [
         {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qa7#",
       "popup": "白后Qa7将杀！腾挪清路——一击制胜！",
+      "popup_en": "Qa7# is checkmate! The clearance opened the route for the decisive queen move.",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

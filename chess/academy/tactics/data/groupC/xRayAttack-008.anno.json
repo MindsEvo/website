@@ -1,13 +1,16 @@
 {
   "game_id": "tac_xRayAttack_L1-008",
   "description": "引入过渡，白车透视底线将死",
+  "explanation_en": "An intermediate move and queen sacrifice lure the rook onto the X-ray line for back-rank mate.",
   "intro": {
     "flash_squares": ["b5", "a5", "g8", "d8"],
     "popup": "💡 <b>透视攻击</b>：白车在b5，白后在a5，黑王在g8。白方如何用引入和透视攻击完成底线将死？",
+    "popup_en": "💡 <b>X-ray attack</b>: White's rook is on b5, the queen on a5, and the black king on g8. How can White use an attraction and an X-ray attack to deliver back-rank mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rb8+逼车堵路→Qd8+弃后引入黑车→白车透视穿越取d8将死！",
+    "popup_en": "✅ <b>Key idea</b>: Rb8+ forces the rook to block its own king. Qd8+ sacrifices the queen to lure that rook onto the X-ray line, allowing Rxd8#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rb8+",
       "popup": "白车Rb8+将军！逼迫黑车跑到c8堵住自己的退路，为后续透视攻击布局。",
+      "popup_en": "Rb8+! White checks and forces the black rook to c8, where it blocks its own king's escape and sets up the X-ray attack.",
       "highlights": [
         {"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Rc8",
       "popup": "黑车被迫到c8挡将，自堵退路，透视陷阱进一步收紧。",
+      "popup_en": "The rook is forced to c8 to block the check, cutting off its own king's escape and tightening the X-ray trap.",
       "highlights": [
         {"squares": ["c8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Qd8+",
       "popup": "白后Qd8+弃子！后将军g8，强迫黑车吃后，白车的透视路线即将打通。",
+      "popup_en": "Qd8+! White sacrifices the queen with check, forcing the rook to capture it and opening the rook's X-ray line.",
       "highlights": [
         {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Rxd8",
       "popup": "黑车被迫从c8吃后到d8，挡在b8白车面前——透视线已完全暴露！",
+      "popup_en": "The rook is forced from c8 to d8 to capture the queen, directly in front of White's rook on b8. The X-ray line is exposed!",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Rxd8#",
       "popup": "透视攻击将死！白车b8早已透视穿越黑车c8（现d8），黑车移走后白车直取d8将死黑王！",
+      "popup_en": "X-ray checkmate! White's rook on b8 was aiming through the black rook. With that rook displaced to d8, Rxd8# mates the black king.",
       "highlights": [
         {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},

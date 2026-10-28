@@ -2,11 +2,13 @@
   "game_id": "C11_OpenFiles_Practice_006",
   "description": "西西里四马变 B45 — 抢占c线主动权",
   "intro": {
+    "popup_en": "Open Files, Practice 6: Fight for the c-File\nWhite has already placed a rook on c1. Black needs to challenge it with ...Rc8. On an open file, the side that occupies it first usually takes the initiative. Can Black contest the c-file in time?",
     "flash_squares": ["c8", "c3", "c1", "c5"],
     "popup": "抢占c线主动权 练习6\n\n白方Rc1已占c线！\n黑方必须立刻Rc8反压\n\n开放线上的争夺：\n谁先占谁主动！\n黑方能否在c线上反制？",
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: ...Bxc3+ creates doubled c-pawns, then the exchanges on d5 open the c-file completely. White takes the file first with Rc1. On an open file, the slower side becomes passive; Black needed to challenge it immediately with ...Rc8.",
     "popup": "c线争夺小结\n✅ Bxc3+：黑方主动造c叠兵\n✅ exd5 exd5：c线完全打通\n✅ Rc1先手：白方抢c线\n\n关键要点：\n开放线上谁慢谁被动\n黑方需Rc8立刻反压！",
     "voice": true
   },
@@ -15,74 +17,84 @@
     "color": "#FFD70022"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4"},
+    {"index": 0, "move": "e4", "popup": "e4", "popup_en": "e4 opens the game."},
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "...c5 begins the Sicilian Defense and creates a semi-open c-file.",
       "popup": "c5！西西里\nc线半开放线诞生",
       "highlights": [{"squares": ["c5"], "color": "#C6D50055"}]
     },
-    {"index": 2, "move": "Nf3", "popup": "Nf3发展"},
-    {"index": 3, "move": "Nc6", "popup": "Nc6发展"},
-    {"index": 4, "move": "d4", "popup": "d4反攻"},
+    {"index": 2, "move": "Nf3", "popup": "Nf3发展", "popup_en": "Nf3 develops."},
+    {"index": 3, "move": "Nc6", "popup": "Nc6发展", "popup_en": "...Nc6 develops."},
+    {"index": 4, "move": "d4", "popup": "d4反攻", "popup_en": "d4 counterattacks in the center."},
     {
       "index": 5,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges pawns and opens the c-file.",
       "popup": "cxd4兑换\nc线打通！",
       "highlights": [{"squares": ["c8", "c7", "c6", "c4", "c3", "c2", "c1"], "color": "#C6D50055"}]
     },
-    {"index": 6, "move": "Nxd4", "popup": "Nxd4占中心"},
-    {"index": 7, "move": "Nf6", "popup": "Nf6发展"},
-    {"index": 8, "move": "Nc3", "popup": "Nc3发展"},
-    {"index": 9, "move": "e6", "popup": "e6稳固\n四马变开始"},
-    {"index": 10, "move": "Ndb5", "popup": "Ndb5机动\n威胁d6"},
+    {"index": 6, "move": "Nxd4", "popup": "Nxd4占中心", "popup_en": "Nxd4 recaptures and occupies the center."},
+    {"index": 7, "move": "Nf6", "popup": "Nf6发展", "popup_en": "...Nf6 develops."},
+    {"index": 8, "move": "Nc3", "popup": "Nc3发展", "popup_en": "Nc3 develops."},
+    {"index": 9, "move": "e6", "popup": "e6稳固\n四马变开始", "popup_en": "...e6 reinforces Black's position and enters the Four Knights Variation."},
+    {"index": 10, "move": "Ndb5", "popup": "Ndb5机动\n威胁d6", "popup_en": "Ndb5 maneuvers the knight and threatens d6."},
     {
       "index": 11,
       "move": "Bb4",
+      "popup_en": "...Bb4 pins the knight and prepares to exchange it on c3.",
       "popup": "Bb4！钉马！\n准备兑换c3马"
     },
     {
       "index": 12,
       "move": "a3",
+      "popup_en": "a3 challenges the bishop as White tries to preserve Nc3.",
       "popup": "a3逼象\n白方试图保住c3马"
     },
     {
       "index": 13,
       "move": "Bxc3+",
+      "popup_en": "...Bxc3+! Black exchanges and removes the knight, leaving White with doubled c-pawns that may become targets on the c-file.",
       "popup": "Bxc3+！黑方主动兑换！\n消灭c3马\n白方c列将出现叠兵！",
       "highlights": [{"squares": ["c3", "b4"], "color": "#E53935aa"}]
     },
     {
       "index": 14,
       "move": "Nxc3",
+      "popup_en": "Nxc3 recaptures with the knight, but the doubled c-pawns make the c-file easier to exploit.",
       "popup": "Nxc3马重建\n但c3叠兵后c线更容易被利用",
       "highlights": [{"squares": ["c2", "c3"], "color": "#FF8F0055"}]
     },
     {
       "index": 15,
       "move": "d5",
+      "popup_en": "...d5! Black counterattacks in the center and fights for the initiative.",
       "popup": "d5！中心反击！\n黑方争夺中心主动"
     },
-    {"index": 16, "move": "exd5", "popup": "exd5兑换"},
+    {"index": 16, "move": "exd5", "popup": "exd5兑换", "popup_en": "exd5 exchanges pawns."},
     {
       "index": 17,
       "move": "exd5",
+      "popup_en": "...exd5 recaptures, opening the d- and c-files further.",
       "popup": "exd5黑方回吃\nd线和c线进一步打开！",
       "highlights": [{"squares": ["c8", "d8"], "color": "#C6D50055"}]
     },
-    {"index": 18, "move": "Bd3", "popup": "Bd3发展象"},
-    {"index": 19, "move": "O-O", "popup": "O-O入城"},
-    {"index": 20, "move": "O-O", "popup": "O-O入城"},
+    {"index": 18, "move": "Bd3", "popup": "Bd3发展象", "popup_en": "Bd3 develops the bishop."},
+    {"index": 19, "move": "O-O", "popup": "O-O入城", "popup_en": "O-O secures White's king."},
+    {"index": 20, "move": "O-O", "popup": "O-O入城", "popup_en": "...O-O secures Black's king."},
     {
       "index": 21,
       "move": "Re8",
+      "popup_en": "...Re8 activates Black's rook on the e-file and keeps the position flexible.",
       "popup": "Re8！黑车占e线\n守护e列，灵活机动"
     },
-    {"index": 22, "move": "Bg5", "popup": "Bg5发展象\n施压Nf6"},
-    {"index": 23, "move": "Be6", "popup": "Be6发展象\n守护d5"},
+    {"index": 22, "move": "Bg5", "popup": "Bg5发展象\n施压Nf6", "popup_en": "Bg5 develops the bishop and pressures Nf6."},
+    {"index": 23, "move": "Be6", "popup": "Be6发展象\n守护d5", "popup_en": "...Be6 develops the bishop and supports d5."},
     {
       "index": 24,
       "move": "Rc1",
+      "popup_en": "Rc1! White claims the c-file first. Rc3 or Rc5 may follow to increase pressure. Black needs to challenge the file immediately with ...Rc8 before White's advantage grows.",
       "popup": "Rc1！白方抢占c线！\n先手！车来c1\n下一步Rc3或Rc5威胁黑方\n\n黑方必须立刻Rc8反压！\n否则白方c线优势将扩大！",
       "highlights": [
         {"squares": ["c1", "c3", "c5", "c7"], "color": "#E53935aa"},

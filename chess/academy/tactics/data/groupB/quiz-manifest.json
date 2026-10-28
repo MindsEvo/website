@@ -2,105 +2,129 @@
     "categories":  [
                        {
                            "label":  "双将",
+                           "label_en": "Double Check",
                            "key":  "doubleCheck",
                            "items":  [
                                          {
                                              "id":  "tac_doubleCheck_L1-quiz-001",
-                                             "label":  "双将的定义"
+                                             "label":  "双将的定义",
+                                             "label_en": "What Is Double Check?"
                                          },
                                          {
                                              "id":  "tac_doubleCheck_L1-quiz-002",
-                                             "label":  "双将的唯一应对"
+                                             "label":  "双将的唯一应对",
+                                             "label_en": "The Only Response to Double Check"
                                          },
                                          {
                                              "id":  "tac_doubleCheck_L1-quiz-003",
-                                             "label":  "揭开将军产生双将"
+                                             "label":  "揭开将军产生双将",
+                                             "label_en": "Creating Double Check with a Discovered Check"
                                          },
                                          {
                                              "id":  "tac_doubleCheck_L1-quiz-004",
-                                             "label":  "双将的战术价值"
+                                             "label":  "双将的战术价值",
+                                             "label_en": "The Tactical Power of Double Check"
                                          },
                                          {
                                              "id":  "tac_doubleCheck_L1-quiz-005",
-                                             "label":  "双将与困毙组合"
+                                             "label":  "双将与困毙组合",
+                                             "label_en": "Double Check and Smothered Mate"
                                          }
                                      ]
                        },
                        {
                            "label":  "消除保护",
+                           "label_en": "Remove the Defender",
                            "key":  "removalOfTheDefender",
                            "items":  [
                                          {
                                              "id":  "tac_removalOfTheDefender_L1-quiz-001",
-                                             "label":  "消除保护的本质"
+                                             "label":  "消除保护的本质",
+                                             "label_en": "The Essence of Removing the Defender"
                                          },
                                          {
                                              "id":  "tac_removalOfTheDefender_L1-quiz-002",
-                                             "label":  "识别保护关系"
+                                             "label":  "识别保护关系",
+                                             "label_en": "Identifying Defensive Relationships"
                                          },
                                          {
                                              "id":  "tac_removalOfTheDefender_L1-quiz-003",
-                                             "label":  "消除保护的三种手段"
+                                             "label":  "消除保护的三种手段",
+                                             "label_en": "Three Ways to Remove a Defender"
                                          },
                                          {
                                              "id":  "tac_removalOfTheDefender_L1-quiz-004",
-                                             "label":  "牺牲换取消除保护"
+                                             "label":  "牺牲换取消除保护",
+                                             "label_en": "Sacrificing to Remove a Defender"
                                          },
                                          {
                                              "id":  "tac_removalOfTheDefender_L1-quiz-005",
-                                             "label":  "消除保护与其他战术的区别"
+                                             "label":  "消除保护与其他战术的区别",
+                                             "label_en": "Removing the Defender vs. Other Tactics"
                                          }
                                      ]
                        },
                        {
                            "label":  "引离",
+                          "label_en": "Deflection",
                            "key":  "deflection",
                            "items":  [
                                          {
                                              "id":  "tac_deflection_L1-quiz-001",
-                                             "label":  "引离的本质"
+                                             "label":  "引离的本质",
+                                             "label_en": "The Core Idea of Deflection"
                                          },
                                          {
                                              "id":  "tac_deflection_L1-quiz-002",
-                                             "label":  "识别引离目标"
+                                             "label":  "识别引离目标",
+                                             "label_en": "Identifying a Deflection Target"
                                          },
                                          {
                                              "id":  "tac_deflection_L1-quiz-003",
-                                             "label":  "引离的执行步骤"
+                                             "label":  "引离的执行步骤",
+                                             "label_en": "How to Execute a Deflection"
                                          },
                                          {
                                              "id":  "tac_deflection_L1-quiz-004",
-                                             "label":  "多步引离组合"
+                                             "label":  "多步引离组合",
+                                             "label_en": "Multi-Move Deflection Combinations"
                                          },
                                          {
                                              "id":  "tac_deflection_L1-quiz-005",
-                                             "label":  "引离的综合判断"
+                                             "label":  "引离的综合判断",
+                                             "label_en": "Evaluating Deflection Tactics"
                                          }
                                      ]
                        },
                        {
                            "label":  "引入",
+                           "label_en": "Attraction",
                            "key":  "attraction",
                            "items":  [
                                          {
                                              "id":  "tac_attraction_L1-quiz-001",
-                                             "label":  "引入战术的本质"
+                                              "label":  "引入战术的本质",
+                                              "label_en": "The Core Idea of Attraction"
                                          },
                                          {
                                              "id":  "tac_attraction_L1-quiz-002",
-                                             "label":  "引入的典型目标"
+                                              "label":  "引入的典型目标",
+                                              "label_en": "Typical Targets of Attraction"
                                          },
                                          {
                                              "id":  "tac_attraction_L1-quiz-003",
-                                             "label":  "引入战术的前提条件"
+                                              "label":  "引入战术的前提条件",
+                                              "label_en": "Key Conditions for Attraction"
                                          },
                                          {
                                              "id":  "tac_attraction_L1-quiz-004",
-                                             "label":  "连续引入的思路"
+                                              "label":  "连续引入的思路",
+                                              "label_en": "Planning a Series of Attractions"
                                          },
                                          {
                                              "id":  "tac_attraction_L1-quiz-005",
-                                             "label":  "引入与引离的区别"
+                                              "label":  "引入与引离的区别",
+                                              "label_en": "Attraction vs. Deflection"
                                          }
                                      ]
                        }

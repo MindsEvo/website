@@ -1,13 +1,16 @@
 {
   "game_id": "mate_arabianMate_L1-005",
   "description": "阿拉伯杀：精彩弃后，引王出角，车将军逼回，Rg8#将死",
+  "explanation_en": "White sacrifices the queen to draw the king out, checks it back with the rook, and finishes with Rg8# and a rook-knight Arabian mate.",
   "intro": {
     "flash_squares": ["g7"],
     "popup": "💡 <b>阿拉伯杀</b>：精彩的弃后攻杀！先弃后引王出角，再用车将军驱王，最后完成阿拉伯杀。",
+    "popup_en": "💡 <b>Arabian mate</b>: A striking queen sacrifice draws the king out of the corner. Use rook checks to drive it back, then complete the mating pattern.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：精彩的弃后攻杀。Qxf8+引王，Re8+驱王，Rg8#完成阿拉伯杀，车马配合的威力。",
+    "popup_en": "✅ <b>Key idea</b>: Qxf8+ lures the king out, Re8+ drives it back, and Rg8# completes Arabian mate. The rook and knight work together to seal the king in.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxf8+",
       "popup": "白后弃后Qxf8+！将军，引诱黑王来吃。",
+      "popup_en": "Qxf8+! White sacrifices the queen with check, tempting the black king to capture it.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Kxf8",
       "popup": "黑王Kxf8吃后，走出原位。",
+      "popup_en": "Kxf8. The black king captures the queen and is drawn away from its original square.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -36,6 +41,7 @@
       "index": 2,
       "move": "Re8+",
       "popup": "白车Re8+将军！逼黑王退回g7。",
+      "popup_en": "Re8+! The rook checks and forces the black king back to g7.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -46,6 +52,7 @@
       "index": 3,
       "move": "Kg7",
       "popup": "黑王被迫Kg7，退回原处。",
+      "popup_en": "The black king is forced to Kg7, returning to its original square.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -56,6 +63,7 @@
       "index": 4,
       "move": "Rg8#",
       "popup": "白车Rg8#，阿拉伯杀！马封逃格，车将死黑王。",
+      "popup_en": "Rg8# delivers Arabian mate! The knight covers the escape squares while the rook gives checkmate.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}

@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "最容易被困的棋子",
   "question_cn": "哪种棋子在实战中最容易孤军深入后被困死？",
+  "question_en": "Which pieces are most likely to venture too far and become trapped in a game?",
   "options": [
-    {"key": "A", "text_cn": "兵——因为数量最多"},
-    {"key": "B", "text_cn": "王——因为最重要"},
-    {"key": "C", "text_cn": "后和象——贪吃子力或位置冒进，进入对方阵地后退路被封"},
-    {"key": "D", "text_cn": "车——因为只能走直线"}
+    {"key": "A", "text_cn": "兵——因为数量最多", "text_en": "Pawns, because they are the most numerous"},
+    {"key": "B", "text_cn": "王——因为最重要", "text_en": "The king, because it is the most important piece"},
+    {"key": "C", "text_cn": "后和象——贪吃子力或位置冒进，进入对方阵地后退路被封", "text_en": "Queens and bishops, which may venture into enemy territory for material or position and find their retreat cut off"},
+    {"key": "D", "text_cn": "车——因为只能走直线", "text_en": "Rooks, because they can move only in straight lines"}
   ],
   "correct": "C",
   "explanation_cn": "后和象在实战中最容易被困。后因为价值最高，对方会不惜代价围追堵截；象则容易走进被己方或对方兵封死的死角。开局时后和象不应过早深入对方阵地，要时刻保证有退路。",
+  "explanation_en": "Queens and bishops are especially prone to being trapped. The queen is valuable enough for the opponent to spend time and pieces restricting it, while a bishop can become hemmed in by pawn structures. Avoid sending them deep into enemy territory too early, and make sure they retain an escape route.",
   "created_at": "2026-05-27"
 }

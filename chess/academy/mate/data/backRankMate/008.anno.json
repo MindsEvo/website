@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-008",
   "description": "白方利用底线杀威胁，直接吃黑象获得物质优势",
+  "explanation_en": "White uses the back-rank threat to win a bishop without allowing Black to recapture safely.",
   "intro": {
     "flash_squares": ["g8", "b7", "b8", "d8", "b1", "e1"],
     "popup": "💡 <b>底线弱点</b>：黑王在g8，底线有双车（b8、d8），黑象在b7。白方车在b1和e1。如何利用黑方底线弱点获利？",
+    "popup_en": "💡 <b>Back-rank weakness</b>: Black's king is on g8, rooks on b8 and d8, and bishop on b7. White has rooks on b1 and e1. How can White exploit the back-rank weakness?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxb7直接吃象！黑方若Rxb7则底线只剩一车，会被底线杀。黑方只能被动应付，白方获得象的物质优势。",
+    "popup_en": "✅ <b>Key idea</b>: Rxb7 wins the bishop. If Black recaptures, only one rook remains to defend the back rank and Black faces mate. Black must respond passively, leaving White a bishop ahead.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxb7",
       "popup": "白车Rxb7！直接吃象。黑方若Rxb7，底线防守立刻崩溃——这正是利用底线弱点的典型手法。",
+      "popup_en": "Rxb7! White wins the bishop. If Black recaptures with ...Rxb7, the back-rank defense collapses; this is a classic way to exploit the weakness.",
       "highlights": [
         {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Ra8",
       "popup": "黑方Ra8！用车守住底线而非吃车——说明底线威胁有多严重。",
+      "popup_en": "...Ra8! Black defends the back rank instead of capturing the rook, showing how serious the mating threat is.",
       "highlights": [
         {"squares": ["a8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e8", "b8", "d8"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rb3",
       "popup": "白车Rb3，撤回支撑，同时威胁换掉黑后。白方已多得一象。",
+      "popup_en": "Rb3! The rook retreats to support the position and threatens to exchange queens. White is already a bishop ahead.",
       "highlights": [
         {"squares": ["b3"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Qa6",
       "popup": "黑后Qa6，试图反击。但白方底线威胁仍在，黑后一直被牵制。",
+      "popup_en": "The queen moves to a6 and tries to counterattack, but the back-rank threat still ties it down.",
       "highlights": [
         {"squares": ["a6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "Bd3",
       "popup": "白象Bd3，加强对底线的威胁，同时保护白方阵地。",
+      "popup_en": "Bd3! The bishop reinforces the back-rank threat while keeping White's position secure.",
       "highlights": [
         {"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

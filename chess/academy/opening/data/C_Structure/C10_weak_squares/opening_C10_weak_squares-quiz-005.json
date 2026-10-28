@@ -3,14 +3,17 @@
     "gene_id": "C10_weak_squares",
     "sequence": 5,
     "concept": "马占据弱格据点",
+    "concept_en": "A Knight on a Weak-Square Outpost",
     "question_cn": "为什么「马占弱格」是弱格利用中最理想的方式之一？",
+    "question_en": "Why is placing a knight on a weak square one of the best ways to exploit it?",
     "options": [
-        {"key": "A", "text_cn": "马在任何格子都同样强大，与弱格无关"},
-        {"key": "B", "text_cn": "马在弱格上无法被对方兵驱走，若对方又缺乏同色象，则马稳如泰山，成为永久据点"},
-        {"key": "C", "text_cn": "马比象强大，占据任何中心格都有优势"},
-        {"key": "D", "text_cn": "马在弱格上主要是为了防守，阻止对方进攻"}
+        {"key": "A", "text_cn": "马在任何格子都同样强大，与弱格无关", "text_en": "A knight is equally strong on every square, regardless of weaknesses."},
+        {"key": "B", "text_cn": "马在弱格上无法被对方兵驱走，若对方又缺乏同色象，则马稳如泰山，成为永久据点", "text_en": "An enemy pawn cannot drive the knight away from a weak square; without a matching bishop, the knight can become a permanent outpost."},
+        {"key": "C", "text_cn": "马比象强大，占据任何中心格都有优势", "text_en": "Knights are stronger than bishops, so any central square is an advantage."},
+        {"key": "D", "text_cn": "马在弱格上主要是为了防守，阻止对方进攻", "text_en": "A knight on a weak square is mainly defensive and stops attacks."}
     ],
     "correct": "B",
     "explanation_cn": "弱格的本质是「兵无法保护」，而驱走棋子最便宜的方式正是用兵。马占据弱格后，对方没有兵能斜向攻击驱走它，若对方恰好失去了该颜色的象，连「用象换马」的选项都没有。这样的马被称为「永久据点马」（Outpost Knight），它控制的格子范围广，对中残局有决定性影响。尼姆佐印度和国王印度中都有经典的Nd5/Nd4据点马案例。",
+    "explanation_en": "A weak square cannot be protected by a pawn, and pawns are often the cheapest way to drive away an enemy piece. A knight on such a square cannot be chased by a pawn; if the opponent has also lost the bishop of that color, even a bishop-for-knight exchange may be unavailable. This permanent outpost knight can control many squares and have a major impact in the middlegame and endgame.",
     "created_at": "2026-06-13"
 }

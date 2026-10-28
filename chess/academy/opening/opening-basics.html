@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../i18n.css" />
+  <script src="../../i18n.js"></script>
   <link rel="stylesheet" href="../audio-settings.css" />
   <script src="../audio-settings.js"></script>
   <title>开局基础 | 开局元思维</title>
@@ -673,7 +675,7 @@
         try {
           window.speechSynthesis.cancel();
           var ut = new SpeechSynthesisUtterance(text);
-          ut.lang = 'zh-CN';
+          ut.lang = /[\u4e00-\u9fff]/.test(text) ? 'zh-CN' : 'en-US';
           ut.rate = 0.85 + (Number(speedRange.value) - 5) * 0.03;
           ut.volume = Number(volumeRange.value) / 100;
           window.speechSynthesis.speak(ut);
@@ -1008,6 +1010,7 @@
       // ── App state ─────────────────────────────────────
       var state = {
         anno: null, annoByIndex: {}, states: [], moveMetas: [],
+        currentPopup: null, explanationCn: '', explanationEn: '',
         ply: -1, playing: false, timer: null, soundOn: true, voiceOn: true
       };
       var manifestCache = {};
@@ -1041,6 +1044,20 @@
         if (!html) { popupBox.classList.add('hidden'); return; }
         popupBox.classList.remove('hidden');
         popupBox.innerHTML = html;
+      }
+
+      function annotationText(annotation, field) {
+        if (!annotation) return '';
+        return quizIsEnglish()
+          ? (annotation[field + '_en'] || annotation[field] || '')
+          : (annotation[field] || '');
+      }
+
+      function refreshAnnotationLanguage() {
+        if (state.currentPopup) showPopup(annotationText(state.currentPopup, 'popup'));
+        explanationText.textContent = quizIsEnglish()
+          ? (state.explanationEn || state.explanationCn || '暂无解说内容')
+          : (state.explanationCn || '暂无解说内容');
       }
 
       // Builds a natural-language 棋谱 announcement for ply `n` (e.g. "马f3，将军").
@@ -1087,17 +1104,19 @@
         var narrateText = null;
         if (n === -1) {
           var intro = state.anno.intro;
-          showPopup(intro && intro.popup);
+          state.currentPopup = intro || null;
+          showPopup(annotationText(intro, 'popup'));
           if (intro) {
             (intro.flash_squares || []).forEach(function (sq) { addHighlight(sq, '#FFD70055'); });
-            narrateText = intro.voice === true ? stripHtml(intro.popup) : (typeof intro.voice === 'string' ? intro.voice : null);
+            narrateText = intro.voice === true ? stripHtml(annotationText(intro, 'popup')) : (typeof intro.voice === 'string' ? intro.voice : null);
           }
           playStatus.textContent = '开局位置 — 点击▶开始自动播放，或用↩/→单步查看';
         } else if (n === totalPlies()) {
           var outro = state.anno.outro;
-          showPopup(outro && outro.popup);
+          state.currentPopup = outro || null;
+          showPopup(annotationText(outro, 'popup'));
           if (outro) {
-            narrateText = outro.voice === true ? stripHtml(outro.popup) : (typeof outro.voice === 'string' ? outro.voice : null);
+            narrateText = outro.voice === true ? stripHtml(annotationText(outro, 'popup')) : (typeof outro.voice === 'string' ? outro.voice : null);
           }
           playStatus.textContent = '🏁 演示结束';
           playSound('gameEnd');
@@ -1105,7 +1124,8 @@
           var mv = state.moveMetas[n];
           var annoMove = state.annoByIndex[n];
           if (annoMove) {
-            showPopup(annoMove.popup);
+            state.currentPopup = annoMove;
+            showPopup(annotationText(annoMove, 'popup'));
             (annoMove.highlights || []).forEach(function (h) {
               (h.squares || []).forEach(function (sq) { addHighlight(sq, h.color); });
             });
@@ -1242,13 +1262,16 @@
           fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
         ]).then(function (res) {
           state.anno = res[0];
+          state.currentPopup = null;
+          state.explanationCn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          state.explanationEn = state.anno.explanation_en || '';
           var moveList = parseSolutionMoves(res[1]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
           (state.anno.moves || []).forEach(function (m) { state.annoByIndex[m.index] = m; });
-          explanationText.textContent = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          refreshAnnotationLanguage();
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
@@ -1263,6 +1286,21 @@
       // observation-mode ones above, pointed at a separate `practice-manifest.json` + button set.
       var practiceManifestCache = {};
 
+      function updatePracticeLanguage() {
+        PRACTICE_GROUP_DEFS.forEach(function (groupDef) {
+          var menuEl = document.querySelector('.group-dropdown-wrap[data-practice-group="' + groupDef.key + '"] .dropdown-menu');
+          var manifest = practiceManifestCache[groupDef.key];
+          if (!menuEl || !manifest || !menuEl.classList.contains('open')) return;
+          var openCategory = menuEl.querySelector('.menu-row.open');
+          var openCategoryKey = openCategory ? openCategory.dataset.cat : null;
+          renderPracticeDropdownMenu(groupDef, manifest, menuEl);
+          if (openCategoryKey) {
+            var restoredCategory = menuEl.querySelector('.menu-row[data-cat="' + openCategoryKey + '"]');
+            if (restoredCategory) restoredCategory.classList.add('open');
+          }
+        });
+      }
+
       function findPracticeItem(manifest, itemId) {
         for (var i = 0; i < manifest.categories.length; i++) {
           var cat = manifest.categories[i];
@@ -1276,10 +1314,12 @@
       function renderPracticeDropdownMenu(groupDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = quizIsEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           cat.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            var itemLabel = quizIsEnglish() ? (item.label_en || item.label) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
           });
           html += '</div></div>';
         });
@@ -1345,13 +1385,16 @@
           fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
         ]).then(function (res) {
           state.anno = res[0];
+          state.currentPopup = null;
+          state.explanationCn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          state.explanationEn = item.explanation_en || state.anno.explanation_en || '';
           var moveList = parseSolutionMoves(res[1]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
           (state.anno.moves || []).forEach(function (m) { state.annoByIndex[m.index] = m; });
-          explanationText.textContent = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          refreshAnnotationLanguage();
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
@@ -1362,14 +1405,56 @@
       // ── 问答练习 (quiz) — pure text multiple-choice, no board/anno involved ──
       var quizManifestCache = {};
       var currentQuiz = null;
+      var currentQuizSelection = null;
+
+      function quizIsEnglish() {
+        return !!(window.ChessI18n && window.ChessI18n.getLanguage() === 'en');
+      }
+
+      function updateQuizLanguage() {
+        var english = quizIsEnglish();
+        QUIZ_GROUP_DEFS.forEach(function (groupDef) {
+          var menuEl = document.querySelector('.group-dropdown-wrap[data-quiz-group="' + groupDef.key + '"] .dropdown-menu');
+          var manifest = quizManifestCache[groupDef.key];
+          if (!menuEl || !manifest || !menuEl.classList.contains('open')) return;
+          var openCategory = menuEl.querySelector('.menu-row.open');
+          var openCategoryKey = openCategory ? openCategory.dataset.cat : null;
+          renderQuizDropdownMenu(groupDef, manifest, menuEl);
+          if (openCategoryKey) {
+            var restoredCategory = menuEl.querySelector('.menu-row[data-cat="' + openCategoryKey + '"]');
+            if (restoredCategory) restoredCategory.classList.add('open');
+          }
+        });
+
+        if (!currentQuiz) return;
+        var concept = english ? (currentQuiz.concept_en || currentQuiz.concept || '') : (currentQuiz.concept || '');
+        var question = english ? (currentQuiz.question_en || currentQuiz.question_cn || '') : (currentQuiz.question_cn || '');
+        var sequence = currentQuiz.sequence || '';
+        var header = concept ? (english ? ('Q' + sequence + ' - ' + concept + ' ') : ('Q' + sequence + '【' + concept + '】 ')) : ('Q' + sequence + ' ');
+        quizQuestion.textContent = header + question;
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (button) {
+          var option = (currentQuiz.options || []).find(function (entry) { return entry.key === button.dataset.key; });
+          if (option) button.textContent = option.key + '.  ' + (english ? (option.text_en || option.text_cn || '') : (option.text_cn || ''));
+        });
+
+        if (!quizFeedback.classList.contains('hidden') && currentQuizSelection) {
+          var correct = currentQuizSelection === currentQuiz.correct;
+          var explanation = english ? (currentQuiz.explanation_en || currentQuiz.explanation_cn || '') : (currentQuiz.explanation_cn || '');
+          quizFeedback.textContent = correct
+            ? (english ? '✓ Correct! ' : '✓ 正确！ ') + explanation
+            : (english ? '✗ Answer: ' + currentQuiz.correct + '. ' : '✗ 答案是 ' + currentQuiz.correct + '。 ') + explanation;
+        }
+      }
 
       function renderQuizDropdownMenu(groupDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = quizIsEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           cat.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            var itemLabel = quizIsEnglish() ? (item.label_en || item.label) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
           });
           html += '</div></div>';
         });
@@ -1436,34 +1521,39 @@
 
       function showQuizQuestion(qdata) {
         currentQuiz = qdata;
+        currentQuizSelection = null;
         var seq = qdata.sequence || '';
-        var concept = qdata.concept || '';
-        var header = concept ? ('Q' + seq + '【' + concept + '】 ') : ('Q' + seq + ' ');
-        quizQuestion.textContent = header + (qdata.question_cn || '');
+        var english = quizIsEnglish();
+        var concept = english ? (qdata.concept_en || qdata.concept || '') : (qdata.concept || '');
+        var question = english ? (qdata.question_en || qdata.question_cn || '') : (qdata.question_cn || '');
+        var header = concept ? (english ? ('Q' + seq + ' - ' + concept + ' ') : ('Q' + seq + '【' + concept + '】 ')) : ('Q' + seq + ' ');
+        quizQuestion.textContent = header + question;
         quizQuestion.classList.remove('empty');
         quizFeedback.classList.add('hidden');
         quizFeedback.textContent = '';
 
         var optionsHtml = '';
         (qdata.options || []).forEach(function (opt) {
-          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + opt.text_cn + '</button>';
+          optionsHtml += '<button class="quiz-option-btn" data-key="' + opt.key + '">' + opt.key + '.  ' + (english ? (opt.text_en || opt.text_cn || '') : (opt.text_cn || '')) + '</button>';
         });
         quizOptions.innerHTML = optionsHtml;
         quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
           btn.addEventListener('click', function () { handleQuizOptionClick(btn.dataset.key); });
         });
 
-        if (window.speechSynthesis && qdata.question_cn) {
-          var ut = new SpeechSynthesisUtterance(qdata.question_cn);
-          ut.lang = 'zh-CN';
+        if (window.speechSynthesis && question) {
+          var ut = new SpeechSynthesisUtterance(question);
+          ut.lang = english ? 'en-US' : 'zh-CN';
           window.speechSynthesis.speak(ut);
         }
       }
 
       function handleQuizOptionClick(selectedKey) {
         if (!currentQuiz) return;
+        currentQuizSelection = selectedKey;
         var correct = currentQuiz.correct;
-        var explanation = currentQuiz.explanation_cn || '';
+        var english = quizIsEnglish();
+        var explanation = english ? (currentQuiz.explanation_en || currentQuiz.explanation_cn || '') : (currentQuiz.explanation_cn || '');
 
         quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
           var key = btn.dataset.key;
@@ -1476,13 +1566,17 @@
         var isCorrect = selectedKey === correct;
         quizFeedback.classList.remove('hidden', 'correct', 'wrong');
         quizFeedback.classList.add(isCorrect ? 'correct' : 'wrong');
-        var feedbackText = isCorrect ? ('✓ 正确！ ' + explanation) : ('✗ 答案是 ' + correct + '。 ' + explanation);
+        var feedbackText = isCorrect
+          ? (english ? '✓ Correct! ' : '✓ 正确！ ') + explanation
+          : (english ? '✗ Answer: ' + correct + '. ' : '✗ 答案是 ' + correct + '。 ') + explanation;
         quizFeedback.textContent = feedbackText;
 
         if (window.speechSynthesis) {
-          var speakText = isCorrect ? ('正确！' + explanation) : ('答案是' + correct + '。' + explanation);
+          var speakText = isCorrect
+            ? (english ? 'Correct! ' : '正确！') + explanation
+            : (english ? 'The answer is ' + correct + '. ' : '答案是' + correct + '。') + explanation;
           var ut = new SpeechSynthesisUtterance(speakText);
-          ut.lang = 'zh-CN';
+          ut.lang = english ? 'en-US' : 'zh-CN';
           window.speechSynthesis.speak(ut);
         }
       }
@@ -1502,6 +1596,9 @@
         var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
+      window.addEventListener('chesslanguagechange', updateQuizLanguage);
+      window.addEventListener('chesslanguagechange', updatePracticeLanguage);
+      window.addEventListener('chesslanguagechange', refreshAnnotationLanguage);
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
       btnPrev.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply - 1); });

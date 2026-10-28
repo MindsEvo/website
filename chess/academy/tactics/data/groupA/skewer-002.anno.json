@@ -1,13 +1,16 @@
 {
   "game_id": "tac_skewer_L1-002",
   "description": "白车串击——车攻击黑后，后方还有黑车",
+  "explanation_en": "Black is forced to give up the queen to avoid losing the rook behind it.",
   "intro": {
     "flash_squares": ["c2", "d3", "d8"],
     "popup": "💡 <b>串击</b>：黑后在d3，后方d8还有黑车。白方如何一步串击两子？",
+    "popup_en": "💡 <b>Skewer</b>: Black's queen is on d3, with a rook behind it on d8. Can White skewer both pieces in one move?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rd2串击！车攻击d3后，d8车在后方。若后移开则Rxd8赢车；后若吃车，Bxd2以象换后同样获利。",
+    "popup_en": "✅ <b>Key idea</b>: Rd2 skewers the queen on d3 and rook on d8. If the queen moves, Rxd8 wins the rook; if it captures the rook, Bxd2 wins the queen for a bishop.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rd2",
       "popup": "车到d2，串击黑后！d3的后和d8的车同在一条竖线上——后若移开，Rxd8赢车。",
+      "popup_en": "The rook moves to d2 and skewers the queen on d3, with the rook on d8 behind it. If the queen moves, Rxd8 wins the rook.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d3"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Qxd2",
       "popup": "黑后吃车——试图避免丢车，但白方象可以夺回，以象换后获利。",
+      "popup_en": "Black's queen captures the rook to avoid losing the rook on d8, but White's bishop can recapture and win the queen for a bishop.",
       "highlights": [
         {"squares": ["d2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Bxd2",
       "popup": "象吃后！白方以车换后，净赚子力。",
+      "popup_en": "The bishop captures the queen. White has traded a rook for a queen and gained material.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -2,117 +2,144 @@
     "categories":  [
                        {
                            "label":  "困子",
+                           "label_en": "Trapped Piece",
                            "key":  "trappedPiece",
                            "items":  [
                                          {
                                              "id":  "tac_trappedPiece_L1-quiz-001",
-                                             "label":  "困子的定义"
+                                             "label":  "困子的定义",
+                                             "label_en": "Defining a Trapped Piece"
                                          },
                                          {
                                              "id":  "tac_trappedPiece_L1-quiz-002",
-                                             "label":  "最容易被困的棋子"
+                                             "label":  "最容易被困的棋子",
+                                             "label_en": "Pieces Most Likely to Get Trapped"
                                          },
                                          {
                                              "id":  "tac_trappedPiece_L1-quiz-003",
-                                             "label":  "如何识别困子"
+                                             "label":  "如何识别困子",
+                                             "label_en": "How to Recognize a Trapped Piece"
                                          },
                                          {
                                              "id":  "tac_trappedPiece_L1-quiz-004",
-                                             "label":  "利用困子的方法"
+                                             "label":  "利用困子的方法",
+                                             "label_en": "How to Exploit a Trapped Piece"
                                          },
                                          {
                                              "id":  "tac_trappedPiece_L1-quiz-005",
-                                             "label":  "避免困子的原则"
+                                             "label":  "避免困子的原则",
+                                             "label_en": "How to Avoid Trapping Your Own Pieces"
                                          }
                                      ]
                        },
                        {
                            "label":  "阻塞",
+                           "label_en": "Blockade",
                            "key":  "blockade",
                            "items":  [
                                          {
                                              "id":  "tac_blockade_L1-quiz-001",
-                                             "label":  "阻塞战术的本质"
+                                             "label":  "阻塞战术的本质",
+                                             "label_en": "The Core Idea of Blockade"
                                          },
                                          {
                                              "id":  "tac_blockade_L1-quiz-002",
-                                             "label":  "阻塞的最佳执行子"
+                                             "label":  "阻塞的最佳执行子",
+                                             "label_en": "Choosing the Best Blockading Piece"
                                          },
                                          {
                                              "id":  "tac_blockade_L1-quiz-003",
-                                             "label":  "阻塞的主要目标"
+                                             "label":  "阻塞的主要目标",
+                                             "label_en": "Common Targets of a Blockade"
                                          },
                                          {
                                              "id":  "tac_blockade_L1-quiz-004",
-                                             "label":  "阻塞 vs 拦截的区别"
+                                             "label":  "阻塞 vs 拦截的区别",
+                                             "label_en": "Blockade vs. Interference"
                                          },
                                          {
                                              "id":  "tac_blockade_L1-quiz-005",
-                                             "label":  "识别阻塞机会的思路"
+                                             "label":  "识别阻塞机会的思路",
+                                             "label_en": "How to Spot a Blockade Opportunity"
                                          },
                                          {
                                              "id":  "tac_blockade_L2-quiz-001",
-                                             "label":  "主动阻塞：阻塞子带将军或捉子"
+                                             "label":  "主动阻塞：阻塞子带将军或捉子",
+                                             "label_en": "Active Blockade: Blocking with Check or Threat"
                                          },
                                          {
                                              "id":  "tac_blockade_L2-quiz-002",
-                                             "label":  "封锁国王逃跑格的阻塞"
+                                             "label":  "封锁国王逃跑格的阻塞",
+                                             "label_en": "Blocking the King's Escape Squares"
                                          },
                                          {
                                              "id":  "tac_blockade_L2-quiz-003",
-                                             "label":  "阻塞与其他战术的组合"
+                                             "label":  "阻塞与其他战术的组合",
+                                             "label_en": "Combining Blockade with Other Tactics"
                                          }
                                      ]
                        },
                        {
                            "label":  "逼着",
+                           "label_en": "Zugzwang",
                            "key":  "zugzwang",
                            "items":  [
                                          {
                                              "id":  "tac_zugzwang_L1-quiz-001",
-                                             "label":  "逼着的定义"
+                                             "label":  "逼着的定义",
+                                             "label_en": "Defining Zugzwang"
                                          },
                                          {
                                              "id":  "tac_zugzwang_L1-quiz-002",
-                                             "label":  "逼着的常见阶段"
+                                             "label":  "逼着的常见阶段",
+                                             "label_en": "When Zugzwang Commonly Occurs"
                                          },
                                          {
                                              "id":  "tac_zugzwang_L1-quiz-003",
-                                             "label":  "王的逼着"
+                                             "label":  "王的逼着",
+                                             "label_en": "King Zugzwang in Pawn Endgames"
                                          },
                                          {
                                              "id":  "tac_zugzwang_L1-quiz-004",
-                                             "label":  "制造逼着的方法"
+                                             "label":  "制造逼着的方法",
+                                             "label_en": "How to Create Zugzwang"
                                          },
                                          {
                                              "id":  "tac_zugzwang_L1-quiz-005",
-                                             "label":  "应对逼着"
+                                             "label":  "应对逼着",
+                                             "label_en": "Defending Against Zugzwang"
                                          }
                                      ]
                        },
                        {
                            "label":  "弃子",
+                           "label_en": "Sacrifice",
                            "key":  "sacrifice",
                            "items":  [
                                          {
                                              "id":  "tac_sacrifice_L1-quiz-001",
-                                             "label":  "弃子的定义"
+                                             "label":  "弃子的定义",
+                                             "label_en": "Defining a Sacrifice"
                                          },
                                          {
                                              "id":  "tac_sacrifice_L1-quiz-002",
-                                             "label":  "弃子的常见目的"
+                                             "label":  "弃子的常见目的",
+                                             "label_en": "Common Goals of a Sacrifice"
                                          },
                                          {
                                              "id":  "tac_sacrifice_L1-quiz-003",
-                                             "label":  "弃后战术"
+                                             "label":  "弃后战术",
+                                             "label_en": "The Queen Sacrifice"
                                          },
                                          {
                                              "id":  "tac_sacrifice_L1-quiz-004",
-                                             "label":  "识别弃子时机"
+                                             "label":  "识别弃子时机",
+                                             "label_en": "When to Consider a Sacrifice"
                                          },
                                          {
                                              "id":  "tac_sacrifice_L1-quiz-005",
-                                             "label":  "应对弃子进攻"
+                                             "label":  "应对弃子进攻",
+                                             "label_en": "Defending Against a Sacrificial Attack"
                                          }
                                      ]
                        }

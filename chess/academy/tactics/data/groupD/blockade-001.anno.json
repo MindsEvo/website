@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-001",
   "description": "白后象配合，引马阻塞黑王退路，马将死",
+  "explanation_en": "White sacrifices the queen to lure Black's knight onto h7, where it blocks its own king's escape. White's knight then delivers mate.",
   "intro": {
     "flash_squares": ["h8", "f6", "h4"],
     "popup": "💡 <b>阻塞将杀</b>：黑王困在角落，但还有马在f6保护。白方如何让这匹马反而成为黑王的枷锁？",
+    "popup_en": "💡 <b>Blockade mate</b>: Black's king is in the corner, but a knight on f6 guards it. How can White make that knight block its own king?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：引马入瓮！白后牺牲把黑马引到h7，黑马反而彻底封死黑王，白马Ng6一步将死。",
+    "popup_en": "✅ <b>Key idea</b>: Lure the knight into the trap! White sacrifices the queen to draw the black knight to h7, where it blocks its own king, allowing Ng6#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qh7+",
       "popup": "白后将军！黑马被迫吃后——此刻黑王的退路全被封死。",
+      "popup_en": "White checks with Qh7, forcing the black knight to capture the queen and block the king's escape squares.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Nxh7",
       "popup": "黑马吃后——这正是白方想要的！黑王现在被己方马完全封死在h8。",
+      "popup_en": "The knight captures the queen, exactly as White intended. Black's own knight now traps the king on h8.",
       "highlights": [
         {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF980055", "duration_ms": 0},
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Ng6#",
       "popup": "马将死！h8被黑马封死，g7有黑兵，g8被白马控制，黑王无路可逃！",
+      "popup_en": "Ng6# is checkmate! The black knight blocks h8, the pawn on g7 blocks g7, and White's knight controls g8. The king has no escape.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},

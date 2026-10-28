@@ -3,14 +3,17 @@
     "gene_id": "A4_opening_lines",
     "sequence": 1,
     "concept": "线路控制的定义",
+    "concept_en": "What It Means to Control a Line",
     "question_cn": "「控制开放线路」对车和象的意义分别是什么？",
+    "question_en": "What does controlling an open line mean for rooks and bishops, respectively?",
     "options": [
-        {"key": "A", "text_cn": "车控制开放纵线（无兵阻挡的列），象控制开放斜线（无兵阻挡的对角线）；两者获得更大的活动范围和攻击力"},
-        {"key": "B", "text_cn": "车只能控制横线，象只能控制纵线"},
-        {"key": "C", "text_cn": "线路对象没有影响，只对车有意义"},
-        {"key": "D", "text_cn": "只要有棋子在线路上就叫控制，无论是否有兵阻挡"}
+        {"key": "A", "text_cn": "车控制开放纵线（无兵阻挡的列），象控制开放斜线（无兵阻挡的对角线）；两者获得更大的活动范围和攻击力", "text_en": "Rooks use open files and bishops use open diagonals; both gain greater range and attacking power."},
+        {"key": "B", "text_cn": "车只能控制横线，象只能控制纵线", "text_en": "Rooks control ranks only, while bishops control files only."},
+        {"key": "C", "text_cn": "线路对象没有影响，只对车有意义", "text_en": "Lines do not matter to bishops; they are relevant only to rooks."},
+        {"key": "D", "text_cn": "只要有棋子在线路上就叫控制，无论是否有兵阻挡", "text_en": "A line is controlled whenever a piece occupies it, even if pawns block it."}
     ],
     "correct": "A",
     "explanation_cn": "车在开放纵线（该列无己方兵或对方兵阻挡）上可以直接贯穿棋盘，威力大增。象在开放斜线上同理——没有兵阻挡的对角线让象的射程延伸到对方阵地。控制线路的核心是「清除障碍，让棋子充分发挥射程」。",
+    "explanation_en": "A rook on an open file, with no pawns blocking it, can exert influence across the board. Likewise, an unblocked diagonal lets a bishop reach deep into the opponent's position. The key is to clear obstacles so the pieces can use their full range.",
     "created_at": "2026-06-07"
 }

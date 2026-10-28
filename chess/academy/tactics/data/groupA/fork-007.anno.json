@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-007",
   "description": "黑兵捉双——兵同时攻击象和后",
+  "explanation_en": "A typical opening pawn fork.",
   "intro": {
     "flash_squares": ["e5", "e4", "d3", "f3"],
     "popup": "💡 <b>捉双</b>：黑方先走，如何两步之后用兵同时攻击象和后？",
+    "popup_en": "💡 <b>Fork</b>: Black to move. How can Black use a pawn to attack the bishop and queen at once in two moves?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：先逼象退，再兵推e4捉双！同时攻击d3象和f3后，赢回子力。",
+    "popup_en": "✅ <b>Key idea</b>: First drive the bishop back, then play e4 to fork the bishop on d3 and queen on f3, winning material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "f5",
       "popup": "兵推f5！攻击e4象，逼迫象退后。",
+      "popup_en": "The pawn advances to f5, attacking the bishop on e4 and forcing it to move.",
       "highlights": [
         {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Bd3",
       "popup": "白象被迫退到d3，为下一步捉双创造条件。",
+      "popup_en": "The bishop is forced to retreat to d3, setting up the fork on the next move.",
       "highlights": [
         {"squares": ["d3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "e4",
       "popup": "兵推e4！同时攻击d3象和f3后——捉双！",
+      "popup_en": "The pawn advances to e4, attacking the bishop on d3 and queen on f3 at once. A fork!",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d3"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Bxe4",
       "popup": "白象吃兵，但后已无法两全。",
+      "popup_en": "The bishop captures the pawn, but the queen cannot be saved as well.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "fxe4",
       "popup": "黑兵回吃，e4兵继续攻击f3后。",
+      "popup_en": "The f-pawn recaptures on e4 and continues attacking the queen on f3.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f3"], "color": "#FF000055", "duration_ms": 0}

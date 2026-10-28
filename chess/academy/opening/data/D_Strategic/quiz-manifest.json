@@ -5,45 +5,49 @@
     {
       "key": "D13_gambit_sacrifice",
       "label": "D13 弃兵争先",
+      "label_en": "D13 Gambits for the Initiative",
       "items": [
-        { "id": "opening_D13_gambit_sacrifice-quiz-001", "label": "1. 弃兵争先三要素" },
-        { "id": "opening_D13_gambit_sacrifice-quiz-002", "label": "2. 节拍差可视化" },
-        { "id": "opening_D13_gambit_sacrifice-quiz-003", "label": "3. 连续弃兵的极限速度" },
-        { "id": "opening_D13_gambit_sacrifice-quiz-004", "label": "4. 速度优势的时限" },
-        { "id": "opening_D13_gambit_sacrifice-quiz-005", "label": "5. 黑方也能弃兵" }
+        { "id": "opening_D13_gambit_sacrifice-quiz-001", "label": "1. 弃兵争先三要素", "label_en": "1. Three Requirements for a Gambit" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-002", "label": "2. 节拍差可视化", "label_en": "2. Visualizing the Tempo Lead" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-003", "label": "3. 连续弃兵的极限速度", "label_en": "3. The Speed of Consecutive Gambits" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-004", "label": "4. 速度优势的时限", "label_en": "4. The Time Limit of a Development Lead" },
+        { "id": "opening_D13_gambit_sacrifice-quiz-005", "label": "5. 黑方也能弃兵", "label_en": "5. Black Can Gambit Too" }
       ]
     },
     {
       "key": "D14_useful_exchanges",
       "label": "D14 及时兑子",
+      "label_en": "D14 Timely Exchanges",
       "items": [
-        { "id": "opening_D14_useful_exchanges-quiz-001", "label": "1. 兑换的战略目的" },
-        { "id": "opening_D14_useful_exchanges-quiz-002", "label": "2. 兑换制造结构弱点" },
-        { "id": "opening_D14_useful_exchanges-quiz-003", "label": "3. 好马换坏象" },
-        { "id": "opening_D14_useful_exchanges-quiz-004", "label": "4. 换后简化的战略" },
-        { "id": "opening_D14_useful_exchanges-quiz-005", "label": "5. 兑换顺序的重要性" }
+        { "id": "opening_D14_useful_exchanges-quiz-001", "label": "1. 兑换的战略目的", "label_en": "1. The Strategic Purpose of an Exchange" },
+        { "id": "opening_D14_useful_exchanges-quiz-002", "label": "2. 兑换制造结构弱点", "label_en": "2. Creating Structural Weaknesses" },
+        { "id": "opening_D14_useful_exchanges-quiz-003", "label": "3. 好马换坏象", "label_en": "3. Good Knight vs. Bad Bishop" },
+        { "id": "opening_D14_useful_exchanges-quiz-004", "label": "4. 换后简化的战略", "label_en": "4. Simplifying into a Favorable Endgame" },
+        { "id": "opening_D14_useful_exchanges-quiz-005", "label": "5. 兑换顺序的重要性", "label_en": "5. The Importance of Move Order" }
       ]
     },
     {
       "key": "D15_counterattack",
       "label": "D15 反制中心",
+      "label_en": "D15 Countering the Center",
       "items": [
-        { "id": "opening_D15_counterattack-quiz-001", "label": "1. 即时反制中心" },
-        { "id": "opening_D15_counterattack-quiz-002", "label": "2. 延迟反击的时机" },
-        { "id": "opening_D15_counterattack-quiz-003", "label": "3. 利用孤兵弱点反制" },
-        { "id": "opening_D15_counterattack-quiz-004", "label": "4. 侧翼反制中心" },
-        { "id": "opening_D15_counterattack-quiz-005", "label": "5. 超现代内爆反制" }
+        { "id": "opening_D15_counterattack-quiz-001", "label": "1. 即时反制中心", "label_en": "1. Immediate Central Counterplay" },
+        { "id": "opening_D15_counterattack-quiz-002", "label": "2. 延迟反击的时机", "label_en": "2. Timing a Delayed Counterattack" },
+        { "id": "opening_D15_counterattack-quiz-003", "label": "3. 利用孤兵弱点反制", "label_en": "3. Counterplay Against an Isolated Pawn" },
+        { "id": "opening_D15_counterattack-quiz-004", "label": "4. 侧翼反制中心", "label_en": "4. Flank Counterplay Against the Center" },
+        { "id": "opening_D15_counterattack-quiz-005", "label": "5. 超现代内爆反制", "label_en": "5. Hypermodern Counterattack" }
       ]
     },
     {
       "key": "D16_timing_moments",
       "label": "D16 关键时机",
+      "label_en": "D16 Critical Timing",
       "items": [
-        { "id": "opening_D16_timing_moments-quiz-001", "label": "1. 时机判断的本质" },
-        { "id": "opening_D16_timing_moments-quiz-002", "label": "2. 突破时机的准备" },
-        { "id": "opening_D16_timing_moments-quiz-003", "label": "3. 兑换时机的判断" },
-        { "id": "opening_D16_timing_moments-quiz-004", "label": "4. 先吃后反击的节奏" },
-        { "id": "opening_D16_timing_moments-quiz-005", "label": "5. 翼兵进攻的节奏链" }
+        { "id": "opening_D16_timing_moments-quiz-001", "label": "1. 时机判断的本质", "label_en": "1. The Nature of Timing" },
+        { "id": "opening_D16_timing_moments-quiz-002", "label": "2. 突破时机的准备", "label_en": "2. Preparing a Pawn Break" },
+        { "id": "opening_D16_timing_moments-quiz-003", "label": "3. 兑换时机的判断", "label_en": "3. Timing an Exchange" },
+        { "id": "opening_D16_timing_moments-quiz-004", "label": "4. 先吃后反击的节奏", "label_en": "4. Capture First, Then Counter" },
+        { "id": "opening_D16_timing_moments-quiz-005", "label": "5. 翼兵进攻的节奏链", "label_en": "5. The Sequence of a Pawn-Side Attack" }
       ]
     }
   ]

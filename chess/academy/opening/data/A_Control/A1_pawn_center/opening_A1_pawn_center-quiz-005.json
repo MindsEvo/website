@@ -3,14 +3,17 @@
     "gene_id": "A1_pawn_center",
     "sequence": 5,
     "concept": "过早出后的风险",
+    "concept_en": "The Risks of Early Queen Development",
     "question_cn": "开局中过早将后走到中心格（如 1.e4 e5 2.后h5），主要风险是什么？",
+    "question_en": "What is the main risk of bringing the queen out too early in the opening, such as 1.e4 e5 2.Qh5?",
     "options": [
-        {"key": "A", "text_cn": "后会被对方兵和小子攻击，被迫撤退，浪费步数"},
-        {"key": "B", "text_cn": "后在中心会直接被将军"},
-        {"key": "C", "text_cn": "后走到中心后无法再动"},
-        {"key": "D", "text_cn": "这是正确下法，后应该尽早出动控制中心"}
+        {"key": "A", "text_cn": "后会被对方兵和小子攻击，被迫撤退，浪费步数", "text_en": "The queen can be attacked by pawns and minor pieces, forcing it to retreat and lose time."},
+        {"key": "B", "text_cn": "后在中心会直接被将军", "text_en": "The queen will be checked immediately in the center."},
+        {"key": "C", "text_cn": "后走到中心后无法再动", "text_en": "The queen cannot move again once it reaches the center."},
+        {"key": "D", "text_cn": "这是正确下法，后应该尽早出动控制中心", "text_en": "This is correct; the queen should come out early to control the center."}
     ],
     "correct": "A",
     "explanation_cn": "后是最强的棋子，但在开局时对方的兵和小子（马、象）可以在发展的同时攻击后，迫使后不断逃跑。每次后被迫撤退都等于浪费一步，让对方在发展上领先。开局应先出小子再动后。",
+    "explanation_en": "The queen is the strongest piece, but early in the game the opponent can develop minor pieces while attacking it, forcing repeated retreats. Each retreat costs a tempo and lets the opponent get ahead in development. Develop your minor pieces before bringing out the queen.",
     "created_at": "2026-06-03"
 }

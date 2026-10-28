@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-003",
   "description": "中间吃兵，再吃回挂车",
+  "explanation_en": "White captures a pawn as an intermediate move before taking the loose rook on c7. This follows the annotated move sequence; the source explanation text appears inconsistent with that line.",
   "intro": {
     "flash_squares": ["d6", "c7", "c4"],
     "popup": "💡 <b>中间招</b>：黑车c4无根是挂子。白方先Rxd6！中间吃兵——黑方应对后，再Rxc7吃回挂车！",
+    "popup_en": "💡 <b>Intermezzo</b>: Black's rook on c4 is loose. White first plays Rxd6 as an intermediate capture, then takes the loose rook on c7.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxd6中间吃兵！黑方应对d6，白方Rxc7吃挂车——连续中间招赢得子力！",
+    "popup_en": "✅ <b>Key idea</b>: Rxd6 is the intermediate capture. After Black responds, Rxc7 wins the loose rook and gains material.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxd6",
       "popup": "白车Rxd6！中间吃兵——不急着吃c4挂车，先吃d6兵赚子！黑方必须应对！",
+      "popup_en": "White captures the pawn on d6 as an intermezzo instead of taking the loose rook immediately. Black must respond to the new threat.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c4"], "color": "#FFD70088", "duration_ms": 0},
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Rb4",
       "popup": "黑车Rb4——c4车撤退，c7棋子守护减弱！",
+      "popup_en": "The rook moves from c4 to b4, weakening the defense of the piece on c7.",
       "highlights": [
         {"squares": ["b4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rxc7",
       "popup": "白车Rxc7！吃掉挂子c7——中间招连续得子，白方大优！",
+      "popup_en": "White captures the loose piece on c7 with Rxc7, completing the sequence and gaining a large advantage.",
       "highlights": [
         {"squares": ["c7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

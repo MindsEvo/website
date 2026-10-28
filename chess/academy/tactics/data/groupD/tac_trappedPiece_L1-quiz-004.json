@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "利用困子的方法",
   "question_cn": "发现对方有困子时，最有效的进攻策略是什么？",
+  "question_en": "What is the most effective attacking strategy when you find an opponent's trapped piece?",
   "options": [
-    {"key": "A", "text_cn": "立刻将军，迫使对方认输"},
-    {"key": "B", "text_cn": "用低价值棋子（兵或小子）向困子发起攻击，以小换大"},
-    {"key": "C", "text_cn": "把自己所有棋子都移向困子"},
-    {"key": "D", "text_cn": "等待对方自己移走困子"}
+    {"key": "A", "text_cn": "立刻将军，迫使对方认输", "text_en": "Give check immediately and force the opponent to resign"},
+    {"key": "B", "text_cn": "用低价值棋子（兵或小子）向困子发起攻击，以小换大", "text_en": "Attack the trapped piece with a lower-value piece, such as a pawn or minor piece, to trade up"},
+    {"key": "C", "text_cn": "把自己所有棋子都移向困子", "text_en": "Move all your pieces toward the trapped piece"},
+    {"key": "D", "text_cn": "等待对方自己移走困子", "text_en": "Wait for the opponent to move the trapped piece on their own"}
   ],
   "correct": "B",
   "explanation_cn": "利用困子的核心思路：用比困子价值更低的棋子（通常是兵）去攻击它，迫使对方要么丢子、要么以大换小。例如用兵攻击被困的象，迫使象吃兵或被吃——无论哪种结果白方都赚了。动作要快，在对方找到逃路之前兑现优势。",
+  "explanation_en": "Exploit a trapped piece by attacking it with a lower-value unit, often a pawn. The opponent must either lose the piece or exchange a more valuable piece for less. For example, a pawn can attack a trapped bishop; either the bishop captures the pawn or gets captured, and you come out ahead. Act before the opponent finds an escape route.",
   "created_at": "2026-05-27"
 }

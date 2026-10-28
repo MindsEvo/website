@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_arabianMate_L1-quiz-001",
-                      "label":  "阿拉伯杀的定义"
+                      "label":  "阿拉伯杀的定义",
+                      "label_en": "Defining Arabian Mate"
                   },
                   {
                       "id":  "mate_arabianMate_L1-quiz-002",
-                      "label":  "车和马各自的作用"
+                      "label":  "车和马各自的作用",
+                      "label_en": "The Roles of the Rook and Knight"
                   },
                   {
                       "id":  "mate_arabianMate_L1-quiz-003",
-                      "label":  "弃后引离手法"
+                      "label":  "弃后引离手法",
+                      "label_en": "Queen Sacrifice and Deflection"
                   },
                   {
                       "id":  "mate_arabianMate_L1-quiz-004",
-                      "label":  "引离等子的注意事项"
+                      "label":  "引离等子的注意事项",
+                      "label_en": "When to Deflect a Defender Before Sacrificing"
                   },
                   {
                       "id":  "mate_arabianMate_L1-quiz-005",
-                      "label":  "如何防范阿拉伯杀"
+                      "label":  "如何防范阿拉伯杀",
+                      "label_en": "How to Prevent Arabian Mate"
                   }
               ],
-    "label":  "阿拉伯杀"
+    "label":  "阿拉伯杀",
+    "label_en": "Arabian Mate"
 }

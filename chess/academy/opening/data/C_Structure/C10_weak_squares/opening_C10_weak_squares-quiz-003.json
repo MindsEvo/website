@@ -3,14 +3,17 @@
     "gene_id": "C10_weak_squares",
     "sequence": 3,
     "concept": "兵前进留下弱格",
+    "concept_en": "Weak Squares Left by Pawn Advances",
     "question_cn": "法国防御中白方走e5推进。除了建立兵链优势，这步棋还产生了什么结构后果？",
+    "question_en": "In the French Defense, White advances e5. Besides creating a pawn chain, what structural consequence does this have?",
     "options": [
-        {"key": "A", "text_cn": "e5兵本身成为弱点，因为突出容易被攻击"},
-        {"key": "B", "text_cn": "e5推进后，d5和f5格再也无法被白兵保护，成为黑方潜在弱强格"},
-        {"key": "C", "text_cn": "e5推进封锁了黑方，黑方完全没有弱格问题"},
-        {"key": "D", "text_cn": "兵前进只带来空间优势，不会产生弱格"}
+        {"key": "A", "text_cn": "e5兵本身成为弱点，因为突出容易被攻击", "text_en": "The pawn on e5 becomes weak because it is advanced and easy to attack."},
+        {"key": "B", "text_cn": "e5推进后，d5和f5格再也无法被白兵保护，成为黑方潜在弱强格", "text_en": "After e5, White's pawns can no longer protect d5 and f5, making them potential strong squares for Black."},
+        {"key": "C", "text_cn": "e5推进封锁了黑方，黑方完全没有弱格问题", "text_en": "The advance blocks Black, so Black has no weak-square concerns."},
+        {"key": "D", "text_cn": "兵前进只带来空间优势，不会产生弱格", "text_en": "A pawn advance only gains space and never creates weak squares."}
     ],
     "correct": "B",
     "explanation_cn": "兵前进的代价：e5兵离开e4格后，d5和f5这两个紧邻的格子再也无法被任何白兵守护（e兵已过头，f兵和d兵也无法斜向保护它们）。这两个格子成为黑方的「强格」——黑方棋子（尤其是马）驻守此处，白方无法用兵驱走。每一步兵的前进都是不可逆的，会在身后留下永久弱格，必须充分考虑得失。",
+    "explanation_en": "Pawn advances are irreversible and can leave weaknesses behind. After the e-pawn moves from e4 to e5, White can no longer protect d5 and f5 with a pawn. These squares may become strong outposts for Black, especially for a knight, since White cannot drive it away with a pawn. Consider both the gain and the structural cost before advancing.",
     "created_at": "2026-06-13"
 }

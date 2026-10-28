@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-005",
   "description": "引离白车——解法3：白方走Qg4，后Qh1+引车到h1，Rxh1绝杀",
+  "explanation_en": "A three-step deflection combination: Black first offers a rook, then sacrifices the queen with check to lure White's rook to h1, where Black's rook delivers mate.",
   "intro": {
     "flash_squares": [
       "e8",
@@ -8,10 +9,12 @@
       "h1"
     ],
     "popup": "💡 解法3：白方走Qg4逃避，黑方如何引离g1白车到h1，再Rxh1绝杀？",
+    "popup_en": "💡 Variation 3: White avoids the first trap with Qg4. How can Black draw the rook from g1 to h1 and finish with Rxh1#?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Re1→Qh1+引车到h1→Rxh1绝杀。三步连环，每步都是引离——引白车从g1到h1，再被吃掉。",
+    "popup_en": "✅ Key idea: Re1, then Qh1+ to lure the rook to h1, followed by Rxh1#. The sequence repeatedly deflects the rook from g1 to h1, where it is captured.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Re1!",
       "popup": "黑车Re1！第一步引离开始。",
+      "popup_en": "Black plays Re1! The first deflection begins.",
       "highlights": [
         {
           "squares": [
@@ -42,6 +46,7 @@
       "index": 1,
       "move": "Qg4",
       "popup": "白后Qg4，不吃车——试图防守。",
+      "popup_en": "White plays Qg4 instead of capturing the rook, trying to defend.",
       "highlights": [
         {
           "squares": [
@@ -58,6 +63,7 @@
       "index": 2,
       "move": "Qh1+!",
       "popup": "黑后Qh1+！牺牲黑后将军，引白车到h1！",
+      "popup_en": "Black sacrifices the queen with Qh1+, checking and luring White's rook to h1.",
       "highlights": [
         {
           "squares": [
@@ -87,6 +93,7 @@
       "index": 3,
       "move": "Rxh1",
       "popup": "白车Rxh1！被迫吃后——白车引离到h1。",
+      "popup_en": "White's rook is forced to capture the queen on h1, leaving its original post.",
       "highlights": [
         {
           "squares": [
@@ -116,6 +123,7 @@
       "index": 4,
       "move": "Rxh1#",
       "popup": "黑车Rxh1# 绝杀！吃掉h1白车，白王h2在h线上被绝杀！",
+      "popup_en": "Black's rook captures on h1 with mate. White's rook is removed, and the king on h2 is mated along the h-file.",
       "highlights": [
         {
           "squares": [

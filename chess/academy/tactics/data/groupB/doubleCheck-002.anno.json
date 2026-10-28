@@ -1,13 +1,16 @@
 {
   "game_id": "tac_doubleCheck_L1-002",
   "description": "双将引入，困毙组合将死黑王",
+  "explanation_en": "A classic combination of attraction, double check, and smothered mate. White lures the king into the corner, then sacrifices the queen to clear the knight's mating square.",
   "intro": {
     "flash_squares": ["g5", "f7", "h6", "g8", "h8"],
     "popup": "💡 <b>双将</b>：白马和白后联手，利用双将引入，困毙黑王。白方如何开始？",
+    "popup_en": "💡 <b>Double check</b>: White's knight and queen work together to lure the king into a smothered mate. How should White begin?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nxf7+引入黑王→Nh6+双将→Qg8+弃后→Nf7#闷杀！经典的双将困毙组合。",
+    "popup_en": "✅ <b>Key idea</b>: Nxf7+ lures the king in; Nh6+ gives double check; Qg8+ sacrifices the queen; then Nf7# delivers smothered mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nxf7+",
       "popup": "白马跳f7将军！马吃黑兵，强行引入黑王，准备双将。",
+      "popup_en": "The knight captures the pawn on f7 with check, forcing the black king into the position for the double-check combination.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kg8",
       "popup": "黑王逃至g8。",
+      "popup_en": "The black king moves to g8.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nh6+",
       "popup": "双将！白马跳h6，马攻g8，同时揭开白后c4沿对角线攻击g8！黑王无法同时应对两将。",
+      "popup_en": "Double check! The knight checks from h6 while moving away to uncover the queen's diagonal attack from c4. The king cannot answer both checks at once.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kh8",
       "popup": "黑王逃至h8，被逼入角。",
+      "popup_en": "The black king is forced into the h8 corner.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Qg8+",
       "popup": "白后弃子！Qg8+强行将军，逼黑车吃后，为白马腾出f7要格。",
+      "popup_en": "White sacrifices the queen with Qg8+, forcing the rook to capture and clearing f7 for the knight's mating move.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -83,6 +91,7 @@
       "index": 5,
       "move": "Rxg8",
       "popup": "黑车被迫吃后，自缚手脚。",
+      "popup_en": "The rook is forced to capture the queen, further restricting its own king.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Nf7#",
       "popup": "白马f7闷杀！黑王被自己的棋子困死在角，无路可逃——这就是困毙！",
+      "popup_en": "Nf7# is smothered mate! The king is trapped in the corner by its own pieces with no escape. This is a smothered mate.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

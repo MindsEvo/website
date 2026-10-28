@@ -1,13 +1,16 @@
 {
   "game_id": "tac_removalOfTheDefender_L1-005",
   "description": "车消除控制e5的象，三步将杀",
+  "explanation_en": "White removes the bishop controlling e5. After the pawn recaptures, the rook can check from e5 and drive the king into a mating net.",
   "intro": {
     "flash_squares": ["d2", "d4", "e1", "e5"],
     "popup": "💡 <b>消除保护</b>：黑象Bd4控制着e5格，阻止白车Re5+将军。如何消除这个障碍？",
+    "popup_en": "💡 <b>Remove the defender</b>: Black's bishop on d4 controls e5 and prevents Re5+. How can White remove this obstacle?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxd4消除控制e5的象！exd4后Re5+迫使国王踏上g4，f3#将杀。",
+    "popup_en": "✅ <b>Key idea</b>: Rxd4 removes the bishop controlling e5. After exd4, Re5+ drives the king to g4, allowing f3#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxd4",
       "popup": "车消除象！Bd4是守住e5格的关键防守子，牺牲换掉它！",
+      "popup_en": "The rook captures the bishop on d4. The bishop was the key defender of e5, so White gives up the rook to remove it.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#2196F355", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "exd4",
       "popup": "兵吃车，但e5格现已畅通无阻！",
+      "popup_en": "The pawn recaptures the rook, but the square e5 is now clear.",
       "highlights": [
         {"squares": ["d4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Re5+",
       "popup": "Re5+将军！象已消除，此着成立。国王只能去g4……",
+      "popup_en": "Re5+ gives check. With the bishop removed, this move is now possible and forces the king toward g4.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f5"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Kxg4",
       "popup": "国王被迫吃马，落入陷阱！",
+      "popup_en": "The king is forced to capture the knight and falls into the trap.",
       "highlights": [
         {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "f3#",
       "popup": "f3将杀！兵f3将死孤王。",
+      "popup_en": "f3# is checkmate! The pawn delivers mate to the exposed king.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

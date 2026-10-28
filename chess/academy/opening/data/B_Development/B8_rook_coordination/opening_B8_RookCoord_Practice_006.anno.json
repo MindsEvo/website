@@ -2,6 +2,7 @@
   "game_id": "B8_RookCoord_Practice_006",
   "description": "C65 — 链接双车 - 第6局：逐步清空底线（鲁伊·洛佩兹C65变例）",
   "intro": {
+    "popup_en": "Connect the Rooks, Practice 6\nHow many pieces are still blocking the back rank from connecting the rooks? Follow the development: as the pieces move out, the rooks become connected naturally.",
     "flash_squares": [
       "a1",
       "f1",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: develop the pieces and connect the rooks. Rfe1 finally links the rook from a1 with the rook on e1.",
     "popup": "总结：快速发展子力同时联通双车\nRfe1！Ra1与Re1真正连通！",
     "voice": true
   },
@@ -24,11 +26,13 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game.",
       "popup": "e4开局"
     },
     {
       "index": 6,
       "move": "O-O",
+      "popup_en": "O-O! White castles, but three pieces still block the back rank: the knight on b1, bishop on c1, and queen on d1. The rooks are not connected yet.",
       "popup": "O-O易位！\n但底线还有3个障碍：\n①马在b1  ②象在c1  ③后在d1\n双车尚未连接！",
       "highlights": [
         {
@@ -51,6 +55,7 @@
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3! The knight leaves b1. Only the bishop on c1 and queen on d1 still block the back rank.",
       "popup": "Nc3！Nb1→c3\nb1已空，还剩c1(象)和d1(后)",
       "highlights": [
         {
@@ -77,11 +82,13 @@
     {
       "index": 13,
       "move": "O-O",
+      "popup_en": "...O-O! Black has also castled, so both kings are safe.",
       "popup": "黑方也完成易位！双方棋王都安全"
     },
     {
       "index": 14,
       "move": "Bg5",
+      "popup_en": "Bg5! The bishop leaves c1. Only the queen on d1 remains in the way.",
       "popup": "Bg5！Bc1→g5\nc1已空，还剩d1(后)",
       "highlights": [
         {
@@ -107,6 +114,7 @@
     {
       "index": 18,
       "move": "Qd3",
+      "popup_en": "Qd3! The queen leaves d1. Squares b1, c1, and d1 are now clear, so the rooks can connect as White develops.",
       "popup": "Qd3！后离开d1\nb1✓ c1✓ d1✓\n 出子的同时， 车自然连接！",
       "highlights": [
         {
@@ -133,16 +141,19 @@
     {
       "index": 20,
       "move": "Qe2",
+      "popup_en": "Qe2 continues to reposition the queen. The d1-square stays clear, so the rooks are ready to connect.",
       "popup": "Qe2！后继续调整\nd1依然空着，连接条件成熟"
     },
     {
       "index": 23,
       "move": "Re8",
+      "popup_en": "...Re8! Black activates a rook on the e-file as well.",
       "popup": "Re8！黑方车也激活，进占e列！"
     },
     {
       "index": 24,
       "move": "Rfe1",
+      "popup_en": "Rfe1! The rooks are connected: the route from a1 to e1 is clear because b1, c1, and d1 have been vacated. Development has naturally connected the rooks.",
       "popup": "Rfe1！双车连接完成！\nRa1——b1空——c1空——d1空——Re1\n双车自然连通！",
       "highlights": [
         {

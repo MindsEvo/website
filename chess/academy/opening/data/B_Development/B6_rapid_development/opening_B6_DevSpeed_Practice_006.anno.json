@@ -9,10 +9,12 @@
       "g1",
       "f1"
     ],
+    "popup_en": "Rapid Development, Practice 6\nFollow sound development principles even in unusual positions.",
     "popup": "快速出子第6局\n在非常规局面中也要坚持正确的出子顺序",
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: sound development principles apply in every opening variation.",
     "popup": "总结：标准出子顺序在任何变例中都适用",
     "voice": true
   },
@@ -24,46 +26,55 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game and claims central space.",
       "popup": "e4开局"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's central advance.",
       "popup": "e5对称"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops White's first minor piece, following the right order.",
       "popup": "Nf3出动\n第1个轻子，正确"
     },
     {
       "index": 3,
       "move": "f5",
+      "popup_en": "...f5! Black pushes a flank pawn in the unusual From's Gambit: aggressive, but risky.",
       "popup": "f5！黑方推翼兵\n费隆佐尼弃兵，激进但有风险"
     },
     {
       "index": 4,
       "move": "Nxe5",
+      "popup_en": "Nxe5! White takes advantage of the weakness on e5 created by Black's ...f5.",
       "popup": "Nxe5！白马抓机会\n黑方f5推兵后e5弱了"
     },
     {
       "index": 5,
       "move": "Qf6",
+      "popup_en": "...Qf6 brings the queen out early to chase the knight, spending time that Black needs for development.",
       "popup": "Qf6黑方后出动\n⚠️ 黑方后过早出动，追逐白马"
     },
     {
       "index": 6,
       "move": "Nc4",
+      "popup_en": "Nc4 saves the knight and lets Black's queen waste another tempo.",
       "popup": "Nc4马后退\n白马保留，让黑方后扑空"
     },
     {
       "index": 7,
       "move": "fxe4",
+      "popup_en": "...fxe4 captures the central pawn.",
       "popup": "fxe4黑方推进"
     },
     {
       "index": 8,
       "move": "Nc3",
+      "popup_en": "Nc3! White develops the second knight instead of reacting to the queen's threat.",
       "popup": "Nc3！白方第2个马出动\n继续发展，不理会黑方威胁",
       "highlights": [
         {
@@ -77,31 +88,37 @@
     {
       "index": 9,
       "move": "Qf7",
+      "popup_en": "...Qf7 moves the queen again. It has spent two moves (f6-f7) while Black falls further behind in development.",
       "popup": "Qf7后再移动\n黑方后已走2步（f6→f7）\n发展落后"
     },
     {
       "index": 10,
       "move": "Ne3",
+      "popup_en": "Ne3 repositions the knight flexibly.",
       "popup": "Ne3马调整\n白方灵活部署"
     },
     {
       "index": 11,
       "move": "c6",
+      "popup_en": "...c6 reinforces Black's position.",
       "popup": "c6黑方稳固"
     },
     {
       "index": 12,
       "move": "d3",
+      "popup_en": "d3 opens a diagonal for White's bishop.",
       "popup": "d3推进\n打开象的通道"
     },
     {
       "index": 13,
       "move": "exd3",
+      "popup_en": "...exd3 exchanges pawns in the center.",
       "popup": "exd3兑换"
     },
     {
       "index": 14,
       "move": "Bxd3",
+      "popup_en": "Bxd3 develops White's third minor piece to an active square.",
       "popup": "Bxd3！象出动\n白方第3个轻子出动，到达最佳位置",
       "highlights": [
         {
@@ -116,11 +133,13 @@
     {
       "index": 15,
       "move": "d5",
+      "popup_en": "...d5 challenges the center.",
       "popup": "d5黑方争中心"
     },
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "O-O! White has developed the minor pieces and now castles immediately to secure the king.",
       "popup": "O-O！易位\n轻子全出，立即易位",
       "highlights": [
         {
@@ -136,11 +155,13 @@
     {
       "index": 17,
       "move": "Nf6",
+      "popup_en": "...Nf6 finally develops Black's knight, but it is late.",
       "popup": "Nf6黑方马出动（较晚）"
     },
     {
       "index": 18,
       "move": "Re1",
+      "popup_en": "Re1! The rook becomes active after White has castled. This is the proper order: develop, castle, then bring the rook into play.",
       "popup": "Re1！车激活\n只有完成易位后车才出动\n这是出子顺序的正确示范",
       "highlights": [
         {
@@ -155,21 +176,25 @@
     {
       "index": 19,
       "move": "Be7",
+      "popup_en": "...Be7 develops Black's bishop.",
       "popup": "Be7黑方象出动"
     },
     {
       "index": 20,
       "move": "Nf5",
+      "popup_en": "Nf5 uses White's lead in development to seize an active square.",
       "popup": "Nf5马激进\n利用先手优势"
     },
     {
       "index": 21,
       "move": "O-O",
+      "popup_en": "...O-O finally brings Black's king to safety.",
       "popup": "O-O黑方终于易位"
     },
     {
       "index": 22,
       "move": "Bg5",
+      "popup_en": "Bg5! White's last undeveloped piece joins the game. The bishop pins Nf6 to the queen on e7, so the knight cannot move without exposing the more valuable piece. Complete development makes every piece a potential threat.",
       "popup": "Bg5！出子完整的奖励！\nc1象终于出动，全部子力激活\nBg5牵制Nf6——因为Nf6被象钉在Be7上，\n不能轻易移动，否则损失更大的子\n这就是出子完整后每颗子都有威胁力的体现！",
       "highlights": [
         {

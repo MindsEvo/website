@@ -3,14 +3,17 @@
     "gene_id": "C10_weak_squares",
     "sequence": 2,
     "concept": "失去象造成弱格",
+    "concept_en": "Weak Squares After Losing a Bishop",
     "question_cn": "尼姆佐印度开局中黑方Bb4兑换白方Nc3（Qxc3回吃）。这个兑换对棋盘格局有什么长期影响？",
+    "question_en": "In the Nimzo-Indian, Black plays Bb4 and exchanges for White's Nc3, which is recaptured with Qxc3. What is the long-term effect?",
     "options": [
-        {"key": "A", "text_cn": "白方获得双象优势，全盘格子都被白方控制"},
-        {"key": "B", "text_cn": "黑方失去黑格象，黑方阵中d4/e4等黑色格子趋向弱化"},
-        {"key": "C", "text_cn": "白方叠兵形成，c列成为永久弱点"},
-        {"key": "D", "text_cn": "没有长期影响，兑换只影响当前步数"}
+        {"key": "A", "text_cn": "白方获得双象优势，全盘格子都被白方控制", "text_en": "White gains the bishop pair and controls every square on the board."},
+        {"key": "B", "text_cn": "黑方失去黑格象，黑方阵中d4/e4等黑色格子趋向弱化", "text_en": "Black loses the dark-squared bishop, so dark squares such as d4 and e4 in Black's position become weaker."},
+        {"key": "C", "text_cn": "白方叠兵形成，c列成为永久弱点", "text_en": "White gets doubled pawns, making the c-file a permanent weakness."},
+        {"key": "D", "text_cn": "没有长期影响，兑换只影响当前步数", "text_en": "There is no long-term effect; the exchange only changes the move count."}
     ],
     "correct": "B",
     "explanation_cn": "Bb4（黑格象，b4是黑格）兑换Nc3后，黑方失去黑格象。核心公式：失去某颜色的象 → 己方该颜色的格子趋向弱化，因为再也没有象能守护或反制这些格子。白方Qxc3回吃无叠兵，保持兵型完整，但黑方d4/e4等黑格在中局将成为白方棋子（尤其是马）长期驻守的弱格。",
+    "explanation_en": "After Bb4 exchanges for Nc3 and White recaptures with Qxc3, Black has lost the dark-squared bishop. Squares of that color tend to weaken because Black no longer has a bishop to defend or challenge them. White keeps an intact pawn structure, while squares such as d4 and e4 may become lasting outposts for White's pieces, especially a knight.",
     "created_at": "2026-06-13"
 }

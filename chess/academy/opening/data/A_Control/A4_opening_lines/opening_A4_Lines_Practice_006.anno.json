@@ -9,10 +9,12 @@
       "d8"
     ],
     "popup": "线路控制第6课\n白方主动弃子打开d线\n车抢占D线， 黑方被全面压制",
+    "popup_en": "Line Control, Lesson 6\nWhite sacrifices material to open the d-file, then seizes it with a rook and puts Black under pressure.",
     "voice": true
   },
   "outro": {
     "popup": "Rxd7侵入，兑换连击，白方赢后！\n打开线路不是目的——立刻用车侵入才是。\n线路控制 = 打开 + 即刻参战！",
+    "popup_en": "Rxd7 penetrates and triggers a winning exchange sequence. Opening a file is not the goal by itself: bring a rook in immediately.\nFile control = open the line + use it at once.",
     "voice": true
   },
   "board_always": {
@@ -27,6 +29,7 @@
       "index": 0,
       "move": "e4",
       "popup": "⬆️ <b>1.e4 — 开放局，d线将成为主战场。</b><br>e4 开局，本局的核心是 d 线——白方将用一系列手段把 d 线彻底打开。",
+      "popup_en": "⬆️ <b>1.e4 - An open game where the d-file will become the main battleground.</b><br>White will use a series of exchanges and sacrifices to clear the file.",
       "highlights": [
         {
           "squares": [
@@ -43,6 +46,7 @@
       "index": 1,
       "move": "e5",
       "popup": "⬇️ <b>1...e5 — 菲利多尔防御的起点。</b><br>黑方 e5 对称占中心，但下一步选择 d6 而非 Nf6，进入菲利多尔防御——以稳固为主，代价是子力发展稍慢。",
+      "popup_en": "⬇️ <b>1...e5 - The Philidor Defense begins.</b><br>Black mirrors White in the center and will choose ...d6 rather than ...Nf6, building a solid setup at the cost of slower development.",
       "highlights": [
         {
           "squares": [
@@ -59,6 +63,7 @@
       "index": 2,
       "move": "Nf3",
       "popup": "⬆️ <b>2.Nf3 — 白马出动，攻击 e5。</b><br>Nf3 攻击 e5，迫使黑方应对，同时为 d4 推进做准备。",
+      "popup_en": "⬆️ <b>2.Nf3 - Develop and attack e5.</b><br>The knight pressures e5 and prepares the d4 advance.",
       "highlights": [
         {
           "squares": [
@@ -81,6 +86,7 @@
       "index": 3,
       "move": "d6",
       "popup": "⬇️ <b>2...d6 — 菲利多尔！兵链封住 d 线。</b><br>d6 保护 e5<b>关键点：d6 兵现在占着 d 线，白方将想办法清除它！</b>",
+      "popup_en": "⬇️ <b>2...d6 - The Philidor structure blocks the d-file.</b><br>The pawn supports e5. <b>Key point: the pawn on d6 occupies the d-file, which White will try to clear.</b>",
       "highlights": [
         {
           "squares": [
@@ -103,6 +109,7 @@
       "index": 4,
       "move": "d4",
       "popup": "⬆️ <b>3.d4 — 白方推中心，挑战 e5！</b><br>d4 直接攻击 e5，逼黑方表态。若 exd4，d 线开放；若 e4，d 线被关闭但兵型冒进。",
+      "popup_en": "⬆️ <b>3.d4 - White challenges the center and e5!</b><br>The pawn attacks e5 and asks Black to choose. After ...exd4 the d-file may open; an advance to ...e4 would close it but overextend the pawn.",
       "highlights": [
         {
           "squares": [
@@ -125,6 +132,7 @@
       "index": 5,
       "move": "Bg4",
       "popup": "⬇️ <b>3...Bg4 — 黑象出来钉住 f3 马！</b><br>黑方 Bg4 钉住 Nf3，若马移走 d4 无人保护。看似聪明，但这步给了白方机会——接下来白方用两次兑换彻底打开 d 线！",
+      "popup_en": "⬇️ <b>3...Bg4 - Black pins the f3-knight!</b><br>If the knight moves, d4 may lose its defender. The pin looks useful, but it gives White a chance to clear the d-file with a sequence of exchanges.",
       "highlights": [
         {
           "squares": [
@@ -148,6 +156,7 @@
       "index": 6,
       "move": "dxe5",
       "popup": "⬆️ <b>4.dxe5 — 白方主动吃 e5！第一步打开 d 线！</b><br>dxe5 吃掉 e5，d4 兵消失，d 线开始清理。现在 d 线上只剩黑方的 d6 兵。",
+       "popup_en": "⬆️ <b>4.dxe5 - White captures on e5 and starts clearing the d-file!</b><br>The d-pawn leaves d4. Black's d6-pawn is now the last pawn blocking the file.",
       "highlights": [
         {
           "squares": [
@@ -171,6 +180,7 @@
       "index": 7,
       "move": "Bxf3",
       "popup": "⬇️ <b>4...Bxf3 — 黑象吃马！</b><br>黑方兑换 Bxf3，吃掉被钉住的 f3 马。但现在白方可以用后吃回，后到 f3 后视线大开，d 线的控制将更加直接。",
+       "popup_en": "⬇️ <b>4...Bxf3 - Black exchanges the bishop for the pinned knight.</b><br>White can recapture with the queen, placing it actively on f3 and preparing more direct pressure on the d-file.",
       "highlights": [
         {
           "squares": [
@@ -193,6 +203,7 @@
       "index": 8,
       "move": "Qxf3",
       "popup": "⬆️ <b>5.Qxf3 — 白后到 f3！视野大开！</b><br>后到 f3，控制 d5、a8-h1 对角线，同时瞄准 d 线方向。现在白方想清除 d 线上最后的障碍——d6 兵。",
+       "popup_en": "⬆️ <b>5.Qxf3 - The queen recaptures on f3!</b><br>From f3 it eyes d5, the a8-h1 diagonal, and the d-file. White is ready to remove the last blocker, the pawn on d6.",
       "highlights": [
         {
           "squares": [
@@ -216,6 +227,7 @@
       "index": 9,
       "move": "dxe5",
       "popup": "⬇️ <b>5...dxe5 — 黑方 d6 兵消失！d 线完全打开！</b><br>黑方 d6 吃 e5，d 线上最后的障碍移走了——d 线从 d1 到 d8 完全畅通！\n🎯 <b>这是本局的关键时刻：d 线开放，白方必须立刻行动！</b>",
+       "popup_en": "⬇️ <b>5...dxe5 - The d6-pawn leaves the file!</b><br>Black captures on e5, clearing the final blocker. The d-file is now open from d1 to d8.\n🎯 <b>This is the critical moment: White should use the open file immediately.</b>",
       "highlights": [
         {
           "squares": [
@@ -239,6 +251,7 @@
       "index": 10,
       "move": "Bc4",
       "popup": "⬆️ <b>6.Bc4 — 象出动，瞄准 f7！</b><br>象到 c4，瞄准 f7 要害，同时配合后在 f3 形成对黑方王翼的双重威胁。白方子力迅速协调，为长易位后用车占 d 线做准备。",
+       "popup_en": "⬆️ <b>6.Bc4 - Develop the bishop and target f7!</b><br>The bishop and queen on f3 coordinate against Black's kingside. White prepares to castle long and place a rook on the open d-file.",
       "highlights": [
         {
           "squares": [
@@ -261,6 +274,7 @@
       "index": 11,
       "move": "Nf6",
       "popup": "⬇️ <b>6...Nf6 — 黑马出动，保护 e4。</b><br>Nf6 发展，保护 e4 格，但黑方开局已经落后——象被兑换、d 线被打开，白方占有明显的线路优势。",
+       "popup_en": "⬇️ <b>6...Nf6 - Develop and guard e4.</b><br>Black brings out a knight, but White has opened the d-file and gained a clear advantage in line control.",
       "highlights": [
         {
           "squares": [
@@ -277,6 +291,7 @@
       "index": 12,
       "move": "Qb3",
       "popup": "⬆️ <b>7.Qb3 — 后转 b3，双攻 f7 和 b7！</b><br>后到 b3，与 Bc4 联手双攻 f7，同时威胁 b7 兵。黑方必须同时应对两个威胁，被迫走出防守步。",
+       "popup_en": "⬆️ <b>7.Qb3 - The queen attacks f7 and b7!</b><br>Working with Bc4, the queen pressures f7 and also eyes b7. Black must respond to two threats at once.",
       "highlights": [
         {
           "squares": [
@@ -305,6 +320,7 @@
       "index": 13,
       "move": "Qe7",
       "popup": "⬇️ <b>7...Qe7 — 黑后到 e7 防守 f7。</b><br>黑方只能用后来挡住 f7 的威胁，但后在 e7 挡住了 f8 象的出路，阵型更加拥挤。黑方越来越难以应对。",
+       "popup_en": "⬇️ <b>7...Qe7 - The queen defends f7.</b><br>Black meets the threat, but the queen blocks the bishop on f8 and leaves Black's pieces cramped.",
       "highlights": [
         {
           "squares": [
@@ -327,6 +343,7 @@
       "index": 14,
       "move": "Nc3",
       "popup": "⬆️ <b>8.Nc3 — 白马出动，增援进攻！</b><br>Nc3 发展，支援 d5 和 e4，完善进攻阵型。白方现在后（b3）+象（c4）+马（c3）全部指向黑方王翼，下一步是弃子连击！",
+       "popup_en": "⬆️ <b>8.Nc3 - Develop another attacker!</b><br>The knight supports central squares and joins the queen and bishop in targeting Black's kingside. White is preparing a tactical sacrifice.",
       "highlights": [
         {
           "squares": [
@@ -350,6 +367,7 @@
       "index": 15,
       "move": "c6",
       "popup": "⬇️ <b>8...c6 — 黑方试图保护 b5。</b><br>c6 防止白方 Nb5，但留下了 b5 格的临时弱点——白方将在下一步利用这个时机发动弃子攻击！",
+       "popup_en": "⬇️ <b>8...c6 - Black tries to secure b5.</b><br>The move prevents Nb5 but creates a temporary weakness on b5, which White can exploit tactically.",
       "highlights": [
         {
           "squares": [
@@ -366,6 +384,7 @@
       "index": 16,
       "move": "Bg5",
       "popup": "⬆️ <b>9.Bg5 — 象到 g5，钉住 f6 马！</b><br>Bg5 钉住 Nf6（f6 马若动，e7 后暴露在 Bc4 象的攻击下，且 f7 再无防守）。黑方的防线越来越脆弱。",
+      "popup_en": "⬆️ <b>9.Bg5 - Pin the knight on f6!</b><br>If it moves, the queen on e7 may become exposed to Bc4 and f7 may lose a defender. Black's position is under increasing pressure.",
       "highlights": [
         {
           "squares": [
@@ -389,6 +408,7 @@
       "index": 17,
       "move": "b5",
       "popup": "⬇️ <b>9...b5 — 黑方试图驱逐 Bc4！</b><br>b5 攻击 c4 象，想解除威胁。但这步正中白方圈套——弃马连击马上开始！",
+      "popup_en": "⬇️ <b>9...b5 - Black attacks the bishop on c4!</b><br>Black hopes to relieve the pressure, but this move allows White's tactical knight sacrifice.",
       "highlights": [
         {
           "squares": [
@@ -411,6 +431,7 @@
       "index": 18,
       "move": "Nxb5",
       "popup": "⬆️ <b>10.Nxb5！— 弃马！连击开始！</b><br>白马弃子吃 b5！看起来是白送一马——实际上是打开黑方阵型缺口的关键一步。cxb5 之后，Bxb5+ 将军，黑方必须阻挡，d 线的争夺即将到来！",
+      "popup_en": "⬆️ <b>10.Nxb5! - The knight sacrifice begins!</b><br>The knight captures on b5 and appears to be given away, but the move opens a weakness. After ...cxb5, Bxb5+ forces a block and sets up the invasion on the d-file.",
       "highlights": [
         {
           "squares": [
@@ -433,6 +454,7 @@
       "index": 19,
       "move": "cxb5",
       "popup": "⬇️ <b>10...cxb5 — 黑方吃马。</b><br>黑方只能接受弃子，吃掉 b5 马。但 c6 兵移走，c 线开放，Bxb5+ 将军即将到来，黑王完全暴露！",
+      "popup_en": "⬇️ <b>10...cxb5 - Black accepts the sacrifice.</b><br>The c-pawn leaves c6, opening lines. White can now give Bxb5+ and expose Black's king.",
       "highlights": [
         {
           "squares": [
@@ -449,6 +471,7 @@
       "index": 20,
       "move": "Bxb5+",
       "popup": "⬆️ <b>11.Bxb5+！— 将军！黑方必须用马挡！</b><br>象到 b5 将军，黑方只有一个选择：Nbd7 用马挡。但这样 d7 格被马占据，d 线方向将有马可换——为 Rxd7 创造条件！",
+      "popup_en": "⬆️ <b>11.Bxb5+! - Check!</b><br>Black must block with ...Nbd7. The knight on d7 becomes a target on the d-file, preparing the rook's invasion.",
       "highlights": [
         {
           "squares": [
@@ -473,6 +496,7 @@
       "index": 21,
       "move": "Nbd7",
       "popup": "⬇️ <b>11...Nbd7 — 马挡将，但 d7 成为靶子！</b><br>唯一的应对是 Nbd7 挡将，但马在 d7 正好堵在 d 线上——下一步白方长易位，车立刻进驻 d 线，直取 d7！",
+      "popup_en": "⬇️ <b>11...Nbd7 - The knight blocks the check but becomes a target!</b><br>It stands directly on the d-file. White can castle long and bring a rook to the file, aiming at d7.",
       "highlights": [
         {
           "squares": [
@@ -495,6 +519,7 @@
       "index": 22,
       "move": "O-O-O",
       "popup": "⬆️ <b>12.O-O-O！— 长易位，车瞬间对准 d 线！</b><br>长易位后，d1 的车立刻对准完全开放的 d 线，直接瞄准 d7 的马！这一步同时完成了王的安全和重子的激活——线路控制的完美体现！",
+      "popup_en": "⬆️ <b>12.O-O-O! - Castle long and seize the d-file!</b><br>The rook on d1 immediately targets the knight on d7. One move secures the king and activates a heavy piece on the open file.",
       "highlights": [
         {
           "squares": [
@@ -523,6 +548,7 @@
       "index": 23,
       "move": "Rd8",
       "popup": "⬇️ <b>12...Rd8 — 黑方车到 d8，拼死保 d7！</b><br>黑方唯一应对是 Rd8 保护 d7 马。但这只是徒劳——白方 Rxd7 仍然可以执行，因为兑换后整个局面对黑方是灾难性的！",
+      "popup_en": "⬇️ <b>12...Rd8 - Black desperately defends d7.</b><br>The rook protects the knight, but White can still invade with Rxd7 and emerge with a decisive advantage after the exchanges.",
       "highlights": [
         {
           "squares": [
@@ -545,6 +571,7 @@
       "index": 24,
       "move": "Rxd7",
       "popup": "⬆️ <b>13.Rxd7！— 车侵入 d7！d 线控制化为致命实战！</b><br>白车吃 d7 马！尽管 Nxd7 可以吃回，但接下来 Bxe7 赢后，黑方损失惨重。\n🎯 <b>这就是「打开线路，立刻参战」的最直观体现：d 线一打开，车立刻侵入，不给对方任何喘息机会！</b>",
+      "popup_en": "⬆️ <b>13.Rxd7! - The rook invades!</b><br>White captures the knight. If Black recaptures with ...Nxd7, Bxe7 wins the queen.<br>🎯 <b>This is the principle in action: as soon as the file opens, invade before the opponent can reorganize.</b>",
       "highlights": [
         {
           "squares": [
@@ -567,6 +594,7 @@
       "index": 25,
       "move": "Nxd7",
       "popup": "⬇️ <b>13...Nxd7 — 黑方只能吃回。</b><br>黑方用 Nxd7 吃回，但已无法避免接下来的连击：Bxe7 赢走黑方的后！",
+      "popup_en": "⬇️ <b>13...Nxd7 - Black has to recapture.</b><br>But the follow-up Bxe7 wins Black's queen.",
       "highlights": [
         {
           "squares": [
@@ -582,6 +610,7 @@
       "index": 26,
       "move": "Bxe7",
       "popup": "⬆️ <b>14.Bxe7 — 白方赢后！</b><br>Bg5 象吃掉 e7 的后！黑方失去王后，局面彻底崩溃。这一切都源于弃子打开 d 线、车侵入 d7 的连锁效应。",
+      "popup_en": "⬆️ <b>14.Bxe7 - White wins the queen!</b><br>The bishop from g5 captures on e7. Black loses the queen after the sequence set up by opening the d-file and invading d7.",
       "highlights": [
         {
           "squares": [
@@ -604,6 +633,7 @@
       "index": 27,
       "move": "Bxe7",
       "popup": "⬇️ <b>14...Bxe7 — 黑方只能用象吃回。</b><br>黑方用 Bxe7 吃回，损失了后换来一象——已经输掉了局面。",
+      "popup_en": "⬇️ <b>14...Bxe7 - Black recaptures with the bishop.</b><br>Black has traded the queen for a bishop and is in a losing position.",
       "highlights": [
         {
           "squares": [
@@ -619,6 +649,7 @@
       "index": 28,
       "move": "Bxd7+",
       "popup": "⬆️ <b>15.Bxd7+！— 白象将军，再赢一马！</b><br>白方 Bxb5 象（现已吃至 d7）再次将军，吃掉 d7 马！黑方已经亏损了一后一马，局面毫无希望。",
+      "popup_en": "⬆️ <b>15.Bxd7+! - Check and win another knight!</b><br>The bishop that captured on b5 now takes the knight on d7 with check. Black has lost the queen and a knight, with no realistic chances left.",
       "highlights": [
         {
           "squares": [
@@ -641,6 +672,7 @@
       "index": 29,
       "move": "Rxd7",
       "popup": "⬇️ <b>15...Rxd7 — 黑方用车吃回。</b><br>🏁 <b>第6局总结——「弃子打开 d 线，车侵入即刻制胜」：</b><br>• Nxb5+Bxb5 弃子打破黑方阵型，d线完全打开<br>• O-O-O 长易位，车瞬间对准 d 线<br>• Rxd7 侵入，Bxe7 赢后，Bxd7+ 再赢马<br><b>线路控制的最高境界：打开线路 + 立刻参战 = 不可挡的攻势！</b>",
+      "popup_en": "⬇️ <b>15...Rxd7 - Black recaptures with the rook.</b><br>🏁 <b>Game 6 summary: sacrifice to open the d-file, then invade immediately.</b><br>• Nxb5 and Bxb5+ break open Black's position.<br>• O-O-O places a rook on the open file.<br>• Rxd7 invades, Bxe7 wins the queen, and Bxd7+ wins another knight.<br><b>The key principle: open a line and use it at once.</b>",
       "highlights": [
         {
           "squares": [

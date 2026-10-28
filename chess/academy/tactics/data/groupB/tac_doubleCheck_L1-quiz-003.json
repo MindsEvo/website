@@ -7,13 +7,15 @@
   "fen": "4r1k1/1p3ppp/p5q1/2Pp4/3P2n1/1Q3N2/PP4KP/4RR2 b - - 0 1",
   "concept": "揭开将军产生双将",
   "question_cn": "双将最常见的产生方式是什么？",
+  "question_en": "How is double check most commonly created?",
   "options": [
-    {"key": "A", "text_cn": "两个棋子各自独立移动，分别将军"},
-    {"key": "B", "text_cn": "兵升变同时将军"},
-    {"key": "C", "text_cn": "一个棋子移动，同时揭开身后棋子的将军，移动子自身也将军"},
-    {"key": "D", "text_cn": "王走到危险格时触发双将"}
+    {"key": "A", "text_cn": "两个棋子各自独立移动，分别将军", "text_en": "Two pieces move independently and each gives check"},
+    {"key": "B", "text_cn": "兵升变同时将军", "text_en": "A pawn promotes while giving check"},
+    {"key": "C", "text_cn": "一个棋子移动，同时揭开身后棋子的将军，移动子自身也将军", "text_en": "One piece moves to reveal check from a piece behind it, while the moving piece also gives check"},
+    {"key": "D", "text_cn": "王走到危险格时触发双将", "text_en": "The king triggers double check by moving onto a dangerous square"}
   ],
   "correct": "C",
   "explanation_cn": "双将通常由揭开将军（发现将军）产生：某棋子移动，揭开身后棋子对王的攻击线，同时该棋子自身也攻击王。一步棋，两路将军。例如马跳开揭开车将，马本身也攻击王。",
+  "explanation_en": "Double check is most often created by a discovered check: one piece moves to uncover an attack on the king from a piece behind it, while the moving piece also checks the king. One move creates two checking lines, such as a knight moving away to reveal a rook check while the knight also attacks the king.",
   "created_at": "2026-05-26"
 }

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-007",
   "description": "象牺牲引白后，马叉将赢后",
+  "explanation_en": "Black offers the bishop to lure White's queen to g5, where a knight fork attacks the king and queen.",
   "intro": {
     "flash_squares": ["f6", "g5", "h6", "h3"],
     "popup": "💡 <b>引入</b>：黑方行动！黑象在f6，黑马在f4，白后在h6。能用象牺牲引白后到g5，再用马叉将赢后吗？",
+    "popup_en": "💡 <b>Attraction</b>: Black to move. Black's bishop is on f6, knight on f4, and White's queen on h6. Can Black offer the bishop to lure the queen to g5, then win it with a knight fork?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bg5！引白后到g5，Nh3+叉将——马同时攻击Kg1和Qg5，引入赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Bg5 lures White's queen to g5. Nh3+ then forks the king on g1 and queen on g5, winning the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bg5",
       "popup": "黑象Bg5！靠近白后，诱惑白后吃子——引入的第一步！",
+      "popup_en": "Black moves the bishop to g5, offering it to White's queen and beginning the attraction.",
       "highlights": [
         {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h6"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxg5",
       "popup": "白后Qxg5——被引到g5！",
+      "popup_en": "White captures the bishop with Qxg5 and is lured to g5.",
       "highlights": [
         {"squares": ["g5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nh3+",
       "popup": "马Nh3+！同时攻击Kg1和Qg5——绝妙的叉将！",
+      "popup_en": "Nh3+ forks the king on g1 and queen on g5. A brilliant knight fork!",
       "highlights": [
         {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kh1",
       "popup": "白王被迫逃到h1。",
+      "popup_en": "White's king is forced to move to h1.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Nxg5",
       "popup": "马吃后！引入战术完成，黑方赢得白后。",
+      "popup_en": "The knight captures White's queen on g5, completing the attraction tactic.",
       "highlights": [
         {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_skewer_L1-005",
   "description": "先弃后引后到f7，再车串击王和后",
+  "explanation_en": "A forcing decoy-and-skewer combination: the queen sacrifice draws Black's queen to f7, where a rook check attacks the king with the queen behind it.",
   "intro": {
     "flash_squares": ["f8", "a5", "c7", "e6"],
     "popup": "💡 <b>串击</b>：白方先弃后把黑后引到f7，再用车串击黑王和黑后——看出来了吗？",
+    "popup_en": "💡 <b>Skewer</b>: White first sacrifices the queen to lure Black's queen to f7, then uses a rook to skewer the king and queen. Can you spot the idea?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qxf7+弃后引后到f7，Ra7+串击！车攻击c7的王，后方f7还有黑后，王一动车吃后。",
+    "popup_en": "✅ <b>Key idea</b>: Qxf7+ sacrifices the queen and lures Black's queen to f7. Ra7+ then checks the king on c7 with the queen behind it; once the king moves, White captures the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxf7+",
       "popup": "弃后将军！后吃f7兵并将军，引诱黑后来吃——为车的串击布局。",
+      "popup_en": "White sacrifices the queen with Qxf7+, capturing the pawn with check and luring Black's queen to take it, setting up the rook skewer.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxf7",
       "popup": "黑后吃后，来到f7——正好在王的后方，串击陷阱已布好。",
+      "popup_en": "Black's queen captures on f7, landing directly behind the king. The skewer is set.",
       "highlights": [
         {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Ra7+",
       "popup": "车到a7串击！沿第7横线攻击c7的王，后方f7还有黑后——王必须逃！",
+      "popup_en": "The rook checks from a7, attacking the king on c7 along the seventh rank with Black's queen on f7 behind it. The king must move!",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0},
@@ -59,6 +65,7 @@
       "index": 3,
       "move": "Kd8",
       "popup": "黑王逃开，黑后在f7暴露无援。",
+      "popup_en": "The king moves away, leaving the queen on f7 exposed and undefended.",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["f7"], "color": "#FF000055", "duration_ms": 0}
@@ -72,6 +79,7 @@
       "index": 4,
       "move": "Rxf7",
       "popup": "车吃后！弃后换后，白方净赚。",
+      "popup_en": "The rook captures the queen. White sacrificed a queen to win Black's queen and comes out ahead.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

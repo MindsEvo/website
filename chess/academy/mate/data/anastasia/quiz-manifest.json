@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_anastasia_L1-quiz-001",
-                      "label":  "安娜斯塔西亚杀的定义"
+                      "label":  "安娜斯塔西亚杀的定义",
+                      "label_en": "Defining Anastasia's Mate"
                   },
                   {
                       "id":  "mate_anastasia_L1-quiz-002",
-                      "label":  "马在安娜斯塔西亚杀中的作用"
+                      "label":  "马在安娜斯塔西亚杀中的作用",
+                      "label_en": "The Knight's Role in Anastasia's Mate"
                   },
                   {
                       "id":  "mate_anastasia_L1-quiz-003",
-                      "label":  "弃后在安娜斯塔西亚杀中的作用"
+                      "label":  "弃后在安娜斯塔西亚杀中的作用",
+                      "label_en": "The Queen Sacrifice in Anastasia's Mate"
                   },
                   {
                       "id":  "mate_anastasia_L1-quiz-004",
-                      "label":  "安娜斯塔西亚杀成立的条件"
+                      "label":  "安娜斯塔西亚杀成立的条件",
+                      "label_en": "Conditions for Anastasia's Mate"
                   },
                   {
                       "id":  "mate_anastasia_L1-quiz-005",
-                      "label":  "如何防范安娜斯塔西亚杀"
+                      "label":  "如何防范安娜斯塔西亚杀",
+                      "label_en": "How to Prevent Anastasia's Mate"
                   }
               ],
-    "label":  "安娜斯塔西亚杀"
+    "label":  "安娜斯塔西亚杀",
+    "label_en": "Anastasia's Mate"
 }

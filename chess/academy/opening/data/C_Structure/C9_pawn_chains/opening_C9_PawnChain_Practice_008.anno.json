@@ -2,6 +2,7 @@
   "game_id": "C9_PawnChain_Practice_008",
   "description": "E41 — 尼姆佐印度古典变例，大兵链vs根部反击",
   "intro": {
+    "popup_en": "Pawn-Chain Direction, Practice 8\nThe Nimzo-Indian idea: ...Bb4 pins Nc3 and disrupts White's plan to build a broad pawn center. Black immediately challenges the base of the chain with ...c5.",
     "flash_squares": [
       "d4",
       "c4",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: ...g5 drives the bishop from h4 to g3, where Black exchanges it. White then pushes d5-d6, restricting the knight on c6 and creating a dangerous passed pawn. Qd4 joins the pressure, leaving White with a clear positional advantage.",
     "popup": "总结：Bh4被g5逐走 → Bg3换象 → d5-d6兵链强推\nQd4中心化！白方位置优势不可挡！",
     "voice": true
   },
@@ -44,6 +46,7 @@
     },
     {
       "index": 5,
+      "popup_en": "...Bb4! The Nimzo-Indian pin on Nc3 disrupts White's plan to build the c4-d4-e3 pawn chain. This is the core strategic idea of the Nimzo-Indian.",
       "move": "Bb4",
       "popup": "Bb4！Nimzo！钉住Nc3\n准备破坏c4-d4-e3白方兵链\n——尼姆佐核心战略！",
       "highlights": [
@@ -58,11 +61,13 @@
     },
     {
       "index": 6,
+      "popup_en": "e3 completes White's intended c4-d4-e3 pawn chain.",
       "move": "e3",
       "popup": "e3建立c4-d4-e3兵链"
     },
     {
       "index": 7,
+      "popup_en": "...c5! Black attacks the base of the chain at d4 immediately, putting the Nimzo-Indian idea into practice.",
       "move": "c5",
       "popup": "c5！c5攻根部！黑立刻冲击d4\n——Nimzo核心思想实践！",
       "highlights": [
@@ -89,6 +94,7 @@
     },
     {
       "index": 11,
+      "popup_en": "...cxd4 exchanges at the base of White's pawn chain.",
       "move": "cxd4",
       "popup": "cxd4！兑换根部"
     },
@@ -98,6 +104,7 @@
     },
     {
       "index": 13,
+      "popup_en": "d5!! White advances to establish a new pawn chain, answering Black's pressure on d4 with a space-gaining push.",
       "move": "d5",
       "popup": "d5！！白方d5推进！建立新兵链\n用d5来回答黑方对d4的压力",
       "highlights": [
@@ -121,11 +128,13 @@
     },
     {
       "index": 16,
+      "popup_en": "a3 challenges the bishop on b4.",
       "move": "a3",
       "popup": "a3驱逐Bb4"
     },
     {
       "index": 17,
+      "popup_en": "...Bd6 retreats the bishop.",
       "move": "Bd6",
       "popup": "Bd6象撤退"
     },
@@ -143,6 +152,7 @@
     },
     {
       "index": 21,
+      "popup_en": "...dxc4 strikes at the base of White's chain on c4, demonstrating the importance of attacking the pawn-chain base.",
       "move": "dxc4",
       "popup": "dxc4！黑打击c4根部！根部突破战略！"
     },
@@ -156,6 +166,7 @@
     },
     {
       "index": 24,
+      "popup_en": "Re1 activates White's rooks.",
       "move": "Re1",
       "popup": "Re1双车激活"
     },
@@ -185,6 +196,7 @@
     },
     {
       "index": 31,
+      "popup_en": "...g5 expands on the kingside and forces White's bishop away from h4.",
       "move": "g5",
       "popup": "g5！黑方王翼扩张，逼走白象Bh4",
       "highlights": [
@@ -199,16 +211,19 @@
     },
     {
       "index": 32,
+      "popup_en": "Bg3 retreats to safety while keeping control of d6.",
       "move": "Bg3",
       "popup": "Bg3！白象撤守g3，保持对d6格的控制"
     },
     {
       "index": 33,
+      "popup_en": "...Bxg3 exchanges Black's bishop for White's bishop.",
       "move": "Bxg3",
       "popup": "Bxg3！黑方主动换象，消除白象"
     },
     {
       "index": 34,
+      "popup_en": "Nxg3 recaptures and stabilizes White's kingside.",
       "move": "Nxg3",
       "popup": "Nxg3！白马复夺g3，王翼结构巩固",
       "highlights": [
@@ -224,11 +239,13 @@
     },
     {
       "index": 35,
+      "popup_en": "...Nc6 returns the knight to increase pressure on d4.",
       "move": "Nc6",
       "popup": "Nc6！黑马重返c6，向d4继续施压"
     },
     {
       "index": 36,
+      "popup_en": "d5!! White advances the pawn chain, restricting Black's knight on c6 and creating a powerful passed pawn.",
       "move": "d5",
       "popup": "d5！！白方兵链强推！\n封锁黑方c6马，建立强大过路兵",
       "highlights": [
@@ -244,11 +261,13 @@
     },
     {
       "index": 37,
+      "popup_en": "...Ne7 retreats the knight, outside the pawn's control.",
       "move": "Ne7",
       "popup": "Ne7！黑马撤回a避开d5控制范围"
     },
     {
       "index": 38,
+      "popup_en": "d6!! The passed pawn penetrates deep into Black's position and threatens the queenside.",
       "move": "d6",
       "popup": "d6！！白方前锋深入黑阵！\nd6过路兵直逼黑方后翼",
       "highlights": [
@@ -264,11 +283,13 @@
     },
     {
       "index": 39,
+      "popup_en": "...Ng6 tries to maneuver against the advanced d-pawn.",
       "move": "Ng6",
       "popup": "Ng6！黑马机动，试图限制d6兵前进"
     },
     {
       "index": 40,
+      "popup_en": "Qd4 centralizes the queen and coordinates with the pawn on d6 to create strong pressure. White's position is clearly superior.",
       "move": "Qd4",
       "popup": "Qd4！白后强占d4中心！\n与d6兵联动形成强大压力\n白方局面优势明显！",
       "highlights": [
@@ -284,6 +305,7 @@
     },
     {
       "index": 41,
+      "popup_en": "...Nh4 looks for counterplay, but White's positional advantage is already decisive.",
       "move": "Nh4",
       "popup": "Nh4！黑马跳入h4，但白方优势已无法挽回\n白方兵链战术完胜！"
     }

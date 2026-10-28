@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-009",
   "description": "白方主动送出双车换取象将死——反直觉的连续弃子",
+  "explanation_en": "White gives up both rooks to lure Black's queen away, then sacrifices the queen to deflect the b-pawn and open the diagonal for Ba6#.",
   "intro": {
     "flash_squares": ["a1", "h1", "f3", "e2"],
     "popup": "💡 <b>弃子</b>：白方双车在a1和h1，后在f3，象在e2。黑后在a5虎视a1车。白方居然要主动送出双车——你能看出背后的将杀计划吗？",
+    "popup_en": "💡 <b>Sacrifice</b>: White's rooks are on a1 and h1, queen on f3, and bishop on e2. Black's queen eyes the rook on a1. Why would White deliberately give up both rooks? Can you find the mating idea?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：axb4让黑后吃a1车，再让黑后吃h1车，然后Qxc6+引兵，Ba6#！双车全弃，换取象将死。反直觉但无解。",
+    "popup_en": "✅ <b>Key idea</b>: axb4 allows the queen to take the rook on a1, then the rook on h1. Qxc6+ deflects the b-pawn, clearing the diagonal for Ba6#. White sacrifices both rooks and the queen for a forced bishop mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "axb4",
       "popup": "白兵axb4！看似普通吃兵——实际是在邀请黑后吃白方a1车，为后续组合铺路。",
+      "popup_en": "White plays axb4, apparently just capturing a pawn, but inviting Black's queen to take the rook on a1 and setting up the combination.",
       "highlights": [
         {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a1"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxa1+",
       "popup": "黑后Qxa1+！吃掉白车——白王被将，但这正是白方算好的！",
+      "popup_en": "Black's queen captures the rook on a1 with check. White's king is checked, exactly as planned.",
       "highlights": [
         {"squares": ["a1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Kd2",
       "popup": "白王Kd2！王主动走向中央，让开h1车——黑后会继续吃。",
+      "popup_en": "White moves the king to d2, stepping toward the center and leaving the rook on h1 available to capture.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Qxh1",
       "popup": "黑后Qxh1——吃掉第二个车！黑后拥有双车的物质优势，但白方后手已至。",
+      "popup_en": "Black's queen captures the second rook on h1. Black has won both rooks, but White's final idea is ready.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Qxc6+",
       "popup": "白后Qxc6+将军！弃后到c6，引开b7黑兵——为象打开a6的对角线。",
+      "popup_en": "White sacrifices the queen with Qxc6+, deflecting the b-pawn from b7 and opening the diagonal to a6 for the bishop.",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}
@@ -82,6 +90,7 @@
       "index": 5,
       "move": "bxc6",
       "popup": "黑兵必须吃后——b7兵被引走，a6-d3对角线完全打开！",
+      "popup_en": "Black's pawn must capture the queen, leaving b7 and clearing the a6-d3 diagonal.",
       "highlights": [
         {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0}
@@ -95,6 +104,7 @@
       "index": 6,
       "move": "Ba6#",
       "popup": "白象Ba6#！象从e2斜线打到a6，将死黑王！弃双车和后，仅凭一枚象将杀——令人叹为观止的弃子组合！",
+      "popup_en": "Ba6# is checkmate! The bishop delivers mate along the diagonal. White sacrificed both rooks and the queen to finish with a single bishop.",
       "highlights": [
         {"squares": ["a6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c8"], "color": "#FF000055", "duration_ms": 0}

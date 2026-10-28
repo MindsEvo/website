@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-007",
   "description": "黑方中间捉后，再应对换子",
+  "explanation_en": "Black inserts an attack on the undefended queen before dealing with the rook threat.",
   "intro": {
     "flash_squares": ["d7", "a7", "d5"],
     "popup": "💡 <b>中间招</b>：白后a7是挂子。黑方不急着应对Rd5威胁，先Rd7！中间捉后——白后被迫逃跑！",
+    "popup_en": "💡 <b>Intermediate move</b>: White's queen on a7 is undefended. Instead of immediately answering the threat of Rd5, Black plays Rd7! to attack the queen and force it to move.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rd7！中间捉无根白后——白后必须逃，黑方主动争取了时间和子力优势！",
+    "popup_en": "✅ <b>Key idea</b>: Rd7! is an intermediate attack on the undefended queen. White must move it, giving Black time and a material advantage.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rd7",
       "popup": "黑车Rd7！中间招——直接攻击无根的白后a7（挂子），强迫白后先应对！",
+      "popup_en": "Rd7! An intermediate move that directly attacks White's undefended queen on a7, forcing it to respond first.",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qe3",
       "popup": "白后Qe3——被迫逃离，a7挂子威胁解除！黑方中间招成功争取了主动！",
+      "popup_en": "The queen is forced to e3. The threat to the queen on a7 is gone, and Black has gained the initiative with the intermediate move.",
       "highlights": [
         {"squares": ["e3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nf4",
       "popup": "黑马Nf4！现在轮到黑方发展，攻击Qe3——中间招使黑方完全掌握主动！",
+      "popup_en": "Nf4! Black develops while attacking the queen on e3. The intermediate move has given Black full control of the initiative.",
       "highlights": [
         {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e3"], "color": "#FF000055", "duration_ms": 0}

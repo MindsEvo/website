@@ -1,13 +1,16 @@
 {
   "game_id": "tac_skewer_L1-009",
   "description": "串击练习——局面待完善",
+  "explanation_en": "A skewer combination based on a rook sacrifice. The source position is marked as needing refinement; the existing annotation describes the intended line.",
   "intro": {
     "flash_squares": [],
     "popup": "💡 <b>串击</b>：找出本局的串击手段！",
+    "popup_en": "💡 <b>Skewer</b>: Find the skewer in this position!",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxg6弃车引后，Rg8+串击！车攻击黑王，后方还有黑后，王一动车吃后。",
+    "popup_en": "✅ <b>Key idea</b>: Rxg6 sacrifices the rook to lure out the queen. Rg8+ then checks the king with the queen behind it; when the king moves, White captures the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxg6",
       "popup": "弃车！引诱黑后来吃，为串击布局。",
+      "popup_en": "White sacrifices the rook to tempt Black's queen to capture it, setting up the skewer.",
       "highlights": [],
       "concept_arrows": [],
       "concept_lines": []
@@ -24,6 +28,7 @@
       "index": 1,
       "move": "Qxh5",
       "popup": "黑后吃子，但白方随即发动串击。",
+      "popup_en": "Black's queen captures, but White is ready to launch the skewer.",
       "highlights": [],
       "concept_arrows": [],
       "concept_lines": []
@@ -32,6 +37,7 @@
       "index": 2,
       "move": "Rg8+",
       "popup": "车将军串击！攻击黑王，后方还有黑后——王必须逃！",
+      "popup_en": "The rook checks and skewers the king, with Black's queen behind it. The king must move!",
       "highlights": [],
       "concept_arrows": [],
       "concept_lines": []
@@ -40,6 +46,7 @@
       "index": 3,
       "move": "Ke7",
       "popup": "黑王逃离，黑后暴露无援。",
+      "popup_en": "The king moves away, leaving the queen exposed and undefended.",
       "highlights": [],
       "concept_arrows": [],
       "concept_lines": []
@@ -48,6 +55,7 @@
       "index": 4,
       "move": "Rxa8",
       "popup": "车吃后！串击成功，白方获得决定性优势。",
+      "popup_en": "The rook captures the queen. The skewer succeeds, giving White a decisive advantage.",
       "highlights": [],
       "concept_arrows": [],
       "concept_lines": []

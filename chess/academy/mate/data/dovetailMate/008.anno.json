@@ -1,13 +1,16 @@
 {
   "game_id": "mate_dovetailMate_L1-008",
   "description": "燕尾杀：白象走位封锁，黑后对角线将死",
+  "explanation_en": "The bishop moves to complete the blockade around the white king, allowing the black queen to deliver dovetail mate.",
   "intro": {
     "flash_squares": ["g2"],
     "popup": "💡 <b>燕尾杀</b>：注意白王的位置。白象走位后，黑后将从对角线发动燕尾杀。",
+    "popup_en": "💡 <b>Dovetail mate</b>: Watch the white king's position. After the white bishop moves, the black queen will attack along the diagonal.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Ba4走位完成最后封锁，Qf1#燕尾杀。白象的位移是创造将杀条件的关键。",
+    "popup_en": "✅ <b>Key idea</b>: Ba4 completes the final blockade, and Qf1# delivers dovetail mate. The bishop's move creates the mating conditions.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ba4",
       "popup": "白象走a4，完成封锁——配合其他棋子封死白王的逃格。",
+      "popup_en": "The bishop moves to a4 to complete the blockade, working with the other pieces to cover the white king's escape squares.",
       "highlights": [
         {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Qf1#",
       "popup": "黑后Qf1#，燕尾杀！王被己方棋子封死，后沿对角线将死。",
+      "popup_en": "Qf1# is dovetail mate! The king is trapped by its own pieces as the queen delivers mate along the diagonal.",
       "highlights": [
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}

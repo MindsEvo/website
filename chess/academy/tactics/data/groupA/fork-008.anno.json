@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-008",
   "description": "白象捉双——同时攻击两匹马",
+  "explanation_en": "An opening bishop fork example.",
   "intro": {
     "flash_squares": ["b3", "c6", "e4"],
     "popup": "💡 <b>捉双</b>：白象在b3，如何一步同时攻击两匹黑马？",
+    "popup_en": "💡 <b>Fork</b>: White's bishop is on b3. Find a move that attacks both black knights at once.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bd5捉双！象同时攻击c6马和e4马，黑方只能保住一匹。",
+    "popup_en": "✅ <b>Key idea</b>: Bd5 forks the knights on c6 and e4. Black can save only one.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bd5",
       "popup": "象跳d5！同时攻击c6马和e4马——捉双！",
+      "popup_en": "The bishop moves to d5, attacking the knights on c6 and e4 at once. A fork!",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Bb7",
       "popup": "黑方撤象，但两匹马仍无法同时保护。",
+      "popup_en": "Black retreats the bishop, but still cannot save both knights.",
       "highlights": [
         {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e4"], "color": "#FF000055", "duration_ms": 0}
@@ -45,6 +50,7 @@
       "index": 2,
       "move": "Bxe4",
       "popup": "象吃e4马，白方得子！",
+      "popup_en": "The bishop captures the knight on e4, and White wins material!",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

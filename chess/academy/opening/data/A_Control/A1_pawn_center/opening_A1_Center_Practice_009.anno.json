@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "四马开局练习：双方快速出子争夺中心，第4步就爆发正面冲突！",
+    "popup_en": "Four Knights practice: Both sides develop quickly and contest the center, with a direct clash on move four!",
     "voice": true
   },
   "outro": {
     "popup": "快速发展子力并建立中心，是最直接有效的制胜思路。",
+    "popup_en": "Rapid development and central control form a direct and effective winning plan.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "e4",
       "popup": "⬆️ <b>1.e4 — 中心争夺开始！</b><br>白方占 e4，四马开局的起点。",
+      "popup_en": "⬆️ <b>1.e4 - The fight for the center begins!</b><br>White occupies e4, starting the Four Knights Game.",
       "highlights": [
         {
           "squares": [
@@ -44,6 +47,7 @@
       "index": 1,
       "move": "e5",
       "popup": "⬇️ <b>1...e5 — 黑方对称占中心！</b><br>双方对称，中心张力建立。",
+      "popup_en": "⬇️ <b>1...e5 - Black occupies the center symmetrically!</b><br>The position is balanced, with central tension established.",
       "highlights": [
         {
           "squares": [
@@ -60,6 +64,7 @@
       "index": 2,
       "move": "Nf3",
       "popup": "⬆️ <b>2.Nf3 — 白马出动！</b><br>攻击 e5，发展子力。",
+      "popup_en": "⬆️ <b>2.Nf3 - White develops a knight!</b><br>The knight attacks e5 while developing.",
       "highlights": [
         {
           "squares": [
@@ -81,6 +86,7 @@
       "index": 3,
       "move": "Nc6",
       "popup": "⬇️ <b>2...Nc6 — 黑马守护 e5！</b><br>发展并防守，一步完成。",
+      "popup_en": "⬇️ <b>2...Nc6 - Black's knight protects e5!</b><br>Black develops and defends the pawn in one move.",
       "highlights": [
         {
           "squares": [
@@ -102,6 +108,7 @@
       "index": 4,
       "move": "Nc3",
       "popup": "⬆️ <b>3.Nc3 — 第二匹马出动！</b><br>四马开局成型，双方各两匹马争夺中心格。",
+      "popup_en": "⬆️ <b>3.Nc3 - White develops the second knight!</b><br>The Four Knights setup takes shape as both sides contest the center with two knights.",
       "highlights": [
         {
           "squares": [
@@ -129,6 +136,7 @@
       "index": 5,
       "move": "Nf6",
       "popup": "⬇️ <b>3...Nf6 — 四马格局形成！</b><br>黑方第二匹马出动，四马开局完整出现。双方各有两马控制中心，局面对称。",
+      "popup_en": "⬇️ <b>3...Nf6 - All four knights are developed!</b><br>Each side has two knights influencing the center, and the position remains symmetrical.",
       "highlights": [
         {
           "squares": [
@@ -156,6 +164,7 @@
       "index": 6,
       "move": "d4",
       "popup": "⬆️ <b>4.d4 — 白方立即冲中心！</b><br>只用4步就推出 d4！白方选择最直接的中心冲突，不等待，立即摊牌。这与西班牙的「耐心积累」形成鲜明对比。<br>⚡ <b>效率最高：4步就发动中心冲突！</b>",
+      "popup_en": "⬆️ <b>4.d4 - White challenges the center immediately!</b><br>White plays d4 after only four moves, choosing a direct central clash rather than building up patiently as in the Ruy Lopez.<br>⚡ <b>The central battle begins on move four!</b>",
       "highlights": [
         {
           "squares": [
@@ -178,6 +187,7 @@
       "index": 7,
       "move": "exd4",
       "popup": "⬇️ <b>4...exd4 — 黑方吃兵！中心打开！</b><br>黑方吃掉 d4，e 线打开。现在白方如何夺回？",
+      "popup_en": "⬇️ <b>4...exd4 - Black captures and opens the center!</b><br>The e-pawn takes on d4, opening the e-file. How will White recapture?",
       "highlights": [
         {
           "squares": [
@@ -200,6 +210,7 @@
       "index": 8,
       "move": "Nxd4",
       "popup": "⬆️ <b>5.Nxd4 — 马吃 d4，控制中心！</b><br>f3 马跳到 d4，夺回中心，同时从 d4 攻击 c6 马和 f5 格。白方的 d4 马是强力中心子！",
+      "popup_en": "⬆️ <b>5.Nxd4 - The knight recaptures and occupies the center!</b><br>The knight from f3 takes on d4, where it also attacks the c6-knight and controls f5. White has a strong central knight.",
       "highlights": [
         {
           "squares": [
@@ -229,6 +240,7 @@
       "index": 9,
       "move": "Bb4",
       "popup": "⬇️ <b>5...Bb4 — 黑象钉住 c3 马！</b><br>黑象来到 b4，钉住 c3 马——c3 马是 d4 马的支撑。若 c3 马不能动，d4 马就失去后援，双方局面趋于动态平衡。",
+      "popup_en": "⬇️ <b>5...Bb4 - Black pins the knight on c3!</b><br>The c3-knight supports the knight on d4. If it is pinned and cannot move, d4 may lose its support and the position becomes dynamically balanced.",
       "highlights": [
         {
           "squares": [
@@ -256,6 +268,7 @@
       "index": 10,
       "move": "Nxc6",
       "popup": "⬆️ <b>6.Nxc6 — 白方主动兑换！破坏黑方兵形！</b><br>白方 d4 马吃 c6 马，迫使黑方用兵吃回，损坏黑方的兵形结构。<br>🎯 <b>这是以位置优势换取物质平衡的典型手法！</b>",
+      "popup_en": "⬆️ <b>6.Nxc6 - White chooses an exchange to damage Black's pawn structure!</b><br>The d4-knight captures the c6-knight, forcing a pawn recapture.<br>🎯 <b>White trades an active piece for a structural advantage while keeping material balanced.</b>",
       "highlights": [
         {
           "squares": [
@@ -277,6 +290,7 @@
       "index": 11,
       "move": "bxc6",
       "popup": "⬇️ <b>6...bxc6 — 黑方兵形受损！出现双兵岛！</b><br>黑方用 b 兵吃 c6，产生「双兵岛」。这是明显的兵形弱点，白方在长期中会利用这个弱点。",
+      "popup_en": "⬇️ <b>6...bxc6 - Black's pawn structure is damaged!</b><br>The b-pawn recaptures on c6, leaving separated pawn islands and potential long-term weaknesses for White to target.",
       "highlights": [
         {
           "squares": [
@@ -294,6 +308,7 @@
       "index": 12,
       "move": "Bd3",
       "popup": "⬆️ <b>7.Bd3 — 象占 d3，中心控制强格！</b><br>白象发展到 d3，支撑 e4，同时瞄准黑方王翼（h7 方向）。象在 d3 是非常活跃的位置，与 e4 兵形成完美配合。",
+      "popup_en": "⬆️ <b>7.Bd3 - The bishop takes an active square!</b><br>From d3, it supports e4 and eyes Black's kingside, especially h7. The bishop coordinates well with the e4-pawn.",
       "highlights": [
         {
           "squares": [
@@ -321,6 +336,7 @@
       "index": 13,
       "move": "d5",
       "popup": "⬇️ <b>7...d5 — 黑方反攻中心！</b><br>黑方推 d5，反攻 e4，试图打乱白方阵型。若白方不正确应对，局面会变复杂。",
+      "popup_en": "⬇️ <b>7...d5 - Black counterattacks in the center!</b><br>The pawn challenges e4 and tries to disrupt White's setup. An inaccurate response could make the position complicated.",
       "highlights": [
         {
           "squares": [
@@ -343,6 +359,7 @@
       "index": 14,
       "move": "exd5",
       "popup": "⬆️ <b>8.exd5 — 吃 d5，打开中心！</b><br>白方吃 d5，中心线打开。白方现在在 d5 有一个强大的过路兵，黑方必须立即应对。",
+      "popup_en": "⬆️ <b>8.exd5 - White captures and opens the center!</b><br>White captures on d5 and creates a powerful passed pawn that Black must address immediately.",
       "highlights": [
         {
           "squares": [
@@ -364,6 +381,7 @@
       "index": 15,
       "move": "cxd5",
       "popup": "⬇️ <b>8...cxd5 — 黑兵吃 d5，损失孤兵！</b><br>黑方用 c 兵吃 d5，清除过路兵，但 d5 兵孤立无援——它没有其他兵的保护，成为弱点。",
+      "popup_en": "⬇️ <b>8...cxd5 - Black removes the passer but creates an isolated pawn!</b><br>The c-pawn captures on d5, leaving that pawn without support from another pawn and creating a potential weakness.",
       "highlights": [
         {
           "squares": [
@@ -381,6 +399,7 @@
       "index": 16,
       "move": "O-O",
       "popup": "⬆️ <b>9.O-O — 白方易位！</b><br>白方王安全，车激活。所有棋子将协调配合攻击黑方的孤兵 d5。",
+      "popup_en": "⬆️ <b>9.O-O - White castles!</b><br>The king is safe and the rook is activated. White can coordinate the pieces against Black's isolated d5-pawn.",
       "highlights": [
         {
           "squares": [
@@ -403,6 +422,7 @@
       "index": 17,
       "move": "O-O",
       "popup": "⬇️ <b>9...O-O — 黑方易位！</b><br>双方完成易位，进入中局。白方拥有主动权：子力更活跃，黑方有孤兵弱点。",
+      "popup_en": "⬇️ <b>9...O-O - Black castles!</b><br>Both sides are castled. White has more active pieces, while Black must watch the isolated pawn.",
       "highlights": [
         {
           "squares": [
@@ -425,6 +445,7 @@
       "index": 18,
       "move": "Bg5",
       "popup": "⬆️ <b>10.Bg5 — 象发展，钉住黑马！</b><br>象跳到 g5，钉住 f6 马——f6 马是保护 d5 孤兵的重要子力。攻击守护者，间接压迫弱点！",
+      "popup_en": "⬆️ <b>10.Bg5 - The bishop pins the knight!</b><br>The knight on f6 helps defend the isolated d5-pawn. By attacking its defender, White increases pressure on the weakness.",
       "highlights": [
         {
           "squares": [
@@ -452,6 +473,7 @@
       "index": 19,
       "move": "Be6",
       "popup": "⬇️ <b>10...Be6 — 黑象出动防守！</b><br>黑象来到 e6，支援 d5 孤兵，同时阻止白方象的进一步渗透。黑方在努力维持平衡。",
+      "popup_en": "⬇️ <b>10...Be6 - Black develops a defender!</b><br>The bishop supports the isolated pawn on d5 and limits further penetration by White's bishop.",
       "highlights": [
         {
           "squares": [
@@ -473,6 +495,7 @@
       "index": 20,
       "move": "Ne2",
       "popup": "⬆️ <b>11.Ne2 — 马重新部署！准备攻击 d5！</b><br>c3 马通过 e2 重新调整位置，准备跳向 f4 或 d4，直接攻击 d5 孤兵。<br><br>四马开局展示了高效的开局思路：4步就发动中心冲突，通过精确的子力兑换损坏黑方兵形，建立孤兵弱点。白方每步都在围绕攻击弱点积累优势——这就是「中心压制速胜」的核心逻辑！",
+      "popup_en": "⬆️ <b>11.Ne2 - Reroute the knight to target d5!</b><br>The knight from c3 goes via e2 toward f4 or d4, preparing to attack the isolated pawn directly.<br><br>The Four Knights Game shows an efficient plan: challenge the center early, use a precise exchange to damage Black's pawn structure, then build pressure on the isolated pawn. White's moves accumulate around a fixed weakness.",
       "highlights": [
         {
           "squares": [

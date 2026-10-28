@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-010",
   "description": "双方交替中间招，最终黑方得子",
+  "explanation_en": "Both sides insert intermediate attacks, but Black's sequence wins material in the end.",
   "intro": {
     "flash_squares": ["c4", "g1", "b4"],
     "popup": "💡 <b>中间招</b>：黑方Rxc4吃挂马，白方Rg1中间捉后——黑方Rb4中间捉后！双方交替中间招，最终黑方赢得子力！",
+    "popup_en": "💡 <b>Intermediate move</b>: Black captures the loose knight with Rxc4. White inserts Rg1 to attack the queen, and Black counters with Rb4 to attack White's queen. Both sides keep inserting threats, but Black eventually wins material.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：双方交替中间招——谁能坚持到最后谁获胜！Rxc4→Rg1→Rb4→Qxb4，最终Qxg1赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Both sides insert intermediate threats, and the side that calculates the sequence correctly comes out ahead. After ...Rxc4, Rg1, ...Rb4, and Qxb4, Black finishes with ...Qxg1 and wins the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxc4",
       "popup": "黑车Rxc4！吃掉无根的白马（挂子）——中间招序列开始！",
+      "popup_en": "Rxc4! Black captures White's undefended knight and starts the sequence of intermediate moves.",
       "highlights": [
         {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Rg1",
       "popup": "白车Rg1！白方中间招——不急着应对Rxc4，先捉黑后g2（挂子）！",
+      "popup_en": "Rg1! White inserts an attack on Black's undefended queen on g2 instead of immediately responding to ...Rxc4.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rb4",
       "popup": "黑车Rb4！黑方中间招反将——攻击白后Qb6（挂子）！以攻对攻！",
+      "popup_en": "Rb4! Black counters with an intermediate attack on White's undefended queen on b6. It is threat against threat.",
       "highlights": [
         {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Qxb4",
       "popup": "白后Qxb4——吃车应对，但黑方g2后仍无根！",
+      "popup_en": "Qxb4 captures the rook, but Black's queen on g2 is still undefended.",
       "highlights": [
         {"squares": ["b4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Qxg1",
       "popup": "黑后Qxg1！吃掉白车——双方中间招交锋后，黑方净赚子力！",
+      "popup_en": "Qxg1! Black's queen captures the white rook. After the exchange of intermediate threats, Black wins material.",
       "highlights": [
         {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Rxg1",
       "popup": "白车Rxg1——吃回，但黑方已完成中间招序列，净多一马！",
+      "popup_en": "The white rook recaptures on g1, but Black has completed the sequence and remains a knight ahead.",
       "highlights": [
         {"squares": ["g1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "axb4",
       "popup": "黑兵axb4——吃回白后，最终黑方净多一马，大优！",
+      "popup_en": "The pawn recaptures the white queen on b4. Black finishes a knight ahead and has a winning advantage.",
       "highlights": [
         {"squares": ["b4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "追踪 Bb5 与 Nc6 之间的关系——攻击守护者就是间接控制，这是西班牙开局的战略逻辑",
+    "popup_en": "Follow the relationship between Bb5 and Nc6: attacking a defender is a way to control its target indirectly, a key idea in the Ruy Lopez.",
     "voice": true
   },
   "outro": {
     "popup": "攻击守护者就是间接控制——西班牙开局的战略逻辑。白方不直接攻击 e5，而是瞄准守护 e5 的 Nc6。这条逻辑链贯穿整个西班牙开局，是高级的子力控制形式。",
+    "popup_en": "Attacking a defender is indirect control, a strategic idea of the Ruy Lopez. White does not attack e5 directly; instead, Bb5 targets Nc6, the pawn's defender. This logic runs throughout the opening and is an advanced form of piece control.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "e4",
       "popup": "⬆️ <b>1.e4 — 占领中心！</b><br>白方直接占领 e4，控制 d5 和 f5。西班牙开局从传统的中心占领开始。",
+      "popup_en": "⬆️ <b>1.e4 - Occupy the center!</b><br>White places a pawn on e4, controlling d5 and f5. The Ruy Lopez begins with a classical central claim.",
       "highlights": [
         {
           "squares": [
@@ -51,6 +54,7 @@
       "index": 1,
       "move": "e5",
       "popup": "⬇️ <b>1...e5 — 黑方对称占领！</b><br>黑方也占 e5，中心直接对峙。e5 兵控制 d4 和 f4。",
+      "popup_en": "⬇️ <b>1...e5 - Black occupies the center too!</b><br>The e5-pawn contests the center and controls d4 and f4.",
       "highlights": [
         {
           "squares": [
@@ -73,6 +77,7 @@
       "index": 2,
       "move": "Nf3",
       "popup": "⬆️ <b>2.Nf3 — 马攻击 e5！</b><br>f3 马直接攻击黑方 e5 兵，迫使黑方守护。",
+      "popup_en": "⬆️ <b>2.Nf3 - Attack e5!</b><br>The knight on f3 attacks Black's e5-pawn and makes Black defend it.",
       "highlights": [
         {
           "squares": [
@@ -94,6 +99,7 @@
       "index": 3,
       "move": "Nc6",
       "popup": "⬇️ <b>2...Nc6 — 关键！马守护 e5。</b><br>c6 马是 e5 兵的守护者！这匹马的存在，让 e5 格非常稳固。<br><span style='color:#FF5722;'>★ 记住这匹马：白方下一步就要直接瞄准它！</span>",
+      "popup_en": "⬇️ <b>2...Nc6 - The key defender of e5!</b><br>The knight on c6 protects e5 and makes Black's center more secure.<br><span style='color:#FF5722;'>★ Remember this knight: White is about to target it.</span>",
       "highlights": [
         {
           "squares": [
@@ -115,6 +121,7 @@
       "index": 4,
       "move": "Bb5",
       "popup": "⬆️ <b>3.Bb5 — 西班牙的精髓！攻击守护者！</b><br>白象 b5 直接瞄准 <b>Nc6</b>！注意：白方没有攻击e5，但它威胁要吃掉 <b>e5 的守护者</b> Nc6！<br>逻辑链：Bb5→攻击 Nc6→Nc6 被威胁→e5 的守护动摇→<b>e5 格被间接控制！</b>",
+      "popup_en": "⬆️ <b>3.Bb5 - The essence of the Ruy Lopez: attack the defender!</b><br>The bishop targets <b>Nc6</b>, not e5 itself. White threatens the piece protecting e5.<br>Logic: Bb5 attacks Nc6; Nc6 is pressured; e5 loses support; therefore <b>White indirectly controls e5.</b>",
       "highlights": [
         {
           "squares": [
@@ -148,6 +155,7 @@
       "index": 5,
       "move": "a6",
       "popup": "⬇️ <b>3...a6 — 黑方追逐白象！</b><br>黑方用 a6 驱逐白象，说明 Bb5 的威胁是<b>真实的</b>——黑方必须花一步来应对！",
+      "popup_en": "⬇️ <b>3...a6 - Black chases the bishop!</b><br>Black spends a move responding to Bb5, showing that the pressure on the c6-knight is real.",
       "highlights": [
         {
           "squares": [
@@ -169,6 +177,7 @@
       "index": 6,
       "move": "Ba4",
       "popup": "⬆️ <b>4.Ba4 — 白象退后，威胁依然！</b><br>白象退到 a4，继续盯着 c6 马。白方花了一步退象，但换来了黑方花一步追象——<b>等价的步数交换</b>，而 Bb5-Ba4 的威胁链仍然存在！",
+      "popup_en": "⬆️ <b>4.Ba4 - Retreat, but keep the threat!</b><br>The bishop remains aimed at Nc6. White uses one move to retreat, just as Black used one move to chase it, and the pressure chain continues.",
       "highlights": [
         {
           "squares": [
@@ -190,6 +199,7 @@
       "index": 7,
       "move": "Nf6",
       "popup": "⬇️ <b>4...Nf6 — 黑马出击！</b><br>黑马出动，攻击 e4，反制白方中心。",
+      "popup_en": "⬇️ <b>4...Nf6 - Black counterattacks!</b><br>The knight develops and attacks e4, challenging White's center.",
       "highlights": [
         {
           "squares": [
@@ -211,6 +221,7 @@
       "index": 8,
       "move": "O-O",
       "popup": "⬆️ <b>5.O-O — 白方易位，稳固基础。</b><br>白方王翼易位，将王安全，继续执行长期计划。Ba4 对 Nc6 的威胁依然存在。",
+      "popup_en": "⬆️ <b>5.O-O - White castles and secures the king.</b><br>White continues the long-term plan; the bishop on a4 still pressures Nc6.",
       "highlights": [],
       "concept_arrows": [
         {
@@ -224,6 +235,7 @@
       "index": 9,
       "move": "Be7",
       "popup": "⬇️ <b>5...Be7 — 黑方出象，准备易位。</b><br>黑方发展主教，为易位做准备。",
+      "popup_en": "⬇️ <b>5...Be7 - Develop and prepare to castle.</b><br>Black brings out the bishop and prepares to secure the king.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -231,6 +243,7 @@
       "index": 10,
       "move": "Re1",
       "popup": "⬆️ <b>6.Re1 — 车支撑 e4！</b><br>车移到 e1，支撑 e4 兵。如果黑方 Nxe4，Re1 可以立即夺回。中心控制得到车的加强。",
+      "popup_en": "⬆️ <b>6.Re1 - Support e4 with the rook!</b><br>The rook reinforces the pawn. If Black plays ...Nxe4, White can respond with Re1 and recover the piece. The rook adds support to the center.",
       "highlights": [
         {
           "squares": [
@@ -252,6 +265,7 @@
       "index": 11,
       "move": "b5",
       "popup": "⬇️ <b>6...b5 — 黑方继续追象！</b><br>黑方用 b5 驱逐 a4 的白象，这是第二次逼迫白象后退。",
+      "popup_en": "⬇️ <b>6...b5 - Black chases the bishop again!</b><br>The pawn attacks the bishop on a4 and forces another retreat.",
       "highlights": [
         {
           "squares": [
@@ -273,6 +287,7 @@
       "index": 12,
       "move": "Bb3",
       "popup": "⬆️ <b>7.Bb3 — 白象再退，仍在控制！</b><br>白象退到 b3，依然控制 e6 区域，间接维持对黑方阵型的压力。白象已经移动了三次，但每次都保持了控制价值。",
+      "popup_en": "⬆️ <b>7.Bb3 - Retreat again while maintaining influence!</b><br>The bishop still controls key central squares and pressures Black's setup indirectly. Although it has moved several times, each move preserves useful control.",
       "highlights": [
         {
           "squares": [
@@ -300,6 +315,7 @@
       "index": 13,
       "move": "d6",
       "popup": "⬇️ <b>7...d6 — 黑方稳固阵型。</b><br>d6 支撑 e5，加固中心。",
+      "popup_en": "⬇️ <b>7...d6 - Black solidifies the position.</b><br>The pawn supports e5 and reinforces the center.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -307,6 +323,7 @@
       "index": 14,
       "move": "c3",
       "popup": "⬆️ <b>8.c3 — 准备 d4，中心推进！</b><br>c3 支撑，准备下一步推 d4，在中心建立更大的兵优势。白方的长期计划是 d4+e4 双兵中心。",
+      "popup_en": "⬆️ <b>8.c3 - Prepare the central advance d4!</b><br>The pawn supports d4 and helps White build a larger central presence with pawns on d4 and e4.",
       "highlights": [
         {
           "squares": [
@@ -328,6 +345,7 @@
       "index": 15,
       "move": "O-O",
       "popup": "⬇️ <b>8...O-O — 黑方易位完成！</b><br>双方易位完成，进入西班牙开局中局的复杂战斗。",
+      "popup_en": "⬇️ <b>8...O-O - Black completes castling.</b><br>Both kings are safe, and the complex middlegame of the Ruy Lopez begins.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -335,6 +353,7 @@
       "index": 16,
       "move": "h3",
       "popup": "⬆️ <b>9.h3 — 防止 Bg4 干扰！</b><br>h3 防止黑方 Bg4 钉制 Nf3，保持白方的阵型完整。<br><span style='color:#88CCFF;'>★ 总结：Bb5 → Ba4 → Bb3，白象三步移动，始终通过威胁 Nc6 来<b>间接控制 e5</b>——这就是西班牙开局的战略逻辑！</span>",
+      "popup_en": "⬆️ <b>9.h3 - Prevent ...Bg4!</b><br>White stops Black from pinning Nf3 and keeps the formation intact.<br><span style='color:#88CCFF;'>★ Summary: Bb5, Ba4, and Bb3 keep targeting Nc6, the defender of e5. This is the Ruy Lopez idea of <b>indirectly controlling e5</b>.</span>",
       "highlights": [
         {
           "squares": [

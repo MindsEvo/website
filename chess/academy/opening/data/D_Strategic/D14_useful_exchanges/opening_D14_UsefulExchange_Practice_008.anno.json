@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Demo_008",
   "description": "伦敦体系 D06 — 练习：Ne5占据强格 + 中心推进的兑换时机",
   "intro": {
+    "popup_en": "Useful Exchanges, Practice 8\nThe London System is solid and strategically rich. White can establish a knight on the strong square e5, while Black declines to exchange it and plays ...Qc7. How should White use the outpost, and when should f4 and e4 advance? Follow the plan as exchanges open the c-file.",
     "flash_squares": [
       "e5",
       "d4",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White's plan: occupy e5, secure the kingside with f4 and castling, then advance e4. After cxd4 and exd5 open central lines, Rc1 takes the c-file. The lesson is to preserve a strong outpost rather than exchange prematurely; wait until the position is ready to attack.",
     "popup": "伦敦Ne5体系评估总结\n\n⭐ 白方的战略脚步：\n\n① Ne5占据中心强格\n② f4+O-O稳固王翼后再推e4\n③ cxd4保留中心，exd5开放e列\n④ Rc1占据c列，施压后翼\n\n教训：Ne5强格的价值——\n不要急于与对方兑换，\n等待时机成熟再展开攻势！",
     "voice": true
   },
@@ -24,26 +26,31 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "d4 occupies the center.",
       "popup": "d4 中心"
     },
     {
       "index": 1,
       "move": "d5",
+      "popup_en": "...d5 mirrors White's central advance.",
       "popup": "d5 对称"
     },
     {
       "index": 2,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3 发展马"
     },
     {
       "index": 3,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops Black's knight.",
       "popup": "Nf6 黑方发展马"
     },
     {
       "index": 4,
       "move": "Bf4",
+      "popup_en": "Bf4! The London System bishop is active on f4, influencing e5 and c7. White plans to establish a knight on the strong square e5.",
       "popup": "Bf4！伦敦体系！\n\n⭐ Bf4是伦敦体系的核心！\n象在f4活跃，控制e5+c7\n\n白方准备发展Ne5占强格",
       "highlights": [
         {
@@ -59,16 +66,19 @@
     {
       "index": 5,
       "move": "e6",
+      "popup_en": "...e6 prepares to develop Black's bishop.",
       "popup": "e6 黑方准备发展象"
     },
     {
       "index": 6,
       "move": "e3",
+      "popup_en": "e3 reinforces White's d4-pawn.",
       "popup": "e3 白方已囍d4"
     },
     {
       "index": 7,
       "move": "Bd6",
+      "popup_en": "...Bd6 develops to an active square. If White exchanges with Bxd6, Black's structure is repaired. White should keep the bishop pair and wait for a better moment to exchange.",
       "popup": "Bd6！黑象发展！\n\n⭐ 重要时刻：\n黑象Bd6占据了一个有趣的格\n如果白方走Bxd6，等于帮黑方修复结构！\n白方不要轻易兑象——等待更好时机！",
       "highlights": [
         {
@@ -83,6 +93,7 @@
     {
       "index": 8,
       "move": "Bg3",
+      "popup_en": "Bg3! White preserves the bishop instead of exchanging on d6, continuing development while controlling the h2-b8 diagonal.",
       "popup": "Bg3！白象退后！\n\n⭐ 战略选择：\n白方不急于Bxd6\n而是保留象，继续发展\n现在象在g3，控制h2-b8对角线！",
       "highlights": [
         {
@@ -96,12 +107,14 @@
     },
     {
       "index": 9,
+      "popup_en": "...O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O 黑方入城"
     },
     {
       "index": 10,
       "move": "Bd3",
+      "popup_en": "Bd3! White repositions rather than exchanging on d6. The bishop pair is preserved, e4 remains an option, and White can wait for a more favorable exchange.",
       "popup": "Bd3！白象重新定位！\n\n⭐ 注意：白方选择Bd3而不是Bxd6！\nBd3的目的：\n① 保留双象优势\n② 配合e4的可能推进\n③ 等待更好的兑换时机",
       "highlights": [
         {
@@ -116,16 +129,19 @@
     {
       "index": 11,
       "move": "Nbd7",
+      "popup_en": "...Nbd7 develops and prepares ...c5 or ...e5.",
       "popup": "Nbd7 黑方马发展\n准备c5或e5"
     },
     {
       "index": 12,
       "move": "Nbd2",
+      "popup_en": "Nbd2 develops and prepares Ne5 or the reroute Nf1-e3.",
       "popup": "Nbd2 白方马发展\n准备Ne5或Nf1-e3"
     },
     {
       "index": 13,
       "move": "c5",
+      "popup_en": "...c5! Black counterattacks against d4 and challenges the center.",
       "popup": "c5！黑方反击！\n攻凭d4兵，争夺中心",
       "highlights": [
         {
@@ -139,17 +155,20 @@
     },
     {
       "index": 14,
+      "popup_en": "c3 reinforces d4 and holds the center.",
       "move": "c3",
       "popup": "c3 已囍d4\n稳固中心不让步"
     },
     {
       "index": 15,
+      "popup_en": "...Re8 places a rook on the e-file and prepares ...e5.",
       "move": "Re8",
       "popup": "Re8 车到e列\n准备e5反击"
     },
     {
       "index": 16,
       "move": "Ne5",
+      "popup_en": "Ne5!! White establishes the key outpost, controlling d7 and c6 and supporting a kingside attack with f4-g4. The knight is difficult to dislodge.",
       "popup": "Ne5！！白马占据中心强格！\n\n⭐ Ne5是白方的计划核心！\n马在e5：\n① 控制d7和c6\n② 配合f4-g4进攻王翼\n③ 强格守护很难被封住",
       "highlights": [
         {
@@ -165,6 +184,7 @@
     {
       "index": 17,
       "move": "Qc7",
+      "popup_en": "...Qc7! Black declines to exchange the knight with ...Nxe5. The queen supports e5 and c6 and prepares queenside counterplay with ...b5 or ...a5, preserving White's outpost plan.",
       "popup": "Qc7！黑方不兑马！\n\n黑方选择Qc7而非Nxe5\n• 黑后Qc7守护e5和c6\n• 黑方准备后翼反击（b5/a5）\n• 不为白方兑出Ne5强格计划合播",
       "highlights": [
         {
@@ -179,6 +199,7 @@
     {
       "index": 18,
       "move": "f4",
+      "popup_en": "f4! White reinforces Ne5 and forms an attacking pair, while preparing the central advance e4.",
       "popup": "f4！白方加强王翼！\n\nf4强化了Ne5的支撒\n白方f4+Ne5形成进攻组合\n准备将来的e4中心推进",
       "highlights": [
         {
@@ -193,6 +214,7 @@
     {
       "index": 19,
       "move": "b5",
+      "popup_en": "...b5! Black counterattacks on the queenside, contests b5 and c4, and prepares ...a5 and ...Ba6.",
       "popup": "b5！黑方后翼反击！\n黑方争夺b5-c4空间\n准备a5+Ba6展开后翼攻势",
       "highlights": [
         {
@@ -207,6 +229,7 @@
     {
       "index": 20,
       "move": "O-O",
+      "popup_en": "O-O! White's king is safe, and the position is ready for the e4 advance.",
       "popup": "O-O！白方入城！\n\n王翼安全后，白方准备e4推进\n就位完毕，战略展开！",
       "highlights": [
         {
@@ -221,6 +244,7 @@
     {
       "index": 21,
       "move": "a5",
+      "popup_en": "...a5! Black expands further on the queenside and prepares to activate the bishop with ...Ba6.",
       "popup": "a5！黑方继续扩张！\na5进一步加强后翼展开\n黑方准备Ba6活跃象",
       "highlights": [
         {
@@ -235,6 +259,7 @@
     {
       "index": 22,
       "move": "e4",
+      "popup_en": "e4!! The timing is right: Ne5 and f4 are ready, so White advances in the center. The coming exchanges can open both the e- and c-files.",
       "popup": "e4！！白方中心推进！\n\n⭐ 时机到了！\nNe5+f4已经就位，现在推e4！\n尾堂兑换将开放e列和c列",
       "highlights": [
         {
@@ -249,6 +274,7 @@
     {
       "index": 23,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges Black's c-pawn for the d4-pawn and opens a route on the c-file.",
       "popup": "cxd4！黑兵兑换！\nc5吃d4，黑方消除白方d4兵\n开放了c列的兑换渡道",
       "highlights": [
         {
@@ -263,6 +289,7 @@
     {
       "index": 24,
       "move": "cxd4",
+      "popup_en": "cxd4 recaptures with the c3-pawn and preserves White's strong central pawn on d4.",
       "popup": "cxd4！白方还吃！\n\nc3吃回 d4，中心已经d4稳固\n白方保留强大的d4中心兵",
       "highlights": [
         {
@@ -276,6 +303,7 @@
     {
       "index": 25,
       "move": "Qb6",
+      "popup_en": "...Qb6! Black pressures d4 along the diagonal and also threatens b2. White must defend the central pawn carefully.",
       "popup": "Qb6！黑后施压！\n\n黑后Qb6沿对角线攻凼d4兵\n• b6到d4对角线通畅\n• 同时威胁b2\n白方必须小心防守d4",
       "highlights": [
         {
@@ -290,6 +318,7 @@
     {
       "index": 26,
       "move": "Bf2",
+      "popup_en": "Bf2! The bishop retreats from g3 to defend d4 and also bears down on Black's queenside.",
       "popup": "Bf2！象退守护！\n\nBg3退回 f2，保护d4兵\n• Bf2守护d4对角思路\n• 同时象练f2压制黑方后翼",
       "highlights": [
         {
@@ -304,6 +333,7 @@
     {
       "index": 27,
       "move": "Ba6",
+      "popup_en": "...Ba6! Black activates the c8-bishop on the a6-d3 diagonal, targeting White's bishop and supporting the queenside expansion.",
       "popup": "Ba6！黑象出动！\n\nc8象展开到a6\n• 审视a6-d3对角线，目标Bd3白象\n• 支援黑方后翼活动（b5+a5+Ba6）",
       "highlights": [
         {
@@ -318,6 +348,7 @@
     {
       "index": 28,
       "move": "exd5",
+      "popup_en": "exd5! White exchanges the e-pawn for the d5-pawn, opening the e-file. The c- and e-files are now available for White's rooks.",
       "popup": "exd5！白方兑换！\n\ne4兑d5，白方开放e列\n• 兑换后开放c列和e列\n• 白方车将进入开放列",
       "highlights": [
         {
@@ -332,6 +363,7 @@
     {
       "index": 29,
       "move": "exd5",
+      "popup_en": "...exd5 recaptures with the e6-pawn and keeps a pawn on d5 to control the center.",
       "popup": "exd5！黑兵回吃！\ne6兑d5，黑方保持d5兵\n兑换后黑方d5兵守着中心",
       "highlights": [
         {
@@ -346,6 +378,7 @@
     {
       "index": 30,
       "move": "Rc1",
+      "popup_en": "Rc1!! White occupies the open c-file and pressures Black's queenside. With Ba6 and Qb6 under pressure, the plan is complete: Ne5 outpost, f4 and e4 central expansion, a useful exchange sequence, and finally control of the c-file.",
       "popup": "Rc1！！白车进入开放列！\n\n⭐ 白方计划完整展开：\n车占据c列，施压黑方后翼\n• c列开放，白车占据c1-c7\n• 黑方后翼 Ba6+Qb6 受到压制\n\n这就是兑换时机的艺术：\nNe5强格→f4+e4中心→兑换链→开放c列！",
       "highlights": [
         {

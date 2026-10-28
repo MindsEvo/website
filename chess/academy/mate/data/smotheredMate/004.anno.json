@@ -1,13 +1,16 @@
 {
   "game_id": "mate_smotheredMate_L1-004",
   "description": "四步闷杀：马过渡、双将、弃后、马踏g6",
+  "explanation_en": "A four-step smothered-mate combination: a knight maneuver, double check, queen sacrifice, and final knight mate on g6.",
   "intro": {
     "flash_squares": ["f5", "h4", "h8", "f6"],
     "popup": "💡 <b>精妙闷杀组合</b>：白后在f5，白马在h4，如何用四步组合弃后闷杀黑王？",
+    "popup_en": "💡 <b>Brilliant smothered-mate combination</b>: White's queen is on f5 and knight on h4. How can White sacrifice the queen and mate in four moves?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：马跳g6+逼王，Nf8+双将，Qh7+弃后引马堵路，Ng6#马踏闷杀——过渡引入的经典！",
+    "popup_en": "✅ <b>Key idea</b>: Ng6+ drives the king, Nf8+ gives a double check, and Qh7+ sacrifices the queen to lure the knight into blocking the escape. Ng6# completes the smothered mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng6+",
       "popup": "白马Ng6+将军！马攻击h8，逼迫黑王离开h8跑到h7。",
+      "popup_en": "Ng6+! The knight attacks h8 and forces the black king to move to h7.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kh7",
       "popup": "黑王逃到h7——这正是白方希望的！",
+      "popup_en": "The black king moves to h7, exactly where White wants it.",
       "highlights": [
         {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nf8+",
       "popup": "白马Nf8+双将！马攻击h7，同时揭开后对h7的斜线攻击——黑王必须移动。",
+      "popup_en": "Nf8+! A double check: the knight attacks h7 while uncovering the queen's diagonal attack on h7. The king must move.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "Kh8",
       "popup": "黑王被迫回到h8角落——陷阱完全布好！",
+      "popup_en": "The king is forced back to the corner on h8; the trap is set.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "Qh7+",
       "popup": "白后Qh7+精妙弃后将军！强迫黑马吃后堵死h7，白方随后马踏闷杀。",
+      "popup_en": "Qh7+! A precise queen sacrifice forces the black knight to capture and block h7, setting up the knight mate.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Nxh7",
       "popup": "黑马被迫吃后——h7被堵死！黑王在h8，g7有黑兵，h7有黑马。",
+      "popup_en": "The knight is forced to capture the queen, blocking h7. The king on h8 is boxed in by the pawn on g7 and knight on h7.",
       "highlights": [
         {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Ng6#",
       "popup": "白马Ng6#闷杀！马攻击h8，g7被黑兵封，h7被黑马封，白象守住g8——黑王四面楚歌！",
+      "popup_en": "Ng6# is smothered mate! The knight checks h8; Black's pawn blocks g7, its knight occupies h7, and White's bishop controls g8.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0},

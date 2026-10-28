@@ -1,13 +1,16 @@
 {
   "game_id": "tac_trappedPiece_L1-002",
   "description": "黑象深入白方阵地，困子局面识别",
+  "explanation_en": "The source explanation file is an unfilled placeholder, and this annotation contains no move-by-move line. The existing prompts identify the advanced bishop and queen as pieces to assess for escape routes.",
   "intro": {
     "flash_squares": ["a3", "e3", "a4", "b1"],
     "popup": "💡 <b>困子</b>：黑象在a3，黑后在e3，深入白方阵地。仔细观察：哪些棋子陷入了困境？白方如何利用？",
+    "popup_en": "💡 <b>Trapped piece</b>: Black's bishop is on a3 and queen on e3, deep in White's position. Which pieces may be in trouble, and how can White exploit them?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：黑象a3深入白方领地，白王可以向c2逼近，配合Bb3、Bc3封死象的退路。黑后e3也面临白方重子的围攻。深入对方阵地的棋子要有退路！",
+    "popup_en": "✅ <b>Key idea</b>: Black's bishop on a3 is deep in White's territory. The white king can approach via c2 while bishop moves such as Bb3 and Bc3 restrict its escape. Black's queen on e3 is also under pressure. Advanced pieces need a way back.",
     "voice": true
   },
   "board_always": null,

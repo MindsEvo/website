@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "国王弃兵练习：白方献出一兵——力图争取速度和中心控制权！",
+    "popup_en": "King's Gambit practice: White offers a pawn to gain time and control of the center!",
     "voice": true
   },
   "outro": {
     "popup": "物质可以弥补，但中心失控的代价往往更大——速度有时比一兵更值钱。",
+    "popup_en": "Material can be recovered, but losing control of the center can cost more. In the opening, time may be worth more than a pawn.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "e4",
       "popup": "⬆️ <b>1.e4 — 中心争夺开始！</b><br>白方占据 e4，为即将到来的弃兵策略做准备。",
+      "popup_en": "⬆️ <b>1.e4 - The fight for the center begins!</b><br>White occupies e4 and prepares the coming gambit idea.",
       "highlights": [
         {
           "squares": [
@@ -44,6 +47,7 @@
       "index": 1,
       "move": "e5",
       "popup": "⬇️ <b>1...e5 — 对称占中心！</b><br>黑方也占据 e5，双方平衡对峙。",
+      "popup_en": "⬇️ <b>1...e5 - Black occupies the center too!</b><br>The two sides meet on equal terms in the center.",
       "highlights": [
         {
           "squares": [
@@ -60,6 +64,7 @@
       "index": 2,
       "move": "f4",
       "popup": "⬆️ <b>2.f4 — 国王弃兵！主动献子！</b><br>白方推 f4，直接攻击 e5！这是一种思路，白方愿意让黑方用 exf4 吃掉这个兵，换取中心控制权和发展速度。<br>🎯 <b>核心思想：物质不是最重要的，速度和主动权才是！</b>",
+      "popup_en": "⬆️ <b>2.f4 - The King's Gambit offers a pawn!</b><br>White attacks e5 with f4 and is willing to let Black capture it with ...exf4 in return for central control and faster development.<br>🎯 <b>The key idea: time and initiative can matter more than material.</b>",
       "highlights": [
         {
           "squares": [
@@ -82,6 +87,7 @@
       "index": 3,
       "move": "exf4",
       "popup": "⬇️ <b>2...exf4 — 黑方吃兵！中心让开！</b><br>黑方接受弃兵，吃掉 f4。但代价是：e5 中心消失，e 线打开，白方即将建立强大的 d4 中心！",
+      "popup_en": "⬇️ <b>2...exf4 - Black accepts the gambit!</b><br>Black wins the f4-pawn, but the e5-pawn leaves the center and the e-file opens. White can now build a strong center with d4.",
       "highlights": [
         {
           "squares": [
@@ -104,6 +110,7 @@
       "index": 4,
       "move": "Nf3",
       "popup": "⬆️ <b>3.Nf3 — 马出动，准备 d4！</b><br>白马跳出攻击 e5 线，同时为 d4 的推进做准备。",
+      "popup_en": "⬆️ <b>3.Nf3 - Develop and prepare d4!</b><br>The knight develops while supporting White's central plan.",
       "highlights": [
         {
           "squares": [
@@ -125,6 +132,7 @@
       "index": 5,
       "move": "d5",
       "popup": "⬇️ <b>3...d5 — 黑方最强反击！立即反攻中心！</b><br>黑方推 d5，反攻 e4！这是理论上的最强应对——不能让白方免费建立双兵中心，必须立即争夺！",
+      "popup_en": "⬇️ <b>3...d5 - Black's strongest counter!</b><br>Black strikes at e4 with ...d5 instead of allowing White to build a two-pawn center uncontested.",
       "highlights": [
         {
           "squares": [
@@ -147,6 +155,7 @@
       "index": 6,
       "move": "exd5",
       "popup": "⬆️ <b>4.exd5 — 白兵推进，占领中心！</b><br>",
+      "popup_en": "⬆️ <b>4.exd5 - White's pawn advances and occupies the center!</b><br>",
       "highlights": [
         {
           "squares": [
@@ -168,6 +177,7 @@
       "index": 7,
       "move": "Nf6",
       "popup": "⬇️ <b>4...Nf6 — 黑马攻击 d5！</b><br>黑马跳出，直接攻击 d5的兵，试图收回中心。双方中心争夺进入白热化！",
+      "popup_en": "⬇️ <b>4...Nf6 - Black attacks the d5-pawn!</b><br>The knight develops with tempo and challenges White's central foothold. The fight for the center intensifies.",
       "highlights": [
         {
           "squares": [
@@ -189,6 +199,7 @@
       "index": 8,
       "move": "Bb5+",
       "popup": "⬆️ <b>5.Bb5+ — 将军！赢得时间！</b><br>白象将军，迫使黑方应对，白方赢得一步时间。",
+      "popup_en": "⬆️ <b>5.Bb5+ - Check with tempo!</b><br>The bishop checks and forces Black to respond, gaining White a useful move.",
       "highlights": [
         {
           "squares": [
@@ -212,6 +223,7 @@
       "index": 9,
       "move": "c6",
       "popup": "⬇️ <b>5...c6 — 挡将！同时反击 d5！</b><br>c6 阻止将军，但同时向 d5 施压。现在白方可以进 c6 或退，选择如何处理被攻击的 d5 兵。",
+      "popup_en": "⬇️ <b>5...c6 - Block the check and challenge d5!</b><br>Black blocks the check while attacking the pawn on d5. White must decide whether to capture on c6 or retreat.",
       "highlights": [
         {
           "squares": [
@@ -233,6 +245,7 @@
       "index": 10,
       "move": "dxc6",
       "popup": "⬆️ <b>6.dxc6 — 吃入 c6！白方策略性决定！</b><br>白方用 d5 吃 c6，进入更复杂的局面。黑方的王翼防守出现缺口。",
+      "popup_en": "⬆️ <b>6.dxc6 - White captures on c6!</b><br>White chooses a more complex position by taking on c6, leaving some weaknesses around Black's kingside.",
       "highlights": [
         {
           "squares": [
@@ -248,6 +261,7 @@
       "index": 11,
       "move": "Nxc6",
       "popup": "⬇️ <b>6...Nxc6 — 黑马吃 c6，出子！</b><br>黑马发展到 c6，同时清除白方的侵入兵。黑方出子并巩固阵地。",
+      "popup_en": "⬇️ <b>6...Nxc6 - Black recaptures and develops!</b><br>The knight takes on c6, removing White's advanced pawn while developing and reinforcing Black's position.",
       "highlights": [
         {
           "squares": [
@@ -263,6 +277,7 @@
       "index": 12,
       "move": "d4",
       "popup": "⬆️ <b>7.d4 — 中心建立！仅用7步！</b><br>白方推出d4， <b>弃兵的真实收益：加速建立中心！</b>",
+      "popup_en": "⬆️ <b>7.d4 - White builds the center in just seven moves!</b><br><b>The gambit's real payoff is faster central control.</b>",
       "highlights": [
         {
           "squares": [
@@ -290,6 +305,7 @@
       "index": 13,
       "move": "Bd6",
       "popup": "⬇️ <b>7...Bd6 — 黑象出动防守！</b><br>黑象发展到 d6，限制白方中心兵，同时为易位做准备。黑方也在快速完成开局发展。",
+      "popup_en": "⬇️ <b>7...Bd6 - Black develops the bishop!</b><br>The bishop goes to d6 to restrain White's central pawns and prepare to castle.",
       "highlights": [
         {
           "squares": [
@@ -311,6 +327,7 @@
       "index": 14,
       "move": "O-O",
       "popup": "⬆️ <b>8.O-O — 白方易位，王安全！</b><br>白方易位，王安全后可以全力发动中心和王翼攻击。车在 f1 也支撑了已经让 f4 的区域。",
+      "popup_en": "⬆️ <b>8.O-O - White castles to safety!</b><br>With the king secure, White can focus on the center and kingside. The rook on f1 also supports the f-file.",
       "highlights": [
         {
           "squares": [
@@ -333,6 +350,7 @@
       "index": 15,
       "move": "O-O",
       "popup": "⬇️ <b>8...O-O — 黑方也易位！</b><br>双方完成易位，进入中局。白方手握 e4+d4 双兵中心，局面白方主动。",
+      "popup_en": "⬇️ <b>8...O-O - Black castles too!</b><br>Both kings are safe. White has the e4-d4 pawn center and the initiative.",
       "highlights": [
         {
           "squares": [
@@ -355,6 +373,7 @@
       "index": 16,
       "move": "Nc3",
       "popup": "⬆️ <b>9.Nc3 — 马出动，增援中心！</b><br>c3 马支撑 d4，整合白方力量。现在白方三个主力（马f3、马c3、d4兵）形成强大的中心体系。",
+      "popup_en": "⬆️ <b>9.Nc3 - Develop and reinforce the center!</b><br>The knight supports d4. White's knights on f3 and c3 combine with the d4-pawn to form a strong central setup.",
       "highlights": [
         {
           "squares": [
@@ -382,6 +401,7 @@
       "index": 17,
       "move": "Bg4",
       "popup": "⬇️ <b>9...Bg4 — 黑象骚扰！钉住 f3 马！</b><br>黑象钉住 f3 马，若白方走 f3 马，d4 失去保护。这是黑方对抗中心的常见手段——攻击中心的守护者！",
+      "popup_en": "⬇️ <b>9...Bg4 - Black pins the f3-knight!</b><br>If the knight moves, d4 may lose support. Black challenges the center by attacking one of its defenders.",
       "highlights": [
         {
           "squares": [
@@ -404,6 +424,7 @@
       "index": 18,
       "move": "Qd3",
       "popup": "⬆️ <b>10.Qd3 — 后出动，解除牵制！</b><br>白后从 d1 移到 d3，一举解除 Bg4 的牵制——黑象沿 g4-f3-d1 斜线牵制 f3 马，目标正是 d1 白后。后到 d3 后牵制自动消失，f3 马重获自由。后同时直接支撑 d4 中心兵，并瞄准 h7 斜线。",
+      "popup_en": "⬆️ <b>10.Qd3 - Develop the queen and break the pin!</b><br>The queen leaves d1, so the bishop's pin along g4-f3-d1 disappears and the knight on f3 is free. The queen also supports d4 and eyes the h7 diagonal.",
       "highlights": [
         {
           "squares": [
@@ -426,6 +447,7 @@
       "index": 19,
       "move": "Rc8",
       "popup": "⬇️ <b>10...Rc8 — 黑车抢占 c 线！</b><br>黑方车到 c8，为将来的 c 线反击做准备。",
+      "popup_en": "⬇️ <b>10...Rc8 - Black takes the c-file!</b><br>The rook moves to c8 and prepares counterplay on the c-file.",
       "highlights": [
         {
           "squares": [
@@ -448,6 +470,7 @@
       "index": 20,
       "move": "Ne2",
       "popup": "⬆️ <b>11.Ne2 — 马回调，灵活部署！</b><br>c3 马撤回 e2 重新部署。e2 是中转站：下一步可以跳 f4 争夺关键格，或跳 d4 强化中心。阵型更加灵活，随时可以根据黑方的应对选择最佳方向。",
+      "popup_en": "⬆️ <b>11.Ne2 - Reroute the knight flexibly!</b><br>The c3-knight heads to e2, a useful staging square from which it can reach f4 or reinforce the center. White keeps several plans available.",
       "highlights": [
         {
           "squares": [
@@ -476,6 +499,7 @@
       "index": 21,
       "move": "Nh5",
       "popup": "⬇️ <b>11...Nh5 — 黑马调位，谋求反击！</b><br>f6 马跳到 h5，h5 是跳 f4 的中转站，可与 g4 象配合在王翼形成攻势。",
+      "popup_en": "⬇️ <b>11...Nh5 - Black reroutes the knight for counterplay!</b><br>The knight heads toward f4 via h5 and may coordinate with the bishop on g4 to create kingside threats.",
       "highlights": [
         {
           "squares": [
@@ -498,6 +522,7 @@
       "index": 22,
       "move": "Bd2",
       "popup": "⬆️ <b>12.Bd2 — 补全发展，阵型稳固！</b><br>c1 象出动到 d2，白方完成全部子力出动。Bd2 控制 f4 格，抑制黑马跳 f4 的威胁。 <b>白方用一个 f4 兵换取了持续的主动权和更快的发展速度， 速度 = 主动权 = 攻击机会， 这是一种思路！</b>",
+      "popup_en": "⬆️ <b>12.Bd2 - Complete development and stabilize!</b><br>The bishop develops to d2, controls f4, and limits the black knight's plans. <b>White gave up the f-pawn for lasting initiative and faster development: time can become attacking chances.</b>",
       "highlights": [
         {
           "squares": [

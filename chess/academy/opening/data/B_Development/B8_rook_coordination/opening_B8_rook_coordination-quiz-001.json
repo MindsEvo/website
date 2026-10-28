@@ -3,14 +3,17 @@
     "gene_id": "B8_rook_coordination",
     "sequence": 1,
     "concept": "连接双车的条件",
+    "concept_en": "When Are Rooks Connected?",
     "question_cn": "什么情况下双车才算「连接」？",
+    "question_en": "When are two rooks considered connected?",
     "options": [
-        {"key": "A", "text_cn": "两个车站在同一行或同一列，中间没有任何棋子阻挡"},
-        {"key": "B", "text_cn": "两个车靠在一起，互相保护"},
-        {"key": "C", "text_cn": "两个车都出动了，不管位置"},
-        {"key": "D", "text_cn": "两个车都在开放线上，不管是否连通"}
+        {"key": "A", "text_cn": "两个车站在同一行或同一列，中间没有任何棋子阻挡", "text_en": "They are on the same rank or file with no pieces between them."},
+        {"key": "B", "text_cn": "两个车靠在一起，互相保护", "text_en": "They stand next to each other and protect one another."},
+        {"key": "C", "text_cn": "两个车都出动了，不管位置", "text_en": "Both rooks have been developed, regardless of their squares."},
+        {"key": "D", "text_cn": "两个车都在开放线上，不管是否连通", "text_en": "Both rooks are on open lines, whether or not they can see each other."}
     ],
     "correct": "A",
     "explanation_cn": "双车连接（或称「链接」）是指两个车在同一行或同一列，且中间没有任何棋子阻挡——它们互相「看得见」对方，互相保护。连接后的双车形成一条防线，任何一个车被攻击时另一个可以支援；同时双车可以沿该线联合施压。易位后清空底线正是为了实现这一目标。",
+    "explanation_en": "Connected rooks stand on the same rank or file with no pieces between them, so they can see and support each other. They can defend one another and combine pressure along the line. Castling and clearing the back rank often help connect the rooks.",
     "created_at": "2026-06-13"
 }

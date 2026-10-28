@@ -7,25 +7,31 @@
   "fen": "4r1k1/6pp/8/8/3Q2q1/8/6PP/3R2K1 b - - 0 1",
   "concept": "消除保护的本质",
   "question_cn": "消除保护战术的核心逻辑是什么？",
+  "question_en": "What is the core idea behind removing the defender?",
   "options": [
     {
       "key": "A",
-      "text_cn": "吃掉对方价值最高的棋子来建立物质优势"
+      "text_cn": "吃掉对方价值最高的棋子来建立物质优势",
+      "text_en": "Capture the opponent's most valuable piece to gain a material advantage"
     },
     {
       "key": "B",
-      "text_cn": "先攻击保护者，通过消灭或驱走它，使被保护的目标棋子暴露无援，然后吃掉它"
+      "text_cn": "先攻击保护者，通过消灭或驱走它，使被保护的目标棋子暴露无援，然后吃掉它",
+      "text_en": "Attack the defender first; capture or drive it away to leave its protected target undefended, then take the target"
     },
     {
       "key": "C",
-      "text_cn": "把己方多个棋子集中攻击同一格子，用数量压倒对方的防守"
+      "text_cn": "把己方多个棋子集中攻击同一格子，用数量压倒对方的防守",
+      "text_en": "Concentrate several of your pieces on one square to overwhelm its defense"
     },
     {
       "key": "D",
-      "text_cn": "通过连续将军迫使对方国王暴露，再实施将杀"
+      "text_cn": "通过连续将军迫使对方国王暴露，再实施将杀",
+      "text_en": "Force the enemy king into the open with repeated checks, then checkmate"
     }
   ],
   "correct": "B",
   "explanation_cn": "消除保护的本质是断链：目标棋子之所以「安全「，是因为有保护者在守护它。消除保护战术跳过目标本身，直接攻击保护者——通过吃掉、驱走或牵制保护者，令目标棋子瞬间失去防护，成为可以被直接吃掉的悬空子。整个过程是「先断保护，再取目标「两步逻辑链。",
+  "explanation_en": "The idea is to break the defensive link: a target is safe because a defender protects it. Rather than attack the target directly, remove, deflect, or pin its defender so the target becomes undefended and can be won. The plan is simple: remove the protection, then take the target.",
   "created_at": "2026-05-11"
 }

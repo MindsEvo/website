@@ -1,13 +1,16 @@
 {
   "game_id": "mate_smotheredMate_L1-002",
   "description": "经典闷杀：马跳h6、弃后g8、马踏f7",
+  "explanation_en": "A classic smothered mate: Nh6+ drives the king into the corner, Qg8+ sacrifices the queen, and Nf7# finishes.",
   "intro": {
     "flash_squares": ["f7", "e6", "g8", "a8"],
     "popup": "💡 <b>闷杀</b>：白马在f7，白后在e6，如何用三步闷杀黑王？",
+    "popup_en": "💡 <b>Smothered mate</b>: White's knight is on f7 and queen on e6. How can White checkmate the black king in three moves?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nh6+逼王入角，Qg8+弃后引车，Nf7#马踏闷杀——三步精准组合！",
+    "popup_en": "✅ <b>Key idea</b>: Nh6+ drives the king into the corner, Qg8+ sacrifices the queen to lure the rook, and Nf7# delivers smothered mate in a precise three-move combination.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nh6+",
       "popup": "白马Nh6+将军！马从f7跳到h6，攻击g8，逼迫黑王躲到h8角落。",
+      "popup_en": "Nh6+! The knight jumps from f7 to h6, attacking g8 and forcing the king into the corner on h8.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kh8",
       "popup": "黑王退入h8角落——闷杀的前奏！",
+      "popup_en": "The black king retreats to h8, setting the stage for the smothered mate.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qg8+",
       "popup": "白后Qg8+精妙弃后！强迫黑车吃后，车堵死g8，黑王无路可逃。",
+      "popup_en": "Qg8+! A precise queen sacrifice forces the rook to capture and block g8, leaving the king with no escape.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Rxg8",
       "popup": "黑车被迫吃后——g8被堵死！黑王彻底被自己的棋子围住。",
+      "popup_en": "The rook is forced to take the queen, blocking g8 and completely smothering its own king.",
       "highlights": [
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Nf7#",
       "popup": "白马Nf7#闷杀！黑王在h8，g8有黑车，g7有黑兵，h7有黑兵——四面楚歌，闷杀成功！",
+      "popup_en": "Nf7# is smothered mate! The king on h8 is boxed in by its rook on g8 and pawns on g7 and h7.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

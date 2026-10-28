@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-006",
   "description": "中间将军，赢挂后",
+  "explanation_en": "An intermediate check wins the undefended queen.",
   "intro": {
     "flash_squares": ["b5", "a3", "b7"],
     "popup": "💡 <b>中间招</b>：白车吃b5兵，黑后a3是挂子准备吃白后。白方Rxb5后不应对，先Rb7+将军！",
+    "popup_en": "💡 <b>Intermediate move</b>: After the rook captures the b5-pawn, Black's queen on a3 is undefended and can take White's queen. Instead of responding, White can play the intermediate check Rb7+!",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxb5吃兵后，黑后Qxa3吃后——白方Rb7+中间将军！Qe7被迫，Rxe7+赢回黑后！",
+    "popup_en": "✅ <b>Key idea</b>: After Rxb5 and ...Qxa3, White inserts the intermediate check Rb7+. The queen must block with ...Qe7, allowing Rxe7+ to win it back.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxb5",
       "popup": "白车Rxb5！吃掉黑兵，同时创造Rb7+将军路线！",
+      "popup_en": "Rxb5! The rook captures the black pawn and prepares the checking route to b7.",
       "highlights": [
         {"squares": ["b5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Qxa3",
       "popup": "黑后Qxa3！吃掉白后——但中间将军已准备就绪！",
+      "popup_en": "Qxa3! Black captures White's queen, but the intermediate check is ready.",
       "highlights": [
         {"squares": ["a3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Rb7+",
       "popup": "白车Rb7+！中间将军——黑王被迫，黑后必须来挡！",
+      "popup_en": "Rb7+! An intermediate check forces Black to respond, and the queen must block.",
       "highlights": [
         {"squares": ["b7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g7"], "color": "#FF000055", "duration_ms": 0},
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Qe7",
       "popup": "黑后Qe7——被迫回来拦截将军！",
+      "popup_en": "The queen is forced back to e7 to block the check.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Rxe7+",
       "popup": "白车Rxe7+！吃掉黑后——中间招完成，净赚一后！",
+      "popup_en": "Rxe7+! White captures the black queen. The intermediate-move tactic is complete, and White has won a queen.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -1,13 +1,16 @@
 {
   "game_id": "tac_sacrifice_L1-004",
   "description": "白方弃马引开黑后，后将死黑王",
+  "explanation_en": "White sacrifices the knight with check, forcing Black's queen to capture it and clear the diagonal to h7 for Qh7#.",
   "intro": {
     "flash_squares": ["g5", "c2", "g8", "d8"],
     "popup": "💡 <b>弃子</b>：白马在g5，后在c2，黑王在g8。注意h7格——白方如何弃马打开将杀路线？",
+    "popup_en": "💡 <b>Sacrifice</b>: White's knight is on g5, queen on c2, and Black's king on g8. How can White sacrifice the knight to open a mating route to h7?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Nf6+弃马！迫使黑后吃马（必须应将），白后立刻Qh7#。弃马引后，两步将杀。",
+    "popup_en": "✅ <b>Key idea</b>: Nf6+ sacrifices the knight and forces Black's queen to capture it. Qh7# then delivers mate along the opened diagonal.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nf6+",
       "popup": "白马Nf6+！将军黑王——黑后必须吃马来解将，这正是白方要的！",
+      "popup_en": "White checks with Nf6+, forcing Black's queen to capture the knight. This is exactly what White wants.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxf6",
       "popup": "黑后被迫吃马——但此举让开了白后通往h7的对角线。",
+      "popup_en": "Black's queen is forced to capture the knight, clearing the diagonal for White's queen to reach h7.",
       "highlights": [
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Qh7#",
       "popup": "白后Qh7#！黑王被困死，将死！弃马一步换来立即的后将死。",
+      "popup_en": "Qh7# is checkmate! Black's king is trapped, and the knight sacrifice has enabled immediate mate with the queen.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}

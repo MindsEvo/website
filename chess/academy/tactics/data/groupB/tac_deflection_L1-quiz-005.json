@@ -7,25 +7,31 @@
   "fen": "1B2R1k1/1P3ppp/p7/8/8/5n2/1r3PPP/3q2K1 w - - 0 1",
   "concept": "引离的综合判断",
   "question_cn": "以下关于引离战术的说法，哪一条是错误的？",
+  "question_en": "Which statement about deflection is incorrect?",
   "options": [
     {
       "key": "A",
-      "text_cn": "引离通常需要牺牲子力（献子）来强制执行，亏子力也可能值得"
+      "text_cn": "引离通常需要牺牲子力（献子）来强制执行，亏子力也可能值得",
+      "text_en": "A deflection may require a sacrifice, and the material loss can be worthwhile"
     },
     {
       "key": "B",
-      "text_cn": "引离的目标棋子必须是对方价值最高的棋子（后），否则效果不好"
+      "text_cn": "引离的目标棋子必须是对方价值最高的棋子（后），否则效果不好",
+      "text_en": "The target of a deflection must be the opponent's most valuable piece, the queen, or the tactic will be ineffective"
     },
     {
       "key": "C",
-      "text_cn": "引离可以和将杀、叉击等战术组合使用，形成多步连击"
+      "text_cn": "引离可以和将杀、叉击等战术组合使用，形成多步连击",
+      "text_en": "Deflection can combine with tactics such as checkmate and forks to create a multi-move sequence"
     },
     {
       "key": "D",
-      "text_cn": "防范引离的根本方法是避免让单个棋子同时承担过多防守职责"
+      "text_cn": "防范引离的根本方法是避免让单个棋子同时承担过多防守职责",
+      "text_en": "A fundamental way to prevent deflection is to avoid assigning too many defensive duties to one piece"
     }
   ],
   "correct": "B",
   "explanation_cn": "B是错误说法。引离的目标棋子不一定是后——任何承担关键防守职责的棋子都可以是引离目标，包括车、象、马甚至兵。关键在于：它离开后会造成什么损失（将杀或赢子），而不是它自身的价值高低。实战中引离一个守关键格的车，往往比引离一个无关紧要的后更有战术价值。",
+  "explanation_en": "B is incorrect. The target need not be the queen: any piece with an important defensive duty can be deflected, including a rook, bishop, knight, or even a pawn. What matters is the consequence of its departure, such as checkmate or a material win, not the piece's own value.",
   "created_at": "2026-05-10"
 }

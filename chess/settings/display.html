@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../i18n.css" />
+  <script src="../i18n.js"></script>
   <title>显示界面设置 | 国际象棋智慧平台</title>
   <style>
     :root{--bg:#f8f9fa;--card:#fff;--line:#e8edf5;--text:#2c2c2c;--muted:#666;--blue:#1a73e8;--board-light:#f1f1cf;--board-dark:#769656}
@@ -192,7 +194,9 @@
 
       document.getElementById('btnApply').addEventListener('click', function () {
         save();
-        alert('显示设置已应用');
+        var message = '显示设置已应用';
+        if (window.ChessI18n) message = window.ChessI18n.t(message);
+        alert(message);
       });
 
       document.getElementById('btnCancel').addEventListener('click', function () {

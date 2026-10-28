@@ -1,13 +1,16 @@
 {
   "game_id": "tac_pin_L1-004",
   "description": "白车牵制黑马——牵制与反牵制的博弈",
+  "explanation_en": "Key points:\n1. White's rook pins Black's knight to the rook behind it.\n2. Black advances the rook to prepare a way for the knight to escape.\n3. White brings the knight into play, blocking the exchange route Black hoped to use to break the pin.\n4. After both sides advance pawns, Black's knight is driven away. White's king protects the rook on e3, removing the counter-pin and freeing the white knight.\n5. Seeing the pin no longer works, Black shifts to defend the queenside.\nThis illustrates the balance between a pin and a counter-pin. Material is equal, but White's position is clearly better.",
   "intro": {
     "flash_squares": ["c3", "e5", "e8"],
     "popup": "💡 <b>牵制</b>：白车在c3，黑马在e5，黑车在e8，三子同纵线——白方如何建立牵制？",
+    "popup_en": "💡 <b>Pin</b>: White's rook is on c3, Black's knight on e5, and Black's rook on e8, all on the same file. How can White create a pin?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：牵制是把双刃剑。白车牵制黑马，黑车反牵制白马。白王为白车生根后，反牵制化解，白方占优。",
+    "popup_en": "✅ <b>Key idea</b>: A pin can be a double-edged sword. White pins Black's knight, but Black's rook counter-pins White's knight. Once White's king protects the rook, the counter-pin is neutralized and White has the advantage.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Re3",
       "popup": "白车Re3！沿e列牵制黑马——黑马动则失车。",
+      "popup_en": "White plays Re3, pinning the black knight on the e-file. If the knight moves, Black loses the rook behind it.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Re7",
       "popup": "黑车Re7——上前一步，准备为马跳开创造条件。牵制依然存在。",
+      "popup_en": "Black plays Re7, stepping forward to prepare an escape route for the knight. The pin remains.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
@@ -47,6 +52,7 @@
       "index": 2,
       "move": "Ng5",
       "popup": "白马Ng5参战！阻止黑马跳出后用车兑换，增强对e5的控制。",
+      "popup_en": "White brings the knight to g5, strengthening control of e5 and blocking Black's plan to free the knight by exchanging rooks.",
       "highlights": [
         {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0}
@@ -61,6 +67,7 @@
       "index": 3,
       "move": "Ng6",
       "popup": "黑马Ng6！跳出牵制线，但白马g5挡住了交换路线。",
+      "popup_en": "Black's knight escapes to g6, but White's knight on g5 blocks the intended exchange route.",
       "highlights": [
         {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0}
@@ -74,6 +81,7 @@
       "index": 4,
       "move": "Ne4",
       "popup": "白马Ne4——落入e列，被黑车Re7反牵制！白马暂时无法随意移动。",
+      "popup_en": "White's knight moves to e4 and is counter-pinned by the rook on e7. The knight cannot move freely for now.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e7"], "color": "#FF000055", "duration_ms": 0},
@@ -90,6 +98,7 @@
       "index": 5,
       "move": "a5",
       "popup": "黑兵a5推进，双方开始调兵遣将。",
+      "popup_en": "Black advances the a-pawn, and both sides begin maneuvering.",
       "highlights": [
         {"squares": ["a5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -102,6 +111,7 @@
       "index": 6,
       "move": "f4",
       "popup": "白兵f4推进，为王开路，同时限制黑马的落点。",
+      "popup_en": "White advances the f-pawn, clearing a route for the king and restricting the black knight's squares.",
       "highlights": [
         {"squares": ["f4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -114,6 +124,7 @@
       "index": 7,
       "move": "b5",
       "popup": "黑兵b5跟进，双方边路兵都在推进。",
+      "popup_en": "Black advances the b-pawn; both sides are pushing their flank pawns.",
       "highlights": [
         {"squares": ["b5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -126,6 +137,7 @@
       "index": 8,
       "move": "h4",
       "popup": "白兵h4！准备逼走黑马g6。",
+      "popup_en": "White plays h4, preparing to drive away the black knight on g6.",
       "highlights": [
         {"squares": ["h4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
@@ -140,6 +152,7 @@
       "index": 9,
       "move": "a4",
       "popup": "黑兵继续推进，争取边路空间。",
+      "popup_en": "Black advances the a-pawn again to gain space on the flank.",
       "highlights": [
         {"squares": ["a4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -152,6 +165,7 @@
       "index": 10,
       "move": "h5",
       "popup": "白兵h5！直接威胁h5×g6，黑马被逼离开。",
+      "popup_en": "White advances to h5, directly threatening hxg6 and forcing the knight to move.",
       "highlights": [
         {"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0}
@@ -166,6 +180,7 @@
       "index": 11,
       "move": "Nh8",
       "popup": "黑马Nh8被迫退回！马已远离战场，黑方在e列的反牵制压力减弱。",
+      "popup_en": "The knight is forced back to h8, far from the action, reducing Black's counter-pin pressure on the e-file.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -178,6 +193,7 @@
       "index": 12,
       "move": "Kf3",
       "popup": "白王Kf3！为e3车生根——车有了保护，反牵制彻底化解，白马可以自由移动了。",
+      "popup_en": "White plays Kf3, protecting the rook on e3. The counter-pin is neutralized, and White's knight can move freely again.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
@@ -193,6 +209,7 @@
       "index": 13,
       "move": "Ka7",
       "popup": "黑王Ka7——牵制无效，黑方转去边路防守。",
+      "popup_en": "Black moves the king to a7. The pin has been neutralized, so Black turns to defend the flank.",
       "highlights": [
         {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -205,6 +222,7 @@
       "index": 14,
       "move": "g4",
       "popup": "白兵g4推进，白方兵型活跃，优势明显。",
+      "popup_en": "White advances the g-pawn. White's pawns are active, and the advantage is clear.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -217,6 +235,7 @@
       "index": 15,
       "move": "Rh7",
       "popup": "黑车Rh7转移——去拦截白h兵，这是黑方最后的防线。",
+      "popup_en": "Black moves the rook to h7 to stop White's h-pawn, the last line of defense.",
       "highlights": [
         {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["h5"], "color": "#FF000055", "duration_ms": 0}

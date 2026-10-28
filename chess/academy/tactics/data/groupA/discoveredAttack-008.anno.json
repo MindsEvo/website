@@ -1,13 +1,16 @@
 {
   "game_id": "tac_discoveredAttack_L1-008",
   "description": "车牺牲引后，马闪击双击绝杀",
+  "explanation_en": "A combination of attraction and discovered attack: White sacrifices a rook to draw the queen away, then the knight attacks the queen and threatens mate on e7.",
   "intro": {
     "flash_squares": ["e1", "e5", "f4", "g6", "e8"],
     "popup": "💡 <b>闪击</b>：白车在e1，白马在f4，黑后在e8。先牺牲车引后到e5，再用马闪击——能绝杀吗？",
+    "popup_en": "💡 <b>Discovered attack</b>: White's rook is on e1, knight on f4, and Black's queen on e8. Can White sacrifice the rook to lure the queen to e5, then use a knight move to create a mating attack?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxe5引后到e5，Ng6！马攻后兼胁Ne7将杀——闪击绝杀！",
+    "popup_en": "✅ <b>Key idea</b>: Rxe5 lures the queen to e5. Ng6 attacks the queen and threatens Ne7#, creating a decisive combination.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxe5",
       "popup": "白车Rxe5！牺牲换子，目的是引黑后到e5，为马的闪击做准备。",
+      "popup_en": "White sacrifices the rook with Rxe5, drawing Black's queen to e5 and preparing the knight attack.",
       "highlights": [
         {"squares": ["e5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxe5",
       "popup": "黑后Qxe5——被引到e5，正中白方计谋！",
+      "popup_en": "Black's queen captures on e5 and is lured onto the square White intended.",
       "highlights": [
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Ng6",
       "popup": "白马Ng6！双重威胁：攻击e5的黑后，同时威胁Ne7将杀！黑方无法同时化解。",
+      "popup_en": "White plays Ng6, attacking the queen on e5 and threatening Ne7#. Black cannot meet both threats.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Qxh2",
       "popup": "黑后逃吃——无奈之举，但终局已定。",
+      "popup_en": "Black's queen captures on h2 in a desperate attempt to escape, but the outcome is already decided.",
       "highlights": [
         {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Ne7#",
       "popup": "马Ne7将杀！白马跳e7，攻击g8黑王，四面封死——闪击组合绝杀！",
+      "popup_en": "Ne7# is checkmate! The knight attacks the king on g8, which has no escape squares. The discovered-attack combination wins.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}

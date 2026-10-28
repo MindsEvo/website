@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-004",
   "description": "白兵捉双——同时攻击马和车",
+  "explanation_en": "A pawn fork example.",
   "intro": {
     "flash_squares": ["f4", "e6", "g6"],
     "popup": "💡 <b>捉双</b>：白兵在f4，如何一步同时攻击马和车？",
+    "popup_en": "💡 <b>Fork</b>: White's pawn is on f4. Find a move that attacks the knight and rook at once.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：f5兵叉！兵同时攻击e6马和g6车，对手不能两全。",
+    "popup_en": "✅ <b>Key idea</b>: f5 forks the knight on e6 and rook on g6. Black cannot save both.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "f5",
       "popup": "兵推f5！同时攻击e6马和g6车——兵叉！",
+      "popup_en": "The pawn advances to f5, attacking the knight on e6 and rook on g6 at once. A pawn fork!",
       "highlights": [
         {"squares": ["f5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e6"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Rxg3",
       "popup": "黑车吃马，但局势已定。",
+      "popup_en": "The rook captures the knight, but the position is already decided.",
       "highlights": [
         {"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Bxg3",
       "popup": "象回吃，白方以象换车，得利。",
+      "popup_en": "The bishop recaptures. White has exchanged a bishop for a rook and gained material.",
       "highlights": [
         {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

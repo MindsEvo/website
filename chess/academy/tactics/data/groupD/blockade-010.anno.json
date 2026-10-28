@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-010",
   "description": "马将军逼车阻塞，弃后马将死精妙三步",
+  "explanation_en": "White checks to drive the king to g8, then sacrifices the queen to lure the rook onto g7, where it blocks the king. Nh6# finishes the combination.",
   "intro": {
     "flash_squares": ["h8", "g7", "h6"],
     "popup": "💡 <b>精妙阻塞杀</b>：黑王在h8，有车在f7保护。白方如何连续将军，让黑车阻塞黑王退路，再用马将死？",
+    "popup_en": "💡 <b>Blockade mate</b>: Black's king is on h8 and a rook on f7 guards it. How can White use checks and a queen sacrifice to make the rook block its own king, then mate with the knight?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Ng6+迫使黑王到g8，Qg7+弃后引黑车到g7阻塞，Nh6#马将死！三步行云流水。",
+    "popup_en": "✅ <b>Key idea</b>: Ng6+ drives the king to g8; Qg7+ sacrifices the queen and draws the rook to g7, blocking its king; then Nh6# mates.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng6+",
       "popup": "马将军！黑王被迫离开h8，只能走g8。",
+      "popup_en": "The knight checks, forcing the king away from h8. Its only move is Kg8.",
       "highlights": [
         {"squares": ["g6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Kg8",
       "popup": "黑王走g8，暂时脱将。",
+      "popup_en": "The king moves to g8 and escapes check for the moment.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Qg7+",
       "popup": "弃后将军！黑车必须吃后，进入g7，自己阻断了黑王的逃路。",
+      "popup_en": "White sacrifices the queen with Qg7+, forcing Black's rook to capture on g7 and block the king's escape route.",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Rxg7",
       "popup": "黑车吃后，进入g7——阻塞！黑王退路g7被封死。",
+      "popup_en": "The rook captures the queen on g7 and blocks the king's route to that square.",
       "highlights": [
         {"squares": ["g7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF980055", "duration_ms": 0}
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Nh6#",
       "popup": "马将死！h8被g6马控制，g7被黑车封死，f8被白马封，黑王无处可逃！",
+      "popup_en": "Nh6# is checkmate! The knight controls h8 and f8, while Black's rook blocks g7. The king has no escape.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},

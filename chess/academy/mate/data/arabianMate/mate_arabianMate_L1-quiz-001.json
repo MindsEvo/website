@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 1,
   "concept": "阿拉伯杀的定义",
+  "concept_en": "Defining Arabian Mate",
   "question_cn": "什么是阿拉伯杀（Arabian Mate）？",
+  "question_en": "What is Arabian mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "双车并列将死对方王"
+      "text_cn": "双车并列将死对方王",
+      "text_en": "Two rooks line up to checkmate the enemy king"
     },
     {
       "key": "B",
-      "text_cn": "后在对角线将死被己方棋子封住的王"
+      "text_cn": "后在对角线将死被己方棋子封住的王",
+      "text_en": "A queen checkmates a king trapped by its own pieces along a diagonal"
     },
     {
       "key": "C",
-      "text_cn": "车和马配合，将死困在角落或边格的王"
+      "text_cn": "车和马配合，将死困在角落或边格的王",
+      "text_en": "A rook and knight work together to checkmate a king trapped in a corner or on the edge"
     },
     {
       "key": "D",
-      "text_cn": "马跳将军，王被己方棋子封死"
+      "text_cn": "马跳将军，王被己方棋子封死",
+      "text_en": "A knight gives check while the king's own pieces block its escape squares"
     }
   ],
   "correct": "C",
   "explanation_cn": "阿拉伯杀是车和马的经典配合：车控制一条线（横线或竖线），马封住王的逃格，将死困在角落的王。这是国际象棋历史上最古老的将杀模式之一。",
+  "explanation_en": "Arabian mate is a classic rook-and-knight pattern. The rook controls a rank or file while the knight covers the king's escape squares, checkmating a king trapped near the corner. It is one of the oldest known mating patterns in chess.",
   "created_at": "2026-06-01"
 }

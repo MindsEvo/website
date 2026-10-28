@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "如何防范阿拉伯杀",
+  "concept_en": "How to Prevent Arabian Mate",
   "question_cn": "为避免被阿拉伯杀，以下哪种做法最有效？",
+  "question_en": "What is the most effective way to avoid Arabian mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "用兵围住王，增加防御层数"
+      "text_cn": "用兵围住王，增加防御层数",
+      "text_en": "Surround the king with pawns to add layers of defense"
     },
     {
       "key": "B",
-      "text_cn": "让王远离角落和边格，保持足够的逃格"
+      "text_cn": "让王远离角落和边格，保持足够的逃格",
+      "text_en": "Keep the king away from corners and edges, with enough escape squares"
     },
     {
       "key": "C",
-      "text_cn": "把己方的马换掉，防止对方利用马将杀"
+      "text_cn": "把己方的马换掉，防止对方利用马将杀",
+      "text_en": "Trade off your knight so the opponent cannot use one to mate"
     },
     {
       "key": "D",
-      "text_cn": "主动出击，进攻对方的王"
+      "text_cn": "主动出击，进攻对方的王",
+      "text_en": "Launch an attack against the opponent's king"
     }
   ],
   "correct": "B",
   "explanation_cn": "阿拉伯杀依赖王被困在角落。让王保持在开阔地带，逃格充足，是最直接的防范方法。用兵围王反而可能减少逃格，增加被将死的风险。",
+  "explanation_en": "Arabian mate depends on trapping the king near a corner. Keep the king in open space with plenty of escape squares. Surrounding it with pawns can reduce those squares and increase the mating danger.",
   "created_at": "2026-06-01"
 }

@@ -2,6 +2,7 @@
   "game_id": "B6_DevSpeed_Practice_009",
   "description": "C33 — 弃子换节奏的经典示范",
   "intro": {
+    "popup_en": "Rapid Development, Practice 9\nWhite offers the f-pawn to gain a lead in development.",
     "flash_squares": [
       "e2",
       "d2",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: sacrificing a pawn for development tempo is an advanced application of rapid development.",
     "popup": "总结：弃兵换节奏是快速出子的高阶应用",
     "voice": true
   },
@@ -24,16 +26,19 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 opens the game and claims central space.",
       "popup": "e4开局"
     },
     {
       "index": 1,
       "move": "e5",
+      "popup_en": "...e5 mirrors White's central advance.",
       "popup": "e5对称"
     },
     {
       "index": 2,
       "move": "f4",
+      "popup_en": "f4! The King's Gambit offers the f-pawn to gain development time and central influence.",
       "popup": "f4！国王弃兵！\n主动献出f4兵\n换取快速出子速度\n王翼兵占据中心",
       "highlights": [
         {
@@ -47,11 +52,13 @@
     {
       "index": 3,
       "move": "exf4",
+      "popup_en": "...exf4 accepts the gambit. Black wins a pawn, but White has the move and can develop rapidly.",
       "popup": "exf4黑方接受弃兵\n黑方得兵，白方先手"
     },
     {
       "index": 4,
       "move": "Nf3",
+      "popup_en": "Nf3! White develops the first minor piece and supports e5. Development begins immediately.",
       "popup": "Nf3！第1个轻子出动\n同时保护e5\n立即开始发展",
       "highlights": [
         {
@@ -65,21 +72,25 @@
     {
       "index": 5,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks e4.",
       "popup": "Nf6黑方出动\n攻击e4"
     },
     {
       "index": 6,
       "move": "e5",
+      "popup_en": "e5! White advances, attacks the knight, and gains space in the center.",
       "popup": "e5推进！\n打击黑马，争夺空间\n中心控制"
     },
     {
       "index": 7,
       "move": "Nh5",
+      "popup_en": "...Nh5 sends the knight toward the edge, where it is less active.",
       "popup": "Nh5马被迫边缘化\n黑马跑到边线，位置差"
     },
     {
       "index": 8,
       "move": "Bc4",
+      "popup_en": "Bc4! White develops the second minor piece to an active square, targeting f7. The gambit's compensation is already visible.",
       "popup": "Bc4！第2个轻子出动\n象到意大利格，瞄准f7\n弃兵的收益已经体现：Bc4早早开动！",
       "highlights": [
         {
@@ -94,31 +105,37 @@
     {
       "index": 9,
       "move": "d5",
+      "popup_en": "...d5 counterattacks for space in the center.",
       "popup": "d5黑方反击\n争夺空间"
     },
     {
       "index": 10,
       "move": "exd6",
+      "popup_en": "exd6 captures en passant and simplifies the center.",
       "popup": "exd6过路兵吃\n简化中心"
     },
     {
       "index": 11,
       "move": "Bxd6",
+      "popup_en": "...Bxd6 develops Black's first bishop while recapturing.",
       "popup": "Bxd6黑方象出动\n黑方第1个象出动"
     },
     {
       "index": 12,
       "move": "d4",
+      "popup_en": "d4! White establishes a strong center. Central control and rapid development combine to give White two forms of compensation.",
       "popup": "d4！占中心\n白方牢牢控制中心\n中心控制+快速出子是双重优势"
     },
     {
       "index": 13,
       "move": "O-O",
+      "popup_en": "...O-O secures Black's king in time.",
       "popup": "O-O！黑方易位\n黑方及时易位，王安全"
     },
     {
       "index": 14,
       "move": "O-O",
+      "popup_en": "O-O! After developing three minor pieces, White castles and brings the king to safety.",
       "popup": "O-O！白方易位\n白方3个轻子出动后立即易位",
       "highlights": [
         {
@@ -134,31 +151,37 @@
     {
       "index": 15,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops Black's knight.",
       "popup": "Nc6黑方马出动"
     },
     {
       "index": 16,
       "move": "c3",
+      "popup_en": "c3 supports and stabilizes White's center.",
       "popup": "c3支撑\n稳固中心"
     },
     {
       "index": 17,
       "move": "Bg4",
+      "popup_en": "...Bg4 pins White's knight.",
       "popup": "Bg4牵制\n黑方牵制白方马"
     },
     {
       "index": 18,
       "move": "Qe1",
+      "popup_en": "Qe1 develops the queen and prepares to relieve the pin with flexibility.",
       "popup": "Qe1后激活\n解除牵制，灵活"
     },
     {
       "index": 19,
       "move": "Nf6",
+      "popup_en": "...Nf6 repositions Black's knight.",
       "popup": "Nf6黑方马调整"
     },
     {
       "index": 20,
       "move": "Nbd2",
+      "popup_en": "Nbd2! White develops the fourth minor piece. All minor pieces are now active.",
       "popup": "Nbd2！第4个轻子出动\n白方所有轻子全部出动！",
       "highlights": [
         {
@@ -172,11 +195,13 @@
     {
       "index": 21,
       "move": "Nd5",
+      "popup_en": "...Nd5 brings Black's knight into the center to seek counterplay.",
       "popup": "Nd5黑马跳入"
     },
     {
       "index": 22,
       "move": "Ne4",
+      "popup_en": "Ne4! White's knight attacks. The full sequence is clear: sacrifice a pawn, develop rapidly, complete the setup, and then attack.",
       "popup": "Ne4！白马进攻\n弃兵→快速出子→完整阵型→进攻！\n这是弃兵换节奏的完整链条",
       "highlights": [
         {

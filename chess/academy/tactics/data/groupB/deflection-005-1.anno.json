@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-005",
   "description": "引离白车——解法1：Rxe1引车离g1，后Qg2绝杀",
+  "explanation_en": "Re1 forces White's rook away from g1 to capture. With the king's defender removed, Black's queen delivers mate on g2.",
   "intro": {
     "flash_squares": [
       "e8",
@@ -8,10 +9,12 @@
       "h2"
     ],
     "popup": "💡 解法1：黑车引离g1的白车，黑后从d5杀入g2绝杀！",
+    "popup_en": "💡 Variation 1: Black deflects the white rook from g1, allowing the queen to invade on g2 with checkmate.",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Re1！白车被迫离开g1去吃车，g1空虚，黑后Qg2绝杀——引离就是让守卫者离开关键格。",
+    "popup_en": "✅ Key idea: Re1! forces the white rook away from g1 to capture. The square is left undefended, allowing Qg2#.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Re1!",
       "popup": "黑车Re1！献车引离——白车必须应对，否则e1白车被吃。",
+      "popup_en": "Black plays Re1!, offering the rook to deflect White's rook. White must respond or lose the rook on e1.",
       "highlights": [
         {
           "squares": [
@@ -49,6 +53,7 @@
       "index": 1,
       "move": "Rxe1",
       "popup": "白车Rxe1！被迫离开g1——g1空虚了！",
+      "popup_en": "White captures on e1 and is forced away from g1, leaving the square undefended.",
       "highlights": [
         {
           "squares": [
@@ -78,6 +83,7 @@
       "index": 2,
       "move": "Qg2#",
       "popup": "黑后Qg2# 绝杀！白王在h2，g2后覆盖所有逃格，绝杀！",
+      "popup_en": "Qg2# is checkmate! The queen controls every escape square around the white king on h2.",
       "highlights": [
         {
           "squares": [

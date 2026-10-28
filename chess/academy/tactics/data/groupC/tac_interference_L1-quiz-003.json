@@ -7,25 +7,31 @@
   "fen": "6k1/p4p1p/q5p1/8/3p4/1P1NrPb1/P2R3P/3Q3K b - - 0 1",
   "concept": "拦截成立的关键条件",
   "question_cn": "拦截战术要能奏效，插入的棋子必须满足什么最关键的条件？",
+  "question_en": "What is the most important condition for an interference move to work?",
   "options": [
     {
       "key": "A",
-      "text_cn": "插入的棋子价值必须低于被保护的目标（如用兵拦截，保护后）"
+      "text_cn": "插入的棋子价值必须低于被保护的目标（如用兵拦截，保护后）",
+      "text_en": "The interfering piece must be worth less than the target it is protecting, such as using a pawn to block a line defending the queen"
     },
     {
       "key": "B",
-      "text_cn": "插入格对对方构成强迫性威胁（如将军或直接得子），使对方不得不应对，无法无视插入子"
+      "text_cn": "插入格对对方构成强迫性威胁（如将军或直接得子），使对方不得不应对，无法无视插入子",
+      "text_en": "The move must create a forcing threat, such as check or an immediate material win, so the opponent cannot ignore the interfering piece"
     },
     {
       "key": "C",
-      "text_cn": "插入的棋子必须是后或车等重子"
+      "text_cn": "插入的棋子必须是后或车等重子",
+      "text_en": "The interfering piece must be a major piece such as a queen or rook"
     },
     {
       "key": "D",
-      "text_cn": "插入格必须紧邻对方国王"
+      "text_cn": "插入格必须紧邻对方国王",
+      "text_en": "The interposition square must be next to the opponent's king"
     }
   ],
   "correct": "B",
   "explanation_cn": "拦截能否成功取决于「强迫性」：插入格必须威胁对方（将军、捉子、升变威胁等），让对方无法简单不理。本题Re1+将军，白王必须离开，根本无法绕开黑车；白方若能无视Re1，就可以径直保护Qd1，拦截就失效了。将军是最强的拦截手段，因为应将是强迫的。",
+  "explanation_en": "Interference depends on creating a forcing threat at the interposition square, such as check, an attack on a piece, or a promotion threat. Here, Re1+ forces the white king to move, so White cannot ignore the rook and simply protect Qd1. Check is especially effective because the opponent must answer it.",
   "created_at": "2026-05-18"
 }

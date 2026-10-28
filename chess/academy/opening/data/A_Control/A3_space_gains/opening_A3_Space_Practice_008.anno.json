@@ -9,10 +9,12 @@
       "b5"
     ],
     "popup": "白方王翼f4，黑方后翼b5，双方各自扩张。\n找出白方f4推进是否过于冒进。",
+    "popup_en": "White expands on the kingside with f4 while Black pushes on the queenside with ...b5. Decide whether White's advance is safe or overextended.",
     "voice": true
   },
   "outro": {
     "popup": "双翼竞赛时，谁先冒进漏洞谁先输。\nf4推进需要王安全、子力支撑才是安全的。",
+    "popup_en": "In a race on opposite wings, the side that overextends first may lose. An f-pawn advance is safe only when the king is secure and the pieces support it.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "e4",
       "popup": "▶️ <b>e4</b><br>白方开局，占中心",
+      "popup_en": "▶️ <b>e4</b><br>White opens by occupying the center.",
       "highlights": [
         {
           "squares": [
@@ -44,6 +47,7 @@
       "index": 1,
       "move": "c5",
       "popup": "▶️ <b>c5</b><br>西西里！黑方用c5挑战白方，但不是对称的<br>这将是一场非对称的博弈！",
+      "popup_en": "▶️ <b>c5</b><br>The Sicilian: Black challenges White asymmetrically with ...c5.<br>This leads to an unbalanced game.",
       "highlights": [
         {
           "squares": [
@@ -60,6 +64,7 @@
       "index": 2,
       "move": "Nf3",
       "popup": "▶️ <b>Nf3</b><br>白方出马，准备d4推进",
+      "popup_en": "▶️ <b>Nf3</b><br>White develops a knight and prepares the d4 advance.",
       "highlights": [
         {
           "squares": [
@@ -83,6 +88,7 @@
       "index": 3,
       "move": "d6",
       "popup": "▶️ <b>d6</b><br>黑方加固阵型，支持e5<br>d6是西西里防御的骨干兵",
+      "popup_en": "▶️ <b>d6</b><br>Black reinforces the position and supports a possible ...e5. The d-pawn is a key part of many Sicilian structures.",
       "highlights": [
         {
           "squares": [
@@ -99,6 +105,7 @@
       "index": 4,
       "move": "d4",
       "popup": "▶️ <b>d4</b><br>白方推d4，开放中心<br>Nf3已在位保护d4，这是安全推进",
+      "popup_en": "▶️ <b>d4</b><br>White opens the center. The knight on f3 supports d4, making this a well-prepared advance.",
       "highlights": [
         {
           "squares": [
@@ -122,6 +129,7 @@
       "index": 5,
       "move": "cxd4",
       "popup": "▶️ <b>cxd4</b><br>黑方吃掉d4，开放c列<br>这是西西里最重要的换子",
+      "popup_en": "▶️ <b>cxd4</b><br>Black captures on d4 and opens the c-file, a central structural feature of the Sicilian.",
       "highlights": [
         {
           "squares": [
@@ -139,6 +147,7 @@
       "index": 6,
       "move": "Nxd4",
       "popup": "▶️ <b>Nxd4</b><br>白方马吃回，站在中心强格<br>d4的马非常活跃，可以向多个方向跳",
+      "popup_en": "▶️ <b>Nxd4</b><br>White recaptures with the knight, placing it on an active central square from which it can jump in many directions.",
       "highlights": [
         {
           "squares": [
@@ -158,6 +167,7 @@
       "index": 7,
       "move": "Nf6",
       "popup": "▶️ <b>Nf6</b><br>黑方出马，控制e4并准备g6-Bg7",
+      "popup_en": "▶️ <b>Nf6</b><br>Black develops, controls e4, and prepares the ...g6 and ...Bg7 fianchetto.",
       "highlights": [
         {
           "squares": [
@@ -175,6 +185,7 @@
       "index": 8,
       "move": "Nc3",
       "popup": "▶️ <b>Nc3</b><br>白方出另一个马，加强中心控制<br>中心非常稳固：e4+d4，两匹马都在位",
+      "popup_en": "▶️ <b>Nc3</b><br>White develops the second knight and reinforces the center. The e4-d4 pawns and both knights form a solid central setup.",
       "highlights": [
         {
           "squares": [
@@ -193,6 +204,7 @@
       "index": 9,
       "move": "g6",
       "popup": "▶️ <b>g6</b><br>龙式！黑方准备走Bg7<br>Bg7将射击白方d4和e5方向",
+      "popup_en": "▶️ <b>g6</b><br>The Dragon setup! Black prepares ...Bg7, where the bishop will target the center and the d4-pawn.",
       "highlights": [
         {
           "squares": [
@@ -210,6 +222,7 @@
       "index": 10,
       "move": "Be2",
       "popup": "▶️ <b>Be2</b><br>白方象出动，为易位做准备<br>稳步发展",
+      "popup_en": "▶️ <b>Be2</b><br>White develops the bishop and prepares to castle, continuing a steady setup.",
       "highlights": [
         {
           "squares": [
@@ -226,6 +239,7 @@
       "index": 11,
       "move": "Bg7",
       "popup": "▶️ <b>Bg7</b><br>黑方龙式象就位！<br>Bg7射向d4，牵制白方中心",
+      "popup_en": "▶️ <b>Bg7</b><br>The Dragon bishop is in place, aiming toward d4 and putting pressure on White's center.",
       "highlights": [
         {
           "squares": [
@@ -250,6 +264,7 @@
       "index": 12,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>白方易位！王安全后，可以开始计划王翼攻击<br>记住：王安全是进攻的前提！",
+      "popup_en": "▶️ <b>O-O</b><br>White castles. With the king safe, White can plan a kingside attack.<br>Remember: king safety is a prerequisite for attacking.",
       "highlights": [
         {
           "squares": [
@@ -267,6 +282,7 @@
       "index": 13,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>黑方也易位！双方都准备好了<br>现在是真正的空间竞赛时刻",
+      "popup_en": "▶️ <b>O-O</b><br>Black castles as well. Both sides are ready, and the race for space on opposite wings begins.",
       "highlights": [
         {
           "squares": [
@@ -284,6 +300,7 @@
       "index": 14,
       "move": "Be3",
       "popup": "🔑 <b>Be3 — 王翼攻击的准备！</b><br>白方象到e3，有多个作用：<br>• 防御c5方向<br>• 准备f4推进（Be3支撑f4后的弱点）<br>• 控制d4周围",
+      "popup_en": "🔑 <b>Be3 - Prepare the kingside attack!</b><br>The bishop on e3 serves several purposes:<br>• It helps guard against ...c5.<br>• It supports a future f4 advance.<br>• It adds control around d4.",
       "highlights": [
         {
           "squares": [
@@ -308,6 +325,7 @@
       "index": 15,
       "move": "Nc6",
       "popup": "▶️ <b>Nc6</b><br>黑方出马，攻击d4<br>黑方在中心施压",
+      "popup_en": "▶️ <b>Nc6</b><br>Black develops the knight, attacks d4, and increases central pressure.",
       "highlights": [
         {
           "squares": [
@@ -330,6 +348,7 @@
       "index": 16,
       "move": "f4",
       "popup": "🚀 <b>f4！白方开始王翼扩展！</b><br>这步棋安全吗？用三个维度检验：<br>① 中心稳固？✓ e4+d4，Nc3+Nd4都在<br>② 王安全？✓ O-O已完成<br>③ 子力支撑f4？✓ Be3+Nc3+Nd4<br>结论：f4是安全扩展！",
+      "popup_en": "🚀 <b>f4 - White expands on the kingside!</b><br>Is it safe? Check three factors:<br>① Is the center secure? ✓ e4 and d4 are supported by the knights.<br>② Is the king safe? ✓ White has castled.<br>③ Is f4 supported? ✓ Be3, Nc3, and Nd4 help.<br>Conclusion: this is a safe expansion.",
       "highlights": [
         {
           "squares": [
@@ -354,6 +373,7 @@
       "index": 17,
       "move": "b5",
       "popup": "⚔️ <b>b5！双向竞赛正式开始！</b><br>黑方发动后翼反击！<br>• 白方：推f5，进攻黑王<br>• 黑方：推b4，攻击Nc3<br>谁先到达目标，谁赢得这场竞赛！<br>这就是西西里龙式的本质——双向竞赛！",
+      "popup_en": "⚔️ <b>...b5 - The race on opposite wings begins!</b><br>Black launches queenside counterplay.<br>• White aims for f5 against the black king.<br>• Black may advance ...b4 to attack Nc3.<br>The side that reaches its target first may win the race. This is the essence of the Sicilian Dragon's opposing-wing battle.",
       "highlights": [
         {
           "squares": [

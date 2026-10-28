@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "透视攻击的适用棋子",
   "question_cn": "哪些棋子能够实施透视攻击？",
+  "question_en": "Which pieces can deliver an X-ray attack?",
   "options": [
-    {"key": "A", "text_cn": "只有后和车，因为它们走直线"},
-    {"key": "B", "text_cn": "后、车、象——所有走直线或斜线的棋子"},
-    {"key": "C", "text_cn": "只有后，因为它是最强的棋子"},
-    {"key": "D", "text_cn": "马和兵，因为它们的走法特殊"}
+    {"key": "A", "text_cn": "只有后和车，因为它们走直线", "text_en": "Only queens and rooks, because they move in straight lines"},
+    {"key": "B", "text_cn": "后、车、象——所有走直线或斜线的棋子", "text_en": "Queens, rooks, and bishops: all pieces that move along ranks, files, or diagonals"},
+    {"key": "C", "text_cn": "只有后，因为它是最强的棋子", "text_en": "Only queens, because they are the most powerful pieces"},
+    {"key": "D", "text_cn": "马和兵，因为它们的走法特殊", "text_en": "Knights and pawns, because they move in special ways"}
   ],
   "correct": "B",
   "explanation_cn": "透视攻击需要棋子沿直线或斜线看穿中间棋子。后（横竖斜）、车（横竖）、象（斜线）都可以实施透视攻击。马和兵的走法不是射线型，无法实施透视攻击。",
+  "explanation_en": "An X-ray attack follows a straight line through an intervening piece. Queens can attack along ranks, files, and diagonals; rooks along ranks and files; and bishops along diagonals. Knights and pawns do not attack along such lines, so they cannot make X-ray attacks.",
   "created_at": "2026-05-27"
 }

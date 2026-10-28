@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-004",
   "description": "引离d8黑车——变型：黑王逃h7，同样得后",
+  "explanation_en": "Even if the king escapes the back-rank threat, Re8+ has still deflected the rook. White can capture the queen; if the rook recaptures, White wins the rook as well.",
   "intro": {
     "flash_squares": [
       "e2",
@@ -8,10 +9,12 @@
       "d5"
     ],
     "popup": "💡 类似局面：引离d8黑车或黑王，白方如何得后？",
+    "popup_en": "💡 A similar position: how can White deflect the rook from d8 or drive the king away to win the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Re8+后黑王逃h7（不在底线），但Qxd5照样得后！黑车若Rxd5，Rxa8额外赢车。",
+    "popup_en": "✅ Key idea: After Re8+, the king escapes to h7 instead of staying on the back rank, but Qxd5 still wins the queen. If the rook recaptures with Rxd5, Rxa8 wins the rook too.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Re8+!",
       "popup": "白车Re8+！同样的引离手段！",
+      "popup_en": "White plays Re8+! The same deflection idea applies.",
       "highlights": [
         {
           "squares": [
@@ -42,6 +46,7 @@
       "index": 1,
       "move": "Kh7",
       "popup": "黑王Kh7！这次黑王逃开，没有底线杀。",
+      "popup_en": "The king escapes to h7, avoiding the back-rank mate this time.",
       "highlights": [
         {
           "squares": [
@@ -58,6 +63,7 @@
       "index": 2,
       "move": "Qxd5",
       "popup": "白后Qxd5！白后得后！黑王在h7，无法阻止白后吃d5。",
+      "popup_en": "White captures the queen with Qxd5. With the king on h7, Black cannot stop it.",
       "highlights": [
         {
           "squares": [
@@ -80,6 +86,7 @@
       "index": 3,
       "move": "Rxd5",
       "popup": "黑车Rxd5，试图减少损失。",
+      "popup_en": "Black's rook recaptures on d5 in an attempt to limit the loss.",
       "highlights": [
         {
           "squares": [
@@ -96,6 +103,7 @@
       "index": 4,
       "move": "Rxa8",
       "popup": "白车Rxa8！额外赢车！白方大优。",
+      "popup_en": "White's rook captures on a8, winning an additional rook. White has a decisive advantage.",
       "highlights": [
         {
           "squares": [

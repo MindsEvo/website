@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 3,
   "concept": "菲利道尔闷杀中弃后的作用",
+  "concept_en": "The Queen Sacrifice in Philidor's Legacy",
   "question_cn": "菲利道尔闷杀（Philidor's Legacy）中，Qg8+弃后的目的是什么？",
+  "question_en": "In Philidor's Legacy, what is the purpose of the queen sacrifice Qg8+?",
   "options": [
     {
       "key": "A",
-      "text_cn": "用后换掉对方的后，简化局面"
+      "text_cn": "用后换掉对方的后，简化局面",
+      "text_en": "Trade queens to simplify the position"
     },
     {
       "key": "B",
-      "text_cn": "引诱对方的车到g8，堵死王的逃格，让马踏f7完成闷杀"
+      "text_cn": "引诱对方的车到g8，堵死王的逃格，让马踏f7完成闷杀",
+      "text_en": "Lure the enemy rook to g8 to block the king's escape, allowing Nf7#"
     },
     {
       "key": "C",
-      "text_cn": "为己方的车腾出空间进攻"
+      "text_cn": "为己方的车腾出空间进攻",
+      "text_en": "Clear space for your rook to attack"
     },
     {
       "key": "D",
-      "text_cn": "威胁升变，迫使对方应对"
+      "text_cn": "威胁升变，迫使对方应对",
+      "text_en": "Threaten to promote and force a response"
     }
   ],
   "correct": "B",
   "explanation_cn": "Qg8+是菲利道尔闷杀的关键一步：弃后迫使黑车到g8吃后，车反而堵死了王的唯一逃格，随后Nf7#马踏将杀。牺牲后是为了让对方自堵退路。",
+  "explanation_en": "Qg8+ is the key move in Philidor's Legacy. The queen sacrifice forces Black's rook to capture on g8, where it blocks the king's last escape square. Nf7# then delivers smothered mate; the sacrifice makes Black block its own king.",
   "created_at": "2026-05-30"
 }

@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 1,
   "concept": "底线杀的定义",
+  "concept_en": "Defining Back-Rank Mate",
   "question_cn": "什么是底线杀（Back Rank Mate）？",
+  "question_en": "What is a back-rank mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "王在棋盘中心被多个棋子围住将死"
+      "text_cn": "王在棋盘中心被多个棋子围住将死",
+      "text_en": "The king is checkmated in the center of the board by several pieces"
     },
     {
       "key": "B",
-      "text_cn": "王在底线（第1或第8横线）被车或后将死，且无法逃跑"
+      "text_cn": "王在底线（第1或第8横线）被车或后将死，且无法逃跑",
+      "text_en": "The king is checkmated by a rook or queen on the first or eighth rank, with no escape"
     },
     {
       "key": "C",
-      "text_cn": "兵走到底线升变后立刻将死对方王"
+      "text_cn": "兵走到底线升变后立刻将死对方王",
+      "text_en": "A pawn promotes on the last rank and immediately checkmates the enemy king"
     },
     {
       "key": "D",
-      "text_cn": "双车并列在底线同时将死对方王"
+      "text_cn": "双车并列在底线同时将死对方王",
+      "text_en": "Two rooks line up on the back rank and checkmate the enemy king together"
     }
   ],
   "correct": "B",
   "explanation_cn": "底线杀指对方的王被困在底线（第1或第8横线），无法向前逃跑，被车或后沿底线将死。王通常被己方的兵封死，成为「杀王」的关键条件。",
+  "explanation_en": "A back-rank mate occurs when the king is trapped on the first or eighth rank and a rook or queen checkmates it along that rank. The king's own pawns often block its escape squares, creating the key mating condition.",
   "created_at": "2026-05-29"
 }

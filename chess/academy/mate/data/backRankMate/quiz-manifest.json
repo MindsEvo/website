@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_backRankMate_L1-quiz-001",
-                      "label":  "底线杀的定义"
+                      "label":  "底线杀的定义",
+            "label_en": "Defining Back-Rank Mate"
                   },
                   {
                       "id":  "mate_backRankMate_L1-quiz-002",
-                      "label":  "底线杀的关键条件"
+                      "label":  "底线杀的关键条件",
+            "label_en": "Key Conditions for Back-Rank Mate"
                   },
                   {
                       "id":  "mate_backRankMate_L1-quiz-003",
-                      "label":  "执行底线杀的常用棋子"
+                      "label":  "执行底线杀的常用棋子",
+            "label_en": "Pieces Commonly Used for Back-Rank Mate"
                   },
                   {
                       "id":  "mate_backRankMate_L1-quiz-004",
-                      "label":  "防守底线杀的方法"
+                      "label":  "防守底线杀的方法",
+            "label_en": "How to Defend Against Back-Rank Mate"
                   },
                   {
                       "id":  "mate_backRankMate_L1-quiz-005",
-                      "label":  "弃后引车的底线杀手法"
+                      "label":  "弃后引车的底线杀手法",
+            "label_en": "Queen Sacrifice to Deflect the Rook"
                   }
               ],
-    "label":  "底线杀"
+    "label":  "底线杀",
+    "label_en": "Back-Rank Mate"
 }

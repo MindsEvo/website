@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "弃后战术",
   "question_cn": "弃后（Queen Sacrifice）通常发生在什么情况下？",
+  "question_en": "When is a queen sacrifice usually justified?",
   "options": [
-    {"key": "A", "text_cn": "己方后走投无路，只能送给对方"},
-    {"key": "B", "text_cn": "己方后没有价值，弃掉无所谓"},
-    {"key": "C", "text_cn": "弃后之后能立即将杀，或能获得足够的连续将军完成致命攻击"},
-    {"key": "D", "text_cn": "对方王已经逃脱，只好弃后换取平局"}
+    {"key": "A", "text_cn": "己方后走投无路，只能送给对方", "text_en": "Your queen has no safe square and must be given up"},
+    {"key": "B", "text_cn": "己方后没有价值，弃掉无所谓", "text_en": "Your queen has no value, so losing it does not matter"},
+    {"key": "C", "text_cn": "弃后之后能立即将杀，或能获得足够的连续将军完成致命攻击", "text_en": "The sacrifice delivers immediate checkmate or enables a forcing series of checks that completes a decisive attack"},
+    {"key": "D", "text_cn": "对方王已经逃脱，只好弃后换取平局", "text_en": "The opposing king has escaped, so you sacrifice the queen to secure a draw"}
   ],
   "correct": "C",
   "explanation_cn": "弃后是最大胆的弃子。由于后价值最高，弃后必须有非常明确的回报——通常是弃后后能立即将杀，或通过连续将军把对方王逐步驱离安全地带最终将杀。没有确定杀棋就弃后，往往会输棋。",
+  "explanation_en": "A queen sacrifice is one of the boldest sacrifices because the queen is the most valuable piece. It needs a clear payoff, usually immediate checkmate or a forcing sequence of checks that drives the king into a mating net. Without a verified continuation, sacrificing the queen can simply lose the game.",
   "created_at": "2026-05-28"
 }

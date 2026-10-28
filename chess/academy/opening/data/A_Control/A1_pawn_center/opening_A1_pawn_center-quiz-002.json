@@ -3,14 +3,17 @@
     "gene_id": "A1_pawn_center",
     "sequence": 2,
     "concept": "控制中心的好处",
+    "concept_en": "Benefits of Controlling the Center",
     "question_cn": "为什么在开局阶段要优先控制中心？",
+    "question_en": "Why should you prioritize controlling the center in the opening?",
     "options": [
-        {"key": "A", "text_cn": "可以更快完成王车易位"},
-        {"key": "B", "text_cn": "占据中心的棋子活动空间更大，可控制棋盘更多区域"},
-        {"key": "C", "text_cn": "可以防止对方走弃兵开局"},
-        {"key": "D", "text_cn": "中心格的兵不容易被吃掉"}
+        {"key": "A", "text_cn": "可以更快完成王车易位", "text_en": "It lets you castle sooner."},
+        {"key": "B", "text_cn": "占据中心的棋子活动空间更大，可控制棋盘更多区域", "text_en": "Pieces in the center have greater mobility and control more of the board."},
+        {"key": "C", "text_cn": "可以防止对方走弃兵开局", "text_en": "It prevents the opponent from playing a gambit."},
+        {"key": "D", "text_cn": "中心格的兵不容易被吃掉", "text_en": "Pawns on central squares are harder to capture."}
     ],
     "correct": "B",
     "explanation_cn": "站在中心的棋子（尤其是马）能到达的格子数量远多于边路棋子。控制中心意味着你的棋子有更多活动空间，可以灵活调度到棋盘任何位置发动进攻或防守。",
+    "explanation_en": "A piece in the center, especially a knight, can reach far more squares than one on the edge. Controlling the center gives your pieces mobility and lets you shift them flexibly to attack or defend across the board.",
     "created_at": "2026-06-03"
 }

@@ -3,14 +3,17 @@
     "gene_id": "C11_open_files",
     "sequence": 1,
     "concept": "开放线与半开放线",
+    "concept_en": "Open and Half-Open Files",
     "question_cn": "「开放线」和「半开放线」有何区别？",
+    "question_en": "What is the difference between an open file and a half-open file?",
     "options": [
-        {"key": "A", "text_cn": "开放线指没有任何兵的纵线；半开放线指只有己方一个兵的纵线"},
-        {"key": "B", "text_cn": "开放线指没有任何兵的纵线；半开放线指只有对方兵、己方无兵的纵线"},
-        {"key": "C", "text_cn": "开放线只对车有用；半开放线对象更有用"},
-        {"key": "D", "text_cn": "两者相同，都指没有己方兵的纵线"}
+        {"key": "A", "text_cn": "开放线指没有任何兵的纵线；半开放线指只有己方一个兵的纵线", "text_en": "An open file has no pawns; a half-open file has only one friendly pawn."},
+        {"key": "B", "text_cn": "开放线指没有任何兵的纵线；半开放线指只有对方兵、己方无兵的纵线", "text_en": "An open file has no pawns; a half-open file has an enemy pawn but no friendly pawn."},
+        {"key": "C", "text_cn": "开放线只对车有用；半开放线对象更有用", "text_en": "Open files are useful only to rooks; half-open files are more useful to bishops."},
+        {"key": "D", "text_cn": "两者相同，都指没有己方兵的纵线", "text_en": "They are the same: both mean a file with no friendly pawn."}
     ],
     "correct": "B",
     "explanation_cn": "开放线（Open File）：整条纵线上双方都没有兵，车可以自由穿行全线。半开放线（Semi-open File）：己方没有兵、但对方有兵，车可以沿此线向前施压、攻击对方的兵。西西里防御中黑方走c5后，c线上黑方无兵，c线就成为黑方的半开放线，Rc8顺势占领施压。",
+    "explanation_en": "An open file has no pawns from either side, allowing a rook to travel freely along it. A half-open file has no friendly pawn but still contains an enemy pawn, which the rook can pressure. In the Sicilian, after ...c5, Black may use the c-file as a half-open file and place a rook on c8.",
     "created_at": "2026-06-13"
 }

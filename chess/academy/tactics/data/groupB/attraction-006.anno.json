@@ -1,13 +1,16 @@
 {
   "game_id": "tac_attraction_L1-006",
   "description": "车牺牲引后，马叉将吃后",
+  "explanation_en": "The source explanation file is an unfilled placeholder. The annotations show the intended line: sacrifice the rook to draw the queen to d2, then use a knight fork to win it.",
   "intro": {
     "flash_squares": ["d7", "d2", "h2", "f3"],
     "popup": "💡 <b>引入</b>：黑方行动！黑车在d7，白后在c2，白王在h2。能用车牺牲引白后到d2，再用马叉将赢后吗？",
+    "popup_en": "💡 <b>Attraction</b>: Black to move. Black's rook is on d7, White's queen on c2, and White's king on h2. Can Black sacrifice the rook to lure the queen to d2, then win it with a knight fork?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rd2+引白后到d2，Nf3+叉将——马同时攻击Kh2和Qd2，引入赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Rd2+ lures White's queen to d2. Nf3+ then forks the king on h2 and queen on d2, winning the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rd2+",
       "popup": "黑车Rd2+！沿d列引诱白后到d2，同时将军。",
+      "popup_en": "Black's rook checks on d2, luring White's queen onto the d-file.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c2"], "color": "#FFD70088", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qxd2",
       "popup": "白后Qxd2——被引到d2！",
+      "popup_en": "White captures the rook with Qxd2 and is drawn to d2.",
       "highlights": [
         {"squares": ["d2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Nf3+",
       "popup": "马Nf3+！同时攻击Kh2和Qd2——完美叉将！",
+      "popup_en": "Nf3+ forks the king on h2 and queen on d2. A perfect knight fork!",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0},
@@ -58,6 +64,7 @@
       "index": 3,
       "move": "Kh3",
       "popup": "白王逃到h3，但白后已无法同时守护。",
+      "popup_en": "The king moves to h3, but White's queen cannot also be saved.",
       "highlights": [
         {"squares": ["h3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "Nxd2",
       "popup": "马吃后！引入战术完成，黑方赢得白后。",
+      "popup_en": "The knight captures White's queen on d2, completing the attraction combination.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "如何预防被闷杀",
+  "concept_en": "How to Prevent Smothered Mate",
   "question_cn": "为了预防被闷杀，最有效的方法是什么？",
+  "question_en": "What is the most effective way to prevent a smothered mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "把所有兵都推到对方阵营"
+      "text_cn": "把所有兵都推到对方阵营",
+      "text_en": "Push all your pawns into the opponent's territory"
     },
     {
       "key": "B",
-      "text_cn": "把王走到棋盘中心"
+      "text_cn": "把王走到棋盘中心",
+      "text_en": "Move the king to the center of the board"
     },
     {
       "key": "C",
-      "text_cn": "不要把自己的车放在王旁边"
+      "text_cn": "不要把自己的车放在王旁边",
+      "text_en": "Do not place your rook next to your king"
     },
     {
       "key": "D",
-      "text_cn": "避免王困在角落，为王保留逃格，不要用己方棋子堵死王"
+      "text_cn": "避免王困在角落，为王保留逃格，不要用己方棋子堵死王",
+      "text_en": "Keep the king from becoming trapped in a corner; preserve an escape square and do not let your own pieces smother it"
     }
   ],
   "correct": "D",
   "explanation_cn": "防止闷杀的关键是不要让王的逃格被己方棋子完全封死。若王躲在角落，要确保旁边至少有一个逃格；若车守在王身边，注意不要成为帮对方闷杀自己王的帮凶。",
+  "explanation_en": "Prevent smothered mate by keeping at least one escape square open. If the king is in a corner, make sure it can move out; be careful that a rook beside the king does not help trap it.",
   "created_at": "2026-05-30"
 }

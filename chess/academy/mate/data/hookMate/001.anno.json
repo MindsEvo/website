@@ -1,13 +1,16 @@
 {
   "game_id": "mate_hookMate_L1-001",
   "description": "经典钩杀：车、马、兵组合，一步将死角落里的黑王",
+  "explanation_en": "A classic hook mate: a rook, knight, and pawn combine to checkmate the black king in the corner.",
   "intro": {
     "flash_squares": ["g8", "b6", "c5", "c7"],
     "popup": "💡 <b>钩杀（Hook Mate）</b>：白车在g8，白马在b6，白兵在c5——车马兵组合形如钩子，如何一步将死黑王？",
+    "popup_en": "💡 <b>Hook mate</b>: White's rook is on g8, knight on b6, and pawn on c5. The rook-knight-pawn formation resembles a hook. How can White mate in one?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rc8#——车滑入c8将军，马封d7、车封d8和b8、兵封d6——黑王被钩住，四面无路！",
+    "popup_en": "✅ <b>Key idea</b>: Rc8#! The rook checks from c8; the knight covers d7, the rook controls b8 and d8, and the pawn covers d6. The king is caught in the hook with no escape.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rc8#",
       "popup": "白车Rc8#将死！车到c8，马守d7，兵守d6，车控b8和d8——黑王c7被车马兵构成的钩形牢牢困住！",
+      "popup_en": "Rc8#! The rook moves to c8, the knight covers d7, the pawn guards d6, and the rook controls b8 and d8. The rook-knight-pawn hook traps the king on c7.",
       "highlights": [
         {"squares": ["c8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c7"], "color": "#FF000055", "duration_ms": 0},

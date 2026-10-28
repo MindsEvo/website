@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-008",
   "description": "白象插第八横线，切断黑方后车联系",
+  "explanation_en": "White's bishop interposes on the eighth rank, separating Black's rook and bishop and winning the queen.",
   "intro": {
     "flash_squares": ["h5", "e8", "f8", "d8"],
     "popup": "💡 <b>拦截</b>：黑车在d8，黑象在f8，在第八横线协同。白象能插入e8，切断它们的联系，逼黑后妥协吗？",
+    "popup_en": "💡 <b>Interference</b>: Black's rook on d8 and bishop on f8 coordinate along the eighth rank. Can White's bishop interpose on e8, break their connection, and force the queen to respond?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：先Rf1！车换位后，Bf7+引王到h8，Be8插入第八横线——黑后必须移到f7，Bxf7赢后！",
+    "popup_en": "✅ <b>Key idea</b>: First play Rf1, then Bf7+ drives the king to h8. Be8 interferes on the eighth rank, forcing the queen to f7, where Bxf7 wins it.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rf1",
       "popup": "白车Rf1！先调车到f1，为象对角线将军做准备。",
+      "popup_en": "Rf1! White repositions the rook to f1, preparing a bishop check along the diagonal.",
       "highlights": [
         {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -28,6 +32,7 @@
       "index": 1,
       "move": "Rd8",
       "popup": "黑车Rd8——退回d8，守住第八横线。",
+      "popup_en": "The rook retreats to d8 to defend the eighth rank.",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -40,6 +45,7 @@
       "index": 2,
       "move": "Bf7+",
       "popup": "白象Bf7+！对角线将军，黑王必须到h8角落！",
+      "popup_en": "Bf7+! The bishop checks along the diagonal, forcing the black king into the corner on h8.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -53,6 +59,7 @@
       "index": 3,
       "move": "Kh8",
       "popup": "黑王Kh8——王角被迫，第八横线上d8车和f8象仍在。",
+      "popup_en": "The king is forced to h8. Black's rook on d8 and bishop on f8 remain connected along the eighth rank.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -65,6 +72,7 @@
       "index": 4,
       "move": "Be8",
       "popup": "白象Be8！插入e8，切断黑Rd8与黑Bf8在第八横线的联系——黑后c7被迫应对！",
+      "popup_en": "Be8! The bishop interposes on e8, cutting the eighth-rank connection between the rook on d8 and bishop on f8. Black's queen on c7 must respond.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0},
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Qf7",
       "popup": "黑后Qf7——被迫来应对白象，守住e8方向。",
+      "popup_en": "The queen is forced to f7 to meet the bishop's threat and protect the e8 direction.",
       "highlights": [
         {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Bxf7",
       "popup": "白象Bxf7！吃掉黑后——拦截战术完成，白方赢后！",
+      "popup_en": "Bxf7! The bishop captures the black queen. The interference succeeds, and White wins the queen.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "如何防范钩杀",
+  "concept_en": "How to Prevent Hook Mate",
   "question_cn": "为避免被钩杀，以下哪种做法最有效？",
+  "question_en": "What is the most effective way to avoid being checkmated by a hook pattern?",
   "options": [
     {
       "key": "A",
-      "text_cn": "把王推进到对方阵地"
+      "text_cn": "把王推进到对方阵地",
+      "text_en": "Advance your king into the opponent's territory"
     },
     {
       "key": "B",
-      "text_cn": "让王远离边路，避免停在角落或边格上"
+      "text_cn": "让王远离边路，避免停在角落或边格上",
+      "text_en": "Keep the king away from the edge and avoid trapping it in a corner"
     },
     {
       "key": "C",
-      "text_cn": "用兵围住自己的王，增加防御"
+      "text_cn": "用兵围住自己的王，增加防御",
+      "text_en": "Surround your king with pawns for extra protection"
     },
     {
       "key": "D",
-      "text_cn": "主动用车对换对方的车"
+      "text_cn": "主动用车对换对方的车",
+      "text_en": "Proactively trade your rook for the opponent's rook"
     }
   ],
   "correct": "B",
   "explanation_cn": "钩杀发生在王被困于边路或角落时，逃格极少。让王保持在开阔地带，逃格充足，是防范钩杀最直接的方法。用兵围王反而可能增加被封死的风险。",
+  "explanation_en": "Hook mates rely on trapping the king near the edge or in a corner, where it has few escape squares. Keep the king in open space with room to move. Surrounding it with pawns can make the danger worse.",
   "created_at": "2026-05-31"
 }

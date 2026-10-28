@@ -1,13 +1,16 @@
 {
   "game_id": "tac_clearance_L1-010",
   "description": "连续腾挪，清开b列攻击白王",
+  "explanation_en": "A sequence of clearance exchanges removes White's central defenders and opens the b-file against the king.",
   "intro": {
     "flash_squares": ["e5", "f3", "b2"],
     "popup": "💡 <b>腾挪</b>：黑方有双马在e5/f6。连续腾挪换子，能清开b列对白王发动攻击吗？",
+    "popup_en": "💡 <b>Clearance</b>: Black has knights on e5 and f6. Can a sequence of clearance exchanges remove White's central defenders and open the b-file against the king?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：连续Nxf3→Nxe4换光白方中心子——b列打开，Rxb2+将杀序列！",
+    "popup_en": "✅ <b>Key idea</b>: The successive captures ...Nxf3 and ...Nxe4 remove White's central pieces and clear the b-file for ...Rxb2+.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Nxf3",
       "popup": "黑马Ne5xf3！第一步腾挪——消灭白方Nd4（迫使重新应对），打乱白方防线！",
+      "popup_en": "The knight from e5 captures on f3, beginning the clearance sequence by removing White's knight on d4 and disrupting the defense.",
       "highlights": [
         {"squares": ["f3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e5"], "color": "#FFD70088", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Nxf3",
       "popup": "白马Nd4xf3——吃回，但中心防守已弱化。",
+      "popup_en": "White's knight from d4 recaptures on f3, but the central defense has been weakened.",
       "highlights": [
         {"squares": ["f3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Nxe4",
       "popup": "黑马Nf6xe4！第二步腾挪——吃掉e4兵，同时e4格清空，b列攻击路线即将打开！",
+      "popup_en": "The knight from f6 captures on e4, continuing the clearance. The pawn is removed and e4 is cleared, preparing to open the b-file.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Nxe4",
       "popup": "白马Nf3xe4——吃回，中心清空，b列无遮挡！",
+      "popup_en": "White's knight from f3 recaptures on e4. The center is cleared, and the b-file is open.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b2"], "color": "#FF000055", "duration_ms": 0}
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Rxb2+",
       "popup": "黑车Rxb2+！b列打通，车冲入b2将军！连续腾挪的成果——白王陷入绝境！",
+      "popup_en": "Rxb2+! With the b-file open, the rook invades on b2 with check. The clearance sequence has left the white king in serious danger.",
       "highlights": [
         {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["b1"], "color": "#FF000055", "duration_ms": 0}

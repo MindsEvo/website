@@ -2,24 +2,30 @@
     "items":  [
                   {
                       "id":  "mate_dovetailMate_L1-quiz-001",
-                      "label":  "燕尾杀的定义"
+                      "label":  "燕尾杀的定义",
+                      "label_en": "Defining Dovetail Mate"
                   },
                   {
                       "id":  "mate_dovetailMate_L1-quiz-002",
-                      "label":  "燕尾杀成立的关键条件"
+                      "label":  "燕尾杀成立的关键条件",
+                      "label_en": "Key Conditions for Dovetail Mate"
                   },
                   {
                       "id":  "mate_dovetailMate_L1-quiz-003",
-                      "label":  "白方第一步的作用"
+                      "label":  "白方第一步的作用",
+                      "label_en": "The Purpose of White's First Move"
                   },
                   {
                       "id":  "mate_dovetailMate_L1-quiz-004",
-                      "label":  "燕尾杀与闷杀的区别"
+                      "label":  "燕尾杀与闷杀的区别",
+                      "label_en": "Dovetail Mate vs. Smothered Mate"
                   },
                   {
                       "id":  "mate_dovetailMate_L1-quiz-005",
-                      "label":  "如何防范燕尾杀"
+                      "label":  "如何防范燕尾杀",
+                      "label_en": "How to Prevent Dovetail Mate"
                   }
               ],
-    "label":  "燕尾杀"
+    "label":  "燕尾杀",
+    "label_en": "Dovetail Mate"
 }

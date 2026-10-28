@@ -7,25 +7,31 @@
   "fen": "r3r3/p1p2p1k/3p2pp/2p5/2P2n2/2N2B2/PPR1PP1q/3RQK2 b - - 0 1",
   "concept": "封锁国王逃跑格的阻塞",
   "question_cn": "用阻塞封堵对方国王逃跑格时，阻塞子被吃后局面如何判断？",
+  "question_en": "When a blockade blocks the enemy king's escape squares, how should you evaluate the position if the blocking piece is captured?",
   "options": [
     {
       "key": "A",
-      "text_cn": "阻塞子被吃说明阻塞失败，应换其他战术"
+      "text_cn": "阻塞子被吃说明阻塞失败，应换其他战术",
+      "text_en": "The blockade failed if the blocking piece is captured, so you should switch to another tactic"
     },
     {
       "key": "B",
-      "text_cn": "吃掉阻塞子的棋子往往离开了防守位置，由此引发更大的战术机会（如将杀或得子）"
+      "text_cn": "吃掉阻塞子的棋子往往离开了防守位置，由此引发更大的战术机会（如将杀或得子）",
+      "text_en": "The piece that captures the blocker often leaves its defensive post, creating a larger tactical opportunity such as checkmate or a material win"
     },
     {
       "key": "C",
-      "text_cn": "阻塞子被吃后逃跑格重新打开，国王可以逃脱，所以无效"
+      "text_cn": "阻塞子被吃后逃跑格重新打开，国王可以逃脱，所以无效",
+      "text_en": "Once the blocker is captured, the escape square opens again and the king can flee, so the tactic is ineffective"
     },
     {
       "key": "D",
-      "text_cn": "阻塞子被吃说明阻塞格选择错误，需重新计算"
+      "text_cn": "阻塞子被吃说明阻塞格选择错误，需重新计算",
+      "text_en": "If the blocker is captured, the chosen blocking square was wrong and the line must be recalculated"
     }
   ],
   "correct": "B",
   "explanation_cn": "封王阻塞的精髓在于「两难」：若不吃阻塞子，国王逃跑路线被封，将杀成立；若吃掉阻塞子，吃子的棋子离开原防守格，另一条将杀路线打开。阻塞子的「被吃」本身就是战术设计的一部分，类似引离的效果。",
+  "explanation_en": "The king-blocking tactic creates a dilemma: if the opponent does not capture the blocker, the king's escape route remains closed and mate follows; if the blocker is captured, the capturing piece leaves its defensive post and opens another mating line. The blocker's capture is part of the combination, much like a deflection.",
   "created_at": "2026-05-18"
 }

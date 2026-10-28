@@ -3,14 +3,17 @@
     "gene_id": "A2_piece_pressure",
     "sequence": 2,
     "concept": "马的最佳位置",
+    "concept_en": "The Knight's Best Squares",
     "question_cn": "开局中马站在哪个位置控制的中心格最多？",
+    "question_en": "Where does a knight control the most central squares in the opening?",
     "options": [
-        {"key": "A", "text_cn": "h3 或 a3（角落边路）"},
-        {"key": "B", "text_cn": "f3 或 c3（中心周围一格）"},
-        {"key": "C", "text_cn": "h1 或 a1（角格）"},
-        {"key": "D", "text_cn": "g5 或 b5（斜前边路）"}
+        {"key": "A", "text_cn": "h3 或 a3（角落边路）", "text_en": "h3 or a3 (near the edge)"},
+        {"key": "B", "text_cn": "f3 或 c3（中心周围一格）", "text_en": "f3 or c3 (near the center)"},
+        {"key": "C", "text_cn": "h1 或 a1（角格）", "text_en": "h1 or a1 (the corner)"},
+        {"key": "D", "text_cn": "g5 或 b5（斜前边路）", "text_en": "g5 or b5 (on the outer flank)"}
     ],
     "correct": "B",
     "explanation_cn": "马在 f3 可控制 e5、d4、g5、h4、d2、e1 共6个格，其中 e5 和 d4 都是中心格。马在 c3 可控制 d5、e4、b5、a4、a2、b1、d1、e2，其中 d5 和 e4 也是中心格。相比之下，h3 的马只控制 f2、g5、f4，对中心没有贡献——「边路的马不如中心的马」正是这个道理。",
+    "explanation_en": "A knight on f3 controls six squares, including the central squares e5 and d4. A knight on c3 also controls central squares d5 and e4. By contrast, a knight on h3 controls only f2, f4, and g5, none of which is central. This illustrates the principle that a knight on the rim is dim.",
     "created_at": "2026-06-07"
 }

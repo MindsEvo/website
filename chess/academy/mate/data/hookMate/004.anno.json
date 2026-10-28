@@ -1,13 +1,16 @@
 {
   "game_id": "mate_hookMate_L1-004",
   "description": "黑先钩杀：连续弃子，发现将绝杀",
+  "explanation_en": "Black sacrifices material to draw out the king and clear the bishop's diagonal, finishing with a discovered-check hook mate.",
   "intro": {
     "flash_squares": ["d7", "e8", "b5", "g4", "g2"],
     "popup": "💡 <b>黑先钩杀</b>：黑车在d7和e8，黑象在b5，黑马在g4，白王在g2——黑方如何连续弃子完成精妙钩杀？",
+    "popup_en": "💡 <b>Black to move: hook mate</b>: Black's rooks are on d7 and e8, bishop on b5, knight on g4, and White's king on g2. How can Black use a series of sacrifices to deliver a brilliant hook mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：引象到e2再吃掉、逼王到f1、吃掉白后、Ra2#发现将——象b5斜线贯穿f1是关键！",
+    "popup_en": "✅ <b>Key idea</b>: Lure the bishop to e2 and capture it, drive the king to f1, and remove White's queen. Ra2# then gives discovered check along the bishop's diagonal from b5 to f1.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rd2+",
       "popup": "黑车Rd2+将军！车从d7杀到d2，沿第2列将军白王g2，逼白象出来挡将。",
+      "popup_en": "Rd2+! The rook drops from d7 to d2 and checks the king on g2 along the second rank, forcing the bishop to block.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Be2",
       "popup": "白象Be2挡将——象到e2，暂时拦住黑车对白王的攻击。",
+      "popup_en": "Be2 blocks the check, temporarily stopping the rook's attack on the white king.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rxe2+",
       "popup": "黑车Rxe2+吃象继续将军！车吃掉e2的白象，再次沿第2列将军白王g2，逼王逃往f1。",
+      "popup_en": "Rxe2+! The rook captures the bishop and checks again along the second rank, driving the king to f1.",
       "highlights": [
         {"squares": ["e2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g2"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kf1",
       "popup": "白王被迫逃到f1——注意黑象b5斜线已对准f1！",
+      "popup_en": "The white king is forced to f1. Notice that Black's bishop on b5 is already aimed at f1 along the diagonal.",
       "highlights": [
         {"squares": ["f1"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b5"], "color": "#FF000055", "duration_ms": 0}
@@ -70,6 +77,7 @@
       "index": 4,
       "move": "R8xe4",
       "popup": "黑车R8xe4吃掉白后！另一黑车从e8吃掉e4的白后，清除障碍，再顺势封住e线。",
+      "popup_en": "R8xe4! The other rook captures White's queen on e4, removing an obstacle and taking control of the e-file.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -82,6 +90,7 @@
       "index": 5,
       "move": "hxg4",
       "popup": "白兵hxg4被迫吃马——白方无奈，清除g4的黑马。",
+      "popup_en": "hxg4 is forced, and White's pawn captures the black knight on g4.",
       "highlights": [
         {"squares": ["g4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -94,6 +103,7 @@
       "index": 6,
       "move": "Ra2#",
       "popup": "黑车Ra2#发现将绝杀！车从e2移到a2，让开e2格，揭开黑象b5攻击f1的斜线（b5-c4-d3-e2-f1）——发现将！车控第2列封住f2、g2，另一车封住e1——白王f1无路可逃！",
+      "popup_en": "Ra2# is discovered checkmate! The rook moves from e2 to a2, uncovering the bishop's diagonal b5-c4-d3-e2-f1. The rook controls the second rank, the other rook covers e1, and the king on f1 has no escape.",
       "highlights": [
         {"squares": ["a2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0},

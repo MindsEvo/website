@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-004",
   "description": "中间跳马捉后，将军后hxg3赢回",
+  "explanation_en": "White's queen is loose, but Ng4 attacks Black's queen and prepares a check. After Black captures the queen, the knight's check forces a response and White's h-pawn recaptures the black queen.",
   "intro": {
     "flash_squares": ["g4", "g3", "f6"],
     "popup": "💡 <b>中间招</b>：白后g3是挂子，黑后想吃。白方不应对，先Ng4！中间跳马同时攻击Qg3——黑后吃后被将军！",
+    "popup_en": "💡 <b>Intermezzo</b>: White's queen on g3 is loose and Black threatens to take it. White plays Ng4 first, attacking Black's queen and preparing a check if Black captures.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Ng4中间跳！黑后吃g3，Nxf6+将军，hxg3吃回——净多一马！",
+    "popup_en": "✅ <b>Key idea</b>: Ng4 is the intermezzo. If Black takes the queen, Nxf6+ forces a response and hxg3 recaptures Black's queen, leaving White a knight ahead.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Ng4",
       "popup": "白马Ng4！中间跳——攻击黑后Qg3，同时Nxf6+将军路线已准备好！",
+      "popup_en": "White plays Ng4 as an intermezzo, attacking Black's queen on g3 and preparing the checking move Nxf6+.",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g3"], "color": "#FF000055", "duration_ms": 0},
@@ -32,6 +36,7 @@
       "index": 1,
       "move": "Qxg3",
       "popup": "黑后Qxg3——吃下白后，但Nxf6+将军已在等待！",
+      "popup_en": "Black captures White's queen on g3, but Nxf6+ is ready with check.",
       "highlights": [
         {"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Nxf6+",
       "popup": "白马Nxf6+！将军！黑方必须应将，无法逃跑！",
+      "popup_en": "White's knight captures on f6 with check. Black must answer the check and cannot move the queen to safety.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -57,6 +63,7 @@
       "index": 3,
       "move": "gxf6",
       "popup": "黑兵gxf6——应将。",
+      "popup_en": "Black's g-pawn recaptures on f6 to answer the check.",
       "highlights": [
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -69,6 +76,7 @@
       "index": 4,
       "move": "hxg3",
       "popup": "白兵hxg3！吃回黑后——中间招完成：净得一马，大优！",
+      "popup_en": "White's h-pawn captures the black queen on g3. The intermezzo wins a knight and leaves White with a large advantage.",
       "highlights": [
         {"squares": ["g3"], "color": "#4CAF5055", "duration_ms": 0}
       ],

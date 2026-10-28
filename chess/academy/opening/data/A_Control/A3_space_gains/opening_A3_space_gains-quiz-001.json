@@ -3,14 +3,17 @@
     "gene_id": "A3_space_gains",
     "sequence": 1,
     "concept": "空间优势的定义",
+    "concept_en": "Defining a Space Advantage",
     "question_cn": "「空间优势」在开局中最准确的含义是什么？",
+    "question_en": "What is the most accurate meaning of a space advantage in the opening?",
     "options": [
-        {"key": "A", "text_cn": "拥有更多的棋子"},
-        {"key": "B", "text_cn": "己方棋子可以自由活动的格子比对方多，子力调度更灵活"},
-        {"key": "C", "text_cn": "王翼的兵比对方多"},
-        {"key": "D", "text_cn": "中心格都被己方兵占领"}
+        {"key": "A", "text_cn": "拥有更多的棋子", "text_en": "Having more pieces."},
+        {"key": "B", "text_cn": "己方棋子可以自由活动的格子比对方多，子力调度更灵活", "text_en": "Your pieces have more squares available and can maneuver more freely than your opponent's."},
+        {"key": "C", "text_cn": "王翼的兵比对方多", "text_en": "Having more kingside pawns than your opponent."},
+        {"key": "D", "text_cn": "中心格都被己方兵占领", "text_en": "Occupying every central square with your pawns."}
     ],
     "correct": "B",
     "explanation_cn": "空间优势指己方棋子可以使用的格子数量更多、活动范围更广。拥有空间优势的一方子力调度更自由，可以灵活集中力量攻击任意翼；而空间受限的一方棋子拥挤、互相妨碍，很难找到好的格子。",
+    "explanation_en": "A space advantage means your pieces have more squares available and a wider range of activity. The side with more space can maneuver freely and shift forces to either wing, while cramped pieces tend to obstruct one another and struggle to find good squares.",
     "created_at": "2026-06-07"
 }

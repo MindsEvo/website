@@ -4,10 +4,12 @@
   "intro": {
     "flash_squares": ["e5", "d5", "c5", "e6"],
     "popup": "黑方被白方e5压制。\n找出c5是如何打破压制、重获活动空间的。",
+    "popup_en": "Black is cramped by White's e5-pawn. Watch how ...c5 challenges the chain and helps Black regain activity.",
     "voice": true
   },
   "outro": {
     "popup": "c5直接挑战白方兵链，兑换后黑方重获活动空间。\n被压制时要找反击兵链的关键步。",
+    "popup_en": "The ...c5 break directly challenges White's pawn chain. Exchanges open the position and give Black more room. When cramped, look for a timely pawn break against the chain.",
     "voice": true
   },
   "board_always": {
@@ -19,6 +21,7 @@
       "index": 0,
       "move": "e4",
       "popup": "▶️ <b>e4</b><br>白方占中心",
+      "popup_en": "▶️ <b>e4</b><br>White occupies the center.",
       "highlights": [{"squares": ["e4"], "color": "#C6D50033", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -26,6 +29,7 @@
       "index": 1,
       "move": "e6",
       "popup": "▶️ <b>e6</b><br>法国防御——黑方用e6防守<br>注意：e6挡住了c8象！",
+      "popup_en": "▶️ <b>e6</b><br>The French Defense: Black supports the center with ...e6.<br>Notice that the pawn blocks the bishop on c8.",
       "highlights": [{"squares": ["e6", "c8"], "color": "#E5393533", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -33,6 +37,7 @@
       "index": 2,
       "move": "d4",
       "popup": "▶️ <b>d4</b><br>白方建立双兵中心",
+      "popup_en": "▶️ <b>d4</b><br>White establishes a two-pawn center.",
       "highlights": [{"squares": ["d4", "e4"], "color": "#C6D50044", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -40,6 +45,7 @@
       "index": 3,
       "move": "d5",
       "popup": "▶️ <b>d5</b><br>黑方争中心",
+      "popup_en": "▶️ <b>d5</b><br>Black contests the center.",
       "highlights": [{"squares": ["d5", "e4"], "color": "#00BCD433", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -47,6 +53,7 @@
       "index": 4,
       "move": "Nc3",
       "popup": "▶️ <b>Nc3</b><br>白方出马，支援中心<br>准备推e5来压制黑方",
+      "popup_en": "▶️ <b>Nc3</b><br>White develops a knight to support the center and prepares e5 to gain space.",
       "highlights": [{"squares": ["c3", "d5", "e4"], "color": "#C6D50044", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -54,6 +61,7 @@
       "index": 5,
       "move": "c5",
       "popup": "⚡ <b>c5！黑方的关键！</b><br>黑方在白方推e5之前，先走c5！<br>这是法国防御的标准反击<br>攻击白方d4，迫使白方做出选择",
+      "popup_en": "⚡ <b>...c5 - Black's key move!</b><br>Black strikes before White can advance e5.<br>This is a standard French Defense counterattack: ...c5 attacks d4 and forces White to choose a response.",
       "highlights": [{"squares": ["c5", "d4"], "color": "#00BCD466", "duration_ms": 1500}],
       "concept_arrows": [{"from": "c5", "to": "d4", "color": "#E53935CC"}]
     },
@@ -61,6 +69,7 @@
       "index": 6,
       "move": "exd5",
       "popup": "🔑 <b>exd5 — 白方交换！</b><br>白方选择交换，而不是推e5<br>这改变了整个局面结构！<br>注意：d5被打开后，黑方的e列将会有重要意义",
+      "popup_en": "🔑 <b>exd5 - White chooses the exchange!</b><br>White captures instead of advancing e5, changing the pawn structure.<br>Once the d-pawn leaves, the e-file may become important for Black.",
       "highlights": [{"squares": ["d5", "e5", "e4"], "color": "#FF8F0055", "duration_ms": 1500}],
       "concept_arrows": [{"from": "e4", "to": "d5", "color": "#FF5722CC"}]
     },
@@ -68,6 +77,7 @@
       "index": 7,
       "move": "exd5",
       "popup": "▶️ <b>exd5</b><br>黑方用e6兵吃回！e列被打开！<br>这对黑方有什么意义？<br>→ Re8可以沿e列反压白方！",
+      "popup_en": "▶️ <b>exd5</b><br>Black recaptures with the e-pawn, opening the e-file.<br>Why does that matter?<br>→ A rook can use ...Re8 to pressure White along the file.",
       "highlights": [{"squares": ["d5", "e6", "e8", "e1"], "color": "#00BCD455", "duration_ms": 1500}],
       "concept_arrows": [{"from": "e8", "to": "e4", "color": "#00BCD499"}]
     },
@@ -75,6 +85,7 @@
       "index": 8,
       "move": "Nf3",
       "popup": "▶️ <b>Nf3</b><br>白方出马，准备稳定阵型<br>接下来白方想走Bb5钉住Nc6",
+      "popup_en": "▶️ <b>Nf3</b><br>White develops and stabilizes the position, with Bb5 in mind to pin the knight on c6.",
       "highlights": [{"squares": ["f3", "e5", "d4"], "color": "#C6D50044", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -82,6 +93,7 @@
       "index": 9,
       "move": "Nc6",
       "popup": "▶️ <b>Nc6</b><br>黑方出马，控制d4<br>黑方的子力开始活跃起来！",
+      "popup_en": "▶️ <b>Nc6</b><br>Black develops a knight, controls d4, and begins to activate the pieces.",
       "highlights": [{"squares": ["c6", "d4"], "color": "#00BCD444", "duration_ms": 1000}],
       "concept_arrows": [{"from": "c6", "to": "d4", "color": "#00BCD4CC"}]
     },
@@ -89,6 +101,7 @@
       "index": 10,
       "move": "Bb5",
       "popup": "▶️ <b>Bb5</b><br>白方象出来，钉住Nc6<br>若Nc6离开，d5就失去保护",
+      "popup_en": "▶️ <b>Bb5</b><br>White pins the knight on c6. If it moves, the d5-pawn may lose a defender.",
       "highlights": [{"squares": ["b5", "c6", "d5"], "color": "#FF8F0055", "duration_ms": 1200}],
       "concept_arrows": [{"from": "b5", "to": "c6", "color": "#FF5722CC"}]
     },
@@ -96,6 +109,7 @@
       "index": 11,
       "move": "Bd6",
       "popup": "▶️ <b>Bd6</b><br>黑方象出动！终于活跃起来了！<br>通过c5交换，黑方的象有了活动空间",
+      "popup_en": "▶️ <b>Bd6</b><br>Black develops the bishop, which now has more room to operate after the ...c5 exchange.",
       "highlights": [{"squares": ["d6", "g3", "b4"], "color": "#00BCD455", "duration_ms": 1200}],
       "concept_arrows": []
     },
@@ -103,6 +117,7 @@
       "index": 12,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>白方易位，王安全<br>白方准备好利用d4兵和开放的局面",
+      "popup_en": "▶️ <b>O-O</b><br>White castles and secures the king, ready to use the d4-pawn and the more open position.",
       "highlights": [{"squares": ["g1", "h1"], "color": "#C6D50033", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -110,6 +125,7 @@
       "index": 13,
       "move": "Nge7",
       "popup": "▶️ <b>Nge7</b><br>黑方马出动，准备易位<br>Nge7支援d5，并准备O-O",
+      "popup_en": "▶️ <b>Nge7</b><br>Black develops the g8-knight, supports d5, and prepares to castle.",
       "highlights": [{"squares": ["e7", "d5", "g6"], "color": "#00BCD433", "duration_ms": 1000}],
       "concept_arrows": [{"from": "e7", "to": "d5", "color": "#00BCD4CC"}]
     },
@@ -117,6 +133,7 @@
       "index": 14,
       "move": "Re1",
       "popup": "🔑 <b>Re1 — 抢占e列！</b><br>白方把车放到e列，控制e5<br>白方也意识到e列的重要性！<br>双方都在抢夺开放列的控制权",
+      "popup_en": "🔑 <b>Re1 - Claim the e-file!</b><br>White places a rook on the file to control e5.<br>White also recognizes the value of the open file, and both sides now contest it.",
       "highlights": [{"squares": ["e1", "e5", "e8"], "color": "#C6D50055", "duration_ms": 1500}],
       "concept_arrows": [{"from": "e1", "to": "e5", "color": "#C6D500CC"}]
     },
@@ -124,6 +141,7 @@
       "index": 15,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>黑方易位！王安全<br>现在黑方可以用Re8来利用e列",
+      "popup_en": "▶️ <b>O-O</b><br>Black castles and secures the king. The rook can now use ...Re8 to contest the e-file.",
       "highlights": [{"squares": ["g8", "h8"], "color": "#00BCD433", "duration_ms": 1000}],
       "concept_arrows": []
     },
@@ -131,6 +149,7 @@
       "index": 16,
       "move": "dxc5",
       "popup": "▶️ <b>dxc5</b><br>白方终于吃掉c5<br>但现在d列也开放了！",
+      "popup_en": "▶️ <b>dxc5</b><br>White finally captures on c5, but the d-file opens as well.",
       "highlights": [{"squares": ["c5", "d4", "d8", "d1"], "color": "#FF8F0055", "duration_ms": 1200}],
       "concept_arrows": []
     },
@@ -138,6 +157,7 @@
       "index": 17,
       "move": "Bxc5",
       "popup": "✅ <b>Bxc5 — 最终局面！</b><br>黑方象吃回c5！<br><br>比较开局时和现在黑方的局面：<br>• 开始：象被困在e6后面，无法出来<br>• 现在：象在c5，非常活跃！<br><br>c5反击的效果：黑方成功地突破了空间封锁<br>主动出击比被动等待更有效！",
+      "popup_en": "✅ <b>Bxc5 - Final position!</b><br>Black's bishop recaptures on c5.<br><br>Compare Black's position:<br>• At the start, the bishop was trapped behind e6.<br>• Now it is active on c5.<br><br>The ...c5 break has freed Black from the space bind. Active counterplay is more effective than passive defense.",
       "highlights": [{"squares": ["c5", "f2", "e3", "d4"], "color": "#00BCD466", "duration_ms": 2500}],
       "concept_arrows": [{"from": "c5", "to": "f2", "color": "#00BCD4CC"}]
     }

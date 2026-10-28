@@ -2,11 +2,13 @@
   "game_id": "C12_SpaceCramp_Practice_009",
   "description": "现代防御 B06 — 练习：超现代防御为何主动让空间？",
   "intro": {
+    "popup_en": "Space Cramp, Practice 9 (Advanced)\nBlack voluntarily gives White the center. White builds a large e4-d4 center, yet Black does not try to occupy it immediately. Why? What is the logic of the Modern Defense?",
     "flash_squares": ["e4", "d4", "g7"],
     "popup": "空间挤压 练习9（高级）\n\n黑方主动把中心让给白方！\n\n白方e4，d4——巨大中心控制\n但黑方……完全没有保护的意思？\n\n为什么？超现代防御的逻辑是什么？",
     "voice": true
   },
   "outro": {
+    "popup_en": "The hypermodern idea is not weakness but a trap: the more central pawns White advances, the more targets Black can attack. With ...Bg7 and ...Re8 aimed at the center, Black waits for the right moment to break with ...e5. White's space may be temporary.",
     "popup": "超现代防御逻辑\n\n让中心不是软弱，而是陷阱：\n\n白方的中心兵越多 →\n越多目标被攻击\n\n黑方Re8，Bg7瞄准中心\n时机到了→...e5爆破！\n\n让空间只是暂时的！",
     "voice": true
   },
@@ -15,52 +17,58 @@
     "color": "#C6D50022"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4 白方占中心"},
+    {"index": 0, "move": "e4", "popup": "e4 白方占中心", "popup_en": "e4 occupies the center for White."},
     {
       "index": 1,
       "move": "g6",
+      "popup_en": "...g6 begins the hypermodern setup. Black develops first instead of immediately contesting the center.",
       "popup": "g6！超现代开始！\n黑方不急于争中心，而是先发展",
       "highlights": [{"squares": ["g6", "g7"], "color": "#C6D50044"}]
     },
-    {"index": 2, "move": "d4", "popup": "d4 白方再占中心！双格控制"},
+    {"index": 2, "move": "d4", "popup": "d4 白方再占中心！双格控制", "popup_en": "d4! White occupies more central space and controls both central squares."},
     {
       "index": 3,
       "move": "Bg7",
+      "popup_en": "...Bg7! Black's key hypermodern weapon. The bishop's long diagonal targets d4, placing White's central pawn under pressure.",
       "popup": "Bg7！超现代的核心武器！\n从g7瞄准整个d4-c3对角线\n白方的d4兵正在被Bg7监视",
       "highlights": [{"squares": ["g7", "f6", "e5", "d4", "c3"], "color": "#C6D50055"}]
     },
-    {"index": 4, "move": "Nc3", "popup": "Nc3 支援中心"},
-    {"index": 5, "move": "d6", "popup": "d6 稳固，为e5做准备"},
-    {"index": 6, "move": "Nf3", "popup": "Nf3 发展马"},
-    {"index": 7, "move": "Nf6", "popup": "Nf6 出马，攻击e4"},
-    {"index": 8, "move": "Be2", "popup": "Be2 稳固，准备入城"},
-    {"index": 9, "move": "O-O", "popup": "O-O 黑方入城，王安全了"},
-    {"index": 10, "move": "O-O", "popup": "O-O 白方入城"},
-    {"index": 11, "move": "c6", "popup": "c6！准备d5反击！\n黑方在积蓄能量"},
-    {"index": 12, "move": "a4", "popup": "a4！白方翼翼扩张！"},
+    {"index": 4, "move": "Nc3", "popup": "Nc3 支援中心", "popup_en": "Nc3 supports the center."},
+    {"index": 5, "move": "d6", "popup": "d6 稳固，为e5做准备", "popup_en": "...d6 stabilizes the position and prepares ...e5."},
+    {"index": 6, "move": "Nf3", "popup": "Nf3 发展马", "popup_en": "Nf3 develops a knight."},
+    {"index": 7, "move": "Nf6", "popup": "Nf6 出马，攻击e4", "popup_en": "...Nf6 develops and attacks e4."},
+    {"index": 8, "move": "Be2", "popup": "Be2 稳固，准备入城", "popup_en": "Be2 reinforces the position and prepares to castle."},
+    {"index": 9, "move": "O-O", "popup": "O-O 黑方入城，王安全了", "popup_en": "...O-O secures Black's king."},
+    {"index": 10, "move": "O-O", "popup": "O-O 白方入城", "popup_en": "O-O secures White's king."},
+    {"index": 11, "move": "c6", "popup": "c6！准备d5反击！\n黑方在积蓄能量", "popup_en": "...c6 prepares the ...d5 counterbreak as Black builds up energy."},
+    {"index": 12, "move": "a4", "popup": "a4！白方翼翼扩张！", "popup_en": "a4! White expands on the queenside."},
     {
       "index": 13,
       "move": "a5",
+      "popup_en": "a5! White blocks the a-file and prevents Black from expanding easily on the queenside.",
       "popup": "a5！封锁！\n黑方主动封锁a4的威胁\n不让白方轻易翼侧扩张",
       "highlights": [{"squares": ["a5", "a4"], "color": "#8E24AA55"}]
     },
-    {"index": 14, "move": "Be3", "popup": "Be3 发展象，守护d4"},
+    {"index": 14, "move": "Be3", "popup": "Be3 发展象，守护d4", "popup_en": "Be3 develops and supports d4."},
     {
       "index": 15,
       "move": "Nbd7",
+      "popup_en": "...Nbd7! Black develops, with ...Ne5 or ...Nc5 in mind to attack e4.",
       "popup": "Nbd7！马发展！\n目标是...Ne5或...Nc5（攻击e4）",
       "highlights": [{"squares": ["d7", "e5", "c5"], "color": "#FF8F0044"}]
     },
-    {"index": 16, "move": "h3", "popup": "h3 防Ng4，稳固"},
+    {"index": 16, "move": "h3", "popup": "h3 防Ng4，稳固", "popup_en": "h3 prevents ...Ng4 and stabilizes White's kingside."},
     {
       "index": 17,
       "move": "Re8",
+      "popup_en": "...Re8! A key move: Black places a rook behind the e-pawn. If the e-file opens, the rook will become active at once. Together, Bg7 and Re8 form Black's counterattacking setup.",
       "popup": "Re8！⭐关键！\n车对准e-线！\n一旦e-线打开（如白方e5），Re8立刻发威\n\nBg7 + Re8 = 黑方的反击阵地就位！",
       "highlights": [{"squares": ["e8", "e5", "e4"], "color": "#E5393544"}]
     },
     {
       "index": 18,
       "move": "Qd2",
+      "popup_en": "Qd2 prepares Bh6 or f4-f5. What should Black do, and when is ...e5 best? Should Black first activate the knight from d7, or break immediately?",
       "popup": "Qd2 白方准备Bh6或f4-f5\n\n⭐ 练习问题：\n黑方应该怎么做？\n什么时候推...e5最合适？\n（提示：等Nbd7先活动好，还是现在就推？）",
       "highlights": [{"squares": ["e5", "d4"], "color": "#8E24AA33"}]
     }

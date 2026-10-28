@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-005",
   "description": "黑车将军插路，诱王离位后升变赢",
+  "explanation_en": "Black uses checks to draw the king away from the promotion square, then interposes the rook on c1 to cut off the king's return route. The h-pawn can promote safely.",
   "intro": {
     "flash_squares": ["a4", "c4", "c2", "h3"],
     "popup": "💡 <b>拦截</b>：黑方行动！黑车在a4，黑兵在h3。车跳c4将军，能拦截白方阻止兵升变的路线吗？",
+    "popup_en": "💡 <b>Interference</b>: Black to move. Black's rook is on a4 and pawn on h3. Can a rook check on c4 draw the white king away and block its route back to stop promotion?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rc4+逼王到d2，Rc1！车插c1拦截——王被迫吃车，h兵升后赢！",
+    "popup_en": "✅ <b>Key idea</b>: Rc4+ drives the king to d2; Rc1 then interposes and blocks its return. The king must capture the rook, allowing the h-pawn to promote.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rc4+",
       "popup": "黑车Rc4+！c列将军，白王必须离开c2，远离h1升变格！",
+      "popup_en": "Black checks with Rc4+, forcing the king away from c2 and farther from the h1 promotion square.",
       "highlights": [
         {"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c2"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kd2",
       "popup": "白王Kd2——被迫离开，c1已无王防守！",
+      "popup_en": "The king is forced to d2, leaving c1 without the king's protection.",
       "highlights": [
         {"squares": ["d2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rc1",
       "popup": "黑车Rc1！插入c1，拦截白王重回c1防止升变——白王必须吃车！",
+      "popup_en": "Black interposes with Rc1, blocking the king's route back to stop promotion. White's king must capture the rook.",
       "highlights": [
         {"squares": ["c1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kxc1",
       "popup": "白王Kxc1——被迫吃车，远离h1，黑兵升后已无阻！",
+      "popup_en": "The king captures the rook and is drawn farther from h1, leaving the black pawn free to promote.",
       "highlights": [
         {"squares": ["c1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "h2",
       "popup": "黑兵h2！一步升后在即——拦截战术完美，赢定！",
+      "popup_en": "The pawn advances to h2 and is one move from promotion. The interference has worked, and Black is winning.",
       "highlights": [
         {"squares": ["h2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}

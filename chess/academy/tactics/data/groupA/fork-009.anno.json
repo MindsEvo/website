@@ -1,13 +1,16 @@
 {
   "game_id": "tac_fork_L1-009",
   "description": "双车献子后马捉双——马同时将军并攻击后",
+  "explanation_en": "A striking combination: sacrifice both rooks to draw out the king, then use a knight fork to win the queen.",
   "intro": {
     "flash_squares": ["e5", "h7", "h8"],
     "popup": "💡 <b>捉双</b>：白方如何连续献车，最终用马将军并攻击黑后？",
+    "popup_en": "💡 <b>Fork</b>: How can White sacrifice both rooks to set up a knight check that also attacks Black's queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：献双车引开王，马跳d7将军兼捉后，捉双成功！",
+    "popup_en": "✅ <b>Key idea</b>: Sacrifice both rooks to draw out the king, then play Nd7+ to check and attack the queen. The fork wins!",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxh7+",
       "popup": "车吃h7将军！第一步献车，引诱黑车应对。",
+      "popup_en": "Rook takes on h7 with check! The first rook sacrifice forces Black's rook to respond.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Rxh7",
       "popup": "黑车被迫吃车。",
+      "popup_en": "Black's rook is forced to capture the rook.",
       "highlights": [
         {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Rxh7+",
       "popup": "第二车再次将军！继续引开黑王。",
+      "popup_en": "The second rook gives check, drawing the black king farther from safety.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Kxh7",
       "popup": "黑王必须吃车，远离安全位置。",
+      "popup_en": "The king must capture the rook and is pulled away from safety.",
       "highlights": [
         {"squares": ["h7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Qh1+",
       "popup": "后将军，逼王进入马的攻击范围。",
+      "popup_en": "The queen checks from h1, driving the king into the knight's range.",
       "highlights": [
         {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h7"], "color": "#FF000055", "duration_ms": 0}
@@ -80,6 +88,7 @@
       "index": 5,
       "move": "Nxd7+",
       "popup": "马跳d7将军！同时攻击f8王和b6后——捉双！",
+      "popup_en": "The knight captures on d7 with check, attacking the king on f8 and queen on b6 at once. A fork!",
       "highlights": [
         {"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0},
@@ -96,6 +105,7 @@
       "index": 6,
       "move": "Ke8",
       "popup": "黑王应将，后暴露无援。",
+      "popup_en": "The king moves to e8, leaving the queen exposed and undefended.",
       "highlights": [
         {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["b6"], "color": "#FF000055", "duration_ms": 0}
@@ -109,6 +119,7 @@
       "index": 7,
       "move": "Nxb6",
       "popup": "马吃b6后，白方大获全胜！",
+      "popup_en": "The knight captures the queen on b6, and White wins decisively!",
       "highlights": [
         {"squares": ["b6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

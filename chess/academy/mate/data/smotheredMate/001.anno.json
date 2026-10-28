@@ -1,13 +1,16 @@
 {
   "game_id": "mate_smotheredMate_L1-001",
   "description": "菲利道尔闷杀：马后、弃后迫使黑王被自己棋子围死",
+  "explanation_en": "Philidor's Legacy: the knight and queen coordinate, then a queen sacrifice forces Black's king to be smothered by its own pieces.",
   "intro": {
     "flash_squares": ["d4", "g5", "g8", "e8"],
     "popup": "💡 <b>闷杀（菲利道尔闷杀）</b>：白后在d4，马在g5，如何用经典的闷杀手法将死黑王？",
+    "popup_en": "💡 <b>Smothered mate (Philidor's Legacy)</b>: White's queen is on d4 and knight on g5. How can White use this classic pattern to checkmate the black king?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白后引路、马跳双将、弃后引入黑车，最终马踏f7闷杀——黑王被自己的车和兵团团围住！",
+    "popup_en": "✅ <b>Key idea</b>: The queen leads the king, the knight gives a double check, and a queen sacrifice lures in the rook. Nf7# then smothers the king behind its own rook and pawns.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qd5+",
       "popup": "白后Qd5+将军！逼迫黑王躲到h8角落。",
+      "popup_en": "Qd5+! The queen checks and drives the black king into the corner on h8.",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -28,6 +32,7 @@
       "index": 1,
       "move": "Kh8",
       "popup": "黑王被迫退到h8角落。",
+      "popup_en": "The black king is forced into the corner on h8.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -40,6 +45,7 @@
       "index": 2,
       "move": "Nf7+",
       "popup": "白马Nf7+跳入，将军并攻击h8！黑王只能回到g8。",
+      "popup_en": "Nf7+! The knight checks and attacks h8, forcing the king back to g8.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Kg8",
       "popup": "黑王回到g8——陷阱即将合拢！",
+      "popup_en": "The black king returns to g8 as the trap closes.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Nh6+",
       "popup": "白马Nh6+双将！马攻击g8，后也攻击g8，黑王必须再逃h8。",
+      "popup_en": "Nh6+! A double check: the knight and queen both attack g8, forcing the king back to h8.",
       "highlights": [
         {"squares": ["h6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Kh8",
       "popup": "黑王再次被迫退回h8。",
+      "popup_en": "The black king is forced back to h8 again.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Qg8+",
       "popup": "白后Qg8+精妙弃后！强迫黑车吃后，自断退路。",
+      "popup_en": "Qg8+! A brilliant queen sacrifice forces the rook to capture and block its own king's escape.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -105,6 +115,7 @@
       "index": 7,
       "move": "Rxg8",
       "popup": "黑车被迫吃后，却堵死了g8！黑王陷入绝境。",
+      "popup_en": "The rook is forced to capture the queen, but now occupies g8 and seals the king's escape.",
       "highlights": [
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -118,6 +129,7 @@
       "index": 8,
       "move": "Nf7#",
       "popup": "白马Nf7#闷杀！黑王在h8被己方棋子团团围住，无路可走——闷杀成功！",
+      "popup_en": "Nf7# is smothered mate! The king on h8 is surrounded by its own pieces and has no escape.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

@@ -5,45 +5,49 @@
     {
       "key": "C9_pawn_chains",
       "label": "C9  兵链方向",
+      "label_en": "C9 Pawn-Chain Direction",
       "items": [
-        { "id": "opening_C9_PawnChain_Practice_006", "label": "6. 练习6：法国温洩变例双翼竞速（C18）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C9_PawnChain_Practice_007", "label": "7. 练习7：国王印度马德普拉塔双链对攻（E97）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C9_PawnChain_Practice_008", "label": "8. 练习8：尼姆佐古典变例根部反击（E41）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C9_PawnChain_Practice_009", "label": "9. 练习9：QGD大中心变例兵链与残局（D55）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C9_PawnChain_Practice_010", "label": "10. 练习10：英国开局非对称双兵链总结（A25）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_C9_PawnChain_Practice_006", "label": "6. 练习6：法国温洩变例双翼竞速（C18）", "label_en": "6. A Two-Wing Race in the French Winawer (C18)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "In the Winawer, White accepts doubled c-pawns to preserve a coherent pawn chain, while Black attacks its base. The players then race on opposite wings: White advances against Black's king, while Black seeks queenside counterplay. The lesson is to understand both the direction and the vulnerable base of each chain." },
+        { "id": "opening_C9_PawnChain_Practice_007", "label": "7. 练习7：国王印度马德普拉塔双链对攻（E97）", "label_en": "7. Opposing Pawn Chains in the King's Indian (E97)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White's e4-d5 chain points toward Black's queenside, while Black's e5-d6 chain points toward White's king. Once the center is locked, each side advances along the direction of its chain and attacks on the corresponding wing." },
+        { "id": "opening_C9_PawnChain_Practice_008", "label": "8. 练习8：尼姆佐古典变例根部反击（E41）", "label_en": "8. Attack the Base of the Chain (Nimzo-Indian, E41)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The Nimzo-Indian pin on Nc3 disrupts White's plan to build a broad center. Black challenges the base of the chain with ...c5 and later ...dxc4. White responds with d5-d6, restricting Black's pieces and creating a dangerous passed pawn." },
+        { "id": "opening_C9_PawnChain_Practice_009", "label": "9. 练习9：QGD大中心变例兵链与残局（D55）", "label_en": "9. Pawn Structure from the Middlegame to the Endgame (QGD, D55)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The central exchange leaves White with an isolated queen's pawn. It gives White useful control of squares such as c5 and e5 and can support active piece play, but may become a long-term weakness in an endgame. White uses the space and piece activity while coordinating around the d4-pawn." },
+        { "id": "opening_C9_PawnChain_Practice_010", "label": "10. 练习10：英国开局非对称双兵链总结（A25）", "label_en": "10. Asymmetric Pawn Chains in the English Opening (A25)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White's c4-d3 chain and Black's e5-d6-f5 chain point in different directions. White expands with b3 and Ba3, occupies d5, then advances e4 and d4 to build a broad center. The final Nf4 outpost shows how the pawn structure guides piece placement and strategic targets." }
       ]
     },
     {
       "key": "C10_weak_squares",
       "label": "C10 弱格利用",
+      "label_en": "C10 Exploiting Weak Squares",
       "items": [
-        { "id": "opening_C10_WeakSquares_Practice_006", "label": "6. Ba6瞄准弱格（后翼印度防御 E15）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C10_WeakSquares_Practice_007", "label": "7. 孤立兵制造弱格（英格兰开局 A13）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C10_WeakSquares_Practice_008", "label": "8. 兑换后的e5弱格（后翼弃兵 D30）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C10_WeakSquares_Practice_009", "label": "9. 黑格弱点链（尼姆佐印度 E47）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C10_WeakSquares_Practice_010", "label": "10. Ne4占据弱格+c3通路兵强制得子（英格兰开局 A17）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_C10_WeakSquares_Practice_006", "label": "6. Ba6瞄准弱格（后翼印度防御 E15）", "label_en": "6. A Long-Range Bishop Targets a Weak Square (Queen's Indian)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black's bishop on a6 pressures the weak square c4 from the long diagonal. The bishop need not approach the target; it can exert lasting pressure from a distance while ...b6 and ...c6 complete the plan." },
+        { "id": "opening_C10_WeakSquares_Practice_007", "label": "7. 孤立兵制造弱格（英格兰开局 A13）", "label_en": "7. An Isolated Pawn Creates Weak Squares (English Opening)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After the d-pawn becomes isolated, c5 and e5 lose pawn protection. White removes a knight defending the pawn, creates further structural weaknesses, and then pressures the isolated pawn along the d-file with a rook." },
+        { "id": "opening_C10_WeakSquares_Practice_008", "label": "8. 兑换后的e5弱格（后翼弃兵 D30）", "label_en": "8. The Weak e5-Square After an Exchange (Queen's Gambit)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The exchange on d5 removes the e6-pawn that defended e5. White places rooks on the c- and e-files to use the weak square as an invasion route, then finds that d5 can become exposed as well." },
+        { "id": "opening_C10_WeakSquares_Practice_009", "label": "9. 黑格弱点链（尼姆佐印度 E47）", "label_en": "9. A Chain of Light-Square Weaknesses (Nimzo-Indian)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Exchanging the light-squared bishop leaves weaknesses on squares of that color, including d4, f4, and h4. Black's surviving dark-squared bishop uses Bg5 to pressure those targets along a long diagonal." },
+        { "id": "opening_C10_WeakSquares_Practice_010", "label": "10. Ne4占据弱格+c3通路兵强制得子（英格兰开局 A17）", "label_en": "10. Ne4 Occupies a Weak Square, Then a Passed Pawn Wins Material (English)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After bxc3, Black's knight occupies the unprotected e4-square. Black then creates a passed c-pawn; White is forced to capture it, allowing the knight to take the bishop before the rook invades on e2. The weak-square outpost is the trigger for the combination." }
       ]
     },
     {
       "key": "C11_open_files",
       "label": "C11 开放线",
+      "label_en": "C11 Open Files",
       "items": [
-        { "id": "opening_C11_OpenFiles_Practice_006", "label": "6. 抢占c线主动权（西西里四马变 B45）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C11_OpenFiles_Practice_007", "label": "7. 车借d线入侵（QGD交换变 D35）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C11_OpenFiles_Practice_008", "label": "8. e线开放后的战术得子（彼得罗夫防御 C42）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C11_OpenFiles_Practice_009", "label": "9. 开放线配合底行弱点（雷蒂开局 A07）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C11_OpenFiles_Practice_010", "label": "10. f6挑战楔子打通f线（卡罗-卡恩 B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_C11_OpenFiles_Practice_006", "label": "6. 抢占c线主动权（西西里四马变 B45）", "label_en": "6. Seize the Initiative on the c-File (Sicilian Four Knights)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Exchanges give White doubled c-pawns but open the c-file. White occupies it first with Rc1, while Black needs to challenge with ...Rc8. The lesson is to act quickly when a file opens: the side that arrives first can dictate the play." },
+        { "id": "opening_C11_OpenFiles_Practice_007", "label": "7. 车借d线入侵（QGD交换变 D35）", "label_en": "7. Rooks on Two Open Files (QGD Exchange)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "The Queen's Gambit Exchange Variation opens the d-file. White plans Re1 to contest the e-file and Rad1 to double on the d-file, creating coordinated pressure along two central files." },
+        { "id": "opening_C11_OpenFiles_Practice_008", "label": "8. e线开放后的战术得子（彼得罗夫防御 C42）", "label_en": "8. Tactics on the Open e-File (Petrov Defense)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "After the knights exchange, the e-file opens and White places a rook there immediately. Black's ...Bg4 pin creates counterplay, but White can coordinate the rooks and exploit tactical threats along the open file." },
+        { "id": "opening_C11_OpenFiles_Practice_009", "label": "9. 开放线配合底行弱点（雷蒂开局 A07）", "label_en": "9. An Open File and a Back-Rank Weakness (Réti Opening)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White places a rook on e1 before the file opens. Once e5 changes the structure, Re7 becomes an invasion idea that combines with Qh5 and Ng5 against the king. The open-file rook and back-rank weakness create threats that are difficult to meet together." },
+        { "id": "opening_C11_OpenFiles_Practice_010", "label": "10. f6挑战楔子打通f线（卡罗-卡恩 B12）", "label_en": "10. Challenge the Wedge and Open the f-File (Caro-Kann)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White's e5-pawn wedge closes the center, but Black challenges it with ...f6. After ...fxe5, the f-file opens and the rook on f8 becomes active. The lesson is to identify the pawn break that removes a central wedge and opens a file for the rooks." }
       ]
     },
     {
       "key": "C12_space_cramp",
       "label": "C12 空间挤压",
+      "label_en": "C12 Space Cramp",
       "items": [
-        { "id": "opening_C12_SpaceCramp_Practice_006", "label": "6. 练习6：指出被压子力并找到反击点（卡罗-卡恩推进变 B12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C12_SpaceCramp_Practice_007", "label": "7. 练习7：吃兵换来空间失衡（后翼弃兵接受变 D20）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C12_SpaceCramp_Practice_008", "label": "8. 练习8：局促中找反击（后印度防御 E12）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C12_SpaceCramp_Practice_009", "label": "9. 练习9：超现代防御：为什么主动让出空间？（现代防御 B06）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" },
-        { "id": "opening_C12_SpaceCramp_Practice_010", "label": "10. 练习10：谁的空间更有价值？（雷蒂改良KIA A07）", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }
+        { "id": "opening_C12_SpaceCramp_Practice_006", "label": "6. 练习6：指出被压子力并找到反击点（卡罗-卡恩推进变 B12）", "label_en": "6. Identify the Cramped Pieces and Find a Break (Caro-Kann Advance)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White's e5 wedge restricts Black's knight on g6. Black should recognize the limited mobility and prepare ...f6 to challenge the wedge. The break works best once the pieces are coordinated." },
+        { "id": "opening_C12_SpaceCramp_Practice_007", "label": "7. 练习7：吃兵换来空间失衡（后翼弃兵接受变 D20）", "label_en": "7. Material for Space (Queen's Gambit Accepted)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black wins a pawn by accepting the gambit, but leaves White room to build a d4-e4 center. Black must develop quickly, challenge the center, and prevent a knight from occupying d5; the extra pawn is not worth allowing White's pieces to become cramped." },
+        { "id": "opening_C12_SpaceCramp_Practice_008", "label": "8. 练习8：局促中找反击（后印度防御 E12）", "label_en": "8. Find a Counterbreak When Cramped (Queen's Indian)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "White's d4-e4 center restricts Black's pieces. Black's best freeing idea is ...e5, challenging d4 directly. If White captures, ...Nc5 and ...Bb7 can activate the pieces and create counterplay." },
+        { "id": "opening_C12_SpaceCramp_Practice_009", "label": "9. 练习9：超现代防御：为什么主动让出空间？（现代防御 B06）", "label_en": "9. Why Give Up Space? The Modern Defense", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black allows White to occupy the center, then targets the advanced pawns with the fianchettoed bishop and a rook on e8. Once the pieces are ready, ...e5 can challenge the center. The space White gains is temporary if Black can undermine it at the right moment." },
+        { "id": "opening_C12_SpaceCramp_Practice_010", "label": "10. 练习10：谁的空间更有价值？（雷蒂改良KIA A07）", "label_en": "10. Which Side's Space Is More Valuable? (Réti-King's Indian Attack)", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "explanation_en": "Black locks the center with ...d4, but the resulting central space is static and also blocks Black's bishop. White shifts to the queenside with a4-a5 and Nc4, building a concrete plan to open the b-file. Space is valuable when it can be converted into active play." }
       ]
     }
   ]

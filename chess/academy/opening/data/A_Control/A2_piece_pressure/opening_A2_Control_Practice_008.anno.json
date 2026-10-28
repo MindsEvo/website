@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "双方都用子力控中心，谁更协调谁就占优！观察双方对称布局中各自的控制质量，子力控制的质量比数量更重要——协调是关键",
+    "popup_en": "Both sides use pieces to control the center. Compare how well they coordinate: the quality of control matters more than simply counting pieces.",
     "voice": true
   },
   "outro": {
     "popup": "子力控制的质量比数量更重要——协调是关键。双方都有4个子力控制中心，但 Be6 比 Bd2 更主动、更具威胁——这一格位置的差距就是整个局面的差距。",
+    "popup_en": "The quality of piece coordination matters more than quantity. Both sides have four pieces influencing the center, but Be6 is more active and threatening than Bd2. That difference in placement can shape the whole position.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "c4",
       "popup": "⬆️ <b>1.c4 — 白方翼路兵控制 d5！</b><br>c4 兵控制 d5 格，英格兰开局的标志。白方选择用侧翼兵影响中心，而非直接占领。",
+      "popup_en": "⬆️ <b>1.c4 - White's flank pawn controls d5!</b><br>The c-pawn influences d5, a hallmark of the English Opening. White affects the center from the flank rather than occupying it directly.",
       "highlights": [
         {
           "squares": [
@@ -50,6 +53,7 @@
       "index": 1,
       "move": "c5",
       "popup": "⬇️ <b>1...c5 — 对称！黑方翼路兵控制 d4！</b><br>黑方镜像回应，c5 控制 d4。这就是「英格兰对称」的起点——双方都选择了超现代路线。",
+      "popup_en": "⬇️ <b>1...c5 - Black mirrors White and controls d4!</b><br>This begins the Symmetrical English, with both sides using a hypermodern approach.",
       "highlights": [
         {
           "squares": [
@@ -71,6 +75,7 @@
       "index": 2,
       "move": "Nc3",
       "popup": "⬆️ <b>2.Nc3 — 白马控制 d5 和 e4！</b><br>Nc3 与 c4 配合，d5 格受到双重控制。白方中心控制继续积累。",
+      "popup_en": "⬆️ <b>2.Nc3 - The knight controls d5 and e4!</b><br>Together with c4, the knight gives White double control of d5. White continues building central influence.",
       "highlights": [
         {
           "squares": [
@@ -98,6 +103,7 @@
       "index": 3,
       "move": "Nc6",
       "popup": "⬇️ <b>2...Nc6 — 对称！黑马控制 d4 和 e5！</b><br>黑马镜像出现，控制 d4 和 e5。双方各有马+兵控制对方的中心。",
+      "popup_en": "⬇️ <b>2...Nc6 - Black mirrors the knight development!</b><br>The knight controls d4 and e5. Each side now uses a knight and pawn to influence the opponent's center.",
       "highlights": [
         {
           "squares": [
@@ -125,6 +131,7 @@
       "index": 4,
       "move": "g3",
       "popup": "⬆️ <b>3.g3 — 准备象纤维化！</b><br>白方准备将象发展到 g2，控制 d5 的长斜线。",
+      "popup_en": "⬆️ <b>3.g3 - Prepare the bishop fianchetto!</b><br>White plans to develop the bishop to g2, where it will influence the long diagonal toward d5.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -132,6 +139,7 @@
       "index": 5,
       "move": "g6",
       "popup": "⬇️ <b>3...g6 — 对称！黑方同样纤维化！</b><br>黑方准备将象发展到 g7，控制 d4 方向。双方战略完全镜像。",
+      "popup_en": "⬇️ <b>3...g6 - Black prepares the matching fianchetto!</b><br>The bishop will develop to g7 and influence the center from the long diagonal. The plans remain symmetrical.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -139,6 +147,7 @@
       "index": 6,
       "move": "Bg2",
       "popup": "⬆️ <b>4.Bg2 — 白象入 h1-a8 斜线！</b><br>白象沿长对角线控制 d5，与 Nc3+c4 形成三重 d5 控制。",
+      "popup_en": "⬆️ <b>4.Bg2 - The bishop joins the long diagonal!</b><br>It controls d5 together with Nc3 and c4, giving White three sources of influence on that square.",
       "highlights": [
         {
           "squares": [
@@ -162,6 +171,7 @@
       "index": 7,
       "move": "Bg7",
       "popup": "⬇️ <b>4...Bg7 — 对称！黑象入 h8-a1 斜线！</b><br>黑象控制 d4 方向，与 Nc6+c5 形成三重 d4 控制。双方象斜线对抗！",
+      "popup_en": "⬇️ <b>4...Bg7 - Black's bishop takes the opposite long diagonal!</b><br>It influences d4 alongside Nc6 and c5. The bishops contest the center from opposing diagonals.",
       "highlights": [
         {
           "squares": [
@@ -185,6 +195,7 @@
       "index": 8,
       "move": "Nf3",
       "popup": "⬆️ <b>5.Nf3 — 白第二马出动！</b><br>f3 马控制 e5 和 d4。与 Nc3 配合，白方现在有两马+象+兵共同控制中心区域。",
+      "popup_en": "⬆️ <b>5.Nf3 - White develops the second knight!</b><br>It controls e5 and d4. Together with Nc3, the bishop, and the pawns, White has several pieces influencing the center.",
       "highlights": [
         {
           "squares": [
@@ -212,6 +223,7 @@
       "index": 9,
       "move": "Nf6",
       "popup": "⬇️ <b>5...Nf6 — 对称！黑第二马出动！</b><br>f6 马控制 e4 和 d5。双方现在各有两马+象+兵控制中心，完全对称！",
+      "popup_en": "⬇️ <b>5...Nf6 - Black develops the second knight too!</b><br>The knight controls e4 and d5. Both sides now have a similar set of pieces influencing the center.",
       "highlights": [
         {
           "squares": [
@@ -239,6 +251,7 @@
       "index": 10,
       "move": "O-O",
       "popup": "⬆️ <b>6.O-O — 白方易位！</b><br>子力发展完成，易位保护王。",
+      "popup_en": "⬆️ <b>6.O-O - White castles!</b><br>Development is complete and the king is secured.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -246,6 +259,7 @@
       "index": 11,
       "move": "O-O",
       "popup": "⬇️ <b>6...O-O — 对称易位！</b><br>双方都完成了几乎相同的开局结构。现在关键问题是：谁先打破对称，建立质量更高的控制？",
+      "popup_en": "⬇️ <b>6...O-O - Black castles symmetrically!</b><br>The structures are nearly identical. The question is which side can break the symmetry and create more effective control.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -253,6 +267,7 @@
       "index": 12,
       "move": "d3",
       "popup": "⬆️ <b>7.d3 — 白方稳固，支撑中心。</b><br>d3 稳固阵型，支撑 e4 推进。",
+      "popup_en": "⬆️ <b>7.d3 - White reinforces the position.</b><br>The pawn supports a later e4 advance and keeps the setup solid.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -260,6 +275,7 @@
       "index": 13,
       "move": "d6",
       "popup": "⬇️ <b>7...d6 — 对称稳固。</b><br>d6 支撑 e5，双方阵型几乎相同。",
+      "popup_en": "⬇️ <b>7...d6 - Black reinforces symmetrically.</b><br>The pawn supports e5, keeping the structures nearly identical.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -267,6 +283,7 @@
       "index": 14,
       "move": "Bd2",
       "popup": "⬆️ <b>8.Bd2 — 白象发展，但位置不是最优。</b><br>Bd2 开发象，准备 Rc1 或 Qa4。但 d2 并不直接威胁黑方阵型。",
+      "popup_en": "⬆️ <b>8.Bd2 - White develops the bishop, but passively.</b><br>Bd2 prepares ideas such as Rc1 or Qa4, but it does not directly pressure Black's position.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -274,6 +291,7 @@
       "index": 15,
       "move": "Be6",
       "popup": "⬇️ <b>8...Be6 — 黑象主动！质量优于白方！</b><br>黑象 Be6 更主动、更积极</b>——这就是控制质量的细微差异。<br><span style='color:#88CCFF;'>★ 双方各有 4 个子力控制中心，但 Be6 比 Bd2 协调性更高——<b>控制的质量，决定谁更占优！</b></span>",
+      "popup_en": "⬇️ <b>8...Be6 - Black develops more actively!</b><br>Be6 is more purposeful than Bd2, illustrating a subtle difference in the quality of control.<br><span style='color:#88CCFF;'>★ Both sides influence the same number of central squares, but Be6 is better coordinated than Bd2. <b>Quality of control matters.</b></span>",
       "highlights": [
         {
           "squares": [

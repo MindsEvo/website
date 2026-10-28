@@ -1,13 +1,16 @@
 {
   "game_id": "tac_interference_L1-009",
   "description": "白象精准插入第八横线赢后",
+  "explanation_en": "A precise bishop interposition on the eighth rank disconnects Black's rook and bishop and wins the queen.",
   "intro": {
     "flash_squares": ["h5", "e8", "d8", "f8"],
     "popup": "💡 <b>拦截</b>：黑Rd8、黑Bf8同在第八横线，黑后在c7。白象插e8——切断第八横线后，黑后如何逃？",
+    "popup_en": "💡 <b>Interference</b>: Black's rook is on d8, bishop on f8, and queen on c7. White can interpose the bishop on e8 to cut the eighth rank. How can Black save the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Be8！象插e8切断Rd8与Bf8，黑后被迫到f7，Bxf7赢后！",
+    "popup_en": "✅ <b>Key idea</b>: Be8! The bishop cuts the connection between Rd8 and Bf8. The queen is forced to f7, where Bxf7 wins it.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bf7+",
       "popup": "白象Bf7+！先将军把黑王赶到角落h8。",
+      "popup_en": "Bf7+! The check first drives the black king into the corner on h8.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Kh8",
       "popup": "黑王Kh8——角落中，第八横线两端：Rd8在d8，Bf8在f8。",
+      "popup_en": "The king moves to h8. Black's rook on d8 and bishop on f8 still coordinate along the eighth rank.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0},
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Be8",
       "popup": "白象Be8！插入e8，精确切断Rd8与Bf8的第八横线联系——Qc7被迫应对e8的威胁！",
+      "popup_en": "Be8! The bishop precisely cuts the eighth-rank connection between Rd8 and Bf8, forcing the queen on c7 to answer the threat to e8.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d8"], "color": "#FF000055", "duration_ms": 0},
@@ -59,6 +65,7 @@
       "index": 3,
       "move": "Qf7",
       "popup": "黑后Qf7——唯一应对，但掉入陷阱！",
+      "popup_en": "Qf7 is the only defense, but it falls into the trap.",
       "highlights": [
         {"squares": ["f7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -71,6 +78,7 @@
       "index": 4,
       "move": "Bxf7",
       "popup": "白象Bxf7！赢得黑后——拦截战术完美执行！",
+      "popup_en": "Bxf7! White wins the black queen. The interference tactic is perfectly executed.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0}
       ],

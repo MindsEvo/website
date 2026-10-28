@@ -3,14 +3,17 @@
     "gene_id": "C11_open_files",
     "sequence": 5,
     "concept": "多线协同作战",
+    "concept_en": "Coordinating Pressure on Multiple Files",
     "question_cn": "西西里斯维什尼科夫中黑方同时在c线和d线施压（Rc8+Rd8）。相比只控制一条线，双线协同有什么优势？",
+    "question_en": "In the Sveshnikov Sicilian, Black pressures both the c- and d-files with Rc8 and Rd8. What is the advantage over controlling only one file?",
     "options": [
-        {"key": "A", "text_cn": "没有额外优势，一条线已经足够"},
-        {"key": "B", "text_cn": "双线协同迫使对方同时在两个方向防守，顾此失彼——白方无法同时堵死两条线"},
-        {"key": "C", "text_cn": "双线只是为了预防对方进攻，并无主动价值"},
-        {"key": "D", "text_cn": "双线施压只在残局有效，开局中没有意义"}
+        {"key": "A", "text_cn": "没有额外优势，一条线已经足够", "text_en": "There is no added benefit; one file is enough."},
+        {"key": "B", "text_cn": "双线协同迫使对方同时在两个方向防守，顾此失彼——白方无法同时堵死两条线", "text_en": "Pressure on two files forces the opponent to defend in two directions and makes it difficult to block both lines."},
+        {"key": "C", "text_cn": "双线只是为了预防对方进攻，并无主动价值", "text_en": "Pressure on two files is only preventive and offers no initiative."},
+        {"key": "D", "text_cn": "双线施压只在残局有效，开局中没有意义", "text_en": "Pressure on two files matters only in the endgame, not the opening."}
     ],
     "correct": "B",
     "explanation_cn": "多线协同（Multi-file Coordination）是开放线战略的最高形式。控制单线时对方只需在一个方向应对；控制双线时对方必须同时在c线和d线都配置守备力量，极易顾此失彼。进攻方可以在两线之间灵活转换：当一线受阻，立刻从另一线突破。西西里中黑方Rc8+Rd8双车分工，形成c线+d线的立体压力网，是中局施压的范本。",
+    "explanation_en": "Coordinating pressure on multiple files is a powerful open-file strategy. Against one file, the opponent can concentrate on a single defense; pressure on both the c- and d-files forces them to split their resources. The attacking side can switch between files and break through where resistance is weaker. Rc8 and Rd8 in the Sveshnikov Sicilian illustrate this multi-file pressure.",
     "created_at": "2026-06-13"
 }

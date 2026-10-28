@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Practice_008",
   "description": "现代防御150攻击 B06 — 反制练习：在激烈攻击下寻找e5爆破时机",
   "intro": {
+    "popup_en": "Counterattack the Center, Practice 8: Modern Defense\nWhite launches a direct kingside attack. Black cannot win by defending passively. Find a way to defend while preparing a counterattack, and decide when the ...e5 break is ready.",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Against an attack, do not only defend: ...Qa5 creates counterplay on the queenside, and ...e5 breaks open the center to divert White's forces. The key decision is when to switch from defense to counterattack.",
     "popup": "现代防御总结\n\n被攻击时的反制策略：\n① 不能只防守\n② Qa5！后反击白方\n③ e5！中心爆破分散攻势\n\n关键决策：\n何时从防守转为反击？",
     "voice": true
   },
@@ -23,121 +25,145 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4"
     },
     {
       "index": 1,
       "move": "d6",
+      "popup_en": "...d6 begins the Modern Defense.",
       "popup": "d6 现代防御"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 expands White's center.",
       "popup": "d4"
     },
     {
       "index": 3,
       "move": "g6",
+      "popup_en": "...g6 adopts a hypermodern setup.",
       "popup": "g6 超现代"
     },
     {
       "index": 4,
       "move": "Nc3",
+      "popup_en": "Nc3 develops and supports the center.",
       "popup": "Nc3"
     },
     {
       "index": 5,
       "move": "Bg7",
+      "popup_en": "...Bg7! Black's fianchettoed bishop pressures the center.",
       "popup": "Bg7！超现代象"
     },
     {
       "index": 6,
       "move": "Be3",
+      "popup_en": "Be3 begins White's 150 Attack setup.",
       "popup": "Be3 150攻击开始"
     },
     {
       "index": 7,
       "move": "Nf6",
+      "popup_en": "...Nf6 develops and attacks e4.",
       "popup": "Nf6"
     },
     {
       "index": 8,
       "move": "Qd2",
+      "popup_en": "Qd2 prepares White's kingside attack.",
       "popup": "Qd2 攻击准备"
     },
     {
       "index": 9,
       "move": "O-O",
+      "popup_en": "O-O secures Black's king.",
       "popup": "O-O"
     },
     {
       "index": 10,
       "move": "O-O-O",
+      "popup_en": "O-O-O! White castles long and prepares the h4-h5 pawn storm.",
       "popup": "O-O-O！后翼易位\n准备h4-h5翼攻"
     },
     {
       "index": 11,
       "move": "c6",
+      "popup_en": "...c6 reinforces Black's position.",
       "popup": "c6 稳固"
     },
     {
       "index": 12,
       "move": "h4",
+      "popup_en": "h4! White begins the kingside pawn attack.",
       "popup": "h4！翼攻开始"
     },
     {
       "index": 13,
       "move": "h5",
+      "popup_en": "h5 locks the kingside structure.",
       "popup": "h5 封锁"
     },
     {
       "index": 14,
       "move": "Bh6",
+      "popup_en": "Bh6! White attacks Black's fianchettoed bishop.",
       "popup": "Bh6！攻击象"
     },
     {
       "index": 15,
       "move": "Bxh6",
+      "popup_en": "...Bxh6 accepts the bishop exchange.",
       "popup": "Bxh6 接受兑换"
     },
     {
       "index": 16,
       "move": "Qxh6",
+      "popup_en": "Qxh6 recaptures and activates White's queen.",
       "popup": "Qxh6 后激活"
     },
     {
       "index": 17,
       "move": "Qa5",
+      "popup_en": "...Qa5! Black counterattacks on the queenside with an active queen.",
       "popup": "Qa5！反击！\n黑后活跃，攻击白方后翼"
     },
     {
       "index": 18,
       "move": "Kb1",
+      "popup_en": "Kb1 moves White's king to greater safety.",
       "popup": "Kb1 王更安全"
     },
     {
       "index": 19,
       "move": "e5",
+      "popup_en": "...e5! The critical central break. Black opens the center to disrupt White's kingside attack.",
       "popup": "e5！中心爆破！\n关键时机！"
     },
     {
       "index": 20,
       "move": "dxe5",
+      "popup_en": "dxe5 captures the pawn.",
       "popup": "dxe5"
     },
     {
       "index": 21,
       "move": "dxe5",
+      "popup_en": "...dxe5 recaptures and opens the center.",
       "popup": "dxe5 中心开放"
     },
     {
       "index": 22,
       "move": "Nd5",
+      "popup_en": "Nd5! White's knight occupies a key central square.",
       "popup": "Nd5！白马占中心要点"
     },
     {
       "index": 23,
       "move": "Nfd7",
+      "popup_en": "...Nfd7 brings the knight back to defend.",
       "popup": "Nfd7 防守马"
     }
   ]

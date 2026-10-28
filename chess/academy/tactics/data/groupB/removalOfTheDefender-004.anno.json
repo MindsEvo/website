@@ -1,13 +1,16 @@
 {
   "game_id": "tac_removalOfTheDefender_L1-004",
   "description": "连续将军强制消除黑后保护作用",
+  "explanation_en": "White uses a sequence of checks to draw the black king away from the queen. Once the king no longer protects the queen, White captures it.",
   "intro": {
     "flash_squares": ["e8", "a7", "b7", "e6"],
     "popup": "💡 <b>消除保护</b>：黑后Qb7保护着a7国王。白方如何通过强制手段消除这个保护，赢得黑后？",
+    "popup_en": "💡 <b>Remove the defender</b>: Black's queen on b7 protects the king on a7. How can White use forcing moves to draw the king away and win the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qe3+迫使黑后挡将，Ra8+迫走国王，Qe4+再迫黑后，Ra7+！国王吃车，Qxc6！黑后被消除。",
+    "popup_en": "✅ <b>Key idea</b>: Qe3+ forces the queen to block; Ra8+ moves the king; Qe4+ forces the queen again; then Ra7+ lures the king to capture the rook, leaving the queen undefended for Qxc6.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qe3+",
       "popup": "后沿对角线将军！黑后必须挡在b6，暂时离开对a7的直接保护。",
+      "popup_en": "The queen checks along the diagonal, forcing Black's queen to block on b6 and temporarily leave the king on a7.",
       "highlights": [
         {"squares": ["e3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qb6",
       "popup": "黑后被迫挡将——但白方早有后手。",
+      "popup_en": "Black's queen is forced to block the check, but White has prepared a follow-up.",
       "highlights": [
         {"squares": ["b6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Ra8+",
       "popup": "车Ra8+将军！国王被迫移位，白方获得新的攻击角度。",
+      "popup_en": "Ra8+ checks the king and forces it to move, giving White a new angle of attack.",
       "highlights": [
         {"squares": ["a8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kb7",
       "popup": "国王逃往b7。",
+      "popup_en": "The king moves to b7.",
       "highlights": [
         {"squares": ["b7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Qe4+",
       "popup": "白后再次将军，继续压迫黑后的位置。",
+      "popup_en": "White checks again with Qe4+, continuing to pressure the black queen's position.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -80,6 +88,7 @@
       "index": 5,
       "move": "Qc6",
       "popup": "黑后再次被迫挡将。",
+      "popup_en": "Black's queen is forced to block the check again.",
       "highlights": [
         {"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -92,6 +101,7 @@
       "index": 6,
       "move": "Ra7+",
       "popup": "车Ra7+！国王被迫吃车——白后伺机而动。",
+      "popup_en": "Ra7+ forces the king to capture the rook, while White's queen waits to take advantage.",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -104,6 +114,7 @@
       "index": 7,
       "move": "Kxa7",
       "popup": "国王被迫吃车，黑后彻底失去保护！",
+      "popup_en": "The king captures the rook and is pulled away, leaving Black's queen completely undefended.",
       "highlights": [
         {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}
@@ -117,6 +128,7 @@
       "index": 8,
       "move": "Qxc6",
       "popup": "得后！白方赢得决定性物质优势。",
+      "popup_en": "White captures the queen on c6 and wins a decisive amount of material.",
       "highlights": [
         {"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

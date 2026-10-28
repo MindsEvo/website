@@ -2,6 +2,7 @@
   "game_id": "B8_RookCoord_Practice_010",
   "description": "D10 — 链接双车 - 第10局：从连接到支配的完整流程（斯拉夫防御）",
   "intro": {
+    "popup_en": "Connect the Rooks, Practice 10: Complete Review\nThis comprehensive B8 demonstration follows White from connecting the rooks to assigning them roles, doubling them, and taking control.",
     "flash_squares": [
       "d1",
       "e1",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Rfd1, Rac1, Re1, Re3, and Rcd1 illustrate the progression from connecting the rooks to controlling the d-, c-, and e-files, then doubling them.",
     "popup": "总结：Rfd1→Rac1→Re1→Re3→Rcd1\n连接→d列→c列→e列→叠车！",
     "voice": true
   },
@@ -22,26 +24,31 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "d4 opens with a queen's pawn.",
       "move": "d4",
       "popup": "d4"
     },
     {
       "index": 1,
+      "popup_en": "...d5 occupies the center.",
       "move": "d5",
       "popup": "d5"
     },
     {
       "index": 2,
+      "popup_en": "c4 offers the Queen's Gambit pawn.",
       "move": "c4",
       "popup": "c4后翼弃兵"
     },
     {
       "index": 3,
+      "popup_en": "...c6 begins the Slav Defense.",
       "move": "c6",
       "popup": "c6斯拉夫防御"
     },
     {
       "index": 8,
+      "popup_en": "Nf3! White develops a minor piece, clearing a back-rank blocker.",
       "move": "Nf3",
       "popup": "Nf3！底线轻子出动",
       "highlights": [
@@ -55,11 +62,13 @@
     },
     {
       "index": 13,
+      "popup_en": "...O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O黑方易位"
     },
     {
       "index": 16,
+      "popup_en": "O-O! White completes the castling plan and connects the rooks. Development, castling, and clearing the back rank are all complete.",
       "move": "O-O",
       "popup": "O-O！三步曲完成！双车连接！\n发展 易位 底线清空，全部完成！",
       "highlights": [
@@ -77,16 +86,19 @@
     },
     {
       "index": 19,
+      "popup_en": "...e5 counterattacks in the center.",
       "move": "e5",
       "popup": "e5黑方反击"
     },
     {
       "index": 20,
+      "popup_en": "cxd5 exchanges central pawns.",
       "move": "cxd5",
       "popup": "cxd5"
     },
     {
       "index": 21,
+      "popup_en": "...cxd5 recaptures, opening both the c- and d-files.",
       "move": "cxd5",
       "popup": "cxd5，c+d列开放！",
       "highlights": [
@@ -101,6 +113,7 @@
     },
     {
       "index": 26,
+      "popup_en": "Rfd1! The rook moves from f1 to the d-file, claiming the first open file.",
       "move": "Rfd1",
       "popup": "Rfd1！Rf1→d列！\n第一步：占领d列！",
       "highlights": [
@@ -116,11 +129,13 @@
     },
     {
       "index": 27,
+      "popup_en": "...Re8 activates Black's rook.",
       "move": "Re8",
       "popup": "Re8黑方车激活"
     },
     {
       "index": 28,
+      "popup_en": "Rac1! The rook moves from a1 to the c-file. White assigns one rook to d-file duty and the other to the c-file.",
       "move": "Rac1",
       "popup": "Rac1！Ra1→c列！\n分工完成：Rfd1（d列）+ Rac1（c列）",
       "highlights": [
@@ -135,11 +150,13 @@
     },
     {
       "index": 29,
+      "popup_en": "...Qe7 connects Black's queen with the pieces.",
       "move": "Qe7",
       "popup": "Qe7黑后联结"
     },
     {
       "index": 30,
+      "popup_en": "Re1! The rook transfers from d1 to the e-file, completing White's control of three files.",
       "move": "Re1",
       "popup": "Re1！Rd1→e列！\n三列控制完成！",
       "highlights": [
@@ -155,11 +172,13 @@
     },
     {
       "index": 31,
+      "popup_en": "...Bg4 puts pressure on White's position.",
       "move": "Bg4",
       "popup": "Bg4黑象施压"
     },
     {
       "index": 32,
+      "popup_en": "Bxg4! White removes Black's bishop.",
       "move": "Bxg4",
       "popup": "Bxg4！白象消灭黑象！",
       "highlights": [
@@ -173,11 +192,13 @@
     },
     {
       "index": 33,
+      "popup_en": "...Nxg4 recaptures the bishop.",
       "move": "Nxg4",
       "popup": "Nxg4黑马吃回"
     },
     {
       "index": 34,
+      "popup_en": "Rcd1! White doubles the rooks on the d-file by bringing the rook from c1 to d1. The final setup controls both the d- and e-files with Rcd1 and Re1.",
       "move": "Rcd1",
       "popup": "Rcd1！叠车d列！\nRc1→d1，双车叠d列！\n终极形态：Re1+Rd1 = e+d双列控制！",
       "highlights": [

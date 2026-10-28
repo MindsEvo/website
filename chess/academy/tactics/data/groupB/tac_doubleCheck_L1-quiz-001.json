@@ -7,13 +7,15 @@
   "fen": "1r3rk1/p1N2p2/1p2p1P1/8/8/2Q5/PP3q2/2K3Rb w - - 0 1",
   "concept": "双将的定义",
   "question_cn": "什么是双将（Double Check）？",
+  "question_en": "What is double check in chess?",
   "options": [
-    {"key": "A", "text_cn": "一个棋子连续将军两次"},
-    {"key": "B", "text_cn": "两个棋子同时将军，被将方只能逃王"},
-    {"key": "C", "text_cn": "将军的同时攻击对方两个棋子"},
-    {"key": "D", "text_cn": "两步棋先后形成的将军"}
+    {"key": "A", "text_cn": "一个棋子连续将军两次", "text_en": "One piece gives check twice in a row"},
+    {"key": "B", "text_cn": "两个棋子同时将军，被将方只能逃王", "text_en": "Two pieces give check at the same time, so the king must move"},
+    {"key": "C", "text_cn": "将军的同时攻击对方两个棋子", "text_en": "Giving check while attacking two other enemy pieces"},
+    {"key": "D", "text_cn": "两步棋先后形成的将军", "text_en": "Checks delivered on two consecutive moves"}
   ],
   "correct": "B",
   "explanation_cn": "双将是两个棋子同时将军的战术。被将方不可能用一步棋同时阻挡两路攻击，因此只能逃王。这使双将成为极难防守的战术手段。",
+  "explanation_en": "Double check occurs when two pieces check the king at the same time. One move cannot block both lines or capture both attackers, so the king must move. This makes double check exceptionally difficult to defend against.",
   "created_at": "2026-05-26"
 }

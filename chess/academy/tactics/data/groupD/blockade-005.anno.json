@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-005",
   "description": "弃车引黑王阻塞底线，白兵顺利升后",
+  "explanation_en": "White sacrifices the rook on the back rank, luring Black's king onto d8 where it blocks its own rook. The h-pawn can then promote safely.",
   "intro": {
     "flash_squares": ["d8", "h7", "h8"],
     "popup": "💡 <b>阻塞升变</b>：白兵在h6，差两步升后。黑车随时可以抢到底线阻止。白方如何用一步弃车，让黑王自己堵死底线，让兵顺利升后？",
+    "popup_en": "💡 <b>Blockade and promotion</b>: White's pawn is on h6, two moves from promotion, while Black's rook can reach the back rank to stop it. How can White sacrifice a rook so Black's king blocks the rook?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rd8弃车！黑王吃车后阻塞了d8，无法阻止h兵升后——白方净赚！",
+    "popup_en": "✅ <b>Key idea</b>: Rd8 sacrifices the rook. After the king captures it, the king blocks d8 and cannot stop the h-pawn from promoting.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rd8",
       "popup": "车进底线！黑王必须吃掉这个车，否则白车可以从底线横扫。",
+      "popup_en": "The rook invades the back rank. Black's king must capture it or White's rook will dominate the back rank.",
       "highlights": [
         {"squares": ["d8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e7"], "color": "#FF980055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Kxd8",
       "popup": "黑王吃车——自己封住了底线！黑车无法再从a8走到底线阻止升变。",
+      "popup_en": "Black's king captures the rook and blocks the back rank, preventing Black's rook from stopping the promotion.",
       "highlights": [
         {"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["a8"], "color": "#FF980055", "duration_ms": 0}
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "h7",
       "popup": "兵前进！黑王在d8，黑车在a8，无法及时阻止。",
+      "popup_en": "The pawn advances to h7. With the king on d8 and rook on a8, Black cannot stop it in time.",
       "highlights": [
         {"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Ke7",
       "popup": "黑王追兵，但为时已晚。",
+      "popup_en": "The king chases the pawn, but it is too late.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "h8=Q",
       "popup": "兵升后！白方净赚一后，胜局已定。",
+      "popup_en": "The pawn promotes to a queen. White has won a queen and the game is decided.",
       "highlights": [
         {"squares": ["h8"], "color": "#4CAF5055", "duration_ms": 0}
       ],

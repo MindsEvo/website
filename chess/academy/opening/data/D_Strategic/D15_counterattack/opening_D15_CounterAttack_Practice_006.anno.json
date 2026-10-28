@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Practice_006",
   "description": "法式温纳瓦变例 C18 — c5反制时机练习：判断反击的最佳时机",
   "intro": {
+    "popup_en": "Counterattack the Center, Practice 6\nIn the French Winawer, Black can challenge the center with ...c5, but timing matters. Identify the best moment for the break and decide whether its positional cost is justified.",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "To judge the timing of a counterbreak, ask: are the pieces developed, how far has the opponent's flank attack advanced, and can you maintain your structure after the break? This game contrasts an early ...c5 with a later one.",
     "popup": "温纳瓦总结\n\n时机判断要素：\n① 棋子是否都发展好了？\n② 对方翼兵攻到哪里了？\n③ 反击后能否维持阵形？\n\n这局棋的关键决策点：\n早期c5 vs 晚期c5的区别",
     "voice": true
   },
@@ -22,131 +24,157 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "e4 occupies the center.",
       "move": "e4",
       "popup": "e4 占中心"
     },
     {
       "index": 1,
+      "popup_en": "...e6 begins the French Defense.",
       "move": "e6",
       "popup": "e6 法式"
     },
     {
       "index": 2,
+      "popup_en": "d4 reinforces White's central presence.",
       "move": "d4",
       "popup": "d4"
     },
     {
       "index": 3,
+      "popup_en": "...d5 counterattacks in the center.",
       "move": "d5",
       "popup": "d5 反制"
     },
     {
       "index": 4,
+      "popup_en": "Nc3 develops a knight.",
       "move": "Nc3",
       "popup": "Nc3"
     },
     {
       "index": 5,
+      "popup_en": "...Bb4! The Winawer Variation pins Nc3.",
       "move": "Bb4",
       "popup": "Bb4！温纳瓦！钉住Nc3"
     },
     {
       "index": 6,
+      "popup_en": "e5 closes the center.",
       "move": "e5",
       "popup": "e5 关闭中心"
     },
     {
       "index": 7,
+      "popup_en": "...c5! Black counterattacks immediately against the base of White's chain.",
       "move": "c5",
       "popup": "c5！现在就反击！"
     },
     {
       "index": 8,
+      "popup_en": "a3 challenges the bishop.",
       "move": "a3",
       "popup": "a3 逼走象"
     },
     {
       "index": 9,
+      "popup_en": "...Bxc3+ gives up the bishop pair to exchange the knight.",
       "move": "Bxc3+",
       "popup": "Bxc3+ 放弃双象"
     },
     {
       "index": 10,
+      "popup_en": "bxc3 recaptures; White has lost the bishop pair.",
       "move": "bxc3",
       "popup": "bxc3 白方双象消失"
     },
     {
       "index": 11,
+      "popup_en": "...Qa5 activates the queen.",
       "move": "Qa5",
       "popup": "Qa5 后激活"
     },
     {
       "index": 12,
+      "popup_en": "Bd2 defends against the queen's pressure.",
       "move": "Bd2",
       "popup": "Bd2 防守"
     },
     {
       "index": 13,
+      "popup_en": "...Qa4 keeps up the pressure.",
       "move": "Qa4",
       "popup": "Qa4 后继续施压"
     },
     {
       "index": 14,
+      "popup_en": "Qb1 reroutes White's queen.",
       "move": "Qb1",
       "popup": "Qb1 后转移"
     },
     {
       "index": 15,
+      "popup_en": "c4! White locks the position.",
       "move": "c4",
       "popup": "c4！锁定位置"
     },
     {
       "index": 16,
+      "popup_en": "Nh3 develops the knight toward the kingside.",
       "move": "Nh3",
       "popup": "Nh3 马发展"
     },
     {
       "index": 17,
+      "popup_en": "...b5! Black advances a flank pawn.",
       "move": "b5",
       "popup": "b5！翼兵推进"
     },
     {
       "index": 18,
+      "popup_en": "Nf4 places the knight on its intended square.",
       "move": "Nf4",
       "popup": "Nf4 马就位"
     },
     {
       "index": 19,
+      "popup_en": "...Nc6 develops a knight.",
       "move": "Nc6",
       "popup": "Nc6 马发展"
     },
     {
       "index": 20,
+      "popup_en": "h4! White launches a kingside pawn attack.",
       "move": "h4",
       "popup": "h4！翼兵攻！"
     },
     {
       "index": 21,
+      "popup_en": "...Nge7 brings the knight back to defend.",
       "move": "Nge7",
       "popup": "Nge7 马防守"
     },
     {
       "index": 22,
+      "popup_en": "g4! White advances again; after g5, the f6-square will be completely closed to Black's knight.",
       "move": "g4",
       "popup": "g4！翼兵继续推进\ng5之后完全封锁f6"
     },
     {
       "index": 23,
+      "popup_en": "...Bd7 maneuvers the bishop and prepares queenside castling.",
       "move": "Bd7",
       "popup": "Bd7 象机动\n准备后翼易位"
     },
     {
       "index": 24,
+      "popup_en": "Bh3! White places the bishop on a useful diagonal aimed at Black's position.",
       "move": "Bh3",
       "popup": "Bh3！象就位\n对角线瞄准对方阵地"
     },
     {
       "index": 25,
+      "popup_en": "...O-O-O! Black castles long, moving the king to safety behind the queenside pawns.",
       "move": "O-O-O",
       "popup": "O-O-O！后翼易位\n黑方王逃入安全堡垒"
     }

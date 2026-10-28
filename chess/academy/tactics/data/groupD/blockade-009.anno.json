@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-009",
   "description": "白后将军逼象阻塞退路，后象联合将死",
+  "explanation_en": "Qf6+ forces the bishop to block on e6, restricting the king's escape. White's queen then captures the bishop with mate.",
   "intro": {
     "flash_squares": ["d6", "f8", "e6"],
     "popup": "💡 <b>阻塞将军</b>：黑王在d6，左右还有空间。白方如何用一将，逼黑象自己堵死左路，再用白后将死黑王？",
+    "popup_en": "💡 <b>Blockade by check</b>: Black's king is on d6 with room to move. How can White check, force the bishop to block the king's escape, and then deliver mate with the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf6+将军，黑象被迫到e6阻塞黑王左退路，白后Qxf8将死——精准的两步组合！",
+    "popup_en": "✅ <b>Key idea</b>: Qf6+ forces the bishop to e6, blocking the king's escape to the left. Qxf8# then delivers mate in a precise two-move combination.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf6+",
       "popup": "白后将军！黑象只能垫到e6，阻塞了黑王向左撤退的路线。",
+      "popup_en": "White checks with Qf6, forcing the bishop to block on e6 and obstruct the king's route to the left.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Be6",
       "popup": "黑象垫到e6——阻塞了d6王向左的退路，黑王只剩e7。",
+      "popup_en": "The bishop blocks on e6, closing the king's route from d6 to the left and leaving e7 as its only escape.",
       "highlights": [
         {"squares": ["e6"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d6"], "color": "#FF980055", "duration_ms": 0},
@@ -44,6 +49,7 @@
       "index": 2,
       "move": "Qxf8#",
       "popup": "后将死！白后吃f8象，同时将军——黑王被e6象和兵彻底封死，无路可逃！",
+      "popup_en": "Qxf8# is checkmate! White's queen captures the bishop on f8 with check, while the bishop and pawns leave the black king with no escape.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d6"], "color": "#FF000055", "duration_ms": 0},

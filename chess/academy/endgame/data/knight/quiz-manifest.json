@@ -3,31 +3,35 @@
     {
       "key": "KBN_vs_K",
       "label": "象马对王-L1",
+      "label_en": "Bishop and Knight vs. King - L1",
       "items": [
-        { "id": "eg_KBN-K_L1-quiz-001", "label": "1. 象马配合——颜色匹配" },
-        { "id": "eg_KBN-K_L1-quiz-002", "label": "2. 象马难度" }
+        { "id": "eg_KBN-K_L1-quiz-001", "label": "1. 象马配合——颜色匹配", "label_en": "1. Bishop-Knight Coordination: Color Matching" },
+        { "id": "eg_KBN-K_L1-quiz-002", "label": "2. 象马难度", "label_en": "2. Why Bishop and Knight Is Difficult" }
       ]
     },
     {
       "key": "KNP_vs_K",
       "label": "马兵对王-L1",
+      "label_en": "Knight and Pawn vs. King - L1",
       "items": [
-        { "id": "eg_KNP-K_L1-quiz-001", "label": "1. 马兵残局特点" },
-        { "id": "eg_KNP-K_L1-quiz-002", "label": "2. 王兵协同" }
+        { "id": "eg_KNP-K_L1-quiz-001", "label": "1. 马兵残局特点", "label_en": "1. Knight-and-Pawn Endgame Traits" },
+        { "id": "eg_KNP-K_L1-quiz-002", "label": "2. 王兵协同", "label_en": "2. King and Pawn Coordination" }
       ]
     },
     {
       "key": "NP_vs_N",
       "label": "马兵对马-L2",
+      "label_en": "Knight and Pawn vs. Knight - L2",
       "items": [
-        { "id": "eg_NP-N_L2-quiz-001", "label": "1. 马兵对马的核心思维" }
+        { "id": "eg_NP-N_L2-quiz-001", "label": "1. 马兵对马的核心思维", "label_en": "1. Key Ideas in Knight and Pawn vs. Knight" }
       ]
     },
     {
       "key": "N_vs_P",
       "label": "马对兵-L2",
+      "label_en": "Knight vs. Pawn - L2",
       "items": [
-        { "id": "eg_N-P_L2-quiz-001", "label": "1. 马对兵的元思维" }
+        { "id": "eg_N-P_L2-quiz-001", "label": "1. 马对兵的元思维", "label_en": "1. Key Ideas in Knight vs. Pawn" }
       ]
     }
   ]

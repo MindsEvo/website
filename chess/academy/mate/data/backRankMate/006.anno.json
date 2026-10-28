@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-006",
   "description": "白方弃后透视将军，引黑车到f8，车完成底线杀",
+  "explanation_en": "A queen sacrifice deflects Black's rook to f8, allowing White's rook to deliver a back-rank mate.",
   "intro": {
     "flash_squares": ["h8", "c5", "f1", "f2"],
     "popup": "💡 <b>底线杀</b>：黑王在h8，白后在c5，白车在f1和b1。黑方双车在f2和d2守底线。如何一击制胜？",
+    "popup_en": "💡 <b>Back-rank mate</b>: Black's king is on h8; White has a queen on c5 and rooks on f1 and b1. Black's rooks on f2 and d2 guard the back rank. How can White finish decisively?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf8+弃后！黑车吃后到f8，恰好封死了逃路，Rxf8#——弃后利用透视（车在f1后面），一步完成底线杀。",
+    "popup_en": "✅ <b>Key idea</b>: Qf8+ sacrifices the queen. Black's rook captures on f8 and blocks the king's escape, allowing the rook behind it on f1 to deliver Rxf8#.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf8+",
       "popup": "白后Qf8+！弃后将军，黑车必须到f8吃后——f1白车的路已经打开。",
+      "popup_en": "Qf8+! White sacrifices the queen with check, forcing Black's rook to capture on f8 and clearing the route for the white rook on f1.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -31,6 +35,7 @@
       "index": 1,
       "move": "Rxf8",
       "popup": "黑车被迫到f8吃后——f列底线瞬间被白车控制。",
+      "popup_en": "The rook is forced to f8 to capture the queen, and White's rook now controls the f-file.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -43,6 +48,7 @@
       "index": 2,
       "move": "Rxf8#",
       "popup": "Rxf8#！白车吃车将死，黑王在h8毫无出路。弃后透视底线杀完成！",
+      "popup_en": "Rxf8#! White's rook captures the other rook and checkmates the king on h8. The queen-sacrifice X-ray back-rank mate is complete.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

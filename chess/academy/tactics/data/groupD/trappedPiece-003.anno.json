@@ -1,13 +1,16 @@
 {
   "game_id": "tac_trappedPiece_L1-003",
   "description": "白象驱逐黑后，强迫换子赢得后车",
+  "explanation_en": "White attacks the queen with the bishop, driving it onto a square where White's rook can capture it. Black is forced to exchange the queen for the rook.",
   "intro": {
     "flash_squares": ["e3", "d4", "c3", "b3"],
     "popup": "💡 <b>困子</b>：黑后在e3，看似主动，实则被白方双象和车包围。白方如何驱赶并赢得黑后？",
+    "popup_en": "💡 <b>Trapped piece</b>: Black's queen on e3 looks active, but White's two bishops and rook are closing in. How can White drive it into a losing exchange?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bd2攻后→Qe4逃→Rxe4换后！黑后困在e3被迫让路，白以车换后大优。",
+    "popup_en": "✅ <b>Key idea</b>: Bd2 attacks the queen; it retreats to e4, where Rxe4 wins it. The queen has few safe squares and is forced into a rook-for-queen exchange.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bd2",
       "popup": "白象Bd2！象从c3走到d2，沿d2-e3对角线直接攻击黑后e3。黑后被迫移动。",
+      "popup_en": "White's bishop moves from c3 to d2, attacking Black's queen on e3 along the diagonal and forcing it to move.",
       "highlights": [
         {"squares": ["d2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e3"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Qe4",
       "popup": "黑后被迫退到e4，逃避象的攻击——但却落入白车的攻击范围！",
+      "popup_en": "The queen retreats to e4 to escape the bishop, but moves into the rook's line of attack.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rxe4",
       "popup": "白车Rxe4！车从d4一步吃掉黑后e4！黑后被困无路可逃，被迫以后换车，白方大优。",
+      "popup_en": "White's rook captures the queen on e4. With no safe escape, Black must trade the queen for the rook, leaving White with a large advantage.",
       "highlights": [
         {"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "dxe4",
       "popup": "黑兵d5吃车，无奈换子。白方以车换后，获得巨大优势。",
+      "popup_en": "Black's d-pawn recaptures the rook. White has exchanged a rook for the queen and gained a major advantage.",
       "highlights": [
         {"squares": ["e4"], "color": "#FFD70088", "duration_ms": 0}
       ],

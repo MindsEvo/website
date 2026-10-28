@@ -7,13 +7,15 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "弃子的定义",
   "question_cn": "什么是弃子（Sacrifice）？",
+  "question_en": "What is a chess sacrifice?",
   "options": [
-    {"key": "A", "text_cn": "用等价子力换取对方的等价子力，保持材料平衡"},
-    {"key": "B", "text_cn": "主动放弃子力，换取将杀机会或持续的决定性进攻优势"},
-    {"key": "C", "text_cn": "移走己方棋子，暴露后方棋子的攻击线"},
-    {"key": "D", "text_cn": "故意送子让对方吃，然后立即赢回同等子力"}
+    {"key": "A", "text_cn": "用等价子力换取对方的等价子力，保持材料平衡", "text_en": "Exchange pieces of equal value to maintain material balance"},
+    {"key": "B", "text_cn": "主动放弃子力，换取将杀机会或持续的决定性进攻优势", "text_en": "Deliberately give up material in return for a mating opportunity or a lasting, decisive attacking advantage"},
+    {"key": "C", "text_cn": "移走己方棋子，暴露后方棋子的攻击线", "text_en": "Move one of your pieces to reveal the attack line of a piece behind it"},
+    {"key": "D", "text_cn": "故意送子让对方吃，然后立即赢回同等子力", "text_en": "Offer a piece to be captured, then immediately win back material of equal value"}
   ],
   "correct": "B",
   "explanation_cn": "弃子是主动放弃子力而不要求换回等价子力。目的不是换子，而是换取将杀或压倒性的进攻优势。弃子的价值在于换取的战略利益大于被弃子力的物质价值。",
+  "explanation_en": "A sacrifice deliberately gives up material without requiring an equal-value recapture. The goal is not an even exchange, but a mating attack or a powerful, lasting initiative. A sacrifice is justified when its strategic return is greater than the material given up.",
   "created_at": "2026-05-28"
 }

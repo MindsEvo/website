@@ -1,13 +1,16 @@
 {
   "game_id": "mate_bodenMate_L1-010",
   "description": "博登杀：白兵随手推进，黑象突然将死",
+  "explanation_en": "White's casual pawn push opens the f1-h3 diagonal, allowing Black's bishop to deliver a sudden Boden's mate.",
   "intro": {
     "flash_squares": ["f1"],
     "popup": "💡 <b>博登杀</b>：本局极具突然性——白方随手推兵，黑象瞬间将死。要多练习熟悉博登杀的棋局！",
+    "popup_en": "💡 <b>Boden's mate</b>: This checkmate comes out of nowhere. White casually pushes a pawn, and Black's bishop mates immediately. Practice recognizing this pattern.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白方g3随手推兵打开了f1-h3对角线，黑象Bh3#完成博登杀。博登杀的突然性非常强，务必熟悉这种结构。",
+    "popup_en": "✅ <b>Key idea</b>: White's casual g3 opens the f1-h3 diagonal, allowing Bh3# to deliver Boden's mate. The pattern is highly tactical, so learn to recognize this structure.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "g3",
       "popup": "白兵g3，随手一推，却打开了f1-h3对角线，给黑方创造了博登杀条件。",
+      "popup_en": "g3 is a casual pawn push, but it opens the f1-h3 diagonal and creates the conditions for Black's Boden's mate.",
       "highlights": [
         {"squares": ["g3"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Bh3#",
       "popup": "黑象Bh3#，博登杀！突然将死白王，双象交叉，无处可逃！",
+      "popup_en": "Bh3# is Boden's mate! The bishops deliver a sudden crossfire checkmate, leaving the white king with no escape.",
       "highlights": [
         {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}

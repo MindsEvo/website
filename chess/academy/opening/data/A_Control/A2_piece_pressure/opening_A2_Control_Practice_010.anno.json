@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "白方前两步把双马发展到边路（Nh3、Na3），随后试图补救！观察接下来会发生什么！",
+    "popup_en": "White develops both knights to the rim with Nh3 and Na3, then tries to recover. Watch what happens next!",
     "voice": true
   },
   "outro": {
     "popup": "边路的马不如中心的马——代价是显而易见的惩罚。",
+    "popup_en": "A knight on the rim is dim: here, the cost is clear and concrete.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "Nh3",
       "popup": "⬆️ <b>1.Nh3 — 错误！马走边路！</b><br>h3 位置的马控制 f2 和 g5，但对中心四格（e4/d4/e5/d5）<b>没有任何直接控制！</b><br><span style='color:#FF5722;'>❌ 边路的马控制的是角落格，中心格完全无视！</span>",
+      "popup_en": "⬆️ <b>1.Nh3 - A mistake: the knight heads to the rim!</b><br>The knight on h3 controls f2 and g5 but has <b>no direct influence on the four central squares.</b><br><span style='color:#FF5722;'>❌ It spends a move on the edge while ignoring the center.</span>",
       "highlights": [
         {
           "squares": [
@@ -67,6 +70,7 @@
       "index": 1,
       "move": "e5",
       "popup": "⬇️ <b>1...e5 — 黑方立即占领中心！</b><br>黑方教科书式第一步，e5 兵占领中心格，控制 d4 和 f4。黑方此时对中心的控制 vs 白方的 0，差距已开始！",
+      "popup_en": "⬇️ <b>1...e5 - Black immediately occupies the center!</b><br>The e5-pawn controls d4 and f4. Black is already influencing the center while White has not challenged it.",
       "highlights": [
         {
           "squares": [
@@ -95,6 +99,7 @@
       "index": 2,
       "move": "Na3",
       "popup": "⬆️ <b>2.Na3 — 又是边路！</b><br>a3 位置的马控制 b1、b5、c4，但对中心格依然<b>没有贡献！</b><br>白方已走两步，中心控制仍然是 0。<br><span style='color:#FF5722;'>❌ 两步都走边路——中心格彻底放弃！</span>",
+      "popup_en": "⬆️ <b>2.Na3 - Another knight goes to the rim!</b><br>The knight on a3 controls b1, b5, and c4, but still has <b>no direct central influence.</b><br>After two moves White has not contested the center.<br><span style='color:#FF5722;'>❌ Both moves have gone to the edge.</span>",
       "highlights": [
         {
           "squares": [
@@ -133,6 +138,7 @@
       "index": 3,
       "move": "d5",
       "popup": "⬇️ <b>2...d5 — 黑方建立双兵中心！</b><br>黑方 d5+e5 双兵占领中心两个格！黑方对中心四格的控制：e5(占) + d5(占) + 两格的控制 = 4格全覆盖。<br>白方控制：仍是 <b>0</b>！",
+      "popup_en": "⬇️ <b>2...d5 - Black builds a two-pawn center!</b><br>Pawns on d5 and e5 occupy the center and influence all four central squares.<br>White still has <b>no central control.</b>",
       "highlights": [
         {
           "squares": [
@@ -149,6 +155,7 @@
       "index": 4,
       "move": "c3",
       "popup": "⬆️ <b>3.c3 — 白方试图建立中心，但已错失时机！</b><br>白方推 c3，准备推 d4。这步本身算是正常，但前两步（Nh3、Na3）全部浪费在边路，h3 上的马仍孤零零悬空在角落。<br>⚠️ 黑方已经建立 e5+d5 双兵中心，白方的反应已经整整晚了两步！",
+      "popup_en": "⬆️ <b>3.c3 - White prepares a central advance, but is already behind!</b><br>c3 prepares d4, a sensible idea, but the first two moves were spent on flank knights and the h3-knight remains misplaced.<br>⚠️ Black already has pawns on e5 and d5; White is two tempi behind in the center.",
       "highlights": [
         {
           "squares": [
@@ -177,6 +184,7 @@
       "index": 5,
       "move": "Nc6",
       "popup": "⬇️ <b>3...Nc6 — 黑马控制 d4 和 e5！</b><br>黑马出动，在 c6 控制 d4 和 e5 两个关键中心格。<br>⚠️ <b>同时注意：</b>黑方的象（c8）现在对角线对准了 h3 白马！",
+      "popup_en": "⬇️ <b>3...Nc6 - The knight controls d4 and e5!</b><br>Black develops and increases control of two central squares.<br>⚠️ <b>Also notice:</b> Black's bishop on c8 is aimed at the knight on h3 along the diagonal.",
       "highlights": [
         {
           "squares": [
@@ -216,6 +224,7 @@
       "index": 6,
       "move": "Nc2",
       "popup": "⬆️ <b>4.Nc2 — a3 马退回 c2！</b><br><span style='color:#FF5722;'>❌ 白方两匹马：一匹在 h3 成为靶子，一匹在 c2 被迫调整支持中心格！</span>",
+      "popup_en": "⬆️ <b>4.Nc2 - The a3-knight retreats to c2!</b><br><span style='color:#FF5722;'>❌ One knight on h3 is a target, while the other has already been forced to reposition to support the center.</span>",
       "highlights": [
         {
           "squares": [
@@ -244,6 +253,7 @@
       "index": 7,
       "move": "Bxh3",
       "popup": "⬇️ <b>4...Bxh3 — 黑象直接吃 h3 马！</b><br><span style='color:#FF5722;'>❌ 虽然白方的兵可以吃回黑象， 但形成h线的叠兵， 是巨大隐患。</span>",
+      "popup_en": "⬇️ <b>4...Bxh3 - Black wins the knight on h3!</b><br><span style='color:#FF5722;'>❌ White can recapture the bishop, but the resulting doubled h-pawns create a serious long-term weakness.</span>",
       "highlights": [
         {
           "squares": [
@@ -265,6 +275,7 @@
       "index": 8,
       "move": "gxh3",
       "popup": "⬆️ <b>5.gxh3 — 被迫用 g 兵吃回！王翼残破！</b><br>王翼出现漏洞。白方现在无法在王翼安全易位，整个王翼防线已经破损！<br>",
+      "popup_en": "⬆️ <b>5.gxh3 - White must recapture with the g-pawn!</b><br>The kingside pawn shield is damaged, making safe kingside castling difficult and leaving weaknesses around the king.<br>",
       "highlights": [
         {
           "squares": [
@@ -287,6 +298,7 @@
       "index": 9,
       "move": "Ne7",
       "popup": "⬇️ <b>5...Ne7 — 黑马出动，调往 g6！</b><br>黑方 g8 马发展到 e7，下一步可跳 g6，在王翼形成压力。黑方子力有条不紊地就位，每步都有明确目的，与白方的混乱形成鲜明对比。",
+      "popup_en": "⬇️ <b>5...Ne7 - Black reroutes the knight toward g6!</b><br>The knight can continue to g6 and pressure the damaged kingside. Black's pieces develop purposefully, in contrast to White's disjointed setup.",
       "highlights": [
         {
           "squares": [
@@ -309,6 +321,7 @@
       "index": 10,
       "move": "d4",
       "popup": "⬆️ <b>6.d4 — 白方终于推 d4， 建立c3+d4 中心，局面已经严重落后！",
+      "popup_en": "⬆️ <b>6.d4 - White finally advances in the center, but is already far behind!</b><br>White establishes pawns on c3 and d4 only after spending earlier moves on the rim.",
       "highlights": [
         {
           "squares": [
@@ -331,6 +344,7 @@
       "index": 11,
       "move": "Ng6",
       "popup": "⬇️ <b>6...Ng6 — 黑马跳 g6！直指王翼漏洞！</b><br>e7 马跳到 g6，王翼施压正式开始。g6 马攻击 h4 和 f4，而白方的 g 线已经因为 gxh3 打开，王的安全岌岌可危！",
+      "popup_en": "⬇️ <b>6...Ng6 - The knight targets the kingside weaknesses!</b><br>From g6 it attacks h4 and f4. White's g-file has also been opened by gxh3, making the king less secure.",
       "highlights": [
         {
           "squares": [
@@ -359,6 +373,7 @@
       "index": 12,
       "move": "dxe5",
       "popup": "⬆️ <b>7.dxe5 — 白方主动交换，释放中心压力。</b><br>白方 d4 吃 e5，主动换掉黑方中心兵。这是困难局面下的次优选择，但此举让黑方有机会用子力重占中心强格 e5。",
+      "popup_en": "⬆️ <b>7.dxe5 - White exchanges to relieve central pressure.</b><br>The d4-pawn captures e5. This practical choice reduces the pressure, but allows Black to recapture with a piece and occupy the strong square e5.",
       "highlights": [
         {
           "squares": [
@@ -380,6 +395,7 @@
       "index": 13,
       "move": "Ncxe5",
       "popup": "⬇️ <b>7...Ncxe5 — 黑马重占 e5！中心前哨站！</b><br>c6 马吃 e5，在中心强格站稳！e5 马不受任何白方兵的威胁（c3、e3 均不能打 e5），还威胁 d3、f3 等格，占据了中心制高点！",
+      "popup_en": "⬇️ <b>7...Ncxe5 - Black establishes a knight outpost!</b><br>The knight from c6 recaptures on e5, where White's pawns cannot chase it. It controls important squares such as d3 and f3 from a commanding central position.",
       "highlights": [
         {
           "squares": [
@@ -415,6 +431,7 @@
       "index": 14,
       "move": "Bg2",
       "popup": "⬆️ <b>8.Bg2 — 白方展开飞象，亡羊补牢！</b><br>白方象进驻 g2（g 兵已移走，此格空出），进入长对角线。但此象被 e5 马等挡住，效力有限。白方只是在尽量收拾残局。",
+      "popup_en": "⬆️ <b>8.Bg2 - White fianchettoes, trying to repair the position.</b><br>The bishop enters the long diagonal, but Black's knight on e5 and other pieces limit its effectiveness. White is trying to regroup.",
       "highlights": [
         {
           "squares": [
@@ -436,6 +453,7 @@
       "index": 15,
       "move": "c6",
       "popup": "⬇️ <b>8...c6 — 黑方巩固阵型！</b><br>c6 兵支撑阵地，限制白方 c2 马的调动空间，同时为将来提供更多的兵形选择。黑方子力充分发展，局面全面领先。",
+      "popup_en": "⬇️ <b>8...c6 - Black consolidates!</b><br>The pawn supports the position and restricts White's knight on c2. Black's pieces are developed and the position is favorable.",
       "highlights": [
         {
           "squares": [
@@ -452,6 +470,7 @@
       "index": 16,
       "move": "O-O",
       "popup": "⬆️ <b>9.O-O — 白方易位，但王翼满目疮痍！</b><br>白方终于易位，但王翼上有 h3 孤兵、g 线打开，王的安全极差。即便如此，这已经是白方的最佳选择——继续拖延只会让黑方积累更多优势。",
+      "popup_en": "⬆️ <b>9.O-O - White castles, but the kingside is damaged!</b><br>The h3-pawn is isolated and the g-file is open, leaving the king exposed. Castling is still the best practical choice; delaying would let Black improve further.",
       "highlights": [
         {
           "squares": [
@@ -474,6 +493,7 @@
       "index": 17,
       "move": "Nh4",
       "popup": "⬇️ <b>9...Nh4 — 黑马开始攻击！</b><br>白方残破的王翼雪上加霜。<br>🏆 <b>>白方开局双边马（Nh3/Na3）直接导致被动阵型——<b>边路的马不如中心的马，从第一步就开始付出代价！</b>",
+      "popup_en": "⬇️ <b>9...Nh4 - Black begins the attack!</b><br>The knight adds pressure against White's damaged kingside.<br>🏆 <b>White's early Nh3 and Na3 led to a passive position. A knight on the rim is dim, and the cost was apparent from the opening.</b>",
       "highlights": [
         {
           "squares": [

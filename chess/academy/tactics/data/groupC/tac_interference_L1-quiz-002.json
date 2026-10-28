@@ -7,25 +7,31 @@
   "fen": "r4rk1/1b2bp1p/p1q1p1pQ/1p6/8/1BN1B1R1/PPP3PP/R5K1 w - - 0 1",
   "concept": "拦截的攻击对象",
   "question_cn": "拦截战术真正攻击的是什么？",
+  "question_en": "What does the interference tactic really attack?",
   "options": [
     {
       "key": "A",
-      "text_cn": "对方防守最薄弱的一个棋子"
+      "text_cn": "对方防守最薄弱的一个棋子",
+      "text_en": "The opponent's least well-defended piece"
     },
     {
       "key": "B",
-      "text_cn": "对方两个棋子之间的「联系线」——横线、纵线或斜线上的协同关系"
+      "text_cn": "对方两个棋子之间的「联系线」——横线、纵线或斜线上的协同关系",
+      "text_en": "The line connecting two opposing pieces and the coordination between them along a rank, file, or diagonal"
     },
     {
       "key": "C",
-      "text_cn": "对方国王的逃跑路线"
+      "text_cn": "对方国王的逃跑路线",
+      "text_en": "The opponent king's escape route"
     },
     {
       "key": "D",
-      "text_cn": "对方的双车炮台或后车组合"
+      "text_cn": "对方的双车炮台或后车组合",
+      "text_en": "The opponent's doubled rooks or queen-and-rook battery"
     }
   ],
   "correct": "B",
   "explanation_cn": "拦截不直接攻击棋子，而是切断棋子之间的「看不见的联系」。本题白象Bd5插入长斜线，切断Bb7支援Qc6的路线——黑后c6因此失去象的保护，孤立无援，直接被白象吃掉。找拦截机会，先找「对方两个子共用一条线」的位置。",
+  "explanation_en": "Interference does not necessarily attack a piece directly; it cuts the unseen connection between pieces. Here, White's bishop plays Bd5 onto a long diagonal, cutting off the bishop on b7 from defending the queen on c6. To find an opportunity, look for two enemy pieces that rely on the same line.",
   "created_at": "2026-05-18"
 }

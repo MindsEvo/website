@@ -5,45 +5,49 @@
     {
       "key": "A1_pawn_center",
       "label": "A1 占领中心",
+      "label_en": "A1 Occupying the Center",
       "items": [
-        { "id": "opening_A1_pawn_center-quiz-001", "label": "1. 中心格定义" },
-        { "id": "opening_A1_pawn_center-quiz-002", "label": "2. 控制中心的好处" },
-        { "id": "opening_A1_pawn_center-quiz-003", "label": "3. 兵控制格子" },
-        { "id": "opening_A1_pawn_center-quiz-004", "label": "4. 占领与控制中心" },
-        { "id": "opening_A1_pawn_center-quiz-005", "label": "5. 过早出后的风险" }
+        { "id": "opening_A1_pawn_center-quiz-001", "label": "1. 中心格定义", "label_en": "1. Defining the Center" },
+        { "id": "opening_A1_pawn_center-quiz-002", "label": "2. 控制中心的好处", "label_en": "2. Benefits of Controlling the Center" },
+        { "id": "opening_A1_pawn_center-quiz-003", "label": "3. 兵控制格子", "label_en": "3. Squares Controlled by a Pawn" },
+        { "id": "opening_A1_pawn_center-quiz-004", "label": "4. 占领与控制中心", "label_en": "4. Occupying and Controlling the Center" },
+        { "id": "opening_A1_pawn_center-quiz-005", "label": "5. 过早出后的风险", "label_en": "5. Risks of Early Queen Development" }
       ]
     },
     {
       "key": "A2_piece_pressure",
       "label": "A2 控制中心",
+      "label_en": "A2 Piece Pressure on the Center",
       "items": [
-        { "id": "opening_A2_piece_pressure-quiz-001", "label": "1. 子力控制中心" },
-        { "id": "opening_A2_piece_pressure-quiz-002", "label": "2. 马的最佳位置" },
-        { "id": "opening_A2_piece_pressure-quiz-003", "label": "3. 象的远程控制" },
-        { "id": "opening_A2_piece_pressure-quiz-004", "label": "4. 多子协调控制中心" },
-        { "id": "opening_A2_piece_pressure-quiz-005", "label": "5. 边路轻子的代价" }
+        { "id": "opening_A2_piece_pressure-quiz-001", "label": "1. 子力控制中心", "label_en": "1. Piece-Based Control of the Center" },
+        { "id": "opening_A2_piece_pressure-quiz-002", "label": "2. 马的最佳位置", "label_en": "2. The Knight's Best Squares" },
+        { "id": "opening_A2_piece_pressure-quiz-003", "label": "3. 象的远程控制", "label_en": "3. The Bishop's Long-Range Influence" },
+        { "id": "opening_A2_piece_pressure-quiz-004", "label": "4. 多子协调控制中心", "label_en": "4. Coordinated Piece Control" },
+        { "id": "opening_A2_piece_pressure-quiz-005", "label": "5. 边路轻子的代价", "label_en": "5. The Cost of a Flank Knight" }
       ]
     },
     {
       "key": "A3_space_gains",
       "label": "A3 空间控制",
+      "label_en": "A3 Space Control",
       "items": [
-        { "id": "opening_A3_space_gains-quiz-001", "label": "1. 空间优势的定义" },
-        { "id": "opening_A3_space_gains-quiz-002", "label": "2. e5推进的空间效果" },
-        { "id": "opening_A3_space_gains-quiz-003", "label": "3. c5反击的时机" },
-        { "id": "opening_A3_space_gains-quiz-004", "label": "4. 兵的安全推进原则" },
-        { "id": "opening_A3_space_gains-quiz-005", "label": "5. 空间优势的代价与风险" }
+        { "id": "opening_A3_space_gains-quiz-001", "label": "1. 空间优势的定义", "label_en": "1. Defining a Space Advantage" },
+        { "id": "opening_A3_space_gains-quiz-002", "label": "2. e5推进的空间效果", "label_en": "2. The Space Effect of e5" },
+        { "id": "opening_A3_space_gains-quiz-003", "label": "3. c5反击的时机", "label_en": "3. Timing the c5 Counterattack" },
+        { "id": "opening_A3_space_gains-quiz-004", "label": "4. 兵的安全推进原则", "label_en": "4. Safe Pawn Advances" },
+        { "id": "opening_A3_space_gains-quiz-005", "label": "5. 空间优势的代价与风险", "label_en": "5. The Costs and Risks of Space" }
       ]
     },
     {
       "key": "A4_opening_lines",
       "label": "A4 线路控制",
+      "label_en": "A4 Control of Files and Diagonals",
       "items": [
-        { "id": "opening_A4_opening_lines-quiz-001", "label": "1. 线路控制的定义" },
-        { "id": "opening_A4_opening_lines-quiz-002", "label": "2. 打开线路的时机" },
-        { "id": "opening_A4_opening_lines-quiz-003", "label": "3. 半开放线路的价值" },
-        { "id": "opening_A4_opening_lines-quiz-004", "label": "4. 封闭线路的战略" },
-        { "id": "opening_A4_opening_lines-quiz-005", "label": "5. 纵线与斜线的联合控制" }
+        { "id": "opening_A4_opening_lines-quiz-001", "label": "1. 线路控制的定义", "label_en": "1. What It Means to Control a Line" },
+        { "id": "opening_A4_opening_lines-quiz-002", "label": "2. 打开线路的时机", "label_en": "2. When to Open a Line" },
+        { "id": "opening_A4_opening_lines-quiz-003", "label": "3. 半开放线路的价值", "label_en": "3. The Value of a Half-Open File" },
+        { "id": "opening_A4_opening_lines-quiz-004", "label": "4. 封闭线路的战略", "label_en": "4. The Strategy of Closing a Line" },
+        { "id": "opening_A4_opening_lines-quiz-005", "label": "5. 纵线与斜线的联合控制", "label_en": "5. Coordinating Files and Diagonals" }
       ]
     }
   ]

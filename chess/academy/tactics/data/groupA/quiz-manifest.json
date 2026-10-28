@@ -2,109 +2,134 @@
     "categories":  [
                        {
                            "label":  "捉双",
+                           "label_en": "Fork",
                            "key":  "fork",
                            "items":  [
                                          {
                                              "id":  "tac_fork_L1-quiz-001",
-                                             "label":  "捉双的定义"
+                                             "label":  "捉双的定义",
+                                             "label_en": "What Is a Fork?"
                                          },
                                          {
                                              "id":  "tac_fork_L1-quiz-002",
-                                             "label":  "捉双的最佳棋子"
+                                             "label":  "捉双的最佳棋子",
+                                             "label_en": "The Best Piece for a Fork"
                                          },
                                          {
                                              "id":  "tac_fork_L1-quiz-003",
-                                             "label":  "捉双的应对方法"
+                                             "label":  "捉双的应对方法",
+                                             "label_en": "How to Respond to a Fork"
                                          },
                                          {
                                              "id":  "tac_fork_L1-quiz-004",
-                                             "label":  "将军捉双"
+                                             "label":  "将军捉双",
+                                             "label_en": "A Fork with Check"
                                          },
                                          {
                                              "id":  "tac_fork_L1-quiz-005",
-                                             "label":  "王叉的条件"
+                                             "label":  "王叉的条件",
+                                             "label_en": "Requirements for a King Fork"
                                          }
                                      ]
                        },
                        {
                            "label":  "牵制",
+                           "label_en": "Pin",
                            "key":  "pin",
                            "items":  [
                                          {
                                              "id":  "tac_pin_L1-quiz-001",
-                                             "label":  "牵制的定义"
+                                             "label":  "牵制的定义",
+                                             "label_en": "What Is a Pin?"
                                          },
                                          {
                                              "id":  "tac_pin_L1-quiz-002",
-                                             "label":  "全牵制与半牵制"
+                                             "label":  "全牵制与半牵制",
+                                             "label_en": "Absolute and Relative Pins"
                                          },
                                          {
                                              "id":  "tac_pin_L1-quiz-003",
-                                             "label":  "哪些棋子能实施牵制"
+                                             "label":  "哪些棋子能实施牵制",
+                                             "label_en": "Which Pieces Can Pin?"
                                          },
                                          {
                                              "id":  "tac_pin_L1-quiz-004",
-                                             "label":  "如何解除牵制"
+                                             "label":  "如何解除牵制",
+                                             "label_en": "How to Break a Pin"
                                          },
                                          {
                                              "id":  "tac_pin_L1-quiz-005",
-                                             "label":  "牵制的战略价值"
+                                             "label":  "牵制的战略价值",
+                                             "label_en": "The Strategic Value of a Pin"
                                          }
                                      ]
                        },
                        {
                            "label":  "串击",
+                           "label_en": "Skewer",
                            "key":  "skewer",
                            "items":  [
                                          {
                                              "id":  "tac_skewer_L1-quiz-001",
-                                             "label":  "串击的定义"
+                                             "label":  "串击的定义",
+                                             "label_en": "What Is a Skewer?"
                                          },
                                          {
                                              "id":  "tac_skewer_L1-quiz-002",
-                                             "label":  "串击与牵制的区别"
+                                             "label":  "串击与牵制的区别",
+                                             "label_en": "Skewer vs. Pin"
                                          },
                                          {
                                              "id":  "tac_skewer_L1-quiz-003",
-                                             "label":  "能实施串击的棋子"
+                                             "label":  "能实施串击的棋子",
+                                             "label_en": "Which Pieces Can Skewer?"
                                          },
                                          {
                                              "id":  "tac_skewer_L1-quiz-004",
-                                             "label":  "串击成立的条件"
+                                             "label":  "串击成立的条件",
+                                             "label_en": "Conditions for a Skewer"
                                          },
                                          {
                                              "id":  "tac_skewer_L1-quiz-005",
-                                             "label":  "应对串击的方法"
+                                             "label":  "应对串击的方法",
+                                             "label_en": "How to Respond to a Skewer"
                                          }
                                      ]
                        },
                        {
                            "label":  "闪击",
+                           "label_en": "Discovered Attack",
                            "key":  "discoveredAttack",
                            "items":  [
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-001",
-                                             "label":  "闪击的本质"
+                                             "label":  "闪击的本质",
+                                             "label_en": "The Essence of a Discovered Attack"
                                          },
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-002",
-                                             "label":  "闪击的两个角色"
+                                             "label":  "闪击的两个角色",
+                                             "label_en": "The Two Roles in a Discovered Attack"
                                          },
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-003",
-                                             "label":  "如何识别闪击机会"
+                                             "label":  "如何识别闪击机会",
+                                             "label_en": "Spotting a Discovered Attack"
                                          },
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-004",
-                                             "label":  "闪击将军与普通闪击的区别"
+                                             "label":  "闪击将军与普通闪击的区别",
+                                             "label_en": "Discovered Check vs. Discovered Attack"
                                          },
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-005",
-                                             "label":  "闪击与捉双的区别"
+                                             "label":  "闪击与捉双的区别",
+                                             "label_en": "Discovered Attack vs. Fork"
                                          },
                                          {
                                              "id":  "tac_discoveredAttack_L1-quiz-006",
-                                             "label":  "闪将：带将军的闪击"
+                                             "label":  "闪将：带将军的闪击",
+                                             "label_en": "Discovered Check"
                                          }
                                      ]
                        }

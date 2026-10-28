@@ -1,13 +1,16 @@
 {
   "game_id": "tac_intermezzo_L1-009",
   "description": "黑方中间将军，换子后赢后",
+  "explanation_en": "A sequence of intermediate captures and checks lets Black win White's queen.",
   "intro": {
     "flash_squares": ["g2", "g1", "f6"],
     "popup": "💡 <b>中间招</b>：白兵g2无根是挂子。黑方吃g2后，白方Qxf6中间吃马——黑方Rg1+中间将军！再连续换子，净赢一后！",
+    "popup_en": "💡 <b>Intermediate move</b>: White's pawn on g2 is undefended. After Black captures it, White inserts Qxf6 to take a knight; Black replies with the intermediate check Rg1+, then forces exchanges to win White's queen.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rxg2吃挂兵，白Qxf6中间捉马，黑Rg1+中间将军——Rxe1+，Nxf6吃回后，黑方净赚！",
+    "popup_en": "✅ <b>Key idea</b>: ...Rxg2 takes the loose pawn; Qxf6 is White's intermediate capture, answered by ...Rg1+! After ...Rxe1+ and ...Nxf6, Black wins the queen.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rxg2",
       "popup": "黑车Rxg2！吃掉无根的挂兵——g2是挂子，黑方先发制人！",
+      "popup_en": "Rxg2! Black captures the undefended pawn on g2 and seizes the initiative.",
       "highlights": [
         {"squares": ["g2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
@@ -29,6 +33,7 @@
       "index": 1,
       "move": "Qxf6",
       "popup": "白后Qxf6！中间吃马——不吃回g2车，先吃f6马赚子！",
+      "popup_en": "Qxf6! White inserts a capture of the knight instead of recapturing the rook on g2.",
       "highlights": [
         {"squares": ["f6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -41,6 +46,7 @@
       "index": 2,
       "move": "Rg1+",
       "popup": "黑车Rg1+！中间将军——不让白后逍遥，先将军强迫白王应对！",
+      "popup_en": "Rg1+! Black inserts a check, forcing the white king to respond before the queen can escape.",
       "highlights": [
         {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f1"], "color": "#FF000055", "duration_ms": 0}
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Ke2",
       "popup": "白王Ke2——应将！",
+      "popup_en": "The white king moves to e2 to answer the check.",
       "highlights": [
         {"squares": ["e2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -66,6 +73,7 @@
       "index": 4,
       "move": "Rxe1+",
       "popup": "黑车Rxe1+！再次将军，吃掉白车——白方必须应对！",
+      "popup_en": "Rxe1+! Black captures the white rook with another check, forcing White to respond.",
       "highlights": [
         {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["e2"], "color": "#FF000055", "duration_ms": 0}
@@ -79,6 +87,7 @@
       "index": 5,
       "move": "Rxe1",
       "popup": "白车Rxe1——吃回，将军解除。",
+      "popup_en": "The white rook recaptures on e1 and ends the check.",
       "highlights": [
         {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -91,6 +100,7 @@
       "index": 6,
       "move": "Nxf6",
       "popup": "黑马Nxf6！吃回白后——连续中间招完成，黑方净赚一后！",
+      "popup_en": "Nxf6! The knight captures White's queen. The sequence of intermediate moves is complete, and Black has won a queen.",
       "highlights": [
         {"squares": ["f6"], "color": "#4CAF5055", "duration_ms": 0}
       ],

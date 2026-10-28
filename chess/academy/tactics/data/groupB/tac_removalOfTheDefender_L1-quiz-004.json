@@ -7,25 +7,31 @@
   "fen": "8/pr1r3p/6p1/2p1pk2/3b2N1/1P4P1/P2R1PKP/4R3 w - - 0 1",
   "concept": "牺牲换取消除保护",
   "question_cn": "消除保护时，有时需要以大换小（例如以车换象）。这种牺牲值得的条件是什么？",
+  "question_en": "When removing a defender requires a favorable exchange, such as a rook for a bishop, when is the sacrifice worthwhile?",
   "options": [
     {
       "key": "A",
-      "text_cn": "只要能吃掉保护者就值得，不管后续结果"
+      "text_cn": "只要能吃掉保护者就值得，不管后续结果",
+      "text_en": "It is worthwhile whenever you can capture the defender, regardless of what follows"
     },
     {
       "key": "B",
-      "text_cn": "只有在双方子力完全相等时才允许牺牲"
+      "text_cn": "只有在双方子力完全相等时才允许牺牲",
+      "text_en": "A sacrifice is only allowed when both sides have equal material"
     },
     {
       "key": "C",
-      "text_cn": "消除保护者后，所获得的目标棋子（或将杀机会）的价值，必须超过牺牲的子力"
+      "text_cn": "消除保护者后，所获得的目标棋子（或将杀机会）的价值，必须超过牺牲的子力",
+      "text_en": "The value of the target or mating attack gained after removing the defender must exceed the sacrificed material"
     },
     {
       "key": "D",
-      "text_cn": "牺牲前必须确保己方还剩足够的兵力守卫国王"
+      "text_cn": "牺牲前必须确保己方还剩足够的兵力守卫国王",
+      "text_en": "Before sacrificing, make sure you still have enough pawns to guard your king"
     }
   ],
   "correct": "C",
   "explanation_cn": "消除保护中的牺牲必须经过价值核算：如果以车（5分）吃掉保护者象（3分），亏了2分，但随后能吃到一个后（9分）或实施将杀（无价），则总收益远超损失，牺牲完全合理。核心公式：牺牲价值 < 目标价值 + 位置/将杀收益。盲目牺牲而不计后果，是初学者常见的错误。",
+  "explanation_en": "Evaluate the material balance before sacrificing. Giving up a rook (5 points) for a bishop (3 points) loses two points, but it can be justified if removing the defender wins a queen (9 points) or forces checkmate. The key is that the value of the target and positional or mating gains must exceed the sacrifice.",
   "created_at": "2026-05-11"
 }

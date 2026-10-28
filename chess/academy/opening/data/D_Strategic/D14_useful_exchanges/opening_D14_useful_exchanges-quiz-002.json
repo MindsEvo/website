@@ -3,14 +3,17 @@
     "gene_id": "D14_useful_exchanges",
     "sequence": 2,
     "concept": "兑换制造结构弱点",
+    "concept_en": "Creating Structural Weaknesses",
     "question_cn": "西班牙开局兑换变中白方Bxc6制造黑方叠兵（dxc6或bxc6）。这个兑换的长期战略价值是什么？",
+    "question_en": "In the Ruy Lopez Exchange Variation, what is the long-term value of Bxc6, which can give Black doubled c-pawns?",
     "options": [
-        {"key": "A", "text_cn": "只是为了消灭一匹马，没有长期战略意义"},
-        {"key": "B", "text_cn": "制造黑方c线叠兵——叠兵中有一个实际上是长期弱点，残局中白方兵型更健康"},
-        {"key": "C", "text_cn": "让黑方多一个兵控制中心，实际上对白方不利"},
-        {"key": "D", "text_cn": "白方失去象，换来的只是暂时优势"}
+        {"key": "A", "text_cn": "只是为了消灭一匹马，没有长期战略意义", "text_en": "It only removes a knight and has no long-term strategic purpose."},
+        {"key": "B", "text_cn": "制造黑方c线叠兵——叠兵中有一个实际上是长期弱点，残局中白方兵型更健康", "text_en": "It gives Black doubled c-pawns, one of which may become a lasting weakness, while White retains a healthier pawn structure."},
+        {"key": "C", "text_cn": "让黑方多一个兵控制中心，实际上对白方不利", "text_en": "It gives Black an extra pawn to control the center, which favors Black."},
+        {"key": "D", "text_cn": "白方失去象，换来的只是暂时优势", "text_en": "White gives up the bishop for only a temporary advantage."}
     ],
     "correct": "B",
     "explanation_cn": "Bxc6后黑方bxc6（或dxc6）形成叠兵：c线上两个兵叠在一起，其中一个无法正常保护另一个，残局中是长期结构弱点。白方用「象换马」的等价兑换换取了「健康兵型vs叠兵」的结构优势——这正是西班牙兑换变的核心战略。白方在残局中依靠兵型优势缓慢转化。兑换改变兵型是最常见的有价值兑换类型之一。",
+    "explanation_en": "After Bxc6 and a pawn recapture, Black may have doubled pawns on the c-file, one of which can become a long-term weakness in the endgame. White trades a bishop for a knight but may gain a structural edge with a healthier pawn formation. Changing the pawn structure is one common strategic reason to exchange pieces.",
     "created_at": "2026-06-13"
 }

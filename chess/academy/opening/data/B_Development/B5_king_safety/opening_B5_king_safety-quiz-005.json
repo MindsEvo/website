@@ -3,14 +3,17 @@
     "gene_id": "B5_king_safety",
     "sequence": 5,
     "concept": "不易位的后果",
+    "concept_en": "The Risks of Delaying Castling",
     "question_cn": "开局中王长期不易位，最直接的危险是什么？",
+    "question_en": "What is the most immediate danger of leaving the king uncastled for too long in the opening?",
     "options": [
-        {"key": "A", "text_cn": "王会自动失去易位权，以后再也不能易位"},
-        {"key": "B", "text_cn": "对方可以利用中心开放、钉制或将军让王暴露，王在中央比在角落脆弱得多"},
-        {"key": "C", "text_cn": "不易位没有危险，王在中央反而更灵活"},
-        {"key": "D", "text_cn": "只要不交换棋子，王在中央也是安全的"}
+        {"key": "A", "text_cn": "王会自动失去易位权，以后再也不能易位", "text_en": "The king automatically loses the right to castle."},
+        {"key": "B", "text_cn": "对方可以利用中心开放、钉制或将军让王暴露，王在中央比在角落脆弱得多", "text_en": "The opponent can open the center, use pins, or give check to expose the king, which is much more vulnerable in the center."},
+        {"key": "C", "text_cn": "不易位没有危险，王在中央反而更灵活", "text_en": "There is no danger; a central king is more flexible."},
+        {"key": "D", "text_cn": "只要不交换棋子，王在中央也是安全的", "text_en": "The king is safe in the center as long as no pieces are exchanged."}
     ],
     "correct": "B",
     "explanation_cn": "王在中央（e1/e8）时，e 线、d 线或中心格一旦开放，王就直接面对对方车和后的攻击。对方还可以用 Bg5 钉住你的马，再通过 Bxf6 破坏兵形、打开 g 线——这些手段在王已易位时威胁有限，但对未易位的王是毁灭性的。「王不易位=走钢丝」，一旦对方找到节奏就会付出沉重代价。",
+    "explanation_en": "When the king remains on e1 or e8, opening the e-file, d-file, or central squares can expose it directly to enemy rooks and queens. The opponent may also pin a knight with Bg5 and damage the pawn structure with Bxf6, opening lines toward the king. Such ideas are far more dangerous before the king castles.",
     "created_at": "2026-06-11"
 }

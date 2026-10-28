@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 5,
   "concept": "弃后引车的底线杀手法",
+  "concept_en": "Queen Sacrifice to Deflect the Rook",
   "question_cn": "白方走Qf8+（弃后将军），这步棋的目的是什么？",
+  "question_en": "White plays Qf8+ as a queen sacrifice. What is the purpose of this move?",
   "options": [
     {
       "key": "A",
-      "text_cn": "用后换掉对方的车，降低对方子力"
+      "text_cn": "用后换掉对方的车，降低对方子力",
+      "text_en": "Trade the queen for the opponent's rook to reduce their material"
     },
     {
       "key": "B",
-      "text_cn": "引诱黑车到f8，使白车Rxf8#将死"
+      "text_cn": "引诱黑车到f8，使白车Rxf8#将死",
+      "text_en": "Lure Black's rook to f8 so White can deliver Rxf8# with the rook"
     },
     {
       "key": "C",
-      "text_cn": "为己方车腾出f1格子"
+      "text_cn": "为己方车腾出f1格子",
+      "text_en": "Clear the f1-square for White's rook"
     },
     {
       "key": "D",
-      "text_cn": "威胁黑方g7或h7兵"
+      "text_cn": "威胁黑方g7或h7兵",
+      "text_en": "Threaten Black's g7- or h7-pawn"
     }
   ],
   "correct": "B",
   "explanation_cn": "弃后是底线杀中的经典战术：Qf8+迫使黑车到f8应将，此时f1的白车Rxf8#完成将杀——车在后的掩护下穿透底线。这就是「弃后透视底线杀」：利用后的牺牲打开通路，让车完成最后一击。",
+  "explanation_en": "A queen sacrifice is a classic back-rank tactic. Qf8+ forces Black's rook to f8 to answer the check, where White's rook on f1 delivers Rxf8#. The queen sacrifice clears the route so the rook can strike along the back rank.",
   "created_at": "2026-05-29"
 }

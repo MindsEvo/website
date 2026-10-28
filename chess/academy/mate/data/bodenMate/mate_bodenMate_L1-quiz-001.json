@@ -4,26 +4,33 @@
   "difficulty": "L1",
   "sequence": 1,
   "concept": "博登杀的定义",
+  "concept_en": "Defining Boden's Mate",
   "question_cn": "什么是博登杀（Boden's Mate）？",
+  "question_en": "What is Boden's mate?",
   "options": [
     {
       "key": "A",
-      "text_cn": "车和马配合，将死角落的王"
+      "text_cn": "车和马配合，将死角落的王",
+      "text_en": "A rook and knight work together to checkmate a king in the corner"
     },
     {
       "key": "B",
-      "text_cn": "两个象从两条交叉对角线同时攻击王，将死对方"
+      "text_cn": "两个象从两条交叉对角线同时攻击王，将死对方",
+      "text_en": "Two bishops attack the king along crossing diagonals and deliver checkmate"
     },
     {
       "key": "C",
-      "text_cn": "后在对角线将死被己方棋子封住的王"
+      "text_cn": "后在对角线将死被己方棋子封住的王",
+      "text_en": "A queen checkmates a king trapped by its own pieces along a diagonal"
     },
     {
       "key": "D",
-      "text_cn": "双车并列将死底线的王"
+      "text_cn": "双车并列将死底线的王",
+      "text_en": "Two rooks line up to checkmate a king on the back rank"
     }
   ],
   "correct": "B",
   "explanation_cn": "博登杀的特征是两个象分别站在两条不同颜色的对角线上，交叉攻击对方的王，使其无处可逃。通常发生在王的逃格被己方棋子封住的情况下。",
+  "explanation_en": "Boden's mate features two bishops on opposite-colored squares attacking the king along crossing diagonals, leaving it with no escape. The pattern often works because the king's own pieces block its escape squares.",
   "created_at": "2026-06-02"
 }

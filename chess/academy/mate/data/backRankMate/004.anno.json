@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-004",
   "description": "白后两步将军迫使黑车挡死底线，车完成将杀",
+  "explanation_en": "Two queen checks force Black's rook to block the back rank, allowing White's rook to deliver mate.",
   "intro": {
     "flash_squares": ["g8", "a8", "d7", "f1"],
     "popup": "💡 <b>底线杀</b>：黑王在g8，黑车在a8守底线。白后在d7，白车在f1。如何迫使黑车离开a8、去到被将杀的位置？",
+    "popup_en": "💡 <b>Back-rank mate</b>: Black's king is on g8 and rook on a8 guards the back rank. White has a queen on d7 and rook on f1. How can White force the rook off a8 and onto a mating square?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf7+将军逼王到h8，再Qf8+弃后迫使黑车到f8，Rxf8#——弃后引车，底线将杀。",
+    "popup_en": "✅ <b>Key idea</b>: Qf7+ drives the king to h8. Qf8+ then sacrifices the queen and forces the rook to f8, where Rxf8# delivers back-rank mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf7+",
       "popup": "白后Qf7+将军！黑王只能逃到h8。",
+      "popup_en": "Qf7+! The black king can only move to h8.",
       "highlights": [
         {"squares": ["f7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kh8",
       "popup": "黑王到h8——被赶到角落，退路更少。",
+      "popup_en": "The king moves to h8, driven into the corner with fewer escape squares.",
       "highlights": [
         {"squares": ["h8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qf8+",
       "popup": "白后Qf8+！弃后将军，黑车必须到f8挡——底线将杀马上到来。",
+      "popup_en": "Qf8+! White sacrifices the queen with check. Black's rook must capture on f8, setting up the back-rank mate.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Rxf8",
       "popup": "黑车被迫到f8吃后——恰好封死了f线，白车将杀。",
+      "popup_en": "The rook is forced to capture the queen on f8, where it blocks the file and allows White's rook to mate.",
       "highlights": [
         {"squares": ["f8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Rxf8#",
       "popup": "Rxf8#！白车底线将杀，黑王在h8无路可走。",
+      "popup_en": "Rxf8#! White's rook delivers back-rank mate; the king on h8 has no escape.",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}

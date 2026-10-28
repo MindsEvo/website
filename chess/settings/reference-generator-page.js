@@ -38,8 +38,14 @@
       const path = document.createElement('div'); path.className = 'reference-path'; path.textContent = item.path.join(' / ') + ' · ' + item.level;
       const fen = document.createElement('div'); fen.className = 'reference-fen'; fen.textContent = 'FEN  ' + item.question.fen;
       main.append(title, path, fen);
-      const solutionText = (item.question.solutions || []).map(solution => solution.text).filter(Boolean).join('\n');
-      if (solutionText) { const solution = document.createElement('div'); solution.className = 'reference-solution'; solution.textContent = solutionText; main.append(solution); }
+      const sourceSolution = (item.question.solutions || []).map(solution => solution.text).filter(Boolean).join('\n');
+      if (sourceSolution) {
+        const solution = document.createElement('div'); solution.className = 'reference-solution';
+        solution.textContent = /待补充|占位/.test(sourceSolution)
+          ? '该题源文件中的解答尚未补充。'
+          : sourceSolution.split(/\r?\n/).filter(line => line.trim() && !/^(#|\/\/)/.test(line.trim())).join('\n');
+        main.append(solution);
+      }
       const link = document.createElement('a'); link.className = 'edit-link'; link.href = './root-gene.html?question=' + encodeURIComponent(item.id); link.textContent = '载入手工编辑';
       card.append(main, link); host.append(card);
     });

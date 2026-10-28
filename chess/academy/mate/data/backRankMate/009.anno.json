@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-009",
   "description": "黑方象车配合，象将军逼王到角，车完成底线杀",
+  "explanation_en": "The bishop drives the king into the corner, where the rook delivers a back-rank mate.",
   "intro": {
     "flash_squares": ["g1", "b2", "f4"],
     "popup": "💡 <b>底线杀</b>：白王在g1，底线空虚。黑方有象在b2、车在f4。如何用象和车的配合，完成底线将杀？",
+    "popup_en": "💡 <b>Back-rank mate</b>: White's king is on g1 and the back rank is exposed. Black has a bishop on b2 and rook on f4. How can they work together to mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bd4+象将军迫使白王到h1——g1被象控制，f1被象斜线覆盖，Rf1#车底线将杀。象开路、车收官。",
+    "popup_en": "✅ <b>Key idea</b>: Bd4+ drives the king to h1. The bishop controls g1 and covers f1 along the diagonal, allowing ...Rf1# to finish with a back-rank mate. The bishop clears the way; the rook delivers mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bd4+",
       "popup": "黑象Bd4+！将军，g1被象控制，白王只能逃到h1。",
+      "popup_en": "Bd4+! The bishop checks and controls g1, leaving the white king with only h1 as an escape.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kh1",
       "popup": "白王被迫到h1——底线角落，无处可逃。",
+      "popup_en": "The king is forced to h1, a back-rank corner with no room to escape.",
       "highlights": [
         {"squares": ["h1"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rf1#",
       "popup": "Rf1#！黑车底线将杀。g1被象控制，h2被象覆盖，白王无路可走。",
+      "popup_en": "Rf1#! The rook delivers back-rank mate. The bishop controls g1 and h2, leaving the white king with no escape.",
       "highlights": [
         {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0},

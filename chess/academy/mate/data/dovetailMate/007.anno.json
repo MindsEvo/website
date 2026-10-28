@@ -1,13 +1,16 @@
 {
   "game_id": "mate_dovetailMate_L1-007",
   "description": "燕尾杀：白后走位封住王的逃格，黑后对角线将死",
+  "explanation_en": "White's queen moves to cover an escape square, but that move helps confine the king for Black's dovetail mate.",
   "intro": {
     "flash_squares": ["f2"],
     "popup": "💡 <b>燕尾杀</b>：注意白王的位置。白后走位后，黑后将从对角线发动燕尾杀。",
+    "popup_en": "💡 <b>Dovetail mate</b>: Watch the white king's position. After White's queen moves, the black queen will attack along the diagonal.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Qf4走位封锁逃格，Qe1#完成燕尾杀。白后的位置变化是关键。",
+    "popup_en": "✅ <b>Key idea</b>: Qf4 covers an escape square, and Qe1# completes dovetail mate. The change in the white queen's position is key.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qf4",
       "popup": "白后走f4，封住了白王的逃路。",
+      "popup_en": "The white queen moves to f4 and blocks one of the white king's escape routes.",
       "highlights": [
         {"squares": ["f4"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -26,6 +30,7 @@
       "index": 1,
       "move": "Qe1#",
       "popup": "黑后Qe1#，燕尾杀！王被己方棋子封死，后沿对角线将死。",
+      "popup_en": "Qe1# is dovetail mate! The king is trapped by its own pieces as the queen delivers mate along the diagonal.",
       "highlights": [
         {"squares": ["e1"], "color": "#FF000055", "duration_ms": 0},
         {"squares": ["f2"], "color": "#FF000055", "duration_ms": 0}

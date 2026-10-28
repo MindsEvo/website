@@ -2,6 +2,7 @@
   "game_id": "C10_WeakSquares_Practice_006",
   "description": "后翼印度 E15 — Ba6远射象瞄准弱格",
   "intro": {
+    "popup_en": "Weak Squares, Practice 6: The Long-Range Bishop\nBa6 is a classic example of a long-range bishop. From the a6-f1 diagonal, it targets the weak square c4 from a distance and applies lasting pressure. Identify the opponent's weak squares and let your bishop control them.",
     "flash_squares": [
       "a6",
       "c4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Ba6 controls the weak square c4 along the diagonal. The setup ...b6, ...Ba6, and ...c6 forms a complete plan, and Black keeps the bishop's long-range pressure after castling. When playing ...b6, consider whether ...Ba6 can target a weakness.",
     "popup": "远射象练习小结\n✅ Ba6沿对角线控制c4弱格\n✅ b6+Ba6+c6组成完整攻击体系\n✅ O-O后象继续长期守住对角线\n\n练习要点：\n推b6时想想Ba6能否攻击弱格",
     "voice": true
   },
@@ -25,16 +27,19 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "d4 controls the center.",
       "move": "d4",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6发展马"
     },
     {
       "index": 2,
+      "popup_en": "c4 expands on the flank, but c4 itself can become a weak square.",
       "move": "c4",
       "popup": "c4翼侧！\n注意：c4本身现在是弱格",
       "highlights": [
@@ -48,26 +53,31 @@
     },
     {
       "index": 3,
+      "popup_en": "...e6 reinforces Black's position.",
       "move": "e6",
       "popup": "e6稳固"
     },
     {
       "index": 4,
+      "popup_en": "Nf3 develops a knight.",
       "move": "Nf3",
       "popup": "Nf3发展马"
     },
     {
       "index": 5,
+      "popup_en": "...b6 prepares either ...Ba6 or ...Bb7, revealing Black's fianchetto plan.",
       "move": "b6",
       "popup": "b6！为Ba6或Bb7做准备\n黑方展示翼侧象计划"
     },
     {
       "index": 6,
+      "popup_en": "g3 prepares a fianchetto.",
       "move": "g3",
       "popup": "g3纤维局"
     },
     {
       "index": 7,
+      "popup_en": "...Ba6! The long-range bishop takes aim at c4 along the a6-f1 diagonal. This is a strategic way to attack a weak square without approaching it directly.",
       "move": "Ba6",
       "popup": "Ba6！远射象出击\n沿a6-f1对角线瞄准c4\n这是弱格攻击的远程策略！",
       "highlights": [
@@ -86,11 +96,13 @@
     },
     {
       "index": 8,
+      "popup_en": "b3 supports c4 and tries to reduce the bishop's long-term pressure.",
       "move": "b3",
       "popup": "b3守护c4\n防止Ba6的持续威胁"
     },
     {
       "index": 9,
+      "popup_en": "...Bb4+ gives check and tests White's response.",
       "move": "Bb4+",
       "popup": "Bb4+将军！\n试探白方应对",
       "highlights": [
@@ -106,21 +118,25 @@
     },
     {
       "index": 10,
+      "popup_en": "Bd2 blocks with the bishop, avoiding Nd2, which would leave c3 less protected.",
       "move": "Bd2",
       "popup": "Bd2用象阻截\n不用Nd2暴露c3格"
     },
     {
       "index": 11,
+      "popup_en": "...Be7 retreats the bishop to safety.",
       "move": "Be7",
       "popup": "Be7收象回安全位"
     },
     {
       "index": 12,
+      "popup_en": "Bg2 completes White's fianchetto.",
       "move": "Bg2",
       "popup": "Bg2建立纤维局象"
     },
     {
       "index": 13,
+      "popup_en": "...c6 reinforces control of the weak square d5.",
       "move": "c6",
       "popup": "c6加强！\n黑方进一步控制d5弱格",
       "highlights": [
@@ -135,6 +151,7 @@
     },
     {
       "index": 14,
+      "popup_en": "Bc3! White reinforces c4 by repositioning the bishop to c3.",
       "move": "Bc3",
       "popup": "Bc3！强化守护c4\n白方调整象到c3位",
       "highlights": [
@@ -149,36 +166,43 @@
     },
     {
       "index": 15,
+      "popup_en": "...d5 counterattacks in the center and claims central space.",
       "move": "d5",
       "popup": "d5反击中心！\n黑方占领中心"
     },
     {
       "index": 16,
+      "popup_en": "Ne5 centralizes the knight on a strong square.",
       "move": "Ne5",
       "popup": "Ne5中心马！\n占据强力位置"
     },
     {
       "index": 17,
+      "popup_en": "...Nfd7 offers an exchange.",
       "move": "Nfd7",
       "popup": "Nfd7主动兑换"
     },
     {
       "index": 18,
+      "popup_en": "Nxd7 exchanges the knight and removes one of the defenders.",
       "move": "Nxd7",
       "popup": "Nxd7兑换\n清除守护马"
     },
     {
       "index": 19,
+      "popup_en": "...Nxd7 recaptures and restores the position.",
       "move": "Nxd7",
       "popup": "Nxd7重建"
     },
     {
       "index": 20,
+      "popup_en": "Nd2 reorganizes the knight, preparing to move to a better square.",
       "move": "Nd2",
       "popup": "Nd2重组\n马准备跳到更好位置"
     },
     {
       "index": 21,
+      "popup_en": "O-O secures White's king, but Black's bishop on a6 continues to pressure c4.",
       "move": "O-O",
       "popup": "O-O入城\n黑方Ba6象继续施压c4！",
       "highlights": [
@@ -192,6 +216,7 @@
     },
     {
       "index": 22,
+      "popup_en": "...O-O completes development for both sides. The structure is clear: Black's bishop on a6 continues to control the weak square c4, demonstrating the power of a long-range bishop.",
       "move": "O-O",
       "popup": "O-O双方完成布局\n结构清晰：黑象Ba6长期控制c4弱格\n这就是远射象策略的威力！",
       "highlights": [

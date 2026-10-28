@@ -9,10 +9,12 @@
       "e5"
     ],
     "popup": "反面教材：白方将连续走4步边路兵——请观察中心格会发生什么！",
+    "popup_en": "A cautionary example: White will spend four moves on flank pawns. Watch what happens to the center!",
     "voice": true
   },
   "outro": {
     "popup": "忽视中心的代价是惨痛的。记住：开局每一步都应该与中心控制有关。",
+    "popup_en": "Ignoring the center can be costly. Remember: in the opening, every move should contribute to central control or development.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "g4",
       "popup": "⬆️ <b>1.g4 — ❌ 错误！边路兵，完全无视中心！</b><br>白方推 g4，这是一步非常糟糕的开局！g4 对中心没有任何影响，还削弱了白方王翼，让 f3 和 h3 变得虚弱。<br>⚠️ <b>记住：开局的每一步都应该争夺中心！</b>",
+      "popup_en": "⬆️ <b>1.g4 - A mistake: a flank pawn ignores the center!</b><br>This is a poor opening move. g4 does not contest the center and weakens White's kingside, including the squares around f3 and h3.<br>⚠️ <b>Remember: opening moves should help contest the center!</b>",
       "highlights": [
         {
           "squares": [
@@ -60,6 +63,7 @@
       "index": 1,
       "move": "d5",
       "popup": "⬇️ <b>1...d5 — ✅ 黑方立即占领中心！</b><br>黑方做了白方没做的事——立即占领 d5。黑方一步就控制了中心，而白方在 g4 那步什么中心都没控制。差距已经开始！",
+      "popup_en": "⬇️ <b>1...d5 - Black immediately occupies the center!</b><br>Black does what White did not: claim d5. Black gains central influence in one move while g4 contributed nothing to White's control of the center.",
       "highlights": [
         {
           "squares": [
@@ -88,6 +92,7 @@
       "index": 2,
       "move": "h3",
       "popup": "⬆️ <b>2.h3 — ❌ 又是边路兵！两步全是错的！</b><br>白方再次推边路兵！这是浪费时间。正确的应对应该是 1.d4 或 1.e4，现在已经浪费了两步！黑方的中心优势继续扩大。",
+      "popup_en": "⬆️ <b>2.h3 - Another flank pawn move!</b><br>White spends a second move away from the center. A central move such as d4 or e4 would have been more useful, while Black's central advantage grows.",
       "highlights": [
         {
           "squares": [
@@ -103,6 +108,7 @@
       "index": 3,
       "move": "e5",
       "popup": "⬇️ <b>2...e5 — ✅ 黑方建立双兵中心！</b><br>黑方轻松建立 d5+e5 双兵中心！两步棋，黑方控制了 4 个中心格（c4、d4、f4、e4 的影响），而白方控制了 0 个中心格。差距是4:0！",
+      "popup_en": "⬇️ <b>2...e5 - Black establishes a two-pawn center!</b><br>With pawns on d5 and e5, Black controls key central squares after only two moves, while White's flank moves have not challenged the center.",
       "highlights": [
         {
           "squares": [
@@ -150,6 +156,7 @@
       "index": 4,
       "move": "a3",
       "popup": "⬆️ <b>3.a3 — ❌ 后翼边兵！三步没有一步中心！</b><br>a3 依然是边路兵，对中心毫无贡献。白方三步全部浪费在边路，这在任何水平的对弈中都是严重错误。<br>❌ <b>白方三步 = 中心格控制：0</b>",
+      "popup_en": "⬆️ <b>3.a3 - Another flank pawn move!</b><br>a3 does not help contest the center. White has spent three moves on the edges of the board.<br>❌ <b>After three moves, White still has no central control.</b>",
       "highlights": [
         {
           "squares": [
@@ -173,6 +180,7 @@
       "index": 5,
       "move": "Nf6",
       "popup": "⬇️ <b>3...Nf6 — ✅ 黑马发展，控制更多中心！</b><br>黑方出马，控制 d5 和 e4，整个中心区域都在黑方掌控之中。子力发展 + 中心控制，黑方每步棋都在积累优势。",
+      "popup_en": "⬇️ <b>3...Nf6 - Black develops and increases central control!</b><br>The knight controls d5 and e4. Black combines development with central influence, improving the position with each move.",
       "highlights": [
         {
           "squares": [
@@ -200,6 +208,7 @@
       "index": 6,
       "move": "b3",
       "popup": "⬆️ <b>4.b3 — ❌ 四步边路！完全放弃中心！</b><br>b3 为后翼象发展做准备，但 g2 象即使出来，d4 和 e4 格也没有白方兵占据，黑方的兵已经扎根中心。<br>📊 <b>4步后对比：黑方中心格控制 6+ vs 白方 0！</b>",
+      "popup_en": "⬆️ <b>4.b3 - A fourth flank move abandons the center!</b><br>b3 prepares to develop the bishop, but even on g2 it will not occupy d4 or e4. Black's pawns are already established in the center.<br>📊 <b>After four moves, Black controls many central squares while White controls none.</b>",
       "highlights": [
         {
           "squares": [
@@ -227,6 +236,7 @@
       "index": 7,
       "move": "Bc5",
       "popup": "⬇️ <b>4...Bc5 — ✅ 黑象出动，控制长对角线！</b><br>黑象发展到 c5，攻击 f2 格，同时支持 e5 中心兵。黑方四步完成了两个兵的中心控制、一个马的发展、一个象的发展——教科书式的开局！",
+      "popup_en": "⬇️ <b>4...Bc5 - Black develops the bishop on an active diagonal!</b><br>The bishop attacks f2 and supports the e5-pawn. In four moves, Black has occupied the center and developed both a knight and a bishop.",
       "highlights": [
         {
           "squares": [
@@ -251,6 +261,7 @@
       "index": 8,
       "move": "Bg2",
       "popup": "⬆️ <b>5.Bg2 — 白象出来了，但太晚了！</b><br>白象终于出来，控制长对角线。但对角线上有黑方的 e5 兵挡着——g2 象被封锁了！而且白方仍然没有一个兵在中心。",
+      "popup_en": "⬆️ <b>5.Bg2 - White finally develops the bishop, but it is late!</b><br>The bishop's long diagonal is blocked by Black's e5-pawn, and White still has no pawn occupying the center.",
       "highlights": [
         {
           "squares": [
@@ -272,6 +283,7 @@
       "index": 9,
       "move": "Nc6",
       "popup": "⬇️ <b>5...Nc6 — ✅ 黑方第二匹马出动！</b><br>黑方发展完成，中心稳固，所有子力和谐。黑方准备易位，进入中局的全面进攻阶段。",
+      "popup_en": "⬇️ <b>5...Nc6 - Black develops the second knight!</b><br>Black's center is secure and the pieces are coordinated. Black can castle and prepare a full middlegame plan.",
       "highlights": [
         {
           "squares": [
@@ -299,6 +311,7 @@
       "index": 10,
       "move": "c3",
       "popup": "⬆️ <b>6.c3 — 白方试图建立中心，已经太晚！</b><br>白方终于准备推 d4，但黑方已经完成大半发展，黑方有更好的位置阻止或利用白方的迟到中心。",
+      "popup_en": "⬆️ <b>6.c3 - White finally prepares a central advance, but it is late!</b><br>White is preparing d4 after Black has nearly completed development and is well placed to restrain or exploit it.",
       "highlights": [
         {
           "squares": [
@@ -320,6 +333,7 @@
       "index": 11,
       "move": "O-O",
       "popup": "⬇️ <b>6...O-O — ✅ 黑方轻松易位！</b><br>黑方完成易位，王安全，所有子力就位。黑方现在可以从容发动进攻，白方还在完成开局发展。",
+      "popup_en": "⬇️ <b>6...O-O - Black castles with ease!</b><br>The king is safe and the pieces are developed. Black can begin a plan while White is still completing the opening setup.",
       "highlights": [
         {
           "squares": [
@@ -342,6 +356,7 @@
       "index": 12,
       "move": "d3",
       "popup": "⬆️ <b>7.d3 — 白方只走了 d3，不是 d4！</b><br>白方仍然不敢推 d4，因为黑方子力太强大。d3 是被动的防守步，不能建立真正的中心控制。<br>⚠️ <b>对比：黑方第2步就有 d5+e5，白方第7步还没有中心兵！</b>",
+      "popup_en": "⬆️ <b>7.d3 - White plays d3, not d4!</b><br>White avoids d4 because Black's pieces are well placed. d3 is passive and does not establish a strong central presence.<br>⚠️ <b>Black had pawns on d5 and e5 by move two; White still has no central pawn.</b>",
       "highlights": [
         {
           "squares": [
@@ -364,6 +379,7 @@
       "index": 13,
       "move": "Re8",
       "popup": "⬇️ <b>7...Re8 — ✅ 黑车激活，支援中心！</b><br>黑车转移到 e8，支撑 e5 兵。黑方正在准备推进 e4——深入白方阵地！",
+      "popup_en": "⬇️ <b>7...Re8 - Black activates the rook to support the center!</b><br>The rook supports e5 and prepares to advance the pawn to e4, deep into White's position.",
       "highlights": [
         {
           "squares": [
@@ -392,6 +408,7 @@
       "index": 14,
       "move": "Nd2",
       "popup": "⬆️ <b>8.Nd2 — 白方迟到的马出动！</b><br>白马终于出动，但它只能到 d2，被自己的兵挡住，活动空间极度受限。这就是边路兵推进的代价：自己的子力被堵死！",
+      "popup_en": "⬆️ <b>8.Nd2 - White finally develops a knight!</b><br>It can only reach d2, where its own pawns restrict its activity. This is one cost of spending opening moves on flank pawns: your pieces may lack room.",
       "highlights": [
         {
           "squares": [
@@ -407,6 +424,7 @@
       "index": 15,
       "move": "e4",
       "popup": "⬇️ <b>8...e4 — ✅ 黑方中心兵深入！白方陷入被动！</b><br>黑方推 e4，过路兵深入白方阵地！白方的 d3 兵直接受到攻击，局面已经对白方非常不利。这就是7步无所作为的代价！",
+      "popup_en": "⬇️ <b>8...e4 - Black's central pawn advances deep!</b><br>The pawn attacks d3 and cramps White's position. Black's central control has turned into an advanced passed pawn.",
       "highlights": [
         {
           "squares": [
@@ -429,6 +447,7 @@
       "index": 16,
       "move": "dxe4",
       "popup": "⬆️ <b>9.dxe4 — 白方被迫应对！</b><br>白方必须用 d3 吃 e4，否则过路兵继续推进。注意此时黑方的 d5 兵也有机会推进！",
+      "popup_en": "⬆️ <b>9.dxe4 - White is forced to respond!</b><br>The d3-pawn must capture the advanced pawn before it moves farther. Black's d5-pawn may also become active.",
       "highlights": [
         {
           "squares": [
@@ -451,6 +470,7 @@
       "index": 17,
       "move": "dxe4",
       "popup": "⬇️ <b>9...dxe4 — ✅ 黑兵吃回，e4 强大过路兵！</b><br>d5 兵吃掉白方 e4，黑方在 e4 有强大的中心兵，被 f6 马、c5 象、e8 车共同支撑，白方无法消除这个威胁！",
+      "popup_en": "⬇️ <b>9...dxe4 - Black recaptures and establishes a strong pawn on e4!</b><br>The pawn is supported by the knight on f6, bishop on c5, and rook on e8, making it difficult for White to eliminate.",
       "highlights": [
         {
           "squares": [
@@ -491,6 +511,7 @@
       "index": 18,
       "move": "e3",
       "popup": "⬆️ <b>10.e3 — 白方试图挡住 e4！</b><br>白方推 e3，试图阻挡黑方 e4 的影响，但只是在加固一条防线，无法改变整体劣势。白方已经陷入被动防守。",
+      "popup_en": "⬆️ <b>10.e3 - White tries to restrain the e4-pawn!</b><br>The move adds a line of defense but does not solve White's broader problems. White is forced into a passive setup.",
       "highlights": [
         {
           "squares": [
@@ -513,6 +534,7 @@
       "index": 19,
       "move": "Ne5",
       "popup": "⬇️ <b>10...Ne5 — ✅ 黑马占领中心强格 e5！</b><br>黑马从 f6 跳入 e5，占据强大的中心前哨站！e5 深入白方阵地，马在此威胁四面八方。",
+      "popup_en": "⬇️ <b>10...Ne5 - Black's knight occupies a central outpost!</b><br>From e5, the knight penetrates White's position and controls many important squares.",
       "highlights": [
         {
           "squares": [
@@ -559,6 +581,7 @@
       "index": 20,
       "move": "Ra2",
       "popup": "⬆️ <b>11.Ra2 — <br>黑方的马已经占领 e5，随时可以跳入 d3 将军, 白方暂时没有好的手段， 车a2在为后续的有效防守做准备。</b>",
+      "popup_en": "⬆️ <b>11.Ra2 - Black's knight on e5 threatens to jump to d3 with check. White has no easy solution and moves the rook to a2 to prepare a defense.</b>",
       "highlights": [
         {
           "squares": [
@@ -588,6 +611,7 @@
       "index": 21,
       "move": "Nd3+",
       "popup": "⬇️ <b>11...Nd3+ — ✅ 马跳 d3！将军！捉双！</b><br>黑马从 e5 跳入 d3，直接将白王！白王被迫移动。d3 格还同时威胁周围白方子力——这就是中心强格的威力：马站在那里，可以把整盘棋搅乱！",
+      "popup_en": "⬇️ <b>11...Nd3+ - The knight jumps to d3 with check and a double attack!</b><br>White's king must move, while the knight also attacks nearby pieces. A central outpost can disrupt the opponent's entire position.",
       "highlights": [
         {
           "squares": [
@@ -615,6 +639,7 @@
       "index": 22,
       "move": "Kf1",
       "popup": "⬆️ <b>12.Kf1 — 白王被迫逃往 f1！</b><br>白王只能逃到 f1，王翼易位权已丧失，王的安全岌岌可危。d3 上的黑马仍在，随时引发新威胁。白方局面全面崩溃。",
+      "popup_en": "⬆️ <b>12.Kf1 - White's king is forced to f1!</b><br>White loses the right to castle kingside and the king is exposed. Black's knight remains on d3, ready to create further threats.",
       "highlights": [
         {
           "squares": [
@@ -637,6 +662,7 @@
       "index": 23,
       "move": "h5",
       "popup": "⬇️ <b>12...h5 — ✅ 黑兵推进，继续扩大优势！</b><br>黑方推 h5，王翼兵线开始推进，进一步压缩白王空间。黑方有中心优势、棋子活跃度优势、王的安全优势——全面领先！",
+      "popup_en": "⬇️ <b>12...h5 - Black advances and extends the attack!</b><br>The kingside pawn push further restricts White's exposed king. Black has the advantage in central control, piece activity, and king safety.",
       "highlights": [
         {
           "squares": [
@@ -659,6 +685,7 @@
       "index": 24,
       "move": "Nxe4",
       "popup": "⬆️ <b>13.Nxe4 — 白方终于夺回 e4，但代价巨大！</b><br>白马终于吃掉 e4 兵，但白方为此付出了：王的安全、发展落后、被动守势。即便拿回这个兵，局面也已经无法挽回——中心控制权早已彻底属于黑方。",
+      "popup_en": "⬆️ <b>13.Nxe4 - White finally captures the e4-pawn, but at a high cost!</b><br>White has lost king safety, development time, and the initiative. Winning back the pawn does not undo Black's control of the center.",
       "highlights": [
         {
           "squares": [
@@ -681,6 +708,7 @@
       "index": 25,
       "move": "Nxe4",
       "popup": "⬇️ <b>13...Nxe4 — ✅ 黑马吃 e4！优势确立！</b><br>黑马从 d3 吃 e4，黑方保持子力协调活跃度，白方的阵型一团糟。<br><br>白方13步中没有一步真正控制中心，黑方轻松建立双兵中心，用中心强格 e5→d3 渗透直接将军，白王被逼出。<b>开局核心铁律：每步必须争夺中心，否则一切皆虚！</b>",
+      "popup_en": "⬇️ <b>13...Nxe4 - Black captures on e4 and consolidates the advantage!</b><br>The knight from d3 captures e4, remaining active while White's position is disorganized.<br><br>White spent thirteen moves without establishing central control. Black built a pawn center, used the e5-d3 outpost to give check, and exposed the white king. <b>Opening principle: contest the center, or risk letting the opponent dictate the game.</b>",
       "highlights": [
         {
           "squares": [

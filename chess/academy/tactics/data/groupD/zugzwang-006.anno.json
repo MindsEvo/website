@@ -1,13 +1,16 @@
 {
   "game_id": "tac_zugzwang_L1-006",
   "description": "双方王的精确对走，稍有不慎就落入逼着",
+  "explanation_en": "Both kings must maneuver precisely. With correct play, the position is drawn; a careless move can leave one side in zugzwang and lose.",
   "intro": {
     "flash_squares": ["d3", "c5", "a3", "g6"],
     "popup": "💡 <b>逼着</b>：双方都在小心翼翼地走每一步，双方都应对正确则和棋——稍微不小心就被逼着被动！",
+    "popup_en": "💡 <b>Zugzwang</b>: Both sides must handle every move carefully. Accurate play draws, but a small mistake can leave a player in zugzwang.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：a4是白方的等招，逼着黑王亮出意图。双方王的对角博弈考验精确计算——任何轻率的走法都可能导致落入逼着！",
+    "popup_en": "✅ <b>Key idea</b>: a4 is a waiting move that makes Black reveal its plan. The kings must maintain precise opposition; a careless move may lead to zugzwang.",
     "voice": true
   },
   "board_always": null,
@@ -15,6 +18,7 @@
     {
       "index": 0, "move": "a4",
       "popup": "白兵a4！等招——逼着黑王亮出意图，同时封锁a线。",
+      "popup_en": "White plays a4 as a waiting move, making the black king reveal its plan while controlling the a-file.",
       "highlights": [{"squares": ["a4"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a3", "to": "a4", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -22,6 +26,7 @@
     {
       "index": 1, "move": "Kc6",
       "popup": "黑王Kc6，向白方阵地靠近，试图取得对位。",
+      "popup_en": "The black king moves to c6, approaching White's position and seeking opposition.",
       "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "c6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -29,6 +34,7 @@
     {
       "index": 2, "move": "Kc3",
       "popup": "白王Kc3，向前迎击，保持对应关系。",
+      "popup_en": "The white king advances to c3 to meet the approach and maintain the opposition.",
       "highlights": [{"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d3", "to": "c3", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -36,6 +42,7 @@
     {
       "index": 3, "move": "Kc7",
       "popup": "黑王Kc7，避开直接对抗。",
+      "popup_en": "The black king moves to c7 to avoid a direct confrontation.",
       "highlights": [{"squares": ["c7"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c6", "to": "c7", "color": "#E53935CC"}],
       "concept_lines": []
@@ -43,6 +50,7 @@
     {
       "index": 4, "move": "Kd3",
       "popup": "白王Kd3，保持对应，等着黑方暴露弱点。",
+      "popup_en": "The white king moves to d3, maintaining the correspondence and waiting for Black to reveal a weakness.",
       "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c3", "to": "d3", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -50,6 +58,7 @@
     {
       "index": 5, "move": "Kc6",
       "popup": "黑王Kc6，再次尝试进攻。",
+      "popup_en": "The black king moves to c6 and tries to attack again.",
       "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c7", "to": "c6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -57,6 +66,7 @@
     {
       "index": 6, "move": "Kd4",
       "popup": "白王Kd4！占据关键中心格，加强对c5和d5的控制。",
+      "popup_en": "The white king occupies the key central square d4, strengthening control of c5 and d5.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c5", "d5"], "color": "#FF000055", "duration_ms": 0}
@@ -67,6 +77,7 @@
     {
       "index": 7, "move": "Kd6",
       "popup": "黑王Kd6，被迫应对，双方进入关键对位阶段。",
+      "popup_en": "The black king responds with Kd6, and the kings reach a critical opposition position.",
       "highlights": [{"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c6", "to": "d6", "color": "#E53935CC"}],
       "concept_lines": []
@@ -74,6 +85,7 @@
     {
       "index": 8, "move": "Kc3",
       "popup": "白王Kc3，主动退步——等招，继续博弈，维持平衡。",
+      "popup_en": "The white king steps back to c3 as a waiting move, keeping the balance and continuing the maneuvering battle.",
       "highlights": [{"squares": ["c3"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d4", "to": "c3", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -81,6 +93,7 @@
     {
       "index": 9, "move": "Kc5",
       "popup": "黑王Kc5，占中心。",
+      "popup_en": "The black king moves to c5 and takes the center.",
       "highlights": [{"squares": ["c5"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "c5", "color": "#E53935CC"}],
       "concept_lines": []
@@ -88,6 +101,7 @@
     {
       "index": 10, "move": "Kd3",
       "popup": "白王Kd3，再次保持对应关系，双方僵持。",
+      "popup_en": "The white king returns to d3, maintaining the opposition. The position remains balanced.",
       "highlights": [{"squares": ["d3"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c3", "to": "d3", "color": "#4CAF50CC"}],
       "concept_lines": []
@@ -95,6 +109,7 @@
     {
       "index": 11, "move": "Kc6",
       "popup": "黑王Kc6，双方继续精确对走，都没有落入逼着——正确应对是和棋。",
+      "popup_en": "The black king moves to c6. Both sides continue accurately, avoiding zugzwang; with correct play, the position is drawn.",
       "highlights": [{"squares": ["c6"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "c6", "color": "#E53935CC"}],
       "concept_lines": []

@@ -2,6 +2,7 @@
   "game_id": "D14_UsefulExchange_Demo_007",
   "description": "西西里大奖赛进攻 B23 — 练习：白方及时Bxc6兑马！",
   "intro": {
+    "popup_en": "Useful Exchanges, Practice 7\nIn the Sicilian Grand Prix, White prepares a kingside attack with Nc3 and f4. The bishop has reached b5 while Black's knight is still on c6. If White waits, ...Nd4 may let the knight escape. When is the best moment for Bxc6? Now.",
     "flash_squares": [
       "b5",
       "c6"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Bxc6 is a timely attacking exchange. Too early, and the bishop may not yet be targeting Nc6; too late, and ...Nd4 may let the knight escape. Exchanging the key central defender creates doubled c-pawns on c5 and c6, giving White a lasting structural target. Timing is essential.",
     "popup": "Bxc6兑換评估总结\n\n⭐ 及时兑子的进攻面：\n\n白方Bxc6的时机选择：\n• 太早：象还没到位，兑不到Nc6\n• 太晚：黑方走了Nd4，就庻xc6吃空格！\n• 恰到好处：就在黑方准备Nd4前就兑换！\n\n兑换判断：\n① Nc6是黑方中心守卫，价值高\n② 白方用象兑马——黑方形成双叠兵（c5+c6）\n③ 进攻性兑换开启结构优势\n\n教训：及时兑子要把握最乳时机！",
     "voice": true
   },
@@ -23,16 +25,19 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4 中心"
     },
     {
       "index": 1,
       "move": "c5",
+      "popup_en": "...c5 begins the Sicilian Defense.",
       "popup": "c5！西西里防御"
     },
     {
       "index": 2,
       "move": "Nc3",
+      "popup_en": "Nc3! The Grand Prix Attack. White avoids Nf3 and d4, preparing a kingside pawn storm with f4-f5 and g4-g5.",
       "popup": "Nc3！大奖赛进攻！\n\n白方不走Nf3/d4，而是Nc3\n准备f4-f5-g4-g5的王翼进攻！",
       "highlights": [
         {
@@ -47,11 +52,13 @@
     {
       "index": 3,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops and contests the center.",
       "popup": "Nc6 黑方发展，中心对抗"
     },
     {
       "index": 4,
       "move": "f4",
+      "popup_en": "f4!! The core of the Grand Prix Attack, preparing f5 against Black's king. White's bishop will soon reach b5 while Nc6 is still available for an exchange.",
       "popup": "f4！！大奖赛进攻的核心！\n白方准备f5攻击黑方王翼\n\n⭐ 该轮白方发展Bb5——\n黑方Nc6尚在c6，及时兑换的时机到了！",
       "highlights": [
         {
@@ -65,12 +72,14 @@
     },
     {
       "index": 5,
+      "popup_en": "...g6 prepares a fianchetto and reinforces Black's kingside.",
       "move": "g6",
       "popup": "g6 黑方准备飞象\n防守王翼"
     },
     {
       "index": 6,
       "move": "Bb5",
+      "popup_en": "Bb5!! White's bishop directly targets Nc6. This is the critical moment: if White delays or moves the bishop elsewhere, ...Nd4 may let the knight escape.",
       "popup": "Bb5！！白象进攻！\n\n爱就Bb5正对Nc6！\n⭐ 现在就是兑换的门片充脱先机！\n如果白方移开象或先走其他步\n黑方会走Nd4逃距！",
       "highlights": [
         {
@@ -84,12 +93,14 @@
     },
     {
       "index": 7,
+      "popup_en": "...Bg7 completes Black's fianchetto and supports the kingside defense.",
       "move": "Bg7",
       "popup": "Bg7！国王印度飞象\n黑方防守王翼"
     },
     {
       "index": 8,
       "move": "Bxc6",
+      "popup_en": "Bxc6!!! White exchanges immediately, before Nc6 can jump to d4. The exchange removes Black's central defender and, after ...dxc6, creates doubled pawns on c5 and c6. White's f4-pawn also controls e5 and supports the attack.",
       "popup": "Bxc6！！！及时兑子！\n\n白象立刻兑马！不等Nc6跳到d4！\n\n为什么现在？\n• Nc6仍在c6——还没逃距！\n• 如果白方犹豫，5...Nd4黑马跳走！\n• 那时Bxc6就只能吃空格！\n\n战略效果：\n① 消灭黑方中心守卫 Nc6\n② dxc6形成双叠兵（c5+c6双重弱点）\n③ 白方f4兵控制e5，进攻更顺界",
       "highlights": [
         {
@@ -104,6 +115,7 @@
     {
       "index": 9,
       "move": "dxc6",
+      "popup_en": "...dxc6 recaptures, leaving doubled pawns on c5 and c6. Both are long-term structural targets, giving White a lasting positional advantage.",
       "popup": "dxc6 黑方回吃\n\n⭐ 兑换结果：\n黑方形成双叠兵：c5+c6两个影子兵！\nc5干扰b4和d4；c6危害d5和b5\n白方得到玩子结构上的长期优势！",
       "highlights": [
         {
@@ -117,17 +129,20 @@
     },
     {
       "index": 10,
+      "popup_en": "d3 reinforces White's center, keeps the e4-pawn supported, and prepares Be3.",
       "move": "d3",
       "popup": "d3 白方巩固中心\n封闭 e4的封锁，准备Be3"
     },
     {
       "index": 11,
+      "popup_en": "...Nf6 develops the knight to an active square.",
       "move": "Nf6",
       "popup": "Nf6 黑方发展\n马入场优化位置"
     },
     {
       "index": 12,
       "move": "Nf3",
+      "popup_en": "Nf3 develops White's other knight and completes the minor-piece setup, preparing to castle.",
       "popup": "Nf3！白马展开\n\n白方完成小兵阵开局\n准备入城",
       "highlights": [
         {
@@ -141,12 +156,14 @@
     },
     {
       "index": 13,
+      "popup_en": "...O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O 黑方入城\n就位守王"
     },
     {
       "index": 14,
       "move": "O-O",
+      "popup_en": "O-O completes White's setup. The doubled-pawn targets are established, and White can use f4 to support further exchanges and attacking play.",
       "popup": "O-O 白方入城！\n就位完成\n\n白方开局完成：\n• 双叠兵优势已充分展现\n• f4兑升象，白方可准备fxe5等进一步兑换",
       "highlights": [
         {
@@ -161,6 +178,7 @@
     {
       "index": 15,
       "move": "Nd7",
+      "popup_en": "...Nd7 reroutes the knight from f6, clearing the square and preparing ...Nxe5.",
       "popup": "Nd7 黑马重组\n\nNf6转到d7，清空f6路线\n准备Nxe5活跃",
       "highlights": [
         {
@@ -174,12 +192,14 @@
     },
     {
       "index": 16,
+      "popup_en": "Be3 develops the bishop, supports d4, and prepares White's attack.",
       "move": "Be3",
       "popup": "Be3 白象开展\n守护d4格，敎攻就绪"
     },
     {
       "index": 17,
       "move": "e5",
+      "popup_en": "...e5! Black counterattacks in the center and begins an exchange sequence.",
       "popup": "e5！ 黑方反击中心！\n\n黑方推进中心，发起兑换系列\n进攻开始！",
       "highlights": [
         {
@@ -194,6 +214,7 @@
     {
       "index": 18,
       "move": "fxe5",
+      "popup_en": "fxe5! White accepts the central exchange, trading the f-pawn for Black's e-pawn and opening the position.",
       "popup": "fxe5！ 白方接受兑换！\n\nf4尠1兑换e5小兵\n开启互兑局面",
       "highlights": [
         {
@@ -208,6 +229,7 @@
     {
       "index": 19,
       "move": "Nxe5",
+      "popup_en": "...Nxe5! The knight from d7 captures on e5 and occupies a strong central square.",
       "popup": "Nxe5！ 黑马占据强格！\n\nNd7跳入e5，吃白小兵\n黑马进入中心强格！",
       "highlights": [
         {
@@ -221,6 +243,7 @@
     {
       "index": 20,
       "move": "Nxe5",
+      "popup_en": "Nxe5! White's knight from f3 captures the centralized knight. The exchange sequence continues piece for piece.",
       "popup": "Nxe5！ 白马吃回！\n\nNf3弹到e5，将黑马吃掉\n元基因兑换链：小兑小，小兑小",
       "highlights": [
         {
@@ -235,6 +258,7 @@
     {
       "index": 21,
       "move": "Bxe5",
+      "popup_en": "...Bxe5! The bishop from g7 recaptures along the now-clear diagonal through f6. The earlier knight reroute cleared the path for this recapture.",
       "popup": "Bxe5！ 黑象吃回！\n\nBg7沿对角线到e5（g7-f6-e5）\n⭐ 关键：f6已空！（Nf6在第8步走到了Nd7）\n所以Bg7现在可以顺利走到e5！",
       "highlights": [
         {
@@ -250,6 +274,7 @@
     {
       "index": 22,
       "move": "Qf3",
+      "popup_en": "Qf3! White's queen attacks the bishop on e5 and immediately tests Black's central piece.",
       "popup": "Qf3！ 白后进攻！\n\n白后攻击e5的黑象\n进攻到临时反制Be5！",
       "highlights": [
         {
@@ -264,6 +289,7 @@
     {
       "index": 23,
       "move": "f5",
+      "popup_en": "...f5 protects the bishop on e5. White's timely Bxc6 exchange has created doubled-pawn targets, while Black has established a strong bishop on e5. The lesson: exchange at the moment when the target is still available.",
       "popup": "f5 黑方守护e5！\n\n⭐ 局面评估：\n白方：Bxc6兑换形成双叠兵优势\n黑方：Be5占据强格，f5守护\n\n这就是及时兑子的能量：\n在做可以兑的那一刻就兑！",
       "highlights": [
         {

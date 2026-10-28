@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "每步跟着白方走，确认d4和c4推进时是否有子力在保护。\n安全才能扩展。",
+    "popup_en": "Follow White's moves and check which pieces support each pawn advance, especially d4 and c4. Expand only when the pawns are safe.",
     "voice": true
   },
   "outro": {
     "popup": "步步为营，每步推进都有支撑。\n后翼弃兵是最经典的安全扩展体系。",
+    "popup_en": "Expand step by step, with support behind every pawn advance. The Queen's Gambit is a classic example of safe expansion.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "d4",
       "popup": "▶️ <b>d4</b><br>白方开局，占中心",
+      "popup_en": "▶️ <b>d4</b><br>White opens by occupying the center.",
       "highlights": [
         {
           "squares": [
@@ -46,6 +49,7 @@
       "index": 1,
       "move": "d5",
       "popup": "▶️ <b>d5</b><br>黑方对称争中心",
+      "popup_en": "▶️ <b>d5</b><br>Black contests the center symmetrically.",
       "highlights": [
         {
           "squares": [
@@ -62,6 +66,7 @@
       "index": 2,
       "move": "c4",
       "popup": "▶️ <b>c4 — 后翼弃兵！</b><br>白方提供c4弃兵，扩大中心控制<br>如果黑方吃，白方得到快速发展",
+      "popup_en": "▶️ <b>c4 - The Queen's Gambit!</b><br>White offers the c-pawn to increase central influence.<br>If Black captures it, White can gain rapid development.",
       "highlights": [
         {
           "squares": [
@@ -84,6 +89,7 @@
       "index": 3,
       "move": "e6",
       "popup": "▶️ <b>e6</b><br>黑方不吃弃兵，选择巩固中心<br>这是后翼弃兵拒绝变例",
+      "popup_en": "▶️ <b>e6</b><br>Black declines the gambit and reinforces the center.<br>This is the Queen's Gambit Declined.",
       "highlights": [
         {
           "squares": [
@@ -100,6 +106,7 @@
       "index": 4,
       "move": "Nf3",
       "popup": "🔑 <b>Nf3 — 先出棋子！</b><br>白方出马，保护d4并控制e5<br>记住：每步推兵前先确认有子力支撑！",
+      "popup_en": "🔑 <b>Nf3 - Develop before expanding!</b><br>The knight supports d4 and controls e5.<br>Remember: check that a pawn is supported before advancing it.",
       "highlights": [
         {
           "squares": [
@@ -128,6 +135,7 @@
       "index": 5,
       "move": "Nf6",
       "popup": "▶️ <b>Nf6</b><br>黑方也出马，局面平衡发展",
+      "popup_en": "▶️ <b>Nf6</b><br>Black develops a knight and keeps the position balanced.",
       "highlights": [
         {
           "squares": [
@@ -145,6 +153,7 @@
       "index": 6,
       "move": "Nc3",
       "popup": "🔑 <b>Nc3 — 第二个马加入中心控制。",
+      "popup_en": "🔑 <b>Nc3 - The second knight adds to White's central control.</b>",
       "highlights": [
         {
           "squares": [
@@ -174,6 +183,7 @@
       "index": 7,
       "move": "Be7",
       "popup": "▶️ <b>Be7</b><br>黑方象出动，准备易位<br>稳健的防御，不冒进",
+      "popup_en": "▶️ <b>Be7</b><br>Black develops the bishop and prepares to castle, choosing a solid setup.",
       "highlights": [
         {
           "squares": [
@@ -190,6 +200,7 @@
       "index": 8,
       "move": "Bg5",
       "popup": "🔑 <b>Bg5 — 战略牵制！</b><br>白方象钉住黑方Nf6<br>这有什么战略价值？<br>削弱黑方对中心的控制，限制黑方的反击能力。",
+      "popup_en": "🔑 <b>Bg5 - A strategic pin!</b><br>White pins Black's knight on f6.<br>Why is this useful?<br>It reduces Black's central control and limits counterplay.",
       "highlights": [
         {
           "squares": [
@@ -213,6 +224,7 @@
       "index": 9,
       "move": "O-O",
       "popup": "▶️ <b>O-O</b><br>黑方易位，王安全<br>现在黑方准备好发动中心反击了",
+      "popup_en": "▶️ <b>O-O</b><br>Black castles and secures the king, preparing to challenge the center.",
       "highlights": [
         {
           "squares": [
@@ -229,6 +241,7 @@
       "index": 10,
       "move": "e3",
       "popup": "🔑 <b>e3 — 又一个支撑步！</b><br>白方通过e3巩固d4和c4",
+      "popup_en": "🔑 <b>e3 - Another supporting move!</b><br>White reinforces the central pawns on d4 and c4.",
       "highlights": [
         {
           "squares": [
@@ -257,6 +270,7 @@
       "index": 11,
       "move": "Nbd7",
       "popup": "▶️ <b>Nbd7</b><br>黑方出马，准备c5反击<br>黑方在等待时机",
+      "popup_en": "▶️ <b>Nbd7</b><br>Black develops the knight and prepares the ...c5 counterbreak, waiting for the right moment.",
       "highlights": [
         {
           "squares": [
@@ -280,6 +294,7 @@
       "index": 12,
       "move": "Rc1",
       "popup": "🔑 <b>Rc1 — 车保护c4！</b><br>白方把车放到c1，在c列支援c4<br>这是「步步为营」的精髓：提前布好防线，让每步兵都有后援",
+      "popup_en": "🔑 <b>Rc1 - The rook supports c4!</b><br>White places the rook on the c-file behind the c4-pawn.<br>This is the essence of careful expansion: prepare support before advancing.",
       "highlights": [
         {
           "squares": [
@@ -303,6 +318,7 @@
       "index": 13,
       "move": "c6",
       "popup": "▶️ <b>c6</b><br>黑方准备推进c5，先走c6支撑<br>黑方也在「步步为营」地准备反击",
+      "popup_en": "▶️ <b>c6</b><br>Black supports a future ...c5 break and prepares counterplay step by step.",
       "highlights": [
         {
           "squares": [
@@ -325,6 +341,7 @@
       "index": 14,
       "move": "Bd3",
       "popup": "🔑 <b>Bd3 — 准备推e4！</b><br>白方象到d3，目的是支援e4推进<br>现在e4有：Bd3对角线 + Nc3 + Nf3的支撑<br>白方什么时候推e4才是安全的？答：等Re1也就位后！",
+      "popup_en": "🔑 <b>Bd3 - Prepare e4!</b><br>The bishop supports the planned pawn advance. e4 is already supported by Bd3, Nc3, and Nf3.<br>When is e4 safe? After Re1 is in place as well.",
       "highlights": [
         {
           "squares": [
@@ -348,6 +365,7 @@
       "index": 15,
       "move": "dxc4",
       "popup": "▶️ <b>dxc4</b><br>黑方换掉c4，改变局面！<br>为什么黑方这时候选择换？",
+      "popup_en": "▶️ <b>dxc4</b><br>Black captures the c4-pawn and changes the structure.<br>Why choose this moment to exchange?",
       "highlights": [
         {
           "squares": [
@@ -370,6 +388,7 @@
       "index": 16,
       "move": "Bxc4",
       "popup": "▶️ <b>Bxc4</b><br>白方象吃回，迅速恢复态势<br>白方在c4还有一个活跃的象",
+      "popup_en": "▶️ <b>Bxc4</b><br>White recaptures with the bishop and restores the position quickly, placing an active bishop on c4.",
       "highlights": [
         {
           "squares": [
@@ -387,6 +406,7 @@
       "index": 17,
       "move": "Nd5",
       "popup": "✅ <b>Nd5！黑方最后的反击！</b><br>黑方马跳到d5，一个非常强的中心格！<br>• 攻击白方Bg5和c3<br>• 占据了d5的「空缺」<br>这是黑方通过「步步为营」准备的最终反击手段<br>双方都做到了安全扩展，局面很平衡！",
+      "popup_en": "✅ <b>Nd5 - Black's key counterplay!</b><br>The knight occupies a powerful central square and attacks Bg5 and c3.<br>• It fills the outpost on d5.<br>• It is the payoff for Black's careful preparation.<br>Both sides expanded safely, and the position remains balanced.",
       "highlights": [
         {
           "squares": [

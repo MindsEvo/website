@@ -1,13 +1,16 @@
 {
   "game_id": "tac_removalOfTheDefender_L1-001",
   "description": "黑车牺牲引离白车，消除对白后的保护",
+  "explanation_en": "A simple example of removing the defender: deflect the rook that protects the white queen, then capture the queen.",
   "intro": {
     "flash_squares": ["e8", "d1", "d4", "g4"],
     "popup": "💡 <b>消除保护</b>：白车Rd1正在保护Qd4。黑方如何消除这个保护，吃掉白后？",
+    "popup_en": "💡 <b>Remove the defender</b>: White's rook on d1 protects the queen on d4. How can Black remove the defender and win the queen?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Re1+将白车引离d1，Qd4失去唯一保护者，Qxd4+轻松得后！",
+    "popup_en": "✅ <b>Key idea</b>: Re1+ deflects the rook from d1, leaving the queen on d4 without its only defender. Black then wins it with Qxd4+.",
     "voice": true
   },
   "board_always": [
@@ -19,6 +22,7 @@
       "index": 0,
       "move": "Re1+",
       "popup": "车牺牲！Re1+强制白车离开d1，消除对Qd4的保护。",
+      "popup_en": "Black sacrifices the rook with Re1+, forcing White's rook away from d1 and removing the queen's defender.",
       "highlights": [
         {"squares": ["e1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["d1"], "color": "#FF990055", "duration_ms": 0},
@@ -34,6 +38,7 @@
       "index": 1,
       "move": "Rxe1",
       "popup": "白车被迫吃车，d4失去保护者！",
+      "popup_en": "White's rook is forced to capture. The queen on d4 has lost its defender.",
       "highlights": [
         {"squares": ["e1"], "color": "#FFD70088", "duration_ms": 0},
         {"squares": ["d4"], "color": "#FF000055", "duration_ms": 0}
@@ -47,6 +52,7 @@
       "index": 2,
       "move": "Qxd4+",
       "popup": "吃掉无保护的白后！消除保护战术成功。",
+      "popup_en": "Black captures the undefended queen. The removal-of-the-defender tactic succeeds.",
       "highlights": [
         {"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}
       ],

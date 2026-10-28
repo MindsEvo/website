@@ -3,14 +3,17 @@
     "gene_id": "C9_pawn_chains",
     "sequence": 3,
     "concept": "根部原则",
+    "concept_en": "The Base Principle",
     "question_cn": "法国推进变例中白方兵链为e5-d4-c3（c3是实兵）。按Nimzowitsch的根部原则，黑方应优先攻击哪里？",
+    "question_en": "In a French Advance pawn chain of e5-d4-c3, where should Black attack first according to Nimzowitsch's base principle?",
     "options": [
-        {"key": "A", "text_cn": "e5（链头）——最突出的兵，先把它踢开"},
-        {"key": "B", "text_cn": "d4（链中）——攻打中间最容易"},
-        {"key": "C", "text_cn": "c3（链根）——整条链最底部的支撑兵"},
-        {"key": "D", "text_cn": "不攻击兵链，直接在王翼反攻"}
+        {"key": "A", "text_cn": "e5（链头）——最突出的兵，先把它踢开", "text_en": "e5, the chain head; dislodge the most advanced pawn first."},
+        {"key": "B", "text_cn": "d4（链中）——攻打中间最容易", "text_en": "d4, the middle of the chain; it is easiest to attack."},
+        {"key": "C", "text_cn": "c3（链根）——整条链最底部的支撑兵", "text_en": "c3, the base pawn that supports the entire chain."},
+        {"key": "D", "text_cn": "不攻击兵链，直接在王翼反攻", "text_en": "Ignore the pawn chain and counterattack on the kingside."}
     ],
     "correct": "C",
     "explanation_cn": "Nimzowitsch的根部原则：攻击兵链应从「根部」入手，即整条链最底部的支撑兵。在e5-d4-c3中，c3是根部。攻击e5（链头）会让对方满意，因为推进正是白方的意图；攻击d4有一定作用但c3仍支撑着。只有攻击c3（黑方用b5-b4）才能从根本上动摇整条链——根部动摇，上面的兵都失去依托。",
+    "explanation_en": "Nimzowitsch's base principle says to attack a pawn chain at its base, the rearmost supporting pawn. In e5-d4-c3, c3 is the base. Attacking e5 plays into White's plan, while d4 remains supported by c3. Attacking c3, for example with ...b5-b4, undermines the whole chain; once the base falls, the advanced pawns lose their support.",
     "created_at": "2026-06-13"
 }

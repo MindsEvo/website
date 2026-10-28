@@ -9,10 +9,12 @@
       "d5"
     ],
     "popup": "观察白方每步如何让轻子控制格子越来越多！追踪每步后白方对中心四格的控制数量变化——每步棋都应让子力控制更多中心格",
+    "popup_en": "Watch how White's minor pieces control more squares with each move. Track the number of central squares influenced after every move; each move should add to that control.",
     "voice": true
   },
   "outro": {
     "popup": "每步棋都应让子力控制更多中心格。伦敦体系最后的 Ne5 是积累的顶点——当 9 步的控制积累到最高点，中心马 Ne5 就成为整个阵型不可撼动的支柱。",
+    "popup_en": "Each move should add to your control of the center. In the London System, Ne5 is the culmination of that buildup: after nine moves of preparation, the central knight becomes a firm pillar of the position.",
     "voice": true
   },
   "board_always": {
@@ -29,6 +31,7 @@
       "index": 0,
       "move": "Nf3",
       "popup": "⬆️ <b>1.Nf3 — 控制+2格！</b><br>f3 马控制 e5 和 d4。中心控制计数：<b>e5✓ d4✓</b>（2格）",
+      "popup_en": "⬆️ <b>1.Nf3 - Control two central squares!</b><br>The knight on f3 controls e5 and d4. Count: <b>e5 and d4</b> (2 squares).",
       "highlights": [
         {
           "squares": [
@@ -56,6 +59,7 @@
       "index": 1,
       "move": "d5",
       "popup": "⬇️ <b>1...d5 — 黑方占领 d5！</b><br>黑方直接用兵占中心。",
+      "popup_en": "⬇️ <b>1...d5 - Black occupies d5!</b><br>Black claims a central square with a pawn.",
       "highlights": [
         {
           "squares": [
@@ -71,6 +75,7 @@
       "index": 2,
       "move": "d4",
       "popup": "⬆️ <b>2.d4 — 兵占中心，控制+稳固！</b><br>d4 兵占领中心格，e5 格受到 d4+Nf3 双重控制。计数：<b>d4(占)✓ e5(双控)✓</b>",
+      "popup_en": "⬆️ <b>2.d4 - Occupy and reinforce the center!</b><br>The d-pawn occupies d4, while e5 is controlled by both d4 and Nf3. Count: <b>d4 occupied; e5 doubly controlled.</b>",
       "highlights": [
         {
           "squares": [
@@ -98,6 +103,7 @@
       "index": 3,
       "move": "Nf6",
       "popup": "⬇️ <b>2...Nf6 — 黑马攻击 d5！</b><br>黑马出动，加强对 d5 和 e4 的控制。",
+      "popup_en": "⬇️ <b>2...Nf6 - Black develops and attacks d5!</b><br>The knight adds control over d5 and e4.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -105,6 +111,7 @@
       "index": 4,
       "move": "Bf4",
       "popup": "⬆️ <b>3.Bf4 — 象加入！e5 受三子控制！</b><br>f4 象控制 e5（f4→e5 斜线！）。现在 e5 格受到 Nf3+d4+Bf4 三子控制！<br>计数：<b>d4(占)✓ e5(三控)✓</b>",
+      "popup_en": "⬆️ <b>3.Bf4 - The bishop joins the pressure!</b><br>The bishop on f4 controls e5 along the diagonal. Now Nf3, d4, and Bf4 all influence e5.<br>Count: <b>d4 occupied; e5 controlled by three units.</b>",
       "highlights": [
         {
           "squares": [
@@ -136,6 +143,7 @@
       "index": 5,
       "move": "e6",
       "popup": "⬇️ <b>3...e6 — 黑方稳固阵型。</b><br>e6 支撑 d5，为象开路。",
+      "popup_en": "⬇️ <b>3...e6 - Black solidifies the position.</b><br>The pawn supports d5 and opens a diagonal for the bishop.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -143,6 +151,7 @@
       "index": 6,
       "move": "e3",
       "popup": "⬆️ <b>4.e3 — 开放象线，支撑 d4。</b><br>e3 打开 f1 象的路，同时支撑 d4。",
+      "popup_en": "⬆️ <b>4.e3 - Open the bishop's diagonal and support d4.</b><br>e3 clears the way for the bishop on f1 and reinforces d4.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -150,6 +159,7 @@
       "index": 7,
       "move": "Bd6",
       "popup": "⬇️ <b>4...Bd6 — 黑象挑战白方 Bf4！</b><br>黑象 d6 瞄准 e5，与白方 Bf4 争夺 e5 格的控制。",
+      "popup_en": "⬇️ <b>4...Bd6 - Black challenges the bishop on f4!</b><br>The bishop on d6 also eyes e5 and contests White's control of that square.",
       "highlights": [
         {
           "squares": [
@@ -171,6 +181,7 @@
       "index": 8,
       "move": "Bg3",
       "popup": "⬆️ <b>5.Bg3 — 象退守，保持 e5 控制！</b><br>Bf4 主动与黑象 Bd6 交换后退到 g3，避免双象兑换，保持对 e5 的斜线控制。",
+      "popup_en": "⬆️ <b>5.Bg3 - Retreat while keeping control of e5!</b><br>The bishop backs away from the challenge instead of exchanging, preserving its diagonal influence on e5.",
       "highlights": [
         {
           "squares": [
@@ -192,6 +203,7 @@
       "index": 9,
       "move": "O-O",
       "popup": "⬇️ <b>5...O-O — 黑方易位。</b><br>黑方易位，完成基础阵型。",
+      "popup_en": "⬇️ <b>5...O-O - Black castles.</b><br>Black completes the basic setup and secures the king.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -199,6 +211,7 @@
       "index": 10,
       "move": "Nbd2",
       "popup": "⬆️ <b>6.Nbd2 — 第二马出动！</b><br>d2 马准备跳向 e4 或 f3，进一步加强中心控制。",
+      "popup_en": "⬆️ <b>6.Nbd2 - Develop the second knight!</b><br>The knight may head to e4 or f3 to add further central control.",
       "highlights": [
         {
           "squares": [
@@ -226,6 +239,7 @@
       "index": 11,
       "move": "c5",
       "popup": "⬇️ <b>6...c5 — 黑方挑战 d4！</b><br>黑方推 c5，测试 d4 的稳固性。",
+      "popup_en": "⬇️ <b>6...c5 - Black challenges d4!</b><br>The c-pawn tests the stability of White's central pawn.",
       "highlights": [
         {
           "squares": [
@@ -247,6 +261,7 @@
       "index": 12,
       "move": "c3",
       "popup": "⬆️ <b>7.c3 — 保护 d4！</b><br>c3 支撑 d4 兵，不让黑方的 c5 轻易吃掉 d4。中心兵得到坚实保护。",
+      "popup_en": "⬆️ <b>7.c3 - Protect d4!</b><br>The c-pawn supports d4 and makes it harder for Black to capture it with ...c5. White's center is reinforced.",
       "highlights": [
         {
           "squares": [
@@ -268,6 +283,7 @@
       "index": 13,
       "move": "Nc6",
       "popup": "⬇️ <b>7...Nc6 — 黑马加入中心争夺。</b><br>黑方第二马出动，加压中心。",
+      "popup_en": "⬇️ <b>7...Nc6 - Black's second knight joins the fight.</b><br>Black develops another piece and increases pressure on the center.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -275,6 +291,7 @@
       "index": 14,
       "move": "Bd3",
       "popup": "⬆️ <b>8.Bd3 — 象压制王翼，准备 Ne5！</b><br>白象在 d3，斜线瞄准 h7，同时为 Ne5 的落地扫清道路。",
+      "popup_en": "⬆️ <b>8.Bd3 - Aim toward the kingside and prepare Ne5!</b><br>The bishop targets h7 and helps clear the way for the knight's central outpost.",
       "highlights": [
         {
           "squares": [
@@ -298,6 +315,7 @@
       "index": 15,
       "move": "Qe7",
       "popup": "⬇️ <b>8...Qe7 — 黑后支援中心。</b><br>黑后加入控制，支撑 e5 格。",
+      "popup_en": "⬇️ <b>8...Qe7 - Black's queen supports the center.</b><br>The queen adds control and reinforces e5.",
       "highlights": [],
       "concept_arrows": []
     },
@@ -305,6 +323,7 @@
       "index": 16,
       "move": "Ne5",
       "popup": "⬆️ <b>9.Ne5 — 中心马！8步积累的顶点！</b><br>马占据 e5，成为整个阵型的核心支柱。控制 c4、c6、d3、d7、f3、f7、g4、g6 共 8 个格！<br><span style='color:#FFD700;'>★ 总结：每步白方都在积累控制——Nf3→d4→Bf4→Bg3→Nbd2→Bd3→Ne5，这就是子力控制的积累之道！</span>",
+      "popup_en": "⬆️ <b>9.Ne5 - The central knight crowns the buildup!</b><br>The knight occupies e5, the key support of White's formation, and controls eight squares: c4, c6, d3, d7, f3, f7, g4, and g6.<br><span style='color:#FFD700;'>★ Summary: White accumulated control move by move: Nf3, d4, Bf4, Bg3, Nbd2, Bd3, and finally Ne5.</span>",
       "highlights": [
         {
           "squares": [

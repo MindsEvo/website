@@ -1,13 +1,16 @@
 {
   "game_id": "tac_trappedPiece_L1-004",
   "description": "黑车困在角落，白象穿越捉死",
+  "explanation_en": "White opens the bishop's diagonal and attacks the trapped rook in the corner. The queen has no good way to defend it, so Black must give up the exchange.",
   "intro": {
     "flash_squares": ["g8", "c4", "g3"],
     "popup": "💡 <b>困子</b>：黑车在g8几乎动弹不了——被Bf8和角落限制。白方如何利用这个困子？",
+    "popup_en": "💡 <b>Trapped piece</b>: Black's rook on g8 has almost no mobility, restricted by the bishop on f8 and the corner. How can White exploit it?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Bxd5开通对角线→Bxg8直接捉死困子！黑车困在角落被迫换象，白方赢得交换。",
+    "popup_en": "✅ <b>Key idea</b>: Bxd5 opens the diagonal, allowing Bxg8 to capture the trapped rook. Black must recapture with the queen, and White wins the exchange.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Bxd5",
       "popup": "白象Bxd5！象从c4吃掉d5兵，打开了通往g8的对角线（d5-e6-f7-g8）。",
+      "popup_en": "White's bishop captures the pawn on d5, opening the diagonal d5-e6-f7-g8.",
       "highlights": [
         {"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Bd6",
       "popup": "黑象f8跑到d6，试图防守。",
+      "popup_en": "Black's bishop moves from f8 to d6 in an attempt to defend.",
       "highlights": [
         {"squares": ["d6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Bxg8",
       "popup": "白象Bxg8！象从d5沿对角线直取g8困子！黑车几乎没有退路（g7有黑后，h8是死角），被白象吞掉！",
+      "popup_en": "White's bishop captures the trapped rook on g8 along the diagonal. The rook has almost no escape: g7 is occupied by Black's queen and h8 is a corner square.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Qxg8",
       "popup": "黑后Qxg8吃回，以后换象，白方赢得交换（象换车）大优。",
+      "popup_en": "Black's queen recaptures on g8. White has exchanged a bishop for a rook and won the exchange.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],

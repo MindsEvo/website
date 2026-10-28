@@ -2,6 +2,7 @@
   "game_id": "C10_WeakSquares_Practice_008",
   "description": "后翼弃兵 D30 — 兑换后的e5弱格",
   "intro": {
+    "popup_en": "Weak Squares, Practice 8: The Weak e5-Square After an Exchange\nAfter cxd5, Black loses the e6-pawn's protection of e5. Rc1 and Re1 give White control of the c- and e-files. A weak square is not only a knight outpost; it can also become an invasion route for the rooks.",
     "flash_squares": [
       "e5",
       "c5",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: cxd5 removes the pawn that guarded e5; Rc1 controls the c-file and Re1 the e-file. After dxc5, the d5-square is exposed as well. After an exchange, immediately check which squares have lost pawn protection.",
     "popup": "車控弱格练习小结\n✅ cxd5后e5格失去e6兵守护\n✅ Rc1控c列+Re1控e列\n✅ dxc5简化后d5也暴露\n\n练习要点：\n兑换后立刻看哪些格没有兵守了",
     "voice": true
   },
@@ -25,66 +27,79 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "d4 controls the center.",
       "move": "d4",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
+      "popup_en": "...d5 mirrors White's central advance in the Queen's Gambit Declined.",
       "move": "d5",
       "popup": "d5对称\n后翼弃兵防御"
     },
     {
       "index": 2,
+      "popup_en": "c4 challenges Black's central pawn.",
       "move": "c4",
       "popup": "c4翼侧"
     },
     {
       "index": 3,
+      "popup_en": "...e6 supports d5.",
       "move": "e6",
       "popup": "e6稳固d5"
     },
     {
       "index": 4,
+      "popup_en": "Nf3 develops a knight.",
       "move": "Nf3",
       "popup": "Nf3发展马"
     },
     {
       "index": 5,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6发展马"
     },
     {
       "index": 6,
+      "popup_en": "Bg5! The Queen's Gambit bishop pins Nf6.",
       "move": "Bg5",
       "popup": "Bg5！后翼弃兵象\n牵制Nf6"
     },
     {
       "index": 7,
+      "popup_en": "...Be7 develops solidly.",
       "move": "Be7",
       "popup": "Be7稳健"
     },
     {
       "index": 8,
+      "popup_en": "e3 reinforces the center.",
       "move": "e3",
       "popup": "e3加强中心"
     },
     {
       "index": 9,
+      "popup_en": "O-O secures White's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 10,
+      "popup_en": "Nc3 develops another knight.",
       "move": "Nc3",
       "popup": "Nc3发展马"
     },
     {
       "index": 11,
+      "popup_en": "...b6 prepares to develop the bishop to b7.",
       "move": "b6",
       "popup": "b6准备Bb7"
     },
     {
       "index": 12,
+      "popup_en": "cxd5! A key exchange: the e5-square loses the protection of Black's e6-pawn.",
       "move": "cxd5",
       "popup": "cxd5！关键兑换\n此后e5失去e6兵守护",
       "highlights": [
@@ -100,6 +115,7 @@
     },
     {
       "index": 13,
+      "popup_en": "...exd5 recaptures. With the e6-pawn gone, e5 is no longer protected by a black pawn.",
       "move": "exd5",
       "popup": "exd5接受\ne6兵消失！\ne5格现在无黑兵守护",
       "highlights": [
@@ -113,26 +129,31 @@
     },
     {
       "index": 14,
+      "popup_en": "Bd3 develops the bishop.",
       "move": "Bd3",
       "popup": "Bd3发展象"
     },
     {
       "index": 15,
+      "popup_en": "...Bb7 develops the bishop on the long diagonal.",
       "move": "Bb7",
       "popup": "Bb7建立长斜线"
     },
     {
       "index": 16,
+      "popup_en": "O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 17,
+      "popup_en": "...Nbd7 prepares the ...c5 break.",
       "move": "Nbd7",
       "popup": "Nbd7准备c5冲击"
     },
     {
       "index": 18,
+      "popup_en": "Rc1! White places a rook on the semi-open c-file.",
       "move": "Rc1",
       "popup": "Rc1！车到c列\n控制半开c列",
       "highlights": [
@@ -148,11 +169,13 @@
     },
     {
       "index": 19,
+      "popup_en": "...Re8 reinforces the e-file and prevents Ne5.",
       "move": "Re8",
       "popup": "Re8守护e列\n防止Ne5"
     },
     {
       "index": 20,
+      "popup_en": "Re1! White's second rook occupies the e-file. Rc1 and Re1 now control two files together, targeting weak squares and invasion routes.",
       "move": "Re1",
       "popup": "Re1！车到e列\n瞄准e5弱格\n双车Rc1+Re1控制双列！",
       "highlights": [
@@ -168,6 +191,7 @@
     },
     {
       "index": 21,
+      "popup_en": "...c5 challenges the c-file.",
       "move": "c5",
       "popup": "c5冲击！\n黑方争夺c列",
       "highlights": [
@@ -182,6 +206,7 @@
     },
     {
       "index": 22,
+      "popup_en": "dxc5 opens the c-file and also exposes d5. White's rooks can now pressure weak squares along both the c- and e-files.",
       "move": "dxc5",
       "popup": "dxc5打开c列\nd5也暴露了！\n双车将沿c+e列压制黑方两个弱格",
       "highlights": [

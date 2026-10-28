@@ -2,6 +2,7 @@
   "game_id": "D15_CounterAttack_Practice_007",
   "description": "卡罗-坎恩推进变例 B12 — c5反制练习：选择正确的反击方向",
   "intro": {
+    "popup_en": "Counterattack the Center, Practice 7\nIn the Caro-Kann Advance, White closes the center with e5. Black has several counterplay options. Should Black challenge with ...c5 or ...e5, and why?",
     "flash_squares": [
       "e4",
       "e5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Key plans in the Advance Variation: ...c5 breaks against d4 and opens the center; ...Bb4 or ...Ba5 creates complications; and a bishop on d4 plus a knight on c5 can occupy strong central squares. Choose a counterattack based on piece coordination and central control.",
     "popup": "推进变例总结\n\n关键策略要点：\n① c5爆破d4：打开中心\n② Bb4/Ba5象机动：增加复杂性\n③ Bd4象占中心 + Nc5马关键格\n\n判断依据：\n棋子协调性 + 中心控制",
     "voice": true
   },
@@ -23,136 +25,163 @@
     {
       "index": 0,
       "move": "e4",
+      "popup_en": "e4 occupies the center.",
       "popup": "e4"
     },
     {
       "index": 1,
       "move": "c6",
+      "popup_en": "...c6 begins the Caro-Kann Defense.",
       "popup": "c6 卡罗-坎恩"
     },
     {
       "index": 2,
       "move": "d4",
+      "popup_en": "d4 reinforces White's center.",
       "popup": "d4"
     },
     {
       "index": 3,
       "move": "d5",
+      "popup_en": "...d5 challenges the center.",
       "popup": "d5"
     },
     {
       "index": 4,
       "move": "e5",
+      "popup_en": "e5! The Advance Variation closes the center.",
       "popup": "e5！推进变例\n关链中心"
     },
     {
       "index": 5,
       "move": "Bf5",
+      "popup_en": "...Bf5 develops the bishop outside the pawn chain.",
       "popup": "Bf5 象出动！"
     },
     {
       "index": 6,
       "move": "Nf3",
+      "popup_en": "Nf3 develops a knight.",
       "popup": "Nf3"
     },
     {
       "index": 7,
       "move": "e6",
+      "popup_en": "...e6 reinforces Black's center.",
       "popup": "e6 稳固"
     },
     {
       "index": 8,
       "move": "Be2",
+      "popup_en": "Be2 develops the bishop.",
       "popup": "Be2"
     },
     {
       "index": 9,
       "move": "c5",
+      "popup_en": "...c5! Black counterattacks against the base of White's chain on d4, seeking to open the center.",
       "popup": "c5！c5反击！\n爆破d4"
     },
     {
       "index": 10,
       "move": "Be3",
+      "popup_en": "Be3 develops the bishop and supports the center.",
       "popup": "Be3"
     },
     {
       "index": 11,
       "move": "cxd4",
+      "popup_en": "...cxd4 exchanges pawns in the center.",
       "popup": "cxd4 兑换"
     },
     {
       "index": 12,
       "move": "Nxd4",
+      "popup_en": "Nxd4 recaptures and centralizes the knight.",
       "popup": "Nxd4"
     },
     {
       "index": 13,
       "move": "Nc6",
+      "popup_en": "...Nc6 develops a knight and increases pressure on the center.",
       "popup": "Nc6"
     },
     {
       "index": 14,
       "move": "Nxc6",
+      "popup_en": "Nxc6 simplifies by exchanging the knight.",
       "popup": "Nxc6 简化"
     },
     {
       "index": 15,
       "move": "bxc6",
+      "popup_en": "...bxc6 recaptures and leaves Black with a pawn on c6.",
       "popup": "bxc6"
     },
     {
       "index": 16,
       "move": "O-O",
+      "popup_en": "O-O secures White's king.",
       "popup": "O-O"
     },
     {
       "index": 17,
       "move": "Bb4",
+      "popup_en": "...Bb4! The bishop becomes active and adds complications.",
       "popup": "Bb4！象出击\n增加复杂性"
     },
     {
       "index": 18,
       "move": "Nd2",
+      "popup_en": "Nd2 maneuvers the knight, preparing to support b3 or c4.",
       "popup": "Nd2 马机动\n准备支援b3或c4"
     },
     {
       "index": 19,
       "move": "Ba5",
+      "popup_en": "...Ba5 retreats while maintaining pressure.",
       "popup": "Ba5 象撤退\n保持压力"
     },
     {
       "index": 20,
       "move": "Nb3",
+      "popup_en": "Nb3 attacks the bishop on a5.",
       "popup": "Nb3 进攻a5"
     },
     {
       "index": 21,
       "move": "Bc7",
+      "popup_en": "...Bc7 returns to defend important squares.",
       "popup": "Bc7 象回防\n守住要点"
     },
     {
       "index": 22,
       "move": "Bd4",
+      "popup_en": "Bd4! The bishop occupies a strong central square.",
       "popup": "Bd4！象占中心格"
     },
     {
       "index": 23,
       "move": "a5",
+      "popup_en": "...a5 prevents Nb5 and gains queenside space.",
       "popup": "a5 阻止Nb5\n翼兵扩展"
     },
     {
       "index": 24,
       "move": "Nc5",
+      "popup_en": "Nc5! The knight occupies a key square and threatens b7 and d7.",
       "popup": "Nc5！白马跳关键格\n威胁b7/d7"
     },
     {
       "index": 25,
       "move": "Ne7",
+      "popup_en": "...Ne7 develops and responds to the knight's threats.",
       "popup": "Ne7 马发展\n应对Nc5威胁"
     },
     {
       "index": 26,
       "move": "c3",
+      "popup_en": "c3! White reinforces the center and restricts Black's d5 and c6 squares.",
       "popup": "c3！巩固中心\n限制黑方d5/c6"
     }
   ]

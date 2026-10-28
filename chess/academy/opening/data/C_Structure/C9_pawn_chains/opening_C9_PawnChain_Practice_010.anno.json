@@ -2,6 +2,7 @@
   "game_id": "C9_PawnChain_Practice_010",
   "description": "A25 — 英国开局封闭西西里，非对称双兵链综合练习",
   "intro": {
+    "popup_en": "Pawn-Chain Direction, Practice 10\nA complete review of asymmetric chains: White's c4-d3 chain points toward Black's queenside, while Black's e5-d6-f5 chain points toward White's kingside. Their directions cross, creating a complex structure.",
     "flash_squares": [
       "c4",
       "d3",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: b3 prepares queenside development, Nd5 occupies a central key square, f3 drives the bishop away, and e4-d4 expands the center. Nf4 completes White's strong positional setup. Pawn-chain study complete.",
     "popup": "总结：b3后翼布局 → Nd5占中心要点 → f3驱象+e4推进\nd4扩展中心 → Nf4！白方位置优势完美体现！\n10课兵链方向学习完成！",
     "voice": true
   },
@@ -26,11 +28,13 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "c4 begins the English Opening.",
       "move": "c4",
       "popup": "c4英国开局"
     },
     {
       "index": 1,
+      "popup_en": "...e5! Black occupies the center with the e-pawn.",
       "move": "e5",
       "popup": "e5！黑方e5占中心"
     },
@@ -60,6 +64,7 @@
     },
     {
       "index": 8,
+      "popup_en": "e3 forms White's c4-d3-e3 pawn chain, directed toward Black's center in the English Opening.",
       "move": "e3",
       "popup": "e3！白方兵链c4-d3-e3形成\n指向黑方中心——英国开局兵链！",
       "highlights": [
@@ -103,6 +108,7 @@
     },
     {
       "index": 16,
+      "popup_en": "b3 expands on the queenside and prepares Ba3, supporting the direction of White's pawn chain.",
       "move": "b3",
       "popup": "b3！白方后翼扩展，准备Ba3开发，强化兵链方向",
       "highlights": [
@@ -118,11 +124,13 @@
     },
     {
       "index": 17,
+      "popup_en": "...Qc8 retreats the queen to defend the queenside and prepare ...Bg4 to exchange a knight.",
       "move": "Qc8",
       "popup": "Qc8！黑后撤至c8，防守后翼并准备Bg4换马"
     },
     {
       "index": 18,
+      "popup_en": "Nd5! White's knight occupies a key central square in the direction of the pawn-chain plan.",
       "move": "Nd5",
       "popup": "Nd5！白马抢占d5中心要点！\n兵链方向上的战略要格",
       "highlights": [
@@ -140,11 +148,13 @@
     },
     {
       "index": 19,
+      "popup_en": "...Bg4 pins White's knight on e2 and adds pressure to the center.",
       "move": "Bg4",
       "popup": "Bg4！黑方象出钉住白马Nge2，施压中心"
     },
     {
       "index": 20,
+      "popup_en": "Ba3! The bishop becomes active on a3, pressuring e7 along the diagonal and supporting Nd5.",
       "move": "Ba3",
       "popup": "Ba3！白方象活跃a3！\n对角线施压e7，协助Nd5",
       "highlights": [
@@ -159,11 +169,13 @@
     },
     {
       "index": 21,
+      "popup_en": "...Nxd5 captures White's knight and challenges the outpost.",
       "move": "Nxd5",
       "popup": "Nxd5！黑马强夺d5，打破白马据点"
     },
     {
       "index": 22,
+      "popup_en": "cxd5! White recaptures and advances the pawn chain. The c4-d5 pawns create a powerful passed pawn.",
       "move": "cxd5",
       "popup": "cxd5！白方兵链推进！\nc4-d5形成強力过路兵",
       "highlights": [
@@ -178,21 +190,25 @@
     },
     {
       "index": 23,
+      "popup_en": "...Ne7 retreats the knight, avoiding the pressure on c6.",
       "move": "Ne7",
       "popup": "Ne7！黑马撤守，避开c6格被压"
     },
     {
       "index": 24,
+      "popup_en": "Rc1 places the rook on the c-file, coordinating with Ba3 to control lines and diagonals.",
       "move": "Rc1",
       "popup": "Rc1！白车占据c线，与Ba3形成纵横控制"
     },
     {
       "index": 25,
+      "popup_en": "...Qd7 watches the d5-pawn and prepares Black's response.",
       "move": "Qd7",
       "popup": "Qd7！黑后转移，监视d5兵和白方计划"
     },
     {
       "index": 26,
+      "popup_en": "f3! White drives away the bishop on g4 and clears the way for e4, completing the preparation for central expansion.",
       "move": "f3",
       "popup": "f3！驱逐Bg4！\n为e4推进清路，中心扩张准备完成",
       "highlights": [
@@ -207,21 +223,25 @@
     },
     {
       "index": 27,
+      "popup_en": "...Bh3 exchanges the bishop's route and puts pressure on White's bishop.",
       "move": "Bh3",
       "popup": "Bh3！黑方象换到h3，对白方象施压"
     },
     {
       "index": 28,
+      "popup_en": "Bxh3! White exchanges bishops and removes the diagonal pressure.",
       "move": "Bxh3",
       "popup": "Bxh3！白方换象，消除对角线威胁"
     },
     {
       "index": 29,
+      "popup_en": "...Qxh3 recaptures, leaving Black's queen active.",
       "move": "Qxh3",
       "popup": "Qxh3！黑后夺回，后处于活跃位置"
     },
     {
       "index": 30,
+      "popup_en": "e4!! White advances in the center, extending the pawn chain from c4-d3 to e4 and reaching a high level of central control.",
       "move": "e4",
       "popup": "e4！！白方e4中心推进！\n兵链扩展到c4-d3-e4，中心控制达到顶峰",
       "highlights": [
@@ -237,11 +257,13 @@
     },
     {
       "index": 31,
+      "popup_en": "...Qd7 retreats passively as White takes the initiative.",
       "move": "Qd7",
       "popup": "Qd7！黑后被动撤回，白方主导局面"
     },
     {
       "index": 32,
+      "popup_en": "d4! White expands the center further. The central battle is now fully engaged.",
       "move": "d4",
       "popup": "d4！白方再推d4！\n中心扩张到最大，双方决战开始",
       "highlights": [
@@ -257,11 +279,13 @@
     },
     {
       "index": 33,
+      "popup_en": "...exd4 Black has to capture, opening the center.",
       "move": "exd4",
       "popup": "exd4！黑方不得不吃兵，中心打开"
     },
     {
       "index": 34,
+      "popup_en": "Nxd4! White's knight occupies d4 and controls the position.",
       "move": "Nxd4",
       "popup": "Nxd4！白马占据d4中心，控制全局",
       "highlights": [
@@ -279,31 +303,37 @@
     },
     {
       "index": 35,
+      "popup_en": "...c6 counterattacks and challenges White's passed pawn on d5.",
       "move": "c6",
       "popup": "c6！黑方反击，挑战白方d5过路兵"
     },
     {
       "index": 36,
+      "popup_en": "dxc6 captures Black's pawn on c6.",
       "move": "dxc6",
       "popup": "dxc6！白方吃掉c6兵"
     },
     {
       "index": 37,
+      "popup_en": "...bxc6 recaptures, leaving Black with an isolated pawn on c6.",
       "move": "bxc6",
       "popup": "bxc6！黑方兵夺回，但黑阵出现c6孤兵"
     },
     {
       "index": 38,
+      "popup_en": "Ne2 begins a strategic reroute, preparing to place the knight on the key f4-square.",
       "move": "Ne2",
       "popup": "Ne2！白马战略调整，准备Nf4跳入关键格"
     },
     {
       "index": 39,
+      "popup_en": "...Rad8 places Black's rook on the d-file and counterpressures d4.",
       "move": "Rad8",
       "popup": "Rad8！黑方车占d线，反压d4方向"
     },
     {
       "index": 40,
+      "popup_en": "Nf4! The knight reaches a key outpost, controlling e6, g6, d5, and h5. White's positional advantage is clear, completing the pawn-chain lesson.",
       "move": "Nf4",
       "popup": "Nf4！白马跳入f4！\n控制e6/g6/d5/h5，白方位置优势不可撼动！\n10课兵链方向学习完美收官！",
       "highlights": [

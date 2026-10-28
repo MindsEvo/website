@@ -1,6 +1,7 @@
 {
   "game_id": "tac_deflection_L1-002",
   "description": "引离黑后——解法1：Qd2引后离b4，车杀e7",
+  "explanation_en": "Qd2 attacks the bishop and induces Black's queen to leave b4. White then exchanges queens with check, removing the defender of e7 and enabling Re7#.",
   "intro": {
     "flash_squares": [
       "f4",
@@ -8,10 +9,12 @@
       "e7"
     ],
     "popup": "💡 白方如何引离黑后，为Re7绝杀创造条件？",
+    "popup_en": "💡 How can White deflect Black's queen and prepare Re7#?",
     "voice": true
   },
   "outro": {
     "popup": "✅ 要点：Qd2！引诱黑后离开b4（保护d5方向），再Qxd5+强迫后回吃，e7彻底暴露，Re7绝杀！",
+    "popup_en": "✅ Key idea: Qd2! draws the queen away from b4. Qxd5+ then forces a queen exchange, leaving e7 undefended for Re7#.",
     "voice": true
   },
   "board_always": null,
@@ -20,6 +23,7 @@
       "index": 0,
       "move": "Qd2!",
       "popup": "白后Qd2！进攻黑象d5，黑后被迫应对。同时威胁Qxb4。",
+      "popup_en": "White plays Qd2!, attacking the bishop on d5 and threatening Qxb4. Black's queen must respond.",
       "highlights": [
         {
           "squares": [
@@ -61,6 +65,7 @@
       "index": 1,
       "move": "Qd6",
       "popup": "黑后被迫离开b4，引离成功！e7方向的防守削弱了。",
+      "popup_en": "Black's queen is forced away from b4. The deflection succeeds, weakening the defense of e7.",
       "highlights": [
         {
           "squares": [
@@ -90,6 +95,7 @@
       "index": 2,
       "move": "Qxd5+!",
       "popup": "白后Qxd5+！吃掉黑象，将军！黑后必须吃回。",
+      "popup_en": "White captures the bishop with Qxd5+, giving check and forcing Black's queen to recapture.",
       "highlights": [
         {
           "squares": [
@@ -112,6 +118,7 @@
       "index": 3,
       "move": "Qxd5",
       "popup": "黑后被迫吃回——e7已无人保护！",
+      "popup_en": "Black's queen is forced to recapture, leaving e7 undefended.",
       "highlights": [
         {
           "squares": [
@@ -141,6 +148,7 @@
       "index": 4,
       "move": "Re7#",
       "popup": "白车Re7# 绝杀！黑王在f7被封锁，绝杀！",
+      "popup_en": "Re7# is checkmate! The black king on f7 has no escape.",
       "highlights": [
         {
           "squares": [

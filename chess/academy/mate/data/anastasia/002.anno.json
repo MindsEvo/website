@@ -1,13 +1,16 @@
 {
   "game_id": "mate_anastasia_L1-002",
   "description": "安娜斯塔西亚杀：待补充",
+  "explanation_en": "The source description is still a placeholder; no further commentary is available for this example.",
   "intro": {
     "flash_squares": ["h6", "h8"],
     "popup": "💡 <b>安娜斯塔西亚杀</b>：车和马配合，将王困在边线将死。",
+    "popup_en": "💡 <b>Anastasia's mate</b>: The rook and knight work together to trap and checkmate the king against the edge of the board.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：安娜斯塔西亚杀的核心是马封住王的内侧逃格，车沿边线将死。",
+    "popup_en": "✅ <b>Key idea</b>: In Anastasia's mate, the knight covers the king's inner escape squares while the rook delivers mate along the edge.",
     "voice": true
   },
   "board_always": null,

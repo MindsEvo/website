@@ -7,25 +7,31 @@
   "fen": "8/8/8/8/8/8/8/8 w - - 0 1",
   "concept": "逼着的常见阶段",
   "question_cn": "逼着最常出现在对局的哪个阶段？",
+  "question_en": "At which stage of a game does zugzwang occur most often?",
   "options": [
     {
       "key": "A",
-      "text_cn": "开局阶段，双方棋子刚刚展开"
+      "text_cn": "开局阶段，双方棋子刚刚展开",
+      "text_en": "The opening, when both sides are developing their pieces"
     },
     {
       "key": "B",
-      "text_cn": "中局阶段，攻杀最激烈时"
+      "text_cn": "中局阶段，攻杀最激烈时",
+      "text_en": "The middlegame, when attacks are at their fiercest"
     },
     {
       "key": "C",
-      "text_cn": "残局阶段，棋子数量少、每步走法影响极大"
+      "text_cn": "残局阶段，棋子数量少、每步走法影响极大",
+      "text_en": "The endgame, when few pieces remain and every move has a major impact"
     },
     {
       "key": "D",
-      "text_cn": "出现在任意阶段的概率完全相同"
+      "text_cn": "出现在任意阶段的概率完全相同",
+      "text_en": "It is equally likely to occur at every stage"
     }
   ],
   "correct": "C",
   "explanation_cn": "逼着绝大多数发生在残局。棋子减少后，每一个格子都至关重要，王的位置也变得直接参与攻防。正是这种空间精确到格的特点，才使逼着成为决定胜负的关键手段。",
+  "explanation_en": "Zugzwang occurs most often in the endgame. With fewer pieces, each square matters, and the king takes an active part in both attack and defense. This precise use of space makes zugzwang a decisive endgame weapon.",
   "created_at": "2026-05-29"
 }

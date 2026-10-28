@@ -3,14 +3,17 @@
     "gene_id": "D13_gambit_sacrifice",
     "sequence": 5,
     "concept": "黑方也能弃兵",
+    "concept_en": "Black Can Gambit Too",
     "question_cn": "布达佩斯弃兵中黑方1.d4 Nf6 2.c4 e5主动送e5兵。弃兵不只是白方的专利，黑方弃兵的目的是什么？",
+    "question_en": "In the Budapest Gambit, Black offers the e5-pawn after 1.d4 Nf6 2.c4 e5. What is Black's aim?",
     "options": [
-        {"key": "A", "text_cn": "黑方只是下错了，e5是失误"},
-        {"key": "B", "text_cn": "黑方主动弃兵换取反中心反击机会——用兵的代价夺取主动权和动态补偿"},
-        {"key": "C", "text_cn": "黑方弃兵只是为了打乱白方的开局套路"},
-        {"key": "D", "text_cn": "黑方弃兵是为了在残局多一个出动的棋子"}
+        {"key": "A", "text_cn": "黑方只是下错了，e5是失误", "text_en": "Black blundered; e5 is simply a mistake."},
+        {"key": "B", "text_cn": "黑方主动弃兵换取反中心反击机会——用兵的代价夺取主动权和动态补偿", "text_en": "Black offers a pawn to challenge White's center and gain the initiative and dynamic compensation."},
+        {"key": "C", "text_cn": "黑方弃兵只是为了打乱白方的开局套路", "text_en": "Black gambits only to disrupt White's opening preparation."},
+        {"key": "D", "text_cn": "黑方弃兵是为了在残局多一个出动的棋子", "text_en": "Black gambits to have one more active piece in the endgame."}
     ],
     "correct": "B",
     "explanation_cn": "弃兵不分颜色——黑方同样可以主动弃兵争取主动。布达佩斯弃兵中黑方2…e5送兵，目的是：①反中心反击（用e5打击白方c4-d4体系）；②快速出动棋子（Ng4、Bc5等）获得发展领先；③制造位置补偿（占据c5/e5要点，象沿对角线活跃）。弃兵的核心逻辑与白方相同：用物质换速度和主动权。只要三要素满足，黑方弃兵完全可以成立。",
+    "explanation_en": "Either side can gambit for the initiative. In the Budapest Gambit, ...e5 challenges White's c4-d4 center, helps Black develop quickly with moves such as ...Ng4 and ...Bc5, and seeks positional compensation through active squares and diagonals. The logic is the same for either color: trade material for time and the initiative, provided the position offers enough compensation.",
     "created_at": "2026-06-13"
 }

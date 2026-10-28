@@ -3,14 +3,17 @@
     "gene_id": "B5_king_safety",
     "sequence": 3,
     "concept": "长易位的特点",
+    "concept_en": "Features of Queenside Castling",
     "question_cn": "与短易位相比，长易位（王到 c1）的最大特点是什么？",
+    "question_en": "Compared with kingside castling, what is the main feature of queenside castling, with the king moving to c1?",
     "options": [
-        {"key": "A", "text_cn": "王更安全，因为离对方更远"},
-        {"key": "B", "text_cn": "王在后翼，车自动到达 d1，可以对准 d 线；同时为王翼兵的冲锋创造条件，适合主动进攻"},
-        {"key": "C", "text_cn": "长易位比短易位快，只需移动两步"},
-        {"key": "D", "text_cn": "长易位后不能进行王翼进攻"}
+        {"key": "A", "text_cn": "王更安全，因为离对方更远", "text_en": "The king is safer because it is farther from the opponent."},
+        {"key": "B", "text_cn": "王在后翼，车自动到达 d1，可以对准 d 线；同时为王翼兵的冲锋创造条件，适合主动进攻", "text_en": "The king moves to the queenside and the rook reaches d1, while the kingside pawns can advance for an active attack."},
+        {"key": "C", "text_cn": "长易位比短易位快，只需移动两步", "text_en": "Queenside castling is faster and takes only two moves."},
+        {"key": "D", "text_cn": "长易位后不能进行王翼进攻", "text_en": "A kingside attack is impossible after queenside castling."}
     ],
     "correct": "B",
     "explanation_cn": "长易位后车到达 d1，可以立即对准 d 线参与中心控制；王在后翼也意味着王翼的 g/h 兵可以大胆推进进攻，而无需担心王的安全。但长易位的代价是王翼防线较弱，后翼也可能受到攻击——长易位通常出现在双方异侧易位、需要速度进攻的局面中。",
+    "explanation_en": "After queenside castling, the rook reaches d1 and can immediately contest the d-file. With the king on the queenside, the g- and h-pawns can advance for an attack. The trade-off is a potentially weaker queenside king shelter; this choice is often used when the sides castle on opposite wings and race to attack.",
     "created_at": "2026-06-11"
 }

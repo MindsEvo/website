@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../i18n.css" />
+  <script src="../../i18n.js"></script>
   <link rel="stylesheet" href="../audio-settings.css" />
   <script src="../audio-settings.js"></script>
   <title>基本攻杀 | 攻杀技巧</title>
@@ -1044,10 +1046,20 @@
 
       // ── App state ─────────────────────────────────────
       var state = {
-        anno: null, annoByIndex: {}, states: [], moveMetas: [],
+        anno: null, annoByIndex: {}, currentPopup: null, explanationCn: '', explanationEn: '', states: [], moveMetas: [],
         ply: -1, playing: false, timer: null, soundOn: true, voiceOn: true
       };
       var manifestCache = {};
+
+      function annotationText(annotation, field) {
+        if (!annotation) return '';
+        return quizIsEnglish() ? (annotation[field + '_en'] || annotation[field] || '') : (annotation[field] || '');
+      }
+
+      function refreshAnnotationLanguage() {
+        if (state.currentPopup) showPopup(annotationText(state.currentPopup, 'popup'));
+        explanationText.textContent = quizIsEnglish() && state.explanationEn ? state.explanationEn : state.explanationCn;
+      }
 
       function totalPlies() { return state.moveMetas.length; }
 
@@ -1116,17 +1128,19 @@
         var narrateText = null;
         if (n === -1) {
           var intro = state.anno.intro;
-          showPopup(intro && intro.popup);
+          state.currentPopup = intro || null;
+          showPopup(annotationText(intro, 'popup'));
           if (intro) {
             (intro.flash_squares || []).forEach(function (sq) { addHighlight(sq, '#FFD70055'); });
-            narrateText = intro.voice === true ? stripHtml(intro.popup) : (typeof intro.voice === 'string' ? intro.voice : null);
+            narrateText = intro.voice === true ? stripHtml(annotationText(intro, 'popup')) : (typeof intro.voice === 'string' ? intro.voice : null);
           }
           playStatus.textContent = '开局位置 — 点击▶开始自动播放，或用↩/→单步查看';
         } else if (n === totalPlies()) {
           var outro = state.anno.outro;
-          showPopup(outro && outro.popup);
+          state.currentPopup = outro || null;
+          showPopup(annotationText(outro, 'popup'));
           if (outro) {
-            narrateText = outro.voice === true ? stripHtml(outro.popup) : (typeof outro.voice === 'string' ? outro.voice : null);
+            narrateText = outro.voice === true ? stripHtml(annotationText(outro, 'popup')) : (typeof outro.voice === 'string' ? outro.voice : null);
           }
           playStatus.textContent = '🏁 演示结束';
           playSound('gameEnd');
@@ -1134,7 +1148,8 @@
           var mv = state.moveMetas[n];
           var annoMove = state.annoByIndex[n];
           if (annoMove) {
-            showPopup(annoMove.popup);
+            state.currentPopup = annoMove;
+            showPopup(annotationText(annoMove, 'popup'));
             (annoMove.highlights || []).forEach(function (h) {
               (h.squares || []).forEach(function (sq) { addHighlight(sq, h.color); });
             });
@@ -1248,13 +1263,16 @@
           fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
         ]).then(function (res) {
           state.anno = res[0];
+          state.currentPopup = null;
+          state.explanationCn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          state.explanationEn = state.anno.explanation_en || state.anno.description_en || '';
           var moveList = parseSolutionMoves(res[1]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
           (state.anno.moves || []).forEach(function (m) { state.annoByIndex[m.index] = m; });
-          explanationText.textContent = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          refreshAnnotationLanguage();
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
@@ -1334,12 +1352,15 @@
           fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
         ]).then(function (res) {
           state.anno = {};
+          state.currentPopup = null;
+          state.explanationCn = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          state.explanationEn = item.explanation_en || '';
           var moveList = parseSolutionMoves(res[0]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
-          explanationText.textContent = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          refreshAnnotationLanguage();
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
@@ -1359,6 +1380,33 @@
       var quizManifestCache = {};
       var currentQuizAnswer = null;
       var currentQuizExplanation = '';
+      var currentQuizData = null;
+
+      function quizIsEnglish() {
+        return !!(window.ChessI18n && window.ChessI18n.getLanguage() === 'en');
+      }
+
+      function updateQuizLanguage() {
+        var english = quizIsEnglish();
+        QUIZ_GROUP_DEFS.forEach(function (groupDef) {
+          var menuEl = document.querySelector('.group-dropdown-wrap[data-quiz-group="' + groupDef.key + '"] .dropdown-menu');
+          var manifest = quizManifestCache[groupDef.key];
+          if (menuEl && manifest && menuEl.classList.contains('open')) renderQuizDropdownMenu(groupDef, manifest, menuEl);
+        });
+        if (!currentQuizData) return;
+        var data = currentQuizData;
+        var concept = english ? (data.concept_en || data.concept || '') : (data.concept || '');
+        var question = english ? (data.question_en || data.question_cn || '') : (data.question_cn || '');
+        quizQuestion.textContent = concept ? '【' + concept + '】\n' + question : question;
+        currentQuizExplanation = english ? (data.explanation_en || data.explanation_cn || '') : (data.explanation_cn || '');
+        quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (button) {
+          var option = (data.options || []).find(function (entry) { return entry.key === button.dataset.key; });
+          if (option) button.textContent = option.key + '. ' + (english ? (option.text_en || option.text_cn || '') : (option.text_cn || ''));
+        });
+        if (!quizExplanation.classList.contains('hidden')) {
+          quizExplanation.textContent = (english ? '✅ Correct! ' : '✅ 答对了！') + currentQuizExplanation;
+        }
+      }
 
       function findQuizItem(manifest, itemId) {
         for (var i = 0; i < manifest.items.length; i++) {
@@ -1371,7 +1419,8 @@
         var html = '';
         if (manifest.items.length) {
           manifest.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+            var label = quizIsEnglish() ? (item.label_en || item.label) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + label + '</div>';
           });
         } else {
           html += '<div class="submenu-item disabled">暂无题目</div>';
@@ -1430,24 +1479,27 @@
       }
 
       function showQuizQuestion(qdata) {
+        currentQuizData = qdata;
         currentQuizAnswer = qdata.correct;
-        currentQuizExplanation = qdata.explanation_cn || '';
         quizQuestion.classList.remove('empty');
-        quizQuestion.textContent = qdata.concept ? '【' + qdata.concept + '】\n' + (qdata.question_cn || '') : (qdata.question_cn || '');
         quizExplanation.classList.add('hidden');
         quizExplanation.textContent = '';
-        var html = '';
+        quizOptions.replaceChildren();
         (qdata.options || []).forEach(function (opt) {
-          html += '<button type="button" class="quiz-option-btn" data-key="' + opt.key + '">' +
-            opt.key + '. ' + opt.text_cn + '</button>';
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'quiz-option-btn';
+          button.dataset.key = opt.key;
+          quizOptions.appendChild(button);
         });
-        quizOptions.innerHTML = html;
+        updateQuizLanguage();
         quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
           btn.addEventListener('click', function () { handleQuizAnswer(btn); });
         });
-        if (window.speechSynthesis && qdata.question_cn) {
-          var u = new SpeechSynthesisUtterance(qdata.question_cn);
-          u.lang = 'zh-CN';
+        var spokenQuestion = quizIsEnglish() ? (qdata.question_en || qdata.question_cn || '') : (qdata.question_cn || '');
+        if (window.speechSynthesis && spokenQuestion) {
+          var u = new SpeechSynthesisUtterance(spokenQuestion);
+          u.lang = quizIsEnglish() && !/[\u4e00-\u9fff]/.test(spokenQuestion) ? 'en-US' : 'zh-CN';
           window.speechSynthesis.speak(u);
         }
       }
@@ -1458,20 +1510,22 @@
           quizOptions.querySelectorAll('.quiz-option-btn').forEach(function (b) { b.disabled = true; });
           btn.classList.add('correct');
           if (currentQuizExplanation) {
-            quizExplanation.textContent = '✅ ' + currentQuizExplanation;
+            quizExplanation.textContent = (quizIsEnglish() ? '✅ Correct! ' : '✅ 答对了！') + currentQuizExplanation;
             quizExplanation.classList.remove('hidden');
           }
           if (window.speechSynthesis) {
-            var u = new SpeechSynthesisUtterance('答对了！' + currentQuizExplanation);
-            u.lang = 'zh-CN';
+            var spokenResult = (quizIsEnglish() ? 'Correct! ' : '答对了！') + currentQuizExplanation;
+            var u = new SpeechSynthesisUtterance(spokenResult);
+            u.lang = quizIsEnglish() && !/[\u4e00-\u9fff]/.test(spokenResult) ? 'en-US' : 'zh-CN';
             window.speechSynthesis.speak(u);
           }
         } else {
           btn.disabled = true;
           btn.classList.add('wrong');
           if (window.speechSynthesis) {
-            var u2 = new SpeechSynthesisUtterance('再想想，重新选择一下。');
-            u2.lang = 'zh-CN';
+            var wrongMessage = quizIsEnglish() ? 'Try another answer.' : '再想想，重新选择一下。';
+            var u2 = new SpeechSynthesisUtterance(wrongMessage);
+            u2.lang = quizIsEnglish() ? 'en-US' : 'zh-CN';
             window.speechSynthesis.speak(u2);
           }
         }
@@ -1492,6 +1546,8 @@
         var el = document.querySelector('.group-chip[data-quiz-group="' + groupDef.key + '"]');
         if (el) el.addEventListener('click', function (e) { e.stopPropagation(); selectQuizGroup(groupDef); });
       });
+      window.addEventListener('chesslanguagechange', updateQuizLanguage);
+      window.addEventListener('chesslanguagechange', refreshAnnotationLanguage);
 
       btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
       btnPrev.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply - 1); });

@@ -2,6 +2,7 @@
   "game_id": "C10_WeakSquares_Practice_009",
   "description": "尼姆佐-印度 E47 — 黑格弱点链",
   "intro": {
+    "popup_en": "Weak Squares, Practice 9: A Chain of Light-Square Weaknesses\nAfter Bxc3, White has lost the light-squared bishop. The squares d4, f4, and h4 can become a chain of light-square weaknesses. Use the surviving dark-squared bishop to target them with Bg5.",
     "flash_squares": [
       "d4",
       "f4",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Summary: Bxc3 creates light-square weaknesses; after ...exd4, White's center becomes doubled and d4 is another target. Bg5 places the dark-squared bishop on the diagonal to pressure the chain. When a bishop is exchanged, immediately inspect the squares of its color.",
     "popup": "弱点链练习小结\n✅ Bxc3让白格弱点链产生\n✅ exd4后白中心变叠兵\n✅ Bg5象沿黑格斜线施压白格弱点\n\n练习要点：\n失去某颜色象→立刻检查对应弱格",
     "voice": true
   },
@@ -26,31 +28,37 @@
   "moves": [
     {
       "index": 0,
+      "popup_en": "d4 claims central space.",
       "move": "d4",
       "popup": "d4控制中心"
     },
     {
       "index": 1,
+      "popup_en": "...Nf6 develops a knight.",
       "move": "Nf6",
       "popup": "Nf6发展马"
     },
     {
       "index": 2,
+      "popup_en": "c4 expands on the flank.",
       "move": "c4",
       "popup": "c4翼侧"
     },
     {
       "index": 3,
+      "popup_en": "...e6 prepares the Nimzo-Indian setup.",
       "move": "e6",
       "popup": "e6准备Nimzo"
     },
     {
       "index": 4,
+      "popup_en": "Nc3 develops a knight.",
       "move": "Nc3",
       "popup": "Nc3发展马"
     },
     {
       "index": 5,
+      "popup_en": "...Bb4! The Nimzo-Indian bishop pins the knight.",
       "move": "Bb4",
       "popup": "Bb4！Nimzo钉马",
       "highlights": [
@@ -65,61 +73,73 @@
     },
     {
       "index": 6,
+      "popup_en": "e3 preserves both bishops in the Sämisch Variation.",
       "move": "e3",
       "popup": "e3保留双象\n塞米什变例"
     },
     {
       "index": 7,
+      "popup_en": "O-O secures White's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 8,
+      "popup_en": "Bd3 develops the bishop.",
       "move": "Bd3",
       "popup": "Bd3发展象"
     },
     {
       "index": 9,
+      "popup_en": "...d5! Black counterattacks in the center.",
       "move": "d5",
       "popup": "d5反击中心！"
     },
     {
       "index": 10,
+      "popup_en": "Ne2! White reroutes the knight to avoid blocking the c-pawn, preparing to recapture on c3 with the other knight if needed.",
       "move": "Ne2",
       "popup": "Ne2！绕开叠兵路线\n为cxd5后Nec3铺路"
     },
     {
       "index": 11,
+      "popup_en": "...c5 challenges the center.",
       "move": "c5",
       "popup": "c5冲击！"
     },
     {
       "index": 12,
+      "popup_en": "cxd5 exchanges pawns in the center.",
       "move": "cxd5",
       "popup": "cxd5换兵"
     },
     {
       "index": 13,
+      "popup_en": "...exd5 recaptures and leaves a central pawn structure to target.",
       "move": "exd5",
       "popup": "exd5接受"
     },
     {
       "index": 14,
+      "popup_en": "O-O secures Black's king.",
       "move": "O-O",
       "popup": "O-O入城"
     },
     {
       "index": 15,
+      "popup_en": "...Nc6 defends d5.",
       "move": "Nc6",
       "popup": "Nc6守护d5"
     },
     {
       "index": 16,
+      "popup_en": "a3 asks the bishop on b4 to decide whether to retreat or exchange.",
       "move": "a3",
       "popup": "a3逼迫黑象表态"
     },
     {
       "index": 17,
+      "popup_en": "...Bxc3! Black exchanges the bishop for the knight. White loses the light-squared bishop, creating a chain of light-square weaknesses on d4, f4, and h4.",
       "move": "Bxc3",
       "popup": "Bxc3！兑换！\n白格象消失\n白格弱点链产生：d4+f4+h4",
       "highlights": [
@@ -136,11 +156,13 @@
     },
     {
       "index": 18,
+      "popup_en": "Nxc3 recaptures with the knight. White has doubled c-pawns but retains central control.",
       "move": "Nxc3",
       "popup": "Nxc3马吃回\nc3叠兵但控制中心"
     },
     {
       "index": 19,
+      "popup_en": "cxd4 opens the center.",
       "move": "cxd4",
       "popup": "cxd4打开中心！",
       "highlights": [
@@ -155,6 +177,7 @@
     },
     {
       "index": 20,
+      "popup_en": "...exd4 rebuilds Black's center, while White's pawns on e3 and d4 leave d4 as a target.",
       "move": "exd4",
       "popup": "exd4重建\n白叠兵e3+d4，d4格又弱！",
       "highlights": [
@@ -169,11 +192,13 @@
     },
     {
       "index": 21,
+      "popup_en": "...Re8 places a rook on the e-file.",
       "move": "Re8",
       "popup": "Re8守护e列"
     },
     {
       "index": 22,
+      "popup_en": "Bg5! The dark-squared bishop targets the light-square weakness chain along the h6-c1 diagonal, including d4 and f4. This is how the bishop of the opposite color can exploit those weaknesses.",
       "move": "Bg5",
       "popup": "Bg5！黑格象出击\n沿h6-c1斜线控制弱格链\nd4+f4全都在这条斜线上！\n这就是弱点链的威力",
       "highlights": [

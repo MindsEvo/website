@@ -1,13 +1,16 @@
 {
   "game_id": "mate_hookMate_L1-003",
   "description": "兵引离后钩杀：吃兵将军驱王，车踏g8将死",
+  "explanation_en": "A pawn capture with check deflects the king, allowing the rook to deliver hook mate on g8.",
   "intro": {
     "flash_squares": ["h8", "f6", "f4", "g4", "h6"],
     "popup": "💡 <b>引离钩杀</b>：白车在h8，白马在f6，白兵在f4，白王在g4——如何先将军引走黑王，再钩杀？",
+    "popup_en": "💡 <b>Deflection into a hook mate</b>: White's rook is on h8, knight on f6, pawn on f4, and king on g4. How can White check and deflect the black king before mating?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：fxg5+兵将军引王离开h6，Rg8#车马兵王构成钩形将死——白王在g4也是钩杀拼图的一部分！",
+    "popup_en": "✅ <b>Key idea</b>: fxg5+ deflects the king from h6. Rg8# then completes a hook made by White's rook, knight, pawn, and king; White's king on g4 also helps control the escape squares.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "fxg5+",
       "popup": "白兵fxg5+将军！兵吃掉g5黑兵，新兵在g5攻击h6，逼迫黑王离开h6。",
+      "popup_en": "fxg5+! The pawn captures Black's pawn on g5 and checks, attacking h6 and forcing the black king away.",
       "highlights": [
         {"squares": ["g5"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h6"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Kg6",
       "popup": "黑王逃往g6——正中白方下怀！",
+      "popup_en": "The black king moves to g6, exactly where White wants it.",
       "highlights": [
         {"squares": ["g6"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Rg8#",
       "popup": "白车Rg8#钩杀！车从h8到g8沿g列将军，马守h5/h7/f7/f5，兵守h6，白王封f5——黑王g6四面被钩！",
+      "popup_en": "Rg8# delivers hook mate! The rook checks along the g-file, while the knight, pawn, and White's king cover the escape squares around the black king on g6.",
       "highlights": [
         {"squares": ["g8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g6"], "color": "#FF000055", "duration_ms": 0},

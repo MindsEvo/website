@@ -1,13 +1,16 @@
 {
   "game_id": "mate_hookMate_L1-006",
   "description": "角落钩杀：白王主动让路，黑方完成h1角落钩杀",
+  "explanation_en": "White's king deliberately vacates h1, allowing Black's rook to enter f1 and force the king into a corner hook mate.",
   "intro": {
     "flash_squares": ["h1", "c6", "f3", "g2", "f2", "g3"],
     "popup": "💡 <b>角落钩杀</b>：白王在h1，白车在c6，白马在f3，白兵在g2——黑方车在f2，马在g3，如何完成角落钩杀？",
+    "popup_en": "💡 <b>Corner hook mate</b>: White's king is on h1, rook on c6, knight on f3, and pawn on g2. Black's rook is on f2 and knight on g3. How can Black set up a corner mate?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：白王主动走到g1让黑车进入f1，白王再到h2，黑车Rh1#——g2兵封g2，f4兵封g3，h3兵封h3，h1角落无处可逃！",
+    "popup_en": "✅ <b>Key idea</b>: White's king steps to g1, allowing the black rook to enter f1. After the king moves to h2, Rh1# traps it in the corner, with its own pieces blocking the escape squares.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Kg1",
       "popup": "白王Kg1！白王主动从h1走到g1——这是设局的关键：为黑车进入f1腾出空间，引导黑方走入钩杀陷阱。",
+      "popup_en": "Kg1! White's king voluntarily leaves h1. This is the key to the setup: it makes room for Black's rook to enter f1 and leads into the hook-mate trap.",
       "highlights": [
         {"squares": ["g1"], "color": "#4CAF5055", "duration_ms": 0}
       ],
@@ -28,6 +32,7 @@
       "index": 1,
       "move": "Rf1+",
       "popup": "黑车Rf1+将军！车从f2到f1，攻击白王g1——白王只能逃往h2。",
+      "popup_en": "Rf1+! The rook moves from f2 to f1 and checks the king on g1, leaving h2 as the only escape.",
       "highlights": [
         {"squares": ["f1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g1"], "color": "#FF000055", "duration_ms": 0}
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Kh2",
       "popup": "白王被迫退到h2——g2有白兵，g1要受车控制，只能去h2。",
+      "popup_en": "The white king is forced to h2: its own pawn occupies g2, and the rook controls g1.",
       "highlights": [
         {"squares": ["h2"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -54,6 +60,7 @@
       "index": 3,
       "move": "Rh1#",
       "popup": "黑车Rh1#角落钩杀！车从f1到h1，沿h列将军h2白王——g1被车封（第1列），g2白兵挡路，g3被黑兵f4守住，h3白兵挡路——白王h2四面楚歌，钩杀成功！",
+      "popup_en": "Rh1# delivers corner hook mate! The rook checks the king on h2 along the h-file. The rook controls g1, White's pawns block g2 and h3, and Black's pawn covers g3. The king is trapped.",
       "highlights": [
         {"squares": ["h1"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["h2"], "color": "#FF000055", "duration_ms": 0},

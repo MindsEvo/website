@@ -1,13 +1,16 @@
 {
   "game_id": "mate_backRankMate_L1-003",
   "description": "白方连续弃后，迫使黑子填满底线，车完成将杀",
+  "explanation_en": "White uses a series of checks and queen sacrifices to force Black's pieces onto the back rank, then mates with a rook.",
   "intro": {
     "flash_squares": ["f8", "e1", "d1", "d6"],
     "popup": "💡 <b>底线杀</b>：黑王在f8，底线有象（d8方向）和后（c8）。白后在d1、车在e1。如何用连续将军迫使底线封死？",
+    "popup_en": "💡 <b>Back-rank mate</b>: Black's king is on f8, with a bishop near d8 and queen on c8. White has a queen on d1 and rook on e1. How can White use repeated checks to seal the back rank?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：连续将军迫使黑象、黑后先后填满底线，最终车Rxe8#将杀——每一步将军都是为了让黑子挡死自己的退路。",
+    "popup_en": "✅ <b>Key idea</b>: A series of checks forces Black's bishop and queen to occupy the back rank. Rxe8# finishes the mate; each check makes Black's own pieces block another escape square.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Qxd6+",
       "popup": "白后Qxd6+！将军，同时打开e线视线。黑方只能用象挡。",
+      "popup_en": "Qxd6+! White checks and opens the e-file. Black can only block with the bishop.",
       "highlights": [
         {"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Be7",
       "popup": "黑象到e7挡将——但这为后续的将杀铺路。",
+      "popup_en": "The bishop blocks on e7, but this helps set up the later mate.",
       "highlights": [
         {"squares": ["e7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qxe7+",
       "popup": "白后再吃象将军！黑王被迫走到g8。",
+      "popup_en": "The queen captures the bishop with check, forcing the black king to g8.",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["f8"], "color": "#FF000055", "duration_ms": 0}
@@ -56,6 +62,7 @@
       "index": 3,
       "move": "Kg8",
       "popup": "黑王到g8——底线现在更加暴露。",
+      "popup_en": "The king moves to g8, making the back rank even more vulnerable.",
       "highlights": [
         {"squares": ["g8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -68,6 +75,7 @@
       "index": 4,
       "move": "Qe8+",
       "popup": "白后到e8将军！黑后必须挡在e8——底线最后一道空格被填满。",
+      "popup_en": "Qe8+! The black queen must block on e8, filling the last open square on the back rank.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}
@@ -81,6 +89,7 @@
       "index": 5,
       "move": "Qxe8",
       "popup": "黑后被迫吃白后到e8——恰好封死了e线，白车将杀。",
+      "popup_en": "The black queen is forced to capture White's queen on e8, blocking the e-file and setting up the rook mate.",
       "highlights": [
         {"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -93,6 +102,7 @@
       "index": 6,
       "move": "Rxe8#",
       "popup": "Rxe8#！白车沿e线将死黑王，底线杀完成。",
+      "popup_en": "Rxe8#! The rook mates along the e-file and completes the back-rank attack.",
       "highlights": [
         {"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}

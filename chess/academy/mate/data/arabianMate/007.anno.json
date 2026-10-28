@@ -1,13 +1,16 @@
 {
   "game_id": "mate_arabianMate_L1-007",
   "description": "阿拉伯杀：精彩的引入弃子攻杀",
+  "explanation_en": "A brilliant decoy sacrifice leads into Arabian mate. The source annotation contains no individual move popups.",
   "intro": {
     "flash_squares": ["g7"],
     "popup": "💡 <b>阿拉伯杀</b>：精彩的引入弃子攻杀！多熟悉这种棋形和思路。",
+    "popup_en": "💡 <b>Arabian mate</b>: A brilliant decoy sacrifice leads to the mating attack. Become familiar with this pattern and idea.",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：精彩的引入弃子攻杀，多熟悉这种棋形和思路。车马配合将死角落的王是阿拉伯杀的核心。",
+    "popup_en": "✅ <b>Key idea</b>: This decoy sacrifice creates a mating attack. The core of Arabian mate is the rook and knight working together to trap the king in the corner.",
     "voice": true
   },
   "board_always": null,

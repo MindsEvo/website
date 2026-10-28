@@ -1,13 +1,16 @@
 {
   "game_id": "tac_blockade_L1-007",
   "description": "车b2阻塞黑后将军路线，弃后双车将死黑王",
+  "explanation_en": "Rb2 blocks the black queen's checking line, allowing White to sacrifice the queen safely and coordinate both rooks for mate.",
   "intro": {
     "flash_squares": ["a8", "b2", "a3"],
     "popup": "💡 <b>阻塞将军路线</b>：白方想弃后攻杀黑王。但黑后在a8，如果白后走a7，黑后将军换掉白后。白方如何先封死黑后的将军线？",
+    "popup_en": "💡 <b>Block the checking line</b>: White wants to sacrifice the queen to attack the king, but Black's queen on a8 could check and trade queens. How can White block that line first?",
     "voice": true
   },
   "outro": {
     "popup": "✅ <b>要点</b>：Rb2先阻断黑后的将军路线！然后弃后，双车协力将死黑王。",
+    "popup_en": "✅ <b>Key idea</b>: Rb2 first blocks the queen's checking line. White can then sacrifice the queen and use both rooks to deliver mate.",
     "voice": true
   },
   "board_always": null,
@@ -16,6 +19,7 @@
       "index": 0,
       "move": "Rb2",
       "popup": "车到b2！阻断了黑后方向对白王的将军路线，铺垫弃后攻杀。",
+      "popup_en": "The rook moves to b2 and blocks the black queen's line to White's king, preparing the queen sacrifice.",
       "highlights": [
         {"squares": ["b2"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["c5"], "color": "#FF980055", "duration_ms": 0}
@@ -30,6 +34,7 @@
       "index": 1,
       "move": "Rb8",
       "popup": "黑车移动，黑王暴露更多。",
+      "popup_en": "Black's rook moves, leaving the king more exposed.",
       "highlights": [
         {"squares": ["b8"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -42,6 +47,7 @@
       "index": 2,
       "move": "Qxa7+",
       "popup": "弃后将军！黑王被迫吃后，进入白车的将军线。",
+      "popup_en": "White sacrifices the queen with check, forcing the king to capture and enter the rook's attack line.",
       "highlights": [
         {"squares": ["a7"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a8"], "color": "#FF000055", "duration_ms": 0}
@@ -55,6 +61,7 @@
       "index": 3,
       "move": "Kxa7",
       "popup": "黑王吃后，走到a7——双车将杀！",
+      "popup_en": "The king captures the queen on a7 and is drawn into the two-rook mating net.",
       "highlights": [
         {"squares": ["a7"], "color": "#FFD70088", "duration_ms": 0}
       ],
@@ -67,6 +74,7 @@
       "index": 4,
       "move": "Ra3#",
       "popup": "车将死！b2车控制b列，a3车将军，黑王无路可逃——双车绞杀！",
+      "popup_en": "Ra3# is checkmate! The rook on b2 controls the b-file while the rook on a3 delivers mate. The king has no escape.",
       "highlights": [
         {"squares": ["a3"], "color": "#4CAF5055", "duration_ms": 0},
         {"squares": ["a7"], "color": "#FF000055", "duration_ms": 0},

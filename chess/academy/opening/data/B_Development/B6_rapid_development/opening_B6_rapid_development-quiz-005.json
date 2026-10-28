@@ -3,14 +3,17 @@
     "gene_id": "B6_rapid_development",
     "sequence": 5,
     "concept": "发展完成的标志",
+    "concept_en": "Signs of Completed Development",
     "question_cn": "开局发展「完成」的标志通常是什么？",
+    "question_en": "What are the usual signs that opening development is complete?",
     "options": [
-        {"key": "A", "text_cn": "把所有兵都推到第四行"},
-        {"key": "B", "text_cn": "所有棋子都走到对方阵地"},
-        {"key": "C", "text_cn": "马和象全部出动，王车易位完成，车进入活跃线路，后在合理位置就绪"},
-        {"key": "D", "text_cn": "只要易位了就算发展完成"}
+        {"key": "A", "text_cn": "把所有兵都推到第四行", "text_en": "Advance every pawn to the fourth rank."},
+        {"key": "B", "text_cn": "所有棋子都走到对方阵地", "text_en": "Move every piece into the opponent's half of the board."},
+        {"key": "C", "text_cn": "马和象全部出动，王车易位完成，车进入活跃线路，后在合理位置就绪", "text_en": "Develop the knights and bishops, castle, place the rooks on active lines, and bring the queen to a suitable square."},
+        {"key": "D", "text_cn": "只要易位了就算发展完成", "text_en": "Development is complete as soon as you castle."}
     ],
     "correct": "C",
     "explanation_cn": "开局发展完成的四个标志：① 双马全部出动（通常到f3/c3或f6/c6）；② 双象全部出动（发展到活跃对角线）；③ 王车易位（王安全，车激活）；④ 后在合理位置就绪（不过早出动也不迟迟不出）。完成这四步后，棋子协调就位，可以开始中局计划。",
+    "explanation_en": "Development is usually complete when both knights and bishops are active, the king has castled, the rooks occupy useful lines, and the queen is ready on a sensible square without having come out prematurely. With the pieces coordinated, you can begin a middlegame plan.",
     "created_at": "2026-06-12"
 }

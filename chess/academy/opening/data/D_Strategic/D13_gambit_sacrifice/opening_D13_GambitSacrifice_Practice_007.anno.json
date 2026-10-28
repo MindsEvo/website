@@ -2,11 +2,13 @@
   "game_id": "D13_GambitSacrifice_Practice_007",
   "description": "埃文斯弃兵拒绝变 C51 — 练习：拒绝弃兵的真实代价",
   "intro": {
+    "popup_en": "Gambit Initiative, Practice 7\nWhite offers the b-pawn with the Evans Gambit. Black may accept or decline; here Black retreats with ...Bb6. Is declining truly safe, and does White lose anything when the gambit is refused?",
     "flash_squares": ["b4", "c5", "b6"],
     "popup": "弃兵争先 练习7\n\n第2课白方送出b4弃兵（埃文斯）\n黑方可以接受，也可以拒绝！\n\n本局黑方走Bb6拒绝！\n\n练习目标：\n① 拒绝弃兵后黑方局面如何？\n② 白方有没有实际的优势？\n③ 弃兵被拒绝，送兵方损失了吗？\n\n关键问题：拒绝弃兵是否真的\"安全\"？",
     "voice": true
   },
   "outro": {
+    "popup_en": "Declining the Evans Gambit with ...Bb6 keeps the bishop, though it leaves its best square on c5. White keeps the b-pawn and gains queenside space, but does not get the ideal c3-d4 center. Declining is generally safe, yet White retains the initiative: the gambit still achieved its purpose of gaining time and space.",
     "popup": "答案：拒绝埃文斯弃兵的代价\n\n黑方Bb6拒绝弃兵：\n✓ 优点：保住象在好格（b6仍不错）\n✗ 缺点：象被迫离开最佳c5格，结构略被削弱\n\n白方b4弃兵未被接受：\n✓ b4兵还在，翼翼空间扩张\n✓ 黑象被象略微驱让\n✗ 损失：没有c3+d4的超级中心\n\n结论：拒绝弃兵通常是安全选择\n但白方仍有主动权——\n弃兵争先的关键在于主动！",
     "voice": true
   },
@@ -15,19 +17,21 @@
     "color": "#C6D50022"
   },
   "moves": [
-    {"index": 0, "move": "e4", "popup": "e4"},
-    {"index": 1, "move": "e5", "popup": "e5"},
-    {"index": 2, "move": "Nf3", "popup": "Nf3"},
-    {"index": 3, "move": "Nc6", "popup": "Nc6"},
-    {"index": 4, "move": "Bc4", "popup": "Bc4 意大利！象瞄准f7"},
+    {"index": 0, "move": "e4", "popup": "e4", "popup_en": "e4 opens the game."},
+    {"index": 1, "move": "e5", "popup": "e5", "popup_en": "...e5 mirrors White's advance."},
+    {"index": 2, "move": "Nf3", "popup": "Nf3", "popup_en": "Nf3 develops and attacks e5."},
+    {"index": 3, "move": "Nc6", "popup": "Nc6", "popup_en": "...Nc6 develops and defends e5."},
+    {"index": 4, "move": "Bc4", "popup": "Bc4 意大利！象瞄准f7", "popup_en": "Bc4 enters the Italian Game, with the bishop targeting f7."},
     {
       "index": 5,
       "move": "Bc5",
+      "popup_en": "...Bc5! A strong response: the bishop occupies c5 and eyes White's center.",
       "popup": "Bc5！黑方的最强应对\n象到c5，虎视白方中心"
     },
     {
       "index": 6,
       "move": "b4",
+      "popup_en": "b4! The Evans Gambit offers a pawn. Black chooses to decline with ...Bb6.",
       "popup": "b4！埃文斯弃兵！\n\n白方再次提出弃兵！\n黑方选择了Bb6……",
       "highlights": [
         {"squares": ["b4", "c5"], "color": "#E5393555"}
@@ -36,6 +40,7 @@
     {
       "index": 7,
       "move": "Bb6",
+      "popup_en": "...Bb6! Black declines the gambit and preserves the bishop. Although b6 is less active than c5, the bishop remains on the diagonal and Black avoids White's c3-d4 gambit setup.",
       "popup": "Bb6！拒绝弃兵！\n\n黑方不吃b4——\n而是把象移到b6保留下来！\n\n⭐ 分析：\nb6的象虽然不如c5，但仍在对角线上\n黑方保留了一个象，避免了c3+d4的陷阱",
       "highlights": [
         {"squares": ["b6", "c5"], "color": "#C6D50055"}
@@ -44,6 +49,7 @@
     {
       "index": 8,
       "move": "a4",
+      "popup_en": "a4! White continues expanding despite the declined gambit. The idea is to drive the bishop from b6 and restrict it further; b4 and a4 together gain queenside space.",
       "popup": "a4！白方继续扩张！\n\n⭐ 关键思路：\n弃兵被拒绝了，但白方的计划没有停！\na4的目的是：驱赶Bb6，进一步限制黑象\n\nb4+a4=翼翼空间扩张！",
       "highlights": [
         {"squares": ["a4", "b4", "b6"], "color": "#E5393555"}
@@ -52,6 +58,7 @@
     {
       "index": 9,
       "move": "a5",
+      "popup_en": "...a5! Black blocks White's further advance, but the bishop becomes confined behind the a5-b6 pawn barrier.",
       "popup": "a5！黑方也推！\n\n阻止白方a5驱赶\n但……黑象被关在a5-b6段",
       "highlights": [
         {"squares": ["a5", "b6"], "color": "#C6D50055"}
@@ -60,6 +67,7 @@
     {
       "index": 10,
       "move": "Ba2",
+      "popup_en": "Ba2! The bishop retreats to an unusual but safe square, still targeting f7. White's b4-a4 pawns control space, while ...a5 has left Black's bishop on a remote square.",
       "popup": "Ba2！白方把象放到a2！\n\n⭐ 这步看起来奇怪……\n但象在a2非常安全，仍然瞄准f7！\n\n白方的b4+a4已经控制了翼侧空间\n黑方的a5反制让黑象困在偏僻格",
       "highlights": [
         {"squares": ["a2", "f7"], "color": "#E5393544"}
@@ -68,11 +76,13 @@
     {
       "index": 11,
       "move": "d6",
+      "popup_en": "...d6 stabilizes Black's position and supports the center.",
       "popup": "d6 黑方稳固，推进中心"
     },
     {
       "index": 12,
       "move": "d4",
+      "popup_en": "d4! White builds a center even without c3, continuing the expansion plan.",
       "popup": "d4！白方建立中心！\n\n即使没有c3，白方还是推d4！\n中心扩张计划继续执行……",
       "highlights": [
         {"squares": ["d4", "e5"], "color": "#00BCD455"}
@@ -81,6 +91,7 @@
     {
       "index": 13,
       "move": "Nxd4",
+      "popup_en": "...Nxd4 exchanges the knight for White's d4-pawn. White's choice of recapture, with a knight or queen, will shape the next plan.",
       "popup": "Nxd4 黑方马吃中心！\n\n黑方用马兑换白方的d4兵\n⭐ 注意：此时白方用马还是后夺回关系重大！",
       "highlights": [
         {"squares": ["d4", "c6"], "color": "#8E24AA55"}
@@ -89,6 +100,7 @@
     {
       "index": 14,
       "move": "Nxd4",
+      "popup_en": "Nxd4! White recaptures with the knight rather than Qxd4. The knight supports c3, which can drive away Black's bishop after it captures on d4.",
       "popup": "Nxd4！白方马兑换！\n\n白方选择马吃——\n而不是后吃（Qxd4）\n\n⭐ 为什么用马？\nc3接下来可以追走d4象\n白方接下来准备c3！",
       "highlights": [
         {"squares": ["d4", "c3"], "color": "#00BCD455"}
@@ -97,6 +109,7 @@
     {
       "index": 15,
       "move": "Bxd4",
+      "popup_en": "...Bxd4 places Black's bishop on a strong square, but White can challenge it with c3.",
       "popup": "Bxd4 黑象吃回d4马！\n\n黑方象到d4，占据强格\n但白方有c3逐走……",
       "highlights": [
         {"squares": ["d4", "c5", "f2"], "color": "#8E24AA55"}
@@ -105,6 +118,7 @@
     {
       "index": 16,
       "move": "c3",
+      "popup_en": "c3! White attacks the bishop and forces it to move. The bishop is driven away, c3 prepares a powerful d4 center, and White regains the initiative in the center.",
       "popup": "c3！白方逐走d4象！\n\n⭐ 关键手！\nc3攻击d4的象，强迫象后退\n\n白方获得：\n① d4象被驱赶\n② c3为d4超强中心做准备\n③ 中心扩张主动权回到白方手中",
       "highlights": [
         {"squares": ["c3", "d4"], "color": "#E5393566"}
@@ -113,6 +127,7 @@
     {
       "index": 17,
       "move": "Bb6",
+      "popup_en": "...Bb6! The bishop returns to b6. Black declined the gambit, but after the exchanges the bishop has traveled c5-b6-d4-b6 and ends back where it started. White gained queenside space and a central plan, while Black's bishop remains passive. Declining a gambit does not automatically make the position safe; the initiative can take another form.",
       "popup": "Bb6 黑象被迫退回b6\n\n⭐ 最终局面总结：\n黑方拒绝弃兵（Bb6）→ 象从c5退到b6\n经过一番兑换，象又被迫退回b6！\n\n路线：c5 → b6 → d4 → b6\n两次绕圈，最终还在b6！\n\n白方收获：\n① b4+a4翼侧扩张控制空间\n② c3为d4推进铺路\n③ 黑象始终处于被动\n\n结论：拒绝弃兵不等于安全！\n主动权换了形式，照样是压力！",
       "highlights": [
         {"squares": ["b6", "c5", "d4"], "color": "#C6D50055"}
