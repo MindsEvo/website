@@ -2,6 +2,7 @@
   "game_id": "eg_KP-K_L1-006-1",
   "description": "远程先手对王：双王相距五排，1.Kd4 构成远程对王，逐步缩短距离，踏关键格赢棋",
   "intro": {
+    "popup_en": "The same principle works with distant opposition. White has the move and can establish the opposition from far away.",
     "flash_squares": [
       "d4",
       "d5",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Mastering the opposition is essential in king-and-pawn endings. White shortens the distance, reaches the key squares, and promotes.",
     "popup": "🏆 <b>结论：掌握先手对王是兵王残局的核心要点！</b>",
     "voice": true
   },
@@ -21,6 +23,7 @@
     {
       "index": 0,
       "move": "Kd4",
+      "popup_en": "1. Kd4! The white king enters the d-file, three squares from the black king on d8. The odd-numbered distance gives White the distant opposition.",
       "popup": "⭐ 1.Kd4! — 白王进入 d 列，与黑王 Kd8 同列间距 3 格（奇数）= <b>远程先手对王！</b>",
       "highlights": [
         {
@@ -46,6 +49,7 @@
     {
       "index": 1,
       "move": "Ke8",
+      "popup_en": "...Ke8: the black king sidesteps to avoid the opposition on the d-file.",
       "popup": "♚ Ke8 — 黑王侧移，回避 d 列对王。",
       "highlights": [],
       "concept_arrows": [
@@ -59,6 +63,7 @@
     {
       "index": 2,
       "move": "Ke5",
+      "popup_en": "2. Ke5: the white king keeps advancing and maintains pressure.",
       "popup": "♔ 2.Ke5 — 白王继续向上逼近，保持压力。",
       "highlights": [],
       "concept_arrows": [
@@ -72,6 +77,7 @@
     {
       "index": 3,
       "move": "Kd7",
+      "popup_en": "...Kd7: the black king returns to the d-file and closes the distance.",
       "popup": "♚ Kd7 — 黑王回 d7，接近接触。",
       "highlights": [],
       "concept_arrows": [
@@ -85,6 +91,7 @@
     {
       "index": 4,
       "move": "Kd5",
+      "popup_en": "3. Kd5 takes the close opposition. With the kings on d5 and d7 and Black to move, White has the opposition.",
       "popup": "⭐ 3.Kd5 — <b>近程先手对王！</b>Kd5 对 Kd7，间距 1 格，白刚走完 = 白有先手对王。",
       "highlights": [
         {
@@ -108,6 +115,7 @@
     {
       "index": 5,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king sidesteps to escape the d-file opposition.",
       "popup": "♚ Ke7 — 黑王侧移，逃开 d 列对王。",
       "highlights": [],
       "concept_arrows": [
@@ -121,6 +129,7 @@
     {
       "index": 6,
       "move": "Kc6",
+      "popup_en": "4. Kc6! The white king takes the flank route to the key squares and prepares to support the pawn.",
       "popup": "⭐ 4.Kc6! — <b>侧翼绕入关键格区域！</b>后续配合兵推进。",
       "highlights": [
         {
@@ -144,6 +153,7 @@
     {
       "index": 7,
       "move": "Ke6",
+      "popup_en": "...Ke6: the black king reaches e6 and tries to resist.",
       "popup": "♚ Ke6 — 黑王进入关键格 e6，试图抵抗。",
       "highlights": [
         {
@@ -165,6 +175,7 @@
     {
       "index": 8,
       "move": "d4",
+      "popup_en": "5. d4: the pawn begins advancing.",
       "popup": "♟ 5.d4 — 兵开始前行！",
       "highlights": [],
       "concept_arrows": [
@@ -178,6 +189,7 @@
     {
       "index": 9,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king retreats to defend from behind.",
       "popup": "♚ Ke7 — 黑王后退，守住后方。",
       "highlights": [],
       "concept_arrows": [
@@ -191,6 +203,7 @@
     {
       "index": 10,
       "move": "d5",
+      "popup_en": "6. d5: the pawn advances again.",
       "popup": "♟ 6.d5 — 兵继续推进！",
       "highlights": [],
       "concept_arrows": [
@@ -204,6 +217,7 @@
     {
       "index": 11,
       "move": "Kd8",
+      "popup_en": "...Kd8: the black king returns to the back rank and holds the d-file.",
       "popup": "♚ Kd8 — 黑王退回底线，死守 d 列。",
       "highlights": [],
       "concept_arrows": [
@@ -217,6 +231,7 @@
     {
       "index": 12,
       "move": "Kd6",
+      "popup_en": "7. Kd6 reaches the key square and takes the opposition. The result is decided.",
       "popup": "⭐ 7.Kd6 — <b>白王踏上关键格d6， 先手对王！</b>大局已定。",
       "highlights": [
         {
@@ -238,6 +253,7 @@
     {
       "index": 13,
       "move": "Ke8",
+      "popup_en": "...Ke8: the black king continues to resist from the back rank.",
       "popup": "♚ Ke8 — 黑王仍在底线挣扎。",
       "highlights": [],
       "concept_arrows": [
@@ -251,6 +267,7 @@
     {
       "index": 14,
       "move": "Kc7",
+      "popup_en": "8. Kc7: the white king escorts the pawn forward.",
       "popup": "♔ 8.Kc7 — 白王护兵前进。",
       "highlights": [],
       "concept_arrows": [
@@ -264,6 +281,7 @@
     {
       "index": 15,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king makes one last attempt to approach.",
       "popup": "♚ Ke7 — 黑王最后一搏，贴近白王。",
       "highlights": [],
       "concept_arrows": [
@@ -277,6 +295,7 @@
     {
       "index": 16,
       "move": "d6+",
+      "popup_en": "9. d6+! The pawn checks and forces the black king to give way.",
       "popup": "🔥 9.d6+! — 兵将军！黑王被迫让路。",
       "highlights": [],
       "concept_arrows": [
@@ -290,6 +309,7 @@
     {
       "index": 17,
       "move": "Ke6",
+      "popup_en": "...Ke6: the black king has to move next to the pawn.",
       "popup": "♚ Ke6 — 黑王只能贴兵，螳臂当车。",
       "highlights": [],
       "concept_arrows": [
@@ -303,6 +323,7 @@
     {
       "index": 18,
       "move": "d7",
+      "popup_en": "10. d7: the pawn is one step from promotion.",
       "popup": "♟ 10.d7 — 兵距升变一步之遥！",
       "highlights": [
         {
@@ -325,6 +346,7 @@
     {
       "index": 19,
       "move": "Kd5",
+      "popup_en": "...Kd5: the black king runs, but it is too late.",
       "popup": "♚ Kd5 — 黑王跑离，无力回天。",
       "highlights": [],
       "concept_arrows": [
@@ -338,6 +360,7 @@
     {
       "index": 20,
       "move": "d8=Q+",
+      "popup_en": "11. d8=Q+ promotes with check. White wins. Starting with distant opposition, White shortened the distance, reached the key squares, and promoted.",
       "popup": "👑 11.d8=Q+ — <b>升后将军，白方全胜！</b><br>从远程对王起步，缩短距离，踏上关键格，完成升变。",
       "highlights": [
         {

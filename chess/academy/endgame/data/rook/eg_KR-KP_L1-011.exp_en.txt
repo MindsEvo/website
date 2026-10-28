@@ -1,0 +1,4 @@
+Use the rook to cut the board across the pawn's path. The black king cannot cross over to protect its pawn.
+
+# END
+# Solution 1

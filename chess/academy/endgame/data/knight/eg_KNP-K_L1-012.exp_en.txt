@@ -1,0 +1,4 @@
+If the pawn is not on a rook file, White is winning in this kind of position with correct play.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+The light-squared bishop protects the a8 promotion square, while the dark-squared bishop cannot control it. The key is Kf3, which cuts off the opposing bishop's route back in time for the pawn to promote.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Edge pawns have fewer routes to advance. Black can draw by keeping the bishop on the f6-g7 diagonal, stopping the g-pawn while the king and bishop coordinate to prevent a breakthrough.
+
+# END
+# Solution 1

@@ -2,11 +2,13 @@
   "game_id": "eg_Q-R_L2-002-1",
   "description": "后对车 — 白方精准调后，吃掉黑车获胜",
   "intro": {
+    "popup_en": "Black has a rook and king against White's queen and king. Unlike the previous example, White can win: use queen checks to move the black king away from the rook so it can no longer protect it.",
     "flash_squares": ["g7", "g8", "h5", "f6"],
     "popup": "♛🏰 <b>后对车的胜局</b><br>黑方车+王 vs 白方后+王。<br>与上一局对比，此局白方可以取胜！<br>关键：<b>后的将军转移黑王位置，从而失去对车的保护。</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "The queen maneuvers precisely and captures the black rook with check after the black king is driven away. Compare this with the previous draw to see how king placement and coordination change the result.",
     "popup": "✅ <b>Qxg1+吃掉黑车！</b>白后精准迂回，最终在黑王撤离时吃掉黑车。<br>对比上一局（永续将军和棋），感受白王位置和子力协调的关键差别。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Qd5+",
+      "popup_en": "The white queen checks and drives the black king away from g8.",
       "popup": "白后将军，驱赶黑王离开g8。",
       "highlights": [{"squares": ["d5", "g8"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "h5", "to": "d5", "color": "#4CAF50CC"}, {"from": "d5", "to": "g8", "color": "#FF6B3599"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Kh7",
+      "popup_en": "The black king is forced to h7.",
       "popup": "黑王被迫去h7。",
       "highlights": [],
       "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}]
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Qh1+",
+      "popup_en": "The queen swings to h1 with check and pursues the black king along the h-file.",
       "popup": "⚡ 白后转到h1将军！从h列追击黑王。",
       "highlights": [{"squares": ["h1", "h7"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "h1", "color": "#4CAF50CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Kg8",
+      "popup_en": "The black king is driven back to g8, with the rook caught between the queen and king.",
       "popup": "黑王被逼回g8，车被夹在中间。",
       "highlights": [{"squares": ["g7"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": []
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Qh5",
+      "popup_en": "The queen waits on h5. Black must make a move.",
       "popup": "白后停在h5，等待时机。黑方必须有所动作。",
       "highlights": [{"squares": ["h5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "h1", "to": "h5", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Rg1",
+      "popup_en": "The black rook retreats to the back rank, trying to create some distance.",
       "popup": "黑车撤退到后排，试图拉开距离。",
       "highlights": [],
       "concept_arrows": [{"from": "g7", "to": "g1", "color": "#E53935CC"}]
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Qd5+",
+      "popup_en": "The queen checks again and resumes the drive.",
       "popup": "白后再次将军，重启驱赶计划。",
       "highlights": [],
       "concept_arrows": [{"from": "h5", "to": "d5", "color": "#4CAF50CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Kh7",
+      "popup_en": "The black king returns to h7.",
       "popup": "黑王再去h7。",
       "highlights": [],
       "concept_arrows": []
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Qe4+",
+      "popup_en": "The queen changes the angle and checks from e4.",
       "popup": "白后调整角度，从e4将军。",
       "highlights": [{"squares": ["e4", "h7"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "e4", "color": "#4CAF50CC"}]
@@ -78,6 +89,7 @@
     {
       "index": 9,
       "move": "Kh8",
+      "popup_en": "The black king retreats to the corner.",
       "popup": "黑王退到角落。",
       "highlights": [{"squares": ["h8"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": []
@@ -85,6 +97,7 @@
     {
       "index": 10,
       "move": "Qa8+",
+      "popup_en": "The queen checks from a8 and drives the black king away from the corner.",
       "popup": "白后将军，从a8逼走黑王。",
       "highlights": [{"squares": ["a8", "h8"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "e4", "to": "a8", "color": "#4CAF50CC"}, {"from": "a8", "to": "h8", "color": "#FF6B3599"}]
@@ -92,6 +105,7 @@
     {
       "index": 11,
       "move": "Kh7",
+      "popup_en": "The black king returns to h7, while the rook on g1 is left undefended.",
       "popup": "黑王回h7，车在g1无法保护。",
       "highlights": [{"squares": ["g1"], "color": "#E5393544", "duration_ms": 0}],
       "concept_arrows": []
@@ -99,6 +113,7 @@
     {
       "index": 12,
       "move": "Qa7+",
+      "popup_en": "The queen checks from a7 and continues driving the black king toward g8.",
       "popup": "白后a7将军，继续驱赶黑王回g8。",
       "highlights": [{"squares": ["a7", "h7"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "a8", "to": "a7", "color": "#4CAF50CC"}]
@@ -106,6 +121,7 @@
     {
       "index": 13,
       "move": "Kg8",
+      "popup_en": "The black king returns to g8, but the rook on g1 is now separated from it.",
       "popup": "黑王回g8，但此时g1车与王分离！",
       "highlights": [{"squares": ["g8", "g1"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": []
@@ -113,6 +129,7 @@
     {
       "index": 14,
       "move": "Qxg1+",
+      "popup_en": "The white queen captures the rook with check, removing Black's only remaining piece besides the king.",
       "popup": "⚡ <b>白后吃掉黑车！</b>将军同时消灭黑方唯一子力。",
       "highlights": [{"squares": ["g1"], "color": "#4CAF5088", "duration_ms": 0}],
       "concept_arrows": [{"from": "a7", "to": "g1", "color": "#4CAF50CC"}]
@@ -120,6 +137,7 @@
     {
       "index": 15,
       "move": "Kf8",
+      "popup_en": "The black king escapes, but can no longer resist.",
       "popup": "黑王逃跑，已无法抵抗。",
       "highlights": [],
       "concept_arrows": []
@@ -127,6 +145,7 @@
     {
       "index": 16,
       "move": "Qa7",
+      "popup_en": "The queen takes control again; checkmate is only a matter of time.",
       "popup": "白后重新控制局面，将死只是时间问题。",
       "highlights": [],
       "concept_arrows": []
@@ -134,6 +153,7 @@
     {
       "index": 17,
       "move": "Ke8",
+      "popup_en": "The black king retreats, and White wins easily.",
       "popup": "黑王撤退，白方轻松取胜。",
       "highlights": [],
       "concept_arrows": []

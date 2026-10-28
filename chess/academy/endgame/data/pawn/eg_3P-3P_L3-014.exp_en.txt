@@ -1,0 +1,4 @@
+Connected pawns are much stronger than isolated pawns. Keep the pawn group coordinated and use it to create a passed pawn.
+
+# END
+# Solution 1

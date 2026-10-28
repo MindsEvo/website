@@ -1,0 +1,4 @@
+Practice this forced win with king and rook, while avoiding a stalemate.
+
+# END
+# Solution 1

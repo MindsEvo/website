@@ -1,0 +1,4 @@
+This is a knight-pawn example. The general idea is similar to the central-pawn method: use the queen to stop promotion while bringing the white king closer.
+
+# END
+# Solution 1

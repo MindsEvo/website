@@ -2,6 +2,7 @@
   "game_id": "eg_3P-2P_L3-002-1",
   "description": "三兵对双兵②：三兵压制 — 白王c5占主导，三兵全线压制黑方两兵",
   "intro": {
+    "popup_en": "The white king on c5 has penetrated farther into Black's position than the black king on c7. Advance the a-, b-, and c-pawns together; Black's two pawns cannot hold them all.",
     "flash_squares": [
       "c5",
       "a4",
@@ -27,6 +28,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The king cuts off the black king, and the three pawns advance as an unstoppable force.",
     "popup": "✅ <b>结论：白胜！</b> 白王切断黑王后，三兵势不可挡，黑方无法同时阻挡所有威胁。",
     "voice": true
   },
@@ -35,6 +37,7 @@
     {
       "index": 0,
       "move": "b5",
+      "popup_en": "1. b5! The b-pawn attacks and puts pressure on both the a7- and b7-pawns.",
       "popup": "1.b5！— b 兵出击，直接压制 a7/b7。",
       "highlights": [],
       "concept_arrows": [
@@ -48,6 +51,7 @@
     {
       "index": 1,
       "move": "axb5",
+      "popup_en": "1...axb5: Black is forced to exchange, but White remains ahead.",
       "popup": "1...a×b5 — 黑方被迫交换，但白方仍占优。",
       "highlights": [],
       "concept_arrows": [
@@ -61,6 +65,7 @@
     {
       "index": 2,
       "move": "axb5",
+      "popup_en": "2. axb5: White recaptures. The b- and c-pawns now face Black's lone b-pawn.",
       "popup": "2.a×b5 — 白方回吃，现在 b5+c4 两兵对黑方 b7 单兵。",
       "highlights": [],
       "concept_arrows": [
@@ -74,6 +79,7 @@
     {
       "index": 3,
       "move": "Kd7",
+      "popup_en": "2...Kd7: the black king tries to stop the b-pawn.",
       "popup": "2...Kd7 — 黑王试图挡住 b5 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -87,6 +93,7 @@
     {
       "index": 4,
       "move": "Kb6",
+      "popup_en": "3. Kb6! The white king attacks and directly threatens b7 and c7.",
       "popup": "3.Kb6！— 白王进攻！直接威胁 b7 和 c7。",
       "highlights": [
         {
@@ -109,6 +116,7 @@
     {
       "index": 5,
       "move": "Kc8",
+      "popup_en": "3...Kc8: the black king retreats, but can no longer stop the pawns.",
       "popup": "3...Kc8 — 黑王退守，但已无法阻挡。",
       "highlights": [],
       "concept_arrows": [
@@ -122,6 +130,7 @@
     {
       "index": 6,
       "move": "c5",
+      "popup_en": "4. c5: the c-pawn advances and all three pawns are now pressing forward.",
       "popup": "4.c5 — c 兵推进，三兵全面压制！",
       "highlights": [],
       "concept_arrows": [

@@ -1,0 +1,4 @@
+The black knight's check does not stop promotion: the e-pawn captures it and promotes with check. White wins the knight and reaches a favorable ending.
+
+# END
+# Solution 1

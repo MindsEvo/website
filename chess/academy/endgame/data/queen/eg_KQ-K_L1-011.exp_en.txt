@@ -1,0 +1,4 @@
+Use the white king to drive the black king toward the edge, then bring the queen and king together to win.
+
+# END
+# Solution 1

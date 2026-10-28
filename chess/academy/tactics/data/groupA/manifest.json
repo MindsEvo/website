@@ -4,6 +4,7 @@
     {
       "key": "fork",
       "label": "捉双",
+      "label_en": "Fork",
       "items": [
         { "id": "fork-001", "fen": "1k5r/ppp4p/8/8/P4Q2/8/4bPPP/6K1 w - - 0 1", "solutions": [{ "id": "fork-001" }] },
         { "id": "fork-002", "fen": "1k6/ppp1r3/7p/8/P2b4/1Pn3NP/2B2PP1/5R1K w - - 0 1", "solutions": [{ "id": "fork-002" }] },
@@ -20,6 +21,7 @@
     {
       "key": "pin",
       "label": "牵制",
+      "label_en": "Pin",
       "items": [
         { "id": "pin-001", "fen": "8/8/4p3/8/3n2k1/8/4P3/1R2K3 w - - 0 1", "solutions": [{ "id": "pin-001" }] },
         { "id": "pin-002", "fen": "8/7k/8/5r2/8/8/6P1/3BK3 w - - 0 1", "solutions": [{ "id": "pin-002" }] },
@@ -34,6 +36,7 @@
     {
       "key": "skewer",
       "label": "串击",
+      "label_en": "Skewer",
       "items": [
         { "id": "skewer-001", "fen": "8/1r3k2/2q1ppp1/8/5PB1/4P3/4QK2/5R2 w - - 0 1", "solutions": [{ "id": "skewer-001" }] },
         { "id": "skewer-002", "fen": "r2r2k1/2p2ppp/5n2/4p3/pB2P3/P2q3P/2R2PP1/2RQ2K1 w - - 0 1", "solutions": [{ "id": "skewer-002" }] },
@@ -49,6 +52,7 @@
     {
       "key": "discoveredAttack",
       "label": "闪击",
+      "label_en": "Discovered Attack",
       "items": [
         { "id": "discoveredAttack-001", "fen": "4q2k/6p1/8/4B3/4R3/8/5K2/8 w - - 0 1", "solutions": [{ "id": "discoveredAttack-001" }] },
         { "id": "discoveredAttack-002", "fen": "7k/7p/4qp2/4N3/3PR3/8/8/6K1 w - - 0 1", "solutions": [{ "id": "discoveredAttack-002" }] },

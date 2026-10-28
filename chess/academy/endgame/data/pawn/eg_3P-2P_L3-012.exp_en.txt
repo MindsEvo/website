@@ -1,0 +1,4 @@
+Black can just hold a draw in this position. Calculate the pawn exchanges carefully and keep the king on the key squares.
+
+# END
+# Solution 1

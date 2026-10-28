@@ -2,6 +2,7 @@
   "game_id": "eg_KQ-KP_L1-002-1",
   "description": "后对g兵 — 将军驱逐，让兵升后再吃",
   "intro": {
+    "popup_en": "The g-pawn is about to promote. White should not simply block the promotion square: first drive the black king away with checks, then bring the white king closer. Another valid method is to allow promotion and capture the new queen immediately.",
     "flash_squares": [
       "g2",
       "g1"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Although the g-pawn promotes, the white king is already close enough to help. Drive the black king away first, advance the white king, then capture the promoted queen and deliver checkmate.",
     "popup": "✅ g兵虽能升后，但白王早已靠近。<br>核心：<b>先将军逼走黑王，再让王靠近</b>，让兵升后之后立刻吃掉，最终将死。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Qg3",
+      "popup_en": "The queen controls the promotion route and restricts the black king's escape squares.",
       "popup": "后守住升变路，黑王没有退路了！",
       "highlights": [
         {
@@ -40,6 +43,7 @@
     {
       "index": 1,
       "move": "Kh1",
+      "popup_en": "The black king is forced into the corner.",
       "popup": "黑王被迫走角。",
       "highlights": [
         {
@@ -61,6 +65,7 @@
     {
       "index": 2,
       "move": "Qh4+",
+      "popup_en": "Check! Drive the black king away from the corner area.",
       "popup": "将军！逼黑王离开角落区域。",
       "highlights": [
         {
@@ -82,6 +87,7 @@
     {
       "index": 3,
       "move": "Kg1",
+      "popup_en": "The black king returns to g1 and continues defending the pawn.",
       "popup": "黑王回到g1——仍在守兵。",
       "highlights": [
         {
@@ -103,6 +109,7 @@
     {
       "index": 4,
       "move": "Kc5",
+      "popup_en": "The white king heads toward the center. The queen holds the position while the king advances.",
       "popup": "⚡ 白王靠向中路！后在等，王在走。",
       "highlights": [
         {
@@ -124,6 +131,7 @@
     {
       "index": 8,
       "move": "Qg3",
+      "popup_en": "The queen blocks the promotion route again and waits patiently for the white king to get closer.",
       "popup": "后再次封住升变路，耐心等待白王就位。",
       "highlights": [
         {
@@ -146,6 +154,7 @@
     {
       "index": 9,
       "move": "g1=Q+",
+      "popup_en": "The black pawn promotes to a queen with check.",
       "popup": "黑兵升后！将军。",
       "highlights": [
         {
@@ -167,6 +176,7 @@
     {
       "index": 10,
       "move": "Qxg1",
+      "popup_en": "Capture immediately! White's queen takes the newly promoted queen.",
       "popup": "⚡ 立刻吃掉！白后吃黑后。",
       "highlights": [
         {
@@ -188,6 +198,7 @@
     {
       "index": 14,
       "move": "Kd4",
+      "popup_en": "The white king continues forward to help the queen deliver mate.",
       "popup": "白王继续推进，配合后将死。",
       "highlights": [
         {
@@ -209,6 +220,7 @@
     {
       "index": 22,
       "move": "Qg1#",
+      "popup_en": "Checkmate!",
       "popup": "✅ 将死！",
       "highlights": [
         {

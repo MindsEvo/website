@@ -1,0 +1,4 @@
+Black to move can draw by using the rook's long-range horizontal and vertical checks to cut off the white king from the connected pawns.
+
+# END
+# Solution 1

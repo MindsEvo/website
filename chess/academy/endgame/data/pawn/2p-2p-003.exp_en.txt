@@ -1,0 +1,4 @@
+Use the king to restrict the black king, then advance the connected pawns to create multiple promotion threats. The black pawns cannot stop both.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Use the board and move line to practice coordinating the queen, king, and passed pawn.
+
+# END
+# Solution 1

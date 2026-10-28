@@ -1,0 +1,4 @@
+Use the king to stop Black's most dangerous passed pawn on b2. The white d- and g-pawns can then advance as Black's queen cannot stop both.
+
+# END
+# Solution 1

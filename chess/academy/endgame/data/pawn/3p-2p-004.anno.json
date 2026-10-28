@@ -2,6 +2,7 @@
   "game_id": "eg_3P-2P_L3-004-1",
   "description": "三兵对双兵④：兵形突破 — g5通路兵配合f4/h4，白方兵形占优强行突破",
   "intro": {
+    "popup_en": "White's g-pawn has passed beside the black g6-pawn, which cannot capture it. The f- and h-pawns create threats on both wings, while Black's g- and h-pawns cannot meet both.",
     "flash_squares": [
       "e4",
       "f4",
@@ -27,6 +28,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The breakthrough f5+ forces the position open, and Black's two pawns fall one by one.",
     "popup": "✅ <b>结论：白胜！</b> 白方通过 f5+ 将军强行突破，黑方双兵被各个击破。",
     "voice": true
   },
@@ -35,6 +37,7 @@
     {
       "index": 0,
       "move": "Ke5",
+      "popup_en": "1. Ke5! The white king enters the center to support the f-pawn.",
       "popup": "1.Ke5！— 白王进入中央，支援 f 兵推进。",
       "highlights": [],
       "concept_arrows": [
@@ -48,6 +51,7 @@
     {
       "index": 1,
       "move": "Kf7",
+      "popup_en": "1...Kf7: the black king retreats and tries to stop the f-pawn.",
       "popup": "1...Kf7 — 黑王退后，试图阻挡 f 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -61,6 +65,7 @@
     {
       "index": 2,
       "move": "f5",
+      "popup_en": "2. f5! The f-pawn breaks through and threatens to advance to f6.",
       "popup": "2.f5！— f 兵突破！威胁 f6 创造通路。",
       "highlights": [],
       "concept_arrows": [
@@ -74,6 +79,7 @@
     {
       "index": 3,
       "move": "gxf5",
+      "popup_en": "2...gxf5: Black is forced to capture the f-pawn, exposing the h-pawn.",
       "popup": "2...g×f5 — 黑兵被迫吃掉 f5，但 h5 兵暴露。",
       "highlights": [
         {
@@ -95,6 +101,7 @@
     {
       "index": 4,
       "move": "Kxf5",
+      "popup_en": "3. Kxf5: the white king recaptures and threatens both the h- and g-pawns.",
       "popup": "3.K×f5 — 白王回吃，同时攻击 h5 和 g5 兵的推进路线。",
       "highlights": [
         {
@@ -117,6 +124,7 @@
     {
       "index": 5,
       "move": "Ke7",
+      "popup_en": "3...Ke7: the black king struggles to defend both pawns.",
       "popup": "3...Ke7 — 黑王挣扎，难以应对。",
       "highlights": [],
       "concept_arrows": [
@@ -130,6 +138,7 @@
     {
       "index": 6,
       "move": "Kxh5",
+      "popup_en": "4. Kxh5 captures the h-pawn. White has an extra pawn and a winning position.",
       "popup": "4.K×h5 — 白王吃掉 h5 兵！白方多兵，胜局已定。",
       "highlights": [],
       "concept_arrows": [

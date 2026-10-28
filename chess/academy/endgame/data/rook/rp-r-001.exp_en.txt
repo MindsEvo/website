@@ -1,0 +1,4 @@
+Against a rook pawn or bishop pawn, the position can be drawn when the defending king occupies the promotion square. Black must defend accurately and keep the king on the key squares.
+
+# END
+# Solution 1

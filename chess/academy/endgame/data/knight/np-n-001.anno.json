@@ -2,6 +2,7 @@
   "game_id": "eg_NP-N_L2-001-1",
   "description": "马兵对马 — 弃马换升变",
   "intro": {
+    "popup_en": "White's knight is on b8 and the d-pawn is ready to advance. Black's knight on a2 is too far away to stop it. White can sacrifice the knight to clear the promotion route.",
     "flash_squares": [
       "b8",
       "d6",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The pawn promotes to a queen. The knight sacrifice is a precise way to force Black to capture it and clear the route to d8.",
     "popup": "♟ <b>升变成后！</b>弃马献祭是精妙手段——黑马被迫吃马后，白王路通d8，兵顺利升变。",
     "voice": true
   },
@@ -20,6 +22,7 @@
     {
       "index": 0,
       "move": "Ke6",
+      "popup_en": "The white king reaches e6 and cuts off the black king's defensive route.",
       "popup": "⭐ 白王到e6，切断黑王的防守路线！",
       "highlights": [
         {
@@ -41,6 +44,7 @@
     {
       "index": 1,
       "move": "Nb4",
+      "popup_en": "The black knight jumps in from a2 and tries to join the defense.",
       "popup": "黑马从a2跳来，试图靠近战场。",
       "highlights": [],
       "concept_arrows": [
@@ -54,6 +58,7 @@
     {
       "index": 2,
       "move": "d7",
+      "popup_en": "The pawn advances to d7, one step from promotion.",
       "popup": "兵冲上d7！离升变只差一步。",
       "highlights": [
         {
@@ -75,6 +80,7 @@
     {
       "index": 3,
       "move": "Kc7",
+      "popup_en": "The black king rushes over to try to stop the pawn.",
       "popup": "黑王急忙赶来试图阻挡。",
       "highlights": [],
       "concept_arrows": [
@@ -88,6 +94,7 @@
     {
       "index": 4,
       "move": "Na6+",
+      "popup_en": "The knight sacrifice: Na6+ forces the black knight to capture and clears the promotion route.",
       "popup": "🎯 <b>弃马！</b>白马跳a6将军，强迫黑马吃马，清出升变要道！",
       "highlights": [
         {
@@ -121,6 +128,7 @@
     {
       "index": 5,
       "move": "Nxa6",
+      "popup_en": "The black knight is forced to capture the white knight. The promotion route is clear.",
       "popup": "黑马被迫吃掉白马，升变路线已通！",
       "highlights": [
         {
@@ -142,6 +150,7 @@
     {
       "index": 6,
       "move": "Ke7",
+      "popup_en": "The white king advances to e7 to support the pawn.",
       "popup": "白王前进到e7，支援兵升变。",
       "highlights": [],
       "concept_arrows": [
@@ -155,6 +164,7 @@
     {
       "index": 7,
       "move": "Kc6",
+      "popup_en": "The black king approaches, but it is already too late.",
       "popup": "黑王逼近，但已经来不及了。",
       "highlights": [],
       "concept_arrows": [
@@ -168,6 +178,7 @@
     {
       "index": 8,
       "move": "d8=Q",
+      "popup_en": "The pawn promotes to a queen. The knight sacrifice has won a queen.",
       "popup": "♛ <b>升变成后！白方大优。</b>弃马的代价换来了一个后！",
       "highlights": [
         {

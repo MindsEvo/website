@@ -1,0 +1,4 @@
+The direct corner-mate method drives the black king to a8 along the shortest route. Bring the white king to c7 to control the escape squares, then finish with Qa6#. This is the most direct of the three winning methods.
+
+# END
+# Solution 3

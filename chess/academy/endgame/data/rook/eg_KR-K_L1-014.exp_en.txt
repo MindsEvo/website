@@ -1,0 +1,4 @@
+Practice the king-and-rook technique and keep enough room to avoid stalemate.
+
+# END
+# Solution 1

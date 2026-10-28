@@ -1,0 +1,4 @@
+The outside passed f-pawn draws the black king away from the g- and h-pawns. Advance the three pawns on separate fronts so Black cannot stop them all.
+
+# END
+# Solution 1

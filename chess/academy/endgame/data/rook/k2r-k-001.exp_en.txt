@@ -1,0 +1,4 @@
+Learn coordination and space restriction. The two rooks alternate control of ranks and files, gradually reducing the enemy king's room until checkmate.
+
+# END
+# Solution 1

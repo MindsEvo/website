@@ -1,0 +1,4 @@
+When the h-file is open, the position changes. White can use rook checks to drive the black king away from the rook and then capture it.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Explore different queen moves and discover the queen's power and flexibility. In this line, the white king first approaches e7; then Qg6+ sacrifices the queen so the black queen must capture, allowing the pawn to promote.
+
+# END
+# Solution 1

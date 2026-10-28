@@ -2,11 +2,13 @@
   "game_id": "eg_RP-R_L2-002-1",
   "description": "象前兵h边线空出 — 白方赶走黑王夺车白胜",
   "intro": {
+    "popup_en": "The key difference is that the h-file is open, giving the white rook room to maneuver. White can drive the black king away with checks and then capture the rook.",
     "flash_squares": ["b8", "g8", "f6"],
     "popup": "<b>关键对比：h边线空出！</b><br>h线有空间让白车运转。<br>白方可以用将军赶走黑王，然后吃掉黑车！",
     "voice": true
   },
   "outro": {
+    "popup_en": "With the h-file open, White can drive the black king away and capture the black rook with check.",
     "popup": "<b>要点</b>h线通时，白方可以赶走黑王，并且可以将军吃掉黑车！",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Rg7+",
+      "popup_en": "The rook checks and drives the black king away from the corner on g8.",
       "popup": "<b>将军驱王！</b><br>白车到g7将军，黑王被迫离开g8角落。",
       "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "g7", "color": "#4CAF50CC"}, {"from": "g7", "to": "g8", "color": "#FF6B35CC"}],
@@ -23,6 +26,7 @@
     {
       "index": 1,
       "move": "Kf8",
+      "popup_en": "The black king is forced to f8, leaving the h-file open.",
       "popup": "黑王被迫去f8，h线正式空出。",
       "highlights": [{"squares": ["f8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "g8", "to": "f8", "color": "#E53935CC"}],
@@ -31,6 +35,7 @@
     {
       "index": 2,
       "move": "Rh7",
+      "popup_en": "The rook enters the h-file. The open file is the key to the winning plan.",
       "popup": "<b>白车入h线！</b><br>h边线空出正是关键，白车顺利进驻h7。",
       "highlights": [{"squares": ["h7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "g7", "to": "h7", "color": "#4CAF50CC"}],
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Ke8",
+      "popup_en": "The black king tries to approach its rook.",
       "popup": "黑王试图接近己方车。",
       "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "f8", "to": "e8", "color": "#E53935CC"}],
@@ -47,6 +53,7 @@
     {
       "index": 4,
       "move": "Rh8+",
+      "popup_en": "The rook checks from h8 and drives the black king away from its rook again.",
       "popup": "<b>h8将军！</b><br>白车到h8，黑王再次被赶离黑车。",
       "highlights": [{"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "h7", "to": "h8", "color": "#4CAF50CC"}, {"from": "h8", "to": "e8", "color": "#FF6B35CC"}],
@@ -55,6 +62,7 @@
     {
       "index": 5,
       "move": "Kd7",
+      "popup_en": "The black king escapes to d7, farther from its rook.",
       "popup": "黑王逃向d7，远离黑车。",
       "highlights": [{"squares": ["d7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "d7", "color": "#E53935CC"}],
@@ -63,6 +71,7 @@
     {
       "index": 6,
       "move": "Rxb8",
+      "popup_en": "The white rook captures the black rook. The king is too far away to defend it, so White wins.",
       "popup": "<b>白车吃掉黑车！白方获胜。</b><br>黑王已离得太远，无法守护黑车。",
       "highlights": [{"squares": ["b8"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "h8", "to": "b8", "color": "#4CAF50CC"}],

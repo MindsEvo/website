@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Use the queen's range and the king's support to restrict the knight and look for a safe win.
+
+# END
+# Solution 1

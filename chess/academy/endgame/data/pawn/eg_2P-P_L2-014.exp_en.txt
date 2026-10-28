@@ -1,0 +1,4 @@
+Practice coordinating the king and pawns in this common type of ending.
+
+# END
+# Solution 1

@@ -2,6 +2,7 @@
   "game_id": "eg_3P-3P_L3-005-1",
   "description": "三兵对峙⑤：王的位置 — 白王g6比黑王g3高出三行，兵形相同王位决定胜负",
   "intro": {
+    "popup_en": "The white king on g6 is three ranks ahead of the black king on g3. Although the pawn structures are symmetrical, this king advantage lets White support a breakthrough on the b- or c-file.",
     "flash_squares": [
       "g6",
       "a4",
@@ -28,6 +29,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The king's advanced position decides the game despite the symmetrical pawn structure.",
     "popup": "✅ <b>结论：白胜！</b> 白王位置优势在兵形对称时决定胜负，白方必胜。",
     "voice": true
   },
@@ -36,6 +38,7 @@
     {
       "index": 0,
       "move": "Kf6",
+      "popup_en": "1. Kf6! The white king heads toward the b-pawn and begins to circle around.",
       "popup": "1.Kf6！— 白王向 b 兵方向进发，开始包抄。",
       "highlights": [],
       "concept_arrows": [
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "Kf4",
+      "popup_en": "1...Kf4: the black king follows and tries to maintain the opposition.",
       "popup": "1...Kf4 — 黑王跟随，努力保持王的对立。",
       "highlights": [],
       "concept_arrows": [
@@ -62,6 +66,7 @@
     {
       "index": 2,
       "move": "Ke6",
+      "popup_en": "2. Ke6: the white king penetrates farther toward the d- and c-pawns.",
       "popup": "2.Ke6 — 白王继续深入，朝 d/c 兵方向推进。",
       "highlights": [],
       "concept_arrows": [
@@ -75,6 +80,7 @@
     {
       "index": 3,
       "move": "Ke4",
+      "popup_en": "2...Ke4: the black king follows closely to stop the invasion.",
       "popup": "2...Ke4 — 黑王紧追，试图阻挡白王入侵。",
       "highlights": [],
       "concept_arrows": [
@@ -88,6 +94,7 @@
     {
       "index": 4,
       "move": "b4",
+      "popup_en": "3. b4! Break the symmetry and create a passed pawn.",
       "popup": "3.b4！— 打破对称，b 兵突破！",
       "highlights": [],
       "concept_arrows": [
@@ -101,6 +108,7 @@
     {
       "index": 5,
       "move": "axb4",
+      "popup_en": "3...axb4: Black is forced to exchange.",
       "popup": "3...a×b4 — 黑方被迫交换。",
       "highlights": [],
       "concept_arrows": [
@@ -114,6 +122,7 @@
     {
       "index": 6,
       "move": "axb4",
+      "popup_en": "4. axb4: White recaptures and creates a passed b-pawn. White is winning.",
       "popup": "4.a×b4 — 白方回吃，b 通路兵形成，白胜！",
       "highlights": [
         {

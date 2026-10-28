@@ -1,0 +1,4 @@
+With a symmetrical pawn structure, the first move matters. 1. b4 breaks the symmetry, creates a passed pawn, and forces Black into a passive defense.
+
+# END
+# Solution 1

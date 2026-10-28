@@ -1,0 +1,4 @@
+The white king cannot arrive in time in this position, so Black can hold the draw.
+
+# END
+# Solution 1

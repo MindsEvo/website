@@ -2,6 +2,7 @@
   "game_id": "eg_2P-P_L2-001-1",
   "description": "双兵对单兵①：牵制升变 — h兵诱开黑王，b兵安然升变",
   "intro": {
+    "popup_en": "White's b- and h-pawns are on opposite wings. The black king is drawn toward the h-pawn, allowing the b-pawn to promote.",
     "flash_squares": [
       "a2",
       "b4",
@@ -25,6 +26,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. When the black king captures the h-pawn, the b-pawn is already unstoppable.",
     "popup": "✅ <b>结论：白胜！</b> 黑王吃掉 h3 兵时，b 兵已无法被拦截，升变胜定。",
     "voice": true
   },
@@ -33,6 +35,7 @@
     {
       "index": 0,
       "move": "b5",
+      "popup_en": "1. b5: the pawn races toward promotion, forcing the black king to choose.",
       "popup": "1.b5 — 白兵奔向升变，黑王必须做出选择。",
       "highlights": [],
       "concept_arrows": [
@@ -46,6 +49,7 @@
     {
       "index": 1,
       "move": "Kxh3",
+      "popup_en": "1...Kxh3 captures the h-pawn, but the black king cannot catch the b-pawn.",
       "popup": "1...Kxh3 — 黑王吃掉 h3 兵，但 b 兵已无法追上。",
       "highlights": [],
       "concept_arrows": [
@@ -59,6 +63,7 @@
     {
       "index": 2,
       "move": "b6",
+      "popup_en": "2. b6: the b-pawn is unstoppable.",
       "popup": "2.b6 — b 兵势不可挡。",
       "highlights": [],
       "concept_arrows": [
@@ -72,6 +77,7 @@
     {
       "index": 3,
       "move": "Kg4",
+      "popup_en": "2...Kg4: the black king races after it, but too late.",
       "popup": "2...Kg4 — 黑王加速追赶，已为时已晚。",
       "highlights": [],
       "concept_arrows": [
@@ -85,6 +91,7 @@
     {
       "index": 4,
       "move": "b7",
+      "popup_en": "3. b7: promotion is imminent.",
       "popup": "3.b7 — 升变在即！",
       "highlights": [],
       "concept_arrows": [

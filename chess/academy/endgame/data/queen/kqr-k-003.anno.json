@@ -2,11 +2,13 @@
   "game_id": "eg_KQR-K_L1-003-1",
   "description": "后车对王-L1 演示3：车引路，后封杀",
   "intro": {
+    "popup_en": "Demo 3: A coordinated mating net with queen and rook. The rook leads by controlling the d-file, the queen blocks key squares, and the rook returns for checkmate.",
     "flash_squares": ["c5", "d5", "a5"],
     "popup": "💡 <b>演示3：后车完美配合封杀。",
     "voice": true
   },
   "outro": {
+    "popup_en": "The rook reaches d5 and checkmates the black king, which has no escape. This is a classic three-move coordination of rook, queen, and king.",
     "popup": "✅ <b>车到d5，将军！ 黑王被迫无路可逃，绝杀！</b>",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Rd1",
+      "popup_en": "1.Rd1! The rook occupies the d-file and cuts off the black king's route to the right.",
       "popup": "⬆️ <b>1.Rd1 — 车入主d列！</b><br>车控制d列切断黑王右路。",
       "highlights": [
         {"squares": ["d1", "d5", "d6", "d7", "d8"], "color": "#2196F330", "duration_ms": 0}
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Kb5",
+      "popup_en": "...Kb5. With the d-file under pressure, the black king is forced toward the edge on the left.",
       "popup": "⬇️ Kb5 — 黑王被迫往边线跑。d列快被车控制，黑王选择向左边逃。",
       "highlights": [],
       "concept_arrows": []
@@ -34,6 +38,7 @@
     {
       "index": 2,
       "move": "Qd6",
+      "popup_en": "2.Qd6! The queen blocks key squares along the d-file and covers a6, b8, and c7. The black king on b5 is driven toward a5.",
       "popup": "⬆️ <b>2.Qd6 — 后封锁要道！</b><br>后到d6，控制d列上方并覆盖a6/b8/c7等关键格。黑王在b5，被逼只能去a5。",
       "highlights": [
         {"squares": ["a6", "b8", "c7", "c5"], "color": "#FF572230", "duration_ms": 0}
@@ -47,6 +52,7 @@
     {
       "index": 3,
       "move": "Ka5",
+      "popup_en": "...Ka5. The black king is forced to the edge.",
       "popup": "⬇️ Ka5 — 黑王只能退到边线a5！",
       "highlights": [
         {"squares": ["a5"], "color": "#FFD70055", "duration_ms": 0}
@@ -56,6 +62,7 @@
     {
       "index": 4,
       "move": "Rd5#",
+      "popup_en": "3.Rd5# checkmate! The rook shifts to d5 and seals the escape squares around the king on a5.",
       "popup": "⬆️ <b>3.Rd5 — 将死！</b><br>车平移到d5，绝杀！",
       "highlights": [
         {"squares": ["a5", "a4", "a6", "b5", "b6"], "color": "#FF000055", "duration_ms": 0}

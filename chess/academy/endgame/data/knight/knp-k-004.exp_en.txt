@@ -1,0 +1,4 @@
+The knight can check to drive the enemy king, occupy key squares to block it, and remove opposing pawns. Its strengths are jumping over pieces and controlling both colors of squares; its weaknesses are slow movement and reduced effectiveness in the corner. A rook pawn with a knight may draw, while other pawns usually win with correct play.
+
+# END
+# Solution 1

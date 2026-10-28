@@ -1,0 +1,4 @@
+The white knight controls h8, and Black has failed to reach a drawing setup in this position.
+
+# END
+# Solution 1

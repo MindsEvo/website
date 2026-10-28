@@ -1,0 +1,4 @@
+Kc7 is the key move. The white king takes the opposition and supports the c-pawn directly instead of capturing the black pawn. This is a classic way to force the enemy king away from key squares.
+
+# END
+# Solution 1

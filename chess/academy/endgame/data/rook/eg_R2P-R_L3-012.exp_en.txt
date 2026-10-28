@@ -1,0 +1,4 @@
+The doubled pawns are a clear weakness. Black uses long-range horizontal and vertical rook checks to restrict the king and force a draw.
+
+# END
+# Solution 1

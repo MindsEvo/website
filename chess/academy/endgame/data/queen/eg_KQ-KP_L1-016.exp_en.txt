@@ -1,0 +1,4 @@
+The queen takes the opportunity to occupy the pawn's promotion square and holds it until the king can arrive to help.
+
+# END
+# Solution 1

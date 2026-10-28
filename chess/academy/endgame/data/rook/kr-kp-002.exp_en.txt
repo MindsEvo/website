@@ -1,0 +1,4 @@
+Once the black king is separated from its pawn, the pawn cannot survive on its own. Place the rook in front of the pawn on the g-file and capture it.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Coordinate the two rooks to restrict the black king and steadily reduce its available space.
+
+# END
+# Solution 1

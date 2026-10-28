@@ -1,0 +1,4 @@
+Keep the white king on the back rank. Use long-range rook checks or threats against the pawn to hold the position.
+
+# END
+# Solution 1

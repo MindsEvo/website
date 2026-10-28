@@ -1,0 +1,4 @@
+This example shows distant opposition. White wins by establishing the opposition from far away, shortening the distance, reaching the key squares, and escorting the pawn to promotion. If Black took the opposition instead, the position could be drawn.
+
+# END
+# Solution 1

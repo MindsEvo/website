@@ -1,0 +1,4 @@
+Connected pawns are a major advantage. Bring the white king closer to the pawn formation and use it to support their advance. Even when checked, the king can often approach the opposing rook to keep the initiative.
+
+# END
+# Solution 1

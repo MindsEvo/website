@@ -1,0 +1,4 @@
+The connected d-pawns blockade the black d-pawn. Bring the white king across to capture the isolated g-pawn, then advance the d-pawn without opposition.
+
+# END
+# Solution 1

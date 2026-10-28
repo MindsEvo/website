@@ -1,0 +1,4 @@
+White is winning. Coordinate the king, bishop, and knight to drive the black king toward the correct corner and deliver mate.
+
+# END
+# Solution 1

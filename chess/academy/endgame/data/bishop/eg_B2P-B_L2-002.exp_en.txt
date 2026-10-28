@@ -1,0 +1,4 @@
+As in the previous example, this position is drawn when shifted toward the edge of the board. Compared with a central position, there is roughly half as much room for maneuver. Keep this feature of edge positions in mind.
+
+# END
+# Solution 1

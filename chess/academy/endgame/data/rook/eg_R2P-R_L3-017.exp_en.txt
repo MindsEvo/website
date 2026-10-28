@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Analyze the pawn race and the rook's checking resources in the move line.
+
+# END
+# Solution 1

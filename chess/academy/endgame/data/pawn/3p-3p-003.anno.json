@@ -2,6 +2,7 @@
   "game_id": "eg_3P-3P_L3-003-1",
   "description": "三兵对峙③：先手突破 — 对称阵型白先，b3创造兵形不对称，强行突破",
   "intro": {
+    "popup_en": "The pawn structure is completely symmetrical, but White moves first. The key is 1. b4!, breaking the symmetry and forcing Black into an unfavorable choice.",
     "flash_squares": [
       "b1",
       "a2",
@@ -28,6 +29,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The first move breaks the symmetry and creates an unstoppable passed pawn.",
     "popup": "✅ <b>结论：白胜！</b> 白方利用先手权打破对称，创造不可阻挡的通路兵。",
     "voice": true
   },
@@ -36,6 +38,7 @@
     {
       "index": 0,
       "move": "b4",
+      "popup_en": "1. b4! Break the symmetry and force Black to respond to the advancing b-pawn.",
       "popup": "1.b4！— 打破对称！b 兵直冲，迫使黑方表态。",
       "highlights": [],
       "concept_arrows": [
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "a5",
+      "popup_en": "1...a5: Black counterattacks on the flank.",
       "popup": "1...a5 — 黑方侧翼反击。",
       "highlights": [],
       "concept_arrows": [
@@ -62,6 +66,7 @@
     {
       "index": 2,
       "move": "c4",
+      "popup_en": "2. c4: the c-pawn joins the advance, bringing all three pawns into play.",
       "popup": "2.c4 — c 兵跟进，白方三兵全线出动！",
       "highlights": [],
       "concept_arrows": [
@@ -75,6 +80,7 @@
     {
       "index": 3,
       "move": "c5",
+      "popup_en": "2...c5: Black advances the c-pawn too, but White has the initiative.",
       "popup": "2...c5 — 黑方也推 c 兵，但白方已占主动。",
       "highlights": [],
       "concept_arrows": [
@@ -88,6 +94,7 @@
     {
       "index": 4,
       "move": "b5",
+      "popup_en": "3. b5! The b-pawn becomes a passed pawn, and Black cannot stop it.",
       "popup": "3.b5！— b 兵形成通路，黑方无法阻挡！",
       "highlights": [
         {
@@ -112,6 +119,7 @@
     {
       "index": 5,
       "move": "Kc7",
+      "popup_en": "3...Kc7: the black king races toward the b-file but cannot catch the pawn.",
       "popup": "3...Kc7 — 黑王赶向 b 列，但已无法拦截。",
       "highlights": [],
       "concept_arrows": [
@@ -125,6 +133,7 @@
     {
       "index": 6,
       "move": "a4",
+      "popup_en": "4. a4! The a-pawn joins in, and White's three pawns dominate the board.",
       "popup": "4.a4！— a 兵跟进，白方三路全面压制！",
       "highlights": [],
       "concept_arrows": [

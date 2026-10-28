@@ -1,0 +1,4 @@
+White can win this queen-versus-rook ending by advancing the king while using queen checks from different angles. The king restricts the black king's ability to defend, and the queen gradually drives the rook toward the edge until it can be captured.
+
+# END
+# Solution 1

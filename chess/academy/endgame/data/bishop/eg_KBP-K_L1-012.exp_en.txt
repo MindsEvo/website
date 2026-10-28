@@ -1,0 +1,4 @@
+Assess the position with an h-pawn and a light-squared bishop. The best move is Kg5. White is winning, with a tablebase DTZ of about one ply.
+
+# END
+# Solution 1

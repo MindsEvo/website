@@ -2,6 +2,7 @@
   "game_id": "eg_NP-N_L2-004-1",
   "description": "马兵对马 — 兵吃马升变将军！",
   "intro": {
+    "popup_en": "A trap: White has king, pawn, and knight against Black's king and knight. The black knight checks to stop promotion, but White has an unexpected reply: the pawn captures the knight and promotes with check.",
     "flash_squares": [
       "d7",
       "e7",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The pawn captures the knight and promotes with check. Black's attempt to stop promotion instead gives White a decisive extra queen; even after the king captures it, White has a favorable ending after winning the knight.",
     "popup": "♛ <b>exf8=Q+ 升变将军！</b>黑马企图阻止升变反而被白兵吃掉并升变将军——完全出乎意料！黑王被迫吃后，白方仍有王占优势。",
     "voice": true
   },
@@ -21,6 +23,7 @@
     {
       "index": 0,
       "move": "Nf8+",
+      "popup_en": "The black knight checks, expecting to stop the e-pawn from promoting.",
       "popup": "黑马将军！黑方以为可以阻止e7兵升变。",
       "highlights": [
         {
@@ -54,6 +57,7 @@
     {
       "index": 1,
       "move": "exf8=Q+",
+      "popup_en": "The pawn captures the knight and promotes to a queen with check. The knight has become the promotion square.",
       "popup": "🎯 <b>白兵直接吃马升变！</b>将军！黑马非但没能阻止升变，反而变成了升变的踏脚石！",
       "highlights": [
         {
@@ -82,6 +86,7 @@
     {
       "index": 2,
       "move": "Kxf8",
+      "popup_en": "The black king must capture the queen, but Black has lost the knight and the ending is unfavorable.",
       "popup": "黑王只能吃后——但已经输掉了马，残局不乐观。",
       "highlights": [],
       "concept_arrows": [

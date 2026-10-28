@@ -1,0 +1,4 @@
+Without help from the king, a rook pawn may be able to draw. Study the queen's options and take care not to stalemate the king.
+
+# END
+# Solution 1

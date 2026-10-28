@@ -4,42 +4,46 @@
     {
       "key": "kbn-k",
       "label": "象马对王",
+      "label_en": "Bishop and Knight vs. King",
       "items": [
-        { "id": "kbn-k-001", "fen": "8/8/8/2N3K1/8/5B2/8/5k2 w - - 0 1", "solutions": [{ "id": "kbn-k-001" }] },
-        { "id": "kbn-k-002", "fen": "3N1B2/8/8/7k/8/5K2/8/8 w - - 0 1", "solutions": [{ "id": "kbn-k-002" }] }
+        { "id": "kbn-k-001", "label_en": "1. Coordinate Three Pieces to Mate", "explanation_en": "Coordinate the king, bishop, and knight to drive the enemy king into a corner. The bishop covers one color complex while the knight controls neighboring squares.", "fen": "8/8/8/2N3K1/8/5B2/8/5k2 w - - 0 1", "solutions": [{ "id": "kbn-k-001" }] },
+        { "id": "kbn-k-002", "label_en": "2. Choose the Corner by Bishop Color", "explanation_en": "The dark-squared bishop targets h8. Use the king and knight to drive the enemy king into a matching-color corner and deliver mate.", "fen": "3N1B2/8/8/7k/8/5K2/8/8 w - - 0 1", "solutions": [{ "id": "kbn-k-002" }] }
       ]
     },
     {
       "key": "knp-k",
       "label": "马兵对王",
+      "label_en": "Knight and Pawn vs. King",
       "items": [
-        { "id": "knp-k-001", "fen": "8/Pk6/8/1N6/8/8/5K2/8 w - - 0 1", "solutions": [{ "id": "knp-k-001" }] },
-        { "id": "knp-k-002", "fen": "8/8/8/8/5k2/5P2/8/5KN1 w - - 0 1", "solutions": [{ "id": "knp-k-002" }] },
-        { "id": "knp-k-003", "fen": "8/3k4/8/3P4/8/3K4/3N4/8 w - - 0 1", "solutions": [{ "id": "knp-k-003" }] },
-        { "id": "knp-k-004", "fen": "8/6k1/6p1/8/6P1/5K2/8/4N3 w - - 0 1", "solutions": [{ "id": "knp-k-004" }] }
+        { "id": "knp-k-001", "label_en": "1. Draw: King Holds the A8 Corner", "explanation_en": "The black king reaches the a8 corner, where the knight cannot drive it away and the promoted queen can be captured.", "fen": "8/Pk6/8/1N6/8/8/5K2/8 w - - 0 1", "solutions": [{ "id": "knp-k-001" }] },
+        { "id": "knp-k-002", "label_en": "2. Use King and Knight to Promote", "explanation_en": "Activate the king, use pawn checks to displace the defender, and bring the knight to key squares to support promotion.", "fen": "8/8/8/8/5k2/5P2/8/5KN1 w - - 0 1", "solutions": [{ "id": "knp-k-002" }] },
+        { "id": "knp-k-003", "label_en": "3. Knight Checks and Key-Square Blockade", "explanation_en": "Use the king and knight to drive the defender away, occupy key squares to block its routes, and promote the pawn safely.", "fen": "8/3k4/8/3P4/8/3K4/3N4/8 w - - 0 1", "solutions": [{ "id": "knp-k-003" }] },
+        { "id": "knp-k-004", "label_en": "4. Capture the Extra Pawn, Then Promote", "explanation_en": "Activate the knight to capture Black's pawn, then coordinate king, knight, and pawn to promote.", "fen": "8/6k1/6p1/8/6P1/5K2/8/4N3 w - - 0 1", "solutions": [{ "id": "knp-k-004" }] }
       ]
     },
     {
       "key": "np-n",
       "label": "马兵对马",
+      "label_en": "Knight and Pawn vs. Knight",
       "items": [
-        { "id": "np-n-001", "fen": "1N1k4/8/3P4/4K3/8/8/n7/8 w - - 0 1", "solutions": [{ "id": "np-n-001" }] },
-        { "id": "np-n-002", "fen": "8/7k/8/2K1N3/1P6/n7/8/8 w - - 0 1", "solutions": [{ "id": "np-n-002" }] },
-        { "id": "np-n-003", "fen": "8/6k1/8/8/1PNK4/8/8/1n6 b - - 0 1", "solutions": [{ "id": "np-n-003" }] },
-        { "id": "np-n-004", "fen": "8/3KPk1n/2N5/8/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-004" }] },
-        { "id": "np-n-005", "fen": "8/3KPk1n/8/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-005" }] },
-        { "id": "np-n-006", "fen": "5kn1/3K4/4P3/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-006" }] }
+        { "id": "np-n-001", "label_en": "1. Sacrifice the Knight to Promote", "explanation_en": "Force the black knight to capture the white knight, clearing the d-pawn's route to promotion.", "fen": "1N1k4/8/3P4/4K3/8/8/n7/8 w - - 0 1", "solutions": [{ "id": "np-n-001" }] },
+        { "id": "np-n-002", "label_en": "2. Escort the B-Pawn with the Knight", "explanation_en": "Keep the knight in front of the b-pawn and use the king to support its advance to promotion.", "fen": "8/7k/8/2K1N3/1P6/n7/8/8 w - - 0 1", "solutions": [{ "id": "np-n-002" }] },
+        { "id": "np-n-003", "label_en": "3. Use Checks to Clear the Promotion Route", "explanation_en": "Advance the pawn with king and knight support, using knight checks to displace the defender from the promotion square.", "fen": "8/6k1/8/8/1PNK4/8/8/1n6 b - - 0 1", "solutions": [{ "id": "np-n-003" }] },
+        { "id": "np-n-004", "label_en": "4. Capture the Checking Knight and Promote", "explanation_en": "The e-pawn can capture the checking knight and promote with check, turning Black's defense into a losing exchange.", "fen": "8/3KPk1n/2N5/8/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-004" }] },
+        { "id": "np-n-005", "label_en": "5. Knight Maneuvers Force a Sacrifice", "explanation_en": "Use Ne6, Ng5+, and Ne4 to attack the blockading knight and force it to capture the white knight, clearing the promotion route.", "fen": "8/3KPk1n/8/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-005" }] },
+        { "id": "np-n-006", "label_en": "6. Draw by Holding the Promotion Square", "explanation_en": "Black draws with knight checks and by keeping the king on e8 and the knight on e7 to block promotion.", "fen": "5kn1/3K4/4P3/2N5/8/8/8/8 b - - 0 1", "solutions": [{ "id": "np-n-006" }] }
       ]
     },
     {
       "key": "n-p",
       "label": "马对兵",
+      "label_en": "Knight vs. Pawn",
       "items": [
-        { "id": "n-p-001", "fen": "8/1P1n4/8/3K4/8/8/7k/8 w - - 0 1", "solutions": [{ "id": "n-p-001" }] },
-        { "id": "n-p-002", "fen": "8/P1n5/8/2K5/8/6k1/8/8 w - - 0 1", "solutions": [{ "id": "n-p-002" }] },
-        { "id": "n-p-003", "fen": "8/8/P1n5/8/2K5/8/8/5k2 w - - 0 1", "solutions": [{ "id": "n-p-003" }] },
-        { "id": "n-p-004", "fen": "5K2/5P2/8/2n5/8/8/8/2k5 w - - 0 1", "solutions": [{ "id": "n-p-004" }] },
-        { "id": "n-p-005", "fen": "8/2K5/1P6/8/8/8/6k1/4n3 b - - 0 1", "solutions": [{ "id": "n-p-005" }] }
+        { "id": "n-p-001", "label_en": "1. Draw by Guarding the Promotion Square", "explanation_en": "The knight checks and shuttles between a6 and b8 to keep the b8 promotion square defended.", "fen": "8/1P1n4/8/3K4/8/8/7k/8 w - - 0 1", "solutions": [{ "id": "n-p-001" }] },
+        { "id": "n-p-002", "label_en": "2. The Distant Knight Cannot Stop Promotion", "explanation_en": "Restrict the distant knight with the king, promote the a-pawn, and capture the knight with the new queen.", "fen": "8/P1n5/8/2K5/8/6k1/8/8 w - - 0 1", "solutions": [{ "id": "n-p-002" }] },
+        { "id": "n-p-003", "label_en": "3. Draw with Checks and Square Control", "explanation_en": "Use knight checks to displace the king while keeping the a8 promotion square under control.", "fen": "8/8/P1n5/8/2K5/8/8/5k2 w - - 0 1", "solutions": [{ "id": "n-p-003" }] },
+        { "id": "n-p-004", "label_en": "4. Promote Before the Knight Arrives", "explanation_en": "The knight is too far away to stop promotion; use the new queen and king to capture it.", "fen": "5K2/5P2/8/2n5/8/8/8/2k5 w - - 0 1", "solutions": [{ "id": "n-p-004" }] },
+        { "id": "n-p-005", "label_en": "5. Calculate the Knight's Route", "explanation_en": "The knight draws by using checks to gain the exact tempi needed to catch the b-pawn before promotion.", "fen": "8/2K5/1P6/8/8/8/6k1/4n3 b - - 0 1", "solutions": [{ "id": "n-p-005" }] }
       ]
     }
   ]

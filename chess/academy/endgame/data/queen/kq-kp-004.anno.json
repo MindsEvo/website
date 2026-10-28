@@ -2,6 +2,7 @@
   "game_id": "eg_KQ-KP_L1-004-1",
   "description": "后对f兵（白王近侧）— 对比上局：王够近就能赢！",
   "intro": {
+    "popup_en": "Compare this with the previous position: the same f-pawn ending, but White's king is nearby. This time White can win because the king is close enough to participate.",
     "flash_squares": [
       "f2",
       "g2",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins because the king is close. After Kg3, the white king can help the queen deliver mate. In the previous position the king was too far away; that distance changed the result.",
     "popup": "✅ <b>白方获胜！</b><br>关键区别：白王在旁，走入g3后能配合后将死。<br>上局白王太远无法参与——这就是胜负的分界线。",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Qg7+",
+      "popup_en": "Check, driving the black king away.",
       "popup": "将军，驱逐黑王。",
       "highlights": [
         {
@@ -40,6 +43,7 @@
     {
       "index": 6,
       "move": "Qd2",
+      "popup_en": "Key move! The queen directly blocks the promotion route, so the pawn cannot promote on f1.",
       "popup": "⚡ 关键！后直接封锁升变路——f1无法升变。",
       "highlights": [
         {
@@ -68,6 +72,7 @@
     {
       "index": 8,
       "move": "Qe2",
+      "popup_en": "The queen continues to block the promotion square.",
       "popup": "后继续封堵——兵升不了变。",
       "highlights": [
         {
@@ -90,6 +95,7 @@
     {
       "index": 10,
       "move": "Kg3",
+      "popup_en": "The white king joins the action! Unlike the previous position, the king is close enough to reach g3 directly.",
       "popup": "⚡ <b>白王进入！</b>上局白王在c6太远——这次直接走到g3！",
       "highlights": [
         {
@@ -112,6 +118,7 @@
     {
       "index": 11,
       "move": "f1=Q",
+      "popup_en": "The black pawn promotes to a queen, but too late to save the game.",
       "popup": "黑兵升后！但太晚了……",
       "highlights": [
         {
@@ -133,6 +140,7 @@
     {
       "index": 12,
       "move": "Qh2#",
+      "popup_en": "Qh2# checkmate! With the white king on g3, the queen delivers mate from h2.",
       "popup": "✅ 将死！王已在g3，后走h2将死黑王。",
       "highlights": [
         {

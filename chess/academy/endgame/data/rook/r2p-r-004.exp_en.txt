@@ -1,0 +1,4 @@
+Explore different defensive tries. White can advance the f-pawn and coordinate the rook and king to create a decisive promotion threat.
+
+# END
+# Solution 1

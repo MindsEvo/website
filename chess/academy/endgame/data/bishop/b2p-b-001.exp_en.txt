@@ -1,0 +1,4 @@
+White's connected central pawns can win when the king joins the attack. Use the bishop to check and displace the black king, bring the white king around to support the pawns, and promote one of them.
+
+# END
+# Solution 1

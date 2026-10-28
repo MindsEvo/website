@@ -1,0 +1,4 @@
+The black king maintains the opposition by mirroring the white king. White cannot reach the key squares or force the king away, so the position repeats and is drawn.
+
+# END
+# Solution 1

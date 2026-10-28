@@ -1,0 +1,4 @@
+A bishop and rook-pawn with the wrong-colored bishop is often drawn if the defending king reaches the corner. Here the black king is too far away, so White can advance the h-pawn and promote before the king arrives.
+
+# END
+# Solution 1

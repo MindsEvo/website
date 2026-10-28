@@ -1,0 +1,4 @@
+The white king is much more active and can escort the pawns forward. Break through with the b-pawn, then use the remaining pawns to create multiple passed pawns.
+
+# END
+# Solution 1

@@ -2,11 +2,13 @@
   "game_id": "eg_BP-B_L2-001-1",
   "description": "异色格象 — 白方胜：黑象无法守住升变格",
   "intro": {
+    "popup_en": "A key opposite-colored-bishop position: the white pawn is heading for a8, a light square protected by the white bishop. The black bishop is dark-squared and can never stop promotion.",
     "flash_squares": ["a6", "a8", "g4", "h2"],
     "popup": "⚠️ <b>异色格象关键局</b><br>白兵奔向a8（浅色格），白象守护浅色格。<br>黑象只能走深色格——<b>永远无法阻挡升变！</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The key is Kf3 on move two: it cuts off the black bishop's route back through e2, so the bishop cannot return in time.",
     "popup": "✅ <b>白方获胜！</b>关键在第2步：白王走f3切断黑象的退路，令黑象无法及时回防。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Bf5",
+      "popup_en": "The black bishop goes on the attack and looks for a way to interfere.",
       "popup": "黑象主动出击，寻找干扰机会。",
       "highlights": [{"squares": ["f5"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "g4", "to": "f5", "color": "#E53935CC"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Kf3",
+      "popup_en": "Key move: Kf3 cuts off the black bishop's route back through e2.",
       "popup": "⚡ <b>关键！白王走f3</b>，封锁黑象经由e2返回的通道。",
       "highlights": [{"squares": ["f3", "e2", "d1"], "color": "#4CAF5033", "duration_ms": 0}],
       "concept_arrows": [{"from": "f2", "to": "f3", "color": "#4CAF50CC"}]
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Bc2",
+      "popup_en": "The bishop changes route, but it can no longer catch the pawn in time.",
       "popup": "黑象换路，但已很难追上白兵。",
       "highlights": [],
       "concept_arrows": [{"from": "f5", "to": "c2", "color": "#E53935CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "a7",
+      "popup_en": "The pawn advances to the seventh rank. Promotion is imminent.",
       "popup": "♟ 白兵推进到第7格，升变在即！",
       "highlights": [{"squares": ["a7", "a8"], "color": "#FFD70077", "duration_ms": 0}],
       "concept_arrows": [{"from": "a6", "to": "a7", "color": "#FFD700CC"}]
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Bb3",
+      "popup_en": "The black bishop makes one last attempt to intercept the pawn.",
       "popup": "黑象最后一搏，试图拦截白兵。",
       "highlights": [],
       "concept_arrows": [{"from": "c2", "to": "b3", "color": "#E53935CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "a8=Q",
+      "popup_en": "The pawn promotes. The dark-squared bishop cannot stop it from reaching the light square a8.",
       "popup": "🎉 <b>升变！</b>黑象是暗格象，a8是浅色格，无法阻止。",
       "highlights": [{"squares": ["a8"], "color": "#FFD700BB", "duration_ms": 0}],
       "concept_arrows": [{"from": "a7", "to": "a8", "color": "#FFD700CC"}]
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Bd5+",
+      "popup_en": "The black bishop gives check in a final attempt to resist.",
       "popup": "黑象将军，作最后挣扎。",
       "highlights": [{"squares": ["d5", "a8"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "b3", "to": "d5", "color": "#E53935CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Qxd5+",
+      "popup_en": "The white queen captures the bishop with check. The result is decided.",
       "popup": "白后吃象并将军，大势已定。",
       "highlights": [],
       "concept_arrows": [{"from": "a8", "to": "d5", "color": "#4CAF50CC"}]
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Kxd5",
+      "popup_en": "The black king captures the queen, but White has an easy winning king-and-pawn ending.",
       "popup": "黑王吃后，剩白方轻松胜。",
       "highlights": [],
       "concept_arrows": []

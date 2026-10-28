@@ -1,0 +1,4 @@
+White can force a win by coordinating the king, bishop, and knight to drive the black king into a corner. The bishop covers squares of one color, while the knight controls neighboring squares; use all three pieces carefully and avoid stalemate.
+
+# END
+# Solution 1

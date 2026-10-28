@@ -1,0 +1,4 @@
+The bishop protects the d-pawn's promotion square, allowing the pawn to promote safely. Then use the queen and king together to drive the black king into a mating net.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+One of the key techniques is to bring the white king closer while avoiding the black rook's checks. The rook cuts off the black king as the connected pawns advance.
+
+# END
+# Solution 1

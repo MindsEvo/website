@@ -1,0 +1,4 @@
+A knight and a non-rook pawn can win when the king joins the attack. Activate the king, use pawn checks to drive the defender away, and bring the knight to key squares to support promotion.
+
+# END
+# Solution 1

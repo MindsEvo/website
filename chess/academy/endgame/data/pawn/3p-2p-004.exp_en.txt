@@ -1,0 +1,4 @@
+The white g-pawn has passed beside Black's g-pawn. Use f5 to force an exchange, then the king can capture the exposed black pawns.
+
+# END
+# Solution 1

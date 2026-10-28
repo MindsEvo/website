@@ -1,0 +1,4 @@
+A classic example of stopping a central passed pawn. Use the queen's checks and control to keep the king away from the promotion square.
+
+# END
+# Solution 1

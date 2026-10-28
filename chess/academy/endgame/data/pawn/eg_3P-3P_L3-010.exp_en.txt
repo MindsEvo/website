@@ -1,0 +1,4 @@
+The position is drawn with correct play. Use the king to hold the key squares and maintain the pawn balance.
+
+# END
+# Solution 1

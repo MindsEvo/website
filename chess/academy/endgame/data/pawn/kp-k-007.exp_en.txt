@@ -1,0 +1,4 @@
+Black draws against the a-pawn by taking the opposition and controlling the a8 promotion square. The white king cannot both support the pawn and prevent the black king from reaching the corner.
+
+# END
+# Solution 1

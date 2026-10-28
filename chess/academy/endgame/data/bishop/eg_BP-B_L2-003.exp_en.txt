@@ -1,0 +1,4 @@
+White has a chance to exchange the black bishop, after which the pawn can promote and win.
+
+# END
+# Solution 1

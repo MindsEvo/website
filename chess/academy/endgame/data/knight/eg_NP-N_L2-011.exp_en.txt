@@ -1,0 +1,4 @@
+Exchanging the knights is the key idea for White in this position.
+
+# END
+# Solution 1

@@ -2,11 +2,13 @@
   "game_id": "eg_K2R-K_L1-001-1",
   "description": "双车对王-L1 演示：双车割草，轮番压排将死",
   "intro": {
+    "popup_en": "The two-rook mowing method: one rook controls a rank or file, then the other crosses over to take the next one. Tighten the box and checkmate in three moves.",
     "flash_squares": ["g1", "a2", "h2"],
     "popup": "💡 <b>双车割草：双车轮番封排或列，收紧包围——三步将死！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Rh2 is checkmate. The two rooks work like a mowing team: one rook controls a rank, the other crosses it to control the next, steadily squeezing the black king until it has no escape.",
     "popup": "✅ <b>Rh2 — 将死！</b>要点：双车「割草机」——一车先占一排，另一车越过再占一排，逐步把黑王压入无路可走！</b>",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Rg1",
+      "popup_en": "1. Rg1: the rook moves to g1, ready to seal the g- and h-files and confine the black king to the h-file.",
       "popup": "⬆️ <b>1.Rg1 — 车移到g1，准备封锁g/h列！</b><br>车从移到g1，把黑王封锁在h列",
       "highlights": [
         {
@@ -36,6 +39,7 @@
     {
       "index": 1,
       "move": "Kh6",
+      "popup_en": "The black king can now move only up and down the h-file.",
       "popup": "⬇️ Kh6 — 黑王只能在h列上下移动了！",
       "highlights": [
         {
@@ -49,6 +53,7 @@
     {
       "index": 2,
       "move": "Ra2",
+      "popup_en": "2. Ra2: the other rook moves to a2, preparing to control the second rank. Note that Black cannot simply play ...Rh5 here.",
       "popup": "⬆️ <b>2.Ra2 — 另一车走到a2为下一步到和列做准备！注意黑车此时不可以直接到h5!",
       "highlights": [
         {
@@ -65,6 +70,7 @@
     {
       "index": 3,
       "move": "Kh7",
+      "popup_en": "The black king is forced back to the h-file.",
       "popup": "⬆️ Kh7 — 黑王只能退回在h列活动！",
       "highlights": [
         {
@@ -78,6 +84,7 @@
     {
       "index": 4,
       "move": "Rh2#",
+      "popup_en": "3. Rh2 is checkmate. The rook crosses the rank and completes the two-rook squeeze.",
       "popup": "⬆️ <b>3.Rh2# — 将死！</b><br>车沿平移到h2，双车割草完成！",
       "highlights": [
         {

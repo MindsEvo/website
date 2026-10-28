@@ -4,6 +4,7 @@
     {
       "key": "xRayAttack",
       "label": "透视攻击",
+      "label_en": "X-Ray Attack",
       "items": [
         { "id": "xRayAttack-001", "fen": "4r1k1/8/7p/5pp1/3R4/5PPP/1q1Q3K/8 b - - 0 1", "solutions": [{ "id": "xRayAttack-001" }] },
         { "id": "xRayAttack-002", "fen": "6k1/4rrp1/b6p/3QR3/1q1P4/8/P4PPP/4R1K1 b - - 0 1", "solutions": [{ "id": "xRayAttack-002" }] },
@@ -19,6 +20,7 @@
     {
       "key": "interference",
       "label": "拦截",
+      "label_en": "Interference",
       "items": [
         { "id": "interference-001", "fen": "2k1r3/pp2q3/3Q1p2/4n1p1/2p2p2/P4P2/1PP3PP/2KR1N2 b - - 0 1", "solutions": [{ "id": "interference-001" }] },
         { "id": "interference-002", "fen": "r4rk1/1b2bp1p/p1q1p1pQ/1p6/8/1BN1B1R1/PPP3PP/R5K1 w - - 0 1", "solutions": [{ "id": "interference-002" }] },
@@ -35,6 +37,7 @@
     {
       "key": "intermezzo",
       "label": "中间招",
+      "label_en": "Zwischenzug",
       "items": [
         { "id": "intermezzo-001", "fen": "5k2/1p1q2p1/p2p2p1/n2Nb2p/8/1PB4P/P5P1/Q5K1 w - - 0 1", "solutions": [{ "id": "intermezzo-001" }] },
         { "id": "intermezzo-002", "fen": "3r1rk1/p3bpp1/1q1p3p/8/4P3/1QN2P2/P5PP/3R1R1K w - - 0 1", "solutions": [{ "id": "intermezzo-002" }] },
@@ -51,6 +54,7 @@
     {
       "key": "clearance",
       "label": "腾挪",
+      "label_en": "Clearance",
       "items": [
         { "id": "clearance-001", "fen": "1kb1q2r/1p2p3/p7/1NB5/3QP3/8/PP6/K7 w - - 0 1", "solutions": [{ "id": "clearance-001" }] },
         { "id": "clearance-002", "fen": "r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w - - 0 1", "solutions": [{ "id": "clearance-002" }] },

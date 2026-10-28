@@ -1,0 +1,4 @@
+The position is drawn. Neither king can create a decisive breakthrough against accurate defense.
+
+# END
+# Solution 1

@@ -2,6 +2,7 @@
   "game_id": "eg_KP-K_L1-005-1",
   "description": "先手对王③：1.Ke4! 接 d5+ 强制对王，Kc6 踏关键格，白方赢",
   "intro": {
+    "popup_en": "This example starts with the pawn in front of the white king. What is the result?",
     "flash_squares": [
       "c6",
       "d6",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw. Black maintains the opposition throughout and uses the stalemate rule when no legal move remains and the king is not in check.",
     "popup": "🏆 <b>结论：这种局面是和棋， 黑一直坚持先手对王， 最后利用规则取得和棋。",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Ke4",
+      "popup_en": "1. Ke4! The white king approaches the key squares and prepares a checking pawn advance with d5+.",
       "popup": "⭐ 1.Ke4! — 白王踏上 e4，向关键格区域逼近，同时为 d5+ 将军做准备。",
       "highlights": [
         {
@@ -41,6 +44,7 @@
     {
       "index": 1,
       "move": "Ke6",
+      "popup_en": "...Ke6: the black king occupies the key square e6 and takes the opposition.",
       "popup": "♚ Ke6 — 黑王移步关键格 e6，先手对王！",
       "highlights": [
         {
@@ -62,6 +66,7 @@
     {
       "index": 2,
       "move": "d5+",
+      "popup_en": "2. d5+! The pawn checks and drives the black king away.",
       "popup": "🔥 2.d5+! — 兵将军！<b>黑王被逐离。",
       "highlights": [
         {
@@ -84,6 +89,7 @@
     {
       "index": 3,
       "move": "Kd6",
+      "popup_en": "...Kd6: forced by the check, the black king moves to d6 and blocks the pawn.",
       "popup": "♚ Kd6 — 被将军，移到d6， 阻挡</b>",
       "highlights": [
         {
@@ -106,6 +112,7 @@
     {
       "index": 4,
       "move": "Kd4",
+      "popup_en": "3. Kd4: the white king retreats, preparing another flank approach.",
       "popup": "♔ 3.Kd4 — 白王后撤，准备侧翼再攻。",
       "highlights": [],
       "concept_arrows": [
@@ -119,6 +126,7 @@
     {
       "index": 5,
       "move": "Kd7",
+      "popup_en": "...Kd7: the black king retreats and temporarily clears d6.",
       "popup": "♚ Kd7 — 黑王后退，腾出 d6。",
       "highlights": [],
       "concept_arrows": [
@@ -132,6 +140,7 @@
     {
       "index": 6,
       "move": "Kc5",
+      "popup_en": "4. Kc5! The white king heads toward the key square c6.",
       "popup": "⭐ 4.Kc5! — 白王向 c6 关键格进发！",
       "highlights": [
         {
@@ -153,6 +162,7 @@
     {
       "index": 7,
       "move": "Kc7",
+      "popup_en": "...Kc7: the black king takes the opposition.",
       "popup": "♚ Kc7 — 黑王先手对王！",
       "highlights": [
         {
@@ -174,6 +184,7 @@
     {
       "index": 8,
       "move": "d6+",
+      "popup_en": "5. d6+! The pawn checks and drives the black king away again.",
       "popup": "🔥 5.d6+! — 兵将军，黑王被再次驱离！",
       "highlights": [
         {
@@ -195,6 +206,7 @@
     {
       "index": 9,
       "move": "Kd8",
+      "popup_en": "...Kd8: forced by check, the black king retreats to the back rank.",
       "popup": "♚ Kd8 — 被将军，退到底线。",
       "highlights": [],
       "concept_arrows": [
@@ -208,6 +220,7 @@
     {
       "index": 10,
       "move": "Kc6",
+      "popup_en": "6. Kc6! The white king continues around the flank.",
       "popup": "⭐ 6.Kc6! — <b>白王继续侧翼前行！</b>",
       "highlights": [
         {
@@ -229,6 +242,7 @@
     {
       "index": 11,
       "move": "Kc8",
+      "popup_en": "...Kc8: the black king finds its last chance to take the opposition.",
       "popup": "♚ Kc8 — 黑王最后取得先手对王的机会。",
       "highlights": [],
       "concept_arrows": [
@@ -242,6 +256,7 @@
     {
       "index": 12,
       "move": "d7+",
+      "popup_en": "7. d7+! The pawn advances with check.",
       "popup": "🔥 7.d7+! — 兵冲 d7，将军！",
       "highlights": [],
       "concept_arrows": [
@@ -255,6 +270,7 @@
     {
       "index": 13,
       "move": "Kd8",
+      "popup_en": "...Kd8: the black king is forced to d8 and successfully secures the draw.",
       "popup": "♚ Kd8 — 被将军，黑王d8， 成功的取得了和棋的机会。",
       "highlights": [],
       "concept_arrows": [
@@ -268,6 +284,7 @@
     {
       "index": 14,
       "move": "Kd6",
+      "popup_en": "8. Kd6: White has only a king move. Black has no legal move but is not in check, so the game is stalemate and drawn.",
       "popup": "♔ 8.Kd6 — <b>白只能走王，此时黑棋无棋可走，也没有被将军，和棋！</b>",
       "highlights": [
         {

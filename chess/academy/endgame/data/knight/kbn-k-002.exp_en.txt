@@ -1,0 +1,4 @@
+The color of the bishop determines the target corner. Coordinate the bishop, knight, and king to force the black king into a corner of the bishop's color, then deliver mate.
+
+# END
+# Solution 1

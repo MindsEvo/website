@@ -2,11 +2,13 @@
   "game_id": "eg_KBP-K_L1-002-1",
   "description": "象兵对王-L1 演示2：边路兵闪电绝杀",
   "intro": {
+    "popup_en": "Bishop and pawn deliver a corner mate: the white king is on g6, the h-pawn on h6, and the bishop on h4. The black king has just reached h8, and White can mate in two moves.",
     "flash_squares": ["g6", "h6", "h4", "h8"],
     "popup": "💡 <b>象兵对王·边路绝杀</b><br>白王g6，h兵在h6，象在h4。黑王刚进h8——<b>仅需两步完成绝杀！</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "The escape squares are covered three ways: the pawn controls g8, the king controls g7 and f7, and the bishop controls the h8 diagonal. The black king has nowhere to go.",
     "popup": "✅ 三重封锁：兵封g8 + 王封g7/f7 + 象控h8——角落无处可逃！",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Kg8",
+      "popup_en": "The black king has only one active move.",
       "popup": "黑王唯一活动。",
       "highlights": [],
       "concept_arrows": []
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "h7+",
+      "popup_en": "The h-pawn advances with check, attacking the black king on g8. The king must return to h8.",
       "popup": "⭐ <b>h7+！</b>兵冲出，攻击g8黑王——将军！黑王只能退回h8。",
       "highlights": [
         {
@@ -51,6 +55,7 @@
     {
       "index": 2,
       "move": "Kh8",
+      "popup_en": "The black king is forced back into the corner with no escape.",
       "popup": "黑王被迫退回角落，无路可逃。",
       "highlights": [],
       "concept_arrows": []
@@ -58,6 +63,7 @@
     {
       "index": 3,
       "move": "Bf6#",
+      "popup_en": "Bf6 is checkmate. The bishop controls the g7-h8 diagonal, trapping the black king in the corner.",
       "popup": "⭐ <b>Bf6# 绝杀！</b>象到f6，守住g7/h8斜线——黑王在角落束手就擒！",
       "highlights": [
         {

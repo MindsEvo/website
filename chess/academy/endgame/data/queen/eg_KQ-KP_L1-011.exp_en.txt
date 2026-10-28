@@ -1,0 +1,4 @@
+A classic example involving a knight pawn. Coordinate queen and king to restrain the pawn and prevent promotion.
+
+# END
+# Solution 1

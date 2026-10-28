@@ -1,0 +1,4 @@
+The white king should advance on squares of the opposite color from Black's bishop. This makes the queen-versus-bishop ending easier to win: use checks to separate the black king from the bishop, bring the white king closer, then coordinate the queen and king for mate.
+
+# END
+# Solution 1

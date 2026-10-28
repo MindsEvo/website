@@ -2,11 +2,13 @@
   "game_id": "eg_QP-Q_L2-001-1",
   "description": "后兵对后 — 白方弃后换路，兵升变获胜",
   "intro": {
+    "popup_en": "Queen and pawn versus queen: White's pawn is on e7, while Black's queen blocks its promotion on e8. White's idea is to sacrifice the queen and force an exchange so the pawn can promote.",
     "flash_squares": ["e7", "e8", "e3", "f6"],
     "popup": "♛ <b>后兵对后</b><br>白方兵在e7，黑后守在e8挡住升变。<br>白方的创意：<b>弃掉白后，逼黑后换子，兵顺利升变！</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. Qg6+ tempts the black queen to capture; the white king recaptures, clearing the promotion route for e8=Q. The king must first approach e7 to support this sacrifice.",
     "popup": "✅ <b>白方获胜！</b>Qg6+诱使黑后吃后，王吃回后兵通路已清，e8=Q升变。<br>关键：王逼近e7支援是弃后计划的前提。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Kg7",
+      "popup_en": "The white king approaches e7, preparing to support the promotion.",
       "popup": "♔ 白王逼近e7，准备支援升变。",
       "highlights": [{"squares": ["e7", "e8"], "color": "#FFD70055", "duration_ms": 0}],
       "concept_arrows": [{"from": "f6", "to": "g7", "color": "#4CAF50CC"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Kb1",
+      "popup_en": "The black king heads toward the center to join the defense.",
       "popup": "黑王向中心趋近，试图参与防守。",
       "highlights": [],
       "concept_arrows": []
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Qb6+",
+      "popup_en": "The white queen checks and drives the black king away.",
       "popup": "白后将军，驱赶黑王远离。",
       "highlights": [{"squares": ["b6", "a1"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "e3", "to": "b6", "color": "#4CAF50CC"}, {"from": "b6", "to": "a1", "color": "#FF6B3599"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Ka1",
+      "popup_en": "The black king is forced back to the corner.",
       "popup": "黑王被迫退回角落。",
       "highlights": [],
       "concept_arrows": []
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Qf6+",
+      "popup_en": "Another check keeps up the pressure.",
       "popup": "连续将军，保持压力。",
       "highlights": [],
       "concept_arrows": [{"from": "b6", "to": "f6", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Kb1",
+      "popup_en": "The black king retreats.",
       "popup": "黑王回撤。",
       "highlights": [],
       "concept_arrows": []
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Qg6+",
+      "popup_en": "The key queen sacrifice: Qg6+ tempts Black to capture, clearing the promotion route.",
       "popup": "⚡ <b>关键弃后！</b>白后移到g6将军，诱黑后吃后——通路清空！",
       "highlights": [
         {"squares": ["g6"], "color": "#FFD700AA", "duration_ms": 0},
@@ -67,6 +76,7 @@
     {
       "index": 7,
       "move": "Qxg6+",
+      "popup_en": "The black queen is forced to capture. The path to e8 is clear.",
       "popup": "黑后被迫吃后——e8升变路已清！",
       "highlights": [{"squares": ["e8"], "color": "#FFD70077", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "g6", "color": "#E53935CC"}]
@@ -74,6 +84,7 @@
     {
       "index": 8,
       "move": "Kxg6",
+      "popup_en": "The white king recaptures, and the e7-pawn can now promote.",
       "popup": "白王吃回，e7兵现在可以升变。",
       "highlights": [{"squares": ["e7", "e8"], "color": "#FFD70077", "duration_ms": 0}],
       "concept_arrows": [{"from": "g7", "to": "g6", "color": "#4CAF50CC"}]
@@ -81,6 +92,7 @@
     {
       "index": 9,
       "move": "Kc2",
+      "popup_en": "The black king races toward e8 to try to stop the pawn.",
       "popup": "黑王赶向e8，试图阻止。",
       "highlights": [],
       "concept_arrows": [{"from": "b1", "to": "c2", "color": "#E53935CC"}]
@@ -88,6 +100,7 @@
     {
       "index": 10,
       "move": "Kf5",
+      "popup_en": "The white king guards the promotion route; the black king cannot catch up.",
       "popup": "白王护路，黑王追不上。",
       "highlights": [],
       "concept_arrows": [{"from": "g6", "to": "f5", "color": "#4CAF50CC"}]
@@ -95,6 +108,7 @@
     {
       "index": 11,
       "move": "Kd3",
+      "popup_en": "The black king keeps running, but it is too far away.",
       "popup": "黑王继续跑，但距离太远。",
       "highlights": [],
       "concept_arrows": []
@@ -102,6 +116,7 @@
     {
       "index": 12,
       "move": "e8=Q",
+      "popup_en": "The pawn promotes. White's queen-sacrifice plan has worked perfectly.",
       "popup": "🎉 <b>升变！</b>白方弃后换路的计划完美执行。",
       "highlights": [{"squares": ["e8"], "color": "#FFD700BB", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "e8", "color": "#FFD700CC"}]
@@ -109,6 +124,7 @@
     {
       "index": 13,
       "move": "Kc4",
+      "popup_en": "The black king cannot change the result and runs without hope.",
       "popup": "黑王无力回天，四处逃跑。",
       "highlights": [],
       "concept_arrows": []
@@ -116,6 +132,7 @@
     {
       "index": 14,
       "move": "Qa4+",
+      "popup_en": "The queen checks and finishes easily; White's advantage is decisive.",
       "popup": "白后将军，轻松收官，大势已定。",
       "highlights": [],
       "concept_arrows": [{"from": "e8", "to": "a4", "color": "#4CAF50CC"}]

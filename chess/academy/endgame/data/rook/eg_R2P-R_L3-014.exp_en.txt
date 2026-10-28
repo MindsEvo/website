@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Study the interaction between the two pawns, the kings, and the rooks in the supplied line.
+
+# END
+# Solution 1

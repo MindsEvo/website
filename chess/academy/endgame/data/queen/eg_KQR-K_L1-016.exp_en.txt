@@ -1,0 +1,4 @@
+Deliver a direct mate while keeping the queen and rook coordinated and the black king at a safe distance.
+
+# END
+# Solution 1

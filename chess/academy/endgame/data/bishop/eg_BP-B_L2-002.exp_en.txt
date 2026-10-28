@@ -1,0 +1,4 @@
+White's main plan is to use the king's support to exchange the black bishop while continuing to protect the pawn's promotion. Black must prevent the pawn from promoting and try to exchange it instead. Both sides need to be precise: a small mistake by Black can lose, while a mistake by White can let the draw escape.
+
+# END
+# Solution 1

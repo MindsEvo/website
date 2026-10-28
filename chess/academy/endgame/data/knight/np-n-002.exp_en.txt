@@ -1,0 +1,4 @@
+The white knight escorts the b-pawn. Keep the knight ahead of the pawn, use the king to support its advance, and promote before the black king can arrive.
+
+# END
+# Solution 1

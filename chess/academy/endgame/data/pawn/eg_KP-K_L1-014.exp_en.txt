@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Practice the opposition and determine whether the pawn can promote.
+
+# END
+# Solution 1

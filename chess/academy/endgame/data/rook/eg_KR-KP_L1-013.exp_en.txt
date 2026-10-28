@@ -1,0 +1,4 @@
+The rook and king have separate roles: the rook watches the pawn while the king advances quickly toward the back rank and keeps the black king occupied.
+
+# END
+# Solution 1

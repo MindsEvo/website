@@ -1,0 +1,4 @@
+The source explanation for this practice position is not available. Study the move line and look for ways to coordinate the queen and king while supporting the passed pawn.
+
+# END
+# Solution 1

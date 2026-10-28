@@ -1,0 +1,11 @@
+Demo 1: Bring the white king closer first, then use the queen to control the seventh rank and force the black king toward the edge.
+
+1. Kc4: The white king approaches and reduces the black king's space; the black king retreats to b6.
+2. Qd7+: The queen controls the seventh rank and cuts off the route upward, forcing the king toward a6.
+3. Qb5+: The queen checks along the diagonal and drives the king to a7 near the edge.
+4. Ra1+: The rook controls the a-file and completes the mating net.
+
+Key idea: the king approaches, the queen cuts off escape squares, and the rook seals the file.
+
+# END
+# Solution 1

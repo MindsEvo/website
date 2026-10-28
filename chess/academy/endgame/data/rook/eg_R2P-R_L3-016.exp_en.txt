@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Practice coordinating the king and rook to support the two pawns.
+
+# END
+# Solution 1

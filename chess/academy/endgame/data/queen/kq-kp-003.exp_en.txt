@@ -1,0 +1,4 @@
+With a bishop-pawn and the white king far away, Black may be able to draw by using the corner rule and perpetual check.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+White wins. Compare the king routes and pawn breaks to see why the connected pawns advance successfully.
+
+# END
+# Solution 1

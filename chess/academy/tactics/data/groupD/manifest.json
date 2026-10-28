@@ -4,6 +4,7 @@
     {
       "key": "trappedPiece",
       "label": "困子",
+      "label_en": "Trapped Piece",
       "items": [
         { "id": "trappedPiece-001", "fen": "r4r2/p2q2kp/1p3pn1/4p1pQ/3pP3/3P2N1/PP3PPP/3R1RK1 b - - 0 1", "solutions": [{ "id": "trappedPiece-001" }] },
         { "id": "trappedPiece-002", "fen": "3r1rk1/1p3pp1/2p4p/3pP3/p2R2b1/bBB1qN2/2P3PR/1K3Q2 w - - 0 1", "solutions": [{ "id": "trappedPiece-002" }] },
@@ -18,6 +19,7 @@
     {
       "key": "blockade",
       "label": "阻塞",
+      "label_en": "Blockade",
       "items": [
         { "id": "blockade-001", "fen": "3r2rk/6p1/5n1p/5Q2/3q3N/8/PPB5/K7 w - - 0 1", "solutions": [{ "id": "blockade-001" }] },
         { "id": "blockade-002", "fen": "6R1/3r3p/1p1n2pk/2p1Q3/1PB3P1/PKP5/5q2/8 w - - 0 1", "solutions": [{ "id": "blockade-002" }] },
@@ -35,6 +37,7 @@
     {
       "key": "zugzwang",
       "label": "逼着",
+      "label_en": "Zugzwang",
       "items": [
         { "id": "zugzwang-001", "fen": "8/8/8/3p4/2kP1K2/8/8/8 w - - 0 1", "solutions": [{ "id": "zugzwang-001" }] },
         { "id": "zugzwang-002", "fen": "5Kbk/6pp/6P1/8/8/8/8/7R w - - 0 1", "solutions": [{ "id": "zugzwang-002" }] },
@@ -49,6 +52,7 @@
     {
       "key": "sacrifice",
       "label": "弃子",
+      "label_en": "Sacrifice",
       "items": [
         { "id": "sacrifice-001", "fen": "5Bk1/1p4pp/p1p1p3/P6q/4P3/P4r1P/2P1QbP1/3RR2K b - - 0 1", "solutions": [{ "id": "sacrifice-001" }] },
         { "id": "sacrifice-002", "fen": "5q2/1kp3PP/1p6/3P4/p7/PrP3Q1/1P6/KR6 b - - 0 1", "solutions": [{ "id": "sacrifice-002" }] },

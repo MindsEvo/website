@@ -1,0 +1,4 @@
+The white king and rook work together to capture the black pawn. Drive the defending king away with the rook, then bring the white king forward and stop the pawn.
+
+# END
+# Solution 1

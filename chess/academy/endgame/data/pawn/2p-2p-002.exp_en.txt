@@ -1,0 +1,4 @@
+The white king is already deep in Black's position. Advance the connected g- and h-pawns together with the king in front; Black cannot stop both routes.
+
+# END
+# Solution 1

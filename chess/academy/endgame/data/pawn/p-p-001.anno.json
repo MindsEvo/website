@@ -2,6 +2,7 @@
   "game_id": "eg_P-P_L2-001-1",
   "description": "兵对兵①：对立位制胜 — 白王在侧翼占据对立位，强行突破",
   "intro": {
+    "popup_en": "Winning with the opposition: the white king on b5 and black king on f4 are not on the same file. By taking the opposition, White can force the d-pawn forward.",
     "flash_squares": ["b5", "d4", "f4", "d5"],
     "concept_arrows": [
       {"from": "b5", "to": "d5", "color": "#FF6B35CC"}
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. Once the white king takes the opposition, the d-pawn cannot be stopped and will promote.",
     "popup": "✅ <b>结论：白胜！</b> 白王占据对立位后，d 兵无法被拦截，顺利升变。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kc5",
+      "popup_en": "1. Kc5: the white king approaches and contests the opposition.",
       "popup": "1.Kc5 — 白王靠近，争夺对立位。",
       "highlights": [],
       "concept_arrows": [
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Ke4",
+      "popup_en": "1...Ke4: the black king tries to stop the pawn.",
       "popup": "1...Ke4 — 黑王试图阻挡白兵。",
       "highlights": [],
       "concept_arrows": [
@@ -36,6 +40,7 @@
     {
       "index": 2,
       "move": "Kc4",
+      "popup_en": "2. Kc4: the white king takes the opposition, allowing the d-pawn to advance safely.",
       "popup": "2.Kc4 — 白王取得对立位，d 兵可安全前进。",
       "highlights": [
         {"squares": ["c4", "e4"], "color": "#FFD70055", "duration_ms": 0}
@@ -47,6 +52,7 @@
     {
       "index": 3,
       "move": "Ke5",
+      "popup_en": "2...Ke5: the black king has no choice but to give up the d-file.",
       "popup": "2...Ke5 — 黑王别无选择，让出 d 线。",
       "highlights": [],
       "concept_arrows": [
@@ -56,6 +62,7 @@
     {
       "index": 4,
       "move": "d5",
+      "popup_en": "3. d5: the pawn advances safely.",
       "popup": "3.d5 — 兵安全前进！",
       "highlights": [],
       "concept_arrows": [

@@ -1,0 +1,4 @@
+The pawns are locked in a direct opposition, and the side to move cannot make progress without losing a pawn. The defending king mirrors the white king's moves to hold the draw.
+
+# END
+# Solution 1

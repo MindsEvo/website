@@ -1,0 +1,4 @@
+The a-pawn and knight cannot force a win if the black king reaches the a8 corner. The knight cannot drive the king away, and a promoted queen can be captured. The corner defense holds the draw.
+
+# END
+# Solution 1

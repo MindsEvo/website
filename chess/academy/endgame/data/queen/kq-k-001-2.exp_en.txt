@@ -1,0 +1,4 @@
+In the edge-driving method, the queen controls ranks and files while the king approaches from the side. Coordinate the pieces to confine the enemy king to the a-file, then deliver checkmate along that file. The same position can offer several different winning routes.
+
+# END
+# Solution 2

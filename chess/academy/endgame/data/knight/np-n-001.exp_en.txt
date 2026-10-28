@@ -1,0 +1,4 @@
+The knight sacrifice clears the promotion route. After the black knight captures on a6, the white king supports the d-pawn and it promotes safely on d8.
+
+# END
+# Solution 1

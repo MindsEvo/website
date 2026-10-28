@@ -1,0 +1,6 @@
+1. The black rook on a7 is on the same file as its king. Start by using repeated queen checks to drive the black king away.
+2. If the rook gives check to gain activity, capture it when the opportunity appears.
+3. After winning the rook, coordinate queen and king to finish quickly. Avoid stalemate, especially when the black king is in the corner.
+
+# END
+# Solution 1

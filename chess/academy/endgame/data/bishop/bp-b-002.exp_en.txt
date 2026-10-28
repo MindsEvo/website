@@ -1,0 +1,4 @@
+With same-colored bishops, Black can draw by keeping the bishop safe from exchange and guarding the key f6-g7 diagonal. The edge pawns have too few routes to make progress, so the position repeats.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+The black knight draws by calculating its route exactly: checks from e5 force the king to retreat while the knight catches up with the b-pawn. If the knight were one tempo slower, the pawn would promote.
+
+# END
+# Solution 1

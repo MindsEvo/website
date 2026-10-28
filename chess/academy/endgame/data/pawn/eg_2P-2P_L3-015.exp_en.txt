@@ -1,0 +1,4 @@
+This position has many variations and requires careful calculation. Compare the pawn breaks and king routes in each line.
+
+# END
+# Solution 1

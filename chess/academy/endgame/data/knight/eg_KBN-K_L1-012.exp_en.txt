@@ -1,0 +1,4 @@
+White is winning. The bishop and knight already restrict the black king; bring the white king over to join them and complete the mating net.
+
+# END
+# Solution 1

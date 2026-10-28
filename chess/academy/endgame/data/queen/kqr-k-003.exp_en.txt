@@ -1,0 +1,10 @@
+Demo 3: The rook leads the attack, the queen blocks the king's escape squares, and the rook returns to deliver mate.
+
+1. Rd1: The rook controls the d-file and drives the black king toward the edge.
+2. Qd6: The queen covers key squares and forces the king to a5.
+3. Rd5#: The rook moves across the file to checkmate.
+
+This is a compact example of the queen, rook, and king working together to restrict and mate a lone king.
+
+# END
+# Solution 1

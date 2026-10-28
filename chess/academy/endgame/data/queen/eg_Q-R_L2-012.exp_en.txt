@@ -1,0 +1,6 @@
+1. The black king is on c7. Use a sequence of checks to drive it to the back rank.
+2. Bring the white king toward the center to support the queen's attack.
+3. The black rook is eventually forced into a fatal position on the back rank.
+
+# END
+# Solution 1

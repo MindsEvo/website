@@ -1,0 +1,4 @@
+Coordinate the king, bishop, and pawn: use the king and bishop to control e7, advance the d-pawn, and promote with check. The new queen and king then deliver mate.
+
+# END
+# Solution 1

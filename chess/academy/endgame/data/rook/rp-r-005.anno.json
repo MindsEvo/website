@@ -2,11 +2,13 @@
   "game_id": "eg_RP-R_L2-005-1",
   "description": "兵在7线——黑方侧翼将军循环保和",
   "intro": {
+    "popup_en": "The pawn is already on the seventh rank, but the black rook can draw with repeated lateral checks, keeping the white king away from the promotion square.",
     "flash_squares": ["e7", "e8", "a3"],
     "popup": "<b>兵已在7线，黑车侧翼将军</b>黑方不断将军，利用循环保和。",
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw. The black rook keeps checking from the side, and White cannot break the cycle or return the king to the pawn in time.",
     "popup": "<b>和棋</b>侧翼将军循环，无法突破。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Ra8+",
+      "popup_en": "The black rook checks and drives the white king away from the promotion square.",
       "popup": "<b>黑车将军！</b>驱赶白王离开升变格。",
       "highlights": [{"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a3", "to": "a8", "color": "#E53935CC"}],
@@ -23,6 +26,7 @@
     {
       "index": 1,
       "move": "Kd7",
+      "popup_en": "The white king is forced away from e8.",
       "popup": "白王被迫离开e8。",
       "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "d7", "color": "#4CAF50CC"}],
@@ -31,6 +35,7 @@
     {
       "index": 2,
       "move": "Ra7+",
+      "popup_en": "The rook follows with another check, keeping up the pressure.",
       "popup": "黑车紧跟将军，不放松。",
       "highlights": [{"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a8", "to": "a7", "color": "#E53935CC"}],
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Kd6",
+      "popup_en": "The white king continues to flee.",
       "popup": "白王继续逃离。",
       "highlights": [{"squares": ["d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "d6", "color": "#4CAF50CC"}],
@@ -47,6 +53,7 @@
     {
       "index": 4,
       "move": "Ra6+",
+      "popup_en": "The black rook follows and keeps checking from a safe distance.",
       "popup": "黑车跟进，保持将军距离。",
       "highlights": [{"squares": ["d6"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a7", "to": "a6", "color": "#E53935CC"}],
@@ -55,6 +62,7 @@
     {
       "index": 5,
       "move": "Kd5",
+      "popup_en": "The white king has to move farther from the pawn.",
       "popup": "白王只能远离兵。",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "d5", "color": "#4CAF50CC"}],
@@ -63,6 +71,7 @@
     {
       "index": 6,
       "move": "Ra5+",
+      "popup_en": "The rook checks again.",
       "popup": "黑车再将军。",
       "highlights": [{"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a6", "to": "a5", "color": "#E53935CC"}],
@@ -71,6 +80,7 @@
     {
       "index": 7,
       "move": "Kd4",
+      "popup_en": "The white king continues to be driven away.",
       "popup": "白王继续被追。",
       "highlights": [{"squares": ["d4"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "d4", "color": "#4CAF50CC"}],
@@ -79,6 +89,7 @@
     {
       "index": 8,
       "move": "Ra8",
+      "popup_en": "The rook returns to a8 and waits. The white king is too far from the pawn to defend it.",
       "popup": "黑车退回等待。白王离兵太远，无法回防。",
       "highlights": [{"squares": ["a8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "a5", "to": "a8", "color": "#E53935CC"}],
@@ -87,6 +98,7 @@
     {
       "index": 9,
       "move": "Kc5",
+      "popup_en": "The white king tries to return.",
       "popup": "白王试图回来。",
       "highlights": [{"squares": ["c5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d4", "to": "c5", "color": "#4CAF50CC"}],
@@ -95,6 +107,7 @@
     {
       "index": 10,
       "move": "Ra5+",
+      "popup_en": "The black rook checks again. White cannot approach the pawn, so Black draws by repetition.",
       "popup": "<b>黑车又将军！</b>白王无法靠近，循环将军保和。",
       "highlights": [{"squares": ["c5"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a8", "to": "a5", "color": "#E53935CC"}],

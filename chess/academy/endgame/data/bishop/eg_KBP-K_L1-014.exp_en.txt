@@ -1,0 +1,4 @@
+Coordinate the three white pieces to restrict the lone black king and finish the game.
+
+# END
+# Solution 1

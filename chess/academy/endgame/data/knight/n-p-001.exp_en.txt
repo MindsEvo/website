@@ -1,0 +1,4 @@
+The black knight draws by checking and shuttling between a6 and b8, always controlling the b8 promotion square. The white king cannot drive it away in time.
+
+# END
+# Solution 1

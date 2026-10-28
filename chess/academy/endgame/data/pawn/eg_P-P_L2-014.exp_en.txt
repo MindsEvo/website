@@ -1,0 +1,4 @@
+Try several different moves and evaluate the king positions after each one.
+
+# END
+# Solution 1

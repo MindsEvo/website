@@ -1,0 +1,4 @@
+On the edge of the board, Black can use the drawing rules to hold the position.
+
+# END
+# Solution 1

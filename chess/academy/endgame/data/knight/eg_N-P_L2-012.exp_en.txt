@@ -1,0 +1,4 @@
+Against a central pawn, the knight can prevent safe promotion and hold the draw.
+
+# END
+# Solution 1

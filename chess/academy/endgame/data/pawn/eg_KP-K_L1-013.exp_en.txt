@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Use the move line to study how the king and pawn can work together.
+
+# END
+# Solution 1

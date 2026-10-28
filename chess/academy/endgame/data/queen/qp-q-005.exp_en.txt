@@ -1,0 +1,4 @@
+White uses precise king and queen moves to block the black queen's checks. When the black king joins the attack, White sacrifices the queen with check to clear the a-pawn's route to promotion.
+
+# END
+# Solution 1

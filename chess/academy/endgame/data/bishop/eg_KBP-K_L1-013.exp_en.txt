@@ -1,0 +1,4 @@
+Black draws by occupying the key squares and using the drawing rules. If White's bishop were dark-squared instead, Black could not hold the draw.
+
+# END
+# Solution 1

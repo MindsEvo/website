@@ -1,0 +1,4 @@
+When the knight is too far away, the pawn promotes before it can intervene. The new queen and king can then chase and capture the knight.
+
+# END
+# Solution 1

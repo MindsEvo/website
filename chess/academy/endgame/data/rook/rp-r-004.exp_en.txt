@@ -1,0 +1,4 @@
+White uses the king and rook to drive away the black rook's lateral checks. Once the white rook cuts off the attacker, the pawn can advance toward promotion.
+
+# END
+# Solution 1

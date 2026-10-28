@@ -2,6 +2,7 @@
   "game_id": "eg_KP-K_L1-004-1",
   "description": "先手对王②：正确路线——1.d4 先推兵，2.Kc6 侧翼迂回，白王踏上关键格赢棋",
   "intro": {
+    "popup_en": "The key squares are c6, d6, and e6. White can first advance the pawn, forcing the black king to move and allowing White to take the opposition.",
     "flash_squares": [
       "c6",
       "d6",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "To win a king-and-pawn ending, the pawn must promote. Taking the opposition is the key technique.",
     "popup": "🏆 <b>结论：王兵对王的残局，要取胜必须兵升变， 先手对王是关键！",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "d4",
+      "popup_en": "1. d4! Advance the pawn first, forcing the black king to move and giving White the opposition.",
       "popup": "⭐ 1.d4! — <b>先推兵！</b>等待黑王移动，取得先手对王机会。",
       "highlights": [
         {
@@ -40,6 +43,7 @@
     {
       "index": 1,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king is forced to move to the right.",
       "popup": "♚ Ke7 — 黑王被迫选择右移。",
       "highlights": [],
       "concept_arrows": [
@@ -53,6 +57,7 @@
     {
       "index": 2,
       "move": "Kc6",
+      "popup_en": "2. Kc6! The white king takes the flank route to the key square c6. Black cannot control c6 and the other key squares at once.",
       "popup": "⭐ 2.Kc6! — <b>侧翼迂回！</b>白王争取到c6的关键格，黑王无法同时封锁c6！",
       "highlights": [
         {
@@ -82,6 +87,7 @@
     {
       "index": 3,
       "move": "Ke8",
+      "popup_en": "...Ke8: the black king is forced to the back rank and has lost the opposition.",
       "popup": "♚ Ke8 — 黑王被迫退到底线，对王已失。",
       "highlights": [],
       "concept_arrows": [
@@ -95,6 +101,7 @@
     {
       "index": 4,
       "move": "d5",
+      "popup_en": "3. d5: the pawn advances with the white king on c6 to support it.",
       "popup": "♟ 3.d5 — 兵向前！白王 c6，兵 d5，协同推进。",
       "highlights": [],
       "concept_arrows": [
@@ -108,6 +115,7 @@
     {
       "index": 5,
       "move": "Kd8",
+      "popup_en": "...Kd8: the black king holds the eighth rank and blocks from the front.",
       "popup": "♚ Kd8 — 黑王守住 d8，正面拦截。",
       "highlights": [],
       "concept_arrows": [
@@ -121,6 +129,7 @@
     {
       "index": 6,
       "move": "Kd6",
+      "popup_en": "4. Kd6! The white king reaches the key square d6 and takes the opposition. Promotion is now assured.",
       "popup": "⭐ 4.Kd6 — <b>白王踏上关键格 d6！</b>继续先手对王! 升变已无悬念。",
       "highlights": [
         {
@@ -142,6 +151,7 @@
     {
       "index": 7,
       "move": "Ke8",
+      "popup_en": "...Ke8: the black king can only watch from the back rank.",
       "popup": "♚ Ke8 — 黑王眼望底线，无计可施。",
       "highlights": [],
       "concept_arrows": [
@@ -155,6 +165,7 @@
     {
       "index": 8,
       "move": "Kc7",
+      "popup_en": "5. Kc7: the white king escorts the pawn forward.",
       "popup": "♔ 5.Kc7 — 白王护兵前行。",
       "highlights": [],
       "concept_arrows": [
@@ -168,6 +179,7 @@
     {
       "index": 9,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king makes one last attempt to block.",
       "popup": "♚ Ke7 — 黑王最后挣扎，试图拦截。",
       "highlights": [],
       "concept_arrows": [
@@ -181,6 +193,7 @@
     {
       "index": 10,
       "move": "d6+",
+      "popup_en": "6. d6+ checks, forcing the black king to give way.",
       "popup": "🔥 6.d6+ — 兵将军！黑王被迫让路。",
       "highlights": [],
       "concept_arrows": [
@@ -194,6 +207,7 @@
     {
       "index": 11,
       "move": "Ke6",
+      "popup_en": "...Ke6: the black king moves next to the pawn for one last defense.",
       "popup": "♚ Ke6 — 黑王贴兵，最后防守。",
       "highlights": [],
       "concept_arrows": [
@@ -207,6 +221,7 @@
     {
       "index": 12,
       "move": "d7",
+      "popup_en": "7. d7: the pawn is one step from promotion.",
       "popup": "♟ 7.d7 — 兵距升变只差一步！",
       "highlights": [
         {
@@ -229,6 +244,7 @@
     {
       "index": 13,
       "move": "Ke5",
+      "popup_en": "...Ke5: the black king abandons d8 and cannot stop promotion.",
       "popup": "♚ Ke5 — 黑王放弃 d8，无路可挡。",
       "highlights": [],
       "concept_arrows": [
@@ -242,6 +258,7 @@
     {
       "index": 14,
       "move": "d8=Q",
+      "popup_en": "8. d8=Q promotes. The key sequence was 1. d4 to gain the opposition, followed by 2. Kc6 via the flank.",
       "popup": "👑 8.d8=Q — <b>升后！白方赢棋！</b><br>核心：1.d4 先推兵 + 2.Kc6 侧翼迂回 = 先手对王标准套路。",
       "highlights": [
         {

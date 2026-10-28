@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Use the board and move line to practice coordinating the queen and king against a bishop.
+
+# END
+# Solution 1

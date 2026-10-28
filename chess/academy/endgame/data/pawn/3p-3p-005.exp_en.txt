@@ -1,0 +1,4 @@
+The white king's advanced position is decisive. Use it to break the symmetry with b4, exchange pawns, and create a passed b-pawn.
+
+# END
+# Solution 1

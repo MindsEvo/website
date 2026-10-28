@@ -2,6 +2,7 @@
   "game_id": "eg_KR-KP_L1-002-1",
   "description": "车对g兵 — 车斜线拦截孤兵",
   "intro": {
+    "popup_en": "Black's g4-pawn is advancing quickly. Bring the rook in front of it along the g-file, cutting off the isolated pawn from support.",
     "flash_squares": [
       "g4",
       "b1"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The game is decided in just five moves. Quickly transfer the rook in front of the pawn; once the isolated pawn is stopped, it will fall.",
     "popup": "✅ 短短5步完成！<br>技巧：<b>车迅速转移到兵前方</b>，只要截住孤兵，结果就是必败。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Rb5",
+      "popup_en": "The rook enters the game and heads toward the g-file interception point.",
       "popup": "车出动！赶向g线拦截区。",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 4,
       "move": "Rg3",
+      "popup_en": "Key move: the rook occupies the g-file, leaving the black pawn with no way forward.",
       "popup": "⚡ 关键！车卡在g线，黑兵无路可走！",
       "highlights": [
         {
@@ -62,6 +66,7 @@
     {
       "index": 6,
       "move": "Rxg2",
+      "popup_en": "The rook captures the black pawn, leaving White with a large advantage.",
       "popup": "吃掉黑兵！白方大优。",
       "highlights": [
         {

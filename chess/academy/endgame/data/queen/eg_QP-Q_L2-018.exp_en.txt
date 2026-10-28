@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Consider how the king's position affects the queen's ability to support promotion.
+
+# END
+# Solution 1

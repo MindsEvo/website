@@ -1,0 +1,4 @@
+Black uses a sequence of checks to drive the white king away from its passed pawn. Once the pawn promotes, the black queen captures the bishop with check and continues checking until the black king can capture the new queen. The queen and king then cooperate to deliver mate.
+
+# END
+# Solution 1

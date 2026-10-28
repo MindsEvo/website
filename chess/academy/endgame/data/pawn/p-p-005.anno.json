@@ -2,6 +2,7 @@
   "game_id": "eg_P-P_L2-005-1",
   "description": "兵对兵⑤：兵的通路 — 白方利用通路兵优势取胜",
   "intro": {
+    "popup_en": "The white b-pawn has a clear path, and the black a-pawn is also passed. White moves first and has the closer king. Which pawn will promote first?",
     "flash_squares": ["c2", "b2", "f6", "a4"],
     "concept_arrows": [
       {"from": "b2", "to": "b8", "color": "#FF6B35CC"}
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The king escorts the b-pawn toward promotion while stopping the black pawn. A passed pawn supported by its king is the key to victory.",
     "popup": "✅ <b>结论：白胜！</b> 白王能护送 b 兵升变，同时拦截黑兵。通路兵 + 王的支援 = 取胜关键。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kb3",
+      "popup_en": "1. Kb3: the white king approaches the a4-pawn, preparing to capture it.",
       "popup": "1.Kb3 — 白王向 a4 靠近，准备吃掉黑的通路兵。",
       "highlights": [],
       "concept_arrows": [
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Ke5",
+      "popup_en": "1...Ke5: the black king heads toward the center to stop the white pawn.",
       "popup": "1...Ke5 — 黑王向中心进发，试图拦截白兵。",
       "highlights": [],
       "concept_arrows": [
@@ -36,6 +40,7 @@
     {
       "index": 2,
       "move": "Kxa4",
+      "popup_en": "2. Kxa4 captures the black passed pawn. Only the white b-pawn remains.",
       "popup": "2.Kxa4 — 白王吃掉黑的通路兵！现在只有白兵 b2 还在。",
       "highlights": [
         {"squares": ["a4"], "color": "#FF000055", "duration_ms": 0}
@@ -47,6 +52,7 @@
     {
       "index": 3,
       "move": "Kd4",
+      "popup_en": "2...Kd4: the black king races after the white pawn.",
       "popup": "2...Kd4 — 黑王全力追赶白兵。",
       "highlights": [],
       "concept_arrows": [
@@ -56,6 +62,7 @@
     {
       "index": 4,
       "move": "b4",
+      "popup_en": "3. b4: the pawn advances under the white king's escort. The black king cannot catch it.",
       "popup": "3.b4 — 白兵前进！白王护送，黑王无法追上。",
       "highlights": [],
       "concept_arrows": [

@@ -2,11 +2,13 @@
   "game_id": "eg_KBP-K_L1-001-1",
   "description": "象兵对王-L1 演示1：王配合推兵，象切断退路",
   "intro": {
+    "popup_en": "Bishop and pawn versus king: the bishop on b6 controls a7. The black king must stay away while the white king escorts the a-pawn toward promotion.",
     "flash_squares": ["b6", "a5", "d4", "a7"],
     "popup": "💡 <b>象兵对王·根基因</b><br>象在b6封锁了a7！黑王被迫偏离，白王从d4出发护送a兵升变。",
     "voice": true
   },
   "outro": {
+    "popup_en": "Key plan: the bishop controls a7, the white king advances by force, and the pawn reaches a6 at the right moment before promoting. The bishop, king, and pawn must work together.",
     "popup": "✅ 要点：象守住a7退路 → 白王强行压进 → 兵推a6配合 → 最终升变胜利。象+王+兵三角协作，缺一不可。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Kb7",
+      "popup_en": "The black king must move; the bishop controls a7, so it cannot use that escape square.",
       "popup": "黑王被迫移动，a7退路被象封锁无法踏入。",
       "highlights": [
         {
@@ -28,6 +31,7 @@
     {
       "index": 1,
       "move": "Kc5",
+      "popup_en": "The white king advances toward the a-file.",
       "popup": "♔ 白王向前！往a路方向逼近。",
       "highlights": [],
       "concept_arrows": [
@@ -48,6 +52,7 @@
     {
       "index": 3,
       "move": "Kd6",
+      "popup_en": "The white king takes d6 and cuts the black king off from the a-file.",
       "popup": "♔ 白王抢占d6，切断黑王对a路的掌控。",
       "highlights": [],
       "concept_arrows": [
@@ -68,6 +73,7 @@
     {
       "index": 5,
       "move": "Kd7",
+      "popup_en": "The white king reaches d7 and drives the black king toward the corner.",
       "popup": "♔ 白王到d7，将黑王逼向角落。",
       "highlights": [],
       "concept_arrows": [
@@ -88,6 +94,7 @@
     {
       "index": 7,
       "move": "a6",
+      "popup_en": "The pawn advances at the right moment. The a-pawn reaches a6, and promotion is now only a matter of time.",
       "popup": "⭐ <b>推兵！</b>时机成熟——a5冲到a6，胜利进入倒计时。",
       "highlights": [
         {
@@ -119,6 +126,7 @@
     {
       "index": 9,
       "move": "Bd4",
+      "popup_en": "The bishop repositions to d4 and controls the promotion diagonal, preventing a counterattack by the black king.",
       "popup": "🔄 象重新定位到d4，守住升变斜线，防止黑王反扑。",
       "highlights": [
         {

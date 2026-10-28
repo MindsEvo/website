@@ -1,0 +1,4 @@
+Use the white king and knight to protect the pawn and escort it to promotion.
+
+# END
+# Solution 1

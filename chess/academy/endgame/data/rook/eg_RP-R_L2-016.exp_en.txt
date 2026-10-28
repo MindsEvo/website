@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Use the position and move line to explore how the rook supports the passed pawn.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+White cannot stop the black pawn from promoting in this position. Practice identifying when the pawn is too close to the promotion square to be caught.
+
+# END
+# Solution 1

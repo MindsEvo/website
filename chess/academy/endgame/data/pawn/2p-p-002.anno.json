@@ -2,6 +2,7 @@
   "game_id": "eg_2P-P_L2-002-1",
   "description": "双兵对单兵②：联兵制胜 — e兵进击牵制黑王，联兵推进升变",
   "intro": {
+    "popup_en": "White has connected e- and h-pawns against a lone h-pawn. The e-pawn advances to drive the black king away, and the connected pawns promote together.",
     "flash_squares": [
       "f5",
       "e5",
@@ -25,6 +26,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The e-pawn promotes, and Black cannot stop both advancing pawns.",
     "popup": "✅ <b>结论：白胜！</b> e 兵升变，黑方无法同时阻挡两路进攻。",
     "voice": true
   },
@@ -33,6 +35,7 @@
     {
       "index": 0,
       "move": "e6+",
+      "popup_en": "1. e6+ checks and drives the black king away, clearing the promotion route.",
       "popup": "1.e6+ — 将军！逼退黑王，清开升变道路。",
       "highlights": [
         {
@@ -54,6 +57,7 @@
     {
       "index": 1,
       "move": "Ke8",
+      "popup_en": "1...Ke8: the black king is forced to retreat.",
       "popup": "1...Ke8 — 黑王被迫后退。",
       "highlights": [],
       "concept_arrows": [
@@ -67,6 +71,7 @@
     {
       "index": 2,
       "move": "Ke5",
+      "popup_en": "2. Ke5: the white king follows to support the e-pawn.",
       "popup": "2.Ke5 — 白王跟进支援 e 兵推进。",
       "highlights": [],
       "concept_arrows": [
@@ -80,6 +85,7 @@
     {
       "index": 3,
       "move": "Kd8",
+      "popup_en": "2...Kd8: the black king tries to stop the e-pawn.",
       "popup": "2...Kd8 — 黑王试图阻挡 e 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -93,6 +99,7 @@
     {
       "index": 4,
       "move": "Kd6",
+      "popup_en": "3. Kd6: the white king escorts the e-pawn forward.",
       "popup": "3.Kd6 — 白王护送 e 兵前进。",
       "highlights": [
         {
@@ -115,6 +122,7 @@
     {
       "index": 5,
       "move": "Kc8",
+      "popup_en": "3...Kc8: the black king has no useful way to defend both pawns.",
       "popup": "3...Kc8 — 黑王无路可守。",
       "highlights": [],
       "concept_arrows": [
@@ -128,6 +136,7 @@
     {
       "index": 6,
       "move": "e7",
+      "popup_en": "4. e7: the e-pawn is about to promote.",
       "popup": "4.e7 — e 兵即将升变！",
       "highlights": [],
       "concept_arrows": [

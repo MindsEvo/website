@@ -1,0 +1,4 @@
+Coordinate the white king and knight to drive the black knight away from the pawn.
+
+# END
+# Solution 1

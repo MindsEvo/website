@@ -1,0 +1,4 @@
+Use f3+ to drive the king away and capture Black's g-pawn. After the remaining black pawn is exchanged, White's connected pawns promote easily.
+
+# END
+# Solution 1

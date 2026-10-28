@@ -1,0 +1,4 @@
+The position is drawn with accurate play. Use the king to hold the key squares and avoid creating a passed pawn for the opponent.
+
+# END
+# Solution 1

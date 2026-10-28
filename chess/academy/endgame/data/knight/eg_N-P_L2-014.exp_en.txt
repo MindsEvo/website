@@ -1,0 +1,4 @@
+A rook pawn can also be held to a draw by the knight.
+
+# END
+# Solution 1

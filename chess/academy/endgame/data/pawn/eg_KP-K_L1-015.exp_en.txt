@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Examine the king position and calculate whether the pawn can reach its promotion square.
+
+# END
+# Solution 1

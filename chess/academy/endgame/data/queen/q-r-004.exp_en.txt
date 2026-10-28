@@ -1,0 +1,4 @@
+White uses a series of checks to force the black rook away from its post protecting the king. A quiet queen move to e8 is the key: the rook can no longer remain on g7. Once it flees, the queen captures it and delivers mate with the white king's support.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Try different ways to coordinate the rooks and deliver checkmate.
+
+# END
+# Solution 1

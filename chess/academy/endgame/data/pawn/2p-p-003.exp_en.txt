@@ -1,0 +1,4 @@
+The f-pawn on the seventh rank ties the black king to f8. Advance the h-pawn to create a second promotion threat that the king cannot defend against.
+
+# END
+# Solution 1

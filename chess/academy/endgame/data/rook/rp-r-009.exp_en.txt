@@ -1,0 +1,4 @@
+The black rook is too close laterally to the white king to force a draw. Use the king and rook to drive it away, then advance the f-pawn when the position is ready.
+
+# END
+# Solution 1

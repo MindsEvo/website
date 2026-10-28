@@ -1,0 +1,4 @@
+Analyze the position and try different moves. Pay attention to the opposition and whether either king can reach the key squares.
+
+# END
+# Solution 1

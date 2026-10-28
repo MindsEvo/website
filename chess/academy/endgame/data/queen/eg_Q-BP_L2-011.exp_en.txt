@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Use the move line to examine how the queen and king can stop the pawn while dealing with the bishop.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+White uses a precise waiting move, Be8, to tempt the black bishop onto h5. Then Bxh5 exchanges the bishops, clearing the way for the pawn to promote.
+
+# END
+# Solution 1

@@ -2,6 +2,7 @@
   "game_id": "eg_3P-3P_L3-004-1",
   "description": "三兵对峙④：通路兵竞争 — 白王d4控中，d5+g5双通路兵赛跑胜过黑方",
   "intro": {
+    "popup_en": "White's d- and g-pawns are passed pawns, and Black's b- and g-pawns are also dangerous. The white king on d4 is close enough to stop the b-pawn while the white passed pawns advance.",
     "flash_squares": [
       "d4",
       "d5",
@@ -28,6 +29,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The king controls the b-pawn, while the d- and g-passed pawns cannot both be stopped.",
     "popup": "✅ <b>结论：白胜！</b> 白王控制 b2 兵同时，d5/g5 通路兵不可阻挡。",
     "voice": true
   },
@@ -36,6 +38,7 @@
     {
       "index": 0,
       "move": "Kc3",
+      "popup_en": "1. Kc3! The white king heads directly for b2 to eliminate Black's most dangerous pawn.",
       "popup": "1.Kc3！— 白王直奔 b2，先消灭最危险的黑兵。",
       "highlights": [
         {
@@ -57,6 +60,7 @@
     {
       "index": 1,
       "move": "g1=Q",
+      "popup_en": "1...g1=Q: the black g-pawn promotes, creating a complicated position.",
       "popup": "1...g1=Q — 黑方 g2 兵升变！局面复杂。",
       "highlights": [],
       "concept_arrows": [
@@ -70,6 +74,7 @@
     {
       "index": 2,
       "move": "Kxb2",
+      "popup_en": "2. Kxb2! The white king captures the b-pawn and removes the greatest threat.",
       "popup": "2.K×b2！— 白王吃掉 b2 兵，最大威胁消除。",
       "highlights": [
         {
@@ -91,6 +96,7 @@
     {
       "index": 3,
       "move": "Qxe3",
+      "popup_en": "2...Qxe3: the black queen captures on e3, but White's passed pawns remain.",
       "popup": "2...Q×e3 — 黑后吃掉 e3，但白方通路兵仍在。",
       "highlights": [],
       "concept_arrows": [
@@ -104,6 +110,7 @@
     {
       "index": 4,
       "move": "d6",
+      "popup_en": "3. d6! The d-pawn advances and creates a double threat.",
       "popup": "3.d6！— d 通路兵继续推进，形成双重威胁。",
       "highlights": [
         {
@@ -126,6 +133,7 @@
     {
       "index": 5,
       "move": "Qxg5",
+      "popup_en": "3...Qxg5: the black queen captures the g-pawn, but cannot stop the d-pawn.",
       "popup": "3...Q×g5 — 黑后吃掉 g5 兵，但已无法阻止 d 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -139,6 +147,7 @@
     {
       "index": 6,
       "move": "d7",
+      "popup_en": "4. d7: one step from promotion. White is winning.",
       "popup": "4.d7 — 升变前一步！白胜！",
       "highlights": [],
       "concept_arrows": [

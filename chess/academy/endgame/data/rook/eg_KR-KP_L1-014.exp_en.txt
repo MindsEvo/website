@@ -1,0 +1,4 @@
+The white king cannot catch up with the black king and pawn in time, so the position is drawn.
+
+# END
+# Solution 1

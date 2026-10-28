@@ -4,15 +4,17 @@
     {
       "key": "kqr-k",
       "label": "后车对王",
+      "label_en": "Queen and Rook vs. King",
       "items": [
-        { "id": "kqr-k-001", "fen": "8/8/2k5/8/8/2K5/8/3QR3 w - - 0 1", "solutions": [{ "id": "kqr-k-001" }] },
-        { "id": "kqr-k-002", "fen": "8/8/8/3k4/8/3K4/3Q4/3R4 w - - 0 1", "solutions": [{ "id": "kqr-k-002" }] },
-        { "id": "kqr-k-003", "fen": "8/8/8/2k5/5Q2/K7/8/5R2 w - - 0 1", "solutions": [{ "id": "kqr-k-003" }] }
+        { "id": "kqr-k-001", "label_en": "1. King Approaches, Queen Blocks, Rook Seals the File", "explanation_en": "The white king approaches first, the queen controls the seventh rank and drives the enemy king toward the edge, and the rook seals the a-file. This demonstrates the basic coordination of king, queen, and rook against a lone king.", "fen": "8/8/2k5/8/8/2K5/8/3QR3 w - - 0 1", "solutions": [{ "id": "kqr-k-001" }] },
+        { "id": "kqr-k-002", "label_en": "2. Queen Blocks the Route, Rook Delivers Mate", "explanation_en": "The queen first controls distant escape squares while the rook occupies the b-file. When the king is restricted to d5, the rook gives checkmate from b5. Coordinate the queen's blockade with the rook's file control.", "fen": "8/8/8/3k4/8/3K4/3Q4/3R4 w - - 0 1", "solutions": [{ "id": "kqr-k-002" }] },
+        { "id": "kqr-k-003", "label_en": "3. Rook Leads, Queen Blocks, Rook Finishes", "explanation_en": "The rook controls the d-file and guides the enemy king toward the edge. The queen blocks key escape squares, then the rook shifts to d5 for checkmate. A concise example of three-piece coordination in a basic mating process.", "fen": "8/8/8/2k5/5Q2/K7/8/5R2 w - - 0 1", "solutions": [{ "id": "kqr-k-003" }] }
       ]
     },
     {
       "key": "kq-k",
       "label": "后对王",
+      "label_en": "Queen vs. King",
       "items": [
         {
           "id": "kq-k-001",
@@ -29,6 +31,7 @@
     {
       "key": "kq-kp",
       "label": "后对升变兵",
+      "label_en": "Queen vs. Passed Pawn",
       "items": [
         { "id": "kq-kp-001", "fen": "2KQ4/8/8/8/8/8/3pk3/8 w - - 0 1", "solutions": [{ "id": "kq-kp-001" }] },
         { "id": "kq-kp-002", "fen": "6Q1/8/2K5/8/8/8/6p1/6k1 w - - 0 1", "solutions": [{ "id": "kq-kp-002" }] },
@@ -41,47 +44,52 @@
     {
       "key": "qp-q",
       "label": "后兵对后",
+      "label_en": "Queen and Pawn vs. Queen",
       "items": [
-        { "id": "qp-q-001", "fen": "4q3/4P3/5K2/8/8/4Q3/8/k7 w - - 0 1", "solutions": [{ "id": "qp-q-001" }] },
-        { "id": "qp-q-002", "fen": "7q/4P3/8/8/4QK2/8/8/k7 b - - 0 1", "solutions": [{ "id": "qp-q-002" }] },
-        { "id": "qp-q-003", "fen": "2q5/2P5/8/3Q4/8/8/6K1/k7 w - - 0 1", "solutions": [{ "id": "qp-q-003" }] },
-        { "id": "qp-q-004", "fen": "7K/6P1/8/8/1k6/6q1/2Q5/8 b - - 0 1", "solutions": [{ "id": "qp-q-004" }] },
-        { "id": "qp-q-005", "fen": "8/PK2k3/8/3Q4/8/2q5/8/8 b - - 0 1", "solutions": [{ "id": "qp-q-005" }] }
+        { "id": "qp-q-001", "label_en": "1. Queen Sacrifice to Promote", "explanation_en": "Bring the king closer, then sacrifice the queen to force an exchange and clear the pawn's promotion route.", "fen": "4q3/4P3/5K2/8/8/4Q3/8/k7 w - - 0 1", "solutions": [{ "id": "qp-q-001" }] },
+        { "id": "qp-q-002", "label_en": "2. Perpetual Check Draw", "explanation_en": "Black's queen checks repeatedly and blocks the white king from supporting the e-pawn, drawing by repetition.", "fen": "7q/4P3/8/8/4QK2/8/8/k7 b - - 0 1", "solutions": [{ "id": "qp-q-002" }] },
+        { "id": "qp-q-003", "label_en": "3. King Support and Two-Queen Mate", "explanation_en": "Advance the king, cut off the checks with the queen, promote the c-pawn, and finish with two queens.", "fen": "2q5/2P5/8/3Q4/8/8/6K1/k7 w - - 0 1", "solutions": [{ "id": "qp-q-003" }] },
+        { "id": "qp-q-004", "label_en": "4. Perpetual Check Against Promotion", "explanation_en": "Black's queen keeps checking and forces the white queen to defend, preventing safe promotion.", "fen": "7K/6P1/8/8/1k6/6q1/2Q5/8 b - - 0 1", "solutions": [{ "id": "qp-q-004" }] },
+        { "id": "qp-q-005", "label_en": "5. Cut Off Checks and Promote", "explanation_en": "Block the black queen's checks, then sacrifice the queen when the black king attacks to clear the a-pawn's promotion route.", "fen": "8/PK2k3/8/3Q4/8/2q5/8/8 b - - 0 1", "solutions": [{ "id": "qp-q-005" }] }
       ]
     },
     {
       "key": "q-b",
       "label": "后对象",
+      "label_en": "Queen vs. Bishop",
       "items": [
-        { "id": "q-b-001", "fen": "8/8/8/3kb3/8/8/3KQ3/8 w - - 0 1", "solutions": [{ "id": "q-b-001" }] },
-        { "id": "q-b-002", "fen": "8/8/3bk3/8/8/8/8/6QK w - - 0 1", "solutions": [{ "id": "q-b-002" }] }
+        { "id": "q-b-001", "label_en": "1. Driving the Bishop Away to Win", "explanation_en": "Keep the white king on the opposite color complex from Black's bishop, use the queen to drive the black king away, and capture the exposed bishop.", "fen": "8/8/8/3kb3/8/8/3KQ3/8 w - - 0 1", "solutions": [{ "id": "q-b-001" }] },
+        { "id": "q-b-002", "label_en": "2. Checks and King Support", "explanation_en": "Use the queen's checks to separate the black king from its bishop while the white king advances. Once the king is driven into the corner, coordinate queen and king for mate.", "fen": "8/8/3bk3/8/8/8/8/6QK w - - 0 1", "solutions": [{ "id": "q-b-002" }] }
       ]
     },
     {
       "key": "q-bp",
       "label": "后对象兵",
+      "label_en": "Queen vs. Bishop and Pawn",
       "items": [
-        { "id": "q-bp-001", "fen": "8/8/8/4Q3/5K2/1b6/p1k5/8 w - - 0 1", "solutions": [{ "id": "q-bp-001" }] },
-        { "id": "q-bp-002", "fen": "8/6q1/PKB5/8/5k2/8/8/8 b - - 0 1", "solutions": [{ "id": "q-bp-002" }] }
+        { "id": "q-bp-001", "label_en": "1. Blockade and Win the Bishop", "explanation_en": "Keep the pawn blockaded with the queen, bring the king closer, then use queen-and-king coordination to drive away and capture the bishop.", "fen": "8/8/8/4Q3/5K2/1b6/p1k5/8 w - - 0 1", "solutions": [{ "id": "q-bp-001" }] },
+        { "id": "q-bp-002", "label_en": "2. Checks Against the Promoted Queen", "explanation_en": "Black drives the white king away with checks, wins the bishop after promotion, captures the new queen, and finishes with a mating attack.", "fen": "8/6q1/PKB5/8/5k2/8/8/8 b - - 0 1", "solutions": [{ "id": "q-bp-002" }] }
       ]
     },
     {
       "key": "q-n",
       "label": "后对马",
+      "label_en": "Queen vs. Knight",
       "items": [
-        { "id": "q-n-001", "fen": "8/8/8/3nk3/8/8/3QK3/8 w - - 0 1", "solutions": [{ "id": "q-n-001" }] },
-        { "id": "q-n-002", "fen": "8/8/3kn3/8/8/8/8/6QK w - - 0 1", "solutions": [{ "id": "q-n-002" }] }
+        { "id": "q-n-001", "label_en": "1. Separate and Capture the Knight", "explanation_en": "Coordinate the queen and king to separate the black king from the knight, then capture the exposed piece.", "fen": "8/8/8/3nk3/8/8/3QK3/8 w - - 0 1", "solutions": [{ "id": "q-n-001" }] },
+        { "id": "q-n-002", "label_en": "2. Coordinate Against Knight Checks", "explanation_en": "Stay calm through the knight's checks, bring the white king closer, and use the queen to restrict the knight until it can be captured.", "fen": "8/8/3kn3/8/8/8/8/6QK w - - 0 1", "solutions": [{ "id": "q-n-002" }] }
       ]
     },
     {
       "key": "q-r",
       "label": "后对车",
+      "label_en": "Queen vs. Rook",
       "items": [
-        { "id": "q-r-001", "fen": "5k2/6r1/4Q3/8/8/8/7K/8 b - - 0 1", "solutions": [{ "id": "q-r-001" }] },
-        { "id": "q-r-002", "fen": "6k1/6r1/5K2/7Q/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-002" }] },
-        { "id": "q-r-003", "fen": "8/8/8/3rk3/8/2K5/5Q2/8 w - - 0 1", "solutions": [{ "id": "q-r-003" }] },
-        { "id": "q-r-004", "fen": "4Q3/6rk/5K2/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-004" }] },
-        { "id": "q-r-005", "fen": "8/3rk3/8/4KQ2/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-005" }] }
+        { "id": "q-r-001", "label_en": "1. Perpetual Check Draw", "explanation_en": "Black draws by checking from the side with the rook, keeping the white king from approaching safely.", "fen": "5k2/6r1/4Q3/8/8/8/7K/8 b - - 0 1", "solutions": [{ "id": "q-r-001" }] },
+        { "id": "q-r-002", "label_en": "2. Drive the King Away from the Rook", "explanation_en": "Use queen checks to separate the black king from the rook, then capture the unprotected rook.", "fen": "6k1/6r1/5K2/7Q/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-002" }] },
+        { "id": "q-r-003", "label_en": "3. Drive the Rook to the Edge", "explanation_en": "Advance the king and use queen checks from changing angles to separate the black king from the rook and drive the rook toward the edge.", "fen": "8/8/8/3rk3/8/2K5/5Q2/8 w - - 0 1", "solutions": [{ "id": "q-r-003" }] },
+        { "id": "q-r-004", "label_en": "4. Force the Rook Away and Mate", "explanation_en": "Use queen checks and a quiet move to force the rook away from the king, then capture it and deliver mate.", "fen": "4Q3/6rk/5K2/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-004" }] },
+        { "id": "q-r-005", "label_en": "5. Separate the King and Rook", "explanation_en": "Use checks and a waiting move to drive the king into the corner, separate it from the rook, and capture the rook before mating.", "fen": "8/3rk3/8/4KQ2/8/8/8/8 w - - 0 1", "solutions": [{ "id": "q-r-005" }] }
       ]
     }
   ]

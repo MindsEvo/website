@@ -1,0 +1,4 @@
+Three pawns side by side form a powerful advancing group. Keep them connected and use the king to support their progress.
+
+# END
+# Solution 1

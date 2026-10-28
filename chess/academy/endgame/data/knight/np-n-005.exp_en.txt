@@ -1,0 +1,4 @@
+The black knight appears to blockade the pawn on h7, but the white knight can force it away with a route of Ne6, Ng5+, and Ne4. The black knight must capture the white knight, clearing the path for e8=Q+.
+
+# END
+# Solution 1

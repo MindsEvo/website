@@ -1,0 +1,4 @@
+The black king is too far away. The white king goes around the pawn blockade from the side, takes the opposition, and wins the black pawn.
+
+# END
+# Solution 1

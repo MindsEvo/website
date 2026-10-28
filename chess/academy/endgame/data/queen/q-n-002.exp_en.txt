@@ -1,0 +1,4 @@
+The knight can use checks to disrupt the white king, but the queen and king can work together to drive the black king away from the knight. Bring the king closer, restrict the knight's escape squares, and capture it when it becomes exposed.
+
+# END
+# Solution 1

@@ -2,6 +2,7 @@
   "game_id": "eg_KR-KP_L1-004-1",
   "description": "车对g兵 — 白王切割黑王联系",
   "intro": {
+    "popup_en": "The white king and rook are well placed. The king should cut off the black king from its pawn while the rook controls the g-file.",
     "flash_squares": [
       "g5",
       "f5"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "A standard king-cutoff technique: the white king advances to sever the black king's connection to the pawn, and the rook helps capture it.",
     "popup": "✅ 标准<b>王切割</b>技巧。<br>白王步步深入，切断黑方联系，配合车收拾黑兵。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kd6",
+      "popup_en": "The white king crosses over and cuts off the black king's route to the pawn.",
       "popup": "白王跨过！切断黑王护兵路线。",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 2,
       "move": "Rg7",
+      "popup_en": "The rook takes the g-file and targets the black pawn.",
       "popup": "车锁入g线，盯住黑兵！",
       "highlights": [
         {
@@ -66,6 +70,7 @@
     {
       "index": 4,
       "move": "Kd5",
+      "popup_en": "The white king advances deeper and completely cuts off the black king.",
       "popup": "白王继续深入，完全切割黑方。",
       "highlights": [
         {
@@ -87,6 +92,7 @@
     {
       "index": 14,
       "move": "Rxg3",
+      "popup_en": "The rook captures the black pawn.",
       "popup": "⚡ 吃掉黑兵！",
       "highlights": [
         {

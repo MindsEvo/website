@@ -1,0 +1,4 @@
+White is winning. Coordinate the bishop, knight, and king to force checkmate, and avoid stalemate.
+
+# END
+# Solution 1

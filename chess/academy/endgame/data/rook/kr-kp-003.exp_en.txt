@@ -1,0 +1,4 @@
+Use rook checks to transfer the rook to the pawn's promotion square while the white king approaches. Once the king arrives, the rook and king can work together to stop the pawn.
+
+# END
+# Solution 1

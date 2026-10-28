@@ -2,6 +2,7 @@
   "game_id": "eg_KP-K_L1-003-1",
   "description": "先手对王1：错误路线——1.Ke5 使黑方获得对王，循环和局",
   "intro": {
+    "popup_en": "The kings face each other in opposition. Black tries to maintain the opposition; c6, d6, and e6 are the key squares in this position.",
     "flash_squares": [
       "c6",
       "d6",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw by repetition. The black king mirrors White's moves, preventing White from taking the opposition or reaching the key squares c6, d6, and e6.",
     "popup": "❌ <b>结论：循环 → 和局！</b><br>黑王镜像跟随，白方永远无法占得先手对王、踏上关键格（c6、d6、e6）。",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Ke5",
+      "popup_en": "1. Ke5?! White moves first but effectively gives Black the opposition. Kings separated by one square on a rank or file are in opposition.",
       "popup": "⚠️ 1.Ke5?! — 目前白先走， 等于黑王先手对王， 这种隔一空格横竖相对叫对王",
       "highlights": [
         {
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "Ke7",
+      "popup_en": "...Ke7: the black king mirrors the move and maintains the opposition.",
       "popup": "♚ Ke7 — 黑王镜像跟随，<b>黑方坚持先手对王！</b>",
       "highlights": [
         {
@@ -71,6 +75,7 @@
     {
       "index": 2,
       "move": "Kd5",
+      "popup_en": "2. Kd5: the white king changes direction and tries for the key square d6.",
       "popup": "♔ 2.Kd5 — 白王试图换方向去 d6 关键格。",
       "highlights": [
         {
@@ -92,6 +97,7 @@
     {
       "index": 3,
       "move": "Kd7",
+      "popup_en": "...Kd7: the black king mirrors again and guards the d8 and d6 routes.",
       "popup": "♚ Kd7 — 黑王再次镜像，守住 d8/d6 通道。",
       "highlights": [
         {
@@ -114,6 +120,7 @@
     {
       "index": 4,
       "move": "Kc5",
+      "popup_en": "3. Kc5: the white king tries the flank.",
       "popup": "♔ 3.Kc5 — 白王再试侧翼。",
       "highlights": [],
       "concept_arrows": [
@@ -127,6 +134,7 @@
     {
       "index": 5,
       "move": "Kc7",
+      "popup_en": "...Kc7: the black king shifts in step and blocks access to c6.",
       "popup": "♚ Kc7 — 黑王同步侧移，封锁关键格 c6 通道。",
       "highlights": [
         {
@@ -148,6 +156,7 @@
     {
       "index": 6,
       "move": "d5",
+      "popup_en": "4. d5: White advances the pawn to try to break the deadlock.",
       "popup": "♟ 4.d5 — 白方推兵，尝试打破僵局。",
       "highlights": [],
       "concept_arrows": [
@@ -161,6 +170,7 @@
     {
       "index": 7,
       "move": "Kd7",
+      "popup_en": "...Kd7: the black king keeps the blockade, still controlling the key square d6.",
       "popup": "♚ Kd7 — 黑王继续守锁，d6 关键格仍被盯住。",
       "highlights": [
         {
@@ -182,6 +192,7 @@
     {
       "index": 8,
       "move": "Kd4",
+      "popup_en": "5. Kd4: the white king retreats to contest the opposition again.",
       "popup": "♔ 5.Kd4 — 白王后撤，企图重新争夺对王。",
       "highlights": [],
       "concept_arrows": [
@@ -195,6 +206,7 @@
     {
       "index": 9,
       "move": "Kd6",
+      "popup_en": "...Kd6: the black king reaches the key square d6 and turns the defense into an attack.",
       "popup": "♚ Kd6 — <b>黑王踏上关键格 d6！</b>黑方反守为攻，白方更难推进！",
       "highlights": [
         {
@@ -216,6 +228,7 @@
     {
       "index": 10,
       "move": "Ke4",
+      "popup_en": "6. Ke4: the white king keeps circling but is entering a repetition.",
       "popup": "♔ 6.Ke4 — 白王继续绕，已陷入循环。",
       "highlights": [],
       "concept_arrows": [
@@ -229,6 +242,7 @@
     {
       "index": 11,
       "move": "Kd7",
+      "popup_en": "...Kd7: the black king returns to maintain the balance.",
       "popup": "♚ Kd7 — 黑王退回，保持对等。",
       "highlights": [],
       "concept_arrows": [
@@ -242,6 +256,7 @@
     {
       "index": 12,
       "move": "Ke5",
+      "popup_en": "7. Ke5 repeats the first position. White has no breakthrough.",
       "popup": "♔ 7.Ke5 — <b>重复第 1 步！</b>局面已陷入循环，无法突破。",
       "highlights": [
         {
@@ -263,6 +278,7 @@
     {
       "index": 13,
       "move": "Ke7",
+      "popup_en": "...Ke7 repeats the cycle, and the game is drawn. The first move gave Black the opposition and kept White away from the key squares.",
       "popup": "♚ Ke7 — <b>重复整个循环 → 和局！</b> 错误首步 Ke5 使黑方获得并保持先手对王，白方永远无法抵达关键格。",
       "highlights": [
         {

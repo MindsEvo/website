@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Examine how queen checks and king activity can restrict the knight and its king.
+
+# END
+# Solution 1

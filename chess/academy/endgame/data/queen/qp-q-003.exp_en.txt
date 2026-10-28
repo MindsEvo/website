@@ -1,0 +1,4 @@
+White must bring the king into the attack and coordinate it with the queen. The queen cuts off the black queen's checks, allowing the c-pawn to promote; the two queens then work together to deliver mate.
+
+# END
+# Solution 1

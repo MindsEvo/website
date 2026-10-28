@@ -2,6 +2,7 @@
   "game_id": "eg_NP-N_L2-005-1",
   "description": "马兵对马 — 马的路线组合清除封堵",
   "intro": {
+    "popup_en": "White has king, pawn, and knight against Black's king and knight. The black knight on h7 appears to blockade the pawn, but White can drive it away with a precise route: Ne6, Ng5, then Ne4, forcing the black knight to sacrifice itself.",
     "flash_squares": [
       "d7",
       "e7",
@@ -13,6 +14,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The pawn promotes to a queen with check. The white knight's maneuvers force the black knight to capture it, clearing the way for promotion.",
     "popup": "♛ <b>e8=Q+ 升变将军！</b>白马一连串调动，让黑马的封堵功亏一篑——黑马被迫吃白马，兵顺利升变！",
     "voice": true
   },
@@ -21,6 +23,7 @@
     {
       "index": 0,
       "move": "Nf6+",
+      "popup_en": "The black knight checks, trying to gain time.",
       "popup": "黑马将军，试图拖延时间。",
       "highlights": [
         {
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "Kd8",
+      "popup_en": "The white king retreats to d8, supporting the pawn while escaping check.",
       "popup": "白王巧妙退到d8，同时支援兵并躲将。",
       "highlights": [
         {
@@ -70,6 +74,7 @@
     {
       "index": 2,
       "move": "Ne8",
+      "popup_en": "The black knight blocks the promotion square on e8. It appears to hold the position.",
       "popup": "黑马跳到e8封住升变格！看似守住了。",
       "highlights": [
         {
@@ -91,6 +96,7 @@
     {
       "index": 3,
       "move": "Ne6",
+      "popup_en": "The white knight reaches e6, attacking the black knight and preparing its next jump.",
       "popup": "⭐ <b>白马到e6！</b>第一步——攻击黑马并准备下一跳。",
       "highlights": [
         {
@@ -112,6 +118,7 @@
     {
       "index": 4,
       "move": "Nf6",
+      "popup_en": "The black knight is forced to f6, temporarily leaving e8.",
       "popup": "黑马被迫退到f6，暂时离开e8。",
       "highlights": [],
       "concept_arrows": [
@@ -125,6 +132,7 @@
     {
       "index": 5,
       "move": "Ng5+",
+      "popup_en": "The white knight checks from g5, driving the black king away and preparing Ne4.",
       "popup": "白马跳ng5将军！驱赶黑王，同时为下一步Ne4做准备。",
       "highlights": [
         {
@@ -158,6 +166,7 @@
     {
       "index": 6,
       "move": "Kg6",
+      "popup_en": "The black king is forced to g6, leaving its knight undefended.",
       "popup": "黑王被迫逃到g6，脱离守卫位置。",
       "highlights": [],
       "concept_arrows": [
@@ -171,6 +180,7 @@
     {
       "index": 7,
       "move": "Ne4",
+      "popup_en": "The white knight reaches e4 and attacks the black knight. It has nowhere to go and must be captured or exchanged.",
       "popup": "🎯 <b>白马到e4！</b>攻击黑马，黑马无处可逃只能被吃！",
       "highlights": [
         {
@@ -204,6 +214,7 @@
     {
       "index": 8,
       "move": "Nxe4",
+      "popup_en": "The black knight is forced to capture the white knight, clearing the promotion route completely.",
       "popup": "黑马被迫吃白马——升变通路彻底清空！",
       "highlights": [
         {
@@ -225,6 +236,7 @@
     {
       "index": 9,
       "move": "e8=Q+",
+      "popup_en": "The pawn promotes to a queen with check against the black king.",
       "popup": "♛ <b>升变将军！</b>白兵在e8升变成后，将军黑王！",
       "highlights": [
         {

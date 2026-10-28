@@ -1,0 +1,4 @@
+This is a line-opposition example. White first advances the pawn, forcing the black king to move; then Kc6 takes the flank route to the key squares. White secures the opposition and promotes.
+
+# END
+# Solution 1

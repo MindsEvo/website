@@ -1,0 +1,4 @@
+Coordinate the king, knight, and pawn. Bring the king to key central squares, use knight moves and pawn checks to drive the black king toward the edge, then place the knight to block its escape routes and promote safely.
+
+# END
+# Solution 1

@@ -2,11 +2,13 @@
   "game_id": "eg_KR-K_L1-001-1",
   "description": "车对王-L1 演示1：王领路，车跟进封线逼角",
   "intro": {
+    "popup_en": "Example 1: the rook seals off space while the king actively approaches and drives the enemy king toward the edge or corner. The rook waits for the right moment to finish the game.",
     "flash_squares": ["c2", "c7", "a7", "a8"],
     "popup": "💡 <b>演示1：王车配合，车封锁，王主动靠近逼迫，直到边或角取胜！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Ra8 is checkmate. The rook cuts off the escape squares, the king drives the enemy king, and the rook waits for the right moment to deliver mate.",
     "popup": "✅ <b>Ra8 — 将死！</b><br>要点：车封锁， 王逼迫，车等待时机完成将死！</b>",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Rc2",
+      "popup_en": "1. Rc2: the white rook controls the c-file while the king prepares to approach and drive the black king.",
       "popup": "⬆️ <b>1.Rc2 — 白王靠近逼迫黑王，白车封锁c列。",
       "highlights": [
         {"squares": ["c2"], "color": "#2196F355", "duration_ms": 0},
@@ -28,6 +31,7 @@
     {
       "index": 1,
       "move": "Kd7",
+      "popup_en": "The black king retreats to the seventh rank and keeps resisting.",
       "popup": "⬇️ Kd7 — 黑王退向第7排，维持对抗。",
       "highlights": [],
       "concept_arrows": []
@@ -35,6 +39,7 @@
     {
       "index": 2,
       "move": "Ke5",
+      "popup_en": "2. Ke5: the white king actively approaches and contests key squares. The king's participation is essential in a rook-versus-king ending; a rook alone cannot checkmate.",
       "popup": "♔ <b>2.Ke5 — 白王主动靠近！</b><br>白王向黑王逼近，争夺关键格，同时保护车的下一步切入。王的参与是车对王残局的核心——没有白王，单车永远无法将死。",
       "highlights": [
         {"squares": ["ke5", "d6", "d7", "f6", "f7"], "color": "#4CAF5025", "duration_ms": 0}
@@ -46,6 +51,7 @@
     {
       "index": 3,
       "move": "Ke7",
+      "popup_en": "The black king moves sideways to block the approach and refuses to retreat to the corner easily.",
       "popup": "⬇️ Ke7 — 黑王横移阻挡，不肯轻易退角。",
       "highlights": [],
       "concept_arrows": []
@@ -53,6 +59,7 @@
     {
       "index": 4,
       "move": "Rc7+",
+      "popup_en": "3. Rc7+ brings the rook to the seventh rank with check. The black king must retreat to the eighth rank, and the net begins to tighten.",
       "popup": "⬆️ <b>3.Rc7+ — 车切入第7排，将军！</b><br>白车王配合，黑王只能退入第8排——包围圈开始收紧。",
       "highlights": [
         {"squares": ["e7"], "color": "#FF572255", "duration_ms": 0},
@@ -67,6 +74,7 @@
     {
       "index": 5,
       "move": "Kd8",
+      "popup_en": "The black king is forced to the eighth rank. Its space is shrinking, but it still threatens the rook.",
       "popup": "⬇️ Kd8 — 黑王被迫退入第8排，空间越来越小，但还在威胁白车。",
       "highlights": [],
       "concept_arrows": []
@@ -74,6 +82,7 @@
     {
       "index": 6,
       "move": "Kd6",
+      "popup_en": "4. Kd6: the white king follows and protects the rook, keeping the black king trapped on the eighth rank.",
       "popup": "♔ <b>4.Kd6 — 白王紧跟！</b><br>白王跟进保护车，把黑王死死压在第8排。",
       "highlights": [
         {"squares": ["c7", "d7", "e7", "c8", "e8"], "color": "#4CAF5025", "duration_ms": 0}
@@ -85,6 +94,7 @@
     {
       "index": 7,
       "move": "Ke8",
+      "popup_en": "The black king escapes to the right, trying to go around the blockade.",
       "popup": "⬇️ Ke8 — 黑王往右逃，试图绕开。",
       "highlights": [],
       "concept_arrows": []
@@ -92,6 +102,7 @@
     {
       "index": 8,
       "move": "Ra7",
+      "popup_en": "5. Ra7 avoids the black king while sealing the entire seventh rank. Returning to d8 would allow immediate mate, so Black has to keep moving right.",
       "popup": "⬆️ <b>5.Ra7 — 白车左移避黑王纠缠， 同时封死整个第7排！</b><br>黑王如回到d8, 立刻被将死， 黑无奈只能往右逃",
       "highlights": [
         {"squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"], "color": "#2196F320", "duration_ms": 0}
@@ -104,6 +115,7 @@
     {
       "index": 9,
       "move": "Kf8",
+      "popup_en": "The black king runs to the right, closer to the corner.",
       "popup": "⬇️ Kf8 — 黑王向右逃，贴近角落。",
       "highlights": [],
       "concept_arrows": []
@@ -111,6 +123,7 @@
     {
       "index": 10,
       "move": "Ke6",
+      "popup_en": "The white king continues the pursuit and keeps pressure on the black king.",
       "popup": "♔ Ke6 — 白王继续追逼，对黑王施加压力。",
       "highlights": [],
       "concept_arrows": [
@@ -120,6 +133,7 @@
     {
       "index": 11,
       "move": "Kg8",
+      "popup_en": "The black king is forced toward the corner.",
       "popup": "⬇️ Kg8 — 黑王被迫向角落方向移动。",
       "highlights": [],
       "concept_arrows": []
@@ -127,6 +141,7 @@
     {
       "index": 12,
       "move": "Kf6",
+      "popup_en": "The white king advances again and controls the f7 escape square.",
       "popup": "♔ Kf6 — 白王再进一步，封住f7退路。",
       "highlights": [],
       "concept_arrows": [
@@ -136,6 +151,7 @@
     {
       "index": 13,
       "move": "Kh8",
+      "popup_en": "The black king reaches the corner; h8 is its last refuge.",
       "popup": "⬇️ Kh8 — 黑王贴住角落！h8是最后的藏身处。",
       "highlights": [
         {"squares": ["h8"], "color": "#FF000030", "duration_ms": 0}
@@ -145,6 +161,7 @@
     {
       "index": 14,
       "move": "Kg6",
+      "popup_en": "The white king takes up the key position, controlling every escape square and waiting for the black king to move.",
       "popup": "♔ <b>Kg6 — 白王到位！</b><br>白王靠近封住黑王的所有逃路等黑王动。",
       "highlights": [
         {"squares": ["f7", "g7", "h7"], "color": "#4CAF5025", "duration_ms": 0}
@@ -156,6 +173,7 @@
     {
       "index": 15,
       "move": "Kg8",
+      "popup_en": "The black king has only this move, exactly the opportunity White needs.",
       "popup": "⬇️ Kg8 — 黑王只有这一步可走！正是白方需要的时机。",
       "highlights": [],
       "concept_arrows": []
@@ -163,6 +181,7 @@
     {
       "index": 16,
       "move": "Ra8#",
+      "popup_en": "Ra8 is checkmate. The rook delivers mate, and the white king covers every escape square. Perfect king-and-rook coordination.",
       "popup": "⬆️ <b>Ra8# — 将死！</b><br>车一步将死对方黑王无处可逃——王车配合完美收官！",
       "highlights": [
         {"squares": ["g8"], "color": "#FF572255", "duration_ms": 0},

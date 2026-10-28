@@ -1013,6 +1013,8 @@
       // ── App state ─────────────────────────────────────
       var state = {
         anno: null, annoByIndex: {}, states: [], moveMetas: [],
+        explanationCn: '', explanationEn: '',
+        practiceMode: false, practiceExplanationCn: '', practiceExplanationEn: '',
         ply: -1, playing: false, timer: null, soundOn: true, voiceOn: true
       };
       var manifestCache = {};
@@ -1046,6 +1048,43 @@
         if (!html) { popupBox.classList.add('hidden'); return; }
         popupBox.classList.remove('hidden');
         popupBox.innerHTML = html;
+      }
+
+      function localizedPopup(entry) {
+        if (!entry) return '';
+        return isEnglish() ? (entry.popup_en || entry.popup || '') : (entry.popup || '');
+      }
+
+      function refreshObservationLanguage() {
+        if (state.anno && (state.anno.intro || state.anno.outro || state.anno.moves)) {
+          explanationText.textContent = isEnglish()
+            ? (state.explanationEn || state.explanationCn || 'No commentary available')
+            : (state.explanationCn || '暂无解说内容');
+          var entry = null;
+          if (state.ply === totalPlies()) entry = state.anno.outro;
+          else if (state.ply < 0) entry = state.anno.intro;
+          else {
+            for (var ply = state.ply; ply >= 0; ply--) {
+              if (state.annoByIndex[ply]) { entry = state.annoByIndex[ply]; break; }
+            }
+            if (!entry) entry = state.anno.intro;
+          }
+          showPopup(localizedPopup(entry));
+        }
+
+        PIECE_DEFS.forEach(function (pieceDef) {
+          var menuEl = document.getElementById('menu' + pieceDef.key.toUpperCase());
+          if (!menuEl.classList.contains('open') || !manifestCache[pieceDef.key]) return;
+          var openRow = menuEl.querySelector('.menu-row.open');
+          var openCategory = openRow && openRow.dataset.cat;
+          renderDropdownMenu(pieceDef, manifestCache[pieceDef.key], menuEl);
+          menuEl.classList.add('open');
+          if (openCategory) {
+            menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+              if (row.dataset.cat === openCategory) row.classList.add('open');
+            });
+          }
+        });
       }
 
       // Builds a natural-language 棋谱 announcement for ply `n` (e.g. "马f3，将军").
@@ -1084,25 +1123,29 @@
         var narrateText = null;
         if (n === -1) {
           var intro = state.anno.intro;
-          showPopup(intro && intro.popup);
+          var introPopup = localizedPopup(intro);
+          showPopup(introPopup);
           if (intro) {
             (intro.flash_squares || []).forEach(function (sq) { addHighlight(sq, '#FFD70055'); });
-            narrateText = intro.voice === true ? stripHtml(intro.popup) : (typeof intro.voice === 'string' ? intro.voice : null);
+            narrateText = intro.voice === true ? stripHtml(introPopup) : (typeof intro.voice === 'string' ? intro.voice : null);
           }
-          playStatus.textContent = '开局位置 — 点击▶开始自动播放，或用↩/→单步查看';
+          playStatus.textContent = isEnglish()
+            ? 'Starting position — press ▶ to autoplay or use ↩/→ to step through the game'
+            : '开局位置 — 点击▶开始自动播放，或用↩/→单步查看';
         } else if (n === totalPlies()) {
           var outro = state.anno.outro;
-          showPopup(outro && outro.popup);
+          var outroPopup = localizedPopup(outro);
+          showPopup(outroPopup);
           if (outro) {
-            narrateText = outro.voice === true ? stripHtml(outro.popup) : (typeof outro.voice === 'string' ? outro.voice : null);
+            narrateText = outro.voice === true ? stripHtml(outroPopup) : (typeof outro.voice === 'string' ? outro.voice : null);
           }
-          playStatus.textContent = '🏁 演示结束';
+          playStatus.textContent = isEnglish() ? '🏁 Demonstration complete' : '🏁 演示结束';
           playSound('gameEnd');
         } else {
           var mv = state.moveMetas[n];
           var annoMove = state.annoByIndex[n];
           if (annoMove) {
-            showPopup(annoMove.popup);
+            showPopup(localizedPopup(annoMove));
             (annoMove.highlights || []).forEach(function (h) {
               (h.squares || []).forEach(function (sq) { addHighlight(sq, h.color); });
             });
@@ -1113,7 +1156,9 @@
           else if (mv.isCheck) playSound('check');
           else if (mv.captured || mv.isEnPassant) playSound('capture');
           else playSound('move');
-          playStatus.textContent = '第 ' + (Math.floor(n / 2) + 1) + '回合 · ' + (n % 2 === 0 ? '白方' : '黑方') + '：' + mv.san;
+          playStatus.textContent = isEnglish()
+            ? 'Move ' + (Math.floor(n / 2) + 1) + ' · ' + (n % 2 === 0 ? 'White' : 'Black') + ': ' + mv.san
+            : '第 ' + (Math.floor(n / 2) + 1) + '回合 · ' + (n % 2 === 0 ? '白方' : '黑方') + '：' + mv.san;
         }
         speak(narrateText);
       }
@@ -1162,13 +1207,15 @@
       function renderDropdownMenu(pieceDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = isEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           var exampleNum = 0;
           cat.items.forEach(function (item) {
             item.solutions.forEach(function (sol) {
               exampleNum++;
-              html += '<div class="submenu-item" data-item="' + item.id + '" data-sol="' + sol.id + '">例' + exampleNum + '</div>';
+              var exampleLabel = isEnglish() ? 'Example ' + exampleNum : '例' + exampleNum;
+              html += '<div class="submenu-item" data-item="' + item.id + '" data-sol="' + sol.id + '">' + exampleLabel + '</div>';
             });
           });
           html += '</div></div>';
@@ -1229,23 +1276,30 @@
       function loadEndgameItem(pieceDef, manifest, itemId, solId) {
         stopAutoplay();
         window.speechSynthesis && window.speechSynthesis.cancel();
+        state.practiceMode = false;
         var item = findItemById(manifest, itemId);
         if (!item) return;
         playStatus.textContent = '正在加载残局...';
         var base = './data/' + pieceDef.folder + '/';
+        var english = isEnglish();
         Promise.all([
           fetch(base + solId + '.anno.json').then(function (r) { return r.json(); }),
           fetch(base + solId + '.solution.txt').then(function (r) { return r.text(); }),
-          fetch(base + solId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
+          fetch(base + solId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; }),
+          english ? fetch(base + solId + '.exp_en.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; }) : Promise.resolve('')
         ]).then(function (res) {
           state.anno = res[0];
+          state.explanationCn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '';
+          state.explanationEn = res[3] ? res[3].replace(/#\s*END[\s\S]*$/, '').trim() : '';
           var moveList = parseSolutionMoves(res[1]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
           (state.anno.moves || []).forEach(function (m) { state.annoByIndex[m.index] = m; });
-          explanationText.textContent = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          explanationText.textContent = isEnglish()
+            ? (state.explanationEn || state.explanationCn || 'No commentary available')
+            : (state.explanationCn || '暂无解说内容');
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
@@ -1278,10 +1332,12 @@
       function renderPracticeDropdownMenu(pieceDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = isEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
-          cat.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          cat.items.forEach(function (item, index) {
+            var itemLabel = isEnglish() ? (item.label_en || 'Practice ' + (index + 1)) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
           });
           html += '</div></div>';
         });
@@ -1311,7 +1367,7 @@
         if (wasOpen) return;
 
         if (!pieceDef.enabled) {
-          menuEl.innerHTML = '<div class="menu-row disabled">"' + pieceDef.label + '"类练习暂未上线，敬请期待</div>';
+          menuEl.innerHTML = '<div class="menu-row disabled">' + (isEnglish() ? 'Practice is not available yet.' : '"' + pieceDef.label + '"类练习暂未上线，敬请期待') + '</div>';
           menuEl.classList.add('open');
           return;
         }
@@ -1320,7 +1376,7 @@
           menuEl.classList.add('open');
           return;
         }
-        menuEl.innerHTML = '<div class="menu-row disabled">正在加载目录...</div>';
+        menuEl.innerHTML = '<div class="menu-row disabled">' + (isEnglish() ? 'Loading practice menu...' : '正在加载目录...') + '</div>';
         menuEl.classList.add('open');
         fetch('./data/' + pieceDef.folder + '/practice-manifest.json')
           .then(function (r) { return r.json(); })
@@ -1329,7 +1385,7 @@
             renderPracticeDropdownMenu(pieceDef, manifest, menuEl);
           })
           .catch(function (e) {
-            menuEl.innerHTML = '<div class="menu-row disabled">目录加载失败: ' + e.message + '</div>';
+            menuEl.innerHTML = '<div class="menu-row disabled">' + (isEnglish() ? 'Failed to load practice menu: ' : '目录加载失败: ') + e.message + '</div>';
           });
       }
 
@@ -1338,24 +1394,35 @@
         window.speechSynthesis && window.speechSynthesis.cancel();
         var item = findPracticeItem(manifest, itemId);
         if (!item) return;
-        playStatus.textContent = '正在加载练习题...';
+        state.practiceMode = true;
+        playStatus.textContent = isEnglish() ? 'Loading practice...' : '正在加载练习题...';
         var base = './data/' + pieceDef.folder + '/';
         Promise.all([
           fetch(base + itemId + '.solution.txt').then(function (r) { return r.text(); }),
-          fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
+          fetch(base + itemId + '.exp.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; }),
+          fetch(base + itemId + '.exp_en.txt').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; })
         ]).then(function (res) {
           state.anno = {};
+          state.practiceExplanationCn = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '';
+          state.practiceExplanationEn = res[2] ? res[2].replace(/#\s*END[\s\S]*$/, '').trim() : '';
           var moveList = parseSolutionMoves(res[0]);
           var timeline = buildTimelineFromFen(item.fen, moveList);
           state.states = timeline.states;
           state.moveMetas = timeline.moveMetas;
           state.annoByIndex = {};
-          explanationText.textContent = res[1] ? res[1].replace(/#\s*END[\s\S]*$/, '').trim() : '暂无解说内容';
+          renderPracticeExplanation();
           renderSolutionLines();
           goToPly(-1);
         }).catch(function (e) {
-          playStatus.textContent = '练习题加载失败: ' + e.message;
+          playStatus.textContent = (isEnglish() ? 'Practice failed to load: ' : '练习题加载失败: ') + e.message;
         });
+      }
+
+      function renderPracticeExplanation() {
+        var fallback = isEnglish() ? 'No explanation available' : '暂无解说内容';
+        explanationText.textContent = isEnglish()
+          ? (state.practiceExplanationEn || state.practiceExplanationCn || fallback)
+          : (state.practiceExplanationCn || fallback);
       }
 
       // ── 问答练习 (quiz) data loading ────────────────────
@@ -1449,6 +1516,7 @@
         window.speechSynthesis && window.speechSynthesis.cancel();
         var item = findQuizItem(manifest, itemId);
         if (!item) return;
+        state.practiceMode = false;
         quizQuestion.textContent = '正在加载题目...';
         quizQuestion.classList.remove('empty');
         quizOptions.innerHTML = '';
@@ -1506,6 +1574,22 @@
       }
 
       window.addEventListener('chesslanguagechange', function () {
+        refreshObservationLanguage();
+        if (state.practiceMode) renderPracticeExplanation();
+        PRACTICE_PIECE_DEFS.forEach(function (pieceDef) {
+          var menuEl = document.getElementById('menuPractice' + pieceDef.key.toUpperCase());
+          if (menuEl.classList.contains('open') && practiceManifestCache[pieceDef.key]) {
+            var openRow = menuEl.querySelector('.menu-row.open');
+            var openCategory = openRow && openRow.dataset.cat;
+            renderPracticeDropdownMenu(pieceDef, practiceManifestCache[pieceDef.key], menuEl);
+            menuEl.classList.add('open');
+            if (openCategory) {
+              menuEl.querySelectorAll('.menu-row').forEach(function (row) {
+                if (row.dataset.cat === openCategory) row.classList.add('open');
+              });
+            }
+          }
+        });
         if (currentQuizData) {
           var concept = isEnglish() ? (currentQuizData.concept_en || currentQuizData.concept || '') : (currentQuizData.concept || '');
           playStatus.textContent = isEnglish() ? 'Quiz: ' + concept : '问答练习：' + concept;

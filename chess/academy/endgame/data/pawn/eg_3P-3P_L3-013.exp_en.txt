@@ -1,0 +1,4 @@
+The position is drawn if both sides find the correct moves, but a careless move can turn the draw into a loss. Practice the precise defense.
+
+# END
+# Solution 1

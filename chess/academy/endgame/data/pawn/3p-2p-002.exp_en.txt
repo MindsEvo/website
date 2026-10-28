@@ -1,0 +1,4 @@
+The white king is already deep in Black's position. Use it to cut the black king off while the three connected pawns advance against the two defenders.
+
+# END
+# Solution 1

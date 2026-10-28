@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Use the move line to study checks, king activity, and the pawn's promotion route.
+
+# END
+# Solution 1

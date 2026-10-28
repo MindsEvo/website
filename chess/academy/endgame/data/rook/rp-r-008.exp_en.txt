@@ -1,0 +1,4 @@
+Black's rook gives checks from behind, but the white king can approach the h-pawn. White's rook can then lure the black rook away, allowing the pawn to advance.
+
+# END
+# Solution 1

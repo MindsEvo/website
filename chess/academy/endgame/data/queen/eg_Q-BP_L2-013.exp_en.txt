@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Analyze the line and look for a way to use the queen and king to stop the pawn and win the bishop.
+
+# END
+# Solution 1

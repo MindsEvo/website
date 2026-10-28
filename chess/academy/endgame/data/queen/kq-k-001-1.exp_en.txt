@@ -1,0 +1,4 @@
+The queen is powerful, but cannot checkmate alone; the king must help. In the central-advance method, use the queen to cut off the enemy king's escape routes while your king approaches. Drive the king to a corner and coordinate the final checkmate. Be careful to avoid stalemate.
+
+# END
+# Solution 1

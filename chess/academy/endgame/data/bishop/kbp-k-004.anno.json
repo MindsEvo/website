@@ -2,11 +2,13 @@
   "game_id": "eg_KBP-K_L1-004-1",
   "description": "象兵对王-L1 演示4：象护兵升变、后王追杀",
   "intro": {
+    "popup_en": "The bishop on c6 protects the d6-pawn. The black king on f8 tries to stop it, but the bishop's protection makes promotion unstoppable.",
     "flash_squares": ["c6", "d6", "d4", "f8"],
     "popup": "💡 <b>象护兵升变</b><br>象在c6守护d6兵。黑王在f8试图拦截——但象的保护让兵势不可挡！",
     "voice": true
   },
   "outro": {
+    "popup_en": "The bishop protects the promotion, the queen drives the black king, and the white king joins the attack. This is a standard winning method for bishop and pawn against a lone king.",
     "popup": "✅ 象保护升变 → 后追逐黑王 → 王+后配合将杀，这是象兵对抗散王时的标准胜技。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Kg7",
+      "popup_en": "The black king approaches the promotion route and tries to stop the pawn.",
       "popup": "黑王靠向升变路线，试图阻拦。",
       "highlights": [],
       "concept_arrows": []
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "d7",
+      "popup_en": "The pawn advances to d7. Protected by the bishop on c6, it cannot be captured by the black king.",
       "popup": "⭐ <b>兵推d7！</b>象在c6守护，黑王无法吃兵。",
       "highlights": [
         {
@@ -46,6 +50,7 @@
     {
       "index": 2,
       "move": "Kf6",
+      "popup_en": "The black king approaches and waits for the new queen to appear.",
       "popup": "黑王靠近，等待后出现再吃。",
       "highlights": [],
       "concept_arrows": []
@@ -53,6 +58,7 @@
     {
       "index": 3,
       "move": "d8=Q+",
+      "popup_en": "The pawn promotes to a queen with check.",
       "popup": "⭐ <b>升变为后！将军！</b>",
       "highlights": [
         {
@@ -79,6 +85,7 @@
     {
       "index": 5,
       "move": "Qh4",
+      "popup_en": "The queen reaches h4, controls key squares, and prepares to tighten the net.",
       "popup": "后到h4，控制关键格，准备逐步缩小包围圈。",
       "highlights": [],
       "concept_arrows": [
@@ -99,6 +106,7 @@
     {
       "index": 7,
       "move": "Ke6",
+      "popup_en": "The white king joins the attack and helps restrict the black king.",
       "popup": "♔ 白王加入，围堵黑王。",
       "highlights": [],
       "concept_arrows": [
@@ -119,6 +127,7 @@
     {
       "index": 9,
       "move": "Qg5+",
+      "popup_en": "The queen checks and drives the black king toward the corner.",
       "popup": "后将！黑王被逼向角落。",
       "highlights": [],
       "concept_arrows": [
@@ -132,6 +141,7 @@
     {
       "index": 10,
       "move": "Kh8",
+      "popup_en": "The black king escapes into the corner, where the net is about to close.",
       "popup": "黑王逃入角落——陷阱即将收紧。",
       "highlights": [],
       "concept_arrows": []
@@ -139,6 +149,7 @@
     {
       "index": 11,
       "move": "Kf7",
+      "popup_en": "The white king reaches f7 and cuts off the escape squares.",
       "popup": "♔ 白王到f7，封杀逃路。",
       "highlights": [],
       "concept_arrows": [
@@ -159,6 +170,7 @@
     {
       "index": 13,
       "move": "Qg7#",
+      "popup_en": "Qg7 is checkmate.",
       "popup": "⭐ <b>Qg7# 绝杀！</b>",
       "highlights": [
         {

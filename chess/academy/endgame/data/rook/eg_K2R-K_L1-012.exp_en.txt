@@ -1,0 +1,4 @@
+Three white pieces coordinate to restrict and checkmate the black king.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+The source explanation for this position has not been provided; the existing file contains only a template placeholder. The annotated line demonstrates the queen and king coordinating to separate the black king from its knight and capture the knight.
+
+# END
+# Solution 1

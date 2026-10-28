@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Analyze the king's route, key squares, and the pawn's promotion chances.
+
+# END
+# Solution 1

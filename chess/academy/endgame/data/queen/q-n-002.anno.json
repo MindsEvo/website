@@ -2,11 +2,13 @@
   "game_id": "eg_Q-N_L2-002-1",
   "description": "后对马 — 后王协作，驱逐马王后吃马获胜",
   "intro": {
+    "popup_en": "The knight will keep checking to disrupt White, but the queen and king can coordinate to expose and capture it.",
     "flash_squares": ["g1", "h1", "d6", "e6"],
     "popup": "♛♞ <b>马会不断将军干扰，但后王配合可以逼马暴露被吃！",
     "voice": true
   },
   "outro": {
+    "popup_en": "White is winning. Bring the queen and king closer, seize the chance to capture the knight, and convert the advantage.",
     "popup": "✅ <b>白方将获胜！要点：白后和白王逼近，寻机吃掉马，最终将取得胜利。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Kg2",
+      "popup_en": "The white king leaves the corner and heads toward the center.",
       "popup": "♔ 白王从角落出发，向中心靠拢。",
       "highlights": [],
       "concept_arrows": [{"from": "h1", "to": "g2", "color": "#4CAF50CC"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Ke5",
+      "popup_en": "The black king advances actively toward the center to support the knight.",
       "popup": "黑王主动进中心，试图配合马。",
       "highlights": [],
       "concept_arrows": []
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Kf3",
+      "popup_en": "The white king continues forward.",
       "popup": "白王继续前进。",
       "highlights": [],
       "concept_arrows": [{"from": "g2", "to": "f3", "color": "#4CAF50CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Nd4+",
+      "popup_en": "The knight checks. Knights are good at using checks to disrupt White's rhythm.",
       "popup": "马将军！马擅长用将军来消耗白方节奏。",
       "highlights": [{"squares": ["d4", "f3"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "e6", "to": "d4", "color": "#E53935CC"}]
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Ke3",
+      "popup_en": "The white king steps out of check and keeps approaching.",
       "popup": "白王躲开将军，继续靠近。",
       "highlights": [],
       "concept_arrows": [{"from": "f3", "to": "e3", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Nf5+",
+      "popup_en": "The knight checks again, trying to divert the white king.",
       "popup": "马再次将军，试图让白王偏离方向。",
       "highlights": [{"squares": ["f5", "e3"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "d4", "to": "c2", "color": "#E53935CC"}]
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Kd3",
+      "popup_en": "The white king stays calm, avoids the check, and continues toward the target.",
       "popup": "白王不慌不忙，绕开将军继续进攻方向。",
       "highlights": [],
       "concept_arrows": [{"from": "e3", "to": "f4", "color": "#4CAF50CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Nd6",
+      "popup_en": "The knight retreats to defend for the moment.",
       "popup": "马退回，暂时防守。",
       "highlights": [],
       "concept_arrows": [{"from": "c2", "to": "a3", "color": "#E53935CC"}]
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Qc5+",
+      "popup_en": "The queen checks and drives the black king away, separating it from the knight.",
       "popup": "♛ 白后将军，驱赶黑王，让马和王分离！",
       "highlights": [{"squares": ["c5", "e5"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "g1", "to": "d1", "color": "#4CAF50CC"}]
@@ -78,6 +89,7 @@
     {
       "index": 9,
       "move": "Ke6",
+      "popup_en": "The black king is forced to move.",
       "popup": "黑王被迫移动。",
       "highlights": [],
       "concept_arrows": []
@@ -85,6 +97,7 @@
     {
       "index": 10,
       "move": "Ke3",
+      "popup_en": "The white king continues to advance.",
       "popup": "白后继续将军。",
       "highlights": [],
       "concept_arrows": [{"from": "d1", "to": "c1", "color": "#4CAF50CC"}]
@@ -92,6 +105,7 @@
     {
       "index": 11,
       "move": "Nf5+",
+      "popup_en": "The knight checks again as the king draws near.",
       "popup": "王靠近马，相互取暖！",
       "highlights": [{"squares": ["f5", "e3"], "color": "#FF000044", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "b4", "color": "#E53935CC"}]
@@ -99,6 +113,7 @@
     {
       "index": 12,
       "move": "Kf4",
+      "popup_en": "The white king keeps advancing.",
       "popup": "白王继续前进。",
       "highlights": [],
       "concept_arrows": [{"from": "f4", "to": "e4", "color": "#4CAF50CC"}]
@@ -113,6 +128,7 @@
     {
       "index": 14,
       "move": "Ke4",
+      "popup_en": "The white king presses closer.",
       "popup": "白王继续逼进。",
       "highlights": [{"squares": ["e4"], "color": "#4CAF5033", "duration_ms": 0}],
       "concept_arrows": [{"from": "e4", "to": "d3", "color": "#4CAF50CC"}]
@@ -120,6 +136,7 @@
     {
       "index": 15,
       "move": "Kd7",
+      "popup_en": "The black king retreats, and the position becomes increasingly difficult.",
       "popup": "黑王撤退，局势越来越难。",
       "highlights": [],
       "concept_arrows": []
@@ -127,6 +144,7 @@
     {
       "index": 16,
       "move": "Qb6",
+      "popup_en": "The queen takes up a strong position and watches for a chance to capture the knight.",
       "popup": "♛ 白后将军， 伺机吃马。",
       "highlights": [{"squares": ["b6", "c6", "d8", "a7"], "color": "#4CAF5022", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "b6", "color": "#4CAF50CC"}]
@@ -134,6 +152,7 @@
     {
       "index": 17,
       "move": "Nc6",
+      "popup_en": "The knight escapes to c6 and looks for a new outpost.",
       "popup": "马逃到c6，寻找新立足点。",
       "highlights": [],
       "concept_arrows": []
@@ -141,6 +160,7 @@
     {
       "index": 18,
       "move": "Kd5",
+      "popup_en": "The white king advances, preparing to capture the knight.",
       "popup": "吃掉马。",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c3", "to": "a3", "color": "#4CAF50CC"}]
@@ -148,6 +168,7 @@
     {
       "index": 19,
       "move": "Ne7+",
+      "popup_en": "The knight checks and forces the white king away.",
       "popup": "黑王被迫撤离！",
       "concept_arrows": [{"from": "b5", "to": "c6", "color": "#E53935CC"}]
     }

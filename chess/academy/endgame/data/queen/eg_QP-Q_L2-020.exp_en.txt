@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Analyze the position and move line to find a safe way to advance the pawn against the opposing queen.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+White is winning. Because the bishop is dark-squared, drive the opposing king into a dark corner.
+
+# END
+# Solution 1

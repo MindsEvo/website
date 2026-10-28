@@ -1,0 +1,4 @@
+A lone bishop against a lone pawn is usually drawn. This example illustrates an exception described in the source notes: the black king blocks the bishop's route to the pawn from above, while the white king controls the route from below, allowing the pawn to promote and win.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Find the mate in one. You can also try other mating methods.
+
+# END
+# Solution 1

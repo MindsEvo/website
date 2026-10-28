@@ -1,0 +1,4 @@
+The black knight can draw by checking the white king while maintaining control of the a8 promotion square. Its timing must be exact: checks both displace the king and keep the knight in position to defend.
+
+# END
+# Solution 1

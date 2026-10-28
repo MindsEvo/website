@@ -1,0 +1,4 @@
+Practice this type of position carefully; small differences in king placement and pawn timing can change the result.
+
+# END
+# Solution 1

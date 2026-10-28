@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Practice using the king to escort the pawn while controlling the promotion square.
+
+# END
+# Solution 1

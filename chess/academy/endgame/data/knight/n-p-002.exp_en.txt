@@ -1,0 +1,4 @@
+A lone knight cannot stop the a-pawn when it is too far away. The white king restricts the knight, allowing the pawn to promote; the new queen then captures the knight.
+
+# END
+# Solution 1

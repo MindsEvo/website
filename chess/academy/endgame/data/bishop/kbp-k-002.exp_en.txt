@@ -1,0 +1,4 @@
+The h-pawn, king, and bishop can deliver a corner mate. The pawn controls g8, the king covers g7 and f7, and the bishop controls the diagonal to h8.
+
+# END
+# Solution 1

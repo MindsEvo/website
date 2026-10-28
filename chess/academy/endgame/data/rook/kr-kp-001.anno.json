@@ -2,6 +2,7 @@
   "game_id": "eg_KR-KP_L1-001-1",
   "description": "车对b兵 — 王车协同，驱王追兵",
   "intro": {
+    "popup_en": "Black's b5-pawn is advancing. White's plan is to bring the king closer, use the rook to drive the black king away, and gradually stop the pawn.",
     "flash_squares": [
       "b5",
       "g8"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "A standard king-and-rook technique against a pawn: the rook drives the black king away while the white king advances, eventually stopping the pawn.",
     "popup": "✅ 标准王车取兵！<br>关键：<b>车驱逐黑王</b>，白王趁机推进，最终截断兵路。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kf7",
+      "popup_en": "The white king heads toward the side of the black pawn.",
       "popup": "白王向黑兵侧进发！",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 6,
       "move": "Rh8",
+      "popup_en": "The rook drives the black king away while the white king continues to advance.",
       "popup": "车将黑王驱离！白王继续推进。",
       "highlights": [
         {
@@ -60,6 +64,7 @@
     {
       "index": 18,
       "move": "Rb4",
+      "popup_en": "Key move: the rook cuts off the black pawn's route.",
       "popup": "⚡ 关键！车截住黑兵退路！",
       "highlights": [
         {
@@ -82,6 +87,7 @@
     {
       "index": 20,
       "move": "Rxb3",
+      "popup_en": "The rook captures the black pawn, securing a winning position.",
       "popup": "吃掉黑兵，胜势确立！",
       "highlights": [
         {
@@ -103,6 +109,7 @@
     {
       "index": 36,
       "move": "Rg8#",
+      "popup_en": "Checkmate!",
       "popup": "✅ 将死！",
       "highlights": [
         {

@@ -1,0 +1,5 @@
+The two bishops act like crossing beams of light, driving the enemy king into a corner. They control both color complexes; coordinate them with the king and use their diagonals to deliver checkmate.
+
+# END
+# eg_K2B-K_L1-001
+# Solution 1

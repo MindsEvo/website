@@ -1,0 +1,4 @@
+With a rook-pawn and the white king too far away to help, the position is usually drawn.
+
+# END
+# Solution 1

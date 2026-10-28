@@ -1,0 +1,4 @@
+Practice the kings' maneuvering and defense in this two-pawns-versus-pawn ending.
+
+# END
+# Solution 1

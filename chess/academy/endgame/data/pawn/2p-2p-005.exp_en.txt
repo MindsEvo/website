@@ -1,0 +1,4 @@
+Promote the advanced a-pawn immediately. The new queen removes the black c-pawn and controls the h-pawn, while the white g-pawn limits Black's counterplay.
+
+# END
+# Solution 1

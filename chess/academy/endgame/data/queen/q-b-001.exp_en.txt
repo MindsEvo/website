@@ -1,0 +1,4 @@
+In this queen-versus-bishop ending, keep the white king on squares of the opposite color from the bishop. The bishop cannot give check on those squares. Use the queen to drive the black king away from the bishop, then capture the exposed piece.
+
+# END
+# Solution 1

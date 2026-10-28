@@ -2,6 +2,7 @@
   "game_id": "eg_2P-2P_L3-003-1",
   "description": "双兵对峙③：联兵突破 — 白方g/h联兵强行推进，黑方双兵无法拦截",
   "intro": {
+    "popup_en": "The black g7- and h6-pawns are held by the white king on f4. White's connected g- and h-pawns can advance together while the king escorts them.",
     "flash_squares": [
       "f4",
       "g2",
@@ -26,6 +27,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The connected pawns break through while the white king restricts the black king, allowing one pawn to promote.",
     "popup": "✅ <b>结论：白胜！</b> 白方联兵突破，白王封锁黑王，其中一兵顺利升变。",
     "voice": true
   },
@@ -34,6 +36,7 @@
     {
       "index": 0,
       "move": "g3",
+      "popup_en": "1. g3: advance steadily while keeping the connected pawns together.",
       "popup": "1.g3 — 稳步推进，保持联兵完整。",
       "highlights": [],
       "concept_arrows": [
@@ -47,6 +50,7 @@
     {
       "index": 1,
       "move": "Ke4",
+      "popup_en": "1...Ke4: the black king takes the center and tries to interfere.",
       "popup": "1...Ke4 — 黑王抢占中央，试图干扰。",
       "highlights": [],
       "concept_arrows": [
@@ -60,6 +64,7 @@
     {
       "index": 2,
       "move": "Ke5",
+      "popup_en": "2. Ke5! The white king penetrates into Black's position and cuts off the black king's return route.",
       "popup": "2.Ke5！ — 白王进入黑方阵地！切断黑王退路。",
       "highlights": [
         {
@@ -81,6 +86,7 @@
     {
       "index": 3,
       "move": "Ke3",
+      "popup_en": "2...Ke3: the black king tries to return and defend.",
       "popup": "2...Ke3 — 黑王试图回守。",
       "highlights": [],
       "concept_arrows": [
@@ -94,6 +100,7 @@
     {
       "index": 4,
       "move": "h4",
+      "popup_en": "3. h4: the h-pawn advances, creating a double threat.",
       "popup": "3.h4 — h 兵推进，形成双重威胁。",
       "highlights": [],
       "concept_arrows": [
@@ -107,6 +114,7 @@
     {
       "index": 5,
       "move": "hxg3",
+      "popup_en": "3...hxg3: the black pawn exchanges itself, but White remains ahead.",
       "popup": "3...h×g3 — 黑兵交换，但白方依然占优。",
       "highlights": [],
       "concept_arrows": [
@@ -120,6 +128,7 @@
     {
       "index": 6,
       "move": "hxg3",
+      "popup_en": "4. hxg3: the white h-pawn recaptures and keeps advancing.",
       "popup": "4.h×g3 — 白 h 兵复取，h 兵继续前进。",
       "highlights": [],
       "concept_arrows": [

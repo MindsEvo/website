@@ -2,6 +2,7 @@
   "game_id": "eg_KQR-K_L1-002-1",
   "description": "后车对王-L1 演示2：后封道，车暴击",
   "intro": {
+    "popup_en": "Demo 2: The queen blocks escape routes while the rook controls the key file. The rook then delivers the final check when the king has nowhere safe to go.",
     "flash_squares": [
       "d5",
       "b5",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The rook delivers checkmate once the queen and rook have restricted every escape square. The lesson is to coordinate the queen's blockade with the rook's file control.",
     "popup": "⚡ <b>车将军，黑王无处可逃， 绝杀！</b><",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Qh6",
+      "popup_en": "1.Qh6! The queen takes a distant post rather than checking immediately. It controls a long diagonal and blocks the sixth rank.",
       "popup": "⬆️ <b>1.Qh6 — 后占远端！</b><br>后到h6，不急着将军，而是控制大斜线，同时封锁第6行。",
       "highlights": [
         {
@@ -54,6 +57,7 @@
     {
       "index": 1,
       "move": "Kc5",
+      "popup_en": "...Kc5. The black king escapes to the left.",
       "popup": "⬇️ Kc5 — 黑王向左逃",
       "highlights": [
         {
@@ -69,6 +73,7 @@
     {
       "index": 2,
       "move": "Rb1",
+      "popup_en": "2.Rb1! The rook quietly occupies the b-file and controls it from b1.",
       "popup": "⬆️ <b>2.Rb1 — 车入b列！</b><br>车悄悄移到b1，控制整个b列",
       "highlights": [
         {
@@ -99,6 +104,7 @@
     {
       "index": 3,
       "move": "Kd5",
+      "popup_en": "...Kd5. The black king has only d5 available.",
       "popup": "⬇️ Kd5 — 黑王只有d5可走！",
       "highlights": [],
       "concept_arrows": []
@@ -106,6 +112,7 @@
     {
       "index": 4,
       "move": "Rb5+",
+      "popup_en": "3.Rb5+! The rook checks and closes the net; the black king has no escape.",
       "popup": "⬆️ <b>3.Rb5+ — 车将军，收口！",
       "highlights": [
         {

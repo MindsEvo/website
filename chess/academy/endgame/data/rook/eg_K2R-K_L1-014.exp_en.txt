@@ -1,0 +1,4 @@
+Use all three white pieces together to restrict the black king and complete the mate.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+An instructive draw by perpetual check. Black's queen keeps checking while White's queen is forced to block or answer the threats, preventing the pawn from promoting safely.
+
+# END
+# Solution 1

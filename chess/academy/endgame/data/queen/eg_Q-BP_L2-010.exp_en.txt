@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Practice coordinating the queen and king to contain the bishop and passed pawn.
+
+# END
+# Solution 1

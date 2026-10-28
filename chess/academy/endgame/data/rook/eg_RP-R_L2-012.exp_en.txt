@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Work through the line and evaluate whether the rook can support the pawn.
+
+# END
+# Solution 1

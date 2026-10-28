@@ -1,0 +1,4 @@
+The king must reach a key square and coordinate with the bishop and pawn to deliver checkmate. The best move is Kf3. White is winning; the tablebase DTZ is about five plies.
+
+# END
+# Solution 1

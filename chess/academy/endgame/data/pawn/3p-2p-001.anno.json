@@ -2,6 +2,7 @@
   "game_id": "eg_3P-2P_L3-001-1",
   "description": "三兵对双兵①：兵链推进 — c6通路兵配合b5-b4兵链，黑方两兵无法应对",
   "intro": {
+    "popup_en": "White's c-pawn is a passed pawn and threatens to promote. The b-pawns support it as a pawn chain. Black's d-pawn blocks c6, but the isolated h-pawn cannot help defend.",
     "flash_squares": [
       "f1",
       "b4",
@@ -27,6 +28,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The c-pawn's promotion cannot be stopped, and Black's two pawns cannot meet both threats.",
     "popup": "✅ <b>结论：白胜！</b> c 兵升变无法阻止，黑方双兵无法同时应对两路威胁。",
     "voice": true
   },
@@ -35,6 +37,7 @@
     {
       "index": 0,
       "move": "b6+",
+      "popup_en": "1. b6+! The b-pawn checks and drives the black king away.",
       "popup": "1.b6+！— b 兵将军，逼开黑王！",
       "highlights": [
         {
@@ -56,6 +59,7 @@
     {
       "index": 1,
       "move": "Kd6",
+      "popup_en": "1...Kd6: the black king is forced away from c7, leaving the d7-pawn undefended.",
       "popup": "1...Kd6 — 黑王被迫离开 c7，d7 兵失去保护。",
       "highlights": [],
       "concept_arrows": [
@@ -69,6 +73,7 @@
     {
       "index": 2,
       "move": "c7",
+      "popup_en": "2. c7: the c-pawn advances rapidly; promotion is imminent.",
       "popup": "2.c7 — c 兵长驱直入，升变在即！",
       "highlights": [],
       "concept_arrows": [
@@ -82,6 +87,7 @@
     {
       "index": 3,
       "move": "Kc6",
+      "popup_en": "2...Kc6: the black king rushes back to stop it, but too late.",
       "popup": "2...Kc6 — 黑王赶回拦截，但为时已晚。",
       "highlights": [],
       "concept_arrows": [
@@ -95,6 +101,7 @@
     {
       "index": 4,
       "move": "b7",
+      "popup_en": "3. b7! The b-pawn advances too, creating two promotion threats.",
       "popup": "3.b7！— b 兵再进，形成双重升变威胁！",
       "highlights": [
         {
@@ -117,6 +124,7 @@
     {
       "index": 5,
       "move": "Kxc7",
+      "popup_en": "3...Kxc7 captures the c-pawn, but the b-pawn can no longer be stopped.",
       "popup": "3...K×c7 — 黑王吃掉 c7 兵，但 b7 兵已无法阻止。",
       "highlights": [],
       "concept_arrows": [
@@ -130,6 +138,7 @@
     {
       "index": 6,
       "move": "b8=Q+",
+      "popup_en": "4. b8=Q+ promotes the b-pawn with check. White wins.",
       "popup": "4.b8=Q+ — b 兵升变为后！白胜！",
       "highlights": [],
       "concept_arrows": [

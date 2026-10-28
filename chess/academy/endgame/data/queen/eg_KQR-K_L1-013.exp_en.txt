@@ -1,0 +1,4 @@
+A direct mating pattern. Practice delivering checkmate without stalemating the king.
+
+# END
+# Solution 1

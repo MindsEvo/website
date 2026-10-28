@@ -1,0 +1,4 @@
+White's king move makes a crucial difference: Kb4 and Kc1 lead to completely different results. Here White needs to spend a tempo waiting before advancing.
+
+# END
+# Solution 1

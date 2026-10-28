@@ -1,0 +1,4 @@
+Try several methods for coordinating the king and rook to checkmate the lone king.
+
+# END
+# Solution 1

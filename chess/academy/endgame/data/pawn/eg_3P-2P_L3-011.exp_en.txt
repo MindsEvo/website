@@ -1,0 +1,4 @@
+The black king cannot defend against threats on both wings. Use the three pawns to create separate passed-pawn threats.
+
+# END
+# Solution 1

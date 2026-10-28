@@ -1,0 +1,4 @@
+Bring the white king closer as quickly as possible. Use rook checks from behind and look for a chance to capture the pawn.
+
+# END
+# Solution 1

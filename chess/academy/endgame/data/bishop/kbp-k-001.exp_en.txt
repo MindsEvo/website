@@ -1,0 +1,4 @@
+The bishop on b6 controls the a7 escape square. Advance the white king to cut the black king off, then push the a-pawn at the right moment. The bishop, king, and pawn must coordinate to promote safely.
+
+# END
+# Solution 1

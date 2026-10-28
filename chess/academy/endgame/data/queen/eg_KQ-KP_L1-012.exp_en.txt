@@ -1,0 +1,4 @@
+With a bishop pawn and no support from the king, Black can use the drawing rules to hold the position. Explore how the queen can restrict the pawn without allowing a stalemate.
+
+# END
+# Solution 1

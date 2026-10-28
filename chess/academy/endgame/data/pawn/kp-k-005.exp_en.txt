@@ -1,0 +1,4 @@
+Black draws by maintaining the opposition. If Black fails to mirror the white king correctly, White can reach the key squares and win.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Stalemate is a draw: the black king is not in check but has no legal move. After Kc7, the queen controls a5 and a7 while the white king and queen cover the b-file escape squares. White had a winning position but drew through stalemate. In queen endgames, always check whether the enemy king has a legal move before making the final move.
+
+# END
+# Solution 4

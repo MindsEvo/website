@@ -3,6 +3,7 @@
     {
       "key": "KQR_vs_K",
       "label": "后车对王-L1",
+      "label_en": "Queen and Rook vs. King",
       "items": [
         { "id": "eg_KQR-K_L1-012", "label": "练习1", "fen": "7R/2Q5/8/8/6k1/8/5K2/8 w - - 0 1" },
         { "id": "eg_KQR-K_L1-013", "label": "练习2", "fen": "6K1/6R1/8/8/4Q3/1k6/8/8 w - - 0 1" },
@@ -14,6 +15,7 @@
     {
       "key": "KQ_vs_K",
       "label": "后对王-L1",
+      "label_en": "Queen vs. King",
       "items": [
         { "id": "eg_KQ-K_L1-010", "label": "练习1", "fen": "8/2K5/8/k7/8/8/8/2Q5 w - - 0 1" },
         { "id": "eg_KQ-K_L1-011", "label": "练习2", "fen": "1Q6/3k4/8/8/8/8/1K6/8 w - - 0 1" },
@@ -25,6 +27,7 @@
     {
       "key": "KQ_vs_KP",
       "label": "后对升变兵-L1",
+      "label_en": "Queen vs. Passed Pawn",
       "items": [
         { "id": "eg_KQ-KP_L1-010", "label": "练习1", "fen": "3Q4/6K1/8/8/8/8/2kp4/8 w - - 0 1" },
         { "id": "eg_KQ-KP_L1-011", "label": "练习2", "fen": "1Q1K4/8/8/8/8/8/1pk5/8 w - - 0 1" },
@@ -41,6 +44,7 @@
     {
       "key": "QP_vs_Q",
       "label": "后兵对后-L2",
+      "label_en": "Queen and Pawn vs. Queen",
       "items": [
         { "id": "eg_QP-Q_L2-010", "label": "练习1", "fen": "2q5/2P5/8/2Q5/8/8/2K5/7k w - - 0 1" },
         { "id": "eg_QP-Q_L2-011", "label": "练习2", "fen": "4q3/4P3/8/8/4Q3/8/8/k3K3 w - - 0 1" },
@@ -58,6 +62,7 @@
     {
       "key": "Q_vs_B",
       "label": "后对象-L2",
+      "label_en": "Queen vs. Bishop",
       "items": [
         { "id": "eg_Q-B_L2-010", "label": "练习1", "fen": "8/8/b7/8/5Q2/8/8/4k2K w - - 0 1" },
         { "id": "eg_Q-B_L2-011", "label": "练习2", "fen": "8/8/6Q1/5K2/k7/8/b7/8 w - - 0 1" },
@@ -67,6 +72,7 @@
     {
       "key": "Q_vs_BP",
       "label": "后对象兵-L2",
+      "label_en": "Queen vs. Bishop and Pawn",
       "items": [
         { "id": "eg_Q-BP_L2-010", "label": "练习1", "fen": "8/3Q4/K7/2k5/8/5p2/b7/8 w - - 0 1" },
         { "id": "eg_Q-BP_L2-011", "label": "练习2", "fen": "6Q1/8/5b2/8/3k1p2/7K/8/8 w - - 0 1" },
@@ -78,6 +84,7 @@
     {
       "key": "Q_vs_N",
       "label": "后对马-L2",
+      "label_en": "Queen vs. Knight",
       "items": [
         { "id": "eg_Q-N_L2-010", "label": "练习1", "fen": "6k1/7n/8/8/Q4K2/8/8/8 w - - 0 1" },
         { "id": "eg_Q-N_L2-011", "label": "练习2", "fen": "8/8/8/2n5/8/k7/7Q/2K5 w - - 0 1" },
@@ -87,6 +94,7 @@
     {
       "key": "Q_vs_R",
       "label": "后对车-L2",
+      "label_en": "Queen vs. Rook",
       "items": [
         { "id": "eg_Q-R_L2-010", "label": "练习1", "fen": "8/8/4k3/8/3QK3/8/8/4r3 w - - 0 1" },
         { "id": "eg_Q-R_L2-011", "label": "练习2", "fen": "8/3k4/3r4/4Q3/8/8/3K4/8 w - - 0 1" },

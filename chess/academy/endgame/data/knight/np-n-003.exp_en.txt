@@ -1,0 +1,4 @@
+Advance the b-pawn while the king and knight control the key squares. Knight checks displace the black king from the promotion route, allowing the pawn to promote with check.
+
+# END
+# Solution 1

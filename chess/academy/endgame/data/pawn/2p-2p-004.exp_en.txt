@@ -1,0 +1,4 @@
+In a race on opposite wings, keep advancing the c-pawn even if the black king captures the a-pawn. The c-pawn promotes first.
+
+# END
+# Solution 1

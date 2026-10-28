@@ -4,54 +4,59 @@
     {
       "key": "k2r-k",
       "label": "双车对王",
+      "label_en": "Two Rooks vs. King",
       "items": [
-        { "id": "k2r-k-001", "fen": "8/7k/3K4/R7/8/8/8/4R3 w - - 0 1", "solutions": [{ "id": "k2r-k-001" }] }
+        { "id": "k2r-k-001", "label_en": "1. The Two-Rook Mating Method", "explanation_en": "Alternate the rooks to control successive ranks or files, steadily restricting the enemy king until checkmate.", "fen": "8/7k/3K4/R7/8/8/8/4R3 w - - 0 1", "solutions": [{ "id": "k2r-k-001" }] }
       ]
     },
     {
       "key": "kr-k",
       "label": "车对王",
+      "label_en": "Rook vs. King",
       "items": [
-        { "id": "kr-k-001", "fen": "8/8/3k4/8/4K3/8/1R6/8 w - - 0 1", "solutions": [{ "id": "kr-k-001" }] }
+        { "id": "kr-k-001", "label_en": "1. Drive the King to the Corner", "explanation_en": "Use the rook to cut off ranks and the king to drive the enemy king toward the edge, then coordinate for checkmate.", "fen": "8/8/3k4/8/4K3/8/1R6/8 w - - 0 1", "solutions": [{ "id": "kr-k-001" }] }
       ]
     },
     {
       "key": "kr-kp",
       "label": "车对升变兵",
+      "label_en": "Rook vs. Passed Pawn",
       "items": [
-        { "id": "kr-kp-001", "fen": "6K1/8/2k5/1p5R/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-001" }] },
-        { "id": "kr-kp-002", "fen": "3K4/8/5k2/8/6p1/8/8/1R6 w - - 0 1", "solutions": [{ "id": "kr-kp-002" }] },
-        { "id": "kr-kp-003", "fen": "6K1/8/8/4p3/3k4/8/8/2R5 w - - 0 1", "solutions": [{ "id": "kr-kp-003" }] },
-        { "id": "kr-kp-004", "fen": "8/3RK3/8/5kp1/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-004" }] },
-        { "id": "kr-kp-005", "fen": "4K3/3R4/8/6p1/8/5k2/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-005" }] },
-        { "id": "kr-kp-006", "fen": "8/8/8/8/5p2/8/1K2k3/R7 w - - 0 1", "solutions": [{ "id": "kr-kp-006" }] }
+        { "id": "kr-kp-001", "label_en": "1. Coordinate King and Rook", "explanation_en": "Drive the defending king away with the rook, bring the white king forward, and stop the pawn.", "fen": "6K1/8/2k5/1p5R/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-001" }] },
+        { "id": "kr-kp-002", "label_en": "2. Blockade the Isolated Pawn", "explanation_en": "Separate the black king from its pawn and place the rook in front of the pawn on the g-file.", "fen": "3K4/8/5k2/8/6p1/8/8/1R6 w - - 0 1", "solutions": [{ "id": "kr-kp-002" }] },
+        { "id": "kr-kp-003", "label_en": "3. Use Checks to Reach the Promotion File", "explanation_en": "Use rook checks to occupy the pawn's promotion route while the white king approaches to help stop it.", "fen": "6K1/8/8/4p3/3k4/8/8/2R5 w - - 0 1", "solutions": [{ "id": "kr-kp-003" }] },
+        { "id": "kr-kp-004", "label_en": "4. Cut Off the Defending King", "explanation_en": "Advance the king to cut the defender off from the pawn, then use the rook to capture it.", "fen": "8/3RK3/8/5kp1/8/8/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-004" }] },
+        { "id": "kr-kp-005", "label_en": "5. Allow Promotion, Then Capture", "explanation_en": "Bring the king into play and place the rook to capture the pawn's promoted queen immediately.", "fen": "4K3/3R4/8/6p1/8/5k2/8/8 w - - 0 1", "solutions": [{ "id": "kr-kp-005" }] },
+        { "id": "kr-kp-006", "label_en": "6. Escape Along the Back Rank", "explanation_en": "Use the back rank to escape with the king while rook checks gain time to capture the pawn.", "fen": "8/8/8/8/5p2/8/1K2k3/R7 w - - 0 1", "solutions": [{ "id": "kr-kp-006" }] }
       ]
     },
     {
       "key": "rp-r",
       "label": "车兵对车",
+      "label_en": "Rook and Pawn vs. Rook",
       "items": [
-        { "id": "rp-r-001", "fen": "1r5k/3R4/6PK/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-001" }] },
-        { "id": "rp-r-002", "fen": "1r4k1/3R4/5PK1/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-002" }] },
-        { "id": "rp-r-003", "fen": "4k3/6R1/8/4PK2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "rp-r-003" }] },
-        { "id": "rp-r-004", "fen": "8/4k1K1/6P1/8/8/8/6r1/5R2 w - - 0 1", "solutions": [{ "id": "rp-r-004" }] },
-        { "id": "rp-r-005", "fen": "4K3/4P1k1/8/8/8/r7/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-005" }] },
-        { "id": "rp-r-006", "fen": "4K3/4P1k1/8/8/8/r7/8/4R3 b - - 0 1", "solutions": [{ "id": "rp-r-006" }] },
-        { "id": "rp-r-007", "fen": "4K3/4P1k1/8/8/8/8/2r5/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-007" }] },
-        { "id": "rp-r-008", "fen": "4K3/4P1k1/8/8/8/1r6/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-008" }] },
-        { "id": "rp-r-009", "fen": "5k2/R7/5K2/5P2/8/8/8/5r2 b - - 0 1", "solutions": [{ "id": "rp-r-009" }] }
+        { "id": "rp-r-001", "label_en": "1. Draw with the King on the Promotion Square", "explanation_en": "A rook pawn or bishop pawn may not be enough to win if the defending king occupies the promotion square.", "fen": "1r5k/3R4/6PK/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-001" }] },
+        { "id": "rp-r-002", "label_en": "2. Use the Open h-File to Win", "explanation_en": "Drive the black king away with rook checks along the open h-file, then capture the rook.", "fen": "1r4k1/3R4/5PK1/8/8/8/8/8 w - - 0 1", "solutions": [{ "id": "rp-r-002" }] },
+        { "id": "rp-r-003", "label_en": "3. Block the Fifth-Rank Pawn", "explanation_en": "The rook blocks the pawn from the sixth rank while the king guards key squares, holding the draw.", "fen": "4k3/6R1/8/4PK2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "rp-r-003" }] },
+        { "id": "rp-r-004", "label_en": "4. Stop the Lateral Checks", "explanation_en": "Use the king and rook to drive away the checking rook, then cut it off so the pawn can advance.", "fen": "8/4k1K1/6P1/8/8/8/6r1/5R2 w - - 0 1", "solutions": [{ "id": "rp-r-004" }] },
+        { "id": "rp-r-005", "label_en": "5. Draw by Repeated Checks", "explanation_en": "Black uses the rook pawn and lateral checks to keep the white king away from the promotion square.", "fen": "4K3/4P1k1/8/8/8/r7/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-005" }] },
+        { "id": "rp-r-006", "label_en": "6. Support the Pawn from the E-File", "explanation_en": "The rook supports the pawn from the e-file, enabling the king to drive Black away and promote.", "fen": "4K3/4P1k1/8/8/8/r7/8/4R3 b - - 0 1", "solutions": [{ "id": "rp-r-006" }] },
+        { "id": "rp-r-007", "label_en": "7. Promote and Exchange Rooks", "explanation_en": "Drive the black king away, promote the pawn, and exchange rooks to win with an extra queen.", "fen": "4K3/4P1k1/8/8/8/8/2r5/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-007" }] },
+        { "id": "rp-r-008", "label_en": "8. Lure the Rook Away from the Pawn", "explanation_en": "Bring the king closer to the h-pawn and use the rook to draw the black rook away from its defense.", "fen": "4K3/4P1k1/8/8/8/1r6/8/5R2 b - - 0 1", "solutions": [{ "id": "rp-r-008" }] },
+        { "id": "rp-r-009", "label_en": "9. Drive Away the Rook and Advance", "explanation_en": "The rook is too close laterally to the white king for a drawing setup; drive it away and advance the f-pawn.", "fen": "5k2/R7/5K2/5P2/8/8/8/5r2 b - - 0 1", "solutions": [{ "id": "rp-r-009" }] }
       ]
     },
     {
       "key": "r2p-r",
       "label": "车双兵对车",
+      "label_en": "Rook and Two Pawns vs. Rook",
       "items": [
-        { "id": "r2p-r-001", "fen": "4r3/8/8/2R5/3P4/1kP5/6K1/8 w - - 0 1", "solutions": [{ "id": "r2p-r-001" }] },
-        { "id": "r2p-r-002", "fen": "8/8/8/5kP1/5P2/4K3/6R1/7r w - - 0 1", "solutions": [{ "id": "r2p-r-002" }] },
-        { "id": "r2p-r-003", "fen": "2R5/8/6k1/6P1/2P3K1/2r5/8/8 w - - 0 1", "solutions": [{ "id": "r2p-r-003" }] },
-        { "id": "r2p-r-004", "fen": "8/5K1k/4R2P/5P2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-004" }] },
-        { "id": "r2p-r-005", "fen": "8/7k/4R2P/5P2/5K2/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-005" }] },
-        { "id": "r2p-r-006", "fen": "1r4k1/R7/8/6PK/8/8/6P1/8 b - - 0 1", "solutions": [{ "id": "r2p-r-006" }] }
+        { "id": "r2p-r-001", "label_en": "1. Advance Connected Pawns", "explanation_en": "Bring the king closer and use it to support the connected pawns as they advance.", "fen": "4r3/8/8/2R5/3P4/1kP5/6K1/8 w - - 0 1", "solutions": [{ "id": "r2p-r-001" }] },
+        { "id": "r2p-r-002", "label_en": "2. Push the G-Pawn to Promotion", "explanation_en": "Use the king and rook to support the connected g- and f-pawns, creating an unstoppable promotion threat.", "fen": "8/8/8/5kP1/5P2/4K3/6R1/7r w - - 0 1", "solutions": [{ "id": "r2p-r-002" }] },
+        { "id": "r2p-r-003", "label_en": "3. Cut Off the Defending King", "explanation_en": "Cut off the black king with the rook while the white king supports the connected pawns.", "fen": "2R5/8/6k1/6P1/2P3K1/2r5/8/8 w - - 0 1", "solutions": [{ "id": "r2p-r-003" }] },
+        { "id": "r2p-r-004", "label_en": "4. Advance the F-Pawn", "explanation_en": "Coordinate the king and rook to advance the f-pawn and create a decisive promotion threat.", "fen": "8/5K1k/4R2P/5P2/8/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-004" }] },
+        { "id": "r2p-r-005", "label_en": "5. Draw with Lateral Checks", "explanation_en": "With the king behind the pawns, Black can draw by repeatedly checking from the side with the rook.", "fen": "8/7k/4R2P/5P2/5K2/8/1r6/8 b - - 0 1", "solutions": [{ "id": "r2p-r-005" }] },
+        { "id": "r2p-r-006", "label_en": "6. Cut Off the King to Draw", "explanation_en": "Use long-range rook checks to cut the white king off from the connected pawns and hold the draw.", "fen": "1r4k1/R7/8/6PK/8/8/6P1/8 b - - 0 1", "solutions": [{ "id": "r2p-r-006" }] }
       ]
     }
   ]

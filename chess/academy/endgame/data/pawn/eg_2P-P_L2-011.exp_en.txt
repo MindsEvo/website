@@ -1,0 +1,4 @@
+A striking king-opposition maneuver. Calculate how the kings' positions determine which side can advance safely.
+
+# END
+# Solution 1

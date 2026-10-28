@@ -1,0 +1,22 @@
+# Endgame Practice Analysis
+
+## Position
+- ID: eg_K2B-K_L1-002
+- Theme: mate, king activity, basic checkmate, endgame, piece coordination, bishop endgame
+- FEN: `1B6/7K/8/8/8/8/4k3/7B w - - 0 1`
+
+## Assessment
+White to move. The best move is `Kg6` (h7-g6). White has a forced win and can checkmate in 10 moves.
+
+## Plan
+Restrict the black king's movement, coordinate the king and bishops, drive the king toward the edge, and complete the checkmate.
+
+## Key Ideas
+- Keep the pieces coordinated.
+- Avoid stalemate.
+- Gradually reduce the opposing king's available squares.
+
+*Position and tablebase assessment generated with Syzygy.*
+
+# END
+# Solution 1

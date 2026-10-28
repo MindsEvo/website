@@ -2,11 +2,13 @@
   "game_id": "eg_B2P-B_L2-001-1",
   "description": "象双兵对象 — 白方驱逐黑王后兵升变获胜",
   "intro": {
+    "popup_en": "White's connected central pawns are on e6 and f6, while the black bishop is on b4. First use the bishop to check and drive the black king away, then bring the white king toward h7 to support promotion.",
     "flash_squares": ["e6", "f6", "b4", "e8"],
     "popup": "♗ <b>象双兵对象</b><br>白方双兵在中路（e6、f6），黑象在b4。<br>白方先用象将军驱赶黑王，再王奔h7支援兵升变！",
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. Bh5+ drives the black king away, then the white king goes via g8 to f7 while the e-pawn advances. Once the king reaches h7, Black cannot stop promotion.",
     "popup": "✅ <b>白方获胜！</b>Bh5+驱王，王奔g8-f7，e7推进升变。<br>要点：白王走到h7时黑王无法阻止兵的前进。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Bh5+",
+      "popup_en": "The bishop checks from h5 and drives the black king away from the e-file.",
       "popup": "⚡ <b>将军！</b>白象h5将军，驱逐黑王离开e列。",
       "highlights": [{"squares": ["h5", "e8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e2", "to": "h5", "color": "#4CAF50CC"}, {"from": "h5", "to": "e8", "color": "#FF6B35CC"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Kd8",
+      "popup_en": "The black king is forced away from its defensive post on e8.",
       "popup": "黑王被迫撤离，离开e8的防守位置。",
       "highlights": [{"squares": ["d8"], "color": "#E5393544", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "d8", "color": "#E53935CC"}]
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Kf5",
+      "popup_en": "The white king heads toward the kingside, aiming for h7.",
       "popup": "白王向右翼进军，目标是h7。",
       "highlights": [],
       "concept_arrows": [{"from": "e5", "to": "f5", "color": "#4CAF50CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Bf8",
+      "popup_en": "The black bishop moves to f8 and tries to stop the f-pawn.",
       "popup": "黑象移到f8，试图阻挡f6兵推进。",
       "highlights": [{"squares": ["f8", "f6"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": [{"from": "b4", "to": "f8", "color": "#E53935CC"}]
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Kg6",
+      "popup_en": "The white king continues toward the kingside.",
       "popup": "白王继续向右翼推进。",
       "highlights": [],
       "concept_arrows": [{"from": "f5", "to": "g6", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Ke8",
+      "popup_en": "The black king returns to the center and tries to restore the defense.",
       "popup": "黑王返回中央，试图恢复防守。",
       "highlights": [],
       "concept_arrows": []
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Kh7+",
+      "popup_en": "The white king reaches h7 with check and supports the pawn's advance to f8.",
       "popup": "⭐ <b>白王到h7！</b>将军黑王同时支援f8升变。",
       "highlights": [{"squares": ["h7", "f8"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "g6", "to": "h7", "color": "#4CAF50CC"}, {"from": "h7", "to": "e8", "color": "#FF6B35CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Kd8",
+      "popup_en": "The black king is forced away again.",
       "popup": "黑王被迫再次远离。",
       "highlights": [],
       "concept_arrows": []
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Kg8",
+      "popup_en": "The white king reaches g8 and controls the entire f6-f7-f8 promotion route.",
       "popup": "白王到g8，对f6-f7-f8路线形成完全掌控。",
       "highlights": [{"squares": ["g8", "f8"], "color": "#4CAF5066", "duration_ms": 0}],
       "concept_arrows": [{"from": "h7", "to": "g8", "color": "#4CAF50CC"}]
@@ -78,6 +89,7 @@
     {
       "index": 9,
       "move": "Bd6",
+      "popup_en": "The black bishop changes direction and tries to create a new obstacle.",
       "popup": "黑象转向，试图创造新障碍。",
       "highlights": [],
       "concept_arrows": []
@@ -85,6 +97,7 @@
     {
       "index": 10,
       "move": "Kf7",
+      "popup_en": "The white king reaches f7 and directly supports the pawn's promotion.",
       "popup": "白王到f7，直接支援兵升变。",
       "highlights": [{"squares": ["f7", "f6"], "color": "#4CAF5066", "duration_ms": 0}],
       "concept_arrows": [{"from": "g8", "to": "f7", "color": "#4CAF50CC"}]
@@ -92,6 +105,7 @@
     {
       "index": 11,
       "move": "Kc7",
+      "popup_en": "The black king tries to approach the white pawn on e6.",
       "popup": "黑王试图靠近e6白兵。",
       "highlights": [],
       "concept_arrows": []
@@ -99,6 +113,7 @@
     {
       "index": 12,
       "move": "e7",
+      "popup_en": "The e-pawn advances. Black cannot defend both promotion routes at once.",
       "popup": "♟ <b>e兵推进！</b>黑方无法同时防守两路兵。",
       "highlights": [{"squares": ["e7", "e8"], "color": "#FFD70077", "duration_ms": 0}],
       "concept_arrows": [{"from": "e6", "to": "e7", "color": "#FFD700CC"}]
@@ -106,6 +121,7 @@
     {
       "index": 13,
       "move": "Kb6",
+      "popup_en": "The black king tries to stop the other pawn, but it is too late.",
       "popup": "黑王去拦截另一路，但已来不及。",
       "highlights": [],
       "concept_arrows": []
@@ -113,6 +129,7 @@
     {
       "index": 14,
       "move": "e8=Q",
+      "popup_en": "The pawn promotes, and White wins.",
       "popup": "🎉 <b>升变！白方获胜！</b>",
       "highlights": [{"squares": ["e8"], "color": "#FFD700BB", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "e8", "color": "#FFD700CC"}]
@@ -120,6 +137,7 @@
     {
       "index": 15,
       "move": "Kc5",
+      "popup_en": "The black king cannot change the result.",
       "popup": "黑王无力回天。",
       "highlights": [],
       "concept_arrows": []
@@ -127,6 +145,7 @@
     {
       "index": 16,
       "move": "Qe3+",
+      "popup_en": "The new queen checks and finishes the game easily.",
       "popup": "白后将军，轻松收官。",
       "highlights": [],
       "concept_arrows": [{"from": "e8", "to": "e3", "color": "#4CAF50CC"}]
@@ -134,6 +153,7 @@
     {
       "index": 17,
       "move": "Kd5",
+      "popup_en": "The black king retreats.",
       "popup": "黑王撤退。",
       "highlights": [],
       "concept_arrows": []
@@ -141,6 +161,7 @@
     {
       "index": 18,
       "move": "Qe6+",
+      "popup_en": "The queen checks again; the ending is decisively won.",
       "popup": "白后继续将军，残局胜定。",
       "highlights": [],
       "concept_arrows": []
@@ -148,6 +169,7 @@
     {
       "index": 19,
       "move": "Kc5",
+      "popup_en": "The black king keeps running. White wins easily with queen, bishop, and pawn against the lone king.",
       "popup": "黑王仍在逃跑，白方Q+B+P轻松赢。",
       "highlights": [],
       "concept_arrows": []

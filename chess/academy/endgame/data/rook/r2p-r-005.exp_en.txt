@@ -1,0 +1,4 @@
+Compared with the previous position, the king is behind the pawns, so Black can draw. Practice the rook's lateral checking technique and learn why White cannot make progress.
+
+# END
+# Solution 1

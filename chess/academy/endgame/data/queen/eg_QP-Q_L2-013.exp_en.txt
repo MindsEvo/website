@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Work through the line and consider how queen checks can help the pawn advance.
+
+# END
+# Solution 1

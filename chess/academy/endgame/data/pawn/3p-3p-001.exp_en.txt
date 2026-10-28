@@ -1,0 +1,4 @@
+The g-pawn is the key passed pawn. Bring the white king toward the center to support it while the black king cannot cover both wings.
+
+# END
+# Solution 1

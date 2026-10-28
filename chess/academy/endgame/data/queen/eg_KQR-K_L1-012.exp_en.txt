@@ -1,0 +1,4 @@
+Practice several basic mating methods, and be careful to avoid stalemate.
+
+# END
+# Solution 1

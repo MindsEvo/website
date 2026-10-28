@@ -1,0 +1,4 @@
+Black can calculate accurately and hold the draw in this rook-and-two-pawns ending.
+
+# END
+# Solution 1

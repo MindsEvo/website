@@ -1,0 +1,4 @@
+This is a central-pawn example. The key technique is to give check while also preventing the pawn from promoting. Rather than forcing the black king to the promotion square, White uses the tempo to bring the king closer. Once the white king arrives, drive the black king away from the pawn and capture it.
+
+# END
+# Solution 1

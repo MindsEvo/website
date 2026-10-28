@@ -1,0 +1,4 @@
+Advance the b-pawn with check to draw the black king away, then push the c-pawn. The b- and c-pawns create two promotion threats that Black cannot both stop.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+Use the queen's powerful control to restrict the black king, then coordinate the queen and king to win.
+
+# END
+# Solution 1

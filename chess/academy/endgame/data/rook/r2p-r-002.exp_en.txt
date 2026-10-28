@@ -1,0 +1,4 @@
+Learn the king-and-pawn opposition technique in pawn endings. Advance the connected pawns carefully and use the king to support the g-pawn until promotion cannot be stopped.
+
+# END
+# Solution 1

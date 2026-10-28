@@ -1,0 +1,4 @@
+Key ideas in king-and-rook coordination: use the rook to cut off a rank or file while the king drives the opposing king toward the edge. Avoid stalemate; this is a forced win with correct play.
+
+# END
+# Solution 1

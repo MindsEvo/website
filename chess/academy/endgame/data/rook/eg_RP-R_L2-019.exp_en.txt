@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Study the move line to see whether the rook can stop or support promotion.
+
+# END
+# Solution 1

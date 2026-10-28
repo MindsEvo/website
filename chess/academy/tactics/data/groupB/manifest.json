@@ -4,6 +4,7 @@
     {
       "key": "doubleCheck",
       "label": "双将",
+      "label_en": "Double Check",
       "items": [
         { "id": "doubleCheck-001", "fen": "rn1q1r2/pp3pk1/5n1p/3P4/2P3b1/1P1B1R2/PB3PPP/R2Q2K1 w - - 0 1", "solutions": [{ "id": "doubleCheck-001" }] },
         { "id": "doubleCheck-002", "fen": "5r1k/p4ppp/1p6/6N1/2Q5/1Pb4P/P2q1PP1/5RK1 w - - 0 1", "solutions": [{ "id": "doubleCheck-002" }] },
@@ -21,6 +22,7 @@
     {
       "key": "removalOfTheDefender",
       "label": "消除保护",
+      "label_en": "Remove the Defender",
       "items": [
         { "id": "removalOfTheDefender-001", "fen": "4r1k1/6pp/8/8/3Q2q1/8/6PP/3R2K1 b - - 0 1", "solutions": [{ "id": "removalOfTheDefender-001" }] },
         { "id": "removalOfTheDefender-002", "fen": "5rk1/q4ppp/5n2/8/7Q/5R1P/2B2PP1/6K1 w - - 0 1", "solutions": [{ "id": "removalOfTheDefender-002" }] },
@@ -35,6 +37,7 @@
     {
       "key": "deflection",
       "label": "引离",
+      "label_en": "Deflection",
       "items": [
         {
           "id": "deflection-001",
@@ -61,6 +64,7 @@
     {
       "key": "attraction",
       "label": "引入",
+      "label_en": "Decoy",
       "items": [
         { "id": "attraction-001", "fen": "6k1/6pp/pq6/2N5/8/4P3/6PP/5RK1 w - - 0 1", "solutions": [{ "id": "attraction-001" }] },
         { "id": "attraction-002", "fen": "6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 b - - 0 1", "solutions": [{ "id": "attraction-002" }] },

@@ -1,0 +1,4 @@
+Unlike the previous examples, the pawn has not yet reached the sixth rank. Black can draw by placing the rook directly in front of it and keeping the king near the key squares. Try different plans and see why White cannot break through.
+
+# END
+# Solution 1

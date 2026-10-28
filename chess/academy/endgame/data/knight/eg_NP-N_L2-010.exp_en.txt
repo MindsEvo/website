@@ -1,0 +1,4 @@
+The black king is badly placed and cannot stop the pawn from promoting.
+
+# END
+# Solution 1

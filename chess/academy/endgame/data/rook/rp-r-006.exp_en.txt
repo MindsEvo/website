@@ -1,0 +1,4 @@
+Unlike the previous example, the white rook supports the pawn from the e-file, so Black cannot draw. Use checks and rook control to drive the black king away and promote the pawn.
+
+# END
+# Solution 1

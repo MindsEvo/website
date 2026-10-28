@@ -1,0 +1,4 @@
+Work with both rooks as a team, and use a waiting move when needed to tighten the net.
+
+# END
+# Solution 1

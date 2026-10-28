@@ -1,0 +1,6 @@
+1. The black rook on a5 is far from its king. Use this separation to check the king and then capture the rook.
+2. Drive the black king away with queen checks, then use a queen fork or a direct threat to win the rook.
+3. After the rook is captured, the queen wins easily against the lone king.
+
+# END
+# Solution 1

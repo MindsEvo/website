@@ -1,0 +1,4 @@
+Keep the queen at a safe distance while restricting the black king. This is a typical queen-and-king technique for driving the opposing king toward the edge.
+
+# END
+# Solution 1

@@ -2,11 +2,13 @@
   "game_id": "eg_Q-R_L2-004-1",
   "description": "后对车 — 连将逼走黑车，吃车将死",
   "intro": {
+    "popup_en": "Black's rook on g7 protects the king on h7, while White has a queen on e8 and king on f6. Use a series of checks to drive the rook away from g7, then capture it.",
     "flash_squares": ["e8", "f6", "g7", "h7"],
     "popup": "♛ <b>黑车紧护黑王</b><br>白后在e8，白王在f6，黑车g7护住黑王h7。<br>白方要用<b>连续将军手段将黑车从g7逼走，最终吃掉它！</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "Qg5 is checkmate. The queen on g5 and king on f6 trap the black king. The cost of the checking sequence is that the rook was forced away and captured.",
     "popup": "✅ <b>Qg5将杀！</b>白后g5，白王f6联合围死黑王。连续将军的代价：黑车被迫出逃，最终被吃掉。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Qe4+",
+      "popup_en": "The queen checks along the diagonal, forcing the black king away from g7.",
       "popup": "斜线将军，黑王被迫离开g7旁边。",
       "highlights": [{"squares": ["e4", "h7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "e4", "color": "#4CAF50CC"}, {"from": "e4", "to": "h7", "color": "#FF6B35AA"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Kg8",
+      "popup_en": "The black king escapes to g8.",
       "popup": "黑王逃到g8。",
       "highlights": [],
       "concept_arrows": [{"from": "h7", "to": "g8", "color": "#E53935CC"}]
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Qa8+",
+      "popup_en": "The queen checks along the eighth rank.",
       "popup": "白后沿第8横线将军！",
       "highlights": [{"squares": ["a8", "g8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e4", "to": "a8", "color": "#4CAF50CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Kh7",
+      "popup_en": "The black king retreats to h7.",
       "popup": "黑王退回h7。",
       "highlights": [],
       "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}]
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Qe8",
+      "popup_en": "A key quiet move: the queen returns to e8, making it impossible for the rook to keep guarding g7.",
       "popup": "⚡ <b>关键静着！</b>后退回e8，让黑车无法继续守在g7。",
       "highlights": [{"squares": ["e8"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a8", "to": "e8", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Ra7",
+      "popup_en": "The rook cannot keep defending g7 and is forced to flee to a7.",
       "popup": "黑车无法守住g7，被迫逃到a7。",
       "highlights": [{"squares": ["a7"], "color": "#E5393566", "duration_ms": 0}],
       "concept_arrows": [{"from": "g7", "to": "a7", "color": "#E53935CC"}]
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Qe4+",
+      "popup_en": "The diagonal check continues the pursuit.",
       "popup": "斜线将军继续追击。",
       "highlights": [{"squares": ["e4", "h7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "e4", "color": "#4CAF50CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Kg8",
+      "popup_en": "The black king escapes to g8 again.",
       "popup": "黑王再次逃到g8。",
       "highlights": [],
       "concept_arrows": [{"from": "h7", "to": "g8", "color": "#E53935CC"}]
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Qd5+",
+      "popup_en": "The queen checks again from a diagonal, maintaining the pressure.",
       "popup": "对角方向再次将军，保持压力。",
       "highlights": [{"squares": ["d5", "g8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e4", "to": "d5", "color": "#4CAF50CC"}]
@@ -78,6 +89,7 @@
     {
       "index": 9,
       "move": "Kh7",
+      "popup_en": "The black king returns to h7.",
       "popup": "黑王回到h7。",
       "highlights": [],
       "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}]
@@ -85,6 +97,7 @@
     {
       "index": 10,
       "move": "Qh1+",
+      "popup_en": "The queen shifts to the h-file and gives a file check.",
       "popup": "白后调到h列！沿h列纵向将军。",
       "highlights": [{"squares": ["h1", "h7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "h1", "color": "#4CAF50CC"}]
@@ -92,6 +105,7 @@
     {
       "index": 11,
       "move": "Kg8",
+      "popup_en": "The black king escapes to g8.",
       "popup": "黑王逃至g8。",
       "highlights": [],
       "concept_arrows": [{"from": "h7", "to": "g8", "color": "#E53935CC"}]
@@ -99,6 +113,7 @@
     {
       "index": 12,
       "move": "Qg1+",
+      "popup_en": "The queen pursues with a check along the g-file.",
       "popup": "g列将军追击！",
       "highlights": [{"squares": ["g1", "g8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "h1", "to": "g1", "color": "#4CAF50CC"}]
@@ -106,6 +121,7 @@
     {
       "index": 13,
       "move": "Kh7",
+      "popup_en": "The black king is forced back to h7.",
       "popup": "黑王被迫回到h7。",
       "highlights": [],
       "concept_arrows": [{"from": "g8", "to": "h7", "color": "#E53935CC"}]
@@ -113,6 +129,7 @@
     {
       "index": 14,
       "move": "Qxa7+",
+      "popup_en": "The white queen captures the rook and gives check along the seventh rank.",
       "popup": "🎯 <b>白后吃掉黑车！</b>沿第7横线将军。",
       "highlights": [{"squares": ["a7"], "color": "#FFD700AA", "duration_ms": 0}],
       "concept_arrows": [{"from": "g1", "to": "a7", "color": "#4CAF50CC"}]
@@ -120,6 +137,7 @@
     {
       "index": 15,
       "move": "Kh6",
+      "popup_en": "The black king runs to h6.",
       "popup": "黑王向h6逃跑。",
       "highlights": [],
       "concept_arrows": [{"from": "h7", "to": "h6", "color": "#E53935CC"}]
@@ -127,6 +145,7 @@
     {
       "index": 16,
       "move": "Qg7+",
+      "popup_en": "The queen closes in with a diagonal check.",
       "popup": "白后逼上！斜线将军。",
       "highlights": [{"squares": ["g7", "h6"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "a7", "to": "g7", "color": "#4CAF50CC"}]
@@ -134,6 +153,7 @@
     {
       "index": 17,
       "move": "Kh5",
+      "popup_en": "The black king has only one escape square.",
       "popup": "黑王唯一的出路。",
       "highlights": [],
       "concept_arrows": [{"from": "h6", "to": "h5", "color": "#E53935CC"}]
@@ -141,6 +161,7 @@
     {
       "index": 18,
       "move": "Qg5#",
+      "popup_en": "Checkmate! The queen on g5 and king on f6 trap the black king with no escape.",
       "popup": "♟ <b>将杀！</b>白后g5联合白王f6将黑王围死，无处可逃。",
       "highlights": [{"squares": ["g5", "h5"], "color": "#FFD700AA", "duration_ms": 0}],
       "concept_arrows": [{"from": "g7", "to": "g5", "color": "#4CAF50CC"}]

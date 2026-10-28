@@ -2,11 +2,13 @@
   "game_id": "eg_KQ-K_L1-001-2",
   "description": "后对王-L1 解法2：边线逼迫法",
   "intro": {
+    "popup_en": "Solution 2: The Edge-Driving Method. Use a different route in the same position: approach with the king from the side while the queen controls ranks and files. Finish by delivering mate along the a-file. Queen endgames often have more than one winning method.",
     "flash_squares": ["a1", "a8"],
     "popup": "💡 <b>解法2：边线逼迫法</b><br>同样的局面，换一种思路！<b>王从侧边靠近，后控制行列进行封锁，最终沿a列将死</b>。后残局有多种路线，思维要打开！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Checkmate with Qa5. Unlike Solution 1, the king approaches from the side and the queen seals the escape squares before delivering mate along the a-file.",
     "popup": "✅ <b>Qa5 — 将死！</b><br>对比解法1：同一局面可以有完全不同的将死路线！</b>",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Qd5",
+      "popup_en": "1.Qd5! As in Solution 1, the queen first takes the center and restricts the black king.",
       "popup": "⬆️ <b>1.Qd5 — 同样先控制中心！</b><br>开局与解法1相同，后切断黑王的活动空间。",
       "highlights": [
         {"squares": ["a7", "b7", "a8", "b8"], "color": "#FF572230", "duration_ms": 0}
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Ka7",
+      "popup_en": "...Ka7. The black king moves to the edge.",
       "popup": "⬇️ Ka7 — 黑王退边。",
       "highlights": [],
       "concept_arrows": []
@@ -34,6 +38,7 @@
     {
       "index": 2,
       "move": "Ke8",
+      "popup_en": "2.Ke8! Unlike Solution 1, the white king approaches from above while the queen seals the side squares.",
       "popup": "⬆️ <b>2.Ke8 — 白王从上方包抄！</b><br>与解法1不同，白王走e8，从黑王上方进逼，配合后在侧面封锁。",
       "highlights": [],
       "concept_arrows": [
@@ -44,6 +49,7 @@
     {
       "index": 3,
       "move": "Ka6",
+      "popup_en": "...Ka6. The black king tries to escape downward.",
       "popup": "⬇️ Ka6 — 黑王向下逃跑。",
       "highlights": [],
       "concept_arrows": []
@@ -51,6 +57,7 @@
     {
       "index": 4,
       "move": "Kd7",
+      "popup_en": "3.Kd7! The white king pursues and controls c7 and c8.",
       "popup": "⬆️ <b>3.Kd7 — 白王追击！</b><br>王到d7，向黑王方向逼近，控制c7/c8。",
       "highlights": [
         {"squares": ["c7", "c8"], "color": "#4CAF5030", "duration_ms": 0}
@@ -60,6 +67,7 @@
     {
       "index": 5,
       "move": "Ka7",
+      "popup_en": "...Ka7. The black king can only shuttle between a6 and a7.",
       "popup": "⬇️ Ka7 — 黑王只能在a6/a7之间徘徊。",
       "highlights": [],
       "concept_arrows": []
@@ -67,6 +75,7 @@
     {
       "index": 6,
       "move": "Kc7",
+      "popup_en": "4.Kc7! The white king blocks b6, b7, and b8, confining the black king to the a-file.",
       "popup": "⬆️ <b>4.Kc7 — 白王就位！</b><br>王到c7，封死b6/b7/b8三格，黑王被压制在a列。",
       "highlights": [
         {"squares": ["b6", "b7", "b8"], "color": "#4CAF5055", "duration_ms": 0}
@@ -76,6 +85,7 @@
     {
       "index": 7,
       "move": "Ka6",
+      "popup_en": "...Ka6. The king retreats to a6.",
       "popup": "⬇️ Ka6 — 黑王退到a6。",
       "highlights": [],
       "concept_arrows": []
@@ -83,6 +93,7 @@
     {
       "index": 8,
       "move": "Qf5",
+      "popup_en": "5.Qf5! The queen repositions and prepares to give check from a5.",
       "popup": "⬆️ <b>5.Qf5 — 后重新定位！</b><br>后移到f5，准备沿a5将军。",
       "highlights": [],
       "concept_arrows": [
@@ -92,6 +103,7 @@
     {
       "index": 9,
       "move": "Ka7",
+      "popup_en": "...Ka7 avoids a6.",
       "popup": "⬇️ Ka7 — 黑王避开a6。",
       "highlights": [],
       "concept_arrows": []
@@ -99,6 +111,7 @@
     {
       "index": 10,
       "move": "Qa5#",
+      "popup_en": "6.Qa5# checkmate! The queen checks along the a-file while the king controls b6, b7, and b8. The black king on a7 has no escape.",
       "popup": "⬆️ <b>6.Qa5# — 将死！</b><br>后沿a列将军，王封住b6/b7/b8，黑王在a7被将且无处可逃！",
       "highlights": [
         {"squares": ["a7", "a6", "b6", "b7", "b8"], "color": "#FF000055", "duration_ms": 0}

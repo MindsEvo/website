@@ -2,6 +2,7 @@
   "game_id": "eg_KQ-KP_L1-003-1",
   "description": "后对f兵 — 平局陷阱：黑王躲入角落，永续将",
   "intro": {
+    "popup_en": "Warning: a draw trap. With an f-pawn and the black king driven into the corner, the position may be drawn by perpetual check. See why White can be unable to make progress.",
     "flash_squares": [
       "f2",
       "h1"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw by perpetual check. Once the black king reaches the h1 corner, the queen cannot both give check and stop promotion. Remember: an f-pawn with the king trapped in the corner can be a draw.",
     "popup": "🤝 <b>平局！永续将。</b><br>关键：黑王进入h1角后，后无法既将军又阻升变，陷入死局。<br>记住：<b>f兵角落 = 平局！</b>",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Qg7+",
+      "popup_en": "White tries to drive the black king away with check.",
       "popup": "白方尝试将军驱逐。",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 1,
       "move": "Kh1",
+      "popup_en": "The black king slips into the corner. This is the critical defensive move and White's problem begins.",
       "popup": "⚡ 黑王钻进角落！这是关键一步——白方的麻烦开始了。",
       "highlights": [
         {
@@ -61,6 +65,7 @@
     {
       "index": 8,
       "move": "Qe3",
+      "popup_en": "White tries to block the promotion route and prevent ...f1=Q.",
       "popup": "白尝试封住升变路——阻止f1升后。",
       "highlights": [
         {
@@ -83,6 +88,7 @@
     {
       "index": 9,
       "move": "Kg2",
+      "popup_en": "The black king moves safely around the board.",
       "popup": "黑王安然游走。",
       "highlights": [
         {
@@ -104,6 +110,7 @@
     {
       "index": 10,
       "move": "Qe2",
+      "popup_en": "White blocks the promotion route again, but the pawn is ready to promote.",
       "popup": "白再次封堵——下步要升变了！",
       "highlights": [
         {
@@ -127,6 +134,7 @@
     {
       "index": 11,
       "move": "Kg1",
+      "popup_en": "The black king returns to the corner. If the queen leaves e2, the pawn can promote.",
       "popup": "黑王回到角落！后若离开e2，兵就升变……",
       "highlights": [
         {
@@ -149,6 +157,7 @@
     {
       "index": 22,
       "move": "Qg5+",
+      "popup_en": "Perpetual check! White can make no progress, so the game is drawn.",
       "popup": "🤝 永续将！白方已无法进步——平局成立。",
       "highlights": [
         {

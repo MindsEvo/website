@@ -2,6 +2,7 @@
   "game_id": "eg_KQ-KP_L1-006-1",
   "description": "后对h兵（白王在h5近侧）— 对比上局：王够近就能吃兵！",
   "intro": {
+    "popup_en": "Compare this with the previous h-pawn ending: the black king is still in the corner, but White's king is nearby. White can win by bringing the king closer first, checking to drive the defender away, then capturing the pawn.",
     "flash_squares": [
       "h2",
       "h1",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins because the king on h5 can approach with Kg4, help drive the black king away, and allow the queen to capture the h-pawn. In the previous position the white king was too far away, which made it a draw.",
     "popup": "✅ <b>白方获胜！</b><br>关键：白王在h5，走Kg4后可将军逼黑王离角，然后直接<b>吃掉h兵</b>！<br>上局白王在e7太远——就是平局的原因。",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Kg4",
+      "popup_en": "The white king approaches first. Do not rush to check; bring the king closer.",
       "popup": "⚡ 白王先靠近！不急着将军，先走王。",
       "highlights": [
         {
@@ -41,6 +44,7 @@
     {
       "index": 1,
       "move": "Kg2",
+      "popup_en": "...Kg2. The black king tries to protect the h-pawn.",
       "popup": "黑王想保护h兵。",
       "highlights": [
         {
@@ -62,6 +66,7 @@
     {
       "index": 2,
       "move": "Qa2+",
+      "popup_en": "Check! Drive the black king away from the h-pawn's defensive zone.",
       "popup": "将军！逼黑王离开h兵保护范围。",
       "highlights": [
         {
@@ -83,6 +88,7 @@
     {
       "index": 3,
       "move": "Kf1",
+      "popup_en": "...Kf1 leaves the pawn undefended.",
       "popup": "黑王离开——h兵暴露了！",
       "highlights": [
         {
@@ -105,6 +111,7 @@
     {
       "index": 4,
       "move": "Qxh2",
+      "popup_en": "The queen captures the pawn directly. The white king is close enough to keep the black king from chasing it away.",
       "popup": "⚡ <b>后直接吃兵！</b>王已够近，不怕黑王追过来。",
       "highlights": [
         {
@@ -126,6 +133,7 @@
     {
       "index": 8,
       "move": "Kf3",
+      "popup_en": "The white king joins the mating attack.",
       "popup": "王进来参与将死。",
       "highlights": [
         {
@@ -147,6 +155,7 @@
     {
       "index": 10,
       "move": "Qc1#",
+      "popup_en": "Qc1# checkmate!",
       "popup": "✅ 将死！",
       "highlights": [
         {

@@ -1,0 +1,4 @@
+Try different moves and calculate the resulting pawn races before choosing a plan.
+
+# END
+# Solution 1

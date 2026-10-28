@@ -1,0 +1,4 @@
+The position is drawn with correct play.
+
+# END
+# Solution 1

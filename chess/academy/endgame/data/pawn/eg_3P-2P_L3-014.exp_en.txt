@@ -1,0 +1,4 @@
+The source explanation for this practice position was not provided. Analyze the pawn structure and move line to determine whether either side can create a passed pawn.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+An instructive queen-versus-passed-pawn position. Try several candidate moves and compare how the queen and king coordinate against the promotion threat.
+
+# END
+# Solution 1

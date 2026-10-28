@@ -1,0 +1,10 @@
+Demo 2: The queen blocks routes while the rook controls a key file.
+
+1. Qh6: The queen takes a distant post and restricts the sixth rank without checking immediately.
+2. Rb1: The rook occupies the b-file and controls the black king's route.
+3. Rb5+: Once the king is restricted to d5, the rook gives the final check.
+
+Coordinate the queen's blockade with the rook's file control to finish the mating attack.
+
+# END
+# Solution 1

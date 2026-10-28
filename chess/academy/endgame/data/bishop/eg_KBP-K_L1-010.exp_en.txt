@@ -1,0 +1,4 @@
+Practice coordinating the white king and bishop, and make sure not to allow stalemate.
+
+# END
+# Solution 1

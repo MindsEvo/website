@@ -1,0 +1,4 @@
+This is a classic drawn position with a rook against a queen. Explore why Black can hold: the rook can give repeated checks from the side, preventing the white king from approaching safely. Also test what happens if White tries to capture the rook, and look for other drawing resources.
+
+# END
+# Solution 1

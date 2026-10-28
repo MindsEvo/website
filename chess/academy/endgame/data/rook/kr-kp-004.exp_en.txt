@@ -1,0 +1,4 @@
+Cut off the black king from its pawn with the white king, then use the rook to control the promotion file and capture the isolated pawn.
+
+# END
+# Solution 1

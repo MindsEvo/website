@@ -2,6 +2,7 @@
   "game_id": "eg_3P-3P_L3-001-1",
   "description": "三兵对峙①：侧翼突破 — g4通路兵冲击，白王b4切断黑王，实现突破",
   "intro": {
+    "popup_en": "The white g-pawn is the key passed pawn, while Black's h-pawn is far from the battle. The white king heads toward the center to support the g-pawn; the black king cannot cover both wings.",
     "flash_squares": [
       "b4",
       "e4",
@@ -28,6 +29,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The g-pawn breaks through, and Black cannot handle the threats on both wings.",
     "popup": "✅ <b>结论：白胜！</b> g 兵突破升变，黑方无法应对两翼威胁。",
     "voice": true
   },
@@ -36,6 +38,7 @@
     {
       "index": 0,
       "move": "g5",
+      "popup_en": "1. g5: the g-pawn advances decisively.",
       "popup": "1.g5 — g 兵大步向前！",
       "highlights": [],
       "concept_arrows": [
@@ -49,6 +52,7 @@
     {
       "index": 1,
       "move": "Kg4",
+      "popup_en": "1...Kg4: the black king chases the g-pawn, while the white king circles around from the other side.",
       "popup": "1...Kg4 — 黑王追赶 g 兵，但白王反向包抄。",
       "highlights": [],
       "concept_arrows": [
@@ -62,6 +66,7 @@
     {
       "index": 2,
       "move": "Kc5",
+      "popup_en": "2. Kc5! The white king reaches the center, cuts off the black king, and threatens b5 and d6.",
       "popup": "2.Kc5！— 白王进入中央，切断黑王退路，同时威胁 b5 和 d6。",
       "highlights": [
         {
@@ -84,6 +89,7 @@
     {
       "index": 3,
       "move": "Kf5",
+      "popup_en": "2...Kf5: the black king changes direction and pursues the g-pawn.",
       "popup": "2...Kf5 — 黑王改变方向，追赶 g5 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -97,6 +103,7 @@
     {
       "index": 4,
       "move": "g6",
+      "popup_en": "3. g6: the g-pawn advances again.",
       "popup": "3.g6 — g 兵继续推进！",
       "highlights": [],
       "concept_arrows": [
@@ -110,6 +117,7 @@
     {
       "index": 5,
       "move": "Ke6",
+      "popup_en": "3...Ke6: the black king blocks the pawn directly.",
       "popup": "3...Ke6 — 黑王正面阻挡 g6。",
       "highlights": [],
       "concept_arrows": [
@@ -123,6 +131,7 @@
     {
       "index": 6,
       "move": "g7",
+      "popup_en": "4. g7: one step from promotion. White is winning.",
       "popup": "4.g7 — 升变前一步，白胜已定！",
       "highlights": [],
       "concept_arrows": [

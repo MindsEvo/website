@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Practice coordinating the king, rook, and pawn against the defending rook.
+
+# END
+# Solution 1

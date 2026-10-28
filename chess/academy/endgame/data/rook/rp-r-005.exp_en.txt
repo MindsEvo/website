@@ -1,0 +1,4 @@
+Black draws with the rook-pawn setup and repeated lateral checks. The rook keeps the white king away from the promotion square, so the king cannot return to support the pawn.
+
+# END
+# Solution 1

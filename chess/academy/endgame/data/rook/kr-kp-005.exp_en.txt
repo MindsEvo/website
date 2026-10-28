@@ -1,0 +1,4 @@
+Use checks to bring the white king into the position, then place the rook behind the pawn's promotion square. If the pawn promotes, capture the new queen immediately.
+
+# END
+# Solution 1

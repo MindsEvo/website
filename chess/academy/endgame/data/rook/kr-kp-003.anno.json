@@ -2,6 +2,7 @@
   "game_id": "eg_KR-KP_L1-003-1",
   "description": "车对e兵 — 车将军腾挪，等王协作",
   "intro": {
+    "popup_en": "The white king is far away, but the rook can gain time with checks. First drive the black king away and take control of the pawn's promotion square.",
     "flash_squares": [
       "e5",
       "c1"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Key principle: use rook checks to reach the pawn's promotion route, then wait for the white king to join the fight.",
     "popup": "✅ 核心原则：车利用<b>将军腾挪</b>占据兵的升变路，等待白王进入战场协同作战。",
     "voice": true
   },

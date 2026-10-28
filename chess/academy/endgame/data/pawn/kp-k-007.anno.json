@@ -2,6 +2,7 @@
   "game_id": "eg_KP-K_L1-007-1",
   "description": "a 兵和局：黑方持续对王，封锁 a8 升变格，和局",
   "intro": {
+    "popup_en": "A trap with an a-pawn: although White has a passed pawn on a5, the corner promotion can lead to stalemate. Black can hold by using the opposition to keep control of a8.",
     "flash_squares": [
       "a8",
       "b8",
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw. Black repeatedly takes the opposition and blocks the a8 promotion square. White cannot make progress.",
     "popup": "☰ <b>结论：和局！</b><br>黑方通过持续先手对王，成功封锁a8升变格。<br>白毫无办法！",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Kb6",
+      "popup_en": "1. Kb6: the white king approaches to support the pawn.",
       "popup": "♔ 1.Kb6 — 白王靠近，准备护兵推进。",
       "highlights": [],
       "concept_arrows": [
@@ -32,6 +35,7 @@
     {
       "index": 1,
       "move": "Kc8",
+      "popup_en": "...Kc8! The black king takes c8 and heads toward the a8 area, blocking the white king's route.",
       "popup": "♚ Kc8! — <b>黑王抢占 c8！</b>直接向 a8 区域进发，封锁白王前进通道。",
       "highlights": [
         {
@@ -55,6 +59,7 @@
     {
       "index": 2,
       "move": "Ka7",
+      "popup_en": "2. Ka7? The white king tries to stop Black from reaching the key squares.",
       "popup": "⚠️ 2.Ka7? — <b>白王走到a7， 想阻止黑王接近关键格！</b>",
       "highlights": [
         {
@@ -84,6 +89,7 @@
     {
       "index": 3,
       "move": "Kc7",
+      "popup_en": "...Kc7! Black takes the opposition.",
       "popup": "♚ Kc7! — <b>黑方取得先手对王！</b>",
       "highlights": [
         {
@@ -105,6 +111,7 @@
     {
       "index": 4,
       "move": "a6",
+      "popup_en": "3. a6: the pawn advances and controls b7.",
       "popup": "♟ 3.a6 — 白方推兵 a5→a6，控制b7格。",
       "highlights": [
         {
@@ -126,6 +133,7 @@
     {
       "index": 5,
       "move": "Kc8",
+      "popup_en": "...Kc8: the black king returns to guard b8 and waits for the right moment to reach b7.",
       "popup": "♚ Kc8 — 黑王回守，盯住 b8，b7等待时机。",
       "highlights": [],
       "concept_arrows": [
@@ -139,6 +147,7 @@
     {
       "index": 6,
       "move": "Kb6",
+      "popup_en": "4. Kb6: the white king moves away from a7 to clear the pawn's path.",
       "popup": "♔ 4.Kb6 — 白王移开 a7，为兵让路。",
       "highlights": [],
       "concept_arrows": [
@@ -152,6 +161,7 @@
     {
       "index": 7,
       "move": "Kb8",
+      "popup_en": "...Kb8! The black king occupies b8 and takes the opposition on the b-file.",
       "popup": "♚ Kb8! — <b>黑王占领 b8，b 列先手对王！</b>",
       "highlights": [
         {
@@ -174,6 +184,7 @@
     {
       "index": 8,
       "move": "a7+",
+      "popup_en": "5. a7+ checks the black king on b8.",
       "popup": "🔥 5.a7+ — 兵将军（a6→a7 攻击 b8）",
       "highlights": [
         {
@@ -195,6 +206,7 @@
     {
       "index": 9,
       "move": "Ka8",
+      "popup_en": "...Ka8! The black king occupies a8. The pawn cannot promote without being captured.",
       "popup": "♚ Ka8! — <b>黑王占住 a8——白兵无法升变！</b>",
       "highlights": [
         {
@@ -223,6 +235,7 @@
     {
       "index": 10,
       "move": "Ka6",
+      "popup_en": "6. Ka6: the white king approaches. If it leaves, the black king captures the pawn, so the position remains drawn.",
       "popup": "♔ 6.Ka6 — 白王靠近，和棋！白王如果离开，黑王就吃兵。<b>还是和局！</b>",
       "highlights": [
         {

@@ -1,0 +1,4 @@
+Coordinate king and rook to drive the black king into a corner and checkmate. Take care not to stalemate.
+
+# END
+# Solution 1

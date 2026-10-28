@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template. Use the board and move line to analyze the king-and-pawn ending and find the winning plan.
+
+# END
+# Solution 1

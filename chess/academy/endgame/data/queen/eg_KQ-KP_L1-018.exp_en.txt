@@ -1,0 +1,4 @@
+The defending king should try to move to the same side of the board as the white king, where it may help the pawn advance. Find the queen's best way to contain it.
+
+# END
+# Solution 1

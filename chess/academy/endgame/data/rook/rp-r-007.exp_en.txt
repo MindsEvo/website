@@ -1,0 +1,4 @@
+The white king and rook coordinate to drive the black king away while the pawn advances. After promotion, exchange the rooks and win with the extra queen.
+
+# END
+# Solution 1

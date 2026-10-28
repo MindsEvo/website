@@ -2,11 +2,13 @@
   "game_id": "eg_KBN-K_L1-001-1",
   "description": "象马对王-L1 演示：象马王配合将死黑王",
   "intro": {
+    "popup_en": "Bishop and knight are stronger than two knights in this ending: the bishop controls one color complex while the knight covers neighboring squares. Coordinate all three pieces to drive the black king into a corner, avoiding stalemate.",
     "flash_squares": ["g5", "c5", "f3", "f1"],
     "popup": "💡 <b>象马对王</b>>象马比双马强大：<b>象负责封锁颜色盲区，马控制毗邻格</b>——两者互补！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Bg2 is checkmate. The bishop covers squares the knight cannot, while the king and knight control the remaining escapes. The three pieces work together perfectly.",
     "popup": "✅ <b>Bg2# — 象马配合将死！</b><br>三子分工完美：象覆盖了马控制不到的颜色格子！",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Nd3",
+      "popup_en": "1. Nd3: the knight jumps from c5, controlling e1, f2, and f4 and preparing to coordinate with the bishop to seal the h-file.",
       "popup": "⭐ 1.Nd3 — 马从c5跳到d3，控制e1、f2、f4，准备与象配合封锁h路。",
       "highlights": [
         {"squares": ["d3"], "color": "#2196F355", "duration_ms": 0},
@@ -25,6 +28,7 @@
     {
       "index": 1,
       "move": "Kg1",
+      "popup_en": "The black king has only Kg1: the knight controls e1 and f2, while the bishop covers g2.",
       "popup": "↓ Kg1 — 黑王只能走g1（e1/f2被马控制，g2被象封锁）。",
       "highlights": [],
       "concept_arrows": []
@@ -32,6 +36,7 @@
     {
       "index": 2,
       "move": "Kg4",
+      "popup_en": "2. Kg4: the white king approaches and prepares Kh4 to control the h3 escape square.",
       "popup": "♔ 2.Kg4 — 白王靠近！准备走Kh4封锁h3出口。",
       "highlights": [],
       "concept_arrows": [{"from": "g5", "to": "g4", "color": "#2196F3CC"}]
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Kh2",
+      "popup_en": "The black king moves to the edge and tries to hold the h-file.",
       "popup": "↓ Kh2 — 黑王贴边，试图守住h路。",
       "highlights": [],
       "concept_arrows": []
@@ -46,6 +52,7 @@
     {
       "index": 4,
       "move": "Kh4",
+      "popup_en": "3. Kh4: the white king controls h3, closing the black king's right-side escape route.",
       "popup": "♔ 3.Kh4 — 白王到h4，完全封住h3出口！黑王无法从右侧逃脱。",
       "highlights": [
         {"squares": ["h4"], "color": "#2196F355", "duration_ms": 0},
@@ -59,6 +66,7 @@
     {
       "index": 5,
       "move": "Kg1",
+      "popup_en": "The black king returns to g1 with nowhere else to go.",
       "popup": "↓ Kg1 — 黑王回到g1，无处可去。",
       "highlights": [],
       "concept_arrows": []
@@ -66,6 +74,7 @@
     {
       "index": 6,
       "move": "Kg3",
+      "popup_en": "4. Kg3: the white king controls h2, completing three sides of the net.",
       "popup": "♔ 4.Kg3 — 白王到g3，封住h2！三面合围初成。",
       "highlights": [
         {"squares": ["g3"], "color": "#2196F355", "duration_ms": 0},
@@ -79,6 +88,7 @@
     {
       "index": 7,
       "move": "Kf1",
+      "popup_en": "The black king leaves g1 because the bishop will control g2 and moves to f1.",
       "popup": "↓ Kf1 — 黑王被迫离开g1（g2将被象封锁），避往f1。",
       "highlights": [],
       "concept_arrows": []
@@ -86,6 +96,7 @@
     {
       "index": 8,
       "move": "Bg4",
+      "popup_en": "5. Bg4: the bishop repositions from f3 and prepares to seal the corner along g4-h3-g2.",
       "popup": "🔄 <b>5.Bg4 — 象开始重新定位！</b><br>象从f3跳到g4，准备沿g4→h3→g2路线逐步封锁角落。",
       "highlights": [
         {"squares": ["g4"], "color": "#4CAF5055", "duration_ms": 0},
@@ -99,6 +110,7 @@
     {
       "index": 9,
       "move": "Kg1",
+      "popup_en": "The black king returns to g1.",
       "popup": "↓ Kg1 — 黑王回到g1。",
       "highlights": [],
       "concept_arrows": []
@@ -106,6 +118,7 @@
     {
       "index": 10,
       "move": "Bh3",
+      "popup_en": "6. Bh3: the bishop controls g2. The black king can now move only to h1, where the corner trap is ready.",
       "popup": "🔄 <b>6.Bh3 — 象到h3，封锁g2！</b><br>黑王现在只能去h1——角落陷阱已布好。",
       "highlights": [
         {"squares": ["h3"], "color": "#4CAF5055", "duration_ms": 0},
@@ -119,6 +132,7 @@
     {
       "index": 11,
       "move": "Kh1",
+      "popup_en": "The black king is driven into the h1 corner.",
       "popup": "↓ Kh1 — 黑王被逼入h1角落！",
       "highlights": [
         {"squares": ["h1"], "color": "#FF000055", "duration_ms": 0}
@@ -128,6 +142,7 @@
     {
       "index": 12,
       "move": "Nf4",
+      "popup_en": "7. Nf4 completes the net. The knight controls g2 and e2, combining with the bishop on h3 to seal the corner.",
       "popup": "⭐ <b>7.Nf4 — 马到f4，完成包围圈！</b><br>Nf4控制g2、e2、h5等——与象h3形成双重封锁。",
       "highlights": [
         {"squares": ["f4"], "color": "#2196F355", "duration_ms": 0},
@@ -142,6 +157,7 @@
     {
       "index": 13,
       "move": "Kg1",
+      "popup_en": "The black king tries to escape the corner.",
       "popup": "↓ Kg1 — 黑王试图逃出角落！",
       "highlights": [],
       "concept_arrows": []
@@ -149,6 +165,7 @@
     {
       "index": 14,
       "move": "Ne2+",
+      "popup_en": "8. Ne2+ checks while controlling g1. The black king is forced back to the h1 corner.",
       "popup": "⭐ <b>8.Ne2+ — 马将军！</b><br>马从f4跳到e2将军，同时控制g1——黑王被迫回到h1角落。",
       "highlights": [
         {"squares": ["e2"], "color": "#2196F355", "duration_ms": 0},
@@ -162,6 +179,7 @@
     {
       "index": 15,
       "move": "Kh1",
+      "popup_en": "Forced: the knight controls g1, the bishop controls g2, and the white king controls h2.",
       "popup": "↓ Kh1 — 被迫！g1被马控制，g2被象封锁，h2被白王守住。",
       "highlights": [
         {"squares": ["g1"], "color": "#2196F333", "duration_ms": 0},
@@ -173,6 +191,7 @@
     {
       "index": 16,
       "move": "Bg2#",
+      "popup_en": "Bg2 is checkmate. The bishop moves from h3 to g2; the knight on e2 controls g1, and the white king on g3 controls h2. The bishop covers the color squares the knight cannot reach.",
       "popup": "🏁 <b>Bg2# — 将死！象马配合完美！</b><br>象从h3到g2将死：<br>• g1 → 马Ne2守卫<br>• g2 → 象占据<br>• h2 → 白王Kg3控制<br><b>象马对王成功！象补齐了马控制不到的颜色！</b>",
       "highlights": [
         {"squares": ["g2"], "color": "#4CAF5077", "duration_ms": 0},

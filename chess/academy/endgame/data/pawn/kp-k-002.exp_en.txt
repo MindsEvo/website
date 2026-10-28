@@ -1,0 +1,4 @@
+This is the contrasting case: the black king starts one tempo outside the square. Track the shrinking square after each pawn move; the king remains outside and cannot stop promotion.
+
+# END
+# Solution 1

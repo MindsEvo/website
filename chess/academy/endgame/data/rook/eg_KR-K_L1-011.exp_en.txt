@@ -1,0 +1,4 @@
+Work with the rook and king to force the black king into the corner, then deliver checkmate.
+
+# END
+# Solution 1

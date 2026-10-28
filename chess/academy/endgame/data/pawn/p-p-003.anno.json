@@ -2,6 +2,7 @@
   "game_id": "eg_P-P_L2-003-1",
   "description": "兵对兵③：王的活跃性 — 白王活跃位置决定胜负",
   "intro": {
+    "popup_en": "The white king on b4 is closer to the pawn battle than the black king on f5. White moves first; can it turn this activity into a win?",
     "flash_squares": ["b4", "d4", "f5", "d5"],
     "concept_arrows": [
       {"from": "b4", "to": "d4", "color": "#FF6B35CC"}
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw. Although the white king is more active, the black king returns in time to defend. King activity is necessary but not sufficient to win.",
     "popup": "☰ <b>结论：和局！</b> 尽管白王更活跃，但黑王能及时回防，兵的对峙维持平衡。王的活跃性是必要但不充分的取胜条件。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kc5",
+      "popup_en": "1. Kc5: the white king heads toward the center and threatens the black pawn.",
       "popup": "1.Kc5 — 白王向中心进发，威胁黑兵。",
       "highlights": [],
       "concept_arrows": [
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Ke6",
+      "popup_en": "1...Ke6: the black king returns quickly to defend the d5-pawn.",
       "popup": "1...Ke6 — 黑王迅速回防，守住 d5 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -36,6 +40,7 @@
     {
       "index": 2,
       "move": "Kxd5",
+      "popup_en": "2. Kxd5: the white king captures the pawn, but Black can still draw.",
       "popup": "2.Kxd5 — 白王吃兵，但……",
       "highlights": [
         {"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}
@@ -47,6 +52,7 @@
     {
       "index": 3,
       "move": "Kd7",
+      "popup_en": "2...Kd7: the black king follows closely and is about to take the opposition to stop the white pawn.",
       "popup": "2...Kd7 — 黑王紧追，即将占据对立位拦截白兵。",
       "highlights": [
         {"squares": ["d5", "d7"], "color": "#FFD70055", "duration_ms": 0}

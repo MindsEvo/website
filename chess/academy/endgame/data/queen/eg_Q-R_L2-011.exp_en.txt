@@ -1,0 +1,6 @@
+1. The black king is centralized, so first use queen checks to drive it toward the edge.
+2. The black rook's lateral or file checks are its last defensive resource in a queen-versus-rook ending.
+3. Learn to exchange the queen for the rook when favorable, then finish with the king.
+
+# END
+# Solution 1

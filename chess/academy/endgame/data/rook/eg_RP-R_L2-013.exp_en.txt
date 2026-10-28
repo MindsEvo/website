@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Use the board and solution line to practice rook-and-pawn technique.
+
+# END
+# Solution 1

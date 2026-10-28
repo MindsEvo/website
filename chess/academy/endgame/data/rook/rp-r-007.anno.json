@@ -2,11 +2,13 @@
   "game_id": "eg_RP-R_L2-007-1",
   "description": "车将军驱王——升变换车白胜",
   "intro": {
+    "popup_en": "White uses rook checks to drive the black king away from the promotion square. Once the pawn promotes, White can exchange rooks and win with the extra queen.",
     "flash_squares": ["e7", "f1", "c2"],
     "popup": "<b>白车将军驱赶黑王</b>黑王离开后，兵升变为后，换车取胜。",
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins after the pawn promotes and the rooks are exchanged, leaving White with an extra queen.",
     "popup": "<b>白胜</b>升变换车，白方多子获胜。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Re2",
+      "popup_en": "The black rook moves to the e-file and targets the pawn.",
       "popup": "黑车移到e线，盯住兵。",
       "highlights": [{"squares": ["e2"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "c2", "to": "e2", "color": "#E53935CC"}],
@@ -23,6 +26,7 @@
     {
       "index": 1,
       "move": "Rf7+",
+      "popup_en": "The white rook checks and drives the black king away from the promotion square.",
       "popup": "<b>白车将军！</b>驱赶黑王离开升变格附近。",
       "highlights": [{"squares": ["g7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "f1", "to": "f7", "color": "#4CAF50CC"}],
@@ -31,6 +35,7 @@
     {
       "index": 2,
       "move": "Kg8",
+      "popup_en": "The black king is forced back toward the corner.",
       "popup": "黑王被迫退角。",
       "highlights": [{"squares": ["g8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "g7", "to": "g8", "color": "#E53935CC"}],
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Rf8+",
+      "popup_en": "The white rook checks again and drives the black king away from g8.",
       "popup": "<b>白车再将军！</b>把黑王赶离g8。",
       "highlights": [{"squares": ["g8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "f7", "to": "f8", "color": "#4CAF50CC"}],
@@ -47,6 +53,7 @@
     {
       "index": 4,
       "move": "Kg7",
+      "popup_en": "The black king is forced back.",
       "popup": "黑王被迫回来。",
       "highlights": [{"squares": ["g7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "g8", "to": "g7", "color": "#E53935CC"}],
@@ -55,6 +62,7 @@
     {
       "index": 5,
       "move": "Kd7",
+      "popup_en": "The white king advances to support the pawn.",
       "popup": "白王前进支援兵。",
       "highlights": [{"squares": ["d7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "d7", "color": "#4CAF50CC"}],
@@ -63,6 +71,7 @@
     {
       "index": 6,
       "move": "Rd2+",
+      "popup_en": "The black rook checks, trying to delay the advance.",
       "popup": "黑车将军试图拖延。",
       "highlights": [{"squares": ["d7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e2", "to": "d2", "color": "#E53935CC"}],
@@ -71,6 +80,7 @@
     {
       "index": 7,
       "move": "Kc6",
+      "popup_en": "The white king steps sideways out of check.",
       "popup": "白王侧步避将。",
       "highlights": [{"squares": ["c6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "c6", "color": "#4CAF50CC"}],
@@ -79,6 +89,7 @@
     {
       "index": 8,
       "move": "Rc2+",
+      "popup_en": "The black rook continues checking.",
       "popup": "黑车继续将军。",
       "highlights": [{"squares": ["c6"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d2", "to": "c2", "color": "#E53935CC"}],
@@ -87,6 +98,7 @@
     {
       "index": 9,
       "move": "Kd5",
+      "popup_en": "The white king avoids the check and keeps advancing.",
       "popup": "白王继续避将前进。",
       "highlights": [{"squares": ["d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c6", "to": "d5", "color": "#4CAF50CC"}],
@@ -95,6 +107,7 @@
     {
       "index": 10,
       "move": "Rd2+",
+      "popup_en": "The black rook changes files and checks again.",
       "popup": "黑车换列继续将军。",
       "highlights": [{"squares": ["d5"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c2", "to": "d2", "color": "#E53935CC"}],
@@ -103,6 +116,7 @@
     {
       "index": 11,
       "move": "Kc4",
+      "popup_en": "The white king evades once more; the rook has less room to continue checking.",
       "popup": "白王再避将，黑车将军空间越来越少。",
       "highlights": [{"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "c4", "color": "#4CAF50CC"}],
@@ -111,6 +125,7 @@
     {
       "index": 12,
       "move": "Re2",
+      "popup_en": "The black rook returns to the e-file and desperately tries to stop promotion.",
       "popup": "黑车回守e线，拼命阻止升变。",
       "highlights": [{"squares": ["e2"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "d2", "to": "e2", "color": "#E53935CC"}],
@@ -119,6 +134,7 @@
     {
       "index": 13,
       "move": "e8=Q",
+      "popup_en": "The pawn promotes to a queen. The black rook cannot stop it.",
       "popup": "<b>升变为后！</b>黑车无法阻止。",
       "highlights": [{"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "e8", "color": "#4CAF50CC"}],
@@ -127,6 +143,7 @@
     {
       "index": 14,
       "move": "Rxe8",
+      "popup_en": "The black rook has no choice but to capture the new queen.",
       "popup": "黑车只能换后。",
       "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e2", "to": "e8", "color": "#E53935CC"}],
@@ -135,6 +152,7 @@
     {
       "index": 15,
       "move": "Rxe8",
+      "popup_en": "The white rook recaptures. White wins with an extra rook.",
       "popup": "<b>白车吃回，白方多车获胜！</b>",
       "highlights": [{"squares": ["e8"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "f8", "to": "e8", "color": "#4CAF50CC"}],

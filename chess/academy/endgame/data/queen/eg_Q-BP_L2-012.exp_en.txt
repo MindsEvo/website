@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Practice coordinating the queen and king against the bishop and pawn, paying attention to the promotion route.
+
+# END
+# Solution 1

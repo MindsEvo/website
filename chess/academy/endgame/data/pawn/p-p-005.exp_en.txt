@@ -1,0 +1,4 @@
+The white king can capture the black passed pawn and then escort the b-pawn to promotion. The closer king and the supported passed pawn decide the race.
+
+# END
+# Solution 1

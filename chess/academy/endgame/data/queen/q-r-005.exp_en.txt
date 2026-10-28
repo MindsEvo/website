@@ -1,0 +1,4 @@
+The rook and king must protect one another. White uses the queen's flexible checks and a quiet waiting move to separate them. Once the black king is driven into the corner and the rook leaves its defensive post, the queen can capture the rook and finish the game.
+
+# END
+# Solution 1

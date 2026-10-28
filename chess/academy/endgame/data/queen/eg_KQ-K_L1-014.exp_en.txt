@@ -1,0 +1,4 @@
+Use the queen and king together to encircle the black king. White is winning; explore different mating methods without allowing a draw.
+
+# END
+# Solution 1

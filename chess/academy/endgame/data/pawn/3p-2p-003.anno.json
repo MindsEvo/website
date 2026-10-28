@@ -2,6 +2,7 @@
   "game_id": "eg_3P-2P_L3-003-1",
   "description": "三兵对双兵③：外通路兵 — f兵是外通路兵，黑方双兵无法应对三路进攻",
   "intro": {
+    "popup_en": "White has an outside passed f-pawn with no opposing f-pawn. Black has only g- and h-pawns. The f-pawn will tie down the black king while the g- and h-pawns break through.",
     "flash_squares": [
       "g1",
       "f2",
@@ -27,6 +28,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "White wins. The black king must chase the f-pawn, leaving the g- and h-pawns free to advance and promote.",
     "popup": "✅ <b>结论：白胜！</b> 黑王被迫追赶 f 兵，g/h 兵趁机升变。",
     "voice": true
   },
@@ -35,6 +37,7 @@
     {
       "index": 0,
       "move": "f4",
+      "popup_en": "1. f4: the outside passed f-pawn leads the advance.",
       "popup": "1.f4 — f 通路兵率先出动！",
       "highlights": [],
       "concept_arrows": [
@@ -48,6 +51,7 @@
     {
       "index": 1,
       "move": "Kf7",
+      "popup_en": "1...Kf7: the black king prepares to block the pawn.",
       "popup": "1...Kf7 — 黑王移动准备阻挡。",
       "highlights": [],
       "concept_arrows": [
@@ -61,6 +65,7 @@
     {
       "index": 2,
       "move": "f5",
+      "popup_en": "2. f5: the f-pawn keeps advancing.",
       "popup": "2.f5 — f 兵继续推进！",
       "highlights": [],
       "concept_arrows": [
@@ -74,6 +79,7 @@
     {
       "index": 3,
       "move": "Ke7",
+      "popup_en": "2...Ke7: the black king chases the f-pawn and cannot attend to the g- and h-pawns.",
       "popup": "2...Ke7 — 黑王追赶 f 兵，无法兼顾 g/h 兵。",
       "highlights": [],
       "concept_arrows": [
@@ -87,6 +93,7 @@
     {
       "index": 4,
       "move": "g4",
+      "popup_en": "3. g4: the g-pawn joins the advance, creating a second front.",
       "popup": "3.g4 — g 兵跟进！黑方无力招架两路威胁。",
       "highlights": [
         {
@@ -114,6 +121,7 @@
     {
       "index": 5,
       "move": "Kf6",
+      "popup_en": "3...Kf6 blocks the f-pawn, but the g- and h-pawns are already beyond its reach.",
       "popup": "3...Kf6 — 黑王阻挡 f 兵，但 g/h 兵已无拦截。",
       "highlights": [],
       "concept_arrows": [
@@ -127,6 +135,7 @@
     {
       "index": 6,
       "move": "h4",
+      "popup_en": "4. h4: all three pawns advance, and White has a decisive position.",
       "popup": "4.h4 — 三兵全面推进，白胜定局！",
       "highlights": [],
       "concept_arrows": [

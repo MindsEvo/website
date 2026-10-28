@@ -576,28 +576,43 @@
       // Only 战术A组 is populated so far; B/C/D groups share this same engine/UI but
       // their data manifests haven't been built yet.
       var GROUP_DEFS = [
-        { key: 'A', label: '战术A组', folder: 'groupA', enabled: true },
-        { key: 'B', label: '战术B组', folder: 'groupB', enabled: true },
-        { key: 'C', label: '战术C组', folder: 'groupC', enabled: true },
-        { key: 'D', label: '战术D组', folder: 'groupD', enabled: true }
+        { key: 'A', label: '战术A组', label_en: 'Tactics Group A', folder: 'groupA', enabled: true },
+        { key: 'B', label: '战术B组', label_en: 'Tactics Group B', folder: 'groupB', enabled: true },
+        { key: 'C', label: '战术C组', label_en: 'Tactics Group C', folder: 'groupC', enabled: true },
+        { key: 'D', label: '战术D组', label_en: 'Tactics Group D', folder: 'groupD', enabled: true }
       ];
 
       // 操作练习: reuses each tactic's L2/L3 puzzles (a separate difficulty tier from
       // 动态观察's L1 puzzles, same folder — no filename collisions).
       var PRACTICE_GROUP_DEFS = [
-        { key: 'A', label: '战术A组', folder: 'groupA', enabled: true },
-        { key: 'B', label: '战术B组', folder: 'groupB', enabled: true },
-        { key: 'C', label: '战术C组', folder: 'groupC', enabled: true },
-        { key: 'D', label: '战术D组', folder: 'groupD', enabled: true }
+        { key: 'A', label: '战术A组', label_en: 'Tactics Group A', folder: 'groupA', enabled: true },
+        { key: 'B', label: '战术B组', label_en: 'Tactics Group B', folder: 'groupB', enabled: true },
+        { key: 'C', label: '战术C组', label_en: 'Tactics Group C', folder: 'groupC', enabled: true },
+        { key: 'D', label: '战术D组', label_en: 'Tactics Group D', folder: 'groupD', enabled: true }
       ];
 
       // 问答练习: group → tactic → quiz item (self-contained json, fen included).
       var QUIZ_GROUP_DEFS = [
-        { key: 'A', label: '战术A组', folder: 'groupA', enabled: true },
-        { key: 'B', label: '战术B组', folder: 'groupB', enabled: true },
-        { key: 'C', label: '战术C组', folder: 'groupC', enabled: true },
-        { key: 'D', label: '战术D组', folder: 'groupD', enabled: true }
+        { key: 'A', label: '战术A组', label_en: 'Tactics Group A', folder: 'groupA', enabled: true },
+        { key: 'B', label: '战术B组', label_en: 'Tactics Group B', folder: 'groupB', enabled: true },
+        { key: 'C', label: '战术C组', label_en: 'Tactics Group C', folder: 'groupC', enabled: true },
+        { key: 'D', label: '战术D组', label_en: 'Tactics Group D', folder: 'groupD', enabled: true }
       ];
+
+      function updateGroupChipLabels() {
+        [
+          { defs: GROUP_DEFS, selector: 'data-group' },
+          { defs: PRACTICE_GROUP_DEFS, selector: 'data-practice-group' },
+          { defs: QUIZ_GROUP_DEFS, selector: 'data-quiz-group' }
+        ].forEach(function (set) {
+          set.defs.forEach(function (groupDef) {
+            var button = document.querySelector('.group-chip[' + set.selector + '="' + groupDef.key + '"]');
+            if (button) button.textContent = isEnglish() ? groupDef.label_en : groupDef.label;
+          });
+        });
+      }
+
+      updateGroupChipLabels();
 
       // ── DOM refs ──────────────────────────────────────
       var boardEl = document.getElementById('board');
@@ -1160,13 +1175,14 @@
       function renderDropdownMenu(groupDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = isEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
           var exampleNum = 0;
           cat.items.forEach(function (item) {
             item.solutions.forEach(function (sol) {
               exampleNum++;
-              html += '<div class="submenu-item" data-item="' + item.id + '" data-sol="' + sol.id + '">例' + exampleNum + '</div>';
+              html += '<div class="submenu-item" data-item="' + item.id + '" data-sol="' + sol.id + '">' + (isEnglish() ? 'Example ' : '例') + exampleNum + '</div>';
             });
           });
           html += '</div></div>';
@@ -1272,10 +1288,12 @@
       function renderPracticeDropdownMenu(groupDef, manifest, menuEl) {
         var html = '';
         manifest.categories.forEach(function (cat) {
-          html += '<div class="menu-row" data-cat="' + cat.key + '">' + cat.label + '<span class="arrow">▶</span>';
+          var categoryLabel = isEnglish() ? (cat.label_en || cat.label) : cat.label;
+          html += '<div class="menu-row" data-cat="' + cat.key + '">' + categoryLabel + '<span class="arrow">▶</span>';
           html += '<div class="submenu">';
-          cat.items.forEach(function (item) {
-            html += '<div class="submenu-item" data-item="' + item.id + '">' + item.label + '</div>';
+          cat.items.forEach(function (item, index) {
+            var itemLabel = isEnglish() ? (item.label_en || ('Example ' + (index + 1))) : item.label;
+            html += '<div class="submenu-item" data-item="' + item.id + '">' + itemLabel + '</div>';
           });
           html += '</div></div>';
         });
@@ -1523,6 +1541,21 @@
       }
 
       window.addEventListener('chesslanguagechange', function () {
+        updateGroupChipLabels();
+                GROUP_DEFS.forEach(function (groupDef) {
+                  var menuEl = document.getElementById('menu' + groupDef.key);
+                  if (menuEl.classList.contains('open') && manifestCache[groupDef.key]) {
+                    renderDropdownMenu(groupDef, manifestCache[groupDef.key], menuEl);
+                    menuEl.classList.add('open');
+                  }
+                });
+                PRACTICE_GROUP_DEFS.forEach(function (groupDef) {
+                  var menuEl = document.getElementById('menuPractice' + groupDef.key);
+                  if (menuEl.classList.contains('open') && practiceManifestCache[groupDef.key]) {
+                    renderPracticeDropdownMenu(groupDef, practiceManifestCache[groupDef.key], menuEl);
+                    menuEl.classList.add('open');
+                  }
+                });
         if (state.anno && state.anno.game_id) {
           showPopup(localizedPopup(currentAnnotation()));
           renderExplanationText();

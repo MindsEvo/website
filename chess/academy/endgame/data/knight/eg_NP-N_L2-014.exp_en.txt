@@ -1,0 +1,4 @@
+The white king and knight drive the black knight away and protect the pawn's promotion.
+
+# END
+# Solution 1

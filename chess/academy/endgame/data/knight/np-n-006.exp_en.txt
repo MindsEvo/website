@@ -1,0 +1,4 @@
+Black draws by combining knight checks with the king's control of the promotion square. The knight forces the white king away, then returns to e7 while the black king holds e8. White cannot promote, and the position repeats.
+
+# END
+# Solution 1

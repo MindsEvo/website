@@ -1,0 +1,4 @@
+Take the opposition with the king to force the opposing king away from the d-file. Once the white king controls the key squares, the d-pawn can advance safely.
+
+# END
+# Solution 1

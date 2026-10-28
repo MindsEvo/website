@@ -1,0 +1,4 @@
+The source practice set does not include a position-specific explanation for this example. Work through the line and practice using the queen and king together against a bishop.
+
+# END
+# Solution 1

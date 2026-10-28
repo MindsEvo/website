@@ -1,0 +1,4 @@
+The source explanation for this practice position is an unfilled template and contains no position-specific guidance. Analyze the rook's checking options and the pawn's chances to advance.
+
+# END
+# Solution 1

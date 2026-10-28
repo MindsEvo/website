@@ -1,0 +1,4 @@
+This is an instructive example of the black queen using repeated checks to force a draw by repetition. The queen blocks the white king's route to the e7-pawn, preventing it from helping the pawn promote.
+
+# END
+# Solution 1

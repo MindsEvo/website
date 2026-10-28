@@ -2,6 +2,7 @@
   "game_id": "eg_KQ-KP_L1-005-1",
   "description": "后对h兵（车路兵）— 黑王在角落，必然平局",
   "intro": {
+    "popup_en": "Warning: the rook-pawn corner trap. With an h-pawn and the black king already in the corner, the position is a theoretical draw. White cannot escape perpetual check; watch the pattern.",
     "flash_squares": [
       "h2",
       "h1"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw by the rook-pawn corner rule: with the black king on h1, the queen can give checks but cannot force the king out of the corner while also stopping promotion. An h-pawn with the king in the corner is a draw.",
     "popup": "🤝 <b>平局！车路兵角落定律：</b><br>当黑王在h1角，白后只能无休止将军，无法让王离开角落又阻升变。<br>记住：<b>h兵+黑王在角 = 永远平局！</b>",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Qd5+",
+      "popup_en": "White tries to drive the black king away with check.",
       "popup": "白尝试将军——逼黑王离角。",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 1,
       "move": "Kg1",
+      "popup_en": "...Kg1 escapes toward g1 but remains in the corner area.",
       "popup": "黑王向g1逃——仍在角落区。",
       "highlights": [
         {
@@ -61,6 +65,7 @@
     {
       "index": 2,
       "move": "Qd1+",
+      "popup_en": "White checks again, forcing the black king to move.",
       "popup": "继续将军，黑王还得走。",
       "highlights": [
         {
@@ -82,6 +87,7 @@
     {
       "index": 3,
       "move": "Kg2",
+      "popup_en": "...Kg2. The black king shuttles between squares near the corner and never leaves the drawing zone.",
       "popup": "黑王来回游走……永远不脱离角落。",
       "highlights": [
         {
@@ -103,6 +109,7 @@
     {
       "index": 10,
       "move": "Qd1+",
+      "popup_en": "Perpetual check! White cannot make progress. Threefold repetition confirms the draw.",
       "popup": "🤝 <b>永续将！</b>白方无法突破——三次重复，平局。",
       "highlights": [
         {

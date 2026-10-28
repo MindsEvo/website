@@ -2,11 +2,13 @@
   "game_id": "eg_KBP-K_L1-003-1",
   "description": "象兵对王-L1 演示3：象清路、兵升变、后追杀",
   "intro": {
+    "popup_en": "The white king is on d5, bishop on e5, and pawn on d6. The black king on f8 tries to block the pawn, but precise coordination allows promotion and mate.",
     "flash_squares": ["d5", "e5", "d6", "f8"],
     "popup": "💡 <b>象兵配合升变</b><br>王在d5，象在e5，兵在d6。黑王在f8试图阻挡——白方精准配合完成升变并杀王！",
     "voice": true
   },
   "outro": {
+    "popup_en": "The bishop clears the e7 route, the pawn promotes to a queen, and the queen and king hunt down the black king. The bishop and pawn combine for a decisive win.",
     "popup": "✅ 象清除e7通道→兵升变为后→后+王追杀——象兵合力三步完成胜局！",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Ke6",
+      "popup_en": "The king reaches e6 and controls e7, stopping the black king from approaching.",
       "popup": "♔ 王到e6，封锁e7，阻止黑王靠近。",
       "highlights": [],
       "concept_arrows": [
@@ -35,6 +38,7 @@
     {
       "index": 2,
       "move": "Bf6",
+      "popup_en": "The bishop moves to f6, controls e7 and g7, and drives the black king away from the d-file.",
       "popup": "⭐ <b>象到f6！</b>封锁e7/g7，驱逐黑王离开d-路线。",
       "highlights": [
         {
@@ -66,6 +70,7 @@
     {
       "index": 4,
       "move": "d7",
+      "popup_en": "The pawn advances to d7, one step from promotion. The black king cannot stop it.",
       "popup": "⭐ <b>兵推d7！</b>升变一步之遥，黑王无法阻拦。",
       "highlights": [
         {
@@ -97,6 +102,7 @@
     {
       "index": 6,
       "move": "d8=Q+",
+      "popup_en": "The pawn promotes to a queen with check from d8.",
       "popup": "⭐ <b>升变为后！将军！</b>后在d8攻击黑王。",
       "highlights": [
         {
@@ -123,6 +129,7 @@
     {
       "index": 8,
       "move": "Kf7",
+      "popup_en": "The white king reaches f7 and helps encircle the black king.",
       "popup": "♔ 王到f7，包围黑王。",
       "highlights": [],
       "concept_arrows": [
@@ -143,6 +150,7 @@
     {
       "index": 10,
       "move": "Qh8#",
+      "popup_en": "Qh8 is checkmate.",
       "popup": "⭐ <b>Qh8# 将死！</b>",
       "highlights": [
         {

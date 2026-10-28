@@ -1,0 +1,4 @@
+White is winning in this position. Use the king to support the pawns and calculate the pawn exchanges accurately.
+
+# END
+# Solution 1

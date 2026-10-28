@@ -2,11 +2,13 @@
   "game_id": "eg_KNP-K_L1-003-1",
   "description": "马封锁黑王退路 — 王马兵协同推进胜",
   "intro": {
+    "popup_en": "Coordinate the king, knight, and pawn. Use knight checks to drive the black king away, then occupy key squares to block its escape and promote safely.",
     "flash_squares": ["d5", "d3", "d7"],
     "popup": "<b>王马兵协同！</b><br>马将军驱赶黑王，占据关键格封锁退路，兵安全升变。",
     "voice": true
   },
   "outro": {
+    "popup_en": "The knight has three key roles in the ending: check to drive the king, occupy key squares to block its routes, and coordinate with the pawn's advance.",
     "popup": "<b>马在残局中三大用途：将军驱王、占格封锁、协同推兵。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Ne4",
+      "popup_en": "The knight activates from d2 to e4 and heads toward important central squares.",
       "popup": "<b>马激活！</b><br>马从d2跳到e4，向中心关键位置进发。",
       "highlights": [{"squares": ["e4"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d2", "to": "e4", "color": "#4CAF50CC"}],
@@ -23,6 +26,7 @@
     {
       "index": 1,
       "move": "Ke7",
+      "popup_en": "The black king moves to e7 to guard the promotion route.",
       "popup": "黑王移到e7，守住升变路线。",
       "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "e7", "color": "#E53935CC"}],
@@ -31,6 +35,7 @@
     {
       "index": 2,
       "move": "Kc4",
+      "popup_en": "The white king advances to c4 to support the pawn.",
       "popup": "白王前进到c4，配合兵推进。",
       "highlights": [{"squares": ["c4"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d3", "to": "c4", "color": "#4CAF50CC"}],
@@ -39,6 +44,7 @@
     {
       "index": 3,
       "move": "Kd7",
+      "popup_en": "The black king continues to guard the front of the pawn.",
       "popup": "黑王继续守在正面。",
       "highlights": [{"squares": ["d7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "d7", "color": "#E53935CC"}],
@@ -47,6 +53,7 @@
     {
       "index": 4,
       "move": "Kc5",
+      "popup_en": "The white king reaches c5, preparing Kd6 and supporting the knight.",
       "popup": "<b>白王到c5！</b><br>白王推进到c5，为d6做准备，同时支援马。",
       "highlights": [{"squares": ["c5", "d5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c4", "to": "c5", "color": "#4CAF50CC"}],
@@ -55,6 +62,7 @@
     {
       "index": 5,
       "move": "Kc7",
+      "popup_en": "The black king moves to c7 to oppose the white king's advance.",
       "popup": "黑王移到c7，反对白王推进。",
       "highlights": [{"squares": ["c7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "c7", "color": "#E53935CC"}],
@@ -63,6 +71,7 @@
     {
       "index": 6,
       "move": "d6+",
+      "popup_en": "The pawn advances with check, forcing the black king away from the d-file.",
       "popup": "<b>兵d6将军！</b><br>兵前进直接将军黑王，迫使黑王退离d线。",
       "highlights": [{"squares": ["c7"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "d6", "color": "#4CAF50CC"}],
@@ -71,6 +80,7 @@
     {
       "index": 7,
       "move": "Kd7",
+      "popup_en": "The black king is forced to d7.",
       "popup": "黑王被迫到d7。",
       "highlights": [{"squares": ["d7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "c7", "to": "d7", "color": "#E53935CC"}],
@@ -79,6 +89,7 @@
     {
       "index": 8,
       "move": "Kd5",
+      "popup_en": "The white king reaches d5 and coordinates closely with the pawn.",
       "popup": "白王到d5，与兵d6紧密配合。",
       "highlights": [{"squares": ["d5", "d6"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "d5", "color": "#4CAF50CC"}],
@@ -87,6 +98,7 @@
     {
       "index": 9,
       "move": "Ke8",
+      "popup_en": "The black king escapes toward e8.",
       "popup": "黑王逃往e8。",
       "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "e8", "color": "#E53935CC"}],
@@ -95,6 +107,7 @@
     {
       "index": 10,
       "move": "Nc5",
+      "popup_en": "The knight reaches c5 and blocks the black king's routes to d7 and b7.",
       "popup": "<b>马到c5！关键封锁！</b><br>马占据c5，完全封锁黑王的d7和b7退路。",
       "highlights": [{"squares": ["c5", "d7", "b7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e4", "to": "c5", "color": "#4CAF50CC"}],
@@ -103,6 +116,7 @@
     {
       "index": 11,
       "move": "Kd8",
+      "popup_en": "The black king is forced to d8, with fewer escape routes.",
       "popup": "黑王被迫到d8，退路缩窄。",
       "highlights": [{"squares": ["d8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "d8", "color": "#E53935CC"}],
@@ -111,6 +125,7 @@
     {
       "index": 12,
       "move": "Kc6",
+      "popup_en": "The white king reaches c6 and helps encircle the black king.",
       "popup": "<b>白王到c6，包围黑王！</b>",
       "highlights": [{"squares": ["c6", "d7"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d5", "to": "c6", "color": "#4CAF50CC"}],
@@ -119,6 +134,7 @@
     {
       "index": 13,
       "move": "Ke8",
+      "popup_en": "The black king moves to e8, its only escape.",
       "popup": "黑王到e8，唯一的出路。",
       "highlights": [{"squares": ["e8"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "d8", "to": "e8", "color": "#E53935CC"}],
@@ -127,6 +143,7 @@
     {
       "index": 14,
       "move": "d7+",
+      "popup_en": "The pawn advances to d7 with check, making the black king's position more difficult.",
       "popup": "<b>兵d7将军！</b><br>兵推d7，黑王境地更困难。",
       "highlights": [{"squares": ["e8"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "d6", "to": "d7", "color": "#4CAF50CC"}],
@@ -135,6 +152,7 @@
     {
       "index": 15,
       "move": "Ke7",
+      "popup_en": "The black king moves to e7.",
       "popup": "黑王到e7。",
       "highlights": [{"squares": ["e7"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "e7", "color": "#E53935CC"}],
@@ -143,6 +161,7 @@
     {
       "index": 16,
       "move": "Nb7",
+      "popup_en": "The knight reaches b7 and seals the black king in a net with c5 and d8, cutting off every escape.",
       "popup": "<b>马到b7！彻底封死黑王！</b><br>马在b7和c5/d8形成包围网，黑王出路全断。",
       "highlights": [{"squares": ["b7", "d8", "a5", "c5"], "color": "#4CAF5055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c5", "to": "b7", "color": "#4CAF50CC"}],
@@ -151,6 +170,7 @@
     {
       "index": 17,
       "move": "Kf6",
+      "popup_en": "The black king runs toward f6.",
       "popup": "黑王逃往f6。",
       "highlights": [{"squares": ["f6"], "color": "#E5393555", "duration_ms": 0}],
       "concept_arrows": [{"from": "e7", "to": "f6", "color": "#E53935CC"}],
@@ -159,6 +179,7 @@
     {
       "index": 18,
       "move": "d8=Q+",
+      "popup_en": "The pawn promotes to a queen with check. White's win is decisive.",
       "popup": "<b>d8=Q！白方获胜！</b><br>兵升后将军，大局已定。",
       "highlights": [{"squares": ["d8"], "color": "#FFD70088", "duration_ms": 0}],
       "concept_arrows": [{"from": "d7", "to": "d8", "color": "#4CAF50CC"}],

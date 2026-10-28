@@ -1,0 +1,4 @@
+The white king and knight successfully stop the black knight and king from reaching the pawn.
+
+# END
+# Solution 1

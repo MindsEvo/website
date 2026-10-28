@@ -2,11 +2,13 @@
   "game_id": "eg_BP-B_L2-002-1",
   "description": "同色格象 — 黑方正确防守：象换兵求和",
   "intro": {
+    "popup_en": "Both bishops are light-squared. White wants to exchange bishops and promote the pawn, so Black's main task is to protect the bishop and avoid the exchange to draw.",
     "flash_squares": ["d1", "d7", "d6"],
     "popup": "♗ <b>同色格象的攻防</b><br>双方象都在浅色格，白方想用象换掉黑象后兵升变。<br>黑方核心任务：<b>守住象，避免被对换，最终逼和！</b>",
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw by repetition. The white bishop returns to c6 three times, while Black avoids the exchange. With same-colored bishops, an extra pawn may not be enough to win if the defender cannot be exchanged.",
     "popup": "🤝 <b>和棋！重复局面</b><br>白象三次走回c6，黑方成功躲避对换，局面三次重复 = 和棋。<br>同色格象若无法兑换，有兵也难赢。",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Bh5",
+      "popup_en": "The white bishop heads to h5, preparing to help the king pressure the black bishop from the side.",
       "popup": "白象移向h5，准备从侧翼配合白王挤压黑象。",
       "highlights": [{"squares": ["h5"], "color": "#4CAF5044", "duration_ms": 0}],
       "concept_arrows": [{"from": "d1", "to": "h5", "color": "#4CAF50CC"}]
@@ -22,6 +25,7 @@
     {
       "index": 1,
       "move": "Bb5",
+      "popup_en": "The black bishop retreats to avoid being exchanged.",
       "popup": "黑象后退，防止被对换。",
       "highlights": [],
       "concept_arrows": [{"from": "d7", "to": "b5", "color": "#E53935CC"}]
@@ -29,6 +33,7 @@
     {
       "index": 2,
       "move": "Bg6",
+      "popup_en": "The white bishop tightens the pressure.",
       "popup": "白象进一步收紧。",
       "highlights": [],
       "concept_arrows": [{"from": "h5", "to": "g6", "color": "#4CAF50CC"}]
@@ -36,6 +41,7 @@
     {
       "index": 3,
       "move": "Bc6",
+      "popup_en": "The black bishop holds the key diagonal and controls the d7 entry square.",
       "popup": "黑象守住要道，封锁d7入口。",
       "highlights": [{"squares": ["c6", "d7"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": [{"from": "b5", "to": "c6", "color": "#E53935CC"}]
@@ -43,6 +49,7 @@
     {
       "index": 4,
       "move": "Kf5",
+      "popup_en": "The white king approaches the center to support the attack.",
       "popup": "白王向中心靠拢，准备支援。",
       "highlights": [],
       "concept_arrows": [{"from": "f6", "to": "f5", "color": "#4CAF50CC"}]
@@ -50,6 +57,7 @@
     {
       "index": 5,
       "move": "Kg7",
+      "popup_en": "The black king moves toward the center.",
       "popup": "黑王向中心移动。",
       "highlights": [],
       "concept_arrows": []
@@ -57,6 +65,7 @@
     {
       "index": 6,
       "move": "Bh5",
+      "popup_en": "The white bishop retreats to prepare an attack from another angle.",
       "popup": "白象回撤，准备换个角度进攻。",
       "highlights": [],
       "concept_arrows": [{"from": "g6", "to": "h5", "color": "#4CAF50CC"}]
@@ -64,6 +73,7 @@
     {
       "index": 7,
       "move": "Bd7+",
+      "popup_en": "The black bishop checks while also guarding d7, forcing the white king back.",
       "popup": "⚡ <b>黑象将军！</b>同时守住d7，让白王被迫后退。",
       "highlights": [{"squares": ["d7", "f5"], "color": "#FF000055", "duration_ms": 0}],
       "concept_arrows": [{"from": "c6", "to": "d7", "color": "#E53935CC"}, {"from": "d7", "to": "f5", "color": "#FF6B35CC"}]
@@ -71,6 +81,7 @@
     {
       "index": 8,
       "move": "Ke5",
+      "popup_en": "The white king steps out of check.",
       "popup": "白王逃离将军。",
       "highlights": [],
       "concept_arrows": [{"from": "f5", "to": "e5", "color": "#4CAF50CC"}]
@@ -78,6 +89,7 @@
     {
       "index": 9,
       "move": "Bc6",
+      "popup_en": "The black bishop returns to its defensive post.",
       "popup": "黑象回到防守位置。",
       "highlights": [],
       "concept_arrows": [{"from": "d7", "to": "c6", "color": "#E53935CC"}]
@@ -85,6 +97,7 @@
     {
       "index": 10,
       "move": "Kd4",
+      "popup_en": "The white king keeps approaching the pawn.",
       "popup": "白王继续向兵靠近。",
       "highlights": [],
       "concept_arrows": [{"from": "e5", "to": "d4", "color": "#4CAF50CC"}]
@@ -92,6 +105,7 @@
     {
       "index": 11,
       "move": "Kf6",
+      "popup_en": "The black king follows to stop the white king from gaining an advantage.",
       "popup": "黑王跟过来，防止白王占优势。",
       "highlights": [],
       "concept_arrows": []
@@ -99,6 +113,7 @@
     {
       "index": 12,
       "move": "Kc5",
+      "popup_en": "The white king pressures the black bishop.",
       "popup": "白王压迫黑象。",
       "highlights": [],
       "concept_arrows": []
@@ -106,6 +121,7 @@
     {
       "index": 13,
       "move": "Ba4",
+      "popup_en": "The black bishop maneuvers backward and continues avoiding the exchange.",
       "popup": "黑象机动后退，继续躲避对换。",
       "highlights": [],
       "concept_arrows": [{"from": "c6", "to": "a4", "color": "#E53935CC"}]
@@ -113,6 +129,7 @@
     {
       "index": 14,
       "move": "Kd5",
+      "popup_en": "The white king continues the pursuit.",
       "popup": "白王继续追击。",
       "highlights": [],
       "concept_arrows": []
@@ -120,6 +137,7 @@
     {
       "index": 15,
       "move": "Bd7",
+      "popup_en": "The black bishop returns to defend the d6 area.",
       "popup": "黑象回到防守d6的位置。",
       "highlights": [{"squares": ["d7", "d6"], "color": "#E5393533", "duration_ms": 0}],
       "concept_arrows": [{"from": "a4", "to": "d7", "color": "#E53935CC"}]
@@ -127,6 +145,7 @@
     {
       "index": 16,
       "move": "Kc5",
+      "popup_en": "The white king circles around but cannot break through.",
       "popup": "白王绕来绕去，无法突破。",
       "highlights": [],
       "concept_arrows": []
@@ -134,6 +153,7 @@
     {
       "index": 17,
       "move": "Ke5",
+      "popup_en": "The black king actively joins the defense.",
       "popup": "黑王也积极参与防守。",
       "highlights": [],
       "concept_arrows": []
@@ -141,6 +161,7 @@
     {
       "index": 18,
       "move": "Bf3",
+      "popup_en": "The white bishop changes position and tries another angle.",
       "popup": "白象换位，再次尝试不同角度。",
       "highlights": [],
       "concept_arrows": [{"from": "h5", "to": "f3", "color": "#4CAF50CC"}]
@@ -148,6 +169,7 @@
     {
       "index": 19,
       "move": "Bh3",
+      "popup_en": "The black bishop slips away to avoid the exchange.",
       "popup": "黑象闪躲，避免对换。",
       "highlights": [],
       "concept_arrows": [{"from": "d7", "to": "h3", "color": "#E53935CC"}]
@@ -155,6 +177,7 @@
     {
       "index": 20,
       "move": "Bc6",
+      "popup_en": "The white bishop returns to c6 for the first time.",
       "popup": "白象回到c6（第一次重复）。",
       "highlights": [{"squares": ["c6"], "color": "#FFD70044", "duration_ms": 0}],
       "concept_arrows": [{"from": "f3", "to": "c6", "color": "#4CAF50CC"}]
@@ -162,6 +185,7 @@
     {
       "index": 21,
       "move": "Ke6",
+      "popup_en": "The black king responds actively.",
       "popup": "黑王主动应对。",
       "highlights": [],
       "concept_arrows": []
@@ -169,6 +193,7 @@
     {
       "index": 22,
       "move": "Be8",
+      "popup_en": "The white bishop changes direction and looks for a new breakthrough.",
       "popup": "白象换向，寻找新突破口。",
       "highlights": [],
       "concept_arrows": [{"from": "c6", "to": "e8", "color": "#4CAF50CC"}]
@@ -176,6 +201,7 @@
     {
       "index": 23,
       "move": "Bg2",
+      "popup_en": "The black bishop continues to maneuver flexibly.",
       "popup": "黑象继续灵活周旋。",
       "highlights": [],
       "concept_arrows": [{"from": "h3", "to": "g2", "color": "#E53935CC"}]
@@ -183,6 +209,7 @@
     {
       "index": 24,
       "move": "Bc6",
+      "popup_en": "The white bishop returns to c6 for the second time.",
       "popup": "白象再回c6（第二次重复）。",
       "highlights": [{"squares": ["c6"], "color": "#FFD70055", "duration_ms": 0}],
       "concept_arrows": [{"from": "e8", "to": "c6", "color": "#4CAF50CC"}]
@@ -190,6 +217,7 @@
     {
       "index": 25,
       "move": "Bf1",
+      "popup_en": "The black bishop keeps moving, and White still has no breakthrough.",
       "popup": "黑象继续游走，白方找不到突破口。",
       "highlights": [],
       "concept_arrows": []
@@ -197,6 +225,7 @@
     {
       "index": 26,
       "move": "Ba4",
+      "popup_en": "The white bishop tries from another direction.",
       "popup": "白象换个方向再试。",
       "highlights": [],
       "concept_arrows": []
@@ -204,6 +233,7 @@
     {
       "index": 27,
       "move": "Bg2",
+      "popup_en": "The black bishop returns to its post and holds comfortably.",
       "popup": "黑象归位，防守从容。",
       "highlights": [],
       "concept_arrows": []
@@ -211,6 +241,7 @@
     {
       "index": 28,
       "move": "Bc6",
+      "popup_en": "The white bishop returns to c6 for the third time. The position has not changed, so Black draws by threefold repetition.",
       "popup": "🔄 <b>第三次重复！和棋。</b>白象三走c6，局面无进展，黑方成功求和。",
       "highlights": [{"squares": ["c6"], "color": "#FFD700AA", "duration_ms": 0}],
       "concept_arrows": [{"from": "a4", "to": "c6", "color": "#4CAF50CC"}]

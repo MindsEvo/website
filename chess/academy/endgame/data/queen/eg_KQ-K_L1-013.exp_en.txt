@@ -1,0 +1,4 @@
+Try several different mating methods, and make sure not to stalemate the king.
+
+# END
+# Solution 1

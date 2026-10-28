@@ -2,6 +2,7 @@
   "game_id": "eg_NP-N_L2-003-1",
   "description": "马兵对马 — 王马配合强行升变",
   "intro": {
+    "popup_en": "White has king, knight, and a b-pawn against Black's king and knight. Black moves first and must bring the king quickly to stop the pawn. Watch White coordinate king and knight to force promotion.",
     "flash_squares": [
       "d4",
       "c4",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The pawn promotes to a queen with check. White's king and knight coordinate perfectly, and Black cannot stop the pawn from reaching the back rank.",
     "popup": "♛ <b>b8=Q+ 升变成后将军！</b>白方王马默契配合，兵一路推到底线，黑方无法阻拦。",
     "voice": true
   },
@@ -20,6 +22,7 @@
     {
       "index": 0,
       "move": "Kf7",
+      "popup_en": "The black king approaches quickly to try to intercept the pawn.",
       "popup": "黑王快速靠近，试图拦截白兵。",
       "highlights": [],
       "concept_arrows": [
@@ -33,6 +36,7 @@
     {
       "index": 1,
       "move": "b5",
+      "popup_en": "The white pawn keeps advancing, regardless of the approaching king.",
       "popup": "白兵不顾黑王，继续前进！",
       "highlights": [
         {
@@ -54,6 +58,7 @@
     {
       "index": 2,
       "move": "Ke7",
+      "popup_en": "The black king continues to approach and contest the blocking squares.",
       "popup": "黑王继续靠近，争夺阻截位置。",
       "highlights": [],
       "concept_arrows": [
@@ -67,6 +72,7 @@
     {
       "index": 3,
       "move": "b6",
+      "popup_en": "The pawn advances past the halfway point.",
       "popup": "兵继续向前，已过半程！",
       "highlights": [
         {
@@ -88,6 +94,7 @@
     {
       "index": 4,
       "move": "Kd7",
+      "popup_en": "The black king reaches d7 and tries to block the promotion route directly.",
       "popup": "黑王赶到d7，试图直接封锁升变路线。",
       "highlights": [
         {
@@ -109,6 +116,7 @@
     {
       "index": 5,
       "move": "Kc5",
+      "popup_en": "The white king advances to c5 and coordinates with the knight to control key squares.",
       "popup": "⭐ 白王前进到c5，配合马控制关键格。",
       "highlights": [
         {
@@ -130,6 +138,7 @@
     {
       "index": 6,
       "move": "Nc3",
+      "popup_en": "The black knight jumps from b1 to c3, trying to exchange knights or block the pawn.",
       "popup": "黑马从b1跳到c3，试图换掉白马或阻拦。",
       "highlights": [],
       "concept_arrows": [
@@ -143,6 +152,7 @@
     {
       "index": 7,
       "move": "Ne5+",
+      "popup_en": "The white knight checks and drives the black king away from d7.",
       "popup": "白马将军！驱逐在d7的黑王。",
       "highlights": [
         {
@@ -176,6 +186,7 @@
     {
       "index": 8,
       "move": "Kc8",
+      "popup_en": "The black king is forced to escape.",
       "popup": "黑王被迫逃走。",
       "highlights": [],
       "concept_arrows": [
@@ -189,6 +200,7 @@
     {
       "index": 9,
       "move": "Kc6",
+      "popup_en": "The white king reaches c6 and controls the promotion area.",
       "popup": "白王到c6，完全控制升变区域。",
       "highlights": [
         {
@@ -210,6 +222,7 @@
     {
       "index": 10,
       "move": "Kb8",
+      "popup_en": "The black king retreats to b8 to guard the promotion square.",
       "popup": "黑王后撤到b8，守在升变格旁。",
       "highlights": [],
       "concept_arrows": [
@@ -223,6 +236,7 @@
     {
       "index": 11,
       "move": "Nd7+",
+      "popup_en": "The white knight checks and drives the black king away from the promotion square.",
       "popup": "⭐ 白马将军将黑王赶走！",
       "highlights": [
         {
@@ -256,6 +270,7 @@
     {
       "index": 12,
       "move": "Kc8",
+      "popup_en": "The black king has only Kc8.",
       "popup": "黑王只能逃到c8。",
       "highlights": [],
       "concept_arrows": [
@@ -269,6 +284,7 @@
     {
       "index": 13,
       "move": "b7+",
+      "popup_en": "The pawn reaches b7 with check, forcing the black king to move.",
       "popup": "兵到b7将军！黑王必须移动。",
       "highlights": [
         {
@@ -297,6 +313,7 @@
     {
       "index": 14,
       "move": "Kd8",
+      "popup_en": "The black king is forced away from the promotion area.",
       "popup": "黑王被迫离开升变区。",
       "highlights": [],
       "concept_arrows": [
@@ -310,6 +327,7 @@
     {
       "index": 15,
       "move": "b8=Q+",
+      "popup_en": "The pawn promotes to a queen with check. White has won decisively.",
       "popup": "♛ <b>升变成后将军！白方完胜。</b>",
       "highlights": [
         {

@@ -1,0 +1,4 @@
+The white king's escape along the back rank is the key. Use rook checks to gain time and drive the black king away, then capture the pawn.
+
+# END
+# Solution 1

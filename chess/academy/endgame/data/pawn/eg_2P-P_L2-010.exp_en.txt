@@ -1,0 +1,4 @@
+Practice the king opposition: use your king to drive the opposing king away from the key squares and create a route for the pawns.
+
+# END
+# Solution 1

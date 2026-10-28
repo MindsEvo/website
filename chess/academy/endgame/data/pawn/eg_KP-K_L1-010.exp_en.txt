@@ -1,0 +1,4 @@
+The source practice set provides no position-specific explanation for this pawn-versus-king exercise. Use the board and move line to practice king support and pawn promotion.
+
+# END
+# Solution 1

@@ -2,6 +2,7 @@
   "game_id": "eg_KQR-K_L1-001-1",
   "description": "后车对王-L1 演示1：王靠近-后控7排-车封a列",
   "intro": {
+    "popup_en": "Demo 1: Perfect coordination between king, queen, and rook. The king approaches, the queen cuts off the seventh rank, and the rook seals the a-file.",
     "flash_squares": [
       "c4",
       "d7",
@@ -12,6 +13,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Ra1+ completes the coordination of queen, rook, and king against a lone king. This demonstration introduces the basic movement and mating technique.",
     "popup": "✅ <b>Ra1+ —— 后车王对单王，主要是为了给初学者演示和熟悉基本走法和攻杀！</b>",
     "voice": true
   },
@@ -20,6 +22,7 @@
     {
       "index": 0,
       "move": "Kc4",
+      "popup_en": "1.Kc4! The white king actively approaches, controls nearby squares, and reduces the black king's mobility.",
       "popup": "♔ <b>1.Kc4 —— 白王主动靠近！</b><br>白王向黑王逼近，同时控制，压缩黑王的活动空间。",
       "highlights": [
         {
@@ -64,6 +67,7 @@
     {
       "index": 1,
       "move": "Kb6",
+      "popup_en": "...Kb6. The black king moves upward, away from the center and toward the edge.",
       "popup": "⬆️ Kb6 —— 黑王向上退！<br>黑王向上逃。黑王被迫离开中心，开始向边线靠拢。",
       "highlights": [
         {
@@ -79,6 +83,7 @@
     {
       "index": 2,
       "move": "Qd7+",
+      "popup_en": "2.Qd7+! The queen enters the seventh rank and cuts off the king's escape route upward, forcing it toward the a-file.",
       "popup": "⬆️ <b>2.Qd7+ —— 后切入第7排，封锁退路！</b><br>黑王失去向上退出的可能，被迫向a列方向移动。",
       "highlights": [
         {
@@ -128,6 +133,7 @@
     {
       "index": 3,
       "move": "Ka6",
+      "popup_en": "...Ka6. With the seventh rank controlled, the black king moves left from b6 toward the corner.",
       "popup": "⬅️ Ka6 —— 黑王退a6！<br>第7排被后封锁，黑王b6只能向左退至a6，继续向角落方向躲藏。",
       "highlights": [
         {
@@ -143,6 +149,7 @@
     {
       "index": 4,
       "move": "Qb5+",
+      "popup_en": "3.Qb5+! The queen checks diagonally from d7 toward a6, driving the black king toward the a7 corner.",
       "popup": "⬆️ <b>3.Qb5+ —— 后斜线将军！</b><br>后从d7斜跳到b5，沿对角线朝a6方向将军！黑王a6只能继续向a7角落方向逃。",
       "highlights": [
         {
@@ -176,6 +183,7 @@
     {
       "index": 5,
       "move": "Ka7",
+      "popup_en": "...Ka7. The black king is forced to the edge and has almost no room left. White can now bring in the rook.",
       "popup": "⬅️ Ka7 —— 黑王贴边！<br>黑王被迫退至a7——贴着边线，几乎已无路可走。接下来白方只需车加入即可完成将军！",
       "highlights": [
         {
@@ -191,6 +199,7 @@
     {
       "index": 6,
       "move": "Ra1+",
+      "popup_en": "4.Ra1+! The rook moves from e1 to a1 and controls the entire a-file. The black king on a7 is checked along the file, completing the mating net with queen, rook, and king.",
       "popup": "⬆️ <b>4.Ra1+ —— 车封a列将军！</b><br>车从e1平移到a1，整个a列全部被车控制！黑王a7在a列上被将，包围圈已经完成！<br>🎯 后+车+王的完美配合！",
       "highlights": [
         {

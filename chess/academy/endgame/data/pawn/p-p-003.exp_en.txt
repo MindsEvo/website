@@ -1,0 +1,4 @@
+An active king is important but not always enough to win. Black returns in time to defend after the white king captures the pawn, and the opposition holds the draw.
+
+# END
+# Solution 1

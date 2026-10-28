@@ -2,6 +2,7 @@
   "game_id": "eg_KR-KP_L1-006-1",
   "description": "车对f兵 — 白王走底线，车将军取胜",
   "intro": {
+    "popup_en": "The black king is closing in on the white king. The white king must escape along the back rank while the rook keeps checking, buying time to capture the pawn.",
     "flash_squares": [
       "f4",
       "b2"
@@ -10,6 +11,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "The key is for the white king to use the back rank to escape. Repeated rook checks drive the black king away, allowing White to capture the pawn.",
     "popup": "✅ 核心：<b>白王走底线</b>是关键！<br>车通过连续将军，让白王脱离黑王控制再吃兵。",
     "voice": true
   },
@@ -18,6 +20,7 @@
     {
       "index": 0,
       "move": "Kc1",
+      "popup_en": "The white king escapes along the back rank, away from the black king's control.",
       "popup": "白王走底线！远离黑王控制区。",
       "highlights": [
         {
@@ -39,6 +42,7 @@
     {
       "index": 2,
       "move": "Ra2+",
+      "popup_en": "Check! Drive the black king farther away.",
       "popup": "将军！驱逐黑王远离。",
       "highlights": [
         {
@@ -60,6 +64,7 @@
     {
       "index": 6,
       "move": "Re8+",
+      "popup_en": "Another check prevents the black king from catching up.",
       "popup": "再次将军！阻止黑王跟进。",
       "highlights": [
         {
@@ -81,6 +86,7 @@
     {
       "index": 14,
       "move": "Rxf2",
+      "popup_en": "The rook captures the f-pawn, securing the win.",
       "popup": "⚡ 吃掉f兵！白方胜定。",
       "highlights": [
         {

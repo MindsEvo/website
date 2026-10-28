@@ -1,0 +1,6 @@
+1. Coordinate the queen and king to drive the black king toward the edge and restrict its movement.
+2. The black rook can keep checking from the side, but the checks become less effective as the white king approaches the center.
+3. Eventually the white queen finds a chance to capture the rook, reaching a basic winning queen-versus-rook ending.
+
+# END
+# Solution 1

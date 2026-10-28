@@ -1,0 +1,4 @@
+Starting from a similar queen-versus-rook position, White wins by using queen checks to drive the black king away from the rook. The queen maneuvers back to the original area with the move and tempo order changed, forcing the rook to move without the king's protection. Explore the rook's choices; the queen can capture it.
+
+# END
+# Solution 1

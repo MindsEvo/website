@@ -1,0 +1,4 @@
+Look for a sequence of queen checks that keeps Black from promoting. Maintain checking distance and avoid allowing the defending king to escape.
+
+# END
+# Solution 1

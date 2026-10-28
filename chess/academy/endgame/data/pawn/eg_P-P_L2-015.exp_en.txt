@@ -1,0 +1,4 @@
+White must not greedily capture the black pawn. First calculate whether doing so gives the opposing king access to the key squares.
+
+# END
+# Solution 1

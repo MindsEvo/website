@@ -1,0 +1,4 @@
+The position is drawn, although it can be difficult to hold against a human opponent. Study the calculation patterns and defensive king moves.
+
+# END
+# Solution 1

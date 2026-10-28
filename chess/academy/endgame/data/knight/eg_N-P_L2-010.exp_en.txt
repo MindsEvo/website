@@ -1,0 +1,4 @@
+With a central pawn, the knight has plenty of room to maneuver, and the white pawn cannot promote safely.
+
+# END
+# Solution 1

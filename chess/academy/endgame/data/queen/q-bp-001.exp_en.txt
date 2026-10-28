@@ -1,0 +1,4 @@
+White's winning plan is to blockade the black pawn with the queen, then bring the king and queen together to drive away the bishop and capture it. Keep the pawn under control throughout; if it promotes, the queen must be ready to take the new queen.
+
+# END
+# Solution 1

@@ -1,0 +1,4 @@
+The black king reaches a8 in time to stop the pawn. Use the square-of-the-pawn rule: if the defending king is inside or on the boundary of the square and the pawn's side moves first, the king can catch it.
+
+# END
+# Solution 1

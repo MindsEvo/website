@@ -1,0 +1,4 @@
+Calculate the pawns' tempi carefully so Black cannot use the rules to draw. The connected pawns support one another while the king escorts the e-pawn to promotion.
+
+# END
+# Solution 1

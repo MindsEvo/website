@@ -1,0 +1,4 @@
+The original explanation is an unfilled template and contains no position-specific notes. Follow the move line and examine how the queen can control the promotion square.
+
+# END
+# Solution 1

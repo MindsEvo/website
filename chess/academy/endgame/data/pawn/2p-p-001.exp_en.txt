@@ -1,0 +1,4 @@
+Use the two pawns on opposite wings to create a decoy. When the black king captures the h-pawn, the b-pawn advances beyond its reach and promotes.
+
+# END
+# Solution 1

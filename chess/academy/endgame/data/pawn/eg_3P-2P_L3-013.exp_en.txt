@@ -1,0 +1,4 @@
+The source explanation for this position is an unfilled template. Use the board and move line to analyze the pawn structure, king routes, and possible breakthroughs.
+
+# END
+# Solution 1

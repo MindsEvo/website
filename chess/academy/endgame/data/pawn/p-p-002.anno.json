@@ -2,6 +2,7 @@
   "game_id": "eg_P-P_L2-002-1",
   "description": "兵对兵②：对峙和局 — 双方兵正面对峙，白先无法突破",
   "intro": {
+    "popup_en": "The pawns are locked face to face on e4 and e5, with the kings on opposite sides. White moves first; can it make progress?",
     "flash_squares": ["e3", "e4", "e5", "e6"],
     "concept_arrows": [
       {"from": "e4", "to": "e5", "color": "#FF6B35CC"},
@@ -11,6 +12,7 @@
     "voice": true
   },
   "outro": {
+    "popup_en": "Draw. In a direct pawn opposition, the side to move may be at a disadvantage: any pawn advance loses a pawn, so neither side can break the balance.",
     "popup": "☰ <b>结论：和局！</b> 正面对峙时，先走方反而不利——任何推进都将失去兵，双方保持平衡。",
     "voice": true
   },
@@ -19,6 +21,7 @@
     {
       "index": 0,
       "move": "Kd3",
+      "popup_en": "1. Kd3: the white king tries to approach from the side.",
       "popup": "1.Kd3 — 白王尝试从侧翼迂回。",
       "highlights": [],
       "concept_arrows": [
@@ -28,6 +31,7 @@
     {
       "index": 1,
       "move": "Kd6",
+      "popup_en": "1...Kd6: the black king mirrors the move and keeps the position symmetrical.",
       "popup": "1...Kd6 — 黑王同步防守，保持对称。",
       "highlights": [],
       "concept_arrows": [
@@ -37,6 +41,7 @@
     {
       "index": 2,
       "move": "Kc4",
+      "popup_en": "2. Kc4: the white king continues around the flank.",
       "popup": "2.Kc4 — 白王继续迂回。",
       "highlights": [],
       "concept_arrows": [
@@ -46,6 +51,7 @@
     {
       "index": 3,
       "move": "Kc6",
+      "popup_en": "2...Kc6: the black king responds in kind and maintains the opposition. White cannot break the balance.",
       "popup": "2...Kc6 — 黑王对应，始终保持对立位，白方无法打破平衡。",
       "highlights": [
         {"squares": ["c4", "c6"], "color": "#FFD70055", "duration_ms": 0}

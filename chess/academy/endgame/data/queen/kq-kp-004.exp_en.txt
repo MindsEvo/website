@@ -1,0 +1,4 @@
+With a bishop-pawn, White can win if the king is close enough to participate. The queen must calculate a precise sequence of checks to drive the black king away while the white king joins the attack. This position requires careful calculation.
+
+# END
+# Solution 1

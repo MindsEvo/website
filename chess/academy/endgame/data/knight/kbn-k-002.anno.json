@@ -2,11 +2,13 @@
   "game_id": "eg_KBN-K_L1-002-1",
   "description": "象马对王-L1 演示②：深色格象逼入h8深色角落",
   "intro": {
+    "popup_en": "The bishop's color determines the target corner. In this example, the dark-squared bishop and the king and knight coordinate to drive the black king to the dark corner on h8.",
     "flash_squares": ["f7", "d8", "f8", "h5"],
     "popup": "💡 <b>深色格象示例</b><br>象的颜色决定要逼入哪个角落！",
     "voice": true
   },
   "outro": {
+    "popup_en": "Ng5 is checkmate in the h8 corner. The bishop's color determines the mating corner: a dark-squared bishop drives the king to h8, while a light-squared bishop targets h1.",
     "popup": "✅ <b>Ng5# — 绝杀！深色象→h8角！</b>象的颜色=目标角落的颜色！</b>",
     "voice": true
   },
@@ -15,6 +17,7 @@
     {
       "index": 0,
       "move": "Be7",
+      "popup_en": "1. Be7: the dark-squared bishop moves from f8 to e7 and begins coordinating with the king and knight to drive the black king toward h8.",
       "popup": "🔄 1.Be7 — 深色象从f8移至e7，开始协调王和马向h8发起逼迫。",
       "highlights": [
         {"squares": ["e7"], "color": "#4CAF5055", "duration_ms": 0}
@@ -27,6 +30,7 @@
     {
       "index": 1,
       "move": "Kh6",
+      "popup_en": "The black king retreats toward the h-file.",
       "popup": "↓ Kh6 — 黑王向h路退缩。",
       "highlights": [],
       "concept_arrows": []
@@ -34,6 +38,7 @@
     {
       "index": 2,
       "move": "Kf4",
+      "popup_en": "2. Kf4: the white king approaches the center and prepares to block the h-file escape.",
       "popup": "♔ 2.Kf4 — 白王向中心逼近，准备封锁h路逃跑。",
       "highlights": [],
       "concept_arrows": [{"from": "f3", "to": "f4", "color": "#2196F3CC"}]
@@ -41,6 +46,7 @@
     {
       "index": 3,
       "move": "Kg6",
+      "popup_en": "The black king struggles to resist.",
       "popup": "↓ Kg6 — 黑王挣扎。",
       "highlights": [],
       "concept_arrows": []
@@ -48,6 +54,7 @@
     {
       "index": 4,
       "move": "Ke4",
+      "popup_en": "3. Ke4: the white king makes a waiting move.",
       "popup": "♔ 3.Ke4 — 白王等了一步。",
       "highlights": [],
       "concept_arrows": [{"from": "f4", "to": "e4", "color": "#2196F3CC"}]
@@ -55,6 +62,7 @@
     {
       "index": 5,
       "move": "Kg7",
+      "popup_en": "The black king keeps maneuvering around the g- and h-files.",
       "popup": "↓ Kg7 — 黑王继续在g、h路徘徊。",
       "highlights": [],
       "concept_arrows": []
@@ -62,6 +70,7 @@
     {
       "index": 6,
       "move": "Kf5",
+      "popup_en": "4. Kf5: the white king begins driving the black king, controlling key squares around g4, g5, g6, h4, and h5.",
       "popup": "♔ 4.Kf5 — 白王到f5，开始逼迫黑王。",
       "highlights": [
         {"squares": ["g4","g5","g6","h4","h5"], "color": "#2196F322", "duration_ms": 0}
@@ -71,6 +80,7 @@
     {
       "index": 7,
       "move": "Kh6",
+      "popup_en": "The black king moves along the h-file and tries to escape.",
       "popup": "↓ Kh6 — 黑王沿h路移动，试图逃出。",
       "highlights": [],
       "concept_arrows": []
@@ -78,6 +88,7 @@
     {
       "index": 8,
       "move": "Ne6",
+      "popup_en": "5. Ne6: the knight prepares to join the encirclement and controls several escape squares.",
       "popup": "⭐ 5.Ne6 — 马准备加入包围。",
       "highlights": [
         {"squares": ["e6"], "color": "#2196F355", "duration_ms": 0},
@@ -90,6 +101,7 @@
     {
       "index": 9,
       "move": "Kh5",
+      "popup_en": "The black king is still trying to escape.",
       "popup": "↓ Kh5 — 黑王还在试图逃脱。",
       "highlights": [],
       "concept_arrows": []
@@ -97,6 +109,7 @@
     {
       "index": 10,
       "move": "Nf4+",
+      "popup_en": "6. Nf4+ checks and brings the knight into the net.",
       "popup": "⭐ 6.Nf4+ — 将军！马加入包围！",
       "highlights": [
         {"squares": ["f4"], "color": "#2196F355", "duration_ms": 0},
@@ -110,6 +123,7 @@
     {
       "index": 11,
       "move": "Kh6",
+      "popup_en": "This is the only legal move for the black king.",
       "popup": "↓ Kh6 — 唯一合法走法！）",
       "highlights": [
         {"squares": ["h4","g4","g5"], "color": "#2196F333", "duration_ms": 0},
@@ -120,6 +134,7 @@
     {
       "index": 12,
       "move": "Kf6",
+      "popup_en": "7. Kf6: the white king advances toward h8 and controls the g7 escape square.",
       "popup": "♔ 7.Kf6 — 白王直逼h8方向，封锁g7出口！",
       "highlights": [],
       "concept_arrows": [
@@ -130,6 +145,7 @@
     {
       "index": 13,
       "move": "Kh7",
+      "popup_en": "The black king retreats along the h-file, gradually being driven toward the corner.",
       "popup": "↓ Kh7 — 黑王沿h路后退，逐渐被逼向角落。",
       "highlights": [],
       "concept_arrows": []
@@ -137,6 +153,7 @@
     {
       "index": 14,
       "move": "Bf8",
+      "popup_en": "8. Bf8: the bishop tightens the blockade and controls g7 and h6.",
       "popup": "🔄 <b>8.Bf8 — 象进一步封锁！",
       "highlights": [
         {"squares": ["f8"], "color": "#4CAF5055", "duration_ms": 0},
@@ -151,6 +168,7 @@
     {
       "index": 15,
       "move": "Kh8",
+      "popup_en": "The black king is forced into the dark corner on h8. This is the only move.",
       "popup": "↓ <b>Kh8 — 黑王退入深色角落h8！是唯一选择！",
       "highlights": [
         {"squares": ["h8"], "color": "#FF000055", "duration_ms": 0}
@@ -160,6 +178,7 @@
     {
       "index": 16,
       "move": "Kf7",
+      "popup_en": "9. Kf7: the white king controls g8. From h8, the black king has only h7 available.",
       "popup": "♔ 9.Kf7 — 白王到f7，封死g8！<br>黑王在h8只剩h7可走。",
       "highlights": [
         {"squares": ["g8"], "color": "#2196F333", "duration_ms": 0}
@@ -172,6 +191,7 @@
     {
       "index": 17,
       "move": "Kh7",
+      "popup_en": "Forced: the black king can only move to h7.",
       "popup": "↓ Kh7 — 被迫！只能走h7。",
       "highlights": [
         {"squares": ["g7","g8"], "color": "#FF000033", "duration_ms": 0}
@@ -181,6 +201,7 @@
     {
       "index": 18,
       "move": "Nh3",
+      "popup_en": "10. Nh3 repositions the knight for the final mate, preparing Ng5 to control h7.",
       "popup": "⭐ <b>10.Nh3 — 马重新定位，准备最终将杀！</b><br>马从f4跳到h3，准备Ng5——届时将控制h7！",
       "highlights": [
         {"squares": ["h3"], "color": "#2196F355", "duration_ms": 0},
@@ -194,6 +215,7 @@
     {
       "index": 19,
       "move": "Kh8",
+      "popup_en": "The black king returns to the corner and tries to resist.",
       "popup": "↓ Kh8 — 黑王回到角落；试图抵抗。",
       "highlights": [
         {"squares": ["h8"], "color": "#FF000044", "duration_ms": 0}
@@ -203,6 +225,7 @@
     {
       "index": 20,
       "move": "Bg7+",
+      "popup_en": "11. Bg7+ checks directly against the king on h8. The black king must go to h7 because Kf7 controls g8.",
       "popup": "⭐ 11.Bg7+ — 象将军！<br>象从f8跳到g7，直接将军h8！<br>黑王只能逃往h7（g8=白王Kf7封死）。",
       "highlights": [
         {"squares": ["g7"], "color": "#4CAF5055", "duration_ms": 0}
@@ -215,6 +238,7 @@
     {
       "index": 21,
       "move": "Kh7",
+      "popup_en": "Forced: g8 is controlled by the white king, so the black king must go to h7.",
       "popup": "↓ Kh7 — 被迫！g8=Kf7，只能去h7。",
       "highlights": [],
       "concept_arrows": []
@@ -222,6 +246,7 @@
     {
       "index": 22,
       "move": "Ng5#",
+      "popup_en": "Ng5 is checkmate. The white king controls g6 and g8, the bishop occupies g7 and attacks h6 and h8, and the knight checks the king on h7. A dark-squared bishop leads to the h8 corner, just as a light-squared bishop leads to h1.",
       "popup": "🏁 <b>Ng5# — 将死！深色象→h8角完成！</b><br>马从h3跃至g5将死h7：<br>• g6 → 白王Kf7控制<br>• g7 → 象Bg7占据<br>• g8 → 白王Kf7控制<br>• h6 → 象Bg7攻击(g7→h6 ✓)<br>• h8 → 象Bg7攻击(g7→h8 ✓)<br><b>对称之美：深色象→h8 = 浅色象→h1！</b>",
       "highlights": [
         {"squares": ["g5"], "color": "#4CAF5077", "duration_ms": 0},
