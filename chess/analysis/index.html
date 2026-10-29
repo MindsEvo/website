@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../i18n.css" />
   <script src="../i18n.js"></script>
-  <title>系统分析 | 国际象棋</title>
+  <title>题库统计 | 国际象棋</title>
   <link rel="stylesheet" href="../play/style.css" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <main class="analysis-page">
-    <header class="analysis-header"><a class="back-link" href="../index.html">返回主页</a><h1>📊 系统分析</h1></header>
+    <header class="analysis-header"><a class="back-link" href="../index.html">返回主页</a><h1>📊 题库统计</h1></header>
     <div class="analysis-layout">
       <div class="analysis-main">
-        <section class="analysis-section" aria-labelledby="overviewTitle">
-          <h2 id="overviewTitle">题库概览</h2><dl class="overview-grid" id="overview"></dl>
-        </section>
-        <section class="analysis-section" aria-labelledby="distributionTitle">
-          <h2 id="distributionTitle">分布图表</h2><div class="distribution" id="distribution"></div>
-        </section>
-        <section class="analysis-section" aria-labelledby="statisticsTitle">
-          <h2 id="statisticsTitle">详细统计</h2>
-          <div class="table-scroll"><table><thead><tr><th scope="col">类型</th><th scope="col">子分类</th><th scope="col">难度</th><th scope="col">数量</th></tr></thead><tbody id="statistics"></tbody></table></div>
-        </section>
+        <div class="analysis-summary">
+          <div class="analysis-overview-column">
+            <section class="analysis-section" aria-labelledby="overviewTitle">
+              <div class="overview-inline"><h2 id="overviewTitle">题库根基因数目</h2><dl class="overview-grid" id="overview"></dl></div>
+            </section>
+            <section class="analysis-section" aria-labelledby="distributionTitle">
+              <h2 id="distributionTitle">分布图表</h2><div class="distribution" id="distribution"></div>
+            </section>
+          </div>
+          <section class="analysis-section statistics-section" aria-labelledby="statisticsTitle">
+            <h2 id="statisticsTitle">详细统计</h2>
+            <div class="table-scroll"><table><thead><tr><th scope="col">类型</th><th scope="col">子分类</th><th scope="col">难度</th><th scope="col">数量</th></tr></thead><tbody id="statistics"></tbody></table></div>
+          </section>
+        </div>
         <section class="analysis-section recommendation-section" aria-labelledby="recommendationTitle">
           <h2 id="recommendationTitle">🤖 专家推荐</h2>
           <form id="recommendForm">

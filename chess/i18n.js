@@ -277,7 +277,8 @@
     '进行人机对弈，查看对局记录，并使用题库分析与推荐工具。': 'Play against the engine, review your game records, and use the puzzle analysis and recommendation tools.',
     '独立的国际象棋学习空间': 'A standalone international-chess learning space',
     '课程、对弈、记录、分析与设置均属于国际象棋模块。': 'Courses, games, records, analysis, and settings are all part of the chess module.',
-    '系统分析': 'Chess Analysis',
+    '题库统计': 'Puzzle Statistics',
+    '题库统计 | 国际象棋': 'Puzzle Statistics | Chess',
     '当前用户头像': 'Current user avatar',
     '敬请期待': 'Coming soon',
     '← 棋类系列': '← Game Series',
@@ -1003,14 +1004,17 @@
     ,'短易位（王翼）和长易位（后翼）': 'Kingside castling and queenside castling'
     ,'吃过路兵': 'En passant'
     ,'兵升变': 'Pawn promotion'
-    ,'📊 系统分析': '📊 Position Analysis'
-    ,'题库概览': 'Puzzle Overview'
+    ,'📊 题库统计': '📊 Puzzle Statistics'
+    ,'题库根基因数目': 'Root Gene Puzzle Counts'
     ,'总题目': 'Total Puzzles'
+    ,'残局': 'Endgames'
+    ,'攻杀': 'Checkmates'
     ,'残局基因': 'Endgame Puzzles'
     ,'攻杀基因': 'Checkmate Puzzles'
     ,'战术基因': 'Tactics Puzzles'
     ,'开局基因': 'Opening Puzzles'
     ,'综合基因': 'Mixed Puzzles'
+    ,'综合基因（暂无数据）': 'Mixed Puzzles (no data available)'
     ,'分布图表': 'Distribution Chart'
     ,'详细统计': 'Detailed Statistics'
     ,'类型': 'Type'
