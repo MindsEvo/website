@@ -1008,6 +1008,7 @@
   </main>
 
   <script src="../../settings/engine-settings.js"></script>
+  <script src="../../play/tablebase.js"></script>
   <script>
     (function () {
       var DISPLAY_SETTINGS_KEY = 'cognichess:display-settings';
@@ -3096,8 +3097,10 @@
       async function requestStockfishMove() {
         var role = practiceState.gameMode === 'human_ai' ? 'human' : (practiceState.turn === 'w' ? 'white' : 'black');
         var config = window.ChessEngineSettings ? window.ChessEngineSettings.resolve(role, practiceState.aiPreset) : getAiPresetConfig(practiceState.aiPreset);
-        var payload = await analyzeWithLocalEngine(Object.assign({}, config, {
-          fen: buildFen(),
+        var fen = buildFen();
+        var payload = window.ChessTablebase ? await window.ChessTablebase.probe(fen) : null;
+        if (!payload) payload = await analyzeWithLocalEngine(Object.assign({}, config, {
+          fen: fen,
           movetime: config.movetime,
           depth: config.depth,
           skillLevel: config.skillLevel,

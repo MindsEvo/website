@@ -104,184 +104,98 @@
       </div>
 
       <div class="human-ai-panel hidden" id="humanAiPanel">
-        <section class="engine-card engine-card-white single-engine-card">
-          <div class="engine-body engine-body-single">
-            <div class="engine-main">
-              <div class="ai-group">
-                <div class="ai-group-title">📊 局面优势</div>
-                <div class="advantage-bar">
-                  <div class="advantage-white" data-role="adv-white"></div>
-                  <div class="advantage-black" data-role="adv-black"></div>
-                </div>
-                <div class="advantage-text" data-role="adv-text">等待分析...</div>
-              </div>
-
-              <div class="engine-grid">
-                <div class="ai-group">
-                  <div class="ai-group-title">🔍 搜索状态</div>
-                  <div class="metric-list">
-                    <div class="metric-item" data-role="depth">深度: - 层</div>
-                    <div class="metric-item" data-role="nodes">节点: -</div>
-                    <div class="metric-item" data-role="time">时间: -s</div>
-                  </div>
-                </div>
-
-                <div class="ai-group">
-                  <div class="ai-group-title">🎯 候选走法</div>
-                  <div class="pv-box" data-role="pv">等待分析...</div>
-                </div>
-              </div>
-
-              <div class="ai-group">
-                <div class="ai-group-title">☁️ 局面评估</div>
-                <div class="eval-box eval-box-rich" data-role="eval">
-                  <div>🎯 局面评估系统已就绪</div>
-                  <div>开始下棋后，AI将为您分析局面优势，提供专业的棋局建议。</div>
-                  <div>⚡ 后续将整合 LLM 和专家系统，提供更深入的分析。</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="engine-side">
-              <div class="ai-group">
-                <div class="ai-group-title">🎯 分析设置</div>
-                <div class="setting-row"><span>等级:</span><span class="setting-value" data-role="level">高级10: 特级大师 (2400)</span></div>
-                <div class="setting-row">
-                  <span>预设:</span>
-                  <select class="engine-select" data-role="preset">
-                    <option value="beginner">初学</option>
-                    <option value="intermediate">中级</option>
-                    <option value="advanced">高级</option>
-                    <option value="expert">专家</option>
-                    <option value="master" selected>大师</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="ai-group">
-                <div class="ai-group-title">⚡ 引擎设置</div>
-                <div class="setting-placeholder" data-role="settings">待接入</div>
-              </div>
-            </div>
+        <section class="engine-card engine-card-white single-engine-card" data-engine-role="human">
+          <div class="engine-title">人机对弈</div>
+          <div class="simple-ai-controls">
+            <label class="difficulty-control"><span>AI 难度</span>
+              <select class="engine-select" data-role="preset">
+                <option value="beginner">初学</option>
+                <option value="intermediate" selected>中级</option>
+                <option value="advanced">高级</option>
+                <option value="expert">专家</option>
+                <option value="master">大师</option>
+                <option value="settings">自定义</option>
+              </select>
+            </label>
+            <label class="custom-level-control" data-role="custom-controls" hidden>
+              <span>自定义等级</span>
+              <input type="range" min="0" max="10" step="1" value="2" data-role="custom-level" aria-label="自定义等级" />
+              <output data-role="custom-level-value">业余进阶</output>
+            </label>
+            <span class="ai-status" data-role="status" role="status" aria-live="polite">选择执棋方并开始对弈</span>
           </div>
+          <section class="ai-insight" data-role="insight" aria-live="polite">
+            <div class="insight-heading"><strong>当前局面预估</strong><span data-role="insight-source">走棋后分析</span></div>
+            <div class="insight-summary">
+              <div><span>局势倾向（白方视角）</span><strong data-role="advantage">等待评估</strong></div>
+              <div><span>白方视角分值</span><strong data-role="engine-score">--</strong></div>
+              <div><span>搜索深度</span><strong data-role="engine-depth">--</strong></div>
+            </div>
+            <div class="candidate-heading" data-role="candidate-side">当前行棋方</div>
+            <ol class="insight-candidates" data-role="candidates" aria-label="候选变化"></ol>
+            <div class="insight-wdl" data-role="insight-wdl" hidden><span>白胜</span><strong data-role="white-win">--</strong><span>和棋</span><strong data-role="draw">--</strong><span>黑胜</span><strong data-role="black-win">--</strong></div>
+            <div class="insight-exact" data-role="insight-exact" hidden></div>
+            <p class="insight-note" data-role="insight-note">引擎估算，仅供训练参考。</p>
+          </section>
         </section>
       </div>
 
       <div class="ai-vs-ai-panel hidden" id="aiVsAiPanel">
-        <section class="engine-card engine-card-black">
-          <div class="engine-title">黑方引擎</div>
-          <div class="engine-body">
-            <div class="engine-main">
-              <div class="ai-group">
-                <div class="ai-group-title">📊 局面优势</div>
-                <div class="advantage-bar">
-                  <div class="advantage-white" data-role="adv-white"></div>
-                  <div class="advantage-black" data-role="adv-black"></div>
-                </div>
-                <div class="advantage-text" data-role="adv-text">等待分析...</div>
-              </div>
-
-              <div class="engine-grid">
-                <div class="ai-group">
-                  <div class="ai-group-title">🔍 搜索状态</div>
-                  <div class="metric-list">
-                    <div class="metric-item" data-role="depth">深度: 等待中...</div>
-                    <div class="metric-item" data-role="nodes">节点: 等待中...</div>
-                    <div class="metric-item" data-role="time">时间: 等待中...</div>
-                  </div>
-                </div>
-
-                <div class="ai-group">
-                  <div class="ai-group-title">🎯 候选走法</div>
-                  <div class="pv-box" data-role="pv">等待分析...</div>
-                </div>
-              </div>
-
-              <div class="ai-group">
-                <div class="ai-group-title">☁️ 局面评估</div>
-                <div class="eval-box" data-role="eval">等待分析...</div>
-              </div>
-            </div>
-
-            <div class="engine-side">
-              <div class="ai-group">
-                <div class="ai-group-title">🎯 分析设置</div>
-                <div class="setting-row"><span>等级:</span><span class="setting-value" data-role="level">高级10: 特级大师 (2400)</span></div>
-                <div class="setting-row">
-                  <span>预设:</span>
-                  <select class="engine-select" data-role="preset">
-                    <option value="beginner">初学</option>
-                    <option value="intermediate">中级</option>
-                    <option value="advanced">高级</option>
-                    <option value="expert">专家</option>
-                    <option value="master" selected>大师</option>
-                  </select>
-                </div>
-              </div>
-              <div class="ai-group">
-                <div class="ai-group-title">🧪 引擎设置</div>
-                <div class="setting-placeholder" data-role="settings">待接入</div>
-              </div>
-            </div>
+        <section class="engine-card engine-card-black" data-engine-role="black">
+          <div class="engine-title">黑方</div>
+          <div class="simple-ai-controls">
+            <label class="difficulty-control"><span>AI 难度</span>
+              <select class="engine-select" data-role="preset">
+                <option value="beginner">初学</option>
+                <option value="intermediate" selected>中级</option>
+                <option value="advanced">高级</option>
+                <option value="expert">专家</option>
+                <option value="master">大师</option>
+                <option value="settings">自定义</option>
+              </select>
+            </label>
+            <label class="custom-level-control" data-role="custom-controls" hidden>
+              <span>自定义等级</span>
+              <input type="range" min="0" max="10" step="1" value="2" data-role="custom-level" aria-label="自定义等级" />
+              <output data-role="custom-level-value">业余进阶</output>
+            </label>
+            <span class="ai-status" data-role="status" role="status" aria-live="polite">等待开始</span>
           </div>
         </section>
 
-        <section class="engine-card engine-card-white">
-          <div class="engine-title">白方引擎</div>
-          <div class="engine-body">
-            <div class="engine-main">
-              <div class="ai-group">
-                <div class="ai-group-title">📊 局面优势</div>
-                <div class="advantage-bar">
-                  <div class="advantage-white" data-role="adv-white"></div>
-                  <div class="advantage-black" data-role="adv-black"></div>
-                </div>
-                <div class="advantage-text" data-role="adv-text">等待分析...</div>
-              </div>
-
-              <div class="engine-grid">
-                <div class="ai-group">
-                  <div class="ai-group-title">🔍 搜索状态</div>
-                  <div class="metric-list">
-                    <div class="metric-item" data-role="depth">深度: 等待中...</div>
-                    <div class="metric-item" data-role="nodes">节点: 等待中...</div>
-                    <div class="metric-item" data-role="time">时间: 等待中...</div>
-                  </div>
-                </div>
-
-                <div class="ai-group">
-                  <div class="ai-group-title">🎯 候选走法</div>
-                  <div class="pv-box" data-role="pv">等待分析...</div>
-                </div>
-              </div>
-
-              <div class="ai-group">
-                <div class="ai-group-title">☁️ 局面评估</div>
-                <div class="eval-box" data-role="eval">等待分析...</div>
-              </div>
-            </div>
-
-            <div class="engine-side">
-              <div class="ai-group">
-                <div class="ai-group-title">🎯 分析设置</div>
-                <div class="setting-row"><span>等级:</span><span class="setting-value" data-role="level">高级10: 特级大师 (2400)</span></div>
-                <div class="setting-row">
-                  <span>预设:</span>
-                  <select class="engine-select" data-role="preset">
-                    <option value="beginner">初学</option>
-                    <option value="intermediate">中级</option>
-                    <option value="advanced">高级</option>
-                    <option value="expert">专家</option>
-                    <option value="master" selected>大师</option>
-                  </select>
-                </div>
-              </div>
-              <div class="ai-group">
-                <div class="ai-group-title">🧪 引擎设置</div>
-                <div class="setting-placeholder" data-role="settings">待接入</div>
-              </div>
-            </div>
+        <section class="engine-card engine-card-white" data-engine-role="white">
+          <div class="engine-title">白方</div>
+          <div class="simple-ai-controls">
+            <label class="difficulty-control"><span>AI 难度</span>
+              <select class="engine-select" data-role="preset">
+                <option value="beginner">初学</option>
+                <option value="intermediate" selected>中级</option>
+                <option value="advanced">高级</option>
+                <option value="expert">专家</option>
+                <option value="master">大师</option>
+                <option value="settings">自定义</option>
+              </select>
+            </label>
+            <label class="custom-level-control" data-role="custom-controls" hidden>
+              <span>自定义等级</span>
+              <input type="range" min="0" max="10" step="1" value="2" data-role="custom-level" aria-label="自定义等级" />
+              <output data-role="custom-level-value">业余进阶</output>
+            </label>
+            <span class="ai-status" data-role="status" role="status" aria-live="polite">等待开始</span>
           </div>
+        </section>
+        <section class="ai-insight" data-role="insight" aria-live="polite">
+          <div class="insight-heading"><strong>当前局面预估</strong><span data-role="insight-source">开始后分析</span></div>
+          <div class="insight-summary">
+            <div><span>局势倾向（白方视角）</span><strong data-role="advantage">等待评估</strong></div>
+            <div><span>白方视角分值</span><strong data-role="engine-score">--</strong></div>
+            <div><span>搜索深度</span><strong data-role="engine-depth">--</strong></div>
+          </div>
+          <div class="candidate-heading" data-role="candidate-side">当前行棋方</div>
+          <ol class="insight-candidates" data-role="candidates" aria-label="候选变化"></ol>
+          <div class="insight-wdl" data-role="insight-wdl" hidden><span>白胜</span><strong data-role="white-win">--</strong><span>和棋</span><strong data-role="draw">--</strong><span>黑胜</span><strong data-role="black-win">--</strong></div>
+          <div class="insight-exact" data-role="insight-exact" hidden></div>
+          <p class="insight-note" data-role="insight-note">引擎估算，仅供训练参考。</p>
         </section>
       </div>
     </section>
@@ -289,6 +203,7 @@
 
   <script src="./logger.js"></script>
   <script src="../settings/engine-settings.js"></script>
+  <script src="./tablebase.js"></script>
   <script src="./assets/question-bank.js"></script>
   <script src="./bank-store.js"></script>
   <script src="../records/store.js"></script>

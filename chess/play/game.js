@@ -19,6 +19,8 @@
   var engineReadyPromise = null;
   var engineAppliedConfig = { skillLevel: null, multiPv: null, wdl: false };
   var engineQueue = Promise.resolve();
+  var insightRequestId = 0;
+  var insightState = { fen: null, status: "走棋后分析", payload: null };
 
   function clampEngineNumber(value, min, max, fallback) {
     var n = Number(value);
@@ -34,6 +36,7 @@
       if (token === "depth" && parts[i + 1]) { info.depth = Number(parts[i + 1]); i += 1; continue; }
       if (token === "nodes" && parts[i + 1]) { info.nodes = Number(parts[i + 1]); i += 1; continue; }
       if (token === "time" && parts[i + 1]) { info.time = Number(parts[i + 1]); i += 1; continue; }
+      if (token === "multipv" && parts[i + 1]) { info.multipvIndex = Number(parts[i + 1]); i += 1; continue; }
       if (token === "wdl" && parts[i + 3]) { info.wdl = parts.slice(i + 1, i + 4).map(Number); i += 3; continue; }
       if (token === "score" && parts[i + 2]) {
         var scoreType = parts[i + 1];
@@ -144,37 +147,58 @@
     var movetime = clampEngineNumber(options.movetime, 100, 10000, 1200);
     var depth = clampEngineNumber(options.depth, 1, 30, null);
 
-    return configureEngine(options).then(function (multiPv) {
-      var worker = getEngineWorker();
-      return new Promise(function (resolve, reject) {
-        var infoLines = [];
-        var timeoutMs = Math.max(6000, movetime + 6000);
-        var timer = window.setTimeout(function () {
-          worker.removeEventListener("message", onMessage);
-          reject(new Error("engine analyze timeout"));
-        }, timeoutMs);
-
-        function onMessage(e) {
-          var line = typeof e.data === "string" ? e.data : "";
-          if (line.indexOf("info ") === 0 && line.indexOf(" pv ") !== -1) {
-            infoLines.push(parseEngineInfoLine(line));
-          } else if (line.indexOf("bestmove") === 0) {
-            window.clearTimeout(timer);
+    var tablebaseProbe = window.ChessTablebase ? window.ChessTablebase.probe(fen) : Promise.resolve(null);
+    return tablebaseProbe.then(function (tablebaseResult) {
+      if (tablebaseResult) return tablebaseResult;
+      return configureEngine(options).then(function (multiPv) {
+        var worker = getEngineWorker();
+        return new Promise(function (resolve, reject) {
+          var infoLines = [];
+          var timeoutMs = Math.max(6000, movetime + 6000);
+          var timer = window.setTimeout(function () {
             worker.removeEventListener("message", onMessage);
-            var bestMove = line.split(/\s+/)[1] || null;
-            resolve({
-              ok: true,
-              fen: fen,
-              bestMove: bestMove === "(none)" ? null : bestMove,
-              info: infoLines.length ? infoLines[infoLines.length - 1] : {},
-              multipv: infoLines.slice(-multiPv)
-            });
-          }
-        }
-        worker.addEventListener("message", onMessage);
+            reject(new Error("engine analyze timeout"));
+          }, timeoutMs);
 
-        sendEngineCommand("position fen " + fen);
-        sendEngineCommand("go movetime " + movetime + (depth ? " depth " + depth : ""));
+          function onMessage(e) {
+            var line = typeof e.data === "string" ? e.data : "";
+            if (line.indexOf("info ") === 0 && line.indexOf(" pv ") !== -1) {
+              infoLines.push(parseEngineInfoLine(line));
+            } else if (line.indexOf("bestmove") === 0) {
+              window.clearTimeout(timer);
+              worker.removeEventListener("message", onMessage);
+              var bestMove = line.split(/\s+/)[1] || null;
+              var topInfo = infoLines.filter(function (item) { return item.multipvIndex === 1; });
+              var finalInfo = topInfo.slice(-1)[0] || infoLines[infoLines.length - 1] || {};
+              var scoreByDepth = [];
+              topInfo.forEach(function (item) {
+                if (!item.score || item.score.type !== "cp" || !Number.isFinite(item.depth)) return;
+                var existing = scoreByDepth.findIndex(function (entry) { return entry.depth === item.depth; });
+                if (existing >= 0) scoreByDepth[existing] = item;
+                else scoreByDepth.push(item);
+              });
+              var scoreHistory = scoreByDepth.slice(-3);
+              var scoreValues = scoreHistory.map(function (item) { return item.score.value; });
+              var stableScores = scoreValues.length === 3 && Math.max.apply(null, scoreValues) - Math.min.apply(null, scoreValues) <= 0.35;
+              var finalLines = infoLines.slice(-multiPv).sort(function (left, right) {
+                return (left.multipvIndex || 1) - (right.multipvIndex || 1);
+              });
+              resolve({
+                ok: true,
+                fen: fen,
+                bestMove: bestMove === "(none)" ? null : bestMove,
+                info: finalInfo,
+                multipv: finalLines,
+                scoreHistory: scoreHistory,
+                wdlReliable: Number.isFinite(finalInfo.depth) && finalInfo.depth >= 16 && stableScores && Array.isArray(finalInfo.wdl)
+              });
+            }
+          }
+          worker.addEventListener("message", onMessage);
+
+          sendEngineCommand("position fen " + fen);
+          sendEngineCommand("go movetime " + movetime + (depth ? " depth " + depth : ""));
+        });
       });
     });
   }
@@ -681,28 +705,18 @@
   function createAiMock(side) {
     return {
       side: side,
-      score: side === "black" ? -0.8 : 0.8,
-      depth: 0,
-      nodes: 0,
-      time: 0,
-      pv: "等待分析...",
-      eval: "等待分析...",
-      level: "高级10: 特级大师 (2400)",
-      preset: "master"
+      status: "等待开始",
+      level: "中级",
+      preset: "intermediate"
     };
   }
 
   function ensureAiMockData() {
     if (!state.humanAi) {
       state.humanAi = {
-        score: 0.6,
-        depth: 0,
-        nodes: 0,
-        time: 0,
-        pv: "等待分析...",
-        eval: "🎯 局面评估系统已就绪\n开始下棋后，AI将为您分析局面优势，提供专业的棋局建议。\n⚡ 后续将整合 LLM 和专家系统，提供更深入的分析。",
-        level: "高级10: 特级大师 (2400)",
-        preset: "master",
+        status: "选择执棋方并开始对弈",
+        level: "中级",
+        preset: "intermediate",
         maxRetries: 2
       };
     }
@@ -714,63 +728,24 @@
     }
   }
 
-  function formatNodes(nodes) {
-    if (nodes >= 1000000) {
-      return (nodes / 1000000).toFixed(1) + "M";
-    }
-    if (nodes >= 1000) {
-      return (nodes / 1000).toFixed(1) + "K";
-    }
-    return String(nodes);
-  }
-
-  function updateAiMockTick() {
-    ensureAiMockData();
-    state.humanAi.depth = Math.min(24, state.humanAi.depth + 1);
-    state.humanAi.nodes += 15000;
-    state.humanAi.time += 220;
-    state.humanAi.score = Math.max(-3.2, Math.min(3.2, state.humanAi.score + 0.05));
-    state.humanAi.pv = "e2e4 e7e5 g1f3";
-    state.humanAi.eval = state.humanAi.score >= 0
-      ? "🎯 白方保持主动，建议继续发展子力并争夺中心。"
-      : "🎯 黑方反击机会增加，建议谨慎处理王翼安全。";
-
-    [state.aiVsAi.black, state.aiVsAi.white].forEach(function (item, index) {
-      item.depth = Math.min(24, item.depth + 1 + index);
-      item.nodes += 12000 + index * 3000;
-      item.time += 180 + index * 40;
-      item.score = Math.max(-3.2, Math.min(3.2, item.score + (index === 0 ? 0.08 : -0.06)));
-      item.pv = index === 0 ? "e7e5 g8f6 d7d6" : "e2e4 g1f3 f1c4";
-      item.eval = index === 0 ? "黑方保持稳固结构，等待中心反击。" : "白方空间略优，适合继续发展子力。";
-    });
-  }
-
-  function getAiVsAiEngineSettings() {
-    var speed = Number(speedRange ? speedRange.value : 5);
-    speed = Number.isFinite(speed) ? Math.max(1, Math.min(10, speed)) : 5;
-
-    return {
-      speed: speed,
-      skillLevel: Math.max(0, Math.min(20, Math.round(speed * 2))),
-      movetime: 240 + speed * 120,
-      depth: Math.max(8, Math.min(24, 6 + speed)),
-      multiPv: speed >= 8 ? 3 : 2,
-      levelText: "速度" + speed + "｜S" + Math.max(0, Math.min(20, Math.round(speed * 2))) + " D" + Math.max(8, Math.min(24, 6 + speed)) + " T" + (240 + speed * 120) + "ms"
-    };
-  }
-
   function getAiPresetConfig(preset) {
-    if (preset === "beginner") return { skillLevel: 4, depth: 8, movetime: 420, multiPv: 1, label: "初学" };
-    if (preset === "intermediate") return { skillLevel: 8, depth: 10, movetime: 650, multiPv: 2, label: "中级" };
-    if (preset === "expert") return { skillLevel: 14, depth: 14, movetime: 1050, multiPv: 2, label: "专家" };
-    if (preset === "master") return { skillLevel: 20, depth: 18, movetime: 1500, multiPv: 3, label: "大师" };
-    return { skillLevel: 11, depth: 12, movetime: 820, multiPv: 2, label: "高级" };
+    if (preset === "beginner") return { skillLevel: 0, depth: 5, movetime: 500, multiPv: 1, label: "初学" };
+    if (preset === "intermediate") return { skillLevel: 4, depth: 8, movetime: 800, multiPv: 1, label: "中级" };
+    if (preset === "advanced") return { skillLevel: 8, depth: 12, movetime: 1500, multiPv: 1, label: "高级" };
+    if (preset === "expert") return { skillLevel: 15, depth: 18, movetime: 2000, multiPv: 1, label: "专家" };
+    if (preset === "master") return { skillLevel: 20, depth: 25, movetime: 3000, multiPv: 1, label: "大师" };
+    return { skillLevel: 4, depth: 8, movetime: 800, multiPv: 1, label: "中级" };
+  }
+
+  function getPresetLabel(preset) {
+    var labels = { beginner: "初学", intermediate: "中级", advanced: "高级", expert: "专家", master: "大师", settings: "自定义" };
+    return labels[preset] || labels.intermediate;
   }
 
   function getAiVsAiSettingsForSide(side) {
     ensureAiMockData();
     var panel = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
-    var preset = panel.preset || "master";
+    var preset = panel.preset || "intermediate";
     if (window.ChessEngineSettings) return window.ChessEngineSettings.resolve(side === 'w' ? 'white' : 'black', preset);
     var config = getAiPresetConfig(preset);
     return {
@@ -789,11 +764,11 @@
     var cards = aiVsAiPanel.querySelectorAll(".engine-card");
     if (cards[0]) {
       var blackPreset = cards[0].querySelector('[data-role="preset"]');
-      if (blackPreset) state.aiVsAi.black.preset = blackPreset.value || "master";
+      if (blackPreset) state.aiVsAi.black.preset = blackPreset.value || "intermediate";
     }
     if (cards[1]) {
       var whitePreset = cards[1].querySelector('[data-role="preset"]');
-      if (whitePreset) state.aiVsAi.white.preset = whitePreset.value || "master";
+      if (whitePreset) state.aiVsAi.white.preset = whitePreset.value || "intermediate";
     }
   }
 
@@ -801,28 +776,11 @@
     if (!root || !data) {
       return;
     }
-
-    var whiteWidth = Math.max(10, Math.min(90, 50 + data.score * 10));
-    var blackWidth = 100 - whiteWidth;
-    var advWhite = root.querySelector('[data-role="adv-white"]');
-    var advBlack = root.querySelector('[data-role="adv-black"]');
-    var advText = root.querySelector('[data-role="adv-text"]');
-    var depth = root.querySelector('[data-role="depth"]');
-    var nodes = root.querySelector('[data-role="nodes"]');
-    var time = root.querySelector('[data-role="time"]');
-    var pv = root.querySelector('[data-role="pv"]');
-    var evalBox = root.querySelector('[data-role="eval"]');
-    var level = root.querySelector('[data-role="level"]');
-
-    if (advWhite) advWhite.style.width = whiteWidth + "%";
-    if (advBlack) advBlack.style.width = blackWidth + "%";
-    if (advText) advText.textContent = "等价分析: " + (data.score > 0 ? "白方略优" : data.score < 0 ? "黑方略优" : "均势");
-    if (depth) depth.textContent = "深度: " + data.depth + " 层";
-    if (nodes) nodes.textContent = "节点: " + formatNodes(data.nodes);
-    if (time) time.textContent = "时间: " + (data.time / 1000).toFixed(1) + "s";
-    if (pv) pv.textContent = data.pv;
-    if (evalBox) evalBox.textContent = data.eval;
-    if (level) level.textContent = data.level;
+    var status = root.querySelector('[data-role="status"]');
+    var level = root.querySelector('[data-role="preset"]');
+    if (status) status.textContent = data.status;
+    if (level) level.value = data.preset || "intermediate";
+    syncCustomLevelControl(root, root.dataset.engineRole || "human");
   }
 
   function renderAiVsAiPanel() {
@@ -846,33 +804,208 @@
     }
   }
 
-  function updateAiVsAiFromResponse(side, payload, settings) {
-    ensureAiMockData();
-    var panelState = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
+  function getLanguageIsEnglish() {
+    return !!(window.ChessI18n && window.ChessI18n.getLanguage() === "en");
+  }
+
+  function formatUciMove(uci) {
+    var parsed = parseUciMove(uci);
+    if (!parsed) return "--";
+    var move = toCellName(parsed.fromRow, parsed.fromCol) + " → " + toCellName(parsed.toRow, parsed.toCol);
+    return parsed.promotionKind ? move + "=" + parsed.promotionKind.toUpperCase() : move;
+  }
+
+  function formatPvLine(pv) {
+    return (Array.isArray(pv) ? pv : []).slice(0, 4).map(formatUciMove).filter(function (move) { return move !== "--"; }).join("  ");
+  }
+
+  function scoreForWhite(score, fen) {
+    if (!score || !Number.isFinite(score.value)) return null;
+    var sideToMove = String(fen || "").split(/\s+/)[1];
+    var sign = sideToMove === "b" ? -1 : 1;
+    return { type: score.type, value: score.value * sign };
+  }
+
+  function formatEngineScore(score, fen) {
+    var whiteScore = scoreForWhite(score, fen);
+    if (!whiteScore) return "--";
+    if (whiteScore.type === "mate") return whiteScore.value > 0 ? "#" + whiteScore.value : "-#" + Math.abs(whiteScore.value);
+    return (whiteScore.value > 0 ? "+" : "") + whiteScore.value.toFixed(2);
+  }
+
+  function describeAdvantage(score, fen) {
+    var whiteScore = scoreForWhite(score, fen);
+    if (!whiteScore) return getLanguageIsEnglish() ? "Insufficient data" : "数据不足";
+    if (whiteScore.type === "mate") return whiteScore.value > 0 ? (getLanguageIsEnglish() ? "White has a forced mate" : "白方有强制将杀") : (getLanguageIsEnglish() ? "Black has a forced mate" : "黑方有强制将杀");
+    var value = whiteScore.value;
+    var white = value > 0;
+    var magnitude = Math.abs(value);
+    if (magnitude < 0.2) return getLanguageIsEnglish() ? "Roughly equal" : "大致均势";
+    if (magnitude < 0.6) return white ? (getLanguageIsEnglish() ? "White has a slight edge" : "白方略优") : (getLanguageIsEnglish() ? "Black has a slight edge" : "黑方略优");
+    if (magnitude < 1.5) return white ? (getLanguageIsEnglish() ? "White has an advantage" : "白方占优") : (getLanguageIsEnglish() ? "Black has an advantage" : "黑方占优");
+    return white ? (getLanguageIsEnglish() ? "White has a clear advantage" : "白方明显优势") : (getLanguageIsEnglish() ? "Black has a clear advantage" : "黑方明显优势");
+  }
+
+  function renderCandidateLines(container, payload, fen) {
+    var list = container.querySelector('[data-role="candidates"]');
+    if (!list) return;
+    list.replaceChildren();
+    var lines = Array.isArray(payload && payload.multipv) ? payload.multipv.slice(0, 3) : [];
+    if (!lines.length && payload && payload.bestMove) lines = [{ pv: [payload.bestMove], score: payload.info && payload.info.score }];
+    lines.forEach(function (line, index) {
+      var item = document.createElement("li");
+      var rank = document.createElement("span");
+      var variation = document.createElement("span");
+      var evaluation = document.createElement("strong");
+      rank.className = "candidate-rank";
+      variation.className = "candidate-variation";
+      evaluation.className = "candidate-evaluation";
+      rank.textContent = String(index + 1);
+      variation.textContent = line.tablebase && line.san ? line.san : formatPvLine(line.pv);
+      evaluation.textContent = line.tablebase
+        ? (Number.isFinite(line.tablebase.dtz) ? "DTZ " + line.tablebase.dtz : "表库")
+        : formatEngineScore(line.score, fen);
+      item.append(rank, variation, evaluation);
+      list.appendChild(item);
+    });
+  }
+
+  function renderInsight(container) {
+    if (!container) return;
+    var status = container.querySelector('[data-role="insight-source"]');
+    var advantage = container.querySelector('[data-role="advantage"]');
+    var engineScore = container.querySelector('[data-role="engine-score"]');
+    var engineDepth = container.querySelector('[data-role="engine-depth"]');
+    var candidateSide = container.querySelector('[data-role="candidate-side"]');
+    var whiteWin = container.querySelector('[data-role="white-win"]');
+    var draw = container.querySelector('[data-role="draw"]');
+    var blackWin = container.querySelector('[data-role="black-win"]');
+    var exactResult = container.querySelector('[data-role="insight-exact"]');
+    var note = container.querySelector('[data-role="insight-note"]');
+    var payload = insightState.payload;
     var info = payload && payload.info ? payload.info : {};
+    var isTablebase = payload && payload.source === "tablebase";
+    var sideToMove = String(insightState.fen || "").split(/\s+/)[1];
+    container.classList.toggle("insight-tablebase", !!isTablebase);
+    if (status) status.textContent = insightState.status;
+    if (candidateSide) candidateSide.textContent = sideToMove === "b" ? (getLanguageIsEnglish() ? "Black to move" : "黑方行棋") : (getLanguageIsEnglish() ? "White to move" : "白方行棋");
+    renderCandidateLines(container, payload, insightState.fen);
+    if (advantage) advantage.textContent = payload ? (isTablebase ? (getLanguageIsEnglish() ? "Exact tablebase result" : "残局库精确结论") : describeAdvantage(info.score, insightState.fen)) : (getLanguageIsEnglish() ? "Waiting for analysis" : "等待评估");
+    if (engineScore) engineScore.textContent = payload ? (isTablebase ? "Tablebase" : formatEngineScore(info.score, insightState.fen)) : "--";
+    if (engineDepth) engineDepth.textContent = isTablebase ? "Exact" : (Number.isFinite(info.depth) ? String(info.depth) : "--");
+    if (whiteWin) whiteWin.textContent = "--";
+    if (draw) draw.textContent = "--";
+    if (blackWin) blackWin.textContent = "--";
+    if (exactResult) { exactResult.hidden = !isTablebase; exactResult.textContent = ""; }
+    var wdlRow = container.querySelector('[data-role="insight-wdl"]');
+    var reliableWdl = !isTablebase && payload && payload.wdlReliable === true && Array.isArray(info.wdl) && info.wdl.length === 3;
+    if (wdlRow) wdlRow.hidden = !reliableWdl;
 
-    panelState.depth = Number.isFinite(info.depth) ? info.depth : panelState.depth;
-    panelState.nodes = Number.isFinite(info.nodes) ? info.nodes : panelState.nodes;
-    panelState.time = Number.isFinite(info.time) ? info.time : panelState.time;
-    panelState.level = settings.levelText;
-    if (info.score && Number.isFinite(info.score.value)) {
-      panelState.score = info.score.type === "mate" ? (info.score.value > 0 ? 9 : -9) : info.score.value;
+    if (isTablebase && payload.tablebase && payload.tablebase.category) {
+      var category = payload.tablebase.category;
+      var sideToMove = String(insightState.fen || "").split(/\s+/)[1];
+      var isDraw = category === "draw" || category === "cursed-win" || category === "blessed-loss";
+      var isLoss = category === "loss";
+      var whiteWins = (sideToMove === "b") === isLoss;
+      var exact = isDraw ? (getLanguageIsEnglish() ? "Draw" : "和棋")
+        : category === "win" || isLoss ? (whiteWins ? (getLanguageIsEnglish() ? "White is winning" : "白方必胜") : (getLanguageIsEnglish() ? "Black is winning" : "黑方必胜"))
+        : (getLanguageIsEnglish() ? "Exact tablebase result" : "残局库精确结论");
+      if (exactResult) exactResult.textContent = exact;
+      if (note) note.textContent = getLanguageIsEnglish() ? "Exact tablebase result." : "残局库精确结论。";
+      return;
     }
 
-    if (Array.isArray(payload && payload.multipv) && payload.multipv.length) {
-      panelState.pv = payload.multipv.slice(0, Math.min(payload.multipv.length, settings.multiPv)).map(function (line, idx) {
-        var pvText = Array.isArray(line.pv) && line.pv.length ? line.pv.slice(0, 8).join(" ") : "-";
-        return (idx + 1) + ") " + pvText;
-      }).join(" | ");
-    } else {
-      panelState.pv = Array.isArray(info.pv) && info.pv.length ? info.pv.join(" ") : "等待分析...";
+    var wdl = reliableWdl ? info.wdl.slice() : null;
+    if (wdl) {
+      if (String(insightState.fen || "").split(/\s+/)[1] === "b") wdl = [wdl[2], wdl[1], wdl[0]];
+      var total = wdl.reduce(function (sum, value) { return sum + value; }, 0);
+      if (total > 0) {
+        if (whiteWin) whiteWin.textContent = (wdl[0] / total * 100).toFixed(1) + "%";
+        if (draw) draw.textContent = (wdl[1] / total * 100).toFixed(1) + "%";
+        if (blackWin) blackWin.textContent = (wdl[2] / total * 100).toFixed(1) + "%";
+      }
     }
+    if (note) note.textContent = wdl
+      ? (getLanguageIsEnglish() ? "Deep, stable engine WDL estimate; not a human-game win probability." : "深度稳定后的引擎 WDL 估算，并非真人实战胜率。")
+      : (getLanguageIsEnglish() ? "Qualitative engine estimate; WDL percentages are hidden until the search is deep and stable." : "浅层或评估波动时隐藏胜率百分比；倾向仅作训练参考。");
+  }
 
-    panelState.eval = payload && payload.bestMove
-      ? ((side === "w" ? "白方" : "黑方") + "建议: " + payload.bestMove)
-      : "等待分析...";
-    if (settings.showWdl && info.wdl) panelState.eval += '；胜/和/负：' + info.wdl.map(function (value) { return (value / 10).toFixed(1) + '%'; }).join(' / ');
-    renderAiVsAiPanel();
+  function renderAllInsights() {
+    document.querySelectorAll('[data-role="insight"]').forEach(renderInsight);
+  }
+
+  function setInsightPending(fen, message) {
+    insightRequestId += 1;
+    insightState = { fen: fen, status: message || "正在评估", payload: null };
+    renderAllInsights();
+    return insightRequestId;
+  }
+
+  function applyInsight(payload, fen, requestId) {
+    if (requestId !== insightRequestId || fen !== toFen() || state.gameOver) return false;
+    insightState = {
+      fen: fen,
+      status: payload.source === "tablebase" ? "残局库" : "Stockfish",
+      payload: payload
+    };
+    renderAllInsights();
+    return true;
+  }
+
+  async function requestPositionInsight(settings, mode) {
+    if (state.gameOver || state.mode !== mode) return;
+    var fen = toFen();
+    var requestId = setInsightPending(fen, "正在评估");
+    try {
+      var payload = await analyzeWithLocalEngine(Object.assign({}, settings, {
+        fen: fen,
+        showWdl: true,
+        multiPv: 3
+      }));
+      applyInsight(payload, fen, requestId);
+    } catch (error) {
+      if (requestId === insightRequestId && fen === toFen()) {
+        insightState = { fen: fen, status: "暂不可用", payload: null };
+        renderAllInsights();
+      }
+      logger.warn("ai-insight.request.failed", { detail: String(error && error.message || error) });
+    }
+  }
+
+  function refreshCurrentPositionInsight() {
+    if (state.mode === "human_ai" && state.turn === resolvePlayerColorCode()) {
+      requestPositionInsight(getHumanAiEngineSettings(), "human_ai");
+    } else if (state.mode === "ai_ai" && !state.autoplay) {
+      var side = state.turn;
+      requestPositionInsight(getAiVsAiSettingsForSide(side), "ai_ai");
+    }
+  }
+
+  function syncCustomLevelControl(card, side) {
+    if (!card || !window.ChessEngineSettings) return;
+    var preset = card.querySelector('[data-role="preset"]');
+    var controls = card.querySelector('[data-role="custom-controls"]');
+    var slider = card.querySelector('[data-role="custom-level"]');
+    var output = card.querySelector('[data-role="custom-level-value"]');
+    if (!preset || !controls || !slider || !output) return;
+    var custom = preset.value === "settings";
+    controls.hidden = !custom;
+    if (!custom) return;
+    var level = window.ChessEngineSettings.read()[side].level;
+    slider.value = String(level);
+    output.textContent = window.ChessEngineSettings.levels[level][0];
+  }
+
+  function saveCustomLevel(card, side) {
+    if (!card || !window.ChessEngineSettings) return;
+    var slider = card.querySelector('[data-role="custom-level"]');
+    var output = card.querySelector('[data-role="custom-level-value"]');
+    var level = Number(slider && slider.value);
+    if (!Number.isInteger(level) || !window.ChessEngineSettings.levels[level]) return;
+    var draft = window.ChessEngineSettings.read();
+    draft[side].level = level;
+    window.ChessEngineSettings.save(draft);
+    if (output) output.textContent = window.ChessEngineSettings.levels[level][0];
   }
 
   function invalidateAiVsAiLoop() {
@@ -907,6 +1040,8 @@
 
     if (state.autoplay) {
       stopAiVsAiPlayback();
+      state.aiVsAi.black.status = "已暂停";
+      state.aiVsAi.white.status = "已暂停";
       updateAiVsAiModeButton();
       voiceManager.speak("暂停AI对战", { force: true });
       logger.info("mode", "ai-vs-ai.paused.by-mode-button", {});
@@ -916,6 +1051,8 @@
 
     state.aiVsAiSessionStarted = true;
     state.autoplay = true;
+    state.aiVsAi.black.status = "等待开始";
+    state.aiVsAi.white.status = "等待开始";
     state.aiVsAiToken += 1;
     updateAiVsAiModeButton();
     voiceManager.speak("开始AI对战", { force: true });
@@ -926,7 +1063,7 @@
 
   function getHumanAiEngineSettings() {
     ensureAiMockData();
-    var preset = state.humanAi.preset || "master";
+    var preset = state.humanAi.preset || "intermediate";
     if (window.ChessEngineSettings) return window.ChessEngineSettings.resolve('human', preset);
     var config = getAiPresetConfig(preset);
     return {
@@ -1005,39 +1142,6 @@
     };
   }
 
-  function updateHumanAiFromResponse(payload) {
-    ensureAiMockData();
-    var engineSettings = getHumanAiEngineSettings();
-    var info = payload && payload.info ? payload.info : {};
-    state.humanAi.depth = Number.isFinite(info.depth) ? info.depth : state.humanAi.depth;
-    state.humanAi.nodes = Number.isFinite(info.nodes) ? info.nodes : state.humanAi.nodes;
-    state.humanAi.time = Number.isFinite(info.time) ? info.time : state.humanAi.time;
-    state.humanAi.level = engineSettings.levelText;
-    if (info.score && Number.isFinite(info.score.value)) {
-      state.humanAi.score = info.score.type === "mate" ? (info.score.value > 0 ? 9 : -9) : info.score.value;
-    }
-
-    if (Array.isArray(payload && payload.multipv) && payload.multipv.length) {
-      var topPv = payload.multipv.slice(0, Math.min(payload.multipv.length, engineSettings.multiPv));
-      state.humanAi.pv = topPv.map(function (line, idx) {
-        var pvText = Array.isArray(line.pv) && line.pv.length ? line.pv.slice(0, 8).join(" ") : "-";
-        var scoreText = "";
-        if (line.score && Number.isFinite(line.score.value)) {
-          scoreText = line.score.type === "mate" ? (" #" + line.score.value) : (line.score.value >= 0 ? " +" : " ") + line.score.value.toFixed(2);
-        }
-        return (idx + 1) + ") " + pvText + scoreText;
-      }).join(" | ");
-    } else {
-      state.humanAi.pv = Array.isArray(info.pv) && info.pv.length ? info.pv.join(" ") : "等待分析...";
-    }
-
-    state.humanAi.eval = payload && payload.bestMove
-      ? "AI 建议走法: " + payload.bestMove + "。当前评估已同步到面板。"
-      : "等待分析...";
-    if (engineSettings.showWdl && info.wdl) state.humanAi.eval += ' 胜/和/负：' + info.wdl.map(function (value) { return (value / 10).toFixed(1) + '%'; }).join(' / ');
-    renderHumanAiPanel();
-  }
-
   async function requestHumanAiTurn(retryCount) {
     var retries = Number.isFinite(retryCount) ? retryCount : 0;
     if (state.mode !== "human_ai" || state.gameOver || state.aiThinking || state.turn === resolvePlayerColorCode()) {
@@ -1046,24 +1150,30 @@
 
     ensureAiMockData();
     var engineSettings = getHumanAiEngineSettings();
+    var fen = toFen();
+    var insightId = setInsightPending(fen, "正在评估");
     state.aiThinking = true;
-    state.humanAi.level = engineSettings.levelText;
-    state.humanAi.eval = "AI 正在分析当前局面...（第" + (retries + 1) + "次）";
+    state.humanAi.level = state.humanAi.preset === "settings"
+      ? window.ChessEngineSettings.levels[engineSettings.level][0]
+      : getPresetLabel(state.humanAi.preset);
+    state.humanAi.status = "AI 正在思考";
     renderHumanAiPanel();
 
     try {
       var payload = await analyzeWithLocalEngine(Object.assign({}, engineSettings, {
-        fen: toFen(),
+        fen: fen,
         movetime: engineSettings.movetime,
         depth: engineSettings.depth,
         skillLevel: engineSettings.skillLevel,
-        multiPv: engineSettings.multiPv
+        multiPv: 3,
+        showWdl: true
       }));
       if (!payload.ok) {
         throw new Error("Stockfish analyze failed");
       }
-
-      updateHumanAiFromResponse(payload);
+      applyInsight(payload, fen, insightId);
+      state.humanAi.status = "AI 已选定候选，准备走棋";
+      renderHumanAiPanel();
 
       var parsed = parseUciMove(payload.bestMove);
       if (!parsed) {
@@ -1082,14 +1192,14 @@
       window.setTimeout(function () {
         state.aiThinking = false;
         executeMove(aiMove);
-      }, 200);
+      }, 800);
       return;
     } catch (error) {
       state.aiThinking = false;
       ensureAiMockData();
       var detail = String(error && error.message ? error.message : error);
       if (retries < state.humanAi.maxRetries) {
-        state.humanAi.eval = "引擎调用失败，正在重试...（" + (retries + 1) + "/" + state.humanAi.maxRetries + "）";
+        state.humanAi.status = "连接失败，正在重试";
         renderHumanAiPanel();
         window.setTimeout(function () {
           requestHumanAiTurn(retries + 1);
@@ -1098,7 +1208,7 @@
         return;
       }
 
-      state.humanAi.eval = "引擎调用失败：" + detail;
+      state.humanAi.status = "AI 暂不可用";
       renderHumanAiPanel();
       logger.error("human-ai.request.failed", { detail: detail });
     }
@@ -1120,24 +1230,29 @@
     var sideState = side === "w" ? state.aiVsAi.white : state.aiVsAi.black;
     syncAiVsAiPresetsFromUI();
     var settings = getAiVsAiSettingsForSide(side);
+    var fen = toFen();
+    var insightId = setInsightPending(fen, "正在评估");
     state.aiThinking = true;
-    sideState.level = settings.levelText;
-    sideState.eval = (side === "w" ? "白方" : "黑方") + "正在分析...（第" + (retries + 1) + "次）";
+    sideState.level = sideState.preset === "settings"
+      ? window.ChessEngineSettings.levels[settings.level][0]
+      : getPresetLabel(sideState.preset);
+    sideState.status = "正在思考";
     renderAiVsAiPanel();
 
     try {
       var payload = await analyzeWithLocalEngine(Object.assign({}, settings, {
-        fen: toFen(),
+        fen: fen,
         movetime: settings.movetime,
         depth: settings.depth,
         skillLevel: settings.skillLevel,
-        multiPv: settings.multiPv
+        multiPv: 3,
+        showWdl: true
       }));
       if (!payload.ok) {
         throw new Error("Stockfish analyze failed");
       }
-
-      updateAiVsAiFromResponse(side, payload, settings);
+      if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) return;
+      applyInsight(payload, fen, insightId);
 
       var parsed = parseUciMove(payload.bestMove);
       if (!parsed) {
@@ -1158,6 +1273,9 @@
         return;
       }
 
+      sideState.status = "候选已就绪";
+      renderAiVsAiPanel();
+
       window.setTimeout(function () {
         if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) {
           state.aiThinking = false;
@@ -1165,14 +1283,14 @@
         }
         state.aiThinking = false;
         executeMove(aiMove);
-      }, 120);
+      }, 800);
       return;
     } catch (error) {
       state.aiThinking = false;
       ensureAiMockData();
       var detail = String(error && error.message ? error.message : error);
       if (retries < 2 && runToken === state.aiVsAiToken && state.mode === "ai_ai" && state.autoplay) {
-        sideState.eval = "引擎调用失败，正在重试...（" + (retries + 1) + "/2）";
+        sideState.status = "连接失败，正在重试";
         renderAiVsAiPanel();
         window.setTimeout(function () {
           requestAiVsAiTurn(retries + 1, runToken);
@@ -1181,7 +1299,7 @@
         return;
       }
 
-      sideState.eval = "引擎调用失败：" + detail;
+      sideState.status = "暂不可用";
       renderAiVsAiPanel();
       logger.error("ai-vs-ai.request.failed", { detail: detail });
     }
@@ -1805,6 +1923,9 @@
 
     if (state.gameOver) {
       voiceManager.speak(state.gameResultText, { force: true });
+      insightRequestId += 1;
+      insightState = { fen: toFen(), status: "棋局已结束", payload: null };
+      renderAllInsights();
     }
 
     state.lastMove = {
@@ -1836,6 +1957,19 @@
     saveLearningSession(false, null, sessionInitialFen);
 
     renderBoard();
+    if (!state.gameOver && (state.mode === "human_ai" || state.mode === "ai_ai")) {
+      setInsightPending(toFen(), "正在评估");
+    }
+    if (state.mode === "human_ai") {
+      state.humanAi.status = state.gameOver ? state.gameResultText : (state.turn === resolvePlayerColorCode() ? "轮到你" : "AI 即将走棋");
+      renderHumanAiPanel();
+    } else if (state.mode === "ai_ai") {
+      var nextAi = state.turn === "w" ? state.aiVsAi.white : state.aiVsAi.black;
+      var waitingAi = state.turn === "w" ? state.aiVsAi.black : state.aiVsAi.white;
+      nextAi.status = state.gameOver ? state.gameResultText : (state.autoplay ? "即将走棋" : "已暂停");
+      waitingAi.status = state.gameOver ? state.gameResultText : "等待对方走棋";
+      renderAiVsAiPanel();
+    }
     soundManager.playMove(state.lastMove);
     // Per-move voice narration removed — was too disruptive across manual/human-vs-AI/AI-vs-AI modes.
     logger.info("game", "move.done", {
@@ -1853,6 +1987,8 @@
 
     if (state.mode === "human_ai" && !state.gameOver && state.turn !== resolvePlayerColorCode()) {
       window.setTimeout(requestHumanAiTurn, 120);
+    } else if (state.mode === "human_ai" && !state.gameOver) {
+      window.setTimeout(function () { requestPositionInsight(getHumanAiEngineSettings(), "human_ai"); }, 120);
     }
     if (state.mode === "ai_ai" && state.autoplay && !state.gameOver) {
       var token = state.aiVsAiToken;
@@ -1936,13 +2072,22 @@
       stopAiVsAiPlayback();
     }
     resetEngineState();
+    setInsightPending(toFen(), "走棋后分析");
+    ensureAiMockData();
+    if (state.mode === "human_ai") state.humanAi.status = state.turn === resolvePlayerColorCode() ? "轮到你" : "AI 即将走棋";
+    if (state.mode === "ai_ai") {
+      state.aiVsAi.black.status = "等待开始";
+      state.aiVsAi.white.status = "等待开始";
+      renderAiVsAiPanel();
+    }
     elNotationList.innerHTML = "";
     renderBoard();
     if (state.mode === "human_ai") {
-      ensureAiMockData();
       renderHumanAiPanel();
       if (state.turn !== resolvePlayerColorCode()) {
         window.setTimeout(requestHumanAiTurn, 150);
+      } else {
+        requestPositionInsight(getHumanAiEngineSettings(), "human_ai");
       }
     }
     voiceManager.onReset();
@@ -1962,6 +2107,11 @@
       elNotationList.removeChild(elNotationList.lastElementChild);
     }
     renderBoard();
+    if (state.mode === "human_ai") {
+      state.humanAi.status = state.gameOver ? state.gameResultText : (state.turn === resolvePlayerColorCode() ? "轮到你" : "AI 即将走棋");
+      renderHumanAiPanel();
+      if (!state.gameOver && state.turn === resolvePlayerColorCode()) requestPositionInsight(getHumanAiEngineSettings(), "human_ai");
+    }
     voiceManager.onUndo();
     if (practiceActivityId) saveLearningSession(false);
     logger.info("game", "undo.done", { notation: last.notation });
@@ -2072,9 +2222,12 @@
     setAiVsAiView(mode === "ai_ai");
     if (mode === "human_ai") {
       ensureAiMockData();
+      state.humanAi.status = state.gameOver ? state.gameResultText : (state.turn === resolvePlayerColorCode() ? "轮到你" : "AI 即将走棋");
       renderHumanAiPanel();
       if (state.turn !== resolvePlayerColorCode()) {
         window.setTimeout(requestHumanAiTurn, 150);
+      } else {
+        requestPositionInsight(getHumanAiEngineSettings(), "human_ai");
       }
     }
     if (mode === "ai_ai") {
@@ -2082,11 +2235,10 @@
       state.aiVsAiSessionStarted = false;
       ensureAiMockData();
       syncAiVsAiPresetsFromUI();
-      state.aiVsAi.white.level = getAiVsAiSettingsForSide("w").levelText;
-      state.aiVsAi.black.level = getAiVsAiSettingsForSide("b").levelText;
-      state.aiVsAi.white.eval = "等待开始 AI 对弈...";
-      state.aiVsAi.black.eval = "等待开始 AI 对弈...";
+      state.aiVsAi.white.status = "等待开始";
+      state.aiVsAi.black.status = "等待开始";
       renderAiVsAiPanel();
+      setInsightPending(toFen(), "开始后分析");
     }
     logger.info("mode", "game-mode.changed", { mode: mode });
   }
@@ -2116,7 +2268,7 @@
         if (state.turn !== resolvePlayerColorCode()) {
           requestHumanAiTurn();
         } else {
-          updateAiMockTick();
+          state.humanAi.status = "等待你的走棋";
           renderHumanAiPanel();
         }
       }
@@ -2202,9 +2354,27 @@
       if (humanPreset) {
         humanPreset.addEventListener("change", function () {
           ensureAiMockData();
-          state.humanAi.preset = humanPreset.value || "master";
-          state.humanAi.level = getHumanAiEngineSettings().levelText;
+          state.humanAi.preset = humanPreset.value || "intermediate";
+          var card = humanAiPanel.querySelector(".engine-card");
+          syncCustomLevelControl(card, "human");
+          state.humanAi.level = state.humanAi.preset === "settings"
+            ? window.ChessEngineSettings.levels[window.ChessEngineSettings.read().human.level][0]
+            : getPresetLabel(state.humanAi.preset);
           renderHumanAiPanel();
+          refreshCurrentPositionInsight();
+        });
+      }
+      var humanCard = humanAiPanel.querySelector(".engine-card");
+      var humanSlider = humanAiPanel.querySelector('[data-role="custom-level"]');
+      if (humanSlider) {
+        humanSlider.addEventListener("input", function () {
+          var level = Number(humanSlider.value);
+          humanAiPanel.querySelector('[data-role="custom-level-value"]').textContent = window.ChessEngineSettings.levels[level][0];
+        });
+        humanSlider.addEventListener("change", function () {
+          saveCustomLevel(humanCard, "human");
+          state.humanAi.level = window.ChessEngineSettings.levels[Number(humanSlider.value)][0];
+          refreshCurrentPositionInsight();
         });
       }
     }
@@ -2216,9 +2386,24 @@
         if (preset) {
           preset.addEventListener("change", function () {
             syncAiVsAiPresetsFromUI();
-            state.aiVsAi.black.level = getAiVsAiSettingsForSide("b").levelText;
-            state.aiVsAi.white.level = getAiVsAiSettingsForSide("w").levelText;
+            syncCustomLevelControl(cards[0], "black");
+            syncCustomLevelControl(cards[1], "white");
+            state.aiVsAi.black.level = getPresetLabel(state.aiVsAi.black.preset);
+            state.aiVsAi.white.level = getPresetLabel(state.aiVsAi.white.preset);
             renderAiVsAiPanel();
+            refreshCurrentPositionInsight();
+          });
+        }
+        var side = card.dataset.engineRole;
+        var slider = card.querySelector('[data-role="custom-level"]');
+        if (slider) {
+          slider.addEventListener("input", function () {
+            var level = Number(slider.value);
+            card.querySelector('[data-role="custom-level-value"]').textContent = window.ChessEngineSettings.levels[level][0];
+          });
+          slider.addEventListener("change", function () {
+            saveCustomLevel(card, side);
+            refreshCurrentPositionInsight();
           });
         }
       });
@@ -2227,16 +2412,7 @@
 
   function init() {
     if (window.ChessEngineSettings) {
-      document.querySelectorAll('[data-role="preset"]').forEach(function (select) {
-        var option = document.createElement('option'); option.value = 'settings'; option.textContent = '使用引擎设置';
-        select.prepend(option); select.value = 'settings';
-      });
       ensureAiMockData();
-      state.humanAi.preset = 'settings'; state.aiVsAi.black.preset = 'settings'; state.aiVsAi.white.preset = 'settings';
-      document.querySelectorAll('[data-role="settings"]').forEach(function (container) {
-        container.replaceChildren();
-        var link = document.createElement('a'); link.href = '../settings/engine.html'; link.textContent = 'AI引擎设置'; container.appendChild(link);
-      });
     }
     loadDisplaySettings();
     applyBoardThemeVariables();

@@ -9,11 +9,11 @@
     ['大师', 17, 20, 2500, 2200, 256], ['国际大师', 19, 22, 3000, 2300, 256],
     ['特级大师', 20, 25, 3000, 2400, 512]
   ];
-  var presetLevels = { beginner: 2, intermediate: 4, advanced: 5, expert: 7, master: 10 };
+  var presetLevels = { beginner: 0, intermediate: 2, advanced: 4, expert: 7, master: 10 };
   function defaults() {
     var data = { version: 1 };
     ['human', 'black', 'white'].forEach(function (side) {
-      data[side] = { level: 10, profile: '自动', limitStrength: false, multiPv: 1, moveOverhead: 10, minThinkTime: 20, showWdl: false };
+      data[side] = { level: 2, profile: '自动', limitStrength: true, multiPv: 1, moveOverhead: 10, minThinkTime: 20, showWdl: false };
     });
     return data;
   }
@@ -58,7 +58,7 @@
     };
   }
   function commands(settings) {
-    var config = Object.assign({ hashMb: 16, skillLevel: 20, multiPv: 1, limitStrength: false, elo: 2400, moveOverhead: 10, showWdl: false }, settings);
+    var config = Object.assign({ hashMb: 16, skillLevel: 20, multiPv: 1, limitStrength: true, elo: 2400, moveOverhead: 10, showWdl: false }, settings);
     return [
       'setoption name Hash value ' + config.hashMb,
       'setoption name Skill Level value ' + config.skillLevel,
