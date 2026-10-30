@@ -113,6 +113,14 @@ for (const [category, title] of [['endgame', '残局基因 (endgame)'], ['tactic
         categoryNode.children.push(node(settings.sub_categories?.[sub]?.name_cn || sub, leaves(path.join(metaFolder, categoryId, sub), true)));
       }
     }
+    for (const eco of dirs(folder).filter(name => /^[A-E]\d{2}$/.test(name)).sort(natural)) {
+      const ecoNode = node(eco);
+      root.children.push(ecoNode);
+      for (const level of ['L1', 'L2', 'L3']) {
+        const items = leaves(path.join(folder, eco, level));
+        if (items.length) ecoNode.children.push(node(({ L1: 'L1 入门', L2: 'L2 基础', L3: 'L3 进阶' })[level], items));
+      }
+    }
   }
 }
 const records = [];
@@ -148,6 +156,9 @@ for (const category of ['endgame', 'mate', 'tactics', 'opening', 'comprehensive'
     }
     for (const group of dirs(path.join(folder, 'meta_gene'))) {
       for (const sub of dirs(path.join(folder, 'meta_gene', group))) scanRecords(path.join(folder, 'meta_gene', group, sub), category, group + '.' + sub);
+    }
+    for (const eco of dirs(folder).filter(name => /^[A-E]\d{2}$/.test(name))) {
+      for (const level of ['L1', 'L2', 'L3']) scanRecords(path.join(folder, eco, level), category, eco, level);
     }
   }
 }

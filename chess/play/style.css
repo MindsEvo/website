@@ -287,6 +287,12 @@ body {
 .bank-review-status { min-height: 18px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
 .bank-review-explanation { white-space: pre-wrap; overflow-wrap: anywhere; color: #334155; font-size: 13px; line-height: 1.65; }
 .bank-review-edit-link { justify-self: start; }
+.root-gene-final-editor { display: grid; gap: 8px; padding: 12px; border: 1px solid #c9d8e5; background: #f7fafc; }
+.root-gene-final-editor h3 { margin: 0; font-size: 14px; }
+.root-gene-final-editor label { color: var(--muted); font-size: 12px; font-weight: 700; }
+.root-gene-final-editor textarea { width: 100%; resize: vertical; border: 1px solid var(--line); border-radius: 4px; padding: 8px; color: var(--text); font: 12px/1.5 Consolas, monospace; }
+.root-gene-final-editor button { justify-self: start; border: 1px solid #90b4a9; border-radius: 4px; padding: 7px 10px; background: #fff; color: #176b58; font: inherit; font-size: 12px; cursor: pointer; }
+.root-gene-final-editor p { min-height: 18px; margin: 0; color: var(--muted); font-size: 12px; }
 
 .hidden {
   display: none !important;

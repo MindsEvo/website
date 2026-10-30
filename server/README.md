@@ -16,6 +16,9 @@ This is a local-only server used to collect raw game attempts and verify report 
 - History recommendation endpoint: `GET /api/v1/history/recommend`
 - Radar record ingest endpoint: `POST /api/v1/radar/records`
 - Radar matrix read endpoint: `GET /api/v1/radar/matrix`
+- Fixed chess root-gene save endpoint: `POST /api/v1/chess/root-gene/save`
+- Fixed chess root-gene finalization endpoint: `POST /api/v1/chess/root-gene/formalize`
+- Root-gene service health endpoint: `GET /api/v1/chess/root-gene/health`
 - Health endpoint: `GET /health`
 
 ## Run locally
@@ -31,6 +34,12 @@ This is a local-only server used to collect raw game attempts and verify report 
 3. Default server URL:
 
    http://localhost:8787
+
+The root-gene writer resolves `web/chess` relative to this server (`../../chess`
+from `src/`). It writes academy-native manifests and `.anno.json`, `.solution.txt`,
+and `.exp.txt` files under the matching course directory. The browser never
+chooses a folder or sends an arbitrary filesystem path. Start this server before
+using “存储到题库”.
 
 ## Example payload
 

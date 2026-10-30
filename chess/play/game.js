@@ -849,6 +849,20 @@
     request.loaded = true;
   });
 
+  window.addEventListener("chess-root-gene-export-game", function (event) {
+    var request = event.detail || {};
+    if (!selectedBankPosition || request.questionId !== selectedBankQuestionId) return;
+    request.startingTurn = selectedBankPosition.turn;
+    request.moves = state.moveHistory.map(function (entry) {
+      var move = entry.move || {};
+      var token = toCellName(move.fromRow, move.fromCol) + toCellName(move.toRow, move.toCol);
+      if (move.promotionKind) token += String(move.promotionKind).toLowerCase();
+      return token;
+    });
+    request.gameOver = state.gameOver;
+    request.result = state.gameResultText;
+  });
+
   function resetEngineState() {
     state.board = selectedBankPosition ? selectedBankPosition.board.map(function (rank) { return rank.slice(); }) : createInitialBoard();
     state.turn = selectedBankPosition ? selectedBankPosition.turn : "w";

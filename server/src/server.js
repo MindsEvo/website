@@ -8,6 +8,7 @@ const RadarReader = require("./radarReaderHost");
 const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
 const { analyzePosition, getEnginePath } = require("./stockfishService");
 const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("./stockfishDuelService");
+const RootGeneService = require("./rootGeneService");
 
 const app = express();
 const db = getDb();
@@ -17,6 +18,34 @@ app.use(express.json({ limit: "1mb" }));
 
 app.get("/health", (req, res) => {
   res.json({ ok: true, service: "mindsevo-report-server", dbPath: DB_PATH });
+});
+
+app.get("/api/v1/chess/root-gene/health", async (req, res) => {
+  return res.json(await RootGeneService.getRootStatus());
+});
+
+app.post("/api/v1/chess/root-gene/save", async (req, res) => {
+  try {
+    const result = await RootGeneService.persistQuestion(req.body || {});
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    const status = Number(error && error.status) || (error instanceof SyntaxError ? 400 : 500);
+    return res.status(status).json({ ok: false, error: String(error && error.message ? error.message : error) });
+  }
+});
+
+app.post("/api/v1/chess/root-gene/formalize", async (req, res) => {
+  const body = req.body || {};
+  if (!String(body.solutionText || "").trim() || !String(body.explanation || "").trim()) {
+    return res.status(400).json({ ok: false, error: "正式保存前需要提供解答棋谱和解说。" });
+  }
+  try {
+    const result = await RootGeneService.persistQuestion(body, { allowExisting: true, formal: true });
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    const status = Number(error && error.status) || (error instanceof SyntaxError ? 400 : 500);
+    return res.status(status).json({ ok: false, error: String(error && error.message ? error.message : error) });
+  }
 });
 
 app.get("/api/v1/chess/engine/health", (req, res) => {
