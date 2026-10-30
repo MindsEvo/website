@@ -64,20 +64,21 @@
       <div class="workspace-col" id="manualWorkspace">
         <div class="work-panel">
         <div class="tabs">
-          <button class="tab active" data-target="notations">棋局</button>
-          <button class="tab" data-target="actions">答案</button>
-          <button class="tab" data-target="logs">开始记录</button>
-          <button class="tab action-tab" id="btnSaveNote">保存</button>
+          <button class="tab" type="button" id="btnBackToBankReview" hidden>返回题目回放</button>
+          <button class="tab active" data-target="notations">走子记录</button>
+          <button class="tab" data-target="actions">题目答案</button>
+          <button class="tab" data-target="logs">运行日志</button>
+          <button class="tab action-tab" id="btnSaveNote">保存本局</button>
         </div>
 
         <div class="panel active" id="panel-notations">
-          <div class="placeholder" id="bankSelection">点击答案按钮加载答案内容...</div>
+          <div class="placeholder" id="bankSelection">选择右侧题库，棋局、答案和解说将自动载入...</div>
           <h3>走子记录</h3>
           <ol id="notationList" class="notation-list"></ol>
         </div>
 
         <div class="panel" id="panel-actions">
-          <div id="bankAnswers" class="bank-content">请从题库选择题目...</div>
+          <div id="bankAnswers" class="bank-content">请从题库选择题目；答案会自动载入，可选择解法进行回放。</div>
         </div>
 
         <div class="panel" id="panel-logs">
@@ -87,14 +88,32 @@
       </div>
 
         <div class="inline-actions">
-          <button class="soft-btn" id="btnExplain">解说</button>
-          <button class="soft-btn" id="btnSaveExplain">保存解说</button>
+          <button class="soft-btn" id="btnExplain">播报解说</button>
+          <button class="soft-btn" id="btnSaveExplain">保存笔记</button>
         </div>
 
         <div class="expand-panel" id="expandPanel">
           <div class="expand-placeholder">请选择解说目录或题库题目...</div>
         </div>
       </div>
+
+      <section class="bank-review-panel hidden" id="bankReviewPanel" aria-labelledby="bankReviewTitle">
+        <header class="bank-review-header">
+          <div><h2 id="bankReviewTitle">题目回放与解说</h2><p id="bankReviewLabel">请选择右侧题库棋局</p></div>
+          <button type="button" class="bank-review-commentary" id="btnBankCommentary">播报解说</button>
+        </header>
+        <section class="bank-review-section" aria-labelledby="bankReviewSolutionsTitle">
+          <h3 id="bankReviewSolutionsTitle">题目答案</h3>
+          <div id="bankReviewSolutionChoices" class="bank-review-solutions"></div>
+          <ol id="bankReviewMoves" class="bank-review-moves" aria-label="答案棋谱"></ol>
+          <p id="bankReviewStatus" class="bank-review-status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="bank-review-section" aria-labelledby="bankReviewExplanationTitle">
+          <h3 id="bankReviewExplanationTitle">解说内容</h3>
+          <div id="bankReviewExplanation" class="bank-review-explanation">请选择题目载入解说。</div>
+        </section>
+        <button type="button" class="bank-review-edit-link" id="btnShowAnswerEditor">打开答案编辑工具</button>
+      </section>
 
       <div class="bank-panel">
         <h3>题库练习</h3>

@@ -260,6 +260,34 @@ body {
   gap: 8px;
 }
 
+.bank-review-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: #fbfcfe;
+}
+
+.bank-review-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.bank-review-header h2 { margin: 0; font-size: 18px; }
+.bank-review-header p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+.bank-review-commentary, .bank-review-edit-link { border: 1px solid #b8d7ce; border-radius: 4px; padding: 7px 10px; background: #fff; color: #176b58; font: inherit; font-size: 12px; cursor: pointer; }
+.bank-review-section { min-height: 0; overflow: auto; padding: 10px; border: 1px solid var(--line); background: #fff; }
+.bank-review-section h3 { margin: 0 0 8px; font-size: 14px; }
+.bank-review-solutions { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.bank-review-solution-button { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; background: #fff; color: var(--text); font: inherit; font-size: 12px; cursor: pointer; }
+.bank-review-solution-button[aria-pressed="true"] { border-color: #33806f; background: #e6f3ef; color: #175c4f; font-weight: 700; }
+.bank-review-moves { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 4px 12px; margin: 0; padding: 0; list-style: none; }
+.bank-review-moves li { padding: 4px 6px; color: #42534d; font: 12px/1.5 "Consolas", "SFMono-Regular", monospace; }
+.bank-review-moves li.is-current { background: #e7f2ef; color: #145a4c; font-weight: 700; }
+.bank-review-status { min-height: 18px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+.bank-review-explanation { white-space: pre-wrap; overflow-wrap: anywhere; color: #334155; font-size: 13px; line-height: 1.65; }
+.bank-review-edit-link { justify-self: start; }
+
 .hidden {
   display: none !important;
 }
@@ -395,6 +423,10 @@ body {
 .bank-empty, .bank-status { font-size: 12px; color: #64748b; padding: 5px; }
 .bank-content { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.7; }
 .bank-answer-label { font-weight: 700; margin: 10px 0 4px; }
+.bank-solution { margin: 0 0 12px; }
+.bank-solution-select { margin: 2px 0 6px; border: 1px solid #b8d7ce; border-radius: 4px; padding: 5px 9px; background: #fff; color: #176b58; font: inherit; font-size: 12px; cursor: pointer; }
+.bank-solution-select[aria-pressed="true"] { background: #e6f3ef; font-weight: 700; }
+.bank-solution-text { white-space: pre-wrap; overflow-wrap: anywhere; }
 .bank-user { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; margin-bottom: 8px; }
 .bank-user select { flex: 1; min-width: 90px; max-width: 100%; border: 1px solid #cbd5e1; border-radius: 4px; padding: 5px; background: white; }
 
