@@ -26,37 +26,9 @@
       <div class="status-line" id="turnStatus">当前回合：白方</div>
       <div id="solutionAnnotationPopup" class="solution-annotation-popup hidden" role="status"></div>
 
-      <div class="control-bar">
-        <div class="control-row control-row-top">
-          <button class="ctrl-btn" id="btnReset" title="重置">↺</button>
-          <button class="ctrl-btn" id="btnAuto" title="自动播放">▶</button>
-          <button class="ctrl-btn" id="btnUndo" title="悔棋">↶</button>
-          <button class="ctrl-btn" id="btnNext" title="下一步">→</button>
-          <button class="ctrl-btn" id="btnSound" title="音效开关">🔊</button>
-          <button class="ctrl-btn" id="btnNarration" title="解说开关">🎤</button>
-          <button class="ctrl-btn" id="btnManual" title="手动模式">👥</button>
-          <button class="ctrl-btn" id="btnHumanAi" title="人机模式">👤</button>
-          <button class="ctrl-btn" id="btnAiAi" title="AI对弈">🤖</button>
-          <button class="ctrl-btn" id="btnColor" title="持子颜色">⚪</button>
-
-          <div class="slider-box">
-            <label for="volumeRange">音量:</label>
-            <input type="range" id="volumeRange" min="0" max="100" value="80" />
-            <span class="num" id="volumeValue">80</span>
-          </div>
-
-          <div class="slider-box">
-            <label for="speedRange">速度:</label>
-            <input type="range" id="speedRange" min="1" max="10" value="5" />
-            <span class="num" id="speedValue">5</span>
-          </div>
-        </div>
-
-        <div class="control-row control-row-bottom">
-          <button class="ctrl-btn ctrl-btn-secondary" id="btnHints" title="高亮">✦</button>
-          <button class="ctrl-btn ctrl-btn-secondary" id="btnExportLogs" title="导出日志">🧾</button>
-        </div>
-      </div>
+      <div class="control-bar" data-chess-controls='{"ids":{"reset":"btnReset","play":"btnAuto","previous":"btnUndo","next":"btnNext","sound":"btnSound","narration":"btnNarration","manual":"btnManual","humanAi":"btnHumanAi","aiAi":"btnAiAi","color":"btnColor","hints":"btnHints","logs":"btnExportLogs"}}'></div>
+      <link rel="stylesheet" href="../shared/control-panel.css" />
+      <script src="../shared/control-panel.js"></script>
     </section>
 
     <div class="stage-divider" id="stageDivider" aria-hidden="true"></div>

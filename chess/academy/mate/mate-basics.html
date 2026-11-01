@@ -66,6 +66,12 @@
       min-height: calc(100vh - 52px);
     }
 
+    .layout:has(> .right[hidden]) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .right[hidden] { display: none !important; }
+
     .left,
     .middle,
     .right {
@@ -442,6 +448,7 @@
 
     .explain-btn.speaking { background: var(--blue); color: #fff; }
 
+    .status-box:empty { display: none; }
     .status-box {
       margin: 4px;
       padding: 8px 10px;
@@ -454,9 +461,12 @@
     }
 
     @media (max-width: 1200px) {
-      .layout { grid-template-columns: 1fr; min-height: auto; }
+      .layout,
+      .layout:has(> .right[hidden]) { grid-template-columns: 1fr; min-height: auto; }
     }
   </style>
+  <link rel="stylesheet" href="../../shared/control-panel.css">
+  <link rel="stylesheet" href="../course-controls.css">
 </head>
 <body>
   <main class="page">
@@ -475,17 +485,8 @@
             <div class="files file-bottom" id="fileBottom"></div>
           </div>
         </div>
-        <div class="control-strip">
-          <button class="ctrl-btn" id="btnReset" title="重置到开局">↺</button>
-          <button class="ctrl-btn" id="btnPrev" title="上一步">↩</button>
-          <button class="ctrl-btn" id="btnPlay" title="开始自动播放">▶</button>
-          <button class="ctrl-btn" id="btnNext" title="下一步">→</button>
-          <button class="ctrl-btn active" id="btnSound" title="音效开关">🔊</button>
-          <button class="ctrl-btn active" id="btnVoice" title="语音讲解开关">🎤</button>
-          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span id="volumeValue">80</span></span>
-          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span id="speedValue">5</span></span>
-        </div>
-        <div class="status-box" id="playStatus">请选择右侧的将法类型开始动态观察</div>
+        <div data-chess-controls='{"ids":{"reset":"btnReset","previous":"btnPrev","play":"btnPlay","next":"btnNext","sound":"btnSound","narration":"btnVoice","manual":"btnModeManual","humanAi":"btnModeHumanAi","aiAi":"btnModeAiAi","color":"btnColor"}}'></div>
+        <div class="status-box" id="playStatus"></div>
       </div>
 
       <div class="middle">
@@ -614,8 +615,23 @@
     </section>
   </main>
 
+  <link rel="stylesheet" href="../course-guidance.css">
+  <script src="../course-guidance.js"></script>
+  <script src="../../shared/control-panel.js"></script>
+  <link rel="stylesheet" href="../../shared/academy-duel.css">
+  <script src="../../shared/academy-duel.js"></script>
   <script>
     (function () {
+      var controlPanel = document.querySelector('[data-chess-controls]').chessControlPanel;
+      function bindControl(id, event, handler) {
+        var action = Object.keys(controlPanel.controls).find(function (key) {
+          return controlPanel.controls[key].id === id;
+        });
+        if (!action || event !== (['volume', 'speed'].includes(action) ? 'input' : 'click')) {
+          throw new Error('Unknown chess control binding: ' + id + ':' + event);
+        }
+        controlPanel.bind({ [action]: handler });
+      }
       var PIECE_ASSET = {
         wk: 'wK.svg', wq: 'wQ.svg', wr: 'wR.svg', wb: 'wB.svg', wn: 'wN.svg', wp: 'wP.svg',
         bk: 'bK.svg', bq: 'bQ.svg', br: 'bR.svg', bb: 'bB.svg', bn: 'bN.svg', bp: 'bP.svg'
@@ -960,6 +976,7 @@
 
       // Builds the full timeline of board snapshots + move metadata from a starting FEN + SAN move list.
       function buildTimelineFromFen(fen, moveList) {
+        initialFen = fen;
         var board = parseFen(fen);
         var states = [cloneBoard(board)];
         var moveMetas = [];
@@ -983,6 +1000,7 @@
       }
 
       function renderBoardMatrix(board) {
+        currentTeachingBoard = cloneBoard(board);
         var html = '';
         for (var r = 0; r < 8; r++) {
           for (var c = 0; c < 8; c++) {
@@ -1045,6 +1063,9 @@
       }
 
       // ── App state ─────────────────────────────────────
+      var duelAdapter = null;
+      var initialFen = null;
+      var currentTeachingBoard = null;
       var state = {
         anno: null, annoByIndex: {}, currentPopup: null, explanationCn: '', explanationEn: '', states: [], moveMetas: [],
         ply: -1, playing: false, timer: null, soundOn: true, voiceOn: true
@@ -1074,6 +1095,22 @@
         }
         solutionLines.innerHTML = lines.map(function (t, idx) {
           return '<div class="solution-line" data-line="' + idx + '">' + t + '</div>';
+        }).join('');
+      }
+
+      function renderDuelSolution(snapshot) {
+        var fields = initialFen.trim().split(/\s+/);
+        var firstTurn = Number(fields[5]);
+        var offset = fields[1] === 'b' ? 1 : 0;
+        var lines = [];
+        snapshot.history.forEach(function (san, index) {
+          var turn = firstTurn + Math.floor((index + offset) / 2);
+          if ((index + offset) % 2 === 0) lines.push(turn + '. ' + san);
+          else if (index === 0) lines.push(turn + '... ' + san);
+          else lines[lines.length - 1] += ' ' + san;
+        });
+        solutionLines.innerHTML = lines.map(function (text, index) {
+          return '<div class="solution-line' + (index === lines.length - 1 ? ' current' : '') + '">' + text + '</div>';
         }).join('');
       }
 
@@ -1118,6 +1155,7 @@
       // Not every ply has an annotation (only "key" plies are annotated); un-annotated
       // plies keep the previous popup text but still clear stale highlights/arrows.
       function goToPly(n) {
+        if (duelAdapter) duelAdapter.lessonChanged();
         n = Math.max(-1, Math.min(totalPlies(), n));
         state.ply = n;
         var stateIdx = Math.min(n + 1, state.states.length - 1);
@@ -1251,6 +1289,8 @@
 
       // ── Data loading ──────────────────────────────────
       function loadTacticItem(groupDef, manifest, itemId) {
+        initialFen = null;
+        if (duelAdapter) duelAdapter.lessonChanged();
         stopAutoplay();
         window.speechSynthesis && window.speechSynthesis.cancel();
         var item = findItemById(manifest, itemId);
@@ -1341,6 +1381,8 @@
       }
 
       function loadPracticeItem(groupDef, manifest, itemId) {
+        initialFen = null;
+        if (duelAdapter) duelAdapter.lessonChanged();
         stopAutoplay();
         window.speechSynthesis && window.speechSynthesis.cancel();
         var item = findPracticeItem(manifest, itemId);
@@ -1465,6 +1507,9 @@
       }
 
       function loadQuizItem(groupDef, manifest, itemId) {
+        if (duelAdapter) duelAdapter.lessonChanged();
+        stopAutoplay();
+        if (state.states.length) renderBoardMatrix(state.states[Math.min(state.ply + 1, state.states.length - 1)]);
         var item = findQuizItem(manifest, itemId);
         if (!item) return;
         fetch('./data/' + groupDef.folder + '/' + itemId + '.json')
@@ -1549,24 +1594,24 @@
       window.addEventListener('chesslanguagechange', updateQuizLanguage);
       window.addEventListener('chesslanguagechange', refreshAnnotationLanguage);
 
-      btnReset.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
-      btnPrev.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply - 1); });
-      btnNext.addEventListener('click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply + 1); });
-      btnPlay.addEventListener('click', function () {
+      bindControl('btnReset', 'click', function () { stopAutoplay(); if (state.anno) goToPly(-1); });
+      bindControl('btnPrev', 'click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply - 1); });
+      bindControl('btnNext', 'click', function () { stopAutoplay(); if (state.anno) goToPly(state.ply + 1); });
+      bindControl('btnPlay', 'click', function () {
         if (!state.anno) return;
         if (state.playing) stopAutoplay(); else startAutoplay();
       });
-      btnSound.addEventListener('click', function () {
+      bindControl('btnSound', 'click', function () {
         state.soundOn = !state.soundOn;
-        btnSound.classList.toggle('active', state.soundOn);
+        controlPanel.setState({ sound: state.soundOn });
       });
-      btnVoice.addEventListener('click', function () {
+      bindControl('btnVoice', 'click', function () {
         state.voiceOn = !state.voiceOn;
-        btnVoice.classList.toggle('active', state.voiceOn);
+        controlPanel.setState({ narration: state.voiceOn });
         if (!state.voiceOn && window.speechSynthesis) window.speechSynthesis.cancel();
       });
-      volumeRange.addEventListener('input', function () { volumeValue.textContent = volumeRange.value; });
-      speedRange.addEventListener('input', function () { speedValue.textContent = speedRange.value; });
+      bindControl('volumeRange', 'input', function () { volumeValue.textContent = volumeRange.value; });
+      bindControl('speedRange', 'input', function () { speedValue.textContent = speedRange.value; });
 
       btnExplainVoice.addEventListener('click', function () {
         if (!window.speechSynthesis) return;
@@ -1575,7 +1620,7 @@
           btnExplainVoice.classList.remove('speaking');
           return;
         }
-        var text = explanationText.textContent.trim();
+        var text = explanationText.textContent.split(/#\s*END\b/i)[0].trim();
         if (!text) return;
         window.speechSynthesis.cancel();
         var ut = new SpeechSynthesisUtterance(text);
@@ -1596,6 +1641,28 @@
       }
 
       renderBoardMatrix(parseFen('8/8/8/8/8/8/8/8 w - - 0 1'));
+      window.ChessAcademyDuel.attach({
+        panel: controlPanel, board: boardEl,
+        getLessonPosition: function () {
+          if (!initialFen || !currentTeachingBoard) return null;
+          return { fen: initialFen, moves: state.moveMetas.slice(0, Math.max(0, Math.min(state.moveMetas.length, state.ply + 1))).map(function (move) { return move.san; }) };
+        },
+        stopLesson: stopAutoplay,
+        renderPosition: function (board, snapshot) {
+          renderBoardMatrix(board);
+          clearOverlays();
+          showPopup(null);
+          renderDuelSolution(snapshot);
+        },
+        status: function (text) { playStatus.textContent = text; },
+        onMove: function (snapshot, settings) {
+          var san = snapshot.history[snapshot.history.length - 1];
+          if (settings.sound) playSound(snapshot.result ? 'gameEnd' : snapshot.check ? 'check' : san.indexOf('x') !== -1 ? 'capture' : 'move');
+          if (settings.narration && settings.resultText) speak(settings.resultText);
+        },
+        resetLesson: function () { renderSolutionLines(); if (state.anno) goToPly(-1); else if (initialFen) renderBoardMatrix(parseFen(initialFen)); },
+        resumeLesson: function () { renderSolutionLines(); if (state.anno) { goToPly(-1); startAutoplay(); } else if (initialFen) renderBoardMatrix(parseFen(initialFen)); }
+      }).then(function (adapter) { duelAdapter = adapter; adapter.refresh(); });
     })();
   </script>
 </body>

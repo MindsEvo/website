@@ -1,0 +1,13 @@
+.course-guidance-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.course-guidance-actions { display: flex; gap: 5px; flex-wrap: wrap; }
+.course-guidance-actions button, .course-guidance-dialog button { border: 0; border-radius: 4px; padding: 7px 10px; color: #fff; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.course-guidance-tips { background: #e49400; }
+.course-guidance-student { background: #2276db; }
+.course-guidance-parent { background: #21a55c; }
+.course-guidance-dialog { width: min(620px, calc(100% - 24px)); max-height: calc(100dvh - 32px); overflow: auto; padding: 20px; border: 1px solid #d8e0e8; border-radius: 8px; color: #24374a; background: #fff; font-size: 14px; line-height: 1.8; }
+.course-guidance-dialog::backdrop { background: #0006; }
+.course-guidance-dialog h2 { margin: 0; font-size: 18px; }
+.course-guidance-dialog ol { padding-left: 24px; }
+.course-guidance-dialog li { margin-bottom: 6px; }
+.course-guidance-dialog form { text-align: right; }
+.course-guidance-dialog button { background: #2276db; }

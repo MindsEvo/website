@@ -1309,7 +1309,6 @@
     ,'题库原件不会被浏览器草稿直接覆盖。': 'Browser drafts never overwrite original puzzle data.'
     ,'请选择右侧的棋子类型开始动态观察': 'Select a piece type on the right to explore endgames'
     ,'请选择右侧的战术组开始动态观察': 'Select a tactics group on the right to explore'
-    ,'请选择右侧的将法类型开始动态观察': 'Select a checkmate pattern on the right to explore'
     ,'请选择右侧的元思维类别开始动态观察': 'Select an opening-principle category on the right to explore'
     ,'请选择问题开始答题': 'Select a question to begin the quiz'
     ,'请选择残局以显示棋谱': 'Select an endgame to show its game line'

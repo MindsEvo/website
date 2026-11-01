@@ -2576,6 +2576,12 @@
 
   function bindIf(el, event, handler) {
     if (el) {
+      var host = el.closest('[data-chess-controls]');
+      if (host && host.chessControlPanel) {
+        var controls = host.chessControlPanel.controls;
+        var action = Object.keys(controls).find(function (name) { return controls[name] === el; });
+        if (action) { host.chessControlPanel.bind({ [action]: handler }); return; }
+      }
       el.addEventListener(event, handler);
     }
   }
@@ -2663,6 +2669,8 @@
       stopAiVsAiPlayback();
     }
     state.mode = mode;
+    var controlPanel = document.querySelector('[data-chess-controls]').chessControlPanel;
+    controlPanel.setState({ manual: mode === 'manual', humanAi: mode === 'human_ai', aiAi: mode === 'ai_ai' });
     if (btnManual) btnManual.style.background = mode === "manual" ? "#e8f0ff" : "#ffffff";
     if (btnHumanAi) btnHumanAi.style.background = mode === "human_ai" ? "#e8f0ff" : "#ffffff";
     if (btnAiAi) btnAiAi.style.background = mode === "ai_ai" ? "#e8f0ff" : "#ffffff";
@@ -2880,11 +2888,13 @@
     });
     bindIf(btnSound, "click", function () {
       state.muted = !state.muted;
+      document.querySelector('[data-chess-controls]').chessControlPanel.setState({ sound: !state.muted });
       btnSound.textContent = state.muted ? "🔇" : "🔊";
       logger.info("audio", "sound.toggled", { muted: state.muted });
     });
     bindIf(btnNarration, "click", function () {
       state.narrationOn = !state.narrationOn;
+      document.querySelector('[data-chess-controls]').chessControlPanel.setState({ narration: state.narrationOn });
       btnNarration.textContent = state.narrationOn ? "🎤" : "⏸";
       if (!state.narrationOn) {
         voiceManager.stop();

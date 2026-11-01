@@ -1,0 +1,6 @@
+.chess-control-panel .chess-controls-row { gap: 3px; }
+.chess-control-panel .ctrl-btn { flex-basis: 26px; width: 26px; height: 30px; }
+.chess-control-panel input[type="range"] { width: 76.8px; }
+@container chess-controls (max-width: 560px) {
+  .chess-control-panel input[type="range"] { width: 57.6px; }
+}

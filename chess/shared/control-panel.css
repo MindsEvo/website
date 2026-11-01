@@ -1,0 +1,19 @@
+.chess-control-panel { display: block; width: 100%; min-width: 0; margin-top: 10px; padding: 4px 2px; box-sizing: border-box; container-type: inline-size; container-name: chess-controls; }
+.chess-control-panel .chess-controls-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; }
+.chess-control-panel .ctrl-btn { flex: 0 0 32px; width: 32px; height: 32px; padding: 0; border: 1px solid #d8e0e8; border-radius: 4px; background: #fff; color: #24374a; font-size: 14px; cursor: pointer; }
+.chess-control-panel .ctrl-btn.active { background: #e8f0ff; border-color: #b9cbea; }
+.chess-control-panel .ctrl-btn:focus-visible { outline: 2px solid #3498db; outline-offset: 2px; }
+.chess-control-panel .ctrl-btn:disabled { opacity: .5; cursor: not-allowed; }
+.chess-control-panel [hidden] { display: none !important; }
+.chess-control-panel .chess-control-slider { display: inline-flex; align-items: center; gap: 3px; margin: 0; color: #24374a; font-size: 12px; white-space: nowrap; }
+.chess-control-panel .chess-control-sliders { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 0; max-width: 100%; }
+.chess-control-panel input[type="range"] { width: 96px; min-width: 0; margin: 0; }
+.chess-control-panel .num { display: none; }
+@container chess-controls (max-width: 560px) {
+	.chess-control-panel .chess-controls-row { gap: 3px; }
+	.chess-control-panel .ctrl-btn { flex-basis: 26px; width: 26px; height: 30px; }
+	.chess-control-panel input[type="range"] { width: 72px; }
+}
+@container chess-controls (max-width: 380px) {
+	.chess-control-panel .chess-control-sliders { flex: 0 1 auto; }
+}

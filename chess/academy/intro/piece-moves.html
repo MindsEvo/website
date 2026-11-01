@@ -78,7 +78,7 @@
       padding: 4px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
 
     .board-wrap {
@@ -708,6 +708,7 @@
       .sub-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
   </style>
+  <link rel="stylesheet" href="../../shared/control-panel.css">
 </head>
 <body>
   <main class="page">
@@ -726,23 +727,7 @@
             <div class="files file-bottom" id="fileBottom"></div>
           </div>
         </div>
-        <div class="control-strip">
-          <button class="ctrl-btn">↺</button><button class="ctrl-btn">▶</button><button class="ctrl-btn">↩</button><button class="ctrl-btn">→</button>
-          <button class="ctrl-btn">🔊</button><button class="ctrl-btn">🎤</button>
-          <button class="ctrl-btn active" id="btnModeManual" title="手动模式：两人轮流点击操作">👥</button>
-          <button class="ctrl-btn" id="btnModeHumanAi" title="人机模式：你执白，AI执黑自动应对">👤</button>
-          <button class="ctrl-btn" id="btnModeAiAi" title="AI对弈：双方由AI自动对局，可暂停/继续">🤖</button>
-          <button class="ctrl-btn">◔</button>
-          <span class="meta">音量:<input type="range" id="volumeRange" min="0" max="100" value="80"><span class="meta-box" id="volumeValue">80</span></span>
-          <span class="meta">速度:<input type="range" id="speedRange" min="1" max="10" value="5"><span class="meta-box" id="speedValue">5</span></span>
-          <span class="meta">AI预设:<select class="ai-preset-select" id="aiPresetSelect" title="仅在对弈练习中生效">
-            <option value="beginner">初学</option>
-            <option value="intermediate">中级</option>
-            <option value="advanced">高级</option>
-            <option value="expert">专家</option>
-            <option value="master" selected>大师</option>
-          </select></span>
-        </div>
+        <div data-chess-controls='{"ids":{"reset":"btnReset","play":"btnPlay","previous":"btnPrev","next":"btnNext","sound":"btnSound","narration":"btnVoice","manual":"btnModeManual","humanAi":"btnModeHumanAi","aiAi":"btnModeAiAi","color":"btnColor"}}'></div>
       </section>
 
       <section class="right">
@@ -1007,10 +992,21 @@
     </div>
   </main>
 
+  <script src="../../shared/control-panel.js"></script>
   <script src="../../settings/engine-settings.js"></script>
   <script src="../../play/tablebase.js"></script>
   <script>
     (function () {
+      var controlPanel = document.querySelector('[data-chess-controls]').chessControlPanel;
+      function bindControl(id, event, handler) {
+        var action = Object.keys(controlPanel.controls).find(function (key) {
+          return controlPanel.controls[key].id === id;
+        });
+        if (!action || event !== (['volume', 'speed'].includes(action) ? 'input' : 'click')) {
+          throw new Error('Unknown chess control binding: ' + id + ':' + event);
+        }
+        controlPanel.bind({ [action]: handler });
+      }
       var DISPLAY_SETTINGS_KEY = 'cognichess:display-settings';
       var PIECE_ASSET = {
         wk: 'wK.svg', wq: 'wQ.svg', wr: 'wR.svg', wb: 'wB.svg', wn: 'wN.svg', wp: 'wP.svg',
@@ -1126,12 +1122,16 @@
       var currentPracticePiece = null; // kept for clearScope compat
       var practiceState = { armed: false, kind: null, btn: null, scenario: null, selectedPiece: null, legalTargets: [], pieceRow: -1, pieceCol: -1, targets: [], found: [], turn: 'w', castlingRights: null, enPassantTarget: null, gameMode: 'manual', aiAutoplay: false, aiTimer: null, aiRequestId: 0, aiPreset: 'master', halfmoveClock: 0, positionCounts: {} };
       var savedPracticeBoard = null;
+      var soundEnabled = true;
+      var voiceEnabled = true;
+      var aiMovePending = false;
 
       var currentQuizTopic = null;
       var currentQuizIndex = null;
 
       var captureSound = new Audio('../../play/assets/sounds/capture.wav');
       function playCaptureSound() {
+        if (!soundEnabled) return;
         try {
           var s = captureSound.cloneNode();
           s.volume = 0.8;
@@ -1151,6 +1151,7 @@
       }
 
       function speak(text) {
+        if (!voiceEnabled) return;
         if (!window.speechSynthesis || !text) return;
         try {
           window.speechSynthesis.cancel();
@@ -1203,6 +1204,7 @@
           }
         }
         boardEl.innerHTML = html;
+        if (demoState && practiceState) updateGameModeButtons();
       }
 
       // --- KING AUTO-DEMO STATE ---
@@ -1223,6 +1225,7 @@
           renderBoard();
         }
         cancelPractice();
+        if (demoState && practiceState) updateGameModeButtons();
       }
 
       function demoSchedule(fn, delay) {
@@ -1230,6 +1233,7 @@
         var t = window.setTimeout(function () {
           if (!demoState.active) return;
           fn();
+          updateGameModeButtons();
         }, delay);
         demoState.timers.push(t);
       }
@@ -2663,6 +2667,7 @@
       // Checkmate/stalemate end-of-game visuals + sound — system-wide, used by ANY piece's -game- practice.
       var gameEndSound = new Audio('../../play/assets/sounds/game_over.wav');
       function playGameEndSound() {
+        if (!soundEnabled) return;
         try {
           var s = gameEndSound.cloneNode();
           s.volume = 0.8;
@@ -3096,7 +3101,7 @@
 
       async function requestStockfishMove() {
         var role = practiceState.gameMode === 'human_ai' ? 'human' : (practiceState.turn === 'w' ? 'white' : 'black');
-        var config = window.ChessEngineSettings ? window.ChessEngineSettings.resolve(role, practiceState.aiPreset) : getAiPresetConfig(practiceState.aiPreset);
+        var config = getAiPresetConfig('master');
         var fen = buildFen();
         var payload = window.ChessTablebase ? await window.ChessTablebase.probe(fen) : null;
         if (!payload) payload = await analyzeWithLocalEngine(Object.assign({}, config, {
@@ -3118,30 +3123,39 @@
       }
 
       async function performAiMove() {
-        if (!practiceState.armed) return;
+        if (!practiceState.armed || aiMovePending || promoResolve) return;
+        aiMovePending = true;
+        clearAiTimer();
+        updateGameModeButtons();
         var color = practiceState.turn;
         var runId = ++practiceState.aiRequestId;
         if (practiceStatus) practiceStatus.textContent = 'AI（Stockfish）正在思考最佳走法…';
 
-        var mv = null;
         try {
-          mv = await requestStockfishMove();
-        } catch (e) {
-          mv = null;
+          var mv = null;
+          try {
+            mv = await requestStockfishMove();
+          } catch (e) {
+            mv = null;
+          }
+
+          // Ignore stale responses if the scenario/mode/turn changed while we were waiting.
+          if (runId !== practiceState.aiRequestId || !practiceState.armed || practiceState.turn !== color) return;
+
+          if (mv) {
+            executeMove(mv.fromR, mv.fromC, mv.toR, mv.toC, true, mv.promotionKind);
+            return;
+          }
+
+          // Fallback: local engine server unreachable — use the built-in heuristic so practice still works.
+          var fallback = pickAiMove(color);
+          if (!fallback) return; // no legal move — finishGameMove should already have ended the game
+          executeMove(fallback.fromR, fallback.fromC, fallback.toR, fallback.toC, true);
+        } finally {
+          aiMovePending = false;
+          updateGameModeButtons();
+          if (runId !== practiceState.aiRequestId && !practiceState.aiTimer) maybeScheduleAiMove();
         }
-
-        // Ignore stale responses if the scenario/mode/turn changed while we were waiting.
-        if (runId !== practiceState.aiRequestId || !practiceState.armed || practiceState.turn !== color) return;
-
-        if (mv) {
-          executeMove(mv.fromR, mv.fromC, mv.toR, mv.toC, true, mv.promotionKind);
-          return;
-        }
-
-        // Fallback: local engine server unreachable — use the built-in heuristic so practice still works.
-        var fallback = pickAiMove(color);
-        if (!fallback) return; // no legal move — finishGameMove should already have ended the game
-        executeMove(fallback.fromR, fallback.fromC, fallback.toR, fallback.toC, true);
       }
 
       function scheduleAiMove(delay) {
@@ -3162,21 +3176,39 @@
       }
 
       function updateGameModeButtons() {
-        [btnModeManual, btnModeHumanAi, btnModeAiAi].forEach(function(b) { if (b) b.classList.remove('active'); });
-        var map = { manual: btnModeManual, human_ai: btnModeHumanAi, ai_ai: btnModeAiAi };
-        var current = map[practiceState.gameMode];
-        if (current) current.classList.add('active');
+        if (!practiceState || !demoState) return;
+        var isGame = !!(practiceState.armed && practiceState.scenario && practiceState.scenario.indexOf('-game-') !== -1);
+        var isDemo = demoState.active;
+        var canPlay = isGame && practiceState.gameMode === 'ai_ai';
+        var canStep = isGame && !aiMovePending && !promoResolve &&
+          (practiceState.gameMode === 'manual' || (practiceState.gameMode === 'ai_ai' && !practiceState.aiAutoplay));
+        controlPanel.setState({
+          manual: practiceState.gameMode === 'manual',
+          humanAi: practiceState.gameMode === 'human_ai',
+          aiAi: practiceState.gameMode === 'ai_ai',
+          play: !!(canPlay && practiceState.aiAutoplay),
+          sound: soundEnabled,
+          narration: voiceEnabled
+        });
+        controlPanel.setState({
+          reset: { disabled: !isDemo && !(practiceState.scenario && PRAC_SCENARIOS && PRAC_SCENARIOS[practiceState.scenario]) },
+          manual: { disabled: !isGame },
+          humanAi: { disabled: !isGame },
+          aiAi: { disabled: !isGame },
+          play: { disabled: !isDemo && !canPlay },
+          next: { disabled: !canStep },
+          previous: { disabled: true },
+          color: { disabled: true }
+        });
+        controlPanel.controls.play.title = isDemo ? 'Stop demo' :
+          (canPlay ? (practiceState.aiAutoplay ? 'Pause AI autoplay' : 'Resume AI autoplay') : 'Autoplay is only available in an AI-AI game scenario');
+        controlPanel.controls.play.setAttribute('aria-label', controlPanel.controls.play.title);
+        if (isDemo) controlPanel.controls.play.textContent = '\u23f9';
+        controlPanel.controls.previous.title = 'Undo unavailable: no move snapshots';
+        controlPanel.controls.color.title = 'Human plays White; color selection is unavailable';
         if (btnModeAiAi) {
-          if (practiceState.gameMode !== 'ai_ai') {
-            btnModeAiAi.textContent = '🤖';
-            btnModeAiAi.title = 'AI对弈：双方由AI自动对局，可暂停/继续';
-          } else if (practiceState.aiAutoplay) {
-            btnModeAiAi.textContent = '⏸';
-            btnModeAiAi.title = '暂停对弈';
-          } else {
-            btnModeAiAi.textContent = '▶';
-            btnModeAiAi.title = '继续对弈';
-          }
+          btnModeAiAi.textContent = '\ud83e\udd16';
+          btnModeAiAi.title = 'AI-AI mode';
         }
       }
 
@@ -3184,29 +3216,49 @@
         if (!practiceState.armed) return;
         // These buttons live in the shared control-strip (visible for all practice types), but the
         // manual/human_ai/ai_ai concept only applies to -game- scenarios — no-op otherwise.
-        if (mode !== 'manual' && (!practiceState.scenario || practiceState.scenario.indexOf('-game-') === -1)) return;
-        if (mode === 'ai_ai' && practiceState.gameMode === 'ai_ai') {
-          practiceState.aiAutoplay = !practiceState.aiAutoplay;
-        } else {
-          practiceState.gameMode = mode;
-          practiceState.aiAutoplay = mode === 'ai_ai';
-        }
+        if (!practiceState.scenario || practiceState.scenario.indexOf('-game-') === -1) return;
+        if (practiceState.gameMode === mode) return;
+        practiceState.gameMode = mode;
+        practiceState.aiAutoplay = mode === 'ai_ai';
         clearAiTimer();
         practiceState.aiRequestId++; // invalidate any in-flight Stockfish request from before the switch
         updateGameModeButtons();
         if (practiceState.gameMode !== 'manual') maybeScheduleAiMove();
       }
 
-      if (btnModeManual) btnModeManual.addEventListener('click', function () { setGameMode('manual'); });
-      if (btnModeHumanAi) btnModeHumanAi.addEventListener('click', function () { setGameMode('human_ai'); });
-      if (btnModeAiAi) btnModeAiAi.addEventListener('click', function () { setGameMode('ai_ai'); });
-      if (aiPresetSelect && window.ChessEngineSettings) {
-        var engineSettingsOption = document.createElement('option');
-        engineSettingsOption.value = 'settings'; engineSettingsOption.textContent = '使用引擎设置';
-        aiPresetSelect.prepend(engineSettingsOption); aiPresetSelect.value = 'settings'; practiceState.aiPreset = 'settings';
-      }
-      if (aiPresetSelect) aiPresetSelect.addEventListener('change', function () {
-        practiceState.aiPreset = aiPresetSelect.value || 'master';
+      bindControl('btnModeManual', 'click', function () { setGameMode('manual'); });
+      bindControl('btnModeHumanAi', 'click', function () { setGameMode('human_ai'); });
+      bindControl('btnModeAiAi', 'click', function () { setGameMode('ai_ai'); });
+      bindControl('btnReset', 'click', function () {
+        var key = practiceState.scenario;
+        if (demoState.active) cancelDemo();
+        else if (key && PRAC_SCENARIOS[key]) armPracticeScenario(key);
+      });
+      bindControl('btnPlay', 'click', function () {
+        if (demoState.active) {
+          cancelDemo();
+          if (window.speechSynthesis) window.speechSynthesis.cancel();
+          return;
+        }
+        if (!practiceState.armed || !practiceState.scenario || practiceState.scenario.indexOf('-game-') === -1 || practiceState.gameMode !== 'ai_ai') return;
+        practiceState.aiAutoplay = !practiceState.aiAutoplay;
+        clearAiTimer();
+        practiceState.aiRequestId++;
+        updateGameModeButtons();
+        if (practiceState.aiAutoplay) maybeScheduleAiMove();
+      });
+      bindControl('btnNext', 'click', function () {
+        if (!practiceState.armed || !practiceState.scenario || practiceState.scenario.indexOf('-game-') === -1 || aiMovePending || promoResolve) return;
+        if (practiceState.gameMode === 'manual' || (practiceState.gameMode === 'ai_ai' && !practiceState.aiAutoplay)) performAiMove();
+      });
+      bindControl('btnSound', 'click', function () {
+        soundEnabled = !soundEnabled;
+        updateGameModeButtons();
+      });
+      bindControl('btnVoice', 'click', function () {
+        voiceEnabled = !voiceEnabled;
+        if (!voiceEnabled && window.speechSynthesis) window.speechSynthesis.cancel();
+        updateGameModeButtons();
       });
 
       // Shared end-of-turn resolution for -game- scenarios: flips the turn, checks for check/mate/stalemate/
@@ -3259,6 +3311,12 @@
           if (practiceStatus) practiceStatus.textContent = '轮到' + colorName(oppoColor) + '走子。';
         }
         if (practiceState.armed) maybeScheduleAiMove();
+        else {
+          practiceState.aiAutoplay = false;
+          clearAiTimer();
+          practiceState.aiRequestId++;
+        }
+        updateGameModeButtons();
       }
 
       function wouldLeaveKingInCheck(fromR, fromC, toR, toC, movingColor) {
@@ -3428,12 +3486,17 @@
       }
 
       function cancelPractice() {
-        if (!practiceState.armed && !savedPracticeBoard) return;
+        if (!practiceState) return;
+        if (!practiceState.armed && !savedPracticeBoard) {
+          updateGameModeButtons();
+          return;
+        }
         clearMateVisuals();
         closePromotionModal();
         clearAiTimer();
         practiceState.aiRequestId++;
         practiceState.armed = false;
+        practiceState.aiAutoplay = false;
         practiceState.scenario = null;
         practiceState.selectedPiece = null;
         practiceState.legalTargets = [];
@@ -3450,6 +3513,7 @@
           renderBoard();
         }
         if (practiceStatus) practiceStatus.textContent = '\u70b9\u51fb\u4e0a\u65b9\u68cb\u5b50\u6309\u9215\u9009\u62e9\u7ec3\u4e60\u573a\u666f';
+        updateGameModeButtons();
       }
 
       function getPracticeTargets(kind, r, c) {
@@ -3692,6 +3756,7 @@
       loadDisplaySettings();
       renderCoords();
       renderBoard();
+      updateGameModeButtons();
 
       observeButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
