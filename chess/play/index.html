@@ -24,6 +24,7 @@
       </div>
 
       <div class="status-line" id="turnStatus">当前回合：白方</div>
+      <div id="solutionAnnotationPopup" class="solution-annotation-popup hidden" role="status"></div>
 
       <div class="control-bar">
         <div class="control-row control-row-top">
@@ -65,32 +66,30 @@
         <div class="work-panel">
         <div class="tabs">
           <button class="tab" type="button" id="btnBackToBankReview" hidden>返回题目回放</button>
-          <button class="tab active" data-target="notations">走子记录</button>
-          <button class="tab" data-target="actions">题目答案</button>
-          <button class="tab" data-target="logs">运行日志</button>
+          <div class="solution-menu-wrap">
+            <button class="tab" type="button" id="btnSolutionMenu" aria-expanded="false" aria-controls="bankAnswerChoices" disabled>题目答案</button>
+            <div id="bankAnswerChoices" class="solution-menu hidden" role="group" aria-label="选择题目答案"></div>
+          </div>
+          <button class="tab action-tab hidden" type="button" id="btnRootGeneRecord" title="开始记录后选择 AI-AI 对弈；切回手动模式即停止记录">● 开始记录</button>
+          <button class="tab action-tab hidden" type="button" id="btnRootGeneSave">保存棋谱</button>
           <button class="tab action-tab" id="btnSaveNote">保存本局</button>
         </div>
 
         <div class="panel active" id="panel-notations">
           <div class="placeholder" id="bankSelection">选择右侧题库，棋局、答案和解说将自动载入...</div>
-          <h3>走子记录</h3>
+          <div id="selectedSolutionLabel" class="placeholder"></div>
           <ol id="notationList" class="notation-list"></ol>
-        </div>
-
-        <div class="panel" id="panel-actions">
-          <div id="bankAnswers" class="bank-content">请从题库选择题目；答案会自动载入，可选择解法进行回放。</div>
-        </div>
-
-        <div class="panel" id="panel-logs">
-          <h3>运行日志</h3>
-          <div class="log-console" id="logConsole"></div>
+          <div id="bankAnswers" class="bank-content root-gene-answer">请从题库选择题目。</div>
         </div>
       </div>
 
         <div class="inline-actions">
           <button class="soft-btn" id="btnExplain">播报解说</button>
           <button class="soft-btn" id="btnSaveExplain">保存笔记</button>
+          <button class="soft-btn hidden" id="btnSaveRootGeneExplanation">保存解说</button>
         </div>
+
+        <textarea class="root-gene-explanation hidden" id="rootGeneExplanationText" rows="6" placeholder="在此输入或编辑该棋局的解说内容，然后点击“保存解说”"></textarea>
 
         <div class="expand-panel" id="expandPanel">
           <div class="expand-placeholder">请选择解说目录或题库题目...</div>
@@ -111,17 +110,6 @@
         <section class="bank-review-section" aria-labelledby="bankReviewExplanationTitle">
           <h3 id="bankReviewExplanationTitle">解说内容</h3>
           <div id="bankReviewExplanation" class="bank-review-explanation">请选择题目载入解说。</div>
-        </section>
-        <section class="root-gene-final-editor hidden" id="rootGeneFinalEditor" aria-labelledby="rootGeneFinalEditorTitle">
-          <h3 id="rootGeneFinalEditorTitle">根基因题目定稿</h3>
-          <label for="rootGeneSolutionText">参考解答</label>
-          <textarea id="rootGeneSolutionText" rows="5" placeholder="AI-AI 对弈后导入棋谱，或手动编辑"></textarea>
-          <button type="button" id="importAiSolution">导入当前对局棋谱</button>
-          <label for="rootGeneExplanationText">解说内容</label>
-          <textarea id="rootGeneExplanationText" rows="5" placeholder="编辑题目思路、关键变化与学习要点"></textarea>
-          <button type="button" id="authorizeRootGeneFolder">授权 question_bank/data 目录</button>
-          <button type="button" id="saveRootGeneFormal">保存为正式题库棋局</button>
-          <p id="rootGeneFormalStatus" role="status" aria-live="polite"></p>
         </section>
         <button type="button" class="bank-review-edit-link" id="btnShowAnswerEditor">打开答案编辑工具</button>
       </section>

@@ -5,6 +5,7 @@
   var bank = mergeBank();
   var currentQuestion = null;
   var currentSolutionIndex = 0;
+  var selectionVersion = 0;
   if (!tree) return;
   if (!bank) {
     status.textContent = '题库目录加载失败';
@@ -35,6 +36,7 @@
         merged.records.push({ id: record.id, category: record.category, subcategory: record.subcategory, difficulty: record.difficulty, label: record.label, question: record.id });
       }
     });
+    window.ChessRootGeneStore.applyDeletions(merged);
     window.ChessQuestionBank = merged;
     return merged;
   }
@@ -43,19 +45,14 @@
     return window.ChessRootGeneStore && window.ChessRootGeneStore.readQuestions().find(function (record) { return record.id === id; });
   }
 
-  function renderRootGeneEditor(question) {
-    var editor = document.getElementById('rootGeneFinalEditor');
-    var record = question && findRootGeneRecord(question.id);
-    editor.classList.toggle('hidden', !record);
-    if (!record) return;
-    document.getElementById('rootGeneSolutionText').value = (question.solutions || []).map(function (solution) { return solution.text || ''; }).filter(Boolean).join('\n\n');
-    document.getElementById('rootGeneExplanationText').value = question.explanation || '';
-    document.getElementById('rootGeneFormalStatus').textContent = record.status === 'formal' ? '已保存为正式题库棋局。' : '此题来自根基因库，完成 AI-AI 求解并补充解说后可定稿。';
-  }
-
   function showExplanation() {
     if (!currentQuestion) return;
-    document.getElementById('bankReviewExplanation').textContent = currentQuestion.explanation || '暂无解说内容';
+    var solution = currentQuestion.solutions[currentSolutionIndex] || {};
+    var explanation = solution.explanation == null ? currentQuestion.explanation || '' : solution.explanation;
+    document.getElementById('bankReviewExplanation').textContent = explanation || '暂无解说内容';
+    document.getElementById('rootGeneExplanationText').value = explanation;
+    document.getElementById('expandPanel').textContent = explanation || '暂无解说内容';
+    document.getElementById('expandPanel').style.whiteSpace = 'pre-wrap';
   }
 
   function renderReplayMoves(question, replayTokens, cursor, replayError) {
@@ -107,7 +104,6 @@
 
   function renderBankReview(question, request) {
     document.getElementById('bankReviewLabel').textContent = question.label;
-    renderRootGeneEditor(question);
     var choices = document.getElementById('bankReviewSolutionChoices');
     choices.replaceChildren();
     question.solutions.forEach(function (solution, index) {
@@ -120,16 +116,38 @@
       button.addEventListener('click', function () { requestSolution(index); });
       choices.appendChild(button);
     });
+    var answerChoices = document.getElementById('bankAnswerChoices');
+    answerChoices.replaceChildren();
+    {
+      question.solutions.forEach(function (solution, index) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'bank-review-solution-button';
+        button.dataset.solutionIndex = String(index);
+        button.setAttribute('aria-pressed', index === currentSolutionIndex ? 'true' : 'false');
+        button.textContent = '答案 ' + solution.number;
+        button.addEventListener('click', function () { requestSolution(index); });
+        answerChoices.appendChild(button);
+      });
+    }
     renderReplayMoves(question, request.replayTokens, 0, request.replayError);
   }
 
   function requestSolution(index) {
     if (!currentQuestion || !currentQuestion.solutions[index]) return;
+    var guard = { allowed: true };
+    window.dispatchEvent(new CustomEvent('chess-solution-switch-check', { detail: guard }));
+    if (!guard.allowed) return;
     var solution = currentQuestion.solutions[index];
     var request = {
       questionId: currentQuestion.id,
       solutionText: solution.text,
-      solutionLabel: currentQuestion.solutions.length > 1 ? '解法 ' + (index + 1) : (solution.label || '题目答案'),
+      solutionLabel: '答案 ' + solution.number,
+      solutionId: solution.id,
+      solutionNumber: solution.number,
+      explanation: solution.explanation,
+      annotation: solution.annotation || null,
+      readOnly: !!currentQuestion.readOnly,
       loaded: false
     };
     window.dispatchEvent(new CustomEvent('chess-bank-solution', { detail: request }));
@@ -138,20 +156,40 @@
       return;
     }
     currentSolutionIndex = index;
-    document.querySelectorAll('#bankReviewSolutionChoices .bank-review-solution-button').forEach(function (button) {
+    closeSolutionMenu();
+    showExplanation();
+    document.querySelectorAll('#bankReviewSolutionChoices .bank-review-solution-button, #bankAnswerChoices .bank-review-solution-button').forEach(function (button) {
       button.setAttribute('aria-pressed', Number(button.dataset.solutionIndex) === index ? 'true' : 'false');
     });
     renderReplayMoves(currentQuestion, request.replayTokens, 0, request.replayError);
     status.textContent = request.replayAvailable ? currentQuestion.label + ' · ' + request.solutionLabel : currentQuestion.label + ' · 已载入棋局与解说';
   }
 
-  function selectQuestion(id, button) {
+  async function selectQuestion(id, button) {
     if (tree.dataset.mode === 'analysis') {
       window.location.href = '../play/index.html?question=' + encodeURIComponent(id);
       return;
     }
     var question = bank.questions[id];
     if (!question) return;
+    var guard = { allowed: true };
+    window.dispatchEvent(new CustomEvent('chess-solution-switch-check', { detail: guard }));
+    if (!guard.allowed) return;
+    var version = ++selectionVersion;
+    var loaded;
+    status.textContent = '正在加载棋局与答案…';
+    try {
+      loaded = await window.ChessRootGeneStore.loadSolutions(id);
+    } catch (error) {
+      loaded = { readOnly: true, solutions: question.solutions.map(function (solution, index) {
+        var match = String(solution.label || '').match(/-(\d+)\.txt$/);
+        return Object.assign({}, solution, { id: solution.id || solution.label || String(index + 1), number: String(match ? Number(match[1]) : index + 1).padStart(3, '0'), explanation: question.explanation || '', annotation: null });
+      }) };
+    }
+    if (version !== selectionVersion || !bank.questions[id]) return;
+    question = Object.assign({}, question, { fen: loaded.fen || question.fen, solutions: loaded.solutions, readOnly: !!loaded.readOnly });
+    question.solutions.sort(function (left, right) { return Number(left.number) - Number(right.number); });
+    bank.questions[id] = question;
     currentQuestion = question;
     currentSolutionIndex = 0;
     var firstSolution = question.solutions[0] || {};
@@ -159,8 +197,12 @@
       fen: question.fen,
       questionId: id,
       solutionText: firstSolution.text || '',
-      solutionLabel: question.solutions.length > 1 ? '解法 1' : (firstSolution.label || '题目答案'),
-      explanation: question.explanation || '',
+      solutionLabel: '答案 ' + (firstSolution.number || '001'),
+      solutionId: firstSolution.id || null,
+      solutionNumber: firstSolution.number || '001',
+      explanation: firstSolution.explanation == null ? question.explanation || '' : firstSolution.explanation,
+      annotation: firstSolution.annotation || null,
+      readOnly: !!question.readOnly,
       loaded: false
     };
     window.dispatchEvent(new CustomEvent('chess-bank-select', { detail: request }));
@@ -172,6 +214,8 @@
     button.setAttribute('aria-current', 'true');
     document.getElementById('bankSelection').textContent = question.label;
     renderBankReview(question, request);
+    document.getElementById('btnSolutionMenu').disabled = !question.solutions.length;
+    closeSolutionMenu();
     showExplanation();
     status.textContent = request.replayAvailable
       ? question.label + ' · ' + request.solutionLabel
@@ -186,6 +230,28 @@
       }
     }
   }
+
+  function closeSolutionMenu() {
+    document.getElementById('bankAnswerChoices').classList.add('hidden');
+    document.getElementById('btnSolutionMenu').setAttribute('aria-expanded', 'false');
+  }
+  var solutionMenuButton = document.getElementById('btnSolutionMenu');
+  if (solutionMenuButton) solutionMenuButton.addEventListener('click', function () {
+    var menu = document.getElementById('bankAnswerChoices');
+    var open = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', !open);
+    document.getElementById('btnSolutionMenu').setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function (event) { if (solutionMenuButton && !event.target.closest('.solution-menu-wrap')) closeSolutionMenu(); });
+  document.addEventListener('keydown', function (event) { if (solutionMenuButton && event.key === 'Escape') closeSolutionMenu(); });
+  window.addEventListener('chess-solution-saved', function (event) {
+    var result = event.detail;
+    if (!currentQuestion || result.questionId !== currentQuestion.id) return;
+    currentQuestion.solutions = result.solutions;
+    currentSolutionIndex = Math.max(0, result.solutions.findIndex(function (solution) { return solution.id === result.solutionId; }));
+    renderBankReview(currentQuestion, { replayTokens: [], replayError: '' });
+    if (result.savedFields && result.savedFields.explanation !== undefined) showExplanation();
+  });
 
   function renderNode(item, parent) {
     if (item.question) {
@@ -274,7 +340,8 @@
   window.addEventListener('storage', function () { renderTree(); renderUsers(); });
   window.addEventListener('pageshow', function () { renderTree(); renderUsers(); });
   var requested = new URLSearchParams(window.location.search).get('question');
-  if (requested && tree.dataset.mode !== 'analysis') {
+  function selectRequested() {
+    if (!requested || tree.dataset.mode === 'analysis' || currentQuestion) return;
     var selectedButton = Array.from(tree.querySelectorAll('.bank-question')).find(function (button) { return button.dataset.question === requested; });
     if (selectedButton) {
       selectQuestion(requested, selectedButton);
@@ -283,80 +350,28 @@
       }
     } else status.textContent = '未找到指定题目';
   }
+  selectRequested();
   window.addEventListener('chess-bank-explain', showExplanation);
   window.addEventListener('chess-bank-replay-progress', function (event) {
     highlightReplayMove(Number(event.detail && event.detail.cursor) || 0);
   });
 
-  function formatCoordinateSolution(moves, startingTurn) {
-    var lines = [];
-    var index = 0;
-    var moveNumber = 1;
-    if (startingTurn === 'b' && moves.length) {
-      lines.push(moveNumber + '... ' + moves[index++]);
-      if (index < moves.length) lines[0] += '\n' + moveNumber + '. ' + moves[index++];
-      moveNumber += 1;
-    }
-    while (index < moves.length) {
-      var line = moveNumber + '. ' + moves[index++];
-      if (index < moves.length) line += ' ' + moves[index++];
-      lines.push(line);
-      moveNumber += 1;
-    }
-    return lines.join('\n');
-  }
-
-  document.getElementById('importAiSolution').addEventListener('click', function () {
-    if (!currentQuestion || !findRootGeneRecord(currentQuestion.id)) return;
-    var request = { questionId: currentQuestion.id, moves: [] };
-    window.dispatchEvent(new CustomEvent('chess-root-gene-export-game', { detail: request }));
-    if (!request.moves.length) {
-      document.getElementById('rootGeneFormalStatus').textContent = '当前棋局还没有走子，请先运行 AI-AI 对弈。';
-      return;
-    }
-    document.getElementById('rootGeneSolutionText').value = formatCoordinateSolution(request.moves, request.startingTurn);
-    document.getElementById('rootGeneFormalStatus').textContent = request.gameOver ? '已导入结束棋局的完整走子。' : '已导入当前走子；AI-AI 尚未结束，可继续对弈后重新导入。';
-  });
-
-  document.getElementById('saveRootGeneFormal').addEventListener('click', function () {
-    if (!currentQuestion || !findRootGeneRecord(currentQuestion.id)) return;
-    var solution = document.getElementById('rootGeneSolutionText').value.trim();
-    var explanation = document.getElementById('rootGeneExplanationText').value.trim();
-    var message = document.getElementById('rootGeneFormalStatus');
-    if (!solution) { message.textContent = '请先导入 AI-AI 棋谱或填写参考解答。'; return; }
-    if (!explanation) { message.textContent = '请补充解说内容后再保存正式题目。'; return; }
-    var button = document.getElementById('saveRootGeneFormal');
-    button.disabled = true;
-    message.textContent = '正在更新正式题库文件…';
-    window.ChessRootGeneStore.formalize(currentQuestion.id, solution, explanation).then(function (record) {
-      bank = mergeBank();
-      currentQuestion = bank.questions[record.id];
-      showExplanation();
-      renderRootGeneEditor(currentQuestion);
-      renderTree();
-      message.textContent = '正式题库棋局已保存，解答、解说、JSON、PGN 与索引均已更新。';
-      status.textContent = record.label + ' · 正式题目已保存';
-    }).catch(function (error) {
-      message.textContent = error.message || '正式题目保存失败。';
-    }).finally(function () { button.disabled = false; });
-  });
-
-  document.getElementById('authorizeRootGeneFolder').addEventListener('click', function () {
-    window.ChessRootGeneStore.chooseDirectory().then(function () {
-      document.getElementById('rootGeneFormalStatus').textContent = 'question_bank/data 目录已授权。';
-    }).catch(function (error) {
-      document.getElementById('rootGeneFormalStatus').textContent = error.message || '题库目录授权失败。';
-    });
-  });
-
   function refreshRootGeneBank() {
     bank = mergeBank();
-    if (currentQuestion) currentQuestion = bank.questions[currentQuestion.id] || currentQuestion;
+    if (currentQuestion && !bank.questions[currentQuestion.id]) {
+      currentQuestion = null;
+      window.dispatchEvent(new Event('chess-bank-deleted'));
+      status.textContent = '当前棋局已被删除，请重新选择题目。';
+    }
+    if (currentQuestion) currentQuestion = Object.assign({}, bank.questions[currentQuestion.id], { solutions: currentQuestion.solutions, readOnly: currentQuestion.readOnly });
     renderTree();
-    if (currentQuestion) renderRootGeneEditor(currentQuestion);
+    selectRequested();
   }
   window.addEventListener('chess-root-gene-bank-updated', refreshRootGeneBank);
   window.addEventListener('storage', function (event) {
     if (event.key === 'cognichess:root-gene-bank:v1') refreshRootGeneBank();
   });
+  if (window.ChessRootGeneStore && tree.dataset.mode !== 'analysis') {
+    window.ChessRootGeneStore.syncFromServer().then(function () { selectRequested(); }).catch(function () {});
+  }
 }());

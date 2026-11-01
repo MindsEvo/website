@@ -6246,20 +6246,7 @@ window.ChessQuestionBank = {
     },
     {
       "label": "综合基因 (comprehensive)",
-      "children": [
-        {
-          "label": "L1 基础",
-          "children": []
-        },
-        {
-          "label": "L2 组合",
-          "children": []
-        },
-        {
-          "label": "L3 复杂",
-          "children": []
-        }
-      ]
+      "children": []
     }
   ],
   "questions": {

@@ -3,6 +3,7 @@
 
   const API_BASE = root.CHESS_LOCAL_API || 'http://127.0.0.1:8787';
   const STORAGE_KEY = 'cognichess:root-gene-bank:v1';
+  const DELETED_KEY = 'cognichess:deleted-chess-questions:v1';
   const BANK_LEVEL_NAMES = { L1: 'L1 基础', L2: 'L2 组合', L3: 'L3 复杂' };
   const LEVEL_NAMES = { L1: 'L1 入门', L2: 'L2 基础', L3: 'L3 进阶' };
   const PIECE_LABELS = { queen: '后', rook: '车', bishop: '象', knight: '马', pawn: '兵' };
@@ -88,9 +89,75 @@
     return result;
   }
   async function getRootStatus() { return request('/api/v1/chess/root-gene/health'); }
+  function fingerprint(records) {
+    return JSON.stringify(records.map(item => [item.id, item.question.fen, item.question.explanation, (item.question.solutions[0] || {}).text, item.status]));
+  }
+  async function syncFromServer() {
+    const result = await request('/api/v1/chess/root-gene/questions');
+    const deletedChanged = localStorage.getItem(DELETED_KEY) !== JSON.stringify(result.deletedIds || []);
+    localStorage.setItem(DELETED_KEY, JSON.stringify(result.deletedIds || []));
+    const records = [];
+    result.questions.forEach(item => {
+      try { records.push(makeQuestion({ category: item.category, level: item.level, geneName: item.geneName, fen: item.fen, solutionText: item.solutionText, explanation: item.explanation, status: item.formal ? 'formal' : 'draft' })); }
+      catch (_) {}
+    });
+    if (deletedChanged || fingerprint(records) !== fingerprint(readQuestions())) writeQuestions(records);
+    return records;
+  }
+  function applyDeletions(bank) {
+    let deleted;
+    try { deleted = new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || '[]')); }
+    catch (_) { deleted = new Set(); }
+    Object.keys(bank.questions).forEach(id => { if (deleted.has(id)) delete bank.questions[id]; });
+    function prune(nodes) {
+      return (nodes || []).filter(node => !deleted.has(node.question)).map(node => {
+        if (node.children) node.children = prune(node.children);
+        return node;
+      }).filter(node => node.question || (node.children && node.children.length));
+    }
+    bank.tree.forEach(node => { node.children = prune(node.children); });
+    bank.records = (bank.records || []).filter(record => !deleted.has(record.id) && !deleted.has(record.question));
+    return bank;
+  }
+  async function deleteQuestion(id) {
+    const result = await request('/api/v1/chess/root-gene/delete', { id });
+    const deleted = new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || '[]'));
+    result.deletedIds.forEach(questionId => deleted.add(questionId));
+    localStorage.setItem(DELETED_KEY, JSON.stringify([...deleted]));
+    writeQuestions(readQuestions().filter(record => !deleted.has(record.id)));
+    return result;
+  }
+  async function previewDeletion(id) { return request('/api/v1/chess/root-gene/delete-preview', { id }); }
+  const SOLUTIONS_KEY = 'cognichess:chess-solutions:v1';
+  function readSolutionCache() {
+    try { return JSON.parse(localStorage.getItem(SOLUTIONS_KEY) || '{}'); }
+    catch (_) { return {}; }
+  }
+  async function loadSolutions(questionId) {
+    try {
+      const result = await request('/api/v1/chess/solutions/load', { questionId });
+      const cache = readSolutionCache();
+      cache[questionId] = result;
+      localStorage.setItem(SOLUTIONS_KEY, JSON.stringify(cache));
+      return result;
+    } catch (error) {
+      const cached = readSolutionCache()[questionId];
+      if (cached) return { ...cached, offline: true };
+      throw error;
+    }
+  }
+  async function saveSolution(questionId, solutionId, fields) {
+    const result = await request('/api/v1/chess/solutions/save', { questionId, solutionId, ...fields });
+    const cache = readSolutionCache();
+    cache[questionId] = result;
+    localStorage.setItem(SOLUTIONS_KEY, JSON.stringify(cache));
+    return result;
+  }
   async function saveQuestion(record) {
     if (readQuestions().some(item => item.id === record.id)) throw new Error('此编号已存在于本机题库记录中，请换用新序号。');
     const result = await request('/api/v1/chess/root-gene/save', { category: record.category, level: record.difficulty, geneName: record.geneName, fen: record.question.fen });
+    const deleted = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]');
+    localStorage.setItem(DELETED_KEY, JSON.stringify(deleted.filter(id => id !== record.id)));
     record.relativePath = result.relativePath;
     const questions = readQuestions(); questions.unshift(record); writeQuestions(questions);
     return record;
@@ -99,13 +166,13 @@
     const record = readQuestions().find(item => item.id === id);
     if (!record) throw new Error('找不到待完善的根基因题目。');
     const result = await request('/api/v1/chess/root-gene/formalize', { category: record.category, level: record.difficulty, geneName: record.geneName, fen: record.question.fen, solutionText, explanation });
-    record.question.solutions = [{ label: 'AI-AI 参考解法', text: solutionText }];
-    record.question.explanation = explanation;
-    record.status = 'formal';
+    if (String(solutionText || '').trim()) record.question.solutions = [{ label: 'AI-AI 参考解法', text: solutionText }];
+    if (String(explanation || '').trim()) record.question.explanation = explanation;
+    record.status = result.formalized ? 'formal' : 'draft';
     record.relativePath = result.relativePath;
     record.updatedAt = new Date().toISOString();
     writeQuestions(readQuestions().map(item => item.id === id ? record : item));
     return record;
   }
-  root.ChessRootGeneStore = { readQuestions, parseName, makeQuestion, saveQuestion, formalize, getRootStatus, nameFormat };
+  root.ChessRootGeneStore = { readQuestions, parseName, makeQuestion, saveQuestion, formalize, getRootStatus, syncFromServer, deleteQuestion, previewDeletion, applyDeletions, nameFormat, loadSolutions, saveSolution };
 })(window);

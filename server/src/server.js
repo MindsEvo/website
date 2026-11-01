@@ -9,9 +9,16 @@ const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
 const { analyzePosition, getEnginePath } = require("./stockfishService");
 const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("./stockfishDuelService");
 const RootGeneService = require("./rootGeneService");
+const ChessSolutionService = require("./chessSolutionService");
 
 const app = express();
 const db = getDb();
+let rootGeneMutation = Promise.resolve();
+function mutateRootGene(operation) {
+  const pending = rootGeneMutation.then(operation);
+  rootGeneMutation = pending.catch(() => {});
+  return pending;
+}
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
@@ -24,9 +31,33 @@ app.get("/api/v1/chess/root-gene/health", async (req, res) => {
   return res.json(await RootGeneService.getRootStatus());
 });
 
+app.get("/api/v1/chess/root-gene/questions", async (req, res) => {
+  try {
+    return res.json({ ok: true, questions: await RootGeneService.listQuestions(), deletedIds: await RootGeneService.getDeletedIds() });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: String(error && error.message ? error.message : error) });
+  }
+});
+
+app.post("/api/v1/chess/root-gene/delete-preview", async (req, res) => {
+  try {
+    return res.json({ ok: true, ...await RootGeneService.deleteQuestion(req.body || {}, { preview: true }) });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.post("/api/v1/chess/root-gene/delete", async (req, res) => {
+  try {
+    return res.json({ ok: true, ...await mutateRootGene(() => RootGeneService.deleteQuestion(req.body || {})) });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
 app.post("/api/v1/chess/root-gene/save", async (req, res) => {
   try {
-    const result = await RootGeneService.persistQuestion(req.body || {});
+    const result = await mutateRootGene(() => RootGeneService.persistQuestion(req.body || {}));
     return res.json({ ok: true, ...result });
   } catch (error) {
     const status = Number(error && error.status) || (error instanceof SyntaxError ? 400 : 500);
@@ -36,15 +67,31 @@ app.post("/api/v1/chess/root-gene/save", async (req, res) => {
 
 app.post("/api/v1/chess/root-gene/formalize", async (req, res) => {
   const body = req.body || {};
-  if (!String(body.solutionText || "").trim() || !String(body.explanation || "").trim()) {
-    return res.status(400).json({ ok: false, error: "正式保存前需要提供解答棋谱和解说。" });
+  if (!String(body.solutionText || "").trim() && !String(body.explanation || "").trim()) {
+    return res.status(400).json({ ok: false, error: "请提供棋谱或解说内容后再保存。" });
   }
   try {
-    const result = await RootGeneService.persistQuestion(body, { allowExisting: true, formal: true });
+    const result = await mutateRootGene(() => RootGeneService.formalizeQuestion(body));
     return res.json({ ok: true, ...result });
   } catch (error) {
     const status = Number(error && error.status) || (error instanceof SyntaxError ? 400 : 500);
     return res.status(status).json({ ok: false, error: String(error && error.message ? error.message : error) });
+  }
+});
+
+app.post("/api/v1/chess/solutions/load", async (req, res) => {
+  try {
+    return res.json(await ChessSolutionService.loadSolutions(req.body || {}));
+  } catch (error) {
+    return res.status(Number(error.status) || (error instanceof SyntaxError ? 400 : 500)).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.post("/api/v1/chess/solutions/save", async (req, res) => {
+  try {
+    return res.json(await mutateRootGene(() => ChessSolutionService.saveSolution(req.body || {})));
+  } catch (error) {
+    return res.status(Number(error.status) || (error instanceof SyntaxError ? 400 : 500)).json({ ok: false, error: error.message || String(error) });
   }
 });
 

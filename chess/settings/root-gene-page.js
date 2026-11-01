@@ -268,6 +268,14 @@
     const expanded = new Set(Array.from(host.querySelectorAll('details[open] > summary')).map(summary => summary.textContent));
     state.bank = JSON.parse(JSON.stringify(sourceBank));
     addLocalQuestions(state.bank);
+    store.applyDeletions(state.bank);
+    if (state.currentQuestion && !state.bank.questions[state.currentQuestion]) {
+      state.currentQuestion = null;
+      state.board = core.emptyBoard();
+      state.selectedSquare = null;
+      renderBoard();
+    }
+    $('deleteQuestion').disabled = !state.currentQuestion;
     host.replaceChildren();
     state.bank.tree.forEach(item => renderNode(item, host));
     host.querySelectorAll('details').forEach(details => { if (expanded.has(details.querySelector('summary').textContent)) details.open = true; });
@@ -288,6 +296,8 @@
   function loadQuestion(id) {
     const question = state.bank.questions[id];
     if (!question) return setMessage('未找到该棋局。', 'error');
+    state.currentQuestion = id;
+    $('deleteQuestion').disabled = false;
     try {
       const parsed = core.parseFen(question.fen);
       state.board = parsed.board;
@@ -312,7 +322,10 @@
       renderBoard();
       renderBankTree();
       setMessage('仅载入 FEN 局面；棋谱与解说留在对弈页面。', 'success');
-    } catch (error) { setMessage('FEN 载入失败：' + error.message, 'error'); }
+    } catch (error) {
+      renderBankTree();
+      setMessage('FEN 载入失败：' + error.message + '；该题仍可使用“删除棋局”清理。', 'error');
+    }
   }
 
   async function saveQuestion() {
@@ -342,6 +355,41 @@
       setMessage(error.message || '题库写入失败。', 'error');
     } finally { $('saveToBank').disabled = false; }
   }
+
+  async function deleteSelectedQuestion() {
+    const id = state.currentQuestion;
+    const question = id && state.bank.questions[id];
+    if (!question) return setMessage('请先从右侧目录选择要删除的棋局。', 'error');
+    const name = id.split('/').pop().replace(/\.fen$/, '');
+    $('deleteQuestion').disabled = true;
+    try {
+      const preview = await store.previewDeletion(id);
+      const location = preview.locations.length ? preview.locations.join('\n') : '此题仅存在于预编译题库，无对应 academy 文件。';
+      if (!window.confirm('删除棋局：' + question.label + '\n编号：' + name + '\n位置：' + location + '\n索引：' + preview.indexes.join('\n') + '\n\n将删除棋局文件、关联答案与解说、目录索引及缓存。共享解法和学习历史保留。\n此操作不可撤销，确认删除？')) {
+        $('deleteQuestion').disabled = !state.currentQuestion;
+        return;
+      }
+      const result = await store.deleteQuestion(id);
+      const removedNames = new Set(result.deletedIds.map(questionId => questionId.split('/').pop().replace(/\.fen$/, '')));
+      const series = JSON.parse(localStorage.getItem(LIST_KEY) || '{}');
+      Object.keys(series).forEach(key => { series[key] = series[key].filter(value => !removedNames.has(value)); });
+      localStorage.setItem(LIST_KEY, JSON.stringify(series));
+      state.geneNames = readGeneNames();
+      state.currentGene = '';
+      state.currentQuestion = null;
+      state.board = core.emptyBoard();
+      state.selectedSquare = null;
+      renderGeneNames();
+      renderBoard();
+      renderBankTree();
+      updateTargetDirectory();
+      $('pageStatus').textContent = '棋局已删除';
+      setMessage('已删除 ' + name + '，清理 ' + result.deletedFiles + ' 个文件及关联索引。', 'success');
+    } catch (error) {
+      setMessage('删除失败：' + error.message, 'error');
+      $('deleteQuestion').disabled = !state.currentQuestion;
+    }
+  }
   function clearResult() {
     state.board = core.emptyBoard();
     state.castling = 'KQkq';
@@ -357,12 +405,22 @@
     setMessage('棋盘结果已清空；系列名称列表保留。', 'success');
   }
   function bindEvents() {
+    $('openUsageHelp').addEventListener('click', () => $('usageHelp').showModal());
+    $('usageHelp').addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); $('usageHelp').close(); }
+    });
+    $('usageHelp').addEventListener('click', event => {
+      if (event.target !== $('usageHelp')) return;
+      const bounds = $('usageHelp').getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) $('usageHelp').close();
+    });
     $('geneType').addEventListener('change', updateNameFormat);
     $('geneLevel').addEventListener('change', updateNameFormat);
     $('geneName').addEventListener('input', updateTargetDirectory);
     $('addGene').addEventListener('click', addGene);
     $('geneName').addEventListener('keydown', event => { if (event.key === 'Enter') addGene(); });
     $('deleteGene').addEventListener('click', deleteGene);
+    $('deleteQuestion').addEventListener('click', deleteSelectedQuestion);
     $('saveToBank').addEventListener('click', saveQuestion);
     $('clearResult').addEventListener('click', clearResult);
     $('firstMover').addEventListener('click', () => {
@@ -413,6 +471,7 @@
     renderPalettes();
     renderBoard();
     renderBankTree();
+    store.syncFromServer().then(() => { renderBankTree(); if (requested && !state.currentQuestion) loadQuestion(requested); }).catch(() => {});
     const requested = new URLSearchParams(location.search).get('question');
     if (requested) loadQuestion(requested);
   }

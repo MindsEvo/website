@@ -11,7 +11,7 @@
 <body>
   <main class="page-shell">
     <header class="page-header">
-      <div class="title-line"><span class="title-mark" aria-hidden="true">🧬</span><h1>根基因库生成</h1><span>棋局编辑与基因生成</span></div>
+      <div class="title-line"><button id="openUsageHelp" class="usage-help-button" type="button" aria-haspopup="dialog" aria-controls="usageHelp">使用说明</button><span class="title-mark" aria-hidden="true">🧬</span><h1>根基因库生成</h1><span>棋局编辑与基因生成</span></div>
       <a class="back-link" href="./index.html">返回设置</a>
       <div class="header-state"><i></i><span id="pageStatus">系统就绪</span></div>
     </header>
@@ -39,6 +39,7 @@
         <fieldset class="actions-group">
           <legend>操作控制</legend>
           <div class="action-buttons"><button id="saveToBank" class="save-button" type="button">▣ 存储到题库</button><button id="clearResult" class="clear-button" type="button">▧ 清空结果</button><button id="firstMover" class="turn-button" type="button" aria-pressed="false">⚪ 先</button></div>
+          <button id="deleteQuestion" class="clear-button" type="button" disabled title="删除目录中选中的棋局及其文件、索引">删除棋局</button>
           <p id="bankFolderStatus" class="folder-status">正在连接固定目录 mindsevo/web/chess/academy…</p>
           <p id="targetDirectory" class="folder-status">保存位置：选择系列名称后自动确定</p>
         </fieldset>
@@ -57,6 +58,26 @@
       </aside>
     </section>
   </main>
+  <dialog id="usageHelp" class="usage-help-dialog" aria-labelledby="usageHelpTitle">
+    <header class="usage-help-header"><h2 id="usageHelpTitle">根基因库生成 · 使用说明</h2><form method="dialog"><button type="submit" aria-label="关闭使用说明" title="关闭">关闭</button></form></header>
+    <section>
+      <h3>生成并保存棋局</h3>
+      <ol>
+        <li>选择基因类型和难度，输入符合下方命名规范的系列名称，点击“添加”，再选中该名称。已有编号不能重复保存。</li>
+        <li>选择白方或黑方，再选择棋子，点击棋盘格放置。再次点击同一棋子可取消选择；未选择棋子时，可点击盘上的棋子，再点击目标格移动。</li>
+        <li>使用“移除棋子”删除盘上的单个棋子；“清空结果”用于清空当前编辑棋盘，不会删除已保存的题目。“棋盘反转”只改变显示方向。</li>
+        <li>点击“先”按钮设置先走的一方。双方必须各有一个王；若一方已被将军，必须由该方先走，不能让对方继续走棋。</li>
+        <li>点击“存储到题库”。系统按类型和编号写入固定的 JS academy 分类目录，并更新右侧题库目录。保存需要本地题库服务运行在 8787 端口。</li>
+      </ol>
+      <h3>使用已有棋局</h3>
+      <p>在右侧题库目录展开分类，点击题目即可载入其初始局面。可以在此基础上调整棋子，选择新的系列编号后另存，原题不会因摆棋而自动改变。</p>
+      <h3>记录棋谱与编辑解说</h3>
+      <p>到“对弈模式”选择保存的题目，点击“开始记录”，选择手动、人机或 AI-AI 模式开始走棋。AI-AI 需要点击播放按钮启动；切回手动模式停止记录，再保存棋谱。解说可人工编辑后单独保存。“题目答案”用于选择该题的 solution 编号，缺省为 001，切换时一起载入对应棋谱、解说和标注。</p>
+      <h3>两种删除操作</h3>
+      <p><strong>系列名称旁的“删除”：</strong>只移除名称列表中的名称，不删除题库棋局。</p>
+      <p><strong>操作控制中的“删除棋局”：</strong>先在右侧目录选中题目，再点击该按钮。确认框会显示编号和位置；确认后清理棋局文件、答案、解说、相关索引与缓存。内置题也可删除，共享解法和学习历史保留。此操作不可撤销，确认前请核对题目。</p>
+    </section>
+  </dialog>
   <script src="../play/assets/question-bank.js"></script>
   <script src="./root-gene-core.js"></script>
   <script src="./root-gene-store.js"></script>

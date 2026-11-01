@@ -144,6 +144,11 @@
 
   function analyzeOnce(options) {
     var fen = options.fen;
+    var position = parseBankFen(fen);
+    var waitingSide = position.turn === "w" ? "b" : "w";
+    if (isInCheck(position.board, waitingSide)) {
+      return Promise.reject(new Error("非法先手局面：" + (waitingSide === "w" ? "白王" : "黑王") + "已被将军，必须由被将军方先走。请在根基因页面调整先手或棋子位置后重新保存。"));
+    }
     var movetime = clampEngineNumber(options.movetime, 100, 10000, 1200);
     var depth = clampEngineNumber(options.depth, 1, 30, null);
 
@@ -236,6 +241,8 @@
     narrationOn: true,
     autoplay: false,
     aiThinking: false,
+    rootGeneRecording: false,
+    rootGeneRecordingQuestionId: null,
     bankSolutionReplaying: false,
     bankEditorVisible: false,
     aiVsAiToken: 0,
@@ -281,6 +288,10 @@
   var btnManual = document.getElementById("btnManual");
   var btnHumanAi = document.getElementById("btnHumanAi");
   var btnAiAi = document.getElementById("btnAiAi");
+  var btnRootGeneRecord = document.getElementById("btnRootGeneRecord");
+  var btnRootGeneSave = document.getElementById("btnRootGeneSave");
+  var btnSaveRootGeneExplanation = document.getElementById("btnSaveRootGeneExplanation");
+  var rootGeneExplanationText = document.getElementById("rootGeneExplanationText");
   var btnColor = document.getElementById("btnColor");
   var btnHints = document.getElementById("btnHints");
   var btnExportLogs = document.getElementById("btnExportLogs");
@@ -298,6 +309,7 @@
   var voiceManager = createVoiceManager();
 
   logger.setSink(function (record) {
+    if (!elLogConsole) return;
     var line = document.createElement("div");
     line.className = "log-line " + record.level;
     var payloadText = record.payload ? " " + JSON.stringify(record.payload) : "";
@@ -614,6 +626,13 @@
   var bankSolutionLabel = "";
   var bankSolutionError = "";
   var bankSolutionCursor = 0;
+  var selectedSolutionId = null;
+  var selectedSolutionNumber = '001';
+  var selectedSolutionReadOnly = false;
+  var selectedSolutionAnnotation = null;
+  var showingRecordedScore = false;
+  var recordedScoreDirty = false;
+  var solutionSavePending = false;
   var bankReplayTimer = null;
   var practiceActivityId = null;
   var practiceStartedAt = Date.now();
@@ -817,20 +836,26 @@
   window.addEventListener("chess-bank-select", function (event) {
     var question = event.detail;
     try {
+      state.rootGeneRecording = false;
+      state.rootGeneRecordingQuestionId = null;
       var position = parseBankFen(question.fen);
       stopBankSolutionPlayback();
       stopAiVsAiPlayback();
       practiceActivityId = null;
-      state.bankEditorVisible = false;
-      selectedBankPosition = position;
       selectedBankQuestionId = question.questionId || null;
+      state.bankEditorVisible = true;
+      selectedBankPosition = position;
       selectedBankExplanation = question.explanation || "";
+      setSelectedSolution(question);
+      if (rootGeneExplanationText) rootGeneExplanationText.value = question.explanation || "";
       setMode("manual");
       resetGame();
       question.replayAvailable = loadBankSolution(question.solutionText, question.solutionLabel);
       question.replayError = bankSolutionError;
       question.replayTokens = bankSolutionTokens.slice();
       question.loaded = true;
+      renderRootGeneAnswer(question.solutionText);
+      updateRootGeneControls();
     } catch (error) {
       question.error = error.message;
     }
@@ -840,6 +865,10 @@
     var request = event.detail || {};
     if (!selectedBankPosition || request.questionId !== selectedBankQuestionId) return;
     stopBankSolutionPlayback();
+    stopAiVsAiPlayback();
+    state.rootGeneRecording = false;
+    setMode('manual');
+    setSelectedSolution(request);
     if (practiceActivityId) saveLearningSession(false);
     practiceActivityId = null;
     resetGame();
@@ -847,20 +876,51 @@
     request.replayError = bankSolutionError;
     request.replayTokens = bankSolutionTokens.slice();
     request.loaded = true;
+    renderRootGeneAnswer(request.solutionText);
+    updateRootGeneControls();
   });
 
-  window.addEventListener("chess-root-gene-export-game", function (event) {
-    var request = event.detail || {};
-    if (!selectedBankPosition || request.questionId !== selectedBankQuestionId) return;
-    request.startingTurn = selectedBankPosition.turn;
-    request.moves = state.moveHistory.map(function (entry) {
-      var move = entry.move || {};
-      var token = toCellName(move.fromRow, move.fromCol) + toCellName(move.toRow, move.toCol);
-      if (move.promotionKind) token += String(move.promotionKind).toLowerCase();
-      return token;
-    });
-    request.gameOver = state.gameOver;
-    request.result = state.gameResultText;
+  function setSelectedSolution(request) {
+    selectedSolutionId = request.solutionId || null;
+    selectedSolutionNumber = request.solutionNumber || '001';
+    selectedSolutionReadOnly = !!request.readOnly;
+    selectedSolutionAnnotation = request.annotation || null;
+    selectedBankExplanation = String(request.explanation || '').replace(/\r\n?/g, '\n');
+    showingRecordedScore = false;
+    recordedScoreDirty = false;
+    if (rootGeneExplanationText) rootGeneExplanationText.value = selectedBankExplanation;
+    document.getElementById('selectedSolutionLabel').textContent = '答案 ' + selectedSolutionNumber;
+  }
+
+  window.addEventListener('chess-solution-switch-check', function (event) {
+    if (solutionSavePending) {
+      event.detail.allowed = false;
+      setRootGeneMessage('正在保存答案，请稍后切换。');
+      return;
+    }
+    if (state.rootGeneRecording || recordedScoreDirty || (rootGeneExplanationText && rootGeneExplanationText.value !== selectedBankExplanation)) {
+      event.detail.allowed = window.confirm('当前解法有未保存的记录或解说，切换后会丢弃这些修改。确认切换？');
+    }
+  });
+
+  window.addEventListener("chess-bank-deleted", function () {
+    state.rootGeneRecording = false;
+    state.rootGeneRecordingQuestionId = null;
+    stopBankSolutionPlayback();
+    stopAiVsAiPlayback();
+    selectedBankQuestionId = null;
+    selectedBankPosition = null;
+    selectedBankExplanation = '';
+    selectedSolutionId = null;
+    selectedSolutionAnnotation = null;
+    showingRecordedScore = false;
+    document.getElementById('btnSolutionMenu').disabled = true;
+    setMode('manual');
+    resetGame();
+    updateRootGeneControls();
+    document.getElementById('bankSelection').textContent = '原棋局已删除，请重新选择题目。';
+    document.getElementById('bankAnswers').textContent = '';
+    if (rootGeneExplanationText) rootGeneExplanationText.value = '';
   });
 
   function resetEngineState() {
@@ -1340,11 +1400,11 @@
       }, 800);
       return;
     } catch (error) {
-      if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) return;
+      if (state.mode !== "human_ai") return;
       state.aiThinking = false;
       ensureAiMockData();
       var detail = String(error && error.message ? error.message : error);
-      if (retries < state.humanAi.maxRetries) {
+      if (retries < state.humanAi.maxRetries && detail.indexOf("非法先手局面") !== 0) {
         state.humanAi.status = "连接失败，正在重试";
         renderHumanAiPanel();
         window.setTimeout(function () {
@@ -1354,9 +1414,9 @@
         return;
       }
 
-      state.humanAi.status = "AI 暂不可用";
+      state.humanAi.status = detail;
       renderHumanAiPanel();
-      logger.error("human-ai.request.failed", { detail: detail });
+      logger.error("human-ai", "request.failed", { detail: detail });
     }
   }
 
@@ -1434,7 +1494,7 @@
       state.aiThinking = false;
       ensureAiMockData();
       var detail = String(error && error.message ? error.message : error);
-      if (retries < 2 && runToken === state.aiVsAiToken && state.mode === "ai_ai" && state.autoplay) {
+      if (retries < 2 && detail.indexOf("非法先手局面") !== 0 && runToken === state.aiVsAiToken && state.mode === "ai_ai" && state.autoplay) {
         sideState.status = "连接失败，正在重试";
         renderAiVsAiPanel();
         window.setTimeout(function () {
@@ -1444,9 +1504,17 @@
         return;
       }
 
-      sideState.status = "暂不可用";
+      if (runToken !== state.aiVsAiToken || state.mode !== "ai_ai" || !state.autoplay) return;
+      stopAiVsAiPlayback();
+      if (btnAuto) {
+        btnAuto.textContent = "▶";
+        btnAuto.title = "开始AI对战";
+      }
+      insightState = { fen: fen, status: "暂不可用", payload: null };
+      sideState.status = detail;
+      setRootGeneMessage(detail);
       renderAiVsAiPanel();
-      logger.error("ai-vs-ai.request.failed", { detail: detail });
+      logger.error("ai-vs-ai", "request.failed", { detail: detail });
     }
   }
 
@@ -1458,7 +1526,7 @@
       bankReviewPanel.classList.toggle("hidden", !selectedBankPosition || enabled || state.mode === "human_ai" || state.bankEditorVisible);
     }
     var backToReview = document.getElementById("btnBackToBankReview");
-    if (backToReview) backToReview.hidden = !selectedBankPosition || enabled || state.mode === "human_ai" || !state.bankEditorVisible;
+    if (backToReview) backToReview.hidden = true;
     var showEditor = document.getElementById("btnShowAnswerEditor");
     if (showEditor) showEditor.hidden = !selectedBankPosition || enabled || state.mode === "human_ai" || state.bankEditorVisible;
     if (humanAiPanel) {
@@ -1550,6 +1618,78 @@
     var activeBoard = board || state.board;
     return activeBoard[row][col];
   }
+
+  function renderSolutionAnnotation() {
+    var popup = document.getElementById('solutionAnnotationPopup');
+    if (!popup || !elBoard) return;
+    elBoard.querySelectorAll('.solution-highlight').forEach(function (square) {
+      square.classList.remove('solution-highlight');
+      square.style.removeProperty('--solution-highlight');
+    });
+    var previous = elBoard.querySelector('.solution-arrows');
+    if (previous) previous.remove();
+    var annotation = !showingRecordedScore && state.mode === 'manual' ? selectedSolutionAnnotation : null;
+    var current = null;
+    if (annotation) {
+      if (!bankSolutionCursor) current = annotation.intro;
+      else if (bankSolutionMoves.length && bankSolutionCursor >= bankSolutionMoves.length) current = annotation.outro;
+      else current = (annotation.moves || []).find(function (move) { return move.index === bankSolutionCursor - 1; });
+    }
+    var message = current && current.popup || '';
+    var documentText = new DOMParser().parseFromString(String(message).replace(/<br\s*\/?\s*>/gi, '\n'), 'text/html');
+    popup.textContent = documentText.body.textContent || '';
+    popup.classList.toggle('hidden', !popup.textContent);
+    function squareFor(name) {
+      if (!/^[a-h][1-8]$/.test(name)) return null;
+      return elBoard.querySelector('[data-row="' + (8 - Number(name[1])) + '"][data-col="' + FILES.indexOf(name[0]) + '"]');
+    }
+    function highlight(squares, color) {
+      (squares || []).forEach(function (name) {
+        var square = squareFor(name);
+        if (!square) return;
+        square.classList.add('solution-highlight');
+        if (color && CSS.supports('color', color)) square.style.setProperty('--solution-highlight', color);
+      });
+    }
+    if (annotation && annotation.board_always) highlight(annotation.board_always.highlight_squares, annotation.board_always.color);
+    if (current) {
+      highlight(current.flash_squares, '#e3ad16');
+      (current.highlights || []).forEach(function (item) { highlight(item.squares, item.color); });
+    }
+    var arrows = current && current.concept_arrows || [];
+    if (!arrows.length) return;
+    var bounds = elBoard.getBoundingClientRect();
+    var canvas = document.createElement('canvas');
+    canvas.className = 'solution-arrows';
+    canvas.width = Math.max(1, Math.round(bounds.width));
+    canvas.height = Math.max(1, Math.round(bounds.height));
+    elBoard.appendChild(canvas);
+    var context = canvas.getContext('2d');
+    arrows.forEach(function (arrow) {
+      var fromSquare = squareFor(arrow.from);
+      var toSquare = squareFor(arrow.to);
+      if (!fromSquare || !toSquare) return;
+      var fromBounds = fromSquare.getBoundingClientRect();
+      var toBounds = toSquare.getBoundingClientRect();
+      var fromX = fromBounds.left + fromBounds.width / 2 - bounds.left;
+      var fromY = fromBounds.top + fromBounds.height / 2 - bounds.top;
+      var toX = toBounds.left + toBounds.width / 2 - bounds.left;
+      var toY = toBounds.top + toBounds.height / 2 - bounds.top;
+      var angle = Math.atan2(toY - fromY, toX - fromX);
+      var headSize = fromBounds.width * 0.22;
+      context.strokeStyle = CSS.supports('color', arrow.color || '') ? arrow.color : '#168bac';
+      context.lineWidth = Math.max(2, fromBounds.width * 0.07);
+      context.beginPath();
+      context.moveTo(fromX, fromY);
+      context.lineTo(toX, toY);
+      context.moveTo(toX - headSize * Math.cos(angle - Math.PI / 6), toY - headSize * Math.sin(angle - Math.PI / 6));
+      context.lineTo(toX, toY);
+      context.lineTo(toX - headSize * Math.cos(angle + Math.PI / 6), toY - headSize * Math.sin(angle + Math.PI / 6));
+      context.stroke();
+    });
+  }
+  window.addEventListener('chess-bank-replay-progress', renderSolutionAnnotation);
+  window.addEventListener('resize', renderSolutionAnnotation);
 
   function setPiece(row, col, piece, board) {
     var activeBoard = board || state.board;
@@ -1996,10 +2136,76 @@
     return text;
   }
 
+  function buildSanBase(piece, move) {
+    if (move.isCastle) return move.castleSide === "kingside" ? "O-O" : "O-O-O";
+    var kind = getKind(piece);
+    var capture = !!getPiece(move.toRow, move.toCol) || !!move.isEnPassant;
+    var prefix = kind === "p" ? (capture ? FILES[move.fromCol] : "") : kind.toUpperCase();
+    if (kind !== "p") {
+      var alternatives = [];
+      for (var row = 0; row < 8; row += 1) {
+        for (var col = 0; col < 8; col += 1) {
+          if (row === move.fromRow && col === move.fromCol) continue;
+          var candidatePiece = getPiece(row, col);
+          if (!candidatePiece || getColor(candidatePiece) !== getColor(piece) || getKind(candidatePiece) !== kind) continue;
+          if (getLegalMoves(row, col).some(function (candidate) {
+            return candidate.toRow === move.toRow && candidate.toCol === move.toCol &&
+              (!!getPiece(candidate.toRow, candidate.toCol) || !!candidate.isEnPassant) === capture;
+          })) alternatives.push({ row: row, col: col });
+        }
+      }
+      if (alternatives.length) {
+        var sameFile = alternatives.some(function (item) { return item.col === move.fromCol; });
+        var sameRank = alternatives.some(function (item) { return item.row === move.fromRow; });
+        if (!sameFile) prefix += FILES[move.fromCol];
+        else if (!sameRank) prefix += String(8 - move.fromRow);
+        else prefix += FILES[move.fromCol] + String(8 - move.fromRow);
+      }
+    }
+    if (capture) prefix += "x";
+    var san = prefix + toCellName(move.toRow, move.toCol);
+    if (move.isPromotion) san += "=" + String(move.promotionKind || "q").toUpperCase();
+    return san;
+  }
+
   function pushNotation(text) {
-    var li = document.createElement("li");
-    li.textContent = text;
-    elNotationList.appendChild(li);
+    renderTurnNotation();
+  }
+
+  function buildTurnLines() {
+    var startTurn = selectedBankPosition ? selectedBankPosition.turn : "w";
+    var moveNumber = 1;
+    var index = 0;
+    var moves = state.moveHistory;
+    var lines = [];
+    if (startTurn === "b" && moves.length) {
+      lines.push(moveNumber + "... " + (moves[index].san || moves[index].notation));
+      index += 1;
+      moveNumber += 1;
+    }
+    while (index < moves.length) {
+      var line = moveNumber + ". " + (moves[index].san || moves[index].notation);
+      index += 1;
+      if (index < moves.length) {
+        line += " " + (moves[index].san || moves[index].notation);
+        index += 1;
+      }
+      lines.push(line);
+      moveNumber += 1;
+    }
+    return lines;
+  }
+
+  function renderTurnNotation() {
+    if (!elNotationList) return;
+    elNotationList.classList.toggle('hidden', !showingRecordedScore);
+    document.getElementById('bankAnswers').classList.toggle('hidden', showingRecordedScore);
+    elNotationList.replaceChildren();
+    buildTurnLines().forEach(function (line) {
+      var row = document.createElement("li");
+      row.textContent = line;
+      elNotationList.appendChild(row);
+    });
   }
 
   function promptPromotionChoice() {
@@ -2018,6 +2224,10 @@
     if (state.gameOver) {
       return false;
     }
+    if (!state.bankSolutionReplaying) {
+      showingRecordedScore = true;
+      recordedScoreDirty = true;
+    }
 
     var snapshotBefore = snapshotState();
     var sessionInitialFen = !practiceActivityId ? toFen() : null;
@@ -2026,6 +2236,7 @@
     if (move.isPromotion && !move.promotionKind) {
       move.promotionKind = promptPromotionChoice();
     }
+    var sanBase = buildSanBase(piece, move);
 
     var applied = applyMove(state.board, move, state.castlingRights);
     state.board = applied.board;
@@ -2095,9 +2306,11 @@
     };
 
     var notation = buildNotation(piece, move, state.lastMove);
+    var san = sanBase + (isCheckmate ? "#" : (opponentInCheck ? "+" : ""));
     state.moveHistory.push({
       snapshotBefore: snapshotBefore,
       notation: notation,
+      san: san,
       move: Object.assign({}, state.lastMove)
     });
     pushNotation(notation);
@@ -2337,9 +2550,7 @@
     }
     restoreSnapshot(last.snapshotBefore);
     if (selectedBankPosition && bankSolutionCursor > 0) bankSolutionCursor -= 1;
-    if (elNotationList.lastElementChild) {
-      elNotationList.removeChild(elNotationList.lastElementChild);
-    }
+    renderTurnNotation();
     renderBoard();
     if (state.mode === "human_ai") {
       state.humanAi.status = state.gameOver ? state.gameResultText : (state.turn === resolvePlayerColorCode() ? "轮到你" : "AI 即将走棋");
@@ -2446,6 +2657,7 @@
   }
 
   function setMode(mode) {
+    var previousMode = state.mode;
     if (selectedBankPosition && mode !== "manual") stopBankSolutionPlayback();
     if (state.mode === "ai_ai" && mode !== "ai_ai") {
       stopAiVsAiPlayback();
@@ -2480,6 +2692,126 @@
       setInsightPending(toFen(), "开始后分析");
     }
     logger.info("mode", "game-mode.changed", { mode: mode });
+    if (state.rootGeneRecording && mode === "manual" && previousMode !== "manual") finishRootGeneRecording();
+  }
+
+  function isSelectedRootGeneQuestion() {
+    return !!(selectedBankQuestionId && window.ChessRootGeneStore);
+  }
+
+  function setRootGeneMessage(text) {
+    document.getElementById("bankStatus").textContent = text;
+  }
+
+  function explanationSpeechText(text) {
+    return String(text || '').split(/#\s*END\b/i)[0].trim();
+  }
+
+  function updateRootGeneControls() {
+    var rootGene = isSelectedRootGeneQuestion();
+    if (btnRootGeneRecord) {
+      btnRootGeneRecord.classList.toggle("hidden", !rootGene);
+      btnRootGeneRecord.classList.toggle("recording", state.rootGeneRecording);
+      btnRootGeneRecord.textContent = state.rootGeneRecording ? "● 记录中…" : "● 开始记录";
+    }
+    if (btnRootGeneSave) btnRootGeneSave.classList.toggle("hidden", !rootGene);
+    if (btnSaveRootGeneExplanation) btnSaveRootGeneExplanation.classList.toggle("hidden", !rootGene);
+    if (rootGeneExplanationText) rootGeneExplanationText.classList.toggle("hidden", !rootGene);
+    if (expandPanel) expandPanel.classList.toggle("hidden", rootGene);
+    if (btnSaveExplain) btnSaveExplain.classList.toggle("hidden", rootGene);
+    if (btnSaveNote) btnSaveNote.classList.toggle("hidden", rootGene);
+    if (btnRootGeneSave) btnRootGeneSave.disabled = selectedSolutionReadOnly || !selectedSolutionId || solutionSavePending;
+    if (btnSaveRootGeneExplanation) btnSaveRootGeneExplanation.disabled = selectedSolutionReadOnly || !selectedSolutionId || solutionSavePending;
+  }
+
+  function renderRootGeneAnswer(solutionText) {
+    var answers = document.getElementById("bankAnswers");
+    if (!answers) return;
+    answers.classList.add("root-gene-answer");
+    answers.textContent = String(solutionText || "").trim() || "此题还没有保存答案棋谱。点击“开始记录”，选择 AI-AI 对弈后切回手动模式，再点击“保存棋谱”。";
+    showingRecordedScore = false;
+    renderTurnNotation();
+    renderSolutionAnnotation();
+  }
+
+  function startRootGeneRecording() {
+    if (!isSelectedRootGeneQuestion()) return;
+    stopBankSolutionPlayback();
+    setMode("manual");
+    state.autoplay = false;
+    state.aiThinking = false;
+    state.aiVsAiToken += 1;
+    resetGame();
+    state.rootGeneRecording = true;
+    state.rootGeneRecordingQuestionId = selectedBankQuestionId;
+    updateRootGeneControls();
+    showingRecordedScore = true;
+    recordedScoreDirty = false;
+    renderTurnNotation();
+    document.getElementById('selectedSolutionLabel').textContent = '答案 ' + selectedSolutionNumber + ' · 记录中';
+    renderSolutionAnnotation();
+    setRootGeneMessage("记录中：请选择 🤖 AI-AI 模式并点击 ▶ 开始对弈；对弈结束后切回 👥 手动模式即可停止记录。");
+    logger.info("root-gene", "recording.started", { questionId: selectedBankQuestionId });
+  }
+
+  function finishRootGeneRecording() {
+    if (!state.rootGeneRecording) return;
+    state.rootGeneRecording = false;
+    state.autoplay = false;
+    state.aiThinking = false;
+    if (state.mode !== "manual") setMode("manual");
+    updateRootGeneControls();
+    var notationTab = document.querySelector('.tab[data-target="notations"]');
+    if (notationTab) notationTab.click();
+    setRootGeneMessage("记录已停止，共 " + state.moveHistory.length + " 步；确认棋谱后点击“保存棋谱”，解说可在下方编辑并“保存解说”。");
+    logger.info("root-gene", "recording.stopped", { questionId: state.rootGeneRecordingQuestionId, plies: state.moveHistory.length });
+  }
+
+  function saveRootGeneNotation() {
+    if (!isSelectedRootGeneQuestion()) return;
+    if (state.rootGeneRecording) finishRootGeneRecording();
+    var text = showingRecordedScore ? buildTurnLines().join("\n") : '';
+    if (!text) {
+      setRootGeneMessage("还没有记录到棋谱：请先点击“开始记录”，用 AI-AI 对弈后再保存。");
+      return;
+    }
+    btnRootGeneSave.disabled = true;
+    saveSelectedSolution({ solutionText: text });
+  }
+
+  function saveRootGeneExplanation() {
+    if (!isSelectedRootGeneQuestion()) return;
+    var text = rootGeneExplanationText ? rootGeneExplanationText.value.trim() : "";
+    if (!text) {
+      setRootGeneMessage("请先输入解说内容。");
+      return;
+    }
+    btnSaveRootGeneExplanation.disabled = true;
+    saveSelectedSolution({ explanation: text });
+  }
+
+  function saveSelectedSolution(fields) {
+    if (!selectedSolutionId || selectedSolutionReadOnly || solutionSavePending) return;
+    var questionId = selectedBankQuestionId;
+    var solutionId = selectedSolutionId;
+    solutionSavePending = true;
+    updateRootGeneControls();
+    window.ChessRootGeneStore.saveSolution(questionId, solutionId, fields).then(function (result) {
+      if (questionId !== selectedBankQuestionId || solutionId !== selectedSolutionId) return;
+      var solution = result.solutions.find(function (item) { return item.id === solutionId; });
+      selectedSolutionAnnotation = solution.annotation || null;
+      if (fields.explanation !== undefined) selectedBankExplanation = String(solution.explanation).replace(/\r\n?/g, '\n');
+      if (fields.solutionText !== undefined) {
+        recordedScoreDirty = false;
+        loadBankSolution(solution.text, '答案 ' + selectedSolutionNumber);
+        renderRootGeneAnswer(solution.text);
+      }
+      window.dispatchEvent(new CustomEvent('chess-solution-saved', { detail: Object.assign({}, result, { savedFields: fields }) }));
+      setRootGeneMessage('答案 ' + selectedSolutionNumber + ' 已保存：web/chess/' + solution.relativePath);
+    }).catch(function (error) { setRootGeneMessage('保存失败：' + error.message); }).then(function () {
+      solutionSavePending = false;
+      updateRootGeneControls();
+    });
   }
 
   function bindButtons() {
@@ -2496,7 +2828,7 @@
       logger.info("ui", "hints.toggled", { enabled: state.hintsEnabled });
     });
     bindIf(btnAuto, "click", function () {
-      if (selectedBankPosition && state.mode === "manual") {
+      if (selectedBankPosition && state.mode === "manual" && !state.rootGeneRecording) {
         if (state.autoplay) {
           stopBankSolutionPlayback();
           document.getElementById("bankStatus").textContent = "答案播放已暂停";
@@ -2540,7 +2872,7 @@
       logger.info("mode", "autoplay.toggled", { enabled: state.autoplay });
     });
     bindIf(btnNext, "click", function () {
-      if (selectedBankPosition && state.mode === "manual") {
+      if (selectedBankPosition && state.mode === "manual" && !state.rootGeneRecording) {
         stepBankSolutionManually();
         return;
       }
@@ -2573,6 +2905,12 @@
         voiceManager.speak("AI对战模式", { force: true });
       }
     });
+    bindIf(btnRootGeneRecord, "click", function () {
+      if (state.rootGeneRecording) finishRootGeneRecording();
+      else startRootGeneRecording();
+    });
+    bindIf(btnRootGeneSave, "click", saveRootGeneNotation);
+    bindIf(btnSaveRootGeneExplanation, "click", saveRootGeneExplanation);
     bindIf(btnColor, "click", function () {
       state.playerColor = state.playerColor === "white" ? "black" : "white";
       btnColor.textContent = state.playerColor === "white" ? "⚪" : "⚫";
@@ -2582,9 +2920,16 @@
       logger.info("mode", "player-color.changed", { color: state.playerColor });
     });
     bindIf(btnExplain, "click", function () {
+      if (isSelectedRootGeneQuestion()) {
+        var spoken = explanationSpeechText(rootGeneExplanationText ? rootGeneExplanationText.value : "");
+        if (spoken) voiceManager.speak(spoken, { force: true });
+        else setRootGeneMessage("解说内容为空，请先输入解说。");
+        return;
+      }
       if (selectedBankPosition) {
-        state.bankEditorVisible = true;
-        setAiVsAiView(state.mode === "ai_ai");
+        var explanation = explanationSpeechText(selectedBankExplanation);
+        if (explanation) voiceManager.speak(explanation, { force: true });
+        else setRootGeneMessage("解说内容为空。");
         return;
       }
       if (expandPanel) {
@@ -2593,7 +2938,8 @@
       logger.info("panel", "explain.clicked", {});
     });
     bindIf(document.getElementById("btnBankCommentary"), "click", function () {
-      if (selectedBankExplanation) voiceManager.speak(selectedBankExplanation, { force: true });
+      var explanation = explanationSpeechText(selectedBankExplanation);
+      if (explanation) voiceManager.speak(explanation, { force: true });
     });
     bindIf(btnSaveExplain, "click", function () {
       saveLearningSession(true, expandPanel ? expandPanel.textContent : '');
