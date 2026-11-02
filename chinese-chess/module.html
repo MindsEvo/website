@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172638" />
+  <title>中国象棋模块 | 思进启智</title>
+  <link rel="stylesheet" href="./chinese-chess.css" />
+</head>
+<body class="module-page">
+  <header class="topbar">
+    <a class="brand" href="./index.html" aria-label="返回中国象棋首页">
+      <img src="../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="./index.html">系统首页</a>
+      <a class="nav-link nav-link-muted" href="../chess-series/index.html">棋类系列</a>
+    </nav>
+  </header>
+  <main class="module-shell">
+    <a class="back-link" href="./index.html"><span aria-hidden="true">←</span> 返回系统首页</a>
+    <section class="module-panel" aria-labelledby="moduleTitle">
+      <p class="eyebrow"><span class="eyebrow-mark"></span> 中国象棋 · 模块移植</p>
+      <p class="module-index" id="moduleIndex"></p>
+      <h1 id="moduleTitle">模块</h1>
+      <p class="module-lead" id="moduleLead"></p>
+      <div class="build-state">
+        <span class="state-dot" aria-hidden="true"></span>
+        <div>
+          <strong id="moduleState"></strong>
+          <p id="moduleNext"></p>
+        </div>
+      </div>
+      <a class="primary-link" href="./index.html">返回模块总览</a>
+    </section>
+  </main>
+  <script src="./module.js"></script>
+</body>
+</html>

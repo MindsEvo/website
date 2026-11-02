@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f4f5" />
+  <title>残局基础 | 象棋学习中心</title>
+  <link rel="stylesheet" href="../../chinese-chess.css" />
+  <link rel="stylesheet" href="../intro/board-display.css" />
+  <link rel="stylesheet" href="../../board-standard.css" />
+  <link rel="stylesheet" href="./endgame.css" />
+  <link rel="stylesheet" href="../../shared/board-control-panel.css" />
+</head>
+<body class="academy-page board-display-only endgame-display-only">
+  <main class="lesson-shell">
+    <section class="board-display-app" id="boardDisplayApp" aria-label="残局基础课程">
+      <a class="board-course-back" href="../intro/index.html">返回学习中心</a>
+      <div class="board-course-layout">
+        <section class="board-course-left" aria-label="残局示例棋盘">
+          <div class="teaching-board-frame standard-board-surface">
+            <div class="teaching-board-engraving" aria-hidden="true">残局示例：单车胜光将</div>
+            <div class="teaching-coordinate top-coordinates" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div class="teaching-board xiangqi-grid-area" id="teachingBoard" role="grid" aria-label="残局示例棋盘"></div>
+            <div class="teaching-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+            <div class="teaching-coordinate bottom-coordinates" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+            <div class="teaching-side-label" aria-hidden="true">红方走棋</div>
+          </div>
+          <div class="teaching-board-status" id="boardLessonStatus" hidden></div>
+          <nav class="board-toolbar" id="boardToolbar" aria-label="棋盘控制">
+            <button type="button" aria-label="重置棋盘" title="重置棋盘">↻</button>
+            <button type="button" aria-label="自动播放" title="自动播放">▶</button>
+            <button type="button" aria-label="上一步" title="上一步">↶</button>
+            <button type="button" aria-label="下一步" title="下一步">→</button>
+            <button type="button" aria-label="语音" title="语音">🔊</button>
+            <button type="button" aria-label="标记" title="标记">✎</button>
+            <span class="toolbar-divider" aria-hidden="true"></span>
+            <button type="button" aria-label="双人模式" title="双人模式">👥</button>
+            <button type="button" aria-label="单人模式" title="单人模式">♟</button>
+            <button type="button" aria-label="记录" title="记录">▤</button>
+            <button type="button" aria-label="停止" title="停止">■</button>
+          </nav>
+        </section>
+
+        <section class="board-course-right" aria-label="残局基础课程内容">
+          <header class="board-course-title">
+            <h1>2. 残局基础</h1>
+            <div class="audience-actions">
+              <button type="button" class="audience-student">致学生</button>
+              <button type="button" class="audience-parent">致家长</button>
+            </div>
+          </header>
+
+          <section class="board-course-section endgame-category-section" aria-labelledby="endgameCategoriesTitle">
+            <h2 id="endgameCategoriesTitle">残局类别</h2>
+            <div class="feature-buttons" id="endgameCategoryButtons"></div>
+          </section>
+
+          <section class="board-course-section endgame-example-section" aria-labelledby="endgameExamplesTitle">
+            <h2 id="endgameExamplesTitle">典型局面</h2>
+            <div id="endgameExamples"></div>
+          </section>
+
+          <section class="board-course-section quiz-section endgame-facts-section" aria-labelledby="endgameFactsTitle">
+            <h2 id="endgameFactsTitle">题库概览</h2>
+            <div class="board-lesson-content" id="endgameFacts" aria-label="残局题库统计"></div>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./endgame-page.mjs"></script>
+  <script type="module" src="../../shared/board-control-panel-boot.mjs"></script>
+</body>
+</html>

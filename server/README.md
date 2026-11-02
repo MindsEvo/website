@@ -41,6 +41,24 @@ and `.exp.txt` files under the matching course directory. The browser never
 chooses a folder or sends an arbitrary filesystem path. Start this server before
 using “存储到题库”.
 
+## Chinese chess engine API
+
+The Chinese chess AI uses Pikafish, not the international-chess Stockfish
+service. Set `MINDSEVO_PIKAFISH_PATH` to the Pikafish executable when it is not
+available at the local development default path. `MINDSEVO_PIKAFISH_NNUE_PATH`
+can override the adjacent `pikafish.nnue` file.
+
+- `GET /api/v1/chinese-chess/engine/health` reports engine and NNUE availability.
+- `POST /api/v1/chinese-chess/engine/ai-ai/config` accepts independent `red` and
+  `black` settings (`threads`, `hash`, `depth`, `movetime`, `multiPv`).
+- `POST /api/v1/chinese-chess/engine/ai-ai/move` accepts `{ fen, side, settings }`
+  and returns Pikafish's best move, parsed analysis, and board coordinates. UCI
+  move ranks are converted to the web board's zero-based row indices.
+
+The AI-AI page requires this local server on port 8787. The engine is serialized
+between sides through one Pikafish process; it applies each side's configuration
+before searching.
+
 ## Example payload
 
 ```json

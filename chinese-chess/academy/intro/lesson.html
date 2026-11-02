@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172638" />
+  <title>课程 | 中国象棋智慧平台</title>
+  <link rel="stylesheet" href="../../chinese-chess.css" />
+  <link rel="stylesheet" href="./academy.css" />
+  <link rel="stylesheet" href="./board-demo.css" />
+  <link rel="stylesheet" href="./board-display.css" />
+  <link rel="stylesheet" href="../../board-standard.css" />
+  <link rel="stylesheet" href="../../shared/board-control-panel.css" />
+</head>
+<body class="academy-page lesson-page">
+  <header class="topbar">
+    <a class="brand" href="../../index.html" aria-label="返回中国象棋首页">
+      <img src="../../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="./index.html">课程目录</a>
+      <a class="nav-link nav-link-muted" href="../../index.html">系统首页</a>
+    </nav>
+  </header>
+
+  <main class="lesson-shell">
+    <a class="back-link" href="./index.html"><span aria-hidden="true">←</span> 返回初学者介绍</a>
+    <div class="lesson-layout">
+      <aside class="lesson-nav-panel">
+        <p class="section-kicker">初学者介绍</p>
+        <nav class="lesson-nav" id="lessonNav" aria-label="课时目录"></nav>
+      </aside>
+      <article class="lesson-article" aria-labelledby="lessonTitle">
+        <p class="eyebrow"><span class="eyebrow-mark"></span><span id="lessonNumber">课程</span></p>
+        <h1 id="lessonTitle">课程</h1>
+        <p class="lesson-lead" id="lessonDescription"></p>
+
+        <div class="lesson-actions">
+          <button class="voice-button" id="speakButton" type="button"><span aria-hidden="true">▶</span> 播放课程导语</button>
+          <button class="voice-stop" id="stopButton" type="button" aria-label="停止语音" title="停止语音">■</button>
+          <span class="lesson-progress" id="lessonProgress"></span>
+        </div>
+
+        <section class="lesson-demo" id="lessonDemo" aria-labelledby="demoTitle" hidden>
+          <div class="demo-heading">
+            <div><p class="section-kicker">互动演示</p><h2 id="demoTitle">棋盘观察</h2></div>
+            <span class="demo-kind" id="demoKind"></span>
+          </div>
+          <div class="demo-controls" id="demoControls" role="group" aria-label="演示选择"></div>
+          <div class="demo-layout">
+            <div class="lesson-board-wrap">
+              <div class="lesson-board-frame standard-board-surface">
+                <div class="lesson-file-labels lesson-file-labels-top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+                <div class="lesson-river xiangqi-river-surface" aria-hidden="true"><span>楚河</span><span>汉界</span></div>
+                <div class="lesson-board xiangqi-grid-area" id="lessonBoard" role="grid" aria-label="课程演示棋盘"></div>
+                <div class="lesson-file-labels lesson-file-labels-bottom" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+              </div>
+            </div>
+            <div class="demo-description">
+              <p id="demoInstruction">选择一个演示主题。</p>
+              <button class="demo-reset" id="demoReset" type="button" hidden>重新演示</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="lesson-focus" aria-labelledby="focusTitle">
+          <p class="section-kicker">本节要点</p>
+          <h2 id="focusTitle">学习内容</h2>
+          <ul id="topicList"></ul>
+          <p class="content-state" id="contentState"></p>
+          <a class="practice-link" id="practiceLink" href="../../play/index.html">前往对弈模式 <span aria-hidden="true">→</span></a>
+        </section>
+
+        <section class="lesson-quiz" id="quizSection" aria-labelledby="quizHeading" hidden>
+          <p class="section-kicker">课后问答</p>
+          <h2 id="quizHeading">试一试</h2>
+          <p class="quiz-question" id="quizQuestion"></p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <button class="quiz-submit" id="quizSubmit" type="button">提交答案</button>
+          <p class="quiz-feedback" id="quizFeedback" role="status" aria-live="polite"></p>
+        </section>
+
+        <div class="guidance-list">
+          <section class="guidance-row">
+            <span class="guidance-label">课程导语</span>
+            <p id="teacherText"></p>
+          </section>
+          <section class="guidance-row">
+            <span class="guidance-label">致学生</span>
+            <p id="studentText"></p>
+          </section>
+          <section class="guidance-row">
+            <span class="guidance-label">致家长</span>
+            <p id="parentText"></p>
+          </section>
+        </div>
+
+        <nav class="lesson-pagination" aria-label="课时翻页">
+          <a id="previousLesson" href="./index.html">上一课</a>
+          <a id="nextLesson" href="./index.html">下一课 <span aria-hidden="true">→</span></a>
+        </nav>
+      </article>
+    </div>
+
+    <section class="board-display-app" id="boardDisplayApp" aria-label="棋盘显示课程" hidden>
+      <a class="board-course-back" href="./beginner.html">返回课程介绍</a>
+      <div class="board-course-layout">
+        <section class="board-course-left" aria-label="棋盘结构示意">
+          <div class="teaching-board-frame standard-board-surface">
+            <div class="teaching-board-engraving" aria-hidden="true">CogniChess 象棋教学系统</div>
+            <div class="teaching-coordinate top-coordinates" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div class="teaching-board xiangqi-grid-area" id="teachingBoard" role="grid" aria-label="可点击的象棋棋盘"></div>
+            <div class="teaching-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+            <div class="teaching-coordinate bottom-coordinates" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+            <div class="teaching-side-label" aria-hidden="true">红方走棋</div>
+          </div>
+          <div class="teaching-board-status" id="boardLessonStatus" role="status" aria-live="polite">选择右侧功能，观察或练习棋盘结构。</div>
+          <nav class="board-toolbar" id="boardToolbar" aria-label="棋盘控制" hidden>
+            <button type="button" data-toolbar="reset" aria-label="重置棋盘" title="重置棋盘">↻</button>
+            <button type="button" data-toolbar="play" aria-label="自动播放观察" title="自动播放观察">▶</button>
+            <button type="button" data-toolbar="previous" aria-label="上一个观察主题" title="上一个观察主题">↶</button>
+            <button type="button" data-toolbar="next" aria-label="下一个观察主题" title="下一个观察主题">→</button>
+            <button type="button" data-toolbar="sound" aria-label="语音" title="语音">🔊</button>
+            <button type="button" data-toolbar="annotate" aria-label="标记" title="标记">✎</button>
+            <span class="toolbar-divider" aria-hidden="true"></span>
+            <button type="button" data-toolbar="group" aria-label="双人模式" title="双人模式">👥</button>
+            <button type="button" data-toolbar="piece" aria-label="单人模式" title="单人模式">♟</button>
+            <button type="button" data-toolbar="quiz" aria-label="记录" title="记录">▤</button>
+            <button type="button" data-toolbar="stop" aria-label="停止" title="停止">■</button>
+          </nav>
+        </section>
+
+        <section class="board-course-right" aria-label="棋盘显示教学内容">
+          <header class="board-course-title">
+            <h1 id="boardCourseTitle">3. 棋盘显示</h1>
+            <div class="audience-actions">
+              <button type="button" class="audience-student" id="speakStudent">致学生</button>
+              <button type="button" class="audience-parent" id="speakParent">致家长</button>
+            </div>
+          </header>
+
+          <section class="board-course-section observation-section" aria-labelledby="observationTitle">
+            <h2 id="observationTitle">动态观察</h2>
+            <div class="feature-buttons" id="observationButtons"></div>
+          </section>
+
+          <section class="board-course-section practice-section" aria-labelledby="practiceTitle">
+            <h2 id="practiceTitle">操作练习</h2>
+            <div class="feature-buttons" id="practiceButtons"></div>
+          </section>
+
+          <section class="board-course-section quiz-section" aria-labelledby="boardQuizTitle">
+            <h2 id="boardQuizTitle">问答练习</h2>
+            <div class="quiz-topic-buttons" id="boardQuizButtons"></div>
+            <div class="board-lesson-content" id="boardLessonContent" aria-live="polite">
+              <p class="board-content-placeholder">请选择功能，查看棋盘说明或开始练习。</p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./lesson.js"></script>
+  <script type="module" src="../../shared/board-control-panel-boot.mjs"></script>
+</body>
+</html>

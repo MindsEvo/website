@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f4f5" />
+  <title>根基因库管理系统 | CogniChess</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="../board-standard.css" />
+  <link rel="stylesheet" href="./rootgene.css" />
+  <link rel="stylesheet" href="../shared/board-control-panel.css" />
+</head>
+<body class="rootgene-page">
+  <main class="rootgene-app">
+    <header class="rootgene-header">
+      <div class="rootgene-brand"><span aria-hidden="true">🧬</span><h1>根基因库管理系统</h1><p>智能题目生成与AI测试平台</p></div>
+      <div class="rootgene-header-actions">
+        <a class="rootgene-back" href="../settings/index.html"><span aria-hidden="true">⇦</span> 返回设置</a>
+        <span class="rootgene-status"><i aria-hidden="true"></i> 系统就绪</span>
+      </div>
+    </header>
+
+    <div class="rootgene-workspace">
+      <section class="rootgene-panel control-panel" aria-labelledby="controlTitle">
+        <h2 class="panel-title" id="controlTitle"><span aria-hidden="true">🎛️</span> 控制面板</h2>
+
+        <fieldset class="control-group gene-select-group">
+          <legend>根基因选择</legend>
+          <label class="select-line"><span>基因类型:</span><select aria-label="基因类型"><option>残局基因</option></select></label>
+          <label class="select-line"><span>难度级别:</span><select aria-label="难度级别"><option>L1 基础</option></select></label>
+          <div class="gene-list-placeholder" aria-label="基因列表"></div>
+          <div class="gene-add-row"><input type="text" placeholder="输入新基因名称(格式:名称-L1/2/3-序号)" aria-label="新基因名称" /><button type="button" class="small-add">添加</button><button type="button" class="small-delete">删除</button></div>
+        </fieldset>
+
+        <fieldset class="control-group piece-config-group">
+          <legend>棋子数量配置</legend>
+          <div class="piece-config-row">
+            <span class="side-swatch swatch-black" aria-label="黑方"></span>
+            <label>车: <input type="number" value="0" aria-label="黑方车数量" /></label>
+            <label>马: <input type="number" value="0" aria-label="黑方马数量" /></label>
+            <label>炮: <input type="number" value="0" aria-label="黑方炮数量" /></label>
+            <label>象: <input type="number" value="0" aria-label="黑方象数量" /></label>
+            <label>士: <input type="number" value="0" aria-label="黑方士数量" /></label>
+            <label>卒: <input type="number" value="0" aria-label="黑方卒数量" /></label>
+          </div>
+          <div class="piece-config-row">
+            <span class="side-swatch swatch-red" aria-label="红方"></span>
+            <label>车: <input type="number" value="0" aria-label="红方车数量" /></label>
+            <label>马: <input type="number" value="0" aria-label="红方马数量" /></label>
+            <label>炮: <input type="number" value="0" aria-label="红方炮数量" /></label>
+            <label>相: <input type="number" value="0" aria-label="红方相数量" /></label>
+            <label>仕: <input type="number" value="0" aria-label="红方仕数量" /></label>
+            <label>兵: <input type="number" value="0" aria-label="红方兵数量" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group generation-group">
+          <legend>生成参数</legend>
+          <label class="parameter-row"><span>题目数量:</span><select aria-label="题目数量"><option>1 题</option></select></label>
+          <label class="parameter-row"><span>难度系数:</span><input type="range" min="1" max="10" value="1" aria-label="难度系数" /><output>1 (最低)</output></label>
+          <label class="parameter-row"><span>变化程度:</span><input type="range" min="1" max="10" value="1" aria-label="变化程度" /><output>1 (最低)</output></label>
+          <label class="ai-check"><input type="checkbox" checked /> 启用AI验证</label>
+        </fieldset>
+
+        <fieldset class="control-group action-group">
+          <legend>操作控制</legend>
+          <div class="action-buttons">
+            <button type="button" class="action-generate">🚀 开始生成</button>
+            <button type="button" class="action-save">▣ 存储到题库</button>
+            <button type="button" class="action-ai">🧪 AI测试</button>
+            <button type="button" class="action-clear">▧ 清空结果</button>
+            <button type="button" class="action-validate">🔍 验证PGN</button>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="rootgene-panel board-panel" aria-labelledby="boardTitle">
+        <h2 class="panel-title" id="boardTitle"><span aria-hidden="true">🎯</span> 棋盘视图</h2>
+        <div class="gene-board-wrap">
+          <div class="gene-board standard-board-surface">
+            <div class="gene-board-engraving" aria-hidden="true">CogniChess 象棋教学系统</div>
+            <div class="gene-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+            <div class="gene-grid xiangqi-grid-area" id="geneBoard" role="grid" aria-label="根基因局面预览"></div>
+            <div class="gene-side-label" aria-hidden="true">红方走棋</div>
+          </div>
+        </div>
+        <div class="gene-position-info"><strong>当前FEN:</strong><span id="currentFen">等待生成...</span></div>
+      </section>
+
+      <aside class="rootgene-panel info-panel" aria-labelledby="infoTitle">
+        <h2 class="panel-title" id="infoTitle"><span aria-hidden="true">📊</span> 信息面板</h2>
+        <div class="info-tab">JSON</div>
+        <label class="json-label" for="geneJson">题目JSON:</label>
+        <textarea id="geneJson" readonly spellcheck="false" aria-label="题目JSON预览">{
+  "geneId": "请选择基因",
+  "displayInfo": {
+    "chineseName": "等待生成..."
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  }
+}</textarea>
+      </aside>
+    </div>
+
+    <footer class="rootgene-footer"><span>根基因库管理系统 v1.0 | 支持5种棋盘类型，3级难度体系</span><button type="button" disabled>▣ 保存</button></footer>
+  </main>
+  <script type="module" src="./rootgene-page.mjs"></script>
+  <script type="module" src="../shared/board-control-panel-boot.mjs"></script>
+</body>
+</html>

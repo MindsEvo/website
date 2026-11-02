@@ -1,0 +1,46 @@
+.xiangqi-control-panel {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 6px;
+  padding: 3px 0 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 3px;
+  border-top: 1px solid #e4e9ed;
+}
+.xiangqi-control-panel .xiangqi-control-button {
+  box-sizing: border-box;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 25px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #dfe3e6;
+  border-radius: 3px;
+  color: #46515a;
+  background: #fafafa;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.xiangqi-control-panel .xiangqi-control-button:hover { border-color: #b7c8d3; background: #f2f7f9; }
+.xiangqi-control-panel .xiangqi-control-button:disabled { color: #aab4be; background: #f0f2f3; cursor: not-allowed; }
+.xiangqi-control-panel .xiangqi-control-button.is-active { color: #fff; border-color: #2588e7; background: #2588e7; }
+.xiangqi-control-panel .xiangqi-control-divider { box-sizing: border-box; flex: 0 0 1px; height: 20px; margin: 0 2px; background: #bdc2c6; }
+.xiangqi-control-range { box-sizing: border-box; flex: 0 1 68px; min-width: 60px; margin: 0; display: flex; align-items: center; gap: 3px; color: #707e89; font-size: 8px; white-space: nowrap; }
+.xiangqi-control-range + .xiangqi-control-range { flex-basis: 64px; min-width: 58px; margin-left: 0; }
+.xiangqi-control-range input { box-sizing: border-box; flex: 1 1 38px; width: 38px; min-width: 30px; height: 15px; margin: 0; accent-color: #df8042; cursor: pointer; }
+.xiangqi-board-flipped .xiangqi-grid-area { transform: rotate(180deg); }
+.xiangqi-board-flipped .xiangqi-grid-area .xiangqi-intersection > * { transform: rotate(180deg); }
+@media (max-width: 680px) {
+  .xiangqi-control-panel { gap: 1px; }
+  .xiangqi-control-panel .xiangqi-control-button { flex-basis: 20px; width: 20px; height: 22px; font-size: 11px; }
+  .xiangqi-control-panel .xiangqi-control-divider { margin: 0 1px; }
+  .xiangqi-control-range, .xiangqi-control-range + .xiangqi-control-range { flex-basis: 54px; min-width: 52px; gap: 2px; font-size: 7px; }
+  .xiangqi-control-range input { flex-basis: 30px; width: 30px; min-width: 26px; height: 14px; }
+}

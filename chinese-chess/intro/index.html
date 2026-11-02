@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f6fa" />
+  <title>系统介绍 | 象棋智能学习系统</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="./intro.css" />
+</head>
+<body class="system-intro-page">
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="返回中国象棋首页">
+      <img src="../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="../index.html">系统首页</a>
+      <a class="nav-link nav-link-muted" href="../academy/intro/index.html">学习中心</a>
+    </nav>
+  </header>
+
+  <main class="system-intro-shell">
+    <header class="system-intro-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> 象棋智能学习系统</p>
+        <h1>系统介绍</h1>
+        <p>用象棋激发未来智慧。这里汇集中国象棋对弈、入门学习与残局题库。</p>
+      </div>
+      <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回系统首页</a>
+    </header>
+
+    <section class="intro-stats" aria-label="当前系统内容">
+      <article class="intro-stat stat-play"><span>对弈模式</span><strong>双人</strong><small>基础规则已接入</small></article>
+      <article class="intro-stat stat-learning"><span>入门课程</span><strong>6</strong><small>课时内容</small></article>
+      <article class="intro-stat stat-endgame"><span>残局题库</span><strong>27</strong><small>L1 · 4 类</small></article>
+      <article class="intro-stat stat-records"><span>记录与分析</span><strong>待接入</strong><small>集中历史数据</small></article>
+    </section>
+
+    <section class="intro-section" aria-labelledby="modulesTitle">
+      <div class="intro-section-heading">
+        <div><p class="section-kicker">系统模块</p><h2 id="modulesTitle">当前功能范围</h2></div>
+      </div>
+      <div class="module-list">
+        <a class="module-row" href="../play/index.html">
+          <span class="module-mark mark-play" aria-hidden="true">弈</span>
+          <span class="module-copy"><strong>对弈模式</strong><small>双人基础对弈、合法走法与棋局记录编辑</small></span>
+          <span class="module-state state-ready">已接入</span>
+          <span class="module-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="module-row" href="../academy/intro/beginner.html">
+          <span class="module-mark mark-learning" aria-hidden="true">学</span>
+          <span class="module-copy"><strong>初学者介绍</strong><small>观察棋盘、认识棋子、棋盘显示、棋子走法与回顾</small></span>
+          <span class="module-state state-ready">6 课时</span>
+          <span class="module-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="module-row" href="../academy/endgame/index.html">
+          <span class="module-mark mark-endgame" aria-hidden="true">残局</span>
+          <span class="module-copy"><strong>残局基础</strong><small>残局类别与典型局面预览</small></span>
+          <span class="module-state state-ready">27 局</span>
+          <span class="module-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="module-row" href="../records/index.html">
+          <span class="module-mark mark-records" aria-hidden="true">谱</span>
+          <span class="module-copy"><strong>我的记录</strong><small>本机棋谱草稿与文本导出；集中历史列表待接入</small></span>
+          <span class="module-state state-pending">部分接入</span>
+          <span class="module-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="module-row" href="../analysis/index.html">
+          <span class="module-mark mark-analysis" aria-hidden="true">析</span>
+          <span class="module-copy"><strong>系统分析</strong><small>当前统计已接入残局题库；对弈与学习记录待接入</small></span>
+          <span class="module-state state-pending">部分接入</span>
+          <span class="module-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="intro-section learning-path-section" aria-labelledby="pathTitle">
+      <div class="intro-section-heading">
+        <div><p class="section-kicker">学习路径</p><h2 id="pathTitle">从入门到实战</h2></div>
+      </div>
+      <div class="learning-path">
+        <a class="path-step path-available" href="../academy/intro/beginner.html"><span>01</span><strong>初学者介绍</strong><small>已开放</small></a>
+        <a class="path-step path-available" href="../academy/endgame/index.html"><span>02</span><strong>残局基础</strong><small>题库预览</small></a>
+        <a class="path-step path-pending" href="../module.html?module=attack"><span>03</span><strong>基本攻杀</strong><small>待移植</small></a>
+        <a class="path-step path-pending" href="../module.html?module=tactics"><span>04</span><strong>基本战术</strong><small>待移植</small></a>
+        <a class="path-step path-pending" href="../module.html?module=opening"><span>05</span><strong>基本开局</strong><small>待移植</small></a>
+        <a class="path-step path-pending" href="../module.html?module=comprehensive"><span>06</span><strong>综合运用</strong><small>待移植</small></a>
+      </div>
+    </section>
+
+    <p class="intro-footnote">数据说明：残局题库当前包含 L1 的 27 个局面，分为炮、马、兵、车四类；课程完成度与对局统计尚未汇总。</p>
+  </main>
+</body>
+</html>

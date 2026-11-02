@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f4f5" />
+  <title>AI-AI对弈模式 | CogniChess</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="../board-standard.css" />
+  <link rel="stylesheet" href="../shared/board-control-panel.css" />
+  <link rel="stylesheet" href="./human-ai.css" />
+  <link rel="stylesheet" href="./ai-ai.css" />
+</head>
+<body class="human-ai-page ai-ai-page">
+  <main class="human-ai-shell">
+    <a class="human-ai-back" href="./index.html">返回主页</a>
+    <div class="human-ai-layout">
+      <section class="human-ai-board-column" aria-label="AI-AI对弈棋盘">
+        <div class="human-ai-board-frame standard-board-surface">
+          <div class="human-ai-engraving" aria-hidden="true">CogniChess 象棋教学系统</div>
+          <div class="human-ai-files human-ai-files-top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          <div class="human-ai-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+          <div class="human-ai-board xiangqi-grid-area" id="aiAiBoard" role="grid" aria-label="AI-AI对弈棋盘"></div>
+          <div class="human-ai-files human-ai-files-bottom" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+          <div class="human-ai-side-label" aria-hidden="true">红方走棋</div>
+        </div>
+        <nav id="aiAiControlPanel" aria-label="棋盘通用控制面板"></nav>
+      </section>
+
+      <div class="human-ai-middle-column">
+      <section class="human-ai-analysis" aria-label="AI对局分析">
+        <section class="analysis-box advantage-box">
+          <h2><span aria-hidden="true">📊</span> 局面优势</h2>
+          <div class="advantage-meter"><i></i><span>50%</span></div>
+          <p>等待引擎启动...</p>
+        </section>
+        <div class="analysis-mini-grid">
+          <section class="analysis-box search-box">
+            <h2><span aria-hidden="true">🔎</span> 对局状态</h2>
+            <p>红方: 等待中</p><p>黑方: 等待中</p><p>着法: 0 回合</p>
+          </section>
+          <section class="analysis-box candidates-box">
+            <h2><span aria-hidden="true">🎯</span> 最新着法</h2>
+            <div class="waiting-card">等待引擎启动...</div>
+          </section>
+        </div>
+        <section class="analysis-box position-box">
+          <h2><span aria-hidden="true">🧠</span> 对局分析</h2>
+          <div class="evaluation-note">
+            <strong><span aria-hidden="true">📊</span> 双引擎对弈界面已就绪</strong>
+            <p>红黑双方引擎将在接入后轮流分析并落子。</p>
+            <p>可在右侧分别查看两方引擎参数。</p>
+          </div>
+        </section>
+        <section class="analysis-box puzzle-box">
+          <h2><span aria-hidden="true">📚</span> 对局记录</h2>
+          <div class="puzzle-placeholder" id="aiAiPuzzleStatus" aria-live="polite">载入题库局面，或开始一局 AI 对弈。</div>
+        </section>
+      </section>
+
+      <section class="human-ai-work-panel" aria-label="棋谱与解说编辑">
+        <div class="human-ai-work-tabs">
+          <button type="button" id="aiAiLoadPosition">棋局</button>
+          <button type="button" id="aiAiLoadSolution">答案</button>
+          <button type="button" id="aiAiRecordButton">开始记录</button>
+          <button type="button" id="aiAiSaveSolution" disabled>保存</button>
+        </div>
+        <label for="aiAiSolutionText">棋谱答案</label>
+        <textarea id="aiAiSolutionText" class="human-work-solution" spellcheck="false" placeholder="AI-AI对局走法将显示在这里……"></textarea>
+        <p id="aiAiSolutionStatus" class="human-work-status">对局棋谱可保存在本机并下载文本。</p>
+        <div class="human-work-explanation-actions">
+          <button type="button" id="aiAiLoadExplanation">解说</button>
+          <button type="button" id="aiAiSaveExplanation" disabled>保存解说</button>
+        </div>
+        <label for="aiAiExplanationText">解说内容</label>
+        <textarea id="aiAiExplanationText" class="human-work-explanation" spellcheck="false" placeholder="选择题目后载入解说，或在此撰写解说……"></textarea>
+        <p id="aiAiExplanationStatus" class="human-work-status">解说单独保存为本机草稿与下载文件。</p>
+        <input id="aiAiPositionFile" type="file" accept=".fen,.txt" hidden />
+      </section>
+      </div>
+
+      <aside class="human-ai-settings ai-ai-settings" aria-label="双方引擎设置预览">
+        <section class="ai-setting-box analysis-settings">
+          <h2><span aria-hidden="true">⚫</span> 黑方引擎</h2>
+          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiBlackSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
+          <label class="ai-setting-row"><span>深度:</span><select id="aiAiBlackDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="aiAiBlackMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>时间:</span><select id="aiAiBlackMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+        </section>
+        <section class="ai-setting-box engine-settings red-engine-settings">
+          <h2><span aria-hidden="true">🔴</span> 红方引擎</h2>
+          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiRedSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
+          <label class="ai-setting-row"><span>深度:</span><select id="aiAiRedDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="aiAiRedMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>时间:</span><select id="aiAiRedMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+        </section>
+        <p class="engine-unavailable" id="aiAiEngineStatus">双引擎 Pikafish 已接入。</p>
+        <section class="human-ai-library" aria-label="题库练习">
+          <header><div><span>残局与练习</span><strong>题库练习</strong></div><b id="aiAiBankCount">载入中</b></header>
+          <label for="aiAiBankSearch">搜索棋局</label>
+          <input id="aiAiBankSearch" type="search" placeholder="名称或编号" />
+          <div id="aiAiBankTree" class="human-ai-library-tree" role="tree" aria-label="残局题库"><p>正在载入题库目录…</p></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./ai-ai-page.mjs"></script>
+</body>
+</html>

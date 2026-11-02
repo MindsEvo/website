@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172638" />
+  <title>对弈模式 | 中国象棋智慧平台</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="./play.css" />
+  <link rel="stylesheet" href="../board-standard.css" />
+  <link rel="stylesheet" href="../shared/board-control-panel.css" />
+</head>
+<body class="play-page">
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="返回中国象棋首页">
+      <img src="../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="../index.html">系统首页</a>
+      <a class="nav-link nav-link-muted" href="../../chess-series/index.html">棋类系列</a>
+    </nav>
+  </header>
+
+  <main class="play-shell">
+    <div class="play-titlebar">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> 中国象棋 · 对弈与棋局管理</p>
+        <h1>对弈模式</h1>
+      </div>
+      <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回系统首页</a>
+    </div>
+
+    <div class="game-layout">
+      <section class="board-panel" aria-label="中国象棋棋盘">
+        <div class="board-panel-head">
+          <div class="turn-indicator" id="turnIndicator" aria-live="polite">
+            <span class="turn-dot red-turn" id="turnDot" aria-hidden="true"></span>
+            <div>
+              <strong id="turnText">红方先行</strong>
+              <span id="turnDetail">红方回合</span>
+            </div>
+          </div>
+        </div>
+        <div class="board-area">
+            <div class="board-frame standard-board-surface">
+            <div class="board-engraving" aria-hidden="true">象棋教学系统</div>
+            <div class="file-labels file-labels-top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+              <div class="river-label xiangqi-river-surface" aria-hidden="true"><span>楚河</span><span>用象棋激发未来智慧</span><span>汉界</span></div>
+            <div class="board xiangqi-grid-area" id="board" role="grid" aria-label="中国象棋棋盘"></div>
+            <div class="file-labels file-labels-bottom" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+            <div class="board-side-label" aria-hidden="true">红方走棋</div>
+          </div>
+          <div class="board-caption"><span id="positionTitle">标准开局</span></div>
+        </div>
+        <nav id="playControlPanel" aria-label="棋盘通用控制面板"></nav>
+      </section>
+
+      <section class="work-panel" aria-label="棋谱与解说">
+        <div class="work-tabs" role="group" aria-label="棋谱操作">
+          <button class="work-action" id="loadPositionButton" type="button">棋局</button>
+          <button class="work-action" id="loadSolutionButton" type="button">答案</button>
+          <button class="work-action" id="recordButton" type="button">开始记录</button>
+          <button class="work-action save-action" id="saveSolutionButton" type="button" disabled>保存</button>
+        </div>
+        <label class="field-label" for="solutionText">棋谱答案</label>
+        <select id="solutionVariant" class="solution-variant" aria-label="选择题目答案版本" hidden></select>
+        <textarea id="solutionText" class="work-editor solution-editor" spellcheck="false" placeholder="选择题库棋局，或开始记录对局……"></textarea>
+        <div class="editor-status" id="solutionStatus" role="status" aria-live="polite">静态网页保存在本机浏览器并下载文本，不会直接写回 Windows 题库。</div>
+        <div class="save-version-row" id="solutionVersionRow" hidden><label for="solutionVersion">答案版本</label><input id="solutionVersion" type="number" min="1" value="1" /></div>
+        <div class="explanation-actions">
+          <button class="work-action explain-action" id="loadExplanationButton" type="button">解说</button>
+          <button class="work-action" id="saveExplanationButton" type="button" disabled>保存解说</button>
+        </div>
+        <label class="field-label" for="explanationText">解说内容</label>
+        <textarea id="explanationText" class="work-editor explanation-editor" spellcheck="false" placeholder="选择题目后载入解说，或在此撰写解说……"></textarea>
+        <div class="editor-status" id="explanationStatus" role="status" aria-live="polite">解说单独保存为本机草稿与下载文件。</div>
+        <div class="save-version-row" id="explanationVersionRow" hidden><label for="explanationVersion">解说版本</label><input id="explanationVersion" type="number" min="1" value="1" /></div>
+        <input id="positionFileInput" type="file" accept=".fen,.json,.txt,application/json,text/plain" hidden />
+        <input id="solutionFileInput" type="file" accept=".txt,text/plain" hidden />
+        <input id="explanationFileInput" type="file" accept=".txt,text/plain" hidden />
+        <input id="versionInput" type="number" min="1" value="1" hidden />
+      </section>
+
+      <aside class="library-panel" aria-label="题库练习">
+        <div class="library-heading">
+          <div><p class="section-kicker">棋局与练习</p><h2>题库练习</h2></div>
+          <span id="bankCount" class="bank-count">载入中</span>
+        </div>
+        <label class="bank-search-label" for="bankSearch">搜索棋局</label>
+        <input class="bank-search" id="bankSearch" type="search" placeholder="名称或编号" />
+        <div class="bank-tree" id="bankTree" role="tree" aria-label="中国象棋题库">
+          <p class="bank-loading">正在载入题库目录…</p>
+        </div>
+      </aside>
+    </div>
+    <ol class="compact-moves" id="moveList" aria-label="当前棋局着法" hidden></ol>
+    <div class="global-status" id="ruleNote" aria-live="polite">选择己方棋子查看合法落点。</div>
+  </main>
+  <script type="module" src="./play.js"></script>
+</body>
+</html>

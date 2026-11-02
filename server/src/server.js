@@ -8,6 +8,7 @@ const RadarReader = require("./radarReaderHost");
 const { buildMetadataIndex, getAdaptiveTargets } = require("./metadataService");
 const { analyzePosition, getEnginePath } = require("./stockfishService");
 const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("./stockfishDuelService");
+const { getPikafishStatus, getPikafishMove, configurePikafishSides, stopPikafish } = require("./pikafishService");
 const RootGeneService = require("./rootGeneService");
 const ChessSolutionService = require("./chessSolutionService");
 
@@ -181,6 +182,38 @@ app.post("/api/v1/chess/engine/duel/move", async (req, res) => {
       ok: false,
       error: "Stockfish duel move failed.",
       detail: String(error && error.message ? error.message : error),
+    });
+  }
+});
+
+app.get("/api/v1/chinese-chess/engine/health", (req, res) => {
+  return res.json(getPikafishStatus());
+});
+
+app.post("/api/v1/chinese-chess/engine/ai-ai/config", (req, res) => {
+  try {
+    return res.json({ ok: true, engine: "pikafish", settings: configurePikafishSides(req.body || {}) });
+  } catch (error) {
+    return res.status(400).json({ ok: false, error: String(error && error.message ? error.message : error) });
+  }
+});
+
+app.post("/api/v1/chinese-chess/engine/ai-ai/move", async (req, res) => {
+  const body = req.body || {};
+  const fen = typeof body.fen === "string" ? body.fen.trim() : "";
+  const side = body.side;
+  if (!fen) return res.status(400).json({ ok: false, error: "fen is required." });
+  if (side !== "red" && side !== "black") return res.status(400).json({ ok: false, error: "side must be red or black." });
+
+  try {
+    return res.json(await getPikafishMove({ fen, side, settings: body.settings || {} }));
+  } catch (error) {
+    const unavailable = /not found/i.test(String(error && error.message ? error.message : error));
+    const invalidRequest = /invalid|must contain|must be|does not match/i.test(String(error && error.message ? error.message : error));
+    return res.status(unavailable ? 503 : invalidRequest ? 400 : 500).json({
+      ok: false,
+      engine: "pikafish",
+      error: String(error && error.message ? error.message : error)
     });
   }
 });
@@ -931,6 +964,11 @@ const server = app.listen(port, () => {
 async function closeServer() {
   try {
     await shutdownDuel();
+  } catch {
+    // ignore shutdown errors
+  }
+  try {
+    stopPikafish();
   } catch {
     // ignore shutdown errors
   }

@@ -1,0 +1,76 @@
+{
+  "geneId": "eg_2C2P-2C2P_L3-001",
+  "displayInfo": {
+    "chineseName": "炮兵对峙巧困毙"
+  },
+  "metadata": {
+    "difficulty": "L3",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "main": "SM",
+      "count": 1,
+      "description": "攻方困毙"
+    },
+    "defending": {
+      "main": "2C2P",
+      "count": 1,
+      "description": "守方2C2P"
+    }
+  },
+  "boardData": {
+    "fenFile": "fen/eg_SM-2C2P_2C2P-L3.fen",
+    "pgnFile": "pgn/eg_SM-2C2P_2C2P-L3.pgn",
+    "initialPosition": "待补充",
+    "keySquares": [],
+    "criticalMoves": []
+  },
+  "solutions": [
+    {
+      "id": 1,
+      "method": "标准解法",
+      "difficulty": "L3",
+      "moveCount": "待分析",
+      "description": "标准解法说明",
+      "keyMoves": [
+        "待补充"
+      ],
+      "file": "solutions/eg_SM-2C2P_2C2P-L3-1.txt"
+    }
+  ],
+  "relationships": {
+    "parentGenes": [],
+    "childGenes": [],
+    "similarGenes": [],
+    "prerequisiteKnowledge": [
+      "基础杀法"
+    ]
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "熟练运用基础技巧",
+      "掌握困毙对2C2P的基本杀法",
+      "掌握避免困毙的技巧",
+      "学会利用困毙求和",
+      "理解困毙的概念和判断",
+      "理解关键位置的判断"
+    ],
+    "commonMistakes": [
+      "待补充"
+    ],
+    "practicePoints": [
+      "待补充"
+    ],
+    "estimatedStudyTime": "15-30分钟"
+  },
+  "cultural": {
+    "historicalContext": "传统残局理论",
+    "classicalSources": [],
+    "modernApplications": [
+      "实战残局",
+      "竞赛训练"
+    ]
+  }
+}

@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "source": "chinese_chess/question_bank/data/endgame/L1",
+  "categories": [
+    {
+      "key": "cannon",
+      "label": "炮类",
+      "items": [
+        {
+          "id": "eg_2C-H2A2E_L2-001",
+          "title": "双炮困毙马士象全",
+          "fen": "cannon/eg_2C-H2A2E_L2-001/eg_2C-H2A2E_L2-001.fen",
+          "metadata": "cannon/eg_2C-H2A2E_L2-001/eg_2C-H2A2E_L2-001.json",
+          "solutions": [],
+          "explanations": []
+        },
+        {
+          "id": "eg_2C2P-2C2P_L3-001",
+          "title": "炮兵对峙巧困毙",
+          "fen": "cannon/eg_2C2P-2C2P_L3-001/eg_2C2P-2C2P_L3-001.fen",
+          "metadata": "cannon/eg_2C2P-2C2P_L3-001/eg_2C2P-2C2P_L3-001.json",
+          "solutions": [],
+          "explanations": []
+        },
+        {
+          "id": "eg_C-K_L1-001",
+          "title": "单炮平光将",
+          "fen": "cannon/eg_C-K_L1-001/eg_C-K_L1-001.fen",
+          "metadata": "cannon/eg_C-K_L1-001/eg_C-K_L1-001.json",
+          "solutions": [
+            "cannon/eg_C-K_L1-001/eg_C-K_L1-001-1.txt"
+          ],
+          "explanations": [
+            "cannon/eg_C-K_L1-001/eg_C-K_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_CA-2A_L1-001",
+          "title": "炮士胜双士",
+          "fen": "cannon/eg_CA-2A_L1-001/eg_CA-2A_L1-001.fen",
+          "metadata": "cannon/eg_CA-2A_L1-001/eg_CA-2A_L1-001.json",
+          "solutions": [
+            "cannon/eg_CA-2A_L1-001/eg_CA-2A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "cannon/eg_CA-2A_L1-001/eg_CA-2A_L1-001_exp-1.txt",
+            "cannon/eg_CA-2A_L1-001/exp-eg_CA-2A_L1-001.txt"
+          ]
+        },
+        {
+          "id": "eg_CA-A_L1-001",
+          "title": "炮士胜单士",
+          "fen": "cannon/eg_CA-A_L1-001/eg_CA-A_L1-001.fen",
+          "metadata": "cannon/eg_CA-A_L1-001/eg_CA-A_L1-001.json",
+          "solutions": [
+            "cannon/eg_CA-A_L1-001/eg_CA-A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "cannon/eg_CA-A_L1-001/eg_CA-A_L1-001_exp-1.txt",
+            "cannon/eg_CA-A_L1-001/exp-eg_CA-A_L1-001.txt"
+          ]
+        },
+        {
+          "id": "eg_CA-K_L1-001",
+          "title": "炮士胜光将",
+          "fen": "cannon/eg_CA-K_L1-001/eg_CA-K_L1-001.fen",
+          "metadata": "cannon/eg_CA-K_L1-001/eg_CA-K_L1-001.json",
+          "solutions": [],
+          "explanations": [
+            "cannon/eg_CA-K_L1-001/eg_CA-K_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_CE-E_L1-001",
+          "title": "炮相平单象",
+          "fen": "cannon/eg_CE-E_L1-001/eg_CE-E_L1-001.fen",
+          "metadata": "cannon/eg_CE-E_L1-001/eg_CE-E_L1-001.json",
+          "solutions": [
+            "cannon/eg_CE-E_L1-001/eg_CE-E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "cannon/eg_CE-E_L1-001/eg_CE-E_L1-001_exp-1.txt",
+            "cannon/eg_CE-E_L1-001/exp-eg_CE-E_L1-001.txt"
+          ]
+        },
+        {
+          "id": "eg_CE-K_L1-001",
+          "title": "炮象平光将",
+          "fen": "cannon/eg_CE-K_L1-001/eg_CE-K_L1-001.fen",
+          "metadata": "cannon/eg_CE-K_L1-001/eg_CE-K_L1-001.json",
+          "solutions": [
+            "cannon/eg_CE-K_L1-001/eg_CE-K_L1-001-1.txt"
+          ],
+          "explanations": [
+            "cannon/eg_CE-K_L1-001/eg_CE-K_L1-001_exp-1.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "horse",
+      "label": "马类",
+      "items": [
+        {
+          "id": "eg_H-2A_L1-001",
+          "title": "单马平双士",
+          "fen": "horse/eg_H-2A_L1-001/eg_H-2A_L1-001.fen",
+          "metadata": "horse/eg_H-2A_L1-001/eg_H-2A_L1-001.json",
+          "solutions": [
+            "horse/eg_H-2A_L1-001/eg_H-2A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "horse/eg_H-2A_L1-001/eg_H-2A_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_H-2E_L1-001",
+          "title": "单马平双象",
+          "fen": "horse/eg_H-2E_L1-001/eg_H-2E_L1-001.fen",
+          "metadata": "horse/eg_H-2E_L1-001/eg_H-2E_L1-001.json",
+          "solutions": [
+            "horse/eg_H-2E_L1-001/eg_H-2E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "horse/eg_H-2E_L1-001/eg_H-2E_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_H-A_L1-001",
+          "title": "单马胜单士",
+          "fen": "horse/eg_H-A_L1-001/eg_H-A_L1-001.fen",
+          "metadata": "horse/eg_H-A_L1-001/eg_H-A_L1-001.json",
+          "solutions": [
+            "horse/eg_H-A_L1-001/eg_H-A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "horse/eg_H-A_L1-001/eg_H-A_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_H-E_L1-001",
+          "title": "单马平单象",
+          "fen": "horse/eg_H-E_L1-001/eg_H-E_L1-001.fen",
+          "metadata": "horse/eg_H-E_L1-001/eg_H-E_L1-001.json",
+          "solutions": [
+            "horse/eg_H-E_L1-001/eg_H-E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "horse/eg_H-E_L1-001/eg_H-E_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_H-K_L1-001",
+          "title": "单马胜光将",
+          "fen": "horse/eg_H-K_L1-001/eg_H-K_L1-001.fen",
+          "metadata": "horse/eg_H-K_L1-001/eg_H-K_L1-001.json",
+          "solutions": [
+            "horse/eg_H-K_L1-001/eg_H-K_L1-001-1.txt",
+            "horse/eg_H-K_L1-001/eg_H-K_L1-001-2.txt"
+          ],
+          "explanations": [
+            "horse/eg_H-K_L1-001/eg_H-K_L1-001_exp-1.txt",
+            "horse/eg_H-K_L1-001/eg_H-K_L1-001_exp-2.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "pawn",
+      "label": "兵类",
+      "items": [
+        {
+          "id": "eg_P-A_L1-001",
+          "title": "单兵平单士",
+          "fen": "pawn/eg_P-A_L1-001/eg_P-A_L1-001.fen",
+          "metadata": "pawn/eg_P-A_L1-001/eg_P-A_L1-001.json",
+          "solutions": [
+            "pawn/eg_P-A_L1-001/eg_P-A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "pawn/eg_P-A_L1-001/eg_P-A_L1-001_exp-1.txt",
+            "pawn/eg_P-A_L1-001/exp-eg_P-A_L1-001.txt"
+          ]
+        },
+        {
+          "id": "eg_P-K_L1-001",
+          "title": "单兵胜光将",
+          "fen": "pawn/eg_P-K_L1-001/eg_P-K_L1-001.fen",
+          "metadata": "pawn/eg_P-K_L1-001/eg_P-K_L1-001.json",
+          "solutions": [
+            "pawn/eg_P-K_L1-001/eg_P-K_L1-001-1.txt"
+          ],
+          "explanations": [
+            "pawn/eg_P-K_L1-001/eg_P-K_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_PPP-2A2E_L1-001",
+          "title": "三兵胜士象全",
+          "fen": "pawn/eg_PPP-2A2E_L1-001/eg_PPP-2A2E_L1-001.fen",
+          "metadata": "pawn/eg_PPP-2A2E_L1-001/eg_PPP-2A2E_L1-001.json",
+          "solutions": [
+            "pawn/eg_PPP-2A2E_L1-001/eg_PPP-2A2E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "pawn/eg_PPP-2A2E_L1-001/eg_PPP-2A2E_L1-001_exp-1.txt",
+            "pawn/eg_PPP-2A2E_L1-001/exp-eg_PPP-2A2E_L1-001.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "rook",
+      "label": "车类",
+      "items": [
+        {
+          "id": "eg_R-2A_L1-001",
+          "title": "单车胜双士",
+          "fen": "rook/eg_R-2A_L1-001/eg_R-2A_L1-001.fen",
+          "metadata": "rook/eg_R-2A_L1-001/eg_R-2A_L1-001.json",
+          "solutions": [
+            "rook/eg_R-2A_L1-001/eg_R-2A_L1-001-1.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-2A_L1-001/eg_R-2A_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_R-2A2E_L1-001",
+          "title": "单车平士象全",
+          "fen": "rook/eg_R-2A2E_L1-001/eg_R-2A2E_L1-001.fen",
+          "metadata": "rook/eg_R-2A2E_L1-001/eg_R-2A2E_L1-001.json",
+          "solutions": [
+            "rook/eg_R-2A2E_L1-001/eg_R-2A2E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-2A2E_L1-001/eg_R-2A2E_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_R-2E_L1-001",
+          "title": "单车胜双象",
+          "fen": "rook/eg_R-2E_L1-001/eg_R-2E_L1-001.fen",
+          "metadata": "rook/eg_R-2E_L1-001/eg_R-2E_L1-001.json",
+          "solutions": [
+            "rook/eg_R-2E_L1-001/eg_R-2E_L1-001-1.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-2E_L1-001/eg_R-2E_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_R-A_L1-001",
+          "title": "单车杀单士",
+          "fen": "rook/eg_R-A_L1-001/eg_R-A_L1-001.fen",
+          "metadata": "rook/eg_R-A_L1-001/eg_R-A_L1-001.json",
+          "solutions": [
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001-1.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001-2.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001-3.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001-4.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001_exp-1.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001_exp-2.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001_exp-3.txt",
+            "rook/eg_R-A_L1-001/eg_R-A_L1-001_exp-4.txt"
+          ]
+        },
+        {
+          "id": "eg_R-AE_L1-001",
+          "title": "单车胜士象",
+          "fen": "rook/eg_R-AE_L1-001/eg_R-AE_L1-001.fen",
+          "metadata": "rook/eg_R-AE_L1-001/eg_R-AE_L1-001.json",
+          "solutions": [
+            "rook/eg_R-AE_L1-001/eg_R-AE_L1-001-1.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-AE_L1-001/eg_R-AE_L1-001_exp-1.txt"
+          ]
+        },
+        {
+          "id": "eg_R-E_L1-001",
+          "title": "单车胜单象",
+          "fen": "rook/eg_R-E_L1-001/eg_R-E_L1-001.fen",
+          "metadata": "rook/eg_R-E_L1-001/eg_R-E_L1-001.json",
+          "solutions": [
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001-1.txt",
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001-2.txt",
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001-3.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001_exp-1.txt",
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001_exp-2.txt",
+            "rook/eg_R-E_L1-001/eg_R-E_L1-001_exp-3.txt"
+          ]
+        },
+        {
+          "id": "eg_R-K_L1-001",
+          "title": "单车胜光将",
+          "fen": "rook/eg_R-K_L1-001/eg_R-K_L1-001.fen",
+          "metadata": "rook/eg_R-K_L1-001/eg_R-K_L1-001.json",
+          "solutions": [
+            "rook/eg_R-K_L1-001/eg_R-K_L1-001-1.txt",
+            "rook/eg_R-K_L1-001/eg_R-K_L1-001-2.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-K_L1-001/eg_R-K_L1-001_exp-1.txt",
+            "rook/eg_R-K_L1-001/eg_R-K_L1-001_exp-2.txt"
+          ]
+        },
+        {
+          "id": "eg_R-K_L1-002",
+          "title": "单车胜光将",
+          "fen": "rook/eg_R-K_L1-002/eg_R-K_L1-002.fen",
+          "metadata": "rook/eg_R-K_L1-002/eg_R-K_L1-002.json",
+          "solutions": [
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002-1.txt",
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002-2.txt",
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002-3.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002_exp-1.txt",
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002_exp-2.txt",
+            "rook/eg_R-K_L1-002/eg_R-K_L1-002_exp-3.txt"
+          ]
+        },
+        {
+          "id": "eg_R-K_L1-003",
+          "title": "单车胜光将",
+          "fen": "rook/eg_R-K_L1-003/eg_R-K_L1-003.fen",
+          "metadata": "rook/eg_R-K_L1-003/eg_R-K_L1-003.json",
+          "solutions": [
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003-1.txt",
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003-2.txt",
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003-3.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003_exp-1.txt",
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003_exp-2.txt",
+            "rook/eg_R-K_L1-003/eg_R-K_L1-003_exp-3.txt"
+          ]
+        },
+        {
+          "id": "eg_R-K_L1-004",
+          "title": "单车胜光将",
+          "fen": "rook/eg_R-K_L1-004/eg_R-K_L1-004.fen",
+          "metadata": "rook/eg_R-K_L1-004/eg_R-K_L1-004.json",
+          "solutions": [
+            "rook/eg_R-K_L1-004/eg_R-K_L1-004-1.txt",
+            "rook/eg_R-K_L1-004/eg_R-K_L1-004-2.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-K_L1-004/eg_R-K_L1-004_exp-1.txt",
+            "rook/eg_R-K_L1-004/eg_R-K_L1-004_exp-2.txt"
+          ]
+        },
+        {
+          "id": "eg_R-K_L1-005",
+          "title": "单车胜光将",
+          "fen": "rook/eg_R-K_L1-005/eg_R-K_L1-005.fen",
+          "metadata": "rook/eg_R-K_L1-005/eg_R-K_L1-005.json",
+          "solutions": [
+            "rook/eg_R-K_L1-005/eg_R-K_L1-005-1.txt",
+            "rook/eg_R-K_L1-005/eg_R-K_L1-005-2.txt"
+          ],
+          "explanations": [
+            "rook/eg_R-K_L1-005/eg_R-K_L1-005_exp-1.txt",
+            "rook/eg_R-K_L1-005/eg_R-K_L1-005_exp-2.txt"
+          ]
+        }
+      ]
+    }
+  ]
+}

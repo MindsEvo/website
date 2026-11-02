@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f4f5" />
+  <title>人机对弈模式 | CogniChess</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="../board-standard.css" />
+  <link rel="stylesheet" href="../shared/board-control-panel.css" />
+  <link rel="stylesheet" href="./human-ai.css" />
+</head>
+<body class="human-ai-page">
+  <main class="human-ai-shell">
+    <a class="human-ai-back" href="./index.html">返回主页</a>
+    <div class="human-ai-layout">
+      <section class="human-ai-board-column" aria-label="人机对弈棋盘">
+        <div class="human-ai-board-frame standard-board-surface">
+          <div class="human-ai-engraving" aria-hidden="true">CogniChess 象棋教学系统</div>
+          <div class="human-ai-files human-ai-files-top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          <div class="human-ai-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+          <div class="human-ai-board xiangqi-grid-area" id="humanAiBoard" role="grid" aria-label="人机对弈棋盘"></div>
+          <div class="human-ai-files human-ai-files-bottom" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+          <div class="human-ai-side-label" aria-hidden="true">红方走棋</div>
+        </div>
+        <nav id="humanControlPanel" aria-label="棋盘通用控制面板"></nav>
+      </section>
+
+      <div class="human-ai-middle-column">
+      <section class="human-ai-analysis" aria-label="局面分析">
+        <section class="analysis-box advantage-box">
+          <h2><span aria-hidden="true">📊</span> 局面优势</h2>
+          <div class="advantage-meter"><i id="humanAdvantageFill"></i><span id="humanAdvantagePercent">50%</span></div>
+          <p id="humanAnalysisStatus">你执红方，请先走棋。</p>
+        </section>
+        <div class="analysis-mini-grid">
+          <section class="analysis-box search-box">
+            <h2><span aria-hidden="true">🔎</span> 搜索状态</h2>
+            <p id="humanDepthStatus">深度: - 层</p><p id="humanNodesStatus">节点: -</p><p id="humanTimeStatus">时间: --s</p>
+          </section>
+          <section class="analysis-box candidates-box">
+            <h2><span aria-hidden="true">🎯</span> 候选走法</h2>
+            <div class="waiting-card" id="humanCandidates">走棋后显示 Pikafish 候选着法。</div>
+          </section>
+        </div>
+        <section class="analysis-box position-box">
+          <h2><span aria-hidden="true">🧠</span> 局面评估</h2>
+          <div class="evaluation-note">
+            <strong><span aria-hidden="true">📊</span> Pikafish 象棋引擎</strong>
+            <p id="humanEvaluationText">开始对弈后显示引擎评估与主要变化。</p>
+            <p>红方由玩家控制，黑方由 Pikafish 应战。</p>
+          </div>
+        </section>
+        <section class="analysis-box puzzle-box">
+          <h2><span aria-hidden="true">📚</span> 题库练习</h2>
+          <div class="puzzle-placeholder" id="humanPuzzleStatus" aria-live="polite">从右侧残局题库选择棋局，开始练习。</div>
+        </section>
+      </section>
+
+      <section class="human-ai-work-panel" aria-label="棋谱与解说编辑">
+        <div class="human-ai-work-tabs">
+          <button type="button" id="humanLoadPosition">棋局</button>
+          <button type="button" id="humanLoadSolution">答案</button>
+          <button type="button" id="humanRecordButton">开始记录</button>
+          <button type="button" id="humanSaveSolution" disabled>保存</button>
+        </div>
+        <label for="humanSolutionText">棋谱答案</label>
+        <textarea id="humanSolutionText" class="human-work-solution" spellcheck="false" placeholder="选择题库棋局，或开始记录对局……"></textarea>
+        <p id="humanSolutionStatus" class="human-work-status">答案保存在本机浏览器并可下载文本。</p>
+        <div class="human-work-explanation-actions">
+          <button type="button" id="humanLoadExplanation">解说</button>
+          <button type="button" id="humanSaveExplanation" disabled>保存解说</button>
+        </div>
+        <label for="humanExplanationText">解说内容</label>
+        <textarea id="humanExplanationText" class="human-work-explanation" spellcheck="false" placeholder="选择题目后载入解说，或在此撰写解说……"></textarea>
+        <p id="humanExplanationStatus" class="human-work-status">解说单独保存为本机草稿与下载文件。</p>
+        <input id="humanPositionFile" type="file" accept=".fen,.txt" hidden />
+      </section>
+      </div>
+
+      <aside class="human-ai-settings" aria-label="人机对弈设置">
+        <section class="ai-setting-box analysis-settings">
+          <h2><span aria-hidden="true">🎯</span> 分析设置</h2>
+          <label class="ai-setting-row"><span>深度:</span><select id="humanDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="humanMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>难度:</span><select id="humanSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
+        </section>
+        <section class="ai-setting-box engine-settings">
+          <h2><span aria-hidden="true">⚡</span> 引擎设置</h2>
+          <label class="ai-setting-row"><span>时间:</span><select id="humanMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+          <label class="ai-setting-row"><span>风格:</span><select id="humanStyle"><option value="balanced" selected>均衡</option><option value="active">积极</option><option value="solid">稳健</option></select></label>
+        </section>
+        <p class="engine-unavailable" id="humanEngineStatus">连接 Pikafish 引擎中...</p>
+        <section class="human-ai-library" aria-label="题库练习">
+          <header><div><span>残局与练习</span><strong>题库练习</strong></div><b id="humanBankCount">载入中</b></header>
+          <label for="humanBankSearch">搜索棋局</label>
+          <input id="humanBankSearch" type="search" placeholder="名称或编号" />
+          <div id="humanBankTree" role="tree" aria-label="残局题库"><p>正在载入题库目录…</p></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./human-ai-page.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f6fa" />
+  <title>系统分析 | 象棋智能学习系统</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="./analysis.css" />
+</head>
+<body class="analysis-page">
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="返回中国象棋首页">
+      <img src="../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="../index.html">系统首页</a>
+      <a class="nav-link nav-link-muted" href="../academy/intro/index.html">学习中心</a>
+    </nav>
+  </header>
+
+  <main class="analysis-shell">
+    <div class="analysis-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> 数据概览 · 中国象棋</p>
+        <h1>系统分析</h1>
+        <p>汇总当前已接入的残局题库；对弈记录与学习进度尚未接入。</p>
+      </div>
+      <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回系统首页</a>
+    </div>
+
+    <section class="analysis-metrics" aria-label="题库统计">
+      <article class="metric metric-cases"><span>残局局面</span><strong>27</strong><small>已收录局面</small></article>
+      <article class="metric metric-groups"><span>残局类别</span><strong>4</strong><small>炮 · 马 · 兵 · 车</small></article>
+      <article class="metric metric-level"><span>题库级别</span><strong>L1</strong><small>入门级</small></article>
+    </section>
+
+    <div class="analysis-grid">
+      <section class="analysis-panel distribution-panel" aria-labelledby="distributionTitle">
+        <div class="panel-heading">
+          <div><p class="section-kicker">残局题库</p><h2 id="distributionTitle">类别分布</h2></div>
+          <span class="panel-total">27 局</span>
+        </div>
+        <div class="distribution-list">
+          <div class="distribution-row">
+            <div class="distribution-label"><strong>车类</strong><span>11 局</span></div>
+            <div class="distribution-track"><i class="bar-rook" style="width:40.7%"></i></div>
+            <span class="distribution-sample">单车胜双士</span>
+          </div>
+          <div class="distribution-row">
+            <div class="distribution-label"><strong>炮类</strong><span>8 局</span></div>
+            <div class="distribution-track"><i class="bar-cannon" style="width:29.6%"></i></div>
+            <span class="distribution-sample">双炮困毙马士象全</span>
+          </div>
+          <div class="distribution-row">
+            <div class="distribution-label"><strong>马类</strong><span>5 局</span></div>
+            <div class="distribution-track"><i class="bar-horse" style="width:18.5%"></i></div>
+            <span class="distribution-sample">单马平双士</span>
+          </div>
+          <div class="distribution-row">
+            <div class="distribution-label"><strong>兵类</strong><span>3 局</span></div>
+            <div class="distribution-track"><i class="bar-pawn" style="width:11.1%"></i></div>
+            <span class="distribution-sample">单兵平单士</span>
+          </div>
+        </div>
+        <p class="data-source">数据来源：残局基础 · L1 局面清单</p>
+      </section>
+
+      <section class="analysis-panel coverage-panel" aria-labelledby="coverageTitle">
+        <div class="panel-heading">
+          <div><p class="section-kicker">系统数据</p><h2 id="coverageTitle">分析覆盖</h2></div>
+        </div>
+        <div class="coverage-list">
+          <div class="coverage-row">
+            <span class="coverage-icon coverage-records" aria-hidden="true">谱</span>
+            <div><strong>对弈记录</strong><p>记录统计尚未接入</p></div>
+            <span class="coverage-status">待接入</span>
+          </div>
+          <div class="coverage-row">
+            <span class="coverage-icon coverage-learning" aria-hidden="true">学</span>
+            <div><strong>学习进度</strong><p>课程完成情况尚未接入</p></div>
+            <span class="coverage-status">待接入</span>
+          </div>
+          <div class="coverage-row">
+            <span class="coverage-icon coverage-gene" aria-hidden="true">库</span>
+            <div><strong>残局题库</strong><p>已统计 L1 题目与类别数量</p></div>
+            <span class="coverage-status coverage-ready">已接入</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

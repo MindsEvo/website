@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f6fa" />
+  <title>我的记录 | 象棋智能学习系统</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="./records.css" />
+</head>
+<body class="records-page">
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="返回中国象棋首页">
+      <img src="../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="../index.html">系统首页</a>
+      <a class="nav-link nav-link-muted" href="../play/index.html">对弈模式</a>
+    </nav>
+  </header>
+
+  <main class="records-shell">
+    <header class="records-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> 对局归档 · 本机保存</p>
+        <h1>我的记录</h1>
+        <p>查看棋谱答案与解说的保存方式；集中对局记录列表尚未接入。</p>
+      </div>
+      <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回系统首页</a>
+    </header>
+
+    <section class="records-summary" aria-label="记录状态">
+      <article class="record-metric record-metric-pending">
+        <span>对局记录列表</span><strong>待接入</strong><small>尚未汇总历史对局</small>
+      </article>
+      <article class="record-metric record-metric-local">
+        <span>浏览器本机保存</span><strong>可用</strong><small>按题目与版本保存草稿</small>
+      </article>
+      <article class="record-metric record-metric-export">
+        <span>棋谱导出</span><strong>TXT</strong><small>保存时下载文本文件</small>
+      </article>
+    </section>
+
+    <div class="records-grid">
+      <section class="records-panel saved-games-panel" aria-labelledby="savedGamesTitle">
+        <div class="records-panel-heading">
+          <div><p class="section-kicker">历史对局</p><h2 id="savedGamesTitle">对局记录</h2></div>
+          <span class="records-state">列表待接入</span>
+        </div>
+        <div class="records-empty-state">
+          <span class="empty-record-icon" aria-hidden="true">谱</span>
+          <strong>集中对局记录暂不可用</strong>
+          <p>棋局保存与个人复盘列表尚未接入。</p>
+        </div>
+      </section>
+
+      <section class="records-panel storage-panel" aria-labelledby="storageTitle">
+        <div class="records-panel-heading">
+          <div><p class="section-kicker">当前保存方式</p><h2 id="storageTitle">本机草稿与导出</h2></div>
+        </div>
+        <div class="storage-list">
+          <article class="storage-row">
+            <span class="storage-index">01</span>
+            <div><strong>棋谱答案</strong><p>按题目和版本写入浏览器本机存储，并可下载为文本文件。</p></div>
+            <span class="storage-format">TXT</span>
+          </article>
+          <article class="storage-row">
+            <span class="storage-index">02</span>
+            <div><strong>解说内容</strong><p>与棋谱分开保存为本机草稿，也可单独下载。</p></div>
+            <span class="storage-format">TXT</span>
+          </article>
+          <article class="storage-row">
+            <span class="storage-index">03</span>
+            <div><strong>手动记录</strong><p>对弈页可将本局着法整理到棋谱编辑区。</p></div>
+            <span class="storage-format storage-local">本机</span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

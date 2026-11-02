@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f4f5" />
+  <title>AI引擎设置 | CogniChess</title>
+  <link rel="stylesheet" href="../chinese-chess.css" />
+  <link rel="stylesheet" href="./ai-engine.css" />
+</head>
+<body class="ai-engine-page">
+  <main class="ai-engine-shell">
+    <header class="ai-engine-header">
+      <a class="ai-back" href="../settings/index.html">返回设置</a>
+      <h1><span aria-hidden="true">🤖</span> AI引擎设置</h1>
+    </header>
+
+    <div class="engine-column-headings" aria-hidden="true">
+      <span>人机对弈模式</span><span>AI/AI 对弈模式</span>
+    </div>
+
+    <section class="engine-settings-grid" aria-label="AI引擎配置预览">
+      <article class="engine-card human-card">
+        <h2 class="engine-card-label">人机模式设置</h2>
+        <section class="engine-group engine-basic"><h3>基础设置</h3>
+          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
+          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
+          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
+        </section>
+        <section class="engine-group engine-strength"><h3>棋力控制</h3>
+          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:50%"></i></div></div>
+          <label class="fake-checkbox"><i></i>限制棋力</label>
+          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
+        </section>
+        <section class="engine-group engine-rules"><h3>规则设定</h3>
+          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
+          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
+          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
+          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
+        </section>
+        <section class="engine-group engine-output"><h3>输出与调试</h3>
+          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
+          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
+        </section>
+      </article>
+
+      <article class="engine-card black-ai-card">
+        <h2 class="engine-card-label">黑方引擎</h2>
+        <section class="engine-group engine-basic"><h3>基础设置</h3>
+          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
+          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
+          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
+        </section>
+        <section class="engine-group engine-strength"><h3>棋力控制</h3>
+          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:50%"></i></div></div>
+          <label class="fake-checkbox"><i></i>限制棋力</label>
+          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
+        </section>
+        <section class="engine-group engine-rules"><h3>规则设定</h3>
+          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
+          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
+          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
+          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
+        </section>
+        <section class="engine-group engine-output"><h3>输出与调试</h3>
+          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
+          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
+        </section>
+      </article>
+
+      <article class="engine-card red-ai-card">
+        <h2 class="engine-card-label">红方引擎</h2>
+        <section class="engine-group engine-basic"><h3>基础设置</h3>
+          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
+          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
+          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
+        </section>
+        <section class="engine-group engine-strength"><h3>棋力控制</h3>
+          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:60%"></i></div></div>
+          <label class="fake-checkbox"><i></i>限制棋力</label>
+          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
+        </section>
+        <section class="engine-group engine-rules"><h3>规则设定</h3>
+          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
+          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
+          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
+          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
+        </section>
+        <section class="engine-group engine-output"><h3>输出与调试</h3>
+          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
+          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
+        </section>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
