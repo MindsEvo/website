@@ -11,6 +11,7 @@ const { analyzeForSide, configureSide, getDuelStatus, shutdownDuel } = require("
 const { getPikafishStatus, getPikafishMove, configurePikafishSides, stopPikafish } = require("./pikafishService");
 const RootGeneService = require("./rootGeneService");
 const ChessSolutionService = require("./chessSolutionService");
+const ChineseChessRootGeneService = require("./chineseChessRootGeneService");
 
 const app = express();
 const db = getDb();
@@ -215,6 +216,33 @@ app.post("/api/v1/chinese-chess/engine/ai-ai/move", async (req, res) => {
       engine: "pikafish",
       error: String(error && error.message ? error.message : error)
     });
+  }
+});
+
+app.post("/api/v1/chinese-chess/root-gene/puzzle", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.persistCustomPuzzle(req.body || {}));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.put("/api/v1/chinese-chess/root-gene/puzzle/:id/material", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.savePuzzleMaterial({ ...(req.body || {}), id: req.params.id }));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.delete("/api/v1/chinese-chess/root-gene/puzzle/:id", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.deleteCustomPuzzle({ id: req.params.id }));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
   }
 });
 

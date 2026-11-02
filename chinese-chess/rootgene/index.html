@@ -26,32 +26,33 @@
 
         <fieldset class="control-group gene-select-group">
           <legend>根基因选择</legend>
-          <label class="select-line"><span>基因类型:</span><select aria-label="基因类型"><option>残局基因</option></select></label>
-          <label class="select-line"><span>难度级别:</span><select aria-label="难度级别"><option>L1 基础</option></select></label>
-          <div class="gene-list-placeholder" aria-label="基因列表"></div>
-          <div class="gene-add-row"><input type="text" placeholder="输入新基因名称(格式:名称-L1/2/3-序号)" aria-label="新基因名称" /><button type="button" class="small-add">添加</button><button type="button" class="small-delete">删除</button></div>
+          <label class="select-line"><span>基因类型:</span><select id="geneType" aria-label="基因类型"><option value="endgame">残局基因</option></select></label>
+          <label class="select-line"><span>难度级别:</span><select id="geneLevel" aria-label="难度级别"><option value="L1">L1 基础</option></select></label>
+          <div class="gene-list-placeholder" id="geneList" aria-label="已保存的手工棋局"></div>
+          <div class="gene-add-row"><input id="geneName" type="text" placeholder="编号格式：eg_CUSTOM_L1-001" aria-label="手工棋局编号" /><button id="geneNameCheck" type="button" class="small-add">检查</button><button id="geneDeleteButton" type="button" class="small-delete">删除</button></div>
         </fieldset>
 
         <fieldset class="control-group piece-config-group">
           <legend>棋子数量配置</legend>
           <div class="piece-config-row">
             <span class="side-swatch swatch-black" aria-label="黑方"></span>
-            <label>车: <input type="number" value="0" aria-label="黑方车数量" /></label>
-            <label>马: <input type="number" value="0" aria-label="黑方马数量" /></label>
-            <label>炮: <input type="number" value="0" aria-label="黑方炮数量" /></label>
-            <label>象: <input type="number" value="0" aria-label="黑方象数量" /></label>
-            <label>士: <input type="number" value="0" aria-label="黑方士数量" /></label>
-            <label>卒: <input type="number" value="0" aria-label="黑方卒数量" /></label>
+            <button type="button" class="piece-palette-item" data-piece-code="r">车 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="h">马 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="c">炮 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="e">象 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="a">士 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="p">卒 <output>0</output></button>
           </div>
           <div class="piece-config-row">
             <span class="side-swatch swatch-red" aria-label="红方"></span>
-            <label>车: <input type="number" value="0" aria-label="红方车数量" /></label>
-            <label>马: <input type="number" value="0" aria-label="红方马数量" /></label>
-            <label>炮: <input type="number" value="0" aria-label="红方炮数量" /></label>
-            <label>相: <input type="number" value="0" aria-label="红方相数量" /></label>
-            <label>仕: <input type="number" value="0" aria-label="红方仕数量" /></label>
-            <label>兵: <input type="number" value="0" aria-label="红方兵数量" /></label>
+            <button type="button" class="piece-palette-item" data-piece-code="R">车 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="H">马 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="C">炮 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="E">相 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="A">仕 <output>0</output></button>
+            <button type="button" class="piece-palette-item" data-piece-code="P">兵 <output>0</output></button>
           </div>
+          <div class="editor-tools"><button id="eraseTool" type="button" aria-pressed="false">橡皮擦</button><button id="firstMoverButton" type="button">先手：红方</button><span id="paletteStatus" role="status">选择棋子，再点击棋盘交叉点放置。</span></div>
         </fieldset>
 
         <fieldset class="control-group generation-group">
@@ -65,11 +66,11 @@
         <fieldset class="control-group action-group">
           <legend>操作控制</legend>
           <div class="action-buttons">
-            <button type="button" class="action-generate">🚀 开始生成</button>
-            <button type="button" class="action-save">▣ 存储到题库</button>
-            <button type="button" class="action-ai">🧪 AI测试</button>
-            <button type="button" class="action-clear">▧ 清空结果</button>
-            <button type="button" class="action-validate">🔍 验证PGN</button>
+            <button id="generatePositionButton" type="button" class="action-generate">🚀 生成局面</button>
+            <button id="savePositionButton" type="button" class="action-save">▣ 存储到题库</button>
+            <button id="testPositionButton" type="button" class="action-ai">🧪 AI测试</button>
+            <button id="clearPositionButton" type="button" class="action-clear">▧ 清空结果</button>
+            <button id="validatePositionButton" type="button" class="action-validate">🔍 验证局面</button>
           </div>
         </fieldset>
       </section>
@@ -80,11 +81,11 @@
           <div class="gene-board standard-board-surface">
             <div class="gene-board-engraving" aria-hidden="true">CogniChess 象棋教学系统</div>
             <div class="gene-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
-            <div class="gene-grid xiangqi-grid-area" id="geneBoard" role="grid" aria-label="根基因局面预览"></div>
+            <div class="gene-grid xiangqi-grid-area" id="geneBoard" role="grid" aria-label="手工编辑象棋局面"></div>
             <div class="gene-side-label" aria-hidden="true">红方走棋</div>
           </div>
         </div>
-        <div class="gene-position-info"><strong>当前FEN:</strong><span id="currentFen">等待生成...</span></div>
+        <div class="gene-position-info"><strong>当前FEN:</strong><span id="currentFen">等待编辑...</span><span id="rootGeneStatus" role="status">点击棋子调色板后，在棋盘上摆放棋子。</span></div>
       </section>
 
       <aside class="rootgene-panel info-panel" aria-labelledby="infoTitle">
@@ -105,7 +106,7 @@
       </aside>
     </div>
 
-    <footer class="rootgene-footer"><span>根基因库管理系统 v1.0 | 支持5种棋盘类型，3级难度体系</span><button type="button" disabled>▣ 保存</button></footer>
+    <footer class="rootgene-footer"><span>根基因库管理系统 v1.0 | 中国象棋手工局面编辑</span><button id="rootGeneFooterSave" type="button">▣ 保存</button></footer>
   </main>
   <script type="module" src="./rootgene-page.mjs"></script>
   <script type="module" src="../shared/board-control-panel-boot.mjs"></script>

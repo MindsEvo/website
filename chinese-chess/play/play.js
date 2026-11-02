@@ -368,7 +368,7 @@ async function loadPuzzle(category, puzzle) {
     puzzle.solutions.forEach((file, index) => {
       const option = document.createElement('option');
       option.value = String(index);
-      option.textContent = `答案 ${index + 1}`;
+      option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
       solutionVariant.append(option);
     });
     renderBankTree();
@@ -457,30 +457,84 @@ function chineseNumber(number) {
   return ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'][number] || String(number);
 }
 
-function saveSolution() {
+async function saveSolution() {
   const text = solutionText.value.trim();
   if (!text) return;
   const version = Math.max(1, Number(document.getElementById('solutionVersion').value) || 1);
   const id = selectedPuzzle?.id || 'manual-game';
   const content = `${text}\n# END\n# 解法 ${version}\n`;
+  if (selectedPuzzle?.rootGene === 'manual') {
+    try {
+      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(id)}/material`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'solution', version, text })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || '题库棋谱保存失败。');
+      selectedPuzzle.solutions ||= [];
+      if (!selectedPuzzle.solutions.includes(result.relativePath)) selectedPuzzle.solutions.push(result.relativePath);
+      solutionVariant.replaceChildren();
+      selectedPuzzle.solutions.forEach((file, index) => {
+        const option = document.createElement('option');
+        option.value = String(index);
+        option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
+        solutionVariant.append(option);
+      });
+      solutionVariant.hidden = selectedPuzzle.solutions.length < 2;
+      document.getElementById('solutionVersionRow').hidden = false;
+      solutionVariant.value = '0';
+      solutionStatus.textContent = `答案版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
+    } catch (error) {
+      solutionStatus.textContent = `${error.message || '题库服务不可用'}；已保存本机副本并下载。`;
+    }
+  }
   localWrite(`xiàngqi:solution:${id}`, { text: content, version, updatedAt: new Date().toISOString() });
-  downloadText(`${id}-${version}.txt`, content);
+  downloadText(`${id}-${String(version).padStart(3, '0')}.txt`, content);
   document.getElementById('solutionVersionRow').hidden = false;
-  solutionStatus.textContent = `已保存答案版本 ${version} 到本机，并下载文本文件。`;
+  if (selectedPuzzle?.rootGene !== 'manual') solutionStatus.textContent = `已保存答案版本 ${version} 到本机，并下载文本文件。`;
   recording = false;
   recordingButton.textContent = '开始记录';
   recordingButton.classList.remove('recording');
 }
 
-function saveExplanation() {
+async function saveExplanation() {
   const text = explanationText.value.trim();
   if (!text) return;
   const version = Math.max(1, Number(document.getElementById('explanationVersion').value) || 1);
   const id = selectedPuzzle?.id || 'manual-game';
+  if (selectedPuzzle?.rootGene === 'manual') {
+    try {
+      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(id)}/material`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'explanation', version, text })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || '题库解说保存失败。');
+      selectedPuzzle.explanations ||= [];
+      if (!selectedPuzzle.explanations.includes(result.relativePath)) selectedPuzzle.explanations.push(result.relativePath);
+      explanationStatus.textContent = `解说版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
+    } catch (error) {
+      explanationStatus.textContent = `${error.message || '题库服务不可用'}；已保存本机副本并下载。`;
+    }
+  }
   localWrite(`xiàngqi:explanation:${id}`, { text, version, updatedAt: new Date().toISOString() });
-  downloadText(`${id}_exp-${version}.txt`, `${text}\n`);
+  downloadText(`${id}_exp-${String(version).padStart(3, '0')}.txt`, `${text}\n`);
   document.getElementById('explanationVersionRow').hidden = false;
-  explanationStatus.textContent = `解说版本 ${version} 已保存到本机，并下载文本文件。`;
+  if (selectedPuzzle?.rootGene !== 'manual') explanationStatus.textContent = `解说版本 ${version} 已保存到本机，并下载文本文件。`;
+}
+
+function syncSavedSolutionVersions() {
+  solutionVariant.replaceChildren();
+  for (const [index] of (selectedPuzzle?.solutions || []).entries()) {
+    const option = document.createElement('option');
+    option.value = String(index);
+    option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
+    solutionVariant.append(option);
+  }
+  solutionVariant.hidden = selectedPuzzle.solutions.length < 2;
+  document.getElementById('solutionVersionRow').hidden = false;
 }
 
 async function loadPositionFile(event) {

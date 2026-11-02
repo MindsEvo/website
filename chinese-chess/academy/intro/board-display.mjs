@@ -26,6 +26,17 @@ const PRACTICE = [
   ['horizontal', '横线', '#19b995'], ['vertical', '竖线', '#ffc400'], ['cannons', '炮台', '#ff8311'], ['pawns', '岗哨', '#e83491']
 ].map(([id, label, color]) => ({ id, label, color }));
 
+const PRACTICE_PROMPTS = {
+  border: '请点击棋盘最的边框。',
+  river: '请点击楚河汉界区域内的交叉点。',
+  palace: '请点击任意一方九宫内的交叉点。',
+  diagonal: '请依次点击同一条九宫斜线上的两个交叉点。',
+  horizontal: '请依次点击同一横线上的两个交叉点。',
+  vertical: '请依次点击同一竖线上的两个交叉点。',
+  cannons: '请点击任意一个炮台位置。',
+  pawns: '请点击任意一个兵卒起始位置。'
+};
+
 const QUESTIONS = [
   { id: 'border', label: '边界', text: '棋盘的边界是由几条线组成？', options: ['左右两条', '上下两条', '上下左右四条线'], answer: 2, explanation: '棋盘外侧由上、下、左、右四条边界线围成。' },
   { id: 'river', label: '河界', text: '河界在棋盘的哪里？', options: ['上方', '下方', '中间'], answer: 2, explanation: '楚河汉界横在棋盘中央。' },
@@ -46,6 +57,8 @@ const observationButtons = document.getElementById('observationButtons');
 const practiceButtons = document.getElementById('practiceButtons');
 const quizButtons = document.getElementById('boardQuizButtons');
 let activePractice = '';
+let firstPracticePoint = null;
+let observationTimer = null;
 
 export function initBoardDisplay(lesson) {
   renderBoard();
@@ -72,7 +85,7 @@ function renderBoard() {
       square.dataset.col = String(col);
       if (isCannonStartPosition(row, col)) appendStandardPositionMark(square, row, col, 'cannon-marker');
       if (isPawnStartPosition(row, col)) appendStandardPositionMark(square, row, col, 'pawn-marker');
-      square.addEventListener('click', () => handleBoardPoint(row, col));
+      square.addEventListener('click', () => handleBoardPoint(row, col, square));
       board.append(square);
     }
   }
@@ -95,33 +108,114 @@ function renderFeatures(container, features, handler, className) {
 }
 
 function observeFeature(feature) {
+  stopObservationHighlight();
   activePractice = '';
+  firstPracticePoint = null;
+  resetPracticeButtons();
+  clearFeatureMarks();
+  clearQuizButtons();
   frame.dataset.feature = feature.id;
   paintFeature(feature.id);
   showContent(feature.description, 'observation-message');
   status.textContent = `动态观察 · ${feature.label}`;
+  speakAudio(feature.description);
+  observationTimer = window.setTimeout(stopObservationHighlight, 6000);
 }
 
 function beginPractice(feature) {
+  stopObservationHighlight();
+  firstPracticePoint = null;
+  resetPracticeButtons();
+  clearQuizButtons();
+  clearPracticeMarks();
+  observationButtons.querySelectorAll('button').forEach(button => button.classList.remove('active'));
   activePractice = feature.id;
-  frame.dataset.feature = '';
+  frame.removeAttribute('data-feature');
   clearFeatureMarks();
-  showContent(`请在左侧棋盘点击${feature.label}位置。`, 'practice-message');
-  status.textContent = `操作练习 · 请点击${feature.label}`;
+  showContent(`操作练习：${PRACTICE_PROMPTS[feature.id]}`, 'practice-message');
+  status.textContent = `操作练习 · ${feature.label}`;
+  speakAudio(PRACTICE_PROMPTS[feature.id]);
 }
 
-function handleBoardPoint(row, col) {
+function handleBoardPoint(row, col, square) {
   if (!activePractice) return;
-  if (isPracticeAnswer(activePractice, row, col)) {
-    frame.dataset.feature = activePractice;
-    paintFeature(activePractice);
-    const description = OBSERVATION.find(feature => feature.id === activePractice)?.description || '';
-    showContent(`位置正确！${description}`, 'success-message');
-    status.textContent = '回答正确。请选择下一项练习。';
-  } else {
-    showContent('这里不是目标位置，请根据提示再试一次。', 'retry-message');
-    status.textContent = '位置不正确，再试一次。';
+
+  if (['horizontal', 'vertical', 'diagonal'].includes(activePractice)) {
+    if (!firstPracticePoint) {
+      firstPracticePoint = { row, col, square };
+      square.classList.add('practice-point');
+      showContent('已选第一个交叉点，请再选同一条线上的第二个点。', 'practice-message');
+      status.textContent = '请继续选择第二个交叉点。';
+      return;
+    }
+    const line = getPracticeLine(activePractice, firstPracticePoint, { row, col });
+    firstPracticePoint.square.classList.remove('practice-point');
+    firstPracticePoint = null;
+    finishPracticeAttempt(Boolean(line), square, line);
+    return;
   }
+
+  finishPracticeAttempt(isPracticeAnswer(activePractice, row, col), square);
+}
+
+function finishPracticeAttempt(correct, square, line) {
+  const selectedButton = practiceButtons.querySelector(`[data-feature="${activePractice}"]`);
+  clearPracticeMarks();
+  selectedButton?.classList.remove('practice-current', 'practice-correct', 'practice-wrong');
+  selectedButton?.classList.add(correct ? 'practice-correct' : 'practice-wrong');
+  if (correct && line) line.forEach(point => point.square.classList.add('practice-line-mark'));
+  showPracticeMark(square, correct);
+
+  if (!correct) {
+    showContent(`还没找到目标，请重试：${PRACTICE_PROMPTS[activePractice]}`, 'retry-message');
+    status.textContent = '回答不正确，请再试一次。';
+    speakAudio('回答错误，请再试一次');
+    return;
+  }
+
+  const label = PRACTICE.find(item => item.id === activePractice)?.label || '';
+  const description = OBSERVATION.find(item => item.id === activePractice)?.description || '';
+  if (line) {
+    frame.removeAttribute('data-feature');
+    clearFeatureMarks();
+    line.forEach(point => point.square.classList.add('practice-line-mark'));
+  } else {
+    paintFeature(activePractice);
+  }
+  showContent(`回答正确：${label}。${description}`, 'success-message');
+  status.textContent = '回答正确。请选择下一项练习。';
+  speakAudio('回答正确');
+  activePractice = '';
+  firstPracticePoint = null;
+  window.setTimeout(clearPracticeMarks, 1800);
+}
+
+function getPracticeLine(kind, first, second) {
+  const rowDelta = second.row - first.row;
+  const colDelta = second.col - first.col;
+  if (kind === 'horizontal' && (rowDelta !== 0 || colDelta === 0)) return null;
+  if (kind === 'vertical' && (colDelta !== 0 || rowDelta === 0)) return null;
+  if (kind === 'diagonal' && (Math.abs(rowDelta) !== Math.abs(colDelta) || rowDelta === 0)) return null;
+
+  const rowStep = Math.sign(rowDelta);
+  const colStep = Math.sign(colDelta);
+  const count = Math.max(Math.abs(rowDelta), Math.abs(colDelta));
+  const points = [];
+  for (let index = 0; index <= count; index += 1) {
+    const row = first.row + rowStep * index;
+    const col = first.col + colStep * index;
+    if (kind === 'diagonal' && !isPalaceDiagonal(row, col)) return null;
+    points.push({ row, col, square: board.querySelector(`[data-row="${row}"][data-col="${col}"]`) });
+  }
+  return points;
+}
+
+function showPracticeMark(square, correct) {
+  const mark = document.createElement('span');
+  mark.className = `practice-mark ${correct ? 'practice-mark-correct' : 'practice-mark-wrong'}`;
+  mark.textContent = correct ? '✓' : '×';
+  square.append(mark);
+  window.setTimeout(() => mark.remove(), 900);
 }
 
 function paintFeature(feature) {
@@ -137,9 +231,31 @@ function paintFeature(feature) {
 }
 
 function clearFeatureMarks() {
-  board.querySelectorAll('.feature-point, .horizontal-point, .vertical-point').forEach(square => {
-    square.classList.remove('feature-point', 'horizontal-point', 'vertical-point');
+  board.querySelectorAll('.feature-point, .horizontal-point, .vertical-point, .practice-point, .practice-line-mark').forEach(square => {
+    square.classList.remove('feature-point', 'horizontal-point', 'vertical-point', 'practice-point', 'practice-line-mark');
   });
+}
+
+function clearPracticeMarks() {
+  board.querySelectorAll('.practice-mark').forEach(mark => mark.remove());
+  board.querySelectorAll('.practice-line-mark, .practice-point').forEach(square => square.classList.remove('practice-line-mark', 'practice-point'));
+}
+
+function resetPracticeButtons() {
+  practiceButtons.querySelectorAll('button').forEach(button => button.classList.remove('practice-current', 'practice-correct', 'practice-wrong'));
+}
+
+function clearQuizButtons() {
+  quizButtons.querySelectorAll('button').forEach(button => button.classList.remove('active', 'quiz-correct', 'quiz-wrong'));
+}
+
+function stopObservationHighlight() {
+  if (observationTimer) window.clearTimeout(observationTimer);
+  observationTimer = null;
+  if (!activePractice) {
+    frame.removeAttribute('data-feature');
+    clearFeatureMarks();
+  }
 }
 
 function isFeaturePoint(feature, row, col) {
@@ -154,8 +270,15 @@ function isFeaturePoint(feature, row, col) {
 
 function isPracticeAnswer(feature, row, col) {
   if (feature === 'river') return row === 4 || row === 5;
-  if (feature === 'horizontal' || feature === 'vertical') return true;
   return isFeaturePoint(feature, row, col);
+}
+
+function isCannon(row, col) {
+  return isCannonStartPosition(row, col);
+}
+
+function isPawn(row, col) {
+  return isPawnStartPosition(row, col);
 }
 
 function renderQuizButtons() {
@@ -170,10 +293,17 @@ function renderQuizButtons() {
 }
 
 function showQuestion(question, selectedButton) {
+  stopObservationHighlight();
   activePractice = '';
-  frame.dataset.feature = '';
+  firstPracticePoint = null;
+  resetPracticeButtons();
+  clearPracticeMarks();
+  frame.removeAttribute('data-feature');
   clearFeatureMarks();
-  quizButtons.querySelectorAll('button').forEach(button => button.classList.toggle('active', button === selectedButton));
+  observationButtons.querySelectorAll('button').forEach(button => button.classList.remove('active'));
+  practiceButtons.querySelectorAll('button').forEach(button => button.classList.remove('active'));
+  clearQuizButtons();
+  selectedButton.classList.add('active');
   content.replaceChildren();
 
   const prompt = document.createElement('p');
@@ -199,7 +329,11 @@ function showQuestion(question, selectedButton) {
       });
       feedback.textContent = `${correct ? '答对了！' : `参考答案：${question.options[question.answer]}。`}${question.explanation}`;
       feedback.className = `board-question-feedback ${correct ? 'correct' : 'incorrect'}`;
+      selectedButton.classList.add(correct ? 'quiz-correct' : 'quiz-wrong');
       status.textContent = correct ? '回答正确。' : '已显示参考答案。';
+      paintFeature(question.id === 'points' ? 'border' : question.id);
+      observationTimer = window.setTimeout(stopObservationHighlight, 6000);
+      speakAudio(`${correct ? '回答正确。' : '回答错误。'}${question.explanation}`);
     });
     options.append(option);
   });
@@ -218,6 +352,10 @@ function showContent(text, className) {
 function speak(text, label) {
   showContent(text, 'guidance-message');
   status.textContent = label;
+  speakAudio(text);
+}
+
+function speakAudio(text) {
   if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);

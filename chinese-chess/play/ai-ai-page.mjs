@@ -361,15 +361,63 @@ function loadPositionFile(event) {
   });
 }
 
-function saveSolution() {
+async function saveSolution() {
   const content = `${solutionEditor.value.trim()}\n# END\n`;
+  if (selectedPuzzle?.rootGene === 'manual') {
+    try {
+      const version = (selectedPuzzle.solutions?.length || 0) + 1;
+      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(selectedPuzzle.id)}/material`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'solution', version, text: solutionEditor.value.trim() })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || '棋谱未能保存到题库。');
+      selectedPuzzle.solutions ||= [];
+      selectedPuzzle.solutions.push(result.relativePath);
+      saveLocal(`xiàngqí:solution:${selectedPuzzle.id}`, content);
+      downloadText(`${selectedPuzzle.id}-${String(version).padStart(3, '0')}.txt`, content);
+      renderBankTree();
+      solutionStatus.textContent = `答案版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
+      return;
+    } catch (error) {
+      solutionStatus.textContent = error.message || '题库服务不可用，已保留本机下载副本。';
+      saveLocal(`xiàngqí:solution:${selectedPuzzle.id}`, content);
+      downloadText(`${selectedPuzzle.id}-1.txt`, content);
+      return;
+    }
+  }
   saveLocal(`xiàngqí:solution:${selectedPuzzle?.id || 'ai-ai-game'}`, content);
   downloadText(`${selectedPuzzle?.id || 'ai-ai-game'}-1.txt`, content);
   solutionStatus.textContent = '已保存到本机并下载棋谱文本。';
 }
 
-function saveExplanation() {
+async function saveExplanation() {
   const content = explanationEditor.value.trim();
+  if (selectedPuzzle?.rootGene === 'manual') {
+    try {
+      const version = (selectedPuzzle.explanations?.length || 0) + 1;
+      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(selectedPuzzle.id)}/material`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'explanation', version, text: content })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || '解说未能保存到题库。');
+      selectedPuzzle.explanations ||= [];
+      selectedPuzzle.explanations.push(result.relativePath);
+      saveLocal(`xiàngqí:explanation:${selectedPuzzle.id}`, content);
+      downloadText(`${selectedPuzzle.id}_exp-${String(version).padStart(3, '0')}.txt`, content);
+      renderBankTree();
+      explanationStatus.textContent = `解说版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
+      return;
+    } catch (error) {
+      explanationStatus.textContent = error.message || '题库服务不可用，已保留本机下载副本。';
+      saveLocal(`xiàngqí:explanation:${selectedPuzzle.id}`, content);
+      downloadText(`${selectedPuzzle.id}_exp-1.txt`, content);
+      return;
+    }
+  }
   saveLocal(`xiàngqí:explanation:${selectedPuzzle?.id || 'ai-ai-game'}`, content);
   downloadText(`${selectedPuzzle?.id || 'ai-ai-game'}_exp.txt`, content);
   explanationStatus.textContent = '已保存到本机并下载解说文本。';
