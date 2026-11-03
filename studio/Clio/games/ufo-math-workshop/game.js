@@ -469,7 +469,6 @@
     document.title = DATA.title[lang];
     els.titleText.textContent    = DATA.title[lang];
     els.subtitleText.textContent = DATA.subtitle[lang];
-    els.langBtn.textContent  = t("lang");
     els.resetBtn.textContent = t("reset");
     updateHUD();
     if (state.phase === "idle") els.skyHint.textContent = t("spinHint");
@@ -498,12 +497,6 @@
         bridge.resetSession();
         startSpin();
       });
-      bridge.bindTap(els.langBtn, function () {
-        state.lang = state.lang === "zh" ? "en" : "zh";
-        if (window.shell) window.shell.setLang(state.lang);
-        ClioAudio.setLang(state.lang);
-        applyLocale();
-      });
       bridge.bindTap(els.gradeBtn, toggleGrade);
     } else {
       els.playAgainBtn.addEventListener("click", startSpin);
@@ -513,20 +506,28 @@
         state.bestScore = -1;
         startSpin();
       });
-      els.langBtn.addEventListener("click", function () {
-        state.lang = state.lang === "zh" ? "en" : "zh";
-        if (window.shell) window.shell.setLang(state.lang);
-        ClioAudio.setLang(state.lang);
-        applyLocale();
-      });
       els.gradeBtn.addEventListener("click", toggleGrade);
     }
 
+    ClioAudio.init(state.lang);
+
+    if (window.shell && window.shell.gui &&
+        typeof window.shell.gui.mountControls === "function") {
+      window.shell.gui.mountControls(els.langBtn.parentNode, {
+        language: true,
+        music: true
+      });
+    }
+
+    document.addEventListener("shell:langchange", function (event) {
+      var lang = event && event.detail ? event.detail.lang : null;
+      state.lang = lang === "en" ? "en" : "zh";
+      ClioAudio.setLang(state.lang);
+      applyLocale();
+    });
+
     applyLocale();
     updateGradeBtn();
-    ClioAudio.init(state.lang);
-    ClioAudio.bindMusicBtn(els.musicBtn);
-    ClioAudio.bindSfxBtn(els.sfxBtn);
     ClioAudio.bindVoiceBtn(els.voiceBtn);
     startSpin();
   }

@@ -142,16 +142,11 @@
   }
 
   var state = {
-    lang: "zh",
+    lang: (window.shell && window.shell.lang) || "zh",
     sessionToken: 0,
     running: false,
     paused: false,
     speedPxPerSec: 92,
-    musicEnabled: true,
-    sfxEnabled: true,
-    audioCtx: null,
-    musicTimer: null,
-    musicNodes: [],
     counts: {
       correct: 0,
       wrong: 0,
@@ -238,73 +233,12 @@
     els.missCount.textContent = String(state.counts.miss);
   }
 
-  function ensureAudio() {
-    if (!state.audioCtx) {
-      var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextCtor) {
-        return null;
-      }
-      state.audioCtx = new AudioContextCtor();
-    }
-    if (state.audioCtx.state === "suspended") {
-      state.audioCtx.resume();
-    }
-    return state.audioCtx;
-  }
-
-  function playTone(freq, duration, gainValue, type) {
-    var ctx = ensureAudio();
-    if (!ctx || !state.sfxEnabled) {
-      return;
-    }
-    var osc = ctx.createOscillator();
-    var gain = ctx.createGain();
-    osc.type = type || "sine";
-    osc.frequency.value = freq;
-    gain.gain.value = gainValue;
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + duration);
-  }
-
   function stopMusic() {
-    if (state.musicTimer) {
-      window.clearInterval(state.musicTimer);
-      state.musicTimer = null;
-    }
-    while (state.musicNodes.length) {
-      var node = state.musicNodes.pop();
-      try { node.stop(); } catch (e) {}
-      try { node.disconnect(); } catch (e2) {}
-    }
+    ClioAudio.stopBgm();
   }
 
   function playMusic() {
-    var ctx = ensureAudio();
-    if (!ctx || !state.musicEnabled) {
-      return;
-    }
-    stopMusic();
-
-    var sequence = [261.63, 329.63, 392.0, 329.63];
-    var index = 0;
-    state.musicTimer = window.setInterval(function () {
-      if (!state.musicEnabled || state.paused || !state.running) {
-        return;
-      }
-      var osc = ctx.createOscillator();
-      var gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = sequence[index % sequence.length];
-      gain.gain.value = 0.02;
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.22);
-      state.musicNodes.push(osc);
-      index += 1;
-    }, 320);
+    ClioAudio.startBgm();
   }
 
   function randomCombo() {
@@ -600,15 +534,15 @@
       if (!predicted) {
         state.counts.miss += 1;
         setFeedback(t("missed"), "feedback-miss");
-        playTone(180, 0.22, 0.15, "square");
+        ClioAudio.sfx("bump");
       } else if (predicted === lane.combo.actualColor) {
         state.counts.correct += 1;
         setFeedback(t("good"), "feedback-ok");
-        playTone(880, 0.15, 0.16, "sine");
+        ClioAudio.sfx("correct");
       } else {
         state.counts.wrong += 1;
         setFeedback(t("bad"), "feedback-bad");
-        playTone(200, 0.20, 0.15, "sawtooth");
+        ClioAudio.sfx("wrong");
       }
       updateCounters();
       enablePracticeChoices(false);
@@ -663,6 +597,8 @@
   }
 
   function renderLocale() {
+    document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
+    document.title = t("title") + " | Clio | MindsEvo";
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
     if (els.backLink) {
@@ -684,9 +620,6 @@
     els.practiceBasketLabel.textContent = t("chooseResult");
     els.speedTitle.textContent = t("speed");
     els.speedUnit.textContent = t("unit");
-    els.langBtn.textContent = state.lang === "en" ? "CN / EN" : "EN / CN";
-    els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
-    els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
 
     els.choiceBalls.forEach(function (btn) {
       btn.setAttribute("aria-label", colorName(btn.getAttribute("data-color")));
@@ -710,7 +643,6 @@
     state.paused = false;
     state.demoLane.sessionToken = state.sessionToken;
     state.practiceLane.sessionToken = state.sessionToken;
-    ensureAudio();
     playMusic();
     setFeedback(t("running"), "");
     runLaneRound(state.demoLane);
@@ -792,7 +724,7 @@
       btn.classList.add("active");
       state.practiceLane.selectedColor = btn.getAttribute("data-color");
       state.practiceLane.selectedAt = performance.now();
-      playTone(520, 0.06, 0.14, "triangle");
+      ClioAudio.sfx("tap");
     }
 
     els.choiceBalls.forEach(function (btn) {
@@ -830,55 +762,12 @@
     }
 
     if (runtimeCtrl) {
-      runtimeCtrl.bindTap(els.langBtn, function () {
-        state.lang = state.lang === "en" ? "zh" : "en";
-        localStorage.setItem("mindsevo-lang", state.lang);
-        if (window.shell && typeof window.shell.setLang === "function") {
-          window.shell.setLang(state.lang);
-        }
-        renderLocale();
-      });
-    } else {
-      els.langBtn.addEventListener("click", function () {
-        state.lang = state.lang === "en" ? "zh" : "en";
-        localStorage.setItem("mindsevo-lang", state.lang);
-        if (window.shell && typeof window.shell.setLang === "function") {
-          window.shell.setLang(state.lang);
-        }
-        renderLocale();
-      });
-    }
-
-    var onMusicTap = function () {
-      state.musicEnabled = !state.musicEnabled;
-      renderLocale();
-      ensureAudio();
-      if (state.musicEnabled && state.running && !state.paused) {
-        playMusic();
-      } else {
-        stopMusic();
-      }
-    };
-
-    var onSfxTap = function () {
-      state.sfxEnabled = !state.sfxEnabled;
-      renderLocale();
-      if (state.sfxEnabled) {
-        ensureAudio();
-      }
-    };
-
-    if (runtimeCtrl) {
-      runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
-      runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
       runtimeCtrl.onLifecyclePause(function () {
         if (state.running && !state.paused) {
           pauseGame();
         }
       });
     } else {
-      els.musicBtn.addEventListener("click", onMusicTap);
-      els.sfxBtn.addEventListener("click", onSfxTap);
       document.addEventListener("visibilitychange", function () {
         if (document.hidden && state.running && !state.paused) {
           pauseGame();
@@ -888,7 +777,24 @@
   }
 
   bindUI();
-  state.lang = (localStorage.getItem("mindsevo-lang") || (window.shell && window.shell.lang) || "zh") === "en" ? "en" : "zh";
+  state.lang = ((window.shell && window.shell.lang) || state.lang) === "en" ? "en" : "zh";
+  ClioAudio.init(state.lang);
+
+  if (window.shell && window.shell.gui &&
+      typeof window.shell.gui.mountControls === "function") {
+    window.shell.gui.mountControls(els.langBtn.parentNode, {
+      language: true,
+      music: true
+    });
+  }
+
+  document.addEventListener("shell:langchange", function (event) {
+    var lang = event && event.detail ? event.detail.lang : null;
+    state.lang = (lang || (window.shell && window.shell.lang) || state.lang) === "en" ? "en" : "zh";
+    ClioAudio.setLang(state.lang);
+    renderLocale();
+  });
+
   updateCounters();
   enablePracticeChoices(false);
   els.speedValue.textContent = String(state.speedPxPerSec);

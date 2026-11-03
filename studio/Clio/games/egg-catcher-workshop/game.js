@@ -13,7 +13,7 @@
 
   // ── State ──────────────────────────────────────────────────────────────────
   var state = {
-    lang:     (localStorage.getItem('mindsevo-lang') === 'en') ? 'en' : 'zh',
+    lang:     (window.shell && window.shell.lang) || 'zh',
     phase:    'idle',   // idle | catch | cracking | math | celebrate | fail
     egg:      { px: 0, py: 0, speed: 0 },
     boy:      { xFrac: 0.5 },
@@ -348,22 +348,18 @@
   // ── Language ───────────────────────────────────────────────────────────────
   function applyLang(lang) {
     state.lang = (lang === 'en') ? 'en' : 'zh';
+    document.documentElement.lang = state.lang === 'en' ? 'en' : 'zh-CN';
+    document.title = t('title') + ' | Clio';
     els.titleText.textContent    = t('title');
     els.subtitleText.textContent = t('subtitle');
-    els.langBtn.textContent      = t('lang');
     els.resetBtn.textContent     = t('reset');
     els.retryBtn.textContent     = t('retry');
     ClioAudio.setLang(state.lang);
     updateHUD();
-    localStorage.setItem('mindsevo-lang', state.lang);
   }
 
   // ── Init ────────────────────────────────────────────────────────────────────
   function init() {
-    bridge.bindTap(els.langBtn, function () {
-      applyLang(state.lang === 'zh' ? 'en' : 'zh');
-    });
-
     bridge.bindTap(els.resetBtn, function () {
       bridge.resetSession();
       state.score = 0;
@@ -378,10 +374,22 @@
       startCatch();
     });
 
-    applyLang(state.lang);
     ClioAudio.init(state.lang);
-    ClioAudio.bindMusicBtn(els.musicBtn);
-    ClioAudio.bindSfxBtn(els.sfxBtn);
+
+    if (window.shell && window.shell.gui &&
+        typeof window.shell.gui.mountControls === 'function') {
+      window.shell.gui.mountControls(els.langBtn.parentNode, {
+        language: true,
+        music: true
+      });
+    }
+
+    document.addEventListener('shell:langchange', function (event) {
+      var lang = event && event.detail ? event.detail.lang : null;
+      applyLang(lang || (window.shell && window.shell.lang) || state.lang);
+    });
+
+    applyLang(state.lang);
     ClioAudio.bindVoiceBtn(els.voiceBtn);
     startCatch();
   }

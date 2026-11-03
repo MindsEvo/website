@@ -2,10 +2,9 @@
   'use strict';
 
   var body = document.body;
-  var langBtn = document.getElementById('langBtn');
   var nodes = document.querySelectorAll('[data-i18n]');
 
-  function applyLang(lang) {
+  function renderLanguage(lang) {
     var normalized = lang === 'en' ? 'en' : 'zh';
     body.setAttribute('data-lang', normalized);
     document.documentElement.lang = normalized === 'en' ? 'en' : 'zh-CN';
@@ -17,23 +16,17 @@
         node.textContent = text;
       }
     });
-
-    if (langBtn) {
-      langBtn.textContent = normalized === 'en' ? 'EN / CN' : 'CN / EN';
-    }
-
-    if (window.shell && typeof window.shell.setLang === 'function') {
-      window.shell.setLang(normalized);
-    }
-    localStorage.setItem('clio-games-lang', normalized);
   }
 
-  var saved = localStorage.getItem('clio-games-lang');
-  applyLang(saved === 'en' ? 'en' : 'zh');
-
-  if (langBtn) {
-    langBtn.addEventListener('click', function () {
-      applyLang(body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh');
-    });
+  function onLanguageChanged(event) {
+    var lang = event && event.detail ? event.detail.lang : null;
+    renderLanguage(lang || (window.shell && window.shell.lang) || 'zh');
   }
+
+  if (window.shell && window.shell.gui && typeof window.shell.gui.mountControls === 'function') {
+    window.shell.gui.mountControls(document, { language: true, music: false });
+  }
+
+  document.addEventListener('shell:langchange', onLanguageChanged);
+  renderLanguage((window.shell && window.shell.lang) || 'zh');
 }());

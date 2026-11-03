@@ -25,12 +25,7 @@
     events: [],
     activeDrag: null,
     maxConcurrentFallers: 1,
-    lang: "zh",
-    musicEnabled: true,
-    sfxEnabled: true,
-    audioCtx: null,
-    musicTimer: null,
-    musicNodes: []
+    lang: (window.shell && window.shell.lang) || "zh"
   };
 
   var runtimeCtrl = window.ClioRuntimeBridge
@@ -140,82 +135,17 @@
     return t(key).replace("{0}", value);
   }
 
-  function ensureAudio() {
-    if (!state.audioCtx) {
-      var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextCtor) {
-        return null;
-      }
-      state.audioCtx = new AudioContextCtor();
-    }
-    if (state.audioCtx.state === "suspended") {
-      state.audioCtx.resume();
-    }
-    return state.audioCtx;
-  }
-
   function stopMusic() {
-    if (state.musicTimer) {
-      window.clearInterval(state.musicTimer);
-      state.musicTimer = null;
-    }
-    while (state.musicNodes.length) {
-      var node = state.musicNodes.pop();
-      try { node.stop(); } catch (e) {}
-      try { node.disconnect(); } catch (e2) {}
-    }
-  }
-
-  function playTone(freq, duration, gainValue, type) {
-    var ctx = ensureAudio();
-    if (!ctx || !state.sfxEnabled) {
-      return;
-    }
-    var osc = ctx.createOscillator();
-    var gain = ctx.createGain();
-    osc.type = type || "sine";
-    osc.frequency.value = freq;
-    gain.gain.value = gainValue;
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + duration);
+    ClioAudio.stopBgm();
   }
 
   function playMusic() {
-    var ctx = ensureAudio();
-    if (!ctx || !state.musicEnabled) {
-      return;
-    }
-    stopMusic();
-
-    var sequence = [261.63, 329.63, 392.0, 329.63];
-    var index = 0;
-    state.musicTimer = window.setInterval(function () {
-      if (!state.musicEnabled || state.paused || !state.running) {
-        return;
-      }
-      var osc = ctx.createOscillator();
-      var gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = sequence[index % sequence.length];
-      gain.gain.value = 0.025;
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.22);
-      state.musicNodes.push(osc);
-      index += 1;
-    }, 320);
-  }
-
-  function stopIfIdle() {
-    if (!state.running) {
-      stopMusic();
-    }
+    ClioAudio.startBgm();
   }
 
   function refreshLocale() {
+    document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
+    document.title = t("title") + " | Clio | MindsEvo";
     els.titleText.textContent = t("title");
     els.subtitleText.textContent = t("subtitle");
     if (els.backLink) {
@@ -241,10 +171,6 @@
         label.textContent = t("basketNames")[color];
       }
     });
-    els.langBtn.textContent = state.lang === "zh" ? "中文" : "EN";
-    els.langBtn.classList.toggle("active", state.lang === "zh");
-    els.musicBtn.textContent = t("music") + ": " + (state.musicEnabled ? t("on") : t("off"));
-    els.sfxBtn.textContent = t("sfx") + ": " + (state.sfxEnabled ? t("on") : t("off"));
   }
 
   function nowMs() {
@@ -492,7 +418,7 @@
           distractor_type: "boundary_color"
         }
       });
-        playTone(880, 0.15, 0.16, "sine");
+      ClioAudio.sfx("correct");
       removeFaller(faller);
     } else {
       snapToBasketCenter(faller, basket);
@@ -517,7 +443,7 @@
           distractor_type: "boundary_color"
         }
       });
-      playTone(200, 0.20, 0.15, "sawtooth");
+      ClioAudio.sfx("wrong");
       removeFaller(faller);
     }
 
@@ -669,7 +595,7 @@
             distractor_type: "boundary_color"
           }
         });
-        playTone(180, 0.22, 0.14, "square");
+        ClioAudio.sfx("bump");
         removeFaller(faller);
         updateCounters();
         return false;
@@ -787,54 +713,12 @@
     });
 
     if (runtimeCtrl) {
-      runtimeCtrl.bindTap(els.langBtn, function () {
-        state.lang = state.lang === "zh" ? "en" : "zh";
-        localStorage.setItem("mindsevo-lang", state.lang);
-        if (window.shell && typeof window.shell.setLang === "function") {
-          window.shell.setLang(state.lang);
-        }
-        refreshLocale();
-      });
-    } else {
-      els.langBtn.addEventListener("click", function () {
-        state.lang = state.lang === "zh" ? "en" : "zh";
-        localStorage.setItem("mindsevo-lang", state.lang);
-        if (window.shell && typeof window.shell.setLang === "function") {
-          window.shell.setLang(state.lang);
-        }
-        refreshLocale();
-      });
-    }
-
-    var onMusicTap = function () {
-      state.musicEnabled = !state.musicEnabled;
-      refreshLocale();
-      if (state.musicEnabled && state.running && !state.paused) {
-        playMusic();
-      } else {
-        stopMusic();
-      }
-    };
-
-    var onSfxTap = function () {
-      state.sfxEnabled = !state.sfxEnabled;
-      refreshLocale();
-      if (state.sfxEnabled) {
-        ensureAudio();
-      }
-    };
-
-    if (runtimeCtrl) {
-      runtimeCtrl.bindTap(els.musicBtn, onMusicTap);
-      runtimeCtrl.bindTap(els.sfxBtn, onSfxTap);
       runtimeCtrl.onLifecyclePause(function () {
         if (state.running && !state.paused) {
           pauseGame();
         }
       });
     } else {
-      els.musicBtn.addEventListener("click", onMusicTap);
-      els.sfxBtn.addEventListener("click", onSfxTap);
       document.addEventListener("visibilitychange", function () {
         if (document.hidden && state.running && !state.paused) {
           pauseGame();
@@ -848,7 +732,23 @@
   }
 
   bindUI();
-  state.lang = (localStorage.getItem("mindsevo-lang") || (window.shell && window.shell.lang) || "zh") === "en" ? "en" : "zh";
+  ClioAudio.init(state.lang);
+
+  if (window.shell && window.shell.gui &&
+      typeof window.shell.gui.mountControls === "function") {
+    window.shell.gui.mountControls(els.langBtn.parentNode, {
+      language: true,
+      music: true
+    });
+  }
+
+  document.addEventListener("shell:langchange", function (event) {
+    var lang = event && event.detail ? event.detail.lang : null;
+    state.lang = (lang || (window.shell && window.shell.lang)) === "en" ? "en" : "zh";
+    ClioAudio.setLang(state.lang);
+    refreshLocale();
+  });
+
   updateCounters();
   refreshLocale();
   persistSession();
