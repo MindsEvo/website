@@ -1,0 +1,25 @@
+.endgame-shell .endgame-layout { grid-template-columns: minmax(158px, 185px) minmax(360px, 1fr) minmax(260px, 315px); }
+.endgame-state-label { margin-left: 4px; color: #4b6c66; font-size: 12px; font-weight: 800; }
+#endgameBoard .intersection.endgame-selected .stone { box-shadow: 0 0 0 3px rgba(0, 136, 112, .35); }
+.endgame-shell .lesson-options button { min-height: 34px; }
+.endgame-shell .lesson-options button.answer-correct { border-color: #75b59b; background: #e8f5ed; color: #28694b; }
+.endgame-shell .lesson-options button.answer-wrong { border-color: #d78c7a; background: #fff0ec; color: #9c4635; }
+.endgame-shell .rule-explanation { min-height: 62px; }
+.endgame-score-panel { margin-top: 10px; padding: 10px; border: 1px solid #dfe9e5; border-radius: 4px; background: #f7fbf9; }
+.endgame-score-panel[hidden] { display: none; }
+.endgame-score-panel .score-panel-heading { margin-bottom: 5px; }
+.endgame-score-panel .lesson-score-row { min-height: 29px; }
+.endgame-score-panel .lesson-score-result { margin: 8px 0 0; }
+.endgame-score-panel .lesson-score-actions { margin-top: 8px; }
+.endgame-shell .lesson-board-controls .pass-tool { min-width: 67px; height: 28px; font-size: 11px; }
+.endgame-shell .lesson-board-controls .pass-tool[hidden] { display: none; }
+@media (max-width: 980px) {
+  .endgame-shell .endgame-layout { grid-template-columns: minmax(145px, 170px) minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .endgame-shell .endgame-layout { grid-template-columns: 1fr; }
+  .endgame-shell .lesson-nav, .endgame-shell .lesson-board-panel, .endgame-shell .lesson-content { grid-column: 1; grid-row: auto; }
+  .endgame-shell .lesson-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+  .endgame-shell .lesson-nav-title { grid-column: 1 / -1; }
+  .endgame-shell .lesson-board-controls .lesson-captures { gap: 6px; }
+}

@@ -1,0 +1,5 @@
+KataGo test network: g170-b6c96-s175395328-d26788732
+Source: https://github.com/lightvector/KataGo/tree/master/cpp/tests/models
+License: CC0 1.0, according to https://katagotraining.org/network_license/
+
+This small test network is included to validate the local browser engine integration. It is not the strength model intended for production analysis or solution verification.

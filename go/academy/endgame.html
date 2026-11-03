@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#18283a" />
+  <title>官子 | MindsEvo 围棋</title>
+  <link rel="stylesheet" href="../play/play.css" />
+  <link rel="stylesheet" href="./basic-rules.css" />
+  <link rel="stylesheet" href="./endgame.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-stone" aria-hidden="true"></span><span>围棋</span></a>
+    <nav class="top-actions" aria-label="页面导航">
+      <a href="./index.html">学习中心</a>
+      <a href="../index.html">系统首页</a>
+    </nav>
+  </header>
+
+  <main class="rules-shell endgame-shell">
+    <header class="rules-heading">
+      <div>
+        <p class="eyebrow">学习中心 · 首期</p>
+        <h1>官子</h1>
+        <p>从中立点与边界目数开始，比较先后手并完成终局数子。</p>
+      </div>
+      <a class="back-link" href="./index.html">← 返回学习中心</a>
+    </header>
+
+    <div class="rules-layout endgame-layout">
+      <nav class="lesson-nav" aria-label="官子小节">
+        <p class="lesson-nav-title">课程目录</p>
+        <button type="button" class="lesson-nav-item is-current" data-endgame-lesson="neutral"><span>01</span>中立点与边界</button>
+        <button type="button" class="lesson-nav-item" data-endgame-lesson="value"><span>02</span>官子目数</button>
+        <button type="button" class="lesson-nav-item" data-endgame-lesson="sente"><span>03</span>先手与后手</button>
+        <button type="button" class="lesson-nav-item" data-endgame-lesson="priority"><span>04</span>大小比较</button>
+        <button type="button" class="lesson-nav-item" data-endgame-lesson="count"><span>05</span>终局数子</button>
+        <button type="button" class="lesson-nav-item" data-endgame-lesson="review"><span>06</span>综合取舍</button>
+      </nav>
+
+      <section class="board-panel lesson-board-panel" aria-label="官子练习棋盘">
+        <div class="lesson-board-head">
+          <div class="turn-indicator" aria-live="polite">
+            <span class="turn-dot black-turn" id="endgameTurnDot" aria-hidden="true"></span>
+            <div><strong id="endgameTurnText">观察终局</strong><span>9 路官子练习 · 中国数子</span></div>
+          </div>
+          <span class="lesson-counter" id="endgameCounter">01 / 06</span>
+        </div>
+        <div class="board-stage lesson-board-stage">
+          <div class="go-board" id="endgameBoard" role="group" aria-label="官子练习棋盘"></div>
+        </div>
+        <div class="lesson-board-controls" role="group" aria-label="官子棋局操作">
+          <button type="button" class="tool-button pass-tool" id="endgamePassButton" hidden><span class="tool-icon" aria-hidden="true">Ⅱ</span><span>停着</span></button>
+          <span class="endgame-state-label" id="endgameStateLabel">计算边界</span>
+          <span class="lesson-captures"><span>黑提 <b id="endgameBlackCaptures">0</b></span><span>白提 <b id="endgameWhiteCaptures">0</b></span></span>
+          <button type="button" class="tool-button icon-tool" id="endgameUndoButton" title="悔棋" aria-label="悔棋" disabled><span class="tool-icon" aria-hidden="true">↶</span></button>
+          <button type="button" class="tool-button icon-tool" id="endgameResetButton" title="重置本节" aria-label="重置本节"><span class="tool-icon" aria-hidden="true">↻</span></button>
+        </div>
+        <p class="rule-note" id="endgameFeedback" role="status" aria-live="polite">点击中立点，查看当前数子结果。</p>
+      </section>
+
+      <aside class="lesson-content" aria-label="本节学习内容">
+        <div class="content-kicker">本节目标</div>
+        <h2 id="endgameTitle">中立点与边界</h2>
+        <p class="lesson-intro" id="endgameIntro"></p>
+        <div class="lesson-focus"><span>思维重点</span><strong id="endgameFocus"></strong></div>
+        <section class="task-section">
+          <h3>观察与练习</h3>
+          <p id="endgameTask"></p>
+          <div class="lesson-options" id="endgameOptions" role="group" aria-label="官子判断选项"></div>
+        </section>
+        <div class="rule-explanation" id="endgameExplanation"></div>
+        <section class="endgame-score-panel" id="endgameScorePanel" hidden aria-label="中国数子结果">
+          <div class="score-panel-heading"><strong>中国数子</strong><span>白贴 7.5 目</span></div>
+          <div class="lesson-score-row"><span>黑方地盘</span><strong id="endgameBlackArea">0 目</strong></div>
+          <div class="lesson-score-row"><span>白方地盘 + 贴目</span><strong id="endgameWhiteArea">0 + 7.5 = 7.5 目</strong></div>
+          <div class="lesson-score-row"><span>中立点</span><strong id="endgameNeutral">0 目</strong></div>
+          <p class="lesson-score-result" id="endgameResult" role="status" aria-live="polite"></p>
+          <div class="lesson-score-actions"><button type="button" class="confirm-score-button" id="endgameConfirmScore">确认结果</button></div>
+        </section>
+        <div class="course-progress">
+          <div class="progress-label"><span>课程进度</span><strong id="endgameProgress">第 1 节 / 共 6 节</strong></div>
+          <div class="progress-track"><span id="endgameProgressFill"></span></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./endgame.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "mindsevo-go-local-engine",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "build": "npm run prepare:assets && vite build --config vite.config.mjs"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-backend-wasm": "^4.22.0",
+    "@tensorflow/tfjs-backend-webgpu": "^4.22.0",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}

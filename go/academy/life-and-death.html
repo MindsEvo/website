@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#18283a" />
+  <title>死活 | MindsEvo 围棋</title>
+  <link rel="stylesheet" href="../play/play.css" />
+  <link rel="stylesheet" href="./basic-rules.css" />
+  <link rel="stylesheet" href="./life-and-death.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-stone" aria-hidden="true"></span><span>围棋</span></a>
+    <nav class="top-actions" aria-label="页面导航">
+      <a href="./index.html">学习中心</a>
+      <a href="../index.html">系统首页</a>
+    </nav>
+  </header>
+
+  <main class="rules-shell life-shell">
+    <header class="rules-heading">
+      <div>
+        <p class="eyebrow">学习中心 · 首期</p>
+        <h1>死活</h1>
+        <p>从眼形与关键点入手，判断棋块在什么条件下能活、会死。</p>
+      </div>
+      <a class="back-link" href="./index.html">← 返回学习中心</a>
+    </header>
+
+    <div class="rules-layout life-layout">
+      <nav class="lesson-nav" aria-label="死活小节">
+        <p class="lesson-nav-title">课程目录</p>
+        <button type="button" class="lesson-nav-item is-current" data-life-lesson="two-eyes"><span>01</span>两只真眼</button>
+        <button type="button" class="lesson-nav-item" data-life-lesson="false-eye"><span>02</span>辨认假眼</button>
+        <button type="button" class="lesson-nav-item" data-life-lesson="one-eye"><span>03</span>一眼能否判活</button>
+        <button type="button" class="lesson-nav-item" data-life-lesson="make-eyes"><span>04</span>做眼的要点</button>
+        <button type="button" class="lesson-nav-item" data-life-lesson="eye-vital"><span>05</span>眼形与关键点</button>
+        <button type="button" class="lesson-nav-item" data-life-lesson="review"><span>06</span>综合判断</button>
+      </nav>
+
+      <section class="board-panel lesson-board-panel" aria-label="死活练习棋盘">
+        <div class="lesson-board-head">
+          <div class="turn-indicator" aria-live="polite">
+            <span class="turn-dot black-turn" id="lifeTurnDot" aria-hidden="true"></span>
+            <div><strong id="lifeTurnText">观察局部</strong><span>9 路死活练习</span></div>
+          </div>
+          <span class="lesson-counter" id="lifeCounter">01 / 06</span>
+        </div>
+        <div class="board-stage lesson-board-stage">
+          <div class="go-board" id="lifeBoard" role="group" aria-label="死活练习棋盘"></div>
+        </div>
+        <div class="lesson-board-controls" role="group" aria-label="死活棋局操作">
+          <span class="life-state-label" id="lifeStateLabel">观察棋形</span>
+          <span class="lesson-captures"><span>黑提 <b id="lifeBlackCaptures">0</b></span><span>白提 <b id="lifeWhiteCaptures">0</b></span></span>
+          <button type="button" class="tool-button icon-tool" id="lifeUndoButton" title="悔棋" aria-label="悔棋" disabled><span class="tool-icon" aria-hidden="true">↶</span></button>
+          <button type="button" class="tool-button icon-tool" id="lifeResetButton" title="重置本节" aria-label="重置本节"><span class="tool-icon" aria-hidden="true">↻</span></button>
+        </div>
+        <p class="rule-note" id="lifeFeedback" role="status" aria-live="polite">点击两处眼点，观察它们是否分属同一块棋。</p>
+      </section>
+
+      <aside class="lesson-content" aria-label="本节学习内容">
+        <div class="content-kicker">本节目标</div>
+        <h2 id="lifeTitle">两只真眼</h2>
+        <p class="lesson-intro" id="lifeIntro"></p>
+        <div class="lesson-focus"><span>思维重点</span><strong id="lifeFocus"></strong></div>
+        <section class="task-section">
+          <h3>观察与练习</h3>
+          <p id="lifeTask"></p>
+          <div class="lesson-options" id="lifeOptions" role="group" aria-label="死活练习选项"></div>
+        </section>
+        <div class="rule-explanation" id="lifeExplanation"></div>
+        <div class="course-progress">
+          <div class="progress-label"><span>课程进度</span><strong id="lifeProgress">第 1 节 / 共 6 节</strong></div>
+          <div class="progress-track"><span id="lifeProgressFill"></span></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./life-and-death.mjs"></script>
+</body>
+</html>

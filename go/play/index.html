@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#18283a" />
+  <title>双人手动对弈 | MindsEvo 围棋</title>
+  <link rel="stylesheet" href="./play.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-stone" aria-hidden="true"></span><span>围棋</span></a>
+    <nav class="top-actions" aria-label="页面导航">
+      <a href="../index.html">系统首页</a>
+      <a href="../../chess-series/index.html">棋类系列</a>
+    </nav>
+  </header>
+
+  <main class="play-shell">
+    <header class="page-heading">
+      <div><p class="eyebrow">围棋 · 对弈</p><h1 id="gameModeTitle">双人手动对弈</h1></div>
+      <a class="back-link" href="../index.html">← 返回围棋首页</a>
+    </header>
+
+    <div class="play-layout">
+      <section class="board-panel" aria-label="围棋棋盘与操作">
+        <nav class="go-control-panel" aria-label="围棋对弈控制面板">
+          <div class="control-panel-row">
+            <div class="mode-control">
+              <span class="control-label">对弈模式</span>
+              <div class="segmented-control mode-picker" role="group" aria-label="选择对弈模式">
+                <button type="button" class="mode-option is-active" id="manualModeButton" aria-pressed="true" title="双人手动对弈">
+                  <span aria-hidden="true">●●</span><span>手动</span>
+                </button>
+                <button type="button" class="mode-option" id="humanAiModeButton" aria-pressed="false" title="使用本地 AI 进行人机对弈">
+                  <span aria-hidden="true">●</span><span>人机</span>
+                </button>
+                <button type="button" class="mode-option" id="aiAiModeButton" aria-pressed="false" title="本地 AI 自动对弈">
+                  <span aria-hidden="true">⚙</span><span>AI 对弈</span>
+                </button>
+              </div>
+            </div>
+            <div class="size-control">
+              <span class="control-label">棋盘</span>
+              <div class="segmented-control size-picker" role="group" aria-label="选择棋盘尺寸">
+                <button type="button" data-size="9" aria-pressed="true">9 路</button>
+                <button type="button" data-size="13" aria-pressed="false">13 路</button>
+                <button type="button" data-size="19" aria-pressed="false">19 路</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-panel-tools" role="group" aria-label="棋局操作">
+            <button type="button" class="tool-button ai-run-tool" id="aiRunButton" title="开始 AI 对弈" aria-label="开始 AI 对弈" hidden>
+              <span class="tool-icon" aria-hidden="true">▶</span><span>开始 AI 对弈</span>
+            </button>
+            <button type="button" class="tool-button pass-tool" id="passButton" title="停着" aria-label="停着">
+              <span class="tool-icon" aria-hidden="true">Ⅱ</span><span>停着</span>
+            </button>
+            <span class="tool-divider" aria-hidden="true"></span>
+            <button type="button" class="tool-button icon-tool" id="undoButton" title="悔棋" aria-label="悔棋" disabled>
+              <span class="tool-icon" aria-hidden="true">↶</span>
+            </button>
+            <button type="button" class="tool-button icon-tool" id="redoButton" title="重做" aria-label="重做" disabled>
+              <span class="tool-icon" aria-hidden="true">↷</span>
+            </button>
+            <button type="button" class="tool-button icon-tool reset-tool" id="resetButton" title="重新开始" aria-label="重新开始">
+              <span class="tool-icon" aria-hidden="true">↻</span>
+            </button>
+            <span class="tool-help">鼠标或触屏点击交叉点落子</span>
+          </div>
+        </nav>
+
+        <div class="turn-banner" aria-live="polite">
+          <span class="turn-stone black-stone" id="turnStone" aria-hidden="true"></span>
+          <div><strong id="turnText">黑方行棋</strong><span id="gameStatus">黑棋先行</span></div>
+          <span class="board-size-label" id="boardSizeLabel">9 路</span>
+        </div>
+
+        <div class="board-stage">
+          <div class="go-board" id="goBoard" role="group" aria-label="9 路围棋棋盘"></div>
+        </div>
+
+        <p class="rule-note" id="ruleNote" role="status">点击棋盘交叉点落子。支持提子、自杀禁入与单劫规则。</p>
+      </section>
+
+      <aside class="game-sidebar" aria-label="棋局信息">
+        <section class="info-section">
+          <div class="section-heading"><div><p class="section-kicker">棋局统计</p><h2>提子</h2></div></div>
+          <div class="capture-row"><span class="capture-stone black-stone" aria-hidden="true"></span><span>黑方提子</span><strong id="blackCaptures">0</strong></div>
+          <div class="capture-row"><span class="capture-stone white-stone" aria-hidden="true"></span><span>白方提子</span><strong id="whiteCaptures">0</strong></div>
+        </section>
+        <section class="info-section scoring-panel" id="scorePanel" hidden aria-label="终局数子">
+          <div class="section-heading"><div><p class="section-kicker">中国规则 · 数子法</p><h2>终局数子</h2></div></div>
+          <p class="scoring-instructions" id="scoringInstructions">点击棋盘上的死棋棋子，整块棋会一起标记。</p>
+          <div class="score-row"><span>黑方地盘</span><strong id="blackAreaScore">0 目</strong></div>
+          <div class="score-row"><span>白方地盘 + 贴目</span><strong id="whiteAreaScore">0 + 7.5 = 7.5 目</strong></div>
+          <div class="score-row neutral-score"><span>中立点</span><strong id="neutralAreaScore">0 目</strong></div>
+          <p class="score-result" id="scoreResult" role="status" aria-live="polite" hidden></p>
+          <div class="score-actions">
+            <button type="button" class="confirm-score-button" id="confirmScoreButton">确认结果</button>
+            <button type="button" class="resume-game-button" id="resumeGameButton">恢复对弈</button>
+          </div>
+        </section>
+        <section class="info-section move-section">
+          <div class="section-heading"><div><p class="section-kicker">本局进程</p><h2>落子记录</h2></div><span class="move-count" id="moveCount">0 手</span></div>
+          <ol class="move-list" id="moveList" aria-label="落子记录"><li class="move-empty">棋局开始后，落子记录会显示在这里。</li></ol>
+        </section>
+        <section class="scope-note">
+          <strong>当前版本</strong>
+          <p>人机与 AI 自动对弈支持 9、13、19 路。双方连续停着后标记死棋，并按中国数子法计分，白方贴 7.5 目。当前使用 KataGo 小型验证模型，适合体验，不用于高可信求解。</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./play.mjs"></script>
+</body>
+</html>
