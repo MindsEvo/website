@@ -173,13 +173,59 @@
   }
 
   // ── Navigation ───────────────────────────────────────────────
+  function _repoRootPrefix() {
+    var segments = (window.location.pathname || '/').split('/').filter(Boolean);
+    var knownTopLevel = ['games', 'learning', 'studio', 'chess', 'analysis', 'history',
+      'profile', 'sprites', 'metadata', 'server', 'docs', 'tools', 'intro', 'play',
+      'records', 'settings', 'i18n'];
+
+    for (var i = 0; i < segments.length; i++) {
+      if (knownTopLevel.indexOf(segments[i]) !== -1) {
+        var prefix = segments.slice(0, i).join('/');
+        return prefix ? '/' + prefix + '/' : '/';
+      }
+    }
+
+    return '/';
+  }
+
+  function _relativePathFrom(currentPath, targetPath) {
+    var from = (currentPath || '/').split('/').filter(Boolean);
+    var to = (targetPath || '/').split('/').filter(Boolean);
+
+    if (from.length && from[from.length - 1].indexOf('.') !== -1) {
+      from.pop();
+    }
+
+    var common = 0;
+    while (common < from.length && common < to.length && from[common] === to[common]) {
+      common++;
+    }
+
+    var up = Array(Math.max(from.length - common, 0)).fill('..').join('/');
+    var down = to.slice(common).join('/');
+
+    if (!up && !down) return './';
+    if (!up) return down;
+    if (!down) return up;
+    return up + '/' + down;
+  }
+
+  function _siteTarget(relativePath) {
+    var root = _repoRootPrefix();
+    var target = (relativePath || '').replace(/^\/+/, '');
+    return (root + target).replace(/\/+/g, '/');
+  }
+
   var nav = {
-    // goto('pattern-hunter')  →  /games/pattern-hunter/index.html
+    // goto('pattern-hunter')  →  relative path to /games/pattern-hunter/index.html
     goto: function (game) {
-      window.location.href = '/games/' + game + '/index.html';
+      var target = _siteTarget('games/' + game + '/index.html');
+      window.location.href = _relativePathFrom(window.location.pathname, target);
     },
     home: function () {
-      window.location.href = '/index.html';
+      var target = _siteTarget('index.html');
+      window.location.href = _relativePathFrom(window.location.pathname, target);
     },
     back: function () {
       window.history.back();
