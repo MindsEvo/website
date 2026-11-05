@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#18283a" />
+  <title>棋形基础 | MindsEvo 围棋</title>
+  <link rel="stylesheet" href="../play/play.css" />
+  <link rel="stylesheet" href="./basic-rules.css" />
+  <link rel="stylesheet" href="./shape-basics.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-stone" aria-hidden="true"></span><span>围棋</span></a>
+    <nav class="top-actions" aria-label="页面导航">
+      <a href="./index.html">学习中心</a>
+      <a href="../index.html">系统首页</a>
+    </nav>
+  </header>
+
+  <main class="rules-shell shape-shell">
+    <header class="rules-heading">
+      <div>
+        <p class="eyebrow">学习中心 · 首期</p>
+        <h1>棋形基础</h1>
+        <p>从棋子如何连接开始，观察棋串、断点、眼形与局部空间。</p>
+      </div>
+      <a class="back-link" href="./index.html">← 返回学习中心</a>
+    </header>
+
+    <div class="rules-layout shape-layout">
+      <nav class="lesson-nav" aria-label="棋形基础小节">
+        <p class="lesson-nav-title">课程目录</p>
+        <button type="button" class="lesson-nav-item is-current" data-shape-lesson="strings"><span>01</span>棋串结构</button>
+        <button type="button" class="lesson-nav-item" data-shape-lesson="connect"><span>02</span>连接点</button>
+        <button type="button" class="lesson-nav-item" data-shape-lesson="cut"><span>03</span>分断与断点</button>
+        <button type="button" class="lesson-nav-item" data-shape-lesson="eye"><span>04</span>眼点与眼形</button>
+        <button type="button" class="lesson-nav-item" data-shape-lesson="patterns"><span>05</span>直三与曲三</button>
+        <button type="button" class="lesson-nav-item" data-shape-lesson="observe"><span>06</span>综合观察</button>
+      </nav>
+
+      <section class="board-panel lesson-board-panel" aria-label="棋形练习棋盘">
+        <div class="lesson-board-head">
+          <div class="turn-indicator" aria-live="polite">
+            <span class="turn-dot black-turn" id="shapeTurnDot" aria-hidden="true"></span>
+            <div><strong id="shapeTurnText">黑方行棋</strong><span>9 路棋形观察</span></div>
+          </div>
+          <span class="lesson-counter" id="shapeCounter">01 / 06</span>
+        </div>
+        <div class="board-stage lesson-board-stage">
+          <div class="go-board" id="shapeBoard" role="group" aria-label="棋形基础练习棋盘"></div>
+        </div>
+        <div class="lesson-board-controls" role="group" aria-label="练习棋局操作">
+          <span class="shape-turn-label" id="shapeTurnLabel">黑方行棋</span>
+          <span class="lesson-captures"><span>黑提 <b id="shapeBlackCaptures">0</b></span><span>白提 <b id="shapeWhiteCaptures">0</b></span></span>
+          <button type="button" class="tool-button icon-tool" id="shapeUndoButton" title="悔棋" aria-label="悔棋" disabled><span class="tool-icon" aria-hidden="true">↶</span></button>
+          <button type="button" class="tool-button icon-tool" id="shapeResetButton" title="重置本节" aria-label="重置本节"><span class="tool-icon" aria-hidden="true">↻</span></button>
+        </div>
+        <p class="rule-note" id="shapeFeedback" role="status" aria-live="polite">点击同色棋子，观察它们是否连接成一块。</p>
+      </section>
+
+      <aside class="lesson-content" aria-label="本节学习内容">
+        <div class="content-kicker">本节目标</div>
+        <h2 id="shapeTitle">棋串结构</h2>
+        <p class="lesson-intro" id="shapeIntro"></p>
+        <div class="lesson-focus"><span>思维重点</span><strong id="shapeFocus"></strong></div>
+        <section class="task-section">
+          <h3>观察与练习</h3>
+          <p id="shapeTask"></p>
+          <div class="lesson-options" id="shapeOptions" role="group" aria-label="棋形练习选项"></div>
+        </section>
+        <div class="rule-explanation" id="shapeExplanation"></div>
+        <div class="course-progress">
+          <div class="progress-label"><span>课程进度</span><strong id="shapeProgress">第 1 节 / 共 6 节</strong></div>
+          <div class="progress-track"><span id="shapeProgressFill"></span></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./shape-basics.mjs"></script>
+</body>
+</html>

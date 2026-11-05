@@ -1,0 +1,16 @@
+.attack-shell .attack-layout { grid-template-columns: minmax(158px, 185px) minmax(360px, 1fr) minmax(260px, 315px); }
+.ad-state-label { margin-left: 4px; color: #4b6c66; font-size: 12px; font-weight: 800; }
+#adBoard .intersection.ad-selected .stone { box-shadow: 0 0 0 3px rgba(0, 136, 112, .35); }
+.attack-shell .lesson-options button { min-height: 34px; }
+.attack-shell .lesson-options button.answer-correct { border-color: #75b59b; background: #e8f5ed; color: #28694b; }
+.attack-shell .lesson-options button.answer-wrong { border-color: #d78c7a; background: #fff0ec; color: #9c4635; }
+.attack-shell .rule-explanation { min-height: 62px; }
+@media (max-width: 980px) {
+  .attack-shell .attack-layout { grid-template-columns: minmax(145px, 170px) minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .attack-shell .attack-layout { grid-template-columns: 1fr; }
+  .attack-shell .lesson-nav, .attack-shell .lesson-board-panel, .attack-shell .lesson-content { grid-column: 1; grid-row: auto; }
+  .attack-shell .lesson-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+  .attack-shell .lesson-nav-title { grid-column: 1 / -1; }
+}

@@ -1,0 +1,3 @@
+node_modules/
+public/models/*.bin.gz
+public/tfjs/*.wasm

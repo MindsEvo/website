@@ -1,0 +1,17 @@
+.tesuji-shell .tesuji-layout { grid-template-columns: minmax(158px, 185px) minmax(360px, 1fr) minmax(260px, 315px); }
+.tesuji-state-label { margin-left: 4px; color: #4b6c66; font-size: 12px; font-weight: 800; }
+#tesujiBoard .intersection.tesuji-selected .stone { box-shadow: 0 0 0 3px rgba(0, 136, 112, .35); }
+#tesujiBoard .intersection.tesuji-target::after { position: absolute; z-index: 4; width: 34%; aspect-ratio: 1; border: 2px solid #c86a45; border-radius: 50%; content: ''; pointer-events: none; }
+.tesuji-shell .lesson-options button { min-height: 34px; }
+.tesuji-shell .lesson-options button.answer-correct { border-color: #75b59b; background: #e8f5ed; color: #28694b; }
+.tesuji-shell .lesson-options button.answer-wrong { border-color: #d78c7a; background: #fff0ec; color: #9c4635; }
+.tesuji-shell .rule-explanation { min-height: 62px; }
+@media (max-width: 980px) {
+  .tesuji-shell .tesuji-layout { grid-template-columns: minmax(145px, 170px) minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .tesuji-shell .tesuji-layout { grid-template-columns: 1fr; }
+  .tesuji-shell .lesson-nav, .tesuji-shell .lesson-board-panel, .tesuji-shell .lesson-content { grid-column: 1; grid-row: auto; }
+  .tesuji-shell .lesson-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+  .tesuji-shell .lesson-nav-title { grid-column: 1 / -1; }
+}

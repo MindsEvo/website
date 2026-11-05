@@ -1,0 +1,156 @@
+.rules-shell { width: min(1460px, calc(100% - 32px)); margin: 0 auto; padding: 18px 0 28px; }
+.rules-heading { margin: 0 0 14px; display: flex; align-items: end; justify-content: space-between; gap: 14px; }
+.rules-heading .eyebrow { margin-bottom: 4px; }
+.rules-heading h1 { font-size: 23px; }
+.rules-heading p:last-child { margin: 6px 0 0; color: #687b86; font-size: 11px; line-height: 1.55; }
+.rules-heading .back-link { flex: 0 0 auto; }
+.rules-layout { display: grid; grid-template-columns: minmax(158px, 185px) minmax(360px, 1fr) minmax(260px, 315px); gap: 10px; align-items: start; }
+.lesson-nav, .lesson-content { min-width: 0; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.lesson-nav { padding: 10px 8px; }
+.lesson-nav-title { margin: 2px 6px 9px; color: #7e8d95; font-size: 10px; font-weight: 900; }
+.lesson-nav-item { width: 100%; min-height: 35px; padding: 5px 7px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 4px; background: transparent; color: #536876; font-family: inherit; font-size: 11px; text-align: left; cursor: pointer; }
+.lesson-nav-item + .lesson-nav-item { margin-top: 2px; }
+.lesson-nav-item span { width: 20px; flex: 0 0 20px; color: #91a0a5; font-family: Georgia, serif; font-size: 10px; }
+.lesson-nav-item:hover { background: #f3f8f7; }
+.lesson-nav-item.is-current { background: #eaf5f2; color: #176f64; font-weight: 900; }
+.lesson-nav-item.is-current span { color: #258f7e; }
+.lesson-nav-item:focus-visible, .lesson-options button:focus-visible { outline: 2px solid #e1795c; outline-offset: 1px; }
+.lesson-board-panel { min-width: 0; padding: 11px 12px 9px; }
+.lesson-board-head { max-width: 680px; min-height: 44px; margin: 0 auto 7px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.lesson-board-head .turn-indicator { gap: 8px; }
+.lesson-board-head .turn-indicator strong { font-size: 12px; }
+.lesson-board-head .turn-indicator div span { font-size: 10px; }
+.lesson-counter { padding: 4px 7px; border-radius: 3px; background: #eff5f3; color: #38796b; font-size: 10px; font-weight: 900; }
+.lesson-board-stage { width: min(100%, 620px); }
+.board-coordinate { position: absolute; z-index: 4; color: #786548; font-size: 9px; font-weight: 800; line-height: 1; pointer-events: none; }
+.file-coordinate { transform: translate(-50%, 0); }
+.rank-coordinate { transform: translate(-50%, -50%); }
+.lesson-board-controls { max-width: 620px; min-height: 36px; margin: 8px auto 0; display: flex; align-items: center; gap: 5px; }
+.lesson-board-controls .tool-button { min-width: 30px; height: 28px; }
+.lesson-board-controls .tool-button[hidden] { display: none; }
+.lesson-board-controls .pass-tool { min-width: 66px; }
+.lesson-board-controls .tool-icon { font-size: 15px; }
+.lesson-captures { margin-left: auto; margin-right: auto; display: flex; gap: 12px; color: #74838a; font-size: 9px; }
+.lesson-captures b { color: #344a4c; font-variant-numeric: tabular-nums; }
+.lesson-board-panel .rule-note { max-width: 620px; min-height: 30px; margin-top: 4px; padding: 8px 9px; border: 1px solid #e8efed; border-radius: 3px; font-size: 10px; }
+.lesson-board-panel .rule-note.success { border-color: #cce5d8; background: #edf7f0; color: #2c7150; }
+.lesson-content { padding: 15px 15px 13px; }
+.content-kicker { color: #0c9caf; font-size: 12px; font-weight: 900; letter-spacing: .5px; }
+.lesson-content h2 { margin: 5px 0 8px; color: var(--ink); font-family: "STSong", "Songti SC", "SimSun", serif; font-size: 20px; }
+.lesson-intro { margin: 0; color: #536974; font-size: 12px; line-height: 1.75; }
+.lesson-focus { margin-top: 10px; padding: 9px 10px; display: flex; flex-direction: column; gap: 4px; border-left: 3px solid #2e8a70; background: #f0f7f4; }
+.lesson-focus span { color: #738982; font-size: 11px; }
+.lesson-focus strong { color: #28695d; font-size: 13px; }
+.task-section { margin-top: 13px; }
+.task-section h3 { margin: 0 0 5px; color: #334b56; font-size: 11px; }
+.task-section p { margin: 0; color: #71818a; font-size: 11px; line-height: 1.65; }
+.lesson-options { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+.lesson-options:empty { display: none; }
+.lesson-options button { min-height: 32px; padding: 0 10px; border: 1px solid #dfe7e7; border-radius: 4px; background: #fff; color: #526a6a; font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+.lesson-options button:hover, .lesson-options button[aria-pressed="true"] { border-color: #9dcac0; background: #edf7f3; color: #236d5c; }
+.rule-explanation { min-height: 54px; margin-top: 11px; padding: 9px 10px; border: 1px solid #e8edef; border-radius: 4px; background: #fafcfc; color: #718087; font-size: 10px; line-height: 1.7; }
+.rule-explanation strong { color: #354e53; }
+.lesson-score-panel { margin-top: 10px; padding: 10px; border: 1px solid #dfe9e5; border-radius: 4px; background: #f7fbf9; }
+.lesson-score-panel[hidden] { display: none; }
+.score-panel-heading { display: flex; justify-content: space-between; gap: 8px; color: #28695d; font-size: 12px; }
+.score-panel-heading span { color: #74827f; font-size: 11px; }
+.lesson-score-panel > p { margin: 7px 0; color: #667980; font-size: 12px; line-height: 1.55; }
+.lesson-score-row { min-height: 27px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e9efec; color: #667873; font-size: 11px; }
+.lesson-score-row strong { color: #334e47; font-size: 12px; }
+.lesson-score-result { padding: 8px; border-left: 3px solid #2e8a70; background: #eaf5f2; color: #245c50 !important; font-size: 13px !important; font-weight: 900; }
+.lesson-score-actions { margin-top: 7px; display: flex; gap: 5px; }
+.lesson-score-actions button { min-height: 32px; padding: 0 9px; border: 1px solid #d9e4e0; border-radius: 3px; background: #fff; color: #55706a; font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+.lesson-score-actions .confirm-score-button { border-color: #187c77; background: #187c77; color: #fff; }
+.lesson-score-actions button[hidden] { display: none; }
+.course-progress { margin-top: 12px; }
+.progress-label { margin-bottom: 5px; display: flex; justify-content: space-between; color: #74848a; font-size: 11px; }
+.progress-label strong { color: #60766f; }
+.progress-track { height: 4px; overflow: hidden; border-radius: 3px; background: #e9efed; }
+.progress-track span { height: 100%; display: block; border-radius: inherit; background: #2e8a70; transition: width .2s ease; }
+.liberty-mark { position: absolute; z-index: 3; width: 29%; aspect-ratio: 1; border-radius: 50%; background: rgba(18, 139, 111, .7); box-shadow: 0 0 0 2px rgba(255,255,255,.55); pointer-events: none; }
+#lessonBoard .intersection.dead-selected .stone { opacity: .38; }
+#lessonBoard .dead-mark { font-size: 21px; }
+@media (max-width: 980px) {
+  .rules-layout { grid-template-columns: minmax(145px, 170px) minmax(0, 1fr); }
+  .lesson-content { grid-column: 2; }
+  .lesson-board-panel { grid-column: 2; grid-row: 1; }
+  .lesson-nav { grid-column: 1; grid-row: 1 / span 2; }
+}
+@media (max-width: 680px) {
+  .rules-shell { width: calc(100% - 20px); padding-top: 14px; }
+  .rules-heading { align-items: center; margin-bottom: 10px; }
+  .rules-heading h1 { font-size: 20px; }
+  .rules-heading p:last-child { max-width: 420px; font-size: 10px; }
+  .rules-heading .back-link { padding: 6px 7px; font-size: 9px; }
+  .rules-layout { grid-template-columns: 1fr; gap: 8px; }
+  .lesson-nav, .lesson-board-panel, .lesson-content { grid-column: 1; grid-row: auto; }
+  .lesson-nav { padding: 8px; }
+  .lesson-nav-title { margin-bottom: 6px; }
+  .lesson-nav-item { min-height: 31px; }
+  .lesson-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+  .lesson-nav-title { grid-column: 1 / -1; }
+  .lesson-nav-item + .lesson-nav-item { margin-top: 0; }
+  .lesson-board-panel { padding: 9px 8px 8px; }
+  .lesson-board-stage { padding: 4px; }
+  .lesson-content { padding: 13px; }
+}
+@media (max-width: 380px) {
+  .rules-heading { align-items: flex-start; }
+  .rules-heading .back-link { font-size: 8px; }
+  .lesson-nav-item { gap: 5px; padding-inline: 5px; font-size: 9px; }
+}
+
+/* Keep lesson text readable without enlarging the page title. */
+.rules-heading p:last-child { font-size: 13px; }
+.lesson-nav-title { font-size: 12px; }
+.lesson-nav-item { font-size: 13px; }
+.lesson-nav-item span { font-size: 11px; }
+.lesson-board-head .turn-indicator strong { font-size: 14px; }
+.lesson-board-head .turn-indicator div span { font-size: 12px; }
+.lesson-counter { font-size: 12px; }
+.board-coordinate { font-size: 11px; }
+.lesson-board-controls .tool-button { font-size: 12px; }
+.lesson-captures { font-size: 11px; }
+.lesson-board-panel .rule-note { font-size: 12px; }
+.content-kicker { font-size: 11px; }
+.lesson-content h2 { font-size: 22px; }
+.lesson-intro { font-size: 14px; }
+.lesson-focus span { font-size: 12px; }
+.lesson-focus strong { font-size: 13px; }
+.task-section h3 { font-size: 13px; }
+.task-section p { font-size: 13px; }
+.lesson-options button { min-height: 31px; font-size: 11px; }
+.rule-explanation { font-size: 12px; }
+.lesson-score-panel > p { font-size: 11px; }
+.lesson-score-row { font-size: 10px; }
+.lesson-score-row strong { font-size: 11px; }
+.lesson-score-actions button { min-height: 30px; font-size: 10px; }
+.progress-label { font-size: 10px; }
+@media (max-width: 680px) {
+  .rules-heading p:last-child { font-size: 12px; }
+  .rules-heading .back-link { font-size: 11px; }
+  .lesson-nav-title { font-size: 12px; }
+  .lesson-nav-item { min-height: 35px; font-size: 12px; }
+  .lesson-board-head .turn-indicator strong { font-size: 13px; }
+  .lesson-board-head .turn-indicator div span { font-size: 11px; }
+  .board-coordinate { font-size: 10px; }
+  .lesson-board-controls .tool-button { font-size: 11px; }
+  .lesson-board-panel .rule-note { font-size: 11px; }
+  .lesson-content h2 { font-size: 21px; }
+  .lesson-intro, .task-section p { font-size: 13px; }
+  .lesson-focus strong { font-size: 12px; }
+  .lesson-options button { min-height: 33px; font-size: 12px; }
+  .score-panel-heading { font-size: 12px; }
+  .score-panel-heading span { font-size: 10px; }
+  .lesson-score-panel > p { font-size: 11px; }
+  .lesson-score-row { font-size: 11px; }
+  .lesson-score-row strong { font-size: 11px; }
+  .lesson-score-result { font-size: 12px !important; }
+  .lesson-score-actions button { min-height: 32px; font-size: 11px; }
+  .progress-label { font-size: 11px; }
+  .rule-explanation { font-size: 11px; }
+}
+@media (max-width: 380px) {
+  .rules-heading .back-link { font-size: 10px; }
+  .lesson-nav-item { font-size: 11px; }
+}

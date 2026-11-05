@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#18283a" />
+  <title>手筋 | MindsEvo 围棋</title>
+  <link rel="stylesheet" href="../play/play.css" />
+  <link rel="stylesheet" href="./basic-rules.css" />
+  <link rel="stylesheet" href="./tesuji.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-stone" aria-hidden="true"></span><span>围棋</span></a>
+    <nav class="top-actions" aria-label="页面导航">
+      <a href="./index.html">学习中心</a>
+      <a href="../index.html">系统首页</a>
+    </nav>
+  </header>
+
+  <main class="rules-shell tesuji-shell">
+    <header class="rules-heading">
+      <div>
+        <p class="eyebrow">学习中心 · 首期</p>
+        <h1>手筋</h1>
+        <p>从局部关键着入手，练习紧气、切断、扳与倒扑。</p>
+      </div>
+      <a class="back-link" href="./index.html">← 返回学习中心</a>
+    </header>
+
+    <div class="rules-layout tesuji-layout">
+      <nav class="lesson-nav" aria-label="手筋小节">
+        <p class="lesson-nav-title">课程目录</p>
+        <button type="button" class="lesson-nav-item is-current" data-tesuji-lesson="atari"><span>01</span>打吃</button>
+        <button type="button" class="lesson-nav-item" data-tesuji-lesson="cut"><span>02</span>断</button>
+        <button type="button" class="lesson-nav-item" data-tesuji-lesson="hane"><span>03</span>扳</button>
+        <button type="button" class="lesson-nav-item" data-tesuji-lesson="snapback"><span>04</span>倒扑</button>
+        <button type="button" class="lesson-nav-item" data-tesuji-lesson="squeeze"><span>05</span>紧气与次序</button>
+        <button type="button" class="lesson-nav-item" data-tesuji-lesson="review"><span>06</span>综合练习</button>
+      </nav>
+
+      <section class="board-panel lesson-board-panel" aria-label="手筋练习棋盘">
+        <div class="lesson-board-head">
+          <div class="turn-indicator" aria-live="polite">
+            <span class="turn-dot black-turn" id="tesujiTurnDot" aria-hidden="true"></span>
+            <div><strong id="tesujiTurnText">黑方行棋</strong><span>9 路手筋练习</span></div>
+          </div>
+          <span class="lesson-counter" id="tesujiCounter">01 / 06</span>
+        </div>
+        <div class="board-stage lesson-board-stage">
+          <div class="go-board" id="tesujiBoard" role="group" aria-label="手筋练习棋盘"></div>
+        </div>
+        <div class="lesson-board-controls" role="group" aria-label="手筋棋局操作">
+          <span class="tesuji-state-label" id="tesujiStateLabel">找出关键着</span>
+          <span class="lesson-captures"><span>黑提 <b id="tesujiBlackCaptures">0</b></span><span>白提 <b id="tesujiWhiteCaptures">0</b></span></span>
+          <button type="button" class="tool-button icon-tool" id="tesujiUndoButton" title="悔棋" aria-label="悔棋" disabled><span class="tool-icon" aria-hidden="true">↶</span></button>
+          <button type="button" class="tool-button icon-tool" id="tesujiResetButton" title="重置本节" aria-label="重置本节"><span class="tool-icon" aria-hidden="true">↻</span></button>
+        </div>
+        <p class="rule-note" id="tesujiFeedback" role="status" aria-live="polite">找到黑方可以打吃的落点。</p>
+      </section>
+
+      <aside class="lesson-content" aria-label="本节学习内容">
+        <div class="content-kicker">本节目标</div>
+        <h2 id="tesujiTitle">打吃</h2>
+        <p class="lesson-intro" id="tesujiIntro"></p>
+        <div class="lesson-focus"><span>思维重点</span><strong id="tesujiFocus"></strong></div>
+        <section class="task-section">
+          <h3>观察与练习</h3>
+          <p id="tesujiTask"></p>
+          <div class="lesson-options" id="tesujiOptions" role="group" aria-label="手筋判断选项"></div>
+        </section>
+        <div class="rule-explanation" id="tesujiExplanation"></div>
+        <div class="course-progress">
+          <div class="progress-label"><span>课程进度</span><strong id="tesujiProgress">第 1 节 / 共 6 节</strong></div>
+          <div class="progress-track"><span id="tesujiProgressFill"></span></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./tesuji.mjs"></script>
+</body>
+</html>
