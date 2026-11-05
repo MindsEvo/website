@@ -492,6 +492,10 @@
   ],
   "prerequisites": [],
   "videos": [],
+  "exerciseCatalogNote": {
+    "zh": "exercises 是代表性内容索引，不是 learning/language/data.js 内容池的全量镜像。实际材料覆盖与生成合同以 data.js 和 learning/language/test.html 的审计结果为准。",
+    "en": "exercises is a representative content index, not a complete mirror of the learning/language/data.js pool. Actual material coverage and generation contracts are derived from data.js and audited by learning/language/test.html."
+  },
   "exercises": [
     {
       "id": "zh-g1-borrow-umbrella",
@@ -621,8 +625,8 @@
           "accuracy",
           "firstTryRate"
         ],
-        "ruleZh": "ccr_slot / ccr_reflect 不计分：checkAnswer 恒为真，文案不出现“对/错”；孩子的选择只进入报告 context 的 guidedCreate 字段。",
-        "ruleEn": "ccr_slot / ccr_reflect are never scored: checkAnswer is always true and no right/wrong wording is shown; the child's picks go only into the report context's guidedCreate field."
+        "ruleZh": "ccr_slot / ccr_reflect 不进入 Language objective accuracy：checkAnswer 恒为真，文案不出现“对/错”；Express 与 Create 的选择、组合句和反思分别进入报告 context 的 guidedExpress 与 guidedCreate 字段。",
+        "ruleEn": "ccr_slot / ccr_reflect do not enter Language objective accuracy: checkAnswer is always true and no right/wrong wording is shown. Express and Create picks, composed sentences, and reflections are reported separately in guidedExpress and guidedCreate."
       },
       {
         "id": "per-item-first-try",
@@ -661,12 +665,34 @@
     "critical-reading"
   ],
   "contentArchitecture": {
-    "navigationOrder": [
-      "language",
-      "abilityUnit",
-      "level",
-      "session"
-    ],
+    "modes": {
+      "abilityTraining": {
+        "purposeZh": "按能力与 RootGene 进行定向训练、Mastery 与补弱。",
+        "purposeEn": "Focused practice, mastery, and remediation by ability and RootGene.",
+        "navigationOrder": [
+          "language",
+          "abilityUnit",
+          "level",
+          "session"
+        ]
+      },
+      "worksJourney": {
+        "purposeZh": "围绕完整作品进行跨能力的语言与思考体验。",
+        "purposeEn": "A cross-ability language and thinking experience around a complete work.",
+        "navigationOrder": [
+          "language",
+          "level",
+          "work",
+          "encounterListen",
+          "journey"
+        ],
+        "journeyReadyWorks": [
+          "zh-g1-goose-poem"
+        ],
+        "statusNoteZh": "第一版只开放中文 G1《咏鹅》poetry Journey prototype；English Works 尚未开放。",
+        "statusNoteEn": "The first release exposes only the Chinese G1 '咏鹅' poetry Journey prototype; English Works is not yet open."
+      }
+    },
     "languageDomains": {
       "zh": {
         "nameZh": "中文",
