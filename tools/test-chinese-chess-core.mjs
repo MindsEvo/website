@@ -15,6 +15,75 @@ import {
   toFen,
   undoMove
 } from '../chinese-chess/core.mjs';
+import { bindPlayModeSession, restorePlayModeSession } from '../chinese-chess/shared/play-mode-session.mjs';
+
+function modeTransferHarness() {
+  const values = new Map();
+  const storage = {
+    getItem: key => values.get(key) || null,
+    setItem: (key, value) => values.set(key, value),
+    removeItem: key => values.delete(key)
+  };
+  let listener;
+  const link = {
+    href: 'http://localhost/web/chinese-chess/play/human-ai.html',
+    getAttribute: () => null,
+    addEventListener: (type, callback) => { listener = callback; }
+  };
+  const container = { querySelectorAll: () => [link] };
+  return { storage, link, container, click: event => listener({ button: 0, ...event }) };
+}
+
+test('mode switching preserves the position, history, redo, puzzle and recording drafts', () => {
+  const harness = modeTransferHarness();
+  const game = createGame();
+  const initialFen = toFen(game);
+  makeMove(game, { row: 6, col: 0 }, { row: 5, col: 0 });
+  makeMove(game, { row: 3, col: 0 }, { row: 4, col: 0 });
+  undoMove(game);
+  let paused = false;
+  bindPlayModeSession(harness.container, () => ({
+    game, initialFen, selectedPuzzle: { id: 'test', solutions: ['test-001.txt'] },
+    recording: true, recordingStart: 0, solution: 'draft', explanation: 'note'
+  }), () => { paused = true; }, harness.storage);
+  harness.click();
+  assert.equal(paused, true);
+  assert.equal(restorePlayModeSession(harness.storage, '/other-page'), null);
+  const restored = restorePlayModeSession(harness.storage, '/web/chinese-chess/play/human-ai.html');
+  assert.deepEqual(restored.game, game);
+  assert.equal(restored.initialFen, initialFen);
+  assert.equal(restored.selectedPuzzle.base, '../bank/endgame/L1/');
+  assert.equal(restored.recording, true);
+  assert.equal(restored.solution, 'draft');
+  assert.equal(restored.explanation, 'note');
+  assert.equal(redoMove(restored.game), true);
+  assert.equal(undoMove(restored.game), true);
+  assert.equal(undoMove(restored.game), true);
+  assert.equal(toFen(restored.game), initialFen);
+  assert.equal(restorePlayModeSession(harness.storage, '/web/chinese-chess/play/human-ai.html'), null);
+});
+
+test('current-mode and modified clicks do not reload or pause the game', () => {
+  const harness = modeTransferHarness();
+  let paused = false;
+  let prevented = false;
+  bindPlayModeSession(harness.container, () => ({ game: createGame() }), () => { paused = true; }, harness.storage);
+  harness.click({ ctrlKey: true });
+  assert.equal(paused, false);
+  harness.link.getAttribute = () => 'page';
+  harness.click({ preventDefault: () => { prevented = true; } });
+  assert.equal(prevented, true);
+  assert.equal(paused, false);
+});
+
+test('blocked storage cancels switching instead of silently losing the position', () => {
+  const harness = modeTransferHarness();
+  let prevented = false;
+  harness.storage.setItem = () => { throw new Error('blocked'); };
+  bindPlayModeSession(harness.container, () => ({ game: createGame() }), () => {}, harness.storage);
+  harness.click({ preventDefault: () => { prevented = true; } });
+  assert.equal(prevented, true);
+});
 
 function position(pieces, turn = RED) {
   const board = createEmptyBoard();

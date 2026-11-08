@@ -21,6 +21,7 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -50,17 +51,19 @@ const bankSearch = document.getElementById('humanBankSearch');
 const bankCount = document.getElementById('humanBankCount');
 const positionFile = document.getElementById('humanPositionFile');
 
-let game = createGame();
+const modeSession = restorePlayModeSession();
+let game = modeSession?.game || createGame();
+let initialFen = modeSession?.initialFen || toFen(game);
 let selected = null;
 let legalTargets = [];
 let engineReady = false;
 let engineThinking = false;
 let requestToken = 0;
 let gameStarted = false;
-let humanSide = RED;
-let recording = false;
-let recordingStart = 0;
-let selectedPuzzle = null;
+let humanSide = modeSession?.humanSide || game.turn;
+let recording = modeSession?.recording || false;
+let recordingStart = modeSession?.recordingStart || 0;
+let selectedPuzzle = modeSession?.selectedPuzzle || null;
 let bankManifest = null;
 let engineAbortController = null;
 let soundEnabled = true;
@@ -100,6 +103,22 @@ const controlPanel = mountBoardControlPanel(document.getElementById('humanContro
   }
 });
 
+if (modeSession) {
+  solutionEditor.value = modeSession.solution || '';
+  explanationEditor.value = modeSession.explanation || '';
+  saveSolutionButton.disabled = !solutionEditor.value.trim();
+  saveExplanationButton.disabled = !explanationEditor.value.trim();
+  recordButton.textContent = recording ? '结束记录' : '开始记录';
+  puzzleStatus.textContent = selectedPuzzle?.title || '当前棋局';
+  controlPanel.setSide(humanSide);
+}
+bindPlayModeSession(document.getElementById('humanControlPanel'), () => ({
+  game, selectedPuzzle, recording, recordingStart, humanSide,
+  initialFen,
+  solution: solutionEditor.value, explanation: explanationEditor.value,
+  solutionVariant: modeSession?.solutionVariant, boardSide: controlPanel.getSide()
+}), pauseEngine);
+
 document.getElementById('humanLoadPosition').addEventListener('click', () => positionFile.click());
 document.getElementById('humanLoadSolution').addEventListener('click', loadSolution);
 document.getElementById('humanLoadExplanation').addEventListener('click', loadExplanation);
@@ -126,11 +145,13 @@ async function connectEngine() {
     engineStatus.textContent = engineReady
       ? 'Pikafish 已就绪 · 人机对弈可用'
       : '未检测到 Pikafish 引擎，请启动本地服务。';
-    analysisStatus.textContent = engineReady ? `你执${sideName(humanSide)}，请先走棋。` : '引擎不可用';
+    analysisStatus.textContent = engineReady
+      ? `${modeSession ? '当前棋局已恢复。' : ''}你执${sideName(humanSide)}，${game.turn === humanSide ? '请走棋。' : '等待 Pikafish 走棋。'}`
+      : '引擎不可用';
   } catch {
     engineReady = false;
     gameStarted = false;
-    engineStatus.textContent = '引擎服务未连接，请启动本地 Pikafish 服务。';
+    engineStatus.textContent = '本地引擎服务未连接（端口 8787）。请运行 VS Code 任务“Start MindsEvo local engine server”，然后点击播放重试。';
     analysisStatus.textContent = '等待引擎连接';
   } finally {
     controlPanel.controls.play.disabled = false;
@@ -324,6 +345,7 @@ function resetGame() {
   engineThinking = false;
   gameStarted = true;
   game = createGame();
+  initialFen = toFen(game);
   humanSide = RED;
   controlPanel.setSide('red');
   controlPanel.setPlaying(engineReady);
@@ -431,6 +453,7 @@ async function loadPuzzle(category, puzzle) {
     engineThinking = false;
     gameStarted = true;
     game = createGameFromFen(fen);
+    initialFen = toFen(game);
     humanSide = game.turn;
     controlPanel.setSide(humanSide === RED ? 'red' : 'black');
     selectedPuzzle = { ...puzzle, category, base: '../bank/endgame/L1/' };
@@ -558,6 +581,7 @@ function loadPositionFile(event) {
       engineThinking = false;
       gameStarted = true;
       game = createGameFromFen(text.trim());
+      initialFen = toFen(game);
       humanSide = game.turn;
       controlPanel.setSide(humanSide === RED ? 'red' : 'black');
       selectedPuzzle = null;
@@ -577,6 +601,7 @@ function pauseEngine() {
   engineAbortController = null;
   engineThinking = false;
   gameStarted = false;
+  controlPanel.setPlaying(false);
   analysisStatus.textContent = '引擎搜索已暂停，点击 ▶ 可继续。';
   renderBoard();
 }

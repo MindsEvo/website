@@ -184,7 +184,7 @@ function validateCurrentPosition() {
     const { state } = validateBoard();
     const gameStatus = getGameStatus(state);
     if (gameStatus.type === 'invalid') throw new Error('局面无效，请检查双方将帅。');
-    setStatus(gameStatus.type === 'check' ? '局面结构有效；当前行棋方正被将军。' : '局面结构与双方将帅校验通过。', 'success');
+    setStatus(gameStatus.type === 'check' ? '局面结构有效；当前行棋方正被将军。' : '局面结构与校验通过。', 'success');
   } catch (error) {
     setStatus(error.message, 'error');
   }

@@ -9,6 +9,7 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -32,15 +33,16 @@ const bankSearch = document.getElementById('aiAiBankSearch');
 const bankCount = document.getElementById('aiAiBankCount');
 const puzzleStatus = document.getElementById('aiAiPuzzleStatus');
 const sideLabel = document.querySelector('.ai-ai-page .human-ai-side-label');
-let game = createGame();
-let boardSide = RED;
+const modeSession = restorePlayModeSession();
+let game = modeSession?.game || createGame();
+let boardSide = modeSession?.boardSide || RED;
 let runToken = 0;
 let duelRunning = false;
-let baseFen = toFen(game);
-let selectedPuzzle = null;
+let baseFen = modeSession?.initialFen || toFen(game);
+let selectedPuzzle = modeSession?.selectedPuzzle || null;
 let bankManifest = null;
-let recording = false;
-let recordingStart = 0;
+let recording = modeSession?.recording || false;
+let recordingStart = modeSession?.recordingStart || 0;
 let soundEnabled = true;
 let audioContext = null;
 const controlPanel = mountBoardControlPanel(document.getElementById('aiAiControlPanel'), {
@@ -59,6 +61,23 @@ const controlPanel = mountBoardControlPanel(document.getElementById('aiAiControl
     if (action === 'side') boardSide = boardSide === RED ? BLACK : RED;
   }
 });
+
+if (modeSession) {
+  solutionEditor.value = modeSession.solution || '';
+  explanationEditor.value = modeSession.explanation || '';
+  saveSolutionButton.disabled = !solutionEditor.value.trim();
+  saveExplanationButton.disabled = !explanationEditor.value.trim();
+  recordButton.textContent = recording ? '结束记录' : '开始记录';
+  puzzleStatus.textContent = selectedPuzzle?.title || '当前棋局';
+  controlPanel.setSide(boardSide);
+  statusLines[2].textContent = `着法: ${game.history.length} 着`;
+}
+bindPlayModeSession(document.getElementById('aiAiControlPanel'), () => ({
+  game, initialFen: baseFen, selectedPuzzle, recording, recordingStart,
+  solution: solutionEditor.value, explanation: explanationEditor.value,
+  solutionVariant: modeSession?.solutionVariant, boardSide,
+  humanSide: modeSession?.humanSide
+}), stopDuel);
 
 document.getElementById('aiAiLoadPosition').addEventListener('click', () => positionFile.click());
 document.getElementById('aiAiLoadSolution').addEventListener('click', loadSolution);
@@ -143,7 +162,7 @@ async function startDuel() {
   } catch (error) {
     if (token === runToken) {
       advantageText.textContent = error.message || 'Pikafish 服务不可用';
-      candidateBox.textContent = '请启动本地象棋引擎服务后重试。';
+      candidateBox.textContent = '请运行 VS Code 任务“Start MindsEvo local engine server”启动本地引擎服务（端口 8787），然后点击播放重试。';
     }
   } finally {
     if (token === runToken) {

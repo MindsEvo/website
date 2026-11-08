@@ -59,6 +59,17 @@ The AI-AI page requires this local server on port 8787. The engine is serialized
 between sides through one Pikafish process; it applies each side's configuration
 before searching.
 
+Human-AI play also requires this service. The static website on port 5500 does
+not start the engine API. In VS Code, run the workspace task
+`Start MindsEvo local engine server` (Tasks: Run Task). The task also runs on
+folder open when automatic tasks are allowed for this workspace. Leave its
+terminal running while playing; after starting it, click Play to retry a failed
+engine connection. Do not start a second copy if port 8787 is already in use.
+
+Switching back to Human-AI through the shared control panel preserves the
+position and human side, and resumes play automatically after the engine health
+check succeeds. If it is the AI's turn, it moves before the human can play.
+
 ## Example payload
 
 ```json

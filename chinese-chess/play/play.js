@@ -21,6 +21,7 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -59,16 +60,48 @@ const saveSolutionButton = document.getElementById('saveSolutionButton');
 const saveExplanationButton = document.getElementById('saveExplanationButton');
 const solutionVariant = document.getElementById('solutionVariant');
 
-let game = createGame();
+const modeSession = restorePlayModeSession();
+let game = modeSession?.game || createGame();
 let selectedSquare = null;
 let legalTargets = [];
 let bankManifest = null;
-let selectedPuzzle = null;
-let initialFen = toFen(game);
-let recording = false;
-let recordingStart = 0;
+let selectedPuzzle = modeSession?.selectedPuzzle || null;
+let initialFen = modeSession?.initialFen || toFen(game);
+let recording = modeSession?.recording || false;
+let recordingStart = modeSession?.recordingStart || 0;
 let playbackTimer = null;
 let soundEnabled = true;
+
+if (modeSession) {
+  solutionText.value = modeSession.solution || '';
+  explanationText.value = modeSession.explanation || '';
+  saveSolutionButton.disabled = !solutionText.value.trim();
+  saveExplanationButton.disabled = !explanationText.value.trim();
+  positionTitle.textContent = selectedPuzzle?.title || '当前棋局';
+  recordingButton.textContent = recording ? '结束记录' : '开始记录';
+  recordingButton.classList.toggle('recording', recording);
+  controlPanel.setSide(modeSession.boardSide || 'red');
+  const solutions = selectedPuzzle?.solutions || [];
+  solutionVariant.replaceChildren();
+  solutions.forEach((file, index) => {
+    const option = document.createElement('option');
+    option.value = String(index);
+    option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
+    solutionVariant.append(option);
+  });
+  solutionVariant.hidden = solutions.length === 0;
+  solutionVariant.value = modeSession.solutionVariant || '0';
+  document.getElementById('solutionVersionRow').hidden = !recording && solutions.length === 0;
+  document.getElementById('explanationVersionRow').hidden = !(selectedPuzzle?.explanations?.length);
+  document.getElementById('solutionVersion').value = String(solutions.length + 1);
+  document.getElementById('explanationVersion').value = String((selectedPuzzle?.explanations?.length || 0) + 1);
+}
+bindPlayModeSession(document.getElementById('playControlPanel'), () => ({
+  game, initialFen, selectedPuzzle, recording, recordingStart,
+  solution: solutionText.value, explanation: explanationText.value,
+  solutionVariant: solutionVariant.value, boardSide: controlPanel.getSide(),
+  humanSide: modeSession?.humanSide
+}), stopPlayback);
 
 function doUndo() {
   if (!undoMove(game)) return;
@@ -126,7 +159,7 @@ function renderStatus(status) {
     turnText.textContent = '棋局无效';
     turnDetail.textContent = '缺少一方将帅';
   } else {
-    turnText.textContent = game.history.length === 0 ? '红方先行' : `${side}走棋`;
+    turnText.textContent = game.history.length === 0 ? `${side}先行` : `${side}走棋`;
     turnDetail.textContent = status.type === 'check' ? `${side}被将军` : `${side}回合`;
   }
 }

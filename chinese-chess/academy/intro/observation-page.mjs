@@ -58,7 +58,24 @@ export function initObservationPage(lesson) {
 
 function renderBoard() {
   const position = createInitialBoard();
-  board.replaceChildren(createStandardBoardArtwork('teaching-lines xiangqi-grid-svg'));
+  const artwork = createStandardBoardArtwork('teaching-lines xiangqi-grid-svg');
+  for (const row of [0, 7]) {
+    const region = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    region.setAttribute('class', 'observation-palace-region');
+    region.setAttribute('x', '3');
+    region.setAttribute('y', String(row));
+    region.setAttribute('width', '2');
+    region.setAttribute('height', '2');
+    artwork.prepend(region);
+  }
+  const riverRegion = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  riverRegion.setAttribute('class', 'observation-river-region');
+  riverRegion.setAttribute('x', '0');
+  riverRegion.setAttribute('y', '4');
+  riverRegion.setAttribute('width', '8');
+  riverRegion.setAttribute('height', '1');
+  artwork.prepend(riverRegion);
+  board.replaceChildren(artwork);
 
   for (let row = 0; row < position.length; row += 1) {
     for (let col = 0; col < position[row].length; col += 1) {
@@ -104,14 +121,6 @@ function runObservation(feature, selectedButton) {
   });
   observationFrame.dataset.feature = feature.id;
 
-  if (feature.id === 'palace') {
-    for (const square of board.querySelectorAll('.teaching-square')) {
-      const row = Number(square.dataset.row);
-      const col = Number(square.dataset.col);
-      if ((row <= 2 || row >= 7) && col >= 3 && col <= 5) square.classList.add('observation-palace-point');
-    }
-  }
-
   const message = document.createElement('p');
   message.className = 'board-content-message observation-message';
   message.textContent = feature.description;
@@ -126,7 +135,6 @@ function clearObservation() {
     observationTimer = null;
   }
   observationFrame.removeAttribute('data-feature');
-  board.querySelectorAll('.observation-palace-point').forEach(square => square.classList.remove('observation-palace-point'));
 }
 
 function speakObservation(text) {
@@ -212,13 +220,6 @@ function showQuizQuestion(question, selectedButton) {
 function highlightQuizConcept(feature) {
   clearObservation();
   observationFrame.dataset.feature = feature;
-  if (feature === 'palace') {
-    board.querySelectorAll('.teaching-square').forEach(square => {
-      const row = Number(square.dataset.row);
-      const col = Number(square.dataset.col);
-      if ((row <= 2 || row >= 7) && col >= 3 && col <= 5) square.classList.add('observation-palace-point');
-    });
-  }
   observationTimer = window.setTimeout(clearObservation, 8000);
 }
 

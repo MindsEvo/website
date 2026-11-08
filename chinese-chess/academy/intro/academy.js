@@ -1,9 +1,9 @@
 const lessons = [
   { id: 'observation', title: '初步观察', description: '观察象棋棋盘和棋子的基本构成。', symbol: '观', color: 'observation' },
+  { id: 'board', title: '认识棋盘', description: '学习楚河汉界、九宫与棋盘结构。', symbol: '盘', color: 'board' },
   { id: 'pieces', title: '兵种介绍', description: '认识红方与黑方棋子，了解各自名称。', symbol: '子', color: 'pieces' },
-  { id: 'board', title: '棋盘显示', description: '学习楚河汉界、九宫与棋盘结构。', symbol: '盘', color: 'board' },
   { id: 'piece_moves', title: '棋子走法', description: '了解七类棋子的基本移动规则。', symbol: '走', color: 'moves' },
-  { id: 'classic_games', title: '棋局演示', description: '观看棋子配合与对局过程。', symbol: '局', color: 'games', pending: true },
+  { id: 'classic_games', title: '棋局演示', description: '从弃马十三着开始，逐着观察六大经典。', symbol: '局', color: 'games' },
   { id: 'summary', title: '总结与回顾', description: '回顾棋盘、棋子与基本走法。', symbol: '记', color: 'summary' }
 ];
 
