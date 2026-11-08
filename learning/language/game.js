@@ -8,9 +8,10 @@
  * in-question text always follows the passage language; only shell chrome
  * follows the UI language.
  *
- * Interactions, all built on shell's option buttons (shell.js untouched):
+ * Interactions, using shell option buttons where appropriate (shell.js untouched):
  *   select            one button per choice
- *   evidence_sentence one button per passage sentence ("tap the evidence")
+ *   evidence_sentence single evidence uses one Shell option per sentence; multi-sentence evidence
+ *                     uses Language-managed selection/deselection plus one Shell "check" option
  *   evidence_phrase   one button per candidate word/phrase
  *   order             cards laid out by this module; the single option is "check"
  *   ccr_slot/reflect  Create→Compare→Reflect: always accepted, never scored
@@ -51,7 +52,7 @@ var GRADE_LEVELS = [
 var _scope = null;
 
   var DIFFICULTY = {
-    G1: { text_length: 'short', explicitness: 'one-step', evidence_span: 'single', response_type: 'select+evidence+order' },
+    G1: { text_length: 'short', explicitness: 'one-step', evidence_span: 'cross-sentence', response_type: 'select+evidence+order' },
     G2: { text_length: 'medium', explicitness: 'multi-source', evidence_span: 'single', response_type: 'select+evidence+order' },
     K1: { text_length: 'none', explicitness: 'one-step', evidence_span: 'single', response_type: 'hotspot' },
     K2: { text_length: 'none', explicitness: 'one-step', evidence_span: 'single', response_type: 'hotspot+order' }
@@ -59,7 +60,7 @@ var _scope = null;
 
   var CHROME = {
     zh: {
-      read: '🔊 朗读', check: '✅ 排好了，检查一下', slotsHint: '按顺序点下面的卡片；点上面的卡片可以放回去。',
+      read: '🔊 朗读', check: '✅ 排好了，检查一下', evidenceCheck: '✅ 检查证据', slotsHint: '按顺序点下面的卡片；点上面的卡片可以放回去。',
       yourIdea: '你的想法', others: '看看别人怎么想', ccrNote: '这一题没有标准答案，选你自己的想法。',
       nice: '👍 好想法！', noted: '🌱 记下了！',
       revealTitle: '🌱 原来，同一件事还可以这样想',
@@ -67,7 +68,7 @@ var _scope = null;
       units: { observe: '观察', comprehend: '理解', infer: '推理', structure: '结构', choose: '语言选择', express: '表达', create: '创造' }
     },
     en: {
-      read: '🔊 Read aloud', check: '✅ Check my order', slotsHint: 'Tap the cards in order. Tap a placed card to send it back.',
+      read: '🔊 Read aloud', check: '✅ Check my order', evidenceCheck: '✅ Check evidence', slotsHint: 'Tap the cards in order. Tap a placed card to send it back.',
       yourIdea: 'Your idea', others: 'What others thought', ccrNote: 'There is no single right answer here. Pick your own idea.',
       nice: '👍 Nice idea!', noted: '🌱 Got it!',
       revealTitle: '🌱 The same story can be seen in many ways',
@@ -130,6 +131,13 @@ function hasContent(lang, ability, grade) {
       '#s1-opts[data-lang-mode="evidence_phrase"]{grid-template-columns:1fr 1fr;}' +
       '#s1-opts[data-lang-mode] .s1-opt{font-size:17px;font-weight:700;min-height:48px;padding:10px 14px;line-height:1.45;}' +
       '#s1-opts[data-lang-mode="evidence_sentence"] .s1-opt{justify-content:flex-start;text-align:left;font-weight:600;}' +
+      '.lang-evidence-list{display:flex;flex-direction:column;gap:8px;margin-top:10px;}' +
+      '.lang-evidence-choice{display:flex;align-items:center;width:100%;text-align:left;font:inherit;font-weight:650;line-height:1.45;color:#1e293b;background:#fff;border:2px solid #d9f99d;border-radius:12px;padding:10px 12px;cursor:pointer;}' +
+      '.lang-evidence-choice.selected{background:#ecfccb;border-color:#65a30d;box-shadow:0 0 0 2px rgba(101,163,13,.12);}' +
+      '.lang-evidence-choice.locked{cursor:default;opacity:.9;}' +
+      '.lang-evidence-choice.locked.selected{background:#dcfce7;border-color:#16a34a;}' +
+      '.lang-journey-result{margin-top:10px;padding:10px 12px;border:1.5px solid #bbf7d0;border-radius:12px;background:#f0fdf4;text-align:left;color:#166534;font-size:14px;line-height:1.55;}' +
+      '.lang-journey-result strong{display:block;color:#14532d;margin-bottom:3px;}' +
       '.lang-slots{display:flex;flex-direction:column;gap:6px;margin:10px 0 8px;}' +
       '.lang-slot{display:flex;align-items:center;min-height:40px;border:2px dashed #bef264;border-radius:10px;padding:4px 8px;background:#fff;}' +
       '.lang-slot.filled{border-style:solid;border-color:#65a30d;cursor:pointer;}' +
@@ -149,10 +157,20 @@ function hasContent(lang, ability, grade) {
       '.lang-scene[data-bg="sunny"]{background:linear-gradient(#7dd3fc,#e0f2fe);}' +
       '.lang-scene[data-bg="grass"]{background:linear-gradient(#86efac,#bbf7d0);}' +
       '.lang-scene-obj{position:absolute;transform:translate(-50%,-50%);font-size:38px;line-height:1;pointer-events:none;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));}' +
+      '.lang-frame-strip{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}' +
+      '.lang-frame-card{display:flex;align-items:flex-start;gap:8px;background:#fff;border:1.5px solid #fde68a;border-radius:12px;padding:9px 11px;font-size:15px;line-height:1.5;color:#1e293b;}' +
+      '.lang-frame-emoji{font-size:23px;line-height:1.2;flex:none;}' +
       '#s1-opts[data-lang-mode="hotspot"]{display:block;position:relative;background:transparent;box-shadow:none;padding:0;margin:0 0 18px;pointer-events:none;grid-template-columns:none;}' +
       '#s1-opts[data-lang-mode="hotspot"] .s1-opt{position:absolute;transform:translate(-50%,-50%);width:52px;height:52px;min-height:0;border-radius:50%;border:3px dashed rgba(21,128,61,.55);background:rgba(255,255,255,.01);padding:0;pointer-events:auto;font-size:0;}' +
       '#s1-opts[data-lang-mode="hotspot"] .s1-opt.s1-correct,' +
-      '#s1-opts[data-lang-mode="hotspot"] .s1-opt.s1-wrong{background:rgba(255,255,255,.85);border-style:solid;}';
+      '#s1-opts[data-lang-mode="hotspot"] .s1-opt.s1-wrong{background:rgba(255,255,255,.85);border-style:solid;}' +
+      '.lang-encounter{width:100%;max-width:560px;background:#fff;border:2px solid #d9f99d;border-radius:20px;padding:24px;box-sizing:border-box;text-align:center;}' +
+      '.lang-work-source{font-size:14px;color:#64748b;margin:6px 0 18px;}' +
+      '.lang-work-text{font-size:22px;line-height:2;color:#1e293b;background:#fefce8;border-radius:14px;padding:18px;margin-bottom:18px;}' +
+      '.lang-work-text div{white-space:nowrap;}' +
+      '.lang-work-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}' +
+      '.lang-work-action{border:2px solid #a3e635;background:#fff;color:#3f6212;border-radius:999px;padding:10px 18px;font-weight:900;cursor:pointer;}' +
+      '.lang-work-action.primary{background:#65a30d;color:#fff;border-color:#65a30d;}';
     var el = document.createElement('style');
     el.id = 'lang-style';
     el.textContent = css;
@@ -171,20 +189,36 @@ function hasContent(lang, ability, grade) {
 
   // ── Session state (reset when a new session's first question renders) ─────
 
-  var _log = {}, _ccr = {}, _order = null, _sessionHead = null, _langRerender = false;
+  function freshCcrState() {
+    return { express: {}, create: {} };
+  }
+
+  function ccrBucket(q) {
+    var unit = q && q.unit;
+    if (!_ccr[unit]) { _ccr[unit] = {}; }
+    return _ccr[unit];
+  }
+
+  var _log = {}, _ccr = freshCcrState(), _order = null, _evidence = null, _sessionHead = null, _langRerender = false;
 
   document.addEventListener('shell:langchange', function () { _langRerender = true; });
 
   function maybeResetSession(q) {
     var rerender = _langRerender;
     _langRerender = false;
-    if (q.seq === 0 && !rerender) { _log = {}; _ccr = {}; _sessionHead = q; }
+    if (q.seq === 0 && !rerender) {
+      _log = {};
+      _ccr = freshCcrState();
+      _evidence = null;
+      _sessionHead = q;
+    }
   }
 
   function composeCcr(q, markCurrent) {
     var c = q.ccr;
+    var bucket = ccrBucket(q);
     return c.template.replace(/\{(\w+)\}/g, function (_, key) {
-      if (_ccr[key]) { return esc(_ccr[key]); }
+      if (bucket[key]) { return esc(bucket[key]); }
       var cur = markCurrent && q.slotKey === key;
       return '<span class="lang-blank' + (cur ? ' cur' : '') + '">？</span>';
     });
@@ -212,6 +246,31 @@ function hasContent(lang, ability, grade) {
     return '<div class="lang-scene" id="lang-scene" data-bg="' + esc(q.bg) + '">' + objs + '</div>';
   }
 
+  function sceneNarration(q) {
+    if (q.narration) { return q.narration; }
+    return (q.frames || []).map(function (frame) {
+      return (q.lang === 'zh' ? frame.textZh : frame.textEn) || frame.narration || '';
+    }).filter(Boolean).join(q.lang === 'zh' ? '' : ' ');
+  }
+
+  function sceneMaterialHtml(q) {
+    var frames = q.frames || [];
+    if (frames.length) {
+      return '<div class="lang-frame-strip">' + frames.map(function (frame, index) {
+        var text = (q.lang === 'zh' ? frame.textZh : frame.textEn) || frame.narration || '';
+        return '<div class="lang-frame-card">' +
+          '<span class="lang-snum">' + (index + 1) + '</span>' +
+          (frame.emoji ? '<span class="lang-frame-emoji">' + esc(frame.emoji) + '</span>' : '') +
+          '<span>' + esc(text) + '</span>' +
+        '</div>';
+      }).join('') + '</div>';
+    }
+    var positioned = (q.objects || []).length && q.objects.every(function (object) {
+      return typeof object.x === 'number' && typeof object.y === 'number';
+    });
+    return positioned ? sceneHtml(q) : '';
+  }
+
   function positionHotspot(q) {
     var scene = document.getElementById('lang-scene');
     var opts = document.getElementById('s1-opts');
@@ -234,12 +293,56 @@ function hasContent(lang, ability, grade) {
     var btn = container.querySelector('[data-lang-read]');
     if (!btn) { return; }
     btn.addEventListener('click', function () {
-      var text = (q.kind === 'ccr_slot' || q.kind === 'ccr_reflect') ? q.prompt : passageText(q) + ' ' + q.prompt;
+      var text;
+      if (q.kind === 'ccr_slot' || q.kind === 'ccr_reflect') {
+        text = q.prompt;
+      } else if (q.kind === 'scene_select') {
+        text = sceneNarration(q) + ' ' + q.prompt;
+      } else {
+        text = passageText(q) + ' ' + q.prompt;
+      }
       shell.speak(text, q.lang);
     });
   }
 
   function checkButton() { return document.querySelector('#s1-opts .s1-opt'); }
+
+  function isMultiSentenceEvidence(q) {
+    return q && q.kind === 'evidence_sentence' && Array.isArray(q.answer) && q.answer.length > 1;
+  }
+
+  function sameEvidenceSet(selected, expected) {
+    var a = (selected || []).slice().sort();
+    var b = (expected || []).slice().sort();
+    return a.length === b.length && a.every(function (value, index) { return value === b[index]; });
+  }
+
+  function renderEvidenceChoices(q) {
+    var box = document.getElementById('lang-evidence');
+    if (!box || !_evidence) { return; }
+    box.innerHTML = '<div class="lang-evidence-list">' + q.sentences.map(function (sentence, index) {
+      var selected = _evidence.selected.indexOf(sentence.id) >= 0;
+      return '<button type="button" class="lang-evidence-choice' +
+        (selected ? ' selected' : '') + (_evidence.locked ? ' locked' : '') +
+        '" data-evidence-id="' + esc(sentence.id) + '"' + (_evidence.locked ? ' disabled' : '') + '>' +
+        '<span class="lang-snum">' + (index + 1) + '</span><span>' + esc(sentence.text) + '</span></button>';
+    }).join('') + '</div>';
+
+    if (!_evidence.locked) {
+      box.querySelectorAll('[data-evidence-id]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var id = button.getAttribute('data-evidence-id');
+          var index = _evidence.selected.indexOf(id);
+          if (index >= 0) { _evidence.selected.splice(index, 1); }
+          else { _evidence.selected.push(id); }
+          renderEvidenceChoices(q);
+        });
+      });
+    }
+
+    var cb = checkButton();
+    if (cb && !_evidence.locked) { cb.disabled = _evidence.selected.length < 1; }
+  }
 
   function renderCards(q) {
     var box = document.getElementById('lang-order');
@@ -284,10 +387,14 @@ function hasContent(lang, ability, grade) {
     optsEl.style.left = optsEl.style.top = optsEl.style.width = optsEl.style.height = optsEl.style.marginTop = '';
 
     var html = headHtml(q);
-    if (q.kind === 'evidence_sentence') {
+    if (isMultiSentenceEvidence(q)) {
+      html += '<div class="lang-prompt">' + esc(q.prompt) + '</div><div id="lang-evidence"></div>';
+    } else if (q.kind === 'evidence_sentence') {
       html += '<div class="lang-prompt">' + esc(q.prompt) + '</div>';
     } else if (q.kind === 'hotspot') {
       html += sceneHtml(q) + '<div class="lang-prompt">' + esc(q.prompt) + '</div>';
+    } else if (q.kind === 'scene_select') {
+      html += sceneMaterialHtml(q) + '<div class="lang-prompt">' + esc(q.prompt) + '</div>';
     } else if (q.kind === 'order') {
       html += passageHtml(q) +
         '<div class="lang-prompt">' + esc(q.prompt) + '</div>' +
@@ -322,13 +429,23 @@ function hasContent(lang, ability, grade) {
     } else {
       _order = null;
     }
+    if (isMultiSentenceEvidence(q)) {
+      _evidence = { selected: [], locked: false };
+      setTimeout(function () { renderEvidenceChoices(q); }, 0);
+    } else {
+      _evidence = null;
+    }
     if (q.kind === 'hotspot') {
       setTimeout(function () { positionHotspot(q); }, 0);
     }
-    shell.speak(q.prompt, q.lang);
+    var spoken = q.kind === 'scene_select'
+      ? sceneNarration(q) + ' ' + q.prompt
+      : q.prompt;
+    shell.speak(spoken, q.lang);
   }
 
   function renderOption(opt, q) {
+    if (isMultiSentenceEvidence(q)) { return CHROME[q.lang].evidenceCheck; }
     if (q.kind === 'evidence_sentence') {
       var idx = q.options.indexOf(opt);
       return '<span class="lang-snum">' + (idx + 1) + '</span><span>' + esc(q.sentences[idx].text) + '</span>';
@@ -345,6 +462,7 @@ function hasContent(lang, ability, grade) {
 
   function checkAnswer(selected, q) {
     if (!q.scored) { return true; }
+    if (isMultiSentenceEvidence(q)) { return sameEvidenceSet(_evidence && _evidence.selected, q.answer); }
     if (q.kind === 'evidence_sentence') { return q.answer.indexOf(selected) >= 0; }
     if (q.kind === 'order' || q.kind === 'scene_order') { return orderIsCorrect(q); }
     return selected === q.answer;
@@ -359,14 +477,21 @@ function hasContent(lang, ability, grade) {
   }
 
   function onAnswer(selected, q, correct) {
-    if (q.kind === 'ccr_slot') { _ccr[q.slotKey] = q.choices[selected].text; return; }
-    if (q.kind === 'ccr_reflect') { _ccr._reflect = q.ccr.otherIdeas[selected].viewpoint; return; }
+    if (q.kind === 'ccr_slot') {
+      ccrBucket(q)[q.slotKey] = q.choices[selected].text;
+      return;
+    }
+    if (q.kind === 'ccr_reflect') {
+      ccrBucket(q)._reflect = q.ccr.otherIdeas[selected].viewpoint;
+      return;
+    }
 
     if (!_log[q.itemId]) {
       _log[q.itemId] = {
         itemId: q.itemId, unit: q.unit, level: q.level, template: q.template,
         pairId: q.pairId || null, claimItemId: q.claimItemId || null,
         evidenceFor: q.evidenceFor || null,
+        selectedEvidence: isMultiSentenceEvidence(q) && _evidence ? _evidence.selected.slice() : null,
         firstTryCorrect: !!correct, errorType: correct ? null : errorTypeFor(selected, q)
       };
     }
@@ -375,14 +500,22 @@ function hasContent(lang, ability, grade) {
       setTimeout(function () {
         _order.placed = [];
         var cb = checkButton();
-        if (cb) { cb.classList.remove('s1-wrong'); }
+        if (cb) { cb.classList.remove('s1-wrong'); cb.disabled = false; }
         renderCards(q);
+      }, 700);
+    }
+    if (isMultiSentenceEvidence(q) && !correct) {
+      setTimeout(function () {
+        var cb = checkButton();
+        if (cb) { cb.classList.remove('s1-wrong'); cb.disabled = false; }
+        renderEvidenceChoices(q);
       }, 700);
     }
   }
 
   function onCorrect(q, actsEl) {
     if ((q.kind === 'order' || q.kind === 'scene_order') && _order) { _order.locked = true; renderCards(q); }
+    if (isMultiSentenceEvidence(q) && _evidence) { _evidence.locked = true; renderEvidenceChoices(q); }
     if (q.scored) { return; }
 
     // Unscored steps must not say "correct" (invariant 7).
@@ -441,6 +574,45 @@ function hasContent(lang, ability, grade) {
     };
   }
 
+  function guidedCcr(questions, unit) {
+    var reflectQ = questions.filter(function (q) {
+      return q.kind === 'ccr_reflect' && q.unit === unit;
+    })[0];
+    if (!reflectQ) { return null; }
+
+    var bucket = _ccr[unit] || {};
+    var picks = {};
+    Object.keys(bucket).forEach(function (key) {
+      if (key !== '_reflect') { picks[key] = bucket[key]; }
+    });
+    return {
+      picks: picks,
+      sentence: reflectQ.ccr.template.replace(/\{(\w+)\}/g, function (_, key) {
+        return bucket[key] || '';
+      }),
+      notThoughtOf: bucket._reflect || null
+    };
+  }
+
+  function appendJourneyResult(questions, messageEl) {
+    if (!messageEl) { return; }
+    var sum = summarize(questions);
+    var claimPair = sum.claimEvidence[0] || null;
+    var express = guidedCcr(questions, 'express');
+    var create = guidedCcr(questions, 'create');
+    var groundedZh = claimPair && claimPair.fullyGrounded ? '观点和证据都找到了' : '观点或证据还可以再想想';
+    var groundedEn = claimPair && claimPair.fullyGrounded ? 'Claim and evidence are both grounded' : 'Revisit the claim or its evidence';
+    var box = document.createElement('div');
+    box.className = 'lang-journey-result';
+    box.innerHTML = '<strong><span class="zh">作品之旅小结</span><span class="en">Journey summary</span></strong>' +
+      '<div><span class="zh">作品理解：' + sum.scoredFirstTry + '/' + sum.scoredTotal + '</span>' +
+      '<span class="en">Understanding: ' + sum.scoredFirstTry + '/' + sum.scoredTotal + '</span></div>' +
+      '<div><span class="zh">' + groundedZh + '</span><span class="en">' + groundedEn + '</span></div>' +
+      (express ? '<div><span class="zh">我的表达：' + esc(express.sentence) + '</span><span class="en">My expression: ' + esc(express.sentence) + '</span></div>' : '') +
+      (create ? '<div><span class="zh">我的创造：' + esc(create.sentence) + '</span><span class="en">My creation: ' + esc(create.sentence) + '</span></div>' : '');
+    messageEl.appendChild(box);
+  }
+
   function tearDownShell() {
   ['.s1-wrap', '#s1-transcript', '#s1-overlay'].forEach(function (selector) {
     var el = document.querySelector(selector);
@@ -467,28 +639,206 @@ function selectorWrap(titleZh, titleEn, backId, backZh, backEn, body) {
   return wrap;
 }
 
-function showLanguageSelector() {
+function clearSelector() {
   var old = document.getElementById('lang-selector');
   if (old) { old.remove(); }
-  var languages = [
-    { id: 'zh', icon: '📜', nameZh: '中文', nameEn: '中文' },
-    { id: 'en', icon: '📚', nameZh: 'English', nameEn: 'English' }
+}
+
+function showModeSelector() {
+  clearSelector();
+  var modes = [
+    {
+      id: 'ability', icon: '🎯', nameZh: '能力训练', nameEn: 'Ability Training',
+      descZh: '选择一项能力，进行定向训练。', descEn: 'Choose one ability for focused practice.'
+    },
+    {
+      id: 'journey', icon: '📜', nameZh: '作品之旅', nameEn: 'Works / Journey',
+      descZh: '进入完整作品，跨能力探索语言和思考。', descEn: 'Explore a complete work across several abilities.'
+    }
   ];
   var wrap = selectorWrap(
-    '语文素养 · 选择语言', 'Language & Literacy · Choose Language',
+    '语文素养 · 选择体验', 'Language & Literacy · Choose a Mode',
     'lang-learning-back', '学习中心', 'Learning',
-    languages.map(function (lang) {
-      return selectorCard(lang, 'data-content-lang="' + lang.id + '"', false, '');
+    modes.map(function (mode) {
+      return selectorCard(
+        mode,
+        'data-mode="' + mode.id + '"',
+        false,
+        '<div class="lang-nav-desc"><span class="zh">' + mode.descZh +
+          '</span><span class="en">' + mode.descEn + '</span></div>'
+      );
     }).join('')
   );
   document.getElementById('lang-learning-back').addEventListener('click', function () {
     window.location.href = '../index.html';
   });
   wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-mode]');
+    if (!card) { return; }
+    wrap.remove();
+    if (card.getAttribute('data-mode') === 'journey') {
+      showWorksLanguageSelector();
+    } else {
+      showLanguageSelector();
+    }
+  });
+}
+
+function showLanguageSelector() {
+  clearSelector();
+  var languages = [
+    { id: 'zh', icon: '📜', nameZh: '中文', nameEn: '中文' },
+    { id: 'en', icon: '📚', nameZh: 'English', nameEn: 'English' }
+  ];
+  var wrap = selectorWrap(
+    '能力训练 · 选择语言', 'Ability Training · Choose Language',
+    'lang-language-back', '模式', 'Modes',
+    languages.map(function (lang) {
+      return selectorCard(lang, 'data-content-lang="' + lang.id + '"', false, '');
+    }).join('')
+  );
+  document.getElementById('lang-language-back').addEventListener('click', function () {
+    wrap.remove();
+    showModeSelector();
+  });
+  wrap.addEventListener('click', function (event) {
     var card = event.target.closest('[data-content-lang]');
     if (!card) { return; }
     wrap.remove();
     showAbilitySelector(card.getAttribute('data-content-lang'));
+  });
+}
+
+function showWorksLanguageSelector() {
+  clearSelector();
+  var languages = [
+    { id: 'zh', icon: '📜', nameZh: '中文', nameEn: 'Chinese' },
+    { id: 'en', icon: '📚', nameZh: 'English', nameEn: 'English' }
+  ];
+  var wrap = selectorWrap(
+    '作品之旅 · 选择语言', 'Works / Journey · Choose Language',
+    'lang-works-language-back', '模式', 'Modes',
+    languages.map(function (lang) {
+      var available = lang.id === 'zh';
+      return selectorCard(
+        lang,
+        'data-work-lang="' + lang.id + '"',
+        !available,
+        '<div class="lang-nav-levels"><span class="zh">' +
+          (available ? '首个作品已开放' : '尚未开放') +
+          '</span><span class="en">' +
+          (available ? 'First work available' : 'Coming later') +
+          '</span></div>'
+      );
+    }).join('')
+  );
+  document.getElementById('lang-works-language-back').addEventListener('click', function () {
+    wrap.remove();
+    showModeSelector();
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-work-lang]:not(.locked)');
+    if (!card) { return; }
+    wrap.remove();
+    showWorksGradeSelector(card.getAttribute('data-work-lang'));
+  });
+}
+
+function showWorksGradeSelector(lang) {
+  var body = GRADE_LEVELS.map(function (grade) {
+    var available = lang === 'zh' && grade.id === 'G1';
+    return selectorCard(
+      { icon: grade.id, nameZh: grade.nameZh, nameEn: grade.nameEn },
+      'data-work-grade="' + grade.id + '"',
+      !available,
+      '<div class="lang-nav-levels"><span class="zh">' +
+        (available ? '1 个作品' : '尚未开放') +
+        '</span><span class="en">' +
+        (available ? '1 work' : 'Coming later') +
+        '</span></div>'
+    );
+  }).join('');
+  var wrap = selectorWrap(
+    '作品之旅 · 选择年级', 'Works / Journey · Choose Grade',
+    'lang-works-grade-back', '语言', 'Language', body
+  );
+  wrap.setAttribute('data-content-lang', lang);
+  document.getElementById('lang-works-grade-back').addEventListener('click', function () {
+    wrap.remove();
+    showWorksLanguageSelector();
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-work-grade]:not(.locked)');
+    if (!card) { return; }
+    wrap.remove();
+    showWorksSelector(lang, card.getAttribute('data-work-grade'));
+  });
+}
+
+function showWorksSelector(lang, grade) {
+  var p = LANG_GEN.passageById('zh-g1-goose-poem');
+  var body = p && p.lang === lang && p.grade === grade
+    ? selectorCard(
+      { icon: '🪿', nameZh: '《' + esc(p.title) + '》', nameEn: p.title },
+      'data-work-id="' + p.id + '"',
+      false,
+      '<div class="lang-nav-desc"><span class="zh">完整古诗 · 遇见、理解、表达与创造</span>' +
+        '<span class="en">A complete poetry journey</span></div>'
+    )
+    : '';
+  var wrap = selectorWrap(
+    grade + ' · 选择作品', grade + ' · Choose a Work',
+    'lang-works-back', '年级', 'Grades', body
+  );
+  wrap.setAttribute('data-content-lang', lang);
+  document.getElementById('lang-works-back').addEventListener('click', function () {
+    wrap.remove();
+    showWorksGradeSelector(lang);
+  });
+  wrap.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-work-id]');
+    if (!card) { return; }
+    wrap.remove();
+    showWorkEncounter(card.getAttribute('data-work-id'));
+  });
+}
+
+function showWorkEncounter(passageId) {
+  var p = LANG_GEN.passageById(passageId);
+  if (!p) {
+    showWorksLanguageSelector();
+    return;
+  }
+  var source = [p.source && p.source.period, p.source && p.source.author].filter(Boolean).join(' · ');
+  var poem = p.sentences.map(function (sentence) {
+    return '<div>' + esc(sentence.text) + '</div>';
+  }).join('');
+  var body = '<div class="lang-encounter">' +
+    '<div class="lang-nav-icon">🪿</div>' +
+    '<div class="lang-nav-name">《' + esc(p.title) + '》</div>' +
+    '<div class="lang-work-source">' + esc(source) + '</div>' +
+    '<div class="lang-work-text">' + poem + '</div>' +
+    '<div class="lang-work-actions">' +
+      '<button type="button" class="lang-work-action" id="lang-work-listen">🔊 听一遍</button>' +
+      '<button type="button" class="lang-work-action primary" id="lang-work-start">开始探索</button>' +
+    '</div>' +
+  '</div>';
+  var wrap = selectorWrap(
+    '遇见作品', 'Encounter the Work',
+    'lang-encounter-back', '作品', 'Works', body
+  );
+  wrap.setAttribute('data-content-lang', p.lang);
+  wrap.querySelector('.lang-nav-grid').style.gridTemplateColumns = '1fr';
+  document.getElementById('lang-encounter-back').addEventListener('click', function () {
+    wrap.remove();
+    showWorksSelector(p.lang, p.grade);
+  });
+  document.getElementById('lang-work-listen').addEventListener('click', function () {
+    shell.speak(passageText(p), p.lang);
+  });
+  document.getElementById('lang-work-start').addEventListener('click', function () {
+    wrap.remove();
+    launchJourney(p.id);
   });
 }
 
@@ -555,25 +905,18 @@ function showLevelSelector(lang, ability) {
   });
 }
 
-function launchGame(lang, ability, grade) {
-  // Language & Literacy is different from the rest of MindsEvo: Chinese and
-  // English are independent content domains, not two translations of one UI.
-  // Lock Shell's presentation language to the selected content domain before
-  // createGame renders any bilingual Shell title/unit/chrome fields. The
-  // language toggle is disabled below, so it cannot drift during the session.
-  shell.setLang(lang);
-  var questions = questionsFor(lang, ability, grade);
-  _scope = { lang: lang, ability: ability, grade: grade };
-    shell.createGame({
+function launchSession(config) {
+  shell.setLang(config.lang);
+  _scope = config.scope;
+
+  var unit = Object.assign({}, config.unit, { questions: config.questions });
+  shell.createGame({
     id:            SOURCE_GAME_ID,
     parallelUnits: true,
     theme:         { primary: '#4d7c0f', primary2: '#3f6212', bg: '#f7fee7' },
     gui: {
       header: { show: true, showBack: true },
-      // Language & Literacy content domains are independent. Once a child
-      // enters Chinese or English, the session is locked to that content
-      // language instead of using Shell's global translation toggle.
-      language: { enabled: false, default: lang },
+      language: { enabled: false, default: config.lang },
       audio: {
         music: { enabled: true, defaultOn: false },
         sound: { enabled: true, defaultOn: true }
@@ -581,20 +924,17 @@ function launchGame(lang, ability, grade) {
       history: { enabled: true },
       help: {
         enabled: true,
-        contentZh: '先读故事（可以点“朗读”听一听），再回答问题。有些题要你回到故事里找证据；最后一部分没有标准答案，说出你自己的想法，再看看别人怎么想。',
-        contentEn: 'Read the story first (tap "Read aloud" to listen), then answer. Some questions ask you to find evidence in the story. The last part has no single right answer: share your idea, then see what others thought.'
+        contentZh: '先读或听当前素材，再回答问题。有些题要你回到素材里找证据；最后的表达与创造部分没有标准答案，说出自己的想法，再看看别人怎么想。',
+        contentEn: 'Read or listen to the current material, then answer. Some questions ask you to return to the material for evidence. The final express and create steps have no single right answer: share your idea, then see what others thought.'
       }
     },
-    title:    { zh: abilityFor(ability).icon + ' ' + abilityFor(ability).nameZh + ' · ' + grade, en: abilityFor(ability).icon + ' ' + abilityFor(ability).nameEn + ' · ' + grade },
-    subtitle: { zh: lang === 'zh' ? '中文 · 语文素养' : 'English · 语文素养', en: lang === 'zh' ? 'Chinese · Language & Literacy' : 'English · Language & Literacy' },
-    // Ability-scoped sessions may contain one objective item or an unscored
-    // Create-Compare-Reflect sequence. Require all objective items; an
-    // unscored sequence only needs completion.
-    passScore: function (unit) {
-      var scored = unit.questions.filter(function (q) { return q.scored; }).length;
-      return scored || unit.questions.length;
+    title: config.title,
+    subtitle: config.subtitle,
+    passScore: function (currentUnit) {
+      var scored = currentUnit.questions.filter(function (q) { return q.scored; }).length;
+      return scored || currentUnit.questions.length;
     },
-    units:     [{ id: lang + '-' + ability + '-' + grade, gradeCode: grade, icon: abilityFor(ability).icon, nameZh: grade + ' · ' + abilityFor(ability).nameZh, nameEn: grade + ' · ' + abilityFor(ability).nameEn, questions: questions }],
+    units: [unit],
 
     renderSequence: renderSequence,
     renderOption:   renderOption,
@@ -607,58 +947,134 @@ function launchGame(lang, ability, grade) {
       return _unique(qs.map(function (q) { return q.geneId; }));
     },
 
+    onResult: config.scope.sessionMode === 'journey' ? function (_, messageEl) {
+      appendJourneyResult(config.questions, messageEl);
+    } : null,
+
     getReportContext: function (ctx) {
-      var unit = (ctx && ctx.unit) || {};
-      var qs = unit.questions || [];
+      var currentUnit = (ctx && ctx.unit) || {};
+      var qs = currentUnit.questions || [];
       var d = _scope || {};
       var sum = summarize(qs);
       var extra = {
-        moduleId:        MODULE_ID,
-        moduleType:      MODULE_TYPE,
-        levelId:         d.grade || null,
-        gradeCode:       d.grade || null,
-        difficultyAxis:  DIFFICULTY[d.grade] ? Object.assign({}, DIFFICULTY[d.grade]) : null,
-        sourceGameId:    SOURCE_GAME_ID,
-        contentLang:     d.lang || null,
-        primaryAbility: d.ability || null,
-        passageId:       qs.length ? qs[0].passageId : null,
-        types:           _unique(qs.map(function (q) { return q.kind; })),
-        geneIds:         _unique(qs.map(function (q) { return q.geneId; })),
-        activityRuntime: sum.scoredTotal ? 'puzzle' : 'interaction',
-        scoredTotal:     sum.scoredTotal,
-        scoredFirstTry:  sum.scoredFirstTry,
-        byUnit:          sum.byUnit,
-        errorTypes:      sum.errorTypes,
-        claimEvidence:   sum.claimEvidence,
-        items:           sum.items
+        moduleId:         MODULE_ID,
+        moduleType:       MODULE_TYPE,
+        levelId:          d.grade || null,
+        gradeCode:        d.grade || null,
+        difficultyAxis:   DIFFICULTY[d.grade] ? Object.assign({}, DIFFICULTY[d.grade]) : null,
+        sourceGameId:     SOURCE_GAME_ID,
+        contentLang:      d.lang || null,
+        sessionMode:      d.sessionMode || 'ability',
+        primaryAbility:   d.ability || null,
+        passageId:        d.passageId || (qs.length ? qs[0].passageId : null),
+        genre:            d.genre || null,
+        journeyCompleted: d.sessionMode === 'journey',
+        types:            _unique(qs.map(function (q) { return q.kind; })),
+        geneIds:          _unique(qs.map(function (q) { return q.geneId; })),
+        activityRuntime:  sum.scoredTotal ? 'puzzle' : 'interaction',
+        scoredTotal:      sum.scoredTotal,
+        scoredFirstTry:   sum.scoredFirstTry,
+        byUnit:           sum.byUnit,
+        errorTypes:       sum.errorTypes,
+        claimEvidence:    sum.claimEvidence,
+        items:            sum.items
       };
-      var ccrQ = qs.filter(function (q) { return q.kind === 'ccr_reflect'; })[0];
-      if (ccrQ) {
-        var picks = {};
-        Object.keys(_ccr).forEach(function (k) { if (k !== '_reflect') { picks[k] = _ccr[k]; } });
-        extra.guidedCreate = {
-          picks: picks,
-          sentence: ccrQ.ccr.template.replace(/\{(\w+)\}/g, function (_, k) { return _ccr[k] || ''; }),
-          notThoughtOf: _ccr._reflect || null
-        };
-      }
+      var guidedExpress = guidedCcr(qs, 'express');
+      var guidedCreate = guidedCcr(qs, 'create');
+      if (guidedExpress) { extra.guidedExpress = guidedExpress; }
+      if (guidedCreate) { extra.guidedCreate = guidedCreate; }
       return extra;
     }
   });
+
   var homeHdr = document.querySelector('#s1-home .s1-hdr');
   if (homeHdr) {
     var back = document.createElement('button');
     back.id = 'lang-home-back';
     back.textContent = '⬅️';
-    back.title = '返回选级 / Back to levels';
+    back.title = config.backTitle;
     back.addEventListener('click', function () {
       tearDownShell();
-      showLevelSelector(lang, ability);
+      config.onBack();
     });
     homeHdr.insertBefore(back, homeHdr.firstChild);
   }
 }
 
-showLanguageSelector();
+function launchGame(lang, ability, grade) {
+  var meta = abilityFor(ability);
+  launchSession({
+    lang: lang,
+    scope: {
+      sessionMode: 'ability',
+      lang: lang,
+      ability: ability,
+      grade: grade
+    },
+    questions: questionsFor(lang, ability, grade),
+    title: {
+      zh: meta.icon + ' ' + meta.nameZh + ' · ' + grade,
+      en: meta.icon + ' ' + meta.nameEn + ' · ' + grade
+    },
+    subtitle: {
+      zh: lang === 'zh' ? '中文 · 语文素养' : 'English · 语文素养',
+      en: lang === 'zh' ? 'Chinese · Language & Literacy' : 'English · Language & Literacy'
+    },
+    unit: {
+      id: lang + '-' + ability + '-' + grade,
+      gradeCode: grade,
+      icon: meta.icon,
+      nameZh: grade + ' · ' + meta.nameZh,
+      nameEn: grade + ' · ' + meta.nameEn
+    },
+    backTitle: '返回选级 / Back to levels',
+    onBack: function () {
+      showLevelSelector(lang, ability);
+    }
+  });
+}
+
+function launchJourney(passageId) {
+  var p = LANG_GEN.passageById(passageId);
+  var questions = LANG_GEN.generateJourney(passageId);
+  if (!p || !questions.length) {
+    showWorksLanguageSelector();
+    return;
+  }
+
+  launchSession({
+    lang: p.lang,
+    scope: {
+      sessionMode: 'journey',
+      lang: p.lang,
+      ability: null,
+      grade: p.grade,
+      passageId: p.id,
+      genre: p.genre
+    },
+    questions: questions,
+    title: {
+      zh: '📜 《' + p.title + '》',
+      en: '📜 ' + p.title
+    },
+    subtitle: {
+      zh: '中文 · 作品之旅',
+      en: 'Chinese · Works Journey'
+    },
+    unit: {
+      id: 'journey-' + p.id,
+      gradeCode: p.grade,
+      icon: '📜',
+      nameZh: p.grade + ' · 《' + p.title + '》作品之旅',
+      nameEn: p.grade + ' · ' + p.title + ' Journey'
+    },
+    backTitle: '返回作品 / Back to work',
+    onBack: function () {
+      showWorkEncounter(p.id);
+    }
+  });
+}
+
+showModeSelector();
 
 }());

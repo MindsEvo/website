@@ -63,6 +63,21 @@ Language & Literacy
 
 如果任务只靠世界常识就能答对，它训练的是常识或逻辑，而不是语言。G1–G2 必须依赖文本；K1–K2 必须依赖当前听到的叙述、看到的画面或连续场景。这条测试写进 §9 不变式，今后每道客观题都要通过。
 
+### 0.4 两种互补体验：Ability Training 与 Works/Journey
+
+Language & Literacy 同时提供两种互补而不互相替代的体验：
+
+| 模式 | 目的 | 基本路径 |
+|---|---|---|
+| **Ability Training** | 围绕单一能力与 RootGene 做定向训练、Mastery 与补弱 | 语言 → 能力 → 年级 → Session |
+| **Works/Journey** | 先遇见一个完整作品，再跨观察、理解、推理、结构、语言选择、表达与创造进行连续探索 | 语言 → 年级 → 作品 → Encounter / Listen → Journey |
+
+Ability Training 保留现有 ability-scoped 生成语义，每个 session 的 `primaryAbility` 为所选能力。Works/Journey 是 session 类型而不是第八个能力，因此 `sessionMode: 'journey'`、`primaryAbility: null`，每道题仍保存自己的真实 `unit` 与 `geneId`。
+
+第一版只开放中文 G1《咏鹅》，并将其定义为首个 **poetry Journey prototype**，不声称通用 genre Journey engine 已完成。作品入口先呈现完整诗作、作者与来源，并允许朗读；点击“开始探索”后，按 authored objective order 完成客观题，再依次进入 Express 和 Create。
+
+Journey 使用一个 Shell unit，但可包含多个 RootGene。`registerRootGenes()` 从完整问题组提取并去重 `geneId`；报告继续按真实能力生成 `byUnit`、`items`、`errorTypes` 与 `claimEvidence`。Express 与 Create 的 CCR itemId、运行状态和报告分别隔离，输出 `guidedExpress` 与 `guidedCreate`，避免 slot、组合句和 reflect 相互覆盖。
+
 ---
 
 ## 1. 对标体系
@@ -169,7 +184,7 @@ Language & Literacy
 | 交互 | 说明 | 状态 |
 |---|---|---|
 | `select` | 单选，文字或图片选项 | 已有（science `textOptions`） |
-| `evidence-tap` | 素材分句显示，孩子点出支持答案的那一句或那个词 | **新增，本模块的标志交互** |
+| `evidence-tap` | 素材分句显示；单句证据点击后即时判定，多句证据由 Language 自主管理选择/撤销并通过“检查证据”统一提交 | **新增，本模块的标志交互** |
 | `order` | 句卡点选排序：依次点卡片，卡片排进 1、2、3 的位置，可撤回 | **新增**，替代「从几种排好的顺序里选一个」 |
 | `slot-build` | 词块组句（谁 / 在哪里 / 干什么） | 已有（Create→Compare→Reflect） |
 | `compare-reflect` | 展示他人想法，再问反思题 | 已有 |
@@ -332,27 +347,59 @@ K1–K2 是第一阶段正式范围，不以识字为前提：
 7. **不计分就真的不计分**：Create→Compare→Reflect 不进入 accuracy 统计，文案里不出现「对 / 错 / 得分」。
 8. **难度守边界**：中文素材的生字率、英文素材的 Lexile 或 F&P 级别，必须落在年级区间内。
 
+### 9.1 自动机械审计与人工审稿边界
+
+`learning/language/test.html` 是零依赖浏览器审计页，直接加载 `data.js` 与 `generator.js`。当前自动检查包括：
+
+1. PASSAGES / SCENES material ID 与内部 sentence / object / frame / item ID 唯一；
+2. 必要结构、语言、年级、anchors 与可呈现素材形态完整；
+3. Passage objective 的 `unit`、`level`、L1 上限与 L2+ 比例；
+4. Scene 的 hotspot、order、select interaction 合同；
+5. select 干扰项均带 `errorType`；
+6. sentence evidence 与 Claim/Evidence 引用闭合；
+7. Express / Create CCR 的 prompt、slots、template、otherIdeas 与 reflectPrompt；
+8. 每个 authored Scene 按 material + ability 精确生成；
+9. 所有 `hasContent()` 为真的 Ability Training scope 均可生成并保持 `primaryAbility`、`unit`、`geneId` 与连续 `seq`；
+10. 《咏鹅》Journey 的白名单、单一 passage、authored objective order、连续 `seq`、多 RootGene、唯一 itemId、Claim/Evidence 与独立 Express/Create CCR 合同。
+
+下列内容必须继续显示为 **REVIEW REQUIRED**，不能伪装成自动 PASS：
+
+- 不读文本、不听叙述或不看画面时是否确实无法作答；
+- 中文与 English 是否分别原生、自然地设计；
+- 素材来源与版权适宜性；
+- 真实年级难度、生字率、Lexile / F&P 与认知负荷；
+- 干扰项的教学价值；
+- Express / Create Reference Ideas 的质量、丰富性与自然度。
+
+### 9.2 当前 Shell 计分边界
+
+Language 自身以 `scoredTotal`、`scoredFirstTry`、`byUnit`、`items` 与 `claimEvidence` 作为 objective 成绩的权威统计，并排除 `q.scored === false` 的 CCR 步骤。
+
+当前公共 Shell 对首次接受的 question 仍可能增加 raw `score`，即使该 Language question 标记为 `scored: false`。真实《咏鹅》走查中，公共结果头部因此显示 raw `12/12`，包含 6 个 objective 与 6 个 Express / Create CCR 步骤。本轮不修改 `shell.js`；Language 通过公开 `onResult(result, messageElement)` 扩展点追加作品理解、Claim/Evidence、Express 与 Create 小结，让儿童能区分客观理解和开放表达。若未来要求公共结果页严格排除 CCR，应另行设计通用的 `shouldScore(q)` 类合同。
+
+真实导航边界同样来自公共 Shell：Encounter 点击“开始探索”后，先进入唯一的 Journey unit 卡，孩子再点击该卡进入第 1 题；结果页“返回主页”先回到 Shell unit 首页，再由 Language 左上返回按钮回到 Encounter。`_startUnit` 与 `_goHome` 是 Shell 私有闭包，本轮不使用 DOM 自动点击、私有函数调用或复制 Shell 状态的 workaround。未来若要消除这两个中断，应为公共 Shell 设计受支持的 `autoStartSingleUnit` 与 result-home callback。
+
 ---
 
 ## 10. v1 实施范围与次序
 
-**范围**：K1、K2、G1、G2 × 中文、English × 七个能力单元。导航采用：
+**范围**：K1、K2、G1、G2 × 中文、English × 七个能力单元，并提供两种体验路径：
 
 ```text
 Language & Literacy
-→ 中文 / English
-→ 七个能力单元
-→ K1 / K2 / G1 / G2
-→ Session
+├─ Ability Training
+│  └─ 中文 / English → 七个能力单元 → K1 / K2 / G1 / G2 → Session
+└─ Works / Journey
+   └─ 中文 → G1 → 《咏鹅》 → Encounter / Listen → Journey
 ```
 
-第一阶段先重用现有 Runtime 和参考素材走通新导航，再按能力与体裁扩展内容。G1–G2 正式内容池仍以每个年级每种语言至少 4 段高质量素材为初始密度目标；K1–K2 以场景、听说和连续画面为主，不机械套用短文数量。
+Ability Training 已覆盖当前可用的 language × ability × grade scope，保持 ability-scoped session 语义。Works/Journey 第一版仅以中文 G1《咏鹅》验证完整作品的跨能力体验；English Works 与其他体裁 Journey 尚未开放，不为界面对称伪造内容。
 
-**次序**：
+当前实施状态：
 
-1. 以本文档固定中文 / English 并列、七个能力单元和 K1–G2 第一阶段范围。
-2. 重写 `language.json`，把 anchors、层级、模板写进元数据；按 §3.1 更新 `rootgene.json` / `rootgene.js`。
-3. 新增 `evidence-tap` 和 `order` 两个交互（`learning/language/` 内部实现，不动 `shell.js`）。
-4. 先让现有参考素材走通“语言 → 能力 → 年级”导航，再增加不同体裁的第二批样板素材。
-5. 保留 K1/K2 Runtime，逐步用原生中文 / English 场景替换镜像式内容和仅用于技术验证的 emoji 场景。
-6. 补写 `test.html`，按 §9 逐题审计（参照 `learning/math/pattern/test.html`）。
+1. 中文 / English 并列、七个能力单元与 K1–G2 第一阶段范围已经接通。
+2. anchors、PIRLS level、template、interaction、Claim/Evidence 与独立 Express/Create CCR 已进入实际数据与运行时合同。
+3. `evidence-tap`、`order`、`hotspot` 与 `scene-select` 均由 `learning/language/` 内部实现，不修改公共 `shell.js`。
+4. Ability Training 与 Works/Journey 共用内容池、生成器、RootGene、报告与 Create→Compare→Reflect 合同。
+5. K1/K2 当前 CSS + emoji / frame scene 可验证 Runtime，正式视觉资产仍应逐步升级。
+6. `learning/language/test.html` 已建立 §9.1 的机械质量门槛；语义质量明确保留为 REVIEW REQUIRED。

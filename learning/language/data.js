@@ -702,7 +702,7 @@ var LANG_DATA = {
         "id": "q1",
         "unit": "comprehend",
         "template": "detail-find",
-        "level": "L1",
+        "level": "L2",
         "interaction": "select",
         "prompt": "Why did the kite fall down at first?",
         "options": [
@@ -1991,6 +1991,7 @@ var LANG_DATA = {
         "claimItemId": "q-infer-twinkle-star-picture",
         "evidenceFor": "q-infer-twinkle-star-picture",
         "target": "sentence",
+        "prompt": "Which lines directly support this picture of the star?",
         "answer": [
           "s1",
           "s3",
@@ -2951,7 +2952,7 @@ var LANG_DATA = {
       id: 'q2',
       unit: 'comprehend',
       template: 'action-detail',
-      level: 'L1',
+      level: 'L2',
       interaction: 'select',
       prompt: 'What did the mouse do before the clock struck one?',
       options: [
@@ -3139,7 +3140,7 @@ var LANG_DATA = {
       id: 'q2',
       unit: 'comprehend',
       template: 'cause-detail',
-      level: 'L1',
+      level: 'L2',
       interaction: 'select',
       prompt: 'How did the mouse free the lion?',
       options: [
@@ -3505,6 +3506,15 @@ var LANG_DATA = {
       "id": "zh-g1-rainy-day-window",
       "lang": "zh",
       "grade": "G1",
+      "anchors": {
+        "curriculum": [
+          "课标2022·第一学段·阅读与鉴赏",
+          "课标2022·思辨性阅读与表达"
+        ],
+        "level": {
+          "mode": "short-text"
+        }
+      },
       "title": "雨停以后",
       "genre": "story",
       "source": {
@@ -3612,6 +3622,7 @@ var LANG_DATA = {
           "claimItemId": "q-infer-rainy-day-window",
           "evidenceFor": "q-infer-rainy-day-window",
           "target": "sentence",
+          "prompt": "哪些句子直接说明“雨停后还藏着雨的声音”指的是什么？",
           "answer": [
             "s4",
             "s5"
@@ -3750,6 +3761,16 @@ var LANG_DATA = {
       "id": "en-g1-lost-mitten",
       "lang": "en",
       "grade": "G1",
+      "anchors": {
+        "curriculum": [
+          "CCSS RL.1.1",
+          "CCSS RL.1.3",
+          "UK KS1 Y1 comprehension"
+        ],
+        "level": {
+          "mode": "short-text"
+        }
+      },
       "title": "The Mitten on the Fence",
       "genre": "story",
       "source": {
@@ -3857,6 +3878,7 @@ var LANG_DATA = {
           "claimItemId": "q-infer-lost-mitten",
           "evidenceFor": "q-infer-lost-mitten",
           "target": "sentence",
+          "prompt": "Which sentences directly support the idea that the mitten was probably Mr. Lee’s?",
           "answer": [
             "s2",
             "s5"
@@ -4005,6 +4027,15 @@ var LANG_DATA = {
       "id": "zh-g2-shadow-riddle",
       "lang": "zh",
       "grade": "G2",
+      "anchors": {
+        "curriculum": [
+          "课标2022·第一学段·语言文字积累与梳理",
+          "课标2022·思辨性阅读与表达"
+        ],
+        "level": {
+          "mode": "short-text"
+        }
+      },
       "title": "会变长短的朋友",
       "genre": "riddle-wordplay",
       "source": {
@@ -4112,6 +4143,7 @@ var LANG_DATA = {
           "claimItemId": "q-infer-shadow-riddle",
           "evidenceFor": "q-infer-shadow-riddle",
           "target": "sentence",
+          "prompt": "哪些句子直接支持这个谜底？",
           "answer": [
             "s1",
             "s2",
@@ -4225,6 +4257,16 @@ var LANG_DATA = {
       "id": "en-g2-library-mixup-dialogue",
       "lang": "en",
       "grade": "G2",
+      "anchors": {
+        "curriculum": [
+          "CCSS RL.2.1",
+          "CCSS SL.2.3",
+          "UK KS1 spoken language and comprehension"
+        ],
+        "level": {
+          "mode": "short-text"
+        }
+      },
       "title": "The Book on the Return Cart",
       "genre": "situational-dialogue",
       "source": {
@@ -4318,6 +4360,7 @@ var LANG_DATA = {
           "claimItemId": "q-infer-library-mixup",
           "evidenceFor": "q-infer-library-mixup",
           "target": "sentence",
+          "prompt": "Which lines directly support what Jon was trying to do?",
           "answer": [
             "s2",
             "s4"
@@ -4461,6 +4504,16 @@ var LANG_DATA = {
   SCENES: [
     {
       id: 'zh-k1-rain-shelter', lang: 'zh', grade: 'K1', bg: 'rain',
+      "anchors": {
+        "curriculum": [
+          "3–6岁儿童学习与发展指南·语言领域",
+          "倾听与表达",
+          "阅读与书写准备"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       objects: [
         { id: 'tree', emoji: '🌳', x: 25, y: 20, labelZh: '大树', labelEn: 'tree' },
         { id: 'rabbit', emoji: '🐰', x: 25, y: 62, labelZh: '小兔', labelEn: 'rabbit' },
@@ -4538,6 +4591,16 @@ var LANG_DATA = {
     "id": "zh-k1-sunny-shade",
     "lang": "zh",
     "grade": "K1",
+    "anchors": {
+      "curriculum": [
+        "3–6岁儿童学习与发展指南·语言领域",
+        "倾听与表达",
+        "阅读与书写准备"
+      ],
+      "level": {
+        "mode": "listen-look-interact"
+      }
+    },
     "bg": "sunny",
     "objects": [
       {
@@ -4956,6 +5019,15 @@ var LANG_DATA = {
   },
     {
       id: 'en-k1-puddle-puppies', lang: 'en', grade: 'K1', bg: 'rain',
+      "anchors": {
+        "curriculum": [
+          "EYFS Communication and Language",
+          "EYFS Literacy: Comprehension"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       objects: [
         { id: 'umbrella', emoji: '☂️', x: 25, y: 20, labelZh: '雨伞', labelEn: 'umbrella' },
         { id: 'dog1', emoji: '🐶', x: 25, y: 62, labelZh: '小狗一', labelEn: 'puppy' },
@@ -5033,6 +5105,15 @@ var LANG_DATA = {
     "id": "en-k1-mushroom-shade",
     "lang": "en",
     "grade": "K1",
+    "anchors": {
+      "curriculum": [
+        "EYFS Communication and Language",
+        "EYFS Literacy: Comprehension"
+      ],
+      "level": {
+        "mode": "listen-look-interact"
+      }
+    },
     "bg": "sunny",
     "objects": [
       {
@@ -5439,6 +5520,16 @@ var LANG_DATA = {
   },
     {
       id: 'zh-k2-lost-kitten', lang: 'zh', grade: 'K2', bg: 'grass',
+      "anchors": {
+        "curriculum": [
+          "3–6岁儿童学习与发展指南·语言领域",
+          "倾听与表达",
+          "阅读与书写准备"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       objects: [
         { id: 'sign', emoji: '🪧', x: 74, y: 26, labelZh: '公园牌子', labelEn: 'park sign' },
         { id: 'bench', emoji: '🪑', x: 68, y: 68, labelZh: '长椅', labelEn: 'bench' },
@@ -5523,6 +5614,16 @@ var LANG_DATA = {
     "id": "zh-k2-broken-kite",
     "lang": "zh",
     "grade": "K2",
+    "anchors": {
+      "curriculum": [
+        "3–6岁儿童学习与发展指南·语言领域",
+        "倾听与表达",
+        "阅读与书写准备"
+      ],
+      "level": {
+        "mode": "listen-look-interact"
+      }
+    },
     "bg": "sunny",
     "objects": [
       {
@@ -5768,6 +5869,15 @@ var LANG_DATA = {
   },
     {
       id: 'en-k2-lost-puppy', lang: 'en', grade: 'K2', bg: 'grass',
+      "anchors": {
+        "curriculum": [
+          "EYFS Communication and Language",
+          "EYFS Literacy: Comprehension"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       objects: [
         { id: 'sign', emoji: '🪧', x: 74, y: 26, labelZh: '公园牌子', labelEn: 'park sign' },
         { id: 'bench', emoji: '🪑', x: 68, y: 68, labelZh: '长椅', labelEn: 'bench' },
@@ -5850,6 +5960,16 @@ var LANG_DATA = {
     },
 {
   id: 'zh-k1-fruit-rhyme', lang: 'zh', grade: 'K1', bg: 'sunny',
+  "anchors": {
+    "curriculum": [
+      "3–6岁儿童学习与发展指南·语言领域",
+      "倾听与表达",
+      "文学阅读与创意表达"
+    ],
+    "level": {
+      "mode": "listen-look-interact"
+    }
+  },
   objects: [
     { id: 'apple', emoji: '🍎', x: 22, y: 28, labelZh: '一个苹果', labelEn: 'one apple' },
     { id: 'apples', emoji: '🍎🍎', x: 22, y: 68, labelZh: '两个苹果', labelEn: 'two apples' },
@@ -5928,6 +6048,15 @@ var LANG_DATA = {
 },
 {
   id: 'en-k1-cat-rhyme', lang: 'en', grade: 'K1', bg: 'grass',
+  "anchors": {
+    "curriculum": [
+      "EYFS Communication and Language",
+      "EYFS Literacy: Comprehension"
+    ],
+    "level": {
+      "mode": "listen-look-interact"
+    }
+  },
   objects: [
     { id: 'cat', emoji: '🐱', x: 22, y: 62, labelZh: '小猫', labelEn: 'cat' },
     { id: 'hat', emoji: '🎩', x: 22, y: 25, labelZh: '帽子', labelEn: 'hat' },
@@ -6007,6 +6136,16 @@ var LANG_DATA = {
 },
 {
   id: 'zh-k2-morning-market', lang: 'zh', grade: 'K2', bg: 'sunny',
+  "anchors": {
+    "curriculum": [
+      "3–6岁儿童学习与发展指南·语言领域",
+      "倾听与表达",
+      "阅读与书写准备"
+    ],
+    "level": {
+      "mode": "listen-look-interact"
+    }
+  },
   objects: [
     { id: 'grandma', emoji: '👵', x: 18, y: 62, labelZh: '奶奶', labelEn: 'grandmother' },
     { id: 'child', emoji: '🧒', x: 35, y: 64, labelZh: '孩子', labelEn: 'child' },
@@ -6086,6 +6225,15 @@ var LANG_DATA = {
 },
 {
   id: 'en-k2-picnic-directions', lang: 'en', grade: 'K2', bg: 'grass',
+  "anchors": {
+    "curriculum": [
+      "EYFS Communication and Language",
+      "EYFS Literacy: Comprehension"
+    ],
+    "level": {
+      "mode": "listen-look-interact"
+    }
+  },
   objects: [
     { id: 'tree', emoji: '🌳', x: 18, y: 25, labelZh: '大树', labelEn: 'tree' },
     { id: 'blanket', emoji: '🟦', x: 42, y: 72, labelZh: '野餐垫', labelEn: 'picnic blanket' },
@@ -6167,6 +6315,15 @@ var LANG_DATA = {
     "id": "en-k2-torn-kite",
     "lang": "en",
     "grade": "K2",
+    "anchors": {
+      "curriculum": [
+        "EYFS Communication and Language",
+        "EYFS Literacy: Comprehension"
+      ],
+      "level": {
+        "mode": "listen-look-interact"
+      }
+    },
     "bg": "sunny",
     "objects": [
       {
@@ -6409,6 +6566,16 @@ var LANG_DATA = {
       "id": "zh-k1-rhyme-rain-boots",
       "lang": "zh",
       "grade": "K1",
+      "anchors": {
+        "curriculum": [
+          "3–6岁儿童学习与发展指南·语言领域",
+          "倾听与表达",
+          "文学阅读与创意表达"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       "title": "小雨靴踩水花",
       "genre": "nursery-rhyme-scene",
       "background": "雨后的小路上有三个浅水洼，孩子穿着黄色雨靴。",
@@ -6620,6 +6787,16 @@ var LANG_DATA = {
       "id": "en-k1-riddle-red-ball",
       "lang": "en",
       "grade": "K1",
+      "anchors": {
+        "curriculum": [
+          "EYFS Communication and Language",
+          "EYFS Literacy: Comprehension",
+          "EYFS Literacy: Word Reading"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       "title": "Where Is the Red Ball?",
       "genre": "riddle-scene",
       "background": "A playground with a bench, a blue slide, and a red ball partly visible behind a yellow bucket.",
@@ -6827,6 +7004,16 @@ var LANG_DATA = {
       "id": "zh-k2-market-dialogue",
       "lang": "zh",
       "grade": "K2",
+      "anchors": {
+        "curriculum": [
+          "3–6岁儿童学习与发展指南·语言领域",
+          "倾听与表达",
+          "阅读与书写准备"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       "title": "小市场里的误会",
       "genre": "situational-dialogue-scene",
       "background": "小市场的蔬菜摊上摆着胡萝卜、玉米和苹果，乐乐拿着小篮子。",
@@ -7091,6 +7278,15 @@ var LANG_DATA = {
       "id": "en-k2-folktale-lantern",
       "lang": "en",
       "grade": "K2",
+      "anchors": {
+        "curriculum": [
+          "EYFS Communication and Language",
+          "EYFS Literacy: Comprehension"
+        ],
+        "level": {
+          "mode": "listen-look-interact"
+        }
+      },
       "title": "The Lantern Trail",
       "genre": "cultural-folktale-style-scene",
       "background": "A community evening with paper lanterns, a music table, a welcome table, and a small embroidered pouch.",

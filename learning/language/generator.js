@@ -19,6 +19,8 @@ var LANG_GEN = (function () {
     create:     'RG.LANGUAGE.CREATION.IMAGINATIVE'
   };
 
+  var JOURNEY_PASSAGE_IDS = ['zh-g1-goose-poem'];
+
   function rngFor(seed) {
     if (seed === undefined || seed === null) { return Math.random; }
     var s = (Number(seed) >>> 0) || 1;
@@ -45,6 +47,10 @@ var LANG_GEN = (function () {
     return LANG_DATA.PASSAGES.filter(function (p) { return p.lang === lang && p.grade === grade; });
   }
 
+  function passageById(passageId) {
+    return LANG_DATA.PASSAGES.filter(function (p) { return p.id === passageId; })[0] || null;
+  }
+
   var ORDER_PROMPT = {
     zh: '这三张图讲的是什么顺序？把它们排好。',
     en: 'What order do these three pictures happen in? Put them in order.'
@@ -57,6 +63,10 @@ var LANG_GEN = (function () {
 
   function scenePoolFor(lang, grade) {
     return LANG_DATA.SCENES.filter(function (s) { return s.lang === lang && s.grade === grade; });
+  }
+
+  function sceneById(sceneId) {
+    return LANG_DATA.SCENES.filter(function (scene) { return scene.id === sceneId; })[0] || null;
   }
 
   function objectById(scene, id) {
@@ -100,8 +110,10 @@ var LANG_GEN = (function () {
     }
     if (item.interaction === 'evidence' && item.target === 'sentence') {
       q = base(p, item, 'evidence_sentence');
-      q.options = p.sentences.map(function (s) { return s.id; });
       q.answer = item.answer.slice();
+      q.options = q.answer.length > 1
+        ? ['check']
+        : p.sentences.map(function (s) { return s.id; });
       return q;
     }
     if (item.interaction === 'evidence') {
@@ -134,7 +146,7 @@ var LANG_GEN = (function () {
     };
     var qs = c.slots.map(function (slot, i) {
       return Object.assign({}, common, {
-        kind: 'ccr_slot', itemId: 'ccr-' + slot.key, slotKey: slot.key, slotIndex: i,
+        kind: 'ccr_slot', itemId: 'ccr-' + ccrUnit + '-' + slot.key, slotKey: slot.key, slotIndex: i,
         slotName: slot.name, prompt: c.prompt,
         choices: slot.options.map(function (t) { return { text: t }; }),
         options: slot.options.map(function (_, j) { return j; }),
@@ -142,7 +154,7 @@ var LANG_GEN = (function () {
       });
     });
     qs.push(Object.assign({}, common, {
-      kind: 'ccr_reflect', itemId: 'ccr-reflect', prompt: c.reflectPrompt,
+      kind: 'ccr_reflect', itemId: 'ccr-' + ccrUnit + '-reflect', prompt: c.reflectPrompt,
       choices: c.otherIdeas.map(function (o) { return { text: o.viewpoint }; }),
       options: c.otherIdeas.map(function (_, j) { return j; }),
       answer: null
@@ -159,10 +171,10 @@ var LANG_GEN = (function () {
       itemId: item.id,
       unit: item.unit,
       geneId: UNIT_GENE[item.unit],
-      template: item.interaction,
-      level: null,
+      template: item.template || item.interaction,
+      level: item.level || null,
       prompt: prompt,
-      hintZh: item.hintZh || '', hintEn: item.hintEn || '',
+      hintZh: item.hintZh || item.hint || '', hintEn: item.hintEn || item.hint || '',
       scored: true
     };
   }
@@ -190,9 +202,24 @@ var LANG_GEN = (function () {
     return q;
   }
 
+  function buildSceneSelectItem(scene, item, rnd) {
+    var prompt = item.prompt || (scene.lang === 'zh' ? item.promptZh : item.promptEn);
+    var q = sceneBase(scene, item, 'scene_select', prompt);
+    var order = shuffledIndices(item.options.length, rnd);
+    q.choices = order.map(function (i) { return item.options[i]; });
+    q.options = q.choices.map(function (_, i) { return i; });
+    q.answer = order.indexOf(item.answer);
+    q.objects = scene.objects || [];
+    q.bg = scene.bg || '';
+    q.frames = scene.frames || [];
+    q.narration = scene.narration || null;
+    return q;
+  }
+
   function buildSceneItem(scene, item, rnd) {
     if (item.interaction === 'hotspot') { return buildHotspotItem(scene, item, rnd); }
     if (item.interaction === 'order') { return buildFrameOrderItem(scene, item, rnd); }
+    if (item.interaction === 'select') { return buildSceneSelectItem(scene, item, rnd); }
     throw new Error('[LANG_GEN] unknown scene interaction: ' + item.interaction + ' in ' + scene.id + '/' + item.id);
   }
 
@@ -226,7 +253,7 @@ var LANG_GEN = (function () {
     var qs = c.slots.map(function (slot, i) {
       return Object.assign({}, common, {
         kind: 'ccr_slot',
-        itemId: 'ccr-' + slot.key,
+        itemId: 'ccr-' + ability + '-' + slot.key,
         slotKey: slot.key,
         slotIndex: i,
         slotName: scene.lang === 'zh' ? slot.nameZh : slot.nameEn,
@@ -240,7 +267,7 @@ var LANG_GEN = (function () {
     });
     qs.push(Object.assign({}, common, {
       kind: 'ccr_reflect',
-      itemId: 'ccr-reflect',
+      itemId: 'ccr-' + ability + '-reflect',
       prompt: localizedCcr.reflectPrompt,
       choices: localizedCcr.otherIdeas.map(function (idea) {
         return { text: idea.viewpoint };
@@ -275,6 +302,31 @@ var LANG_GEN = (function () {
     });
   }
 
+  function questionsForScene(scene, ability, rnd) {
+    if (ability === 'express' || ability === 'create') {
+      return buildSceneCcr(scene, ability);
+    }
+    return scene.items.filter(function (item) {
+      return item.unit === ability;
+    }).map(function (item) {
+      return buildSceneItem(scene, item, rnd);
+    });
+  }
+
+  function finishAbilityQuestions(qs, ability) {
+    qs.forEach(function (q, i) {
+      q.seq = i;
+      q.primaryAbility = ability;
+    });
+    return qs;
+  }
+
+  function generateSceneById(sceneId, ability, seed) {
+    var scene = sceneById(sceneId);
+    if (!scene || !sceneSupports(scene, ability)) { return []; }
+    return finishAbilityQuestions(questionsForScene(scene, ability, rngFor(seed)), ability);
+  }
+
   function generateScene(lang, grade, ability, seed) {
     var rnd = rngFor(seed);
     var pool = scenePoolFor(lang, grade).filter(function (scene) {
@@ -282,21 +334,7 @@ var LANG_GEN = (function () {
     });
     if (!pool.length) { return []; }
     var scene = pool[Math.floor(rnd() * pool.length)];
-    var qs;
-    if (ability === 'express' || ability === 'create') {
-      qs = buildSceneCcr(scene, ability);
-    } else {
-      qs = scene.items.filter(function (item) {
-        return item.unit === ability;
-      }).map(function (item) {
-        return buildSceneItem(scene, item, rnd);
-      });
-    }
-    qs.forEach(function (q, i) {
-      q.seq = i;
-      q.primaryAbility = ability;
-    });
-    return qs;
+    return finishAbilityQuestions(questionsForScene(scene, ability, rnd), ability);
   }
 
   function generate(lang, grade, ability, seed) {
@@ -325,8 +363,28 @@ var LANG_GEN = (function () {
     return qs;
   }
 
+  function generateJourney(passageId, seed) {
+    if (JOURNEY_PASSAGE_IDS.indexOf(passageId) < 0) { return []; }
+    var p = passageById(passageId);
+    if (!p || !ccrFor(p, 'express') || !ccrFor(p, 'create')) { return []; }
+
+    var rnd = rngFor(seed);
+    var qs = p.items.map(function (item) {
+      return buildItem(p, item, rnd);
+    }).concat(buildCcr(p, 'express'), buildCcr(p, 'create'));
+
+    qs.forEach(function (q, i) {
+      q.seq = i;
+      q.primaryAbility = null;
+    });
+    return qs;
+  }
+
   return {
     generate: generate, rngFor: rngFor, poolFor: poolFor, UNIT_GENE: UNIT_GENE,
-    generateScene: generateScene, scenePoolFor: scenePoolFor, hasContent: hasContent
+    generateScene: generateScene, generateSceneById: generateSceneById,
+    scenePoolFor: scenePoolFor, sceneById: sceneById, hasContent: hasContent,
+    passageById: passageById, generateJourney: generateJourney,
+    JOURNEY_PASSAGE_IDS: JOURNEY_PASSAGE_IDS.slice()
   };
 }());

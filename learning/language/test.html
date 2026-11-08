@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Language & Literacy content audit</title>
+<style>
+body{font:14px system-ui;padding:20px;background:#fffbeb;color:#1e293b}
+h2{margin-bottom:6px}.summary{color:#64748b;margin-bottom:18px}
+.section{background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0}
+.ok{color:#15803d;font-weight:800}.bad{color:#dc2626;font-weight:800}
+.detail{white-space:pre-wrap;background:#f8fafc;border-radius:8px;padding:8px;margin-top:6px;color:#475569}
+.review{background:#fff7ed;border:2px solid #f59e0b;border-radius:12px;padding:14px;margin-top:18px}
+.review h3{color:#b45309;margin:0 0 8px}.review li{margin:5px 0}
+</style>
+</head>
+<body>
+<h2>语文素养 · 内容与生成器审计</h2>
+<div class="summary" id="summary"></div>
+<div id="out"></div>
+<div class="review">
+  <h3>REVIEW REQUIRED · 必须人工审稿</h3>
+  <ul>
+    <li>不读文本、不听叙述或不看画面时，客观题是否确实无法作答。</li>
+    <li>中文与 English 是否分别原生设计，而不是翻译、镜像或只替换角色。</li>
+    <li>素材来源与版权标注是否适宜，现代受保护文本是否只作难度和体裁参照。</li>
+    <li>真实语言质量、年级适宜性、生字率、Lexile / F&amp;P 与认知难度是否合理。</li>
+    <li>干扰项是否对应有教学价值的典型误解，而不只是显然错误的答案。</li>
+    <li>Express / Create 的 Reference Ideas 是否丰富、自然，并真正促进比较与反思。</li>
+  </ul>
+</div>
+
+<script src="./data.js"></script>
+<script src="./generator.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var out = document.getElementById('out');
+  var summary = document.getElementById('summary');
+  var VALID_LANGS = ['zh', 'en'];
+  var VALID_GRADES = ['K1', 'K2', 'G1', 'G2'];
+  var VALID_UNITS = ['observe', 'comprehend', 'infer', 'structure', 'choose', 'express', 'create'];
+  var VALID_LEVELS = ['L1', 'L2', 'L3', 'L4'];
+  var passed = 0;
+  var failed = 0;
+
+  function unique(values) {
+    return values.filter(function (value, index) {
+      return values.indexOf(value) === index;
+    });
+  }
+
+  function sameArray(a, b) {
+    return a.length === b.length && a.every(function (value, index) {
+      return value === b[index];
+    });
+  }
+
+  function sameSet(a, b) {
+    var left = (a || []).slice().sort();
+    var right = (b || []).slice().sort();
+    return sameArray(left, right);
+  }
+
+  function requireValue(condition, message, errors) {
+    if (!condition) { errors.push(message); }
+  }
+
+  function renderCheck(name, fn) {
+    var errors = [];
+    try {
+      fn(errors);
+    } catch (error) {
+      errors.push(error && error.stack ? error.stack : String(error));
+    }
+
+    var box = document.createElement('div');
+    box.className = 'section';
+    if (errors.length) {
+      failed++;
+      box.innerHTML = '<div class="bad">FAIL · ' + name + ' (' + errors.length + ')</div>' +
+        '<div class="detail">' + errors.slice(0, 5).join('\n') +
+        (errors.length > 5 ? '\n… 另有 ' + (errors.length - 5) + ' 项' : '') + '</div>';
+    } else {
+      passed++;
+      box.innerHTML = '<div class="ok">PASS · ' + name + '</div>';
+    }
+    out.appendChild(box);
+  }
+
+  function auditCcr(entry, label, ccr, errors) {
+    if (!ccr) { return; }
+    var prompt = ccr.prompt || ccr.promptZh || ccr.promptEn;
+    var reflectPrompt = ccr.reflectPrompt || ccr.reflectPromptZh || ccr.reflectPromptEn;
+    requireValue(!!prompt, label + ': CCR 缺少 prompt', errors);
+    requireValue(typeof ccr.template === 'string' && ccr.template.length > 0,
+      label + ': CCR 缺少 template', errors);
+    requireValue(Array.isArray(ccr.slots) && ccr.slots.length > 0,
+      label + ': CCR slots 为空', errors);
+    requireValue(Array.isArray(ccr.otherIdeas) && ccr.otherIdeas.length > 0,
+      label + ': CCR otherIdeas 为空', errors);
+    requireValue(!!reflectPrompt, label + ': CCR 缺少 reflectPrompt', errors);
+
+    (ccr.slots || []).forEach(function (slot) {
+      var name = slot.name || slot.nameZh || slot.nameEn;
+      var options = slot.options || slot.optionsZh || slot.optionsEn;
+      requireValue(!!slot.key, label + ': CCR slot 缺少 key', errors);
+      requireValue(!!name, label + ': CCR slot ' + (slot.key || '?') + ' 缺少 name', errors);
+      requireValue(Array.isArray(options) && options.length > 0,
+        label + ': CCR slot ' + (slot.key || '?') + ' options 为空', errors);
+      if (slot.key && ccr.template) {
+        requireValue(ccr.template.indexOf('{' + slot.key + '}') >= 0,
+          label + ': template 未引用 {' + slot.key + '}', errors);
+      }
+    });
+
+    (ccr.otherIdeas || []).forEach(function (idea, index) {
+      requireValue(!!(idea.viewpoint || idea.viewpointZh || idea.viewpointEn),
+        label + ': otherIdeas[' + index + '] 缺少 viewpoint', errors);
+      requireValue(!!(idea.text || idea.textZh || idea.textEn),
+        label + ': otherIdeas[' + index + '] 缺少 text', errors);
+    });
+  }
+
+  renderCheck('全局 material ID 唯一', function (errors) {
+    var ids = LANG_DATA.PASSAGES.concat(LANG_DATA.SCENES).map(function (entry) { return entry.id; });
+    requireValue(unique(ids).length === ids.length, 'PASSAGES / SCENES 存在重复 ID', errors);
+  });
+
+  renderCheck('素材基础结构与内部 ID', function (errors) {
+    LANG_DATA.PASSAGES.forEach(function (passage) {
+      var label = 'PASSAGE ' + passage.id;
+      requireValue(!!passage.id && !!passage.title && !!passage.genre, label + ': 缺少 id/title/genre', errors);
+      requireValue(VALID_LANGS.indexOf(passage.lang) >= 0, label + ': 非法 lang', errors);
+      requireValue(['G1', 'G2'].indexOf(passage.grade) >= 0, label + ': 非法 grade', errors);
+      requireValue(passage.anchors && Array.isArray(passage.anchors.curriculum) &&
+        passage.anchors.curriculum.length > 0, label + ': 缺少 curriculum anchors', errors);
+      requireValue(Array.isArray(passage.sentences) && passage.sentences.length > 0,
+        label + ': sentences 为空', errors);
+      requireValue(Array.isArray(passage.items) && passage.items.length > 0,
+        label + ': items 为空', errors);
+
+      var sentenceIds = (passage.sentences || []).map(function (sentence) { return sentence.id; });
+      var itemIds = (passage.items || []).map(function (item) { return item.id; });
+      requireValue(unique(sentenceIds).length === sentenceIds.length, label + ': sentence ID 重复', errors);
+      requireValue(unique(itemIds).length === itemIds.length, label + ': item ID 重复', errors);
+      (passage.sentences || []).forEach(function (sentence) {
+        requireValue(!!sentence.id && !!sentence.text, label + ': sentence 缺少 id/text', errors);
+      });
+    });
+
+    LANG_DATA.SCENES.forEach(function (scene) {
+      var label = 'SCENE ' + scene.id;
+      var objects = scene.objects || [];
+      var frames = scene.frames || [];
+      var positionedObjects = objects.length > 0 && objects.every(function (object) {
+        return typeof object.x === 'number' && typeof object.y === 'number';
+      });
+      var presentableFrames = frames.length > 0 && frames.every(function (frame) {
+        return !!(frame.narration || frame.textZh || frame.textEn || frame.emoji);
+      });
+
+      requireValue(!!scene.id, label + ': 缺少 id', errors);
+      requireValue(VALID_LANGS.indexOf(scene.lang) >= 0, label + ': 非法 lang', errors);
+      requireValue(['K1', 'K2'].indexOf(scene.grade) >= 0, label + ': 非法 grade', errors);
+      requireValue(scene.anchors && Array.isArray(scene.anchors.curriculum) &&
+        scene.anchors.curriculum.length > 0, label + ': 缺少 curriculum anchors', errors);
+      requireValue(objects.length > 0, label + ': objects 为空', errors);
+      requireValue(positionedObjects || presentableFrames,
+        label + ': 既没有可定位 objects，也没有可呈现 frames', errors);
+      requireValue(Array.isArray(scene.items) && scene.items.length > 0,
+        label + ': items 为空', errors);
+
+      var objectIds = objects.map(function (object) { return object.id; });
+      var frameIds = frames.map(function (frame) { return frame.id; });
+      var itemIds = (scene.items || []).map(function (item) { return item.id; });
+      requireValue(unique(objectIds).length === objectIds.length, label + ': object ID 重复', errors);
+      requireValue(unique(frameIds).length === frameIds.length, label + ': frame ID 重复', errors);
+      requireValue(unique(itemIds).length === itemIds.length, label + ': item ID 重复', errors);
+    });
+  });
+
+  renderCheck('Passage objective unit、level 与层级分布', function (errors) {
+    LANG_DATA.PASSAGES.forEach(function (passage) {
+      var label = passage.id;
+      var items = passage.items || [];
+      items.forEach(function (item) {
+        requireValue(VALID_UNITS.indexOf(item.unit) >= 0,
+          label + '/' + item.id + ': 非法 unit ' + item.unit, errors);
+        requireValue(VALID_LEVELS.indexOf(item.level) >= 0,
+          label + '/' + item.id + ': 非法 level ' + item.level, errors);
+        requireValue(!!item.template && !!item.interaction && !!item.prompt,
+          label + '/' + item.id + ': 缺少 template/interaction/prompt', errors);
+      });
+
+      var l1Count = items.filter(function (item) { return item.level === 'L1'; }).length;
+      var l2Plus = items.filter(function (item) {
+        return ['L2', 'L3', 'L4'].indexOf(item.level) >= 0;
+      }).length;
+      requireValue(l1Count <= 1, label + ': L1 超过 1 道', errors);
+      requireValue(items.length > 0 && l2Plus / items.length >= 0.7,
+        label + ': L2+ 比例低于 70%', errors);
+    });
+  });
+
+  renderCheck('Scene objective 合同', function (errors) {
+    LANG_DATA.SCENES.forEach(function (scene) {
+      (scene.items || []).forEach(function (item) {
+        var label = scene.id + '/' + item.id;
+        requireValue(VALID_UNITS.indexOf(item.unit) >= 0,
+          label + ': 非法 unit ' + item.unit, errors);
+        requireValue(['hotspot', 'order', 'select'].indexOf(item.interaction) >= 0,
+          label + ': 非法 interaction ' + item.interaction, errors);
+
+        if (item.interaction === 'hotspot') {
+          requireValue(!!item.target && Array.isArray(item.distractors),
+            label + ': hotspot 缺少 target/distractors', errors);
+          requireValue(!!(item.prompt || item.promptZh || item.promptEn),
+            label + ': hotspot 缺少 prompt', errors);
+        }
+
+        if (item.interaction === 'order') {
+          requireValue(Array.isArray(scene.frames) && scene.frames.length > 0,
+            label + ': order scene 缺少 frames', errors);
+        }
+
+        if (item.interaction === 'select') {
+          requireValue(!!item.template,
+            label + ': select 缺少 template', errors);
+          requireValue(VALID_LEVELS.indexOf(item.level) >= 0,
+            label + ': select 非法 level ' + item.level, errors);
+          requireValue(!!(item.prompt || item.promptZh || item.promptEn),
+            label + ': select 缺少 prompt', errors);
+          requireValue(Array.isArray(item.options) && item.options.length > 0,
+            label + ': select options 为空', errors);
+          requireValue(Number.isInteger(item.answer) &&
+            item.answer >= 0 && item.answer < (item.options || []).length,
+            label + ': select answer index 非法', errors);
+          (item.options || []).forEach(function (option, index) {
+            if (index === item.answer) { return; }
+            requireValue(!!option.errorType,
+              label + ': 选项 ' + index + ' 缺少 errorType', errors);
+          });
+        }
+      });
+    });
+  });
+
+  renderCheck('Select 干扰项均带 errorType', function (errors) {
+    LANG_DATA.PASSAGES.forEach(function (passage) {
+      (passage.items || []).forEach(function (item) {
+        if (item.interaction !== 'select') { return; }
+        (item.options || []).forEach(function (option, index) {
+          if (index === item.answer) { return; }
+          requireValue(!!option.errorType,
+            passage.id + '/' + item.id + ': 选项 ' + index + ' 缺少 errorType', errors);
+        });
+      });
+    });
+  });
+
+  renderCheck('Evidence 与 Claim/Evidence 引用闭合', function (errors) {
+    LANG_DATA.PASSAGES.forEach(function (passage) {
+      var sentenceIds = (passage.sentences || []).map(function (sentence) { return sentence.id; });
+      var byId = {};
+      (passage.items || []).forEach(function (item) { byId[item.id] = item; });
+
+      (passage.items || []).forEach(function (item) {
+        var label = passage.id + '/' + item.id;
+        if (item.interaction === 'evidence' && item.target === 'sentence') {
+          requireValue(Array.isArray(item.answer) && item.answer.length > 0,
+            label + ': sentence evidence answer 为空', errors);
+          (item.answer || []).forEach(function (sentenceId) {
+            requireValue(sentenceIds.indexOf(sentenceId) >= 0,
+              label + ': 引用了不存在的 sentence ' + sentenceId, errors);
+          });
+        }
+
+        if (item.evidenceFor || item.claimItemId) {
+          var claimId = item.evidenceFor || item.claimItemId;
+          var claim = byId[claimId];
+          requireValue(!!claim, label + ': 找不到 claim ' + claimId, errors);
+          if (claim) {
+            requireValue(!!item.pairId && item.pairId === claim.pairId,
+              label + ': pairId 与 claim 不闭合', errors);
+            requireValue(item.claimItemId === claim.id && item.evidenceFor === claim.id,
+              label + ': claimItemId/evidenceFor 未同时指向 claim', errors);
+          }
+        }
+
+        if (item.pairId && !item.evidenceFor && !item.claimItemId) {
+          var evidence = (passage.items || []).filter(function (candidate) {
+            return candidate.pairId === item.pairId &&
+              candidate.evidenceFor === item.id &&
+              candidate.claimItemId === item.id;
+          });
+          requireValue(evidence.length > 0, label + ': claim 没有闭合 evidence', errors);
+        }
+      });
+    });
+  });
+
+  renderCheck('Express / Create CCR 结构', function (errors) {
+    LANG_DATA.PASSAGES.concat(LANG_DATA.SCENES).forEach(function (entry) {
+      if (entry.expressCcr) { auditCcr(entry, entry.id + '/expressCcr', entry.expressCcr, errors); }
+      if (entry.createCcr) { auditCcr(entry, entry.id + '/createCcr', entry.createCcr, errors); }
+      if (entry.ccr) { auditCcr(entry, entry.id + '/ccr', entry.ccr, errors); }
+    });
+  });
+
+  renderCheck('全部 authored Scene 精确生成', function (errors) {
+    LANG_DATA.SCENES.forEach(function (scene) {
+      var units = unique((scene.items || []).map(function (item) {
+        return item.unit;
+      }));
+
+      units.forEach(function (unit) {
+        var authored = (scene.items || []).filter(function (item) {
+          return item.unit === unit;
+        });
+        var generated = LANG_GEN.generateSceneById(scene.id, unit, 31);
+        var label = scene.id + '/' + unit;
+
+        requireValue(generated.length === authored.length,
+          label + ': generated/authored 数量不一致', errors);
+        requireValue(sameArray(
+          generated.map(function (question) { return question.itemId; }),
+          authored.map(function (item) { return item.id; })
+        ), label + ': generated/authored itemId 顺序不一致', errors);
+
+        generated.forEach(function (question, index) {
+          var item = authored[index];
+          requireValue(question.seq === index,
+            label + '/' + question.itemId + ': seq 不连续', errors);
+          requireValue(question.primaryAbility === unit,
+            label + '/' + question.itemId + ': primaryAbility 错误', errors);
+          requireValue(question.unit === unit,
+            label + '/' + question.itemId + ': unit 错误', errors);
+          requireValue(question.geneId === LANG_GEN.UNIT_GENE[unit],
+            label + '/' + question.itemId + ': geneId 错误', errors);
+          if (item) {
+            requireValue(question.template === (item.template || item.interaction),
+              label + '/' + question.itemId + ': template 未保留', errors);
+            requireValue(question.level === (item.level || null),
+              label + '/' + question.itemId + ': level 未保留', errors);
+          }
+        });
+      });
+    });
+  });
+
+  renderCheck('全部 Ability Training scope 生成回归', function (errors) {
+    VALID_LANGS.forEach(function (lang) {
+      VALID_GRADES.forEach(function (grade) {
+        VALID_UNITS.forEach(function (ability) {
+          if (!LANG_GEN.hasContent(lang, grade, ability)) { return; }
+          var questions = grade === 'K1' || grade === 'K2'
+            ? LANG_GEN.generateScene(lang, grade, ability, 23)
+            : LANG_GEN.generate(lang, grade, ability, 23);
+          var label = lang + '/' + grade + '/' + ability;
+          requireValue(questions.length > 0, label + ': 生成结果为空', errors);
+          questions.forEach(function (question, index) {
+            requireValue(question.seq === index, label + ': seq 不连续', errors);
+            requireValue(question.primaryAbility === ability,
+              label + '/' + question.itemId + ': primaryAbility 错误', errors);
+            requireValue(question.unit === ability,
+              label + '/' + question.itemId + ': unit 错误', errors);
+            requireValue(question.geneId === LANG_GEN.UNIT_GENE[ability],
+              label + '/' + question.itemId + ': geneId 错误', errors);
+          });
+        });
+      });
+    });
+  });
+
+  renderCheck('《咏鹅》Works/Journey 合同', function (errors) {
+    var passageId = 'zh-g1-goose-poem';
+    var passage = LANG_GEN.passageById(passageId);
+    var journey = LANG_GEN.generateJourney(passageId, 17);
+
+    requireValue(sameArray(LANG_GEN.JOURNEY_PASSAGE_IDS, [passageId]),
+      'Journey 白名单不是唯一的《咏鹅》prototype', errors);
+    requireValue(LANG_GEN.generateJourney('zh-g1-borrow-umbrella', 17).length === 0,
+      '非白名单 passage 生成了 Journey', errors);
+    requireValue(!!passage, '找不到《咏鹅》passage', errors);
+    requireValue(journey.length > 0, '《咏鹅》Journey 为空', errors);
+    if (!passage || !journey.length) { return; }
+
+    requireValue(journey.every(function (q) { return q.passageId === passageId; }),
+      'Journey 混入了其他 passageId', errors);
+    requireValue(journey.every(function (q, index) { return q.seq === index; }),
+      'Journey seq 不连续', errors);
+    requireValue(journey.every(function (q) { return q.primaryAbility === null; }),
+      'Journey primaryAbility 不为 null', errors);
+    requireValue(unique(journey.map(function (q) { return q.itemId; })).length === journey.length,
+      'Journey itemId 不唯一', errors);
+    requireValue(sameArray(
+      journey.slice(0, passage.items.length).map(function (q) { return q.itemId; }),
+      passage.items.map(function (item) { return item.id; })
+    ), 'Objective questions 未保持 authored order', errors);
+
+    var ccrUnits = journey.slice(passage.items.length).map(function (q) { return q.unit; });
+    requireValue(sameArray(ccrUnits, ['express', 'express', 'express', 'create', 'create', 'create']),
+      'CCR 顺序不是 Express 后 Create', errors);
+    requireValue(journey.some(function (q) { return q.itemId === 'ccr-express-reflect'; }),
+      '缺少独立 Express reflect ID', errors);
+    requireValue(journey.some(function (q) { return q.itemId === 'ccr-create-reflect'; }),
+      '缺少独立 Create reflect ID', errors);
+    requireValue(unique(journey.map(function (q) { return q.geneId; })).length === 7,
+      'Journey 未覆盖预期的 7 个 RootGene', errors);
+
+    journey.forEach(function (question) {
+      requireValue(question.geneId === LANG_GEN.UNIT_GENE[question.unit],
+        question.itemId + ': unit/geneId 不匹配', errors);
+    });
+
+    var claim = journey.filter(function (q) {
+      return q.itemId === 'q-infer-goose-picture';
+    })[0];
+    var evidence = journey.filter(function (q) {
+      return q.itemId === 'q-infer-goose-picture-evidence';
+    })[0];
+    requireValue(!!claim && !!evidence, 'Journey 缺少 claim/evidence', errors);
+    if (claim && evidence) {
+      requireValue(claim.pairId === evidence.pairId,
+        'Journey claim/evidence pairId 不一致', errors);
+      requireValue(evidence.claimItemId === claim.itemId &&
+        evidence.evidenceFor === claim.itemId,
+        'Journey evidence 未闭合到 claim', errors);
+      requireValue(sameArray(evidence.answer, ['s3', 's4']),
+        'Journey Q6 evidence answer 不是精确的 s3+s4', errors);
+      requireValue(sameArray(evidence.options, ['check']),
+        'Journey Q6 多句 evidence 未使用单一 check option', errors);
+      requireValue(sameSet(['s3', 's4'], evidence.answer),
+        'Journey Q6 集合判定拒绝正确顺序', errors);
+      requireValue(sameSet(['s4', 's3'], evidence.answer),
+        'Journey Q6 集合判定不应依赖选择顺序', errors);
+      requireValue(!sameSet(['s3'], evidence.answer),
+        'Journey Q6 集合判定错误接受单独 s3', errors);
+      requireValue(!sameSet(['s4'], evidence.answer),
+        'Journey Q6 集合判定错误接受单独 s4', errors);
+      requireValue(!sameSet(['s3', 's4', 's1'], evidence.answer),
+        'Journey Q6 集合判定错误接受多余句子', errors);
+    }
+  });
+
+  summary.textContent =
+    'PASSAGES ' + LANG_DATA.PASSAGES.length +
+    ' · SCENES ' + LANG_DATA.SCENES.length +
+    ' · 自动检查 ' + (passed + failed) +
+    ' · ' + (failed ? ('FAIL ' + failed) : ('全部 PASS (' + passed + ')'));
+  summary.className = failed ? 'summary bad' : 'summary ok';
+}());
+</script>
+</body>
+</html>
