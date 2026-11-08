@@ -70,6 +70,26 @@ Switching back to Human-AI through the shared control panel preserves the
 position and human side, and resumes play automatically after the engine health
 check succeeds. If it is the AI's turn, it moves before the human can play.
 
+## Chinese chess desktop puzzle bank
+
+Import all desktop collections without modifying the desktop originals:
+
+```powershell
+node web\tools\build-chinese-chess-bank.mjs 'C:\Users\xiaod\chinese_chess'
+node web\tools\test-chinese-chess-bank.mjs 'C:\Users\xiaod\chinese_chess'
+```
+
+Run these commands from the workspace root. The importer copies the desktop
+`question_bank\data` collections and their FEN, metadata, PGN, solution and
+explanation files into `web\chinese-chess\bank`, and builds its root manifest.
+All three play modes use this manifest through the shared puzzle-bank module,
+grouped by collection, level and category. Existing L1 endgame manifests and
+web-authored puzzles are retained. Source folders determine levels; metadata
+names supply the displayed titles. A legacy metadata trailing comma is reported
+and normalized for indexing only; original files are preserved.
+Passing the desktop path to the validator also checks that every source file was
+copied byte-for-byte and every source FEN is indexed.
+
 ## Example payload
 
 ```json

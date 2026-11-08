@@ -1,0 +1,87 @@
+{
+  "geneId": "at_HPAE-HC2A_L1-001",
+  "displayInfo": {
+    "chineseName": "拔簧马"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 8,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "pieces": [],
+      "count": 0,
+      "side": "red"
+    },
+    "defending": {
+      "pieces": [],
+      "count": 0,
+      "side": "black"
+    },
+    "total": 0
+  },
+  "boardData": {
+    "fenFile": "at_HPAE-HC2A_L1-001.fen",
+    "pgnFile": "at_HPAE-HC2A_L1-001.pgn",
+    "initialPosition": "3ak4/4aPH2/4c4/9/9/9/9/4E4/2r1A4/5K3 r - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "standard",
+      "description": "基本解法",
+      "difficulty": "basic",
+      "evaluation": "必胜",
+      "movesCount": 3,
+      "keyMoves": [],
+      "files": {
+        "solutionFile": "at_HPAE-HC2A_L1-001-1.txt",
+        "explanationFile": "at_HPAE-HC2A_L1-001_exp-1.txt"
+      }
+    }
+  ],
+  "relationships": {
+    "geneType": "mate_patterns",
+    "family": "horse_endgames",
+    "prerequisites": [
+      "basic_movement",
+      "checkmate_concepts"
+    ],
+    "successors": [],
+    "variations": [],
+    "similarity": {}
+  },
+  "pedagogical": {
+    "targetAudience": "初学者",
+    "estimatedStudyTime": "30分钟",
+    "learningObjectives": [
+      "掌握horse类残局的基本技法",
+      "理解残局计算原理",
+      "培养杀棋能力"
+    ],
+    "practicePoints": [
+      "棋子配合技巧",
+      "计算准确性",
+      "关键着法选择"
+    ],
+    "commonMistakes": [
+      "计算不准确",
+      "着法选择不当",
+      "时机掌握不好"
+    ]
+  },
+  "cultural": {
+    "historicalContext": "horse类残局是象棋经典残局之一",
+    "strategicValue": "基础残局技能训练",
+    "aestheticValue": "体现象棋逻辑之美",
+    "references": [
+      {
+        "source": "象棋残局大全",
+        "author": "经典棋谱",
+        "description": "horse类残局典型局面"
+      }
+    ]
+  }
+}

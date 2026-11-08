@@ -1,0 +1,91 @@
+{
+  "geneId": "eg_CA-A_L1-001",
+  "displayInfo": {
+    "chineseName": "炮士胜单士"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 4,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "pieces": [
+        "C"
+      ],
+      "count": 1,
+      "side": "red"
+    },
+    "defending": {
+      "pieces": [
+        "A"
+      ],
+      "count": 1,
+      "side": "black"
+    },
+    "total": 2
+  },
+  "boardData": {
+    "fenFile": "eg_CA-A_L1-001.fen",
+    "pgnFile": "eg_CA-A_L1-001.pgn",
+    "initialPosition": "3k5/4a4/9/9/9/9/9/5A3/7C1/4K4 r - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "standard",
+      "description": "基本解法",
+      "difficulty": "basic",
+      "evaluation": "必胜",
+      "movesCount": 3,
+      "keyMoves": [],
+      "files": {
+        "solutionFile": "eg_CA-A_L1-001-1.txt",
+        "explanationFile": "exp-eg_CA-A_L1-001-1.txt"
+      }
+    }
+  ],
+  "relationships": {
+    "geneType": "mate_patterns",
+    "family": "cannon_endgames",
+    "prerequisites": [
+      "basic_movement",
+      "checkmate_concepts"
+    ],
+    "successors": [],
+    "variations": [],
+    "similarity": {}
+  },
+  "pedagogical": {
+    "targetAudience": "初学者",
+    "estimatedStudyTime": "30分钟",
+    "learningObjectives": [
+      "掌握cannon类残局的基本技法",
+      "理解残局计算原理",
+      "培养杀棋能力"
+    ],
+    "practicePoints": [
+      "棋子配合技巧",
+      "计算准确性",
+      "关键着法选择"
+    ],
+    "commonMistakes": [
+      "计算不准确",
+      "着法选择不当",
+      "时机掌握不好"
+    ]
+  },
+  "cultural": {
+    "historicalContext": "cannon类残局是象棋经典残局之一",
+    "strategicValue": "基础残局技能训练",
+    "aestheticValue": "体现象棋逻辑之美",
+    "references": [
+      {
+        "source": "象棋残局大全",
+        "author": "经典棋谱",
+        "description": "cannon类残局典型局面"
+      }
+    ]
+  }
+}

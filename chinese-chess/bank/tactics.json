@@ -1,0 +1,11 @@
+{
+  "geneId": "tactics",
+  "displayInfo": {
+    "chineseName": "残局题目-tactics"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  }
+}

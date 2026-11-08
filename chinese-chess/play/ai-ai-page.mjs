@@ -1,3 +1,4 @@
+import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
 import { BLACK, RED, createGame, createGameFromFen, getGameStatus, getPieceLabel, makeMove, undoMove, redoMove, toFen } from '../core.mjs';
 import {
   appendStandardPositionMark,
@@ -262,9 +263,7 @@ function formatUcci(move) {
 
 async function loadBank() {
   try {
-    const response = await fetch('../bank/endgame/L1/manifest.json');
-    if (!response.ok) throw new Error('题库清单暂不可用。');
-    bankManifest = await response.json();
+    bankManifest = await loadPuzzleBank();
     const count = bankManifest.categories.reduce((total, category) => total + category.items.length, 0);
     bankCount.textContent = `${count} 局`;
     renderBankTree();
@@ -278,46 +277,17 @@ function renderBankTree() {
   if (!bankManifest) return;
   const query = bankSearch.value.trim().toLocaleLowerCase();
   bankTree.replaceChildren();
-  const root = document.createElement('details');
-  root.open = true;
-  const rootTitle = document.createElement('summary');
-  rootTitle.textContent = '残局基因 (endgame)';
-  const level = document.createElement('details');
-  level.open = true;
-  const levelTitle = document.createElement('summary');
-  levelTitle.textContent = 'L1 基础';
-  level.append(levelTitle);
-  for (const category of bankManifest.categories) {
-    const items = category.items.filter(item => !query || `${item.title} ${item.id}`.toLocaleLowerCase().includes(query));
-    if (!items.length) continue;
-    const group = document.createElement('details');
-    group.open = Boolean(query);
-    const groupTitle = document.createElement('summary');
-    groupTitle.textContent = `${category.label} (${items.length})`;
-    group.append(groupTitle);
-    for (const item of items) {
-      const leaf = document.createElement('button');
-      leaf.type = 'button';
-      leaf.className = `bank-leaf${selectedPuzzle?.id === item.id ? ' selected' : ''}`;
-      leaf.textContent = item.title;
-      leaf.title = item.id;
-      leaf.addEventListener('click', () => loadPuzzle(item));
-      group.append(leaf);
-    }
-    level.append(group);
-  }
-  root.append(rootTitle, level);
-  bankTree.append(root);
+  renderPuzzleBank(bankTree, bankManifest, query, selectedPuzzle?.id, (category, puzzle) => loadPuzzle(puzzle));
 }
 
 async function loadPuzzle(puzzle) {
   try {
-    const response = await fetch(`../bank/endgame/L1/${puzzle.fen}`);
+    const response = await fetch(`${PUZZLE_BANK_BASE}${puzzle.fen}`);
     if (!response.ok) throw new Error('残局局面文件载入失败。');
     stopDuel();
     baseFen = (await response.text()).trim();
     game = createGameFromFen(baseFen);
-    selectedPuzzle = puzzle;
+    selectedPuzzle = { ...puzzle, base: PUZZLE_BANK_BASE };
     recording = false;
     recordButton.textContent = '开始记录';
     solutionEditor.value = '';
@@ -339,7 +309,7 @@ async function loadSolution() {
     return;
   }
   try {
-    const response = await fetch(`../bank/endgame/L1/${selectedPuzzle.solutions[0]}`);
+    const response = await fetch(`${selectedPuzzle.base}${selectedPuzzle.solutions[0]}`);
     if (!response.ok) throw new Error('棋谱答案载入失败。');
     solutionEditor.value = await response.text();
     saveSolutionButton.disabled = false;
@@ -353,7 +323,7 @@ async function loadExplanation() {
     return;
   }
   try {
-    const response = await fetch(`../bank/endgame/L1/${selectedPuzzle.explanations[0]}`);
+    const response = await fetch(`${selectedPuzzle.base}${selectedPuzzle.explanations[0]}`);
     if (!response.ok) throw new Error('解说文件载入失败。');
     explanationEditor.value = await response.text();
     saveExplanationButton.disabled = false;

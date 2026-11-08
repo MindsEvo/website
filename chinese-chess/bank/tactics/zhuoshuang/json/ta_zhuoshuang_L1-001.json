@@ -1,0 +1,77 @@
+{
+  "geneId": "ta_zhuoshuang_L1-001",
+  "displayInfo": {
+    "chineseName": "基础捉双战术"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "main": "H",
+      "count": 1,
+      "description": "攻方马"
+    },
+    "defending": {
+      "main": "RC",
+      "count": 2,
+      "description": "守方车炮"
+    }
+  },
+  "boardData": {
+    "fenFile": "fen/ta_zhuoshuang_L1-001.fen",
+    "pgnFile": "pgn/ta_zhuoshuang_L1-001.pgn",
+    "initialPosition": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1",
+    "keySquares": [],
+    "criticalMoves": []
+  },
+  "solutions": [
+    {
+      "id": 1,
+      "method": "标准解法",
+      "difficulty": "L1",
+      "moveCount": "2步",
+      "description": "马跳七位形成捉双战术",
+      "keyMoves": [
+        "马八进七",
+        "车九平八"
+      ],
+      "file": "solutions/ta_zhuoshuang_L1-001-1.txt"
+    }
+  ],
+  "relationships": {
+    "parentGenes": [],
+    "childGenes": [],
+    "similarGenes": [],
+    "prerequisiteKnowledge": [
+      "基础战术"
+    ]
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "理解捉双概念",
+      "识别捉双机会", 
+      "执行捉双战术",
+      "观察子力位置关系",
+      "计算后续变化",
+      "选择最优目标"
+    ],
+    "commonMistakes": [
+      "待补充"
+    ],
+    "practicePoints": [
+      "待补充"
+    ],
+    "estimatedStudyTime": "10-20分钟"
+  },
+  "cultural": {
+    "historicalContext": "传统战术理论",
+    "classicalSources": [],
+    "modernApplications": [
+      "实战中盘",
+      "战术训练"
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
 import {
   BLACK,
   RED,
@@ -378,9 +379,7 @@ function resetGame() {
 
 async function loadBank() {
   try {
-    const response = await fetch('../bank/endgame/L1/manifest.json');
-    if (!response.ok) throw new Error('题库清单暂不可用。');
-    bankManifest = await response.json();
+    bankManifest = await loadPuzzleBank();
     const total = bankManifest.categories.reduce((sum, category) => sum + category.items.length, 0);
     bankCount.textContent = `${total} 局`;
     renderBankTree();
@@ -408,44 +407,12 @@ function renderBankTree() {
   recommendation.append(recommendationTitle, recommendationNote);
   bankTree.append(recommendation);
 
-  const endgames = document.createElement('details');
-  endgames.open = true;
-  const endgameTitle = document.createElement('summary');
-  endgameTitle.textContent = '残局基因 (endgame)';
-  const level = document.createElement('details');
-  level.open = true;
-  const levelTitle = document.createElement('summary');
-  levelTitle.textContent = 'L1 基础';
-  level.append(levelTitle);
-
-  for (const category of bankManifest.categories) {
-    const matchingItems = category.items.filter(item => (
-      !query || item.title.toLocaleLowerCase().includes(query) || item.id.toLocaleLowerCase().includes(query)
-    ));
-    if (!matchingItems.length) continue;
-    const categoryNode = document.createElement('details');
-    categoryNode.open = Boolean(query);
-    const title = document.createElement('summary');
-    title.textContent = `${category.label} (${matchingItems.length})`;
-    categoryNode.append(title);
-    for (const item of matchingItems) {
-      const leaf = document.createElement('button');
-      leaf.type = 'button';
-      leaf.className = `bank-leaf${selectedPuzzle?.id === item.id ? ' selected' : ''}`;
-      leaf.textContent = item.title;
-      leaf.title = item.id;
-      leaf.addEventListener('click', () => loadPuzzle(category, item));
-      categoryNode.append(leaf);
-    }
-    level.append(categoryNode);
-  }
-  endgames.append(endgameTitle, level);
-  bankTree.append(endgames);
+  renderPuzzleBank(bankTree, bankManifest, query, selectedPuzzle?.id, loadPuzzle);
 }
 
 async function loadPuzzle(category, puzzle) {
   try {
-    const response = await fetch(`../bank/endgame/L1/${puzzle.fen}`);
+    const response = await fetch(`${PUZZLE_BANK_BASE}${puzzle.fen}`);
     if (!response.ok) throw new Error('残局局面文件载入失败。');
     const fen = (await response.text()).trim();
     engineAbortController?.abort();
@@ -456,7 +423,7 @@ async function loadPuzzle(category, puzzle) {
     initialFen = toFen(game);
     humanSide = game.turn;
     controlPanel.setSide(humanSide === RED ? 'red' : 'black');
-    selectedPuzzle = { ...puzzle, category, base: '../bank/endgame/L1/' };
+    selectedPuzzle = { ...puzzle, category, base: PUZZLE_BANK_BASE };
     puzzleStatus.textContent = `${puzzle.title} · ${category.label} · ${humanSide === RED ? '红方先行' : '黑方先行'}`;
     selected = null;
     legalTargets = [];

@@ -1,0 +1,118 @@
+{
+  "geneId": "eg_R-AE_L1-001",
+  "displayInfo": {
+    "chineseName": "单车胜士象"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 8,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "pieces": [
+        "R"
+      ],
+      "count": 1,
+      "side": "red"
+    },
+    "defending": {
+      "pieces": [
+        "A",
+        "E"
+      ],
+      "count": 2,
+      "side": "black"
+    },
+    "total": 3
+  },
+  "boardData": {
+    "fenFile": "eg_R-AE_L1-001.fen",
+    "pgnFile": "eg_R-AE_L1-001.pgn",
+    "initialPosition": "4k4/4a4/4e4/9/9/9/6R2/9/9/4K4 r - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "standard",
+      "description": "直接横车将死",
+      "difficulty": "basic",
+      "evaluation": "必胜",
+      "movesCount": 3,
+      "keyMoves": [
+        {
+          "move": "R6+3",
+          "annotation": "关键着法",
+          "description": "车向上三步将军"
+        },
+        {
+          "move": "K4=5",
+          "annotation": "被迫应对",
+          "description": "黑将被迫平移"
+        },
+        {
+          "move": "R6=5",
+          "annotation": "完成杀棋",
+          "description": "车平移封道"
+        }
+      ],
+      "files": {
+        "solutionFile": "eg_R-AE_L1-001-1.txt",
+        "explanationFile": "eg_exp-R-AE_L1-001-1.txt"
+      }
+    }
+  ],
+  "relationships": {
+    "geneType": "mate_patterns",
+    "family": "rook_endgames",
+    "prerequisites": [
+      "basic_R_movement",
+      "checkmate_concepts"
+    ],
+    "successors": [
+      "eg_R-2A_L1-001",
+      "eg_R-2E_L1-001"
+    ],
+    "variations": [
+      "eg_R-AE_L1-002",
+      "eg_R-AE_L1-003"
+    ],
+    "similarity": {
+      "eg_R-K_L1-001": 0.8,
+      "eg_R-A_L1-001": 0.7,
+      "eg_R-E_L1-001": 0.7
+    }
+  },
+  "pedagogical": {
+    "targetAudience": "初学者",
+    "estimatedStudyTime": "30分钟",
+    "learningObjectives": [
+      "掌握单车胜士象的基本技法",
+      "理解车的控制力和杀棋原理",
+      "培养残局计算能力"
+    ],
+    "practicePoints": [
+      "车与将的安全距离",
+      "封道技巧的运用",
+      "步数最少的解法选择"
+    ],
+    "commonMistakes": [
+      "车的位置过于靠近敌将",
+      "未能有效封道敌将逃跑路径",
+      "计算不够准确导致杀棋失败"
+    ]
+  },
+  "cultural": {
+    "historicalContext": "车胜士象是象棋基本杀法之一，历史悠久",
+    "strategicValue": "基础残局技能，是学习复杂残局的前提",
+    "aestheticValue": "简洁明了，体现了象棋的逻辑美",
+    "references": [
+      {
+        "source": "象棋基本杀法",
+        "author": "古典棋谱",
+        "description": "最早的车胜士象记录"
+      }
+    ]
+  }
+}

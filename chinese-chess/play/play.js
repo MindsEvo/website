@@ -1,3 +1,4 @@
+import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
 import {
   BLACK,
   RED,
@@ -293,9 +294,7 @@ function sameSquare(first, second) {
 
 async function loadBank() {
   try {
-    const response = await fetch('../bank/endgame/L1/manifest.json');
-    if (!response.ok) throw new Error('题库清单暂不可用。');
-    bankManifest = await response.json();
+    bankManifest = await loadPuzzleBank();
     renderBankTree();
     const count = bankManifest.categories.reduce((total, category) => total + category.items.length, 0);
     document.getElementById('bankCount').textContent = `${count} 局`;
@@ -333,56 +332,14 @@ function renderBankTree() {
   }
   bankTree.append(recommendations);
 
-  const endgames = document.createElement('details');
-  endgames.className = 'tree-group endgame-group';
-  endgames.open = true;
-  const endgameSummary = document.createElement('summary');
-  endgameSummary.textContent = '残局基因 (endgame)';
-  endgames.append(endgameSummary);
-
-  const level = document.createElement('details');
-  level.className = 'tree-group tree-level';
-  level.open = true;
-  const levelSummary = document.createElement('summary');
-  levelSummary.textContent = 'L1 基础';
-  level.append(levelSummary);
-
-  for (const category of bankManifest.categories) {
-    const matchingItems = category.items.filter(item => (
-      !query || item.title.toLocaleLowerCase().includes(query) || item.id.toLocaleLowerCase().includes(query)
-    ));
-    if (!matchingItems.length) continue;
-    const branch = document.createElement('details');
-    branch.className = 'tree-group tree-category';
-    branch.open = Boolean(query);
-    const branchSummary = document.createElement('summary');
-    branchSummary.textContent = `${category.label} (${matchingItems.length})`;
-    branch.append(branchSummary);
-
-    for (const item of matchingItems) {
-      const leaf = document.createElement('button');
-      leaf.type = 'button';
-      leaf.className = 'bank-leaf';
-      leaf.setAttribute('role', 'treeitem');
-      const sequence = item.id.match(/-(\d{3})$/)?.[1];
-      leaf.textContent = sequence ? `${item.title} · ${sequence}` : item.title;
-      leaf.title = item.id;
-      leaf.dataset.puzzleId = item.id;
-      if (selectedPuzzle?.id === item.id) leaf.classList.add('selected');
-      leaf.addEventListener('click', () => loadPuzzle(category, item));
-      branch.append(leaf);
-    }
-    level.append(branch);
-  }
-  endgames.append(level);
-  bankTree.append(endgames);
+  renderPuzzleBank(bankTree, bankManifest, query, selectedPuzzle?.id, loadPuzzle);
 }
 
 async function loadPuzzle(category, puzzle) {
   stopPlayback();
   finishRecordingForPositionChange();
   try {
-    const base = '../bank/endgame/L1/';
+    const base = PUZZLE_BANK_BASE;
     const fenText = await fetchText(base + puzzle.fen);
     game = createGameFromFen(fenText);
     initialFen = fenText.trim();

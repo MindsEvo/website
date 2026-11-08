@@ -1,0 +1,83 @@
+{
+  "geneId": "oc_zhongpao_L1-001",
+  "displayInfo": {
+    "chineseName": "经典中炮布局-L1-001",
+    "category": "classic",
+    "layout": "zhongpao"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false,
+    "geneType": "opening"
+  },
+  "openingData": {
+    "category": "classic",
+    "layoutName": "zhongpao",
+    "layoutType": "先手布局",
+    "approach": "经典棋理"
+  },
+  "boardData": {
+    "fenFile": "oc_zhongpao_L1-001.fen",
+    "pgnFile": "oc_zhongpao_L1-001.pgn",
+    "initialPosition": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "opening_sequence",
+      "description": "经典中炮布局-L1-001标准开局序列",
+      "difficulty": "basic",
+      "evaluation": "平稳开局",
+      "movesCount": 10,
+      "keyMoves": [],
+      "files": {
+        "solutionFile": "oc_zhongpao_L1-001-1.txt",
+        "explanationFile": "oc_zhongpao_L1-001_exp-1.txt"
+      }
+    }
+  ],
+  "relationships": {
+    "geneType": "opening_patterns",
+    "family": "zhongpao_openings",
+    "prerequisites": [
+      "basic_rules",
+      "piece_movement"
+    ],
+    "successors": [],
+    "variations": [],
+    "similarity": {}
+  },
+  "pedagogical": {
+    "targetAudience": "初学者到中级",
+    "estimatedStudyTime": "45分钟",
+    "learningObjectives": [
+      "掌握经典中炮布局-L1-001的基本布局原理",
+      "理解开局发展思路",
+      "培养开局感觉"
+    ],
+    "practicePoints": [
+      "布局原理理解",
+      "着法选择逻辑",
+      "发展顺序把握"
+    ],
+    "commonMistakes": [
+      "盲目出子",
+      "缺乏计划性",
+      "忽视对方意图"
+    ]
+  },
+  "cultural": {
+    "historicalContext": "经典中炮布局-L1-001是象棋classic开局体系的重要组成部分",
+    "strategicValue": "开局基础理论学习",
+    "aestheticValue": "体现象棋开局布置之美",
+    "references": [
+      {
+        "source": "象棋开局大全",
+        "author": "开局理论",
+        "description": "经典中炮布局-L1-001典型变化"
+      }
+    ]
+  }
+}

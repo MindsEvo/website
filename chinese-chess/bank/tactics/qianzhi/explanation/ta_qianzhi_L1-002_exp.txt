@@ -1,0 +1,4 @@
+# 解法 1
+ta_qianzhi_L1-002
+
+# END

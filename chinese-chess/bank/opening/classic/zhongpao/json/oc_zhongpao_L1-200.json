@@ -1,0 +1,17 @@
+{
+  "geneId": "oc_zhongpao_L1-200",
+  "displayInfo": {
+    "chineseName": "oc_zhongpao_L1-200"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "type": "opening",
+    "verified": false,
+    "created_time": "2025-10-05 21:21:09"
+  },
+  "boardData": {
+    "fenFile": "oc_zhongpao_L1-200.fen",
+    "pgnFile": "oc_zhongpao_L1-200.pgn",
+    "initialPosition": "4k1r2/8r/9/9/9/9/9/3A1A3/7c1/c3K4 w - - 0 1"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "geneId": "ta_xiyin_L1-003",
+  "displayInfo": {
+    "chineseName": "xiyin类残局"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "pieces": [],
+      "count": 0,
+      "side": "red"
+    },
+    "defending": {
+      "pieces": [],
+      "count": 0,
+      "side": "black"
+    },
+    "total": 0
+  },
+  "boardData": {
+    "fenFile": "ta_xiyin_L1-003.fen",
+    "pgnFile": "ta_xiyin_L1-003.pgn",
+    "initialPosition": "5a1C1/3ka4/4e4/7H1/1Re6/9/9/5h3/2r1p4/c4K3 r - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "standard",
+      "description": "基本解法",
+      "difficulty": "basic",
+      "evaluation": "必胜",
+      "movesCount": 3,
+      "keyMoves": [],
+      "files": {
+        "solutionFile": "ta_xiyin_L1-003-1.txt",
+        "explanationFile": "ta_xiyin_L1-003_exp-1.txt"
+      }
+    }
+  ],
+  "relationships": {
+    "geneType": "mate_patterns",
+    "family": "xiyin_endgames",
+    "prerequisites": [
+      "basic_movement",
+      "checkmate_concepts"
+    ],
+    "successors": [],
+    "variations": [],
+    "similarity": {}
+  },
+  "pedagogical": {
+    "targetAudience": "初学者",
+    "estimatedStudyTime": "30分钟",
+    "learningObjectives": [
+      "掌握xiyin类残局的基本技法",
+      "理解残局计算原理",
+      "培养杀棋能力"
+    ],
+    "practicePoints": [
+      "棋子配合技巧",
+      "计算准确性",
+      "关键着法选择"
+    ],
+    "commonMistakes": [
+      "计算不准确",
+      "着法选择不当",
+      "时机掌握不好"
+    ]
+  },
+  "cultural": {
+    "historicalContext": "xiyin类残局是象棋经典残局之一",
+    "strategicValue": "基础残局技能训练",
+    "aestheticValue": "体现象棋逻辑之美",
+    "references": [
+      {
+        "source": "象棋残局大全",
+        "author": "经典棋谱",
+        "description": "xiyin类残局典型局面"
+      }
+    ]
+  }
+}

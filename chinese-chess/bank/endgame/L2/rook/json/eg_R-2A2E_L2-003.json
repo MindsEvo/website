@@ -1,0 +1,73 @@
+{
+  "geneId": "eg_R-2A2E_L2-003",
+  "displayInfo": {
+    "chineseName": "单车巧胜士象全"
+  },
+  "metadata": {
+    "difficulty": "L2",
+    "sequence": 3,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "main": "R",
+      "count": 1,
+      "description": "攻方车"
+    },
+    "defending": {
+      "main": "2A2E",
+      "count": 1,
+      "description": "守方2A2E"
+    }
+  },
+  "boardData": {
+    "fenFile": "fen/eg_R-2A2E_L2-003.fen",
+    "pgnFile": "pgn/eg_R-2A2E_L2-003.pgn",
+    "initialPosition": "待补充",
+    "keySquares": [],
+    "criticalMoves": []
+  },
+  "solutions": [
+    {
+      "id": 1,
+      "method": "标准解法",
+      "difficulty": "003",
+      "moveCount": "待分析",
+      "description": "标准解法说明",
+      "keyMoves": [
+        "待补充"
+      ],
+      "file": "solutions/eg_R-2A2E_L2-003-1.txt"
+    }
+  ],
+  "relationships": {
+    "parentGenes": [],
+    "childGenes": [],
+    "similarGenes": [],
+    "prerequisiteKnowledge": [
+      "基础杀法"
+    ]
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "掌握车对2A2E的基本杀法",
+      "理解关键位置的判断",
+      "熟练运用基础技巧"
+    ],
+    "commonMistakes": [
+      "待补充"
+    ],
+    "practicePoints": [
+      "待补充"
+    ],
+    "estimatedStudyTime": "15-30分钟"
+  },
+  "cultural": {
+    "historicalContext": "传统残局理论",
+    "classicalSources": [],
+    "modernApplications": [
+      "实战残局",
+      "竞赛训练"
+    ]
+  }
+}

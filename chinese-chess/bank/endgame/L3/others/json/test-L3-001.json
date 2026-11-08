@@ -1,0 +1,17 @@
+{
+  "geneId": "test-L3-001",
+  "displayInfo": {
+    "chineseName": "残局题目-test-L3-001"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "files": {
+    "fen": "fen/test-L3-001.fen",
+    "solution_user": "solutions/test-L3-001.txt",
+    "solution_system": "pgn/test-L3-001.pgn",
+    "explanation": "explanation/exp-test-L3-001.txt"
+  }
+}

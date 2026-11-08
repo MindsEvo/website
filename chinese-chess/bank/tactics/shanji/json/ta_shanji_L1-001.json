@@ -1,0 +1,78 @@
+{
+  "geneId": "ta_shanji_L1-001",
+  "displayInfo": {
+    "chineseName": "基础闪击战术"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "main": "H",
+      "count": 1,
+      "description": "攻方马"
+    },
+    "defending": {
+      "main": "K",
+      "count": 1,
+      "description": "守方将"
+    }
+  },
+  "boardData": {
+    "fenFile": "fen/ta_shanji_L1-001.fen",
+    "pgnFile": "pgn/ta_shanji_L1-001.pgn",
+    "initialPosition": "待补充",
+    "keySquares": [],
+    "criticalMoves": []
+  },
+  "solutions": [
+    {
+      "id": 1,
+      "method": "标准解法",
+      "difficulty": "L1",
+      "moveCount": "3步",
+      "description": "马闪击将军战术",
+      "keyMoves": [
+        "马八进七",
+        "将5进1",
+        "马七退五"
+      ],
+      "file": "solutions/ta_shanji_L1-001-1.txt"
+    }
+  ],
+  "relationships": {
+    "parentGenes": [],
+    "childGenes": [],
+    "similarGenes": [],
+    "prerequisiteKnowledge": [
+      "基础战术"
+    ]
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "理解闪击概念",
+      "识别闪击机会", 
+      "执行闪击战术",
+      "观察马的攻击范围",
+      "计算将军后果",
+      "掌握闪击时机"
+    ],
+    "commonMistakes": [
+      "待补充"
+    ],
+    "practicePoints": [
+      "待补充"
+    ],
+    "estimatedStudyTime": "10-20分钟"
+  },
+  "cultural": {
+    "historicalContext": "传统战术理论",
+    "classicalSources": [],
+    "modernApplications": [
+      "实战中盘",
+      "战术训练"
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "geneId": "eg_R-K_L1-001",
+  "displayInfo": {
+    "chineseName": "单车胜光将"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "pieces": [
+        "R"
+      ],
+      "count": 1,
+      "side": "red"
+    },
+    "defending": {
+      "pieces": [
+        "K"
+      ],
+      "count": 1,
+      "side": "black"
+    },
+    "total": 2
+  },
+  "boardData": {
+    "fenFile": "eg_R-K_L1-001.fen",
+    "pgnFile": "eg_R-K_L1-001.pgn",
+    "initialPosition": "9/5k3/9/9/9/9/4R4/9/4K4/9 r - - 0 1"
+  },
+  "solutions": [
+    {
+      "solutionId": "sol_001",
+      "solutionNumber": 1,
+      "type": "standard",
+      "difficulty": "basic",
+      "description": "直接横车将死",
+      "files": {
+        "solutionFile": "eg_R-K_L1-001-1.txt",
+        "explanationFile": "eg_exp-R-K_L1-001-1.txt"
+      },
+      "keyMoves": [
+        {
+          "move": "R4+1",
+          "description": "车向上一步将军",
+          "annotation": "关键着法"
+        },
+        {
+          "move": "K5=4",
+          "description": "黑将被迫平移",
+          "annotation": "被迫应对"
+        },
+        {
+          "move": "R4=5",
+          "description": "车平移封锁",
+          "annotation": "完成杀棋"
+        }
+      ],
+      "movesCount": 3,
+      "evaluation": "必胜"
+    },
+    {
+      "solutionId": "sol_002",
+      "solutionNumber": 2,
+      "type": "alternative",
+      "difficulty": "basic",
+      "description": "迂回进攻法",
+      "files": {
+        "solutionFile": "eg_R-K_L1-001-2.txt",
+        "explanationFile": "eg_exp-R-K_L1-001-2.txt"
+      },
+      "keyMoves": [
+        {
+          "move": "R4+2",
+          "description": "车先上两步",
+          "annotation": "迂回战术"
+        },
+        {
+          "move": "K5+1",
+          "description": "黑将上移",
+          "annotation": "试图逃脱"
+        },
+        {
+          "move": "R4-1",
+          "description": "车回撤将军",
+          "annotation": "完成杀棋"
+        }
+      ],
+      "movesCount": 3,
+      "evaluation": "必胜"
+    }
+  ],
+  "relationships": {
+    "prerequisites": [
+      "basic_R_movement",
+      "checkmate_concepts"
+    ],
+    "successors": [
+      "eg_R-A_L1-001",
+      "eg_R-E_L1-001",
+      "eg_R-2A_L1-001"
+    ],
+    "variations": [
+      "eg_R-K_L1-002",
+      "eg_R-K_L1-003",
+      "eg_R-K_L1-004",
+      "eg_R-K_L1-005"
+    ],
+    "similarity": {
+      "eg_H-K_L1-001": 0.7,
+      "eg_C-K_L1-001": 0.6,
+      "eg_P-K_L1-001": 0.5
+    },
+    "family": "rook_endgames",
+    "geneType": "mate_patterns"
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "掌握单车杀光将的基本技法",
+      "理解车的控制力和杀棋原理",
+      "培养残局计算能力"
+    ],
+    "commonMistakes": [
+      "车的位置过于靠近敌将",
+      "未能有效封锁敌将逃跑路径",
+      "计算不够准确导致杀棋失败"
+    ],
+    "practicePoints": [
+      "车与将的安全距离",
+      "封锁技巧的运用",
+      "步数最少的解法选择"
+    ],
+    "targetAudience": "初学者",
+    "estimatedStudyTime": "30分钟"
+  },
+  "cultural": {
+    "historicalContext": "车杀光将是象棋基本杀法之一，历史悠久",
+    "strategicValue": "基础残局技能，是学习复杂残局的前提",
+    "aestheticValue": "简洁明了，体现了象棋的逻辑美",
+    "references": [
+      {
+        "source": "象棋基本杀法",
+        "author": "古典棋谱",
+        "description": "最早的车杀光将记录"
+      }
+    ]
+  }
+}

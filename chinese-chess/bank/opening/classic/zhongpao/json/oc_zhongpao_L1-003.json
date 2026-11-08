@@ -1,0 +1,17 @@
+{
+  "geneId": "oc_zhongpao_L1-003",
+  "displayInfo": {
+    "chineseName": "oc_zhongpao_L1-003"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "type": "opening",
+    "verified": false,
+    "created_time": "2025-10-06 11:03:20"
+  },
+  "boardData": {
+    "fenFile": "oc_zhongpao_L1-003.fen",
+    "pgnFile": "oc_zhongpao_L1-003.pgn",
+    "initialPosition": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1"
+  }
+}

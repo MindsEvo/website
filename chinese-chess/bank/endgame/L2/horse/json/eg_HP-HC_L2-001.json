@@ -1,0 +1,76 @@
+{
+  "geneId": "eg_HP-HC_L2-001",
+  "displayInfo": {
+    "chineseName": "马兵巧困毙胜马炮"
+  },
+  "metadata": {
+    "difficulty": "L2",
+    "sequence": 1,
+    "verified": false
+  },
+  "pieces": {
+    "attacking": {
+      "main": "SM",
+      "count": 1,
+      "description": "攻方困毙"
+    },
+    "defending": {
+      "main": "HP",
+      "count": 1,
+      "description": "守方HP"
+    }
+  },
+  "boardData": {
+    "fenFile": "fen/eg_SM-HP_HC-L2.fen",
+    "pgnFile": "pgn/eg_SM-HP_HC-L2.pgn",
+    "initialPosition": "待补充",
+    "keySquares": [],
+    "criticalMoves": []
+  },
+  "solutions": [
+    {
+      "id": 1,
+      "method": "标准解法",
+      "difficulty": "L2",
+      "moveCount": "待分析",
+      "description": "标准解法说明",
+      "keyMoves": [
+        "待补充"
+      ],
+      "file": "solutions/eg_SM-HP_HC-L2-1.txt"
+    }
+  ],
+  "relationships": {
+    "parentGenes": [],
+    "childGenes": [],
+    "similarGenes": [],
+    "prerequisiteKnowledge": [
+      "基础杀法"
+    ]
+  },
+  "pedagogical": {
+    "learningObjectives": [
+      "熟练运用基础技巧",
+      "掌握避免困毙的技巧",
+      "学会利用困毙求和",
+      "理解困毙的概念和判断",
+      "理解关键位置的判断",
+      "掌握困毙对HP的基本杀法"
+    ],
+    "commonMistakes": [
+      "待补充"
+    ],
+    "practicePoints": [
+      "待补充"
+    ],
+    "estimatedStudyTime": "15-30分钟"
+  },
+  "cultural": {
+    "historicalContext": "传统残局理论",
+    "classicalSources": [],
+    "modernApplications": [
+      "实战残局",
+      "竞赛训练"
+    ]
+  }
+}
