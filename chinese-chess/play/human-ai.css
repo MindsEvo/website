@@ -84,6 +84,21 @@
 .ai-setting-row select:focus { border-color: #78a8d7; outline: 2px solid rgba(37,120,222,.12); }
 .engine-unavailable { margin: 0; color: #85929c; font-size: 8px; line-height: 1.5; }
 
+.human-ai-work-tabs button, .human-work-explanation-actions button,
+.human-ai-work-panel > label, .human-ai-work-panel textarea,
+.human-ai-library header b, .human-ai-library > input,
+.human-ai-library-tree summary, .ai-setting-row > div { font-size: 11px; }
+.human-work-status, .human-ai-library header span, .human-ai-library > label,
+.human-ai-library-tree .bank-leaf, .human-ai-library-tree .bank-note,
+.human-ai-library-tree > p, .advantage-meter span, .advantage-box p,
+.search-box p, .waiting-card, .evaluation-note, .evaluation-note strong,
+.puzzle-placeholder, .ai-setting-row, .engine-unavailable { font-size: 10px; }
+.human-ai-library header strong { font-size: 15px; }
+.analysis-box h2, .ai-setting-box h2, .ai-setting-row select { font-size: 12px; }
+#humanBankTree { font-size: 18px; }
+#humanBankTree .bank-leaf { font-size: 15px; }
+.human-ai-analysis { grid-template-rows: minmax(60px, auto) minmax(88px, auto) minmax(118px, auto) minmax(95px, 1fr); }
+
 @media (max-width: 1050px) {
   .human-ai-layout { grid-template-columns: minmax(340px, 1.1fr) minmax(300px, .9fr); }
   .human-ai-board-column { grid-row: span 2; }
@@ -99,7 +114,7 @@
   .human-ai-board-frame { width: min(100%, 440px); }
   .human-ai-toolbar { justify-content: flex-start; }
   .human-ai-toolbar label { margin-left: auto; }
-  .human-ai-analysis { grid-template-rows: 65px auto 118px 95px; }
+  .human-ai-analysis { grid-template-rows: minmax(65px, auto) auto minmax(118px, auto) minmax(95px, auto); }
   .human-ai-middle-column { grid-template-rows: auto 390px; }
   .human-ai-settings { grid-column: auto; grid-template-columns: minmax(0, 1fr); }
   .human-ai-library { grid-column: auto; min-height: 300px; }

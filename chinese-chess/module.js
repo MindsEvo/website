@@ -89,6 +89,18 @@
   };
 
   var key = new URLSearchParams(window.location.search).get('module');
+  if (key === 'opening') {
+    window.location.replace('./academy/opening/index.html');
+    return;
+  }
+  if (key === 'attack') {
+    window.location.replace('./academy/attacking/index.html');
+    return;
+  }
+  if (key === 'tactics') {
+    window.location.replace('./academy/tactics/index.html');
+    return;
+  }
   var module = modules[key];
 
   if (!module) {

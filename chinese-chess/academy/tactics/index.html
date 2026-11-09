@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>基本战术 | 象棋学习中心</title>
+  <link rel="stylesheet" href="../../chinese-chess.css" />
+  <link rel="stylesheet" href="../intro/board-display.css" />
+  <link rel="stylesheet" href="../../board-standard.css" />
+  <link rel="stylesheet" href="../endgame/endgame.css" />
+  <link rel="stylesheet" href="../../shared/board-control-panel.css" />
+  <link rel="stylesheet" href="./tactics.css" />
+</head>
+<body class="academy-page board-display-only endgame-display-only tactics-page">
+  <main class="lesson-shell">
+    <section class="board-display-app" aria-label="基本战术课程">
+      <a class="board-course-back" href="../intro/index.html">返回学习中心</a>
+      <div class="board-course-layout">
+        <section class="board-course-left" aria-label="中国象棋标准棋盘">
+          <div class="teaching-board-frame standard-board-surface">
+            <div class="teaching-board-engraving" aria-hidden="true">象棋教学系统</div>
+            <div class="teaching-coordinate top-coordinates" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div class="teaching-board xiangqi-grid-area" id="teachingBoard" role="grid" aria-label="基本战术棋盘"></div>
+            <div class="teaching-river xiangqi-river-surface" aria-hidden="true"><strong>楚 河</strong><span>用象棋激发未来智慧</span><strong>汉 界</strong></div>
+            <div class="teaching-coordinate bottom-coordinates" aria-hidden="true"><span>九</span><span>八</span><span>七</span><span>六</span><span>五</span><span>四</span><span>三</span><span>二</span><span>一</span></div>
+            <div class="teaching-side-label" aria-hidden="true">红方走棋</div>
+          </div>
+          <nav id="boardToolbar" aria-label="棋盘通用控制面板"></nav>
+          <div class="teaching-board-status" id="boardLessonStatus" role="status">请选择战术类别和棋局。</div>
+        </section>
+        <section class="board-course-right" aria-label="基本战术课程内容">
+          <header class="board-course-title">
+            <h1>基本战术</h1>
+            <div class="audience-actions">
+              <button type="button" class="audience-student">致学生</button>
+              <button type="button" class="audience-parent">致家长</button>
+            </div>
+          </header>
+          <section class="board-course-section endgame-observation" aria-labelledby="observationTitle">
+            <h2 id="observationTitle">动态观察</h2>
+            <div class="endgame-menus" data-section="observation"></div>
+          </section>
+          <section class="board-course-section endgame-practice" aria-labelledby="practiceTitle">
+            <h2 id="practiceTitle">操作练习</h2>
+            <div class="endgame-menus" data-section="practice"></div>
+          </section>
+          <section class="board-course-section endgame-quiz" aria-labelledby="quizTitle">
+            <h2 id="quizTitle">问答练习</h2>
+            <div class="endgame-menus" data-section="quiz"></div>
+            <div class="endgame-question-list" id="endgameQuestionList" role="status">问答题目将在后续单独接入</div>
+            <div class="endgame-answer-area" id="endgameAnswerArea">请选择问题开始答题</div>
+          </section>
+        </section>
+        <aside class="endgame-materials" aria-label="棋谱与解说">
+          <section class="endgame-material">
+            <h2>棋谱解法</h2>
+            <select id="endgameSolutionVariant" aria-label="选择解法" hidden></select>
+            <div id="endgameNotation">请选择战术棋局以显示解法棋谱。</div>
+          </section>
+          <section class="endgame-material">
+            <h2>解说内容</h2>
+            <div id="endgameExplanation">请选择战术棋局以显示解说。</div>
+          </section>
+        </aside>
+      </div>
+      <dialog id="endgameAudienceDialog" aria-labelledby="endgameAudienceTitle">
+        <h2 id="endgameAudienceTitle"></h2>
+        <p id="endgameAudienceText"></p>
+        <form method="dialog"><button type="submit">关闭</button></form>
+      </dialog>
+    </section>
+  </main>
+  <script type="module" src="./tactics-page.mjs"></script>
+</body>
+</html>

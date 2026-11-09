@@ -171,7 +171,14 @@
 .bank-leaf.selected { color: #923d34; background: #f8ece9; font-weight: 800; }
 .recommendation-note, .bank-empty, .bank-loading { margin: 1px 6px 6px 22px; color: #8995a0; font-size: 8px; line-height: 1.6; }
 .recommendation-note { max-width: 240px; }
-.global-status { min-height: 22px; margin-top: 4px; color: #788793; font-size: 9px; }
+.global-status { min-height: 22px; margin-top: 4px; color: #788793; font-size: 11px; }
+
+.work-action, .work-editor, .save-version-row input, .bank-search { font-size: 12px; }
+.field-label, .editor-status, .solution-variant, .save-version-row, .bank-count,
+.tree-group summary, .bank-leaf { font-size: 11px; }
+.library-heading .section-kicker, .bank-search-label,
+.recommendation-note, .bank-empty, .bank-loading, .bank-tree .bank-note { font-size: 10px; }
+.library-heading h2 { font-size: 16px; }
 
 @media (max-width: 1080px) {
   .game-layout { grid-template-columns: minmax(310px, 1fr) minmax(260px, .8fr); }
@@ -192,7 +199,7 @@
   .solution-editor { flex: initial; height: 190px; }
   .explanation-editor { flex: initial; height: 160px; }
   .library-panel { min-height: 320px; max-height: 470px; }
-  .bank-leaf { min-height: 34px; font-size: 11px; }
+  .bank-leaf { min-height: 34px; font-size: 13px; }
 }
 
 @media (max-width: 420px) {

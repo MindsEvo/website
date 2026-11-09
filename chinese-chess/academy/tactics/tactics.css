@@ -1,0 +1,7 @@
+.tactics-page .endgame-menus { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.tactics-page .endgame-menu summary { font-size: 14px; }
+.tactics-page .endgame-menu-options { min-width: 190px; max-width: min(300px, calc(100vw - 50px)); }
+.tactics-page .endgame-menu:nth-child(n) .endgame-menu-options { left: 0; right: auto; }
+.tactics-page .endgame-menu:nth-child(2n) .endgame-menu-options { left: auto; right: 0; }
+.tactics-page .endgame-puzzle-list button { overflow-wrap: anywhere; }
+.tactics-page .endgame-menu-options p { margin: 0; padding: 8px; font-size: 13px; line-height: 1.6; color: #7f8c8d; }

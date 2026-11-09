@@ -9,15 +9,15 @@ const courses = [
   },
   {
     number: '③', title: '基本攻杀', subtitle: '攻杀技巧', description: '学习常见的攻杀手法和技巧',
-    icon: '⚔️', level: '中级', levelClass: 'level-intermediate', count: '15课时', href: '../../module.html?module=attack'
+    icon: '⚔️', level: '中级', levelClass: 'level-intermediate', count: '5个单元 · 24种杀法', href: '../attacking/index.html'
   },
   {
     number: '④', title: '基本战术', subtitle: '战术运用', description: '掌握常用战术组合和应用技巧',
-    icon: '🧠', level: '中级', levelClass: 'level-intermediate', count: '18课时', href: '../../module.html?module=tactics'
+    icon: '🧠', level: '中级', levelClass: 'level-intermediate', count: '18课时', href: '../tactics/index.html'
   },
   {
     number: '⑤', title: '基本开局', subtitle: '开局理论', description: '学习主流开局体系和基本原理',
-    icon: '🎮', level: '高级', levelClass: 'level-advanced', count: '20课时', href: '../../module.html?module=opening'
+    icon: '🎮', level: '高级', levelClass: 'level-advanced', count: '12大类 · 25型', href: '../opening/index.html'
   },
   {
     number: '⑥', title: '综合运用', subtitle: '实战应用', description: '综合运用所学知识进行实战练习',

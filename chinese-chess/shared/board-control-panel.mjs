@@ -4,7 +4,7 @@ const MODES = [
   { id: 'ai-ai', label: 'AI 对弈', icon: '🤖', href: '../play/ai-ai.html' }
 ];
 
-export function mountBoardControlPanel(container, { mode = 'manual', side = 'red', hrefs = {}, onAction = () => {} } = {}) {
+export function mountBoardControlPanel(container, { mode = 'manual', side = 'red', hrefs = {}, onAction = () => {}, onModeChange } = {}) {
   container.replaceChildren();
   container.classList.add('xiangqi-control-panel');
   container.setAttribute('aria-label', '棋盘通用控制面板');
@@ -52,6 +52,12 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
     link.title = item.label;
     link.setAttribute('aria-label', item.label);
     if (item.id === mode) link.setAttribute('aria-current', 'page');
+    if (onModeChange) {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        onModeChange(item.id);
+      });
+    }
     container.append(link);
   }
 
@@ -99,6 +105,14 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
     setPlaying,
     setSide,
     setSound,
+    setMode(value) {
+      for (const link of container.querySelectorAll('a[data-mode]')) {
+        const active = link.dataset.mode === value;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      }
+    },
     getSide: () => currentSide,
     getSoundEnabled: () => soundEnabled,
     getVolume: () => Number(volume.value),
