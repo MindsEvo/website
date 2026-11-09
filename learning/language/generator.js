@@ -19,7 +19,12 @@ var LANG_GEN = (function () {
     create:     'RG.LANGUAGE.CREATION.IMAGINATIVE'
   };
 
-  var JOURNEY_PASSAGE_IDS = ['zh-g1-goose-poem'];
+  var JOURNEY_PASSAGE_IDS = [
+    'zh-g1-goose-poem',
+    'zh-g2-snipe-clam-adaptation',
+    'en-g1-twinkle-rhyme',
+    'en-g2-north-wind-sun'
+  ];
 
   function rngFor(seed) {
     if (seed === undefined || seed === null) { return Math.random; }
@@ -106,6 +111,59 @@ var LANG_GEN = (function () {
       q.choices = order.map(function (i) { return item.options[i]; });
       q.options = q.choices.map(function (_, i) { return i; });
       q.answer = order.indexOf(item.answer);
+      return q;
+    }
+    if (item.interaction === 'hunt') {
+      q = base(p, item, 'hunt');
+      q.chips = item.chips.map(function (chip) {
+        return { id: chip.id, text: chip.text };
+      });
+      order = shuffledIndices(q.chips.length, rnd);
+      q.deal = order.map(function (i) { return q.chips[i].id; });
+      q.activityAnswer = item.answer.slice();
+      q.options = ['check'];
+      q.answer = 'check';
+      return q;
+    }
+    if (item.interaction === 'match') {
+      q = base(p, item, 'match');
+      q.pairs = item.pairs.map(function (pair) {
+        return { id: pair.id, left: pair.left, right: pair.right };
+      });
+      order = shuffledIndices(q.pairs.length, rnd);
+      q.leftDeal = order.map(function (i) { return q.pairs[i].id; });
+      order = shuffledIndices(q.pairs.length, rnd);
+      q.rightDeal = order.map(function (i) { return q.pairs[i].id; });
+      q.options = ['check'];
+      q.answer = 'check';
+      return q;
+    }
+    if (item.interaction === 'sort') {
+      q = base(p, item, 'sort');
+      q.groups = item.groups.map(function (group) {
+        return { id: group.id, label: group.label };
+      });
+      q.cards = item.cards.map(function (card) {
+        return { id: card.id, text: card.text, groupId: card.groupId };
+      });
+      order = shuffledIndices(q.cards.length, rnd);
+      q.deal = order.map(function (i) { return q.cards[i].id; });
+      q.options = ['check'];
+      q.answer = 'check';
+      return q;
+    }
+    if (item.interaction === 'build') {
+      q = base(p, item, 'build');
+      q.slots = item.slots.map(function (slot) {
+        return { id: slot.id, label: slot.label };
+      });
+      q.chips = item.chips.map(function (chip) {
+        return { id: chip.id, text: chip.text, slotId: chip.slotId };
+      });
+      order = shuffledIndices(q.chips.length, rnd);
+      q.deal = order.map(function (i) { return q.chips[i].id; });
+      q.options = ['check'];
+      q.answer = 'check';
       return q;
     }
     if (item.interaction === 'evidence' && item.target === 'sentence') {

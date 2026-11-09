@@ -185,12 +185,83 @@ h2{margin-bottom:6px}.summary{color:#64748b;margin-bottom:18px}
       var label = passage.id;
       var items = passage.items || [];
       items.forEach(function (item) {
+        var itemLabel = label + '/' + item.id;
         requireValue(VALID_UNITS.indexOf(item.unit) >= 0,
-          label + '/' + item.id + ': 非法 unit ' + item.unit, errors);
+          itemLabel + ': 非法 unit ' + item.unit, errors);
         requireValue(VALID_LEVELS.indexOf(item.level) >= 0,
-          label + '/' + item.id + ': 非法 level ' + item.level, errors);
+          itemLabel + ': 非法 level ' + item.level, errors);
         requireValue(!!item.template && !!item.interaction && !!item.prompt,
-          label + '/' + item.id + ': 缺少 template/interaction/prompt', errors);
+          itemLabel + ': 缺少 template/interaction/prompt', errors);
+
+        if (item.interaction === 'hunt') {
+          var huntChips = item.chips || [];
+          var huntIds = huntChips.map(function (chip) { return chip.id; });
+          var huntAnswer = item.answer || [];
+          requireValue(huntChips.length > 0, itemLabel + ': hunt chips 为空', errors);
+          requireValue(huntIds.every(Boolean) && unique(huntIds).length === huntIds.length,
+            itemLabel + ': hunt chip ID 缺失或重复', errors);
+          requireValue(huntAnswer.length > 0 && unique(huntAnswer).length === huntAnswer.length,
+            itemLabel + ': hunt answer 为空或包含重复 ID', errors);
+          huntAnswer.forEach(function (chipId) {
+            requireValue(huntIds.indexOf(chipId) >= 0,
+              itemLabel + ': hunt answer 引用了不存在的 chip ' + chipId, errors);
+          });
+        }
+
+        if (item.interaction === 'match') {
+          var pairs = item.pairs || [];
+          var pairIds = pairs.map(function (pair) { return pair.id; });
+          requireValue(pairs.length > 0, itemLabel + ': match pairs 为空', errors);
+          requireValue(pairIds.every(Boolean) && unique(pairIds).length === pairIds.length,
+            itemLabel + ': match pair ID 缺失或重复', errors);
+          pairs.forEach(function (pair) {
+            requireValue(!!pair.left && !!pair.right,
+              itemLabel + '/' + (pair.id || '?') + ': match left/right 为空', errors);
+          });
+        }
+
+        if (item.interaction === 'sort') {
+          var groups = item.groups || [];
+          var cards = item.cards || [];
+          var groupIds = groups.map(function (group) { return group.id; });
+          var cardIds = cards.map(function (card) { return card.id; });
+          requireValue(groups.length >= 2, itemLabel + ': sort 至少需要两个 groups', errors);
+          requireValue(cards.length > 0, itemLabel + ': sort cards 为空', errors);
+          requireValue(groupIds.every(Boolean) && unique(groupIds).length === groupIds.length,
+            itemLabel + ': sort group ID 缺失或重复', errors);
+          requireValue(cardIds.every(Boolean) && unique(cardIds).length === cardIds.length,
+            itemLabel + ': sort card ID 缺失或重复', errors);
+          cards.forEach(function (card) {
+            requireValue(groupIds.indexOf(card.groupId) >= 0,
+              itemLabel + '/' + (card.id || '?') + ': 引用了不存在的 group ' + card.groupId, errors);
+          });
+          groupIds.forEach(function (groupId) {
+            requireValue(cards.some(function (card) { return card.groupId === groupId; }),
+              itemLabel + ': group ' + groupId + ' 没有 card', errors);
+          });
+        }
+
+        if (item.interaction === 'build') {
+          var slots = item.slots || [];
+          var buildChips = item.chips || [];
+          var slotIds = slots.map(function (slot) { return slot.id; });
+          var buildChipIds = buildChips.map(function (chip) { return chip.id; });
+          requireValue(slots.length > 0, itemLabel + ': build slots 为空', errors);
+          requireValue(buildChips.length > 0, itemLabel + ': build chips 为空', errors);
+          requireValue(slotIds.every(Boolean) && unique(slotIds).length === slotIds.length,
+            itemLabel + ': build slot ID 缺失或重复', errors);
+          requireValue(buildChipIds.every(Boolean) && unique(buildChipIds).length === buildChipIds.length,
+            itemLabel + ': build chip ID 缺失或重复', errors);
+          buildChips.forEach(function (chip) {
+            requireValue(slotIds.indexOf(chip.slotId) >= 0,
+              itemLabel + '/' + (chip.id || '?') + ': 引用了不存在的 slot ' + chip.slotId, errors);
+          });
+          slotIds.forEach(function (slotId) {
+            requireValue(buildChips.filter(function (chip) {
+              return chip.slotId === slotId;
+            }).length === 1, itemLabel + ': slot ' + slotId + ' 必须恰有一个正确 chip', errors);
+          });
+        }
       });
 
       var l1Count = items.filter(function (item) { return item.level === 'L1'; }).length;
@@ -373,74 +444,161 @@ h2{margin-bottom:6px}.summary{color:#64748b;margin-bottom:18px}
     });
   });
 
-  renderCheck('《咏鹅》Works/Journey 合同', function (errors) {
-    var passageId = 'zh-g1-goose-poem';
-    var passage = LANG_GEN.passageById(passageId);
-    var journey = LANG_GEN.generateJourney(passageId, 17);
+  renderCheck('Works/Journey registry 合同', function (errors) {
+    var expectedIds = [
+      'zh-g1-goose-poem',
+      'zh-g2-snipe-clam-adaptation',
+      'en-g1-twinkle-rhyme',
+      'en-g2-north-wind-sun'
+    ];
 
-    requireValue(sameArray(LANG_GEN.JOURNEY_PASSAGE_IDS, [passageId]),
-      'Journey 白名单不是唯一的《咏鹅》prototype', errors);
+    requireValue(sameArray(LANG_GEN.JOURNEY_PASSAGE_IDS, expectedIds),
+      'Journey registry 与代表作品集合不一致', errors);
     requireValue(LANG_GEN.generateJourney('zh-g1-borrow-umbrella', 17).length === 0,
-      '非白名单 passage 生成了 Journey', errors);
-    requireValue(!!passage, '找不到《咏鹅》passage', errors);
-    requireValue(journey.length > 0, '《咏鹅》Journey 为空', errors);
-    if (!passage || !journey.length) { return; }
+      '未登记 passage 生成了 Journey', errors);
 
-    requireValue(journey.every(function (q) { return q.passageId === passageId; }),
-      'Journey 混入了其他 passageId', errors);
-    requireValue(journey.every(function (q, index) { return q.seq === index; }),
-      'Journey seq 不连续', errors);
-    requireValue(journey.every(function (q) { return q.primaryAbility === null; }),
-      'Journey primaryAbility 不为 null', errors);
-    requireValue(unique(journey.map(function (q) { return q.itemId; })).length === journey.length,
-      'Journey itemId 不唯一', errors);
-    requireValue(sameArray(
-      journey.slice(0, passage.items.length).map(function (q) { return q.itemId; }),
-      passage.items.map(function (item) { return item.id; })
-    ), 'Objective questions 未保持 authored order', errors);
+    expectedIds.forEach(function (passageId) {
+      var passage = LANG_GEN.passageById(passageId);
+      var journey = LANG_GEN.generateJourney(passageId, 17);
+      var journeyAgain = LANG_GEN.generateJourney(passageId, 17);
+      var label = passageId;
 
-    var ccrUnits = journey.slice(passage.items.length).map(function (q) { return q.unit; });
-    requireValue(sameArray(ccrUnits, ['express', 'express', 'express', 'create', 'create', 'create']),
-      'CCR 顺序不是 Express 后 Create', errors);
-    requireValue(journey.some(function (q) { return q.itemId === 'ccr-express-reflect'; }),
-      '缺少独立 Express reflect ID', errors);
-    requireValue(journey.some(function (q) { return q.itemId === 'ccr-create-reflect'; }),
-      '缺少独立 Create reflect ID', errors);
-    requireValue(unique(journey.map(function (q) { return q.geneId; })).length === 7,
-      'Journey 未覆盖预期的 7 个 RootGene', errors);
+      requireValue(!!passage, label + ': 找不到 passage', errors);
+      requireValue(journey.length > 0, label + ': Journey 为空', errors);
+      if (!passage || !journey.length) { return; }
 
-    journey.forEach(function (question) {
-      requireValue(question.geneId === LANG_GEN.UNIT_GENE[question.unit],
-        question.itemId + ': unit/geneId 不匹配', errors);
+      requireValue(journey.every(function (q) { return q.passageId === passageId; }),
+        label + ': Journey 混入其他 passageId', errors);
+      requireValue(journey.every(function (q, index) { return q.seq === index; }),
+        label + ': seq 不连续', errors);
+      requireValue(journey.every(function (q) { return q.primaryAbility === null; }),
+        label + ': primaryAbility 不为 null', errors);
+      requireValue(unique(journey.map(function (q) { return q.itemId; })).length === journey.length,
+        label + ': itemId 不唯一', errors);
+      requireValue(sameArray(
+        journey.slice(0, passage.items.length).map(function (q) { return q.itemId; }),
+        passage.items.map(function (item) { return item.id; })
+      ), label + ': objective questions 未保持 authored order', errors);
+
+      passage.items.forEach(function (item) {
+        if (['hunt', 'match', 'sort', 'build'].indexOf(item.interaction) < 0) { return; }
+        var question = journey.filter(function (q) { return q.itemId === item.id; })[0];
+        var questionAgain = journeyAgain.filter(function (q) { return q.itemId === item.id; })[0];
+        var itemLabel = label + '/' + item.id;
+
+        requireValue(!!question && !!questionAgain,
+          itemLabel + ': fixed-seed activity question 缺失', errors);
+        if (!question || !questionAgain) { return; }
+
+        requireValue(question.kind === item.interaction,
+          itemLabel + ': generated kind 错误', errors);
+        requireValue(question.itemId === item.id &&
+          question.unit === item.unit &&
+          question.geneId === LANG_GEN.UNIT_GENE[item.unit] &&
+          question.template === item.template &&
+          question.level === item.level,
+          itemLabel + ': authored metadata 未完整保留', errors);
+        requireValue(sameArray(question.options, ['check']) && question.answer === 'check',
+          itemLabel + ': 未使用 Shell check-only 合同', errors);
+
+        if (item.interaction === 'match') {
+          var pairIds = item.pairs.map(function (pair) { return pair.id; });
+          requireValue(sameArray(question.leftDeal, questionAgain.leftDeal),
+            itemLabel + ': leftDeal 对 fixed seed 不稳定', errors);
+          requireValue(sameArray(question.rightDeal, questionAgain.rightDeal),
+            itemLabel + ': rightDeal 对 fixed seed 不稳定', errors);
+          requireValue(question.leftDeal.length === pairIds.length &&
+            sameSet(question.leftDeal, pairIds),
+            itemLabel + ': leftDeal 不是完整 pair ID permutation', errors);
+          requireValue(question.rightDeal.length === pairIds.length &&
+            sameSet(question.rightDeal, pairIds),
+            itemLabel + ': rightDeal 不是完整 pair ID permutation', errors);
+        } else {
+          var expectedDeal = item.interaction === 'sort'
+            ? item.cards.map(function (card) { return card.id; })
+            : item.chips.map(function (chip) { return chip.id; });
+          requireValue(sameArray(question.deal, questionAgain.deal),
+            itemLabel + ': deal 对 fixed seed 不稳定', errors);
+          requireValue(question.deal.length === expectedDeal.length &&
+            sameSet(question.deal, expectedDeal),
+            itemLabel + ': deal 不是完整 stable-ID permutation', errors);
+        }
+      });
+
+      var ccrUnits = journey.slice(passage.items.length).map(function (q) { return q.unit; });
+      var firstCreate = ccrUnits.indexOf('create');
+      requireValue(firstCreate > 0 &&
+        ccrUnits.slice(0, firstCreate).every(function (unit) { return unit === 'express'; }) &&
+        ccrUnits.slice(firstCreate).every(function (unit) { return unit === 'create'; }),
+        label + ': CCR 顺序不是 Express 后 Create', errors);
+      requireValue(journey.some(function (q) { return q.itemId === 'ccr-express-reflect'; }),
+        label + ': 缺少独立 Express reflect ID', errors);
+      requireValue(journey.some(function (q) { return q.itemId === 'ccr-create-reflect'; }),
+        label + ': 缺少独立 Create reflect ID', errors);
+      requireValue(unique(journey.map(function (q) { return q.geneId; })).length === 7,
+        label + ': 未覆盖预期的 7 个 RootGene', errors);
+
+      journey.forEach(function (question) {
+        requireValue(question.geneId === LANG_GEN.UNIT_GENE[question.unit],
+          label + '/' + question.itemId + ': unit/geneId 不匹配', errors);
+      });
     });
 
-    var claim = journey.filter(function (q) {
+    [
+      ['zh-g1-goose-poem', 'q1', 'sort'],
+      ['zh-g2-snipe-clam-adaptation', 'q5', 'match'],
+      ['en-g1-twinkle-rhyme', 'q4', 'hunt'],
+      ['en-g2-north-wind-sun', 'q4', 'build']
+    ].forEach(function (expected) {
+      var question = LANG_GEN.generateJourney(expected[0], 17).filter(function (q) {
+        return q.itemId === expected[1];
+      })[0];
+      requireValue(!!question && question.kind === expected[2],
+        expected[0] + '/' + expected[1] + ': 预期 kind 为 ' + expected[2], errors);
+    });
+
+    var goose = LANG_GEN.generateJourney('zh-g1-goose-poem', 17);
+    var gooseClaim = goose.filter(function (q) {
       return q.itemId === 'q-infer-goose-picture';
     })[0];
-    var evidence = journey.filter(function (q) {
+    var gooseEvidence = goose.filter(function (q) {
       return q.itemId === 'q-infer-goose-picture-evidence';
     })[0];
-    requireValue(!!claim && !!evidence, 'Journey 缺少 claim/evidence', errors);
-    if (claim && evidence) {
-      requireValue(claim.pairId === evidence.pairId,
-        'Journey claim/evidence pairId 不一致', errors);
-      requireValue(evidence.claimItemId === claim.itemId &&
-        evidence.evidenceFor === claim.itemId,
-        'Journey evidence 未闭合到 claim', errors);
-      requireValue(sameArray(evidence.answer, ['s3', 's4']),
-        'Journey Q6 evidence answer 不是精确的 s3+s4', errors);
-      requireValue(sameArray(evidence.options, ['check']),
-        'Journey Q6 多句 evidence 未使用单一 check option', errors);
-      requireValue(sameSet(['s3', 's4'], evidence.answer),
-        'Journey Q6 集合判定拒绝正确顺序', errors);
-      requireValue(sameSet(['s4', 's3'], evidence.answer),
-        'Journey Q6 集合判定不应依赖选择顺序', errors);
-      requireValue(!sameSet(['s3'], evidence.answer),
-        'Journey Q6 集合判定错误接受单独 s3', errors);
-      requireValue(!sameSet(['s4'], evidence.answer),
-        'Journey Q6 集合判定错误接受单独 s4', errors);
-      requireValue(!sameSet(['s3', 's4', 's1'], evidence.answer),
-        'Journey Q6 集合判定错误接受多余句子', errors);
+    requireValue(!!gooseClaim && !!gooseEvidence, '《咏鹅》缺少 claim/evidence', errors);
+    if (gooseClaim && gooseEvidence) {
+      requireValue(gooseClaim.pairId === gooseEvidence.pairId,
+        '《咏鹅》claim/evidence pairId 不一致', errors);
+      requireValue(gooseEvidence.claimItemId === gooseClaim.itemId &&
+        gooseEvidence.evidenceFor === gooseClaim.itemId,
+        '《咏鹅》evidence 未闭合到 claim', errors);
+      requireValue(sameArray(gooseEvidence.answer, ['s3', 's4']),
+        '《咏鹅》evidence answer 不是精确的 s3+s4', errors);
+      requireValue(sameArray(gooseEvidence.options, ['check']),
+        '《咏鹅》多句 evidence 未使用单一 check option', errors);
+      requireValue(sameSet(['s4', 's3'], gooseEvidence.answer),
+        '《咏鹅》集合判定不应依赖选择顺序', errors);
+      requireValue(!sameSet(['s3'], gooseEvidence.answer),
+        '《咏鹅》集合判定错误接受缺句', errors);
+      requireValue(!sameSet(['s3', 's4', 's1'], gooseEvidence.answer),
+        '《咏鹅》集合判定错误接受多余句子', errors);
+    }
+
+    var twinkle = LANG_GEN.generateJourney('en-g1-twinkle-rhyme', 17);
+    var twinkleEvidence = twinkle.filter(function (q) {
+      return q.itemId === 'q-infer-twinkle-star-picture-evidence';
+    })[0];
+    requireValue(!!twinkleEvidence, 'Twinkle Journey 缺少多句 evidence', errors);
+    if (twinkleEvidence) {
+      requireValue(sameArray(twinkleEvidence.answer, ['s1', 's3', 's4']),
+        'Twinkle evidence answer 不是精确的 s1+s3+s4', errors);
+      requireValue(sameArray(twinkleEvidence.options, ['check']),
+        'Twinkle 多句 evidence 未使用单一 check option', errors);
+      requireValue(sameSet(['s4', 's1', 's3'], twinkleEvidence.answer),
+        'Twinkle 集合判定不应依赖选择顺序', errors);
+      requireValue(!sameSet(['s1', 's3'], twinkleEvidence.answer),
+        'Twinkle 集合判定错误接受缺句', errors);
+      requireValue(!sameSet(['s1', 's3', 's4', 's2'], twinkleEvidence.answer),
+        'Twinkle 集合判定错误接受多余句子', errors);
     }
   });
 

@@ -60,7 +60,7 @@ var _scope = null;
 
   var CHROME = {
     zh: {
-      read: '🔊 朗读', check: '✅ 排好了，检查一下', evidenceCheck: '✅ 检查证据', slotsHint: '按顺序点下面的卡片；点上面的卡片可以放回去。',
+      read: '🔊 朗读', check: '✅ 排好了，检查一下', evidenceCheck: '✅ 检查证据', activityCheck: '✅ 检查答案', slotsHint: '按顺序点下面的卡片；点上面的卡片可以放回去。',
       yourIdea: '你的想法', others: '看看别人怎么想', ccrNote: '这一题没有标准答案，选你自己的想法。',
       nice: '👍 好想法！', noted: '🌱 记下了！',
       revealTitle: '🌱 原来，同一件事还可以这样想',
@@ -68,7 +68,7 @@ var _scope = null;
       units: { observe: '观察', comprehend: '理解', infer: '推理', structure: '结构', choose: '语言选择', express: '表达', create: '创造' }
     },
     en: {
-      read: '🔊 Read aloud', check: '✅ Check my order', evidenceCheck: '✅ Check evidence', slotsHint: 'Tap the cards in order. Tap a placed card to send it back.',
+      read: '🔊 Read aloud', check: '✅ Check my order', evidenceCheck: '✅ Check evidence', activityCheck: '✅ Check my answer', slotsHint: 'Tap the cards in order. Tap a placed card to send it back.',
       yourIdea: 'Your idea', others: 'What others thought', ccrNote: 'There is no single right answer here. Pick your own idea.',
       nice: '👍 Nice idea!', noted: '🌱 Got it!',
       revealTitle: '🌱 The same story can be seen in many ways',
@@ -144,6 +144,21 @@ function hasContent(lang, ability, grade) {
       '.lang-slot.locked{background:#dcfce7;border-color:#16a34a;cursor:default;}' +
       '.lang-pool{display:flex;flex-wrap:wrap;gap:8px;}' +
       '.lang-card{font-size:16px;font-weight:700;border:2px solid #a3e635;background:#f7fee7;color:#1e293b;border-radius:10px;padding:8px 12px;cursor:pointer;}' +
+      '.lang-activity{display:flex;flex-direction:column;gap:10px;margin-top:10px;}' +
+      '.lang-activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}' +
+      '.lang-activity-column{display:flex;flex-direction:column;gap:8px;}' +
+      '.lang-activity-chip{font:inherit;font-size:15px;font-weight:750;line-height:1.4;text-align:left;color:#1e293b;background:#f7fee7;border:2px solid #a3e635;border-radius:10px;padding:9px 11px;cursor:pointer;}' +
+      '.lang-activity-chip.selected,.lang-activity-chip.active{background:#ecfccb;border-color:#65a30d;box-shadow:0 0 0 2px rgba(101,163,13,.14);}' +
+      '.lang-activity-chip.used{background:#f1f5f9;border-color:#94a3b8;}' +
+      '.lang-activity-chip.locked{background:#dcfce7;border-color:#16a34a;cursor:default;}' +
+      '.lang-match-row{display:flex;flex-direction:column;gap:4px;}' +
+      '.lang-match-answer{min-height:20px;padding:2px 8px;color:#4d7c0f;font-size:12px;font-weight:800;}' +
+      '.lang-sort-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}' +
+      '.lang-sort-bucket{min-height:82px;background:#fff;border:2px dashed #bef264;border-radius:12px;padding:9px;cursor:pointer;}' +
+      '.lang-sort-bucket.active{border-style:solid;border-color:#65a30d;background:#f7fee7;}' +
+      '.lang-sort-title{font-size:13px;font-weight:900;color:#3f6212;margin-bottom:7px;}' +
+      '.lang-build-label{display:block;min-width:120px;color:#4d7c0f;font-size:12px;font-weight:900;margin-right:8px;}' +
+      '@media(max-width:560px){.lang-activity-grid,.lang-sort-grid{grid-template-columns:1fr;}.lang-build-label{min-width:90px;}}' +
       '.lang-story{background:#fff;border:1.5px solid #fde68a;border-radius:12px;padding:10px 14px;margin:6px 0 10px;font-size:17px;font-weight:700;color:#78350f;line-height:1.6;}' +
       '.lang-blank{display:inline-block;min-width:3em;border-bottom:2px solid #65a30d;color:#65a30d;text-align:center;}' +
       '.lang-blank.cur{background:#ecfccb;}' +
@@ -167,7 +182,7 @@ function hasContent(lang, ability, grade) {
       '.lang-encounter{width:100%;max-width:560px;background:#fff;border:2px solid #d9f99d;border-radius:20px;padding:24px;box-sizing:border-box;text-align:center;}' +
       '.lang-work-source{font-size:14px;color:#64748b;margin:6px 0 18px;}' +
       '.lang-work-text{font-size:22px;line-height:2;color:#1e293b;background:#fefce8;border-radius:14px;padding:18px;margin-bottom:18px;}' +
-      '.lang-work-text div{white-space:nowrap;}' +
+      '.lang-work-text div{white-space:normal;overflow-wrap:anywhere;}' +
       '.lang-work-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}' +
       '.lang-work-action{border:2px solid #a3e635;background:#fff;color:#3f6212;border-radius:999px;padding:10px 18px;font-weight:900;cursor:pointer;}' +
       '.lang-work-action.primary{background:#65a30d;color:#fff;border-color:#65a30d;}';
@@ -193,13 +208,31 @@ function hasContent(lang, ability, grade) {
     return { express: {}, create: {} };
   }
 
+  function freshActivityState(kind, itemId) {
+    return {
+      kind: kind || null,
+      currentItemId: itemId || null,
+      selected: [],
+      assignments: {},
+      placed: [],
+      activeLeftId: null,
+      activeCardId: null,
+      locked: false
+    };
+  }
+
+  function isActivityKind(kind) {
+    return ['hunt', 'match', 'sort', 'build'].indexOf(kind) >= 0;
+  }
+
   function ccrBucket(q) {
     var unit = q && q.unit;
     if (!_ccr[unit]) { _ccr[unit] = {}; }
     return _ccr[unit];
   }
 
-  var _log = {}, _ccr = freshCcrState(), _order = null, _evidence = null, _sessionHead = null, _langRerender = false;
+  var _log = {}, _ccr = freshCcrState(), _order = null, _evidence = null, _activity = null,
+      _sessionHead = null, _langRerender = false;
 
   document.addEventListener('shell:langchange', function () { _langRerender = true; });
 
@@ -210,6 +243,7 @@ function hasContent(lang, ability, grade) {
       _log = {};
       _ccr = freshCcrState();
       _evidence = null;
+      _activity = null;
       _sessionHead = q;
     }
   }
@@ -317,6 +351,237 @@ function hasContent(lang, ability, grade) {
     return a.length === b.length && a.every(function (value, index) { return value === b[index]; });
   }
 
+  function itemById(items, id) {
+    return (items || []).filter(function (item) { return item.id === id; })[0] || null;
+  }
+
+  function activitySnapshot() {
+    if (!_activity) { return null; }
+    return {
+      kind: _activity.kind,
+      selected: _activity.selected.slice(),
+      assignments: Object.assign({}, _activity.assignments),
+      placed: _activity.placed.slice()
+    };
+  }
+
+  function activityComplete(q) {
+    if (!_activity) { return false; }
+    if (q.kind === 'hunt') { return _activity.selected.length > 0; }
+    if (q.kind === 'match') {
+      return q.pairs.every(function (pair) {
+        return Object.prototype.hasOwnProperty.call(_activity.assignments, pair.id);
+      });
+    }
+    if (q.kind === 'sort') {
+      return q.cards.every(function (card) {
+        return Object.prototype.hasOwnProperty.call(_activity.assignments, card.id);
+      });
+    }
+    if (q.kind === 'build') {
+      return q.slots.every(function (slot) {
+        return Object.prototype.hasOwnProperty.call(_activity.assignments, slot.id);
+      });
+    }
+    return false;
+  }
+
+  function updateActivityCheck(q) {
+    var cb = checkButton();
+    if (cb) { cb.disabled = !_activity || _activity.locked || !activityComplete(q); }
+  }
+
+  function renderHunt(q) {
+    var box = document.getElementById('lang-activity');
+    if (!box || !_activity) { return; }
+    box.innerHTML = '<div class="lang-activity"><div class="lang-pool">' +
+      q.deal.map(function (id) {
+        var chip = itemById(q.chips, id);
+        if (!chip) { return ''; }
+        var selected = _activity.selected.indexOf(id) >= 0;
+        return '<button type="button" class="lang-activity-chip' +
+          (selected ? ' selected' : '') + (_activity.locked ? ' locked' : '') +
+          '" data-activity-id="' + esc(id) + '"' + (_activity.locked ? ' disabled' : '') + '>' +
+          esc(chip.text) + '</button>';
+      }).join('') + '</div></div>';
+
+    if (!_activity.locked) {
+      box.querySelectorAll('[data-activity-id]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var id = button.getAttribute('data-activity-id');
+          var index = _activity.selected.indexOf(id);
+          if (index >= 0) { _activity.selected.splice(index, 1); }
+          else { _activity.selected.push(id); }
+          renderHunt(q);
+        });
+      });
+    }
+    updateActivityCheck(q);
+  }
+
+  function renderMatch(q) {
+    var box = document.getElementById('lang-activity');
+    if (!box || !_activity) { return; }
+    var used = Object.keys(_activity.assignments).map(function (leftId) {
+      return _activity.assignments[leftId];
+    });
+    var left = q.leftDeal.map(function (id) {
+      var pair = itemById(q.pairs, id);
+      if (!pair) { return ''; }
+      var assigned = itemById(q.pairs, _activity.assignments[id]);
+      return '<div class="lang-match-row">' +
+        '<button type="button" class="lang-activity-chip' +
+        (_activity.activeLeftId === id ? ' active' : '') + (_activity.locked ? ' locked' : '') +
+        '" data-match-left="' + esc(id) + '"' + (_activity.locked ? ' disabled' : '') + '>' +
+        esc(pair.left) + '</button>' +
+        '<div class="lang-match-answer">' + (assigned ? esc(assigned.right) : '…') + '</div></div>';
+    }).join('');
+    var right = q.rightDeal.map(function (id) {
+      var pair = itemById(q.pairs, id);
+      if (!pair) { return ''; }
+      return '<button type="button" class="lang-activity-chip' +
+        (used.indexOf(id) >= 0 ? ' used' : '') + (_activity.locked ? ' locked' : '') +
+        '" data-match-right="' + esc(id) + '"' + (_activity.locked ? ' disabled' : '') + '>' +
+        esc(pair.right) + '</button>';
+    }).join('');
+
+    box.innerHTML = '<div class="lang-activity"><div class="lang-activity-grid">' +
+      '<div class="lang-activity-column">' + left + '</div>' +
+      '<div class="lang-activity-column">' + right + '</div></div></div>';
+
+    if (!_activity.locked) {
+      box.querySelectorAll('[data-match-left]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          _activity.activeLeftId = button.getAttribute('data-match-left');
+          renderMatch(q);
+        });
+      });
+      box.querySelectorAll('[data-match-right]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          if (!_activity.activeLeftId) { return; }
+          _activity.assignments[_activity.activeLeftId] = button.getAttribute('data-match-right');
+          _activity.activeLeftId = null;
+          renderMatch(q);
+        });
+      });
+    }
+    updateActivityCheck(q);
+  }
+
+  function renderSort(q) {
+    var box = document.getElementById('lang-activity');
+    if (!box || !_activity) { return; }
+    var pool = q.deal.filter(function (id) {
+      return !Object.prototype.hasOwnProperty.call(_activity.assignments, id);
+    }).map(function (id) {
+      var card = itemById(q.cards, id);
+      if (!card) { return ''; }
+      return '<button type="button" class="lang-activity-chip' +
+        (_activity.activeCardId === id ? ' active' : '') + (_activity.locked ? ' locked' : '') +
+        '" data-sort-card="' + esc(id) + '"' + (_activity.locked ? ' disabled' : '') + '>' +
+        esc(card.text) + '</button>';
+    }).join('');
+    var buckets = q.groups.map(function (group) {
+      var cards = q.cards.filter(function (card) {
+        return _activity.assignments[card.id] === group.id;
+      }).map(function (card) {
+        return '<button type="button" class="lang-activity-chip' +
+          (_activity.locked ? ' locked' : '') + '" data-sort-assigned="' + esc(card.id) + '"' +
+          (_activity.locked ? ' disabled' : '') + '>' + esc(card.text) + '</button>';
+      }).join('');
+      return '<div class="lang-sort-bucket' + (_activity.activeCardId ? ' active' : '') +
+        '" data-sort-group="' + esc(group.id) + '">' +
+        '<div class="lang-sort-title">' + esc(group.label) + '</div>' +
+        '<div class="lang-activity-column">' + cards + '</div></div>';
+    }).join('');
+
+    box.innerHTML = '<div class="lang-activity"><div class="lang-pool">' + pool +
+      '</div><div class="lang-sort-grid">' + buckets + '</div></div>';
+
+    if (!_activity.locked) {
+      box.querySelectorAll('[data-sort-card]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          _activity.activeCardId = button.getAttribute('data-sort-card');
+          renderSort(q);
+        });
+      });
+      box.querySelectorAll('[data-sort-group]').forEach(function (bucket) {
+        bucket.addEventListener('click', function (event) {
+          var assignedId = event.target.getAttribute &&
+            event.target.getAttribute('data-sort-assigned');
+          if (assignedId || !_activity.activeCardId) { return; }
+          _activity.assignments[_activity.activeCardId] = bucket.getAttribute('data-sort-group');
+          _activity.activeCardId = null;
+          renderSort(q);
+        });
+      });
+      box.querySelectorAll('[data-sort-assigned]').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.stopPropagation();
+          delete _activity.assignments[button.getAttribute('data-sort-assigned')];
+          renderSort(q);
+        });
+      });
+    }
+    updateActivityCheck(q);
+  }
+
+  function renderBuild(q) {
+    var box = document.getElementById('lang-activity');
+    if (!box || !_activity) { return; }
+    var assignedChipIds = Object.keys(_activity.assignments).map(function (slotId) {
+      return _activity.assignments[slotId];
+    });
+    var slots = q.slots.map(function (slot, index) {
+      var chip = itemById(q.chips, _activity.assignments[slot.id]);
+      return '<div class="lang-slot' + (chip ? ' filled' : '') +
+        (_activity.locked ? ' locked' : '') + '" data-build-slot="' + esc(slot.id) + '">' +
+        '<span class="lang-snum">' + (index + 1) + '</span>' +
+        '<span class="lang-build-label">' + esc(slot.label) + '</span>' +
+        (chip ? esc(chip.text) : '') + '</div>';
+    }).join('');
+    var pool = q.deal.filter(function (id) {
+      return assignedChipIds.indexOf(id) < 0;
+    }).map(function (id) {
+      var chip = itemById(q.chips, id);
+      if (!chip) { return ''; }
+      return '<button type="button" class="lang-activity-chip' +
+        (_activity.locked ? ' locked' : '') + '" data-build-chip="' + esc(id) + '"' +
+        (_activity.locked ? ' disabled' : '') + '>' + esc(chip.text) + '</button>';
+    }).join('');
+
+    box.innerHTML = '<div class="lang-activity"><div class="lang-slots">' + slots +
+      '</div><div class="lang-pool">' + pool + '</div></div>';
+
+    if (!_activity.locked) {
+      box.querySelectorAll('[data-build-chip]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var empty = q.slots.filter(function (slot) {
+            return !Object.prototype.hasOwnProperty.call(_activity.assignments, slot.id);
+          })[0];
+          if (!empty) { return; }
+          _activity.assignments[empty.id] = button.getAttribute('data-build-chip');
+          renderBuild(q);
+        });
+      });
+      box.querySelectorAll('.lang-slot.filled[data-build-slot]').forEach(function (slot) {
+        slot.addEventListener('click', function () {
+          delete _activity.assignments[slot.getAttribute('data-build-slot')];
+          renderBuild(q);
+        });
+      });
+    }
+    updateActivityCheck(q);
+  }
+
+  function renderActivity(q) {
+    if (!_activity || _activity.kind !== q.kind || _activity.currentItemId !== q.itemId) { return; }
+    if (q.kind === 'hunt') { renderHunt(q); }
+    else if (q.kind === 'match') { renderMatch(q); }
+    else if (q.kind === 'sort') { renderSort(q); }
+    else if (q.kind === 'build') { renderBuild(q); }
+  }
+
   function renderEvidenceChoices(q) {
     var box = document.getElementById('lang-evidence');
     if (!box || !_evidence) { return; }
@@ -404,6 +669,10 @@ function hasContent(lang, ability, grade) {
       html += '<div class="lang-prompt">' + esc(q.prompt) + '</div>' +
         '<div class="lang-note">' + T.slotsHint + '</div>' +
         '<div id="lang-order"></div>';
+    } else if (isActivityKind(q.kind)) {
+      html += passageHtml(q) +
+        '<div class="lang-prompt">' + esc(q.prompt) + '</div>' +
+        '<div id="lang-activity"></div>';
     } else if (q.kind === 'ccr_slot') {
       html += '<div class="lang-prompt">' + esc(q.prompt) + '</div>' +
         '<div class="lang-story">' + composeCcr(q, true) + '</div>' +
@@ -435,6 +704,14 @@ function hasContent(lang, ability, grade) {
     } else {
       _evidence = null;
     }
+    if (isActivityKind(q.kind)) {
+      if (!_activity || _activity.kind !== q.kind || _activity.currentItemId !== q.itemId) {
+        _activity = freshActivityState(q.kind, q.itemId);
+      }
+      setTimeout(function () { renderActivity(q); }, 0);
+    } else {
+      _activity = null;
+    }
     if (q.kind === 'hotspot') {
       setTimeout(function () { positionHotspot(q); }, 0);
     }
@@ -452,6 +729,7 @@ function hasContent(lang, ability, grade) {
     }
     if (q.kind === 'hotspot') { return ''; }
     if (q.kind === 'order' || q.kind === 'scene_order') { return CHROME[q.lang].check; }
+    if (isActivityKind(q.kind)) { return CHROME[q.lang].activityCheck; }
     return esc(q.choices[opt].text);
   }
 
@@ -460,11 +738,39 @@ function hasContent(lang, ability, grade) {
     return _order.placed.every(function (ci, i) { return ci === i; });
   }
 
+  function activityIsCorrect(q) {
+    if (!_activity || _activity.kind !== q.kind ||
+        _activity.currentItemId !== q.itemId || !activityComplete(q)) {
+      return false;
+    }
+    if (q.kind === 'hunt') {
+      return sameEvidenceSet(_activity.selected, q.activityAnswer);
+    }
+    if (q.kind === 'match') {
+      return q.pairs.every(function (pair) {
+        return _activity.assignments[pair.id] === pair.id;
+      });
+    }
+    if (q.kind === 'sort') {
+      return q.cards.every(function (card) {
+        return _activity.assignments[card.id] === card.groupId;
+      });
+    }
+    if (q.kind === 'build') {
+      return q.slots.every(function (slot) {
+        var chip = itemById(q.chips, _activity.assignments[slot.id]);
+        return !!chip && chip.slotId === slot.id;
+      });
+    }
+    return false;
+  }
+
   function checkAnswer(selected, q) {
     if (!q.scored) { return true; }
     if (isMultiSentenceEvidence(q)) { return sameEvidenceSet(_evidence && _evidence.selected, q.answer); }
     if (q.kind === 'evidence_sentence') { return q.answer.indexOf(selected) >= 0; }
     if (q.kind === 'order' || q.kind === 'scene_order') { return orderIsCorrect(q); }
+    if (isActivityKind(q.kind)) { return activityIsCorrect(q); }
     return selected === q.answer;
   }
 
@@ -472,6 +778,10 @@ function hasContent(lang, ability, grade) {
     if (q.kind === 'order' || q.kind === 'scene_order') { return 'sequence_confusion'; }
     if (q.kind === 'evidence_sentence' || q.kind === 'evidence_phrase') { return 'evidence_mismatch'; }
     if (q.kind === 'hotspot') { return 'wrong_object'; }
+    if (q.kind === 'hunt') { return 'phrase_hunt_mismatch'; }
+    if (q.kind === 'match') { return 'match_mismatch'; }
+    if (q.kind === 'sort') { return 'classification_mismatch'; }
+    if (q.kind === 'build') { return 'build_mismatch'; }
     var c = q.choices && q.choices[selected];
     return (c && c.errorType) || null;
   }
@@ -492,6 +802,7 @@ function hasContent(lang, ability, grade) {
         pairId: q.pairId || null, claimItemId: q.claimItemId || null,
         evidenceFor: q.evidenceFor || null,
         selectedEvidence: isMultiSentenceEvidence(q) && _evidence ? _evidence.selected.slice() : null,
+        activitySnapshot: isActivityKind(q.kind) ? activitySnapshot() : null,
         firstTryCorrect: !!correct, errorType: correct ? null : errorTypeFor(selected, q)
       };
     }
@@ -511,11 +822,22 @@ function hasContent(lang, ability, grade) {
         renderEvidenceChoices(q);
       }, 700);
     }
+    if (isActivityKind(q.kind) && !correct) {
+      setTimeout(function () {
+        var cb = checkButton();
+        if (cb) { cb.classList.remove('s1-wrong'); }
+        renderActivity(q);
+      }, 700);
+    }
   }
 
   function onCorrect(q, actsEl) {
     if ((q.kind === 'order' || q.kind === 'scene_order') && _order) { _order.locked = true; renderCards(q); }
     if (isMultiSentenceEvidence(q) && _evidence) { _evidence.locked = true; renderEvidenceChoices(q); }
+    if (isActivityKind(q.kind) && _activity) {
+      _activity.locked = true;
+      renderActivity(q);
+    }
     if (q.scored) { return; }
 
     // Unscored steps must not say "correct" (invariant 7).
@@ -709,6 +1031,52 @@ function showLanguageSelector() {
   });
 }
 
+function journeyPassages(lang, grade) {
+  return LANG_GEN.JOURNEY_PASSAGE_IDS.map(function (passageId) {
+    return LANG_GEN.passageById(passageId);
+  }).filter(function (passage) {
+    return passage &&
+      (!lang || passage.lang === lang) &&
+      (!grade || passage.grade === grade);
+  });
+}
+
+function workPresentation(passage) {
+  var byGenre = {
+    poem: {
+      icon: '📜',
+      descZh: '完整古诗 · 遇见、理解、表达与创造',
+      descEn: 'A complete poetry journey'
+    },
+    rhyme: {
+      icon: '⭐',
+      descZh: '完整童谣 · 聆听、理解、表达与创造',
+      descEn: 'A complete rhyme journey'
+    },
+    fable: {
+      icon: '📖',
+      descZh: '完整寓言 · 情节、证据、表达与创造',
+      descEn: 'A complete fable journey'
+    }
+  };
+  return byGenre[passage.genre] || {
+    icon: '📚',
+    descZh: '完整作品 · 理解、表达与创造',
+    descEn: 'A complete work journey'
+  };
+}
+
+function workSourceText(passage) {
+  var source = passage.source || {};
+  if (source.period || source.author) {
+    return [source.period, source.author].filter(Boolean).join(' · ');
+  }
+  if (source.origin || source.adaptation) {
+    return [source.origin, source.adaptation].filter(Boolean).join(' · ');
+  }
+  return source.note || source.author || '';
+}
+
 function showWorksLanguageSelector() {
   clearSelector();
   var languages = [
@@ -719,15 +1087,15 @@ function showWorksLanguageSelector() {
     '作品之旅 · 选择语言', 'Works / Journey · Choose Language',
     'lang-works-language-back', '模式', 'Modes',
     languages.map(function (lang) {
-      var available = lang.id === 'zh';
+      var count = journeyPassages(lang.id).length;
       return selectorCard(
         lang,
         'data-work-lang="' + lang.id + '"',
-        !available,
+        !count,
         '<div class="lang-nav-levels"><span class="zh">' +
-          (available ? '首个作品已开放' : '尚未开放') +
+          (count ? count + ' 个作品' : '尚未开放') +
           '</span><span class="en">' +
-          (available ? 'First work available' : 'Coming later') +
+          (count ? count + (count === 1 ? ' work' : ' works') : 'Coming later') +
           '</span></div>'
       );
     }).join('')
@@ -746,15 +1114,15 @@ function showWorksLanguageSelector() {
 
 function showWorksGradeSelector(lang) {
   var body = GRADE_LEVELS.map(function (grade) {
-    var available = lang === 'zh' && grade.id === 'G1';
+    var count = journeyPassages(lang, grade.id).length;
     return selectorCard(
       { icon: grade.id, nameZh: grade.nameZh, nameEn: grade.nameEn },
       'data-work-grade="' + grade.id + '"',
-      !available,
+      !count,
       '<div class="lang-nav-levels"><span class="zh">' +
-        (available ? '1 个作品' : '尚未开放') +
+        (count ? count + ' 个作品' : '尚未开放') +
         '</span><span class="en">' +
-        (available ? '1 work' : 'Coming later') +
+        (count ? count + (count === 1 ? ' work' : ' works') : 'Coming later') +
         '</span></div>'
     );
   }).join('');
@@ -776,16 +1144,20 @@ function showWorksGradeSelector(lang) {
 }
 
 function showWorksSelector(lang, grade) {
-  var p = LANG_GEN.passageById('zh-g1-goose-poem');
-  var body = p && p.lang === lang && p.grade === grade
-    ? selectorCard(
-      { icon: '🪿', nameZh: '《' + esc(p.title) + '》', nameEn: p.title },
-      'data-work-id="' + p.id + '"',
+  var body = journeyPassages(lang, grade).map(function (passage) {
+    var presentation = workPresentation(passage);
+    return selectorCard(
+      {
+        icon: presentation.icon,
+        nameZh: '《' + esc(passage.title) + '》',
+        nameEn: passage.title
+      },
+      'data-work-id="' + passage.id + '"',
       false,
-      '<div class="lang-nav-desc"><span class="zh">完整古诗 · 遇见、理解、表达与创造</span>' +
-        '<span class="en">A complete poetry journey</span></div>'
-    )
-    : '';
+      '<div class="lang-nav-desc"><span class="zh">' + presentation.descZh + '</span>' +
+        '<span class="en">' + presentation.descEn + '</span></div>'
+    );
+  }).join('');
   var wrap = selectorWrap(
     grade + ' · 选择作品', grade + ' · Choose a Work',
     'lang-works-back', '年级', 'Grades', body
@@ -805,22 +1177,25 @@ function showWorksSelector(lang, grade) {
 
 function showWorkEncounter(passageId) {
   var p = LANG_GEN.passageById(passageId);
-  if (!p) {
+  if (!p || LANG_GEN.JOURNEY_PASSAGE_IDS.indexOf(p.id) < 0) {
     showWorksLanguageSelector();
     return;
   }
-  var source = [p.source && p.source.period, p.source && p.source.author].filter(Boolean).join(' · ');
-  var poem = p.sentences.map(function (sentence) {
+  var presentation = workPresentation(p);
+  var source = workSourceText(p);
+  var workText = p.sentences.map(function (sentence) {
     return '<div>' + esc(sentence.text) + '</div>';
   }).join('');
+  var listenText = p.lang === 'zh' ? '🔊 听一遍' : '🔊 Listen';
+  var startText = p.lang === 'zh' ? '开始探索' : 'Start exploring';
   var body = '<div class="lang-encounter">' +
-    '<div class="lang-nav-icon">🪿</div>' +
+    '<div class="lang-nav-icon">' + presentation.icon + '</div>' +
     '<div class="lang-nav-name">《' + esc(p.title) + '》</div>' +
-    '<div class="lang-work-source">' + esc(source) + '</div>' +
-    '<div class="lang-work-text">' + poem + '</div>' +
+    (source ? '<div class="lang-work-source">' + esc(source) + '</div>' : '') +
+    '<div class="lang-work-text">' + workText + '</div>' +
     '<div class="lang-work-actions">' +
-      '<button type="button" class="lang-work-action" id="lang-work-listen">🔊 听一遍</button>' +
-      '<button type="button" class="lang-work-action primary" id="lang-work-start">开始探索</button>' +
+      '<button type="button" class="lang-work-action" id="lang-work-listen">' + listenText + '</button>' +
+      '<button type="button" class="lang-work-action primary" id="lang-work-start">' + startText + '</button>' +
     '</div>' +
   '</div>';
   var wrap = selectorWrap(
