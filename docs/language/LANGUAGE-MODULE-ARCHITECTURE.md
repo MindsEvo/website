@@ -74,7 +74,7 @@ Language & Literacy 同时提供两种互补而不互相替代的体验：
 
 Ability Training 保留现有 ability-scoped 生成语义，每个 session 的 `primaryAbility` 为所选能力。Works/Journey 是 session 类型而不是第八个能力，因此 `sessionMode: 'journey'`、`primaryAbility: null`，每道题仍保存自己的真实 `unit` 与 `geneId`。
 
-第一版只开放中文 G1《咏鹅》，并将其定义为首个 **poetry Journey prototype**，不声称通用 genre Journey engine 已完成。作品入口先呈现完整诗作、作者与来源，并允许朗读；点击“开始探索”后，按 authored objective order 完成客观题，再依次进入 Express 和 Create。
+《咏鹅》是首个 **poetry Journey prototype**。在验证生成、状态隔离、跨句证据和结果报告合同后，Works/Journey 已提升为显式 registry 驱动的代表作品系统，当前登记中文 G1《咏鹅》、中文 G2《鹬蚌相争》、English G1 *Twinkle, Twinkle, Little Star* 与 English G2 *The North Wind and the Sun*，覆盖诗歌、童谣和寓言。作品入口先呈现完整作品、来源并允许朗读；点击“开始探索”后，按 authored objective order 完成客观题，再依次进入 Express 和 Create。其余内容池不会自动暴露，仍需人工课程审阅后登记。
 
 Journey 使用一个 Shell unit，但可包含多个 RootGene。`registerRootGenes()` 从完整问题组提取并去重 `geneId`；报告继续按真实能力生成 `byUnit`、`items`、`errorTypes` 与 `claimEvidence`。Express 与 Create 的 CCR itemId、运行状态和报告分别隔离，输出 `guidedExpress` 与 `guidedCreate`，避免 slot、组合句和 reflect 相互覆盖。
 
@@ -186,10 +186,51 @@ Journey 使用一个 Shell unit，但可包含多个 RootGene。`registerRootGen
 | `select` | 单选，文字或图片选项 | 已有（science `textOptions`） |
 | `evidence-tap` | 素材分句显示；单句证据点击后即时判定，多句证据由 Language 自主管理选择/撤销并通过“检查证据”统一提交 | **新增，本模块的标志交互** |
 | `order` | 句卡点选排序：依次点卡片，卡片排进 1、2、3 的位置，可撤回 | **新增**，替代「从几种排好的顺序里选一个」 |
+| `hunt` | 从一组词句 chip 中找出完整目标集合，可反复选择和撤销 | **新增 Activity Grammar** |
+| `match` | 左右两列按稳定 pair ID 配对，允许覆盖和重新配对 | **新增 Activity Grammar** |
+| `sort` | 将卡片分入带稳定 group ID 的类别 bucket | **新增 Activity Grammar** |
+| `build` | 将 shuffled chips 放入固定语义 slots，已填 slot 可撤回 | **新增 Activity Grammar** |
 | `slot-build` | 词块组句（谁 / 在哪里 / 干什么） | 已有（Create→Compare→Reflect） |
 | `compare-reflect` | 展示他人想法，再问反思题 | 已有 |
 
 **两段式作答**（`select` 接 `evidence-tap`）是本模块区别于逻辑题的关键：逻辑题只问结论；语文推理题**必须回到文本找依据**。计分方式：结论和证据分开记录，`errorType` 区分「结论错」和「结论对、证据错」（后者往往是猜对的）。
+
+### 4.1 Activity Grammar 合同
+
+`hunt`、`match`、`sort` 与 `build` 是可复用的 Activity Grammar。authored schema 为：
+
+```js
+{ interaction: 'hunt', chips: [{ id, text }], answer: [chipId] }
+{ interaction: 'match', pairs: [{ id, left, right }] }
+{ interaction: 'sort', groups: [{ id, label }], cards: [{ id, text, groupId }] }
+{ interaction: 'build', slots: [{ id, label }], chips: [{ id, text, slotId }] }
+```
+
+稳定 ID 是 token、pair、group、card、chip 与 slot 的身份；显示文字只用于呈现，不能作为 identity，因为不同对象可以合法地使用相同文字。Generator 保留这些 ID，并使用 fixed-seed presentation deals；`match` 左右两侧分别消耗独立 RNG shuffle，不依赖位置泄露配对关系。
+
+四种活动对公共 Shell 统一暴露：
+
+```js
+options: ['check']
+answer: 'check'
+```
+
+Shell 只提供单一检查动作。完成度、正确性、可变选择与 assignments、错误重试和成功锁定均由 Language runtime 管理。
+
+Activity 生命周期遵循以下规则：
+
+- 只在进入新的 activity item 时初始化状态；
+- 同一 item 的 `shell:langchange` 重绘保留当前选择和 assignments；
+- 错误提交后保留 learner state，允许直接修改后再次检查；
+- 正确提交后锁定 activity 控件；
+- 首次提交的 reporting snapshot 复制 `selected`、`assignments` 与 `placed`，不保存对可变状态的引用。
+
+四种稳定错误类型分别为：
+
+- `phrase_hunt_mismatch`
+- `match_mismatch`
+- `classification_mismatch`
+- `build_mismatch`
 
 ---
 
@@ -331,6 +372,8 @@ K1–K2 是第一阶段正式范围，不以识字为前提：
 - `hotspot-tap` 用于从画面中选择细节或证据；
 - `order` 用于依据当前故事场景重建顺序，而不是依靠生活常识排序；
 - Express / Create 使用语音提示和结构化选择进入 Create → Compare → Reflect；
+- scene objects 与 frames 未来可以提供稳定 token、group 或 slot ID，复用 `hunt`、`match`、`sort`、`build` 的数据合同；
+- 本轮不合并 hotspot 坐标定位、scene narration 或低龄视觉 renderer；这些呈现路径继续保持独立；
 - 当前 CSS + emoji 场景可以验证 Runtime，但正式内容应逐步升级为成套、可审查的场景插图；
 - 中文和 English 场景分别原生设计，不以替换角色或翻译提示构成两个内容池。
 
@@ -353,14 +396,14 @@ K1–K2 是第一阶段正式范围，不以识字为前提：
 
 1. PASSAGES / SCENES material ID 与内部 sentence / object / frame / item ID 唯一；
 2. 必要结构、语言、年级、anchors 与可呈现素材形态完整；
-3. Passage objective 的 `unit`、`level`、L1 上限与 L2+ 比例；
+3. Passage objective 的 `unit`、`level`、L1 上限与 L2+ 比例，并审计 `hunt`、`match`、`sort`、`build` authored schema、嵌套 ID 唯一性和引用闭合；
 4. Scene 的 hotspot、order、select interaction 合同；
 5. select 干扰项均带 `errorType`；
 6. sentence evidence 与 Claim/Evidence 引用闭合；
 7. Express / Create CCR 的 prompt、slots、template、otherIdeas 与 reflectPrompt；
 8. 每个 authored Scene 按 material + ability 精确生成；
 9. 所有 `hasContent()` 为真的 Ability Training scope 均可生成并保持 `primaryAbility`、`unit`、`geneId` 与连续 `seq`；
-10. 《咏鹅》Journey 的白名单、单一 passage、authored objective order、连续 `seq`、多 RootGene、唯一 itemId、Claim/Evidence 与独立 Express/Create CCR 合同。
+10. Works/Journey registry 中每个代表作品的单一 passage、authored objective order、连续 `seq`、七个 RootGene、唯一 itemId 与独立 Express/Create CCR 合同；同时检查 Activity Grammar 的 check-only generated contract、fixed-seed deterministic deals、完整 match 左右 permutations 和四个 registry 定点 kind，并锁定《咏鹅》和 *Twinkle, Twinkle, Little Star* 的多句 exact-set evidence。
 
 下列内容必须继续显示为 **REVIEW REQUIRED**，不能伪装成自动 PASS：
 
@@ -390,16 +433,22 @@ Language & Literacy
 ├─ Ability Training
 │  └─ 中文 / English → 七个能力单元 → K1 / K2 / G1 / G2 → Session
 └─ Works / Journey
-   └─ 中文 → G1 → 《咏鹅》 → Encounter / Listen → Journey
+   ├─ 中文
+   │  ├─ G1 → 《咏鹅》
+   │  └─ G2 → 《鹬蚌相争》
+   └─ English
+      ├─ G1 → Twinkle, Twinkle, Little Star
+      └─ G2 → The North Wind and the Sun
+         → Encounter / Listen → Journey
 ```
 
-Ability Training 已覆盖当前可用的 language × ability × grade scope，保持 ability-scoped session 语义。Works/Journey 第一版仅以中文 G1《咏鹅》验证完整作品的跨能力体验；English Works 与其他体裁 Journey 尚未开放，不为界面对称伪造内容。
+Ability Training 已覆盖当前可用的 language × ability × grade scope，保持 ability-scoped session 语义。Works/Journey 从《咏鹅》首个 prototype 演进为数据驱动的代表作品 registry，以四个现成且结构完整的作品验证双语、跨年级和多体裁复用。它不自动开放全部 passage，也不以表面对称替代人工课程审阅。
 
 当前实施状态：
 
 1. 中文 / English 并列、七个能力单元与 K1–G2 第一阶段范围已经接通。
 2. anchors、PIRLS level、template、interaction、Claim/Evidence 与独立 Express/Create CCR 已进入实际数据与运行时合同。
-3. `evidence-tap`、`order`、`hotspot` 与 `scene-select` 均由 `learning/language/` 内部实现，不修改公共 `shell.js`。
+3. `evidence-tap`、`order`、`hotspot`、`scene-select` 以及 Activity Grammar 的 `hunt`、`match`、`sort`、`build` 均由 `learning/language/` 内部实现，不修改公共 `shell.js`。
 4. Ability Training 与 Works/Journey 共用内容池、生成器、RootGene、报告与 Create→Compare→Reflect 合同。
 5. K1/K2 当前 CSS + emoji / frame scene 可验证 Runtime，正式视觉资产仍应逐步升级。
 6. `learning/language/test.html` 已建立 §9.1 的机械质量门槛；语义质量明确保留为 REVIEW REQUIRED。

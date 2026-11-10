@@ -687,10 +687,13 @@
           "journey"
         ],
         "journeyReadyWorks": [
-          "zh-g1-goose-poem"
+          "zh-g1-goose-poem",
+          "zh-g2-snipe-clam-adaptation",
+          "en-g1-twinkle-rhyme",
+          "en-g2-north-wind-sun"
         ],
-        "statusNoteZh": "第一版只开放中文 G1《咏鹅》poetry Journey prototype；English Works 尚未开放。",
-        "statusNoteEn": "The first release exposes only the Chinese G1 '咏鹅' poetry Journey prototype; English Works is not yet open."
+        "statusNoteZh": "Works/Journey 由明确登记的作品驱动，当前开放中文与 English 的 G1、G2 四个代表作品，覆盖诗歌、童谣与寓言。未登记素材不会自动开放，仍需人工审阅课程质量。",
+        "statusNoteEn": "Works/Journey is driven by an explicit work registry. Four representative works are currently available across Chinese and English, G1 and G2, covering poetry, rhyme, and fable. Unregistered materials are not exposed automatically and still require human curriculum review."
       }
     },
     "languageDomains": {

@@ -1329,23 +1329,36 @@ var LANG_DATA = {
         "unit": "observe",
         "template": "image-detail",
         "level": "L1",
-        "interaction": "select",
-        "prompt": "诗里写了鹅身上的哪两种颜色？",
-        "options": [
+        "interaction": "sort",
+        "prompt": "把诗中的颜色词按它们描写的对象分一分。",
+        "groups": [
           {
-            "text": "白色和红色"
+            "id": "goose",
+            "label": "鹅"
           },
           {
-            "text": "绿色和红色",
-            "errorType": "misattribution"
-          },
-          {
-            "text": "白色和蓝色",
-            "errorType": "fabrication"
+            "id": "water",
+            "label": "水"
           }
         ],
-        "answer": 0,
-        "hint": "找一找写“毛”和“掌”的两句。"
+        "cards": [
+          {
+            "id": "white-feathers",
+            "text": "白毛",
+            "groupId": "goose"
+          },
+          {
+            "id": "red-feet",
+            "text": "红掌",
+            "groupId": "goose"
+          },
+          {
+            "id": "green-water",
+            "text": "绿水",
+            "groupId": "water"
+          }
+        ],
+        "hint": "想一想每个颜色词后面写的是鹅，还是水。"
       },
       {
         "id": "q2",
@@ -1675,23 +1688,21 @@ var LANG_DATA = {
         "unit": "choose",
         "template": "tone-fit",
         "level": "L4",
-        "interaction": "select",
-        "prompt": "鹬和河蚌说话时，哪一个词最能概括它们的语气？",
-        "options": [
+        "interaction": "match",
+        "prompt": "把角色和它说出的威胁配起来。",
+        "pairs": [
           {
-            "text": "互相威胁"
+            "id": "snipe-threat",
+            "left": "鹬",
+            "right": "你就会干死"
           },
           {
-            "text": "互相感谢",
-            "errorType": "contradicts_text"
-          },
-          {
-            "text": "互相请教",
-            "errorType": "fabrication"
+            "id": "clam-threat",
+            "left": "河蚌",
+            "right": "你就会饿死"
           }
         ],
-        "answer": 0,
-        "hint": "两句话都在说对方会有不好的结果。"
+        "hint": "回到鹬和河蚌各自说的话，看看谁担心干死，谁担心饿死。"
       },
       {
         "id": "q-comprehend-snipe-clam-result",
@@ -1939,23 +1950,31 @@ var LANG_DATA = {
         "unit": "structure",
         "template": "refrain-pattern",
         "level": "L3",
-        "interaction": "select",
-        "prompt": "Which lines return at the end of the rhyme?",
-        "options": [
+        "interaction": "hunt",
+        "prompt": "Find the two lines that return at the end of the rhyme.",
+        "chips": [
           {
-            "text": "The first two lines"
+            "id": "refrain-twinkle",
+            "text": "Twinkle, twinkle, little star"
           },
           {
-            "text": "Only the diamond line",
-            "errorType": "misattribution"
+            "id": "refrain-wonder",
+            "text": "How I wonder what you are"
           },
           {
-            "text": "No lines return",
-            "errorType": "contradicts_text"
+            "id": "middle-high",
+            "text": "Up above the world so high"
+          },
+          {
+            "id": "middle-diamond",
+            "text": "Like a diamond in the sky"
           }
         ],
-        "answer": 0,
-        "hint": "Compare the beginning with the ending."
+        "answer": [
+          "refrain-twinkle",
+          "refrain-wonder"
+        ],
+        "hint": "Compare the first two lines with the final two lines."
       },
       {
         "id": "q-infer-twinkle-star-picture",
@@ -2238,15 +2257,49 @@ var LANG_DATA = {
         "unit": "structure",
         "template": "contrast-order",
         "level": "L3",
-        "interaction": "order",
-        "prompt": "Put the two attempts and their results in order.",
-        "cards": [
-          "The Wind blows hard.",
-          "The traveler holds the cloak tighter.",
-          "The Sun shines gently.",
-          "The traveler takes the cloak off."
+        "interaction": "build",
+        "prompt": "Build the contrast by placing each action or reaction in its matching slot.",
+        "slots": [
+          {
+            "id": "wind-method",
+            "label": "Wind method"
+          },
+          {
+            "id": "wind-reaction",
+            "label": "Traveler reaction to Wind"
+          },
+          {
+            "id": "sun-method",
+            "label": "Sun method"
+          },
+          {
+            "id": "sun-reaction",
+            "label": "Traveler reaction to Sun"
+          }
         ],
-        "hint": "The Wind tries first. The Sun tries after the Wind gives up."
+        "chips": [
+          {
+            "id": "wind-blows",
+            "text": "The Wind blows hard.",
+            "slotId": "wind-method"
+          },
+          {
+            "id": "traveler-tightens",
+            "text": "The traveler holds the cloak tighter.",
+            "slotId": "wind-reaction"
+          },
+          {
+            "id": "sun-shines",
+            "text": "The Sun shines gently.",
+            "slotId": "sun-method"
+          },
+          {
+            "id": "traveler-removes",
+            "text": "The traveler takes the cloak off.",
+            "slotId": "sun-reaction"
+          }
+        ],
+        "hint": "Match each character’s method with the traveler’s reaction."
       },
       {
         "id": "q5",
