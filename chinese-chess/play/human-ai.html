@@ -51,30 +51,6 @@
             <p>红方由玩家控制，黑方由 Pikafish 应战。</p>
           </div>
         </section>
-        <section class="analysis-box puzzle-box">
-          <h2><span aria-hidden="true">📚</span> 题库练习</h2>
-          <div class="puzzle-placeholder" id="humanPuzzleStatus" aria-live="polite">从右侧题库选择棋局，开始练习。</div>
-        </section>
-      </section>
-
-      <section class="human-ai-work-panel" aria-label="棋谱与解说编辑">
-        <div class="human-ai-work-tabs">
-          <button type="button" id="humanLoadPosition">棋局</button>
-          <button type="button" id="humanLoadSolution">答案</button>
-          <button type="button" id="humanRecordButton">开始记录</button>
-          <button type="button" id="humanSaveSolution" disabled>保存</button>
-        </div>
-        <label for="humanSolutionText">棋谱答案</label>
-        <textarea id="humanSolutionText" class="human-work-solution" spellcheck="false" placeholder="选择题库棋局，或开始记录对局……"></textarea>
-        <p id="humanSolutionStatus" class="human-work-status">答案保存在本机浏览器并可下载文本。</p>
-        <div class="human-work-explanation-actions">
-          <button type="button" id="humanLoadExplanation">解说</button>
-          <button type="button" id="humanSaveExplanation" disabled>保存解说</button>
-        </div>
-        <label for="humanExplanationText">解说内容</label>
-        <textarea id="humanExplanationText" class="human-work-explanation" spellcheck="false" placeholder="选择题目后载入解说，或在此撰写解说……"></textarea>
-        <p id="humanExplanationStatus" class="human-work-status">解说单独保存为本机草稿与下载文件。</p>
-        <input id="humanPositionFile" type="file" accept=".fen,.txt" hidden />
       </section>
       </div>
 
@@ -91,12 +67,6 @@
           <label class="ai-setting-row"><span>风格:</span><select id="humanStyle"><option value="balanced" selected>均衡</option><option value="active">积极</option><option value="solid">稳健</option></select></label>
         </section>
         <p class="engine-unavailable" id="humanEngineStatus">连接 Pikafish 引擎中...</p>
-        <section class="human-ai-library" aria-label="题库练习">
-          <header><div><span>残局与练习</span><strong>题库练习</strong></div><b id="humanBankCount">载入中</b></header>
-          <label for="humanBankSearch">搜索棋局</label>
-          <input id="humanBankSearch" type="search" placeholder="名称或编号" />
-          <div id="humanBankTree" role="tree" aria-label="中国象棋题库"><p>正在载入题库目录…</p></div>
-        </section>
       </aside>
     </div>
   </main>

@@ -21,6 +21,7 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
     button.addEventListener('click', () => {
       if (action === 'play') setPlaying(!playing);
       if (action === 'sound') setSound(!soundEnabled);
+      if (action === 'voice') setVoice(!voiceEnabled);
       if (action === 'side') setSide(currentSide === 'red' ? 'black' : 'red');
       onAction(action, button);
     });
@@ -35,8 +36,6 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
   addButton('redo', '→', '下一步');
   controls.undo.disabled = true;
   controls.redo.disabled = true;
-  addButton('sound', '◖))', '关闭音效');
-  addButton('voice', '▧', '朗读状态');
 
   const divider = document.createElement('span');
   divider.className = 'xiangqi-control-divider';
@@ -63,6 +62,8 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
 
   addButton('side', '⇄', '切换执棋方，当前红方');
 
+  addButton('sound', '◖))', '关闭音效');
+  addButton('voice', '🎤', '关闭自动语音');
   const volume = addRange(container, 'volume', '音量', 0, 100, 80);
   const speed = addRange(container, 'speed', '速度', 1, 10, 5);
   controls.volume = volume;
@@ -70,6 +71,7 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
 
   let playing = false;
   let soundEnabled = true;
+  let voiceEnabled = true;
   let currentSide = side;
   const setPlaying = value => {
     playing = Boolean(value);
@@ -96,15 +98,24 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
     controls.sound.setAttribute('aria-label', controls.sound.title);
     controls.sound.setAttribute('aria-pressed', String(soundEnabled));
   };
+  const setVoice = value => {
+    voiceEnabled = Boolean(value);
+    controls.voice.title = voiceEnabled ? '关闭自动语音' : '开启自动语音';
+    controls.voice.setAttribute('aria-label', controls.voice.title);
+    controls.voice.setAttribute('aria-pressed', String(voiceEnabled));
+  };
   volume.addEventListener('input', () => onAction('volume', volume.value));
   speed.addEventListener('input', () => onAction('speed', speed.value));
   setSide(side);
+  setSound(true);
+  setVoice(true);
 
   return {
     controls,
     setPlaying,
     setSide,
     setSound,
+    setVoice,
     setMode(value) {
       for (const link of container.querySelectorAll('a[data-mode]')) {
         const active = link.dataset.mode === value;
@@ -115,6 +126,7 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
     },
     getSide: () => currentSide,
     getSoundEnabled: () => soundEnabled,
+    getVoiceEnabled: () => voiceEnabled,
     getVolume: () => Number(volume.value),
     getSpeed: () => Number(speed.value)
   };

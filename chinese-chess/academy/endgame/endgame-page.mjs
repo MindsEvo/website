@@ -10,9 +10,11 @@ import {
 import { applyBoardStyle, onBoardStyleChange } from '../../board-style.mjs';
 import { mountBoardControlPanel } from '../../shared/board-control-panel.mjs';
 import { buildNotationPlayback, notationContent } from '../../shared/notation-playback.mjs';
+import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
+import { createBoardAudio } from '../../shared/board-audio.mjs';
 
 const ENDGAME_TYPES = {
-  车: ['单车杀王', '双车杀王', '车马杀王', '车炮杀王'],
+  车: ['单车杀王', '车马杀王', '车炮杀王'],
   马: ['双马杀王', '马兵杀王', '马炮杀王'],
   炮: ['单炮杀王', '双炮杀王', '炮兵杀王'],
   兵卒: ['单兵杀王', '多兵杀王', '兵马杀王'],
@@ -23,6 +25,7 @@ const status = document.getElementById('boardLessonStatus');
 const menus = [];
 const BANK_URL = new URL('../../bank/', import.meta.url);
 let panel;
+let audio;
 let selectedPuzzle;
 let selectedFen;
 let playback;
@@ -99,11 +102,13 @@ export function initEndgamePage(config) {
       if (action === 'undo' || action === 'redo') {
         if (live) {
           cancelEngine();
+          let replayed = false;
           if (action === 'undo') undoMove(game);
-          else redoMove(game);
+          else replayed = redoMove(game);
           selectedSquare = null;
           legalTargets = [];
           renderLive();
+          if (replayed) announceMove();
           return;
         }
         stopPlayback();
@@ -120,19 +125,12 @@ export function initEndgamePage(config) {
         renderLive();
         continueEngine();
       }
-      if (action === 'voice') {
-        if (!('speechSynthesis' in window)) {
-          status.textContent = '当前浏览器不支持语音朗读。';
-          return;
-        }
-        const utterance = new SpeechSynthesisUtterance(status.textContent);
-        utterance.lang = 'zh-CN';
-        utterance.volume = panel.getVolume() / 100;
-        utterance.rate = 0.5 + panel.getSpeed() / 10;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(utterance);
-      }
     }
+  });
+  audio = createBoardAudio(panel, {
+    explanation: document.getElementById('endgameExplanation'),
+    onPause() { stopPlayback(); cancelEngine(); },
+    onStatus(message) { status.textContent = message; }
   });
   panel.controls.play.disabled = true;
   panel.controls.play.title = '暂未连接题库棋谱，无法播放';
@@ -276,7 +274,8 @@ function closeMenus(except) {
 function renderBoard() {
   const board = document.getElementById('teachingBoard');
   const position = displayedBoard;
-  const finished = live && ['checkmate', 'stalemate', 'invalid'].includes(getGameStatus(game).type);
+  const feedback = getLessonMoveFeedback(game);
+  const finished = live && ['checkmate', 'stalemate', 'invalid'].includes(feedback.state.type);
   board.replaceChildren(createStandardBoardArtwork());
   for (let row = 0; row < position.length; row += 1) {
     for (let col = 0; col < position[row].length; col += 1) {
@@ -290,10 +289,17 @@ function renderBoard() {
       if (lastMove && [lastMove.from, lastMove.to].some(point => point.row === row && point.col === col)) {
         square.classList.add('endgame-last-move');
       }
+      if (feedback.capture?.row === row && feedback.capture?.col === col) square.classList.add('endgame-capture');
+      if (piece && piece === feedback.checkedKing) square.classList.add('endgame-check');
+      if (piece && piece === feedback.losingKing) square.classList.add('endgame-defeated');
+      if (feedback.state.winner && piece === (feedback.state.winner === RED ? 'K' : 'k')) square.classList.add('endgame-winner');
       square.setAttribute('role', 'gridcell');
       square.setAttribute('aria-label', piece
         ? `${piece === piece.toUpperCase() ? '红方' : '黑方'}${getPieceLabel(piece)}，第 ${row + 1} 行第 ${col + 1} 路`
         : `空位，第 ${row + 1} 行第 ${col + 1} 路`);
+      if (square.classList.contains('endgame-check')) square.setAttribute('aria-label', `${square.getAttribute('aria-label')}，被将军`);
+      if (square.classList.contains('endgame-defeated')) square.setAttribute('aria-label', `${square.getAttribute('aria-label')}，负方`);
+      if (square.classList.contains('endgame-winner')) square.setAttribute('aria-label', `${square.getAttribute('aria-label')}，胜方`);
       if (isCannonStartPosition(row, col) || isPawnStartPosition(row, col)) {
         appendStandardPositionMark(square, row, col);
       }
@@ -382,16 +388,6 @@ async function loadObservationPuzzles(list, piece, section) {
       });
       list.append(submenu);
     }
-    if (!course && piece === '车') {
-      const doubleRook = document.createElement('label');
-      const input = document.createElement('input');
-      input.type = 'checkbox';
-      input.addEventListener('change', () => {
-        status.textContent = `动态观察：${input.checked ? '已选择' : '已取消'}双车杀王；暂未连接题库题目。`;
-      });
-      doubleRook.append(input, document.createTextNode('双车杀王'));
-      list.append(doubleRook);
-    }
     list.dataset.loaded = 'true';
   } catch (error) {
     delete list.dataset.loaded;
@@ -401,6 +397,7 @@ async function loadObservationPuzzles(list, piece, section) {
 }
 
 async function loadPuzzle(puzzle, practice = false) {
+  audio.stop();
   stopPlayback();
   cancelEngine();
   const token = ++loadToken;
@@ -449,6 +446,7 @@ async function loadPuzzle(puzzle, practice = false) {
 }
 
 async function loadVariant(index) {
+  audio.stop();
   stopPlayback();
   cancelEngine();
   live = false;
@@ -485,10 +483,24 @@ async function loadVariant(index) {
     playback = buildNotationPlayback(selectedFen, solution);
     const notation = document.getElementById('endgameNotation');
     notation.replaceChildren();
+    const startsRed = parseFen(selectedFen).turn === RED;
+    let round;
     playback.moves.forEach((move, index) => {
+      const ply = index + (startsRed ? 0 : 1);
+      if (index === 0 || ply % 2 === 0) {
+        round = document.createElement('div');
+        round.className = 'endgame-notation-round';
+        const number = document.createElement('span');
+        number.className = 'endgame-notation-number';
+        number.textContent = `${Math.floor(ply / 2) + 1}.`;
+        round.append(number);
+        notation.append(round);
+      }
       const button = document.createElement('button');
       button.type = 'button';
-      button.textContent = `${index + 1}. ${move.notation}`;
+      button.textContent = move.notation;
+      button.dataset.side = ply % 2 === 0 ? 'red' : 'black';
+      button.setAttribute('aria-label', `第${Math.floor(ply / 2) + 1}回合${ply % 2 === 0 ? '红方' : '黑方'}：${move.notation}`);
       button.addEventListener('click', () => {
         stopPlayback();
         cancelEngine();
@@ -500,7 +512,7 @@ async function loadVariant(index) {
         panel.controls.play.disabled = false;
         showStep(index + 1, true);
       });
-      notation.append(button);
+      round.append(button);
     });
     panel.controls.play.disabled = false;
     showStep(0);
@@ -511,6 +523,8 @@ async function loadVariant(index) {
 
 function showStep(value, speak = false) {
   if (!playback) return;
+  audio.stop();
+  const previousStep = step;
   step = Math.max(0, Math.min(value, playback.moves.length));
   game = createGameFromFen(selectedFen);
   for (const move of playback.moves.slice(0, step)) {
@@ -527,13 +541,13 @@ function showStep(value, speak = false) {
   panel.controls.undo.disabled = step === 0;
   panel.controls.redo.disabled = step === playback.moves.length;
   status.textContent = `${selectedPuzzle.title} · ${selectedPuzzle.id.slice(-3)} · ${step}/${playback.moves.length} 着${step ? `：${playback.moves[step - 1].notation}` : '，可单步或自动播放'}`;
-  if (speak && step && panel.getSoundEnabled() && 'speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(playback.moves[step - 1].notation);
-    utterance.lang = 'zh-CN';
-    utterance.volume = panel.getVolume() / 100;
-    window.speechSynthesis.speak(utterance);
-  }
+  const feedback = getLessonMoveFeedback(game);
+  if (feedback.text) status.textContent += ` · ${feedback.text}`;
+  if (speak && step > previousStep) announceMove(playback.moves[step - 1].notation);
+}
+
+function announceMove(notation = '') {
+  audio.move(game, notation);
 }
 
 function stopPlayback() {
@@ -584,8 +598,14 @@ function renderLive() {
   panel.controls.redo.disabled = !game.redoStack.length || engineThinking;
   panel.setPlaying(duelRunning);
   const state = getGameStatus(game);
+  const finished = ['checkmate', 'stalemate', 'invalid'].includes(state.type);
+  if (finished) {
+    duelRunning = false;
+    panel.setPlaying(false);
+    panel.controls.play.disabled = true;
+  }
   const label = { manual: '双人手动', 'human-ai': '人机对弈', 'ai-ai': 'AI-AI' }[mode];
-  status.textContent = `${label} · ${game.turn === RED ? '红方' : '黑方'}走棋 · ${state.type === 'checkmate' ? '将死' : state.type === 'stalemate' ? '困毙' : engineThinking ? '引擎思考中…' : '保留当前残局及解法棋谱'}`;
+  status.textContent = `${label} · ${finished ? '对局结束' : `${game.turn === RED ? '红方' : '黑方'}走棋`} · ${getLessonMoveFeedback(game).text || (engineThinking ? '引擎思考中…' : '保留当前局面及解法棋谱')}`;
 }
 
 function handleSquare(point) {
@@ -598,6 +618,7 @@ function handleSquare(point) {
     selectedSquare = null;
     legalTargets = [];
     renderLive();
+    announceMove();
     duelRunning = mode === 'human-ai';
     continueEngine();
     return;
@@ -637,6 +658,7 @@ async function requestEngineMove() {
     if (!result.move || !makeMove(game, result.move.from, result.move.to)) throw new Error('引擎返回了无法应用的着法。');
     engineThinking = false;
     renderLive();
+    announceMove();
     engineTimer = setTimeout(continueEngine, 2600 - panel.getSpeed() * 200);
   } catch (error) {
     if (token !== engineToken) return;

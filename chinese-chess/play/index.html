@@ -57,34 +57,18 @@
       </section>
 
       <section class="work-panel" aria-label="棋谱与解说">
-        <div class="work-tabs" role="group" aria-label="棋谱操作">
-          <button class="work-action" id="loadPositionButton" type="button">棋局</button>
-          <button class="work-action" id="loadSolutionButton" type="button">答案</button>
-          <button class="work-action" id="recordButton" type="button">开始记录</button>
-          <button class="work-action save-action" id="saveSolutionButton" type="button" disabled>保存</button>
-        </div>
-        <label class="field-label" for="solutionText">棋谱答案</label>
-        <select id="solutionVariant" class="solution-variant" aria-label="选择题目答案版本" hidden></select>
-        <textarea id="solutionText" class="work-editor solution-editor" spellcheck="false" placeholder="选择题库棋局，或开始记录对局……"></textarea>
-        <div class="editor-status" id="solutionStatus" role="status" aria-live="polite">静态网页保存在本机浏览器并下载文本，不会直接写回 Windows 题库。</div>
-        <div class="save-version-row" id="solutionVersionRow" hidden><label for="solutionVersion">答案版本</label><input id="solutionVersion" type="number" min="1" value="1" /></div>
-        <div class="explanation-actions">
-          <button class="work-action explain-action" id="loadExplanationButton" type="button">解说</button>
-          <button class="work-action" id="saveExplanationButton" type="button" disabled>保存解说</button>
-        </div>
+        <label class="field-label" for="solutionVariant">棋谱答案</label>
+        <select id="solutionVariant" class="solution-variant" aria-label="棋谱答案" disabled><option value="">请选择棋局</option></select>
+        <textarea id="solutionText" class="work-editor solution-editor" readonly spellcheck="false" placeholder="选择题库棋局查看配套棋谱。"></textarea>
+        <div class="editor-status" id="solutionStatus" role="status" aria-live="polite"></div>
         <label class="field-label" for="explanationText">解说内容</label>
-        <textarea id="explanationText" class="work-editor explanation-editor" spellcheck="false" placeholder="选择题目后载入解说，或在此撰写解说……"></textarea>
-        <div class="editor-status" id="explanationStatus" role="status" aria-live="polite">解说单独保存为本机草稿与下载文件。</div>
-        <div class="save-version-row" id="explanationVersionRow" hidden><label for="explanationVersion">解说版本</label><input id="explanationVersion" type="number" min="1" value="1" /></div>
-        <input id="positionFileInput" type="file" accept=".fen,.json,.txt,application/json,text/plain" hidden />
-        <input id="solutionFileInput" type="file" accept=".txt,text/plain" hidden />
-        <input id="explanationFileInput" type="file" accept=".txt,text/plain" hidden />
-        <input id="versionInput" type="number" min="1" value="1" hidden />
+        <textarea id="explanationText" class="work-editor explanation-editor" readonly spellcheck="false" placeholder="选择题目查看配套解说。"></textarea>
+        <div class="editor-status" id="explanationStatus" role="status" aria-live="polite"></div>
       </section>
 
-      <aside class="library-panel" aria-label="题库练习">
+      <aside class="library-panel" aria-label="题库目录">
         <div class="library-heading">
-          <div><p class="section-kicker">棋局与练习</p><h2>题库练习</h2></div>
+          <div><h2>题库目录</h2></div>
           <span id="bankCount" class="bank-count">载入中</span>
         </div>
         <label class="bank-search-label" for="bankSearch">搜索棋局</label>

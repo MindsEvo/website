@@ -1,12 +1,12 @@
 .endgame-display-only .lesson-shell { padding: 48px 12px 12px; }
 .endgame-display-only .board-course-back { top: 12px; left: 12px; font-size: 12px; }
 .endgame-display-only .board-course-layout {
-  width: min(100%, 1500px);
+  width: min(100%, 1280px);
   margin: 0 auto;
   min-height: calc(100vh - 60px);
-  grid-template-columns: minmax(0, 1.2fr) minmax(350px, 1fr) minmax(140px, .3fr);
+  grid-template-columns: minmax(0, 560px) minmax(350px, 1fr) minmax(240px, .6fr);
   align-items: start;
-  gap: 14px;
+  gap: 10px;
 }
 .endgame-display-only .board-course-left { padding: 0; width: 100%; }
 .endgame-display-only .teaching-board-frame { width: min(100%, 560px); }
@@ -98,12 +98,21 @@
 .endgame-puzzle-list button.selected { color: #2980b9; background: #e8f4fd; font-weight: 700; }
 .endgame-last-move .xiangqi-piece-face { box-shadow: 0 0 0 3px #d99434; }
 .endgame-last-move::before { background: #d9943477; }
+.endgame-capture .xiangqi-piece-face { box-shadow: 0 0 0 4px #d99434; }
+.endgame-check .xiangqi-piece-face { box-shadow: 0 0 0 4px #e53935; }
+.endgame-check::before, .endgame-defeated::before { background: #e5393566; }
+.endgame-defeated .xiangqi-piece-face { box-shadow: 0 0 0 5px #b71c1c; }
+.endgame-winner .xiangqi-piece-face { box-shadow: 0 0 0 4px #218c4b; }
 .endgame-display-only .teaching-square:enabled { cursor: pointer; }
 .endgame-selected .xiangqi-piece-face { box-shadow: 0 0 0 3px #2588e7; }
 .endgame-target::before { background: #2980b988; }
 #endgameSolutionVariant { width: 100%; margin-bottom: 8px; padding: 5px; font: inherit; font-size: 12px; }
 #endgameNotation, #endgameExplanation { white-space: pre-wrap; max-height: 360px; overflow: auto; }
-#endgameNotation button { display: block; width: 100%; padding: 7px 4px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+#endgameNotation .endgame-notation-round { display: grid; grid-template-columns: 28px repeat(2, minmax(0, 1fr)); align-items: baseline; margin: 0; padding: 0; gap: 0 3px; white-space: normal; }
+.endgame-notation-number { grid-column: 1; }
+#endgameNotation button { display: block; width: 100%; min-width: 0; margin: 0; padding: 2px 0; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; white-space: nowrap; text-align: left; cursor: pointer; }
+#endgameNotation button[data-side="red"] { grid-column: 2; }
+#endgameNotation button[data-side="black"] { grid-column: 3; }
 #endgameNotation button.current { background: #e8f4fd; color: #1a73e8; font-weight: 700; }
 .endgame-question-list, .endgame-answer-area {
   margin: 10px 4px 0;
@@ -136,5 +145,5 @@
   .endgame-display-only .board-course-left { align-items: center; }
   .endgame-display-only .board-course-right { padding: 10px; }
   .endgame-display-only .board-course-section { padding: 10px; }
-  .endgame-materials { grid-column: auto; }
+  .endgame-materials { grid-column: auto; grid-template-columns: minmax(0, 1fr); }
 }

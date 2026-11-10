@@ -31,8 +31,8 @@
 .speed-track { background: linear-gradient(90deg, #6678ea, #23acd0, #4bc978); }
 .volume-track b, .speed-track b { position: absolute; top: 50%; left: 65%; width: 12px; height: 12px; border: 1px solid #9fa7ad; border-radius: 50%; background: #f4f4f4; transform: translate(-50%, -50%); }
 
-.human-ai-analysis { min-width: 0; display: grid; grid-template-rows: 60px 88px 118px minmax(95px, 1fr); gap: 8px; }
-.human-ai-middle-column { min-width: 0; display: grid; grid-template-rows: auto minmax(350px, 1fr); gap: 8px; }
+.human-ai-analysis { min-width: 0; display: grid; grid-template-rows: 60px 88px 118px; gap: 8px; }
+.human-ai-middle-column { min-width: 0; }
 .human-ai-work-panel { min-width: 0; min-height: 350px; padding: 9px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #d7e5ef; border-radius: 7px; background: #fff; }
 .human-ai-work-tabs { min-height: 32px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
 .human-ai-work-tabs button, .human-work-explanation-actions button { min-width: 0; min-height: 29px; padding: 0 5px; border: 1px solid #dfe5eb; border-radius: 4px; color: #536475; background: #f8fafb; font-family: inherit; font-size: 9px; font-weight: 700; cursor: default; }
@@ -97,7 +97,7 @@
 .analysis-box h2, .ai-setting-box h2, .ai-setting-row select { font-size: 12px; }
 #humanBankTree { font-size: 18px; }
 #humanBankTree .bank-leaf { font-size: 15px; }
-.human-ai-analysis { grid-template-rows: minmax(60px, auto) minmax(88px, auto) minmax(118px, auto) minmax(95px, 1fr); }
+.human-ai-analysis { grid-template-rows: minmax(60px, auto) minmax(88px, auto) minmax(118px, auto); }
 
 @media (max-width: 1050px) {
   .human-ai-layout { grid-template-columns: minmax(340px, 1.1fr) minmax(300px, .9fr); }
@@ -114,8 +114,7 @@
   .human-ai-board-frame { width: min(100%, 440px); }
   .human-ai-toolbar { justify-content: flex-start; }
   .human-ai-toolbar label { margin-left: auto; }
-  .human-ai-analysis { grid-template-rows: minmax(65px, auto) auto minmax(118px, auto) minmax(95px, auto); }
-  .human-ai-middle-column { grid-template-rows: auto 390px; }
+  .human-ai-analysis { grid-template-rows: minmax(65px, auto) auto minmax(118px, auto); }
   .human-ai-settings { grid-column: auto; grid-template-columns: minmax(0, 1fr); }
   .human-ai-library { grid-column: auto; min-height: 300px; }
 }

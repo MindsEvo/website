@@ -3,7 +3,8 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 
 const DEFAULT_BANK_ROOT = path.resolve(__dirname, "../../chinese-chess/bank/endgame/L1");
-const CUSTOM_ID_RE = /^eg_CUSTOM_L1-(\d{3})$/;
+const CUSTOM_ID_RE = /^(eg|at|tac)_CUSTOM_(L[1-3])-(\d{3})$/;
+const CUSTOM_TYPES = { eg: "endgame", at: "attacking", tac: "tactics" };
 const PIECE_LIMITS = { K: 1, A: 2, E: 2, H: 2, R: 2, C: 2, P: 5 };
 const PIECE_LABELS = { K: "帅", A: "仕", E: "相", H: "马", R: "车", C: "炮", P: "兵", k: "将", a: "士", e: "象", h: "马", r: "车", c: "炮", p: "卒" };
 
@@ -22,11 +23,12 @@ function parseFen(fen) {
   for (const [rankIndex, rank] of ranks.entries()) {
     let width = 0;
     for (const token of rank) {
+      const piece = { N: "H", n: "h", B: "E", b: "e" }[token] || token;
       if (/^[1-9]$/.test(token)) {
         width += Number(token);
-      } else if (PIECE_LABELS[token]) {
+      } else if (PIECE_LABELS[piece]) {
         width += 1;
-        counts[token] += 1;
+        counts[piece] += 1;
       } else {
         throw httpError(400, `FEN 第 ${rankIndex + 1} 行含无效棋子符号。`);
       }
@@ -47,7 +49,7 @@ function parseFen(fen) {
 
 function validateId(value) {
   const id = String(value || "").trim();
-  if (!CUSTOM_ID_RE.test(id)) throw httpError(400, "编号必须符合 eg_CUSTOM_L1-001 格式，并使用三位序号。");
+  if (!CUSTOM_ID_RE.test(id)) throw httpError(400, "编号必须符合 eg/at/tac_CUSTOM_L1/L2/L3-001 格式，并使用三位序号。");
   return id;
 }
 
@@ -81,6 +83,7 @@ async function writeAtomic(file, contents) {
 async function persistCustomPuzzle(input, options = {}) {
   const root = options.bankRoot || DEFAULT_BANK_ROOT;
   const id = validateId(input.id);
+  const [, prefix, level] = id.match(CUSTOM_ID_RE);
   const title = String(input.title || "").trim();
   if (!title || title.length > 80) throw httpError(400, "棋局名称不能为空，且不能超过 80 个字符。");
   const { fen, counts } = parseFen(input.fen);
@@ -104,8 +107,8 @@ async function persistCustomPuzzle(input, options = {}) {
   const metadata = {
     id,
     title,
-    type: "endgame",
-    difficulty: "L1",
+    type: CUSTOM_TYPES[prefix],
+    difficulty: level,
     sequence: Number(id.match(/(\d{3})$/)[1]),
     verified: false,
     firstMover: fen.split(/\s+/)[1],
@@ -113,7 +116,7 @@ async function persistCustomPuzzle(input, options = {}) {
     fen
   };
   const previous = existingIndex >= 0 ? category.items[existingIndex] : null;
-  const item = { ...(previous || {}), id, title, label: title, fen: fenFile, metadata: metadataFile, solutions: fenChanged ? [] : previous?.solutions || [], explanations: fenChanged ? [] : previous?.explanations || [], difficulty: "L1", rootGene: "manual" };
+  const item = { ...(previous || {}), id, title, label: title, fen: fenFile, metadata: metadataFile, solutions: fenChanged ? [] : previous?.solutions || [], explanations: fenChanged ? [] : previous?.explanations || [], type: CUSTOM_TYPES[prefix], difficulty: level, rootGene: "manual" };
   if (existingIndex >= 0) category.items[existingIndex] = item;
   else category.items.push(item);
 

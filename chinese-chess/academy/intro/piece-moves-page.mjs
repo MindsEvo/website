@@ -1385,11 +1385,13 @@ function cancelLessonSpeech() {
 }
 
 function speakLesson(text) {
+  if (document.querySelector('#boardToolbar [data-control="voice"]')?.getAttribute('aria-pressed') === 'false') return Promise.resolve(true);
   if (!('speechSynthesis' in window) || !text) return Promise.resolve(true);
   const generation = speechGeneration;
   const sentences = String(text).match(/[^。！？!?]+[。！？!?]?/g) || [text];
   speechQueue = speechQueue.then(async () => {
     for (const sentence of sentences) {
+      if (document.querySelector('#boardToolbar [data-control="voice"]')?.getAttribute('aria-pressed') === 'false') return true;
       if (generation !== speechGeneration) return false;
       const completed = await new Promise(resolve => {
         const utterance = new SpeechSynthesisUtterance(sentence.trim());

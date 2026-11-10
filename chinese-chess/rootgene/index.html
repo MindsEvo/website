@@ -13,7 +13,7 @@
 <body class="rootgene-page">
   <main class="rootgene-app">
     <header class="rootgene-header">
-      <div class="rootgene-brand"><span aria-hidden="true">🧬</span><h1>根基因库管理系统</h1><p>智能题目生成与AI测试平台</p></div>
+      <div class="rootgene-brand"><span aria-hidden="true">🧬</span><h1>根基因库管理系统</h1><p>局面编辑与题库管理</p></div>
       <div class="rootgene-header-actions">
         <a class="rootgene-back" href="../settings/index.html"><span aria-hidden="true">⇦</span> 返回设置</a>
         <span class="rootgene-status"><i aria-hidden="true"></i> 系统就绪</span>
@@ -21,46 +21,36 @@
     </header>
 
     <div class="rootgene-workspace">
+      <div class="rootgene-sidebar">
       <section class="rootgene-panel control-panel" aria-labelledby="controlTitle">
         <h2 class="panel-title" id="controlTitle"><span aria-hidden="true">🎛️</span> 控制面板</h2>
 
         <fieldset class="control-group gene-select-group">
           <legend>根基因选择</legend>
-          <label class="select-line"><span>基因类型:</span><select id="geneType" aria-label="基因类型"><option value="endgame">残局基因</option></select></label>
-          <label class="select-line"><span>难度级别:</span><select id="geneLevel" aria-label="难度级别"><option value="L1">L1 基础</option></select></label>
+          <label class="select-line"><span>基因类型:</span><select id="geneType" aria-label="基因类型"><option value="endgame">残局基础</option><option value="attacking">基本攻杀</option><option value="tactics">基本战术</option></select></label>
+          <label class="select-line"><span>难度级别:</span><select id="geneLevel" aria-label="难度级别"><option value="L1">L1 基础</option><option value="L2">L2 进阶</option><option value="L3">L3 高阶</option></select></label>
           <div class="gene-list-placeholder" id="geneList" aria-label="已保存的手工棋局"></div>
           <div class="gene-add-row"><input id="geneName" type="text" placeholder="编号格式：eg_CUSTOM_L1-001" aria-label="手工棋局编号" /><button id="geneNameCheck" type="button" class="small-add">检查</button><button id="geneDeleteButton" type="button" class="small-delete">删除</button></div>
+          <p id="nameFormat" class="name-format"></p>
         </fieldset>
 
         <fieldset class="control-group piece-config-group">
-          <legend>棋子数量配置</legend>
-          <div class="piece-config-row">
-            <span class="side-swatch swatch-black" aria-label="黑方"></span>
-            <button type="button" class="piece-palette-item" data-piece-code="r">车 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="h">马 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="c">炮 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="e">象 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="a">士 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="p">卒 <output>0</output></button>
+          <legend>棋子面板</legend>
+          <div class="palette-sides" role="group" aria-label="棋子颜色">
+            <button type="button" data-palette-side="red" aria-pressed="true">红方</button>
+            <button type="button" data-palette-side="black" aria-pressed="false">黑方</button>
           </div>
-          <div class="piece-config-row">
-            <span class="side-swatch swatch-red" aria-label="红方"></span>
-            <button type="button" class="piece-palette-item" data-piece-code="R">车 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="H">马 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="C">炮 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="E">相 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="A">仕 <output>0</output></button>
-            <button type="button" class="piece-palette-item" data-piece-code="P">兵 <output>0</output></button>
+          <div class="piece-config-row" id="piecePalette">
+            <button type="button" class="piece-palette-item" data-piece-type="K"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="R"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="H"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="C"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="E"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="A"></button>
+            <button type="button" class="piece-palette-item" data-piece-type="P"></button>
           </div>
+          <p class="palette-help">点击棋盘棋子选中，再点击目标位置摆放；再次点击原位置取消。也可从面板添加棋子。重置恢复载入局面，将帅每方保留一枚。</p>
           <div class="editor-tools"><button id="eraseTool" type="button" aria-pressed="false">橡皮擦</button><button id="firstMoverButton" type="button">先手：红方</button><span id="paletteStatus" role="status">选择棋子，再点击棋盘交叉点放置。</span></div>
-        </fieldset>
-
-        <fieldset class="control-group generation-group">
-          <legend>生成参数</legend>
-          <label class="parameter-row"><span>题目数量:</span><select aria-label="题目数量"><option>1 题</option></select></label>
-          <label class="parameter-row"><span>难度系数:</span><input type="range" min="1" max="10" value="1" aria-label="难度系数" /><output>1 (最低)</output></label>
-          <label class="parameter-row"><span>变化程度:</span><input type="range" min="1" max="10" value="1" aria-label="变化程度" /><output>1 (最低)</output></label>
-          <label class="ai-check"><input type="checkbox" checked /> 启用AI验证</label>
         </fieldset>
 
         <fieldset class="control-group action-group">
@@ -68,12 +58,11 @@
           <div class="action-buttons">
             <button id="generatePositionButton" type="button" class="action-generate">🚀 生成局面</button>
             <button id="savePositionButton" type="button" class="action-save">▣ 存储到题库</button>
-            <button id="testPositionButton" type="button" class="action-ai">🧪 AI测试</button>
             <button id="clearPositionButton" type="button" class="action-clear">▧ 清空结果</button>
-            <button id="validatePositionButton" type="button" class="action-validate">🔍 验证局面</button>
           </div>
         </fieldset>
       </section>
+      </div>
 
       <section class="rootgene-panel board-panel" aria-labelledby="boardTitle">
         <h2 class="panel-title" id="boardTitle"><span aria-hidden="true">🎯</span> 棋盘视图</h2>
@@ -85,30 +74,42 @@
             <div class="gene-side-label" aria-hidden="true">红方走棋</div>
           </div>
         </div>
-        <div class="gene-position-info"><strong>当前FEN:</strong><span id="currentFen">等待编辑...</span><span id="rootGeneStatus" role="status">点击棋子调色板后，在棋盘上摆放棋子。</span></div>
+        <nav id="geneBoardToolbar" aria-label="棋盘通用控制面板"></nav>
       </section>
 
-      <aside class="rootgene-panel info-panel" aria-labelledby="infoTitle">
-        <h2 class="panel-title" id="infoTitle"><span aria-hidden="true">📊</span> 信息面板</h2>
-        <div class="info-tab">JSON</div>
-        <label class="json-label" for="geneJson">题目JSON:</label>
-        <textarea id="geneJson" readonly spellcheck="false" aria-label="题目JSON预览">{
-  "geneId": "请选择基因",
-  "displayInfo": {
-    "chineseName": "等待生成..."
-  },
-  "metadata": {
-    "difficulty": "L1",
-    "sequence": 1,
-    "verified": false
-  }
-}</textarea>
+      <section class="rootgene-panel material-panel" aria-label="棋谱与解说编辑">
+        <h2 class="panel-title">棋谱与解说编辑</h2>
+        <div class="material-actions">
+          <button id="loadSolutionButton" type="button">答案</button>
+          <button id="recordButton" type="button">开始记录</button>
+          <button id="saveSolutionButton" type="button">保存棋谱</button>
+        </div>
+        <label for="solutionVariant">题库答案</label>
+        <select id="solutionVariant" aria-label="选择答案版本"><option value="">暂无答案</option></select>
+        <textarea id="solutionText" spellcheck="false" aria-label="棋谱答案" placeholder="载入答案，或开始记录后走棋；AI-AI 点击播放求解。"></textarea>
+        <div class="material-version"><label for="solutionVersion">答案版本</label><input id="solutionVersion" type="number" min="1" max="999" value="1" /></div>
+        <p id="solutionStatus" role="status">先保存手工局面，再记录和保存配套棋谱。</p>
+        <div class="material-actions">
+          <button id="loadExplanationButton" type="button">解说</button>
+          <button id="saveExplanationButton" type="button">保存解说</button>
+        </div>
+        <label for="explanationText">解说内容</label>
+        <textarea id="explanationText" spellcheck="false" aria-label="解说内容" placeholder="在此编辑配套解说。"></textarea>
+        <div class="material-version"><label for="explanationVersion">解说版本</label><input id="explanationVersion" type="number" min="1" max="999" value="1" /></div>
+        <p id="explanationStatus" role="status">导入棋局只读；另存为手工棋局后可保存材料。</p>
+        <input id="solutionFileInput" type="file" accept=".txt,text/plain" hidden />
+        <input id="explanationFileInput" type="file" accept=".txt,text/plain" hidden />
+      </section>
+      <aside class="rootgene-panel bank-panel" aria-labelledby="bankTitle">
+        <h2 class="panel-title" id="bankTitle"><span aria-hidden="true">📚</span> 题库目录</h2>
+        <input id="bankSearch" type="search" placeholder="搜索名称或编号" aria-label="搜索题库" />
+        <div id="bankTree" class="bank-tree" aria-label="题库目录"></div>
+        <p id="bankSummary" role="status">正在载入题库…</p>
       </aside>
     </div>
 
-    <footer class="rootgene-footer"><span>根基因库管理系统 v1.0 | 中国象棋手工局面编辑</span><button id="rootGeneFooterSave" type="button">▣ 保存</button></footer>
+    <footer class="rootgene-footer"><span id="rootGeneStatus" role="status">点击棋子后选择摆放位置。</span><button id="rootGeneFooterSave" type="button">▣ 保存</button></footer>
   </main>
   <script type="module" src="./rootgene-page.mjs"></script>
-  <script type="module" src="../shared/board-control-panel-boot.mjs"></script>
 </body>
 </html>

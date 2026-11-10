@@ -290,6 +290,7 @@ function clearQuizState() {
 }
 
 function speak(text) {
+  if (document.querySelector('#boardToolbar [data-control="voice"]')?.getAttribute('aria-pressed') === 'false') return;
   if (!('speechSynthesis' in window) || !text) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);

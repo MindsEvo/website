@@ -3,7 +3,7 @@
 .ai-ai-page .red-engine-settings { border-color: #efc8c8; }
 .ai-ai-page .red-engine-settings h2 { color: #aa4b4b; }
 .ai-ai-page .engine-unavailable { padding: 2px 3px; }
-.ai-ai-page .human-ai-analysis { grid-template-rows: minmax(60px, auto) minmax(88px, auto) minmax(118px, auto) minmax(95px, 1fr); }
+.ai-ai-page .human-ai-analysis { grid-template-rows: minmax(60px, auto) minmax(88px, auto) minmax(118px, auto); }
 @media (max-width: 1050px) {
   .ai-ai-page .ai-ai-settings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

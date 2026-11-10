@@ -9,6 +9,7 @@ import {
 } from '../../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../../board-style.mjs';
 import { mountBoardControlPanel } from '../../shared/board-control-panel.mjs';
+import { createBoardAudio } from '../../shared/board-audio.mjs';
 
 const GAMES = [
   { title: '弃马十三着', value: '弃子、诱导、连续进攻', available: true },
@@ -195,7 +196,7 @@ const GAME_MOVES = [MOVES, SCREEN_HORSE_MOVES, REVERSE_PALACE_HORSE_MOVES, DOUBL
 let currentPly = 0;
 let currentGameIndex = 0;
 let autoplayTimer = 0;
-let soundEnabled = true;
+let audio;
 let controlPanel = null;
 
 applyBoardStyle();
@@ -254,8 +255,13 @@ export function initClassicGamesPage(lesson) {
     hrefs: { manual: '../../play/index.html', 'human-ai': '../../play/human-ai.html', 'ai-ai': '../../play/ai-ai.html' },
     onAction: handleControlAction
   });
+  audio = createBoardAudio(controlPanel, {
+    explanation: document.getElementById('classicExplanation'),
+    button: document.getElementById('classicExplain'),
+    onPause: stopAutoplay,
+    onStatus(message) { document.getElementById('classicStatus').textContent = message; }
+  });
   updateDemo();
-  bindControls();
 }
 
 function renderGameButtons() {
@@ -445,6 +451,7 @@ function canReplayPieceMove(board, piece, from, to, color) {
 }
 
 function updateDemo() {
+  audio.stop();
   const board = document.getElementById('classicDemoBoard');
   const moves = GAME_MOVES[currentGameIndex];
   const { board: position, playedMoves, error } = getPositionAt(currentPly);
@@ -506,10 +513,6 @@ function updateDemo() {
   if (currentPly === moves.length) stopAutoplay();
 }
 
-function bindControls() {
-  document.getElementById('classicExplain').addEventListener('click', speakCurrentExplanation);
-}
-
 function handleControlAction(action) {
   if (action === 'reset') {
     stopAutoplay();
@@ -522,10 +525,6 @@ function handleControlAction(action) {
     step(-1);
   } else if (action === 'redo') {
     step(1);
-  } else if (action === 'sound') {
-    soundEnabled = controlPanel.getSoundEnabled();
-  } else if (action === 'voice') {
-    speakCurrentExplanation();
   } else if (action === 'volume' || action === 'speed') {
     if (autoplayTimer) startAutoplay();
   }
@@ -572,10 +571,6 @@ function stopAutoplay() {
   controlPanel?.setPlaying(false);
 }
 
-function speakCurrentExplanation() {
-  speakText(document.getElementById('classicExplanation').textContent);
-}
-
 function speakCurrentMove() {
   if (currentPly <= 0) return;
   const move = GAME_MOVES[currentGameIndex][currentPly - 1];
@@ -583,28 +578,9 @@ function speakCurrentMove() {
 }
 
 function speakText(text) {
-  if (!('speechSynthesis' in window)) {
-    document.getElementById('classicStatus').textContent = '当前浏览器不支持语音讲解。';
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-CN';
-  utterance.rate = 0.85 + (controlPanel.getSpeed() - 5) * 0.03;
-  utterance.volume = controlPanel.getVolume() / 100;
-  window.speechSynthesis.speak(utterance);
+  audio.speak(text);
 }
 
 function playMoveSound() {
-  if (!soundEnabled || controlPanel.getVolume() === 0 || !window.AudioContext) return;
-  const context = new window.AudioContext();
-  const oscillator = context.createOscillator();
-  const gain = context.createGain();
-  oscillator.frequency.value = 620;
-  gain.gain.value = controlPanel.getVolume() / 100 * 0.08;
-  oscillator.connect(gain);
-  gain.connect(context.destination);
-  oscillator.start();
-  oscillator.stop(context.currentTime + 0.035);
-  oscillator.addEventListener('ended', () => context.close(), { once: true });
+  audio.effect();
 }

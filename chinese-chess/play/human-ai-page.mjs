@@ -1,9 +1,7 @@
-import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
 import {
   BLACK,
   RED,
   createGame,
-  createGameFromFen,
   getGameStatus,
   getLegalMoves,
   getPieceLabel,
@@ -22,6 +20,7 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { createBoardAudio } from '../shared/board-audio.mjs';
 import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
@@ -30,7 +29,6 @@ onBoardStyleChange(() => {});
 const boardElement = document.getElementById('humanAiBoard');
 const playerSideLabel = document.querySelector('.human-ai-side-label');
 const analysisStatus = document.getElementById('humanAnalysisStatus');
-const puzzleStatus = document.getElementById('humanPuzzleStatus');
 const analysisDepth = document.getElementById('humanDepthStatus');
 const analysisNodes = document.getElementById('humanNodesStatus');
 const analysisTime = document.getElementById('humanTimeStatus');
@@ -40,17 +38,6 @@ const analysisFill = document.getElementById('humanAdvantageFill');
 const analysisPercent = document.getElementById('humanAdvantagePercent');
 const evaluationText = document.getElementById('humanEvaluationText');
 const engineStatus = document.getElementById('humanEngineStatus');
-const solutionEditor = document.getElementById('humanSolutionText');
-const explanationEditor = document.getElementById('humanExplanationText');
-const solutionStatus = document.getElementById('humanSolutionStatus');
-const explanationStatus = document.getElementById('humanExplanationStatus');
-const recordButton = document.getElementById('humanRecordButton');
-const saveSolutionButton = document.getElementById('humanSaveSolution');
-const saveExplanationButton = document.getElementById('humanSaveExplanation');
-const bankTree = document.getElementById('humanBankTree');
-const bankSearch = document.getElementById('humanBankSearch');
-const bankCount = document.getElementById('humanBankCount');
-const positionFile = document.getElementById('humanPositionFile');
 
 const modeSession = restorePlayModeSession();
 let game = modeSession?.game || createGame();
@@ -62,13 +49,8 @@ let engineThinking = false;
 let requestToken = 0;
 let gameStarted = false;
 let humanSide = modeSession?.humanSide || game.turn;
-let recording = modeSession?.recording || false;
-let recordingStart = modeSession?.recordingStart || 0;
 let selectedPuzzle = modeSession?.selectedPuzzle || null;
-let bankManifest = null;
 let engineAbortController = null;
-let soundEnabled = true;
-let audioContext = null;
 const controlPanel = mountBoardControlPanel(document.getElementById('humanControlPanel'), {
   mode: 'human-ai',
   hrefs: { manual: './index.html', 'human-ai': './human-ai.html', 'ai-ai': './ai-ai.html' },
@@ -87,12 +69,10 @@ const controlPanel = mountBoardControlPanel(document.getElementById('humanContro
     }
     if (action === 'undo') undoTurn();
     if (action === 'redo') redoTurn();
-    if (action === 'sound') toggleSound();
-    if (action === 'voice') speakStatus();
     if (action === 'side') {
       humanSide = humanSide === RED ? BLACK : RED;
       controlPanel.setSide(humanSide === RED ? 'red' : 'black');
-      puzzleStatus.textContent = `你执${sideName(humanSide)}。`;
+      analysisStatus.textContent = `你执${sideName(humanSide)}。`;
       if (engineThinking) {
         requestToken += 1;
         engineAbortController?.abort();
@@ -104,45 +84,35 @@ const controlPanel = mountBoardControlPanel(document.getElementById('humanContro
   }
 });
 
+controlPanel.setVoice(false);
+const audio = createBoardAudio(controlPanel, {
+  onStatus(message) { analysisStatus.textContent = message; }
+});
+
 if (modeSession) {
-  solutionEditor.value = modeSession.solution || '';
-  explanationEditor.value = modeSession.explanation || '';
-  saveSolutionButton.disabled = !solutionEditor.value.trim();
-  saveExplanationButton.disabled = !explanationEditor.value.trim();
-  recordButton.textContent = recording ? '结束记录' : '开始记录';
-  puzzleStatus.textContent = selectedPuzzle?.title || '当前棋局';
   controlPanel.setSide(humanSide);
 }
+audio.refresh();
 bindPlayModeSession(document.getElementById('humanControlPanel'), () => ({
-  game, selectedPuzzle, recording, recordingStart, humanSide,
+  game, selectedPuzzle, recording: false, recordingStart: 0, humanSide,
   initialFen,
-  solution: solutionEditor.value, explanation: explanationEditor.value,
+  solution: modeSession?.solution || '', explanation: modeSession?.explanation || '',
   solutionVariant: modeSession?.solutionVariant, boardSide: controlPanel.getSide()
 }), pauseEngine);
 
-document.getElementById('humanLoadPosition').addEventListener('click', () => positionFile.click());
-document.getElementById('humanLoadSolution').addEventListener('click', loadSolution);
-document.getElementById('humanLoadExplanation').addEventListener('click', loadExplanation);
-saveSolutionButton.addEventListener('click', saveSolution);
-saveExplanationButton.addEventListener('click', saveExplanation);
-recordButton.addEventListener('click', toggleRecording);
-solutionEditor.addEventListener('input', () => { saveSolutionButton.disabled = !solutionEditor.value.trim(); });
-explanationEditor.addEventListener('input', () => { saveExplanationButton.disabled = !explanationEditor.value.trim(); });
-bankSearch.addEventListener('input', renderBankTree);
-positionFile.addEventListener('change', loadPositionFile);
 
 renderBoard();
-loadBank();
 connectEngine();
 
 async function connectEngine() {
+  const token = requestToken;
   engineStatus.textContent = '正在连接 Pikafish...';
   controlPanel.controls.play.disabled = true;
   try {
     const response = await fetch('http://localhost:8787/api/v1/chinese-chess/engine/health');
     const status = await response.json();
     engineReady = response.ok && Boolean(status.available);
-    gameStarted = engineReady;
+    gameStarted = engineReady && token === requestToken;
     engineStatus.textContent = engineReady
       ? 'Pikafish 已就绪 · 人机对弈可用'
       : '未检测到 Pikafish 引擎，请启动本地服务。';
@@ -207,7 +177,6 @@ function handleSquareClick(position) {
     legalTargets = [];
     renderBoard();
     updateTurnStatus();
-    updateRecording();
     if (game.turn !== humanSide && !isGameFinished()) requestEngineMove();
     return;
   }
@@ -258,7 +227,6 @@ async function requestEngineMove() {
     if (!result.move || !makeMove(game, result.move.from, result.move.to)) throw new Error('引擎返回的着法无法应用。');
     playMoveSound();
     updateAnalysis(result);
-    updateRecording();
     analysisStatus.textContent = `轮到${sideName(humanSide)}走棋。`;
   } catch (error) {
     if (token === requestToken) analysisStatus.textContent = error.message || 'Pikafish 请求失败。';
@@ -303,10 +271,8 @@ function updateTurnStatus() {
     analysisStatus.textContent = game.turn === humanSide ? `轮到${sideName(humanSide)}走棋。` : `${sideName(game.turn)}准备应手。`;
     return;
   }
-  if (status.type === 'checkmate') {
-    analysisStatus.textContent = `${status.winner === RED ? '红方' : '黑方'}将死，${status.winner === RED ? '你获胜' : 'Pikafish获胜'}。`;
-  } else if (status.type === 'stalemate') {
-    analysisStatus.textContent = '困毙，和棋。';
+  if (status.type === 'checkmate' || status.type === 'stalemate') {
+    analysisStatus.textContent = `${sideName(status.turn)}${status.type === 'checkmate' ? '将死' : '困毙'}，${sideName(status.winner)}获胜（${status.winner === humanSide ? '你获胜' : 'Pikafish获胜'}）。`;
   } else if (status.type === 'check') {
     analysisStatus.textContent = `${game.turn === RED ? '红方' : '黑方'}被将军。`;
   }
@@ -318,6 +284,7 @@ function isGameFinished() {
 }
 
 function undoTurn() {
+  audio.stop();
   if (engineThinking) return;
   engineAbortController?.abort();
   requestToken += 1;
@@ -326,21 +293,22 @@ function undoTurn() {
   selected = null;
   legalTargets = [];
   renderBoard();
-  updateRecording();
   analysisStatus.textContent = `已悔去最近一回合。轮到${sideName(humanSide)}。`;
 }
 
 function redoTurn() {
   if (engineThinking) return;
-  if (redoMove(game) && game.turn !== humanSide) redoMove(game);
+  const replayed = redoMove(game);
+  if (replayed && game.turn !== humanSide) redoMove(game);
   selected = null;
   legalTargets = [];
   renderBoard();
-  updateRecording();
   updateTurnStatus();
+  if (replayed) audio.move(game);
 }
 
 function resetGame() {
+  audio.stop();
   engineAbortController?.abort();
   requestToken += 1;
   engineThinking = false;
@@ -353,16 +321,6 @@ function resetGame() {
   selected = null;
   legalTargets = [];
   selectedPuzzle = null;
-  puzzleStatus.textContent = '从右侧残局题库选择棋局，开始练习。';
-  recording = false;
-  recordingStart = 0;
-  recordButton.textContent = '开始记录';
-  solutionEditor.value = '';
-  explanationEditor.value = '';
-  saveSolutionButton.disabled = true;
-  saveExplanationButton.disabled = true;
-  solutionStatus.textContent = '答案保存在本机浏览器并可下载文本。';
-  explanationStatus.textContent = '解说单独保存为本机草稿与下载文件。';
   analysisStatus.textContent = engineReady ? '你执红方，请先走棋。' : '请先连接 Pikafish 引擎。';
   analysisDepth.textContent = '深度: - 层';
   analysisNodes.textContent = '节点: -';
@@ -377,191 +335,6 @@ function resetGame() {
   renderBoard();
 }
 
-async function loadBank() {
-  try {
-    bankManifest = await loadPuzzleBank();
-    const total = bankManifest.categories.reduce((sum, category) => sum + category.items.length, 0);
-    bankCount.textContent = `${total} 局`;
-    renderBankTree();
-  } catch {
-    bankCount.textContent = '不可用';
-    bankTree.replaceChildren();
-    const note = document.createElement('p');
-    note.className = 'bank-note';
-    note.textContent = '题库暂不可用，请通过本地服务访问。';
-    bankTree.append(note);
-  }
-}
-
-function renderBankTree() {
-  if (!bankManifest) return;
-  const query = bankSearch.value.trim().toLocaleLowerCase();
-  bankTree.replaceChildren();
-
-  const recommendation = document.createElement('details');
-  const recommendationTitle = document.createElement('summary');
-  recommendationTitle.textContent = '手动推荐';
-  const recommendationNote = document.createElement('p');
-  recommendationNote.className = 'bank-note';
-  recommendationNote.textContent = '个性化推荐暂未接入。';
-  recommendation.append(recommendationTitle, recommendationNote);
-  bankTree.append(recommendation);
-
-  renderPuzzleBank(bankTree, bankManifest, query, selectedPuzzle?.id, loadPuzzle);
-}
-
-async function loadPuzzle(category, puzzle) {
-  try {
-    const response = await fetch(`${PUZZLE_BANK_BASE}${puzzle.fen}`);
-    if (!response.ok) throw new Error('残局局面文件载入失败。');
-    const fen = (await response.text()).trim();
-    engineAbortController?.abort();
-    requestToken += 1;
-    engineThinking = false;
-    gameStarted = true;
-    game = createGameFromFen(fen);
-    initialFen = toFen(game);
-    humanSide = game.turn;
-    controlPanel.setSide(humanSide === RED ? 'red' : 'black');
-    selectedPuzzle = { ...puzzle, category, base: PUZZLE_BANK_BASE };
-    puzzleStatus.textContent = `${puzzle.title} · ${category.label} · ${humanSide === RED ? '红方先行' : '黑方先行'}`;
-    selected = null;
-    legalTargets = [];
-    recording = false;
-    recordingStart = game.history.length;
-    recordButton.textContent = '开始记录';
-    solutionEditor.value = '';
-    explanationEditor.value = '';
-    saveSolutionButton.disabled = true;
-    saveExplanationButton.disabled = true;
-    analysisCandidates.textContent = `已载入：${puzzle.title}`;
-    analysisStatus.textContent = `局面已载入，你执${sideName(humanSide)}。`;
-    renderBoard();
-    renderBankTree();
-    if (engineReady && game.turn !== humanSide) requestEngineMove();
-  } catch (error) {
-    analysisStatus.textContent = error.message || '局面载入失败。';
-  }
-}
-
-async function loadSolution() {
-  if (!selectedPuzzle) {
-    const saved = readLocal(`xiàngqí:solution:${'manual-game'}`);
-    if (saved?.text) solutionEditor.value = saved.text;
-    solutionStatus.textContent = solutionEditor.value ? '已载入本机答案草稿。' : '请先选择题库局面或开始记录。';
-  } else if (selectedPuzzle.solutions?.length) {
-    try {
-      const response = await fetch(selectedPuzzle.base + selectedPuzzle.solutions[0]);
-      if (!response.ok) throw new Error('答案文件载入失败。');
-      solutionEditor.value = await response.text();
-      solutionStatus.textContent = '已载入题库答案预览。';
-    } catch (error) { solutionStatus.textContent = error.message; }
-  } else solutionStatus.textContent = '该局面暂无配套答案文件。';
-  saveSolutionButton.disabled = !solutionEditor.value.trim();
-}
-
-async function loadExplanation() {
-  if (!selectedPuzzle) {
-    const saved = readLocal('xiàngqí:explanation:manual-game');
-    if (saved?.text) explanationEditor.value = saved.text;
-    explanationStatus.textContent = explanationEditor.value ? '已载入本机解说草稿。' : '请先选择题库局面。';
-  } else if (selectedPuzzle.explanations?.length) {
-    try {
-      const response = await fetch(selectedPuzzle.base + selectedPuzzle.explanations[0]);
-      if (!response.ok) throw new Error('解说文件载入失败。');
-      explanationEditor.value = await response.text();
-      explanationStatus.textContent = '已载入题库解说预览。';
-    } catch (error) { explanationStatus.textContent = error.message; }
-  } else explanationStatus.textContent = '该局面暂无配套解说文件。';
-  saveExplanationButton.disabled = !explanationEditor.value.trim();
-}
-
-function toggleRecording() {
-  if (!recording) {
-    recording = true;
-    recordingStart = game.history.length;
-    solutionEditor.value = '';
-    recordButton.textContent = '结束记录';
-    solutionStatus.textContent = '正在记录后续手动着法。';
-  } else {
-    recording = false;
-    recordButton.textContent = '开始记录';
-    solutionStatus.textContent = solutionEditor.value.trim() ? '记录结束，可保存到本机并下载棋谱。' : '记录结束，尚无新着法。';
-  }
-  saveSolutionButton.disabled = !solutionEditor.value.trim();
-}
-
-function updateRecording() {
-  if (!recording) return;
-  const moves = game.history.slice(recordingStart);
-  solutionEditor.value = moves.map((move, index) => {
-    const number = Math.floor(index / 2) + 1;
-    return `${move.turn === RED ? `${number}.` : `${number}…`} ${formatUcci(move)}`;
-  }).join('\n');
-  saveSolutionButton.disabled = !moves.length;
-  solutionStatus.textContent = `${moves.length} 着已记录。`;
-}
-
-function formatUcci(move) {
-  const files = 'abcdefghi';
-  return `${files[move.from.col]}${9 - move.from.row}${files[move.to.col]}${9 - move.to.row}`;
-}
-
-function saveSolution() {
-  saveLocal(`xiàngqí:solution:${selectedPuzzle?.id || 'manual-game'}`, `${solutionEditor.value.trim()}\n# END\n`);
-  downloadText(`${selectedPuzzle?.id || 'manual-game'}-1.txt`, `${solutionEditor.value.trim()}\n# END\n`);
-  solutionStatus.textContent = '已保存到本机并下载棋谱文本。';
-}
-
-function saveExplanation() {
-  saveLocal(`xiàngqí:explanation:${selectedPuzzle?.id || 'manual-game'}`, explanationEditor.value.trim());
-  downloadText(`${selectedPuzzle?.id || 'manual-game'}_exp.txt`, explanationEditor.value.trim());
-  explanationStatus.textContent = '已保存到本机并下载解说文本。';
-}
-
-function saveLocal(key, text) {
-  try { localStorage.setItem(key, JSON.stringify({ text, updatedAt: new Date().toISOString() })); }
-  catch { analysisStatus.textContent = '浏览器本机存储不可用，请使用下载文件保留内容。'; }
-}
-
-function readLocal(key) {
-  try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
-}
-
-function downloadText(filename, content) {
-  const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
-function loadPositionFile(event) {
-  const input = event.currentTarget;
-  const file = input.files?.[0];
-  if (!file) return;
-  file.text().then(text => {
-    try {
-      engineAbortController?.abort();
-      requestToken += 1;
-      engineThinking = false;
-      gameStarted = true;
-      game = createGameFromFen(text.trim());
-      initialFen = toFen(game);
-      humanSide = game.turn;
-      controlPanel.setSide(humanSide === RED ? 'red' : 'black');
-      selectedPuzzle = null;
-      puzzleStatus.textContent = '已载入本地局面文件。';
-      selected = null;
-      legalTargets = [];
-      analysisStatus.textContent = `局面已载入，你执${sideName(humanSide)}。`;
-      renderBoard();
-    } catch (error) { analysisStatus.textContent = error.message || '局面文件无效。'; }
-    input.value = '';
-  });
-}
-
 function pauseEngine() {
   requestToken += 1;
   engineAbortController?.abort();
@@ -573,52 +346,12 @@ function pauseEngine() {
   renderBoard();
 }
 
-function speakStatus() {
-  if (!('speechSynthesis' in window)) {
-    analysisStatus.textContent = '当前浏览器不支持语音播报。';
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(`${analysisStatus.textContent}。${evaluationText.textContent}`);
-  utterance.lang = 'zh-CN';
-  utterance.volume = controlPanel.getVolume() / 100;
-  window.speechSynthesis.speak(utterance);
-}
-
-function toggleSound() {
-  soundEnabled = !soundEnabled;
-  controlPanel.controls.sound.setAttribute('aria-pressed', String(soundEnabled));
-  controlPanel.controls.sound.setAttribute('aria-label', soundEnabled ? '关闭音效' : '开启音效');
-  controlPanel.controls.sound.title = soundEnabled ? '关闭音效' : '开启音效';
-}
-
 function playMoveSound() {
-  if (!soundEnabled) return;
-  const volume = controlPanel.getVolume();
-  if (volume <= 0) return;
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) return;
-  audioContext ||= new AudioContextClass();
-  if (audioContext.state === 'suspended') audioContext.resume();
-  const oscillator = audioContext.createOscillator();
-  const gain = audioContext.createGain();
-  oscillator.frequency.value = 520;
-  gain.gain.setValueAtTime(volume / 100 * 0.12, audioContext.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.07);
-  oscillator.connect(gain);
-  gain.connect(audioContext.destination);
-  oscillator.start();
-  oscillator.stop(audioContext.currentTime + 0.07);
+  audio.move(game);
 }
 
 function sideName(side) {
   return side === RED ? '红方' : '黑方';
-}
-
-async function fetchText(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`文件载入失败 (${response.status})`);
-  return response.text();
 }
 
 function sameSquare(first, second) {

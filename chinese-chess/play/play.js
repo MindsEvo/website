@@ -1,4 +1,4 @@
-import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
+import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank, pairedExplanation } from '../shared/puzzle-bank.mjs';
 import {
   BLACK,
   RED,
@@ -22,6 +22,8 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { createBoardAudio } from '../shared/board-audio.mjs';
+import { buildNotationPlayback } from '../shared/notation-playback.mjs';
 import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
@@ -43,10 +45,8 @@ const controlPanel = mountBoardControlPanel(document.getElementById('playControl
     if (action === 'undo') doUndo();
     if (action === 'redo') doRedo();
     if (action === 'sound') {
-      soundEnabled = !soundEnabled;
-      ruleNote.textContent = soundEnabled ? '音效已开启。' : '音效已关闭。';
+      ruleNote.textContent = controlPanel.getSoundEnabled() ? '音效已开启。' : '音效已关闭。';
     }
-    if (action === 'voice') speakExplanation();
   }
 });
 const solutionText = document.getElementById('solutionText');
@@ -56,9 +56,6 @@ const explanationStatus = document.getElementById('explanationStatus');
 const bankTree = document.getElementById('bankTree');
 const bankSearch = document.getElementById('bankSearch');
 const positionTitle = document.getElementById('positionTitle');
-const recordingButton = document.getElementById('recordButton');
-const saveSolutionButton = document.getElementById('saveSolutionButton');
-const saveExplanationButton = document.getElementById('saveExplanationButton');
 const solutionVariant = document.getElementById('solutionVariant');
 
 const modeSession = restorePlayModeSession();
@@ -68,43 +65,33 @@ let legalTargets = [];
 let bankManifest = null;
 let selectedPuzzle = modeSession?.selectedPuzzle || null;
 let initialFen = modeSession?.initialFen || toFen(game);
-let recording = modeSession?.recording || false;
-let recordingStart = modeSession?.recordingStart || 0;
 let playbackTimer = null;
-let soundEnabled = true;
+let materialLoadToken = 0;
+controlPanel.setVoice(false);
+const audio = createBoardAudio(controlPanel, {
+  explanation: explanationText,
+  onPause: stopPlayback,
+  onStatus(message) { ruleNote.textContent = message; }
+});
 
 if (modeSession) {
   solutionText.value = modeSession.solution || '';
   explanationText.value = modeSession.explanation || '';
-  saveSolutionButton.disabled = !solutionText.value.trim();
-  saveExplanationButton.disabled = !explanationText.value.trim();
   positionTitle.textContent = selectedPuzzle?.title || '当前棋局';
-  recordingButton.textContent = recording ? '结束记录' : '开始记录';
-  recordingButton.classList.toggle('recording', recording);
   controlPanel.setSide(modeSession.boardSide || 'red');
-  const solutions = selectedPuzzle?.solutions || [];
-  solutionVariant.replaceChildren();
-  solutions.forEach((file, index) => {
-    const option = document.createElement('option');
-    option.value = String(index);
-    option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
-    solutionVariant.append(option);
-  });
-  solutionVariant.hidden = solutions.length === 0;
+  renderSolutionVariants();
   solutionVariant.value = modeSession.solutionVariant || '0';
-  document.getElementById('solutionVersionRow').hidden = !recording && solutions.length === 0;
-  document.getElementById('explanationVersionRow').hidden = !(selectedPuzzle?.explanations?.length);
-  document.getElementById('solutionVersion').value = String(solutions.length + 1);
-  document.getElementById('explanationVersion').value = String((selectedPuzzle?.explanations?.length || 0) + 1);
 }
+audio.refresh();
 bindPlayModeSession(document.getElementById('playControlPanel'), () => ({
-  game, initialFen, selectedPuzzle, recording, recordingStart,
+  game, initialFen, selectedPuzzle, recording: false, recordingStart: 0,
   solution: solutionText.value, explanation: explanationText.value,
   solutionVariant: solutionVariant.value, boardSide: controlPanel.getSide(),
   humanSide: modeSession?.humanSide
 }), stopPlayback);
 
 function doUndo() {
+  audio.stop();
   if (!undoMove(game)) return;
   selectedSquare = null;
   legalTargets = [];
@@ -118,19 +105,9 @@ function doRedo() {
   legalTargets = [];
   ruleNote.textContent = '已重做。';
   render();
+  audio.move(game);
 }
 
-document.getElementById('loadPositionButton').addEventListener('click', () => document.getElementById('positionFileInput').click());
-document.getElementById('loadSolutionButton').addEventListener('click', () => document.getElementById('solutionFileInput').click());
-document.getElementById('loadExplanationButton').addEventListener('click', () => document.getElementById('explanationFileInput').click());
-recordingButton.addEventListener('click', toggleRecording);
-saveSolutionButton.addEventListener('click', saveSolution);
-saveExplanationButton.addEventListener('click', saveExplanation);
-document.getElementById('positionFileInput').addEventListener('change', loadPositionFile);
-document.getElementById('solutionFileInput').addEventListener('change', event => loadTextFile(event, solutionText, solutionStatus, '答案'));
-document.getElementById('explanationFileInput').addEventListener('change', event => loadTextFile(event, explanationText, explanationStatus, '解说'));
-solutionText.addEventListener('input', () => { saveSolutionButton.disabled = !solutionText.value.trim(); });
-explanationText.addEventListener('input', () => { saveExplanationButton.disabled = !explanationText.value.trim(); });
 solutionVariant.addEventListener('change', () => loadPuzzleSolution(Number(solutionVariant.value)));
 bankSearch.addEventListener('input', renderBankTree);
 
@@ -143,7 +120,6 @@ function render() {
   renderMoves();
   controlPanel.controls.undo.disabled = game.history.length === 0;
   controlPanel.controls.redo.disabled = game.redoStack.length === 0;
-  if (recording) updateRecordedSolution();
 }
 
 function renderStatus(status) {
@@ -211,7 +187,7 @@ function handleSquareClick(position) {
     legalTargets = [];
     const lastMove = game.history.at(-1);
     ruleNote.textContent = lastMove.captured ? '吃子完成。' : '落子完成。';
-    playMoveSound(Boolean(lastMove.captured));
+    playMoveSound();
     render();
     return;
   }
@@ -336,8 +312,8 @@ function renderBankTree() {
 }
 
 async function loadPuzzle(category, puzzle) {
+  audio.stop();
   stopPlayback();
-  finishRecordingForPositionChange();
   try {
     const base = PUZZLE_BANK_BASE;
     const fenText = await fetchText(base + puzzle.fen);
@@ -347,20 +323,7 @@ async function loadPuzzle(category, puzzle) {
     selectedSquare = null;
     legalTargets = [];
     positionTitle.textContent = puzzle.title;
-    solutionVariant.replaceChildren();
-    solutionVariant.hidden = puzzle.solutions.length === 0;
-    document.getElementById('solutionVersionRow').hidden = puzzle.solutions.length === 0;
-    document.getElementById('explanationVersionRow').hidden = puzzle.explanations.length === 0;
-    const savedAnswer = localRead(`xiàngqi:solution:${puzzle.id}`);
-    const savedNote = localRead(`xiàngqi:explanation:${puzzle.id}`);
-    document.getElementById('solutionVersion').value = String(Math.max(puzzle.solutions.length, savedAnswer?.version || 0) + 1);
-    document.getElementById('explanationVersion').value = String(Math.max(puzzle.explanations.length, savedNote?.version || 0) + 1);
-    puzzle.solutions.forEach((file, index) => {
-      const option = document.createElement('option');
-      option.value = String(index);
-      option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
-      solutionVariant.append(option);
-    });
+    renderSolutionVariants();
     renderBankTree();
     await loadPuzzleMaterials(0);
     ruleNote.textContent = `已载入：${puzzle.title}`;
@@ -371,232 +334,82 @@ async function loadPuzzle(category, puzzle) {
 }
 
 async function loadPuzzleMaterials(solutionIndex) {
+  const token = ++materialLoadToken;
+  audio.stop();
   if (!selectedPuzzle) return;
-  const { base, solutions, explanations, id } = selectedPuzzle;
-  const savedSolution = localRead(`xiàngqi:solution:${id}`);
-  const savedExplanation = localRead(`xiàngqi:explanation:${id}`);
-  solutionText.value = savedSolution?.text || '';
-  explanationText.value = savedExplanation?.text || '';
-
-  if (!solutionText.value && solutions[solutionIndex]) {
-    solutionText.value = await fetchText(base + solutions[solutionIndex]).catch(() => '');
+  const { base, solutions } = selectedPuzzle;
+  solutionText.value = '';
+  explanationText.value = '';
+  try {
+    if (solutions[solutionIndex]) {
+      const text = await fetchText(base + solutions[solutionIndex]);
+      if (token !== materialLoadToken) return;
+      solutionText.value = text;
+    }
+    solutionStatus.textContent = solutionText.value ? `已载入答案 ${solutionIndex + 1}。` : '该题暂无答案文件。';
+  } catch (error) {
+    if (token !== materialLoadToken) return;
+    solutionStatus.textContent = error.message;
   }
-  if (!explanationText.value && explanations.length) {
-    explanationText.value = await fetchText(base + explanations[0]).catch(() => '');
+  try {
+    const explanation = pairedExplanation(selectedPuzzle, solutionIndex);
+    if (explanation) {
+      const text = await fetchText(base + explanation);
+      if (token !== materialLoadToken) return;
+      explanationText.value = text;
+    }
+    explanationStatus.textContent = explanationText.value ? '已载入配套解说。' : '该解法暂无配套解说。';
+  } catch (error) {
+    if (token !== materialLoadToken) return;
+    explanationStatus.textContent = error.message;
   }
-  solutionStatus.textContent = solutionText.value ? `已载入 ${solutions[solutionIndex] ? `答案 ${solutionIndex + 1}` : '本机保存版本'}。` : '该题暂无答案文件，可开始记录。';
-  explanationStatus.textContent = explanationText.value ? `已载入解说（${explanations.length ? '题库版本' : '本机保存版本'}）。` : '该题暂无解说，可在此撰写。';
-  saveSolutionButton.disabled = !solutionText.value.trim();
-  saveExplanationButton.disabled = !explanationText.value.trim();
+  audio.refresh();
 }
 
 async function loadPuzzleSolution(index) {
-  if (!selectedPuzzle) return;
-  solutionText.value = await fetchText(selectedPuzzle.base + selectedPuzzle.solutions[index]).catch(() => '');
-  solutionStatus.textContent = solutionText.value ? `已载入答案 ${index + 1}。` : '答案文件载入失败。';
-  saveSolutionButton.disabled = !solutionText.value.trim();
-  const explanationFile = selectedPuzzle.explanations[index];
-  if (explanationFile) {
-    explanationText.value = await fetchText(selectedPuzzle.base + explanationFile).catch(() => '');
-    explanationStatus.textContent = explanationText.value ? `已载入解法 ${index + 1} 的解说。` : '该解法暂无配套解说。';
-    saveExplanationButton.disabled = !explanationText.value.trim();
-  }
+  stopPlayback();
+  await loadPuzzleMaterials(index);
 }
 
-function toggleRecording() {
-  if (!recording) {
-    recording = true;
-    recordingStart = game.history.length;
-    solutionText.value = '';
-    recordingButton.textContent = '结束记录';
-    recordingButton.classList.add('recording');
-    saveSolutionButton.disabled = true;
-    document.getElementById('solutionVersionRow').hidden = false;
-    solutionStatus.textContent = '正在记录后续手动着法。';
-    ruleNote.textContent = '记录已开始，走棋会写入中间棋谱区。';
+function renderSolutionVariants() {
+  const solutions = selectedPuzzle?.solutions || [];
+  solutionVariant.replaceChildren();
+  solutionVariant.disabled = solutions.length === 0;
+  if (!solutions.length) {
+    solutionVariant.append(new Option(selectedPuzzle ? '暂无答案' : '请选择棋局', ''));
     return;
   }
-  recording = false;
-  recordingButton.textContent = '开始记录';
-  recordingButton.classList.remove('recording');
-  saveSolutionButton.disabled = !solutionText.value.trim();
-  solutionStatus.textContent = solutionText.value.trim() ? '记录结束，可保存到本机并下载棋谱。' : '记录结束，尚无新着法。';
-}
-
-function updateRecordedSolution() {
-  const moves = game.history.slice(recordingStart);
-  solutionText.value = moves.map((move, index) => {
-    const turnNumber = Math.floor(index / 2) + 1;
-    const prefix = move.turn === RED ? `${turnNumber}.` : `${turnNumber}…`;
-    return `${prefix} ${formatMove(move)}`;
-  }).join('\n');
-  saveSolutionButton.disabled = moves.length === 0;
-  solutionStatus.textContent = `${moves.length} 着已记录${moves.length ? '。' : '，请在棋盘上走棋。'}`;
-}
-
-function formatMove(move) {
-  const file = fileNumber(move.turn, move.from.col);
-  const targetFile = fileNumber(move.turn, move.to.col);
-  const forward = move.turn === RED ? move.to.row < move.from.row : move.to.row > move.from.row;
-  const direction = move.from.row === move.to.row ? '平' : forward ? '进' : '退';
-  const distance = move.from.row === move.to.row ? targetFile : Math.abs(move.to.row - move.from.row);
-  return `${getPieceLabel(move.piece)}${chineseNumber(file)}${direction}${chineseNumber(distance)}`;
-}
-
-function chineseNumber(number) {
-  return ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'][number] || String(number);
-}
-
-async function saveSolution() {
-  const text = solutionText.value.trim();
-  if (!text) return;
-  const version = Math.max(1, Number(document.getElementById('solutionVersion').value) || 1);
-  const id = selectedPuzzle?.id || 'manual-game';
-  const content = `${text}\n# END\n# 解法 ${version}\n`;
-  if (selectedPuzzle?.rootGene === 'manual') {
-    try {
-      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(id)}/material`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind: 'solution', version, text })
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || '题库棋谱保存失败。');
-      selectedPuzzle.solutions ||= [];
-      if (!selectedPuzzle.solutions.includes(result.relativePath)) selectedPuzzle.solutions.push(result.relativePath);
-      solutionVariant.replaceChildren();
-      selectedPuzzle.solutions.forEach((file, index) => {
-        const option = document.createElement('option');
-        option.value = String(index);
-        option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
-        solutionVariant.append(option);
-      });
-      solutionVariant.hidden = selectedPuzzle.solutions.length < 2;
-      document.getElementById('solutionVersionRow').hidden = false;
-      solutionVariant.value = '0';
-      solutionStatus.textContent = `答案版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
-    } catch (error) {
-      solutionStatus.textContent = `${error.message || '题库服务不可用'}；已保存本机副本并下载。`;
-    }
-  }
-  localWrite(`xiàngqi:solution:${id}`, { text: content, version, updatedAt: new Date().toISOString() });
-  downloadText(`${id}-${String(version).padStart(3, '0')}.txt`, content);
-  document.getElementById('solutionVersionRow').hidden = false;
-  if (selectedPuzzle?.rootGene !== 'manual') solutionStatus.textContent = `已保存答案版本 ${version} 到本机，并下载文本文件。`;
-  recording = false;
-  recordingButton.textContent = '开始记录';
-  recordingButton.classList.remove('recording');
-}
-
-async function saveExplanation() {
-  const text = explanationText.value.trim();
-  if (!text) return;
-  const version = Math.max(1, Number(document.getElementById('explanationVersion').value) || 1);
-  const id = selectedPuzzle?.id || 'manual-game';
-  if (selectedPuzzle?.rootGene === 'manual') {
-    try {
-      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(id)}/material`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind: 'explanation', version, text })
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || '题库解说保存失败。');
-      selectedPuzzle.explanations ||= [];
-      if (!selectedPuzzle.explanations.includes(result.relativePath)) selectedPuzzle.explanations.push(result.relativePath);
-      explanationStatus.textContent = `解说版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
-    } catch (error) {
-      explanationStatus.textContent = `${error.message || '题库服务不可用'}；已保存本机副本并下载。`;
-    }
-  }
-  localWrite(`xiàngqi:explanation:${id}`, { text, version, updatedAt: new Date().toISOString() });
-  downloadText(`${id}_exp-${String(version).padStart(3, '0')}.txt`, `${text}\n`);
-  document.getElementById('explanationVersionRow').hidden = false;
-  if (selectedPuzzle?.rootGene !== 'manual') explanationStatus.textContent = `解说版本 ${version} 已保存到本机，并下载文本文件。`;
-}
-
-function syncSavedSolutionVersions() {
-  solutionVariant.replaceChildren();
-  for (const [index] of (selectedPuzzle?.solutions || []).entries()) {
-    const option = document.createElement('option');
-    option.value = String(index);
-    option.textContent = `答案 ${String(index + 1).padStart(3, '0')}`;
-    solutionVariant.append(option);
-  }
-  solutionVariant.hidden = selectedPuzzle.solutions.length < 2;
-  document.getElementById('solutionVersionRow').hidden = false;
-}
-
-async function loadPositionFile(event) {
-  const file = event.target.files?.[0];
-  if (!file) return;
-  try {
-    finishRecordingForPositionChange();
-    const text = await file.text();
-    let fen = text.trim();
-    if (file.name.toLowerCase().endsWith('.json')) {
-      const data = JSON.parse(text);
-      fen = data.boardData?.initialPosition || data.content?.fen || data.generated_data?.fen_positions || data.fen || '';
-    }
-    game = createGameFromFen(fen);
-    initialFen = fen;
-    selectedPuzzle = null;
-    selectedSquare = null;
-    legalTargets = [];
-    solutionVariant.replaceChildren();
-    solutionVariant.hidden = true;
-    document.getElementById('solutionVersionRow').hidden = true;
-    document.getElementById('explanationVersionRow').hidden = true;
-    positionTitle.textContent = file.name;
-    solutionText.value = '';
-    explanationText.value = '';
-    solutionStatus.textContent = '已载入本地局面文件。';
-    explanationStatus.textContent = '可为此局面撰写解说。';
-    renderBankTree();
-    render();
-    ruleNote.textContent = `已载入局面：${file.name}`;
-  } catch (error) {
-    ruleNote.textContent = `局面文件无法载入：${error.message}`;
-  } finally {
-    event.target.value = '';
-  }
-}
-
-async function loadTextFile(event, target, status, label) {
-  const file = event.target.files?.[0];
-  if (!file) return;
-  target.value = await file.text();
-  status.textContent = `已载入本地${label}文件：${file.name}`;
-  if (target === solutionText) saveSolutionButton.disabled = !target.value.trim();
-  else saveExplanationButton.disabled = !target.value.trim();
-  event.target.value = '';
+  solutions.forEach((file, index) => {
+    const version = file.match(/-(\d{3})\.txt$/)?.[1] || String(index + 1).padStart(3, '0');
+    solutionVariant.append(new Option(`棋谱答案 ${version}`, String(index)));
+  });
 }
 
 function resetPosition() {
+  audio.stop();
   stopPlayback();
   game = initialFen ? createGameFromFen(initialFen) : createGame();
   selectedSquare = null;
   legalTargets = [];
-  recording = false;
-  recordingButton.textContent = '开始记录';
-  recordingButton.classList.remove('recording');
   ruleNote.textContent = '局面已重置。';
   render();
 }
 
-function finishRecordingForPositionChange() {
-  if (!recording) return;
-  recording = false;
-  recordingButton.textContent = '开始记录';
-  recordingButton.classList.remove('recording');
-}
-
 function togglePlayback() {
+  audio.stop();
   if (playbackTimer) {
     stopPlayback();
     return;
   }
-  const history = game.history.map(move => ({ from: { ...move.from }, to: { ...move.to } }));
+  let history = game.history.map(move => ({ from: { ...move.from }, to: { ...move.to } }));
+  if (!history.length && solutionText.value.trim()) {
+    try { history = buildNotationPlayback(initialFen, solutionText.value).moves; }
+    catch (error) {
+      ruleNote.textContent = `棋谱无法播放：${error.message}`;
+      controlPanel.setPlaying(false);
+      return;
+    }
+  }
   if (history.length === 0) {
     ruleNote.textContent = '当前棋局还没有可回放的着法。';
     controlPanel.setPlaying(false);
@@ -613,6 +426,7 @@ function togglePlayback() {
       return;
     }
     makeMove(game, history[index].from, history[index].to);
+    audio.move(game);
     index += 1;
     render();
     const delay = 1100 - Number(controlPanel.controls.speed.value) * 90;
@@ -627,67 +441,14 @@ function stopPlayback() {
   controlPanel.setPlaying(false);
 }
 
-function speakExplanation() {
-  if (!explanationText.value.trim()) {
-    ruleNote.textContent = '当前没有可朗读的解说。';
-    return;
-  }
-  if (!window.speechSynthesis) {
-    ruleNote.textContent = '此浏览器暂不支持语音朗读。';
-    return;
-  }
-  speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(explanationText.value);
-  utterance.lang = 'zh-CN';
-  utterance.volume = controlPanel.getVolume() / 100;
-  utterance.rate = 0.75 + controlPanel.controls.speed.value / 20;
-  speechSynthesis.speak(utterance);
-}
-
-function playMoveSound(capture) {
-  if (!soundEnabled || controlPanel.getVolume() === 0) return;
-  try {
-    const audio = new AudioContext();
-    const oscillator = audio.createOscillator();
-    const gain = audio.createGain();
-    oscillator.frequency.value = capture ? 300 : 460;
-    gain.gain.value = controlPanel.getVolume() / 1000;
-    oscillator.connect(gain);
-    gain.connect(audio.destination);
-    oscillator.start();
-    oscillator.stop(audio.currentTime + 0.07);
-    oscillator.onended = () => audio.close();
-  } catch {}
+function playMoveSound() {
+  audio.move(game);
 }
 
 async function fetchText(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`文件载入失败 (${response.status})`);
   return response.text();
-}
-
-function localRead(key) {
-  try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
-}
-
-function localWrite(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-    return true;
-  } catch {
-    ruleNote.textContent = '浏览器本机存储不可用，请使用下载文件保留内容。';
-    return false;
-  }
-}
-
-function downloadText(filename, content) {
-  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(url);
 }
 
 render();

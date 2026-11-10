@@ -31,6 +31,12 @@
 .xiangqi-control-panel .xiangqi-control-button:hover { border-color: #b7c8d3; background: #f2f7f9; }
 .xiangqi-control-panel .xiangqi-control-button:disabled { color: #aab4be; background: #f0f2f3; cursor: not-allowed; }
 .xiangqi-control-panel .xiangqi-control-button.is-active { color: #fff; border-color: #2588e7; background: #2588e7; }
+.xiangqi-control-panel [data-control="sound"][aria-pressed="true"],
+.xiangqi-control-panel [data-control="voice"][aria-pressed="true"] { border-color: #2588e7; background: #e8f4fd; color: #1762a7; }
+.xiangqi-explanation-audio { align-self: flex-start; margin: 0 0 6px; padding: 4px 8px; border: 1px solid #bdc3c7; border-radius: 4px; background: #fff; color: #1762a7; font: inherit; font-size: 12px; cursor: pointer; }
+.xiangqi-explanation-audio[aria-pressed="true"] { background: #e8f4fd; }
+.xiangqi-explanation-audio:disabled { color: #89949c; cursor: not-allowed; }
+h2 > .xiangqi-explanation-audio, h3 > .xiangqi-explanation-audio, label > .xiangqi-explanation-audio { margin: 0 0 0 6px; }
 .xiangqi-control-panel .xiangqi-control-divider { box-sizing: border-box; flex: 0 0 1px; height: 20px; margin: 0 2px; background: #bdc2c6; }
 .xiangqi-control-range { box-sizing: border-box; flex: 0 1 68px; min-width: 60px; margin: 0; display: flex; align-items: center; gap: 3px; color: #707e89; font-size: 8px; white-space: nowrap; }
 .xiangqi-control-range + .xiangqi-control-range { flex-basis: 64px; min-width: 58px; margin-left: 0; }

@@ -356,6 +356,7 @@ function speak(text, label) {
 }
 
 function speakAudio(text) {
+  if (document.querySelector('#boardToolbar [data-control="voice"]')?.getAttribute('aria-pressed') === 'false') return;
   if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
@@ -372,4 +373,3 @@ function isPalaceDiagonal(row, col) {
   return ((row === 0 || row === 2 || row === 7 || row === 9) && (col === 3 || col === 5))
     || (row === 1 && col === 4) || (row === 8 && col === 4);
 }
-

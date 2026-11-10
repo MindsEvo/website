@@ -90,12 +90,59 @@ and normalized for indexing only; original files are preserved.
 Passing the desktop path to the validator also checks that every source file was
 copied byte-for-byte and every source FEN is indexed.
 
+The Chinese chess root-gene editor provides a red/black standard-piece palette,
+an interactive puzzle directory, and endgame, attacking and tactics selectors
+at L1–L3. Imported ungraded tactics retain their original level in the directory.
+Saving an imported puzzle creates a separate manual copy; only manual entries
+can be updated or deleted. IDs use `eg_CUSTOM_L1-001`, `at_CUSTOM_L2-001` or
+`tac_CUSTOM_L3-001` (all three prefixes support all three levels).
+Click a board piece and then a destination to reposition it without move-rule
+restrictions; clicking the selected square cancels selection. Palette placement
+and erasing cancel board selection. Kings can be repositioned but not overwritten
+or erased. Reset restores the last loaded board and side to move (the standard
+starting position before any puzzle is loaded), without changing saved files.
+The editor's manual, human-AI and AI-AI controls switch in place without opening
+play pages or adding analysis panels. Manual mode edits freely; human-AI uses
+legal moves and the selected human side. AI-AI starts paused until Play is
+clicked. Switching modes retains the current position and play history; editing
+the position begins a new history. Reset, loading, switching, undo and page exit
+cancel pending engine work; errors leave the current board available for retry.
+Automatic voice starts disabled in this editor; sound effects remain enabled,
+and the voice button can explicitly enable move announcements.
+The desktop editor uses four compact columns: editing controls, board, solution
+and explanation editor, and the original searchable puzzle directory on the far
+right. The FEN preview below the board is removed; operation/error messages
+remain visible in the footer. The material panel
+imports, records and edits solutions and explanations. Save the starting FEN
+first, then start recording and use legal manual moves, human-AI, or AI-AI
+(Play starts the engine). Horse/elephant notation uses destination files;
+recordings are round-trip checked through the same parser as lesson playback.
+Unresolvable notation is reported rather than saved as an incorrect solution.
+Material saves use the existing versioned API and only target saved manual
+positions; imported source entries must be copied first. API errors retain
+editor content for retry. The double-human play page now displays read-only
+solutions and paired explanations (including audio and solution playback);
+its editing/recording/saving controls are removed. Human-AI and AI-AI play
+pages show only the board, shared controls, AI analysis and engine settings;
+puzzle libraries, practice boxes and material editors are removed. Switching
+back to manual play still transfers the current position and its source materials.
+For compatibility, manual files remain in `bank/endgame/L1/custom` and its
+manifest. The shared bank loader merges these entries into the appropriate
+family/level for the editor and all three play modes. Restart the local API
+after updating the writer to enable the expanded ID format.
+
+```powershell
+node web\tools\test-chinese-root-gene-service.mjs
+node web\tools\test-chinese-puzzle-bank.mjs
+node web\tools\test-chinese-recorded-notation.mjs
+```
+
 The Chinese chess academy endgame basics page restores the desktop layout.
 Observation > rook lists all eleven single-rook positions from `endgame/L1/rook`,
 grouped by title. Lone-rook mate retains `eg_R-K_L1-001` through `005`; the other
 groups cover one/two advisors, one/two elephants, advisor plus elephant, and full
 advisors/elephants. Horse-rook and cannon-rook placeholders are removed from
-observation only; the double-rook placeholder and practice menus remain.
+observation only; the double-rook placeholder is removed from all endgame menus.
 Observation > horse replaces its old placeholders with all five L1 single-horse
 positions (bare general, one/two advisors and one/two elephants), using the same
 title submenus, solution playback and in-page mode switching as rook lessons.
@@ -191,7 +238,36 @@ node web\tools\test-chinese-opening.mjs
 
 Each puzzle includes FEN, numbered solution variants and matching explanations. The shared
 control panel supports reset, stepping, automatic playback and spoken moves;
-notation highlights follow playback. Moves are resolved from notation using the
+notation highlights follow playback. All four lesson pages show one numbered round
+per compact row, with red and black moves in separate clickable columns and no
+blank rows. Black-to-move positions leave the first red column empty. The desktop
+board, course and material columns sit 10px apart without an oversized board column;
+on phones the material panels stack to preserve room for both moves.
+Reference stepping/playback and live manual/engine moves also share capture,
+check and result feedback. The sound toggle controls effects only; the separate
+automatic-voice toggle controls move/capture/check/result narration. Both are on
+initially and independent. Capture destinations are amber,
+checked kings red, losing kings dark red and winning kings green. Results are
+derived from the core rules (including stalemate as a loss), never from merely
+reaching the end of a solution. Undo updates highlights without announcing a new
+move; reset, source changes and page exit cancel obsolete speech.
+
+All three play modes, the four lesson pages and classic demonstrations use
+`shared/board-audio.mjs`. Each explanation area has its own Play/Stop commentary
+button. It reads only the displayed/edited explanation, stripping source markers;
+it never reads analysis/status in place of commentary. Empty/missing commentary
+disables the button. Explicit commentary works even with automatic voice/effects
+off, uses the shared volume, and pauses autoplay/engine work. Starting playback or
+making a move stops commentary; changing source, reset or navigation stops stale
+speech. Muting automatic voice does not cancel explicit commentary. Zero volume
+stops speech and unsupported/failed audio is reported visibly.
+
+```powershell
+node web\tools\test-chinese-lesson-feedback.mjs
+node web\tools\test-chinese-board-audio.mjs
+```
+
+Moves are resolved from notation using the
 core legal-move rules rather than hardcoded coordinates. Numbered solutions take
 precedence over legacy base files, some of which contain only placeholder text.
 Other observation/practice categories and quizzes remain unconnected.

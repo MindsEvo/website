@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { createGame, toFen } from '../chinese-chess/core.mjs';
 
 const require = createRequire(import.meta.url);
 const { persistCustomPuzzle, savePuzzleMaterial, deleteCustomPuzzle } = require('../server/src/chineseChessRootGeneService.js');
@@ -51,6 +52,22 @@ test('updating a saved position invalidates its old solution and explanation fil
   });
 });
 
+test('accepts the editor core FEN with standard knight and elephant codes', async () => {
+    await withBank(async bankRoot => {
+      const fen = toFen(createGame());
+      const saved = await persistCustomPuzzle({ id: 'at_CUSTOM_L2-001', title: '标准棋子', fen }, { bankRoot });
+      assert.equal(saved.fen, fen);
+      const metadata = JSON.parse(await fs.readFile(path.join(bankRoot, 'custom', saved.id, `${saved.id}.json`), 'utf8'));
+      assert.equal(metadata.pieces.H, 2);
+      assert.equal(metadata.pieces.E, 2);
+      assert.equal(metadata.pieces.h, 2);
+      assert.equal(metadata.pieces.e, 2);
+      await assert.rejects(() => persistCustomPuzzle({
+        id: 'at_CUSTOM_L2-002', title: '超量', fen: fen.replace('1c5c1', '1c2n2c1')
+      }, { bankRoot }), /数量不能超过/);
+  });
+});
+
 test('saves versioned solutions and explanations, and only deletes the custom entry', async () => {
   await withBank(async bankRoot => {
     await persistCustomPuzzle({ id: 'eg_CUSTOM_L1-001', title: '手工测试局面', fen: INITIAL_FEN }, { bankRoot });
@@ -63,5 +80,34 @@ test('saves versioned solutions and explanations, and only deletes the custom en
     assert.equal(manifest.categories.find(category => category.key === 'custom').items.length, 0);
     assert.equal(manifest.categories.find(category => category.key === 'rook').items.length, 0);
     await assert.rejects(() => fs.access(path.join(bankRoot, 'custom/eg_CUSTOM_L1-001')));
+  });
+});
+
+test('all three root types and levels persist, update materials and delete independently', async () => {
+    await withBank(async bankRoot => {
+      for (const [prefix, type] of [['eg', 'endgame'], ['at', 'attacking'], ['tac', 'tactics']]) {
+        for (const level of ['L1', 'L2', 'L3']) {
+          const id = `${prefix}_CUSTOM_${level}-001`;
+          const saved = await persistCustomPuzzle({ id, title: `${type} ${level}`, fen: INITIAL_FEN }, { bankRoot });
+          const metadata = JSON.parse(await fs.readFile(path.join(bankRoot, 'custom', id, `${id}.json`), 'utf8'));
+          assert.equal(metadata.type, type);
+          assert.equal(metadata.difficulty, level);
+          assert.equal(saved.item.type, type);
+          assert.equal(saved.item.difficulty, level);
+          await savePuzzleMaterial({ id, kind: 'solution', version: 1, text: '1. 炮二平五' }, { bankRoot });
+          await savePuzzleMaterial({ id, kind: 'explanation', version: 1, text: '解说。' }, { bankRoot });
+        }
+      }
+      let manifest = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'));
+      assert.equal(manifest.categories.find(category => category.key === 'custom').items.length, 9);
+      for (const id of ['at_CUSTOM_L2-001', 'tac_CUSTOM_L3-001']) {
+        await persistCustomPuzzle({ id, title: '更新', fen: UPDATED_FEN, updateExisting: true }, { bankRoot });
+        await deleteCustomPuzzle({ id }, { bankRoot });
+      }
+      manifest = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'));
+      assert.equal(manifest.categories.find(category => category.key === 'custom').items.length, 7);
+      for (const id of ['eg_CUSTOM_L4-001', 'at_CUSTOM_L1-1', 'tac_CUSTOM_L0-001', 'other_CUSTOM_L1-001']) {
+        await assert.rejects(() => persistCustomPuzzle({ id, title: '无效', fen: INITIAL_FEN }, { bankRoot }), /编号必须符合/);
+      }
   });
 });

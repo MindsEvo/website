@@ -1,4 +1,3 @@
-import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank } from '../shared/puzzle-bank.mjs';
 import { BLACK, RED, createGame, createGameFromFen, getGameStatus, getPieceLabel, makeMove, undoMove, redoMove, toFen } from '../core.mjs';
 import {
   appendStandardPositionMark,
@@ -10,6 +9,7 @@ import {
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
+import { createBoardAudio } from '../shared/board-audio.mjs';
 import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
@@ -21,18 +21,6 @@ const advantageFill = document.querySelector('.advantage-meter i');
 const advantagePercent = document.querySelector('.advantage-meter span');
 const statusLines = document.querySelectorAll('.search-box p');
 const candidateBox = document.querySelector('.candidates-box .waiting-card');
-const solutionEditor = document.getElementById('aiAiSolutionText');
-const explanationEditor = document.getElementById('aiAiExplanationText');
-const solutionStatus = document.getElementById('aiAiSolutionStatus');
-const explanationStatus = document.getElementById('aiAiExplanationStatus');
-const recordButton = document.getElementById('aiAiRecordButton');
-const saveSolutionButton = document.getElementById('aiAiSaveSolution');
-const saveExplanationButton = document.getElementById('aiAiSaveExplanation');
-const positionFile = document.getElementById('aiAiPositionFile');
-const bankTree = document.getElementById('aiAiBankTree');
-const bankSearch = document.getElementById('aiAiBankSearch');
-const bankCount = document.getElementById('aiAiBankCount');
-const puzzleStatus = document.getElementById('aiAiPuzzleStatus');
 const sideLabel = document.querySelector('.ai-ai-page .human-ai-side-label');
 const modeSession = restorePlayModeSession();
 let game = modeSession?.game || createGame();
@@ -41,11 +29,6 @@ let runToken = 0;
 let duelRunning = false;
 let baseFen = modeSession?.initialFen || toFen(game);
 let selectedPuzzle = modeSession?.selectedPuzzle || null;
-let bankManifest = null;
-let recording = modeSession?.recording || false;
-let recordingStart = modeSession?.recordingStart || 0;
-let soundEnabled = true;
-let audioContext = null;
 const controlPanel = mountBoardControlPanel(document.getElementById('aiAiControlPanel'), {
   mode: 'ai-ai',
   hrefs: { manual: './index.html', 'human-ai': './human-ai.html', 'ai-ai': './ai-ai.html' },
@@ -57,40 +40,27 @@ const controlPanel = mountBoardControlPanel(document.getElementById('aiAiControl
     }
     if (action === 'undo') undoDuel();
     if (action === 'redo') redoDuel();
-    if (action === 'sound') toggleSound();
-    if (action === 'voice') speakStatus();
     if (action === 'side') boardSide = boardSide === RED ? BLACK : RED;
   }
 });
 
+controlPanel.setVoice(false);
+const audio = createBoardAudio(controlPanel, {
+  onStatus(message) { advantageText.textContent = message; }
+});
+
 if (modeSession) {
-  solutionEditor.value = modeSession.solution || '';
-  explanationEditor.value = modeSession.explanation || '';
-  saveSolutionButton.disabled = !solutionEditor.value.trim();
-  saveExplanationButton.disabled = !explanationEditor.value.trim();
-  recordButton.textContent = recording ? '结束记录' : '开始记录';
-  puzzleStatus.textContent = selectedPuzzle?.title || '当前棋局';
   controlPanel.setSide(boardSide);
   statusLines[2].textContent = `着法: ${game.history.length} 着`;
 }
+audio.refresh();
 bindPlayModeSession(document.getElementById('aiAiControlPanel'), () => ({
-  game, initialFen: baseFen, selectedPuzzle, recording, recordingStart,
-  solution: solutionEditor.value, explanation: explanationEditor.value,
+  game, initialFen: baseFen, selectedPuzzle, recording: false, recordingStart: 0,
+  solution: modeSession?.solution || '', explanation: modeSession?.explanation || '',
   solutionVariant: modeSession?.solutionVariant, boardSide,
   humanSide: modeSession?.humanSide
 }), stopDuel);
 
-document.getElementById('aiAiLoadPosition').addEventListener('click', () => positionFile.click());
-document.getElementById('aiAiLoadSolution').addEventListener('click', loadSolution);
-document.getElementById('aiAiLoadExplanation').addEventListener('click', loadExplanation);
-recordButton.addEventListener('click', toggleRecording);
-saveSolutionButton.addEventListener('click', saveSolution);
-saveExplanationButton.addEventListener('click', saveExplanation);
-solutionEditor.addEventListener('input', () => { saveSolutionButton.disabled = !solutionEditor.value.trim(); });
-explanationEditor.addEventListener('input', () => { saveExplanationButton.disabled = !explanationEditor.value.trim(); });
-positionFile.addEventListener('change', loadPositionFile);
-bankSearch.addEventListener('input', renderBankTree);
-loadBank();
 renderBoard();
 
 function renderBoard() {
@@ -118,6 +88,7 @@ function renderBoard() {
 }
 
 async function startDuel() {
+  audio.stop();
   if (duelRunning) return;
   duelRunning = true;
   const token = ++runToken;
@@ -138,7 +109,7 @@ async function startDuel() {
       if (gameStatus.type === 'checkmate' || gameStatus.type === 'stalemate' || gameStatus.type === 'invalid') {
         advantageText.textContent = gameStatus.type === 'checkmate'
           ? `${sideName(gameStatus.winner)}胜利 · 将死`
-          : gameStatus.type === 'stalemate' ? '和棋 · 困毙' : '棋局无效';
+          : gameStatus.type === 'stalemate' ? `${sideName(gameStatus.winner)}胜利 · 困毙` : '棋局无效';
         candidateBox.textContent = '对局结束';
         break;
       }
@@ -157,7 +128,6 @@ async function startDuel() {
       playMoveSound();
       renderBoard();
       updateAnalysis(side, result);
-      updateRecordedSolution();
       await delay(Math.max(100, 1100 - Number(controlPanel.controls.speed.value) * 100));
     }
   } catch (error) {
@@ -182,15 +152,11 @@ function stopDuel() {
 }
 
 function resetDuel() {
+  audio.stop();
   runToken += 1;
   duelRunning = false;
   game = createGameFromFen(baseFen);
   controlPanel.setPlaying(false);
-  recording = false;
-  recordingStart = game.history.length;
-  recordButton.textContent = '开始记录';
-  saveSolutionButton.disabled = true;
-  solutionEditor.value = '';
   renderBoard();
   advantageText.textContent = '等待引擎启动...';
   advantageFill.style.width = '50%';
@@ -199,7 +165,6 @@ function resetDuel() {
   statusLines[1].textContent = '黑方: 等待中';
   statusLines[2].textContent = '着法: 0 回合';
   candidateBox.textContent = '等待引擎启动...';
-  puzzleStatus.textContent = selectedPuzzle ? `${selectedPuzzle.title} · 已重置到题目局面` : '已重置到起始局面。';
 }
 
 function getSideSettings(side) {
@@ -213,12 +178,12 @@ function getSideSettings(side) {
 }
 
 function undoDuel() {
+  audio.stop();
   stopDuel();
   if (game.history.length < 2) return;
   undoMove(game);
   undoMove(game);
   renderBoard();
-  updateRecordedSolution();
   advantageText.textContent = '已悔去最近一回合。';
 }
 
@@ -227,241 +192,12 @@ function redoDuel() {
   if (!redoMove(game)) return;
   if (game.turn === BLACK) redoMove(game);
   renderBoard();
-  updateRecordedSolution();
   advantageText.textContent = '已重做最近一回合。';
-}
-
-function toggleRecording() {
-  recording = !recording;
-  if (recording) {
-    recordingStart = game.history.length;
-    solutionEditor.value = '';
-    recordButton.textContent = '结束记录';
-    solutionStatus.textContent = '正在记录后续 AI 着法。';
-  } else {
-    recordButton.textContent = '开始记录';
-    solutionStatus.textContent = '记录结束，可保存棋谱。';
-  }
-  updateRecordedSolution();
-}
-
-function updateRecordedSolution() {
-  if (!recording) return;
-  const moves = game.history.slice(recordingStart);
-  solutionEditor.value = moves.map((move, index) => {
-    const number = Math.floor(index / 2) + 1;
-    return `${move.turn === RED ? `${number}.` : `${number}…`} ${formatUcci(move)}`;
-  }).join('\n');
-  saveSolutionButton.disabled = !moves.length;
-  solutionStatus.textContent = `${moves.length} 着已记录。`;
-}
-
-function formatUcci(move) {
-  const files = 'abcdefghi';
-  return `${files[move.from.col]}${9 - move.from.row}${files[move.to.col]}${9 - move.to.row}`;
-}
-
-async function loadBank() {
-  try {
-    bankManifest = await loadPuzzleBank();
-    const count = bankManifest.categories.reduce((total, category) => total + category.items.length, 0);
-    bankCount.textContent = `${count} 局`;
-    renderBankTree();
-  } catch {
-    bankCount.textContent = '不可用';
-    bankTree.textContent = '题库暂不可用，请通过本地服务访问。';
-  }
-}
-
-function renderBankTree() {
-  if (!bankManifest) return;
-  const query = bankSearch.value.trim().toLocaleLowerCase();
-  bankTree.replaceChildren();
-  renderPuzzleBank(bankTree, bankManifest, query, selectedPuzzle?.id, (category, puzzle) => loadPuzzle(puzzle));
-}
-
-async function loadPuzzle(puzzle) {
-  try {
-    const response = await fetch(`${PUZZLE_BANK_BASE}${puzzle.fen}`);
-    if (!response.ok) throw new Error('残局局面文件载入失败。');
-    stopDuel();
-    baseFen = (await response.text()).trim();
-    game = createGameFromFen(baseFen);
-    selectedPuzzle = { ...puzzle, base: PUZZLE_BANK_BASE };
-    recording = false;
-    recordButton.textContent = '开始记录';
-    solutionEditor.value = '';
-    explanationEditor.value = '';
-    saveSolutionButton.disabled = true;
-    saveExplanationButton.disabled = true;
-    puzzleStatus.textContent = `${puzzle.title} · ${puzzle.id}`;
-    advantageText.textContent = `已载入：${puzzle.title}`;
-    renderBoard();
-    renderBankTree();
-  } catch (error) {
-    advantageText.textContent = error.message || '局面载入失败。';
-  }
-}
-
-async function loadSolution() {
-  if (!selectedPuzzle?.solutions?.length) {
-    solutionStatus.textContent = '先从题库选择棋局。';
-    return;
-  }
-  try {
-    const response = await fetch(`${selectedPuzzle.base}${selectedPuzzle.solutions[0]}`);
-    if (!response.ok) throw new Error('棋谱答案载入失败。');
-    solutionEditor.value = await response.text();
-    saveSolutionButton.disabled = false;
-    solutionStatus.textContent = '已载入题库答案预览。';
-  } catch (error) { solutionStatus.textContent = error.message; }
-}
-
-async function loadExplanation() {
-  if (!selectedPuzzle?.explanations?.length) {
-    explanationStatus.textContent = '先选择包含解说的题库局面。';
-    return;
-  }
-  try {
-    const response = await fetch(`${selectedPuzzle.base}${selectedPuzzle.explanations[0]}`);
-    if (!response.ok) throw new Error('解说文件载入失败。');
-    explanationEditor.value = await response.text();
-    saveExplanationButton.disabled = false;
-    explanationStatus.textContent = '已载入题库解说预览。';
-  } catch (error) { explanationStatus.textContent = error.message; }
-}
-
-function loadPositionFile(event) {
-  const input = event.currentTarget;
-  const file = input.files?.[0];
-  if (!file) return;
-  file.text().then(text => {
-    try {
-      stopDuel();
-      baseFen = text.trim();
-      game = createGameFromFen(baseFen);
-      selectedPuzzle = null;
-      puzzleStatus.textContent = '已载入本地局面文件。';
-      renderBoard();
-      renderBankTree();
-      advantageText.textContent = '局面已载入，可开始 AI 对弈。';
-    } catch (error) { advantageText.textContent = error.message || '局面文件无效。'; }
-    input.value = '';
-  });
-}
-
-async function saveSolution() {
-  const content = `${solutionEditor.value.trim()}\n# END\n`;
-  if (selectedPuzzle?.rootGene === 'manual') {
-    try {
-      const version = (selectedPuzzle.solutions?.length || 0) + 1;
-      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(selectedPuzzle.id)}/material`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind: 'solution', version, text: solutionEditor.value.trim() })
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || '棋谱未能保存到题库。');
-      selectedPuzzle.solutions ||= [];
-      selectedPuzzle.solutions.push(result.relativePath);
-      saveLocal(`xiàngqí:solution:${selectedPuzzle.id}`, content);
-      downloadText(`${selectedPuzzle.id}-${String(version).padStart(3, '0')}.txt`, content);
-      renderBankTree();
-      solutionStatus.textContent = `答案版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
-      return;
-    } catch (error) {
-      solutionStatus.textContent = error.message || '题库服务不可用，已保留本机下载副本。';
-      saveLocal(`xiàngqí:solution:${selectedPuzzle.id}`, content);
-      downloadText(`${selectedPuzzle.id}-1.txt`, content);
-      return;
-    }
-  }
-  saveLocal(`xiàngqí:solution:${selectedPuzzle?.id || 'ai-ai-game'}`, content);
-  downloadText(`${selectedPuzzle?.id || 'ai-ai-game'}-1.txt`, content);
-  solutionStatus.textContent = '已保存到本机并下载棋谱文本。';
-}
-
-async function saveExplanation() {
-  const content = explanationEditor.value.trim();
-  if (selectedPuzzle?.rootGene === 'manual') {
-    try {
-      const version = (selectedPuzzle.explanations?.length || 0) + 1;
-      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(selectedPuzzle.id)}/material`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind: 'explanation', version, text: content })
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || '解说未能保存到题库。');
-      selectedPuzzle.explanations ||= [];
-      selectedPuzzle.explanations.push(result.relativePath);
-      saveLocal(`xiàngqí:explanation:${selectedPuzzle.id}`, content);
-      downloadText(`${selectedPuzzle.id}_exp-${String(version).padStart(3, '0')}.txt`, content);
-      renderBankTree();
-      explanationStatus.textContent = `解说版本 ${String(version).padStart(3, '0')} 已保存到中国象棋题库。`;
-      return;
-    } catch (error) {
-      explanationStatus.textContent = error.message || '题库服务不可用，已保留本机下载副本。';
-      saveLocal(`xiàngqí:explanation:${selectedPuzzle.id}`, content);
-      downloadText(`${selectedPuzzle.id}_exp-1.txt`, content);
-      return;
-    }
-  }
-  saveLocal(`xiàngqí:explanation:${selectedPuzzle?.id || 'ai-ai-game'}`, content);
-  downloadText(`${selectedPuzzle?.id || 'ai-ai-game'}_exp.txt`, content);
-  explanationStatus.textContent = '已保存到本机并下载解说文本。';
-}
-
-function saveLocal(key, text) {
-  try { localStorage.setItem(key, JSON.stringify({ text, updatedAt: new Date().toISOString() })); }
-  catch { solutionStatus.textContent = '本机存储不可用，请保留下载文件。'; }
-}
-
-function downloadText(filename, content) {
-  const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
-function speakStatus() {
-  if (!('speechSynthesis' in window)) {
-    puzzleStatus.textContent = '当前浏览器不支持语音播报。';
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(`${advantageText.textContent}。${candidateBox.textContent}`);
-  utterance.lang = 'zh-CN';
-  utterance.volume = controlPanel.getVolume() / 100;
-  window.speechSynthesis.speak(utterance);
-}
-
-function toggleSound() {
-  soundEnabled = !soundEnabled;
-  controlPanel.controls.sound.setAttribute('aria-pressed', String(soundEnabled));
-  controlPanel.controls.sound.setAttribute('aria-label', soundEnabled ? '关闭音效' : '开启音效');
-  controlPanel.controls.sound.title = soundEnabled ? '关闭音效' : '开启音效';
+  audio.move(game);
 }
 
 function playMoveSound() {
-  if (!soundEnabled) return;
-  const volume = controlPanel.getVolume();
-  if (volume <= 0) return;
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) return;
-  audioContext ||= new AudioContextClass();
-  if (audioContext.state === 'suspended') audioContext.resume();
-  const oscillator = audioContext.createOscillator();
-  const gain = audioContext.createGain();
-  oscillator.frequency.value = game.turn === RED ? 520 : 390;
-  gain.gain.setValueAtTime(volume / 100 * 0.12, audioContext.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.07);
-  oscillator.connect(gain);
-  gain.connect(audioContext.destination);
-  oscillator.start();
-  oscillator.stop(audioContext.currentTime + 0.07);
+  audio.move(game);
 }
 
 function updateAnalysis(side, result) {

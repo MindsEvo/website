@@ -1,9 +1,46 @@
 export const PUZZLE_BANK_BASE = '../bank/';
 
+export function pairedExplanation(puzzle, index) {
+  const solution = puzzle.solutions?.[index];
+  if (puzzle.rootGene === 'manual' && solution) {
+    const version = solution.match(/-(\d{3})\.txt$/)?.[1];
+    return version ? puzzle.explanations?.find(file => file.endsWith(`_exp-${version}.txt`)) : undefined;
+  }
+  return puzzle.explanations?.[index];
+}
+
 export async function loadPuzzleBank() {
-  const response = await fetch(`${PUZZLE_BANK_BASE}manifest.json`);
-  if (!response.ok) throw new Error(`题库清单载入失败 (${response.status})`);
-  return response.json();
+  const manifests = await Promise.all(['manifest.json', 'endgame/L1/manifest.json'].map(async file => {
+    const response = await fetch(`${PUZZLE_BANK_BASE}${file}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`题库清单载入失败 (${response.status})：${file}`);
+    return response.json();
+  }));
+  const [manifest, customManifest] = manifests;
+  const families = { eg: ['endgame', '残局基础'], at: ['attacking', '基本攻杀'], tac: ['tactics', '基本战术'] };
+  const knownIds = new Set(manifest.categories.flatMap(category => category.items.map(item => item.id)));
+  for (const item of customManifest.categories.find(category => category.key === 'custom')?.items || []) {
+    if (knownIds.has(item.id)) continue;
+    const match = /^(eg|at|tac)_CUSTOM_(L[1-3])-\d{3}$/.exec(item.id);
+    if (!match) throw new Error(`手工棋局编号无效：${item.id}`);
+    const [, prefix, level] = match;
+    const [family, familyLabel] = families[prefix];
+    const key = `${family}/${level}/custom`;
+    let category = manifest.categories.find(category => category.key === key);
+    if (!category) {
+      category = { key, family, familyLabel, level, label: '手工编辑', items: [] };
+      manifest.categories.push(category);
+    }
+    const withBase = file => `endgame/L1/${file}`;
+    category.items.push({
+      ...item,
+      fen: withBase(item.fen),
+      metadata: item.metadata ? withBase(item.metadata) : undefined,
+      solutions: (item.solutions || []).map(withBase),
+      explanations: (item.explanations || []).map(withBase)
+    });
+    knownIds.add(item.id);
+  }
+  return manifest;
 }
 
 export function renderPuzzleBank(container, manifest, query, selectedId, onSelect) {

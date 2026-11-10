@@ -19,7 +19,7 @@ if (existingPanel) {
     onAction(action) {
       existingPanel.dispatchEvent(new CustomEvent('xiangqi:board-control', { bubbles: true, detail: { action } }));
       if (action === 'reset') location.reload();
-      if (action === 'voice') speakBoardStatus();
+      if (action === 'voice' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
     }
   });
 }
@@ -44,13 +44,4 @@ if (geneBoardWrap) {
 
 function dispatchControl(panel) {
   return action => panel.dispatchEvent(new CustomEvent('xiangqi:board-control', { bubbles: true, detail: { action } }));
-}
-
-function speakBoardStatus() {
-  if (!('speechSynthesis' in window)) return;
-  const text = document.getElementById('boardLessonStatus')?.textContent || document.getElementById('demoInstruction')?.textContent || '中国象棋棋盘';
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-CN';
-  window.speechSynthesis.speak(utterance);
 }
