@@ -1,6 +1,6 @@
 import { initEndgamePage } from '../endgame/endgame-page.mjs';
 import {
-  ATTACKING_GROUPS, ATTACKING_CATEGORIES, ATTACKING_ROOTS, ATTACKING_UNITS,
+  ATTACKING_GROUPS, ATTACKING_CATEGORIES, ATTACKING_ROOTS,
   selectAttackingPuzzles
 } from './attacking-catalog.mjs';
 
@@ -8,8 +8,6 @@ initEndgamePage({
   groups: ATTACKING_GROUPS,
   categories: ATTACKING_CATEGORIES,
   roots: Object.fromEntries(ATTACKING_ROOTS.map(root => [root.name, root.id])),
-  methodDescriptions: Object.fromEntries(ATTACKING_ROOTS.map(root => [root.name, root.knowledge])),
-  groupDescriptions: ATTACKING_UNITS,
   selectPuzzles: selectAttackingPuzzles,
   label: '杀法',
   audience: {

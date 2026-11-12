@@ -21,7 +21,7 @@ export const OPENING_SUBGROUPS = {
 };
 
 export const OPENING_ROOTS = [
-  { id: 'cc.opening.central.screen', name: '中炮对屏风马', knowledge: '中炮进攻与双马稳健防守；屏风马不是顺炮。', puzzles: [] },
+  { id: 'cc.opening.central.screen', name: '中炮对屏风马', knowledge: '中炮进攻与双马稳健防守；屏风马不是顺炮。', puzzles: ['oc_zhongpao_L1-003'] },
   { id: 'cc.opening.central.palcorner', name: '中炮对反宫马', knowledge: '中炮进攻与反宫马防守反击；反宫马不是列手炮。', puzzles: [] },
   { id: 'cc.opening.central.singlehorse', name: '中炮对单提马', knowledge: '认识单提马阵形与中炮的攻防关系。', puzzles: [] },
   { id: 'cc.opening.first.horse', name: '起马局（正马）', knowledge: '先出正马，观察对方应着再转换阵形。', puzzles: [] },
@@ -34,7 +34,7 @@ export const OPENING_ROOTS = [
   { id: 'cc.opening.screen.elephant', name: '屏风马对飞相', knowledge: '比较屏风马与飞相阵形的出子顺序。', puzzles: [] },
   { id: 'cc.opening.palcorner.central', name: '反宫马对中炮', knowledge: '从后手视角观察反宫马的防守转换。', puzzles: [] },
   { id: 'cc.opening.palcorner.horse', name: '反宫马对起马', knowledge: '观察反宫马与起马局的阵形变化。', puzzles: [] },
-  { id: 'cc.opening.same.directcross', name: '顺炮直车对横车', knowledge: '双方同向中炮；先手直车与后手横车的争先。', puzzles: [] },
+  { id: 'cc.opening.same.directcross', name: '顺炮直车对横车', knowledge: '双方同向中炮；先手直车与后手横车的争先。', puzzles: ['oc_zhongpao_L1-002'] },
   { id: 'cc.opening.same.crossdirect', name: '顺炮横车对直车', knowledge: '双方同向中炮；先手横车与后手直车的争先。', puzzles: [] },
   { id: 'cc.opening.opposite.large', name: '大列手炮', knowledge: '双方异向中炮，认识大列手炮的阵形特点。', puzzles: [] },
   { id: 'cc.opening.opposite.small', name: '小列手炮', knowledge: '比较小列手炮与大列手炮的出子差异。', puzzles: [] },
@@ -50,7 +50,7 @@ export const OPENING_ROOTS = [
     id: 'cc.opening.source.archive',
     name: '原始开局记录',
     knowledge: '按 Windows 版题库的经典/中炮目录完整展示原始棋局；棋局标题和定式来源未经此页面重新推定。',
-    puzzles: ['oc_zhongpao_L1-001', 'oc_zhongpao_L1-002', 'oc_zhongpao_L1-003', 'oc_zhongpao_L1-200']
+    puzzles: ['oc_zhongpao_L1-001', 'oc_zhongpao_L1-200']
   }
 ];
 

@@ -1,3 +1,14 @@
+import {
+  ATTACKING_GROUPS,
+  selectAttackingPuzzles
+} from '../academy/attacking/attacking-catalog.mjs';
+import {
+  OPENING_GROUPS,
+  OPENING_SUBGROUPS,
+  OPENING_ROOTS,
+  selectOpeningPuzzles
+} from '../academy/opening/opening-catalog.mjs';
+
 export const PUZZLE_BANK_BASE = '../bank/';
 
 const FAMILY_ORDER = ['endgame', 'attacking', 'tactics', 'opening', 'comprehensive'];
@@ -25,12 +36,6 @@ const TACTIC_LABELS = {
   duncuo: '顿挫', dengzhe: '等着', kunzi: '困子', kunbi: '困毙',
   jiejiang: '解将', jiesha: '解杀', duizi: '兑子', qizi: '弃子'
 };
-const OPENING_LABELS = {
-  bingdipao: '兵底炮', feixiang: '飞相', guogongpao: '过宫炮',
-  jingoupao: '金钩炮', qima: '起马', sanbuhu: '三步虎',
-  xianrenzhilu: '仙人指路', zhongpao: '中炮'
-};
-
 export function pairedExplanation(puzzle, index) {
   const solution = puzzle.solutions?.[index];
   if (puzzle.rootGene === 'manual' && solution) {
@@ -84,8 +89,9 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
   let visibleFamilies = 0;
 
   for (const familyName of familyOrder) {
-    const categories = manifest.categories
-      .filter(category => category.family === familyName)
+    const sourceCategories = manifest.categories
+      .filter(category => category.family === familyName);
+    const categories = sourceCategories
       .map(category => ({
         ...category,
         items: category.items.filter(item => !normalizedQuery
@@ -93,6 +99,43 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
             .toLocaleLowerCase().includes(normalizedQuery))
       }))
       .filter(category => category.items.length > 0);
+    if (familyName === 'attacking' && normalizedQuery) {
+      const matchingMethods = Object.entries(ATTACKING_GROUPS)
+        .flatMap(([group, methods]) => methods
+          .filter(method => `${group} ${method}`.toLocaleLowerCase().includes(normalizedQuery)));
+      const matchingIds = new Set(matchingMethods.flatMap(method =>
+        selectAttackingPuzzles({ categories: sourceCategories }, method).map(item => item.id)));
+      if (matchingIds.size) {
+        for (const category of sourceCategories) {
+          const visible = categories.find(item => item.key === category.key);
+          const matchedItems = category.items.filter(item => matchingIds.has(item.id));
+          if (visible) {
+            visible.items = [...new Map([...visible.items, ...matchedItems].map(item => [item.id, item])).values()];
+          } else if (matchedItems.length) {
+            categories.push({ ...category, items: matchedItems });
+          }
+        }
+      }
+    }
+    if (familyName === 'opening' && normalizedQuery) {
+      const matchingTypes = Object.entries(OPENING_GROUPS)
+        .flatMap(([group, subgroups]) => subgroups.flatMap(subgroup =>
+          (OPENING_SUBGROUPS[subgroup] || [subgroup])
+            .filter(type => `${group} ${subgroup} ${type}`.toLocaleLowerCase().includes(normalizedQuery))));
+      const matchingIds = new Set(matchingTypes.flatMap(type =>
+        selectOpeningPuzzles({ categories: sourceCategories }, type).map(item => item.id)));
+      if (matchingIds.size) {
+        for (const category of sourceCategories) {
+          const visible = categories.find(item => item.key === category.key);
+          const matchedItems = category.items.filter(item => matchingIds.has(item.id));
+          if (visible) {
+            visible.items = [...new Map([...visible.items, ...matchedItems].map(item => [item.id, item])).values()];
+          } else if (matchedItems.length) {
+            categories.push({ ...category, items: matchedItems });
+          }
+        }
+      }
+    }
     const familyLabel = FAMILY_LABELS[familyName]
       || `${manifest.categories.find(category => category.family === familyName)?.familyLabel || familyName} (${familyName})`;
     if (normalizedQuery && !categories.length) continue;
@@ -100,6 +143,11 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
     const family = branch(familyLabel, true, 'tree-family');
     visibleFamilies += 1;
     container.append(family);
+
+    if (familyName === 'attacking') {
+      renderAttackingGroups(family, categories, selectedId, onSelect);
+      continue;
+    }
 
     if (familyName === 'tactics') {
       renderCategories(family, categories, {
@@ -112,21 +160,7 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
     }
 
     if (familyName === 'opening') {
-      for (const [directory, label] of [['classic', '经典'], ['modern', '现代']]) {
-        const openingCategories = categories.filter(category => category.key.split('/')[1] === directory);
-        if (normalizedQuery && !openingCategories.length) continue;
-        const opening = branch(label, true, 'tree-level');
-        family.append(opening);
-        if (!openingCategories.length) {
-          appendEmptyNote(opening, '当前目录暂无棋局文件。');
-          continue;
-        }
-        renderCategories(opening, openingCategories, {
-          labels: OPENING_LABELS,
-          selectedId,
-          onSelect
-        });
-      }
+      renderOpeningGroups(family, categories, selectedId, onSelect);
       continue;
     }
 
@@ -156,6 +190,80 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
   }
 }
 
+function renderOpeningGroups(parent, categories, selectedId, onSelect) {
+  const manifest = { categories };
+  const categoryByItem = new Map(categories.flatMap(category =>
+    category.items.map(item => [item.id, category])));
+  const rootByName = new Map(OPENING_ROOTS.map(root => [root.name, root]));
+  for (const [groupName, subgroups] of Object.entries(OPENING_GROUPS)) {
+    const group = branch(groupName, true, 'tree-level');
+    let groupCount = 0;
+    for (const subgroupName of subgroups) {
+      const types = OPENING_SUBGROUPS[subgroupName];
+      if (!types) {
+        groupCount += renderOpeningType(group, subgroupName, manifest, rootByName, categoryByItem, selectedId, onSelect);
+        continue;
+      }
+      const subgroup = branch(subgroupName, true, 'tree-category');
+      let subgroupCount = 0;
+      for (const type of types) {
+        subgroupCount += renderOpeningType(subgroup, type, manifest, rootByName, categoryByItem, selectedId, onSelect);
+      }
+      if (subgroupCount) {
+        subgroup.querySelector('summary').textContent = `${subgroupName} (${subgroupCount})`;
+        group.append(subgroup);
+        groupCount += subgroupCount;
+      }
+    }
+    if (groupCount) {
+      group.querySelector('summary').textContent = `${groupName} (${groupCount})`;
+      parent.append(group);
+    }
+  }
+}
+
+function renderOpeningType(parent, type, manifest, rootByName, categoryByItem, selectedId, onSelect) {
+  const root = rootByName.get(type);
+  if (!root) return 0;
+  const availableItems = new Map(manifest.categories.flatMap(category =>
+    category.items.map(item => [item.id, item])));
+  const puzzles = root.puzzles.map(id => availableItems.get(id)).filter(Boolean);
+  if (!puzzles.length) return 0;
+  const typeGroup = branch(`${type} (${puzzles.length})`, true, 'tree-category');
+  for (const item of puzzles) {
+    typeGroup.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+  }
+  parent.append(typeGroup);
+  return puzzles.length;
+}
+
+function renderAttackingGroups(parent, categories, selectedId, onSelect) {
+  const manifest = { categories };
+  const categoryByItem = new Map(categories.flatMap(category =>
+    category.items.map(item => [item.id, category])));
+  const renderedIds = new Set();
+  for (const [groupName, methods] of Object.entries(ATTACKING_GROUPS)) {
+    const group = branch(groupName, true, 'tree-level');
+    let groupCount = 0;
+    for (const method of methods) {
+      const puzzles = selectAttackingPuzzles(manifest, method)
+        .filter(puzzle => !renderedIds.has(puzzle.id));
+      if (!puzzles.length) continue;
+      const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
+      for (const item of puzzles) {
+        renderedIds.add(item.id);
+        category.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+      }
+      groupCount += puzzles.length;
+      group.append(category);
+    }
+    if (groupCount) {
+      group.querySelector('summary').textContent = `${groupName} (${groupCount})`;
+      parent.append(group);
+    }
+  }
+}
+
 function renderCategories(parent, categories, { labels, order = [], selectedId, onSelect }) {
   const sortOrder = new Map(order.map((key, index) => [key, index]));
   const sorted = [...categories].sort((first, second) => {
@@ -170,19 +278,23 @@ function renderCategories(parent, categories, { labels, order = [], selectedId, 
     const label = labels[key] || category.label || key;
     const group = branch(`${label} (${category.items.length})`, true, 'tree-category');
     for (const item of category.items) {
-      const leaf = document.createElement('button');
-      leaf.type = 'button';
-      leaf.className = `bank-leaf${selectedId === item.id ? ' selected' : ''}`;
-      leaf.setAttribute('role', 'treeitem');
-      const sequence = item.id.match(/-(\d{3})$/)?.[1];
-      leaf.textContent = sequence ? `${item.title} · ${sequence}` : item.title;
-      leaf.title = item.id;
-      leaf.dataset.puzzleId = item.id;
-      leaf.addEventListener('click', () => onSelect(category, item));
-      group.append(leaf);
+      group.append(createPuzzleLeaf(category, item, selectedId, onSelect));
     }
     parent.append(group);
   }
+}
+
+function createPuzzleLeaf(category, item, selectedId, onSelect) {
+  const leaf = document.createElement('button');
+  leaf.type = 'button';
+  leaf.className = `bank-leaf${selectedId === item.id ? ' selected' : ''}`;
+  leaf.setAttribute('role', 'treeitem');
+  const sequence = item.id.match(/-(\d{3})$/)?.[1];
+  leaf.textContent = sequence ? `${item.title} · ${sequence}` : item.title;
+  leaf.title = item.id;
+  leaf.dataset.puzzleId = item.id;
+  leaf.addEventListener('click', () => onSelect(category, item));
+  return leaf;
 }
 
 function appendEmptyNote(parent, text) {

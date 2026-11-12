@@ -12,6 +12,7 @@ import { mountBoardControlPanel } from '../../shared/board-control-panel.mjs';
 import { buildNotationPlayback, notationContent } from '../../shared/notation-playback.mjs';
 import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
 import { createBoardAudio } from '../../shared/board-audio.mjs';
+import { getCoursePuzzleLevel, selectCoursePuzzlesForSection } from '../course-puzzle-levels.mjs';
 
 const ENDGAME_TYPES = {
   车: ['单车杀王', '车马杀王', '车炮杀王'],
@@ -173,22 +174,15 @@ function renderMenus(row) {
     const options = document.createElement('div');
     options.className = 'endgame-menu-options';
     if (course?.groups) {
-      if (section === 'observation' && course.groupDescriptions?.[piece]) {
-        const description = document.createElement('p');
-        description.textContent = course.groupDescriptions[piece];
-        options.append(description);
-      }
       renderCourseOptions(options, types, section);
-    } else if (course && section !== 'observation') {
-      const note = document.createElement('p');
-      note.textContent = section === 'quiz' ? `${piece}问答题目将在后续单独接入。` : `${piece}操作练习题目暂未接入。`;
-      options.append(note);
-    } else if ((section === 'observation' && (course || ['车', '马', '炮', '兵卒'].includes(piece)))
-      || (section === 'practice' && piece === '炮')) {
+    } else if (['observation', 'practice'].includes(section)
+      && (course || ['车', '马', '炮', '兵卒', '组合'].includes(piece))) {
       options.textContent = '载入棋局中…';
-      menu.addEventListener('toggle', () => {
-        if (menu.open && !options.dataset.loaded) loadObservationPuzzles(options, piece, section);
-      });
+      const loadOptions = () => {
+        if (!options.dataset.loaded) loadCoursePuzzles(options, piece, section);
+      };
+      menu.addEventListener('toggle', () => { if (menu.open) loadOptions(); });
+      menu.addEventListener('pointerenter', loadOptions);
     } else if (section === 'quiz') {
       const option = document.createElement('button');
       option.type = 'button';
@@ -214,6 +208,14 @@ function renderMenus(row) {
       }
     }
     menu.append(summary, options);
+    summary.addEventListener('click', event => {
+      event.preventDefault();
+      menu.open = true;
+    });
+    menu.addEventListener('pointerenter', () => {
+      closeMenus(menu);
+      menu.open = true;
+    });
     menu.addEventListener('toggle', () => {
       if (menu.open) closeMenus(menu);
     });
@@ -234,24 +236,23 @@ function renderCourseOptions(options, types, section) {
     content.className = 'endgame-puzzle-list';
     if (children) {
       renderCourseOptions(content, children, section);
-    } else if (section === 'observation' && course.categories[type]?.length) {
+    } else if (['observation', 'practice'].includes(section) && course.categories[type]?.length) {
       content.textContent = '载入棋局中…';
-      submenu.addEventListener('toggle', () => {
-        if (submenu.open && !content.dataset.loaded) loadObservationPuzzles(content, type, section);
-      });
-    } else {
-      const note = document.createElement('p');
-      note.textContent = section === 'quiz' ? `${type}问答题目将在后续单独接入。`
-        : `${type}${section === 'practice' ? '操作练习题目' : '棋局'}暂未接入。`;
-      content.append(note);
+      const loadOptions = () => {
+        if (!content.dataset.loaded) loadCoursePuzzles(content, type, section);
+      };
+      submenu.addEventListener('toggle', () => { if (submenu.open) loadOptions(); });
+      submenu.addEventListener('pointerenter', loadOptions);
     }
     submenu.append(heading);
-    if (section === 'observation' && course.methodDescriptions?.[type]) {
-      const description = document.createElement('p');
-      description.textContent = `核心知识：${course.methodDescriptions[type]}`;
-      submenu.append(description);
-    }
     submenu.append(content);
+    heading.addEventListener('click', event => {
+      event.preventDefault();
+      submenu.open = true;
+    });
+    submenu.addEventListener('pointerenter', () => {
+      submenu.open = true;
+    });
     submenu.addEventListener('toggle', () => {
       if (submenu.open) {
         for (const sibling of options.querySelectorAll(':scope > details')) {
@@ -319,48 +320,56 @@ async function fetchText(file) {
   return response.text();
 }
 
-async function loadObservationPuzzles(list, piece, section) {
+async function loadCoursePuzzles(list, piece, section) {
   list.dataset.loaded = 'loading';
   try {
     const manifest = JSON.parse(await fetchText('manifest.json'));
-    const family = { 车: 'rook', 马: 'horse', 炮: 'cannon', 兵卒: 'pawn' }[piece];
-    const keys = course?.selectPuzzles ? [] : course ? course.categories[piece].map(name => `tactics/${name}`) : [`endgame/L1/${family}`];
-    const categories = keys.map(key => {
-      const category = manifest.categories.find(category => category.key === key);
-      if (!category) throw new Error(`题库缺少目录：${key}`);
-      return category;
-    });
-    const items = course?.selectPuzzles ? course.selectPuzzles(manifest, piece)
-      : course ? categories.flatMap(category => category.items) : categories[0].items.filter(item => piece === '炮'
-      ? (section === 'practice' ? /^eg_2C/.test(item.id) : /^eg_C(?:A|E)?-.*_L1-/.test(item.id))
-      : piece === '兵卒' ? /^eg_P+.*_L1-/.test(item.id)
-        : item.id.startsWith(piece === '车' ? 'eg_R-' : 'eg_H-'));
-    if (!items.length && course?.selectPuzzles) {
-      const note = document.createElement('p');
-      note.textContent = `${piece}棋局暂未接入。`;
-      list.replaceChildren(note);
+    let entries;
+    if (course) {
+      const categories = course.selectPuzzles ? [] : (course.categories[piece] || []).map(name => {
+        return manifest.categories.find(category => category.key.split('/').at(-1) === name);
+      });
+      if (categories.some(category => !category)) throw new Error(`题库缺少${piece}分类`);
+      const items = course.selectPuzzles
+        ? course.selectPuzzles(manifest, piece)
+        : categories.flatMap(category => category.items);
+      entries = selectCoursePuzzlesForSection(items, section)
+        .map(puzzle => ({ puzzle, category: null }));
+    } else {
+      const levels = section === 'observation' ? new Set(['L1']) : new Set(['L2', 'L3']);
+      const families = { 车: 'rook', 马: 'horse', 炮: 'cannon', 兵卒: 'pawn' };
+      const categories = manifest.categories.filter(category => {
+        if (category.family !== 'endgame' || !levels.has(category.level)) return false;
+        const keyFamily = category.key.split('/').at(-1);
+        const categoryFamily = ['rook', 'horse', 'cannon', 'pawn'].includes(keyFamily) ? keyFamily : 'others';
+        return piece === '组合' ? categoryFamily === 'others' : categoryFamily === families[piece];
+      });
+      entries = categories.flatMap(category => selectCoursePuzzlesForSection(
+        category.items, section, category.level
+      ).map(puzzle => ({ puzzle, category })));
+    }
+    if (!entries.length) {
+      list.replaceChildren();
       list.dataset.loaded = 'true';
+      list.closest('details')?.setAttribute('hidden', '');
+      updateMenuVisibility(list.closest('details'));
       return;
     }
-    if (!items.length) throw new Error(`L1 ${piece}类目录中没有匹配棋局`);
+    list.closest('details')?.removeAttribute('hidden');
     const groups = new Map();
-    for (const puzzle of items) {
+    for (const entry of entries) {
+      const { puzzle, category } = entry;
       const title = puzzle.id.startsWith('eg_R-K_') ? '单车杀王' : puzzle.title;
-      if (!groups.has(title)) groups.set(title, []);
-      groups.get(title).push(puzzle);
+      const groupLabel = !course && section === 'practice'
+        ? `${getCoursePuzzleLevel(puzzle, category.level)} · ${category.label}`
+        : title;
+      if (!groups.has(groupLabel)) groups.set(groupLabel, []);
+      groups.get(groupLabel).push(puzzle);
     }
     list.replaceChildren();
     const ordered = [...groups].sort(([first], [second]) => (
       first === '单车杀王' ? -1 : second === '单车杀王' ? 1 : 0
     ));
-    if (course?.sourceLabels) {
-      const sources = course.categories[piece].map(name => course.sourceLabels[name]);
-      if (sources.length !== 1 || sources[0] !== piece) {
-        const note = document.createElement('p');
-        note.textContent = `原题库「${sources.join('、')}」参考棋局，尚未按新战术细分。`;
-        list.append(note);
-      }
-    }
     for (const [title, puzzles] of ordered) {
       const submenu = document.createElement('details');
       submenu.className = 'endgame-puzzle-submenu';
@@ -372,13 +381,20 @@ async function loadObservationPuzzles(list, piece, section) {
         const button = document.createElement('button');
         button.type = 'button';
         const sequence = puzzle.id.slice(-3);
-        button.textContent = `${title === '单车杀王' ? '车杀光将' : puzzle.title} ${sequence}`;
+        button.textContent = `${!course && section === 'practice' ? puzzle.title : title === '单车杀王' ? '车杀光将' : puzzle.title} ${sequence}`;
         button.dataset.puzzleId = puzzle.id;
         button.classList.toggle('selected', selectedPuzzle?.id === puzzle.id);
         button.addEventListener('click', () => loadPuzzle(puzzle, section === 'practice'));
         buttons.append(button);
       }
       submenu.append(heading, buttons);
+      heading.addEventListener('click', event => {
+        event.preventDefault();
+        submenu.open = true;
+      });
+      submenu.addEventListener('pointerenter', () => {
+        submenu.open = true;
+      });
       submenu.addEventListener('toggle', () => {
         if (submenu.open) {
           for (const sibling of list.querySelectorAll('.endgame-puzzle-submenu')) {
@@ -393,6 +409,15 @@ async function loadObservationPuzzles(list, piece, section) {
     delete list.dataset.loaded;
     list.textContent = error.message;
     status.textContent = `棋局目录载入失败：${error.message}`;
+  }
+}
+
+function updateMenuVisibility(menu) {
+  for (let current = menu; current; current = current.parentElement?.closest('details')) {
+    const nestedMenus = current.classList.contains('endgame-menu')
+      ? [...current.querySelectorAll(':scope > .endgame-menu-options > .endgame-puzzle-submenu')]
+      : [...current.querySelectorAll(':scope > .endgame-puzzle-list > .endgame-puzzle-submenu')];
+    if (nestedMenus.length && nestedMenus.every(item => item.hidden)) current.hidden = true;
   }
 }
 
@@ -431,10 +456,10 @@ async function loadPuzzle(puzzle, practice = false) {
       button.classList.toggle('selected', button.dataset.puzzleId === puzzle.id);
     });
     closeMenus();
-    if (practice && !course) {
+    if (practice) {
       variantSelect.hidden = true;
-      document.getElementById('endgameNotation').textContent = '该题库答案尚未录入，当前可在棋盘上操作练习。';
-      document.getElementById('endgameExplanation').textContent = '该题库尚无配套解说。';
+      document.getElementById('endgameNotation').textContent = '操作练习：请先独立思考，在棋盘上尝试走法。';
+      document.getElementById('endgameExplanation').textContent = '可通过控制面板切换双人、人机或 AI-AI 模式。';
       switchMode('manual');
       status.textContent = `操作练习：${puzzle.title} · ${game.turn === RED ? '红方' : '黑方'}走棋；可切换人机或 AI-AI 模式。`;
       return;

@@ -457,7 +457,7 @@ async function loadSavedPuzzle(category, item) {
     materialPuzzle = item;
     selectedBoardSquare = null;
     selectedPuzzleId = item.id;
-    geneType.value = category.family;
+    if (TYPES[category.family]) geneType.value = category.family;
     geneLevel.value = /^L[1-3]$/.test(category.level) ? category.level : 'L1';
     selectedSavedId = CUSTOM_ID.test(item.id) ? item.id : '';
     geneName.value = selectedSavedId;
@@ -541,7 +541,10 @@ function changeGeneSelection() {
 
 function renderDirectory() {
   if (!bankManifest) return;
-  const manifest = { ...bankManifest, categories: bankManifest.categories.filter(category => TYPES[category.family]) };
+  const manifest = {
+    ...bankManifest,
+    categories: bankManifest.categories.filter(category => TYPES[category.family] || category.family === 'opening')
+  };
   bankTree.replaceChildren();
   renderPuzzleBank(bankTree, manifest, bankSearch.value.trim().toLocaleLowerCase(), selectedPuzzleId, loadSavedPuzzle);
   document.getElementById('bankSummary').textContent = `${manifest.categories.reduce((total, category) => total + category.items.length, 0)} 个棋局 · 点击目录载入`;

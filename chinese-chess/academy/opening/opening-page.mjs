@@ -9,7 +9,6 @@ initEndgamePage({
   subgroups: OPENING_SUBGROUPS,
   categories: OPENING_CATEGORIES,
   roots: Object.fromEntries(OPENING_ROOTS.map(root => [root.name, root.id])),
-  methodDescriptions: Object.fromEntries(OPENING_ROOTS.map(root => [root.name, root.knowledge])),
   selectPuzzles: selectOpeningPuzzles,
   label: '开局',
   audience: {

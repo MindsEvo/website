@@ -7,12 +7,12 @@ import {
 } from '../chinese-chess/academy/attacking/attacking-catalog.mjs';
 
 const groups = Object.keys(ATTACKING_GROUPS);
-assert.equal(groups.length, 5);
-assert.deepEqual(Object.values(ATTACKING_GROUPS).map(names => names.length), [4, 6, 7, 5, 2]);
+assert.equal(groups.length, 6);
+assert.deepEqual(Object.values(ATTACKING_GROUPS).map(names => names.length), [4, 6, 7, 5, 2, 1]);
 const names = Object.values(ATTACKING_GROUPS).flat();
-assert.equal(new Set(names).size, 24);
+assert.equal(new Set(names).size, 25);
 assert.deepEqual(ATTACKING_ROOTS.map(root => root.name), names);
-assert.equal(new Set(ATTACKING_ROOTS.map(root => root.id)).size, 24);
+assert.equal(new Set(ATTACKING_ROOTS.map(root => root.id)).size, 25);
 for (const root of ATTACKING_ROOTS) assert.ok(root.knowledge);
 for (const group of groups) assert.ok(ATTACKING_UNITS[group]);
 assert.throws(() => selectAttackingPuzzles({ categories: [] }, '未知'), /未知杀法/);
@@ -31,7 +31,7 @@ for (const name of names) {
   }
 }
 assert.deepEqual(pending, ['八角马', '车马冷着', '车炮抽杀', '大胆穿心', '三进兵']);
-assert.equal(unique.size, 43);
+assert.equal(unique.size, 56);
 assert.ok(selectAttackingPuzzles(manifest, '空头炮').some(puzzle => puzzle.title === '空头跑'));
 assert.ok(selectAttackingPuzzles(manifest, '高钓马').some(puzzle => puzzle.title === '高掉马'));
 assert.ok(selectAttackingPuzzles(manifest, '重炮杀').some(puzzle => puzzle.title === '连环炮（重跑）'));
@@ -55,6 +55,6 @@ for (const puzzle of unique.values()) {
   if (puzzle.metadata) await readFile(new URL(puzzle.metadata, bank), 'utf8');
   for (const file of puzzle.explanations) await readFile(new URL(file, bank), 'utf8');
 }
-assert.equal(playable, 12);
-assert.equal(placeholders, 32);
-console.log(`Validated 5 units, 24 RootGene IDs, 43 positions, ${playable} playable solutions, ${placeholders} placeholder files and 5 pending methods.`);
+assert.equal(playable, 14);
+assert.equal(placeholders, 43);
+console.log(`Validated ${groups.length} units, ${names.length} RootGene IDs, ${unique.size} positions, ${playable} playable solutions, ${placeholders} placeholder files and ${pending.length} pending methods.`);

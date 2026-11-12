@@ -38,7 +38,10 @@
 .endgame-display-only .endgame-practice h2 { border-color: #ffe0b2; }
 .endgame-display-only .endgame-quiz { background: #f3e5f5; border-color: #ce93d8; }
 .endgame-display-only .endgame-quiz h2 { border-color: #ce93d8; }
-.endgame-menus { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+.endgame-display-only .board-course-section:has(.endgame-menu:hover),
+.endgame-display-only .board-course-section:has(.endgame-menu:focus-within),
+.endgame-display-only .board-course-section:has(.endgame-menu[open]) { position: relative; z-index: 50; }
+.endgame-menus { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; position: relative; z-index: 20; }
 .endgame-menu { position: relative; min-width: 0; }
 .endgame-menu > summary {
   display: flex;
@@ -54,26 +57,34 @@
   cursor: pointer;
   list-style: none;
 }
+.endgame-menu::after { position: absolute; top: 100%; left: 0; width: 100%; height: 5px; content: ""; z-index: 29; }
 .endgame-menu > summary::-webkit-details-marker { display: none; }
 .endgame-menu > summary::after { content: "▾"; font-size: 10px; }
-.endgame-menu > summary:hover, .endgame-menu[open] > summary { background: #2980b9; }
+.endgame-menu:nth-child(5n + 1) > summary { background: #c0392b; }
+.endgame-menu:nth-child(5n + 2) > summary { background: #1e8449; }
+.endgame-menu:nth-child(5n + 3) > summary { background: #2471a3; }
+.endgame-menu:nth-child(5n + 4) > summary { background: #d68910; }
+.endgame-menu:nth-child(5n) > summary { background: #7d3c98; }
+.endgame-menu > summary:hover, .endgame-menu[open] > summary { filter: brightness(.9); }
 .endgame-menu-options {
+  display: none;
   position: absolute;
-  z-index: 10;
+  z-index: 30;
   top: calc(100% + 4px);
   left: 0;
   width: max-content;
-  min-width: 145px;
-  max-height: min(65vh, 520px);
-  overflow-y: auto;
-  padding: 5px;
+  min-width: 170px;
+  padding: 4px;
   border: 1px solid #bdc3c7;
-  border-radius: 5px;
+  border-radius: 6px;
   background: #fff;
-  box-shadow: 0 5px 16px #0002;
+  box-shadow: 0 6px 20px #0003;
 }
+.endgame-menu:hover > .endgame-menu-options,
+.endgame-menu:focus-within > .endgame-menu-options,
+.endgame-menu[open] > .endgame-menu-options { display: block; }
 .endgame-menu:nth-last-child(-n+2) .endgame-menu-options { left: auto; right: 0; }
-.endgame-menu-options label, .endgame-menu-options button {
+.endgame-menu-options label, .endgame-menu-options > button {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -87,14 +98,23 @@
   font-size: 13px;
   cursor: pointer;
 }
-.endgame-menu-options label:hover, .endgame-menu-options button:hover { background: #e8f4fd; }
+.endgame-menu-options label:hover, .endgame-menu-options > button:hover { background: #e8f4fd; }
 .endgame-menu-options input { margin: 0; accent-color: #3498db; }
 .endgame-menu-options label:has(input:checked) { background: #e8f4fd; color: #2980b9; }
-.endgame-puzzle-submenu > summary { display: flex; align-items: center; justify-content: space-between; min-height: 34px; padding: 8px; border-radius: 3px; background: #fff; color: #2c3e50; font-size: 13px; cursor: pointer; list-style: none; }
+.endgame-puzzle-submenu { position: relative; }
+.endgame-puzzle-submenu > summary { display: flex; align-items: center; justify-content: space-between; min-height: 30px; padding: 7px 22px 7px 10px; border-radius: 4px; background: #fff; color: #1a2433; font-size: 12px; font-weight: 600; cursor: pointer; list-style: none; white-space: nowrap; }
 .endgame-puzzle-submenu > summary::-webkit-details-marker { display: none; }
-.endgame-puzzle-submenu > summary::after { content: "▾"; font-size: 10px; }
-.endgame-puzzle-submenu[open] > summary, .endgame-puzzle-submenu > summary:hover { background: #e8f4fd; }
-.endgame-puzzle-list { padding-left: 8px; font-size: 12px; }
+.endgame-puzzle-submenu > summary::after { position: absolute; right: 8px; content: "▶"; font-size: 9px; }
+.endgame-puzzle-submenu[open] > summary, .endgame-puzzle-submenu:hover > summary, .endgame-puzzle-submenu:focus-within > summary { background: #3498db; color: #fff; }
+.endgame-puzzle-list { display: none; position: absolute; z-index: 40; top: -5px; left: calc(100% - 1px); width: max-content; min-width: 170px; max-width: min(280px, calc(100vw - 24px)); max-height: min(60vh, 480px); overflow: auto; padding: 4px; border: 1px solid #bdc3c7; border-radius: 6px; background: #fff; box-shadow: 0 6px 20px #0003; font-size: 12px; }
+.endgame-puzzle-submenu:hover > .endgame-puzzle-list,
+.endgame-puzzle-submenu:focus-within > .endgame-puzzle-list,
+.endgame-puzzle-submenu[open] > .endgame-puzzle-list { display: block; }
+.endgame-puzzle-list:has(> .endgame-puzzle-submenu) { max-height: none; overflow: visible; }
+.endgame-puzzle-list .endgame-puzzle-submenu > summary { background: #fff; color: #1a2433; }
+.endgame-puzzle-list .endgame-puzzle-submenu:hover > summary,
+.endgame-puzzle-list .endgame-puzzle-submenu:focus-within > summary,
+.endgame-puzzle-list .endgame-puzzle-submenu[open] > summary { background: #3498db; color: #fff; }
 .endgame-puzzle-list button.selected { color: #2980b9; background: #e8f4fd; font-weight: 700; }
 .endgame-last-move .xiangqi-piece-face { box-shadow: 0 0 0 3px #d99434; }
 .endgame-last-move::before { background: #d9943477; }
