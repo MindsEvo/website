@@ -10,6 +10,7 @@ export function explanationContent(text) {
 export function createBoardAudio(panel, { explanation, button, onPause = () => {}, onStatus }) {
   let explaining = false;
   let generation = 0;
+  let resolveSpeech = null;
   let context;
   let currentText = '';
   if (!button && explanation) {
@@ -33,6 +34,8 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
   function stop() {
     generation += 1;
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    resolveSpeech?.(false);
+    resolveSpeech = null;
     explaining = false;
     updateButton();
   }
@@ -43,15 +46,15 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
     updateButton();
   }
   function speak(text, explicit = false) {
-    if (!text || (!explicit && !panel.getVoiceEnabled())) return;
+    if (!text || (!explicit && !panel.getVoiceEnabled())) return Promise.resolve(false);
     if (!('speechSynthesis' in window)) {
       onStatus('当前浏览器不支持语音播放。');
-      return;
+      return Promise.resolve(false);
     }
     stop();
     if (panel.getVolume() === 0) {
       if (explicit) onStatus('音量为零，请调高音量后播放解说。');
-      return;
+      return Promise.resolve(false);
     }
     explaining = explicit;
     updateButton();
@@ -60,24 +63,30 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
     utterance.lang = 'zh-CN';
     utterance.volume = panel.getVolume() / 100;
     utterance.rate = 0.85 + (panel.getSpeed() - 5) * 0.03;
-    utterance.onend = () => {
-      if (token !== generation) return;
-      explaining = false;
-      updateButton();
-    };
-    utterance.onerror = event => {
-      if (token !== generation || ['canceled', 'interrupted'].includes(event.error)) return;
-      explaining = false;
-      updateButton();
-      onStatus(`语音播放失败：${event.error || '未知错误'}`);
-    };
-    try {
-      window.speechSynthesis.speak(utterance);
-    } catch (error) {
-      explaining = false;
-      updateButton();
-      onStatus(`语音播放失败：${error.message}`);
-    }
+    return new Promise(resolve => {
+      const finish = played => {
+        if (resolveSpeech === finish) resolveSpeech = null;
+        if (token === generation) {
+          explaining = false;
+          updateButton();
+        }
+        resolve(played);
+      };
+      resolveSpeech = finish;
+      utterance.onend = () => finish(token === generation);
+      utterance.onerror = event => {
+        if (token === generation && !['canceled', 'interrupted'].includes(event.error)) {
+          onStatus(`语音播放失败：${event.error || '未知错误'}`);
+        }
+        finish(false);
+      };
+      try {
+        window.speechSynthesis.speak(utterance);
+      } catch (error) {
+        onStatus(`语音播放失败：${error.message}`);
+        finish(false);
+      }
+    });
   }
   function effect(kind = 'move') {
     if (!panel.getSoundEnabled() || panel.getVolume() === 0) return;
@@ -109,11 +118,15 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
   }
   function move(game, notation = '') {
     stop();
+    const { feedback, last } = effectMove(game);
+    const moveText = notation || (last ? `${last.turn === RED ? '红方' : '黑方'}${getPieceLabel(last.piece)}走棋` : '');
+    return speak([moveText, feedback.text].filter(Boolean).join('；'));
+  }
+  function effectMove(game) {
     const feedback = getLessonMoveFeedback(game);
     const last = game.history.at(-1);
     effect(feedback.state.winner ? 'win' : feedback.state.inCheck ? 'check' : feedback.capture ? 'capture' : 'move');
-    const moveText = notation || (last ? `${last.turn === RED ? '红方' : '黑方'}${getPieceLabel(last.piece)}走棋` : '');
-    speak([moveText, feedback.text].filter(Boolean).join('；'));
+    return { feedback, last };
   }
   button?.addEventListener('click', () => {
     if (explaining) { stop(); return; }
@@ -141,5 +154,5 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
     if (context) context.close().catch(error => console.warn('关闭音效失败', error));
   });
   refresh();
-  return { move, speak, effect, stop, refresh, button };
+  return { move, effectMove, speak, effect, stop, refresh, button };
 }

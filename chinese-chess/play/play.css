@@ -56,11 +56,14 @@
 .move-empty { min-height: 86px; display: grid; place-items: center; color: #98a4af; font-size: 12px; }
 .move-item { min-height: 36px; padding: 6px 7px; display: grid; grid-template-columns: 35px 25px minmax(0, 1fr); align-items: center; gap: 5px; border-bottom: 1px solid #eef1f4; font-size: 11px; }
 .move-item:nth-child(even) { background: #f8fafb; }
+.move-item.is-current { background: #fff1bd; box-shadow: inset 3px 0 #bd8340; }
 .move-number { color: #8995a1; font-variant-numeric: tabular-nums; }
 .move-side { width: 20px; padding: 1px 0; border-radius: 3px; color: #fff; text-align: center; font-size: 10px; font-weight: 800; }
 .move-red .move-side { background: var(--red); }
 .move-black .move-side { background: #3c4650; }
 .move-notation { min-width: 0; overflow: hidden; color: var(--ink); text-overflow: ellipsis; white-space: nowrap; }
+.solution-playback { margin: 0; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.solution-playback mark { border-radius: 2px; background: #ffe083; color: #263445; box-shadow: 0 0 0 2px #ffe083; }
 .captured-section { padding-bottom: 13px; }
 .captured-section .side-heading { margin-bottom: 11px; }
 .captured-row { display: flex; align-items: center; gap: 12px; min-height: 31px; border-top: 1px solid #eef1f4; }
@@ -164,14 +167,21 @@
 .tree-group { min-width: 0; }
 .tree-group summary { min-height: 25px; padding: 5px 3px; color: #435465; font-size: 9px; cursor: pointer; list-style-position: inside; }
 .recommendation-group summary { font-weight: 800; }
-.tree-level { margin-left: 13px; }
-.tree-category { margin-left: 12px; }
+.tree-family { margin-left: 0; }
+.tree-level { margin-left: 14px; }
+.tree-category { margin-left: 14px; }
 .bank-leaf { width: calc(100% - 30px); min-height: 25px; margin: 1px 0 1px 28px; padding: 4px 6px; display: block; overflow: hidden; border: 0; border-radius: 3px; background: transparent; color: #4a5967; font-family: inherit; font-size: 9px; text-align: left; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
 .bank-leaf:hover { background: #f2f6f7; }
 .bank-leaf.selected { color: #923d34; background: #f8ece9; font-weight: 800; }
 .recommendation-note, .bank-empty, .bank-loading { margin: 1px 6px 6px 22px; color: #8995a0; font-size: 8px; line-height: 1.6; }
 .recommendation-note { max-width: 240px; }
 .global-status { min-height: 22px; margin-top: 4px; color: #788793; font-size: 11px; }
+.puzzle-details { min-width: 0; margin: 5px 0; border: 1px solid #e3e8ec; border-radius: 4px; background: #fafcfd; }
+.puzzle-details summary { padding: 5px 7px; color: #536978; font-size: 10px; font-weight: 700; cursor: pointer; }
+.puzzle-details-content { max-height: 155px; padding: 0 8px 7px; overflow: auto; color: #5f6d78; font-size: 9px; line-height: 1.5; }
+.puzzle-details-content p { margin: 4px 0; }
+.puzzle-details-content ul { margin: 2px 0 6px; padding-left: 17px; }
+.puzzle-detail-notice { color: #9a5c1f; }
 
 .work-action, .work-editor, .save-version-row input, .bank-search { font-size: 12px; }
 .field-label, .editor-status, .solution-variant, .save-version-row, .bank-count,

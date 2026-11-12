@@ -59,7 +59,12 @@
       <section class="work-panel" aria-label="棋谱与解说">
         <label class="field-label" for="solutionVariant">棋谱答案</label>
         <select id="solutionVariant" class="solution-variant" aria-label="棋谱答案" disabled><option value="">请选择棋局</option></select>
+        <details id="puzzleDetails" class="puzzle-details" hidden>
+          <summary>棋局资料</summary>
+          <div id="puzzleDetailsContent" class="puzzle-details-content"></div>
+        </details>
         <textarea id="solutionText" class="work-editor solution-editor" readonly spellcheck="false" placeholder="选择题库棋局查看配套棋谱。"></textarea>
+        <pre id="solutionPlayback" class="work-editor solution-editor solution-playback" aria-hidden="true" hidden></pre>
         <div class="editor-status" id="solutionStatus" role="status" aria-live="polite"></div>
         <label class="field-label" for="explanationText">解说内容</label>
         <textarea id="explanationText" class="work-editor explanation-editor" readonly spellcheck="false" placeholder="选择题目查看配套解说。"></textarea>
