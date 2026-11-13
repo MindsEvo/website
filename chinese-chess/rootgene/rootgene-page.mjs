@@ -14,6 +14,7 @@ import {
   placeStandardIntersection
 } from '../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
+import { getCoursePuzzleLevel } from '../academy/course-puzzle-levels.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -25,7 +26,6 @@ const geneList = document.getElementById('geneList');
 const paletteButtons = [...document.querySelectorAll('.piece-palette-item')];
 const eraseButton = document.getElementById('eraseTool');
 const firstMoverButton = document.getElementById('firstMoverButton');
-const rootStatus = document.querySelector('.rootgene-status');
 const rootSaveButton = document.getElementById('rootGeneFooterSave');
 const geneType = document.getElementById('geneType');
 const geneLevel = document.getElementById('geneLevel');
@@ -68,6 +68,11 @@ const solutionStatus = document.getElementById('solutionStatus');
 const explanationStatus = document.getElementById('explanationStatus');
 const recordButton = document.getElementById('recordButton');
 const solutionVariant = document.getElementById('solutionVariant');
+const helpDialog = document.getElementById('rootGeneHelpDialog');
+document.getElementById('rootGeneHelpButton').addEventListener('click', () => helpDialog.showModal());
+helpDialog.addEventListener('keydown', event => {
+  if (event.key === 'Escape') helpDialog.close();
+});
 
 const panel = mountBoardControlPanel(document.getElementById('geneBoardToolbar'), {
   mode,
@@ -458,7 +463,8 @@ async function loadSavedPuzzle(category, item) {
     selectedBoardSquare = null;
     selectedPuzzleId = item.id;
     if (TYPES[category.family]) geneType.value = category.family;
-    geneLevel.value = /^L[1-3]$/.test(category.level) ? category.level : 'L1';
+    const level = getCoursePuzzleLevel(item, category.level);
+    geneLevel.value = /^L[1-3]$/.test(level) ? level : 'L1';
     selectedSavedId = CUSTOM_ID.test(item.id) ? item.id : '';
     geneName.value = selectedSavedId;
     updateNameFormat();
@@ -470,7 +476,7 @@ async function loadSavedPuzzle(category, item) {
     renderBoard();
     renderSavedPuzzles();
     renderDirectory();
-    setStatus(`已载入 ${item.title || item.id}。${category.level === 'ungraded' ? '原题未分级；另存时使用左侧所选级别。' : ''}`, 'success');
+    setStatus(`已载入 ${item.title || item.id}。${!/^L[1-3]$/.test(level) ? '原题未分级；另存时使用左侧所选级别。' : ''}`, 'success');
     updateMaterialVersions();
     await loadMaterials(0);
   } catch (error) {
@@ -565,9 +571,6 @@ function turnName(piece) {
 function setStatus(message, state = '') {
   statusText.textContent = message;
   statusText.dataset.state = state;
-  rootStatus.dataset.state = state;
-  rootStatus.querySelector('i').style.background = state === 'error' ? '#d94a42' : state === 'success' ? '#2bb56c' : '#e5a528';
-  rootStatus.lastChild.textContent = state === 'error' ? '需要处理' : state === 'success' ? '操作完成' : '编辑中';
 }
 
 function setBusy(busy) {

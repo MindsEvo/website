@@ -2,7 +2,7 @@ export const OPENING_GROUPS = {
   先手主流开局: ['中炮类', '马类开局', '兵类开局', '相类开局'],
   后手应对体系: ['屏风马体系', '反宫马体系', '顺炮体系', '列手炮体系'],
   冷门特色开局: ['过宫炮', '士角炮', '鸳鸯炮', '龟背炮'],
-  原题库目录: ['原始开局记录']
+  待定: []
 };
 
 export const OPENING_SUBGROUPS = {
@@ -21,7 +21,7 @@ export const OPENING_SUBGROUPS = {
 };
 
 export const OPENING_ROOTS = [
-  { id: 'cc.opening.central.screen', name: '中炮对屏风马', knowledge: '中炮进攻与双马稳健防守；屏风马不是顺炮。', puzzles: ['oc_zhongpao_L1-003'] },
+  { id: 'cc.opening.central.screen', name: '中炮对屏风马', knowledge: '中炮进攻与双马稳健防守；屏风马不是顺炮。', puzzles: ['oc_待定中炮对屏风马棋局_L1-003'] },
   { id: 'cc.opening.central.palcorner', name: '中炮对反宫马', knowledge: '中炮进攻与反宫马防守反击；反宫马不是列手炮。', puzzles: [] },
   { id: 'cc.opening.central.singlehorse', name: '中炮对单提马', knowledge: '认识单提马阵形与中炮的攻防关系。', puzzles: [] },
   { id: 'cc.opening.first.horse', name: '起马局（正马）', knowledge: '先出正马，观察对方应着再转换阵形。', puzzles: [] },
@@ -34,7 +34,7 @@ export const OPENING_ROOTS = [
   { id: 'cc.opening.screen.elephant', name: '屏风马对飞相', knowledge: '比较屏风马与飞相阵形的出子顺序。', puzzles: [] },
   { id: 'cc.opening.palcorner.central', name: '反宫马对中炮', knowledge: '从后手视角观察反宫马的防守转换。', puzzles: [] },
   { id: 'cc.opening.palcorner.horse', name: '反宫马对起马', knowledge: '观察反宫马与起马局的阵形变化。', puzzles: [] },
-  { id: 'cc.opening.same.directcross', name: '顺炮直车对横车', knowledge: '双方同向中炮；先手直车与后手横车的争先。', puzzles: ['oc_zhongpao_L1-002'] },
+  { id: 'cc.opening.same.directcross', name: '顺炮直车对横车', knowledge: '双方同向中炮；先手直车与后手横车的争先。', puzzles: ['oc_弃车十三招_L1-002'] },
   { id: 'cc.opening.same.crossdirect', name: '顺炮横车对直车', knowledge: '双方同向中炮；先手横车与后手直车的争先。', puzzles: [] },
   { id: 'cc.opening.opposite.large', name: '大列手炮', knowledge: '双方异向中炮，认识大列手炮的阵形特点。', puzzles: [] },
   { id: 'cc.opening.opposite.small', name: '小列手炮', knowledge: '比较小列手炮与大列手炮的出子差异。', puzzles: [] },
@@ -45,22 +45,17 @@ export const OPENING_ROOTS = [
   { id: 'cc.opening.duck.central', name: '鸳鸯炮对中炮', knowledge: '观察鸳鸯炮的双炮配置与中路防守。', puzzles: [] },
   { id: 'cc.opening.duck.fairypawn', name: '鸳鸯炮对仙人指路', knowledge: '观察双炮配置与挺兵试探的攻防关系。', puzzles: [] },
   { id: 'cc.opening.turtle.central', name: '龟背炮对中炮', knowledge: '观察龟背炮的防守配置与中炮进攻。', puzzles: [] },
-  { id: 'cc.opening.turtle.horse', name: '龟背炮对起马', knowledge: '观察龟背炮与起马局的出子和阵形转换。', puzzles: [] },
-  {
-    id: 'cc.opening.source.archive',
-    name: '原始开局记录',
-    knowledge: '按 Windows 版题库的经典/中炮目录完整展示原始棋局；棋局标题和定式来源未经此页面重新推定。',
-    puzzles: ['oc_zhongpao_L1-001', 'oc_zhongpao_L1-200']
-  }
+  { id: 'cc.opening.turtle.horse', name: '龟背炮对起马', knowledge: '观察龟背炮与起马局的出子和阵形转换。', puzzles: [] }
 ];
 
 export const OPENING_CATEGORIES = Object.fromEntries(OPENING_ROOTS.map(root => [root.name, root.puzzles]));
 
 export function selectOpeningPuzzles(manifest, name) {
-  const root = OPENING_ROOTS.find(root => root.name === name);
-  if (!root) throw new Error(`未知开局：${name}`);
   const items = manifest.categories.filter(category => category.key.startsWith('opening/'))
     .flatMap(category => category.items);
+  if (name === '待定') return items.filter(puzzle => puzzle.namingPending || puzzle.classificationPending);
+  const root = OPENING_ROOTS.find(root => root.name === name);
+  if (!root) throw new Error(`未知开局：${name}`);
   return root.puzzles.map(id => {
     const puzzle = items.find(puzzle => puzzle.id === id);
     if (!puzzle) throw new Error(`题库缺少开局棋局：${id}`);

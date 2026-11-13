@@ -10,34 +10,37 @@
       "label": "炮类",
       "items": [
         {
-          "id": "at_2CAE-2R2A2E_L1-001",
-          "title": "连环炮（重跑）",
-          "fen": "attacking/L1/cannon/fen/at_2CAE-2R2A2E_L1-001.fen",
-          "metadata": "attacking/L1/cannon/json/at_2CAE-2R2A2E_L1-001.json",
+          "id": "at_连环炮重炮_L1-001",
+          "title": "连环炮（重炮）",
+          "fen": "attacking/L1/cannon/fen/at_连环炮重炮_L1-001.fen",
+          "metadata": "attacking/L1/cannon/json/at_连环炮重炮_L1-001.json",
           "solutions": [
-            "attacking/L1/cannon/solutions/at_2CAE-2R2A2E_L1-001.txt"
+            "attacking/L1/cannon/solutions/at_连环炮重炮_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/cannon/explanation/at_2CAE-2R2A2E_L1-001_exp.txt"
+            "attacking/L1/cannon/explanation/at_连环炮重炮_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/cannon/pgn/at_2CAE-2R2A2E_L1-001.pgn"
-          ]
+            "attacking/L1/cannon/pgn/at_连环炮重炮_L1-001.pgn"
+          ],
+          "originalId": "at_2CAE-2R2A2E_L1-001",
+          "originalTitle": "连环炮（重跑）"
         },
         {
-          "id": "at_2CAE-2RC2A2E_L1-001",
+          "id": "at_天地炮_L1-001",
           "title": "天地炮",
-          "fen": "attacking/L1/cannon/fen/at_2CAE-2RC2A2E_L1-001.fen",
-          "metadata": "attacking/L1/cannon/json/at_2CAE-2RC2A2E_L1-001.json",
+          "fen": "attacking/L1/cannon/fen/at_天地炮_L1-001.fen",
+          "metadata": "attacking/L1/cannon/json/at_天地炮_L1-001.json",
           "solutions": [
-            "attacking/L1/cannon/solutions/at_2CAE-2RC2A2E_L1-001.txt"
+            "attacking/L1/cannon/solutions/at_天地炮_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/cannon/explanation/at_2CAE-2RC2A2E_L1-001_exp.txt"
+            "attacking/L1/cannon/explanation/at_天地炮_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/cannon/pgn/at_2CAE-2RC2A2E_L1-001.pgn"
-          ]
+            "attacking/L1/cannon/pgn/at_天地炮_L1-001.pgn"
+          ],
+          "originalId": "at_2CAE-2RC2A2E_L1-001"
         }
       ]
     },
@@ -49,218 +52,233 @@
       "label": "马类",
       "items": [
         {
-          "id": "at_2H2AE-H2C2AE_L1-001",
+          "id": "at_双马饮泉_L1-001",
           "title": "双马饮泉",
-          "fen": "attacking/L1/horse/fen/at_2H2AE-H2C2AE_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_2H2AE-H2C2AE_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_双马饮泉_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_双马饮泉_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_2H2AE-H2C2AE_L1-001.txt"
+            "attacking/L1/horse/solutions/at_双马饮泉_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_2H2AE-H2C2AE_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_双马饮泉_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_2H2AE-H2C2AE_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_双马饮泉_L1-001.pgn"
+          ],
+          "originalId": "at_2H2AE-H2C2AE_L1-001"
         },
         {
-          "id": "at_2HA-2C2A_L1-001",
+          "id": "at_双马饮泉_L1-002",
           "title": "双马饮泉",
-          "fen": "attacking/L1/horse/fen/at_2HA-2C2A_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_2HA-2C2A_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_双马饮泉_L1-002.fen",
+          "metadata": "attacking/L1/horse/json/at_双马饮泉_L1-002.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_2HA-2C2A_L1-001.txt"
+            "attacking/L1/horse/solutions/at_双马饮泉_L1-002.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_2HA-2C2A_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_双马饮泉_L1-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_2HA-2C2A_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_双马饮泉_L1-002.pgn"
+          ],
+          "originalId": "at_2HA-2C2A_L1-001"
         },
         {
-          "id": "at_2HCA-2RP2A_L2-001",
+          "id": "at_卧槽马高掉马闷杀_L2-001",
           "title": "卧槽马，高掉马，闷杀",
-          "fen": "attacking/L1/horse/fen/at_2HCA-2RP2A_L2-001.fen",
-          "metadata": "attacking/L1/horse/json/at_2HCA-2RP2A_L2-001.json",
+          "fen": "attacking/L1/horse/fen/at_卧槽马高掉马闷杀_L2-001.fen",
+          "metadata": "attacking/L1/horse/json/at_卧槽马高掉马闷杀_L2-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_2HCA-2RP2A_L2-001.txt"
+            "attacking/L1/horse/solutions/at_卧槽马高掉马闷杀_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_2HCA-2RP2A_L2-001_exp.txt"
+            "attacking/L1/horse/explanation/at_卧槽马高掉马闷杀_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_2HCA-2RP2A_L2-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_卧槽马高掉马闷杀_L2-001.pgn"
+          ],
+          "originalId": "at_2HCA-2RP2A_L2-001"
         },
         {
-          "id": "at_HCA-R2HCP2A_L2-001",
+          "id": "at_驱离马后炮_L2-001",
           "title": "驱离，马后炮",
-          "fen": "attacking/L1/horse/fen/at_HCA-R2HCP2A_L2-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HCA-R2HCP2A_L2-001.json",
+          "fen": "attacking/L1/horse/fen/at_驱离马后炮_L2-001.fen",
+          "metadata": "attacking/L1/horse/json/at_驱离马后炮_L2-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HCA-R2HCP2A_L2-001.txt"
+            "attacking/L1/horse/solutions/at_驱离马后炮_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HCA-R2HCP2A_L2-001_exp.txt"
+            "attacking/L1/horse/explanation/at_驱离马后炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HCA-R2HCP2A_L2-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_驱离马后炮_L2-001.pgn"
+          ],
+          "originalId": "at_HCA-R2HCP2A_L2-001"
         },
         {
-          "id": "at_HCE-H2P2A_L2-001",
+          "id": "at_马炮巧胜_L2-001",
           "title": "马炮巧胜",
-          "fen": "attacking/L1/horse/fen/at_HCE-H2P2A_L2-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HCE-H2P2A_L2-001.json",
+          "fen": "attacking/L1/horse/fen/at_马炮巧胜_L2-001.fen",
+          "metadata": "attacking/L1/horse/json/at_马炮巧胜_L2-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HCE-H2P2A_L2-001.txt"
+            "attacking/L1/horse/solutions/at_马炮巧胜_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HCE-H2P2A_L2-001_exp.txt"
+            "attacking/L1/horse/explanation/at_马炮巧胜_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HCE-H2P2A_L2-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_马炮巧胜_L2-001.pgn"
+          ],
+          "originalId": "at_HCE-H2P2A_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_HCP-R2P_L2-001",
+          "id": "at_马炮兵白脸将_L2-001",
           "title": "马炮兵， 白脸将",
-          "fen": "attacking/L1/horse/fen/at_HCP-R2P_L2-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HCP-R2P_L2-001.json",
+          "fen": "attacking/L1/horse/fen/at_马炮兵白脸将_L2-001.fen",
+          "metadata": "attacking/L1/horse/json/at_马炮兵白脸将_L2-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HCP-R2P_L2-001.txt"
+            "attacking/L1/horse/solutions/at_马炮兵白脸将_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HCP-R2P_L2-001_exp.txt"
+            "attacking/L1/horse/explanation/at_马炮兵白脸将_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HCP-R2P_L2-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_马炮兵白脸将_L2-001.pgn"
+          ],
+          "originalId": "at_HCP-R2P_L2-001"
         },
         {
-          "id": "at_HP2AE-RCAE_L1-001",
+          "id": "at_卧槽马和兵_L1-001",
           "title": "卧槽马和兵",
-          "fen": "attacking/L1/horse/fen/at_HP2AE-RCAE_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HP2AE-RCAE_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_卧槽马和兵_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_卧槽马和兵_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HP2AE-RCAE_L1-001-1.txt",
-            "attacking/L1/horse/solutions/at_HP2AE-RCAE_L1-001.txt"
+            "attacking/L1/horse/solutions/at_卧槽马和兵_L1-001-1.txt",
+            "attacking/L1/horse/solutions/at_卧槽马和兵_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HP2AE-RCAE_L1-001_exp-1.txt",
-            "attacking/L1/horse/explanation/at_HP2AE-RCAE_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_卧槽马和兵_L1-001_exp-1.txt",
+            "attacking/L1/horse/explanation/at_卧槽马和兵_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HP2AE-RCAE_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_卧槽马和兵_L1-001.pgn"
+          ],
+          "originalId": "at_HP2AE-RCAE_L1-001"
         },
         {
-          "id": "at_HPAE-HC2A_L1-001",
+          "id": "at_拔簧马_L1-001",
           "title": "拔簧马",
-          "fen": "attacking/L1/horse/fen/at_HPAE-HC2A_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HPAE-HC2A_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_拔簧马_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_拔簧马_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HPAE-HC2A_L1-001.txt"
+            "attacking/L1/horse/solutions/at_拔簧马_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HPAE-HC2A_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_拔簧马_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HPAE-HC2A_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_拔簧马_L1-001.pgn"
+          ],
+          "originalId": "at_HPAE-HC2A_L1-001"
         },
         {
-          "id": "at_HPAE-R2A_L2-001",
+          "id": "at_挂角马_L2-001",
           "title": "挂角马",
-          "fen": "attacking/L1/horse/fen/at_HPAE-R2A_L2-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HPAE-R2A_L2-001.json",
+          "fen": "attacking/L1/horse/fen/at_挂角马_L2-001.fen",
+          "metadata": "attacking/L1/horse/json/at_挂角马_L2-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HPAE-R2A_L2-001.txt"
+            "attacking/L1/horse/solutions/at_挂角马_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HPAE-R2A_L2-001_exp.txt"
+            "attacking/L1/horse/explanation/at_挂角马_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HPAE-R2A_L2-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_挂角马_L2-001.pgn"
+          ],
+          "originalId": "at_HPAE-R2A_L2-001"
         },
         {
-          "id": "at_RH2A2E-RCA_L1-001",
+          "id": "at_挂角马_L1-001",
           "title": "挂角马",
-          "fen": "attacking/L1/horse/fen/at_HR2A2E-RCA_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HR2A2E-RCA_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_挂角马_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_挂角马_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HR2A2E-RCA_L1-001.txt"
+            "attacking/L1/horse/solutions/at_挂角马_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HR2A2E-RCA_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_挂角马_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HR2A2E-RCA_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_挂角马_L1-001.pgn"
+          ],
+          "originalId": "at_RH2A2E-RCA_L1-001"
         },
         {
-          "id": "at_RH2AE-RC2AE_L1-001",
+          "id": "at_卧槽马和车_L1-001",
           "title": "卧槽马和车",
-          "fen": "attacking/L1/horse/fen/at_HR2AE-RC2AE_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HR2AE-RC2AE_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_卧槽马和车_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_卧槽马和车_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HR2AE-RC2AE_L1-001-1.txt",
-            "attacking/L1/horse/solutions/at_HR2AE-RC2AE_L1-001.txt"
+            "attacking/L1/horse/solutions/at_卧槽马和车_L1-001-1.txt",
+            "attacking/L1/horse/solutions/at_卧槽马和车_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HR2AE-RC2AE_L1-001_exp-1.txt",
-            "attacking/L1/horse/explanation/at_HR2AE-RC2AE_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_卧槽马和车_L1-001_exp-1.txt",
+            "attacking/L1/horse/explanation/at_卧槽马和车_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HR2AE-RC2AE_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_卧槽马和车_L1-001.pgn"
+          ],
+          "originalId": "at_RH2AE-RC2AE_L1-001"
         },
         {
-          "id": "at_HRA2E-R2A_L1-001",
+          "id": "at_高掉马_L1-001",
           "title": "高掉马",
-          "fen": "attacking/L1/horse/fen/at_HRA2E-R2A_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HRA2E-R2A_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_高掉马_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_高掉马_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HRA2E-R2A_L1-001.txt"
+            "attacking/L1/horse/solutions/at_高掉马_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HRA2E-R2A_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_高掉马_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HRA2E-R2A_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_高掉马_L1-001.pgn"
+          ],
+          "originalId": "at_HRA2E-R2A_L1-001"
         },
         {
-          "id": "at_HRA2E-RAE_L1-001",
+          "id": "at_钓鱼马_L1-001",
           "title": "钓鱼马",
-          "fen": "attacking/L1/horse/fen/at_HRA2E-RAE_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HRA2E-RAE_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_钓鱼马_L1-001.fen",
+          "metadata": "attacking/L1/horse/json/at_钓鱼马_L1-001.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HRA2E-RAE_L1-001.txt"
+            "attacking/L1/horse/solutions/at_钓鱼马_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HRA2E-RAE_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_钓鱼马_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HRA2E-RAE_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_钓鱼马_L1-001.pgn"
+          ],
+          "originalId": "at_HRA2E-RAE_L1-001"
         },
         {
-          "id": "at_HRAE-RC2A_L1-001",
+          "id": "at_拔簧马_L1-002",
           "title": "拔簧马",
-          "fen": "attacking/L1/horse/fen/at_HRAE-RC2A_L1-001.fen",
-          "metadata": "attacking/L1/horse/json/at_HRAE-RC2A_L1-001.json",
+          "fen": "attacking/L1/horse/fen/at_拔簧马_L1-002.fen",
+          "metadata": "attacking/L1/horse/json/at_拔簧马_L1-002.json",
           "solutions": [
-            "attacking/L1/horse/solutions/at_HRAE-RC2A_L1-001.txt"
+            "attacking/L1/horse/solutions/at_拔簧马_L1-002.txt"
           ],
           "explanations": [
-            "attacking/L1/horse/explanation/at_HRAE-RC2A_L1-001_exp.txt"
+            "attacking/L1/horse/explanation/at_拔簧马_L1-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/horse/pgn/at_HRAE-RC2A_L1-001.pgn"
-          ]
+            "attacking/L1/horse/pgn/at_拔簧马_L1-002.pgn"
+          ],
+          "originalId": "at_HRAE-RC2A_L1-001"
         }
       ]
     },
@@ -272,64 +290,70 @@
       "label": "其他",
       "items": [
         {
-          "id": "at_O2RHCAE-R2A_L1-001",
-          "title": "空头跑",
-          "fen": "attacking/L1/others/fen/at_O2RHCAE-R2A_L1-001.fen",
-          "metadata": "attacking/L1/others/json/at_O2RHCAE-R2A_L1-001.json",
+          "id": "at_空头炮_L1-001",
+          "title": "空头炮",
+          "fen": "attacking/L1/others/fen/at_空头炮_L1-001.fen",
+          "metadata": "attacking/L1/others/json/at_空头炮_L1-001.json",
           "solutions": [
-            "attacking/L1/others/solutions/at_O2RHCAE-R2A_L1-001.txt"
+            "attacking/L1/others/solutions/at_空头炮_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/others/explanation/at_O2RHCAE-R2A_L1-001_exp.txt"
+            "attacking/L1/others/explanation/at_空头炮_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/others/pgn/at_O2RHCAE-R2A_L1-001.pgn"
-          ]
+            "attacking/L1/others/pgn/at_空头炮_L1-001.pgn"
+          ],
+          "originalId": "at_O2RHCAE-R2A_L1-001",
+          "originalTitle": "空头跑"
         },
         {
-          "id": "at_OR2CAE-R2C_L1-001",
+          "id": "at_夹车炮_L1-001",
           "title": "夹车炮",
-          "fen": "attacking/L1/others/fen/at_OR2CAE-R2C_L1-001.fen",
-          "metadata": "attacking/L1/others/json/at_OR2CAE-R2C_L1-001.json",
+          "fen": "attacking/L1/others/fen/at_夹车炮_L1-001.fen",
+          "metadata": "attacking/L1/others/json/at_夹车炮_L1-001.json",
           "solutions": [
-            "attacking/L1/others/solutions/at_OR2CAE-R2C_L1-001.txt"
+            "attacking/L1/others/solutions/at_夹车炮_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/others/explanation/at_OR2CAE-R2C_L1-001_exp.txt"
+            "attacking/L1/others/explanation/at_夹车炮_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/others/pgn/at_OR2CAE-R2C_L1-001.pgn"
-          ]
+            "attacking/L1/others/pgn/at_夹车炮_L1-001.pgn"
+          ],
+          "originalId": "at_OR2CAE-R2C_L1-001"
         },
         {
-          "id": "at_ORCPAE-2RP2A2E_L1-001",
+          "id": "at_闷宫_L1-001",
           "title": "闷宫",
-          "fen": "attacking/L1/others/fen/at_ORCPAE-2RP2A2E_L1-001.fen",
-          "metadata": "attacking/L1/others/json/at_ORCPAE-2RP2A2E_L1-001.json",
+          "fen": "attacking/L1/others/fen/at_闷宫_L1-001.fen",
+          "metadata": "attacking/L1/others/json/at_闷宫_L1-001.json",
           "solutions": [
-            "attacking/L1/others/solutions/at_ORCPAE-2RP2A2E_L1-001.txt"
+            "attacking/L1/others/solutions/at_闷宫_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/others/explanation/at_ORCPAE-2RP2A2E_L1-001_exp.txt"
+            "attacking/L1/others/explanation/at_闷宫_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/others/pgn/at_ORCPAE-2RP2A2E_L1-001.pgn"
-          ]
+            "attacking/L1/others/pgn/at_闷宫_L1-001.pgn"
+          ],
+          "originalId": "at_ORCPAE-2RP2A2E_L1-001"
         },
         {
-          "id": "at_ORCPAE-R2A_L1-001",
-          "title": "空头跑",
-          "fen": "attacking/L1/others/fen/at_ORCPAE-R2A_L1-001.fen",
-          "metadata": "attacking/L1/others/json/at_ORCPAE-R2A_L1-001.json",
+          "id": "at_空头炮_L1-002",
+          "title": "空头炮",
+          "fen": "attacking/L1/others/fen/at_空头炮_L1-002.fen",
+          "metadata": "attacking/L1/others/json/at_空头炮_L1-002.json",
           "solutions": [
-            "attacking/L1/others/solutions/at_ORCPAE-R2A_L1-001.txt"
+            "attacking/L1/others/solutions/at_空头炮_L1-002.txt"
           ],
           "explanations": [
-            "attacking/L1/others/explanation/at_ORCPAE-R2A_L1-001_exp.txt"
+            "attacking/L1/others/explanation/at_空头炮_L1-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/others/pgn/at_ORCPAE-R2A_L1-001.pgn"
-          ]
+            "attacking/L1/others/pgn/at_空头炮_L1-002.pgn"
+          ],
+          "originalId": "at_ORCPAE-R2A_L1-001",
+          "originalTitle": "空头跑"
         }
       ]
     },
@@ -341,19 +365,20 @@
       "label": "兵类",
       "items": [
         {
-          "id": "at_2P-PA_L1-001",
+          "id": "at_二鬼拍门_L1-001",
           "title": "二鬼拍门",
-          "fen": "attacking/L1/pawn/fen/at_2P-PA_L1-001.fen",
-          "metadata": "attacking/L1/pawn/json/at_2P-PA_L1-001.json",
+          "fen": "attacking/L1/pawn/fen/at_二鬼拍门_L1-001.fen",
+          "metadata": "attacking/L1/pawn/json/at_二鬼拍门_L1-001.json",
           "solutions": [
-            "attacking/L1/pawn/solutions/at_2P-PA_L1-001.txt"
+            "attacking/L1/pawn/solutions/at_二鬼拍门_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/pawn/explanation/at_2P-PA_L1-001_exp.txt"
+            "attacking/L1/pawn/explanation/at_二鬼拍门_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/pawn/pgn/at_2P-PA_L1-001.pgn"
-          ]
+            "attacking/L1/pawn/pgn/at_二鬼拍门_L1-001.pgn"
+          ],
+          "originalId": "at_2P-PA_L1-001"
         }
       ]
     },
@@ -365,208 +390,222 @@
       "label": "车类",
       "items": [
         {
-          "id": "at_2R-2RH2P2A2E_L1-001",
-          "title": " 弃子攻杀，白脸将",
-          "fen": "attacking/L1/rook/fen/at_2R-2RH2P2A2E_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_2R-2RH2P2A2E_L1-001.json",
+          "id": "at_弃子攻杀白脸将_L1-001",
+          "title": "弃子攻杀，白脸将",
+          "fen": "attacking/L1/rook/fen/at_弃子攻杀白脸将_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子攻杀白脸将_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_2R-2RH2P2A2E_L1-001.txt"
+            "attacking/L1/rook/solutions/at_弃子攻杀白脸将_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_2R-2RH2P2A2E_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子攻杀白脸将_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_2R-2RH2P2A2E_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子攻杀白脸将_L1-001.pgn"
+          ],
+          "originalId": "at_2R-2RH2P2A2E_L1-001",
+          "originalTitle": " 弃子攻杀，白脸将"
         },
         {
-          "id": "at_2R2AE-R_L1-001",
+          "id": "at_双车错_L1-001",
           "title": "双车错",
-          "fen": "attacking/L1/rook/fen/at_2R2AE-R_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_2R2AE-R_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_双车错_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_双车错_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_2R2AE-R_L1-001-1.txt",
-            "attacking/L1/rook/solutions/at_2R2AE-R_L1-001.txt"
+            "attacking/L1/rook/solutions/at_双车错_L1-001-1.txt",
+            "attacking/L1/rook/solutions/at_双车错_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_2R2AE-R_L1-001_exp-1.txt",
-            "attacking/L1/rook/explanation/at_2R2AE-R_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_双车错_L1-001_exp-1.txt",
+            "attacking/L1/rook/explanation/at_双车错_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_2R2AE-R_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_双车错_L1-001.pgn"
+          ],
+          "originalId": "at_2R2AE-R_L1-001"
         },
         {
-          "id": "at_2R2E-2R2A_L1-001",
+          "id": "at_弃子攻杀白脸将_L1-002",
           "title": "弃子攻杀， 白脸将",
-          "fen": "attacking/L1/rook/fen/at_2R2E-2R2A_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_2R2E-2R2A_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子攻杀白脸将_L1-002.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子攻杀白脸将_L1-002.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_2R2E-2R2A_L1-001.txt"
+            "attacking/L1/rook/solutions/at_弃子攻杀白脸将_L1-002.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_2R2E-2R2A_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子攻杀白脸将_L1-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_2R2E-2R2A_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子攻杀白脸将_L1-002.pgn"
+          ],
+          "originalId": "at_2R2E-2R2A_L1-001"
         },
         {
-          "id": "at_2RAE-RA_L1-001",
+          "id": "at_同侧双车错_L1-001",
           "title": "同侧双车错",
-          "fen": "attacking/L1/rook/fen/at_2RAE-RA_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_2RAE-RA_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_同侧双车错_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_同侧双车错_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_2RAE-RA_L1-001-1.txt",
-            "attacking/L1/rook/solutions/at_2RAE-RA_L1-001.txt"
+            "attacking/L1/rook/solutions/at_同侧双车错_L1-001-1.txt",
+            "attacking/L1/rook/solutions/at_同侧双车错_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_2RAE-RA_L1-001_exp-1.txt",
-            "attacking/L1/rook/explanation/at_2RAE-RA_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_同侧双车错_L1-001_exp-1.txt",
+            "attacking/L1/rook/explanation/at_同侧双车错_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_2RAE-RA_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_同侧双车错_L1-001.pgn"
+          ],
+          "originalId": "at_2RAE-RA_L1-001"
         },
         {
-          "id": "at_2RP2A2E-2RC2A2E_L1-001",
+          "id": "at_弃子引离白脸将_L1-001",
           "title": "弃子引离， 白脸将",
-          "fen": "attacking/L1/rook/fen/at_2RP2A2E-2RC2A2E_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_2RP2A2E-2RC2A2E_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离白脸将_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离白脸将_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_2RP2A2E-2RC2A2E_L1-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离白脸将_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_2RP2A2E-2RC2A2E_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离白脸将_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_2RP2A2E-2RC2A2E_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离白脸将_L1-001.pgn"
+          ],
+          "originalId": "at_2RP2A2E-2RC2A2E_L1-001"
         },
         {
-          "id": "at_R-R_L1-001",
+          "id": "at_白脸将对面笑_L1-001",
           "title": "白脸将（对面笑）",
-          "fen": "attacking/L1/rook/fen/at_R-R_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_R-R_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_白脸将对面笑_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_白脸将对面笑_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_R-R_L1-001-1.txt",
-            "attacking/L1/rook/solutions/at_R-R_L1-001.txt"
+            "attacking/L1/rook/solutions/at_白脸将对面笑_L1-001-1.txt",
+            "attacking/L1/rook/solutions/at_白脸将对面笑_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_R-R_L1-001_exp-1.txt",
-            "attacking/L1/rook/explanation/at_R-R_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_白脸将对面笑_L1-001_exp-1.txt",
+            "attacking/L1/rook/explanation/at_白脸将对面笑_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_R-R_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_白脸将对面笑_L1-001.pgn"
+          ],
+          "originalId": "at_R-R_L1-001"
         },
         {
-          "id": "at_R2C-R2CP2A_L2-001",
+          "id": "at_弃子引离白脸将_L2-001",
           "title": "弃子引离，白脸将",
-          "fen": "attacking/L1/rook/fen/at_R2C-R2CP2A_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_R2C-R2CP2A_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离白脸将_L2-001.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离白脸将_L2-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_R2C-R2CP2A_L2-001-1.txt",
-            "attacking/L1/rook/solutions/at_R2C-R2CP2A_L2-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离白脸将_L2-001-1.txt",
+            "attacking/L1/rook/solutions/at_弃子引离白脸将_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_R2C-R2CP2A_L2-001_exp-1.txt",
-            "attacking/L1/rook/explanation/at_R2C-R2CP2A_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离白脸将_L2-001_exp-1.txt",
+            "attacking/L1/rook/explanation/at_弃子引离白脸将_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_R2C-R2CP2A_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离白脸将_L2-001.pgn"
+          ],
+          "originalId": "at_R2C-R2CP2A_L2-001"
         },
         {
-          "id": "at_R2HC-RH2CP_L2-001",
+          "id": "at_弃子引离马后炮_L2-001",
           "title": "弃子引离， 马后炮",
-          "fen": "attacking/L1/rook/fen/at_R2HC-RH2CP_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_R2HC-RH2CP_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离马后炮_L2-001.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离马后炮_L2-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_R2HC-RH2CP_L2-001-1.txt",
-            "attacking/L1/rook/solutions/at_R2HC-RH2CP_L2-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离马后炮_L2-001-1.txt",
+            "attacking/L1/rook/solutions/at_弃子引离马后炮_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_R2HC-RH2CP_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离马后炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_R2HC-RH2CP_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离马后炮_L2-001.pgn"
+          ],
+          "originalId": "at_R2HC-RH2CP_L2-001"
         },
         {
-          "id": "at_RHC-RHCPAE_L2-001",
+          "id": "at_引离马后炮_L2-001",
           "title": "引离， 马后炮",
-          "fen": "attacking/L1/rook/fen/at_RHC-RHCPAE_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_RHC-RHCPAE_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_引离马后炮_L2-001.fen",
+          "metadata": "attacking/L1/rook/json/at_引离马后炮_L2-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_RHC-RHCPAE_L2-001.txt"
+            "attacking/L1/rook/solutions/at_引离马后炮_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_RHC-RHCPAE_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_引离马后炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_RHC-RHCPAE_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_引离马后炮_L2-001.pgn"
+          ],
+          "originalId": "at_RHC-RHCPAE_L2-001"
         },
         {
-          "id": "at_RHC2A-RC2P2A2E_L2-001",
+          "id": "at_弃子引离马后炮_L2-002",
           "title": "弃子引离，马后炮",
-          "fen": "attacking/L1/rook/fen/at_RHC2A-RC2P2A2E_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_RHC2A-RC2P2A2E_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离马后炮_L2-002.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离马后炮_L2-002.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_RHC2A-RC2P2A2E_L2-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离马后炮_L2-002.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_RHC2A-RC2P2A2E_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离马后炮_L2-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_RHC2A-RC2P2A2E_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离马后炮_L2-002.pgn"
+          ],
+          "originalId": "at_RHC2A-RC2P2A2E_L2-001"
         },
         {
-          "id": "at_RHC2PA2E-RHC4PA_L2-001",
+          "id": "at_弃子引离马后炮_L2-003",
           "title": "弃子引离， 马后炮",
-          "fen": "attacking/L1/rook/fen/at_RHC2PA2E-RHC4PA_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_RHC2PA2E-RHC4PA_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离马后炮_L2-003.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离马后炮_L2-003.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_RHC2PA2E-RHC4PA_L2-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离马后炮_L2-003.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_RHC2PA2E-RHC4PA_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离马后炮_L2-003_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_RHC2PA2E-RHC4PA_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离马后炮_L2-003.pgn"
+          ],
+          "originalId": "at_RHC2PA2E-RHC4PA_L2-001"
         },
         {
-          "id": "at_RHCA-2AHC2E_L2-001",
+          "id": "at_弃子引离马后炮_L2-004",
           "title": "弃子引离， 马后炮",
-          "fen": "attacking/L1/rook/fen/at_RHCA-2AHC2E_L2-001.fen",
-          "metadata": "attacking/L1/rook/json/at_RHCA-2AHC2E_L2-001.json",
+          "fen": "attacking/L1/rook/fen/at_弃子引离马后炮_L2-004.fen",
+          "metadata": "attacking/L1/rook/json/at_弃子引离马后炮_L2-004.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_RHCA-2AHC2E_L2-001.txt"
+            "attacking/L1/rook/solutions/at_弃子引离马后炮_L2-004.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_RHCA-2AHC2E_L2-001_exp.txt"
+            "attacking/L1/rook/explanation/at_弃子引离马后炮_L2-004_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_RHCA-2AHC2E_L2-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_弃子引离马后炮_L2-004.pgn"
+          ],
+          "originalId": "at_RHCA-2AHC2E_L2-001"
         },
         {
-          "id": "at_RP2E-R2P_L1-001",
+          "id": "at_拦截阻挡白脸将_L1-001",
           "title": "拦截，阻挡， 白脸将",
-          "fen": "attacking/L1/rook/fen/at_RP2E-R2P_L1-001.fen",
-          "metadata": "attacking/L1/rook/json/at_RP2E-R2P_L1-001.json",
+          "fen": "attacking/L1/rook/fen/at_拦截阻挡白脸将_L1-001.fen",
+          "metadata": "attacking/L1/rook/json/at_拦截阻挡白脸将_L1-001.json",
           "solutions": [
-            "attacking/L1/rook/solutions/at_RP2E-R2P_L1-001.txt"
+            "attacking/L1/rook/solutions/at_拦截阻挡白脸将_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L1/rook/explanation/at_RP2E-R2P_L1-001_exp.txt"
+            "attacking/L1/rook/explanation/at_拦截阻挡白脸将_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L1/rook/pgn/at_RP2E-R2P_L1-001.pgn"
-          ]
+            "attacking/L1/rook/pgn/at_拦截阻挡白脸将_L1-001.pgn"
+          ],
+          "originalId": "at_RP2E-R2P_L1-001"
         }
       ]
     },
@@ -578,19 +617,20 @@
       "label": "马类",
       "items": [
         {
-          "id": "at_HCP-HC3P2AE_L2-001",
+          "id": "at_弃子引离马后炮白脸将_L2-001",
           "title": "弃子引离，马后炮，白脸将",
-          "fen": "attacking/L2/horse/fen/at_HCP-HC3P2AE_L2-001.fen",
-          "metadata": "attacking/L2/horse/json/at_HCP-HC3P2AE_L2-001.json",
+          "fen": "attacking/L2/horse/fen/at_弃子引离马后炮白脸将_L2-001.fen",
+          "metadata": "attacking/L2/horse/json/at_弃子引离马后炮白脸将_L2-001.json",
           "solutions": [
-            "attacking/L2/horse/solutions/at_HCP-HC3P2AE_L2-001.txt"
+            "attacking/L2/horse/solutions/at_弃子引离马后炮白脸将_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/horse/explanation/at_HCP-HC3P2AE_L2-001_exp.txt"
+            "attacking/L2/horse/explanation/at_弃子引离马后炮白脸将_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/horse/pgn/at_HCP-HC3P2AE_L2-001.pgn"
-          ]
+            "attacking/L2/horse/pgn/at_弃子引离马后炮白脸将_L2-001.pgn"
+          ],
+          "originalId": "at_HCP-HC3P2AE_L2-001"
         }
       ]
     },
@@ -602,70 +642,75 @@
       "label": "其他",
       "items": [
         {
-          "id": "at_OH2CP-RHA_L2-001",
+          "id": "at_凤凰三点头_L2-001",
           "title": "凤凰三点头",
-          "fen": "attacking/L2/others/fen/at_OH2CP-RHA_L2-001.fen",
-          "metadata": "attacking/L2/others/json/at_OH2CP-RHA_L2-001.json",
+          "fen": "attacking/L2/others/fen/at_凤凰三点头_L2-001.fen",
+          "metadata": "attacking/L2/others/json/at_凤凰三点头_L2-001.json",
           "solutions": [
-            "attacking/L2/others/solutions/at_OH2CP-RHA_L2-001-1.txt",
-            "attacking/L2/others/solutions/at_OH2CP-RHA_L2-001.txt"
+            "attacking/L2/others/solutions/at_凤凰三点头_L2-001-1.txt",
+            "attacking/L2/others/solutions/at_凤凰三点头_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/others/explanation/at_OH2CP-RHA_L2-001_exp-1.txt",
-            "attacking/L2/others/explanation/at_OH2CP-RHA_L2-001_exp.txt"
+            "attacking/L2/others/explanation/at_凤凰三点头_L2-001_exp-1.txt",
+            "attacking/L2/others/explanation/at_凤凰三点头_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/others/pgn/at_OH2CP-RHA_L2-001.pgn"
-          ]
+            "attacking/L2/others/pgn/at_凤凰三点头_L2-001.pgn"
+          ],
+          "originalId": "at_OH2CP-RHA_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_OHCAE-2RA_L1-001",
+          "id": "at_马后炮_L1-001",
           "title": "马后炮",
-          "fen": "attacking/L2/others/fen/at_OHCAE-2RA_L1-001.fen",
-          "metadata": "attacking/L2/others/json/at_OHCAE-2RA_L1-001.json",
+          "fen": "attacking/L2/others/fen/at_马后炮_L1-001.fen",
+          "metadata": "attacking/L2/others/json/at_马后炮_L1-001.json",
           "solutions": [
-            "attacking/L2/others/solutions/at_OHCAE-2RA_L1-001-1.txt",
-            "attacking/L2/others/solutions/at_OHCAE-2RA_L1-001.txt"
+            "attacking/L2/others/solutions/at_马后炮_L1-001-1.txt",
+            "attacking/L2/others/solutions/at_马后炮_L1-001.txt"
           ],
           "explanations": [
-            "attacking/L2/others/explanation/at_OHCAE-2RA_L1-001_exp-1.txt",
-            "attacking/L2/others/explanation/at_OHCAE-2RA_L1-001_exp.txt"
+            "attacking/L2/others/explanation/at_马后炮_L1-001_exp-1.txt",
+            "attacking/L2/others/explanation/at_马后炮_L1-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/others/pgn/at_OHCAE-2RA_L1-001.pgn"
-          ]
+            "attacking/L2/others/pgn/at_马后炮_L1-001.pgn"
+          ],
+          "originalId": "at_OHCAE-2RA_L1-001"
         },
         {
-          "id": "at_OP-RHA2E_L2-001",
+          "id": "at_送佛归殿_L2-001",
           "title": "送佛归殿",
-          "fen": "attacking/L2/others/fen/at_OP-RHA2E_L2-001.fen",
-          "metadata": "attacking/L2/others/json/at_OP-RHA2E_L2-001.json",
+          "fen": "attacking/L2/others/fen/at_送佛归殿_L2-001.fen",
+          "metadata": "attacking/L2/others/json/at_送佛归殿_L2-001.json",
           "solutions": [
-            "attacking/L2/others/solutions/at_OP-RHA2E_L2-001-1.txt",
-            "attacking/L2/others/solutions/at_OP-RHA2E_L2-001.txt"
+            "attacking/L2/others/solutions/at_送佛归殿_L2-001-1.txt",
+            "attacking/L2/others/solutions/at_送佛归殿_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/others/explanation/at_OP-RHA2E_L2-001_exp-1.txt",
-            "attacking/L2/others/explanation/at_OP-RHA2E_L2-001_exp.txt"
+            "attacking/L2/others/explanation/at_送佛归殿_L2-001_exp-1.txt",
+            "attacking/L2/others/explanation/at_送佛归殿_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/others/pgn/at_OP-RHA2E_L2-001.pgn"
-          ]
+            "attacking/L2/others/pgn/at_送佛归殿_L2-001.pgn"
+          ],
+          "originalId": "at_OP-RHA2E_L2-001"
         },
         {
-          "id": "at_ORC-RP2A2E_L2-001",
+          "id": "at_铁门栓_L2-001",
           "title": "铁门栓",
-          "fen": "attacking/L2/others/fen/at_ORC-RP2A2E_L2-001.fen",
-          "metadata": "attacking/L2/others/json/at_ORC-RP2A2E_L2-001.json",
+          "fen": "attacking/L2/others/fen/at_铁门栓_L2-001.fen",
+          "metadata": "attacking/L2/others/json/at_铁门栓_L2-001.json",
           "solutions": [
-            "attacking/L2/others/solutions/at_ORC-RP2A2E_L2-001.txt"
+            "attacking/L2/others/solutions/at_铁门栓_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/others/explanation/at_ORC-RP2A2E_L2-001_exp.txt"
+            "attacking/L2/others/explanation/at_铁门栓_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/others/pgn/at_ORC-RP2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/others/pgn/at_铁门栓_L2-001.pgn"
+          ],
+          "originalId": "at_ORC-RP2A2E_L2-001"
         }
       ]
     },
@@ -677,235 +722,264 @@
       "label": "车类",
       "items": [
         {
-          "id": "at_2R2E-2RAE_L2-001",
+          "id": "at_大刀剜心_L2-001",
           "title": "大刀剜心",
-          "fen": "attacking/L2/rook/fen/at_2R2E-2RAE_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2R2E-2RAE_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_大刀剜心_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_大刀剜心_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2R2E-2RAE_L2-001.txt"
+            "attacking/L2/rook/solutions/at_大刀剜心_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2R2E-2RAE_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_大刀剜心_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2R2E-2RAE_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_大刀剜心_L2-001.pgn"
+          ],
+          "originalId": "at_2R2E-2RAE_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_2RC-2RC3P2A2E_L2-001",
-          "title": "非常巧妙的杀法",
-          "fen": "attacking/L2/rook/fen/at_2RC-2RC3P2A2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RC-2RC3P2A2E_L2-001.json",
+          "id": "at_待定攻杀棋局_L2-001",
+          "title": "待定攻杀棋局",
+          "fen": "attacking/L2/rook/fen/at_待定攻杀棋局_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_待定攻杀棋局_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RC-2RC3P2A2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_待定攻杀棋局_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RC-2RC3P2A2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_待定攻杀棋局_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RC-2RC3P2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_待定攻杀棋局_L2-001.pgn"
+          ],
+          "originalId": "at_2RC-2RC3P2A2E_L2-001",
+          "originalTitle": "非常巧妙的杀法",
+          "classificationPending": true
         },
         {
-          "id": "at_2RC2A-2R2C2A2E_L2-001",
+          "id": "at_大刀剜心_L2-002",
           "title": "大刀剜心",
-          "fen": "attacking/L2/rook/fen/at_2RC2A-2R2C2A2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RC2A-2R2C2A2E_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_大刀剜心_L2-002.fen",
+          "metadata": "attacking/L2/rook/json/at_大刀剜心_L2-002.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RC2A-2R2C2A2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_大刀剜心_L2-002.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RC2A-2R2C2A2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_大刀剜心_L2-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RC2A-2R2C2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_大刀剜心_L2-002.pgn"
+          ],
+          "originalId": "at_2RC2A-2R2C2A2E_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_2RC2A2E-2RH2CP2A2E_L2-001",
-          "title": "rook类残局",
-          "fen": "attacking/L2/rook/fen/at_2RC2A2E-2RH2CP2A2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RC2A2E-2RH2CP2A2E_L2-001.json",
+          "id": "at_待定攻杀棋局_L2-002",
+          "title": "待定攻杀棋局",
+          "fen": "attacking/L2/rook/fen/at_待定攻杀棋局_L2-002.fen",
+          "metadata": "attacking/L2/rook/json/at_待定攻杀棋局_L2-002.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RC2A2E-2RH2CP2A2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_待定攻杀棋局_L2-002.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RC2A2E-2RH2CP2A2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_待定攻杀棋局_L2-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RC2A2E-2RH2CP2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_待定攻杀棋局_L2-002.pgn"
+          ],
+          "originalId": "at_2RC2A2E-2RH2CP2A2E_L2-001",
+          "originalTitle": "rook类残局",
+          "classificationPending": true
         },
         {
-          "id": "at_2RCAE-2RC2AE_L2-001",
+          "id": "at_大刀剜心_L2-003",
           "title": "大刀剜心",
-          "fen": "attacking/L2/rook/fen/at_2RCAE-2RC2AE_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RCAE-2RC2AE_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_大刀剜心_L2-003.fen",
+          "metadata": "attacking/L2/rook/json/at_大刀剜心_L2-003.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RCAE-2RC2AE_L2-001.txt"
+            "attacking/L2/rook/solutions/at_大刀剜心_L2-003.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RCAE-2RC2AE_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_大刀剜心_L2-003_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RCAE-2RC2AE_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_大刀剜心_L2-003.pgn"
+          ],
+          "originalId": "at_2RCAE-2RC2AE_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_2RCP-RC2P2E_L2-001",
+          "id": "at_弃子巧杀_L2-001",
           "title": "弃子巧杀",
-          "fen": "attacking/L2/rook/fen/at_2RCP-RC2P2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RCP-RC2P2E_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_弃子巧杀_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_弃子巧杀_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RCP-RC2P2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_弃子巧杀_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RCP-RC2P2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_弃子巧杀_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RCP-RC2P2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_弃子巧杀_L2-001.pgn"
+          ],
+          "originalId": "at_2RCP-RC2P2E_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_2RPAE-2RP2AE_L2-001",
+          "id": "at_弃车巧妙绝杀_L2-001",
           "title": "弃车巧妙绝杀",
-          "fen": "attacking/L2/rook/fen/at_2RPAE-2RP2AE_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_2RPAE-2RP2AE_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_弃车巧妙绝杀_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_弃车巧妙绝杀_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_2RPAE-2RP2AE_L2-001.txt"
+            "attacking/L2/rook/solutions/at_弃车巧妙绝杀_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_2RPAE-2RP2AE_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_弃车巧妙绝杀_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_2RPAE-2RP2AE_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_弃车巧妙绝杀_L2-001.pgn"
+          ],
+          "originalId": "at_2RPAE-2RP2AE_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_RC-R_L2-001",
+          "id": "at_海底捞月_L2-001",
           "title": "海底捞月",
-          "fen": "attacking/L2/rook/fen/at_RC-R_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RC-R_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_海底捞月_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_海底捞月_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RC-R_L2-001-1.txt",
-            "attacking/L2/rook/solutions/at_RC-R_L2-001.txt"
+            "attacking/L2/rook/solutions/at_海底捞月_L2-001-1.txt",
+            "attacking/L2/rook/solutions/at_海底捞月_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RC-R_L2-001_exp-1.txt",
-            "attacking/L2/rook/explanation/at_RC-R_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_海底捞月_L2-001_exp-1.txt",
+            "attacking/L2/rook/explanation/at_海底捞月_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RC-R_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_海底捞月_L2-001.pgn"
+          ],
+          "originalId": "at_RC-R_L2-001"
         },
         {
-          "id": "at_RCP-2RP2A_L2-001",
+          "id": "at_献车炮兵发威_L2-001",
           "title": "献车炮兵发威",
-          "fen": "attacking/L2/rook/fen/at_RCP-2RP2A_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RCP-2RP2A_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_献车炮兵发威_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_献车炮兵发威_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RCP-2RP2A_L2-001-1.txt",
-            "attacking/L2/rook/solutions/at_RCP-2RP2A_L2-001.txt"
+            "attacking/L2/rook/solutions/at_献车炮兵发威_L2-001-1.txt",
+            "attacking/L2/rook/solutions/at_献车炮兵发威_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RCP-2RP2A_L2-001_exp-1.txt",
-            "attacking/L2/rook/explanation/at_RCP-2RP2A_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_献车炮兵发威_L2-001_exp-1.txt",
+            "attacking/L2/rook/explanation/at_献车炮兵发威_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RCP-2RP2A_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_献车炮兵发威_L2-001.pgn"
+          ],
+          "originalId": "at_RCP-2RP2A_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_RCP-R2C3P2A2E_L2-001",
-          "title": "经典的杀法",
-          "fen": "attacking/L2/rook/fen/at_RCP-R2C3P2A2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RCP-R2C3P2A2E_L2-001.json",
+          "id": "at_待定攻杀棋局_L2-003",
+          "title": "待定攻杀棋局",
+          "fen": "attacking/L2/rook/fen/at_待定攻杀棋局_L2-003.fen",
+          "metadata": "attacking/L2/rook/json/at_待定攻杀棋局_L2-003.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RCP-R2C3P2A2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_待定攻杀棋局_L2-003.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RCP-R2C3P2A2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_待定攻杀棋局_L2-003_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RCP-R2C3P2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_待定攻杀棋局_L2-003.pgn"
+          ],
+          "originalId": "at_RCP-R2C3P2A2E_L2-001",
+          "originalTitle": "经典的杀法",
+          "classificationPending": true
         },
         {
-          "id": "at_RCP2E-RHP2A_L2-001",
+          "id": "at_弃车巧杀_L2-001",
           "title": "弃车巧杀",
-          "fen": "attacking/L2/rook/fen/at_RCP2E-RHP2A_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RCP2E-RHP2A_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_弃车巧杀_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_弃车巧杀_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RCP2E-RHP2A_L2-001.txt"
+            "attacking/L2/rook/solutions/at_弃车巧杀_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RCP2E-RHP2A_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_弃车巧杀_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RCP2E-RHP2A_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_弃车巧杀_L2-001.pgn"
+          ],
+          "originalId": "at_RCP2E-RHP2A_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_RCPAE-RHCP2A2E_L2-001",
+          "id": "at_车炮兵巧杀_L2-001",
           "title": "车炮兵巧杀",
-          "fen": "attacking/L2/rook/fen/at_RCPAE-RHCP2A2E_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RCPAE-RHCP2A2E_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_车炮兵巧杀_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_车炮兵巧杀_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RCPAE-RHCP2A2E_L2-001.txt"
+            "attacking/L2/rook/solutions/at_车炮兵巧杀_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RCPAE-RHCP2A2E_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_车炮兵巧杀_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RCPAE-RHCP2A2E_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_车炮兵巧杀_L2-001.pgn"
+          ],
+          "originalId": "at_RCPAE-RHCP2A2E_L2-001",
+          "classificationPending": true
         },
         {
-          "id": "at_RH2C4P2A2E-2RHC3P2AE_L2-001",
+          "id": "at_弃子引离白脸将马后炮_L2-001",
           "title": "弃子引离，白脸将，马后炮",
-          "fen": "attacking/L2/rook/fen/at_RH2C4P2A2E-2RHC3P2AE_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RH2C4P2A2E-2RHC3P2AE_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_弃子引离白脸将马后炮_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_弃子引离白脸将马后炮_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RH2C4P2A2E-2RHC3P2AE_L2-001.txt"
+            "attacking/L2/rook/solutions/at_弃子引离白脸将马后炮_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RH2C4P2A2E-2RHC3P2AE_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_弃子引离白脸将马后炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RH2C4P2A2E-2RHC3P2AE_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_弃子引离白脸将马后炮_L2-001.pgn"
+          ],
+          "originalId": "at_RH2C4P2A2E-2RHC3P2AE_L2-001"
         },
         {
-          "id": "at_RHC-RH2PA_L2-001",
+          "id": "at_弃子引离马后炮_L2-005",
           "title": "弃子引离，马后炮",
-          "fen": "attacking/L2/rook/fen/at_RHC-RH2PA_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RHC-RH2PA_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_弃子引离马后炮_L2-005.fen",
+          "metadata": "attacking/L2/rook/json/at_弃子引离马后炮_L2-005.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RHC-RH2PA_L2-001.txt"
+            "attacking/L2/rook/solutions/at_弃子引离马后炮_L2-005.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RHC-RH2PA_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_弃子引离马后炮_L2-005_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RHC-RH2PA_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_弃子引离马后炮_L2-005.pgn"
+          ],
+          "originalId": "at_RHC-RH2PA_L2-001"
         },
         {
-          "id": "at_RP-R_L2-001",
+          "id": "at_兵车海底捞月_L2-001",
           "title": "兵车海底捞月",
-          "fen": "attacking/L2/rook/fen/at_RP-R_L2-001.fen",
-          "metadata": "attacking/L2/rook/json/at_RP-R_L2-001.json",
+          "fen": "attacking/L2/rook/fen/at_兵车海底捞月_L2-001.fen",
+          "metadata": "attacking/L2/rook/json/at_兵车海底捞月_L2-001.json",
           "solutions": [
-            "attacking/L2/rook/solutions/at_RP-R_L2-001-1.txt",
-            "attacking/L2/rook/solutions/at_RP-R_L2-001.txt"
+            "attacking/L2/rook/solutions/at_兵车海底捞月_L2-001-1.txt",
+            "attacking/L2/rook/solutions/at_兵车海底捞月_L2-001.txt"
           ],
           "explanations": [
-            "attacking/L2/rook/explanation/at_RP-R_L2-001_exp-1.txt",
-            "attacking/L2/rook/explanation/at_RP-R_L2-001_exp.txt"
+            "attacking/L2/rook/explanation/at_兵车海底捞月_L2-001_exp-1.txt",
+            "attacking/L2/rook/explanation/at_兵车海底捞月_L2-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L2/rook/pgn/at_RP-R_L2-001.pgn"
-          ]
+            "attacking/L2/rook/pgn/at_兵车海底捞月_L2-001.pgn"
+          ],
+          "originalId": "at_RP-R_L2-001"
         }
       ]
     },
@@ -917,36 +991,38 @@
       "label": "其他",
       "items": [
         {
-          "id": "at_OR2C2A-2HP2A2E_L3-002",
+          "id": "at_炮碾丹砂_L3-002",
           "title": "炮碾丹砂",
-          "fen": "attacking/L3/others/fen/at_OR2C2A-2HP2A2E_L3-002.fen",
-          "metadata": "attacking/L3/others/json/at_OR2C2A-2HP2A2E_L3-002.json",
+          "fen": "attacking/L3/others/fen/at_炮碾丹砂_L3-002.fen",
+          "metadata": "attacking/L3/others/json/at_炮碾丹砂_L3-002.json",
           "solutions": [
-            "attacking/L3/others/solutions/at_OR2C2A-2HP2A2E_L3-002-1.txt",
-            "attacking/L3/others/solutions/at_OR2C2A-2HP2A2E_L3-002.txt"
+            "attacking/L3/others/solutions/at_炮碾丹砂_L3-002-1.txt",
+            "attacking/L3/others/solutions/at_炮碾丹砂_L3-002.txt"
           ],
           "explanations": [
-            "attacking/L3/others/explanation/at_OR2C2A-2HP2A2E_L3-002_exp.txt"
+            "attacking/L3/others/explanation/at_炮碾丹砂_L3-002_exp.txt"
           ],
           "pgn": [
-            "attacking/L3/others/pgn/at_OR2C2A-2HP2A2E_L3-002.pgn"
-          ]
+            "attacking/L3/others/pgn/at_炮碾丹砂_L3-002.pgn"
+          ],
+          "originalId": "at_OR2C2A-2HP2A2E_L3-002"
         },
         {
-          "id": "at_ORC2A-2R2CA_L3-001",
+          "id": "at_闷杀_L3-001",
           "title": "闷杀",
-          "fen": "attacking/L3/others/fen/at_ORC2A-2R2CA_L3-001.fen",
-          "metadata": "attacking/L3/others/json/at_ORC2A-2R2CA_L3-001.json",
+          "fen": "attacking/L3/others/fen/at_闷杀_L3-001.fen",
+          "metadata": "attacking/L3/others/json/at_闷杀_L3-001.json",
           "solutions": [
-            "attacking/L3/others/solutions/at_ORC2A-2R2CA_L3-001.txt"
+            "attacking/L3/others/solutions/at_闷杀_L3-001.txt"
           ],
           "explanations": [
-            "attacking/L3/others/explanation/at_ORC2A-2R2CA_L3-001_exp-1.txt",
-            "attacking/L3/others/explanation/at_ORC2A-2R2CA_L3-001_exp.txt"
+            "attacking/L3/others/explanation/at_闷杀_L3-001_exp-1.txt",
+            "attacking/L3/others/explanation/at_闷杀_L3-001_exp.txt"
           ],
           "pgn": [
-            "attacking/L3/others/pgn/at_ORC2A-2R2CA_L3-001.pgn"
-          ]
+            "attacking/L3/others/pgn/at_闷杀_L3-001.pgn"
+          ],
+          "originalId": "at_ORC2A-2R2CA_L3-001"
         }
       ]
     },
@@ -958,128 +1034,136 @@
       "label": "炮类",
       "items": [
         {
-          "id": "eg_2C-H2A2E_L2-001",
+          "id": "eg_双炮困毙马士象全_L2-001",
           "title": "双炮困毙马士象全",
-          "fen": "endgame/L1/cannon/fen/eg_2C-H2A2E_L2-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_2C-H2A2E_L2-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_双炮困毙马士象全_L2-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_双炮困毙马士象全_L2-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_2C-H2A2E_L2-001.txt"
+            "endgame/L1/cannon/solutions/eg_双炮困毙马士象全_L2-001.txt"
           ],
           "explanations": [],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_2C-H2A2E_L2-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_双炮困毙马士象全_L2-001.pgn"
+          ],
+          "originalId": "eg_2C-H2A2E_L2-001"
         },
         {
-          "id": "eg_2C2P-2C2P_L3-001",
+          "id": "eg_炮兵对峙巧困毙_L3-001",
           "title": "炮兵对峙巧困毙",
-          "fen": "endgame/L1/cannon/fen/eg_2C2P-2C2P_L3-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_2C2P-2C2P_L3-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮兵对峙巧困毙_L3-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮兵对峙巧困毙_L3-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_2C2P-2C2P_L3-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮兵对峙巧困毙_L3-001.txt"
           ],
           "explanations": [],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_2C2P-2C2P_L3-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮兵对峙巧困毙_L3-001.pgn"
+          ],
+          "originalId": "eg_2C2P-2C2P_L3-001"
         },
         {
-          "id": "eg_C-K_L1-001",
+          "id": "eg_单炮平光将_L1-001",
           "title": "单炮平光将",
-          "fen": "endgame/L1/cannon/fen/eg_C-K_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_C-K_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_单炮平光将_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_单炮平光将_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_C-K_L1-001-1.txt",
-            "endgame/L1/cannon/solutions/eg_C-K_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_单炮平光将_L1-001-1.txt",
+            "endgame/L1/cannon/solutions/eg_单炮平光将_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_C-K_L1-001_exp-1.txt"
+            "endgame/L1/cannon/explanation/eg_单炮平光将_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_C-K_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_单炮平光将_L1-001.pgn"
+          ],
+          "originalId": "eg_C-K_L1-001"
         },
         {
-          "id": "eg_CA-2A_L1-001",
+          "id": "eg_炮士胜双士_L1-001",
           "title": "炮士胜双士",
-          "fen": "endgame/L1/cannon/fen/eg_CA-2A_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_CA-2A_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮士胜双士_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮士胜双士_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_CA-2A_L1-001-1.txt",
-            "endgame/L1/cannon/solutions/eg_CA-2A_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮士胜双士_L1-001-1.txt",
+            "endgame/L1/cannon/solutions/eg_炮士胜双士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_CA-2A_L1-001_exp-1.txt",
-            "endgame/L1/cannon/explanation/exp-eg_CA-2A_L1-001.txt"
+            "endgame/L1/cannon/explanation/eg_炮士胜双士_L1-001_exp-1.txt",
+            "endgame/L1/cannon/explanation/exp-eg_炮士胜双士_L1-001.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_CA-2A_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮士胜双士_L1-001.pgn"
+          ],
+          "originalId": "eg_CA-2A_L1-001"
         },
         {
-          "id": "eg_CA-A_L1-001",
+          "id": "eg_炮士胜单士_L1-001",
           "title": "炮士胜单士",
-          "fen": "endgame/L1/cannon/fen/eg_CA-A_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_CA-A_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮士胜单士_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮士胜单士_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_CA-A_L1-001-1.txt",
-            "endgame/L1/cannon/solutions/eg_CA-A_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮士胜单士_L1-001-1.txt",
+            "endgame/L1/cannon/solutions/eg_炮士胜单士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_CA-A_L1-001_exp-1.txt",
-            "endgame/L1/cannon/explanation/exp-eg_CA-A_L1-001.txt"
+            "endgame/L1/cannon/explanation/eg_炮士胜单士_L1-001_exp-1.txt",
+            "endgame/L1/cannon/explanation/exp-eg_炮士胜单士_L1-001.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_CA-A_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮士胜单士_L1-001.pgn"
+          ],
+          "originalId": "eg_CA-A_L1-001"
         },
         {
-          "id": "eg_CA-K_L1-001",
+          "id": "eg_炮士胜光将_L1-001",
           "title": "炮士胜光将",
-          "fen": "endgame/L1/cannon/fen/eg_CA-K_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_CA-K_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮士胜光将_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮士胜光将_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_CA-K_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮士胜光将_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_CA-K_L1-001_exp-1.txt"
+            "endgame/L1/cannon/explanation/eg_炮士胜光将_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_CA-K_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮士胜光将_L1-001.pgn"
+          ],
+          "originalId": "eg_CA-K_L1-001"
         },
         {
-          "id": "eg_CE-E_L1-001",
+          "id": "eg_炮相平单象_L1-001",
           "title": "炮相平单象",
-          "fen": "endgame/L1/cannon/fen/eg_CE-E_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_CE-E_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮相平单象_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮相平单象_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_CE-E_L1-001-1.txt",
-            "endgame/L1/cannon/solutions/eg_CE-E_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮相平单象_L1-001-1.txt",
+            "endgame/L1/cannon/solutions/eg_炮相平单象_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_CE-E_L1-001_exp-1.txt",
-            "endgame/L1/cannon/explanation/exp-eg_CE-E_L1-001.txt"
+            "endgame/L1/cannon/explanation/eg_炮相平单象_L1-001_exp-1.txt",
+            "endgame/L1/cannon/explanation/exp-eg_炮相平单象_L1-001.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_CE-E_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮相平单象_L1-001.pgn"
+          ],
+          "originalId": "eg_CE-E_L1-001"
         },
         {
-          "id": "eg_CE-K_L1-001",
+          "id": "eg_炮象平光将_L1-001",
           "title": "炮象平光将",
-          "fen": "endgame/L1/cannon/fen/eg_CE-K_L1-001.fen",
-          "metadata": "endgame/L1/cannon/json/eg_CE-K_L1-001.json",
+          "fen": "endgame/L1/cannon/fen/eg_炮象平光将_L1-001.fen",
+          "metadata": "endgame/L1/cannon/json/eg_炮象平光将_L1-001.json",
           "solutions": [
-            "endgame/L1/cannon/solutions/eg_CE-K_L1-001-1.txt",
-            "endgame/L1/cannon/solutions/eg_CE-K_L1-001.txt"
+            "endgame/L1/cannon/solutions/eg_炮象平光将_L1-001-1.txt",
+            "endgame/L1/cannon/solutions/eg_炮象平光将_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/cannon/explanation/eg_CE-K_L1-001_exp-1.txt"
+            "endgame/L1/cannon/explanation/eg_炮象平光将_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/cannon/pgn/eg_CE-K_L1-001.pgn"
-          ]
+            "endgame/L1/cannon/pgn/eg_炮象平光将_L1-001.pgn"
+          ],
+          "originalId": "eg_CE-K_L1-001"
         }
       ]
     },
@@ -1091,86 +1175,91 @@
       "label": "马类",
       "items": [
         {
-          "id": "eg_H-2A_L1-001",
+          "id": "eg_单马平双士_L1-001",
           "title": "单马平双士",
-          "fen": "endgame/L1/horse/fen/eg_H-2A_L1-001.fen",
-          "metadata": "endgame/L1/horse/json/eg_H-2A_L1-001.json",
+          "fen": "endgame/L1/horse/fen/eg_单马平双士_L1-001.fen",
+          "metadata": "endgame/L1/horse/json/eg_单马平双士_L1-001.json",
           "solutions": [
-            "endgame/L1/horse/solutions/eg_H-2A_L1-001-1.txt",
-            "endgame/L1/horse/solutions/eg_H-2A_L1-001.txt"
+            "endgame/L1/horse/solutions/eg_单马平双士_L1-001-1.txt",
+            "endgame/L1/horse/solutions/eg_单马平双士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/horse/explanation/eg_H-2A_L1-001_exp-1.txt"
+            "endgame/L1/horse/explanation/eg_单马平双士_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/horse/pgn/eg_H-2A_L1-001.pgn"
-          ]
+            "endgame/L1/horse/pgn/eg_单马平双士_L1-001.pgn"
+          ],
+          "originalId": "eg_H-2A_L1-001"
         },
         {
-          "id": "eg_H-2E_L1-001",
+          "id": "eg_单马平双象_L1-001",
           "title": "单马平双象",
-          "fen": "endgame/L1/horse/fen/eg_H-2E_L1-001.fen",
-          "metadata": "endgame/L1/horse/json/eg_H-2E_L1-001.json",
+          "fen": "endgame/L1/horse/fen/eg_单马平双象_L1-001.fen",
+          "metadata": "endgame/L1/horse/json/eg_单马平双象_L1-001.json",
           "solutions": [
-            "endgame/L1/horse/solutions/eg_H-2E_L1-001-1.txt",
-            "endgame/L1/horse/solutions/eg_H-2E_L1-001.txt"
+            "endgame/L1/horse/solutions/eg_单马平双象_L1-001-1.txt",
+            "endgame/L1/horse/solutions/eg_单马平双象_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/horse/explanation/eg_H-2E_L1-001_exp-1.txt"
+            "endgame/L1/horse/explanation/eg_单马平双象_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/horse/pgn/eg_H-2E_L1-001.pgn"
-          ]
+            "endgame/L1/horse/pgn/eg_单马平双象_L1-001.pgn"
+          ],
+          "originalId": "eg_H-2E_L1-001"
         },
         {
-          "id": "eg_H-A_L1-001",
+          "id": "eg_单马胜单士_L1-001",
           "title": "单马胜单士",
-          "fen": "endgame/L1/horse/fen/eg_H-A_L1-001.fen",
-          "metadata": "endgame/L1/horse/json/eg_H-A_L1-001.json",
+          "fen": "endgame/L1/horse/fen/eg_单马胜单士_L1-001.fen",
+          "metadata": "endgame/L1/horse/json/eg_单马胜单士_L1-001.json",
           "solutions": [
-            "endgame/L1/horse/solutions/eg_H-A_L1-001-1.txt",
-            "endgame/L1/horse/solutions/eg_H-A_L1-001.txt"
+            "endgame/L1/horse/solutions/eg_单马胜单士_L1-001-1.txt",
+            "endgame/L1/horse/solutions/eg_单马胜单士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/horse/explanation/eg_H-A_L1-001_exp-1.txt"
+            "endgame/L1/horse/explanation/eg_单马胜单士_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/horse/pgn/eg_H-A_L1-001.pgn"
-          ]
+            "endgame/L1/horse/pgn/eg_单马胜单士_L1-001.pgn"
+          ],
+          "originalId": "eg_H-A_L1-001"
         },
         {
-          "id": "eg_H-E_L1-001",
+          "id": "eg_单马平单象_L1-001",
           "title": "单马平单象",
-          "fen": "endgame/L1/horse/fen/eg_H-E_L1-001.fen",
-          "metadata": "endgame/L1/horse/json/eg_H-E_L1-001.json",
+          "fen": "endgame/L1/horse/fen/eg_单马平单象_L1-001.fen",
+          "metadata": "endgame/L1/horse/json/eg_单马平单象_L1-001.json",
           "solutions": [
-            "endgame/L1/horse/solutions/eg_H-E_L1-001-1.txt",
-            "endgame/L1/horse/solutions/eg_H-E_L1-001.txt"
+            "endgame/L1/horse/solutions/eg_单马平单象_L1-001-1.txt",
+            "endgame/L1/horse/solutions/eg_单马平单象_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/horse/explanation/eg_H-E_L1-001_exp-1.txt"
+            "endgame/L1/horse/explanation/eg_单马平单象_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/horse/pgn/eg_H-E_L1-001.pgn"
-          ]
+            "endgame/L1/horse/pgn/eg_单马平单象_L1-001.pgn"
+          ],
+          "originalId": "eg_H-E_L1-001"
         },
         {
-          "id": "eg_H-K_L1-001",
+          "id": "eg_单马胜光将_L1-001",
           "title": "单马胜光将",
-          "fen": "endgame/L1/horse/fen/eg_H-K_L1-001.fen",
-          "metadata": "endgame/L1/horse/json/eg_H-K_L1-001.json",
+          "fen": "endgame/L1/horse/fen/eg_单马胜光将_L1-001.fen",
+          "metadata": "endgame/L1/horse/json/eg_单马胜光将_L1-001.json",
           "solutions": [
-            "endgame/L1/horse/solutions/eg_H-K_L1-001-1.txt",
-            "endgame/L1/horse/solutions/eg_H-K_L1-001-2.txt",
-            "endgame/L1/horse/solutions/eg_H-K_L1-001.txt"
+            "endgame/L1/horse/solutions/eg_单马胜光将_L1-001-1.txt",
+            "endgame/L1/horse/solutions/eg_单马胜光将_L1-001-2.txt",
+            "endgame/L1/horse/solutions/eg_单马胜光将_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/horse/explanation/eg_H-K_L1-001_exp-1.txt",
-            "endgame/L1/horse/explanation/eg_H-K_L1-001_exp-2.txt"
+            "endgame/L1/horse/explanation/eg_单马胜光将_L1-001_exp-1.txt",
+            "endgame/L1/horse/explanation/eg_单马胜光将_L1-001_exp-2.txt"
           ],
           "pgn": [
-            "endgame/L1/horse/pgn/eg_H-K_L1-001.pgn"
-          ]
+            "endgame/L1/horse/pgn/eg_单马胜光将_L1-001.pgn"
+          ],
+          "originalId": "eg_H-K_L1-001"
         }
       ]
     },
@@ -1182,54 +1271,57 @@
       "label": "兵类",
       "items": [
         {
-          "id": "eg_P-A_L1-001",
+          "id": "eg_单兵平单士_L1-001",
           "title": "单兵平单士",
-          "fen": "endgame/L1/pawn/fen/eg_P-A_L1-001.fen",
-          "metadata": "endgame/L1/pawn/json/eg_P-A_L1-001.json",
+          "fen": "endgame/L1/pawn/fen/eg_单兵平单士_L1-001.fen",
+          "metadata": "endgame/L1/pawn/json/eg_单兵平单士_L1-001.json",
           "solutions": [
-            "endgame/L1/pawn/solutions/eg_P-A_L1-001-1.txt",
-            "endgame/L1/pawn/solutions/eg_P-A_L1-001.txt"
+            "endgame/L1/pawn/solutions/eg_单兵平单士_L1-001-1.txt",
+            "endgame/L1/pawn/solutions/eg_单兵平单士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/pawn/explanation/eg_P-A_L1-001_exp-1.txt",
-            "endgame/L1/pawn/explanation/exp-eg_P-A_L1-001.txt"
+            "endgame/L1/pawn/explanation/eg_单兵平单士_L1-001_exp-1.txt",
+            "endgame/L1/pawn/explanation/exp-eg_单兵平单士_L1-001.txt"
           ],
           "pgn": [
-            "endgame/L1/pawn/pgn/eg_P-A_L1-001.pgn"
-          ]
+            "endgame/L1/pawn/pgn/eg_单兵平单士_L1-001.pgn"
+          ],
+          "originalId": "eg_P-A_L1-001"
         },
         {
-          "id": "eg_P-K_L1-001",
+          "id": "eg_单兵胜光将_L1-001",
           "title": "单兵胜光将",
-          "fen": "endgame/L1/pawn/fen/eg_P-K_L1-001.fen",
-          "metadata": "endgame/L1/pawn/json/eg_P-K_L1-001.json",
+          "fen": "endgame/L1/pawn/fen/eg_单兵胜光将_L1-001.fen",
+          "metadata": "endgame/L1/pawn/json/eg_单兵胜光将_L1-001.json",
           "solutions": [
-            "endgame/L1/pawn/solutions/eg_P-K_L1-001-1.txt",
-            "endgame/L1/pawn/solutions/eg_P-K_L1-001.txt"
+            "endgame/L1/pawn/solutions/eg_单兵胜光将_L1-001-1.txt",
+            "endgame/L1/pawn/solutions/eg_单兵胜光将_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/pawn/explanation/eg_P-K_L1-001_exp-1.txt"
+            "endgame/L1/pawn/explanation/eg_单兵胜光将_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/pawn/pgn/eg_P-K_L1-001.pgn"
-          ]
+            "endgame/L1/pawn/pgn/eg_单兵胜光将_L1-001.pgn"
+          ],
+          "originalId": "eg_P-K_L1-001"
         },
         {
-          "id": "eg_PPP-2A2E_L1-001",
+          "id": "eg_三兵胜士象全_L1-001",
           "title": "三兵胜士象全",
-          "fen": "endgame/L1/pawn/fen/eg_PPP-2A2E_L1-001.fen",
-          "metadata": "endgame/L1/pawn/json/eg_PPP-2A2E_L1-001.json",
+          "fen": "endgame/L1/pawn/fen/eg_三兵胜士象全_L1-001.fen",
+          "metadata": "endgame/L1/pawn/json/eg_三兵胜士象全_L1-001.json",
           "solutions": [
-            "endgame/L1/pawn/solutions/eg_PPP-2A2E_L1-001-1.txt",
-            "endgame/L1/pawn/solutions/eg_PPP-2A2E_L1-001.txt"
+            "endgame/L1/pawn/solutions/eg_三兵胜士象全_L1-001-1.txt",
+            "endgame/L1/pawn/solutions/eg_三兵胜士象全_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/pawn/explanation/eg_PPP-2A2E_L1-001_exp-1.txt",
-            "endgame/L1/pawn/explanation/exp-eg_PPP-2A2E_L1-001.txt"
+            "endgame/L1/pawn/explanation/eg_三兵胜士象全_L1-001_exp-1.txt",
+            "endgame/L1/pawn/explanation/exp-eg_三兵胜士象全_L1-001.txt"
           ],
           "pgn": [
-            "endgame/L1/pawn/pgn/eg_PPP-2A2E_L1-001.pgn"
-          ]
+            "endgame/L1/pawn/pgn/eg_三兵胜士象全_L1-001.pgn"
+          ],
+          "originalId": "eg_PPP-2A2E_L1-001"
         }
       ]
     },
@@ -1241,202 +1333,213 @@
       "label": "车类",
       "items": [
         {
-          "id": "eg_R-2A_L1-001",
+          "id": "eg_单车胜双士_L1-001",
           "title": "单车胜双士",
-          "fen": "endgame/L1/rook/fen/eg_R-2A_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-2A_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜双士_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜双士_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-2A_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-2A_L1-001.txt"
+            "endgame/L1/rook/solutions/eg_单车胜双士_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜双士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-2A_L1-001_exp-1.txt"
+            "endgame/L1/rook/explanation/eg_单车胜双士_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-2A_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜双士_L1-001.pgn"
+          ],
+          "originalId": "eg_R-2A_L1-001"
         },
         {
-          "id": "eg_R-2A2E_L1-001",
+          "id": "eg_单车平士象全_L1-001",
           "title": "单车平士象全",
-          "fen": "endgame/L1/rook/fen/eg_R-2A2E_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-2A2E_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车平士象全_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车平士象全_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-2A2E_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-2A2E_L1-001.txt"
+            "endgame/L1/rook/solutions/eg_单车平士象全_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车平士象全_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-2A2E_L1-001_exp-1.txt"
+            "endgame/L1/rook/explanation/eg_单车平士象全_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-2A2E_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车平士象全_L1-001.pgn"
+          ],
+          "originalId": "eg_R-2A2E_L1-001"
         },
         {
-          "id": "eg_R-2E_L1-001",
+          "id": "eg_单车胜双象_L1-001",
           "title": "单车胜双象",
-          "fen": "endgame/L1/rook/fen/eg_R-2E_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-2E_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜双象_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜双象_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-2E_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-2E_L1-001.txt"
+            "endgame/L1/rook/solutions/eg_单车胜双象_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜双象_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-2E_L1-001_exp-1.txt"
+            "endgame/L1/rook/explanation/eg_单车胜双象_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-2E_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜双象_L1-001.pgn"
+          ],
+          "originalId": "eg_R-2E_L1-001"
         },
         {
-          "id": "eg_R-A_L1-001",
+          "id": "eg_单车杀单士_L1-001",
           "title": "单车杀单士",
-          "fen": "endgame/L1/rook/fen/eg_R-A_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-A_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车杀单士_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车杀单士_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-A_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-A_L1-001-2.txt",
-            "endgame/L1/rook/solutions/eg_R-A_L1-001-3.txt",
-            "endgame/L1/rook/solutions/eg_R-A_L1-001-4.txt",
-            "endgame/L1/rook/solutions/eg_R-A_L1-001.txt"
+            "endgame/L1/rook/solutions/eg_单车杀单士_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车杀单士_L1-001-2.txt",
+            "endgame/L1/rook/solutions/eg_单车杀单士_L1-001-3.txt",
+            "endgame/L1/rook/solutions/eg_单车杀单士_L1-001-4.txt",
+            "endgame/L1/rook/solutions/eg_单车杀单士_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-A_L1-001_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-A_L1-001_exp-2.txt",
-            "endgame/L1/rook/explanation/eg_R-A_L1-001_exp-3.txt",
-            "endgame/L1/rook/explanation/eg_R-A_L1-001_exp-4.txt"
+            "endgame/L1/rook/explanation/eg_单车杀单士_L1-001_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车杀单士_L1-001_exp-2.txt",
+            "endgame/L1/rook/explanation/eg_单车杀单士_L1-001_exp-3.txt",
+            "endgame/L1/rook/explanation/eg_单车杀单士_L1-001_exp-4.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-A_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车杀单士_L1-001.pgn"
+          ],
+          "originalId": "eg_R-A_L1-001"
         },
         {
-          "id": "eg_R-AE_L1-001",
+          "id": "eg_单车胜士象_L1-001",
           "title": "单车胜士象",
-          "fen": "endgame/L1/rook/fen/eg_R-AE_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-AE_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜士象_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜士象_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-AE_L1-001-1.txt"
+            "endgame/L1/rook/solutions/eg_单车胜士象_L1-001-1.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-AE_L1-001_exp-1.txt"
+            "endgame/L1/rook/explanation/eg_单车胜士象_L1-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-AE_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜士象_L1-001.pgn"
+          ],
+          "originalId": "eg_R-AE_L1-001"
         },
         {
-          "id": "eg_R-E_L1-001",
+          "id": "eg_单车胜单象_L1-001",
           "title": "单车胜单象",
-          "fen": "endgame/L1/rook/fen/eg_R-E_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-E_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜单象_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜单象_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-E_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-E_L1-001-2.txt",
-            "endgame/L1/rook/solutions/eg_R-E_L1-001-3.txt",
-            "endgame/L1/rook/solutions/eg_R-E_L1-001.txt"
+            "endgame/L1/rook/solutions/eg_单车胜单象_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜单象_L1-001-2.txt",
+            "endgame/L1/rook/solutions/eg_单车胜单象_L1-001-3.txt",
+            "endgame/L1/rook/solutions/eg_单车胜单象_L1-001.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-E_L1-001_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-E_L1-001_exp-2.txt",
-            "endgame/L1/rook/explanation/eg_R-E_L1-001_exp-3.txt"
+            "endgame/L1/rook/explanation/eg_单车胜单象_L1-001_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜单象_L1-001_exp-2.txt",
+            "endgame/L1/rook/explanation/eg_单车胜单象_L1-001_exp-3.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-E_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜单象_L1-001.pgn"
+          ],
+          "originalId": "eg_R-E_L1-001"
         },
         {
-          "id": "eg_R-K_L1-001",
+          "id": "eg_单车胜光将_L1-001",
           "title": "单车胜光将",
-          "fen": "endgame/L1/rook/fen/eg_R-K_L1-001.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-K_L1-001.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜光将_L1-001.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜光将_L1-001.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-K_L1-001-1.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-001-2.txt"
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-001-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-001-2.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-K_L1-001_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-001_exp-2.txt"
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-001_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-001_exp-2.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-K_L1-001.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜光将_L1-001.pgn"
+          ],
+          "originalId": "eg_R-K_L1-001"
         },
         {
-          "id": "eg_R-K_L1-002",
+          "id": "eg_单车胜光将_L1-002",
           "title": "单车胜光将",
-          "fen": "endgame/L1/rook/fen/eg_R-K_L1-002.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-K_L1-002.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜光将_L1-002.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜光将_L1-002.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-K_L1-002-1.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-002-2.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-002-3.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-002.txt"
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-002-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-002-2.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-002-3.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-002.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-K_L1-002_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-002_exp-2.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-002_exp-3.txt"
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-002_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-002_exp-2.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-002_exp-3.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-K_L1-002.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜光将_L1-002.pgn"
+          ],
+          "originalId": "eg_R-K_L1-002"
         },
         {
-          "id": "eg_R-K_L1-003",
+          "id": "eg_单车胜光将_L1-003",
           "title": "单车胜光将",
-          "fen": "endgame/L1/rook/fen/eg_R-K_L1-003.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-K_L1-003.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜光将_L1-003.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜光将_L1-003.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-K_L1-003-1.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-003-2.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-003-3.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-003.txt"
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-003-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-003-2.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-003-3.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-003.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-K_L1-003_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-003_exp-2.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-003_exp-3.txt"
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-003_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-003_exp-2.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-003_exp-3.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-K_L1-003.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜光将_L1-003.pgn"
+          ],
+          "originalId": "eg_R-K_L1-003"
         },
         {
-          "id": "eg_R-K_L1-004",
+          "id": "eg_单车胜光将_L1-004",
           "title": "单车胜光将",
-          "fen": "endgame/L1/rook/fen/eg_R-K_L1-004.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-K_L1-004.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜光将_L1-004.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜光将_L1-004.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-K_L1-004-1.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-004-2.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-004.txt"
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-004-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-004-2.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-004.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-K_L1-004_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-004_exp-2.txt"
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-004_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-004_exp-2.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-K_L1-004.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜光将_L1-004.pgn"
+          ],
+          "originalId": "eg_R-K_L1-004"
         },
         {
-          "id": "eg_R-K_L1-005",
+          "id": "eg_单车胜光将_L1-005",
           "title": "单车胜光将",
-          "fen": "endgame/L1/rook/fen/eg_R-K_L1-005.fen",
-          "metadata": "endgame/L1/rook/json/eg_R-K_L1-005.json",
+          "fen": "endgame/L1/rook/fen/eg_单车胜光将_L1-005.fen",
+          "metadata": "endgame/L1/rook/json/eg_单车胜光将_L1-005.json",
           "solutions": [
-            "endgame/L1/rook/solutions/eg_R-K_L1-005-1.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-005-2.txt",
-            "endgame/L1/rook/solutions/eg_R-K_L1-005.txt"
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-005-1.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-005-2.txt",
+            "endgame/L1/rook/solutions/eg_单车胜光将_L1-005.txt"
           ],
           "explanations": [
-            "endgame/L1/rook/explanation/eg_R-K_L1-005_exp-1.txt",
-            "endgame/L1/rook/explanation/eg_R-K_L1-005_exp-2.txt"
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-005_exp-1.txt",
+            "endgame/L1/rook/explanation/eg_单车胜光将_L1-005_exp-2.txt"
           ],
           "pgn": [
-            "endgame/L1/rook/pgn/eg_R-K_L1-005.pgn"
-          ]
+            "endgame/L1/rook/pgn/eg_单车胜光将_L1-005.pgn"
+          ],
+          "originalId": "eg_R-K_L1-005"
         }
       ]
     },
@@ -1448,13 +1551,16 @@
       "label": "其他",
       "items": [
         {
-          "id": "示例题目",
-          "title": "残局题目-示例题目",
-          "fen": "endgame/L2/示例棋局.fen",
-          "metadata": "endgame/L2/示例题目.json",
+          "id": "eg_待定示例残局_L2-001",
+          "title": "待定示例残局",
+          "fen": "endgame/L2/eg_待定示例残局_L2-001.fen",
+          "metadata": "endgame/L2/eg_待定示例残局_L2-001.json",
           "solutions": [],
           "explanations": [],
-          "pgn": []
+          "pgn": [],
+          "originalId": "示例题目",
+          "originalTitle": "残局题目-示例题目",
+          "classificationPending": true
         }
       ]
     },
@@ -1466,53 +1572,60 @@
       "label": "炮类",
       "items": [
         {
-          "id": "eg_2C-2C_L2-001",
-          "title": "cannon类残局",
-          "fen": "endgame/L2/cannon/fen/eg_2C-2C_L2-001.fen",
-          "metadata": "endgame/L2/cannon/json/eg_2C-2C_L2-001.json",
+          "id": "eg_待定双炮对双炮_L2-001",
+          "title": "待定双炮对双炮",
+          "fen": "endgame/L2/cannon/fen/eg_待定双炮对双炮_L2-001.fen",
+          "metadata": "endgame/L2/cannon/json/eg_待定双炮对双炮_L2-001.json",
           "solutions": [
-            "endgame/L2/cannon/solutions/eg_2C-2C_L2-001.txt"
+            "endgame/L2/cannon/solutions/eg_待定双炮对双炮_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/cannon/explanation/eg_2C-2C_L2-001_exp.txt"
+            "endgame/L2/cannon/explanation/eg_待定双炮对双炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/cannon/pgn/eg_2C-2C_L2-001.pgn"
-          ]
+            "endgame/L2/cannon/pgn/eg_待定双炮对双炮_L2-001.pgn"
+          ],
+          "originalId": "eg_2C-2C_L2-001",
+          "originalTitle": "cannon类残局",
+          "classificationPending": true
         },
         {
-          "id": "eg_2C-H2A_L2-001",
-          "title": "cannon类残局",
-          "fen": "endgame/L2/cannon/fen/eg_2C-H2A_L2-001.fen",
-          "metadata": "endgame/L2/cannon/json/eg_2C-H2A_L2-001.json",
+          "id": "eg_待定双炮对马双士_L2-001",
+          "title": "待定双炮对马双士",
+          "fen": "endgame/L2/cannon/fen/eg_待定双炮对马双士_L2-001.fen",
+          "metadata": "endgame/L2/cannon/json/eg_待定双炮对马双士_L2-001.json",
           "solutions": [
-            "endgame/L2/cannon/solutions/eg_2C-H2A_L2-001.txt"
+            "endgame/L2/cannon/solutions/eg_待定双炮对马双士_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/cannon/explanation/eg_2C-H2A_L2-001_exp.txt"
+            "endgame/L2/cannon/explanation/eg_待定双炮对马双士_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/cannon/pgn/eg_2C-H2A_L2-001.pgn"
-          ]
+            "endgame/L2/cannon/pgn/eg_待定双炮对马双士_L2-001.pgn"
+          ],
+          "originalId": "eg_2C-H2A_L2-001",
+          "originalTitle": "cannon类残局",
+          "classificationPending": true
         },
         {
-          "id": "eg_2CA-RHCP2A_L2-001",
+          "id": "eg_双炮巧胜车马炮卒_L2-001",
           "title": "双炮巧胜车马炮卒",
-          "fen": "endgame/L2/cannon/fen/eg_2CA-RHCP2A_L2-001.fen",
-          "metadata": "endgame/L2/cannon/json/eg_2CA-RHCP2A_L2-001.json",
+          "fen": "endgame/L2/cannon/fen/eg_双炮巧胜车马炮卒_L2-001.fen",
+          "metadata": "endgame/L2/cannon/json/eg_双炮巧胜车马炮卒_L2-001.json",
           "solutions": [
-            "endgame/L2/cannon/solutions/eg_2CA-RHCP2A_L2-001-1.txt",
-            "endgame/L2/cannon/solutions/eg_2CA-RHCP2A_L2-001-2.txt",
-            "endgame/L2/cannon/solutions/eg_2CA-RHCP2A_L2-001.txt"
+            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001-1.txt",
+            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001-2.txt",
+            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/cannon/explanation/eg_2CA-RHCP2A_L2-001_exp-1.txt",
-            "endgame/L2/cannon/explanation/eg_2CA-RHCP2A_L2-001_exp-2.txt",
-            "endgame/L2/cannon/explanation/eg_2CA-RHCP2A_L2-001_exp.txt"
+            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp-1.txt",
+            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp-2.txt",
+            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/cannon/pgn/eg_2CA-RHCP2A_L2-001.pgn"
-          ]
+            "endgame/L2/cannon/pgn/eg_双炮巧胜车马炮卒_L2-001.pgn"
+          ],
+          "originalId": "eg_2CA-RHCP2A_L2-001"
         }
       ]
     },
@@ -1524,30 +1637,32 @@
       "label": "马类",
       "items": [
         {
-          "id": "eg_HP-HC_L2-001",
+          "id": "eg_马兵巧困毙胜马炮_L2-001",
           "title": "马兵巧困毙胜马炮",
-          "fen": "endgame/L2/horse/fen/eg_HP-HC_L2-001.fen",
-          "metadata": "endgame/L2/horse/json/eg_HP-HC_L2-001.json",
+          "fen": "endgame/L2/horse/fen/eg_马兵巧困毙胜马炮_L2-001.fen",
+          "metadata": "endgame/L2/horse/json/eg_马兵巧困毙胜马炮_L2-001.json",
           "solutions": [
-            "endgame/L2/horse/solutions/eg_HP-HC_L2-001.txt"
+            "endgame/L2/horse/solutions/eg_马兵巧困毙胜马炮_L2-001.txt"
           ],
           "explanations": [],
           "pgn": [
-            "endgame/L2/horse/pgn/eg_HP-HC_L2-001.pgn"
-          ]
+            "endgame/L2/horse/pgn/eg_马兵巧困毙胜马炮_L2-001.pgn"
+          ],
+          "originalId": "eg_HP-HC_L2-001"
         },
         {
-          "id": "eg_HP-R2A_L2-001",
+          "id": "eg_马兵巧困毙胜单车_L2-001",
           "title": "马兵巧困毙胜单车",
-          "fen": "endgame/L2/horse/fen/eg_HP-R2A_L2-001.fen",
-          "metadata": "endgame/L2/horse/json/eg_HP-R2A_L2-001.json",
+          "fen": "endgame/L2/horse/fen/eg_马兵巧困毙胜单车_L2-001.fen",
+          "metadata": "endgame/L2/horse/json/eg_马兵巧困毙胜单车_L2-001.json",
           "solutions": [
-            "endgame/L2/horse/solutions/eg_HP-R2A_L2-001.txt"
+            "endgame/L2/horse/solutions/eg_马兵巧困毙胜单车_L2-001.txt"
           ],
           "explanations": [],
           "pgn": [
-            "endgame/L2/horse/pgn/eg_HP-R2A_L2-001.pgn"
-          ]
+            "endgame/L2/horse/pgn/eg_马兵巧困毙胜单车_L2-001.pgn"
+          ],
+          "originalId": "eg_HP-R2A_L2-001"
         }
       ]
     },
@@ -1559,154 +1674,164 @@
       "label": "车类",
       "items": [
         {
-          "id": "eg_R-2A2E_L2-001",
+          "id": "eg_单车巧胜士象全_L2-001",
           "title": "单车巧胜士象全",
-          "fen": "endgame/L2/rook/fen/eg_R-2A2E_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_R-2A2E_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_单车巧胜士象全_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_单车巧胜士象全_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_R-2A2E_L2-001_exp-1.txt"
+            "endgame/L2/rook/explanation/eg_单车巧胜士象全_L2-001_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_R-2A2E_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_单车巧胜士象全_L2-001.pgn"
+          ],
+          "originalId": "eg_R-2A2E_L2-001"
         },
         {
-          "id": "eg_R-2A2E_L2-002",
+          "id": "eg_单车巧胜士象全_L2-002",
           "title": "单车巧胜士象全",
-          "fen": "endgame/L2/rook/fen/eg_R-2A2E_L2-002.fen",
-          "metadata": "endgame/L2/rook/json/eg_R-2A2E_L2-002.json",
+          "fen": "endgame/L2/rook/fen/eg_单车巧胜士象全_L2-002.fen",
+          "metadata": "endgame/L2/rook/json/eg_单车巧胜士象全_L2-002.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-002-1.txt",
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-002.txt"
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-002-1.txt",
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-002.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_R-2A2E_L2-002_exp-1.txt"
+            "endgame/L2/rook/explanation/eg_单车巧胜士象全_L2-002_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_R-2A2E_L2-002.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_单车巧胜士象全_L2-002.pgn"
+          ],
+          "originalId": "eg_R-2A2E_L2-002"
         },
         {
-          "id": "eg_R-2A2E_L2-003",
+          "id": "eg_单车巧胜士象全_L2-003",
           "title": "单车巧胜士象全",
-          "fen": "endgame/L2/rook/fen/eg_R-2A2E_L2-003.fen",
-          "metadata": "endgame/L2/rook/json/eg_R-2A2E_L2-003.json",
+          "fen": "endgame/L2/rook/fen/eg_单车巧胜士象全_L2-003.fen",
+          "metadata": "endgame/L2/rook/json/eg_单车巧胜士象全_L2-003.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-003-1.txt",
-            "endgame/L2/rook/solutions/eg_R-2A2E_L2-003.txt"
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-003-1.txt",
+            "endgame/L2/rook/solutions/eg_单车巧胜士象全_L2-003.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_R-2A2E_L2-003_exp-1.txt"
+            "endgame/L2/rook/explanation/eg_单车巧胜士象全_L2-003_exp-1.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_R-2A2E_L2-003.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_单车巧胜士象全_L2-003.pgn"
+          ],
+          "originalId": "eg_R-2A2E_L2-003"
         },
         {
-          "id": "eg_R-H2A_L2-001",
+          "id": "eg_单车胜马双士_L2-001",
           "title": "单车胜马双士",
-          "fen": "endgame/L2/rook/fen/eg_R-H2A_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_R-H2A_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_单车胜马双士_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_单车胜马双士_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_R-H2A_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_R-H2A_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_单车胜马双士_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_单车胜马双士_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_R-H2A_L2-001_exp-1.txt",
-            "endgame/L2/rook/explanation/eg_R-H2A_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_单车胜马双士_L2-001_exp-1.txt",
+            "endgame/L2/rook/explanation/eg_单车胜马双士_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_R-H2A_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_单车胜马双士_L2-001.pgn"
+          ],
+          "originalId": "eg_R-H2A_L2-001"
         },
         {
-          "id": "eg_R-HC_L2-001",
+          "id": "eg_车胜马炮_L2-001",
           "title": "车胜马炮",
-          "fen": "endgame/L2/rook/fen/eg_R-HC_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_R-HC_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_车胜马炮_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_车胜马炮_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_R-HC_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_R-HC_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_车胜马炮_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_车胜马炮_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_R-HC_L2-001_exp-1.txt",
-            "endgame/L2/rook/explanation/eg_R-HC_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_车胜马炮_L2-001_exp-1.txt",
+            "endgame/L2/rook/explanation/eg_车胜马炮_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_R-HC_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_车胜马炮_L2-001.pgn"
+          ],
+          "originalId": "eg_R-HC_L2-001"
         },
         {
-          "id": "eg_RH2A-RPAE_L2-001",
+          "id": "eg_车马冷招_L2-001",
           "title": "车马冷招",
-          "fen": "endgame/L2/rook/fen/eg_RH2A-RPAE_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_RH2A-RPAE_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_车马冷招_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_车马冷招_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_RH2A-RPAE_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_RH2A-RPAE_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_车马冷招_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_车马冷招_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_RH2A-RPAE_L2-001_exp-1.txt",
-            "endgame/L2/rook/explanation/eg_RH2A-RPAE_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_车马冷招_L2-001_exp-1.txt",
+            "endgame/L2/rook/explanation/eg_车马冷招_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_RH2A-RPAE_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_车马冷招_L2-001.pgn"
+          ],
+          "originalId": "eg_RH2A-RPAE_L2-001"
         },
         {
-          "id": "eg_RHA2E-R2P_L2-001",
-          "title": "经点的车马残局",
-          "fen": "endgame/L2/rook/fen/eg_RHA2E-R2P_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_RHA2E-R2P_L2-001.json",
+          "id": "eg_经典的车马残局_L2-001",
+          "title": "经典的车马残局",
+          "fen": "endgame/L2/rook/fen/eg_经典的车马残局_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_经典的车马残局_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_RHA2E-R2P_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_RHA2E-R2P_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_经典的车马残局_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_经典的车马残局_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_RHA2E-R2P_L2-001_exp-1.txt",
-            "endgame/L2/rook/explanation/eg_RHA2E-R2P_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_经典的车马残局_L2-001_exp-1.txt",
+            "endgame/L2/rook/explanation/eg_经典的车马残局_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_RHA2E-R2P_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_经典的车马残局_L2-001.pgn"
+          ],
+          "originalId": "eg_RHA2E-R2P_L2-001",
+          "originalTitle": "经点的车马残局"
         },
         {
-          "id": "eg_RHE-R2P2A2E_L2-001",
+          "id": "eg_精巧的车马残局_L2-001",
           "title": "精巧的车马残局",
-          "fen": "endgame/L2/rook/fen/eg_RHE-R2P2A2E_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_RHE-R2P2A2E_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_精巧的车马残局_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_精巧的车马残局_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_RHE-R2P2A2E_L2-001-1.txt",
-            "endgame/L2/rook/solutions/eg_RHE-R2P2A2E_L2-001-2.txt",
-            "endgame/L2/rook/solutions/eg_RHE-R2P2A2E_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_精巧的车马残局_L2-001-1.txt",
+            "endgame/L2/rook/solutions/eg_精巧的车马残局_L2-001-2.txt",
+            "endgame/L2/rook/solutions/eg_精巧的车马残局_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_RHE-R2P2A2E_L2-001_exp-1.txt",
-            "endgame/L2/rook/explanation/eg_RHE-R2P2A2E_L2-001_exp-2.txt",
-            "endgame/L2/rook/explanation/eg_RHE-R2P2A2E_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_精巧的车马残局_L2-001_exp-1.txt",
+            "endgame/L2/rook/explanation/eg_精巧的车马残局_L2-001_exp-2.txt",
+            "endgame/L2/rook/explanation/eg_精巧的车马残局_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_RHE-R2P2A2E_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_精巧的车马残局_L2-001.pgn"
+          ],
+          "originalId": "eg_RHE-R2P2A2E_L2-001"
         },
         {
-          "id": "eg_RP-RCPA2E_L2-001",
+          "id": "eg_车兵白脸将_L2-001",
           "title": "车兵白脸将",
-          "fen": "endgame/L2/rook/fen/eg_RP-RCPA2E_L2-001.fen",
-          "metadata": "endgame/L2/rook/json/eg_RP-RCPA2E_L2-001.json",
+          "fen": "endgame/L2/rook/fen/eg_车兵白脸将_L2-001.fen",
+          "metadata": "endgame/L2/rook/json/eg_车兵白脸将_L2-001.json",
           "solutions": [
-            "endgame/L2/rook/solutions/eg_RP-RCPA2E_L2-001.txt"
+            "endgame/L2/rook/solutions/eg_车兵白脸将_L2-001.txt"
           ],
           "explanations": [
-            "endgame/L2/rook/explanation/eg_RP-RCPA2E_L2-001_exp.txt"
+            "endgame/L2/rook/explanation/eg_车兵白脸将_L2-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L2/rook/pgn/eg_RP-RCPA2E_L2-001.pgn"
-          ]
+            "endgame/L2/rook/pgn/eg_车兵白脸将_L2-001.pgn"
+          ],
+          "originalId": "eg_RP-RCPA2E_L2-001"
         }
       ]
     },
@@ -1718,19 +1843,22 @@
       "label": "其他",
       "items": [
         {
-          "id": "eg_OCP-P2AE_L3-003",
-          "title": "others类残局",
-          "fen": "endgame/L3/others/fen/eg_OCP-P2AE_L3-003.fen",
-          "metadata": "endgame/L3/others/json/eg_OCP-P2AE_L3-003.json",
+          "id": "eg_待定炮兵残局_L3-003",
+          "title": "待定炮兵残局",
+          "fen": "endgame/L3/others/fen/eg_待定炮兵残局_L3-003.fen",
+          "metadata": "endgame/L3/others/json/eg_待定炮兵残局_L3-003.json",
           "solutions": [
-            "endgame/L3/others/solutions/eg_OCP-P2AE_L3-003.txt"
+            "endgame/L3/others/solutions/eg_待定炮兵残局_L3-003.txt"
           ],
           "explanations": [
-            "endgame/L3/others/explanation/eg_OCP-P2AE_L3-003_exp.txt"
+            "endgame/L3/others/explanation/eg_待定炮兵残局_L3-003_exp.txt"
           ],
           "pgn": [
-            "endgame/L3/others/pgn/eg_OCP-P2AE_L3-003.pgn"
-          ]
+            "endgame/L3/others/pgn/eg_待定炮兵残局_L3-003.pgn"
+          ],
+          "originalId": "eg_OCP-P2AE_L3-003",
+          "originalTitle": "others类残局",
+          "classificationPending": true
         }
       ]
     },
@@ -1742,21 +1870,22 @@
       "label": "车类",
       "items": [
         {
-          "id": "eg_RH2A2E-RCP2A2E_L3-001",
+          "id": "eg_车马冷招卧槽马_L3-001",
           "title": "车马冷招，卧槽马",
-          "fen": "endgame/L3/rook/fen/eg_RH2A2E-RCP2A2E_L3-001.fen",
-          "metadata": "endgame/L3/rook/json/eg_RH2A2E-RCP2A2E_L3-001.json",
+          "fen": "endgame/L3/rook/fen/eg_车马冷招卧槽马_L3-001.fen",
+          "metadata": "endgame/L3/rook/json/eg_车马冷招卧槽马_L3-001.json",
           "solutions": [
-            "endgame/L3/rook/solutions/eg_RH2A2E-RCP2A2E_L3-001-1.txt",
-            "endgame/L3/rook/solutions/eg_RH2A2E-RCP2A2E_L3-001.txt"
+            "endgame/L3/rook/solutions/eg_车马冷招卧槽马_L3-001-1.txt",
+            "endgame/L3/rook/solutions/eg_车马冷招卧槽马_L3-001.txt"
           ],
           "explanations": [
-            "endgame/L3/rook/explanation/eg_RH2A2E-RCP2A2E_L3-001_exp-1.txt",
-            "endgame/L3/rook/explanation/eg_RH2A2E-RCP2A2E_L3-001_exp.txt"
+            "endgame/L3/rook/explanation/eg_车马冷招卧槽马_L3-001_exp-1.txt",
+            "endgame/L3/rook/explanation/eg_车马冷招卧槽马_L3-001_exp.txt"
           ],
           "pgn": [
-            "endgame/L3/rook/pgn/eg_RH2A2E-RCP2A2E_L3-001.pgn"
-          ]
+            "endgame/L3/rook/pgn/eg_车马冷招卧槽马_L3-001.pgn"
+          ],
+          "originalId": "eg_RH2A2E-RCP2A2E_L3-001"
         }
       ]
     },
@@ -1768,54 +1897,66 @@
       "label": "中炮",
       "items": [
         {
-          "id": "oc_zhongpao_L1-001",
-          "title": "经典中炮布局-L1-001",
-          "fen": "opening/classic/zhongpao/fen/oc_zhongpao_L1-001.fen",
-          "metadata": "opening/classic/zhongpao/json/oc_zhongpao_L1-001.json",
+          "id": "oc_待定中炮开局_L1-001",
+          "title": "待定中炮开局",
+          "fen": "opening/classic/zhongpao/fen/oc_待定中炮开局_L1-001.fen",
+          "metadata": "opening/classic/zhongpao/json/oc_待定中炮开局_L1-001.json",
           "solutions": [
-            "opening/classic/zhongpao/solutions/oc_zhongpao_L1-001.txt"
+            "opening/classic/zhongpao/solutions/oc_待定中炮开局_L1-001.txt"
           ],
           "explanations": [
-            "opening/classic/zhongpao/explanation/oc_zhongpao_L1-001_exp.txt"
+            "opening/classic/zhongpao/explanation/oc_待定中炮开局_L1-001_exp.txt"
           ],
           "pgn": [
-            "opening/classic/zhongpao/pgn/oc_zhongpao_L1-001.pgn"
-          ]
+            "opening/classic/zhongpao/pgn/oc_待定中炮开局_L1-001.pgn"
+          ],
+          "originalId": "oc_zhongpao_L1-001",
+          "originalTitle": "经典中炮布局-L1-001",
+          "namingPending": true,
+          "classificationPending": true
         },
         {
-          "id": "oc_zhongpao_L1-002",
+          "id": "oc_弃车十三招_L1-002",
           "title": "弃车十三招 《橘中秘》",
-          "fen": "opening/classic/zhongpao/fen/oc_zhongpao_L1-002.fen",
-          "metadata": "opening/classic/zhongpao/json/oc_zhongpao_L1-002.json",
+          "fen": "opening/classic/zhongpao/fen/oc_弃车十三招_L1-002.fen",
+          "metadata": "opening/classic/zhongpao/json/oc_弃车十三招_L1-002.json",
           "solutions": [
-            "opening/classic/zhongpao/solutions/oc_zhongpao_L1-002-1.txt"
+            "opening/classic/zhongpao/solutions/oc_弃车十三招_L1-002-1.txt"
           ],
           "explanations": [],
-          "pgn": []
+          "pgn": [],
+          "originalId": "oc_zhongpao_L1-002"
         },
         {
-          "id": "oc_zhongpao_L1-003",
-          "title": "oc_zhongpao_L1-003",
-          "fen": "opening/classic/zhongpao/fen/oc_zhongpao_L1-003.fen",
-          "metadata": "opening/classic/zhongpao/json/oc_zhongpao_L1-003.json",
+          "id": "oc_待定中炮对屏风马棋局_L1-003",
+          "title": "待定中炮对屏风马棋局",
+          "fen": "opening/classic/zhongpao/fen/oc_待定中炮对屏风马棋局_L1-003.fen",
+          "metadata": "opening/classic/zhongpao/json/oc_待定中炮对屏风马棋局_L1-003.json",
           "solutions": [
-            "opening/classic/zhongpao/solutions/oc_zhongpao_L1-003-1.txt"
+            "opening/classic/zhongpao/solutions/oc_待定中炮对屏风马棋局_L1-003-1.txt"
           ],
           "explanations": [
-            "opening/classic/zhongpao/explanation/oc_zhongpao_L1-003_exp.txt"
+            "opening/classic/zhongpao/explanation/oc_待定中炮对屏风马棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "opening/classic/zhongpao/pgn/oc_zhongpao_L1-003.pgn"
-          ]
+            "opening/classic/zhongpao/pgn/oc_待定中炮对屏风马棋局_L1-003.pgn"
+          ],
+          "originalId": "oc_zhongpao_L1-003",
+          "originalTitle": "oc_zhongpao_L1-003",
+          "namingPending": true
         },
         {
-          "id": "oc_zhongpao_L1-200",
-          "title": "oc_zhongpao_L1-200",
-          "fen": "opening/classic/zhongpao/fen/oc_zhongpao_L1-200.fen",
-          "metadata": "opening/classic/zhongpao/json/oc_zhongpao_L1-200.json",
+          "id": "oc_待定棋局_L1-200",
+          "title": "待定棋局",
+          "fen": "opening/classic/zhongpao/fen/oc_待定棋局_L1-200.fen",
+          "metadata": "opening/classic/zhongpao/json/oc_待定棋局_L1-200.json",
           "solutions": [],
           "explanations": [],
-          "pgn": []
+          "pgn": [],
+          "originalId": "oc_zhongpao_L1-200",
+          "originalTitle": "oc_zhongpao_L1-200",
+          "namingPending": true,
+          "classificationPending": true
         }
       ]
     },
@@ -1827,49 +1968,58 @@
       "label": "兑子",
       "items": [
         {
-          "id": "ta_duizi_L1-001",
-          "title": "duizi类残局",
-          "fen": "tactics/duizi/fen/ta_duizi_L1-001.fen",
-          "metadata": "tactics/duizi/json/ta_duizi_L1-001.json",
+          "id": "tac_待定兑子棋局_L1-001",
+          "title": "待定兑子棋局",
+          "fen": "tactics/duizi/fen/tac_待定兑子棋局_L1-001.fen",
+          "metadata": "tactics/duizi/json/tac_待定兑子棋局_L1-001.json",
           "solutions": [
-            "tactics/duizi/solutions/ta_duizi_L1-001.txt"
+            "tactics/duizi/solutions/tac_待定兑子棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/duizi/explanation/ta_duizi_L1-001_exp.txt"
+            "tactics/duizi/explanation/tac_待定兑子棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/duizi/pgn/ta_duizi_L1-001.pgn"
-          ]
+            "tactics/duizi/pgn/tac_待定兑子棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_duizi_L1-001",
+          "originalTitle": "duizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duizi_L1-002",
-          "title": "duizi类残局",
-          "fen": "tactics/duizi/fen/ta_duizi_L1-002.fen",
-          "metadata": "tactics/duizi/json/ta_duizi_L1-002.json",
+          "id": "tac_待定兑子棋局_L1-002",
+          "title": "待定兑子棋局",
+          "fen": "tactics/duizi/fen/tac_待定兑子棋局_L1-002.fen",
+          "metadata": "tactics/duizi/json/tac_待定兑子棋局_L1-002.json",
           "solutions": [
-            "tactics/duizi/solutions/ta_duizi_L1-002.txt"
+            "tactics/duizi/solutions/tac_待定兑子棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/duizi/explanation/ta_duizi_L1-002_exp.txt"
+            "tactics/duizi/explanation/tac_待定兑子棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/duizi/pgn/ta_duizi_L1-002.pgn"
-          ]
+            "tactics/duizi/pgn/tac_待定兑子棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_duizi_L1-002",
+          "originalTitle": "duizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duizi_L1-003",
-          "title": "duizi类残局",
-          "fen": "tactics/duizi/fen/ta_duizi_L1-003.fen",
-          "metadata": "tactics/duizi/json/ta_duizi_L1-003.json",
+          "id": "tac_待定兑子棋局_L1-003",
+          "title": "待定兑子棋局",
+          "fen": "tactics/duizi/fen/tac_待定兑子棋局_L1-003.fen",
+          "metadata": "tactics/duizi/json/tac_待定兑子棋局_L1-003.json",
           "solutions": [
-            "tactics/duizi/solutions/ta_duizi_L1-003.txt"
+            "tactics/duizi/solutions/tac_待定兑子棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/duizi/explanation/ta_duizi_L1-003_exp.txt"
+            "tactics/duizi/explanation/tac_待定兑子棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/duizi/pgn/ta_duizi_L1-003.pgn"
-          ]
+            "tactics/duizi/pgn/tac_待定兑子棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_duizi_L1-003",
+          "originalTitle": "duizi类残局",
+          "namingPending": true
         }
       ]
     },
@@ -1881,79 +2031,94 @@
       "label": "顿挫",
       "items": [
         {
-          "id": "ta_duncuo_L1-001",
-          "title": "duncuo类残局",
-          "fen": "tactics/duncuo/fen/ta_duncuo_L1-001.fen",
-          "metadata": "tactics/duncuo/json/ta_duncuo_L1-001.json",
+          "id": "tac_待定顿挫棋局_L1-001",
+          "title": "待定顿挫棋局",
+          "fen": "tactics/duncuo/fen/tac_待定顿挫棋局_L1-001.fen",
+          "metadata": "tactics/duncuo/json/tac_待定顿挫棋局_L1-001.json",
           "solutions": [
-            "tactics/duncuo/solutions/ta_duncuo_L1-001.txt"
+            "tactics/duncuo/solutions/tac_待定顿挫棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/duncuo/explanation/ta_duncuo_L1-001_exp.txt"
+            "tactics/duncuo/explanation/tac_待定顿挫棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/duncuo/pgn/ta_duncuo_L1-001.pgn"
-          ]
+            "tactics/duncuo/pgn/tac_待定顿挫棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_duncuo_L1-001",
+          "originalTitle": "duncuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duncuo_L1-002",
-          "title": "duncuo类残局",
-          "fen": "tactics/duncuo/fen/ta_duncuo_L1-002.fen",
-          "metadata": "tactics/duncuo/json/ta_duncuo_L1-002.json",
+          "id": "tac_待定顿挫棋局_L1-002",
+          "title": "待定顿挫棋局",
+          "fen": "tactics/duncuo/fen/tac_待定顿挫棋局_L1-002.fen",
+          "metadata": "tactics/duncuo/json/tac_待定顿挫棋局_L1-002.json",
           "solutions": [
-            "tactics/duncuo/solutions/ta_duncuo_L1-002.txt"
+            "tactics/duncuo/solutions/tac_待定顿挫棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/duncuo/explanation/ta_duncuo_L1-002_exp.txt"
+            "tactics/duncuo/explanation/tac_待定顿挫棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/duncuo/pgn/ta_duncuo_L1-002.pgn"
-          ]
+            "tactics/duncuo/pgn/tac_待定顿挫棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_duncuo_L1-002",
+          "originalTitle": "duncuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duncuo_L1-003",
-          "title": "duncuo类残局",
-          "fen": "tactics/duncuo/fen/ta_duncuo_L1-003.fen",
-          "metadata": "tactics/duncuo/json/ta_duncuo_L1-003.json",
+          "id": "tac_待定顿挫棋局_L1-003",
+          "title": "待定顿挫棋局",
+          "fen": "tactics/duncuo/fen/tac_待定顿挫棋局_L1-003.fen",
+          "metadata": "tactics/duncuo/json/tac_待定顿挫棋局_L1-003.json",
           "solutions": [
-            "tactics/duncuo/solutions/ta_duncuo_L1-003.txt"
+            "tactics/duncuo/solutions/tac_待定顿挫棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/duncuo/explanation/ta_duncuo_L1-003_exp.txt"
+            "tactics/duncuo/explanation/tac_待定顿挫棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/duncuo/pgn/ta_duncuo_L1-003.pgn"
-          ]
+            "tactics/duncuo/pgn/tac_待定顿挫棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_duncuo_L1-003",
+          "originalTitle": "duncuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duncuo_L2-001",
-          "title": "duncuo类残局",
-          "fen": "tactics/duncuo/fen/ta_duncuo_L2-001.fen",
-          "metadata": "tactics/duncuo/json/ta_duncuo_L2-001.json",
+          "id": "tac_待定顿挫棋局_L2-001",
+          "title": "待定顿挫棋局",
+          "fen": "tactics/duncuo/fen/tac_待定顿挫棋局_L2-001.fen",
+          "metadata": "tactics/duncuo/json/tac_待定顿挫棋局_L2-001.json",
           "solutions": [
-            "tactics/duncuo/solutions/ta_duncuo_L2-001.txt"
+            "tactics/duncuo/solutions/tac_待定顿挫棋局_L2-001.txt"
           ],
           "explanations": [
-            "tactics/duncuo/explanation/ta_duncuo_L2-001_exp.txt"
+            "tactics/duncuo/explanation/tac_待定顿挫棋局_L2-001_exp.txt"
           ],
           "pgn": [
-            "tactics/duncuo/pgn/ta_duncuo_L2-001.pgn"
-          ]
+            "tactics/duncuo/pgn/tac_待定顿挫棋局_L2-001.pgn"
+          ],
+          "originalId": "ta_duncuo_L2-001",
+          "originalTitle": "duncuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_duncuo_L2-002",
-          "title": "duncuo类残局",
-          "fen": "tactics/duncuo/fen/ta_duncuo_L2-002.fen",
-          "metadata": "tactics/duncuo/json/ta_duncuo_L2-002.json",
+          "id": "tac_待定顿挫棋局_L2-002",
+          "title": "待定顿挫棋局",
+          "fen": "tactics/duncuo/fen/tac_待定顿挫棋局_L2-002.fen",
+          "metadata": "tactics/duncuo/json/tac_待定顿挫棋局_L2-002.json",
           "solutions": [
-            "tactics/duncuo/solutions/ta_duncuo_L2-002.txt"
+            "tactics/duncuo/solutions/tac_待定顿挫棋局_L2-002.txt"
           ],
           "explanations": [
-            "tactics/duncuo/explanation/ta_duncuo_L2-002_exp.txt"
+            "tactics/duncuo/explanation/tac_待定顿挫棋局_L2-002_exp.txt"
           ],
           "pgn": [
-            "tactics/duncuo/pgn/ta_duncuo_L2-002.pgn"
-          ]
+            "tactics/duncuo/pgn/tac_待定顿挫棋局_L2-002.pgn"
+          ],
+          "originalId": "ta_duncuo_L2-002",
+          "originalTitle": "duncuo类残局",
+          "namingPending": true
         }
       ]
     },
@@ -1965,64 +2130,76 @@
       "label": "封锁",
       "items": [
         {
-          "id": "ta_fengsuo_L1-001",
-          "title": "fengsuo类残局",
-          "fen": "tactics/fengsuo/fen/ta_fengsuo_L1-001.fen",
-          "metadata": "tactics/fengsuo/json/ta_fengsuo_L1-001.json",
+          "id": "tac_待定封锁棋局_L1-001",
+          "title": "待定封锁棋局",
+          "fen": "tactics/fengsuo/fen/tac_待定封锁棋局_L1-001.fen",
+          "metadata": "tactics/fengsuo/json/tac_待定封锁棋局_L1-001.json",
           "solutions": [
-            "tactics/fengsuo/solutions/ta_fengsuo_L1-001.txt"
+            "tactics/fengsuo/solutions/tac_待定封锁棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/fengsuo/explanation/ta_fengsuo_L1-001_exp.txt"
+            "tactics/fengsuo/explanation/tac_待定封锁棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/fengsuo/pgn/ta_fengsuo_L1-001.pgn"
-          ]
+            "tactics/fengsuo/pgn/tac_待定封锁棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_fengsuo_L1-001",
+          "originalTitle": "fengsuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_fengsuo_L1-002",
-          "title": "fengsuo类残局",
-          "fen": "tactics/fengsuo/fen/ta_fengsuo_L1-002.fen",
-          "metadata": "tactics/fengsuo/json/ta_fengsuo_L1-002.json",
+          "id": "tac_待定封锁棋局_L1-002",
+          "title": "待定封锁棋局",
+          "fen": "tactics/fengsuo/fen/tac_待定封锁棋局_L1-002.fen",
+          "metadata": "tactics/fengsuo/json/tac_待定封锁棋局_L1-002.json",
           "solutions": [
-            "tactics/fengsuo/solutions/ta_fengsuo_L1-002.txt"
+            "tactics/fengsuo/solutions/tac_待定封锁棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/fengsuo/explanation/ta_fengsuo_L1-002_exp.txt"
+            "tactics/fengsuo/explanation/tac_待定封锁棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/fengsuo/pgn/ta_fengsuo_L1-002.pgn"
-          ]
+            "tactics/fengsuo/pgn/tac_待定封锁棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_fengsuo_L1-002",
+          "originalTitle": "fengsuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_fengsuo_L1-003",
-          "title": "fengsuo类残局",
-          "fen": "tactics/fengsuo/fen/ta_fengsuo_L1-003.fen",
-          "metadata": "tactics/fengsuo/json/ta_fengsuo_L1-003.json",
+          "id": "tac_待定封锁棋局_L1-003",
+          "title": "待定封锁棋局",
+          "fen": "tactics/fengsuo/fen/tac_待定封锁棋局_L1-003.fen",
+          "metadata": "tactics/fengsuo/json/tac_待定封锁棋局_L1-003.json",
           "solutions": [
-            "tactics/fengsuo/solutions/ta_fengsuo_L1-003.txt"
+            "tactics/fengsuo/solutions/tac_待定封锁棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/fengsuo/explanation/ta_fengsuo_L1-003_exp.txt"
+            "tactics/fengsuo/explanation/tac_待定封锁棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/fengsuo/pgn/ta_fengsuo_L1-003.pgn"
-          ]
+            "tactics/fengsuo/pgn/tac_待定封锁棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_fengsuo_L1-003",
+          "originalTitle": "fengsuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_fengsuo_L1-004",
-          "title": "fengsuo类残局",
-          "fen": "tactics/fengsuo/fen/ta_fengsuo_L1-004.fen",
-          "metadata": "tactics/fengsuo/json/ta_fengsuo_L1-004.json",
+          "id": "tac_待定封锁棋局_L1-004",
+          "title": "待定封锁棋局",
+          "fen": "tactics/fengsuo/fen/tac_待定封锁棋局_L1-004.fen",
+          "metadata": "tactics/fengsuo/json/tac_待定封锁棋局_L1-004.json",
           "solutions": [
-            "tactics/fengsuo/solutions/ta_fengsuo_L1-004.txt"
+            "tactics/fengsuo/solutions/tac_待定封锁棋局_L1-004.txt"
           ],
           "explanations": [
-            "tactics/fengsuo/explanation/ta_fengsuo_L1-004_exp.txt"
+            "tactics/fengsuo/explanation/tac_待定封锁棋局_L1-004_exp.txt"
           ],
           "pgn": [
-            "tactics/fengsuo/pgn/ta_fengsuo_L1-004.pgn"
-          ]
+            "tactics/fengsuo/pgn/tac_待定封锁棋局_L1-004.pgn"
+          ],
+          "originalId": "ta_fengsuo_L1-004",
+          "originalTitle": "fengsuo类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2034,49 +2211,58 @@
       "label": "解杀",
       "items": [
         {
-          "id": "ta_jiesha_L1-001",
-          "title": "jiesha类残局",
-          "fen": "tactics/jiesha/fen/ta_jiesha_L1-001.fen",
-          "metadata": "tactics/jiesha/json/ta_jiesha_L1-001.json",
+          "id": "tac_待定解杀棋局_L1-001",
+          "title": "待定解杀棋局",
+          "fen": "tactics/jiesha/fen/tac_待定解杀棋局_L1-001.fen",
+          "metadata": "tactics/jiesha/json/tac_待定解杀棋局_L1-001.json",
           "solutions": [
-            "tactics/jiesha/solutions/ta_jiesha_L1-001.txt"
+            "tactics/jiesha/solutions/tac_待定解杀棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/jiesha/explanation/ta_jiesha_L1-001_exp.txt"
+            "tactics/jiesha/explanation/tac_待定解杀棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/jiesha/pgn/ta_jiesha_L1-001.pgn"
-          ]
+            "tactics/jiesha/pgn/tac_待定解杀棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_jiesha_L1-001",
+          "originalTitle": "jiesha类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_jiesha_L1-002",
-          "title": "jiesha类残局",
-          "fen": "tactics/jiesha/fen/ta_jiesha_L1-002.fen",
-          "metadata": "tactics/jiesha/json/ta_jiesha_L1-002.json",
+          "id": "tac_待定解杀棋局_L1-002",
+          "title": "待定解杀棋局",
+          "fen": "tactics/jiesha/fen/tac_待定解杀棋局_L1-002.fen",
+          "metadata": "tactics/jiesha/json/tac_待定解杀棋局_L1-002.json",
           "solutions": [
-            "tactics/jiesha/solutions/ta_jiesha_L1-002.txt"
+            "tactics/jiesha/solutions/tac_待定解杀棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/jiesha/explanation/ta_jiesha_L1-002_exp.txt"
+            "tactics/jiesha/explanation/tac_待定解杀棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/jiesha/pgn/ta_jiesha_L1-002.pgn"
-          ]
+            "tactics/jiesha/pgn/tac_待定解杀棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_jiesha_L1-002",
+          "originalTitle": "jiesha类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_jiesha_L1-003",
-          "title": "jiesha类残局",
-          "fen": "tactics/jiesha/fen/ta_jiesha_L1-003.fen",
-          "metadata": "tactics/jiesha/json/ta_jiesha_L1-003.json",
+          "id": "tac_待定解杀棋局_L1-003",
+          "title": "待定解杀棋局",
+          "fen": "tactics/jiesha/fen/tac_待定解杀棋局_L1-003.fen",
+          "metadata": "tactics/jiesha/json/tac_待定解杀棋局_L1-003.json",
           "solutions": [
-            "tactics/jiesha/solutions/ta_jiesha_L1-003.txt"
+            "tactics/jiesha/solutions/tac_待定解杀棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/jiesha/explanation/ta_jiesha_L1-003_exp.txt"
+            "tactics/jiesha/explanation/tac_待定解杀棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/jiesha/pgn/ta_jiesha_L1-003.pgn"
-          ]
+            "tactics/jiesha/pgn/tac_待定解杀棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_jiesha_L1-003",
+          "originalTitle": "jiesha类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2088,79 +2274,94 @@
       "label": "困子",
       "items": [
         {
-          "id": "ta_kunzi_L1-001",
-          "title": "kunzi类残局",
-          "fen": "tactics/kunzi/fen/ta_kunzi_L1-001.fen",
-          "metadata": "tactics/kunzi/json/ta_kunzi_L1-001.json",
+          "id": "tac_待定困子棋局_L1-001",
+          "title": "待定困子棋局",
+          "fen": "tactics/kunzi/fen/tac_待定困子棋局_L1-001.fen",
+          "metadata": "tactics/kunzi/json/tac_待定困子棋局_L1-001.json",
           "solutions": [
-            "tactics/kunzi/solutions/ta_kunzi_L1-001.txt"
+            "tactics/kunzi/solutions/tac_待定困子棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/kunzi/explanation/ta_kunzi_L1-001_exp.txt"
+            "tactics/kunzi/explanation/tac_待定困子棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/kunzi/pgn/ta_kunzi_L1-001.pgn"
-          ]
+            "tactics/kunzi/pgn/tac_待定困子棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_kunzi_L1-001",
+          "originalTitle": "kunzi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_kunzi_L1-003",
-          "title": "kunzi类残局",
-          "fen": "tactics/kunzi/fen/ta_kunzi_L1-003.fen",
-          "metadata": "tactics/kunzi/json/ta_kunzi_L1-003.json",
+          "id": "tac_待定困子棋局_L1-003",
+          "title": "待定困子棋局",
+          "fen": "tactics/kunzi/fen/tac_待定困子棋局_L1-003.fen",
+          "metadata": "tactics/kunzi/json/tac_待定困子棋局_L1-003.json",
           "solutions": [
-            "tactics/kunzi/solutions/ta_kunzi_L1-003.txt"
+            "tactics/kunzi/solutions/tac_待定困子棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/kunzi/explanation/ta_kunzi_L1-003_exp.txt"
+            "tactics/kunzi/explanation/tac_待定困子棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/kunzi/pgn/ta_kunzi_L1-003.pgn"
-          ]
+            "tactics/kunzi/pgn/tac_待定困子棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_kunzi_L1-003",
+          "originalTitle": "kunzi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_kunzi_L1-004",
-          "title": "kunzi类残局",
-          "fen": "tactics/kunzi/fen/ta_kunzi_L1-004.fen",
-          "metadata": "tactics/kunzi/json/ta_kunzi_L1-004.json",
+          "id": "tac_待定困子棋局_L1-004",
+          "title": "待定困子棋局",
+          "fen": "tactics/kunzi/fen/tac_待定困子棋局_L1-004.fen",
+          "metadata": "tactics/kunzi/json/tac_待定困子棋局_L1-004.json",
           "solutions": [
-            "tactics/kunzi/solutions/ta_kunzi_L1-004.txt"
+            "tactics/kunzi/solutions/tac_待定困子棋局_L1-004.txt"
           ],
           "explanations": [
-            "tactics/kunzi/explanation/ta_kunzi_L1-004_exp.txt"
+            "tactics/kunzi/explanation/tac_待定困子棋局_L1-004_exp.txt"
           ],
           "pgn": [
-            "tactics/kunzi/pgn/ta_kunzi_L1-004.pgn"
-          ]
+            "tactics/kunzi/pgn/tac_待定困子棋局_L1-004.pgn"
+          ],
+          "originalId": "ta_kunzi_L1-004",
+          "originalTitle": "kunzi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_kunzi_L1-005",
-          "title": "kunzi类残局",
-          "fen": "tactics/kunzi/fen/ta_kunzi_L1-005.fen",
-          "metadata": "tactics/kunzi/json/ta_kunzi_L1-005.json",
+          "id": "tac_待定困子棋局_L1-005",
+          "title": "待定困子棋局",
+          "fen": "tactics/kunzi/fen/tac_待定困子棋局_L1-005.fen",
+          "metadata": "tactics/kunzi/json/tac_待定困子棋局_L1-005.json",
           "solutions": [
-            "tactics/kunzi/solutions/ta_kunzi_L1-005.txt"
+            "tactics/kunzi/solutions/tac_待定困子棋局_L1-005.txt"
           ],
           "explanations": [
-            "tactics/kunzi/explanation/ta_kunzi_L1-005_exp.txt"
+            "tactics/kunzi/explanation/tac_待定困子棋局_L1-005_exp.txt"
           ],
           "pgn": [
-            "tactics/kunzi/pgn/ta_kunzi_L1-005.pgn"
-          ]
+            "tactics/kunzi/pgn/tac_待定困子棋局_L1-005.pgn"
+          ],
+          "originalId": "ta_kunzi_L1-005",
+          "originalTitle": "kunzi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_kunzi_L1-006",
-          "title": "kunzi类残局",
-          "fen": "tactics/kunzi/fen/ta_kunzi_L1-006.fen",
-          "metadata": "tactics/kunzi/json/ta_kunzi_L1-006.json",
+          "id": "tac_待定困子棋局_L1-006",
+          "title": "待定困子棋局",
+          "fen": "tactics/kunzi/fen/tac_待定困子棋局_L1-006.fen",
+          "metadata": "tactics/kunzi/json/tac_待定困子棋局_L1-006.json",
           "solutions": [
-            "tactics/kunzi/solutions/ta_kunzi_L1-006.txt"
+            "tactics/kunzi/solutions/tac_待定困子棋局_L1-006.txt"
           ],
           "explanations": [
-            "tactics/kunzi/explanation/ta_kunzi_L1-006_exp.txt"
+            "tactics/kunzi/explanation/tac_待定困子棋局_L1-006_exp.txt"
           ],
           "pgn": [
-            "tactics/kunzi/pgn/ta_kunzi_L1-006.pgn"
-          ]
+            "tactics/kunzi/pgn/tac_待定困子棋局_L1-006.pgn"
+          ],
+          "originalId": "ta_kunzi_L1-006",
+          "originalTitle": "kunzi类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2172,64 +2373,76 @@
       "label": "拦截",
       "items": [
         {
-          "id": "ta_lanjie_L1-001",
-          "title": "lanjie类残局",
-          "fen": "tactics/lanjie/fen/ta_lanjie_L1-001.fen",
-          "metadata": "tactics/lanjie/json/ta_lanjie_L1-001.json",
+          "id": "tac_待定拦截棋局_L1-001",
+          "title": "待定拦截棋局",
+          "fen": "tactics/lanjie/fen/tac_待定拦截棋局_L1-001.fen",
+          "metadata": "tactics/lanjie/json/tac_待定拦截棋局_L1-001.json",
           "solutions": [
-            "tactics/lanjie/solutions/ta_lanjie_L1-001.txt"
+            "tactics/lanjie/solutions/tac_待定拦截棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/lanjie/explanation/ta_lanjie_L1-001_exp.txt"
+            "tactics/lanjie/explanation/tac_待定拦截棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/lanjie/pgn/ta_lanjie_L1-001.pgn"
-          ]
+            "tactics/lanjie/pgn/tac_待定拦截棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_lanjie_L1-001",
+          "originalTitle": "lanjie类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_lanjie_L1-002",
-          "title": "lanjie类残局",
-          "fen": "tactics/lanjie/fen/ta_lanjie_L1-002.fen",
-          "metadata": "tactics/lanjie/json/ta_lanjie_L1-002.json",
+          "id": "tac_待定拦截棋局_L1-002",
+          "title": "待定拦截棋局",
+          "fen": "tactics/lanjie/fen/tac_待定拦截棋局_L1-002.fen",
+          "metadata": "tactics/lanjie/json/tac_待定拦截棋局_L1-002.json",
           "solutions": [
-            "tactics/lanjie/solutions/ta_lanjie_L1-002.txt"
+            "tactics/lanjie/solutions/tac_待定拦截棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/lanjie/explanation/ta_lanjie_L1-002_exp.txt"
+            "tactics/lanjie/explanation/tac_待定拦截棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/lanjie/pgn/ta_lanjie_L1-002.pgn"
-          ]
+            "tactics/lanjie/pgn/tac_待定拦截棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_lanjie_L1-002",
+          "originalTitle": "lanjie类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_lanjie_L1-003",
-          "title": "lanjie类残局",
-          "fen": "tactics/lanjie/fen/ta_lanjie_L1-003.fen",
-          "metadata": "tactics/lanjie/json/ta_lanjie_L1-003.json",
+          "id": "tac_待定拦截棋局_L1-003",
+          "title": "待定拦截棋局",
+          "fen": "tactics/lanjie/fen/tac_待定拦截棋局_L1-003.fen",
+          "metadata": "tactics/lanjie/json/tac_待定拦截棋局_L1-003.json",
           "solutions": [
-            "tactics/lanjie/solutions/ta_lanjie_L1-003.txt"
+            "tactics/lanjie/solutions/tac_待定拦截棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/lanjie/explanation/ta_lanjie_L1-003_exp.txt"
+            "tactics/lanjie/explanation/tac_待定拦截棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/lanjie/pgn/ta_lanjie_L1-003.pgn"
-          ]
+            "tactics/lanjie/pgn/tac_待定拦截棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_lanjie_L1-003",
+          "originalTitle": "lanjie类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_lanjie_L1-004",
-          "title": "lanjie类残局",
-          "fen": "tactics/lanjie/fen/ta_lanjie_L1-004.fen",
-          "metadata": "tactics/lanjie/json/ta_lanjie_L1-004.json",
+          "id": "tac_待定拦截棋局_L1-004",
+          "title": "待定拦截棋局",
+          "fen": "tactics/lanjie/fen/tac_待定拦截棋局_L1-004.fen",
+          "metadata": "tactics/lanjie/json/tac_待定拦截棋局_L1-004.json",
           "solutions": [
-            "tactics/lanjie/solutions/ta_lanjie_L1-004.txt"
+            "tactics/lanjie/solutions/tac_待定拦截棋局_L1-004.txt"
           ],
           "explanations": [
-            "tactics/lanjie/explanation/ta_lanjie_L1-004_exp.txt"
+            "tactics/lanjie/explanation/tac_待定拦截棋局_L1-004_exp.txt"
           ],
           "pgn": [
-            "tactics/lanjie/pgn/ta_lanjie_L1-004.pgn"
-          ]
+            "tactics/lanjie/pgn/tac_待定拦截棋局_L1-004.pgn"
+          ],
+          "originalId": "ta_lanjie_L1-004",
+          "originalTitle": "lanjie类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2241,34 +2454,40 @@
       "label": "牵制",
       "items": [
         {
-          "id": "ta_qianzhi_L1-001",
-          "title": "qianzhi类残局",
-          "fen": "tactics/qianzhi/fen/ta_qianzhi_L1-001.fen",
-          "metadata": "tactics/qianzhi/json/ta_qianzhi_L1-001.json",
+          "id": "tac_待定牵制棋局_L1-001",
+          "title": "待定牵制棋局",
+          "fen": "tactics/qianzhi/fen/tac_待定牵制棋局_L1-001.fen",
+          "metadata": "tactics/qianzhi/json/tac_待定牵制棋局_L1-001.json",
           "solutions": [
-            "tactics/qianzhi/solutions/ta_qianzhi_L1-001.txt"
+            "tactics/qianzhi/solutions/tac_待定牵制棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/qianzhi/explanation/ta_qianzhi_L1-001_exp.txt"
+            "tactics/qianzhi/explanation/tac_待定牵制棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/qianzhi/pgn/ta_qianzhi_L1-001.pgn"
-          ]
+            "tactics/qianzhi/pgn/tac_待定牵制棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_qianzhi_L1-001",
+          "originalTitle": "qianzhi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qianzhi_L1-002",
-          "title": "qianzhi类残局",
-          "fen": "tactics/qianzhi/fen/ta_qianzhi_L1-002.fen",
-          "metadata": "tactics/qianzhi/json/ta_qianzhi_L1-002.json",
+          "id": "tac_待定牵制棋局_L1-002",
+          "title": "待定牵制棋局",
+          "fen": "tactics/qianzhi/fen/tac_待定牵制棋局_L1-002.fen",
+          "metadata": "tactics/qianzhi/json/tac_待定牵制棋局_L1-002.json",
           "solutions": [
-            "tactics/qianzhi/solutions/ta_qianzhi_L1-002.txt"
+            "tactics/qianzhi/solutions/tac_待定牵制棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/qianzhi/explanation/ta_qianzhi_L1-002_exp.txt"
+            "tactics/qianzhi/explanation/tac_待定牵制棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/qianzhi/pgn/ta_qianzhi_L1-002.pgn"
-          ]
+            "tactics/qianzhi/pgn/tac_待定牵制棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_qianzhi_L1-002",
+          "originalTitle": "qianzhi类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2280,94 +2499,112 @@
       "label": "弃子",
       "items": [
         {
-          "id": "ta_qizi_L1-001",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-001.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-001.json",
+          "id": "tac_待定弃子棋局_L1-001",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-001.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-001.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-001.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-001_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-001.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_qizi_L1-001",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qizi_L1-002",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-002.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-002.json",
+          "id": "tac_待定弃子棋局_L1-002",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-002.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-002.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-002.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-002_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-002.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_qizi_L1-002",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qizi_L1-003",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-003.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-003.json",
+          "id": "tac_待定弃子棋局_L1-003",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-003.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-003.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-003.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-003_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-003.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_qizi_L1-003",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qizi_L1-004",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-004.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-004.json",
+          "id": "tac_待定弃子棋局_L1-004",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-004.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-004.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-004.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-004.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-004_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-004_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-004.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-004.pgn"
+          ],
+          "originalId": "ta_qizi_L1-004",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qizi_L1-005",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-005.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-005.json",
+          "id": "tac_待定弃子棋局_L1-005",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-005.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-005.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-005.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-005.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-005_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-005_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-005.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-005.pgn"
+          ],
+          "originalId": "ta_qizi_L1-005",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_qizi_L1-006",
-          "title": "qizi类残局",
-          "fen": "tactics/qizi/fen/ta_qizi_L1-006.fen",
-          "metadata": "tactics/qizi/json/ta_qizi_L1-006.json",
+          "id": "tac_待定弃子棋局_L1-006",
+          "title": "待定弃子棋局",
+          "fen": "tactics/qizi/fen/tac_待定弃子棋局_L1-006.fen",
+          "metadata": "tactics/qizi/json/tac_待定弃子棋局_L1-006.json",
           "solutions": [
-            "tactics/qizi/solutions/ta_qizi_L1-006.txt"
+            "tactics/qizi/solutions/tac_待定弃子棋局_L1-006.txt"
           ],
           "explanations": [
-            "tactics/qizi/explanation/ta_qizi_L1-006_exp.txt"
+            "tactics/qizi/explanation/tac_待定弃子棋局_L1-006_exp.txt"
           ],
           "pgn": [
-            "tactics/qizi/pgn/ta_qizi_L1-006.pgn"
-          ]
+            "tactics/qizi/pgn/tac_待定弃子棋局_L1-006.pgn"
+          ],
+          "originalId": "ta_qizi_L1-006",
+          "originalTitle": "qizi类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2379,19 +2616,22 @@
       "label": "闪击",
       "items": [
         {
-          "id": "ta_shanji_L1-003",
-          "title": "shanji类残局",
-          "fen": "tactics/shanji/fen/ta_shanji_L1-003.fen",
-          "metadata": "tactics/shanji/json/ta_shanji_L1-003.json",
+          "id": "tac_待定闪击棋局_L1-003",
+          "title": "待定闪击棋局",
+          "fen": "tactics/shanji/fen/tac_待定闪击棋局_L1-003.fen",
+          "metadata": "tactics/shanji/json/tac_待定闪击棋局_L1-003.json",
           "solutions": [
-            "tactics/shanji/solutions/ta_shanji_L1-003.txt"
+            "tactics/shanji/solutions/tac_待定闪击棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/shanji/explanation/ta_shanji_L1-003_exp.txt"
+            "tactics/shanji/explanation/tac_待定闪击棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/shanji/pgn/ta_shanji_L1-003.pgn"
-          ]
+            "tactics/shanji/pgn/tac_待定闪击棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_shanji_L1-003",
+          "originalTitle": "shanji类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2403,34 +2643,36 @@
       "label": "闪将",
       "items": [
         {
-          "id": "ta_shanjiang_L1-001",
+          "id": "tac_经常的闪将思维_L1-001",
           "title": "经常的闪将思维",
-          "fen": "tactics/shanjiang/fen/ta_shanjiang_L1-001.fen",
-          "metadata": "tactics/shanjiang/json/ta_shanjiang_L1-001.json",
+          "fen": "tactics/shanjiang/fen/tac_经常的闪将思维_L1-001.fen",
+          "metadata": "tactics/shanjiang/json/tac_经常的闪将思维_L1-001.json",
           "solutions": [
-            "tactics/shanjiang/solutions/ta_shanjiang_L1-001.txt"
+            "tactics/shanjiang/solutions/tac_经常的闪将思维_L1-001.txt"
           ],
           "explanations": [
-            "tactics/shanjiang/explanation/ta_shanjiang_L1-001_exp.txt"
+            "tactics/shanjiang/explanation/tac_经常的闪将思维_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/shanjiang/pgn/ta_shanjiang_L1-001.pgn"
-          ]
+            "tactics/shanjiang/pgn/tac_经常的闪将思维_L1-001.pgn"
+          ],
+          "originalId": "ta_shanjiang_L1-001"
         },
         {
-          "id": "ta_shanjiang_L1-002",
+          "id": "tac_精彩的闪将思维_L1-002",
           "title": "精彩的闪将思维",
-          "fen": "tactics/shanjiang/fen/ta_shanjiang_L1-002.fen",
-          "metadata": "tactics/shanjiang/json/ta_shanjiang_L1-002.json",
+          "fen": "tactics/shanjiang/fen/tac_精彩的闪将思维_L1-002.fen",
+          "metadata": "tactics/shanjiang/json/tac_精彩的闪将思维_L1-002.json",
           "solutions": [
-            "tactics/shanjiang/solutions/ta_shanjiang_L1-002.txt"
+            "tactics/shanjiang/solutions/tac_精彩的闪将思维_L1-002.txt"
           ],
           "explanations": [
-            "tactics/shanjiang/explanation/ta_shanjiang_L1-002_exp.txt"
+            "tactics/shanjiang/explanation/tac_精彩的闪将思维_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/shanjiang/pgn/ta_shanjiang_L1-002.pgn"
-          ]
+            "tactics/shanjiang/pgn/tac_精彩的闪将思维_L1-002.pgn"
+          ],
+          "originalId": "ta_shanjiang_L1-002"
         }
       ]
     },
@@ -2442,22 +2684,28 @@
       "label": "双重威胁",
       "items": [
         {
-          "id": "ta_shuangchongweixie_L1-003",
-          "title": "shuangchongweixie类残局",
-          "fen": "tactics/shuangchongweixie/fen/ta_shuangchongweixie_L1-003.fen",
-          "metadata": "tactics/shuangchongweixie/json/ta_shuangchongweixie_L1-003.json",
+          "id": "tac_待定双重威胁棋局_L1-003",
+          "title": "待定双重威胁棋局",
+          "fen": "tactics/shuangchongweixie/fen/tac_待定双重威胁棋局_L1-003.fen",
+          "metadata": "tactics/shuangchongweixie/json/tac_待定双重威胁棋局_L1-003.json",
           "solutions": [],
           "explanations": [],
-          "pgn": []
+          "pgn": [],
+          "originalId": "ta_shuangchongweixie_L1-003",
+          "originalTitle": "shuangchongweixie类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_shuangchongweixie_L1-004",
-          "title": "shuangchongweixie类残局",
-          "fen": "tactics/shuangchongweixie/fen/ta_shuangchongweixie_L1-004.fen",
-          "metadata": "tactics/shuangchongweixie/json/ta_shuangchongweixie_L1-004.json",
+          "id": "tac_待定双重威胁棋局_L1-004",
+          "title": "待定双重威胁棋局",
+          "fen": "tactics/shuangchongweixie/fen/tac_待定双重威胁棋局_L1-004.fen",
+          "metadata": "tactics/shuangchongweixie/json/tac_待定双重威胁棋局_L1-004.json",
           "solutions": [],
           "explanations": [],
-          "pgn": []
+          "pgn": [],
+          "originalId": "ta_shuangchongweixie_L1-004",
+          "originalTitle": "shuangchongweixie类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2469,64 +2717,76 @@
       "label": "腾挪",
       "items": [
         {
-          "id": "ta_tengnuo_L1-001",
-          "title": "tengnuo类残局",
-          "fen": "tactics/tengnuo/fen/ta_tengnuo_L1-001.fen",
-          "metadata": "tactics/tengnuo/json/ta_tengnuo_L1-001.json",
+          "id": "tac_待定腾挪棋局_L1-001",
+          "title": "待定腾挪棋局",
+          "fen": "tactics/tengnuo/fen/tac_待定腾挪棋局_L1-001.fen",
+          "metadata": "tactics/tengnuo/json/tac_待定腾挪棋局_L1-001.json",
           "solutions": [
-            "tactics/tengnuo/solutions/ta_tengnuo_L1-001.txt"
+            "tactics/tengnuo/solutions/tac_待定腾挪棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/tengnuo/explanation/ta_tengnuo_L1-001_exp.txt"
+            "tactics/tengnuo/explanation/tac_待定腾挪棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/tengnuo/pgn/ta_tengnuo_L1-001.pgn"
-          ]
+            "tactics/tengnuo/pgn/tac_待定腾挪棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_tengnuo_L1-001",
+          "originalTitle": "tengnuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_tengnuo_L1-002",
-          "title": "tengnuo类残局",
-          "fen": "tactics/tengnuo/fen/ta_tengnuo_L1-002.fen",
-          "metadata": "tactics/tengnuo/json/ta_tengnuo_L1-002.json",
+          "id": "tac_待定腾挪棋局_L1-002",
+          "title": "待定腾挪棋局",
+          "fen": "tactics/tengnuo/fen/tac_待定腾挪棋局_L1-002.fen",
+          "metadata": "tactics/tengnuo/json/tac_待定腾挪棋局_L1-002.json",
           "solutions": [
-            "tactics/tengnuo/solutions/ta_tengnuo_L1-002.txt"
+            "tactics/tengnuo/solutions/tac_待定腾挪棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/tengnuo/explanation/ta_tengnuo_L1-002_exp.txt"
+            "tactics/tengnuo/explanation/tac_待定腾挪棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/tengnuo/pgn/ta_tengnuo_L1-002.pgn"
-          ]
+            "tactics/tengnuo/pgn/tac_待定腾挪棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_tengnuo_L1-002",
+          "originalTitle": "tengnuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_tengnuo_L1-003",
-          "title": "tengnuo类残局",
-          "fen": "tactics/tengnuo/fen/ta_tengnuo_L1-003.fen",
-          "metadata": "tactics/tengnuo/json/ta_tengnuo_L1-003.json",
+          "id": "tac_待定腾挪棋局_L1-003",
+          "title": "待定腾挪棋局",
+          "fen": "tactics/tengnuo/fen/tac_待定腾挪棋局_L1-003.fen",
+          "metadata": "tactics/tengnuo/json/tac_待定腾挪棋局_L1-003.json",
           "solutions": [
-            "tactics/tengnuo/solutions/ta_tengnuo_L1-003.txt"
+            "tactics/tengnuo/solutions/tac_待定腾挪棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/tengnuo/explanation/ta_tengnuo_L1-003_exp.txt"
+            "tactics/tengnuo/explanation/tac_待定腾挪棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/tengnuo/pgn/ta_tengnuo_L1-003.pgn"
-          ]
+            "tactics/tengnuo/pgn/tac_待定腾挪棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_tengnuo_L1-003",
+          "originalTitle": "tengnuo类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_tengnuo_L2-001",
-          "title": "tengnuo类残局",
-          "fen": "tactics/tengnuo/fen/ta_tengnuo_L2-001.fen",
-          "metadata": "tactics/tengnuo/json/ta_tengnuo_L2-001.json",
+          "id": "tac_待定腾挪棋局_L2-001",
+          "title": "待定腾挪棋局",
+          "fen": "tactics/tengnuo/fen/tac_待定腾挪棋局_L2-001.fen",
+          "metadata": "tactics/tengnuo/json/tac_待定腾挪棋局_L2-001.json",
           "solutions": [
-            "tactics/tengnuo/solutions/ta_tengnuo_L2-001.txt"
+            "tactics/tengnuo/solutions/tac_待定腾挪棋局_L2-001.txt"
           ],
           "explanations": [
-            "tactics/tengnuo/explanation/ta_tengnuo_L2-001_exp.txt"
+            "tactics/tengnuo/explanation/tac_待定腾挪棋局_L2-001_exp.txt"
           ],
           "pgn": [
-            "tactics/tengnuo/pgn/ta_tengnuo_L2-001.pgn"
-          ]
+            "tactics/tengnuo/pgn/tac_待定腾挪棋局_L2-001.pgn"
+          ],
+          "originalId": "ta_tengnuo_L2-001",
+          "originalTitle": "tengnuo类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2538,79 +2798,94 @@
       "label": "吸引",
       "items": [
         {
-          "id": "ta_xiyin_L1-001",
-          "title": "xiyin类残局",
-          "fen": "tactics/xiyin/fen/ta_xiyin_L1-001.fen",
-          "metadata": "tactics/xiyin/json/ta_xiyin_L1-001.json",
+          "id": "tac_待定吸引棋局_L1-001",
+          "title": "待定吸引棋局",
+          "fen": "tactics/xiyin/fen/tac_待定吸引棋局_L1-001.fen",
+          "metadata": "tactics/xiyin/json/tac_待定吸引棋局_L1-001.json",
           "solutions": [
-            "tactics/xiyin/solutions/ta_xiyin_L1-001.txt"
+            "tactics/xiyin/solutions/tac_待定吸引棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/xiyin/explanation/ta_xiyin_L1-001_exp.txt"
+            "tactics/xiyin/explanation/tac_待定吸引棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/xiyin/pgn/ta_xiyin_L1-001.pgn"
-          ]
+            "tactics/xiyin/pgn/tac_待定吸引棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_xiyin_L1-001",
+          "originalTitle": "xiyin类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_xiyin_L1-002",
-          "title": "xiyin类残局",
-          "fen": "tactics/xiyin/fen/ta_xiyin_L1-002.fen",
-          "metadata": "tactics/xiyin/json/ta_xiyin_L1-002.json",
+          "id": "tac_待定吸引棋局_L1-002",
+          "title": "待定吸引棋局",
+          "fen": "tactics/xiyin/fen/tac_待定吸引棋局_L1-002.fen",
+          "metadata": "tactics/xiyin/json/tac_待定吸引棋局_L1-002.json",
           "solutions": [
-            "tactics/xiyin/solutions/ta_xiyin_L1-002.txt"
+            "tactics/xiyin/solutions/tac_待定吸引棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/xiyin/explanation/ta_xiyin_L1-002_exp.txt"
+            "tactics/xiyin/explanation/tac_待定吸引棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/xiyin/pgn/ta_xiyin_L1-002.pgn"
-          ]
+            "tactics/xiyin/pgn/tac_待定吸引棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_xiyin_L1-002",
+          "originalTitle": "xiyin类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_xiyin_L1-003",
-          "title": "xiyin类残局",
-          "fen": "tactics/xiyin/fen/ta_xiyin_L1-003.fen",
-          "metadata": "tactics/xiyin/json/ta_xiyin_L1-003.json",
+          "id": "tac_待定吸引棋局_L1-003",
+          "title": "待定吸引棋局",
+          "fen": "tactics/xiyin/fen/tac_待定吸引棋局_L1-003.fen",
+          "metadata": "tactics/xiyin/json/tac_待定吸引棋局_L1-003.json",
           "solutions": [
-            "tactics/xiyin/solutions/ta_xiyin_L1-003.txt"
+            "tactics/xiyin/solutions/tac_待定吸引棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/xiyin/explanation/ta_xiyin_L1-003_exp.txt"
+            "tactics/xiyin/explanation/tac_待定吸引棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/xiyin/pgn/ta_xiyin_L1-003.pgn"
-          ]
+            "tactics/xiyin/pgn/tac_待定吸引棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_xiyin_L1-003",
+          "originalTitle": "xiyin类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_xiyin_L2-001",
-          "title": "xiyin类残局",
-          "fen": "tactics/xiyin/fen/ta_xiyin_L2-001.fen",
-          "metadata": "tactics/xiyin/json/ta_xiyin_L2-001.json",
+          "id": "tac_待定吸引棋局_L2-001",
+          "title": "待定吸引棋局",
+          "fen": "tactics/xiyin/fen/tac_待定吸引棋局_L2-001.fen",
+          "metadata": "tactics/xiyin/json/tac_待定吸引棋局_L2-001.json",
           "solutions": [
-            "tactics/xiyin/solutions/ta_xiyin_L2-001.txt"
+            "tactics/xiyin/solutions/tac_待定吸引棋局_L2-001.txt"
           ],
           "explanations": [
-            "tactics/xiyin/explanation/ta_xiyin_L2-001_exp.txt"
+            "tactics/xiyin/explanation/tac_待定吸引棋局_L2-001_exp.txt"
           ],
           "pgn": [
-            "tactics/xiyin/pgn/ta_xiyin_L2-001.pgn"
-          ]
+            "tactics/xiyin/pgn/tac_待定吸引棋局_L2-001.pgn"
+          ],
+          "originalId": "ta_xiyin_L2-001",
+          "originalTitle": "xiyin类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_xiyin_L2-002",
-          "title": "xiyin类残局",
-          "fen": "tactics/xiyin/fen/ta_xiyin_L2-002.fen",
-          "metadata": "tactics/xiyin/json/ta_xiyin_L2-002.json",
+          "id": "tac_待定吸引棋局_L2-002",
+          "title": "待定吸引棋局",
+          "fen": "tactics/xiyin/fen/tac_待定吸引棋局_L2-002.fen",
+          "metadata": "tactics/xiyin/json/tac_待定吸引棋局_L2-002.json",
           "solutions": [
-            "tactics/xiyin/solutions/ta_xiyin_L2-002.txt"
+            "tactics/xiyin/solutions/tac_待定吸引棋局_L2-002.txt"
           ],
           "explanations": [
-            "tactics/xiyin/explanation/ta_xiyin_L2-002_exp.txt"
+            "tactics/xiyin/explanation/tac_待定吸引棋局_L2-002_exp.txt"
           ],
           "pgn": [
-            "tactics/xiyin/pgn/ta_xiyin_L2-002.pgn"
-          ]
+            "tactics/xiyin/pgn/tac_待定吸引棋局_L2-002.pgn"
+          ],
+          "originalId": "ta_xiyin_L2-002",
+          "originalTitle": "xiyin类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2622,64 +2897,76 @@
       "label": "引离",
       "items": [
         {
-          "id": "ta_yinli_L1-001",
-          "title": "yinli类残局",
-          "fen": "tactics/yinli/fen/ta_yinli_L1-001.fen",
-          "metadata": "tactics/yinli/json/ta_yinli_L1-001.json",
+          "id": "tac_待定引离棋局_L1-001",
+          "title": "待定引离棋局",
+          "fen": "tactics/yinli/fen/tac_待定引离棋局_L1-001.fen",
+          "metadata": "tactics/yinli/json/tac_待定引离棋局_L1-001.json",
           "solutions": [
-            "tactics/yinli/solutions/ta_yinli_L1-001.txt"
+            "tactics/yinli/solutions/tac_待定引离棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/yinli/explanation/ta_yinli_L1-001_exp.txt"
+            "tactics/yinli/explanation/tac_待定引离棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/yinli/pgn/ta_yinli_L1-001.pgn"
-          ]
+            "tactics/yinli/pgn/tac_待定引离棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_yinli_L1-001",
+          "originalTitle": "yinli类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_yinli_L1-002",
-          "title": "yinli类残局",
-          "fen": "tactics/yinli/fen/ta_yinli_L1-002.fen",
-          "metadata": "tactics/yinli/json/ta_yinli_L1-002.json",
+          "id": "tac_待定引离棋局_L1-002",
+          "title": "待定引离棋局",
+          "fen": "tactics/yinli/fen/tac_待定引离棋局_L1-002.fen",
+          "metadata": "tactics/yinli/json/tac_待定引离棋局_L1-002.json",
           "solutions": [
-            "tactics/yinli/solutions/ta_yinli_L1-002.txt"
+            "tactics/yinli/solutions/tac_待定引离棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/yinli/explanation/ta_yinli_L1-002_exp.txt"
+            "tactics/yinli/explanation/tac_待定引离棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/yinli/pgn/ta_yinli_L1-002.pgn"
-          ]
+            "tactics/yinli/pgn/tac_待定引离棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_yinli_L1-002",
+          "originalTitle": "yinli类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_yinli_L1-003",
-          "title": "yinli类残局",
-          "fen": "tactics/yinli/fen/ta_yinli_L1-003.fen",
-          "metadata": "tactics/yinli/json/ta_yinli_L1-003.json",
+          "id": "tac_待定引离棋局_L1-003",
+          "title": "待定引离棋局",
+          "fen": "tactics/yinli/fen/tac_待定引离棋局_L1-003.fen",
+          "metadata": "tactics/yinli/json/tac_待定引离棋局_L1-003.json",
           "solutions": [
-            "tactics/yinli/solutions/ta_yinli_L1-003.txt"
+            "tactics/yinli/solutions/tac_待定引离棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/yinli/explanation/ta_yinli_L1-003_exp.txt"
+            "tactics/yinli/explanation/tac_待定引离棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/yinli/pgn/ta_yinli_L1-003.pgn"
-          ]
+            "tactics/yinli/pgn/tac_待定引离棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_yinli_L1-003",
+          "originalTitle": "yinli类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_yinli_L3-001",
-          "title": "yinli类残局",
-          "fen": "tactics/yinli/fen/ta_yinli_L3-001.fen",
-          "metadata": "tactics/yinli/json/ta_yinli_L3-001.json",
+          "id": "tac_待定引离棋局_L3-001",
+          "title": "待定引离棋局",
+          "fen": "tactics/yinli/fen/tac_待定引离棋局_L3-001.fen",
+          "metadata": "tactics/yinli/json/tac_待定引离棋局_L3-001.json",
           "solutions": [
-            "tactics/yinli/solutions/ta_yinli_L3-001.txt"
+            "tactics/yinli/solutions/tac_待定引离棋局_L3-001.txt"
           ],
           "explanations": [
-            "tactics/yinli/explanation/ta_yinli_L3-001_exp.txt"
+            "tactics/yinli/explanation/tac_待定引离棋局_L3-001_exp.txt"
           ],
           "pgn": [
-            "tactics/yinli/pgn/ta_yinli_L3-001.pgn"
-          ]
+            "tactics/yinli/pgn/tac_待定引离棋局_L3-001.pgn"
+          ],
+          "originalId": "ta_yinli_L3-001",
+          "originalTitle": "yinli类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2691,49 +2978,58 @@
       "label": "迂回",
       "items": [
         {
-          "id": "ta_yuhui_L1-001",
-          "title": "yuhui类残局",
-          "fen": "tactics/yuhui/fen/ta_yuhui_L1-001.fen",
-          "metadata": "tactics/yuhui/json/ta_yuhui_L1-001.json",
+          "id": "tac_待定迂回棋局_L1-001",
+          "title": "待定迂回棋局",
+          "fen": "tactics/yuhui/fen/tac_待定迂回棋局_L1-001.fen",
+          "metadata": "tactics/yuhui/json/tac_待定迂回棋局_L1-001.json",
           "solutions": [
-            "tactics/yuhui/solutions/ta_yuhui_L1-001.txt"
+            "tactics/yuhui/solutions/tac_待定迂回棋局_L1-001.txt"
           ],
           "explanations": [
-            "tactics/yuhui/explanation/ta_yuhui_L1-001_exp.txt"
+            "tactics/yuhui/explanation/tac_待定迂回棋局_L1-001_exp.txt"
           ],
           "pgn": [
-            "tactics/yuhui/pgn/ta_yuhui_L1-001.pgn"
-          ]
+            "tactics/yuhui/pgn/tac_待定迂回棋局_L1-001.pgn"
+          ],
+          "originalId": "ta_yuhui_L1-001",
+          "originalTitle": "yuhui类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_yuhui_L1-002",
-          "title": "yuhui类残局",
-          "fen": "tactics/yuhui/fen/ta_yuhui_L1-002.fen",
-          "metadata": "tactics/yuhui/json/ta_yuhui_L1-002.json",
+          "id": "tac_待定迂回棋局_L1-002",
+          "title": "待定迂回棋局",
+          "fen": "tactics/yuhui/fen/tac_待定迂回棋局_L1-002.fen",
+          "metadata": "tactics/yuhui/json/tac_待定迂回棋局_L1-002.json",
           "solutions": [
-            "tactics/yuhui/solutions/ta_yuhui_L1-002.txt"
+            "tactics/yuhui/solutions/tac_待定迂回棋局_L1-002.txt"
           ],
           "explanations": [
-            "tactics/yuhui/explanation/ta_yuhui_L1-002_exp.txt"
+            "tactics/yuhui/explanation/tac_待定迂回棋局_L1-002_exp.txt"
           ],
           "pgn": [
-            "tactics/yuhui/pgn/ta_yuhui_L1-002.pgn"
-          ]
+            "tactics/yuhui/pgn/tac_待定迂回棋局_L1-002.pgn"
+          ],
+          "originalId": "ta_yuhui_L1-002",
+          "originalTitle": "yuhui类残局",
+          "namingPending": true
         },
         {
-          "id": "ta_yuhui_L1-003",
-          "title": "yuhui类残局",
-          "fen": "tactics/yuhui/fen/ta_yuhui_L1-003.fen",
-          "metadata": "tactics/yuhui/json/ta_yuhui_L1-003.json",
+          "id": "tac_待定迂回棋局_L1-003",
+          "title": "待定迂回棋局",
+          "fen": "tactics/yuhui/fen/tac_待定迂回棋局_L1-003.fen",
+          "metadata": "tactics/yuhui/json/tac_待定迂回棋局_L1-003.json",
           "solutions": [
-            "tactics/yuhui/solutions/ta_yuhui_L1-003.txt"
+            "tactics/yuhui/solutions/tac_待定迂回棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/yuhui/explanation/ta_yuhui_L1-003_exp.txt"
+            "tactics/yuhui/explanation/tac_待定迂回棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/yuhui/pgn/ta_yuhui_L1-003.pgn"
-          ]
+            "tactics/yuhui/pgn/tac_待定迂回棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_yuhui_L1-003",
+          "originalTitle": "yuhui类残局",
+          "namingPending": true
         }
       ]
     },
@@ -2745,19 +3041,22 @@
       "label": "捉双",
       "items": [
         {
-          "id": "ta_zhuoshuang_L1-003",
-          "title": "zhuoshuang类残局",
-          "fen": "tactics/zhuoshuang/fen/ta_zhuoshuang_L1-003.fen",
-          "metadata": "tactics/zhuoshuang/json/ta_zhuoshuang_L1-003.json",
+          "id": "tac_待定捉双棋局_L1-003",
+          "title": "待定捉双棋局",
+          "fen": "tactics/zhuoshuang/fen/tac_待定捉双棋局_L1-003.fen",
+          "metadata": "tactics/zhuoshuang/json/tac_待定捉双棋局_L1-003.json",
           "solutions": [
-            "tactics/zhuoshuang/solutions/ta_zhuoshuang_L1-003.txt"
+            "tactics/zhuoshuang/solutions/tac_待定捉双棋局_L1-003.txt"
           ],
           "explanations": [
-            "tactics/zhuoshuang/explanation/ta_zhuoshuang_L1-003_exp.txt"
+            "tactics/zhuoshuang/explanation/tac_待定捉双棋局_L1-003_exp.txt"
           ],
           "pgn": [
-            "tactics/zhuoshuang/pgn/ta_zhuoshuang_L1-003.pgn"
-          ]
+            "tactics/zhuoshuang/pgn/tac_待定捉双棋局_L1-003.pgn"
+          ],
+          "originalId": "ta_zhuoshuang_L1-003",
+          "originalTitle": "zhuoshuang类残局",
+          "namingPending": true
         }
       ]
     }

@@ -4,7 +4,7 @@ export const ATTACKING_GROUPS = {
   双子协同: ['双车错', '车马冷着', '车炮抽杀', '马后炮', '双马饮泉', '重炮杀', '夹车炮'],
   组合进攻: ['炮碾丹砂', '海底捞月', '天地炮', '大胆穿心', '二鬼拍门'],
   连续推进与残局攻杀: ['三进兵', '送佛归殿'],
-  原题库补充: ['原题库其他棋局']
+  待定: ['待定']
 };
 
 export const ATTACKING_UNITS = {
@@ -13,7 +13,7 @@ export const ATTACKING_UNITS = {
   双子协同: '协同思维：单个棋子做不到的事情，两个棋子如何共同完成？理解支援、借架与配合。',
   组合进攻: '组合推理：如何通过多个棋子的组合，创造对方无法化解的杀势？关注突破防线与多重威胁。',
   连续推进与残局攻杀: '综合运用：如何通过持续推进和连续计算，最终完成将杀？从短变化开始，学习空间压缩与多回合推演。',
-  原题库补充: '这些棋局保留 Windows 题库原始标题与分类，不擅自归入未经核实的传统杀法。'
+  待定: '保留原题库名称，待核实杀法分类。'
 };
 
 export const ATTACKING_ROOTS = [
@@ -41,7 +41,7 @@ export const ATTACKING_ROOTS = [
   { id: 'cc.mate.erguipaimen', name: '二鬼拍门', knowledge: '双兵同时威胁将门', aliases: ['二鬼拍门'] },
   { id: 'cc.mate.sanjinbing', name: '三进兵', knowledge: '兵的连续推进与攻杀', aliases: ['三进兵'] },
   { id: 'cc.mate.songfoguidian', name: '送佛归殿', knowledge: '兵卒推进、限制与最终将杀', aliases: ['送佛归殿'] },
-  { id: 'cc.mate.source.unclassified', name: '原题库其他棋局', knowledge: '保留原始题库标题，尚未按传统杀法名称细分。', aliases: [], sourceOnly: true }
+  { id: 'cc.mate.source.unclassified', name: '待定', knowledge: '保留原始题库标题，尚未按传统杀法名称细分。', aliases: [], sourceOnly: true }
 ];
 
 export const ATTACKING_CATEGORIES = Object.fromEntries(ATTACKING_ROOTS
@@ -54,9 +54,9 @@ export function selectAttackingPuzzles(manifest, name) {
     .flatMap(category => category.items);
   if (root.sourceOnly) {
     const classified = new Set(ATTACKING_ROOTS.filter(item => !item.sourceOnly)
-      .flatMap(item => items.filter(puzzle => item.aliases.some(alias => puzzle.title.includes(alias)))
+      .flatMap(item => items.filter(puzzle => !puzzle.classificationPending && item.aliases.some(alias => puzzle.title.includes(alias)))
         .map(puzzle => puzzle.id)));
     return items.filter(puzzle => !classified.has(puzzle.id));
   }
-  return items.filter(puzzle => root.aliases.some(alias => puzzle.title.includes(alias)));
+  return items.filter(puzzle => !puzzle.classificationPending && root.aliases.some(alias => puzzle.title.includes(alias)));
 }

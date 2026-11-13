@@ -1,0 +1,18 @@
+{
+  "geneId": "eg_单车胜单象_L1-001",
+  "displayInfo": {
+    "chineseName": "单车胜单象"
+  },
+  "metadata": {
+    "difficulty": "L1",
+    "sequence": 7,
+    "verified": false
+  },
+  "files": {
+    "fen": "fen/eg_单车胜单象_L1-001.fen",
+    "solution_user": "solutions/eg_单车胜单象_L1-001.txt",
+    "solution_system": "pgn/eg_单车胜单象_L1-001.pgn",
+    "explanation": "explanation/exp-eg_单车胜单象_L1-001.txt"
+  },
+  "originalId": "eg_R-E_L1-001"
+}

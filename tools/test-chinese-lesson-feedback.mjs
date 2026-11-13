@@ -17,12 +17,12 @@ async function position(id, step) {
   return game;
 }
 
-const check = getLessonMoveFeedback(await position('at_2R2AE-R_L1-001', 1));
+const check = getLessonMoveFeedback(await position('at_双车错_L1-001', 1));
 assert.equal(check.state.type, 'check');
 assert.equal(check.checkedKing, 'k');
 assert.match(check.text, /将军，黑方应将/);
 assert.equal(check.losingKing, null);
-const captureGame = await position('at_2RAE-RA_L1-001', 5);
+const captureGame = await position('at_同侧双车错_L1-001', 5);
 const capture = getLessonMoveFeedback(captureGame);
 assert.deepEqual(capture.capture, captureGame.history.at(-1).to);
 assert.match(capture.text, /吃士；将军/);
@@ -30,12 +30,12 @@ undoMove(captureGame);
 assert.equal(getLessonMoveFeedback(captureGame).capture, null);
 redoMove(captureGame);
 assert.deepEqual(getLessonMoveFeedback(captureGame), capture);
-const mate = getLessonMoveFeedback(await position('at_HP2AE-RCAE_L1-001', 1));
+const mate = getLessonMoveFeedback(await position('at_卧槽马和兵_L1-001', 1));
 assert.equal(mate.state.type, 'checkmate');
 assert.equal(mate.state.winner, 'red');
 assert.equal(mate.losingKing, 'k');
 assert.match(mate.text, /将死，红方获胜，黑方负/);
-const blackMateGame = await position('at_HP2AE-RCAE_L1-001', 1);
+const blackMateGame = await position('at_卧槽马和兵_L1-001', 1);
 blackMateGame.board = blackMateGame.board.slice().reverse().map(row => row.slice().reverse().map(piece => (
   piece ? (piece === piece.toUpperCase() ? piece.toLowerCase() : piece.toUpperCase()) : null
 )));
@@ -45,12 +45,12 @@ const blackMate = getLessonMoveFeedback(blackMateGame);
 assert.equal(blackMate.state.winner, 'black');
 assert.equal(blackMate.losingKing, 'K');
 assert.match(blackMate.text, /黑方获胜，红方负/);
-const stalemate = getLessonMoveFeedback(await position('eg_H-A_L1-001', 27));
+const stalemate = getLessonMoveFeedback(await position('eg_单马胜单士_L1-001', 27));
 assert.equal(stalemate.state.type, 'stalemate');
 assert.equal(stalemate.checkedKing, null);
 assert.equal(stalemate.losingKing, 'k');
 assert.match(stalemate.text, /困毙，红方获胜，黑方负/);
-const ongoing = getLessonMoveFeedback(await position('at_2R2AE-R_L1-001', 2));
+const ongoing = getLessonMoveFeedback(await position('at_双车错_L1-001', 2));
 assert.equal(ongoing.text, '');
 assert.equal(ongoing.state.winner, null);
 assert.match(getLessonMoveFeedback(createGameFromFen('9/9/9/9/9/9/9/9/9/4K4 w - - 0 1')).text, /局面无效/);

@@ -92,7 +92,10 @@ copied byte-for-byte and every source FEN is indexed.
 
 The Chinese chess root-gene editor provides a red/black standard-piece palette,
 an interactive puzzle directory, and endgame, attacking and tactics selectors
-at L1–L3. Imported ungraded tactics retain their original level in the directory.
+at L1–L3. The header's usage dialog explains the existing Chinese puzzle IDs,
+the separate current manual-ID format, read-only imports and local-service needs.
+The directory also includes opening positions, which cannot be created as manual
+opening entries in this editor.
 Saving an imported puzzle creates a separate manual copy; only manual entries
 can be updated or deleted. IDs use `eg_CUSTOM_L1-001`, `at_CUSTOM_L2-001` or
 `tac_CUSTOM_L3-001` (all three prefixes support all three levels).
@@ -220,9 +223,11 @@ Screen-horse and palcorner-horse defences are not labelled as same-direction or
 opposite-direction cannons. The requested corner-cannon sequence is retained as
 course content with a note that its precise definition still needs verification.
 
-Only observation connects source positions. Explicit mappings based on the
-original notation connect `oc_zhongpao_L1-003` to central-cannon versus screen-horse
-from either side's perspective (38 legal moves), and `oc_zhongpao_L1-002` to
+Only observation connects the four existing L1 source positions. The pending
+menu also lists three records whose names or classifications need verification.
+Explicit mappings based on the original notation connect
+`oc_待定中炮对屏风马棋局_L1-003` to central-cannon versus screen-horse
+(38 legal moves), and `oc_弃车十三招_L1-002` to
 same-direction cannons with first-side cross rook versus second-side direct rook.
 The latter source's `卒7进1` becomes illegal later in the sequence: its board and
 original notation remain visible, but playback reports the error and is disabled.

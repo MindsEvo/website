@@ -64,12 +64,27 @@ for (const fenFile of allFiles.filter(file => file.endsWith('.fen'))) {
     id,
     title: metadata?.displayInfo?.chineseName || metadata?.displayInfo?.name
       || metadata?.gene_info?.name || metadata?.name || stem,
+    ...(metadata?.originalId ? { originalId: metadata.originalId } : {}),
+    ...(metadata?.displayInfo?.originalName ? { originalTitle: metadata.displayInfo.originalName } : {}),
+    ...(metadata?.classificationPending ? { classificationPending: true } : {}),
+    ...(metadata?.namingPending ? { namingPending: true } : {}),
     fen: relative(fenFile),
     metadata: metadataFile ? relative(metadataFile) : null,
     solutions: solutionFiles.sort(numericNameCompare).map(relative),
     explanations: explanationFiles.sort(numericNameCompare).map(relative),
     pgn: pgnFiles.map(relative)
   });
+}
+
+try {
+  const existing = JSON.parse(await readFile(path.join(outputRoot, 'manifest.json'), 'utf8'));
+  const missing = existing.categories.flatMap(category => category.items)
+    .filter(item => item.originalId && !ids.has(item.id));
+  if (missing.length) {
+    throw new Error(`题库源文件缺少 ${missing.length} 条已迁移棋局（例如 ${missing[0].id}）；请先同步源题库，不能覆盖现有编号。`);
+  }
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
 }
 
 // Keep the original source layout and materials; existing L1 manifests remain compatible.

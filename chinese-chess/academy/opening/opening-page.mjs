@@ -10,6 +10,7 @@ initEndgamePage({
   categories: OPENING_CATEGORIES,
   roots: Object.fromEntries(OPENING_ROOTS.map(root => [root.name, root.id])),
   selectPuzzles: selectOpeningPuzzles,
+  pendingGroup: '待定',
   label: '开局',
   audience: {
     student: '从先手主流、后手应对和冷门特色三个方向认识开局。观察出子、争先与阵形，说明每一步的目的，而不是只背棋谱。',

@@ -16,7 +16,7 @@
       <div class="rootgene-brand"><span aria-hidden="true">🧬</span><h1>根基因库管理系统</h1><p>局面编辑与题库管理</p></div>
       <div class="rootgene-header-actions">
         <a class="rootgene-back" href="../settings/index.html"><span aria-hidden="true">⇦</span> 返回设置</a>
-        <span class="rootgene-status"><i aria-hidden="true"></i> 系统就绪</span>
+        <button id="rootGeneHelpButton" class="rootgene-help-button" type="button" aria-haspopup="dialog">使用说明</button>
       </div>
     </header>
 
@@ -110,6 +110,20 @@
 
     <footer class="rootgene-footer"><span id="rootGeneStatus" role="status">点击棋子后选择摆放位置。</span><button id="rootGeneFooterSave" type="button">▣ 保存</button></footer>
   </main>
+  <dialog id="rootGeneHelpDialog" aria-labelledby="rootGeneHelpTitle">
+    <h2 id="rootGeneHelpTitle">根基因库使用说明</h2>
+    <h3>棋局命名</h3>
+    <p>已有题库棋局采用 <strong>前缀_中文棋局名_Ln-序号</strong>，例如 <code>eg_单车胜光将_L1-001</code>。前缀：eg 残局、at 攻杀、tac 战术、oc 开局；L1–L3 为级别，末尾为三位序号。名称或分类尚未核实的棋局标为“待定”。</p>
+    <p>本页面<strong>当前新建手工棋局</strong>仍使用 <code>eg_CUSTOM_L1-001</code> 格式；攻杀、战术分别使用 at、tac，编号须与所选类型及级别一致。开局目前只能浏览，不能以 oc 新建手工棋局。手工编号规范后续统一整理。</p>
+    <h3>使用要点</h3>
+    <ul>
+      <li>在右侧目录搜索并载入棋局；选择棋子和棋盘交叉点可摆放局面，重置恢复载入或保存的局面。</li>
+      <li>选择类型、级别和手工编号后，检查局面并存储到题库；保存和引擎功能需要启动本地服务（端口 8787）。</li>
+      <li>原题库棋局只读，编辑后须另存为手工棋局；仅手工棋局可更新或删除。</li>
+      <li>先保存起始局面，再记录或导入棋谱、编辑解说，按版本保存。更新手工棋局的局面会删除其旧棋谱和解说，请先备份。</li>
+    </ul>
+    <form method="dialog"><button type="submit">关闭</button></form>
+  </dialog>
   <script type="module" src="./rootgene-page.mjs"></script>
 </body>
 </html>

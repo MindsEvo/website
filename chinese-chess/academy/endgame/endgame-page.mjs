@@ -19,7 +19,8 @@ const ENDGAME_TYPES = {
   马: ['双马杀王', '马兵杀王', '马炮杀王'],
   炮: ['单炮杀王', '双炮杀王', '炮兵杀王'],
   兵卒: ['单兵杀王', '多兵杀王', '兵马杀王'],
-  组合: ['车马炮杀王', '多子杀王', '复杂残局']
+  组合: ['车马炮杀王', '多子杀王', '复杂残局'],
+  待定: []
 };
 const SECTION_LABELS = { observation: '动态观察', practice: '操作练习', quiz: '问答练习' };
 const status = document.getElementById('boardLessonStatus');
@@ -166,6 +167,7 @@ function renderMenus(row) {
   row.replaceChildren();
   const section = row.dataset.section;
   for (const [piece, types] of Object.entries(course?.groups || course?.categories || ENDGAME_TYPES)) {
+    if (section === 'quiz' && ((!course && piece === '待定') || piece === course?.pendingGroup)) continue;
     const menu = document.createElement('details');
     menu.className = 'endgame-menu';
     const summary = document.createElement('summary');
@@ -173,10 +175,10 @@ function renderMenus(row) {
     summary.setAttribute('aria-label', `${SECTION_LABELS[section]}：${piece}`);
     const options = document.createElement('div');
     options.className = 'endgame-menu-options';
-    if (course?.groups) {
+    if (course?.groups && piece !== course.pendingGroup) {
       renderCourseOptions(options, types, section);
     } else if (['observation', 'practice'].includes(section)
-      && (course || ['车', '马', '炮', '兵卒', '组合'].includes(piece))) {
+      && (course || ['车', '马', '炮', '兵卒', '组合', '待定'].includes(piece))) {
       options.textContent = '载入棋局中…';
       const loadOptions = () => {
         if (!options.dataset.loaded) loadCoursePuzzles(options, piece, section);
@@ -336,19 +338,25 @@ async function loadCoursePuzzles(list, piece, section) {
       entries = selectCoursePuzzlesForSection(items, section)
         .map(puzzle => ({ puzzle, category: null }));
     } else {
-      const levels = section === 'observation' ? new Set(['L1']) : new Set(['L2', 'L3']);
       const families = { 车: 'rook', 马: 'horse', 炮: 'cannon', 兵卒: 'pawn' };
       const categories = manifest.categories.filter(category => {
-        if (category.family !== 'endgame' || !levels.has(category.level)) return false;
+        if (category.family !== 'endgame') return false;
+        if (piece === '待定') return true;
         const keyFamily = category.key.split('/').at(-1);
         const categoryFamily = ['rook', 'horse', 'cannon', 'pawn'].includes(keyFamily) ? keyFamily : 'others';
         return piece === '组合' ? categoryFamily === 'others' : categoryFamily === families[piece];
       });
       entries = categories.flatMap(category => selectCoursePuzzlesForSection(
-        category.items, section, category.level
+        category.items.filter(puzzle => piece === '待定' ? puzzle.classificationPending : !puzzle.classificationPending),
+        section, category.level
       ).map(puzzle => ({ puzzle, category })));
     }
     if (!entries.length) {
+      if (!course || piece === course.pendingGroup) {
+        list.textContent = '此分类暂无棋局';
+        list.dataset.loaded = 'true';
+        return;
+      }
       list.replaceChildren();
       list.dataset.loaded = 'true';
       list.closest('details')?.setAttribute('hidden', '');
@@ -359,7 +367,7 @@ async function loadCoursePuzzles(list, piece, section) {
     const groups = new Map();
     for (const entry of entries) {
       const { puzzle, category } = entry;
-      const title = puzzle.id.startsWith('eg_R-K_') ? '单车杀王' : puzzle.title;
+      const title = puzzle.title === '单车胜光将' ? '单车杀王' : puzzle.title;
       const groupLabel = !course && section === 'practice'
         ? `${getCoursePuzzleLevel(puzzle, category.level)} · ${category.label}`
         : title;
@@ -501,7 +509,9 @@ async function loadVariant(index) {
       .filter(line => !line.trim().startsWith('#')).join('\n').trim();
     document.getElementById('endgameNotation').textContent = solution;
     if (!notationContent(solution)) {
-      document.getElementById('endgameNotation').textContent = '原题库尚未录入正式棋谱（仅有占位文本），无法自动播放。可切换模式操作练习。';
+      document.getElementById('endgameNotation').textContent = puzzle.solutions[index]
+        ? '原题库尚未录入正式棋谱（仅有占位文本），无法自动播放。可切换模式操作练习。'
+        : '原题库没有解法棋谱文件，无法自动播放。可切换模式操作练习。';
       status.textContent = `已载入：${puzzle.title} · ${puzzle.id}；暂无正式解法棋谱。`;
       return;
     }

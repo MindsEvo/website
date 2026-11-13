@@ -1,0 +1,15 @@
+{
+  "geneId": "eg_待定示例残局_L2-001",
+  "displayInfo": {
+    "chineseName": "待定示例残局",
+    "originalName": "残局题目-示例题目"
+  },
+  "metadata": {
+    "difficulty": "L2",
+    "originalDifficulty": "L1",
+    "sequence": 1,
+    "verified": false
+  },
+  "originalId": "示例题目",
+  "classificationPending": true
+}

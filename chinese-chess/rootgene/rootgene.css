@@ -7,8 +7,18 @@
 .rootgene-brand p { margin: 2px 0 0 22px; color: #8493a0; font-size: 12px; white-space: nowrap; }
 .rootgene-header-actions { display: flex; align-items: center; gap: 12px; }
 .rootgene-back { min-height: 32px; padding: 0 13px; display: inline-flex; align-items: center; gap: 5px; border-radius: 5px; color: #fff; background: #2f98dd; font-size: 11px; font-weight: 700; white-space: nowrap; }
-.rootgene-status { min-height: 32px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 18px; color: #248b56; background: #e7f5ea; font-size: 11px; font-weight: 700; white-space: nowrap; }
-.rootgene-status i { width: 6px; height: 6px; border-radius: 50%; background: #2bb56c; }
+.rootgene-help-button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 18px; color: #248b56; background: #e7f5ea; font: inherit; font-size: 11px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.rootgene-help-button:focus-visible { outline: 2px solid #1687ed; outline-offset: 2px; }
+#rootGeneHelpDialog { width: min(620px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 22px 24px; border: 0; border-radius: 10px; color: #263b51; box-shadow: 0 10px 32px #0003; font-size: 14px; line-height: 1.65; }
+#rootGeneHelpDialog::backdrop { background: #0005; }
+#rootGeneHelpDialog h2 { margin: 0 0 12px; font-size: 20px; }
+#rootGeneHelpDialog h3 { margin: 14px 0 4px; font-size: 15px; }
+#rootGeneHelpDialog p { margin: 6px 0; }
+#rootGeneHelpDialog ul { margin: 6px 0 14px; padding-left: 22px; }
+#rootGeneHelpDialog li + li { margin-top: 5px; }
+#rootGeneHelpDialog code { overflow-wrap: anywhere; }
+#rootGeneHelpDialog form { text-align: right; }
+#rootGeneHelpDialog button { min-height: 34px; padding: 0 16px; border: 0; border-radius: 5px; background: #2f98dd; color: #fff; font: inherit; cursor: pointer; }
 .rootgene-workspace { min-height: 0; display: grid; grid-template-columns: 280px minmax(340px, min(38vw, calc((100vh - 190px) * 470 / 552))) minmax(280px, 1fr) 230px; gap: 6px; }
 .rootgene-sidebar { display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: auto; }
 .rootgene-sidebar > .control-panel { flex: 0 0 auto; overflow: visible; }
@@ -120,7 +130,7 @@
   .rootgene-brand > span { font-size: 19px; }
   .rootgene-header-actions { gap: 5px; }
   .rootgene-back { min-height: 29px; padding: 0 7px; font-size: 9px; }
-  .rootgene-status { min-height: 29px; padding: 0 7px; font-size: 9px; }
+  .rootgene-help-button { min-height: 29px; padding: 0 7px; font-size: 9px; }
   .rootgene-workspace { grid-template-columns: minmax(0, 1fr); }
   .control-panel { min-height: 760px; }
   .board-panel { min-height: 550px; }

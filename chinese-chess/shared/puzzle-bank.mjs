@@ -8,6 +8,7 @@ import {
   OPENING_ROOTS,
   selectOpeningPuzzles
 } from '../academy/opening/opening-catalog.mjs';
+import { getCoursePuzzleLevel } from '../academy/course-puzzle-levels.mjs';
 
 export const PUZZLE_BANK_BASE = '../bank/';
 
@@ -95,6 +96,8 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
       .map(category => ({
         ...category,
         items: category.items.filter(item => !normalizedQuery
+          || (['tactics', 'opening'].includes(familyName) && '待定'.includes(normalizedQuery)
+            && (item.namingPending || item.classificationPending))
           || `${item.title} ${item.id} ${category.label} ${category.familyLabel} ${category.level} ${category.key}`
             .toLocaleLowerCase().includes(normalizedQuery))
       }))
@@ -150,12 +153,25 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
     }
 
     if (familyName === 'tactics') {
-      renderCategories(family, categories, {
+      const regularCategories = categories.map(category => ({
+        ...category, items: category.items.filter(item => !item.classificationPending)
+      })).filter(category => category.items.length);
+      renderCategories(family, regularCategories, {
         labels: TACTIC_LABELS,
         order: TACTIC_ORDER,
         selectedId,
         onSelect
       });
+      const pendingItems = categories.flatMap(category => category.items
+        .filter(item => item.namingPending || item.classificationPending)
+        .map(item => ({ category, item })));
+      if (pendingItems.length) {
+        const pending = branch(`待定 (${pendingItems.length})`, true, 'tree-category');
+        for (const { category, item } of pendingItems) {
+          pending.append(createPuzzleLeaf(category, item, selectedId, onSelect));
+        }
+        family.append(pending);
+      }
       continue;
     }
 
@@ -165,7 +181,12 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
     }
 
     for (const levelName of ['L1', 'L2', 'L3']) {
-      const levelCategories = categories.filter(category => category.level === levelName);
+      const levelCategories = familyName === 'endgame'
+        ? categories.map(category => ({
+          ...category,
+          items: category.items.filter(item => getCoursePuzzleLevel(item, category.level) === levelName)
+        })).filter(category => category.items.length)
+        : categories.filter(category => category.level === levelName);
       if (normalizedQuery && !levelCategories.length) continue;
       const level = branch(LEVEL_LABELS[levelName], true, 'tree-level');
       family.append(level);
@@ -173,12 +194,26 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
         appendEmptyNote(level, '当前级别暂无棋局文件。');
         continue;
       }
-      renderCategories(level, levelCategories, {
+      const regularCategories = familyName === 'endgame'
+        ? levelCategories.map(category => ({
+          ...category, items: category.items.filter(item => !item.classificationPending)
+        })).filter(category => category.items.length)
+        : levelCategories;
+      renderCategories(level, regularCategories, {
         labels: PIECE_LABELS,
         order: PIECE_ORDER,
         selectedId,
         onSelect
       });
+      if (familyName === 'endgame') {
+        const pending = levelCategories.flatMap(category =>
+          category.items.filter(item => item.classificationPending).map(item => ({ category, item })));
+        if (pending.length) {
+          const group = branch(`待定 (${pending.length})`, true, 'tree-category');
+          for (const { category, item } of pending) group.append(createPuzzleLeaf(category, item, selectedId, onSelect));
+          level.append(group);
+        }
+      }
     }
   }
 
@@ -198,6 +233,15 @@ function renderOpeningGroups(parent, categories, selectedId, onSelect) {
   for (const [groupName, subgroups] of Object.entries(OPENING_GROUPS)) {
     const group = branch(groupName, true, 'tree-level');
     let groupCount = 0;
+    if (groupName === '待定') {
+      const puzzles = selectOpeningPuzzles(manifest, groupName);
+      if (puzzles.length) {
+        group.querySelector('summary').textContent = `${groupName} (${puzzles.length})`;
+        for (const puzzle of puzzles) group.append(createPuzzleLeaf(categoryByItem.get(puzzle.id), puzzle, selectedId, onSelect));
+        parent.append(group);
+      }
+      continue;
+    }
     for (const subgroupName of subgroups) {
       const types = OPENING_SUBGROUPS[subgroupName];
       if (!types) {

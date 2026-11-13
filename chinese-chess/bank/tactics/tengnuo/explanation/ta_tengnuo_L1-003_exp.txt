@@ -1,4 +1,0 @@
-# 解法 1
-ta_tengnuo_L1-003
-
-# END

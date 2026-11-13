@@ -9,6 +9,7 @@ initEndgamePage({
   categories: ATTACKING_CATEGORIES,
   roots: Object.fromEntries(ATTACKING_ROOTS.map(root => [root.name, root.id])),
   selectPuzzles: selectAttackingPuzzles,
+  pendingGroup: '待定',
   label: '杀法',
   audience: {
     student: '先认识将帅的弱点，再发现关键位置，学习双子配合、组合进攻和连续推演。观察典型局面，说明杀法目标，再尝试走棋。',

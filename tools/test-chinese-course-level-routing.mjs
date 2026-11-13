@@ -14,8 +14,8 @@ for (const family of ['endgame', 'attacking', 'tactics']) {
   assert.equal(observation.size + practice.size, allPuzzles.length, `${family}: each source puzzle is assigned`);
   assert.equal([...observation].filter(id => practice.has(id)).length, 0, `${family}: levels do not overlap`);
   assert.ok(allPuzzles.every(puzzle => observation.has(puzzle.id) || practice.has(puzzle.id)), `${family}: no puzzle is omitted`);
-  assert.ok([...observation].every(id => /_L1-/.test(id) || id === '示例题目'), `${family}: observation only includes L1`);
-  assert.ok([...practice].every(id => /_L[23]-/.test(id) || id === '示例题目'), `${family}: practice only includes L2/L3`);
+  assert.ok([...observation].every(id => /_L1-/.test(id)), `${family}: observation only includes L1`);
+  assert.ok([...practice].every(id => /_L[23]-/.test(id)), `${family}: practice only includes L2/L3`);
 }
 
 console.log('Validated L1 observation and L2/L3 practice routing for endgame, attacking and tactics puzzles.');
