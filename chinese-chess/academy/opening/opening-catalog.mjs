@@ -1,3 +1,5 @@
+import { explicitClassificationMatches } from '../classification-match.mjs';
+
 export const OPENING_GROUPS = {
   先手主流开局: ['中炮类', '马类开局', '兵类开局', '相类开局'],
   后手应对体系: ['屏风马体系', '反宫马体系', '顺炮体系', '列手炮体系'],
@@ -51,14 +53,14 @@ export const OPENING_ROOTS = [
 export const OPENING_CATEGORIES = Object.fromEntries(OPENING_ROOTS.map(root => [root.name, root.puzzles]));
 
 export function selectOpeningPuzzles(manifest, name) {
-  const items = manifest.categories.filter(category => category.key.startsWith('opening/'))
-    .flatMap(category => category.items);
-  if (name === '待定') return items.filter(puzzle => puzzle.namingPending || puzzle.classificationPending);
+  const items = manifest.categories.flatMap(category => category.items.map(puzzle => ({ puzzle, family: category.family })));
+  if (name === '待定') return items.filter(({ puzzle, family }) => explicitClassificationMatches(puzzle, 'opening', name)
+    ?? (family === 'opening' && (puzzle.namingPending || puzzle.classificationPending))).map(entry => entry.puzzle);
   const root = OPENING_ROOTS.find(root => root.name === name);
   if (!root) throw new Error(`未知开局：${name}`);
-  return root.puzzles.map(id => {
-    const puzzle = items.find(puzzle => puzzle.id === id);
-    if (!puzzle) throw new Error(`题库缺少开局棋局：${id}`);
-    return puzzle;
-  });
+  for (const id of root.puzzles) {
+    if (!items.some(({ puzzle }) => puzzle.id === id || puzzle.previousIds?.includes(id))) throw new Error(`题库缺少开局棋局：${id}`);
+  }
+  return items.filter(({ puzzle, family }) => explicitClassificationMatches(puzzle, 'opening', name)
+    ?? (family === 'opening' && root.puzzles.some(id => puzzle.id === id || puzzle.previousIds?.includes(id)))).map(entry => entry.puzzle);
 }

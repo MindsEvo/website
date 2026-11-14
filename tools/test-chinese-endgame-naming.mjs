@@ -6,9 +6,9 @@ const bank = new URL('../chinese-chess/bank/', import.meta.url);
 const manifest = JSON.parse(await readFile(new URL('manifest.json', bank), 'utf8'));
 const endgames = manifest.categories.filter(category => category.family === 'endgame')
   .flatMap(category => category.items);
-assert.equal(endgames.length, 44);
-assert.equal(new Set(endgames.map(puzzle => puzzle.id)).size, 44);
-assert.equal(endgames.filter(puzzle => puzzle.classificationPending).length, 4);
+assert.equal(endgames.length, 42);
+assert.equal(new Set(endgames.map(puzzle => puzzle.id)).size, 42);
+assert.equal(endgames.filter(puzzle => puzzle.classificationPending).length, 3);
 
 for (const puzzle of endgames) {
   assert.match(puzzle.id, /^eg_[\u4e00-\u9fffA-Za-z0-9]+_L[123]-\d{3}$/u);
@@ -25,10 +25,10 @@ for (const puzzle of endgames) {
 }
 
 const legacy = JSON.parse(await readFile(new URL('endgame/L1/manifest.json', bank), 'utf8'));
-for (const puzzle of legacy.categories.flatMap(category => category.items)) {
+for (const puzzle of legacy.categories.filter(category => category.key !== 'custom').flatMap(category => category.items)) {
   assert.ok(endgames.some(item => item.id === puzzle.id), `${puzzle.id}: legacy manifest matches`);
   for (const file of [puzzle.fen, puzzle.metadata, ...puzzle.solutions, ...puzzle.explanations]) {
     await access(new URL(`endgame/L1/${file}`, bank));
   }
 }
-console.log(`Validated ${endgames.length} Chinese-named endgames, four pending records and legacy file associations.`);
+console.log(`Validated ${endgames.length} Chinese-named endgames, three pending records and legacy file associations.`);

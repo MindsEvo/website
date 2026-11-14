@@ -65,9 +65,13 @@ for (const fenFile of allFiles.filter(file => file.endsWith('.fen'))) {
     title: metadata?.displayInfo?.chineseName || metadata?.displayInfo?.name
       || metadata?.gene_info?.name || metadata?.name || stem,
     ...(metadata?.originalId ? { originalId: metadata.originalId } : {}),
+    ...(metadata?.previousId ? { previousId: metadata.previousId } : {}),
     ...(metadata?.displayInfo?.originalName ? { originalTitle: metadata.displayInfo.originalName } : {}),
     ...(metadata?.classificationPending ? { classificationPending: true } : {}),
     ...(metadata?.namingPending ? { namingPending: true } : {}),
+    ...(metadata?.attackingMethods?.length ? { attackingMethods: metadata.attackingMethods } : {}),
+    ...(metadata?.lessonSections?.length ? { lessonSections: metadata.lessonSections } : {}),
+    ...(metadata?.classifications?.length ? { classifications: metadata.classifications } : {}),
     fen: relative(fenFile),
     metadata: metadataFile ? relative(metadataFile) : null,
     solutions: solutionFiles.sort(numericNameCompare).map(relative),
@@ -82,6 +86,14 @@ try {
     .filter(item => item.originalId && !ids.has(item.id));
   if (missing.length) {
     throw new Error(`题库源文件缺少 ${missing.length} 条已迁移棋局（例如 ${missing[0].id}）；请先同步源题库，不能覆盖现有编号。`);
+  }
+  const existingItems = new Map(existing.categories.flatMap(category => category.items).map(item => [item.id, item]));
+  for (const item of categories.flatMap(category => category.items)) {
+    const previous = existingItems.get(item.id);
+    if (previous?.classifications) {
+      item.classifications = previous.classifications;
+      item.lessonSections = previous.lessonSections;
+    }
   }
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;

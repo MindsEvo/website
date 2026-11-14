@@ -13,6 +13,5 @@ export function getCoursePuzzleLevel(puzzle, categoryLevel = '') {
 export function selectCoursePuzzlesForSection(puzzles, section, categoryLevel = '') {
   const levels = SECTION_LEVELS[section];
   if (!levels) return [];
-  return puzzles.filter(puzzle =>
-    levels.has(getCoursePuzzleLevel(puzzle, categoryLevel)));
+  return puzzles.filter(puzzle => levels.has(getCoursePuzzleLevel(puzzle, categoryLevel)));
 }

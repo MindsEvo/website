@@ -1027,6 +1027,39 @@
       ]
     },
     {
+      "key": "attacking/L2/cannon",
+      "family": "attacking",
+      "familyLabel": "杀法基因",
+      "level": "L2",
+      "label": "炮类",
+      "items": [
+        {
+          "id": "at_双炮巧胜车马炮卒_L2-001",
+          "title": "双炮巧胜车马炮卒",
+          "fen": "attacking/L2/cannon/fen/at_双炮巧胜车马炮卒_L2-001.fen",
+          "metadata": "attacking/L2/cannon/json/at_双炮巧胜车马炮卒_L2-001.json",
+          "solutions": [
+            "attacking/L2/cannon/solutions/at_双炮巧胜车马炮卒_L2-001-1.txt",
+            "attacking/L2/cannon/solutions/at_双炮巧胜车马炮卒_L2-001-2.txt",
+            "attacking/L2/cannon/solutions/at_双炮巧胜车马炮卒_L2-001.txt"
+          ],
+          "explanations": [
+            "attacking/L2/cannon/explanation/at_双炮巧胜车马炮卒_L2-001_exp-1.txt",
+            "attacking/L2/cannon/explanation/at_双炮巧胜车马炮卒_L2-001_exp-2.txt",
+            "attacking/L2/cannon/explanation/at_双炮巧胜车马炮卒_L2-001_exp.txt"
+          ],
+          "pgn": [
+            "attacking/L2/cannon/pgn/at_双炮巧胜车马炮卒_L2-001.pgn"
+          ],
+          "originalId": "eg_2CA-RHCP2A_L2-001",
+          "previousId": "eg_双炮巧胜车马炮卒_L2-001",
+          "attackingMethods": [
+            "cc.mate.chongpaosha"
+          ]
+        }
+      ]
+    },
+    {
       "key": "endgame/L1/cannon",
       "family": "endgame",
       "familyLabel": "残局基因",
@@ -1588,44 +1621,6 @@
           "originalId": "eg_2C-2C_L2-001",
           "originalTitle": "cannon类残局",
           "classificationPending": true
-        },
-        {
-          "id": "eg_待定双炮对马双士_L2-001",
-          "title": "待定双炮对马双士",
-          "fen": "endgame/L2/cannon/fen/eg_待定双炮对马双士_L2-001.fen",
-          "metadata": "endgame/L2/cannon/json/eg_待定双炮对马双士_L2-001.json",
-          "solutions": [
-            "endgame/L2/cannon/solutions/eg_待定双炮对马双士_L2-001.txt"
-          ],
-          "explanations": [
-            "endgame/L2/cannon/explanation/eg_待定双炮对马双士_L2-001_exp.txt"
-          ],
-          "pgn": [
-            "endgame/L2/cannon/pgn/eg_待定双炮对马双士_L2-001.pgn"
-          ],
-          "originalId": "eg_2C-H2A_L2-001",
-          "originalTitle": "cannon类残局",
-          "classificationPending": true
-        },
-        {
-          "id": "eg_双炮巧胜车马炮卒_L2-001",
-          "title": "双炮巧胜车马炮卒",
-          "fen": "endgame/L2/cannon/fen/eg_双炮巧胜车马炮卒_L2-001.fen",
-          "metadata": "endgame/L2/cannon/json/eg_双炮巧胜车马炮卒_L2-001.json",
-          "solutions": [
-            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001-1.txt",
-            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001-2.txt",
-            "endgame/L2/cannon/solutions/eg_双炮巧胜车马炮卒_L2-001.txt"
-          ],
-          "explanations": [
-            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp-1.txt",
-            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp-2.txt",
-            "endgame/L2/cannon/explanation/eg_双炮巧胜车马炮卒_L2-001_exp.txt"
-          ],
-          "pgn": [
-            "endgame/L2/cannon/pgn/eg_双炮巧胜车马炮卒_L2-001.pgn"
-          ],
-          "originalId": "eg_2CA-RHCP2A_L2-001"
         }
       ]
     },
@@ -3057,6 +3052,36 @@
           "originalId": "ta_zhuoshuang_L1-003",
           "originalTitle": "zhuoshuang类残局",
           "namingPending": true
+        }
+      ]
+    },
+    {
+      "key": "tactics/kunbi",
+      "family": "tactics",
+      "familyLabel": "战术基因",
+      "level": "ungraded",
+      "label": "困毙",
+      "items": [
+        {
+          "id": "tac_双炮对马双士_L2-001",
+          "title": "双炮对马双士",
+          "fen": "tactics/kunbi/fen/tac_双炮对马双士_L2-001.fen",
+          "metadata": "tactics/kunbi/json/tac_双炮对马双士_L2-001.json",
+          "solutions": [
+            "tactics/kunbi/solutions/tac_双炮对马双士_L2-001.txt"
+          ],
+          "explanations": [
+            "tactics/kunbi/explanation/tac_双炮对马双士_L2-001_exp.txt"
+          ],
+          "pgn": [
+            "tactics/kunbi/pgn/tac_双炮对马双士_L2-001.pgn"
+          ],
+          "originalId": "eg_2C-H2A_L2-001",
+          "originalTitle": "cannon类残局",
+          "previousId": "eg_待定双炮对马双士_L2-001",
+          "lessonSections": [
+            "observation"
+          ]
         }
       ]
     }

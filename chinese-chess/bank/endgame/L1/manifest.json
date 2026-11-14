@@ -397,6 +397,86 @@
           "originalId": "eg_R-K_L1-005"
         }
       ]
+    },
+    {
+      "key": "custom",
+      "label": "手工编辑",
+      "items": [
+        {
+          "id": "eg_双炮臣压君_L2-001",
+          "title": "双炮臣压君",
+          "label": "双炮臣压君",
+          "fen": "custom/eg_双炮臣压君_L2-001/eg_双炮臣压君_L2-001.fen",
+          "metadata": "custom/eg_双炮臣压君_L2-001/eg_双炮臣压君_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "炮",
+              "category": "双炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "previousIds": [
+            "eg_CUSTOM_L2-001"
+          ]
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "直接将杀",
+              "category": "白脸将"
+            },
+            {
+              "family": "attacking",
+              "group": "双子协同",
+              "category": "车炮抽杀"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_神奇车炮兵_L2-001",
+          "title": "神奇车炮兵",
+          "label": "神奇车炮兵",
+          "fen": "custom/at_神奇车炮兵_L2-001/at_神奇车炮兵_L2-001.fen",
+          "metadata": "custom/at_神奇车炮兵_L2-001/at_神奇车炮兵_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "直接将杀",
+              "category": "白脸将"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_兵借车帅威_L1-001",
+          "title": "兵借车帅威",
+          "label": "兵借车帅威",
+          "fen": "custom/at_兵借车帅威_L1-001/at_兵借车帅威_L1-001.fen",
+          "metadata": "custom/at_兵借车帅威_L1-001/at_兵借车帅威_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        }
+      ]
     }
   ]
 }

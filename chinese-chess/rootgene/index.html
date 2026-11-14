@@ -27,10 +27,14 @@
 
         <fieldset class="control-group gene-select-group">
           <legend>根基因选择</legend>
-          <label class="select-line"><span>基因类型:</span><select id="geneType" aria-label="基因类型"><option value="endgame">残局基础</option><option value="attacking">基本攻杀</option><option value="tactics">基本战术</option></select></label>
-          <label class="select-line"><span>难度级别:</span><select id="geneLevel" aria-label="难度级别"><option value="L1">L1 基础</option><option value="L2">L2 进阶</option><option value="L3">L3 高阶</option></select></label>
-          <div class="gene-list-placeholder" id="geneList" aria-label="已保存的手工棋局"></div>
-          <div class="gene-add-row"><input id="geneName" type="text" placeholder="编号格式：eg_CUSTOM_L1-001" aria-label="手工棋局编号" /><button id="geneNameCheck" type="button" class="small-add">检查</button><button id="geneDeleteButton" type="button" class="small-delete">删除</button></div>
+          <label class="select-line"><span>基因类型:</span><select id="geneType" aria-label="基因类型"><option value="endgame">残局基础</option><option value="attacking">基本攻杀</option><option value="tactics">基本战术</option><option value="opening">开局</option></select></label>
+          <label class="select-line"><span>组分类:</span><select id="geneGroup" aria-label="组分类"></select></label>
+          <label class="select-line"><span>子分类:</span><select id="geneCategory" aria-label="子分类"></select></label>
+          <label class="select-line"><span>参考级别:</span><select id="geneLevel" aria-label="参考级别"><option value="L1">L1</option><option value="L2">L2</option><option value="L3">L3</option></select></label>
+          <label for="relatedCategories">关联分类（可多选）</label>
+          <select id="relatedCategories" multiple aria-label="关联分类"></select>
+          <label for="geneName">棋局名称或完整编号</label>
+          <input id="geneName" type="text" placeholder="双炮臣压君 或 eg_双炮臣压君_L2-001" aria-label="棋局名称或完整编号" />
           <p id="nameFormat" class="name-format"></p>
         </fieldset>
 
@@ -49,17 +53,17 @@
             <button type="button" class="piece-palette-item" data-piece-type="A"></button>
             <button type="button" class="piece-palette-item" data-piece-type="P"></button>
           </div>
-          <p class="palette-help">点击棋盘棋子选中，再点击目标位置摆放；再次点击原位置取消。也可从面板添加棋子。重置恢复载入局面，将帅每方保留一枚。</p>
-          <div class="editor-tools"><button id="eraseTool" type="button" aria-pressed="false">橡皮擦</button><button id="firstMoverButton" type="button">先手：红方</button><span id="paletteStatus" role="status">选择棋子，再点击棋盘交叉点放置。</span></div>
+          <div class="editor-tools"><button id="firstMoverButton" type="button">先手：红方</button></div>
         </fieldset>
 
         <fieldset class="control-group action-group">
           <legend>操作控制</legend>
           <div class="action-buttons">
-            <button id="generatePositionButton" type="button" class="action-generate">🚀 生成局面</button>
-            <button id="savePositionButton" type="button" class="action-save">▣ 存储到题库</button>
+            <button id="checkPositionButton" type="button">检查相同局面</button>
+            <button id="savePositionButton" type="button" class="action-save">▣ 保存到题库</button>
             <button id="clearPositionButton" type="button" class="action-clear">▧ 清空结果</button>
           </div>
+          <div id="positionMatches" aria-live="polite"></div>
         </fieldset>
       </section>
       </div>
@@ -114,12 +118,14 @@
     <h2 id="rootGeneHelpTitle">根基因库使用说明</h2>
     <h3>棋局命名</h3>
     <p>已有题库棋局采用 <strong>前缀_中文棋局名_Ln-序号</strong>，例如 <code>eg_单车胜光将_L1-001</code>。前缀：eg 残局、at 攻杀、tac 战术、oc 开局；L1–L3 为级别，末尾为三位序号。名称或分类尚未核实的棋局标为“待定”。</p>
-    <p>本页面<strong>当前新建手工棋局</strong>仍使用 <code>eg_CUSTOM_L1-001</code> 格式；攻杀、战术分别使用 at、tac，编号须与所选类型及级别一致。开局目前只能浏览，不能以 oc 新建手工棋局。手工编号规范后续统一整理。</p>
+    <p>输入棋局名称后，系统按类型、级别和可用序号生成编号；也可输入完整编号，其前缀和级别须与选择一致。已有手工编号仍保留。</p>
     <h3>使用要点</h3>
     <ul>
       <li>在右侧目录搜索并载入棋局；选择棋子和棋盘交叉点可摆放局面，重置恢复载入或保存的局面。</li>
-      <li>选择类型、级别和手工编号后，检查局面并存储到题库；保存和引擎功能需要启动本地服务（端口 8787）。</li>
-      <li>原题库棋局只读，编辑后须另存为手工棋局；仅手工棋局可更新或删除。</li>
+      <li>选择主类型、组分类、子分类和级别，可选关联分类；L1 进入动态观察，L2/L3 进入操作练习。保存和引擎功能需要启动本地服务（端口 8787）。</li>
+      <li>残局、攻杀、战术和开局的分类与对应教学页面共用；题库目录按这些分类显示，关联分类也会显示同一棋局。级别仅决定动态观察或操作练习入口。</li>
+      <li>“检查相同局面”比较棋盘和行棋方。对完全相同的棋局，可选择一条作为替换对象，不会覆盖当前棋盘和输入；确认保存后旧记录被替换，棋谱、解说及原文件保留。行棋方不同的棋局不能作为替换对象。</li>
+      <li>原题库棋局的局面和棋谱只读，可单独更新分类；修改局面须另存为手工棋局，仅手工棋局可删除。已有棋局如无完整细分类，需先选择后再保存。</li>
       <li>先保存起始局面，再记录或导入棋谱、编辑解说，按版本保存。更新手工棋局的局面会删除其旧棋谱和解说，请先备份。</li>
     </ul>
     <form method="dialog"><button type="submit">关闭</button></form>

@@ -1,0 +1,26 @@
+{
+  "id": "eg_CUSTOM_L2-001",
+  "title": "手工残局基础 001",
+  "type": "endgame",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 0,
+    "E": 0,
+    "e": 1,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 2,
+    "c": 2,
+    "P": 0,
+    "p": 0
+  },
+  "fen": "2b2k3/5c3/c8/9/9/9/9/3C5/9/1C3K3 w - - 0 1"
+}

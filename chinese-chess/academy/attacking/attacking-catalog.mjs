@@ -1,7 +1,9 @@
+import { explicitClassificationMatches } from '../classification-match.mjs';
+
 export const ATTACKING_GROUPS = {
   直接将杀: ['白脸将', '八角马', '空头炮', '闷宫杀'],
   单兵种与位置杀法: ['卧槽马', '挂角马', '钓鱼马', '高钓马', '拔簧马', '铁门栓'],
-  双子协同: ['双车错', '车马冷着', '车炮抽杀', '马后炮', '双马饮泉', '重炮杀', '夹车炮'],
+  双子协同: ['双车错', '车马冷着', '车炮抽杀', '马后炮', '双马饮泉', '重炮', '夹车炮'],
   组合进攻: ['炮碾丹砂', '海底捞月', '天地炮', '大胆穿心', '二鬼拍门'],
   连续推进与残局攻杀: ['三进兵', '送佛归殿'],
   待定: ['待定']
@@ -32,7 +34,7 @@ export const ATTACKING_ROOTS = [
   { id: 'cc.mate.chepaochousha', name: '车炮抽杀', knowledge: '车炮配合与抽将战术', aliases: ['车炮抽杀'] },
   { id: 'cc.mate.mahoupao', name: '马后炮', knowledge: '马控制、炮借架', aliases: ['马后炮'] },
   { id: 'cc.mate.shuangmayinquan', name: '双马饮泉', knowledge: '双马连续协同', aliases: ['双马饮泉'] },
-  { id: 'cc.mate.chongpaosha', name: '重炮杀', knowledge: '双炮叠加攻击', aliases: ['重炮', '重跑'] },
+  { id: 'cc.mate.chongpaosha', name: '重炮', knowledge: '双炮叠加攻击', aliases: ['重炮', '重跑'] },
   { id: 'cc.mate.jiachepao', name: '夹车炮', knowledge: '车炮位置配合', aliases: ['夹车炮'] },
   { id: 'cc.mate.paoniandansha', name: '炮碾丹砂', knowledge: '车炮连续攻击', aliases: ['炮碾丹砂'] },
   { id: 'cc.mate.haidilaoyue', name: '海底捞月', knowledge: '底线车炮配合', aliases: ['海底捞月'] },
@@ -50,13 +52,17 @@ export const ATTACKING_CATEGORIES = Object.fromEntries(ATTACKING_ROOTS
 export function selectAttackingPuzzles(manifest, name) {
   const root = ATTACKING_ROOTS.find(root => root.name === name);
   if (!root) throw new Error(`未知杀法：${name}`);
-  const items = manifest.categories.filter(category => category.key.startsWith('attacking/'))
-    .flatMap(category => category.items);
+  const items = manifest.categories.flatMap(category => category.items.map(puzzle => ({ puzzle, family: category.family })));
+  const matches = ({ puzzle, family }, method) => explicitClassificationMatches(puzzle, 'attacking', method.name)
+    ?? (family === 'attacking' && !puzzle.classificationPending
+      && (puzzle.attackingMethods?.includes(method.id) || method.aliases.some(alias => puzzle.title.includes(alias))));
   if (root.sourceOnly) {
     const classified = new Set(ATTACKING_ROOTS.filter(item => !item.sourceOnly)
-      .flatMap(item => items.filter(puzzle => !puzzle.classificationPending && item.aliases.some(alias => puzzle.title.includes(alias)))
-        .map(puzzle => puzzle.id)));
-    return items.filter(puzzle => !classified.has(puzzle.id));
+      .flatMap(item => items.filter(entry => matches(entry, item))
+        .map(entry => entry.puzzle.id)));
+    return items.filter(entry => explicitClassificationMatches(entry.puzzle, 'attacking', '待定')
+      ?? (entry.family === 'attacking' && !entry.puzzle.classifications && !classified.has(entry.puzzle.id)))
+      .map(entry => entry.puzzle);
   }
-  return items.filter(puzzle => !puzzle.classificationPending && root.aliases.some(alias => puzzle.title.includes(alias)));
+  return items.filter(entry => matches(entry, root)).map(entry => entry.puzzle);
 }

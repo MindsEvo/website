@@ -228,6 +228,33 @@ app.post("/api/v1/chinese-chess/root-gene/puzzle", async (req, res) => {
   }
 });
 
+app.post("/api/v1/chinese-chess/root-gene/replace", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.replacePuzzle(req.body || {}));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.post("/api/v1/chinese-chess/root-gene/next-id", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.suggestPuzzleId(req.body || {}));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.put("/api/v1/chinese-chess/root-gene/puzzle/:id/classification", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.savePuzzleClassification({ ...(req.body || {}), id: req.params.id }));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
 app.put("/api/v1/chinese-chess/root-gene/puzzle/:id/material", async (req, res) => {
   try {
     const result = await mutateRootGene(() => ChineseChessRootGeneService.savePuzzleMaterial({ ...(req.body || {}), id: req.params.id }));

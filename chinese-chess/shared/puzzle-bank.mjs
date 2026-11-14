@@ -9,6 +9,7 @@ import {
   selectOpeningPuzzles
 } from '../academy/opening/opening-catalog.mjs';
 import { getCoursePuzzleLevel } from '../academy/course-puzzle-levels.mjs';
+import { TACTICS_GROUPS, selectTacticsPuzzles } from '../academy/tactics/tactics-catalog.mjs';
 
 export const PUZZLE_BANK_BASE = '../bank/';
 
@@ -23,20 +24,7 @@ const FAMILY_LABELS = {
 const LEVEL_LABELS = { L1: 'L1 基础', L2: 'L2 组合', L3: 'L3 复杂' };
 const PIECE_ORDER = ['rook', 'horse', 'cannon', 'pawn', 'others'];
 const PIECE_LABELS = { rook: '车类', horse: '马类', cannon: '炮类', pawn: '兵类', others: '其他' };
-const TACTIC_ORDER = [
-  'zhuoshuang', 'shanji', 'shuangchongweixie', 'shanjiang', 'choujiang',
-  'yinli', 'xiyin', 'dusai', 'lanjie', 'qianzhi', 'jieli', 'fengsuo',
-  'tengnuo', 'yuhui', 'jiaohuan', 'duncuo', 'dengzhe', 'kunzi', 'kunbi',
-  'jiejiang', 'jiesha', 'duizi', 'qizi'
-];
-const TACTIC_LABELS = {
-  zhuoshuang: '捉双', shanji: '闪击', shuangchongweixie: '双威',
-  shanjiang: '闪将', choujiang: '抽将', yinli: '引离', xiyin: '吸引',
-  dusai: '堵塞', lanjie: '拦截', qianzhi: '牵制', jieli: '接力',
-  fengsuo: '封锁', tengnuo: '腾挪', yuhui: '迂回', jiaohuan: '交换',
-  duncuo: '顿挫', dengzhe: '等着', kunzi: '困子', kunbi: '困毙',
-  jiejiang: '解将', jiesha: '解杀', duizi: '兑子', qizi: '弃子'
-};
+const ENDGAME_GROUP_KEYS = { 车: 'rook', 马: 'horse', 炮: 'cannon', 兵卒: 'pawn', 组合: 'others', 待定: 'pending' };
 export function pairedExplanation(puzzle, index) {
   const solution = puzzle.solutions?.[index];
   if (puzzle.rootGene === 'manual' && solution) {
@@ -46,18 +34,18 @@ export function pairedExplanation(puzzle, index) {
   return puzzle.explanations?.[index];
 }
 
-export async function loadPuzzleBank() {
+export async function loadPuzzleBank(base = PUZZLE_BANK_BASE) {
   const manifests = await Promise.all(['manifest.json', 'endgame/L1/manifest.json'].map(async file => {
-    const response = await fetch(`${PUZZLE_BANK_BASE}${file}`, { cache: 'no-store' });
+    const response = await fetch(`${base}${file}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`题库清单载入失败 (${response.status})：${file}`);
     return response.json();
   }));
   const [manifest, customManifest] = manifests;
-  const families = { eg: ['endgame', '残局基础'], at: ['attacking', '基本攻杀'], tac: ['tactics', '基本战术'] };
+  const families = { eg: ['endgame', '残局基础'], at: ['attacking', '基本攻杀'], tac: ['tactics', '基本战术'], oc: ['opening', '开局'] };
   const knownIds = new Set(manifest.categories.flatMap(category => category.items.map(item => item.id)));
   for (const item of customManifest.categories.find(category => category.key === 'custom')?.items || []) {
     if (knownIds.has(item.id)) continue;
-    const match = /^(eg|at|tac)_CUSTOM_(L[1-3])-\d{3}$/.exec(item.id);
+    const match = /^(eg|at|tac|oc)_[\p{L}\p{N}]+_(L[1-3])-\d{3}$/u.exec(item.id);
     if (!match) throw new Error(`手工棋局编号无效：${item.id}`);
     const [, prefix, level] = match;
     const [family, familyLabel] = families[prefix];
@@ -91,7 +79,12 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
 
   for (const familyName of familyOrder) {
     const sourceCategories = manifest.categories
-      .filter(category => category.family === familyName);
+      .filter(category => category.family === familyName)
+      .map(category => ({ ...category, items: category.items.filter(item => !item.classifications) }));
+    const classifiedEntries = manifest.categories.flatMap(category => category.items.flatMap(item =>
+      (item.classifications || []).filter(entry => entry.family === familyName
+        && (!normalizedQuery || `${item.title} ${item.id} ${entry.group} ${entry.category} ${PIECE_LABELS[ENDGAME_GROUP_KEYS[entry.group]] || ''} ${getCoursePuzzleLevel(item, category.level)} ${Object.entries(OPENING_SUBGROUPS).filter(([, types]) => entry.family === 'opening' && types.includes(entry.category)).map(([name]) => name).join(' ')}`.toLocaleLowerCase().includes(normalizedQuery)))
+        .map(entry => ({ category, item, entry }))));
     const categories = sourceCategories
       .map(category => ({
         ...category,
@@ -126,7 +119,7 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
           (OPENING_SUBGROUPS[subgroup] || [subgroup])
             .filter(type => `${group} ${subgroup} ${type}`.toLocaleLowerCase().includes(normalizedQuery))));
       const matchingIds = new Set(matchingTypes.flatMap(type =>
-        selectOpeningPuzzles({ categories: sourceCategories }, type).map(item => item.id)));
+        selectOpeningPuzzles(manifest, type).map(item => item.id)));
       if (matchingIds.size) {
         for (const category of sourceCategories) {
           const visible = categories.find(item => item.key === category.key);
@@ -141,52 +134,67 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
     }
     const familyLabel = FAMILY_LABELS[familyName]
       || `${manifest.categories.find(category => category.family === familyName)?.familyLabel || familyName} (${familyName})`;
-    if (normalizedQuery && !categories.length) continue;
+    if (normalizedQuery && !categories.length && !classifiedEntries.length) continue;
 
     const family = branch(familyLabel, true, 'tree-family');
     visibleFamilies += 1;
     container.append(family);
+    if (classifiedEntries.length && !['endgame', 'attacking', 'tactics', 'opening'].includes(familyName)) {
+      const groups = new Map();
+      for (const record of classifiedEntries) {
+        const key = `${record.entry.group} → ${record.entry.category}`;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(record);
+      }
+      for (const [label, records] of groups) {
+        const group = branch(`${label} (${records.length})`, true, 'tree-category');
+        for (const { category, item } of records) group.append(createPuzzleLeaf(category, item, selectedId, onSelect));
+        family.append(group);
+      }
+    }
 
     if (familyName === 'attacking') {
-      renderAttackingGroups(family, categories, selectedId, onSelect);
+      renderAttackingGroups(family, categories, classifiedEntries, selectedId, onSelect);
       continue;
     }
 
     if (familyName === 'tactics') {
-      const regularCategories = categories.map(category => ({
-        ...category, items: category.items.filter(item => !item.classificationPending)
-      })).filter(category => category.items.length);
-      renderCategories(family, regularCategories, {
-        labels: TACTIC_LABELS,
-        order: TACTIC_ORDER,
-        selectedId,
-        onSelect
-      });
-      const pendingItems = categories.flatMap(category => category.items
-        .filter(item => item.namingPending || item.classificationPending)
-        .map(item => ({ category, item })));
-      if (pendingItems.length) {
-        const pending = branch(`待定 (${pendingItems.length})`, true, 'tree-category');
-        for (const { category, item } of pendingItems) {
-          pending.append(createPuzzleLeaf(category, item, selectedId, onSelect));
-        }
-        family.append(pending);
-      }
+      renderTacticsGroups(family, categories, classifiedEntries, selectedId, onSelect);
       continue;
     }
 
     if (familyName === 'opening') {
-      renderOpeningGroups(family, categories, selectedId, onSelect);
+      renderOpeningGroups(family, categories, classifiedEntries, manifest, selectedId, onSelect);
       continue;
     }
 
     for (const levelName of ['L1', 'L2', 'L3']) {
-      const levelCategories = familyName === 'endgame'
-        ? categories.map(category => ({
-          ...category,
-          items: category.items.filter(item => getCoursePuzzleLevel(item, category.level) === levelName)
-        })).filter(category => category.items.length)
-        : categories.filter(category => category.level === levelName);
+      if (familyName === 'endgame') {
+        const groups = groupEndgameEntries(categories, classifiedEntries, levelName);
+        if (normalizedQuery && !groups.length) continue;
+        const level = branch(LEVEL_LABELS[levelName], true, 'tree-level');
+        family.append(level);
+        if (!groups.length) appendEmptyNote(level, '当前级别暂无棋局文件。');
+        for (const { label, records } of groups) {
+          const group = branch(`${label} (${records.length})`, true, 'tree-category');
+          const subgroups = new Map();
+          for (const { category, item, subcategories } of records) {
+            if (!subcategories.length) group.append(createPuzzleLeaf(category, item, selectedId, onSelect));
+            for (const name of subcategories) {
+              if (!subgroups.has(name)) subgroups.set(name, []);
+              subgroups.get(name).push({ category, item });
+            }
+          }
+          for (const [name, entries] of subgroups) {
+            const subgroup = branch(`${name} (${entries.length})`, true, 'tree-category');
+            for (const { category, item } of entries) subgroup.append(createPuzzleLeaf(category, item, selectedId, onSelect));
+            group.append(subgroup);
+          }
+          level.append(group);
+        }
+        continue;
+      }
+      const levelCategories = categories.filter(category => category.level === levelName);
       if (normalizedQuery && !levelCategories.length) continue;
       const level = branch(LEVEL_LABELS[levelName], true, 'tree-level');
       family.append(level);
@@ -194,26 +202,12 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
         appendEmptyNote(level, '当前级别暂无棋局文件。');
         continue;
       }
-      const regularCategories = familyName === 'endgame'
-        ? levelCategories.map(category => ({
-          ...category, items: category.items.filter(item => !item.classificationPending)
-        })).filter(category => category.items.length)
-        : levelCategories;
-      renderCategories(level, regularCategories, {
+      renderCategories(level, levelCategories, {
         labels: PIECE_LABELS,
         order: PIECE_ORDER,
         selectedId,
         onSelect
       });
-      if (familyName === 'endgame') {
-        const pending = levelCategories.flatMap(category =>
-          category.items.filter(item => item.classificationPending).map(item => ({ category, item })));
-        if (pending.length) {
-          const group = branch(`待定 (${pending.length})`, true, 'tree-category');
-          for (const { category, item } of pending) group.append(createPuzzleLeaf(category, item, selectedId, onSelect));
-          level.append(group);
-        }
-      }
     }
   }
 
@@ -225,16 +219,56 @@ export function renderPuzzleBank(container, manifest, query, selectedId, onSelec
   }
 }
 
-function renderOpeningGroups(parent, categories, selectedId, onSelect) {
-  const manifest = { categories };
-  const categoryByItem = new Map(categories.flatMap(category =>
+export function groupEndgameEntries(categories, classifiedEntries, levelName) {
+  const groups = new Map();
+  const add = (key, label, category, item, subcategory = '') => {
+    if (getCoursePuzzleLevel(item, category.level) !== levelName) return;
+    if (!groups.has(key)) groups.set(key, { key, label, records: new Map() });
+    const records = groups.get(key).records;
+    if (!records.has(item.id)) records.set(item.id, { category, item, subcategories: [] });
+    const record = records.get(item.id);
+    if (subcategory && !record.subcategories.includes(subcategory)) record.subcategories.push(subcategory);
+  };
+  for (const category of categories) {
+    for (const item of category.items) {
+      const key = item.classificationPending ? 'pending' : category.key.split('/').at(-1);
+      add(key, key === 'pending' ? '待定' : PIECE_LABELS[key] || category.label || key, category, item);
+    }
+  }
+  for (const { category, item, entry } of classifiedEntries) {
+    const key = ENDGAME_GROUP_KEYS[entry.group] || entry.group;
+    add(key, key === 'pending' ? '待定' : PIECE_LABELS[key] || entry.group, category, item, key === 'pending' ? '' : entry.category);
+  }
+  const order = new Map([...PIECE_ORDER, 'pending'].map((key, index) => [key, index]));
+  return [...groups.values()]
+    .sort((a, b) => (order.get(a.key) ?? order.size) - (order.get(b.key) ?? order.size) || a.label.localeCompare(b.label))
+    .map(({ key, label, records }) => ({ key, label, records: [...records.values()] }));
+}
+
+function visibleCourseCategories(categories, classifiedEntries) {
+  const result = categories.map(category => ({ ...category, items: [...category.items] }));
+  for (const { category, item } of classifiedEntries) {
+    let visible = result.find(entry => entry.key === category.key);
+    if (!visible) {
+      visible = { ...category, items: [] };
+      result.push(visible);
+    }
+    if (!visible.items.some(entry => entry.id === item.id)) visible.items.push(item);
+  }
+  return result;
+}
+
+function renderOpeningGroups(parent, categories, classifiedEntries, manifest, selectedId, onSelect) {
+  const visible = visibleCourseCategories(categories, classifiedEntries);
+  const categoryByItem = new Map(visible.flatMap(category =>
     category.items.map(item => [item.id, category])));
+  if (!categoryByItem.size) return;
   const rootByName = new Map(OPENING_ROOTS.map(root => [root.name, root]));
   for (const [groupName, subgroups] of Object.entries(OPENING_GROUPS)) {
     const group = branch(groupName, true, 'tree-level');
     let groupCount = 0;
     if (groupName === '待定') {
-      const puzzles = selectOpeningPuzzles(manifest, groupName);
+      const puzzles = selectOpeningPuzzles(manifest, groupName).filter(puzzle => categoryByItem.has(puzzle.id));
       if (puzzles.length) {
         group.querySelector('summary').textContent = `${groupName} (${puzzles.length})`;
         for (const puzzle of puzzles) group.append(createPuzzleLeaf(categoryByItem.get(puzzle.id), puzzle, selectedId, onSelect));
@@ -269,9 +303,7 @@ function renderOpeningGroups(parent, categories, selectedId, onSelect) {
 function renderOpeningType(parent, type, manifest, rootByName, categoryByItem, selectedId, onSelect) {
   const root = rootByName.get(type);
   if (!root) return 0;
-  const availableItems = new Map(manifest.categories.flatMap(category =>
-    category.items.map(item => [item.id, item])));
-  const puzzles = root.puzzles.map(id => availableItems.get(id)).filter(Boolean);
+  const puzzles = selectOpeningPuzzles(manifest, type).filter(item => categoryByItem.has(item.id));
   if (!puzzles.length) return 0;
   const typeGroup = branch(`${type} (${puzzles.length})`, true, 'tree-category');
   for (const item of puzzles) {
@@ -281,9 +313,10 @@ function renderOpeningType(parent, type, manifest, rootByName, categoryByItem, s
   return puzzles.length;
 }
 
-function renderAttackingGroups(parent, categories, selectedId, onSelect) {
-  const manifest = { categories };
-  const categoryByItem = new Map(categories.flatMap(category =>
+function renderAttackingGroups(parent, categories, classifiedEntries, selectedId, onSelect) {
+  const allCategories = visibleCourseCategories(categories, classifiedEntries);
+  const manifest = { categories: allCategories };
+  const categoryByItem = new Map(allCategories.flatMap(category =>
     category.items.map(item => [item.id, category])));
   const renderedIds = new Set();
   for (const [groupName, methods] of Object.entries(ATTACKING_GROUPS)) {
@@ -291,7 +324,7 @@ function renderAttackingGroups(parent, categories, selectedId, onSelect) {
     let groupCount = 0;
     for (const method of methods) {
       const puzzles = selectAttackingPuzzles(manifest, method)
-        .filter(puzzle => !renderedIds.has(puzzle.id));
+        .filter(puzzle => puzzle.classifications || !renderedIds.has(puzzle.id));
       if (!puzzles.length) continue;
       const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
       for (const item of puzzles) {
@@ -303,6 +336,33 @@ function renderAttackingGroups(parent, categories, selectedId, onSelect) {
     }
     if (groupCount) {
       group.querySelector('summary').textContent = `${groupName} (${groupCount})`;
+      parent.append(group);
+    }
+  }
+}
+
+function renderTacticsGroups(parent, categories, classifiedEntries, selectedId, onSelect) {
+  const allCategories = visibleCourseCategories(categories, classifiedEntries);
+  const manifest = { categories: allCategories };
+  const categoryByItem = new Map(allCategories.flatMap(category =>
+    category.items.map(item => [item.id, category])));
+  for (const [groupName, methods] of Object.entries(TACTICS_GROUPS)) {
+    const group = branch(groupName, true, 'tree-level');
+    let count = 0;
+    for (const method of groupName === '待定' ? ['待定'] : methods) {
+      const puzzles = selectTacticsPuzzles(manifest, method);
+      if (!puzzles.length) continue;
+      if (groupName === '待定') {
+        for (const item of puzzles) group.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+      } else {
+        const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
+        for (const item of puzzles) category.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+        group.append(category);
+      }
+      count += puzzles.length;
+    }
+    if (count) {
+      group.querySelector('summary').textContent = `${groupName} (${count})`;
       parent.append(group);
     }
   }

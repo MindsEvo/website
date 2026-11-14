@@ -13,15 +13,10 @@ import { buildNotationPlayback, notationContent } from '../../shared/notation-pl
 import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
 import { createBoardAudio } from '../../shared/board-audio.mjs';
 import { getCoursePuzzleLevel, selectCoursePuzzlesForSection } from '../course-puzzle-levels.mjs';
+import { loadPuzzleBank } from '../../shared/puzzle-bank.mjs';
+import { ENDGAME_GROUPS } from '../classification.mjs';
 
-const ENDGAME_TYPES = {
-  车: ['单车杀王', '车马杀王', '车炮杀王'],
-  马: ['双马杀王', '马兵杀王', '马炮杀王'],
-  炮: ['单炮杀王', '双炮杀王', '炮兵杀王'],
-  兵卒: ['单兵杀王', '多兵杀王', '兵马杀王'],
-  组合: ['车马炮杀王', '多子杀王', '复杂残局'],
-  待定: []
-};
+const ENDGAME_TYPES = ENDGAME_GROUPS;
 const SECTION_LABELS = { observation: '动态观察', practice: '操作练习', quiz: '问答练习' };
 const status = document.getElementById('boardLessonStatus');
 const menus = [];
@@ -238,7 +233,7 @@ function renderCourseOptions(options, types, section) {
     content.className = 'endgame-puzzle-list';
     if (children) {
       renderCourseOptions(content, children, section);
-    } else if (['observation', 'practice'].includes(section) && course.categories[type]?.length) {
+    } else if (['observation', 'practice'].includes(section) && (course.selectPuzzles || course.categories[type]?.length)) {
       content.textContent = '载入棋局中…';
       const loadOptions = () => {
         if (!content.dataset.loaded) loadCoursePuzzles(content, type, section);
@@ -325,7 +320,7 @@ async function fetchText(file) {
 async function loadCoursePuzzles(list, piece, section) {
   list.dataset.loaded = 'loading';
   try {
-    const manifest = JSON.parse(await fetchText('manifest.json'));
+    const manifest = await loadPuzzleBank(BANK_URL.href);
     let entries;
     if (course) {
       const categories = course.selectPuzzles ? [] : (course.categories[piece] || []).map(name => {
@@ -340,6 +335,7 @@ async function loadCoursePuzzles(list, piece, section) {
     } else {
       const families = { 车: 'rook', 马: 'horse', 炮: 'cannon', 兵卒: 'pawn' };
       const categories = manifest.categories.filter(category => {
+        if (category.items.some(puzzle => puzzle.classifications?.some(entry => entry.family === 'endgame' && entry.group === piece))) return true;
         if (category.family !== 'endgame') return false;
         if (piece === '待定') return true;
         const keyFamily = category.key.split('/').at(-1);
@@ -347,7 +343,13 @@ async function loadCoursePuzzles(list, piece, section) {
         return piece === '组合' ? categoryFamily === 'others' : categoryFamily === families[piece];
       });
       entries = categories.flatMap(category => selectCoursePuzzlesForSection(
-        category.items.filter(puzzle => piece === '待定' ? puzzle.classificationPending : !puzzle.classificationPending),
+        category.items.filter(puzzle => puzzle.classifications
+          ? puzzle.classifications.some(entry => entry.family === 'endgame' && entry.group === piece)
+          : category.family === 'endgame' && (piece === '待定'
+            ? puzzle.classificationPending
+            : !puzzle.classificationPending && (piece === '组合'
+              ? !['rook', 'horse', 'cannon', 'pawn'].includes(category.key.split('/').at(-1))
+              : category.key.split('/').at(-1) === families[piece]))),
         section, category.level
       ).map(puzzle => ({ puzzle, category })));
     }
@@ -368,11 +370,15 @@ async function loadCoursePuzzles(list, piece, section) {
     for (const entry of entries) {
       const { puzzle, category } = entry;
       const title = puzzle.title === '单车胜光将' ? '单车杀王' : puzzle.title;
+      const explicitCategories = !course && puzzle.classifications?.filter(entry =>
+        entry.family === 'endgame' && entry.group === piece).map(entry => entry.category);
       const groupLabel = !course && section === 'practice'
         ? `${getCoursePuzzleLevel(puzzle, category.level)} · ${category.label}`
         : title;
-      if (!groups.has(groupLabel)) groups.set(groupLabel, []);
-      groups.get(groupLabel).push(puzzle);
+      for (const label of explicitCategories?.length ? new Set(explicitCategories) : [groupLabel]) {
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(puzzle);
+      }
     }
     list.replaceChildren();
     const ordered = [...groups].sort(([first], [second]) => (
