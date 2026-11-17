@@ -84,6 +84,205 @@ async function writeAtomic(file, contents) {
   }
 }
 
+function classificationCatalogPaths(root) {
+  const bankRoot = path.resolve(root, "../..");
+  return {
+    bankRoot,
+    catalogFile: path.join(bankRoot, "classifications.json"),
+    manifestFiles: [
+      path.join(bankRoot, "manifest.json"),
+      path.join(root, "manifest.json")
+    ]
+  };
+}
+
+function validateClassificationGroups(groups) {
+  if (!groups || typeof groups !== "object" || Array.isArray(groups)) {
+    throw httpError(400, "分类目录格式无效。");
+  }
+  for (const [family, familyGroups] of Object.entries(groups)) {
+    if (!/^(endgame|attacking|tactics|opening)$/.test(family)
+      || !familyGroups || typeof familyGroups !== "object" || Array.isArray(familyGroups)) {
+      throw httpError(400, "分类目录包含无效的棋种或组分类。");
+    }
+    for (const [group, categories] of Object.entries(familyGroups)) {
+      if (!group.trim() || group === "待定" || !Array.isArray(categories)) {
+        throw httpError(400, "组分类无效，且不能使用历史状态“待定”。");
+      }
+      if (new Set(categories).size !== categories.length
+        || categories.some(category => typeof category !== "string" || !category.trim() || category === "待定")) {
+        throw httpError(400, "子分类名称无效或重复，且不能使用历史状态“待定”。");
+      }
+    }
+  }
+  return groups;
+}
+
+async function loadClassificationGroups(root = DEFAULT_BANK_ROOT) {
+  const { catalogFile } = classificationCatalogPaths(root);
+  const { CLASSIFICATION_GROUPS } = await import("../../chinese-chess/academy/classification.mjs");
+  try {
+    const saved = JSON.parse(await fs.readFile(catalogFile, "utf8"));
+    return validateClassificationGroups(saved.groups);
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+    return Object.fromEntries(Object.entries(CLASSIFICATION_GROUPS).map(([family, groups]) => [
+      family, Object.fromEntries(Object.entries(groups).map(([group, categories]) => [group, [...categories]]))
+    ]));
+  }
+}
+
+async function saveClassificationGroups(file, groups) {
+  validateClassificationGroups(groups);
+  await writeAtomic(file, `${JSON.stringify({ version: 1, groups }, null, 2)}\n`);
+}
+
+async function updateStoredClassifications(root, transform) {
+  const { manifestFiles } = classificationCatalogPaths(root);
+  const updates = [];
+  for (const file of manifestFiles) {
+    const text = await fs.readFile(file, "utf8");
+    const manifest = JSON.parse(text);
+    let changed = false;
+    for (const category of manifest.categories || []) {
+      for (const item of category.items || []) {
+        if (!Array.isArray(item.classifications)) continue;
+        const next = item.classifications.map(transform);
+        if (next.some((entry, index) => entry !== item.classifications[index])) {
+          item.classifications = next;
+          changed = true;
+        }
+      }
+    }
+    if (changed) updates.push({ file, previous: text, next: `${JSON.stringify(manifest, null, 2)}\n` });
+  }
+  const written = [];
+  try {
+    for (const update of updates) {
+      await writeAtomic(update.file, update.next);
+      written.push(update);
+    }
+  } catch (error) {
+    const rollbackErrors = [];
+    for (const update of written.reverse()) {
+      try { await writeAtomic(update.file, update.previous); }
+      catch (rollbackError) { rollbackErrors.push(rollbackError.message); }
+    }
+    if (rollbackErrors.length) throw httpError(500, `${error.message}；分类回滚失败：${rollbackErrors.join("；")}`);
+    throw error;
+  }
+  return async () => {
+    const rollbackErrors = [];
+    for (const update of [...updates].reverse()) {
+      try { await writeAtomic(update.file, update.previous); }
+      catch (rollbackError) { rollbackErrors.push(rollbackError.message); }
+    }
+    if (rollbackErrors.length) throw httpError(500, rollbackErrors.join("；"));
+  };
+}
+
+async function getClassificationCatalog(options = {}) {
+  const root = options.bankRoot || DEFAULT_BANK_ROOT;
+  return { groups: await loadClassificationGroups(root) };
+}
+
+async function updateClassificationCatalog(input, options = {}) {
+  const root = options.bankRoot || DEFAULT_BANK_ROOT;
+  const { bankRoot, catalogFile, manifestFiles } = classificationCatalogPaths(root);
+  const groups = await loadClassificationGroups(root);
+  const { action, family, group, category, name } = input;
+  if (!groups[family]) throw httpError(400, "请选择有效的棋局类型。");
+  let rollbackStoredClassifications = null;
+  const validName = value => typeof value === "string" && value.trim().length <= 40
+    && /^[\p{L}\p{N}][\p{L}\p{N} _（）()·-]*$/u.test(value.trim())
+    && value.trim() !== "待定";
+  const assertName = value => {
+    if (!validName(value)) throw httpError(400, "分类名称需为 1–40 个中英文、数字或常用连接符。");
+    return value.trim();
+  };
+  const usedByPuzzles = async predicate => {
+    let count = 0;
+    for (const file of manifestFiles) {
+      const manifest = JSON.parse(await fs.readFile(file, "utf8"));
+      for (const item of (manifest.categories || []).flatMap(entry => entry.items || [])) {
+        if (item.classifications?.some(predicate)) count += 1;
+      }
+    }
+    return count;
+  };
+
+  if (action === "add-group") {
+    const newGroup = assertName(group);
+    const firstCategory = assertName(category);
+    if (groups[family][newGroup]) throw httpError(409, "组分类已存在。");
+    groups[family][newGroup] = [firstCategory];
+  } else if (action === "add-category") {
+    const targetGroup = groups[family][group];
+    if (!targetGroup) throw httpError(404, "组分类不存在。");
+    const newCategory = assertName(category);
+    if (targetGroup.includes(newCategory)) throw httpError(409, "子分类已存在。");
+    targetGroup.push(newCategory);
+  } else if (action === "rename-group") {
+    if (!groups[family][group]) throw httpError(404, "组分类不存在。");
+    const newGroup = assertName(name);
+    if (groups[family][newGroup]) throw httpError(409, "目标组分类已存在。");
+    const count = await usedByPuzzles(entry => entry.family === family && entry.group === group);
+    const next = {};
+    for (const [key, values] of Object.entries(groups[family])) next[key === group ? newGroup : key] = values;
+    groups[family] = next;
+    if (count) rollbackStoredClassifications = await updateStoredClassifications(root, entry =>
+      entry.family === family && entry.group === group ? { ...entry, group: newGroup } : entry);
+  } else if (action === "rename-category") {
+    if (!groups[family][group]?.includes(category)) throw httpError(404, "子分类不存在。");
+    const newCategory = assertName(name);
+    if (groups[family][group].includes(newCategory)) throw httpError(409, "目标子分类已存在。");
+    const count = await usedByPuzzles(entry =>
+      entry.family === family && entry.group === group && entry.category === category);
+    groups[family][group] = groups[family][group].map(value => value === category ? newCategory : value);
+    if (count) rollbackStoredClassifications = await updateStoredClassifications(root, entry =>
+      entry.family === family && entry.group === group && entry.category === category
+        ? { ...entry, category: newCategory } : entry);
+  } else if (action === "delete-group") {
+    if (!groups[family][group]) throw httpError(404, "组分类不存在。");
+    const count = await usedByPuzzles(entry => entry.family === family && entry.group === group);
+    if (count) throw httpError(409, `该组分类仍关联 ${count} 个棋局，请先迁移棋局分类。`);
+    delete groups[family][group];
+  } else if (action === "delete-category") {
+    if (!groups[family][group]?.includes(category)) throw httpError(404, "子分类不存在。");
+    const count = await usedByPuzzles(entry =>
+      entry.family === family && entry.group === group && entry.category === category);
+    if (count) throw httpError(409, `该子分类仍关联 ${count} 个棋局，请先迁移棋局分类。`);
+    groups[family][group] = groups[family][group].filter(value => value !== category);
+  } else {
+    throw httpError(400, "不支持的分类操作。");
+  }
+
+  try {
+    await fs.mkdir(bankRoot, { recursive: true });
+    await saveClassificationGroups(catalogFile, groups);
+  } catch (error) {
+    if (rollbackStoredClassifications) {
+      try { await rollbackStoredClassifications(); }
+      catch (rollbackError) {
+        throw httpError(500, `${error.message}；题目分类回滚失败：${rollbackError.message}`);
+      }
+    }
+    throw error;
+  }
+  return { groups };
+}
+
+async function clearMetadataClassificationPending(item, base) {
+  if (!item.metadata) return;
+  const root = path.resolve(base);
+  const file = path.resolve(root, item.metadata);
+  if (!file.startsWith(root + path.sep)) throw httpError(500, `棋局 ${item.id} 的元数据路径无效。`);
+  const metadata = JSON.parse(await fs.readFile(file, "utf8"));
+  if (!Object.hasOwn(metadata, "classificationPending")) return;
+  delete metadata.classificationPending;
+  await writeAtomic(file, `${JSON.stringify(metadata, null, 2)}\n`);
+}
+
 async function findExactDuplicates(fen, root, customManifest) {
   const bankRoot = path.resolve(root, "../..");
   const mainManifest = JSON.parse(await fs.readFile(path.join(bankRoot, "manifest.json"), "utf8"));
@@ -112,21 +311,26 @@ async function findExactDuplicates(fen, root, customManifest) {
   return [...new Set(matches)];
 }
 
-async function validateClassificationInput(input) {
+async function validateClassificationInput(input, root = DEFAULT_BANK_ROOT) {
+  const groups = await loadClassificationGroups(root);
   const { validClassification } = await import("../../chinese-chess/academy/classification.mjs");
   if (!Array.isArray(input.classifications) || !input.classifications.length
-    || input.classifications.some(entry => !validClassification(entry))) {
+    || input.classifications.some(entry => !validClassification(entry, groups))) {
     throw httpError(400, "请选择有效的主分类和子分类。");
   }
-  const unique = new Set(input.classifications.map(entry => JSON.stringify([entry.family, entry.group, entry.category])));
-  if (unique.size !== input.classifications.length) throw httpError(400, "分类不能重复。");
+  const isPending = entry => entry.group === "待定" || entry.category === "待定";
+  const classifications = input.classifications.some(entry => !isPending(entry))
+    ? input.classifications.filter(entry => !isPending(entry))
+    : input.classifications;
+  const unique = new Set(classifications.map(entry => JSON.stringify([entry.family, entry.group, entry.category])));
+  if (unique.size !== classifications.length) throw httpError(400, "分类不能重复。");
   if (!Array.isArray(input.lessonSections) || !input.lessonSections.length
     || input.lessonSections.some(section => !["observation", "practice"].includes(section))
     || new Set(input.lessonSections).size !== input.lessonSections.length) {
     throw httpError(400, "请至少选择一个有效的课程展示入口。");
   }
   return {
-    classifications: input.classifications.map(({ family, group, category }) => ({ family, group, category })),
+    classifications: classifications.map(({ family, group, category }) => ({ family, group, category })),
     lessonSections: [...input.lessonSections]
   };
 }
@@ -134,11 +338,16 @@ async function validateClassificationInput(input) {
 async function savePuzzleClassification(input, options = {}) {
   const root = options.bankRoot || DEFAULT_BANK_ROOT;
   const id = String(input.id || "");
-  const classification = await validateClassificationInput(input);
+  const classification = await validateClassificationInput(input, root);
   const { file: customFile, data: custom } = await readManifest(root);
   const customItem = custom.categories.find(category => category.key === "custom")?.items.find(item => item.id === id);
+  const hasClassifiedClassification = classification.classifications.some(entry => entry.group !== "待定" && entry.category !== "待定");
   if (customItem) {
     Object.assign(customItem, classification);
+    if (hasClassifiedClassification) {
+      delete customItem.classificationPending;
+      await clearMetadataClassificationPending(customItem, root);
+    }
     await writeAtomic(customFile, `${JSON.stringify(custom, null, 2)}\n`);
     return { id };
   }
@@ -148,6 +357,10 @@ async function savePuzzleClassification(input, options = {}) {
   const items = manifest.categories.flatMap(category => category.items).filter(item => item.id === id);
   if (items.length !== 1) throw httpError(items.length ? 409 : 404, "棋局不存在或编号不唯一。");
   Object.assign(items[0], classification);
+  if (hasClassifiedClassification) {
+    delete items[0].classificationPending;
+    await clearMetadataClassificationPending(items[0], bankRoot);
+  }
   await writeAtomic(file, `${JSON.stringify(manifest, null, 2)}\n`);
   return { id };
 }
@@ -160,7 +373,7 @@ async function replacePuzzle(input, options = {}) {
   const title = String(input.title || "").trim();
   if (!title || title.length > 80) throw httpError(400, "棋局名称不能为空，且不能超过 80 个字符。");
   const { fen } = parseFen(input.fen);
-  const classification = await validateClassificationInput(input);
+  const classification = await validateClassificationInput(input, root);
   if (classification.classifications[0].family !== CUSTOM_TYPES[prefix]) {
     throw httpError(400, "主分类类型必须与棋局编号一致。");
   }
@@ -340,7 +553,7 @@ async function persistCustomPuzzle(input, options = {}) {
     fen
   };
   const previous = existingIndex >= 0 ? category.items[existingIndex] : null;
-  const classification = input.classifications === undefined ? {} : await validateClassificationInput(input);
+  const classification = input.classifications === undefined ? {} : await validateClassificationInput(input, root);
   if (classification.classifications && classification.classifications[0].family !== CUSTOM_TYPES[prefix]) {
     throw httpError(400, "主分类类型必须与手工棋局编号一致。");
   }
@@ -411,4 +624,8 @@ async function deleteCustomPuzzle(input, options = {}) {
   return { id, deleted: true };
 }
 
-module.exports = { persistCustomPuzzle, replacePuzzle, suggestPuzzleId, savePuzzleClassification, savePuzzleMaterial, deleteCustomPuzzle, parseFen, validateId };
+module.exports = {
+  persistCustomPuzzle, replacePuzzle, suggestPuzzleId, savePuzzleClassification,
+  savePuzzleMaterial, deleteCustomPuzzle, getClassificationCatalog,
+  updateClassificationCatalog, parseFen, validateId
+};

@@ -7,19 +7,18 @@ export const ENDGAME_GROUPS = {
   马: ['双马杀王', '马兵杀王', '马炮杀王'],
   炮: ['单炮杀王', '双炮杀王', '炮兵杀王'],
   兵卒: ['单兵杀王', '多兵杀王', '兵马杀王'],
-  组合: ['车马炮杀王', '多子杀王', '复杂残局'],
-  待定: ['待定']
+  组合: ['车马炮杀王', '多子杀王', '复杂残局']
 };
 
 export const CLASSIFICATION_GROUPS = {
   endgame: ENDGAME_GROUPS,
   attacking: ATTACKING_GROUPS,
-  tactics: { ...TACTICS_GROUPS, 待定: ['待定'] },
+  tactics: TACTICS_GROUPS,
   opening: Object.fromEntries(Object.entries(OPENING_GROUPS).map(([group, subgroups]) =>
-    [group, group === '待定' ? ['待定'] : subgroups.flatMap(subgroup => OPENING_SUBGROUPS[subgroup] || [subgroup])]))
+    [group, subgroups.flatMap(subgroup => OPENING_SUBGROUPS[subgroup] || [subgroup])]))
 };
 
-export function validClassification(value) {
+export function validClassification(value, groups = CLASSIFICATION_GROUPS) {
   return Boolean(value && typeof value === 'object'
-    && CLASSIFICATION_GROUPS[value.family]?.[value.group]?.includes(value.category));
+    && groups[value.family]?.[value.group]?.includes(value.category));
 }

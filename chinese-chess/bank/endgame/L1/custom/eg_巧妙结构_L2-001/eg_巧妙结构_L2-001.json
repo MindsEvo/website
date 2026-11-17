@@ -1,0 +1,26 @@
+{
+  "id": "eg_巧妙结构_L2-001",
+  "title": "巧妙结构",
+  "type": "endgame",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 2,
+    "h": 2,
+    "R": 0,
+    "r": 0,
+    "C": 2,
+    "c": 2,
+    "P": 3,
+    "p": 2
+  },
+  "fen": "2bak4/4a4/c3bc3/CN7/5Npn1/8P/P3Ppn2/4BA3/4KC3/3A2B2 w - - 0 1"
+}

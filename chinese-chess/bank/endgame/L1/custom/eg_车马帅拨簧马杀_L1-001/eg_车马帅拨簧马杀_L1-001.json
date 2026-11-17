@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马帅拨簧马杀_L1-001",
+  "title": "车马帅拨簧马杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 0,
+    "P": 0,
+    "p": 1
+  },
+  "fen": "2bR1ab2/9/4ka3/1N7/9/9/4n4/6r2/4p4/3K5 w - - 0 1"
+}

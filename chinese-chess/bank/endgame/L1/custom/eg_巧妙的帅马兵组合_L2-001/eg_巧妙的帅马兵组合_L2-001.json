@@ -1,0 +1,26 @@
+{
+  "id": "eg_巧妙的帅马兵组合_L2-001",
+  "title": "巧妙的帅马兵组合",
+  "type": "endgame",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 1,
+    "e": 0,
+    "H": 1,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 0,
+    "c": 0,
+    "P": 2,
+    "p": 3
+  },
+  "fen": "5k3/3Pa1P2/5a3/9/4N4/9/9/4Bp3/1p2p4/3K5 w - - 0 1"
+}

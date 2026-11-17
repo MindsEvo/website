@@ -1,5 +1,5 @@
-import { getPieceLabel, RED } from '../core.mjs';
 import { getLessonMoveFeedback } from './lesson-move-feedback.mjs';
+import { formatLastMoveNotation } from './move-notation.mjs';
 
 export function explanationContent(text) {
   return String(text).split(/#\s*END\b/i)[0].split(/\r?\n/)
@@ -118,8 +118,8 @@ export function createBoardAudio(panel, { explanation, button, onPause = () => {
   }
   function move(game, notation = '') {
     stop();
-    const { feedback, last } = effectMove(game);
-    const moveText = notation || (last ? `${last.turn === RED ? '红方' : '黑方'}${getPieceLabel(last.piece)}走棋` : '');
+    const { feedback } = effectMove(game);
+    const moveText = notation || formatLastMoveNotation(game);
     return speak([moveText, feedback.text].filter(Boolean).join('；'));
   }
   function effectMove(game) {

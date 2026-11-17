@@ -1,0 +1,26 @@
+{
+  "id": "tac_铁门栓弃子千里罩_L1-001",
+  "title": "铁门栓弃子千里罩",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 1,
+    "c": 0,
+    "P": 2,
+    "p": 3
+  },
+  "fen": "3rka3/4a4/4R1n2/p5p1p/3r5/6P2/P8/7C1/9/3AKA1R1 w - - 0 1"
+}

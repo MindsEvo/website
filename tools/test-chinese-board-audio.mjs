@@ -96,6 +96,8 @@ try {
   audio.move(game, '车五平四');
   assert.equal(tones, 3);
   assert.match(spoken.at(-1).text, /车五平四；将死，红方获胜/);
+  audio.move(game);
+  assert.match(spoken.at(-1).text, /^车五平四；将死，红方获胜/);
   voice = false;
   controls.voice.click();
   assert.ok(cancelled > 0);

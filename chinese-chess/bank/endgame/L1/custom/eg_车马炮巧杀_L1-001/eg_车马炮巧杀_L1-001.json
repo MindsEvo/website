@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马炮巧杀_L1-001",
+  "title": "车马炮巧杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 0,
+    "p": 1
+  },
+  "fen": "1n1akab2/9/4b4/3Np4/9/2C6/7R1/4B4/1r2A4/c3KAB2 w - - 0 1"
+}

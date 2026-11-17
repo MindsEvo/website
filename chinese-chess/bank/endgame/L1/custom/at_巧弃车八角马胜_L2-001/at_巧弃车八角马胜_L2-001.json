@@ -1,0 +1,26 @@
+{
+  "id": "at_巧弃车八角马胜_L2-001",
+  "title": "巧弃车八角马胜",
+  "type": "attacking",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 1,
+    "E": 1,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 2
+  },
+  "fen": "2ba5/5k3/3Nb1P2/9/9/6R2/9/4B4/1r1p1p3/4K4 w - - 0 1"
+}

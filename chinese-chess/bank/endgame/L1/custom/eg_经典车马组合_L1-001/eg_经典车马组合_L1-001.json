@@ -1,0 +1,26 @@
+{
+  "id": "eg_经典车马组合_L1-001",
+  "title": "经典车马组合",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 1,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "2baka3/5P3/4b3N/1R7/9/9/9/9/5p1r1/3AK3c w - - 0 1"
+}

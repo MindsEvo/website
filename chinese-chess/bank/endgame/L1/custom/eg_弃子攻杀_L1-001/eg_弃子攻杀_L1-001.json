@@ -1,0 +1,26 @@
+{
+  "id": "eg_弃子攻杀_L1-001",
+  "title": "弃子攻杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 2,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 0,
+    "P": 0,
+    "p": 2
+  },
+  "fen": "2ba1kb2/3Ra4/9/8N/8N/9/9/2n5r/3p1p3/4K4 w - - 0 1"
+}

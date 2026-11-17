@@ -7,8 +7,7 @@ export const TACTICS_GROUPS = {
   兑子类战术: ['先手兑子', '不等价兑换', '兑子取势', '兑子'],
   谋子类战术: ['围困得子', '借杀得子', '借将得子'],
   空间控制战术: ['控制要道', '封锁将门', '压制边线', '困毙'],
-  特殊战术组合: ['解杀还杀', '借炮使马', '车炮脱根', '冷着偷袭', '腾挪闪身'],
-  待定: []
+  特殊战术组合: ['解杀还杀', '借炮使马', '车炮脱根', '冷着偷袭', '腾挪闪身']
 };
 
 export const TACTICS_CATEGORIES = {
@@ -37,11 +36,18 @@ export const TACTICS_SOURCE_LABELS = {
   shuangchongweixie: '双威', duizi: '兑子', qizi: '弃子'
 };
 
-export function selectTacticsPuzzles(manifest, name) {
+export function selectTacticsPuzzles(manifest, name, groupName) {
+  const items = manifest.categories.flatMap(category => category.items.map(puzzle => ({ puzzle, family: category.family, category })));
+  if (name === '待定') return items.filter(({ puzzle, family }) => family === 'tactics'
+    && (puzzle.namingPending || puzzle.classificationPending)).map(({ puzzle }) => puzzle);
   const keys = TACTICS_CATEGORIES[name];
-  if (!keys && name !== '待定' && !Object.values(TACTICS_GROUPS).some(group => group.includes(name))) throw new Error(`未知战术：${name}`);
-  return manifest.categories.flatMap(category => category.items.filter(puzzle =>
-    explicitClassificationMatches(puzzle, 'tactics', name) ?? (category.family === 'tactics'
-      && (name === '待定' ? puzzle.namingPending || puzzle.classificationPending
-        : keys?.includes(category.key.split('/').at(-1)) && !puzzle.classificationPending))));
+  const explicitlyMatches = puzzle => puzzle.classifications?.some(entry => entry.family === 'tactics'
+    && entry.category === name && (!groupName || entry.group === groupName));
+  if (!keys) return items.filter(({ puzzle }) => explicitlyMatches(puzzle))
+    .map(({ puzzle }) => puzzle);
+  return items.filter(({ puzzle, family, category }) => (groupName
+    ? explicitlyMatches(puzzle)
+    : explicitClassificationMatches(puzzle, 'tactics', name))
+    ?? (family === 'tactics' && keys.includes(category.key.split('/').at(-1)) && !puzzle.classificationPending))
+    .map(({ puzzle }) => puzzle);
 }

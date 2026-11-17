@@ -167,8 +167,8 @@ is preserved rather than choosing a pawn arbitrarily.
 
 `chinese-chess/academy/tactics/index.html` reuses the endgame lesson controller,
 standard board, material panels and in-page modes. All three sections use the same
-7 group buttons and 24 tactic submenus. Only observation connects the 43 indexed
-positions from the original 13 categories. Related old categories are explicitly
+7 group buttons and 28 tactic submenus. Only observation connects the 55 indexed
+positions from the original 17 categories. Related old categories are explicitly
 labelled as reference positions, not as verified examples of the narrower new
 tactics; unmatched tactics show unconnected placeholders.
 Practice and question practice show unconnected placeholders; their separate
@@ -186,21 +186,20 @@ node web\tools\test-chinese-tactics.mjs
 
 `chinese-chess/academy/attacking/index.html` uses the same standard board, controls,
 material panels and lesson controller as basic tactics. Observation, practice and
-question practice share five teaching groups and 24 method submenus. The groups
+question practice share five teaching groups and 25 method submenus. The groups
 are a child-oriented learning sequence, not a universal technical classification.
 Observation menus include each unit's guiding question and each method's core knowledge.
 `attacking-catalog.mjs` keeps each method's independent RootGene ID separate from
 its teaching group and the original puzzle ID.
 
 Only observation connects puzzles. Title matching across all attacking levels
-currently connects 19 methods to 43 unique positions; combined-method positions
-may appear under more than one method. Original titles and files are preserved,
+connects classified methods to their positions; combined-method positions may
+appear under more than one method. Original titles and files are preserved,
 including the source spellings `空头跑`, `高掉马` and `重跑` matched by explicit aliases.
-Eight-corner horse, rook-horse surprise, rook-cannon extraction, bold central
-penetration and three pawn advances remain unconnected; unrelated positions such
-as `大刀剜心` are not silently substituted. The connected positions provide 12
-legally validated solution variants; 32 other selected solution files are only
-placeholders and cannot be played. Missing explanations are explicitly indicated.
+`大刀剜心` is the canonical name for the formerly labeled `大胆穿心` custom puzzle;
+the existing `大刀剜心` L2 positions are classified under the same method. The
+connected positions provide 12 legally validated solution variants; placeholder
+solution files cannot be played. Missing explanations are explicitly indicated.
 
 Practice and question practice remain placeholders. The proposed four training
 levels (recognition, finding the method, completing mate and variation application)

@@ -1,0 +1,26 @@
+{
+  "id": "at_大刀剜心臣压君_L2-001",
+  "title": "大刀剜心臣压君",
+  "type": "attacking",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 0,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 1,
+    "c": 2,
+    "P": 0,
+    "p": 1
+  },
+  "fen": "4ka3/1R2aR3/2n1bc2b/9/6r2/9/4cp1C1/4B4/3rA4/2BAK4 w - - 0 1"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "tac_巧妙的弃子引离_L1-001",
+  "title": "巧妙的弃子引离",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 0,
+    "e": 1,
+    "H": 0,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 0,
+    "c": 1,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "1R4b2/3kaR3/2P1ca3/9/9/9/9/6n2/3r5/3AKAr2 w - - 0 1"
+}

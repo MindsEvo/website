@@ -1,0 +1,26 @@
+{
+  "id": "tac_弃子突破臣压君_L2-001",
+  "title": "弃子突破臣压君",
+  "type": "tactics",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 0,
+    "E": 0,
+    "e": 2,
+    "H": 0,
+    "h": 0,
+    "R": 2,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 1,
+    "p": 2
+  },
+  "fen": "2b1k4/R7r/4b4/9/9/1R7/4P4/C8/2pp5/c3K4 w - - 0 1"
+}

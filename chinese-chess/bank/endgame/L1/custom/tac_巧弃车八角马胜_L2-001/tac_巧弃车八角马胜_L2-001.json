@@ -1,0 +1,26 @@
+{
+  "id": "tac_巧弃车八角马胜_L2-001",
+  "title": "巧弃车八角马胜",
+  "type": "tactics",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 2,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 0,
+    "p": 3
+  },
+  "fen": "2bakab2/7R1/9/N8/3R5/3C5/4p4/6n2/3p1pr2/4K3c w - - 0 1"
+}

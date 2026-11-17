@@ -17,11 +17,14 @@ import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { getCoursePuzzleLevel } from '../academy/course-puzzle-levels.mjs';
 import { findPositionDuplicates } from '../shared/position-duplicates.mjs';
 import { CLASSIFICATION_GROUPS, validClassification } from '../academy/classification.mjs';
+import { fetchClassificationGroups, mutateClassificationCatalog } from '../shared/classification-catalog.mjs';
 import { selectAttackingPuzzles } from '../academy/attacking/attacking-catalog.mjs';
 import { selectTacticsPuzzles } from '../academy/tactics/tactics-catalog.mjs';
 import { selectOpeningPuzzles } from '../academy/opening/opening-catalog.mjs';
 import { parsePuzzleName } from './puzzle-name.mjs';
 import { readServiceResponse } from './service-response.mjs';
+import { formatPuzzleClassification } from './classification-label.mjs';
+import { DEFAULT_ENGINE_SETTINGS } from '../shared/engine-defaults.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -40,6 +43,9 @@ const relatedCategories = document.getElementById('relatedCategories');
 const bankTree = document.getElementById('bankTree');
 const bankSearch = document.getElementById('bankSearch');
 const TYPES = { endgame: { prefix: 'eg', label: '残局基础' }, attacking: { prefix: 'at', label: '基本攻杀' }, tactics: { prefix: 'tac', label: '基本战术' }, opening: { prefix: 'oc', label: '开局' } };
+let classificationGroups = Object.fromEntries(Object.entries(CLASSIFICATION_GROUPS).map(([family, groups]) => [
+  family, Object.fromEntries(Object.entries(groups).map(([group, categories]) => [group, [...categories]]))
+]));
 
 let board = createInitialBoard();
 let turn = RED;
@@ -139,10 +145,21 @@ for (const button of document.querySelectorAll('[data-palette-side]')) {
     setStatus(`已切换为${paletteSide === RED ? '红方' : '黑方'}，请选择棋子。`, 'ready');
   });
 }
-geneType.addEventListener('change', () => { changeGeneSelection(); populateGroups(); });
+geneType.addEventListener('change', () => {
+  changeGeneSelection();
+  populateGroups();
+});
 geneLevel.addEventListener('change', changeGeneSelection);
 geneGroup.addEventListener('change', populateCategories);
 bankSearch.addEventListener('input', renderDirectory);
+for (const [id, action] of [
+  ['addClassificationGroup', 'add-group'],
+  ['addClassificationCategory', 'add-category'],
+  ['renameClassificationGroup', 'rename-group'],
+  ['renameClassificationCategory', 'rename-category'],
+  ['deleteClassificationGroup', 'delete-group'],
+  ['deleteClassificationCategory', 'delete-category']
+]) document.getElementById(id).addEventListener('click', () => manageClassification(action));
 
 renderPalette();
 populateRelatedCategories();
@@ -150,17 +167,18 @@ populateGroups();
 updateNameFormat();
 renderBoard();
 loadCustomBank();
+refreshClassificationGroups().catch(error => setStatus(`分类目录载入失败：${error.message}`, 'error'));
 
 function populateGroups(selected = '') {
   geneGroup.replaceChildren(new Option('请选择组分类', ''));
-  for (const group of Object.keys(CLASSIFICATION_GROUPS[geneType.value])) geneGroup.add(new Option(group, group));
+  for (const group of Object.keys(classificationGroups[geneType.value] || {})) geneGroup.add(new Option(group, group));
   geneGroup.value = selected;
   populateCategories();
 }
 
 function populateCategories(selected = '') {
   geneCategory.replaceChildren(new Option('请选择子分类', ''));
-  for (const category of CLASSIFICATION_GROUPS[geneType.value][geneGroup.value] || []) {
+  for (const category of classificationGroups[geneType.value]?.[geneGroup.value] || []) {
     geneCategory.add(new Option(category, category));
   }
   geneCategory.value = selected;
@@ -168,7 +186,7 @@ function populateCategories(selected = '') {
 
 function populateRelatedCategories(selected = []) {
   relatedCategories.replaceChildren();
-  for (const [family, groups] of Object.entries(CLASSIFICATION_GROUPS)) {
+  for (const [family, groups] of Object.entries(classificationGroups)) {
     const optgroup = document.createElement('optgroup');
     optgroup.label = TYPES[family].label;
     for (const [group, categories] of Object.entries(groups)) {
@@ -185,23 +203,78 @@ function populateRelatedCategories(selected = []) {
 
 function selectedClassification() {
   const primary = { family: geneType.value, group: geneGroup.value, category: geneCategory.value };
-  if (!validClassification(primary)) throw new Error('请选择主分类的组分类和子分类。');
+  if (!validClassification(primary, classificationGroups)) throw new Error('请选择主分类的组分类和子分类。');
   const related = [...relatedCategories.selectedOptions].map(option => JSON.parse(option.value))
     .filter(entry => JSON.stringify(entry) !== JSON.stringify(primary));
   const lessonSections = [geneLevel.value === 'L1' ? 'observation' : 'practice'];
   return { classifications: [primary, ...related], lessonSections };
 }
 
+async function refreshClassificationGroups(selection = {}) {
+  classificationGroups = await fetchClassificationGroups();
+  populateGroups(selection.group ?? geneGroup.value);
+  if (selection.category !== undefined) populateCategories(selection.category);
+  populateRelatedCategories(selection.related || []);
+  renderDirectory();
+}
+
+async function manageClassification(action) {
+  const family = geneType.value;
+  const group = geneGroup.value;
+  const category = geneCategory.value;
+  const change = { action, family, group, category };
+  if (action === 'add-group') {
+    change.group = window.prompt('新组分类名称');
+    if (!change.group) return;
+    change.category = window.prompt('该组的第一个子分类名称');
+    if (!change.category) return;
+  } else if (action === 'add-category') {
+    if (!group) return setStatus('请先选择组分类。', 'warning');
+    change.category = window.prompt(`在“${group}”下新增子分类`);
+    if (!change.category) return;
+  } else if (action.startsWith('rename-')) {
+    const current = action === 'rename-group' ? group : category;
+    if (!current) return setStatus(action === 'rename-group' ? '请先选择组分类。' : '请先选择子分类。', 'warning');
+    change.name = window.prompt('输入新的分类名称', current);
+    if (!change.name || change.name === current) return;
+  } else {
+    const current = action === 'delete-group' ? group : category;
+    if (!current) return setStatus(action === 'delete-group' ? '请先选择组分类。' : '请先选择子分类。', 'warning');
+    if (!window.confirm(`删除“${current}”？若仍有棋局关联，系统会阻止删除。`)) return;
+  }
+  try {
+    const groups = await mutateClassificationCatalog(change);
+    classificationGroups = groups;
+    const nextGroup = action === 'rename-group' ? change.name : group;
+    const nextCategory = action === 'rename-category' ? change.name : category;
+    populateGroups(groups[family][nextGroup] ? nextGroup : '');
+    populateCategories(groups[family][nextGroup]?.includes(nextCategory) ? nextCategory : '');
+    const related = [...relatedCategories.selectedOptions].map(option => JSON.parse(option.value));
+    populateRelatedCategories(related.filter(entry => groups[entry.family]?.[entry.group]?.includes(entry.category)));
+    await loadCustomBank();
+    if (materialPuzzle && bankManifest) {
+      const current = bankManifest.categories.flatMap(entry => entry.items).find(item => item.id === materialPuzzle.id);
+      if (current) materialPuzzle = current;
+    }
+    setStatus('分类目录已更新，并同步到题库目录和教学分类。', 'success');
+  } catch (error) {
+    setStatus(`分类维护失败：${error.message}`, 'error');
+  }
+}
+
 function inferClassification(category, item) {
+  if (item.classifications?.length) {
+    return item.classifications.find(entry => validClassification(entry, classificationGroups)) || null;
+  }
   const family = category.family;
   if (family === 'endgame') {
     const groups = { rook: '车', horse: '马', cannon: '炮', pawn: '兵卒' };
-    const group = item.classificationPending ? '待定' : groups[category.key.split('/').at(-1)] || '组合';
-    return { family, group, category: group === '待定' ? '待定' : '' };
+    const group = groups[category.key.split('/').at(-1)] || '组合';
+    return { family, group, category: '' };
   }
   const selector = { attacking: selectAttackingPuzzles, tactics: selectTacticsPuzzles, opening: selectOpeningPuzzles }[family];
   if (!selector) return null;
-  for (const [group, names] of Object.entries(CLASSIFICATION_GROUPS[family])) {
+  for (const [group, names] of Object.entries(classificationGroups[family] || {})) {
     for (const name of names) {
       if (selector(bankManifest, name).some(puzzle => puzzle.id === item.id)) return { family, group, category: name };
     }
@@ -240,7 +313,6 @@ function renderBoard() {
       if (piece && piece === feedback?.checkedKing) square.classList.add('gene-check');
       if (piece && piece === feedback?.losingKing) square.classList.add('gene-loser');
       if (piece?.toUpperCase() === 'K' && feedback?.state.winner && piece !== feedback.losingKing) square.classList.add('gene-winner');
-      square.disabled = loadingPuzzle || ((mode !== 'manual' || recording) && (finished || engineThinking || mode === 'ai-ai' || (mode === 'human-ai' && game.turn !== humanSide)));
       if (isCannonStartPosition(row, col)) appendStandardPositionMark(square, row, col, 'cannon-marker');
       if (isPawnStartPosition(row, col)) appendStandardPositionMark(square, row, col, 'pawn-marker');
       if (piece) square.append(createStandardPieceElement(piece, getPieceLabel(piece), 'gene-piece'));
@@ -248,14 +320,26 @@ function renderBoard() {
     }
   }
   document.querySelector('.gene-side-label').textContent = `${turn === RED ? '红方' : '黑方'}走棋`;
-  panel.controls.play.disabled = mode === 'manual' || Boolean(finished) || loadingPuzzle;
+  updateBoardControls(Boolean(finished));
+  if (recording) updateRecording();
+}
+
+function updateBoardControls(finished) {
+  if (finished === undefined) {
+    const feedback = mode === 'manual' && !recording ? null : getLessonMoveFeedback(game);
+    finished = Boolean(feedback && ['checkmate', 'stalemate', 'invalid'].includes(feedback.state.type));
+  }
+  for (const square of boardElement.querySelectorAll('.gene-intersection')) {
+    square.disabled = loadingPuzzle || ((mode !== 'manual' || recording)
+      && (finished || engineThinking || mode === 'ai-ai' || (mode === 'human-ai' && game.turn !== humanSide)));
+  }
+  panel.controls.play.disabled = mode === 'manual' || finished || loadingPuzzle;
   panel.controls.undo.disabled = !game.history.length || engineThinking || loadingPuzzle;
   panel.controls.redo.disabled = !game.redoStack.length || engineThinking || loadingPuzzle;
   panel.setPlaying(running);
   for (const button of [...paletteButtons, firstMoverButton, ...document.querySelectorAll('[data-palette-side]')]) {
     button.disabled = mode !== 'manual' || recording || loadingPuzzle;
   }
-  if (recording) updateRecording();
 }
 
 function handleBoardClick(event) {
@@ -469,7 +553,12 @@ async function checkPositionDuplicates(fen, excludeId = '') {
     const row = document.createElement('div');
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = `载入${exact ? '相同' : '行棋方不同'}棋局：${item.title} · ${item.id}`;
+    const classification = formatPuzzleClassification(category, item, inferClassification, Object.fromEntries(
+      Object.entries(TYPES).map(([family, type]) => [family, type.label])
+    ));
+    button.textContent = `${exact ? '相同局面' : '行棋方不同'}：${classification} · ${item.title} · ${item.id}`;
+    button.setAttribute('aria-label', `载入${exact ? '相同' : '行棋方不同'}局面：${classification} · ${item.title} · ${item.id}`);
+    button.title = `点击载入 ${item.id}`;
     button.addEventListener('click', () => loadSavedPuzzle(category, item));
     row.append(button);
     if (exact) {
@@ -520,7 +609,6 @@ async function savePuzzle() {
 async function savePuzzleWhileBusy() {
   cancelEngine();
   audio.stop();
-  renderBoard();
   let position;
   try { position = validateBoard(); }
   catch (error) { setStatus(error.message, 'error'); return; }
@@ -562,7 +650,16 @@ async function savePuzzleWhileBusy() {
       const category = bankManifest.categories.find(entry => entry.items.some(item => item.id === result.id));
       const item = category?.items.find(entry => entry.id === result.id);
       if (!item) throw new Error(`替换已保存，但目录未找到 ${result.id}，请刷新页面。`);
-      await loadSavedPuzzle(category, item);
+      selectedSavedId = result.id;
+      selectedPuzzleId = result.id;
+      materialPuzzle = { ...item, rootGene: 'manual' };
+      for (const key of ['solutions', 'explanations']) {
+        materialPuzzle[key] = (item[key] || []).map(file => `endgame/L1/${file}`);
+      }
+      materialFen = position.fen;
+      gameOriginFen = position.fen;
+      updateMaterialVersions();
+      await loadMaterials(0);
       setStatus(`已用 ${result.id} 替换 ${result.replacedId}，并按分类和级别加入专题。`, 'success');
       return;
     }
@@ -772,6 +869,7 @@ function cancelEngine() {
   engineThinking = false;
   running = false;
   panel.setPlaying(false);
+  updateBoardControls();
 }
 
 function clearSelection() {
@@ -877,7 +975,7 @@ async function requestEngineMove() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: engineAbort.signal,
-      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: { threads: 1, hash: 128, depth: 12, movetime: 1000, multiPv: 1 } })
+      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: DEFAULT_ENGINE_SETTINGS })
     });
     const result = await response.json();
     if (token !== engineToken) return;
@@ -905,6 +1003,7 @@ function stopRecording() {
   recording = false;
   recordButton.textContent = '开始记录';
   recordButton.classList.remove('recording');
+  updateBoardControls();
 }
 
 function invalidateMaterials() {
@@ -976,7 +1075,6 @@ async function loadMaterials(index) {
   if (!puzzle) return;
   stopRecording();
   audio.stop();
-  renderBoard();
   await Promise.all(['solution', 'explanation'].map(async kind => {
     const editor = kind === 'solution' ? solutionText : explanationText;
     const status = kind === 'solution' ? solutionStatus : explanationStatus;
@@ -1002,7 +1100,6 @@ async function saveMaterial(kind) {
   cancelEngine();
   if (recording) updateRecording();
   stopRecording();
-  renderBoard();
   const status = kind === 'solution' ? solutionStatus : explanationStatus;
   const text = (kind === 'solution' ? solutionText : explanationText).value.trim();
   if (!text) { status.textContent = '保存内容不能为空。'; return; }

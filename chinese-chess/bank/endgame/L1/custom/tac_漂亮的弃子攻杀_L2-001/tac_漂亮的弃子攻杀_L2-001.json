@@ -1,0 +1,26 @@
+{
+  "id": "tac_漂亮的弃子攻杀_L2-001",
+  "title": "漂亮的弃子攻杀",
+  "type": "tactics",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 0,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 2,
+    "c": 2,
+    "P": 3,
+    "p": 2
+  },
+  "fen": "3cka3/4a4/2R1b4/p7p/6b2/4CcP2/P3r3P/4B4/4A4/2B1KAC2 w - - 0 1"
+}

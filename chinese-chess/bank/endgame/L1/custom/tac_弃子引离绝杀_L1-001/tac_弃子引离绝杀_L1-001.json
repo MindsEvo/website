@@ -1,0 +1,26 @@
+{
+  "id": "tac_弃子引离绝杀_L1-001",
+  "title": "弃子引离绝杀",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 1,
+    "h": 2,
+    "R": 2,
+    "r": 2,
+    "C": 2,
+    "c": 2,
+    "P": 4,
+    "p": 5
+  },
+  "fen": "1Cbakab2/9/2n1cc2n/p1p1p1p1p/9/3R5/P1C1P1PrP/N5r2/9/1RBAKAB2 w - - 0 1"
+}

@@ -57,15 +57,16 @@
       <aside class="human-ai-settings" aria-label="人机对弈设置">
         <section class="ai-setting-box analysis-settings">
           <h2><span aria-hidden="true">🎯</span> 分析设置</h2>
-          <label class="ai-setting-row"><span>深度:</span><select id="humanDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
-          <label class="ai-setting-row"><span>候选:</span><select id="humanMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
-          <label class="ai-setting-row"><span>难度:</span><select id="humanSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
+          <label class="ai-setting-row"><span>深度:</span><select id="humanDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12">12 层</option><option value="15" selected>15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="humanMultiPv"><option value="1" selected>1 条</option><option value="3">3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>难度:</span><select id="humanSkill"><option value="8">入门</option><option value="14">中等</option><option value="20" selected>高级</option></select></label>
         </section>
         <section class="ai-setting-box engine-settings">
           <h2><span aria-hidden="true">⚡</span> 引擎设置</h2>
-          <label class="ai-setting-row"><span>时间:</span><select id="humanMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+          <label class="ai-setting-row"><span>时间:</span><select id="humanMoveTime"><option value="500">0.5 秒</option><option value="1000">1 秒</option><option value="2000">2 秒</option><option value="5000" selected>5 秒</option></select></label>
           <label class="ai-setting-row"><span>风格:</span><select id="humanStyle"><option value="balanced" selected>均衡</option><option value="active">积极</option><option value="solid">稳健</option></select></label>
         </section>
+        <p>默认优先搜索最佳着法：高级、15 层、最多 5 秒、1 条候选；可手动调整。达到深度或时间上限即结束搜索，结果不保证为正解。</p>
         <p class="engine-unavailable" id="humanEngineStatus">连接 Pikafish 引擎中...</p>
       </aside>
     </div>

@@ -1,0 +1,26 @@
+{
+  "id": "at_精彩的双杯献酒_L1-001",
+  "title": "精彩的双杯献酒",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 1,
+    "e": 2,
+    "H": 0,
+    "h": 1,
+    "R": 0,
+    "r": 1,
+    "C": 2,
+    "c": 0,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "2b1ka3/4a4/4b1n2/6C1C/9/6P2/9/4B4/3p1r3/4K4 w - - 0 1"
+}

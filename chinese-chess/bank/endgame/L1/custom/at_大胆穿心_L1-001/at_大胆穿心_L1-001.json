@@ -1,0 +1,26 @@
+{
+  "id": "at_大胆穿心_L1-001",
+  "title": "大胆穿心",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 0,
+    "h": 0,
+    "R": 2,
+    "r": 2,
+    "C": 1,
+    "c": 2,
+    "P": 0,
+    "p": 0
+  },
+  "fen": "2b1ka3/2R1a2R1/3cb4/8C/9/6r2/9/c8/4Ar3/3AK4 w - - 0 1"
+}

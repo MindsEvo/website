@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马巧思绝杀_L1-002",
+  "title": "车马巧思绝杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 2,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 1,
+    "e": 1,
+    "H": 1,
+    "h": 2,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 1,
+    "P": 0,
+    "p": 1
+  },
+  "fen": "5ab2/3ka4/2R1n4/2Nc5/9/9/9/4B4/2r1Apn2/3AK4 w - - 0 1"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马炮组合杀_L1-001",
+  "title": "车马炮组合杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 2,
+    "C": 1,
+    "c": 2,
+    "P": 0,
+    "p": 0
+  },
+  "fen": "2bak3C/4aR3/4b3N/9/9/9/9/2n1c4/3r1r3/c3KA3 w - - 0 1"
+}

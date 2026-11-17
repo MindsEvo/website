@@ -1,0 +1,26 @@
+{
+  "id": "at_弃子引入钓鱼马_L1-001",
+  "title": "弃子引入钓鱼马",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 0,
+    "e": 1,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "3aka3/5P3/4b4/r3N4/9/9/8R/2n6/9/4KA3 w - - 0 1"
+}

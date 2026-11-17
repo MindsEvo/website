@@ -1,0 +1,26 @@
+{
+  "id": "at_精彩的马后炮绝杀_L1-001",
+  "title": "精彩的马后炮绝杀",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 0,
+    "H": 1,
+    "h": 0,
+    "R": 0,
+    "r": 1,
+    "C": 2,
+    "c": 0,
+    "P": 0,
+    "p": 2
+  },
+  "fen": "2Ck1a3/4a4/9/5N3/9/9/8r/3C5/2p1p4/3K5 w - - 0 1"
+}

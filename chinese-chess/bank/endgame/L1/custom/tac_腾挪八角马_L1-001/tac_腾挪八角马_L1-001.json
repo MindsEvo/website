@@ -1,0 +1,26 @@
+{
+  "id": "tac_腾挪八角马_L1-001",
+  "title": "腾挪八角马",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 2,
+    "r": 2,
+    "C": 0,
+    "c": 1,
+    "P": 0,
+    "p": 3
+  },
+  "fen": "2b1kab2/2r1aR3/c1r1RN3/9/9/9/9/4p4/3p1p3/4K4 w - - 0 1"
+}

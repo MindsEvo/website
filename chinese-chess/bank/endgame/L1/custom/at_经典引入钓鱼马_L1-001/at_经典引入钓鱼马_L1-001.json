@@ -1,0 +1,26 @@
+{
+  "id": "at_经典引入钓鱼马_L1-001",
+  "title": "经典引入钓鱼马",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 1,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "4k4/3Pa4/4b4/9/2b2N3/7R1/9/9/2rp5/4K4 w - - 0 1"
+}

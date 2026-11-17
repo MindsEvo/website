@@ -1,0 +1,26 @@
+{
+  "id": "at_独特的结构巧妙的思维_L2-001",
+  "title": "独特的结构巧妙的思维",
+  "type": "attacking",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 0,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 2,
+    "c": 1,
+    "P": 4,
+    "p": 4
+  },
+  "fen": "2Ck2bc1/1R2a1R2/3ab4/p3p3p/2p6/P1C6/1nP1P3P/1r2B3B/4Ar3/3K1A3 w - - 0 1"
+}

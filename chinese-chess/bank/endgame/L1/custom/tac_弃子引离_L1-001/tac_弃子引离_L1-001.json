@@ -1,0 +1,26 @@
+{
+  "id": "tac_弃子引离_L1-001",
+  "title": "弃子引离",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 0,
+    "c": 2,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "4kab2/4a4/2N1b2c1/9/9/1R3RP2/2rc3r1/4B4/2n1A4/2BA1K3 w - - 0 1"
+}

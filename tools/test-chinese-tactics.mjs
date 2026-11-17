@@ -8,12 +8,12 @@ const bank = new URL('../chinese-chess/bank/', import.meta.url);
 const manifest = JSON.parse(await readFile(new URL('manifest.json', bank), 'utf8'));
 assert.equal(Object.keys(TACTICS_GROUPS).length, 7);
 const tactics = Object.values(TACTICS_GROUPS).flat();
-assert.equal(tactics.length, 24);
-assert.equal(new Set(tactics).size, 24);
+assert.equal(tactics.length, 28);
+assert.equal(new Set(tactics).size, 28);
 for (const tactic of Object.keys(TACTICS_CATEGORIES)) assert.ok(tactics.includes(tactic));
 const names = Object.values(TACTICS_CATEGORIES).flat();
-assert.equal(names.length, 13);
-assert.equal(new Set(names).size, 13);
+assert.equal(names.length, 17);
+assert.equal(new Set(names).size, 17);
 let count = 0;
 let placeholders = 0;
 for (const name of names) {
@@ -32,6 +32,6 @@ for (const name of names) {
     count += 1;
   }
 }
-assert.equal(count, 43);
+assert.equal(count, 55);
 assert.equal(notationContent('// 1. 车一平二 将5退1\n# END'), '');
-console.log(`Validated 7 groups, 24 tactics, 13 source categories, ${count} positions and ${placeholders} explicitly unfilled solution files.`);
+console.log(`Validated 7 groups, 28 tactics, 17 source categories, ${count} positions and ${placeholders} explicitly unfilled solution files.`);

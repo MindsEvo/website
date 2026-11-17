@@ -1,0 +1,26 @@
+{
+  "id": "at_弃车白脸钓鱼马_L1-001",
+  "title": "弃车白脸钓鱼马",
+  "type": "attacking",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "1R1ak1b2/4aR3/4b4/4N4/9/9/2P5r/6r2/4AK1n1/3A5 w - - 0 1"
+}

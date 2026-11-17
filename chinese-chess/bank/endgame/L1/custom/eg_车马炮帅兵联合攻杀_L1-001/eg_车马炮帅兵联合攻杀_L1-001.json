@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马炮帅兵联合攻杀_L1-001",
+  "title": "车马炮帅兵联合攻杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 1,
+    "E": 0,
+    "e": 0,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 1,
+    "p": 2
+  },
+  "fen": "3k5/2P1a3c/3N5/9/9/5R3/9/6r2/2p2p3/1C2K2n1 w - - 0 1"
+}

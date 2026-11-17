@@ -246,6 +246,24 @@ app.post("/api/v1/chinese-chess/root-gene/next-id", async (req, res) => {
   }
 });
 
+app.get("/api/v1/chinese-chess/classifications", async (req, res) => {
+  try {
+    const result = await ChineseChessRootGeneService.getClassificationCatalog();
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
+app.post("/api/v1/chinese-chess/classifications", async (req, res) => {
+  try {
+    const result = await mutateRootGene(() => ChineseChessRootGeneService.updateClassificationCatalog(req.body || {}));
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(Number(error.status) || 500).json({ ok: false, error: error.message || String(error) });
+  }
+});
+
 app.put("/api/v1/chinese-chess/root-gene/puzzle/:id/classification", async (req, res) => {
   try {
     const result = await mutateRootGene(() => ChineseChessRootGeneService.savePuzzleClassification({ ...(req.body || {}), id: req.params.id }));

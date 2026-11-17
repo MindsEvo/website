@@ -14,7 +14,9 @@ import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
 import { createBoardAudio } from '../../shared/board-audio.mjs';
 import { getCoursePuzzleLevel, selectCoursePuzzlesForSection } from '../course-puzzle-levels.mjs';
 import { loadPuzzleBank } from '../../shared/puzzle-bank.mjs';
-import { ENDGAME_GROUPS } from '../classification.mjs';
+import { DEFAULT_ENGINE_SETTINGS } from '../../shared/engine-defaults.mjs';
+import { CLASSIFICATION_GROUPS, ENDGAME_GROUPS } from '../classification.mjs';
+import { fetchClassificationGroups } from '../../shared/classification-catalog.mjs';
 
 const ENDGAME_TYPES = ENDGAME_GROUPS;
 const SECTION_LABELS = { observation: '动态观察', practice: '操作练习', quiz: '问答练习' };
@@ -43,12 +45,14 @@ let duelRunning = false;
 let engineTimer;
 const variantSelect = document.getElementById('endgameSolutionVariant');
 let course;
+let activeClassificationGroups = ENDGAME_GROUPS;
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
 
 export function initEndgamePage(config) {
   course = config;
+  activeClassificationGroups = config?.groups || ENDGAME_GROUPS;
   renderBoard();
   for (const row of document.querySelectorAll('.endgame-menus')) renderMenus(row);
   panel = mountBoardControlPanel(document.getElementById('boardToolbar'), {
@@ -155,13 +159,23 @@ export function initEndgamePage(config) {
       document.getElementById('endgameAudienceDialog').showModal();
     });
   }
+  fetchClassificationGroups().then(groups => {
+    const family = config?.classificationFamily || 'endgame';
+    activeClassificationGroups = groups[family] || CLASSIFICATION_GROUPS[family];
+    if (config) course = { ...config, groups: activeClassificationGroups };
+    for (const row of document.querySelectorAll('.endgame-menus')) row.replaceChildren();
+    menus.length = 0;
+    for (const row of document.querySelectorAll('.endgame-menus')) renderMenus(row);
+  }).catch(error => {
+    status.textContent = `扩展分类载入失败：${error.message}`;
+  });
   variantSelect.addEventListener('change', () => loadVariant(Number(variantSelect.value)));
 }
 
 function renderMenus(row) {
   row.replaceChildren();
   const section = row.dataset.section;
-  for (const [piece, types] of Object.entries(course?.groups || course?.categories || ENDGAME_TYPES)) {
+  for (const [piece, types] of Object.entries(course?.groups || course?.categories || activeClassificationGroups || ENDGAME_TYPES)) {
     if (section === 'quiz' && ((!course && piece === '待定') || piece === course?.pendingGroup)) continue;
     const menu = document.createElement('details');
     menu.className = 'endgame-menu';
@@ -171,7 +185,7 @@ function renderMenus(row) {
     const options = document.createElement('div');
     options.className = 'endgame-menu-options';
     if (course?.groups && piece !== course.pendingGroup) {
-      renderCourseOptions(options, types, section);
+      renderCourseOptions(options, types, section, piece);
     } else if (['observation', 'practice'].includes(section)
       && (course || ['车', '马', '炮', '兵卒', '组合', '待定'].includes(piece))) {
       options.textContent = '载入棋局中…';
@@ -221,7 +235,7 @@ function renderMenus(row) {
   }
 }
 
-function renderCourseOptions(options, types, section) {
+function renderCourseOptions(options, types, section, groupName) {
   for (const type of types) {
     const children = course.subgroups?.[type];
     const submenu = document.createElement('details');
@@ -232,11 +246,11 @@ function renderCourseOptions(options, types, section) {
     const content = document.createElement('div');
     content.className = 'endgame-puzzle-list';
     if (children) {
-      renderCourseOptions(content, children, section);
+      renderCourseOptions(content, children, section, groupName);
     } else if (['observation', 'practice'].includes(section) && (course.selectPuzzles || course.categories[type]?.length)) {
       content.textContent = '载入棋局中…';
       const loadOptions = () => {
-        if (!content.dataset.loaded) loadCoursePuzzles(content, type, section);
+        if (!content.dataset.loaded) loadCoursePuzzles(content, type, section, groupName);
       };
       submenu.addEventListener('toggle', () => { if (submenu.open) loadOptions(); });
       submenu.addEventListener('pointerenter', loadOptions);
@@ -317,7 +331,7 @@ async function fetchText(file) {
   return response.text();
 }
 
-async function loadCoursePuzzles(list, piece, section) {
+async function loadCoursePuzzles(list, piece, section, groupName) {
   list.dataset.loaded = 'loading';
   try {
     const manifest = await loadPuzzleBank(BANK_URL.href);
@@ -328,7 +342,7 @@ async function loadCoursePuzzles(list, piece, section) {
       });
       if (categories.some(category => !category)) throw new Error(`题库缺少${piece}分类`);
       const items = course.selectPuzzles
-        ? course.selectPuzzles(manifest, piece)
+        ? course.selectPuzzles(manifest, piece, groupName)
         : categories.flatMap(category => category.items);
       entries = selectCoursePuzzlesForSection(items, section)
         .map(puzzle => ({ puzzle, category: null }));
@@ -354,15 +368,8 @@ async function loadCoursePuzzles(list, piece, section) {
       ).map(puzzle => ({ puzzle, category })));
     }
     if (!entries.length) {
-      if (!course || piece === course.pendingGroup) {
-        list.textContent = '此分类暂无棋局';
-        list.dataset.loaded = 'true';
-        return;
-      }
-      list.replaceChildren();
+      list.textContent = '此分类暂无棋局';
       list.dataset.loaded = 'true';
-      list.closest('details')?.setAttribute('hidden', '');
-      updateMenuVisibility(list.closest('details'));
       return;
     }
     list.closest('details')?.removeAttribute('hidden');
@@ -423,15 +430,6 @@ async function loadCoursePuzzles(list, piece, section) {
     delete list.dataset.loaded;
     list.textContent = error.message;
     status.textContent = `棋局目录载入失败：${error.message}`;
-  }
-}
-
-function updateMenuVisibility(menu) {
-  for (let current = menu; current; current = current.parentElement?.closest('details')) {
-    const nestedMenus = current.classList.contains('endgame-menu')
-      ? [...current.querySelectorAll(':scope > .endgame-menu-options > .endgame-puzzle-submenu')]
-      : [...current.querySelectorAll(':scope > .endgame-puzzle-list > .endgame-puzzle-submenu')];
-    if (nestedMenus.length && nestedMenus.every(item => item.hidden)) current.hidden = true;
   }
 }
 
@@ -691,7 +689,7 @@ async function requestEngineMove() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: engineAbort.signal,
-      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: { threads: 1, hash: 128, depth: 12, movetime: 1000, multiPv: 1 } })
+      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: DEFAULT_ENGINE_SETTINGS })
     });
     const result = await response.json();
     if (token !== engineToken) return;

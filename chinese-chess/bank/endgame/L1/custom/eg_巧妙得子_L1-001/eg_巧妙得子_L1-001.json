@@ -1,0 +1,26 @@
+{
+  "id": "eg_巧妙得子_L1-001",
+  "title": "巧妙得子",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 0,
+    "e": 1,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 1,
+    "C": 1,
+    "c": 0,
+    "P": 2,
+    "p": 2
+  },
+  "fen": "3ak4/4a1r2/8b/p8/8p/P8/8P/8C/9/4KA3 w - - 0 1"
+}

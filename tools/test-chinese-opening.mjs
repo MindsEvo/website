@@ -6,7 +6,7 @@ import {
   OPENING_GROUPS, OPENING_SUBGROUPS, OPENING_ROOTS, selectOpeningPuzzles
 } from '../chinese-chess/academy/opening/opening-catalog.mjs';
 
-assert.equal(Object.keys(OPENING_GROUPS).length, 4);
+assert.equal(Object.keys(OPENING_GROUPS).length, 3);
 const categories = Object.values(OPENING_GROUPS).flat();
 assert.equal(new Set(categories).size, 12);
 assert.deepEqual(categories, Object.keys(OPENING_SUBGROUPS));
@@ -15,7 +15,7 @@ assert.equal(new Set(types).size, 25);
 assert.deepEqual(OPENING_ROOTS.map(root => root.name), types);
 assert.equal(new Set(OPENING_ROOTS.map(root => root.id)).size, 25);
 for (const root of OPENING_ROOTS) assert.ok(root.knowledge);
-assert.throws(() => selectOpeningPuzzles({ categories: [] }, '未知'), /未知开局/);
+assert.deepEqual(selectOpeningPuzzles({ categories: [] }, '未知'), []);
 assert.throws(() => selectOpeningPuzzles({ categories: [] }, '中炮对屏风马'), /题库缺少开局棋局/);
 assert.equal(notationContent('１． 炮二平五 炮８平５\n# END'), '炮二平五 炮8平5');
 

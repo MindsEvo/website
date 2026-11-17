@@ -125,9 +125,11 @@ async function startDuel() {
       if (token !== runToken) break;
       if (!result.move || !makeMove(game, result.move.from, result.move.to)) throw new Error(`${sideName(game.turn)}引擎返回了无效着法。`);
 
-      playMoveSound();
+      const announcement = playMoveSound();
       renderBoard();
       updateAnalysis(side, result);
+      await announcement;
+      if (token !== runToken) break;
       await delay(Math.max(100, 1100 - Number(controlPanel.controls.speed.value) * 100));
     }
   } catch (error) {
@@ -197,7 +199,7 @@ function redoDuel() {
 }
 
 function playMoveSound() {
-  audio.move(game);
+  return audio.move(game);
 }
 
 function updateAnalysis(side, result) {

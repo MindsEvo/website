@@ -1,0 +1,26 @@
+{
+  "id": "tac_大胆穿心弃车绝杀_L1-001",
+  "title": "大胆穿心弃车绝杀",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 2,
+    "e": 1,
+    "H": 0,
+    "h": 0,
+    "R": 2,
+    "r": 2,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "4ka3/1R2aP3/4b4/6R2/9/6B2/2r6/4B4/3pA2r1/4K4 w - - 0 1"
+}

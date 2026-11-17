@@ -1,0 +1,26 @@
+{
+  "id": "at_车马帅兵组合_L2-001",
+  "title": "车马帅兵组合",
+  "type": "attacking",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 0,
+    "H": 1,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 1,
+    "p": 2
+  },
+  "fen": "3PN4/4ak3/4Ra3/9/9/9/9/3n5/3p1p3/4KC1rc w - - 0 1"
+}

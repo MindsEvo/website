@@ -1,0 +1,26 @@
+{
+  "id": "eg_弃车双马巧杀_L1-001",
+  "title": "弃车双马巧杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 2,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 0,
+    "c": 1,
+    "P": 0,
+    "p": 1
+  },
+  "fen": "3ak1b2/4a1R2/4b4/8N/4N4/9/9/5n3/5p1r1/4K3c w - - 0 1"
+}

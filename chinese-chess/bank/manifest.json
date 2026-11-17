@@ -736,7 +736,16 @@
             "attacking/L2/rook/pgn/at_大刀剜心_L2-001.pgn"
           ],
           "originalId": "at_2R2E-2RAE_L2-001",
-          "classificationPending": true
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ]
         },
         {
           "id": "at_待定攻杀棋局_L2-001",
@@ -771,7 +780,16 @@
             "attacking/L2/rook/pgn/at_大刀剜心_L2-002.pgn"
           ],
           "originalId": "at_2RC2A-2R2C2A2E_L2-001",
-          "classificationPending": true
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ]
         },
         {
           "id": "at_待定攻杀棋局_L2-002",
@@ -806,7 +824,16 @@
             "attacking/L2/rook/pgn/at_大刀剜心_L2-003.pgn"
           ],
           "originalId": "at_2RCAE-2RC2AE_L2-001",
-          "classificationPending": true
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ]
         },
         {
           "id": "at_弃子巧杀_L2-001",

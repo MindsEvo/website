@@ -1,0 +1,26 @@
+{
+  "id": "tac_漂亮的弃子绝杀_L1-001",
+  "title": "漂亮的弃子绝杀",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 0,
+    "h": 2,
+    "R": 2,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "2bak4/3RaCP2/3cb4/9/9/2n4R1/1r7/4B4/3nA4/4KAB2 w - - 0 1"
+}

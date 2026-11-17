@@ -232,12 +232,12 @@ export function groupEndgameEntries(categories, classifiedEntries, levelName) {
   for (const category of categories) {
     for (const item of category.items) {
       const key = item.classificationPending ? 'pending' : category.key.split('/').at(-1);
-      add(key, key === 'pending' ? '待定' : PIECE_LABELS[key] || category.label || key, category, item);
+      add(key, key === 'pending' ? '历史未归类（待清理）' : PIECE_LABELS[key] || category.label || key, category, item);
     }
   }
   for (const { category, item, entry } of classifiedEntries) {
     const key = ENDGAME_GROUP_KEYS[entry.group] || entry.group;
-    add(key, key === 'pending' ? '待定' : PIECE_LABELS[key] || entry.group, category, item, key === 'pending' ? '' : entry.category);
+    add(key, key === 'pending' ? '历史未归类（待清理）' : PIECE_LABELS[key] || entry.group, category, item, key === 'pending' ? '' : entry.category);
   }
   const order = new Map([...PIECE_ORDER, 'pending'].map((key, index) => [key, index]));
   return [...groups.values()]
@@ -264,28 +264,20 @@ function renderOpeningGroups(parent, categories, classifiedEntries, manifest, se
     category.items.map(item => [item.id, category])));
   if (!categoryByItem.size) return;
   const rootByName = new Map(OPENING_ROOTS.map(root => [root.name, root]));
-  for (const [groupName, subgroups] of Object.entries(OPENING_GROUPS)) {
+  const groups = groupsWithClassifications(OPENING_GROUPS, classifiedEntries, 'opening');
+  for (const [groupName, subgroups] of Object.entries(groups)) {
     const group = branch(groupName, true, 'tree-level');
     let groupCount = 0;
-    if (groupName === '待定') {
-      const puzzles = selectOpeningPuzzles(manifest, groupName).filter(puzzle => categoryByItem.has(puzzle.id));
-      if (puzzles.length) {
-        group.querySelector('summary').textContent = `${groupName} (${puzzles.length})`;
-        for (const puzzle of puzzles) group.append(createPuzzleLeaf(categoryByItem.get(puzzle.id), puzzle, selectedId, onSelect));
-        parent.append(group);
-      }
-      continue;
-    }
     for (const subgroupName of subgroups) {
       const types = OPENING_SUBGROUPS[subgroupName];
       if (!types) {
-        groupCount += renderOpeningType(group, subgroupName, manifest, rootByName, categoryByItem, selectedId, onSelect);
+        groupCount += renderOpeningType(group, subgroupName, groupName, manifest, rootByName, categoryByItem, selectedId, onSelect);
         continue;
       }
       const subgroup = branch(subgroupName, true, 'tree-category');
       let subgroupCount = 0;
       for (const type of types) {
-        subgroupCount += renderOpeningType(subgroup, type, manifest, rootByName, categoryByItem, selectedId, onSelect);
+        subgroupCount += renderOpeningType(subgroup, type, groupName, manifest, rootByName, categoryByItem, selectedId, onSelect);
       }
       if (subgroupCount) {
         subgroup.querySelector('summary').textContent = `${subgroupName} (${subgroupCount})`;
@@ -298,12 +290,12 @@ function renderOpeningGroups(parent, categories, classifiedEntries, manifest, se
       parent.append(group);
     }
   }
+  appendLegacyUnclassified(parent, selectOpeningPuzzles(manifest, '待定'), categoryByItem, selectedId, onSelect);
 }
 
-function renderOpeningType(parent, type, manifest, rootByName, categoryByItem, selectedId, onSelect) {
+function renderOpeningType(parent, type, groupName, manifest, rootByName, categoryByItem, selectedId, onSelect) {
   const root = rootByName.get(type);
-  if (!root) return 0;
-  const puzzles = selectOpeningPuzzles(manifest, type).filter(item => categoryByItem.has(item.id));
+  const puzzles = selectOpeningPuzzles(manifest, type, groupName).filter(item => categoryByItem.has(item.id));
   if (!puzzles.length) return 0;
   const typeGroup = branch(`${type} (${puzzles.length})`, true, 'tree-category');
   for (const item of puzzles) {
@@ -319,11 +311,12 @@ function renderAttackingGroups(parent, categories, classifiedEntries, selectedId
   const categoryByItem = new Map(allCategories.flatMap(category =>
     category.items.map(item => [item.id, category])));
   const renderedIds = new Set();
-  for (const [groupName, methods] of Object.entries(ATTACKING_GROUPS)) {
+  const groups = groupsWithClassifications(ATTACKING_GROUPS, classifiedEntries, 'attacking');
+  for (const [groupName, methods] of Object.entries(groups)) {
     const group = branch(groupName, true, 'tree-level');
     let groupCount = 0;
     for (const method of methods) {
-      const puzzles = selectAttackingPuzzles(manifest, method)
+      const puzzles = selectAttackingPuzzles(manifest, method, groupName)
         .filter(puzzle => puzzle.classifications || !renderedIds.has(puzzle.id));
       if (!puzzles.length) continue;
       const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
@@ -339,6 +332,7 @@ function renderAttackingGroups(parent, categories, classifiedEntries, selectedId
       parent.append(group);
     }
   }
+  appendLegacyUnclassified(parent, selectAttackingPuzzles(manifest, '待定'), categoryByItem, selectedId, onSelect);
 }
 
 function renderTacticsGroups(parent, categories, classifiedEntries, selectedId, onSelect) {
@@ -346,19 +340,16 @@ function renderTacticsGroups(parent, categories, classifiedEntries, selectedId, 
   const manifest = { categories: allCategories };
   const categoryByItem = new Map(allCategories.flatMap(category =>
     category.items.map(item => [item.id, category])));
-  for (const [groupName, methods] of Object.entries(TACTICS_GROUPS)) {
+  const groups = groupsWithClassifications(TACTICS_GROUPS, classifiedEntries, 'tactics');
+  for (const [groupName, methods] of Object.entries(groups)) {
     const group = branch(groupName, true, 'tree-level');
     let count = 0;
-    for (const method of groupName === '待定' ? ['待定'] : methods) {
-      const puzzles = selectTacticsPuzzles(manifest, method);
+    for (const method of methods) {
+      const puzzles = selectTacticsPuzzles(manifest, method, groupName);
       if (!puzzles.length) continue;
-      if (groupName === '待定') {
-        for (const item of puzzles) group.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
-      } else {
-        const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
-        for (const item of puzzles) category.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
-        group.append(category);
-      }
+      const category = branch(`${method} (${puzzles.length})`, true, 'tree-category');
+      for (const item of puzzles) category.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+      group.append(category);
       count += puzzles.length;
     }
     if (count) {
@@ -366,6 +357,25 @@ function renderTacticsGroups(parent, categories, classifiedEntries, selectedId, 
       parent.append(group);
     }
   }
+  appendLegacyUnclassified(parent, selectTacticsPuzzles(manifest, '待定'), categoryByItem, selectedId, onSelect);
+}
+
+function groupsWithClassifications(base, classifiedEntries, family) {
+  const groups = Object.fromEntries(Object.entries(base).map(([group, categories]) => [group, [...categories]]));
+  for (const { entry } of classifiedEntries) {
+    if (entry.family !== family || entry.group === '待定' || entry.category === '待定') continue;
+    groups[entry.group] ||= [];
+    if (!groups[entry.group].includes(entry.category)) groups[entry.group].push(entry.category);
+  }
+  return groups;
+}
+
+function appendLegacyUnclassified(parent, puzzles, categoryByItem, selectedId, onSelect) {
+  const visible = puzzles.filter(item => categoryByItem.has(item.id));
+  if (!visible.length) return;
+  const group = branch(`历史未归类（待清理） (${visible.length})`, true, 'tree-level');
+  for (const item of visible) group.append(createPuzzleLeaf(categoryByItem.get(item.id), item, selectedId, onSelect));
+  parent.append(group);
 }
 
 function renderCategories(parent, categories, { labels, order = [], selectedId, onSelect }) {

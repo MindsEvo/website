@@ -4,9 +4,8 @@ export const ATTACKING_GROUPS = {
   直接将杀: ['白脸将', '八角马', '空头炮', '闷宫杀'],
   单兵种与位置杀法: ['卧槽马', '挂角马', '钓鱼马', '高钓马', '拔簧马', '铁门栓'],
   双子协同: ['双车错', '车马冷着', '车炮抽杀', '马后炮', '双马饮泉', '重炮', '夹车炮'],
-  组合进攻: ['炮碾丹砂', '海底捞月', '天地炮', '大胆穿心', '二鬼拍门'],
-  连续推进与残局攻杀: ['三进兵', '送佛归殿'],
-  待定: ['待定']
+  组合进攻: ['炮碾丹砂', '海底捞月', '天地炮', '大刀剜心', '二鬼拍门'],
+  连续推进与残局攻杀: ['三进兵', '送佛归殿']
 };
 
 export const ATTACKING_UNITS = {
@@ -14,8 +13,7 @@ export const ATTACKING_UNITS = {
   单兵种与位置杀法: '位置识别：棋子走到什么位置，才能形成致命威胁？观察关键点，理解位置优势如何转化为杀棋。',
   双子协同: '协同思维：单个棋子做不到的事情，两个棋子如何共同完成？理解支援、借架与配合。',
   组合进攻: '组合推理：如何通过多个棋子的组合，创造对方无法化解的杀势？关注突破防线与多重威胁。',
-  连续推进与残局攻杀: '综合运用：如何通过持续推进和连续计算，最终完成将杀？从短变化开始，学习空间压缩与多回合推演。',
-  待定: '保留原题库名称，待核实杀法分类。'
+  连续推进与残局攻杀: '综合运用：如何通过持续推进和连续计算，最终完成将杀？从短变化开始，学习空间压缩与多回合推演。'
 };
 
 export const ATTACKING_ROOTS = [
@@ -39,30 +37,37 @@ export const ATTACKING_ROOTS = [
   { id: 'cc.mate.paoniandansha', name: '炮碾丹砂', knowledge: '车炮连续攻击', aliases: ['炮碾丹砂'] },
   { id: 'cc.mate.haidilaoyue', name: '海底捞月', knowledge: '底线车炮配合', aliases: ['海底捞月'] },
   { id: 'cc.mate.tiandipao', name: '天地炮', knowledge: '双炮上下呼应', aliases: ['天地炮'] },
-  { id: 'cc.mate.dadanchuanxin', name: '大胆穿心', knowledge: '突破中路防线', aliases: ['大胆穿心'] },
+  { id: 'cc.mate.dadaowanxin', name: '大刀剜心', knowledge: '突破中路防线', aliases: ['大刀剜心'] },
   { id: 'cc.mate.erguipaimen', name: '二鬼拍门', knowledge: '双兵同时威胁将门', aliases: ['二鬼拍门'] },
   { id: 'cc.mate.sanjinbing', name: '三进兵', knowledge: '兵的连续推进与攻杀', aliases: ['三进兵'] },
-  { id: 'cc.mate.songfoguidian', name: '送佛归殿', knowledge: '兵卒推进、限制与最终将杀', aliases: ['送佛归殿'] },
-  { id: 'cc.mate.source.unclassified', name: '待定', knowledge: '保留原始题库标题，尚未按传统杀法名称细分。', aliases: [], sourceOnly: true }
+  { id: 'cc.mate.songfoguidian', name: '送佛归殿', knowledge: '兵卒推进、限制与最终将杀', aliases: ['送佛归殿'] }
 ];
 
 export const ATTACKING_CATEGORIES = Object.fromEntries(ATTACKING_ROOTS
   .map(root => [root.name, root.sourceOnly ? ['source-only'] : root.aliases]));
 
-export function selectAttackingPuzzles(manifest, name) {
-  const root = ATTACKING_ROOTS.find(root => root.name === name);
-  if (!root) throw new Error(`未知杀法：${name}`);
+export function selectAttackingPuzzles(manifest, name, groupName) {
   const items = manifest.categories.flatMap(category => category.items.map(puzzle => ({ puzzle, family: category.family })));
-  const matches = ({ puzzle, family }, method) => explicitClassificationMatches(puzzle, 'attacking', method.name)
-    ?? (family === 'attacking' && !puzzle.classificationPending
-      && (puzzle.attackingMethods?.includes(method.id) || method.aliases.some(alias => puzzle.title.includes(alias))));
-  if (root.sourceOnly) {
-    const classified = new Set(ATTACKING_ROOTS.filter(item => !item.sourceOnly)
-      .flatMap(item => items.filter(entry => matches(entry, item))
+  if (name === '待定') {
+    const classified = new Set(ATTACKING_ROOTS
+      .flatMap(method => items.filter(entry => explicitClassificationMatches(entry.puzzle, 'attacking', method.name)
+        ?? (entry.family === 'attacking' && !entry.puzzle.classificationPending
+          && (entry.puzzle.attackingMethods?.includes(method.id) || method.aliases.some(alias => entry.puzzle.title.includes(alias)))))
         .map(entry => entry.puzzle.id)));
     return items.filter(entry => explicitClassificationMatches(entry.puzzle, 'attacking', '待定')
-      ?? (entry.family === 'attacking' && !entry.puzzle.classifications && !classified.has(entry.puzzle.id)))
+      ?? (entry.family === 'attacking' && (entry.puzzle.classificationPending
+        || (!entry.puzzle.classifications && !classified.has(entry.puzzle.id)))))
       .map(entry => entry.puzzle);
   }
+  const root = ATTACKING_ROOTS.find(root => root.name === name);
+  const explicitlyMatches = puzzle => puzzle.classifications?.some(entry => entry.family === 'attacking'
+    && entry.category === name && (!groupName || entry.group === groupName));
+  if (!root) return items.filter(({ puzzle }) => explicitlyMatches(puzzle))
+    .map(entry => entry.puzzle);
+  const matches = ({ puzzle, family }, method) => (groupName
+    ? explicitlyMatches(puzzle)
+    : explicitClassificationMatches(puzzle, 'attacking', method.name))
+    ?? (family === 'attacking' && !puzzle.classificationPending
+      && (puzzle.attackingMethods?.includes(method.id) || method.aliases.some(alias => puzzle.title.includes(alias))));
   return items.filter(entry => matches(entry, root)).map(entry => entry.puzzle);
 }

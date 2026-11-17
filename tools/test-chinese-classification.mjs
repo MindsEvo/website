@@ -10,7 +10,13 @@ const classifications = [
   { family: 'tactics', group: '空间控制战术', category: '困毙' },
   { family: 'attacking', group: '双子协同', category: '重炮' }
 ];
-assert.ok(classifications.every(validClassification));
+const extendedGroups = {
+  ...CLASSIFICATION_GROUPS,
+  tactics: { ...CLASSIFICATION_GROUPS.tactics, 自定义: ['测试分类'] }
+};
+assert.ok(classifications.every(classification => validClassification(classification, extendedGroups)));
+assert.ok(classifications.every(classification => validClassification(classification)));
+assert.equal(validClassification({ family: 'tactics', group: '自定义', category: '测试分类' }), false);
 assert.equal(validClassification({ family: 'tactics', group: '错误', category: '困毙' }), false);
 const puzzle = { id: 'eg_test_L2-001', title: '测试', classifications, lessonSections: ['observation'] };
 const manifest = { categories: [{ family: 'endgame', key: 'endgame/L2/cannon', items: [puzzle] }] };

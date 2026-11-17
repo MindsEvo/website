@@ -1,0 +1,26 @@
+{
+  "id": "eg_经典送佛归殿_L1-001",
+  "title": "经典送佛归殿",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "b",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 0,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 1,
+    "C": 1,
+    "c": 0,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "5k3/5P3/9/9/9/5r3/9/5C3/5p3/4K4 b - - 0 1"
+}

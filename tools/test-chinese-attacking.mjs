@@ -7,15 +7,15 @@ import {
 } from '../chinese-chess/academy/attacking/attacking-catalog.mjs';
 
 const groups = Object.keys(ATTACKING_GROUPS);
-assert.equal(groups.length, 6);
-assert.deepEqual(Object.values(ATTACKING_GROUPS).map(names => names.length), [4, 6, 7, 5, 2, 1]);
+assert.equal(groups.length, 5);
+assert.deepEqual(Object.values(ATTACKING_GROUPS).map(names => names.length), [4, 6, 7, 5, 2]);
 const names = Object.values(ATTACKING_GROUPS).flat();
-assert.equal(new Set(names).size, 25);
+assert.equal(new Set(names).size, 24);
 assert.deepEqual(ATTACKING_ROOTS.map(root => root.name), names);
-assert.equal(new Set(ATTACKING_ROOTS.map(root => root.id)).size, 25);
+assert.equal(new Set(ATTACKING_ROOTS.map(root => root.id)).size, 24);
 for (const root of ATTACKING_ROOTS) assert.ok(root.knowledge);
 for (const group of groups) assert.ok(ATTACKING_UNITS[group]);
-assert.throws(() => selectAttackingPuzzles({ categories: [] }, '未知'), /未知杀法/);
+assert.deepEqual(selectAttackingPuzzles({ categories: [] }, '未知'), []);
 
 const bank = new URL('../chinese-chess/bank/', import.meta.url);
 const manifest = JSON.parse(await readFile(new URL('manifest.json', bank), 'utf8'));
@@ -30,8 +30,11 @@ for (const name of names) {
     unique.set(puzzle.id, puzzle);
   }
 }
-assert.deepEqual(pending, ['八角马', '车马冷着', '车炮抽杀', '大胆穿心', '三进兵']);
-assert.equal(unique.size, 57);
+assert.deepEqual(pending, ['八角马', '车马冷着', '车炮抽杀', '三进兵']);
+assert.equal(unique.size, 47);
+assert.equal(selectAttackingPuzzles(manifest, '大刀剜心').length, 3);
+assert.equal(selectAttackingPuzzles(manifest, '待定')
+  .some(puzzle => puzzle.title === '大刀剜心'), false);
 assert.ok(selectAttackingPuzzles(manifest, '空头炮').some(puzzle => puzzle.title === '空头炮'));
 assert.ok(selectAttackingPuzzles(manifest, '高钓马').some(puzzle => puzzle.title === '高掉马'));
 assert.ok(selectAttackingPuzzles(manifest, '重炮').some(puzzle => puzzle.title === '连环炮（重炮）'));
@@ -55,6 +58,6 @@ for (const puzzle of unique.values()) {
   if (puzzle.metadata) await readFile(new URL(puzzle.metadata, bank), 'utf8');
   for (const file of puzzle.explanations) await readFile(new URL(file, bank), 'utf8');
 }
-assert.equal(playable, 16);
-assert.equal(placeholders, 42);
+assert.equal(playable, 14);
+assert.equal(placeholders, 34);
 console.log(`Validated ${groups.length} units, ${names.length} RootGene IDs, ${unique.size} positions, ${playable} playable solutions, ${placeholders} placeholder files and ${pending.length} pending methods.`);

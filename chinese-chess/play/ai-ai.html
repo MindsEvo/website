@@ -58,18 +58,19 @@
       <aside class="human-ai-settings ai-ai-settings" aria-label="双方引擎设置预览">
         <section class="ai-setting-box analysis-settings">
           <h2><span aria-hidden="true">⚫</span> 黑方引擎</h2>
-          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiBlackSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
-          <label class="ai-setting-row"><span>深度:</span><select id="aiAiBlackDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
-          <label class="ai-setting-row"><span>候选:</span><select id="aiAiBlackMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
-          <label class="ai-setting-row"><span>时间:</span><select id="aiAiBlackMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiBlackSkill"><option value="8">入门</option><option value="14">中等</option><option value="20" selected>高级</option></select></label>
+          <label class="ai-setting-row"><span>深度:</span><select id="aiAiBlackDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12">12 层</option><option value="15" selected>15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="aiAiBlackMultiPv"><option value="1" selected>1 条</option><option value="3">3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>时间:</span><select id="aiAiBlackMoveTime"><option value="500">0.5 秒</option><option value="1000">1 秒</option><option value="2000">2 秒</option><option value="5000" selected>5 秒</option></select></label>
         </section>
         <section class="ai-setting-box engine-settings red-engine-settings">
           <h2><span aria-hidden="true">🔴</span> 红方引擎</h2>
-          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiRedSkill"><option value="8">入门</option><option value="14" selected>中等</option><option value="20">高级</option></select></label>
-          <label class="ai-setting-row"><span>深度:</span><select id="aiAiRedDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12" selected>12 层</option><option value="15">15 层</option></select></label>
-          <label class="ai-setting-row"><span>候选:</span><select id="aiAiRedMultiPv"><option value="1">1 条</option><option value="3" selected>3 条</option><option value="5">5 条</option></select></label>
-          <label class="ai-setting-row"><span>时间:</span><select id="aiAiRedMoveTime"><option value="500">0.5 秒</option><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="5000">5 秒</option></select></label>
+          <label class="ai-setting-row"><span>棋力:</span><select id="aiAiRedSkill"><option value="8">入门</option><option value="14">中等</option><option value="20" selected>高级</option></select></label>
+          <label class="ai-setting-row"><span>深度:</span><select id="aiAiRedDepth"><option value="8">8 层</option><option value="10">10 层</option><option value="12">12 层</option><option value="15" selected>15 层</option></select></label>
+          <label class="ai-setting-row"><span>候选:</span><select id="aiAiRedMultiPv"><option value="1" selected>1 条</option><option value="3">3 条</option><option value="5">5 条</option></select></label>
+          <label class="ai-setting-row"><span>时间:</span><select id="aiAiRedMoveTime"><option value="500">0.5 秒</option><option value="1000">1 秒</option><option value="2000">2 秒</option><option value="5000" selected>5 秒</option></select></label>
         </section>
+        <p>双方默认优先搜索最佳着法：高级、15 层、每步最多 5 秒、1 条候选；可手动调整。达到深度或时间上限即结束搜索，结果不保证为正解。</p>
         <p class="engine-unavailable" id="aiAiEngineStatus">双引擎 Pikafish 已接入。</p>
       </aside>
     </div>

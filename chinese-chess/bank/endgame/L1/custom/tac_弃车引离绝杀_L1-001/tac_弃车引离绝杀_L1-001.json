@@ -1,0 +1,26 @@
+{
+  "id": "tac_弃车引离绝杀_L1-001",
+  "title": "弃车引离绝杀",
+  "type": "tactics",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 2,
+    "e": 2,
+    "H": 1,
+    "h": 1,
+    "R": 2,
+    "r": 2,
+    "C": 2,
+    "c": 2,
+    "P": 3,
+    "p": 3
+  },
+  "fen": "4ka1r1/1R2a4/2n1b3b/p7p/2R3pN1/P3C4/1c1r2P1P/4C4/c3A4/2B1KAB2 w - - 0 1"
+}

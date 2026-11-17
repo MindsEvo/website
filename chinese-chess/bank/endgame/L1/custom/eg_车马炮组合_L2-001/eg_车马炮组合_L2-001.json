@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马炮组合_L2-001",
+  "title": "车马炮组合",
+  "type": "endgame",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 1,
+    "e": 2,
+    "H": 2,
+    "h": 1,
+    "R": 1,
+    "r": 2,
+    "C": 2,
+    "c": 1,
+    "P": 1,
+    "p": 2
+  },
+  "fen": "2bak1b1r/4aR3/6n2/4N3p/2p1C2r1/9/2P6/2N4Cc/4A4/2BAK4 w - - 0 1"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "eg_马炮兵帅协同攻杀_L1-001",
+  "title": "马炮兵帅协同攻杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 1,
+    "c": 0,
+    "P": 1,
+    "p": 3
+  },
+  "fen": "3k1ab2/2P6/3ab4/5N3/9/9/C8/9/4p1p2/3p1K3 w - - 0 1"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "eg_车马炮兵协同攻杀_L1-001",
+  "title": "车马炮兵协同攻杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 2,
+    "a": 2,
+    "E": 0,
+    "e": 2,
+    "H": 1,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 1,
+    "c": 2,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "2ba1k3/4a1N2/c3bc3/4P4/9/4CR3/6r2/9/4A4/4KA3 w - - 0 1"
+}

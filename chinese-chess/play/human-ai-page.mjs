@@ -167,17 +167,21 @@ function renderBoard() {
   controlPanel.controls.redo.disabled = game.redoStack.length < 2 || engineThinking;
 }
 
-function handleSquareClick(position) {
+async function handleSquareClick(position) {
   if (!engineReady || engineThinking || !gameStarted || game.turn !== humanSide) return;
 
   if (selected && legalTargets.some(target => sameSquare(target, position))) {
     makeMove(game, selected, position);
-    playMoveSound();
+    const playedGame = game;
+    const token = requestToken;
+    const announcement = playMoveSound();
     selected = null;
     legalTargets = [];
     renderBoard();
     updateTurnStatus();
-    if (game.turn !== humanSide && !isGameFinished()) requestEngineMove();
+    await announcement;
+    if (token === requestToken && playedGame === game && engineReady && gameStarted
+      && game.turn !== humanSide && !isGameFinished()) requestEngineMove();
     return;
   }
 
@@ -347,7 +351,7 @@ function pauseEngine() {
 }
 
 function playMoveSound() {
-  audio.move(game);
+  return audio.move(game);
 }
 
 function sideName(side) {

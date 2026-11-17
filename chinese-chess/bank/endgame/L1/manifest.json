@@ -475,6 +475,1921 @@
           "type": "attacking",
           "difficulty": "L1",
           "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子引离马后炮_L2-001",
+          "title": "弃子引离马后炮",
+          "label": "弃子引离马后炮",
+          "fen": "custom/tac_弃子引离马后炮_L2-001/tac_弃子引离马后炮_L2-001.fen",
+          "metadata": "custom/tac_弃子引离马后炮_L2-001/tac_弃子引离马后炮_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子引离马后炮_L2-002",
+          "title": "弃子引离马后炮",
+          "label": "弃子引离马后炮",
+          "fen": "custom/tac_弃子引离马后炮_L2-002/tac_弃子引离马后炮_L2-002.fen",
+          "metadata": "custom/tac_弃子引离马后炮_L2-002/tac_弃子引离马后炮_L2-002.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子引离马后炮_L2-003",
+          "title": "弃子引离马后炮",
+          "label": "弃子引离马后炮",
+          "fen": "custom/tac_弃子引离马后炮_L2-003/tac_弃子引离马后炮_L2-003.fen",
+          "metadata": "custom/tac_弃子引离马后炮_L2-003/tac_弃子引离马后炮_L2-003.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            },
+            {
+              "family": "tactics",
+              "group": "特殊战术组合",
+              "category": "借炮使马"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子引离马后炮白脸将_L2-001",
+          "title": "弃子引离马后炮白脸将",
+          "label": "弃子引离马后炮白脸将",
+          "fen": "custom/tac_弃子引离马后炮白脸将_L2-001/tac_弃子引离马后炮白脸将_L2-001.fen",
+          "metadata": "custom/tac_弃子引离马后炮白脸将_L2-001/tac_弃子引离马后炮白脸将_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_大刀剜心_L1-001",
+          "title": "大刀剜心",
+          "label": "大刀剜心",
+          "fen": "custom/at_大刀剜心_L1-001/at_大刀剜心_L1-001.fen",
+          "metadata": "custom/at_大刀剜心_L1-001/at_大刀剜心_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual",
+          "previousIds": [
+            "at_大胆穿心_L1-001"
+          ]
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_大刀剜心臣压君_L2-001",
+          "title": "大刀剜心臣压君",
+          "label": "大刀剜心臣压君",
+          "fen": "custom/at_大刀剜心臣压君_L2-001/at_大刀剜心臣压君_L2-001.fen",
+          "metadata": "custom/at_大刀剜心臣压君_L2-001/at_大刀剜心臣压君_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子吸引"
+            },
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子突破臣压君_L2-001",
+          "title": "弃子突破臣压君",
+          "label": "弃子突破臣压君",
+          "fen": "custom/tac_弃子突破臣压君_L2-001/tac_弃子突破臣压君_L2-001.fen",
+          "metadata": "custom/tac_弃子突破臣压君_L2-001/tac_弃子突破臣压君_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子攻杀白脸将_L2-001",
+          "title": "弃子攻杀白脸将",
+          "label": "弃子攻杀白脸将",
+          "fen": "custom/tac_弃子攻杀白脸将_L2-001/tac_弃子攻杀白脸将_L2-001.fen",
+          "metadata": "custom/tac_弃子攻杀白脸将_L2-001/tac_弃子攻杀白脸将_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_大胆穿心弃车绝杀_L1-001",
+          "title": "大胆穿心弃车绝杀",
+          "label": "大胆穿心弃车绝杀",
+          "fen": "custom/tac_大胆穿心弃车绝杀_L1-001/tac_大胆穿心弃车绝杀_L1-001.fen",
+          "metadata": "custom/tac_大胆穿心弃车绝杀_L1-001/tac_大胆穿心弃车绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃子引离_L2-001",
+          "title": "弃子引离",
+          "label": "弃子引离",
+          "fen": "custom/tac_弃子引离_L2-001/tac_弃子引离_L2-001.fen",
+          "metadata": "custom/tac_弃子引离_L2-001/tac_弃子引离_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "大刀剜心"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_大刀剜心铁门栓_L1-001",
+          "title": "大刀剜心铁门栓",
+          "label": "大刀剜心铁门栓",
+          "fen": "custom/at_大刀剜心铁门栓_L1-001/at_大刀剜心铁门栓_L1-001.fen",
+          "metadata": "custom/at_大刀剜心铁门栓_L1-001/at_大刀剜心铁门栓_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            },
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "多子杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_铁门栓弃子千里罩_L1-001",
+          "title": "铁门栓弃子千里罩",
+          "label": "铁门栓弃子千里罩",
+          "fen": "custom/tac_铁门栓弃子千里罩_L1-001/tac_铁门栓弃子千里罩_L1-001.fen",
+          "metadata": "custom/tac_铁门栓弃子千里罩_L1-001/tac_铁门栓弃子千里罩_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "车马炮帅组合"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_车马炮帅组合攻杀_L2-001",
+          "title": "车马炮帅组合攻杀",
+          "label": "车马炮帅组合攻杀",
+          "fen": "custom/at_车马炮帅组合攻杀_L2-001/at_车马炮帅组合攻杀_L2-001.fen",
+          "metadata": "custom/at_车马炮帅组合攻杀_L2-001/at_车马炮帅组合攻杀_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "独特的位置结构"
+            },
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "复杂残局"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_独特的棋形结构_L1-001",
+          "title": "独特的棋形结构",
+          "label": "独特的棋形结构",
+          "fen": "custom/at_独特的棋形结构_L1-001/at_独特的棋形结构_L1-001.fen",
+          "metadata": "custom/at_独特的棋形结构_L1-001/at_独特的棋形结构_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "独特的位置结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_独特的结构巧妙的思维_L2-001",
+          "title": "独特的结构巧妙的思维",
+          "label": "独特的结构巧妙的思维",
+          "fen": "custom/at_独特的结构巧妙的思维_L2-001/at_独特的结构巧妙的思维_L2-001.fen",
+          "metadata": "custom/at_独特的结构巧妙的思维_L2-001/at_独特的结构巧妙的思维_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_漂亮的弃子绝杀_L1-001",
+          "title": "漂亮的弃子绝杀",
+          "label": "漂亮的弃子绝杀",
+          "fen": "custom/tac_漂亮的弃子绝杀_L1-001/tac_漂亮的弃子绝杀_L1-001.fen",
+          "metadata": "custom/tac_漂亮的弃子绝杀_L1-001/tac_漂亮的弃子绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_巧妙的弃子引离_L1-001",
+          "title": "巧妙的弃子引离",
+          "label": "巧妙的弃子引离",
+          "fen": "custom/tac_巧妙的弃子引离_L1-001/tac_巧妙的弃子引离_L1-001.fen",
+          "metadata": "custom/tac_巧妙的弃子引离_L1-001/tac_巧妙的弃子引离_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马巧思绝杀_L1-001",
+          "title": "车马巧思绝杀",
+          "label": "车马巧思绝杀",
+          "fen": "custom/eg_车马巧思绝杀_L1-001/eg_车马巧思绝杀_L1-001.fen",
+          "metadata": "custom/eg_车马巧思绝杀_L1-001/eg_车马巧思绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马巧思绝杀_L1-002",
+          "title": "车马巧思绝杀",
+          "label": "车马巧思绝杀",
+          "fen": "custom/eg_车马巧思绝杀_L1-002/eg_车马巧思绝杀_L1-002.fen",
+          "metadata": "custom/eg_车马巧思绝杀_L1-002/eg_车马巧思绝杀_L1-002.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧妙结构_L1-001",
+          "title": "巧妙结构",
+          "label": "巧妙结构",
+          "fen": "custom/eg_巧妙结构_L1-001/eg_巧妙结构_L1-001.fen",
+          "metadata": "custom/eg_巧妙结构_L1-001/eg_巧妙结构_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧妙的结构坚强的意志_L1-001",
+          "title": "巧妙的结构坚强的意志",
+          "label": "巧妙的结构坚强的意志",
+          "fen": "custom/eg_巧妙的结构坚强的意志_L1-001/eg_巧妙的结构坚强的意志_L1-001.fen",
+          "metadata": "custom/eg_巧妙的结构坚强的意志_L1-001/eg_巧妙的结构坚强的意志_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧妙的结构大胆的弃子引入_L1-001",
+          "title": "巧妙的结构大胆的弃子引入",
+          "label": "巧妙的结构大胆的弃子引入",
+          "fen": "custom/eg_巧妙的结构大胆的弃子引入_L1-001/eg_巧妙的结构大胆的弃子引入_L1-001.fen",
+          "metadata": "custom/eg_巧妙的结构大胆的弃子引入_L1-001/eg_巧妙的结构大胆的弃子引入_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_漂亮的弃子攻杀_L2-001",
+          "title": "漂亮的弃子攻杀",
+          "label": "漂亮的弃子攻杀",
+          "fen": "custom/tac_漂亮的弃子攻杀_L2-001/tac_漂亮的弃子攻杀_L2-001.fen",
+          "metadata": "custom/tac_漂亮的弃子攻杀_L2-001/tac_漂亮的弃子攻杀_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "空间控制战术",
+              "category": "困毙"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_精彩的困毙_L1-001",
+          "title": "精彩的困毙",
+          "label": "精彩的困毙",
+          "fen": "custom/tac_精彩的困毙_L1-001/tac_精彩的困毙_L1-001.fen",
+          "metadata": "custom/tac_精彩的困毙_L1-001/tac_精彩的困毙_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "双杯献酒"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_巧妙的双杯献酒_L1-001",
+          "title": "巧妙的双杯献酒",
+          "label": "巧妙的双杯献酒",
+          "fen": "custom/at_巧妙的双杯献酒_L1-001/at_巧妙的双杯献酒_L1-001.fen",
+          "metadata": "custom/at_巧妙的双杯献酒_L1-001/at_巧妙的双杯献酒_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_大胆弃车巧妙的构思_L2-001",
+          "title": "大胆弃车巧妙的构思",
+          "label": "大胆弃车巧妙的构思",
+          "fen": "custom/eg_大胆弃车巧妙的构思_L2-001/eg_大胆弃车巧妙的构思_L2-001.fen",
+          "metadata": "custom/eg_大胆弃车巧妙的构思_L2-001/eg_大胆弃车巧妙的构思_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_巧妙的弃车臣压君_L2-001",
+          "title": "巧妙的弃车臣压君",
+          "label": "巧妙的弃车臣压君",
+          "fen": "custom/eg_巧妙的弃车臣压君_L2-001/eg_巧妙的弃车臣压君_L2-001.fen",
+          "metadata": "custom/eg_巧妙的弃车臣压君_L2-001/eg_巧妙的弃车臣压君_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_巧妙的结构臣压君_L2-001",
+          "title": "巧妙的结构臣压君",
+          "label": "巧妙的结构臣压君",
+          "fen": "custom/eg_巧妙的结构臣压君_L2-001/eg_巧妙的结构臣压君_L2-001.fen",
+          "metadata": "custom/eg_巧妙的结构臣压君_L2-001/eg_巧妙的结构臣压君_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "双杯献酒"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_精彩的双杯献酒_L1-001",
+          "title": "精彩的双杯献酒",
+          "label": "精彩的双杯献酒",
+          "fen": "custom/at_精彩的双杯献酒_L1-001/at_精彩的双杯献酒_L1-001.fen",
+          "metadata": "custom/at_精彩的双杯献酒_L1-001/at_精彩的双杯献酒_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧妙的顿挫_L1-001",
+          "title": "巧妙的顿挫",
+          "label": "巧妙的顿挫",
+          "fen": "custom/eg_巧妙的顿挫_L1-001/eg_巧妙的顿挫_L1-001.fen",
+          "metadata": "custom/eg_巧妙的顿挫_L1-001/eg_巧妙的顿挫_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "铁门栓"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典的铁门栓_L1-001",
+          "title": "经典的铁门栓",
+          "label": "经典的铁门栓",
+          "fen": "custom/at_经典的铁门栓_L1-001/at_经典的铁门栓_L1-001.fen",
+          "metadata": "custom/at_经典的铁门栓_L1-001/at_经典的铁门栓_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "铁门栓"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_引离弃子铁门栓_L1-001",
+          "title": "引离弃子铁门栓",
+          "label": "引离弃子铁门栓",
+          "fen": "custom/at_引离弃子铁门栓_L1-001/at_引离弃子铁门栓_L1-001.fen",
+          "metadata": "custom/at_引离弃子铁门栓_L1-001/at_引离弃子铁门栓_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_简单经典的车马炮组合_L1-001",
+          "title": "简单经典的车马炮组合",
+          "label": "简单经典的车马炮组合",
+          "fen": "custom/eg_简单经典的车马炮组合_L1-001/eg_简单经典的车马炮组合_L1-001.fen",
+          "metadata": "custom/eg_简单经典的车马炮组合_L1-001/eg_简单经典的车马炮组合_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "双子协同",
+              "category": "马后炮"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_精彩的马后炮绝杀_L1-001",
+          "title": "精彩的马后炮绝杀",
+          "label": "精彩的马后炮绝杀",
+          "fen": "custom/at_精彩的马后炮绝杀_L1-001/at_精彩的马后炮绝杀_L1-001.fen",
+          "metadata": "custom/at_精彩的马后炮绝杀_L1-001/at_精彩的马后炮绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "双子协同",
+              "category": "马后炮"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_精彩的马后炮兵铁门栓_L2-001",
+          "title": "精彩的马后炮兵铁门栓",
+          "label": "精彩的马后炮兵铁门栓",
+          "fen": "custom/at_精彩的马后炮兵铁门栓_L2-001/at_精彩的马后炮兵铁门栓_L2-001.fen",
+          "metadata": "custom/at_精彩的马后炮兵铁门栓_L2-001/at_精彩的马后炮兵铁门栓_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车炮"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车炮帅联合绝杀_L1-001",
+          "title": "车炮帅联合绝杀",
+          "label": "车炮帅联合绝杀",
+          "fen": "custom/eg_车炮帅联合绝杀_L1-001/eg_车炮帅联合绝杀_L1-001.fen",
+          "metadata": "custom/eg_车炮帅联合绝杀_L1-001/eg_车炮帅联合绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马炮帅兵联合攻杀_L1-001",
+          "title": "车马炮帅兵联合攻杀",
+          "label": "车马炮帅兵联合攻杀",
+          "fen": "custom/eg_车马炮帅兵联合攻杀_L1-001/eg_车马炮帅兵联合攻杀_L1-001.fen",
+          "metadata": "custom/eg_车马炮帅兵联合攻杀_L1-001/eg_车马炮帅兵联合攻杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马炮组合杀_L1-001",
+          "title": "车马炮组合杀",
+          "label": "车马炮组合杀",
+          "fen": "custom/eg_车马炮组合杀_L1-001/eg_车马炮组合杀_L1-001.fen",
+          "metadata": "custom/eg_车马炮组合杀_L1-001/eg_车马炮组合杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "平顶冠"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_弃子平顶冠绝杀_L1-001",
+          "title": "弃子平顶冠绝杀",
+          "label": "弃子平顶冠绝杀",
+          "fen": "custom/at_弃子平顶冠绝杀_L1-001/at_弃子平顶冠绝杀_L1-001.fen",
+          "metadata": "custom/at_弃子平顶冠绝杀_L1-001/at_弃子平顶冠绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马炮巧杀_L1-001",
+          "title": "车马炮巧杀",
+          "label": "车马炮巧杀",
+          "fen": "custom/eg_车马炮巧杀_L1-001/eg_车马炮巧杀_L1-001.fen",
+          "metadata": "custom/eg_车马炮巧杀_L1-001/eg_车马炮巧杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_经典车马帅协同杀_L1-001",
+          "title": "经典车马帅协同杀",
+          "label": "经典车马帅协同杀",
+          "fen": "custom/eg_经典车马帅协同杀_L1-001/eg_经典车马帅协同杀_L1-001.fen",
+          "metadata": "custom/eg_经典车马帅协同杀_L1-001/eg_经典车马帅协同杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_经典车马组合_L1-001",
+          "title": "经典车马组合",
+          "label": "经典车马组合",
+          "fen": "custom/eg_经典车马组合_L1-001/eg_经典车马组合_L1-001.fen",
+          "metadata": "custom/eg_经典车马组合_L1-001/eg_经典车马组合_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "谋子类战术",
+              "category": "借杀得子"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_借杀某子_L1-001",
+          "title": "借杀某子",
+          "label": "借杀某子",
+          "fen": "custom/tac_借杀某子_L1-001/tac_借杀某子_L1-001.fen",
+          "metadata": "custom/tac_借杀某子_L1-001/tac_借杀某子_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_马炮兵帅协同攻杀_L1-001",
+          "title": "马炮兵帅协同攻杀",
+          "label": "马炮兵帅协同攻杀",
+          "fen": "custom/eg_马炮兵帅协同攻杀_L1-001/eg_马炮兵帅协同攻杀_L1-001.fen",
+          "metadata": "custom/eg_马炮兵帅协同攻杀_L1-001/eg_马炮兵帅协同攻杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "多子杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马炮兵协同攻杀_L1-001",
+          "title": "车马炮兵协同攻杀",
+          "label": "车马炮兵协同攻杀",
+          "fen": "custom/eg_车马炮兵协同攻杀_L1-001/eg_车马炮兵协同攻杀_L1-001.fen",
+          "metadata": "custom/eg_车马炮兵协同攻杀_L1-001/eg_车马炮兵协同攻杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_巧妙结构_L2-001",
+          "title": "巧妙结构",
+          "label": "巧妙结构",
+          "fen": "custom/eg_巧妙结构_L2-001/eg_巧妙结构_L2-001.fen",
+          "metadata": "custom/eg_巧妙结构_L2-001/eg_巧妙结构_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马帅拨簧马杀_L1-001",
+          "title": "车马帅拨簧马杀",
+          "label": "车马帅拨簧马杀",
+          "fen": "custom/eg_车马帅拨簧马杀_L1-001/eg_车马帅拨簧马杀_L1-001.fen",
+          "metadata": "custom/eg_车马帅拨簧马杀_L1-001/eg_车马帅拨簧马杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "双子协同",
+              "category": "双马饮泉"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典双马饮泉杀_L1-001",
+          "title": "经典双马饮泉杀",
+          "label": "经典双马饮泉杀",
+          "fen": "custom/at_经典双马饮泉杀_L1-001/at_经典双马饮泉杀_L1-001.fen",
+          "metadata": "custom/at_经典双马饮泉杀_L1-001/at_经典双马饮泉杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "独特的位置结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_独特结构中局突杀_L2-001",
+          "title": "独特结构中局突杀",
+          "label": "独特结构中局突杀",
+          "fen": "custom/at_独特结构中局突杀_L2-001/at_独特结构中局突杀_L2-001.fen",
+          "metadata": "custom/at_独特结构中局突杀_L2-001/at_独特结构中局突杀_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "谋子类战术",
+              "category": "借将得子"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_借将得子_L1-001",
+          "title": "借将得子",
+          "label": "借将得子",
+          "fen": "custom/tac_借将得子_L1-001/tac_借将得子_L1-001.fen",
+          "metadata": "custom/tac_借将得子_L1-001/tac_借将得子_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_弃车白脸钓鱼马_L1-001",
+          "title": "弃车白脸钓鱼马",
+          "label": "弃车白脸钓鱼马",
+          "fen": "custom/at_弃车白脸钓鱼马_L1-001/at_弃车白脸钓鱼马_L1-001.fen",
+          "metadata": "custom/at_弃车白脸钓鱼马_L1-001/at_弃车白脸钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_弃子引离钓鱼马_L1-001",
+          "title": "弃子引离钓鱼马",
+          "label": "弃子引离钓鱼马",
+          "fen": "custom/tac_弃子引离钓鱼马_L1-001/tac_弃子引离钓鱼马_L1-001.fen",
+          "metadata": "custom/tac_弃子引离钓鱼马_L1-001/tac_弃子引离钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_弃子引入钓鱼马_L1-001",
+          "title": "弃子引入钓鱼马",
+          "label": "弃子引入钓鱼马",
+          "fen": "custom/at_弃子引入钓鱼马_L1-001/at_弃子引入钓鱼马_L1-001.fen",
+          "metadata": "custom/at_弃子引入钓鱼马_L1-001/at_弃子引入钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典钓鱼马_L1-001",
+          "title": "经典钓鱼马",
+          "label": "经典钓鱼马",
+          "fen": "custom/at_经典钓鱼马_L1-001/at_经典钓鱼马_L1-001.fen",
+          "metadata": "custom/at_经典钓鱼马_L1-001/at_经典钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_车马炮弃子连杀_L2-001",
+          "title": "车马炮弃子连杀",
+          "label": "车马炮弃子连杀",
+          "fen": "custom/eg_车马炮弃子连杀_L2-001/eg_车马炮弃子连杀_L2-001.fen",
+          "metadata": "custom/eg_车马炮弃子连杀_L2-001/eg_车马炮弃子连杀_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_弃子引离_L1-001",
+          "title": "弃子引离",
+          "label": "弃子引离",
+          "fen": "custom/tac_弃子引离_L1-001/tac_弃子引离_L1-001.fen",
+          "metadata": "custom/tac_弃子引离_L1-001/tac_弃子引离_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_弃子引离钓鱼马_L1-001",
+          "title": "弃子引离钓鱼马",
+          "label": "弃子引离钓鱼马",
+          "fen": "custom/at_弃子引离钓鱼马_L1-001/at_弃子引离钓鱼马_L1-001.fen",
+          "metadata": "custom/at_弃子引离钓鱼马_L1-001/at_弃子引离钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典钓鱼马_L1-002",
+          "title": "经典钓鱼马",
+          "label": "经典钓鱼马",
+          "fen": "custom/at_经典钓鱼马_L1-002/at_经典钓鱼马_L1-002.fen",
+          "metadata": "custom/at_经典钓鱼马_L1-002/at_经典钓鱼马_L1-002.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "车马帅协同"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_车马帅巧杀_L1-001",
+          "title": "车马帅巧杀",
+          "label": "车马帅巧杀",
+          "fen": "custom/at_车马帅巧杀_L1-001/at_车马帅巧杀_L1-001.fen",
+          "metadata": "custom/at_车马帅巧杀_L1-001/at_车马帅巧杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "钓鱼马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典引入钓鱼马_L1-001",
+          "title": "经典引入钓鱼马",
+          "label": "经典引入钓鱼马",
+          "fen": "custom/at_经典引入钓鱼马_L1-001/at_经典引入钓鱼马_L1-001.fen",
+          "metadata": "custom/at_经典引入钓鱼马_L1-001/at_经典引入钓鱼马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "金钩钓玉"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_弃车引离金钩钓玉_L1-001",
+          "title": "弃车引离金钩钓玉",
+          "label": "弃车引离金钩钓玉",
+          "fen": "custom/at_弃车引离金钩钓玉_L1-001/at_弃车引离金钩钓玉_L1-001.fen",
+          "metadata": "custom/at_弃车引离金钩钓玉_L1-001/at_弃车引离金钩钓玉_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "八角马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典八角马_L1-001",
+          "title": "经典八角马",
+          "label": "经典八角马",
+          "fen": "custom/at_经典八角马_L1-001/at_经典八角马_L1-001.fen",
+          "metadata": "custom/at_经典八角马_L1-001/at_经典八角马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "特殊战术组合",
+              "category": "腾挪闪身"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_腾挪八角马_L1-001",
+          "title": "腾挪八角马",
+          "label": "腾挪八角马",
+          "fen": "custom/tac_腾挪八角马_L1-001/tac_腾挪八角马_L1-001.fen",
+          "metadata": "custom/tac_腾挪八角马_L1-001/tac_腾挪八角马_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "单兵种与位置杀法",
+              "category": "金钩钓玉"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "at_经典金钩钓玉_L1-001",
+          "title": "经典金钩钓玉",
+          "label": "经典金钩钓玉",
+          "fen": "custom/at_经典金钩钓玉_L1-001/at_经典金钩钓玉_L1-001.fen",
+          "metadata": "custom/at_经典金钩钓玉_L1-001/at_经典金钩钓玉_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "车马帅协同"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_车马帅组合_L2-001",
+          "title": "车马帅组合",
+          "label": "车马帅组合",
+          "fen": "custom/at_车马帅组合_L2-001/at_车马帅组合_L2-001.fen",
+          "metadata": "custom/at_车马帅组合_L2-001/at_车马帅组合_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "独特的位置结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_车马帅兵组合_L2-001",
+          "title": "车马帅兵组合",
+          "label": "车马帅兵组合",
+          "fen": "custom/at_车马帅兵组合_L2-001/at_车马帅兵组合_L2-001.fen",
+          "metadata": "custom/at_车马帅兵组合_L2-001/at_车马帅兵组合_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "attacking",
+              "group": "组合进攻",
+              "category": "独特的位置结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "at_巧弃车八角马胜_L2-001",
+          "title": "巧弃车八角马胜",
+          "label": "巧弃车八角马胜",
+          "fen": "custom/at_巧弃车八角马胜_L2-001/at_巧弃车八角马胜_L2-001.fen",
+          "metadata": "custom/at_巧弃车八角马胜_L2-001/at_巧弃车八角马胜_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "attacking",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_巧弃车八角马胜_L2-001",
+          "title": "巧弃车八角马胜",
+          "label": "巧弃车八角马胜",
+          "fen": "custom/tac_巧弃车八角马胜_L2-001/tac_巧弃车八角马胜_L2-001.fen",
+          "metadata": "custom/tac_巧弃车八角马胜_L2-001/tac_巧弃车八角马胜_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "特殊战术组合",
+              "category": "腾挪闪身"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_连将腾挪_L2-001",
+          "title": "连将腾挪",
+          "label": "连将腾挪",
+          "fen": "custom/tac_连将腾挪_L2-001/tac_连将腾挪_L2-001.fen",
+          "metadata": "custom/tac_连将腾挪_L2-001/tac_连将腾挪_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "多子杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_弃车双马巧杀_L1-001",
+          "title": "弃车双马巧杀",
+          "label": "弃车双马巧杀",
+          "fen": "custom/eg_弃车双马巧杀_L1-001/eg_弃车双马巧杀_L1-001.fen",
+          "metadata": "custom/eg_弃车双马巧杀_L1-001/eg_弃车双马巧杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_车马炮组合_L2-001",
+          "title": "车马炮组合",
+          "label": "车马炮组合",
+          "fen": "custom/eg_车马炮组合_L2-001/eg_车马炮组合_L2-001.fen",
+          "metadata": "custom/eg_车马炮组合_L2-001/eg_车马炮组合_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_巧妙的帅马兵组合_L2-001",
+          "title": "巧妙的帅马兵组合",
+          "label": "巧妙的帅马兵组合",
+          "fen": "custom/eg_巧妙的帅马兵组合_L2-001/eg_巧妙的帅马兵组合_L2-001.fen",
+          "metadata": "custom/eg_巧妙的帅马兵组合_L2-001/eg_巧妙的帅马兵组合_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子突破"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "tac_弃双车绝杀_L2-001",
+          "title": "弃双车绝杀",
+          "label": "弃双车绝杀",
+          "fen": "custom/tac_弃双车绝杀_L2-001/tac_弃双车绝杀_L2-001.fen",
+          "metadata": "custom/tac_弃双车绝杀_L2-001/tac_弃双车绝杀_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_弃子攻杀_L1-001",
+          "title": "弃子攻杀",
+          "label": "弃子攻杀",
+          "fen": "custom/eg_弃子攻杀_L1-001/eg_弃子攻杀_L1-001.fen",
+          "metadata": "custom/eg_弃子攻杀_L1-001/eg_弃子攻杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车马组合连杀_L1-001",
+          "title": "车马组合连杀",
+          "label": "车马组合连杀",
+          "fen": "custom/eg_车马组合连杀_L1-001/eg_车马组合连杀_L1-001.fen",
+          "metadata": "custom/eg_车马组合连杀_L1-001/eg_车马组合连杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_c车马兵帅组合杀_L1-001",
+          "title": "c车马兵帅组合杀",
+          "label": "c车马兵帅组合杀",
+          "fen": "custom/eg_c车马兵帅组合杀_L1-001/eg_c车马兵帅组合杀_L1-001.fen",
+          "metadata": "custom/eg_c车马兵帅组合杀_L1-001/eg_c车马兵帅组合杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_兵引入双炮巧杀_L1-001",
+          "title": "兵引入双炮巧杀",
+          "label": "兵引入双炮巧杀",
+          "fen": "custom/eg_兵引入双炮巧杀_L1-001/eg_兵引入双炮巧杀_L1-001.fen",
+          "metadata": "custom/eg_兵引入双炮巧杀_L1-001/eg_兵引入双炮巧杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧妙得子_L1-001",
+          "title": "巧妙得子",
+          "label": "巧妙得子",
+          "fen": "custom/eg_巧妙得子_L1-001/eg_巧妙得子_L1-001.fen",
+          "metadata": "custom/eg_巧妙得子_L1-001/eg_巧妙得子_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车马炮杀王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_巧弃车双炮将杀_L1-001",
+          "title": "巧弃车双炮将杀",
+          "label": "巧弃车双炮将杀",
+          "fen": "custom/eg_巧弃车双炮将杀_L1-001/eg_巧弃车双炮将杀_L1-001.fen",
+          "metadata": "custom/eg_巧弃车双炮将杀_L1-001/eg_巧弃车双炮将杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "practice"
+          ],
+          "id": "eg_腾挪获子_L2-001",
+          "title": "腾挪获子",
+          "label": "腾挪获子",
+          "fen": "custom/eg_腾挪获子_L2-001/eg_腾挪获子_L2-001.fen",
+          "metadata": "custom/eg_腾挪获子_L2-001/eg_腾挪获子_L2-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L2",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "车炮"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_车炮王组合杀_L1-001",
+          "title": "车炮王组合杀",
+          "label": "车炮王组合杀",
+          "fen": "custom/eg_车炮王组合杀_L1-001/eg_车炮王组合杀_L1-001.fen",
+          "metadata": "custom/eg_车炮王组合杀_L1-001/eg_车炮王组合杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_非常巧妙的结构_L1-001",
+          "title": "非常巧妙的结构",
+          "label": "非常巧妙的结构",
+          "fen": "custom/eg_非常巧妙的结构_L1-001/eg_非常巧妙的结构_L1-001.fen",
+          "metadata": "custom/eg_非常巧妙的结构_L1-001/eg_非常巧妙的结构_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_弃车引离绝杀_L1-001",
+          "title": "弃车引离绝杀",
+          "label": "弃车引离绝杀",
+          "fen": "custom/tac_弃车引离绝杀_L1-001/tac_弃车引离绝杀_L1-001.fen",
+          "metadata": "custom/tac_弃车引离绝杀_L1-001/tac_弃车引离绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "组合",
+              "category": "巧妙结构"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_经典送佛归殿_L1-001",
+          "title": "经典送佛归殿",
+          "label": "经典送佛归殿",
+          "fen": "custom/eg_经典送佛归殿_L1-001/eg_经典送佛归殿_L1-001.fen",
+          "metadata": "custom/eg_经典送佛归殿_L1-001/eg_经典送佛归殿_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "弃子类战术",
+              "category": "弃子引离"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_弃子引离绝杀_L1-001",
+          "title": "弃子引离绝杀",
+          "label": "弃子引离绝杀",
+          "fen": "custom/tac_弃子引离绝杀_L1-001/tac_弃子引离绝杀_L1-001.fen",
+          "metadata": "custom/tac_弃子引离绝杀_L1-001/tac_弃子引离绝杀_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "tactics",
+              "group": "谋子类战术",
+              "category": "借将得子"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "tac_借将得子_L1-002",
+          "title": "借将得子",
+          "label": "借将得子",
+          "fen": "custom/tac_借将得子_L1-002/tac_借将得子_L1-002.fen",
+          "metadata": "custom/tac_借将得子_L1-002/tac_借将得子_L1-002.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
         }
       ]
     }

@@ -7,7 +7,10 @@ import { createRequire } from 'node:module';
 import { createGame, toFen } from '../chinese-chess/core.mjs';
 
 const require = createRequire(import.meta.url);
-const { persistCustomPuzzle, replacePuzzle, suggestPuzzleId, savePuzzleClassification, savePuzzleMaterial, deleteCustomPuzzle } = require('../server/src/chineseChessRootGeneService.js');
+const {
+  persistCustomPuzzle, replacePuzzle, suggestPuzzleId, savePuzzleClassification,
+  savePuzzleMaterial, deleteCustomPuzzle, getClassificationCatalog, updateClassificationCatalog
+} = require('../server/src/chineseChessRootGeneService.js');
 const INITIAL_FEN = 'rheakaehr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RHEAKAEHR r - - 0 1';
 const UPDATED_FEN = 'rheakaehr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RHEAKAEHR b - - 0 1';
 
@@ -153,10 +156,15 @@ test('requires confirmation of every exact duplicate and fails closed on missing
 test('persists classifications on custom and original puzzles without changing materials', async () => {
     await withBank(async bankRoot => {
       const bank = path.resolve(bankRoot, '../..');
-      const original = { id: 'original', fen: 'original.fen', solutions: ['answer.txt'], title: '原题' };
+      const original = {
+        id: 'original', fen: 'original.fen', metadata: 'original.json', solutions: ['answer.txt'], title: '原题',
+        classifications: [{ family: 'attacking', group: '待定', category: '待定' }],
+        classificationPending: true
+      };
       const mainFile = path.join(bank, 'manifest.json');
       await fs.writeFile(mainFile, JSON.stringify({ categories: [{ family: 'tactics', items: [original] }] }));
       await fs.writeFile(path.join(bank, 'original.fen'), UPDATED_FEN);
+      await fs.writeFile(path.join(bank, 'original.json'), JSON.stringify({ classificationPending: true }));
       const input = {
         classifications: [
           { family: 'tactics', group: '空间控制战术', category: '困毙' },
@@ -167,17 +175,81 @@ test('persists classifications on custom and original puzzles without changing m
       const custom = await persistCustomPuzzle({
         id: 'tac_CUSTOM_L2-001', title: '测试', fen: INITIAL_FEN, ...input
       }, { bankRoot });
-      assert.deepEqual(custom.item.classifications, input.classifications);
+      assert.deepEqual(custom.item.classifications, input.classifications.slice(0, 2));
       await savePuzzleClassification({ id: 'original', ...input }, { bankRoot });
       const saved = JSON.parse(await fs.readFile(mainFile, 'utf8')).categories[0].items[0];
-      assert.deepEqual(saved, { ...original, ...input });
+      const expectedOriginal = {
+        ...original,
+        classifications: input.classifications.slice(0, 2),
+        lessonSections: input.lessonSections
+      };
+      delete expectedOriginal.classificationPending;
+      assert.deepEqual(saved, expectedOriginal);
+      assert.equal(saved.classificationPending, undefined);
+      assert.equal(JSON.parse(await fs.readFile(path.join(bank, 'original.json'), 'utf8')).classificationPending, undefined);
+      const customManifestFile = path.join(bankRoot, 'manifest.json');
+      const customManifest = JSON.parse(await fs.readFile(customManifestFile, 'utf8'));
+      const customItem = customManifest.categories.find(category => category.key === 'custom').items[0];
+      customItem.classificationPending = true;
+      await fs.writeFile(customManifestFile, JSON.stringify(customManifest));
+      const customMetadataFile = path.join(bankRoot, customItem.metadata);
+      const customMetadata = JSON.parse(await fs.readFile(customMetadataFile, 'utf8'));
+      customMetadata.classificationPending = true;
+      await fs.writeFile(customMetadataFile, JSON.stringify(customMetadata));
       await savePuzzleClassification({ id: custom.id, ...input, lessonSections: ['practice'] }, { bankRoot });
-      const stored = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'));
-      assert.deepEqual(stored.categories.find(category => category.key === 'custom').items[0].lessonSections, ['practice']);
+      const stored = JSON.parse(await fs.readFile(customManifestFile, 'utf8'));
+      const savedCustom = stored.categories.find(category => category.key === 'custom').items[0];
+      assert.deepEqual(savedCustom.lessonSections, ['practice']);
+      assert.deepEqual(savedCustom.classifications, input.classifications.slice(0, 2));
+      assert.equal(savedCustom.classificationPending, undefined);
+      assert.equal(JSON.parse(await fs.readFile(customMetadataFile, 'utf8')).classificationPending, undefined);
       await assert.rejects(() => savePuzzleClassification({ id: 'original', ...input, classifications: [{ family: 'tactics', group: '错误', category: '困毙' }] }, { bankRoot }), /有效/);
       await assert.rejects(() => savePuzzleClassification({ id: 'original', ...input, lessonSections: [] }, { bankRoot }), /展示入口/);
       await assert.rejects(() => savePuzzleClassification({ id: 'missing', ...input }, { bankRoot }), /不存在/);
     });
+});
+
+test('manages extensible classifications and protects associated puzzle links', async () => {
+  await withBank(async bankRoot => {
+    const bank = path.resolve(bankRoot, '../..');
+    const { groups } = await getClassificationCatalog({ bankRoot });
+    assert.equal(Object.values(groups).some(family => family['待定']), false);
+    await updateClassificationCatalog({
+      action: 'add-group', family: 'attacking', group: '多子协同', category: '车马炮与帅配合'
+    }, { bankRoot });
+    const classification = {
+      classifications: [{ family: 'attacking', group: '多子协同', category: '车马炮与帅配合' }],
+      lessonSections: ['observation']
+    };
+    const saved = await persistCustomPuzzle({
+      id: 'at_TEST_L1-001', title: '多子协同局面', fen: INITIAL_FEN, ...classification
+    }, { bankRoot });
+    assert.deepEqual(saved.item.classifications, classification.classifications);
+    await assert.rejects(() => updateClassificationCatalog({
+      action: 'delete-category', family: 'attacking', group: '多子协同', category: '车马炮与帅配合'
+    }, { bankRoot }), /仍关联 1 个棋局/);
+    await updateClassificationCatalog({
+      action: 'rename-category', family: 'attacking', group: '多子协同',
+      category: '车马炮与帅配合', name: '车马炮帅多子协同'
+    }, { bankRoot });
+    const renamedManifest = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'));
+    const renamedItem = renamedManifest.categories.find(category => category.key === 'custom').items[0];
+    assert.equal(renamedItem.classifications[0].category, '车马炮帅多子协同');
+    await savePuzzleClassification({
+      id: saved.id,
+      classifications: [{ family: 'attacking', group: '组合进攻', category: '大刀剜心' }],
+      lessonSections: ['observation']
+    }, { bankRoot });
+    await updateClassificationCatalog({
+      action: 'delete-category', family: 'attacking', group: '多子协同', category: '车马炮帅多子协同'
+    }, { bankRoot });
+    await updateClassificationCatalog({
+      action: 'delete-group', family: 'attacking', group: '多子协同'
+    }, { bankRoot });
+    assert.equal((await getClassificationCatalog({ bankRoot })).groups.attacking['多子协同'], undefined);
+    const mainManifest = JSON.parse(await fs.readFile(path.join(bank, 'manifest.json'), 'utf8'));
+    assert.equal(mainManifest.categories.length, 0);
+  });
 });
 
 test('persists Chinese-named positions and rejects IDs already in the main bank', async () => {
@@ -302,6 +374,7 @@ test('generates the next free ID including retained backup directories', async (
         { items: [{ id: 'at_原题_L1-001', previousIds: [`${stem}004`] }] }
       ] }));
       assert.equal((await suggestPuzzleId({ stem }, { bankRoot })).id, `${stem}005`);
+      assert.equal((await suggestPuzzleId({ stem: 'eg_双炮臣压君_L1-' }, { bankRoot })).id, 'eg_双炮臣压君_L1-001');
       await assert.rejects(() => persistCustomPuzzle({ id: `${stem}004`, title: '双炮臣压君', fen: INITIAL_FEN }, { bankRoot }), /追溯/);
       await assert.rejects(() => suggestPuzzleId({ stem: '../bad-' }, { bankRoot }), /无效/);
     });

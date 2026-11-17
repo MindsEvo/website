@@ -1,0 +1,26 @@
+{
+  "id": "tac_弃子攻杀白脸将_L2-001",
+  "title": "弃子攻杀白脸将",
+  "type": "tactics",
+  "difficulty": "L2",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 1,
+    "a": 2,
+    "E": 1,
+    "e": 2,
+    "H": 0,
+    "h": 1,
+    "R": 1,
+    "r": 1,
+    "C": 1,
+    "c": 1,
+    "P": 1,
+    "p": 1
+  },
+  "fen": "2bak4/4aP3/4b4/2R6/9/2C6/1r5n1/9/3p5/4KABc1 w - - 0 1"
+}

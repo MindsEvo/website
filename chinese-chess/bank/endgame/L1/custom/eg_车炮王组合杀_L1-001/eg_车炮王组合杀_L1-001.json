@@ -1,0 +1,26 @@
+{
+  "id": "eg_车炮王组合杀_L1-001",
+  "title": "车炮王组合杀",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 1,
+    "H": 0,
+    "h": 0,
+    "R": 1,
+    "r": 1,
+    "C": 2,
+    "c": 0,
+    "P": 0,
+    "p": 2
+  },
+  "fen": "4ka3/9/b4a3/9/9/C1R6/9/4C4/2p1p1r2/3K5 w - - 0 1"
+}
