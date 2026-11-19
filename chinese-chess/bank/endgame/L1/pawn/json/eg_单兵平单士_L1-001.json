@@ -5,7 +5,7 @@
   },
   "metadata": {
     "difficulty": "L1",
-    "sequence": 2,
+    "sequence": 1,
     "verified": false
   },
   "pieces": {
@@ -86,5 +86,23 @@
       }
     ]
   },
-  "originalId": "eg_P-A_L1-001"
+  "originalId": "eg_P-A_L1-001",
+  "classifications": [
+    {
+      "family": "endgame",
+      "group": "兵卒",
+      "category": "兵对士"
+    }
+  ],
+  "lessonSections": [
+    "observation"
+  ],
+  "id": "eg_单兵平单士_L1-001",
+  "title": "单兵平单士",
+  "label": "单兵平单士",
+  "type": "endgame",
+  "difficulty": "L1",
+  "previousIds": [],
+  "fen": "4k4/4a4/9/9/9/9/4P4/9/9/4K4 w - - 0 1",
+  "firstMover": "w"
 }

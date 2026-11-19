@@ -1,0 +1,39 @@
+{
+  "id": "eg_底兵例和光将_L1-002",
+  "title": "底兵例和光将",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 2,
+  "previousIds": [
+    "eg_底兵例和光将_L1-001"
+  ],
+  "classifications": [
+    {
+      "family": "endgame",
+      "group": "兵卒",
+      "category": "单兵对王"
+    }
+  ],
+  "lessonSections": [
+    "observation"
+  ],
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 0,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 0,
+    "c": 0,
+    "P": 1,
+    "p": 0
+  },
+  "fen": "2P6/5k3/9/9/9/9/9/9/9/4K4 w - - 0 1"
+}

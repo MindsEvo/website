@@ -1,0 +1,26 @@
+{
+  "id": "eg_双高兵胜单炮_L1-001",
+  "title": "双高兵胜单炮",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "b",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 0,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 0,
+    "c": 1,
+    "P": 2,
+    "p": 0
+  },
+  "fen": "4k4/4c4/9/3P1P3/9/9/9/9/9/4K4 b - - 0 1"
+}

@@ -3,6 +3,7 @@ import {
   RED,
   createGame,
   getGameStatus,
+  isTerminalGameStatus,
   getLegalMoves,
   getPieceLabel,
   makeMove,
@@ -138,7 +139,7 @@ function renderBoard() {
   boardElement.replaceChildren(createStandardBoardArtwork('human-ai-lines xiangqi-grid-svg'));
   const targets = new Set(legalTargets.map(squareKey));
   const gameStatus = getGameStatus(game);
-  const gameEnded = gameStatus.type === 'checkmate' || gameStatus.type === 'stalemate' || gameStatus.type === 'invalid';
+  const gameEnded = isTerminalGameStatus(gameStatus);
 
   for (let row = 0; row < game.board.length; row += 1) {
     for (let col = 0; col < game.board[row].length; col += 1) {
@@ -277,14 +278,28 @@ function updateTurnStatus() {
   }
   if (status.type === 'checkmate' || status.type === 'stalemate') {
     analysisStatus.textContent = `${sideName(status.turn)}${status.type === 'checkmate' ? '将死' : '困毙'}，${sideName(status.winner)}获胜（${status.winner === humanSide ? '你获胜' : 'Pikafish获胜'}）。`;
+  } else if (status.type === 'draw') {
+    analysisStatus.textContent = `和棋 · ${drawReason(status.reason)}。`;
+  } else if (status.type === 'forfeit') {
+    analysisStatus.textContent = `${sideName(status.loser)}因${drawReason(status.reason)}判负，${sideName(status.winner)}获胜（${status.winner === humanSide ? '你获胜' : 'Pikafish获胜'}）。`;
   } else if (status.type === 'check') {
     analysisStatus.textContent = `${game.turn === RED ? '红方' : '黑方'}被将军。`;
   }
 }
 
 function isGameFinished() {
-  const type = getGameStatus(game).type;
-  return type === 'checkmate' || type === 'stalemate' || type === 'invalid';
+  return isTerminalGameStatus(getGameStatus(game));
+}
+
+function drawReason(reason) {
+  return ({
+    repetition: '三次循环双方着法均允许',
+    'mutual-repetition': '三次循环双方均未变着',
+    'perpetual-attack': '长将或长捉',
+    'natural-limit': '连续60回合无吃子',
+    'no-material': '双方均无可取胜棋子',
+    agreement: '双方同意'
+  })[reason] || '棋例裁定';
 }
 
 function undoTurn() {

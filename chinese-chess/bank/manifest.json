@@ -1346,11 +1346,25 @@
           "pgn": [
             "endgame/L1/pawn/pgn/eg_单兵平单士_L1-001.pgn"
           ],
-          "originalId": "eg_P-A_L1-001"
+          "originalId": "eg_P-A_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "单兵平单士",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": []
         },
         {
-          "id": "eg_单兵胜光将_L1-001",
-          "title": "单兵胜光将",
+          "id": "eg_高兵胜光将_L1-001",
+          "title": "高兵胜光将",
           "fen": "endgame/L1/pawn/fen/eg_单兵胜光将_L1-001.fen",
           "metadata": "endgame/L1/pawn/json/eg_单兵胜光将_L1-001.json",
           "solutions": [
@@ -1363,7 +1377,23 @@
           "pgn": [
             "endgame/L1/pawn/pgn/eg_单兵胜光将_L1-001.pgn"
           ],
-          "originalId": "eg_P-K_L1-001"
+          "originalId": "eg_P-K_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "单兵对王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "高兵胜光将",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": [
+            "eg_单兵胜光将_L1-001"
+          ]
         },
         {
           "id": "eg_三兵胜士象全_L1-001",
@@ -1381,7 +1411,21 @@
           "pgn": [
             "endgame/L1/pawn/pgn/eg_三兵胜士象全_L1-001.pgn"
           ],
-          "originalId": "eg_PPP-2A2E_L1-001"
+          "originalId": "eg_PPP-2A2E_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "三高兵"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "三兵胜士象全",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": []
         }
       ]
     },

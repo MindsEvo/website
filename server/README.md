@@ -93,11 +93,11 @@ copied byte-for-byte and every source FEN is indexed.
 The Chinese chess root-gene editor provides a red/black standard-piece palette,
 an interactive puzzle directory, and endgame, attacking and tactics selectors
 at L1–L3. The header's usage dialog explains the existing Chinese puzzle IDs,
-the separate current manual-ID format, read-only imports and local-service needs.
+the separate current manual-ID format, editable source puzzles and local-service needs.
 The directory also includes opening positions, which cannot be created as manual
 opening entries in this editor.
-Saving an imported puzzle creates a separate manual copy; only manual entries
-can be updated or deleted. IDs use `eg_CUSTOM_L1-001`, `at_CUSTOM_L2-001` or
+Saving a loaded imported puzzle updates that source entry after confirmation;
+only manual entries can be deleted. IDs use `eg_CUSTOM_L1-001`, `at_CUSTOM_L2-001` or
 `tac_CUSTOM_L3-001` (all three prefixes support all three levels).
 Click a board piece and then a destination to reposition it without move-rule
 restrictions; clicking the selected square cancels selection. Palette placement
@@ -116,14 +116,53 @@ The desktop editor uses four compact columns: editing controls, board, solution
 and explanation editor, and the original searchable puzzle directory on the far
 right. The FEN preview below the board is removed; operation/error messages
 remain visible in the footer. The material panel
-imports, records and edits solutions and explanations. Save the starting FEN
-first, then start recording and use legal manual moves, human-AI, or AI-AI
+loads, records and edits solutions and explanations. The Answer and Explanation
+buttons open a list of the current puzzle's saved material links; selecting a
+link loads only that material without opening a local file picker or changing
+the board. Empty lists explicitly indicate missing materials. Loaded or edited
+notation can be replayed using Play in manual mode,
+with pause, previous/next steps, restart and speed control. Playback uses a
+read-only move list (one round per line, red and black in separate columns)
+to highlight and scroll to the current move; clicking a move
+jumps to that step. Exiting playback restores the unchanged notation editor.
+Playback uses the
+notation parser rather than the AI engine. Returning to editing restores the
+pre-playback board and move history; loading or saving alone never starts playback.
+A manually arranged position can be recorded or annotated before it is saved. Start recording and
+use legal manual moves, human-AI, or AI-AI
 (Play starts the engine). Horse/elephant notation uses destination files;
-recordings are round-trip checked through the same parser as lesson playback.
+recordings use one round per line with a space between red and black moves,
+and are round-trip checked through the same parser as lesson playback.
+Saving an existing solution also normalizes it to this round format while
+retaining comments; a successful save updates the editor without changing the board.
 Unresolvable notation is reported rather than saved as an incorrect solution.
-Material saves use the existing versioned API and only target saved manual
-positions; imported source entries must be copied first. API errors retain
-editor content for retry. The double-human play page now displays read-only
+Material saves use the existing versioned API. If the starting position is not
+yet saved, they first save it using the entered name and classifications, then
+save the material. The recording's starting FEN, not the current played position,
+is persisted; the board and move history remain unchanged. Saving prompts for a filename,
+defaulting to the loaded file; the same filename overwrites it, while a different
+name/number creates another entry. Both source and manual puzzle materials are
+editable. Saving a loaded source puzzle also permits changing its position,
+name, level and classifications in place, with confirmation. Renaming or changing
+type/level allocates a new ID and retains the old ID for traceability rather
+than leaving a duplicate catalog entry. Source FEN and metadata are updated,
+and existing solution/explanation links and files are preserved; changing the
+position warns that those materials need review. The board and editor contents
+are not reloaded. Stale source titles/positions are rejected and failed writes
+roll back previously written source files. API errors retain
+editor content for retry. Saving a manual puzzle also preserves the existing
+game object, selection, undo history and redo stack.
+
+When serving this editor with VS Code Live Server, exclude
+`**/chinese-chess/bank/**` in `liveServer.settings.ignoreFiles`. Otherwise API
+writes to FENs, materials or classification manifests trigger a full browser
+reload and reset the in-progress board, even though the editor does not redraw
+it. Workspace settings are provided for opening either `mindsevo` or `web`;
+restart Live Server after changing these settings. Source-code live reload
+remains enabled. Ordinary directory/classification updates use explicit fetches
+and do not need a browser reload.
+
+The double-human play page now displays read-only
 solutions and paired explanations (including audio and solution playback);
 its editing/recording/saving controls are removed. Human-AI and AI-AI play
 pages show only the board, shared controls, AI analysis and engine settings;
@@ -134,10 +173,25 @@ manifest. The shared bank loader merges these entries into the appropriate
 family/level for the editor and all three play modes. Restart the local API
 after updating the writer to enable the expanded ID format.
 
+The shared Xiangqi game core automatically adjudicates a repeated three-cycle
+position, a unilateral repeated check or direct chase of a rook/unprotected
+piece, a bare-generals position, and 60 consecutive full moves without captures
+(with no more than ten checking moves per side). The manual two-player page
+also offers draw by agreement. This is an automatic-play adaptation of the
+[Chinese Xiangqi Association-approved 2020 rules](https://cnchess.net/rules/rules2020.html),
+including the [draw conditions](https://cnchess.net/rules/ChapterOneSection4.html),
+[repetition adjudication](https://cnchess.net/rules/ChapterFiveSection23.html),
+and [cycle definitions](https://cnchess.net/rules/ChapterSixSection24.html).
+It does not emulate tournament referee claims or cover every expert judgment
+case in long-kill, compound chase, exchange and material-valuation examples;
+those complex positions should be referred to a human arbiter rather than
+treated as a complete automatic implementation of the official examples.
+
 ```powershell
 node web\tools\test-chinese-root-gene-service.mjs
 node web\tools\test-chinese-puzzle-bank.mjs
 node web\tools\test-chinese-recorded-notation.mjs
+node web\tools\test-chinese-root-gene-draft.mjs
 ```
 
 The Chinese chess academy endgame basics page restores the desktop layout.

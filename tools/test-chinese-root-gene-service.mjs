@@ -59,6 +59,92 @@ test('updating a saved position invalidates its old solution and explanation fil
   });
 });
 
+test('source puzzles support position, name and level updates while preserving materials and ID history', async () => {
+  await withBank(async bankRoot => {
+    const bank = path.resolve(bankRoot, '../..');
+    await fs.mkdir(path.join(bank, 'source'));
+    const oldId = 'eg_旧名称_L1-001';
+    const item = { id: oldId, title: '旧名称', fen: 'source/position.fen', metadata: 'source/metadata.json',
+      solutions: ['source/answer.txt'], explanations: ['source/explanation.txt'], classificationPending: true };
+    const mainFile = path.join(bank, 'manifest.json');
+    await fs.writeFile(mainFile, JSON.stringify({ categories: [{ key: 'source', items: [item] }] }));
+    await fs.writeFile(path.join(bankRoot, 'manifest.json'), JSON.stringify({
+      categories: [{ key: 'rook', items: [{ ...item, fen: '../../source/position.fen' }] }]
+    }));
+    await fs.writeFile(path.join(bank, item.fen), INITIAL_FEN);
+    await fs.writeFile(path.join(bank, item.metadata), JSON.stringify({
+      geneId: oldId, displayInfo: { chineseName: '旧名称' },
+      metadata: { difficulty: 'L1', sequence: 1 }, cultural: { context: '保留资料' }
+    }));
+    await fs.writeFile(path.join(bank, item.solutions[0]), '原棋谱');
+    await fs.writeFile(path.join(bank, item.explanations[0]), '原解说');
+    const input = {
+      updateSourceId: oldId, expectedTitle: '旧名称', expectedFen: INITIAL_FEN,
+      id: 'eg_新名称_L2-001', title: '新名称', fen: UPDATED_FEN,
+      classifications: [{ family: 'endgame', group: '兵卒', category: '单兵对王' }],
+      lessonSections: ['practice']
+    };
+    const originalManifest = await fs.readFile(mainFile, 'utf8');
+    await assert.rejects(() => persistCustomPuzzle({ ...input, expectedTitle: '过期名称' }, { bankRoot }), /名称已变化/);
+    await assert.rejects(() => persistCustomPuzzle({ ...input, expectedFen: UPDATED_FEN }, { bankRoot }), /局面已变化/);
+    assert.equal(await fs.readFile(mainFile, 'utf8'), originalManifest);
+    assert.equal(await fs.readFile(path.join(bank, item.fen), 'utf8'), INITIAL_FEN);
+    const metadataBefore = await fs.readFile(path.join(bank, item.metadata), 'utf8');
+    const localBefore = await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8');
+    const rename = fs.rename;
+    let injectedFailure = false;
+    fs.rename = async (from, to) => {
+      if (to === mainFile && !injectedFailure) {
+        injectedFailure = true;
+        throw new Error('injected manifest write failure');
+      }
+      return rename(from, to);
+    };
+    try {
+      await assert.rejects(() => persistCustomPuzzle(input, { bankRoot }), /injected manifest write failure/);
+    } finally {
+      fs.rename = rename;
+    }
+    assert.equal(injectedFailure, true);
+    assert.equal(await fs.readFile(mainFile, 'utf8'), originalManifest);
+    assert.equal(await fs.readFile(path.join(bank, item.fen), 'utf8'), INITIAL_FEN);
+    assert.equal(await fs.readFile(path.join(bank, item.metadata), 'utf8'), metadataBefore);
+    assert.equal(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'), localBefore);
+    const result = await persistCustomPuzzle(input, { bankRoot });
+    assert.equal(result.source, true);
+    assert.equal(result.item.id, input.id);
+    assert.deepEqual(result.item.previousIds, [oldId]);
+    assert.deepEqual(result.item.solutions, item.solutions);
+    assert.deepEqual(result.item.explanations, item.explanations);
+    assert.equal(result.item.classificationPending, undefined);
+    assert.equal(await fs.readFile(path.join(bank, item.fen), 'utf8'), `${UPDATED_FEN}\n`);
+    assert.equal(await fs.readFile(path.join(bank, item.solutions[0]), 'utf8'), '原棋谱');
+    assert.equal(await fs.readFile(path.join(bank, item.explanations[0]), 'utf8'), '原解说');
+    const metadata = JSON.parse(await fs.readFile(path.join(bank, item.metadata), 'utf8'));
+    assert.equal(metadata.geneId, input.id);
+    assert.equal(metadata.displayInfo.chineseName, '新名称');
+    assert.equal(metadata.metadata.difficulty, 'L2');
+    assert.equal(metadata.cultural.context, '保留资料');
+    const main = JSON.parse(await fs.readFile(mainFile, 'utf8'));
+    assert.equal(main.categories[0].items.length, 1);
+    assert.equal(main.categories[0].items[0].id, input.id);
+    const local = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'));
+    assert.equal(local.categories[0].items[0].id, input.id);
+    assert.equal(local.categories[0].items[0].fen, '../../source/position.fen');
+    await assert.rejects(() => persistCustomPuzzle({
+      ...input, updateSourceId: input.id, expectedTitle: input.title, expectedFen: UPDATED_FEN, id: oldId
+    }, { bankRoot }), /保留用于追溯/);
+    await persistCustomPuzzle({
+      ...input, updateSourceId: input.id, expectedTitle: input.title, expectedFen: UPDATED_FEN, title: '再次改进'
+    }, { bankRoot });
+    const material = await savePuzzleMaterial({
+      id: input.id, kind: 'solution', version: 1, filename: 'answer.txt', text: '改进棋谱'
+    }, { bankRoot });
+    assert.equal(material.bankRelativePath, 'source/answer.txt');
+    assert.match(await fs.readFile(path.join(bank, 'source/answer.txt'), 'utf8'), /改进棋谱/);
+  });
+});
+
 test('equivalent FEN encoding preserves existing materials', async () => {
     await withBank(async bankRoot => {
       const id = 'eg_CUSTOM_L1-001';
@@ -99,6 +185,41 @@ test('saves versioned solutions and explanations, and only deletes the custom en
     assert.equal(manifest.categories.find(category => category.key === 'custom').items.length, 0);
     assert.equal(manifest.categories.find(category => category.key === 'rook').items.length, 0);
     await assert.rejects(() => fs.access(path.join(bankRoot, 'custom/eg_CUSTOM_L1-001')));
+  });
+});
+
+test('named materials overwrite or save as new on both manual and source puzzles', async () => {
+  await withBank(async bankRoot => {
+    const bank = path.resolve(bankRoot, '../..');
+    const id = 'eg_CUSTOM_L1-001';
+    await persistCustomPuzzle({ id, title: '编辑材料', fen: INITIAL_FEN }, { bankRoot });
+    for (const kind of ['solution', 'explanation']) {
+      const filename = `${kind}_手工编号12.txt`;
+      const first = await savePuzzleMaterial({ id, kind, version: 12, filename, text: 'first' }, { bankRoot });
+      await savePuzzleMaterial({ id, kind, version: 12, filename, text: 'updated' }, { bankRoot });
+      assert.match(await fs.readFile(path.join(bankRoot, first.relativePath), 'utf8'), /updated/);
+      await savePuzzleMaterial({ id, kind, version: 13, filename: `${kind}_13.txt`, text: 'new' }, { bankRoot });
+    }
+    const custom = JSON.parse(await fs.readFile(path.join(bankRoot, 'manifest.json'), 'utf8'))
+      .categories.find(category => category.key === 'custom').items[0];
+    assert.equal(custom.solutions.length, 2);
+    assert.equal(custom.explanations.length, 2);
+    await fs.mkdir(path.join(bank, 'source'), { recursive: true });
+    await fs.writeFile(path.join(bank, 'source', 'answer-1.txt'), 'old');
+    await fs.writeFile(path.join(bank, 'manifest.json'), JSON.stringify({ categories: [{
+      key: 'endgame/L1/rook', items: [{ id: 'eg_SOURCE_L1-001', fen: 'source/position.fen',
+        solutions: ['source/answer-1.txt'], explanations: [] }]
+    }] }));
+    const result = await savePuzzleMaterial({ id: 'eg_SOURCE_L1-001', kind: 'solution',
+      version: 1, filename: 'answer-1.txt', text: 'corrected' }, { bankRoot });
+    assert.equal(result.bankRelativePath, 'source/answer-1.txt');
+    assert.match(await fs.readFile(path.join(bank, result.bankRelativePath), 'utf8'), /corrected/);
+    await savePuzzleMaterial({ id: 'eg_SOURCE_L1-001', kind: 'explanation',
+      version: 1, filename: '说明_1.txt', text: '解说' }, { bankRoot });
+    await assert.rejects(() => savePuzzleMaterial({ id, kind: 'solution',
+      version: 1, filename: '../escape.txt', text: 'bad' }, { bankRoot }), /文件名/);
+    await assert.rejects(() => savePuzzleMaterial({ id: 'eg_SOURCE_L1-001', kind: 'explanation',
+      version: 1, filename: 'answer-1.txt', text: 'bad' }, { bankRoot }), /不属于当前材料列表/);
   });
 });
 

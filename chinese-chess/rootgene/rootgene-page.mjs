@@ -1,10 +1,10 @@
-import { BLACK, RED, createGame, createInitialBoard, getGameStatus, getLegalMoves, getPieceLabel, makeMove, undoMove, redoMove, parseFen, toFen } from '../core.mjs';
+import { BLACK, RED, createGame, createInitialBoard, getGameStatus, isTerminalGameStatus, getLegalMoves, getPieceLabel, makeMove, undoMove, redoMove, parseFen, toFen } from '../core.mjs';
 import { PUZZLE_BANK_BASE, loadPuzzleBank, renderPuzzleBank, pairedExplanation } from '../shared/puzzle-bank.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
 import { createBoardAudio } from '../shared/board-audio.mjs';
 import { getLessonMoveFeedback } from '../shared/lesson-move-feedback.mjs';
 import { buildNotationPlayback } from '../shared/notation-playback.mjs';
-import { formatRecordedNotation } from '../shared/recorded-notation.mjs';
+import { formatRecordedNotation, formatSolutionNotation } from '../shared/recorded-notation.mjs';
 import {
   appendStandardPositionMark,
   createStandardBoardArtwork,
@@ -78,12 +78,20 @@ let materialToken = 0;
 let recording = false;
 let recordingFen = '';
 let recordingStart = 0;
+let draftMaterialFen = '';
+const loadedMaterialFiles = { solution: '', explanation: '' };
+let notationPlayback = null;
+let playbackStep = 0;
+let playbackTimer;
+let playbackSnapshot = null;
 const solutionText = document.getElementById('solutionText');
 const explanationText = document.getElementById('explanationText');
 const solutionStatus = document.getElementById('solutionStatus');
 const explanationStatus = document.getElementById('explanationStatus');
 const recordButton = document.getElementById('recordButton');
 const solutionVariant = document.getElementById('solutionVariant');
+const materialDialog = document.getElementById('materialListDialog');
+const materialList = document.getElementById('materialList');
 const helpDialog = document.getElementById('rootGeneHelpDialog');
 document.getElementById('rootGeneHelpButton').addEventListener('click', () => helpDialog.showModal());
 helpDialog.addEventListener('keydown', event => {
@@ -105,25 +113,14 @@ recordButton.addEventListener('click', toggleRecording);
 document.getElementById('saveSolutionButton').addEventListener('click', () => saveMaterial('solution'));
 document.getElementById('saveExplanationButton').addEventListener('click', () => saveMaterial('explanation'));
 solutionVariant.addEventListener('change', () => loadMaterials(Number(solutionVariant.value)));
+solutionText.addEventListener('input', () => {
+  cancelEngine();
+  exitNotationPlayback();
+  updateBoardControls();
+});
 for (const kind of ['solution', 'explanation']) {
-  const input = document.getElementById(`${kind}FileInput`);
-  document.getElementById(kind === 'solution' ? 'loadSolutionButton' : 'loadExplanationButton').addEventListener('click', () => input.click());
-  input.addEventListener('change', async () => {
-    const file = input.files?.[0];
-    if (!file) return;
-    const token = ++materialToken;
-    try {
-      const text = await file.text();
-      if (token !== materialToken) return;
-      stopRecording();
-      (kind === 'solution' ? solutionText : explanationText).value = text;
-      (kind === 'solution' ? solutionStatus : explanationStatus).textContent = `已载入 ${file.name}。`;
-      audio.refresh();
-      renderBoard();
-    } catch (error) {
-      (kind === 'solution' ? solutionStatus : explanationStatus).textContent = `载入失败：${error.message}`;
-    } finally { input.value = ''; }
-  });
+  document.getElementById(kind === 'solution' ? 'loadSolutionButton' : 'loadExplanationButton')
+    .addEventListener('click', () => showMaterialList(kind));
 }
 
 boardElement.addEventListener('click', handleBoardClick);
@@ -285,7 +282,7 @@ function inferClassification(category, item) {
 function renderBoard() {
   cancelPendingPlacement();
   const feedback = mode === 'manual' && !recording ? null : getLessonMoveFeedback(game);
-  const finished = feedback && ['checkmate', 'stalemate', 'invalid'].includes(feedback.state.type);
+  const finished = feedback && isTerminalGameStatus(feedback.state);
   if (finished) {
     running = false;
     panel.setPlaying(false);
@@ -327,15 +324,16 @@ function renderBoard() {
 function updateBoardControls(finished) {
   if (finished === undefined) {
     const feedback = mode === 'manual' && !recording ? null : getLessonMoveFeedback(game);
-    finished = Boolean(feedback && ['checkmate', 'stalemate', 'invalid'].includes(feedback.state.type));
+    finished = Boolean(feedback && isTerminalGameStatus(feedback.state));
   }
   for (const square of boardElement.querySelectorAll('.gene-intersection')) {
     square.disabled = loadingPuzzle || ((mode !== 'manual' || recording)
       && (finished || engineThinking || mode === 'ai-ai' || (mode === 'human-ai' && game.turn !== humanSide)));
   }
-  panel.controls.play.disabled = mode === 'manual' || finished || loadingPuzzle;
-  panel.controls.undo.disabled = !game.history.length || engineThinking || loadingPuzzle;
-  panel.controls.redo.disabled = !game.redoStack.length || engineThinking || loadingPuzzle;
+  const canPlayNotation = mode === 'manual' && !recording && Boolean(solutionText.value.trim());
+  panel.controls.play.disabled = loadingPuzzle || (mode === 'manual' ? !canPlayNotation : finished);
+  panel.controls.undo.disabled = (playbackSnapshot ? playbackStep === 0 : !game.history.length) || engineThinking || loadingPuzzle;
+  panel.controls.redo.disabled = (playbackSnapshot ? playbackStep === notationPlayback.moves.length : !game.redoStack.length) || engineThinking || loadingPuzzle;
   panel.setPlaying(running);
   for (const button of [...paletteButtons, firstMoverButton, ...document.querySelectorAll('[data-palette-side]')]) {
     button.disabled = mode !== 'manual' || recording || loadingPuzzle;
@@ -343,6 +341,12 @@ function updateBoardControls(finished) {
 }
 
 function handleBoardClick(event) {
+  if (playbackSnapshot) {
+    cancelEngine();
+    exitNotationPlayback();
+    setStatus('已退出棋谱演示，恢复演示前局面，可继续摆棋。', 'ready');
+    return;
+  }
   const square = event.target.closest('.gene-intersection');
   if (!square) return;
   const row = Number(square.dataset.row);
@@ -441,6 +445,7 @@ function removeEditorPiece(row, col) {
 }
 
 function handleBoardDoubleClick(event) {
+  if (playbackSnapshot) return;
   if (loadingPuzzle || mode !== 'manual' || recording) return;
   const square = event.target.closest('.gene-intersection');
   if (!square) return;
@@ -448,6 +453,7 @@ function handleBoardDoubleClick(event) {
 }
 
 function handleBoardKeyDown(event) {
+  if (playbackSnapshot) return;
   if (loadingPuzzle || mode !== 'manual' || recording || !['Delete', 'Backspace'].includes(event.key)) return;
   const square = event.target.closest('.gene-intersection');
   if (!square || !selectedBoardSquare
@@ -457,6 +463,7 @@ function handleBoardKeyDown(event) {
 }
 
 function selectPalettePiece(button) {
+  exitNotationPlayback();
   cancelPendingPlacement();
   selectedBoardSquare = null;
   selectedPalettePiece = selectedPalettePiece === button.dataset.pieceCode ? null : button.dataset.pieceCode;
@@ -466,6 +473,7 @@ function selectPalettePiece(button) {
 }
 
 function toggleFirstMover() {
+  exitNotationPlayback();
   turn = turn === RED ? BLACK : RED;
   firstMoverButton.textContent = `先手：${turn === RED ? '红方' : '黑方'}`;
   markDirty(`已切换为${turn === RED ? '红方' : '黑方'}先行。`);
@@ -473,6 +481,7 @@ function toggleFirstMover() {
 }
 
 function clearPosition() {
+  exitNotationPlayback();
   invalidateMaterials();
   selectedSavedId = '';
   selectedPuzzleId = '';
@@ -491,6 +500,7 @@ function clearPosition() {
 }
 
 function resetPosition() {
+  exitNotationPlayback();
   stopRecording();
   cancelEngine();
   audio.stop();
@@ -510,9 +520,10 @@ function resetPosition() {
   setStatus('已恢复到载入时的局面与先手，未修改题库文件。', 'ready');
 }
 
-function validateBoard() {
+function validateBoard(fenInput) {
+  const position = fenInput ? parseFen(fenInput) : { board, turn };
   const count = Object.create(null);
-  for (const row of board) {
+  for (const row of position.board) {
     for (const piece of row) if (piece) count[piece] = (count[piece] || 0) + 1;
   }
   if (count.K !== 1 || count.k !== 1) throw new Error('棋局必须恰好有一枚红帅和一枚黑将。');
@@ -522,13 +533,13 @@ function validateBoard() {
       throw new Error(`${getPieceLabel(piece)}每方最多 ${maximum} 枚。`);
     }
   }
-  const state = createGame({ board, turn });
+  const state = createGame(position);
   const fen = toFen(state);
   if (!/^.+ [wb] - - 0 1$/.test(fen)) throw new Error('局面 FEN 生成失败。');
   return { fen, counts: count, state };
 }
 
-async function checkPositionDuplicates(fen, excludeId = '') {
+async function checkPositionDuplicates(fen, excludeId = '', expectedBoardFen = fen) {
   if (!bankManifest) throw new Error('题库目录尚未载入。');
   const selectedId = selectedSavedId;
   const loadToken = puzzleLoadToken;
@@ -542,7 +553,7 @@ async function checkPositionDuplicates(fen, excludeId = '') {
     return response.text();
   }, excludeId);
   if (token !== positionCheckToken || loadingPuzzle || puzzleLoadToken !== loadToken
-    || validateBoard().fen !== fen || selectedSavedId !== selectedId) {
+    || validateBoard().fen !== expectedBoardFen || selectedSavedId !== selectedId) {
     throw new Error('局面或已选棋局在检查期间发生变化，请重新检查。');
   }
   results.replaceChildren();
@@ -606,11 +617,12 @@ async function savePuzzle() {
   }
 }
 
-async function savePuzzleWhileBusy() {
+async function savePuzzleWhileBusy(materialStartFen = '') {
   cancelEngine();
   audio.stop();
   let position;
-  try { position = validateBoard(); }
+  const currentBoardFen = toFen(createGame({ board, turn }));
+  try { position = validateBoard(materialStartFen); }
   catch (error) { setStatus(error.message, 'error'); return; }
   const nameInput = geneName.value.trim();
   let name;
@@ -628,11 +640,11 @@ async function savePuzzleWhileBusy() {
       if (!/^[\p{L}\p{N}]+$/u.test(title)) throw new Error('新棋局名称只能包含文字和数字。');
       const target = replacementTarget;
       const id = name.id || await nextPuzzleId(title);
-      const matches = await checkPositionDuplicates(position.fen);
+      const matches = await checkPositionDuplicates(position.fen, '', currentBoardFen);
       if (!matches.some(match => match.exact && match.item.id === target.id && match.item.title === target.title)) {
         throw new Error('替换对象已变化，请重新检查。');
       }
-      if (validateBoard().fen !== position.fen || geneName.value.trim() !== nameInput) {
+      if (validateBoard().fen !== currentBoardFen || geneName.value.trim() !== nameInput) {
         throw new Error('局面或名称在检查期间发生变化，请重新保存。');
       }
       if (!window.confirm(`用 ${id} 替换 ${target.id}？\n棋谱、解说和原文件将保留，其他相同局面不会删除。`)) return;
@@ -653,29 +665,49 @@ async function savePuzzleWhileBusy() {
       selectedSavedId = result.id;
       selectedPuzzleId = result.id;
       materialPuzzle = { ...item, rootGene: 'manual' };
-      for (const key of ['solutions', 'explanations']) {
-        materialPuzzle[key] = (item[key] || []).map(file => `endgame/L1/${file}`);
-      }
       materialFen = position.fen;
-      gameOriginFen = position.fen;
+      if (!materialStartFen) gameOriginFen = position.fen;
       updateMaterialVersions();
-      await loadMaterials(0);
+      if (!materialStartFen) await loadMaterials(0);
       setStatus(`已用 ${result.id} 替换 ${result.replacedId}，并按分类和级别加入专题。`, 'success');
-      return;
+      return true;
     }
-    if (selectedPuzzleId && materialPuzzle && !selectedSavedId) {
-      if (title !== materialPuzzle.title || (name.id && name.id !== selectedPuzzleId) || position.fen !== materialFen
-        || getCoursePuzzleLevel(materialPuzzle) !== geneLevel.value) {
-        throw new Error('原题局面、名称或级别的更新暂不支持；原题未修改。');
+    if (selectedPuzzleId && materialPuzzle && !selectedSavedId && !materialStartFen) {
+      const previous = materialPuzzle;
+      const positionChanged = position.fen !== materialFen;
+      const sameIdentity = title === previous.title
+        && selectedPuzzleId.startsWith(`${TYPES[geneType.value].prefix}_`)
+        && getCoursePuzzleLevel(previous) === geneLevel.value;
+      const id = name.id || (sameIdentity ? selectedPuzzleId : await nextPuzzleId(title));
+      const matches = await checkPositionDuplicates(position.fen, selectedPuzzleId, currentBoardFen);
+      if (validateBoard().fen !== currentBoardFen || geneName.value.trim() !== nameInput) {
+        throw new Error('局面或名称在检查期间发生变化，请重新保存。');
       }
-      if (!window.confirm(`保存 ${selectedPuzzleId} 的分类？原局面和棋谱不会修改。`)) return;
-      const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(selectedPuzzleId)}/classification`, {
-        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(classification)
+      if (matches.some(match => match.exact)
+        && !window.confirm('题库中已有相同局面。请先查看匹配结果；确定仍要保存吗？')) return;
+      if (!window.confirm(`保存对 ${selectedPuzzleId} 的修改${id !== selectedPuzzleId ? `，编号更新为 ${id}` : ''}？\n原棋谱和解说保留。${positionChanged ? '局面已改变，请检查旧棋谱和解说是否仍然适用。' : ''}`)) return;
+      const response = await fetch('http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id, title, fen: position.fen, updateSourceId: selectedPuzzleId,
+          expectedTitle: previous.title, expectedFen: materialFen,
+          confirmedDuplicateIds: matches.filter(match => match.exact).map(match => match.item.id), ...classification
+        })
       });
-      await readServiceResponse(response, '保存分类失败');
-      Object.assign(materialPuzzle, classification);
-      if (await loadCustomBank()) setStatus(`已保存 ${selectedPuzzleId} 的分类。`, 'success');
-      return;
+      const result = await readServiceResponse(response, '保存原题修改失败');
+      selectedPuzzleId = result.id;
+      materialPuzzle = result.item;
+      materialFen = position.fen;
+      resetFen = position.fen;
+      gameOriginFen = position.fen;
+      draftMaterialFen = '';
+      updateBoardControls();
+      if (!await loadCustomBank()) {
+        setStatus(`已修改 ${result.id}，但目录刷新失败，请刷新页面。`, 'warning');
+        return true;
+      }
+      setStatus(`已修改：${result.id}；棋谱、解说和当前棋盘均已保留。${positionChanged ? '请核对材料是否适用。' : ''}`, 'success');
+      return true;
     }
     const sameCustom = selectedSavedId && materialPuzzle?.title === title
       && selectedSavedId.startsWith(`${TYPES[geneType.value].prefix}_`)
@@ -691,8 +723,8 @@ async function savePuzzleWhileBusy() {
     if (sameCustom && position.fen !== materialFen
       && (materialPuzzle.solutions?.length || materialPuzzle.explanations?.length)
       && !window.confirm('修改局面会删除此手工棋局的旧棋谱和解说，请先备份。确定继续吗？')) return;
-    const matches = await checkPositionDuplicates(position.fen, selectedSavedId === id ? id : '');
-    if (validateBoard().fen !== position.fen || geneName.value.trim() !== nameInput) {
+    const matches = await checkPositionDuplicates(position.fen, selectedSavedId === id ? id : '', currentBoardFen);
+    if (validateBoard().fen !== currentBoardFen || geneName.value.trim() !== nameInput) {
       throw new Error('局面或名称在检查期间发生变化，请重新保存。');
     }
     if (matches.some(match => match.exact)
@@ -712,14 +744,18 @@ async function savePuzzleWhileBusy() {
     materialFen = position.fen;
     resetFen = position.fen;
     stopRecording();
-    game = createGame({ board, turn });
-    gameOriginFen = position.fen;
+    if (!materialStartFen) {
+      gameOriginFen = position.fen;
+      draftMaterialFen = '';
+    }
+    updateBoardControls();
+    updateMaterialVersions();
     if (!await loadCustomBank()) {
       setStatus(`已保存 ${result.id}，但目录刷新失败，请刷新页面。`, 'warning');
-      return;
+      return true;
     }
     setStatus(`已保存：${result.id} · 已按分类和级别加入专题。`, 'success');
-    updateMaterialVersions();
+    return true;
   } catch (error) {
     setStatus(`未保存：${error.message || '无法连接本地题库服务。'}`, 'error');
   }
@@ -789,7 +825,7 @@ async function loadSavedPuzzle(category, item) {
     renderPalette();
     renderBoard();
     renderDirectory();
-    setStatus(`已载入 ${item.title || item.id}。${!/^L[1-3]$/.test(level) ? '原题未分级；另存时使用左侧所选级别。' : ''}`, 'success');
+    setStatus(`已载入 ${item.title || item.id}。${!/^L[1-3]$/.test(level) ? '原题未分级；保存时使用左侧所选级别。' : ''}`, 'success');
     updateMaterialVersions();
     await loadMaterials(0);
   } catch (error) {
@@ -838,6 +874,7 @@ function renderDirectory() {
 
 function markDirty(message) {
   stopRecording();
+  draftMaterialFen = '';
   positionCheckToken += 1;
   replacementTarget = null;
   document.getElementById('positionMatches').replaceChildren();
@@ -862,6 +899,7 @@ function setBusy(busy) {
 }
 
 function cancelEngine() {
+  clearTimeout(playbackTimer);
   engineToken += 1;
   engineAbort?.abort();
   engineAbort = null;
@@ -881,6 +919,7 @@ function clearSelection() {
 
 function switchMode(value) {
   cancelEngine();
+  exitNotationPlayback();
   audio.stop();
   mode = value;
   humanSide = panel.getSide() === 'red' ? RED : BLACK;
@@ -892,6 +931,11 @@ function switchMode(value) {
 }
 
 function handleControl(action) {
+  if (mode === 'manual' && !recording && (action === 'play'
+    || (playbackSnapshot && ['undo', 'redo', 'reset'].includes(action)))) {
+    handleNotationControl(action);
+    return;
+  }
   if (action === 'reset') {
     resetPosition();
   } else if (action === 'play') {
@@ -918,6 +962,115 @@ function handleControl(action) {
   }
 }
 
+function exitNotationPlayback() {
+  if (!playbackSnapshot) return;
+  clearTimeout(playbackTimer);
+  running = false;
+  game = playbackSnapshot.game;
+  gameOriginFen = playbackSnapshot.origin;
+  playbackSnapshot = null;
+  notationPlayback = null;
+  document.getElementById('solutionPlayback').hidden = true;
+  solutionText.hidden = false;
+  syncGame();
+  renderBoard();
+}
+
+function showNotationStep(step) {
+  const position = parseFen(playbackSnapshot.fen);
+  game = createGame(position);
+  playbackStep = Math.max(0, Math.min(step, notationPlayback.moves.length));
+  for (const move of notationPlayback.moves.slice(0, playbackStep)) {
+    if (!makeMove(game, move.from, move.to)) throw new Error('棋谱演示着法无法应用。');
+  }
+  syncGame();
+  renderBoard();
+  const notationView = document.getElementById('solutionPlayback');
+  const buttons = notationView.querySelectorAll('button');
+  buttons.forEach((button, index) => {
+    const active = index === playbackStep - 1;
+    button.classList.toggle('current', active);
+    button.setAttribute('aria-current', active ? 'step' : 'false');
+  });
+  const current = buttons[playbackStep - 1];
+  if (current) {
+    notationView.scrollTop += current.getBoundingClientRect().top
+      - notationView.getBoundingClientRect().top - (notationView.clientHeight - current.offsetHeight) / 2;
+  } else {
+    notationView.scrollTop = 0;
+  }
+  setStatus(`棋谱演示 · ${playbackStep}/${notationPlayback.moves.length} 着${playbackStep ? `：${notationPlayback.moves[playbackStep - 1].notation}` : ''}`, 'ready');
+}
+
+function handleNotationControl(action) {
+  if (action === 'play' && running) {
+    cancelEngine();
+    return;
+  }
+  cancelEngine();
+  audio.stop();
+  try {
+    if (!playbackSnapshot) {
+      const fen = draftMaterialFen || materialFen || gameOriginFen;
+      const parsed = buildNotationPlayback(fen, solutionText.value);
+      notationPlayback = parsed;
+      playbackSnapshot = { game, origin: gameOriginFen, fen };
+      playbackStep = 0;
+      const notationView = document.getElementById('solutionPlayback');
+      notationView.replaceChildren();
+      const startsRed = parseFen(fen).turn === RED;
+      let round;
+      notationPlayback.moves.forEach((move, index) => {
+        const ply = index + (startsRed ? 0 : 1);
+        if (index === 0 || ply % 2 === 0) {
+          round = document.createElement('div');
+          round.className = 'solution-playback-round';
+          const number = document.createElement('span');
+          number.textContent = `${Math.floor(ply / 2) + 1}.`;
+          round.append(number);
+          notationView.append(round);
+        }
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = move.notation;
+        button.dataset.side = ply % 2 === 0 ? 'red' : 'black';
+        button.setAttribute('aria-label', `第 ${index + 1} 着：${move.notation}`);
+        button.addEventListener('click', () => {
+          cancelEngine();
+          audio.stop();
+          showNotationStep(index + 1);
+        });
+        round.append(button);
+      });
+      solutionText.hidden = true;
+      notationView.hidden = false;
+      clearSelection();
+    }
+    if (action !== 'play') {
+      showNotationStep(action === 'reset' ? 0 : playbackStep + (action === 'redo' ? 1 : -1));
+      if (action === 'redo' && playbackStep) audio.move(game);
+      return;
+    }
+    if (playbackStep === notationPlayback.moves.length) playbackStep = 0;
+    running = true;
+    const advance = () => {
+      try {
+        showNotationStep(playbackStep + 1);
+        audio.move(game);
+        if (playbackStep === notationPlayback.moves.length) cancelEngine();
+        else playbackTimer = setTimeout(advance, 2600 - panel.getSpeed() * 200);
+      } catch (error) {
+        cancelEngine();
+        setStatus(`棋谱播放失败：${error.message}`, 'error');
+      }
+    };
+    advance();
+  } catch (error) {
+    cancelEngine();
+    setStatus(`棋谱无法播放：${error.message}`, 'error');
+  }
+}
+
 function syncGame() {
   board = game.board;
   turn = game.turn;
@@ -933,7 +1086,7 @@ function renderPlayStatus() {
 
 function handlePlaySquare(point) {
   if (engineThinking || mode === 'ai-ai' || (mode === 'human-ai' && game.turn !== humanSide)
-    || ['checkmate', 'stalemate', 'invalid'].includes(getGameStatus(game).type)) return;
+    || isTerminalGameStatus(getGameStatus(game))) return;
   if (selectedBoardSquare && legalTargets.some(target => target.row === point.row && target.col === point.col)) {
     if (!makeMove(game, selectedBoardSquare, point)) {
       setStatus('当前着法不合法。', 'warning');
@@ -957,7 +1110,7 @@ function handlePlaySquare(point) {
 function continueEngine() {
   if (loadingPuzzle || mode === 'manual' || !running || engineThinking
     || (mode === 'human-ai' && game.turn === humanSide)) return;
-  if (['checkmate', 'stalemate', 'invalid'].includes(getGameStatus(game).type)) {
+  if (isTerminalGameStatus(getGameStatus(game))) {
     running = false;
     renderPlayStatus();
     return;
@@ -1007,21 +1160,27 @@ function stopRecording() {
 }
 
 function invalidateMaterials() {
+  exitNotationPlayback();
   materialToken += 1;
   stopRecording();
   materialPuzzle = null;
   materialFen = '';
+  draftMaterialFen = '';
+  loadedMaterialFiles.solution = '';
+  loadedMaterialFiles.explanation = '';
   solutionText.value = '';
   explanationText.value = '';
   solutionVariant.replaceChildren(new Option('暂无答案', ''));
   document.getElementById('solutionVersion').value = '1';
   document.getElementById('explanationVersion').value = '1';
-  solutionStatus.textContent = '先保存局面，再保存配套棋谱。';
+  solutionStatus.textContent = '摆好局面后可直接开始记录；保存棋谱时会先保存起始局面。';
   explanationStatus.textContent = '请编辑当前局面的解说。';
   audio.refresh();
 }
 
 function toggleRecording() {
+  exitNotationPlayback();
+  flushPendingPlacement();
   cancelEngine();
   audio.stop();
   if (recording) {
@@ -1030,11 +1189,12 @@ function toggleRecording() {
     renderBoard();
     return;
   }
-  recordingFen = toFen(game);
-  if (!materialPuzzle || recordingFen !== materialFen) {
-    solutionStatus.textContent = '请先保存当前起始局面，或重置到已载入的起始局面，再开始记录。';
+  try { recordingFen = validateBoard().fen; }
+  catch (error) {
+    solutionStatus.textContent = `无法开始记录：${error.message}`;
     return;
   }
+  draftMaterialFen = recordingFen;
   recordingStart = game.history.length;
   recording = true;
   clearSelection();
@@ -1069,10 +1229,73 @@ function updateMaterialVersions() {
   }
 }
 
+function showMaterialList(kind) {
+  const label = kind === 'solution' ? '答案' : '解说';
+  document.getElementById('materialListTitle').textContent = `${label}链接列表`;
+  const listStatus = document.getElementById('materialListStatus');
+  listStatus.textContent = '';
+  materialList.replaceChildren();
+  const puzzle = materialPuzzle;
+  const files = puzzle?.[kind === 'solution' ? 'solutions' : 'explanations'] || [];
+  if (!files.length) {
+    const note = document.createElement('p');
+    note.textContent = puzzle ? `当前棋局暂无已保存的${label}。` : `请先从题库目录载入棋局，再选择${label}。`;
+    materialList.append(note);
+  }
+  for (const [index, file] of files.entries()) {
+    const link = document.createElement('a');
+    link.href = `${PUZZLE_BANK_BASE}${file}`;
+    link.textContent = `${label} ${file.match(/-(\d{3})\.txt$/)?.[1] || index + 1} · ${file.split('/').at(-1)}`;
+    link.addEventListener('click', async event => {
+      event.preventDefault();
+      if (puzzle !== materialPuzzle) return;
+      cancelEngine();
+      stopRecording();
+      audio.stop();
+      const token = ++materialToken;
+      listStatus.textContent = '正在载入…';
+      if (await loadMaterialFile(kind, file, token)) {
+        draftMaterialFen = '';
+        if (kind === 'solution') solutionVariant.value = String(index);
+        materialDialog.close();
+      } else if (token === materialToken) {
+        listStatus.textContent = (kind === 'solution' ? solutionStatus : explanationStatus).textContent;
+      }
+    });
+    materialList.append(link);
+  }
+  materialDialog.showModal();
+}
+
+async function loadMaterialFile(kind, file, token) {
+  const editor = kind === 'solution' ? solutionText : explanationText;
+  const status = kind === 'solution' ? solutionStatus : explanationStatus;
+  try {
+    const response = await fetch(`${PUZZLE_BANK_BASE}${file}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`文件载入失败 (${response.status})`);
+    const text = await response.text();
+    if (token !== materialToken) return false;
+    if (kind === 'solution') exitNotationPlayback();
+    editor.value = text;
+    loadedMaterialFiles[kind] = file;
+    const version = file.match(/-(\d{1,3})\.txt$/)?.[1];
+    if (version) document.getElementById(`${kind}Version`).value = String(Number(version));
+    status.textContent = `已载入：${file.split('/').at(-1)}`;
+    audio.refresh();
+    updateBoardControls();
+    return true;
+  } catch (error) {
+    if (token === materialToken) status.textContent = `载入失败：${error.message}；编辑内容已保留。`;
+    return false;
+  }
+}
+
 async function loadMaterials(index) {
   const token = ++materialToken;
   const puzzle = materialPuzzle;
   if (!puzzle) return;
+  draftMaterialFen = '';
+  exitNotationPlayback();
   stopRecording();
   audio.stop();
   await Promise.all(['solution', 'explanation'].map(async kind => {
@@ -1080,59 +1303,74 @@ async function loadMaterials(index) {
     const status = kind === 'solution' ? solutionStatus : explanationStatus;
     const file = kind === 'solution' ? puzzle.solutions?.[index] : pairedExplanation(puzzle, index);
     editor.value = '';
-    if (!file) { status.textContent = `暂无${kind === 'solution' ? '答案' : '解说'}，可导入或编辑。`; return; }
-    try {
-      const response = await fetch(`${PUZZLE_BANK_BASE}${file}`, { cache: 'no-store' });
-      if (!response.ok) throw new Error(`文件载入失败 (${response.status})`);
-      const text = await response.text();
-      if (token !== materialToken) return;
-      editor.value = text;
-      status.textContent = '已载入题库材料。';
-      audio.refresh();
-    } catch (error) {
-      if (token === materialToken) status.textContent = error.message;
-    }
+    loadedMaterialFiles[kind] = '';
+    if (!file) { status.textContent = `暂无${kind === 'solution' ? '答案' : '解说'}，可直接编辑。`; return; }
+    await loadMaterialFile(kind, file, token);
   }));
-  if (token === materialToken) audio.refresh();
+  if (token === materialToken) {
+    audio.refresh();
+    updateBoardControls();
+  }
 }
 
 async function saveMaterial(kind) {
+  flushPendingPlacement();
   cancelEngine();
   if (recording) updateRecording();
   stopRecording();
   const status = kind === 'solution' ? solutionStatus : explanationStatus;
-  const text = (kind === 'solution' ? solutionText : explanationText).value.trim();
+  const editorText = (kind === 'solution' ? solutionText : explanationText).value.trim();
+  let text = editorText;
   if (!text) { status.textContent = '保存内容不能为空。'; return; }
-  if (!materialPuzzle || materialPuzzle.rootGene !== 'manual' || selectedSavedId !== materialPuzzle.id) {
-    status.textContent = '请先将当前局面存储为手工棋局，原题库文件不允许覆盖。';
-    return;
-  }
-  if (gameOriginFen !== materialFen) { status.textContent = '局面已编辑，请先保存新局面后再保存材料。'; return; }
+  const startFen = draftMaterialFen || gameOriginFen;
   const version = Number(document.getElementById(`${kind}Version`).value);
   if (!Number.isInteger(version) || version < 1 || version > 999) { status.textContent = '版本号须为 1–999 的整数。'; return; }
   if (kind === 'solution') {
-    try { buildNotationPlayback(materialFen, text); }
+    try { text = formatSolutionNotation(startFen, text); }
     catch (error) { status.textContent = `棋谱校验失败：${error.message}`; return; }
   }
-  const puzzle = materialPuzzle;
-  const token = materialToken;
+  const label = kind === 'solution' ? '棋谱' : '解说';
+  const suggested = loadedMaterialFiles[kind]?.split('/').at(-1)
+    || `${materialPuzzle?.id || geneName.value.trim() || '棋局'}${kind === 'explanation' ? '_exp' : ''}-${String(version).padStart(3, '0')}.txt`;
+  const enteredName = window.prompt(`保存${label}：可修改文件名并手工添加编号；同名文件将覆盖。`, suggested);
+  if (enteredName === null) return;
+  const filename = enteredName.trim();
+  if (!/^[\p{L}\p{N}][\p{L}\p{N} _()-]*\.txt$/u.test(filename) || filename.length > 180) {
+    status.textContent = '文件名需为文字、数字、下划线或连接符，并以 .txt 结尾。';
+    return;
+  }
   const button = document.getElementById(kind === 'solution' ? 'saveSolutionButton' : 'saveExplanationButton');
   button.disabled = true;
+  setBusy(true);
   try {
+    if (!materialPuzzle || materialFen !== startFen) {
+      if (!await savePuzzleWhileBusy(startFen)) {
+        status.textContent = `材料未保存：${statusText.textContent}；编辑内容已保留。`;
+        return;
+      }
+    }
+    const puzzle = materialPuzzle;
+    const token = materialToken;
     const response = await fetch(`http://localhost:8787/api/v1/chinese-chess/root-gene/puzzle/${encodeURIComponent(puzzle.id)}/material`, {
-      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind, version, text })
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind, version, filename, text })
     });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || '保存失败。');
+    const result = await readServiceResponse(response, '保存材料失败');
     if (token !== materialToken) return;
     const files = puzzle[kind === 'solution' ? 'solutions' : 'explanations'] ||= [];
-    const path = `endgame/L1/${result.relativePath}`;
+    const path = result.bankRelativePath || `endgame/L1/${result.relativePath}`;
     if (!files.includes(path)) files.push(path);
     files.sort();
     updateMaterialVersions();
-    status.textContent = `已保存${kind === 'solution' ? '棋谱' : '解说'}版本 ${String(version).padStart(3, '0')} 到题库。`;
+    loadedMaterialFiles[kind] = path;
+    if (kind === 'solution' && solutionText.value.trim() === editorText) solutionText.value = text;
+    updateBoardControls();
+    document.getElementById(`${kind}Version`).value = String(version);
+    status.textContent = `已保存${label}：${filename}（同名覆盖）。`;
     await loadCustomBank();
   } catch (error) {
-    if (token === materialToken) status.textContent = `保存失败：${error.message}；编辑内容已保留，请重试。`;
-  } finally { button.disabled = false; }
+    status.textContent = `保存失败：${error.message}；编辑内容已保留，请重试。`;
+  } finally {
+    button.disabled = false;
+    setBusy(false);
+  }
 }

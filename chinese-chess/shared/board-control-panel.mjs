@@ -4,7 +4,7 @@ const MODES = [
   { id: 'ai-ai', label: 'AI 对弈', icon: '🤖', href: '../play/ai-ai.html' }
 ];
 
-export function mountBoardControlPanel(container, { mode = 'manual', side = 'red', hrefs = {}, onAction = () => {}, onModeChange } = {}) {
+export function mountBoardControlPanel(container, { mode = 'manual', side = 'red', hrefs = {}, drawOffer = false, onAction = () => {}, onModeChange } = {}) {
   container.replaceChildren();
   container.classList.add('xiangqi-control-panel');
   container.setAttribute('aria-label', '棋盘通用控制面板');
@@ -34,6 +34,7 @@ export function mountBoardControlPanel(container, { mode = 'manual', side = 'red
   addButton('play', '▶', '播放');
   addButton('undo', '↶', '上一步');
   addButton('redo', '→', '下一步');
+  if (drawOffer) addButton('draw', '½', '提议和棋');
   controls.undo.disabled = true;
   controls.redo.disabled = true;
 

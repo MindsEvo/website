@@ -1,4 +1,4 @@
-import { BLACK, RED, createGame, createGameFromFen, getGameStatus, getPieceLabel, makeMove, undoMove, redoMove, toFen } from '../core.mjs';
+import { BLACK, RED, createGame, createGameFromFen, getGameStatus, isTerminalGameStatus, getPieceLabel, makeMove, undoMove, redoMove, toFen } from '../core.mjs';
 import {
   appendStandardPositionMark,
   createStandardBoardArtwork,
@@ -106,10 +106,13 @@ async function startDuel() {
 
     while (token === runToken) {
       const gameStatus = getGameStatus(game);
-      if (gameStatus.type === 'checkmate' || gameStatus.type === 'stalemate' || gameStatus.type === 'invalid') {
+      if (isTerminalGameStatus(gameStatus)) {
         advantageText.textContent = gameStatus.type === 'checkmate'
           ? `${sideName(gameStatus.winner)}胜利 · 将死`
-          : gameStatus.type === 'stalemate' ? `${sideName(gameStatus.winner)}胜利 · 困毙` : '棋局无效';
+          : gameStatus.type === 'stalemate' ? `${sideName(gameStatus.winner)}胜利 · 困毙`
+            : gameStatus.type === 'draw' ? `和棋 · ${drawReason(gameStatus.reason)}`
+              : gameStatus.type === 'forfeit' ? `${sideName(gameStatus.winner)}胜利 · ${sideName(gameStatus.loser)}${drawReason(gameStatus.reason)}判负`
+                : '棋局无效';
         candidateBox.textContent = '对局结束';
         break;
       }
@@ -143,6 +146,16 @@ async function startDuel() {
       controlPanel.setPlaying(false);
     }
   }
+}
+
+function drawReason(reason) {
+  return ({
+    repetition: '三次循环双方着法均允许',
+    'mutual-repetition': '三次循环双方均未变着',
+    'perpetual-attack': '长将或长捉',
+    'natural-limit': '连续60回合无吃子',
+    'no-material': '双方均无可取胜棋子'
+  })[reason] || '棋例裁定';
 }
 
 function stopDuel() {

@@ -5,7 +5,7 @@
   },
   "metadata": {
     "difficulty": "L1",
-    "sequence": 3,
+    "sequence": 1,
     "verified": false
   },
   "pieces": {
@@ -87,5 +87,23 @@
       }
     ]
   },
-  "originalId": "eg_PPP-2A2E_L1-001"
+  "originalId": "eg_PPP-2A2E_L1-001",
+  "classifications": [
+    {
+      "family": "endgame",
+      "group": "兵卒",
+      "category": "三高兵"
+    }
+  ],
+  "lessonSections": [
+    "observation"
+  ],
+  "id": "eg_三兵胜士象全_L1-001",
+  "title": "三兵胜士象全",
+  "label": "三兵胜士象全",
+  "type": "endgame",
+  "difficulty": "L1",
+  "previousIds": [],
+  "fen": "4kab2/4a4/4b4/9/2P1PP3/9/9/9/9/4K4 w - - 0 1",
+  "firstMover": "w"
 }

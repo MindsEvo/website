@@ -4,6 +4,8 @@ import {
   RED,
   createGame,
   getGameStatus,
+  isTerminalGameStatus,
+  agreeToDraw,
   getLegalMoves,
   getPieceLabel,
   makeMove,
@@ -38,12 +40,14 @@ const moveList = document.getElementById('moveList');
 const moveCount = document.getElementById('moveCount');
 const controlPanel = mountBoardControlPanel(document.getElementById('playControlPanel'), {
   mode: 'manual',
+  drawOffer: true,
   hrefs: { manual: './index.html', 'human-ai': './human-ai.html', 'ai-ai': './ai-ai.html' },
   onAction(action) {
     if (action === 'reset') resetPosition();
     if (action === 'play') togglePlayback();
     if (action === 'undo') doUndo();
     if (action === 'redo') doRedo();
+    if (action === 'draw') offerDraw();
     if (action === 'sound') {
       ruleNote.textContent = controlPanel.getSoundEnabled() ? '音效已开启。' : '音效已关闭。';
     }
@@ -129,6 +133,18 @@ function render() {
   renderMoves();
   controlPanel.controls.undo.disabled = game.history.length === 0;
   controlPanel.controls.redo.disabled = game.redoStack.length === 0;
+  if (controlPanel.controls.draw) {
+    controlPanel.controls.draw.disabled = isTerminalGameStatus(status);
+  }
+}
+
+function offerDraw() {
+  const status = getGameStatus(game);
+  if (status.type !== 'playing' && status.type !== 'check') return;
+  if (!window.confirm('请双方确认：是否接受和棋提议？')) return;
+  agreeToDraw(game);
+  ruleNote.textContent = '双方同意和棋。';
+  render();
 }
 
 function renderStatus(status) {
@@ -141,6 +157,12 @@ function renderStatus(status) {
   } else if (status.type === 'stalemate') {
     turnText.textContent = `${side}困毙`;
     turnDetail.textContent = `${status.winner === RED ? '红方' : '黑方'}获胜`;
+  } else if (status.type === 'draw') {
+    turnText.textContent = '和棋';
+    turnDetail.textContent = drawReason(status.reason);
+  } else if (status.type === 'forfeit') {
+    turnText.textContent = '违规判负';
+    turnDetail.textContent = `${status.winner === RED ? '红方' : '黑方'}获胜 · ${status.loser === RED ? '红方' : '黑方'}${drawReason(status.reason)}`;
   } else if (status.type === 'invalid') {
     turnText.textContent = '棋局无效';
     turnDetail.textContent = '缺少一方将帅';
@@ -148,6 +170,17 @@ function renderStatus(status) {
     turnText.textContent = game.history.length === 0 ? `${side}先行` : `${side}走棋`;
     turnDetail.textContent = status.type === 'check' ? `${side}被将军` : `${side}回合`;
   }
+}
+
+function drawReason(reason) {
+  return ({
+    agreement: '双方同意',
+    repetition: '三次循环，双方着法均允许',
+    'mutual-repetition': '三次循环，双方均为禁止着法',
+    'perpetual-attack': '三次循环，长将或长捉判负',
+    'natural-limit': '连续60回合无吃子',
+    'no-material': '双方均无可取胜棋子'
+  })[reason] || '依规则裁定';
 }
 
 function renderBoard() {
@@ -188,7 +221,7 @@ function renderBoard() {
 function handleSquareClick(position) {
   if (playbackTimer) stopPlayback();
   const status = getGameStatus(game);
-  if (status.type === 'checkmate' || status.type === 'stalemate' || status.type === 'invalid') return;
+  if (isTerminalGameStatus(status)) return;
 
   if (selectedSquare && legalTargets.some(target => sameSquare(target, position))) {
     makeMove(game, selectedSquare, position);

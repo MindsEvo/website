@@ -1,0 +1,26 @@
+{
+  "id": "eg_三高兵胜马双士_L1-001",
+  "title": "三高兵胜马双士",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 1,
+    "R": 0,
+    "r": 0,
+    "C": 0,
+    "c": 0,
+    "P": 3,
+    "p": 0
+  },
+  "fen": "3aka3/6n2/9/2PPP4/9/9/9/9/9/4K4 w - - 0 1"
+}

@@ -1,7 +1,7 @@
 {
-  "geneId": "eg_单兵胜光将_L1-001",
+  "geneId": "eg_高兵胜光将_L1-001",
   "displayInfo": {
-    "chineseName": "单兵胜光将"
+    "chineseName": "高兵胜光将"
   },
   "metadata": {
     "difficulty": "L1",
@@ -70,5 +70,25 @@
       "竞赛训练"
     ]
   },
-  "originalId": "eg_P-K_L1-001"
+  "originalId": "eg_P-K_L1-001",
+  "classifications": [
+    {
+      "family": "endgame",
+      "group": "兵卒",
+      "category": "单兵对王"
+    }
+  ],
+  "lessonSections": [
+    "observation"
+  ],
+  "id": "eg_高兵胜光将_L1-001",
+  "title": "高兵胜光将",
+  "label": "高兵胜光将",
+  "type": "endgame",
+  "difficulty": "L1",
+  "previousIds": [
+    "eg_单兵胜光将_L1-001"
+  ],
+  "fen": "9/5k3/9/3P5/9/9/9/9/4K4/9 w - - 0 1",
+  "firstMover": "w"
 }

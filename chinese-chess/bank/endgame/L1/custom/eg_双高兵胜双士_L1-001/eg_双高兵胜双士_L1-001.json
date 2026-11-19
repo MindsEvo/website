@@ -1,0 +1,26 @@
+{
+  "id": "eg_双高兵胜双士_L1-001",
+  "title": "双高兵胜双士",
+  "type": "endgame",
+  "difficulty": "L1",
+  "sequence": 1,
+  "verified": false,
+  "firstMover": "w",
+  "pieces": {
+    "K": 1,
+    "k": 1,
+    "A": 0,
+    "a": 2,
+    "E": 0,
+    "e": 0,
+    "H": 0,
+    "h": 0,
+    "R": 0,
+    "r": 0,
+    "C": 0,
+    "c": 0,
+    "P": 2,
+    "p": 0
+  },
+  "fen": "3aka3/9/9/4P4/3P5/9/9/9/9/3K5 w - - 0 1"
+}

@@ -1,4 +1,4 @@
-import { BLACK, RED, createEmptyBoard, createGame, createInitialBoard, getGameStatus, getLegalMoves, getPieceLabel, isInCheck, makeMove } from '../../core.mjs';
+import { BLACK, RED, createEmptyBoard, createGame, createInitialBoard, getGameStatus, isTerminalGameStatus, getLegalMoves, getPieceLabel, isInCheck, makeMove } from '../../core.mjs';
 import {
   appendStandardPositionMark,
   createStandardBoardArtwork,
@@ -8,6 +8,7 @@ import {
   placeStandardIntersection
 } from '../../board-standard.mjs';
 import { applyBoardStyle, onBoardStyleChange } from '../../board-style.mjs';
+import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -1193,7 +1194,12 @@ function practiceTargets(position) {
 function practiceDuelStatus() {
   const status = getGameStatus(game);
   const side = game.turn === RED ? '红方' : '黑方';
-  if (status.type === 'invalid') return { finished: true, text: '棋局无效，请重新选择练习局面。' };
+  if (isTerminalGameStatus(status)) {
+    if (status.type === 'invalid') return { finished: true, text: '棋局无效，请重新选择练习局面。' };
+    if (status.type === 'draw' || status.type === 'forfeit') {
+      return { finished: true, text: getLessonMoveFeedback(game).text };
+    }
+  }
   if (status.type === 'checkmate' || status.type === 'stalemate') {
     return { finished: true, text: `${status.type === 'checkmate' ? '将死' : '困毙'}，${status.winner === RED ? '红方' : '黑方'}获胜。` };
   }

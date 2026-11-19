@@ -1,4 +1,4 @@
-import { createInitialBoard, createGame, createGameFromFen, getGameStatus, getLegalMoves, getPieceLabel, makeMove, parseFen, undoMove, redoMove, toFen, RED } from '../../core.mjs';
+import { createInitialBoard, createGame, createGameFromFen, getGameStatus, isTerminalGameStatus, getLegalMoves, getPieceLabel, makeMove, parseFen, undoMove, redoMove, toFen, RED } from '../../core.mjs';
 import {
   appendStandardPositionMark,
   createStandardBoardArtwork,
@@ -287,7 +287,7 @@ function renderBoard() {
   const board = document.getElementById('teachingBoard');
   const position = displayedBoard;
   const feedback = getLessonMoveFeedback(game);
-  const finished = live && ['checkmate', 'stalemate', 'invalid'].includes(feedback.state.type);
+  const finished = live && isTerminalGameStatus(feedback.state);
   board.replaceChildren(createStandardBoardArtwork());
   for (let row = 0; row < position.length; row += 1) {
     for (let col = 0; col < position[row].length; col += 1) {
@@ -637,7 +637,7 @@ function renderLive() {
   panel.controls.redo.disabled = !game.redoStack.length || engineThinking;
   panel.setPlaying(duelRunning);
   const state = getGameStatus(game);
-  const finished = ['checkmate', 'stalemate', 'invalid'].includes(state.type);
+  const finished = isTerminalGameStatus(state);
   if (finished) {
     duelRunning = false;
     panel.setPlaying(false);
@@ -648,7 +648,8 @@ function renderLive() {
 }
 
 function handleSquare(point) {
-  if (!live || engineThinking || mode === 'ai-ai' || (mode === 'human-ai' && game.turn !== humanSide)) return;
+  if (!live || engineThinking || isTerminalGameStatus(getGameStatus(game)) || mode === 'ai-ai'
+    || (mode === 'human-ai' && game.turn !== humanSide)) return;
   if (selectedSquare && legalTargets.some(target => target.row === point.row && target.col === point.col)) {
     if (!makeMove(game, selectedSquare, point)) {
       status.textContent = '当前着法不合法。';
@@ -671,7 +672,7 @@ function handleSquare(point) {
 function continueEngine() {
   if (!live || mode === 'manual' || !duelRunning || engineThinking || (mode === 'human-ai' && game.turn === humanSide)) return;
   const state = getGameStatus(game);
-  if (['checkmate', 'stalemate', 'invalid'].includes(state.type)) {
+  if (isTerminalGameStatus(state)) {
     duelRunning = false;
     renderLive();
     return;

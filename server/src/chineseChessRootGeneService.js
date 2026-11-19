@@ -490,8 +490,99 @@ async function suggestPuzzleId(input, options = {}) {
   throw httpError(409, "该名称和级别的序号已用完。");
 }
 
+async function updateSourcePuzzle(input, root) {
+  const bankRoot = path.resolve(root, "../..");
+  const mainFile = path.join(bankRoot, "manifest.json");
+  const mainText = await fs.readFile(mainFile, "utf8");
+  const main = JSON.parse(mainText);
+  const matches = main.categories.flatMap(category => category.items).filter(item => item.id === input.updateSourceId);
+  if (matches.length !== 1) throw httpError(matches.length ? 409 : 404, "原题不存在或编号不唯一，请重新载入。");
+  const previous = matches[0];
+  if (previous.title !== input.expectedTitle) throw httpError(409, "原题名称已变化，请重新载入后修改。");
+  const id = validateId(input.id);
+  const [, prefix, , level, sequence] = id.match(CUSTOM_ID_RE);
+  const title = String(input.title || "").trim();
+  if (!title || title.length > 80) throw httpError(400, "棋局名称不能为空，且不能超过 80 个字符。");
+  const { fen } = parseFen(input.fen);
+  const classification = await validateClassificationInput(input, root);
+  if (classification.classifications[0].family !== CUSTOM_TYPES[prefix]) {
+    throw httpError(400, "主分类类型必须与棋局编号一致。");
+  }
+  const { file: localFile, data: local } = await readManifest(root);
+  const entries = [...main.categories, ...local.categories].flatMap(category => category.items);
+  if (id !== previous.id && entries.some(item => reservedPuzzleIds(item).includes(id))) {
+    throw httpError(409, "新编号已被使用或保留用于追溯，请重新保存以生成可用序号。");
+  }
+  const resolveFile = relative => {
+    if (typeof relative !== "string" || !relative) throw httpError(500, "原题文件路径缺失。");
+    const file = path.resolve(bankRoot, relative);
+    if (!file.startsWith(bankRoot + path.sep)) throw httpError(500, "原题文件路径无效。");
+    return file;
+  };
+  const fenFile = resolveFile(previous.fen);
+  const oldFen = await fs.readFile(fenFile, "utf8");
+  const { parseFen: parseBoard } = await import("../../chinese-chess/core.mjs");
+  const boardKey = value => {
+    const position = parseBoard(value);
+    return JSON.stringify([position.board, position.turn]);
+  };
+  if (boardKey(oldFen) !== boardKey(input.expectedFen)) throw httpError(409, "原题局面已变化，请重新载入后修改。");
+  const duplicates = (await findExactDuplicates(fen, root, local)).filter(match => match !== previous.id);
+  const confirmed = Array.isArray(input.confirmedDuplicateIds) ? input.confirmedDuplicateIds : [];
+  if (duplicates.some(match => !confirmed.includes(match))) throw httpError(409, "发现未确认的相同局面，请重新检查后保存。");
+  const previousIds = [...new Set([...(previous.previousIds || []), ...(id !== previous.id ? [previous.id] : [])])];
+  const changes = { ...classification, id, title, label: title, type: CUSTOM_TYPES[prefix], difficulty: level, previousIds };
+  const item = { ...previous, ...changes };
+  delete item.namingPending;
+  delete item.classificationPending;
+  const updates = [{ file: fenFile, previous: oldFen, next: `${fen}\n` }];
+  if (previous.metadata) {
+    const file = resolveFile(previous.metadata);
+    const text = await fs.readFile(file, "utf8");
+    const metadata = JSON.parse(text);
+    if ("geneId" in metadata) metadata.geneId = id;
+    Object.assign(metadata, changes, { fen, firstMover: fen.split(/\s+/)[1] });
+    if (metadata.displayInfo) metadata.displayInfo.chineseName = title;
+    if (metadata.metadata) Object.assign(metadata.metadata, { difficulty: level, sequence: Number(sequence) });
+    delete metadata.namingPending;
+    delete metadata.classificationPending;
+    updates.push({ file, previous: text, next: `${JSON.stringify(metadata, null, 2)}\n` });
+  }
+  for (const category of main.categories) {
+    category.items = category.items.map(entry => entry === previous ? item : entry);
+  }
+  let localChanged = false;
+  const localText = await fs.readFile(localFile, "utf8");
+  for (const category of local.categories) {
+    for (const entry of category.items) {
+      if (entry.id !== previous.id) continue;
+      Object.assign(entry, changes);
+      delete entry.namingPending;
+      delete entry.classificationPending;
+      localChanged = true;
+    }
+  }
+  if (localChanged) updates.push({ file: localFile, previous: localText, next: `${JSON.stringify(local, null, 2)}\n` });
+  updates.push({ file: mainFile, previous: mainText, next: `${JSON.stringify(main, null, 2)}\n` });
+  const written = [];
+  try {
+    for (const update of updates) {
+      await writeAtomic(update.file, update.next);
+      written.push(update);
+    }
+  } catch (error) {
+    for (const update of written.reverse()) {
+      try { await writeAtomic(update.file, update.previous); }
+      catch (rollbackError) { throw httpError(500, `${error.message}；恢复原题失败：${rollbackError.message}`); }
+    }
+    throw error;
+  }
+  return { id, title, fen, item, source: true };
+}
+
 async function persistCustomPuzzle(input, options = {}) {
   const root = options.bankRoot || DEFAULT_BANK_ROOT;
+  if (input.updateSourceId) return updateSourcePuzzle(input, root);
   const id = validateId(input.id);
   const [, prefix, , level] = id.match(CUSTOM_ID_RE);
   const title = String(input.title || "").trim();
@@ -588,24 +679,45 @@ async function savePuzzleMaterial(input, options = {}) {
   const version = Number(input.version);
   if (!Number.isInteger(version) || version < 1 || version > 999) throw httpError(400, "版本号必须在 001 到 999 之间。");
 
-  const { file: manifestFile, data: manifest } = await readManifest(root);
-  const category = manifest.categories.find(item => item.key === "custom");
-  const item = category?.items.find(entry => entry.id === id);
-  if (!item) throw httpError(404, "找不到对应的手工棋局，请先保存局面。");
+  let { file: manifestFile, data: manifest } = await readManifest(root);
+  let item = manifest.categories.find(entry => entry.key === "custom")?.items.find(entry => entry.id === id);
+  let materialRoot = root;
+  if (!item) {
+    materialRoot = path.resolve(root, "../..");
+    manifestFile = path.join(materialRoot, "manifest.json");
+    manifest = JSON.parse(await fs.readFile(manifestFile, "utf8"));
+    item = manifest.categories.flatMap(entry => entry.items || []).find(entry => entry.id === id);
+  }
+  if (!item) throw httpError(404, "找不到对应棋局，请先保存局面。");
 
   const paths = relativePuzzleFiles(id, version);
-  const relativePath = paths[kind];
-  const fullPath = path.resolve(root, relativePath);
-  if (!fullPath.startsWith(path.resolve(root) + path.sep)) throw httpError(400, "无效的题库保存路径。");
   const listName = kind === "solution" ? "solutions" : "explanations";
   const files = item[listName] || (item[listName] = []);
+  const filename = input.filename;
+  if (filename !== undefined && (typeof filename !== "string"
+    || !/^[\p{L}\p{N}][\p{L}\p{N} _()-]*\.txt$/u.test(filename)
+    || filename.length > 180)) throw httpError(400, "文件名需为文字、数字、下划线或连接符，并以 .txt 结尾。");
+  const existing = filename && files.find(file => path.posix.basename(file) === filename);
+  const directory = path.posix.dirname(files[0] || (materialRoot === root ? paths[kind] : item.fen));
+  const relativePath = filename ? existing || `${directory}/${filename}` : paths[kind];
+  const fullPath = path.resolve(materialRoot, relativePath);
+  if (!fullPath.startsWith(path.resolve(materialRoot) + path.sep)) throw httpError(400, "无效的题库保存路径。");
+  if (!files.includes(relativePath)) {
+    try {
+      await fs.access(fullPath);
+      throw httpError(409, "同名文件已存在且不属于当前材料列表，请更换文件名。");
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+  }
   if (!files.includes(relativePath)) files.push(relativePath);
   files.sort((left, right) => left.localeCompare(right));
 
   const contents = kind === "solution" && !/^#\s*END\s*$/m.test(text) ? `${text}\n# END\n` : `${text}\n`;
   await writeAtomic(fullPath, contents);
   await writeAtomic(manifestFile, `${JSON.stringify(manifest, null, 2)}\n`);
-  return { id, kind, version, relativePath };
+  return { id, kind, version, relativePath,
+    bankRelativePath: materialRoot === root ? `endgame/L1/${relativePath}` : relativePath };
 }
 
 async function deleteCustomPuzzle(input, options = {}) {

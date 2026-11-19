@@ -99,8 +99,9 @@
         <label for="solutionVariant">题库答案</label>
         <select id="solutionVariant" aria-label="选择答案版本"><option value="">暂无答案</option></select>
         <textarea id="solutionText" spellcheck="false" aria-label="棋谱答案" placeholder="载入答案，或开始记录后走棋；AI-AI 点击播放求解。"></textarea>
+        <div id="solutionPlayback" class="solution-playback" role="region" aria-label="棋谱同步演示" hidden></div>
         <div class="material-version"><label for="solutionVersion">答案版本</label><input id="solutionVersion" type="number" min="1" max="999" value="1" /></div>
-        <p id="solutionStatus" role="status">先保存手工局面，再记录和保存配套棋谱。</p>
+        <p id="solutionStatus" role="status">摆好局面后可直接开始记录；保存棋谱时会先保存起始局面。</p>
         <div class="material-actions">
           <button id="loadExplanationButton" type="button">解说</button>
           <button id="saveExplanationButton" type="button">保存解说</button>
@@ -108,9 +109,7 @@
         <label for="explanationText">解说内容</label>
         <textarea id="explanationText" spellcheck="false" aria-label="解说内容" placeholder="在此编辑配套解说。"></textarea>
         <div class="material-version"><label for="explanationVersion">解说版本</label><input id="explanationVersion" type="number" min="1" max="999" value="1" /></div>
-        <p id="explanationStatus" role="status">导入棋局只读；另存为手工棋局后可保存材料。</p>
-        <input id="solutionFileInput" type="file" accept=".txt,text/plain" hidden />
-        <input id="explanationFileInput" type="file" accept=".txt,text/plain" hidden />
+        <p id="explanationStatus" role="status">可直接编辑解说；保存时弹出文件名，可手工添加编号，同名覆盖。</p>
       </section>
       <aside class="rootgene-panel bank-panel" aria-labelledby="bankTitle">
         <h2 class="panel-title" id="bankTitle"><span aria-hidden="true">📚</span> 题库目录</h2>
@@ -122,6 +121,12 @@
 
     <footer class="rootgene-footer"><span id="rootGeneStatus" role="status">点击棋子后选择摆放位置。</span><button id="rootGeneFooterSave" type="button">▣ 保存</button></footer>
   </main>
+  <dialog id="materialListDialog" aria-labelledby="materialListTitle">
+    <h2 id="materialListTitle">材料链接列表</h2>
+    <div id="materialList"></div>
+    <p id="materialListStatus" role="status"></p>
+    <form method="dialog"><button type="submit">关闭</button></form>
+  </dialog>
   <dialog id="rootGeneHelpDialog" aria-labelledby="rootGeneHelpTitle">
     <h2 id="rootGeneHelpTitle">根基因库使用说明</h2>
     <h3>棋局命名</h3>
@@ -133,8 +138,10 @@
       <li>选择主类型、组分类、子分类和级别，可选关联分类；也可新增、重命名分类。删除分类前需先迁移关联棋局。L1 进入动态观察，L2/L3 进入操作练习。保存和分类维护需要启动本地服务（端口 8787）。</li>
       <li>残局、攻杀、战术和开局的分类与对应教学页面共用；题库目录按这些分类显示，关联分类也会显示同一棋局。级别仅决定动态观察或操作练习入口。</li>
       <li>“检查相同局面”比较棋盘和行棋方。对完全相同的棋局，可选择一条作为替换对象，不会覆盖当前棋盘和输入；确认保存后旧记录被替换，棋谱、解说及原文件保留。行棋方不同的棋局不能作为替换对象。</li>
-      <li>原题库棋局的局面和棋谱只读，可单独更新分类；修改局面须另存为手工棋局，仅手工棋局可删除。已有棋局如无完整细分类，需先选择后再保存。</li>
-      <li>先保存起始局面，再记录或导入棋谱、编辑解说，按版本保存。更新手工棋局的局面会删除其旧棋谱和解说，请先备份。</li>
+      <li>原题库棋局支持修改局面、名称、级别和分类，点击“保存到题库”并确认后更新原题；改名或调整类型、级别时系统生成新编号，旧编号保留追溯，不留下重复目录项。原棋谱和解说保留，局面改变后请核对材料是否适用。保存不复位棋盘、不重新加载编辑内容；仅手工棋局可删除。保存棋谱或解说会弹出文件名，默认使用已加载的文件名；同名覆盖，修改文件名或编号则另存。</li>
+      <li>摆好局面后可直接编辑解说或开始记录，无需先保存局面。填写棋局名称和分类后，保存棋谱或解说会先将对应起始局面保存为手工棋局，再按版本保存材料；记录后的当前棋盘保持不变。更新手工棋局的局面会删除其旧棋谱和解说，请先备份。</li>
+      <li>点击“答案”或“解说”弹出当前棋局已保存的链接列表，点击条目只加载对应材料，不打开本地文件选择器，也不更新棋盘。</li>
+      <li>手动模式下，载入或修改棋谱后可点击棋盘下方“播放”自动演示，棋谱同步高亮当前着法并自动滚动，支持暂停、上一步、下一步及速度调节。演示结束后可再次播放；点击棋盘或选择棋子将退出演示，恢复演示前局面和棋谱编辑框。加载和保存棋谱本身不会自动改动棋盘。</li>
       <li>人机和 AI-AI 默认使用最多 15 层、每步 5 秒、1 条候选搜索；达到深度或时间上限即结束，引擎结果不保证为正解。</li>
     </ul>
     <form method="dialog"><button type="submit">关闭</button></form>

@@ -25,9 +25,22 @@
 .material-panel { display: flex; flex-direction: column; gap: 8px; overflow: auto; }
 .material-panel .panel-title { flex-shrink: 0; margin-bottom: 0; }
 .material-panel textarea { width: 100%; min-height: 150px; flex: 1 0 150px; resize: vertical; padding: 8px; border: 1px solid #cbd4da; border-radius: 4px; font: inherit; font-size: 13px; line-height: 1.6; }
+.solution-playback { min-height: 150px; max-height: 300px; flex: 1 0 150px; overflow: auto; padding: 8px; border: 1px solid #cbd4da; border-radius: 4px; }
+.solution-playback-round { display: grid; grid-template-columns: 28px repeat(2, minmax(0, 1fr)); align-items: baseline; gap: 0 3px; font-size: 13px; }
+.solution-playback button { display: block; width: 100%; min-width: 0; margin: 0; padding: 2px 0; border: 1px solid transparent; border-radius: 3px; background: transparent; color: #28445f; font: inherit; white-space: nowrap; text-align: left; cursor: pointer; }
+.solution-playback button[data-side="red"] { grid-column: 2; }
+.solution-playback button[data-side="black"] { grid-column: 3; }
+.solution-playback button.current { background: #ffeb99; border-color: #c28b13; color: #633d00; font-weight: 700; }
 .material-actions { display: flex; flex-wrap: wrap; gap: 5px; }
 .material-actions button { min-height: 36px; flex: 1; padding: 5px; border: 1px solid #cbd4da; border-radius: 4px; background: #f5f8fa; color: #28445f; font: inherit; font-size: 13px; cursor: pointer; }
 .material-actions .recording { background: #c7493c; color: #fff; }
+#materialListDialog { width: min(620px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 22px 24px; border: 0; border-radius: 10px; color: #263b51; box-shadow: 0 10px 32px #0003; }
+#materialListDialog::backdrop { background: #0005; }
+#materialListDialog h2 { margin: 0 0 12px; font-size: 20px; }
+#materialList { display: grid; gap: 10px; max-height: 60vh; overflow: auto; margin-bottom: 16px; }
+#materialList a { padding: 10px; border: 1px solid #cbd4da; border-radius: 4px; color: #176ca8; overflow-wrap: anywhere; }
+#materialListDialog form { text-align: right; }
+#materialListDialog button { min-height: 34px; padding: 0 16px; border: 0; border-radius: 5px; background: #2f98dd; color: #fff; cursor: pointer; }
 .material-panel label, .material-panel p { margin: 0; font-size: 12px; }
 .material-panel p { color: #607789; line-height: 1.5; }
 .material-panel select { min-height: 32px; width: 100%; }

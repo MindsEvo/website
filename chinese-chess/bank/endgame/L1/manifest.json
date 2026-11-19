@@ -194,11 +194,25 @@
             "pawn/eg_单兵平单士_L1-001/eg_单兵平单士_L1-001_exp-1.txt",
             "pawn/eg_单兵平单士_L1-001/exp-eg_单兵平单士_L1-001.txt"
           ],
-          "originalId": "eg_P-A_L1-001"
+          "originalId": "eg_P-A_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "单兵平单士",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": []
         },
         {
-          "id": "eg_单兵胜光将_L1-001",
-          "title": "单兵胜光将",
+          "id": "eg_高兵胜光将_L1-001",
+          "title": "高兵胜光将",
           "fen": "pawn/eg_单兵胜光将_L1-001/eg_单兵胜光将_L1-001.fen",
           "metadata": "pawn/eg_单兵胜光将_L1-001/eg_单兵胜光将_L1-001.json",
           "solutions": [
@@ -207,7 +221,23 @@
           "explanations": [
             "pawn/eg_单兵胜光将_L1-001/eg_单兵胜光将_L1-001_exp-1.txt"
           ],
-          "originalId": "eg_P-K_L1-001"
+          "originalId": "eg_P-K_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "单兵对王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "高兵胜光将",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": [
+            "eg_单兵胜光将_L1-001"
+          ]
         },
         {
           "id": "eg_三兵胜士象全_L1-001",
@@ -221,7 +251,21 @@
             "pawn/eg_三兵胜士象全_L1-001/eg_三兵胜士象全_L1-001_exp-1.txt",
             "pawn/eg_三兵胜士象全_L1-001/exp-eg_三兵胜士象全_L1-001.txt"
           ],
-          "originalId": "eg_PPP-2A2E_L1-001"
+          "originalId": "eg_PPP-2A2E_L1-001",
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "三高兵"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "label": "三兵胜士象全",
+          "type": "endgame",
+          "difficulty": "L1",
+          "previousIds": []
         }
       ]
     },
@@ -2388,6 +2432,231 @@
           "solutions": [],
           "explanations": [],
           "type": "tactics",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "单兵对王"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_底兵例和光将_L1-002",
+          "title": "底兵例和光将",
+          "label": "底兵例和光将",
+          "fen": "custom/eg_底兵例和光将_L1-002/eg_底兵例和光将_L1-002.fen",
+          "metadata": "custom/eg_底兵例和光将_L1-002/eg_底兵例和光将_L1-002.json",
+          "solutions": [],
+          "explanations": [
+            "custom/eg_底兵例和光将_L1-002/eg_底兵例和光将_L1-002_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual",
+          "previousIds": [
+            "eg_底兵例和光将_L1-001"
+          ]
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_单兵巧胜单士_L1-001",
+          "title": "单兵巧胜单士",
+          "label": "单兵巧胜单士",
+          "fen": "custom/eg_单兵巧胜单士_L1-001/eg_单兵巧胜单士_L1-001.fen",
+          "metadata": "custom/eg_单兵巧胜单士_L1-001/eg_单兵巧胜单士_L1-001.json",
+          "solutions": [
+            "custom/eg_单兵巧胜单士_L1-001/eg_单兵巧胜单士_L1-001-001.txt"
+          ],
+          "explanations": [
+            "custom/eg_单兵巧胜单士_L1-001/eg_单兵巧胜单士_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_高低兵胜双士_L1-001",
+          "title": "高低兵胜双士",
+          "label": "高低兵胜双士",
+          "fen": "custom/eg_高低兵胜双士_L1-001/eg_高低兵胜双士_L1-001.fen",
+          "metadata": "custom/eg_高低兵胜双士_L1-001/eg_高低兵胜双士_L1-001.json",
+          "solutions": [
+            "custom/eg_高低兵胜双士_L1-001/eg_高低兵胜双士_L1-001-001.txt"
+          ],
+          "explanations": [
+            "custom/eg_高低兵胜双士_L1-001/eg_高低兵胜双士_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_双高兵胜双士_L1-001",
+          "title": "双高兵胜双士",
+          "label": "双高兵胜双士",
+          "fen": "custom/eg_双高兵胜双士_L1-001/eg_双高兵胜双士_L1-001.fen",
+          "metadata": "custom/eg_双高兵胜双士_L1-001/eg_双高兵胜双士_L1-001.json",
+          "solutions": [
+            "custom/eg_双高兵胜双士_L1-001/eg_双高兵胜双士_L1-001-001.txt"
+          ],
+          "explanations": [
+            "custom/eg_双高兵胜双士_L1-001/eg_双高兵胜双士_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对象"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_双高兵胜双象_L1-001",
+          "title": "双高兵胜双象",
+          "label": "双高兵胜双象",
+          "fen": "custom/eg_双高兵胜双象_L1-001/eg_双高兵胜双象_L1-001.fen",
+          "metadata": "custom/eg_双高兵胜双象_L1-001/eg_双高兵胜双象_L1-001.json",
+          "solutions": [
+            "custom/eg_双高兵胜双象_L1-001/eg_双高兵胜双象_L1-001-001.txt"
+          ],
+          "explanations": [
+            "custom/eg_双高兵胜双象_L1-001/eg_双高兵胜双象_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对士象"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_双高兵平单士象_L1-001",
+          "title": "双高兵平单士象",
+          "label": "双高兵平单士象",
+          "fen": "custom/eg_双高兵平单士象_L1-001/eg_双高兵平单士象_L1-001.fen",
+          "metadata": "custom/eg_双高兵平单士象_L1-001/eg_双高兵平单士象_L1-001.json",
+          "solutions": [],
+          "explanations": [
+            "custom/eg_双高兵平单士象_L1-001/eg_双高兵平单士象_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "兵对炮"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_双高兵胜单炮_L1-001",
+          "title": "双高兵胜单炮",
+          "label": "双高兵胜单炮",
+          "fen": "custom/eg_双高兵胜单炮_L1-001/eg_双高兵胜单炮_L1-001.fen",
+          "metadata": "custom/eg_双高兵胜单炮_L1-001/eg_双高兵胜单炮_L1-001.json",
+          "solutions": [
+            "custom/eg_双高兵胜单炮_L1-001/双高兵胜单炮-001.txt"
+          ],
+          "explanations": [
+            "custom/eg_双高兵胜单炮_L1-001/eg_双高兵胜单炮_L1-001_exp-001.txt"
+          ],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "三高兵"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_三高兵胜马双士_L1-001",
+          "title": "三高兵胜马双士",
+          "label": "三高兵胜马双士",
+          "fen": "custom/eg_三高兵胜马双士_L1-001/eg_三高兵胜马双士_L1-001.fen",
+          "metadata": "custom/eg_三高兵胜马双士_L1-001/eg_三高兵胜马双士_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
+          "difficulty": "L1",
+          "rootGene": "manual"
+        },
+        {
+          "classifications": [
+            {
+              "family": "endgame",
+              "group": "兵卒",
+              "category": "三高兵"
+            }
+          ],
+          "lessonSections": [
+            "observation"
+          ],
+          "id": "eg_三高兵胜单马双士_L1-001",
+          "title": "三高兵胜单马双士",
+          "label": "三高兵胜单马双士",
+          "fen": "custom/eg_三高兵胜单马双士_L1-001/eg_三高兵胜单马双士_L1-001.fen",
+          "metadata": "custom/eg_三高兵胜单马双士_L1-001/eg_三高兵胜单马双士_L1-001.json",
+          "solutions": [],
+          "explanations": [],
+          "type": "endgame",
           "difficulty": "L1",
           "rootGene": "manual"
         }

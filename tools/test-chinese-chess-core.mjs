@@ -3,12 +3,14 @@ import test from 'node:test';
 import {
   BLACK,
   RED,
+  agreeToDraw,
   createEmptyBoard,
   createGame,
   createGameFromFen,
   getGameStatus,
   getLegalMoves,
   isInCheck,
+  isTerminalGameStatus,
   makeMove,
   parseFen,
   redoMove,
@@ -148,6 +150,139 @@ test('facing generals are check, while checkmate and stalemate both award the op
 
   const stalemate = position([['K', 9, 4], ['k', 0, 3], ['h', 7, 2], ['h', 7, 6], ['h', 6, 3]], RED);
   assert.deepEqual(getGameStatus(stalemate), { type: 'stalemate', turn: RED, winner: BLACK, inCheck: false });
+});
+
+test('all terminal Xiangqi outcomes are recognized consistently', () => {
+  for (const type of ['checkmate', 'stalemate', 'invalid', 'draw', 'forfeit']) {
+    assert.equal(isTerminalGameStatus({ type }), true, type);
+  }
+  for (const type of ['playing', 'check']) {
+    assert.equal(isTerminalGameStatus({ type }), false, type);
+  }
+  assert.equal(isTerminalGameStatus(null), false);
+});
+
+test('three identical full-position cycles are drawn when both sides use allowed moves', () => {
+  const game = position([['K', 9, 4], ['k', 0, 3], ['R', 8, 0], ['r', 1, 8]]);
+  const cycle = [
+    [[8, 0], [7, 0]], [[1, 8], [2, 8]],
+    [[7, 0], [8, 0]], [[2, 8], [1, 8]]
+  ];
+  for (let repetition = 0; repetition < 2; repetition += 1) {
+    for (const [from, to] of cycle) {
+      assert.equal(makeMove(game, { row: from[0], col: from[1] }, { row: to[0], col: to[1] }), true);
+    }
+  }
+  assert.deepEqual(getGameStatus(game), {
+    type: 'draw', turn: RED, winner: null, inCheck: false, reason: 'repetition'
+  });
+});
+
+test('repetition matching distinguishes pieces on different squares in the same rank', () => {
+  const game = position([['K', 9, 3], ['k', 0, 3], ['a', 1, 3], ['a', 1, 4], ['R', 5, 0]]);
+  const moves = [
+    [[5, 0], [5, 1]], [[0, 3], [0, 4]],
+    [[5, 1], [5, 2]], [[0, 4], [0, 3]],
+    [[5, 2], [5, 3]], [[0, 3], [0, 4]],
+    [[5, 3], [5, 4]], [[0, 4], [0, 3]]
+  ];
+  for (const [from, to] of moves) {
+    assert.equal(makeMove(game, { row: from[0], col: from[1] }, { row: to[0], col: to[1] }), true);
+  }
+  assert.notEqual(getGameStatus(game).type, 'draw');
+});
+
+test('a repeated unilateral perpetual check is adjudicated as a loss', () => {
+  const game = position([['K', 9, 5], ['k', 0, 3], ['R', 2, 4]]);
+  const cycle = [
+    [[2, 4], [2, 3]], [[0, 3], [0, 4]],
+    [[2, 3], [2, 4]], [[0, 4], [0, 3]]
+  ];
+  for (let repetition = 0; repetition < 2; repetition += 1) {
+    for (const [from, to] of cycle) {
+      assert.equal(makeMove(game, { row: from[0], col: from[1] }, { row: to[0], col: to[1] }), true);
+    }
+  }
+  assert.deepEqual(getGameStatus(game), {
+    type: 'forfeit', turn: RED, loser: RED, winner: BLACK, inCheck: false, reason: 'perpetual-attack'
+  });
+  assert.equal(undoMove(game), true);
+  assert.notEqual(getGameStatus(game).type, 'forfeit');
+  assert.equal(redoMove(game), true);
+  assert.equal(getGameStatus(game).type, 'forfeit');
+});
+
+test('a perpetual checker is reported as the loser even when the other side moves next', () => {
+  const game = position([['K', 9, 5], ['k', 0, 3], ['R', 2, 3]], BLACK);
+  const cycle = [
+    [[0, 3], [0, 4]], [[2, 3], [2, 4]],
+    [[0, 4], [0, 3]], [[2, 4], [2, 3]]
+  ];
+  for (let repetition = 0; repetition < 2; repetition += 1) {
+    for (const [from, to] of cycle) {
+      assert.equal(makeMove(game, { row: from[0], col: from[1] }, { row: to[0], col: to[1] }), true);
+    }
+  }
+  assert.deepEqual(getGameStatus(game), {
+    type: 'forfeit', turn: BLACK, loser: RED, winner: BLACK, inCheck: true, reason: 'perpetual-attack'
+  });
+});
+
+test('a repeated chase of an unprotected piece is adjudicated as a loss', () => {
+  const game = position([['K', 9, 5], ['k', 0, 3], ['R', 5, 0], ['h', 5, 3], ['r', 1, 8]]);
+  const cycle = [
+    [[5, 0], [5, 1]], [[1, 8], [2, 8]],
+    [[5, 1], [5, 0]], [[2, 8], [1, 8]]
+  ];
+  for (let repetition = 0; repetition < 2; repetition += 1) {
+    for (const [from, to] of cycle) {
+      assert.equal(makeMove(game, { row: from[0], col: from[1] }, { row: to[0], col: to[1] }), true);
+    }
+  }
+  assert.deepEqual(getGameStatus(game), {
+    type: 'forfeit', turn: RED, loser: RED, winner: BLACK, inCheck: false, reason: 'perpetual-attack'
+  });
+});
+
+test('60 consecutive rounds without a capture are automatically drawn', () => {
+  const game = position([['K', 9, 4], ['k', 0, 3], ['R', 8, 0]]);
+  game.history = Array.from({ length: 120 }, (_, index) => ({
+    from: { row: 9, col: 4 }, to: { row: 9, col: 4 }, piece: 'K', captured: null,
+    turn: index % 2 ? BLACK : RED
+  }));
+  assert.equal(getGameStatus(game).reason, 'natural-limit');
+  game.history.pop();
+  assert.notEqual(getGameStatus(game).reason, 'natural-limit');
+  game.history = Array.from({ length: 120 }, (_, index) => ({
+    from: { row: 9, col: 4 }, to: { row: 9, col: 4 }, piece: 'K', captured: null,
+    turn: index % 2 ? BLACK : RED, check: index % 10 === 0
+  }));
+  assert.notEqual(getGameStatus(game).reason, 'natural-limit');
+});
+
+test('bare generals are drawn, and a capture resets the natural-limit counter', () => {
+  const bareGenerals = position([['K', 9, 4], ['k', 0, 3]]);
+  assert.equal(getGameStatus(bareGenerals).reason, 'no-material');
+  const game = position([['K', 9, 4], ['k', 0, 3], ['R', 8, 0], ['p', 6, 0]]);
+  game.history = Array.from({ length: 119 }, (_, index) => ({
+    from: { row: 8, col: 0 }, to: { row: 8, col: 0 }, piece: 'R', captured: null,
+    turn: index % 2 ? BLACK : RED
+  }));
+  game.history.push({ from: { row: 8, col: 0 }, to: { row: 6, col: 0 }, piece: 'R', captured: 'p', turn: RED });
+  assert.notEqual(getGameStatus(game).reason, 'natural-limit');
+});
+
+test('a draw agreement ends the game and undoing a move reopens the position', () => {
+  const game = createGame();
+  assert.equal(makeMove(game, { row: 6, col: 4 }, { row: 5, col: 4 }), true);
+  agreeToDraw(game);
+  assert.deepEqual(getGameStatus(game), {
+    type: 'draw', turn: BLACK, winner: null, inCheck: false, reason: 'agreement'
+  });
+  assert.equal(makeMove(game, { row: 3, col: 4 }, { row: 4, col: 4 }), false);
+  assert.equal(undoMove(game), true);
+  assert.equal(getGameStatus(createGame()).type, 'playing');
+  assert.equal(getGameStatus(game).type, 'playing');
 });
 
 test('FEN parses 10 ranks, normalizes source symbols, and round-trips the initial position', () => {

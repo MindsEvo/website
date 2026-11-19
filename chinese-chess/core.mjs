@@ -131,7 +131,14 @@ export function isInCheck(state, color = state.turn) {
   return isSquareAttacked(state.board, king, opponentOf(color));
 }
 
+export function isTerminalGameStatus(status) {
+  return ['checkmate', 'stalemate', 'invalid', 'draw', 'forfeit'].includes(status?.type);
+}
+
 export function getGameStatus(state) {
+  if (state.result?.type === 'draw') {
+    return { type: 'draw', turn: state.turn, winner: null, inCheck: isInCheck(state, state.turn), reason: 'agreement' };
+  }
   const hasRedKing = Boolean(findKing(state.board, RED));
   const hasBlackKing = Boolean(findKing(state.board, BLACK));
   if (!hasRedKing || !hasBlackKing) {
@@ -151,10 +158,176 @@ export function getGameStatus(state) {
       inCheck
     };
   }
+  const repetition = getRepetitionResult(state);
+  if (repetition) {
+    return {
+      type: repetition.type,
+      turn: state.turn,
+      ...(repetition.loser ? { loser: repetition.loser } : {}),
+      winner: repetition.winner,
+      inCheck,
+      reason: repetition.reason
+    };
+  }
+  if (state.board.flat().every(piece => !piece || piece.toUpperCase() === 'K')) {
+    return { type: 'draw', turn: state.turn, winner: null, inCheck, reason: 'no-material' };
+  }
+  let quietPlies = 0;
+  const checks = { [RED]: 0, [BLACK]: 0 };
+  for (let index = state.history.length - 1; index >= 0 && !state.history[index].captured; index -= 1) {
+    quietPlies += 1;
+    if (state.history[index].check) checks[state.history[index].turn] += 1;
+  }
+  if (quietPlies >= 120 && checks[RED] <= 10 && checks[BLACK] <= 10) {
+    return { type: 'draw', turn: state.turn, winner: null, inCheck, reason: 'natural-limit' };
+  }
   return { type: inCheck ? 'check' : 'playing', turn: state.turn, winner: null, inCheck };
 }
 
+export function agreeToDraw(state) {
+  state.result = { type: 'draw', reason: 'agreement' };
+}
+
+function getRepetitionResult(state) {
+  if (state.history.length < 8) return null;
+  const positions = getHistoryPositions(state);
+  const current = positionKey(positions.at(-1));
+  const occurrences = [];
+  for (let index = positions.length - 1; index >= 0; index -= 1) {
+    if (positionKey(positions[index]) === current) occurrences.push(index);
+  }
+  if (occurrences.length < 3) return null;
+  for (let latest = 0; latest < occurrences.length - 2; latest += 1) {
+    const end = occurrences[latest];
+    for (let middleIndex = latest + 1; middleIndex < occurrences.length - 1; middleIndex += 1) {
+      const middle = occurrences[middleIndex];
+      const period = end - middle;
+      if (period <= 0) continue;
+      for (let startIndex = middleIndex + 1; startIndex < occurrences.length; startIndex += 1) {
+        const start = occurrences[startIndex];
+        if (middle - start !== period || !samePositionCycle(positions, start, middle, end)) continue;
+        const result = adjudicateRepetition(state, positions, start, end);
+        if (result) return result;
+      }
+    }
+  }
+  return null;
+}
+
+function getHistoryPositions(state) {
+  const positions = new Array(state.history.length + 1);
+  let board = cloneBoard(state.board);
+  let turn = state.turn;
+  positions[state.history.length] = { board: cloneBoard(board), turn };
+  for (let index = state.history.length - 1; index >= 0; index -= 1) {
+    const move = state.history[index];
+    board[move.from.row][move.from.col] = move.piece;
+    board[move.to.row][move.to.col] = move.captured;
+    turn = move.turn;
+    positions[index] = { board: cloneBoard(board), turn };
+  }
+  return positions;
+}
+
+function positionKey(position) {
+  return `${position.turn}:${position.board.map(row => row.map(piece => piece || '.').join('')).join('/')}`;
+}
+
+function samePositionCycle(positions, start, middle, end) {
+  for (let index = 0; index <= middle - start; index += 1) {
+    if (positionKey(positions[start + index]) !== positionKey(positions[middle + index])) return false;
+  }
+  return positionKey(positions[middle]) === positionKey(positions[end]);
+}
+
+function adjudicateRepetition(state, positions, start, end) {
+  const moves = state.history.slice(start, end);
+  const identityBoard = positions[start].board.map((row, rowIndex) => row.map((piece, colIndex) =>
+    piece ? `${rowIndex},${colIndex}` : null));
+  const chaseBySide = { [RED]: [], [BLACK]: [] };
+  const checksBySide = { [RED]: [], [BLACK]: [] };
+  for (let index = start; index < end; index += 1) {
+    const move = state.history[index];
+    const after = positions[index + 1];
+    const side = move.turn;
+    checksBySide[side].push(isInCheck(after, after.turn));
+    identityBoard[move.to.row][move.to.col] = identityBoard[move.from.row][move.from.col];
+    identityBoard[move.from.row][move.from.col] = null;
+    chaseBySide[side].push(findChaseTargets(after, side, identityBoard));
+  }
+  const sides = [RED, BLACK].filter(side => checksBySide[side].length);
+  const checking = side => checksBySide[side].every(Boolean);
+  const chased = side => {
+    const turns = chaseBySide[side];
+    if (!turns.length) return false;
+    const common = turns[0].filter(target => turns.every(targets => targets.includes(target)));
+    return common.length > 0;
+  };
+  const forbidden = side => checksBySide[side].length > 0
+    && (checking(side) || chased(side));
+  const offenders = sides.filter(forbidden);
+  if (offenders.length === 1) {
+    return {
+      type: 'forfeit',
+      loser: offenders[0],
+      winner: offenders[0] === RED ? BLACK : RED,
+      reason: 'perpetual-attack'
+    };
+  }
+  return { type: 'draw', winner: null, reason: offenders.length ? 'mutual-repetition' : 'repetition' };
+}
+
+function findChaseTargets(position, attacker, identities) {
+  const defender = opponentOf(attacker);
+  const chased = [];
+  for (let targetRow = 0; targetRow < ROWS; targetRow += 1) {
+    for (let targetCol = 0; targetCol < COLS; targetCol += 1) {
+      const target = position.board[targetRow][targetCol];
+      if (!target || colorOf(target) !== defender || target.toUpperCase() === 'K') continue;
+      const sources = [];
+      for (let row = 0; row < ROWS; row += 1) {
+        for (let col = 0; col < COLS; col += 1) {
+          if (position.board[row][col] && colorOf(position.board[row][col]) === attacker
+            && isLegalBoardMove(position.board, { row, col }, { row: targetRow, col: targetCol }, attacker)) {
+            sources.push({ row, col, piece: position.board[row][col] });
+          }
+        }
+      }
+      if (!sources.length || sources.every(source => ['K', 'P'].includes(source.piece.toUpperCase()))) continue;
+      if (target.toUpperCase() !== 'R' && !isChaseUnprotected(position, attacker, targetRow, targetCol, sources)) continue;
+      const identity = identities[targetRow][targetCol];
+      if (identity) chased.push(identity);
+    }
+  }
+  return chased;
+}
+
+function isChaseUnprotected(position, attacker, targetRow, targetCol, sources) {
+  const defender = opponentOf(attacker);
+  const targetPiece = position.board[targetRow][targetCol];
+  const values = { K: 100, R: 9, C: 4, H: 4, A: 2, E: 2, P: 1 };
+  const targetValue = values[targetPiece.toUpperCase()];
+  return sources.some(source => {
+    const board = cloneBoard(position.board);
+    board[targetRow][targetCol] = source.piece;
+    board[source.row][source.col] = null;
+    const attackerValue = values[source.piece.toUpperCase()];
+    for (let row = 0; row < ROWS; row += 1) {
+      for (let col = 0; col < COLS; col += 1) {
+        const piece = board[row][col];
+        if (!piece || colorOf(piece) !== defender) continue;
+        if (getLegalMoves({ board, turn: defender }, { row, col }, defender)
+          .some(to => to.row === targetRow && to.col === targetCol)) {
+          return targetValue > attackerValue;
+        }
+      }
+    }
+    return true;
+  });
+}
+
 export function makeMove(state, from, to) {
+  if (state.result) return false;
   if (!isLegalMove(state, from, to)) return false;
   applyMove(state, from, to);
   state.redoStack = [];
@@ -164,6 +337,7 @@ export function makeMove(state, from, to) {
 export function undoMove(state) {
   const move = state.history.pop();
   if (!move) return false;
+  delete state.result;
   state.board[move.from.row][move.from.col] = move.piece;
   state.board[move.to.row][move.to.col] = move.captured;
   state.turn = move.turn;
@@ -296,6 +470,8 @@ function applyMove(state, from, to) {
   const captured = state.board[to.row][to.col];
   state.board[to.row][to.col] = piece;
   state.board[from.row][from.col] = null;
-  state.history.push({ from: { ...from }, to: { ...to }, piece, captured, turn: state.turn });
+  const move = { from: { ...from }, to: { ...to }, piece, captured, turn: state.turn };
+  state.history.push(move);
   state.turn = opponentOf(state.turn);
+  move.check = isInCheck(state, state.turn);
 }
