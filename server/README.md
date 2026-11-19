@@ -50,14 +50,25 @@ can override the adjacent `pikafish.nnue` file.
 
 - `GET /api/v1/chinese-chess/engine/health` reports engine and NNUE availability.
 - `POST /api/v1/chinese-chess/engine/ai-ai/config` accepts independent `red` and
-  `black` settings (`threads`, `hash`, `depth`, `movetime`, `multiPv`).
+  `black` settings (`threads`, `hash`, `depth`, `movetime`, `multiPv`,
+  `moveOverhead`).
 - `POST /api/v1/chinese-chess/engine/ai-ai/move` accepts `{ fen, side, settings }`
   and returns Pikafish's best move, parsed analysis, and board coordinates. UCI
   move ranks are converted to the web board's zero-based row indices.
 
 The AI-AI page requires this local server on port 8787. The engine is serialized
 between sides through one Pikafish process; it applies each side's configuration
-before searching.
+before searching. The browser's shared Xiangqi engine settings are stored under
+`mindsevo.chinese-chess.engine-settings.v1`; the AI engine settings page edits
+the system maximum, while human-vs-AI and each AI-vs-AI side may select a lower
+depth/time profile. Academy, endgame, and root-gene searches always use the
+shared maximum. The recommended ceiling is 2 threads, 512 MB Hash, depth 30,
+10 seconds, and one principal variation; actual searches may finish earlier
+when the depth limit is reached.
+
+Pikafish NNUE is loaded from its configured file. No Xiangqi endgame tablebase
+is currently integrated; do not confuse this with the Syzygy tablebase probe
+used by the separate international-chess pages.
 
 Human-AI play also requires this service. The static website on port 5500 does
 not start the engine API. In VS Code, run the workspace task

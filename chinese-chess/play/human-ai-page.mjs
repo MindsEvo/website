@@ -23,6 +23,7 @@ import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
 import { createBoardAudio } from '../shared/board-audio.mjs';
 import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
+import { getPlayEngineSettings } from '../shared/engine-settings.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -212,13 +213,7 @@ async function requestEngineMove() {
   try {
     await new Promise(resolve => setTimeout(resolve, Math.max(100, 1100 - Number(controlPanel.controls.speed.value) * 100)));
     if (token !== requestToken) return;
-    const settings = {
-      threads: 1,
-      hash: 128,
-      depth: Math.min(Number(document.getElementById('humanDepth').value), Number(document.getElementById('humanSkill').value)),
-      movetime: Number(document.getElementById('humanMoveTime').value),
-      multiPv: Number(document.getElementById('humanMultiPv').value)
-    };
+    const settings = getPlayEngineSettings(document.getElementById('humanLevel').value);
     engineAbortController = new AbortController();
     const response = await fetch('http://localhost:8787/api/v1/chinese-chess/engine/ai-ai/move', {
       method: 'POST',

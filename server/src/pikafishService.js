@@ -71,8 +71,8 @@ class PikafishService {
     this.stderr = '';
     this.queue = Promise.resolve();
     this.configBySide = {
-      red: { threads: 1, hash: 128, depth: 12, movetime: 1000, multiPv: 3 },
-      black: { threads: 1, hash: 128, depth: 12, movetime: 1000, multiPv: 3 }
+      red: { threads: 2, hash: 512, depth: 30, movetime: 10000, multiPv: 1, moveOverhead: 100 },
+      black: { threads: 2, hash: 512, depth: 30, movetime: 10000, multiPv: 1, moveOverhead: 100 }
     };
   }
 

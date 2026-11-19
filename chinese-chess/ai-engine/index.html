@@ -3,95 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f3f4f5" />
-  <title>AI引擎设置 | CogniChess</title>
+  <meta name="theme-color" content="#f3f6fa" />
+  <title>AI引擎设置 | 象棋智能学习系统</title>
   <link rel="stylesheet" href="../chinese-chess.css" />
   <link rel="stylesheet" href="./ai-engine.css" />
 </head>
 <body class="ai-engine-page">
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="返回中国象棋首页">
+      <img src="../../logo.png" alt="" />
+      <span>中国象棋</span>
+    </a>
+    <nav class="top-actions" aria-label="主导航">
+      <a class="nav-link" href="../settings/index.html">系统设置</a>
+      <a class="nav-link nav-link-muted" href="../play/index.html">对弈模式</a>
+    </nav>
+  </header>
+
   <main class="ai-engine-shell">
-    <header class="ai-engine-header">
-      <a class="ai-back" href="../settings/index.html">返回设置</a>
-      <h1><span aria-hidden="true">🤖</span> AI引擎设置</h1>
+    <header class="ai-engine-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> 全局引擎配置</p>
+        <h1>AI 引擎设置</h1>
+        <p>这里设置所有教学与题库页面的最高搜索水平。对弈页面可单独选择较低档位。</p>
+      </div>
     </header>
 
-    <div class="engine-column-headings" aria-hidden="true">
-      <span>人机对弈模式</span><span>AI/AI 对弈模式</span>
+    <div class="engine-layout">
+      <section class="engine-card" aria-labelledby="engineSettingsTitle">
+        <div class="card-heading">
+          <div><p class="card-kicker">最高水平</p><h2 id="engineSettingsTitle">系统默认搜索设置</h2></div>
+          <div class="settings-heading-actions">
+            <button class="secondary-button" id="engineHelpButton" type="button" aria-haspopup="dialog" aria-controls="engineHelpDialog">参数说明</button>
+            <span class="engine-badge">所有页面共用</span>
+          </div>
+        </div>
+        <form id="engineSettingsForm">
+          <div class="settings-fields">
+            <label class="setting-field">
+              <span>线程数 <small>并行搜索</small></span>
+              <input id="engineThreads" name="threads" type="number" min="1" max="64" step="1" required />
+            </label>
+            <label class="setting-field">
+              <span>Hash 内存 <small>MB</small></span>
+              <input id="engineHash" name="hash" type="number" min="16" max="4096" step="16" required />
+            </label>
+            <label class="setting-field">
+              <span>深度上限 <small>层</small></span>
+              <input id="engineDepth" name="depth" type="number" min="1" max="30" step="1" required />
+            </label>
+            <label class="setting-field">
+              <span>思考时间上限 <small>毫秒</small></span>
+              <input id="engineMoveTime" name="movetime" type="number" min="100" max="30000" step="100" required />
+            </label>
+            <label class="setting-field">
+              <span>主变化数量 <small>1 最利于棋力</small></span>
+              <select id="engineMultiPv" name="multiPv">
+                <option value="1">1 条（推荐）</option>
+                <option value="2">2 条</option>
+                <option value="3">3 条</option>
+                <option value="4">4 条</option>
+                <option value="5">5 条</option>
+              </select>
+            </label>
+            <label class="setting-field">
+              <span>着法预留 <small>毫秒</small></span>
+              <input id="engineMoveOverhead" name="moveOverhead" type="number" min="0" max="5000" step="10" required />
+            </label>
+          </div>
+          <p class="settings-note">默认：2 线程、512 MB Hash、最多 30 层或 10 秒、1 条主变化。搜索达到深度上限会提前结束；提升资源会增加 CPU 和内存占用。</p>
+          <div class="form-actions">
+            <button class="primary-button" type="submit">保存为系统最高设置</button>
+            <button class="secondary-button" id="resetEngineSettings" type="button">恢复推荐默认值</button>
+            <span id="settingsStatus" class="form-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="engine-card diagnostics-card" aria-labelledby="diagnosticsTitle">
+        <div class="card-heading">
+          <div><p class="card-kicker">运行状态</p><h2 id="diagnosticsTitle">引擎检测与搜索测试</h2></div>
+          <button class="secondary-button" id="checkEngine" type="button">检测引擎</button>
+        </div>
+        <dl id="engineHealth" class="health-grid">
+          <div><dt>Pikafish</dt><dd>尚未检测</dd></div>
+          <div><dt>NNUE 网络</dt><dd>尚未检测</dd></div>
+          <div><dt>支持的引擎选项</dt><dd>尚未检测</dd></div>
+        </dl>
+        <label class="setting-field fen-field">
+          <span>测试局面 <small>Xiangqi FEN</small></span>
+          <textarea id="testFen" rows="2" spellcheck="false">rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1</textarea>
+        </label>
+        <div class="form-actions test-actions">
+          <button class="primary-button" id="testEngine" type="button">用系统最高设置分析</button>
+          <span id="testStatus" class="form-status" role="status" aria-live="polite"></span>
+        </div>
+        <pre id="testResult" class="test-result" aria-live="polite">测试结果将在这里显示。</pre>
+        <p class="settings-note">中国象棋目前没有接入 Syzygy 式残局表库。残局质量取决于 Pikafish、NNUE 网络及实际搜索深度和时间；此处可用具体局面检查引擎搜索表现。</p>
+      </section>
     </div>
-
-    <section class="engine-settings-grid" aria-label="AI引擎配置预览">
-      <article class="engine-card human-card">
-        <h2 class="engine-card-label">人机模式设置</h2>
-        <section class="engine-group engine-basic"><h3>基础设置</h3>
-          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
-          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
-          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
-        </section>
-        <section class="engine-group engine-strength"><h3>棋力控制</h3>
-          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:50%"></i></div></div>
-          <label class="fake-checkbox"><i></i>限制棋力</label>
-          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
-        </section>
-        <section class="engine-group engine-rules"><h3>规则设定</h3>
-          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
-          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
-          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
-          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
-        </section>
-        <section class="engine-group engine-output"><h3>输出与调试</h3>
-          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
-          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
-        </section>
-      </article>
-
-      <article class="engine-card black-ai-card">
-        <h2 class="engine-card-label">黑方引擎</h2>
-        <section class="engine-group engine-basic"><h3>基础设置</h3>
-          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
-          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
-          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
-        </section>
-        <section class="engine-group engine-strength"><h3>棋力控制</h3>
-          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:50%"></i></div></div>
-          <label class="fake-checkbox"><i></i>限制棋力</label>
-          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
-        </section>
-        <section class="engine-group engine-rules"><h3>规则设定</h3>
-          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
-          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
-          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
-          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
-        </section>
-        <section class="engine-group engine-output"><h3>输出与调试</h3>
-          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
-          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
-        </section>
-      </article>
-
-      <article class="engine-card red-ai-card">
-        <h2 class="engine-card-label">红方引擎</h2>
-        <section class="engine-group engine-basic"><h3>基础设置</h3>
-          <div class="form-row"><span>线程数:</span><div class="fake-select">4 <i></i></div></div>
-          <div class="form-row"><span>哈希表:</span><div class="fake-select">256 MB <i></i></div></div>
-          <div class="form-row nnue-row"><span>NNUE:</span><div class="fake-file-button">选择NNUE文件</div></div>
-        </section>
-        <section class="engine-group engine-strength"><h3>棋力控制</h3>
-          <div class="form-row range-row"><span>技能等级:</span><div class="fake-range"><i style="--position:60%"></i></div></div>
-          <label class="fake-checkbox"><i></i>限制棋力</label>
-          <div class="form-row"><span>Elo等级:</span><div class="fake-input">1500</div></div>
-        </section>
-        <section class="engine-group engine-rules"><h3>规则设定</h3>
-          <div class="form-row"><span>重复局面:</span><div class="fake-select">三次重复判和<i></i></div></div>
-          <div class="form-row"><span>60回合:</span><div class="fake-input">120 回合</div></div>
-          <div class="form-row"><span>搜索深度:</span><div class="fake-input">10</div></div>
-          <div class="form-row"><span>和棋规则:</span><div class="fake-select">标准和棋<i></i></div></div>
-        </section>
-        <section class="engine-group engine-output"><h3>输出与调试</h3>
-          <div class="form-row"><span>分数类型:</span><div class="fake-select">厘分<i></i></div></div>
-          <div class="form-row"><span>显示信息:</span><div class="fake-select">主要变化<i></i></div></div>
-        </section>
-      </article>
-    </section>
+    <p class="engine-footnote">更改最高设置后，新发起的搜索立即使用新配置；已在运行的搜索不变。浏览器内保存的系统配置会被教学、攻杀、战术、开局、残局和根基因库共用。</p>
   </main>
+  <dialog id="engineHelpDialog" aria-labelledby="engineHelpTitle">
+    <h2 id="engineHelpTitle">AI 引擎设置说明</h2>
+    <p>这里设置中国象棋 Pikafish 引擎的系统最高搜索配置。教学、题库和根基因库使用此配置；人机对弈及 AI-AI 对弈可以选择较低档位，但不会超过这里的设置。</p>
+    <h3>搜索参数</h3>
+    <ul>
+      <li><strong>线程数：</strong>并行搜索线程数量。增加线程可能加快搜索，但会占用更多 CPU 资源。</li>
+      <li><strong>Hash 内存：</strong>引擎保存搜索局面信息的内存（MB），不是棋谱或残局数据库；增加内存会提高内存占用。</li>
+      <li><strong>深度上限：</strong>搜索的最大层数。层数越高通常搜索越深入，但需要更多时间。</li>
+      <li><strong>思考时间上限：</strong>单次搜索的最长时间（毫秒）。搜索达到深度上限或时间上限时会结束，实际搜索深度受局面复杂度和设备性能影响。</li>
+      <li><strong>主变化数量（MultiPV）：</strong>同时分析的候选着法数量。1 条最适合追求棋力；增加数量便于比较方案，但会分散搜索资源。</li>
+      <li><strong>着法预留：</strong>为引擎着法耗时估算预留的毫秒数，避免用时接近上限时超时；通常保持推荐值即可。</li>
+    </ul>
+    <h3>保存与测试</h3>
+    <p>点击“保存为系统最高设置”后，后续新搜索会读取新配置；已经开始的搜索不会中途改变。推荐默认值为 2 线程、512 MB Hash、最多 30 层或 10 秒、1 条主变化。</p>
+    <p>右侧可检测 Pikafish 与 NNUE 是否可用，也可输入 Xiangqi FEN 并实际搜索来观察最佳着法、搜索深度、耗时和主变化。中国象棋目前没有接入残局表库，因此残局分析同样依赖引擎搜索。</p>
+    <form method="dialog"><button class="primary-button" type="submit">知道了</button></form>
+  </dialog>
+  <script type="module" src="./ai-engine-page.mjs"></script>
 </body>
 </html>

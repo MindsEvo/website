@@ -36,9 +36,11 @@ try {
     const strongResult = await engine.getPikafishMove({
       fen: toFen(game), side: 'black', settings: DEFAULT_ENGINE_SETTINGS
     });
-    assert.equal(strongResult.settings.depth, 15);
-    assert.equal(strongResult.settings.movetime, 5000);
+    assert.equal(strongResult.settings.depth, DEFAULT_ENGINE_SETTINGS.depth);
+    assert.equal(strongResult.settings.movetime, DEFAULT_ENGINE_SETTINGS.movetime);
     assert.equal(strongResult.settings.multiPv, 1);
+    assert.equal(strongResult.settings.threads, DEFAULT_ENGINE_SETTINGS.threads);
+    assert.equal(strongResult.settings.hash, DEFAULT_ENGINE_SETTINGS.hash);
     assert.equal(isLegalMove(game, strongResult.move.from, strongResult.move.to), true);
     console.log(`PASS: red ${result.bestMove}; black ${blackResult.bestMove}; both legal.`);
   }

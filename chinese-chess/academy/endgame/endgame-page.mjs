@@ -14,7 +14,7 @@ import { getLessonMoveFeedback } from '../../shared/lesson-move-feedback.mjs';
 import { createBoardAudio } from '../../shared/board-audio.mjs';
 import { getCoursePuzzleLevel, selectCoursePuzzlesForSection } from '../course-puzzle-levels.mjs';
 import { loadPuzzleBank } from '../../shared/puzzle-bank.mjs';
-import { DEFAULT_ENGINE_SETTINGS } from '../../shared/engine-defaults.mjs';
+import { loadEngineSettings } from '../../shared/engine-settings.mjs';
 import { CLASSIFICATION_GROUPS, ENDGAME_GROUPS } from '../classification.mjs';
 import { fetchClassificationGroups } from '../../shared/classification-catalog.mjs';
 
@@ -690,7 +690,7 @@ async function requestEngineMove() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: engineAbort.signal,
-      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: DEFAULT_ENGINE_SETTINGS })
+      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: loadEngineSettings() })
     });
     const result = await response.json();
     if (token !== engineToken) return;

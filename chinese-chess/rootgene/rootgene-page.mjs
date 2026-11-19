@@ -24,7 +24,7 @@ import { selectOpeningPuzzles } from '../academy/opening/opening-catalog.mjs';
 import { parsePuzzleName } from './puzzle-name.mjs';
 import { readServiceResponse } from './service-response.mjs';
 import { formatPuzzleClassification } from './classification-label.mjs';
-import { DEFAULT_ENGINE_SETTINGS } from '../shared/engine-defaults.mjs';
+import { loadEngineSettings } from '../shared/engine-settings.mjs';
 
 applyBoardStyle();
 onBoardStyleChange(() => {});
@@ -1128,7 +1128,7 @@ async function requestEngineMove() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: engineAbort.signal,
-      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: DEFAULT_ENGINE_SETTINGS })
+      body: JSON.stringify({ fen: toFen(game), side: game.turn, settings: loadEngineSettings() })
     });
     const result = await response.json();
     if (token !== engineToken) return;

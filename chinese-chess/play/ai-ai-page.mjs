@@ -10,6 +10,7 @@ import {
 import { applyBoardStyle, onBoardStyleChange } from '../board-style.mjs';
 import { mountBoardControlPanel } from '../shared/board-control-panel.mjs';
 import { createBoardAudio } from '../shared/board-audio.mjs';
+import { getPlayEngineSettings } from '../shared/engine-settings.mjs';
 import { bindPlayModeSession, restorePlayModeSession } from '../shared/play-mode-session.mjs';
 
 applyBoardStyle();
@@ -96,9 +97,8 @@ async function startDuel() {
   advantageText.textContent = '正在连接 Pikafish...';
   candidateBox.textContent = '等待引擎搜索...';
 
-  const sideSettings = { red: getSideSettings('Red'), black: getSideSettings('Black') };
-
   try {
+    const sideSettings = { red: getSideSettings('Red'), black: getSideSettings('Black') };
     const configResponse = await fetch('http://localhost:8787/api/v1/chinese-chess/engine/ai-ai/config', {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sideSettings)
     });
@@ -183,13 +183,7 @@ function resetDuel() {
 }
 
 function getSideSettings(side) {
-  return {
-    threads: 1,
-    hash: 128,
-    depth: Math.min(Number(document.getElementById(`aiAi${side}Depth`).value), Number(document.getElementById(`aiAi${side}Skill`).value)),
-    movetime: Number(document.getElementById(`aiAi${side}MoveTime`).value),
-    multiPv: Number(document.getElementById(`aiAi${side}MultiPv`).value)
-  };
+  return getPlayEngineSettings(document.getElementById(`aiAi${side}Level`).value);
 }
 
 function undoDuel() {
